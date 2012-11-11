@@ -28,7 +28,6 @@ from fife.extensions.pychan.widgets import HBox, Icon, Label
 from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.savegamemanager import SavegameManager
-from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
@@ -44,7 +43,7 @@ class MultiplayerMenu(object):
 
 	def show_multi(self):
 		"""Shows main multiplayer menu"""
-		if enet == None:
+		if enet is None:
 			headline = _(u"Unable to find pyenet")
 			descr = _(u'The multiplayer feature requires the library "pyenet", '
 			          u"which could not be found on your system.")
@@ -286,10 +285,10 @@ class MultiplayerMenu(object):
 
 	def __join_game(self, game=None):
 		"""Joins a multiplayer game. Displays lobby for that specific game"""
-		if game == None:
-			game = self.__get_selected_game()
 		if game is None:
-			return
+			game = self.__get_selected_game()
+			if game is None:
+				return
 		if game.get_uuid() == -1: # -1 signals no game
 			AmbientSoundComponent.play_special('error')
 			return

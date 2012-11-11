@@ -71,7 +71,7 @@ class CollectorAnimal(Animal):
 
 	def has_collectors(self):
 		"""Whether this unit is just now or about to be collected"""
-		return self.collector != None or self.state == self.states.waiting_for_herder
+		return self.collector is not None or self.state == self.states.waiting_for_herder
 
 	def finish_working(self):
 		# animal is done when it has eaten, and

@@ -195,7 +195,8 @@ class Scheduler(LivingObject):
 
 		# filter additional callbacks as well
 		self.additional_cur_tick_schedule = \
-		    [ cb for cb in self.additional_cur_tick_schedule if cb.class_instance is not class_instance ]
+		    [cb for cb in self.additional_cur_tick_schedule
+		        if cb.class_instance is not class_instance]
 
 	def rem_call(self, instance, callback):
 		"""Removes all callbacks of 'instance' that are 'callback'
@@ -208,8 +209,9 @@ class Scheduler(LivingObject):
 		for key in self.schedule:
 			callback_objects = self.schedule[key]
 			for i in xrange(len(callback_objects) - 1, -1, -1):
-				if callback_objects[i].class_instance is instance and callback_objects[i].callback == callback and \
-				   not hasattr(callback_objects[i], "invalid"):
+				if (callback_objects[i].class_instance is instance
+				    and callback_objects[i].callback == callback
+				    and not hasattr(callback_objects[i], "invalid")):
 					del callback_objects[i]
 					removed_calls += 1
 
@@ -241,15 +243,6 @@ class Scheduler(LivingObject):
 		@return: dict, entries: { CallbackObject: remaining_ticks_to_executing }
 		"""
 		calls = {}
-		"""
-		for key in self.schedule:
-			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance is instance:
-					if callback is None:
-						calls[callback_obj] = key - self.cur_tick
-					elif callback_obj.callback == callback:
-						calls[callback_obj] = key - self.cur_tick
-		"""
 		if instance in self.calls_by_instance:
 			for callback_obj in self.calls_by_instance[instance]:
 				if  callback is None or callback_obj.callback == callback:
@@ -287,7 +280,7 @@ class _CallbackObject(object):
 		assert (loops > 0) or (loops == -1), \
 			"Loop count must be a positive number or -1 for infinite repeat"
 		assert callable(callback)
-		assert loop_interval == None or loop_interval > 0
+		assert loop_interval is None or loop_interval > 0
 
 		self.callback = callback
 		self.finish_callback = finish_callback

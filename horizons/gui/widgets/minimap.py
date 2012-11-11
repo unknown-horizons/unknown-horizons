@@ -338,7 +338,7 @@ class Minimap(object):
 
 	def _show_tooltip(self, event):
 		if hasattr(self, "icon"): # only supported for icon mode atm
-			if self.fixed_tooltip != None:
+			if self.fixed_tooltip is not None:
 				self.icon.helptext = self.fixed_tooltip
 				self.icon.position_tooltip(event)
 				#self.icon.show_tooltip()

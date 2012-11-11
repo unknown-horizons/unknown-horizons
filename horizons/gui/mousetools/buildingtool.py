@@ -303,8 +303,8 @@ class BuildingTool(NavigationTool):
 		self.buildings_missing_resources.clear()
 
 		settlement = None # init here so we can access it below loop
-		neededResources = {}
-		# check if the buildings are buildable and color them appropriatly
+		needed_resources = {}
+		# check if the buildings are buildable and color them appropriately
 		for i, building in enumerate(self.buildings):
 			# get gfx for the building
 			# workaround for buildings like settler, that don't use the current level of
@@ -336,12 +336,12 @@ class BuildingTool(NavigationTool):
 
 
 			# check required resources
-			(enough_res, missing_res) = Build.check_resources(neededResources, self._class.costs,
+			(enough_res, missing_res) = Build.check_resources(needed_resources, self._class.costs,
 			                                                  self.session.world.player, [settlement, self.ship])
 			if building.buildable and not enough_res:
 					# make building red
 					self.renderer.addColored(self.buildings_fife_instances[building],
-										     *self.not_buildable_color)
+					                         *self.not_buildable_color)
 					building.buildable = False
 					# set missing info for gui
 					self.buildings_missing_resources[building] = missing_res
@@ -359,7 +359,7 @@ class BuildingTool(NavigationTool):
 
 		self.session.ingame_gui.resource_overview.set_construction_mode(
 			self.ship if self.ship is not None else settlement,
-		  neededResources
+		  needed_resources
 		)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 

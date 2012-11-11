@@ -26,7 +26,6 @@ import tempfile
 
 from collections import defaultdict, deque
 
-from horizons.constants import PATHS
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators

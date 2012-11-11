@@ -100,7 +100,7 @@ class AmbientSoundComponent(Component):
 
 			if loop_interval == 0:
 				self.__emitter.setLooping(True)
-			elif loop_interval != None:
+			elif loop_interval is not None:
 				duration = loop_interval + (float(self.__emitter.getDuration()) / 1000) # from millisec
 				ExtScheduler().add_new_object(self.__emitter.play, self, duration, -1)
 

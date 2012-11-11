@@ -177,6 +177,6 @@ class Inventory(Container):
 
 		def _find_widget(widget):
 			if isinstance(widget, ImageFillStatusButton):
-				if filt == None or filt(widget):
+				if filt is None or filt(widget):
 					action(widget)
 		self.deepApply(_find_widget)

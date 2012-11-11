@@ -23,8 +23,6 @@
 import ctypes
 import platform
 import os
-import locale
-import sys
 
 from horizons.ext.enum import Enum
 
@@ -312,7 +310,8 @@ class ACTION_SETS:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [ int(i * TICKS_PER_SECOND) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20) ]
+	TICK_RATES = [int(i * TICKS_PER_SECOND)
+	              for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20)]
 
 class COLORS:
 	BLACK = 9
@@ -466,12 +465,12 @@ class GFX:
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
-	LOG_DIR = os.path.join(_user_dir, "log")
-	USER_CONFIG_FILE = os.path.join(_user_dir, "settings.xml")
-	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
-	DEFAULT_WINDOW_ICON_PATH = os.path.join("content/gui/images/logos", "uh_32.png")
-	MAC_WINDOW_ICON_PATH = os.path.join("content/gui/icons", "Icon.icns")
-	ATLAS_METADATA_PATH = os.path.join(_user_dir, "atlas-metadata.cache")
+	LOG_DIR = os.path.join(USER_DIR, "log")
+	USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
+	SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
+	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
+	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
+	ATLAS_METADATA_PATH = os.path.join(USER_DIR, "atlas-metadata.cache")
 
 	# paths relative to uh dir
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
@@ -489,13 +488,15 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
-	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", i) for i in
-									("/base",
-	 								"/buildings",
-	 								"/buildings_preview",
-	 								"/misc",
-	 								"/terrain",
-	 								"/units"))
+	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", d)
+	                                 for d in (
+	                                 "/base",
+	                                 "/buildings",
+	                                 "/buildings_preview",
+	                                 "/misc",
+	                                 "/terrain",
+	                                 "/units",
+	                                ))
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
