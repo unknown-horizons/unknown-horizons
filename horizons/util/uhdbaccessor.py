@@ -192,36 +192,36 @@ class UhDbAccessor(DbReader):
 	#
 	#
 
-	def get_settler_name(self, level):
+	def get_settler_name(self, tier):
 		"""Returns the name for a specific tier
-		@param level: int tier
+		@param tier: int
 		@return: string tier name"""
-		sql = "SELECT name FROM tier WHERE level = ?"
-		return self.cached_query(sql, level)[0][0]
+		sql = "SELECT name FROM tier WHERE tier = ?"
+		return self.cached_query(sql, tier)[0][0]
 
-	def get_settler_house_name(self, level):
+	def get_settler_house_name(self, tier):
 		"""Returns name of the residential building for a specific tier
-		@param level: int tier
+		@param tier: int
 		@return: string settler's housing name"""
-		sql = "SELECT residential_name FROM tier WHERE level = ?"
-		return self.cached_query(sql, level)[0][0]
+		sql = "SELECT residential_name FROM tier WHERE tier = ?"
+		return self.cached_query(sql, tier)[0][0]
 
-	def get_settler_tax_income(self, level):
-		sql = "SELECT tax_income FROM tier WHERE level=?"
-		return self.cached_query(sql, level)[0][0]
+	def get_settler_tax_income(self, tier):
+		sql = "SELECT tax_income FROM tier WHERE tier=?"
+		return self.cached_query(sql, tier)[0][0]
 
-	def get_settler_inhabitants_max(self, level):
-		sql = "SELECT inhabitants_max FROM tier WHERE level=?"
-		return self.cached_query(sql , level)[0][0]
+	def get_settler_inhabitants_max(self, tier):
+		sql = "SELECT inhabitants_max FROM tier WHERE tier=?"
+		return self.cached_query(sql , tier)[0][0]
 	
-	def get_settler_inhabitants_min(self, level):
+	def get_settler_inhabitants_min(self, tier):
 		"""The minimum inhabitants before a setter levels down
-		is the maximum inhabitants of the previous level."""
-		if level == 0:
+		is the maximum inhabitants of the previous tier."""
+		if tier == 0:
 			return 0
 		else: 
-			sql = "SELECT inhabitants_max FROM tier WHERE level=?"
-			return self.cached_query(sql, level-1)[0][0]
+			sql = "SELECT inhabitants_max FROM tier WHERE tier=?"
+			return self.cached_query(sql, tier-1)[0][0]
 
 	def get_settler_happiness_increase_requirement(self):
 		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_increase_requirement'"

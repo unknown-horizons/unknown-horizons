@@ -187,11 +187,11 @@ class MainSquareTierTab(MainSquareTab):
 		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
 		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
 		self.widget.child_finder('sad_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, max_happiness=sad))
+			self.settlement.get_residentials_of_tier_for_happiness(self.__class__.LEVEL, max_happiness=sad))
 		self.widget.child_finder('avg_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, sad, happy))
+			self.settlement.get_residentials_of_tier_for_happiness(self.__class__.LEVEL, sad, happy))
 		self.widget.child_finder('happy_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, happy))
+			self.settlement.get_residentials_of_tier_for_happiness(self.__class__.LEVEL, happy))
 
 		# refresh the summary
 		self.widget.child_finder('house_count').text = unicode(houses)

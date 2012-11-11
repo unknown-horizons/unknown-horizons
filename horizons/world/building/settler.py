@@ -61,11 +61,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	default_level_on_build = 0
 
 	def __init__(self, x, y, owner, instance=None, **kwargs):
-		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first level
+		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first tier
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
 	def __init(self, loading=False, last_tax_payed=0):
-		self.level_max = TIER.CURRENT_MAX # for now
+		self.tier_max = TIER.CURRENT_MAX # for now
 		self._update_level_data(loading=loading, initial=True)
 		self.last_tax_payed = last_tax_payed
 		UpgradePermissionsChanged.subscribe(self._on_change_upgrade_permissions, sender=self.settlement)
@@ -271,13 +271,13 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		"""Checks whether we should level up or down."""
 		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
 		   self.inhabitants >= self.inhabitants_min:
-			if self.level >= self.level_max:
+			if self.level >= self.tier_max:
 				# max level reached already, can't allow an update
-				if self.owner.max_tier_notification < self.level_max:
+				if self.owner.max_tier_notification < self.tier_max:
 					if self.owner.is_local_player:
 						self.session.ingame_gui.message_widget.add(
 							point=self.position.center, string_id='MAX_TIER_REACHED')
-					self.owner.max_tier_notification = self.level_max
+					self.owner.max_tier_notification = self.tier_max
 				return
 			if self._upgrade_production:
 				return # already waiting for res
@@ -404,23 +404,23 @@ class SettlerUpgradeData(object):
 
 	def get_production_lines(self):
 		d = {}
-		for level, prod_line_id in self.__class__.production_line_ids.iteritems():
-			d[prod_line_id] = self.get_production_line_data(level)
+		for tier, prod_line_id in self.__class__.production_line_ids.iteritems():
+			d[prod_line_id] = self.get_production_line_data(tier)
 		return d
 
-	def get_production_line_data(self, level):
-		"""Returns production line data for the upgrade to this level"""
+	def get_production_line_data(self, tier):
+		"""Returns production line data for the upgrade to this tier"""
 		prod_line_data = {
 		  'time': 1,
 		  'changes_animation' : 0,
 		  'enabled_by_default' : False,
 		  'save_statistics' : False,
-		  'consumes' : self.upgrade_material_data[level]
+		  'consumes' : self.upgrade_material_data[tier]
 		}
 		return prod_line_data
 
 	@classmethod
-	def get_production_line_id(cls, level):
-		"""Returns production line id for the upgrade to this level"""
-		return cls.production_line_ids[level]
+	def get_production_line_id(cls, tier):
+		"""Returns production line id for the upgrade to this tier"""
+		return cls.production_line_ids[tier]
 

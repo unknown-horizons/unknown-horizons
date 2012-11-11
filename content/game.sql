@@ -285,7 +285,7 @@ INSERT INTO "weapon" VALUES(40, 'ranged', 7, 5, 15, 3, 4, 2, 1, 'content/gfx/mis
 INSERT INTO "weapon" VALUES(41, 'melee',  3, 1,  1, 3, 2, 1, 0, '');
 
 CREATE TABLE "tier" (
-	"level" INT NOT NULL,
+	"tier" INT NOT NULL,
 	"name" TEXT NOT NULL,
 	"tax_income" INT NOT NULL,
 	"inhabitants_max" INT NOT NULL
