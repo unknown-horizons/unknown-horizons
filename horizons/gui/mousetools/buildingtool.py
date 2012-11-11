@@ -206,7 +206,6 @@ class BuildingTool(NavigationTool):
 		self._build_logic = None
 		self.buildings = None
 		if self.__class__.gui is not None:
-			self.session.view.remove_change_listener(self.draw_gui)
 			self.__class__.gui.hide()
 		ExtScheduler().rem_all_classinst_calls(self)
 		SettlementInventoryUpdated.discard(self.update_preview)
@@ -241,7 +240,6 @@ class BuildingTool(NavigationTool):
 		head_box.position = (new_x, head_box.position[1])
 		head_box.adaptLayout()
 		self.draw_gui()
-		self.session.view.add_change_listener(self.draw_gui)
 
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
