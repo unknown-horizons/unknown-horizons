@@ -20,7 +20,7 @@
 # ###################################################
 
 import operator
-import horizons
+import horizons.globals
 
 from fife import fife
 

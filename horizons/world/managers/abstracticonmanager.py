@@ -35,7 +35,7 @@ class AbstractIconManager(object):
 	def end(self):
 		self.renderer = None
 
-	def pre_render_icon(self, instance, group):
+	def get_icon_position(self, instance, group):
 		""" This has to be called before __render_icon.
 		It calculates the position of the icon
 		"""
@@ -50,6 +50,12 @@ class AbstractIconManager(object):
 		                                  pos.origin.y + pos.height / 4.0)
 		loc.setExactLayerCoordinates(coord)
 		return loc
+
+	def render_icon(self, instance, group, icon):
+		""" Renders the icon
+		"""
+		loc = self.get_icon_position(instance, group)
+		icon.render(self.renderer, group, loc)
 
 	def remove_icon(self, group):
 		"""Removes the icon"""
