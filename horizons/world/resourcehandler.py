@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from copy import copy
+
 from horizons.gui.tabs import ProductionOverviewTab, InventoryTab
 from horizons.constants import PRODUCTION
 from horizons.component.storagecomponent import StorageComponent
@@ -37,7 +39,7 @@ class ResourceTransferHandler(object):
 						 return value of inventory.alter, since here are 2 storages involved)
 		"""
 		try:
-			transfer_to = WorldObject.get_object_by_id( int(transfer_to) )
+			transfer_to = WorldObject.get_object_by_id(int(transfer_to))
 		except TypeError: # transfer_to not an int, assume already obj
 			pass
 		# take res from self
@@ -97,7 +99,7 @@ class ResourceHandler(ResourceTransferHandler):
 		needed_res = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
-			productions = prod_comp._productions
+			productions = copy(prod_comp._productions)
 			if include_inactive:
 				productions.update(prod_comp._inactive_productions)
 			for production in productions.itervalues():
@@ -133,7 +135,7 @@ class ResourceHandler(ResourceTransferHandler):
 		# use set types since they support the proper operation
 		currently_consumed = frozenset(self.get_currently_consumed_resources())
 		consumed = frozenset(self.get_consumed_resources())
-		return list( consumed - currently_consumed )
+		return list(consumed - currently_consumed)
 
 	def get_needed_resources(self):
 		"""Returns list of resources, where free space in the inventory exists."""
@@ -178,11 +180,11 @@ class ResourceHandler(ResourceTransferHandler):
 		if not res in self.provided_resources:
 			return 0 # we don't provide this, and give nothing away because we need it ourselves.
 		else:
-			amount_from_collectors = sum(( entry.amount
-			                               for c in self.__incoming_collectors
-			                               for entry in c.job.reslist
-			                               if c is not collector and
-			                               entry.res == res))
+			amount_from_collectors = sum((entry.amount
+			                              for c in self.__incoming_collectors
+			                              for entry in c.job.reslist
+			                              if c is not collector and
+			                              entry.res == res))
 			amount = self.get_component(StorageComponent).inventory[res] - amount_from_collectors
 			# the user can take away res, even if a collector registered for them
 			# if this happens, a negative number would be returned. Use 0 instead.
@@ -215,4 +217,3 @@ class StorageResourceHandler(ResourceHandler):
 		"""Storages provide every res.
 		Do not alter the returned list; if you need to do so, then copy it."""
 		return self.session.db.get_res(only_tradeable=True)
-

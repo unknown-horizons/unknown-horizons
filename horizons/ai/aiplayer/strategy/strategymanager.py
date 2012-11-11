@@ -230,6 +230,7 @@ class StrategyManager(object):
 
 		# remove condition lock (if condition was lockable) after mission ends
 		self.unlock_condition(mission)
+		mission.end()
 
 	def start_mission(self, mission):
 		self.log.info("Player: %s|StrategyManager|Mission %s started", self.owner.worldid, mission)
@@ -335,6 +336,9 @@ class StrategyManager(object):
 	def tick(self):
 		self.handle_strategy()
 
+	def end(self):
+		for mission in self.missions:
+			mission.end()
 
 class PirateStrategyManager(StrategyManager):
 

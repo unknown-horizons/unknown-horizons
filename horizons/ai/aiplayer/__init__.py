@@ -484,6 +484,8 @@ class AIPlayer(GenericAI):
 		self.goals = None
 		self.special_domestic_trade_manager = None
 		self.international_trade_manager = None
+		self.strategy_manager.end()
+		self.strategy_manager = None
 		super(AIPlayer, self).end()
 
 decorators.bind_all(AIPlayer)

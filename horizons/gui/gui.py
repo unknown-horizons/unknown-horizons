@@ -40,6 +40,7 @@ from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions
+from horizons.util.savegameupgrader import SavegameUpgrader
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -717,7 +718,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				                         version=savegame_info['savegamerev'])
 				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
 					#xgettext:python-format
-					details_label.text += u" " + _("(potentially incompatible)")
+					if SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
+						details_label.text += u" " + _("(upgrade possible)")
+					else:
+						details_label.text += u" " + _("(probably incompatible)")
 			except KeyError:
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
