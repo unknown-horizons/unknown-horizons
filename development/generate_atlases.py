@@ -154,7 +154,7 @@ class ImageSetManager(object):
 						book_entry = book.location[path]
 
 						row = []
-						row.append(self._initial_data[set_id][action_id][rotation][path])
+						row.extend(self._initial_data[set_id][action_id][rotation][path])
 						row.append(book.id)
 						row.append(book_entry.x)
 						row.append(book_entry.y)

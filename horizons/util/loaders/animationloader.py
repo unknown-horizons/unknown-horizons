@@ -26,11 +26,8 @@ import horizons.globals
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
-class SQLiteAnimationLoader(object):
-	"""Loads animations from a SQLite database.
-	"""
-	def __init__(self):
-		pass
+
+class AnimationLoader(object):
 
 	def loadResource(self, location):
 		"""
@@ -49,36 +46,30 @@ class SQLiteAnimationLoader(object):
 		actionset, action, rotation = id.split('+')
 		commands = zip(commands[0::2], commands[1::2])
 
-		# Set the correct loader based on the actionset
-		loader = None
-		if actionset.startswith("ts_"):
-			loader = TileSetLoader
-		elif actionset.startswith("as_"):
-			loader = ActionSetLoader
-		else:
-			assert False, "Invalid set being loaded: " + actionset
-
 		ani = fife.Animation.createAnimation()
+		loader = self._get_loader(actionset)
+
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
-			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
-			img = horizons.globals.fife.imagemanager.load(file)
+			entry = loader.get_sets()[actionset][action][int(rotation)][file]
+			img = self.get_image(file, actionset, action, rotation)
+
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')
 					if x.startswith('left'):
-						x = int(x[4:]) + int(img.getWidth() // 2)
+						x = int(x[4:]) + int(img.getWidth() / 2)
 					elif x.startswith('right'):
-						x = int(x[5:]) - int(img.getWidth() // 2)
+						x = int(x[5:]) - int(img.getWidth() / 2)
 					elif x.startswith(('center', 'middle')):
 						x = int(x[6:])
 					else:
 						x = int(x)
 
 					if y.startswith('top'):
-						y = int(y[3:]) + int(img.getHeight() // 2)
+						y = int(y[3:]) + int(img.getHeight() / 2)
 					elif y.startswith('bottom'):
-						y = int(y[6:]) - int(img.getHeight() // 2)
+						y = int(y[6:]) - int(img.getHeight() / 2)
 					elif y.startswith(('center', 'middle')):
 						y = int(y[6:])
 					else:
@@ -87,26 +78,66 @@ class SQLiteAnimationLoader(object):
 					img.setXShift(x)
 					img.setYShift(y)
 
+			frame_end = entry[0]
 			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
 			frame_start = float(frame_end)
+
 		ani.setActionFrame(0)
 		return ani
 
 	def _get_loader(self, actionset):
-			if actionset.startswith("ts_"):
-				loader = TileSetLoader
-			elif actionset.startswith("as_"):
-				loader = ActionSetLoader
-			else:
-				assert False, "Invalid set being loaded: " + actionset
-			return loader
+		if actionset.startswith("ts_"):
+			loader = TileSetLoader
+		elif actionset.startswith("as_"):
+			loader = ActionSetLoader
+		else:
+			assert False, "Invalid set being loaded: " + actionset
+		return loader
 
 	def load_image(self, file, actionset, action, rotation):
-		loader = self._get_loader(actionset)
-		entry = loader.get_sets()[actionset][action][int(rotation)][file]
-
 		if horizons.globals.fife.imagemanager.exists(file):
 			img = horizons.globals.fife.imagemanager.get(file)
 		else:
-			img = horizons.globals.fife.imagemanager.create(file)
+			img = self.create_image(file, actionset, action, rotation)
+
 		return img
+
+
+class SQLiteAtlasAnimationLoader(AnimationLoader):
+	"""Loads atlases and appropriate action sets from a JSON file and a SQLite database."""
+
+	def __init__(self):
+		self.atlaslib = []
+
+		self.atlases = horizons.globals.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
+
+		for (atlas,) in self.atlases:
+			# cast explicit to str because the imagemanager is not able to handle unicode strings
+			img = horizons.globals.fife.imagemanager.create(str(atlas))
+			self.atlaslib.append(img)
+	
+	def get_image(self, file, actionset, action, rotation):
+		return self.create_image(file, actionset, action, rotation)
+
+	def create_image(self, file, actionset, action, rotation):
+		loader = self._get_loader(actionset)
+		entry = loader.get_sets()[actionset][action][int(rotation)][file]
+		# we don't need to load images at this point to query for its parameters
+		# such as width and height because we can get those from json file
+		atlas, xpos, ypos, width, height = entry[1:]
+
+		img = horizons.globals.fife.imagemanager.create(file)
+		region = fife.Rect(xpos, ypos, width, height)
+		img.useSharedImage(self.atlaslib[atlas], region)
+
+		return img
+
+
+class SQLiteAnimationLoader(AnimationLoader):
+	"""Loads animations from a SQLite database."""
+
+	def get_image(self, file, actionset, action, rotation):
+		return horizons.globals.fife.imagemanager.load(file)
+
+	def create_image(self, file, actionset, action, rotation):
+		return horizons.globals.fife.imagemanager.create(file)

@@ -31,8 +31,7 @@ from fife.extensions import pychan
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 from fife.extensions.fife_settings import FIFE_MODULE
 
-from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
-from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
+from horizons.util.loaders.animationloader import SQLiteAtlasAnimationLoader, SQLiteAnimationLoader
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
 from horizons.engine.sound import Sound
@@ -187,7 +186,7 @@ class Fife(ApplicationBase):
 		# this method should not be called from init to catch any bugs caused by the loader changing after it.
 		self.use_atlases = use_atlases
 		if self.use_atlases:
-			self.animationloader = SQLiteAtlasLoader()
+			self.animationloader = SQLiteAtlasAnimationLoader()
 		else:
 			self.animationloader = SQLiteAnimationLoader()
 
