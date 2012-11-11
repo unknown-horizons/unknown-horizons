@@ -31,25 +31,25 @@ from horizons.entities import Entities
 
 class FoundSettlement(ShipMission):
 	"""
-	Given a ship with the required resources and a warehouse_location the ship is taken near
+	Given a ship with the required resources and a warehouse builder object the ship is taken near
 	the location and a warehouse is built.
 	"""
 
 	missionStates = Enum('created', 'moving')
 
-	def __init__(self, success_callback, failure_callback, land_manager, ship, warehouse_location):
+	def __init__(self, success_callback, failure_callback, land_manager, ship, builder):
 		super(FoundSettlement, self).__init__(success_callback, failure_callback, ship)
 		self.land_manager = land_manager
-		self.warehouse_location = warehouse_location
+		self.builder = builder
 		self.warehouse = None
 		self.state = self.missionStates.created
 
 	def save(self, db):
 		super(FoundSettlement, self).save(db)
 		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, warehouse_builder, state) VALUES(?, ?, ?, ?, ?)",
-			self.worldid, self.land_manager.worldid, self.ship.worldid, self.warehouse_location.worldid, self.state.index)
-		assert isinstance(self.warehouse_location, Builder)
-		self.warehouse_location.save(db)
+			self.worldid, self.land_manager.worldid, self.ship.worldid, self.builder.worldid, self.state.index)
+		assert isinstance(self.builder, Builder)
+		self.builder.save(db)
 
 	@classmethod
 	def load(cls, db, worldid, success_callback, failure_callback):
@@ -60,7 +60,7 @@ class FoundSettlement(ShipMission):
 	def _load(self, db, worldid, success_callback, failure_callback):
 		db_result = db("SELECT land_manager, ship, warehouse_builder, state FROM ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
 		self.land_manager = WorldObject.get_object_by_id(db_result[0])
-		self.warehouse_location = Builder.load(db, db_result[2], self.land_manager)
+		self.builder = Builder.load(db, db_result[2], self.land_manager)
 		self.warehouse = None
 		self.state = self.missionStates[db_result[3]]
 		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
@@ -76,23 +76,23 @@ class FoundSettlement(ShipMission):
 		self._move_to_destination_area()
 
 	def _move_to_destination_area(self):
-		if self.warehouse_location is None:
+		if self.builder is None:
 			self.report_failure('No possible warehouse location')
 			return
 
-		self._move_to_warehouse_area(self.warehouse_location.position, Callback(self._reached_destination_area),
+		self._move_to_warehouse_area(self.builder.position, Callback(self._reached_destination_area),
 			Callback(self._move_to_destination_area), 'Move not possible')
 
 	def _reached_destination_area(self):
 		self.log.info('%s reached BO area', self)
 
-		self.warehouse = self.warehouse_location.execute()
+		self.warehouse = self.builder.execute(self.land_manager, ship=self.ship)
 		if not self.warehouse:
 			self.report_failure('Unable to build the warehouse')
 			return
 
-		island = self.warehouse_location.land_manager.island
-		self.land_manager.settlement = island.get_settlement(self.warehouse_location.point)
+		island = self.land_manager.island
+		self.land_manager.settlement = island.get_settlement(self.builder.point)
 		self.log.info('%s built the warehouse', self)
 
 		self._unload_all_resources(self.land_manager.settlement)
@@ -146,7 +146,7 @@ class FoundSettlement(ShipMission):
 
 	@classmethod
 	def create(cls, ship, land_manager, success_callback, failure_callback):
-		warehouse_location = cls.find_warehouse_location(ship, land_manager)
-		return FoundSettlement(success_callback, failure_callback, land_manager, ship, warehouse_location)
+		builder = cls.find_warehouse_location(ship, land_manager)
+		return FoundSettlement(success_callback, failure_callback, land_manager, ship, builder)
 
 decorators.bind_all(FoundSettlement)

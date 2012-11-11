@@ -114,7 +114,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 				else:
 					builder = Builder.create(BUILDINGS.TREE, self.area_builder.land_manager, Point(coords[0], coords[1]))
 					if builder:
-						assert builder.execute()
+						assert builder.execute(self.area_builder.land_manager)
 						ok = True
 				if ok:
 					forest_coords_list.append(coords)

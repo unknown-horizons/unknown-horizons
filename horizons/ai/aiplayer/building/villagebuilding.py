@@ -76,12 +76,12 @@ class AbstractVillageBuilding(AbstractBuilding):
 					continue
 
 			builder = village_builder.make_builder(BUILDING_PURPOSE.get_building(purpose), coords[0], coords[1], False)
-			if not builder.have_resources():
+			if not builder.have_resources(settlement_manager.land_manager):
 				return (BUILD_RESULT.NEED_RESOURCES, None)
 			if not self.in_settlement(settlement_manager, builder.position):
 				return (BUILD_RESULT.OUT_OF_SETTLEMENT, builder.position)
 
-			building = builder.execute()
+			building = builder.execute(settlement_manager.land_manager)
 			if not building:
 				return (BUILD_RESULT.UNKNOWN_ERROR, None)
 			if self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE and not village_builder.roads_built:

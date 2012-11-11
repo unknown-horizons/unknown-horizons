@@ -89,7 +89,7 @@ class AbstractField(AbstractBuilding):
 		assert production_builder.unused_fields[purpose], 'expected field spot to be available'
 		coords = production_builder.unused_fields[purpose][0]
 		builder = Builder.create(self.id, settlement_manager.land_manager, Point(coords[0], coords[1]))
-		building = builder.execute()
+		building = builder.execute(settlement_manager.land_manager)
 		if not building:
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		production_builder.unused_fields[purpose].popleft()

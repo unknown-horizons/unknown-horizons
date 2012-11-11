@@ -153,14 +153,14 @@ class BuildingEvaluator(WorldObject):
 	def have_resources(self):
 		"""Return None if the builder is unreachable by road, False if there are not enough resources, and True otherwise."""
 		# check without road first because the road is unlikely to be the problem and pathfinding isn't cheap
-		if not self.builder.have_resources():
+		if not self.builder.have_resources(self.area_builder.land_manager):
 			return False
 		if not self.need_collector_connection:
 			return True # skip the road cost test for buildings that don't need one
 		road_cost = self.area_builder.get_road_connection_cost(self.builder)
 		if road_cost is None:
 			return None
-		return self.builder.have_resources(road_cost)
+		return self.builder.have_resources(self.area_builder.land_manager, extra_resources=road_cost)
 
 	def _register_builder_position(self):
 		self.area_builder.register_change_list(list(self.builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
@@ -177,7 +177,7 @@ class BuildingEvaluator(WorldObject):
 		if self.need_collector_connection:
 			assert self.area_builder.build_road_connection(self.builder)
 
-		building = self.builder.execute()
+		building = self.builder.execute(self.area_builder.land_manager)
 		if not building:
 			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)

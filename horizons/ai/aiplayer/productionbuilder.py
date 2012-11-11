@@ -138,7 +138,7 @@ class ProductionBuilder(AreaBuilder):
 			return BUILD_RESULT.IMPOSSIBLE
 
 		builder = max(options)[1]
-		if not builder.execute():
+		if not builder.execute(self.land_manager):
 			return BUILD_RESULT.UNKNOWN_ERROR
 		self.register_change_list(list(builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
 		self.register_change_list([builder.position.origin.to_tuple()], purpose, None)

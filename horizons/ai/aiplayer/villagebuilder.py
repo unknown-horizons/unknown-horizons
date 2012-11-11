@@ -687,7 +687,7 @@ class VillageBuilder(AreaBuilder):
 			object = self.island.ground_map[coords].object
 			if object is not None and object.id == BUILDINGS.TRAIL:
 				continue
-			if Builder.create(BUILDINGS.TRAIL, self.land_manager, Point(coords[0], coords[1])).execute() is None:
+			if Builder.create(BUILDINGS.TRAIL, self.land_manager, Point(coords[0], coords[1])).execute(self.land_manager) is None:
 				all_built = False
 		self.roads_built = all_built
 
@@ -718,9 +718,9 @@ class VillageBuilder(AreaBuilder):
 
 		if ok and not owned_by_other:
 			builder = self.make_builder(BUILDINGS.RESIDENTIAL, x, y, False)
-			if not builder.have_resources():
+			if not builder.have_resources(self.land_manager):
 				return BUILD_RESULT.NEED_RESOURCES
-			if not builder.execute():
+			if not builder.execute(self.land_manager):
 				self.log.debug('%s unable to build a tent at (%d, %d)', self, x, y)
 				return BUILD_RESULT.UNKNOWN_ERROR
 

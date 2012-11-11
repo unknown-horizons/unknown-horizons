@@ -102,7 +102,8 @@ class Builder(WorldObject):
 		else:
 			return self.position
 
-	def execute(self):
+	# the unused parameters are there to make it easier to convert to BasicBuilder usage
+	def execute(self, land_manager, ship=None):
 		"""Build the building."""
 		building_class = Entities.buildings[self.building_id]
 		building_level = building_class.get_initial_level(self.land_manager.owner)
@@ -115,7 +116,8 @@ class Builder(WorldObject):
 		#self.log.debug('%s.execute(): %s', self.__class__.__name__, result)
 		return result
 
-	def have_resources(self, extra_resources=None):
+	# the unused parameters are there to make it easier to convert to BasicBuilder usage
+	def have_resources(self, land_manager, ship=None, extra_resources=None):
 		"""Return a boolean showing whether we have the resources to build the building right now."""
 		# the copy has to be made because Build.check_resources modifies it
 		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}

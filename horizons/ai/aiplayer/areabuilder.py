@@ -185,7 +185,7 @@ class AreaBuilder(WorldObject):
 				building = self.island.ground_map[(x, y)].object
 				if building is not None and building.id == BUILDINGS.TRAIL:
 					continue
-				assert Builder.create(BUILDINGS.TRAIL, self.land_manager, Point(x, y)).execute()
+				assert Builder.create(BUILDINGS.TRAIL, self.land_manager, Point(x, y)).execute(self.land_manager)
 		return path is not None
 
 	def build_road_connection(self, builder):
@@ -225,7 +225,7 @@ class AreaBuilder(WorldObject):
 		If it is impossible to build it then the return value could either be None
 		or a Builder object that evaluates to False.
 		"""
-		return Builder.create(building_id, self.land_manager, Point(x, y), orientation = orientation)
+		return Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
 
 	def have_resources(self, building_id):
 		"""Return a boolean showing whether we currently have the resources to build a building of the given type."""
@@ -277,7 +277,7 @@ class AreaBuilder(WorldObject):
 			options.append((value, builder))
 
 		for _, builder in sorted(options):
-			building = builder.execute()
+			building = builder.execute(self.land_manager)
 			if not building:
 				return BUILD_RESULT.UNKNOWN_ERROR
 			for x, y in builder.position.tuple_iter():

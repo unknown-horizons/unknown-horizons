@@ -234,7 +234,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 	def execute(self):
 		# cheap resource check first, then pre-reserve the tiles and check again
-		if not self.builder.have_resources():
+		if not self.builder.have_resources(self.area_builder.land_manager):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
 		changes = defaultdict(lambda: [])
@@ -259,7 +259,7 @@ class FarmEvaluator(BuildingEvaluator):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 		assert self.area_builder.build_road_connection(self.builder)
 
-		building = self.builder.execute()
+		building = self.builder.execute(self.area_builder.land_manager)
 		if not building:
 			# TODO: make sure the plan and the reality stay in a reasonable state
 			# the current code makes the plan look as if everything was built but in reality
@@ -324,10 +324,10 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 		return ModifiedFieldEvaluator(area_builder, builder, value, old_field_purpose)
 
 	def execute(self):
-		if not self.builder.have_resources():
+		if not self.builder.have_resources(self.area_builder.land_manager):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
-		building = self.builder.execute()
+		building = self.builder.execute(self.area_builder.land_manager)
 		if not building:
 			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
