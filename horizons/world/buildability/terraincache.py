@@ -30,8 +30,6 @@ class TerrainRequirement:
 class TerrainBuildabilityCache(object):
 	sizes = [(1, 1), (2, 2), (2, 3), (2, 4), (3, 3), (4, 4), (6, 6)]
 	sea_radius = 3
-	_deposits = [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN]
-	_mines = [BUILDINGS.CLAY_PIT, BUILDINGS.IRON_MINE]
 
 	def __init__(self, island):
 		super(TerrainBuildabilityCache, self).__init__()
@@ -47,11 +45,6 @@ class TerrainBuildabilityCache(object):
 		coast = set()
 
 		for coords, tile in self._island.ground_map.iteritems():
-			if tile.object:
-				# exclude tiles with resource deposits and mines
-				if tile.object.id in self._deposits or tile.object.id in self._mines:
-					continue
-
 			if 'constructible' in tile.classes:
 				land.add(coords)
 			elif 'coastline' in tile.classes:
