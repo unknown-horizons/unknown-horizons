@@ -721,7 +721,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					if SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
 						details_label.text += u" " + _("(upgrade possible)")
 					else:
-						details_label.text += u" " + _("(potentially incompatible)")
+						details_label.text += u" " + _("(probably incompatible)")
 			except KeyError:
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
