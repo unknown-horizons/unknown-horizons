@@ -88,6 +88,11 @@ class World(BuildingOwner, WorldObject):
 		# destructor-like thing.
 		super(World, self).end()
 
+		# let the AI players know that the end is near to speed up destruction
+		for player in self.players:
+			if hasattr(player, 'early_end'):
+				player.early_end()
+
 		for ship in self.ships[:]:
 			ship.remove()
 		for island in self.islands:
