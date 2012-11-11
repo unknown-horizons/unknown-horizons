@@ -54,3 +54,12 @@ class AbstractIconManager(object):
 	def remove_icon(self, group):
 		"""Removes the icon"""
 		self.renderer.removeAll(group)
+
+	def get_renderer_group_name(self, instance, **kwargs):
+		"""Generates a unique group name for the renderer usage.
+		These names MUST be unique!!"""
+		group_name = self.__class__.__name__.replace('Manager', '') + "_" + str(id(instance))
+		for arg in kwargs.values():
+			group_name += "_" + str(arg)
+
+		return group_name
