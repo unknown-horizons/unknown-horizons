@@ -369,6 +369,7 @@ class Session(LivingObject):
 		"""Set game speed to ticks ticks per second"""
 		old = self.timer.ticks_per_second
 		self.timer.ticks_per_second = ticks
+		self.production_finished_icon_manager.speed_changed(ticks)
 		self.view.map.setTimeMultiplier(float(ticks) / float(GAME_SPEED.TICKS_PER_SECOND))
 		if old == 0 and self.timer.tick_next_time is None: # back from paused state
 			if self.paused_time_missing is None:
