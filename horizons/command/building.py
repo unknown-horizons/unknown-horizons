@@ -49,7 +49,7 @@ class Build(Command):
 		if hasattr(building, 'id'):
 			self.building_class = building.id
 		else:
-			assert type(building) == int
+			assert isinstance(building, int)
 			self.building_class = building
 		self.ship = None if ship is None else ship.worldid
 		self.x = int(x)
