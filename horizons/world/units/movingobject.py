@@ -217,6 +217,9 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self._exact_model_coords2.set(self._next_target.x, self._next_target.y, 0)
 		self._fife_location2.setExactLayerCoordinates(self._exact_model_coords2)
 		self._route = fife.Route(self._fife_location1, self._fife_location2)
+		# TODO/HACK the *5 provides slightly less flickery behaviour of the moving
+		# objects. This should be fixed properly by using the fife pathfinder for
+		# the entire route and task
 		self._route.setPath(fife.LocationList([self._fife_location2]*5))
 		self._route.setRouteStatus(3)  #fife.RouteStatus.ROUTE_SOLVED)
 
