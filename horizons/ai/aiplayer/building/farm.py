@@ -271,12 +271,6 @@ class FarmEvaluator(BuildingEvaluator):
 
 		for coords, (purpose, _) in self.farm_plan.iteritems():
 			if purpose == self.field_purpose:
-				for dx in xrange(3):
-					for dy in xrange(3):
-						if dx == 0 and dy == 0:
-							continue
-						coords2 = (coords[0] + dx, coords[1] + dy)
-						assert self.farm_plan[coords2][0] == BUILDING_PURPOSE.RESERVED
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		self._register_changes(changes, True)
 		return (BUILD_RESULT.OK, building)
