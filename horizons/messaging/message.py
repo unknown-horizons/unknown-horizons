@@ -154,6 +154,9 @@ class WorldObjectDeleted(Message):
 	"""
 	arguments = ('worldobject', 'worldid', )
 
+class ShipDestroyed(Message):
+	"""Sent just when a ship is destroyed."""
+	pass
 
 class NewPlayerSettlementHovered(Message):
 	"""Sent when the mouse hovers over a different settlement than before,

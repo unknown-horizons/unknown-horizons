@@ -33,6 +33,7 @@ from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import ShipNameComponent, NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
+from horizons.messaging.message import ShipDestroyed
 from horizons.world.traderoute import TradeRoute
 
 class Ship(Unit):
@@ -87,6 +88,7 @@ class Ship(Unit):
 			if self._next_target.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
+		ShipDestroyed.broadcast(self)
 		super(Ship, self).remove()
 
 	def create_route(self):

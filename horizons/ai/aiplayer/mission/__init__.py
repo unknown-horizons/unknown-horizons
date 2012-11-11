@@ -66,6 +66,9 @@ class Mission(WorldObject):
 		return '%s %s(%d)' % (self.owner if hasattr(self, 'owner') else 'unknown player',
 		                      self.__class__.__name__, self.worldid)
 
+	def end(self):
+		pass
+
 class ShipMission(Mission):
 	def __init__(self, success_callback, failure_callback, ship):
 		super(ShipMission, self).__init__(success_callback, failure_callback, ship.owner)
