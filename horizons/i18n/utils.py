@@ -19,14 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import os
+from glob import glob
+
 from horizons.constants import FONTDEFS, LANGUAGENAMES
 
+
 LANGCACHE = {}
+
 def find_available_languages(domain='unknown-horizons', update=False):
 	"""Returns a dict( lang_key -> locale_dir )"""
 	global LANGCACHE
 	if len(LANGCACHE) and not update:
 		return LANGCACHE
+
 	alternatives = ('content/lang',
 	                'build/mo',
 	                '/usr/share/locale',
@@ -34,10 +40,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 	                '/usr/local/share/locale',
 	                '/usr/local/share/games/locale')
 
-	import os
-	from glob import glob
-
-	languages = {}
+	LANGCACHE = languages = {}
 
 	for i in alternatives:
 		for j in glob('%s/*/*/%s.mo' % (i, domain)):
@@ -49,7 +52,6 @@ def find_available_languages(domain='unknown-horizons', update=False):
 	# there's always a default, which is english
 	languages[LANGUAGENAMES['']] = ''
 	languages['en'] = ''
-	LANGCACHE = languages
 
 	return languages
 
