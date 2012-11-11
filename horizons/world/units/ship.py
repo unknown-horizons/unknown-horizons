@@ -33,7 +33,7 @@ from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import ShipNameComponent, NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
-from horizons.messaging.message import ShipDestroyed
+from horizons.messaging import ShipDestroyed
 from horizons.world.traderoute import TradeRoute
 
 class Ship(Unit):
