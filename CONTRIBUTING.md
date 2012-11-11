@@ -4,6 +4,21 @@ Contribute to Unknown Horizons!
 We have lots of opportunities besides hacking code:
 Check our page on how to [Get Involved] (http://www.unknown-horizons.org/get-involved/)!
 
+File a bug report
+---------------------
+* Browse the [existing tickets] (https://github.com/unknown-horizons/unknown-horizons/issues):
+  Maybe someone reported the bug already.
+* If there is a ticket, add a comment with additional information if you think it helps us spot the problem.
+* If there is no ticket covering your problem, please create one following some simple rules:
+    1. Short and meaningful headline. [Example] (https://github.com/unknown-horizons/unknown-horizons/issues/1627)
+    2. Describe what is wrong or missing. How did you realize that?
+       Include a **step by step** description so we can try to reproduce the problem.
+       If something does not behave like you expected, please also tell us what you expected to happen.
+       [Example] (https://github.com/unknown-horizons/unknown-horizons/issues/1845)
+    3. **Logs**, **Savegames**, **screenshots** and/or **videos** help a lot for understanding what is going on.
+       Use the [awesome uploader] (http://up.unknown-horizons.org/) (login via github account)
+       and link the additional files in your ticket.
+
 Checklist for contributing code
 -------------------------------
 * Our repository hoster, bug tracker and otherwise awesome development platform is GitHub.
