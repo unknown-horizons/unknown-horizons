@@ -25,6 +25,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
+from copy import copy
 
 
 class ResourceTransferHandler(object):
@@ -97,7 +98,7 @@ class ResourceHandler(ResourceTransferHandler):
 		needed_res = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
-			productions = prod_comp._productions
+			productions = copy(prod_comp._productions)
 			if include_inactive:
 				productions.update(prod_comp._inactive_productions)
 			for production in productions.itervalues():
