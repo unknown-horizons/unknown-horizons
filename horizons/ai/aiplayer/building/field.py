@@ -93,7 +93,7 @@ class AbstractField(AbstractBuilding):
 		if not building:
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 		production_builder.unused_fields[purpose].popleft()
-		production_builder.register_change(coords[0], coords[1], purpose, None)
+		production_builder.register_change_list([coords], purpose, None)
 		return (BUILD_RESULT.OK, building)
 
 	@classmethod

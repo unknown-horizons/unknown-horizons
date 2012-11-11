@@ -39,6 +39,7 @@ from horizons.util.shapes import Point, Rect
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
+from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
 from horizons.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
@@ -63,6 +64,7 @@ class ProductionBuilder(AreaBuilder):
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
 		self._init_buildability_cache()
+		self._init_simple_collector_area_cache()
 		self.register_change_list(list(settlement_manager.settlement.warehouse.position.tuple_iter()),
 		                          BUILDING_PURPOSE.WAREHOUSE, None)
 		self._refresh_unused_fields()
@@ -86,6 +88,9 @@ class ProductionBuilder(AreaBuilder):
 			free_coords_set.add(coords)
 		self.buildability_cache.add_area(free_coords_set)
 
+	def _init_simple_collector_area_cache(self):
+		self.simple_collector_area_cache = SimpleCollectorAreaCache(self.island.terrain_cache)
+
 	def save(self, db):
 		super(ProductionBuilder, self).save(db)
 		translated_last_collector_improvement_storage = self.last_collector_improvement_storage - Scheduler().cur_tick # pre-translate for the loading process
@@ -108,6 +113,7 @@ class ProductionBuilder(AreaBuilder):
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
 		self._init_buildability_cache()
+		self._init_simple_collector_area_cache()
 		self._refresh_unused_fields()
 
 	def have_deposit(self, resource_id):
@@ -334,8 +340,13 @@ class ProductionBuilder(AreaBuilder):
 					return None
 
 		# make sure the building is close enough to a collector if it produces any resources that have to be collected
+		size = (builder.position.right - builder.position.left + 1, builder.position.bottom - builder.position.top + 1)
+		coords = builder.position.origin.to_tuple()
 		if needs_collector and not any(True for building in self.collector_buildings if building.position.distance(builder.position) <= building.radius):
+			assert coords not in self.simple_collector_area_cache.cache[size]
 			return None
+		elif needs_collector:
+			assert coords in self.simple_collector_area_cache.cache[size]
 		return builder
 
 	def make_builder(self, building_id, x, y, needs_collector, orientation=0):
@@ -390,6 +401,7 @@ class ProductionBuilder(AreaBuilder):
 			self.buildability_cache.remove_area(remove_list)
 
 		super(ProductionBuilder, self).register_change_list(coords_list, purpose, data)
+		self.display()
 
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""
@@ -427,6 +439,7 @@ class ProductionBuilder(AreaBuilder):
 		"""Called when a new building is added in the area (the building already exists during the call)."""
 		if building.id in self.collector_building_classes:
 			self.collector_buildings.append(building)
+			self.simple_collector_area_cache.add_building(building)
 		elif building.id in self.production_building_classes:
 			self.production_buildings.append(building)
 
@@ -434,16 +447,17 @@ class ProductionBuilder(AreaBuilder):
 
 	def _handle_lumberjack_removal(self, building):
 		"""Release the unused trees around the lumberjack building being removed."""
-		used_trees = set()
+		trees_used_by_others = set()
 		for lumberjack_building in self.settlement.buildings_by_id.get(BUILDINGS.LUMBERJACK, []):
 			if lumberjack_building.worldid == building.worldid:
 				continue
 			for coords in lumberjack_building.position.get_radius_coordinates(lumberjack_building.radius):
-				used_trees.add(coords)
+				if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
+					trees_used_by_others.add(coords)
 
 		coords_list = []
 		for coords in building.position.get_radius_coordinates(building.radius):
-			if coords not in used_trees and coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
+			if coords not in trees_used_by_others and coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
 				coords_list.append(coords)
 		self.register_change_list(coords_list, BUILDING_PURPOSE.NONE, None)
 
@@ -501,6 +515,7 @@ class ProductionBuilder(AreaBuilder):
 
 			if building.id in self.collector_building_classes:
 				self.collector_buildings.remove(building)
+				self.simple_collector_area_cache.remove_building(building)
 			elif building.id in self.production_building_classes:
 				self.production_buildings.remove(building)
 

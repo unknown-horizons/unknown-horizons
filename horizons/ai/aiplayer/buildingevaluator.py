@@ -162,6 +162,10 @@ class BuildingEvaluator(WorldObject):
 			return None
 		return self.builder.have_resources(road_cost)
 
+	def _register_builder_position(self):
+		self.area_builder.register_change_list(list(self.builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
+		self.area_builder.register_change_list([self.builder.position.origin.to_tuple()], self.purpose, None)
+
 	def execute(self):
 		"""Build the specified building complex. Return (BUILD_RESULT constant, building object)."""
 		resource_check = self.have_resources()
@@ -179,10 +183,7 @@ class BuildingEvaluator(WorldObject):
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 
 		if self.record_plan_change:
-			for x, y in self.builder.position.tuple_iter():
-				self.area_builder.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.area_builder.register_change(self.builder.position.origin.x, self.builder.position.origin.y, self.purpose, None)
-
+			self._register_builder_position()
 		return (BUILD_RESULT.OK, building)
 
 	def __str__(self):

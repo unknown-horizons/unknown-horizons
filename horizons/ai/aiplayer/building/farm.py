@@ -128,11 +128,9 @@ class FarmEvaluator(BuildingEvaluator):
 			if coords not in road_spots_set:
 				return None
 
+			farm_plan[coords] = (BUILDING_PURPOSE.ROAD, None)
 			if coords in area_builder.land_manager.roads:
-				farm_plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
 				existing_roads += 1
-			else:
-				farm_plan[coords] = (BUILDING_PURPOSE.ROAD, None)
 
 		# place the fields
 		fields = 0

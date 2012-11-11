@@ -72,9 +72,10 @@ class LumberjackEvaluator(BuildingEvaluator):
 			return None
 
 		area_value = 0
+		coastline = area_builder.land_manager.coastline
 		personality = area_builder.owner.personality_manager.get('LumberjackEvaluator')
 		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
-			if coords in area_builder.plan:
+			if coords in area_builder.plan and coords not in coastline:
 				purpose = area_builder.plan[coords][0]
 				if purpose == BUILDING_PURPOSE.NONE:
 					area_value += personality.new_tree
@@ -113,7 +114,9 @@ class LumberjackEvaluator(BuildingEvaluator):
 				if ok:
 					forest_coords_list.append(coords)
 
+		self._register_builder_position()
 		self.area_builder.register_change_list(forest_coords_list, BUILDING_PURPOSE.TREE, None)
+
 		return (BUILD_RESULT.OK, building)
 
 AbstractLumberjack.register_buildings()
