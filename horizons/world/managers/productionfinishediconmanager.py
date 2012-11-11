@@ -19,17 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.globals
+
 from fife import fife
+
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED
-
-import horizons.globals
 from horizons.gui.util import get_res_icon_path
 from horizons.messaging import ResourceProduced
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
+from horizons.world.managers.abstracticonmanager import AbstractIconManager
 
-class ProductionFinishedIconManager(object):
+class ProductionFinishedIconManager(AbstractIconManager):
 	"""Manager class that manages all production finished icons. It listens to
 	 ResourceProduced messages on the main message bus"""
 
@@ -38,8 +40,7 @@ class ProductionFinishedIconManager(object):
 		@param renderer: Renderer used to render the icons
 		@param layer: map layer, needed to place icon
 		"""
-		self.layer = layer
-		self.renderer = renderer
+		super(ProductionFinishedIconManager, self).__init__(renderer, layer)
 		self.run = dict()
 		self.animation_duration = 20 # The duration how long the image moves up
 		self.animation_steps = 1 # The steps that the image makes every run
@@ -52,7 +53,7 @@ class ProductionFinishedIconManager(object):
 		for group in self.run.keys():
 			self.renderer.removeAll(group)
 		self.run = None
-		self.renderer = None
+		super(ProductionFinishedIconManager, self).end()
 		ResourceProduced.unsubscribe(self._on_resource_produced)
 
 	def _on_resource_produced(self, message):
@@ -91,26 +92,15 @@ class ProductionFinishedIconManager(object):
 			display_latency += (self.animation_duration * display_latency) * (interval if interval else 1)
 
 	def __render_icon(self, instance, group, res, amount):
-		""" This renders the icon. It calculates the position of the icon.
-		Most parts of this were copied from horizons/world/managers/statusiconmanager.py
+		""" This renders the icon and calculates its position
 		"""
-		# TODO: Try to unify the __render methods of this class and statusiconmanager.py!
-		self.renderer.removeAll(group)
+		loc = super(ProductionFinishedIconManager, self).pre_render_icon(instance, group)
 
-		pos = instance.position
 		# self.run[group] is used for the moving up animation
 		# use -50 here to get some more offset in height
 		bg_rel = fife.Point(0, -50 - self.run[group])
 		rel = fife.Point(-14, -50 - self.run[group])
 		self.run[group] += self.animation_steps
-
-		loc = fife.Location(self.layer)
-		loc.setExactLayerCoordinates(
-		  fife.ExactModelCoordinate(
-		    pos.origin.x + float(pos.width) / 4,
-		    pos.origin.y + float(pos.height) / 4,
-		  )
-		)
 
 		bg_node = fife.RendererNode(loc, bg_rel)
 		node = fife.RendererNode(loc, rel)

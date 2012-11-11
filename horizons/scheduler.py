@@ -100,13 +100,13 @@ class Scheduler(LivingObject):
 				else: # gone for good
 					if callback.class_instance in self.calls_by_instance:
 						# this can already be removed by e.g. rem_all_classinst_calls
-						if callback.finish_callback is not None:
-							callback.finish_callback()
-
 						try:
 							self.calls_by_instance[callback.class_instance].remove(callback)
 						except ValueError:
 							pass # also the callback can be deleted by e.g. rem_call
+
+						if callback.finish_callback is not None:
+							callback.finish_callback()
 			del self.schedule[self.cur_tick]
 
 			self.log.debug("Scheduler: finished tick %s", self.cur_tick)
