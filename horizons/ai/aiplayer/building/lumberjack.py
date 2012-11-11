@@ -66,7 +66,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		if (x, y) not in area_builder.simple_collector_area_cache.cache[(3, 3)]:
+		if (x, y) not in area_builder.simple_collector_area_cache.cache[Entities.buildings[BUILDINGS.LUMBERJACK].size]:
 			return None
 
 		# TODO: create a late initialization phase for this kind of stuff
