@@ -58,8 +58,8 @@ class Build(Command):
 		self.ownerless = ownerless
 		self.island = island.worldid
 		self.settlement = settlement.worldid if settlement is not None else None
-		self.tearset = set() if not tearset else tearset
-		self.data = {} if not data else data
+		self.tearset = tearset or set()
+		self.data = data or dict()
 		self.action_set_id = action_set_id
 
 	def __call__(self, issuer=None):
