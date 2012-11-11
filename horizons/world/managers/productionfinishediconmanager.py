@@ -56,6 +56,24 @@ class ProductionFinishedIconManager(AbstractIconManager):
 		super(ProductionFinishedIconManager, self).end()
 		ResourceProduced.unsubscribe(self._on_resource_produced)
 
+	def get_interval(self, ticks):
+		interval = None
+		if ticks > GAME_SPEED.TICKS_PER_SECOND:
+			interval = (ticks // GAME_SPEED.TICKS_PER_SECOND) - 1
+
+		return interval
+
+	def speed_changed(self, new_ticks):
+		active_calls = Scheduler().get_classinst_calls(self)
+		interval = self.get_interval(new_ticks)
+
+		for callback in active_calls.keys():
+			if callback.loops > 0:
+				Scheduler().rem_object(callback)
+				Scheduler().add_new_object(callback.callback, self, finish_callback=callback.finish_callback,
+				                           run_in=1, loops=callback.loops,
+				                           loop_interval=interval)
+
 	def _on_resource_produced(self, message):
 		"""This is called by the message bus with ResourceProduced messages"""
 		assert isinstance(message, ResourceProduced)
@@ -67,9 +85,7 @@ class ProductionFinishedIconManager(AbstractIconManager):
 
 		# makes the animation independent from game speed
 		cur_ticks_per_second = Scheduler().timer.ticks_per_second
-		interval = None
-		if cur_ticks_per_second > GAME_SPEED.TICKS_PER_SECOND:
-			interval = (cur_ticks_per_second // GAME_SPEED.TICKS_PER_SECOND) - 1
+		interval = self.get_interval(cur_ticks_per_second)
 
 		display_latency = 1
 		for resource_item in message.produced_resources.items():
