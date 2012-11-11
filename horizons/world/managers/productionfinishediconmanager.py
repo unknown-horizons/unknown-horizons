@@ -78,7 +78,7 @@ class ProductionFinishedIconManager(AbstractIconManager):
 		"""This is called by the message bus with ResourceProduced messages"""
 		assert isinstance(message, ResourceProduced)
 
-		# if we get an empty dictionary, abort
+		# if we get an empty dictionary or if the message is not from the local player, abort
 		if (not message.produced_resources or not message.produced_resources.keys()) or \
 			not message.caller.instance.owner.is_local_player:
 			return
@@ -96,7 +96,7 @@ class ProductionFinishedIconManager(AbstractIconManager):
 			if not amount:
 				continue
 
-			group = self.get_resource_string(message.sender, res)
+			group = self.get_renderer_group_name(message.sender, res=res, tick=Scheduler().cur_tick)
 			self.run[group] = self.animation_steps
 
 			tick_callback = Callback(self.__render_icon, message.sender, group, res, amount)
@@ -135,10 +135,3 @@ class ProductionFinishedIconManager(AbstractIconManager):
 		"""
 		super(ProductionFinishedIconManager, self).remove_icon(group)
 		del self.run[group]
-
-	def get_resource_string(self, instance, res):
-		"""Returns the render name for resource icons of this instance
-		This key MUST be unique!
-		"""
-		return "produced_resource_" + str(res) + "_" + str(instance.position.origin)\
-		       + "_" + str(Scheduler().cur_tick)

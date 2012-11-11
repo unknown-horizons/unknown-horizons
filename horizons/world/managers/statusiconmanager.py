@@ -113,11 +113,11 @@ class StatusIconManager(AbstractIconManager):
 		""" Remove the icon.
 		Also removes the entry in the icons-dictionary.
 		"""
-		super(StatusIconManager, self).remove_icon(self.get_status_string(instance))
+		super(StatusIconManager, self).remove_icon(self.get_renderer_group_name(instance))
 		del self.icons[instance]
 
 	def __render_status(self, instance, status):
-		status_string = self.get_status_string(instance)
+		status_string = self.get_renderer_group_name(instance)
 		loc = super(StatusIconManager, self).pre_render_icon(instance, status_string)
 
 		# pixel-offset on screen (will be constant across zoom-levels)
@@ -131,11 +131,6 @@ class StatusIconManager(AbstractIconManager):
 		except ValueError:
 			img = horizons.globals.fife.imagemanager.load(status.icon)
 			self.renderer.addImage(status_string, node, img)
-
-	def get_status_string(self, instance):
-		"""Returns render name for status icons of this instance"""
-		status_string = "status_"+ str(id(instance))
-		return status_string
 
 	def on_hover_instances_changed(self, msg):
 		"""Check if we need to display a tooltip"""
