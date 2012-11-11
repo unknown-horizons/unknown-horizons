@@ -24,11 +24,12 @@ import horizons.globals
 from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
+from horizons.world.managers.abstracticonmanager import AbstractIconManager
 from horizons.world.status import StatusIcon
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted, HoverInstancesChanged
 from horizons.gui.mousetools import NavigationTool
 
-class StatusIconManager(object):
+class StatusIconManager(AbstractIconManager):
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
 	and RemoveStatusIcon messages on the main message bus"""
 
@@ -37,8 +38,7 @@ class StatusIconManager(object):
 		@param renderer: Renderer used to render the icons
 		@param layer: map layer, needed to place icon
 		"""
-		self.layer = layer
-		self.renderer = renderer
+		super(StatusIconManager, self).__init__(renderer, layer)
 
 		# {instance: [list of icons]}
 		self.icons = {}
@@ -57,7 +57,7 @@ class StatusIconManager(object):
 		self.tooltip_icon.hide_tooltip()
 		self.tooltip_icon = None
 
-		self.renderer = None
+		super(StatusIconManager, self).end()
 		self.icons = None
 
 		AddStatusIcon.unsubscribe(self.on_add_icon_message)
@@ -113,24 +113,10 @@ class StatusIconManager(object):
 
 	def __render_status(self, instance, status):
 		status_string = self.get_status_string(instance)
-
-		# Clean icons
-		self.renderer.removeAll(status_string)
+		loc = super(StatusIconManager, self).pre_render_icon(instance, status_string)
 
 		# pixel-offset on screen (will be constant across zoom-levels)
 		rel = fife.Point(0, -30)
-
-
-		pos = instance.position
-
-		# trial and error has brought me to this (it's supposed to hit the center)
-		loc = fife.Location(self.layer)
-		loc.setExactLayerCoordinates(
-		  fife.ExactModelCoordinate(
-		    pos.origin.x + float(pos.width) / 4,
-		    pos.origin.y + float(pos.height) / 4,
-		  )
-		)
 
 		node = fife.RendererNode(loc, rel)
 
