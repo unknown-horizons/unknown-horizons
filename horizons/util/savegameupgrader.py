@@ -317,6 +317,15 @@ class SavegameUpgrader(object):
 			db('COMMIT')
 			db.close()
 
+	@classmethod
+	def can_upgrade(cls, from_savegame_version):
+		"""Calculates whether a savegame can be upgraded from the current version"""
+		for i in xrange(from_savegame_version+1, VERSION.SAVEGAMEREVISION+1, 1):
+			if not hasattr(cls, "_upgrade_to_rev" + str(i)):
+				return False
+		return True
+
+
 	def get_path(self):
 		"""Return the path to the up-to-date version of the saved game."""
 		if self.final_path is None:
