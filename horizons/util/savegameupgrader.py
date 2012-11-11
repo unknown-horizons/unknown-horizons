@@ -258,6 +258,19 @@ class SavegameUpgrader(object):
 					db("INSERT INTO trade_slots VALUES(?, ?, ?, ?, ?)", trade_post, slot_id, resource_id, table == 'trade_sell', limit)
 					slot_id += 1
 
+	def _upgrade_to_rev68(self, db):
+		settlement_founding_missions = []
+		db_result = db("SELECT rowid, land_manager, ship, warehouse_builder, state FROM ai_mission_found_settlement")
+		for (worldid, land_manager_id, ship_id, builder_id, state) in db_result:
+			x, y = db("SELECT x, y FROM ai_builder WHERE rowid = ?", builder_id)[0]
+			settlement_founding_missions.append((worldid, land_manager_id, ship_id, x, y, state))
+
+		db("DROP TABLE ai_mission_found_settlement")
+		db('CREATE TABLE "ai_mission_found_settlement" ("land_manager" INT NOT NULL, "ship" INT NOT NULL, "x" INT NOT NULL, "y" INT NOT NULL, "state" INT NOT NULL)')
+
+		for row in settlement_founding_missions:
+			db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)", *row)
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -313,6 +326,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev66(db)
 			if rev < 67:
 				self._upgrade_to_rev67(db)
+			if rev < 68:
+				self._upgrade_to_rev68(db)
 
 			db('COMMIT')
 			db.close()

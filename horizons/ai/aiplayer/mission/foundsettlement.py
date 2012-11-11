@@ -31,25 +31,23 @@ from horizons.entities import Entities
 
 class FoundSettlement(ShipMission):
 	"""
-	Given a ship with the required resources and a warehouse builder object the ship is taken near
-	the location and a warehouse is built.
+	Given a ship with the required resources and the coordinates of the future warehouse
+	the ship is taken near the end location and a warehouse is built.
 	"""
 
 	missionStates = Enum('created', 'moving')
 
-	def __init__(self, success_callback, failure_callback, land_manager, ship, builder):
+	def __init__(self, success_callback, failure_callback, land_manager, ship, coords):
 		super(FoundSettlement, self).__init__(success_callback, failure_callback, ship)
 		self.land_manager = land_manager
-		self.builder = builder
+		self.coords = coords
 		self.warehouse = None
 		self.state = self.missionStates.created
 
 	def save(self, db):
 		super(FoundSettlement, self).save(db)
-		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, warehouse_builder, state) VALUES(?, ?, ?, ?, ?)",
-			self.worldid, self.land_manager.worldid, self.ship.worldid, self.builder.worldid, self.state.index)
-		assert isinstance(self.builder, Builder)
-		self.builder.save(db)
+		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)",
+			self.worldid, self.land_manager.worldid, self.ship.worldid, self.coords[0], self.coords[1], self.state.index)
 
 	@classmethod
 	def load(cls, db, worldid, success_callback, failure_callback):
@@ -58,11 +56,11 @@ class FoundSettlement(ShipMission):
 		return self
 
 	def _load(self, db, worldid, success_callback, failure_callback):
-		db_result = db("SELECT land_manager, ship, warehouse_builder, state FROM ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
+		db_result = db("SELECT land_manager, ship, x, y, state FROM ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
 		self.land_manager = WorldObject.get_object_by_id(db_result[0])
-		self.builder = Builder.load(db, db_result[2], self.land_manager)
+		self.coords = (int(db_result[2]), int(db_result[3]))
 		self.warehouse = None
-		self.state = self.missionStates[db_result[3]]
+		self.state = self.missionStates[db_result[4]]
 		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
@@ -76,23 +74,23 @@ class FoundSettlement(ShipMission):
 		self._move_to_destination_area()
 
 	def _move_to_destination_area(self):
-		if self.builder is None:
+		if self.coords is None:
 			self.report_failure('No possible warehouse location')
 			return
 
-		self._move_to_warehouse_area(self.builder.position, Callback(self._reached_destination_area),
+		self._move_to_warehouse_area(Point(*self.coords), Callback(self._reached_destination_area),
 			Callback(self._move_to_destination_area), 'Move not possible')
 
 	def _reached_destination_area(self):
 		self.log.info('%s reached BO area', self)
 
-		self.warehouse = self.builder.execute(self.land_manager, ship=self.ship)
+		builder = Builder.create(BUILDINGS.WAREHOUSE, self.land_manager, Point(*self.coords), ship=self.ship)
+		self.warehouse = builder.execute(self.land_manager, ship=self.ship)
 		if not self.warehouse:
 			self.report_failure('Unable to build the warehouse')
 			return
 
-		island = self.land_manager.island
-		self.land_manager.settlement = island.get_settlement(self.builder.point)
+		self.land_manager.settlement = self.warehouse.settlement
 		self.log.info('%s built the warehouse', self)
 
 		self._unload_all_resources(self.land_manager.settlement)
@@ -100,10 +98,7 @@ class FoundSettlement(ShipMission):
 
 	@classmethod
 	def find_warehouse_location(cls, ship, land_manager):
-		"""
-		Finds a location for the warehouse on the given island
-		@return Builder: a possible build location
-		"""
+		"""Return the coordinates of a location for the warehouse on the given island."""
 		warehouse_class = Entities.buildings[BUILDINGS.WAREHOUSE]
 		pos_offsets = []
 		for dx in xrange(warehouse_class.width):
@@ -141,12 +136,12 @@ class FoundSettlement(ShipMission):
 
 		for _, x, y in sorted(options):
 			if ship.check_move(Circle(Point(x + warehouse_class.width // 2, y + warehouse_class.height // 2), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
-				return Builder(BUILDINGS.WAREHOUSE, land_manager, Point(x, y), ship=ship)
+				return (x, y)
 		return None
 
 	@classmethod
 	def create(cls, ship, land_manager, success_callback, failure_callback):
-		builder = cls.find_warehouse_location(ship, land_manager)
-		return FoundSettlement(success_callback, failure_callback, land_manager, ship, builder)
+		coords = cls.find_warehouse_location(ship, land_manager)
+		return FoundSettlement(success_callback, failure_callback, land_manager, ship, coords)
 
 decorators.bind_all(FoundSettlement)

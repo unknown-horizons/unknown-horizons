@@ -111,9 +111,8 @@ class ShipMission(Mission):
 		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory.itercontents()]:
 			self.move_resource(self.ship, settlement, res, amount)
 
-	def _move_to_warehouse_area(self, warehouse_position, success_callback, blocked_callback, failure_msg):
-		(x, y) = warehouse_position.get_coordinates()[4]
-		area = Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
+	def _move_to_warehouse_area(self, position, success_callback, blocked_callback, failure_msg):
+		area = Circle(position.center, BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
 		try:
 			self.ship.move(area, success_callback, blocked_callback = blocked_callback)
 		except MoveNotPossible:

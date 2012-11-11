@@ -68,7 +68,7 @@ class VERSION:
 	MIN_FIFE_REVISION = 4065
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 67
+	SAVEGAMEREVISION = 68
 
 	@staticmethod
 	def string():
