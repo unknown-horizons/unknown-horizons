@@ -44,11 +44,7 @@ class AbstractIconManager(object):
 
 		# Calculate position for icon
 		loc = fife.Location(self.layer)
-		loc.setExactLayerCoordinates(
-			fife.ExactModelCoordinate(
-				pos.origin.x + float(pos.width) / 4,
-				pos.origin.y + float(pos.height) / 4,
-				)
-		)
-
+		coord = fife.ExactModelCoordinate(pos.origin.x + pos.width / 4.0,
+		                                  pos.origin.y + pos.height / 4.0)
+		loc.setExactLayerCoordinates(coord)
 		return loc
