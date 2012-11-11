@@ -133,7 +133,7 @@ class ProductionFinishedIconManager(AbstractIconManager):
 		""" Remove the icon after the animation finished
 		Also removes the entry in the run-dictionary.
 		"""
-		self.renderer.removeAll(group)
+		super(ProductionFinishedIconManager, self).remove_icon(group)
 		del self.run[group]
 
 	def get_resource_string(self, instance, res):

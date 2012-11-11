@@ -22,6 +22,8 @@
 from fife import fife
 
 class AbstractIconManager(object):
+	"""Abstract Manager-Class for all IconManagers"""
+
 	def __init__(self, renderer, layer):
 		"""
 		@param renderer: Renderer used to render the icons
@@ -48,3 +50,7 @@ class AbstractIconManager(object):
 		                                  pos.origin.y + pos.height / 4.0)
 		loc.setExactLayerCoordinates(coord)
 		return loc
+
+	def remove_icon(self, group):
+		"""Removes the icon"""
+		self.renderer.removeAll(group)

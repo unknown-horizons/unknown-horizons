@@ -85,8 +85,7 @@ class StatusIconManager(AbstractIconManager):
 		assert isinstance(message, WorldObjectDeleted)
 		# remove icon
 		if message.worldobject in self.icons:
-			self.renderer.removeAll(self.get_status_string(message.worldobject))
-			del self.icons[message.worldobject]
+			self.remove_icon(message.worldobject)
 		# remove icon tooltip
 		if message.worldobject is self.tooltip_instance:
 			self.on_hover_instances_changed( HoverInstancesChanged(self, []) )
@@ -101,8 +100,7 @@ class StatusIconManager(AbstractIconManager):
 					self.icons[icon_instance].remove(registered_icon)
 					if not self.icons[icon_instance]:
 						# No icon left for this building, remove it
-						self.renderer.removeAll(self.get_status_string(icon_instance))
-						del self.icons[icon_instance]
+						self.remove_icon(icon_instance)
 					else:
 						# Render next icon
 						self.__render_status(icon_instance, self.icons[icon_instance][0])
@@ -110,6 +108,13 @@ class StatusIconManager(AbstractIconManager):
 
 			if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
 				self.on_hover_instances_changed( HoverInstancesChanged(self, [self.tooltip_instance]) )
+
+	def remove_icon(self, instance):
+		""" Remove the icon.
+		Also removes the entry in the icons-dictionary.
+		"""
+		super(StatusIconManager, self).remove_icon(self.get_status_string(instance))
+		del self.icons[instance]
 
 	def __render_status(self, instance, status):
 		status_string = self.get_status_string(instance)
