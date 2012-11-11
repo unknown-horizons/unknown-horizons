@@ -52,7 +52,6 @@ class Builder(WorldObject):
 
 		super(Builder, self).__init__(worldid)
 		self.building_id = building_id
-		self.land_manager = land_manager
 		self.session = land_manager.session
 		self.point = point
 		self.orientation = orientation
@@ -61,7 +60,7 @@ class Builder(WorldObject):
 		check_settlement = ship is None
 		self.build_position = Entities.buildings[building_id].check_build(self.session, point,
 			rotation = self.rotations[orientation], check_settlement = check_settlement, ship = ship,
-			issuer = self.land_manager.owner)
+			issuer = land_manager.owner)
 		self.position = self.build_position.position
 
 	def save(self, db):
@@ -106,13 +105,13 @@ class Builder(WorldObject):
 	def execute(self, land_manager, ship=None):
 		"""Build the building."""
 		building_class = Entities.buildings[self.building_id]
-		building_level = building_class.get_initial_level(self.land_manager.owner)
+		building_level = building_class.get_initial_level(land_manager.owner)
 		action_set_id = building_class.get_random_action_set(level = building_level)
 
-		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island,
-			self._get_rotation(), settlement = self.land_manager.settlement,
+		cmd = Build(self.building_id, self.point.x, self.point.y, land_manager.island,
+			self._get_rotation(), settlement = land_manager.settlement,
 			ship = self.ship, tearset = self.build_position.tearset, action_set_id = action_set_id)
-		result = cmd(self.land_manager.owner)
+		result = cmd(land_manager.owner)
 		#self.log.debug('%s.execute(): %s', self.__class__.__name__, result)
 		return result
 
@@ -121,9 +120,9 @@ class Builder(WorldObject):
 		"""Return a boolean showing whether we have the resources to build the building right now."""
 		# the copy has to be made because Build.check_resources modifies it
 		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}
-		inventories = [self.land_manager.settlement, self.ship]
+		inventories = [land_manager.settlement, self.ship]
 		(enough_res, _) = Build.check_resources(extra_resources,
-			Entities.buildings[self.building_id].costs, self.land_manager.owner, inventories)
+			Entities.buildings[self.building_id].costs, land_manager.owner, inventories)
 		return enough_res
 
 	cache = {}
