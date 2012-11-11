@@ -108,7 +108,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	def cumulative_taxes(self):
 		"""Return sum of all taxes payed in this settlement in 1 tax round"""
 		return sum([building.last_tax_payed for building in self.buildings if
-								hasattr(building, 'last_tax_payed')])
+		            hasattr(building, 'last_tax_payed')])
 
 	def get_residentials_of_tier_for_happiness(self, tier, min_happiness=0, max_happiness=101):
 		is_valid_residential = lambda building: (
@@ -119,8 +119,10 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	@property
 	def balance(self):
 		"""Returns sum(income) - sum(expenses) for settlement"""
-		return self.cumulative_taxes + self.get_component(TradePostComponent).sell_income \
-					 - self.cumulative_running_costs - self.get_component(TradePostComponent).buy_expenses
+		return (self.cumulative_taxes
+		        + self.get_component(TradePostComponent).sell_income
+		        - self.cumulative_running_costs
+		        - self.get_component(TradePostComponent).buy_expenses)
 
 	@property
 	def island(self):
