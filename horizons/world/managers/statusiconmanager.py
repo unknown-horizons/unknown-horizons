@@ -120,17 +120,8 @@ class StatusIconManager(AbstractIconManager):
 		status_string = self.get_renderer_group_name(instance)
 		loc = super(StatusIconManager, self).pre_render_icon(instance, status_string)
 
-		# pixel-offset on screen (will be constant across zoom-levels)
-		rel = fife.Point(0, -30)
-
-		node = fife.RendererNode(loc, rel)
-
-		try: # to load an animation
-			anim = horizons.globals.fife.animationloader.loadResource(status.icon)
-			self.renderer.addAnimation(status_string, node, anim)
-		except ValueError:
-			img = horizons.globals.fife.imagemanager.load(status.icon)
-			self.renderer.addImage(status_string, node, img)
+		# Let the status-icon render itself
+		status.render(self.renderer, status_string, loc)
 
 	def on_hover_instances_changed(self, msg):
 		"""Check if we need to display a tooltip"""

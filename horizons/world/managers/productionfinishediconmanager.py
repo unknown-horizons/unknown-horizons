@@ -70,8 +70,9 @@ class ProductionFinishedIconManager(AbstractIconManager):
 		for callback in active_calls.keys():
 			if callback.loops > 0:
 				Scheduler().rem_object(callback)
-				Scheduler().add_new_object(callback.callback, self, finish_callback=callback.finish_callback,
-				                           run_in=1, loops=callback.loops,
+				Scheduler().add_new_object(callback.callback, self,
+				                           finish_callback=callback.finish_callback,
+				                           loops=callback.loops,
 				                           loop_interval=interval)
 
 	def _on_resource_produced(self, message):
@@ -96,7 +97,8 @@ class ProductionFinishedIconManager(AbstractIconManager):
 			if not amount:
 				continue
 
-			group = self.get_renderer_group_name(message.sender, res=res, tick=Scheduler().cur_tick)
+			group = self.get_renderer_group_name(message.sender, res=res,
+			                                     tick=Scheduler().cur_tick)
 			self.run[group] = self.animation_steps
 
 			tick_callback = Callback(self.__render_icon, message.sender, group, res, amount)
