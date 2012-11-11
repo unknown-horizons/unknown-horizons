@@ -22,7 +22,7 @@
 
 from horizons.constants import GAME_SPEED
 from horizons.gui.tabs import OverviewTab
-from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.setloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import NamedComponent

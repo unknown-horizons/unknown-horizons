@@ -24,7 +24,7 @@ import horizons.globals
 from horizons.constants import GROUND
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.loaders.setloader import TileSetLoader
 from horizons.util.python.callback import Callback
 
 

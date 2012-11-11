@@ -21,7 +21,7 @@
 # ###################################################
 
 from horizons.util.python.callback import Callback
-from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.setloader import ActionSetLoader
 from horizons.constants import SETTLER
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.tabs import OverviewTab

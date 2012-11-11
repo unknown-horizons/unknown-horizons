@@ -23,7 +23,7 @@ import logging
 import fnmatch
 import os
 
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.loaders.setloader import TileSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
 

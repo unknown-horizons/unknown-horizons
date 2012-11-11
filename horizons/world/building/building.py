@@ -26,7 +26,7 @@ from fife import fife
 from horizons.scheduler import Scheduler
 from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
-from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.setloader import ActionSetLoader
 from horizons.util.python import decorators
 from horizons.util.shapes import ConstRect, Point
 from horizons.util.worldobject import WorldObject

@@ -27,7 +27,7 @@ import weakref
 import horizons.globals
 
 from horizons.entities import Entities
-from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.setloader import ActionSetLoader
 from horizons.util.python import decorators
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject

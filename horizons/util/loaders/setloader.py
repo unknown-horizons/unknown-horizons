@@ -28,46 +28,77 @@ from horizons.constants import PATHS
 from horizons.util.loaders.loader import GeneralLoader
 from horizons.util.loaders.jsondecoder import JsonDecoder
 
-class TileSetLoader(object):
-	"""The TileSetLoader loads tile sets from a directory tree. The directories loaded
-	begin with 'ts_' to tell tell the loader that they are an action set. directory
-	structure is as follows: <tile_set>/<rotation>/<framenumber>.png
-	for example that would be: ts_shallow/90/0.png
-	Note that all directories except for the rotation dir, all dirs have to be empty and
-	must not include additional tile sets.
-	@param start_dir: directory that is used to begin search in"""
 
-	log = logging.getLogger("util.loaders.tilesetloader")
-
-	tile_sets = {}
-	_loaded = False
+class SetLoader(object):
+	prefix = None
 
 	@classmethod
-	def _find_tile_sets(cls, dir):
-		"""Traverses recursively starting from dir to find action sets.
-		It is similar to os.walk, but more optimized for this use case."""
-		for entry in os.listdir(dir):
-			full_path = os.path.join(dir, entry)
-			if entry.startswith("ts_"):
-				cls.tile_sets[entry] = GeneralLoader._load_action(full_path)
-			else:
-				if os.path.isdir(full_path) and entry != ".svn" and entry != ".DS_Store":
-					cls._find_tile_sets(full_path)
+	def _find_tile_sets(cls, directory):
+		"""Traverses recursively starting from dir to find action sets."""
+		for root, dirs, _ in os.walk(directory):
+			# don't visit dot directories
+			[dirs.remove(d) for d in dirs if d.startswith(".")]
 
-	@classmethod
-	def load(cls):
-		#print "called"
-		if not cls._loaded:
-			cls.log.debug("Loading tile_sets...")
-			if not horizons.globals.fife.use_atlases:
-				cls._find_tile_sets(PATHS.TILE_SETS_DIRECTORY)
-			else:
-				cls.tile_sets = JsonDecoder.load(PATHS.TILE_SETS_JSON_FILE)
-			cls.log.debug("Done!")
-			cls._loaded = True
+			for d in [d for d in dirs if d.startswith(cls.prefix)]:
+				cls.sets[d] = GeneralLoader._load_action(os.path.join(root, d))
+				dirs.remove(d)
 
 	@classmethod
 	def get_sets(cls):
 		if not cls._loaded:
 			cls.load()
-		return cls.tile_sets
+		return cls.sets
+
+
+class TileSetLoader(SetLoader):
+	"""The TileSetLoader loads tile sets from a directory tree. The directories loaded
+	begin with 'ts_' to tell tell the loader that they are an tile set. directory
+	structure is as follows: <tile_set>/<rotation>/<framenumber>.png
+	for example that would be: ts_shallow/90/0.png
+	Note that all directories except for the rotation dir, all dirs have to be empty and
+	must not include additional tile sets.
+	"""
+
+	log = logging.getLogger("util.loaders.tilesetloader")
+
+	sets = {}
+	_loaded = False
+	prefix = "ts_"
+
+	@classmethod
+	def load(cls):
+		if not cls._loaded:
+			cls.log.debug("Loading tile_sets...")
+			if not horizons.globals.fife.use_atlases:
+				cls._find_tile_sets(PATHS.TILE_SETS_DIRECTORY)
+			else:
+				cls.sets = JsonDecoder.load(PATHS.TILE_SETS_JSON_FILE)
+			cls.log.debug("Done!")
+			cls._loaded = True
+
+
+class ActionSetLoader(SetLoader):
+	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
+	begin with 'as_' to tell tell the loader that they are an action set. directory
+	structure is as follows: <action_set>/<action>/<rotation>/<framenumber>.png
+	for example that would be: fisher1/work/90/0.png
+	Note that all directories except for the rotation dir, all dirs have to be empty and
+	must not include additional action sets.
+	"""
+
+	log = logging.getLogger("util.loaders.actionsetloader")
+
+	sets = {}
+	_loaded = False
+	prefix = "as_"
+
+	@classmethod
+	def load(cls):
+		if not cls._loaded:
+			cls.log.debug("Loading action_sets...")
+			if not horizons.globals.fife.use_atlases:
+				cls._find_action_sets(PATHS.ACTION_SETS_DIRECTORY)
+			else:
+				cls.sets = JsonDecoder.load(PATHS.ACTION_SETS_JSON_FILE)
+			cls.log.debug("Done!")
+			cls._loaded = True

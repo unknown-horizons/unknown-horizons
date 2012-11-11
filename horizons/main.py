@@ -46,8 +46,7 @@ from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED, GFX, VERSION
 from horizons.network.networkinterface import NetworkInterface
-from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.loaders.setloader import ActionSetLoader, TileSetLoader
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback

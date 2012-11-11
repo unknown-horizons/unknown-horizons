@@ -23,8 +23,7 @@ from fife import fife
 
 import horizons.globals
 
-from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.loaders.setloader import ActionSetLoader, TileSetLoader
 
 
 class AnimationLoader(object):

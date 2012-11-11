@@ -23,7 +23,7 @@ import random
 
 from horizons.constants import ACTION_SETS
 from horizons.scheduler import Scheduler
-from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.setloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.world.units import UnitClass
