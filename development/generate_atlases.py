@@ -60,8 +60,7 @@ import horizons.globals
 horizons.globals.fife = DummyFife()
 
 from horizons.constants import PATHS
-from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.loaders.setloader import ActionSetLoader, TileSetLoader
 
 class AtlasEntry(object):
 	def __init__(self, x, y, width, height, last_modified):
