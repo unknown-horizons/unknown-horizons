@@ -111,12 +111,16 @@ class FoundSettlement(ShipMission):
 		options = []
 
 		for (x, y) in island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size]:
-			current_settlement = False
+			position_suitable = True
 			for (dx, dy) in pos_offsets:
 				if island.ground_map[(x + dx, y + dy)].settlement is not None:
-					current_settlement = True
+					position_suitable = False
 					break
-			if current_settlement:
+				object = island.ground_map[(x + dx, y + dy)].object
+				if object is not None and not object.buildable_upon:
+					position_suitable = False
+					break
+			if not position_suitable:
 				continue
 
 			cost = 0
