@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
@@ -38,10 +39,7 @@ class AbstractSaltPonds(AbstractBuilding):
 class SaltPondsEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.SALT_PONDS, x, y, True, orientation)
-		if not builder:
-			return None
-
+		builder = BasicBuilder.create(BUILDINGS.SALT_PONDS, (x, y), orientation)
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 		return SaltPondsEvaluator(area_builder, builder, alignment)
 
