@@ -44,7 +44,7 @@ fi
 # Get all files to translate.
 (
   find . -mindepth 1 -maxdepth 1 -name \*.py && \
-  find editor horizons -name \*.py && \
+  find horizons -name \*.py && \
   echo $SQL_POT_FILE
 ) | xgettext --files-from=- --output=$RESULT_FILE \
              --from-code=UTF-8 --add-comments \
