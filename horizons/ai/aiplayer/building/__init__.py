@@ -124,16 +124,21 @@ class AbstractBuilding(object):
 		return Entities.buildings[self.id].have_resources([settlement_manager.land_manager.settlement], settlement_manager.owner)
 
 	@classmethod
-	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type):
-		return settlement_manager.island.terrain_cache.get_buildability_intersection(terrain_type, size,
-		    settlement_manager.production_builder.buildability_cache, settlement_manager.settlement.buildability_cache)
+	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type, needs_collector):
+		# Note that this is explicitly using the production_builder. This means that this
+		# code can never be used to construct anything outside the production area.
+		caches = (settlement_manager.production_builder.buildability_cache, settlement_manager.settlement.buildability_cache)
+		if needs_collector:
+			caches += (settlement_manager.production_builder.simple_collector_area_cache, )
+		return settlement_manager.island.terrain_cache.get_buildability_intersection(terrain_type, size, *caches)
 
 	def iter_potential_locations(self, settlement_manager):
 		"""Iterate over possible locations of the building in the given settlement in the form of (x, y, orientation)."""
-		for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, self.size, self.terrain_type)):
+		needs_collector = self.evaluator_class.need_collector_connection
+		for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, self.size, self.terrain_type, needs_collector)):
 			yield (x, y, 0)
 		if self.width != self.height:
-			for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, (self.height, self.width), self.terrain_type)):
+			for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, (self.height, self.width), self.terrain_type, needs_collector)):
 				yield (x, y, 1)
 
 	@property
