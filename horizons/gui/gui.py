@@ -717,15 +717,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				details_label.text += _("Savegame version {version}").format(
 				                         version=savegame_info['savegamerev'])
 				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
-					#xgettext:python-format
-					if SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
-						details_label.text += u" " + _("(upgrade possible)")
-					else:
+					if not SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
 						details_label.text += u" " + _("(probably incompatible)")
 			except KeyError:
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
-				details_label.text += _("Incompatible version")
+				details_label.text += u" " + _("Incompatible version")
 
 			gui.adaptLayout()
 		return tmp_show_details
