@@ -78,10 +78,10 @@ class _BuildPosition(object):
 	def __eq__(self, other):
 		if not isinstance(other, _BuildPosition):
 			return False
-		return self.position == other.position and \
-		       self.rotation == other.rotation and \
-		       self.action == other.action and \
-		       self.tearset == other.tearset
+		return (self.position == other.position and
+		        self.rotation == other.rotation and
+		        self.action == other.action and
+		        self.tearset == other.tearset)
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
