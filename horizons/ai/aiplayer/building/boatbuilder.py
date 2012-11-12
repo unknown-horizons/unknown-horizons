@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
@@ -43,23 +44,11 @@ class AbstractBoatBuilder(AbstractBuilding):
 class BoatBuilderEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.BOAT_BUILDER, x, y, True, orientation)
-		if not builder:
-			return None
+		builder = BasicBuilder.create(BUILDINGS.BOAT_BUILDER, (x, y), orientation)
 
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		if distance_to_collector is None:
 			return None # require boat builders to have a collector building in range
-
-		# TODO: it would be better to do a check like this once per game because it is never going to change
-		# make sure the boat builder has access to the sea
-		near_sea = False
-		world = area_builder.session.world
-		for coords in builder.position.get_radius_coordinates(2):
-			if coords in world.water_body and world.water_body[coords] == world.sea_number:
-				near_sea = True
-		if not near_sea:
-			return None
 
 		personality = area_builder.owner.personality_manager.get('BoatBuilderEvaluator')
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
