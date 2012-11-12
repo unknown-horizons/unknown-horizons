@@ -24,7 +24,7 @@ from horizons.command.production import ToggleActive
 from horizons.world.production.producer import Producer
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
-from horizons.world.status import SettlerUnhappyStatus, DecommissionedStatus, ProductivityLowStatus, InventoryFullStatus
+from horizons.gui.icons import SettlerUnhappyStatus, DecommissionedStatus, ProductivityLowStatus, InventoryFullStatus
 from horizons.messaging import AddStatusIcon
 
 import mock

@@ -19,13 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
-
 from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
 from horizons.world.managers.abstracticonmanager import AbstractIconManager
-from horizons.world.status import StatusIcon
+from horizons.gui.icons import StatusIcon
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted, HoverInstancesChanged
 from horizons.gui.mousetools import NavigationTool
 

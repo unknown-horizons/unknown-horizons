@@ -26,7 +26,7 @@ from horizons.world.building.buildable import BuildableSingle, BuildableSingleFr
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.building.production import ProductionBuilding
 from horizons.world.building.path import Path
-from horizons.world.status import InventoryFullStatus
+from horizons.gui.icons import InventoryFullStatus
 from horizons.component.collectingcomponent import CollectingComponent
 
 class StorageBuilding(StorageResourceHandler,

@@ -27,7 +27,7 @@ from horizons.messaging import ResourceProduced
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.world.managers.abstracticonmanager import AbstractIconManager
-from horizons.world.production_finished import ProductionFinishedIcon
+from horizons.gui.icons import ProductionFinishedIcon
 
 class ProductionFinishedIconManager(AbstractIconManager):
 	"""Manager class that manages all production finished icons. It listens to
