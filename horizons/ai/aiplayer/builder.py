@@ -62,18 +62,6 @@ class Builder(WorldObject):
 			issuer = land_manager.owner)
 		self.position = self.build_position.position
 
-	def save(self, db):
-		super(Builder, self).save(db)
-		db("INSERT INTO ai_builder(rowid, building_type, x, y, orientation, ship) VALUES(?, ?, ?, ?, ?, ?)",
-			self.worldid, self.building_id, self.point.x, self.point.y, self.orientation,
-			None if self.ship is None else self.ship.worldid)
-
-	@classmethod
-	def load(cls, db, worldid, land_manager):
-		db_result = db("SELECT building_type, x, y, orientation, ship FROM ai_builder WHERE rowid = ?", worldid)[0]
-		ship = WorldObject.get_object_by_id(db_result[4]) if db_result[4] else None
-		return cls.create(db_result[0], land_manager, Point(db_result[1], db_result[2]), db_result[3], ship, worldid=worldid)
-
 	def __nonzero__(self):
 		"""Return a boolean showing whether it is possible to build the building at this place."""
 		return self.build_position.buildable
