@@ -26,7 +26,7 @@ import logging
 from collections import defaultdict, deque
 
 from horizons.ai.aiplayer.areabuilder import AreaBuilder
-from horizons.ai.aiplayer.builder import Builder
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS
 from horizons.util.shapes import Point, Rect
@@ -678,17 +678,19 @@ class VillageBuilder(AreaBuilder):
 	def build_roads(self):
 		"""Try to build all roads in the village area, record the result in the field roads_built."""
 		all_built = True
-		for coords, (purpose, (section, _)) in self.plan.iteritems():
-			if section > self.current_section:
+		for coords, (purpose, (section, _)) in sorted(self.plan.iteritems()):
+			if section > self.current_section or coords not in self.settlement.ground_map:
 				all_built = False
 				continue
 			if purpose != BUILDING_PURPOSE.ROAD:
 				continue
-			object = self.island.ground_map[coords].object
-			if object is not None and object.id == BUILDINGS.TRAIL:
+			object = self.settlement.ground_map[coords].object
+			if object is not None and not object.buildable_upon:
 				continue
-			if Builder.create(BUILDINGS.TRAIL, self.land_manager, Point(coords[0], coords[1])).execute(self.land_manager) is None:
+			if not self.have_resources(BUILDINGS.TRAIL):
 				all_built = False
+				break
+			assert BasicBuilder(BUILDINGS.TRAIL, coords, 0).execute(self.land_manager)
 		self.roads_built = all_built
 
 	def build_tent(self, coords=None):
