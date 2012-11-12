@@ -28,9 +28,11 @@ from horizons.util.python import decorators
 from horizons.entities import Entities
 
 class AbstractSignalFire(AbstractBuilding):
-	def _get_buildability_intersection(self, settlement_manager, size):
-		coords_set = super(AbstractSignalFire, self)._get_buildability_intersection(settlement_manager, size)
-		return coords_set.intersection(set(settlement_manager.settlement.warehouse.position.get_radius_coordinates(self.radius)))
+	@classmethod
+	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type, need_collector_connection):
+		coords_set = super(AbstractSignalFire, cls)._get_buildability_intersection(settlement_manager, size, terrain_type, need_collector_connection)
+		radius = Entities.buildings[BUILDINGS.SIGNAL_FIRE].radius
+		return coords_set.intersection(set(settlement_manager.settlement.warehouse.position.get_radius_coordinates(radius)))
 
 	@property
 	def evaluator_class(self):

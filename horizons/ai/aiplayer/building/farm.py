@@ -37,6 +37,10 @@ class AbstractFarm(AbstractBuilding):
 		""" farms have to be triggered by fields """
 		return False
 
+	@property
+	def evaluator_class(self):
+		return FarmEvaluator
+
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
 		""" the fields have to take into account the farm cost """
 		return 0
@@ -59,8 +63,8 @@ class AbstractFarm(AbstractBuilding):
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		options = []
 
-		field_spots_set = self._get_buildability_intersection(settlement_manager, (3, 3), TerrainRequirement.LAND)
-		road_spots_set = self._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND).union(settlement_manager.land_manager.roads)
+		field_spots_set = self._get_buildability_intersection(settlement_manager, (3, 3), TerrainRequirement.LAND, False)
+		road_spots_set = self._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND, False).union(settlement_manager.land_manager.roads)
 
 		# create evaluators for completely new farms
 		most_fields = 1
