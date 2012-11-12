@@ -38,6 +38,8 @@ class Builder(object):
 	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER,
 		BUILDINGS.IRON_MINE, BUILDINGS.SALT_PONDS]
 
+	__slots__ = ('building_id', 'point', 'orientation', 'build_position', 'position')
+
 	def __init__(self, building_id, land_manager, point, orientation, ship):
 		"""
 		@param building_id: the id of the building class
