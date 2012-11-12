@@ -104,23 +104,26 @@ class LumberjackEvaluator(BuildingEvaluator):
 		if result != BUILD_RESULT.OK:
 			return (result, None)
 
-		island_ground_map = self.area_builder.island.ground_map
+		production_builder = self.area_builder
+		coastline = production_builder.land_manager.coastline
+		island_ground_map = production_builder.island.ground_map
 		forest_coords_list = []
 		for coords in building.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
-			if coords in self.area_builder.plan and self.area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
+			if coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in coastline:
 				ok = False
 				if island_ground_map[coords].object is not None and island_ground_map[coords].object.id == BUILDINGS.TREE:
 					ok = True
 				else:
-					builder = Builder.create(BUILDINGS.TREE, self.area_builder.land_manager, Point(coords[0], coords[1]))
+					builder = Builder.create(BUILDINGS.TREE, production_builder.land_manager, Point(coords[0], coords[1]))
+					if not builder.have_resources(production_builder.land_manager):
+						break
 					if builder:
-						assert builder.execute(self.area_builder.land_manager)
+						assert builder.execute(production_builder.land_manager)
 						ok = True
 				if ok:
 					forest_coords_list.append(coords)
 
-		self._register_builder_position()
-		self.area_builder.register_change_list(forest_coords_list, BUILDING_PURPOSE.TREE, None)
+		production_builder.register_change_list(forest_coords_list, BUILDING_PURPOSE.TREE, None)
 
 		return (BUILD_RESULT.OK, building)
 

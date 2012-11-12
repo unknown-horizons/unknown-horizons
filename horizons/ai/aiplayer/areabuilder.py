@@ -260,7 +260,7 @@ class AreaBuilder(WorldObject):
 		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
 		options = []
 		for x, y in self.plan:
-			builder = self.make_builder(BUILDINGS.STORAGE, x, y, True)
+			builder = self.make_builder(BUILDINGS.STORAGE, x, y, False)
 			if not builder:
 				continue
 
