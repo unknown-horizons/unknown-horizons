@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-04-19 11:04+0200\n"
-"Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
+"PO-Revision-Date: 2012-10-01 10:18+0000\n"
+"Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1349086681.0\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -125,7 +126,7 @@ msgstr "Nem szakíthatod el a raktárházat, a lakosaidnak szüksége van rá."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Nem sikerült a feladat."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -148,7 +149,7 @@ msgstr "Nyertél!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Az épületed kigyulladt!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -191,8 +192,9 @@ msgstr "makk"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "alvearies"
-msgstr ""
+msgstr "Méhészet"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -422,9 +424,8 @@ msgstr "vaslelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "stone tops"
-msgstr "kő felsők"
+msgstr "járólap"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -773,7 +774,7 @@ msgstr "Mentés verzió {version}"
 #: horizons/gui/gui.py
 #, python-format
 msgid "(potentially incompatible)"
-msgstr ""
+msgstr "(potenciálisan összeférhetetlen)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -959,11 +960,12 @@ msgstr "Játékosok ajánlott száma: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "Translation status:"
-msgstr ""
+msgstr "Fordítás állapota:"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "{translated} translated messages, {untranslated} untranslated messages"
 msgstr ""
+"{translated} lefordított üzenetek, {untranslated} lefordítatlan üzenetek"
 
 #: horizons/gui/modules/singleplayermenu.py
 #: horizons/gui/modules/singleplayermenu.py
@@ -1046,7 +1048,7 @@ msgstr "Klikk egy másik random térkép generálásához"
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py
 msgid "Build {building}"
-msgstr ""
+msgstr "Épít {building}"
 
 #: horizons/gui/mousetools/navigationtool.py
 msgid "Press H to remove this hint"
@@ -1107,7 +1109,7 @@ msgstr "Áttekintés"
 
 #: horizons/gui/tabs/buildrelatedtab.py
 msgid "Build related buildings"
-msgstr ""
+msgstr "Építs összefüggő épületeket"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -1597,7 +1599,7 @@ msgstr "Folytatás"
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #: horizons/i18n/guitranslations.py
 msgid "Huker"
-msgstr ""
+msgstr "Huker"
 
 #. (helptext of widget: BB_build_trade_1)
 #. (helptext of widget: BB_build_war1_1)
@@ -2150,7 +2152,7 @@ msgstr "Egységek"
 #. (helptext of widget: building_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Az összes épület, játékos, település(ek) ár aránya"
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
@@ -2160,12 +2162,13 @@ msgstr ""
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Játékos jelenlegi kincstára + közeljövőben várható jövedelme"
 
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Player Name"
-msgstr ""
+msgstr "Játékos neve:"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
@@ -3499,17 +3502,17 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Residential"
-msgstr ""
+msgstr "Lakosság"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Sea"
-msgstr ""
+msgstr "Tenger"
 
 #. tab6_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
-msgstr ""
+msgstr "Esztétika"
 
 #: horizons/main.py
 msgid "Failed to start/load the game"
@@ -3517,7 +3520,7 @@ msgstr "Nem sikerült elindítani/betölteni a játékot"
 
 #: horizons/main.py
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "A kiválasztott játékot nem sikerült elindítani."
 
 #: horizons/main.py
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -3666,28 +3669,29 @@ msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py
+#, fuzzy
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Ezt az épületet csak a parton építheted fel."
 
 #: horizons/world/building/buildable.py
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "Ez talaj nem alkalmas az épület ráépítésére."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Ezt az épületet a településen belül kell építeni."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "Ezt a terület már elfoglalta egy másik játékos."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "Ezt a terület már elfoglalta egy másik épület."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "Ez a terület már foglalt egy egység által."
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on the coastline."
@@ -3695,7 +3699,7 @@ msgstr "Ezt az épületet csak a parton építheted fel."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "Ez az épület kerüljön az óceánra."
 
 #: horizons/world/building/buildable.py
 msgid "This spot is too far away from your ship."
@@ -3707,27 +3711,27 @@ msgstr "Ezt az épületet csak nyersanyag lelőhelyre építheted."
 
 #: horizons/world/building/buildable.py
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Már letelepedett ezen a szigeten."
 
 #: horizons/world/status.py
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Ez az épület kigyulladt!"
 
 #: horizons/world/status.py
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Ezek a lakosok boldogtalanok."
 
 #: horizons/world/status.py
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Az épület raktára tele van."
 
 #: horizons/world/status.py
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Az épület termelékenysége nagyon alacsony."
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
-msgstr ""
+msgstr "Az épület veszteséges."
 
 #: horizons/world/traderoute.py
 #, python-format
