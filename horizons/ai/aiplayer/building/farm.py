@@ -22,7 +22,7 @@
 import copy
 from collections import defaultdict
 
-from horizons.ai.aiplayer.builder import Builder
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
@@ -115,10 +115,6 @@ class FarmEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set):
-		builder = area_builder.make_builder(BUILDINGS.FARM, farm_x, farm_y, True)
-		if not builder:
-			return None
-
 		farm_plan = {}
 
 		# place the farm area road
@@ -163,6 +159,7 @@ class FarmEvaluator(BuildingEvaluator):
 			return None # go for the most fields possible
 
 		# add the farm itself to the plan
+		builder = BasicBuilder.create(BUILDINGS.FARM, (farm_x, farm_y), 0)
 		for coords in builder.position.tuple_iter():
 			farm_plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
 		farm_plan[(farm_x, farm_y)] = (BUILDING_PURPOSE.FARM, builder)
@@ -301,9 +298,6 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			building_id = BUILDINGS.SUGARCANE_FIELD
 		elif new_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
 			building_id = BUILDINGS.TOBACCO_FIELD
-		builder = Builder.create(building_id, area_builder.land_manager, Point(x, y))
-		if not builder:
-			return None
 
 		value = 0
 		personality = area_builder.owner.personality_manager.get('ModifiedFieldEvaluator')
@@ -325,6 +319,8 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			value -= personality.remove_unused_sugarcane_field_penalty
 		elif old_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
 			value -= personality.remove_unused_tobacco_field_penalty
+
+		builder = BasicBuilder.create(building_id, (x, y), 0)
 		return ModifiedFieldEvaluator(area_builder, builder, value, old_field_purpose)
 
 	def execute(self):
