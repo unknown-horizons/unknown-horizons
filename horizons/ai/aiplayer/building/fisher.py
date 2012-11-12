@@ -23,6 +23,7 @@ import copy
 import math
 import heapq
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
@@ -69,9 +70,7 @@ class FisherEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.FISHER, x, y, True, orientation)
-		if not builder:
-			return None
+		builder = BasicBuilder.create(BUILDINGS.FISHER, (x, y), orientation)
 
 		fisher_radius = Entities.buildings[BUILDINGS.FISHER].radius
 		fishers_in_range = 1.0
