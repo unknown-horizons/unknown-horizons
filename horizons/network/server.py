@@ -294,7 +294,8 @@ class Server(object):
 			logging.warning("[RECEIVE] Per packet size exceeded from %s: %s" % (player, e))
 			self.fatalerror(player, __("You've exceeded the per packet size.") + " " +
 			                        __("This should never happen. "
-			                           "Please contact us or file a bug report.") + str(e))
+			                           "Please contact us or file a bug report.") +
+			                        " " + str(e))
 			return
 		except Exception as e:
 			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (player, e))
