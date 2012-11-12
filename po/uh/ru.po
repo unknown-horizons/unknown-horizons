@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-09 09:40+0200\n"
-"Last-Translator: burlachenko <burlachenkomaxim@gmail.com>\n"
+"PO-Revision-Date: 2012-09-27 11:50+0000\n"
+"Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1348746618.0\n"
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -1101,7 +1102,6 @@ msgstr "Подтвердить приказ"
 # 94%
 #: horizons/gui/tabs/buildingtabs.py
 #: horizons/gui/tabs/enemybuildingtabs.py
-#, fuzzy
 msgid "Warehouse overview"
 msgstr "Обзор склада"
 
@@ -1285,7 +1285,6 @@ msgid "Sound"
 msgstr "Звук"
 
 #: horizons/gui/widgets/pickbeltwidget.py
-#, fuzzy
 msgid "Game"
 msgstr "Игра"
 
@@ -1305,9 +1304,9 @@ msgstr "Всего"
 # 94%
 #: horizons/gui/widgets/playersships.py
 #, python-format
-#, python-format, fuzzy
+#, python-format, python-format
 msgid "Ships of {player}"
-msgstr "Корабли игрока {player}"
+msgstr "Флот игрока {player}"
 
 # 97%
 #. (helptext of widget: name)
@@ -2188,7 +2187,7 @@ msgstr "Текущая казна игрока + доход ожидаемый �
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
 msgid "Player Name"
-msgstr ""
+msgstr "Имя игрока"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
@@ -2985,7 +2984,7 @@ msgstr "Костёр для углежжения"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "Углежог изготовляет здесь древесный уголь."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py
@@ -3280,9 +3279,8 @@ msgstr "Хранилище"
 # 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Storage Hut"
-msgstr "Хранилище"
+msgstr "Хижина-хранилище"
 
 # Very bad translate
 #. tooltip_text of buildings:storagetent
@@ -3297,11 +3295,8 @@ msgstr "Сахарная плантация"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
-"Плантация сахарного тростника: Используется в производстве алкоголя. "
-"Нуждается в ферме."
+msgstr "Используется в производстве алкоголя. Нуждается в ферме."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py
@@ -3346,9 +3341,8 @@ msgstr "Поместье"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Houses your inhabitants."
-msgstr "Палатка: Дома ваших жителей."
+msgstr "Предоставляет кров для ваших жителей."
 
 #. name of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py
@@ -3357,9 +3351,8 @@ msgstr "Табачное поле"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
-msgstr "Табачное поле: Производит сырьё для табака. Нуждается в ферме."
+msgstr "Производит сырьё для табака. Нуждается в ферме."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py
@@ -3368,9 +3361,8 @@ msgstr "Табачная лавка"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Produces tobaccos out of tobacco."
-msgstr "Табачная лавка: производит табак из табачного сырья."
+msgstr "Производит табак из табачного сырья."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py
@@ -3379,9 +3371,8 @@ msgstr "Изготовитель инструментов"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Produces tools out of iron."
-msgstr "Изготовитель инструментов: Изготавливает инструменты из железа."
+msgstr "Изготавливает инструменты из железа."
 
 #. name of buildings:trail
 #: horizons/i18n/objecttranslations.py
@@ -3390,9 +3381,8 @@ msgstr "Тропа"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Дорога: Необходима для доставки товаров."
+msgstr "Необходима для транспортировки товаров."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py
@@ -3442,9 +3432,8 @@ msgstr "Склад"
 # 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Weaver's Hut"
-msgstr "Палатка ткача"
+msgstr "Хижина ткача"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py
@@ -3713,7 +3702,7 @@ msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Это здание должно быть построено на острове."
 
 # 95%
 # 100%
@@ -3725,7 +3714,6 @@ msgstr "Земля не подходит для этой постройки."
 msgid "This building has to be built within your settlement."
 msgstr "Эта постройка должна быть построена в границах вашего поселения."
 
-# 75%
 # 75%
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another player."
@@ -3739,7 +3727,7 @@ msgstr "Эта территория уже занята другой постр�
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "Это территория уже занята."
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on the coastline."
@@ -3773,7 +3761,7 @@ msgstr "Эти жители недовольны."
 
 #: horizons/world/status.py
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Инвентарь этого здания полон."
 
 #: horizons/world/status.py
 msgid "This building has a very low productivity."
@@ -3834,7 +3822,6 @@ msgstr "Сбой Unknown Horizons."
 
 # 83%
 #: run_uh.py
-#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
 msgstr "Мы очень сожалеем и хотим исправить эту ошибку."
 
