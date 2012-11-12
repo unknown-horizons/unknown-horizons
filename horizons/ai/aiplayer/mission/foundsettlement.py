@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.ai.aiplayer.mission import ShipMission
-from horizons.ai.aiplayer.builder import Builder
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
@@ -84,7 +84,7 @@ class FoundSettlement(ShipMission):
 	def _reached_destination_area(self):
 		self.log.info('%s reached BO area', self)
 
-		builder = Builder.create(BUILDINGS.WAREHOUSE, self.land_manager, Point(*self.coords), ship=self.ship)
+		builder = BasicBuilder(BUILDINGS.WAREHOUSE, self.coords, 0)
 		self.warehouse = builder.execute(self.land_manager, ship=self.ship)
 		if not self.warehouse:
 			self.report_failure('Unable to build the warehouse')
