@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.builder import Builder
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
@@ -66,9 +66,6 @@ class LumberjackEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		if (x, y) not in area_builder.simple_collector_area_cache.cache[Entities.buildings[BUILDINGS.LUMBERJACK].size]:
-			return None
-
 		# TODO: create a late initialization phase for this kind of stuff
 		if cls.__radius_offsets is None:
 			cls.__init_outline()
@@ -91,8 +88,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 		personality = area_builder.owner.personality_manager.get('LumberjackEvaluator')
 		alignment = cls._get_alignment_from_outline(area_builder, cls._get_outline(x, y))
 		value = area_value + alignment * personality.alignment_importance
-		builder = area_builder.make_builder(BUILDINGS.LUMBERJACK, x, y, True, orientation)
-		assert builder
+		builder = BasicBuilder.create(BUILDINGS.LUMBERJACK, (x, y), orientation)
 		return LumberjackEvaluator(area_builder, builder, value)
 
 	@property
@@ -114,7 +110,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 				if island_ground_map[coords].object is not None and island_ground_map[coords].object.id == BUILDINGS.TREE:
 					ok = True
 				else:
-					builder = Builder.create(BUILDINGS.TREE, production_builder.land_manager, Point(coords[0], coords[1]))
+					builder = BasicBuilder(BUILDINGS.TREE, coords, 0)
 					if not builder.have_resources(production_builder.land_manager):
 						break
 					if builder:
