@@ -187,6 +187,7 @@ class BuildingEvaluator(WorldObject):
 		return (BUILD_RESULT.OK, building)
 
 	def __str__(self):
-		return '%s at %d, %d with value %f' % (self.__class__.__name__, self.builder.point.x, self.builder.point.y, self.value)
+		point = self.builder.position.origin
+		return '%s at %d, %d with value %f' % (self.__class__.__name__, point.x, point.y, self.value)
 
 decorators.bind_all(BuildingEvaluator)

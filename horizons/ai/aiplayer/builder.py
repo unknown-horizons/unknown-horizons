@@ -38,7 +38,7 @@ class Builder(object):
 	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER,
 		BUILDINGS.IRON_MINE, BUILDINGS.SALT_PONDS]
 
-	__slots__ = ('building_id', 'point', 'orientation', 'build_position', 'position')
+	__slots__ = ('building_id', 'orientation', 'build_position', 'position')
 
 	def __init__(self, building_id, land_manager, point, orientation, ship):
 		"""
@@ -50,7 +50,6 @@ class Builder(object):
 		"""
 
 		self.building_id = building_id
-		self.point = point
 		self.orientation = orientation
 
 		check_settlement = ship is None
@@ -64,7 +63,7 @@ class Builder(object):
 		return self.build_position.buildable
 
 	def __str__(self):
-		return 'Builder of building %d at %s, orientation %d' % (self.building_id, self.point.to_tuple(), self.orientation)
+		return 'Builder of building %d at %s, orientation %d' % (self.building_id, self.position.origin.to_tuple(), self.orientation)
 
 	def _get_rotation(self, session):
 		"""Return the rotation of the new building (randomise it if allowed)."""
@@ -91,7 +90,8 @@ class Builder(object):
 		building_level = building_class.get_initial_level(land_manager.owner)
 		action_set_id = building_class.get_random_action_set(level = building_level)
 
-		cmd = Build(self.building_id, self.point.x, self.point.y, land_manager.island,
+		point = self.position.origin
+		cmd = Build(self.building_id, point.x, point.y, land_manager.island,
 			self._get_rotation(land_manager.session), settlement=land_manager.settlement,
 			ship=ship, tearset=self.build_position.tearset, action_set_id=action_set_id)
 		result = cmd(land_manager.owner)

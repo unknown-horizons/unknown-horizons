@@ -333,7 +333,7 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 
 		# remove the old designation
-		self.area_builder.unused_fields[self._old_field_purpose].remove(self.builder.point.to_tuple())
+		self.area_builder.unused_fields[self._old_field_purpose].remove(self.builder.position.origin.to_tuple())
 
 		return (BUILD_RESULT.OK, building)
 
