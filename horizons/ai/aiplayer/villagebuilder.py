@@ -719,12 +719,9 @@ class VillageBuilder(AreaBuilder):
 						owned_by_other = True
 
 		if ok and not owned_by_other:
-			builder = self.make_builder(BUILDINGS.RESIDENTIAL, x, y, False)
-			if not builder.have_resources(self.land_manager):
+			if not self.have_resources(BUILDINGS.RESIDENTIAL):
 				return BUILD_RESULT.NEED_RESOURCES
-			if not builder.execute(self.land_manager):
-				self.log.debug('%s unable to build a tent at (%d, %d)', self, x, y)
-				return BUILD_RESULT.UNKNOWN_ERROR
+			assert BasicBuilder(BUILDINGS.RESIDENTIAL, (x, y), 0).execute(self.land_manager)
 
 		if ok or owned_by_other:
 			if self.tent_queue[0] == coords:
