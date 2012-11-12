@@ -181,7 +181,7 @@ class AreaBuilder(WorldObject):
 		"""Build the road given a valid path or None. Return True if it worked, False if the path was None."""
 		if path is not None:
 			for x, y in path:
-				self.register_change(x, y, BUILDING_PURPOSE.ROAD, None)
+				self.register_change_list([(x, y)], BUILDING_PURPOSE.ROAD, None)
 				building = self.island.ground_map[(x, y)].object
 				if building is not None and building.id == BUILDINGS.TRAIL:
 					continue
@@ -280,9 +280,8 @@ class AreaBuilder(WorldObject):
 			building = builder.execute(self.land_manager)
 			if not building:
 				return BUILD_RESULT.UNKNOWN_ERROR
-			for x, y in builder.position.tuple_iter():
-				self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.register_change(builder.position.origin.x, builder.position.origin.y, BUILDING_PURPOSE.STORAGE, None)
+			self.register_change_list(list(builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
+			self.register_change_list([builder.position.origin.to_tuple()], BUILDING_PURPOSE.STORAGE, None)
 			return BUILD_RESULT.OK
 		return BUILD_RESULT.IMPOSSIBLE
 

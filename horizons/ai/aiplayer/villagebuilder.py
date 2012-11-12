@@ -543,8 +543,8 @@ class VillageBuilder(AreaBuilder):
 				continue
 
 			possible_positions.remove(best_pos)
-			(x, y) = best_pos.origin.to_tuple()
-			self.register_change(x, y, new_purpose, (self.plan[(x, y)][1][0], None))
+			coords = best_pos.origin.to_tuple()
+			self.register_change_list([coords], new_purpose, (self.plan[coords][1][0], None))
 
 	def _reserve_special_village_building_spots(self):
 		"""Replace residence spots with special village buildings such as pavilions, schools, taverns, and fire stations."""
