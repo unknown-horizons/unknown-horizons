@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-17 19:48+0200\n"
-"Last-Translator: mightykai <k.janssen@home.nl>\n"
+"PO-Revision-Date: 2012-11-03 12:16+0000\n"
+"Last-Translator: joenit <jeroenjr89@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1351944989.0\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -77,7 +78,7 @@ msgid "tent"
 msgstr "tent"
 
 msgid "warehouse"
-msgstr "Pakhuis"
+msgstr "pakhuis"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 #
@@ -175,7 +176,7 @@ msgstr "houthakker"
 # (poterminology) uh/unknownhorizons.pot (2)
 # 88%
 msgid "resident"
-msgstr "Bewoner"
+msgstr "bewoner"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
@@ -184,7 +185,7 @@ msgstr "Bewoner"
 #
 #
 msgid "main square"
-msgstr "dorpsplein"
+msgstr "marktplaats"
 
 # (poterminology) uh-tutorial/tutorial.pot (12)
 # (poterminology) uh/unknownhorizons.pot (3)
@@ -271,7 +272,7 @@ msgid "your inhabitants"
 msgstr "Uw inwoners"
 
 msgid "close"
-msgstr "Sluiten"
+msgstr "sluiten"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 #
@@ -558,7 +559,7 @@ msgstr "vrije handelaar"
 #
 #
 msgid "happiness"
-msgstr "vreugde"
+msgstr "tevredenheid"
 
 msgid "in stock"
 msgstr "op voorraad"
@@ -845,7 +846,7 @@ msgid "liquor"
 msgstr "drank"
 
 msgid "location"
-msgstr "lokatie"
+msgstr "locatie"
 
 msgid "offer"
 msgstr "aanbieden"
@@ -987,7 +988,7 @@ msgstr "groeit"
 msgid "hold"
 msgstr "houden"
 
-# ligt er aan waar dit voor komt. 
+# ligt er aan waar dit voor komt.
 # is het bijv. een houthakker dan kan het werkeloos zijn of niks aan het doen.
 msgid "idle"
 msgstr "Inactief"
@@ -1115,7 +1116,6 @@ msgstr "geluid"
 msgid "special"
 msgstr "speciaal"
 
-#, fuzzy
 msgid "store"
 msgstr "opslaan / winkel"
 
@@ -1167,7 +1167,6 @@ msgstr "wereld"
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
 # 83%
-#, fuzzy
 msgid "yield"
 msgstr "opbrengsten"
 
@@ -1192,7 +1191,7 @@ msgstr "terug"
 #
 #
 msgid "build settlement"
-msgstr "bouw kolonie"
+msgstr "bouw nederzetting"
 
 msgid "load"
 msgstr "laden"
@@ -1217,7 +1216,7 @@ msgid "empty"
 msgstr "leeg"
 
 msgid "ensure"
-msgstr "Opbrengst"
+msgstr "opbrengst"
 
 #
 #
@@ -1275,7 +1274,7 @@ msgstr "meerdere"
 #
 #
 msgid "potato field"
-msgstr "aardappel veld"
+msgstr "aardappelveld"
 
 #
 #
@@ -1314,7 +1313,7 @@ msgid "sheep"
 msgstr "schaap"
 
 msgid "signal fire"
-msgstr "signaal vuur"
+msgstr "signaalvuur"
 
 msgid "statistics"
 msgstr "statistieken"
