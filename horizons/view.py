@@ -112,19 +112,14 @@ class View(ChangeListener):
 	def autoscroll(self, x, y):
 		"""Scrolling via mouse (reaching edge of screen)"""
 		if horizons.globals.fife.get_uh_setting('EdgeScrolling'):
-			self._autoscroll[0] = x
-			self._autoscroll[1] = y
+			self._autoscroll = [x, y]
 
 	def autoscroll_keys(self, x, y):
 		"""Scrolling via keyboard keys"""
-		self._autoscroll_keys[0] = x
-		self._autoscroll_keys[1] = y
+		self._autoscroll_keys = [x, y]
 
 	def do_autoscroll(self):
-		if self._autoscroll[0] == 0 and \
-		   self._autoscroll[1] == 0 and \
-		   self._autoscroll_keys[0] == 0 and \
-		   self._autoscroll_keys[1] == 0:
+		if self._autoscroll == [0, 0] and self._autoscroll_keys == [0, 0]:
 			self.time_last_autoscroll = time.time()
 			return
 		t = time.time()
