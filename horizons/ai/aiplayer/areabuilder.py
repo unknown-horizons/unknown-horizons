@@ -23,6 +23,7 @@ import copy
 import logging
 from collections import deque
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE, BUILD_RESULT
@@ -185,7 +186,7 @@ class AreaBuilder(WorldObject):
 				building = self.island.ground_map[(x, y)].object
 				if building is not None and building.id == BUILDINGS.TRAIL:
 					continue
-				assert Builder.create(BUILDINGS.TRAIL, self.land_manager, Point(x, y)).execute(self.land_manager)
+				assert BasicBuilder(BUILDINGS.TRAIL, (x, y), 0).execute(self.land_manager)
 		return path is not None
 
 	def build_road_connection(self, builder):
