@@ -123,9 +123,9 @@ class View(ChangeListener):
 			self.time_last_autoscroll = time.time()
 			return
 		t = time.time()
-		self.scroll(
-		  (self._autoscroll[0]+self._autoscroll_keys[0]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll),
-		  (self._autoscroll[1]+self._autoscroll_keys[1]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll))
+		speed_factor = GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll)
+		self.scroll(speed_factor * (self._autoscroll[0] + self._autoscroll_keys[0]),
+		            speed_factor * (self._autoscroll[1] + self._autoscroll_keys[1]))
 		self.time_last_autoscroll = t
 		self._changed()
 
@@ -136,13 +136,18 @@ class View(ChangeListener):
 		"""
 		loc = self.cam.getLocation()
 		pos = loc.getExactLayerCoordinatesRef()
+		cell_dim = self.cam.getCellImageDimensions()
 
 		if x != 0:
-			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
-			pos.y += x * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
+			new_angle = math.pi * self.cam.getRotation() / 180.0
+			zoom_factor = self.cam.getZoom() * cell_dim.x * VIEW.ZOOM_SPEED
+			pos.x += x * math.cos(new_angle) / zoom_factor
+			pos.y += x * math.sin(new_angle) / zoom_factor
 		if y != 0:
-			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
-			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
+			new_angle = math.pi * self.cam.getRotation() / -180.0
+			zoom_factor = self.cam.getZoom() * cell_dim.y * VIEW.ZOOM_SPEED
+			pos.x += y * math.sin(new_angle) / zoom_factor
+			pos.y += y * math.cos(new_angle) / zoom_factor
 
 		if pos.x > self.session.world.max_x:
 			pos.x = self.session.world.max_x

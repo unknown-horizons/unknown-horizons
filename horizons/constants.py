@@ -321,6 +321,7 @@ class VIEW:
 	ZOOM_MIN = 0.25
 	ZOOM_DEFAULT = 1
 	ZOOM_LEVELS_FACTOR = 0.875
+	ZOOM_SPEED = 0.7  # smaller values for faster speed
 	CELL_IMAGE_DIMENSIONS = (64, 32)
 	ROTATION = 45.0
 	TILT = -60
