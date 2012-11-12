@@ -811,12 +811,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		def update_hotkey_info(action, keyname):
 			default = self.keyconf.get_default_key_for_action(action)
 			popup.message.text = (lbl.explanation +
+			#xgettext:python-format
 			                      u'\n' + _('Current key: [{key}]').format(key=keyname) +
+			#xgettext:python-format
 			                      u'\t' + _('Default key: [{key}]').format(key=default))
 			popup.message.helptext = _('Click to reset to default key')
 			reset_to_default = Callback(apply_new_key, default)
 			popup.message.capture(reset_to_default)
 
+		#xgettext:python-format
 		headline = _('Change hotkey for {action}').format(action=action)
 		message = ''
 		if keyname in ('SHIFT', 'ESCAPE'):
