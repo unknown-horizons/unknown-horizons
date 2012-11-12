@@ -21,6 +21,7 @@
 
 from collections import deque, defaultdict
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.util.python import decorators
@@ -112,7 +113,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 				continue
 
 			alignment = 1
-			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
+			builder = BasicBuilder.create(BUILDINGS.STORAGE, (x, y), 0)
 			for tile in self.production_builder.iter_neighbour_tiles(builder.position):
 				coords = (tile.x, tile.y)
 				if coords not in self.production_builder.plan or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
