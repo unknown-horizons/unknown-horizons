@@ -54,12 +54,11 @@ class Builder(WorldObject):
 		self.building_id = building_id
 		self.point = point
 		self.orientation = orientation
-		self.ship = ship
 
 		check_settlement = ship is None
 		self.build_position = Entities.buildings[building_id].check_build(land_manager.session, point,
-			rotation = self.rotations[orientation], check_settlement = check_settlement, ship = ship,
-			issuer = land_manager.owner)
+			rotation=self.rotations[orientation], check_settlement=check_settlement, ship=ship,
+			issuer=land_manager.owner)
 		self.position = self.build_position.position
 
 	def __nonzero__(self):
@@ -95,8 +94,8 @@ class Builder(WorldObject):
 		action_set_id = building_class.get_random_action_set(level = building_level)
 
 		cmd = Build(self.building_id, self.point.x, self.point.y, land_manager.island,
-			self._get_rotation(land_manager.session), settlement = land_manager.settlement,
-			ship = self.ship, tearset = self.build_position.tearset, action_set_id = action_set_id)
+			self._get_rotation(land_manager.session), settlement=land_manager.settlement,
+			ship=ship, tearset=self.build_position.tearset, action_set_id=action_set_id)
 		result = cmd(land_manager.owner)
 		#self.log.debug('%s.execute(): %s', self.__class__.__name__, result)
 		return result
@@ -105,7 +104,7 @@ class Builder(WorldObject):
 		"""Return a boolean showing whether we have the resources to build the building right now."""
 		# the copy has to be made because Build.check_resources modifies it
 		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}
-		inventories = [land_manager.settlement, self.ship]
+		inventories = [land_manager.settlement, ship]
 		(enough_res, _) = Build.check_resources(extra_resources,
 			Entities.buildings[self.building_id].costs, land_manager.owner, inventories)
 		return enough_res
