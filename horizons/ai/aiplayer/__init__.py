@@ -41,6 +41,7 @@ from landmanager import LandManager
 from settlementmanager import SettlementManager
 from unitbuilder import UnitBuilder
 from constants import GOAL_RESULT
+from basicbuilder import BasicBuilder
 from builder import Builder
 from specialdomestictrademanager import SpecialDomesticTradeManager
 from internationaltrademanager import InternationalTradeManager
@@ -306,6 +307,8 @@ class AIPlayer(GenericAI):
 				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success, self.report_failure))
 
 	def tick(self):
+		import time
+		start = time.time()
 		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval)
 		self.settlement_founder.tick()
 		self.handle_enemy_expansions()
@@ -314,6 +317,7 @@ class AIPlayer(GenericAI):
 		self.international_trade_manager.tick()
 		self.unit_manager.tick()
 		self.combat_manager.tick()
+		print '%.3f' % (time.time() - start)
 
 	def tick_long(self):
 		"""
@@ -455,6 +459,7 @@ class AIPlayer(GenericAI):
 
 	@classmethod
 	def clear_caches(cls):
+		BasicBuilder.clear_cache()
 		Builder.cache.clear()
 		FarmEvaluator.clear_cache()
 
