@@ -28,6 +28,7 @@ from builder import Builder
 from areabuilder import AreaBuilder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.world.building.production import Mine
 from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
@@ -126,23 +127,29 @@ class ProductionBuilder(AreaBuilder):
 				return True
 		return False
 
-	def build_best_option(self, options, purpose):
-		"""
-		Try to build the highest valued option. Return a BUILD_RESULT constant showing how it went.
+	def extend_settlement_with_storage(self, position):
+		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
+		storage_class = Entities.buildings[BUILDINGS.STORAGE]
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type, storage_class.size,
+		    self.settlement.buildability_cache, self.buildability_cache)
 
-		@param options: [(value, builder), ...]
-		@param purpose: a BUILDING_PURPOSE constant
-		"""
+		options = []
+		for (x, y) in sorted(storage_spots):
+			builder = BasicBuilder.create(BUILDINGS.STORAGE, (x, y), 0)
 
-		if not options:
-			return BUILD_RESULT.IMPOSSIBLE
+			alignment = 1
+			for tile in self.iter_neighbour_tiles(builder.position):
+				if tile is None:
+					continue
+				coords = (tile.x, tile.y)
+				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+					alignment += 1
 
-		builder = max(options)[1]
-		if not builder.execute(self.land_manager):
-			return BUILD_RESULT.UNKNOWN_ERROR
-		self.register_change_list(list(builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
-		self.register_change_list([builder.position.origin.to_tuple()], purpose, None)
-		return BUILD_RESULT.OK
+			distance = position.distance(builder.position)
+			value = distance - alignment * 0.7
+			options.append((value, builder))
+
+		return self.build_best_option(options, BUILDING_PURPOSE.STORAGE)
 
 	def get_collector_area(self):
 		"""Return the set of all coordinates that are reachable from at least one collector by road or open space."""

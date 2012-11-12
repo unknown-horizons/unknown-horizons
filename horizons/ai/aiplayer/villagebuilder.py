@@ -749,6 +749,31 @@ class VillageBuilder(AreaBuilder):
 			self.current_section = self.plan[coords][1][0]
 		return BUILD_RESULT.OK
 
+	def extend_settlement_with_tent(self, position):
+		"""Build a tent to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
+		size = Entities.buildings[BUILDINGS.RESIDENTIAL].size
+		min_distance = None
+		best_coords = None
+
+		for (x, y) in self.tent_queue:
+			ok = True
+			for dx in xrange(size[0]):
+				for dy in xrange(size[1]):
+					if (x + dx, y + dy) not in self.settlement.ground_map:
+						ok = False
+						break
+			if not ok:
+				continue
+
+			distance = Rect.init_from_topleft_and_size(x, y, size[0], size[1]).distance(position)
+			if min_distance is None or distance < min_distance:
+				min_distance = distance
+				best_coords = (x, y)
+
+		if min_distance is None:
+			return BUILD_RESULT.IMPOSSIBLE
+		return self.build_tent(best_coords)
+
 	def handle_lost_area(self, coords_list):
 		"""
 		Handle losing the potential land in the given coordinates list.

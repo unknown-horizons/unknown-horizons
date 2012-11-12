@@ -232,65 +232,36 @@ class AreaBuilder(WorldObject):
 		"""Return a boolean showing whether we currently have the resources to build a building of the given type."""
 		return Entities.buildings[building_id].have_resources([self.settlement], self.owner)
 
-	def extend_settlement_with_tent(self, position):
-		"""Build a tent to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		size = Entities.buildings[BUILDINGS.RESIDENTIAL].size
-		min_distance = None
-		best_coords = None
+	def build_best_option(self, options, purpose):
+		"""
+		Try to build the highest valued option. Return a BUILD_RESULT constant showing how it went.
 
-		for (x, y) in self.settlement_manager.village_builder.tent_queue:
-			ok = True
-			for dx in xrange(size[0]):
-				for dy in xrange(size[1]):
-					if (x + dx, y + dy) not in self.settlement.ground_map:
-						ok = False
-						break
-			if not ok:
-				continue
+		@param options: [(value, builder), ...]
+		@param purpose: a BUILDING_PURPOSE constant
+		"""
 
-			distance = Rect.init_from_topleft_and_size(x, y, size[0], size[1]).distance(position)
-			if min_distance is None or distance < min_distance:
-				min_distance = distance
-				best_coords = (x, y)
-
-		if min_distance is None:
+		if not options:
 			return BUILD_RESULT.IMPOSSIBLE
-		return self.settlement_manager.village_builder.build_tent(best_coords)
 
-	def _extend_settlement_with_storage(self, position):
-		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		options = []
-		for x, y in self.plan:
-			builder = self.make_builder(BUILDINGS.STORAGE, x, y, False)
-			if not builder:
-				continue
+		best_index = 0
+		best_value = options[0][0]
+		for i in xrange(1, len(options)):
+			if options[i][0] > best_value:
+				best_index = i
+				best_value = options[i][0]
 
-			alignment = 1
-			for tile in self.iter_neighbour_tiles(builder.position):
-				if tile is None:
-					continue
-				coords = (tile.x, tile.y)
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					alignment += 1
-
-			distance = position.distance(builder.position)
-			value = distance - alignment * 0.7
-			options.append((value, builder))
-
-		for _, builder in sorted(options):
-			building = builder.execute(self.land_manager)
-			if not building:
-				return BUILD_RESULT.UNKNOWN_ERROR
-			self.register_change_list(list(builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
-			self.register_change_list([builder.position.origin.to_tuple()], BUILDING_PURPOSE.STORAGE, None)
-			return BUILD_RESULT.OK
-		return BUILD_RESULT.IMPOSSIBLE
+		builder = options[best_index][1]
+		if not builder.execute(self.land_manager):
+			return BUILD_RESULT.UNKNOWN_ERROR
+		self.register_change_list(list(builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
+		self.register_change_list([builder.position.origin.to_tuple()], purpose, None)
+		return BUILD_RESULT.OK
 
 	def extend_settlement(self, position):
 		"""Build a tent or a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		result = self.extend_settlement_with_tent(position)
+		result = self.settlement_manager.village_builder.extend_settlement_with_tent(position)
 		if result != BUILD_RESULT.OK:
-			result = self._extend_settlement_with_storage(position)
+			result = self.settlement_manager.production_builder.extend_settlement_with_storage(position)
 		return result
 
 	def handle_lost_area(self, coords_list):
