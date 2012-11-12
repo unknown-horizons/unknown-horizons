@@ -21,8 +21,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
-
 from unittest import TestCase
 from mock import Mock, MagicMock, patch
 
