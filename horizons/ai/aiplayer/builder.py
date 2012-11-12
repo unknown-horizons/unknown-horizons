@@ -26,11 +26,9 @@ from horizons.entities import Entities
 from horizons.constants import BUILDINGS
 from horizons.command.building import Build
 from horizons.util.python import decorators
-from horizons.util.shapes import Point
-from horizons.util.worldobject import WorldObject
 from horizons.world.building.production import Mine
 
-class Builder(WorldObject):
+class Builder(object):
 	"""An object of this class represents a plan to build a building at a specific place."""
 
 	log = logging.getLogger("ai.aiplayer.builder")
@@ -40,17 +38,15 @@ class Builder(WorldObject):
 	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER,
 		BUILDINGS.IRON_MINE, BUILDINGS.SALT_PONDS]
 
-	def __init__(self, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
+	def __init__(self, building_id, land_manager, point, orientation, ship):
 		"""
 		@param building_id: the id of the building class
 		@param land_manager: LandManager instance
 		@param point: the origin coordinates
 		@param orientation: 0..3 for the rotations [45, 135, 225, 315]
 		@param ship: ship instance if building from ship
-		@param worldid: the worldid of a loaded object
 		"""
 
-		super(Builder, self).__init__(worldid)
 		self.building_id = building_id
 		self.point = point
 		self.orientation = orientation
@@ -66,7 +62,7 @@ class Builder(WorldObject):
 		return self.build_position.buildable
 
 	def __str__(self):
-		return 'Builder(%d) of building %d at %s, orientation %d' % (self.worldid, self.building_id, self.point.to_tuple(), self.orientation)
+		return 'Builder of building %d at %s, orientation %d' % (self.building_id, self.point.to_tuple(), self.orientation)
 
 	def _get_rotation(self, session):
 		"""Return the rotation of the new building (randomise it if allowed)."""
@@ -112,7 +108,7 @@ class Builder(WorldObject):
 	cache = {}
 
 	@classmethod
-	def create(cls, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
+	def create(cls, building_id, land_manager, point, orientation=0, ship=None):
 		"""
 		Return a Builder object. Use the __nonzero__ function to know whether it is usable.
 
@@ -121,7 +117,6 @@ class Builder(WorldObject):
 		@param point: the origin coordinates
 		@param orientation: 0..3 for the rotations [45, 135, 225, 315]
 		@param ship: ship instance if building from ship
-		@param worldid: the worldid of a loaded object
 		"""
 
 		coords = point.to_tuple()
@@ -134,7 +129,7 @@ class Builder(WorldObject):
 		if key in cls.cache and last_changed != cls.cache[key][0]:
 			del cls.cache[key]
 		if key not in cls.cache:
-			cls.cache[key] = (last_changed, Builder(building_id, land_manager, point, orientation, ship, worldid=worldid))
+			cls.cache[key] = (last_changed, Builder(building_id, land_manager, point, orientation, ship))
 		return cls.cache[key][1]
 
 decorators.bind_all(Builder)
