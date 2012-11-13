@@ -20,7 +20,6 @@
 # ###################################################
 
 import copy
-import functools
 
 from horizons.entities import Entities
 from horizons.constants import BUILDINGS
@@ -31,7 +30,6 @@ from horizons.world.building.production import Mine
 
 from horizons.scheduler import Scheduler
 
-@functools.total_ordering
 class BasicBuilder(object):
 	"""An object of this class represents a non-checked plan to build a building at a specific place."""
 
@@ -98,11 +96,7 @@ class BasicBuilder(object):
 		inventories = [land_manager.settlement, ship]
 		return Build.check_resources(extra_resources, Entities.buildings[self.building_id].costs, land_manager.owner, inventories)[0]
 
-	def __eq__(self, other):
-		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
-		raise NotImplementedError()
-
-	def __lt__(self, other):
+	def __cmp__(self, other):
 		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
 		raise NotImplementedError()
 
