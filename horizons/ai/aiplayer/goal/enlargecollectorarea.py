@@ -141,7 +141,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 					best_coords = (x, y)
 					best_area = new_area
 			if best_coords is not None:
-				return self.production_builder.extend_settlement_with_tent(Rect.init_from_topleft_and_size_tuples(best_coords, tent_size))
+				return self.village_builder.extend_settlement_with_tent(Rect.init_from_topleft_and_size_tuples(best_coords, tent_size))
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def execute(self):
