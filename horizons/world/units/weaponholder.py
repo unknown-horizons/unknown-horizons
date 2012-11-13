@@ -331,7 +331,7 @@ class WeaponHolder(object):
 				import pprint
 				for ref in gc.get_referrers(target_ref()):
 					pprint.pprint(ref)
-			Scheduler().add_new_object(Callback(check_target_ref,target_ref), self, 3)
+			Scheduler().add_new_object(Callback(check_target_ref, target_ref), self, 3)
 		self._target = None
 
 	def stop_attack(self):

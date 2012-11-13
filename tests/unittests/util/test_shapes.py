@@ -37,7 +37,7 @@ class TestPathfinding(unittest.TestCase):
 
 	def testRect(self):
 		r1 = Rect(Point(0,0), 1, 1)
-		r2 = Rect(0, 0, 1 ,1)
+		r2 = Rect(0, 0, 1, 1)
 		r3 = Rect(Point(2, 2), 1, 1)
 		self.assertEqual(r1, r2)
 		self.assertTrue(r1 == r2)

@@ -130,7 +130,7 @@ class AnimalCollector(BuildingCollector):
 
 	def get_animal(self):
 		"""Sends animal to collectors home building"""
-		self.log.debug("%s getting animal %s",self, self.job.object)
+		self.log.debug("%s getting animal %s", self, self.job.object)
 		if self.__class__.kill_animal:
 			self.job.object.die()
 			self.job.object = None # there is no target anymore now
@@ -141,7 +141,7 @@ class AnimalCollector(BuildingCollector):
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
 		if not self.__class__.kill_animal:
-			self.log.debug("%s releasing animal %s",self, self.job.object)
+			self.log.debug("%s releasing animal %s", self, self.job.object)
 			Scheduler().add_new_object(self.job.object.search_job, self.job.object,
 			                           GAME_SPEED.TICKS_PER_SECOND)
 
