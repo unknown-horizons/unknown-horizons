@@ -31,7 +31,7 @@ class PychanChildFinder(dict):
 		try:
 			return dict.__getitem__(self, key)
 		except KeyError:
-			self[key] = self.gui.findChild(name = key)
+			self[key] = self.gui.findChild(name=key)
 			return self[key]
 
 	def __call__(self, name):
