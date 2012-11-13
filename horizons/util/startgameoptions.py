@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from operator import itemgetter
+
 from horizons.constants import AI, COLORS
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
@@ -46,7 +48,7 @@ class StartGameOptions(object):
 	def init_new_world(self, session):
 		# NOTE: this must be sorted before iteration, cause there is no defined order for
 		#       iterating a dict, and it must happen in the same order for mp games.
-		for i in sorted(self._get_player_list(), lambda p1, p2: cmp(p1['id'], p2['id'])):
+		for i in sorted(self._get_player_list(), key=itemgetter('id')):
 			session.world.setup_player(i['id'], i['name'], i['color'], i['clientid'] if self.is_multiplayer else None, i['local'], i['ai'], i['difficulty'])
 		session.world.set_forced_player(self.force_player_id)
 		center = session.world.init_new_world(self.trader_enabled, self.pirate_enabled, self.natural_resource_multiplier)

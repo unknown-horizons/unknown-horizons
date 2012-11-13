@@ -370,12 +370,15 @@ class SingleplayerMenu(object):
 			self._show_invalid_scenario_file_popup(e)
 			return
 
+		#xgettext:python-format
 		self.current.findChild(name="uni_map_difficulty").text = \
-			_("Difficulty: {difficulty}").format(difficulty=difficulty) #xgettext:python-format
+			_("Difficulty: {difficulty}").format(difficulty=difficulty)
+		#xgettext:python-format
 		self.current.findChild(name="uni_map_author").text = \
-			_("Author: {author}").format(author=author) #xgettext:python-format
+			_("Author: {author}").format(author=author)
+		#xgettext:python-format
 		self.current.findChild(name="uni_map_desc").text = \
-			_("Description: {desc}").format(desc=desc) #xgettext:python-format
+			_("Description: {desc}").format(desc=desc)
 
 	def _update_scenario_translation_infos(self, new_map_name):
 		"""Fill in translation infos of selected scenario to translation label.

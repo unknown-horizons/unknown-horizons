@@ -717,15 +717,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				details_label.text += _("Savegame version {version}").format(
 				                         version=savegame_info['savegamerev'])
 				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
-					#xgettext:python-format
-					if SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
-						details_label.text += u" " + _("(upgrade possible)")
-					else:
+					if not SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
 						details_label.text += u" " + _("(probably incompatible)")
 			except KeyError:
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
-				details_label.text += _("Incompatible version")
+				details_label.text += u" " + _("Incompatible version")
 
 			gui.adaptLayout()
 		return tmp_show_details
@@ -814,12 +811,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		def update_hotkey_info(action, keyname):
 			default = self.keyconf.get_default_key_for_action(action)
 			popup.message.text = (lbl.explanation +
+			#xgettext:python-format
 			                      u'\n' + _('Current key: [{key}]').format(key=keyname) +
+			#xgettext:python-format
 			                      u'\t' + _('Default key: [{key}]').format(key=default))
 			popup.message.helptext = _('Click to reset to default key')
 			reset_to_default = Callback(apply_new_key, default)
 			popup.message.capture(reset_to_default)
 
+		#xgettext:python-format
 		headline = _('Change hotkey for {action}').format(action=action)
 		message = ''
 		if keyname in ('SHIFT', 'ESCAPE'):

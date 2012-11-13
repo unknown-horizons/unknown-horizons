@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-04-19 19:06+0200\n"
-"Last-Translator: mightykai <k.janssen@home.nl>\n"
+"PO-Revision-Date: 2012-11-03 13:19+0000\n"
+"Last-Translator: joenit <jeroenjr89@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1351948798.0\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -38,7 +39,7 @@ msgstr "Er is een nieuwe wereld geschapen."
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Aristocrats"
-msgstr "aristocraat"
+msgstr "Aristocraat"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -58,7 +59,7 @@ msgstr "Burgerij"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Merchants"
-msgstr "kooplieden"
+msgstr "Kooplieden"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -101,7 +102,7 @@ msgstr "Kolonisten"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Sommige inwoners hebben geen toegang tot een dorpsplein."
+msgstr "Sommige inwoners hebben geen toegang tot een marktplaats."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -123,19 +124,19 @@ msgstr "Het is ook mogelijk om wegen te slepen."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Je kunt het warenhuis niet afbreken, de nederzettings kan niet zonder."
+msgstr "Je kunt het pakhuis niet afbreken, de nederzetting kan niet zonder."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Je hebt dit scenario verloren."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
-"De maximale toename is bereikt, uw inwoners zullen zich niet verder "
-"ontwikkelen."
+"Uw inwoners hebben het momenteel hoogst beschikbare beschavingsniveau "
+"bereikt. Uw inwoners zullen zich niet verder ontwikkelen."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -152,7 +153,7 @@ msgstr "U heeft gewonnen!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Uw gebouw heeft vlam gevat!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -596,7 +597,7 @@ msgstr "Herstart vereist"
 
 #: horizons/engine/settingsdialog.py
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Enkele van Uw veranderingen vereisen een herstart van Unknown Horizons."
+msgstr "Enkele van uw veranderingen vereisen een herstart van Unknown Horizons."
 
 #: horizons/engine/settingsdialog.py
 msgid "Restore default settings"
@@ -675,7 +676,7 @@ msgstr "Logging ingeschakeld"
 #: horizons/engine/settingshandler.py
 #, python-format
 msgid "Logs are written to {directory}."
-msgstr "Logs zijn weg geschreven in {directory}"
+msgstr "Logs zijn weg geschreven in {directory}."
 
 # geen hoofdletters bij u tenzij u god aanspreekt.
 #: horizons/gui/gui.py
@@ -791,7 +792,7 @@ msgstr "Savegame versie {version}"
 #: horizons/gui/gui.py
 #, python-format
 msgid "(potentially incompatible)"
-msgstr ""
+msgstr "(waarschijnlijk incompatibel)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -926,7 +927,7 @@ msgstr "Spelers: {player_amount}/{player_limit}"
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Creator: {player}"
-msgstr "Starter: {player}"
+msgstr "Maker: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "This savegame is missing (click here)"
@@ -982,11 +983,11 @@ msgstr "Aanbevolen aantal spelers: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "Translation status:"
-msgstr ""
+msgstr "Status van de vertaling:"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "{translated} translated messages, {untranslated} untranslated messages"
-msgstr ""
+msgstr "{translated} vertaalde berichten, {untranslated} onvertaalde berichten"
 
 #: horizons/gui/modules/singleplayermenu.py
 #: horizons/gui/modules/singleplayermenu.py
@@ -1067,7 +1068,7 @@ msgstr "Klik om een nieuwe random kaart te genereren"
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py
 msgid "Build {building}"
-msgstr ""
+msgstr "Bouw {building}"
 
 #: horizons/gui/mousetools/navigationtool.py
 msgid "Press H to remove this hint"
@@ -1116,7 +1117,7 @@ msgstr "Opdracht bevestigen"
 #: horizons/gui/tabs/buildingtabs.py
 #: horizons/gui/tabs/enemybuildingtabs.py
 msgid "Warehouse overview"
-msgstr "Warenhuis overzicht"
+msgstr "Pakhuis overzicht"
 
 #: horizons/gui/tabs/buildingtabs.py
 msgid "Tower overview"
@@ -1130,7 +1131,7 @@ msgstr "Overzicht"
 
 #: horizons/gui/tabs/buildrelatedtab.py
 msgid "Build related buildings"
-msgstr ""
+msgstr "Bouw gerelateerde gebouwen"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -1360,7 +1361,7 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to factory"
-msgstr "Fabriek instellingen herstellen."
+msgstr "Fabriek instellingen herstellen"
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
@@ -1435,7 +1436,7 @@ msgstr "Bouw"
 #. (text of widget: running_costs_label)
 #: horizons/i18n/guitranslations.py
 msgid "Running costs:"
-msgstr "Operatie kosten:"
+msgstr "Operationele kosten:"
 
 #. (helptext of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
@@ -1482,13 +1483,13 @@ msgstr "Draai de kaart met de klok mee (.)"
 #. (helptext of widget: speedDown)
 #: horizons/i18n/guitranslations.py
 msgid "Decrease game speed (-)"
-msgstr "Speel snelheid verlagen (-)"
+msgstr "Speelsnelheid verlagen (-)"
 
 # 82%
 #. (helptext of widget: speedUp)
 #: horizons/i18n/guitranslations.py
 msgid "Increase game speed (+)"
-msgstr "Speel snelheid verhogen (+)"
+msgstr "Speelsnelheid verhogen (+)"
 
 #. (helptext of widget: zoomIn)
 #: horizons/i18n/guitranslations.py
@@ -1564,7 +1565,7 @@ msgstr "Momenteel onder constructie:"
 #: horizons/i18n/guitranslations.py
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
-"Om een boot te maken, klik op een van de schermen, selecteer het gewenste "
+"Om een boot te maken, klik op een van de tabbladen, selecteer het gewenste "
 "schip en bevestig de order."
 
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
@@ -1603,7 +1604,7 @@ msgstr "Annuleer alle constructie vooruitgang"
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
 msgid "Running costs"
-msgstr "Operatie kosten"
+msgstr "Operationele kosten"
 
 #. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 #: horizons/i18n/guitranslations.py
@@ -1651,7 +1652,7 @@ msgstr "Gereedschap"
 #. (text of widget: headline_BB_war1_ship1)
 #: horizons/i18n/guitranslations.py
 msgid "Frigate"
-msgstr "Frigaat"
+msgstr "Frigat"
 
 #. (helptext of widget: costs_040)
 #: horizons/i18n/guitranslations.py
@@ -1789,7 +1790,7 @@ msgstr "Upgrade niet mogelijk:"
 #. (helptext of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py
 msgid "This is the current maximum increment!"
-msgstr "Dit is het maximum aantal!"
+msgstr "Dit is momenteel het hoogste beschavingsniveau!"
 
 #. (helptext of widget: paid_taxes_icon)
 #. (helptext of widget: taxes)
@@ -1826,7 +1827,7 @@ msgstr "Betaalde belastingen"
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Tax rate"
-msgstr "Belasting tarief"
+msgstr "Belastingtarief"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py
@@ -1912,7 +1913,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
-"Dit is het schip van de vrije handelaar. Van tijd tot tijd zal deze U "
+"Dit is het schip van de vrije handelaar. Van tijd tot tijd zal deze u "
 "bezoeken om goederen te kopen of verkopen."
 
 #. (helptext of widget: collector_utilisation_label)
@@ -2127,7 +2128,7 @@ msgstr "Kies dit scenario"
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py
 msgid "Route activity:"
-msgstr "Active route"
+msgstr "Routegebruik:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py
@@ -2157,7 +2158,7 @@ msgstr "Gebouwen"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Player scores"
-msgstr "Score van spelers"
+msgstr "Score van speler"
 
 #. (text of widget: land_score)
 #: horizons/i18n/guitranslations.py
@@ -2186,42 +2187,49 @@ msgstr "Eenheden"
 #. (helptext of widget: building_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Waarde van alle gebouwen in de nederzetting(en) van de speler"
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
 msgstr ""
+"Waarde van bruikbaar land d.w.z. Hoeveelheid land waarom gebouwd kan worden"
 
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Player's current treasury + income expected in near future"
 msgstr ""
+"Huidige schatkist van de speler + verwacht inkomen in de nabije toekomst"
 
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
 msgid "Player Name"
-msgstr ""
+msgstr "Spelersnaam"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
 msgstr ""
+"Waarde van alle middelen die zijn voortgekomen uit alle bronnen binnen de "
+"nederzetting(en) van de speler"
 
 #. (helptext of widget: settler_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
 msgstr ""
+"Waarde ter aanduiding van de voortgang van de nederzetting(en) uitgaande van "
+"aantal inwoners, gebouwen en algehele tevredenheid"
 
 #. (helptext of widget: total_score)
 #: horizons/i18n/guitranslations.py
 msgid "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
+"De totale waarde van alle individuele eenheden, kortweg: Totale Spelersscore"
 
 #. (helptext of widget: unit_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Waarde van alle eenheden die eigendom zijn van de speler"
 
 # 87%
 #. (text of widget: balance)
@@ -2257,7 +2265,7 @@ msgstr "Agressief"
 #. (helptext of widget: flee_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py
 msgid "Flee"
-msgstr "Ontkomen"
+msgstr "Vluchten"
 
 #. (helptext of widget: hold_ground_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py
@@ -2302,7 +2310,7 @@ msgstr "Toon coördinaten (Debug)"
 #. (text of widget: lbl_DESTROY_TOOL)
 #: horizons/i18n/guitranslations.py
 msgid "Enable destruct mode"
-msgstr "Schakel vernietig mode in"
+msgstr "Schakel afbraakmodes in"
 
 #. (text of widget: lbl_DOWN)
 #: horizons/i18n/guitranslations.py
@@ -2312,7 +2320,7 @@ msgstr "Naar onder scrollen"
 #. (text of widget: lbl_GRID)
 #: horizons/i18n/guitranslations.py
 msgid "Toggle grid on/off"
-msgstr "Rooster aan/uit"
+msgstr "Raster aan/uit"
 
 #. (text of widget: lbl_HELP)
 #: horizons/i18n/guitranslations.py
@@ -2423,7 +2431,7 @@ msgstr "Naar boven scrollen"
 #. (helptext of widget: cancelButton)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Return"
-msgstr "terug"
+msgstr "Terug"
 
 #. (text of widget: quit)
 #: horizons/i18n/guitranslations.py
@@ -2551,7 +2559,7 @@ msgstr "Actieve spellen:"
 #. (text of widget: main_menu_label)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Main menu:"
-msgstr "Hoofd menu:"
+msgstr "Hoofdmenu:"
 
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py
@@ -2637,7 +2645,7 @@ msgstr "Effecten volume:"
 #. (text of widget: fps_label)
 #: horizons/i18n/guitranslations.py
 msgid "Frame rate limit:"
-msgstr "maximale beelden per seconden:"
+msgstr "Maximale beelden per seconden:"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py
@@ -2683,7 +2691,7 @@ msgstr "Muziek volume:"
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Network port:"
-msgstr "Poort:"
+msgstr "Netwerk poort:"
 
 #. (text of widget: number_of_autosaves_label)
 #: horizons/i18n/guitranslations.py
@@ -2703,7 +2711,7 @@ msgstr "Volledig scherm:"
 #. (text of widget: screen_resolution_label)
 #: horizons/i18n/guitranslations.py
 msgid "Screen resolution:"
-msgstr "Scherm resolutie:"
+msgstr "Schermresolutie:"
 
 #. (text of widget: sound_enable_opt_text)
 #: horizons/i18n/guitranslations.py
@@ -2746,7 +2754,7 @@ msgstr "Indien 0, wordt de standaard driver gebruikt"
 #: horizons/i18n/guitranslations.py
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
-"Niet gebruiken in normale spel sessie.  Kies waar u de debug informatie wilt "
+"Niet gebruiken in normale spel sessie. Kies waar u de debug informatie wilt "
 "wegschrijven in de map van uw gebruikers map. Maakt het spel langzamer."
 
 #. (helptext of widget: edge_scrolling_label)
@@ -2757,7 +2765,7 @@ msgstr "De map scrollen als de muis dicht langs de rand is"
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr "Stel het maximaal behaalde beelden in. Standaard: 60bps"
+msgstr "Stel het maximaal behaalde beelden in. Standaard: 60bps."
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py
@@ -2788,7 +2796,7 @@ msgstr "SDL wordt niet ondersteund en kan problemen geven!"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Random map archive"
-msgstr ""
+msgstr "Archief van willekeurige kaarten"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py
@@ -2977,12 +2985,12 @@ msgstr "Varkens of vee benodigd. Produceert voedsel."
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py
 msgid "Cattle Run"
-msgstr "Weiland voor vee"
+msgstr "Weiland voor rundvee"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py
 msgid "Raises cattle. Needs a farm."
-msgstr "Brengt vee groot. Boerderij benodigd."
+msgstr "Brengt rundvee groot. Vereist een boerderij."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py
@@ -3018,8 +3026,7 @@ msgstr "Cacao veld"
 #: horizons/i18n/objecttranslations.py
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
-"Produceert cacao bonen voor de confectiebakkerij. Maakt gebruik van een "
-"boerderij."
+"Produceert cacao bonen voor de confectiebakkerij. Vereist een boerderij."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py
@@ -3030,12 +3037,12 @@ msgstr "Maisveld"
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py
 msgid "Yields corn. Needs a farm."
-msgstr "Produceert mais. Heeft een boerderij nodig."
+msgstr "Produceert mais. Vereist een boerderij."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py
 msgid "Distillery"
-msgstr "Brouwerij"
+msgstr "Stokerij"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py
@@ -3070,7 +3077,7 @@ msgstr "Brandweer"
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py
 msgid "Extinguishes fires."
-msgstr "Dooft vuren."
+msgstr "Blust branden."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py
@@ -3080,7 +3087,7 @@ msgstr "Visgrond"
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py
 msgid "Fisherman's Tent"
-msgstr "Vissers Tent"
+msgstr "Visserstent"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py
@@ -3095,7 +3102,7 @@ msgstr "Kruidentuin"
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py
 msgid "Produces herbs. Needs a farm."
-msgstr "Produceert kruiden. Boerderij benodigd."
+msgstr "Produceert kruiden. Vereist een boerderij."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py
@@ -3120,7 +3127,7 @@ msgstr "Haalt ijzererts uit de grond."
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py
 msgid "Lookout"
-msgstr "Uitkijk"
+msgstr "Uitkijkpost"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py
@@ -3130,12 +3137,12 @@ msgstr "Vergroot de speler zijn zicht."
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py
 msgid "Lumberjack Tent"
-msgstr "Houthakkers tent"
+msgstr "Houthakkerstent"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py
 msgid "Lumberjack Hut"
-msgstr "Houthakkers hut"
+msgstr "Houthakkershut"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py
@@ -3160,7 +3167,7 @@ msgstr "Berg"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py
 msgid "Pastry Shop"
-msgstr "Confectiebakkerij"
+msgstr "Banketbakkerij"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py
@@ -3175,12 +3182,12 @@ msgstr "Weiland"
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Brengt schapen groot. Produceert wol. Heeft een boerderij nodig."
+msgstr "Brengt schapen groot. Produceert wol. Vereist een boerderij."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py
 msgid "Pavilion"
-msgstr "Pavilioen"
+msgstr "Paviljoen"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py
@@ -3195,7 +3202,7 @@ msgstr "Varkensstal"
 #. tooltip_text of buildings:pigsty
 #: horizons/i18n/objecttranslations.py
 msgid "Raises pigs. Needs a farm."
-msgstr "Brengt varkens groot. Boerderij benodigd."
+msgstr "Brengt varkens groot. Vereist een boerderij."
 
 #. name of buildings:potatofield
 #: horizons/i18n/objecttranslations.py
@@ -3205,7 +3212,7 @@ msgstr "Aardappelveld"
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py
 msgid "Yields food. Needs a farm."
-msgstr "Produceert voedsel. Heeft een boerderij nodig."
+msgstr "Produceert voedsel. Vereist een boerderij."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py
@@ -3220,7 +3227,8 @@ msgstr "Zoutmeren"
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py
 msgid "Evaporates salt. Built on sea coast."
-msgstr "Verdampt zeewater voor zoutproductie. Gebouwd op de zee kust."
+msgstr ""
+"Verdampt zeewater voor zoutproductie. Moet aan de zeekust gebouwd worden."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py
@@ -3250,7 +3258,7 @@ msgstr "Specerijenveld"
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py
 msgid "Grows spices. Needs a farm."
-msgstr "Groeit specerijen. Heeft een boerderij nodig."
+msgstr "Groeit specerijen. Vereist een boerderij."
 
 #. name_2 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
@@ -3260,7 +3268,7 @@ msgstr "Steenhouwer"
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
 msgid "Carver"
-msgstr ""
+msgstr "Beeldhouwer"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
@@ -3270,7 +3278,7 @@ msgstr "Maakt bouwstenen van rots."
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py
 msgid "Stone Pit"
-msgstr "Rotsafzetting"
+msgstr "Steengroeve"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py
@@ -3286,7 +3294,7 @@ msgstr "Opslagtent"
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
 msgid "Storage Hut"
-msgstr "Opslag tent"
+msgstr "Opslaghut"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
@@ -3301,7 +3309,7 @@ msgstr "Suikerveld"
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py
 msgid "Used in liquor production. Needs a farm."
-msgstr "Gebruikt voor de drank productie. Benodigd een boerderij."
+msgstr "Gebruikt voor de drank productie. Vereist een boerderij."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py
@@ -3348,17 +3356,17 @@ msgstr "Landhuis"
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Houses your inhabitants."
-msgstr "Woonruimte voor inwoners."
+msgstr "Woonruimte voor uw inwoners."
 
 #. name of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py
 msgid "Tobacco Field"
-msgstr "Tabakveld"
+msgstr "Tabaksveld"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py
 msgid "Produces tobacco. Needs a farm."
-msgstr "Produceert tabak. Boerderij benodigd."
+msgstr "Produceert tabak. Vereist een boerderij."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py
@@ -3383,7 +3391,7 @@ msgstr "Maakt werktuigen uit ijzer."
 #. name of buildings:trail
 #: horizons/i18n/objecttranslations.py
 msgid "Trail"
-msgstr "Spoor"
+msgstr "Pad"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py
@@ -3403,12 +3411,12 @@ msgstr "Groeit hout. Wordt omgehakt door houthakkers."
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py
 msgid "Village school"
-msgstr "School"
+msgstr "Dorpsschool"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py
 msgid "Provides education."
-msgstr "Levert educatie."
+msgstr "Levert scholing."
 
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py
@@ -3419,13 +3427,13 @@ msgstr "Druiventeler"
 #: horizons/i18n/objecttranslations.py
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
-"Produceert druiven voor gebruik in wijn en de confectiebakkerij. Heeft een "
-"boerderij nodig."
+"Produceert druiven voor gebruik in wijn en de banketbakkerij. Vereist een "
+"boerderij."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py
 msgid "Vintner"
-msgstr "Wijnproducent"
+msgstr "Wijnboer"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py
@@ -3435,13 +3443,13 @@ msgstr "Produceert wijn uit druiven."
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py
 msgid "Warehouse"
-msgstr "Warenhuis"
+msgstr "Pakhuis"
 
 # 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py
 msgid "Weaver's Hut"
-msgstr "Kleermakers Tent"
+msgstr "Kleermakershut"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py
@@ -3456,7 +3464,7 @@ msgstr "Windmolen"
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py
 msgid "Grinds corn into flour."
-msgstr "Vermaalt mais in bloem."
+msgstr "Vermaalt mais tot bloem."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py
@@ -3525,32 +3533,32 @@ msgstr "Voedsel"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Fortifications"
-msgstr ""
+msgstr "Verdedigingswerken"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Infrastructure"
-msgstr ""
+msgstr "Infrastructuur"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Military Service"
-msgstr ""
+msgstr "Verdedigingswerken"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Residential"
-msgstr ""
+msgstr "Huizen"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Sea"
-msgstr ""
+msgstr "Zee"
 
 #. tab6_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
-msgstr ""
+msgstr "Esthetica"
 
 #: horizons/main.py
 msgid "Failed to start/load the game"
@@ -3558,7 +3566,7 @@ msgstr "Starten/laden van het spel is mislukt"
 
 #: horizons/main.py
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "Het spel dat u heeft geselecteerd kan niet worden gestart."
 
 #: horizons/main.py
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -3656,7 +3664,7 @@ msgstr ""
 
 #: horizons/session.py
 msgid "Access is denied"
-msgstr "Toegang is ontzegd"
+msgstr "Toegang is geweigerd"
 
 #: horizons/session.py
 msgid "The savegame file is probably read-only."
@@ -3664,7 +3672,7 @@ msgstr "Het opgeslagen bestand is vermoedelijk alleen-lezen."
 
 #: horizons/session.py
 msgid "File used by another process"
-msgstr "Bestand in gebruik door een ander proces."
+msgstr "Bestand in gebruik door een ander proces"
 
 #: horizons/session.py
 msgid "The savegame file is currently used by another program."
@@ -3712,27 +3720,27 @@ msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Dit gebouw moet op een eiland gebouwd worden."
 
 #: horizons/world/building/buildable.py
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "Dit terrein is niet geschikt voor dit gebouw."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Dit gebouw moet worden gebouwd binnen de grenzen van uw nederzetting."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "Dit gebied is al bezet door een andere speler."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "Dit gebied is al bezet door een ander gebouw."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "Dit gebied is al bezet door een eenheid."
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on the coastline."
@@ -3740,7 +3748,7 @@ msgstr "Dit gebouw dient op de kustlijn geplaatst te worden."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "Dit gebouw dient op de kustlijn geplaatst te worden."
 
 #: horizons/world/building/buildable.py
 msgid "This spot is too far away from your ship."
@@ -3752,27 +3760,27 @@ msgstr "Dit gebouw kan alleen gebouwd worden op een locatie met grondstoffen."
 
 #: horizons/world/building/buildable.py
 msgid "You have already settled this island."
-msgstr ""
+msgstr "U heeft al een nederzetting gevestigd op dit eiland."
 
 #: horizons/world/status.py
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Dit gebouw staat in brand!"
 
 #: horizons/world/status.py
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Deze bewoners zijn ontevreden."
 
 #: horizons/world/status.py
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Het inventaris van dit gebouw is vol."
 
 #: horizons/world/status.py
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Dit gebouw heeft een hele lage productiviteit."
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
-msgstr ""
+msgstr "Dit gebouw is stilgelegd."
 
 #: horizons/world/traderoute.py
 #, python-format
@@ -3848,7 +3856,7 @@ msgstr "Fout: Kan de benodigde libraries niet vinden"
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
 "Helaas moeten wij mededelen dat een benodigd bestand voor Unknown Horizons "
-"ontbreekt en geinstalleerd dient te worden."
+"ontbreekt en geïnstalleerd dient te worden."
 
 #: run_uh.py
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."

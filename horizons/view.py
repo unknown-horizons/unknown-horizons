@@ -67,11 +67,9 @@ class View(ChangeListener):
 			if layer.getCellCache():
 				layer.getCellCache().setStaticSize(True)
 
-		self.cam = self.map.addCamera("main", self.layers[-1],
-		                               fife.Rect(0, 0,
-		                                         horizons.globals.fife.engine_settings.getScreenWidth(),
-		                                         horizons.globals.fife.engine_settings.getScreenHeight())
-		                               )
+		rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
+		                       horizons.globals.fife.engine_settings.getScreenHeight())
+		self.cam = self.map.addCamera("main", self.layers[-1], rect)
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
@@ -114,25 +112,20 @@ class View(ChangeListener):
 	def autoscroll(self, x, y):
 		"""Scrolling via mouse (reaching edge of screen)"""
 		if horizons.globals.fife.get_uh_setting('EdgeScrolling'):
-			self._autoscroll[0] = x
-			self._autoscroll[1] = y
+			self._autoscroll = [x, y]
 
 	def autoscroll_keys(self, x, y):
 		"""Scrolling via keyboard keys"""
-		self._autoscroll_keys[0] = x
-		self._autoscroll_keys[1] = y
+		self._autoscroll_keys = [x, y]
 
 	def do_autoscroll(self):
-		if self._autoscroll[0] == 0 and \
-		   self._autoscroll[1] == 0 and \
-		   self._autoscroll_keys[0] == 0 and \
-		   self._autoscroll_keys[1] == 0:
+		if self._autoscroll == [0, 0] and self._autoscroll_keys == [0, 0]:
 			self.time_last_autoscroll = time.time()
 			return
 		t = time.time()
-		self.scroll(
-		  (self._autoscroll[0]+self._autoscroll_keys[0]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll),
-		  (self._autoscroll[1]+self._autoscroll_keys[1]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll))
+		speed_factor = GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll)
+		self.scroll(speed_factor * (self._autoscroll[0] + self._autoscroll_keys[0]),
+		            speed_factor * (self._autoscroll[1] + self._autoscroll_keys[1]))
 		self.time_last_autoscroll = t
 		self._changed()
 
@@ -143,13 +136,18 @@ class View(ChangeListener):
 		"""
 		loc = self.cam.getLocation()
 		pos = loc.getExactLayerCoordinatesRef()
+		cell_dim = self.cam.getCellImageDimensions()
 
 		if x != 0:
-			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
-			pos.y += x * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
+			new_angle = math.pi * self.cam.getRotation() / 180.0
+			zoom_factor = self.cam.getZoom() * cell_dim.x * VIEW.SCROLL_SPEED
+			pos.x += x * math.cos(new_angle) / zoom_factor
+			pos.y += x * math.sin(new_angle) / zoom_factor
 		if y != 0:
-			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
-			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
+			new_angle = math.pi * self.cam.getRotation() / -180.0
+			zoom_factor = self.cam.getZoom() * cell_dim.y * VIEW.SCROLL_SPEED
+			pos.x += y * math.sin(new_angle) / zoom_factor
+			pos.y += y * math.cos(new_angle) / zoom_factor
 
 		if pos.x > self.session.world.max_x:
 			pos.x = self.session.world.max_x

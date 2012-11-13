@@ -686,7 +686,7 @@ class World(BuildingOwner, WorldObject):
 			# (those are assumed to default to something evaluating False)
 			dict_hash = lambda d : sorted(i for i in d.iteritems() if i[1])
 			for settlement in island.settlements:
-				storage_dict =settlement.get_component(StorageComponent).inventory._storage
+				storage_dict = settlement.get_component(StorageComponent).inventory._storage
 				entry = {
 					'owner': str(settlement.owner.worldid),
 					'inhabitants': str(settlement.inhabitants),

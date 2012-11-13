@@ -274,8 +274,9 @@ class Server(object):
 		# check packet size
 		if len(event.packet.data) > self.capabilities['maxpacketsize']:
 			logging.warning("[RECEIVE] Global packet size exceeded from %s: size=%d" % (peer.address, len(event.packet.data)))
-			self.fatalerror(player, __("You've exceeded the global packet size. This should never happen."
-				" Please contact us and/or file a bug report"))
+			self.fatalerror(player, __("You've exceeded the global packet size.") + " " +
+			                        __("This should never happen. "
+			                           "Please contact us or file a bug report."))
 			return
 
 		# shortpath if game is running
@@ -291,8 +292,10 @@ class Server(object):
 			return
 		except PacketTooLarge as e:
 			logging.warning("[RECEIVE] Per packet size exceeded from %s: %s" % (player, e))
-			self.fatalerror(player, __("You've exceeded the per packet size. This should never happen."
-				" Please contact us and/or file a bug report: %s" % (e)))
+			self.fatalerror(player, __("You've exceeded the per packet size.") + " " +
+			                        __("This should never happen. "
+			                           "Please contact us or file a bug report.") +
+			                        " " + str(e))
 			return
 		except Exception as e:
 			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (player, e))

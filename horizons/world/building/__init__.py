@@ -28,7 +28,6 @@ import horizons.globals
 from fife import fife
 
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.i18n.objecttranslations import object_translations
 from horizons.world.ingametype import IngameType
 from horizons.world.production.producer import Producer
 
@@ -51,6 +50,10 @@ class BuildingClass(IngameType):
 
 		self.settler_level = yaml_data['settler_level']
 		try:
+			# import here because we have to wait for the translations to be
+			# inited after starting. When importing directly an empty copy of
+			# object_translations is imported, which is useless
+			from horizons.i18n.objecttranslations import object_translations
 			# NOTE: tooltip texts are always untranslated here, use db.get_building_tooltip()
 			self.tooltip_text = object_translations[yaml_data['yaml_file']]['tooltip_text']
 		except KeyError: # not found => use value defined in yaml unless it is null
@@ -73,7 +76,7 @@ class BuildingClass(IngameType):
 			self.buildable_on_deposit_type = component_template.get('is_mine_for')
 		except KeyError:
 			pass
-			
+
 	def __str__(self):
 		return "Building[{id}]({name})".format(id=self.id, name=self.name)
 

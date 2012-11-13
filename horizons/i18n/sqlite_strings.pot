@@ -1,26 +1,12 @@
-#. This is a database entry: the name of a unit.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Sheep"
+#, python-format
+msgid "{player1} and {player2} have allied their forces."
 msgstr ""
 
-#. This is a database entry: the name of a unit.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Cattle"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Pigsty"
-msgstr ""
-
-#. This is a database entry: the name of a color.
-#: sql database files
-msgid "yellow"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "iron ore"
+msgid "Your building has caught fire!"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -28,24 +14,19 @@ msgstr ""
 msgid "medical herbs"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "clay deposit"
-msgstr ""
-
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
-msgid "aristocrat"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Main Square"
+msgid "Aristocrats"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "happiness"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "Some of your inhabitants just moved out."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -60,27 +41,12 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "wood"
+msgid "stone tops"
 msgstr ""
 
-#. This is a database entry: the name of a color.
+#. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
-msgid "black"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
-
-#. This is a database entry: the name of a color.
-#: sql database files
-msgid "orange"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "Fisher"
+msgid "Pioneers"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -88,14 +54,9 @@ msgstr ""
 msgid "wool"
 msgstr ""
 
-#. This is a database entry: the name of an inhabitant increment (tier / level).
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "merchant"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "Frigate"
+msgid "cocoa beans"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -113,24 +74,25 @@ msgstr ""
 msgid "pigs for slaughter"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Tobacco Field"
+msgid "trees"
 msgstr ""
 
-#. This is a database entry: the name of a color.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "cyan"
+msgid "clay deposit"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Lumberjack Camp"
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
 
-#. This is a database entry: the name of a color.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "gray"
+msgid "cocoa"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -138,14 +100,9 @@ msgstr ""
 msgid "potatoes"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Smeltery"
-msgstr ""
-
-#. This is a database entry: the name of a color.
-#: sql database files
-msgid "teal"
+msgid "iron ore"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -153,24 +110,14 @@ msgstr ""
 msgid "clay"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
-msgid "A new settlement has been created by ${player}."
+msgid "Merchants"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Herbary"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Gravel Path"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Iron Mine"
+msgid "liquor"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -178,9 +125,10 @@ msgstr ""
 msgid "iron ingots"
 msgstr ""
 
-#. This is a database entry: the name of a unit.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Huker"
+#, python-format
+msgid "Screenshot has been saved to {file}."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -193,74 +141,50 @@ msgstr ""
 msgid "You can also drag roads."
 msgstr ""
 
-#. This is a database entry: the name of a color.
-#: sql database files
-msgid "blue"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "lamb wool"
 msgstr ""
 
-#. This is a database entry: the name of a color.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "purple"
+msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Signal Fire"
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Weaver's Tent"
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "pioneer"
-msgstr ""
-
-#. This is a database entry: the name of a color.
-#: sql database files
-msgid "red"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Sugar Field"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Pavilion"
+msgid "Cannot go here."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "fish"
+msgid "sugar cane"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Tavern"
+msgid "corn"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Tree"
+msgid "grapes"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Clay Pit"
+msgid "honeycombs"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
-msgid "Pasture"
+msgid "Settlers"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -275,37 +199,33 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Some of your settlers just moved out."
+msgid "Some of your inhabitants have no access to a main square."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
 msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
-msgid "settler"
+msgid "Sailors"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Mountain"
+msgid "grain"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "spices"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "dagger"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Log"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Fisherman's Tent"
-msgstr ""
-
-#. This is a database entry: the name of a building the name of a unit.
-#: sql database files
-msgid "Doctor"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -318,14 +238,9 @@ msgstr ""
 msgid "community"
 msgstr ""
 
-#. This is a database entry: the name of an inhabitant increment (tier / level).
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "sailor"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Salt Ponds"
+msgid "spice plants"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -343,19 +258,14 @@ msgstr ""
 msgid "tools"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Tent"
+msgid "deer meat"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Lookout"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Farm"
+msgid "confectionery"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -363,24 +273,14 @@ msgstr ""
 msgid "coins"
 msgstr ""
 
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Trail"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Village school"
-msgstr ""
-
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "${player1} and ${player2} are now ${status}"
+msgid "You won!"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "liquor"
+msgid "fish"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -388,19 +288,24 @@ msgstr ""
 msgid "charcoal"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Tent Ruin"
+msgid "stone deposit"
 msgstr ""
 
-#. This is a database entry: the name of a unit.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Trader"
+msgid "You failed the scenario."
 msgstr ""
 
-#. This is a database entry: the name of an inhabitant increment (tier / level).
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "citizen"
+msgid "fire"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -408,44 +313,26 @@ msgstr ""
 msgid "acorns"
 msgstr ""
 
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Potato Field"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "UsableFisher"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Storage Tent"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "tobacco plants"
 msgstr ""
 
-#. This is a database entry: the name of a color.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "white"
+#, python-format
+msgid "You need more {resource} to build this building."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Your settlers reached level ${level}."
+msgid "Your crew refuses to leave this map."
 msgstr ""
 
-#. This is a database entry: the name of a unit.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Boar"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Tobacconist"
+#, python-format
+msgid "{player1} and {player2} have settled their hostility."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -453,39 +340,19 @@ msgstr ""
 msgid "grass"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "You need more ${resource} to build this building."
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Branch Office"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "sugar cane"
+msgid "alvearies"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Boat Builder"
+msgid "Your game has been autosaved."
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Fish Deposit"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "BomberMan"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Charcoal Burning"
+msgid "One of your fields requires a farm to harvest its crops."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -493,29 +360,15 @@ msgstr ""
 msgid "Your mine has run out of resources."
 msgstr ""
 
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr ""
+
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "iron deposit"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Clay Deposit"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "One of your settler has no main square in it's range."
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Toolmaker"
-msgstr ""
-
-#. This is a database entry: the name of a color.
-#: sql database files
-msgid "pink"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -523,14 +376,10 @@ msgstr ""
 msgid "education"
 msgstr ""
 
-#. This is a database entry: the name of a color.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "lemon"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Butchery"
+#, python-format
+msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -540,22 +389,29 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "You have won!"
+#, python-format
+msgid "{player}: {message}"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Hunter's Tent"
+msgid "flour"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: sql database files
+msgid "Citizens"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "get-together"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "Pirate Ship"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -575,11 +431,6 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "deer meat"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
 msgid "herbs"
 msgstr ""
 
@@ -588,49 +439,35 @@ msgstr ""
 msgid "pigs"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Cattle Run"
+msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Wooden Tower"
+msgid "condiments"
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Distillery"
-msgstr ""
-
-#. This is a database entry: the name of a unit.
-#: sql database files
-msgid "Deer"
-msgstr ""
-
-#. This is a database entry: the name of a building.
-#: sql database files
-msgid "Brickyard"
-msgstr ""
-
-#. This is a database entry: the name of a color.
-#: sql database files
-msgid "green"
+msgid "candles"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "Screenshot has been saved to ${file}."
+#, python-format
+msgid "A new settlement was founded by {player}."
 msgstr ""
 
-#. This is a database entry: the name of a building.
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Rampart"
+msgid "vines"
 msgstr ""
 
-#. This is a database entry: the name of a color.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "bordeaux"
+msgid "Your game has been saved."
 msgstr ""
 
 #. This is a database entry: the name of a resource.

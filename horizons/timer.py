@@ -47,7 +47,7 @@ class Timer(LivingObject):
 		self._freeze_protection = freeze_protection
 		self.ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 		self.tick_next_id = tick_next_id
-		self.tick_next_time = None
+		self.tick_next_time = 0.0
 		self.tick_func_test = []
 		self.tick_func_call = []
 
