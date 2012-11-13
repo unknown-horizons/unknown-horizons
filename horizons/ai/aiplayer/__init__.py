@@ -112,8 +112,10 @@ class AIPlayer(GenericAI):
 				if player is self:
 					position = ai_players
 				ai_players += 1
-		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval * position / ai_players + 1)
-		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=self.tick_long_interval * position / ai_players + 1)
+		run_in = self.tick_interval * position // ai_players + 1
+		Scheduler().add_new_object(Callback(self.tick), self, run_in=run_in)
+		run_in = self.tick_long_interval * position // ai_players + 1
+		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=run_in)
 
 	def finish_init(self):
 		# initialise the things that couldn't be initialised before because of the loading order

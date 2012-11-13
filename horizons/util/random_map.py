@@ -53,7 +53,7 @@ def create_random_island(map_db, island_id, id_string):
 	map_set = set()
 
 	# place this number of shapes
-	for i in xrange(15 + width * height / 45):
+	for i in xrange(15 + width * height // 45):
 		# place shape determined by shape_id on (x, y)
 		add = True
 		shape_id = rand.randint(2, 8)
@@ -76,8 +76,8 @@ def create_random_island(map_db, island_id, id_string):
 			# use a circle such that the radius is determined by shape_id
 			radius = shape_id
 			if not add and rand.randint(0, 6) < 5:
-				x = rand.randint(-radius * 3 / 2, width + radius * 3 / 2)
-				y = rand.randint(-radius * 3 / 2, height + radius * 3 / 2)
+				x = rand.randint(-radius * 3 // 2, width + radius * 3 // 2)
+				y = rand.randint(-radius * 3 // 2, height + radius * 3 // 2)
 				shape = Circle(Point(x, y), shape_id)
 			elif width - radius - 4 >= radius + 3 and height - radius - 4 >= radius + 3:
 				x = rand.randint(radius + 3, width - radius - 4)
@@ -161,11 +161,11 @@ def create_random_island(map_db, island_id, id_string):
 					if (x2, y2) not in map_set:
 						continue
 					if abs(x_offset) == 1:
-						y2 = y + y_offset / 2
+						y2 = y + y_offset // 2
 						if (x2, y2) in map_set or (x, y2) in map_set:
 							continue
 					else:
-						x2 = x + x_offset / 2
+						x2 = x + x_offset // 2
 						if (x2, y2) in map_set or (x2, y) in map_set:
 							continue
 					to_fill.add((x2, y2))
@@ -399,12 +399,12 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 	max_island_size = min(max_island_size, map_size)
 	rand = random.Random(_simplify_seed(seed))
 	min_island_size = 20 # minimum chosen island side length (the real size my be smaller)
-	min_island_separation = 3 + map_size / 100 # minimum distance between two islands
+	min_island_separation = 3 + map_size // 100 # minimum distance between two islands
 	max_island_side_coefficient = 4 # maximum value of island's max(side length) / min(side length)
 
 	islands = []
 	estimated_land = 0
-	max_land_amount = map_size * map_size * (100 - water_percent) / 100
+	max_land_amount = map_size * map_size * (100 - water_percent) // 100
 
 	trial_number = 0
 	while trial_number < 100:
