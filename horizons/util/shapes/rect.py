@@ -275,6 +275,10 @@ class Rect(Shape):
 			for y in xrange(self.top, self.bottom):
 				yield Point(x, y)
 
+	@classmethod
+	def get_surrounding_offsets(cls, size):
+		rect = cls.init_from_topleft_and_size_tuples((0, 0), size)
+		return list(rect.get_surrounding())
 
 class ConstRect(Const, Rect):
 	"""An immutable Rect.

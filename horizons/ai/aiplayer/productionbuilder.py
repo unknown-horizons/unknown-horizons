@@ -35,7 +35,7 @@ from horizons.constants import AI, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-from horizons.util.shapes import Point, Rect
+from horizons.util.shapes import distances, Point, Rect
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
@@ -126,28 +126,27 @@ class ProductionBuilder(AreaBuilder):
 				return True
 		return False
 
-	def extend_settlement_with_storage(self, position):
+	def extend_settlement_with_storage(self, target_position):
 		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
 		storage_class = Entities.buildings[BUILDINGS.STORAGE]
-		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type, storage_class.size,
-		    self.settlement.buildability_cache, self.buildability_cache)
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type,
+			storage_class.size, self.settlement.buildability_cache, self.buildability_cache)
+		storage_surrounding_offsets = Rect.get_surrounding_offsets(storage_class.size)
+		coastline = self.land_manager.coastline
 
 		options = []
 		for (x, y) in sorted(storage_spots):
 			builder = BasicBuilder.create(BUILDINGS.STORAGE, (x, y), 0)
 
 			alignment = 1
-			for tile in self.iter_neighbour_tiles(builder.position):
-				if tile is None:
-					continue
-				coords = (tile.x, tile.y)
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+			for (dx, dy) in storage_surrounding_offsets:
+				coords = (x + dx, y + dy)
+				if coords in coastline or coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
 
-			distance = position.distance(builder.position)
+			distance = distances.distance_rect_rect(target_position, builder.position)
 			value = distance - alignment * 0.7
 			options.append((value, builder))
-
 		return self.build_best_option(options, BUILDING_PURPOSE.STORAGE)
 
 	def get_collector_area(self):

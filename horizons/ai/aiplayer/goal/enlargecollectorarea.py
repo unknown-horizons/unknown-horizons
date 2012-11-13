@@ -28,7 +28,6 @@ from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
 from horizons.util.shapes import Rect
 from horizons.entities import Entities
-from horizons.world.buildability.terraincache import TerrainRequirement
 
 class EnlargeCollectorAreaGoal(SettlementGoal):
 	"""Enlarge the area of the island covered by collectors."""
@@ -93,11 +92,10 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 			if coords in self.production_builder.plan and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
 				coords_set_by_area[area_number].add(coords)
 
-		storage_size = Entities.buildings[BUILDINGS.STORAGE].size
-		storage_spots = self.island.terrain_cache.get_buildability_intersection(TerrainRequirement.LAND,
-			storage_size, self.settlement.buildability_cache, self.production_builder.buildability_cache)
-		storage_base = Rect.init_from_topleft_and_size_tuples((0, 0), storage_size)
-		storage_surrounding_offsets = list(storage_base.get_surrounding())
+		storage_class = Entities.buildings[BUILDINGS.STORAGE]
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type,
+			storage_class.size, self.settlement.buildability_cache, self.production_builder.buildability_cache)
+		storage_surrounding_offsets = Rect.get_surrounding_offsets(storage_class.size)
 
 		options = []
 		radius_offsets = self._radius_offsets
