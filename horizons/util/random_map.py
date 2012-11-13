@@ -19,16 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import random
-import tempfile
 import sys
 import re
 import string
 import copy
 
 from horizons.util.shapes import Circle, Point, Rect
-from horizons.util.dbreader import DbReader
 from horizons.constants import GROUND
 
 # this is how a random island id looks like (used for creation)
