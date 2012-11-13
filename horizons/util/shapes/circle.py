@@ -36,7 +36,9 @@ class Circle(Shape):
 
 	def contains(self, point):
 		assert isinstance(point, Point)
-		return point.distance(self.center) <= self.radius
+		dx = point.x - self.center.x
+		dy = point.y - self.center.y
+		return dx * dx + dy * dy <= self.radius * self.radius
 
 	def intersects_rect(self, rect):
 		return rect.distance(self.center) > self.radius
@@ -54,10 +56,16 @@ class Circle(Shape):
 		return not self.__eq__(other)
 
 	def tuple_iter(self):
-		"""Iterates through all coords in circle as tuple"""
-		for x in xrange(self.center.x-self.radius, self.center.x+self.radius+1):
-			for y in xrange(self.center.y-self.radius, self.center.y+self.radius+1):
-				if self.center.distance((x, y)) <= self.radius:
+		"""Iterate through all coords in the circle as tuples."""
+		cx = self.center.x
+		cy = self.center.y
+		radius_sq = self.radius * self.radius
+		for x in xrange(cx - self.radius, cx + self.radius + 1):
+			for y in xrange(cy - self.radius, cy + self.radius + 1):
+				dx = cx - x
+				dy = cy - y
+				dist_sq = dx * dx + dy * dy
+				if dist_sq <= radius_sq:
 					yield (x, y)
 
 	def get_border_coordinates(self, bordersize=1):
