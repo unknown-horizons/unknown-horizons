@@ -93,8 +93,11 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 			if coords in self.production_builder.plan and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
 				coords_set_by_area[area_number].add(coords)
 
-		storage_spots = self.island.terrain_cache.get_buildability_intersection(TerrainRequirement.LAND, (2, 2),
-		    self.settlement.buildability_cache, self.production_builder.buildability_cache)
+		storage_size = Entities.buildings[BUILDINGS.STORAGE].size
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(TerrainRequirement.LAND,
+			storage_size, self.settlement.buildability_cache, self.production_builder.buildability_cache)
+		storage_base = Rect.init_from_topleft_and_size_tuples((0, 0), storage_size)
+		storage_surrounding_offsets = list(storage_base.get_surrounding())
 
 		options = []
 		radius_offsets = self._radius_offsets
@@ -114,9 +117,9 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 			alignment = 1
 			builder = BasicBuilder.create(BUILDINGS.STORAGE, (x, y), 0)
-			for tile in self.production_builder.iter_neighbour_tiles(builder.position):
-				coords = (tile.x, tile.y)
-				if coords not in self.production_builder.plan or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
+			for (dx, dy) in storage_surrounding_offsets:
+				coords = (x + dx, y + dy)
+				if coords in coastline or coords not in self.production_builder.plan or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
 
 			value = useful_area + alignment * self.personality.alignment_coefficient
