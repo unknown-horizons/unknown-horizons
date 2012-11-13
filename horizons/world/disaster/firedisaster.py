@@ -22,7 +22,7 @@
 
 from horizons.world.disaster import Disaster
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
-from horizons.world.status import FireStatusIcon
+from horizons.gui.icons import FireStatusIcon
 from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback

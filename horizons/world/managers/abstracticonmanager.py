@@ -1,0 +1,71 @@
+# ###################################################
+# Copyright (C) 2012 The Unknown Horizons Team
+# team@unknown-horizons.org
+# This file is part of Unknown Horizons.
+
+# Unknown Horizons is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the
+# Free Software Foundation, Inc.,
+# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# ###################################################
+
+from fife import fife
+
+class AbstractIconManager(object):
+	"""Abstract Manager-Class for all IconManagers"""
+
+	def __init__(self, renderer, layer):
+		"""
+		@param renderer: Renderer used to render the icons
+		@param layer: map layer, needed to place icon
+		"""
+		self.layer = layer
+		self.renderer = renderer
+
+	def end(self):
+		self.renderer = None
+
+	def get_icon_position(self, instance, group):
+		""" This has to be called before __render_icon.
+		It calculates the position of the icon
+		"""
+
+		# Clear all icons
+		self.renderer.removeAll(group)
+		pos = instance.position
+
+		# Calculate position for icon
+		loc = fife.Location(self.layer)
+		coord = fife.ExactModelCoordinate(pos.origin.x + pos.width / 4.0,
+		                                  pos.origin.y + pos.height / 4.0)
+		loc.setExactLayerCoordinates(coord)
+		return loc
+
+	def render_icon(self, instance, group, icon):
+		""" Renders the icon
+		"""
+		loc = self.get_icon_position(instance, group)
+		icon.render(self.renderer, group, loc)
+
+	def remove_icon(self, group):
+		"""Removes the icon"""
+		self.renderer.removeAll(group)
+
+	def get_renderer_group_name(self, instance, **kwargs):
+		"""Generates a unique group name for the renderer usage.
+		These names MUST be unique!!"""
+		group_name = self.__class__.__name__.replace('Manager', '') + "_" + str(id(instance))
+		for arg in kwargs.values():
+			group_name += "_" + str(arg)
+
+		return group_name
