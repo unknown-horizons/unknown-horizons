@@ -22,7 +22,6 @@
 # ###################################################
 
 import shutil
-import sys
 import tempfile
 
 from tests.gui import gui_test
