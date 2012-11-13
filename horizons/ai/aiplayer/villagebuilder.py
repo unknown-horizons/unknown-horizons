@@ -129,8 +129,8 @@ class VillageBuilder(AreaBuilder):
 
 		# partition with roads between the sections
 		start_y = min(ys)
-		section_width = width / horizontal_sections
-		section_height = height / vertical_sections
+		section_width = width // horizontal_sections
+		section_height = height // vertical_sections
 		section_coords_set_list = []
 		for i in xrange(vertical_sections):
 			bottom_road = i + 1 < vertical_sections
