@@ -23,6 +23,7 @@ import math
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
+from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import RES, BUILDINGS
 from horizons.util.shapes import Point
@@ -40,10 +41,10 @@ class AbstractField(AbstractBuilding):
 			extra_fields_needed -= field_spots_available
 
 		evaluators = AbstractBuilding.buildings[BUILDINGS.FARM].get_evaluators(settlement_manager, self.get_higher_level_resource(resource_id))
-		if not evaluators:
+		evaluator = BuildingEvaluator.get_best_evaluator(evaluators)
+		if evaluator is None:
 			return None
 
-		evaluator = sorted(evaluators)[0]
 		fields_per_farm = evaluator.fields
 		# TODO: fix the resource gathering code to request resources in larger chunks so this hack doesn't have to be used
 		# use fractional farm costs to give farms a chance to picked

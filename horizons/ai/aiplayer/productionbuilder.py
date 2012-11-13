@@ -128,6 +128,9 @@ class ProductionBuilder(AreaBuilder):
 
 	def extend_settlement_with_storage(self, target_position):
 		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
+		if not self.have_resources(BUILDINGS.STORAGE):
+			return BUILD_RESULT.NEED_RESOURCES
+
 		storage_class = Entities.buildings[BUILDINGS.STORAGE]
 		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type,
 			storage_class.size, self.settlement.buildability_cache, self.buildability_cache)

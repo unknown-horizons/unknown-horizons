@@ -21,6 +21,7 @@
 
 import math
 import logging
+import operator
 
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.entities import Entities
@@ -180,7 +181,7 @@ class AbstractBuilding(object):
 		if not self.have_resources(settlement_manager):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
-		for evaluator in sorted(self.get_evaluators(settlement_manager, resource_id)):
+		for evaluator in sorted(self.get_evaluators(settlement_manager, resource_id), key=operator.attrgetter('value'), reverse=True):
 			result = evaluator.execute()
 			if result[0] != BUILD_RESULT.IMPOSSIBLE:
 				return result

@@ -24,9 +24,8 @@ import logging
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.entities import Entities
-from horizons.util.worldobject import WorldObject
 
-class BuildingEvaluator(WorldObject):
+class BuildingEvaluator(object):
 	"""Class representing a set of instructions for building a building complex along with its value."""
 
 	log = logging.getLogger("ai.aiplayer.buildingevaluator")
@@ -40,7 +39,6 @@ class BuildingEvaluator(WorldObject):
 		@param value: the value of the evaluator (bigger is better)
 		"""
 
-		super(BuildingEvaluator, self).__init__()
 		self.area_builder = area_builder
 		self.builder = builder
 		self.value = value
@@ -140,10 +138,9 @@ class BuildingEvaluator(WorldObject):
 		"""Return an alignment value based on the outline of the given coordinates list."""
 		return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords_list(coords_list))
 
-	def __lt__(self, other):
-		if abs(self.value - other.value) > 1e-9:
-			return self.value > other.value
-		return self.worldid - other.worldid
+	def __cmp__(self, other):
+		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
+		raise NotImplementedError()
 
 	@property
 	def purpose(self):
@@ -189,5 +186,18 @@ class BuildingEvaluator(WorldObject):
 	def __str__(self):
 		point = self.builder.position.origin
 		return '%s at %d, %d with value %f' % (self.__class__.__name__, point.x, point.y, self.value)
+
+	@classmethod
+	def get_best_evaluator(cls, evaluators):
+		if not evaluators:
+			return None
+
+		best_index = 0
+		best_value = evaluators[0].value
+		for i in xrange(1, len(evaluators)):
+			if evaluators[i].value > best_value:
+				best_index = i
+				best_value = evaluators[i].value
+		return evaluators[best_index]
 
 decorators.bind_all(BuildingEvaluator)

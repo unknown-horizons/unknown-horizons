@@ -36,11 +36,10 @@ class AbstractFisher(AbstractBuilding):
 		return self.get_expected_production_level(resource_id) * building.get_non_paused_utilisation()
 
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
-		evaluators = self.get_evaluators(settlement_manager, resource_id)
-		if not evaluators:
+		evaluator = BuildingEvaluator.get_best_evaluator(self.get_evaluators(settlement_manager, resource_id))
+		if evaluator is None:
 			return None
 
-		evaluator = sorted(evaluators)[0]
 		current_expected_production_level = evaluator.get_expected_production_level(resource_id)
 		extra_buildings_needed = math.ceil(max(0.0, production_needed / current_expected_production_level))
 		return extra_buildings_needed * self.get_expected_building_cost()
