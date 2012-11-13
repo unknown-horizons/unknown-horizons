@@ -73,7 +73,7 @@ class BasicBuilder(object):
 		"""Build the building."""
 		building_class = Entities.buildings[self.building_id]
 		if building_class.name not in ('Tree', 'Trail'):
-			print Scheduler().cur_tick, 'BASIC-BUILD', building_class.name
+			print Scheduler().cur_tick, 'BUILD', building_class.name, self.position.origin.to_tuple()
 		building_level = building_class.get_initial_level(land_manager.owner)
 		action_set_id = building_class.get_random_action_set(level = building_level)
 
@@ -87,6 +87,7 @@ class BasicBuilder(object):
 			settlement=land_manager.settlement, ship=ship, tearset=build_position.tearset,
 			action_set_id=action_set_id)
 		result = cmd(land_manager.owner)
+		assert result
 		return result
 
 	def have_resources(self, land_manager, ship=None, extra_resources=None):
