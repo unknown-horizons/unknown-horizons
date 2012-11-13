@@ -24,7 +24,6 @@ import logging
 from collections import deque
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
-from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE, BUILD_RESULT
 from horizons.constants import BUILDINGS
@@ -218,15 +217,6 @@ class AreaBuilder(WorldObject):
 		The returned format is {resource_id: amount, ...} if it is possible to build a road and None otherwise.
 		"""
 		return self.get_road_cost(self._get_road_to_builder(builder))
-
-	def make_builder(self, building_id, x, y, needs_collector, orientation=0):
-		"""
-		Return a Builder object containing the info.
-
-		If it is impossible to build it then the return value could either be None
-		or a Builder object that evaluates to False.
-		"""
-		return Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
 
 	def have_resources(self, building_id):
 		"""Return a boolean showing whether we currently have the resources to build a building of the given type."""

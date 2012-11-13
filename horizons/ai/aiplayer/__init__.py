@@ -42,7 +42,6 @@ from settlementmanager import SettlementManager
 from unitbuilder import UnitBuilder
 from constants import GOAL_RESULT
 from basicbuilder import BasicBuilder
-from builder import Builder
 from specialdomestictrademanager import SpecialDomesticTradeManager
 from internationaltrademanager import InternationalTradeManager
 from settlementfounder import SettlementFounder
@@ -460,7 +459,6 @@ class AIPlayer(GenericAI):
 	@classmethod
 	def clear_caches(cls):
 		BasicBuilder.clear_cache()
-		Builder.cache.clear()
 		FarmEvaluator.clear_cache()
 
 	def __str__(self):

@@ -24,7 +24,6 @@ import itertools
 from collections import deque
 from functools import partial
 
-from builder import Builder
 from areabuilder import AreaBuilder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
@@ -310,73 +309,6 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *misc_colour)
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
-
-	def __make_new_builder(self, building_id, x, y, needs_collector, orientation):
-		"""Return a Builder object if it is allowed to be built at the location, otherwise return None (not cached)."""
-		coords = (x, y)
-		# quick check to see whether the origin square is allowed to be in the requested place
-		if building_id == BUILDINGS.CLAY_PIT or building_id == BUILDINGS.IRON_MINE:
-			# clay deposits and mountains are outside the production plan until they are constructed
-			if coords in self.plan or coords not in self.settlement.ground_map:
-				return None
-		elif building_id in self.coastal_building_classes:
-			# coastal buildings can use coastal tiles
-			if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-				return None
-		else:
-			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.settlement.ground_map:
-				return None
-
-		# create the builder, make sure that it is allowed according to the game logic
-		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
-		if not builder or not self.land_manager.legal_for_production(builder.position):
-			return None
-
-		# make sure that the position of the building is allowed according to the plan
-		if building_id in self.coastal_building_classes:
-			# coastal buildings can use coastal tiles
-			for coords in builder.position.tuple_iter():
-				if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					return None
-		elif building_id in [BUILDINGS.CLAY_PIT, BUILDINGS.IRON_MINE]:
-			# clay deposits and mountains can't be in areas restricted by the plan
-			pass
-		else:
-			for coords in builder.position.tuple_iter():
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					return None
-
-		# make sure the building is close enough to a collector if it produces any resources that have to be collected
-		size = (builder.position.right - builder.position.left + 1, builder.position.bottom - builder.position.top + 1)
-		coords = builder.position.origin.to_tuple()
-		if needs_collector and not any(True for building in self.collector_buildings if building.position.distance(builder.position) <= building.radius):
-			assert coords not in self.simple_collector_area_cache.cache[size]
-			return None
-		elif needs_collector:
-			assert coords in self.simple_collector_area_cache.cache[size]
-		return builder
-
-	def make_builder(self, building_id, x, y, needs_collector, orientation=0):
-		"""Return a Builder object if it is allowed to be built at the location, otherwise return None (cached)."""
-		coords = (x, y)
-		key = (building_id, coords, needs_collector, orientation)
-		size = Entities.buildings[building_id].size
-		if orientation == 1 or orientation == 3:
-			size = (size[1], size[0])
-		if coords not in self.island.last_changed[size]:
-			return None
-
-		island_changed = self.island.last_changed[size][coords]
-		if key in self.__builder_cache and island_changed != self.__builder_cache[key][0]:
-			del self.__builder_cache[key]
-
-		plan_changed = self.last_change_id
-		if key in self.__builder_cache and plan_changed != self.__builder_cache[key][1]:
-			del self.__builder_cache[key]
-
-		if key not in self.__builder_cache:
-			self.__builder_cache[key] = (island_changed, plan_changed, self.__make_new_builder(building_id, x, y, needs_collector, orientation))
-		return self.__builder_cache[key][2]
 
 	def _init_cache(self):
 		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area."""
