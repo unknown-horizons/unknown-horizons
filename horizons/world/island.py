@@ -352,41 +352,9 @@ class Island(BuildingOwner, WorldObject):
 		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """
 		self.last_change_id = -1
 
-		def calc_cache(size_x, size_y):
-			d = {}
-			for (x, y) in self.ground_map:
-				all_on_island = True
-				for dx in xrange(size_x):
-					for dy in xrange(size_y):
-						if (x + dx, y + dy) not in self.ground_map:
-							all_on_island = False
-							break
-					if not all_on_island:
-						break
-				if all_on_island:
-					d[(x, y)] = self.last_change_id
-			return d
-
-		class LazyDict(dict):
-			def __getitem__(self, x):
-				try:
-					return super(LazyDict, self).__getitem__(x)
-				except KeyError:
-					val = self[x] = calc_cache(*x)
-					return val
-
-		self.last_changed = LazyDict()
-
 	def _register_change(self, x, y):
 		""" registers the possible buildability change of a rectangle on this island """
 		self.last_change_id += 1
-		for (area_size_x, area_size_y), building_areas in self.last_changed.iteritems():
-			for dx in xrange(area_size_x):
-				for dy in xrange(area_size_y):
-					coords = (x - dx, y - dy)
-					# building area with origin at coords affected
-					if coords in building_areas:
-						building_areas[coords] = self.last_change_id
 
 	def end(self):
 		# NOTE: killing animals before buildings is an optimisation, else they would
