@@ -252,34 +252,3 @@ class FindPath(object):
 
 		else:
 			return None
-
-
-
-"""
-def check_path(path, blocked_coords):
-	"" debug function to check if a path is valid ""
-	i = iter(path)
-	prev = i.next()
-
-	err = False
-	while True:
-		try: cur = i.next()
-		except StopIteration: break
-
-		if cur in blocked_coords:
-			#print 'PATH ERROR: node', cur, ' is blocked'
-			err = True
-
-		dist = Point(cur[0], cur[1]).distance(Point(prev[0], prev[1]))
-
-		# check if it's a horizontal or vertical or diagonal movement
-		# (everything else is an error)
-		if dist != 1 and int((dist)*100) != 141:
-			err = True
-			#print 'PATH ERROR FROM', prev, 'TO', cur,' DIST: ', dist
-		prev = cur
-
-	if err:
-		assert False, 'Encountered errors when testing pathfinding'
-	return True
-"""
