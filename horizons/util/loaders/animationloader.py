@@ -114,7 +114,7 @@ class SQLiteAtlasAnimationLoader(AnimationLoader):
 			# cast explicit to str because the imagemanager is not able to handle unicode strings
 			img = horizons.globals.fife.imagemanager.create(str(atlas))
 			self.atlaslib.append(img)
-	
+
 	def get_image(self, file, actionset, action, rotation):
 		return self.create_image(file, actionset, action, rotation)
 
