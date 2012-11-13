@@ -19,20 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
+from horizons.entities import Entities
 
 class AbstractIronMine(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
-		for building in settlement_manager.land_manager.settlement.buildings_by_id.get(BUILDINGS.MOUNTAIN, []):
+		building_class = Entities.buildings[BUILDINGS.MOUNTAIN]
+		for building in settlement_manager.settlement.buildings_by_id.get(BUILDINGS.MOUNTAIN, []):
 			if building.get_component(StorageComponent).inventory[RES.RAW_IRON]:
-				(x, y) = building.position.origin.to_tuple()
-				for rotation in xrange(4):
-					yield (x, y, rotation)
+				coords = building.position.origin.to_tuple()
+				if coords in settlement_manager.production_builder.simple_collector_area_cache.cache[building_class.size]:
+					yield (coords[0], coords[1], (building.rotation - 45) // 90)
 
 	@property
 	def evaluator_class(self):
@@ -45,9 +48,7 @@ class AbstractIronMine(AbstractBuilding):
 class IronMineEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.IRON_MINE, x, y, True, orientation)
-		if not builder:
-			return None
+		builder = BasicBuilder.create(BUILDINGS.IRON_MINE, (x, y), orientation)
 		return IronMineEvaluator(area_builder, builder, 0)
 
 	@property
