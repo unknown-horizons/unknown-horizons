@@ -30,7 +30,7 @@ from horizons.world.units.collectors.buildingcollector import BuildingCollector
 
 class AnimalCollector(BuildingCollector):
 	""" Collector that gets resources from animals.
-	Behaviour (timeline):
+	Behavior (timeline):
 	 - search for an animal which has resources to pick up
 	 - tell animal to stop when its current job is done
 	 - wait for callback from this animal, notifying that we can pick it up
