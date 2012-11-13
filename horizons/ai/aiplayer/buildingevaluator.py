@@ -32,6 +32,8 @@ class BuildingEvaluator(object):
 	need_collector_connection = True
 	record_plan_change = True
 
+	__slots__ = ('area_builder', 'builder', 'value')
+
 	def __init__(self, area_builder, builder, value):
 		"""
 		@param area_builder: the relevant AreaBuilder instance

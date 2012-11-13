@@ -54,6 +54,8 @@ class AbstractFisher(AbstractBuilding):
 
 class FisherEvaluator(BuildingEvaluator):
 	refill_cycle_in_tiles = 12 # TODO: replace this with a direct calculation
+	
+	__slots__ = ('__production_level', )
 
 	def __init__(self, area_builder, builder, value):
 		super(FisherEvaluator, self).__init__(area_builder, builder, value)

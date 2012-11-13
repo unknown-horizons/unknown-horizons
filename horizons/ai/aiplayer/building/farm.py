@@ -93,6 +93,8 @@ class FarmEvaluator(BuildingEvaluator):
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	__field_offsets = None
 
+	__slots__ = ('farm_plan', 'fields', 'field_purpose')
+
 	def __init__(self, area_builder, builder, value, farm_plan, fields, field_purpose):
 		super(FarmEvaluator, self).__init__(area_builder, builder, value)
 		self.farm_plan = farm_plan
@@ -281,6 +283,8 @@ class FarmEvaluator(BuildingEvaluator):
 
 class ModifiedFieldEvaluator(BuildingEvaluator):
 	"""This evaluator evaluates the cost of changing the type of an unused field."""
+
+	__slots__ = ('_old_field_purpose', 'fields')
 
 	def __init__(self, area_builder, builder, value, old_field_purpose):
 		super(ModifiedFieldEvaluator, self).__init__(area_builder, builder, value)
