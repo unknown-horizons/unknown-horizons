@@ -410,9 +410,11 @@ class MultiplayerMenu(object):
 		chatbox.selected = len(chatbox.items) - 1
 
 	def __player_joined(self, game, player):
+		#xgettext:python-format
 		self.__print_event_message(_("{player} has joined the game").format(player=player.name))
 
 	def __player_left(self, game, player):
+		#xgettext:python-format
 		self.__print_event_message(_("{player} has left the game").format(player=player.name))
 
 	def __player_toggled_ready(self, game, plold, plnew, myself):
@@ -424,21 +426,26 @@ class MultiplayerMenu(object):
 				self.__print_event_message(_("You are not ready anymore"))
 		else:
 			if plnew.ready:
+				#xgettext:python-format
 				self.__print_event_message(_("{player} is now ready").format(player=plnew.name))
 			else:
+				#xgettext:python-format
 				self.__print_event_message(_("{player} not ready anymore").format(player=plnew.name))
 
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:
+			#xgettext:python-format
 			self.__print_event_message(_("You are now known as {new_name}").format(new_name=plnew.name))
 		else:
+			#xgettext:python-format
 			self.__print_event_message(_("{player} is now known as {new_name}").format(player=plold.name, new_name=plnew.name))
 
 	def __player_changed_color(self, game, plold, plnew, myself):
 		if myself:
 			self.__print_event_message(_("You changed your color"))
 		else:
-			self.__print_event_message(_("{player} changed its color").format(player=plnew.name))
+			#xgettext:python-format
+			self.__print_event_message(_("{player} changed their color").format(player=plnew.name))
 
 	def __fetch_game(self, game):
 		self.__print_event_message(_("You fetched the savegame data"))
