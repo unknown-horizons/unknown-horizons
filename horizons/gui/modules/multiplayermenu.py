@@ -295,7 +295,10 @@ class MultiplayerMenu(object):
 		if game.get_version() != NetworkInterface().get_clientversion():
 			self.show_popup(_("Wrong version"),
 			                   #xgettext:python-format
-			                _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}").format(
+			                _("The game's version differs from your version. "
+			                  "Every player in a multiplayer game must use the same version. "
+			                  "This can be fixed by every player updating to the latest version. "
+			                  "Game version: {game_version} Your version: {own_version}").format(
 			                  game_version=game.get_version(),
 			                  own_version=NetworkInterface().get_clientversion()))
 			return
@@ -580,7 +583,8 @@ class MultiplayerMenu(object):
 			hbox.addChild(pstatus)
 
 			if NetworkInterface().get_client_name() == game.get_creator() and player['name'] != game.get_creator():
-				pkick = CancelButton(name="pkick_%s" % player['name'], helptext=_("Kick {player}").format(player=player['name']))
+				pkick = CancelButton(name="pkick_%s" % player['name'])
+				pkick.helptext = _("Kick {player}").format(player=player['name'])
 				pkick.capture(Callback(NetworkInterface().kick, player['sid']))
 				pkick.up_image = "content/gui/images/buttons/delete_small.png"
 				pkick.down_image = "content/gui/images/buttons/delete_small.png"
@@ -601,8 +605,8 @@ class MultiplayerMenu(object):
 
 		def _get_unused_colors():
 			"""Returns unused colors list in a game """
-
-			assigned = [p["color"] for p in NetworkInterface().get_game().get_player_list()  if p["name"] != NetworkInterface().get_client_name() ]
+			assigned = [p["color"] for p in NetworkInterface().get_game().get_player_list()
+			                       if p["name"] != NetworkInterface().get_client_name()]
 			available = set(Color) - set(assigned)
 			return available
 
@@ -610,7 +614,8 @@ class MultiplayerMenu(object):
 		#remove all children of color and name pop-up and then show them
 		set_player_details_dialog.findChild(name="playerdataselectioncontainer").removeAllChildren()
 		#assign playerdata to self.current.playerdata to use self.__apply_new_color() and __apply_new_nickname()
-		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets, color_palette=_get_unused_colors())
+		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets,
+		                                              color_palette=_get_unused_colors())
 		self.current.playerdata.set_player_name(NetworkInterface().get_client_name())
 		self.current.playerdata.set_color(NetworkInterface().get_client_color())
 
