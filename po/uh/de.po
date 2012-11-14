@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-07 00:13+0200\n"
-"Last-Translator: Raymond <raymondv@gmx.de>\n"
+"PO-Revision-Date: 2012-11-14 19:30+0000\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1352921455.0\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -45,7 +46,7 @@ msgstr "Aristokraten"
 msgid "Cannot go here."
 msgstr "Kann hier nicht hingehen."
 
-# 75%
+# more comments
 #. (text of widget: headline)
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -111,8 +112,8 @@ msgstr "Einige Eurer Siedler haben soeben Eure Siedlung verlassen."
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
-"Die Route ist nun konfiguriert. Starten Sie es über die \"Start-Route\"-Taste "
-"in dem \"Konfiguriere Route\" Menü."
+"Die Route ist nun konfiguriert. Startet sie über die Schaltfläche "
+"\"Handelsroute starten\" im Menü \"Handelsroute konfigurieren\"."
 
 # "aufziehen" ersetzen
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -128,7 +129,7 @@ msgstr "Ihr könnt das Kontor nicht abreißen, Eure Siedlung benötigt es."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr "Du hast das Szenario verloren."
+msgstr "Ihr habt das Szenario verloren."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -151,7 +152,7 @@ msgstr "Ihr habt gewonnen!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your building has caught fire!"
-msgstr "Dein Gebäude hat Feuer gefangen."
+msgstr "Euer Gebäude hat Feuer gefangen!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -813,7 +814,7 @@ msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu entfernen."
 #: horizons/gui/gui.py
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Wollt Ihr den Spielstand „{name}“ wirklich entfernen?"
+msgstr "Wollt Ihr den Spielstand '{name}' wirklich entfernen?"
 
 #: horizons/gui/gui.py
 msgid "Confirm deletion"
@@ -868,7 +869,7 @@ msgstr "Pyenet konnte nicht gefunden werden"
 #: horizons/gui/modules/multiplayermenu.py
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
-"Der Mehrspielermodus benötigt die Bibliothek „Pyenet“, welche nicht in Eurem "
+"Der Mehrspielermodus benötigt die Bibliothek „pyenet“, welche nicht in Ihrem "
 "System gefunden werden konnte."
 
 #: horizons/gui/modules/multiplayermenu.py
@@ -2195,9 +2196,7 @@ msgstr "Wert aller Gebäude in den Siedlungen des Spielers"
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
-msgstr ""
-"Wert der nutzbaren Flächen, d.h. Menge an Land, mit dem Gebäude erstellt "
-"werden können"
+msgstr "Wert der nutzbaren Flächen (bebaubares Land)"
 
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
@@ -2630,7 +2629,7 @@ msgstr "Schiff automatisch entladen:"
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py
 msgid "Autosave interval in minutes:"
-msgstr "Intervall für autom. Sicherung in Minuten:"
+msgstr "Intervall für autom. Sicherung (Minuten):"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py
