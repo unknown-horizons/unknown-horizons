@@ -31,6 +31,9 @@ from horizons.util.loaders.tilesetloader import TileSetLoader
 class SurfaceTile(object):
 	is_water = False
 	layer = LAYERS.GROUND
+
+	__slots__ = ('x', 'y', 'settlement', 'blocked', 'object', 'session', '_instance')
+
 	def __init__(self, session, x, y):
 		"""
 		@param session: Session instance
