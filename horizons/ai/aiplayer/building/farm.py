@@ -168,6 +168,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 		# calculate the alignment value and the rectangle that contains the whole farm
 		alignment = 0
+		coastline = area_builder.land_manager.coastline
 		min_x, max_x, min_y, max_y = None, None, None, None
 		for x, y in farm_plan:
 			min_x = x if min_x is None or min_x > x else min_x
@@ -179,7 +180,7 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (x + dx, y + dy)
 				if coords in farm_plan:
 					continue
-				if coords not in area_builder.plan or area_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				if coords in coastline or coords not in area_builder.plan or area_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1
 
 		# calculate the value of the farm road end points (larger is better)
