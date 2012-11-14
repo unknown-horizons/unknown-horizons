@@ -29,6 +29,7 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, COLLECTORS, RES
 from horizons.util.python import decorators
+from horizons.util.shapes import distances
 from horizons.entities import Entities
 
 class AbstractFisher(AbstractBuilding):
@@ -71,12 +72,13 @@ class FisherEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
+		rect_rect_distance_func = distances.distance_rect_rect
 		builder = BasicBuilder.create(BUILDINGS.FISHER, (x, y), orientation)
 
 		fisher_radius = Entities.buildings[BUILDINGS.FISHER].radius
 		fishers_in_range = 1.0
 		for other_fisher in area_builder.owner.fishers:
-			distance = builder.position.distance(other_fisher.position)
+			distance = rect_rect_distance_func(builder.position, other_fisher.position)
 			if distance < fisher_radius:
 				fishers_in_range += 1 - distance / float(fisher_radius)
 
@@ -85,7 +87,7 @@ class FisherEvaluator(BuildingEvaluator):
 		for fish in area_builder.session.world.fish_indexer.get_buildings_in_range((x, y)):
 			if tiles_used >= 3 * cls.refill_cycle_in_tiles:
 				break
-			distance = builder.position.distance(fish.position) + 1.0
+			distance = rect_rect_distance_func(builder.position, fish.position) + 1.0
 			if tiles_used >= cls.refill_cycle_in_tiles:
 				fish_value += min(1.0, (3 * cls.refill_cycle_in_tiles - tiles_used) / distance) / 10.0
 			else:
