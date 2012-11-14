@@ -221,6 +221,7 @@ class DefaultPersonality:
 		alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
 		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
 		max_collector_area_unreachable = 10 # maximum collector area (of 3x3 squares) that doesn't have to be reachable when considering whether to enlarge the area
+		overlap_precision = 0.2 # probability that a tile in the radius will be checked for match for useful coordinates
 
 	class FoundFeederIslandGoal:
 		enabled = True

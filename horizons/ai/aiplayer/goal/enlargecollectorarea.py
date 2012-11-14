@@ -98,7 +98,8 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 		storage_surrounding_offsets = Rect.get_surrounding_offsets(storage_class.size)
 
 		options = []
-		radius_offsets = self._radius_offsets
+		num_offsets = int(len(self._radius_offsets) * self.personality.overlap_precision)
+		radius_offsets = self.session.random.sample(self._radius_offsets, num_offsets)
 		for coords in sorted(storage_spots):
 			if coords not in area_label:
 				continue
