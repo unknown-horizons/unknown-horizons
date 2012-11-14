@@ -54,6 +54,25 @@ class Shape(object):
 
 		raise TypeError("No distance defined between %s and %s" % (co1, co2))
 
+	def get_distance_function(self, other):
+		# TODO pre-build a dictionary for fast function lookup
+		co1 = self.__class__.__name__.lower()
+		co2 = other.__class__.__name__.lower()
+
+		# ConstX and X are the same w.r.t to distances
+		co1 = co1.replace('const', '')
+		co2 = co2.replace('const', '')
+
+		dist_func = getattr(distances, "distance_%s_%s" % (co1, co2), None)
+		if dist_func:
+			return dist_func
+
+		dist_func = getattr(distances, "distance_%s_%s" % (co2, co1), None)
+		if dist_func:
+			return dist_func
+
+		raise TypeError("No distance defined between %s and %s" % (co1, co2))
+
 # Convenience methods so you can use 'from horizons.util.shapes import Circle, Rect'
 from horizons.util.shapes.point import ConstPoint, Point
 from horizons.util.shapes.rect import ConstRect, Rect

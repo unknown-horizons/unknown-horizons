@@ -22,7 +22,6 @@
 import logging
 
 from horizons.util.python import decorators
-from horizons.util.shapes import Point
 
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class
@@ -135,18 +134,16 @@ class FindPath(object):
 		# nodes that have been processed:
 		checked = {}
 
+		destination = self.destination
+		destination_to_tuple_distance_func = destination.get_distance_function((0, 0))
+
 		source_coords = self.source.get_coordinates()
-		for c in source_coords:
-			# TODO: distance internally has to find out the type of
-			# destination each time due to the dynamicness of python.
-			# Find out if this costs a significant amount of time,
-			# and if so, try to resolve this here.
-			source_to_dest_dist = Point(*c).distance(self.destination)
-			to_check[c] = (None, 0, source_to_dest_dist)
+		for coords in source_coords:
+			to_check[coords] = (None, 0, destination_to_tuple_distance_func(destination, coords))
 
 		# if one of the dest_coords has been processed
 		# (i.e. is in checked), a good path is found
-		dest_coords = self.destination.get_coordinates()
+		dest_coords = destination.get_coordinates()
 		dest_coords = set(dest_coords)
 		if not self.make_target_walkable:
 			# restrict destination coords to walkable tiles, by default they are counted as walkable
@@ -160,7 +157,6 @@ class FindPath(object):
 		# pull dereferencing out of loop
 		path_nodes = self.path_nodes
 		blocked_coords = self.blocked_coords
-		destination = self.destination
 
 		# loop until we have no more nodes to check
 		while to_check:
@@ -213,7 +209,7 @@ class FindPath(object):
 					# and estimate from neighbor_node to destination
 					dist_to_here = cur_node_data[1] + path_nodes.get(cur_node_coords, 0)
 
-					total_dist_estimation = destination.distance(neighbor_node) + dist_to_here
+					total_dist_estimation = destination_to_tuple_distance_func(destination, neighbor_node) + dist_to_here
 					to_check[neighbor_node] = (cur_node_coords,
 					                           dist_to_here,
 					                           total_dist_estimation)
