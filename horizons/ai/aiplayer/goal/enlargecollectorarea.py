@@ -32,7 +32,7 @@ from horizons.entities import Entities
 class EnlargeCollectorAreaGoal(SettlementGoal):
 	"""Enlarge the area of the island covered by collectors."""
 	_radius_offsets = None
-	
+
 	@classmethod
 	def _init_radius_offsets(cls):
 		building_class = Entities.buildings[BUILDINGS.STORAGE]
@@ -104,6 +104,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 				continue
 			x, y = coords
 
+			area_number = area_label[coords]
 			area_coords_set = coords_set_by_area[area_number]
 			useful_area = 0
 			for dx, dy in radius_offsets:
