@@ -27,7 +27,6 @@ from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-from horizons.util.shapes import distances
 from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
@@ -549,7 +548,7 @@ class JobList(list):
 	def _sort_jobs_distance(self):
 		"""Prefer targets that are nearer"""
 		collector_point = self.collector.position
-		self.sort(key=lambda job: distances.distance_point_rect(collector_point, job.object.loading_area))
+		self.sort(key=lambda job: collector_point.distance(job.object.loading_area))
 
 	def _sort_target_inventory_full(self):
 		"""Prefer targets with full inventory"""
