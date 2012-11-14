@@ -49,7 +49,7 @@ class SurfaceTile(object):
 		self.session = session
 
 		layer = session.view.layers[self.layer]
-		self._instance = layer.createInstance(self._object,
+		self._instance = layer.createInstance(self._fife_object,
 		                                      fife.ModelCoordinate(int(x), int(y), 0),
 		                                      "")
 		fife.InstanceVisual.create(self._instance)
@@ -115,7 +115,7 @@ class GroundClass(type):
 		"""
 		self.id = id
 		self.shape = shape
-		self._object = None
+		self._fife_object = None
 		self.velocity = {}
 		self.classes = ['ground[' + str(id) + ']']
 		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
@@ -141,14 +141,14 @@ class GroundClass(type):
 		cls_name = '%d-%s' % (cls.id, cls.shape)
 		cls.log.debug('Loading ground %s', cls_name)
 		try:
-			cls._object = horizons.globals.fife.engine.getModel().createObject(cls_name, 'ground')
+			cls._fife_object = horizons.globals.fife.engine.getModel().createObject(cls_name, 'ground')
 		except RuntimeError:
 			cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
-			cls._object = horizons.globals.fife.engine.getModel().getObject(cls_name, 'ground')
+			cls._fife_object = horizons.globals.fife.engine.getModel().getObject(cls_name, 'ground')
 			return
 
-		fife.ObjectVisual.create(cls._object)
-		visual = cls._object.get2dGfxVisual()
+		fife.ObjectVisual.create(cls._fife_object)
+		visual = cls._fife_object.get2dGfxVisual()
 
 		tile_sets = TileSetLoader.get_sets()
 		tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id)[0][0]

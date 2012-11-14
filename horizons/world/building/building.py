@@ -276,7 +276,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		else:
 			return None
 		instance = session.view.layers[cls.layer].createInstance(
-			cls._object,
+			cls._fife_object,
 			fife.ModelCoordinate(*instance_coords),
 			world_id)
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))

@@ -32,7 +32,7 @@ class Bullet(ComponentHolder, WorldObject):
 	Class for Bullet animation.
 	Has no components, but has_components is used by some code.
 	"""
-	_object = None
+	_fife_object = None
 	owner = None
 
 	def __init__(self, image, source, dest, needed_ticks, session, offset=True, worldid=None):
@@ -72,18 +72,18 @@ class Bullet(ComponentHolder, WorldObject):
 		self.x_ratio = float(dest.x - source.x)/self.needed_ticks
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
 
-		if not Bullet._object:
-			Bullet._object = horizons.globals.fife.engine.getModel().createObject('cb', 'cannonball')
-			fife.ObjectVisual.create(Bullet._object)
+		if Bullet._fife_object is None:
+			Bullet._fife_object = horizons.globals.fife.engine.getModel().createObject('cb', 'cannonball')
+			fife.ObjectVisual.create(Bullet._fife_object)
 
-			visual = self._object.get2dGfxVisual()
+			visual = self._fife_object.get2dGfxVisual()
 			img = horizons.globals.fife.imagemanager.load(str(image))
 			for rotation in [45, 135, 225, 315]:
 				visual.addStaticImage(rotation, img.getHandle())
 
 
 		self._instance = session.view.layers[LAYERS.FIELDS].createInstance(
-			self._object, fife.ModelCoordinate(int(self.x),int(self.y), 0), str(self.worldid))
+			self._fife_object, fife.ModelCoordinate(int(self.x),int(self.y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(self.x, self.y, 0))

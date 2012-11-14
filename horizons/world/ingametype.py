@@ -93,7 +93,7 @@ class IngameType(type):
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']
 		self.baseclass = yaml_data['baseclass'] # mostly only for debug
-		self._real_object = None # wrapped by _object
+		self._real_object = None # wrapped by _fife_object
 
 		self._parse_component_templates()
 
@@ -158,7 +158,7 @@ class IngameType(type):
 
 
 	@property
-	def _object(self):
+	def _fife_object(self):
 		if self._real_object is None:
 			self._loadObject()
 		return self._real_object
