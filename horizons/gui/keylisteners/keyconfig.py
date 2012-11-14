@@ -45,8 +45,8 @@ class KeyConfig(object):
 	def __init__(self):
 		_Actions = self._Actions
 
-		self.keyval_action_mappings = dict() # map key ID (int) to action (int)
-		self.action_keyname_mappings = dict() # map action name (str) to key name (str)
+		self.keyval_action_mappings = {} # map key ID (int) to action (int)
+		self.action_keyname_mappings = {} # map action name (str) to key name (str)
 		self.all_keys = self.get_keys_by_name()
 
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()

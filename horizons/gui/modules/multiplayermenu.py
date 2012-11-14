@@ -23,7 +23,7 @@ import hashlib
 import logging
 import textwrap
 
-from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.widgets import Button, HBox, Icon, Label
 
 from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
@@ -295,7 +295,10 @@ class MultiplayerMenu(object):
 		if game.get_version() != NetworkInterface().get_clientversion():
 			self.show_popup(_("Wrong version"),
 			                   #xgettext:python-format
-			                _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}").format(
+			                _("The game's version differs from your version. "
+			                  "Every player in a multiplayer game must use the same version. "
+			                  "This can be fixed by every player updating to the latest version. "
+			                  "Game version: {game_version} Your version: {own_version}").format(
 			                  game_version=game.get_version(),
 			                  own_version=NetworkInterface().get_clientversion()))
 			return
@@ -407,9 +410,11 @@ class MultiplayerMenu(object):
 		chatbox.selected = len(chatbox.items) - 1
 
 	def __player_joined(self, game, player):
+		#xgettext:python-format
 		self.__print_event_message(_("{player} has joined the game").format(player=player.name))
 
 	def __player_left(self, game, player):
+		#xgettext:python-format
 		self.__print_event_message(_("{player} has left the game").format(player=player.name))
 
 	def __player_toggled_ready(self, game, plold, plnew, myself):
@@ -421,21 +426,26 @@ class MultiplayerMenu(object):
 				self.__print_event_message(_("You are not ready anymore"))
 		else:
 			if plnew.ready:
+				#xgettext:python-format
 				self.__print_event_message(_("{player} is now ready").format(player=plnew.name))
 			else:
+				#xgettext:python-format
 				self.__print_event_message(_("{player} not ready anymore").format(player=plnew.name))
 
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:
+			#xgettext:python-format
 			self.__print_event_message(_("You are now known as {new_name}").format(new_name=plnew.name))
 		else:
+			#xgettext:python-format
 			self.__print_event_message(_("{player} is now known as {new_name}").format(player=plold.name, new_name=plnew.name))
 
 	def __player_changed_color(self, game, plold, plnew, myself):
 		if myself:
 			self.__print_event_message(_("You changed your color"))
 		else:
-			self.__print_event_message(_("{player} changed its color").format(player=plnew.name))
+			#xgettext:python-format
+			self.__print_event_message(_("{player} changed their color").format(player=plnew.name))
 
 	def __fetch_game(self, game):
 		self.__print_event_message(_("You fetched the savegame data"))
@@ -580,7 +590,8 @@ class MultiplayerMenu(object):
 			hbox.addChild(pstatus)
 
 			if NetworkInterface().get_client_name() == game.get_creator() and player['name'] != game.get_creator():
-				pkick = CancelButton(name="pkick_%s" % player['name'], helptext=_("Kick {player}").format(player=player['name']))
+				pkick = CancelButton(name="pkick_%s" % player['name'])
+				pkick.helptext = _("Kick {player}").format(player=player['name'])
 				pkick.capture(Callback(NetworkInterface().kick, player['sid']))
 				pkick.up_image = "content/gui/images/buttons/delete_small.png"
 				pkick.down_image = "content/gui/images/buttons/delete_small.png"
@@ -601,8 +612,8 @@ class MultiplayerMenu(object):
 
 		def _get_unused_colors():
 			"""Returns unused colors list in a game """
-
-			assigned = [p["color"] for p in NetworkInterface().get_game().get_player_list()  if p["name"] != NetworkInterface().get_client_name() ]
+			assigned = [p["color"] for p in NetworkInterface().get_game().get_player_list()
+			                       if p["name"] != NetworkInterface().get_client_name()]
 			available = set(Color) - set(assigned)
 			return available
 
@@ -610,7 +621,8 @@ class MultiplayerMenu(object):
 		#remove all children of color and name pop-up and then show them
 		set_player_details_dialog.findChild(name="playerdataselectioncontainer").removeAllChildren()
 		#assign playerdata to self.current.playerdata to use self.__apply_new_color() and __apply_new_nickname()
-		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets, color_palette=_get_unused_colors())
+		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets,
+		                                              color_palette=_get_unused_colors())
 		self.current.playerdata.set_player_name(NetworkInterface().get_client_name())
 		self.current.playerdata.set_color(NetworkInterface().get_client_color())
 

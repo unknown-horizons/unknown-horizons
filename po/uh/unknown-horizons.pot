@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 8e33337\n"
+"Project-Id-Version: Unknown Horizons 16d5685\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-09-26 03:59+0200\n"
+"POT-Creation-Date: 2012-11-12 16:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "Unknown Horizons has crashed."
 msgstr ""
 
 #: run_uh.py
-msgid "We are very sorry for this and want to fix underlying error."
+msgid "We are very sorry for this and want to fix the underlying error."
 msgstr ""
 
 #: run_uh.py
@@ -540,10 +540,6 @@ msgstr ""
 msgid "{player}: {message}"
 msgstr ""
 
-#: editor/editor.py
-msgid "Specify the path to FIFE root directory."
-msgstr ""
-
 #: horizons/command/game.py
 msgid "Invalid filename"
 msgstr ""
@@ -670,6 +666,12 @@ msgstr ""
 msgid "Logs are written to {directory}."
 msgstr ""
 
+#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
+#: horizons/gui/gui.py
+#, python-format
+msgid "[{key}] = {text}"
+msgstr ""
+
 #: horizons/gui/gui.py
 msgid "Are you sure you want to quit Unknown Horizons?"
 msgstr ""
@@ -765,8 +767,7 @@ msgid "Savegame version {version}"
 msgstr ""
 
 #: horizons/gui/gui.py
-#, python-format
-msgid "(potentially incompatible)"
+msgid "(probably incompatible)"
 msgstr ""
 
 #. this should only happen for very old savegames, so having this unfriendly
@@ -800,10 +801,35 @@ msgstr ""
 msgid "Failed to delete savefile!"
 msgstr ""
 
-#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/gui.py
 #, python-format
-msgid "[{key}] = {text}"
+msgid "Current key: [{key}]"
+msgstr ""
+
+#: horizons/gui/gui.py
+#, python-format
+msgid "Default key: [{key}]"
+msgstr ""
+
+#: horizons/gui/gui.py
+msgid "Click to reset to default key"
+msgstr ""
+
+#: horizons/gui/gui.py
+#, python-format
+msgid "Change hotkey for {action}"
+msgstr ""
+
+#: horizons/gui/gui.py
+msgid "This key can not be reassigned at the moment."
+msgstr ""
+
+#: horizons/gui/gui.py
+msgid "Invalid key"
+msgstr ""
+
+#: horizons/gui/gui.py
+msgid "The default key for this action has been selected."
 msgstr ""
 
 #: horizons/gui/ingamegui.py horizons/gui/tabs/mainsquaretabs.py
@@ -1040,22 +1066,16 @@ msgid "Please report this to the author."
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Author: {author}"
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Description: {desc}"
 msgstr ""
@@ -1369,19 +1389,6 @@ msgstr ""
 msgid "Game"
 msgstr ""
 
-#. stats disabled
-#: horizons/gui/widgets/playersoverview.py
-msgid "Player statistics are disabled by default since collecting them slows down the game."
-msgstr ""
-
-#: horizons/gui/widgets/playersoverview.py
-msgid "You can enable them for this session by clicking below"
-msgstr ""
-
-#: horizons/gui/widgets/playersoverview.py
-msgid "Enable player statistics"
-msgstr ""
-
 #: horizons/gui/widgets/playerssettlements.py
 #, python-format
 msgid "Settlements of {player}"
@@ -1515,6 +1522,11 @@ msgstr ""
 
 #: horizons/gui/widgets/unitoverview.py
 msgid "none"
+msgstr ""
+
+#. (helptext of widget: cancelButton)
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+msgid "Cancel"
 msgstr ""
 
 #. (text of widget: headline)
@@ -2015,32 +2027,6 @@ msgstr ""
 msgid "Read next entries"
 msgstr ""
 
-#. (text of widget: head_left)
-#: horizons/i18n/guitranslations.py
-msgid "Available Scenarios"
-msgstr ""
-
-#. (text of widget: head_right)
-#: horizons/i18n/guitranslations.py
-msgid "Scenario description"
-msgstr ""
-
-#. (text of widget: scenario_details) More text describing the scenario
-#. (text of widget: headline_details_label) More text describing the savegame
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Details:"
-msgstr ""
-
-#. (helptext of widget: cancelButton) Players either select the next scenario they want to play or press this button
-#: horizons/i18n/guitranslations.py
-msgid "Continue playing"
-msgstr ""
-
-#. (helptext of widget: choose_scenario) Select which scenario to play
-#: horizons/i18n/guitranslations.py
-msgid "Choose this scenario"
-msgstr ""
-
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py
 msgid "Route activity:"
@@ -2185,16 +2171,6 @@ msgstr ""
 msgid "Passive"
 msgstr ""
 
-#. (text of widget: fife_and_uh_team)
-#: horizons/i18n/guitranslations.py
-msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
-
-#. (text of widget: have_fun)
-#: horizons/i18n/guitranslations.py
-msgid "Have fun."
-msgstr ""
-
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Key bindings"
@@ -2225,9 +2201,19 @@ msgstr ""
 msgid "Scroll down"
 msgstr ""
 
+#. (text of widget: lbl_ESCAPE)
+#: horizons/i18n/guitranslations.py
+msgid "Close dialogs"
+msgstr ""
+
 #. (text of widget: lbl_GRID)
 #: horizons/i18n/guitranslations.py
 msgid "Toggle grid on/off"
+msgstr ""
+
+#. (text of widget: lbl_HEALTH_BAR)
+#: horizons/i18n/guitranslations.py
+msgid "Toggle health bars"
 msgstr ""
 
 #. (text of widget: lbl_HELP)
@@ -2248,6 +2234,11 @@ msgstr ""
 #. (text of widget: lbl_PAUSE)
 #: horizons/i18n/guitranslations.py
 msgid "Pause game"
+msgstr ""
+
+#. (text of widget: lbl_PIPETTE)
+#: horizons/i18n/guitranslations.py
+msgid "Enable pipette mode (clone buildings)"
 msgstr ""
 
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
@@ -2290,6 +2281,11 @@ msgstr ""
 msgid "Rotate building or map clockwise"
 msgstr ""
 
+#. (text of widget: lbl_SAVE_MAP)
+#: horizons/i18n/guitranslations.py
+msgid "Save map (hold SHIFT)"
+msgstr ""
+
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py
 msgid "Screenshot"
@@ -2308,6 +2304,11 @@ msgstr ""
 #. (text of widget: lbl_SHIPS_OVERVIEW)
 #: horizons/i18n/guitranslations.py
 msgid "Show ship list"
+msgstr ""
+
+#. (text of widget: lbl_SHOW_SELECTED)
+#: horizons/i18n/guitranslations.py
+msgid "Focus camera on selection"
 msgstr ""
 
 #. (text of widget: lbl_SPEED_DOWN)
@@ -2367,12 +2368,17 @@ msgstr ""
 msgid "Credits"
 msgstr ""
 
+#. (text of widget: editor) Map-Editor
+#: horizons/i18n/guitranslations.py
+msgid "Editor"
+msgstr ""
+
 #. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py
 msgid "Quit"
 msgstr ""
 
-#. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
+#. (text of widget: start) Opens widget to create singleplayer games (scenarios, random maps, free play)
 #: horizons/i18n/guitranslations.py
 msgid "Singleplayer"
 msgstr ""
@@ -2559,6 +2565,11 @@ msgstr ""
 msgid "Change player details"
 msgstr ""
 
+#. (text of widget: reset_mouse_sensitivity)
+#: horizons/i18n/guitranslations.py
+msgid "Reset to default"
+msgstr ""
+
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py
 msgid "Auto-unload ship:"
@@ -2604,6 +2615,11 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#. (text of widget: headline_misc)
+#: horizons/i18n/guitranslations.py
+msgid "General"
+msgstr ""
+
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py
 msgid "Mouse"
@@ -2617,11 +2633,6 @@ msgstr ""
 #. (text of widget: headline_saving)
 #: horizons/i18n/guitranslations.py
 msgid "Saving"
-msgstr ""
-
-#. (text of widget: language_label)
-#: horizons/i18n/guitranslations.py
-msgid "Select language:"
 msgstr ""
 
 #. (text of widget: minimap_rotation_label)
@@ -2774,14 +2785,14 @@ msgstr ""
 msgid "Enter filename:"
 msgstr ""
 
+#. (text of widget: headline_details_label) More text describing the savegame
+#: horizons/i18n/guitranslations.py
+msgid "Details:"
+msgstr ""
+
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py
 msgid "Your saved games:"
-msgstr ""
-
-#. (helptext of widget: cancelButton)
-#: horizons/i18n/guitranslations.py
-msgid "Cancel"
 msgstr ""
 
 #. (helptext of widget: deleteButton)
@@ -2804,11 +2815,6 @@ msgstr ""
 msgid "Start game:"
 msgstr ""
 
-#. (text of widget: campaign)
-#: horizons/i18n/guitranslations.py
-msgid "Campaign"
-msgstr ""
-
 #. (text of widget: free_maps)
 #: horizons/i18n/guitranslations.py
 msgid "Free play"
@@ -2829,11 +2835,9 @@ msgstr ""
 msgid "Start game"
 msgstr ""
 
-#. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
 #. (text of widget: choose_map_lbl)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
 msgid "Choose a map to play:"
 msgstr ""
 
@@ -3134,7 +3138,7 @@ msgstr ""
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py
-msgid "Supplies citizens with goods."
+msgid "Supplies citizens with goods. Provides community."
 msgstr ""
 
 #. name of buildings:mountain
@@ -3578,20 +3582,6 @@ msgstr ""
 
 #: horizons/main.py
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
-
-#: horizons/main.py
-#, python-format
-msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
-msgstr ""
-
-#: horizons/main.py
-msgid "This means that changes in the file you specified will not apply to the game directly."
-msgstr ""
-
-#: horizons/main.py
-#, python-format
-msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
 
 #: horizons/main.py

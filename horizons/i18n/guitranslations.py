@@ -42,7 +42,7 @@
 
 from horizons.constants import VERSION
 
-text_translations = dict()
+text_translations = {}
 
 def set_translations():
 	global text_translations

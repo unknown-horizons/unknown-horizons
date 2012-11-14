@@ -34,11 +34,11 @@ class BehaviorProfile(object):
 	def __init__(self):
 		"""
 		Init actions and strategies with required types.
-		e.g. self.strategies is a dict of Enum => dict(), each of such items is later filled by concrete BehaviorProfile.
+		e.g. self.strategies is a dict of Enum => {}, each of such items is later filled by concrete BehaviorProfile.
 		"""
 		super(BehaviorProfile, self).__init__()
-		self.actions = dict(((action_type, dict()) for action_type in BehaviorManager.action_types))
-		self.strategies = dict(((strategy_type, dict()) for strategy_type in BehaviorManager.strategy_types))
+		self.actions = dict(((action_type, {}) for action_type in BehaviorManager.action_types))
+		self.strategies = dict(((strategy_type, {}) for strategy_type in BehaviorManager.strategy_types))
 		self.conditions = {}
 
 

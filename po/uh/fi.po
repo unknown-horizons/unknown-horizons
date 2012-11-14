@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-11-04 13:27+0000\n"
-"Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
+"PO-Revision-Date: 2012-11-14 19:39+0000\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1352035638.0\n"
+"X-POOTLE-MTIME: 1352921959.0\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3834,7 +3834,7 @@ msgstr "Tarvitsemme kuitenkin tietoja lokitiedostosta:"
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
 "Anna tiedot meille IRC-kanavallamme tai keskustelupalstallamme, lisätietoja "
-"osoitteesta http://www.unknown-horizons.org."
+"osoitteesta http://unknown-horizons.org ."
 
 #: run_uh.py
 msgid "Error: Unable to find required libraries"
