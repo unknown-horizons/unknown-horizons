@@ -72,7 +72,8 @@ class Warehouse(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
 	def __init__(self, *args, **kwargs):
 		super(Warehouse, self).__init__(*args, **kwargs)
-		self.settlement.warehouse = self # we never need to unset this since bo's are indestructible
+		self.settlement.warehouse = self
+		# we never need to unset this since warehouses are indestructible
 		# settlement warehouse setting is done at the settlement for loading
 
 	def get_status_icons(self):

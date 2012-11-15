@@ -78,7 +78,7 @@ class GenericStorage(ChangeListener):
 		return 0
 
 	def reset(self, res):
-		"""Resets a resource slot to zero, removing all it's contents."""
+		"""Resets a resource slot to zero, removing all its contents."""
 		if res in self._storage:
 			self._storage[res] = 0
 			self._changed()
@@ -90,9 +90,9 @@ class GenericStorage(ChangeListener):
 		self._changed()
 
 	def get_limit(self, res=None):
-		"""Returns the current limit of the storage. Please not that this value can have
-		different meanings depending on the context. See the storage descriptions on what
-		the value does.
+		"""Returns the current limit of the storage. Please note that this
+		value can have different meanings depending on the context. See the
+		storage descriptions on what the value does in each case.
 		@param res: int res that the limit should be returned for.
 		@return: int
 		"""
@@ -167,8 +167,8 @@ class SizedSpecializedStorage(SpecializedStorage):
 		return self.__slot_limits.get(res, 0)
 
 	def add_resource_slot(self, res, size):
-		"""Add a resource slot for res for the size size.
-		If the slot already exists, just update it's size to size.
+		"""Add a resource slot for res that can hold at most *size* units.
+		If the slot already exists, just update its size to *size*.
 		NOTE: THIS IS NOT SAVE/LOADED HERE. It must be restored manually."""
 		super(SizedSpecializedStorage, self).add_resource_slot(res)
 		assert size >= 0
@@ -182,8 +182,9 @@ class SizedSpecializedStorage(SpecializedStorage):
 		super(SizedSpecializedStorage, self).load(db, ownerid)
 
 class GlobalLimitStorage(GenericStorage):
-	"""Storage with some kind of global limit. This limit has to be interpreted in the subclass,
-	it has not predefined meaning here. (This class is used for infrastructure, such as save/load for the limit)"""
+	"""Storage with some kind of global limit. This limit has to be
+	interpreted in the subclass, it has no predefined meaning here.
+	This class is used for infrastructure, such as save/load for the limit."""
 	def __init__(self, limit):
 		super(GlobalLimitStorage, self).__init__()
 		self.limit = limit
@@ -292,9 +293,9 @@ class PositiveSizedSpecializedStorage(PositiveStorage, SizedSpecializedStorage):
 	pass
 
 class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
-	"""A storage consisting of a number of slots, all slots have the same size 'limit'
-	Used by ship (huker) for example. So with a limit of 50 and a slot num of 4 you could have a max of 50
-	from each resource and only slotnum resources."""
+	"""A storage consisting of a number of slots, all slots have the same size 'limit'.
+	Used by ships for example. With a limit of 50 and a slot num of 4, you
+	could have a max of 50 from each resource and only slotnum resources."""
 	def __init__(self, limit, slotnum):
 		super(PositiveSizedNumSlotStorage, self).__init__(limit)
 		self.slotnum = slotnum
