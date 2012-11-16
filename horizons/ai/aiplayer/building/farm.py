@@ -31,6 +31,95 @@ from horizons.util.python import decorators
 from horizons.util.shapes import Point, Rect
 from horizons.world.buildability.terraincache import TerrainRequirement
 
+class FarmOptionCache(object):
+	def __init__(self, settlement_manager):
+		self.settlement_manager = settlement_manager
+		abstract_farm =  AbstractBuilding.buildings[BUILDINGS.FARM]
+		self.field_spots_set = abstract_farm._get_buildability_intersection(settlement_manager, (3, 3), TerrainRequirement.LAND, False)
+		self.farm_spots_set = self.field_spots_set.intersection(settlement_manager.production_builder.simple_collector_area_cache.cache[(3, 3)])
+		self.road_spots_set = abstract_farm._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND, False).union(settlement_manager.land_manager.roads)
+		self.raw_options = self._get_raw_options(self.farm_spots_set, self.field_spots_set, self.road_spots_set)
+
+	def _get_raw_options(self, farm_spots_set, field_spots_set, road_spots_set):
+		field_row3 = {}
+		field_col3 = {}
+
+		for coords in farm_spots_set:
+			x, y = coords
+			row_score = 1
+			if (x - 3, y) in field_spots_set:
+				row_score += 1
+			if (x + 3, y) in field_spots_set:
+				row_score += 1
+			field_row3[coords] = row_score
+
+			col_score = 1
+			if (x, y - 3) in field_spots_set:
+				col_score += 1
+			if (x, y + 3) in field_spots_set:
+				col_score += 1
+			field_col3[coords] = col_score
+
+		road_row3 = set()
+		road_col3 = set()
+		for (x, y) in road_spots_set:
+			if (x + 2, y) in road_spots_set and (x + 1, y) in road_spots_set:
+				road_row3.add((x, y))
+			if (x, y + 2) in road_spots_set and (x, y + 1) in road_spots_set:
+				road_col3.add((x, y))
+
+		road_row9 = set()
+		for (x, y) in road_row3:
+			if (x - 3, y) in road_row3 and (x + 3, y) in road_row3:
+				road_row9.add((x, y))
+
+		road_col9 = set()
+		for (x, y) in road_col3:
+			if (x, y - 3) in road_col3 and (x, y + 3) in road_col3:
+				road_col9.add((x, y))
+
+		raw_options = []
+		for coords in sorted(farm_spots_set):
+			x, y = coords
+
+			row_score = field_row3[coords] - 1
+			if (x, y - 1) in road_row9:
+				score = row_score
+				if (x, y - 4) in field_row3:
+					score += field_row3[(x, y - 4)]
+				if (x, y + 3) in field_row3:
+					score += field_row3[(x, y + 3)]
+				if score > 0:
+					raw_options.append((score, coords, 0))
+			if (x, y + 3) in road_row9:
+				score = row_score
+				if (x, y - 3) in field_row3:
+					score += field_row3[(x, y - 3)]
+				if (x, y + 4) in field_row3:
+					score += field_row3[(x, y + 4)]
+				if score > 0:
+					raw_options.append((score, coords, 1))
+
+			col_score = field_col3[coords] - 1
+			if (x - 1, y) in road_col9:
+				score = col_score
+				if (x - 4, y) in field_col3:
+					score += field_col3[(x - 4, y)]
+				if (x + 3, y) in field_col3:
+					score += field_col3[(x + 3, y)]
+				if score > 0:
+					raw_options.append((score, coords, 2))
+			if (x + 3, y) in road_col9:
+				score = col_score
+				if (x - 3, y) in field_col3:
+					score += field_col3[(x - 3, y)]
+				if (x + 4, y) in field_col3:
+					score += field_col3[(x + 4, y)]
+				if score > 0:
+					raw_options.append((score, coords, 3))
+
+		return raw_options
+
 class AbstractFarm(AbstractBuilding):
 	@property
 	def directly_buildable(self):
@@ -83,6 +172,32 @@ class AbstractFarm(AbstractBuilding):
 				if evaluator is not None:
 					options.append(evaluator)
 		return options
+
+	__cache = {}
+	def _get_option_cache(self, settlement_manager):
+		production_builder = settlement_manager.production_builder
+		current_cache_changes = (production_builder.island.last_change_id, production_builder.last_change_id)
+
+		worldid = settlement_manager.worldid
+		if worldid in self.__cache and self.__cache[worldid][0] != current_cache_changes:
+			del self.__cache[worldid]
+
+		if worldid not in self.__cache:
+			self.__cache[worldid] = (current_cache_changes, FarmOptionCache(settlement_manager))
+		return self.__cache[worldid][1]
+
+	@classmethod
+	def clear_cache(cls):
+		cls.__cache.clear()
+
+	def get_max_fields(self, settlement_manager):
+		max_fields = 0
+		for (num_fields, _, _) in self._get_option_cache(settlement_manager).raw_options:
+			if num_fields > max_fields:
+				max_fields = num_fields
+				if max_fields >= 8:
+					break
+		return max_fields
 
 	@classmethod
 	def register_buildings(cls):

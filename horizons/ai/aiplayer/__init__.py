@@ -75,6 +75,7 @@ from building.saltponds import AbstractSaltPonds
 from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal
 
+from horizons.constants import BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
@@ -461,6 +462,8 @@ class AIPlayer(GenericAI):
 	@classmethod
 	def clear_caches(cls):
 		BasicBuilder.clear_cache()
+		if BUILDINGS.FARM in AbstractBuilding.buildings:
+			AbstractBuilding.buildings[BUILDINGS.FARM].clear_cache()
 		FarmEvaluator.clear_cache()
 
 	def __str__(self):

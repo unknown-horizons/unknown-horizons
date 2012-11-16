@@ -40,12 +40,7 @@ class AbstractField(AbstractBuilding):
 			total_cost += field_spots_available * self.get_expected_building_cost()
 			extra_fields_needed -= field_spots_available
 
-		evaluators = AbstractBuilding.buildings[BUILDINGS.FARM].get_evaluators(settlement_manager, self.get_higher_level_resource(resource_id))
-		evaluator = BuildingEvaluator.get_best_evaluator(evaluators)
-		if evaluator is None:
-			return None
-
-		fields_per_farm = evaluator.fields
+		fields_per_farm = AbstractBuilding.buildings[BUILDINGS.FARM].get_max_fields(settlement_manager)
 		# TODO: fix the resource gathering code to request resources in larger chunks so this hack doesn't have to be used
 		# use fractional farm costs to give farms a chance to picked
 		extra_farms_needed = float(extra_fields_needed) / fields_per_farm
