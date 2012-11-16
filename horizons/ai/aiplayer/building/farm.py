@@ -231,7 +231,7 @@ class FarmEvaluator(BuildingEvaluator):
 		return coords in production_builder.land_manager.roads or (coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
 
 	@classmethod
-	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set):
+	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set):
 		farm_plan = {}
 
 		# place the farm area road
@@ -318,34 +318,6 @@ class FarmEvaluator(BuildingEvaluator):
 			immediate_connections * personality.immediate_connection_importance
 		return FarmEvaluator(area_builder, builder, value, farm_plan, fields, field_purpose)
 
-	__cache = {}
-	__cache_changes = (-1, -1)
-
-	@classmethod
-	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set):
-		new_cache_changes = (area_builder.island.last_change_id, area_builder.last_change_id)
-		if new_cache_changes != cls.__cache_changes:
-			cls.__cache_changes = new_cache_changes
-			cls.__cache.clear()
-		key = (area_builder.owner, farm_x, farm_y, road_dx, road_dy)
-		if key not in cls.__cache:
-			cls.__cache[key] = cls._create(area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set)
-		if cls.__cache[key] is None:
-			return None
-		if cls.__cache[key].field_purpose != field_purpose:
-			return cls.__cache[key].__get_copy(field_purpose)
-		return cls.__cache[key]
-
-	def __get_copy(self, new_field_purpose):
-		""" Returns a copy of the evaluator with a different field purpose """
-		evaluator = copy.copy(self)
-		evaluator.farm_plan = copy.copy(evaluator.farm_plan)
-		for coords, (purpose, builder) in evaluator.farm_plan.iteritems():
-			if purpose == evaluator.field_purpose:
-				evaluator.farm_plan[coords] = (new_field_purpose, builder)
-		evaluator.field_purpose = new_field_purpose
-		return evaluator
-
 	def _register_changes(self, changes, just_roads):
 		for (purpose, data), coords_list in changes.iteritems():
 			if just_roads == (purpose == BUILDING_PURPOSE.ROAD):
@@ -391,11 +363,6 @@ class FarmEvaluator(BuildingEvaluator):
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		self._register_changes(changes, True)
 		return (BUILD_RESULT.OK, building)
-
-	@classmethod
-	def clear_cache(cls):
-		cls.__cache.clear()
-		cls.__cache_changes = (-1, -1)
 
 class ModifiedFieldEvaluator(BuildingEvaluator):
 	"""This evaluator evaluates the cost of changing the type of an unused field."""
