@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 16d5685\n"
+"Project-Id-Version: Unknown Horizons fa6f186\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-11-12 16:42+0100\n"
+"POT-Creation-Date: 2012-11-16 20:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -959,10 +959,12 @@ msgid "The game's version differs from your version. Every player in a multiplay
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
+#, python-format
 msgid "{player} has joined the game"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
+#, python-format
 msgid "{player} has left the game"
 msgstr ""
 
@@ -975,18 +977,22 @@ msgid "You are not ready anymore"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
+#, python-format
 msgid "{player} is now ready"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
+#, python-format
 msgid "{player} not ready anymore"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
+#, python-format
 msgid "You are now known as {new_name}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
+#, python-format
 msgid "{player} is now known as {new_name}"
 msgstr ""
 
@@ -995,7 +1001,8 @@ msgid "You changed your color"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
-msgid "{player} changed its color"
+#, python-format
+msgid "{player} changed their color"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
