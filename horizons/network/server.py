@@ -412,13 +412,16 @@ class Server(object):
 		# make sure player names, colors and clientids are unique
 		for _player in game.players:
 			if _player.name == packet.playername:
-				self.error(player, __("There's already a player with your name inside this game. Change your name"))
+				self.error(player, __("There's already a player with your name inside this game.") + " " +
+				                   __("Please change your name."))
 				return
 			if _player.color == packet.playercolor:
-				self.error(player, __("There's already a player with your color inside this game. Change your color"))
+				self.error(player, __("There's already a player with your color inside this game.") + " " +
+				                   __("Please change your color."))
 				return
 			if _player.clientid == packet.clientid:
-				self.error(player, __("There's already a player with your unique player ID inside this game. This should never occur."))
+				self.error(player, __("There's already a player with your unique player ID inside this game. "
+				                      "This should never occur."))
 				return
 
 		logging.debug("[JOIN] [%s] %s joined %s" % (game.uuid, player, game))
@@ -517,7 +520,8 @@ class Server(object):
 		# make sure player names are unique
 		for _player in game.players:
 			if _player.name == packet.playername:
-				self.error(player, __("There's already a player with your name inside this game. Unable to change your name"))
+				self.error(player, __("There's already a player with your name inside this game.") + " " +
+				                   __("Unable to change your name."))
 				return
 
 		# ACK the change
@@ -544,7 +548,8 @@ class Server(object):
 		# make sure player colors are unique
 		for _player in game.players:
 			if _player.color == packet.playercolor:
-				self.error(player, __("There's already a player with your color inside this game. Unable to change your color"))
+				self.error(player, __("There's already a player with your color inside this game.") + " " +
+				                   __("Unable to change your color."))
 				return
 
 		# ACK the change
