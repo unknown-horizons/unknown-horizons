@@ -76,7 +76,7 @@ HEADER = '''# ###################################################
 #
 ###############################################################################
 
-object_translations = dict()
+object_translations = {}
 
 def set_translations():
 	global object_translations
