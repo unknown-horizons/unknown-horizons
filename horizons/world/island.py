@@ -238,11 +238,6 @@ class Island(BuildingOwner, WorldObject):
 					settlement_tiles_changed.append(tile)
 					settlement_coords_changed.append(coords)
 
-					# notify all AI players when land ownership changes
-					for player in self.session.world.players:
-						if hasattr(player, 'on_settlement_expansion'):
-							player.on_settlement_expansion(settlement, coords)
-
 				building = tile.object
 				# found a new building, that is now in settlement radius
 				# assign buildings on tiles to settlement
@@ -252,7 +247,7 @@ class Island(BuildingOwner, WorldObject):
 					building.owner = settlement.owner
 					settlement.add_building(building)
 
-		if settlement_tiles_changed:
+		if settlement_coords_changed:
 			if self.terrain_cache:
 				settlement.buildability_cache.modify_area(settlement_coords_changed)
 			SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)

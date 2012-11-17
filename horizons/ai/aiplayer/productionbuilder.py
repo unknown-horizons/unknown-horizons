@@ -40,6 +40,7 @@ from horizons.entities import Entities
 from horizons.world.production.producer import Producer
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
 from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
+from horizons.world.buildability.potentialroadconnectivitycache import PotentialRoadConnectivityCache
 from horizons.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
@@ -65,6 +66,7 @@ class ProductionBuilder(AreaBuilder):
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
 		self._init_buildability_cache()
 		self._init_simple_collector_area_cache()
+		self._init_road_connectivity_cache()
 		self.register_change_list(list(settlement_manager.settlement.warehouse.position.tuple_iter()),
 		                          BUILDING_PURPOSE.WAREHOUSE, None)
 		self._refresh_unused_fields()
@@ -76,7 +78,6 @@ class ProductionBuilder(AreaBuilder):
 		self.personality = self.owner.personality_manager.get('ProductionBuilder')
 		self.last_collector_improvement_storage = last_collector_improvement_storage
 		self.last_collector_improvement_road = last_collector_improvement_road
-		self.__builder_cache = {}
 
 	def _init_buildability_cache(self):
 		self.buildability_cache = BinaryBuildabilityCache(self.island.terrain_cache)
@@ -90,6 +91,15 @@ class ProductionBuilder(AreaBuilder):
 
 	def _init_simple_collector_area_cache(self):
 		self.simple_collector_area_cache = SimpleCollectorAreaCache(self.island.terrain_cache)
+
+	def _init_road_connectivity_cache(self):
+		self.road_connectivity_cache = PotentialRoadConnectivityCache(self)
+		coords_set = set()
+		for coords in self.plan:
+			coords_set.add(coords)
+		for coords in self.land_manager.roads:
+			coords_set.add(coords)
+		self.road_connectivity_cache.modify_area(list(sorted(coords_set)))
 
 	def save(self, db):
 		super(ProductionBuilder, self).save(db)
@@ -114,6 +124,7 @@ class ProductionBuilder(AreaBuilder):
 				self.land_manager.roads.add((x, y))
 		self._init_buildability_cache()
 		self._init_simple_collector_area_cache()
+		self._init_road_connectivity_cache()
 		self._refresh_unused_fields()
 
 	def have_deposit(self, resource_id):
@@ -342,11 +353,18 @@ class ProductionBuilder(AreaBuilder):
 			self.buildability_cache.remove_area(remove_list)
 
 		super(ProductionBuilder, self).register_change_list(coords_list, purpose, data)
+		self.road_connectivity_cache.modify_area(coords_list)
 		self.display()
 
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""
 		# remove planned fields that are now impossible
+		lost_coords_list = []
+		for coords in coords_list:
+			if coords in self.plan:
+				lost_coords_list.append(coords)
+		self.register_change_list(lost_coords_list, BUILDING_PURPOSE.NONE, None)
+
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD].size
 		removed_list = []
 		for coords, (purpose, _) in self.plan.iteritems():
@@ -359,16 +377,18 @@ class ProductionBuilder(AreaBuilder):
 
 		for coords in removed_list:
 			rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
-			for field_coords in rect.tuple_iter():
-				self.plan[field_coords] = (BUILDING_PURPOSE.NONE, None)
+			self.register_change_list(list(rect.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 		self._refresh_unused_fields()
 		super(ProductionBuilder, self).handle_lost_area(coords_list)
+		self.road_connectivity_cache.modify_area(lost_coords_list)
 
 	def handle_new_area(self):
 		"""Handle receiving more land to the production area (this can happen when the village area gives some up)."""
+		new_coords_list = []
 		for coords in self.land_manager.production:
 			if coords not in self.plan:
-				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
+				new_coords_list.append(coords)
+		self.register_change_list(new_coords_list, BUILDING_PURPOSE.NONE, None)
 
 	collector_building_classes = [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE]
 	field_building_classes = [BUILDINGS.POTATO_FIELD, BUILDINGS.PASTURE, BUILDINGS.SUGARCANE_FIELD, BUILDINGS.TOBACCO_FIELD]
