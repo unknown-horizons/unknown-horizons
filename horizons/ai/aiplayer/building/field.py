@@ -41,6 +41,9 @@ class AbstractField(AbstractBuilding):
 			extra_fields_needed -= field_spots_available
 
 		fields_per_farm = AbstractBuilding.buildings[BUILDINGS.FARM].get_max_fields(settlement_manager)
+		if fields_per_farm == 0:
+			return 1e100
+
 		# TODO: fix the resource gathering code to request resources in larger chunks so this hack doesn't have to be used
 		# use fractional farm costs to give farms a chance to picked
 		extra_farms_needed = float(extra_fields_needed) / fields_per_farm
