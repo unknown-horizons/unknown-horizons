@@ -29,7 +29,7 @@ from horizons.ai.aiplayer.areabuilder import AreaBuilder
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS
-from horizons.util.shapes import Rect
+from horizons.util.shapes import distances, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
@@ -285,6 +285,7 @@ class VillageBuilder(AreaBuilder):
 				ys.add(y)
 		ys = sorted(ys)
 
+		distance_rect_rect = distances.distance_rect_rect
 		possible_road_positions = self._get_possible_building_positions(section_coords_set, (1, 1))
 		possible_residence_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.RESIDENTIAL].size)
 		possible_main_square_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.MAIN_SQUARE].size)
@@ -359,7 +360,7 @@ class VillageBuilder(AreaBuilder):
 						break
 				if not ok:
 					continue
-				if main_square.distance(position) > tent_radius:
+				if distance_rect_rect(main_square, position) > tent_radius:
 					continue # unable to build or out of main square range
 
 				# is there a road connection?
@@ -481,6 +482,8 @@ class VillageBuilder(AreaBuilder):
 		@param capacity: maximum number of residences one of the new buildings can service
 		"""
 
+		distance_rect_rect = distances.distance_rect_rect
+		distance_rect_tuple = distances.distance_rect_tuple
 		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL].radius
 		planned_tents = self._get_sorted_building_positions(BUILDING_PURPOSE.RESIDENCE)
 
@@ -490,7 +493,7 @@ class VillageBuilder(AreaBuilder):
 			tavern_radius = Entities.buildings[BUILDINGS.TAVERN].radius
 			storage_positions = self._get_sorted_building_positions(BUILDING_PURPOSE.MAIN_SQUARE)
 			storage_positions.append(self.settlement_manager.settlement.warehouse.position)
-			possible_positions = [rect for rect in possible_positions if any(rect.distance(storage_rect) <= tavern_radius for storage_rect in storage_positions)]
+			possible_positions = [rect for rect in possible_positions if any(distance_rect_rect(rect, storage_rect) <= tavern_radius for storage_rect in storage_positions)]
 
 		num_kept = int(min(len(possible_positions), max(self.personality.min_coverage_building_options, len(possible_positions) * self.personality.coverage_building_option_ratio)))
 		possible_positions = self.session.random.sample(possible_positions, num_kept)
@@ -510,7 +513,7 @@ class VillageBuilder(AreaBuilder):
 			positions = []
 			for position in planned_tents:
 				if position not in blocked:
-					positions.append((position.distance(centroid), position))
+					positions.append((distance_rect_tuple(position, centroid), position))
 			positions.sort(reverse = True)
 			return positions
 
@@ -525,7 +528,7 @@ class VillageBuilder(AreaBuilder):
 				score = 0
 				in_range = 0
 				for distance_to_centroid, position in positions:
-					if in_range < capacity and replaced_pos.distance(position) <= tent_range:
+					if in_range < capacity and distance_rect_rect(replaced_pos, position) <= tent_range:
 						in_range += 1
 					else:
 						score += distance_to_centroid
@@ -536,7 +539,7 @@ class VillageBuilder(AreaBuilder):
 			in_range = 0
 			positions = zip(*get_centroid_distance_pairs(planned_tents, set([best_pos])))[1]
 			for position in positions:
-				if in_range < capacity and best_pos.distance(position) <= tent_range:
+				if in_range < capacity and distance_rect_rect(best_pos, position) <= tent_range:
 					planned_tents.remove(position)
 					in_range += 1
 			if not in_range:
@@ -570,6 +573,7 @@ class VillageBuilder(AreaBuilder):
 		This is useful for deciding which of the special village buildings would be most useful.
 		"""
 
+		distance_rect_rect = distances.distance_rect_rect
 		self.special_building_assignments = {} # {BUILDING_PURPOSE constant: {village producer coordinates: [residence coordinates, ...]}}
 		residence_positions = self._get_sorted_building_positions(BUILDING_PURPOSE.RESIDENCE)
 
@@ -587,7 +591,7 @@ class VillageBuilder(AreaBuilder):
 			options = []
 			for producer_position in producer_positions:
 				for position in residence_positions:
-					distance = producer_position.distance(position)
+					distance = distance_rect_rect(producer_position, position)
 					if distance <= range:
 						options.append((distance, producer_position.origin.to_tuple(), position.origin.to_tuple()))
 			options.sort(reverse = True)
@@ -646,11 +650,12 @@ class VillageBuilder(AreaBuilder):
 			blocks.append(block_list)
 
 		# calculate distance from the main square to the block
+		distance_rect_tuple = distances.distance_rect_tuple
 		block_distances = []
 		for coords_list in blocks:
 			distance = 0
 			for coords in coords_list:
-				distance += main_square.distance(coords)
+				distance += distance_rect_tuple(main_square, coords)
 			block_distances.append((distance / len(coords_list), coords_list))
 
 		# form the sorted tent queue
@@ -748,6 +753,7 @@ class VillageBuilder(AreaBuilder):
 
 	def extend_settlement_with_tent(self, position):
 		"""Build a tent to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
+		distance_rect_rect = distances.distance_rect_rect
 		size = Entities.buildings[BUILDINGS.RESIDENTIAL].size
 		min_distance = None
 		best_coords = None
@@ -762,7 +768,7 @@ class VillageBuilder(AreaBuilder):
 			if not ok:
 				continue
 
-			distance = Rect.init_from_topleft_and_size(x, y, size[0], size[1]).distance(position)
+			distance = distance_rect_rect(Rect.init_from_topleft_and_size(x, y, size[0], size[1]), position)
 			if min_distance is None or distance < min_distance:
 				min_distance = distance
 				best_coords = (x, y)
