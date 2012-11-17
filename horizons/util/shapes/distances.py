@@ -39,12 +39,58 @@ def distance_circle_annulus(circle, annulus):
 # Rect
 
 def distance_rect_rect(r1, r2):
-	return ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2) +
-            (max(r1.top - r2.bottom, 0, r2.top - r1.bottom) ** 2)) ** 0.5
+	dx = 0
+	t = r1.left - r2.right
+	if t > dx:
+		dx = t
+	t = r2.left - r1.right
+	if t > dx:
+		dx = t
 	
+	dy = 0
+	t = r1.top - r2.bottom
+	if t > dy:
+		dy = t
+	t = r2.top - r1.bottom
+	if t > dy:
+		dy = t
+	return (dx * dx + dy * dy) ** 0.5
+
+def distance_rect_rect_sq(r1, r2):
+	dx = 0
+	t = r1.left - r2.right
+	if t > dx:
+		dx = t
+	t = r2.left - r1.right
+	if t > dx:
+		dx = t
+	
+	dy = 0
+	t = r1.top - r2.bottom
+	if t > dy:
+		dy = t
+	t = r2.top - r1.bottom
+	if t > dy:
+		dy = t
+	return dx * dx + dy * dy
+
 def distance_rect_tuple(rect, (x, y)):
-	return ((max(rect.left - x, 0, x - rect.right) ** 2) +
-            (max(rect.top - y, 0, y - rect.bottom) ** 2)) ** 0.5
+	dx = 0
+	t = rect.left - x
+	if t > dx:
+		dx = t
+	t = x - rect.right
+	if t > dx:
+		dx = t
+	
+	dy = 0
+	t = rect.top - y
+	if t > dy:
+		dy = t
+	t = y - rect.bottom
+	if t > dy:
+		dy = t
+	return (dx * dx + dy * dy) ** 0.5
 
 def distance_rect_circle(rect, circle):
 	dist = rect.distance(circle.center) - circle.radius

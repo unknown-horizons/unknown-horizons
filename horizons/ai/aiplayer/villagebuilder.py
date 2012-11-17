@@ -271,7 +271,7 @@ class VillageBuilder(AreaBuilder):
 		best_value = -1
 		tent_squares = [(0, 0), (0, 1), (1, 0), (1, 1)]
 		road_connections = [(-1, 0), (-1, 1), (0, -1), (0, 2), (1, -1), (1, 2), (2, 0), (2, 1)]
-		tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL].radius
+		tent_radius_sq = Entities.buildings[BUILDINGS.RESIDENTIAL].radius ** 2
 
 		xs = set(x for (x, _) in section_coords_set)
 		for x in vertical_roads:
@@ -285,7 +285,7 @@ class VillageBuilder(AreaBuilder):
 				ys.add(y)
 		ys = sorted(ys)
 
-		distance_rect_rect = distances.distance_rect_rect
+		distance_rect_rect_sq = distances.distance_rect_rect_sq
 		possible_road_positions = self._get_possible_building_positions(section_coords_set, (1, 1))
 		possible_residence_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.RESIDENTIAL].size)
 		possible_main_square_positions = self._get_possible_building_positions(section_coords_set, Entities.buildings[BUILDINGS.MAIN_SQUARE].size)
@@ -360,7 +360,7 @@ class VillageBuilder(AreaBuilder):
 						break
 				if not ok:
 					continue
-				if distance_rect_rect(main_square, position) > tent_radius:
+				if distance_rect_rect_sq(main_square, position) > tent_radius_sq:
 					continue # unable to build or out of main square range
 
 				# is there a road connection?
@@ -482,18 +482,18 @@ class VillageBuilder(AreaBuilder):
 		@param capacity: maximum number of residences one of the new buildings can service
 		"""
 
-		distance_rect_rect = distances.distance_rect_rect
+		distance_rect_rect_sq = distances.distance_rect_rect_sq
 		distance_rect_tuple = distances.distance_rect_tuple
-		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL].radius
+		tent_range_sq = Entities.buildings[BUILDINGS.RESIDENTIAL].radius ** 2
 		planned_tents = self._get_sorted_building_positions(BUILDING_PURPOSE.RESIDENCE)
 
 		possible_positions = copy.copy(planned_tents)
 		if new_purpose == BUILDING_PURPOSE.TAVERN:
 			# filter out the positions that are too far from the main squares and the warehouse
-			tavern_radius = Entities.buildings[BUILDINGS.TAVERN].radius
+			tavern_radius_sq = Entities.buildings[BUILDINGS.TAVERN].radius ** 2
 			storage_positions = self._get_sorted_building_positions(BUILDING_PURPOSE.MAIN_SQUARE)
 			storage_positions.append(self.settlement_manager.settlement.warehouse.position)
-			possible_positions = [rect for rect in possible_positions if any(distance_rect_rect(rect, storage_rect) <= tavern_radius for storage_rect in storage_positions)]
+			possible_positions = [rect for rect in possible_positions if any(distance_rect_rect_sq(rect, storage_rect) <= tavern_radius_sq for storage_rect in storage_positions)]
 
 		num_kept = int(min(len(possible_positions), max(self.personality.min_coverage_building_options, len(possible_positions) * self.personality.coverage_building_option_ratio)))
 		possible_positions = self.session.random.sample(possible_positions, num_kept)
@@ -528,7 +528,7 @@ class VillageBuilder(AreaBuilder):
 				score = 0
 				in_range = 0
 				for distance_to_centroid, position in positions:
-					if in_range < capacity and distance_rect_rect(replaced_pos, position) <= tent_range:
+					if in_range < capacity and distance_rect_rect_sq(replaced_pos, position) <= tent_range_sq:
 						in_range += 1
 					else:
 						score += distance_to_centroid
@@ -539,7 +539,7 @@ class VillageBuilder(AreaBuilder):
 			in_range = 0
 			positions = zip(*get_centroid_distance_pairs(planned_tents, set([best_pos])))[1]
 			for position in positions:
-				if in_range < capacity and distance_rect_rect(best_pos, position) <= tent_range:
+				if in_range < capacity and distance_rect_rect_sq(best_pos, position) <= tent_range_sq:
 					planned_tents.remove(position)
 					in_range += 1
 			if not in_range:
