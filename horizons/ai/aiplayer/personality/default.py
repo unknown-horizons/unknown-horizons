@@ -413,6 +413,8 @@ class DefaultPersonality:
 		immediate_connection_road = 3 # bonus for a road in an entrance of the farm
 		immediate_connection_free = 1 # bonus for an unused tile in an entrance of the farm
 
+		max_options = 200 # maximum number of farm options to consider
+
 	class LumberjackEvaluator:
 		alignment_importance = 0.5 # the larger this value, the larger the effect of alignment on the placement
 		new_tree = 3 # number of points for a new tree in range

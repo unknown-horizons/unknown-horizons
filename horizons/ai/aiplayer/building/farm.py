@@ -39,6 +39,7 @@ class FarmOptionCache(object):
 		self.farm_spots_set = self.field_spots_set.intersection(settlement_manager.production_builder.simple_collector_area_cache.cache[(3, 3)])
 		self.road_spots_set = abstract_farm._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND, False).union(settlement_manager.land_manager.roads)
 		self.raw_options = self._get_raw_options(self.farm_spots_set, self.field_spots_set, self.road_spots_set)
+		self.max_fields = self._get_max_fields()
 
 	def _get_raw_options(self, farm_spots_set, field_spots_set, road_spots_set):
 		field_row3 = {}
@@ -120,6 +121,13 @@ class FarmOptionCache(object):
 
 		return raw_options
 
+	def _get_max_fields(self):
+		max_fields = 0
+		for (num_fields, _, _) in self.raw_options:
+			if num_fields > max_fields:
+				max_fields = num_fields
+		return max_fields
+
 class AbstractFarm(AbstractBuilding):
 	@property
 	def directly_buildable(self):
@@ -147,23 +155,45 @@ class AbstractFarm(AbstractBuilding):
 		return None
 
 	def get_evaluators(self, settlement_manager, resource_id):
+		options_cache = self._get_option_cache(settlement_manager)
+		raw_options = options_cache.raw_options
+		if not raw_options:
+			return []
+
+		farm_field_buckets = []
+		for _ in xrange(9):
+			farm_field_buckets.append([])
+
+		for option in raw_options:
+			farm_field_buckets[option[0]].append(option)
+
+		personality = settlement_manager.owner.personality_manager.get('FarmEvaluator')
+		options_left = personality.max_options
+		chosen_raw_options = []
+		for i in xrange(8, 0, -1):
+			if len(farm_field_buckets[i]) > options_left:
+				chosen_raw_options.extend(settlement_manager.session.random.sample(farm_field_buckets[i], options_left))
+				options_left = 0
+			else:
+				chosen_raw_options.extend(farm_field_buckets[i])
+				options_left -= len(farm_field_buckets[i])
+			if options_left == 0:
+				break
+
+		max_fields = options_cache.max_fields
+		field_spots_set = options_cache.field_spots_set
+		road_spots_set = options_cache.road_spots_set
 		production_builder = settlement_manager.production_builder
 		field_purpose = self.get_purpose(resource_id)
-		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
+		road_configs = [(0, -1), (0, 3), (-1, 0), (3, 0)]
 		options = []
 
-		field_spots_set = self._get_buildability_intersection(settlement_manager, (3, 3), TerrainRequirement.LAND, False)
-		road_spots_set = self._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND, False).union(settlement_manager.land_manager.roads)
-
 		# create evaluators for completely new farms
-		most_fields = 1
-		for x, y, _ in self.iter_potential_locations(settlement_manager):
-			# try the 4 road configurations (road through the farm area on any of the farm's sides)
-			for road_dx, road_dy in road_side:
-				evaluator = FarmEvaluator.create(production_builder, x, y, road_dx, road_dy, most_fields, field_purpose, field_spots_set, road_spots_set)
-				if evaluator is not None:
-					options.append(evaluator)
-					most_fields = max(most_fields, evaluator.fields)
+		for (_, (x, y), road_config) in chosen_raw_options:
+			road_dx, road_dy = road_configs[road_config]
+			evaluator = FarmEvaluator.create(production_builder, x, y, road_dx, road_dy, max_fields, field_purpose, field_spots_set, road_spots_set)
+			if evaluator is not None:
+				options.append(evaluator)
 
 		# create evaluators for modified farms (change unused field type)
 		for coords_list in production_builder.unused_fields.itervalues():
@@ -191,13 +221,7 @@ class AbstractFarm(AbstractBuilding):
 		cls.__cache.clear()
 
 	def get_max_fields(self, settlement_manager):
-		max_fields = 0
-		for (num_fields, _, _) in self._get_option_cache(settlement_manager).raw_options:
-			if num_fields > max_fields:
-				max_fields = num_fields
-				if max_fields >= 8:
-					break
-		return max_fields
+		return self._get_option_cache(settlement_manager).max_fields
 
 	@classmethod
 	def register_buildings(cls):
@@ -242,8 +266,7 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (farm_x + other_offset, farm_y + road_dy)
 			else:
 				coords = (farm_x + road_dx, farm_y + other_offset)
-			if coords not in road_spots_set:
-				return None
+			assert coords in road_spots_set
 
 			farm_plan[coords] = (BUILDING_PURPOSE.ROAD, None)
 			if coords in area_builder.land_manager.roads:
