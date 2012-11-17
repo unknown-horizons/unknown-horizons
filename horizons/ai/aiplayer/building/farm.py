@@ -40,6 +40,7 @@ class FarmOptionCache(object):
 		self.road_spots_set = abstract_farm._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND, False).union(settlement_manager.land_manager.roads)
 		self.raw_options = self._get_raw_options(self.farm_spots_set, self.field_spots_set, self.road_spots_set)
 		self.max_fields = self._get_max_fields()
+		self._positive_alignment = None
 
 	def _get_raw_options(self, farm_spots_set, field_spots_set, road_spots_set):
 		field_row3 = {}
@@ -128,6 +129,18 @@ class FarmOptionCache(object):
 				max_fields = num_fields
 		return max_fields
 
+	def get_positive_alignment(self):
+		if self._positive_alignment is None:
+			land_manager = self.settlement_manager.land_manager
+			village_builder = self.settlement_manager.village_builder
+			positive_alignment = land_manager.coastline.union(land_manager.roads, village_builder.plan.iterkeys())
+			production_builder_plan = self.settlement_manager.production_builder.plan
+			for (coords, purpose) in production_builder_plan:
+				if purpose != BUILDING_PURPOSE.NONE:
+					positive_alignment.add(coords)
+			self._positive_alignment = positive_alignment
+		return self._positive_alignment
+
 class AbstractFarm(AbstractBuilding):
 	@property
 	def directly_buildable(self):
@@ -183,6 +196,7 @@ class AbstractFarm(AbstractBuilding):
 		max_fields = options_cache.max_fields
 		field_spots_set = options_cache.field_spots_set
 		road_spots_set = options_cache.road_spots_set
+		positive_alignment = options_cache.get_positive_alignment()
 		production_builder = settlement_manager.production_builder
 		field_purpose = self.get_purpose(resource_id)
 		road_configs = [(0, -1), (0, 3), (-1, 0), (3, 0)]
@@ -191,7 +205,7 @@ class AbstractFarm(AbstractBuilding):
 		# create evaluators for completely new farms
 		for (_, (x, y), road_config) in chosen_raw_options:
 			road_dx, road_dy = road_configs[road_config]
-			evaluator = FarmEvaluator.create(production_builder, x, y, road_dx, road_dy, max_fields, field_purpose, field_spots_set, road_spots_set)
+			evaluator = FarmEvaluator.create(production_builder, x, y, road_dx, road_dy, max_fields, field_purpose, field_spots_set, road_spots_set, positive_alignment)
 			if evaluator is not None:
 				options.append(evaluator)
 
@@ -254,7 +268,7 @@ class FarmEvaluator(BuildingEvaluator):
 		return coords in production_builder.land_manager.roads or (coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
 
 	@classmethod
-	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set):
+	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set, positive_alignment):
 		farm_plan = {}
 
 		# place the farm area road
@@ -305,7 +319,6 @@ class FarmEvaluator(BuildingEvaluator):
 
 		# calculate the alignment value and the rectangle that contains the whole farm
 		alignment = 0
-		coastline = area_builder.land_manager.coastline
 		min_x, max_x, min_y, max_y = None, None, None, None
 		for x, y in farm_plan:
 			min_x = x if min_x is None or min_x > x else min_x
@@ -315,9 +328,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 			for dx, dy in cls.__moves:
 				coords = (x + dx, y + dy)
-				if coords in farm_plan:
-					continue
-				if coords in coastline or coords not in area_builder.plan or area_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				if coords not in farm_plan and coords in positive_alignment:
 					alignment += 1
 
 		# calculate the value of the farm road end points (larger is better)
