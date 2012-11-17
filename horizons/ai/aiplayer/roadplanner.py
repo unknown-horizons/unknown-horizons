@@ -56,12 +56,13 @@ class RoadPlanner(object):
 			return None
 
 		distance = {}
+		beacon_tuple_distance_func = destination_beacon.get_distance_function((0, 0))
 		heap = []
 		for coords in source:
 			if coords not in blocked_coords and coords in path_nodes:
 				for dir in xrange(2): # 0 -> changed x, 1 -> changed y
 					real_distance = path_nodes[coords]
-					expected_distance = destination_beacon.distance(coords)
+					expected_distance = beacon_tuple_distance_func(destination_beacon, coords)
 					key = (coords[0], coords[1], dir)
 					# the value is (real distance so far, previous key)
 					distance[key] = (real_distance, None)
@@ -88,7 +89,7 @@ class RoadPlanner(object):
 				reduced_dir = 0 if moves[dir][0] != 0 else 1
 				next_key = (coords[0], coords[1], reduced_dir)
 				real_distance = distance_so_far + path_nodes[coords] + (0 if reduced_dir == key[2] else personality.turn_penalty)
-				expected_distance = real_distance + destination_beacon.distance(coords)
+				expected_distance = real_distance + beacon_tuple_distance_func(destination_beacon, coords)
 				if next_key not in distance or distance[next_key][0] > real_distance:
 					distance[next_key] = (real_distance, key)
 					heapq.heappush(heap, (expected_distance, real_distance, next_key))
