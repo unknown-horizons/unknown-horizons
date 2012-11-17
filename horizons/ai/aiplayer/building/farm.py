@@ -268,7 +268,7 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (farm_x + road_dx, farm_y + other_offset)
 			assert coords in road_spots_set
 
-			farm_plan[coords] = (BUILDING_PURPOSE.ROAD, None)
+			farm_plan[coords] = BUILDING_PURPOSE.ROAD
 			if coords in area_builder.land_manager.roads:
 				existing_roads += 1
 
@@ -293,16 +293,16 @@ class FarmEvaluator(BuildingEvaluator):
 			fields += 1
 			for (fdx, fdy) in cls.__field_pos_offsets:
 				coords2 = (coords[0] + fdx, coords[1] + fdy)
-				farm_plan[coords2] = (BUILDING_PURPOSE.RESERVED, None)
-			farm_plan[coords] = (field_purpose, None)
+				farm_plan[coords2] = BUILDING_PURPOSE.RESERVED
+			farm_plan[coords] = field_purpose
 		if fields < min_fields:
 			return None # go for the most fields possible
 
 		# add the farm itself to the plan
 		builder = BasicBuilder.create(BUILDINGS.FARM, (farm_x, farm_y), 0)
 		for coords in builder.position.tuple_iter():
-			farm_plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
-		farm_plan[(farm_x, farm_y)] = (BUILDING_PURPOSE.FARM, builder)
+			farm_plan[coords] = BUILDING_PURPOSE.RESERVED
+		farm_plan[(farm_x, farm_y)] = BUILDING_PURPOSE.FARM
 
 		# calculate the alignment value and the rectangle that contains the whole farm
 		alignment = 0
@@ -353,7 +353,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 		changes = defaultdict(lambda: [])
 		reverse_changes = defaultdict(lambda: [])
-		for coords, (purpose, data) in self.farm_plan.iteritems():
+		for coords, purpose in self.farm_plan.iteritems():
 			# completely ignore the road in the plan for now
 			if purpose == BUILDING_PURPOSE.ROAD:
 				continue
@@ -381,7 +381,7 @@ class FarmEvaluator(BuildingEvaluator):
 			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 
-		for coords, (purpose, _) in self.farm_plan.iteritems():
+		for coords, purpose in self.farm_plan.iteritems():
 			if purpose == self.field_purpose:
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		self._register_changes(changes, True)
