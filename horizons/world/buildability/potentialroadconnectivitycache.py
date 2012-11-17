@@ -60,3 +60,14 @@ class PotentialRoadConnectivityCache(object):
 			self._cache.add_area(add_list)
 		if remove_list:
 			self._cache.remove_area(remove_list)
+
+	def is_connection_possible(self, coords_set1, coords_set2):
+		areas1 = set()
+		for coords in coords_set1:
+			if coords in self.area_numbers:
+				areas1.add(self.area_numbers[coords])
+		for coords in coords_set2:
+			if coords in self.area_numbers:
+				if self.area_numbers[coords] in areas1:
+					return True
+		return False

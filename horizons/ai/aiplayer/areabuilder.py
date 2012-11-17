@@ -169,8 +169,12 @@ class AreaBuilder(WorldObject):
 			for coords in self.iter_possible_road_coords(building.position, building.position):
 				collector_coords.add(coords)
 
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()]).union(self.land_manager.coastline)
 		destination_coords = set(self.iter_possible_road_coords(loading_area, builder.position))
+		if self is self.settlement_manager.production_builder:
+			if not self.settlement_manager.production_builder.road_connectivity_cache.is_connection_possible(collector_coords, destination_coords):
+				return None
+
+		blocked_coords = set([coords for coords in builder.position.tuple_iter()]).union(self.land_manager.coastline)
 		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1,
 		                                loading_area.right + 1, loading_area.bottom + 1)
 
