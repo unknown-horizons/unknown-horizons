@@ -56,7 +56,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS, LAYERS
 from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
 from horizons.world.managers.statusiconmanager import StatusIconManager
-from horizons.messaging import MessageBus
+from horizons.messaging import AutosaveIntervalChanged, MessageBus
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -158,6 +158,7 @@ class Session(LivingObject):
 		"""Actually starts the game."""
 		self.timer.activate()
 		self.reset_autosave()
+		AutosaveIntervalChanged.subscribe(self._on_autosave_interval_changed)
 
 	def reset_autosave(self):
 		"""(Re-)Set up autosave. Called if autosave interval has been changed."""
@@ -169,6 +170,9 @@ class Session(LivingObject):
 			if interval != 0: #autosave
 				self.log.debug("Initing autosave every %s minutes", interval)
 				ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
+
+	def _on_autosave_interval_changed(self, message):
+		self.reset_autosave()
 
 	def create_manager(self):
 		"""Returns instance of command manager (currently MPManager or SPManager)"""
@@ -246,6 +250,7 @@ class Session(LivingObject):
 
 		# subscriptions shouldn't survive listeners (except the main Gui)
 		self.gui.unsubscribe()
+		AutosaveIntervalChanged.unsubscribe(self._on_autosave_interval_changed)
 		MessageBus().reset()
 		self.gui.subscribe()
 

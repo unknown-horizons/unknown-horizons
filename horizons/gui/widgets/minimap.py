@@ -29,6 +29,7 @@ from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
+from horizons.messaging import MinimapRotationSettingChanged
 
 import math
 from math import sin, cos
@@ -127,11 +128,17 @@ class Minimap(object):
 		#import random
 		#ExtScheduler().add_new_object(lambda : self.highlight( (50+random.randint(-50,50), random.randint(-50,50) + 50 )), self, 2, loops=-1)
 
+		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
+		if self.use_rotation:
+			MinimapRotationSettingChanged.subscribe(self._on_rotation_setting_change)
+
 	def end(self):
 		self.disable()
 		self.world = None
 		self.session = None
 		self.renderer = None
+		if self.use_rotation:
+			MinimapRotationSettingChanged.unsubscribe(self._on_rotation_setting_change)
 
 	def disable(self):
 		"""Due to the way the minimap works, there isn't really a show/hide,
@@ -668,7 +675,11 @@ class Minimap(object):
 	def _get_rotation_setting(self):
 		if not self.use_rotation:
 			return False
-		return horizons.globals.fife.get_uh_setting("MinimapRotation")
+		return self._rotation_setting
+
+	def _on_rotation_setting_change(self, message):
+		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
+		self.draw()
 
 	_rotations = { 0 : 0,
 				         1 : 3 * math.pi / 2,
