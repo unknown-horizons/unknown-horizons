@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import hashlib
 import random
 import sys
 import re
@@ -377,8 +378,19 @@ def create_random_island(map_db, island_id, id_string):
 	map_db("COMMIT")
 
 def _simplify_seed(seed):
-	"""Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally."""
-	return str(seed).lower().strip()
+	"""
+	Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally.
+
+	This function also makes sure its return value fits into a 32bit integer. That is
+	necessary because otherwise the hash of the value could be different between
+	32 and 64 bit python interpreters. That would cause a map with seed X to be different
+	depending on the platform which we don't want to happen.
+	"""
+
+	seed = str(seed).lower().strip()
+	h = hashlib.md5(seed)
+	h.update(seed)
+	return int('0x' + h.hexdigest(), 16) % 1000000007
 
 def generate_random_map(seed, map_size, water_percent, max_island_size,
                         preferred_island_size, island_size_deviation):
@@ -452,7 +464,8 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 
 	island_strings = []
 	for rect in islands:
-		island_seed = rand.randint(-sys.maxint, sys.maxint)
+		# The bounds must be platform independent to make sure the same maps are generated on all platforms.
+		island_seed = rand.randint(-2147483648, 2147483647)
 		island_params = {'creation_method': 2, 'seed': island_seed, 'width': rect.width,
 						 'height': rect.height, 'island_x': rect.left, 'island_y': rect.top}
 		island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
