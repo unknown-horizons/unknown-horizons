@@ -21,6 +21,8 @@
 
 import logging
 
+from collections import defaultdict
+
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
@@ -133,6 +135,9 @@ class Island(BuildingOwner, WorldObject):
 			self.ground_map[(ground.x, ground.y)] = ground
 
 		self._init_cache()
+
+		# Contains references to all resource deposits (but not mines) on the island regardless of the owner.
+		self.deposits = defaultdict(dict) # {building_id: {(x, y): building_instance, ...}, ...}
 
 		self.settlements = []
 		self.wild_animals = []
@@ -282,7 +287,9 @@ class Island(BuildingOwner, WorldObject):
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement
 		@param load: boolean, whether it has been called during loading"""
-		building = super(Island, self).add_building(building, player, load=load)
+		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+			self.deposits[building.id][building.position.origin.to_tuple()] = building
+		super(Island, self).add_building(building, player, load=load)
 		if not load and building.settlement is not None:
 			self.assign_settlement(building.position, building.radius, building.settlement)
 
@@ -305,6 +312,8 @@ class Island(BuildingOwner, WorldObject):
 
 	def remove_building(self, building):
 		# removal code (before super call)
+		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+			del self.deposits[building.id][building.position.origin.to_tuple()]
 		if building.settlement is not None:
 			building.settlement.remove_building(building)
 			assert(building not in building.settlement.buildings)
