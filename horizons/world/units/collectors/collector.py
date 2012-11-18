@@ -543,7 +543,6 @@ class JobList(list):
 		Same as fewest_available_and_distance_, but also considers whether target inv is full."""
 		self._sort_jobs_fewest_available_and_distance()
 		self._sort_target_inventory_full()
-		self._sort_no_specialized_producer_in_range()
 
 	def _sort_jobs_distance(self):
 		"""Prefer targets that are nearer"""
@@ -553,13 +552,6 @@ class JobList(list):
 	def _sort_target_inventory_full(self):
 		"""Prefer targets with full inventory"""
 		self.sort(key=operator.attrgetter('target_inventory_full_num'), reverse=True)
-
-	def _sort_no_specialized_producer_in_range(self):
-		"""Prefer targets with no specialized producer in range"""
-		sort_function = lambda job: int(len(
-			list(job.object.island.get_specialized_producers_in_range(job.object))) > 0)
-
-		self.sort(key=sort_function)
 
 	def __str__(self):
 		return unicode([ unicode(i) for i in self ])
