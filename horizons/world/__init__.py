@@ -280,10 +280,10 @@ class World(BuildingOwner, WorldObject):
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
 		for island in self.islands:
-			self.min_x = min(island.rect.left, self.min_x)
-			self.min_y = min(island.rect.top, self.min_y)
-			self.max_x = max(island.rect.right, self.max_x)
-			self.max_y = max(island.rect.bottom, self.max_y)
+			self.min_x = min(island.position.left, self.min_x)
+			self.min_y = min(island.position.top, self.min_y)
+			self.max_x = max(island.position.right, self.max_x)
+			self.max_y = max(island.position.bottom, self.max_y)
 		self.min_x -= MAP.PADDING
 		self.min_y -= MAP.PADDING
 		self.max_x += MAP.PADDING

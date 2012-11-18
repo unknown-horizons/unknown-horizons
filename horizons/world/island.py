@@ -121,10 +121,6 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		p_x, p_y, width, height = db("SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?", island_id - 1001)[0]
 
-		# rect for quick checking if a tile isn't on this island
-		# NOTE: it contains tiles, that are not on the island!
-		self.rect = Rect(Point(p_x, p_y), width, height)
-
 		self.ground_map = {}
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
