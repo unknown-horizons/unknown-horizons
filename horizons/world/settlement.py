@@ -170,8 +170,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 		# load the settlement tile map
 		tile_data = db("SELECT data FROM settlement_tiles WHERE rowid = ?", worldid)[0][0]
-		coords_list = [tuple(coords) for coords in json.loads(tile_data)]
-		for coords in coords_list: # NOTE: json saves tuples as list
+		coords_list = [tuple(raw_coords) for raw_coords in json.loads(tile_data)] # json saves tuples as list
+		for coords in coords_list:
 			tile = island.ground_map[coords]
 			self.ground_map[coords] = tile
 			tile.settlement = self
