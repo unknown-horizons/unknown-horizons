@@ -161,7 +161,6 @@ class SelectableBuildingComponent(SelectableComponent):
 		                self.instance.settlement, self.instance.radius, self.range_applies_only_on_island)
 
 	def set_selection_outline(self):
-		return
 		"""Only set the selection outline.
 		Useful when it has been removed by some kind of interference"""
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -245,7 +244,6 @@ class SelectableBuildingComponent(SelectableComponent):
 	@classmethod
 	def _do_select(cls, renderer, position, world, settlement,
 	               radius, range_applies_only_on_island):
-		return
 		island = world.get_island(position.origin)
 		if island is None:
 			return # preview isn't on island, and therefore invalid
@@ -293,7 +291,6 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	@classmethod
 	def _add_fake_tile(cls, x, y, layer, renderer):
-		return
 		"""Adds a fake tile to the position. Requires 'cls._fake_tile_obj' to be set."""
 		inst = layer.createInstance(SelectableBuildingComponent._fake_tile_obj,
 	                                fife.ModelCoordinate(x, y, 0), "")
@@ -304,7 +301,6 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	@classmethod
 	def _add_selected_tile(cls, tile, renderer, remember=True):
-		return
 		"""
 		@param remember: whether to keep track of this tile. Set to False on recolorings.
 		"""
@@ -364,7 +360,6 @@ class SelectableFisherComponent(SelectableBuildingComponent):
 		# No super, we don't want to color the ground
 		cls._init_fake_tile()
 		layer = world.session.view.layers[LAYERS.FIELDS]
-		return
 		for fish_deposit in world.get_providers_in_range(RadiusRect(position, radius), res=RES.FISH):
 			#renderer.addColored(fish_deposit._instance, *cls.selection_color)
 			#cls._selected_tiles.l.append(fish_deposit)
