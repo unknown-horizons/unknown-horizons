@@ -224,33 +224,53 @@ class Island(BuildingOwner, WorldObject):
 		@param settlement:
 		"""
 		settlement_coords_changed = []
-		settlement_tiles_changed = []
 		for coords in position.get_radius_coordinates(radius, include_self=True):
-			tile = self.get_tile_tuple(coords)
-			if tile is not None:
-				if tile.settlement == settlement:
-					continue
-				if tile.settlement is None:
-					tile.settlement = settlement
-					settlement.ground_map[coords] = tile
-					Minimap.update(coords)
-					self._register_change(*coords)
-					settlement_tiles_changed.append(tile)
-					settlement_coords_changed.append(coords)
+			if coords not in self.ground_map:
+				continue
 
-				building = tile.object
-				# found a new building, that is now in settlement radius
-				# assign buildings on tiles to settlement
-				if building is not None and building.settlement is None and \
-				   building.island == self: # don't steal from other islands
-					building.settlement = settlement
-					building.owner = settlement.owner
-					settlement.add_building(building)
+			tile = self.ground_map[coords]
+			if tile.settlement is not None:
+				continue
 
-		if settlement_coords_changed:
-			if self.terrain_cache:
-				settlement.buildability_cache.modify_area(settlement_coords_changed)
-			SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
+			tile.settlement = settlement
+			settlement.ground_map[coords] = tile
+			settlement_coords_changed.append(coords)
+
+			building = tile.object
+			# In theory fish deposits should never be on the island but this has been
+			# possible since they were turned into a 2x2 building. Since they are never
+			# entirely on the island then it is easiest to just make it impossible to own
+			# fish deposits.
+			if building is None or building.id == BUILDINGS.FISH_DEPOSIT:
+				continue
+
+			# Assign the entire building to the first settlement that covers some of it.
+			assert building.settlement is None
+			for building_coords in building.position.tuple_iter():
+				building_tile = self.ground_map[building_coords]
+				if building_tile.settlement is not settlement:
+					assert building_tile.settlement is None
+					building_tile.settlement = settlement
+					settlement.ground_map[building_coords] = building_tile
+					settlement_coords_changed.append(building_coords)
+
+			building.settlement = settlement
+			building.owner = settlement.owner
+			settlement.add_building(building)
+
+		if not settlement_coords_changed:
+			return
+
+		settlement_tiles_changed = []
+		for coords in settlement_coords_changed:
+			settlement_tiles_changed.append(self.ground_map[coords])
+			Minimap.update(coords)
+
+		self._register_change()
+		if self.terrain_cache:
+			settlement.buildability_cache.modify_area(settlement_coords_changed)
+
+		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
 
 	def add_building(self, building, player, load=False):
 		"""Adds a building to the island at the position x, y with player as the owner.
@@ -267,10 +287,10 @@ class Island(BuildingOwner, WorldObject):
 			self.building_indexers[building.id].add(building)
 
 		# Reset the tiles this building was covering
-		for point in building.position:
-			self.path_nodes.reset_tile_walkability(point.to_tuple())
-			if not load:
-				self._register_change(point.x, point.y)
+		for coords in building.position.tuple_iter():
+			self.path_nodes.reset_tile_walkability(coords)
+		if not load:
+			self._register_change()
 
 		# keep track of the number of trees for animal population control
 		if building.id == BUILDINGS.TREE:
@@ -291,7 +311,7 @@ class Island(BuildingOwner, WorldObject):
 		# Reset the tiles this building was covering (after building has been completely removed)
 		for coords in building.position.tuple_iter():
 			self.path_nodes.reset_tile_walkability(coords)
-			self._register_change(*coords)
+			self._register_change()
 
 		# keep track of the number of trees for animal population control
 		if building.id == BUILDINGS.TREE:
@@ -347,7 +367,7 @@ class Island(BuildingOwner, WorldObject):
 		""" initialises the cache that knows when the last time the buildability of a rectangle may have changed on this island """
 		self.last_change_id = -1
 
-	def _register_change(self, x, y):
+	def _register_change(self):
 		""" registers the possible buildability change of a rectangle on this island """
 		self.last_change_id += 1
 
