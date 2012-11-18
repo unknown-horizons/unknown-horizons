@@ -187,6 +187,7 @@ class DefaultPersonality:
 		too_close_linear_penalty = 0
 
 		linear_warehouse_penalty = 1000 # add a penalty of this constant * distance to a warehouse to the warehouse penalty
+		max_options = 10 # maximum number of options to consider
 
 	class FeederChainGoal:
 		extra_priority = 1 # extra priority given to goals that are supposed to produce resources for other settlements on feeder islands

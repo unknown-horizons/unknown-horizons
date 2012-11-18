@@ -35,6 +35,7 @@ from horizons.world.settlement import Settlement
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
+from horizons.world.buildability.freeislandcache import FreeIslandBuildabilityCache
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache, TerrainRequirement
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.ground import MapPreviewTile
@@ -97,24 +98,28 @@ class Island(BuildingOwner, WorldObject):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
+		self.terrain_cache = None
+		self.available_land_cache = None
 		if not preview:
+			self.terrain_cache = TerrainBuildabilityCache(self)
+			flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+			self.available_flat_land = len(flat_land_set)
+			available_coords_set = set(self.terrain_cache.land_or_coast)
+
+			for settlement in self.settlements:
+				settlement.init_buildability_cache(self.terrain_cache)
+				for coords in settlement.ground_map:
+					available_coords_set.discard(coords)
+					if coords in flat_land_set:
+						self.available_flat_land -= 1
+
+			self.available_land_cache = FreeIslandBuildabilityCache(self)
+
 			# load buildings
 			from horizons.world import load_building
 			for (building_worldid, building_typeid) in \
 				  db("SELECT rowid, type FROM building WHERE location = ?", island_id):
 				load_building(self.session, db, building_typeid, building_worldid)
-
-		self.terrain_cache = None
-		if not preview:
-			self.terrain_cache = TerrainBuildabilityCache(self)
-			flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
-			self.available_flat_land = len(flat_land_set)
-
-			for settlement in self.settlements:
-				settlement.init_buildability_cache(self.terrain_cache)
-				for coords in settlement.ground_map:
-					if coords in flat_land_set:
-						self.available_flat_land -= 1
 
 	def __init(self, db, island_id, preview):
 		"""
@@ -275,6 +280,7 @@ class Island(BuildingOwner, WorldObject):
 			Minimap.update(coords)
 			if coords in flat_land_set:
 				self.available_flat_land -= 1
+		self.available_land_cache.remove_area(settlement_coords_changed)
 
 		self._register_change()
 		if self.terrain_cache:
@@ -289,6 +295,7 @@ class Island(BuildingOwner, WorldObject):
 		@param load: boolean, whether it has been called during loading"""
 		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
 			self.deposits[building.id][building.position.origin.to_tuple()] = building
+			self.available_land_cache.remove_area(list(building.position.tuple_iter()))
 		super(Island, self).add_building(building, player, load=load)
 		if not load and building.settlement is not None:
 			self.assign_settlement(building.position, building.radius, building.settlement)

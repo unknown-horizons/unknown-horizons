@@ -108,21 +108,14 @@ class FoundSettlement(ShipMission):
 		island = land_manager.island
 		personality = land_manager.owner.personality_manager.get('FoundSettlement')
 		too_close_penalty_threshold_sq = personality.too_close_penalty_threshold * personality.too_close_penalty_threshold
+
+		available_spots_list = list(sorted(island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size].intersection(island.available_land_cache.cache[warehouse_class.size])))
+		if not available_spots_list:
+			return None
+
 		options = []
-
-		for (x, y) in island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size]:
-			position_suitable = True
-			for (dx, dy) in pos_offsets:
-				if island.ground_map[(x + dx, y + dy)].settlement is not None:
-					position_suitable = False
-					break
-				object = island.ground_map[(x + dx, y + dy)].object
-				if object is not None and not object.buildable_upon:
-					position_suitable = False
-					break
-			if not position_suitable:
-				continue
-
+		limited_spots = island.session.random.sample(available_spots_list, min(len(available_spots_list), personality.max_options))
+		for (x, y) in limited_spots:
 			cost = 0
 			for (x2, y2) in land_manager.village:
 				dx = x2 - x
@@ -135,7 +128,6 @@ class FoundSettlement(ShipMission):
 
 			for settlement_manager in land_manager.owner.settlement_managers:
 				cost += settlement_manager.settlement.warehouse.position.distance((x, y)) * personality.linear_warehouse_penalty
-
 			options.append((cost, x, y))
 
 		for _, x, y in sorted(options):
