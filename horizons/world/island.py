@@ -33,7 +33,7 @@ from horizons.world.settlement import Settlement
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
-from horizons.world.buildability.terraincache import TerrainBuildabilityCache
+from horizons.world.buildability.terraincache import TerrainBuildabilityCache, TerrainRequirement
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.ground import MapPreviewTile
 
@@ -105,8 +105,14 @@ class Island(BuildingOwner, WorldObject):
 		self.terrain_cache = None
 		if not preview:
 			self.terrain_cache = TerrainBuildabilityCache(self)
+			flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+			self.available_flat_land = len(flat_land_set)
+
 			for settlement in self.settlements:
 				settlement.init_buildability_cache(self.terrain_cache)
+				for coords in settlement.ground_map:
+					if coords in flat_land_set:
+						self.available_flat_land -= 1
 
 	def __init(self, db, island_id, preview):
 		"""
@@ -261,10 +267,13 @@ class Island(BuildingOwner, WorldObject):
 		if not settlement_coords_changed:
 			return
 
+		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
 		settlement_tiles_changed = []
 		for coords in settlement_coords_changed:
 			settlement_tiles_changed.append(self.ground_map[coords])
 			Minimap.update(coords)
+			if coords in flat_land_set:
+				self.available_flat_land -= 1
 
 		self._register_change()
 		if self.terrain_cache:
