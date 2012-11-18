@@ -85,6 +85,8 @@ class Island(BuildingOwner, WorldObject):
 			assert isinstance(session, Session)
 		self.session = session
 
+		self.terrain_cache = None
+		self.available_land_cache = None
 		self.__init(db, island_id, preview)
 
 		if not preview:
@@ -98,8 +100,6 @@ class Island(BuildingOwner, WorldObject):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
-		self.terrain_cache = None
-		self.available_land_cache = None
 		if not preview:
 			self.terrain_cache = TerrainBuildabilityCache(self)
 			flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
@@ -293,7 +293,9 @@ class Island(BuildingOwner, WorldObject):
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement
 		@param load: boolean, whether it has been called during loading"""
-		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN) and self.available_land_cache is not None:
+			# self.available_land_cache may be None when loading a settlement
+			# it is ok to skip in that case because the cache's constructor will take the deposits into account anyway
 			self.deposits[building.id][building.position.origin.to_tuple()] = building
 			self.available_land_cache.remove_area(list(building.position.tuple_iter()))
 		super(Island, self).add_building(building, player, load=load)
@@ -320,7 +322,9 @@ class Island(BuildingOwner, WorldObject):
 	def remove_building(self, building):
 		# removal code (before super call)
 		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
-			del self.deposits[building.id][building.position.origin.to_tuple()]
+			coords = building.position.origin.to_tuple()
+			if coords in self.deposits[building.id]:
+				del self.deposits[building.id][coords]
 		if building.settlement is not None:
 			building.settlement.remove_building(building)
 			assert(building not in building.settlement.buildings)
