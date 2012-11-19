@@ -31,7 +31,7 @@ from tests.gui import gui_test, TEST_FIXTURES_DIR
 
 
 @gui_test(timeout=60)
-def test_support(gui):
+def test_editor(gui):
 	"""Test that the map editor shows up."""
 
 	def func():
