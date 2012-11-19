@@ -4,68 +4,96 @@ Unknown Horizons
 -----------------------------------------------------
 
 2012-??-??: Milestone 2012.2
-changelog date: JUN 29; rev: c18abf1e803de4ca957f80f5a815fdf205e78733
+changelog date: OCT 03
 
 Gameplay and Balancing
 * New features
+  + AI players learned to handle diplomacy and war
   + new buildings: alvearies, barracks, blender, cocoa field, doctor,
       herbary, lookout, pastry shop, spice field, vineyard, vintner
   + build preview jumps to valid build locations nearby
+  + production building storage indicators when finishing production
 * Modifications and changes
   # collectors pick up resources produced while walking over - #929
   # collectors can retrieve multiple resources at the same time - #994
   # fire station: 4 bricks (was: 5), tavern: 4 bricks (was: 2)
+  # trees take 120s to grow (was: 60) and cost 50 gold coins (was: 10)
+  # producing boards requires 2 trees (was: 1)
 * Fixed bugs and problems
   ~ fixed wrong graphics of tree growth sequence - #924
+  ~ burnt down residential buildings replaced by ruin
 
 Media Content
 * New files and features
-  + building: barracks, lookout
+  + docs: contribution guidelines
   + font: GNU Unifont as general font fallback
   + sound: error sound, refresh sound, click sound (Kinshuk)
+  + building: three citizen houses, citizen street (Viktoria)
+  + building: pioneer, settler, citizen main square (Viktoria)
+  + building: barracks, brewery, herbary (Daniel)
+  + building: doctor (mrkramps)
+  + unit: fisherman (Daniel)
+  + music: track "Battle" (Thomas Davey)
 * Brush-ups and modifications
   # resource icons are now 32px everywhere
+  # buildings retain their rotation when upgraded
 
 User Interface
 * Additions and new features
   + Balance display in top left corner (click to expand) - #1671
+  + loading screen displays gameplay tips / quotes (toggle in settings)
   + new cursor above TextFields when keyboard input is possible - #674
   + Esc triggers the cancel action, Enter the ok action in all dialogs
+  + kick players in multiplayer lobby, 'ready' flag to start game
+  + password protection for multiplayer games
   + menu background image can be toggled and persists
   + mouse wheel zoom behavior can be changed in settings
   + list to select available scenario translations, shows completeness
   + error sounds for invalid and impossible actions
   + click sound for all gui actions
+  + second build menu layout (toggle with icon)
 * Repositioning and modifications
   # BuildRelated tabs now use one line per tier
-  # cleaned up production overview layout and settlement inventories
-  # boat builder layout improvements and proper queue icons
+  # cleaned up and polished production overview, inventory tabs, boat
+      builder, main square, inhabitant overviews, trade route config
   # mouse wheel no longer changes ListBox selection, only scrolls view
   # highlight fish deposits in range of fishers, improve fish highlight
-  # only display farm production lines that have fields in range
+  # dynamic cityinfo placement, depends on resource overview bar size
+  # popups now modal by default
 * Fixed bugs and usability problems
   ~ only display status icons when and where they make sense
   ~ multiplayer: check required building costs early - #1486
   ~ do not show fisher boats on minimap
   ~ used action sets are stored in savegame
+  ~ clicks on scenario messages open corresponding logbook page
+  ~ warehouse selection unintuitive - #1246
+  ~ select most recent savegame in "Load game" dialog
 
 Codebase
 * New functionalities
   + icon_path and delayed updates are now available in TabInterface
   + setup: creates content/gitversion.txt containing detected git HEAD
   + build menu layouts can be defined via yaml
-  + kwargs support for cachedfunction and cachedmethod
   + 'fife' logger, activate by --debug-module='fife' or -d
+  + scenario actions:
+      highlight_position, change_increment, alter_inventory
+  + scenario tests
 * Modified structures
+  # own implementation of yaml cache, replacing shelve
   # less verbose api for horizons.messaging
-  # unify InternationalTradeWidget and TradeWidget as TradeTab
   # soft constants instead of hardcoded numerical ids in yaml files
+  # moved some more properties to yaml object files
+  # --nature-seed flag is gone, --sp-seed provides its functionality
+  # rewrote mp client/server methods, support older client protocols
+  # globals in horizons.main now live in horizons.globals
 * Fixed crashes and inconsistencies
   ~ use unicode everywhere, only convert it when talking to fife
   ~ storages provide itercontents() and iterslots() instead of __iter__
+  ~ invalid LC_TIME, LANG, LOCALE environment variables no longer crash
 
 User-Contributed Content
 * Translations
+   + new translation project: multiplayer error messages
    + new translations:
    + new terminology translations:
    + new tutorial translations:

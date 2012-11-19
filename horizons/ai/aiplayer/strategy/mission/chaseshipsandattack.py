@@ -22,12 +22,12 @@
 from horizons.ai.aiplayer.strategy.mission import FleetMission
 from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
+from horizons.messaging import ShipDestroyed
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.movingobject import MoveNotPossible
-
 
 class ChaseShipsAndAttack(FleetMission):
 	"""
@@ -59,6 +59,8 @@ class ChaseShipsAndAttack(FleetMission):
 			self.missionStates.sailing_to_target: Callback(self.was_reached),
 			self.missionStates.fleeing_home: Callback(self.report_failure, "Combat was lost, ships fled home successfully"),
 		}
+
+		ShipDestroyed.subscribe(self._on_ship_destroyed)
 
 	def save(self, db):
 		super(ChaseShipsAndAttack, self).save(db)
@@ -127,5 +129,16 @@ class ChaseShipsAndAttack(FleetMission):
 	@classmethod
 	def create(cls, success_callback, failure_callback, fleet, target_ship):
 		return ChaseShipsAndAttack(success_callback, failure_callback, fleet, target_ship)
+
+	def _on_ship_destroyed(self, msg):
+		if msg.sender is self.target_ship:
+			self.check_ship_alive()
+			assert not self.target_ship.in_ship_map
+			ShipDestroyed.unsubscribe(self._on_ship_destroyed)
+
+	def end(self):
+		if self.target_ship.in_ship_map:
+			ShipDestroyed.unsubscribe(self._on_ship_destroyed)
+		super(ChaseShipsAndAttack, self).end()
 
 decorators.bind_all(ChaseShipsAndAttack)

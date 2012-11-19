@@ -23,8 +23,6 @@
 import ctypes
 import platform
 import os
-import locale
-import sys
 
 from horizons.ext.enum import Enum
 
@@ -67,8 +65,10 @@ class VERSION:
 	IS_DEV_VERSION = True
 	#RELEASE_VERSION = u'2012.1'
 
+	MIN_FIFE_REVISION = 4068
+
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 64
+	SAVEGAMEREVISION = 67
 
 	@staticmethod
 	def string():
@@ -180,10 +180,16 @@ class BUILDINGS:
 		# think: animation contains key, if there is a path at offset value
 		# you need to sort this before iterating via sorted, since order is important here
 		action_offset_dict = {
-		  'a' : (0, -1),
-		  'b' : (1, 0),
-		  'c' : (0, 1),
-		  'd' : (-1, 0)
+		# Direct connections
+		  'a' : ( 0, -1),
+		  'b' : (+1,  0),
+		  'c' : ( 0, +1),
+		  'd' : (-1,  0),
+		# Remote connections
+		  'e' : (+1, -1),
+		  'f' : (+1, +1),
+		  'g' : (-1, +1),
+		  'h' : (-1, -1),
 		}
 
 	class BUILD:
@@ -300,10 +306,12 @@ class GROUND:
 
 class ACTION_SETS:
 	DEFAULT_ANIMATION_LENGTH = 500
+	DEFAULT_WEIGHT = 10
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [ int(i * TICKS_PER_SECOND) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20) ]
+	TICK_RATES = [int(i * TICKS_PER_SECOND)
+	              for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20)]
 
 class COLORS:
 	BLACK = 9
@@ -313,6 +321,7 @@ class VIEW:
 	ZOOM_MIN = 0.25
 	ZOOM_DEFAULT = 1
 	ZOOM_LEVELS_FACTOR = 0.875
+	SCROLL_SPEED = 0.7  # smaller values for faster speed
 	CELL_IMAGE_DIMENSIONS = (64, 32)
 	ROTATION = 45.0
 	TILT = -60
@@ -341,6 +350,11 @@ class GAME:
 
 	WORLD_WORLDID = 0 # worldid of World object
 	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
+
+# Map related constants
+class MAP:
+	PADDING = 10 # extra usable water around the map edges
+	BORDER = 30 # extra unusable water around the padding (to keep the black void at bay)
 
 class GUI:
 	CITYINFO_UPDATE_DELAY = 2 # seconds
@@ -446,22 +460,27 @@ class GFX:
 	SHIP_OUTLINE_THRESHOLD = 96
 	SHIP_OUTLINE_WIDTH = 2
 
+	# this is modified by the game starting process.
 	USE_ATLASES = False
 
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
-	LOG_DIR = os.path.join(_user_dir, "log")
-	USER_CONFIG_FILE = os.path.join(_user_dir, "settings.xml")
-	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
-	DEFAULT_WINDOW_ICON_PATH = os.path.join("content/gui/images/logos", "uh_32.png")
-	MAC_WINDOW_ICON_PATH = os.path.join("content/gui/icons", "Icon.icns")
+	LOG_DIR = os.path.join(USER_DIR, "log")
+	USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
+	SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
+	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
+	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
+	ATLAS_METADATA_PATH = os.path.join(USER_DIR, "atlas-metadata.cache")
 
 	# paths relative to uh dir
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sql")
 	ISLAND_TEMPLATE = os.path.join("content", "island_template.sql")
+
+	ATLAS_FILES_DIR = os.path.join("content", "gfx", "atlas")
+	ATLAS_DB_PATH = os.path.join("content", "atlas.sql")
 	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 	TILE_SETS_JSON_FILE = os.path.join("content", "tilesets.json")
 
@@ -470,16 +489,15 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
-	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", i) for i in
-									("/base",
-	 								"/buildings",
-	 								"/buildings_preview",
-	 								"/misc",
-	 								"/terrain",
-	 								"/units"))
-
-	if GFX.USE_ATLASES:
-		DB_FILES = DB_FILES + (os.path.join("content", "atlas.sql"), )
+	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", d)
+	                                 for d in (
+	                                 "/base",
+	                                 "/buildings",
+	                                 "/buildings_preview",
+	                                 "/misc",
+	                                 "/terrain",
+	                                 "/units",
+	                                ))
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
@@ -489,6 +507,7 @@ class PLAYER:
 
 ## SINGLEPLAYER
 class SINGLEPLAYER:
+	FREEZE_PROTECTION = True
 	SEED = None
 
 ## MULTIPLAYER
@@ -528,13 +547,16 @@ LANGUAGENAMES = _LanguageNameDict({
 	"el"    : u'Ελληνικά',
 	"fi"    : u'Suomi',
 	"fr"    : u'Français',
+	"ga"    : u'Gaeilge',
 	"gl"    : u'Galego',
 	"hi"    : u'मानक हिन्दी',
 	"hr"    : u'Hrvatski',
 	"hu"    : u'Magyar',
+	"id"    : u'Bahasa Indonesia',
 	"it"    : u'Italiano',
 	"ja"    : u'日本語',
 	"lt"    : u'Lietuvių',
+	"lv"    : u'Latviešu',
 	"ko"    : u'한국말/조선말',
 	"nb"    : u'Norw. Bokmål',
 	"nl"    : u'Nederlands',
@@ -544,10 +566,14 @@ LANGUAGENAMES = _LanguageNameDict({
 	"ro"    : u'Română',
 	"ru"    : u'Русский',
 	"sl"    : u'Slovenski',
+	"sr"    : u'Cрпски',
 	"sv"    : u'Svenska',
+	"th"    : u'ภาษาไทย',
 	"tr"    : u'Türkçe',
+	"uk"    : u'Українська',
 	"vi"    : u'Tiếng Việt',
 	"zh_CN" : u'普通話',
+	"zu"    : u'IsiZulu',
 })
 
 FONTDEFS = {
@@ -564,13 +590,16 @@ FONTDEFS = {
 	"el"    : 'libertine',
 	"fi"    : 'libertine',
 	"fr"    : 'libertine',
+	"ga"    : 'libertine',
 	"gl"    : 'libertine',
 	# "hi"
 	"hr"    : 'libertine',
 	"hu"    : 'libertine',
+	"id"    : 'libertine',
 	"it"    : 'libertine',
 	# "ja"
 	"lt"    : 'libertine',
+	"lv"    : 'libertine',
 	# "ko"
 	"nb"    : 'libertine',
 	"nl"    : 'libertine',
@@ -580,10 +609,12 @@ FONTDEFS = {
 	"ro"    : 'libertine',
 	"ru"    : 'libertine',
 	"sl"    : 'libertine',
+	"sr"    : 'libertine',
 	"sv"    : 'libertine',
+	# "th"
 	"tr"    : 'libertine',
+	"uk"    : 'libertine',
 	# "vi"
 	# "zh_CN"
+	"zu"    : 'libertine',
 }
-
-AUTO_CONTINUE_CAMPAIGN=True

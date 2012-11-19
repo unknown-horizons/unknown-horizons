@@ -57,8 +57,10 @@ class GenericAI(Player):
 		try:
 			ship.move(point, Callback(self.ship_idle, ship))
 		except MoveNotPossible:
-			# select new target soon:
-			self.notify_unit_path_blocked(ship)
+			self.log.info("%s %s: ship blocked", self.__class__.__name__, self.worldid)
+			# retry moving ship in 2 secs
+			Scheduler().add_new_object(Callback(self.ship_idle, ship), self,
+			                           GAME_SPEED.TICKS_PER_SECOND * 2)
 			return
 		self.ships[ship] = self.shipStates.moving_random
 
@@ -67,12 +69,6 @@ class GenericAI(Player):
 		@param ship: ship instance"""
 		self.log.debug("%s %s: idle, moving to random location", self.__class__.__name__, self.worldid)
 		Scheduler().add_new_object(Callback(self.send_ship, ship), self)
-
-	def notify_unit_path_blocked(self, unit):
-		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
-		# retry moving ship in 2 secs
-		Scheduler().add_new_object(Callback(self.ship_idle, unit), self,
-		                           GAME_SPEED.TICKS_PER_SECOND * 2)
 
 	def end(self):
 		self.ships = None

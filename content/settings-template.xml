@@ -53,8 +53,49 @@
 		<Setting name="DebugLog" type="bool">False</Setting>
 		<Setting name="QuotesType" type="int">0</Setting>
 		<Setting name="ShowResourceIcons" type="bool">True</Setting>
+		<Setting name="MapSettingsPirateEnabled" type="bool">True</Setting>
+		<Setting name="MapSettingsDisastersEnabled" type="bool">True</Setting>
+		<Setting name="MapSettingsFreeTraderEnabled" type="bool">True</Setting>
+		<Setting name="AtlasesEnabled" type="bool">True</Setting>
+		<Setting name="AtlasGenerationEnabled" type="bool">True</Setting>
+		<Setting name="MaxAtlasSize" type="int">2048</Setting>
+	</Module>
+	<Module name="keys">
+		<Setting name="GRID" type="str"> G </Setting>
+		<Setting name="COORD_TOOLTIP" type="str"> H </Setting>
+		<Setting name="DESTROY_TOOL" type="str"> X </Setting>
+		<Setting name="ROAD_TOOL" type="str"> R </Setting>
+		<Setting name="SPEED_UP" type="str"> PLUS </Setting>
+		<Setting name="SPEED_DOWN" type="str"> MINUS </Setting>
+		<Setting name="PAUSE" type="str"> P </Setting>
+		<Setting name="LOGBOOK" type="str"> L </Setting>
+		<Setting name="BUILD_TOOL" type="str"> B </Setting>
+		<Setting name="ROTATE_RIGHT" type="str"> PERIOD </Setting>
+		<Setting name="ROTATE_LEFT" type="str"> COMMA </Setting>
+		<Setting name="CHAT" type="str"> C </Setting>
+		<Setting name="TRANSLUCENCY" type="str"> T </Setting>
+		<Setting name="TILE_OWNER_HIGHLIGHT" type="str"> A </Setting>
+		<Setting name="PIPETTE" type="str"> O </Setting>
+		<Setting name="HEALTH_BAR" type="str"> K </Setting>
+		<Setting name="DEBUG" type="str"> D </Setting>
+		<Setting name="SCREENSHOT" type="str"> S </Setting>
+		<Setting name="SHOW_SELECTED" type="str"> J </Setting>
+		<Setting name="REMOVE_SELECTED" type="str"> DELETE </Setting>
+		<Setting name="ESCAPE" type="str"> ESCAPE </Setting>
+		<Setting name="LEFT" type="str"> LEFT </Setting>
+		<Setting name="RIGHT" type="str"> RIGHT </Setting>
+		<Setting name="UP" type="str"> UP </Setting>
+		<Setting name="DOWN" type="str"> DOWN </Setting>
+		<Setting name="HELP" type="str"> F1 </Setting>
+		<Setting name="PLAYERS_OVERVIEW" type="str"> F2 </Setting>
+		<Setting name="SHIPS_OVERVIEW" type="str"> F3 </Setting>
+		<Setting name="SETTLEMENTS_OVERVIEW" type="str"> F4 </Setting>
+		<Setting name="QUICKSAVE" type="str"> F5 </Setting>
+		<Setting name="QUICKLOAD" type="str"> F9 </Setting>
+		<Setting name="CONSOLE" type="str"> F10 </Setting>
+		<Setting name="SAVE_MAP" type="str"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 23 </Setting>
+		<Setting name="SettingsVersion" type="int"> 28 </Setting>
 	</Module>
 </Settings>

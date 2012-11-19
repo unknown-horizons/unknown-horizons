@@ -230,6 +230,7 @@ class StrategyManager(object):
 
 		# remove condition lock (if condition was lockable) after mission ends
 		self.unlock_condition(mission)
+		mission.end()
 
 	def start_mission(self, mission):
 		self.log.info("Player: %s|StrategyManager|Mission %s started", self.owner.worldid, mission)
@@ -266,7 +267,7 @@ class StrategyManager(object):
 
 	def get_ships_for_mission(self):
 		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
+		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet)
 		idle_ships = self.unit_manager.get_ships(rules)
 
 		return idle_ships
@@ -335,6 +336,9 @@ class StrategyManager(object):
 	def tick(self):
 		self.handle_strategy()
 
+	def end(self):
+		for mission in self.missions:
+			mission.end()
 
 class PirateStrategyManager(StrategyManager):
 
@@ -344,9 +348,8 @@ class PirateStrategyManager(StrategyManager):
 
 	def get_ships_for_mission(self):
 		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.pirate(), filters.not_in_fleet())
+		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.pirate, filters.not_in_fleet)
 		idle_ships = self.unit_manager.get_ships(rules)
-
 		return idle_ships
 
 	@classmethod

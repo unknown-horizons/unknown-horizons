@@ -40,9 +40,7 @@
 #
 ###############################################################################
 
-from horizons.constants import VERSION
-
-object_translations = dict()
+object_translations = {}
 
 def set_translations():
 	global object_translations
@@ -218,7 +216,7 @@ def set_translations():
 		# name of buildings:mainsquare
 		"name"                        : _("Main Square"),
 		# tooltip_text of buildings:mainsquare
-		"tooltip_text"                : _("Supplies citizens with goods."),
+		"tooltip_text"                : _("Supplies citizens with goods. Provides community."),
 		},
 
 	"content/objects/buildings/mountain.yaml" : {

@@ -189,3 +189,7 @@ class Pirate(GenericAI):
 		del self.ships[unit]
 		self.combat_manager.remove_unit(unit)
 		self.unit_manager.remove_unit(unit)
+
+	def end(self):
+		self.strategy_manager.end()
+		super(Pirate, self).end()

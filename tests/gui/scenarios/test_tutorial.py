@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command.uioptions import AddToBuyList
+from horizons.command.uioptions import SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TIER
 
@@ -54,14 +54,16 @@ def test_tutorial(gui):
 	# Goal: Build a lumberjack
 	assert_progress(19)
 
-	# lumberjack
+	# lumberjack (2)
 	gui.trigger('mainhud', 'build')
 	gui.trigger('tab', 'button_03')
-	gui.cursor_click(8, 10, 'left')
+	gui.cursor_click(8, 10, 'left', shift=True)
+	gui.cursor_click(13, 10, 'left')
+	gui.cursor_click(13, 10, 'right')
 
 	# roads
 	gui.trigger('tab', 'button_21')
-	gui.cursor_multi_click((10, 8), (10, 9), (10, 10))
+	gui.cursor_multi_click((10, 8), (10, 9), (10, 10), (11, 10))
 
 	# Goal: Build hunter and fisher
 	assert_progress(22)
@@ -116,7 +118,7 @@ def test_tutorial(gui):
 	# TODO do this with the gui (needs named buttons and a way to control the slider)
 	player = gui.session.world.player
 	tradepost = player.settlements[0].get_component(TradePostComponent)
-	AddToBuyList(tradepost, RES.TOOLS, 30)(player)
+	SetTradeSlot(tradepost, 0, RES.TOOLS, False, 30)(player)
 
 	# Goal: Pavilion
 	assert_progress(40)

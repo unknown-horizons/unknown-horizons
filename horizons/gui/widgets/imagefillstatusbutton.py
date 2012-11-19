@@ -27,6 +27,7 @@ from horizons.gui.util import get_res_icon_path
 class ImageFillStatusButton(Container):
 
 	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
+	PADDING = 3
 
 	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="",
 	             filled=0, marker=0, uncached=False, **kwargs):

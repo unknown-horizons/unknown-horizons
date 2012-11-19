@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-05-05 10:44+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-10-01 10:08+0000\n"
+"Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1349086130.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py:2
@@ -364,6 +365,8 @@ msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"A folyamatos ellátás miatt egy egység élelmiszernek kicsit hosszabb a "
+"gyártási ideje. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:92
@@ -473,6 +476,8 @@ msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"A tételek \"Eladás\" és a \"Vétel\" kifejezés a kereskedési egyensúlyt alkotják, "
+"ezt elmagyarázzuk a későbbiekben."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
@@ -759,6 +764,8 @@ msgid ""
 "After selecting a particular type of good, the green bar across the bottom of "
 "the slot (if visible) shows you how much you have in stock of this good."
 msgstr ""
+"Kiválasztása után adott típusú jó, a zöld sávban az alul (látható) azt "
+"mutatja, hogy mennyi van raktáron ez jó."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:188
@@ -830,6 +837,9 @@ msgid ""
 "\n"
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"\n"
+"FELADAT: Vegyél annyi eszközt, amennyit csak kell, hogy 30 szerszám legyen "
+"raktáron!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:206
@@ -849,7 +859,7 @@ msgstr "Új feladat: Építs egy pavilont"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:212
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "Ennyi eszköz elég lesz most. Szép volt!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:214

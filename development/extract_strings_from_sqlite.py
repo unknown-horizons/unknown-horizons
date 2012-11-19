@@ -91,7 +91,7 @@ class SettlerLevel(Base):
 #
 
 class MSGID_collect:
-	msgids = dict()
+	msgids = {}
 
 	def __init__(self):
 		pass

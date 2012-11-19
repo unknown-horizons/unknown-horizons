@@ -86,6 +86,7 @@ class LastActivePlayerSettlementManager(object):
 		self._last_player_settlement = None
 		self._cur_settlement = None
 		self.session.view.remove_change_listener(self._on_scroll)
+		NewSettlement.unsubscribe(self._on_new_settlement_created)
 
 	def update(self, current):
 		"""Update to new world position. Sets internal state to new settlement or no settlement

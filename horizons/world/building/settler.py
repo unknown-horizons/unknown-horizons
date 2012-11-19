@@ -59,7 +59,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	tabs = (SettlerOverviewTab, )
 
 	default_level_on_build = 0
-	max_tier_notification = False # overwritten on load if displayed already
 
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first level
@@ -93,8 +92,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
 		db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES (?, ?)",
 		   self.worldid, remaining_ticks)
-		db("INSERT INTO metadata VALUES (?, ?)",
-		   "max_tier_notification", self.__class__.max_tier_notification)
 
 	def load(self, db, worldid):
 		super(Settler, self).load(db, worldid)
@@ -109,9 +106,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
-		max_tier_notification = db("SELECT value FROM metadata WHERE name = ?",
-		                           "max_tier_notification")[0][0]
-		self.__class__.max_tier_notification = bool(int(max_tier_notification))
 		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
 		if not self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return
@@ -279,11 +273,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		   self.inhabitants >= self.inhabitants_min:
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
-				if self.owner.is_local_player:
-					if not self.__class__.max_tier_notification:
-						self.__class__.max_tier_notification = True
+				if self.owner.max_tier_notification < self.level_max:
+					if self.owner.is_local_player:
 						self.session.ingame_gui.message_widget.add(
 							point=self.position.center, string_id='MAX_INCR_REACHED')
+					self.owner.max_tier_notification = self.level_max
 				return
 			if self._upgrade_production:
 				return # already waiting for res
@@ -314,7 +308,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			SettlerUpdate.broadcast(self, self.level, 1)
 
 			# reset happiness value for new level
-			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, self.__get_data("happiness_init_value") - self.happiness)
+			new_happiness = self.__get_data("happiness_init_value") - self.happiness
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, new_happiness)
 			self._changed()
 
 		Scheduler().add_new_object(_do_level_up, self, run_in=0)
@@ -331,7 +326,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.level -= 1
 			self._update_level_data()
 			# reset happiness value for new level
-			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, self.__get_data("happiness_init_value") - self.happiness)
+			new_happiness = self.__get_data("happiness_init_value") - self.happiness
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, new_happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 

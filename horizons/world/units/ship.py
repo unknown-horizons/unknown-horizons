@@ -33,6 +33,7 @@ from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import ShipNameComponent, NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
+from horizons.messaging import ShipDestroyed
 from horizons.world.traderoute import TradeRoute
 
 class Ship(Unit):
@@ -87,6 +88,7 @@ class Ship(Unit):
 			if self._next_target.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
+		ShipDestroyed.broadcast(self)
 		super(Ship, self).remove()
 
 	def create_route(self):
@@ -160,7 +162,7 @@ class Ship(Unit):
 		if remove_only:
 			return
 
-		if move_target != None:
+		if move_target is not None:
 			# set remove buoy callback
 			self.add_move_callback(tmp)
 
@@ -186,7 +188,8 @@ class Ship(Unit):
 		"""Returns warehouses this ship can trade with w.r.t. position, which defaults to the ships ones."""
 		if position is None:
 			position = self.position
-		return self.session.world.get_warehouses(position, self.radius, self.owner, include_tradeable=True)
+		return self.session.world.get_warehouses(position, self.radius, self.owner,
+		                                         include_tradeable=True)
 
 	def get_location_based_status(self, position):
 		warehouses = self.get_tradeable_warehouses(position)
@@ -227,7 +230,7 @@ class TradeShip(Ship):
 		super(TradeShip, self).__init__(x, y, **kwargs)
 
 	def _possible_names(self):
-		return [ _(u'Trader') ]
+		return [_(u'Trader')]
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""

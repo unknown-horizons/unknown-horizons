@@ -49,7 +49,7 @@ class Build(Command):
 		if hasattr(building, 'id'):
 			self.building_class = building.id
 		else:
-			assert type(building) == int
+			assert isinstance(building, int)
 			self.building_class = building
 		self.ship = None if ship is None else ship.worldid
 		self.x = int(x)
@@ -58,8 +58,8 @@ class Build(Command):
 		self.ownerless = ownerless
 		self.island = island.worldid
 		self.settlement = settlement.worldid if settlement is not None else None
-		self.tearset = set() if not tearset else tearset
-		self.data = {} if not data else data
+		self.tearset = tearset or set()
+		self.data = data or {}
 		self.action_set_id = action_set_id
 
 	def __call__(self, issuer=None):
@@ -88,11 +88,11 @@ class Build(Command):
 
 		if build_position.buildable and issuer:
 			# building seems to buildable, check res too now
-			res_sources = [ None if self.ship is None else WorldObject.get_object_by_id(self.ship),
-			                None if self.settlement is None else WorldObject.get_object_by_id(self.settlement) ]
+			res_sources = [None if self.ship is None else WorldObject.get_object_by_id(self.ship),
+			               None if self.settlement is None else WorldObject.get_object_by_id(self.settlement)]
 
-			(build_position.buildable, missing_res) = \
-			 self.check_resources({}, buildable_class.costs, issuer, res_sources)
+			build_position.buildable, missing_res = self.check_resources(
+				{}, buildable_class.costs, issuer, res_sources)
 		if not build_position.buildable:
 			self.log.debug("Build aborted. Seems like circumstances changed during EXECUTIONDELAY.")
 			# TODO: maybe show message to user
@@ -101,9 +101,8 @@ class Build(Command):
 		# collect data before objs are torn
 		# required by e.g. the mines to find out about the status of the resource deposit
 		if hasattr(Entities.buildings[self.building_class], "get_prebuild_data"):
-			self.data.update(
-			  Entities.buildings[self.building_class].get_prebuild_data(session, Point(self.x, self.y))
-			  )
+			bclass = Entities.buildings[self.building_class]
+			self.data.update(bclass.get_prebuild_data(session, Point(self.x, self.y)))
 
 		for worldid in sorted(self.tearset): # make sure iteration is the same order everywhere
 			try:
@@ -124,7 +123,6 @@ class Build(Command):
 
 		island.add_building(building, issuer)
 
-
 		if self.settlement is not None:
 			secondary_resource_source = WorldObject.get_object_by_id(self.settlement)
 		elif self.ship is not None:
@@ -135,9 +133,11 @@ class Build(Command):
 		if issuer: # issuer is None if it's a global game command, e.g. on world setup
 			for (resource, value) in building.costs.iteritems():
 				# remove from issuer, and remove rest from secondary source (settlement or ship)
-				first_source_remnant = issuer.get_component(StorageComponent).inventory.alter(resource, -value)
+				inventory = issuer.get_component(StorageComponent).inventory
+				first_source_remnant = inventory.alter(resource, -value)
 				if first_source_remnant != 0 and secondary_resource_source is not None:
-					second_source_remnant = secondary_resource_source.get_component(StorageComponent).inventory.alter(resource, first_source_remnant)
+					inventory = secondary_resource_source.get_component(StorageComponent).inventory
+					second_source_remnant = inventory.alter(resource, first_source_remnant)
 					assert second_source_remnant == 0
 				else: # first source must have covered everything
 					assert first_source_remnant == 0
@@ -147,9 +147,9 @@ class Build(Command):
 
 		# unload the remaining resources on the human player ship if we just founded a new settlement
 		from horizons.world.player import HumanPlayer
-		if building.id == BUILDINGS.WAREHOUSE \
-		and isinstance(building.owner, HumanPlayer) \
-		and horizons.globals.fife.get_uh_setting("AutoUnload"):
+		if (building.id == BUILDINGS.WAREHOUSE
+		and isinstance(building.owner, HumanPlayer)
+		and horizons.globals.fife.get_uh_setting("AutoUnload")):
 			ship = WorldObject.get_object_by_id(self.ship)
 			ship_inv = ship.get_component(StorageComponent).inventory
 			settlement_inv = building.settlement.get_component(StorageComponent).inventory
@@ -180,17 +180,20 @@ class Build(Command):
 			# mp game, consider res still to be subtracted
 			builds = issuer.session.manager.get_builds_in_construction()
 			for build in builds:
-				reserved_res.update( Entities.buildings[build.building_class].costs )
+				reserved_res.update(Entities.buildings[build.building_class].costs)
 
 		for resource in needed_res:
 			# check player, ship and settlement inventory
 			available_res = 0
 			# player
-			available_res += issuer.get_component(StorageComponent).inventory[resource] if resource == RES.GOLD else 0
+			if resource == RES.GOLD:
+				player_inventory = issuer.get_component(StorageComponent).inventory
+				available_res += player_inventory[resource]
 			# ship or settlement
 			for res_source in res_sources:
 				if res_source is not None:
-					available_res += res_source.get_component(StorageComponent).inventory[resource]
+					inventory = res_source.get_component(StorageComponent).inventory
+					available_res += inventory[resource]
 
 			if (available_res - reserved_res[resource]) < needed_res[resource]:
 				return (False, resource)

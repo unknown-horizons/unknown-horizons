@@ -93,7 +93,6 @@ class Unit(MovingObject, ResourceTransferHandler):
 			self.act(self._action, self._instance.getFacingLocation(), True)
 		else:
 			self.act(self._action, location, True)
-		self.session.view.cam.refresh()
 
 	def _on_damage(self, caller=None):
 		"""Called when health has changed"""

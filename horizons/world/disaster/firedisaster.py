@@ -76,7 +76,7 @@ class FireDisaster(Disaster):
 		assert self.can_breakout(self._settlement)
 		super(FireDisaster, self).breakout()
 		possible_buildings = self._settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
-		building = self._settlement.session.random.choice( possible_buildings )
+		building = self._settlement.session.random.choice(possible_buildings)
 		self.infect(building)
 		self.log.debug("%s breakout out on %s at %s", self, building, building.position)
 

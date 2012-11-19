@@ -32,4 +32,4 @@ components:
       UNITS.STORAGE_COLLECTOR: 3
 actionsets:
   TIER.SAILORS:
-    as_warehouse0: as_preview_warehouse0
+    as_warehouse0:

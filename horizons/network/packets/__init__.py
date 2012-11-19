@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
-import sys
+import sys, inspect
 import cPickle
 try:
 	from cStringIO import StringIO
@@ -112,7 +112,8 @@ class packet(object):
 	def __init__(self):
 		"""ctor"""
 
-	def validate(self, protocol):
+	@staticmethod
+	def validate(pkt, protocol):
 		return True
 
 	def serialize(self):
@@ -144,10 +145,11 @@ class cmd_error(packet):
 		self.errorstr = errorstr
 		self.type = _type
 
-	def validate(self, protocol):
-		if not isinstance(self.errorstr, str):
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.errorstr, str):
 			raise NetworkException("Invalid datatype: errorstr")
-		if not isinstance(self.type, int):
+		if not isinstance(pkt.type, int):
 			raise NetworkException("Invalid datatype: type")
 
 SafeUnpickler.add('common', cmd_error)
@@ -158,8 +160,9 @@ class cmd_fatalerror(packet):
 	def __init__(self, errorstr):
 		self.errorstr = errorstr
 
-	def validate(self, protocol):
-		if not isinstance(self.errorstr, str):
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.errorstr, str):
 			raise NetworkException("Invalid datatype: errorstr")
 
 SafeUnpickler.add('common', cmd_fatalerror)
@@ -169,11 +172,11 @@ SafeUnpickler.add('common', cmd_fatalerror)
 def unserialize(data, validate=False, protocol=0):
 	mypacket = SafeUnpickler.loads(data)
 	if validate:
-		if not hasattr(mypacket.validate, '__func__'):
+		if not inspect.isfunction(mypacket.validate):
 			raise NetworkException("Attempt to override packet.validate()")
 		if mypacket.__class__.maxpacketsize > 0 and len(data) > mypacket.__class__.maxpacketsize:
 			raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
-		mypacket.validate(protocol)
+		mypacket.__class__.validate(mypacket, protocol)
 	return mypacket
 
 #-------------------------------------------------------------------------------

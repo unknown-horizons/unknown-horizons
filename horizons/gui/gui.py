@@ -39,6 +39,8 @@ from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
+from horizons.util.startgameoptions import StartGameOptions
+from horizons.util.savegameupgrader import SavegameUpgrader
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -61,7 +63,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'singleplayermenu': 'book',
 	  'sp_random': 'book',
 	  'sp_scenario': 'book',
-	  'sp_campaign': 'book',
 	  'sp_free_maps': 'book',
 	  'multiplayermenu' : 'book',
 	  'multiplayer_creategame' : 'book',
@@ -72,13 +73,18 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'ingame_pause': 'book',
 	  'game_settings' : 'book',
 #	  'credits': 'book',
+	  'editor_select_map': 'book',
 	  }
 
 	def __init__(self):
+		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
+		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
+
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
-		build_help_strings(self.widgets['help'])
+		self.keyconf = KeyConfig() # before build_help_strings
+		self.build_help_strings()
 		self.session = None
 		self.current_dialog = None
 
@@ -86,11 +92,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
+		self.subscribe()
 
-		GuiAction.subscribe( self._on_gui_action )
+	def subscribe(self):
+		"""Subscribe to the necessary messages."""
+		GuiAction.subscribe(self._on_gui_action)
+
+	def unsubscribe(self):
+		GuiAction.unsubscribe(self._on_gui_action)
 
 # basic menu widgets
-
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
@@ -108,12 +119,23 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'chimebell'        : self.on_chime,
 			'creditsLink'      : self.show_credits,
 			'credits'          : self.show_credits,
-			'loadgameButton'   : horizons.main.load_game,
-			'loadgame'         : horizons.main.load_game,
-			'changeBackground' : self.get_random_background_by_button
+			'loadgameButton'   : self.load_game,
+			'loadgame'         : self.load_game,
+			'changeBackground' : self.get_random_background_by_button,
+			'editor'           : self.editor_load_map,
 		})
 
 		self.on_escape = self.show_quit
+
+	def load_game(self):
+		saved_game = self.show_select_savegame(mode='load')
+		if saved_game is None:
+			return False # user aborted dialog
+
+		self.show_loading_screen()
+		options = StartGameOptions(saved_game)
+		horizons.main.start_singleplayer(options)
+		return True
 
 	def toggle_pause(self):
 		"""Shows in-game pause menu if the game is currently not paused.
@@ -138,7 +160,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			# see http://trac.unknown-horizons.org/t/ticket/1047
 			self.widgets.reload('ingamemenu')
 			def do_load():
-				did_load = horizons.main.load_game()
+				did_load = self.load_game()
 				if did_load:
 					self.__pause_displayed = False
 			def do_quit():
@@ -550,11 +572,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			cancel_button = popup.findChild(name=CancelButton.DEFAULT_NAME)
 			cancel_button.parent.removeChild(cancel_button)
 
-		headline = popup.findChild(name='headline')
-		# just to be safe, the gettext-function is used twice,
-		# once on the original, once on the unicode string.
-		headline.text = _(_(windowtitle))
-		popup.findChild(name='popup_message').text = _(_(message))
+		popup.headline = popup.findChild(name='headline')
+		popup.headline.text = _(windowtitle)
+		popup.message = popup.findChild(name='popup_message')
+		popup.message.text = _(message)
 		popup.adaptLayout() # recalculate widths
 		return popup
 
@@ -636,7 +657,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			map_file = None
 			map_file_index = gui.collectData(savegamelist)
 			if map_file_index == -1:
+				gui.findChild(name="savegame_details").hide()
 				return
+			else:
+				gui.findChild(name="savegame_details").show()
 			try:
 				map_file = map_files[map_file_index]
 			except IndexError:
@@ -693,12 +717,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				details_label.text += _("Savegame version {version}").format(
 				                         version=savegame_info['savegamerev'])
 				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
-					#xgettext:python-format
-					details_label.text += u" " + _("(potentially incompatible)")
+					if not SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
+						details_label.text += u" " + _("(probably incompatible)")
 			except KeyError:
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
-				details_label.text += _("Incompatible version")
+				details_label.text += u" " + _("Incompatible version")
 
 			gui.adaptLayout()
 		return tmp_show_details
@@ -752,35 +776,108 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
 
-def build_help_strings(widgets):
-	"""
-	Loads the help strings from pychan object widgets (containing no key definitions)
-	and adds 	the keys defined in the keyconfig configuration object in front of them.
-	The layout is defined through HELPSTRING_LAYOUT and translated.
-	"""
-	#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-	#xgettext:python-format
-	HELPSTRING_LAYOUT = _('[{key}] = {text}')
+	def build_help_strings(self):
+		"""
+		Loads the help strings from pychan object widgets (containing no key definitions)
+		and adds the keys defined in the keyconfig configuration object in front of them.
+		The layout is defined through HELPSTRING_LAYOUT and translated.
+		"""
+		widgets = self.widgets['help']
+		labels = widgets.getNamedChildren()
+		# filter misc labels that do not describe key functions
+		labels = dict( (name[4:], lbl[0]) for (name, lbl) in labels.iteritems()
+								    if name.startswith('lbl_') )
 
-	#HACK Ugliness starts; load actions defined through keys and map them to FIFE key strings
-	actions = KeyConfig._Actions.__dict__
-	reversed_keys = dict([[str(v),k] for k,v in fife.Key.__dict__.iteritems()])
-	reversed_stringmap = dict([[str(v),k] for k,v in KeyConfig().keystring_mappings.iteritems()])
-	reversed_keyvalmap = dict([[str(v), reversed_keys[str(k)]] for k,v in KeyConfig().keyval_mappings.iteritems()])
-	actionmap = dict(reversed_stringmap, **reversed_keyvalmap)
-	#HACK Ugliness ends here; These hacks can be removed once a config file exists which is nice to parse.
+		# now prepend the actual keys to the function strings defined in xml
+		actionmap = self.keyconf.get_actionname_to_keyname_map()
+		for (name, lbl) in labels.items():
+			keyname = actionmap.get(name, 'SHIFT') #TODO #HACK hardcoded shift key
+			lbl.explanation = _(lbl.text)
+			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=keyname)
+			lbl.capture(Callback(self.show_hotkey_change_popup, name, lbl, keyname))
 
-	labels = widgets.getNamedChildren()
-	# filter misc labels that do not describe key functions
-	labels = dict( (name, lbl) for (name, lbl) in labels.iteritems() if name.startswith('lbl_') )
+	def show_hotkey_change_popup(self, action, lbl, keyname):
+		def apply_new_key(newkey=None):
+			if not newkey:
+				newkey = free_keys[listbox.selected]
+			else:
+				listbox.selected = listbox.items.index(newkey)
+			self.keyconf.save_new_key(action, newkey=newkey)
+			update_hotkey_info(action, newkey)
+			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=newkey)
+			lbl.capture(Callback(self.show_hotkey_change_popup, action, lbl, newkey))
+			lbl.adaptLayout()
 
-	# now prepend the actual keys to the function strings defined in xml
-	for (name, lbl) in labels.items():
-		try:
-			keyname = '{key}'.format(key=actionmap[str(actions[name[4:]])])
-		except KeyError:
-			keyname = ' '
-		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
+		def update_hotkey_info(action, keyname):
+			default = self.keyconf.get_default_key_for_action(action)
+			popup.message.text = (lbl.explanation +
+			#xgettext:python-format
+			                      u'\n' + _('Current key: [{key}]').format(key=keyname) +
+			#xgettext:python-format
+			                      u'\t' + _('Default key: [{key}]').format(key=default))
+			popup.message.helptext = _('Click to reset to default key')
+			reset_to_default = Callback(apply_new_key, default)
+			popup.message.capture(reset_to_default)
 
-	author_label = widgets.findChild(name='fife_and_uh_team')
-	author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
+		#xgettext:python-format
+		headline = _('Change hotkey for {action}').format(action=action)
+		message = ''
+		if keyname in ('SHIFT', 'ESCAPE'):
+			message = _('This key can not be reassigned at the moment.')
+			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
+			return
+
+		popup = self.build_popup(headline, message, size=2, show_cancel_button=True)
+		update_hotkey_info(action, keyname)
+		keybox = pychan.widgets.ScrollArea()
+		listbox = pychan.widgets.ListBox()
+		keybox.max_size = listbox.max_size = \
+		keybox.min_size = listbox.min_size = \
+		keybox.size = listbox.size = (200, 200)
+		keybox.position = listbox.position = (90, 110)
+		prefer_short = lambda k: (len(k) > 1, len(k) > 3, k)
+		is_valid, default_key = self.keyconf.is_valid_and_get_default_key(keyname, action)
+		if not is_valid:
+			headline = _('Invalid key')
+			message = _('The default key for this action has been selected.')
+			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
+		valid_key = keyname if is_valid else default_key
+		free_key_dict = self.keyconf.get_keys_by_name(only_free_keys=True,
+		                                              force_include=[valid_key])
+		free_keys = sorted(free_key_dict.keys(), key=prefer_short)
+		listbox.items = free_keys
+		listbox.selected = listbox.items.index(valid_key)
+		#TODO backwards replace key names in keyconfig.get_fife_key_names in the list
+		# (currently this stores PLUS and PERIOD instead of + and . in the settings)
+		keybox.addChild(listbox)
+		popup.addChild(keybox)
+		if not is_valid:
+			apply_new_key()
+		listbox.capture(apply_new_key)
+		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
+		self.show_dialog(popup, button_cbs, modal=True)
+
+	def editor_load_map(self):
+		"""Show a dialog for the user to select a map to edit."""
+		old_current = self._switch_current_widget('editor_select_map')
+		self.current.show()
+
+		map_files, map_file_display = SavegameManager.get_maps()
+		self.current.distributeInitialData({'maplist': map_file_display})
+
+		bind = {
+			OkButton.DEFAULT_NAME     : True,
+			CancelButton.DEFAULT_NAME : False,
+		}
+		retval = self.show_dialog(self.current, bind)
+		if not retval:
+			# Dialog cancelled
+			self.current = old_current
+			return
+
+		selected_map_index = self.current.collectData('maplist')
+		assert selected_map_index != -1, "No map selected"
+
+		self.current = old_current
+		self.show_loading_screen()
+		horizons.main.edit_map(map_file_display[selected_map_index])

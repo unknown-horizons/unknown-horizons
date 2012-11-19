@@ -52,10 +52,10 @@ class SurfaceTile(object):
 		fife.InstanceVisual.create(self._instance)
 
 	def __str__(self):
-		return "SurfaceTile(id=%s, x=%s, y=%s, water=%s, obj=%s)" % \
-		       (self.id, self.x, self.y, self.is_water, self.object)
+		return "SurfaceTile(id=%s, shape=%s, x=%s, y=%s, water=%s, obj=%s)" % \
+		       (self.id, self.shape, self.x, self.y, self.is_water, self.object)
 
-	def act(self, action, rotation):
+	def act(self, rotation):
 		self._instance.setRotation(rotation)
 
 		facing_loc = fife.Location(self.session.view.layers[self.layer])
@@ -72,9 +72,12 @@ class SurfaceTile(object):
 		elif rotation == 315:
 			layer_coords[1] = y+3
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
+		self._instance.setFacingLocation(facing_loc)
 
-		self._instance.act(str('%s_%s' % (action, self._tile_set_id)), facing_loc, True)
-
+	@property
+	def rotation(self):
+		# workaround for FIFE's inconsistent rotation rounding
+		return int(round(self._instance.getRotation() / 45.0)) * 45
 
 class Ground(SurfaceTile):
 	"""Default land surface"""
@@ -102,12 +105,13 @@ class GroundClass(type):
 	"""
 	log = logging.getLogger('world')
 
-	def __init__(self, db, id):
+	def __init__(self, db, id, shape):
 		"""
 		@param id: id in db for this specific ground class
 		@param db: DbReader instance to get data from
 		"""
 		self.id = id
+		self.shape = shape
 		self._object = None
 		self.velocity = {}
 		self.classes = ['ground[' + str(id) + ']']
@@ -117,38 +121,47 @@ class GroundClass(type):
 			self._tile_set_id = db.get_random_tile_set(id)
 			self._loadObject(db)
 
-	def __new__(self, db, id):
+	def __new__(self, db, id, shape):
 		"""
 		@param id: ground id.
+		@param shape: ground shape (straight, curve_in, curve_out).
 		"""
 		if id == GROUND.WATER[0]:
-			return type.__new__(self, 'Ground[' + str(id) + ']', (Water,), {})
+			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (Water,), {})
 		elif id == -1:
-			return type.__new__(self, 'Ground[' + str(id) + ']', (WaterDummy,), {})
+			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (WaterDummy,), {})
 		else:
-			return type.__new__(self, 'Ground[' + str(id) + ']', (Ground,), {})
+			return type.__new__(self, 'Ground[%d-%s]' % (id, shape), (Ground,), {})
 
 	def _loadObject(cls, db):
-		""" Loads the ground object from the db (animations, etc)
-		"""
-		cls.log.debug('Loading ground %s', cls.id)
+		"""Loads the ground object from the db (animations, etc)"""
+		cls_name = '%d-%s' % (cls.id, cls.shape)
+		cls.log.debug('Loading ground %s', cls_name)
 		try:
-			cls._object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'ground')
+			cls._object = horizons.globals.fife.engine.getModel().createObject(cls_name, 'ground')
 		except RuntimeError:
-			cls.log.debug('Already loaded ground %s', cls.id)
-			cls._object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'ground')
+			cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
+			cls._object = horizons.globals.fife.engine.getModel().getObject(cls_name, 'ground')
 			return
 
 		fife.ObjectVisual.create(cls._object)
+		visual = cls._object.get2dGfxVisual()
 
 		tile_sets = TileSetLoader.get_sets()
-		for (tile_set_id,) in db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id):
-			for action_id in tile_sets[tile_set_id].iterkeys():
-				action = cls._object.createAction(action_id+"_"+str(tile_set_id))
-				fife.ActionVisual.create(action)
-				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
-					anim = horizons.globals.fife.animationloader.loadResource(
-						str(tile_set_id)+"+"+str(action_id)+"+"+
-						str(rotation) + ':shift:center+0,bottom+8')
-					action.get2dGfxVisual().addAnimation(int(rotation), anim)
-					action.setDuration(anim.getDuration())
+		tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id)[0][0]
+		for rotation, data in tile_sets[tile_set_id][cls.shape].iteritems():
+			assert len(data) == 1, 'Currently only static tiles are supported'
+			img = horizons.globals.fife.animationloader.load_image(data.keys()[0], str(tile_set_id), str(cls.shape), str(rotation))
+			visual.addStaticImage(rotation, img.getHandle())
+
+
+class MapPreviewTile(object):
+	"""This class provides the minimal tile implementation for map preview."""
+
+	def __init__(self, x, y, id):
+		super(MapPreviewTile, self).__init__()
+		self.x = x
+		self.y = y
+		self.id = id
+		self.classes = ()
+		self.settlement = None

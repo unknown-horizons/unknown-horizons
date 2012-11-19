@@ -3,179 +3,181 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-11-07 15:18+0000\n"
+"Last-Translator: alamswijaya <alamswijaya@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1352301536.0\n"
 
 msgid "build"
-msgstr ""
+msgstr "Bangun"
 
 msgid "game"
-msgstr ""
+msgstr "Permainan"
 
 msgid "building"
-msgstr ""
+msgstr "Bangunan"
 
 msgid "settlement"
-msgstr ""
+msgstr "Pemukiman"
 
 msgid "farm"
-msgstr ""
+msgstr "Lahan Pertanian"
 
 msgid "ship"
-msgstr ""
+msgstr "Kapal"
 
 msgid "tent"
-msgstr ""
+msgstr "Tenda"
 
 msgid "warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgid "resource"
-msgstr ""
+msgstr "Sumberdaya"
 
 msgid "produce"
-msgstr ""
+msgstr "Menghasilkan"
 
 msgid "field"
-msgstr ""
+msgstr "lahan"
 
 msgid "map"
-msgstr ""
+msgstr "peta"
 
 msgid "trade"
-msgstr ""
+msgstr "perdagangan"
 
 msgid "inhabitants"
-msgstr ""
+msgstr "penduduk"
 
 msgid "buy"
-msgstr ""
+msgstr "beli"
 
 msgid "overview"
-msgstr ""
+msgstr "tinjauan"
 
 msgid "click"
-msgstr ""
+msgstr "klik"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "penebang pohon"
 
 msgid "resident"
-msgstr ""
+msgstr "penduduk"
 
 msgid "main square"
-msgstr ""
+msgstr "alun-alunlapangan"
 
 msgid "sailors"
-msgstr ""
+msgstr "pelaut"
 
 msgid "food"
-msgstr ""
+msgstr "makanan"
 
 msgid "increment"
-msgstr ""
+msgstr "kenaikan"
 
 msgid "production"
-msgstr ""
+msgstr "produksi"
 
 msgid "select"
-msgstr ""
+msgstr "pilih"
 
 msgid "sell"
-msgstr ""
+msgstr "jual"
 
 msgid "setting"
-msgstr ""
+msgstr "pengaturanseting"
 
 msgid "storage"
-msgstr ""
+msgstr "gudangpenyimpanan"
 
 msgid "tab"
-msgstr ""
+msgstr "tab"
 
 msgid "upgrade"
-msgstr ""
+msgstr "mengembangkan"
 
 msgid "your inhabitants"
-msgstr ""
+msgstr "warga anda"
 
 msgid "close"
-msgstr ""
+msgstr "tutup"
 
 msgid "companies"
-msgstr ""
+msgstr "perusahaan"
 
 msgid "island"
-msgstr ""
+msgstr "pulau"
 
 msgid "time"
-msgstr ""
+msgstr "waktu"
 
 msgid "unit"
-msgstr ""
+msgstr "satuan"
 
 msgid "balance"
-msgstr ""
+msgstr "keseimbangan"
 
 msgid "coast"
-msgstr ""
+msgstr "pantai"
 
 msgid "menu"
-msgstr ""
+msgstr "menusajian"
 
 msgid "slot"
-msgstr ""
+msgstr "tempat"
 
 msgid "start"
-msgstr ""
+msgstr "mulaiawal"
 
 msgid "stock"
-msgstr ""
+msgstr "persediaan"
 
 msgid "trail"
-msgstr ""
+msgstr "jalan setapak"
 
 msgid "Unknown Horizons"
-msgstr ""
+msgstr "Cakrawala yang tak diketahuiUnknown Horizons"
 
 msgid "wool"
-msgstr ""
+msgstr "wol"
 
 msgid "boards"
 msgstr ""
 
 msgid "collector"
-msgstr ""
+msgstr "pengumpul"
 
 msgid "connection"
-msgstr ""
+msgstr "hubungan"
 
 msgid "fire"
-msgstr ""
+msgstr "api"
 
 msgid "change"
-msgstr ""
+msgstr "perubahan"
 
 msgid "connect"
-msgstr ""
+msgstr "menghubungkan"
 
 msgid "cost"
-msgstr ""
+msgstr "biaya"
 
 msgid "house"
-msgstr ""
+msgstr "rumah"
 
 msgid "log"
-msgstr ""
+msgstr "balok kayu"
 
 msgid "road"
-msgstr ""
+msgstr "jalan"
 
 msgid "save"
 msgstr ""
@@ -205,85 +207,85 @@ msgid "check"
 msgstr ""
 
 msgid "choose"
-msgstr ""
+msgstr "pilih"
 
 msgid "confectionery"
-msgstr ""
+msgstr "pabrik konfeksi"
 
 msgid "fisher"
-msgstr ""
+msgstr "nelayan"
 
 msgid "free trader"
-msgstr ""
+msgstr "pedagang bebas"
 
 msgid "happiness"
-msgstr ""
+msgstr "kebahagiaan"
 
 msgid "in stock"
-msgstr ""
+msgstr "tersedia"
 
 msgid "money"
-msgstr ""
+msgstr "uang"
 
 msgid "pavilion"
-msgstr ""
+msgstr "gedung"
 
 msgid "running costs"
-msgstr ""
+msgstr "biaya berjalan"
 
 msgid "sugar"
-msgstr ""
+msgstr "gula"
 
 msgid "taxes"
-msgstr ""
+msgstr "pajak-pajak"
 
 msgid "tax"
-msgstr ""
+msgstr "pajak"
 
 msgid "tools"
-msgstr ""
+msgstr "alatperkakas"
 
 msgid "button"
-msgstr ""
+msgstr "tombol"
 
 msgid "continue"
-msgstr ""
+msgstr "lanjutkanteruskan"
 
 msgid "faith"
-msgstr ""
+msgstr "keyakinanagama"
 
 msgid "help"
-msgstr ""
+msgstr "bantutolong"
 
 msgid "left"
-msgstr ""
+msgstr "kiritertinggal"
 
 msgid "level"
-msgstr ""
+msgstr "tingkatan"
 
 msgid "mode"
-msgstr ""
+msgstr "mode"
 
 msgid "move"
-msgstr ""
+msgstr "pindahkan"
 
 msgid "pioneers"
-msgstr ""
+msgstr "pelopor"
 
 msgid "citizens"
-msgstr ""
+msgstr "warga"
 
 msgid "merchants"
-msgstr ""
+msgstr "juragan"
 
 msgid "aristocrats"
-msgstr ""
+msgstr "ningrat"
 
 msgid "potato"
-msgstr ""
+msgstr "kentang"
 
 msgid "settler"
-msgstr ""
+msgstr "penduduk"
 
 msgid "speed"
 msgstr ""
@@ -313,85 +315,85 @@ msgid "cloth"
 msgstr ""
 
 msgid "construction"
-msgstr ""
+msgstr "pembangunan"
 
 msgid "decrease"
-msgstr ""
+msgstr "menurun"
 
 msgid "description"
-msgstr ""
+msgstr "keterangan"
 
 msgid "fish"
-msgstr ""
+msgstr "ikan"
 
 msgid "increase"
-msgstr ""
+msgstr "meningkatkan"
 
 msgid "lamb"
-msgstr ""
+msgstr "domba"
 
 msgid "leave"
-msgstr ""
+msgstr "pergi"
 
 msgid "liquor"
-msgstr ""
+msgstr "cairan"
 
 msgid "location"
-msgstr ""
+msgstr "lokasi"
 
 msgid "offer"
-msgstr ""
+msgstr "menawarkan"
 
 msgid "potatoes"
-msgstr ""
+msgstr "kentang-kentang"
 
 msgid "range"
-msgstr ""
+msgstr "jangkauan"
 
 msgid "reached"
-msgstr ""
+msgstr "tercapai"
 
 msgid "run"
-msgstr ""
+msgstr "laripergi"
 
 msgid "slider"
-msgstr ""
+msgstr "slidertombol geser"
 
 msgid "solution"
-msgstr ""
+msgstr "solusijalan keluar"
 
 msgid "space"
-msgstr ""
+msgstr "spasiruang kosong"
 
 msgid "target"
-msgstr ""
+msgstr "targetsasaran"
 
 msgid "team"
-msgstr ""
+msgstr "regu"
 
 msgid "total"
-msgstr ""
+msgstr "total"
 
 msgid "unable"
-msgstr ""
+msgstr "tidak bisa"
 
 msgid "active"
-msgstr ""
+msgstr "aktif"
 
 msgid "afford"
-msgstr ""
+msgstr "menjangkau"
 
 msgid "animals"
-msgstr ""
+msgstr "hewan"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "catatan kapten"
 
 msgid "construct"
-msgstr ""
+msgstr "membangun"
 
 msgid "consume"
-msgstr ""
+msgstr "memakai"
 
 msgid "enabled"
 msgstr ""
@@ -421,88 +423,88 @@ msgid "information"
 msgstr ""
 
 msgid "key"
-msgstr ""
+msgstr "kunci"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "wol domba"
 
 msgid "overview tab"
-msgstr ""
+msgstr "tab tinjauan"
 
 msgid "minimap"
-msgstr ""
+msgstr "peta kecil"
 
 msgid "issues"
-msgstr ""
+msgstr "masalah"
 
 msgid "plant"
-msgstr ""
+msgstr "tumbuhan"
 
 msgid "play"
-msgstr ""
+msgstr "mainkan"
 
 msgid "playing"
-msgstr ""
+msgstr "memainkan"
 
 msgid "price"
-msgstr ""
+msgstr "harga"
 
 msgid "read"
-msgstr ""
+msgstr "baca"
 
 msgid "return"
-msgstr ""
+msgstr "kembalihasil"
 
 msgid "sale"
-msgstr ""
+msgstr "dijual"
 
 msgid "screen"
-msgstr ""
+msgstr "layar"
 
 msgid "sound"
-msgstr ""
+msgstr "suara"
 
 msgid "special"
-msgstr ""
+msgstr "khusus"
 
 msgid "store"
-msgstr ""
+msgstr "tokomenyimpan"
 
 msgid "tear"
-msgstr ""
+msgstr "air mata"
 
 msgid "from time to time"
-msgstr ""
+msgstr "seiring waktu"
 
 msgid "trading"
-msgstr ""
+msgstr "perdagangan"
 
 msgid "village"
-msgstr ""
+msgstr "desa"
 
 msgid "visit"
-msgstr ""
+msgstr "berkunjung"
 
 msgid "world"
-msgstr ""
+msgstr "dunia"
 
 msgid "yield"
-msgstr ""
+msgstr "keuntungan"
 
 msgid "your ship"
-msgstr ""
+msgstr "kapal anda"
 
 msgid "back"
-msgstr ""
+msgstr "kembali"
 
 msgid "build settlement"
-msgstr ""
+msgstr "bangun pemukiman"
 
 msgid "load"
-msgstr ""
+msgstr "muat"
 
 msgid "unload"
-msgstr ""
+msgstr "bongkar"
 
 msgid "command"
 msgstr ""
@@ -526,58 +528,58 @@ msgid "fulfill"
 msgstr ""
 
 msgid "graphics"
-msgstr ""
+msgstr "tampilan"
 
 msgid "harvest"
-msgstr ""
+msgstr "panen"
 
 msgid "hunts"
-msgstr ""
+msgstr "buruan"
 
 msgid "multiple"
-msgstr ""
+msgstr "banyak"
 
 msgid "potato field"
-msgstr ""
+msgstr "lahan kentang"
 
 msgid "school"
-msgstr ""
+msgstr "sekolahan"
 
 msgid "seed"
-msgstr ""
+msgstr "benih"
 
 msgid "service"
-msgstr ""
+msgstr "layanan"
 
 msgid "sheep"
-msgstr ""
+msgstr "domba"
 
 msgid "signal fire"
-msgstr ""
+msgstr "api sinyal"
 
 msgid "statistics"
-msgstr ""
+msgstr "statistik"
 
 msgid "clay"
-msgstr ""
+msgstr "tanah liat"
 
 msgid "iron"
-msgstr ""
+msgstr "besi"
 
 msgid "ore"
-msgstr ""
+msgstr "bijih"
 
 msgid "tobacco"
-msgstr ""
+msgstr "tembakau"
 
 msgid "charcoal"
-msgstr ""
+msgstr "arang kayu"
 
 msgid "sugar field"
-msgstr ""
+msgstr "lahan tebu"
 
 msgid "temporarily"
-msgstr ""
+msgstr "sementara"
 
 msgid "values"
-msgstr ""
+msgstr "nilai"

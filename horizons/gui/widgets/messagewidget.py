@@ -153,38 +153,40 @@ class MessageWidget(LivingObject):
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
-			if (self.item + index) < len(self.active_messages):
-				button = ImageButton()
-				button.name = str(index)
-				button.up_image = message.up_image
-				button.hover_image = message.hover_image
-				button.down_image = message.down_image
-				button.is_focusable = False
-				# show text on hover
-				events = {
-					button.name + "/mouseEntered": Callback(self.show_text, index),
-					button.name + "/mouseExited": self.hide_text
-				}
-				# init callback to something callable to improve robustness
-				callback = Callback(lambda: None)
-				if message.x is not None and message.y is not None:
-					# move camera to source of event on click, if there is a source
-					callback = Callback.ChainedCallbacks(
-					        callback, # this makes it so the order of callback assignment doesn't matter
-					        Callback(self.session.view.center, message.x, message.y),
-					        Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
-				        )
-				if message.type == "logbook":
-					# open logbook to relevant page
-					callback = Callback.ChainedCallbacks(
-					        callback, # this makes it so the order of callback assignment doesn't matter
-					        Callback(self.session.ingame_gui.logbook.show, message.created)
-					)
-				if callback:
-					events[button.name] = callback
-				
-				button.mapEvents(events)
-				button_space.addChild(button)
+			if (self.item + index) >= len(self.active_messages):
+				# Only display most recent notifications
+				continue
+			button = ImageButton()
+			button.name = str(index)
+			button.up_image = message.up_image
+			button.hover_image = message.hover_image
+			button.down_image = message.down_image
+			button.is_focusable = False
+			# show text on hover
+			events = {
+				button.name + "/mouseEntered": Callback(self.show_text, index),
+				button.name + "/mouseExited": self.hide_text,
+			}
+			# init callback to something callable to improve robustness
+			callback = Callback(lambda: None)
+			if message.x is not None and message.y is not None:
+				# move camera to source of event on click, if there is a source
+				callback = Callback.ChainedCallbacks(
+					   callback, # this makes it so the order of callback assignment doesn't matter
+					   Callback(self.session.view.center, message.x, message.y),
+					   Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
+				   )
+			if message.type == "logbook":
+				# open logbook to relevant page
+				callback = Callback.ChainedCallbacks(
+					   callback, # this makes it so the order of callback assignment doesn't matter
+					   Callback(self.session.ingame_gui.logbook.show, message.created)
+				)
+			if callback:
+				events[button.name] = callback
+
+			button.mapEvents(events)
+			button_space.addChild(button)
 		button_space.resizeToContent()
 		self.widget.size = button_space.size
 

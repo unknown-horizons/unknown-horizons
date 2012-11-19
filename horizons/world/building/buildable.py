@@ -78,10 +78,10 @@ class _BuildPosition(object):
 	def __eq__(self, other):
 		if not isinstance(other, _BuildPosition):
 			return False
-		return self.position == other.position and \
-		       self.rotation == other.rotation and \
-		       self.action == other.action and \
-		       self.tearset == other.tearset
+		return (self.position == other.position and
+		        self.rotation == other.rotation and
+		        self.action == other.action and
+		        self.tearset == other.tearset)
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
@@ -372,16 +372,17 @@ class BuildableLine(Buildable):
 
 		possible_builds = []
 
-		for i in path:
+		#TODO duplicates recalculation code in world.building.path
+		for x, y in path:
 			action = ''
-			for action_char, offset in \
+			for action_char, (xoff, yoff) in \
 			    sorted(BUILDINGS.ACTION.action_offset_dict.iteritems()): # order is important here
-				if (offset[0]+i[0], offset[1]+i[1]) in path:
+				if action_char in 'abcd' and (xoff + x, yoff + y) in path:
 					action += action_char
 			if action == '':
 				action = 'single' # single trail piece with no neighbours
 
-			build = cls.check_build(session, Point(*i))
+			build = cls.check_build(session, Point(x, y))
 			build.action = action
 			possible_builds.append(build)
 

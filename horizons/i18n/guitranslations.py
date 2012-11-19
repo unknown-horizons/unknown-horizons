@@ -42,13 +42,21 @@
 
 from horizons.constants import VERSION
 
-text_translations = dict()
+text_translations = {}
 
 def set_translations():
 	global text_translations
 	text_translations = {
 
 	"stringpreviewwidget.xml" : {
+		},
+
+	"editor_select_map.xml" : {
+		# (helptext of widget: cancelButton)
+		("cancelButton"                , "helptext"): _("Cancel"),
+		},
+
+	"editor_settings.xml" : {
 		},
 
 	"buildtab.xml" : {
@@ -496,19 +504,6 @@ def set_translations():
 		("forwardButton"               , "helptext"): _("Read next entries"),
 		},
 
-	"choose_next_scenario.xml" : {
-		# (text of widget: head_left)
-		("head_left"                   , "text"    ): _("Available Scenarios"),
-		# (text of widget: head_right)
-		("head_right"                  , "text"    ): _("Scenario description"),
-		# (text of widget: scenario_details) More text describing the scenario
-		("scenario_details"            , "text"    ): _("Details:"),
-		# (helptext of widget: cancelButton) Players either select the next scenario they want to play or press this button
-		("cancelButton"                , "helptext"): _("Continue playing"),
-		# (helptext of widget: choose_scenario) Select which scenario to play
-		("choose_scenario"             , "helptext"): _("Choose this scenario"),
-		},
-
 	"configure_route.xml" : {
 		# (text of widget: lbl_route_activity)
 		("lbl_route_activity"          , "text"    ): _("Route activity:"),
@@ -626,10 +621,6 @@ def set_translations():
 		},
 
 	"help.xml" : {
-		# (text of widget: fife_and_uh_team)
-		("fife_and_uh_team"            , "text"    ): _("The FIFE and Unknown Horizons development teams"),
-		# (text of widget: have_fun)
-		("have_fun"                    , "text"    ): _("Have fun."),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Key bindings"),
 		# (text of widget: lbl_BUILD_TOOL)
@@ -644,8 +635,12 @@ def set_translations():
 		("lbl_DESTROY_TOOL"            , "text"    ): _("Enable destruct mode"),
 		# (text of widget: lbl_DOWN)
 		("lbl_DOWN"                    , "text"    ): _("Scroll down"),
+		# (text of widget: lbl_ESCAPE)
+		("lbl_ESCAPE"                  , "text"    ): _("Close dialogs"),
 		# (text of widget: lbl_GRID)
 		("lbl_GRID"                    , "text"    ): _("Toggle grid on/off"),
+		# (text of widget: lbl_HEALTH_BAR)
+		("lbl_HEALTH_BAR"              , "text"    ): _("Toggle health bars"),
 		# (text of widget: lbl_HELP)
 		("lbl_HELP"                    , "text"    ): _("Display help"),
 		# (text of widget: lbl_LEFT)
@@ -654,6 +649,8 @@ def set_translations():
 		("lbl_LOGBOOK"                 , "text"    ): _("Toggle Captain's log"),
 		# (text of widget: lbl_PAUSE)
 		("lbl_PAUSE"                   , "text"    ): _("Pause game"),
+		# (text of widget: lbl_PIPETTE)
+		("lbl_PIPETTE"                 , "text"    ): _("Enable pipette mode (clone buildings)"),
 		# (text of widget: lbl_PLAYERS_OVERVIEW)
 		("lbl_PLAYERS_OVERVIEW"        , "text"    ): _("Show player scores"),
 		# (text of widget: lbl_QUICKLOAD)
@@ -670,6 +667,8 @@ def set_translations():
 		("lbl_ROTATE_LEFT"             , "text"    ): _("Rotate building or map counterclockwise"),
 		# (text of widget: lbl_ROTATE_RIGHT)
 		("lbl_ROTATE_RIGHT"            , "text"    ): _("Rotate building or map clockwise"),
+		# (text of widget: lbl_SAVE_MAP)
+		("lbl_SAVE_MAP"                , "text"    ): _("Save map (hold SHIFT)"),
 		# (text of widget: lbl_SCREENSHOT)
 		("lbl_SCREENSHOT"              , "text"    ): _("Screenshot"),
 		# (text of widget: lbl_SETTLEMENTS_OVERVIEW)
@@ -678,6 +677,8 @@ def set_translations():
 		("lbl_SHIFT"                   , "text"    ): _("Hold to place multiple buildings"),
 		# (text of widget: lbl_SHIPS_OVERVIEW)
 		("lbl_SHIPS_OVERVIEW"          , "text"    ): _("Show ship list"),
+		# (text of widget: lbl_SHOW_SELECTED)
+		("lbl_SHOW_SELECTED"           , "text"    ): _("Focus camera on selection"),
 		# (text of widget: lbl_SPEED_DOWN)
 		("lbl_SPEED_DOWN"              , "text"    ): _("Decrease game speed"),
 		# (text of widget: lbl_SPEED_UP)
@@ -717,6 +718,8 @@ def set_translations():
 		("chimebell"                   , "text"    ): _("Attention please!"),
 		# (text of widget: credits)
 		("credits"                     , "text"    ): _("Credits"),
+		# (text of widget: editor) Map-Editor
+		("editor"                      , "text"    ): _("Editor"),
 		# (text of widget: help) Main / in-game menu entry
 		("help"                        , "text"    ): _("Help"),
 		# (text of widget: loadgame) Open a widget to select which game to load
@@ -725,7 +728,7 @@ def set_translations():
 		("quit"                        , "text"    ): _("Quit"),
 		# (text of widget: settings) Main / in-game menu entry
 		("settings"                    , "text"    ): _("Settings"),
-		# (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
+		# (text of widget: start) Opens widget to create singleplayer games (scenarios, random maps, free play)
 		("start"                       , "text"    ): _("Singleplayer"),
 		# (text of widget: start_multi) Opens widget to join or create multiplayer games
 		("start_multi"                 , "text"    ): _("Multiplayer"),
@@ -823,6 +826,8 @@ def set_translations():
 		},
 
 	"settings.xml" : {
+		# (text of widget: reset_mouse_sensitivity)
+		("reset_mouse_sensitivity"     , "text"    ): _("Reset to default"),
 		# (text of widget: auto_unload_label)
 		("auto_unload_label"           , "text"    ): _("Auto-unload ship:"),
 		# (text of widget: autosave_interval_label)
@@ -843,6 +848,8 @@ def set_translations():
 		("headline_graphics"           , "text"    ): _("Graphics"),
 		# (text of widget: headline_language)
 		("headline_language"           , "text"    ): _("Language"),
+		# (text of widget: headline_misc)
+		("headline_misc"               , "text"    ): _("General"),
 		# (text of widget: headline_mouse)
 		("headline_mouse"              , "text"    ): _("Mouse"),
 		# (text of widget: headline_network)
@@ -851,8 +858,6 @@ def set_translations():
 		("headline_saving"             , "text"    ): _("Saving"),
 		# (text of widget: headline_sound)
 		("headline_sound"              , "text"    ): _("Sound"),
-		# (text of widget: language_label)
-		("language_label"              , "text"    ): _("Select language:"),
 		# (text of widget: minimap_rotation_label)
 		("minimap_rotation_label"      , "text"    ): _("Rotate minimap with map:"),
 		# (text of widget: mouse_sensitivity_label)
@@ -946,8 +951,6 @@ def set_translations():
 		("main_menu_label"             , "text"    ): _("Main menu:"),
 		# (text of widget: start_game_label)
 		("start_game_label"            , "text"    ): _("Start game:"),
-		# (text of widget: campaign)
-		("campaign"                    , "text"    ): _("Campaign"),
 		# (text of widget: free_maps)
 		("free_maps"                   , "text"    ): _("Free play"),
 		# (text of widget: random)
@@ -958,11 +961,6 @@ def set_translations():
 		("cancel"                      , "helptext"): _("Exit to main menu"),
 		# (helptext of widget: okay)
 		("okay"                        , "helptext"): _("Start game"),
-		},
-
-	"sp_campaign.xml" : {
-		# (text of widget: choose_map_lbl)
-		("choose_map_lbl"              , "text"    ): _("Choose a map to play:"),
 		},
 
 	"sp_free_maps.xml" : {

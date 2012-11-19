@@ -56,6 +56,7 @@ class UnitManager(object):
 		# fleets
 		self.fleets = set()
 
+		# TODO Convert all filters to not return lambdas, just return the function instead
 		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type, selectable,'
 			'ship_state, not_in_fleet, working, pirate, fighting')(not_owned=self._not_owned_rule, hostile=self._hostile_rule,
 			ship_type=self._ship_type_rule, selectable=self._selectable_rule, ship_state=self._ship_state_rule,
@@ -121,8 +122,8 @@ class UnitManager(object):
 		"""
 		return lambda ship: isinstance(ship, FightingShip) and not isinstance(ship, PirateShip)
 
-	def _is_pirate(self):
-		return lambda ship: isinstance(ship, PirateShip)
+	def _is_pirate(self, ship):
+		return isinstance(ship, PirateShip)
 
 	def _is_worker(self):
 		return lambda ship: ship.name == "Huker"
@@ -153,11 +154,11 @@ class UnitManager(object):
 			ship_states = (ship_states,)
 		return lambda ship: (state_dict[ship] in ship_states)
 
-	def _ship_not_in_fleet(self):
+	def _ship_not_in_fleet(self, ship):
 		"""
 		Rule stating that ship is not assigned to any of the fleets.
 		"""
-		return lambda ship: (ship not in self.ships)
+		return ship not in self.ships
 
 	def _selectable_rule(self):
 		"""

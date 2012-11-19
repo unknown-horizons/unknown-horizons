@@ -91,10 +91,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.loading_area = self.position # shape where collector get resources
 
 		origin = self.position.origin
-		self._instance, _unused = \
-		  self.getInstance(self.session, origin.x, origin.y, rotation=self.rotation,
-		                   action_set_id=self._action_set_id)
-		self._instance.setId(str(self.worldid))
+		self._instance, _unused = self.getInstance(self.session, origin.x, origin.y,
+		    rotation=self.rotation, action_set_id=self._action_set_id, world_id=str(self.worldid))
 
 		if self.has_running_costs: # Get payout every 30 seconds
 			interval = self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
@@ -207,7 +205,13 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.update_action_set_level(lvl)
 
 	@classmethod
-	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, action_set_id=None):
+	def get_initial_level(cls, player):
+		if hasattr(cls, 'default_level_on_build'):
+			return cls.default_level_on_build
+		return player.settler_level
+
+	@classmethod
+	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, action_set_id=None, world_id=""):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'
@@ -273,7 +277,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			return None
 		instance = session.view.layers[cls.layer].createInstance(
 			cls._object,
-			fife.ModelCoordinate(*instance_coords))
+			fife.ModelCoordinate(*instance_coords),
+			world_id)
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 		if action_set_id is None:

@@ -32,7 +32,7 @@ class TestNamedComponent(TestCase):
 		NamedComponent.reset()
 
 	@classmethod
-	def make_component(cls, name = None):
+	def make_component(cls, name=None):
 		class Instance(object):
 			def __init__(self):
 				super(Instance, self).__init__()

@@ -27,7 +27,6 @@ import os.path
 import glob
 import time
 import re
-import yaml
 import itertools
 
 from horizons.constants import PATHS, VERSION
@@ -63,11 +62,9 @@ class SavegameManager(object):
 	maps_dir = os.path.join("content", "maps")
 	scenario_maps_dir = os.path.join("content", "scenariomaps")
 	scenarios_dir = os.path.join("content", "scenarios")
-	campaigns_dir = os.path.join("content", "campaign")
 
 	savegame_extension = "sqlite"
 	scenario_extension = "yaml"
-	campaign_extension = "yaml"
 
 	autosave_basename = "autosave-"
 	quicksave_basename = "quicksave-"
@@ -86,8 +83,6 @@ class SavegameManager(object):
 	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : "" }
 	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int,
 	                            'rng_state' : str } # 'screenshot' : NoneType }
-
-	campaign_status_file = os.path.join(savegame_dir, 'campaign_status.yaml')
 
 	@classmethod
 	def init(cls):
@@ -201,7 +196,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_recommended_number_of_players(cls, savegamefile):
 		dbdata = DbReader(savegamefile)\
-		        ("SELECT `value` FROM `metadata` WHERE `name` = ?", "recommended_number_of_players")
+		        ("SELECT value FROM properties WHERE name = ?", "players_recommended")
 		if dbdata:
 			return dbdata[0][0]
 		else:
@@ -209,10 +204,11 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_metadata(cls, savegamefile):
-		"""Returns metainfo of a savegame as dict.
-		"""
-		db = DbReader(savegamefile)
+		"""Returns metainfo of a savegame as dict."""
 		metadata = cls.savegame_metadata.copy()
+		if isinstance(savegamefile, list):
+			return metadata
+		db = DbReader(savegamefile)
 
 		try:
 			for key in metadata.iterkeys():
@@ -247,6 +243,8 @@ class SavegameManager(object):
 		if horizons.main._modules.gui.is_visible():
 			dialog_hidden = True
 			horizons.main._modules.gui.hide()
+			# pump twice to make it work on some machines
+			horizons.globals.fife.engine.pump()
 			horizons.globals.fife.engine.pump()
 
 		# scale to the correct with and adapt height with same factor
@@ -323,24 +321,27 @@ class SavegameManager(object):
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames=True, locales=False):
-		"""Returns available scenarios (depending on the campaign(s) status)"""
+	def get_available_scenarios(cls, include_displaynames=True, locales=False, hide_test_scenarios=False):
+		"""Returns available scenarios."""
 		afiles = []
 		anames = []
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		for i, sname in enumerate(snames):
-			if cls.check_scenario_availability(sname):
-				#get file's locale
-				cur_locale = '_' + cls.get_scenario_info(name = sname).get('locale')
-				#if the locale is nodefault then don't add it
-				#we use this locale in test scenarios and they are not included to the list
-				if cur_locale == "_nodefault":
-					continue
-				#don't add language postfix
-				sname = sname.split(cur_locale)[0]
-				if not sname in anames:
-					anames.append(sname)
-					afiles.append(sfiles[i][:sfiles[i].rfind(cur_locale)])
+			if hide_test_scenarios and cls.get_scenario_info(name=sname).get('test_scenario'):
+				continue
+
+			#get file's locale
+			cur_locale = '_' + cls.get_scenario_info(name=sname).get('locale')
+			#if the locale is nodefault then don't add it
+			#we use this locale in test scenarios and they are not included to the list
+			if cur_locale == "_nodefault":
+				continue
+
+			#don't add language postfix
+			sname = sname.split(cur_locale)[0]
+			if not sname in anames:
+				anames.append(sname)
+				afiles.append(sfiles[i][:sfiles[i].rfind(cur_locale)])
 
 		def _list_maps_with_language(prefixlist, language):
 			maplist = []
@@ -366,97 +367,6 @@ class SavegameManager(object):
 		return (afiles, anames)
 
 	@classmethod
-	def check_scenario_availability(cls, scenario_name):
-		"""Read the campaign(s) status and check if this scenario is available for play
-		@param scenario_name: codename of the scenario to check
-		@return: boolean (is the scenario available or not)
-		"""
-		# get campaign data
-		cfiles, cnames, cscenarios, cdata = cls.get_campaigns(include_scenario_list=True, campaign_data=True)
-		# get campaign status
-		campaign_status = cls.get_campaign_status()
-		seen_in_campaigns = False
-		# check every campaign
-		for i, scenario_list in enumerate(cscenarios):
-			if not scenario_name in scenario_list:
-				continue
-			seen_in_campaigns = True
-			# The first scenario of every campaign is always available
-			if scenario_list[0] == scenario_name:
-				return True
-			# The scenario is in the campaign. Check goals
-			# TODO : the [0] have to be removed if we think a scenario can appear multiple times in a campaign
-			conditions = [data.get('conditions') for data in cdata[i]['scenarios'] if data.get('level') == scenario_name][0]
-			for condition in conditions:
-				# all conditions have to be reached
-				if condition['type'] != 'goal_reached':
-					print "Error: Cannot handle the condition type {condition}.".format(condition=condition)
-				if not condition['goal'] in campaign_status.get(condition['scenario'], []):
-					break
-			else:
-				# All conditions are met
-				return True
-		if not seen_in_campaigns:
-			# This scenario is not in any campaign, it is available for free play
-			return True
-
-	@classmethod
-	def get_campaign_status(cls):
-		"""Read the campaign status from the saved YAML file"""
-		if os.path.exists(cls.campaign_status_file):
-			return YamlCache.get_file(cls.campaign_status_file)
-		return {}
-
-	@classmethod
-	def get_campaigns(cls, include_displaynames=True, include_scenario_list=False, campaign_data=False):
-		"""Returns all campaigns
-		@param include_displaynames: should we return the name of the campaign
-		@param include_scenario_list: should we return the list of scenarios in the campaign
-		@param campaign_data: should we return the full campaign data
-		@return: (campaign_files, campaign_names, campaign_scenarios, campaign_data) (depending of the parameters)
-		"""
-		cls.log.debug("Savegamemanager: campaigns from: %s", cls.campaigns_dir)
-		files, names = cls.__get_saves_from_dirs([cls.campaigns_dir], include_displaynames, cls.campaign_extension, False)
-		if not include_displaynames:
-			return (files,)
-		if not include_scenario_list:
-			return (files, names)
-		scenarios_lists = []
-		campaign_datas = []
-		for i, f in enumerate(files):
-			campaign = YamlCache.get_file(f)
-			campaign_datas.append(campaign)
-			scenarios_lists.append([sc.get('level') for sc in campaign.get('scenarios',[])])
-		if not campaign_data:
-			return (files, names, scenarios_lists)
-		return (files, names, scenarios_lists, campaign_datas)
-
-	@classmethod
-	def get_campaign_info(cls, name="", filename=""):
-		"""Return this campaign's data"""
-		assert (name or filename)
-		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames=True, include_scenario_list=True, campaign_data=True)
-		sfiles, snames = cls.get_scenarios(include_displaynames = True)
-		if name:
-			if not name in cnames:
-				print "Error: Cannot find campaign '{name}'.".format(name=name)
-				return None
-			index = cnames.index(name)
-		elif filename:
-			if not filename in cfiles:
-				print "Error: Cannot find campaign '{name}'.".format(name=filename)
-				return None
-			index = cfiles.index(filename)
-		infos = cdatas[index]
-		infos.update({'codename': cnames[index], 'filename': cfiles[index], 'scenario_names' : cscenarios[index]})
-		for scenario in cscenarios[index]:
-			# find the scenario file
-			if not scenario in snames:
-				continue
-			infos.setdefault('scenario_files', {}).update({scenario: sfiles[snames.index(scenario)]})
-		return infos
-
-	@classmethod
 	def get_scenario_info(cls, name="", filename=""):
 		"""Return this scenario data"""
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
@@ -474,52 +384,17 @@ class SavegameManager(object):
 		return data
 
 	@classmethod
-	def mark_scenario_as_won(cls, campaign_data):
-		"""Remember that the scenario was won"""
-		# Winning a scenario is like winning the "special" goal 'victory'
-		return cls.mark_goal_reached(campaign_data, 'victory')
-
-	@classmethod
-	def mark_goal_reached(cls, campaign_data, goal_codename):
-		"""Remember that this specific goal in the scenario was won"""
-		# grab the campaign status
-		campaign_status = cls.get_campaign_status()
-		# append the goal's codename to the list of reached goal for this scenario
-		campaign_status.setdefault(campaign_data['scenario_name'], []).append(goal_codename)
-		# save the data back to the file
-		yaml.dump(campaign_status, open(cls.campaign_status_file, "w"))
-		return campaign_status
-
-	@classmethod
-	def load_scenario(cls, campaign_data, scenario_name):
-		"""This loads the next scenario by starting a new game"""
-		campaign = cls.get_campaign_info(campaign_data['campaign_name'])
-		scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
-		if not scenario_name in scenarios:
-			return False
-		next_index = scenarios.index(scenario_name)
-		campaign_data['scenario_index'] = next_index
-		campaign_data['scenario_name'] = scenarios[next_index]
-		horizons.main._start_map(scenarios[next_index], is_scenario = True, campaign = campaign_data)
-
-	@classmethod
-	def load_next_scenario(cls, campaign_data):
-		"""This loads the next scenario by starting a new game"""
-		campaign = cls.get_campaign_info(campaign_data['campaign_name'])
-		scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
-		next_index = campaign_data['scenario_index'] + 1
-		if next_index == len(scenarios):
-			# If no more scenario, do the same thing as in the "old" do_win action
-			horizons.main._modules.session.gui.quit_session(force = True)
-			return False
-		campaign_data['scenario_index'] = next_index
-		campaign_data['scenario_name'] = scenarios[next_index]
-		horizons.main._start_map(scenarios[next_index], is_scenario = True, campaign = campaign_data)
-
-	@classmethod
 	def get_savegamename_from_filename(cls, savegamefile):
 		"""Returns a displayable name, extracted from a filename"""
 		name = os.path.basename(savegamefile)
 		name = name.rsplit(".%s"%cls.savegame_extension, 1)[0]
 		cls.log.debug("Savegamemanager: savegamename: %s", name)
 		return name
+
+	@classmethod
+	def get_filename_from_map_name(cls, map_name):
+		for prefix in [cls.scenario_maps_dir, cls.maps_dir]:
+			path = prefix + os.sep + map_name + '.sqlite'
+			if os.path.exists(path):
+				return path
+		return None

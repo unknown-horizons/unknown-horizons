@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-04-09 08:53+0200\n"
-"Last-Translator: nifabric <nifabric@gmail.com>\n"
+"PO-Revision-Date: 2012-11-05 10:11+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1352110282.0\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1554,13 +1555,15 @@ msgstr ""
 
 #. (helptext of widget: costs_004)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Boards"
-msgstr ""
+msgstr "木板"
 
 #. (helptext of widget: costs_006)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Tools"
-msgstr ""
+msgstr "工具"
 
 #. (text of widget: headline_BB_war1_ship1)
 #: horizons/i18n/guitranslations.py
@@ -1762,8 +1765,9 @@ msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Resource deposit"
-msgstr ""
+msgstr "资源密度："
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py
@@ -1783,8 +1787,9 @@ msgstr ""
 #. (helptext of widget: happiness_label)
 #. (helptext of widget: happiness)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Happiness"
-msgstr ""
+msgstr "幸福"
 
 #. (helptext of widget: residents_label)
 #. (helptext of widget: inhabitants)
@@ -2448,8 +2453,9 @@ msgstr ""
 
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Load game:"
-msgstr ""
+msgstr "装载游戏"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py
@@ -2598,8 +2604,9 @@ msgstr ""
 
 #. (helptext of widget: defaultButton)
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Reset to default settings"
-msgstr ""
+msgstr "恢复默认设置"
 
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py
@@ -2668,8 +2675,9 @@ msgstr ""
 
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Your saved games:"
-msgstr ""
+msgstr "没有已保存的游戏"
 
 #. (helptext of widget: cancelButton)
 #: horizons/i18n/guitranslations.py
@@ -2771,8 +2779,9 @@ msgstr ""
 
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py
+#, fuzzy
 msgid "Alvearies"
-msgstr ""
+msgstr "洞窑"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py
@@ -2861,8 +2870,9 @@ msgstr ""
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py
+#, fuzzy
 msgid "Clay Deposit"
-msgstr ""
+msgstr "粘土存量"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py
@@ -3375,8 +3385,9 @@ msgstr "服务"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
+#, fuzzy
 msgid "Food"
-msgstr ""
+msgstr "食物"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
@@ -3473,8 +3484,9 @@ msgid "You have completed this scenario."
 msgstr ""
 
 #: horizons/scenario/actions.py
+#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "你想继续么？"
 
 #: horizons/scenario/scenarioeventhandler.py
 #: horizons/scenario/scenarioeventhandler.py
@@ -3511,8 +3523,9 @@ msgid "The savegame file is currently used by another program."
 msgstr ""
 
 #: horizons/spsession.py
+#, fuzzy
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "保存失败。"
 
 #: horizons/spsession.py
 msgid "An error happened during quicksave. Your game has not been saved."

@@ -27,7 +27,7 @@ import horizons.globals
 
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
-from horizons.constants import LAYERS, VIEW, GAME_SPEED
+from horizons.constants import LAYERS, VIEW, GAME_SPEED, MAP
 
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
@@ -50,21 +50,26 @@ class View(ChangeListener):
 		cellgrid.setYShift(0)
 
 		self.layers = []
-		for i in xrange(0, LAYERS.NUM):
-			self.layers.append(self.map.createLayer(str(i), cellgrid))
-			self.layers[i].setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
-			if hasattr(self.layers[i], 'setWalkable'):
-				self.layers[i].setWalkable(True)
+		for layer_id in xrange(LAYERS.NUM):
+			layer = self.map.createLayer(str(layer_id), cellgrid)
+			if layer_id == LAYERS.OBJECTS:
+				layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
+				layer.setWalkable(True)
+			self.layers.append(layer)
 
-		if hasattr(self.map, 'initializeCellCaches'):
-			self.map.initializeCellCaches()
-			self.map.finalizeCellCaches()
+		self.map.initializeCellCaches()
+		self.map.finalizeCellCaches()
 
-		self.cam = self.map.addCamera("main", self.layers[-1],
-		                               fife.Rect(0, 0,
-		                                         horizons.globals.fife.engine_settings.getScreenWidth(),
-		                                         horizons.globals.fife.engine_settings.getScreenHeight())
-		                               )
+		# Make sure layer can't change size on layer.createInstance
+		# This is necessary because otherwise ship movement on the map edges would
+		# keep changing the units' layer size.
+		for layer in self.layers:
+			if layer.getCellCache():
+				layer.getCellCache().setStaticSize(True)
+
+		rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
+		                       horizons.globals.fife.engine_settings.getScreenHeight())
+		self.cam = self.map.addCamera("main", self.layers[-1], rect)
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
@@ -101,32 +106,26 @@ class View(ChangeListener):
 		pos = loc.getExactLayerCoordinatesRef()
 		pos.x = x
 		pos.y = y
-		self.cam.setLocation(loc)
 		self.cam.refresh()
 		self._changed()
 
 	def autoscroll(self, x, y):
 		"""Scrolling via mouse (reaching edge of screen)"""
 		if horizons.globals.fife.get_uh_setting('EdgeScrolling'):
-			self._autoscroll[0] = x
-			self._autoscroll[1] = y
+			self._autoscroll = [x, y]
 
 	def autoscroll_keys(self, x, y):
 		"""Scrolling via keyboard keys"""
-		self._autoscroll_keys[0] = x
-		self._autoscroll_keys[1] = y
+		self._autoscroll_keys = [x, y]
 
 	def do_autoscroll(self):
-		if self._autoscroll[0] == 0 and \
-		   self._autoscroll[1] == 0 and \
-		   self._autoscroll_keys[0] == 0 and \
-		   self._autoscroll_keys[1] == 0:
+		if self._autoscroll == [0, 0] and self._autoscroll_keys == [0, 0]:
 			self.time_last_autoscroll = time.time()
 			return
 		t = time.time()
-		self.scroll(
-		  (self._autoscroll[0]+self._autoscroll_keys[0]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll),
-		  (self._autoscroll[1]+self._autoscroll_keys[1]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll))
+		speed_factor = GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll)
+		self.scroll(speed_factor * (self._autoscroll[0] + self._autoscroll_keys[0]),
+		            speed_factor * (self._autoscroll[1] + self._autoscroll_keys[1]))
 		self.time_last_autoscroll = t
 		self._changed()
 
@@ -137,13 +136,18 @@ class View(ChangeListener):
 		"""
 		loc = self.cam.getLocation()
 		pos = loc.getExactLayerCoordinatesRef()
+		cell_dim = self.cam.getCellImageDimensions()
 
 		if x != 0:
-			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
-			pos.y += x * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
+			new_angle = math.pi * self.cam.getRotation() / 180.0
+			zoom_factor = self.cam.getZoom() * cell_dim.x * VIEW.SCROLL_SPEED
+			pos.x += x * math.cos(new_angle) / zoom_factor
+			pos.y += x * math.sin(new_angle) / zoom_factor
 		if y != 0:
-			pos.x += y * math.sin(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
-			pos.y += y * math.cos(math.pi * self.cam.getRotation() / -180.0) / self.cam.getZoom() / 16.0
+			new_angle = math.pi * self.cam.getRotation() / -180.0
+			zoom_factor = self.cam.getZoom() * cell_dim.y * VIEW.SCROLL_SPEED
+			pos.x += y * math.sin(new_angle) / zoom_factor
+			pos.y += y * math.cos(new_angle) / zoom_factor
 
 		if pos.x > self.session.world.max_x:
 			pos.x = self.session.world.max_x
@@ -249,3 +253,19 @@ class View(ChangeListener):
 		self.set_zoom(zoom)
 		self.set_rotation(rotation)
 		self.center(loc_x, loc_y)
+
+	def resize_layers(self, db):
+		"""Resize layers to the size required by the entire map."""
+		min_x, min_y, max_x, max_y = db("SELECT min(x), min(y), max(x), max(y) FROM ground")[0]
+		min_x -= MAP.PADDING
+		min_y -= MAP.PADDING
+		max_x += MAP.PADDING
+		max_y += MAP.PADDING
+
+		for layer_id, layer in enumerate(self.layers):
+			if not layer.getCellCache():
+				continue
+			assert layer_id != LAYERS.WATER, 'Water layer would need special treatment (see previous version)'
+
+			rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
+			layer.getCellCache().setSize(rect)

@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2011-10-01 04:07+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-11-07 15:48+0000\n"
+"Last-Translator: joel <gioele.cerri@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1352303326.0\n"
 
 msgid "build"
 msgstr "costruzione"
@@ -35,7 +36,7 @@ msgid "tent"
 msgstr "tenda"
 
 msgid "warehouse"
-msgstr ""
+msgstr "magazzino"
 
 msgid "resource"
 msgstr "risorsa"
@@ -69,17 +70,15 @@ msgid "lumberjack"
 msgstr "taglialegna / tagliaboschi"
 
 # 88%
-#, fuzzy
 msgid "resident"
-msgstr "residenti"
+msgstr "residente"
 
 msgid "main square"
 msgstr "piazza principale"
 
 # 85%
-#, fuzzy
 msgid "sailors"
-msgstr "marinaio"
+msgstr "marinai"
 
 msgid "food"
 msgstr "cibo"
@@ -106,25 +105,25 @@ msgid "tab"
 msgstr "scheda"
 
 msgid "upgrade"
-msgstr ""
+msgstr "aggiorna"
 
 msgid "your inhabitants"
-msgstr ""
+msgstr "i tuoi abitanti"
 
 msgid "close"
-msgstr ""
+msgstr "chiudi"
 
 msgid "companies"
 msgstr "compagnie / aziende"
 
 msgid "island"
-msgstr ""
+msgstr "isola"
 
 msgid "time"
 msgstr "tempo"
 
 msgid "unit"
-msgstr ""
+msgstr "unità"
 
 msgid "balance"
 msgstr "equilibrio"
@@ -142,13 +141,13 @@ msgid "start"
 msgstr "avvio / inizio"
 
 msgid "stock"
-msgstr "stock"
+msgstr "magazzino"
 
 msgid "trail"
 msgstr "sentiero"
 
 msgid "Unknown Horizons"
-msgstr ""
+msgstr "Unknown Horizons"
 
 msgid "wool"
 msgstr "lana"
@@ -180,8 +179,9 @@ msgstr "casa"
 msgid "log"
 msgstr "diario / registro"
 
+# 75%
 msgid "road"
-msgstr ""
+msgstr "strada"
 
 #
 msgid "save"
@@ -203,7 +203,7 @@ msgid "your"
 msgstr "tua"
 
 msgid "your settlement"
-msgstr ""
+msgstr "il tuo insediamento"
 
 msgid "add"
 msgstr "aggiungi"
@@ -215,7 +215,7 @@ msgid "choose"
 msgstr "scegliere"
 
 msgid "confectionery"
-msgstr ""
+msgstr "dolciumi"
 
 msgid "fisher"
 msgstr "pescatore"
@@ -226,11 +226,12 @@ msgstr "commercio libero"
 msgid "happiness"
 msgstr "felicità"
 
+#, fuzzy
 msgid "in stock"
-msgstr ""
+msgstr "in magazzino"
 
 msgid "money"
-msgstr ""
+msgstr "soldi"
 
 msgid "pavilion"
 msgstr "padiglione"
@@ -251,7 +252,7 @@ msgid "tools"
 msgstr "strumenti"
 
 msgid "button"
-msgstr ""
+msgstr "pulsante"
 
 #
 msgid "continue"
@@ -277,24 +278,20 @@ msgid "move"
 msgstr "muovi"
 
 # 87%
-#, fuzzy
 msgid "pioneers"
-msgstr "pioniere"
+msgstr "pionieri"
 
 # 87%
-#, fuzzy
 msgid "citizens"
-msgstr "cittadino"
+msgstr "cittadini"
 
 # 88%
-#, fuzzy
 msgid "merchants"
-msgstr "mercante"
+msgstr "mercanti"
 
 # 90%
-#, fuzzy
 msgid "aristocrats"
-msgstr "aristocratico"
+msgstr "aristocratici"
 
 msgid "potato"
 msgstr "patate"
@@ -306,7 +303,7 @@ msgstr "colono"
 # 80%
 #, fuzzy
 msgid "speed"
-msgstr "seme / seminare"
+msgstr "velocità"
 
 msgid "stop"
 msgstr "stop"
@@ -315,16 +312,16 @@ msgid "storage tent"
 msgstr "tenda di stoccaggio"
 
 msgid "wait"
-msgstr ""
+msgstr "aspetta"
 
 msgid "access"
-msgstr ""
+msgstr "accedi"
 
 msgid "account"
 msgstr "conto"
 
 msgid "amount"
-msgstr ""
+msgstr "importo"
 
 msgid "build menu"
 msgstr "menù principale"
@@ -361,13 +358,13 @@ msgid "liquor"
 msgstr "liquore"
 
 msgid "location"
-msgstr ""
+msgstr "posizione"
 
+#, fuzzy
 msgid "offer"
-msgstr ""
+msgstr "offerta"
 
 # 75%
-#, fuzzy
 msgid "potatoes"
 msgstr "patate"
 
@@ -388,16 +385,16 @@ msgid "solution"
 msgstr "soluzione"
 
 msgid "space"
-msgstr ""
+msgstr "spazio"
 
 msgid "target"
-msgstr ""
+msgstr "obiettivo"
 
 msgid "team"
 msgstr "squadra"
 
 msgid "total"
-msgstr ""
+msgstr "totale"
 
 msgid "unable"
 msgstr ""
@@ -409,28 +406,26 @@ msgid "afford"
 msgstr ""
 
 # 85%
-#, fuzzy
 msgid "animals"
-msgstr "animale"
+msgstr "animali"
 
 #
 msgid "Captain's log"
 msgstr "diario del capitano"
 
 # 75%
-#, fuzzy
 msgid "construct"
-msgstr "costruzione"
+msgstr "costruisci"
 
 # Dipende dal contesto della frase.
 msgid "consume"
 msgstr "consumare"
 
 msgid "enabled"
-msgstr ""
+msgstr "attivato"
 
 msgid "entries"
-msgstr ""
+msgstr "voci"
 
 msgid "feature"
 msgstr "caratteristica"
@@ -439,15 +434,14 @@ msgid "forest"
 msgstr "foresta"
 
 # 80%
-#, fuzzy
 msgid "grows"
-msgstr "coltivare"
+msgstr "cresce"
 
 msgid "hold"
 msgstr "tenere"
 
 msgid "idle"
-msgstr ""
+msgstr "inattivo"
 
 msgid "income"
 msgstr "reddito"
@@ -466,7 +460,7 @@ msgid "lamb wool"
 msgstr "lana d'agnello"
 
 msgid "overview tab"
-msgstr ""
+msgstr "panoramica"
 
 msgid "minimap"
 msgstr "minimappa"
@@ -475,7 +469,7 @@ msgid "issues"
 msgstr "problemi"
 
 msgid "plant"
-msgstr ""
+msgstr "pianta"
 
 #
 msgid "play"
@@ -485,12 +479,11 @@ msgid "playing"
 msgstr "giocando"
 
 msgid "price"
-msgstr ""
+msgstr "prezzo"
 
 # 75%
-#, fuzzy
 msgid "read"
-msgstr "rosso"
+msgstr "leggi"
 
 #
 msgid "return"
@@ -508,15 +501,15 @@ msgid "sound"
 msgstr "suono"
 
 msgid "special"
-msgstr ""
+msgstr "speciale"
 
 msgid "store"
-msgstr ""
+msgstr "negozio"
 
 # 75%
 #, fuzzy
 msgid "tear"
-msgstr "squadra"
+msgstr "lacrima"
 
 msgid "from time to time"
 msgstr "di volta in volta"
@@ -531,15 +524,15 @@ msgid "visit"
 msgstr "visita"
 
 msgid "world"
-msgstr ""
+msgstr "mondo"
 
 # 83%
 #, fuzzy
 msgid "yield"
-msgstr "rendimenti"
+msgstr "produzione"
 
 msgid "your ship"
-msgstr ""
+msgstr "la tua nave"
 
 msgid "back"
 msgstr "indietro"
@@ -548,17 +541,18 @@ msgstr "indietro"
 msgid "build settlement"
 msgstr "costruire insediamenti"
 
+# 75%
 msgid "load"
-msgstr ""
+msgstr "carica"
 
 msgid "unload"
-msgstr ""
+msgstr "scarica"
 
 msgid "command"
-msgstr ""
+msgstr "comando"
 
 msgid "completed"
-msgstr ""
+msgstr "completato"
 
 msgid "condition"
 msgstr "condizione"
@@ -567,10 +561,10 @@ msgid "contact"
 msgstr "contatto"
 
 msgid "empty"
-msgstr ""
+msgstr "vuoto"
 
 msgid "ensure"
-msgstr ""
+msgstr "assicurati"
 
 #
 msgid "fulfill"
@@ -581,7 +575,7 @@ msgid "graphics"
 msgstr "grafica"
 
 msgid "harvest"
-msgstr ""
+msgstr "raccolto"
 
 #
 msgid "hunts"
@@ -615,7 +609,7 @@ msgid "signal fire"
 msgstr "segnale di fuoco"
 
 msgid "statistics"
-msgstr ""
+msgstr "statistiche"
 
 # 75%
 msgid "clay"
@@ -641,7 +635,7 @@ msgid "temporarily"
 msgstr "temporaneamente"
 
 msgid "values"
-msgstr ""
+msgstr "valori"
 
 #~ msgid "branch office"
 #~ msgstr "filiale"

@@ -7,21 +7,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-05 10:54+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-11-14 19:39+0000\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1352921959.0\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr "Pelaaja {player} loi uuden siirtokunnan."
+msgstr "{player} loi uuden siirtokunnan."
 
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -157,7 +158,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr "Pelisi tallennettiin automaattisesti."
+msgstr "Peli tallennettiin automaattisesti."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -188,8 +189,9 @@ msgstr "tammenterhoja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "alvearies"
-msgstr ""
+msgstr "Mehiläispesä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -234,8 +236,9 @@ msgstr "savea"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "clay deposit"
-msgstr ""
+msgstr "Savimaa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -496,9 +499,9 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, python-format
+#, fuzzy, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} ja {player2} ovat nyt liittolaisia."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -752,7 +755,7 @@ msgstr "Valitse tallennus"
 #: horizons/gui/gui.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
 msgid "Details:"
-msgstr "Yksityiskohdat:"
+msgstr "Tiedot:"
 
 #: horizons/gui/gui.py
 msgid "Error:"
@@ -971,11 +974,13 @@ msgstr "Pelaajien suositeltu määrä: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "Translation status:"
-msgstr ""
+msgstr "Käännöstilanne:"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "{translated} translated messages, {untranslated} untranslated messages"
 msgstr ""
+"{translated} käännettyä tekstikappaletta, {untranslated} kääntämätöntä "
+"tekstikappaletta"
 
 #: horizons/gui/modules/singleplayermenu.py
 #: horizons/gui/modules/singleplayermenu.py
@@ -1229,7 +1234,7 @@ msgstr "Osta/Myy"
 
 #: horizons/gui/tabs/shiptabs.py
 msgid "Too far from the nearest own or allied warehouse"
-msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta"
+msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta."
 
 #: horizons/gui/tabs/shiptabs.py
 msgid "Cannot equip trade ship with weapons"
@@ -1343,8 +1348,9 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 #: horizons/gui/widgets/resourceoverviewbar.py
+#, fuzzy
 msgid "Reset to default"
-msgstr ""
+msgstr "Palauta oletus"
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this configuration to the factory default."
@@ -1865,7 +1871,7 @@ msgstr "Nimi:"
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py
 msgid "Weapons:"
-msgstr "Aseistus:"
+msgstr "Aseistettu:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
@@ -2055,12 +2061,12 @@ msgstr "Pelaajat"
 #. (text of widget: stats_settlements)
 #: horizons/i18n/guitranslations.py
 msgid "My settlements"
-msgstr "Siirtokuntani"
+msgstr "Siirtokunnat"
 
 #. (text of widget: stats_ships)
 #: horizons/i18n/guitranslations.py
 msgid "My ships"
-msgstr "Alukseni"
+msgstr "Alukset"
 
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
 #: horizons/i18n/guitranslations.py
@@ -2085,7 +2091,7 @@ msgstr "Kaikki"
 #. (text of widget: headline_game_messages)
 #: horizons/i18n/guitranslations.py
 msgid "Game messages"
-msgstr "Peliviestit"
+msgstr "Peli-ilmoitukset"
 
 #. (helptext of widget: okButton)
 #. (text of widget: start)
@@ -2186,27 +2192,28 @@ msgstr "Yksiköt"
 #. (helptext of widget: building_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Pelaajan kaikkien siirtokuntien rakennusten lukumäärä"
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
-msgstr ""
+msgstr "Käyttökelpoisen eli rakennuskelpoisen maan määrä"
 
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Pelaajan nykyiset rahavarannot + odotetut lähitulevaisuuden verotulot"
 
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Player Name"
-msgstr ""
+msgstr "Pelaajan nimi:"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
-msgstr ""
+msgstr "Kaikkien siirtokuntien tuottamien resurssien kokonaismäärä"
 
 #. (helptext of widget: settler_score)
 #: horizons/i18n/guitranslations.py
@@ -2221,7 +2228,7 @@ msgstr ""
 #. (helptext of widget: unit_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Pelaajan omistamien yksiköiden kokonaismäärä"
 
 # 87%
 #. (text of widget: balance)
@@ -2633,7 +2640,7 @@ msgstr "Vieritä karttaa hiirellä:"
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py
 msgid "Effects volume:"
-msgstr "Tehosteiden määrä:"
+msgstr "Tehosteiden äänenvoimakkuus:"
 
 #. (text of widget: fps_label)
 #: horizons/i18n/guitranslations.py
@@ -2709,7 +2716,7 @@ msgstr "Resoluutio:"
 #. (text of widget: sound_enable_opt_text)
 #: horizons/i18n/guitranslations.py
 msgid "Enable sound:"
-msgstr "Ota äänet käyttöön:"
+msgstr "Äänet käytössä:"
 
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py
@@ -2764,8 +2771,7 @@ msgstr "Valitse suurin sallittu kuvapäivitysnopeus. Oletus: 60fps."
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
-"Pikkukarttaa käännetään vastaavasti kuin pelin karttaa sitä käännettäessä"
+msgstr "Pikkukarttaa käännetään pääkartan tapaan sitä käännettäessä"
 
 #. (helptext of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py
@@ -2793,7 +2799,7 @@ msgstr "SDL on tarkoitettu vain hätätapauksiin ja voi aiheuttaa ongelmia!"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Random map archive"
-msgstr ""
+msgstr "Satunnaisten karttojen arkisto"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py
@@ -3046,7 +3052,7 @@ msgstr "Käyttää sokeria viinanpolttoon."
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py
 msgid "Doctor"
-msgstr "Lääkäri"
+msgstr "Sairaala"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py
@@ -3700,8 +3706,9 @@ msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py
+#, fuzzy
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Tämä rakennus pitää sijoittaa rannikolle."
 
 #: horizons/world/building/buildable.py
 msgid "This ground is not suitable for this building."
@@ -3827,7 +3834,7 @@ msgstr "Tarvitsemme kuitenkin tietoja lokitiedostosta:"
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
 "Anna tiedot meille IRC-kanavallamme tai keskustelupalstallamme, lisätietoja "
-"osoitteesta http://www.unknown-horizons.org."
+"osoitteesta http://unknown-horizons.org ."
 
 #: run_uh.py
 msgid "Error: Unable to find required libraries"

@@ -20,11 +20,16 @@
 # ###################################################
 
 import hashlib
+import os
 import os.path
+import tempfile
+
 from collections import defaultdict, deque
 
+from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
+from horizons.util.random_map import create_random_island
 from horizons.util.savegameupgrader import SavegameUpgrader
 
 class SavegameAccessor(DbReader):
@@ -34,10 +39,60 @@ class SavegameAccessor(DbReader):
 	Frequent select queries are preloaded for faster access.
 	"""
 
-	def __init__(self, dbfile):
-		self.upgrader = SavegameUpgrader(dbfile)
-		dbfile = self.upgrader.get_path()
-		super(SavegameAccessor, self).__init__(dbfile=dbfile)
+	def __init__(self, game_identifier, is_map):
+		is_random_map = False
+		if is_map:
+			self.upgrader = None
+			handle, self._temp_path = tempfile.mkstemp()
+			os.close(handle)
+			super(SavegameAccessor, self).__init__(dbfile=self._temp_path)
+			with open('content/savegame_template.sql') as savegame_template:
+				self.execute_script(savegame_template.read())
+
+			if isinstance(game_identifier, list):
+				is_random_map = True
+				random_island_sequence = game_identifier
+			else:
+				self._map_path = game_identifier
+		else:
+			self.upgrader = SavegameUpgrader(game_identifier)
+			self._temp_path = None
+			game_identifier = self.upgrader.get_path()
+			super(SavegameAccessor, self).__init__(dbfile=game_identifier)
+
+			map_name_data = self('SELECT value FROM metadata WHERE name = ?', 'map_name')
+			if not map_name_data:
+				is_random_map = True
+				random_island_sequence = self('SELECT value FROM metadata WHERE name = ?', 'random_island_sequence')[0][0].split(' ')
+			else:
+				map_name = map_name_data[0][0]
+				if os.path.isabs(map_name):
+					self._map_path = map_name
+				else:
+					self._map_path = SavegameManager.get_filename_from_map_name(map_name)
+
+		if is_random_map:
+			handle, self._temp_path2 = tempfile.mkstemp()
+			os.close(handle)
+			random_map_db = DbReader(self._temp_path2)
+			with open('content/map-template.sql') as map_template:
+				random_map_db.execute_script(map_template.read())
+			for island_id, island_string in enumerate(random_island_sequence):
+				create_random_island(random_map_db, island_id, island_string)
+			random_map_db.close()
+			self._map_path = self._temp_path2
+
+			self('INSERT INTO metadata VALUES(?, ?)', 'random_island_sequence',
+				' '.join(random_island_sequence))
+
+		self('ATTACH ? AS map_file', self._map_path)
+		if is_random_map:
+			self.map_name = random_island_sequence
+		elif os.path.isabs(self._map_path):
+			self.map_name = self._map_path
+		else:
+			self.map_name = SavegameManager.get_savegamename_from_filename(self._map_path)
+
 		self._load_building()
 		self._load_settlement()
 		self._load_concrete_object()
@@ -54,8 +109,12 @@ class SavegameAccessor(DbReader):
 
 	def close(self):
 		super(SavegameAccessor, self).close()
-		self.upgrader.close()
-
+		if self.upgrader is not None:
+			self.upgrader.close()
+		if self._temp_path is not None:
+			os.unlink(self._temp_path)
+		if hasattr(self, '_temp_path2'):
+			os.unlink(self._temp_path2)
 
 	def _load_building(self):
 		self._building = {}

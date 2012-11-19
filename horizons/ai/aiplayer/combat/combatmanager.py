@@ -216,7 +216,7 @@ class CombatManager(object):
 
 		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile(), ))
-		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
+		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate, ))
 		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
 		working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
 
@@ -256,7 +256,7 @@ class CombatManager(object):
 		ship_group = self.unit_manager.filter_ships(ship_group, (filters.ship_state(self.ships, self.shipStates.idle)))
 		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile()))
-		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
+		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate, ))
 		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
 		working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
 
@@ -279,7 +279,7 @@ class CombatManager(object):
 		"""
 		filters = self.unit_manager.filtering_rules
 
-		rules = (filters.not_in_fleet(), filters.fighting(), filters.ship_state(self.ships, self.shipStates.idle))
+		rules = (filters.not_in_fleet, filters.fighting(), filters.ship_state(self.ships, self.shipStates.idle))
 		for ship in self.unit_manager.get_ships(rules):
 			# Turn into one-ship group, since reasoning is based around groups of ships
 			ship_group = [ship, ]
@@ -287,7 +287,7 @@ class CombatManager(object):
 			# This may end up being costly, so postpone until we have more cpu resources to spare.
 
 			ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
-			pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
+			pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate, ))
 			fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
 			working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
 			environment = {'ship_group': ship_group}
@@ -420,7 +420,7 @@ class PirateCombatManager(CombatManager):
 		"""
 		filters = self.unit_manager.filtering_rules
 
-		rules = (filters.not_in_fleet(), filters.pirate(), filters.ship_state(self.ships, self.shipStates.idle))
+		rules = (filters.not_in_fleet, filters.pirate, filters.ship_state(self.ships, self.shipStates.idle))
 		for ship in self.unit_manager.get_ships(rules):
 			# Turn into one-ship group, since reasoning is based around groups of ships
 			ship_group = [ship, ]

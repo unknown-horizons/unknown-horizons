@@ -31,6 +31,7 @@ from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.world.production.producer import Producer
+from horizons.scheduler import Scheduler
 
 class PlayerStats(WorldObject):
 	def __init__(self, player):
@@ -38,6 +39,7 @@ class PlayerStats(WorldObject):
 		self.player = player
 		self.db = player.session.db
 		self._collect_info()
+		self.collection_tick = Scheduler().cur_tick
 
 	def _collect_info(self):
 		settlers = defaultdict(lambda: 0)

@@ -9,7 +9,7 @@
 
 	<!-- clockwise, starting at 0 degree -->
 	<Label name="start"  text="Singleplayer"  position="531,100"
-		comment="Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)" />
+		comment="Opens widget to create singleplayer games (scenarios, random maps, free play)" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,144" />
 	<ImageButton name="startSingle"
 		position="488,169"
@@ -82,4 +82,6 @@
 		down_image="content/gui/icons/mainmenu/load.png"
 		hover_image="content/gui/icons/mainmenu/load.png" />
 
+	<!-- Editor -->
+	<Label name="editor"  text="Editor"  position="30,30"  comment="Map-Editor" />
 </Container>

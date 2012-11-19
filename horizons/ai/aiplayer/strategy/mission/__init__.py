@@ -47,7 +47,10 @@ class FleetMission(Mission):
 		self.strategy_manager = self.owner.strategy_manager
 		self.combat_phase = False
 		self.state = self.missionStates.created
+		self._setup_state_callbacks()
 
+	def _setup_state_callbacks(self):
+		"""This function can be overwritten to setup mission specific callbacks"""
 		# combatIntermissions states which function should be called after combat phase was finished (winning or losing).
 		# each combatIntermission entry should provide both, It is the CombatManager that decides which function to call
 		# Dictionary of type: missionState => (won_function, lost_function)

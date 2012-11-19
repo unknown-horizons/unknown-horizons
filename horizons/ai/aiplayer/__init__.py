@@ -112,8 +112,10 @@ class AIPlayer(GenericAI):
 				if player is self:
 					position = ai_players
 				ai_players += 1
-		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval * position / ai_players + 1)
-		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=self.tick_long_interval * position / ai_players + 1)
+		run_in = self.tick_interval * position // ai_players + 1
+		Scheduler().add_new_object(Callback(self.tick), self, run_in=run_in)
+		run_in = self.tick_long_interval * position // ai_players + 1
+		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=run_in)
 
 	def finish_init(self):
 		# initialise the things that couldn't be initialised before because of the loading order
@@ -386,9 +388,6 @@ class AIPlayer(GenericAI):
 	def count_buildings(self, building_id):
 		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
 
-	def notify_unit_path_blocked(self, unit):
-		self.log.warning("%s ship blocked (%s)", self, unit)
-
 	def notify_mine_empty(self, mine):
 		"""The Mine calls this function to let the player know that the mine is empty."""
 		self._settlement_manager_by_settlement_id[mine.settlement.worldid].production_builder.handle_mine_empty(mine)
@@ -478,6 +477,8 @@ class AIPlayer(GenericAI):
 		self.goals = None
 		self.special_domestic_trade_manager = None
 		self.international_trade_manager = None
+		self.strategy_manager.end()
+		self.strategy_manager = None
 		super(AIPlayer, self).end()
 
 decorators.bind_all(AIPlayer)

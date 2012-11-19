@@ -114,7 +114,7 @@ def test_ticket_1232(s, p):
 	boat_builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island, settlement=settlement)(p)
 	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 10)
 	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 8)
-	assert isinstance(boat_builder.get_component(Producer),QueueProducer)
+	assert isinstance(boat_builder.get_component(Producer), QueueProducer)
 
 	production_finished = [False]
 	boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)

@@ -168,7 +168,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		houses = 0
 		residents = 0
 		container = self.widget.child_finder('residents_per_house_table')
-		space_per_label = container.size[0] / 6
+		space_per_label = container.size[0] // 6
 		for number in xrange(self.min_inhabitants, self.max_inhabitants + 1):
 			column = number - (self.min_inhabitants - 1 if self.min_inhabitants > 0 else 0)
 			house_count = resident_counts.get(number, 0)

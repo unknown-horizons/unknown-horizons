@@ -77,7 +77,7 @@ class StatsWidget(object):
 	def _init_gui(self):
 		self._gui = load_uh_widget(self.widget_file_name)
 		self._gui.position_technique = 'center:center+25'
-		self._content_vbox = self._gui.findChild(name = 'content_vbox')
+		self._content_vbox = self._gui.findChild(name='content_vbox')
 		self.refresh()
 
 	def _clear_entries(self):

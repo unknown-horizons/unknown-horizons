@@ -77,7 +77,7 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "ShowResourceIcons", "show_resource_icons")
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
-				                        initialdata=[0, 16, 32], requiresrestart=True)
+				                        initialdata={0: _("Default"), 16: _("16 bit"), 32: _("32 bit")}, requiresrestart=True)
 
 		languages = find_available_languages().keys()
 
@@ -142,6 +142,7 @@ class SettingsHandler(object):
 		slider_event_map['volume_music'] = self.set_volume_music
 		slider_event_map['volume_effects'] = self.set_volume_effects
 		slider_event_map['mousesensitivity'] = self.set_mouse_sensitivity
+		slider_event_map['reset_mouse_sensitivity'] = self.reset_mouse_sensitivity
 
 		self.settings_dialog.mapEvents(slider_event_map)
 
@@ -175,6 +176,10 @@ class SettingsHandler(object):
 
 
 	# Handlers for setting interaction
+
+	def reset_mouse_sensitivity(self):
+		self.settings_dialog.findChild(name="mousesensitivity").value = 0.0
+		self.set_mouse_sensitivity()
 
 	def set_mouse_sensitivity(self, value=None):
 		"""
@@ -297,7 +302,7 @@ class SettingsHandler(object):
 
 # misc utility
 
-def get_screen_resolutions():
+def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
 
 			NOTE:
@@ -319,7 +324,10 @@ def get_screen_resolutions():
 		res = str(x) + 'x' + str(y)
 		if res not in possible_resolutions:
 			possible_resolutions.append(res)
+			
+	if selected_default not in possible_resolutions:
+		possible_resolutions.append(selected_default)
 
-	possible_resolutions.sort()
+	possible_resolutions.sort(key=lambda res: int(res.split('x')[0]))
 
 	return possible_resolutions

@@ -22,11 +22,11 @@ components:
         produces:
         - [RES.CHARCOAL, 2]
         consumes:
-        - [RES.BOARDS, -5]
+        - [RES.BOARDS, -3]
         time: 20
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {RES.BOARDS: 10, RES.CHARCOAL: 2}
+        slot_sizes: {RES.BOARDS: 6, RES.CHARCOAL: 4}
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1

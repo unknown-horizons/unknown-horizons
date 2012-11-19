@@ -40,7 +40,7 @@ logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
 
 class Server(object):
 	def __init__(self, hostname, port, statistic_file=None):
-		packets.SafeUnpickler.set_mode(client = False)
+		packets.SafeUnpickler.set_mode(client=False)
 		self.host     = None
 		self.hostname = hostname
 		self.port     = port
@@ -110,6 +110,7 @@ class Server(object):
 	# __(...)             ... noop for extracting the strings
 	def gettext(self, player, message):
 		return player.gettext.ugettext(message)
+
 	def ngettext(self, player, msgid1, msgid2, n):
 		return player.gettext.ungettext(msgid1, msgid2, n)
 
@@ -149,7 +150,7 @@ class Server(object):
 		ret = True
 		for callback in self.callbacks[type]:
 			tmp = callback(*args)
-			if tmp == None:
+			if tmp is None:
 				tmp = True
 			ret &= tmp
 		return ret
@@ -273,8 +274,9 @@ class Server(object):
 		# check packet size
 		if len(event.packet.data) > self.capabilities['maxpacketsize']:
 			logging.warning("[RECEIVE] Global packet size exceeded from %s: size=%d" % (peer.address, len(event.packet.data)))
-			self.fatalerror(player, __("You've exceeded the global packet size. This should never happen."
-				" Please contact us and/or file a bug report"))
+			self.fatalerror(player, __("You've exceeded the global packet size.") + " " +
+			                        __("This should never happen. "
+			                           "Please contact us or file a bug report."))
 			return
 
 		# shortpath if game is running
@@ -290,8 +292,10 @@ class Server(object):
 			return
 		except PacketTooLarge as e:
 			logging.warning("[RECEIVE] Per packet size exceeded from %s: %s" % (player, e))
-			self.fatalerror(player, __("You've exceeded the per packet size. This should never happen."
-				" Please contact us and/or file a bug report: %s" % (e)))
+			self.fatalerror(player, __("You've exceeded the per packet size.") + " " +
+			                        __("This should never happen. "
+			                           "Please contact us or file a bug report.") +
+			                        " " + str(e))
 			return
 		except Exception as e:
 			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (player, e))
@@ -408,13 +412,16 @@ class Server(object):
 		# make sure player names, colors and clientids are unique
 		for _player in game.players:
 			if _player.name == packet.playername:
-				self.error(player, __("There's already a player with your name inside this game. Change your name"))
+				self.error(player, __("There's already a player with your name inside this game.") + " " +
+				                   __("Please change your name."))
 				return
 			if _player.color == packet.playercolor:
-				self.error(player, __("There's already a player with your color inside this game. Change your color"))
+				self.error(player, __("There's already a player with your color inside this game.") + " " +
+				                   __("Please change your color."))
 				return
 			if _player.clientid == packet.clientid:
-				self.error(player, __("There's already a player with your unique player ID inside this game. This should never occur."))
+				self.error(player, __("There's already a player with your unique player ID inside this game. "
+				                      "This should never occur."))
 				return
 
 		logging.debug("[JOIN] [%s] %s joined %s" % (game.uuid, player, game))
@@ -513,7 +520,8 @@ class Server(object):
 		# make sure player names are unique
 		for _player in game.players:
 			if _player.name == packet.playername:
-				self.error(player, __("There's already a player with your name inside this game. Unable to change your name"))
+				self.error(player, __("There's already a player with your name inside this game.") + " " +
+				                   __("Unable to change your name."))
 				return
 
 		# ACK the change
@@ -540,7 +548,8 @@ class Server(object):
 		# make sure player colors are unique
 		for _player in game.players:
 			if _player.color == packet.playercolor:
-				self.error(player, __("There's already a player with your color inside this game. Unable to change your color"))
+				self.error(player, __("There's already a player with your color inside this game.") + " " +
+				                   __("Unable to change your color."))
 				return
 
 		# ACK the change

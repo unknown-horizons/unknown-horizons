@@ -38,7 +38,7 @@ from horizons.command.sounds import PlaySound
 from horizons.gui.util import load_uh_widget
 from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted
+from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -131,6 +131,10 @@ class BuildingTool(NavigationTool):
 		self.highlight_buildable()
 		WorldObjectDeleted.subscribe(self._on_worldobject_deleted)
 
+		SettlementInventoryUpdated.subscribe(self.update_preview)
+		PlayerInventoryUpdated.subscribe(self.update_preview)
+
+
 	def __init_selectable_component(self):
 		self.selectable_comp = SelectableBuildingComponent
 		try:
@@ -202,9 +206,10 @@ class BuildingTool(NavigationTool):
 		self._build_logic = None
 		self.buildings = None
 		if self.__class__.gui is not None:
-			self.session.view.remove_change_listener(self.draw_gui)
 			self.__class__.gui.hide()
 		ExtScheduler().rem_all_classinst_calls(self)
+		SettlementInventoryUpdated.discard(self.update_preview)
+		PlayerInventoryUpdated.discard(self.update_preview)
 		super(BuildingTool, self).remove()
 
 	def _on_worldobject_deleted(self, message):
@@ -235,23 +240,19 @@ class BuildingTool(NavigationTool):
 		head_box.position = (new_x, head_box.position[1])
 		head_box.adaptLayout()
 		self.draw_gui()
-		self.session.view.add_change_listener(self.draw_gui)
 
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
 			level = self.session.world.player.settler_level if \
 				not hasattr(self._class, "default_level_on_build") else \
 				self._class.default_level_on_build
-			self.action_set = self._class.get_random_action_set(level=level, include_preview=True)
-		action_set, preview_action_set = self.action_set
+			action_set = self._class.get_random_action_set(level=level)
 		action_sets = ActionSetLoader.get_sets()
-		if preview_action_set in action_sets:
-			action_set = preview_action_set
-		if 'idle' in action_sets[action_set]:
-			action = 'idle'
-		elif 'idle_full' in action_sets[action_set]:
-			action = 'idle_full'
-		else: # If no idle animation found, use the first you find
+		for action_option in ['idle', 'idle_full', 'abcd']:
+			if action_option in action_sets[action_set]:
+				action = action_option
+				break
+		else: # If no idle, idle_full or abcd animation found, use the first you find
 			action = action_sets[action_set].keys()[0]
 		rotation = (self.rotation + int(self.session.view.cam.getRotation()) - 45) % 360
 		image = sorted(action_sets[action_set][action][rotation].keys())[0]
@@ -259,7 +260,15 @@ class BuildingTool(NavigationTool):
 			# Make sure the preview is loaded
 			horizons.globals.fife.animationloader.load_image(image, action_set, action, rotation)
 		building_icon = self.gui.findChild(name='building')
-		building_icon.image = image
+		loaded_image = horizons.globals.fife.imagemanager.load(image)
+		building_icon.image = fife.GuiImage(loaded_image)
+		width = loaded_image.getWidth()
+		# TODO: Remove hardcoded 220
+		max_width = 220
+		if width > max_width:
+			height = loaded_image.getHeight()
+			size = (max_width, (height * max_width) // width)
+			building_icon.max_size = building_icon.min_size = building_icon.size = size
 		# TODO: Remove hardcoded 70
 		gui_x, gui_y = self.__class__.gui.size
 		icon_x, icon_y = building_icon.size
@@ -292,15 +301,13 @@ class BuildingTool(NavigationTool):
 		self.buildings_missing_resources.clear()
 
 		settlement = None # init here so we can access it below loop
-		neededResources = {}
-		# check if the buildings are buildable and color them appropriatly
+		needed_resources = {}
+		# check if the buildings are buildable and color them appropriately
 		for i, building in enumerate(self.buildings):
 			# get gfx for the building
 			# workaround for buildings like settler, that don't use the current level of
 			# the player, but always start at a certain lvl
-			level = self.session.world.player.settler_level if \
-				not hasattr(self._class, "default_level_on_build") else \
-				self._class.default_level_on_build
+			level = self._class.get_initial_level(self.session.world.player)
 
 			if self._class.id == BUILDINGS.TREE and not building.buildable:
 				continue # Tree/ironmine that is not buildable, don't preview
@@ -327,12 +334,12 @@ class BuildingTool(NavigationTool):
 
 
 			# check required resources
-			(enough_res, missing_res) = Build.check_resources(neededResources, self._class.costs,
+			(enough_res, missing_res) = Build.check_resources(needed_resources, self._class.costs,
 			                                                  self.session.world.player, [settlement, self.ship])
 			if building.buildable and not enough_res:
 					# make building red
 					self.renderer.addColored(self.buildings_fife_instances[building],
-										     *self.not_buildable_color)
+					                         *self.not_buildable_color)
 					building.buildable = False
 					# set missing info for gui
 					self.buildings_missing_resources[building] = missing_res
@@ -350,7 +357,7 @@ class BuildingTool(NavigationTool):
 
 		self.session.ingame_gui.resource_overview.set_construction_mode(
 			self.ship if self.ship is not None else settlement,
-		  neededResources
+		  needed_resources
 		)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
@@ -407,13 +414,13 @@ class BuildingTool(NavigationTool):
 			tile = get_tile(p)
 			if tile.object is not None and tile.object.buildable_upon:
 				inst = tile.object.fife_instance
-				inst.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
-				self._transparencified_instances.add( weakref.ref(inst) )
+				inst.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
+				self._transparencified_instances.add(weakref.ref(inst))
 
 		for to_tear_worldid in building.tearset:
 			inst = WorldObject.get_object_by_id(to_tear_worldid).fife_instance
-			inst.get2dGfxVisual().setTransparency( 255 ) # full transparency = hidden
-			self._transparencified_instances.add( weakref.ref(inst) )
+			inst.get2dGfxVisual().setTransparency(255) # full transparency = hidden
+			self._transparencified_instances.add(weakref.ref(inst))
 
 	def _highlight_inversely_related_buildings(self, building, settlement):
 		"""Point out buildings that are inversly relevant (e.g. lumberjacks when building trees)
@@ -481,9 +488,9 @@ class BuildingTool(NavigationTool):
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mousePressed(evt)
 			return
-		if fife.MouseEvent.RIGHT == evt.getButton():
+		if evt.getButton() == fife.MouseEvent.RIGHT:
 			self.on_escape()
-		elif fife.MouseEvent.LEFT == evt.getButton():
+		elif evt.getButton() == fife.MouseEvent.LEFT:
 			pass
 		else:
 			super(BuildingTool, self).mousePressed(evt)
@@ -530,10 +537,10 @@ class BuildingTool(NavigationTool):
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
 
 			# check how to continue: either build again or escape
-			if ((evt.isShiftPressed() or horizons.globals.fife.get_uh_setting('UninterruptedBuilding')) \
-			    and not self._class.id == BUILDINGS.WAREHOUSE) \
-			    or not found_buildable \
-			    or self._class.class_package == 'path':
+			shift = evt.isShiftPressed() or horizons.globals.fife.get_uh_setting('UninterruptedBuilding')
+			if ((shift and not self._class.id == BUILDINGS.WAREHOUSE)
+			    or not found_buildable
+			    or self._class.class_package == 'path'):
 				# build once more
 				self._restore_transparencified_instances()
 				self.highlight_buildable(changed_tiles)
@@ -544,7 +551,6 @@ class BuildingTool(NavigationTool):
 				self.on_escape()
 			evt.consume()
 		elif evt.getButton() != fife.MouseEvent.RIGHT:
-			# TODO: figure out why there is a != in the comparison above. why not just use else?
 			super(BuildingTool, self).mouseReleased(evt)
 
 	def do_build(self):
@@ -640,22 +646,20 @@ class BuildingTool(NavigationTool):
 	def update_preview(self, force=False):
 		"""Used as callback method"""
 		if self.start_point is not None:
-			self.preview_build(self.start_point,
-			                   self.start_point if self.end_point is None else self.end_point, force=force)
+			end_point = self.end_point or self.start_point
+			self.preview_build(self.start_point, end_point, force=force)
 
-	def rotate_right(self):
-		self.rotation = (self.rotation + 270) % 360
+	def _rotate(self, degrees):
+		self.rotation = (self.rotation + degrees) % 360
 		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
 		self.update_preview()
-		if self.__class__.gui is not None: # Only update if a preview gui is available
-			self.draw_gui()
+		self.draw_gui()
 
 	def rotate_left(self):
-		self.rotation = (self.rotation + 90) % 360
-		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
-		self.update_preview()
-		if self.__class__.gui is not None: # Only update if a preview gui is available
-			self.draw_gui()
+		self._rotate(degrees=90)
+
+	def rotate_right(self):
+		self._rotate(degrees=270)
 
 	def _remove_building_instances(self):
 		"""Deletes fife instances of buildings"""

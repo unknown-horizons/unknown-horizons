@@ -78,15 +78,18 @@ header = '''# ###################################################
 
 from horizons.constants import VERSION
 
-text_translations = dict()
+text_translations = {}
 
 def set_translations():
-\tglobal text_translations
-\ttext_translations = {
+	global text_translations
+	text_translations = {
 '''
 
-FOOTER = '''\n\t}\n'''
-ROWINDENT = '\n\t\t'
+FOOTER = '''
+	}
+'''
+ROWINDENT = '''
+		'''
 
 files_to_skip = [
 	'call_for_support.xml',

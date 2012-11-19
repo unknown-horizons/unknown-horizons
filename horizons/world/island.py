@@ -25,9 +25,7 @@ from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
 from horizons.util.buildingindexer import BuildingIndexer
-from horizons.util.dbreader import DbReader
 from horizons.util.pathfinding.pathnodes import IslandPathNodes
-from horizons.util.random_map import is_random_island_id_string, create_random_island
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
@@ -36,6 +34,7 @@ from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
 from horizons.gui.widgets.minimap import Minimap
+from horizons.world.ground import MapPreviewTile
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an island. It contains a list of all things on the map
@@ -68,22 +67,21 @@ class Island(BuildingOwner, WorldObject):
 	"""
 	log = logging.getLogger("world.island")
 
-	def __init__(self, db, islandid, session, preview=False):
+	def __init__(self, db, island_id, session, preview=False):
 		"""
 		@param db: db instance with island table
-		@param islandid: id of island in that table
+		@param island_id: id of island in that table
 		@param session: reference to Session instance
 		@param preview: flag, map preview mode
 		"""
-		super(Island, self).__init__(worldid=islandid)
+		super(Island, self).__init__(worldid=island_id)
 
 		if False:
 			from horizons.session import Session
 			assert isinstance(session, Session)
 		self.session = session
 
-		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
-		self.__init(Point(x, y), filename, preview=preview)
+		self.__init(db, island_id, preview)
 
 		if not preview:
 			# create building indexers
@@ -92,7 +90,7 @@ class Island(BuildingOwner, WorldObject):
 			self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
 		# load settlements
-		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
+		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
@@ -100,42 +98,27 @@ class Island(BuildingOwner, WorldObject):
 			# load buildings
 			from horizons.world import load_building
 			for (building_worldid, building_typeid) in \
-				  db("SELECT rowid, type FROM building WHERE location = ?", islandid):
+				  db("SELECT rowid, type FROM building WHERE location = ?", island_id):
 				load_building(self.session, db, building_typeid, building_worldid)
 
-	def _get_island_db(self):
-		# check if filename is a random map
-		if is_random_island_id_string(self.file):
-			# it's a random map id, create this map and load it
-			return create_random_island(self.file)
-		return DbReader(self.file) # Create a new DbReader instance to load the maps file.
-
-	def __init(self, origin, filename, preview=False):
+	def __init(self, db, island_id, preview):
 		"""
 		Load the actual island from a file
-		@param origin: Point
-		@param filename: String, filename of island db or random map id
 		@param preview: flag, map preview mode
 		"""
-		self.file = filename
-		self.origin = origin
-		db = self._get_island_db()
-
-		p_x, p_y, width, height = db("SELECT (MIN(x) + ?), (MIN(y) + ?), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground", self.origin.x, self.origin.y)[0]
+		p_x, p_y, width, height = db("SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?", island_id - 1001)[0]
 
 		# rect for quick checking if a tile isn't on this island
 		# NOTE: it contains tiles, that are not on the island!
 		self.rect = Rect(Point(p_x, p_y), width, height)
 
 		self.ground_map = {}
-		for (rel_x, rel_y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground"): # Load grounds
+		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
-				ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
-				ground.act(action_id, rotation)
+				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
+				ground.act(rotation)
 			else:
-				ground = Point(self.origin.x + rel_x, self.origin.y + rel_y)
-				ground.classes = tuple()
-				ground.settlement = None
+				ground = MapPreviewTile(x, y, ground_id)
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.ground_map[(ground.x, ground.y)] = ground
@@ -167,21 +150,10 @@ class Island(BuildingOwner, WorldObject):
 
 	def save(self, db):
 		super(Island, self).save(db)
-		db("INSERT INTO island (rowid, x, y, file) VALUES (? - 1000, ?, ?, ?)",
-			self.worldid, self.origin.x, self.origin.y, self.file)
 		for settlement in self.settlements:
 			settlement.save(db, self.worldid)
 		for animal in self.wild_animals:
 			animal.save(db)
-
-	def save_map(self, db):
-		"""Saves the ground into the given database (used for saving maps, not saved games)."""
-		db('CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)')
-		db('CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
-		source_db = self._get_island_db()
-		db('BEGIN')
-		db.execute_many('INSERT INTO ground VALUES(?, ?, ?, ?, ?)', source_db('SELECT x, y, ground_id, action_id, rotation FROM ground'))
-		db('COMMIT')
 
 	def get_coordinates(self):
 		"""Returns list of coordinates, that are on the island."""
@@ -280,10 +252,8 @@ class Island(BuildingOwner, WorldObject):
 		@param player: int id of the player that owns the settlement
 		@param load: boolean, whether it has been called during loading"""
 		building = super(Island, self).add_building(building, player, load=load)
-		if not load:
-			for building.settlement in self.get_settlements(building.position, player):
-				self.assign_settlement(building.position, building.radius, building.settlement)
-				break
+		if not load and building.settlement is not None:
+			self.assign_settlement(building.position, building.radius, building.settlement)
 
 		if building.settlement is not None:
 			building.settlement.add_building(building)
@@ -326,11 +296,11 @@ class Island(BuildingOwner, WorldObject):
 			return self.building_indexers[BUILDINGS.TREE]
 		return None
 
-	def get_surrounding_tiles(self, where, radius=1):
+	def get_surrounding_tiles(self, where, radius=1, include_corners=True):
 		"""Returns tiles around point with specified radius.
 		@param point: instance of Point, or object with get_surrounding()"""
 		if hasattr(where, "get_surrounding"):
-			coords = where.get_surrounding(include_corners=False)
+			coords = where.get_surrounding(include_corners=include_corners)
 		else: # assume Point
 			coords = Circle(where, radius).tuple_iter()
 		for position in coords:
@@ -383,7 +353,7 @@ class Island(BuildingOwner, WorldObject):
 					if not all_on_island:
 						break
 				if all_on_island:
-					d[ (x, y) ] = self.last_change_id
+					d[(x, y)] = self.last_change_id
 			return d
 
 		class LazyDict(dict):

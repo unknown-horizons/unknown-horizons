@@ -24,6 +24,7 @@ import os
 
 import horizons.main
 from horizons.constants import BUILDINGS, PRODUCTION
+from horizons.util.startgameoptions import StartGameOptions
 from horizons.world.production.producer import Producer
 
 from tests.gui import gui_test
@@ -180,7 +181,8 @@ def test_save_load_ticket_1421(gui):
 
 	assert gui.session.save(savegamename=filename)
 
-	horizons.main.load_game( savegame=filename )
+	options = StartGameOptions.create_load_game(filename, None)
+	horizons.main.start_singleplayer(options)
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)

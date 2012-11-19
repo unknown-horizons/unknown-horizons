@@ -23,6 +23,7 @@
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
 
+from horizons.command.uioptions import SetTradeSlot
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES
@@ -78,14 +79,15 @@ def test_trade(gui):
 	assert old_ship_value == ship_inv[RES.CANNON]
 
 	# the ai has to want more boards
-	assert settlement_inv[RES.BOARDS] < settlement.get_component(TradePostComponent).buy_list[RES.BOARDS]
+	trade_post = settlement.get_component(TradePostComponent)
+	assert settlement_inv[RES.BOARDS] < trade_post.slots[trade_post.buy_list[RES.BOARDS]].limit
 
 	# transfer 50 t of boards
 	gui.trigger('buy_sell_goods', 'size_5')
 	gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
 	# now it has enough
-	assert settlement_inv[RES.BOARDS] == settlement.get_component(TradePostComponent).buy_list[RES.BOARDS]
+	assert settlement_inv[RES.BOARDS] == trade_post.slots[trade_post.buy_list[RES.BOARDS]].limit
 
 	old_ship_value = ship_inv[RES.BOARDS]
 
@@ -104,7 +106,7 @@ def test_trade(gui):
 	ship_inv.alter(RES.BOARDS, - ship_inv[RES.BOARDS])
 
 	# test sell now, give settlement something to sell
-	settlement.get_component(TradePostComponent).sell_list[RES.ALVEARIES] = 5
+	SetTradeSlot(trade_post, 2, RES.ALVEARIES, True, 5)(settlement.owner)
 	settlement.get_component(StorageComponent).inventory.alter(RES.ALVEARIES, 10)
 
 	# this gives us 5 alevaries

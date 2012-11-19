@@ -128,14 +128,14 @@ def get_option_parser():
 	             metavar="<seed>", help="Starts a random map with seed <seed>.")
 	start_uh.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>",
 	             help="Starts <scenario>. <scenario> is the scenarioname.")
-	start_uh.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>",
-	             help="Starts <campaign>. <campaign> is the campaign name.")
 	start_uh.add_option("--start-dev-map", dest="start_dev_map", action="store_true",
 	             default=False, help="Starts the development map without displaying the main menu.")
-	start_uh.add_option("--load-map", dest="load_map", metavar="<save>",
-	             help="Loads a saved game. <save> is the savegamename.")
+	start_uh.add_option("--load-game", dest="load_game", metavar="<game>",
+	             help="Loads a saved game. <game> is the saved game's name.")
 	start_uh.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true",
 	             help="Loads the last quicksave.")
+	start_uh.add_option("--edit-map", dest="edit_map", metavar="<map>",
+	             help="Edit map <map>.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
@@ -162,11 +162,13 @@ def get_option_parser():
 	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
 	             help="Writes log to <filename> instead of to the uh-userdir")
 	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", action="store_true",
-	             default=False, help="For internal use only.")
+	             default=False, help=optparse.SUPPRESS_HELP)
 	dev_group.add_option("--profile", dest="profile", action="store_true",
 	             default=False, help="Enable profiling (for developing only).")
 	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int",
 	             help="Run the game for <max_ticks> ticks.")
+	dev_group.add_option("--no-freeze-protection", dest="freeze_protection", action="store_false",
+	             default=True, help="Disable freeze protection.")
 	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true",
 	             default=False, help="Enable the string previewer tool for scenario writers")
 	dev_group.add_option("--no-preload", dest="nopreload", action="store_true",
@@ -174,21 +176,22 @@ def get_option_parser():
 	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="float",
 	             help="Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)")
 	dev_group.add_option("--gui-test", dest="gui_test", metavar="<test>",
-	             default=False, help="INTERNAL. Use run_tests.py instead.")
+	             default=False, help=optparse.SUPPRESS_HELP)
 	dev_group.add_option("--gui-log", dest="log_gui", action="store_true",
 	             default=False, help="Log gui interactions")
 	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int",
 	             help="Use this seed for singleplayer sessions.")
 	dev_group.add_option("--generate-minimap", dest="generate_minimap",
-	             metavar="<parameters>", help="Generate a minimap for a map")
+	             metavar="<parameters>", help=optparse.SUPPRESS_HELP)
 	dev_group.add_option("--create-mp-game", action="store_true", dest="create_mp_game",
 	             help="Create an multiplayer game with default settings.")
 	dev_group.add_option("--join-mp-game", action="store_true", dest="join_mp_game",
 	             help="Join first multiplayer game.")
-	dev_group.add_option("--interactive-shell", action="store_true", dest="interactive_shell",
+	if VERSION.IS_DEV_VERSION:
+		dev_group.add_option("--interactive-shell", action="store_true", dest="interactive_shell",
 	             help="Starts an IPython kernel. Connect to the shell with: ipython console --existing")
-	dev_group.add_option("--make-sure-atlases-work", action="store_true", dest="enable_atlases",
-		help="Use atlas files and regenerate/enable them if necessary.")
+		dev_group.add_option("--no-atlas-generation", action="store_false", dest="atlas_generation",
+	             default=True, help="Disable atlas generation.")
 	p.add_option_group(dev_group)
 
 	return p
@@ -212,7 +215,7 @@ def excepthook_creator(outfilename):
 		print('')
 		print(_('Unknown Horizons has crashed.'))
 		print('')
-		print(_('We are very sorry for this and want to fix underlying error.'))
+		print(_('We are very sorry for this and want to fix the underlying error.'))
 		print(_('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
 		print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
@@ -280,7 +283,12 @@ def main():
 		if not os.path.exists(profiling_dir):
 			os.makedirs(profiling_dir)
 
-		outfilename = os.path.join(profiling_dir, time.strftime('%Y-%m-%d_%H-%M-%S') + '.prof')
+		pattern = os.path.join(profiling_dir, time.strftime('%Y-%m-%d') + '.%02d.prof')
+		num = 1
+		while os.path.exists(pattern % num):
+			num += 1
+
+		outfilename = pattern % num
 		print('Starting in profile mode. Writing output to: %s' % outfilename)
 		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
 		print('Program ended. Profiling output: %s' % outfilename)
@@ -352,6 +360,17 @@ def setup_debugging(options):
 
 		log_sys_info()
 
+def check_fife_revision(fife):
+	revision = fife.getRevision() if hasattr(fife, 'getRevision') else 0
+	version = fife.getVersion() if hasattr(fife, 'getVersion') else 'unknown'
+
+	from horizons.constants import VERSION
+	if VERSION.MIN_FIFE_REVISION > revision:
+		log().warning('Unsupported fife revision %d (version %s); at least %d required',
+		              revision, version, VERSION.MIN_FIFE_REVISION)
+	else:
+		log().debug('Using fife revision %d (version %s); at least %d required', revision,
+		            version, VERSION.MIN_FIFE_REVISION)
 
 """
 Functions controlling the program environment.
@@ -368,7 +387,8 @@ def setup_fife(args):
 			log_paths()
 			err_str = str(e)
 			if err_str == 'DLL load failed: %1 is not a valid Win32 application.':
-				show_error_message('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
+				show_error_message('Unsupported Python version',
+				                   '32 bit FIFE requires 32 bit (x86) Python 2.')
 			else:
 				show_error_message('Failed to load FIFE', err_str)
 		log().debug('Failed to load FIFE from default paths: %s', e)
@@ -377,6 +397,7 @@ def setup_fife(args):
 		assert False
 
 	log().debug('Using fife: %s', fife)
+	check_fife_revision(fife)
 
 	for arg in ['--fife-in-library-path', '--fife-path']:
 		if arg in args:
@@ -411,7 +432,7 @@ def get_fife_path(fife_custom_path=None):
 	if fife_custom_path is not None:
 		_paths.append(fife_custom_path)
 		if not check_path_for_fife(fife_custom_path):
-			print('Specified invalid FIFE path: %s' %  fife_custom_path)
+			print('Specified invalid FIFE path: %s' % fife_custom_path)
 			exit(1)
 	else:
 		# no command line parameter, now check for config
@@ -506,14 +527,14 @@ def log_paths():
 	"""Prints debug info about paths to log"""
 	log().debug("SYS.PATH: %s", sys.path)
 	log().debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
-	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
-	log().debug("PATH: %s", os.environ['PATH'])
+	log().debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
+	log().debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
 	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
 
 def log_sys_info():
 	"""Prints debug info about the current system to log"""
 	log().debug("Python version: %s", sys.version_info)
-	log().debug("Plattform: %s", platform.platform())
+	log().debug("Platform: %s", platform.platform())
 
 if __name__ == '__main__':
 	main()

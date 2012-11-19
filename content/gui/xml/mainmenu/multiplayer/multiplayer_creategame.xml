@@ -10,8 +10,6 @@
 		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
 
 	<!--
-		<RadioButton position="22,50" name="showCampaign" 
-			text="Campaign maps" size="32,32" group="gametype" />
 		<RadioButton position="22,80" name="showRandom" 
 			text="Random maps" size="32,32" group="gametype" />
 		<RadioButton position="22,110" name="showMaps" 
@@ -22,7 +20,6 @@
 
 		<VBox position="50,250">
 	<!-- Later, this box will contain more settings depending on the chosen mode like:
-	CAMPAIGN MAPS:	not much, maybe difficulty and en-/disable saves
 	RANDOM MAPS:	map size, island size, how much resources 
 		(factor of maybe 0.5 to 2.0 times the standard), available climates & fertilities,
 			which AI (trader / peoples / pirates /  ...), catastrophes, much more (-,
