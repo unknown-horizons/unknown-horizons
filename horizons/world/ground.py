@@ -45,8 +45,10 @@ class SurfaceTile(object):
 		self.object = None
 		self.session = session
 
+		self._tile_set_id = horizons.globals.db.get_random_tile_set(self.id)
+
 		layer = session.view.layers[self.layer]
-		self._instance = layer.createInstance(self._object,
+		self._instance = layer.createInstance(self._objects[self._tile_set_id],
 		                                      fife.ModelCoordinate(int(x), int(y), 0),
 		                                      "")
 		fife.InstanceVisual.create(self._instance)
@@ -118,7 +120,6 @@ class GroundClass(type):
 		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)
 		if id != -1	:
-			self._tile_set_id = db.get_random_tile_set(id)
 			self._loadObject(db)
 
 	def __new__(self, db, id, shape):
@@ -135,24 +136,32 @@ class GroundClass(type):
 
 	def _loadObject(cls, db):
 		"""Loads the ground object from the db (animations, etc)"""
-		cls_name = '%d-%s' % (cls.id, cls.shape)
-		cls.log.debug('Loading ground %s', cls_name)
-		try:
-			cls._object = horizons.globals.fife.engine.getModel().createObject(cls_name, 'ground')
-		except RuntimeError:
-			cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
-			cls._object = horizons.globals.fife.engine.getModel().getObject(cls_name, 'ground')
-			return
-
-		fife.ObjectVisual.create(cls._object)
-		visual = cls._object.get2dGfxVisual()
-
+		cls._objects = {}
 		tile_sets = TileSetLoader.get_sets()
-		tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id)[0][0]
-		for rotation, data in tile_sets[tile_set_id][cls.shape].iteritems():
-			assert len(data) == 1, 'Currently only static tiles are supported'
-			img = horizons.globals.fife.animationloader.load_image(data.keys()[0], str(tile_set_id), str(cls.shape), str(rotation))
-			visual.addStaticImage(rotation, img.getHandle())
+		tile_set_ids = db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id)
+		for (tile_set_id, ) in tile_set_ids:
+
+			cls_name = '%d-%s' % (cls.id, cls.shape)
+			cls.log.debug('Loading ground %s', cls_name)
+			_object = None
+			try:
+				_object = horizons.globals.fife.engine.getModel().createObject(cls_name, 'ground_' + str(tile_set_id))
+			except RuntimeError:
+				cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
+				_object = horizons.globals.fife.engine.getModel().getObject(cls_name, 'ground_' + str(tile_set_id))
+				return
+
+
+			fife.ObjectVisual.create(_object)
+			visual = _object.get2dGfxVisual()
+
+			for rotation, data in tile_sets[tile_set_id][cls.shape].iteritems():
+				assert len(data) == 1, 'Currently only static tiles are supported'
+				img = horizons.globals.fife.animationloader.load_image(data.keys()[0], str(tile_set_id), str(cls.shape), str(rotation))
+				visual.addStaticImage(rotation, img.getHandle())
+
+			# Save the object
+			cls._objects[tile_set_id] = _object
 
 
 class MapPreviewTile(object):
