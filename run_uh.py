@@ -38,6 +38,7 @@ import os.path
 import gettext
 import time
 import functools
+import itertools
 import locale
 import logging
 import logging.config
@@ -426,7 +427,6 @@ def get_fife_path(fife_custom_path=None):
 	"""Returns absolute path to FIFE engine. Calls sys.exit() if it can't be found."""
 	# assemble a list of paths where FIFE could be located at
 	_paths = []
-	# check if there is a config file (has to be called config.py)
 
 	# first check for commandline arg
 	if fife_custom_path is not None:
@@ -435,19 +435,11 @@ def get_fife_path(fife_custom_path=None):
 			print('Specified invalid FIFE path: %s' % fife_custom_path)
 			exit(1)
 	else:
-		# no command line parameter, now check for config
-		try:
-			import config
-			_paths.append(config.fife_path)
-			if not check_path_for_fife(config.fife_path):
-				print('Invalid fife_path in config.py: %s' % config.fife_path)
-				exit(1)
-		except (ImportError, AttributeError):
-		# no config, try frequently used paths
-			_paths += [os.path.join(a, b, c) for
-			           a in ('.', '..', '../..') for
-			           b in ('.', 'fife', 'FIFE', 'Fife') for
-			           c in ('.', 'trunk')]
+		# try frequently used paths
+		a = ('.', '..', os.path.join('..', '..'))
+		b = ('.', 'fife', 'FIFE', 'Fife')
+		c = ('.', 'trunk')
+		_paths += itertools.product(a, b, c)
 
 	fife_path = None
 	for p in _paths:
