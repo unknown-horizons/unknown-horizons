@@ -492,16 +492,7 @@ def restart_with_fife(fife_custom_path=None):
 	if platform.system() == 'Windows':
 		_update_environment_variable('PATH', [fife_path])
 
-	# FIXME is this still needed? if yes, where?
-	# FIXME is this also needed on windows?
-	# update LD_LIBRARY_PATH or PATH with some of FIFE's externals
-	fife_externals = (
-		os.path.join('ext', 'minizip'),
-		os.path.join('ext', 'install', 'lib'))
-
 	lib_env_variable = 'PATH' if platform.system() == 'Windows' else 'LD_LIBRARY_PATH'
-	_update_environment_variable(lib_env_variable,
-		[os.path.join(fife_path, fe) for fe in fife_externals])
 
 	log().debug("Need to restart with proper %s ..." % lib_env_variable)
 	log_paths()
