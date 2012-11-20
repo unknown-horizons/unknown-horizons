@@ -136,6 +136,8 @@ def get_option_parser():
 	             help="Loads the last quicksave.")
 	start_uh.add_option("--edit-map", dest="edit_map", metavar="<map>",
 	             help="Edit map <map>.")
+	start_uh.add_option("--edit-game-map", dest="edit_game_map", metavar="<game>",
+	             help="Edit the map from the saved game <game>.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
