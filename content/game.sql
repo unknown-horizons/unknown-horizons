@@ -199,6 +199,8 @@ INSERT INTO "tile_set" VALUES(3, 'ts_grass0');
 INSERT INTO "tile_set" VALUES(3, 'ts_grass1');
 INSERT INTO "tile_set" VALUES(3, 'ts_grass2');
 INSERT INTO "tile_set" VALUES(3, 'ts_grass3');
+INSERT INTO "tile_set" VALUES(3, 'ts_grass4');
+INSERT INTO "tile_set" VALUES(3, 'ts_grass5');
 INSERT INTO "tile_set" VALUES(4, 'ts_grass-beach0');
 INSERT INTO "tile_set" VALUES(5, 'ts_beach-shallow0');
 INSERT INTO "tile_set" VALUES(6, 'ts_beach0');
