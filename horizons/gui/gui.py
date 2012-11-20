@@ -821,7 +821,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		popup = self.build_popup(headline, message, size=2, show_cancel_button=True)
 		update_hotkey_info(action, keyname)
 		keybox = pychan.widgets.ScrollArea()
-		listbox = pychan.widgets.ListBox()
+		listbox = pychan.widgets.ListBox(is_focusable=False)
 		keybox.max_size = listbox.max_size = \
 		keybox.min_size = listbox.min_size = \
 		keybox.size = listbox.size = (200, 200)
