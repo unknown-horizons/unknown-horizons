@@ -76,7 +76,8 @@ class StatusIconManager(AbstractIconManager):
 		# Sort, make sure highest icon is at top
 		self.icons[icon_instance] = sorted(self.icons[icon_instance], key=StatusIcon.get_sorting_key(), reverse=True)
 		# Now render the most important one
-		self.__render_status(icon_instance, self.icons[icon_instance][0])
+		group = self.get_renderer_group_name(icon_instance)
+		self.render_icon(icon_instance, group, self.icons[icon_instance][0])
 
 		if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
 			self.on_hover_instances_changed( HoverInstancesChanged(self, [self.tooltip_instance]) )
@@ -103,7 +104,8 @@ class StatusIconManager(AbstractIconManager):
 						self.remove_icon(icon_instance)
 					else:
 						# Render next icon
-						self.__render_status(icon_instance, self.icons[icon_instance][0])
+						group = self.get_renderer_group_name(icon_instance)
+						self.render_icon(icon_instance, group, self.icons[icon_instance][0])
 					break
 
 			if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
@@ -115,22 +117,6 @@ class StatusIconManager(AbstractIconManager):
 		"""
 		super(StatusIconManager, self).remove_icon(self.get_renderer_group_name(instance))
 		del self.icons[instance]
-
-	def __render_status(self, instance, status):
-		status_string = self.get_renderer_group_name(instance)
-		loc = super(StatusIconManager, self).pre_render_icon(instance, status_string)
-
-		# pixel-offset on screen (will be constant across zoom-levels)
-		rel = fife.Point(0, -30)
-
-		node = fife.RendererNode(loc, rel)
-
-		try: # to load an animation
-			anim = horizons.globals.fife.animationloader.loadResource(status.icon)
-			self.renderer.addAnimation(status_string, node, anim)
-		except ValueError:
-			img = horizons.globals.fife.imagemanager.load(status.icon)
-			self.renderer.addImage(status_string, node, img)
 
 	def on_hover_instances_changed(self, msg):
 		"""Check if we need to display a tooltip"""

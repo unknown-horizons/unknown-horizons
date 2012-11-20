@@ -20,6 +20,9 @@
 # ###################################################
 
 import operator
+import horizons.globals
+
+from fife import fife
 
 """Classes used for StatusIcon.
 
@@ -58,6 +61,18 @@ class StatusIcon(object):
 		mylist.sort(key=mylist.get_sorting_key())
 		"""
 		return operator.attrgetter("priority")
+
+	def render(self, renderer, group, loc):
+		"""Renders the Icon on the specified location"""
+		rel = fife.Point(0, -30)
+		node = fife.RendererNode(loc, rel)
+
+		try: # load the animation or the image
+			anim = horizons.globals.fife.animationloader.loadResource(self.icon)
+			renderer.addAnimation(group, node, anim)
+		except ValueError:
+			img = horizons.globals.fife.imagemanager.load(self.icon)
+			renderer.addImage(group, node, img)
 
 	@property
 	def helptext(self):
