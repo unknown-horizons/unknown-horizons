@@ -49,7 +49,7 @@ class BuySellInventory(Inventory):
 		       self._limits != limits or self._selling != selling
 
 	def _draw(self, vbox, current_hbox, index=0):
-		"""Draws the inventory. """
+		"""Draws the inventory."""
 		for resid, limit in sorted(self._limits.iteritems()):
 			if self._selling:
 				amount = max(0, self._inventory[resid] - limit)
@@ -64,7 +64,7 @@ class BuySellInventory(Inventory):
 
 			if index % self.items_per_line == self.items_per_line - 1:
 				vbox.addChild(current_hbox)
-				current_hbox = HBox(padding = 0)
+				current_hbox = HBox(padding=0)
 			index += 1
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
