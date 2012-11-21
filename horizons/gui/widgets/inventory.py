@@ -106,13 +106,14 @@ class Inventory(Container):
 			# limited number of slots. We have to switch unused slots with newly added ones on overflow
 
 			while len(self._res_order) + len(new_res) > self._inventory.slotnum:
-					# search empty slot
-					if not self._inventory[self._res_order[i]]:
-						# insert new res here
-						self._res_order[i] = new_res.pop(0)
-						if not new_res:
-							break # all done
 				for i in xrange(self._inventory.slotnum):
+					if self._inventory[self._res_order[i]]:
+						# search empty slot
+						continue
+					# insert new res here
+					self._res_order[i] = new_res.pop(0)
+					if not new_res:
+						break # all done
 
 		# add remaining slots for slotstorage or just add it without consideration for other storage kinds
 		self._res_order += new_res
