@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.widgets import HBox
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets.inventory import Inventory
@@ -41,7 +41,7 @@ class BuySellInventory(Inventory):
 			self._inventory = inventory
 			self._limits = limits
 			self._selling = selling
-			self.__icon = Icon(image="content/gui/icons/ship/civil_16.png")
+
 		self.update()
 
 	def init_needed(self, inventory, limits, selling):
@@ -68,10 +68,3 @@ class BuySellInventory(Inventory):
 			index += 1
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
-
-		label = Label()
-		#xgettext:python-format
-		label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
-		label.position = (110, 150)
-		self.__icon.position = (90, 150)
-		self.addChildren(label, self.__icon)
