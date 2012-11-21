@@ -39,6 +39,8 @@ class BuySellInventory(Inventory):
 			self._inited = True
 			self.db = db
 			self._inventory = inventory
+
+			# Specific to BuySellInventory
 			self._limits = limits
 			self._selling = selling
 

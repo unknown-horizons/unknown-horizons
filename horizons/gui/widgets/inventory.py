@@ -64,9 +64,11 @@ class Inventory(Container):
 		if self.init_needed(inventory):
 			# this inits the logic of the inventory. @see __init__().
 			self._inited = True
-			self.ordinal = ordinal
 			self.db = db
 			self._inventory = inventory
+
+			# specific to Inventory
+			self.ordinal = ordinal
 			self._res_order = sorted(self._inventory.iterslots())
 			self.legend = Label(name="legend")
 			self.__icon = Icon(name="legend_icon")
