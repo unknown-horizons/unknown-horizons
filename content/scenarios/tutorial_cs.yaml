@@ -11,17 +11,16 @@ description: "V\xFDuka:\nPostavte svoj\xED prvn\xED osadu a nau\u010Dte se hr\xE
 difficulty: "V\xFDuka"
 events:
 - actions:
-  - arguments: ["Postavte na pob\u0159e\u017E\xED Obchodn\xED p\u0159\xEDstav, aby\
-        \ byl snadno dostupn\xFD ostatn\xEDm lod\xEDm, jako je t\u0159eba Svobodn\xFD\
-        \ obchodn\xEDk."]
-    type: message
   - arguments:
+    - &id001 [Message, 'Build a warehouse at the coast, so it is easily accessible
+        for other ships like the Free Trader.']
     - ''
-    - - Gallery
+    - &id002
+      - Gallery
       - [content/gfx/uh.png]
-    - [Pagebreak]
+    - &id003 [Pagebreak]
     - [Headline, "V\xEDtej v Unknown Horizons!"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id004 [Image, content/gui/images/background/hr.png]
     - ''
     - "Toto je V\xE1\u0161 Lodn\xED den\xEDk. Zde najdete v\u0161echny d\u016Fle\u017E\
       it\xE9 informace. Kr\xE1tk\xE9 upozorn\u011Bn\xED na ka\u017Ed\xFD \xFAkol bude\
@@ -31,27 +30,30 @@ events:
     - "Pokud tento den\xEDk zav\u0159ete, m\u016F\u017Eete ho znovu otev\u0159\xED\
       t pomoc\xED ikony \"Lodn\xED den\xEDk\" v prav\xE9m horn\xEDm rohu (pod minimapou\
       \ s listinou a brkem)."
-    - - Gallery
+    - &id005
+      - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
     - "\nPro zobrazen\xED Va\u0161eho prvn\xEDho \xFAkolu klikn\u011Bte na tla\u010D\
       \xEDtko \"P\u0159e\u010D\xEDst dal\u0161\xED polo\u017Eku\" v panelu navigace!\
       \ Vypad\xE1 to takhle:"
-    - - Gallery
+    - &id006
+      - Gallery
       - [content/gui/images/buttons/parrow_right.png]
-    - [Pagebreak]
+    - &id007 [Pagebreak]
     - "\nPokud m\xE1te jak\xE9koliv n\xE1vrhy na lep\u0161\xED formulace nebo t\xE9\
       mata, kter\xE1 by m\u011Bla b\xFDt vysv\u011Btlene anebo je n\u011Bkde chyba,\
       \ napi\u0161te n\xE1m a my se pokus\xEDme o n\xE1pravu."
     - "\nNav\u0161tivte n\xE1s na www.unknown-horizons.org a kontaktujte n\xE1s!"
     - "A nyn\xED poj\u010Fme hr\xE1t."
-    - [Pagebreak]
+    - &id008 [Pagebreak]
     - [Headline, "NOV\xDD \xDAKOL: OS\xCDDLIT OSTROV"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id009 [Image, content/gui/images/background/hr.png]
     - "Pro pohyb lod\xED j\xED nejprve vyberte pomoc\xED lev\xE9ho tla\u010D\xEDtka\
       \ my\u0161i a prav\xFDm tla\u010D\xEDtkem zadejte m\xEDsto, kam chcete plout."
     - "Jakmile budete v bl\xEDzkosti pob\u0159e\u017E\xED, tla\u010D\xEDtko kotvy,\
       \ kter\xE9 vid\xEDte na kart\u011B p\u0159ehledu, bude aktivn\xED."
-    - - Gallery
+    - &id010
+      - Gallery
       - [content/gui/icons/ship/anchor.png]
     - "To nazna\u010Duje, \u017Ee zde m\u016F\u017Eete postavit Obchodn\xED p\u0159\
       \xEDstav stiskem tohoto tla\u010D\xEDtka (nazvan\xE9 \"Postavit osadu\")."
@@ -61,15 +63,17 @@ events:
       i prvn\xED budovu."
     - "\n\xDAKOL: Postavte Obchodn\xED p\u0159\xEDstav na pob\u0159e\u017E\xED."
     type: logbook
-  - arguments: [tutStepDone, 16]
+  - arguments: [tutorial_progress, 16]
     type: set_var
   conditions:
   - arguments: [0]
     type: time_passed
 - actions:
   - arguments:
+    - &id011 [Message, Build a lumberjack and connect it to the warehouse using a
+        trail.]
     - [Headline, "NOV\xDD \xDAKOL: POSTAVTE D\u0158EVORUBCE"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id012 [Image, content/gui/images/background/hr.png]
     - "Stavebn\xED materi\xE1l se z lodi vylo\u017E\xED automaticky. Nyn\xED m\u016F\
       \u017Eete postavit n\u011Bkolik z\xE1kladn\xEDch budov."
     - "Za\u010Dneme se stavbou d\u0159evorubce."
@@ -80,12 +84,13 @@ events:
       \ svou lo\u010Fku."
     - "Abyste postavili d\u0159evorubce, otev\u0159ete stavebn\xED menu kliknut\xED\
       m na velkou ikonu pod minimapou nebo stisknut\xEDm kl\xE1vesy B."
-    - - Gallery
+    - &id013
+      - Gallery
       - [content/gui/icons/widgets/minimap/build.png]
     - "Stavebn\xED menu je rozd\u011Bleno podle jednotliv\xFDch \xFArovn\xED."
     - "Nyn\xED se nach\xE1z\xEDte na prvn\xED \xFArovni (n\xE1mo\u0159nick\xE1 \xFA\
       rove\u0148), proto m\xE1te k dispozici pouze z\xE1kladn\xED budovy."
-    - [Pagebreak]
+    - &id014 [Pagebreak]
     - "\nJak se bude Va\u0161e civilizace rozv\xEDjet, budete z\xEDsk\xE1vat slo\u017E\
       it\u011Bj\u0161\xED a slo\u017Eit\u011Bj\u0161\xED budovy."
     - "Nyn\xED vyberte d\u0159evorubce v sekci \"Podniky\" a postavte ho v oblasti,\
@@ -99,30 +104,29 @@ events:
       \ Obchodn\xED p\u0159\xEDstav (nebo skladi\u0161t\u011B) a d\u0159evorubce."
     - "\n\xDAKOL: Postavte d\u0159evorubce v lesnat\xE9 oblasti a propojte ho cestou."
     - "Sledujte jak nosi\u010D odnese Va\u0161e prvn\xED vyprodukovan\xE9 prkna."
-    - - Gallery
+    - &id015
+      - Gallery
       - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png,
-        content/gui/icons/resources/50/004.png]
+        content/gui/icons/resources/32/004.png]
     type: logbook
-  - arguments: ["Postavte d\u0159evorubce a spojte ho s Obchodn\xEDm p\u0159\xEDstavem\
-        \ pomoc\xED stezky."]
-    type: message
-  - arguments: [tutStepDone, 19]
+  - arguments: [tutorial_progress, 19]
     type: set_var
   conditions:
-  - arguments: [4, 9]
+  - arguments: [RES.BOARDS, 9]
     type: settlement_res_stored_greater
-  - arguments: [5, 9]
+  - arguments: [RES.FOOD, 9]
     type: settlement_res_stored_greater
-  - arguments: [6, 9]
+  - arguments: [RES.TOOLS, 9]
     type: settlement_res_stored_greater
-  - arguments: [tutStepDone, 15]
+  - arguments: [tutorial_progress, 15]
     type: var_gt
-  - arguments: [tutStepDone, 19]
+  - arguments: [tutorial_progress, 19]
     type: var_lt
 - actions:
   - arguments:
+    - &id016 [Message, Build a hunter and a fisher. Connect them to the warehouse.]
     - [Headline, "NOV\xDD \xDAKOL: Z\xC1SOBOV\xC1N\xCD J\xCDDLEM"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id017 [Image, content/gui/images/background/hr.png]
     - "D\xE1le budete muset postavit n\u011Bkter\xE9 z\xE1kladn\xED budovy, kter\xE9\
       \ budou produkovat j\xEDdlo, proto\u017Ee v\u0161ichni lid\xE9 (a n\xE1mo\u0159\
       n\xEDci obzvl\xE1\u0161t\u011B) jsou velmi hladov\xED."
@@ -135,7 +139,7 @@ events:
       \ rychle nebo se um\xED dob\u0159e schovat."
     - "Z\xE1v\u011Br: Lovec nen\xED p\u0159\xEDli\u0161 spolehliv\xFD zdroj potravy,\
       \ pokud pot\u0159ebujete nep\u0159eru\u0161ovan\xE9 z\xE1sobov\xE1n\xED."
-    - [Pagebreak]
+    - &id018 [Pagebreak]
     - "\nRyb\xE1\u0159 pot\u0159ebuje budovu na pob\u0159e\u017E\xED a Obchodn\xED\
       \ p\u0159\xEDstav a hejno ryb v dosahu."
     - "Postav\xED si malou lo\u010Fku a bude chytat ryby."
@@ -147,26 +151,25 @@ events:
     - "\n\xDAKOL: Postavte lovce a ryb\xE1\u0159e."
     - "Nezapome\u0148te je p\u0159ipojit k Va\u0161emu Obchodn\xEDmu p\u0159\xEDstavu\
       \ pomoc\xED stezek!"
-    - - Gallery
+    - &id019
+      - Gallery
       - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png,
-        content/gui/icons/resources/50/005.png]
+        content/gui/icons/resources/32/005.png]
     type: logbook
-  - arguments: ["Postavte lovce a ryb\xE1\u0159e. Spojte je s budovou Obchodn\xED\
-        ho p\u0159\xEDstavu."]
-    type: message
-  - arguments: [tutStepDone, 22]
+  - arguments: [tutorial_progress, 22]
     type: set_var
   conditions:
-  - arguments: [8, 0]
+  - arguments: [BUILDINGS.LUMBERJACK, 0]
     type: buildings_connected_to_warehouse_gt
-  - arguments: [tutStepDone, 18]
+  - arguments: [tutorial_progress, 18]
     type: var_gt
-  - arguments: [tutStepDone, 22]
+  - arguments: [tutorial_progress, 22]
     type: var_lt
 - actions:
   - arguments:
+    - &id020 [Message, Build a main square. Choose an area without many economy buildings.]
     - [Headline, "NOV\xDD \xDAKOL: TR\u017DI\u0160T\u011A"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id021 [Image, content/gui/images/background/hr.png]
     - "Va\u0161i obyvatel\xE9 pot\u0159ebuj\xED tr\u017Ei\u0161t\u011B, kde si mohou\
       \ vyzvednout zbo\u017E\xED."
     - "To znamen\xE1, \u017Ee mus\xED m\xEDt spojen\xED pomoc\xED stezky ze sv\xFD\
@@ -174,7 +177,8 @@ events:
     - "V\u0161echno zbo\u017E\xED v Obchodn\xEDm p\u0159\xEDstavu je dostupn\xE9 na\
       \ tomto \"tr\u017Ei\u0161ti\", tak\u017Ee obyvatel\xE9 nemus\xED chodit k ryb\xE1\
       \u0159i nebo a\u017E do Obchodn\xEDho p\u0159\xEDstavu."
-    - - Gallery
+    - &id022
+      - Gallery
       - [content/gui/icons/buildmenu/004_h.png]
     - "M\u011Bli byste se vyvarovat v\xFDstavby stan\u016F p\u0159\xEDli\u0161 bl\xED\
       zko Va\u0161emu d\u0159evorubci,proto\u017Ee postaven\xEDm stan\u016F budou\
@@ -183,9 +187,10 @@ events:
       \ nepot\u0159ebujete vybudovat cestu mezi tr\u017Ei\u0161t\u011Bm a nap\u0159\
       . d\u0159evorubeck\xFDm stanem."
     - "\n\xDAKOL: Postavte tr\u017Ei\u0161t\u011B."
-    - [Pagebreak]
+    - &id023 [Pagebreak]
     - "\nNyn\xED se bl\xED\u017Ee pod\xEDvejme na tr\u017Ei\u0161t\u011B."
-    - - Gallery
+    - &id024
+      - Gallery
       - [content/gui/icons/tabwidget/warehouse/account_a.png]
     - "V z\xE1lo\u017Ece \"\xDA\u010Det\" m\u016F\u017Eete vid\u011Bt p\u0159ehled\
       \ financ\xED  Va\u0161eho ostrova, kter\xFD zahrnuje v\u0161echny platby, kter\xE9\
@@ -193,7 +198,8 @@ events:
     - "Polo\u017Eky \"N\xE1kup\" a \"Prodej\" ukazuj\xED Va\u0161i obchodn\xED bilanci\
       \ a budou vysv\u011Btleny pozd\u011Bji."
     - "Pokud je Va\u0161e bilance kladn\xE1, vykazujete zisk."
-    - - Gallery
+    - &id025
+      - Gallery
       - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
     - "D\xE1le jsou zde z\xE1lo\u017Eky odpov\xEDdaj\xEDc\xED jednotliv\xFDm \xFA\
       rovn\xEDm. Zde m\u016F\u017Eete sledovat statistiky o Va\u0161ich obyvatel\xED\
@@ -201,31 +207,30 @@ events:
       \ obyvatel\u016Fm na dan\xE9 \xFArovni postoupit do vy\u0161\u0161\xED \xFA\
       rovn\u011B."
     type: logbook
-  - arguments: ["Postavte tr\u017Ei\u0161t\u011B. Vyberte oblast, kde se nenach\xE1\
-        z\xED mnoho produk\u010Dn\xEDch budov."]
-    type: message
-  - arguments: [tutStepDone, 25]
+  - arguments: [tutorial_progress, 25]
     type: set_var
   conditions:
-  - arguments: [9, 0]
+  - arguments: [BUILDINGS.HUNTER, 0]
     type: building_num_of_type_greater
-  - arguments: [11, 0]
+  - arguments: [BUILDINGS.FISHER, 0]
     type: building_num_of_type_greater
-  - arguments: [9, 0]
+  - arguments: [BUILDINGS.HUNTER, 0]
     type: buildings_connected_to_warehouse_gt
-  - arguments: [11, 0]
+  - arguments: [BUILDINGS.FISHER, 0]
     type: buildings_connected_to_warehouse_gt
-  - arguments: [tutStepDone, 21]
+  - arguments: [tutorial_progress, 21]
     type: var_gt
-  - arguments: [tutStepDone, 25]
+  - arguments: [tutorial_progress, 25]
     type: var_lt
 - actions:
   - arguments:
+    - &id026 [Message, Build a tent and connect it to the main square.]
     - [Headline, "NOV\xDD \xDAKOL: OBYTN\xC9 BUDOVY"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id027 [Image, content/gui/images/background/hr.png]
     - "Osadn\xEDci cht\u011Bj\xED m\xEDt st\u0159echu nad hlavou, jinak je ani nenapadne\
       \ usadit se ve Va\u0161em m\u011Bst\u011B! Pot\u0159ebujete zajistit jim stany."
-    - - Gallery
+    - &id028
+      - Gallery
       - [content/gui/icons/buildmenu/003_h.png]
     - "Stany jsou z\xE1kladn\xEDmi obytn\xFDmi budovami. Va\u0161i obyvatel\xE9 je\
       \ budou vylep\u0161ovat a\u017E dos\xE1hnou vy\u0161\u0161\xED \xFArovn\u011B\
@@ -239,47 +244,48 @@ events:
       TASK: Build a tent and connect it to the main square. Tents dont need to be
       connected to any of the companies.'
     type: logbook
-  - arguments: ["Postavte stan a propojte jej s tr\u017Ei\u0161t\u011Bm."]
-    type: message
-  - arguments: [tutStepDone, 28]
+  - arguments: [tutorial_progress, 28]
     type: set_var
   conditions:
-  - arguments: [4, 0]
+  - arguments: [BUILDINGS.MAIN_SQUARE, 0]
     type: building_num_of_type_greater
-  - arguments: [tutStepDone, 24]
+  - arguments: [tutorial_progress, 24]
     type: var_gt
-  - arguments: [tutStepDone, 28]
-    type: var_lt
-- actions:
-  - arguments: ["\nNyn\xED se poj\u010Fme pod\xEDvat na p\u0159ehledovou z\xE1lo\u017E\
-        ku pro stany.", "M\u016F\u017Eete zde vid\u011Bt:\n* spokojenost obyvatel,\n\
-        * dan\u011B, kter\xE9 plat\xED\n* zdroje, kter\xE9 po\u017Eaduj\xED.", "Pokud\
-        \ budou jejich po\u017Eadavky spln\u011Bny, \u0161t\u011Bst\xED a tak\xE9\
-        \ p\u0159\xEDjem z dan\xED vzrostou.", "Pokud nebudou spln\u011Bny, \u0161\
-        t\u011Bst\xED a p\u0159\xEDjem poklesne. Po ur\u010Dit\xE9 dob\u011B se obyvatel\xE9\
-        \ stanou nevrl\xFDmi, opust\xED Va\u0161i vesnici a zanechaj\xED za sebou\
-        \ rozpadaj\xEDc\xED se trosky.", "V\u0161imn\u011Bte si, \u017Ee i zde m\u016F\
-        \u017Eete zm\u011Bnit nastaven\xED celkov\xE9 dan\u011B.", "\n\xDAKOL: Postavte\
-        \ alespo\u0148 t\u0159i dal\u0161\xED stany.", "\nTIP: P\u0159idr\u017Een\xED\
-        \ kl\xE1vesy SHIFT V\xE1m zjednodu\u0161\xED hromadnou v\xFDstavbu budov stejn\xE9\
-        ho druhu."]
-    type: logbook
-  - arguments: ["Postavte alespo\u0148 t\u0159i dal\u0161\xED stany a propojte je\
-        \ s tr\u017Ei\u0161t\u011Bm."]
-    type: message
-  - arguments: [tutStepDone, 31]
-    type: set_var
-  conditions:
-  - arguments: [3, 4, 0]
-    type: buildings_connected_to_building_gt
-  - arguments: [tutStepDone, 27]
-    type: var_gt
-  - arguments: [tutStepDone, 31]
+  - arguments: [tutorial_progress, 28]
     type: var_lt
 - actions:
   - arguments:
+    - &id029 [Message, Build at least three additional tents and connect them to the
+        main square.]
+    - "\nNyn\xED se poj\u010Fme pod\xEDvat na p\u0159ehledovou z\xE1lo\u017Eku pro\
+      \ stany."
+    - "M\u016F\u017Eete zde vid\u011Bt:\n* spokojenost obyvatel,\n* dan\u011B, kter\xE9\
+      \ plat\xED\n* zdroje, kter\xE9 po\u017Eaduj\xED."
+    - "Pokud budou jejich po\u017Eadavky spln\u011Bny, \u0161t\u011Bst\xED a tak\xE9\
+      \ p\u0159\xEDjem z dan\xED vzrostou."
+    - "Pokud nebudou spln\u011Bny, \u0161t\u011Bst\xED a p\u0159\xEDjem poklesne.\
+      \ Po ur\u010Dit\xE9 dob\u011B se obyvatel\xE9 stanou nevrl\xFDmi, opust\xED\
+      \ Va\u0161i vesnici a zanechaj\xED za sebou rozpadaj\xEDc\xED se trosky."
+    - "V\u0161imn\u011Bte si, \u017Ee i zde m\u016F\u017Eete zm\u011Bnit nastaven\xED\
+      \ celkov\xE9 dan\u011B."
+    - "\n\xDAKOL: Postavte alespo\u0148 t\u0159i dal\u0161\xED stany."
+    - "\nTIP: P\u0159idr\u017Een\xED kl\xE1vesy SHIFT V\xE1m zjednodu\u0161\xED hromadnou\
+      \ v\xFDstavbu budov stejn\xE9ho druhu."
+    type: logbook
+  - arguments: [tutorial_progress, 31]
+    type: set_var
+  conditions:
+  - arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.MAIN_SQUARE, 0]
+    type: buildings_connected_to_building_gt
+  - arguments: [tutorial_progress, 27]
+    type: var_gt
+  - arguments: [tutorial_progress, 31]
+    type: var_lt
+- actions:
+  - arguments:
+    - &id030 [Message, Build a signal fire at the coast close to your warehouse.]
     - [Headline, "NOV\xDD \xDAKOL: POSTAVTE SIGN\xC1LN\xCD OHE\u0147"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id031 [Image, content/gui/images/background/hr.png]
     - "Vid\xEDte lod\u011B, kter\xE9 \u010Das od \u010Dasu projedou okolo Va\u0161\
       eho ostrova? Tyto lod\u011B pat\u0159\xED Svobodn\xE9mu obchodn\xEDkovi, jednomu\
       \ z prvn\xEDch osadn\xEDk\u016F v tomto souostrov\xED."
@@ -292,19 +298,21 @@ events:
     - "Norm\xE1ln\u011B obchodn\xED lod\u011B pouze proplouvaj\xED okolo a hledaj\xED\
       \ obchodn\xED p\u0159\xEDle\u017Eitosti, ale my m\u016F\u017Eeme v\u011Bci trochu\
       \ urychlit."
-    - - Gallery
+    - &id032
+      - Gallery
       - [content/gui/icons/buildmenu/006_h.png]
     - "Pro tento \xFA\u010Del postavte sign\xE1ln\xED ohe\u0148 na pob\u0159e\u017E\
       \xED pobl\xED\u017E Obchodn\xEDho p\u0159\xEDstavu. Tak uk\xE1\u017Eete lod\xED\
       m cestu do Va\u0161\xED osady."
     - "Aby mohl sign\xE1ln\xED ohe\u0148 p\u0159il\xE1kat lod\u011B, mus\xED pokr\xFD\
       vat oblast, kterou lod\u011B proj\xED\u017Ed\u011Bj\xED."
-    - [Pagebreak]
+    - &id033 [Pagebreak]
     - "\nPokud by obchodn\xEDk pl\xE1noval proplout okolo, po t\xE9to upout\xE1vce\
       \ zakotv\xED a nav\u0161t\xEDv\xED Obchodn\xED p\u0159\xEDstav."
     - "Zak\xE1zky m\u016F\u017Eete nab\xEDzet pomoc\xED z\xE1lo\u017Eky \"Prodej/N\xE1\
       kup\" v Obchodn\xEDm p\u0159\xEDstavu. "
-    - - Gallery
+    - &id034
+      - Gallery
       - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
     - "V \xFArovni \"n\xE1mo\u0159n\xEDci\" m\xE1te k dispozici t\u0159i obchodn\xED\
       \ sloty."
@@ -316,22 +324,21 @@ events:
     - "\n\xDAKOL: Postavte sign\xE1ln\xED ohe\u0148 na pob\u0159e\u017E\xED v bl\xED\
       zkosti Obchodn\xEDho p\u0159\xEDstavu."
     type: logbook
-  - arguments: ["Postavte sign\xE1ln\xED ohe\u0148 na pob\u0159e\u017E\xED v bl\xED\
-        zkosti Obchodn\xEDho p\u0159\xEDstavu."]
-    type: message
-  - arguments: [tutStepDone, 34]
+  - arguments: [tutorial_progress, 34]
     type: set_var
   conditions:
-  - arguments: [3, 4, 3]
+  - arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.MAIN_SQUARE, 3]
     type: buildings_connected_to_building_gt
-  - arguments: [tutStepDone, 30]
+  - arguments: [tutorial_progress, 30]
     type: var_gt
-  - arguments: [tutStepDone, 34]
+  - arguments: [tutorial_progress, 34]
     type: var_lt
 - actions:
   - arguments:
+    - &id035 [Message, Reach an island stock of at least 30 tools. Note that this
+        might take a while.]
     - [Headline, "NOV\xDD \xDAKOL: V\xDDUKA OBCHODOVAN\xCD"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id036 [Image, content/gui/images/background/hr.png]
     - "V\xFDborn\u011B! Svobodn\xFD obchodn\xEDk nyn\xED \u010Das od \u010Dasu zakotv\xED\
       \ v Obchodn\xEDm p\u0159\xEDstavu.\n\nPokra\u010Dujme v na\u0161em n\xE1vodu,\
       \ jak obchodovat."
@@ -346,7 +353,7 @@ events:
     - "Pokud zbo\u017E\xED prod\xE1v\xE1te, \"c\xEDlov\xE1 hodnota\" ur\u010Duje mno\u017E\
       stv\xED zbo\u017E\xED, kter\xE9 uchov\xE1v\xE1te jako rezervu a nebude prod\xE1\
       no."
-    - [Pagebreak]
+    - &id037 [Pagebreak]
     - "\nUk\xE1\u017Eeme si to na p\u0159\xEDkladu:\nPokud m\xE1me nastaven\xFD slot\
       \ na \"N\xE1kup\" a na sklad\u011B m\xE1me 5 tun dan\xE9ho zbo\u017E\xED, tak\
       \ nastaven\xED posuvn\xEDku na hodnotu 9 tun zp\u016Fsob\xED n\xE1kup maxim\xE1\
@@ -365,25 +372,26 @@ events:
       \ \\\"\xDA\u010Det\\\", kde jsou srovn\xE1ny \"N\xE1kup\" a \"Prodej\"."
     - "\n\xDAKOL: Nakupte n\xE1stroje tak, aby z\xE1soby ve va\u0161em skladu byly\
       \ 30 kus\u016F!"
-    - - Gallery
-      - [content/gui/icons/resources/50/006.png]
+    - &id038
+      - Gallery
+      - [content/gui/icons/resources/32/006.png]
     type: logbook
-  - arguments: ["Dos\xE1hn\u011Bte z\xE1soby 30 n\xE1stroj\u016F ve skladu.", "V\u0161\
-        imn\u011Bte si, \u017Ee to m\u016F\u017Ee chv\xEDli trvat."]
-    type: message
-  - arguments: [tutStepDone, 37]
+  - arguments: [tutorial_progress, 37]
     type: set_var
   conditions:
-  - arguments: [6, 0]
+  - arguments: [BUILDINGS.SIGNAL_FIRE, 0]
     type: building_num_of_type_greater
-  - arguments: [tutStepDone, 33]
+  - arguments: [BUILDINGS.SIGNAL_FIRE, BUILDINGS.WAREHOUSE]
+    type: building_in_range
+  - arguments: [tutorial_progress, 33]
     type: var_gt
-  - arguments: [tutStepDone, 37]
+  - arguments: [tutorial_progress, 37]
     type: var_lt
 - actions:
   - arguments:
+    - &id039 [Message, Build a pavilion with connection to the tents.]
     - [Headline, "NOV\xDD \xDAKOL: POSTAVTE PAVIL\xD3N"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id040 [Image, content/gui/images/background/hr.png]
     - "Pro tuto chv\xEDli m\xE1te dostatek n\xE1stroj\u016F. Velmi dob\u0159e!"
     - "Va\u0161im obyvatel\u016Fm nyn\xED poskytujete bydlen\xED, tr\u017Ei\u0161\
       t\u011B a j\xEDdlo."
@@ -396,7 +404,7 @@ events:
     - "Budovy slu\u017Eeb, jako je tato, pot\u0159ebuj\xED b\xFDt propojeny se stany\
       \ pomoc\xED cest, jinak je va\u0161i obyvatel\xE9 nebudou moci vyu\u017E\xED\
       vat."
-    - [Pagebreak]
+    - &id041 [Pagebreak]
     - "\nV\u0161imn\u011Bte si, \u017Ee v\xEDra se chov\xE1 jako fyzik\xE1ln\xED zdroj!"
     - "To znamen\xE1, \u017Ee va\u0161i obyvatel\xE9 pot\u0159ebuj\xED stezky k producentovi\
       \ (pavil\xF3nu), aby si mohli p\u0159ij\xEDt vyzvednout v\xEDru."
@@ -407,24 +415,25 @@ events:
       \ stezky je rovn\u011B\u017E vy\u017Eadov\xE1no."
     - "\n\xDAKOL: Postavte pavil\xF3n spojen\xFD stezkou se stany, aby se uspokojila\
       \ pot\u0159eba v\xEDry va\u0161ich n\xE1mo\u0159n\xEDk\u016F."
-    - - Gallery
+    - &id042
+      - Gallery
       - [content/gui/icons/buildmenu/005.png]
     type: logbook
-  - arguments: ["Postav pavil\xF3n propojen\xFD se stany."]
-    type: message
-  - arguments: [tutStepDone, 40]
+  - arguments: [tutorial_progress, 40]
     type: set_var
   conditions:
-  - arguments: [6, 29]
+  - arguments: [RES.TOOLS, 29]
     type: settlement_res_stored_greater
-  - arguments: [tutStepDone, 36]
+  - arguments: [tutorial_progress, 36]
     type: var_gt
-  - arguments: [tutStepDone, 40]
+  - arguments: [tutorial_progress, 40]
     type: var_lt
 - actions:
   - arguments:
+    - &id043 [Message, Set the tax level to Low (left end) and wait for your sailors
+        to upgrade.]
     - [Headline, "NOV\xDD \xDAKOL: DAL\u0160\xCD \xDAROVE\u0147"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id044 [Image, content/gui/images/background/hr.png]
     - "V\u0161echny po\u017Eadavky jsou nyn\xED spln\u011Bny. Va\u0161i obyvatel\xE9\
       \ m\u016F\u017Eou pravideln\u011B nav\u0161t\u011Bvovat n\xE1m\u011Bst\xED a\
       \ pavil\xF3n a Va\u0161e z\xE1soben\xED j\xEDdlem je dosta\u010Duj\xEDc\xED."
@@ -441,7 +450,7 @@ events:
     - "Po ur\u010Dit\xE9 dob\u011B se prvn\xED obyvatel\xE9 vyprav\xED na n\xE1m\u011B\
       st\xED, aby z\xEDskali nov\xFD stavebn\xED materi\xE1l, kter\xFD pot\u0159ebuj\xED\
       \ ke stavb\u011B srubu. T\xEDmto domem nahrad\xED sv\xE9 dosavadn\xED stany."
-    - [Pagebreak]
+    - &id045 [Pagebreak]
     - "\nTakov\xE9 vylep\u0161en\xED obytn\xFDch budov jsou jedin\xFDm vylep\u0161\
       en\xEDm, kter\xE9 V\xE1s stoj\xED prost\u0159edky a nem\u016F\u017Ee b\xFDt\
       \ V\xE1mi zak\xE1z\xE1no."
@@ -458,30 +467,30 @@ events:
       ze, abyste je u\u010Dinili \u0161\u0165astn\xFDmi."
     - "\n\xDAKOL: Nastavte v\xFD\u0161i dan\xED na n\xEDzkou hodnotu (lev\xFD okraj\
       \ posuvn\xEDku) a po\u010Dkejte na vylep\u0161en\xED."
-    - - Gallery
+    - &id046
+      - Gallery
       - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
     type: logbook
-  - arguments: ["Nastavte v\xFD\u0161i dan\xED na n\xEDzkou hodnotu (lev\xFD okraj)\
-        \ a po\u010Dkejte na vylep\u0161en\xED."]
-    type: message
-  - arguments: [tutStepDone, 43]
+  - arguments: [tutorial_progress, 43]
     type: set_var
   conditions:
-  - arguments: [3, 5, 3]
+  - arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.PAVILION, 3]
     type: buildings_connected_to_building_gt
-  - arguments: [tutStepDone, 39]
+  - arguments: [tutorial_progress, 39]
     type: var_gt
-  - arguments: [tutStepDone, 43]
+  - arguments: [tutorial_progress, 43]
     type: var_lt
 - actions:
   - arguments:
+    - &id047 [Message, Build a farm and keep some empty space around it.]
     - [Headline, "NOV\xDD \xDAKOL: POSTAVTE FARMU"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id048 [Image, content/gui/images/background/hr.png]
     - "Gratulujeme! \u010C\xE1st va\u0161ich obyvatel dos\xE1hla \xFArovn\u011B II!"
     - "Nyn\xED m\xE1te p\u0159\xEDstup k nov\xFDm budov\xE1m, pod\xEDvejte se do Stavebn\xED\
       ho menu znova."
-    - - Gallery
-      - [content/gui/icons/tabwidget/buildmenu/level2_u.png]
+    - &id049
+      - Gallery
+      - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
     - "Objevila se zde nov\xE1 bl\xFDskav\xE1 z\xE1lo\u017Eka."
     - "Pr\u016Fkopn\xEDci budou po\u017Eadovat l\xE1tku, to znamen\xE1, \u017Ee budete\
       \ muset vytvo\u0159it v\xFDrobn\xED linku pro l\xE1tku, kter\xE1 za\u010Dne\
@@ -491,7 +500,7 @@ events:
       , kter\xE9 si zvol\xEDte."
     - "V\xFDstupn\xED produkt z\xE1vis\xED na typu pol\xED, kter\xE9 jsou vystav\u011B\
       ny okolo n\xED."
-    - [Pagebreak]
+    - &id050 [Pagebreak]
     - "\nK tomuto se podrobn\u011Bji vr\xE1t\xEDme pozd\u011Bji."
     - "Farmy, stejn\u011B jako v\u0161echny spole\u010Dnosti produkuj\xEDc\xED suroviny,\
       \ nemus\xED b\xFDt propojeny se skladi\u0161t\u011Bm nebo pobo\u010Dkou."
@@ -507,24 +516,24 @@ events:
       vaj\xEDc\xEDch budov, proto\u017Ee bude pro spr\xE1vnou \u010Dinnost pot\u0159\
       ebovat m\xEDsto okolo sebe."
     - "\n\xDAKOL: Postavte farmu."
-    - - Gallery
+    - &id051
+      - Gallery
       - [content/gui/icons/buildmenu/020.png]
     type: logbook
-  - arguments: ["Postavte farmu a nechte kolem ni voln\xE9 m\xEDsto."]
-    type: message
-  - arguments: [tutStepDone, 46]
+  - arguments: [tutorial_progress, 46]
     type: set_var
   conditions:
-  - arguments: [0]
+  - arguments: [TIER.SAILORS]
     type: settler_level_greater
-  - arguments: [tutStepDone, 42]
+  - arguments: [tutorial_progress, 42]
     type: var_gt
-  - arguments: [tutStepDone, 46]
+  - arguments: [tutorial_progress, 46]
     type: var_lt
 - actions:
   - arguments:
+    - &id052 [Message, Build at least one pasture and add potato fields if you like.]
     - [Headline, "NOV\xDD \xDAKOL: STAVBA POL\xCD"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id053 [Image, content/gui/images/background/hr.png]
     - "Samotn\xE1 farma nebude nic produkovat, pokud nebudou postavena pole."
     - "Nyn\xED m\xE1te mo\u017Enost v\xFDb\u011Bru mezi pastvinami, bramborov\xFD\
       mi poli a plant\xE1\u017Eemi s cukrovou t\u0159tinou."
@@ -540,7 +549,7 @@ events:
     - "V\u0161imn\u011Bte si, \u017Ee brambory pot\u0159ebujete propojit s farmou\
       \ (nikoli s poli!), co\u017E je jedin\xE1 budova, kter\xE1 pracuje se zbo\u017E\
       \xEDm."
-    - [Pagebreak]
+    - &id054 [Pagebreak]
     - "\nUjist\u011Bte se, \u017Ee v\u0161echna pole, kter\xE1 stav\xEDte, le\u017E\
       \xED v oblasti, kter\xE1 je pokryta farmou."
     - "M\u016F\u017Eete m\xEDt kombinovanou produkci - jedna jednotka pastvin nepovede\
@@ -553,25 +562,24 @@ events:
       \ jste nevybudovali \u017E\xE1dn\xE9 pole. Poj\u010Fme to zm\u011Bnit!"
     - "\n\xDAKOL: Vybudujte alespo\u0148 jednu pastvinu v okol\xED farmy a p\u0159\
       idejte bramborov\xE9 pole, pokud chcete."
-    - - Gallery
+    - &id055
+      - Gallery
       - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
     type: logbook
-  - arguments: ["Vybudujte alespo\u0148 jednu pastvinu a p\u0159idejte bramborov\xE9\
-        \ pole, pokud chcete."]
-    type: message
-  - arguments: [tutStepDone, 49]
+  - arguments: [tutorial_progress, 49]
     type: set_var
   conditions:
-  - arguments: [20, 0]
+  - arguments: [BUILDINGS.FARM, 0]
     type: building_num_of_type_greater
-  - arguments: [tutStepDone, 45]
+  - arguments: [tutorial_progress, 45]
     type: var_gt
-  - arguments: [tutStepDone, 49]
+  - arguments: [tutorial_progress, 49]
     type: var_lt
 - actions:
   - arguments:
+    - &id056 [Message, Build a storage tent (increment I tab) where it makes sense.]
     - [Headline, "NOV\xDD \xDAKOL: POSTAVTE SKLADI\u0160T\u011A"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id057 [Image, content/gui/images/background/hr.png]
     - "Vid\u011Bli jste ned\xE1vno d\u0159evorubce?"
     - "Vzhledem k tomu \u017Ee Obchodn\xED p\u0159\xEDstav nem\xE1 neomezen\xFD prostor\
       \ pro ulo\u017Een\xED zbo\u017E\xED, d\u011Bln\xEDci p\u0159estanou odeb\xED\
@@ -588,9 +596,10 @@ events:
       azen\xED z provozu\"), budou provozn\xED n\xE1klady, kter\xE9 zaplat\xEDte za\
       \ budovu, ni\u017E\u0161\xED. Nebudou nulov\xE9, ale st\xE1le ni\u017E\u0161\
       \xED, ne\u017E pokud bude dodavatel pracovat."
-    - - Gallery
+    - &id058
+      - Gallery
       - [content/gui/icons/templates/production/toggle_inactive_h.png]
-    - [Pagebreak]
+    - &id059 [Pagebreak]
     - "\nTo znamen\xE1, \u017Ee m\u016F\u017Eete u\u0161et\u0159it poen\xEDze tak,\
       \ \u017Ee do\u010Dasn\u011B zastav\xEDte produkci zbo\u017E\xED, kter\xE9 nepot\u0159\
       ebujete a z\xE1rove\u0148 nechcete budovu strhnout."
@@ -607,25 +616,24 @@ events:
       ."
     - "\n\xDAKOL: Vybudujte skladovac\xED stan, p\u0159ednostn\u011B tam kde pot\u0159\
       ebujete sb\u011Bra\u010De."
-    - - Gallery
+    - &id060
+      - Gallery
       - [content/gui/icons/buildmenu/002.png]
     type: logbook
-  - arguments: ["Vybudujte skladovac\xED stan (v z\xE1lo\u017Ece \xFArovn\u011B I)\
-        \ tam, kde to m\xE1 smysl."]
-    type: message
-  - arguments: [tutStepDone, 52]
+  - arguments: [tutorial_progress, 52]
     type: set_var
   conditions:
-  - arguments: [18, 0]
+  - arguments: [BUILDINGS.PASTURE, 0]
     type: building_num_of_type_greater
-  - arguments: [tutStepDone, 48]
+  - arguments: [tutorial_progress, 48]
     type: var_gt
-  - arguments: [tutStepDone, 52]
+  - arguments: [tutorial_progress, 52]
     type: var_lt
 - actions:
   - arguments:
+    - &id061 [Message, Build a weaver that can somehow reach the wool of your farm.]
     - [Headline, "NOV\xDD \xDAKOL: POSTAVTE TKALCOVNU"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id062 [Image, content/gui/images/background/hr.png]
     - "Nyn\xED je nastavena produkce vlny, ale st\xE1le pot\u0159ebujete tkalcovnu\
       \ pro produkci l\xE1tky z vlny."
     - "Jsou zde dv\u011B m\xEDsta, kde ji m\u016F\u017Eete postavit - bu\u010F v bl\xED\
@@ -635,27 +643,25 @@ events:
     - "Pokud bude tkadlec v dosahu farmy nemus\xEDte jej propojovat stezkou, z\xE1\
       soben\xED bude fungovat."
     - "\n\xDAKOL: Postavte tkalcovnu tak, aby byla z\xE1sobena vlnou."
-    - - Gallery
+    - &id063
+      - Gallery
       - [content/gui/icons/buildmenu/007.png]
     type: logbook
-  - arguments: ["Postavte tkalcovnu, kter\xE1 bude v dosahu vlny z Va\u0161\xED farmy."]
-    type: message
-  - arguments: [tutStepDone, 55]
+  - arguments: [tutorial_progress, 55]
     type: set_var
   conditions:
-  - arguments: [2, 0]
+  - arguments: [BUILDINGS.STORAGE, 0]
     type: building_num_of_type_greater
-  - arguments: [tutStepDone, 51]
+  - arguments: [tutorial_progress, 51]
     type: var_gt
-  - arguments: [tutStepDone, 55]
+  - arguments: [tutorial_progress, 55]
     type: var_lt
 - actions:
-  - arguments: ["Dos\xE1hn\u011Bt\u011B 50 a v\xEDce obyvatel ve va\u0161em m\u011B\
-        st\u011B k dokon\u010Den\xED tutorialu. Mus\xEDte m\xEDt pozitivn\xED bilanci."]
-    type: message
   - arguments:
+    - &id064 [Message, House a total of 50 or more inhabitants in your city to complete
+        the tutorial. You need a positive balance.]
     - [Headline, "NOV\xDD \xDAKOL: DOKON\u010CETE TUTORIAL"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id065 [Image, content/gui/images/background/hr.png]
     - "Dos\xE1hn\u011Bt\u011B 50 a v\xEDce obyvatel t\xEDm, \u017Ee jim postav\xED\
       te v\xEDce dom\u016F."
     - "Jakmile zajist\xEDte obyvatele, jste p\u0159ipraveni objevovat nov\xE9 Nezn\xE1\
@@ -666,24 +672,27 @@ events:
       \u010Det\")."
     - "\n\xDAKOL: Dos\xE1hn\u011Bte po\u010Dtu 50 obyvatel a udr\u017Ee kladnou bilanci\
       \ pro dokon\u010Den\xED tutorialu."
-    - - Gallery
+    - &id066
+      - Gallery
       - [content/gui/icons/widgets/cityinfo/inhabitants.png]
     type: logbook
-  - arguments: [tutStepDone, 58]
+  - arguments: [tutorial_progress, 58]
     type: set_var
   conditions:
-  - arguments: [3, 0]
+  - arguments: [RES.TEXTILE, 0]
     type: settlement_res_stored_greater
-  - arguments: [7, 0]
+  - arguments: [BUILDINGS.WEAVER, 0]
     type: building_num_of_type_greater
-  - arguments: [tutStepDone, 54]
+  - arguments: [tutorial_progress, 54]
     type: var_gt
-  - arguments: [tutStepDone, 58]
+  - arguments: [tutorial_progress, 58]
     type: var_lt
 - actions:
   - arguments:
+    - &id067 [Message, Congratulations! You have reached the end of this tutorial
+        and are ready to meet new challenges!]
     - [Headline, "\u017D\xC1DN\xC9 DAL\u0160\xCD \xDAKOLY"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id068 [Image, content/gui/images/background/hr.png]
     - !!python/unicode 'You have successfully completed all tasks that were handed
       to you. The world is now at your command, waiting for your free aspirations
       and brave explorations!'
@@ -695,39 +704,576 @@ events:
     - !!python/unicode 'Our forums are open to you as well!'
     - !!python/unicode 'The best results until now were achieved by joining our IRC
       channel, so you could try that out first (-;'
-    - [Pagebreak]
+    - &id069 [Pagebreak]
     - [Headline, "D\xEDky!"]
-    - [Image, content/gui/images/background/hr.png]
+    - &id070 [Image, content/gui/images/background/hr.png]
     - "\n\n\n\n\nD\u011Bkujeme za hran\xED v\xFDuky!\n\nTv\u016Fj UH-Team"
-    - - Gallery
-      - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
+    - &id071
+      - Gallery
+      - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
     type: logbook
-  - arguments: [tutStepDone, 61]
+  - arguments: [tutorial_progress, 61]
     type: set_var
   conditions:
   - arguments: [0]
     type: settlements_num_greater
   - arguments: [50]
     type: settlement_inhabitants_greater
-  - arguments: [3, 3]
+  - arguments: [BUILDINGS.RESIDENTIAL, 3]
     type: building_num_of_type_greater
-  - arguments: [0]
+  - arguments: [TIER.SAILORS]
     type: settler_level_greater
   - arguments: [0]
     type: player_balance_greater
-  - arguments: [tutStepDone, 57]
+  - arguments: [tutorial_progress, 57]
     type: var_gt
-  - arguments: [tutStepDone, 61]
+  - arguments: [tutorial_progress, 61]
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: ["Gratulujeme! Dostali jste se na konec v\xFDuky a jste p\u0159ipraveni\
-        \ na dal\u0161\xED v\xFDzvy!"]
-    type: message
   conditions:
-  - arguments: [tutStepDone, 60]
+  - arguments: [tutorial_progress, 60]
     type: var_gt
 locale: cs
+logbook-data:
+- - *id001
+  - '
+
+
+
+    '
+  - *id002
+  - *id003
+  - [Headline, Welcome to Unknown Horizons!]
+  - *id004
+  - '
+
+
+    '
+  - This is your Captain's log where all important information is stored. A short
+    notification of each task will be provided on the left of the screen.
+  - If you are interested in longer descriptions, your log will hopefully provide
+    all the help you need.
+  - After you close this log, it can be re-opened with the "Captain's Log" icon in
+    the top-right corner (below the mini-map, with a sealed document and a feather).
+  - *id005
+  - '
+
+    To see your first task, click on the button "Read next entries" in the navigation
+    panel! It looks like this:
+
+    '
+  - *id006
+  - *id007
+  - '
+
+    For any suggestions on better wording, topics you would like to have explained
+    or even buggy conditions: Please tell us and we will try to improve the tutorial!
+
+    '
+  - '
+
+    Visit www.unknown-horizons.org for help on how to contact the team!
+
+    '
+  - And now, let's start the actual game.
+  - *id008
+  - [Headline, 'NEW TASK: SETTLE ON AN ISLAND']
+  - *id009
+  - To move your ship, select it with a left click and right click on the location
+    you want it to go to.
+  - Once you are near the coast, the anchor-like button you see in the overview tab
+    will become active.
+  - *id010
+  - This indicates that you are able to build a warehouse there by pressing that button
+    (called 'Build Settlement').
+  - Now a preview of your building is dragged around when you move the cursor.
+  - 'You can build on any spot where this preview is not shaded red.
+
+    Click where you want to place your first building.
+
+    '
+  - '
+
+    TASK: Build a warehouse at the coast.
+
+    '
+- - *id011
+  - [Headline, 'NEW TASK: BUILD A LUMBERJACK']
+  - *id012
+  - The construction material on your ship got unloaded automatically. You can now
+    construct some basic buildings.
+  - We will start with building a lumberjack.
+  - This is essential because, at this stage, boards are the only poles your sailors
+    can afford to hang their tents over.
+  - The fisherman needs some boards to build his vessel as well.
+  - In order to construct lumberjacks; open the build menu by either clicking the
+    big icon below the mini map or pressing B key.
+  - *id013
+  - The build menu is sorted by increments.
+  - You are currently in the first increment (the Sailors level) so are offered only
+    the basic buildings.
+  - *id014
+  - '
+
+    As your civilization advances, you also gain more and more complex buildings.
+
+    '
+  - For now, select the lumberjack under 'Companies' and build it in an area with
+    some trees around.
+  - You can also plant trees later - but that costs money. Use what nature provided
+    you with!
+  - A company always needs a trail connection to a storage or warehouse, otherwise
+    goods will remain at the company and not be collected.
+  - This means that you have to build a trail connecting your warehouse (or storage)
+    and lumberjack.
+  - '
+
+    TASK: Build a lumberjack in a wooded area and connect it to a road.
+
+    '
+  - Watch how a collector will fetch your first self-produced boards. Don't worry
+    about recruiting workers for the lumberjack. That happens automatically.
+  - *id015
+- - *id016
+  - [Headline, 'NEW TASK: FOOD SUPPLY']
+  - *id017
+  - You will need to have some food-producing companies, too, because people in general
+    (and especially sailors) are very hungry.
+  - Available companies in the first increment are the Hunter and Fisher.
+  - The Hunter hunts animals in the forest, thus needs trees nearby.
+  - Note that you can place your Hunter close to the lumberjack's forest.
+  - It can happen that the animals don't reproduce fast enough or simply hide well.
+  - 'Conclusion: the hunter is not too reliable if you need continuous supply.
+
+    '
+  - *id018
+  - '
+
+    The Fisher needs a coastal building site like the warehouse and a fish school
+    in range.
+
+    '
+  - He will build a small rowing vessel and catch some fish.
+  - This is a very constant supply at the cost of a slightly longer production time
+    per unit of food.
+  - A small settlement like yours can use both companies, and you can better balance
+    pros and cons if you see the direct comparison.
+  - '
+
+    TASK: Build a hunter and a fisher.
+
+    '
+  - Don't forget to connect them to your warehouse with trails!
+  - *id019
+- - *id020
+  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - *id021
+  - Your residents need a main square where they can fetch their goods from.
+  - This means that they need a trail connection from their home to the main square.
+  - All goods in your warehouse are available at this 'market place', so your residents
+    do not need to walk to the fisher or even to the warehouse.
+  - *id022
+  - You should avoid placing your main settlement tents too close to your lumberjacks
+    because building tents will clear away the trees that your lumberjack needs to
+    produce boards.
+  - Companies work without being connected to the tents, so you don't need to build
+    a road between the main square and e.g. your lumberjack tent.
+  - '
+
+    TASK: Build a main square.
+
+    '
+  - *id023
+  - '
+
+    Now let''s have a closer look at the main square.
+
+    '
+  - *id024
+  - In the 'Account' tab you get a balance sheet of this island, featuring all costs
+    you pay and all taxes you earn.
+  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained
+    later on.
+  - If your balance is positive, you all-in-all make a profit.
+  - *id025
+  - In the different increment overview tabs you can see statistics about your inhabitants.
+    You also set the increment-specific global tax here and allow or deny inhabitants
+    of this increment to upgrade to the next higher one.
+- - *id026
+  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - *id027
+  - Settlers want to have a roof over their heads, else they won't even think of living
+    in your city! You need to provide tents.
+  - *id028
+  - Tents are the basic residential buildings. Your inhabitants will want to upgrade
+    it when they reach higher increments.
+  - Settlers may not look very useful since they will try to consume all goods you
+    produce - but they at least pay taxes, and that's the only way you can make money
+    for now!
+  - '
+
+    TASK: Build a tent and connect it to the main square. Tents dont need to be connected
+    to any of the companies.
+
+    '
+- - *id029
+  - '
+
+    Let''s have a look at the tent overview tab.
+
+    '
+  - 'You can see
+
+    * the happiness of these residents,
+
+    * the taxes they pay and
+
+    * the resources they demand.
+
+    '
+  - If their demands are fulfilled, happiness and thus your tax income increase.
+  - If not, happiness and income decrease. At some time your residents may get really
+    sour and simply turn their back on your village, leaving behind a decaying ruin.
+  - Note that you can also change the global tax settings here, too.
+  - '
+
+    TASK: Build at least three additional tents.
+
+    '
+  - '
+
+    TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.
+
+    '
+- - *id030
+  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
+  - *id031
+  - Can you see the ship passing your island from time to time? That ship belongs
+    to the Free Trader, one of the first settlers in this archipelago.
+  - The trader will supply your settlement with necessary goods which you can't produce
+    yet.
+  - You can also sell surpluses of your production, but in general consuming them
+    (by building more tents) instead of selling them yields more profit.
+  - Normally the trader ships just sail around and look for deals, but you can speed
+    things up a bit.
+  - *id032
+  - For this purpose, build a signal fire at the coast near your warehouse. It will
+    show ships the way to your settlement.
+  - The signal fire has to cover the area which the ships pass through to catch them.
+  - *id033
+  - '
+
+    After this little advertisment, the trader will also stop by and look into your
+    warehouse if it planned to sail past it.
+
+    '
+  - You can propose deals via the warehouse tab "Buy/Sell".
+  - *id034
+  - At the 'sailors' increment, you are equipped with three trading slots.
+  - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice
+    versa.
+  - Click in the slot to choose the good you want to trade with. We will further explain
+    this once you are ready to trade.
+  - '
+
+    TASK: Build a signal fire at the coast close to your warehouse.
+
+    '
+- - *id035
+  - [Headline, 'NEW TASK: LEARN TO TRADE']
+  - *id036
+  - 'Excellent! The Free Trader will now stop by at your warehouse from time to time.
+
+
+    Let''s continue our tutorial on how to trade.
+
+    '
+  - After selecting a particular type of good, the green bar across the bottom of
+    the slot (if visible) shows you how much you have in stock of this good.
+  - Dragging the slider on the right of each slot determines your 'target value' which
+    has a different meaning on 'Buy' and 'Sell'.
+  - When buying, you will buy sufficient to hold your 'target value' in stock.
+  - When selling, the 'target value' is the stock amount at which you will always
+    stop selling until you get more of that resource again.
+  - *id037
+  - '
+
+    For example:
+
+    Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will
+    cause you to buy 4 additional tons at most.
+
+    '
+  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned
+    at 13 will sell up to 5 tons.
+  - If the free trader however only wants to buy or sell less than your settings would
+    allow him, you need to live with that and wait for him to return.
+  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
+
+    It is NOT possible to change prices manually!
+
+    '
+  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy'
+    values there.
+  - '
+
+    TASK: Buy as many tools as you need to have 30 tools in stock!
+
+    '
+  - *id038
+- - *id039
+  - [Headline, 'NEW TASK: BUILD A PAVILION']
+  - *id040
+  - Those tools will be enough for the moment. Well done!
+  - You now provide housing, a main square and food to your inhabitants.
+  - Still there is one demand which we have not satisfied so far, you may check that
+    in the marketplace or tent tab - your sailors want a basic building where they
+    can pray.
+  - The solution is a pavilion which the village parson quickly puts up as shelter
+    from the sun.
+  - Service buildings like this also need to be connected to the tents with a trail,
+    else your inhabitants feel unable to reach them.
+  - *id041
+  - '
+
+    Note that faith is treated like a physical resource!
+
+    '
+  - This means that your inhabitants need a road connection to the producer (pavilion)
+    to pick up faith there.
+  - After some time, they will have consumed it and then again look for a producer
+    to collect more faith.
+  - 'Important:
+
+    It is NOT enough that the building is merely within a certain range of the tents.
+
+    The road connection is required as well.
+
+    '
+  - '
+
+    TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors''
+    demand for faith.
+
+    '
+  - *id042
+- - *id043
+  - [Headline, 'NEW TASK: NEXT INCREMENT']
+  - *id044
+  - All demands are fulfilled now if your inhabitants can regularly visit the main
+    square & pavilion and your food supply is adequate.
+  - If the sailors are happy enough, they want to advance to the next increment called
+    Pioneers.
+  - To make them happy, there is nothing else for you to do but setting taxes to a
+    lower level since you have fulfilled all the demands of your inhabitants.
+  - You should try to not always run on low taxes since this will probably lead to
+    bankruptcy sooner or later. For a period of time and if you know what you are
+    doing, it is fine though.
+  - After some time, the first unit should walk to the main square and have a look
+    for new construction material there to build a log house. This house will replace
+    the old tent.
+  - *id045
+  - '
+
+    Such residential upgrades cost resources and can thus be restricted at the main
+    square.
+
+    '
+  - There also are upgrades of buildings without costs, as you will see with the lumberjack.
+    In this case, only the graphics change.
+  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than
+    sailors, too.
+  - As you may have figured out already, the downside is that pioneers demand additional
+    goods which sailors do not need - so you will need to spend this extra money to
+    make them happy as well.
+  - '
+
+    TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.
+
+    '
+  - *id046
+- - *id047
+  - [Headline, 'NEW TASK: BUILD A FARM']
+  - *id048
+  - Congratulations! Some of your inhabitants have reached increment II!
+  - Now you have access to new buildings, take a look at the Build menu again.
+  - *id049
+  - A shiny new tab appeared there.
+  - Pioneers will demand cloth, so you need to set up a production line for cloth
+    starting with lambs wool (which is one of the goods produced at the farm).
+  - The farm is a very special production building since it can produce not only one,
+    but very many (and different) goods if you choose.
+  - The output of farms depends on what kind of fields you build around it.
+  - *id050
+  - '
+
+    We will have a closer look at this later.
+
+    '
+  - Farms, like all companies producing raw materials, do not necessarily need to
+    be connected to storage or a warehouse.
+  - As long as units of the final production company can reach the farm, and collectors
+    from the warehouse or storage tent can reach the final company everything's fine.
+  - If you, however, plan to do some processing on different parts of the island (which
+    can make sense) or even on different islands, you will need a connection to collectors.
+  - Try to build the farm not too close to the coast or your existing buildings since
+    it will need some space around it to work well.
+  - '
+
+    TASK: Build a farm.
+
+    '
+  - *id051
+- - *id052
+  - [Headline, 'NEW TASK: BUILD FIELDS']
+  - *id053
+  - The farm itself is not going to produce anything without some fields.
+  - You currently have the choice between pastures, potato and sugar fields.
+  - 'Let''s have a short overview:
+
+    * Pasture: Sheep live here, producing lamb wool.
+
+    * Potato field: Grows potatoes which are currently treated as food.
+
+    * Sugar field: Grows sugar which is used to distill liquor and (later) produce
+    confectionery.
+
+    '
+  - We now only need pastures, but in case your food supply chain is too small (maybe
+    many residential buildings) you can also produce some potatoes.
+  - Note that for potatoes you will need a road connection to the farm (not to the
+    field!) as it will be the only company to work on the goods.
+  - *id054
+  - '
+
+    Make sure that all fields you build are in the area covered by the farm.
+
+    '
+  - You can have combined production - one pasture will not lead to 100 percent efficiency
+    of the farm - but you need to check how many fields one farm can serve.
+  - "Different classes of fields require the farm units to spend more or less time\
+    \ there (to seed, harvest, herd, etc\u2026) and because of that, the farm may\
+    \ be unable to serve all of the fields you built for it in time."
+  - For now, you do not need to care about these issues a lot since you haven't built
+    any fields. Let's change that!
+  - '
+
+    TASK: Build at least one pasture in the farm''s range and add potato fields if
+    you like.
+
+    '
+  - *id055
+- - *id056
+  - [Headline, 'NEW TASK: BUILD STORAGE']
+  - *id057
+  - Did you watch your lumberjack recently?
+  - Since your warehouse does not have unlimited space to store goods, collectors
+    will stop fetching goods from companies when stock is full.
+  - So if no sailors recently wanted to upgrade their tents, you probably have a lot
+    of boards and in that case, the lumberjack may idle.
+  - We can improve this situation in two different ways, and we will have a look at
+    both of them below.
+  - 'All companies offer to do no work at all.
+
+    This may sound strange, but click on the gear wheel you see in a lumberjack hut''s
+    overview.
+
+    '
+  - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs
+    you pay for the building will decrease. They won't be zero, but still lower than
+    if you keep the company producing.
+  - *id058
+  - *id059
+  - '
+
+    This means that you can save money when you temporarily do not need a company
+    and do not want to tear it down, either.
+
+    '
+  - 'Another solution is to build the last increment-I building which has not been
+    mentioned so far: the storage tent.
+
+    '
+  - 'This building has two purposes. It:
+
+    * Offers more storage for your goods, and
+
+    * sends its own collectors to fetch goods, just like the warehouse does.
+
+    '
+  - Note that companies can also be connected to a storage in order to get their products
+    collected, and if the warehouse is overwhelmed with collector tasks, you can place
+    a storage tent to help out there.
+  - '
+
+    TASK: Build a storage tent, preferably where you need collectors.
+
+    '
+  - *id060
+- - *id061
+  - [Headline, 'NEW TASK: BUILD A WEAVER']
+  - *id062
+  - Now the wool production is set up, you still need a weaver to produce cloth out
+    of this wool.
+  - There are two spots where you can build it - either close to the farm or close
+    to a Storage Tent (or the warehouse).
+  - In both cases you should ensure the connection to a trail as well.
+  - You can place the weaver close to the farm and tear down any trail to the farm
+    to see that it will still fetch the wool and produce.
+  - '
+
+    TASK: Build a weaver positioned so it can get wool.
+
+    '
+  - *id063
+- - *id064
+  - [Headline, 'NEW TASK: COMPLETE TUTORIAL']
+  - *id065
+  - Try to house a total of 50 or more inhabitants in your city by providing more
+    residential buildings.
+  - Once you are able to keep an economy running which can satisfy this amount of
+    consumers, you are ready to discover new Unknown Horizons!
+  - You also need enough money to keep this economy running, so a positive balance
+    (check in the warehouse tab 'Account') is required.
+  - '
+
+    TASK: Reach a total number of 50 inhabitants and a positive balance to complete
+    this tutorial.
+
+    '
+  - *id066
+- - *id067
+  - [Headline, NO TASKS LEFT]
+  - *id068
+  - You have successfully completed all tasks that were handed to you. The world is
+    now at your command, waiting for your free aspirations and brave explorations!
+  - 'If you have any suggestions on what we could or should improve, add or leave
+    out:
+
+    '
+  - www.unknown-horizons.org
+  - '#unknown-horizons @ irc.freenode.net'
+  - team@unknown-horizons.org
+  - Our forums are open to you as well!
+  - The best results until now were achieved by joining our IRC channel, so you could
+    try that out first (-;
+  - *id069
+  - [Headline, Thanks!]
+  - *id070
+  - '
+
+
+
+
+
+    Thanks for playing the tutorial!
+
+
+    Your UH-Team
+
+    '
+  - *id071
 mapfile: development.sqlite
 translation_status: 183 translated messages, 8 untranslated messages.
 
