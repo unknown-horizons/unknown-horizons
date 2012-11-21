@@ -68,11 +68,22 @@ class Inventory(Container):
 			self.db = db
 			self._inventory = inventory
 			self._res_order = sorted(self._inventory.iterslots())
-			self.__icon = Icon(image="content/gui/icons/ship/civil_16.png")
+			self.legend = Label(name="legend")
+			self.__icon = Icon(name="legend_icon")
+			self.__icon.image = "content/gui/icons/ship/civil_16.png"
+			if isinstance(self._inventory, TotalStorage):
+				self.__icon.position = (130, 53)
+				self.legend.position = (150, 53)
+			elif isinstance(self._inventory, PositiveSizedSlotStorage):
+				self.__icon.position = ( 0, 203)
+				self.legend.position = (20, 203)
+
 		self.update()
 
 	def update(self):
 		self.removeAllChildren()
+		if self.display_legend:
+			self.addChildren(self.__icon, self.legend)
 		vbox = VBox(padding=0)
 		vbox.width = self.width
 		current_hbox = HBox(padding=0)
@@ -147,23 +158,16 @@ class Inventory(Container):
 					button = Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
 					current_hbox.addChild(button)
 
-
 		if self.display_legend:
+			limit = self._inventory.get_limit(None)
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
-				sum_stored_res = self._inventory.get_sum_of_stored_resources()
-				label = Label()
-				label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
-				label.position = (150, 53)
-				self.__icon.position = (130, 53)
-				self.addChildren(label, self.__icon)
-			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				label = Label()
+				sum_stored = self._inventory.get_sum_of_stored_resources()
 				#xgettext:python-format
-				label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
-				label.position = (20, 203)
-				self.__icon.position = (0, 203)
-				self.addChildren(label, self.__icon)
+				self.legend.text = _('{stored}/{limit}').format(stored=sum_stored, limit=limit)
+			elif isinstance(self._inventory, PositiveSizedSlotStorage):
+				#xgettext:python-format
+				self.legend.text = _('Limit: {amount}t per slot').format(amount=limit)
 
 	def apply_to_buttons(self, action, filt=None):
 		"""Applies action to all buttons shown in inventory
