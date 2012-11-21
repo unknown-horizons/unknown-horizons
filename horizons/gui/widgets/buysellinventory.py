@@ -33,7 +33,12 @@ class BuySellInventory(Inventory):
 	TabWidget, which will autoset it (was made to be done this way).
 
 	XML use: <BuySellInventory />, can take all parameters of an Inventory.
+	Note that BuySellInventory has False as default value for display_legend
+	where Inventory has True.
 	"""
+	def __init__(self, display_legend=False, **kwargs):
+		super(BuySellInventory, self).__init__(display_legend=display_legend, **kwargs)
+
 	def init(self, db, inventory, limits, selling):
 		if self.init_needed(inventory, limits, selling):
 			self._inited = True
