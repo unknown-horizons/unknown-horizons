@@ -65,7 +65,7 @@ class VERSION:
 	IS_DEV_VERSION = True
 	#RELEASE_VERSION = u'2012.1'
 
-	MIN_FIFE_REVISION = 4065
+	MIN_FIFE_REVISION = 4068
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION = 69
@@ -570,6 +570,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"sv"    : u'Svenska',
 	"th"    : u'ภาษาไทย',
 	"tr"    : u'Türkçe',
+	"uk"    : u'Українська',
 	"vi"    : u'Tiếng Việt',
 	"zh_CN" : u'普通話',
 	"zu"    : u'IsiZulu',
@@ -612,6 +613,7 @@ FONTDEFS = {
 	"sv"    : 'libertine',
 	# "th"
 	"tr"    : 'libertine',
+	"uk"    : 'libertine',
 	# "vi"
 	# "zh_CN"
 	"zu"    : 'libertine',

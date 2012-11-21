@@ -55,14 +55,14 @@
 		down_image="content/gui/icons/mainmenu/door.png"
 		hover_image="content/gui/icons/mainmenu/door.png" />
 
-	<Label name="chimebell" text="Attention please!" position="190,500" />
+	<Label name="editor"  text="Editor"  position="250,500"  comment="Map editor" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="349,406" />
-	<ImageButton name="dead_link"
-		position="376,431"
+	<ImageButton name="editor_link"
+		position="373,430"
 		is_focusable="0"
-		up_image="content/gui/icons/mainmenu/bell_bw.png"
-		down_image="content/gui/icons/mainmenu/bell.png"
-		hover_image="content/gui/icons/mainmenu/bell.png" />
+		up_image="content/gui/icons/mainmenu/editor_bw.png"
+		down_image="content/gui/icons/mainmenu/editor.png"
+		hover_image="content/gui/icons/mainmenu/editor.png" />
 
 	<Label name="credits" text="Credits" position="165,365"/>
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="302,298" />
@@ -82,6 +82,4 @@
 		down_image="content/gui/icons/mainmenu/load.png"
 		hover_image="content/gui/icons/mainmenu/load.png" />
 
-	<!-- Editor -->
-	<Label name="editor"  text="Editor"  position="30,30"  comment="Map-Editor" />
 </Container>

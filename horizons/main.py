@@ -52,6 +52,7 @@ from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
+from horizons.util.savegameaccessor import SavegameAccessor
 
 
 # private module pointers of this module
@@ -226,6 +227,8 @@ def start(_command_line_arguments):
 		startup_worked = _load_last_quicksave()
 	elif command_line_arguments.edit_map is not None:
 		startup_worked = edit_map(command_line_arguments.edit_map)
+	elif command_line_arguments.edit_game_map is not None:
+		startup_worked = edit_game_map(command_line_arguments.edit_game_map)
 	elif command_line_arguments.stringpreview:
 		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
 		if not tiny:
@@ -467,23 +470,51 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	start_singleplayer(options)
 	return True
 
-def edit_map(map_name):
+def _edit_map(map_file):
 	"""
-	Start editing the specified map.
-	
-	@param map_name: name of map or path to map
+	Start editing the specified map file.
+
+	@param map_file: path to the map file or a list of random island strings
 	@return: bool, whether loading succeeded
 	"""
-
-	map_file = _find_matching_map(map_name, SavegameManager.get_maps())
 	if not map_file:
 		return False
+
 	options = StartGameOptions.create_editor_load(map_file)
 	start_singleplayer(options)
 
 	from horizons.editor.worldeditor import WorldEditor
 	_modules.session.world_editor = WorldEditor(_modules.session.world)
 	return True
+
+def edit_map(map_name):
+	"""
+	Start editing the map file specified by the name.
+
+	@param map_name: name of map or path to map
+	@return: bool, whether loading succeeded
+	"""
+	return _edit_map(_find_matching_map(map_name, SavegameManager.get_maps()))
+
+def edit_game_map(saved_game_name):
+	"""
+	Start editing the specified map.
+
+	@param map_name: name of map or path to map
+	@return: bool, whether loading succeeded
+	"""
+	saved_games = SavegameManager.get_saves()
+	saved_game_path = _find_matching_map(saved_game_name, saved_games)
+	if not saved_game_path:
+		return False
+
+	accessor = SavegameAccessor(saved_game_path, False)
+	map_name = accessor.map_name
+	accessor.close()
+	if isinstance(map_name, list):
+		# a random map represented by a list of island strings
+		return _edit_map(map_name)
+	return edit_map(map_name)
 
 def _create_main_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.

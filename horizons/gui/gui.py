@@ -106,23 +106,22 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
 			'startSingle'      : self.show_single, # first is the icon in menu
-			'start'            : self.show_single, # second is the lable in menu
+			'start'            : self.show_single, # second is the label in menu
 			'startMulti'       : self.show_multi,
 			'start_multi'      : self.show_multi,
 			'settingsLink'     : self.show_settings,
 			'settings'         : self.show_settings,
 			'helpLink'         : self.on_help,
 			'help'             : self.on_help,
+			'editor_link'      : self.editor_load_map,
+			'editor'           : self.editor_load_map,
 			'closeButton'      : self.show_quit,
 			'quit'             : self.show_quit,
-			'dead_link'        : self.on_chime, # call for help; SoC information
-			'chimebell'        : self.on_chime,
 			'creditsLink'      : self.show_credits,
 			'credits'          : self.show_credits,
 			'loadgameButton'   : self.load_game,
 			'loadgame'         : self.load_game,
 			'changeBackground' : self.get_random_background_by_button,
-			'editor'           : self.editor_load_map,
 		})
 
 		self.on_escape = self.show_quit
@@ -258,14 +257,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			return True
 		else:
 			return False
-
-	def on_chime(self):
-		"""
-		Called chime action. Displaying call for help on artists and game design,
-		introduces information for SoC applicants (if valid).
-		"""
-		AmbientSoundComponent.play_special("message")
-		self.show_dialog(self.widgets['call_for_support'], {OkButton.DEFAULT_NAME : True})
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
@@ -830,7 +821,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		popup = self.build_popup(headline, message, size=2, show_cancel_button=True)
 		update_hotkey_info(action, keyname)
 		keybox = pychan.widgets.ScrollArea()
-		listbox = pychan.widgets.ListBox()
+		listbox = pychan.widgets.ListBox(is_focusable=False)
 		keybox.max_size = listbox.max_size = \
 		keybox.min_size = listbox.min_size = \
 		keybox.size = listbox.size = (200, 200)

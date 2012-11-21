@@ -85,7 +85,7 @@ def find_uh_position():
 		'.', '..'
 		):
 		i = os.path.realpath(i)
-		if os.path.exists( os.path.join(i, 'content')):
+		if os.path.exists(os.path.join(i, 'content')):
 			return i
 	else:
 		# also check system wide dirs
@@ -97,7 +97,7 @@ def find_uh_position():
 		)
 		for i in positions:
 			pos = os.path.join(i, 'unknown-horizons')
-			if os.path.exists( pos ):
+			if os.path.exists(pos):
 				return pos
 	raise RuntimeError('Cannot find location of Unknown Horizons.')
 
@@ -136,6 +136,8 @@ def get_option_parser():
 	             help="Loads the last quicksave.")
 	start_uh.add_option("--edit-map", dest="edit_map", metavar="<map>",
 	             help="Edit map <map>.")
+	start_uh.add_option("--edit-game-map", dest="edit_game_map", metavar="<game>",
+	             help="Edit the map from the saved game <game>.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
@@ -244,8 +246,8 @@ def main():
 		pass
 
 	#chdir to Unknown Horizons root
-	os.chdir( find_uh_position() )
-	logging.config.fileConfig( os.path.join('content', 'logging.conf'))
+	os.chdir(find_uh_position())
+	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 
 	create_user_dirs()
 
@@ -356,7 +358,7 @@ def setup_debugging(options):
 		# without getting logs twice + without enabling debug log for everything
 		# (see first if-clause inside that method)
 		if not options.debug_log_only and not logfile.isatty():
-			logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
+			logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
 
 		log_sys_info()
 
@@ -444,10 +446,10 @@ def get_fife_path(fife_custom_path=None):
 				exit(1)
 		except (ImportError, AttributeError):
 		# no config, try frequently used paths
-			_paths += [ os.path.join(a, b, c) for \
-									a in ('.', '..', '../..') for \
-									b in ('.', 'fife', 'FIFE', 'Fife') for \
-									c in ('.', 'trunk') ]
+			_paths += [os.path.join(a, b, c) for
+			           a in ('.', '..', '../..') for
+			           b in ('.', 'fife', 'FIFE', 'Fife') for
+			           c in ('.', 'trunk')]
 
 	fife_path = None
 	for p in _paths:
@@ -460,7 +462,7 @@ def get_fife_path(fife_custom_path=None):
 				log().debug("Found FIFE in %s", fife_path)
 
 				# add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				pythonpaths = [ os.path.join( fife_path, 'engine/python') ]
+				pythonpaths = [os.path.join(fife_path, 'engine', 'python')]
 				for path in pythonpaths:
 					if os.path.exists(path):
 						sys.path.append(path)
@@ -485,8 +487,8 @@ def check_path_for_fife(path):
 	"""Checks if typical FIFE directories exist in path. This does not guarantee, that it's
 	really a FIFE dir, but it generally works."""
 	absolute_path = os.path.abspath(path)
-	for pe in [ os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/python/fife',  \
-				                                               'engine/python/fife/extensions') ]:
+	for pe in [os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/python/fife',
+		                                               'engine/python/fife/extensions')]:
 		if not os.path.exists(pe):
 			return False
 	return True
@@ -508,17 +510,17 @@ def find_FIFE(fife_custom_path=None):
 	log_paths()
 
 	# assemble args (python run_uh.py ..)
-	args = [sys.executable] + sys.argv + [ "--fife-in-library-path" ]
+	args = [sys.executable] + sys.argv + ["--fife-in-library-path"]
 
 	# WORKAROUND: windows systems don't handle spaces in arguments for execvp correctly.
 	if platform.system() != 'Windows':
 		if logfilename:
-			args += [ "--logfile", logfilename ]
+			args += ["--logfile", logfilename]
 		log().debug("Restarting with args %s", args)
 		os.execvp(args[0], args)
 	else:
 		args[1] = '"%s"' % args[1]
-		args += [ "--logfile", '"%s"' % logfilename ]
+		args += ["--logfile", '"%s"' % logfilename]
 		log().debug("Restarting using windows workaround with args %s", args)
 		os.system(" ".join(args))
 		sys.exit(0)

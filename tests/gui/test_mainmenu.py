@@ -31,14 +31,14 @@ from tests.gui import gui_test, TEST_FIXTURES_DIR
 
 
 @gui_test(timeout=60)
-def test_support(gui):
-	"""Test that the support page shows up."""
+def test_editor(gui):
+	"""Test that the map editor shows up."""
 
 	def func():
-		gui.trigger('support_window', 'okButton/action/__execute__')
+		gui.trigger('load_map_window', 'cancelButton/action/__execute__')
 	
 	with gui.handler(func):
-		gui.trigger('menu', 'dead_link')
+		gui.trigger('menu', 'editor')
 
 
 @gui_test(timeout=60)
