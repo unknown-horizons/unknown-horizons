@@ -21,17 +21,12 @@
 
 import logging
 import datetime
-import bz2
 
 from horizons.network import packets
 from horizons import network
 from horizons.network.common import *
 from horizons.network import enet
-from horizons.savegamemanager import SavegameManager
 
-# during pyenets move to cpython they renamed a few constants...
-if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(enet, 'PEER_STATE_DISCONNECT'):
-	enet.PEER_STATE_DISCONNECTED = enet.PEER_STATE_DISCONNECT
 
 # maximal peers enet should handle
 MAX_PEERS = 1

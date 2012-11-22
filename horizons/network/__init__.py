@@ -66,6 +66,10 @@ def find_enet_module():
 
 enet = find_enet_module()
 
+# during pyenets move to cpython they renamed a few constants...
+if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(enet, 'PEER_STATE_DISCONNECT'):
+	enet.PEER_STATE_DISCONNECTED = enet.PEER_STATE_DISCONNECT
+
 
 class NetworkException(Exception):
 	pass
