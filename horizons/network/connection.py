@@ -218,6 +218,16 @@ class Connection(object):
 		
 		If packet_type is given, only a packet of that type will be returned.
 		"""
+
+		def assert_type(packet):
+			if packet_type is None:
+				return packet
+			if packet is None:
+				raise network.FatalError("No reply from server")
+			elif not isinstance(packet[1], packet_type):
+				raise network.CommandError("Unexpected packet")
+			return packet
+
 		if self.packetqueue:
 			if packet_type is None:
 				return self.packetqueue.pop(0)
@@ -226,7 +236,7 @@ class Connection(object):
 				if not isinstance(p[1], packet_type):
 					continue
 				self.packetqueue.remove(p)
-				return p
+				return assert_type(p)
 
 		if packet_type is None:
 			return self._receive(timeout)
@@ -238,7 +248,7 @@ class Connection(object):
 			if packet is None:
 				return None
 			if isinstance(packet[1], packet_type):
-				return packet
+				return assert_type(packet)
 			if not self.process_async_packet(packet):
 				self.packetqueue.append(packet)
 			timeleft -= (datetime.datetime.now() - start).seconds

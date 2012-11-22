@@ -184,46 +184,35 @@ class Client(object):
 
 		return False
 
-	#-----------------------------------------------------------------------------
-
-	def setprops(self, lang):
+	def assert_connection(self):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
+
+	#-----------------------------------------------------------------------------
+
+	def setprops(self, lang):
+		self.assert_connection()
 		self.log.debug("[SETPROPS]")
 		self.send(packets.client.cmd_sessionprops(lang))
-		packet = self.connection.receive_packet(packets.cmd_ok)
-		if packet is None:
-			raise network.FatalError("No reply from server")
-		elif not isinstance(packet[1], packets.cmd_ok):
-			raise network.CommandError("Unexpected packet")
+		self.connection.receive_packet(packets.cmd_ok)
 		return True
 
 	#-----------------------------------------------------------------------------
 
 	def listgames(self, mapname=None, maxplayers=None, only_this_version=False):
-		if self.mode is None:
-			raise network.NotConnected()
-		if self.mode is not ClientMode.Server:
-			raise network.NotInServerMode("We are not in server mode")
+		self.assert_connection()
 		self.log.debug("[LIST]")
 		version = self.version if only_this_version else -1
 		self.send(packets.client.cmd_listgames(version, mapname, maxplayers))
 		packet = self.connection.receive_packet(packets.server.data_gameslist)
-		if packet is None:
-			raise network.FatalError("No reply from server")
-		elif not isinstance(packet[1], packets.server.data_gameslist):
-			raise network.CommandError("Unexpected packet")
 		return packet[1].games
 
 	#-----------------------------------------------------------------------------
 
 	def creategame(self, mapname, maxplayers, gamename, maphash="", password=""):
-		if self.mode is None:
-			raise network.NotConnected()
-		if self.mode is not ClientMode.Server:
-			raise network.NotInServerMode("We are not in server mode")
+		self.assert_connection()
 		self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
 		self.send(packets.client.cmd_creategame(
 			clientver   = self.version,
@@ -236,20 +225,13 @@ class Client(object):
 			maphash     = maphash,
 			password    = password))
 		packet = self.connection.receive_packet(packets.server.data_gamestate)
-		if packet is None:
-			raise network.FatalError("No reply from server")
-		elif not isinstance(packet[1], packets.server.data_gamestate):
-			raise network.CommandError("Unexpected packet")
 		self.game = packet[1].game
 		return self.game
 
 	#-----------------------------------------------------------------------------
 
 	def joingame(self, uuid, password="", fetch=False):
-		if self.mode is None:
-			raise network.NotConnected()
-		if self.mode is not ClientMode.Server:
-			raise network.NotInServerMode("We are not in server mode")
+		self.assert_connection()
 		self.log.debug("[JOIN] %s" % (uuid))
 		self.send(packets.client.cmd_joingame(
 			uuid        = uuid,
@@ -260,20 +242,13 @@ class Client(object):
 			password    = password,
 			fetch       = fetch))
 		packet = self.connection.receive_packet(packets.server.data_gamestate)
-		if packet is None:
-			raise network.FatalError("No reply from server")
-		elif not isinstance(packet[1], packets.server.data_gamestate):
-			raise network.CommandError("Unexpected packet")
 		self.game = packet[1].game
 		return self.game
 
 	#-----------------------------------------------------------------------------
 
 	def leavegame(self, stealth=False):
-		if self.mode is None:
-			raise network.NotConnected()
-		if self.mode is not ClientMode.Server:
-			raise network.NotInServerMode("We are not in server mode")
+		self.assert_connection()
 		if self.game is None:
 			raise network.NotInGameLobby("We are not in a game lobby")
 		self.log.debug("[LEAVE]")
@@ -281,21 +256,14 @@ class Client(object):
 			self.game = None
 			return
 		self.send(packets.client.cmd_leavegame())
-		packet = self.connection.receive_packet(packets.cmd_ok)
-		if packet is None:
-			raise network.FatalError("No reply from server")
-		elif not isinstance(packet[1], packets.cmd_ok):
-			raise network.CommandError("Unexpected packet")
+		self.connection.receive_packet(packets.cmd_ok)
 		self.game = None
 		return True
 
 	#-----------------------------------------------------------------------------
 
 	def chat(self, message):
-		if self.mode is None:
-			raise network.NotConnected()
-		if self.mode is not ClientMode.Server:
-			raise network.NotInServerMode("We are not in server mode")
+		self.assert_connection()
 		if self.game is None:
 			raise network.NotInGameLobby("We are not in a game lobby")
 		self.log.debug("[CHAT] %s" % (message))
