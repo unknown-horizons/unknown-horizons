@@ -26,7 +26,7 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfileManager
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.ai.aiplayer.strategy.strategymanager import StrategyManager
-from horizons.component.stancecomponent import  NoneStance
+from horizons.component.stancecomponent import NoneStance
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.weaponholder import MovingWeaponHolder
 

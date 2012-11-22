@@ -21,16 +21,16 @@
 
 from collections import defaultdict
 import glob
+import logging
 import os
 import os.path
 import random
-import traceback
-import time
 import tempfile
-import logging
+import time
+import traceback
+
 from fife import fife
 from fife.extensions import pychan
-from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 
 import horizons.globals
 import horizons.main
@@ -38,6 +38,7 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
+from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions

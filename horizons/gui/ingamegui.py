@@ -273,7 +273,7 @@ class IngameGui(LivingObject):
 		self.cityinfo.offset = (xoff, yoff)
 		self.cityinfo.position_technique = "{pos[0]}{off[0]:+d}:{pos[1]}{off[1]:+d}".format(
 				pos=self.cityinfo.pos,
-				off=self.cityinfo.offset )
+				off=self.cityinfo.offset)
 		self.cityinfo.hide()
 		self.cityinfo.show()
 
