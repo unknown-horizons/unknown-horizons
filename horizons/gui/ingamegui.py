@@ -254,21 +254,21 @@ class IngameGui(LivingObject):
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		resbar = self.resource_overview.get_size()
 		is_foreign = (self.settlement.owner != self.session.world.player)
-		blocked = self.cityinfo.size[0] + int(1.6*self.minimap.get_size()[1])
-		# minimap[1] returns width! Use 1.6*width because of the GUI around it
+		blocked = self.cityinfo.size[0] + int(1.5*self.minimap.get_size()[1])
+		# minimap[1] returns width! Use 1.5*width because of the GUI around it
 
 		if is_foreign: # other player, no resbar exists
 			self.cityinfo.pos = ('center', 'top')
-			xoff = +0
-			yoff = +4
+			xoff = 0
+			yoff = 19
 		elif blocked < width < resbar[0] + blocked: # large resbar / small resolution
 			self.cityinfo.pos = ('center', 'top')
-			xoff = +0
-			yoff = -21 # upper screen edge
+			xoff = 0
+			yoff = 0 # upper screen edge
 		else:
 			self.cityinfo.pos = ('left', 'top')
 			xoff = resbar[0] + (width - blocked - resbar[0]) // 2
-			yoff = +4
+			yoff = 24
 
 		self.cityinfo.offset = (xoff, yoff)
 		self.cityinfo.position_technique = "{pos[0]}{off[0]:+d}:{pos[1]}{off[1]:+d}".format(
