@@ -61,7 +61,7 @@ class IngameGui(LivingObject):
 	minimap = livingProperty()
 
 	styles = {
-		'city_info' : 'city_info',
+		'city_info' : 'resource_bar',
 		'change_name' : 'book',
 		'save_map' : 'book',
 		'chat' : 'book',
