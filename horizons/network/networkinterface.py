@@ -28,7 +28,7 @@ from horizons.util.python.singleton import ManualConstructionSingleton
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
 from horizons.network.client import Client
-from horizons.network import CommandError, NetworkException, FatalError
+from horizons.network import CommandError, NetworkException, FatalError, packets
 
 import logging
 import uuid
@@ -71,7 +71,7 @@ class NetworkInterface(object):
 		return self.game2mpgame(game)
 
 	def isconnected(self):
-		return self._client.isconnected()
+		return self._connection.is_connected
 
 	def isjoined(self):
 		return self._client.game is not None
@@ -98,6 +98,7 @@ class NetworkInterface(object):
 		try:
 			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress,
 			                      clientaddress, color, self.__get_client_id())
+			self._connection = self._client.connection
 		except NetworkException as e:
 			raise RuntimeError(e)
 
@@ -142,16 +143,19 @@ class NetworkInterface(object):
 
 	def ping(self):
 		"""calls _client.ping until all packets are received"""
-		if self._client.isconnected():
+		if self._connection.is_connected:
 			try:
-				while self._client.ping(): # ping receives packets
+				while self._connection.ping(): # ping receives packets
 					pass
 			except NetworkException as e:
 				self._handle_exception(e)
 
 	def set_props(self, props):
 		try:
-			self._client.setprops(props)
+			self.log.debug("[SETPROPS]")
+			self._client.assert_connection()
+			self._connection.send(packets.client.cmd_sessionprops(props))
+			self._connection.receive_packet(packets.cmd_ok)
 		except NetworkException as e:
 			self._handle_exception(e)
 			return False
@@ -163,12 +167,26 @@ class NetworkInterface(object):
 			return self.set_props({'lang': lang})
 		return True
 
-	def creategame(self, mapname, maxplayers, name, maphash="", password=""):
-		self.log.debug("[CREATEGAME] %s(h=%s), %s, %s, %s", mapname, maphash, maxplayers, name)
+	def creategame(self, mapname, maxplayers, gamename, maphash="", password=""):
+		self.log.debug("[CREATEGAME] %s(h=%s), %s, %s, %s", mapname, maphash, maxplayers, gamename)
 		try:
-			game = self._client.creategame(mapname, maxplayers, name, maphash, password)
+			self._client.assert_connection()
+			self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
+			self._connection.send(packets.client.cmd_creategame(
+				clientver=self._client.version,
+				clientid=self._client.clientid,
+				playername=self._client.name,
+				playercolor=self._client.color,
+				gamename=gamename,
+				mapname=mapname,
+				maxplayers=maxplayers,
+				maphash=maphash,
+				password=password
+			))
+			packet = self._connection.receive_packet(packets.server.data_gamestate)
+			game = self._client.game = packet[1].game
 		except NetworkException as e:
-			fatal = self._handle_exception(e)
+			self._handle_exception(e)
 			return None
 		return self.game2mpgame(game)
 
@@ -178,7 +196,7 @@ class NetworkInterface(object):
 		try:
 			while i < 10: # FIXME: try 10 different names and colors
 				try:
-					self._client.joingame(uuid, password, fetch)
+					self._joingame(uuid, password, fetch)
 					return True
 				except CommandError as e:
 					self.log.debug("NetworkInterface: failed to join")
@@ -189,14 +207,35 @@ class NetworkInterface(object):
 					else:
 						raise
 				i += 1
-			self._client.joingame(uuid, password, fetch)
+			self._joingame(uuid, password, fetch)
 		except NetworkException as e:
 			self._handle_exception(e)
 		return False
 
+	def _joingame(self, uuid, password="", fetch=False):
+		self._client.assert_connection()
+		self.log.debug("[JOIN] %s" % (uuid))
+		self._connection.send(packets.client.cmd_joingame(
+			uuid=uuid,
+			clientver=self._client.version,
+			clientid=self._client.clientid,
+			playername=self._client.name,
+			playercolor=self._client.color,
+			password=password,
+			fetch=fetch
+		))
+		packet = self._connection.receive_packet(packets.server.data_gamestate)
+		self._client.game = packet[1].game
+		return self._client.game
+
 	def leavegame(self):
 		try:
-			self._client.leavegame()
+			self._client.assert_connection()
+			self._client.assert_lobby()
+			self.log.debug("[LEAVE]")
+			self._connection.send(packets.client.cmd_leavegame())
+			self._connection.receive_packet(packets.cmd_ok)
+			self._client.game = None
 		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			if fatal:
@@ -205,32 +244,49 @@ class NetworkInterface(object):
 
 	def chat(self, message):
 		try:
-			self._client.chat(message)
+			self._client.assert_connection()
+			self._client.assert_lobby()
+			self.log.debug("[CHAT] %s" % (message))
+			self._connection.send(packets.client.cmd_chatmsg(message))
 		except NetworkException as e:
 			self._handle_exception(e)
 			return False
 		return True
 
-	def change_name(self, new_nick, save=True):
-		""" see network/client.py -> changename() for _important_ return values"""
+	def change_name(self, new_name, save=True):
 		if save:
-			horizons.globals.fife.set_uh_setting("Nickname", new_nick)
+			horizons.globals.fife.set_uh_setting("Nickname", new_name)
 			horizons.globals.fife.save_settings()
+
 		try:
-			return self._client.changename(new_nick)
+			if self._client.name == new_name:
+				return True
+			self.log.debug("[CHANGENAME] %s" % (new_name))
+			if self._client.mode is None or self._client.game is None:
+				self._client.name = new_name
+				return True
+			self._connection.send(packets.client.cmd_changename(new_name))
+			return False
 		except NetworkException as e:
 			self._handle_exception(e)
 			return False
 
 	def change_color(self, new_color, save=True):
-		""" see network/client.py -> changecolor() for _important_ return values"""
 		if new_color > len(set(Color)):
 			new_color %= len(set(Color))
 		if save:
 			horizons.globals.fife.set_uh_setting("ColorID", new_color)
 			horizons.globals.fife.save_settings()
+
 		try:
-			return self._client.changecolor(new_color)
+			if self._client.color == new_color:
+				return True
+			self.log.debug("[CHANGECOLOR] %s" % (new_color))
+			if self._client.mode is None or self._client.game is None:
+				self._client.color = new_color
+				return True
+			self._connection.send(packets.client.cmd_changecolor(new_color))
+			return False
 		except NetworkException as e:
 			self._handle_exception(e)
 			return False
@@ -305,7 +361,12 @@ class NetworkInterface(object):
 		"""Returns a list of active games or None on fatal error"""
 		ret_mp_games = []
 		try:
-			games = self._client.listgames(only_this_version=only_this_version_allowed)
+			self._client.assert_connection()
+			self.log.debug("[LIST]")
+			version = self._client.version if only_this_version_allowed else -1
+			self._connection.send(packets.client.cmd_listgames(version))
+			packet = self._connection.receive_packet(packets.server.data_gameslist)
+			games = packet[1].games
 		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			return [] if not fatal else None
@@ -318,7 +379,7 @@ class NetworkInterface(object):
 		"""
 		Sends packet to all players, that are part of the game
 		"""
-		if self._client.isconnected():
+		if self._connection.is_connected:
 			try:
 				self._client.send(packet)
 			except NetworkException as e:
@@ -330,7 +391,7 @@ class NetworkInterface(object):
 		@return: list of packets
 		"""
 		try:
-			while self._client.ping(): # ping receives packets
+			while self._connection.ping(): # ping receives packets
 				pass
 		except NetworkException as e:
 			self.log.debug("ping in receive_all failed: "+str(e))
@@ -358,14 +419,12 @@ class NetworkInterface(object):
 			return False
 
 	def toggle_ready(self):
-		self._client.toggleready()
+		self.log.debug("[TOGGLEREADY]")
+		self._connection.send(packets.client.cmd_toggleready())
 
 	def kick(self, player_sid):
-		self._client.kick(player_sid)
-
-	#TODO
-	def send_fetch_game(self, clientversion, uuid):
-		self._client.send_fetch_game(clientversion, uuid)
+		self.log.debug("[KICK]")
+		self._connection.send(packets.client.cmd_kickplayer(player_sid))
 
 
 class MPGame(object):

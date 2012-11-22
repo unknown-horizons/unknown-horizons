@@ -82,9 +82,6 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def ping(self):
-		return self.connection.ping()
-
 	def connect(self):
 		packet = self.connection.connect()
 		self.sid = packet[1].sid
@@ -97,11 +94,6 @@ class Client(object):
 	def disconnect(self, **kwargs):
 		self.mode = None
 		self.connection.disconnect(**kwargs)
-
-	#-----------------------------------------------------------------------------
-
-	def isconnected(self):
-		return self.connection.is_connected
 
 	#-----------------------------------------------------------------------------
 
@@ -179,7 +171,10 @@ class Client(object):
 			myself = (player.sid == self.sid)
 			if myself:
 				# this will destroy self.game
-				self.leavegame(stealth=True)
+				self.assert_connection()
+				self.assert_lobby()
+				self.log.debug("[LEAVE]")
+				self.game = None
 			self.call_callbacks("lobbygame_kick", game, player, myself)
 
 		return False
@@ -190,102 +185,9 @@ class Client(object):
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 
-	#-----------------------------------------------------------------------------
-
-	def setprops(self, lang):
-		self.assert_connection()
-		self.log.debug("[SETPROPS]")
-		self.send(packets.client.cmd_sessionprops(lang))
-		self.connection.receive_packet(packets.cmd_ok)
-		return True
-
-	#-----------------------------------------------------------------------------
-
-	def listgames(self, mapname=None, maxplayers=None, only_this_version=False):
-		self.assert_connection()
-		self.log.debug("[LIST]")
-		version = self.version if only_this_version else -1
-		self.send(packets.client.cmd_listgames(version, mapname, maxplayers))
-		packet = self.connection.receive_packet(packets.server.data_gameslist)
-		return packet[1].games
-
-	#-----------------------------------------------------------------------------
-
-	def creategame(self, mapname, maxplayers, gamename, maphash="", password=""):
-		self.assert_connection()
-		self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
-		self.send(packets.client.cmd_creategame(
-			clientver   = self.version,
-			clientid    = self.clientid,
-			playername  = self.name,
-			playercolor = self.color,
-			gamename    = gamename,
-			mapname     = mapname,
-			maxplayers  = maxplayers,
-			maphash     = maphash,
-			password    = password))
-		packet = self.connection.receive_packet(packets.server.data_gamestate)
-		self.game = packet[1].game
-		return self.game
-
-	#-----------------------------------------------------------------------------
-
-	def joingame(self, uuid, password="", fetch=False):
-		self.assert_connection()
-		self.log.debug("[JOIN] %s" % (uuid))
-		self.send(packets.client.cmd_joingame(
-			uuid        = uuid,
-			clientver   = self.version,
-			clientid    = self.clientid,
-			playername  = self.name,
-			playercolor = self.color,
-			password    = password,
-			fetch       = fetch))
-		packet = self.connection.receive_packet(packets.server.data_gamestate)
-		self.game = packet[1].game
-		return self.game
-
-	#-----------------------------------------------------------------------------
-
-	def leavegame(self, stealth=False):
-		self.assert_connection()
+	def assert_lobby(self):
 		if self.game is None:
 			raise network.NotInGameLobby("We are not in a game lobby")
-		self.log.debug("[LEAVE]")
-		if stealth:
-			self.game = None
-			return
-		self.send(packets.client.cmd_leavegame())
-		self.connection.receive_packet(packets.cmd_ok)
-		self.game = None
-		return True
-
-	#-----------------------------------------------------------------------------
-
-	def chat(self, message):
-		self.assert_connection()
-		if self.game is None:
-			raise network.NotInGameLobby("We are not in a game lobby")
-		self.log.debug("[CHAT] %s" % (message))
-		self.send(packets.client.cmd_chatmsg(message))
-		return True
-
-	#-----------------------------------------------------------------------------
-
-	def changename(self, name):
-		""" NOTE: this returns False if the name must be validated by
-		the server. In that case this will trigger a lobbygame_changename-
-		event with parameter myself=True. if this functions returns true
-		your name has been changed but there was no need to sent it to
-		the server."""
-		if self.name == name:
-			return True
-		self.log.debug("[CHANGENAME] %s" % (name))
-		if self.mode is None or self.game is None:
-			self.name = name
-			return True
-		self.send(packets.client.cmd_changename(name))
-		return False
 
 	#-----------------------------------------------------------------------------
 
@@ -294,23 +196,6 @@ class Client(object):
 		if myself:
 			self.name = plnew.name
 		return True
-
-	#-----------------------------------------------------------------------------
-
-	def changecolor(self, color):
-		""" NOTE: this returns False if the name must be validated by
-		 the server. In that case this will trigger a lobbygame_changecolor-
-		 event with parameter myself=True. if this functions returns true
-		 your name has been changed but there was no need to sent it to
-		 the server."""
-		if self.color == color:
-			return True
-		self.log.debug("[CHANGECOLOR] %s" % (color))
-		if self.mode is None or self.game is None:
-			self.color = color
-			return True
-		self.send(packets.client.cmd_changecolor(color))
-		return False
 
 	#-----------------------------------------------------------------------------
 
@@ -336,25 +221,4 @@ class Client(object):
 		self.game.state = Game.State.Running
 		self.mode = ClientMode.Game
 		self.call_callbacks("game_starts", self.game)
-		return True
-
-	#-----------------------------------------------------------------------------
-
-	def toggleready(self):
-		self.log.debug("[TOGGLEREADY]")
-		self.send(packets.client.cmd_toggleready())
-		return True
-
-	#-----------------------------------------------------------------------------
-
-	def kick(self, player_sid):
-		self.log.debug("[KICK]")
-		self.send(packets.client.cmd_kickplayer(player_sid))
-		return True
-
-	#-----------------------------------------------------------------------------
-
-	#TODO
-	def send_fetch_game(self, clientversion, uuid):
-		self.send(packets.client.cmd_fetch_game(clientversion, uuid))
 		return True
