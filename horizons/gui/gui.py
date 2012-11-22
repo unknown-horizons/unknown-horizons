@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict
 import glob
 import os
 import os.path
@@ -55,26 +56,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	log = logging.getLogger("gui")
 
 	# styles to apply to a widget
-	styles = {
+	styles = defaultdict(lambda: 'book')
+	styles.update({
 	  'mainmenu': 'menu',
-	  'requirerestart': 'book',
 	  'ingamemenu': 'headline',
-	  'help': 'book',
-	  'singleplayermenu': 'book',
-	  'sp_random': 'book',
-	  'sp_scenario': 'book',
-	  'sp_free_maps': 'book',
-	  'multiplayermenu' : 'book',
-	  'multiplayer_creategame' : 'book',
-	  'multiplayer_gamelobby' : 'book',
-	  'playerdataselection' : 'book',
-	  'aidataselection' : 'book',
-	  'select_savegame': 'book',
-	  'ingame_pause': 'book',
-	  'game_settings' : 'book',
-#	  'credits': 'book',
-	  'editor_select_map': 'book',
-	  }
+	})
 
 	def __init__(self):
 		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
