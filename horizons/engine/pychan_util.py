@@ -72,7 +72,7 @@ def init_pychan():
 	from horizons.gui.widgets.progressbar import ProgressBar
 	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
 	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
-	from horizons.gui.widgets.icongroup import TabBG
+	from horizons.gui.widgets.icongroup import TabBG, TilingHBox
 	from horizons.gui.widgets.stepslider import StepSlider
 	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 	from horizons.gui.widgets.container import AutoResizeContainer
@@ -82,7 +82,9 @@ def init_pychan():
 	           Inventory, BuySellInventory, ImageFillStatusButton,
 	           ProgressBar, StepSlider, TabBG, ToggleImageButton,
 	           HealthWidget, StanceWidget, WeaponStorageWidget,
-	           AutoResizeContainer, RenameLabel, RenameImageButton]
+	           AutoResizeContainer, RenameLabel, RenameImageButton,
+	           TilingHBox,
+	           ]
 
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)

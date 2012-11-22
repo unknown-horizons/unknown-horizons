@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import Icon, VBox
+from fife.extensions.pychan.widgets import HBox, Icon, VBox
 from fife.extensions.pychan.widgets.common import IntAttr
 
 class TilingBackground(object):
@@ -64,3 +64,14 @@ class TabBG(TilingBackground, VBox):
 			start_img="top.png", tiles_img="fill.png", final_img="bottom.png",
 			**kwargs)
 
+class TilingHBox(TilingBackground, HBox):
+	"""Currently only used by cityinfo, thus using its arguments as defaults.
+	@param amount: amount of 10px tiles/panels in between left and right icon
+	"""
+	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
+	def __init__(self, **kwargs):
+		super(TilingHBox, self).__init__(
+			amount=0, name='tab_background_icons',
+			base_path="content/gui/images/background/widgets/cityinfo_",
+			start_img="left.png", tiles_img="fill.png", final_img="right.png",
+			**kwargs)
