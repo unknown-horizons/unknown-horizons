@@ -25,11 +25,14 @@ import gettext
 
 from horizons.network.common import *
 from horizons import network
-from horizons.network import packets, find_enet_module
+from horizons.network import packets, enet
 from horizons.network import NetworkException, SoftNetworkException, PacketTooLarge
 from horizons.i18n.utils import find_available_languages
 
-enet = find_enet_module(client = False)
+
+if not enet:
+	raise Exception("Could not find enet module.")
+
 
 MAX_PEERS = 4095
 CONNECTION_TIMEOUT = 500

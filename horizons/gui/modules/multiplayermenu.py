@@ -30,13 +30,12 @@ from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.savegamemanager import SavegameManager
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
-from horizons.network import find_enet_module
+from horizons.network import enet
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 from horizons.util.savegameaccessor import SavegameAccessor
 
-enet = find_enet_module()
 
 class MultiplayerMenu(object):
 	log = logging.getLogger("networkinterface")

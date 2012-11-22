@@ -26,9 +26,7 @@ try:
 except ImportError:
 	from StringIO import StringIO
 
-from horizons.network import NetworkException, SoftNetworkException, PacketTooLarge
-from horizons.network import find_enet_module
-enet = find_enet_module()
+from horizons.network import NetworkException, SoftNetworkException, PacketTooLarge, enet
 
 __version__ = '0.1'
 __all__ = [

@@ -19,11 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 import platform
 import os
 
-def find_enet_module(client=True):
+
+def find_enet_module():
+	"""Return the enet module or None.
+
+	We do not raise any errors here, because we still allow clients to play the
+	singleplayer.
+	If code requires the enet module, it should check if horizons.network.enet is
+	not None.
+	"""
 	# Try to find installed version first
 	try:
 		import enet
@@ -52,15 +59,13 @@ def find_enet_module(client=True):
 		arch_module = __import__(dir, globals(), locals(), fromlist=["enet"])
 		return arch_module.enet
 	except ImportError:
-		# ternary operator doesn't work
-		if client:
-			pass
-		else:
-			raise
+		pass
 
-	# we can't raise an ImportError here, because the game should work even when
-	# there's no enet.
 	return None
+
+
+enet = find_enet_module()
+
 
 class NetworkException(Exception):
 	pass
