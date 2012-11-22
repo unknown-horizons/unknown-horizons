@@ -64,15 +64,28 @@ class Inventory(Container):
 		if self.init_needed(inventory):
 			# this inits the logic of the inventory. @see __init__().
 			self._inited = True
-			self.ordinal = ordinal
 			self.db = db
 			self._inventory = inventory
+
+			# specific to Inventory
+			self.ordinal = ordinal
 			self._res_order = sorted(self._inventory.iterslots())
-			self.__icon = Icon(image="content/gui/icons/ship/civil_16.png")
+			self.legend = Label(name="legend")
+			self.__icon = Icon(name="legend_icon")
+			self.__icon.image = "content/gui/icons/ship/civil_16.png"
+			if isinstance(self._inventory, TotalStorage):
+				self.__icon.position = (130, 53)
+				self.legend.position = (150, 53)
+			elif isinstance(self._inventory, PositiveSizedSlotStorage):
+				self.__icon.position = ( 0, 203)
+				self.legend.position = (20, 203)
+
 		self.update()
 
 	def update(self):
 		self.removeAllChildren()
+		if self.display_legend:
+			self.addChildren(self.__icon, self.legend)
 		vbox = VBox(padding=0)
 		vbox.width = self.width
 		current_hbox = HBox(padding=0)
@@ -93,13 +106,14 @@ class Inventory(Container):
 			# limited number of slots. We have to switch unused slots with newly added ones on overflow
 
 			while len(self._res_order) + len(new_res) > self._inventory.slotnum:
-				for i in xrange( self._inventory.slotnum ):
-					# search empty slot
-					if not self._inventory[self._res_order[i]]:
-						# insert new res here
-						self._res_order[i] = new_res.pop(0)
-						if not new_res:
-							break # all done
+				for i in xrange(self._inventory.slotnum):
+					if self._inventory[self._res_order[i]]:
+						# search empty slot
+						continue
+					# insert new res here
+					self._res_order[i] = new_res.pop(0)
+					if not new_res:
+						break # all done
 
 		# add remaining slots for slotstorage or just add it without consideration for other storage kinds
 		self._res_order += new_res
@@ -138,7 +152,6 @@ class Inventory(Container):
 		height = ImageFillStatusButton.CELL_SIZE[1] * len(self._res_order) // self.items_per_line
 		self.min_size = (self.min_size[0], height)
 
-
 		if isinstance(self._inventory, TotalStorage):
 			# if it's full, the additional slots have to be marked as unusable (#1686)
 			# check for any res, the res type doesn't matter here
@@ -147,23 +160,16 @@ class Inventory(Container):
 					button = Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
 					current_hbox.addChild(button)
 
-
 		if self.display_legend:
+			limit = self._inventory.get_limit(None)
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
-				sum_stored_res = self._inventory.get_sum_of_stored_resources()
-				label = Label()
-				label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
-				label.position = (150, 53)
-				self.__icon.position = (130, 53)
-				self.addChildren(label, self.__icon)
-			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				label = Label()
+				sum_stored = self._inventory.get_sum_of_stored_resources()
 				#xgettext:python-format
-				label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
-				label.position = (20, 203)
-				self.__icon.position = (0, 203)
-				self.addChildren(label, self.__icon)
+				self.legend.text = _('{stored}/{limit}').format(stored=sum_stored, limit=limit)
+			elif isinstance(self._inventory, PositiveSizedSlotStorage):
+				#xgettext:python-format
+				self.legend.text = _('Limit: {amount}t per slot').format(amount=limit)
 
 	def apply_to_buttons(self, action, filt=None):
 		"""Applies action to all buttons shown in inventory

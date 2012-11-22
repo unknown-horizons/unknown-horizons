@@ -26,10 +26,9 @@ import bz2
 from horizons.network import packets
 from horizons import network
 from horizons.network.common import *
-from horizons.network import find_enet_module
+from horizons.network import enet
 from horizons.savegamemanager import SavegameManager
 
-enet = find_enet_module()
 # during pyenets move to cpython they renamed a few constants...
 if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(enet, 'PEER_STATE_DISCONNECT'):
 	enet.PEER_STATE_DISCONNECTED = enet.PEER_STATE_DISCONNECT

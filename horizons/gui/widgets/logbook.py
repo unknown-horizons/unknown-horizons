@@ -350,7 +350,7 @@ class LogBook(PickBeltWidget):
 		Otherwise, switch to displaying the new widget instead of hiding.
 		@param widget: 'players' or 'settlements' or 'ships'
 		"""
-		if self.stats_visible is not None and self.stats_visible == widget :
+		if self.stats_visible is not None and self.stats_visible == widget:
 			self.hide()
 		else:
 			self.show()

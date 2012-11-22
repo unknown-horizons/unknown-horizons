@@ -318,7 +318,7 @@ class BuildingTool(NavigationTool):
 								            action=building.action, level=level,
 								            action_set_id=self.buildings_action_set_ids[i])
 				self.buildings_fife_instances[building] = fife_instance
-				# remember action sets per order of occurence
+				# remember action sets per order of occurrence
 				# (this is far from good when building lines, but suffices for our purposes, which is mostly single build)
 				self.buildings_action_set_ids[i] = action_set_id
 
@@ -328,7 +328,7 @@ class BuildingTool(NavigationTool):
 
 			if self._class.id != BUILDINGS.WAREHOUSE:
 				# Player shouldn't be allowed to build in this case, else it can trigger
-				# a new_settlement notificaition
+				# a new_settlement notification
 				if settlement is None:
 					building.buildable = False
 

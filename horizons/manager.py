@@ -47,7 +47,7 @@ class SPManager(LivingObject):
 		# if we are in demo playback mode, every incoming command has to be thrown away.
 		if self.commands:
 			return
-		ret = command(issuer = self.session.world.player) # actually execute the command
+		ret = command(issuer=self.session.world.player) # actually execute the command
 		# some commands might have a return value, so forward it
 		return ret
 

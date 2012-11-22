@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.widgets import HBox
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets.inventory import Inventory
@@ -33,15 +33,22 @@ class BuySellInventory(Inventory):
 	TabWidget, which will autoset it (was made to be done this way).
 
 	XML use: <BuySellInventory />, can take all parameters of an Inventory.
+	Note that BuySellInventory has False as default value for display_legend
+	where Inventory has True.
 	"""
+	def __init__(self, display_legend=False, **kwargs):
+		super(BuySellInventory, self).__init__(display_legend=display_legend, **kwargs)
+
 	def init(self, db, inventory, limits, selling):
 		if self.init_needed(inventory, limits, selling):
 			self._inited = True
 			self.db = db
 			self._inventory = inventory
+
+			# Specific to BuySellInventory
 			self._limits = limits
 			self._selling = selling
-			self.__icon = Icon(image="content/gui/icons/ship/civil_16.png")
+
 		self.update()
 
 	def init_needed(self, inventory, limits, selling):
@@ -49,7 +56,7 @@ class BuySellInventory(Inventory):
 		       self._limits != limits or self._selling != selling
 
 	def _draw(self, vbox, current_hbox, index=0):
-		"""Draws the inventory. """
+		"""Draws the inventory."""
 		for resid, limit in sorted(self._limits.iteritems()):
 			if self._selling:
 				amount = max(0, self._inventory[resid] - limit)
@@ -64,14 +71,7 @@ class BuySellInventory(Inventory):
 
 			if index % self.items_per_line == self.items_per_line - 1:
 				vbox.addChild(current_hbox)
-				current_hbox = HBox(padding = 0)
+				current_hbox = HBox(padding=0)
 			index += 1
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
-
-		label = Label()
-		#xgettext:python-format
-		label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
-		label.position = (110, 150)
-		self.__icon.position = (90, 150)
-		self.addChildren(label, self.__icon)
