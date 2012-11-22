@@ -50,19 +50,20 @@ class NetworkInterface(object):
 		self.cbs_error = [] # callbacks on error that looks like this: error(exception, fatal=True)
 
 		# create a game_details_changed meta callback
-		metacb = self._cb_game_details_changed
-		self.register_player_joined_callback(metacb)
-		self.register_player_left_callback(metacb)
-		self.register_player_changed_name_callback(metacb)
-		self.register_player_changed_color_callback(metacb)
-		self.register_player_toggle_ready_callback(metacb)
+		for t in ('lobbygame_join', 'lobbygame_leave', 'lobbygame_changename',
+		          'lobbygame_changecolor', 'lobbygame_toggleready'):
+			self._client.subscribe(t, self._cb_game_details_changed)
 
-		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
-		self._client.register_callback("game_starts",      self._cb_game_starts)
-		self._client.register_callback("game_data",        self._cb_game_data)
+		self._client.subscribe("lobbygame_starts", self._cb_game_prepare)
+		self._client.subscribe("game_starts", self._cb_game_starts)
+		self._client.subscribe("game_data", self._cb_game_data)
+
 		self.received_packets = []
 
 		ExtScheduler().add_new_object(self.ping, self, self.PING_INTERVAL, -1)
+
+	def subscribe(self, *args, **kwargs):
+		self._client.subscribe(*args, **kwargs)
 
 	def get_game(self):
 		game = self._client.game
@@ -290,33 +291,6 @@ class NetworkInterface(object):
 		except NetworkException as e:
 			self._handle_exception(e)
 			return False
-
-	def register_chat_callback(self, function):
-		self._client.register_callback("lobbygame_chat", function)
-
-	def register_player_joined_callback(self, function):
-		self._client.register_callback("lobbygame_join", function)
-
-	def register_player_left_callback(self, function):
-		self._client.register_callback("lobbygame_leave", function)
-
-	def register_game_terminated_callback(self, function):
-		self._client.register_callback("lobbygame_terminate", function)
-
-	def register_player_toggle_ready_callback(self, function):
-		self._client.register_callback("lobbygame_toggleready", function)
-
-	def register_kick_callback(self, function):
-		self._client.register_callback("lobbygame_kick", function)
-
-	def register_player_changed_name_callback(self, function):
-		self._client.register_callback("lobbygame_changename", function)
-
-	def register_player_changed_color_callback(self, function):
-		self._client.register_callback("lobbygame_changecolor", function)
-
-	def register_player_fetch_game_callback(self, function):
-		self._client.register_callback("savegame_data", function)
 
 	def register_game_details_changed_callback(self, function, unique=True):
 		if unique and function in self.cbs_game_details_changed:

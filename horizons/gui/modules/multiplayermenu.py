@@ -109,21 +109,19 @@ class MultiplayerMenu(object):
 		self.__toggle_ready()
 
 	def __connect_to_server(self):
-		NetworkInterface().register_chat_callback(self.__receive_chat_message)
+		NetworkInterface().subscribe("lobbygame_chat", self.__receive_chat_message)
 		NetworkInterface().register_game_prepare_callback(self.__prepare_game)
 		NetworkInterface().register_game_starts_callback(self.__start_game)
 		NetworkInterface().register_error_callback(self._on_error)
-
-		NetworkInterface().register_game_terminated_callback(self.__game_terminated)
 		NetworkInterface().register_game_details_changed_callback(self.__update_game_details)
-		NetworkInterface().register_player_joined_callback(self.__player_joined)
-		NetworkInterface().register_player_left_callback(self.__player_left)
-		NetworkInterface().register_player_changed_name_callback(self.__player_changed_name)
-		NetworkInterface().register_player_changed_color_callback(self.__player_changed_color)
-		NetworkInterface().register_player_toggle_ready_callback(self.__player_toggled_ready)
-		NetworkInterface().register_kick_callback(self.__player_kicked)
 
-		NetworkInterface().register_player_fetch_game_callback(self.__fetch_game) #TODO
+		NetworkInterface().subscribe("lobbygame_terminate", self.__game_terminated)
+		NetworkInterface().subscribe("lobbygame_join", self.__player_joined)
+		NetworkInterface().subscribe("lobbygame_leave", self.__player_left)
+		NetworkInterface().subscribe("lobbygame_changename", self.__player_changed_name)
+		NetworkInterface().subscribe("lobbygame_changecolor", self.__player_changed_color)
+		NetworkInterface().subscribe("lobbygame_toggleready", self.__player_toggled_ready)
+		NetworkInterface().subscribe("lobbygame_kick", self.__player_kicked)
 
 		try:
 			NetworkInterface().connect()

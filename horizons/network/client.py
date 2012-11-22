@@ -45,40 +45,33 @@ class Client(object):
 		self.game          = None
 		self.clientid      = clientid
 		self.color         = color
-		self.callbacks     = {
-			'lobbygame_chat':        [],
-			'lobbygame_join':        [],
-			'lobbygame_leave':       [],
-			'lobbygame_terminate':   [],
-			'lobbygame_toggleready': [],
-			'lobbygame_changename':  [],
-			'lobbygame_kick':        [],
-			'lobbygame_changecolor': [],
-			'lobbygame_state':       [],
-			'lobbygame_starts':      [],
-			'game_starts':    [],
-			'game_data':      [],
-			'savegame_data':  [], #TODO
-		}
-		self.register_callback('lobbygame_changename',  self.onchangename, True)
-		self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
 
-	def register_callback(self, type, callback, prepend=False, unique=True):
-		if type in self.callbacks:
-			if unique and callback in self.callbacks[type]:
-				return
-			if prepend:
-				self.callbacks[type].insert(0, callback)
-			else:
-				self.callbacks[type].append(callback)
-		else:
+		self._callback_types = ('lobbygame_chat', 'lobbygame_join', 'lobbygame_leave',
+		                        'lobbygame_terminate', 'lobbygame_toggleready',
+		                        'lobbygame_changename', 'lobbygame_kick',
+		                        'lobbygame_changecolor', 'lobbygame_state',
+		                        'lobbygame_starts', 'game_starts', 'game_data')
+
+		self._callbacks = dict((t, []) for t in self._callback_types)
+
+		self.subscribe('lobbygame_changename',  self.onchangename, prepend=True)
+		self.subscribe('lobbygame_changecolor', self.onchangecolor, prepend=True)
+
+	def subscribe(self, type, callback, prepend=False):
+		if type not in self._callback_types:
 			raise TypeError("Unsupported type")
 
-	def call_callbacks(self, type, *args):
-		if not type in self.callbacks:
+		if prepend:
+			self._callbacks[type].insert(0, callback)
+		else:
+			self._callbacks[type].append(callback)
+
+	def broadcast(self, type, *args):
+		if not type in self._callback_types:
 			return
-		for callback in self.callbacks[type]:
-			callback(*args)
+
+		for cb in self._callbacks[type]:
+			cb(*args)
 
 	#-----------------------------------------------------------------------------
 
@@ -121,12 +114,12 @@ class Client(object):
 			# ignore packet if we are not a game lobby
 			if self.game is None:
 				return True
-			self.call_callbacks("lobbygame_chat", self.game, packet[1].playername, packet[1].chatmsg)
+			self.broadcast("lobbygame_chat", self.game, packet[1].playername, packet[1].chatmsg)
 		elif isinstance(packet[1], packets.server.data_gamestate):
 			# ignore packet if we are not a game lobby
 			if self.game is None:
 				return True
-			self.call_callbacks("lobbygame_state", self.game, packet[1].game)
+			self.broadcast("lobbygame_state", self.game, packet[1].game)
 
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game
@@ -139,18 +132,18 @@ class Client(object):
 						found = pold
 						myself = (pnew.sid == self.sid)
 						if pnew.name != pold.name:
-							self.call_callbacks("lobbygame_changename", self.game, pold, pnew, myself)
+							self.broadcast("lobbygame_changename", self.game, pold, pnew, myself)
 						if pnew.color != pold.color:
-							self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew, myself)
+							self.broadcast("lobbygame_changecolor", self.game, pold, pnew, myself)
 						if pnew.ready != pold.ready:
-							self.call_callbacks("lobbygame_toggleready", self.game, pold, pnew, myself)
+							self.broadcast("lobbygame_toggleready", self.game, pold, pnew, myself)
 						break
 				if found is None:
-					self.call_callbacks("lobbygame_join", self.game, pnew)
+					self.broadcast("lobbygame_join", self.game, pnew)
 				else:
 					oldplayers.remove(found)
 			for pold in oldplayers:
-				self.call_callbacks("lobbygame_leave", self.game, pold)
+				self.broadcast("lobbygame_leave", self.game, pold)
 			return True
 		elif isinstance(packet[1], packets.server.cmd_preparegame):
 			# ignore packet if we are not a game lobby
@@ -164,7 +157,7 @@ class Client(object):
 			self.ongamestart()
 		elif isinstance(packet[1], packets.client.game_data):
 			self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
-			self.call_callbacks("game_data", packet[1].data)
+			self.broadcast("game_data", packet[1].data)
 		elif isinstance(packet[1], packets.server.cmd_kickplayer):
 			player = packet[1].player
 			game = self.game
@@ -175,7 +168,7 @@ class Client(object):
 				self.assert_lobby()
 				self.log.debug("[LEAVE]")
 				self.game = None
-			self.call_callbacks("lobbygame_kick", game, player, myself)
+			self.broadcast("lobbygame_kick", game, player, myself)
 
 		return False
 
@@ -210,7 +203,7 @@ class Client(object):
 	def ongameprepare(self):
 		self.log.debug("[GAMEPREPARE]")
 		self.game.state = Game.State.Prepare
-		self.call_callbacks("lobbygame_starts", self.game)
+		self.broadcast("lobbygame_starts", self.game)
 		self.send(packets.client.cmd_preparedgame())
 		return True
 
@@ -220,5 +213,5 @@ class Client(object):
 		self.log.debug("[GAMESTART]")
 		self.game.state = Game.State.Running
 		self.mode = ClientMode.Game
-		self.call_callbacks("game_starts", self.game)
+		self.broadcast("game_starts", self.game)
 		return True
