@@ -19,21 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+import uuid
+from collections import defaultdict
+
 import horizons.globals
 
+from horizons import network
+from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
+from horizons.extscheduler import ExtScheduler
+from horizons.messaging.messagebus import SimpleMessageBus
+from horizons.network import CommandError, NetworkException, FatalError, packets
+from horizons.network.common import Game
+from horizons.network.connection import Connection
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.python import parse_port
 from horizons.util.python.singleton import ManualConstructionSingleton
-from horizons.extscheduler import ExtScheduler
-from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
-from horizons import network
-from horizons.network import CommandError, NetworkException, FatalError, packets
-from horizons.network.common import Game
-from horizons.network.connection import Connection
-
-import logging
-import uuid
 
 
 class ClientMode(object):
@@ -73,46 +75,31 @@ class NetworkInterface(object):
 
 		self.__setup_client()
 
-		self._callback_types = ('lobbygame_chat', 'lobbygame_join', 'lobbygame_leave',
-		                        'lobbygame_terminate', 'lobbygame_toggleready',
-		                        'lobbygame_changename', 'lobbygame_kick',
-		                        'lobbygame_changecolor', 'lobbygame_state',
-		                        'lobbygame_starts', 'game_starts', 'game_data',
-		                        'game_details_changed', 'game_prepare', 'error')
+		message_types = ('lobbygame_chat', 'lobbygame_join', 'lobbygame_leave',
+		                 'lobbygame_terminate', 'lobbygame_toggleready',
+		                 'lobbygame_changename', 'lobbygame_kick',
+		                 'lobbygame_changecolor', 'lobbygame_state',
+		                 'lobbygame_starts', 'game_starts', 
+		                 'game_details_changed', 'game_prepare', 'error')
 
-		self._callbacks = dict((t, []) for t in self._callback_types)
+		self._messagebus = SimpleMessageBus(message_types)
+		self.subscribe = self._messagebus.subscribe
+		self.broadcast = self._messagebus.broadcast
 
-		# create a game_details_changed meta callback
+		# create a game_details_changed callback
 		for t in ('lobbygame_join', 'lobbygame_leave', 'lobbygame_changename',
 		          'lobbygame_changecolor', 'lobbygame_toggleready'):
 			self.subscribe(t, lambda *a, **b: self.broadcast("game_details_changed"))
 
 		self.subscribe("lobbygame_starts", self._on_lobbygame_starts)
-		self.subscribe("game_data", self._on_game_data)
-		self.subscribe('lobbygame_changename',  self._on_change_name, prepend=True)
-		self.subscribe('lobbygame_changecolor', self._on_change_color, prepend=True)
+		self.subscribe('lobbygame_changename',  self._on_change_name)
+		self.subscribe('lobbygame_changecolor', self._on_change_color)
 
 		self.received_packets = []
 
 		ExtScheduler().add_new_object(self.ping, self, self.PING_INTERVAL, -1)
 
 		self._client_data = ClientData()
-
-	def subscribe(self, type, callback, prepend=False):
-		if type not in self._callback_types:
-			raise TypeError("Unsupported type")
-
-		if prepend:
-			self._callbacks[type].insert(0, callback)
-		else:
-			self._callbacks[type].append(callback)
-
-	def broadcast(self, type, *args, **kwargs):
-		if not type in self._callback_types:
-			return
-
-		for cb in self._callbacks[type]:
-			cb(*args, **kwargs)
 
 	def get_game(self):
 		game = self._game
@@ -463,7 +450,7 @@ class NetworkInterface(object):
 			self._on_game_start()
 		elif isinstance(packet[1], packets.client.game_data):
 			self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
-			self.broadcast("game_data", packet[1].data)
+			self._on_game_data(packet[1].data)
 		elif isinstance(packet[1], packets.server.cmd_kickplayer):
 			player = packet[1].player
 			game = self._game
