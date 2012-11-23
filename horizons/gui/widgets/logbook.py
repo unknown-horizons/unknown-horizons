@@ -26,7 +26,6 @@ from itertools import groupby
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.util.python.callback import Callback
-from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
@@ -34,8 +33,7 @@ from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.scenario.actions import show_message
 
-@metaChangeListenerDecorator("pause_request")
-@metaChangeListenerDecorator("unpause_request")
+
 class LogBook(PickBeltWidget):
 	"""Implementation of the logbook as described here:
 	http://wiki.unknown-horizons.org/w/Message_System
