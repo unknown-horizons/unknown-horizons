@@ -100,10 +100,23 @@ class ResourceDeposit(NatureBuilding):
 	walkable = False
 
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
-
 	def __init__(self, *args, **kwargs):
 		super(Fish, self).__init__(*args, **kwargs)
+		self.last_usage_tick = -1000000 # a long time ago
 
 		# Make the fish run at different speeds
 		multiplier = 0.7 + self.session.random.random() * 0.6
 		self._instance.setTimeMultiplier(multiplier)
+
+	def load(self, db, worldid):
+		super(Fish, self).load(db, worldid)
+		self.last_usage_tick = db.get_last_fish_usage_tick(worldid)
+
+	def save(self, db):
+		super(Fish, self).save(db)
+		translated_tick = self.last_usage_tick - Scheduler().cur_tick # pre-translate for the loading process
+		db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)", self.worldid, translated_tick)
+
+	def remove_incoming_collector(self, collector):
+		super(Fish, self).remove_incoming_collector(collector)
+		self.last_usage_tick = Scheduler().cur_tick

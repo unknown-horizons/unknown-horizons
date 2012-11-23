@@ -601,5 +601,10 @@ CREATE TABLE "last_active_settlement" (
 	"value" INT NOT NULL
 );
 
+CREATE TABLE "fish_data" (
+	"last_usage_tick" INT NOT NULL
+);
+
+
 
 COMMIT;

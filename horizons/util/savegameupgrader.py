@@ -316,6 +316,11 @@ class SavegameUpgrader(object):
 			data = json.dumps(coords_list)
 			db("INSERT INTO settlement_tiles(rowid, data) VALUES(?, ?)", settlement_id, data)
 
+	def _upgrade_to_rev70(self, db):
+		db('CREATE TABLE "fish_data" ("last_usage_tick" INT NOT NULL)')
+		for row in db("SELECT rowid FROM building WHERE type = ?", BUILDINGS.FISH_DEPOSIT):
+			db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)", row[0], -1000000)
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -375,6 +380,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev68(db)
 			if rev < 69:
 				self._upgrade_to_rev69(db)
+			if rev < 70:
+				self._upgrade_to_rev70(db)
 
 			db('COMMIT')
 			db.close()
