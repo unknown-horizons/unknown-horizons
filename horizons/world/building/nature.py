@@ -98,3 +98,9 @@ class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 	def remove_incoming_collector(self, collector):
 		super().remove_incoming_collector(collector)
 		self.last_usage_tick = Scheduler().cur_tick
+
+
+class Ambient(NatureBuilding):
+	"""Class for ambient graphics such as rocks and flowers."""
+	buildable_upon = True
+	layer = LAYERS.OBJECTS
