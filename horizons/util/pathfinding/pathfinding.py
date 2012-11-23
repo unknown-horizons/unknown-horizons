@@ -141,13 +141,16 @@ class FindPath(object):
 		for coords in source_coords:
 			to_check[coords] = (None, 0, destination_to_tuple_distance_func(destination, coords))
 
-		# if one of the dest_coords has been processed
-		# (i.e. is in checked), a good path is found
-		dest_coords = destination.get_coordinates()
-		dest_coords = set(dest_coords)
+		# if any node in dest_coords_set has been processed
+		# (i.e. is in checked), a good path has been found
+		dest_coords_set = destination.get_coordinates()
+		dest_coords_set = set(dest_coords_set)
 		if not self.make_target_walkable:
 			# restrict destination coords to walkable tiles, by default they are counted as walkable
-			dest_coords = dest_coords.intersection(self.path_nodes)
+			# the manual set intersection is used because set.intersection(dict) doesn't take advantage of the fast lookup
+			dest_coords_set = set(coords for coords in dest_coords_set if coords in self.path_nodes)
+		if not dest_coords_set:
+			return None
 
 		from heapq import heappush, heappop
 		heap = []
@@ -185,7 +188,7 @@ class FindPath(object):
 				                 i not in checked
 				                 and (   i in path_nodes
 				                      or i in source_coords
-				                      or i in dest_coords)
+				                      or i in dest_coords_set)
 				                 and i not in blocked_coords )
 			else:
 				# all relevant vertical and horizontal neighbors
@@ -194,7 +197,7 @@ class FindPath(object):
 				              if
 				                   (   i in path_nodes
 				                    or i in source_coords
-				                    or i in dest_coords )
+				                    or i in dest_coords_set )
 			                      and i not in checked
 			                      and i not in blocked_coords )
 
@@ -235,7 +238,7 @@ class FindPath(object):
 			del to_check[cur_node_coords]
 
 			# check if cur_node is at the destination
-			if cur_node_coords in dest_coords:
+			if cur_node_coords in dest_coords_set:
 				# we're done.
 				# insert steps of path to a list and return it
 				path = [ cur_node_coords ]
