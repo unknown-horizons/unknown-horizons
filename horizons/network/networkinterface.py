@@ -502,51 +502,31 @@ class MPGame(object):
 	def __init__(self, game, netif):
 		self.uuid       = game.uuid
 		self.creator    = game.creator
-		self.mapname    = game.mapname
-		self.maphash    = game.maphash
-		self.maxplayers = game.maxplayers
-		self.playercnt  = game.playercnt
+		self.map_name    = game.mapname
+		self.map_hash    = game.maphash
+		self.player_limit = game.maxplayers
+		self.player_count = game.playercnt
 		self.players    = game.players
 		self.version    = game.clientversion
 		self.name       = game.name
 		self.password   = game.password
 		self.netif      = netif
 
-	def get_uuid(self):
-		return self.uuid
-
-	def get_map_name(self):
-		return self.mapname
-
-	def get_map_hash(self):
-		return self.maphash
-
+	@property
 	def is_savegame(self):
-		return bool(self.maphash)
+		return bool(self.map_hash)
 
-	def get_name(self):
-		return self.name
-
-	def get_creator(self):
-		return self.creator
-
-	def get_player_limit(self):
-		return self.maxplayers
-
-	def get_players(self):
-		return self.players
-
+	@property
 	def has_password(self):
 		return self.password
 
 	def get_player_list(self):
 		ret_players = []
-		id = 1
-		for player in self.get_players():
+		for index, player in enumerate(self.players, start=1):
 			# TODO: add support for selecting difficulty levels to the GUI
 			status = _('Ready') if player.ready else _('Not Ready')
 			ret_players.append({
-				'id':         id,
+				'id':         index,
 				'sid':        player.sid,
 				'name':       player.name,
 				'color':      Color[player.color],
@@ -556,14 +536,7 @@ class MPGame(object):
 				'difficulty': DifficultySettings.DEFAULT_LEVEL,
 				'status':     status
 				})
-			id += 1
 		return ret_players
 
-	def get_player_count(self):
-		return self.playercnt
-
-	def get_version(self):
-		return self.version
-
 	def __str__(self):
-		return "%s (%d/%d)" % (self.get_map_name(), self.get_player_count(), self.get_player_limit())
+		return "%s (%d/%d)" % (self.map_name, self.player_count, self.player_limit)

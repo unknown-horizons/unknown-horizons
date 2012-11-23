@@ -169,14 +169,14 @@ class MultiplayerMenu(object):
 		self.show_multi()
 
 	def _display_game_name(self, game):
-		same_version = game.get_version() == NetworkInterface().get_clientversion()
+		same_version = game.version == NetworkInterface().get_clientversion()
 		template = u"{password}{gamename}: {name} ({players}, {limit}){version}"
 		return template.format(
-			password="(Password!) " if game.has_password() else "",
-			name=game.get_map_name(),
-			gamename=game.get_name(),
-			players=game.get_player_count(),
-			limit=game.get_player_limit(),
+			password="(Password!) " if game.has_password else "",
+			name=game.map_name,
+			gamename=game.name,
+			players=game.player_count,
+			limit=game.player_limit,
 			version=u" " + _("Version differs!") if not same_version else u"")
 
 	def __refresh(self, play_sound=False):
@@ -217,19 +217,19 @@ class MultiplayerMenu(object):
 			if game is None:
 				return
 		#xgettext:python-format
-		self.current.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.get_map_name())
-		self.current.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.get_name())
-		self.current.findChild(name="game_creator").text = _("Creator: {game_creator}").format(game_creator=game.get_creator())
+		self.current.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.map_name)
+		self.current.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.name)
+		self.current.findChild(name="game_creator").text = _("Creator: {game_creator}").format(game_creator=game.creator)
 		#xgettext:python-format
 		self.current.findChild(name="game_playersnum").text = _("Players: {player_amount}/{player_limit}").format(
-		                           player_amount=game.get_player_count(),
-		                           player_limit=game.get_player_limit())
+		                           player_amount=game.player_count,
+		                           player_limit=game.player_limit)
 		vbox_inner = self.current.findChild(name="game_info")
-		if game.is_savegame(): # work around limitations of current systems via messages
+		if game.is_savegame: # work around limitations of current systems via messages
 			path = SavegameManager.get_multiplayersave_map(game.mapname)
 			btn_name = "save_missing_help_button"
 			btn = vbox_inner.findChild(name=btn_name)
-			if SavegameAccessor.get_hash(path) != game.get_map_hash():
+			if SavegameAccessor.get_hash(path) != game.map_hash:
 				text = ""
 				if btn is None:
 					btn = Button(name=btn_name)
@@ -272,10 +272,10 @@ class MultiplayerMenu(object):
 		self.__apply_new_color()
 
 		fetch = False
-		if game.is_savegame() and SavegameAccessor.get_hash(SavegameManager.get_multiplayersave_map(game.mapname)) != game.get_map_hash():
+		if game.is_savegame and SavegameAccessor.get_hash(SavegameManager.get_multiplayersave_map(game.map_name)) != game.map_hash:
 			fetch = True
 
-		if not NetworkInterface().joingame(game.get_uuid(), password, fetch):
+		if not NetworkInterface().joingame(game.uuid, password, fetch):
 			return False
 		self.__show_gamelobby()
 		return True
@@ -286,17 +286,17 @@ class MultiplayerMenu(object):
 			game = self.__get_selected_game()
 			if game is None:
 				return
-		if game.get_uuid() == -1: # -1 signals no game
+		if game.uuid == -1: # -1 signals no game
 			AmbientSoundComponent.play_special('error')
 			return
-		if game.get_version() != NetworkInterface().get_clientversion():
+		if game.version != NetworkInterface().get_clientversion():
 			self.show_popup(_("Wrong version"),
 			                   #xgettext:python-format
 			                _("The game's version differs from your version. "
 			                  "Every player in a multiplayer game must use the same version. "
 			                  "This can be fixed by every player updating to the latest version. "
 			                  "Game version: {game_version} Your version: {own_version}").format(
-			                  game_version=game.get_version(),
+			                  game_version=game.version,
 			                  own_version=NetworkInterface().get_clientversion()))
 			return
 
@@ -586,7 +586,7 @@ class MultiplayerMenu(object):
 			hbox.addChild(pcolor)
 			hbox.addChild(pstatus)
 
-			if NetworkInterface().get_client_name() == game.get_creator() and player['name'] != game.get_creator():
+			if NetworkInterface().get_client_name() == game.creator and player['name'] != game.creator:
 				pkick = CancelButton(name="pkick_%s" % player['name'])
 				pkick.helptext = _("Kick {player}").format(player=player['name'])
 				pkick.capture(Callback(NetworkInterface().kick, player['sid']))

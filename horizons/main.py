@@ -359,17 +359,17 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	# start new session
 	from mpsession import MPSession
 	# get random seed for game
-	uuid = game.get_uuid()
+	uuid = game.uuid
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
 	_modules.session = MPSession(_modules.gui, horizons.globals.db, NetworkInterface(), rng_seed=random)
 
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
-	if game.is_savegame():
-		map_file = SavegameManager.get_multiplayersave_map(game.get_map_name())
+	if game.is_savegame:
+		map_file = SavegameManager.get_multiplayersave_map(game.map_name)
 	else:
-		map_file = SavegameManager.get_map(game.get_map_name())
+		map_file = SavegameManager.get_map(game.map_name)
 
-	options = StartGameOptions.create_start_multiplayer(map_file, game.get_player_list(), not game.is_savegame())
+	options = StartGameOptions.create_start_multiplayer(map_file, game.get_player_list(), not game.is_savegame)
 	_modules.session.load(options)
 
 def start_multiplayer(game):
