@@ -218,6 +218,8 @@ class BUILDINGS:
 
 	BARRIER          = 71
 
+	AMBIENT          = 72
+
 	SALINE           = 86
 	PUBLIC_BATH      = 87
 
