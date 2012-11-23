@@ -34,17 +34,13 @@ class ClientMode(object):
 class Client(object):
 	log = logging.getLogger("network")
 
-	def __init__(self, name, version, server_address, client_address=None, color=None, clientid=None):
+	def __init__(self, server_address, client_address=None):
 		self.connection = Connection(self.process_async_packet, server_address, client_address)
 
-		self.name          = name
-		self.version       = version
 		self.mode          = None
 		self.sid           = None
 		self.capabilities  = None
 		self.game          = None
-		self.clientid      = clientid
-		self.color         = color
 
 		self._callback_types = ('lobbygame_chat', 'lobbygame_join', 'lobbygame_leave',
 		                        'lobbygame_terminate', 'lobbygame_toggleready',
@@ -53,9 +49,6 @@ class Client(object):
 		                        'lobbygame_starts', 'game_starts', 'game_data')
 
 		self._callbacks = dict((t, []) for t in self._callback_types)
-
-		self.subscribe('lobbygame_changename',  self.onchangename, prepend=True)
-		self.subscribe('lobbygame_changecolor', self.onchangecolor, prepend=True)
 
 	def subscribe(self, type, callback, prepend=False):
 		if type not in self._callback_types:
@@ -181,22 +174,6 @@ class Client(object):
 	def assert_lobby(self):
 		if self.game is None:
 			raise network.NotInGameLobby("We are not in a game lobby")
-
-	#-----------------------------------------------------------------------------
-
-	def onchangename(self, game, plold, plnew, myself):
-		self.log.debug("[ONCHANGENAME] %s -> %s" % (plold.name, plnew.name))
-		if myself:
-			self.name = plnew.name
-		return True
-
-	#-----------------------------------------------------------------------------
-
-	def onchangecolor(self, game, plold, plnew, myself):
-		self.log.debug("[ONCHANGECOLOR] %s: %s -> %s" % (plnew.name, plold.color, plnew.color))
-		if myself:
-			self.color = plnew.color
-		return True
 
 	#-----------------------------------------------------------------------------
 
