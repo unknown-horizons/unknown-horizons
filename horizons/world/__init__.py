@@ -175,6 +175,8 @@ class World(BuildingOwner, WorldObject):
 			for coord, tile in island.ground_map.iteritems():
 				if 'coastline' in tile.classes or 'constructible' not in tile.classes:
 					self.water_and_coastline[coord] = 1.0
+		self._init_shallow_water_bodies()
+		self.shallow_sea_number = self.shallow_water_body[(self.min_x, self.min_y)]
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
@@ -370,28 +372,38 @@ class World(BuildingOwner, WorldObject):
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
 
-	def _init_water_bodies(self):
-		"""This function runs the flood fill algorithm on the water to make it easy
-		to recognise different water bodies."""
+	@classmethod
+	def _recognize_water_bodies(cls, map_dict):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
-		self.water_body = dict.fromkeys(self.water)
-		for coords, num in self.water_body.iteritems():
+		for coords, num in map_dict.iteritems():
 			if num is not None:
 				continue
 
-			self.water_body[coords] = n
+			map_dict[coords] = n
 			queue = deque([coords])
 			while queue:
 				x, y = queue[0]
 				queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
-					if coords2 in self.water_body and self.water_body[coords2] is None:
-						self.water_body[coords2] = n
+					if coords2 in map_dict and map_dict[coords2] is None:
+						map_dict[coords2] = n
 						queue.append(coords2)
 			n += 1
+
+	def _init_water_bodies(self):
+		"""This function runs the flood fill algorithm on the water to make it easy
+		to recognise different water bodies."""
+		self.water_body = dict.fromkeys(self.water)
+		self._recognize_water_bodies(self.water_body)
+
+	def _init_shallow_water_bodies(self):
+		"""This function runs the flood fill algorithm on the water and the coast to
+		make it easy to recognise different water bodies for fishers."""
+		self.shallow_water_body = dict.fromkeys(self.water_and_coastline)
+		self._recognize_water_bodies(self.shallow_water_body)
 
 	def init_fish_indexer(self):
 		radius = Entities.buildings[ BUILDINGS.FISHER ].radius
