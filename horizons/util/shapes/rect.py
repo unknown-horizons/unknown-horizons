@@ -167,7 +167,8 @@ class Rect(Shape):
 
 	@property
 	def center(self):
-		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
+		"""Returns the center point of the rect.
+		Implemented with integer division, which means the upper left is preferred."""
 		return Point((self.right + self.left) // 2, (self.bottom + self.top) // 2)
 
 	def __contains__(self, point):
