@@ -21,7 +21,6 @@
 
 import errno
 import os
-import os.path
 import logging
 import json
 import traceback
@@ -54,8 +53,8 @@ from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS, LAYERS
-from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
-from horizons.world.managers.statusiconmanager import StatusIconManager
+from horizons.world.icons.productionfinishediconmanager import ProductionFinishedIconManager
+from horizons.world.icons.statusiconmanager import StatusIconManager
 from horizons.messaging import MessageBus
 
 class Session(LivingObject):
