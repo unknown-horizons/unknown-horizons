@@ -75,8 +75,10 @@ class GameTimer(object):
 
 	def __cmp__(self, other):
 		if self.returncode != other.returncode:
-			return self.returncode < other.returncode
-		return self.time < other.time
+			return -1 if self.returncode < other.returncode else 1
+		if self.time == other.time:
+			return 0
+		return -1 if self.time < other.time else 1
 
 def run_game_timer(game, queue, counter):
 	game.run()
@@ -86,7 +88,12 @@ def run_game_timer(game, queue, counter):
 def show_data(games):
 	print
 	for game in sorted(games):
-		print game.name, '%.3f' % game.time, ('' if game.returncode == 0 else 'ERROR')
+		s = game.time
+		h = s // 3600
+		s %= 3600
+		m = s // 60
+		s %= 60
+		print game.name, '%d:%02d:%06.3fs' % (h, m, s), game.returncode
 
 if __name__ == '__main__':
 	parser = PassThroughOptionParser()
