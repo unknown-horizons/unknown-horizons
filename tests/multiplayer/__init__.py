@@ -117,7 +117,7 @@ def test_general():
 
 		p2.joingame(p2.get_active_games()[0].uuid)
 
-		assert p2.isjoined() == True
+		assert p2.isjoined()
 
 		assert p3.get_active_games() == []
 
