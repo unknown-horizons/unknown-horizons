@@ -60,12 +60,12 @@ class MultiplayerMenu(object):
 				self.show_error_popup(headline, descr, advice, unicode(e))
 				return
 
-		if not NetworkInterface().isconnected():
+		if not NetworkInterface().is_connected:
 			connected = self.__connect_to_server()
 			if not connected:
 				return
 
-		if NetworkInterface().isjoined():
+		if NetworkInterface().is_joined:
 			if not NetworkInterface().leavegame():
 				return
 
@@ -151,7 +151,7 @@ class MultiplayerMenu(object):
 			self.quit_session(force=True)
 
 	def __cancel(self):
-		if NetworkInterface().isconnected():
+		if NetworkInterface().is_connected:
 			NetworkInterface().disconnect()
 		self.__apply_new_nickname()
 		self.__apply_new_color()
@@ -199,7 +199,7 @@ class MultiplayerMenu(object):
 
 	def __get_selected_game(self):
 		try:
-			if NetworkInterface().isjoined():
+			if NetworkInterface().is_joined:
 				return NetworkInterface().get_game()
 			else:
 				index = self.current.collectData('gamelist')

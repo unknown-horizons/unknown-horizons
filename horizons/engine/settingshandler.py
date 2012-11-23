@@ -247,7 +247,7 @@ class SettingsHandler(object):
 			try:
 				if NetworkInterface() is None:
 					NetworkInterface.create_instance()
-				NetworkInterface().network_data_changed(connect=False)
+				NetworkInterface().network_data_changed()
 			except Exception as e:
 				headline = _(u"Failed to apply new network settings.")
 				descr = _("Network features could not be initialized with the current configuration.")
