@@ -66,12 +66,12 @@ class Client(object):
 		else:
 			self._callbacks[type].append(callback)
 
-	def broadcast(self, type, *args):
+	def broadcast(self, type, *args, **kwargs):
 		if not type in self._callback_types:
 			return
 
 		for cb in self._callbacks[type]:
-			cb(*args)
+			cb(*args, **kwargs)
 
 	#-----------------------------------------------------------------------------
 

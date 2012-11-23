@@ -109,12 +109,12 @@ class MultiplayerMenu(object):
 		self.__toggle_ready()
 
 	def __connect_to_server(self):
-		NetworkInterface().subscribe("lobbygame_chat", self.__receive_chat_message)
-		NetworkInterface().register_game_prepare_callback(self.__prepare_game)
-		NetworkInterface().register_game_starts_callback(self.__start_game)
-		NetworkInterface().register_error_callback(self._on_error)
-		NetworkInterface().register_game_details_changed_callback(self.__update_game_details)
+		NetworkInterface().subscribe("game_prepare", self.__prepare_game)
+		NetworkInterface().subscribe("game_starts", self.__start_game)
+		NetworkInterface().subscribe("game_details_changed", self.__update_game_details)
+		NetworkInterface().subscribe("error", self._on_error)
 
+		NetworkInterface().subscribe("lobbygame_chat", self.__receive_chat_message)
 		NetworkInterface().subscribe("lobbygame_terminate", self.__game_terminated)
 		NetworkInterface().subscribe("lobbygame_join", self.__player_joined)
 		NetworkInterface().subscribe("lobbygame_leave", self.__player_left)

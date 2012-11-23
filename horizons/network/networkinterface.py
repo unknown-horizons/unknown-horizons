@@ -43,27 +43,38 @@ class NetworkInterface(object):
 
 	def __init__(self):
 		self.__setup_client()
-		# cbs means callbacks
-		self.cbs_game_details_changed = []
-		self.cbs_game_prepare = []
-		self.cbs_game_starts = []
-		self.cbs_error = [] # callbacks on error that looks like this: error(exception, fatal=True)
+
+		self._callback_types = ('game_details_changed', 'game_prepare', 'error')
+
+		self._callbacks = dict((t, []) for t in self._callback_types)
 
 		# create a game_details_changed meta callback
 		for t in ('lobbygame_join', 'lobbygame_leave', 'lobbygame_changename',
 		          'lobbygame_changecolor', 'lobbygame_toggleready'):
-			self._client.subscribe(t, self._cb_game_details_changed)
+			self.subscribe(t, lambda *a, **b: self.broadcast("game_details_changed"))
 
-		self._client.subscribe("lobbygame_starts", self._cb_game_prepare)
-		self._client.subscribe("game_starts", self._cb_game_starts)
-		self._client.subscribe("game_data", self._cb_game_data)
+		self.subscribe("lobbygame_starts", self._on_lobbygame_starts)
+		self.subscribe("game_data", self._on_game_data)
 
 		self.received_packets = []
 
 		ExtScheduler().add_new_object(self.ping, self, self.PING_INTERVAL, -1)
 
-	def subscribe(self, *args, **kwargs):
-		self._client.subscribe(*args, **kwargs)
+	def subscribe(self, type, callback, prepend=False):
+		if type in self._callback_types:
+			if prepend:
+				self._callbacks[type].insert(0, callback)
+			else:
+				self._callbacks[type].append(callback)
+		else:
+			self._client.subscribe(type, callback, prepend)
+
+	def broadcast(self, type, *args, **kwargs):
+		if not type in self._callback_types:
+			return
+
+		for cb in self._callbacks[type]:
+			cb(*args, **kwargs)
 
 	def get_game(self):
 		game = self._client.game
@@ -292,44 +303,12 @@ class NetworkInterface(object):
 			self._handle_exception(e)
 			return False
 
-	def register_game_details_changed_callback(self, function, unique=True):
-		if unique and function in self.cbs_game_details_changed:
-			return
-		self.cbs_game_details_changed.append(function)
+	def _on_lobbygame_starts(self, game):
+		game = self.get_game()
+		self.broadcast("game_prepare", game)
 
-	def _cb_game_details_changed(self, game, player, *args, **kwargs):
-		for callback in self.cbs_game_details_changed:
-			callback()
-
-	def register_game_prepare_callback(self, function, unique=True):
-		if unique and function in self.cbs_game_prepare:
-			return
-		self.cbs_game_prepare.append(function)
-
-	def _cb_game_prepare(self, game):
-		for callback in self.cbs_game_prepare:
-			callback(self.get_game())
-
-	def register_game_starts_callback(self, function, unique=True):
-		if unique and function in self.cbs_game_starts:
-			return
-		self.cbs_game_starts.append(function)
-
-	def _cb_game_starts(self, game):
-		for callback in self.cbs_game_starts:
-			callback(self.get_game())
-
-	def _cb_game_data(self, data):
+	def _on_game_data(self, data):
 		self.received_packets.append(data)
-
-	def register_error_callback(self, function, unique=True):
-		if unique and function in self.cbs_error:
-			return
-		self.cbs_error.append(function)
-
-	def _cb_error(self, exception=u"", fatal=True):
-		for callback in self.cbs_error:
-			callback(exception, fatal)
 
 	def get_active_games(self, only_this_version_allowed=False):
 		"""Returns a list of active games or None on fatal error"""
@@ -385,11 +364,11 @@ class NetworkInterface(object):
 		try:
 			raise e
 		except FatalError as e:
-			self._cb_error(e, fatal=True)
+			self.broadcast("error", e, fatal=True)
 			self.disconnect()
 			return True
 		except NetworkException as e:
-			self._cb_error(e, fatal=False)
+			self.broadcast("error", e, fatal=False)
 			return False
 
 	def toggle_ready(self):
