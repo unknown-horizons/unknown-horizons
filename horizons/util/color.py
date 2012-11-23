@@ -73,7 +73,7 @@ class Color(object):
 			b = int(b * 255)
 		if isinstance(a, float) and 0.0 <= a <= 1.0:
 			a = int(a * 255)
-		assert(isinstance(r, int) and isinstance(b, int) and isinstance(b, int) and isinstance(a, int))
+		assert(isinstance(r, int) and isinstance(g, int) and isinstance(b, int) and isinstance(a, int))
 		self.r, self.g, self.b, self.a = r, g, b, a
 		self.name = None
 		try:
