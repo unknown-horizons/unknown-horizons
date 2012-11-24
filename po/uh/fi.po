@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-12 16:42+0100\n"
-"PO-Revision-Date: 2012-11-23 23:13+0000\n"
+"PO-Revision-Date: 2012-11-23 23:58+0000\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1353712413.0\n"
+"X-POOTLE-MTIME: 1353715127.0\n"
 
 # 86%
 #: run_uh.py
@@ -144,7 +144,7 @@ msgstr "Joillakin asukkaillasi ei ole keskustoria lähellään."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr "Jotkut uudisasukkaasi muuttivat juuri pois."
+msgstr "Jotkut uudisasukkaat muuttivat juuri pois."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1183,27 +1183,31 @@ msgstr ""
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/quotes.py
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Pysäytä peli nopeammin painamalla P."
 
 #: horizons/gui/quotes.py
 msgid "You can drag roads by holding the left mouse button."
 msgstr ""
+"Teitä voi myös vetää pitämällä hiiren vasenta painiketta pohjassa tietä "
+"luodessa."
 
 #: horizons/gui/quotes.py
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "Saman rakennuksen voi rakentaa monta kertaa pitämällä Shift pohjassa."
 
 #: horizons/gui/quotes.py
 msgid "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "Asukkaiden onnellisuus nousee, jos veroprosenttia lasketaan."
 
 #: horizons/gui/quotes.py
 msgid "Build fire stations and doctors to protect your inhabitants from fire and disease."
 msgstr ""
+"Suojaa asukkaita tulipaloilta ja sairauksilta rakentamalla useita paloasemia "
+"ja lääkäreitä."
 
 #: horizons/gui/quotes.py
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Järjestä lisää varastotilaa rakentamalla varastotelttoja."
 
 #: horizons/gui/quotes.py
 msgid "Make sure every house is in range of a marketplace."
@@ -1292,15 +1296,15 @@ msgstr ""
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
-"Ostetaan {resource_name} hintaan {price} kultaa/tonnia, jos varastossa on "
+"Ostetaan {resource_name} hintaan {price} kultaa/tonni, jos varastossa on "
 "{resource_name} vähemmän kuin {limit}t."
 
 #: horizons/gui/tabs/buyselltab.py
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
-"Myydään {resource_name} hintaan {price} kultaa/tonnia, kunhan "
-"{resource_name} jää jäljelle vähintään {limit}t."
+"Myydään {resource_name} hintaan {price} kultaa/tonni, kunhan {resource_name} "
+"jää jäljelle vähintään {limit}t."
 
 #. (text of widget: buying_label)
 #. (text of widget: buy_expenses_label)
@@ -1410,17 +1414,17 @@ msgstr ""
 #. (helptext of widget: avg_icon)
 #: horizons/gui/util.py horizons/i18n/guitranslations.py
 msgid "satisfied"
-msgstr ""
+msgstr "Tyytyväinen"
 
 #. (helptext of widget: sad_icon)
 #: horizons/gui/util.py horizons/i18n/guitranslations.py
 msgid "sad"
-msgstr ""
+msgstr "Surullinen"
 
 #. (helptext of widget: happy_icon)
 #: horizons/gui/util.py horizons/i18n/guitranslations.py
 msgid "happy"
-msgstr "onnellinen"
+msgstr "Onnellinen"
 
 #: horizons/gui/widgets/buysellinventory.py
 #: horizons/gui/widgets/inventory.py
@@ -1626,9 +1630,7 @@ msgstr "Aloita peli"
 #. (text of widget: howto_1_need_warehouse)
 #: horizons/i18n/guitranslations.py
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
-"Sinun pitää perustaa itsellesi siirtokunta ennen kuin voit rakentaa "
-"rakennuksia!"
+msgstr "Rakennuksia voi rakentaa vasta, kun siirtokunta kun perustettu!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py
@@ -1973,7 +1975,7 @@ msgstr ""
 #. (helptext of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Collector utilisation"
-msgstr ""
+msgstr "Kerääjien työmäärä"
 
 # 95%
 #. (helptext of widget: configure_route)
@@ -2009,7 +2011,7 @@ msgstr "Kauppahistoria"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Select resources:"
-msgstr "Valitse resurssi:"
+msgstr "Valitse resurssit:"
 
 #. (text of widget: headline_balance_label)
 #: horizons/i18n/guitranslations.py
@@ -2050,7 +2052,7 @@ msgstr "Käynnistä tuotanto"
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py
 msgid "Select resource:"
-msgstr "Valitse resurssi:"
+msgstr "Valitse resurssi"
 
 #. (helptext of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py
@@ -2088,7 +2090,7 @@ msgstr "Siirrä ylös"
 #. (text of widget: select_res_label)
 #: horizons/i18n/guitranslations.py
 msgid "Select a resource:"
-msgstr "Valitse resurssit:"
+msgstr "Valitse resurssi:"
 
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py
@@ -3247,7 +3249,7 @@ msgstr "Kaivaa rautaa rautaesiintymästä."
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py
 msgid "Lookout"
-msgstr "Vartiopaikka"
+msgstr "Vartiotorni"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py
@@ -3277,7 +3279,7 @@ msgstr "Keskustori"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "Toimii asukkaiden kauppapaikkana. Tuottaa yhteisöä."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py
@@ -3661,17 +3663,17 @@ msgstr "Ruoka"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Fortifications"
-msgstr "Linnat"
+msgstr "Linnat ja linnoitukset"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Infrastructure"
-msgstr "Yhteiskunta ja hallinto"
+msgstr "Yhteiskunta"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Military Service"
-msgstr "Sodankäynti"
+msgstr "Asepalvelus"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
@@ -3690,9 +3692,8 @@ msgstr "Meri"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Wood"
-msgstr "Puu"
+msgstr "Puuteollisuus"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
@@ -3709,12 +3710,12 @@ msgstr ""
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Agriculture"
-msgstr ""
+msgstr "Maatalous"
 
 #. tab6_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
-msgstr ""
+msgstr "Estetiikka"
 
 #: horizons/main.py
 msgid "Failed to start/load the game"
@@ -3960,7 +3961,7 @@ msgstr "Paikallaan kohteessa {location}"
 #: horizons/world/units/ship.py
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr "Paikallaan kohteessa {x}, {y}"
+msgstr "Paikallaan sijainnissa {x},{y}"
 
 #: horizons/world/units/ship.py
 msgid "Trader"
