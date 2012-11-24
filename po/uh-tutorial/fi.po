@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-10-13 18:05+0000\n"
+"PO-Revision-Date: 2012-11-23 23:36+0000\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1350151528.0\n"
+"X-POOTLE-MTIME: 1353713763.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py:2
@@ -43,8 +43,7 @@ msgid ""
 "Build a warehouse at the coast, so it is easy accessible for other ships like "
 "the Free Trader."
 msgstr ""
-"Rakenna rannikolle sivutoimistosi, jossa se on hyvien kulkuyhteyksien "
-"päässä."
+"Rakenna rannikolle sivutoimisto, jossa se on hyvien kulkuyhteyksien päässä."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
@@ -76,8 +75,7 @@ msgid ""
 "feather)."
 msgstr ""
 "Kun olet sulkenut tämän päiväkirjan, voit avata sen uudelleen \"Kapteenin "
-"päiväkirja\" -kuvakkeesta oikeasta yläkulmasta (pikkukartan alapuolelta, "
-"kuvakkeessa on sinetöity kirje ja sulka)."
+"päiväkirja\" -kuvakkeesta peliruudun oikeasta yläkulmasta:"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:18
@@ -110,8 +108,8 @@ msgid ""
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
 "\n"
-"Kehitysryhmämme yhteystiedot on saatavilla verkkosivuiltamme osoitteesta www"
-".unknown-horizons.org ."
+"Kehitysryhmämme yhteystiedot ovat saatavilla verkkosivuiltamme osoitteesta "
+"www.unknown-horizons.org."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
