@@ -311,9 +311,9 @@ class World(BuildingOwner, WorldObject):
 					# we don't need no references, we don't need no mem control
 					default_grounds(self.session, fake_tile_x, fake_tile_y)
 				for x_offset in xrange(fake_tile_size):
-					if x+x_offset < self.max_x and x+x_offset >= self.min_x:
+					if self.min_x <= x + x_offset < self.max_x:
 						for y_offset in xrange(fake_tile_size):
-							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
+							if self.min_y <= y + y_offset < self.max_y:
 								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 

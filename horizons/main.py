@@ -34,7 +34,7 @@ import os.path
 import json
 import traceback
 import threading
-import thread # for thread.error raised by threading.Lock.release
+from thread import error as thread_error  # raised by threading.Lock.release
 import subprocess
 
 from fife import fife as fife_module
@@ -557,13 +557,14 @@ def preload_game_join(preloading):
 	"""Wait for preloading to finish.
 	@param preloading: tuple: (Thread, Lock)"""
 	# lock preloading
-	preloading[1].acquire()
+	thread, lock = preloading
+	lock.acquire()
 	# wait until it finished its current action
-	if preloading[0].isAlive():
-		preloading[0].join()
-		assert not preloading[0].isAlive()
+	if thread.isAlive():
+		thread.join()
+		assert not thread.isAlive()
 	else:
 		try:
-			preloading[1].release()
-		except thread.error:
+			lock.release()
+		except thread_error:
 			pass # due to timing issues, the lock might be released already

@@ -168,7 +168,7 @@ class MPManager(LivingObject):
 
 	def hash_value_check(self, tick):
 		if tick % self.HASH_EVAL_DISTANCE == 0:
-			if self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff) == False:
+			if not self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff):
 				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
 				# if this is reached, we are screwed. Something went wrong in the simulation,
 				# but we don't know what. Stop the game.

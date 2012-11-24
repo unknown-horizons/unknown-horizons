@@ -22,7 +22,7 @@
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfileManager
-from horizons.ai.aiplayer.combat.combatmanager import  PirateCombatManager
+from horizons.ai.aiplayer.combat.combatmanager import PirateCombatManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ai.aiplayer.strategy.strategymanager import PirateStrategyManager
 from horizons.scheduler import Scheduler

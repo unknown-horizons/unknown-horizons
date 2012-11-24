@@ -154,7 +154,7 @@ class Rect(Shape):
 		if not include_self:
 			self_coords = frozenset(self.get_coordinates())
 			for y, x_range in borders.iteritems():
-				if y >= self.top and y <= self.bottom: # we have to sort out the self_coords here
+				if self.top <= y <= self.bottom: # we have to sort out the self_coords here
 					for x in xrange(x_range[0], x_range[1]+1):
 						t = (x, y)
 						if t not in self_coords:
@@ -170,7 +170,8 @@ class Rect(Shape):
 
 	@property
 	def center(self):
-		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
+		"""Returns the center point of the rect.
+		Implemented with integer division, which means the upper left is preferred."""
 		return Point((self.right + self.left) // 2, (self.bottom + self.top) // 2)
 
 	def __contains__(self, point):

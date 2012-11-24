@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-10-13 18:14+0000\n"
+"PO-Revision-Date: 2012-11-23 22:50+0000\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1350152063.0\n"
+"X-POOTLE-MTIME: 1353711002.0\n"
 
 msgid "build"
 msgstr "rakentaa"
@@ -76,7 +76,7 @@ msgid "main square"
 msgstr "keskustori"
 
 msgid "sailors"
-msgstr "merimiehet"
+msgstr "merimies (siirtokuntataso I)"
 
 msgid "food"
 msgstr "ruoka"
@@ -275,26 +275,23 @@ msgstr "tila"
 msgid "move"
 msgstr "siirtää, liikuttaa"
 
-#, fuzzy
 msgid "pioneers"
-msgstr "kansoittaja (siirtokunnan tasona), uudisasukas (yleisesti)"
+msgstr "kansoittaja (siirtokuntataso II), uudisasukas (yleisesti)"
 
-#, fuzzy
 msgid "citizens"
-msgstr "kansalainen"
+msgstr "kansalainen (siirtokuntataso IV)"
 
-#, fuzzy
 msgid "merchants"
-msgstr "kauppias"
+msgstr "kauppias (siirtokuntataso V)"
 
 msgid "aristocrats"
-msgstr "aristokraatti"
+msgstr "aristokraatti (siirtokuntataso VI)"
 
 msgid "potato"
 msgstr "peruna"
 
 msgid "settler"
-msgstr "uudisasukas (siirtokunnan taso III ja uudisasukkaat yleisesti)"
+msgstr "uudisasukas (siirtokuntataso III ja uudisasukkaat yleisesti)"
 
 msgid "speed"
 msgstr "nopeus, nopea"
@@ -357,7 +354,6 @@ msgstr "sijainti"
 msgid "offer"
 msgstr "tarjota, tarjous"
 
-#, fuzzy
 msgid "potatoes"
 msgstr "peruna"
 
@@ -390,7 +386,7 @@ msgid "total"
 msgstr "yhteensä"
 
 msgid "unable"
-msgstr ""
+msgstr "ei käytettävissä, ei mahdollista"
 
 msgid "active"
 msgstr "aktiivinen"
@@ -398,7 +394,6 @@ msgstr "aktiivinen"
 msgid "afford"
 msgstr "antaa, suoda, tuottaa"
 
-#, fuzzy
 msgid "animals"
 msgstr "eläin"
 
@@ -406,7 +401,6 @@ msgstr "eläin"
 msgid "Captain's log"
 msgstr "Kapteenin päiväkirja"
 
-#, fuzzy
 msgid "construct"
 msgstr "rakentaminen, rakentaa"
 
@@ -425,7 +419,6 @@ msgstr "ominaisuus"
 msgid "forest"
 msgstr "metsä"
 
-#, fuzzy
 msgid "grows"
 msgstr "kasvaa"
 

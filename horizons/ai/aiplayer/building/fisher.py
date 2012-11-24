@@ -87,7 +87,7 @@ class FisherEvaluator(BuildingEvaluator):
 
 		tiles_used = 0
 		fish_value = 0.0
-		last_usable_tick = Scheduler().cur_tick - 60 * GAME_SPEED.TICKS_PER_SEC # TODO: use a direct calculation
+		last_usable_tick = Scheduler().cur_tick - 60 * GAME_SPEED.TICKS_PER_SECOND # TODO: use a direct calculation
 		for fish in area_builder.session.world.fish_indexer.get_buildings_in_range(coords):
 			if shallow_water_body[fish.position.origin.to_tuple()] not in fisher_shallow_water_body_ids:
 				continue # not in the same shallow water body as the fisher => unreachable

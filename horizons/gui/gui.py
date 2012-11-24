@@ -19,17 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict
 import glob
+import logging
 import os
 import os.path
 import random
-import traceback
-import time
 import tempfile
-import logging
+import time
+import traceback
+
 from fife import fife
 from fife.extensions import pychan
-from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 
 import horizons.globals
 import horizons.main
@@ -37,6 +38,7 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
+from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions
@@ -55,26 +57,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	log = logging.getLogger("gui")
 
 	# styles to apply to a widget
-	styles = {
+	styles = defaultdict(lambda: 'book')
+	styles.update({
 	  'mainmenu': 'menu',
-	  'requirerestart': 'book',
 	  'ingamemenu': 'headline',
-	  'help': 'book',
-	  'singleplayermenu': 'book',
-	  'sp_random': 'book',
-	  'sp_scenario': 'book',
-	  'sp_free_maps': 'book',
-	  'multiplayermenu' : 'book',
-	  'multiplayer_creategame' : 'book',
-	  'multiplayer_gamelobby' : 'book',
-	  'playerdataselection' : 'book',
-	  'aidataselection' : 'book',
-	  'select_savegame': 'book',
-	  'ingame_pause': 'book',
-	  'game_settings' : 'book',
-#	  'credits': 'book',
-	  'editor_select_map': 'book',
-	  }
+	})
 
 	def __init__(self):
 		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
