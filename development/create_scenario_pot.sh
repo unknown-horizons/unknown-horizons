@@ -123,10 +123,10 @@ fi
 
 xgettext --output-dir=$OUTPUT_DIR --output=$1.pot \
          --from-code=UTF-8 \
-	    --add-comments \
-	    --add-location \
+         --add-comments \
+         --add-location \
          --width=80 \
-	    --sort-by-file  \
+         --sort-by-file  \
          --copyright-holder='The Unknown Horizons Team' \
          --package-name='Unknown Horizons' \
          --package-version=$VERSION \
