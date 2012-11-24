@@ -192,13 +192,15 @@ class Server(object):
 	def send(self, peer, packet, channelid=0):
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
-		packet.send(peer, None, channelid)
-		self.host.flush()
+
+		self.sendraw(peer, packet.serialize(), channelid)
 
 	def sendraw(self, peer, data, channelid=0):
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
-		packets.packet.sendraw(peer, data, channelid)
+
+		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
+		peer.send(channelid, packet)
 		self.host.flush()
 
 

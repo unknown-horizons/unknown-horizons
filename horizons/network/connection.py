@@ -64,16 +64,6 @@ class Connection(object):
 			self.reset()
 			raise network.UnableToConnect("Unable to connect to server")
 
-		# wait for session id
-		packet = self.receive_packet(packets.server.cmd_session)
-		if packet is None:
-			raise network.FatalError("No reply from server")
-		elif not isinstance(packet[1], packets.server.cmd_session):
-			raise network.CommandError("Unexpected packet")
-
-		self.sid = packet[1].sid
-		return packet
-
 	def disconnect(self, server_may_disconnect=False, later=False):
 		"""End connection to server.
 
@@ -146,12 +136,13 @@ class Connection(object):
 
 	# Send / Receive
 
-	def send(self, packet, channelid=0):
+	def send_packet(self, packet, channelid=0):
 		"""Send a packet to the server"""
 		if self.server_peer is None:
 			raise network.NotConnected()
 
-		packet.send(self.server_peer, self.sid, channelid)
+		packet = enet.Packet(packet.serialize(), enet.PACKET_FLAG_RELIABLE)
+		self.server_peer.send(channelid, packet)
 
 	def _receive_event(self, timeout=SERVER_TIMEOUT):
 		"""wait for event from network"""
@@ -210,7 +201,6 @@ class Connection(object):
 			self.disconnect(True)
 			raise network.FatalError(packet.errorstr)
 
-		print packet
 		return [event.peer, packet]
 
 	def receive_packet(self, packet_type=None, timeout=SERVER_TIMEOUT):

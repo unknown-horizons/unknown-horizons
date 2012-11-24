@@ -123,7 +123,15 @@ class NetworkInterface(object):
 		@throws: NetworkError
 		"""
 		try:
-			packet = self._connection.connect()
+			self._connection.connect()
+
+			# wait for session id
+			packet = self._connection.receive_packet(packets.server.cmd_session)
+			if packet is None:
+				raise network.FatalError("No reply from server")
+			elif not isinstance(packet[1], packets.server.cmd_session):
+				raise network.CommandError("Unexpected packet")
+
 			self.sid = packet[1].sid
 			self.capabilities = packet[1].capabilities
 			self._mode = ClientMode.Server
@@ -160,6 +168,15 @@ class NetworkInterface(object):
 		if lang:
 			return self.set_props({'lang': lang})
 
+	def send_packet(self, packet, *args, **kwargs):
+		"""
+		"""
+		if self._mode is ClientMode.Game:
+			packet = packets.client.game_data(packet)
+		packet.sid = self.sid
+
+		self._connection.send_packet(packet, channelid=0)
+
 	# Game related
 
 	@property
@@ -179,7 +196,7 @@ class NetworkInterface(object):
 		try:
 			self.log.debug("[SETPROPS]")
 			self._assert_connection()
-			self._connection.send(packets.client.cmd_sessionprops(props))
+			self.send_packet(packets.client.cmd_sessionprops(props))
 			self._connection.receive_packet(packets.cmd_ok)
 		except NetworkException as e:
 			self._handle_exception(e)
@@ -191,7 +208,7 @@ class NetworkInterface(object):
 		try:
 			self._assert_connection()
 			self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
-			self._connection.send(packets.client.cmd_creategame(
+			self.send_packet(packets.client.cmd_creategame(
 				clientver=self._client_data.version,
 				clientid=self._client_data.id,
 				playername=self._client_data.name,
@@ -234,7 +251,7 @@ class NetworkInterface(object):
 	def _joingame(self, uuid, password="", fetch=False):
 		self._assert_connection()
 		self.log.debug("[JOIN] %s" % (uuid))
-		self._connection.send(packets.client.cmd_joingame(
+		self.send_packet(packets.client.cmd_joingame(
 			uuid=uuid,
 			clientver=self._client_data.version,
 			clientid=self._client_data.id,
@@ -252,7 +269,7 @@ class NetworkInterface(object):
 			self._assert_connection()
 			self._assert_lobby()
 			self.log.debug("[LEAVE]")
-			self._connection.send(packets.client.cmd_leavegame())
+			self.send_packet(packets.client.cmd_leavegame())
 			self._connection.receive_packet(packets.cmd_ok)
 			self._game = None
 		except NetworkException as e:
@@ -266,7 +283,7 @@ class NetworkInterface(object):
 			self._assert_connection()
 			self._assert_lobby()
 			self.log.debug("[CHAT] %s" % (message))
-			self._connection.send(packets.client.cmd_chatmsg(message))
+			self.send_packet(packets.client.cmd_chatmsg(message))
 		except NetworkException as e:
 			self._handle_exception(e)
 			return False
@@ -279,7 +296,7 @@ class NetworkInterface(object):
 			self._assert_connection()
 			self.log.debug("[LIST]")
 			version = self._client_data.version if only_this_version_allowed else -1
-			self._connection.send(packets.client.cmd_listgames(version))
+			self.send_packet(packets.client.cmd_listgames(version))
 			packet = self._connection.receive_packet(packets.server.data_gameslist)
 			games = packet[1].games
 		except NetworkException as e:
@@ -292,11 +309,11 @@ class NetworkInterface(object):
 
 	def toggle_ready(self):
 		self.log.debug("[TOGGLEREADY]")
-		self._connection.send(packets.client.cmd_toggleready())
+		self.send_packet(packets.client.cmd_toggleready())
 
 	def kick(self, player_sid):
 		self.log.debug("[KICK]")
-		self._connection.send(packets.client.cmd_kickplayer(player_sid))
+		self.send_packet(packets.client.cmd_kickplayer(player_sid))
 
 
 	# Client
@@ -322,7 +339,7 @@ class NetworkInterface(object):
 			if self._mode is None or self._game is None:
 				self._client_data.name = new_name
 				return
-			self._connection.send(packets.client.cmd_changename(new_name))
+			self.send_packet(packets.client.cmd_changename(new_name))
 		except NetworkException as e:
 			self._handle_exception(e)
 
@@ -345,7 +362,7 @@ class NetworkInterface(object):
 			if self._mode is None or self._game is None:
 				self._client_data.color = new_color
 				return
-			self._connection.send(packets.client.cmd_changecolor(new_color))
+			self.send_packet(packets.client.cmd_changecolor(new_color))
 		except NetworkException as e:
 			self._handle_exception(e)
 
@@ -355,16 +372,6 @@ class NetworkInterface(object):
 			self._client_data.color = plnew.color
 
 	# Helper functions, event callbacks, packet handling
-
-	def send_to_all_clients(self, packet):
-		"""
-		Sends packet to all players, that are part of the game
-		"""
-		if self._connection.is_connected:
-			try:
-				self._send(packet)
-			except NetworkException as e:
-				self._handle_exception(e)
 
 	def receive_all(self):
 		"""
@@ -462,17 +469,11 @@ class NetworkInterface(object):
 
 		return False
 
-	def _send(self, packet, channelid=0):
-		if self._mode is ClientMode.Game:
-			packet = packets.client.game_data(packet)
-
-		self._connection.send(packet, channelid)
-
 	def _on_game_prepare(self):
 		self.log.debug("[GAMEPREPARE]")
 		self._game.state = Game.State.Prepare
 		self.broadcast("lobbygame_starts", self._game)
-		self._send(packets.client.cmd_preparedgame())
+		self.send_packet(packets.client.cmd_preparedgame())
 
 	def _on_game_start(self):
 		self.log.debug("[GAMESTART]")

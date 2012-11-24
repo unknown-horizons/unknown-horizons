@@ -26,7 +26,7 @@ try:
 except ImportError:
 	from StringIO import StringIO
 
-from horizons.network import NetworkException, SoftNetworkException, PacketTooLarge, enet
+from horizons.network import NetworkException, PacketTooLarge
 
 __version__ = '0.1'
 __all__ = [
@@ -116,18 +116,6 @@ class packet(object):
 
 	def serialize(self):
 		return cPickle.dumps(self, PICKLE_PROTOCOL)
-
-	def send(self, peer, sid=None, channelid=0):
-		if sid is not None:
-			# Make sure we don't overwrite sid via packet property
-			assert(not hasattr(self, 'sid'))
-			self.sid = sid
-		self.sendraw(peer, self.serialize(), channelid)
-
-	@staticmethod
-	def sendraw(peer, data, channelid=0):
-		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
-		peer.send(channelid, packet)
 
 #-------------------------------------------------------------------------------
 
