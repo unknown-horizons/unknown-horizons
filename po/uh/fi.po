@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-12 16:42+0100\n"
-"PO-Revision-Date: 2012-11-23 23:58+0000\n"
+"PO-Revision-Date: 2012-11-24 18:49+0000\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1353715127.0\n"
+"X-POOTLE-MTIME: 1353782961.0\n"
 
 # 86%
 #: run_uh.py
@@ -3860,9 +3860,8 @@ msgid "Health: {health}"
 msgstr "Kunto: {health}"
 
 #: horizons/world/building/buildable.py
-#, fuzzy
 msgid "This building must be built on an island."
-msgstr "Tämä rakennus pitää sijoittaa rannikolle."
+msgstr "Tämä rakennus pitää sijoittaa maalle."
 
 #: horizons/world/building/buildable.py
 msgid "This ground is not suitable for this building."
