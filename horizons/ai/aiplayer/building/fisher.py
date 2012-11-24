@@ -27,10 +27,11 @@ from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
-from horizons.constants import BUILDINGS, COLLECTORS, RES
+from horizons.constants import BUILDINGS, COLLECTORS, GAME_SPEED, RES
 from horizons.util.python import decorators
 from horizons.util.shapes import distances
 from horizons.entities import Entities
+from horizons.scheduler import Scheduler
 
 class AbstractFisher(AbstractBuilding):
 	def get_production_level(self, building, resource_id):
@@ -72,33 +73,40 @@ class FisherEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
+		coords = (x, y)
 		rect_rect_distance_func = distances.distance_rect_rect
-		builder = BasicBuilder.create(BUILDINGS.FISHER, (x, y), orientation)
+		builder = BasicBuilder.create(BUILDINGS.FISHER, coords, orientation)
 
-		fisher_radius = Entities.buildings[BUILDINGS.FISHER].radius
-		fishers_in_range = 1.0
-		for other_fisher in area_builder.owner.fishers:
-			distance = rect_rect_distance_func(builder.position, other_fisher.position)
-			if distance < fisher_radius:
-				fishers_in_range += 1 - distance / float(fisher_radius)
+		shallow_water_body = area_builder.session.world.shallow_water_body
+		fisher_shallow_water_body_ids = set()
+		for fisher_coords in builder.position.tuple_iter():
+			if fisher_coords in shallow_water_body:
+				fisher_shallow_water_body_ids.add(shallow_water_body[fisher_coords])
+		fisher_shallow_water_body_ids = list(fisher_shallow_water_body_ids)
+		assert fisher_shallow_water_body_ids
 
 		tiles_used = 0
 		fish_value = 0.0
-		for fish in area_builder.session.world.fish_indexer.get_buildings_in_range((x, y)):
-			if tiles_used >= 3 * cls.refill_cycle_in_tiles:
-				break
+		last_usable_tick = Scheduler().cur_tick - 60 * GAME_SPEED.TICKS_PER_SEC # TODO: use a direct calculation
+		for fish in area_builder.session.world.fish_indexer.get_buildings_in_range(coords):
+			if shallow_water_body[fish.position.origin.to_tuple()] not in fisher_shallow_water_body_ids:
+				continue # not in the same shallow water body as the fisher => unreachable
+			if fish.last_usage_tick > last_usable_tick:
+				continue # the fish deposit seems to be already in use
+
 			distance = rect_rect_distance_func(builder.position, fish.position) + 1.0
 			if tiles_used >= cls.refill_cycle_in_tiles:
 				fish_value += min(1.0, (3 * cls.refill_cycle_in_tiles - tiles_used) / distance) / 10.0
 			else:
 				fish_value += min(1.0, (cls.refill_cycle_in_tiles - tiles_used) / distance)
+
 			tiles_used += distance
+			if tiles_used >= 3 * cls.refill_cycle_in_tiles:
+				break
 
-		if fish_value == 0:
+		if fish_value < 1.5:
 			return None
-
-		value = fish_value / fishers_in_range
-		return FisherEvaluator(area_builder, builder, value)
+		return FisherEvaluator(area_builder, builder, fish_value)
 
 	@property
 	def purpose(self):
