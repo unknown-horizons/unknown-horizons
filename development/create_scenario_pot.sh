@@ -115,7 +115,13 @@ for event in scenario['events']:
 				write(comment, widget)
 END
 
-xgettext --output-dir=po --output=$1.pot \
+if [ "$1" = 'tutorial' ]; then
+	OUTPUT_DIR="po/uh-$1"
+else
+	OUTPUT_DIR="po/scenarios/templates"
+fi
+
+xgettext --output-dir=$OUTPUT_DIR --output=$1.pot \
          --from-code=UTF-8 \
 	    --add-comments \
 	    --add-location \
@@ -129,13 +135,14 @@ xgettext --output-dir=po --output=$1.pot \
 rm po/$1.py
 
 # some strings contain two entries per line => remove line numbers from both
-perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' po/$1.pot
-perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' po/$1.pot
+perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' $OUTPUT_DIR/$1.pot
+perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' $OUTPUT_DIR/$1.pot
 
 
-diff=$(git diff --numstat po/$1.pot |awk '{print $1;}')
-if [ $diff -le 2 ]; then      # only changed version and date (two lines)
-    git checkout -- po/$1.pot # => discard this template change
+diff=$(git diff --numstat $OUTPUT_DIR/$1.pot |awk '{print $1;}')
+if [ $diff -le 2 ]; then
+    # only changed version and date (two lines) => discard this template change
+    git checkout -- $OUTPUT_DIR/$1.pot
 fi
 
 if [ "x$2" = x ]; then
