@@ -127,10 +127,6 @@ class NetworkInterface(object):
 
 			# wait for session id
 			packet = self._connection.receive_packet(packets.server.cmd_session)
-			if packet is None:
-				raise network.FatalError("No reply from server")
-			elif not isinstance(packet[1], packets.server.cmd_session):
-				raise network.CommandError("Unexpected packet")
 
 			self.sid = packet[1].sid
 			self.capabilities = packet[1].capabilities
@@ -175,7 +171,7 @@ class NetworkInterface(object):
 			packet = packets.client.game_data(packet)
 		packet.sid = self.sid
 
-		self._connection.send_packet(packet, channelid=0)
+		self._connection.send_packet(packet)
 
 	# Game related
 
