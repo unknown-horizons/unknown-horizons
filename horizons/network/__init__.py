@@ -52,7 +52,7 @@ def find_enet_module():
 	dir = "%s-x%s" % (type, arch)
 
 	dirpy = "%s-%s%s" % (dir, version[0], version[1])
-	if os.path.exists(os.path.join(os.path.dirname(__file__), dirpy)):
+	if os.path.exists(os.path.join(os.path.dirname(__file__), "libs", dirpy)):
 		dir = dirpy
 
 	try:
