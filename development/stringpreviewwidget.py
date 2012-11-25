@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.gui.util import load_uh_widget
-from horizons.util import YamlCache
+from horizons.util.yamlcache import YamlCache
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.widgets.logbook import LogBook
 from horizons.scheduler import Scheduler
