@@ -128,16 +128,19 @@ class ResourceOverviewBar(object):
 		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=0)
 		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
 
-	def end(self):
-		self.set_inventory_instance( None, force_update=True )
-		self.current_instance = weakref.ref(self)
-		ExtScheduler().rem_all_classinst_calls(self)
-		self.resource_configurations.clear()
+	def hide(self):
 		self.gold_gui.hide()
 		for slot in self.gui:
 			slot.hide()
 		if self.stats_gui:
 			self.stats_gui.hide()
+
+	def end(self):
+		self.set_inventory_instance( None, force_update=True )
+		self.current_instance = weakref.ref(self)
+		ExtScheduler().rem_all_classinst_calls(self)
+		self.resource_configurations.clear()
+		self.hide()
 		self.gold_gui = None
 		self.gui = None
 		self.stats_gui = None
