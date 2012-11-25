@@ -601,6 +601,7 @@ class ResourceOverviewBar(object):
 					self.stats_gui.child_finder("entries_box").addChild(box)
 				else: # last one
 					self.stats_gui.child_finder("bottom_box").addChild(box)
+					self.stats_gui.child_finder("bottom_box").stylize('resource_bar')
 
 		self._update_stats()
 		self.stats_gui.show()
