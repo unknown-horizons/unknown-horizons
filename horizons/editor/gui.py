@@ -83,6 +83,7 @@ class EditorGui(object):
 		self._session = session
 
 		self._ingame_gui.widgets['minimap'].mapEvents({'build': self._show_settings})
+		self._show_settings()
 
 		self._ingame_gui.resource_overview.hide()
 
