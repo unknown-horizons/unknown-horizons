@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
-import sys, inspect
 import cPickle
+import inspect
+import sys
+
 try:
 	from cStringIO import StringIO
 except ImportError:
