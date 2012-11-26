@@ -319,7 +319,7 @@ class TradeRoute(ChangeListener):
 			return (_('Trade route: going to {location}').format(
 			           location=self.ship.get_location_based_status(self.ship.get_move_target())),
 			        self.ship.get_move_target())
-			#xgettext:python-format
+		#xgettext:python-format
 		return (_('Trade route: waiting at {position}').format(
 		           position=self.ship.get_location_based_status(self.ship.position)),
 		        self.ship.position)

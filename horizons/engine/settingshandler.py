@@ -278,7 +278,7 @@ class SettingsHandler(object):
 		if data: # enable logging
 			if options.debug:
 				# log file is already set up, just make sure everything is logged
-				logging.getLogger().setLevel( logging.DEBUG )
+				logging.getLogger().setLevel(logging.DEBUG)
 			else: # set up all anew
 				class Data(object):
 					debug = False
@@ -296,7 +296,7 @@ class SettingsHandler(object):
 				horizons.main._modules.gui.show_popup(headline, msg)
 
 		else: #disable logging
-			logging.getLogger().setLevel( logging.WARNING )
+			logging.getLogger().setLevel(logging.WARNING)
 			# keep debug flag in options so to not reenable it fully twice
 			# on reenable, onyl the level will be reset
 
