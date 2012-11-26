@@ -182,6 +182,9 @@ def start(_command_line_arguments):
 		assert atlas_generator.returncode is not None
 		if atlas_generator.returncode != 0:
 			print 'Atlas generation failed. Continuing without atlas support.'
+			print 'This just means that the game will run a bit slower.'
+			print 'It will still run fine unless there are other problems.'
+			print
 			GFX.USE_ATLASES = False
 		else:
 			GFX.USE_ATLASES = True

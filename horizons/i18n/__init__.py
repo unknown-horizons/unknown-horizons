@@ -95,7 +95,7 @@ def replace_attribute(widget, attribute, text):
 	if hasattr(widget, attribute):
 		setattr(widget, attribute, text)
 	else:
-		log.debug("Could not replace attribute %s in widget %s", attribute, widget)
+		log.warning("Could not replace attribute %s in widget %s", attribute, widget)
 
 
 def change_language(language=None):
@@ -114,8 +114,7 @@ def change_language(language=None):
 			                            languages=[language], fallback=fallback)
 			trans.install(unicode=True, names=['ngettext',])
 		except IOError:
-			#xgettext:python-format
-			print "Configured language {lang} could not be loaded.".format(lang=language)
+			log.debug("Configured language %s could not be loaded.", language)
 			horizons.globals.fife.set_uh_setting('Language', LANGUAGENAMES[''])
 			return change_language() # recurse
 	else:
