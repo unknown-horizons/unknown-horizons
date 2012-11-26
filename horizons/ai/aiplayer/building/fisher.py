@@ -46,6 +46,11 @@ class AbstractFisher(AbstractBuilding):
 		extra_buildings_needed = math.ceil(max(0.0, production_needed / current_expected_production_level))
 		return extra_buildings_needed * self.get_expected_building_cost()
 
+	def iter_potential_locations(self, settlement_manager):
+		options = list(super(AbstractFisher, self).iter_potential_locations(settlement_manager))
+		personality = settlement_manager.owner.personality_manager.get('AbstractFisher')
+		return settlement_manager.session.random.sample(options, min(len(options), personality.max_options))
+
 	@property
 	def evaluator_class(self):
 		return FisherEvaluator

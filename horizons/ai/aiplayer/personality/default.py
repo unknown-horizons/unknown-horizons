@@ -467,3 +467,6 @@ class DefaultPersonality:
 
 	class AbstractFireStation:
 		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built
+
+	class AbstractFisher:
+		max_options = 30 # maximum number of farm options to consider
