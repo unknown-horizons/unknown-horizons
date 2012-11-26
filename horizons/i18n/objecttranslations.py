@@ -48,8 +48,7 @@ def set_translations():
 	importing object_translations once keeps getting updates. #1905, #1909
 	"""
 	global object_translations
-	for k in object_translations.keys()[:]:
-		del object_translations[k]
+	object_translations.clear()
 	object_translations.update({
 
 	"content/objects/buildings/alvearies.yaml" : {
