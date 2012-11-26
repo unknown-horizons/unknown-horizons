@@ -95,7 +95,7 @@ def replace_attribute(widget, attribute, text):
 	if hasattr(widget, attribute):
 		setattr(widget, attribute, text)
 	else:
-		log.debug("Could not replace attribute %s in widget %s", attribute, widget)
+		log.warning("Could not replace attribute %s in widget %s", attribute, widget)
 
 
 def change_language(language=None):
