@@ -34,7 +34,8 @@
 ###############################################################################
 
 
-HEADER = '''# ###################################################
+HEADER = '''\
+# ###################################################
 # Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -192,5 +193,4 @@ output = '%s%s%s' % (HEADER, '\n'.join(filesnippets), FOOTER)
 if len(sys.argv) > 1:
 	file(sys.argv[1], 'w').write(output)
 else:
-	print
 	print output

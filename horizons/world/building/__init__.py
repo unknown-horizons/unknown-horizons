@@ -71,7 +71,7 @@ class BuildingClass(IngameType):
 			self.buildable_on_deposit_type = component_template.get('is_mine_for')
 		except KeyError:
 			pass
-			
+
 	def __str__(self):
 		return "Building[{id}]({name})".format(id=self.id, name=self.name)
 
