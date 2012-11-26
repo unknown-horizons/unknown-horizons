@@ -1,0 +1,586 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"PO-Revision-Date: 2012-11-19 13:41+0000\n"
+"Last-Translator: Андрій <andriykopanytsia@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1353332492.0\n"
+
+msgid "build"
+msgstr "будувати"
+
+msgid "game"
+msgstr "гра"
+
+msgid "building"
+msgstr "споруда"
+
+msgid "settlement"
+msgstr "поселення"
+
+msgid "farm"
+msgstr "ферма"
+
+msgid "ship"
+msgstr "корабель"
+
+msgid "tent"
+msgstr "намет"
+
+msgid "warehouse"
+msgstr "склад"
+
+msgid "resource"
+msgstr "ресурс"
+
+msgid "produce"
+msgstr "виробляти"
+
+msgid "field"
+msgstr "поле"
+
+msgid "map"
+msgstr "карта"
+
+msgid "trade"
+msgstr "торгівля"
+
+msgid "inhabitants"
+msgstr "жителі"
+
+msgid "buy"
+msgstr "купити"
+
+msgid "overview"
+msgstr "огляд"
+
+msgid "click"
+msgstr "натисніть"
+
+msgid "lumberjack"
+msgstr "лісоруб"
+
+msgid "resident"
+msgstr "житель"
+
+msgid "main square"
+msgstr "головна площа"
+
+msgid "sailors"
+msgstr "моряки"
+
+msgid "food"
+msgstr "їжа"
+
+msgid "increment"
+msgstr "крок"
+
+msgid "production"
+msgstr "продукція"
+
+msgid "select"
+msgstr "виділити"
+
+msgid "sell"
+msgstr "продати"
+
+msgid "setting"
+msgstr "параметр"
+
+msgid "storage"
+msgstr "сховище"
+
+msgid "tab"
+msgstr "вкладка"
+
+msgid "upgrade"
+msgstr "оновлення"
+
+msgid "your inhabitants"
+msgstr "ваші жителі"
+
+msgid "close"
+msgstr "закрити"
+
+msgid "companies"
+msgstr "підприємства"
+
+msgid "island"
+msgstr "острів"
+
+msgid "time"
+msgstr "час"
+
+msgid "unit"
+msgstr "одиниця"
+
+msgid "balance"
+msgstr "баланс"
+
+msgid "coast"
+msgstr "узбережжя"
+
+msgid "menu"
+msgstr "меню"
+
+msgid "slot"
+msgstr "слот"
+
+msgid "start"
+msgstr "початок"
+
+msgid "stock"
+msgstr "запаси"
+
+msgid "trail"
+msgstr "стежка"
+
+msgid "Unknown Horizons"
+msgstr "Unknown Horizons"
+
+msgid "wool"
+msgstr "вовна"
+
+msgid "boards"
+msgstr "дошки"
+
+msgid "collector"
+msgstr "збирач"
+
+msgid "connection"
+msgstr "з'єднання"
+
+msgid "fire"
+msgstr "вогонь"
+
+msgid "change"
+msgstr "змінити"
+
+msgid "connect"
+msgstr "з'єднати"
+
+msgid "cost"
+msgstr "вартість"
+
+msgid "house"
+msgstr "будинок"
+
+msgid "log"
+msgstr "журнал"
+
+msgid "road"
+msgstr "дорога"
+
+msgid "save"
+msgstr "зберегти"
+
+msgid "built"
+msgstr "збудований"
+
+msgid "pasture"
+msgstr "пасовисько"
+
+msgid "reach"
+msgstr "досягнути"
+
+msgid "tree"
+msgstr "дерево"
+
+msgid "your"
+msgstr "Ваш"
+
+msgid "your settlement"
+msgstr "ваше поселення"
+
+msgid "add"
+msgstr "додати"
+
+msgid "check"
+msgstr "перевірити"
+
+msgid "choose"
+msgstr "вибрати"
+
+msgid "confectionery"
+msgstr "кондитерська"
+
+msgid "fisher"
+msgstr "рибалка"
+
+msgid "free trader"
+msgstr "вільний торговець"
+
+msgid "happiness"
+msgstr "щастя"
+
+msgid "in stock"
+msgstr "в наявності"
+
+msgid "money"
+msgstr "гроші"
+
+msgid "pavilion"
+msgstr "павільйон"
+
+msgid "running costs"
+msgstr "затрати на утримання"
+
+msgid "sugar"
+msgstr "цукор"
+
+msgid "taxes"
+msgstr "податки"
+
+msgid "tax"
+msgstr "податок"
+
+msgid "tools"
+msgstr "інструменти"
+
+msgid "button"
+msgstr "кнопка"
+
+msgid "continue"
+msgstr "продовжити"
+
+msgid "faith"
+msgstr "віра"
+
+msgid "help"
+msgstr "довідка"
+
+msgid "left"
+msgstr "зліва"
+
+msgid "level"
+msgstr "рівень"
+
+msgid "mode"
+msgstr "режим"
+
+msgid "move"
+msgstr "перемістити"
+
+msgid "pioneers"
+msgstr "першопрохідці"
+
+msgid "citizens"
+msgstr "міщани"
+
+msgid "merchants"
+msgstr "торговці"
+
+msgid "aristocrats"
+msgstr "аристократи"
+
+msgid "potato"
+msgstr "картопля"
+
+msgid "settler"
+msgstr "поселенець"
+
+msgid "speed"
+msgstr "швидкість"
+
+msgid "stop"
+msgstr "зупинити"
+
+msgid "storage tent"
+msgstr "намет для зберігання"
+
+msgid "wait"
+msgstr "чекати"
+
+msgid "access"
+msgstr "доступ"
+
+msgid "account"
+msgstr "рахунок"
+
+msgid "amount"
+msgstr "кількість"
+
+msgid "build menu"
+msgstr "меню будівництва"
+
+msgid "cloth"
+msgstr "одяг"
+
+msgid "construction"
+msgstr "будівництво"
+
+msgid "decrease"
+msgstr "зменшувати"
+
+msgid "description"
+msgstr "опис"
+
+msgid "fish"
+msgstr "риба"
+
+msgid "increase"
+msgstr "збільшувати"
+
+msgid "lamb"
+msgstr "вівця"
+
+msgid "leave"
+msgstr "залишити"
+
+msgid "liquor"
+msgstr "лікер"
+
+msgid "location"
+msgstr "розміщення"
+
+msgid "offer"
+msgstr "пропозиція"
+
+msgid "potatoes"
+msgstr "картопля"
+
+msgid "range"
+msgstr "діапазон"
+
+msgid "reached"
+msgstr "досягнутий"
+
+msgid "run"
+msgstr "запустити"
+
+msgid "slider"
+msgstr "повзунок"
+
+msgid "solution"
+msgstr "розв’язок"
+
+msgid "space"
+msgstr "простір"
+
+msgid "target"
+msgstr "ціль"
+
+msgid "team"
+msgstr "команда"
+
+msgid "total"
+msgstr "всього"
+
+msgid "unable"
+msgstr "недоступно"
+
+msgid "active"
+msgstr "активний"
+
+msgid "afford"
+msgstr "мати змогу"
+
+msgid "animals"
+msgstr "звірі"
+
+msgid "Captain's log"
+msgstr "корабельний журнал"
+
+msgid "construct"
+msgstr "споруджувати"
+
+msgid "consume"
+msgstr "споживати"
+
+msgid "enabled"
+msgstr "увімкнено"
+
+msgid "entries"
+msgstr "записи"
+
+msgid "feature"
+msgstr "можливість"
+
+msgid "forest"
+msgstr "ліс"
+
+msgid "grows"
+msgstr "росте"
+
+msgid "hold"
+msgstr "тримати"
+
+msgid "idle"
+msgstr "Бездіяльність"
+
+msgid "income"
+msgstr "прибуток"
+
+msgid "information"
+msgstr "інформація"
+
+msgid "key"
+msgstr "клавіша"
+
+msgid "lamb wool"
+msgstr "овеча вовна"
+
+msgid "overview tab"
+msgstr "вкладка огляду"
+
+msgid "minimap"
+msgstr "мінікарта"
+
+msgid "issues"
+msgstr "питання"
+
+msgid "plant"
+msgstr "посадити"
+
+msgid "play"
+msgstr "грати"
+
+msgid "playing"
+msgstr "відтворюється"
+
+msgid "price"
+msgstr "вартість"
+
+msgid "read"
+msgstr "читати"
+
+msgid "return"
+msgstr "повертати"
+
+msgid "sale"
+msgstr "продаж"
+
+msgid "screen"
+msgstr "екран"
+
+msgid "sound"
+msgstr "звук"
+
+msgid "special"
+msgstr "спеціальний"
+
+msgid "store"
+msgstr "ринок"
+
+msgid "tear"
+msgstr "розрив"
+
+msgid "from time to time"
+msgstr "час від часу"
+
+msgid "trading"
+msgstr "торгівля"
+
+msgid "village"
+msgstr "село"
+
+msgid "visit"
+msgstr "відвідати"
+
+msgid "world"
+msgstr "світ"
+
+msgid "yield"
+msgstr "прибуток"
+
+msgid "your ship"
+msgstr "Ваш корабель"
+
+msgid "back"
+msgstr "назад"
+
+msgid "build settlement"
+msgstr "заснувати поселення"
+
+msgid "load"
+msgstr "завантажити"
+
+msgid "unload"
+msgstr "вивантажити"
+
+msgid "command"
+msgstr "команда"
+
+msgid "completed"
+msgstr "завершено"
+
+msgid "condition"
+msgstr "умова"
+
+msgid "contact"
+msgstr "контакт"
+
+msgid "empty"
+msgstr "порожньо"
+
+msgid "ensure"
+msgstr "забезпечити"
+
+msgid "fulfill"
+msgstr "виконувати"
+
+msgid "graphics"
+msgstr "графіка"
+
+msgid "harvest"
+msgstr "врожай"
+
+msgid "hunts"
+msgstr "полює"
+
+msgid "multiple"
+msgstr "декілька"
+
+msgid "potato field"
+msgstr "картопляне поле"
+
+msgid "school"
+msgstr "школа"
+
+msgid "seed"
+msgstr "насіння"
+
+msgid "service"
+msgstr "служба"
+
+msgid "sheep"
+msgstr "вівця"
+
+msgid "signal fire"
+msgstr "сигнальний вогонь"
+
+msgid "statistics"
+msgstr "статистика"
+
+msgid "clay"
+msgstr "глина"
+
+msgid "iron"
+msgstr "залізо"
+
+msgid "ore"
+msgstr "руда"
+
+msgid "tobacco"
+msgstr "тютюн"
+
+msgid "charcoal"
+msgstr "вугілля"
+
+msgid "sugar field"
+msgstr "цукрова плантація"
+
+msgid "temporarily"
+msgstr "тимчасово"
+
+msgid "values"
+msgstr "значення"
