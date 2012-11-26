@@ -267,7 +267,7 @@ class TradeRoute(ChangeListener):
 
 	def load(self, db):
 		enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload = \
-			db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload " +
+			db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload "
 			   "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
 
 		query = "SELECT warehouse_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
