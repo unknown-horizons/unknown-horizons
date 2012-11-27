@@ -19,6 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
+from horizons.util.shapes import Point
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.messaging import SettlementRangeChanged
+
 class ShipBuildingToolLogic(object):
 	"""Helper class to seperate the logic needed when building from a ship from
 	the main building tool."""

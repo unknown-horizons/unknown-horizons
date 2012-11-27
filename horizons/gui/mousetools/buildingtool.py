@@ -19,6 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
+import logging
+import random
+import weakref
+
+import horizons.globals
+
+from horizons.entities import Entities
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.shapes import Point
+from horizons.util.worldobject import WorldObject
+from horizons.command.building import Build
+from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.command.sounds import PlaySound
+from horizons.gui.util import load_uh_widget
+from horizons.constants import BUILDINGS, GFX
+from horizons.extscheduler import ExtScheduler
+from horizons.messaging import WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
+
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
 	Builder visualizes if and why a building can not be built under the cursor position.
