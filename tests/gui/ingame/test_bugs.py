@@ -317,3 +317,21 @@ def test_ticket_1848(gui):
 
 	gui.cursor_click(51, 13, 'left')
 	gui.trigger('tab_account', 'show_production_overview')
+	
+	
+	gui.trigger('menu', 'startSingle')
+		
+@gui_test(use_dev_map=True)
+def test_ticket_1948(gui):
+	"""Triggers a crash that happens when building a storage tent on the border of the settlement"""
+	# Units cannot be selected right now, you need to do it this way. This is almost
+	# the same as selecting it with the mouse
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+	found_settlement(gui, (59, 1), (56, 3))
+	
+	# Select storage tent
+	gui.trigger('mainhud', 'build')
+	gui.trigger('tab', 'button_11')
+	# Build storage at the border of the settlement
+	gui.cursor_click(37, 20, 'left')
