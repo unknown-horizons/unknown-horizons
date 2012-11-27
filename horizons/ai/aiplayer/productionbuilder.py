@@ -24,10 +24,10 @@ import itertools
 from collections import deque
 from functools import partial
 
-from builder import Builder
 from areabuilder import AreaBuilder
 from constants import BUILD_RESULT, BUILDING_PURPOSE
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.world.building.production import Mine
 from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
@@ -35,9 +35,12 @@ from horizons.constants import AI, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-from horizons.util.shapes import Point, Rect
+from horizons.util.shapes import distances, Point, Rect
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
+from horizons.world.buildability.binarycache import BinaryBuildabilityCache
+from horizons.world.buildability.simplecollectorareacache import SimpleCollectorAreaCache
+from horizons.world.buildability.potentialroadconnectivitycache import PotentialRoadConnectivityCache
 from horizons.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
@@ -61,8 +64,11 @@ class ProductionBuilder(AreaBuilder):
 		super(ProductionBuilder, self).__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
-		for x, y in settlement_manager.settlement.warehouse.position.tuple_iter():
-			self.register_change(x, y, BUILDING_PURPOSE.WAREHOUSE, None)
+		self._init_buildability_cache()
+		self._init_simple_collector_area_cache()
+		self._init_road_connectivity_cache()
+		self.register_change_list(list(settlement_manager.settlement.warehouse.position.tuple_iter()),
+		                          BUILDING_PURPOSE.WAREHOUSE, None)
 		self._refresh_unused_fields()
 
 	def __init(self, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road):
@@ -72,7 +78,28 @@ class ProductionBuilder(AreaBuilder):
 		self.personality = self.owner.personality_manager.get('ProductionBuilder')
 		self.last_collector_improvement_storage = last_collector_improvement_storage
 		self.last_collector_improvement_road = last_collector_improvement_road
-		self.__builder_cache = {}
+
+	def _init_buildability_cache(self):
+		self.buildability_cache = BinaryBuildabilityCache(self.island.terrain_cache)
+		free_coords_set = set()
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose == BUILDING_PURPOSE.NONE:
+				free_coords_set.add(coords)
+		for coords in self.land_manager.coastline:
+			free_coords_set.add(coords)
+		self.buildability_cache.add_area(free_coords_set)
+
+	def _init_simple_collector_area_cache(self):
+		self.simple_collector_area_cache = SimpleCollectorAreaCache(self.island.terrain_cache)
+
+	def _init_road_connectivity_cache(self):
+		self.road_connectivity_cache = PotentialRoadConnectivityCache(self)
+		coords_set = set()
+		for coords in self.plan:
+			coords_set.add(coords)
+		for coords in self.land_manager.roads:
+			coords_set.add(coords)
+		self.road_connectivity_cache.modify_area(list(sorted(coords_set)))
 
 	def save(self, db):
 		super(ProductionBuilder, self).save(db)
@@ -95,6 +122,9 @@ class ProductionBuilder(AreaBuilder):
 			self.plan[(x, y)] = (purpose, None)
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
+		self._init_buildability_cache()
+		self._init_simple_collector_area_cache()
+		self._init_road_connectivity_cache()
 		self._refresh_unused_fields()
 
 	def have_deposit(self, resource_id):
@@ -107,24 +137,31 @@ class ProductionBuilder(AreaBuilder):
 				return True
 		return False
 
-	def build_best_option(self, options, purpose):
-		"""
-		Try to build the highest valued option. Return a BUILD_RESULT constant showing how it went.
+	def extend_settlement_with_storage(self, target_position):
+		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
+		if not self.have_resources(BUILDINGS.STORAGE):
+			return BUILD_RESULT.NEED_RESOURCES
 
-		@param options: [(value, builder), ...]
-		@param purpose: a BUILDING_PURPOSE constant
-		"""
+		storage_class = Entities.buildings[BUILDINGS.STORAGE]
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type,
+			storage_class.size, self.settlement.buildability_cache, self.buildability_cache)
+		storage_surrounding_offsets = Rect.get_surrounding_offsets(storage_class.size)
+		coastline = self.land_manager.coastline
 
-		if not options:
-			return BUILD_RESULT.IMPOSSIBLE
+		options = []
+		for (x, y) in sorted(storage_spots):
+			builder = BasicBuilder.create(BUILDINGS.STORAGE, (x, y), 0)
 
-		builder = max(options)[1]
-		if not builder.execute():
-			return BUILD_RESULT.UNKNOWN_ERROR
-		for x, y in builder.position.tuple_iter():
-			self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-		self.register_change(builder.position.origin.x, builder.position.origin.y, purpose, None)
-		return BUILD_RESULT.OK
+			alignment = 1
+			for (dx, dy) in storage_surrounding_offsets:
+				coords = (x + dx, y + dy)
+				if coords in coastline or coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+					alignment += 1
+
+			distance = distances.distance_rect_rect(target_position, builder.position)
+			value = distance - alignment * 0.7
+			options.append((value, builder))
+		return self.build_best_option(options, BUILDING_PURPOSE.STORAGE)
 
 	def get_collector_area(self):
 		"""Return the set of all coordinates that are reachable from at least one collector by road or open space."""
@@ -150,7 +187,7 @@ class ProductionBuilder(AreaBuilder):
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
 					if coords not in reachable and coords in coverage_area:
-						if coords in self.land_manager.roads or (coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
+						if coords in self.land_manager.roads or (coords in self.plan and coords not in self.land_manager.coastline and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
 							queue.append(coords)
 							reachable.add(coords)
 							if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
@@ -209,9 +246,13 @@ class ProductionBuilder(AreaBuilder):
 			for dx in xrange(3):
 				for dy in xrange(3):
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					object = self.island.ground_map[coords2].object
-					if object is not None and not object.buildable_upon:
+					if coords2 not in self.island.ground_map:
 						usable = False
+					else:
+						object = self.island.ground_map[coords2].object
+						if object is not None and not object.buildable_upon:
+							usable = False
+							break
 			if usable and purpose in self.unused_fields:
 				self.unused_fields[purpose].append(coords)
 
@@ -282,68 +323,6 @@ class ProductionBuilder(AreaBuilder):
 			else:
 				renderer.addColored(tile._instance, *unknown_colour)
 
-	def __make_new_builder(self, building_id, x, y, needs_collector, orientation):
-		"""Return a Builder object if it is allowed to be built at the location, otherwise return None (not cached)."""
-		coords = (x, y)
-		# quick check to see whether the origin square is allowed to be in the requested place
-		if building_id == BUILDINGS.CLAY_PIT or building_id == BUILDINGS.IRON_MINE:
-			# clay deposits and mountains are outside the production plan until they are constructed
-			if coords in self.plan or coords not in self.settlement.ground_map:
-				return None
-		elif building_id in self.coastal_building_classes:
-			# coastal buildings can use coastal tiles
-			if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-				return None
-		else:
-			if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE or coords not in self.settlement.ground_map:
-				return None
-
-		# create the builder, make sure that it is allowed according to the game logic
-		builder = Builder.create(building_id, self.land_manager, Point(x, y), orientation=orientation)
-		if not builder or not self.land_manager.legal_for_production(builder.position):
-			return None
-
-		# make sure that the position of the building is allowed according to the plan
-		if building_id in self.coastal_building_classes:
-			# coastal buildings can use coastal tiles
-			for coords in builder.position.tuple_iter():
-				if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					return None
-		elif building_id in [BUILDINGS.CLAY_PIT, BUILDINGS.IRON_MINE]:
-			# clay deposits and mountains can't be in areas restricted by the plan
-			pass
-		else:
-			for coords in builder.position.tuple_iter():
-				if coords not in self.plan or self.plan[coords][0] != BUILDING_PURPOSE.NONE:
-					return None
-
-		# make sure the building is close enough to a collector if it produces any resources that have to be collected
-		if needs_collector and not any(True for building in self.collector_buildings if building.position.distance(builder.position) <= building.radius):
-			return None
-		return builder
-
-	def make_builder(self, building_id, x, y, needs_collector, orientation=0):
-		"""Return a Builder object if it is allowed to be built at the location, otherwise return None (cached)."""
-		coords = (x, y)
-		key = (building_id, coords, needs_collector, orientation)
-		size = Entities.buildings[building_id].size
-		if orientation == 1 or orientation == 3:
-			size = (size[1], size[0])
-		if coords not in self.island.last_changed[size]:
-			return None
-
-		island_changed = self.island.last_changed[size][coords]
-		if key in self.__builder_cache and island_changed != self.__builder_cache[key][0]:
-			del self.__builder_cache[key]
-
-		plan_changed = self.last_change_id
-		if key in self.__builder_cache and plan_changed != self.__builder_cache[key][1]:
-			del self.__builder_cache[key]
-
-		if key not in self.__builder_cache:
-			self.__builder_cache[key] = (island_changed, plan_changed, self.__make_new_builder(building_id, x, y, needs_collector, orientation))
-		return self.__builder_cache[key][2]
-
 	def _init_cache(self):
 		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area."""
 		super(ProductionBuilder, self)._init_cache()
@@ -358,9 +337,34 @@ class ProductionBuilder(AreaBuilder):
 			return
 		self.last_change_id += 1
 
+	def register_change_list(self, coords_list, purpose, data):
+		add_list = []
+		remove_list = []
+		for coords in coords_list:
+			if coords in self.land_manager.village or coords not in self.plan:
+				continue
+			if purpose == BUILDING_PURPOSE.NONE and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				add_list.append(coords)
+			elif purpose != BUILDING_PURPOSE.NONE and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
+				remove_list.append(coords)
+		if add_list:
+			self.buildability_cache.add_area(add_list)
+		if remove_list:
+			self.buildability_cache.remove_area(remove_list)
+
+		super(ProductionBuilder, self).register_change_list(coords_list, purpose, data)
+		self.road_connectivity_cache.modify_area(coords_list)
+		self.display()
+
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""
 		# remove planned fields that are now impossible
+		lost_coords_list = []
+		for coords in coords_list:
+			if coords in self.plan:
+				lost_coords_list.append(coords)
+		self.register_change_list(lost_coords_list, BUILDING_PURPOSE.NONE, None)
+
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD].size
 		removed_list = []
 		for coords, (purpose, _) in self.plan.iteritems():
@@ -373,16 +377,18 @@ class ProductionBuilder(AreaBuilder):
 
 		for coords in removed_list:
 			rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
-			for field_coords in rect.tuple_iter():
-				self.plan[field_coords] = (BUILDING_PURPOSE.NONE, None)
+			self.register_change_list(list(rect.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 		self._refresh_unused_fields()
 		super(ProductionBuilder, self).handle_lost_area(coords_list)
+		self.road_connectivity_cache.modify_area(lost_coords_list)
 
 	def handle_new_area(self):
 		"""Handle receiving more land to the production area (this can happen when the village area gives some up)."""
+		new_coords_list = []
 		for coords in self.land_manager.production:
 			if coords not in self.plan:
-				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
+				new_coords_list.append(coords)
+		self.register_change_list(new_coords_list, BUILDING_PURPOSE.NONE, None)
 
 	collector_building_classes = [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE]
 	field_building_classes = [BUILDINGS.POTATO_FIELD, BUILDINGS.PASTURE, BUILDINGS.SUGARCANE_FIELD, BUILDINGS.TOBACCO_FIELD]
@@ -394,6 +400,7 @@ class ProductionBuilder(AreaBuilder):
 		"""Called when a new building is added in the area (the building already exists during the call)."""
 		if building.id in self.collector_building_classes:
 			self.collector_buildings.append(building)
+			self.simple_collector_area_cache.add_building(building)
 		elif building.id in self.production_building_classes:
 			self.production_buildings.append(building)
 
@@ -401,16 +408,19 @@ class ProductionBuilder(AreaBuilder):
 
 	def _handle_lumberjack_removal(self, building):
 		"""Release the unused trees around the lumberjack building being removed."""
-		used_trees = set()
+		trees_used_by_others = set()
 		for lumberjack_building in self.settlement.buildings_by_id.get(BUILDINGS.LUMBERJACK, []):
 			if lumberjack_building.worldid == building.worldid:
 				continue
 			for coords in lumberjack_building.position.get_radius_coordinates(lumberjack_building.radius):
-				used_trees.add(coords)
+				if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
+					trees_used_by_others.add(coords)
 
+		coords_list = []
 		for coords in building.position.get_radius_coordinates(building.radius):
-			if coords not in used_trees and coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
-				self.register_change(coords[0], coords[1], BUILDING_PURPOSE.NONE, None)
+			if coords not in trees_used_by_others and coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
+				coords_list.append(coords)
+		self.register_change_list(coords_list, BUILDING_PURPOSE.NONE, None)
 
 	def _handle_farm_removal(self, building):
 		"""Handle farm removal by removing planned fields and tearing existing ones that can't be serviced by another farm."""
@@ -433,8 +443,7 @@ class ProductionBuilder(AreaBuilder):
 
 		# tear the finished but no longer used fields down
 		for unused_field in unused_fields:
-			for x, y in unused_field.position.tuple_iter():
-				self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+			self.register_change_list(list(unused_field.position.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 			Tear(unused_field).execute(self.session)
 
 		# remove the planned but never built fields from the plan
@@ -451,8 +460,7 @@ class ProductionBuilder(AreaBuilder):
 						used_by_another_farm = True
 						break
 				if not used_by_another_farm:
-					for x, y in position.tuple_iter():
-						self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+					self.register_change_list(list(position.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 		self._refresh_unused_fields()
 
 	def remove_building(self, building):
@@ -464,11 +472,11 @@ class ProductionBuilder(AreaBuilder):
 		elif building.buildable_upon or building.id == BUILDINGS.TRAIL:
 			pass # don't react to road, trees and ruined tents being destroyed
 		else:
-			for x, y in building.position.tuple_iter():
-				self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+			self.register_change_list(list(building.position.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 
 			if building.id in self.collector_building_classes:
 				self.collector_buildings.remove(building)
+				self.simple_collector_area_cache.remove_building(building)
 			elif building.id in self.production_building_classes:
 				self.production_buildings.remove(building)
 

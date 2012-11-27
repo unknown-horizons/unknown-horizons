@@ -57,7 +57,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
 
 		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance(
-			self.__class__._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
+			self.__class__._fife_object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(x + x, y + y, 0))

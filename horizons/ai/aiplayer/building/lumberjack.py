@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.builder import Builder
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
@@ -39,6 +39,7 @@ class AbstractLumberjack(AbstractBuilding):
 
 class LumberjackEvaluator(BuildingEvaluator):
 	__template_outline = None
+	__radius_offsets = None
 
 	@classmethod
 	def __init_outline(cls):
@@ -53,13 +54,11 @@ class LumberjackEvaluator(BuildingEvaluator):
 				coords = (x + dx, y + dy)
 				if coords not in coords_list:
 					result.add(coords)
-		cls.__template_outline = list(result)
+		cls.__template_outline = sorted(list(result))
+		cls.__radius_offsets = sorted(position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius))
 
 	@classmethod
 	def _get_outline(cls, x, y):
-		if cls.__template_outline is None:
-			cls.__init_outline()
-
 		result = []
 		for dx, dy in cls.__template_outline:
 			result.append((x + dx, y + dy))
@@ -67,14 +66,16 @@ class LumberjackEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.LUMBERJACK, x, y, True, orientation)
-		if not builder:
-			return None
+		# TODO: create a late initialization phase for this kind of stuff
+		if cls.__radius_offsets is None:
+			cls.__init_outline()
 
 		area_value = 0
+		coastline = area_builder.land_manager.coastline
 		personality = area_builder.owner.personality_manager.get('LumberjackEvaluator')
-		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
-			if coords in area_builder.plan:
+		for dx, dy in cls.__radius_offsets:
+			coords = (x + dx, y + dy)
+			if coords in area_builder.plan and coords not in coastline:
 				purpose = area_builder.plan[coords][0]
 				if purpose == BUILDING_PURPOSE.NONE:
 					area_value += personality.new_tree
@@ -87,6 +88,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 		personality = area_builder.owner.personality_manager.get('LumberjackEvaluator')
 		alignment = cls._get_alignment_from_outline(area_builder, cls._get_outline(x, y))
 		value = area_value + alignment * personality.alignment_importance
+		builder = BasicBuilder.create(BUILDINGS.LUMBERJACK, (x, y), orientation)
 		return LumberjackEvaluator(area_builder, builder, value)
 
 	@property
@@ -98,11 +100,27 @@ class LumberjackEvaluator(BuildingEvaluator):
 		if result != BUILD_RESULT.OK:
 			return (result, None)
 
+		production_builder = self.area_builder
+		coastline = production_builder.land_manager.coastline
+		island_ground_map = production_builder.island.ground_map
+		forest_coords_list = []
 		for coords in building.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
-			if coords in self.area_builder.plan and self.area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
-				self.area_builder.register_change(coords[0], coords[1], BUILDING_PURPOSE.TREE, None)
-				# TODO: don't ignore the return value
-				Builder.create(BUILDINGS.TREE, self.area_builder.land_manager, Point(coords[0], coords[1])).execute()
+			if coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in coastline:
+				ok = False
+				if island_ground_map[coords].object is not None and island_ground_map[coords].object.id == BUILDINGS.TREE:
+					ok = True
+				else:
+					builder = BasicBuilder(BUILDINGS.TREE, coords, 0)
+					if not builder.have_resources(production_builder.land_manager):
+						break
+					if builder:
+						assert builder.execute(production_builder.land_manager)
+						ok = True
+				if ok:
+					forest_coords_list.append(coords)
+
+		production_builder.register_change_list(forest_coords_list, BUILDING_PURPOSE.TREE, None)
+
 		return (BUILD_RESULT.OK, building)
 
 AbstractLumberjack.register_buildings()

@@ -35,6 +35,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 from horizons.engine import UH_MODULE
+from horizons.messaging import AutosaveIntervalChanged, MinimapRotationSettingChanged
 
 class SettingsHandler(object):
 	"""Handles settings-related boilerplate code as well as gui."""
@@ -47,17 +48,11 @@ class SettingsHandler(object):
 		return self.engine._setting
 
 	def add_settings(self):
-
-		# TODO: find a way to apply changing to a running game in a clean fashion
-		#       possibility: use signaling via changelistener
 		def update_minimap(*args):
-			try: horizons.main._modules.session.ingame_gui.minimap.draw()
-			except AttributeError: pass # session or gui not yet initialised
+			MinimapRotationSettingChanged.broadcast(None)
 
 		def update_autosave_interval(*args):
-			try: horizons.main._modules.session.reset_autosave()
-			except AttributeError: pass # session or gui not yet initialised
-
+			AutosaveIntervalChanged.broadcast(None)
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",

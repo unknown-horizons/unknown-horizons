@@ -23,7 +23,7 @@ import time
 import horizons.globals
 
 from horizons.util.living import LivingObject
-from horizons.constants import GAME_SPEED
+from horizons.constants import GAME, GAME_SPEED
 from horizons.scheduler import Scheduler
 
 class Timer(LivingObject):
@@ -95,7 +95,7 @@ class Timer(LivingObject):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""
 		if self.ticks_per_second == 0:
 			return
-		while time.time() >= self.tick_next_time:
+		while time.time() >= self.tick_next_time and (GAME.MAX_TICKS is None or self.tick_next_id <= GAME.MAX_TICKS):
 			for f in self.tick_func_test:
 				r = f(self.tick_next_id)
 				if r == self.TEST_SKIP:

@@ -88,6 +88,11 @@ class World(BuildingOwner, WorldObject):
 		# destructor-like thing.
 		super(World, self).end()
 
+		# let the AI players know that the end is near to speed up destruction
+		for player in self.players:
+			if hasattr(player, 'early_end'):
+				player.early_end()
+
 		for ship in self.ships[:]:
 			ship.remove()
 		for island in self.islands:
@@ -158,6 +163,8 @@ class World(BuildingOwner, WorldObject):
 		self.water = dict((tile, 1.0) for tile in self.ground_map)
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
+		for island in self.islands:
+			island.terrain_cache.create_sea_cache()
 
 		# assemble list of water and coastline for ship, that can drive through shallow water
 		# NOTE: this is rather a temporary fix to make the fisher be able to move
@@ -168,6 +175,8 @@ class World(BuildingOwner, WorldObject):
 			for coord, tile in island.ground_map.iteritems():
 				if 'coastline' in tile.classes or 'constructible' not in tile.classes:
 					self.water_and_coastline[coord] = 1.0
+		self._init_shallow_water_bodies()
+		self.shallow_sea_number = self.shallow_water_body[(self.min_x, self.min_y)]
 
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
@@ -273,10 +282,10 @@ class World(BuildingOwner, WorldObject):
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
 		for island in self.islands:
-			self.min_x = min(island.rect.left, self.min_x)
-			self.min_y = min(island.rect.top, self.min_y)
-			self.max_x = max(island.rect.right, self.max_x)
-			self.max_y = max(island.rect.bottom, self.max_y)
+			self.min_x = min(island.position.left, self.min_x)
+			self.min_y = min(island.position.top, self.min_y)
+			self.max_x = max(island.position.right, self.max_x)
+			self.max_y = max(island.position.bottom, self.max_y)
 		self.min_x -= MAP.PADDING
 		self.min_y -= MAP.PADDING
 		self.max_x += MAP.PADDING
@@ -363,28 +372,38 @@ class World(BuildingOwner, WorldObject):
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
 
-	def _init_water_bodies(self):
-		"""This function runs the flood fill algorithm on the water to make it easy
-		to recognise different water bodies."""
+	@classmethod
+	def _recognize_water_bodies(cls, map_dict):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
-		self.water_body = dict.fromkeys(self.water)
-		for coords, num in self.water_body.iteritems():
+		for coords, num in map_dict.iteritems():
 			if num is not None:
 				continue
 
-			self.water_body[coords] = n
+			map_dict[coords] = n
 			queue = deque([coords])
 			while queue:
 				x, y = queue[0]
 				queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
-					if coords2 in self.water_body and self.water_body[coords2] is None:
-						self.water_body[coords2] = n
+					if coords2 in map_dict and map_dict[coords2] is None:
+						map_dict[coords2] = n
 						queue.append(coords2)
 			n += 1
+
+	def _init_water_bodies(self):
+		"""This function runs the flood fill algorithm on the water to make it easy
+		to recognise different water bodies."""
+		self.water_body = dict.fromkeys(self.water)
+		self._recognize_water_bodies(self.water_body)
+
+	def _init_shallow_water_bodies(self):
+		"""This function runs the flood fill algorithm on the water and the coast to
+		make it easy to recognise different water bodies for fishers."""
+		self.shallow_water_body = dict.fromkeys(self.water_and_coastline)
+		self._recognize_water_bodies(self.shallow_water_body)
 
 	def init_fish_indexer(self):
 		radius = Entities.buildings[ BUILDINGS.FISHER ].radius

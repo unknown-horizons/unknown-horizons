@@ -105,6 +105,7 @@ class SavegameAccessor(DbReader):
 		self._load_unit_path()
 		self._load_storage_global_limit()
 		self._load_health()
+		self._load_fish_data()
 		self._hash = None
 
 	def close(self):
@@ -282,6 +283,15 @@ class SavegameAccessor(DbReader):
 
 	def get_health(self, owner):
 		return self._health[owner]
+
+
+	def _load_fish_data(self):
+		self._fish_data = {}
+		for row in self("SELECT rowid, last_usage_tick FROM fish_data"):
+			self._fish_data[int(row[0])] = int(row[1])
+
+	def get_last_fish_usage_tick(self, worldid):
+		return self._fish_data[worldid]
 
 	# Random savegamefile related utility that i didn't know where to put
 

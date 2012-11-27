@@ -200,4 +200,12 @@ class SettlementInventoryUpdated(Message):
 
 class PlayerInventoryUpdated(Message):
 	"""Message sent whenever a player's inventory is updated"""
-	pass	
+	pass
+
+class AutosaveIntervalChanged(Message):
+	"""Sent when the autosave interval is changed."""
+	pass
+
+class MinimapRotationSettingChanged(Message):
+	"""Sent when the setting that enables/disables rotating the minimap with the map is changed."""
+	pass

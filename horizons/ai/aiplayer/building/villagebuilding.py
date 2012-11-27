@@ -19,10 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
+from horizons.util.shapes import Rect
 from horizons.entities import Entities
 
 class AbstractVillageBuilding(AbstractBuilding):
@@ -62,6 +64,8 @@ class AbstractVillageBuilding(AbstractBuilding):
 	def build(self, settlement_manager, resource_id):
 		village_builder = settlement_manager.village_builder
 		building_purpose = self.get_purpose(resource_id)
+		building_id = BUILDING_PURPOSE.get_building(building_purpose)
+		building_class = Entities.buildings[building_id]
 
 		for coords, (purpose, (section, _)) in village_builder.plan.iteritems():
 			if section > village_builder.current_section or purpose != building_purpose:
@@ -75,15 +79,14 @@ class AbstractVillageBuilding(AbstractBuilding):
 				if not self._need_producer(settlement_manager, coords, resource_id):
 					continue
 
-			builder = village_builder.make_builder(BUILDING_PURPOSE.get_building(purpose), coords[0], coords[1], False)
-			if not builder.have_resources():
+			if not village_builder.have_resources(building_id):
 				return (BUILD_RESULT.NEED_RESOURCES, None)
-			if not self.in_settlement(settlement_manager, builder.position):
-				return (BUILD_RESULT.OUT_OF_SETTLEMENT, builder.position)
+			if coords not in village_builder.settlement.buildability_cache.cache[building_class.size]:
+				position = Rect.init_from_topleft_and_size_tuples(coords, building_class.size)
+				return (BUILD_RESULT.OUT_OF_SETTLEMENT, position)
 
-			building = builder.execute()
-			if not building:
-				return (BUILD_RESULT.UNKNOWN_ERROR, None)
+			building = BasicBuilder(building_id, coords, 0).execute(settlement_manager.land_manager)
+			assert building
 			if self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE and not village_builder.roads_built:
 				village_builder.build_roads()
 			return (BUILD_RESULT.OK, building)

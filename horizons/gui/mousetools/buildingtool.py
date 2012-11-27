@@ -723,7 +723,7 @@ class ShipBuildingToolLogic(object):
 		player = session.world.player
 		buildable_tiles_add = building_tool._buildable_tiles.add
 
-		if tiles_to_check is not None: # only check these tiles
+		if tiles_to_check is not None: # only check these tiles (build from ship)
 			for tile in tiles_to_check:
 				if is_tile_buildable(session, tile, self.ship):
 					building_tool._color_buildable_tile(tile)

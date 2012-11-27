@@ -187,6 +187,7 @@ class DefaultPersonality:
 		too_close_linear_penalty = 0
 
 		linear_warehouse_penalty = 1000 # add a penalty of this constant * distance to a warehouse to the warehouse penalty
+		max_options = 10 # maximum number of options to consider
 
 	class FeederChainGoal:
 		extra_priority = 1 # extra priority given to goals that are supposed to produce resources for other settlements on feeder islands
@@ -221,6 +222,7 @@ class DefaultPersonality:
 		alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
 		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
 		max_collector_area_unreachable = 10 # maximum collector area (of 3x3 squares) that doesn't have to be reachable when considering whether to enlarge the area
+		overlap_precision = 0.2 # probability that a tile in the radius will be checked for match for useful coordinates
 
 	class FoundFeederIslandGoal:
 		enabled = True
@@ -412,6 +414,8 @@ class DefaultPersonality:
 		immediate_connection_road = 3 # bonus for a road in an entrance of the farm
 		immediate_connection_free = 1 # bonus for an unused tile in an entrance of the farm
 
+		max_options = 100 # maximum number of farm options to consider
+
 	class LumberjackEvaluator:
 		alignment_importance = 0.5 # the larger this value, the larger the effect of alignment on the placement
 		new_tree = 3 # number of points for a new tree in range
@@ -463,3 +467,6 @@ class DefaultPersonality:
 
 	class AbstractFireStation:
 		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built
+
+	class AbstractFisher:
+		max_options = 30 # maximum number of farm options to consider

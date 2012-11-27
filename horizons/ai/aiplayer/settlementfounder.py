@@ -45,31 +45,15 @@ class SettlementFounder(object):
 
 	def _evaluate_island(self, island):
 		"""Return (flat land, utility value) of the given island."""
-		flat_land = 0
 		resources = defaultdict(lambda: 0)
-
-		for tile in island.ground_map.itervalues():
-			if 'constructible' not in tile.classes:
-				continue
-			object = tile.object
-			if object is not None and not object.buildable_upon:
-				if object.id in [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN] and (tile.x, tile.y) == object.position.origin.to_tuple():
-					# take the natural resources into account
-					usable = True # is the deposit fully available (no part owned by a player)?
-					for coords in object.position.tuple_iter():
-						if island.ground_map[coords].settlement is not None:
-							usable = False
-							break
-					if usable:
-						for resource_id, amount in object.get_component(StorageComponent).inventory.itercontents():
-							resources[resource_id] += amount
-				continue
-			if tile.settlement is not None:
-				continue
-			flat_land += 1
+		for deposit_dict in island.deposits.itervalues():
+			for deposit in deposit_dict.itervalues():
+				if deposit.settlement is None:
+					for resource_id, amount in deposit.get_component(StorageComponent).inventory.itercontents():
+						resources[resource_id] += amount
 
 		# calculate the value of the island by taking into account the available land, resources, and number of enemy settlements
-		value = flat_land
+		value = island.available_flat_land
 		value += min(resources[RES.RAW_CLAY], self.personality.max_raw_clay) * self.personality.raw_clay_importance
 		if resources[RES.RAW_CLAY] < self.personality.min_raw_clay:
 			value -= self.personality.no_raw_clay_penalty
@@ -85,7 +69,7 @@ class SettlementFounder(object):
 			else:
 				value -= self.personality.nearby_enemy_penalty / float(island.position.distance(settlement.island.position) + self.personality.extra_enemy_island_distance)
 
-		return (flat_land, max(2, int(value)))
+		return (island.available_flat_land, max(2, int(value)))
 
 	def _get_available_islands(self, min_land):
 		"""Return a list of available islands in the form [(value, island), ...]."""

@@ -21,8 +21,9 @@
 
 import math
 
-from horizons.ai.aiplayer.builder import Builder
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
+from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import RES, BUILDINGS
 from horizons.util.shapes import Point
@@ -39,12 +40,10 @@ class AbstractField(AbstractBuilding):
 			total_cost += field_spots_available * self.get_expected_building_cost()
 			extra_fields_needed -= field_spots_available
 
-		evaluators = AbstractBuilding.buildings[BUILDINGS.FARM].get_evaluators(settlement_manager, self.get_higher_level_resource(resource_id))
-		if not evaluators:
-			return None
+		fields_per_farm = AbstractBuilding.buildings[BUILDINGS.FARM].get_max_fields(settlement_manager)
+		if fields_per_farm == 0:
+			return 1e100
 
-		evaluator = sorted(evaluators)[0]
-		fields_per_farm = evaluator.fields
 		# TODO: fix the resource gathering code to request resources in larger chunks so this hack doesn't have to be used
 		# use fractional farm costs to give farms a chance to picked
 		extra_farms_needed = float(extra_fields_needed) / fields_per_farm
@@ -88,12 +87,11 @@ class AbstractField(AbstractBuilding):
 
 		assert production_builder.unused_fields[purpose], 'expected field spot to be available'
 		coords = production_builder.unused_fields[purpose][0]
-		builder = Builder.create(self.id, settlement_manager.land_manager, Point(coords[0], coords[1]))
-		building = builder.execute()
-		if not building:
-			return (BUILD_RESULT.UNKNOWN_ERROR, None)
+		building = BasicBuilder(self.id, coords, 0).execute(settlement_manager.land_manager)
+		assert building
+
 		production_builder.unused_fields[purpose].popleft()
-		production_builder.register_change(coords[0], coords[1], purpose, None)
+		production_builder.register_change_list([coords], purpose, None)
 		return (BUILD_RESULT.OK, building)
 
 	@classmethod

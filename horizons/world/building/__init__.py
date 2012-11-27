@@ -57,6 +57,8 @@ class BuildingClass(IngameType):
 			tooltip_text = yaml_data['tooltip_text']
 			self.tooltip_text = tooltip_text or u''
 		self.size = (int(yaml_data['size_x']), int(yaml_data['size_y']))
+		self.width = self.size[0]
+		self.height = self.size[1]
 		self.inhabitants = int(yaml_data['inhabitants'])
 		self.costs = yaml_data['buildingcosts']
 		self.running_costs = yaml_data['cost']

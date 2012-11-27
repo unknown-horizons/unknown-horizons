@@ -19,10 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
+from horizons.entities import Entities
 
 class DepositCoverageGoal(SettlementGoal):
 	"""Build storage tents to get a resource deposit inside the settlement."""
@@ -53,11 +55,13 @@ class DepositCoverageGoal(SettlementGoal):
 		if not available_deposits:
 			return BUILD_RESULT.IMPOSSIBLE
 
+		storage_class = Entities.buildings[BUILDINGS.STORAGE]
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type, storage_class.size,
+		    self.settlement.buildability_cache, self.production_builder.buildability_cache)
+
 		options = []
-		for x, y in self.production_builder.plan:
-			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
-			if not builder:
-				continue
+		for coords in sorted(storage_spots):
+			builder = BasicBuilder.create(BUILDINGS.STORAGE, (x, y), 0)
 
 			min_distance = None
 			for building in available_deposits:

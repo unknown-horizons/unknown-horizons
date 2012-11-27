@@ -28,7 +28,7 @@ from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
-from horizons.util.shapes import ConstRect, Point
+from horizons.util.shapes import ConstRect, distances, Point
 from horizons.util.worldobject import WorldObject
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
@@ -184,7 +184,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		for building in buildings:
 			if building is self:
 				continue
-			if self.position.distance( building.position ) <= self.radius:
+			if distances.distance_rect_rect(self.position, building.position) <= self.radius:
 				yield building
 
 	def update_action_set_level(self, level=0):
@@ -276,7 +276,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		else:
 			return None
 		instance = session.view.layers[cls.layer].createInstance(
-			cls._object,
+			cls._fife_object,
 			fife.ModelCoordinate(*instance_coords),
 			world_id)
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))

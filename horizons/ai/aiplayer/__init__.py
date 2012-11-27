@@ -41,7 +41,7 @@ from landmanager import LandManager
 from settlementmanager import SettlementManager
 from unitbuilder import UnitBuilder
 from constants import GOAL_RESULT
-from builder import Builder
+from basicbuilder import BasicBuilder
 from specialdomestictrademanager import SpecialDomesticTradeManager
 from internationaltrademanager import InternationalTradeManager
 from settlementfounder import SettlementFounder
@@ -76,13 +76,13 @@ from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
+from horizons.messaging import SettlementRangeChanged
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.component.selectablecomponent import SelectableComponent
-
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -133,7 +133,7 @@ class AIPlayer(GenericAI):
 				if isinstance(ship, FightingShip):
 					self.combat_manager.add_new_unit(ship)
 		self.need_more_ships = False
-		#self.need_more_combat_ships = False
+		self.need_more_combat_ships = False
 
 	def __init(self):
 		self._enabled = True  # whether this player is enabled (currently disabled at the end of the game)
@@ -153,6 +153,7 @@ class AIPlayer(GenericAI):
 		self.goals = [DoNothingGoal(self)]
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
 		self.international_trade_manager = InternationalTradeManager(self)
+		SettlementRangeChanged.subscribe(self._on_settlement_range_changed)
 
 	def get_random_profile(self, token):
 		return BehaviorProfileManager.get_random_player_profile(self, token)
@@ -165,6 +166,7 @@ class AIPlayer(GenericAI):
 	def report_success(self, mission, msg):
 		if not self._enabled:
 			return
+
 		self.missions.remove(mission)
 		if mission.ship and mission.ship in self.ships:
 			self.ships[mission.ship] = self.shipStates.idle
@@ -181,6 +183,7 @@ class AIPlayer(GenericAI):
 	def report_failure(self, mission, msg):
 		if not self._enabled:
 			return
+
 		self.missions.remove(mission)
 		if mission.ship and mission.ship in self.ships:
 			self.ships[mission.ship] = self.shipStates.idle
@@ -368,18 +371,21 @@ class AIPlayer(GenericAI):
 		self.need_more_combat_ships = True
 
 	def add_building(self, building):
-		# if the id is not present then this is a new settlement that has to be handled separately
+		assert self._enabled
+		# if the settlement id is not present then this is a new settlement that has to be handled separately
 		if building.settlement.worldid in self._settlement_manager_by_settlement_id:
 			self._settlement_manager_by_settlement_id[building.settlement.worldid].add_building(building)
 
 	def remove_building(self, building):
 		if not self._enabled:
 			return
+
 		self._settlement_manager_by_settlement_id[building.settlement.worldid].remove_building(building)
 
 	def remove_unit(self, unit):
 		if not self._enabled:
 			return
+
 		if unit in self.ships:
 			del self.ships[unit]
 		self.combat_manager.remove_unit(unit)
@@ -396,10 +402,20 @@ class AIPlayer(GenericAI):
 		super(AIPlayer, self).notify_new_disaster(message)
 		Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[message.building.settlement.worldid].handle_disaster, message), self, run_in=0)
 
-	def on_settlement_expansion(self, settlement, coords):
-		""" stores the ownership change in a list for later processing """
-		if settlement.owner is not self:
-			self.settlement_expansions.append((coords, settlement))
+	def _on_settlement_range_changed(self, message):
+		"""Stores the ownership changes in a list for later processing."""
+		our_new_coords_list = []
+		settlement = message.sender
+
+		for tile in message.changed_tiles:
+			coords = (tile.x, tile.y)
+			if settlement.owner is self:
+				our_new_coords_list.append(coords)
+			else:
+				self.settlement_expansions.append((coords, settlement))
+
+		if our_new_coords_list and settlement.worldid in self._settlement_manager_by_settlement_id:
+			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.road_connectivity_cache.modify_area(our_new_coords_list)
 
 	def handle_enemy_expansions(self):
 		if not self.settlement_expansions:
@@ -453,14 +469,20 @@ class AIPlayer(GenericAI):
 
 	@classmethod
 	def clear_caches(cls):
-		Builder.cache.clear()
-		FarmEvaluator.clear_cache()
+		BasicBuilder.clear_cache()
+		AbstractFarm.clear_cache()
 
 	def __str__(self):
 		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
 
-	def end(self):
+	def early_end(self):
+		"""Called to speed up session destruction."""
+		assert self._enabled
 		self._enabled = False
+		SettlementRangeChanged.unsubscribe(self._on_settlement_range_changed)
+
+	def end(self):
+		assert not self._enabled
 		self.personality_manager = None
 		self.world = None
 		self.islands = None

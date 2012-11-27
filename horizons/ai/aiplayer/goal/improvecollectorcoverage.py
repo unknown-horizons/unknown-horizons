@@ -21,6 +21,7 @@
 
 from collections import deque
 
+from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
@@ -155,10 +156,13 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 						reachable[coords].append((building.worldid, dist))
 
 		options = []
-		for (x, y), building_distances in reachable.iteritems():
-			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
-			if not builder:
+		storage_class = Entities.buildings[BUILDINGS.STORAGE]
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type,
+		    storage_class.size, self.settlement.buildability_cache, self.production_builder.buildability_cache)
+		for coords, building_distances in reachable.iteritems():
+			if coords not in storage_spots:
 				continue
+			builder = BasicBuilder.create(BUILDINGS.STORAGE, coords, 0)
 
 			actual_distance = {}
 			for coords in builder.position.tuple_iter():

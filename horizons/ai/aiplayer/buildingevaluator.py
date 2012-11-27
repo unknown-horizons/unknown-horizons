@@ -24,14 +24,15 @@ import logging
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.entities import Entities
-from horizons.util.worldobject import WorldObject
 
-class BuildingEvaluator(WorldObject):
+class BuildingEvaluator(object):
 	"""Class representing a set of instructions for building a building complex along with its value."""
 
 	log = logging.getLogger("ai.aiplayer.buildingevaluator")
 	need_collector_connection = True
 	record_plan_change = True
+
+	__slots__ = ('area_builder', 'builder', 'value')
 
 	def __init__(self, area_builder, builder, value):
 		"""
@@ -40,7 +41,6 @@ class BuildingEvaluator(WorldObject):
 		@param value: the value of the evaluator (bigger is better)
 		"""
 
-		super(BuildingEvaluator, self).__init__()
 		self.area_builder = area_builder
 		self.builder = builder
 		self.value = value
@@ -140,10 +140,9 @@ class BuildingEvaluator(WorldObject):
 		"""Return an alignment value based on the outline of the given coordinates list."""
 		return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords_list(coords_list))
 
-	def __lt__(self, other):
-		if abs(self.value - other.value) > 1e-9:
-			return self.value > other.value
-		return self.worldid - other.worldid
+	def __cmp__(self, other):
+		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
+		raise NotImplementedError()
 
 	@property
 	def purpose(self):
@@ -153,14 +152,18 @@ class BuildingEvaluator(WorldObject):
 	def have_resources(self):
 		"""Return None if the builder is unreachable by road, False if there are not enough resources, and True otherwise."""
 		# check without road first because the road is unlikely to be the problem and pathfinding isn't cheap
-		if not self.builder.have_resources():
+		if not self.builder.have_resources(self.area_builder.land_manager):
 			return False
 		if not self.need_collector_connection:
 			return True # skip the road cost test for buildings that don't need one
 		road_cost = self.area_builder.get_road_connection_cost(self.builder)
 		if road_cost is None:
 			return None
-		return self.builder.have_resources(road_cost)
+		return self.builder.have_resources(self.area_builder.land_manager, extra_resources=road_cost)
+
+	def _register_builder_position(self):
+		self.area_builder.register_change_list(list(self.builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
+		self.area_builder.register_change_list([self.builder.position.origin.to_tuple()], self.purpose, None)
 
 	def execute(self):
 		"""Build the specified building complex. Return (BUILD_RESULT constant, building object)."""
@@ -173,19 +176,30 @@ class BuildingEvaluator(WorldObject):
 		if self.need_collector_connection:
 			assert self.area_builder.build_road_connection(self.builder)
 
-		building = self.builder.execute()
+		building = self.builder.execute(self.area_builder.land_manager)
 		if not building:
 			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 
 		if self.record_plan_change:
-			for x, y in self.builder.position.tuple_iter():
-				self.area_builder.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-			self.area_builder.register_change(self.builder.position.origin.x, self.builder.position.origin.y, self.purpose, None)
-
+			self._register_builder_position()
 		return (BUILD_RESULT.OK, building)
 
 	def __str__(self):
-		return '%s at %d, %d with value %f' % (self.__class__.__name__, self.builder.point.x, self.builder.point.y, self.value)
+		point = self.builder.position.origin
+		return '%s at %d, %d with value %f' % (self.__class__.__name__, point.x, point.y, self.value)
+
+	@classmethod
+	def get_best_evaluator(cls, evaluators):
+		if not evaluators:
+			return None
+
+		best_index = 0
+		best_value = evaluators[0].value
+		for i in xrange(1, len(evaluators)):
+			if evaluators[i].value > best_value:
+				best_index = i
+				best_value = evaluators[i].value
+		return evaluators[best_index]
 
 decorators.bind_all(BuildingEvaluator)

@@ -24,6 +24,8 @@ from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Shape, Point
 
 class Rect(Shape):
+	__slots__ = ('top', 'left', 'right', 'bottom', 'origin')
+
 	def __init__(self, *args):
 		if len(args) == 2 and isinstance(args[0], Point) and isinstance(args[1], Point): #args: edge1, edge2
 			self.top = min(args[0].y, args[1].y)
@@ -91,6 +93,7 @@ class Rect(Shape):
 		y_coords.sort()
 		self.top = y_coords[0]
 		self.bottom = y_coords[1]
+		self.origin = Point(self.left, self.top)
 		return self
 
 	@property
@@ -273,6 +276,10 @@ class Rect(Shape):
 			for y in xrange(self.top, self.bottom):
 				yield Point(x, y)
 
+	@classmethod
+	def get_surrounding_offsets(cls, size):
+		rect = cls.init_from_topleft_and_size_tuples((0, 0), size)
+		return list(rect.get_surrounding())
 
 class ConstRect(Const, Rect):
 	"""An immutable Rect.

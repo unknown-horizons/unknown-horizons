@@ -29,6 +29,7 @@ from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
+from horizons.messaging import MinimapRotationSettingChanged
 
 import math
 from math import sin, cos
@@ -127,11 +128,17 @@ class Minimap(object):
 		#import random
 		#ExtScheduler().add_new_object(lambda : self.highlight( (50+random.randint(-50,50), random.randint(-50,50) + 50 )), self, 2, loops=-1)
 
+		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
+		if self.use_rotation:
+			MinimapRotationSettingChanged.subscribe(self._on_rotation_setting_change)
+
 	def end(self):
 		self.disable()
 		self.world = None
 		self.session = None
 		self.renderer = None
+		if self.use_rotation:
+			MinimapRotationSettingChanged.unsubscribe(self._on_rotation_setting_change)
 
 	def disable(self):
 		"""Due to the way the minimap works, there isn't really a show/hide,
@@ -472,7 +479,6 @@ class Minimap(object):
 		pixel_per_coord_x_half_as_int = int(pixel_per_coord_x/2)
 		pixel_per_coord_y_half_as_int = int(pixel_per_coord_y/2)
 
-		real_map_point = Point(0, 0)
 		world_min_x = self.world.min_x
 		world_min_y = self.world.min_y
 		island_col = self.COLORS["island"]
@@ -504,16 +510,14 @@ class Minimap(object):
 				real_map_point = covered_area.center
 				"""
 				# use center of the rect that the pixel covers
-				real_map_point.x = int(x*pixel_per_coord_x)+world_min_x + \
-											pixel_per_coord_x_half_as_int
-				real_map_point.y = int(y*pixel_per_coord_y)+world_min_y + \
-											pixel_per_coord_y_half_as_int
-				real_map_point_tuple = (real_map_point.x, real_map_point.y)
+				real_map_x = int(x * pixel_per_coord_x) + world_min_x + pixel_per_coord_x_half_as_int
+				real_map_y = int(y * pixel_per_coord_y) + world_min_y + pixel_per_coord_y_half_as_int
+				real_map_coords = (real_map_x, real_map_y)
 
 				# check what's at the covered_area
-				if real_map_point_tuple in full_map:
+				if real_map_coords in full_map:
 					# this pixel is an island
-					tile = full_map[real_map_point]
+					tile = full_map[real_map_coords]
 					settlement = tile.settlement
 					if settlement is None:
 						# island without settlement
@@ -668,7 +672,11 @@ class Minimap(object):
 	def _get_rotation_setting(self):
 		if not self.use_rotation:
 			return False
-		return horizons.globals.fife.get_uh_setting("MinimapRotation")
+		return self._rotation_setting
+
+	def _on_rotation_setting_change(self, message):
+		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
+		self.draw()
 
 	_rotations = { 0 : 0,
 				         1 : 3 * math.pi / 2,
