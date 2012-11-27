@@ -38,6 +38,8 @@ from horizons.gui.util import load_uh_widget
 from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
+from horizons.util.python import decorators
+from buildinglogic import ShipBuildingToolLogic, SettlementBuildingToolLogic, BuildRelatedBuildingToolLogic
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -704,3 +706,9 @@ class BuildingTool(NavigationTool):
 			building.get_component(SelectableComponent).deselect()
 		self.renderer.removeAllOutlines()
 		self.renderer.removeAllColored()
+
+		
+decorators.bind_all(BuildingTool)
+decorators.bind_all(SettlementBuildingToolLogic)
+decorators.bind_all(ShipBuildingToolLogic)
+decorators.bind_all(BuildRelatedBuildingToolLogic)
