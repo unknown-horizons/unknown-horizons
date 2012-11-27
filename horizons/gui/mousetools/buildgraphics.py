@@ -125,7 +125,7 @@ class Graphics(object):
 		                          gui_y // 2 - icon_y // 2 - 70)
 		self.__class__.gui.adaptLayout()
 		
-def preview_build(self, point1, point2, force=False):
+	def preview_build(self, point1, point2, force=False):
 		"""Display buildings as preview if build requirements are met"""
 		#self.session.view.renderer['InstanceRenderer'].removeAllColored()
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
