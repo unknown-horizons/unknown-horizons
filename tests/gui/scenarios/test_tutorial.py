@@ -61,6 +61,19 @@ def test_tutorial(gui):
 	gui.cursor_click(13, 10, 'left')
 	gui.cursor_click(13, 10, 'right')
 
+	# add extra trees around the lumberjacks
+	gui.trigger('tab', 'button_13')
+	settlement = gui.session.world.islands[0].settlements[0]
+	for lumberjack_coords in [(8, 10), (13, 10)]:
+		building = settlement.ground_map[lumberjack_coords].object
+		for coords in building.position.get_radius_coordinates(building.radius):
+			if coords not in settlement.ground_map:
+				continue
+			tile = settlement.ground_map[coords]
+			if tile.object is None and 'constructible' in tile.classes:
+				gui.cursor_click(coords[0], coords[1], 'left', shift=True)
+	gui.cursor_click(13, 10, 'right')
+
 	# roads
 	gui.trigger('tab', 'button_21')
 	gui.cursor_multi_click((10, 8), (10, 9), (10, 10), (11, 10))
