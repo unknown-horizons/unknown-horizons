@@ -698,3 +698,9 @@ class BuildingTool(NavigationTool):
 		self._transparencified_instances.clear()
 
 	def _remove_coloring(self):
+		"""Removes coloring from tiles, that indicate that the tile is buildable
+		as well as all highlights. Called when building mode is finished."""
+		for building in self._related_buildings:
+			building.get_component(SelectableComponent).deselect()
+		self.renderer.removeAllOutlines()
+		self.renderer.removeAllColored()
