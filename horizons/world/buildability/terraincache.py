@@ -49,8 +49,8 @@ class TerrainBuildabilityCache(object):
 		self._island = island
 		self._land = None
 		self._coast = None
-		self.land_or_coast = None
-		self.cache = None
+		self.land_or_coast = None # set((x, y), ...)
+		self.cache = None # {terrain type: {(width, height): set((x, y), ...), ...}, ...}
 		self.create_cache()
 
 	def _init_land_and_coast(self):

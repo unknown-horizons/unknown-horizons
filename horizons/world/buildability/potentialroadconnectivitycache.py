@@ -37,7 +37,7 @@ class PotentialRoadConnectivityCache(object):
 		self._land_manager = area_builder.land_manager
 		self._settlement_ground_map = area_builder.settlement.ground_map
 		self._cache = ConnectedAreaCache()
-		self.area_numbers = self._cache.area_numbers
+		self.area_numbers = self._cache.area_numbers # {(x, y): area id, ...}
 
 	def modify_area(self, coords_list):
 		"""

@@ -34,7 +34,7 @@ class SimpleCollectorAreaCache(object):
 	def __init__(self, terrain_cache):
 		self.terrain_cache = terrain_cache
 		self._area_cache = PartialBinaryBuildabilityCache(terrain_cache)
-		self.cache = self._area_cache.cache
+		self.cache = self._area_cache.cache # {(width, height): set((x, y), ...), ...}
 		self._buildings = set()
 		self._area_coverage = {}
 

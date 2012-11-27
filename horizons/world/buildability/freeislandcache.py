@@ -37,7 +37,7 @@ class FreeIslandBuildabilityCache(object):
 
 	def __init__(self, island):
 		self._binary_cache = BinaryBuildabilityCache(island.terrain_cache)
-		self.cache = self._binary_cache.cache
+		self.cache = self._binary_cache.cache # {(width, height): set((x, y), ...), ...}
 		self.island = island
 		self._init()
 

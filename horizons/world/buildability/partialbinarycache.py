@@ -40,7 +40,7 @@ class PartialBinaryBuildabilityCache(object):
 
 	def __init__(self, terrain_cache):
 		self.terrain_cache = terrain_cache
-		self.coords_set = set()
+		self.coords_set = set() # set((x, y), ...)
 		self._row2 = set()
 
 		sizes = set(TerrainBuildabilityCache.sizes)
@@ -50,7 +50,7 @@ class PartialBinaryBuildabilityCache(object):
 		sizes.add((5, 5))
 		sizes.add((5, 6))
 
-		self.cache = {}
+		self.cache = {} # {(width, height): set((x, y), ...), ...}
 		self.cache[(1, 1)] = self.coords_set
 		for size in sizes:
 			if size != (1, 1):
