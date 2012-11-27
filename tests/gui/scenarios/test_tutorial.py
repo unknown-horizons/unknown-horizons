@@ -159,6 +159,7 @@ def test_tutorial(gui):
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 10):
 		gui.run()
 
+	gui.run(seconds=0.3) # attempt to avoid the crash on the next step
 	gui.trigger('tab_base', '1') # FIXME this sometimes fails
 	gui.trigger('tab', 'button_02')
 	gui.cursor_click(25, 12, 'left')
