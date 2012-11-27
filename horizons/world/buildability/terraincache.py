@@ -23,11 +23,24 @@ from horizons.constants import BUILDINGS
 from horizons.util.shapes.rect import Rect
 
 class TerrainRequirement:
-	LAND = 1
-	LAND_AND_COAST = 2
-	LAND_AND_COAST_NEAR_SEA = 3
+	LAND = 1 # buildings that must be entirely on flat land
+	LAND_AND_COAST = 2 # buildings that have to be partially on the coast
+	LAND_AND_COAST_NEAR_SEA = 3 # coastal buildings that have to be near the sea
 
 class TerrainBuildabilityCache(object):
+	"""
+	Keep track of the locations where buildings of specific types can be built.
+
+	An instance of this class is used to keep track of the buildability options given the
+	terrain. (x, y) are in instance.cache[terrain_type][(width, height)] if and only if
+	it is possible to place a building with the given terrain type restrictions and with
+	the given size at the origin (x, y) given that other conditions are met. Basically it
+	cares about the required terrain type of the building and not about the buildings on
+	the island.
+
+	Other than the terrain type dimension it acts like an immutable BinaryBuildabilityCache.
+	"""
+
 	sizes = [(1, 1), (2, 2), (2, 3), (2, 4), (3, 3), (4, 4), (6, 6)]
 	sea_radius = 3
 

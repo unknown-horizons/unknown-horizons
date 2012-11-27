@@ -22,6 +22,19 @@
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
 
 class FreeIslandBuildabilityCache(object):
+	"""
+	An instance of this class is used to keep track of the unclaimed area on an island.
+
+	Instances of this class can answer the same queries as BinaryBuildabilityCache.
+	It is specialized for keeping track of the unclaimed land on an island. That way it
+	is possible to use it in conjunction with the TerrainCache to find all available
+	warehouse positions on an island.
+
+	Note that the cache is initialized with all unclaimed tiles on the island and after
+	that it can only reduce in size because it is currently impossible for land to change
+	ownership after it has been claimed by the first player.
+	"""
+
 	def __init__(self, island):
 		self._binary_cache = BinaryBuildabilityCache(island.terrain_cache)
 		self.cache = self._binary_cache.cache
@@ -42,6 +55,7 @@ class FreeIslandBuildabilityCache(object):
 		self._binary_cache.add_area(coords_list)
 
 	def remove_area(self, coords_list):
+		"""Remove a list of existing coordinates from the area."""
 		clean_list = []
 		for coords in coords_list:
 			if coords in self._binary_cache.coords_set:

@@ -22,6 +22,15 @@
 from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
 
 class SimpleCollectorAreaCache(object):
+	"""
+	A specialized PartialBinaryBuildabilityCache for keeping track of collector coverage.
+
+	The AI uses instances of this class to figure out where it can place buildings such
+	that at least some part of the building would be covered by a general collector. It
+	is a simple version in that it doen't check whether a road to the corresponding
+	collector would be possible.
+	"""
+
 	def __init__(self, terrain_cache):
 		self.terrain_cache = terrain_cache
 		self._area_cache = PartialBinaryBuildabilityCache(terrain_cache)
@@ -30,6 +39,7 @@ class SimpleCollectorAreaCache(object):
 		self._area_coverage = {}
 
 	def add_building(self, building):
+		"""Take the the coverage area of the given building into account."""
 		self._buildings.add(building)
 
 		new_coords_list = []
@@ -47,6 +57,7 @@ class SimpleCollectorAreaCache(object):
 		self._area_cache.add_area(new_coords_list)
 
 	def remove_building(self, building):
+		"""Stop taking the coverage area of the given building into account."""
 		self._buildings.remove(building)
 
 		removed_coords_list = []

@@ -22,6 +22,14 @@
 from collections import deque
 
 class ConnectedAreaCache(object):
+	"""
+	Query whether (x1, y1) and (x2, y2) are connected.
+
+	This class aims to let one cheaply query the id of the area where (x, y) are. Getting
+	that information for (x1, y1) and (x2, y2) shows that it is possible to get from
+	one to the other entirely within the area if and only if they have the same area id.
+	"""
+
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 
 	def __init__(self):
@@ -62,6 +70,7 @@ class ConnectedAreaCache(object):
 			del self.areas[area_id]
 
 	def add_area(self, coords_list):
+		"""Add a list of new coordinates to the area."""
 		moves = self.__moves
 		affected_areas = set()
 		for coords in coords_list:
@@ -93,6 +102,7 @@ class ConnectedAreaCache(object):
 		self._renumber_affected_areas(affected_areas)
 
 	def remove_area(self, coords_list):
+		"""Remove a list of existing coordinates from the area."""
 		affected_areas = set()
 		for coords in coords_list:
 			area_id = self.area_numbers[coords]

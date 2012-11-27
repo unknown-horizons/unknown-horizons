@@ -22,6 +22,22 @@
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 
 class PartialBinaryBuildabilityCache(object):
+	"""
+	A cache that knows where rectangles can be placed such that they are entirely inside the area.
+
+	This cache can be used to keep track of building buildability in case the
+	buildability depends on the building being at least partly within a certain area.
+	The binary part of the name refers to the fact that a node either is or isn't part of
+	the area that the instance is about.
+
+	A query of the form (x, y) in instance.cache[(width, height)] is a very cheap way of
+	finding out whether a rectangle of size (width, height) can be placed on origin (x, y)
+	such that at least some part of it is within the given area.
+
+	All elements of instance.cache[(width, height)] can be iterated to get a complete list
+	of all such coordinates.
+	"""
+
 	def __init__(self, terrain_cache):
 		self.terrain_cache = terrain_cache
 		self.coords_set = set()
@@ -58,6 +74,7 @@ class PartialBinaryBuildabilityCache(object):
 		return base_set_additions
 
 	def add_area(self, new_coords_list):
+		"""Add a list of new coordinates to the area."""
 		for coords in new_coords_list:
 			assert coords not in self.coords_set
 			assert coords in self.terrain_cache.land_or_coast
@@ -99,6 +116,7 @@ class PartialBinaryBuildabilityCache(object):
 		return base_set_removals
 
 	def remove_area(self, removed_coords_list):
+		"""Remove a list of existing coordinates from the area."""
 		for coords in removed_coords_list:
 			assert coords in self.coords_set
 			assert coords in self.terrain_cache.land_or_coast

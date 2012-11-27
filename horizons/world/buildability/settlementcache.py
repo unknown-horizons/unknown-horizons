@@ -22,11 +22,14 @@
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
 
 class SettlementBuildabilityCache(BinaryBuildabilityCache):
+	"""A specialized BinaryBuildabilityCache for settlements."""
+
 	def __init__(self, terrain_cache, settlement_ground_map):
 		super(SettlementBuildabilityCache, self).__init__(terrain_cache)
 		self.settlement_ground_map = settlement_ground_map
 
 	def add_area(self, coords_list):
+		"""Add a list of new coordinates to the area."""
 		land_or_coast = self.terrain_cache.land_or_coast
 		add_list = []
 		for coords in coords_list:
@@ -36,6 +39,13 @@ class SettlementBuildabilityCache(BinaryBuildabilityCache):
 			super(SettlementBuildabilityCache, self).add_area(add_list)
 
 	def modify_area(self, coords_list):
+		"""
+		Refresh the usability of the coordinates in the given list.
+
+		This function is called with a list of coordinates on which the possibility of
+		building a building may have changed to update the underlying BinaryBuildabilityCache.
+		"""
+
 		land_or_coast = self.terrain_cache.land_or_coast
 
 		add_list = []

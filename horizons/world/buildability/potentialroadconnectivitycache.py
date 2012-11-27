@@ -23,6 +23,15 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.world.buildability.connectedareacache import ConnectedAreaCache
 
 class PotentialRoadConnectivityCache(object):
+	"""
+	Query whether a toad connection between two sets of coordinates is possible.
+
+	This class is used by the AI to figure out whether it might be possible to build a
+	road between two sets of coordinates. Potentially because the area contains some part
+	of the AI's plan and the land it has a plan for may be either owned by the AI or not
+	yet owned by anyone.
+	"""
+
 	def __init__(self, area_builder):
 		self._area_builder = area_builder
 		self._land_manager = area_builder.land_manager
@@ -31,6 +40,14 @@ class PotentialRoadConnectivityCache(object):
 		self.area_numbers = self._cache.area_numbers
 
 	def modify_area(self, coords_list):
+		"""
+		Refresh the usability of the coordinates in the given list.
+
+		This function is called with a list of coordinates on which the possibility of
+		building a road may have changed. It figures out whether it is possible to build
+		a road on (x, y) and updates the underlying ConnectedAreaCache accordingly.
+		"""
+
 		add_list = []
 		remove_list = []
 
@@ -62,6 +79,13 @@ class PotentialRoadConnectivityCache(object):
 			self._cache.remove_area(remove_list)
 
 	def is_connection_possible(self, coords_set1, coords_set2):
+		"""Return true if and only if it is possible to connect the two coordinate sets.
+
+		More specifically, it returns true if and only if it is possible to build a toad
+		from some (x1, y1) in coords_set1 to some (x2, y2) in coords_set2 entirely within
+		the area. This is done cheaply using the underlying ConnectedAreaCache.
+		"""
+
 		areas1 = set()
 		for coords in coords_set1:
 			if coords in self.area_numbers:
