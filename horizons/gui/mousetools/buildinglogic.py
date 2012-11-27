@@ -114,6 +114,28 @@ class SettlementBuildingToolLogic(object):
 						if is_tile_buildable(session, tile, None, island, check_settlement=False):
 							building_tool._color_buildable_tile(tile)
 
+	def _on_update(self, message):
+		if self.building_tool():
+			if message.sender.owner.is_local_player:
+				# this is generally caused by adding new buildings, therefore new_buildings=True
+				self.building_tool().highlight_buildable(message.changed_tiles, new_buildings=True)
+
+	def on_escape(self, session):
+		session.ingame_gui.show_build_menu() # will call remove()
+		if self.subscribed:
+			self.subscribed = False
+			SettlementRangeChanged.unsubscribe(self._on_update)
+
+	def remove(self, session):
+		if self.subscribed:
+			self.subscribed = False
+			SettlementRangeChanged.unsubscribe(self._on_update)
+
+	def add_change_listener(self, instance, building_tool): pass # using messages now
+	def remove_change_listener(self, instance, building_tool): pass
+	def continue_build(self): pass
+
+
 class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 	"""Same as normal build, except quitting it drops to the build related tab."""
 	def __init__(self, building_tool, instance):
