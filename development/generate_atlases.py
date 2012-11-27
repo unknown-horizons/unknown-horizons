@@ -60,6 +60,7 @@ import horizons.globals
 horizons.globals.fife = DummyFife()
 
 from horizons.constants import PATHS
+from horizons.util.dbreader import DbReader
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
@@ -321,7 +322,31 @@ class AtlasGenerator(object):
 		self.log.info('Finished saving metadata')
 
 	@classmethod
+	def check_files(cls):
+		"""Check that the required atlas files exist."""
+		paths = [
+			'content' + os.sep + 'actionsets.json',
+			'content' + os.sep + 'atlas.sql',
+			'content' + os.sep + 'tilesets.json',
+		]
+		for path in paths:
+			if not os.path.exists(path):
+				return False
+
+		# verify that the combined images exist
+		db = DbReader(':memory:')
+		db.execute_script(open('content' + os.sep + 'atlas.sql').read())
+		for db_row in db("SELECT atlas_path FROM atlas"):
+			if not os.path.exists(db_row[0]):
+				return False
+		return True
+
+	@classmethod
 	def load(cls, max_size):
+		if not cls.check_files():
+			cls.log.info('Some required atlas file missing.')
+			return None
+
 		if not os.path.exists(PATHS.ATLAS_METADATA_PATH):
 			cls.log.info('Old atlas metadata cache not found.')
 			return None
