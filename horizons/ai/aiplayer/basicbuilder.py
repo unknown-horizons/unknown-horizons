@@ -72,8 +72,6 @@ class BasicBuilder(object):
 	def execute(self, land_manager, ship=None):
 		"""Build the building."""
 		building_class = Entities.buildings[self.building_id]
-		if building_class.name not in ('Tree', 'Trail'):
-			print Scheduler().cur_tick, 'BUILD', building_class.name, self.position.origin.to_tuple()
 		building_level = building_class.get_initial_level(land_manager.owner)
 		action_set_id = building_class.get_random_action_set(level = building_level)
 

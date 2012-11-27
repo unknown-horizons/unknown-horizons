@@ -310,8 +310,6 @@ class AIPlayer(GenericAI):
 				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success, self.report_failure))
 
 	def tick(self):
-		import time
-		start = time.time()
 		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval)
 		self.settlement_founder.tick()
 		self.handle_enemy_expansions()
@@ -320,9 +318,6 @@ class AIPlayer(GenericAI):
 		self.international_trade_manager.tick()
 		self.unit_manager.tick()
 		self.combat_manager.tick()
-		total = time.time() - start
-		if total > 0.03:
-			print '%.3f' % (time.time() - start)
 
 	def tick_long(self):
 		"""
