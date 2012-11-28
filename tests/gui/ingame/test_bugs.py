@@ -319,8 +319,6 @@ def test_ticket_1848(gui):
 	gui.trigger('tab_account', 'show_production_overview')
 	
 	
-	gui.trigger('menu', 'startSingle')
-		
 @gui_test(use_dev_map=True)
 def test_ticket_1948(gui):
 	"""Triggers a crash that happens when building a storage tent on the border of the settlement"""
