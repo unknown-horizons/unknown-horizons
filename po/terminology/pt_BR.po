@@ -3,21 +3,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-05-10 19:25+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-11-26 15:24+0000\n"
+"Last-Translator: fmanna <fmanna775@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.2.0-alpha1a\n"
+"X-POOTLE-MTIME: 1353943494.0\n"
 
 msgid "build"
 msgstr "construir"
 
 msgid "game"
-msgstr "jogo"
+msgstr "jogo / partida"
 
 msgid "building"
 msgstr "construção"
@@ -29,22 +30,22 @@ msgid "farm"
 msgstr "fazenda"
 
 msgid "ship"
-msgstr "navio"
+msgstr "embarcação"
 
 msgid "tent"
 msgstr "tenda"
 
 msgid "warehouse"
-msgstr "armazem"
+msgstr "armazém"
 
 msgid "resource"
-msgstr "mercadoria"
+msgstr "recurso"
 
 msgid "produce"
 msgstr "produzir"
 
 msgid "field"
-msgstr "campo"
+msgstr "plantação"
 
 #
 msgid "map"
@@ -60,7 +61,7 @@ msgid "buy"
 msgstr "comprar"
 
 msgid "overview"
-msgstr "resumo"
+msgstr "visão geral"
 
 msgid "click"
 msgstr "clique"
@@ -75,7 +76,6 @@ msgid "main square"
 msgstr "praça principal"
 
 # 85%
-#, fuzzy
 msgid "sailors"
 msgstr "marinheiros"
 
@@ -83,28 +83,28 @@ msgid "food"
 msgstr "alimento"
 
 msgid "increment"
-msgstr "estágio"
+msgstr "nível"
 
 msgid "production"
 msgstr "produção"
 
 msgid "select"
-msgstr "selecione"
+msgstr "selecionar"
 
 msgid "sell"
 msgstr "vender"
 
 msgid "setting"
-msgstr "opção / atributo / (colonizando)"
+msgstr "configuração"
 
 msgid "storage"
-msgstr "armazém / armazenamento"
+msgstr "depósito"
 
 msgid "tab"
 msgstr "aba"
 
 msgid "upgrade"
-msgstr "aprimorar"
+msgstr "aprimoramento"
 
 msgid "your inhabitants"
 msgstr "seus habitantes"
@@ -134,16 +134,16 @@ msgid "menu"
 msgstr "menu"
 
 msgid "slot"
-msgstr "lote"
+msgstr "slot"
 
 msgid "start"
-msgstr "início / iníciar"
+msgstr "início / iniciar"
 
 msgid "stock"
 msgstr "estoque"
 
 msgid "trail"
-msgstr "rastro"
+msgstr "trilha"
 
 msgid "Unknown Horizons"
 msgstr "Unknown Horizons"
@@ -152,7 +152,7 @@ msgid "wool"
 msgstr "lã"
 
 msgid "boards"
-msgstr "placas"
+msgstr "tábuas"
 
 msgid "collector"
 msgstr "coletor"
@@ -161,10 +161,10 @@ msgid "connection"
 msgstr "conexão"
 
 msgid "fire"
-msgstr "fogo / (atirar)"
+msgstr "fogo"
 
 msgid "change"
-msgstr "mudar / mudança"
+msgstr "alterar"
 
 msgid "connect"
 msgstr "conectar"
@@ -176,7 +176,7 @@ msgid "house"
 msgstr "casa"
 
 msgid "log"
-msgstr "registro / protocolo"
+msgstr "registro"
 
 msgid "road"
 msgstr "estrada"
@@ -185,15 +185,14 @@ msgid "save"
 msgstr "salvar"
 
 # 80%
-#, fuzzy
 msgid "built"
-msgstr "construido"
+msgstr "construído"
 
 msgid "pasture"
-msgstr "pasto"
+msgstr "pastagem"
 
 msgid "reach"
-msgstr "alcance / alcançar / área de captação"
+msgstr "atingir"
 
 msgid "tree"
 msgstr "árvore"
@@ -205,7 +204,7 @@ msgid "your settlement"
 msgstr "sua colônia"
 
 msgid "add"
-msgstr "adicionar / acrescentar"
+msgstr "adicionar"
 
 msgid "check"
 msgstr "verificar"
@@ -223,7 +222,7 @@ msgid "free trader"
 msgstr "mercador livre"
 
 msgid "happiness"
-msgstr "felicidade"
+msgstr "satisfação"
 
 msgid "in stock"
 msgstr "em estoque"
@@ -241,7 +240,7 @@ msgid "sugar"
 msgstr "açúcar"
 
 msgid "taxes"
-msgstr "taxas"
+msgstr "impostos"
 
 msgid "tax"
 msgstr "imposto"
@@ -262,7 +261,7 @@ msgid "help"
 msgstr "ajuda"
 
 msgid "left"
-msgstr "esquerda / (deixar)"
+msgstr "esquerda"
 
 msgid "level"
 msgstr "nível"
@@ -302,13 +301,13 @@ msgid "storage tent"
 msgstr "tenda de armazenamento"
 
 msgid "wait"
-msgstr "esperar"
+msgstr "aguardar"
 
 msgid "access"
-msgstr "acessar"
+msgstr "acesso"
 
 msgid "account"
-msgstr "conta"
+msgstr "finanças"
 
 msgid "amount"
 msgstr "quantidade"
@@ -335,35 +334,35 @@ msgid "increase"
 msgstr "aumentar"
 
 msgid "lamb"
-msgstr "cordeiro, carneiro"
+msgstr "carneiro"
 
 msgid "leave"
-msgstr "sair, deixar"
+msgstr "sair / deixar"
 
 msgid "liquor"
-msgstr "licor"
+msgstr "álcool"
 
 msgid "location"
 msgstr "localização"
 
 msgid "offer"
-msgstr "oferecer"
+msgstr "oferta"
 
 # 75%
 msgid "potatoes"
 msgstr "batatas"
 
 msgid "range"
-msgstr "abrangência / área de captação"
+msgstr "alcance"
 
 msgid "reached"
-msgstr "alcançado, alcançou, atingiu, chegou"
+msgstr "alcançado"
 
 msgid "run"
 msgstr "correr"
 
 msgid "slider"
-msgstr "deslizador"
+msgstr "controle deslizante"
 
 msgid "solution"
 msgstr "solução"
@@ -372,7 +371,7 @@ msgid "space"
 msgstr "espaço"
 
 msgid "target"
-msgstr "alvo"
+msgstr "objetivo"
 
 msgid "team"
 msgstr "equipe"
@@ -387,14 +386,14 @@ msgid "active"
 msgstr "ativo"
 
 msgid "afford"
-msgstr "dispor"
+msgstr "disposição"
 
 # 85%
 msgid "animals"
 msgstr "animais"
 
 msgid "Captain's log"
-msgstr "diário de bordo"
+msgstr "Diário do Capitão"
 
 msgid "construct"
 msgstr "construir"
@@ -415,13 +414,13 @@ msgid "forest"
 msgstr "floresta"
 
 msgid "grows"
-msgstr "cresce"
+msgstr "crescimento / prosperidade"
 
 msgid "hold"
-msgstr "manter, segurar"
+msgstr "manter"
 
 msgid "idle"
-msgstr "ocioso, inativo, parado, desocupado"
+msgstr "ocioso"
 
 msgid "income"
 msgstr "receita"
@@ -430,92 +429,84 @@ msgid "information"
 msgstr "informação"
 
 msgid "key"
-msgstr "tecla, chave"
+msgstr "tecla"
 
 msgid "lamb wool"
-msgstr "lã, lã de ovelha"
+msgstr "lã de ovelha"
 
 msgid "overview tab"
-msgstr "guia de resumo"
+msgstr "aba de visão geral"
 
 msgid "minimap"
-msgstr "minimapa, mapa-miniatura"
+msgstr "minimapa"
 
 msgid "issues"
 msgstr "problemas"
 
 msgid "plant"
-msgstr ""
-"planta (plant), plantar (to plant) // fábrica, usina (\"to build a plant\", "
-"both)"
+msgstr "planta / fábrica"
 
 msgid "play"
 msgstr "jogar"
 
 msgid "playing"
-msgstr "jogando, a jogar"
+msgstr "jogando"
 
 msgid "price"
 msgstr "preço"
 
 msgid "read"
-msgstr ""
-"ler (to read), leia(as in a reccomendation, \"i suggest you to read this\" "
-"translates \"eu sugiro que você leia isto\")"
+msgstr "ler"
 
 msgid "return"
-msgstr "retornar, voltar"
+msgstr "retornar"
 
 msgid "sale"
-msgstr "venda (note: \"sell\" translates to \"vender\")"
+msgstr "venda"
 
 msgid "screen"
 msgstr "tela"
 
 # 80%
 msgid "sound"
-msgstr "estabelecer / fundar"
+msgstr "som"
 
 msgid "special"
 msgstr "especial"
 
 msgid "store"
-msgstr "armazenar (to store) // loja (\"the store\" translates to \"a loja\")"
+msgstr "loja"
 
 msgid "tear"
-msgstr "rasgar"
+msgstr "demolir"
 
 msgid "from time to time"
-msgstr "ocasionalmente // de tempo em tempo"
+msgstr "de vez em quando"
 
 msgid "trading"
-msgstr "negociando, em negociação"
+msgstr "comércio"
 
 msgid "village"
 msgstr "aldeia"
 
 msgid "visit"
-msgstr "visita (visit), visitar (to visit)"
+msgstr "visita"
 
 msgid "world"
 msgstr "mundo"
 
 # 80%
 msgid "yield"
-msgstr ""
-"produzir (note: translation as \"campo\" is mistaken, as \"campo\" means "
-"\"field\", not \"yield\")"
+msgstr "produção"
 
 msgid "your ship"
-msgstr "seu navio"
+msgstr "sua embarcação"
 
 msgid "back"
 msgstr "voltar"
 
 msgid "build settlement"
-msgstr ""
-"fundar colônia (recommended translation), construir colônia (not incorrect, "
-"but unrecommended)"
+msgstr "fundar colônia"
 
 msgid "load"
 msgstr "carregar"
@@ -524,14 +515,10 @@ msgid "unload"
 msgstr "descarregar"
 
 msgid "command"
-msgstr ""
-"comando (\"command\" literaly, \"who is in command?\" translates to \"quem está "
-"no comando?\"), comandar (to command, synonymous to \"to order\", \"i command "
-"you to stand aside\" translates to \"eu lhe comando/ordeno que saia do "
-"caminho\")"
+msgstr "comando"
 
 msgid "completed"
-msgstr "concluido, completado"
+msgstr "concluído"
 
 msgid "condition"
 msgstr "condição"
@@ -543,29 +530,25 @@ msgid "empty"
 msgstr "vazio"
 
 msgid "ensure"
-msgstr "assegurar"
+msgstr "garantir"
 
 msgid "fulfill"
-msgstr "cumprir, realizar"
+msgstr "cumprir"
 
 msgid "graphics"
 msgstr "gráficos"
 
 msgid "harvest"
-msgstr ""
-"safra, colheita (\"the harvest from that year was nice\" translates to \"a "
-"safra/colheita daquele ano foi boa\"), colher (to harvest)"
+msgstr "colheita"
 
 msgid "hunts"
-msgstr "caça (hunt), caças (\"hunts\", plural of \"caça\")"
+msgstr "caças"
 
 msgid "multiple"
-msgstr "multiplos (for a \"male\" reference) ,multiplas (\"female\" of multiplos)"
+msgstr "múltiplo"
 
 msgid "potato field"
-msgstr ""
-"campo de batatas (literal), plantação de batatas (correct translation if "
-"\"field\" refers to a harvesting field)"
+msgstr "plantação de batatas"
 
 msgid "school"
 msgstr "escola"
@@ -580,13 +563,13 @@ msgid "sheep"
 msgstr "ovelha"
 
 msgid "signal fire"
-msgstr "fogo de sinal"
+msgstr "sinal de fogo"
 
 msgid "statistics"
 msgstr "estatísticas"
 
 msgid "clay"
-msgstr "argila (note: \"barro\" means \"mud\", not \"clay\")"
+msgstr "argila"
 
 msgid "iron"
 msgstr "ferro"
@@ -595,12 +578,10 @@ msgid "ore"
 msgstr "minério"
 
 msgid "tobacco"
-msgstr "tabaco, fumo"
+msgstr "tabaco"
 
 msgid "charcoal"
-msgstr ""
-"carvão (note: both \"coal\" and \"charcoal\" translate to \"carvão\". If "
-"nessessary, \"carvão mineral\" can be used for distinguishing \"coal\")"
+msgstr "carvão vegetal"
 
 #
 msgid "sugar field"
@@ -610,9 +591,7 @@ msgid "temporarily"
 msgstr "temporariamente"
 
 msgid "values"
-msgstr ""
-"valores (literaly), vale (\"this values 300 silver coins\" translates to \"isto "
-"vale 300 moedas de prata\")"
+msgstr "valores"
 
 #~ msgid "main"
 #~ msgstr "principal"
