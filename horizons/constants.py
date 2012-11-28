@@ -23,6 +23,7 @@
 import ctypes
 import platform
 import os
+import os.path
 
 from horizons.ext.enum import Enum
 
@@ -38,9 +39,7 @@ class VERSION:
 		It only works in git repositories, and is actually a hack.
 		"""
 		try:
-			from run_uh import find_uh_position
-
-			uh_path = find_uh_position()
+			uh_path = os.path.join(os.path.dirname(os.path.abspath(unicode(__file__))), '..')
 			git_head_path = os.path.join(uh_path, '.git', 'HEAD')
 			if os.path.exists(git_head_path):
 				head = open(git_head_path).readline().strip().partition(' ')

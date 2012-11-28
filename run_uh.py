@@ -78,30 +78,6 @@ def log():
 logfilename = None
 logfile = None
 
-def find_uh_position():
-	"""Returns path, where uh is located"""
-	# first check around cur dir and sys.argv[0]
-	for i in (
-		os.path.split(sys.argv[0])[0],
-		'.', '..'
-		):
-		i = os.path.realpath(i)
-		if os.path.exists(os.path.join(i, 'content')):
-			return i
-	else:
-		# also check system wide dirs
-		positions = (
-			'/usr/share/games',
-			'/usr/share',
-			'/usr/local/share/games',
-			'/usr/local/share'
-		)
-		for i in positions:
-			pos = os.path.join(i, 'unknown-horizons')
-			if os.path.exists(pos):
-				return pos
-	raise RuntimeError('Cannot find location of Unknown Horizons.')
-
 def get_option_parser():
 	"""Returns inited OptionParser object"""
 	from horizons.constants import VERSION
@@ -244,10 +220,9 @@ def main():
 	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
 		pass
 
-	#chdir to Unknown Horizons root
-	os.chdir(find_uh_position())
+	# chdir to Unknown Horizons root
+	os.chdir(os.path.dirname(os.path.abspath(unicode(__file__))))
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
-
 	create_user_dirs()
 
 	options = get_option_parser().parse_args()[0]
