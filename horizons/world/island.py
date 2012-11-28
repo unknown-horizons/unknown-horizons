@@ -28,7 +28,7 @@ from horizons.scheduler import Scheduler
 
 from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.pathfinding.pathnodes import IslandPathNodes
-from horizons.util.shapes import Circle, Point, Rect
+from horizons.util.shapes import Circle, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from horizons.world.settlement import Settlement
@@ -257,7 +257,7 @@ class Island(BuildingOwner, WorldObject):
 				continue
 
 			# Assign the entire building to the first settlement that covers some of it.
-			assert building.settlement is None
+			assert building.settlement is None or building.settlement is settlement
 			for building_coords in building.position.tuple_iter():
 				building_tile = self.ground_map[building_coords]
 				if building_tile.settlement is not settlement:
