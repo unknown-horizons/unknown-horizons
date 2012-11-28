@@ -8,24 +8,26 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-24 18:31+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-11-26 23:47+0000\n"
+"Last-Translator: fmanna <fmanna775@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.1-pre\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.0-beta1\n"
+"X-POOTLE-MTIME: 1353973679.0\n"
 
 #. scenario difficulty
 #: po/The_Unknown.py
 msgid "easy"
-msgstr ""
+msgstr "fácil"
 
 #. scenario author
 #: po/The_Unknown.py
 msgid "Kikody, UH-Team"
-msgstr ""
+msgstr "Kikody, equipe UH"
 
 #. scenario description
 #: po/The_Unknown.py
@@ -34,11 +36,14 @@ msgid ""
 "crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm....\n"
 msgstr ""
+"Você é o capitão de um navio sob a bandeira da Inglaterra em 1740. Junto de "
+"sua equipe, estava a caminho de uma colônia Inglesa no oceano Pacífico.\n"
+"Tudo correu bem até que chegou uma tempestade...\n"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
 msgid "20th November 1740"
-msgstr ""
+msgstr "20 de Novembro de 1740"
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -47,6 +52,9 @@ msgid ""
 "have little food left and our ship is in a bad shape. The navigational "
 "instruments and sea charts are lost."
 msgstr ""
+"Após quatro dias a tempestade finalmente acaba e podemos descansar. Mas "
+"resta-nos pouca comida e nosso navio encontra-se em más condições. Os "
+"instrumentos e cartas de navegação foram perdidos."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -55,6 +63,10 @@ msgid ""
 "so land can't be far. Fortunately we always have some tools and boards "
 "onboard, so we can build some basic shelter."
 msgstr ""
+"Temos de chegar em terra firme logo. Um de meus homens avistou alguns "
+"pássaros pescadores, portanto a costa não deve estar longe. Felizmente "
+"trazemos algumas ferramentas e tábuas a bordo, de modo que podemos construir "
+"um abrigo básico."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -62,11 +74,13 @@ msgid ""
 "Task:\n"
 "Find land and build a port."
 msgstr ""
+"Tarefa:\n"
+"Encontrar a costa e construir um porto."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
 msgid "22nd November 1740"
-msgstr ""
+msgstr "22 de Novembro de 1740"
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -74,6 +88,8 @@ msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days... we are running out of food and lack basic building material."
 msgstr ""
+"O porto foi construído e uma nova esperança surge. Os próximos dias ainda me "
+"preocupam... estamos ficando sem comida e sem material de construção."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -81,6 +97,8 @@ msgid ""
 "We need to secure our basic needs to keep us alive. It is time to send people "
 "gathering food and lumber so that we can survive and build some shelter."
 msgstr ""
+"Precisamos proteger nossas necessidades básicas para nos mantermos vivos. É "
+"hora de enviar algumas pessoas para coletar alimento e madeira."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -92,11 +110,17 @@ msgid ""
 "* Hunter\n"
 "Collect 5 food and 5 boards."
 msgstr ""
+"Tarefa:\n"
+"Construir ao menos um de cada:\n"
+"* Lenhador\n"
+"* Pescador\n"
+"* Caçador\n"
+"Coletar 5 unidades de alimento e 5 de tábuas."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
 msgid "25th November 1740"
-msgstr ""
+msgstr "25 de Novembro de 1740"
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -105,6 +129,9 @@ msgid ""
 "the growth of our new settlement. Our people demand a place to live and "
 "exchange goods for their everyday needs."
 msgstr ""
+"Garantimos nossas necessidades básicas de alimentação e reunimos um pouco de "
+"madeira para continuar o desenvolvimento de nossa nova colônia. O povo "
+"exige um local para habitação e troca de bens de consumo diário."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -112,6 +139,8 @@ msgid ""
 "It is time to build some tents to live in and a small main square to supply "
 "our citizens with goods."
 msgstr ""
+"É hora de construir algumas tendas e uma pequena praça principal para suprir "
+"seus cidadãos com mercadorias."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -119,11 +148,13 @@ msgid ""
 "Task:\n"
 "Build a main square and at least 10 tents."
 msgstr ""
+"Tarefa:\n"
+"Construir uma praça principal e ao menos 10 tendas."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
 msgid "1st December 1740"
-msgstr ""
+msgstr "1 de Dezembro de 1740"
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -132,6 +163,9 @@ msgid ""
 "comfortable but it keeps me dry and I have the feeling of having a roof over "
 "my head at night."
 msgstr ""
+"Finalmente temos algo para comer e um local para se abrigar. Minha tenda não "
+"é muito confortável mas me manterá seco e durante a noite me dá uma "
+"sensação de ter um teto sobre a cabeça."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -141,6 +175,12 @@ msgid ""
 "stuck here for a while, so we'll have to make the best of situation.\n"
 "We can only try to to build up a civilisation and find a way home..."
 msgstr ""
+"Estive observando as estrelas à noite, mas sem minhas cartas de navegação e "
+"instrumentos a interpretação fica impossível. Tenho a sensação de que "
+"ficaremos presos aqui por algum tempo, então é melhor nos esforçarmos para "
+"melhorar nossas condições.\n"
+"Tudo que podemos fazer por hora é construir uma civilização e buscar o "
+"caminho de casa..."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -149,11 +189,14 @@ msgid ""
 "Grow the village util you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
+"Tarefa:\n"
+"Desenvolver o vilarejo até atingir 250 habitantes e um balanço financeiro "
+"positivo."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
 msgid "27th August 1745"
-msgstr ""
+msgstr "27 de Agosto de 1745"
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -162,6 +205,9 @@ msgid ""
 "started getting used to my new home, but this island is too small to stay "
 "here forever."
 msgstr ""
+"Nosso vilarejo está indo bem, a cidade cresceu para mais de 250 habitantes. "
+"Eu comecei a me acostumar com minha nova casa, mas esta ilha é pequena "
+"demais para ficarmos aqui para sempre."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -171,6 +217,10 @@ msgid ""
 "using the stars I see at night. It is not perfect,  but I hope it will "
 "suffice to return here."
 msgstr ""
+"Devemos carregar nosso navio e sairmos em busca de uma ilha maior que "
+"ofereça mais espaço e recursos para meu povo. Criei um mapa básico de "
+"navegação usando as estrelas que vejo à noite. Não é perfeito, mas espero "
+"que seja suficiente para que possamos retornar."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -179,3 +229,6 @@ msgid ""
 "Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how "
 "you can contribute to making this scenario longer and better!"
 msgstr ""
+"Tarefa:\n"
+"Entre em contato com a equipe Unknown Horizons (www.unknown-horizons.org) e "
+"veja como você pode contribuir com a criação de cenários maiores e melhores!"
