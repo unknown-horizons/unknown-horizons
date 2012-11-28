@@ -20,9 +20,11 @@
 # ###################################################
 
 from fife import fife
+
 import weakref
 import logging
 import horizons.globals
+
 from horizons.entities import Entities
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.shapes import Point

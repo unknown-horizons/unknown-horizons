@@ -373,7 +373,6 @@ class BuildingTool(NavigationTool, previewhandler.PreviewHandler):
 	def rotate_right(self):
 		self._rotate(degrees=270)
 		
-
 decorators.bind_all(BuildingTool)
 decorators.bind_all(SettlementBuildingToolLogic)
 decorators.bind_all(ShipBuildingToolLogic)
