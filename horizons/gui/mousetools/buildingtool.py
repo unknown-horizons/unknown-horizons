@@ -40,9 +40,9 @@ from horizons.extscheduler import ExtScheduler
 from horizons.messaging import WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
 from horizons.util.python import decorators
 from buildingtoollogic import ShipBuildingToolLogic, SettlementBuildingToolLogic, BuildRelatedBuildingToolLogic
-import PreviewHandler
+import previewhandler
 
-class BuildingTool(NavigationTool, PreviewHandler.PreviewHandler):
+class BuildingTool(NavigationTool, previewhandler.PreviewHandler):
 	"""Represents a dangling tool after a building was selected from the list.
 	Builder visualizes if and why a building can not be built under the cursor position.
 	@param building: selected building type"
