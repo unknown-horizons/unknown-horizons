@@ -39,10 +39,10 @@ from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
 from horizons.util.python import decorators
-from buildinglogic import ShipBuildingToolLogic, SettlementBuildingToolLogic, BuildRelatedBuildingToolLogic
-import buildgraphics
+from buildingtoollogic import ShipBuildingToolLogic, SettlementBuildingToolLogic, BuildRelatedBuildingToolLogic
+import PreviewHandler
 
-class BuildingTool(NavigationTool, buildgraphics.Graphics):
+class BuildingTool(NavigationTool, PreviewHandler.PreviewHandler):
 	"""Represents a dangling tool after a building was selected from the list.
 	Builder visualizes if and why a building can not be built under the cursor position.
 	@param building: selected building type"
@@ -179,25 +179,6 @@ class BuildingTool(NavigationTool, buildgraphics.Graphics):
 		check_building = lambda b : b.worldid != message.worldid
 		self._highlighted_buildings = set( tup for tup in self._highlighted_buildings if check_building(tup[0]) )
 		self._related_buildings = set( filter(check_building, self._related_buildings) )
-
-	def load_gui(self):
-		if self.__class__.gui is None:
-			self.__class__.gui = load_uh_widget("place_building.xml")
-			top_bar = self.__class__.gui.findChild(name='top_bar')
-			top_bar.position = ((self.__class__.gui.size[0] // 2) - (top_bar.size[0] // 2) - 16, 50)
-			self.__class__.gui.position_technique = "right-1:top+157"
-		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
-		                                "rotate_right": self.rotate_right } )
-		# set translated building name in gui
-		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
-		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
-		head_box = self.__class__.gui.findChild(name='head_box')
-		head_box.adaptLayout() # recalculates size of new content
-		# calculate and set new center
-		new_x = max(25, (self.__class__.gui.size[0] // 2) - (head_box.size[0] // 2))
-		head_box.position = (new_x, head_box.position[1])
-		head_box.adaptLayout()
-		self.draw_gui()
 
 	def on_escape(self):
 		self._build_logic.on_escape(self.session)

@@ -30,8 +30,9 @@ from horizons.util.worldobject import WorldObject
 from horizons.command.building import Build
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import BUILDINGS, GFX
+from horizons.gui.util import load_uh_widget
 
-class Graphics(object):
+class PreviewHandler(object):
 	log = logging.getLogger("gui.buildingtool")
 
 	buildable_color = (255, 255, 255)
@@ -90,7 +91,7 @@ class Graphics(object):
 
 		for building in buildings_to_select:
 			self._related_buildings.add(building)
-			
+		
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
 			level = self.session.world.player.settler_level if \
@@ -125,6 +126,25 @@ class Graphics(object):
 		building_icon.position = (gui_x // 2 - icon_x // 2,
 		                          gui_y // 2 - icon_y // 2 - 70)
 		self.__class__.gui.adaptLayout()
+		
+	def load_gui(self):
+		if self.__class__.gui is None:
+			self.__class__.gui = load_uh_widget("place_building.xml")
+			top_bar = self.__class__.gui.findChild(name='top_bar')
+			top_bar.position = ((self.__class__.gui.size[0] // 2) - (top_bar.size[0] // 2) - 16, 50)
+			self.__class__.gui.position_technique = "right-1:top+157"
+		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
+		                                "rotate_right": self.rotate_right } )
+		# set translated building name in gui
+		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
+		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
+		head_box = self.__class__.gui.findChild(name='head_box')
+		head_box.adaptLayout() # recalculates size of new content
+		# calculate and set new center
+		new_x = max(25, (self.__class__.gui.size[0] // 2) - (head_box.size[0] // 2))
+		head_box.position = (new_x, head_box.position[1])
+		head_box.adaptLayout()
+		self.draw_gui()
 		
 	def preview_build(self, point1, point2, force=False):
 		"""Display buildings as preview if build requirements are met"""
