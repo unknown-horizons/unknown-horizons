@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2012-04-06 21:55+0100\n"
+"POT-Creation-Date: 2012-11-30 00:00+0100\n"
 "PO-Revision-Date: 2012-11-26 14:57+0000\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,17 +19,12 @@ msgstr ""
 "X-POOTLE-MTIME: 1353941878.0\n"
 
 #. scenario difficulty
-#: po/The_Unknown.py:2
+#: po/The_Unknown.py
 msgid "easy"
 msgstr "leicht"
 
-#. scenario author
-#: po/The_Unknown.py:4
-msgid "Kikody, UH-Team"
-msgstr "Kikody, UH-Team"
-
 #. scenario description
-#: po/The_Unknown.py:6
+#: po/The_Unknown.py
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and your "
 "crew were on the way to a colony of England in the pacific ocean.\n"
@@ -40,12 +35,12 @@ msgstr ""
 "Alles verlief nach Plan, bis ihr in einen Sturm geraten seid....\n"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#: po/The_Unknown.py:8
+#: po/The_Unknown.py
 msgid "20th November 1740"
 msgstr "20. November 1740"
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:10
+#: po/The_Unknown.py
 msgid ""
 "After four days the storm finally fades and we can take a rest. But we only "
 "have little food left and our ship is in a bad shape. The navigational "
@@ -57,7 +52,7 @@ msgstr ""
 "sind verloren gegangen."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:12
+#: po/The_Unknown.py
 msgid ""
 "We have to come ashore soon. One of my jacks saw some birds hunting for fish, "
 "so land can't be far. Fortunately we always have some tools and boards "
@@ -69,7 +64,7 @@ msgstr ""
 "dass wir einfache Hütten bauen können."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:14
+#: po/The_Unknown.py
 msgid ""
 "Task:\n"
 "Find land and build a port."
@@ -78,12 +73,12 @@ msgstr ""
 "Findet Land und erbaut einen Hafen."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#: po/The_Unknown.py:16
+#: po/The_Unknown.py
 msgid "22nd November 1740"
 msgstr "22. November 1740"
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:18
+#: po/The_Unknown.py
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days... we are running out of food and lack basic building material."
@@ -93,7 +88,7 @@ msgstr ""
 "Baumaterial."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:20
+#: po/The_Unknown.py
 msgid ""
 "We need to secure our basic needs to keep us alive. It is time to send people "
 "gathering food and lumber so that we can survive and build some shelter."
@@ -103,7 +98,7 @@ msgstr ""
 "dass wir überleben und uns Unterkünfte bauen können."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:22
+#: po/The_Unknown.py
 msgid ""
 "Task:\n"
 "Build at least one of each:\n"
@@ -120,12 +115,12 @@ msgstr ""
 "Sammele außerdem 5 Nahrung und 5 Bretter."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#: po/The_Unknown.py:24
+#: po/The_Unknown.py
 msgid "25th November 1740"
 msgstr "25. November 1740"
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:26
+#: po/The_Unknown.py
 msgid ""
 "We have secured our basic needs of food and gathered some wood to continue "
 "the growth of our new settlement. Our people demand a place to live and "
@@ -137,7 +132,7 @@ msgstr ""
 "Bedürfnisse auszutauschen."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:28
+#: po/The_Unknown.py
 msgid ""
 "It is time to build some tents to live in and a small main square to supply "
 "our citizens with goods."
@@ -146,7 +141,7 @@ msgstr ""
 "bauen, um unsere Einwohner mit Gütern zu versorgen."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:30
+#: po/The_Unknown.py
 msgid ""
 "Task:\n"
 "Build a main square and at least 10 tents."
@@ -155,12 +150,12 @@ msgstr ""
 "Baue einen Marktplatz und mindestens zehn Zelte."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#: po/The_Unknown.py:32
+#: po/The_Unknown.py
 msgid "1st December 1740"
 msgstr "1. Dezember 1740"
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:34
+#: po/The_Unknown.py
 msgid ""
 "Finally we have enough to eat and a place to live again. My tent is not very "
 "comfortable but it keeps me dry and I have the feeling of having a roof over "
@@ -171,7 +166,7 @@ msgstr ""
 "Nacht das Gefühl ein Dach über dem Kopf zu haben."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:36
+#: po/The_Unknown.py
 msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
@@ -185,23 +180,20 @@ msgstr ""
 "Weg in unsere Heimat zu finden."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:38
+#: po/The_Unknown.py
 msgid ""
 "Task:\n"
-"Grow the village util you have at least 250 inhabitants and a positive "
+"Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
-"Aufgabe:\n"
-"Lasse die Stadt wachsen bis du mindestens 250 Einwohner und eine positive "
-"Bilanz hast."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#: po/The_Unknown.py:40
+#: po/The_Unknown.py
 msgid "27th August 1745"
 msgstr "27. August 1745"
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:42
+#: po/The_Unknown.py
 msgid ""
 "Our village is doing well, the city has grown to over 250 inhabitants. I have "
 "started getting used to my new home, but this island is too small to stay "
@@ -212,21 +204,16 @@ msgstr ""
 "klein um hier für immer zu bleiben."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:44
+#: po/The_Unknown.py
 msgid ""
 "We should load our ship and move out to find a bigger island offering room "
 "and resources for my people. I have created a basic navigational map again, "
-"using the stars I see at night. It is not perfect,  but I hope it will "
-"suffice to return here."
+"using the stars I see at night. It is not perfect, but I hope it will suffice "
+"to return here."
 msgstr ""
-"Wir sollten ein Schiff beladen und uns auf die Suche nach einer größeren "
-"Insel mit mehr Platz und Ressourcen für meine Leute begeben. Ich habe mir "
-"anhand der Sterne, die ich in der Nacht sehe, wieder eine einfache Seekarte "
-"erstellt. Sie ist nicht perfekt, aber ich hoffe sie reicht um hier her "
-"zurück zu finden."
 
 #. This is the text body of a logbook page.
-#: po/The_Unknown.py:46
+#: po/The_Unknown.py
 msgid ""
 "Task:\n"
 "Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how "
@@ -235,3 +222,27 @@ msgstr ""
 "Aufgabe:\n"
 "Kontaktiere das Unknown Horizonts Team (www.unknown-horizons.org) und finde "
 "heraus wie du dieses Szenario länger und besser machen kannst!"
+
+#~ msgid "Kikody, UH-Team"
+#~ msgstr "Kikody, UH-Team"
+
+#~ msgid ""
+#~ "Task:\n"
+#~ "Grow the village util you have at least 250 inhabitants and a positive "
+#~ "balance."
+#~ msgstr ""
+#~ "Aufgabe:\n"
+#~ "Lasse die Stadt wachsen bis du mindestens 250 Einwohner und eine positive "
+#~ "Bilanz hast."
+
+#~ msgid ""
+#~ "We should load our ship and move out to find a bigger island offering room "
+#~ "and resources for my people. I have created a basic navigational map again, "
+#~ "using the stars I see at night. It is not perfect,  but I hope it will "
+#~ "suffice to return here."
+#~ msgstr ""
+#~ "Wir sollten ein Schiff beladen und uns auf die Suche nach einer größeren "
+#~ "Insel mit mehr Platz und Ressourcen für meine Leute begeben. Ich habe mir "
+#~ "anhand der Sterne, die ich in der Nacht sehe, wieder eine einfache Seekarte "
+#~ "erstellt. Sie ist nicht perfekt, aber ich hoffe sie reicht um hier her "
+#~ "zurück zu finden."
