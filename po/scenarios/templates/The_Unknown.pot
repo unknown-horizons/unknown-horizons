@@ -146,7 +146,7 @@ msgstr ""
 #: po/The_Unknown.py
 msgid ""
 "Task:\n"
-"Grow the village util you have at least 250 inhabitants and a positive "
+"Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
 
