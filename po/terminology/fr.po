@@ -3,28 +3,29 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-02 18:19+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2012-11-26 23:54+0000\n"
+"Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.5.0-beta1\n"
+"X-POOTLE-MTIME: 1353974078.0\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 # (poterminology) uh/unknownhorizons.pot (10)
 # I added 'installer' cause in my opinion, you cannot build a weaver...french will understand that
 msgid "build"
-msgstr "Construire / Ériger / Édifier"
+msgstr "construire / ériger / édifier"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (37)
 #
 msgid "game"
-msgstr "jeu"
+msgstr "jeu / partie"
 
 # (poterminology) uh-tutorial/tutorial.pot (26)
 #
@@ -259,7 +260,7 @@ msgstr "préférence"
 # (poterminology) uh-tutorial/tutorial.pot (11)
 # (poterminology) uh/unknownhorizons.pot (2)
 msgid "storage"
-msgstr "dépôt / entrepôt"
+msgstr "entrepôt"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -448,7 +449,7 @@ msgstr "connecter"
 # (poterminology) uh/unknownhorizons.pot (2)
 #
 msgid "cost"
-msgstr "coût"
+msgstr "coûter / coût"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -565,7 +566,7 @@ msgid "add"
 msgstr "ajouter"
 
 msgid "check"
-msgstr "vérifier"
+msgstr "vérifier / cocher"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -834,7 +835,7 @@ msgstr "accéder"
 #
 #
 msgid "account"
-msgstr "compte / fincances / bilan"
+msgstr "compte / finances / bilan"
 
 msgid "amount"
 msgstr "montant"
@@ -877,7 +878,7 @@ msgstr "construction"
 # (poterminology) uh/unknownhorizons.pot (2)
 #
 msgid "decrease"
-msgstr "baisser"
+msgstr "réduire / diminuer / baisser"
 
 #
 #
@@ -950,7 +951,7 @@ msgstr "quitter / partir"
 #
 #
 msgid "liquor"
-msgstr "liqueur / alcool"
+msgstr "liqueur"
 
 msgid "location"
 msgstr "endroit"
@@ -995,7 +996,7 @@ msgstr "atteint"
 #
 # Of course, here is all about context cause run can also be translated by 'courir' (using legs for running !)
 msgid "run"
-msgstr "rouler / exploiter"
+msgstr "rouler / exploiter / courir"
 
 msgid "slider"
 msgstr "régleur"
@@ -1046,7 +1047,7 @@ msgid "active"
 msgstr "actif"
 
 msgid "afford"
-msgstr "offrir"
+msgstr "s'offrir"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (3)
@@ -1109,7 +1110,7 @@ msgstr "forêt"
 #
 #
 msgid "grows"
-msgstr "grandit / croitre / prospérer"
+msgstr "grandit / croit / prospère / cultive"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1125,7 +1126,7 @@ msgid "hold"
 msgstr "tenir"
 
 msgid "idle"
-msgstr "ralenti"
+msgstr "inactif"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1270,7 +1271,7 @@ msgid "sound"
 msgstr "son"
 
 msgid "special"
-msgstr "spéciale"
+msgstr "spécial"
 
 msgid "store"
 msgstr "stocker"
@@ -1279,7 +1280,7 @@ msgstr "stocker"
 # (poterminology) uh/unknownhorizons.pot (1)
 # 75%
 msgid "tear"
-msgstr "déchirer"
+msgstr "démolir / déchirer"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1336,7 +1337,7 @@ msgstr "monde"
 # (poterminology) uh/unknownhorizons.pot (1)
 # 83%
 msgid "yield"
-msgstr "rendement"
+msgstr "produit / production / rendement"
 
 msgid "your ship"
 msgstr "votre navire"
@@ -1432,7 +1433,7 @@ msgstr "chasse"
 # (poterminology) uh/unknownhorizons.pot (2)
 #
 msgid "multiple"
-msgstr "multiple"
+msgstr "multiple / plusieurs"
 
 #
 #
@@ -1498,7 +1499,7 @@ msgid "sheep"
 msgstr "mouton"
 
 msgid "signal fire"
-msgstr "feu de signalisation / phare"
+msgstr "phare / feu de signalisation"
 
 msgid "statistics"
 msgstr "statistiques"
