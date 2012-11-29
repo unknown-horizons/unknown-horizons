@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-04 21:06+0200\n"
-"Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
+"PO-Revision-Date: 2012-11-29 23:10+0000\n"
+"Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.5.0-beta1\n"
+"X-POOTLE-MTIME: 1354230657.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py:2
@@ -48,7 +49,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
 msgid "Welcome to Unknown Horizons!"
-msgstr "Bienvenue dans Unknown Horizons !"
+msgstr "Bienvenue dans Unknown Horizons !!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:12
