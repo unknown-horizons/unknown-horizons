@@ -74,7 +74,6 @@ def write(comment, string):
 
 scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
 write('scenario difficulty', prep(scenario['difficulty']))
-write('scenario author', prep(scenario['author']))
 write('scenario description', prep(scenario['description']))
 
 for event in scenario['events']:
@@ -179,7 +178,6 @@ def translate(arg):
 scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
 
 scenario['difficulty'] = _(scenario['difficulty'])
-scenario['author'] = _(scenario['author'])
 scenario['description'] = _(scenario['description'])
 scenario['locale'] = '$lang'
 scenario['translation_status'] = '$numbers'
