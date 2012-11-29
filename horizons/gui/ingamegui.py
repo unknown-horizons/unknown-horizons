@@ -19,9 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from collections import defaultdict
 import re
-
 import horizons.globals
 from fife import fife
 
@@ -62,10 +60,12 @@ class IngameGui(LivingObject):
 	message_widget = livingProperty()
 	minimap = livingProperty()
 
-	styles = defaultdict(lambda: 'book')
-	styles.update({
+	styles = {
 		'city_info' : 'resource_bar',
-	})
+		'change_name' : 'book',
+		'save_map' : 'book',
+		'chat' : 'book',
+	}
 
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
