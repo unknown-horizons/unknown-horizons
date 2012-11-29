@@ -168,7 +168,7 @@ msgstr ""
 msgid ""
 "We should load our ship and move out to find a bigger island offering room "
 "and resources for my people. I have created a basic navigational map again, "
-"using the stars I see at night. It is not perfect,  but I hope it will "
+"using the stars I see at night. It is not perfect, but I hope it will "
 "suffice to return here."
 msgstr ""
 
