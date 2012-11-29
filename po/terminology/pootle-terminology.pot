@@ -2,581 +2,1387 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"POT-Creation-Date: 2012-11-29 23:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Translate Toolkit 1.9.1-pre\n"
 
-msgid "build"
-msgstr ""
-
+#: files
+#: horizons/spsession.py
+#: horizons/gui/modules/multiplayermenu.py
 msgid "game"
 msgstr ""
 
+#: files
+#: horizons/util/uhdbaccessor.py
+#: database
 msgid "building"
 msgstr ""
 
-msgid "settlement"
+#. (text of widget: headline)
+#: horizons/gui/tabs/shiptabs.py
+#: horizons/gui/mousetools/buildingtool.py
+#: horizons/gui/quotes.py
+msgid "Build"
 msgstr ""
 
+#: files
+#: horizons/gui/ingamegui.py
+#: horizons/gui/modules/multiplayermenu.py
+#: database
+msgid "player"
+msgstr ""
+
+#: files
+#: database
+#: sql
 msgid "farm"
 msgstr ""
 
+#: files
+#: database
+#: horizons/world/building/buildable.py
 msgid "ship"
 msgstr ""
 
-msgid "tent"
+#: files
+#: horizons/gui/ingamegui.py
+#: database
+#: horizons/gui/tabs/mainsquaretabs.py
+msgid "settlement"
 msgstr ""
 
-msgid "warehouse"
-msgstr ""
-
-msgid "resource"
-msgstr ""
-
-msgid "produce"
-msgstr ""
-
-msgid "field"
-msgstr ""
-
-msgid "map"
-msgstr ""
-
-msgid "trade"
-msgstr ""
-
+#: files
+#: database
+#: horizons/gui/quotes.py
 msgid "inhabitants"
 msgstr ""
 
-msgid "buy"
+#: files
+#: database
+#: horizons/gui/tabs/shiptabs.py
+msgid "warehouse"
 msgstr ""
 
-msgid "overview"
+#: files
+#: database
+#: horizons/gui/quotes.py
+msgid "build"
 msgstr ""
 
-msgid "click"
+#: files
+#: database
+#: horizons/world/building/buildable.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "resource"
 msgstr ""
 
-msgid "lumberjack"
+#: po/tutorial.py
+#: horizons/gui/quotes.py
+msgid "tent"
 msgstr ""
 
-msgid "resident"
+#: horizons/util/checkupdates.py
+#: horizons/engine/settingsdialog.py
+msgid "Unknown"
 msgstr ""
 
-msgid "main square"
-msgstr ""
-
-msgid "sailors"
-msgstr ""
-
-msgid "food"
-msgstr ""
-
-msgid "increment"
-msgstr ""
-
-msgid "production"
-msgstr ""
-
-msgid "select"
-msgstr ""
-
-msgid "sell"
-msgstr ""
-
-msgid "setting"
-msgstr ""
-
-msgid "storage"
-msgstr ""
-
-msgid "tab"
-msgstr ""
-
-msgid "upgrade"
-msgstr ""
-
-msgid "your inhabitants"
-msgstr ""
-
-msgid "close"
-msgstr ""
-
-msgid "companies"
-msgstr ""
-
-msgid "island"
-msgstr ""
-
-msgid "time"
-msgstr ""
-
-msgid "unit"
-msgstr ""
-
-msgid "balance"
-msgstr ""
-
-msgid "coast"
-msgstr ""
-
-msgid "menu"
-msgstr ""
-
-msgid "slot"
-msgstr ""
-
-msgid "start"
-msgstr ""
-
-msgid "stock"
-msgstr ""
-
-msgid "trail"
-msgstr ""
-
-msgid "Unknown Horizons"
-msgstr ""
-
-msgid "wool"
-msgstr ""
-
-msgid "boards"
-msgstr ""
-
-msgid "collector"
-msgstr ""
-
-msgid "connection"
-msgstr ""
-
-msgid "fire"
-msgstr ""
-
+#: horizons/gui/ingamegui.py
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/tabs/mainsquaretabs.py
+#: horizons/gui/widgets/playersships.py
 msgid "change"
 msgstr ""
 
-msgid "connect"
+#: files
+#: horizons/gui/ingamegui.py
+#: database
+#: horizons/i18n/guitranslations.py
+msgid "map"
 msgstr ""
 
-msgid "cost"
-msgstr ""
-
-msgid "house"
-msgstr ""
-
-msgid "log"
-msgstr ""
-
-msgid "road"
-msgstr ""
-
-msgid "save"
-msgstr ""
-
-msgid "built"
-msgstr ""
-
-msgid "pasture"
-msgstr ""
-
-msgid "reach"
-msgstr ""
-
-msgid "tree"
-msgstr ""
-
-msgid "your"
-msgstr ""
-
-msgid "your settlement"
-msgstr ""
-
-msgid "add"
-msgstr ""
-
+#: po/tutorial.py
+#: horizons/engine/settingshandler.py
+#: horizons/network/server.py
+#: horizons/gui/modules/multiplayermenu.py
 msgid "check"
 msgstr ""
 
-msgid "choose"
-msgstr ""
-
-msgid "confectionery"
-msgstr ""
-
-msgid "fisher"
-msgstr ""
-
-msgid "free trader"
-msgstr ""
-
-msgid "happiness"
-msgstr ""
-
-msgid "in stock"
-msgstr ""
-
-msgid "money"
-msgstr ""
-
-msgid "pavilion"
-msgstr ""
-
-msgid "running costs"
-msgstr ""
-
-msgid "sugar"
-msgstr ""
-
-msgid "taxes"
-msgstr ""
-
-msgid "tax"
-msgstr ""
-
-msgid "tools"
-msgstr ""
-
-msgid "button"
-msgstr ""
-
-msgid "continue"
-msgstr ""
-
-msgid "faith"
-msgstr ""
-
-msgid "help"
-msgstr ""
-
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/quotes.py
+#: horizons/i18n/guitranslations.py
 msgid "left"
 msgstr ""
 
-msgid "level"
+#: files
+#: database
+#: horizons/i18n/guitranslations.py
+msgid "main"
 msgstr ""
 
-msgid "mode"
+#: horizons/gui/tabs/buildingtabs.py
+#: horizons/gui/tabs/overviewtab.py
+#: horizons/gui/tabs/mainsquaretabs.py
+#: horizons/gui/tabs/enemybuildingtabs.py
+msgid "overview"
 msgstr ""
 
-msgid "move"
+#: files
+#: database
+#: horizons/gui/tabs/mainsquaretabs.py
+msgid "square"
 msgstr ""
 
-msgid "pioneers"
+#: horizons/scenario/actions.py
+#: horizons/manager.py
+#: horizons/engine/settingsdialog.py
+msgid "continue"
 msgstr ""
 
-msgid "citizens"
+#: po/tutorial.py
+#: horizons/gui/gui.py
+#: horizons/network/server.py
+msgid "running"
 msgstr ""
 
-msgid "merchants"
+#: horizons/component/tradepostcomponent.py
+#: horizons/gui/tabs/buyselltab.py
+#: horizons/gui/widgets/routeconfig.py
+msgid "trade"
 msgstr ""
 
-msgid "aristocrats"
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "lumberjack"
 msgstr ""
 
-msgid "potato"
+#: horizons/gui/ingamegui.py
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/tabs/mainsquaretabs.py
+msgid "Click"
 msgstr ""
 
-msgid "settler"
-msgstr ""
-
-msgid "speed"
-msgstr ""
-
-msgid "stop"
-msgstr ""
-
-msgid "storage tent"
-msgstr ""
-
-msgid "wait"
-msgstr ""
-
-msgid "access"
-msgstr ""
-
-msgid "account"
-msgstr ""
-
-msgid "amount"
-msgstr ""
-
-msgid "build menu"
-msgstr ""
-
-msgid "cloth"
-msgstr ""
-
-msgid "construction"
-msgstr ""
-
-msgid "decrease"
-msgstr ""
-
-msgid "description"
-msgstr ""
-
-msgid "fish"
-msgstr ""
-
-msgid "increase"
-msgstr ""
-
-msgid "lamb"
-msgstr ""
-
-msgid "leave"
-msgstr ""
-
-msgid "liquor"
-msgstr ""
-
-msgid "location"
-msgstr ""
-
-msgid "offer"
-msgstr ""
-
-msgid "potatoes"
-msgstr ""
-
-msgid "range"
-msgstr ""
-
-msgid "reached"
-msgstr ""
-
-msgid "run"
-msgstr ""
-
-msgid "slider"
-msgstr ""
-
-msgid "solution"
-msgstr ""
-
-msgid "space"
-msgstr ""
-
-msgid "target"
-msgstr ""
-
-msgid "team"
-msgstr ""
-
-msgid "total"
-msgstr ""
-
-msgid "unable"
-msgstr ""
-
-msgid "active"
-msgstr ""
-
-msgid "afford"
-msgstr ""
-
-msgid "animals"
-msgstr ""
-
-msgid "Captain's log"
-msgstr ""
-
-msgid "construct"
-msgstr ""
-
-msgid "consume"
-msgstr ""
-
-msgid "enabled"
-msgstr ""
-
-msgid "entries"
-msgstr ""
-
-msgid "feature"
-msgstr ""
-
-msgid "forest"
-msgstr ""
-
-msgid "grows"
-msgstr ""
-
-msgid "hold"
-msgstr ""
-
-msgid "idle"
-msgstr ""
-
-msgid "income"
-msgstr ""
-
-msgid "information"
-msgstr ""
-
-msgid "key"
-msgstr ""
-
-msgid "lamb wool"
-msgstr ""
-
-msgid "overview tab"
-msgstr ""
-
-msgid "minimap"
-msgstr ""
-
-msgid "issues"
-msgstr ""
-
-msgid "plant"
-msgstr ""
-
-msgid "play"
-msgstr ""
-
-msgid "playing"
-msgstr ""
-
-msgid "price"
-msgstr ""
-
-msgid "read"
-msgstr ""
-
-msgid "return"
-msgstr ""
-
-msgid "sale"
-msgstr ""
-
-msgid "screen"
-msgstr ""
-
-msgid "sound"
-msgstr ""
-
-msgid "special"
-msgstr ""
-
-msgid "store"
-msgstr ""
-
-msgid "tear"
-msgstr ""
-
-msgid "from time to time"
-msgstr ""
-
-msgid "trading"
-msgstr ""
-
-msgid "village"
-msgstr ""
-
-msgid "visit"
-msgstr ""
-
-msgid "world"
-msgstr ""
-
-msgid "yield"
-msgstr ""
-
-msgid "your ship"
-msgstr ""
-
-msgid "back"
-msgstr ""
-
-msgid "build settlement"
-msgstr ""
-
-msgid "load"
-msgstr ""
-
-msgid "unload"
-msgstr ""
-
-msgid "command"
-msgstr ""
-
-msgid "completed"
-msgstr ""
-
-msgid "condition"
-msgstr ""
-
+#: horizons/spsession.py
+#: po/tutorial.py
+#: horizons/network/server.py
 msgid "contact"
 msgstr ""
 
-msgid "empty"
+#: files
+#: database
+#: sql
+msgid "field"
 msgstr ""
 
-msgid "ensure"
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "tab"
 msgstr ""
 
-msgid "fulfill"
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "main square"
 msgstr ""
 
-msgid "graphics"
+#: files
+#: database
+#: horizons/i18n/guitranslations.py
+msgid "menu"
 msgstr ""
 
-msgid "harvest"
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "sailors"
 msgstr ""
 
-msgid "hunts"
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/gui.py
+msgid "time"
 msgstr ""
 
+#: horizons/component/tradepostcomponent.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/tabs/buyselltab.py
+#: po/tutorial.py
+msgid "buy"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: sql
+msgid "food"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "produce"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "production"
+msgstr ""
+
+#: horizons/engine/settingshandler.py
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/i18n/guitranslations.py
+msgid "setting"
+msgstr ""
+
+#: horizons/util/uhdbaccessor.py
+#: horizons/gui/widgets/buysellinventory.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "slot"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/tabs/buyselltab.py
+#: horizons/i18n/objecttranslations.py
+msgid "stock"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/util/checkupdates.py
+#: horizons/manager.py
+#: horizons/i18n/guitranslations.py
+msgid "version"
+msgstr ""
+
+#: files
+#: database
+#: horizons/gui/quotes.py
+msgid "your inhabitants"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/tabs/shiptabs.py
+#: horizons/i18n/guitranslations.py
+msgid "close"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "coast"
+msgstr ""
+
+#: files
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/session.py
+#: database
+msgid "file"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/quotes.py
+#: horizons/gui/widgets/pickbeltwidget.py
+msgid "Game"
+msgstr ""
+
+#: horizons/util/checkupdates.py
+#: horizons/engine/settingsdialog.py
+#: horizons/gui/gui.py
+msgid "Horizons"
+msgstr ""
+
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "increment"
+msgstr ""
+
+#: horizons/world/building/buildable.py
+#: po/tutorial.py
+#: horizons/gui/tabs/shiptabs.py
+#: horizons/gui/modules/singleplayermenu.py
+msgid "island"
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/tabs/buyselltab.py
+#: po/tutorial.py
+msgid "sell"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/quotes.py
+msgid "storage"
+msgstr ""
+
+#: files
+#: database
+#: horizons/gui/tabs/mainsquaretabs.py
+msgid "upgrade"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/modules/multiplayermenu.py
+msgid "connection"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: horizons/gui/quotes.py
+#: po/tutorial.py
+msgid "fire"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/quotes.py
+#: horizons/i18n/objecttranslations.py
+msgid "house"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/gui.py
+#: horizons/gui/quotes.py
+msgid "key"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/i18n/guitranslations.py
+msgid "ready"
+msgstr ""
+
+#: horizons/world/building/buildable.py
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "unit"
+msgstr ""
+
+#: horizons/util/checkupdates.py
+#: horizons/engine/settingsdialog.py
+#: horizons/gui/gui.py
+msgid "Unknown Horizons"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: sql
+msgid "wool"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: sql
+msgid "boards"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/widgets/resourceoverviewbar.py
+msgid "Buy"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "collector"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/widgets/resourceoverviewbar.py
+msgid "cost"
+msgstr ""
+
+#: files
+#: database
+#: horizons/gui/quotes.py
+msgid "road"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/quotes.py
+msgid "taxes"
+msgstr ""
+
+#. name_0 of buildings:tent
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Tent"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/network/server.py
+msgid "color"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/modules/multiplayermenu.py
+msgid "connect"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "log"
+msgstr ""
+
+#: files
+#: horizons/gui/modules/multiplayermenu.py
+#: database
+msgid "start"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "trader"
+msgstr ""
+
+#: files
+#: database
+#: horizons/gui/quotes.py
+msgid "tree"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/tabs/buyselltab.py
+#: horizons/gui/widgets/routeconfig.py
+#: horizons/gui/widgets/resourceoverviewbar.py
+msgid "add"
+msgstr ""
+
+#: horizons/world/building/buildable.py
+#: po/tutorial.py
+msgid "built"
+msgstr ""
+
+#: files
+#: database
+#: horizons/gui/quotes.py
+msgid "button"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "free"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: horizons/gui/quotes.py
+msgid "happiness"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "in stock"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "mode"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/network/server.py
+#: horizons/i18n/guitranslations.py
+#: horizons/mpsession.py
+msgid "multiplayer"
+msgstr ""
+
+#: horizons/gui/ingamegui.py
+#: horizons/gui/gui.py
+#: horizons/network/server.py
+#: horizons/main.py
+msgid "No"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/engine/settingshandler.py
+#: horizons/gui/quotes.py
+msgid "range"
+msgstr ""
+
+#: horizons/world/status.py
+#: horizons/i18n/guitranslations.py
+#: po/tutorial.py
+msgid "resident"
+msgstr ""
+
+#: horizons/network/server.py
+#: horizons/gui/modules/singleplayermenu.py
+msgid "size"
+msgstr ""
+
+#: horizons/gui/ingamegui.py
+#: horizons/gui/tabs/mainsquaretabs.py
+#: horizons/world/building/buildable.py
+#: horizons/i18n/guitranslations.py
+msgid "your settlement"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/gui.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "amount"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Captain's"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/i18n/guitranslations.py
+msgid "click"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: sql
+msgid "confectionery"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/network/server.py
+msgid "fetch"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Free"
+msgstr ""
+
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "level"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/quotes.py
 msgid "multiple"
 msgstr ""
 
-msgid "potato field"
+#: files
+#: horizons/gui/ingamegui.py
+#: database
+msgid "no"
 msgstr ""
 
+#: horizons/engine/settingshandler.py
+#: horizons/network/server.py
+#: horizons/gui/modules/multiplayermenu.py
+msgid "Please check"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "reach"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/gui.py
+msgid "select"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "signal"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "speed"
+msgstr ""
+
+#: files
+#: horizons/engine/settingshandler.py
+#: database
+msgid "access"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Choose"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Don't"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/engine/settingshandler.py
+#: horizons/i18n/guitranslations.py
+msgid "enabled"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "faith"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "help"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "icon"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/widgets/resourceoverviewbar.py
+msgid "income"
+msgstr ""
+
+#: files
+#: database
+#: sql
+msgid "lamb"
+msgstr ""
+
+#: horizons/world/traderoute.py
+#: po/tutorial.py
+#: horizons/world/units/ship.py
+msgid "location"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "lot"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/quotes.py
+msgid "multiple buildings"
+msgstr ""
+
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "reached"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/widgets/resourceoverviewbar.py
+msgid "Sell"
+msgstr ""
+
+#: files
+#: database
+#: horizons/gui/tabs/residentialtabs.py
+#: horizons/i18n/guitranslations.py
+msgid "Settler"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/quotes.py
+msgid "SHIFT"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "slider"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/mpsession.py
+msgid "space"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: sql
+msgid "sugar"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/world/units/weaponholder.py
+msgid "target"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: sql
+msgid "tools"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "total"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/world/units/ship.py
+msgid "Trader"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/network/server.py
+#: run_uh.py
+msgid "Unable"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/network/server.py
+msgid "your color"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py
+#: po/tutorial.py
+msgid "Account"
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+#: po/tutorial.py
+msgid "afford"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "animals"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Captain's log"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "clicking"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "cloth"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "construct"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "construction"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/network/server.py
+msgid "creator"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "entries"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/engine/settingshandler.py
+#: horizons/gui/modules/multiplayermenu.py
+msgid "feature"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/modules/multiplayermenu.py
+msgid "fine"
+msgstr ""
+
+#: horizons/gui/tabs/boatbuildertabs.py
+#: po/tutorial.py
+msgid "Fisher"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "forest"
+msgstr ""
+
+#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Free Trader"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/network/server.py
+msgid "global"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Grows"
+msgstr ""
+
+#. (helptext of widget: happy_icon)
+#: po/tutorial.py
+#: horizons/gui/util.py
+#: horizons/i18n/guitranslations.py
+msgid "happy"
+msgstr ""
+
+#. name_2 of buildings:tent
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "House"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/quotes.py
+msgid "increase"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: run_uh.py
+msgid "information"
+msgstr ""
+
+#: horizons/i18n/guitranslations.py
+#: horizons/network/server.py
+msgid "join"
+msgstr ""
+
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "leave"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: sql
+msgid "liquor"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "move"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "overview tab"
+msgstr ""
+
+#: horizons/i18n/guitranslations.py
+#: horizons/network/server.py
+msgid "password"
+msgstr ""
+
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "plant"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "play"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/network/server.py
+msgid "Please check your"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "potatoes"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "price"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Read"
+msgstr ""
+
+#: files
+#: database
+#: horizons/manager.py
+msgid "run"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/command/game.py
+#: horizons/gui/gui.py
+msgid "save"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Service"
+msgstr ""
+
+#: horizons/network/server.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/gui.py
+msgid "session"
+msgstr ""
+
+#. tab1_headline of gui_buildmenu:build_menu_per_type
+#: horizons/gui/tabs/inventorytab.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/widgets/playerssettlements.py
+msgid "Settlement"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "short"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/engine/settingshandler.py
+msgid "solution"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/engine/settingshandler.py
+#: horizons/session.py
+msgid "special"
+msgstr ""
+
+#: horizons/world/building/buildable.py
+#: po/tutorial.py
+msgid "spot"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Storage"
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+#: po/tutorial.py
+msgid "store"
+msgstr ""
+
+#: horizons/spsession.py
+#: po/tutorial.py
+msgid "team"
+msgstr ""
+
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "tear"
+msgstr ""
+
+#: files
+#: sql
+#: horizons/network/server.py
+#: database
+msgid "terminated"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "time to time"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/gui/widgets/routeconfig.py
+msgid "trade with"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "trading"
+msgstr ""
+
+#: horizons/i18n/guitranslations.py
+#: horizons/session.py
+#: horizons/network/server.py
+msgid "unsupported"
+msgstr ""
+
+#: files
+#: database
+#: horizons/i18n/guitranslations.py
+msgid "world"
+msgstr ""
+
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "Your inhabitants"
+msgstr ""
+
+#: horizons/world/building/buildable.py
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "your ship"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "active"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "bar"
+msgstr ""
+
+#: horizons/manager.py
+#: horizons/network/server.py
+msgid "bug"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "build menu"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Build menu"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/command/game.py
+msgid "command"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Companies"
+msgstr ""
+
+#: horizons/scenario/actions.py
+#: po/tutorial.py
+msgid "completed"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "cursor"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/util/uhdbaccessor.py
+msgid "description"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/network/server.py
+msgid "feel"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "fish"
+msgstr ""
+
+#: po/tutorial.py
+#: run_uh.py
+msgid "forum"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "free trader"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/network/server.py
+msgid "happen"
+msgstr ""
+
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "harvest"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "hold"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/quotes.py
+msgid "in range"
+msgstr ""
+
+#: po/tutorial.py
+#: run_uh.py
+msgid "IRC"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/network/server.py
+msgid "joining"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: database
+#: sql
+msgid "lamb wool"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/network/server.py
+msgid "left the game"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/engine/settingshandler.py
+msgid "Log"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "lot of boards"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/quotes.py
+msgid "marketplace"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/gui.py
+msgid "moment"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "offer"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: files
+#: database
+#: sql
+msgid "Pioneers"
+msgstr ""
+
+#: horizons/scenario/actions.py
+#: po/tutorial.py
+msgid "playing"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Potato"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "produced"
+msgstr ""
+
+#: horizons/network/server.py
+#: horizons/gui/modules/singleplayermenu.py
+msgid "report"
+msgstr ""
+
+#. (text of widget: sell_income_label)
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "Sale"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
 msgid "school"
 msgstr ""
 
-msgid "seed"
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "screen"
 msgstr ""
 
-msgid "service"
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "sound"
 msgstr ""
 
-msgid "sheep"
+#: horizons/network/server.py
+#: horizons/main.py
+msgid "started"
 msgstr ""
 
-msgid "signal fire"
-msgstr ""
-
+#: po/tutorial.py
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "statistics"
 msgstr ""
 
-msgid "clay"
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Sugar"
 msgstr ""
 
-msgid "iron"
-msgstr ""
-
-msgid "ore"
-msgstr ""
-
-msgid "tobacco"
-msgstr ""
-
-msgid "charcoal"
-msgstr ""
-
-msgid "sugar field"
-msgstr ""
-
+#: po/tutorial.py
+#: horizons/gui/modules/multiplayermenu.py
 msgid "temporarily"
 msgstr ""
 
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
 msgid "values"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "visit"
+msgstr ""
+
+#: horizons/world/traderoute.py
+#: po/tutorial.py
+msgid "waiting"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+msgid "wheel"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/network/server.py
+msgid "Wrong"
+msgstr ""
+
+#: po/tutorial.py
+#: horizons/gui/tabs/shiptabs.py
+msgid "Buy/Sell"
+msgstr ""
+
+#. name of buildings:farm
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Farm"
+msgstr ""
+
+#. name of buildings:pasture
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Pasture"
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: files
+#: po/tutorial.py
+#: sql
+#: database
+msgid "Sailors"
+msgstr ""
+
+#. (helptext of widget: avg_icon)
+#: po/tutorial.py
+#: horizons/gui/util.py
+#: horizons/i18n/guitranslations.py
+msgid "satisfied"
+msgstr ""
+
+#. (text of widget: selling_label)
+#: po/tutorial.py
+#: horizons/i18n/guitranslations.py
+#: horizons/gui/tabs/buyselltab.py
+msgid "Selling"
+msgstr ""
+
+#. name_0 of buildings:storagetent
+#: po/tutorial.py
+#: horizons/i18n/objecttranslations.py
+msgid "Storage Tent"
+msgstr ""
+
+#: files
+#: sql
+#: horizons/i18n/objecttranslations.py
+#: database
+msgid "iron"
+msgstr ""
+
+#: files
+#: sql
+#: horizons/i18n/objecttranslations.py
+#: database
+msgid "tobacco"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: sql
+#: horizons/i18n/objecttranslations.py
+#: database
+msgid "clay"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/gui.py
+#: horizons/i18n/guitranslations.py
+msgid "load"
+msgstr ""
+
+#: files
+#: sql
+#: horizons/i18n/objecttranslations.py
+#: database
+msgid "ore"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: files
+#: sql
+#: database
+msgid "charcoal"
 msgstr ""
