@@ -343,11 +343,12 @@ def import_fife(paths):
 		try:
 			from fife import fife
 		except ImportError as e:
-			log().warning('Failed to use FIFE from %s', fife)
-			log().warning(str(e))
-			if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
-				# We found FIFE but the Python and FIFE architectures don't match (Windows).
-				exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
+			if str(e) != 'cannot import name fife':
+				log().warning('Failed to use FIFE from %s', fife)
+				log().warning(str(e))
+				if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
+					# We found FIFE but the Python and FIFE architectures don't match (Windows).
+					exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
 			return False
 	except ImportError:
 		# FIFE couldn't be found in any of the paths.
@@ -359,6 +360,9 @@ def find_fife():
 	options = get_option_parser().parse_args()[0]
 	if options.fife_path:
 		fife_path = os.path.abspath(options.fife_path)
+		# Support giving the path to FIFE_ROOT/engine/python/fife/__init__.pyc etc.
+		if os.path.isfile(fife_path):
+			fife_path = os.path.dirname(fife_path)
 		# Support giving the path to FIFE_ROOT/engine/python
 		if import_fife([fife_path]):
 			return True
