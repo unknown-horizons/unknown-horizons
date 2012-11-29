@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-11-29 16:01+0000\n"
+"PO-Revision-Date: 2012-11-29 21:04+0000\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354204862.0\n"
+"X-POOTLE-MTIME: 1354223091.0\n"
 
 # 78%
 # 97%
@@ -27,8 +27,6 @@ msgid "A new settlement was founded by {player}."
 msgstr "Une nouvelle colonie a été fondée par {player}."
 
 # 82%
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
 msgid "A new ship has been created."
 msgstr "Un nouveau navire a été créé."
 
@@ -538,7 +536,6 @@ msgstr "{player1} et {player2} vont se battre jusqu'à la mort."
 msgid "{player}: {message}"
 msgstr "{player} : {message}"
 
-#: editor/editor.py
 msgid "Specify the path to FIFE root directory."
 msgstr "Spécifier le chemin vers le répertoire racine de FIFE."
 
@@ -754,12 +751,9 @@ msgstr "Confirmation du remplacement"
 msgid "Invalid filename given"
 msgstr "Nom de fichier invalide"
 
-#: horizons/gui/gui.py
 msgid "Please select a savegame or click on cancel."
 msgstr "Sélectionnez une sauvegarde ou cliquez sur annuler."
 
-#. ok button has been pressed, but no savegame was selected
-#: horizons/gui/gui.py
 msgid "Select a savegame"
 msgstr "Sélectionnez une sauvegarde"
 
@@ -771,7 +765,6 @@ msgid "Details:"
 msgstr "Détails :"
 
 # 83%
-#: horizons/gui/gui.py
 msgid "Error:"
 msgstr "Erreur :"
 
@@ -799,7 +792,6 @@ msgstr[1] "Sauvegardé {amount} fois"
 msgid "Savegame version {version}"
 msgstr "Version de la sauvegarde {version}"
 
-#: horizons/gui/gui.py
 #, python-format
 msgid "(potentially incompatible)"
 msgstr "(potentiellement incompatible)"
@@ -878,7 +870,6 @@ msgstr "Essayez un nom contenant exclusivement des lettres ou des chiffres."
 msgid "Unable to find pyenet"
 msgstr "Incapable de trouver pyenet"
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
 "Le mode multijoueur nécessite la bibliothèque «pyenet», qui n'a pas été "
@@ -890,7 +881,6 @@ msgstr ""
 "Utilisateurs de GNU/Linux : Essayez d'installer pyenet avec votre "
 "gestionnaire de paquets."
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
 "Utilisateurs de Windows : Il n'y a actuellement aucune réelle prise en "
@@ -937,7 +927,6 @@ msgstr "Nom : {game_name}"
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Joueurs : {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Creator: {player}"
 msgstr "Créateur : {player}"
@@ -946,19 +935,16 @@ msgstr "Créateur : {player}"
 msgid "This savegame is missing (click here)"
 msgstr "Cette sauvegarde n'existe pas (cliquez ici)"
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr ""
 "Pour charger une partie multijoueur, il est actuellement nécessaire de vous "
 "assurez d'avoir le bon fichier de sauvegarde."
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
 "Ce n'est pas très agréable et nous espérons vous offrir une solution plus "
 "convenable très bientôt."
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
 "En attendant, récupérez le fichier {path} du créateur du jeu et copiez le "
@@ -995,11 +981,9 @@ msgstr ""
 msgid "Recommended number of players: {number}"
 msgstr "Nombre de joueurs recommandé : {number}"
 
-#: horizons/gui/modules/singleplayermenu.py
 msgid "Translation status:"
 msgstr "État de la traduction :"
 
-#: horizons/gui/modules/singleplayermenu.py
 msgid "{translated} translated messages, {untranslated} untranslated messages"
 msgstr "{translated} messages traduits, {untraslated} messages non traduits"
 
@@ -1259,7 +1243,6 @@ msgstr "Charger/Décharger"
 msgid "Buy/Sell"
 msgstr "Achat/Vente"
 
-#: horizons/gui/tabs/shiptabs.py
 msgid "Too far from the nearest own or allied warehouse"
 msgstr "Trop loin d'un comptoir ami"
 
@@ -1387,7 +1370,6 @@ msgstr ""
 "Remettre les ressources affichées à la configuration par défaut que vous "
 "avez sauvegardé."
 
-#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to factory"
 msgstr "Paramétrage usine"
 
@@ -1532,8 +1514,6 @@ msgstr "Zoom avant"
 msgid "Zoom out"
 msgstr "Zoom arrière"
 
-#. (helptext of widget: background_icon)
-#: horizons/i18n/guitranslations.py
 msgid "Gold"
 msgstr "Or"
 
@@ -1649,8 +1629,6 @@ msgid "Resume"
 msgstr "Reprendre"
 
 # kind of fishing ship from north sea
-#. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
-#: horizons/i18n/guitranslations.py
 msgid "Huker"
 msgstr "Huker"
 
@@ -1667,28 +1645,18 @@ msgstr "Construire ce navire !"
 msgid "Money"
 msgstr "Argent"
 
-#. (helptext of widget: costs_003)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Cloth"
 msgstr "Tissu"
 
-#. (helptext of widget: costs_004)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Boards"
 msgstr "Planches"
 
-#. (helptext of widget: costs_006)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Tools"
 msgstr "Outils"
 
-#. (text of widget: headline_BB_war1_ship1)
-#: horizons/i18n/guitranslations.py
 msgid "Frigate"
 msgstr "Frégate"
 
-#. (helptext of widget: costs_040)
-#: horizons/i18n/guitranslations.py
 msgid "Cannons"
 msgstr "Canons"
 
@@ -1707,8 +1675,6 @@ msgstr "ennemie"
 msgid "neutral"
 msgstr "neutre"
 
-#. (text of widget: headline)
-#: horizons/i18n/guitranslations.py
 msgid "Build fields"
 msgstr "Construire des champs"
 
@@ -1741,63 +1707,44 @@ msgstr "Sommaire"
 msgid "houses"
 msgstr "maisons"
 
-#. (text of widget: resident_1)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "1 resident"
 msgstr "1 habitant"
 
 # 88%
 # 81%
-#. (text of widget: resident_2)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "2 residents"
 msgstr "2 habitants"
 
 # 88%
 # 81%
-#. (text of widget: resident_3)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
 msgid "3 residents"
 msgstr "3 habitants"
 
 # 88%
 # 81%
-#. (text of widget: resident_4)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "4 residents"
 msgstr "4 habitants"
 
 # 88%
 # 81%
-#. (text of widget: resident_5)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "5 residents"
 msgstr "5 habitants"
 
 # 88%
 # 81%
 # 90%
-#. (text of widget: resident_6)
-#: horizons/i18n/guitranslations.py
 msgid "6 residents"
 msgstr "6 habitants"
 
 # 88%
 # 81%
 # 90%
-#. (text of widget: resident_7)
-#: horizons/i18n/guitranslations.py
 msgid "7 residents"
 msgstr "7 habitants"
 
 # 88%
 # 81%
 # 90%
-#. (text of widget: resident_8)
-#: horizons/i18n/guitranslations.py
 msgid "8 residents"
 msgstr "8 habitants"
 
@@ -1815,13 +1762,9 @@ msgstr "habitants"
 msgid "Taxes:"
 msgstr "Impôts :"
 
-#. (text of widget: upgrades_lbl)
-#: horizons/i18n/guitranslations.py
 msgid "Upgrade not possible:"
 msgstr "Mise à jour impossible :"
 
-#. (helptext of widget: allow_upgrades)
-#: horizons/i18n/guitranslations.py
 msgid "This is the current maximum increment!"
 msgstr "Ceci est actuellement le niveau maximum !"
 
@@ -1863,13 +1806,9 @@ msgid "Tax rate"
 msgstr "Taux d'impôts"
 
 # Resources
-#. (text of widget: avg_happiness_lbl)
-#: horizons/i18n/guitranslations.py
 msgid "Average happiness:"
 msgstr "Satisfaction générale :"
 
-#. (text of widget: most_needed_res_lbl)
-#: horizons/i18n/guitranslations.py
 msgid "Most needed resource:"
 msgstr "Ressource la plus demandée :"
 
@@ -2035,13 +1974,9 @@ msgstr "Suspendre la production"
 msgid "Start production"
 msgstr "Reprendre la production"
 
-#. (text of widget: make_default_btn)
-#: horizons/i18n/guitranslations.py
 msgid "Save as default"
 msgstr "Enregistrer comme paramètres par défaut"
 
-#. (text of widget: reset_default_btn)
-#: horizons/i18n/guitranslations.py
 msgid "Restore default"
 msgstr "Restaurer les paramètres par défaut"
 
@@ -2055,20 +1990,20 @@ msgstr "Sélectionner les ressources :"
 #: horizons/i18n/guitranslations.py
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
-"Enregistrer la configuration actuelle des ressources par défaut pour toutes "
-"les colonies."
+"Sauvegarder la configuration actuelle des ressources en tant que "
+"configuration par défaut pour toutes les colonies."
 
 #. (helptext of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py
 msgid "Reset default resource configuration for all settlements."
 msgstr ""
-"Réinitialiser la configuration des ressources par défaut pour toutes les "
+"Restaurer la configuration des ressources par défaut pour toutes les "
 "colonies."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
-msgstr "La ressource cliquée prend la place de l'actuelle. Videz en cliquant X."
+msgstr "La ressource cliqué prend la place de l'actuelle. Videz en cliquant X."
 
 #. (helptext of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py
@@ -2100,13 +2035,9 @@ msgstr "Mes colonies"
 msgid "My ships"
 msgstr "Mes navires"
 
-#. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
-#: horizons/i18n/guitranslations.py
 msgid "Own settlements"
 msgstr "Vos colonies"
 
-#. (text of widget: wb5) Sends the chat message to all allied players.
-#: horizons/i18n/guitranslations.py
 msgid "Allies"
 msgstr "Alliés"
 
@@ -2140,32 +2071,24 @@ msgstr "Lire les entrées précédentes"
 #. (helptext of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py
 msgid "Read next entries"
-msgstr "Lire les pages suivantes"
+msgstr "Lire les entrées suivantes"
 
-#. (text of widget: head_left)
-#: horizons/i18n/guitranslations.py
 msgid "Available Scenarios"
 msgstr "Scénarios disponibles"
 
-#. (text of widget: head_right)
-#: horizons/i18n/guitranslations.py
 msgid "Scenario description"
 msgstr "Description du scénario"
 
-#. (helptext of widget: cancelButton) Players either select the next scenario they want to play or press this button
-#: horizons/i18n/guitranslations.py
 msgid "Continue playing"
 msgstr "Continuer à jouer"
 
-#. (helptext of widget: choose_scenario) Select which scenario to play
-#: horizons/i18n/guitranslations.py
 msgid "Choose this scenario"
 msgstr "Choisir ce scénario"
 
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py
 msgid "Route activity:"
-msgstr "Activité de la route:"
+msgstr "Activité de la route :"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py
@@ -2224,12 +2147,14 @@ msgstr "Unités"
 #. (helptext of widget: building_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Valeur de tout les bâtiments de la(es) colonie(s) du joueur"
+msgstr "Valeur de tous les bâtiments de la/les colonie(s) du joueur"
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
-msgstr "Valeur des terres utilisables i.e Quantité des terres constructibles"
+msgstr ""
+"Valeur des terres utilisables, par exemple la quantité des terres "
+"constructibles"
 
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
@@ -2247,15 +2172,15 @@ msgstr "Nom du joueur"
 #: horizons/i18n/guitranslations.py
 msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
 msgstr ""
-"Valeur des ressources générées par toutes les sources possibles dans la(les) "
+"Valeur des ressources générées par toutes les sources possibles dans la/les "
 "colonie(s) du joueur"
 
 #. (helptext of widget: settler_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
 msgstr ""
-"Valeur indiquant la progression de(s) la(les) colonie(s) en termes "
-"d'habitants, de bâtiments et de satisfaction globale"
+"Valeur indiquant la progression de la/les colonie(s) en termes d'habitants, "
+"de bâtiments et de satisfaction globale"
 
 #. (helptext of widget: total_score)
 #: horizons/i18n/guitranslations.py
@@ -2297,7 +2222,7 @@ msgstr "Armement"
 #. (helptext of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py
 msgid "Aggressive"
-msgstr "Aggressif"
+msgstr "Agressif"
 
 #. (helptext of widget: flee_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py
@@ -2314,13 +2239,9 @@ msgstr "Tenir la position"
 msgid "Passive"
 msgstr "Passif"
 
-#. (text of widget: fife_and_uh_team)
-#: horizons/i18n/guitranslations.py
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr "L'équipe du développement de FIFE et d'Unknown Horizons"
+msgstr "Les équipes de développement de FIFE et d'Unknown Horizons"
 
-#. (text of widget: have_fun)
-#: horizons/i18n/guitranslations.py
 msgid "Have fun."
 msgstr "Amusez-vous bien."
 
@@ -2563,8 +2484,6 @@ msgstr ""
 msgid "Leave:"
 msgstr "Quitter :"
 
-#. (text of widget: game_start_notice)
-#: horizons/i18n/guitranslations.py
 msgid "The game will start as soon as enough players have joined."
 msgstr "La partie démarrera dès qu'elle comportera suffisamment de joueurs."
 
@@ -2666,8 +2585,6 @@ msgstr "Intervalle des sauvegardes automatiques en minutes :"
 msgid "Color depth:"
 msgstr "Profondeur des couleurs :"
 
-#. (text of widget: debug_log_lbl)
-#: horizons/i18n/guitranslations.py
 msgid "Enable logging"
 msgstr "Activer la journalisation"
 
@@ -2706,8 +2623,6 @@ msgstr "Réseau"
 msgid "Saving"
 msgstr "Sauvegarde"
 
-#. (text of widget: language_label)
-#: horizons/i18n/guitranslations.py
 msgid "Select language:"
 msgstr "Sélectionner la langue :"
 
@@ -2871,8 +2786,6 @@ msgstr "Nouvelle partie - Solo"
 msgid "Start game:"
 msgstr "Commencer la partie :"
 
-#. (text of widget: campaign)
-#: horizons/i18n/guitranslations.py
 msgid "Campaign"
 msgstr "Campagne"
 
@@ -3197,8 +3110,6 @@ msgstr "Coupe des arbres et les transforme en planches."
 msgid "Main Square"
 msgstr "Place principale"
 
-#. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py
 msgid "Supplies citizens with goods."
 msgstr "Fournit les biens aux citoyens."
 
@@ -3616,20 +3527,17 @@ msgstr "La partie sélectionnée ne peut être démarrée. "
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr "La sauvegarde peut être corrompue ou provient d'une version antérieure."
 
-#: horizons/main.py
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
 "Pour des raisons techniques, le fichier de campagne va être copié vers le "
 "dossier de campagne UH ({path})."
 
-#: horizons/main.py
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
 "Ceci veut dire que les changements dans le fichier spécifié ne seront pas "
 "appliqués directement."
 
-#: horizons/main.py
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
@@ -3711,15 +3619,12 @@ msgstr ""
 msgid "Access is denied"
 msgstr "Accès refusé"
 
-#: horizons/session.py
 msgid "The savegame file is probably read-only."
 msgstr "La sauvegarde est probablement en lecture seule."
 
-#: horizons/session.py
 msgid "File used by another process"
 msgstr "Fichier utilisé par un autre processus"
 
-#: horizons/session.py
 msgid "The savegame file is currently used by another program."
 msgstr ""
 "Le fichier de sauvegarde est actuellement utilisé par un autre programme."
@@ -3886,7 +3791,6 @@ msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons est tombé en panne."
 
 # 83%
-#: run_uh.py
 msgid "We are very sorry for this and want to fix underlying error."
 msgstr ""
 "Nous sommes désolé de cette erreur, nous allons faire notre possible pour la "
@@ -3904,17 +3808,14 @@ msgstr ""
 "Tenez nous informé par IRC ou par notre forum, voyez http://unknown-"
 "horizons.org ."
 
-#: run_uh.py
 msgid "Error: Unable to find required libraries"
 msgstr "Impossible de trouver les bibliothèques requises"
 
-#: run_uh.py
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
 "Nous sommes désolé de vous informer qu'une bibliothèque requise par Unknown "
 "Horizons est manquante et doit être installé."
 
-#: run_uh.py
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
 "Les installeurs pour Windows sont disponibles sur "
