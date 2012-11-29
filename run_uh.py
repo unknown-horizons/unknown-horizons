@@ -52,7 +52,8 @@ import platform
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
 def exit_with_error(title, message):
-	print(title)
+	if title + '.' != message:
+		print(title)
 	print(message)
 
 	try:
@@ -342,6 +343,8 @@ def import_fife(paths):
 		try:
 			from fife import fife
 		except ImportError as e:
+			log().warning('Failed to use FIFE from %s', fife)
+			log().warning(str(e))
 			if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
 				# We found FIFE but the Python and FIFE architectures don't match (Windows).
 				exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
@@ -391,7 +394,7 @@ def setup_fife():
 	log_paths()
 	log_sys_info()
 	if not find_fife():
-		exit_with_error('Failed to load FIFE', 'Failed to load FIFE.')
+		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
 
 	from fife import fife
 	revision = fife.getRevision() if hasattr(fife, 'getRevision') else 0
