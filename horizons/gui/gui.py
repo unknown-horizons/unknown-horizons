@@ -854,7 +854,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			return
 
 		selected_map_index = self.current.collectData('maplist')
-		assert selected_map_index != -1, "No map selected"
+		if selected_map_index == -1:
+			# No map selected yet => select first available one
+			self.current.distributeData({'maplist': 0})
 
 		self.current = old_current
 		self.show_loading_screen()
