@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 844737a\n"
+"Project-Id-Version: Unknown Horizons 693ce36\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2012-11-24 18:31+0100\n"
+"POT-Creation-Date: 2012-11-30 00:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,6 @@ msgstr ""
 #. scenario difficulty
 #: po/The_Unknown.py
 msgid "easy"
-msgstr ""
-
-#. scenario author
-#: po/The_Unknown.py
-msgid "Kikody, UH-Team"
 msgstr ""
 
 #. scenario description
@@ -168,8 +163,8 @@ msgstr ""
 msgid ""
 "We should load our ship and move out to find a bigger island offering room "
 "and resources for my people. I have created a basic navigational map again, "
-"using the stars I see at night. It is not perfect, but I hope it will "
-"suffice to return here."
+"using the stars I see at night. It is not perfect, but I hope it will suffice "
+"to return here."
 msgstr ""
 
 #. This is the text body of a logbook page.
