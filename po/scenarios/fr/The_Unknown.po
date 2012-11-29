@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-30 00:00+0100\n"
-"PO-Revision-Date: 2012-11-29 22:45+0000\n"
+"PO-Revision-Date: 2012-11-29 23:08+0000\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354229103.0\n"
+"X-POOTLE-MTIME: 1354230509.0\n"
 
 #. scenario difficulty
 #: po/The_Unknown.py
@@ -186,6 +186,8 @@ msgid ""
 "Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
+"Mission:\n"
+"Agrandissez le village à 250 habitants et un bilan positif."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
@@ -211,6 +213,11 @@ msgid ""
 "using the stars I see at night. It is not perfect, but I hope it will suffice "
 "to return here."
 msgstr ""
+"Nous devrions charger notre navire et partir à la recherche d'une île plus "
+"grande offrant plus d'espace et de ressources pour nos citoyens. En me "
+"basant sur les étoiles que je vois la nuit j'ai créé une carte marine "
+"rudimentaire. Elle n'est pas parfaite mais j'espère qu'elle suffira à "
+"revenir ici."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
