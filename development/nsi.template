@@ -64,10 +64,10 @@ Section "-Misc"
 
 	SetOutPath "$INSTDIR"
 	CreateDirectory "$SMPROGRAMS\Unknown Horizons"
-	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\Python27\pythonw.exe" "run_uh.py --fife-in-library-path" "${UH_ICON}"
+	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\Python27\pythonw.exe" "run_uh.py" "${UH_ICON}"
 	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons Debug-Mode.lnk" "$INSTDIR\unknown-horizons.bat" "" "${UH_ICON}"
 	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Uninstall.lnk" "$INSTDIR\uninst.exe"
-	CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\Python27\pythonw.exe" "run_uh.py --fife-in-library-path" "${UH_ICON}"
+	CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\Python27\pythonw.exe" "run_uh.py" "${UH_ICON}"
 SectionEnd
 
 Section "Uninstall"

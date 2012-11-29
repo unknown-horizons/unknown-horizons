@@ -30,13 +30,14 @@ This is the Unknown Horizons launcher; it looks for FIFE and tries
 to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
 
-__all__ = ['init_environment', 'get_fife_path']
+__all__ = ['init_environment']
 
 import sys
 import os
 import os.path
 import gettext
 import time
+import imp
 import functools
 import locale
 import logging
@@ -50,8 +51,9 @@ import platform
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
-def show_error_message(title, message):
-	print(title)
+def exit_with_error(title, message):
+	if title + '.' != message:
+		print(title)
 	print(message)
 
 	try:
@@ -68,7 +70,7 @@ def show_error_message(title, message):
 if __name__ == '__main__':
     	# python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
 	if platform.python_version_tuple()[0] not in (2,'2'):
-		show_error_message('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
+		exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
 
 def log():
 	"""Returns Logger"""
@@ -76,30 +78,6 @@ def log():
 
 logfilename = None
 logfile = None
-
-def find_uh_position():
-	"""Returns path, where uh is located"""
-	# first check around cur dir and sys.argv[0]
-	for i in (
-		os.path.split(sys.argv[0])[0],
-		'.', '..'
-		):
-		i = os.path.realpath(i)
-		if os.path.exists(os.path.join(i, 'content')):
-			return i
-	else:
-		# also check system wide dirs
-		positions = (
-			'/usr/share/games',
-			'/usr/share',
-			'/usr/local/share/games',
-			'/usr/local/share'
-		)
-		for i in positions:
-			pos = os.path.join(i, 'unknown-horizons')
-			if os.path.exists(pos):
-				return pos
-	raise RuntimeError('Cannot find location of Unknown Horizons.')
 
 def get_option_parser():
 	"""Returns inited OptionParser object"""
@@ -163,8 +141,6 @@ def get_option_parser():
 	             help="Enable logging for a certain logging module (for developing only).")
 	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
 	             help="Writes log to <filename> instead of to the uh-userdir")
-	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", action="store_true",
-	             default=False, help=optparse.SUPPRESS_HELP)
 	dev_group.add_option("--profile", dest="profile", action="store_true",
 	             default=False, help="Enable profiling (for developing only).")
 	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int",
@@ -245,17 +221,14 @@ def main():
 	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
 		pass
 
-	#chdir to Unknown Horizons root
-	os.chdir(find_uh_position())
+	# chdir to Unknown Horizons root
+	os.chdir(os.path.dirname(os.path.abspath(unicode(__file__))))
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
-
 	create_user_dirs()
 
 	options = get_option_parser().parse_args()[0]
 	setup_debugging(options)
-
-	# NOTE: this might cause a program restart
-	init_environment()
+	init_environment(True)
 
 	# test if required libs can be found or display specific error message
 	try:
@@ -265,7 +238,7 @@ def main():
 		msg = _("PyYAML (a required library) is missing and needs to be installed.") + "\n" + \
 		    _('The Windows installer is available at http://pyyaml.org/wiki/PyYAML.') + " " + \
 		    _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
-		show_error_message(headline, msg)
+		exit_with_error(headline, msg)
 
 	#start UH
 	import horizons.main
@@ -362,7 +335,72 @@ def setup_debugging(options):
 
 		log_sys_info()
 
-def check_fife_revision(fife):
+def import_fife(paths):
+	try:
+		# If FIFE can't be found then this call will throw an exception.
+		settings = imp.find_module('fife', paths)
+		fife = imp.load_module('fife', *settings)
+		try:
+			from fife import fife
+		except ImportError as e:
+			if str(e) != 'cannot import name fife':
+				log().warning('Failed to use FIFE from %s', fife)
+				log().warning(str(e))
+				if str(e) == 'DLL load failed: %1 is not a valid Win32 application.':
+					# We found FIFE but the Python and FIFE architectures don't match (Windows).
+					exit_with_error('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
+			return False
+	except ImportError:
+		# FIFE couldn't be found in any of the paths.
+		return False
+	return True
+
+def find_fife():
+	# Use the path the user provided.
+	options = get_option_parser().parse_args()[0]
+	if options.fife_path:
+		fife_path = os.path.abspath(options.fife_path)
+		# Support giving the path to FIFE_ROOT/engine/python/fife/__init__.pyc etc.
+		if os.path.isfile(fife_path):
+			fife_path = os.path.dirname(fife_path)
+		# Support giving the path to FIFE_ROOT/engine/python
+		if import_fife([fife_path]):
+			return True
+		# Support giving the path to FIFE_ROOT/engine
+		if import_fife([os.path.join(fife_path, 'python')]):
+			return True
+		# Support giving the path to FIFE_ROOT
+		if import_fife([os.path.join(fife_path, 'engine', 'python')]):
+			return True
+		# Support giving the path to FIFE_ROOT/engine/python/fife
+		if import_fife([os.path.join(fife_path, '..')]):
+			return True
+
+		# End the search to avoid using the wrong (non-user-specified) FIFE.
+		log().error('Unable to find FIFE in %s', fife_path)
+		exit(1)
+
+	# Try to use the default FIFE (equivalent of just trying to import it).
+	if import_fife(None):
+		return True
+
+	# Look for FIFE in the neighbourhood of the game dir.
+	paths = []
+	for opt1 in ('.', '..', '..' + os.sep + '..'):
+		for opt2 in ('.', 'fife', 'FIFE', 'Fife'):
+			for opt3 in ('.', 'trunk'):
+				path = os.path.abspath(os.path.join('.', opt1, opt2, opt3, 'engine', 'python'))
+				if os.path.exists(path):
+					paths.append(path)
+	return import_fife(paths)
+
+def setup_fife():
+	log_paths()
+	log_sys_info()
+	if not find_fife():
+		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
+
+	from fife import fife
 	revision = fife.getRevision() if hasattr(fife, 'getRevision') else 0
 	version = fife.getVersion() if hasattr(fife, 'getVersion') else 'unknown'
 
@@ -374,156 +412,14 @@ def check_fife_revision(fife):
 		log().debug('Using fife revision %d (version %s); at least %d required', revision,
 		            version, VERSION.MIN_FIFE_REVISION)
 
-"""
-Functions controlling the program environment.
-NOTE: these are supposed to be in an extra file, but are placed here for simplifying
-			distribution
-"""
-def setup_fife(args):
-	""" Find FIFE and setup search paths, if it can't be imported yet."""
-	try:
-		from fife import fife
-	except ImportError as e:
-		if '--fife-in-library-path' in args:
-			# fife should already be in LD_LIBRARY_PATH
-			log_paths()
-			err_str = str(e)
-			if err_str == 'DLL load failed: %1 is not a valid Win32 application.':
-				show_error_message('Unsupported Python version',
-				                   '32 bit FIFE requires 32 bit (x86) Python 2.')
-			else:
-				show_error_message('Failed to load FIFE', err_str)
-		log().debug('Failed to load FIFE from default paths: %s', e)
-		log().debug('Searching for FIFE')
-		find_FIFE() # this restarts or terminates the program
-		assert False
-
-	log().debug('Using fife: %s', fife)
-	check_fife_revision(fife)
-
-	for arg in ['--fife-in-library-path', '--fife-path']:
-		if arg in args:
-			args.remove(arg)
-
-
-def init_environment():
+def init_environment(use_fife):
 	"""Sets up everything. Use in any program that requires access to FIFE and uh modules.
 	It will parse sys.args, so this var has to contain only valid uh options."""
 
 	# install dummy translation
 	gettext.install('', unicode=True)
-
-	options = get_option_parser().parse_args()[0]
-
-	if options.fife_path and not options.fife_in_library_path:
-		# we got an explicit path, search there
-		# (but skip on second run, else we've got an endless loop)
-		find_FIFE(options.fife_path)
-
-	# find FIFE and setup search paths, if it can't be imported yet
-	setup_fife(sys.argv)
-
-
-def get_fife_path(fife_custom_path=None):
-	"""Returns absolute path to FIFE engine. Calls sys.exit() if it can't be found."""
-	# assemble a list of paths where FIFE could be located at
-	_paths = []
-	# check if there is a config file (has to be called config.py)
-
-	# first check for commandline arg
-	if fife_custom_path is not None:
-		_paths.append(fife_custom_path)
-		if not check_path_for_fife(fife_custom_path):
-			print('Specified invalid FIFE path: %s' % fife_custom_path)
-			exit(1)
-	else:
-		# no command line parameter, now check for config
-		try:
-			import config
-			_paths.append(config.fife_path)
-			if not check_path_for_fife(config.fife_path):
-				print('Invalid fife_path in config.py: %s' % config.fife_path)
-				exit(1)
-		except (ImportError, AttributeError):
-		# no config, try frequently used paths
-			_paths += [os.path.join(a, b, c) for
-			           a in ('.', '..', '../..') for
-			           b in ('.', 'fife', 'FIFE', 'Fife') for
-			           c in ('.', 'trunk')]
-
-	fife_path = None
-	for p in _paths:
-		if p not in sys.path: # skip dirs where import would have found FIFE
-			p = os.path.abspath(p)
-			log().debug("Searching for FIFE in %s", p)
-			if check_path_for_fife(p):
-				fife_path = p
-
-				log().debug("Found FIFE in %s", fife_path)
-
-				# add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
-				pythonpaths = [os.path.join(fife_path, 'engine', 'python')]
-				for path in pythonpaths:
-					if os.path.exists(path):
-						sys.path.append(path)
-					if 'PYTHONPATH' in os.environ:
-						os.environ['PYTHONPATH'] += os.path.pathsep + path
-					else:
-						os.environ['PYTHONPATH'] = path
-
-				# add windows paths (<fife>/.)
-				if 'PATH' in os.environ:
-					os.environ['PATH'] += os.path.pathsep + fife_path
-				else:
-					os.environ['PATH'] = fife_path
-				os.path.defpath += os.path.pathsep + fife_path
-				break
-	else:
-		print(_('FIFE was not found.'))
-		sys.exit(1)
-	return fife_path
-
-def check_path_for_fife(path):
-	"""Checks if typical FIFE directories exist in path. This does not guarantee, that it's
-	really a FIFE dir, but it generally works."""
-	absolute_path = os.path.abspath(path)
-	for pe in [os.path.join(absolute_path, a) for a in ('.', 'engine', 'engine/python/fife',
-		                                               'engine/python/fife/extensions')]:
-		if not os.path.exists(pe):
-			return False
-	return True
-
-def find_FIFE(fife_custom_path=None):
-	"""Inserts path to FIFE engine to $LD_LIBRARY_PATH (environment variable).
-	If it's already there, the function will return, else
-	it will restart uh with correct $LD_LIBRARY_PATH. """
-	global logfilename
-	fife_path = get_fife_path(fife_custom_path) # terminates program if FIFE can't be found
-
-	os.environ['LD_LIBRARY_PATH'] = os.path.pathsep.join( \
-		[ os.path.abspath(fife_path + '/' + a) for  \
-			a in ('ext/minizip', 'ext/install/lib') ] + \
-		(os.environ['LD_LIBRARY_PATH'].split(os.path.pathsep) if \
-		 os.environ.has_key('LD_LIBRARY_PATH') else []))
-
-	log().debug("Restarting with proper LD_LIBRARY_PATH...")
-	log_paths()
-
-	# assemble args (python run_uh.py ..)
-	args = [sys.executable] + sys.argv + ["--fife-in-library-path"]
-
-	# WORKAROUND: windows systems don't handle spaces in arguments for execvp correctly.
-	if platform.system() != 'Windows':
-		if logfilename:
-			args += ["--logfile", logfilename]
-		log().debug("Restarting with args %s", args)
-		os.execvp(args[0], args)
-	else:
-		args[1] = '"%s"' % args[1]
-		args += ["--logfile", '"%s"' % logfilename]
-		log().debug("Restarting using windows workaround with args %s", args)
-		os.system(" ".join(args))
-		sys.exit(0)
+	if use_fife:
+		setup_fife()
 
 def log_paths():
 	"""Prints debug info about paths to log"""
