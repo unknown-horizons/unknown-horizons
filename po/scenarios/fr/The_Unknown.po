@@ -2,12 +2,11 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2012-11-24 18:31+0100\n"
+"POT-Creation-Date: 2012-11-30 00:00+0100\n"
 "PO-Revision-Date: 2012-11-29 22:45+0000\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,11 +22,6 @@ msgstr ""
 #: po/The_Unknown.py
 msgid "easy"
 msgstr "facile"
-
-#. scenario author
-#: po/The_Unknown.py
-msgid "Kikody, UH-Team"
-msgstr "Kikody, Équipe UH"
 
 #. scenario description
 #: po/The_Unknown.py
@@ -189,11 +183,9 @@ msgstr ""
 #: po/The_Unknown.py
 msgid ""
 "Task:\n"
-"Grow the village util you have at least 250 inhabitants and a positive "
+"Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
-"Mission:\n"
-"Agrandissez le village à 250 habitants et un bilan positif."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
@@ -216,14 +208,9 @@ msgstr ""
 msgid ""
 "We should load our ship and move out to find a bigger island offering room "
 "and resources for my people. I have created a basic navigational map again, "
-"using the stars I see at night. It is not perfect,  but I hope it will "
-"suffice to return here."
+"using the stars I see at night. It is not perfect, but I hope it will suffice "
+"to return here."
 msgstr ""
-"Nous devrions charger notre navire et partir à la recherche d'une île plus "
-"grande offrant plus d'espace et de ressources pour nos citoyens. En me "
-"basant sur les étoiles que je vois la nuit j'ai créé une carte marine "
-"rudimentaire. Elle n'est pas parfaite mais j'espère qu'elle suffira à "
-"revenir ici."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -235,3 +222,26 @@ msgstr ""
 "Mission:\n"
 "Contactez l’équipe Unknown Horizons (www.unknown-horizons.org) et découvrez "
 "comment vous pouvez contribuer à améliorer et allonger ce scénario !"
+
+#~ msgid "Kikody, UH-Team"
+#~ msgstr "Kikody, Équipe UH"
+
+#~ msgid ""
+#~ "Task:\n"
+#~ "Grow the village util you have at least 250 inhabitants and a positive "
+#~ "balance."
+#~ msgstr ""
+#~ "Mission:\n"
+#~ "Agrandissez le village à 250 habitants et un bilan positif."
+
+#~ msgid ""
+#~ "We should load our ship and move out to find a bigger island offering room "
+#~ "and resources for my people. I have created a basic navigational map again, "
+#~ "using the stars I see at night. It is not perfect,  but I hope it will "
+#~ "suffice to return here."
+#~ msgstr ""
+#~ "Nous devrions charger notre navire et partir à la recherche d'une île plus "
+#~ "grande offrant plus d'espace et de ressources pour nos citoyens. En me "
+#~ "basant sur les étoiles que je vois la nuit j'ai créé une carte marine "
+#~ "rudimentaire. Elle n'est pas parfaite mais j'espère qu'elle suffira à "
+#~ "revenir ici."
