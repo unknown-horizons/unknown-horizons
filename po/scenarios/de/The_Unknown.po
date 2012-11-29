@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-30 00:00+0100\n"
-"PO-Revision-Date: 2012-11-26 14:57+0000\n"
+"PO-Revision-Date: 2012-11-29 23:08+0000\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1353941878.0\n"
+"X-Generator: Pootle 2.5.0-beta1\n"
+"X-POOTLE-MTIME: 1354230513.0\n"
 
 #. scenario difficulty
 #: po/The_Unknown.py
@@ -186,6 +186,9 @@ msgid ""
 "Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
+"Aufgabe:\n"
+"Lasse die Stadt wachsen, bis du mindestens 250 Einwohner und eine positive "
+"Bilanz hast."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
@@ -211,6 +214,11 @@ msgid ""
 "using the stars I see at night. It is not perfect, but I hope it will suffice "
 "to return here."
 msgstr ""
+"Wir sollten ein Schiff beladen und uns auf die Suche nach einer größeren "
+"Insel mit mehr Platz und Ressourcen für meine Leute begeben. Ich habe mir "
+"anhand der Sterne, die ich in der Nacht sehe, wieder eine einfache Seekarte "
+"erstellt. Sie ist nicht perfekt, aber ich hoffe sie reicht, um hier her "
+"zurück zu finden."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
