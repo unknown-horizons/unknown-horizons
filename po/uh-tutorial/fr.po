@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-11-30 13:44+0000\n"
+"PO-Revision-Date: 2012-11-30 15:41+0000\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354283098.0\n"
+"X-POOTLE-MTIME: 1354290119.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py:2
@@ -1307,8 +1307,8 @@ msgid ""
 "unable to serve all of the fields you built for it in time."
 msgstr ""
 "Les différents types de champs nécessitent plus ou moins de temps pour être "
-"cultivés (planter, récolter, etc...) et à cause de cela une ferme peut ne "
-"pas être en mesure de s'occuper de tous les champs à temps."
+"cultivés (planter, récolter, etc…) et à cause de cela une ferme peut ne pas "
+"être en mesure de s'occuper de tous les champs à temps."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:304
@@ -1395,9 +1395,8 @@ msgid ""
 "lower than if you keep the company producing."
 msgstr ""
 "Si ce mode « pause » est disponible (nous l'appelons « désaffection »), les "
-"coûts de fonctionnements que vous payez pour le bâtiment baisseront. Il ne "
-"baisseront pas à zéro, mais ils seront déjà plus bas que si le bâtiment "
-"fonctionnait."
+"coûts de fonctionnements de ce bâtiment baisseront. Il ne baisseront pas à "
+"zéro, mais ils seront déjà plus bas que si le bâtiment fonctionnait."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:324
@@ -1418,7 +1417,7 @@ msgid ""
 "mentioned so far: the storage tent."
 msgstr ""
 "Une autre solution est de construire le dernier bâtiment de niveau 1 qui n'a "
-"pas encore été mentionné : l'entrepôt."
+"pas encore été mentionné : le dépôt."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:328
@@ -1439,8 +1438,8 @@ msgid ""
 "products collected, and if the warehouse is overwhelmed with collector tasks, "
 "you can place a storage tent to help out there."
 msgstr ""
-"Notez que les entreprises peuvent également être connectées à un entrepôt à "
-"la place d'un entrepôt et si le entrepôt est surchargé vous pouvez l'aider à "
+"Notez que les entreprises peuvent également être connectées à un dépôt à la "
+"place d'un entrepôt et si l'entrepôt est surchargé vous pouvez l'aider à "
 "tout collecter en construisant un dépôt."
 
 #. This is the text body of a logbook page.
@@ -1450,7 +1449,7 @@ msgid ""
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
 "\n"
-"MISSION : Construisez un entrepôt, de préférence quelque part où vous avez "
+"MISSION : Construisez un dépôt, de préférence quelque part où vous avez "
 "besoin de collecteurs."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1470,7 +1469,7 @@ msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
 msgstr ""
-"Maintenant que la production de laine est prète vous avez encore besion d'un "
+"Maintenant que la production de laine est prête vous avez encore besoin d'un "
 "tisserand pour produire du tissu à partir de cette laine."
 
 #. This is the text body of a logbook page.
@@ -1480,14 +1479,13 @@ msgid ""
 "close to a Storage Tent (or the warehouse)."
 msgstr ""
 "Il y a deux emplacements où vous pouvez le construire : près de la ferme ou "
-"près du dépôt (ou du entrepôt)."
+"près du dépôt (ou de l'entrepôt)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:342
 msgid "In both cases you should ensure the connection to a trail as well."
 msgstr ""
-"Dans les deux cas vous devriez également assurer la connection avec un "
-"sentier."
+"Dans les deux cas vous devriez également assurer la connexion à un sentier."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:344
@@ -1512,7 +1510,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:348
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr "Installer un tisserand qui pourra accéder à la laine de votre ferme."
+msgstr "Établissez un tisserand qui pourra accéder à la laine de votre ferme."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:350
@@ -1521,7 +1519,7 @@ msgid ""
 "tutorial. You need a positive balance."
 msgstr ""
 "Logez un total de 50 habitants au moins dans votre ville pour compléter ce "
-"didacticiel. Il vous faut un bilan financier positif."
+"didacticiel. Il vous faut un bilan positif."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:352
@@ -1537,6 +1535,7 @@ msgstr ""
 "Essayez de loger au moins 50 habitants dans votre ville en fournissant plus "
 "de résidences."
 
+# Sorry, but that can't be translated correctly ...
 #. This is the text body of a logbook page.
 #: po/tutorial.py:356
 msgid ""
@@ -1544,7 +1543,7 @@ msgid ""
 "consumers, you are ready to discover new Unknown Horizons!"
 msgstr ""
 "Dès que votre économie pourra satisfaire ce nombre de consommateurs vous "
-"serez prêt à découvrir d'autres - Horizons Inconnus !"
+"serez prêt à découvrir d'autres territoires !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:358
@@ -1563,8 +1562,8 @@ msgid ""
 "complete this tutorial."
 msgstr ""
 "\n"
-"MISSION: Atteindre un nombre total de 50 habitants et un solde positif pour "
-"terminer ce tutoriel."
+"MISSION: Atteindre un nombre total de 50 habitants et un bilan positif pour "
+"terminer ce didacticiel."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:362
@@ -1588,8 +1587,8 @@ msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
 msgstr ""
-"Si vous avez des suggestions sur ce que nous pourrions ou devrions "
-"améliorer, ajoutez ou proposez les à :"
+"Si vous avez des suggestions au sujet de ce que nous pourrions ou devrions "
+"améliorer, contactez-nous :"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:368
@@ -1609,7 +1608,7 @@ msgstr "team@unknown-horizons.org"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:374
 msgid "Our forums are open to you as well!"
-msgstr "Nos forums vous sont aussi ouvert !"
+msgstr "Nos forums vous sont également ouvert !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:376
@@ -1618,7 +1617,7 @@ msgid ""
 "could try that out first (-;"
 msgstr ""
 "Les meilleurs résultats ont été obtenus jusqu'à présent en joignant notre "
-"canal IRC, essayez le en premier ;-)"
+"canal IRC, essayez-le en premier (-;"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:378
