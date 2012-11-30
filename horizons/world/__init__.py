@@ -369,8 +369,8 @@ class World(BuildingOwner, WorldObject):
 		self.set_forced_player(force_player_id)
 
 		if self.player is None and self.session.is_game_loaded():
-			self.log.warning('WARNING: Cannot autoselect a player because there are no \
-			or multiple candidates.')
+			self.log.warning('WARNING: Cannot autoselect a player because there '
+			                 'are no or multiple candidates.')
 
 	@classmethod
 	def _recognize_water_bodies(cls, map_dict):
