@@ -106,20 +106,23 @@ class NavigationTool(CursorTool):
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.MIDDLE:
-			self._last_mmb_scroll_point = (evt.getX(), evt.getY())
-			self.middle_scroll_active = True
+			if horizons.globals.fife.get_uh_setting("MiddleMousePan"):
+				self._last_mmb_scroll_point = (evt.getX(), evt.getY())
+				self.middle_scroll_active = True
 
 	def mouseReleased(self, evt):
 		if evt.getButton() == fife.MouseEvent.MIDDLE:
-			self.middle_scroll_active = False
+			if horizons.globals.fife.get_uh_setting("MiddleMousePan"):
+				self.middle_scroll_active = False
 
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.MIDDLE:
-			if self.middle_scroll_active:
-				scroll_by = ( self._last_mmb_scroll_point[0] - evt.getX(),
-				              self._last_mmb_scroll_point[1] - evt.getY() )
-				self.session.view.scroll( *scroll_by )
-				self._last_mmb_scroll_point = (evt.getX(), evt.getY())
+			if horizons.globals.fife.get_uh_setting("MiddleMousePan"):
+				if self.middle_scroll_active:
+					scroll_by = ( self._last_mmb_scroll_point[0] - evt.getX(),
+					              self._last_mmb_scroll_point[1] - evt.getY() )
+					self.session.view.scroll( *scroll_by )
+					self._last_mmb_scroll_point = (evt.getX(), evt.getY())
 		else:
 			# Else the event will mistakenly be delegated if the left mouse button is hit while
 			# scrolling using the middle mouse button

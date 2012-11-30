@@ -26,6 +26,8 @@
 		<Setting name="FrameLimit" type="int"> 60 </Setting>
 	</Module>
 	<Module name="unknownhorizons">
+		<Setting name="MiddleMousePan" type="bool">True</Setting>
+		<Setting name="ScrollSpeed" type="float">0.7</Setting>
 		<Setting name="CursorCenteredZoom" type="bool">True</Setting>
 		<Setting name="LatestBackground" type="str"></Setting>
 		<Setting name="AIPlayers" type="int">1</Setting>
@@ -96,6 +98,6 @@
 		<Setting name="SAVE_MAP" type="str"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 28 </Setting>
+		<Setting name="SettingsVersion" type="int"> 29 </Setting>
 	</Module>
 </Settings>
