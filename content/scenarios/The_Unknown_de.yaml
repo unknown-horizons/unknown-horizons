@@ -5,10 +5,10 @@
 # translation files from pootle. Documentation on this process is found here:
 #   development/copy_pofiles.sh
 
-author: !!python/unicode 'Kikody, UH-Team'
+author: Kikody, UH-Team
 description: "Ihr seid der Kapit\xE4n eines englischen Schiffes im Jahre 1740. Ihr\
   \ und Eure Crew wart auf dem Weg zu einer englischen Kolonie im Pazifik.\nAlles\
-  \ verlief nach Plan, bis ihr in einen Sturm geraten seid...\n"
+  \ verlief nach Plan, bis ihr in einen Sturm geraten seid....\n"
 difficulty: !!python/unicode 'leicht'
 events:
 - actions:
@@ -90,7 +90,7 @@ events:
       \ in unsere Heimat zu finden."
     - !!python/unicode 'Aufgabe:
 
-      Lasse die Stadt wachsen bis du mindestens 250 Einwohner und eine positive Bilanz
+      Lasse die Stadt wachsen, bis du mindestens 250 Einwohner und eine positive Bilanz
       hast.'
     - [Pagebreak]
     - ''
@@ -110,7 +110,7 @@ events:
     - "Wir sollten ein Schiff beladen und uns auf die Suche nach einer gr\xF6\xDF\
       eren Insel mit mehr Platz und Ressourcen f\xFCr meine Leute begeben. Ich habe\
       \ mir anhand der Sterne, die ich in der Nacht sehe, wieder eine einfache Seekarte\
-      \ erstellt. Sie ist nicht perfekt, aber ich hoffe sie reicht um hier her zur\xFC\
+      \ erstellt. Sie ist nicht perfekt, aber ich hoffe sie reicht, um hier her zur\xFC\
       ck zu finden."
     - "Aufgabe:\nKontaktiere das Unknown Horizonts Team (www.unknown-horizons.org)\
       \ und finde heraus wie du dieses Szenario l\xE4nger und besser machen kannst!"
@@ -124,5 +124,5 @@ events:
     type: player_balance_greater
 locale: de
 mapfile: development.sqlite
-translation_status: 23 translated messages.
+translation_status: 22 translated messages.
 

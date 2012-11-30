@@ -5,7 +5,7 @@
 # translation files from pootle. Documentation on this process is found here:
 #   development/copy_pofiles.sh
 
-author: !!python/unicode 'Kikody, UH-Team'
+author: Kikody, UH-Team
 description: "Eres el capit\xE1n de un nav\xEDo bajo bandera de Inglaterra en 1740.\
   \ T\xFA y tu tripulaci\xF3n naveg\xE1is hacia una colonia inglesa en el Pac\xED\
   fico.\nTodo iba bien hasta que se avecin\xF3 una tormenta...\n"
@@ -120,5 +120,5 @@ events:
     type: player_balance_greater
 locale: es
 mapfile: development.sqlite
-translation_status: 23 translated messages.
+translation_status: 22 translated messages.
 

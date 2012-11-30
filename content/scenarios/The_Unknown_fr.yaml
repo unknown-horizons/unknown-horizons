@@ -1,0 +1,124 @@
+
+# DON'T EDIT THIS FILE.
+
+# It was automatically generated with development/create_scenario_pot.sh using
+# translation files from pootle. Documentation on this process is found here:
+#   development/copy_pofiles.sh
+
+author: Kikody, UH-Team
+description: "Vous \xEAtes le capitaine d'un navire sous le drapeau d'Angleterre en\
+  \ 1740. Vous et votre \xE9quipage \xE9tiez en chemin vers une colonie d'Angleterre\
+  \ dans l'oc\xE9an pacifique.\nTout allais bien jusqu\u2019\xE0 ce que vous entriez\
+  \ dans une temp\xEAte....\n"
+difficulty: !!python/unicode 'facile'
+events:
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '20 Novembre 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Au bout de quatre jours, la temp\xEAte s'att\xE9nue enfin et nous pouvons nous\
+      \ reposer. Cependant il ne nous reste que tr\xE8s peut de nourriture et le navire\
+      \ est dans un mauvais \xE9tat. Les instruments de navigations et les cartes\
+      \ marines sont perdues."
+    - "Nous devons atteindre de la terre ferme bient\xF4t. L'un de mes matelots a\
+      \ aper\xE7u un oiseau chassant des poissons, donc il doit y avoir de la terre\
+      \ tout pr\xE8s. Heureusement nous avons toujours quelques outils et des planches\
+      \ abord, donc nous pourrons donc \xE9riger des abris rudimentaires."
+    - "Mission:\nTrouvez de la terre ferme es \xE9rigez un port."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [0]
+    type: time_passed
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '22 Novembre 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Le port est achev\xE9 et de nouveaux espoirs naissent. N\xE9anmoins, je suis\
+      \ inquiet au sujet des jours \xE0 venir... nos r\xE9serves de nourritures s'\xE9\
+      puisent et nous manquons de mat\xE9riaux de construction de base."
+    - !!python/unicode 'Afin de rester en vie, nous devrons assurer nos besoins de
+      base. Il est temps d''envoyer des matelots pour trouver de la nourriture et
+      du bois de construction, afin que nous puissions construire des abris et survivre.'
+    - "Mission:\n\xC9rigez au moins un:\n* Camp de b\xFBcheron\n* P\xEAcheur\n* Chasseur\n\
+      Amassez \xE9galement 5 nourriture et 5 planches."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [0]
+    type: settlements_num_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '25 Novembre 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Nous avons assur\xE9 nos besoins en nourriture et amass\xE9 un peu de bois\
+      \ afin de continuer le d\xE9veloppement de notre nouvelle colonie. Nos citoyens\
+      \ exigent un endroit o\xF9 vivre et \xE9changer des biens pour la vie de tous\
+      \ les jours."
+    - "Il est temps de construire quelques tentes o\xF9 vivre et une place principale\
+      \ afin d'approvisionner nos citoyens en biens."
+    - "Mission:\n\xC9difiez une place principale et au moins 10 tentes."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [BUILDINGS.FISHER, 0]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.HUNTER, 0]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.LUMBERJACK, 0]
+    type: building_num_of_type_greater
+  - arguments: [RES.BOARDS, 4]
+    type: settlement_res_stored_greater
+  - arguments: [RES.FOOD, 4]
+    type: settlement_res_stored_greater
+- actions:
+  - arguments:
+    - [Headline, "1er D\xE9cembre 1740"]
+    - [Image, content/gui/images/background/hr.png]
+    - "Finalement nous avons de nouveau assez \xE0 manger et une place o\xF9 vivre.\
+      \ Ma tente n'est pas tr\xE8s confortable mais elle me garde au sec et j'ai le\
+      \ sentiment d'avoir un toit au dessus du ma t\xEAte."
+    - "J'ai \xE9tudi\xE9 les \xE9toiles la nuit mais sans mes instruments et mes cartes\
+      \ marines leur signification reste cach\xE9. J'ai le sentiment que nous sommes\
+      \ pris ici pour quelques temps, alors faisons le meilleur de la situation.\n\
+      Tous ce que nous pouvons faire c'est d'\xE9tablir une civilisation et trouver\
+      \ notre chemin de retour..."
+    - "Mission:\nAgrandissez le village \xE0 250 habitants et un bilan positif."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [BUILDINGS.RESIDENTIAL, 4]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.MAIN_SQUARE, 0]
+    type: building_num_of_type_greater
+- actions:
+  - arguments:
+    - [Headline, "27 Ao\xFBt 1745"]
+    - [Image, content/gui/images/background/hr.png]
+    - "Notre village se porte bien, la ville a grandit \xE0 plus de 250 habitants.\
+      \ J'ai commenc\xE9 \xE0 m'habituer \xE0 mon nouveau chez-moi mais cette \xEE\
+      le est trop petite pour rester pour toujours."
+    - "Nous devrions charger notre navire et partir \xE0 la recherche d'une \xEEle\
+      \ plus grande offrant plus d'espace et de ressources pour nos citoyens. En me\
+      \ basant sur les \xE9toiles que je vois la nuit j'ai cr\xE9\xE9 une carte marine\
+      \ rudimentaire. Elle n'est pas parfaite mais j'esp\xE8re qu'elle suffira \xE0\
+      \ revenir ici."
+    - "Mission:\nContactez l\u2019\xE9quipe Unknown Horizons (www.unknown-horizons.org)\
+      \ et d\xE9couvrez comment vous pouvez contribuer \xE0 am\xE9liorer et allonger\
+      \ ce sc\xE9nario !"
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [250]
+    type: settlement_inhabitants_greater
+  - arguments: [0]
+    type: player_balance_greater
+locale: fr
+mapfile: development.sqlite
+translation_status: 22 translated messages.
+
