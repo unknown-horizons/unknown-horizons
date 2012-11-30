@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-11-30 09:46+0000\n"
+"PO-Revision-Date: 2012-11-30 10:43+0000\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354268803.0\n"
+"X-POOTLE-MTIME: 1354272192.0\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 # (poterminology) uh/unknownhorizons.pot (10)
@@ -71,7 +71,7 @@ msgid "tent"
 msgstr "tente"
 
 msgid "warehouse"
-msgstr "comptoir / entrepôt"
+msgstr "entrepôt / comptoir"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 # (poterminology) uh/unknownhorizons.pot (14)
@@ -166,7 +166,7 @@ msgstr "cliquer / clic"
 # Woodcutter will be translated by bucheron. Lumberjack is difficult to translate because it is not just cutting trees...
 #
 msgid "lumberjack"
-msgstr "camp de bucheron"
+msgstr "camp de bûcheron"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -260,7 +260,7 @@ msgstr "préférence"
 # (poterminology) uh-tutorial/tutorial.pot (11)
 # (poterminology) uh/unknownhorizons.pot (2)
 msgid "storage"
-msgstr "entrepôt"
+msgstr "dépôt / entrepôt"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -816,7 +816,7 @@ msgstr "arrêter / l'arrêt"
 #
 #
 msgid "storage tent"
-msgstr "tente de stockage / entrepôt"
+msgstr "tente de dépôt / dépôt / entrepôt"
 
 msgid "wait"
 msgstr "attendre"
