@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="250,350">
+<Container size="250,350" name="editor_settings">
 	<TabBG amount="4" />
 
 	<Container position="0, 20" size="250, 350" max_size="250, 350">

@@ -134,6 +134,7 @@ class GuiHooks(object):
 			mousetools.SelectionTool: ('mousePressed', 'mouseReleased', ),
 			mousetools.TearingTool: ('mousePressed', 'mouseReleased', ),
 			mousetools.PipetteTool: ('mousePressed', ),
+			mousetools.TileLayingTool: ('mousePressed', 'mouseReleased', ),
 		}
 
 		for tool, events in targets.items():
