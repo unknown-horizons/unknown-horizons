@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-11-29 23:12+0000\n"
+"PO-Revision-Date: 2012-11-30 09:28+0000\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354230725.0\n"
+"X-POOTLE-MTIME: 1354267719.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py:2
@@ -57,8 +57,8 @@ msgid ""
 "This is your Captain's log where all important information is stored. A short "
 "notification of each task will be provided on the left of the screen."
 msgstr ""
-"Voici votre journal de bord où toute information importante est stockée. Un "
-"court rappel de chaque tâche sera visible sur le coté gauche de l'écran."
+"Voici votre journal de bord où toute information importante est sauvegardée. "
+"Un court rappel de chaque tâche sera visible sur le coté gauche de l'écran."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:14
