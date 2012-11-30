@@ -150,9 +150,11 @@ fi
 
 # Create .mo files and extract the translations using gettext.
 echo "   Compiling these translations for $1:"
-for file in $(ls $2); do
-    path=$(pwd)/$2/$file
-    lang=`basename "$path" | sed "s,$1-,,;s,.po,,"`
+for lang in $(ls $2); do
+    if [ $lang == 'templates' ]; then
+        continue;
+    fi
+    path=$(pwd)/$2/$lang/$1.po
     mo=po/mo/$lang/LC_MESSAGES
     R='s,:,,g;s,.po,,g;s,alencia,,g;s,(/.*//|messages|message|translations),\t,g;s/[.,]//g'
     mkdir -p $mo
