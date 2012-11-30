@@ -404,8 +404,8 @@ class RouteConfig(object):
 			if drag:
 				return
 			if event.getButton() == fife.MouseEvent.LEFT:
-				map_coord = event.map_coord
-				tile = self.session.world.get_tile(Point(*map_coord))
+				map_coords = event.map_coords
+				tile = self.session.world.get_tile(Point(*map_coords))
 				if tile is not None and tile.settlement is not None:
 					self.append_warehouse( tile.settlement.warehouse )
 

@@ -288,36 +288,36 @@ class Minimap(object):
 		"""
 		if self.preview:
 			return # we don't do anything in this mode
-		map_coord = event.map_coord
+		map_coords = event.map_coords
 		moveable_selecteds = [ i for i in self.session.selected_instances if i.movable ]
 		if moveable_selecteds and event.getButton() == fife.MouseEvent.RIGHT:
 			if drag:
 				return
 			for i in moveable_selecteds:
-				Act(i, *map_coord).execute(self.session)
+				Act(i, *map_coords).execute(self.session)
 		elif event.getButton() == fife.MouseEvent.LEFT:
 			if self.view is None:
 				print "Warning: Can't handle minimap clicks since we have no view object"
 			else:
-				self.view.center(*map_coord)
+				self.view.center(*map_coords)
 
 	def _on_click(self, event):
 		if self.world is not None: # supply world coords if there is a world
-			event.map_coord = self._get_event_coord(event)
-			if event.map_coord:
+			event.map_coords = self._get_event_coords(event)
+			if event.map_coords:
 				self.on_click(event, drag=False)
 		else:
 			self.on_click(event, drag=True)
 
 	def _on_drag(self, event):
 		if self.world is not None: # supply world coords if there is a world
-			event.map_coord = self._get_event_coord(event)
-			if event.map_coord:
+			event.map_coords = self._get_event_coords(event)
+			if event.map_coords:
 				self.on_click(event, drag=True)
 		else:
 			self.on_click(event, drag=True)
 
-	def _get_event_coord(self, event):
+	def _get_event_coords(self, event):
 		"""Returns position of event as uh map coordinate tuple or None"""
 		mouse_position = Point(event.getX(), event.getY())
 		if not hasattr(self, "icon"):
@@ -331,7 +331,7 @@ class Minimap(object):
 			abs_mouse_position = mouse_position.to_tuple()
 		if self._get_rotation_setting():
 			abs_mouse_position = self._get_from_rotated_coords(abs_mouse_position)
-		return self._minimap_coord_to_world_coord(abs_mouse_position)
+		return self._minimap_coords_to_world_coords(abs_mouse_position)
 
 	def _mouse_entered(self, event):
 		self._show_tooltip(event)
@@ -350,7 +350,7 @@ class Minimap(object):
 				self.icon.position_tooltip(event)
 				#self.icon.show_tooltip()
 			else:
-				coords = self._get_event_coord(event)
+				coords = self._get_event_coords(event)
 				if not coords: # no valid/relevant event location
 					self.icon.hide_tooltip()
 					return
@@ -654,20 +654,17 @@ class Minimap(object):
 			self.draw()
 
 	## CALC UTILITY
-	def _world_to_minimap(self, coord, use_rotation):
+	def _world_to_minimap(self, coords, use_rotation):
 		"""Complete coord transformation, batteries included.
 		The methods below are for more specialised purposes."""
-		coord = self._world_coord_to_minimap_coord( coord )
+		coords = self._world_coords_to_minimap_coords(coords)
 
 		if use_rotation:
-			coord = self._get_rotated_coords(coord)
-		# transform from screen coord to minimap coord
-		coord = (
-		  coord[0] - self.location.left,
-		  coord[1] - self.location.top
-		  )
-
-		return coord
+			coords = self._get_rotated_coords(coords)
+		# transform from screen coords to minimap coords
+		coords = (coords[0] - self.location.left,
+		          coords[1] - self.location.top)
+		return coords
 
 	def _get_rotation_setting(self):
 		if not self.use_rotation:
@@ -732,7 +729,7 @@ class Minimap(object):
 		pixel_per_coord_y = float(world_height) / minimap_height
 		self._world_to_minimap_ratio = (pixel_per_coord_x, pixel_per_coord_y)
 
-	def _world_coord_to_minimap_coord(self, tup):
+	def _world_coords_to_minimap_coords(self, tup):
 		"""Calculates which pixel in the minimap contains a coord in the real map.
 		@param tup: (x, y) as ints
 		@return tuple"""
@@ -742,8 +739,8 @@ class Minimap(object):
 			int(round(float(tup[1] - self.world.min_y)/pixel_per_coord_y))+self.location.top
 		)
 
-	def _minimap_coord_to_world_coord(self, tup):
-		"""Inverse to _world_coord_to_minimap_coord"""
+	def _minimap_coords_to_world_coords(self, tup):
+		"""Inverse to _world_coords_to_minimap_coords"""
 		pixel_per_coord_x, pixel_per_coord_y = self._world_to_minimap_ratio
 		return (
 			int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x,
