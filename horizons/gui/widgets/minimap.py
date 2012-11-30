@@ -367,7 +367,7 @@ class Minimap(object):
 					# mouse not over relevant part of the minimap
 					self.icon.hide_tooltip()
 
-	def highlight(self, tup, factor=1.0, speed=1.0, finish_callback=None, color=(0,0,0)):
+	def highlight(self, tup, factor=1.0, speed=1.0, finish_callback=None, color=(0, 0, 0)):
 		"""Try to get the users attention on a certain point of the minimap.
 		@param tuple: world coords
 		@param factor: float indicating importance of event
@@ -490,7 +490,7 @@ class Minimap(object):
 			drawPoint = lambda name, fife_point, r, g, b : data.append( (fife_point.x, fife_point.y, r, g, b) )
 		else:
 			drawPoint = rt.addPoint
-		fife_point = fife.Point(0,0)
+		fife_point = fife.Point(0, 0)
 
 		use_rotation = self._get_rotation_setting()
 		full_map = self.world.full_map
@@ -772,7 +772,7 @@ class _MinimapImage(object):
 		self.rendertarget.removeAll()
 		size = self.minimap.get_size()
 		self.rendertarget.addQuad( self.minimap._get_render_name("background"),
-		                           fife.Point(0,0),
+		                           fife.Point(0, 0),
 		                           fife.Point(0, size[1]),
 		                           fife.Point(size[0], size[1]),
 		                           fife.Point(size[0], 0),
