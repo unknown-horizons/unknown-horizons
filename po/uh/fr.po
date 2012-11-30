@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-16 20:06+0100\n"
-"PO-Revision-Date: 2012-11-29 21:30+0000\n"
+"PO-Revision-Date: 2012-11-30 09:45+0000\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354224637.0\n"
+"X-POOTLE-MTIME: 1354268737.0\n"
 
 # 86%
 #: run_uh.py
@@ -3498,7 +3498,7 @@ msgstr "Tente de dépôt"
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
 msgid "Storage Hut"
-msgstr "Tente de dépôt"
+msgstr "Cabane de dépôt"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
