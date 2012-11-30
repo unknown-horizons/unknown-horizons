@@ -140,12 +140,12 @@ class View(ChangeListener):
 
 		if x != 0:
 			new_angle = math.pi * self.cam.getRotation() / 180.0
-			zoom_factor = self.cam.getZoom() * cell_dim.x * VIEW.SCROLL_SPEED
+			zoom_factor = self.cam.getZoom() * cell_dim.x * horizons.globals.fife.get_uh_setting('ScrollSpeed')
 			pos.x += x * math.cos(new_angle) / zoom_factor
 			pos.y += x * math.sin(new_angle) / zoom_factor
 		if y != 0:
 			new_angle = math.pi * self.cam.getRotation() / -180.0
-			zoom_factor = self.cam.getZoom() * cell_dim.y * VIEW.SCROLL_SPEED
+			zoom_factor = self.cam.getZoom() * cell_dim.y * horizons.globals.fife.get_uh_setting('ScrollSpeed')
 			pos.x += y * math.sin(new_angle) / zoom_factor
 			pos.y += y * math.cos(new_angle) / zoom_factor
 

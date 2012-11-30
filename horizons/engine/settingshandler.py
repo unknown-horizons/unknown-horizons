@@ -61,6 +61,8 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
 		self._setting.createAndAddEntry(UH_MODULE, "CursorCenteredZoom", "cursor_centered_zoom")
+		self._setting.createAndAddEntry(UH_MODULE, "ScrollSpeed", "scrollspeed")
+		self._setting.createAndAddEntry(UH_MODULE, "MiddleMousePan", "middle_mouse_pan")
 		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
 		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation",
@@ -122,13 +124,15 @@ class SettingsHandler(object):
 		self.settings_dialog.position_technique = "automatic" # "center:center"
 		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
 				       'AutosaveMaxCount' : 'autosavemaxcount',
-				       'QuicksaveMaxCount' : 'quicksavemaxcount'}
+				       'QuicksaveMaxCount' : 'quicksavemaxcount',
+				       'ScrollSpeed' : 'scrollspeed'}
 
 		for x in slider_dict.keys():
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
 		slider_initial_data['volume_music_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeMusic") * 500)) + '%'
 		slider_initial_data['volume_effects_value'] = unicode(int(self._setting.get(UH_MODULE, "VolumeEffects") * 200)) + '%'
 		slider_initial_data['mousesensitivity_value'] = unicode("%.1f" % float(self._setting.get(FIFE_MODULE, "MouseSensitivity") * 100)) + '%'
+		slider_initial_data['scrollspeed_value'] = unicode("%.1f" % float(self._setting.get(UH_MODULE, "ScrollSpeed")))
 
 		self.settings_dialog.distributeInitialData(slider_initial_data)
 
@@ -161,7 +165,7 @@ class SettingsHandler(object):
 		factor - value will be multiplied by factor
 		unit - this string will be added to the end
 		"""
-		if slider == "mousesensitivity":
+		if slider == "mousesensitivity" or slider == "scrollspeed":
 			#for floating wanted
 			self.settings_dialog.findChild(name=slider + '_value').text = \
 				u"%.2f%s" % (float(self.settings_dialog.findChild(name=slider).value * factor), unit)
