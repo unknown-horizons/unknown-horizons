@@ -2,11 +2,12 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2012-11-30 00:00+0100\n"
+"POT-Creation-Date: 2012-11-24 18:31+0100\n"
 "PO-Revision-Date: 2012-11-26 23:47+0000\n"
 "Last-Translator: fmanna <fmanna775@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +23,11 @@ msgstr ""
 #: po/The_Unknown.py
 msgid "easy"
 msgstr "fácil"
+
+#. scenario author
+#: po/The_Unknown.py
+msgid "Kikody, UH-Team"
+msgstr "Kikody, equipe UH"
 
 #. scenario description
 #: po/The_Unknown.py
@@ -180,9 +186,12 @@ msgstr ""
 #: po/The_Unknown.py
 msgid ""
 "Task:\n"
-"Grow the village until you have at least 250 inhabitants and a positive "
+"Grow the village util you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
+"Tarefa:\n"
+"Desenvolver o vilarejo até atingir 250 habitantes e um balanço financeiro "
+"positivo."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
@@ -205,9 +214,13 @@ msgstr ""
 msgid ""
 "We should load our ship and move out to find a bigger island offering room "
 "and resources for my people. I have created a basic navigational map again, "
-"using the stars I see at night. It is not perfect, but I hope it will suffice "
-"to return here."
+"using the stars I see at night. It is not perfect,  but I hope it will "
+"suffice to return here."
 msgstr ""
+"Devemos carregar nosso navio e sairmos em busca de uma ilha maior que "
+"ofereça mais espaço e recursos para meu povo. Criei um mapa básico de "
+"navegação usando as estrelas que vejo à noite. Não é perfeito, mas espero "
+"que seja suficiente para que possamos retornar."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -219,26 +232,3 @@ msgstr ""
 "Tarefa:\n"
 "Entre em contato com a equipe Unknown Horizons (www.unknown-horizons.org) e "
 "veja como você pode contribuir com a criação de cenários maiores e melhores!"
-
-#~ msgid "Kikody, UH-Team"
-#~ msgstr "Kikody, equipe UH"
-
-#~ msgid ""
-#~ "Task:\n"
-#~ "Grow the village util you have at least 250 inhabitants and a positive "
-#~ "balance."
-#~ msgstr ""
-#~ "Tarefa:\n"
-#~ "Desenvolver o vilarejo até atingir 250 habitantes e um balanço financeiro "
-#~ "positivo."
-
-#~ msgid ""
-#~ "We should load our ship and move out to find a bigger island offering room "
-#~ "and resources for my people. I have created a basic navigational map again, "
-#~ "using the stars I see at night. It is not perfect,  but I hope it will "
-#~ "suffice to return here."
-#~ msgstr ""
-#~ "Devemos carregar nosso navio e sairmos em busca de uma ilha maior que "
-#~ "ofereça mais espaço e recursos para meu povo. Criei um mapa básico de "
-#~ "navegação usando as estrelas que vejo à noite. Não é perfeito, mas espero "
-#~ "que seja suficiente para que possamos retornar."
