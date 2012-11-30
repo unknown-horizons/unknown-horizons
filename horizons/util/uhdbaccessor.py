@@ -212,7 +212,7 @@ class UhDbAccessor(DbReader):
 
 	def get_settler_inhabitants_max(self, level):
 		sql = "SELECT inhabitants_max FROM settler_level WHERE level=?"
-		return self.cached_query(sql , level)[0][0]
+		return self.cached_query(sql, level)[0][0]
 	
 	def get_settler_inhabitants_min(self, level):
 		"""The minimum inhabitants before a setter levels down

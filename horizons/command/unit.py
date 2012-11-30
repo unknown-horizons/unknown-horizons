@@ -110,8 +110,7 @@ class SetStance(GenericUnitCommand):
 
 	def __call__(self, issuer):
 		# we need the stance component, so resolve the name
-		self.args = ( self._get_object().get_component_by_name( self.args[0] ) , )
+		self.args = (self._get_object().get_component_by_name(self.args[0]), )
 		return super(GenericUnitCommand, self).__call__(issuer)
 
 GenericCommand.allow_network(SetStance)
-

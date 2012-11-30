@@ -140,7 +140,7 @@ class Production(ChangeListener):
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
 		     self._state == PRODUCTION.STATES.inventory_full:
 			# no need to call now, this just restores the state before
-			# saving , where it hasn't triggered yet, therefore it won't now
+			# saving, where it hasn't triggered yet, therefore it won't now
 			self._add_listeners()
 
 		self._state_history = db.get_production_state_history(worldid, self.prod_id)

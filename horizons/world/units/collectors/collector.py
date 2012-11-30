@@ -408,7 +408,7 @@ class Collector(Unit):
 		if self.start_hidden:
 			self.hide()
 		self.job = None
-		Scheduler().add_new_object(self.search_job , self, COLLECTORS.DEFAULT_WAIT_TICKS)
+		Scheduler().add_new_object(self.search_job, self, COLLECTORS.DEFAULT_WAIT_TICKS)
 		self.state = self.states.idle
 
 	def cancel(self, continue_action):
@@ -530,7 +530,7 @@ class JobList(list):
 		if shuffle_first:
 			self.collector.session.random.shuffle(self)
 		inventory = self.collector.get_home_inventory()
-		self.sort(key=lambda job: min(inventory[res] for res in job.resources) , reverse=False)
+		self.sort(key=lambda job: min(inventory[res] for res in job.resources), reverse=False)
 
 	def _sort_jobs_fewest_available_and_distance(self):
 		"""Sort jobs by distance, but secondarily also consider fewest available resources"""
