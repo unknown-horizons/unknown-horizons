@@ -222,7 +222,7 @@ def main():
 		pass
 
 	# chdir to Unknown Horizons root
-	os.chdir(os.path.dirname(os.path.abspath(unicode(__file__))))
+	os.chdir(os.path.dirname(os.path.realpath(unicode(__file__))))
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 	create_user_dirs()
 
