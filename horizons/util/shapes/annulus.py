@@ -54,6 +54,9 @@ class Annulus(Shape):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
+	def __hash__(self):
+		return hash((self.center, self.min_radius, self.max_radius))
+
 	def tuple_iter(self):
 		for x in xrange(self.center.x-self.max_radius, self.center.x+self.max_radius+1):
 			for y in xrange(self.center.y-self.max_radius, self.center.y+self.max_radius+1):

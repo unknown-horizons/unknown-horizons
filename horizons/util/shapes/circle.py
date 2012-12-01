@@ -55,6 +55,9 @@ class Circle(Shape):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
+	def __hash__(self):
+		return hash((self.center, self.radius))
+
 	def tuple_iter(self):
 		"""Iterate through all coords in the circle as tuples."""
 		cx = self.center.x

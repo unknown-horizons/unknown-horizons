@@ -259,6 +259,9 @@ class Rect(Shape):
 			return self.right < other.right
 		return self.bottom < other.bottom
 
+	def __hash__(self):
+		return hash((self.top, self.right, self.bottom, self.left))
+
 	def tuple_iter(self):
 		"""Generates an iterator, that returns tuples"""
 		for x in xrange(self.left, self.right+1):
