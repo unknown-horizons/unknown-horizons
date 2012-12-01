@@ -32,6 +32,7 @@ from fife import fife
 import horizons.main
 from horizons.command.unit import Act
 from horizons.constants import GAME_SPEED
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.cursortool import CursorTool
@@ -356,8 +357,12 @@ class GuiHelper(object):
 			def stop():
 				Flag.running = False
 
-			ticks = Scheduler().get_ticks(seconds)
-			Scheduler().add_new_object(stop, None, run_in=ticks)
+			# Scheduler only exists inside games, use ExtScheduler in the mainmenu
+			if Scheduler():
+				ticks = Scheduler().get_ticks(seconds)
+				Scheduler().add_new_object(stop, None, run_in=ticks)
+			else:
+				ExtScheduler().add_new_object(stop, None, run_in=seconds)
 
 			while Flag.running:
 				cooperative.schedule()
