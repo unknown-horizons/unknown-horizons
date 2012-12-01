@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.network.packets import *
-from horizons.network import NetworkException, SoftNetworkException
 import uuid
+
+from horizons.network import NetworkException, SoftNetworkException
+from horizons.network.packets import packet, SafeUnpickler
 
 class cmd_creategame(packet):
 	clientversion = None

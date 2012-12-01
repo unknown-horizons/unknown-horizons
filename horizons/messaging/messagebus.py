@@ -85,3 +85,31 @@ class MessageBus(object):
 		# suicide, next instance will be created on demand
 		self.__class__.destroy_instance()
 
+
+class SimpleMessageBus(object):
+	"""Manages registration and calling of callbacks when events (strings) occur.
+	
+	Example:
+
+		bus = SimpleMessageBus(('foo', 'bar'))
+		bus.subscribe('foo', cb)
+
+		bus.broadcast('foo')  # cb will be called
+	"""
+
+	def __init__(self, message_types):
+		self._message_types = message_types
+		self._callbacks = defaultdict(list)
+
+	def subscribe(self, type, callback):
+		if type not in self._message_types:
+			raise TypeError("Unsupported type")
+
+		self._callbacks[type].append(callback)
+
+	def broadcast(self, type, *args, **kwargs):
+		if not type in self._message_types:
+			return
+
+		for cb in self._callbacks[type]:
+			cb(*args, **kwargs)
