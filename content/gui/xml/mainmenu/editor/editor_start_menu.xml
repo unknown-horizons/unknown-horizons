@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container name="editor_start_menu" size="1024,768" position_technique="automatic">
+	<Icon name="background" />
+	<Icon image="content/gui/images/background/book.png"  position="100,100" />
+
+	<Container name="editor_start_menu_content" position="170,135" size="660,510">
+		<VBox name="left_side" size="320,470" position="0,0">
+			<Container position="0,0" size="320,45">
+				<Label text="Select editor mode" position="70,0" name="headline" />
+				<Icon image="content/gui/images/background/hr.png" position="50,30" />
+			</Container>
+
+			<VBox padding="5">
+				<RadioButton position="0,0" size="32,32" name="maps_new" group="map_type" text="New map" />
+				<RadioButton position="0,30" size="32,32" name="maps_maps" group="map_type" text="Edit map" />
+				<RadioButton position="0,60" size="32,32" name="maps_saved_game" group="map_type" text="Edit map from saved game" />
+			</VBox>
+		</VBox>
+
+		<Container name="right_side" size="320,470" position="340,0" />
+
+		<HBox max_size="660,40" min_size="660,40" position="0,473">
+			<CancelButton name="cancel"  helptext="Exit to main menu" />
+			<Spacer />
+			<OkButton name="okay"  helptext="Start editor" />
+		</HBox>
+	</Container>
+</Container>
