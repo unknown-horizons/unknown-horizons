@@ -19,10 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import os
+
+from horizons.constants import PATHS
 from tests.gui import gui_test
 
 
-@gui_test(additional_cmdline=["--edit-map", "development"])
+editor_test = gui_test(additional_cmdline=["--edit-map", "development"])
+
+
+@editor_test
 def test_place_tiles(gui):
 	"""Place different tiles with different tile sizes."""
 
@@ -38,3 +44,15 @@ def test_place_tiles(gui):
 	gui.trigger('editor_settings', 'size_3')
 	gui.trigger('editor_settings', 'default_land')
 	gui.cursor_click(34, 27, 'left')
+
+
+@editor_test
+def test_save_map(gui):
+	"""Save a map in the editor."""
+	gui.press_key(gui.Key.F12, shift=True)
+
+	name = gui.find("map_name")
+	name.text = u"test_map"
+	gui.trigger('map_save_dialog_window', 'okButton')
+
+	assert os.path.exists(os.path.join(PATHS.USER_MAPS_DIR, u"test_map.sqlite"))
