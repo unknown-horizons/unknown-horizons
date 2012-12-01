@@ -75,6 +75,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'game_settings' : 'book',
 #	  'credits': 'book',
 	  'editor_select_map': 'book',
+	  'editor_pause_menu': 'headline',
 	  }
 
 	def __init__(self):
@@ -158,24 +159,29 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.__pause_displayed = True
 			# reload the menu because caching creates spacing problems
 			# see http://trac.unknown-horizons.org/t/ticket/1047
-			self.widgets.reload('ingamemenu')
+			in_editor_mode = self.session.in_editor_mode()
+			menu_name = 'editor_pause_menu' if in_editor_mode else 'ingamemenu'
+			self.widgets.reload(menu_name)
 			def do_load():
 				did_load = self.load_game()
 				if did_load:
+					self.__pause_displayed = False
+			def do_load_map():
+				if self.editor_load_map():
 					self.__pause_displayed = False
 			def do_quit():
 				did_quit = self.quit_session()
 				if did_quit:
 					self.__pause_displayed = False
 			events = { # needed twice, save only once here
-				'e_load' : do_load,
-				'e_save' : self.save_game,
+				'e_load' : do_load_map if in_editor_mode else do_load,
+				'e_save' : self.session.ingame_gui.show_save_map_dialog if in_editor_mode else self.save_game,
 				'e_sett' : self.show_settings,
 				'e_help' : self.on_help,
 				'e_start': self.toggle_pause,
 				'e_quit' : do_quit,
 			}
-			self._switch_current_widget('ingamemenu', center=True, show=False, event_map={
+			self._switch_current_widget(menu_name, center=True, show=False, event_map={
 				  # icons
 				'loadgameButton' : events['e_load'],
 				'savegameButton' : events['e_save'],
@@ -865,7 +871,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if not retval:
 			# Dialog cancelled
 			self.current = old_current
-			return
+			return False
 
 		selected_map_index = self.current.collectData('maplist')
 		if selected_map_index == -1:
@@ -875,3 +881,4 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.current = old_current
 		self.show_loading_screen()
 		horizons.main.edit_map(map_file_display[selected_map_index])
+		return True

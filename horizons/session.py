@@ -140,6 +140,9 @@ class Session(LivingObject):
 
 		self._old_autosave_interval = None
 
+	def in_world_editor_mode(self):
+		return False
+
 	def create_production_finished_icon_manager(self):
 		""" Checks the settings if we should display resrouce icons.
 		If True: Create the ProductionFinishedIconManager
@@ -503,12 +506,6 @@ class Session(LivingObject):
 					self.log.debug('Unable to remove unit %s', inst)
 			else:
 				self.log.error('Unable to remove unknown object %s', instance)
-
-	def save_map(self, prefix):
-		maps_folder = os.path.join(PATHS.USER_DIR, 'maps')
-		if not os.path.exists(maps_folder):
-			os.makedirs(maps_folder)
-		self.world.save_map(maps_folder, prefix)
 
 	def _do_save(self, savegame):
 		"""Actual save code.

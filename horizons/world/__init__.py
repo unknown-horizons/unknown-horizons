@@ -676,12 +676,6 @@ class World(BuildingOwner, WorldObject):
 		Weapon.save_attacks(db)
 		self.disaster_manager.save(db)
 
-	def save_map(self, path, name):
-		"""Save the current map."""
-		if hasattr(self.session, 'world_editor'):
-			# save a map created in the editor
-			self.session.world_editor.save_map(path, name)
-
 	def get_checkup_hash(self):
 		"""Returns a collection of important game state values. Used to check if two mp games have diverged.
 		Not designed to be reliable."""
