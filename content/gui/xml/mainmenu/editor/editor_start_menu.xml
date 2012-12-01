@@ -11,9 +11,9 @@
 			</Container>
 
 			<VBox padding="5">
-				<RadioButton position="0,0" size="32,32" name="maps_new" group="map_type" text="New map" />
-				<RadioButton position="0,30" size="32,32" name="maps_maps" group="map_type" text="Edit map" />
-				<RadioButton position="0,60" size="32,32" name="maps_saved_game" group="map_type" text="Edit map from saved game" />
+				<RadioButton position="0,0" size="32,32" name="create_new_map" group="action_type" text="New map" />
+				<RadioButton position="0,30" size="32,32" name="edit_existing_map" group="action_type" text="Edit map" />
+				<RadioButton position="0,60" size="32,32" name="edit_saved_game_map" group="action_type" text="Edit saved game's map" />
 			</VBox>
 		</VBox>
 

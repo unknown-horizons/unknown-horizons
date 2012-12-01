@@ -23,14 +23,18 @@ import horizons.main
 
 from horizons.gui.util import load_uh_widget
 from horizons.savegamemanager import SavegameManager
+from horizons.util.python.callback import Callback
 
 class EditorStartMenu(object):
 	def __init__(self, parent, from_main_menu):
 		self._from_main_menu = from_main_menu
 		self.parent = parent
 		self._gui = load_uh_widget('editor_start_menu.xml')
-		self._right_side = EditorSelectMapWidget(self, self._gui.findChild(name='right_side'))
+		self._right_side = None
 		self._old_on_escape = None
+		self._old_current_widget = self.parent.current
+		self._old_on_escape = self.parent.on_escape 
+		self._select_mode('edit_saved_game_map')
 
 	def show(self):
 		self._right_side.show()
@@ -39,11 +43,23 @@ class EditorStartMenu(object):
 		events = {}
 		events['okay/mouseClicked'] = self.act
 		events['cancel/mouseClicked'] = self.cancel
+		events['create_new_map/mouseClicked'] = Callback(self._select_mode, 'create_new_map')
+		events['edit_existing_map/mouseClicked'] = Callback(self._select_mode, 'edit_existing_map')
+		events['edit_saved_game_map/mouseClicked'] = Callback(self._select_mode, 'edit_saved_game_map')
 		self._gui.mapEvents(events)
-		
-		self._old_current_widget = self.parent.current
-		self._old_on_escape = self.parent.on_escape 
 		self.parent.on_escape = self.cancel
+
+	def _select_mode(self, mode):
+		modes = {'create_new_map': None, 'edit_existing_map': EditorSelectMapWidget, 'edit_saved_game_map': EditorSelectSavedGameWidget}
+		if modes[mode] is None:
+			return
+
+		if isinstance(self._right_side, modes[mode]):
+			return
+
+		self.hide()
+		self._right_side = modes[mode](self, self._gui.findChild(name='right_side'))
+		self.show()
 
 	def cancel(self):
 		self.hide()
@@ -55,7 +71,6 @@ class EditorStartMenu(object):
 			self.parent.on_escape()
 
 	def hide(self):
-		self._right_side.hide()
 		self._gui.hide()
 		self.parent.current = self._old_current_widget
 		self.parent.on_escape = self._old_on_escape
@@ -77,10 +92,8 @@ class EditorSelectMapWidget(object):
 	def show(self):
 		self._map_data = SavegameManager.get_maps()
 		self._gui.distributeInitialData({'map_list': self._map_data[1]})
-		self._parent_widget.addChild(self._gui)
-
-	def hide(self):
 		self._parent_widget.removeAllChildren()
+		self._parent_widget.addChild(self._gui)
 
 	def act(self):
 		selected_map_index = self._gui.collectData('map_list')
@@ -91,3 +104,32 @@ class EditorSelectMapWidget(object):
 		self.parent.hide()
 		self.parent.parent.show_loading_screen()
 		horizons.main.edit_map(self._map_data[0][selected_map_index])
+
+
+class EditorSelectSavedGameWidget(object):
+	def __init__(self, parent, parent_widget):
+		self.parent = parent
+		self._parent_widget = parent_widget
+		self._gui = load_uh_widget('editor_select_saved_game.xml')
+		self._saved_game_data = None
+
+	def show(self):
+		self._saved_game_data = SavegameManager.get_saves()
+		self._gui.distributeInitialData({'saved_game_list': self._saved_game_data[1]})
+		self._parent_widget.removeAllChildren()
+		self._parent_widget.addChild(self._gui)
+
+	def act(self):
+		if not self._saved_game_data[0]:
+			# there are no saved games: do nothing
+			# TODO: play a related sound effect and/or do something else to make the user understand what is wrong
+			return
+
+		selection_index = self._gui.collectData('saved_game_list')
+		if selection_index == -1:
+			# No map selected yet => select first available one
+			self._gui.distributeData({'saved_game_list': 0})
+
+		self.parent.hide()
+		self.parent.parent.show_loading_screen()
+		horizons.main.edit_game_map(self._saved_game_data[0][selection_index])
