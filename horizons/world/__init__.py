@@ -36,7 +36,7 @@ from horizons.util.color import Color
 from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
@@ -658,7 +658,11 @@ class World(BuildingOwner, WorldObject):
 		if isinstance(self.map_name, list):
 			db("INSERT INTO metadata VALUES(?, ?)", 'random_island_sequence', ' '.join(self.map_name))
 		else:
-			db("INSERT INTO metadata VALUES(?, ?)", 'map_name', self.map_name)
+			# the map name has to be simplified because the absolute paths won't be transferable between machines
+			simplified_name = self.map_name
+			if self.map_name.startswith(PATHS.USER_MAPS_DIR):
+				simplified_name = 'USER_MAPS_DIR:' + simplified_name[len(PATHS.USER_MAPS_DIR):]
+			db("INSERT INTO metadata VALUES(?, ?)", 'map_name', simplified_name)
 
 		for island in self.islands:
 			island.save(db)

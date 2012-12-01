@@ -93,8 +93,12 @@ class GuiHooks(object):
 		def deco2(func):
 			@wraps(func)
 			def wrapper(self, evt):
-				keycode = evt.getKey().getValue()
-				log(keycode)
+				data = {
+					'keycode': evt.getKey().getValue(),
+					'shift': evt.isShiftPressed(),
+					'ctrl': evt.isControlPressed()
+				}
+				log(**data)
 				return func(self, evt)
 
 			return wrapper
@@ -128,13 +132,13 @@ class GuiHooks(object):
 
 			return wrapper
 
-		# no mouseDragged/mouseMoved support yet
+		# no mouseMoved support yet
 		targets = {
-			mousetools.BuildingTool: ('mousePressed', 'mouseReleased', ),
-			mousetools.SelectionTool: ('mousePressed', 'mouseReleased', ),
-			mousetools.TearingTool: ('mousePressed', 'mouseReleased', ),
+			mousetools.BuildingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
+			mousetools.SelectionTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
+			mousetools.TearingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
 			mousetools.PipetteTool: ('mousePressed', ),
-			mousetools.TileLayingTool: ('mousePressed', 'mouseReleased', ),
+			mousetools.TileLayingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
 		}
 
 		for tool, events in targets.items():
@@ -166,7 +170,7 @@ class TestCodeGenerator(object):
 	"""
 	def __init__(self):
 		# Keep a list of events to detect mouse clicks (pressed and released)
-		# Clicks are what we're interested in, we don't support mouseMoved/mouseDragged
+		# Clicks are what we're interested in, we don't support mouseMoved
 		self._mousetool_events = []
 
 		self._dialog_active = False
@@ -235,12 +239,18 @@ class TestCodeGenerator(object):
 
 			self._add([code, ''])
 
-	def new_key_event(self, keycode):
+	def new_key_event(self, keycode, shift=False, ctrl=False):
 		"""
 		Output test code to press the key.
 		"""
 		try:
-			code = 'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode]
+			args = ['gui.Key.%s' % KEY_NAME_LOOKUP[keycode]]
+			if shift:
+				args.append('shift=True')
+			if ctrl:
+				args.append('ctrl=True')
+
+			code = 'gui.press_key(%s)' % ', '.join(args)
 		except KeyError:
 			code = '# Unknown key (code %s)' % keycode
 
@@ -253,11 +263,24 @@ class TestCodeGenerator(object):
 		"""
 		if event_name == 'mouseReleased':
 			last_event = self._mousetool_events[-1]
+			# simple click
 			if last_event == ('mousePressed', x, y, button):
 				self._add(["gui.cursor_click(%s, %s, '%s')" % (x, y, button)])
 				self._mousetool_events.pop()
+			# mouse dragged
+			elif (last_event[0], last_event[-1]) == ('mousePressed', button):
+				start = last_event[1], last_event[2]
+				end = x, y
+				self._add(["gui.cursor_drag((%s, %s), (%s, %s), '%s')" % (
+					start[0], start[1], end[0], end[1], button
+				)])
 		elif event_name == 'mousePressed':
 			self._mousetool_events.append((event_name, x, y, button))
+		elif event_name == 'mouseDragged':
+			# TODO for now we ignore these events, if the position between mousePressed
+			# and mouseReleased changed, we assume the mouse was moved and generate a
+			# drage event
+			pass
 		else:
 			raise Exception("Event '%s' not supported." % event_name)
 

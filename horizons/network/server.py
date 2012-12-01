@@ -19,15 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import gettext
 import logging
 import uuid
-import gettext
 
-from horizons.network.common import *
 from horizons import network
-from horizons.network import packets, enet
-from horizons.network import NetworkException, SoftNetworkException, PacketTooLarge
 from horizons.i18n.utils import find_available_languages
+from horizons.network import packets, enet
+from horizons.network.common import Player, Game, ErrorType
 
 
 if not enet:
@@ -192,13 +191,15 @@ class Server(object):
 	def send(self, peer, packet, channelid=0):
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
-		packet.send(peer, None, channelid)
-		self.host.flush()
+
+		self.sendraw(peer, packet.serialize(), channelid)
 
 	def sendraw(self, peer, data, channelid=0):
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
-		packets.packet.sendraw(peer, data, channelid)
+
+		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
+		peer.send(channelid, packet)
 		self.host.flush()
 
 
@@ -290,10 +291,10 @@ class Server(object):
 		packet = None
 		try:
 			packet = packets.unserialize(event.packet.data, True, player.protocol)
-		except SoftNetworkException as e:
+		except network.SoftNetworkException as e:
 			self.error(player, e.message)
 			return
-		except PacketTooLarge as e:
+		except network.PacketTooLarge as e:
 			logging.warning("[RECEIVE] Per packet size exceeded from %s: %s" % (player, e))
 			self.fatalerror(player, __("You've exceeded the per packet size.") + " " +
 			                        __("This should never happen. "
@@ -339,9 +340,9 @@ class Server(object):
 
 	def oncreategame(self, player, packet):
 		if packet.maxplayers < self.capabilities['minplayers']:
-			raise SoftNetworkException("You can't run a game with less than %d players" % (self.capabilities['minplayers']))
+			raise network.SoftNetworkException("You can't run a game with less than %d players" % (self.capabilities['minplayers']))
 		if packet.maxplayers > self.capabilities['maxplayers']:
-			raise SoftNetworkException("You can't run a game with more than %d players" % (self.capabilities['maxplayers']))
+			raise network.SoftNetworkException("You can't run a game with more than %d players" % (self.capabilities['maxplayers']))
 		game = Game(packet, player)
 		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
 		self.games.append(game)

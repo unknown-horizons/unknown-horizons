@@ -87,6 +87,9 @@ class _BuildPosition(object):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
+	def __hash__(self):
+		return hash((self.position, self.rotation, self.action))
+
 class _NotBuildableError(Exception):
 	"""Internal exception."""
 	def __init__(self, errortype):

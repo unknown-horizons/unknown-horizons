@@ -22,7 +22,9 @@
 # ###################################################
 
 import getopt
-import sys, os
+import os
+import sys
+
 from horizons import network
 from horizons.network.server import Server
 

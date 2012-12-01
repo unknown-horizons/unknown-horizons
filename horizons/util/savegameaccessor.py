@@ -26,6 +26,7 @@ import tempfile
 
 from collections import defaultdict, deque
 
+from horizons.constants import PATHS
 from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
@@ -66,7 +67,9 @@ class SavegameAccessor(DbReader):
 				random_island_sequence = self('SELECT value FROM metadata WHERE name = ?', 'random_island_sequence')[0][0].split(' ')
 			else:
 				map_name = map_name_data[0][0]
-				if os.path.isabs(map_name):
+				if map_name.startswith('USER_MAPS_DIR:'):
+					self._map_path = PATHS.USER_MAPS_DIR + map_name[len('USER_MAPS_DIR:'):]
+				elif os.path.isabs(map_name):
 					self._map_path = map_name
 				else:
 					self._map_path = SavegameManager.get_filename_from_map_name(map_name)

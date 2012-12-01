@@ -119,7 +119,7 @@ class MPManager(LivingObject):
 			self.gamecommands = []
 			self.commandsmanager.add_packet(commandpacket)
 			self.log.debug("sending command for tick %d" % (commandpacket.tick))
-			self.networkinterface.send_to_all_clients(commandpacket)
+			self.networkinterface.send_packet(commandpacket)
 
 			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick),
 					self.session.world.player.worldid, self.localcommands))
@@ -133,7 +133,7 @@ class MPManager(LivingObject):
 			                              self.session.world.player.worldid, hash_value)
 				self.checkuphashmanager.add_packet(checkuphashpacket)
 				self.log.debug("sending checkuphash for tick %d" % (checkuphashpacket.tick))
-				self.networkinterface.send_to_all_clients(checkuphashpacket)
+				self.networkinterface.send_packet(checkuphashpacket)
 
 		# decide if tick can be calculated
 		# in the first few ticks, no data is available
