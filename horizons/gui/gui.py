@@ -880,5 +880,5 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		self.current = old_current
 		self.show_loading_screen()
-		horizons.main.edit_map(map_file_display[selected_map_index])
+		horizons.main.edit_map(map_files[selected_map_index])
 		return True

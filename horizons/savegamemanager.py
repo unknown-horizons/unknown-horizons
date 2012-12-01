@@ -286,7 +286,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_maps(cls, include_displaynames=True):
 		cls.log.debug("Savegamemanager: get maps from %s", cls.maps_dir)
-		return cls.__get_saves_from_dirs([cls.maps_dir], include_displaynames, None, False)
+		return cls.__get_saves_from_dirs([cls.maps_dir, PATHS.USER_MAPS_DIR], include_displaynames, None, False)
 
 	@classmethod
 	def get_map(cls, map_name):
