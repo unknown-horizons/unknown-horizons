@@ -21,7 +21,7 @@
 
 import os
 
-from horizons.constants import PATHS
+from horizons.constants import PATHS, GROUND
 from tests.gui import gui_test
 
 
@@ -56,3 +56,18 @@ def test_save_map(gui):
 	gui.trigger('map_save_dialog_window', 'okButton')
 
 	assert os.path.exists(os.path.join(PATHS.USER_MAPS_DIR, u"test_map.sqlite"))
+
+
+@editor_test
+def test_drag_mouse(gui):
+	"""Test that tiles are placed while dragging the mouse."""
+	# TODO This is a really simple demonstration of mouse drag support in tests.
+	# TODO We should add better tests to show that the tile algorithm really works.
+
+	gui.trigger('editor_settings', 'water')
+	gui.cursor_drag((30, 30), (30, 37), 'left')
+
+	# quick check if the mouse drag had any effect on the map
+	for y in range(30, 36):
+		tile = gui.session.world.full_map[(30, y)]
+		assert (tile.id, tile.shape, tile.rotation + 45) == GROUND.DEEP_WATER_SOUTH

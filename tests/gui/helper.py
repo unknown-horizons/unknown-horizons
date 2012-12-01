@@ -101,12 +101,14 @@ class CursorToolsPatch(object):
 
 		self.patch1 = mock.patch('horizons.gui.mousetools.CursorTool.get_world_location', patched_world_location_from_event)
 		self.patch2 = mock.patch('horizons.gui.mousetools.CursorTool.get_exact_world_location', patched_world_location_from_event)
+		self.patch3 = mock.patch('horizons.gui.mousetools.TileLayingTool.get_world_location', patched_world_location_from_event)
 
 		NavigationTool._orig_get_hover_instances = NavigationTool.get_hover_instances
 
 	def enable(self):
 		self.patch1.start()
 		self.patch2.start()
+		self.patch3.start()
 
 		# this makes selecting buildings by clicking on them possible. without this, get_hover_instances receives an event with map
 		# coordinates, and will not find the correct building (if any). to fix this, we're converting the coordinates back to screen space
@@ -124,6 +126,7 @@ class CursorToolsPatch(object):
 	def disable(self):
 		self.patch1.stop()
 		self.patch2.stop()
+		self.patch3.stop()
 
 		NavigationTool.get_hover_instances = NavigationTool._orig_get_hover_instances
 
@@ -303,6 +306,23 @@ class GuiHelper(object):
 		# Cancel
 		x, y = coords[-1]
 		self.cursor_click(x, y, 'right')
+
+	def cursor_drag(self, (start_x, start_y), (end_x, end_y), button):
+		"""Press mouse button, move the mouse, release button."""
+		self.cursor_press_button(start_x, start_y, button)
+		self.run()
+
+		steps = max(abs(end_x - start_x), abs(end_y - start_y))
+		x_step = (end_x - start_x) / float(steps)
+		y_step = (end_y - start_y) / float(steps)
+
+		for i in range(steps):
+			x = int(start_x + i * x_step)
+			y = int(start_y + i * y_step)
+			self.cursor.mouseDragged(self._make_mouse_event(x, y, button))
+			self.run()
+
+		self.cursor_release_button(end_x, end_y, button)
 
 	def _make_mouse_event(self, x, y, button=None, shift=False, ctrl=False):
 		if button:
