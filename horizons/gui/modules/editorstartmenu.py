@@ -50,6 +50,8 @@ class EditorStartMenu(object):
 		if self._from_main_menu:
 			self.parent.show_main()
 		else:
+			# if we don't do this then it will still be paused without the pause menu
+			self.parent.on_escape()
 			self.parent.on_escape()
 
 	def hide(self):
