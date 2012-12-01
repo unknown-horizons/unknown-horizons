@@ -140,7 +140,7 @@ class Session(LivingObject):
 
 		self._old_autosave_interval = None
 
-	def in_world_editor_mode(self):
+	def in_editor_mode(self):
 		return False
 
 	def create_production_finished_icon_manager(self):
