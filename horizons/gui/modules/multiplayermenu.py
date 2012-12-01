@@ -226,7 +226,7 @@ class MultiplayerMenu(object):
 		                           player_limit=game.player_limit)
 		vbox_inner = self.current.findChild(name="game_info")
 		if game.is_savegame: # work around limitations of current systems via messages
-			path = SavegameManager.get_multiplayersave_map(game.mapname)
+			path = SavegameManager.get_multiplayersave_map(game.map_name)
 			btn_name = "save_missing_help_button"
 			btn = vbox_inner.findChild(name=btn_name)
 			if SavegameAccessor.get_hash(path) != game.map_hash:
