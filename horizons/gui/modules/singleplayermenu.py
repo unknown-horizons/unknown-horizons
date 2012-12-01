@@ -51,6 +51,12 @@ class SingleplayerMenu(object):
 	# game options
 	resource_densities = [0.5, 0.7, 1, 1.4, 2]
 
+	def __init__(self, mainmenu):
+		self.mainmenu = mainmenu
+		self.widgets = mainmenu.widgets
+		self.hide = mainmenu.hide
+		self.current = None
+
 	def show_single(self, show='scenario'): # show scenarios to highlight tutorials
 		"""
 		@param show: string, which type of games to show
@@ -61,7 +67,8 @@ class SingleplayerMenu(object):
 
 		# start with default single player settings
 		self.widgets.reload('singleplayermenu')
-		self._switch_current_widget('singleplayermenu', center=True)
+		self.mainmenu._switch_current_widget('singleplayermenu', center=True)
+		self.current = self.mainmenu.current
 		self.active_right_side = None
 
 		for mode in ('random', 'scenario', 'free_maps'):
@@ -82,7 +89,7 @@ class SingleplayerMenu(object):
 		assert show in ('random', 'scenario', 'free_maps')
 		self.hide()
 		event_map = {
-			'cancel'    : Callback.ChainedCallbacks(self._save_player_name, self.show_main),
+			'cancel'    : Callback.ChainedCallbacks(self._save_player_name, self.mainmenu.show_main),
 			'okay'      : self.start_single,
 			'scenario'  : Callback(self._select_single, show='scenario'),
 			'random'    : Callback(self._select_single, show='random'),
@@ -146,7 +153,7 @@ class SingleplayerMenu(object):
 			self._update_scenario_infos()
 
 		self.current.show()
-		self.on_escape = self.show_main
+		self.mainmenu.on_escape = self.mainmenu.show_main
 
 	def start_single(self):
 		""" Starts a single player horizons. """
@@ -170,7 +177,7 @@ class SingleplayerMenu(object):
 			horizons.globals.fife.set_uh_setting("AIPlayers", ai_players)
 		horizons.globals.fife.save_settings()
 
-		self.show_loading_screen()
+		self.mainmenu.show_loading_screen()
 		if is_scenario:
 			try:
 				options = StartGameOptions.create_start_scenario(map_file)

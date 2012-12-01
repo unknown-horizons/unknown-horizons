@@ -44,7 +44,7 @@ def _cleanup():
 	# FIXME this kills the map preview process before the test ends
 	# it will print out errors otherwise because the user directory
 	# doesn't exist anymore
-	proc = horizons.main._modules.gui.map_preview.calc_proc
+	proc = horizons.main._modules.gui.singleplayermenu.map_preview.calc_proc
 	if proc:
 		proc.kill()
 
