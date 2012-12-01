@@ -93,8 +93,12 @@ class GuiHooks(object):
 		def deco2(func):
 			@wraps(func)
 			def wrapper(self, evt):
-				keycode = evt.getKey().getValue()
-				log(keycode)
+				data = {
+					'keycode': evt.getKey().getValue(),
+					'shift': evt.isShiftPressed(),
+					'ctrl': evt.isControlPressed()
+				}
+				log(**data)
 				return func(self, evt)
 
 			return wrapper
@@ -235,12 +239,18 @@ class TestCodeGenerator(object):
 
 			self._add([code, ''])
 
-	def new_key_event(self, keycode):
+	def new_key_event(self, keycode, shift=False, ctrl=False):
 		"""
 		Output test code to press the key.
 		"""
 		try:
-			code = 'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode]
+			args = ['gui.Key.%s' % KEY_NAME_LOOKUP[keycode]]
+			if shift:
+				args.append('shift=True')
+			if ctrl:
+				args.append('ctrl=True')
+
+			code = 'gui.press_key(%s)' % ', '.join(args)
 		except KeyError:
 			code = '# Unknown key (code %s)' % keycode
 
