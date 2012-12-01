@@ -393,7 +393,7 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_filename_from_map_name(cls, map_name):
-		for prefix in [cls.scenario_maps_dir, cls.maps_dir]:
+		for prefix in [cls.scenario_maps_dir, cls.maps_dir, PATHS.USER_MAPS_DIR]:
 			path = prefix + os.sep + map_name + '.sqlite'
 			if os.path.exists(path):
 				return path
