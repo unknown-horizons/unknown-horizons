@@ -465,6 +465,7 @@ class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
 	LOG_DIR = os.path.join(USER_DIR, "log")
+	USER_MAPS_DIR = os.path.join(USER_DIR, "maps")
 	USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
 	SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
 	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")

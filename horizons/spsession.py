@@ -103,7 +103,4 @@ class SPSession(Session):
 		return success
 
 	def save_map(self, name):
-		maps_folder = os.path.join(PATHS.USER_DIR, 'maps')
-		if not os.path.exists(maps_folder):
-			os.makedirs(maps_folder)
-		self.world_editor.save_map(maps_folder, name)
+		self.world_editor.save_map(PATHS.USER_MAPS_DIR, name)
