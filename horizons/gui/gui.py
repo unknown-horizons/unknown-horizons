@@ -50,7 +50,7 @@ from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 from horizons.command.game import PauseCommand, UnPauseCommand
 
-class Gui(MultiplayerMenu):
+class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 	"""
 	log = logging.getLogger("gui")
@@ -97,6 +97,7 @@ class Gui(MultiplayerMenu):
 		self.subscribe()
 
 		self.singleplayermenu = SingleplayerMenu(self)
+		self.multiplayermenu = MultiplayerMenu(self)
 
 	def subscribe(self):
 		"""Subscribe to the necessary messages."""
@@ -887,3 +888,6 @@ class Gui(MultiplayerMenu):
 
 	def show_single(self):
 		self.singleplayermenu.show_single()
+
+	def show_multi(self):
+		self.multiplayermenu.show_multi()
