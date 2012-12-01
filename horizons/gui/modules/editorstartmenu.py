@@ -29,7 +29,6 @@ class EditorStartMenu(object):
 		self._from_main_menu = from_main_menu
 		self.parent = parent
 		self._gui = load_uh_widget('editor_start_menu.xml')
-		self._gui.position_technique = 'center:center+25'
 		self._right_side = EditorSelectMapWidget(self, self._gui.findChild(name='right_side'))
 		self._old_on_escape = None
 
