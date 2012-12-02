@@ -34,7 +34,7 @@ class EditorStartMenu(object):
 		self._old_on_escape = None
 		self._old_current_widget = self.parent.current
 		self._old_on_escape = self.parent.on_escape 
-		self._select_mode('load_existing_map')
+		self._select_mode('create_new_map')
 
 	def show(self):
 		self._right_side.show()
@@ -51,7 +51,7 @@ class EditorStartMenu(object):
 
 	def _select_mode(self, mode):
 		modes = {
-			'create_new_map': None,
+			'create_new_map': EditorCreateMapWidget,
 			'load_existing_map': EditorSelectMapWidget,
 			'load_saved_game_map': EditorSelectSavedGameWidget,
 		}
@@ -86,6 +86,20 @@ class EditorStartMenu(object):
 	def findChild(self, **kwargs):
 		return self._gui.findChild(**kwargs)
 
+
+class EditorCreateMapWidget(object):
+	def __init__(self, parent, parent_widget):
+		self.parent = parent
+		self._parent_widget = parent_widget
+		self._gui = load_uh_widget('editor_create_map.xml', style='book')
+		self._gui.findChild(name='size_150').marked = True
+
+	def show(self):
+		self._parent_widget.removeAllChildren()
+		self._parent_widget.addChild(self._gui)
+
+	def act(self):
+		pass
 
 class EditorSelectMapWidget(object):
 	def __init__(self, parent, parent_widget):
