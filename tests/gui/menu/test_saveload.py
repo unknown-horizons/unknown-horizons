@@ -28,9 +28,9 @@ from horizons.savegamemanager import SavegameManager
 from tests.gui import gui_test, TEST_FIXTURES_DIR
 
 
-def _copy_savegame():
+def _copy_savegame(filename='boatbuilder'):
 	"""Copy fixture savegame into user dir."""
-	source = os.path.join(TEST_FIXTURES_DIR, 'boatbuilder.sqlite')
+	source = os.path.join(TEST_FIXTURES_DIR, filename + '.sqlite')
 	shutil.copy(source, SavegameManager.savegame_dir)
 
 
@@ -113,3 +113,58 @@ def test_save_game_override(gui):
 	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))
 	new_size = os.path.getsize(SavegameManager.create_filename('boatbuilder'))
 	assert old_size != new_size
+
+
+@gui_test(timeout=60, cleanup_userdir=True)
+def test_delete_game(gui):
+	"""Test deleting a savegame."""
+
+	_copy_savegame('boatbuilder')
+	_copy_savegame('ai_settlement')
+	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))
+	assert os.path.exists(SavegameManager.create_filename('ai_settlement'))
+
+	def confirm_deletion():
+		def close_dialog():
+			gui.trigger('load_game_window', 'cancelButton/action/__execute__')
+
+		with gui.handler(close_dialog):
+			gui.trigger('popup_window', 'okButton/action/__execute__')
+
+	def func1():
+		gui.find('savegamelist').select(u'boatbuilder')
+
+		with gui.handler(confirm_deletion):
+			gui.trigger('load_game_window', 'deleteButton/action/__execute__')
+		
+	with gui.handler(func1):
+		gui.trigger('menu', 'loadgameButton')
+
+	assert not os.path.exists(SavegameManager.create_filename('boatbuilder'))
+	assert os.path.exists(SavegameManager.create_filename('ai_settlement'))
+
+
+@gui_test(timeout=60, cleanup_userdir=True)
+def test_delete_game_abort(gui):
+	"""Try to delete a game, but abort when ask for confirmation."""
+
+	_copy_savegame('boatbuilder')
+	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))
+
+	def confirm_deletion():
+		def close_dialog():
+			gui.trigger('load_game_window', 'cancelButton/action/__execute__')
+
+		with gui.handler(close_dialog):
+			gui.trigger('popup_window', 'cancelButton/action/__execute__')
+
+	def func1():
+		gui.find('savegamelist').select(u'boatbuilder')
+
+		with gui.handler(confirm_deletion):
+			gui.trigger('load_game_window', 'deleteButton/action/__execute__')
+		
+	with gui.handler(func1):
+		gui.trigger('menu', 'loadgameButton')
+
+	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))
