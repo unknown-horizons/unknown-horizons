@@ -197,7 +197,7 @@ class GuiHelper(object):
 				index = self.items.index(value)
 				self.selected = index
 				# trigger callbacks for selection change
-				gui_helper._trigger_widget_callback(self)
+				gui_helper._trigger_widget_callback(self, can_fail=True)
 
 			match.select = types.MethodType(select, match, match.__class__)
 
@@ -242,13 +242,15 @@ class GuiHelper(object):
 
 		self._trigger_widget_callback(widget, event_name, group_name)
 
-	def _trigger_widget_callback(self, widget, event_name="action", group_name="default"):
+	def _trigger_widget_callback(self, widget, event_name="action", group_name="default", can_fail=False):
 		"""Call callbacks for the given widget."""
 		# Check if this widget has any event callbacks at all
 		try:
 			callbacks = widget.event_mapper.callbacks[group_name]
 		except KeyError:
-			raise Exception("No callbacks for event group '%s' for event '%'" % (
+			if can_fail:
+				return
+			raise Exception("No callbacks for event group '%s' for event '%s'" % (
 							group_name, widget.name))
 
 		# Unusual events are handled normally

@@ -79,7 +79,8 @@ def test_create_game(gui):
 
 	# create a game and enter lobby
 	gui.trigger('menu', 'create')
-	gui.trigger('menu', 'maplist')
+	gui.find('maplist').select('quattro')
+	gui.find('playerlimit').select(2)
 	gui.trigger('menu', 'create')
 
 	games = NetworkInterface().get_active_games()

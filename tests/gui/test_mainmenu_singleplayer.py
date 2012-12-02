@@ -56,11 +56,12 @@ def test_start_scenario(gui):
 	gui.trigger('menu', 'scenario')
 
 	# trigger update of scenario infos
-	gui.trigger('menu', 'maplist')
-	gui.trigger('menu', 'uni_langlist')
+	gui.find('maplist').select('tutorial')
+	gui.find('uni_langlist').select('English')
 
 	options = _start_game(gui)
 	assert options.is_scenario
+	assert options.game_identifier.endswith('tutorial_en.yaml')
 
 	_cleanup()
 
@@ -75,11 +76,14 @@ def test_start_random_map(gui):
 	gui.trigger('menu', 'lbl_pirates')
 	gui.trigger('menu', 'lbl_disasters')
 
+	gui.find('ai_players').select('3')
+
 	options = _start_game(gui)
 	assert not options.is_scenario
 	assert not options.pirate_enabled
 	assert not options.disasters_enabled
 	assert options.trader_enabled
+	assert options.ai_players == 3
 
 	_cleanup()
 
@@ -91,17 +95,20 @@ def test_start_map(gui):
 	gui.trigger('menu', 'free_maps')
 
 	# trigger update of map info
-	gui.trigger('menu', 'maplist')
+	gui.find('maplist').select('development')
+
+	gui.find('ai_players').select('1')
 
 	# disable pirates and trader
 	gui.trigger('menu', 'lbl_pirates')
 	gui.trigger('menu', 'lbl_free_trader')
 
 	options = _start_game(gui)
-	assert 'development' in options.game_identifier
+	assert options.game_identifier.endswith('development.sqlite')
 	assert not options.is_scenario
 	assert not options.pirate_enabled
 	assert not options.trader_enabled
 	assert options.disasters_enabled
+	assert options.ai_players == 1
 
 	_cleanup()
