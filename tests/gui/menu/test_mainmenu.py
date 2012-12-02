@@ -81,10 +81,7 @@ def test_help_change_key(gui):
 		gui.press_key(gui.Key.E)
 
 
-# NOTE doesn't work when running under xvfb (no screen resolutions detected)
-"""
 @gui_test(timeout=60)
 def test_settings(gui):
 	gui.trigger('menu', 'settingsLink')
 	gui.trigger('settings_window', 'cancelButton')
-"""
