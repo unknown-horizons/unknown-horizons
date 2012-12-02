@@ -24,10 +24,12 @@ Cleaner interface to various game/gui functions to make tests easier.
 """
 
 import contextlib
+import types
 from collections import deque
 
 import mock
 from fife import fife
+from fife.extensions import pychan
 
 import horizons.main
 from horizons.command.unit import Act
@@ -165,16 +167,41 @@ class GuiHelper(object):
 
 	def find(self, name):
 		"""Recursive find a widget by name."""
+		match = None
+		seen = set()
 		widgets = deque(self.active_widgets)
 		while widgets:
 			w = widgets.popleft()
+			seen.add(w)
 			if w.name == name:
-				return w
+				match = w
+				break
 			else:
 				if hasattr(w, 'children'):
-					widgets.extend(w.children)
+					widgets.extend([x for x in w.children if x not in seen])
+				elif hasattr(w, 'findChildren'):
+					widgets.extend([x for x in w.findChildren() if x not in seen])
 
-		return None
+		# enhance widget with helper functions for easier testing
+
+		if isinstance(match, pychan.widgets.ListBox):
+			gui_helper = self
+			def select(self, value):
+				"""Change selection in listbox to value.
+
+				Example:
+
+				    w = gui.find('list_widget')
+				    w.select('A')
+				"""
+				index = self.items.index(value)
+				self.selected = index
+				# trigger callbacks for selection change
+				gui_helper._trigger_widget_callback(self)
+
+			match.select = types.MethodType(select, match, match.__class__)
+
+		return match
 
 	def trigger(self, root, event):
 		"""Trigger a widget event in a container.
@@ -213,6 +240,10 @@ class GuiHelper(object):
 			raise Exception("'%s' contains no widget with the name '%s'" % (
 								root.name, widget_name))
 
+		self._trigger_widget_callback(widget, event_name, group_name)
+
+	def _trigger_widget_callback(self, widget, event_name="action", group_name="default"):
+		"""Call callbacks for the given widget."""
 		# Check if this widget has any event callbacks at all
 		try:
 			callbacks = widget.event_mapper.callbacks[group_name]
