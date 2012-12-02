@@ -36,7 +36,6 @@ import horizons.main
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
-from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
@@ -47,7 +46,7 @@ from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import LazyWidgetsDict
 
-from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
+from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu, HelpDialog
 from horizons.command.game import PauseCommand, UnPauseCommand
 
 class Gui(object):
@@ -79,14 +78,9 @@ class Gui(object):
 	  }
 
 	def __init__(self):
-		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
-
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
-		self.keyconf = KeyConfig() # before build_help_strings
-		self.build_help_strings()
 		self.session = None
 		self.current_dialog = None
 
@@ -98,6 +92,7 @@ class Gui(object):
 
 		self.singleplayermenu = SingleplayerMenu(self)
 		self.multiplayermenu = MultiplayerMenu(self)
+		self.help_dialog = HelpDialog(self)
 
 	def subscribe(self):
 		"""Subscribe to the necessary messages."""
@@ -221,27 +216,8 @@ class Gui(object):
 		"""Displays settings gui derived from the FIFE settings module."""
 		horizons.globals.fife.show_settings()
 
-	_help_is_displayed = False
 	def on_help(self):
-		"""Called on help action.
-		Toggles help screen via static variable *help_is_displayed*.
-		Can be called both from main menu and in-game interface.
-		"""
-		help_dlg = self.widgets['help']
-		if not self._help_is_displayed:
-			self._help_is_displayed = True
-			# make game pause if there is a game and we're not in the main menu
-			if self.session is not None and self.current != self.widgets['ingamemenu']:
-				PauseCommand().execute(self.session)
-			if self.session is not None:
-				self.session.ingame_gui.on_escape() # close dialogs that might be open
-			self.show_dialog(help_dlg, {OkButton.DEFAULT_NAME : True})
-			self.on_help() # toggle state
-		else:
-			self._help_is_displayed = False
-			if self.session is not None and self.current != self.widgets['ingamemenu']:
-				UnPauseCommand().execute(self.session)
-			help_dlg.hide()
+		self.help_dialog.toggle()
 
 	def show_quit(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
@@ -776,87 +752,6 @@ class Gui(object):
 
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
-
-	def build_help_strings(self):
-		"""
-		Loads the help strings from pychan object widgets (containing no key definitions)
-		and adds the keys defined in the keyconfig configuration object in front of them.
-		The layout is defined through HELPSTRING_LAYOUT and translated.
-		"""
-		widgets = self.widgets['help']
-		labels = widgets.getNamedChildren()
-		# filter misc labels that do not describe key functions
-		labels = dict( (name[4:], lbl[0]) for (name, lbl) in labels.iteritems()
-								    if name.startswith('lbl_') )
-
-		# now prepend the actual keys to the function strings defined in xml
-		actionmap = self.keyconf.get_actionname_to_keyname_map()
-		for (name, lbl) in labels.items():
-			keyname = actionmap.get(name, 'SHIFT') #TODO #HACK hardcoded shift key
-			lbl.explanation = _(lbl.text)
-			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=keyname)
-			lbl.capture(Callback(self.show_hotkey_change_popup, name, lbl, keyname))
-
-	def show_hotkey_change_popup(self, action, lbl, keyname):
-		def apply_new_key(newkey=None):
-			if not newkey:
-				newkey = free_keys[listbox.selected]
-			else:
-				listbox.selected = listbox.items.index(newkey)
-			self.keyconf.save_new_key(action, newkey=newkey)
-			update_hotkey_info(action, newkey)
-			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=newkey)
-			lbl.capture(Callback(self.show_hotkey_change_popup, action, lbl, newkey))
-			lbl.adaptLayout()
-
-		def update_hotkey_info(action, keyname):
-			default = self.keyconf.get_default_key_for_action(action)
-			popup.message.text = (lbl.explanation +
-			#xgettext:python-format
-			                      u'\n' + _('Current key: [{key}]').format(key=keyname) +
-			#xgettext:python-format
-			                      u'\t' + _('Default key: [{key}]').format(key=default))
-			popup.message.helptext = _('Click to reset to default key')
-			reset_to_default = Callback(apply_new_key, default)
-			popup.message.capture(reset_to_default)
-
-		#xgettext:python-format
-		headline = _('Change hotkey for {action}').format(action=action)
-		message = ''
-		if keyname in ('SHIFT', 'ESCAPE'):
-			message = _('This key can not be reassigned at the moment.')
-			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
-			return
-
-		popup = self.build_popup(headline, message, size=2, show_cancel_button=True)
-		update_hotkey_info(action, keyname)
-		keybox = pychan.widgets.ScrollArea()
-		listbox = pychan.widgets.ListBox(is_focusable=False, name="available_keys")
-		keybox.max_size = listbox.max_size = \
-		keybox.min_size = listbox.min_size = \
-		keybox.size = listbox.size = (200, 200)
-		keybox.position = listbox.position = (90, 110)
-		prefer_short = lambda k: (len(k) > 1, len(k) > 3, k)
-		is_valid, default_key = self.keyconf.is_valid_and_get_default_key(keyname, action)
-		if not is_valid:
-			headline = _('Invalid key')
-			message = _('The default key for this action has been selected.')
-			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
-		valid_key = keyname if is_valid else default_key
-		free_key_dict = self.keyconf.get_keys_by_name(only_free_keys=True,
-		                                              force_include=[valid_key])
-		free_keys = sorted(free_key_dict.keys(), key=prefer_short)
-		listbox.items = free_keys
-		listbox.selected = listbox.items.index(valid_key)
-		#TODO backwards replace key names in keyconfig.get_fife_key_names in the list
-		# (currently this stores PLUS and PERIOD instead of + and . in the settings)
-		keybox.addChild(listbox)
-		popup.addChild(keybox)
-		if not is_valid:
-			apply_new_key()
-		listbox.capture(apply_new_key)
-		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		self.show_dialog(popup, button_cbs, modal=True)
 
 	def editor_load_map(self):
 		"""Show a dialog for the user to select a map to edit."""

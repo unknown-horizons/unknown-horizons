@@ -87,7 +87,7 @@ def update_all_translations():
 			element = widget.findChild(name=element_name)
 			replace_attribute(element, attribute, translation)
 		if filename == 'help.xml':
-			horizons.main._modules.gui.build_help_strings()
+			horizons.main._modules.gui.help_dialog.build_strings()
 		widget.adaptLayout()
 
 
