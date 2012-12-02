@@ -23,17 +23,6 @@ from tests.gui import gui_test
 
 
 @gui_test(timeout=60)
-def test_editor(gui):
-	"""Test that the map editor shows up."""
-
-	def func():
-		gui.trigger('load_map_window', 'cancelButton/action/__execute__')
-	
-	with gui.handler(func):
-		gui.trigger('menu', 'editor')
-
-
-@gui_test(timeout=60)
 def test_credits(gui):
 	"""Test that the credits page shows up."""
 
