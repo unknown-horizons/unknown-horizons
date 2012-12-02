@@ -31,6 +31,5 @@ class BoatBuilder(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding
 		super(BoatBuilder, self).__init__(**kwargs)
 
 	def initialize(self, **kwargs):
-		super(BoatBuilder, self).initialize( ** kwargs)
+		super(BoatBuilder, self).initialize(**kwargs)
 		self.get_component(StorageComponent).inventory.limit = 10
-

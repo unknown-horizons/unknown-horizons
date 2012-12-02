@@ -80,7 +80,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 		self.__deposit_class = deposit_class
 
 	def initialize(self, deposit_class, inventory, **kwargs):
-		super(Mine, self).initialize( ** kwargs)
+		super(Mine, self).initialize(**kwargs)
 		self.__init(deposit_class=deposit_class)
 		for res, amount in inventory.iteritems():
 			# bury resources from mountain in mine

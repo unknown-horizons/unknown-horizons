@@ -41,7 +41,7 @@ class Field(NatureBuildingResourceHandler):
 	layer = LAYERS.FIELDS
 
 	def initialize(self, **kwargs):
-		super(Field, self).initialize( ** kwargs)
+		super(Field, self).initialize(**kwargs)
 
 		if self.owner.is_local_player:
 			# make sure to have a farm nearby when we can reasonably assume that the crops are fully grown
