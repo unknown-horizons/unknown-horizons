@@ -174,6 +174,28 @@ def get_option_parser():
 
 	return p
 
+def get_content_dir_parent_path():
+	"""
+	Return the path to the parent of the content dir.
+	
+	This is usually just the dir the run_uh.py is in but on some Linux installation
+	scenarios the horizons dir, the content dir, and run_uh.py are all in different
+	locations.
+	"""
+
+	options = []
+	# Try the directory this file is in. This should work in most cases.
+	options.append(os.path.dirname(os.path.realpath(unicode(__file__))))
+	# Try often-used paths on Linux.
+	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
+		options.append(os.path.join(path, u'unknown-horizons'))
+
+	for path in options:
+		content_path = os.path.join(path, u'content')
+		if os.path.exists(content_path):
+			return path
+	raise RuntimeError('Unable to find the path to the Unknown Horizons content dir.')
+
 def create_user_dirs():
 	"""Creates the userdir and subdirs. Includes from horizons."""
 	from horizons.constants import PATHS
@@ -221,8 +243,8 @@ def main():
 	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
 		pass
 
-	# chdir to Unknown Horizons root
-	os.chdir(os.path.dirname(os.path.realpath(unicode(__file__))))
+	# Change the working directory to the parent of the content directory.
+	os.chdir(get_content_dir_parent_path())
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 	create_user_dirs()
 

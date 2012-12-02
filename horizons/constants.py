@@ -39,7 +39,8 @@ class VERSION:
 		It only works in git repositories, and is actually a hack.
 		"""
 		try:
-			uh_path = os.path.join(os.path.dirname(os.path.realpath(unicode(__file__))), '..')
+			from run_uh import get_content_dir_parent_path
+			uh_path = get_content_dir_parent_path()
 			git_head_path = os.path.join(uh_path, '.git', 'HEAD')
 			if os.path.exists(git_head_path):
 				head = open(git_head_path).readline().strip().partition(' ')
