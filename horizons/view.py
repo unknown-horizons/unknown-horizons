@@ -27,7 +27,7 @@ import horizons.globals
 
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
-from horizons.constants import LAYERS, VIEW, GAME_SPEED, MAP
+from horizons.constants import LAYERS, VIEW, GAME_SPEED
 
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
@@ -257,10 +257,13 @@ class View(ChangeListener):
 	def resize_layers(self, db):
 		"""Resize layers to the size required by the entire map."""
 		min_x, min_y, max_x, max_y = db("SELECT min(x), min(y), max(x), max(y) FROM ground")[0]
-		min_x -= MAP.PADDING
-		min_y -= MAP.PADDING
-		max_x += MAP.PADDING
-		max_y += MAP.PADDING
+		if min_x is None:
+			# this happens on the empty maps that are created for the editor
+			min_x, min_y, max_x, max_y = (0, 0, 0, 0)
+		min_x -= db.map_padding
+		min_y -= db.map_padding
+		max_x += db.map_padding
+		max_y += db.map_padding
 
 		for layer_id, layer in enumerate(self.layers):
 			if not layer.getCellCache():

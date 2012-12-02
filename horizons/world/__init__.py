@@ -286,10 +286,10 @@ class World(BuildingOwner, WorldObject):
 			self.min_y = min(island.position.top, self.min_y)
 			self.max_x = max(island.position.right, self.max_x)
 			self.max_y = max(island.position.bottom, self.max_y)
-		self.min_x -= MAP.PADDING
-		self.min_y -= MAP.PADDING
-		self.max_x += MAP.PADDING
-		self.max_y += MAP.PADDING
+		self.min_x -= savegame_db.map_padding
+		self.min_y -= savegame_db.map_padding
+		self.max_x += savegame_db.map_padding
+		self.max_y += savegame_db.map_padding
 
 		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
 

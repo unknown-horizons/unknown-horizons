@@ -313,7 +313,7 @@ class Session(LivingObject):
 			options.is_map = True
 
 		self.log.debug("Session: Loading from %s", options.game_identifier)
-		savegame_db = SavegameAccessor(options.game_identifier, options.is_map) # Initialize new dbreader
+		savegame_db = SavegameAccessor(options.game_identifier, options.is_map, options) # Initialize new dbreader
 		savegame_data = SavegameManager.get_metadata(savegame_db.db_path)
 		self.view.resize_layers(savegame_db)
 

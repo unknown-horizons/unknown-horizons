@@ -339,6 +339,7 @@ def start_singleplayer(options):
 		        _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		_modules.gui.load_game()
+	return _modules.session
 
 def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_resource_multiplier=1):
 	"""Starts a multiplayer game server

@@ -21,9 +21,11 @@
 
 import horizons.main
 
+from horizons.editor.worldeditor import WorldEditor
 from horizons.gui.util import load_uh_widget
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
+from horizons.util.startgameoptions import StartGameOptions
 
 class EditorStartMenu(object):
 	def __init__(self, parent, from_main_menu):
@@ -99,7 +101,20 @@ class EditorCreateMapWidget(object):
 		self._parent_widget.addChild(self._gui)
 
 	def act(self):
-		pass
+		sizes = [50, 100, 150, 200, 250]
+		for size in sizes:
+			option_name = 'size_%d' % size
+			if self._gui.findChild(name=option_name).marked:
+				self.parent.hide()
+				self.parent.parent.show_loading_screen()
+
+				# the empty list is interpreted as the empty list of random map island strings
+				options = StartGameOptions.create_editor_load([])
+				options.map_padding = size // 2
+				session = horizons.main.start_singleplayer(options)
+				session.world_editor = WorldEditor(session.world)
+				return
+
 
 class EditorSelectMapWidget(object):
 	def __init__(self, parent, parent_widget):
