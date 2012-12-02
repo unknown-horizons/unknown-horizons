@@ -3,23 +3,23 @@
 	<Icon name="background" />
 	<Icon image="content/gui/images/background/book.png"  position="100,100" />
 
-	<Container name="editor_start_menu_content" position="170,135" size="660,510">
-		<VBox name="left_side" size="320,470" position="0,0">
+	<Container name="editor_start_menu_content" position="170,140" size="660,510">
+		<VBox name="left_side" size="320,465" position="0,0">
 			<Container position="0,0" size="320,45">
-				<Label text="Select editor mode" position="70,0" name="headline" />
+				<Label text="Select map source" position="70,0" name="headline" />
 				<Icon image="content/gui/images/background/hr.png" position="50,30" />
 			</Container>
 
 			<VBox padding="5">
-				<RadioButton position="0,0" size="32,32" name="create_new_map" group="action_type" text="New map" />
-				<RadioButton position="0,30" size="32,32" name="edit_existing_map" group="action_type" text="Edit map" />
-				<RadioButton position="0,60" size="32,32" name="edit_saved_game_map" group="action_type" text="Edit saved game's map" />
+				<RadioButton position="0,0" size="32,32" name="create_new_map" group="actiontype" text="Create new map" />
+				<RadioButton position="0,30" size="32,32" name="load_existing_map" group="actiontype" text="Load existing map" />
+				<RadioButton position="0,60" size="32,32" name="load_saved_game_map" group="actiontype" text="Load saved game's map" />
 			</VBox>
 		</VBox>
 
-		<Container name="right_side" size="320,470" position="340,0" />
+		<Container name="right_side" size="320,465" position="345,0" />
 
-		<HBox max_size="660,40" min_size="660,40" position="0,473">
+		<HBox max_size="660,40" min_size="660,40" position="0,468">
 			<CancelButton name="cancel"  helptext="Exit to main menu" />
 			<Spacer />
 			<OkButton name="okay"  helptext="Start editor" />

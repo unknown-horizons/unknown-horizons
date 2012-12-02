@@ -29,28 +29,32 @@ class EditorStartMenu(object):
 	def __init__(self, parent, from_main_menu):
 		self._from_main_menu = from_main_menu
 		self.parent = parent
-		self._gui = load_uh_widget('editor_start_menu.xml')
+		self._gui = load_uh_widget('editor_start_menu.xml', style='book')
 		self._right_side = None
 		self._old_on_escape = None
 		self._old_current_widget = self.parent.current
 		self._old_on_escape = self.parent.on_escape 
-		self._select_mode('edit_saved_game_map')
+		self._select_mode('load_existing_map')
 
 	def show(self):
 		self._right_side.show()
 		self._gui.show()
 
 		events = {}
-		events['okay/mouseClicked'] = self.act
-		events['cancel/mouseClicked'] = self.cancel
-		events['create_new_map/mouseClicked'] = Callback(self._select_mode, 'create_new_map')
-		events['edit_existing_map/mouseClicked'] = Callback(self._select_mode, 'edit_existing_map')
-		events['edit_saved_game_map/mouseClicked'] = Callback(self._select_mode, 'edit_saved_game_map')
+		events['okay'] = self.act
+		events['cancel'] = self.cancel
+		events['create_new_map'] = Callback(self._select_mode, 'create_new_map')
+		events['load_existing_map'] = Callback(self._select_mode, 'load_existing_map')
+		events['load_saved_game_map'] = Callback(self._select_mode, 'load_saved_game_map')
 		self._gui.mapEvents(events)
 		self.parent.on_escape = self.cancel
 
 	def _select_mode(self, mode):
-		modes = {'create_new_map': None, 'edit_existing_map': EditorSelectMapWidget, 'edit_saved_game_map': EditorSelectSavedGameWidget}
+		modes = {
+			'create_new_map': None,
+			'load_existing_map': EditorSelectMapWidget,
+			'load_saved_game_map': EditorSelectSavedGameWidget,
+		}
 		if modes[mode] is None:
 			return
 
@@ -58,6 +62,7 @@ class EditorStartMenu(object):
 			return
 
 		self.hide()
+		self.findChild(name=mode).marked = True
 		self._right_side = modes[mode](self, self._gui.findChild(name='right_side'))
 		self.show()
 
