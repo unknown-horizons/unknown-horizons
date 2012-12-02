@@ -57,10 +57,31 @@ class GuiHooks(object):
 		self._setup_dialog_detector()
 
 	def _setup_widget_events(self):
-		"""
-		Wrap event callbacks before they are registered at a widget.
+		"""Capture events on widgets.
+
+		We log events by wrapping callbacks before they are registered at a widget.
 		"""
 		log = self.logger.new_widget_event
+
+		# Provide a default callback for listboxes. Some will never have a
+		# callback installed because their selection is just read later.
+		# But we depend on event callbacks to detect events.
+		def deco2(func):
+			@wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+
+				def callback(event, widget):
+					# this can be a no-op because we're patching addEvent below, which
+					# handles the logging
+					pass
+
+				if isinstance(self.widget_ref(), widgets.ListBox):
+					self.capture('action', callback, 'default')
+
+			return wrapper
+
+		EventMapper.__init__ = deco2(EventMapper.__init__)
 
 		def deco(func):
 			@wraps(func)
