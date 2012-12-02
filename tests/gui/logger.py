@@ -32,7 +32,7 @@ from horizons.gui import mousetools, Gui
 from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
 
 from fife import fife
-from fife.extensions.pychan import tools
+from fife.extensions.pychan import tools, widgets
 from fife.extensions.pychan.events import EventMapper
 
 
@@ -57,10 +57,35 @@ class GuiHooks(object):
 		self._setup_dialog_detector()
 
 	def _setup_widget_events(self):
-		"""
-		Wrap event callbacks before they are registered at a widget.
+		"""Capture events on widgets.
+
+		We log events by wrapping callbacks before they are registered at a widget.
 		"""
 		log = self.logger.new_widget_event
+
+		def deco2(func):
+			@wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+
+				def callback(event, widget):
+					# this can be a no-op because we're patching addEvent below, which
+					# handles the logging
+					pass
+
+				# Provide a default callback for listboxes. Some will never have a
+				# callback installed because their selection is just read later.
+				# But we depend on event callbacks to detect events.
+				if isinstance(self.widget_ref(), widgets.ListBox):
+					self.capture('action', callback, 'default')
+				# We can't detect keypresses on textfields yet, but at least capture
+				# the event when we select the widget
+				elif isinstance(self.widget_ref(), widgets.TextField):
+					self.capture('mouseClicked', callback, 'default')
+
+			return wrapper
+
+		EventMapper.__init__ = deco2(EventMapper.__init__)
 
 		def deco(func):
 			@wraps(func)
@@ -229,13 +254,19 @@ class TestCodeGenerator(object):
 		else:
 			log.debug('# %s' % path)
 
-			if group_name == 'default':
-				if event_name in ('action', 'mouseClicked'):
-					code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
-				else:
-					code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+			if isinstance(widget, widgets.ListBox):
+				selection = widget.items[widget.selected]
+				code = "gui.find('%s').select(u'%s')" % (widget.name, selection)
+			elif isinstance(widget, widgets.TextField):
+				code = "gui.find('%s').write(TODO)" % widget.name
 			else:
-				code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
+				if group_name == 'default':
+					if event_name in ('action', 'mouseClicked'):
+						code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
+					else:
+						code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+				else:
+					code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
 
 			self._add([code, ''])
 

@@ -19,15 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import subprocess
-import shutil
-import sys
-
-from nose.tools import with_setup
-
-from horizons.constants import PATHS
-from tests.gui import gui_test, TEST_FIXTURES_DIR
+from tests.gui import gui_test
 
 
 @gui_test(timeout=60)
@@ -63,57 +55,33 @@ def test_help(gui):
 		gui.trigger('menu', 'helpLink')
 
 
-# NOTE doesn't work when running under xvfb (no screen resolutions detected)
-"""
+@gui_test(timeout=60)
+def test_help_change_key(gui):
+	"""Test changing the key assignment in the help dialog."""
+	def change_key():
+		keys = gui.find('available_keys')
+		keys.select('E')
+		gui.trigger('popup_window', 'okButton/action/__execute__')
+
+	def func():
+		with gui.handler(change_key):
+			gui.trigger('help_window', 'lbl_HELP')
+
+		gui.trigger('help_window', 'okButton/action/__execute__')
+
+	with gui.handler(func):
+		gui.trigger('menu', 'helpLink')
+
+	# at this point, the key for help was changed
+
+	def close():
+		gui.trigger('help_window', 'okButton/action/__execute__')
+
+	with gui.handler(close):
+		gui.press_key(gui.Key.E)
+
+
 @gui_test(timeout=60)
 def test_settings(gui):
 	gui.trigger('menu', 'settingsLink')
 	gui.trigger('settings_window', 'cancelButton')
-"""
-
-# Start our own master server for the multiplayer test because the official one
-# is probably too old.
-
-_master_server = None
-
-def start_server():
-	global _master_server
-	_master_server = subprocess.Popen([sys.executable, "server.py", "-h", "localhost", "-p", "2002"])
-
-
-def stop_server():
-	global _master_server
-	_master_server.terminate()
-
-
-@with_setup(start_server, stop_server)
-@gui_test(timeout=60, additional_cmdline=["--mp-master", "localhost:2002"])
-def test_multiplayer(gui):
-	"""Test that the multiplayer page shows up."""
-
-	gui.trigger('menu', 'startMulti')
-	gui.trigger('menu', 'cancel')
-
-
-@gui_test(timeout=60)
-def test_singleplayer(gui):
-	"""Test that the singleplayer page shows up."""
-
-	gui.trigger('menu', 'startSingle')
-	gui.trigger('menu', 'cancel')
-
-
-@gui_test(timeout=60, cleanup_userdir=True)
-def test_load_game(gui):
-	"""Test loading a game from the mainmenu."""
-
-	# copy fixture savegame into user dir, otherwise we'll just get a 'no savegames' popup
-	source = os.path.join(TEST_FIXTURES_DIR, 'boatbuilder.sqlite')
-	target_dir = os.path.join(PATHS.USER_DIR, 'save')
-	shutil.copy(source, target_dir)
-
-	def func():
-		gui.trigger('load_game_window', 'cancelButton/action/__execute__')
-		
-	with gui.handler(func):
-		gui.trigger('menu', 'loadgameButton')

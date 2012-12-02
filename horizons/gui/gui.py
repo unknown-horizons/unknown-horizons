@@ -21,11 +21,7 @@
 
 import glob
 import logging
-import os
-import os.path
 import random
-import tempfile
-import time
 import traceback
 
 from fife import fife
@@ -36,22 +32,21 @@ import horizons.main
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
-from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions
-from horizons.util.savegameupgrader import SavegameUpgrader
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 
-from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
+from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
+                                  SelectSavegameDialog)
 from horizons.command.game import PauseCommand, UnPauseCommand
 
-class Gui(MultiplayerMenu):
+class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 	"""
 	log = logging.getLogger("gui")
@@ -79,14 +74,9 @@ class Gui(MultiplayerMenu):
 	  }
 
 	def __init__(self):
-		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
-
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
-		self.keyconf = KeyConfig() # before build_help_strings
-		self.build_help_strings()
 		self.session = None
 		self.current_dialog = None
 
@@ -97,6 +87,10 @@ class Gui(MultiplayerMenu):
 		self.subscribe()
 
 		self.singleplayermenu = SingleplayerMenu(self)
+		self.multiplayermenu = MultiplayerMenu(self)
+		self.help_dialog = HelpDialog(self)
+		self.selectsavegame_dialog = SelectSavegameDialog(self)
+		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
 
 	def subscribe(self):
 		"""Subscribe to the necessary messages."""
@@ -219,27 +213,8 @@ class Gui(MultiplayerMenu):
 		"""Displays settings gui derived from the FIFE settings module."""
 		horizons.globals.fife.show_settings()
 
-	_help_is_displayed = False
 	def on_help(self):
-		"""Called on help action.
-		Toggles help screen via static variable *help_is_displayed*.
-		Can be called both from main menu and in-game interface.
-		"""
-		help_dlg = self.widgets['help']
-		if not self._help_is_displayed:
-			self._help_is_displayed = True
-			# make game pause if there is a game and we're not in the main menu
-			if self.session is not None and self.current != self.widgets['ingamemenu']:
-				PauseCommand().execute(self.session)
-			if self.session is not None:
-				self.session.ingame_gui.on_escape() # close dialogs that might be open
-			self.show_dialog(help_dlg, {OkButton.DEFAULT_NAME : True})
-			self.on_help() # toggle state
-		else:
-			self._help_is_displayed = False
-			if self.session is not None and self.current != self.widgets['ingamemenu']:
-				UnPauseCommand().execute(self.session)
-			help_dlg.hide()
+		self.help_dialog.toggle()
 
 	def show_quit(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
@@ -284,150 +259,6 @@ class Gui(MultiplayerMenu):
 			labels[i].capture(Callback(self.show_credits, i), event_name="mouseClicked")
 
 		self.show_dialog(credits_page, {OkButton.DEFAULT_NAME : True})
-
-	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
-		"""Shows menu to select a savegame.
-		@param mode: Valid options are 'save', 'load', 'mp_load', 'mp_save'
-		@param sanity_checker: only allow manually entered names that pass this test
-		@param sanity_criteria: explain which names are allowed to the user
-		@return: Path to savegamefile or None"""
-		assert mode in ('save', 'load', 'mp_load', 'mp_save')
-		map_files, map_file_display = None, None
-		args = mode, sanity_checker, sanity_criteria # for reshow
-		mp = mode.startswith('mp_')
-		if mp:
-			mode = mode[3:]
-		# below this line, mp_load == load, mp_save == save
-		if mode == 'load':
-			if not mp:
-				map_files, map_file_display = SavegameManager.get_saves()
-			else:
-				map_files, map_file_display = SavegameManager.get_multiplayersaves()
-			if not map_files:
-				self.show_popup(_("No saved games"), _("There are no saved games to load."))
-				return
-		else: # don't show autosave and quicksave on save
-			if not mp:
-				map_files, map_file_display = SavegameManager.get_regular_saves()
-			else:
-				map_files, map_file_display = SavegameManager.get_multiplayersaves()
-
-		# Prepare widget
-		old_current = self._switch_current_widget('select_savegame')
-		if mode == 'save':
-			helptext = _('Save game')
-		elif mode == 'load':
-			helptext = _('Load game')
-		# else: not a valid mode, so we can as well crash on the following
-		self.current.findChild(name='headline').text = helptext
-		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
-
-		name_box = self.current.findChild(name="gamename_box")
-		password_box = self.current.findChild(name="gamepassword_box")
-		if mp and mode == 'load': # have gamename
-			name_box.parent.showChild(name_box)
-			password_box.parent.showChild(password_box)
-			gamename_textfield = self.current.findChild(name="gamename")
-			gamepassword_textfield = self.current.findChild(name="gamepassword")
-			gamepassword_textfield.text = u""
-			def clear_gamedetails_textfields():
-				gamename_textfield.text = u""
-				gamepassword_textfield.text = u""
-			gamename_textfield.capture(clear_gamedetails_textfields, 'mouseReleased', 'default')
-		else:
-			if name_box not in name_box.parent.hidden_children:
-				name_box.parent.hideChild(name_box)
-			if password_box not in name_box.parent.hidden_children:
-				password_box.parent.hideChild(password_box)
-
-		self.current.show()
-
-		if not hasattr(self, 'filename_hbox'):
-			self.filename_hbox = self.current.findChild(name='enter_filename')
-			self.filename_hbox_parent = self.filename_hbox.parent
-
-		if mode == 'save': # only show enter_filename on save
-			self.filename_hbox_parent.showChild(self.filename_hbox)
-		elif self.filename_hbox not in self.filename_hbox_parent.hidden_children:
-			self.filename_hbox_parent.hideChild(self.filename_hbox)
-
-		def tmp_selected_changed():
-			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if mode != 'save': # set textbox only if we are in save mode
-				return
-			if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
-				self.current.findChild(name="savegamefile").text = u""
-			else:
-				savegamefile = map_file_display[self.current.collectData('savegamelist')]
-				self.current.distributeData({'savegamefile': savegamefile})
-
-		self.current.distributeInitialData({'savegamelist': map_file_display})
-		# Select first item when loading, nothing when saving
-		selected_item = -1 if mode == 'save' else 0
-		self.current.distributeData({'savegamelist': selected_item})
-		cb_details = Gui._create_show_savegame_details(self.current, map_files, 'savegamelist')
-		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
-		cb() # Refresh data on start
-		self.current.mapEvents({'savegamelist/action': cb})
-		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
-
-		bind = {
-			OkButton.DEFAULT_NAME     : True,
-			CancelButton.DEFAULT_NAME : False,
-			DeleteButton.DEFAULT_NAME : 'delete'
-		}
-
-		if mode == 'save':
-			bind['savegamefile'] = True
-
-		retval = self.show_dialog(self.current, bind)
-		if not retval: # cancelled
-			self.current = old_current
-			return
-
-		if retval == 'delete':
-			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
-			delete_retval = self._delete_savegame(map_files)
-			if delete_retval:
-				self.current.distributeData({'savegamelist' : -1})
-				cb()
-			self.current = old_current
-			return self.show_select_savegame(*args)
-
-		selected_savegame = None
-		if mode == 'save': # return from textfield
-			selected_savegame = self.current.collectData('savegamefile')
-			if selected_savegame == "":
-				self.show_error_popup(windowtitle=_("No filename given"),
-				                      description=_("Please enter a valid filename."))
-				self.current = old_current
-				return self.show_select_savegame(*args) # reshow dialog
-			elif selected_savegame in map_file_display: # savegamename already exists
-				#xgettext:python-format
-				message = _("A savegame with the name '{name}' already exists.").format(
-				             name=selected_savegame) + u"\n" + _('Overwrite it?')
-				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
-				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-					self.current = old_current
-					return self.show_select_savegame(*args) # reshow dialog
-			elif sanity_checker and sanity_criteria:
-				if not sanity_checker(selected_savegame):
-					self.show_error_popup(windowtitle=_("Invalid filename given"),
-					                      description=sanity_criteria)
-					self.current = old_current
-					return self.show_select_savegame(*args) # reshow dialog
-		else: # return selected item from list
-			selected_savegame = self.current.collectData('savegamelist')
-			assert selected_savegame != -1, "No savegame selected in savegamelist"
-			selected_savegame = map_files[selected_savegame]
-
-		if mp and mode == 'load': # also name
-			gamename_textfield = self.current.findChild(name="gamename")
-			ret = selected_savegame, self.current.collectData('gamename'), self.current.collectData('gamepassword')
-		else:
-			ret = selected_savegame
-		self.current = old_current # reuse old widget
-		return ret
 
 # display
 
@@ -649,110 +480,6 @@ class Gui(MultiplayerMenu):
 
 		return old
 
-	@staticmethod
-	def _create_show_savegame_details(gui, map_files, savegamelist):
-		"""Creates a function that displays details of a savegame in gui"""
-
-		def tmp_show_details():
-			"""Fetches details of selected savegame and displays it"""
-			gui.findChild(name="screenshot").image = None
-			map_file = None
-			map_file_index = gui.collectData(savegamelist)
-			if map_file_index == -1:
-				gui.findChild(name="savegame_details").hide()
-				return
-			else:
-				gui.findChild(name="savegame_details").show()
-			try:
-				map_file = map_files[map_file_index]
-			except IndexError:
-				# this was a click in the savegame list, but not on an element
-				# it happens when the savegame list is empty
-				return
-			savegame_info = SavegameManager.get_metadata(map_file)
-
-			if savegame_info.get('screenshot'):
-				# try to find a writable location, that is accessible via relative paths
-				# (required by fife)
-				fd, filename = tempfile.mkstemp()
-				try:
-					path_rel = os.path.relpath(filename)
-				except ValueError: # the relative path sometimes doesn't exist on win
-					os.close(fd)
-					os.unlink(filename)
-					# try again in the current dir, it's often writable
-					fd, filename = tempfile.mkstemp(dir=os.curdir)
-					try:
-						path_rel = os.path.relpath(filename)
-					except ValueError:
-						fd, filename = None, None
-
-				if fd:
-					with os.fdopen(fd, "w") as f:
-						f.write(savegame_info['screenshot'])
-					# fife only supports relative paths
-					gui.findChild(name="screenshot").image = path_rel
-					os.unlink(filename)
-
-			# savegamedetails
-			details_label = gui.findChild(name="savegamedetails_lbl")
-			details_label.text = u""
-			if savegame_info['timestamp'] == -1:
-				details_label.text += _("Unknown savedate")
-			else:
-				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
-				#xgettext:python-format
-				details_label.text += _("Saved at {time}").format(time=savetime.decode('utf-8'))
-			details_label.text += u'\n'
-			counter = savegame_info['savecounter']
-			# N_ takes care of plural forms for different languages
-			#xgettext:python-format
-			details_label.text += N_("Saved {amount} time",
-			                         "Saved {amount} times",
-			                         counter).format(amount=counter)
-			details_label.text += u'\n'
-			details_label.stylize('book')
-
-			from horizons.constants import VERSION
-			try:
-				#xgettext:python-format
-				details_label.text += _("Savegame version {version}").format(
-				                         version=savegame_info['savegamerev'])
-				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
-					if not SavegameUpgrader.can_upgrade(savegame_info['savegamerev']):
-						details_label.text += u" " + _("(probably incompatible)")
-			except KeyError:
-				# this should only happen for very old savegames, so having this unfriendly
-				# error is ok (savegame is quite certainly fully unusable).
-				details_label.text += u" " + _("Incompatible version")
-
-			gui.adaptLayout()
-		return tmp_show_details
-
-	def _delete_savegame(self, map_files):
-		"""Deletes the selected savegame if the user confirms
-		self.current has to contain the widget "savegamelist"
-		@param map_files: list of files that corresponds to the entries of 'savegamelist'
-		@return: True if something was deleted, else False
-		"""
-		selected_item = self.current.collectData("savegamelist")
-		if selected_item == -1 or selected_item >= len(map_files):
-			self.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
-			return False
-		selected_file = map_files[selected_item]
-		#xgettext:python-format
-		message = _("Do you really want to delete the savegame '{name}'?").format(
-		             name=SavegameManager.get_savegamename_from_filename(selected_file))
-		if self.show_popup(_("Confirm deletion"), message, show_cancel_button=True):
-			try:
-				os.unlink(selected_file)
-				return True
-			except:
-				self.show_popup(_("Error!"), _("Failed to delete savefile!"))
-				return False
-		else: # player cancelled deletion
-			return False
-
 	def get_random_background_by_button(self):
 		"""Randomly select a background image to use. This function is triggered by
 		change background button from main menu."""
@@ -778,87 +505,6 @@ class Gui(MultiplayerMenu):
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
 
-	def build_help_strings(self):
-		"""
-		Loads the help strings from pychan object widgets (containing no key definitions)
-		and adds the keys defined in the keyconfig configuration object in front of them.
-		The layout is defined through HELPSTRING_LAYOUT and translated.
-		"""
-		widgets = self.widgets['help']
-		labels = widgets.getNamedChildren()
-		# filter misc labels that do not describe key functions
-		labels = dict( (name[4:], lbl[0]) for (name, lbl) in labels.iteritems()
-								    if name.startswith('lbl_') )
-
-		# now prepend the actual keys to the function strings defined in xml
-		actionmap = self.keyconf.get_actionname_to_keyname_map()
-		for (name, lbl) in labels.items():
-			keyname = actionmap.get(name, 'SHIFT') #TODO #HACK hardcoded shift key
-			lbl.explanation = _(lbl.text)
-			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=keyname)
-			lbl.capture(Callback(self.show_hotkey_change_popup, name, lbl, keyname))
-
-	def show_hotkey_change_popup(self, action, lbl, keyname):
-		def apply_new_key(newkey=None):
-			if not newkey:
-				newkey = free_keys[listbox.selected]
-			else:
-				listbox.selected = listbox.items.index(newkey)
-			self.keyconf.save_new_key(action, newkey=newkey)
-			update_hotkey_info(action, newkey)
-			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=newkey)
-			lbl.capture(Callback(self.show_hotkey_change_popup, action, lbl, newkey))
-			lbl.adaptLayout()
-
-		def update_hotkey_info(action, keyname):
-			default = self.keyconf.get_default_key_for_action(action)
-			popup.message.text = (lbl.explanation +
-			#xgettext:python-format
-			                      u'\n' + _('Current key: [{key}]').format(key=keyname) +
-			#xgettext:python-format
-			                      u'\t' + _('Default key: [{key}]').format(key=default))
-			popup.message.helptext = _('Click to reset to default key')
-			reset_to_default = Callback(apply_new_key, default)
-			popup.message.capture(reset_to_default)
-
-		#xgettext:python-format
-		headline = _('Change hotkey for {action}').format(action=action)
-		message = ''
-		if keyname in ('SHIFT', 'ESCAPE'):
-			message = _('This key can not be reassigned at the moment.')
-			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
-			return
-
-		popup = self.build_popup(headline, message, size=2, show_cancel_button=True)
-		update_hotkey_info(action, keyname)
-		keybox = pychan.widgets.ScrollArea()
-		listbox = pychan.widgets.ListBox(is_focusable=False)
-		keybox.max_size = listbox.max_size = \
-		keybox.min_size = listbox.min_size = \
-		keybox.size = listbox.size = (200, 200)
-		keybox.position = listbox.position = (90, 110)
-		prefer_short = lambda k: (len(k) > 1, len(k) > 3, k)
-		is_valid, default_key = self.keyconf.is_valid_and_get_default_key(keyname, action)
-		if not is_valid:
-			headline = _('Invalid key')
-			message = _('The default key for this action has been selected.')
-			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
-		valid_key = keyname if is_valid else default_key
-		free_key_dict = self.keyconf.get_keys_by_name(only_free_keys=True,
-		                                              force_include=[valid_key])
-		free_keys = sorted(free_key_dict.keys(), key=prefer_short)
-		listbox.items = free_keys
-		listbox.selected = listbox.items.index(valid_key)
-		#TODO backwards replace key names in keyconfig.get_fife_key_names in the list
-		# (currently this stores PLUS and PERIOD instead of + and . in the settings)
-		keybox.addChild(listbox)
-		popup.addChild(keybox)
-		if not is_valid:
-			apply_new_key()
-		listbox.capture(apply_new_key)
-		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		self.show_dialog(popup, button_cbs, modal=True)
-
 	def show_editor_start_menu(self, from_main_menu=True):
 		editor_start_menu = EditorStartMenu(self, from_main_menu)
 		self._switch_current_widget(editor_start_menu, hide_old=True)
@@ -866,3 +512,6 @@ class Gui(MultiplayerMenu):
 
 	def show_single(self):
 		self.singleplayermenu.show_single()
+
+	def show_multi(self):
+		self.multiplayermenu.show_multi()

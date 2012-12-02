@@ -25,3 +25,5 @@ from playerdataselection import PlayerDataSelection
 from aidataselection import AIDataSelection
 from singleplayermenu import SingleplayerMenu
 from multiplayermenu import MultiplayerMenu
+from help import HelpDialog
+from select_savegame import SelectSavegameDialog

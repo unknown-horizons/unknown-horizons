@@ -24,10 +24,12 @@ Cleaner interface to various game/gui functions to make tests easier.
 """
 
 import contextlib
+import types
 from collections import deque
 
 import mock
 from fife import fife
+from fife.extensions import pychan
 
 import horizons.main
 from horizons.command.unit import Act
@@ -165,16 +167,53 @@ class GuiHelper(object):
 
 	def find(self, name):
 		"""Recursive find a widget by name."""
+		match = None
+		seen = set()
 		widgets = deque(self.active_widgets)
 		while widgets:
 			w = widgets.popleft()
+			seen.add(w)
 			if w.name == name:
-				return w
+				match = w
+				break
 			else:
 				if hasattr(w, 'children'):
-					widgets.extend(w.children)
+					widgets.extend([x for x in w.children if x not in seen])
+				elif hasattr(w, 'findChildren'):
+					widgets.extend([x for x in w.findChildren() if x not in seen])
 
-		return None
+		# enhance widget with helper functions for easier testing
+		gui_helper = self
+
+		if isinstance(match, pychan.widgets.ListBox):
+			def select(self, value):
+				"""Change selection in listbox to value.
+
+				Example:
+
+				    w = gui.find('list_widget')
+				    w.select('A')
+				"""
+				index = self.items.index(value)
+				self.selected = index
+				# trigger callbacks for selection change
+				gui_helper._trigger_widget_callback(self, can_fail=True)
+
+			match.select = types.MethodType(select, match, match.__class__)
+		elif isinstance(match, pychan.widgets.TextField):
+			def write(self, text):
+				"""Change text inside a textfield."""
+				self.text = unicode(text)
+				return self # return self to allow chaining
+
+			def enter(self):
+				"""Trigger callback as if ENTER was pressed."""
+				gui_helper._trigger_widget_callback(self, can_fail=True)
+
+			match.write = types.MethodType(write, match, match.__class__)
+			match.enter = types.MethodType(enter, match, match.__class__)
+
+		return match
 
 	def trigger(self, root, event):
 		"""Trigger a widget event in a container.
@@ -213,11 +252,17 @@ class GuiHelper(object):
 			raise Exception("'%s' contains no widget with the name '%s'" % (
 								root.name, widget_name))
 
+		self._trigger_widget_callback(widget, event_name, group_name)
+
+	def _trigger_widget_callback(self, widget, event_name="action", group_name="default", can_fail=False):
+		"""Call callbacks for the given widget."""
 		# Check if this widget has any event callbacks at all
 		try:
 			callbacks = widget.event_mapper.callbacks[group_name]
 		except KeyError:
-			raise Exception("No callbacks for event group '%s' for event '%'" % (
+			if can_fail:
+				return
+			raise Exception("No callbacks for event group '%s' for event '%s'" % (
 							group_name, widget.name))
 
 		# Unusual events are handled normally
@@ -265,12 +310,18 @@ class GuiHelper(object):
 			gui.press_key(gui.Key.F4, ctrl=True)
 		"""
 		evt = mock.Mock()
+		evt.isConsumed.return_value = False
 		evt.getKey.return_value = self.Key(keycode)
 		evt.isControlPressed.return_value = ctrl
 		evt.isShiftPressed.return_value = shift
 
-		self.session.keylistener.keyPressed(evt)
-		self.session.keylistener.keyReleased(evt)
+		if self.session:
+			keylistener = self.session.keylistener
+		else:
+			keylistener = horizons.main._modules.gui.mainlistener
+
+		keylistener.keyPressed(evt)
+		keylistener.keyReleased(evt)
 
 	def cursor_move(self, x, y):
 		self.cursor.mouseMoved(self._make_mouse_event(x, y))
