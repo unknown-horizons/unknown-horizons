@@ -296,12 +296,18 @@ class GuiHelper(object):
 			gui.press_key(gui.Key.F4, ctrl=True)
 		"""
 		evt = mock.Mock()
+		evt.isConsumed.return_value = False
 		evt.getKey.return_value = self.Key(keycode)
 		evt.isControlPressed.return_value = ctrl
 		evt.isShiftPressed.return_value = shift
 
-		self.session.keylistener.keyPressed(evt)
-		self.session.keylistener.keyReleased(evt)
+		if self.session:
+			keylistener = self.session.keylistener
+		else:
+			keylistener = horizons.main._modules.gui.mainlistener
+
+		keylistener.keyPressed(evt)
+		keylistener.keyReleased(evt)
 
 	def cursor_move(self, x, y):
 		self.cursor.mouseMoved(self._make_mouse_event(x, y))
