@@ -209,3 +209,7 @@ class AutosaveIntervalChanged(Message):
 class MinimapRotationSettingChanged(Message):
 	"""Sent when the setting that enables/disables rotating the minimap with the map is changed."""
 	pass
+
+class LanguageChanged(Message):
+	"""Sent when the language has changed."""
+	pass

@@ -24,6 +24,7 @@ from fife.extensions import pychan
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.messaging import LanguageChanged
 from horizons.util.python.callback import Callback
 
 
@@ -36,16 +37,21 @@ class HelpDialog(object):
 		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
 
-		self.keyconf = KeyConfig() # before build_strings
-		self.build_strings()
+		self.keyconf = KeyConfig() # before _build_strings
+		self._build_strings()
 		self._is_displayed = False
 
-	def build_strings(self):
+		LanguageChanged.subscribe(lambda msg: self._build_strings())
+
+	def _build_strings(self):
 		"""
 		Loads the help strings from pychan object widgets (containing no key definitions)
 		and adds the keys defined in the keyconfig configuration object in front of them.
 		The layout is defined through HELPSTRING_LAYOUT and translated.
 		"""
+		# retranslate the layout
+		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
+
 		widgets = self.widgets['help']
 		labels = widgets.getNamedChildren()
 		# filter misc labels that do not describe key functions

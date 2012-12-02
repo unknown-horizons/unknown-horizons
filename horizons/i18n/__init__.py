@@ -43,6 +43,7 @@ import horizons.globals
 from horizons.constants import LANGUAGENAMES
 from horizons.i18n import objecttranslations, guitranslations
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
+from horizons.messaging import LanguageChanged
 
 log = logging.getLogger("i18n")
 
@@ -74,7 +75,6 @@ def translate_widget(untranslated, filename):
 
 def update_all_translations():
 	"""Update the translations in every active widget"""
-	import horizons.main
 	global translated_widgets
 	guitranslations.set_translations()
 	objecttranslations.set_translations()
@@ -86,8 +86,6 @@ def update_all_translations():
 		for (element_name, attribute), translation in all_widgets.iteritems():
 			element = widget.findChild(name=element_name)
 			replace_attribute(element, attribute, translation)
-		if filename == 'help.xml':
-			horizons.main._modules.gui.help_dialog.build_strings()
 		widget.adaptLayout()
 
 
@@ -134,3 +132,4 @@ def change_language(language=None):
 
 	# dynamically reset all translations of active widgets
 	update_all_translations()
+	LanguageChanged.broadcast(None)
