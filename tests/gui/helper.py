@@ -183,9 +183,9 @@ class GuiHelper(object):
 					widgets.extend([x for x in w.findChildren() if x not in seen])
 
 		# enhance widget with helper functions for easier testing
+		gui_helper = self
 
 		if isinstance(match, pychan.widgets.ListBox):
-			gui_helper = self
 			def select(self, value):
 				"""Change selection in listbox to value.
 
@@ -200,6 +200,18 @@ class GuiHelper(object):
 				gui_helper._trigger_widget_callback(self, can_fail=True)
 
 			match.select = types.MethodType(select, match, match.__class__)
+		elif isinstance(match, pychan.widgets.TextField):
+			def write(self, text):
+				"""Change text inside a textfield."""
+				self.text = unicode(text)
+				return self # return self to allow chaining
+
+			def enter(self):
+				"""Trigger callback as if ENTER was pressed."""
+				gui_helper._trigger_widget_callback(self, can_fail=True)
+
+			match.write = types.MethodType(write, match, match.__class__)
+			match.enter = types.MethodType(enter, match, match.__class__)
 
 		return match
 

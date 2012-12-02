@@ -87,9 +87,7 @@ def test_create_game(gui):
 	assert len(games) == 1
 
 	# send a chat message
-	chat_text = gui.find('chatTextField')
-	chat_text.text = u'Text'
-	gui.trigger('menu', 'chatTextField')
+	gui.find('chatTextField').write(u'Text').enter()
 
 	# change player color (click on color)
 	gui.trigger('menu', 'pcolor_' + NetworkInterface().get_client_name())
@@ -98,8 +96,7 @@ def test_create_game(gui):
 
 	# change player name (click on name)
 	gui.trigger('menu', 'pname_' + NetworkInterface().get_client_name())
-	name = gui.find('playername')
-	name.text = u'Darkwing'
+	gui.find('playername').write(u'Darkwing')
 	gui.trigger('set_player_details_dialog_window', 'okButton')
 
 	# run some time to wait for the server's acknowledgment of the new name
