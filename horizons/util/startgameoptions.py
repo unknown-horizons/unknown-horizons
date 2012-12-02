@@ -45,6 +45,9 @@ class StartGameOptions(object):
 		self.ai_players = 0
 		self.human_ai = AI.HUMAN_AI
 
+		# this is used by the map editor to pass along the new map's size
+		self.map_padding = None
+
 	def init_new_world(self, session):
 		# NOTE: this must be sorted before iteration, cause there is no defined order for
 		#       iterating a dict, and it must happen in the same order for mp games.

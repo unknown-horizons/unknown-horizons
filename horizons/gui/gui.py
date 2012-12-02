@@ -40,6 +40,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.modules.editorstartmenu import EditorStartMenu
 
 from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
                                   SelectSavegameDialog)
@@ -69,7 +70,6 @@ class Gui(object):
 	  'ingame_pause': 'book',
 	  'game_settings' : 'book',
 #	  'credits': 'book',
-	  'editor_select_map': 'book',
 	  'editor_pause_menu': 'headline',
 	  }
 
@@ -111,8 +111,8 @@ class Gui(object):
 			'settings'         : self.show_settings,
 			'helpLink'         : self.on_help,
 			'help'             : self.on_help,
-			'editor_link'      : self.editor_load_map,
-			'editor'           : self.editor_load_map,
+			'editor_link'      : self.show_editor_start_menu,
+			'editor'           : self.show_editor_start_menu,
 			'closeButton'      : self.show_quit,
 			'quit'             : self.show_quit,
 			'creditsLink'      : self.show_credits,
@@ -163,8 +163,7 @@ class Gui(object):
 				if did_load:
 					self.__pause_displayed = False
 			def do_load_map():
-				if self.editor_load_map():
-					self.__pause_displayed = False
+				self.show_editor_start_menu(False)
 			def do_quit():
 				did_quit = self.quit_session()
 				if did_quit:
@@ -464,7 +463,10 @@ class Gui(object):
 			self.log.debug("Gui: hiding %s", old)
 			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
-		self.current = self.widgets[new_widget]
+		if isinstance(new_widget, str):
+			self.current = self.widgets[new_widget]
+		else:
+			self.current = new_widget
 		bg = self.current.findChild(name='background')
 		if bg:
 			# Set background image
@@ -503,32 +505,9 @@ class Gui(object):
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
 
-	def editor_load_map(self):
-		"""Show a dialog for the user to select a map to edit."""
-		old_current = self._switch_current_widget('editor_select_map')
-		self.current.show()
-
-		map_files, map_file_display = SavegameManager.get_maps()
-		self.current.distributeInitialData({'maplist': map_file_display})
-
-		bind = {
-			OkButton.DEFAULT_NAME     : True,
-			CancelButton.DEFAULT_NAME : False,
-		}
-		retval = self.show_dialog(self.current, bind)
-		if not retval:
-			# Dialog cancelled
-			self.current = old_current
-			return False
-
-		selected_map_index = self.current.collectData('maplist')
-		if selected_map_index == -1:
-			# No map selected yet => select first available one
-			self.current.distributeData({'maplist': 0})
-
-		self.current = old_current
-		self.show_loading_screen()
-		horizons.main.edit_map(map_files[selected_map_index])
+	def show_editor_start_menu(self, from_main_menu=True):
+		editor_start_menu = EditorStartMenu(self, from_main_menu)
+		self._switch_current_widget(editor_start_menu, hide_old=True)
 		return True
 
 	def show_single(self):
