@@ -63,9 +63,6 @@ class GuiHooks(object):
 		"""
 		log = self.logger.new_widget_event
 
-		# Provide a default callback for listboxes. Some will never have a
-		# callback installed because their selection is just read later.
-		# But we depend on event callbacks to detect events.
 		def deco2(func):
 			@wraps(func)
 			def wrapper(self, *args, **kwargs):
@@ -76,8 +73,15 @@ class GuiHooks(object):
 					# handles the logging
 					pass
 
+				# Provide a default callback for listboxes. Some will never have a
+				# callback installed because their selection is just read later.
+				# But we depend on event callbacks to detect events.
 				if isinstance(self.widget_ref(), widgets.ListBox):
 					self.capture('action', callback, 'default')
+				# We can't detect keypresses on textfields yet, but at least capture
+				# the event when we select the widget
+				elif isinstance(self.widget_ref(), widgets.TextField):
+					self.capture('mouseClicked', callback, 'default')
 
 			return wrapper
 
@@ -253,6 +257,8 @@ class TestCodeGenerator(object):
 			if isinstance(widget, widgets.ListBox):
 				selection = widget.items[widget.selected]
 				code = "gui.find('%s').select(u'%s')" % (widget.name, selection)
+			elif isinstance(widget, widgets.TextField):
+				code = "gui.find('%s').write(TODO)" % widget.name
 			else:
 				if group_name == 'default':
 					if event_name in ('action', 'mouseClicked'):
