@@ -285,18 +285,17 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			timelimit.start(timeout)
 
 			stdout, stderr = proc.communicate()
+			if cleanup_userdir:
+				recreate_userdir()
+
 			if proc.returncode != 0:
 				if nose_captured:
 					if stdout:
 						print stdout
-					if cleanup_userdir:
-						recreate_userdir()
 					if not 'Traceback' in stderr:
 						stderr += '\nNo usable error output received, possibly a segfault.'
 					raise TestFailed('\n\n' + stderr)
 				else:
-					if cleanup_userdir:
-						recreate_userdir()
 					raise TestFailed()
 
 		# we need to store the original function, otherwise the new process will execute
