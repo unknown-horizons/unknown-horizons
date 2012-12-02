@@ -19,11 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import shutil
-
-from horizons.constants import PATHS
-from tests.gui import gui_test, TEST_FIXTURES_DIR
+from tests.gui import gui_test
 
 
 @gui_test(timeout=60)
@@ -92,18 +88,3 @@ def test_settings(gui):
 	gui.trigger('menu', 'settingsLink')
 	gui.trigger('settings_window', 'cancelButton')
 """
-
-@gui_test(timeout=60, cleanup_userdir=True)
-def test_load_game(gui):
-	"""Test loading a game from the mainmenu."""
-
-	# copy fixture savegame into user dir, otherwise we'll just get a 'no savegames' popup
-	source = os.path.join(TEST_FIXTURES_DIR, 'boatbuilder.sqlite')
-	target_dir = os.path.join(PATHS.USER_DIR, 'save')
-	shutil.copy(source, target_dir)
-
-	def func():
-		gui.trigger('load_game_window', 'cancelButton/action/__execute__')
-		
-	with gui.handler(func):
-		gui.trigger('menu', 'loadgameButton')
