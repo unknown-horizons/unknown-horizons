@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import ListBox, ScrollArea
 
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
@@ -99,8 +99,8 @@ class HelpDialog(object):
 
 		popup = self.mainmenu.build_popup(headline, message, size=2, show_cancel_button=True)
 		update_hotkey_info(action, keyname)
-		keybox = pychan.widgets.ScrollArea()
-		listbox = pychan.widgets.ListBox(is_focusable=False, name="available_keys")
+		keybox = ScrollArea()
+		listbox = ListBox(is_focusable=False, name="available_keys")
 		keybox.max_size = listbox.max_size = \
 		keybox.min_size = listbox.min_size = \
 		keybox.size = listbox.size = (200, 200)
