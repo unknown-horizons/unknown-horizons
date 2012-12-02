@@ -32,7 +32,7 @@ from horizons.gui import mousetools, Gui
 from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
 
 from fife import fife
-from fife.extensions.pychan import tools
+from fife.extensions.pychan import tools, widgets
 from fife.extensions.pychan.events import EventMapper
 
 
@@ -229,13 +229,17 @@ class TestCodeGenerator(object):
 		else:
 			log.debug('# %s' % path)
 
-			if group_name == 'default':
-				if event_name in ('action', 'mouseClicked'):
-					code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
-				else:
-					code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+			if isinstance(widget, widgets.ListBox):
+				selection = widget.items[widget.selected]
+				code = "gui.find('%s').select(u'%s')" % (widget.name, selection)
 			else:
-				code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
+				if group_name == 'default':
+					if event_name in ('action', 'mouseClicked'):
+						code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
+					else:
+						code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+				else:
+					code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
 
 			self._add([code, ''])
 
