@@ -24,20 +24,22 @@ import shutil
 
 import mock
 
-from horizons.constants import PATHS
+from horizons.savegamemanager import SavegameManager
 from tests.gui import gui_test, TEST_FIXTURES_DIR
+
+
+def _copy_savegame():
+	"""Copy fixture savegame into user dir."""
+	source = os.path.join(TEST_FIXTURES_DIR, 'boatbuilder.sqlite')
+	shutil.copy(source, SavegameManager.savegame_dir)
 
 
 @gui_test(timeout=60, cleanup_userdir=True)
 def test_load_game(gui):
 	"""Test loading a game from the mainmenu."""
 
-	savegame = 'boatbuilder.sqlite'
-
-	# copy fixture savegame into user dir, otherwise we'll just get a 'no savegames' popup
-	source = os.path.join(TEST_FIXTURES_DIR, savegame)
-	target_dir = os.path.join(PATHS.USER_DIR, 'save')
-	shutil.copy(source, target_dir)
+	# need to put a savegame otherwise we just get an error popup
+	_copy_savegame()
 
 	def func1():
 		gui.find('savegamelist').select(u'boatbuilder')
@@ -50,7 +52,7 @@ def test_load_game(gui):
 			gui.run(1)
 			options = start_mock.call_args[0][0]
 
-			assert options.game_identifier == os.path.join(target_dir, savegame)
+			assert options.game_identifier == SavegameManager.create_filename('boatbuilder')
 		
 	with gui.handler(func1):
 		gui.trigger('menu', 'loadgameButton')
@@ -64,3 +66,50 @@ def test_load_game_no_savegames(gui):
 		
 	with gui.handler(func1):
 		gui.trigger('menu', 'loadgameButton')
+
+
+@gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
+def test_save_game_new_file(gui):
+	"""Test saving a game."""
+
+	# FIXME escape doesn't work
+	#gui.press_key(gui.Key.ESCAPE)
+	gui.trigger('mainhud', 'gameMenuButton')
+
+	def func1():
+		gui.find('savegamefile').write('testsave')
+		gui.trigger('load_game_window', 'okButton/action/__execute__')
+
+	with gui.handler(func1):
+		gui.trigger('menu', 'savegameButton')
+
+	assert os.path.exists(SavegameManager.create_filename('testsave'))
+
+
+@gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
+def test_save_game_override(gui):
+	"""Test saving a game."""
+
+	_copy_savegame()
+	old_size = os.path.getsize(SavegameManager.create_filename('boatbuilder'))
+
+	# FIXME escape doesn't work
+	#gui.press_key(gui.Key.ESCAPE)
+	gui.trigger('mainhud', 'gameMenuButton')
+
+	def func1():
+		gui.find('savegamelist').select(u'boatbuilder')
+
+		# handle "do you want to override file" popup
+		def func2():
+			gui.trigger('popup_window', 'okButton/action/__execute__')
+
+		with gui.handler(func2):
+			gui.trigger('load_game_window', 'okButton/action/__execute__')
+
+	with gui.handler(func1):
+		gui.trigger('menu', 'savegameButton')
+
+	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))
+	new_size = os.path.getsize(SavegameManager.create_filename('boatbuilder'))
+	assert old_size != new_size
