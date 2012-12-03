@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command.uioptions import SetTradeSlot
+from horizons.command.uioptions import SetTaxSetting, SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TIER
 
@@ -146,7 +146,8 @@ def test_tutorial(gui):
 	# Goal: Next tier
 	assert_progress(43)
 
-	# TODO adjust settler taxes
+	# TODO adjust settler taxes using the gui
+	SetTaxSetting(settlement, TIER.SAILORS, 0.5).execute(settlement.session)
 
 	# wait until settlers upgraded
 	while not settler_level_greater(gui.session, TIER.SAILORS):
