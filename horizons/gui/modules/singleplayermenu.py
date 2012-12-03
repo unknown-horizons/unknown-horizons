@@ -112,7 +112,6 @@ class SingleplayerMenu(object):
 			self._setup_random_map_selection(right_side)
 			self._setup_game_settings_selection()
 			self._on_random_map_parameter_changed()
-			self.active_right_side.findChild(name="open_random_map_archive").capture(self._open_random_map_archive)
 			self.current.aidata.show()
 
 		elif show == 'free_maps':
@@ -306,14 +305,6 @@ class SingleplayerMenu(object):
 		resource_density_slider.value = horizons.globals.fife.get_uh_setting("MapResourceDensity")
 
 		on_resource_density_slider_change()
-
-	def _open_random_map_archive(self):
-		popup = self.widgets['random_map_archive']
-		# ok should be triggered on enter, therefore we need to focus the button
-		# pychan will only allow it after the widgets is shown
-		#ExtScheduler().add_new_object(lambda : popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus(), self, run_in=0)
-		popup.mapEvents({OkButton.DEFAULT_NAME : popup.hide})
-		popup.show()
 
 	def _get_natural_resource_multiplier(self):
 		return self.resource_densities[int(self.widgets['game_settings'].findChild(name='resource_density_slider').value)]

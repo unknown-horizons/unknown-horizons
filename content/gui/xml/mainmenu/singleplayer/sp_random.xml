@@ -27,22 +27,11 @@
 			<Label name="island_size_deviation_lbl" min_size="150,20" text="" />
 			<StepSlider name="island_size_deviation_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" is_focusable="0" />
 		</HBox>
-
-		<!--<HBox><Label text="TODO: all values below this aren't implemented yet"/></HBox>
-		<HBox name="param_climate">
-			<Label name="climate_lbl" text="Climate zone:" />
-		<Spacer />
-			<Label name="climate_zone_lbl_cold" text="frosty" />
-			<StepSlider name="map_size_slider" size="126,20" scale_start="1" scale_end="3" step_length="1" marker_length="42" is_focusable="0" />
-			<Label name="climate_zone_lbl_warm" text="torrid" />
-		</HBox>-->
 	</VBox>
 
 	<HBox>
 		<Icon name="map_preview_minimap" size="120,120" max_size="120,120" is_focusable="0"/>
 		<VBox>
-			<Button name="open_random_map_archive" text="Load from map archive" is_focusable="0"
-				comment="Right now, Buttons do not support text wrapping, so better try to keep this line short."/>
 			<Spacer/>
 			<Label name="map_preview_status_label" is_focusable="0"/>
 		</VBox>
