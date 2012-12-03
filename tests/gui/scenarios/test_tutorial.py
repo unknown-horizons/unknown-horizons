@@ -211,7 +211,7 @@ def test_tutorial(gui):
 	# Goal: 50 inhabitants, positive balance
 	assert_progress(58)
 
-	# more potatoe fields
+	# more potato fields
 	gui.trigger('tab_base', '1')
 	gui.trigger('tab', 'button_12')
 	gui.cursor_multi_click((24, 9), (27, 8), (27, 11))
