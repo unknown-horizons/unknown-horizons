@@ -96,7 +96,7 @@ class BinaryBuildabilityCache(object):
 				self.cache[size] = set()
 				if size[0] != size[1]:
 					self.cache[(size[1], size[0])] = set()
-	
+
 	def _reset_lazy_sets(self):
 		self.cache[(4, 4)] = LazyBinaryBuildabilityCacheElement(self, 4)
 		self.cache[(6, 6)] = LazyBinaryBuildabilityCacheElement(self, 6)

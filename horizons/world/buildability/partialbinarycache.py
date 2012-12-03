@@ -91,7 +91,7 @@ class PartialBinaryBuildabilityCache(object):
 		new_r4x2 = self._extend_set(self.cache[(4, 2)], new_r3x2, 1, 0)
 
 		new_r3x3 = self._extend_set(self.cache[(3, 3)], new_r3x2, 0, 1)
-		
+
 		# the further sizes are created just to support 4x4 and 6x6 buildings
 		new_r3x4 = self._extend_set(self.cache[(3, 4)], new_r3x3, 0, 1)
 		new_r4x4 = self._extend_set(self.cache[(4, 4)], new_r3x4, 1, 0)

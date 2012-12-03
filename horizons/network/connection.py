@@ -34,7 +34,7 @@ class Connection(object):
 			# these exceptions do not provide any information.
 			raise network.NetworkException("Unable to create network structure."
 			                               "Maybe invalid or irresolvable client address.")
-		
+
 		self.server_address = enet.Address(*server_address)
 		self.server_peer = None
 		self.packetqueue = []

@@ -53,7 +53,7 @@ def test_load_game(gui):
 			options = start_mock.call_args[0][0]
 
 			assert options.game_identifier == SavegameManager.create_filename('boatbuilder')
-		
+
 	with gui.handler(func1):
 		gui.trigger('menu', 'loadgameButton')
 
@@ -63,7 +63,7 @@ def test_load_game_no_savegames(gui):
 	"""Trying to load a game with no save games available will show a popup."""
 	def func1():
 		gui.trigger('popup_window', 'okButton/action/__execute__')
-		
+
 	with gui.handler(func1):
 		gui.trigger('menu', 'loadgameButton')
 
@@ -136,7 +136,7 @@ def test_delete_game(gui):
 
 		with gui.handler(confirm_deletion):
 			gui.trigger('load_game_window', 'deleteButton/action/__execute__')
-		
+
 	with gui.handler(func1):
 		gui.trigger('menu', 'loadgameButton')
 
@@ -163,7 +163,7 @@ def test_delete_game_abort(gui):
 
 		with gui.handler(confirm_deletion):
 			gui.trigger('load_game_window', 'deleteButton/action/__execute__')
-		
+
 	with gui.handler(func1):
 		gui.trigger('menu', 'loadgameButton')
 

@@ -56,7 +56,7 @@ class SettingsHandler(object):
 
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",
-				                        applyfunction=update_autosave_interval)
+		                                applyfunction=update_autosave_interval)
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
@@ -323,7 +323,7 @@ def get_screen_resolutions(selected_default):
 		res = str(x) + 'x' + str(y)
 		if res not in possible_resolutions:
 			possible_resolutions.append(res)
-			
+
 	if selected_default not in possible_resolutions:
 		possible_resolutions.append(selected_default)
 

@@ -35,7 +35,7 @@ class EditorStartMenu(object):
 		self._right_side = None
 		self._old_on_escape = None
 		self._old_current_widget = self.parent.current
-		self._old_on_escape = self.parent.on_escape 
+		self._old_on_escape = self.parent.on_escape
 		self._select_mode('create_new_map')
 
 	def show(self):

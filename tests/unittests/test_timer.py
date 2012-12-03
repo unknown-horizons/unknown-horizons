@@ -65,7 +65,7 @@ class TestTimer(TestCase):
 		self.timer.end()
 		self.fife.pump.remove.assert_called_once_with(self.timer.check_tick)
 
-	def test_first_pump_then_one_tick(self):	
+	def test_first_pump_then_one_tick(self):
 		self.timer.check_tick()
 		self.callback.assert_called_once_with(TestTimer.TICK_START)
 
@@ -73,7 +73,7 @@ class TestTimer(TestCase):
 		self.timer.check_tick()
 		self.timer.check_tick()
 		self.callback.assert_called_once_with(TestTimer.TICK_START)
-		
+
 	def test_two_pump_with_delay_then_two_ticks(self):
 		self.timer.check_tick()
 		self.callback.reset_mock()
@@ -149,7 +149,7 @@ class TestTimer(TestCase):
 		self.timer.add_call(self.callback)
 		self.timer.check_tick()
 		self.callback.reset_mock()
-	
+
 		self.clock.return_value = self.TIME_START + (1.01 * self.TIME_TICK) + Timer.ACCEPTABLE_TICK_DELAY
 		self.timer.check_tick()
 		self.assertTrue(self.callback.called) # some number of ticks depending on tick delay
@@ -159,7 +159,7 @@ class TestTimer(TestCase):
 		self.clock.return_value = self.TIME_START + (2.02 * self.TIME_TICK) + Timer.DEFER_TICK_ON_DELAY_BY
 		self.timer.check_tick()
 		self.callback.assert_called_once_with(TestTimer.TICK_START + 2)
-	
+
 	def test_pump_test_func_pass(self):
 		self.test.return_value = Timer.TEST_PASS
 		self.timer.add_test(self.test)

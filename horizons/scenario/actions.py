@@ -58,7 +58,7 @@ def show_message(session, type=None, *messages):
 	"""Shows a message with custom text in the messagewidget.
 	If you pass more than one message, they are shown simultaneously."""
 	visible_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_VISIBLE_FOR)
-	
+
 	return [session.ingame_gui.message_widget.add_custom(point=None, messagetext=msg, msg_type=type, visible_for=visible_ticks)
 	        for msg in messages]
 

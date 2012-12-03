@@ -88,7 +88,7 @@ def test_tutorial(gui):
 	# hunter
 	gui.trigger('tab', 'button_23')
 	gui.cursor_click(8, 8, 'left')
-	
+
 	# Goal: Mainsquare
 	assert_progress(25)
 
@@ -166,7 +166,7 @@ def test_tutorial(gui):
 	gui.trigger('tab_base', '1') # FIXME this sometimes fails
 	gui.trigger('tab', 'button_02')
 	gui.cursor_click(25, 12, 'left')
-	
+
 	# Goal: Fields
 	assert_progress(49)
 
@@ -192,7 +192,7 @@ def test_tutorial(gui):
 	gui.trigger('tab_base', '0')
 	gui.trigger('tab', 'button_21')
 	gui.cursor_multi_click((21, 15), (22, 15), (23, 15), (24, 15), (24, 14))
-	
+
 	# storage tent
 	gui.trigger('tab', 'button_11')
 	gui.cursor_click(21, 16, 'left')
@@ -210,7 +210,7 @@ def test_tutorial(gui):
 
 	# Goal: 50 inhabitants, positive balance
 	assert_progress(58)
-	
+
 	# more potatoe fields
 	gui.trigger('tab_base', '1')
 	gui.trigger('tab', 'button_12')

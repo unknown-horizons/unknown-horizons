@@ -28,7 +28,7 @@ def test_credits(gui):
 
 	def func():
 		gui.trigger('credits_window', 'okButton/action/__execute__')
-	
+
 	with gui.handler(func):
 		gui.trigger('menu', 'creditsLink')
 
@@ -39,7 +39,7 @@ def test_help(gui):
 
 	def func():
 		gui.trigger('help_window', 'okButton/action/__execute__')
-		
+
 	with gui.handler(func):
 		gui.trigger('menu', 'helpLink')
 

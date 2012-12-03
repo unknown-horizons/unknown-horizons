@@ -88,7 +88,7 @@ class MessageBus(object):
 
 class SimpleMessageBus(object):
 	"""Manages registration and calling of callbacks when events (strings) occur.
-	
+
 	Example:
 
 		bus = SimpleMessageBus(('foo', 'bar'))

@@ -36,6 +36,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.i18n.voice import get_speech_file
 
+
 class MessageWidget(LivingObject):
 	"""Class that organizes the messages. Displayed on left screen edge.
 	It uses _IngameMessage instances to store messages and manages the archive.
@@ -54,8 +55,8 @@ class MessageWidget(LivingObject):
 	_DUPLICATE_SPACE_THRESHOLD = 8 # distance
 
 	OVERVIEW_WIDGET = 'messagewidget_overview.xml'
-	
-	log = logging.getLogger('gui.widgets.messagewidget')	
+
+	log = logging.getLogger('gui.widgets.messagewidget')
 
 	def __init__(self, session):
 		super(MessageWidget, self).__init__()
@@ -140,9 +141,9 @@ class MessageWidget(LivingObject):
 		self.draw_widget()
 		self.show_text(0)
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
-		
+
 		self.session.ingame_gui.logbook.display_message_history() # update message history on new message
-		
+
 		return message.created
 
 	def draw_widget(self):

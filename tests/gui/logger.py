@@ -260,7 +260,7 @@ class TestCodeGenerator(object):
 			code = None
 
 			# Emit code for the last slider that was manipulated, but only if the current
-			# event is from a different widget. This is a work around to avoid generating 
+			# event is from a different widget. This is a work around to avoid generating
 			# lots of code for every small mouse move.
 			if self._last_slider_event:
 				w = self._last_slider_event

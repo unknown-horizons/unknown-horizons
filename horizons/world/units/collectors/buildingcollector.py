@@ -190,18 +190,18 @@ class BuildingCollector(Collector):
 	def begin_current_job(self, job_location=None):
 		super(BuildingCollector, self).begin_current_job(job_location)
 		# Sum up the utilisation for all res
-		utilisation = 0.0		
+		utilisation = 0.0
 		for entry in self.job.reslist:
 			max_amount = min(self.get_component(StorageComponent).inventory.get_limit(entry.res), self.job.object.get_component(StorageComponent).inventory.get_limit(entry.res))
 			utilisation += entry.amount / float(max_amount)
-			
+
 		# Devide by number of resources being transfered
 		utilisation = utilisation / len(self.job.reslist)
-			
+
 		# Set job history
 		if not self._job_history or abs(self._job_history[-1][1] - utilisation) > 1e-9:
 			self._job_history.append((Scheduler().cur_tick, utilisation))
-			
+
 	def finish_working(self, collector_already_home=False):
 		"""Called when collector has stayed at the target for a while.
 		Picks up the resources and sends collector home.
@@ -301,9 +301,9 @@ class BuildingCollector(Collector):
 			total_utilisation += relevant_ticks * self._job_history[i][1]
 
 		#assert -1e-7 < total_utilisation / float(history_length) < 1 + 1e-7
-		
+
 		return total_utilisation / float(history_length)
-	
+
 	def _clean_job_history_log(self):
 		""" remove too old entries """
 		first_relevant_tick = Scheduler().cur_tick - self.get_utilisation_history_length()

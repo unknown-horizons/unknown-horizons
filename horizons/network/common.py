@@ -21,6 +21,7 @@
 
 import uuid
 from gettext import NullTranslations
+
 from horizons.network import packets, enet
 
 __all__ = [

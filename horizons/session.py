@@ -279,7 +279,7 @@ class Session(LivingObject):
 			'attacking'      : AttackingTool,
 			'building'       : BuildingTool,
 			'tile_layer'     : TileLayingTool
-			
+
 		}[which]
 		self.cursor = klass(self, *args, **kwargs)
 

@@ -260,7 +260,7 @@ def _building_in_range_of(session, building_class, *classes):
 	"""Returns whether there is any building of type *building_class*
 	in range of any building of a class in the building type list *classes*.
 	Counts all player settlements."""
-				
+
 	for settlement in _get_player_settlements(session): # iterate through settlements
 		for building in settlement.buildings_by_id[building_class]: # iterate through all buildings of building_class
 			for other_class in classes: # iterate through all given other classes

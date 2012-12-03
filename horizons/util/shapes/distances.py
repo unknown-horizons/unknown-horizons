@@ -2,10 +2,10 @@
 
 def distance_point_point(p1, p2):
 	return ((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2) ** 0.5
-	
+
 def distance_point_tuple(point, (x, y)):
 	return ((point.x - x) ** 2 + (point.y - y) ** 2) ** 0.5
-	
+
 def distance_point_circle(point, circle):
 	dist = point.distance(circle.center) - circle.radius
 	return dist if dist >= 0 else 0
@@ -13,7 +13,7 @@ def distance_point_circle(point, circle):
 def distance_point_rect(point, rect):
 	return ((max(rect.left - point.x, 0, point.x - rect.right) ** 2) +
             (max(rect.top - point.y, 0, point.y - rect.bottom) ** 2)) ** 0.5
-	
+
 def distance_point_annulus(point, annulus):
 	dist = point.distance(annulus.center)
 	if dist < annulus.min_radius:
@@ -46,7 +46,7 @@ def distance_rect_rect(r1, r2):
 	t = r2.left - r1.right
 	if t > dx:
 		dx = t
-	
+
 	dy = 0
 	t = r1.top - r2.bottom
 	if t > dy:
@@ -64,7 +64,7 @@ def distance_rect_rect_sq(r1, r2):
 	t = r2.left - r1.right
 	if t > dx:
 		dx = t
-	
+
 	dy = 0
 	t = r1.top - r2.bottom
 	if t > dy:
@@ -82,7 +82,7 @@ def distance_rect_tuple(rect, (x, y)):
 	t = x - rect.right
 	if t > dx:
 		dx = t
-	
+
 	dy = 0
 	t = rect.top - y
 	if t > dy:

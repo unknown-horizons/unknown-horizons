@@ -76,7 +76,7 @@ class NetworkInterface(object):
 		                 'lobbygame_terminate', 'lobbygame_toggleready',
 		                 'lobbygame_changename', 'lobbygame_kick',
 		                 'lobbygame_changecolor', 'lobbygame_state',
-		                 'lobbygame_starts', 'game_starts', 
+		                 'lobbygame_starts', 'game_starts',
 		                 'game_details_changed', 'game_prepare', 'error')
 
 		self._messagebus = SimpleMessageBus(message_types)
