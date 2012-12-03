@@ -60,7 +60,7 @@ RESULT_FILE=po/uh/unknown-horizons.pot
 RESULT_FILE_SERVER=po/uh-server/unknown-horizons-server.pot
 XML_PY_FILE=horizons/i18n/guitranslations.py
 YAML_PY_FILE=horizons/i18n/objecttranslations.py
-SQL_POT_FILE=po/sqlite_strings.pot
+SQL_POT_FILE=horizons/i18n/sqlite_strings.pot
 
 function strip_entries()
 {
