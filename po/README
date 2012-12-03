@@ -1,13 +1,13 @@
 Official Unknown Horizons translations repository
 #####################################################
-Hourly exported from our pootle installation at
+Files exported from our pootle installation at
 http://pootle.unknown-horizons.org/
 #####################################################
 
 PLEASE NOTE that all interaction with our translation
 files happens through pootle EXCLUSIVELY!  This means
-that any kind of pull request or commit to the  repo-
-sitory this file is located in will  NOT be accepted!
+that pull requests  changing  files in this directory
+will most likely not be accepted!
 
 If you would like to improve existing translations of
 Unknown Horizons, please do sign up there.
