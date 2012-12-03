@@ -4,7 +4,7 @@ Tab to be shown at the main square.
 It shows an overview over the inhabitants like average happiness and most needed
 resources.
 -->
-<Container size="250,500">
+<Container size="250,500" name="mainsquare_inhabitants">
 <TabBG name="background" amount="7"/>
 
 	<Container position="0,70" size="600,500" >

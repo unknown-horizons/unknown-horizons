@@ -146,8 +146,11 @@ def test_tutorial(gui):
 	# Goal: Next tier
 	assert_progress(43)
 
-	# TODO adjust settler taxes using the gui
-	SetTaxSetting(settlement, TIER.SAILORS, 0.5).execute(settlement.session)
+	# Adjust settler taxes (using mainsquare)
+	gui.cursor_click(16, 18, 'left')
+	gui.trigger('tab_base', '1')
+	gui.find('tax_slider').slide(0)
+	gui.trigger('mainhud', 'build')
 
 	# wait until settlers upgraded
 	while not settler_level_greater(gui.session, TIER.SAILORS):
