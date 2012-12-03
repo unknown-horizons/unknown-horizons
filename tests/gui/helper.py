@@ -212,6 +212,13 @@ class GuiHelper(object):
 
 			match.write = types.MethodType(write, match, match.__class__)
 			match.enter = types.MethodType(enter, match, match.__class__)
+		elif isinstance(match, pychan.widgets.Slider):
+			def slide(self, value):
+				"""Set the slider to this value and trigger callbacks."""
+				self.value = float(value)
+				gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
+
+			match.slide = types.MethodType(slide, match, match.__class__)
 
 		return match
 

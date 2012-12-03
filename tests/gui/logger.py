@@ -207,6 +207,10 @@ class TestCodeGenerator(object):
 		self._last_command = []
 		self._handler_count = 1
 
+		# Keep track of the last slider event. When moving the slider, many events are
+		# emitted. We will generate code for the last value.
+		self._last_slider_event = None
+
 	def _add(self, code):
 		if self._dialog_active:
 			# when a dialog is active, we emit the code right away
@@ -253,12 +257,24 @@ class TestCodeGenerator(object):
 			pass
 		else:
 			log.debug('# %s' % path)
+			code = None
+
+			# Emit code for the last slider that was manipulated, but only if the current
+			# event is from a different widget. This is a work around to avoid generating 
+			# lots of code for every small mouse move.
+			if self._last_slider_event:
+				w = self._last_slider_event
+				if w.name != widget.name:
+					self._add(["gui.find('%s').slide(%f)" % (w.name, w.value), ""])
+					self._last_slider_event = None
 
 			if isinstance(widget, widgets.ListBox):
 				selection = widget.items[widget.selected]
 				code = "gui.find('%s').select(u'%s')" % (widget.name, selection)
 			elif isinstance(widget, widgets.TextField):
 				code = "gui.find('%s').write(TODO)" % widget.name
+			elif isinstance(widget, widgets.Slider):
+				self._last_slider_event = widget
 			else:
 				if group_name == 'default':
 					if event_name in ('action', 'mouseClicked'):
@@ -268,7 +284,9 @@ class TestCodeGenerator(object):
 				else:
 					code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
 
-			self._add([code, ''])
+			if code:
+				self._add([code, ''])
+				code = None
 
 	def new_key_event(self, keycode, shift=False, ctrl=False):
 		"""

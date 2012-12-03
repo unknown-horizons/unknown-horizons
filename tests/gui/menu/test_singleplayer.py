@@ -77,6 +77,7 @@ def test_start_random_map(gui):
 	gui.trigger('menu', 'lbl_disasters')
 
 	gui.find('ai_players').select('3')
+	gui.find('resource_density_slider').slide(4)
 
 	options = _start_game(gui)
 	assert not options.is_scenario
@@ -84,6 +85,7 @@ def test_start_random_map(gui):
 	assert not options.disasters_enabled
 	assert options.trader_enabled
 	assert options.ai_players == 3
+	assert options.natural_resource_multiplier == 2
 
 	_cleanup()
 
