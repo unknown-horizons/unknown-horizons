@@ -30,7 +30,6 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS, COLLECTORS, GAME_SPEED, RES
 from horizons.util.python import decorators
 from horizons.util.shapes import distances
-from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
 class AbstractFisher(AbstractBuilding):

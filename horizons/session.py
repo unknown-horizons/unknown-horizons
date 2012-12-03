@@ -53,7 +53,7 @@ from horizons.component.selectablecomponent import SelectableComponent, Selectab
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import GAME_SPEED, PATHS, LAYERS
+from horizons.constants import GAME_SPEED, LAYERS
 from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
 from horizons.world.managers.statusiconmanager import StatusIconManager
 from horizons.messaging import AutosaveIntervalChanged, MessageBus

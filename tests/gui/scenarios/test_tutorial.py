@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command.uioptions import SetTaxSetting, SetTradeSlot
+from horizons.command.uioptions import SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TIER
 
