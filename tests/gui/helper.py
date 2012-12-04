@@ -256,7 +256,11 @@ class GuiHelper(object):
 			def slide(self, value):
 				"""Set the slider to this value and trigger callbacks."""
 				self.value = float(value)
-				gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
+
+				# try two possible event group names
+				# TODO find out why some sliders use 'stepslider' and others 'default'
+				if not gui_helper._trigger_widget_callback(self, can_fail=True):
+					gui_helper._trigger_widget_callback(self, group_name="stepslider", can_fail=True)
 
 			match.slide = types.MethodType(slide, match, match.__class__)
 
