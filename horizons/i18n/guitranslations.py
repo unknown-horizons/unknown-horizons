@@ -51,12 +51,31 @@ def set_translations():
 	"stringpreviewwidget.xml" : {
 		},
 
-	"editor_select_map.xml" : {
-		# (helptext of widget: cancelButton)
-		("cancelButton"                , "helptext"): _("Cancel"),
+	"editor_pause_menu.xml" : {
+		# (text of widget: help)
+		("help"                        , "text"    ): _("Help"),
+		# (text of widget: loadgame)
+		("loadgame"                    , "text"    ): _("Load map"),
+		# (text of widget: quit)
+		("quit"                        , "text"    ): _("Exit editor"),
+		# (text of widget: savegame)
+		("savegame"                    , "text"    ): _("Save map"),
+		# (text of widget: settings)
+		("settings"                    , "text"    ): _("Settings"),
+		# (text of widget: start)
+		("start"                       , "text"    ): _("Return to editor"),
 		},
 
 	"editor_settings.xml" : {
+		},
+
+	"save_map.xml" : {
+		# (text of widget: enter_new_name_lbl)
+		("enter_new_name_lbl"          , "text"    ): _("Enter name:"),
+		# (text of widget: headline_change_name)
+		("headline_change_name"        , "text"    ): _("Save map"),
+		# (helptext of widget: okButton)
+		("okButton"                    , "helptext"): _("Save the map"),
 		},
 
 	"buildtab.xml" : {
@@ -146,15 +165,6 @@ def set_translations():
 		("chat_lbl"                    , "text"    ): _("Enter your message:"),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Chat"),
-		},
-
-	"save_map.xml" : {
-		# (text of widget: enter_new_name_lbl)
-		("enter_new_name_lbl"          , "text"    ): _("Enter prefix:"),
-		# (text of widget: headline_change_name)
-		("headline_change_name"        , "text"    ): _("Save map"),
-		# (helptext of widget: okButton)
-		("okButton"                    , "helptext"): _("Save the map"),
 		},
 
 	"boatbuilder.xml" : {
@@ -602,9 +612,6 @@ def set_translations():
 	"tooltip.xml" : {
 		},
 
-	"call_for_support.xml" : {
-		},
-
 	"credits0.xml" : {
 		},
 
@@ -618,6 +625,36 @@ def set_translations():
 		},
 
 	"credits4.xml" : {
+		},
+
+	"editor_create_map.xml" : {
+		# (text of widget: headline_choose_map_size_lbl)
+		("headline_choose_map_size_lbl", "text"    ): _("Choose a map size:"),
+		},
+
+	"editor_select_map.xml" : {
+		# (text of widget: headline_choose_map_lbl)
+		("headline_choose_map_lbl"     , "text"    ): _("Choose a map:"),
+		},
+
+	"editor_select_saved_game.xml" : {
+		# (text of widget: headline_choose_saved_game_lbl)
+		("headline_choose_saved_game_lbl", "text"    ): _("Choose a saved game's map:"),
+		},
+
+	"editor_start_menu.xml" : {
+		# (text of widget: headline)
+		("headline"                    , "text"    ): _("Select map source"),
+		# (text of widget: create_new_map)
+		("create_new_map"              , "text"    ): _("Create new map"),
+		# (text of widget: load_existing_map)
+		("load_existing_map"           , "text"    ): _("Load existing map"),
+		# (text of widget: load_saved_game_map)
+		("load_saved_game_map"         , "text"    ): _("Load saved game's map"),
+		# (helptext of widget: cancel)
+		("cancel"                      , "helptext"): _("Exit to main menu"),
+		# (helptext of widget: okay)
+		("okay"                        , "helptext"): _("Start editor"),
 		},
 
 	"help.xml" : {
@@ -714,11 +751,9 @@ def set_translations():
 		},
 
 	"mainmenu.xml" : {
-		# (text of widget: chimebell)
-		("chimebell"                   , "text"    ): _("Attention please!"),
 		# (text of widget: credits)
 		("credits"                     , "text"    ): _("Credits"),
-		# (text of widget: editor) Map-Editor
+		# (text of widget: editor) Map editor
 		("editor"                      , "text"    ): _("Editor"),
 		# (text of widget: help) Main / in-game menu entry
 		("help"                        , "text"    ): _("Help"),
@@ -858,6 +893,8 @@ def set_translations():
 		("headline_saving"             , "text"    ): _("Saving"),
 		# (text of widget: headline_sound)
 		("headline_sound"              , "text"    ): _("Sound"),
+		# (text of widget: middle_mouse_pan_lbl)
+		("middle_mouse_pan_lbl"        , "text"    ): _("Middle mouse button pan:"),
 		# (text of widget: minimap_rotation_label)
 		("minimap_rotation_label"      , "text"    ): _("Rotate minimap with map:"),
 		# (text of widget: mouse_sensitivity_label)
@@ -876,6 +913,8 @@ def set_translations():
 		("screen_fullscreen_text"      , "text"    ): _("Full screen:"),
 		# (text of widget: screen_resolution_label)
 		("screen_resolution_label"     , "text"    ): _("Screen resolution:"),
+		# (text of widget: scroll_speed_label)
+		("scroll_speed_label"          , "text"    ): _("Scroll Speed (lower is faster):"),
 		# (text of widget: show_resource_icons_lbl)
 		("show_resource_icons_lbl"     , "text"    ): _("Production indicators:"),
 		# (text of widget: sound_enable_opt_text)
@@ -902,6 +941,8 @@ def set_translations():
 		("edge_scrolling_label"        , "helptext"): _("Whether to move the viewport when the mouse pointer is close to map edges"),
 		# (helptext of widget: fps_label)
 		("fps_label"                   , "helptext"): _("Set the maximum frame rate used. Default: 60 fps."),
+		# (helptext of widget: middle_mouse_pan_lbl)
+		("middle_mouse_pan_lbl"        , "helptext"): _("When enabled, dragging the middle mouse button will pan the camera"),
 		# (helptext of widget: minimap_rotation_label)
 		("minimap_rotation_label"      , "helptext"): _("Whether to also rotate the minimap whenever the regular map is rotated"),
 		# (helptext of widget: mouse_sensitivity_label)
@@ -916,11 +957,6 @@ def set_translations():
 		("uninterrupted_building_label", "helptext"): _("When enabled, do not exit the build mode after successful construction"),
 		# (helptext of widget: use_renderer_label)
 		("use_renderer_label"          , "helptext"): _("SDL is only meant as unsupported fallback and might cause problems!"),
-		},
-
-	"random_map_archive.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Random map archive"),
 		},
 
 	"select_savegame.xml" : {
@@ -969,8 +1005,6 @@ def set_translations():
 		},
 
 	"sp_random.xml" : {
-		# (text of widget: open_random_map_archive) Right now, Buttons do not support text wrapping, so better try to keep this line short.
-		("open_random_map_archive"     , "text"    ): _("Load from map archive"),
 		# (text of widget: headline_map_settings_lbl)
 		("headline_map_settings_lbl"   , "text"    ): _("Map settings:"),
 		# (text of widget: seed_string_lbl)
