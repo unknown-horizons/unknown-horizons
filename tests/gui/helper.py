@@ -266,12 +266,16 @@ class GuiHelper(object):
 
 		return match
 
-	def trigger(self, root, event):
+	def trigger(self, root, event, mouse=None):
 		"""Trigger a widget event in a container.
 
-		root  - container (object or name) that holds the widget
+		root  - container (object, name or path) that holds the widget.
+				For more information on path, see `GuiHelper.find`.
 		event - string describing the event (widget/event/group)
 		        event and group are optional
+		mouse - Optional. Can be 'left' or 'right'. Some event callbacks look
+				at the event that occured, so we need to tell what mouse
+				button triggered this.
 
 		Example:
 			c = gui.find('mainmenu')
@@ -303,16 +307,16 @@ class GuiHelper(object):
 			raise Exception("'%s' contains no widget with the name '%s'" % (
 								root.name, widget_name))
 
-		self._trigger_widget_callback(widget, event_name, group_name)
+		self._trigger_widget_callback(widget, event_name, group_name, mouse=mouse)
 
-	def _trigger_widget_callback(self, widget, event_name="action", group_name="default", can_fail=False):
+	def _trigger_widget_callback(self, widget, event_name="action", group_name="default", can_fail=False, mouse=None):
 		"""Call callbacks for the given widget."""
 		# Check if this widget has any event callbacks at all
 		try:
 			callbacks = widget.event_mapper.callbacks[group_name]
 		except KeyError:
 			if can_fail:
-				return
+				return False
 			raise Exception("No callbacks for event group '%s' for event '%s'" % (
 							group_name, widget.name))
 
@@ -334,7 +338,11 @@ class GuiHelper(object):
 				raise Exception("No callback for event 'action' or 'mouseClicked' registered for widget '%s'" % (
 								group_name, widget.name))
 
-		callback()
+		kwargs = {'widget': widget}
+		if mouse:
+			kwargs['event'] = self._make_mouse_event(0, 0, button=mouse)
+
+		pychan.tools.applyOnlySuitable(callback, **kwargs)
 
 	@contextlib.contextmanager
 	def handler(self, func):
