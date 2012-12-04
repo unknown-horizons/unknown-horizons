@@ -441,3 +441,14 @@ class GuiHelper(object):
 		"""Run the test at maximum game speed."""
 		if self.session:
 			self.session.speed_set(GAME_SPEED.TICK_RATES[-1])
+
+	def speed_default(self):
+		"""Reset game to normal speed."""
+		if self.session:
+			self.session.speed_set(GAME_SPEED.TICKS_PER_SECOND)
+
+	def debug(self):
+		"""Call this to stop the test from running and be able to interact with game."""
+		self.cursor_map_coords.disable()
+		self.speed_default()
+		self.run(2**20)
