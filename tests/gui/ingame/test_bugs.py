@@ -85,7 +85,7 @@ def test_ticket_1369(gui):
 			world.diplomacy.add_ally_pair( ship.owner, player )
 
 	# move ship near foreign warehouse and wait for it to arrive
-	move_ship(ship, (68, 23))
+	move_ship(gui, ship, (68, 23))
 
 	# click trade button
 	gui.trigger('overview_trade_ship', 'trade')
@@ -94,7 +94,7 @@ def test_ticket_1369(gui):
 	assert gui.find(name='buy_sell_goods')
 
 	# move ship away from warehouse
-	move_ship(ship, (77, 17))
+	move_ship(gui, ship, (77, 17))
 
 	# trade widget should not be visible anymore
 # For now, the trade widget will stay visible.

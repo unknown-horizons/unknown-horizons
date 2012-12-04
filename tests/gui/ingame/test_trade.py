@@ -45,7 +45,7 @@ def test_trade(gui):
 			world.diplomacy.add_ally_pair( ship.owner, player )
 
 	# move ship near foreign warehouse and wait for it to arrive
-	move_ship(ship, (68, 23))
+	move_ship(gui, ship, (68, 23))
 
 	# click trade button
 	gui.trigger('overview_trade_ship', 'trade')

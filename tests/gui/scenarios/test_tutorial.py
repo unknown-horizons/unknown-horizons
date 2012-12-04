@@ -43,9 +43,9 @@ def test_tutorial(gui):
 
 	# Goal: Build warehouse
 	ship = get_player_ship(gui.session)
-	move_ship(ship, (11, 1))
-
 	gui.select([ship])
+	move_ship(gui, ship, (11, 1))
+
 	gui.trigger('overview_trade_ship', 'found_settlement')
 	gui.cursor_click(11, 6, 'left')
 

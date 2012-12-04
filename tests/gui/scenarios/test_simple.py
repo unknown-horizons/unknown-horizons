@@ -46,7 +46,8 @@ def test_mission1(gui):
 
 	# Move ship to coast
 	ship = get_player_ship(gui.session)
-	move_ship(ship, (7, 3))
+	gui.select([ship])
+	move_ship(gui, ship, (7, 3))
 
 	# Build warehouse
 	gui.select([ship])

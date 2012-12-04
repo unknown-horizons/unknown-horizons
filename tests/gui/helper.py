@@ -32,7 +32,6 @@ from fife import fife
 from fife.extensions import pychan
 
 import horizons.main
-from horizons.command.unit import Act
 from horizons.constants import GAME_SPEED
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.mousetools.navigationtool import NavigationTool
@@ -52,9 +51,9 @@ def get_player_ship(session):
 	raise Exception('Player ship not found')
 
 
-def move_ship(ship, (x, y)):
+def move_ship(gui, ship, (x, y)):
 	"""Move ship to coordinates and wait until it arrives."""
-	Act(ship, x, y)(ship.owner)
+	gui.cursor_click(x, y, 'right')
 
 	while (ship.position.x, ship.position.y) != (x, y):
 		cooperative.schedule()
@@ -64,8 +63,7 @@ def found_settlement(gui, ship_pos, (x, y)):
 	"""Move ship to coordinates and build a warehouse."""
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
-
-	move_ship(ship, ship_pos)
+	move_ship(gui, ship, ship_pos)
 
 	# Found a settlement
 	gui.trigger('overview_trade_ship', 'found_settlement')
