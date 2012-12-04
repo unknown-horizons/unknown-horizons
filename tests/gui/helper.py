@@ -165,24 +165,64 @@ class GuiHelper(object):
 		"""
 		return self._manager.allWidgets.keys()
 
-	def find(self, name):
-		"""Recursive find a widget by name."""
+	def _get_children(self, w):
+		if hasattr(w, 'children'):
+			return w.children
+		elif hasattr(w, 'findChildren'):
+			return w.findChildren()
+
+	def _find(self, name):
+		"""Recursive find a widget by name.
+
+		This is the actual search implementation behind `GuiHelper.find`.
+		"""
 		match = None
 		seen = set()
 		widgets = deque(self.active_widgets)
-		while widgets:
-			w = widgets.popleft()
-			seen.add(w)
-			if w.name == name:
-				match = w
-				break
-			else:
-				if hasattr(w, 'children'):
-					widgets.extend([x for x in w.children if x not in seen])
-				elif hasattr(w, 'findChildren'):
-					widgets.extend([x for x in w.findChildren() if x not in seen])
 
-		# enhance widget with helper functions for easier testing
+		path_components = list(reversed(name.split('/')))
+
+		while path_components:
+			name = path_components.pop()
+
+			while widgets:
+				w = widgets.popleft()
+				seen.add(w)
+				if w.name == name:
+					# When there are still names left in the path, continue our search
+					# in the children of the matched widget
+					if path_components:
+						widgets = deque([x for x in self._get_children(w) if x not in seen])
+						break
+					else:
+						# We're done!
+						match = w
+						break
+				else:
+					widgets.extend([x for x in self._get_children(w) if x not in seen])
+
+			if match:
+				break
+
+		return match
+
+	def find(self, name):
+		"""Find a widget by name.
+
+		`name` can consist of multiple widget names separated by a slash. In this
+		case, this is interpreted as a path to the widget with the last name.
+		This is necessary when multiple widgets exist with the same name.
+
+		Example:
+
+			gui.find('menu/button')
+			# look for a widget 'menu' with a descendant named 'button'
+
+		Recursively searches through all widgets. Some widgets will be extended
+		with helper functions to allow easier interaction in tests.
+		"""
+		match = self._find(name)
+
 		gui_helper = self
 
 		if isinstance(match, pychan.widgets.ListBox):
