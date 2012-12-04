@@ -61,20 +61,11 @@ def test_tutorial(gui):
 	gui.cursor_click(13, 10, 'left')
 	gui.cursor_click(13, 10, 'right')
 
-	# add extra trees around the lumberjacks
+	# plant some extra trees around the lumberjacks
 	gui.trigger('tab', 'button_13')
-	settlement = gui.session.world.islands[0].settlements[0]
-	for lumberjack_coords in [(8, 10), (13, 10)]:
-		building = settlement.ground_map[lumberjack_coords].object
-		for coords in building.position.get_radius_coordinates(building.radius):
-			if coords not in settlement.ground_map:
-				continue
-			tile = settlement.ground_map[coords]
-			if tile.object is None and 'constructible' in tile.classes:
-				gui.cursor_click(coords[0], coords[1], 'left', shift=True)
-	gui.cursor_click(13, 10, 'right')
+	gui.cursor_drag((6, 13), (15, 8), 'left')
 
-	# roads
+	# roads (no dragging to trigger the 'you can drag roads' hint)
 	gui.trigger('tab', 'button_21')
 	gui.cursor_multi_click((10, 8), (10, 9), (10, 10), (11, 10))
 
@@ -100,10 +91,8 @@ def test_tutorial(gui):
 
 	# roads
 	gui.trigger('tab', 'button_21')
-	gui.cursor_multi_click(
-		(13, 15), (14, 15), (16, 15), (17, 15),
-		(18, 15), (19, 15), (20, 15)
-	)
+	gui.cursor_drag((13, 15), (20, 15), 'left')
+	gui.cursor_click(20, 15, 'right')
 
 	# tent
 	gui.trigger('tab', 'button_01')
@@ -191,7 +180,8 @@ def test_tutorial(gui):
 	gui.trigger('mainhud', 'build')
 	gui.trigger('tab_base', '0')
 	gui.trigger('tab', 'button_21')
-	gui.cursor_multi_click((21, 15), (22, 15), (23, 15), (24, 15), (24, 14))
+	gui.cursor_drag((21, 15), (24, 14), 'left')
+	gui.cursor_click(24, 14, 'right')
 
 	# storage tent
 	gui.trigger('tab', 'button_11')

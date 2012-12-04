@@ -368,6 +368,7 @@ class GuiHelper(object):
 
 	def cursor_drag(self, (start_x, start_y), (end_x, end_y), button):
 		"""Press mouse button, move the mouse, release button."""
+		self.cursor_move(start_x, start_y)
 		self.cursor_press_button(start_x, start_y, button)
 		self.run()
 
