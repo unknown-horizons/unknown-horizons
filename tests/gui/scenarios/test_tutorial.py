@@ -115,7 +115,7 @@ def test_tutorial(gui):
 	# Goal: Trading
 	assert_progress(37)
 
-	# TODO do this with the gui (needs named buttons and a way to control the slider)
+	# Buy tools from the trader (put the resource on the buy list)
 	gui.cursor_click(11, 6, 'left')
 	gui.trigger('tab_base', '2')
 	gui.trigger('buysellmenu/slot_0', 'button', mouse='left')
