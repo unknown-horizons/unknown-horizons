@@ -142,6 +142,7 @@ class BuySellTab(TabInterface):
 			slot.id = i
 			slot.action = 'buy'
 			slot.res = None
+			slot.name = "slot_%d" % i
 			slot.findChild(name='button').capture(self.handle_click, event_name='mouseClicked')
 			slot.findChild(name='button').up_image = self.dummy_icon_path
 			slot.findChild(name='button').down_image = self.dummy_icon_path

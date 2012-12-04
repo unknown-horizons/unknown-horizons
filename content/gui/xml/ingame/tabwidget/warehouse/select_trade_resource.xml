@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="260,450">
+<Container size="260,450" name="select_trade_resource">
 <TabBG amount="6" />
 
 <Container name="content" position="10,70" size="225,305">

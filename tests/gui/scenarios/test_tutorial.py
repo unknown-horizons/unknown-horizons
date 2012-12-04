@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command.uioptions import SetTradeSlot
-from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TIER
 
 from tests.gui import gui_test
@@ -118,9 +116,11 @@ def test_tutorial(gui):
 	assert_progress(37)
 
 	# TODO do this with the gui (needs named buttons and a way to control the slider)
-	player = gui.session.world.player
-	tradepost = player.settlements[0].get_component(TradePostComponent)
-	SetTradeSlot(tradepost, 0, RES.TOOLS, False, 30)(player)
+	gui.cursor_click(11, 6, 'left')
+	gui.trigger('tab_base', '2')
+	gui.trigger('buysellmenu/slot_0', 'button', mouse='left')
+	gui.trigger('select_trade_resource', 'resource_%d' % RES.TOOLS)
+	gui.find('buysellmenu/slot_0/slider').slide(30)
 
 	# Goal: Pavilion
 	assert_progress(40)
@@ -129,6 +129,7 @@ def test_tutorial(gui):
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 5):
 		gui.run()
 
+	gui.trigger('mainhud', 'build')
 	gui.trigger('tab', 'button_12')
 	gui.cursor_click(19, 16, 'left')
 

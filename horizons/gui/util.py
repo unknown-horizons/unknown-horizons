@@ -192,8 +192,10 @@ def create_resource_selection_dialog(on_click, inventory, db,
 		cb = Callback(on_click, res_id)
 		if hasattr(button, "button"): # for imagefillstatusbuttons
 			button.button.capture( cb )
+			button.button.name = "resource_%d" % res_id
 		else:
 			button.capture( cb )
+			button.name = "resource_%d" % res_id
 
 		current_hbox.addChild(button)
 		if index % amount_per_line == 0:
