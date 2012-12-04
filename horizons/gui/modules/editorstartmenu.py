@@ -90,19 +90,24 @@ class EditorStartMenu(object):
 
 
 class EditorCreateMapWidget(object):
+	sizes = [50, 100, 150, 200, 250]
+
 	def __init__(self, parent, parent_widget):
 		self.parent = parent
 		self._parent_widget = parent_widget
 		self._gui = load_uh_widget('editor_create_map.xml', style='book')
 		self._gui.findChild(name='size_150').marked = True
 
+		for size in self.sizes:
+			option_name = 'size_%d' % size
+			self._gui.findChild(name=option_name).text = _(u'{size}x{size} tiles').format(size=size)
+
 	def show(self):
 		self._parent_widget.removeAllChildren()
 		self._parent_widget.addChild(self._gui)
 
 	def act(self):
-		sizes = [50, 100, 150, 200, 250]
-		for size in sizes:
+		for size in self.sizes:
 			option_name = 'size_%d' % size
 			if self._gui.findChild(name=option_name).marked:
 				self.parent.hide()
