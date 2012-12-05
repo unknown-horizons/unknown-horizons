@@ -350,6 +350,7 @@ class SelectableShipComponent(SelectableUnitComponent):
 			super(SelectableShipComponent, self).deselect()
 			self.instance._update_buoy(remove_only=True)
 
+
 class SelectableFisherComponent(SelectableBuildingComponent):
 	"""Class used to highlight the radius of a fisher. Highlights only the fishing
 	grounds."""
@@ -365,11 +366,6 @@ class SelectableFisherComponent(SelectableBuildingComponent):
 			#cls._selected_tiles.l.append(fish_deposit)
 			for pos in fish_deposit.position:
 				cls._add_fake_tile(pos.x, pos.y, layer, renderer)
-
-	"""@classmethod
-	def get_instance(cls, arguments):
-		arguments = copy.copy(arguments)
-		return SelectableFisherComponent( **arguments )"""
 
 decorators.bind_all(SelectableFisherComponent)
 decorators.bind_all(SelectableBuildingComponent)
