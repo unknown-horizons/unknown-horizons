@@ -35,6 +35,8 @@ def test_run_server():
 	time.sleep(2)
 	proc.terminate()
 
+	# By default logging prints to stderr, which makes it difficult to detect
+	# errors. This solution isn't great, but works for now.
 	stderr = proc.stderr.read()
-	if stderr:
+	if stderr and 'Traceback' in stderr:
 		raise Exception("\n\n" + stderr)
