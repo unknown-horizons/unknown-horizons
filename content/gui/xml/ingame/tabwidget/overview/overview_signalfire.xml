@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="250,350">
+<Container size="250,350" name="overview_signalfire">
 <TabBG amount="4"/>
 
 	<Container position="0,70" size="245,350" >
