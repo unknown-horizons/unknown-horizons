@@ -30,9 +30,8 @@ from fife.extensions import pychan
 import horizons.globals
 import horizons.main
 
-from horizons.savegamemanager import SavegameManager
+from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.keylisteners import MainListener
-from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions

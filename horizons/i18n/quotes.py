@@ -48,25 +48,33 @@ FUN_QUOTES = {
     ]
 }
 
-GAMEPLAY_TIPS = {
-	'name': _("Gameplay Tips"),
-	'items': [
-	    _("Press 'ESC' to access Game Menu."),
-	    _("Use 'SHIFT' to place multiple buildings."),
-	    _("Currently only the first {tier} tiers are playable.").format(
-		    tier=TIER.CURRENT_MAX + 1), #TODO: This tip should be removed when all tiers are playable!!
-	    _("You can pause the game with 'P'."),
-	    _("You can drag roads by holding the left mouse button."),
-	    _("You can build multiple buildings by holding the 'SHIFT' key."),
-	    _("You can increase the happiness of your inhabitants by lowering the taxes."),
-	    _("Build fire stations and doctors to protect your inhabitants from fire and disease."),
-	    _("Build storage tents to increase your storage capacity."),
-	    _("Make sure every house is in range of a marketplace."),
-	    _("Press 'T' to make trees transparent.")
-    ]
-}
+GAMEPLAY_TIPS = {'name': _("Gameplay Tips")}
+
+def set_translations():
+	global GAMEPLAY_TIPS
+	global FUN_QUOTES
+	FUN_QUOTES['name'] = _("Quotes")
+	GAMEPLAY_TIPS.clear()
+	GAMEPLAY_TIPS.update({
+		'name': _("Gameplay Tips"),
+		'items': [
+		    _("Press 'ESC' to access Game Menu."),
+		    _("Use 'SHIFT' to place multiple buildings."),
+		    _("Currently only the first {tier} tiers are playable.").format(
+		        tier=TIER.CURRENT_MAX + 1), #TODO: This tip should be removed when all tiers are playable!!
+		    _("You can pause the game with 'P'."),
+		    _("You can drag roads by holding the left mouse button."),
+		    _("You can build multiple buildings by holding the 'SHIFT' key."),
+		    _("You can increase the happiness of your inhabitants by lowering the taxes."),
+		    _("Build fire stations and doctors to protect your inhabitants from fire and disease."),
+		    _("Build storage tents to increase your storage capacity."),
+		    _("Make sure every house is in range of a marketplace."),
+		    _("Press 'T' to make trees transparent.")
+		]
+	})
 
 """ This are the options you can select in the Settings what type of quotes should be
 displayed during load
 """
+# TODO Unfortunately these are not translated
 QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _("Mixed"))

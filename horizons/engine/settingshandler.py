@@ -27,7 +27,7 @@ from fife.extensions.fife_settings import FIFE_MODULE
 
 import horizons.main
 
-from horizons.gui.quotes import QUOTES_SETTINGS
+from horizons.i18n.quotes import QUOTES_SETTINGS
 from horizons.i18n import change_language, find_available_languages
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
