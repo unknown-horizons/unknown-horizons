@@ -29,7 +29,7 @@ from horizons.constants import TIER
 
 # Fun Quotes should not be translated...
 FUN_QUOTES = {
-	'name': _("Quotes"),
+	'name': "Quotes",
 	'items': [
 	    "beer, the cause and solution to all problems of humanity",
 	    "trying is the first step t'wards failing. ",
@@ -48,7 +48,7 @@ FUN_QUOTES = {
     ]
 }
 
-GAMEPLAY_TIPS = {'name': _("Gameplay Tips")}
+GAMEPLAY_TIPS = {'name': "Gameplay Tips"}
 
 def set_translations():
 	global GAMEPLAY_TIPS
@@ -77,4 +77,4 @@ def set_translations():
 displayed during load
 """
 # TODO Unfortunately these are not translated
-QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _("Mixed"))
+QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], "Mixed")
