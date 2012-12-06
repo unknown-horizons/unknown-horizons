@@ -45,17 +45,17 @@ class KeyConfig(object):
 	def __init__(self):
 		_Actions = self._Actions
 
-		self.keyval_action_mappings = {} # map key ID (int) to action (int)
-		self.action_keyname_mappings = {} # map action name (str) to key name (str)
 		self.all_keys = self.get_keys_by_name()
+		# map key ID (int) to action it triggers (int)
+		self.keyval_action_mappings = {}
 
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for action in custom_key_actions:
 			action_id = getattr(_Actions, action)
-			key = horizons.globals.fife.get_key_for_action(action).upper()
-			key_id = self.get_key_by_name(key)
-			self.keyval_action_mappings[key_id] = action_id
-			self.action_keyname_mappings[action] = key
+			keys_for_action = horizons.globals.fife.get_keys_for_action(action)
+			for key in keys_for_action:
+				key_id = self.get_key_by_name(key.upper())
+				self.keyval_action_mappings[key_id] = action_id
 
 		self.requires_shift = set( (
 		  _Actions.SAVE_MAP,
@@ -81,39 +81,17 @@ class KeyConfig(object):
 	def get_key_by_name(self, keyname):
 		return self.all_keys.get(keyname)
 
-	def get_keys_by_name(self, only_free_keys=False, force_include=None):
+	def get_keys_by_name(self):
 		def is_available(key, value):
-			if force_include and key in force_include:
-				return True
 			special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
 			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
-			        not key.startswith(special_keys) and
-			        not (only_free_keys and value in self.keyval_action_mappings))
+			        not key.startswith(special_keys))
 		return dict( (k, v) for k, v in fife.Key.__dict__.iteritems()
 		                    if is_available(k, v))
 
-	def get_keyval_to_actionid_map(self):
-		return self.keyval_action_mappings
+	def get_current_keys(self, action):
+		return horizons.globals.fife.get_keys_for_action(action)
 
-	def get_actionname_to_keyname_map(self):
-		return self.action_keyname_mappings
-
-	def is_valid_and_get_default_key(self, key, action):
-		return (key in self.all_keys, self.get_default_key_for_action(action))
-
-	def get_default_key_for_action(self, action):
-		return horizons.globals.fife.get_default_key_for_action(action)
-
-	def save_new_key(self, action, newkey):
-		oldkey = horizons.globals.fife.get_key_for_action(action)
-		horizons.globals.fife.set_key_for_action(action, newkey)
-		horizons.globals.fife.save_settings() #TODO remove this, save only when hitting OK
-
-		# Now keep track of which keys are still in use and which are available again
-		self.action_keyname_mappings[action] = newkey
-		old_key_id = self.get_key_by_name(oldkey)
-		new_key_id = self.get_key_by_name(newkey)
-		action_id = getattr(self._Actions, action)
-		del self.keyval_action_mappings[old_key_id]
-		self.keyval_action_mappings[new_key_id] = action_id
+	def get_default_keys(self, action):
+		return horizons.globals.fife.get_keys_for_action(action, default=True)

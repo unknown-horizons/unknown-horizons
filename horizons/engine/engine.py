@@ -220,15 +220,23 @@ class Fife(ApplicationBase):
 	def get_hotkey_settings(self):
 		return self._setting.getSettingsFromFile(KEY_MODULE)
 
-	def get_default_key_for_action(self, action):
-		return self._default_hotkeys.get(action)
+	def get_keys_for_action(self, action, default=False):
+		"""Returns list of current hotkeys for *action* or its default hotkeys."""
+		if default:
+			keys = self._default_hotkeys.get(action)
+		else:
+			keys = self._setting.get(KEY_MODULE, action)
+		return sorted(keys, key=len)
 
-	def get_key_for_action(self, action):
-		return self._setting.get(KEY_MODULE, action)
+	def set_key_for_action(self, action, newkey):
+		"""Replaces all existing hotkeys for *action* with *newkey*."""
+		self._setting.set(KEY_MODULE, action, newkey)
 
-	def set_key_for_action(self, action, key):
-		"""Sets hotkey *key* for action *action*."""
-		self._setting.set(KEY_MODULE, action, key)
+	def add_key_for_action(self, action, addkey):
+		"""Adds hotkey *addkey* to list of hotkeys for action *action*."""
+		old_keys = self._setting.get(KEY_MODULE, action, defaultValue=[])
+		new_keys = set(old_keys + [addkey])
+		self.set_key_for_action(action, list(new_keys))
 
 	def save_settings(self):
 		self._setting.saveSettings()

@@ -63,41 +63,41 @@
 		<Setting name="MaxAtlasSize" type="int">2048</Setting>
 	</Module>
 	<Module name="keys">
-		<Setting name="GRID" type="str"> G </Setting>
-		<Setting name="COORD_TOOLTIP" type="str"> H </Setting>
-		<Setting name="DESTROY_TOOL" type="str"> X </Setting>
-		<Setting name="ROAD_TOOL" type="str"> R </Setting>
-		<Setting name="SPEED_UP" type="str"> PLUS </Setting>
-		<Setting name="SPEED_DOWN" type="str"> MINUS </Setting>
-		<Setting name="PAUSE" type="str"> P </Setting>
-		<Setting name="LOGBOOK" type="str"> L </Setting>
-		<Setting name="BUILD_TOOL" type="str"> B </Setting>
-		<Setting name="ROTATE_RIGHT" type="str"> PERIOD </Setting>
-		<Setting name="ROTATE_LEFT" type="str"> COMMA </Setting>
-		<Setting name="CHAT" type="str"> C </Setting>
-		<Setting name="TRANSLUCENCY" type="str"> T </Setting>
-		<Setting name="TILE_OWNER_HIGHLIGHT" type="str"> A </Setting>
-		<Setting name="PIPETTE" type="str"> O </Setting>
-		<Setting name="HEALTH_BAR" type="str"> K </Setting>
-		<Setting name="DEBUG" type="str"> D </Setting>
-		<Setting name="SCREENSHOT" type="str"> S </Setting>
-		<Setting name="SHOW_SELECTED" type="str"> J </Setting>
-		<Setting name="REMOVE_SELECTED" type="str"> DELETE </Setting>
-		<Setting name="ESCAPE" type="str"> ESCAPE </Setting>
-		<Setting name="LEFT" type="str"> LEFT </Setting>
-		<Setting name="RIGHT" type="str"> RIGHT </Setting>
-		<Setting name="UP" type="str"> UP </Setting>
-		<Setting name="DOWN" type="str"> DOWN </Setting>
-		<Setting name="HELP" type="str"> F1 </Setting>
-		<Setting name="PLAYERS_OVERVIEW" type="str"> F2 </Setting>
-		<Setting name="SHIPS_OVERVIEW" type="str"> F3 </Setting>
-		<Setting name="SETTLEMENTS_OVERVIEW" type="str"> F4 </Setting>
-		<Setting name="QUICKSAVE" type="str"> F5 </Setting>
-		<Setting name="QUICKLOAD" type="str"> F9 </Setting>
-		<Setting name="CONSOLE" type="str"> F10 </Setting>
-		<Setting name="SAVE_MAP" type="str"> F12 </Setting>
+		<Setting name="GRID" type="list"> G </Setting>
+		<Setting name="COORD_TOOLTIP" type="list"> H </Setting>
+		<Setting name="DESTROY_TOOL" type="list"> X </Setting>
+		<Setting name="ROAD_TOOL" type="list"> R </Setting>
+		<Setting name="SPEED_UP" type="list"> PLUS ; EQUALS </Setting>
+		<Setting name="SPEED_DOWN" type="list"> MINUS </Setting>
+		<Setting name="PAUSE" type="list"> P </Setting>
+		<Setting name="LOGBOOK" type="list"> L </Setting>
+		<Setting name="BUILD_TOOL" type="list"> B </Setting>
+		<Setting name="ROTATE_RIGHT" type="list"> PERIOD </Setting>
+		<Setting name="ROTATE_LEFT" type="list"> COMMA </Setting>
+		<Setting name="CHAT" type="list"> C </Setting>
+		<Setting name="TRANSLUCENCY" type="list"> T </Setting>
+		<Setting name="TILE_OWNER_HIGHLIGHT" type="list"> A </Setting>
+		<Setting name="PIPETTE" type="list"> O </Setting>
+		<Setting name="HEALTH_BAR" type="list"> K </Setting>
+		<Setting name="DEBUG" type="list"> D </Setting>
+		<Setting name="SCREENSHOT" type="list"> S </Setting>
+		<Setting name="SHOW_SELECTED" type="list"> J </Setting>
+		<Setting name="REMOVE_SELECTED" type="list"> DELETE </Setting>
+		<Setting name="ESCAPE" type="list"> ESCAPE </Setting>
+		<Setting name="LEFT" type="list"> LEFT </Setting>
+		<Setting name="RIGHT" type="list"> RIGHT </Setting>
+		<Setting name="UP" type="list"> UP </Setting>
+		<Setting name="DOWN" type="list"> DOWN </Setting>
+		<Setting name="HELP" type="list"> F1 </Setting>
+		<Setting name="PLAYERS_OVERVIEW" type="list"> F2 </Setting>
+		<Setting name="SHIPS_OVERVIEW" type="list"> F3 </Setting>
+		<Setting name="SETTLEMENTS_OVERVIEW" type="list"> F4 </Setting>
+		<Setting name="QUICKSAVE" type="list"> F5 </Setting>
+		<Setting name="QUICKLOAD" type="list"> F9 </Setting>
+		<Setting name="CONSOLE" type="list"> F10 </Setting>
+		<Setting name="SAVE_MAP" type="list"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 29 </Setting>
+		<Setting name="SettingsVersion" type="int"> 30 </Setting>
 	</Module>
 </Settings>

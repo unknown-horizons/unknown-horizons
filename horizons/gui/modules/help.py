@@ -19,13 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import ListBox, ScrollArea
-
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import OkButton
 from horizons.messaging import LanguageChanged
-from horizons.util.python.callback import Callback
 
 
 class HelpDialog(object):
@@ -34,10 +31,8 @@ class HelpDialog(object):
 		self.mainmenu = mainmenu
 		self.widgets = mainmenu.widgets
 
-		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
-
 		self.keyconf = KeyConfig() # before _build_strings
+		self.HELPSTRING_LAYOUT = None
 		self._build_strings()
 		self._is_displayed = False
 
@@ -49,7 +44,7 @@ class HelpDialog(object):
 		and adds the keys defined in the keyconfig configuration object in front of them.
 		The layout is defined through HELPSTRING_LAYOUT and translated.
 		"""
-		# retranslate the layout
+		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
 
 		widgets = self.widgets['help']
@@ -59,73 +54,15 @@ class HelpDialog(object):
 								    if name.startswith('lbl_') )
 
 		# now prepend the actual keys to the function strings defined in xml
-		actionmap = self.keyconf.get_actionname_to_keyname_map()
 		for (name, lbl) in labels.items():
-			keyname = actionmap.get(name, 'SHIFT') #TODO #HACK hardcoded shift key
+			if name == 'SHIFT':
+				#TODO #HACK hardcoded shift key
+				keyname = 'SHIFT'
+			else:
+				#TODO Display all keys per action, not just the first
+				keyname = self.keyconf.get_current_keys(name)[0]
 			lbl.explanation = _(lbl.text)
 			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=keyname)
-			lbl.capture(Callback(self.show_hotkey_change_popup, name, lbl, keyname))
-
-	def show_hotkey_change_popup(self, action, lbl, keyname):
-		def apply_new_key(newkey=None):
-			if not newkey:
-				newkey = free_keys[listbox.selected]
-			else:
-				listbox.selected = listbox.items.index(newkey)
-			self.keyconf.save_new_key(action, newkey=newkey)
-			update_hotkey_info(action, newkey)
-			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=newkey)
-			lbl.capture(Callback(self.show_hotkey_change_popup, action, lbl, newkey))
-			lbl.adaptLayout()
-
-		def update_hotkey_info(action, keyname):
-			default = self.keyconf.get_default_key_for_action(action)
-			popup.message.text = (lbl.explanation +
-			#xgettext:python-format
-			                      u'\n' + _('Current key: [{key}]').format(key=keyname) +
-			#xgettext:python-format
-			                      u'\t' + _('Default key: [{key}]').format(key=default))
-			popup.message.helptext = _('Click to reset to default key')
-			reset_to_default = Callback(apply_new_key, default)
-			popup.message.capture(reset_to_default)
-
-		#xgettext:python-format
-		headline = _('Change hotkey for {action}').format(action=action)
-		message = ''
-		if keyname in ('SHIFT', 'ESCAPE'):
-			message = _('This key can not be reassigned at the moment.')
-			self.mainmenu.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
-			return
-
-		popup = self.mainmenu.build_popup(headline, message, size=2, show_cancel_button=True)
-		update_hotkey_info(action, keyname)
-		keybox = ScrollArea()
-		listbox = ListBox(is_focusable=False, name="available_keys")
-		keybox.max_size = listbox.max_size = \
-		keybox.min_size = listbox.min_size = \
-		keybox.size = listbox.size = (200, 200)
-		keybox.position = listbox.position = (90, 110)
-		prefer_short = lambda k: (len(k) > 1, len(k) > 3, k)
-		is_valid, default_key = self.keyconf.is_valid_and_get_default_key(keyname, action)
-		if not is_valid:
-			headline = _('Invalid key')
-			message = _('The default key for this action has been selected.')
-			self.mainmenu.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
-		valid_key = keyname if is_valid else default_key
-		free_key_dict = self.keyconf.get_keys_by_name(only_free_keys=True,
-		                                              force_include=[valid_key])
-		free_keys = sorted(free_key_dict.keys(), key=prefer_short)
-		listbox.items = free_keys
-		listbox.selected = listbox.items.index(valid_key)
-		#TODO backwards replace key names in keyconfig.get_fife_key_names in the list
-		# (currently this stores PLUS and PERIOD instead of + and . in the settings)
-		keybox.addChild(listbox)
-		popup.addChild(keybox)
-		if not is_valid:
-			apply_new_key()
-		listbox.capture(apply_new_key)
-		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		self.mainmenu.show_dialog(popup, button_cbs, modal=True)
 
 	def toggle(self):
 		"""Called on help action.
