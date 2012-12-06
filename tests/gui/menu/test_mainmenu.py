@@ -45,32 +45,6 @@ def test_help(gui):
 
 
 @gui_test(timeout=60)
-def test_help_change_key(gui):
-	"""Test changing the key assignment in the help dialog."""
-	def change_key():
-		keys = gui.find('available_keys')
-		keys.select('E')
-		gui.trigger('popup_window', 'okButton/action/__execute__')
-
-	def func():
-		with gui.handler(change_key):
-			gui.trigger('help_window', 'lbl_HELP')
-
-		gui.trigger('help_window', 'okButton/action/__execute__')
-
-	with gui.handler(func):
-		gui.trigger('menu', 'helpLink')
-
-	# at this point, the key for help was changed
-
-	def close():
-		gui.trigger('help_window', 'okButton/action/__execute__')
-
-	with gui.handler(close):
-		gui.press_key(gui.Key.E)
-
-
-@gui_test(timeout=60)
 def test_settings(gui):
 	gui.trigger('menu', 'settingsLink')
 	gui.trigger('settings_window', 'cancelButton')
