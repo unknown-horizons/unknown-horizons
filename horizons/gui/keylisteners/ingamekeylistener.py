@@ -185,10 +185,6 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 					self.session.ingame_gui.show_menu(None)
 		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave() # load is only handled by the MainListener
-		elif action == _Actions.SAVE_MAP:
-			# require shift to make it less likely that an ordinary user stumbles upon this
-			# this is done because the maps aren't usable without moving them to the right places
-			self.session.ingame_gui.show_save_map_dialog()
 		elif action == _Actions.PIPETTE:
 			# copy mode: pipette tool
 			self.session.toggle_cursor('pipette')

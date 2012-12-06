@@ -29,7 +29,6 @@
 		<Label name="lbl_QUICKSAVE" text="Quicksave" />
 		<Label name="lbl_QUICKLOAD" text="Quickload" />
 		<Label name="lbl_CONSOLE" text="Toggle console on/off" />
-		<Label name="lbl_SAVE_MAP" text="Save map (hold SHIFT)" />
 	</VBox>
 
 	<Spacer />

@@ -36,10 +36,10 @@ class KeyConfig(object):
 		"""Internal data. Use inside keylistener module."""
 		GRID, COORD_TOOLTIP, DESTROY_TOOL, PLAYERS_OVERVIEW, ROAD_TOOL, SPEED_UP, SPEED_DOWN, \
 		PAUSE, SETTLEMENTS_OVERVIEW, SHIPS_OVERVIEW, LOGBOOK, BUILD_TOOL, ROTATE_RIGHT, \
-		ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, SAVE_MAP, \
+		ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, \
 		PIPETTE, HEALTH_BAR, ESCAPE, LEFT, RIGHT, UP, DOWN, DEBUG, CONSOLE, HELP, SCREENSHOT, \
 		SHOW_SELECTED, REMOVE_SELECTED = \
-		range(33)
+		range(32)
 
 
 	def __init__(self):
@@ -57,9 +57,7 @@ class KeyConfig(object):
 				key_id = self.get_key_by_name(key.upper())
 				self.keyval_action_mappings[key_id] = action_id
 
-		self.requires_shift = set( (
-		  _Actions.SAVE_MAP,
-		) )
+		self.requires_shift = set()
 
 	def translate(self, evt):
 		"""

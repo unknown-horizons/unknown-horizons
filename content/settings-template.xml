@@ -95,9 +95,8 @@
 		<Setting name="QUICKSAVE" type="list"> F5 </Setting>
 		<Setting name="QUICKLOAD" type="list"> F9 </Setting>
 		<Setting name="CONSOLE" type="list"> F10 </Setting>
-		<Setting name="SAVE_MAP" type="list"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 30 </Setting>
+		<Setting name="SettingsVersion" type="int"> 31 </Setting>
 	</Module>
 </Settings>
