@@ -49,7 +49,8 @@ def test_place_tiles(gui):
 @editor_test
 def test_save_map(gui):
 	"""Save a map in the editor."""
-	gui.press_key(gui.Key.F12, shift=True)
+	gui.trigger('mainhud', 'gameMenuButton')
+	gui.trigger('menu', 'savegameButton')
 
 	name = gui.find("map_name")
 	name.text = u"test_map"
