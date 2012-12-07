@@ -176,7 +176,7 @@
 
 				<HBox>
 					<Label name="cursor_centered_zoom_label" text="Cursor centered zoom:" min_size="256,0"
-					       helptext="When enabled, mouse wheel zoom will use the cursor position as new viewport center" />
+					       helptext="When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center." />
 					<CheckBox min_size="24,24" name="cursor_centered_zoom" />
 				</HBox>
 
