@@ -205,8 +205,9 @@
 				</HBox>
 
 				<HBox>
-					<Label name="scroll_speed_label" text="Scroll Speed (lower is faster):"
-						wrap_text="1" max_size="250,40" min_size="250,20" />
+					<Label name="scroll_speed_label" text="Scroll delay:"
+						wrap_text="1" max_size="250,40" min_size="250,20"
+						helptext="Higher values slow down scrolling." />
 					<Label text="" name="scrollspeed_value" />
 				</HBox>
 				<Slider size="300,20" name="scrollspeed" is_focusable="0"
