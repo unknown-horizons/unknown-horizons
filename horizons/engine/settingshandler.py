@@ -301,7 +301,7 @@ def get_screen_resolutions(selected_default):
 			NOTE:
 				- This call only works if the engine is inited (self.run())
 	"""
-	possible_resolutions = []
+	possible_resolutions = set([selected_default])
 
 	_MIN_X = 800
 	_MIN_Y = 600
@@ -315,12 +315,7 @@ def get_screen_resolutions(selected_default):
 		if x < _MIN_X or y < _MIN_Y:
 			continue
 		res = str(x) + 'x' + str(y)
-		if res not in possible_resolutions:
-			possible_resolutions.append(res)
+		possible_resolutions.add(res)
 
-	if selected_default not in possible_resolutions:
-		possible_resolutions.append(selected_default)
-
-	possible_resolutions.sort(key=lambda res: int(res.split('x')[0]))
-
-	return possible_resolutions
+	by_width = lambda res: int(res.split('x')[0])
+	return sorted(possible_resolutions, key=by_width)
