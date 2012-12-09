@@ -68,7 +68,7 @@ def exit_with_error(title, message):
 	exit(1)
 
 if __name__ == '__main__':
-    	# python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
+	# python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
 	if platform.python_version_tuple()[0] not in (2,'2'):
 		exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
 
