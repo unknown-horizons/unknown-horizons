@@ -66,30 +66,31 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
 		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation",
-				                        applyfunction=update_minimap)
+		                                applyfunction=update_minimap)
 
 		self._setting.createAndAddEntry(UH_MODULE, "QuotesType", "quotestype",
 		                                initialdata=QUOTES_SETTINGS)
 		self._setting.createAndAddEntry(UH_MODULE, "ShowResourceIcons", "show_resource_icons")
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
-				                        initialdata={0: _("Default"), 16: _("16 bit"), 32: _("32 bit")}, requiresrestart=True)
+		                                initialdata={0: _("Default"), 16: _("16 bit"), 32: _("32 bit")},
+		                                requiresrestart=True)
 
 		languages = find_available_languages().keys()
 
 		self._setting.createAndAddEntry(UH_MODULE, "Language", "uni_language",
-				                        applyfunction=self.update_languages,
-				                        initialdata= [LANGUAGENAMES[x] for x in sorted(languages)])
+		                                applyfunction=self.update_languages,
+		                                initialdata=[LANGUAGENAMES[x] for x in sorted(languages)])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
-				                        applyfunction=self.set_volume_music)
+		                                applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
-				                        applyfunction=self.set_volume_effects)
+		                                applyfunction=self.set_volume_effects)
 
 		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
-				                        applyfunction=self.set_network_port)
+		                                applyfunction=self.set_network_port)
 
 		self._setting.createAndAddEntry(UH_MODULE, "DebugLog", "debug_log",
-				                        applyfunction=self.set_debug_log)
+		                                applyfunction=self.set_debug_log)
 
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.engine.sound.setup_sound()
@@ -98,12 +99,12 @@ class SettingsHandler(object):
 		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "FrameLimit", "fps_rate",
-				                        initialdata=[30, 45, 60, 90, 120], requiresrestart=True)
+		                                initialdata=[30, 45, 60, 90, 120], requiresrestart=True)
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity",
-				                        #read comment in set_mouse_sensitivity function about this
-				                        #applyfunction=self.set_mouse_sensitivity, \
-				                        requiresrestart=True)
+		                                # read comment in set_mouse_sensitivity function about this
+		                                #applyfunction=self.set_mouse_sensitivity,
+		                                requiresrestart=True)
 
 	def apply_settings(self):
 		"""Called on startup to apply the effects of settings"""
@@ -121,10 +122,10 @@ class SettingsHandler(object):
 		slider_event_map = {}
 		self.settings_dialog = self._setting.loadSettingsDialog()
 		self.settings_dialog.position_technique = "automatic" # "center:center"
-		slider_dict = {'AutosaveInterval' : 'autosaveinterval',
-				       'AutosaveMaxCount' : 'autosavemaxcount',
-				       'QuicksaveMaxCount' : 'quicksavemaxcount',
-				       'ScrollSpeed' : 'scrollspeed'}
+		slider_dict = {'AutosaveInterval': 'autosaveinterval',
+		               'AutosaveMaxCount': 'autosavemaxcount',
+		               'QuicksaveMaxCount': 'quicksavemaxcount',
+		               'ScrollSpeed': 'scrollspeed'}
 
 		for x in slider_dict.keys():
 			slider_initial_data[slider_dict[x]+'_value'] = unicode(int(self._setting.get(UH_MODULE, x)))
@@ -177,7 +178,7 @@ class SettingsHandler(object):
 		"""
 		Use this function for update slider value(and label) and change mouse sensitivity.
 		uncomment "else" with func below and "applyfunction=self.set_mouse_sensitivity" above
-		 if u know how to change sensitivity values in runtime
+		if u know how to change sensitivity values in runtime
 		"""
 		if not value:
 			#value=None means function called not for saving(and changing)
