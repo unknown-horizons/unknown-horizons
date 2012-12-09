@@ -69,8 +69,7 @@ class SettingsHandler(object):
 				                        applyfunction=update_minimap)
 
 		self._setting.createAndAddEntry(UH_MODULE, "QuotesType", "quotestype",
-		                                initialdata=QUOTES_SETTINGS,
-		                                applyfunction=self.set_quotestype)
+		                                initialdata=QUOTES_SETTINGS)
 		self._setting.createAndAddEntry(UH_MODULE, "ShowResourceIcons", "show_resource_icons")
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
@@ -152,12 +151,6 @@ class SettingsHandler(object):
 			#i18n Warning popup shown in settings when SDL is selected as renderer.
 			message = _("The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n\nUse at own risk!")
 			horizons.main._modules.gui.show_popup(headline, message)
-
-	def set_quotestype(self, *args):
-		type = 0
-		if args:
-			type = int(args[0])
-		self._setting.set(UH_MODULE, "QuotesType", type)
 
 	def update_slider_values(self, slider, factor=1, unit=''):
 		"""
