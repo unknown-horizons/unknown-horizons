@@ -836,11 +836,6 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 	def continue_build(self):
 		self._reshow_tab()
 
-	def add_change_listener(self, instance, building_tool): pass # using messages now
-	def remove_change_listener(self, instance, building_tool): pass
-	def remove(self, session):
-		super(BuildRelatedBuildingToolLogic, self).remove(session)
-
 
 decorators.bind_all(BuildingTool)
 decorators.bind_all(SettlementBuildingToolLogic)
