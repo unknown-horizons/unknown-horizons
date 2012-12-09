@@ -234,8 +234,8 @@ class View(ChangeListener):
 		width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1
 		zoom = self.get_zoom()
 		screen_width_as_coords = (width_x // zoom, width_y // zoom)
-		return Rect.init_from_topleft_and_size(coords.x - (width_x // 2),
-		                                       coords.y - (width_y // 2),
+		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0] // 2),
+		                                       coords.y - (screen_width_as_coords[1] // 2),
 		                                       *screen_width_as_coords)
 
 	def save(self, db):
