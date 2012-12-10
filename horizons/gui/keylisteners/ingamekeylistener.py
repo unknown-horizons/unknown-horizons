@@ -65,7 +65,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 		# We scrolled, do autoscroll
 		if self.key_scroll[0] or self.key_scroll[1]:
-			self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
+			self.session.view.autoscroll_keys(*self.key_scroll)
 
 		key_event_handled = True
 
@@ -213,11 +213,10 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.keys_pressed.remove(keyval)
 		except:
 			return
-		if action == _Actions.LEFT or \
-		   action == _Actions.RIGHT:
+		stop_horizontal = action in (_Actions.LEFT, _Actions.RIGHT)
+		stop_vertical = action in (_Actions.UP, _Actions.DOWN)
+		if stop_horizontal:
 			self.key_scroll[0] = 0
-		if action == _Actions.UP or \
-		   action == _Actions.DOWN:
+		elif stop_vertical:
 			self.key_scroll[1] = 0
-		self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
-
+		self.session.view.autoscroll_keys(*self.key_scroll)
