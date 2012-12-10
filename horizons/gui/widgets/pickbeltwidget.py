@@ -85,8 +85,8 @@ class OptionsPickbeltWidget(PickBeltWidget):
 
 	def __init__(self, *args, **kwargs):
 		# can't set this as class attribute directly since it's evaluated before gettext is set up
-		self.__class__.sections = (('graphics_settings', _(u'Graphics')),
-		                           ('game_settings', _(u'Game')))
+		self.__class__.sections = (('graphics_settings', _('Graphics')),
+		                           ('game_settings', _('Game')))
 
 		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
 
