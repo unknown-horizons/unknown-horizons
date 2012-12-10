@@ -34,33 +34,31 @@ class PickBeltWidget(object):
 
 	def __init__(self):
 		self.page_widgets = {}
-		self.dict_lt = {}
-		self.dict_rt = {}
 		self.widget = load_uh_widget(self.widget_xml, style=self.style)
 
-		self.pickbelts_container_lt = self.widget.findChild(name="left_pickbelts")
-		self.pickbelts_container_rt = self.widget.findChild(name="right_pickbelts")
+		# Lists holding pickbelt ImageButtons, placed to the left/right of the book
+		self.buttons = {'left': [], 'right': []}
 
-		for i in range(len(self.sections)):
-			self.page_widgets[i] = self.widget.findChild(name=self.sections[i][0])
+		for i, (name, text) in enumerate(self.sections):
+			self.page_widgets[i] = self.widget.findChild(name=name)
 
 		# Create the required pickbelts
-		for side in ('lt', 'rt'):
-			for i in range(len(self.sections)):
-				pickbelt = ImageButton(is_focusable=False)
-				pickbelt.name = self.sections[i][0] + '_' + side
-				pickbelt.text = self.sections[i][1]
+		for i, (name, text) in enumerate(self.sections):
+			for side in self.buttons:
+				pickbelt = ImageButton(is_focusable=False, text=text)
+				pickbelt.name = name + '_' + side
+				pickbelt.up_image = 'content/gui/images/background/pickbelt_%s.png' % side
 				pickbelt.font = "small_tooltip"
-				pickbelt.position = (self.pickbelt_start_pos[0]+5*i, self.pickbelt_start_pos[1]+70*i)
+
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
-				if side == 'lt':
-					pickbelt.up_image='content/gui/images/background/pickbelt_l.png'
-					self.pickbelts_container_lt.addChild(pickbelt)
-					self.dict_lt[i] = pickbelt
-				else:
-					pickbelt.up_image='content/gui/images/background/pickbelt_r.png'
-					self.pickbelts_container_rt.addChild(pickbelt)
-					self.dict_rt[i] = pickbelt
+
+				start_x, start_y = self.pickbelt_start_pos
+				pickbelt.position = (start_x + 5*i, start_y + 70*i)
+
+				container = self.widget.findChild(name="%s_pickbelts" % side)
+				container.addChild(pickbelt)
+				self.buttons[side].append(pickbelt)
+
 		self.widget.show() # Hack to initially setup the pickbelts properly
 		self.update_view()
 		self.widget.hide() # Hack to initially setup the pickbelts properly
@@ -69,22 +67,17 @@ class PickBeltWidget(object):
 		return self.widget
 
 	def update_view(self, number=0):
-		for i in range(len(self.sections)):
-			self.page_widgets[i].position = self.widget.size # Hack hide by position out of view
-		self.page_widgets[number].position = self.page_pos # Show the selected page
-
+		for page in self.page_widgets.values():
+			page.hide()
+		self.page_widgets[number].show()
 		# Setup the pickbelts according to selection
-		for i in range(len(self.sections)):
-			self.pickbelts_container_lt.showChild(self.dict_lt[i])
-			self.pickbelts_container_rt.showChild(self.dict_rt[i])
+		for belts in self.buttons.values():
+			for belt in belts:
+				belt.show()
+		split = number + 1
+		for belt in self.buttons['left'][split:] + self.buttons['right'][:split]:
+			belt.hide()
 
-		for i in range(number+1, len(self.dict_lt)):
-			if self.dict_lt[i].isVisible():
-				self.pickbelts_container_lt.hideChild(self.dict_lt[i])
-
-		for i in range(0, number+1):
-			if self.dict_rt[i].isVisible():
-				self.pickbelts_container_rt.hideChild(self.dict_rt[i])
 
 class OptionsPickbeltWidget(PickBeltWidget):
 	"""Widget for Options dialog with pickbelt style pages"""
