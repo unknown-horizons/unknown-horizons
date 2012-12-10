@@ -99,8 +99,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif action == _Actions.LOGBOOK:
 			self.session.ingame_gui.logbook.toggle_visibility()
 		elif action == _Actions.DEBUG:
-			pass
-			#import pdb; pdb.set_trace()
+			import pdb; pdb.set_trace()
 		elif action == _Actions.BUILD_TOOL:
 			self.session.ingame_gui.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:

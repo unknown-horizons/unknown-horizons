@@ -57,7 +57,7 @@ class KeyConfig(object):
 				key_id = self.get_key_by_name(key.upper())
 				self.keyval_action_mappings[key_id] = action_id
 
-		self.requires_shift = set()
+		self.requires_shift = set([_Actions.DEBUG])
 
 	def translate(self, evt):
 		"""

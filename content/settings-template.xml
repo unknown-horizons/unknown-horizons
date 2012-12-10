@@ -79,7 +79,7 @@
 		<Setting name="TILE_OWNER_HIGHLIGHT" type="list"> A </Setting>
 		<Setting name="PIPETTE" type="list"> O </Setting>
 		<Setting name="HEALTH_BAR" type="list"> K </Setting>
-		<Setting name="DEBUG" type="list"> D </Setting>
+		<Setting name="DEBUG" type="list"> F12 </Setting>
 		<Setting name="SCREENSHOT" type="list"> S </Setting>
 		<Setting name="SHOW_SELECTED" type="list"> J </Setting>
 		<Setting name="REMOVE_SELECTED" type="list"> DELETE </Setting>
@@ -97,6 +97,6 @@
 		<Setting name="CONSOLE" type="list"> F10 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 31 </Setting>
+		<Setting name="SettingsVersion" type="int"> 32 </Setting>
 	</Module>
 </Settings>
