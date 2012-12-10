@@ -26,6 +26,7 @@ from horizons.util.living import LivingObject
 from horizons.gui.keylisteners import KeyConfig
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.command.game import TogglePauseCommand, SpeedDownCommand, SpeedUpCommand
+from horizons.constants import VERSION
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
@@ -98,7 +99,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='ships')
 		elif action == _Actions.LOGBOOK:
 			self.session.ingame_gui.logbook.toggle_visibility()
-		elif action == _Actions.DEBUG:
+		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
 			import pdb; pdb.set_trace()
 		elif action == _Actions.BUILD_TOOL:
 			self.session.ingame_gui.show_build_menu()
