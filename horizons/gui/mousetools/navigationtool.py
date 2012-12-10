@@ -220,9 +220,9 @@ class NavigationTool(CursorTool):
 
 			# if no instances found, try again and search within a 8px radius
 			if not instances:
-				selectionRadius = 8
-				radius = fife.Rect(x - selectionRadius, y - selectionRadius,
-				                   selectionRadius * 2, selectionRadius * 2)
+				selection_radius = 8
+				radius = fife.Rect(x - selection_radius, y - selection_radius,
+				                   selection_radius * 2, selection_radius * 2)
 
 				instances = self.session.view.cam.getMatchingInstances(radius,
 									self.session.view.layers[layer])

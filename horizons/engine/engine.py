@@ -50,7 +50,7 @@ class Fife(ApplicationBase):
 
 		self._setting_handler = SettingsHandler(self)
 		self._setup_settings()
-		self._set_properly_window_icon()
+		self._set_window_icon()
 
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
@@ -71,11 +71,11 @@ class Fife(ApplicationBase):
 	# (required for preserving values when upgrading settings file)
 	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers", "ClientID"] }
 
-	def _set_properly_window_icon(self):
-		# Use other Window-Icon for Mac
-		if sys.platform == 'darwin' and \
-		   self.get_fife_setting('WindowIcon') == PATHS.DEFAULT_WINDOW_ICON_PATH:
-			self.set_fife_setting('WindowIcon', PATHS.MAC_WINDOW_ICON_PATH)
+	def _set_window_icon(self):
+		"""Use different window icon for Mac."""
+		if sys.platform == 'darwin':
+			if self.get_fife_setting('WindowIcon') == PATHS.DEFAULT_WINDOW_ICON_PATH:
+				self.set_fife_setting('WindowIcon', PATHS.MAC_WINDOW_ICON_PATH)
 
 	def _setup_settings(self, check_file_version=True):
 		# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently

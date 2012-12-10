@@ -202,11 +202,11 @@ class Minimap(object):
 		self.minimap_image.set_drawing_enabled()
 		rt = self.minimap_image.rendertarget
 		render_name = self._get_render_name("base")
-		drawPoint = rt.addPoint
+		draw_point = rt.addPoint
 		point = fife.Point()
 		for x, y, r, g, b in json.loads(data):
 			point.set(x, y)
-			drawPoint(render_name, point, r, g, b)
+			draw_point(render_name, point, r, g, b)
 
 
 	def _get_render_name(self, key):
@@ -487,9 +487,9 @@ class Minimap(object):
 		location_top = self.location.top
 		if dump_data:
 			data = []
-			drawPoint = lambda name, fife_point, r, g, b : data.append( (fife_point.x, fife_point.y, r, g, b) )
+			draw_point = lambda name, fife_point, r, g, b : data.append( (fife_point.x, fife_point.y, r, g, b) )
 		else:
-			drawPoint = rt.addPoint
+			draw_point = rt.addPoint
 		fife_point = fife.Point(0, 0)
 
 		use_rotation = self._get_rotation_setting()
@@ -538,7 +538,7 @@ class Minimap(object):
 				else:
 					fife_point.set(x, y)
 
-				drawPoint(render_name, fife_point, *color)
+				draw_point(render_name, fife_point, *color)
 
 		if dump_data:
 			return json.dumps( data )

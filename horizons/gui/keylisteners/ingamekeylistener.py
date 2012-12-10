@@ -36,7 +36,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		assert isinstance(session, Session)
 		self.session = session
 		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
-		self.keysPressed = []
+		self.keys_pressed = []
 		# Used to sum up the keyboard autoscrolling
 		self.key_scroll = [0, 0]
 
@@ -51,9 +51,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 		_Actions = KeyConfig._Actions
 
-		was = keyval in self.keysPressed
+		was = keyval in self.keys_pressed
 		if not was:
-			self.keysPressed.append(keyval)
+			self.keys_pressed.append(keyval)
 		if action == _Actions.LEFT:
 			if not was: self.key_scroll[0] -= 25
 		if action == _Actions.RIGHT:
@@ -210,7 +210,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		_Actions = KeyConfig._Actions
 		action = KeyConfig().translate(evt)
 		try:
-			self.keysPressed.remove(keyval)
+			self.keys_pressed.remove(keyval)
 		except:
 			return
 		if action == _Actions.LEFT or \
