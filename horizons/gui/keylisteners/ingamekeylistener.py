@@ -101,39 +101,6 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif action == _Actions.DEBUG:
 			pass
 			#import pdb; pdb.set_trace()
-			#debug code to check for memory leaks:
-			"""
-			import gc
-			import weakref
-			all_lists = []
-			for island in self.session.world.islands:
-				buildings_weakref = []
-				for b in island.buildings:
-					buildings_weakref.append( weakref.ref(b) )
-				import random
-				random.shuffle(buildings_weakref)
-				all_lists.extend(buildings_weakref)
-
-				for b in buildings_weakref:
-					if b().id == 17: continue
-					if b().id == 1: continue # warehouse is unremovable
-
-					#if b().id != 2: continue # test storage now
-
-					print 'gonna remove: ', b()
-					b().remove()
-					collected = gc.collect()
-					print 'collected: ', collected
-
-					if b() is not None:
-						import pdb ; pdb.set_trace()
-						print 'referrers: ', gc.get_referrers(b())
-						a = gc.get_referrers(b())
-						print
-
-			#print all_lists
-			"""
-
 		elif action == _Actions.BUILD_TOOL:
 			self.session.ingame_gui.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:
