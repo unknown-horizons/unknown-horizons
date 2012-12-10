@@ -237,9 +237,10 @@
 	</HBox>
 
 <!-- General section -->
-	<HBox position="700,500">
+	<HBox position="180,500" padding="245">
 		<DeleteButton name="defaultButton" helptext="Reset to default settings" is_focusable="0" />
-		<CancelButton helptext="Return" is_focusable="0" />
+		<CancelButton helptext="Discard current changes" is_focusable="0" />
+		<Spacer fixed_size="60" />
 		<OkButton helptext="Apply" is_focusable="0" />
 	</HBox>
 
