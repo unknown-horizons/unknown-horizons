@@ -64,7 +64,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 				self.key_scroll[1] += 25
 
 		# We scrolled, do autoscroll
-		if self.key_scroll[0] or self.key_scroll[1]:
+		if self.key_scroll[0] != 0 or self.key_scroll[1] != 0:
 			self.session.view.autoscroll_keys(*self.key_scroll)
 
 		key_event_handled = True
