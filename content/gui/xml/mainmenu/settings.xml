@@ -63,11 +63,31 @@
 			<Icon image="content/gui/images/background/hr.png" />
 
 			<HBox>
+				<Label name="edge_scrolling_label" text="Scroll at map edge:" min_size="256,0"
+					helptext="Whether to move the viewport when the mouse pointer is close to map edges" />
+				<CheckBox min_size="24,24" name="edgescrolling" />
+			</HBox>
+
+			<HBox>
+				<Label name="cursor_centered_zoom_label" text="Cursor centered zoom:" min_size="256,0"
+					helptext="When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center." />
+				<CheckBox min_size="24,24" name="cursor_centered_zoom" />
+			</HBox>
+
+			<HBox>
+				<Label name="middle_mouse_pan_lbl" text="Middle mouse button pan:" min_size="256,0"
+					helptext="When enabled, dragging the middle mouse button will pan the camera" />
+				<CheckBox min_size="24,24" name="middle_mouse_pan" />
+			</HBox>
+
+		<Spacer fixed_size="15" />
+			<HBox>
 				<Label name="mouse_sensitivity_label" text="Mouse sensitivity:"
 					wrap_text="1" max_size="250,40"  min_size="250,20"
 					helptext="0 is default system settings" />
 				<Label text="" name="mousesensitivity_value" />
 			</HBox>
+
 			<Slider size="300,20" name="mousesensitivity" is_focusable="0"
 				orientation="0" scale_start="-0.1" scale_end="0.5" step_length="1.0" />
 			<Button name="reset_mouse_sensitivity" text="Reset to default" is_focusable="0" max_size="300,32" />
@@ -163,21 +183,9 @@
 				</HBox>
 
 				<HBox>
-					<Label name="edge_scrolling_label" text="Scroll at map edge:" min_size="256,0"
-					       helptext="Whether to move the viewport when the mouse pointer is close to map edges" />
-					<CheckBox min_size="24,24" name="edgescrolling" />
-				</HBox>
-
-				<HBox>
 					<Label name="uninterrupted_building_label" text="Uninterrupted building:" min_size="256,0"
 					       helptext="When enabled, do not exit the build mode after successful construction" />
 					<CheckBox min_size="24,24" name="uninterrupted_building" />
-				</HBox>
-
-				<HBox>
-					<Label name="cursor_centered_zoom_label" text="Cursor centered zoom:" min_size="256,0"
-					       helptext="When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center." />
-					<CheckBox min_size="24,24" name="cursor_centered_zoom" />
 				</HBox>
 
 				<HBox>
@@ -198,12 +206,7 @@
 					<CheckBox min_size="24,24" name="show_resource_icons" />
 				</HBox>
 
-				<HBox>
-					<Label name="middle_mouse_pan_lbl" text="Middle mouse button pan:" min_size="256,0"
-					       helptext="When enabled, dragging the middle mouse button will pan the camera" />
-					<CheckBox min_size="24,24" name="middle_mouse_pan" />
-				</HBox>
-
+			<Spacer fixed_size="10" />
 				<HBox>
 					<Label name="scroll_speed_label" text="Scroll delay:"
 						wrap_text="1" max_size="250,40" min_size="250,20"
@@ -213,6 +216,7 @@
 				<Slider size="300,20" name="scrollspeed" is_focusable="0"
 					orientation="0" scale_start="0.1" scale_end="2.0" step_length="0.05" />
 
+			<Spacer fixed_size="15" />
 				<HBox>
 					<Label name="quote_type_label" text="Choose a quote type:" min_size="160,0"
 					       helptext="What kind of quote to display while loading a game" />
