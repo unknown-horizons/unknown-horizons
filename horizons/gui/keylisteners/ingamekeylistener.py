@@ -51,17 +51,17 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 		_Actions = KeyConfig._Actions
 
-		was = keyval in self.keys_pressed
-		if not was:
+		was_pressed = keyval in self.keys_pressed
+		if not was_pressed:
 			self.keys_pressed.append(keyval)
-		if action == _Actions.LEFT:
-			if not was: self.key_scroll[0] -= 25
-		if action == _Actions.RIGHT:
-			if not was: self.key_scroll[0] += 25
-		if action == _Actions.UP:
-			if not was: self.key_scroll[1] -= 25
-		if action == _Actions.DOWN:
-			if not was: self.key_scroll[1] += 25
+			if action == _Actions.LEFT:
+				self.key_scroll[0] -= 25
+			if action == _Actions.RIGHT:
+				self.key_scroll[0] += 25
+			if action == _Actions.UP:
+				self.key_scroll[1] -= 25
+			if action == _Actions.DOWN:
+				self.key_scroll[1] += 25
 
 		# We scrolled, do autoscroll
 		if self.key_scroll[0] or self.key_scroll[1]:
