@@ -4,8 +4,7 @@
 <Container name="settings_window" size="1000,580">
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 <!-- Pickbelts to the left -->
-	<Container name="left_pickbelts" size="170,580" position="30,0">
-	</Container>
+	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
 <!-- Graphics section -->
 <HBox name="graphics_settings" position="185,45" padding="25">
