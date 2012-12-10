@@ -405,7 +405,7 @@ class WILD_ANIMAL:
 	HEALTH_LEVEL_TO_REPRODUCE = 75 # this level has to be reached for reproducing
 	POPULATION_LIMIT = 15 # minimum number of trees per animal to allow reproducing
 	FOOD_AVAILABLE_ON_START = 0.5 # probability that a tree has wild animal food in the beginning
-	POPUlATION_INIT_RATIO = 15 # every N-th tree gets an animal in the beginning
+	POPULATION_INIT_RATIO = 15 # every N-th tree gets an animal in the beginning
 
 class COLLECTORS:
 	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
