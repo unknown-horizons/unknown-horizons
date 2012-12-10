@@ -18,7 +18,7 @@
 		<Icon image="content/gui/images/background/hr.png" position="52,140" />
 		-->
 
-		<VBox position="42,370"  max_size="290,125"  min_size="290,125" >
+		<VBox position="42,370"  max_size="290,125"  min_size="290,125">
 
 			<HBox>
 				<Label name="create_game_lbl" text="Create game:" />

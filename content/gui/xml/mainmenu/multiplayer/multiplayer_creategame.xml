@@ -51,12 +51,12 @@
 		<Spacer fixed_size="50"/>
 		<!--
 		<Label text="Choose a map:"  name="headline"  position="0,50" />
-		<ScrollArea position="0,80"  name="map_list_area"  min_size="290,250" >
+		<ScrollArea position="0,80"  name="map_list_area"  min_size="290,250">
 			<ListBox name="maplist"  min_size="290,330" />
 		</ScrollArea>
 		-->
 		<Label text="Choose a map:"  name="headline"  />
-		<ScrollArea  name="map_list_area"  min_size="290,250" >
+		<ScrollArea  name="map_list_area"  min_size="290,250">
 			<ListBox name="maplist"  min_size="290,330" is_focusable="0" />
 		</ScrollArea>
 		<Label name="recommended_number_of_players_lbl" text="" />

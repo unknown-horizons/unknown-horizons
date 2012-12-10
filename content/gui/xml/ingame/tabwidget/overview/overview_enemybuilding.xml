@@ -4,9 +4,9 @@
 <TabBG amount="3"/>
 	<Icon name="player_emblem" position="25,50"/>
 
-	<Container position="0,70" size="600,400" >
+	<Container position="0,70" size="600,400">
 
-		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+		<HBox position="22,7"  min_size="170,20"  size="230,20">
 		<Spacer min_size="0"  max_size="50" />
 			<Label name="headline" text="" /> <!-- set to owner player name-->
 		</HBox>

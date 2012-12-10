@@ -4,9 +4,9 @@
 <TabBG amount="5"/>
 <Icon name="player_emblem" position="25,50"/>
 
-<Container position="0,70" size="245,300" >
+<Container position="0,70" size="245,300">
 
-	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<HBox position="22,7"  min_size="170,20"  size="230,20">
 	<Spacer min_size="0"  max_size="50" />
 		<RenameLabel name="headline" text="" helptext="Click to change the name of your settlement" />
 	</HBox>

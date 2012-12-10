@@ -3,7 +3,7 @@
 <Container  size="260,550" name="boatbuilder_showcase">
 <TabBG amount="8"/>
 
-	<Container position="0,70" size="260,80" >
+	<Container position="0,70" size="260,80">
 		<!-- Headline -->
 		<Label name="headline" position="75,7" /> <!-- text filled at runtime -->
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />

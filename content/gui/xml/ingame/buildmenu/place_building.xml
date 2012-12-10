@@ -2,7 +2,7 @@
 <Container size="250,450" border_size="0" name="place_building">
 <TabBG amount="6" />
 
-	<Container position="0,70" size="250,400" >
+	<Container position="0,70" size="250,400">
 		<HBox name="head_box" position="0,7" size="250,100">
 			<Label name="headline" text="Build" />
 		</HBox>

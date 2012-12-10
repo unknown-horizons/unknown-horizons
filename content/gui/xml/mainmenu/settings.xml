@@ -17,7 +17,7 @@
 			<HBox  max_size="320,245">
 				<VBox>
 					<Label text="Screen resolution:" name="screen_resolution_label" wrap_text="1" />
-					<ScrollArea min_size="100,115" >
+					<ScrollArea min_size="100,115">
 						<ListBox name="screen_resolution" is_focusable="0" />
 					</ScrollArea>
 				</VBox>
@@ -27,7 +27,7 @@
 				<VBox>
 					<Label name="color_depth_label" text="Color depth:" max_size="140,20"
 						wrap_text="1" helptext="If set to 0, use the driver default" />
-					<ScrollArea min_size="80,55" >
+					<ScrollArea min_size="80,55">
 						<ListBox name="screen_bpp" is_focusable="0" />
 					</ScrollArea>
 
@@ -42,7 +42,7 @@
 		<VBox>
 			<Label name="use_renderer_label" text="Used renderer:"
 				wrap_text="1" helptext="SDL is only meant as unsupported fallback and might cause problems!" />
-			<ScrollArea min_size="82,55" >
+			<ScrollArea min_size="82,55">
 				<ListBox name="render_backend" is_focusable="0" />
 			</ScrollArea>
 		</VBox>
@@ -50,7 +50,7 @@
 		<VBox>
 			<Label name="fps_label" text="Frame rate limit:"
 				wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
-			<ScrollArea min_size="80,90" >
+			<ScrollArea min_size="80,90">
 				<ListBox name="fps_rate" is_focusable="0" />
 			</ScrollArea>
 		</VBox>
@@ -164,7 +164,7 @@
 				<Label text="Language" position_technique="automatic" name="headline_language" font="headline" />
 				<Icon image="content/gui/images/background/hr.png" />
 
-				<ScrollArea min_size="165,206" >
+				<ScrollArea min_size="165,206">
 					<ListBox name="uni_language" is_focusable="0" />
 				</ScrollArea>
 			</VBox>
@@ -220,7 +220,7 @@
 				<HBox>
 					<Label name="quote_type_label" text="Choose a quote type:" min_size="160,0"
 					       helptext="What kind of quote to display while loading a game" />
-					<ScrollArea min_size="120,55" >
+					<ScrollArea min_size="120,55">
 						<ListBox name="quotestype" is_focusable="0" min_size="120,55" />
 					</ScrollArea>
 				</HBox>
@@ -239,7 +239,7 @@
 	</HBox>
 
 <!-- General section -->
-	<HBox position="700,500" >
+	<HBox position="700,500">
 		<DeleteButton name="defaultButton" helptext="Reset to default settings" is_focusable="0" />
 		<CancelButton helptext="Return" is_focusable="0" />
 		<OkButton helptext="Apply" is_focusable="0" />
