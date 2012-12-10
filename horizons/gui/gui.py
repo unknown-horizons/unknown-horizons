@@ -246,6 +246,7 @@ class Gui(object):
 		# Overwrite a few style pieces
 		for box in widget.findChildren(name='box'):
 			box.margins = (30, 0) # to get some indentation
+			box.padding = 3
 		for listbox in widget.findChildren(name='translators'):
 			listbox.background_color = fife.Color(255, 255, 255, 0)
 		self.show_dialog(widget, {OkButton.DEFAULT_NAME: True})

@@ -6,7 +6,7 @@
 
 <!-- First container ( uh-team ), visible by default -->
 <HBox name="credits_team" position="185,45" padding="10">
-	<VBox max_size="310,470" min_size="310,470">
+	<VBox max_size="310,500" min_size="310,500">
 		<Label text="UH-Team" name="headline" />
 		<Icon image="content/gui/images/background/hr.png" />
 		<VBox> <Label text="Project Coordination" name="headline" />
@@ -38,7 +38,7 @@
 		</VBox> <Spacer />
 	</VBox>
 
-	<VBox position="525,70" name="credits_team2" max_size="310,470" min_size="310,470">
+	<VBox position="525,70" name="credits_team2" max_size="310,500" min_size="310,500">
 		<VBox> <Label text="Game-Play Design" name="headline" />
 			<VBox name="box">
 				<Label text="dauerflucher (Andreas Lis)" />
