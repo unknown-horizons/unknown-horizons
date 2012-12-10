@@ -12,7 +12,7 @@
     <VBox name="input_res" position="2,0" />
 
     <Container name="centered_production_icons" size="200,52" position="0,0">
-        <Icon image="content/gui/icons/templates/production/production_arrow_head.png" position="107,17"/>
+        <Icon image="content/gui/icons/templates/production/production_arrow_head.png" position="107,17" />
         <VBox name="output_box" position="136,17" />
 
     <!-- one of those button gets removed at runtime -->
@@ -26,7 +26,7 @@
         hover_image="content/gui/icons/templates/production/toggle_small_inactive_h.png"
         border_size="0" position="82,-02" name="toggle_active_inactive" helptext="Start production" />
 
-    <VBox name="output_res" position="157,0"/>
+    <VBox name="output_res" position="157,0" />
 </Container>
 
     <VBox name="input_box" position="61,17" />

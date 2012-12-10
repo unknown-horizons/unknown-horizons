@@ -6,7 +6,7 @@
 	<VBox name="left_page" max_size="335,495" min_size="335,495" position="85,45" padding="12">
 		<Label text="" name="headline" wrap_text="1"
 			max_size="335,20" min_size="335,20" />
-		<Icon image="content/gui/images/background/hr.png"/>
+		<Icon image="content/gui/images/background/hr.png" />
 		<Label text="Your saved games:" name="headline_saved_games_label" wrap_text="1"
 			max_size="335,20" min_size="335,20" />
 
@@ -16,11 +16,11 @@
 	<Spacer fixed_size="20" />
 		<VBox name="gamedetails_box">
 			<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamename_box"> <!-- keep sync with equivalent entry in multiplayer_creategame.xml -->
-				<Label text="Name of the game:" name="gamename_lbl" helptext="This will be displayed to other players so they recognise the game."/>
+				<Label text="Name of the game:" name="gamename_lbl" helptext="This will be displayed to other players so they recognise the game." />
 				<TextField name="gamename" text="Unnamed Game" max_size="250,20" min_size="150,20" />
 			</HBox>
 			<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamepassword_box">
-				<Label text="Password of the game:" name="gamepassword_lbl" helptext="Password of the game. Required to join this game"/>
+				<Label text="Password of the game:" name="gamepassword_lbl" helptext="Password of the game. Required to join this game" />
 				<TextField name="gamepassword" text="" max_size="250,20" min_size="150,20" />
 			</HBox>
 		</VBox>

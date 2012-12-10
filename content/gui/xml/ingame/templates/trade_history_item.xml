@@ -3,7 +3,7 @@
 <VBox size="245,45">
 	<HBox>
 		<Label name="player_emblem" text="   " size="12,18"  comment="noi18n" />
-		<Label name="player_name" min_size="138,20"/>
+		<Label name="player_name" min_size="138,20" />
 		<Label name="gold_amount" />
 		<Icon name="gold_icon" />
 	</HBox>

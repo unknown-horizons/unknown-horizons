@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Trade boats tab -->
 <Container  size="260,550" name="boatbuilder_showcase">
-<TabBG amount="8"/>
+<TabBG amount="8" />
 
 	<Container position="0,70" size="260,80">
 		<!-- Headline -->

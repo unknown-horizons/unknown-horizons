@@ -31,15 +31,15 @@
 
 		<Label name="startmessage"  text="Game details:"  position="0,100" />
 		<VBox position="130,100" name="game_info">
-			<Label name="game_map"/>
-			<Label name="game_name"/>
-			<Label name="game_creator"/>
-			<Label name="game_isloaded"/>
+			<Label name="game_map" />
+			<Label name="game_name" />
+			<Label name="game_creator" />
+			<Label name="game_isloaded" />
 		</VBox>
 
-		<Label name="game_playersnum" position="0,190"/>
-		<Label name="game_player_color" position="130,190" text="Color"/>
-		<Label name="game_player_status" position="205,190" text="Status"/>
+		<Label name="game_playersnum" position="0,190" />
+		<Label name="game_player_color" position="130,190" text="Color" />
+		<Label name="game_player_status" position="205,190" text="Status" />
 		<VBox name="players_vbox" position="0,215"></VBox>
 	</Container>
 

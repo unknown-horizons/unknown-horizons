@@ -3,7 +3,7 @@
      Usually, you may want to edit the general overview_productionbuilding.xml instead.
      That file also contains more comments and documentation. -->
 <Container size="250,550">
-<TabBG amount="8"/>
+<TabBG amount="8" />
 
 <Container position="0,70" size="250,450">
 

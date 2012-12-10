@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container size="350,60">
-	<Label name="warehouse_name" position="0,7" text=""/>
-	<Label name="player_name" position="0,27" text=""/>
+	<Label name="warehouse_name" position="0,7" text="" />
+	<Label name="player_name" position="0,27" text="" />
 
 	<ImageButton name="move_up" position="290,6" border_size="0"
 		up_image="content/gui/images/buttons/up_15.png"

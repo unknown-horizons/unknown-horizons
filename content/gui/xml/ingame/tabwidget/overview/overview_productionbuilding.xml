@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Overview tab for buildings -->
 <Container size="250,450">
-<TabBG amount="6"/>
+<TabBG amount="6" />
 
 <Container position="0,70" size="250,400">
 

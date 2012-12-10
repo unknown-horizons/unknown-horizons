@@ -30,10 +30,10 @@
 	</VBox>
 
 	<HBox>
-		<Icon name="map_preview_minimap" size="120,120" max_size="120,120" is_focusable="0"/>
+		<Icon name="map_preview_minimap" size="120,120" max_size="120,120" is_focusable="0" />
 		<VBox>
-			<Spacer/>
-			<Label name="map_preview_status_label" is_focusable="0"/>
+			<Spacer />
+			<Label name="map_preview_status_label" is_focusable="0" />
 		</VBox>
 	</HBox>
 

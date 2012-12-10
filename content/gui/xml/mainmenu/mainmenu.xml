@@ -64,7 +64,7 @@
 		down_image="content/gui/icons/mainmenu/editor.png"
 		hover_image="content/gui/icons/mainmenu/editor.png" />
 
-	<Label name="credits" text="Credits" position="165,365"/>
+	<Label name="credits" text="Credits" position="165,365" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="302,298" />
 	<ImageButton name="creditsLink"
 		position="328,321"

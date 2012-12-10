@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
 <Container  size="250,300">
-	<TabBG amount="3"/>
+	<TabBG amount="3" />
 
 	<Container position="0,70" size="600,400">
 

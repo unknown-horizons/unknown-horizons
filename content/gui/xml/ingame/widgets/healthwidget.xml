@@ -2,7 +2,7 @@
 <Container size="50,25">
 	<Label name="health_label" text="100/100"  comment="noi18n" />
 	<Container size="50,15" position="0,14">
-		<Icon image="content/gui/images/background/bar_bg.png" size="60,20"/>
-		<ProgressBar name="health_bar" position="1,1" size="47,20"/>
+		<Icon image="content/gui/images/background/bar_bg.png" size="60,20" />
+		<ProgressBar name="health_bar" position="1,1" size="47,20" />
 	</Container>
 </Container>

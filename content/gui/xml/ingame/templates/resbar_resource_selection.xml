@@ -17,9 +17,9 @@
 	<Icon image="content/gui/images/background/hr.png" position="21,300" />
 
 	<ImageButton name="make_default_btn" up_image="content/gui/images/buttons/store.png" hover_image="content/gui/images/buttons/store_h.png"
-	             helptext="Save current resource configuration as default for all settlements." position="15,308"/>
+	             helptext="Save current resource configuration as default for all settlements." position="15,308" />
 	<!-- TODO: Use a better restore icon here. -->
 	<ImageButton name="reset_default_btn" up_image="content/gui/images/buttons/restore.png" hover_image="content/gui/images/buttons/restore_h.png"
-	             helptext="Reset default resource configuration for all settlements." position="200,308"/>
+	             helptext="Reset default resource configuration for all settlements." position="200,308" />
 
 </Container>

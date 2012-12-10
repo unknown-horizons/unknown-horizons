@@ -8,7 +8,7 @@ In case you change the size of this Container, also adapt the ingamegui position
 <Container name="background_and_buttons" position="-30,0" size="240,240">
 	<Icon name="minimap_overlay_image" position="31, 1"
 		image="content/gui/images/background/widgets/map_bg.png" />
-	<Label name="speed_text" text="" position="48,88" font="small_black"/>
+	<Label name="speed_text" text="" position="48,88" font="small_black" />
 
 	<ToggleImageButton name="speedUp" position="48,63"
 		inactive_image="content/gui/icons/widgets/minimap/speed_up_bw.png"
@@ -82,12 +82,12 @@ In case you change the size of this Container, also adapt the ingamegui position
 		up_image="content/gui/icons/widgets/minimap/diplomacy.png"
 		down_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
 		hover_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
-		helptext="Diplomacy" is_focusable="0"/>
+		helptext="Diplomacy" is_focusable="0" />
 	<ImageButton name="gameMenuButton" position="160,0"
 		up_image="content/gui/icons/widgets/minimap/gamemenu.png"
 		down_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
 		hover_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
-		helptext="Game menu (Esc)" is_focusable="0"/>
+		helptext="Game menu (Esc)" is_focusable="0" />
 </Container>
 <Icon name="minimap"  size="120,120"  max_size="120,120"  position="47,46" />
 </Container>

@@ -5,7 +5,7 @@
 
 	<Container size="320,510"  position="175,132"  name="left_side">
 		<Label text="New game - Multiplayer"  position="70,10"  name="headline_left" 
-			font="headline"/>
+			font="headline" />
 		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
 		<VBox name="playerdataselectioncontainer"  position="0,60" />
 		<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="104,103" />
@@ -58,8 +58,8 @@
 			<Label name="game_map"         wrap_text="1"  max_size="300,40" />
 			<Label name="game_name"         wrap_text="1"  max_size="300,40" />
 			<Label name="game_creator"     wrap_text="1"  max_size="300,40" />
-			<Label name="game_playersnum"  wrap_text="1"  max_size="300,100"/>
-			<Label name="game_isloaded"    wrap_text="1"  max_size="300,100"/>
+			<Label name="game_playersnum"  wrap_text="1"  max_size="300,100" />
+			<Label name="game_isloaded"    wrap_text="1"  max_size="300,100" />
 
 			<!--
 			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>

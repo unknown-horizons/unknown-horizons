@@ -8,9 +8,9 @@
 	<!-- define balance part before rest since it needs to be below -->
 	<!-- hovering this background will show the full stats, defined in resource_overview_bar_stats -->
 	<Icon name="balance_background" position="4,73"
-		image="content/gui/images/background/widgets/resbar_stats_bottom.png"/>
+		image="content/gui/images/background/widgets/resbar_stats_bottom.png" />
 	<Icon name="scales_icon" position="9,74"
-		image="content/gui/images/resbar_stats/scales_icon.png"/>
+		image="content/gui/images/resbar_stats/scales_icon.png" />
 
 	<!-- end of balance part -->
 

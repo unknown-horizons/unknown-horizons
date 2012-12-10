@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
 <Container  size="250,500">
-<TabBG amount="7"/>
+<TabBG amount="7" />
 
 	<Container position="0,70" size="600,400">
 
@@ -14,7 +14,7 @@
 		<Container size="260,550" position="22,20">
 
 			<!-- Building image -->
-			<Icon name="building_image" position="30,14"/>
+			<Icon name="building_image" position="30,14" />
 
 			<!-- happiness and residents -->
 			<Label name='name' position="0,140" text="" />

@@ -5,7 +5,7 @@ It shows an overview over the inhabitants like average happiness and most needed
 resources.
 -->
 <Container size="250,500" name="mainsquare_inhabitants">
-<TabBG name="background" amount="7"/>
+<TabBG name="background" amount="7" />
 
 	<Container position="0,70" size="600,500">
 
@@ -69,10 +69,10 @@ resources.
 
 		<Container name="residents_total" size="260,60" position="25,290">
 			<Label name="headline_residents_total" position="0,0" text="Summary" />
-			<Label name="houses" position="10,20" text="houses"/>
-			<Label position="160,20" name="house_count"/>
-			<Label name="residents" position="10,40" text="residents"/>
-			<Label position="160,40" name="resident_count"/>
+			<Label name="houses" position="10,20" text="houses" />
+			<Label position="160,20" name="house_count" />
+			<Label name="residents" position="10,40" text="residents" />
+			<Label position="160,40" name="resident_count" />
 		</Container>
 	</Container>
 </Container>

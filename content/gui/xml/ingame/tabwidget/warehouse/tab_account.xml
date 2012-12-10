@@ -14,7 +14,7 @@
 
 		<Label name="headline_income_label" position="0,0" text="Income:" />
 		<Icon image="content/gui/images/resbar_stats/income.png" position="0,20" />
-		<Label name="taxes_label" position="19,20" text="Taxes"/>
+		<Label name="taxes_label" position="19,20" text="Taxes" />
 		<Label position="160,20" name="taxes" min_size="100,15" />
 
 		<Icon image="content/gui/images/resbar_stats/sell.png" position="0,40" />
@@ -25,8 +25,8 @@
 		<Label name="headline_expenses_label" position="0,70" text="Expenses:" />
 
 		<Icon image="content/gui/images/resbar_stats/expense.png" position="0,90" />
-		<Label name="running_costs_label" position="19,90" text="Running costs"/>
-		<Label position="160,90" name="running_costs" min_size="100,15"/>
+		<Label name="running_costs_label" position="19,90" text="Running costs" />
+		<Label position="160,90" name="running_costs" min_size="100,15" />
 
 		<Icon image="content/gui/images/resbar_stats/buy.png" position="0,110" />
 		<Label name="buy_expenses_label" position="19,110" text="Buying" />
@@ -58,7 +58,7 @@
 using hboxes and vboxes (padding problem with margins)
 
 <Container  size="250,450">
-<TabBG amount="6"/>
+<TabBG amount="6" />
 
 <Container position="22,77" size="250,450">
 
@@ -89,7 +89,7 @@ using hboxes and vboxes (padding problem with margins)
 		<Label name="taxes" />
 		<Label name="sale" />
 
-		<Label name=""/>
+		<Label name="" />
 		<Label name="running_costs" />
 		<Label name="buying" />
 
