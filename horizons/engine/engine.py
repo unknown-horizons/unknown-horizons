@@ -69,7 +69,7 @@ class Fife(ApplicationBase):
 
 	# existing settings not part of this gui or the fife defaults
 	# (required for preserving values when upgrading settings file)
-	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers", "ClientID"] }
+	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers", "ClientID"]}
 
 	def _set_window_icon(self):
 		"""Use different window icon for Mac."""
@@ -80,15 +80,15 @@ class Fife(ApplicationBase):
 	def _setup_settings(self, check_file_version=True):
 		# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently
 		# (although the doc states otherwise) - thus translate paths to absolute ones
-		_template_config_file = os.path.join( os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE )
-		template_config_parser = SimpleXMLSerializer( _template_config_file )
+		_template_config_file = os.path.join(os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE)
+		template_config_parser = SimpleXMLSerializer(_template_config_file)
 		template_settings_version = template_config_parser.get("meta", "SettingsVersion")
 		self._default_hotkeys = template_config_parser.getAllSettings(KEY_MODULE)
 
-		_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
+		_user_config_file = os.path.join(os.getcwd(), PATHS.USER_CONFIG_FILE)
 		if check_file_version and os.path.exists(_user_config_file):
 			# check if user settings file is the current one
-			user_config_parser = SimpleXMLSerializer( _user_config_file )
+			user_config_parser = SimpleXMLSerializer(_user_config_file)
 			user_settings_version = user_config_parser.get("meta", "SettingsVersion", -1)
 
 			if template_settings_version > user_settings_version: # we have to update the file
@@ -110,7 +110,7 @@ class Fife(ApplicationBase):
 					except UnicodeEncodeError: # this can happen when unicode data is saved as str
 						value = "default"
 					if value is not default_value:
-						entries.append( (modulename, entryname, value ) )
+						entries.append( (modulename, entryname, value) )
 
 				# collect values from known settings and unreferenced settings
 				for modulename, module in self._setting.entries.iteritems():
@@ -131,8 +131,8 @@ class Fife(ApplicationBase):
 							entries.append(i)
 
 				# write actual new file
-				shutil.copy( PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE )
-				user_config_parser = SimpleXMLSerializer( _user_config_file )
+				shutil.copy(PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE)
+				user_config_parser = SimpleXMLSerializer(_user_config_file)
 				for modulename, entryname, value in entries:
 					user_config_parser.set(modulename, entryname, value)
 				user_config_parser.save()
@@ -168,7 +168,7 @@ class Fife(ApplicationBase):
 			'rename':    'content/gui/images/cursors/cursor_rename.png',
 		}
 		self.cursor_images = dict( (k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems() )
-		self.cursor.set( self.cursor_images['default'] )
+		self.cursor.set(self.cursor_images['default'])
 
 		#init pychan
 		debug_pychan = self.get_fife_setting('PychanDebug') # default is False
@@ -201,7 +201,7 @@ class Fife(ApplicationBase):
 	def set_cursor_image(self, which="default"):
 		"""Sets a certain cursor image.
 		See definition of cursor_images for reference."""
-		self.cursor.set( self.cursor_images[which] )
+		self.cursor.set(self.cursor_images[which])
 
 	def get_fife_setting(self, settingname):
 		return self._setting.get(FIFE_MODULE, settingname)
