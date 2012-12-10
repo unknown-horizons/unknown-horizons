@@ -89,3 +89,16 @@ class OptionsPickbeltWidget(PickBeltWidget):
 		                           ('game_settings', _(u'Game')))
 
 		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
+
+
+class CreditsPickbeltWidget(PickBeltWidget):
+	"""Widget for credits dialog with pickbelt style pages"""
+	widget_xml = 'credits.xml'
+	# Can set as class attribute directly since no gettext calls
+	sections = (
+		('credits_team', u'UH-Team'),
+		('credits_patchers', u'Patchers'),
+		('credits_translators', u'Translators'),
+		('credits_packagers', u'Packagers'),
+		('credits_thanks', u'Thanks'),
+	)

@@ -33,7 +33,7 @@ import horizons.main
 from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
-from horizons.util.python.callback import Callback
+from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
@@ -68,7 +68,6 @@ class Gui(object):
 	  'select_savegame': 'book',
 	  'ingame_pause': 'book',
 	  'game_settings' : 'book',
-#	  'credits': 'book',
 	  'editor_pause_menu': 'headline',
 	  }
 
@@ -242,22 +241,14 @@ class Gui(object):
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		if self.current_dialog is not None:
-			self.current_dialog.hide()
-
-		credits_page = self.widgets['credits{number}'.format(number=number)]
-		for box in credits_page.findChildren(name='box'):
+		widget = CreditsPickbeltWidget().get_widget()
+		widget.position_technique = "automatic"
+		# Overwrite a few style pieces
+		for box in widget.findChildren(name='box'):
 			box.margins = (30, 0) # to get some indentation
-			if number in [0, 2]: # #TODO fix these hardcoded page references
-				box.padding = 1
-				box.parent.padding = 3 # further decrease if more entries
-		labels = [credits_page.findChild(name=section+"_lbl")
-		          for section in ('team', 'patchers', 'translators',
-		                          'packagers', 'special_thanks')]
-		for i in xrange(5): # add callbacks to each pickbelt
-			labels[i].capture(Callback(self.show_credits, i), event_name="mouseClicked")
-
-		self.show_dialog(credits_page, {OkButton.DEFAULT_NAME : True})
+		for listbox in widget.findChildren(name='translators'):
+			listbox.background_color = fife.Color(255, 255, 255, 0)
+		self.show_dialog(widget, {OkButton.DEFAULT_NAME: True})
 
 # display
 

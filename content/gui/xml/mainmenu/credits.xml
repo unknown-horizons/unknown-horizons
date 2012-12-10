@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<!-- Syncd with "doc/AUTHORS" -->
+<Container name="credits_window" size="1000,580">
+	<Icon image="content/gui/images/background/book.png" position="100,0" />
+	<Container name="left_pickbelts" size="170,580" position="30,0" />
+
+<!-- First container ( uh-team ), visible by default -->
+<HBox name="credits_team" position="185,45" padding="10">
+	<VBox max_size="310,470" min_size="310,470">
+		<Label text="UH-Team" name="headline" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<VBox> <Label text="Project Coordination" name="headline" />
+			<VBox name="box">
+				<Label text="Nihathrael (Thomas Kinnen)" />
+				<Label text="Nightraven (Tobias Schroefel)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Programming" name="headline" />
+			<VBox name="box">
+				<Label text="lynxis (Alexander Couzens)" />
+				<Label text="yonibear (Jonathan Sieber)" />
+				<Label text="Nihathrael (Thomas Kinnen)" />
+				<Label text="phiker (Philipp Kerling)" />
+				<Label text="spq (Kristoffer Janke)" />
+				<Label text="totycro (Bernhard Mallinger)" />
+				<Label text="christoph_debian (Christoph Egger)" />
+				<Label text="GreyGhost (Tushar Sawant)" />
+				<Label text="RainCT (Siegfried Gevatter)" />
+				<Label text="tuempl (Harald Demel)" />
+				<Label text="manuel (Manuel Mausz)" />
+				<Label text="gscai (Ott Tinn)" />
+				<Label text="mihaibivol (Mihai Bivol)" />
+				<Label text="Court-Jus (Ghislain Lévêque)" />
+				<Label text="squiddy (Reiner Gerecke)" />
+				<Label text="mesutcan (Mesutcan Kurt)" />
+				<Label text="Kiryx (Krzysztof Nowak)" />
+			</VBox>
+		</VBox> <Spacer />
+	</VBox>
+
+	<VBox position="525,70" name="credits_team2" max_size="310,470" min_size="310,470">
+		<VBox> <Label text="Game-Play Design" name="headline" />
+			<VBox name="box">
+				<Label text="dauerflucher (Andreas Lis)" />
+				<Label text="Andre_Re (Andre Reichelt)" />
+				<Label text="Kilian (Kilian K.)" />
+				<Label text="ChrisOelmueller (Christopher Oelmueller)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Sound and Music Artists" name="headline" />
+			<VBox name="box">
+				<Label text="draikon (Sebastian Ahlen)" />
+				<Label text="novatlan (Tobias Escher)" />
+				<Label text="ThomasD (Thomas Davey)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Graphic Artists" name="headline" />
+			<VBox name="box">
+				<Label text="dauerflucher (Andreas Lis)" />
+				<Label text="egore (Christoph Bill)" />
+				<Label text="kaschte (Fabian Riedel)" />
+				<Label text="terwarf (Alexander Breidenbroich)" />
+				<Label text="wentam (Matt Egeler)" />
+				<Label text="Manthus (Matthias Dittrich)" />
+				<Label text="inken" />
+				<Label text="orakeldel" />
+				<Label text="Daniel Stephens" />
+				<Label text="Viktoria S." />
+			</VBox>
+		</VBox>
+	</VBox>
+</HBox>
+
+
+<!-- Second container ( patchers ) -->
+<HBox name="credits_patchers" position="185,45" padding="10">
+	<VBox position="185,45" padding="0" max_size="310,470" min_size="310,470">
+		<Label text="Patchers" name="headline" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<VBox name="credits">
+			<VBox> <Label text="2009" name="headline" />
+				<VBox name="box">
+					<Label text="abeaumont (Building bugfix)" />
+					<Label text="MadMonk (Focus bugfix)" />
+					<Label text="MSSSSM (Several improvements)" />
+					<Label text="soeb (Translation enhancements)" />
+					<Label text="janus (Resource icons)" />
+				</VBox>
+			</VBox>
+
+			<VBox> <Label text="2010" name="headline" />
+				<VBox name="box">
+					<Label text="Afrit (Resource tree)" />
+					<Label text="cubathy (Language bugfix)" />
+					<Label text="dario (Savegame versioning)" />
+					<Label text="hassanibraheem (Focus fix)" />
+					<Label text="IwfY (Game lobby GUI)" />
+					<Label text="MSSSSM (Several improvements)" />
+					<Label text="rudi_s (Several improvements)" />
+					<Label text="Yeya (Random maps)" />
+				</VBox>
+			</VBox>
+		</VBox>
+	</VBox>
+
+	<VBox name="credits2" position="525,70" max_size="310,475" min_size="310,475">
+		<VBox> <Label text="2011" name="headline" />
+			<VBox name="box">
+				<Label text="Grickit (Random maps)" />
+				<Label text="sids.aquarius (Several improvements)" />
+				<Label text="mayanks43 (Campaign system)" />
+				<Label text="sient (Minimap rectangle)" />
+				<Label text="hoffi (GUI improvements)" />
+				<Label text="riidom (Hut and tent variations)" />
+				<Label text="abeaumont (Two renitent segfaults)" />
+				<Label text="mtfk (Voice internationalization)" />
+			</VBox>
+		</VBox>
+
+		<VBox> <Label text="2012" name="headline" />
+			<VBox name="box">
+				<Label text="Foaly (Resource icons)" />
+				<Label text="perher (tests for timer and scheduler)" />
+				<Label text="Vivek-sagar (tutorial modifications)" />
+				<Label text="volpino (Selection group fix)" />
+				<Label text="enno4uh (Mac build support)" />
+			</VBox>
+		</VBox>
+	</VBox>
+</HBox>
+
+
+<!-- Third container ( translators ) -->
+<HBox name="credits_translators" position="185,45" padding="10">
+	<VBox position="185,45" padding="0">
+		<Label text="Translators" name="headline" />
+		<Icon image="content/gui/images/background/hr.png" />
+	<ScrollArea name="translators" vertical_scrollbar="1"
+			max_size="310,470" min_size="310,470">
+	<VBox name="credits" padding="3">
+		<VBox> <Label text="Bulgarian" name="headline" />
+			<VBox name="box">
+				<Label text="balward" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Catalan" name="headline" />
+			<VBox name="box">
+				<Label text="Siegfried Gevatter (RainCT)" />
+				<Label text="CatRoky" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Czech" name="headline" />
+			<VBox name="box">
+				<Label text="Kristian Hynek (Kris_CZ)" />
+				<Label text="Petr Palička (peca)" />
+				<Label text="Vilem Soulak (Turmaleus)" />
+				<Label text="naked.in.rain" />
+				<Label text="Spek" />
+				<Label text="VMa" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Danish" name="headline" />
+			<VBox name="box">
+				<Label text="Jacob Hellwing (hellwing)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="German" name="headline" />
+			<VBox name="box">
+				<Label text="Michael Skiba" />
+				<Label text="djot" />
+				<Label text="Kikody" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Spanish" name="headline" />
+			<VBox name="box">
+				<Label text="Nikolai Woutlan" />
+				<Label text="William Cabrera (willicab)" />
+				<Label text="Álex Plaza" />
+				<Label text="Fabio Fernández (Catharsius)" />
+				<Label text="MicMic" />
+				<Label text="stefania_m" />
+				<Label text="Andrés José Fernandez (ariktaurendil)" />
+				<Label text="Sergio Lorenzo (Juarrox)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Estonian" name="headline" />
+			<VBox name="box">
+				<Label text="Mihkel Rämmel (RM87)" />
+				<Label text="Üllar Lainväe (ussikene)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="French" name="headline" />
+			<VBox name="box">
+				<Label text="Marc Moussa (deathmaster9)" />
+				<Label text="Vincent Herilier (LiveWire)" />
+				<Label text="Sebastien Charpentier (seblabel)" />
+				<Label text="Hugues Fafard (Antagonym)" />
+				<Label text="Quentin (LawNasK)" />
+				<Label text="tintou" />
+				<Label text="Antoine Pernot (mumuxe)" />
+				<Label text="Samuel Dorsaz (ajira)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Croatian" name="headline" />
+			<VBox name="box">
+				<Label text="shile" />
+			</VBox>
+		</VBox><!--Hindi not yet available in 2012.1 - my deepest apologies! ~chris
+		<VBox> <Label text="Hindi" name="headline" />
+			<VBox name="box">
+				<Label text="Kinshuk Sunil (kinshuksunil)" />
+			</VBox>
+		</VBox>-->
+		<VBox> <Label text="Hungarian" name="headline" />
+			<VBox name="box">
+				<Label text="Szontágh Ferenc (ghostarthour)" />
+				<Label text="matyi" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Italian" name="headline" />
+			<VBox name="box">
+				<Label text="Fabio Pedretti" />
+				<Label text="sioux83" />
+				<Label text="tagarista" />
+				<Label text="rayot" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Japanese" name="headline" />
+			<VBox name="box">
+				<Label text="naraba" />
+				<Label text="Yuki Shira (shirayuki)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Lithuanian" name="headline" />
+			<VBox name="box">
+				<Label text="Mantas Kondrotas (Anielus)" />
+			</VBox>
+		</VBox>
+	</VBox>
+	</ScrollArea>
+	</VBox>
+
+	<!-- split at char 13 of the alphabet (start new page with N) -->
+	<ScrollArea name="translators" vertical_scrollbar="1"
+			position="525,45" max_size="310,475" min_size="310,475">
+	<VBox name="credits2" padding="3">
+		<VBox> <Label text="Norwegian" name="headline" />
+			<VBox name="box">
+				<Label text="Frode Woldsund (frodus)" />
+				<Label text="Jared Isaksen (JeThro)" />
+				<Label text="Audun Pers" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Dutch" name="headline" />
+			<VBox name="box">
+				<Label text="Luth" />
+				<Label text="Jasper Tepper (Shadow23)" />
+				<Label text="angellus" />
+				<Label text="SanderOnline" />
+				<Label text="MrRuudJ" />
+				<Label text="VinWij" />
+				<Label text="mightykai" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Polish" name="headline" />
+			<VBox name="box">
+				<Label text="Adrian Marcinkowski (Amfidiusz)" />
+				<Label text="Stanislaw Gackowski (soeb)" />
+				<Label text="Mateusz Bartkowski (Eugen)" />
+				<Label text="Natrius" />
+				<Label text="mtfk" />
+				<Label text="Robert Matusewicz (matekm)" />
+				<Label text="Premislaus" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Portuguese" name="headline" />
+			<VBox name="box">
+				<Label text="Nuno Alves (MadMonk)" />
+				<Label text="Nelson Marques (nmarques)" />
+				<Label text="Sérgio Lopes (Knitter)" />
+				<Label text="bdias" />
+
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Brazilian Portuguese" name="headline" />
+			<VBox name="box">
+				<Label text="Henrique Poyatos (hpoyatos)" />
+				<Label text="claudinei" />
+				<Label text="luisdknob" />
+				<Label text="paulodealmeida" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Romanian" name="headline" />
+			<VBox name="box">
+				<Label text="trendy" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Russian" name="headline" />
+			<VBox name="box">
+				<Label text="Sergei Chistyakov (devcode)" />
+				<Label text="Sergey Stepanov" />
+				<Label text="Alexander Olkhovskiy (fcxSanya)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Slovenian" name="headline" />
+			<VBox name="box">
+				<Label text="Andrej Žnidaršič (andrejz)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Swedish" name="headline" />
+			<VBox name="box">
+				<Label text="pilen" />
+				<Label text="Nagrim" />
+				<Label text="Aleksi Kinnunen (alluk.)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Chinese" name="headline" />
+			<VBox name="box">
+				<Label text="nifabric" />
+			</VBox>
+		</VBox>
+	</VBox>
+	</ScrollArea>
+</HBox>
+
+
+
+<!-- Fourth container ( packagers ) -->
+<HBox name="credits_packagers" position="185,45" padding="10">
+	<VBox position="185,45" padding="0" max_size="310,470" min_size="310,470">
+		<Label text="Packagers" name="headline" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<VBox name="credits">
+			<VBox> <Label text="Debian" name="headline" />
+				<VBox name="box">
+					<Label text="christoph_debian (Christoph Egger)" />
+				</VBox>
+			</VBox>
+
+			<VBox> <Label text="Fedora" name="headline" />
+				<VBox name="box">
+					<Label text="nmarques (Nelson Marques)" />
+				</VBox>
+			</VBox>
+
+			<VBox> <Label text="openSUSE" name="headline" />
+				<VBox name="box">
+					<Label text="nmarques (Nelson Marques)" />
+				</VBox>
+			</VBox>
+
+		<Spacer />
+		</VBox>
+	</VBox>
+</HBox>
+
+
+
+<!-- this is the fifth container ( spec. thanks ) -->
+<HBox name="credits_thanks" position="185,45" padding="10">
+	<VBox position="185,45" name="credits">
+		<Label text="Special Thanks" name="headline" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<VBox> <Label text="" name="headline" />
+			<VBox name="box">
+				<Label text="The whole FIFE team (fifengine.net)" />
+				<Label text="mvBarracuda (Martin Vohland)" />
+				<Label text="lamoot (Matjaz Lamut)" />
+				<Label text="LinuxDonald (Thomas Kowaliczek)" />
+				<Label text="dreimer (Daniel Reimer)" />
+				<Label text="hoehrer (Werner Hoehrer)" />
+				<Label text="mattn (Martin Gerhardry)" />
+				<Label text="Reiner Prokein (reinerstileset.4players.de)" />
+				<Label text="Alexia and the Widelands team (widelands.org)" />
+				<Label text="The team of Battle for Wesnoth (wesnoth.org)" />
+				<Label text="Ivanovic (Nils Kneuper)" />
+				<Label text="BartK and www.OpenGameArt.org" />
+				<Label text="www.OpenClipArt.org" />
+			</VBox>
+		</VBox>
+	<Spacer />
+	</VBox>
+</HBox>
+
+<OkButton position="800,500" helptext="Exit to main menu" />
+
+<Container name="right_pickbelts" position="835,0" size="170,580" />
+
+</Container>
