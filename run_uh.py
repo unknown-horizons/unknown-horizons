@@ -169,7 +169,9 @@ def get_option_parser():
 		dev_group.add_option("--interactive-shell", action="store_true", dest="interactive_shell",
 	             help="Starts an IPython kernel. Connect to the shell with: ipython console --existing")
 		dev_group.add_option("--no-atlas-generation", action="store_false", dest="atlas_generation",
-	             default=True, help="Disable atlas generation.")
+	             help="Disable atlas generation.")
+	# Add dummy default variables for the DEV_VERSION groups above when in release mode
+	p.set_defaults(interactive_shell=False, atlas_generation=True)
 	p.add_option_group(dev_group)
 
 	return p
