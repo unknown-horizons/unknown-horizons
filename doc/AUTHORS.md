@@ -244,16 +244,16 @@
 ## L ##
 
 ### Thanks, all of you are awesome!
-* The whole FIFE team (http://fifengine.net)
-* mvBarracuda (Martin Vohland)
-* Lamoot (Matjaz Lamut)
-* LinuxDonald (Thomas Kowaliczek)
+* Alexia and Widelands team (http://widelands.org)
+* BartK and www.OpenGameArt.org
 * Dreimer (Daniel Reimer)
 * hoehrer (Werner Hoehrer)
-* mattn (Martin Gerhardry)
-* Reiner Prokein (http://reinerstileset.4players.de)
-* Alexia and Widelands team (http://widelands.org)
-* The Battle for Wesnoth team (http://wesnoth.org)
 * Ivanovic (Nils Kneuper)
-* BartK and www.OpenGameArt.org
+* Lamoot (Matjaz Lamut)
+* LinuxDonald (Thomas Kowaliczek)
+* mattn (Martin Gerhardry)
+* mvBarracuda (Martin Vohland)
+* Reiner Prokein (http://reinerstileset.4players.de)
+* The Battle for Wesnoth team (http://wesnoth.org)
+* The whole FIFE team (http://fifengine.net)
 * www.OpenClipArt.org
