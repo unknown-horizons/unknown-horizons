@@ -523,57 +523,59 @@ class NETWORK:
 ## TRANSLATIONS
 class _LanguageNameDict(dict):
 	def __getitem__(self, key):
-		return self.get(key, key)
+		return self.get(key, [key])[0]
 
-	def get_by_value(self, value):
-		for item in self.iteritems():
-			if item[1] == value:
-				return item[0]
+	def get_by_value(self, value, english=False):
+		for code, (own, eng) in self.iteritems():
+			if english and eng == value:
+				return code
+			elif not english and own == value:
+				return code
 		return "" # meaning default key
 
 
 LANGUAGENAMES = _LanguageNameDict({
-	""      : u'System default',
-	"af"    : u'Afrikaans',
-	"bg"    : u'Български',
-	"ca"    : u'Català',
-	'ca@valencia' : u'Català de València',
-	"cs"    : u'Čeština',
-	"da"    : u'Danske',
-	"de"    : u'Deutsch',
-	"en"    : u'English',
-	"es"    : u'Español',
-	"et"    : u'Eesti',
-	"el"    : u'Ελληνικά',
-	"fi"    : u'Suomi',
-	"fr"    : u'Français',
-	"ga"    : u'Gaeilge',
-	"gl"    : u'Galego',
-	"hi"    : u'मानक हिन्दी',
-	"hr"    : u'Hrvatski',
-	"hu"    : u'Magyar',
-	"id"    : u'Bahasa Indonesia',
-	"it"    : u'Italiano',
-	"ja"    : u'日本語',
-	"lt"    : u'Lietuvių',
-	"lv"    : u'Latviešu',
-	"ko"    : u'한국말/조선말',
-	"nb"    : u'Norw. Bokmål',
-	"nl"    : u'Nederlands',
-	"pl"    : u'Polski',
-	"pt_BR" : u'Português Br.',
-	"pt"    : u'Português',
-	"ro"    : u'Română',
-	"ru"    : u'Русский',
-	"sl"    : u'Slovenski',
-	"sr"    : u'Cрпски',
-	"sv"    : u'Svenska',
-	"th"    : u'ภาษาไทย',
-	"tr"    : u'Türkçe',
-	"uk"    : u'Українська',
-	"vi"    : u'Tiếng Việt',
-	"zh_CN" : u'普通話',
-	"zu"    : u'IsiZulu',
+	""      : (u'System default', u''),
+	"af"    : (u'Afrikaans', u'Afrikaans'),
+	"bg"    : (u'Български', u'Bulgarian'),
+	"ca"    : (u'Català', u'Catalan'),
+	'ca@valencia' : (u'Català de València', u'Catalan (Valencia)'),
+	"cs"    : (u'Čeština', u'Czech'),
+	"da"    : (u'Danske', u'Danish'),
+	"de"    : (u'Deutsch', u'German'),
+	"en"    : (u'English', u'English'),
+	"es"    : (u'Español', u'Spanish'),
+	"et"    : (u'Eesti', u'Estonian'),
+	"el"    : (u'Ελληνικά', u'Greek'),
+	"fi"    : (u'Suomi', u'Finnish'),
+	"fr"    : (u'Français', u'French'),
+	"ga"    : (u'Gaeilge', u'Irish'),
+	"gl"    : (u'Galego', u'Galician'),
+	"hi"    : (u'मानक हिन्दी', u'Hindi'),
+	"hr"    : (u'Hrvatski', u'Croatian'),
+	"hu"    : (u'Magyar', u'Hungarian'),
+	"id"    : (u'Bahasa Indonesia', u'Indonesian'),
+	"it"    : (u'Italiano', u'Italian'),
+	"ja"    : (u'日本語', u'Japanese'),
+	"lt"    : (u'Lietuvių', u'Lithuanian'),
+	"lv"    : (u'Latviešu', u'Latvian'),
+	"ko"    : (u'한국말/조선말', u'Korean'),
+	"nb"    : (u'Bokmål', u'Norwegian'),
+	"nl"    : (u'Nederlands', u'Dutch'),
+	"pl"    : (u'Polski', u'Polish'),
+	"pt_BR" : (u'Português Br.', u'Brazilian Portuguese'),
+	"pt"    : (u'Português', u'Portuguese'),
+	"ro"    : (u'Română', u'Romanian'),
+	"ru"    : (u'Русский', u'Russian'),
+	"sl"    : (u'Slovenski', u'Slovenian'),
+	"sr"    : (u'Cрпски', u'Serbian'),
+	"sv"    : (u'Svenska', u'Swedish'),
+	"th"    : (u'ภาษาไทย', u'Thai'),
+	"tr"    : (u'Türkçe', u'Turkish'),
+	"uk"    : (u'Українська', u'Ukrainian'),
+	"vi"    : (u'Tiếng Việt', u'Vietnamese'),
+	"zh_CN" : (u'普通話', u'Chinese'),
+	"zu"    : (u'IsiZulu', u'Zulu'),
 })
 
 FONTDEFS = {
