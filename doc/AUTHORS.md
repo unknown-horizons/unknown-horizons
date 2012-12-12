@@ -1,6 +1,4 @@
-# UH-Team #
-
-## L ##
+## UH-Team ##
 
 ### Project Coordination
 * Nightraven (Tobias Schroefel)
@@ -23,7 +21,7 @@
 * tuempl (Harald Demel)
 * yonibear (Jonathan Sieber)
 
-## R ##
+- - - - -
 
 ### Game-Play Design
 * Andre (Andre Reichelt)
@@ -49,9 +47,7 @@
 * wentam (Matt Egeler)
 
 
-# Patchers #
-
-## L ##
+## Patchers ##
 
 ### 2009
 * abeaumont (Building bugfix)
@@ -70,7 +66,7 @@
 * rudi_s (Several improvements)
 * Yeya (Random maps)
 
-## R ##
+- - - - -
 
 ### 2011
 * abeaumont (Two renitent segfaults)
@@ -90,9 +86,7 @@
 * volpino (Selection group fix)
 
 
-# Translators
-
-## L ##
+## Translators
 
 ### Bulgarian
 * balward
@@ -164,7 +158,7 @@
 ### Lithuanian
 * Mantas Kondrotas (Anielus)
 
-## R ##
+- - - - -
 
 ### Norwegian
 * Audun Pers
@@ -222,15 +216,15 @@
 
 
 
-# Packagers #
-
-## L ##
+## Packagers ##
 
 ### Debian
 * christoph_debian (Christoph Egger)
 
 ### Fedora
 * nmarques (Nelson Marques)
+
+- - - - -
 
 ### openSUSE
 * nmarques (Nelson Marques)
@@ -239,9 +233,7 @@
 * hoffi (Stefan Hoffmann)
 
 
-# Special Thanks #
-
-## L ##
+## Special Thanks ##
 
 ### Thanks, all of you are awesome!
 * Alexia and Widelands team (http://widelands.org)
