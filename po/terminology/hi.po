@@ -3,77 +3,65 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-15 13:03+0200\n"
-"Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
+"PO-Revision-Date: 2012-12-08 16:50+0000\n"
+"Last-Translator: supercracker111 <supercracker111@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.5.0-beta1\n"
+"X-POOTLE-MTIME: 1354985439.0\n"
 
-#, fuzzy
 msgid "build"
 msgstr "निर्माण"
 
-#, fuzzy
 msgid "game"
 msgstr "खेल"
 
-#, fuzzy
 msgid "building"
 msgstr "ईमारत"
 
-#, fuzzy
 msgid "settlement"
 msgstr "उपनिवेश"
 
 msgid "farm"
 msgstr "खेत"
 
-#, fuzzy
 msgid "ship"
 msgstr "जहाज"
 
-#, fuzzy
 msgid "tent"
 msgstr "शिविर"
 
 msgid "warehouse"
 msgstr "गोदाम"
 
-#, fuzzy
 msgid "resource"
 msgstr "संसाधन"
 
-#, fuzzy
 msgid "produce"
-msgstr "उपज"
+msgstr "उत्पादन"
 
-#, fuzzy
 msgid "field"
-msgstr "मैदान"
+msgstr "खेत"
 
-#, fuzzy
 msgid "map"
-msgstr "नक़्शा"
+msgstr "नक्शा"
 
 msgid "trade"
 msgstr "व्यापार"
 
-#, fuzzy
 msgid "inhabitants"
-msgstr "निवासी"
+msgstr "निवासियों"
 
-#, fuzzy
 msgid "buy"
-msgstr "क्रय"
+msgstr "खरीदना"
 
 msgid "overview"
-msgstr ""
+msgstr "सिंहावलोकन"
 
-#, fuzzy
 msgid "click"
 msgstr "क्लिक"
 
@@ -83,59 +71,47 @@ msgstr "लकड़हारा"
 msgid "resident"
 msgstr "निवासी"
 
-#, fuzzy
 msgid "main square"
-msgstr "चौपाल"
+msgstr "केंद्रीय स्थान"
 
-#, fuzzy
 msgid "sailors"
-msgstr "नाविक"
+msgstr "नाविकों"
 
-#, fuzzy
 msgid "food"
 msgstr "भोजन"
 
-#, fuzzy
 msgid "increment"
 msgstr "वृद्धि"
 
-#, fuzzy
 msgid "production"
 msgstr "उत्पादन"
 
-#, fuzzy
 msgid "select"
 msgstr "चयन"
 
 msgid "sell"
-msgstr "विक्रय"
+msgstr "बेचना"
 
-#, fuzzy
 msgid "setting"
-msgstr "विकल्प"
+msgstr "सेटिंग"
 
-#, fuzzy
 msgid "storage"
 msgstr "भंडार"
 
-#, fuzzy
 msgid "tab"
 msgstr "टैब"
 
-#, fuzzy
 msgid "upgrade"
-msgstr "उन्नति"
+msgstr "उन्नयन"
 
-#, fuzzy
 msgid "your inhabitants"
-msgstr "आपके निवासी"
+msgstr "आपके निवासियों"
 
-#, fuzzy
 msgid "close"
 msgstr "बंद करें"
 
 msgid "companies"
-msgstr ""
+msgstr "कंपनियों"
 
 msgid "island"
 msgstr "द्वीप"
@@ -143,30 +119,24 @@ msgstr "द्वीप"
 msgid "time"
 msgstr "समय"
 
-#, fuzzy
 msgid "unit"
 msgstr "इकाई"
 
-#, fuzzy
 msgid "balance"
-msgstr "शेष"
+msgstr "संतुलन"
 
 msgid "coast"
 msgstr "तट"
 
-#, fuzzy
 msgid "menu"
 msgstr "सूचि"
 
-#, fuzzy
 msgid "slot"
 msgstr "खांचा"
 
-#, fuzzy
 msgid "start"
-msgstr "आरंभ"
+msgstr "प्रारंभ"
 
-#, fuzzy
 msgid "stock"
 msgstr "भंडार"
 
@@ -179,27 +149,23 @@ msgstr "अंनोन होराइजंस"
 msgid "wool"
 msgstr "ऊन"
 
-#, fuzzy
 msgid "boards"
-msgstr "पट"
+msgstr "पटल"
 
-#, fuzzy
 msgid "collector"
 msgstr "संग्राहक"
 
 msgid "connection"
-msgstr "कड़ी"
+msgstr "संपर्क"
 
 msgid "fire"
 msgstr "आग"
 
-#, fuzzy
 msgid "change"
-msgstr "बदल दें"
+msgstr "बदलें"
 
-#, fuzzy
 msgid "connect"
-msgstr "सम्बद्ध करें"
+msgstr "जोड़ना"
 
 msgid "cost"
 msgstr "क़ीमत"
@@ -207,16 +173,14 @@ msgstr "क़ीमत"
 msgid "house"
 msgstr "घर"
 
-#, fuzzy
 msgid "log"
-msgstr "लट्ठा"
+msgstr "लॉग"
 
 msgid "road"
 msgstr "सड़क"
 
-#, fuzzy
 msgid "save"
-msgstr "संचित करें"
+msgstr "सेव"
 
 msgid "built"
 msgstr "निर्मित"
@@ -224,43 +188,39 @@ msgstr "निर्मित"
 msgid "pasture"
 msgstr "चारागाह"
 
-#, fuzzy
 msgid "reach"
-msgstr "विस्तार"
+msgstr "पहुंच"
 
 msgid "tree"
 msgstr "पेड़"
 
 msgid "your"
-msgstr "आपका"
+msgstr "आपके"
 
 msgid "your settlement"
-msgstr "आपका उपनिवेश"
+msgstr "आपके उपनिवेश"
 
 msgid "add"
-msgstr "जोड़ें"
+msgstr "जोडें"
 
 msgid "check"
-msgstr "जांचें"
+msgstr "जांच करें |"
 
 msgid "choose"
 msgstr "चुनें"
 
-#, fuzzy
 msgid "confectionery"
 msgstr "मिष्टान्न"
 
 msgid "fisher"
 msgstr "मछ्वारा"
 
-#, fuzzy
 msgid "free trader"
 msgstr "व्यापारी"
 
 msgid "happiness"
 msgstr "ख़ुशी"
 
-#, fuzzy
 msgid "in stock"
 msgstr "भंडार में"
 
@@ -271,7 +231,7 @@ msgid "pavilion"
 msgstr "मंडप"
 
 msgid "running costs"
-msgstr "लागत"
+msgstr "परिचालन लागतें"
 
 msgid "sugar"
 msgstr "चीनी"
@@ -289,59 +249,58 @@ msgid "button"
 msgstr "बटन"
 
 msgid "continue"
-msgstr "जरी रखें"
+msgstr "जारी रखें |"
 
 msgid "faith"
 msgstr "श्रद्धा"
 
-#, fuzzy
 msgid "help"
-msgstr "सहायता"
+msgstr "मदद"
 
 msgid "left"
-msgstr ""
+msgstr "बाएँ"
 
 msgid "level"
-msgstr ""
+msgstr "दरजा"
 
 msgid "mode"
-msgstr ""
+msgstr "प्रणाली"
 
 msgid "move"
-msgstr ""
+msgstr "हटाएँ"
 
 msgid "pioneers"
-msgstr "अग्रज"
+msgstr "अग्रदूतों"
 
 msgid "citizens"
-msgstr "नागरिक"
+msgstr "नागरिकों"
 
 msgid "merchants"
-msgstr "व्यापारी"
+msgstr "व्यापारियों"
 
 msgid "aristocrats"
-msgstr "अभिजात्य गण"
+msgstr "अभिजात"
 
 msgid "potato"
 msgstr "आलू"
 
 msgid "settler"
-msgstr "उपनिवेशी"
+msgstr "आबादकार"
 
 msgid "speed"
 msgstr "गति"
 
 msgid "stop"
-msgstr ""
+msgstr "रोकें"
 
 msgid "storage tent"
-msgstr ""
+msgstr "भंडारण तम्बू"
 
 msgid "wait"
-msgstr ""
+msgstr "इंतजार करें |"
 
 msgid "access"
-msgstr ""
+msgstr "अभिगम"
 
 msgid "account"
 msgstr "खाता"
@@ -358,9 +317,8 @@ msgstr "कपडे"
 msgid "construction"
 msgstr "निर्माण"
 
-#, fuzzy
 msgid "decrease"
-msgstr "कम करें"
+msgstr "कम करें |"
 
 msgid "description"
 msgstr "विवरण"
@@ -369,13 +327,13 @@ msgid "fish"
 msgstr "मछली"
 
 msgid "increase"
-msgstr "बढाएं"
+msgstr "बढाएँ"
 
 msgid "lamb"
 msgstr "मेमना"
 
 msgid "leave"
-msgstr ""
+msgstr "छोड़ें"
 
 msgid "liquor"
 msgstr "शराब"
@@ -387,241 +345,241 @@ msgid "offer"
 msgstr "प्रस्ताव"
 
 msgid "potatoes"
-msgstr ""
+msgstr "आलू"
 
 msgid "range"
-msgstr ""
+msgstr "दायरा"
 
 msgid "reached"
-msgstr ""
+msgstr "पहुंच गया"
 
 msgid "run"
-msgstr ""
+msgstr "चलाना"
 
 msgid "slider"
-msgstr ""
+msgstr "स्लाइडर"
 
 msgid "solution"
-msgstr ""
+msgstr "समाधान"
 
 msgid "space"
-msgstr ""
+msgstr "स्पेस कुंजी"
 
 msgid "target"
-msgstr ""
+msgstr "लक्ष्य"
 
 msgid "team"
-msgstr ""
+msgstr "दल"
 
 msgid "total"
-msgstr ""
+msgstr "कुल"
 
 msgid "unable"
-msgstr ""
+msgstr "असमर्थ"
 
 msgid "active"
-msgstr ""
+msgstr "सक्रिय"
 
 msgid "afford"
-msgstr ""
+msgstr "वहन करने में"
 
 msgid "animals"
-msgstr ""
+msgstr "जानवरों"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "कप्तान के लॉग"
 
 msgid "construct"
-msgstr ""
+msgstr "निर्माण करना"
 
 msgid "consume"
-msgstr ""
+msgstr "उपभोग करना"
 
 msgid "enabled"
-msgstr ""
+msgstr "सक्षम"
 
 msgid "entries"
-msgstr ""
+msgstr "प्रविष्टियों"
 
 msgid "feature"
-msgstr ""
+msgstr "विशेषता"
 
 msgid "forest"
-msgstr ""
+msgstr "जंगल"
 
 msgid "grows"
-msgstr ""
+msgstr "बढ़ता"
 
 msgid "hold"
-msgstr ""
+msgstr "पकड़"
 
 msgid "idle"
-msgstr ""
+msgstr "निष्क्रिय"
 
 msgid "income"
-msgstr ""
+msgstr "आय"
 
 msgid "information"
-msgstr ""
+msgstr "जानकारी"
 
 msgid "key"
-msgstr ""
+msgstr "कुंजी"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "भेड़ ऊन"
 
 msgid "overview tab"
-msgstr ""
+msgstr "सिंहावलोकन टैब"
 
 msgid "minimap"
-msgstr ""
+msgstr "छोटा नक्शा"
 
 msgid "issues"
-msgstr ""
+msgstr "मुद्दों"
 
 msgid "plant"
-msgstr ""
+msgstr "पौधा"
 
 msgid "play"
-msgstr ""
+msgstr "खेल"
 
 msgid "playing"
-msgstr ""
+msgstr "खेलते"
 
 msgid "price"
-msgstr ""
+msgstr "कीमत"
 
 msgid "read"
-msgstr ""
+msgstr "पढ़ें"
 
 msgid "return"
-msgstr ""
+msgstr "वापसी"
 
 msgid "sale"
-msgstr ""
+msgstr "बिक्री"
 
 msgid "screen"
-msgstr ""
+msgstr "स्क्रीन"
 
 msgid "sound"
-msgstr ""
+msgstr "ध्वनि"
 
 msgid "special"
-msgstr ""
+msgstr "विशेष"
 
 msgid "store"
-msgstr ""
+msgstr "भंडारित करें"
 
 msgid "tear"
-msgstr ""
+msgstr "फाड़"
 
 msgid "from time to time"
-msgstr ""
+msgstr "समय - समय पर"
 
 msgid "trading"
-msgstr ""
+msgstr "व्यापार"
 
 msgid "village"
-msgstr ""
+msgstr "गांव"
 
 msgid "visit"
-msgstr ""
+msgstr "दर्शन"
 
 msgid "world"
-msgstr ""
+msgstr "दुनिया"
 
 msgid "yield"
-msgstr ""
+msgstr "उपज"
 
 msgid "your ship"
-msgstr ""
+msgstr "आपके जहाज"
 
 msgid "back"
-msgstr ""
+msgstr "वापस"
 
 msgid "build settlement"
-msgstr ""
+msgstr "उपनिवेश का निर्माण"
 
 msgid "load"
-msgstr ""
+msgstr "लोड करें"
 
 msgid "unload"
-msgstr ""
+msgstr "उतारें"
 
 msgid "command"
-msgstr ""
+msgstr "आदेश"
 
 msgid "completed"
-msgstr ""
+msgstr "पूरा किया"
 
 msgid "condition"
-msgstr ""
+msgstr "अवस्था"
 
 msgid "contact"
-msgstr ""
+msgstr "संपर्क"
 
 msgid "empty"
-msgstr ""
+msgstr "खाली"
 
 msgid "ensure"
-msgstr ""
+msgstr "सुनिश्चित करना"
 
 msgid "fulfill"
-msgstr ""
+msgstr "पूरा करना"
 
 msgid "graphics"
-msgstr ""
+msgstr "ग्राफ़िक्स"
 
 msgid "harvest"
-msgstr ""
+msgstr "फ़सल काटना"
 
 msgid "hunts"
-msgstr ""
+msgstr "शिकार करता"
 
 msgid "multiple"
-msgstr ""
+msgstr "विभिन्न"
 
 msgid "potato field"
-msgstr ""
+msgstr "आलू की खेत"
 
 msgid "school"
-msgstr ""
+msgstr "स्कूल"
 
 msgid "seed"
-msgstr ""
+msgstr "बीज"
 
 msgid "service"
-msgstr ""
+msgstr "सेवा"
 
 msgid "sheep"
-msgstr ""
+msgstr "भेड़"
 
 msgid "signal fire"
-msgstr ""
+msgstr "संकेत आग"
 
 msgid "statistics"
-msgstr ""
+msgstr "आँकड़े"
 
 msgid "clay"
-msgstr ""
+msgstr "मिट्टी"
 
 msgid "iron"
-msgstr ""
+msgstr "लोहा"
 
 msgid "ore"
-msgstr ""
+msgstr "अयस्क"
 
 msgid "tobacco"
-msgstr ""
+msgstr "तम्बाकू"
 
 msgid "charcoal"
-msgstr ""
+msgstr "लकड़ी का कोयला"
 
 msgid "sugar field"
-msgstr ""
+msgstr "चीनी की खेत"
 
 msgid "temporarily"
-msgstr ""
+msgstr "कुछ वक़्त के लिये"
 
 msgid "values"
-msgstr ""
+msgstr "मूल्यों"
