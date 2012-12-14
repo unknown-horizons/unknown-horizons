@@ -28,8 +28,6 @@ from horizons.util.python import decorators
 from horizons.util.shapes import Point, Rect
 from horizons.world.building.production import Mine
 
-from horizons.scheduler import Scheduler
-
 class BasicBuilder(object):
 	"""An object of this class represents a non-checked plan to build a building at a specific place."""
 
