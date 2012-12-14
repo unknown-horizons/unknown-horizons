@@ -21,23 +21,19 @@
 
 import horizons.globals
 
-class ColorIter(object):
-	"""Makes iterating through standard colors possible"""
-	def __iter__(self):
-		return self
-
-	def next(self):
-		try:
-			if hasattr(self, 'last'):
-				id = horizons.globals.db('SELECT id FROM colors WHERE id > ? ORDER BY id LIMIT 1', self.last)[0][0]
-			else:
-				id = horizons.globals.db('SELECT id FROM colors ORDER BY id LIMIT 1')[0][0]
-		except:
-			raise StopIteration
-		self.last = id
-		return Color[id]
 
 class ColorMeta(type):
+	"""Metaclass allows iteration and indexing of the Color class.
+
+	Example:
+		
+		for c in Color:
+			pass
+
+		Color['red']
+		Color[0]
+	"""
+
 	def __getitem__(cls, key):
 		"""Gets a color by name or id in the db"""
 		if key == 0:
@@ -48,7 +44,11 @@ class ColorMeta(type):
 		return c
 
 	def __iter__(cls):
-		return ColorIter()
+		"""Iterate over all available colors in the db."""
+		colors = horizons.globals.db('SELECT id FROM colors ORDER BY id')
+		colors = (Color[id] for id, in colors)
+		return iter(colors)
+
 
 class Color(object):
 	"""Class for saving a color.
@@ -61,23 +61,17 @@ class Color(object):
 	 name: name of the Color or None
 	"""
 	__metaclass__ = ColorMeta
+
 	def __init__(self, r=0, g=0, b=0, a=255):
 		"""
-		@params: float (0.0, 1.0) or int (0, 255)
+		@params: int (0, 255)
 		"""
-		if isinstance(r, float) and 0.0 <= r <= 1.0:
-			r = int(r * 255)
-		if isinstance(g, float) and 0.0 <= g <= 1.0:
-			g = int(g * 255)
-		if isinstance(b, float) and 0.0 <= b <= 1.0:
-			b = int(b * 255)
-		if isinstance(a, float) and 0.0 <= a <= 1.0:
-			a = int(a * 255)
 		self.r, self.g, self.b, self.a = r, g, b, a
 		self.name = None
 		try:
 			# load name for the color, if it's a standard color
-			self.name, self.id = horizons.globals.db('SELECT name, rowid FROM colors WHERE red = ? AND green = ? AND blue = ?', self.r, self.g, self.b)[0]
+			self.name, self.id = horizons.globals.db('SELECT name, rowid FROM colors WHERE red = ? AND green = ? AND blue = ?',
+			                                         self.r, self.g, self.b)[0]
 		except:
 			pass
 
@@ -90,10 +84,10 @@ class Color(object):
 		return hasattr(self, 'id')
 
 	def __str__(self):
-		return 'Color'+str(self.to_tuple())
+		return 'Color' + str(self.to_tuple())
 
 	def __eq__(self, other):
-		return(self.r == other.r and self.g == other.g and self.b == other.b and self.a == other.a)
+		return self.to_tuple() == other.to_tuple()
 
 	def __hash__(self):
 		return hash("%s%s%s%s" % (self.r, self.g, self.b, self.a))
