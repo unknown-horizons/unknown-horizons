@@ -60,7 +60,7 @@ class AreaBuilder(WorldObject):
 		self.__init(settlement_manager)
 		super(AreaBuilder, self).load(db, worldid)
 
-	def iter_neighbour_tiles(self, rect):
+	def iter_neighbor_tiles(self, rect):
 		"""Iterate over the tiles that share a side with the given Rect."""
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		for x, y in rect.tuple_iter():
@@ -72,7 +72,7 @@ class AreaBuilder(WorldObject):
 	def iter_possible_road_coords(self, rect, blocked_rect):
 		"""Iterate over the possible road tiles that share a side with the given Rect and are not in the blocked Rect."""
 		blocked_coords_set = set(coords for coords in blocked_rect.tuple_iter())
-		for tile in self.iter_neighbour_tiles(rect):
+		for tile in self.iter_neighbor_tiles(rect):
 			if tile is None:
 				continue
 			coords = (tile.x, tile.y)
@@ -278,7 +278,7 @@ class AreaBuilder(WorldObject):
 		raise NotImplementedError('This function has to be overridden.')
 
 	def _init_cache(self):
-		"""Initialise the cache that knows the last time the buildability of a rectangle may have changed in this area."""
+		"""Initialize the cache that knows the last time the buildability of a rectangle may have changed in this area."""
 		self.last_change_id = -1
 
 	def register_change(self, x, y, purpose, data):

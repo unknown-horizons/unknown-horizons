@@ -94,7 +94,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		# which collectors could have actual unused capacity?
 		usable_collectors = []
 		for building in self.production_builder.collector_buildings:
-			if building.get_utilisation_history_length() < 1000 or building.get_collector_utilisation() < self.personality.max_good_collector_utilisation:
+			if building.get_utilization_history_length() < 1000 or building.get_collector_utilization() < self.personality.max_good_collector_utilization:
 				usable_collectors.append(building)
 
 		# find possible problematic building to usable collector links
@@ -105,7 +105,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				if distance > collector_building.radius:
 					continue # out of range anyway
 				# TODO: check whether the link already exists
-				potential_road_connections.append((distance * collector_building.get_collector_utilisation(), building, collector_building))
+				potential_road_connections.append((distance * collector_building.get_collector_utilization(), building, collector_building))
 
 		# try the best link from the above list
 		for _, building, collector_building in sorted(potential_road_connections):
@@ -177,7 +177,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				usefulness += 1.0 / (distance + self.personality.collector_extra_distance)
 
 			alignment = 1
-			for tile in self.production_builder.iter_neighbour_tiles(builder.position):
+			for tile in self.production_builder.iter_neighbor_tiles(builder.position):
 				coords = (tile.x, tile.y)
 				if coords not in self.production_builder.plan or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					alignment += 1

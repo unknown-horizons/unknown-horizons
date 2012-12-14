@@ -39,7 +39,7 @@ class TradeManager(WorldObject):
 	An object of this class manages the continuous domestic resource import process of one settlement.
 
 	This class keeps track of how much of each resource it is importing, what the purpose
-	of each import request is, and organises the missions to transport the resources
+	of each import request is, and organizes the missions to transport the resources
 	from the producing settlements to the one it is managing.
 
 	The process for determining how much can be imported:
@@ -47,7 +47,7 @@ class TradeManager(WorldObject):
 	* run the settlement's production capacity reserve process which tries to use the local
 		capacity as much as possible and if that isn't enough then ask this object for
 		more: these requests get approved if we can import the required amount
-	* finalise the amount and source of the imported resources, release the remaining
+	* finalize the amount and source of the imported resources, release the remaining
 		amount to let the trade managers of other settlements do their work
 
 	The process for actually getting the resources
@@ -277,7 +277,7 @@ class SingleResourceTradeManager(WorldObject):
 			self.available = self.total - currently_used
 		else:
 			self.available = 0.0
-			# unable to honour current quota assignments, decreasing all equally
+			# unable to honor current quota assignments, decreasing all equally
 			multiplier = 0.0 if abs(self.total) < 1e-7 else self.total / currently_used
 			for quota_holder in self.quotas:
 				if self.quotas[quota_holder] > 1e-7:

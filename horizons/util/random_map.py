@@ -101,8 +101,8 @@ def create_random_island(map_db, island_id, id_string):
 		@param tile: ground tile to fill with
 		"""
 
-		all_neighbours = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-		neighbours = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+		neighbors = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		corners = [(-1, -1), (-1, 1)]
 		knight_moves = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
 		bad_configs = set([0, 1 << 0, 1 << 1, 1 << 2, 1 << 3, (1 << 0) | (1 << 3), (1 << 1) | (1 << 2)])
@@ -114,10 +114,10 @@ def create_random_island(map_db, island_id, id_string):
 			to_fill = set()
 			to_ignore = set()
 			for x, y in edge_set:
-				# ignore the tiles with no empty neighbours
+				# ignore the tiles with no empty neighbors
 				if reduce_edge_set:
 					is_edge = False
-					for x_offset, y_offset in all_neighbours:
+					for x_offset, y_offset in all_neighbors:
 						if (x + x_offset, y + y_offset) not in map_set:
 							is_edge = True
 							break
@@ -125,20 +125,20 @@ def create_random_island(map_db, island_id, id_string):
 						to_ignore.add((x, y))
 						continue
 
-				for x_offset, y_offset in neighbours:
+				for x_offset, y_offset in neighbors:
 					x2 = x + x_offset
 					y2 = y + y_offset
 					if (x2, y2) in map_set:
 						continue
 					# (x2, y2) is now a point just off the island
 
-					neighbours_dirs = 0
-					for i in xrange(len(neighbours)):
-						x3 = x2 + neighbours[i][0]
-						y3 = y2 + neighbours[i][1]
+					neighbors_dirs = 0
+					for i in xrange(len(neighbors)):
+						x3 = x2 + neighbors[i][0]
+						y3 = y2 + neighbors[i][1]
 						if (x3, y3) not in map_set:
-							neighbours_dirs |= (1 << i)
-					if neighbours_dirs in bad_configs:
+							neighbors_dirs |= (1 << i)
+					if neighbors_dirs in bad_configs:
 						# part of a straight 1 tile gulf
 						to_fill.add((x2, y2))
 					else:

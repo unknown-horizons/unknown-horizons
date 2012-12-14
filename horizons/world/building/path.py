@@ -112,7 +112,7 @@ class Path(ComponentHolder):
 			   ):
 				action += action_part
 		if action == '':
-			action = 'single' # single trail piece with no neighbours
+			action = 'single' # single trail piece with no neighbors
 
 		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))

@@ -167,12 +167,12 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		return max(0, min(result, self.get_component(StorageComponent).inventory.get_limit(RES.HAPPINESS)))
 
 	@property
-	def capacity_utilisation(self):
+	def capacity_utilization(self):
 		# this concept does not make sense here, so spare us the calculations
 		return 1.0
 
 	def _update_level_data(self, loading=False, initial=False):
-		"""Updates all settler-related data because of a level change or as initialisation
+		"""Updates all settler-related data because of a level change or as initialization
 		@param loading: whether called to set data after loading
 		@param initial: whether called to set data initially
 		"""

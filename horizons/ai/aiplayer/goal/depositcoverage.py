@@ -70,7 +70,7 @@ class DepositCoverageGoal(SettlementGoal):
 					min_distance = distance
 
 			alignment = 0
-			for tile in self.production_builder.iter_neighbour_tiles(builder.position):
+			for tile in self.production_builder.iter_neighbor_tiles(builder.position):
 				if tile is None:
 					continue
 				coords = (tile.x, tile.y)

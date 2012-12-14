@@ -54,15 +54,15 @@ class StorageBuilding(StorageResourceHandler,
 		# limit will be save/loaded by the storage, don't do anything here
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 
-	def get_utilisation_history_length(self):
+	def get_utilization_history_length(self):
 		collecting_comp = self.get_component(CollectingComponent)
-		return None if not collecting_comp.get_local_collectors() else collecting_comp.get_local_collectors()[0].get_utilisation_history_length()
+		return None if not collecting_comp.get_local_collectors() else collecting_comp.get_local_collectors()[0].get_utilization_history_length()
 
-	def get_collector_utilisation(self):
+	def get_collector_utilization(self):
 		collectors = self.get_component(CollectingComponent).get_local_collectors()
 		if not collectors:
 			return None
-		return sum(collector.get_utilisation() for collector in collectors) / float(len(collectors))
+		return sum(collector.get_utilization() for collector in collectors) / float(len(collectors))
 
 class StorageTent(StorageBuilding, BuildableSingle):
 	"""Can't inherit from Buildable* in StorageBuilding because of mro issues."""

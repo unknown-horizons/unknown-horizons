@@ -42,7 +42,7 @@ class ProductionChain(object):
 	without any subtrees. The imported amounts are added up over time and saved as an owed
 	resource in the exporting settlement's resource manager (these restrictions are again
 	just logical without affecting the way the settlements work in any way). That storage
-	is realised by organising DomesticTrade missions that transfer the resources to the
+	is realized by organizing DomesticTrade missions that transfer the resources to the
 	right settlements.
 	"""
 

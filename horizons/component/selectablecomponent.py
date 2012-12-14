@@ -33,7 +33,7 @@ from horizons.constants import GFX, LAYERS, RES
 
 class SelectableComponent(Component):
 	"""Stuff you can select.
-	Has to be subdivided in buildings and units, which is further specialised to ships.
+	Has to be subdivided in buildings and units, which is further specialized to ships.
 
 	Provides:
 	show_menu(): shows tabs

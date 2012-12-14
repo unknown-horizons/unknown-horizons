@@ -194,7 +194,7 @@ class NavigationTool(CursorTool):
 		                     fife.CMD_INPUT_FOCUS_LOST)
 		if command.getCommandType() in STOP_SCROLLING_ON:
 			# it has been randomly observed twice that this code is reached with session being None or
-			# partly deinitialised. Since it is unknown how fife handles this and why
+			# partly deinitialized. Since it is unknown how fife handles this and why
 			# removeCommandListener in remove() doesn't prevent further calls, we have to catch and ignore the error
 			try:
 				self.session.view.autoscroll(0, 0) # stop autoscroll

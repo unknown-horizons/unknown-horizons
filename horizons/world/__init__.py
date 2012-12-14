@@ -206,7 +206,7 @@ class World(BuildingOwner, WorldObject):
 
 		if self.session.is_game_loaded():
 			# let trader and pirate command their ships. we have to do this here
-			# because ships have to be initialised for this, and they have
+			# because ships have to be initialized for this, and they have
 			# to exist before ships are loaded.
 			if self.trader:
 				self.trader.load_ship_states(savegame_db)
@@ -374,6 +374,8 @@ class World(BuildingOwner, WorldObject):
 
 	@classmethod
 	def _recognize_water_bodies(cls, map_dict):
+		"""This function runs the flood fill algorithm on the water to make it easy
+		to recognize different water bodies."""
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
@@ -395,7 +397,7 @@ class World(BuildingOwner, WorldObject):
 
 	def _init_water_bodies(self):
 		"""This function runs the flood fill algorithm on the water to make it easy
-		to recognise different water bodies."""
+		to recognize different water bodies."""
 		self.water_body = dict.fromkeys(self.water)
 		self._recognize_water_bodies(self.water_body)
 
@@ -555,7 +557,7 @@ class World(BuildingOwner, WorldObject):
 	def get_island(self, point):
 		"""Returns the island for that coordinate. If none is found, returns None.
 		@param point: instance of Point"""
-		# NOTE: keep code synchronised with duplicated code below
+		# NOTE: keep code synchronized with duplicated code below
 		return self.island_map.get(point.to_tuple())
 
 	def get_island_tuple(self, tup):

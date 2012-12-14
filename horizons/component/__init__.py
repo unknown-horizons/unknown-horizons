@@ -42,7 +42,7 @@ class Component(object):
 
 	def __init__(self):
 		"""
-		Used for initialisation code that does not require any other components.
+		Used for initialization code that does not require any other components.
 		This is always called first, on construction and on load."""
 		super(Component, self).__init__()
 		self.instance = None # Has to be set by the componentholder

@@ -310,19 +310,19 @@ class LandManager(WorldObject):
 		if not AI.HIGHLIGHT_PLANS:
 			return
 
-		village_colour = (255, 255, 255)
-		production_colour = (255, 255, 0)
-		coastline_colour = (0, 0, 255)
+		village_color = (255, 255, 255)
+		production_color = (255, 255, 0)
+		coastline_color = (0, 0, 255)
 		renderer = self.island.session.view.renderer['InstanceRenderer']
 
 		for tile in self.production.itervalues():
-			renderer.addColored(tile._instance, *production_colour)
+			renderer.addColored(tile._instance, *production_color)
 
 		for tile in self.village.itervalues():
-			renderer.addColored(tile._instance, *village_colour)
+			renderer.addColored(tile._instance, *village_color)
 
 		for coords in self.coastline:
-			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_colour)
+			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_color)
 
 	def __str__(self):
 		return '%s LandManager(%s)' % (self.owner if hasattr(self, 'owner') else 'unknown player', self.worldid if hasattr(self, 'worldid') else 'none')

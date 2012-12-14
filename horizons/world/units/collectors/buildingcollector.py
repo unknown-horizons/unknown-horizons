@@ -74,15 +74,15 @@ class BuildingCollector(Collector):
 			 self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
 
 		# save job history
-		for tick, utilisation in self._job_history:
+		for tick, utilization in self._job_history:
 				# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + Scheduler.FIRST_TICK_ID
 			db("INSERT INTO building_collector_job_history(collector, tick, utilisation) VALUES(?, ?, ?)",
-				 self.worldid, translated_tick, utilisation)
+				 self.worldid, translated_tick, utilization)
 
 	def load(self, db, worldid):
 		# we have to call __init here before super().load, because a superclass uses a method,
-		# which is overwritten here, that uses a member, which has to be initialised via __init.
+		# which is overwritten here, that uses a member, which has to be initialized via __init.
 
 		# load home_building
 		home_building_id, self._creation_tick = db.get_building_collectors_data(worldid)
@@ -189,18 +189,19 @@ class BuildingCollector(Collector):
 
 	def begin_current_job(self, job_location=None):
 		super(BuildingCollector, self).begin_current_job(job_location)
-		# Sum up the utilisation for all res
-		utilisation = 0.0
+		# Sum up the utilization for all res
+		utilization = 0.0
 		for entry in self.job.reslist:
-			max_amount = min(self.get_component(StorageComponent).inventory.get_limit(entry.res), self.job.object.get_component(StorageComponent).inventory.get_limit(entry.res))
-			utilisation += entry.amount / float(max_amount)
+			max_amount = min(self.get_component(StorageComponent).inventory.get_limit(entry.res),
+			                 self.job.object.get_component(StorageComponent).inventory.get_limit(entry.res))
+			utilization += entry.amount / float(max_amount)
 
-		# Devide by number of resources being transfered
-		utilisation = utilisation / len(self.job.reslist)
+		# Divide by number of resources being transferred
+		utilization = utilization / len(self.job.reslist)
 
 		# Set job history
-		if not self._job_history or abs(self._job_history[-1][1] - utilisation) > 1e-9:
-			self._job_history.append((Scheduler().cur_tick, utilisation))
+		if not self._job_history or abs(self._job_history[-1][1] - utilization) > 1e-9:
+			self._job_history.append((Scheduler().cur_tick, utilization))
 
 	def finish_working(self, collector_already_home=False):
 		"""Called when collector has stayed at the target for a while.
@@ -268,17 +269,17 @@ class BuildingCollector(Collector):
 			continue_action = Callback(self.move_home, callback=self.end_job, action='move')
 		super(BuildingCollector, self).cancel(continue_action=continue_action)
 
-	def get_utilisation_history_length(self):
+	def get_utilization_history_length(self):
 		return min(COLLECTORS.STATISTICAL_WINDOW, Scheduler().cur_tick - self._creation_tick)
 
-	def get_utilisation(self):
+	def get_utilization(self):
 		"""
-		Returns the utilisation of the collector.
+		Returns the utilization of the collector.
 		It is calculated by observing how full the inventory of the collector is or
 		how full it would be if it had reached the place where it picks up the resources.
 		"""
 
-		history_length = self.get_utilisation_history_length()
+		history_length = self.get_utilization_history_length()
 		if history_length <= 0:
 			return 0
 
@@ -287,7 +288,7 @@ class BuildingCollector(Collector):
 
 		self._clean_job_history_log()
 		num_entries = len(self._job_history)
-		total_utilisation = 0
+		total_utilization = 0
 		for i in xrange(num_entries):
 			tick = self._job_history[i][0]
 			if tick >= current_tick:
@@ -298,15 +299,15 @@ class BuildingCollector(Collector):
 			if tick < first_relevant_tick:
 				# the beginning is not relevant
 				relevant_ticks -= first_relevant_tick - tick
-			total_utilisation += relevant_ticks * self._job_history[i][1]
+			total_utilization += relevant_ticks * self._job_history[i][1]
 
-		#assert -1e-7 < total_utilisation / float(history_length) < 1 + 1e-7
-
-		return total_utilisation / float(history_length)
-
+		#assert -1e-7 < total_utilization / float(history_length) < 1 + 1e-7
+		
+		return total_utilization / float(history_length)
+	
 	def _clean_job_history_log(self):
 		""" remove too old entries """
-		first_relevant_tick = Scheduler().cur_tick - self.get_utilisation_history_length()
+		first_relevant_tick = Scheduler().cur_tick - self.get_utilization_history_length()
 		while len(self._job_history) > 1 and self._job_history[1][0] < first_relevant_tick:
 			self._job_history.popleft()
 

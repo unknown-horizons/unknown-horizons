@@ -92,7 +92,7 @@ class DefaultPersonality:
 		double_road_penalty = 30 # the penalty for building two roads right next to each other (per complete road, not segment)
 
 		max_coverage_building_capacity = 22 # maximum number of residences a coverage building can service
-		normal_coverage_building_capacity = 20 # the initial plan calls for this number of residences per coverage building (may or may not be optimised away)
+		normal_coverage_building_capacity = 20 # the initial plan calls for this number of residences per coverage building (may or may not be optimized away)
 
 		max_fire_station_capacity = 40 # maximum number of residences a fire station can service
 		normal_fire_station_capacity = 30 # the initial plan calls for this number of residences per fire station
@@ -101,7 +101,7 @@ class DefaultPersonality:
 		coverage_building_option_ratio = 0.4 # consider this * 100% of the possible options
 
 	class LandManager:
-		max_section_side = 22 # minimise the number of village sections by considering this to be its maximum side length
+		max_section_side = 22 # minimize the number of village sections by considering this to be its maximum side length
 
 		village_area_small = 0.23 # use this fraction of the area for the village if <= 1600 tiles are available for the settlement
 		village_area_40 = 0.26 # use this fraction of the area for the village if <= 2500 tiles are available for the settlement
@@ -241,7 +241,7 @@ class DefaultPersonality:
 
 		min_bad_collector_coverage = 0.5 # collector coverage should be improved when a production building is stopped for more than this amount of time
 		min_free_space = 20 # if there is less than this much free space for a resource then it doesn't matter that the building in badly covered
-		max_good_collector_utilisation = 0.7 # if the collector building is used more than this then don't attempt to improve coverage by connecting more production buildings
+		max_good_collector_utilization = 0.7 # if the collector building is used more than this then don't attempt to improve coverage by connecting more production buildings
 
 		max_reasonably_served_buildings = 3 # maximum number of buildings a storage can reasonably serve (not a hard limit)
 		collector_extra_distance = 6.0 # constant distance on top of the actual distance a collector has to move (accounts for breaks)

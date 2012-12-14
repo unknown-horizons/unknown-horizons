@@ -29,7 +29,7 @@ from horizons.world.production.producer import Producer, QueueProducer
 from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes import Point
-from horizons.world.production.utilisation import FieldUtilisation
+from horizons.world.production.utilization import FieldUtilization
 from horizons.world.building.settler import SettlerRuin
 
 from tests.game import settle, game_test, new_session, load_session
@@ -255,10 +255,10 @@ def test_ticket_1523(s, p):
 	assert farm.get_component(StorageComponent).inventory[RES.FOOD]
 
 
-	assert isinstance(farm.get_component(Producer)._Producer__utilisation, FieldUtilisation)
+	assert isinstance(farm.get_component(Producer)._Producer__utilization, FieldUtilization)
 	# Should be 0.5
-	assert not farm.get_component(Producer).capacity_utilisation_below(0.4)
-	assert farm.get_component(Producer).capacity_utilisation > 0.4
+	assert not farm.get_component(Producer).capacity_utilization_below(0.4)
+	assert farm.get_component(Producer).capacity_utilization > 0.4
 
 
 @game_test

@@ -79,6 +79,6 @@ class BuildingResourceHandler(ResourceHandler):
 class UnitProducerBuilding(BuildingResourceHandler):
 	"""Class for building that produce units.
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
-	building specific behaviour."""
+	building specific behavior."""
 	pass
 

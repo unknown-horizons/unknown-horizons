@@ -25,8 +25,8 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
-    utilisation:
-      FullUtilisation
+    utilization:
+      FullUtilization
     productionlines:
       69:
         produces:

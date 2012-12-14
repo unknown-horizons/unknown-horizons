@@ -244,8 +244,8 @@ class SavegameAccessor(DbReader):
 			self._building_collector[int(row[0])] = (int(row[1]) if row[1] is not None else None, row[2])
 
 		self._building_collector_job_history = defaultdict(lambda: deque())
-		for collector_id, tick, utilisation in self("SELECT collector, tick, utilisation FROM building_collector_job_history ORDER BY collector, tick"):
-			self._building_collector_job_history[int(collector_id)].append((tick, utilisation))
+		for collector_id, tick, utilization in self("SELECT collector, tick, utilisation FROM building_collector_job_history ORDER BY collector, tick"):
+			self._building_collector_job_history[int(collector_id)].append((tick, utilization))
 
 	def get_building_collectors_data(self, worldid):
 		"""Returns (id of the building collector's home or None otherwise, creation_tick)"""

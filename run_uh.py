@@ -408,7 +408,7 @@ def find_fife():
 	if import_fife(None):
 		return True
 
-	# Look for FIFE in the neighbourhood of the game dir.
+	# Look for FIFE in the neighborhood of the game dir.
 	paths = []
 	for opt1 in ('.', '..', '..' + os.sep + '..'):
 		for opt2 in ('.', 'fife', 'FIFE', 'Fife'):

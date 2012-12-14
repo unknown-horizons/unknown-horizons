@@ -146,7 +146,7 @@ class BuildingTool(NavigationTool):
 	def highlight_buildable(self, tiles_to_check=None, new_buildings=True):
 		"""Highlights all buildable tiles and select buildings that are inversely related in order to show their range.
 		@param tiles_to_check: list of tiles to check for coloring.
-		@param new_buildings: Set to true if you have set tiles_to_check and there are new buildings. An internal structure for optimisation will be amended."""
+		@param new_buildings: Set to true if you have set tiles_to_check and there are new buildings. An internal structure for optimization will be amended."""
 		self._build_logic.highlight_buildable(self, tiles_to_check)
 
 		# Also distinguish inversely related buildings (lumberjack for tree).
@@ -282,7 +282,7 @@ class BuildingTool(NavigationTool):
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
 		new_buildings = self._class.check_build_line(self.session, point1, point2,
 		                                             rotation=self.rotation, ship=self.ship)
-		# optimisation: If only one building is in the preview and the position hasn't changed
+		# optimization: If only one building is in the preview and the position hasn't changed
 		# => don't preview. Otherwise the preview is redrawn on every mouse move
 		if not force and len(new_buildings) == len(self.buildings) == 1 and \
 		   new_buildings[0] == self.buildings[0]:
@@ -324,7 +324,7 @@ class BuildingTool(NavigationTool):
 
 			settlement = self.session.world.get_settlement(building.position.origin)
 			if settlement is not None and settlement.owner != self.session.world.player:
-				settlement = None # no fraternising with the enemy, else there would be peace
+				settlement = None # no fraternizing with the enemy, else there would be peace
 
 			if self._class.id != BUILDINGS.WAREHOUSE:
 				# Player shouldn't be allowed to build in this case, else it can trigger
@@ -522,7 +522,7 @@ class BuildingTool(NavigationTool):
 			if found_buildable:
 				PlaySound("build").execute(self.session, local=True)
 
-			# HACK: users sometimes don't realise that roads can be dragged
+			# HACK: users sometimes don't realize that roads can be dragged
 			# check if 3 roads have been built within 1.2 seconds, and display
 			# a hint in case
 			if self._class.class_package == 'path':

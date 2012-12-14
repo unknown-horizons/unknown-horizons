@@ -51,7 +51,7 @@ class BasicBuilder(object):
 		self.position = Rect.init_from_topleft_and_size_tuples(coords, size)
 
 	def _get_rotation(self, session, build_position_rotation):
-		"""Return the rotation of the new building (randomise it if allowed)."""
+		"""Return the rotation of the new building (randomize it if allowed)."""
 		if self.building_id in self.non_rotatable_buildings:
 			return build_position_rotation
 		if Entities.buildings[self.building_id].size[0] == Entities.buildings[self.building_id].size[1]:

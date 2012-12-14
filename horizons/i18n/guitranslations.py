@@ -205,12 +205,12 @@ def set_translations():
 	"overview_farm.xml" : {
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Building overview"),
-		# (helptext of widget: capacity_utilisation_label)
-		("capacity_utilisation_label"  , "helptext"): _("Capacity utilization"),
+		# (helptext of widget: capacity_utilization_label)
+		("capacity_utilization_label"  , "helptext"): _("Capacity utilization"),
 		# (helptext of widget: running_costs_label)
 		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: capacity_utilisation)
-		("capacity_utilisation"        , "helptext"): _("Capacity utilization"),
+		# (helptext of widget: capacity_utilization)
+		("capacity_utilization"        , "helptext"): _("Capacity utilization"),
 		# (helptext of widget: running_costs)
 		("running_costs"               , "helptext"): _("Running costs"),
 		},
@@ -289,12 +289,12 @@ def set_translations():
 		},
 
 	"overview_productionbuilding.xml" : {
-		# (helptext of widget: capacity_utilisation_label)
-		("capacity_utilisation_label"  , "helptext"): _("Capacity utilization"),
+		# (helptext of widget: capacity_utilization_label)
+		("capacity_utilization_label"  , "helptext"): _("Capacity utilization"),
 		# (helptext of widget: running_costs_label)
 		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: capacity_utilisation)
-		("capacity_utilisation"        , "helptext"): _("Capacity utilization"),
+		# (helptext of widget: capacity_utilization)
+		("capacity_utilization"        , "helptext"): _("Capacity utilization"),
 		# (helptext of widget: running_costs)
 		("running_costs"               , "helptext"): _("Running costs"),
 		},
@@ -353,12 +353,12 @@ def set_translations():
 	"overview_warehouse.xml" : {
 		# (text of widget: name_label)
 		("name_label"                  , "text"    ): _("Name:"),
-		# (helptext of widget: collector_utilisation_label)
-		("collector_utilisation_label" , "helptext"): _("Collector utilisation"),
+		# (helptext of widget: collector_utilization_label)
+		("collector_utilization_label" , "helptext"): _("Collector utilization"),
 		# (helptext of widget: running_costs_label)
 		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
-		("collector_utilisation"       , "helptext"): _("Collector utilisation"),
+		# (helptext of widget: collector_utilization) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
+		("collector_utilization"       , "helptext"): _("Collector utilization"),
 		# (helptext of widget: running_costs)
 		("running_costs"               , "helptext"): _("Running costs"),
 		},
@@ -791,7 +791,7 @@ def set_translations():
 		# (helptext of widget: create)
 		("create"                      , "helptext"): _("Create this new game"),
 		# (helptext of widget: gamename_lbl)
-		("gamename_lbl"                , "helptext"): _("This will be displayed to other players so they recognise the game."),
+		("gamename_lbl"                , "helptext"): _("This will be displayed to other players so they recognize the game."),
 		# (helptext of widget: password_lbl)
 		("password_lbl"                , "helptext"): _("This game's password. Required to join this game."),
 		},
@@ -975,7 +975,7 @@ def set_translations():
 		# (helptext of widget: deleteButton)
 		("deleteButton"                , "helptext"): _("Delete selected savegame"),
 		# (helptext of widget: gamename_lbl)
-		("gamename_lbl"                , "helptext"): _("This will be displayed to other players so they recognise the game."),
+		("gamename_lbl"                , "helptext"): _("This will be displayed to other players so they recognize the game."),
 		# (helptext of widget: gamepassword_lbl)
 		("gamepassword_lbl"            , "helptext"): _("Password of the game. Required to join this game"),
 		},

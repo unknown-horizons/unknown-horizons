@@ -129,7 +129,7 @@ class Sound(object):
 		"""
 		if self.engine.get_fife_setting("PlaySounds"):
 			emitter = self.emitter[emitter]
-			assert emitter is not None, "You need to supply a initialised emitter"
+			assert emitter is not None, "You need to supply an initialized emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
 			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701

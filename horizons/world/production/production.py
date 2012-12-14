@@ -47,7 +47,7 @@ class Production(ChangeListener):
 	can be observed via ChangeListener interface."""
 	log = logging.getLogger('world.production')
 
-	# optimisation:
+	# optimization:
 	# the special resource gold is only stored in the player's inventory.
 	# If productions want to use it, they will observer every change of it, which results in
 	# a lot calls. Therefore, this is not done by default but only for few subclasses that actually need it.
@@ -301,7 +301,7 @@ class Production(ChangeListener):
 
 	def _get_first_relevant_tick(self, ignore_pause):
 		"""
-		Returns the first tick that is relevant for production utilisation calculation
+		Returns the first tick that is relevant for production utilization calculation
 		@param ignore_pause: whether to ignore the time spent in the pause state
 		"""
 

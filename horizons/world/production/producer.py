@@ -35,7 +35,7 @@ from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon
-from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
+from horizons.world.production.utilization import Utilization, FullUtilization, FieldUtilization
 from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
 
@@ -51,21 +51,21 @@ class Producer(Component):
 	NAME = "producer"
 	DEPENDENCIES = [StorageComponent]
 
-	utilisation_mapping = {
-	    'FieldUtilisation': FieldUtilisation,
-	    'FullUtilisation': FullUtilisation
+	utilization_mapping = {
+	    'FieldUtilization': FieldUtilization,
+	    'FullUtilization': FullUtilization
 	}
 
 	production_class = Production
 
 	# INIT
 	def __init__(self, auto_init=True, start_finished=False, productionlines=None,
-	             utilisation_calculator=None, is_mine_for=None, settler_upgrade_lines=None,
+	             utilization_calculator=None, is_mine_for=None, settler_upgrade_lines=None,
 	             **kwargs):
 		"""
 		@param productionline: yaml-dict for prod line data. Must not be changed since it is cached.
-		@param utilisation_calculator: one of utilisatoin_mapping
-		@param settler_upgrade_lines: data for settler upgrades. can one day be generalised to other upgrades
+		@param utilization_calculator: one of utilization_mapping
+		@param settler_upgrade_lines: data for settler upgrades. can one day be generalized to other upgrades
 		"""
 		if productionlines is None:
 			productionlines = {}
@@ -73,8 +73,8 @@ class Producer(Component):
 		self.__auto_init = auto_init
 		self.__start_finished = start_finished
 		self.production_lines = productionlines
-		assert utilisation_calculator is not None
-		self.__utilisation = utilisation_calculator
+		assert utilization_calculator is not None
+		self.__utilization = utilization_calculator
 
 		if settler_upgrade_lines:
 			from horizons.world.building.settler import SettlerUpgradeData
@@ -95,8 +95,8 @@ class Producer(Component):
 		self._inactive_productions = {}
 		# Store whether or not the producer is active
 		self.__active = True
-		# Store whether or not the utilisation level is currently ok
-		self.__utilisation_ok = True
+		# Store whether or not the utilization level is currently ok
+		self.__utilization_ok = True
 
 		# BIG FAT NOTE: this has to be executed for all players for mp
 		# even if this building has no status icons
@@ -105,7 +105,7 @@ class Producer(Component):
 		interval = Scheduler().get_ticks(3)
 		run_in = self.session.random.randint(1, interval) # don't update all at once
 		if self.instance.has_status_icon:
-			Scheduler().add_new_object(self.update_capacity_utilisation, self, run_in=run_in,
+			Scheduler().add_new_object(self.update_capacity_utilization, self, run_in=run_in,
 			                           loops=-1, loop_interval=interval)
 
 	def initialize(self):
@@ -117,12 +117,12 @@ class Producer(Component):
 					continue  # It's set to false, don't add
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
-		# For newly built producers we set the utilisation to full for the first
+		# For newly built producers we set the utilization to full for the first
 		# few seconds, this avoids the low productivity icon being shown every
 		# time a new producer is built
-		temp_util = self.__utilisation
-		self.__utilisation = FullUtilisation()
-		Scheduler().add_new_object(Callback(self.__set_utilisation, temp_util), self, Scheduler().get_ticks(15))
+		temp_util = self.__utilization
+		self.__utilization = FullUtilization()
+		Scheduler().add_new_object(Callback(self.__set_utilization, temp_util), self, Scheduler().get_ticks(15))
 
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
@@ -157,22 +157,22 @@ class Producer(Component):
 		self.add_production( production )
 		return production
 
-	def update_capacity_utilisation(self):
-		"""Called by the scheduler to update the utilisation regularly"""
-		if not self.capacity_utilisation_below(ProductivityLowStatus.threshold) is not self.__utilisation_ok:
-			self.__utilisation_ok = not self.__utilisation_ok
-			if self.__utilisation_ok:
+	def update_capacity_utilization(self):
+		"""Called by the scheduler to update the utilization regularly"""
+		if not self.capacity_utilization_below(ProductivityLowStatus.threshold) is not self.__utilization_ok:
+			self.__utilization_ok = not self.__utilization_ok
+			if self.__utilization_ok:
 				RemoveStatusIcon.broadcast(self, self.instance, ProductivityLowStatus)
 			else:
 				icon = ProductivityLowStatus(self.instance)
 				AddStatusIcon.broadcast(self, icon)
 
 	@property
-	def capacity_utilisation(self):
-		return self.__utilisation.capacity_utilisation(self)
+	def capacity_utilization(self):
+		return self.__utilization.capacity_utilization(self)
 
-	def capacity_utilisation_below(self, limit):
-		return self.__utilisation.capacity_utilisation_below(limit, self)
+	def capacity_utilization_below(self, limit):
+		return self.__utilization.capacity_utilization_below(limit, self)
 
 	def load(self, db, worldid):
 		# Call this before super, because we have to make sure this is called before the
@@ -393,7 +393,7 @@ class Producer(Component):
 
 	def get_status_icons(self):
 		l = super(Producer, self).get_status_icons()
-		if self.capacity_utilisation_below(ProductivityLowStatus.threshold):
+		if self.capacity_utilization_below(ProductivityLowStatus.threshold):
 			l.append( ProductivityLowStatus() )
 		return l
 
@@ -411,27 +411,27 @@ class Producer(Component):
 			return production.progress
 		return 0 # No production available
 
-	def __set_utilisation(self, utilisation):
-		self.__utilisation = utilisation
+	def __set_utilization(self, utilization):
+		self.__utilization = utilization
 
 	@classmethod
 	def get_instance(cls, arguments=None):
 		arguments = arguments and arguments.copy() or {}
 
-		utilisation = None
-		if 'utilisation' in arguments:
-			if arguments['utilisation'] in cls.utilisation_mapping:
-				utilisation = cls.utilisation_mapping[arguments['utilisation']]()
-			del arguments['utilisation']
+		utilization = None
+		if 'utilization' in arguments:
+			if arguments['utilization'] in cls.utilization_mapping:
+				utilization = cls.utilization_mapping[arguments['utilization']]()
+			del arguments['utilization']
 		else:
-			utilisation = Utilisation()
+			utilization = Utilization()
 
 		if arguments.get('is_mine_for'):
 			# this is more of an aspect than an actual subclass, but python doesn't allow
 			# fast aspect-oriented programming
 			cls = MineProducer
 
-		return cls(utilisation_calculator=utilisation, **arguments)
+		return cls(utilization_calculator=utilization, **arguments)
 
 
 class MineProducer(Producer):

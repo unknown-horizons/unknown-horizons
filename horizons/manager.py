@@ -32,7 +32,7 @@ from horizons.network import CommandError, packets
 
 class SPManager(LivingObject):
 	"""The manager class takes care of command issuing to the timermanager, sends tick-packets
-	over the network, and syncronisation of network games."""
+	over the network, and synchronization of network games."""
 
 	def __init__(self, session):
 		super(SPManager, self).__init__()

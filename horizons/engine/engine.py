@@ -146,7 +146,7 @@ class Fife(ApplicationBase):
 		self._setting_handler.add_settings()
 
 	def init(self):
-		"""Second initialisation stage of engine
+		"""Second initialization stage of engine
 		"""
 		self.engine.init()
 

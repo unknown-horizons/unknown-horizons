@@ -173,7 +173,7 @@ class FindPath(object):
 			y = cur_node_coords[1]
 
 			# find possible neighbors
-			# optimisation TODO: use data structures more suitable for contains-check
+			# optimization TODO: use data structures more suitable for contains-check
 			if self.diagonal:
 				# all relevant adjacent neighbors
 				x_p1 = x+1

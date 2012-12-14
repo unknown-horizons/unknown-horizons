@@ -22,10 +22,10 @@
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
 
-class Utilisation(object):
-	"""Basic utilisation class used in producers"""
+class Utilization(object):
+	"""Basic utilization class used in producers"""
 
-	def capacity_utilisation(self, instance):
+	def capacity_utilization(self, instance):
 		productions = instance.get_productions()
 		total = 0
 		if not productions:
@@ -35,35 +35,35 @@ class Utilisation(object):
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / len(productions)
 
-	def capacity_utilisation_below(self, limit, instance):
-		"""Returns whether the capacity utilisation is below a value.
-		It is equivalent to "foo.capacity_utilisation <= value, but faster."""
+	def capacity_utilization_below(self, limit, instance):
+		"""Returns whether the capacity utilization is below a value.
+		It is equivalent to "foo.capacity_utilization <= value, but faster."""
 		# idea: retrieve the value, then check how long it has to take until the limit
 		# can be reached (from both sides). Within this timespan, don't check again.
 		cur_tick = Scheduler().cur_tick
-		if not hasattr(self, "_old_capacity_utilisation") or \
-		   self._old_capacity_utilisation[0] < cur_tick or \
-		   self._old_capacity_utilisation[1] != limit:
-			capac = self.capacity_utilisation(instance)
+		if not hasattr(self, "_old_capacity_utilization") or \
+		   self._old_capacity_utilization[0] < cur_tick or \
+		   self._old_capacity_utilization[1] != limit:
+			capac = self.capacity_utilization(instance)
 			diff = abs(limit - capac)
 			# all those values are relative values, so we can just do this:
 			interval = diff * PRODUCTION.STATISTICAL_WINDOW
-			self._old_capacity_utilisation = (cur_tick + interval, # expiration date
+			self._old_capacity_utilization = (cur_tick + interval, # expiration date
 						                      limit, capac < limit )
-		return self._old_capacity_utilisation[2]
+		return self._old_capacity_utilization[2]
 
-class FullUtilisation(Utilisation):
-	"""Used for producers where no utilisation calculation is necessary"""
+class FullUtilization(Utilization):
+	"""Used for producers where no utilization calculation is necessary"""
 
-	def capacity_utilisation(self, instance):
+	def capacity_utilization(self, instance):
 		return 1.0
 
 
-class FieldUtilisation(Utilisation):
+class FieldUtilization(Utilization):
 
-	max_fields_possible = 8 # only for utilisation calculation
+	max_fields_possible = 8 # only for utilization calculation
 
-	def capacity_utilisation(self, instance):
+	def capacity_utilization(self, instance):
 		"""
 		Calculate productivity by the number of fields nearby.
 		"""

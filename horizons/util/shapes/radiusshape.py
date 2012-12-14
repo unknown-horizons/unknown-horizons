@@ -33,7 +33,7 @@ class RadiusShape(object):
 		self.radius = radius
 
 class RadiusRect(RadiusShape):
-	"""Specialisation of RadiusShape with a Rect as center"""
+	"""Specialization of RadiusShape with a Rect as center"""
 	def __init__(self, center, radius):
 		assert isinstance(center, Rect)
 		super(RadiusRect, self).__init__(center, radius)

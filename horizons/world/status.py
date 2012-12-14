@@ -98,7 +98,7 @@ class InventoryFullStatus(StatusIcon):
 
 
 class ProductivityLowStatus(StatusIcon):
-	"""Terminology: productivity = capacity utilisation"""
+	"""Terminology: productivity = capacity utilization"""
 	threshold = 0.25 # display when productivity lower than this
 	priority = 400
 	icon = 'as_attention_please+idle+45'

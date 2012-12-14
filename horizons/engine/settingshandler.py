@@ -113,7 +113,7 @@ class SettingsHandler(object):
 			self.set_debug_log(True, startup=True)
 
 	def setup_setting_extras(self):
-		"""Some kind of setting gui initalisation"""
+		"""Some kind of setting gui initialization"""
 		#slider_initial_data exposes initial data when menu settings opened
 		slider_initial_data = {}
 		#slider_event_map should contain slider name as key and function

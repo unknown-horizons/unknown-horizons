@@ -82,9 +82,9 @@ class ConnectedAreaCache(object):
 			assert coords not in self.area_numbers
 			nearby_areas = []
 			for (dx, dy) in moves:
-				neighbour_coords = (coords[0] + dx, coords[1] + dy)
-				if neighbour_coords in self.area_numbers:
-					area_id = self.area_numbers[neighbour_coords]
+				neighbor_coords = (coords[0] + dx, coords[1] + dy)
+				if neighbor_coords in self.area_numbers:
+					area_id = self.area_numbers[neighbor_coords]
 					if area_id not in nearby_areas:
 						nearby_areas.append(area_id)
 

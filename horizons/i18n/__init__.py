@@ -27,7 +27,7 @@ depending on the counter value. Not all languages have only two plural forms
 "One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
 where n is a counter.
 
-We will need to make gettext recognise namespaces some time, but hardcoded
+We will need to make gettext recognize namespaces some time, but hardcoded
 'unknown-horizons' works for now since we currently only use one namespace.
 """
 

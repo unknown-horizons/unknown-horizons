@@ -300,7 +300,7 @@ class Session(LivingObject):
 		"""Loads a map. Key method for starting a game."""
 		"""
 		TUTORIAL: Here you see how the vital game elements (and some random things that are also required)
-		are initialised.
+		are initialized.
 		"""
 		if options.is_scenario:
 			# game_identifier is a yaml file, that contains reference to actual map file

@@ -227,7 +227,7 @@ class Buildable(object):
 		@param position: coord Point to build at
 		@param island: Island instance if known before"""
 		if island is None:
-			if position.__class__ is Rect: # performance optimisation
+			if position.__class__ is Rect: # performance optimization
 				at = position.left, position.top
 			else:
 				at = position.center.to_tuple()
@@ -388,7 +388,7 @@ class BuildableLine(Buildable):
 				if action_char in 'abcd' and (xoff + x, yoff + y) in path:
 					action += action_char
 			if action == '':
-				action = 'single' # single trail piece with no neighbours
+				action = 'single' # single trail piece with no neighbors
 
 			build = cls.check_build(session, Point(x, y))
 			build.action = action

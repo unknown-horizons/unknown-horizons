@@ -33,29 +33,29 @@ class StatsWidget(object):
 	def __init__(self, session):
 		super(StatsWidget, self).__init__()
 		self.session = session
-		self._initialised = False
+		self._initialized = False
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 
 	def refresh(self):
 		self._clear_entries()
 
 	def _refresh_tick(self):
-		if self._initialised and self.is_visible():
+		if self._initialized and self.is_visible():
 			self.refresh()
 
 	def show(self):
 		run_in = PLAYER.STATS_UPDATE_FREQUENCY / GAME_SPEED.TICKS_PER_SECOND
 		ExtScheduler().add_new_object(Callback(self._refresh_tick),
 		                              self, run_in=run_in, loops=-1)
-		if not self._initialised:
-			self._initialised = True
+		if not self._initialized:
+			self._initialized = True
 			self._init_gui()
 		self.refresh()
 		self._gui.show()
 
 	def hide(self):
 		ExtScheduler().rem_all_classinst_calls(self)
-		if not self._initialised:
+		if not self._initialized:
 			return # can happen if the logbook calls hide on all statswidgets
 		if not self._hiding_widget:
 			self._hiding_widget = True
@@ -63,7 +63,7 @@ class StatsWidget(object):
 			self._hiding_widget = False
 
 	def is_visible(self):
-		if not self._initialised:
+		if not self._initialized:
 			return False
 		return self._gui.isVisible()
 

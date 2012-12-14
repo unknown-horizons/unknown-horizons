@@ -39,11 +39,11 @@ class WarehouseOverviewTab(OverviewTab):
 		)
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 		self.helptext = _("Warehouse overview")
-		self._refresh_collector_utilisation()
+		self._refresh_collector_utilization()
 
-	def _refresh_collector_utilisation(self):
-		utilisation = int(round(self.instance.get_collector_utilisation() * 100))
-		self.widget.findChild(name="collector_utilisation").text = unicode(utilisation) + u'%'
+	def _refresh_collector_utilization(self):
+		utilization = int(round(self.instance.get_collector_utilization() * 100))
+		self.widget.findChild(name="collector_utilization").text = unicode(utilization) + u'%'
 
 	def refresh(self):
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
@@ -51,12 +51,12 @@ class WarehouseOverviewTab(OverviewTab):
 				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
 		         }
 		self.widget.mapEvents(events)
-		self._refresh_collector_utilisation()
+		self._refresh_collector_utilization()
 		super(WarehouseOverviewTab, self).refresh()
 
 	def show(self):
 		super(WarehouseOverviewTab, self).show()
-		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation),
+		Scheduler().add_new_object(Callback(self._refresh_collector_utilization),
 		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):

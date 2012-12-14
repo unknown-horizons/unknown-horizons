@@ -173,7 +173,7 @@ Media Content
    + sound: invalid actions / error
    + sound: build sound (Novatlan)
    + sound: flipping page
-   + icon: capacity utilisation (also used for other stats)
+   + icon: capacity utilization (also used for other stats)
    + icon: different happiness stage smileys
    + icon: pipette cursor
    + icon: rename (20 and 50px)
@@ -501,7 +501,7 @@ User Interface
    ~ boxes in settings expanded for some languages, buttons were unreachable
    ~ in-game ui appeared around the main menu under certain conditions
    ~ trying to save in multiplayer no longer causes a crash
-   ~ recognise the system default language on windows
+   ~ recognize the system default language on windows
    ~ display warning if pyenet is not found and disable multiplayer (was: crash)
    ~ cancelling a build action issued through 'Build related' opened build menu
    ~ removed problems with highlight cache (TearingTool cleanup)
@@ -931,7 +931,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * Change: Allow more than one headline per widget
   * Change: Ingame menu and Main menu are more similar
   * Change: Modified default style
-  * Fix: Made \n in tooltips be recognised again
+  * Fix: Made \n in tooltips be recognized again
   * Fix: Load correct graphics for buildings with versions differing from
          increment to increment
   * Fix: display of production lines with multiple input or output resources
@@ -971,7 +971,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   * New: Tried to make storage collectors more intelligent by making them
          prefer pickups at buildings whose inventory is full.
   * New: Add --version option to run_uh.py
-  * New: applied some optimisation to the buildingtool
+  * New: applied some optimization to the buildingtool
   * New: Expanded UhDbReader
   * New: This adds i18n support to setup.py
   * New: Do not require a restart for toggling sound

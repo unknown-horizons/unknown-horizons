@@ -494,7 +494,7 @@ CREATE TABLE "building_collector" (
 CREATE TABLE "building_collector_job_history" (
 	"collector" INT NOT NULL,
 	"tick" INT NOT NULL,
-	"utilisation" REAL NOT NULL 
+	"utilisation" REAL NOT NULL
 );
 
 CREATE TABLE "production" (

@@ -858,37 +858,37 @@ class VillageBuilder(AreaBuilder):
 		if not AI.HIGHLIGHT_PLANS:
 			return
 
-		road_colour = (30, 30, 30)
-		tent_colour = (255, 255, 255)
-		sq_colour = (255, 0, 255)
-		pavilion_colour = (255, 128, 128)
-		village_school_colour = (128, 128, 255)
-		tavern_colour = (255, 255, 0)
-		fire_station_colour = (255, 64, 64)
-		reserved_colour = (0, 0, 255)
-		unknown_colour = (255, 0, 0)
+		road_color = (30, 30, 30)
+		tent_color = (255, 255, 255)
+		sq_color = (255, 0, 255)
+		pavilion_color = (255, 128, 128)
+		village_school_color = (128, 128, 255)
+		tavern_color = (255, 255, 0)
+		fire_station_color = (255, 64, 64)
+		reserved_color = (0, 0, 255)
+		unknown_color = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
 			if purpose == BUILDING_PURPOSE.MAIN_SQUARE:
-				renderer.addColored(tile._instance, *sq_colour)
+				renderer.addColored(tile._instance, *sq_color)
 			elif purpose == BUILDING_PURPOSE.RESIDENCE:
-				renderer.addColored(tile._instance, *tent_colour)
+				renderer.addColored(tile._instance, *tent_color)
 			elif purpose == BUILDING_PURPOSE.ROAD:
-				renderer.addColored(tile._instance, *road_colour)
+				renderer.addColored(tile._instance, *road_color)
 			elif purpose == BUILDING_PURPOSE.VILLAGE_SCHOOL:
-				renderer.addColored(tile._instance, *village_school_colour)
+				renderer.addColored(tile._instance, *village_school_color)
 			elif purpose == BUILDING_PURPOSE.PAVILION:
-				renderer.addColored(tile._instance, *pavilion_colour)
+				renderer.addColored(tile._instance, *pavilion_color)
 			elif purpose == BUILDING_PURPOSE.TAVERN:
-				renderer.addColored(tile._instance, *tavern_colour)
+				renderer.addColored(tile._instance, *tavern_color)
 			elif purpose == BUILDING_PURPOSE.FIRE_STATION:
-				renderer.addColored(tile._instance, *fire_station_colour)
+				renderer.addColored(tile._instance, *fire_station_color)
 			elif purpose == BUILDING_PURPOSE.RESERVED:
-				renderer.addColored(tile._instance, *reserved_colour)
+				renderer.addColored(tile._instance, *reserved_color)
 			else:
-				renderer.addColored(tile._instance, *unknown_colour)
+				renderer.addColored(tile._instance, *unknown_color)
 
 	def __str__(self):
 		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self, 'worldid') else 'none')

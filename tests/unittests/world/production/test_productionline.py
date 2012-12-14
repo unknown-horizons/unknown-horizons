@@ -45,7 +45,7 @@ class TestBase(TestCase):
 class TestProductionLineData(TestBase):
 
 	def test_init(self):
-		# NOTE: this has been broken by optimisations and will soon be moved to yaml, therefore not fixing it now
+		# NOTE: this has been broken by optimizations and will soon be moved to yaml, therefore not fixing it now
 		#self.add_line(1, {10: 4, 12: 8})
 
 		data = {'enabled_by_default': False,

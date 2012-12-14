@@ -58,7 +58,7 @@ class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 	Old selection workaround (only color fish) removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
 	"""
 
-	def get_non_paused_utilisation(self):
+	def get_non_paused_utilization(self):
 		total = 0
 		productions = self.get_component(Producer).get_productions()
 		for production in productions:
@@ -106,7 +106,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 		# setup loading area
 		# TODO: for now we assume that a mine building is 5x5 with a 3x1 entry on 1 side
-		#       this needs to be generalised, possibly by defining the loading tiles in the db
+		#       this needs to be generalized, possibly by defining the loading tiles in the db
 		self.loading_area = self.get_loading_area(deposit_class, self.rotation, self.position)
 
 	@classmethod

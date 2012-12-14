@@ -118,7 +118,7 @@ class AIPlayer(GenericAI):
 		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=run_in)
 
 	def finish_init(self):
-		# initialise the things that couldn't be initialised before because of the loading order
+		# initialize the things that couldn't be initialized before because of the loading order
 		self.refresh_ships()
 		self.start()
 

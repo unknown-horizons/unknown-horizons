@@ -21,9 +21,9 @@
 		<Label name="running_costs" text=""
 			helptext="Running costs" />
 		<Spacer max_size="50" />
-		<Icon name="capacity_utilisation_label"  helptext="Capacity utilization"
+		<Icon name="capacity_utilization_label"  helptext="Capacity utilization"
 			image="content/gui/icons/resources/cap_util.png" />
-		<Label name="capacity_utilisation" text=""
+		<Label name="capacity_utilization" text=""
 			helptext="Capacity utilization" />
 	</HBox>
 

@@ -115,11 +115,11 @@ class IntermediateMap(object):
 			self._set_tiles(coords_list, new_type)
 
 	def _get_surrounding_coords(self, current_coords_list):
-		all_neighbours = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+		all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		current_coords_set = set(current_coords_list)
 		result = set()
 		for x, y in current_coords_list:
-			for dx, dy in all_neighbours:
+			for dx, dy in all_neighbors:
 				coords2 = (x + dx, y + dy)
 				if coords2 in self._map and coords2 not in current_coords_set:
 					result.add(coords2)

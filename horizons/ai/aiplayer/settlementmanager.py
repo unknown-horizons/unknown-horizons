@@ -110,11 +110,11 @@ class SettlementManager(WorldObject):
 						RES.TOBACCO_PRODUCTS, RES.SALT]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
-		# initialise caches
+		# initialize caches
 		self.__resident_resource_usage_cache = {}
 
 	def __init_goals(self):
-		"""Initialise the list of all the goals the settlement can use."""
+		"""Initialize the list of all the goals the settlement can use."""
 		self._goals = [] # [SettlementGoal, ...]
 		self._goals.append(BoardsGoal(self))
 		self._goals.append(SignalFireGoal(self))

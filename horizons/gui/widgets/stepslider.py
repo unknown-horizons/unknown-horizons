@@ -31,7 +31,7 @@ class StepSlider(Slider):
 
 		super(StepSlider, self).__init__(*args, **kwargs)
 
-		self.__last_step_value = None # for recognising new steps, self.value is overwritten in the base class sometimes
+		self.__last_step_value = None # for recognizing new steps, self.value is overwritten in the base class sometimes
 		self.capture(None)
 
 	def capture(self, callback, event_name="action", group_name="default"):

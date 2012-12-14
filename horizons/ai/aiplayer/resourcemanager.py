@@ -49,7 +49,7 @@ class ResourceManager(WorldObject):
 	between the player's settlements in order to make best use of them.
 
 	Currently the quota priority system works by assigning local requests a high priority
-	and the export requests a low priority which should minimise the amount of resources
+	and the export requests a low priority which should minimize the amount of resources
 	that have to be transferred.
 
 	The division of resources and production capacities is purely logical and does not
@@ -335,7 +335,7 @@ class ResourceManager(WorldObject):
 
 	def __str__(self):
 		if not hasattr(self, "settlement_manager"):
-			return 'UninitialisedResourceManager'
+			return 'UninitializedResourceManager'
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.get_component(NamedComponent).name, self.worldid)
 		for resource_manager in self._data.itervalues():
 			res = resource_manager.resource_id
@@ -400,7 +400,7 @@ class SingleResourceManager(WorldObject):
 		if self.total + self.epsilon >= currently_used:
 			self.available = self.total - currently_used
 		else:
-			# unable to honour current quota assignments
+			# unable to honor current quota assignments
 			self.available = 0.0
 			if currently_used - self.total <= self.low_priority and self.low_priority > self.epsilon:
 				# the problem can be solved by reducing low priority quotas
@@ -487,7 +487,7 @@ class SingleResourceManager(WorldObject):
 
 	def __str__(self):
 		if not hasattr(self, "resource_id"):
-			return 'UninitialisedSingleResourceManager'
+			return 'UninitializedSingleResourceManager'
 		result = 'Resource %d production %.5f/%.5f (%.5f low priority)' % (self.resource_id, self.available, self.total, self.low_priority)
 		for quota_holder, (quota, priority) in self.quotas.iteritems():
 			result += '\n  %squota assignment %.5f to %s' % ('priority ' if priority else '', quota, quota_holder)

@@ -24,9 +24,9 @@
 		<Label name="running_costs" text=""
 			helptext="Running costs" />
 		<Spacer max_size="50" />
-		<Icon name="collector_utilisation_label"  helptext="Collector utilisation"
+		<Icon name="collector_utilization_label"  helptext="Collector utilization"
 			image="content/gui/icons/resources/cap_util.png" />
-		<Label name="collector_utilisation" text=""  helptext="Collector utilisation"
+		<Label name="collector_utilization" text=""  helptext="Collector utilization"
 			comment="Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)" />
 	</HBox>
 </Container>

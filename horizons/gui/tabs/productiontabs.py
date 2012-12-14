@@ -63,7 +63,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		self._refresh_utilisation()
+		self._refresh_utilization()
 
 		# remove old production line data
 		parent_container = self.widget.child_finder('production_lines')
@@ -187,11 +187,11 @@ class ProductionOverviewTab(OverviewTab):
 		self.instance.session.ingame_gui.hide_menu()
 		Tear(self.instance).execute(self.instance.session)
 
-	def _refresh_utilisation(self):
-		utilisation = 0
+	def _refresh_utilization(self):
+		utilization = 0
 		if self.instance.has_component(Producer):
-			utilisation = int(round(self.instance.get_component(Producer).capacity_utilisation * 100))
-		self.widget.child_finder('capacity_utilisation').text = unicode(utilisation) + u'%'
+			utilization = int(round(self.instance.get_component(Producer).capacity_utilization * 100))
+		self.widget.child_finder('capacity_utilization').text = unicode(utilization) + u'%'
 
 	def _add_resource_icons(self, container, resources, marker=False):
 		calculate_position = lambda amount: (amount * 100) // inventory.get_limit(res)
@@ -205,7 +205,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def show(self):
 		super(ProductionOverviewTab, self).show()
-		Scheduler().add_new_object(Callback(self._refresh_utilisation),
+		Scheduler().add_new_object(Callback(self._refresh_utilization),
 		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):

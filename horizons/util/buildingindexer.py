@@ -63,7 +63,7 @@ class BuildingIndexer(object):
 	def _update(self, add_buildings=None, initial=False):
 		"""
 		@param add_buildings: Don't use unless you know why.
-		@param initial: can be set on first call as optimisation
+		@param initial: can be set on first call as optimization
 		"""
 		for building in self._remove_set:
 			for coords in building.position.get_radius_coordinates(self.radius, include_self=True):
@@ -118,7 +118,7 @@ class BuildingIndexer(object):
 	def get_num_buildings_in_range(self, coords):
 		"""
 		Returns the number of buildings in range of the position
-		@param coords: tuple, the centre point
+		@param coords: tuple, the center point
 		"""
 		if coords in self._map:
 			if self._changed:

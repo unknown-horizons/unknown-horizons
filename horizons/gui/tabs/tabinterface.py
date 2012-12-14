@@ -80,7 +80,7 @@ class TabInterface(object):
 		self._refresh_scheduled = False
 
 	def init_values(self):
-		"""Call this method after the widget has been initialised."""
+		"""Call this method after the widget has been initialized."""
 		self.x_pos, self.y_pos = self.widget.position
 
 	def show(self):
@@ -129,7 +129,7 @@ class TabInterface(object):
 			self._lazy_loading_loaded = True
 
 	def _lazy_loading_init(self):
-		"""Called when widget is initialised for lazily initialised tabs.
+		"""Called when widget is initialized for lazily initialized tabs.
 		You may want to overwrite this in the subclass."""
 		self.widget = self._load_widget(self.widget)
 		self.init_values()

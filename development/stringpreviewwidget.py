@@ -31,7 +31,7 @@ class StringPreviewWidget(object):
 	its strings in a logbook"""
 	def __init__(self, session):
 		self._init_gui(session)
-		# allow for misc delayed initialisation to finish before pausing
+		# allow for misc delayed initialization to finish before pausing
 		Scheduler().add_new_object(session.speed_pause, self, 2)
 
 	def show(self):

@@ -69,7 +69,7 @@ class TabWidget(object):
 		def on_tab_removal(tabwidget):
 			# called when a tab is being removed (via weakref since tabs shouldn't have references to the parent tabwidget)
 			# If one tab is removed, the whole tabwidget will die..
-			# This is easy usually the desired behaviour.
+			# This is easy usually the desired behavior.
 			if tabwidget():
 				tabwidget().on_remove()
 
