@@ -334,10 +334,10 @@ class BuildableRect(Buildable):
 		possible_builds = []
 		area = Rect.init_from_corners(point1, point2)
 		# correct placement for large buildings (mouse should be at center of building)
-		area.left -= (cls.size[0] - 1) / 2
-		area.right -= (cls.size[0] - 1) / 2
-		area.top -= (cls.size[1] - 1) / 2
-		area.bottom -= (cls.size[1] - 1) / 2
+		area.left -= (cls.size[0] - 1) // 2
+		area.right -= (cls.size[0] - 1) // 2
+		area.top -= (cls.size[1] - 1) // 2
+		area.bottom -= (cls.size[1] - 1) // 2
 
 		xstart, xend = area.left, area.right+1
 		xstep = cls.size[0]
