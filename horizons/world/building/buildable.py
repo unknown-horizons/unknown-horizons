@@ -339,16 +339,16 @@ class BuildableRect(Buildable):
 		area.top -= (cls.size[1] - 1) // 2
 		area.bottom -= (cls.size[1] - 1) // 2
 
-		xstart, xend = area.left, area.right+1
+		xstart, xend = area.left, area.right + 1
 		xstep = cls.size[0]
 		if point1.x > point2.x:
-			xstart, xend = area.right, area.left-1
+			xstart, xend = area.right, area.left - 1
 			xstep *= -1
 
-		ystart, yend = area.top, area.bottom+1
+		ystart, yend = area.top, area.bottom + 1
 		ystep = cls.size[1]
 		if point1.y > point2.y:
-			ystart, yend = area.bottom, area.top-1
+			ystart, yend = area.bottom, area.top - 1
 			ystep *= -1
 
 		for x in xrange(xstart, xend, xstep):
@@ -373,7 +373,8 @@ class BuildableLine(Buildable):
 		if island is None:
 			return []
 
-		path = RoadPathFinder()(island.path_nodes.nodes, point1.to_tuple(), point2.to_tuple(), rotation == 45 or rotation == 225)
+		path = RoadPathFinder()(island.path_nodes.nodes, point1.to_tuple(),
+		                        point2.to_tuple(), rotation in (45, 225))
 		if path is None: # can't find a path between these points
 			return [] # TODO: maybe implement alternative strategy
 
@@ -476,6 +477,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 				rotation = rot
 		return rotation
 
+
 class BuildableSingleOnOcean(BuildableSingleOnCoast):
 	"""Requires ocean nearby as well"""
 	terrain_type = TerrainRequirement.LAND_AND_COAST_NEAR_SEA
@@ -495,7 +497,6 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 					# Tile not on island -> deep water
 					return island
 		raise _NotBuildableError(BuildableErrorTypes.NO_OCEAN_NEARBY)
-
 
 
 class BuildableSingleFromShip(BuildableSingleOnOcean):
