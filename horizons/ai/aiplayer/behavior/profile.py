@@ -24,10 +24,14 @@ import logging
 import random
 from horizons.ai.aiplayer.behavior import BehaviorManager
 
-from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorPirateHater, BehaviorCoward,\
-	BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
-	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate, BehaviorDebug, BehaviorSmart, BehaviorEvil, BehaviorNeutral, BehaviorGood, BehaviorCautious
-from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug, ConditionPirateRoutinePossible, ConditionAllied
+from horizons.ai.aiplayer.behavior.behaviorcomponents import (
+	BehaviorPirateHater, BehaviorCoward, BehaviorRegular, BehaviorPirateRoutine,
+	BehaviorBreakDiplomacy, BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive,
+	BehaviorAggressivePirate, BehaviorDebug, BehaviorSmart, BehaviorEvil, BehaviorNeutral,
+	BehaviorGood, BehaviorCautious)
+from horizons.ai.aiplayer.strategy.condition import (
+	ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug,
+	ConditionPirateRoutinePossible, ConditionAllied)
 
 
 class BehaviorProfile(object):
