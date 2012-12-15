@@ -21,10 +21,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 from unittest import TestCase
 
-from horizons.world.storage import *
+from horizons.world.storage import (GenericStorage, SpecializedStorage, SizedSpecializedStorage,
+                                    TotalStorage, GlobalLimitStorage, PositiveStorage,
+                                    PositiveTotalStorage, PositiveSizedSlotStorage,
+                                    PositiveSizedNumSlotStorage)
+
 
 class TestGenericStorage(TestCase):
 

@@ -29,9 +29,6 @@ import mock
 import horizons.globals
 import horizons.main
 import horizons.world	# needs to be imported before session
-from horizons.ai.aiplayer import AIPlayer
-from horizons.command.unit import CreateUnit
-from horizons.constants import UNITS
 from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
@@ -41,7 +38,6 @@ from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.color import Color
-from horizons.component.storagecomponent import StorageComponent
 
 from tests import RANDOM_SEED
 from tests.utils import Timer
