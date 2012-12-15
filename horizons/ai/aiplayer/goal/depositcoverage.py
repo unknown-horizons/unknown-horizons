@@ -61,7 +61,7 @@ class DepositCoverageGoal(SettlementGoal):
 
 		options = []
 		for coords in sorted(storage_spots):
-			builder = BasicBuilder.create(BUILDINGS.STORAGE, (x, y), 0)
+			builder = BasicBuilder.create(BUILDINGS.STORAGE, coords, 0)
 
 			min_distance = None
 			for building in available_deposits:
