@@ -239,7 +239,7 @@ def test_savegame_upgrade():
 	session.end(keep_map=True)
 
 
-@game_test
+@game_test()
 def test_settler_level_save_load(s, p):
 	"""
 	Verify that settler level up with save/load works

@@ -37,7 +37,7 @@ from tests.game.test_buildings import test_brick_production_chain, test_tool_pro
 from tests.game.test_farm import _build_farm
 
 
-@game_test
+@game_test()
 def test_ticket_979(s, p):
 	settlement, island = settle(s)
 	storage_collectors = settlement.warehouse.get_component(CollectingComponent).get_local_collectors()
@@ -70,7 +70,7 @@ def test_ticket_979(s, p):
 	s.run(seconds=10)
 
 
-@game_test
+@game_test()
 def test_ticket_1016(s, p):
 	settlement, island = settle(s)
 
@@ -91,7 +91,7 @@ def test_ticket_1016(s, p):
 	s.run(seconds=30)
 
 
-@game_test
+@game_test()
 def test_ticket_1005(s, p):
 	settlement, island = settle(s)
 	assert len(s.world.ships) == 2
@@ -106,7 +106,7 @@ def test_ticket_1005(s, p):
 	assert len(s.world.ships) == 3
 
 
-@game_test
+@game_test()
 def test_ticket_1232(s, p):
 	settlement, island = settle(s)
 	assert len(s.world.ships) == 2
@@ -218,7 +218,7 @@ def test_ticket_1427():
 	session.end()
 
 
-@game_test
+@game_test()
 def test_settler_level(s, p):
 	"""
 	Verify that settler level up works.
@@ -244,7 +244,7 @@ def test_settler_level(s, p):
 	assert settler.level == level + 1
 
 
-@game_test
+@game_test()
 def test_ticket_1523(s, p):
 	settlement, island = settle(s)
 
@@ -261,7 +261,7 @@ def test_ticket_1523(s, p):
 	assert farm.get_component(Producer).capacity_utilization > 0.4
 
 
-@game_test
+@game_test()
 def test_ticket_1561(s, p):
 	settlement, island = settle(s)
 
@@ -278,7 +278,7 @@ def test_ticket_1561(s, p):
 	assert residence2.level == 0
 
 
-@game_test
+@game_test()
 def test_ticket_1693(s, p):
 	settlement, island = settle(s)
 
@@ -304,7 +304,7 @@ def test_ticket_1693(s, p):
 	assert residence2
 
 
-@game_test
+@game_test()
 def test_ticket_1847(s, p):
 	"""Tearing down MineProducer (clay pit, mine) crashes game"""
 	settlement, island = settle(s)

@@ -49,7 +49,7 @@ def _build_farm(x, y, field_type, island, settlement, owner):
 	return farm
 
 
-@game_test
+@game_test()
 def test_weaver(s, p):
 	"""
 	A weaver produces textiles from wool. A pasture provides lamb wool for a farm,
@@ -68,7 +68,7 @@ def test_weaver(s, p):
 	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE]
 
 
-@game_test
+@game_test()
 def test_distillery(s, p):
 	"""
 	Distillery produces liquor out of sugar. A farm will collect raw sugar from a
@@ -87,7 +87,7 @@ def test_distillery(s, p):
 	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR]
 
 
-@game_test
+@game_test()
 def test_potato_field(s, p):
 	"""
 	A farm collects potatoes from the field and produces food.

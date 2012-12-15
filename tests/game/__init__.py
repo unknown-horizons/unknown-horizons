@@ -190,7 +190,8 @@ def load_session(savegame, rng_seed=RANDOM_SEED, is_map=False):
 	return session
 
 
-def game_test(*args, **kwargs):
+def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
+              manual_session=False, use_fixture=False):
 	"""
 	Decorator that is needed for each test in this package. setup/teardown of function
 	based tests can't pass arguments to the test, or keep a reference somewhere.
@@ -198,29 +199,7 @@ def game_test(*args, **kwargs):
 	break the rest of the tests. The global database reference has to be set each time too,
 	unittests use this too, and we can't predict the order tests run (we should not rely
 	on it anyway).
-
-	The decorator can be used in 2 ways:
-
-		1. No decorator arguments
-
-			@game_test
-			def foo(session, player):
-				pass
-
-		2. Pass extra arguments (timeout, different map generator)
-
-			@game_test(timeout=10, mapgen=my_map_generator)
-			def foo(session, player):
-				pass
 	"""
-	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
-
-	timeout = kwargs.get('timeout', 15 * 60)	# zero means no timeout, 15min default
-	mapgen = kwargs.get('mapgen', create_map)
-	human_player = kwargs.get('human_player', True)
-	ai_players = kwargs.get('ai_players', 0)
-	manual_session = kwargs.get('manual_session', False)
-	use_fixture = kwargs.get('use_fixture', False)
 
 	def handler(signum, frame):
 		raise Exception('Test run exceeded %ds time limit' % timeout)
@@ -265,13 +244,7 @@ def game_test(*args, **kwargs):
 
 				timelimit.stop()
 		return wrapped
-
-	if no_decorator_arguments:
-		# return the wrapped function
-		return deco(args[0])
-	else:
-		# return a decorator
-		return deco
+	return deco
 
 game_test.__test__ = False
 

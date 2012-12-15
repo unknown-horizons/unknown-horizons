@@ -31,7 +31,7 @@ from horizons.world.production.producer import Producer
 from tests.game import game_test, settle
 
 
-@game_test
+@game_test()
 def test_lumberjack(s, p):
 	"""
 	Lumberjack will produce boards out of wood, collected from nearby trees.
@@ -56,7 +56,7 @@ def test_lumberjack(s, p):
 	assert jack.get_component(StorageComponent).inventory[RES.BOARDS]
 
 
-@game_test
+@game_test()
 def test_hunter(s, p):
 	"""
 	Hunter will produce food from dear meat. No animals were harmed in this test.
@@ -83,7 +83,7 @@ def test_hunter(s, p):
 	assert hunter.get_component(StorageComponent).inventory[RES.FOOD]
 
 
-@game_test
+@game_test()
 def test_fisherman(s, p):
 	"""
 	A fisherman produces food out of fish, collecting in nearby fish deposits.
@@ -106,7 +106,7 @@ def test_fisherman(s, p):
 	assert fisherman.get_component(StorageComponent).inventory[RES.FOOD]
 
 
-@game_test
+@game_test()
 def test_brick_production_chain(s, p):
 	"""
 	A brickyard makes bricks from clay. Clay is collected by a clay pit on a deposit.
@@ -125,7 +125,7 @@ def test_brick_production_chain(s, p):
 	assert brickyard.get_component(StorageComponent).inventory[RES.BRICKS]
 
 
-@game_test
+@game_test()
 def test_tool_production_chain(s, p):
 	"""
 	Check if a iron mine gathers raw iron, a smeltery produces iron ingots, boards are converted
@@ -152,7 +152,7 @@ def test_tool_production_chain(s, p):
 	s.run(seconds=120)
 	assert toolmaker.get_component(StorageComponent).inventory[RES.TOOLS]
 
-@game_test
+@game_test()
 def test_build_tear(s, p):
 	"""
 	Build stuff and tear it later

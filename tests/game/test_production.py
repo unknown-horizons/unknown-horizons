@@ -26,7 +26,7 @@ from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, PRODUCTION
 
 from tests.game import settle, game_test
 
-@game_test
+@game_test()
 def test_basic_wood_production(session, player):
 	"""This is a fairly detailed test of the simple wood production"""
 

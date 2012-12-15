@@ -36,7 +36,7 @@ def assert_called_with_icon(cb, icon):
 	assert cb.call_args[0][0].icon.__class__ == icon
 
 
-@game_test
+@game_test()
 def test_productivity_low(session, player):
 	settlement, island = settle(session)
 
@@ -53,7 +53,7 @@ def test_productivity_low(session, player):
 	# Now low
 	assert_called_with_icon(cb, ProductivityLowStatus)
 
-@game_test
+@game_test()
 def test_settler_unhappy(session, player):
 	settlement, island = settle(session)
 
@@ -72,7 +72,7 @@ def test_settler_unhappy(session, player):
 	assert_called_with_icon(cb, SettlerUnhappyStatus)
 
 
-@game_test
+@game_test()
 def test_decommissioned(session, player):
 	settlement, island = settle(session)
 
@@ -87,7 +87,7 @@ def test_decommissioned(session, player):
 
 	assert_called_with_icon(cb, DecommissionedStatus)
 
-@game_test
+@game_test()
 def test_inventory_full(session, player):
 	settlement, island = settle(session)
 

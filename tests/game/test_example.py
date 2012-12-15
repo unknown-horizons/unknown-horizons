@@ -28,7 +28,7 @@ from horizons.world.production.producer import Producer
 from tests.game import game_test, settle
 
 
-@game_test
+@game_test()
 def test_example(s, p):
 	"""
 	Build a farm and 2 pastures. Confirm raw wool is produced at the

@@ -40,7 +40,7 @@ def test_removal():
 		yield remove, rng.randint(1, 200), rng.randint(1, 200), rng.randint(0, 8)
 
 
-@game_test
+@game_test()
 def remove(s, p, before_ticks, after_ticks, tear_index):
 	"""
 	Place a couple of buildings and tear down one randomly, run a while afterwards.
