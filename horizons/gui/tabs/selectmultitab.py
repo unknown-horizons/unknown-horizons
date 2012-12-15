@@ -25,7 +25,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
 from horizons.component.healthcomponent import HealthComponent
-from horizons.component.stancecomponent import *
+from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
 
 class SelectMultiTab(TabInterface):
@@ -239,4 +239,3 @@ class UnitEntry(object):
 			health_component = instance.get_component(HealthComponent)
 			if health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.remove_damage_dealt_listener(self.draw_health)
-
