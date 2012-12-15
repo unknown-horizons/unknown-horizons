@@ -166,12 +166,10 @@ def get_option_parser():
 	dev_group.add_option("--join-mp-game", action="store_true", dest="join_mp_game",
 	             help="Join first multiplayer game.")
 	if VERSION.IS_DEV_VERSION:
-		dev_group.add_option("--interactive-shell", action="store_true", dest="interactive_shell",
-	             help="Starts an IPython kernel. Connect to the shell with: ipython console --existing")
 		dev_group.add_option("--no-atlas-generation", action="store_false", dest="atlas_generation",
 	             help="Disable atlas generation.")
 	# Add dummy default variables for the DEV_VERSION groups above when in release mode
-	p.set_defaults(interactive_shell=False, atlas_generation=True)
+	p.set_defaults(atlas_generation=True)
 	p.add_option_group(dev_group)
 
 	return p

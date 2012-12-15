@@ -285,10 +285,6 @@ def start(_command_line_arguments):
 		from tests.gui import TestRunner
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
-	if command_line_arguments.interactive_shell:
-		from horizons.util import interactive_shell
-		interactive_shell.start(horizons.globals.fife)
-
 	horizons.globals.fife.run()
 
 def quit():
