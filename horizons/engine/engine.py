@@ -181,7 +181,7 @@ class Fife(ApplicationBase):
 
 		self._setting_handler.apply_settings()
 
-		self._gotInited = True
+		self._got_inited = True
 
 	def init_animation_loader(self, use_atlases):
 		# this method should not be called from init to catch any bugs caused by the loader changing after it.
@@ -264,7 +264,7 @@ class Fife(ApplicationBase):
 	def run(self):
 		"""
 		"""
-		assert self._gotInited
+		assert self._got_inited
 
 		# Screen Resolutions can only be queried after the engine has been inited
 		available_resolutions = get_screen_resolutions(self.get_fife_setting('ScreenResolution'))
