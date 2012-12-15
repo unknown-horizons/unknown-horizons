@@ -152,7 +152,6 @@ class Fife(ApplicationBase):
 
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
-		#self.eventmanager.setNonConsumableKeys([fife.Key.ESCAPE, fife.Key.F10])
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
