@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tabinterface import TabInterface
 from horizons.util.python.callback import Callback
+from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
 from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance

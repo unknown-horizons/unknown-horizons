@@ -308,7 +308,7 @@ def start_singleplayer(options):
 	if _modules.session is not None and _modules.session.is_alive:
 		_modules.session.end()
 	# start new session
-	from spsession import SPSession
+	from horizons.spsession import SPSession
 	_modules.session = SPSession(_modules.gui, horizons.globals.db)
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
@@ -357,7 +357,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	if _modules.session is not None and _modules.session.is_alive:
 		_modules.session.end()
 	# start new session
-	from mpsession import MPSession
+	from horizons.mpsession import MPSession
 	# get random seed for game
 	uuid = game.uuid
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])

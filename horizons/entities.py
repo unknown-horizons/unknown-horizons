@@ -69,7 +69,7 @@ class Entities(object):
 			cls.log.debug("Entities: grounds already loaded")
 			return
 
-		from world.ground import GroundClass
+		from horizons.world.ground import GroundClass
 		tile_sets = TileSetLoader.get_sets()
 		cls.grounds = _EntitiesLazyDict()
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
@@ -88,7 +88,7 @@ class Entities(object):
 			cls.log.debug("Entities: buildings already loaded")
 			return
 		cls.buildings = _EntitiesLazyDict()
-		from world.building import BuildingClass
+		from horizons.world.building import BuildingClass
 		for root, dirnames, filenames in os.walk('content/objects/buildings'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				cls.log.debug("Loading: " + filename)
@@ -115,7 +115,7 @@ class Entities(object):
 			return
 		cls.units = _EntitiesLazyDict()
 
-		from world.units import UnitClass
+		from horizons.world.units import UnitClass
 		for root, dirnames, filenames in os.walk('content/objects/units'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				full_file = os.path.join(root, filename)

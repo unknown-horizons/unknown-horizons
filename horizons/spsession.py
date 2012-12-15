@@ -21,10 +21,9 @@
 
 import random
 
-from constants import PATHS
 from horizons.session import Session
 from horizons.manager import SPManager
-from horizons.constants import SINGLEPLAYER
+from horizons.constants import PATHS, SINGLEPLAYER
 from horizons.savegamemanager import SavegameManager
 from horizons.timer import Timer
 
