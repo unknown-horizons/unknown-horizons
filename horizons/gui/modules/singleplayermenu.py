@@ -33,7 +33,6 @@ from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.constants import LANGUAGENAMES
-from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
 from horizons.util.python.callback import Callback
@@ -516,7 +515,11 @@ class MapPreview(object):
 
 		params = json.dumps(((minimap_icon.width, minimap_icon.height), map_params))
 
-		args = (sys.executable, sys.argv[0], "--generate-minimap", params)
+		args = [sys.executable, sys.argv[0], "--generate-minimap", params]
+		# We're running UH in a new process, make sure fife is setup correctly
+		if horizons.main.command_line_arguments.fife_path:
+			args.extend(["--fife-path", horizons.main.command_line_arguments.fife_path])
+
 		handle, outfilename = tempfile.mkstemp()
 		os.close(handle)
 		self.calc_proc = subprocess.Popen(args=args,
