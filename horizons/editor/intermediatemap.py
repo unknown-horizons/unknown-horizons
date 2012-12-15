@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.constants import GROUND
-from horizons.util.shapes import Point
 
 class IntermediateMap(object):
 	def __init__(self, world):

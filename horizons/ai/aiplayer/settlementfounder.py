@@ -26,7 +26,7 @@ from collections import defaultdict
 from horizons.ai.aiplayer.mission.foundsettlement import FoundSettlement
 from horizons.ai.aiplayer.mission.preparefoundationship import PrepareFoundationShip
 from horizons.ai.aiplayer.landmanager import LandManager
-from horizons.constants import RES, BUILDINGS
+from horizons.constants import RES
 from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
 

@@ -21,7 +21,6 @@
 
 import hashlib
 import random
-import sys
 import re
 import string
 import copy

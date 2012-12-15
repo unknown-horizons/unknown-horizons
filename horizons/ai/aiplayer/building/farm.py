@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import copy
 from collections import defaultdict
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
@@ -28,7 +27,6 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
-from horizons.util.shapes import Point, Rect
 from horizons.world.buildability.terraincache import TerrainRequirement
 
 class FarmOptionCache(object):

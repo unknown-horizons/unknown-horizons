@@ -35,7 +35,7 @@ from horizons.constants import AI, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-from horizons.util.shapes import distances, Point, Rect
+from horizons.util.shapes import distances, Rect
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache

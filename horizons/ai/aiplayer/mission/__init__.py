@@ -23,7 +23,7 @@ import logging
 
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util.python import decorators
-from horizons.util.shapes import Circle, Point
+from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
 from horizons.constants import BUILDINGS
 from horizons.component.storagecomponent import StorageComponent

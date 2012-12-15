@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import BUILDINGS
 from horizons.util.shapes.rect import Rect
 
 class TerrainRequirement:
