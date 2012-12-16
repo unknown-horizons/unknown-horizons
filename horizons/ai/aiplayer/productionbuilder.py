@@ -160,7 +160,7 @@ class ProductionBuilder(AreaBuilder):
 
 			distance = distances.distance_rect_rect(target_position, builder.position)
 			value = distance - alignment * 0.7
-			options.append((value, builder))
+			options.append((-value, builder))
 		return self.build_best_option(options, BUILDING_PURPOSE.STORAGE)
 
 	def get_collector_area(self):
