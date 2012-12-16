@@ -107,7 +107,7 @@ class MPManager(LivingObject):
 				self.log.debug("Got checkuphash packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
 				self.checkuphashmanager.add_packet(packet)
 			else:
-				self.log.warn("invalid packet: "+str(packet))
+				self.log.warning("invalid packet: " + str(packet))
 
 		# send out new commands
 		# check if we already sent commands for this tick (only 1 packet per tick is allowed,

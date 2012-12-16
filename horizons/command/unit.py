@@ -30,7 +30,7 @@ class GenericUnitCommand(GenericCommand):
 		try:
 			unit = self._get_object()
 		except WorldObjectNotFound as e:
-			self.log.warn("Tried to call a unit command on an inexistent unit. It could have been killed: %s", e)
+			self.log.warning("Tried to call a unit command on an inexistent unit. It could have been killed: %s", e)
 			return
 		if unit.owner.worldid != issuer.worldid:
 			return # don't move enemy units

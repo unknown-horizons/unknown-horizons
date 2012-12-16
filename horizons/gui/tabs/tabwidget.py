@@ -110,7 +110,7 @@ class TabWidget(object):
 			# this usually indicates a non-critical error, therefore we can handle it without crashing
 			import traceback
 			traceback.print_stack()
-			self.log.warn("Invalid tab number %s, available tabs: %s", number, self._tabs)
+			self.log.warning("Invalid tab number %s, available tabs: %s", number, self._tabs)
 			return
 		if self.current_tab.is_visible():
 			self.current_tab.hide()
