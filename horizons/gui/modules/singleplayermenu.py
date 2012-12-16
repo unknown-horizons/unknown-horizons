@@ -66,7 +66,7 @@ class SingleplayerMenu(object):
 
 		# start with default single player settings
 		self.widgets.reload('singleplayermenu')
-		self.mainmenu._switch_current_widget('singleplayermenu', center=True)
+		self.mainmenu._switch_current_widget('singleplayermenu')
 		self.current = self.mainmenu.current
 		self.active_right_side = None
 

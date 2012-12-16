@@ -100,7 +100,7 @@ class Gui(object):
 # basic menu widgets
 	def show_main(self):
 		"""Shows the main menu """
-		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
+		self._switch_current_widget('mainmenu', show=True, event_map={
 			'startSingle'      : self.show_single, # first is the icon in menu
 			'start'            : self.show_single, # second is the label in menu
 			'startMulti'       : self.show_multi,
@@ -174,7 +174,7 @@ class Gui(object):
 				'e_start': self.toggle_pause,
 				'e_quit' : do_quit,
 			}
-			self._switch_current_widget(menu_name, center=True, show=False, event_map={
+			self._switch_current_widget(menu_name, show=False, event_map={
 				  # icons
 				'loadgameButton' : events['e_load'],
 				'savegameButton' : events['e_save'],
@@ -420,7 +420,7 @@ class Gui(object):
 			pass # only used for some widgets, e.g. pause
 
 	def show_loading_screen(self):
-		self._switch_current_widget('loadingscreen', center=True, show=True)
+		self._switch_current_widget('loadingscreen', show=True)
 		# Add 'Quote of the Load' to loading screen:
 		qotl_type_label = self.current.findChild(name='qotl_type_label')
 		qotl_label = self.current.findChild(name='qotl_label')
@@ -440,7 +440,7 @@ class Gui(object):
 
 # helper
 
-	def _switch_current_widget(self, new_widget, center=False, event_map=None, show=False, hide_old=False):
+	def _switch_current_widget(self, new_widget, event_map=None, show=False, hide_old=False):
 		"""Switches self.current to a new widget.
 		@param new_widget: str, widget name
 		@param center: bool, whether to center the new widget
@@ -461,10 +461,9 @@ class Gui(object):
 		if bg:
 			# Set background image
 			bg.image = self._background_image
-		if center:
-			self.current.position_technique = "automatic" # == "center:center"
 		if event_map:
 			self.current.mapEvents(event_map)
+		self.current.position_technique = "automatic" # == "center:center"
 		if show:
 			self.current.show()
 

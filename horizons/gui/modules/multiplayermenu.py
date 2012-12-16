@@ -86,7 +86,7 @@ class MultiplayerMenu(object):
 		self.__apply_new_color()
 		# reload because changing modes (not yet implemented) will need it
 		self.widgets.reload('multiplayermenu')
-		self.mainmenu._switch_current_widget('multiplayermenu', center=True, event_map=event_map, hide_old=True)
+		self.mainmenu._switch_current_widget('multiplayermenu', event_map=event_map, hide_old=True)
 		self.current = self.mainmenu.current
 
 		refresh_worked = self.__refresh()
@@ -338,7 +338,7 @@ class MultiplayerMenu(object):
 		password.capture(_enter_password)
 
 	def __prepare_game(self, game):
-		self.mainmenu._switch_current_widget('loadingscreen', center=True, show=True)
+		self.mainmenu._switch_current_widget('loadingscreen', show=True)
 		self.current = self.mainmenu.current
 		# send map data
 		# NetworkClient().sendmapdata(...)
@@ -361,7 +361,7 @@ class MultiplayerMenu(object):
 			'ready_btn' : self.__toggle_ready,
 		}
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
-		self.mainmenu._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
+		self.mainmenu._switch_current_widget('multiplayer_gamelobby', event_map=event_map, hide_old=True)
 		self.current = self.mainmenu.current
 
 		self.__update_game_details(game)
@@ -464,7 +464,7 @@ class MultiplayerMenu(object):
 		}
 		self.__apply_new_nickname()
 		self.__apply_new_color()
-		self.mainmenu._switch_current_widget('multiplayer_creategame', center=True, event_map=event_map, hide_old=True)
+		self.mainmenu._switch_current_widget('multiplayer_creategame', event_map=event_map, hide_old=True)
 		self.current = self.mainmenu.current
 
 		self.current.files, self.maps_display = SavegameManager.get_maps()
