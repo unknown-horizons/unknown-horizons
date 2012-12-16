@@ -451,16 +451,6 @@ class RouteConfig(object):
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 
-		"""
-		import cProfile as profile
-		import tempfile
-		outfilename = tempfile.mkstemp(text=True)[1]
-		print 'profile to ', outfilename
-		profile.runctx( "self.minimap.draw()", globals(), locals(), outfilename)
-		"""
-
-
 	def _route_cmd(self, method, *args, **kwargs):
 		"""Convenience method for calling a method on instance.route via command (mp-safe)"""
 		RouteConfigCommand(self.instance, method, *args, **kwargs).execute(self.session)
-
