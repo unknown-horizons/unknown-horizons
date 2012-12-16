@@ -45,13 +45,13 @@ class SavegameManager(object):
 	The instance in horizons.main is nevertheless important, since it creates
 	the savegame directories
 
-	The return values is usually a tuple: (list_of_savegame_files, list_of_savegame_names),
+	The return value usually is a tuple: (list_of_savegame_files, list_of_savegame_names),
 	where savegame_names are meant for displaying to the user.
 
-
 	IMPORTANT:
-	Whenever you make a change that breaks compatibility with old savegames, increase
-	horizons/constans.py:VERSION.SAVEGAMEREVISION by one !!
+	Whenever you make a change that breaks compatibility with old savegames,
+	increment horizons/constants.py:VERSION.SAVEGAMEREVISION and add an
+	upgrade path in horizons/util/savegameupgrader.py.
 	"""
 	log = logging.getLogger("savegamemanager")
 
