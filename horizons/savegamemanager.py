@@ -77,6 +77,8 @@ class SavegameManager(object):
 	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename, ext=savegame_extension)
 	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename, ext=savegame_extension)
 
+	filename = u"{{directory}}{sep}{{name}}.{ext}".format(sep=os.path.sep, ext=savegame_extension)
+
 	savegame_screenshot_width = 290
 
 	# metadata of a savegame with default values
@@ -133,26 +135,25 @@ class SavegameManager(object):
 	@classmethod
 	def create_filename(cls, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
-		name = u"{directory}{sep}{name}.{ext}".format(directory=cls.savegame_dir,
-		                                              sep=os.sep,
-		                                              name=savegamename,
-		                                              ext=cls.savegame_extension)
+		name = cls.filename.format(directory=cls.savegame_dir, name=savegamename)
 		cls.log.debug("Savegamemanager: creating save-filename: %s", name)
 		return name
 
 	@classmethod
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
-		prepared_filename = time.strftime(cls.autosave_filenamepattern.format(timestamp=time.time()))
-		name = u"{directory}{sep}{name}".format(directory=cls.autosave_dir, sep=os.sep, name=prepared_filename)
+		timestamp = cls.autosave_filenamepattern.format(timestamp=time.time())
+		prepared_filename = time.strftime(timestamp)
+		name = cls.filename.format(directory=cls.autosave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
 	@classmethod
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
-		prepared_filename = time.strftime(cls.quicksave_filenamepattern.format(timestamp=time.time()))
-		name = u"{directory}{sep}{name}".format(directory=cls.quicksave_dir, sep=os.sep, name=prepared_filename)
+		timestamp = cls.quicksave_filenamepattern.format(timestamp=time.time())
+		prepared_filename = time.strftime(timestamp)
+		name = cls.filename.format(directory=cls.quicksave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
@@ -174,7 +175,7 @@ class SavegameManager(object):
 			cls.log.error(err)
 			raise RuntimeError(err)
 
-		name = u"{directory}{sep}{name}".format(directory=cls.multiplayersave_dir, sep=os.sep, name=name + "." + cls.savegame_extension)
+		name = cls.filename.format(directory=cls.multiplayersave_dir, name=name)
 		cls.log.debug("Savegamemanager: creating multiplayersave-filename: %s", name)
 		return name
 
@@ -252,11 +253,12 @@ class SavegameManager(object):
 			horizons.globals.fife.engine.pump()
 			horizons.globals.fife.engine.pump()
 
-		# scale to the correct with and adapt height with same factor
-		factor = float( cls.savegame_screenshot_width ) / width
-		horizons.globals.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
-		                                                           int(float(width) * factor),
-		                                                           int(float(height) * factor))
+		# scale to the correct width and adapt height with same factor
+		factor = float(cls.savegame_screenshot_width) / width
+		new_width = int(float(width) * factor)
+		new_height = int(float(height) * factor)
+		backend = horizons.globals.fife.engine.getRenderBackend()
+		backend.captureScreen(screenshot_filename, new_width, new_height)
 
 		if dialog_hidden:
 			horizons.main._modules.gui.show()
