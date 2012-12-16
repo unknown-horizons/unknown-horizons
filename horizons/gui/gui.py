@@ -463,7 +463,6 @@ class Gui(object):
 			bg.image = self._background_image
 		if event_map:
 			self.current.mapEvents(event_map)
-		self.current.position_technique = "automatic" # == "center:center"
 		if show:
 			self.current.show()
 
