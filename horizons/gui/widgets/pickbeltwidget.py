@@ -34,7 +34,7 @@ class PickBeltWidget(object):
 
 	def __init__(self):
 		self.page_widgets = {}
-		self.widget = load_uh_widget(self.widget_xml, style=self.style)
+		self.widget = load_uh_widget(self.widget_xml, style=self.style, center_widget=True)
 
 		# Lists holding pickbelt ImageButtons, placed to the left/right of the book
 		self.buttons = {'left': [], 'right': []}

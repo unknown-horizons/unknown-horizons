@@ -393,7 +393,7 @@ class RouteConfig(object):
 		widgets : list of route entry widgets
 		slots : dict with slots for each entry
 		"""
-		self._gui = load_uh_widget("configure_route.xml")
+		self._gui = load_uh_widget("configure_route.xml", center_widget=True)
 
 		self.widgets = []
 		self.slots = {}
@@ -450,7 +450,6 @@ class RouteConfig(object):
 		  OkButton.DEFAULT_NAME : self.hide,
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
-		self._gui.position_technique = "automatic" # "center:center"
 
 		"""
 		import cProfile as profile

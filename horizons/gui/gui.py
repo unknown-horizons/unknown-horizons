@@ -242,7 +242,6 @@ class Gui(object):
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
 		widget = CreditsPickbeltWidget().get_widget()
-		widget.position_technique = "automatic"
 		# Overwrite a few style pieces
 		for box in widget.findChildren(name='box'):
 			box.margins = (30, 0) # to get some indentation
