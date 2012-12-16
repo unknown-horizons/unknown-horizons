@@ -80,9 +80,10 @@ class SavegameManager(object):
 	savegame_screenshot_width = 290
 
 	# metadata of a savegame with default values
-	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : "" }
-	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int,
-	                            'rng_state' : str } # 'screenshot' : NoneType }
+	savegame_metadata = {'timestamp': -1, 'savecounter': 0,
+	                     'savegamerev': 0, 'rng_state': ""}
+	savegame_metadata_types = {'timestamp': float, 'savecounter': int,
+	                           'savegamerev': int, 'rng_state': str}
 
 	@classmethod
 	def init(cls):
@@ -112,7 +113,7 @@ class SavegameManager(object):
 
 			if not isinstance(name, unicode):
 				name = unicode(name, errors='replace') # only use unicode strings, guichan needs them
-			displaynames.append( name )
+			displaynames.append(name)
 		return displaynames
 
 	@classmethod
@@ -120,7 +121,9 @@ class SavegameManager(object):
 		"""Internal function, that returns the saves of a dir"""
 		if not filename_extension:
 			filename_extension = cls.savegame_extension
-		files = sorted((-os.path.getmtime(f) if order_by_date else 0, f) for p in dirs for f in glob.glob(p + '/*.' + filename_extension) if os.path.isfile(f))
+		files = sorted((-os.path.getmtime(f) if order_by_date else 0, f)
+		               for p in dirs for f in glob.glob(p + '/*.' + filename_extension)
+		               if os.path.isfile(f))
 		files = zip(*files)[1] if files else []
 		if include_displaynames:
 			return (files, cls.__get_displaynames(files))
@@ -131,9 +134,9 @@ class SavegameManager(object):
 	def create_filename(cls, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
 		name = u"{directory}{sep}{name}.{ext}".format(directory=cls.savegame_dir,
-		                                         sep=os.sep,
-		                                         name=savegamename,
-		                                         ext=cls.savegame_extension)
+		                                              sep=os.sep,
+		                                              name=savegamename,
+		                                              ext=cls.savegame_extension)
 		cls.log.debug("Savegamemanager: creating save-filename: %s", name)
 		return name
 
@@ -214,7 +217,7 @@ class SavegameManager(object):
 			for key in metadata.iterkeys():
 				result = db("SELECT `value` FROM `metadata` WHERE `name` = ?", key)
 				if result:
-					assert(len(result) == 1)
+					assert len(result) == 1
 					metadata[key] = cls.savegame_metadata_types[key](result[0][0])
 		except sqlite3.OperationalError as e:
 			print 'Warning: Cannot read savegame {file}: {exception}'.format(file=savegamefile, exception=e)
@@ -223,8 +226,10 @@ class SavegameManager(object):
 		screenshot_data = None
 		try:
 			screenshot_data = db("SELECT value FROM metadata_blob where name = ?", "screen")[0][0]
-		except IndexError: pass
-		except sqlite3.OperationalError: pass
+		except IndexError:
+			pass
+		except sqlite3.OperationalError:
+			pass
 		metadata['screenshot'] = screenshot_data
 
 		return metadata
@@ -301,7 +306,8 @@ class SavegameManager(object):
 		"""Returns all savegames"""
 		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.savegame_dir,
 		              cls.autosave_dir, cls.quicksave_dir)
-		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir], include_displaynames, None, True)
+		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir],
+		                                 include_displaynames, None, True)
 
 	@classmethod
 	def get_multiplayersaves(cls, include_displaynames=True):
@@ -325,7 +331,7 @@ class SavegameManager(object):
 		"""Returns available scenarios."""
 		afiles = []
 		anames = []
-		sfiles, snames = cls.get_scenarios(include_displaynames = True)
+		sfiles, snames = cls.get_scenarios(include_displaynames=True)
 		for i, sname in enumerate(snames):
 			if hide_test_scenarios and cls.get_scenario_info(name=sname).get('test_scenario'):
 				continue
@@ -369,7 +375,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_scenario_info(cls, name="", filename=""):
 		"""Return this scenario data"""
-		sfiles, snames = cls.get_scenarios(include_displaynames = True)
+		sfiles, snames = cls.get_scenarios(include_displaynames=True)
 		if name:
 			if not name in snames:
 				print "Error: Cannot find scenario '{name}'.".format(name=name)
