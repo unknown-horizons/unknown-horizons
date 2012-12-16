@@ -221,7 +221,8 @@ class SavegameManager(object):
 					assert len(result) == 1
 					metadata[key] = cls.savegame_metadata_types[key](result[0][0])
 		except sqlite3.OperationalError as e:
-			print 'Warning: Cannot read savegame {file}: {exception}'.format(file=savegamefile, exception=e)
+			cls.log.warning('Warning: Cannot read savegame {file}: {exception}'
+			                ''.format(file=savegamefile, exception=e))
 			return metadata
 
 		screenshot_data = None
@@ -376,12 +377,12 @@ class SavegameManager(object):
 		sfiles, snames = cls.get_scenarios(include_displaynames=True)
 		if name:
 			if not name in snames:
-				print "Error: Cannot find scenario '{name}'.".format(name=name)
+				cls.log.error("Error: Cannot find scenario '{name}'.".format(name=name))
 				return {}
 			index = snames.index(name)
 		elif filename:
 			if not filename in sfiles:
-				print "Error: Cannot find scenario '{name}'.".format(name=filename)
+				cls.log.error("Error: Cannot find scenario '{name}'.".format(name=filename))
 				return {}
 			index = sfiles.index(filename)
 		data = YamlCache.get_file(sfiles[index], game_data=True)
