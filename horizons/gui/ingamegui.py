@@ -79,7 +79,7 @@ class IngameGui(LivingObject):
 		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
 
-		self.widgets = LazyWidgetsDict(self.styles, center_widgets=False)
+		self.widgets = LazyWidgetsDict(self.styles)
 
 		self.cityinfo = self.widgets['city_info']
 		self.cityinfo.child_finder = PychanChildFinder(self.cityinfo)

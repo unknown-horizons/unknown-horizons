@@ -118,14 +118,12 @@ def create_resource_icon(res_id, db):
 
 class LazyWidgetsDict(dict):
 	"""Dictionary for UH widgets. Loads widget on first access."""
-	def __init__(self, styles, center_widgets=True, *args, **kwargs):
+	def __init__(self, styles, *args, **kwargs):
 		"""
 		@param styles: Dictionary, { 'widgetname' : 'stylename' }. parameter for stylize().
-		@param center_widgets: Bool, whether to center the widgets
 		"""
 		super(LazyWidgetsDict, self).__init__(*args, **kwargs)
 		self.styles = styles
-		self.center_widgets = center_widgets
 
 	def __getitem__(self, widgetname):
 		try:
@@ -140,8 +138,7 @@ class LazyWidgetsDict(dict):
 		If you want your headlines to not be styled, rename them.
 		"""
 		self[widgetname] = load_uh_widget(widgetname+'.xml',
-		                                  style=self.styles.get(widgetname),
-		                                  center_widget=self.center_widgets)
+		                                  style=self.styles.get(widgetname))
 
 	def reload(self, widgetname):
 		"""Reloads a widget"""
