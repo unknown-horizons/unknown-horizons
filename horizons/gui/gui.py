@@ -63,6 +63,7 @@ class Gui(object):
 	  'multiplayermenu' : 'book',
 	  'multiplayer_creategame' : 'book',
 	  'multiplayer_gamelobby' : 'book',
+	  'set_password' : 'book',
 	  'playerdataselection' : 'book',
 	  'aidataselection' : 'book',
 	  'select_savegame': 'book',
