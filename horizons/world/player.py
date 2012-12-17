@@ -196,7 +196,7 @@ class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
 	def notify_settler_reached_level(self, message):
 		level_up = super(HumanPlayer, self).notify_settler_reached_level(message)
-		if level_up and message.sender.owner == self.session.world.player: 
+		if level_up and message.sender.owner.is_local_player: 
 			# add message and update ingame gui
 			self.session.ingame_gui.message_widget.add(point=message.sender.position.center,
 			                                           string_id='SETTLER_LEVEL_UP',
