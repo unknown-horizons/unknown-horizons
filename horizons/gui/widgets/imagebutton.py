@@ -20,6 +20,7 @@
 # ###################################################
 
 from fife.extensions.pychan.widgets import ImageButton
+from fife.extensions.pychan.widgets.common import Attr
 
 
 class OkButton(ImageButton):
@@ -84,3 +85,24 @@ class DeleteButton(ImageButton):
 			up_image="content/gui/images/buttons/delete.png",
 			hover_image="content/gui/images/buttons/delete_h.png",
 			down_image="content/gui/images/buttons/delete.png", **kwargs)
+
+
+class MainmenuButton(ImageButton):
+	"""For use in main menu. bw: whether to use greyscale or color."""
+
+	ATTRIBUTES = ImageButton.ATTRIBUTES + [Attr('icon')]
+	ICON = "content/gui/icons/mainmenu/{icon}{bw}.png"
+
+	def __init__(self, icon='door', **kwargs):
+		super(MainmenuButton, self).__init__(is_focusable=False, **kwargs)
+		self.icon = icon
+
+	def _get_icon(self):
+		return self.__icon
+
+	def _set_icon(self, icon):
+		self.__icon = icon
+		self.up_image = self.ICON.format(icon=icon, bw='_bw')
+		self.hover_image = self.down_image = self.ICON.format(icon=icon, bw='')
+
+	icon = property(_get_icon, _set_icon)
