@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-12-04 21:58+0100\n"
-"PO-Revision-Date: 2012-12-04 22:33+0000\n"
+"POT-Creation-Date: 2012-12-17 22:51+0100\n"
+"PO-Revision-Date: 2012-12-17 22:26+0000\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354660430.0\n"
+"X-POOTLE-MTIME: 1355783174.0\n"
 
 # 86%
 #: run_uh.py
@@ -148,7 +148,7 @@ msgstr "Colons"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Certains de vos colons n'ont pas accès à la place principale."
+msgstr "Certains de vos habitants n'ont pas accès à la place principale."
 
 # 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -789,43 +789,10 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} carreaux"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#. retranslate the layout
-#: horizons/gui/modules/help.py horizons/gui/modules/help.py
+#: horizons/gui/modules/help.py
 #, python-format
 msgid "[{key}] = {text}"
 msgstr "[{key}] = {text}"
-
-#: horizons/gui/modules/help.py
-#, python-format
-msgid "Current key: [{key}]"
-msgstr "Clé actuelle : [{key}]"
-
-#: horizons/gui/modules/help.py
-#, python-format
-msgid "Default key: [{key}]"
-msgstr "Clé par défaut : [{key}]"
-
-#: horizons/gui/modules/help.py
-msgid "Click to reset to default key"
-msgstr "Réinitialiser"
-
-# I don't know how long this string may be, but if it fits i'd prefer "reccoursi clavier" instead of "clé".
-#: horizons/gui/modules/help.py
-#, python-format
-msgid "Change hotkey for {action}"
-msgstr "Changer la clé pour {action}"
-
-#: horizons/gui/modules/help.py
-msgid "This key can not be reassigned at the moment."
-msgstr "Ce bâtiment doit être construit sur l'océan."
-
-#: horizons/gui/modules/help.py
-msgid "Invalid key"
-msgstr "Nom de fichier invalide"
-
-#: horizons/gui/modules/help.py
-msgid "The default key for this action has been selected."
-msgstr "La clé par défaut pour cette action a été choisi."
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Unable to find pyenet"
@@ -919,7 +886,7 @@ msgid "The file will be downloaded when the game starts."
 msgstr "Le fichier sera téléchargé lorsque la partie commencera."
 
 #. (text of widget: help)
-#. (text of widget: help) Main / in-game menu entry
+#. (text of widget: help_label) Main / in-game menu entry
 #: horizons/gui/modules/multiplayermenu.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
@@ -1031,7 +998,7 @@ msgid "Save game"
 msgstr "Sauvegarder la partie"
 
 #. (text of widget: loadgame)
-#. (text of widget: loadgame) Open a widget to select which game to load
+#. (text of widget: load_label) Open a widget to select which game to load
 #: horizons/gui/modules/select_savegame.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Load game"
@@ -1206,70 +1173,6 @@ msgstr "Construire {building}"
 #: horizons/gui/mousetools/navigationtool.py
 msgid "Press H to remove this hint"
 msgstr "Appuyez sur H pour enlever ce conseil"
-
-#: horizons/gui/quotes.py
-msgid "Quotes"
-msgstr "Citations"
-
-#: horizons/gui/quotes.py
-msgid "Gameplay Tips"
-msgstr "Conception de la jouabilité"
-
-#: horizons/gui/quotes.py
-msgid "Press 'ESC' to access Game Menu."
-msgstr "Appuyez «ESC» afin d'accéder au menu."
-
-#: horizons/gui/quotes.py
-msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Maintenir «SHIFT» afin de placer plusieurs bâtiments"
-
-#: horizons/gui/quotes.py
-msgid "Currently only the first {tier} tiers are playable."
-msgstr "Pour l'instant seulement les premiers {tier} niveaux sont jouables."
-
-#. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/quotes.py
-msgid "You can pause the game with 'P'."
-msgstr "Vous pouvez interrompre la partie avec «P»."
-
-#: horizons/gui/quotes.py
-msgid "You can drag roads by holding the left mouse button."
-msgstr "Vous pouvez tirer des rues en maintenant la souris gauche enfoncé."
-
-#: horizons/gui/quotes.py
-msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
-"Vous pouvez construire plusieurs bâtiments en maintenant la touche «SHIFT» "
-"enfoncé."
-
-#: horizons/gui/quotes.py
-msgid "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
-"Vous pouvez augmenter la satisfaction de vos habitants en réduisant les "
-"taxes."
-
-#: horizons/gui/quotes.py
-msgid "Build fire stations and doctors to protect your inhabitants from fire and disease."
-msgstr ""
-"Érigez des casernes de pompiers et des docteurs afin de protéger vos "
-"habitants de feux et de maladies."
-
-#: horizons/gui/quotes.py
-msgid "Build storage tents to increase your storage capacity."
-msgstr "Érigez des dépôts afin d'augmenter votre capacité de stockage."
-
-#: horizons/gui/quotes.py
-msgid "Make sure every house is in range of a marketplace."
-msgstr ""
-"Assurez-vous que chaque habitation est dans le rayon d'action d'un marché."
-
-#: horizons/gui/quotes.py
-msgid "Press 'T' to make trees transparent."
-msgstr "Appuyez «T» afin de rendre les arbres transparents."
-
-#: horizons/gui/quotes.py
-msgid "Mixed"
-msgstr "Mélangé"
 
 #: horizons/gui/tabs/boatbuildertabs.py
 msgid "Boat builder overview"
@@ -1466,15 +1369,15 @@ msgstr "Armer"
 msgid "Unequip weapon"
 msgstr "Désarmer"
 
-#. (helptext of widget: avg_icon)
-#: horizons/gui/util.py horizons/i18n/guitranslations.py
-msgid "satisfied"
-msgstr "satisfait"
-
 #. (helptext of widget: sad_icon)
 #: horizons/gui/util.py horizons/i18n/guitranslations.py
 msgid "sad"
 msgstr "triste"
+
+#. (helptext of widget: avg_icon)
+#: horizons/gui/util.py horizons/i18n/guitranslations.py
+msgid "satisfied"
+msgstr "satisfait"
 
 #. (helptext of widget: happy_icon)
 #: horizons/gui/util.py horizons/i18n/guitranslations.py
@@ -1522,12 +1425,6 @@ msgstr "Il n'y a encore rien dans votre journal de bord !"
 #: horizons/i18n/guitranslations.py
 msgid "Graphics"
 msgstr "Graphiques"
-
-#. (text of widget: headline_sound)
-#: horizons/gui/widgets/pickbeltwidget.py
-#: horizons/i18n/guitranslations.py
-msgid "Sound"
-msgstr "Son"
 
 #: horizons/gui/widgets/pickbeltwidget.py
 msgid "Game"
@@ -1694,7 +1591,7 @@ msgid "Save map"
 msgstr "Sauvegarder la carte"
 
 #. (text of widget: settings)
-#. (text of widget: settings) Main / in-game menu entry
+#. (text of widget: settings_label) Main / in-game menu entry
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
 msgid "Settings"
@@ -1913,10 +1810,10 @@ msgstr "Sommaire du bâtiment"
 
 # le contexte est à vérifier
 # 95%
-#. (helptext of widget: capacity_utilisation_label)
-#. (helptext of widget: capacity_utilisation)
-#. (helptext of widget: capacity_utilisation_label)
-#. (helptext of widget: capacity_utilisation)
+#. (helptext of widget: capacity_utilization_label)
+#. (helptext of widget: capacity_utilization)
+#. (helptext of widget: capacity_utilization_label)
+#. (helptext of widget: capacity_utilization)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Capacity utilization"
@@ -2054,10 +1951,10 @@ msgstr ""
 "temps en temps afin d'acheter ou vendre de la marchandise."
 
 # 95%
-#. (helptext of widget: collector_utilisation_label)
-#. (helptext of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
+#. (helptext of widget: collector_utilization_label)
+#. (helptext of widget: collector_utilization) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Collector utilisation"
+msgid "Collector utilization"
 msgstr "Utilisation des collecteurs"
 
 # 95%
@@ -2541,11 +2438,6 @@ msgstr "Tourner bâtiment ou carte en sens anti-horaire"
 msgid "Rotate building or map clockwise"
 msgstr "Tourner bâtiment ou carte dans le sens horaire"
 
-#. (text of widget: lbl_SAVE_MAP)
-#: horizons/i18n/guitranslations.py
-msgid "Save map (hold SHIFT)"
-msgstr "Sauvegarder la carte (maintenir SHIFT enfoncé)"
-
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py
 msgid "Screenshot"
@@ -2597,8 +2489,7 @@ msgid "Scroll up"
 msgstr "Défiler vers le haut"
 
 #. (helptext of widget: okButton)
-#. (helptext of widget: cancelButton)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Return"
 msgstr "Retourner"
 
@@ -2612,30 +2503,30 @@ msgstr "Abandonner la partie"
 msgid "Loading ..."
 msgstr "Chargement ..."
 
-#. (text of widget: credits)
+#. (text of widget: credits_label)
 #: horizons/i18n/guitranslations.py
 msgid "Credits"
 msgstr "Crédits"
 
-#. (text of widget: editor) Map editor
+#. (text of widget: editor_label) Map editor
 #: horizons/i18n/guitranslations.py
 msgid "Editor"
 msgstr "Éditeur"
 
-#. (text of widget: quit) Completely shut down UH
+#. (text of widget: multi_label) Opens widget to join or create multiplayer games
+#: horizons/i18n/guitranslations.py
+msgid "Multiplayer"
+msgstr "Jeu multijoueur"
+
+#. (text of widget: quit_label) Completely shut down UH
 #: horizons/i18n/guitranslations.py
 msgid "Quit"
 msgstr "Quitter"
 
-#. (text of widget: start) Opens widget to create singleplayer games (scenarios, random maps, free play)
+#. (text of widget: single_label) Opens widget to create singleplayer games (scenarios, random maps, free play)
 #: horizons/i18n/guitranslations.py
 msgid "Singleplayer"
 msgstr "Jeu solo"
-
-#. (text of widget: start_multi) Opens widget to join or create multiplayer games
-#: horizons/i18n/guitranslations.py
-msgid "Multiplayer"
-msgstr "Jeu multijoueur"
 
 #. (text of widget: create_game_lbl)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
@@ -2680,9 +2571,9 @@ msgstr "Créer cette nouvelle partie"
 
 #. (helptext of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "This will be displayed to other players so they recognise the game."
+msgid "This will be displayed to other players so they recognize the game."
 msgstr ""
-"Ceci sera affiché aux autres joueurs pour qu'ils reconnaissent la partie."
+"Ceci sera affiché aux autres joueurs afin qu'ils reconnaissent la partie."
 
 #. (helptext of widget: password_lbl)
 #: horizons/i18n/guitranslations.py
@@ -2877,6 +2768,11 @@ msgstr "Réseau"
 msgid "Saving"
 msgstr "Sauvegarde"
 
+#. (text of widget: headline_sound)
+#: horizons/i18n/guitranslations.py
+msgid "Sound"
+msgstr "Son"
+
 #. (text of widget: middle_mouse_pan_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Middle mouse button pan:"
@@ -2930,8 +2826,8 @@ msgstr "Résolution de l'écran :"
 
 #. (text of widget: scroll_speed_label)
 #: horizons/i18n/guitranslations.py
-msgid "Scroll Speed (lower is faster):"
-msgstr "Vitesse de défilement (plus bas = plus rapide) :"
+msgid "Scroll delay:"
+msgstr "Délais de défilement :"
 
 # An "apercu" is more a preview than an overview.
 #. (text of widget: show_resource_icons_lbl)
@@ -2953,6 +2849,11 @@ msgstr "Bâtiment intact :"
 #: horizons/i18n/guitranslations.py
 msgid "Used renderer:"
 msgstr "Moteur de rendu utilisé :"
+
+#. (helptext of widget: cancelButton)
+#: horizons/i18n/guitranslations.py
+msgid "Discard current changes"
+msgstr "Rejeter les modifications actuelles"
 
 #. (helptext of widget: defaultButton)
 #: horizons/i18n/guitranslations.py
@@ -2977,8 +2878,11 @@ msgstr "Si réglé à 0, utilise le pilote par défaut"
 
 #. (helptext of widget: cursor_centered_zoom_label)
 #: horizons/i18n/guitranslations.py
-msgid "When enabled, mouse wheel zoom will use the cursor position as new viewport center"
-msgstr "Lorsque activé, la zoom centrera l'écran sur la position du curseur"
+msgid "When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center."
+msgstr ""
+"Lorsque activé, zoomer avec la roulette de la souris centrera l'écran sur sa "
+"position actuelle. Lorsque désactivé zoomer centrera toujours sur le centre "
+"de l'écran actuel."
 
 #. (helptext of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py
@@ -3028,6 +2932,12 @@ msgstr "Si réglé à 0 les réglages par défaut du routeur sont utilisé"
 #: horizons/i18n/guitranslations.py
 msgid "What kind of quote to display while loading a game"
 msgstr "Le type de citations à afficher en chargeant une partie"
+
+#. (helptext of widget: scroll_speed_label)
+#: horizons/i18n/guitranslations.py
+msgid "Higher values slow down scrolling."
+msgstr ""
+"Des valeurs plus élevés signifient une vitesse de défilement plus basse."
 
 #. (helptext of widget: show_resource_icons_lbl)
 #: horizons/i18n/guitranslations.py
@@ -3857,6 +3767,66 @@ msgstr "Agriculture"
 msgid "Aesthetics"
 msgstr "Esthétique"
 
+#: horizons/i18n/quotes.py
+msgid "Quotes"
+msgstr "Citations"
+
+#: horizons/i18n/quotes.py
+msgid "Gameplay Tips"
+msgstr "Conception de la jouabilité"
+
+#: horizons/i18n/quotes.py
+msgid "Press 'ESC' to access Game Menu."
+msgstr "Appuyez «ESC» afin d'accéder au menu."
+
+#: horizons/i18n/quotes.py
+msgid "Use 'SHIFT' to place multiple buildings."
+msgstr "Maintenir «SHIFT» afin de placer plusieurs bâtiments"
+
+#: horizons/i18n/quotes.py
+msgid "Currently only the first {tier} tiers are playable."
+msgstr "Pour l'instant seulement les premiers {tier} niveaux sont jouables."
+
+#. TODO: This tip should be removed when all tiers are playable!!
+#: horizons/i18n/quotes.py
+msgid "You can pause the game with 'P'."
+msgstr "Vous pouvez interrompre la partie avec «P»."
+
+#: horizons/i18n/quotes.py
+msgid "You can drag roads by holding the left mouse button."
+msgstr "Vous pouvez tirer des rues en maintenant la souris gauche enfoncé."
+
+#: horizons/i18n/quotes.py
+msgid "You can build multiple buildings by holding the 'SHIFT' key."
+msgstr ""
+"Vous pouvez construire plusieurs bâtiments en maintenant la touche «SHIFT» "
+"enfoncé."
+
+#: horizons/i18n/quotes.py
+msgid "You can increase the happiness of your inhabitants by lowering the taxes."
+msgstr ""
+"Vous pouvez augmenter la satisfaction de vos habitants en réduisant les "
+"taxes."
+
+#: horizons/i18n/quotes.py
+msgid "Build fire stations and doctors to protect your inhabitants from fire and disease."
+msgstr ""
+"Érigez des casernes de pompiers et des docteurs afin de protéger vos "
+"habitants de feux et de maladies."
+
+#: horizons/i18n/quotes.py
+msgid "Build storage tents to increase your storage capacity."
+msgstr "Érigez des dépôts afin d'augmenter votre capacité de stockage."
+
+#: horizons/i18n/quotes.py
+msgid "Make sure every house is in range of a marketplace."
+msgstr ""
+"Assurez-vous que chaque habitation est dans le rayon d'action d'un marché."
+
+#: horizons/i18n/quotes.py
+msgid "Press 'T' to make trees transparent."
+msgstr "Appuyez «T» afin de rendre les arbres transparents."
+
 #: horizons/main.py
 msgid "Failed to start/load the game"
 msgstr "Échec lors du chargement/démarrage du jeu"
@@ -4132,6 +4102,51 @@ msgstr "Attaque {target} '{name}' ({owner})"
 #, python-format
 msgid "Attacking {owner}"
 msgstr "Attaque {owner}"
+
+#, python-format
+#~ msgid "Current key: [{key}]"
+#~ msgstr "Clé actuelle : [{key}]"
+
+#, python-format
+#~ msgid "Default key: [{key}]"
+#~ msgstr "Clé par défaut : [{key}]"
+
+#~ msgid "Click to reset to default key"
+#~ msgstr "Réinitialiser"
+
+# I don't know how long this string may be, but if it fits i'd prefer "reccoursi clavier" instead of "clé".
+#, python-format
+#~ msgid "Change hotkey for {action}"
+#~ msgstr "Changer la clé pour {action}"
+
+#~ msgid "This key can not be reassigned at the moment."
+#~ msgstr "Ce bâtiment doit être construit sur l'océan."
+
+#~ msgid "Invalid key"
+#~ msgstr "Nom de fichier invalide"
+
+#~ msgid "The default key for this action has been selected."
+#~ msgstr "La clé par défaut pour cette action a été choisi."
+
+#~ msgid "Mixed"
+#~ msgstr "Mélangé"
+
+# 95%
+#~ msgid "Collector utilisation"
+#~ msgstr "Utilisation des collecteurs"
+
+#~ msgid "Save map (hold SHIFT)"
+#~ msgstr "Sauvegarder la carte (maintenir SHIFT enfoncé)"
+
+#~ msgid "This will be displayed to other players so they recognise the game."
+#~ msgstr ""
+#~ "Ceci sera affiché aux autres joueurs pour qu'ils reconnaissent la partie."
+
+#~ msgid "Scroll Speed (lower is faster):"
+#~ msgstr "Vitesse de défilement (plus bas = plus rapide) :"
+
+#~ msgid "When enabled, mouse wheel zoom will use the cursor position as new viewport center"
+#~ msgstr "Lorsque activé, la zoom centrera l'écran sur la position du curseur"
 
 #~ msgid "FIFE was not found."
 #~ msgstr "FIFE n'a pas été trouvé."
