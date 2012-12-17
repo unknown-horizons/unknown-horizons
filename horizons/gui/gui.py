@@ -442,8 +442,7 @@ class Gui(object):
 
 	def _switch_current_widget(self, new_widget, event_map=None, show=False, hide_old=False):
 		"""Switches self.current to a new widget.
-		@param new_widget: str, widget name
-		@param center: bool, whether to center the new widget
+		@param new_widget: str (widget name) or loaded pychan widget
 		@param event_map: pychan event map to apply to new widget
 		@param show: bool, if True old window gets hidden and new one shown
 		@param hide_old: bool, if True old window gets hidden. Implied by show
