@@ -93,11 +93,7 @@ ROWINDENT = '''
 
 files_to_skip = [
 	'call_for_support.xml',
-	'credits0.xml',
-	'credits1.xml',
-	'credits2.xml',
-	'credits3.xml',
-	'credits4.xml',
+	'credits.xml',
 	'stringpreviewwidget.xml',
 	'startup_error_popup.xml',
 	]

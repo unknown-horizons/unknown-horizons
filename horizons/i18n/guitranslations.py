@@ -612,19 +612,7 @@ def set_translations():
 	"tooltip.xml" : {
 		},
 
-	"credits0.xml" : {
-		},
-
-	"credits1.xml" : {
-		},
-
-	"credits2.xml" : {
-		},
-
-	"credits3.xml" : {
-		},
-
-	"credits4.xml" : {
+	"credits.xml" : {
 		},
 
 	"editor_create_map.xml" : {
@@ -704,8 +692,6 @@ def set_translations():
 		("lbl_ROTATE_LEFT"             , "text"    ): _("Rotate building or map counterclockwise"),
 		# (text of widget: lbl_ROTATE_RIGHT)
 		("lbl_ROTATE_RIGHT"            , "text"    ): _("Rotate building or map clockwise"),
-		# (text of widget: lbl_SAVE_MAP)
-		("lbl_SAVE_MAP"                , "text"    ): _("Save map (hold SHIFT)"),
 		# (text of widget: lbl_SCREENSHOT)
 		("lbl_SCREENSHOT"              , "text"    ): _("Screenshot"),
 		# (text of widget: lbl_SETTLEMENTS_OVERVIEW)
@@ -751,22 +737,22 @@ def set_translations():
 		},
 
 	"mainmenu.xml" : {
-		# (text of widget: credits)
-		("credits"                     , "text"    ): _("Credits"),
-		# (text of widget: editor) Map editor
-		("editor"                      , "text"    ): _("Editor"),
-		# (text of widget: help) Main / in-game menu entry
-		("help"                        , "text"    ): _("Help"),
-		# (text of widget: loadgame) Open a widget to select which game to load
-		("loadgame"                    , "text"    ): _("Load game"),
-		# (text of widget: quit) Completely shut down UH
-		("quit"                        , "text"    ): _("Quit"),
-		# (text of widget: settings) Main / in-game menu entry
-		("settings"                    , "text"    ): _("Settings"),
-		# (text of widget: start) Opens widget to create singleplayer games (scenarios, random maps, free play)
-		("start"                       , "text"    ): _("Singleplayer"),
-		# (text of widget: start_multi) Opens widget to join or create multiplayer games
-		("start_multi"                 , "text"    ): _("Multiplayer"),
+		# (text of widget: credits_label)
+		("credits_label"               , "text"    ): _("Credits"),
+		# (text of widget: editor_label) Map editor
+		("editor_label"                , "text"    ): _("Editor"),
+		# (text of widget: help_label) Main / in-game menu entry
+		("help_label"                  , "text"    ): _("Help"),
+		# (text of widget: load_label) Open a widget to select which game to load
+		("load_label"                  , "text"    ): _("Load game"),
+		# (text of widget: multi_label) Opens widget to join or create multiplayer games
+		("multi_label"                 , "text"    ): _("Multiplayer"),
+		# (text of widget: quit_label) Completely shut down UH
+		("quit_label"                  , "text"    ): _("Quit"),
+		# (text of widget: settings_label) Main / in-game menu entry
+		("settings_label"              , "text"    ): _("Settings"),
+		# (text of widget: single_label) Opens widget to create singleplayer games (scenarios, random maps, free play)
+		("single_label"                , "text"    ): _("Singleplayer"),
 		# (text of widget: version_label)
 		("version_label"               , "text"    ): VERSION.string(),
 		},
@@ -914,7 +900,7 @@ def set_translations():
 		# (text of widget: screen_resolution_label)
 		("screen_resolution_label"     , "text"    ): _("Screen resolution:"),
 		# (text of widget: scroll_speed_label)
-		("scroll_speed_label"          , "text"    ): _("Scroll Speed (lower is faster):"),
+		("scroll_speed_label"          , "text"    ): _("Scroll delay:"),
 		# (text of widget: show_resource_icons_lbl)
 		("show_resource_icons_lbl"     , "text"    ): _("Production indicators:"),
 		# (text of widget: sound_enable_opt_text)
@@ -924,7 +910,7 @@ def set_translations():
 		# (text of widget: use_renderer_label)
 		("use_renderer_label"          , "text"    ): _("Used renderer:"),
 		# (helptext of widget: cancelButton)
-		("cancelButton"                , "helptext"): _("Return"),
+		("cancelButton"                , "helptext"): _("Discard current changes"),
 		# (helptext of widget: defaultButton)
 		("defaultButton"               , "helptext"): _("Reset to default settings"),
 		# (helptext of widget: okButton)
@@ -934,7 +920,7 @@ def set_translations():
 		# (helptext of widget: color_depth_label)
 		("color_depth_label"           , "helptext"): _("If set to 0, use the driver default"),
 		# (helptext of widget: cursor_centered_zoom_label)
-		("cursor_centered_zoom_label"  , "helptext"): _("When enabled, mouse wheel zoom will use the cursor position as new viewport center"),
+		("cursor_centered_zoom_label"  , "helptext"): _("When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center."),
 		# (helptext of widget: debug_log_lbl)
 		("debug_log_lbl"               , "helptext"): _("Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."),
 		# (helptext of widget: edge_scrolling_label)
@@ -951,6 +937,8 @@ def set_translations():
 		("network_port_lbl"            , "helptext"): _("If set to 0, use the router default"),
 		# (helptext of widget: quote_type_label)
 		("quote_type_label"            , "helptext"): _("What kind of quote to display while loading a game"),
+		# (helptext of widget: scroll_speed_label)
+		("scroll_speed_label"          , "helptext"): _("Higher values slow down scrolling."),
 		# (helptext of widget: show_resource_icons_lbl)
 		("show_resource_icons_lbl"     , "helptext"): _("Whether to show resource icons over buildings whenever they finish production"),
 		# (helptext of widget: uninterrupted_building_label)
