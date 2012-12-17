@@ -101,22 +101,22 @@ class Gui(object):
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', show=True, event_map={
-			'startSingle'      : self.show_single, # first is the icon in menu
-			'start'            : self.show_single, # second is the label in menu
-			'startMulti'       : self.show_multi,
-			'start_multi'      : self.show_multi,
-			'settingsLink'     : self.show_settings,
-			'settings'         : self.show_settings,
-			'helpLink'         : self.on_help,
-			'help'             : self.on_help,
-			'editor_link'      : self.show_editor_start_menu,
-			'editor'           : self.show_editor_start_menu,
-			'closeButton'      : self.show_quit,
-			'quit'             : self.show_quit,
-			'creditsLink'      : self.show_credits,
-			'credits'          : self.show_credits,
-			'loadgameButton'   : self.load_game,
-			'loadgame'         : self.load_game,
+			'single_button': self.show_single,
+			'single_label' : self.show_single,
+			'multi_button': self.show_multi,
+			'multi_label' : self.show_multi,
+			'settings_button': self.show_settings,
+			'settings_label' : self.show_settings,
+			'help_button': self.on_help,
+			'help_label' : self.on_help,
+			'quit_button': self.show_quit,
+			'quit_label' : self.show_quit,
+			'editor_button': self.show_editor_start_menu,
+			'editor_label' : self.show_editor_start_menu,
+			'credits_button': self.show_credits,
+			'credits_label' : self.show_credits,
+			'load_button': self.load_game,
+			'load_label' : self.load_game,
 			'changeBackground' : self.get_random_background_by_button,
 		})
 

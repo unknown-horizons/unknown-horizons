@@ -8,74 +8,74 @@
 	<ImageButton name="changeBackground" text="Change Background" position="755,685" />
 
 	<!-- clockwise, starting at 0 degree -->
-	<Label name="start"  text="Singleplayer"  position="531,100"
+	<Label name="single_label"  text="Singleplayer"  position="531,100"
 		comment="Opens widget to create singleplayer games (scenarios, random maps, free play)" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,144" />
-	<ImageButton name="startSingle"
+	<ImageButton name="single_button"
 		position="488,169"
 		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/compass_bw.png"
 		down_image="content/gui/icons/mainmenu/compass.png"
 		hover_image="content/gui/icons/mainmenu/compass.png" />
 
-	<Label name="start_multi"  text="Multiplayer"  position="680,200"
+	<Label name="multi_label"  text="Multiplayer"  position="680,200"
 		comment="Opens widget to join or create multiplayer games" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,188" />
-	<ImageButton name="startMulti"
+	<ImageButton name="multi_button"
 		position="593,211"
 		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/multiplayer_bw.png"
 		down_image="content/gui/icons/mainmenu/multiplayer.png"
 		hover_image="content/gui/icons/mainmenu/multiplayer.png" />
 
-	<Label name="settings"  text="Settings"  position="710,365"  comment="Main / in-game menu entry" />
+	<Label name="settings_label"  text="Settings"  position="710,365"  comment="Main / in-game menu entry" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="612,298" />
-	<ImageButton name="settingsLink"
+	<ImageButton name="settings_button"
 		position="637,323"
 		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/gears_bw.png"
 		down_image="content/gui/icons/mainmenu/gears.png"
 		hover_image="content/gui/icons/mainmenu/gears.png" />
 
-	<Label name="help"  text="Help"  position="590,518"  comment="Main / in-game menu entry" />
+	<Label name="help_label"  text="Help"  position="590,518"  comment="Main / in-game menu entry" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,406" />
-	<ImageButton name="helpLink"
+	<ImageButton name="help_button"
 		position="593,431"
 		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/help_bw.png"
 		down_image="content/gui/icons/mainmenu/help.png"
 		hover_image="content/gui/icons/mainmenu/help.png" />
 
-	<Label name="quit" text="Quit" position="442,565"  comment="Completely shut down UH" />
+	<Label name="quit_label" text="Quit" position="442,565"  comment="Completely shut down UH" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,452" />
-	<ImageButton name="closeButton"
+	<ImageButton name="quit_button"
 		position="484,478"
 		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/door_bw.png"
 		down_image="content/gui/icons/mainmenu/door.png"
 		hover_image="content/gui/icons/mainmenu/door.png" />
 
-	<Label name="editor"  text="Editor"  position="250,500"  comment="Map editor" />
+	<Label name="editor_label"  text="Editor"  position="250,500"  comment="Map editor" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="349,406" />
-	<ImageButton name="editor_link"
+	<ImageButton name="editor_button"
 		position="373,430"
 		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/editor_bw.png"
 		down_image="content/gui/icons/mainmenu/editor.png"
 		hover_image="content/gui/icons/mainmenu/editor.png" />
 
-	<Label name="credits" text="Credits" position="165,365" />
+	<Label name="credits_label" text="Credits" position="165,365" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="302,298" />
-	<ImageButton name="creditsLink"
+	<ImageButton name="credits_button"
 		position="328,321"
 		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/log_bw.png"
 		down_image="content/gui/icons/mainmenu/log.png"
 		hover_image="content/gui/icons/mainmenu/log.png" />
 
-	<Label name="loadgame" text="Load game" position="190,162"  comment="Open a widget to select which game to load" />
+	<Label name="load_label" text="Load game" position="190,162"  comment="Open a widget to select which game to load" />
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="350,188" />
-	<ImageButton name="loadgameButton"
+	<ImageButton name="load_button"
 		position="376,212"
 		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/load_bw.png"

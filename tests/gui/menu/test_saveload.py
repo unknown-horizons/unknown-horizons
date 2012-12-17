@@ -55,7 +55,7 @@ def test_load_game(gui):
 			assert options.game_identifier == SavegameManager.create_filename('boatbuilder')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'loadgameButton')
+		gui.trigger('menu', 'load_button')
 
 
 @gui_test(timeout=60)
@@ -65,7 +65,7 @@ def test_load_game_no_savegames(gui):
 		gui.trigger('popup_window', 'okButton/action/__execute__')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'loadgameButton')
+		gui.trigger('menu', 'load_button')
 
 
 @gui_test(timeout=60, use_dev_map=True, cleanup_userdir=True)
@@ -138,7 +138,7 @@ def test_delete_game(gui):
 			gui.trigger('load_game_window', 'deleteButton/action/__execute__')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'loadgameButton')
+		gui.trigger('menu', 'load_button')
 
 	assert not os.path.exists(SavegameManager.create_filename('boatbuilder'))
 	assert os.path.exists(SavegameManager.create_filename('ai_settlement'))
@@ -165,6 +165,6 @@ def test_delete_game_abort(gui):
 			gui.trigger('load_game_window', 'deleteButton/action/__execute__')
 
 	with gui.handler(func1):
-		gui.trigger('menu', 'loadgameButton')
+		gui.trigger('menu', 'load_button')
 
 	assert os.path.exists(SavegameManager.create_filename('boatbuilder'))

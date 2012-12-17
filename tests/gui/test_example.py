@@ -44,7 +44,7 @@ def test_example(gui):
 
 	# Main menu
 	main_menu = gui.find(name='menu')
-	gui.trigger(main_menu, 'startSingle')
+	gui.trigger(main_menu, 'single_button')
 
 	filter_non_tooltip = lambda l : [i for i in l if i.name != "tooltip_container"]
 

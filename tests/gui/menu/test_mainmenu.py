@@ -30,7 +30,7 @@ def test_credits(gui):
 		gui.trigger('credits_window', 'okButton/action/__execute__')
 
 	with gui.handler(func):
-		gui.trigger('menu', 'creditsLink')
+		gui.trigger('menu', 'credits_button')
 
 
 @gui_test(timeout=60)
@@ -41,10 +41,10 @@ def test_help(gui):
 		gui.trigger('help_window', 'okButton/action/__execute__')
 
 	with gui.handler(func):
-		gui.trigger('menu', 'helpLink')
+		gui.trigger('menu', 'help_button')
 
 
 @gui_test(timeout=60)
 def test_settings(gui):
-	gui.trigger('menu', 'settingsLink')
+	gui.trigger('menu', 'settings_button')
 	gui.trigger('settings_window', 'cancelButton')

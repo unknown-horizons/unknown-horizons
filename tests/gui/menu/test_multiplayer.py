@@ -51,7 +51,7 @@ mpmenu_test = functools.partial(gui_test, additional_cmdline=["--mp-master", "lo
 @mpmenu_test()
 def test_show_menu(gui):
 	"""Test that the multiplayer page shows up and closes correctly."""
-	gui.trigger('menu', 'startMulti')
+	gui.trigger('menu', 'multi_button')
 	gui.trigger('menu', 'cancel')
 
 
@@ -61,7 +61,7 @@ def test_games_list(gui):
 	"""Test refreshing of active games list."""
 	# TODO add some games so this test does something more useful
 
-	gui.trigger('menu', 'startMulti')
+	gui.trigger('menu', 'multi_button')
 
 	gui.trigger('menu', 'refresh')
 	gui.trigger('menu', 'showonlyownversion')
@@ -72,7 +72,7 @@ def test_games_list(gui):
 @mpmenu_test()
 def test_create_game(gui):
 	"""Create a game, join the lobby, change player details, send chat message."""
-	gui.trigger('menu', 'startMulti')
+	gui.trigger('menu', 'multi_button')
 
 	games = NetworkInterface().get_active_games()
 	assert len(games) == 0

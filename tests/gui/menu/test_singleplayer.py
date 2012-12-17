@@ -28,7 +28,7 @@ from tests.gui import gui_test
 @gui_test()
 def test_show_menu(gui):
 	"""Test that the singleplayer page shows up and closes correctly."""
-	gui.trigger('menu', 'startSingle')
+	gui.trigger('menu', 'single_button')
 	gui.trigger('menu', 'cancel')
 
 
@@ -52,7 +52,7 @@ def _cleanup():
 @gui_test()
 def test_start_scenario(gui):
 	"""Test starting a scenario."""
-	gui.trigger('menu', 'startSingle')
+	gui.trigger('menu', 'single_button')
 	gui.trigger('menu', 'scenario')
 
 	# trigger update of scenario infos
@@ -69,7 +69,7 @@ def test_start_scenario(gui):
 @gui_test()
 def test_start_random_map(gui):
 	"""Test starting a new random map."""
-	gui.trigger('menu', 'startSingle')
+	gui.trigger('menu', 'single_button')
 	gui.trigger('menu', 'random')
 
 	# disable pirates and disasters
@@ -93,7 +93,7 @@ def test_start_random_map(gui):
 @gui_test()
 def test_start_map(gui):
 	"""Test starting an existing map."""
-	gui.trigger('menu', 'startSingle')
+	gui.trigger('menu', 'single_button')
 	gui.trigger('menu', 'free_maps')
 
 	# trigger update of map info

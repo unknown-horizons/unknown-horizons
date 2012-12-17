@@ -119,6 +119,6 @@ def test_dialog(gui):
 		gui.trigger('help_window', 'okButton/action/__execute__')
 
 	with gui.handler(func):
-		gui.trigger('menu', 'helpLink')
+		gui.trigger('menu', 'help_button')
 
 	assert not gui.find('help_window')
