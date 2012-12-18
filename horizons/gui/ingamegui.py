@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import re
 import horizons.globals
 from fife import fife
 
@@ -442,39 +441,6 @@ class IngameGui(LivingObject):
 			# different namedcomponent classes share the name
 			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self.session)
 		self._hide_change_name_dialog()
-
-	def show_save_map_dialog(self):
-		"""Shows a dialog where the user can set the name of the saved map."""
-		events = {
-			OkButton.DEFAULT_NAME: self.save_map,
-			CancelButton.DEFAULT_NAME: self._hide_save_map_dialog
-		}
-		self.main_gui.on_escape = self._hide_save_map_dialog
-		dialog = self.widgets['save_map']
-		name = dialog.findChild(name='map_name')
-		name.text = u''
-		dialog.mapEvents(events)
-		name.capture(Callback(self.save_map))
-		dialog.show()
-		name.requestFocus()
-
-	def _hide_save_map_dialog(self):
-		"""Closes the map saving dialog."""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
-		self.widgets['save_map'].hide()
-
-	def save_map(self):
-		"""Saves the map and hides the dialog."""
-		name = self.widgets['save_map'].collectData('map_name')
-		if re.match('^[a-zA-Z0-9_-]+$', name):
-			self.session.save_map(name)
-			self._hide_save_map_dialog()
-		else:
-			#xgettext:python-format
-			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
-			#xgettext:python-format
-			advice = _('Try a name that only contains letters and numbers.')
-			self.session.gui.show_error_popup(_('Error'), message, advice)
 
 	def on_escape(self):
 		if self.main_widget:

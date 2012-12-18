@@ -120,6 +120,7 @@ class Session(LivingObject):
 
 		#GUI
 		self.gui.session = self
+		from horizons.editor.ingamegui import IngameGui
 		self.ingame_gui = IngameGui(self, self.gui)
 		self.keylistener = IngameKeyListener(self)
 		self.coordinates_tooltip = None

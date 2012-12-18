@@ -485,6 +485,7 @@ def _edit_map(map_file):
 
 	from horizons.editor.worldeditor import WorldEditor
 	_modules.session.world_editor = WorldEditor(_modules.session.world)
+	_modules.session.ingame_gui.setup()
 	return True
 
 def edit_map(map_name):

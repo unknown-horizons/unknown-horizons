@@ -73,25 +73,3 @@ class SettingsTab(TabInterface):
 		self._world_editor.brush_size = size
 		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
 		b.up_image = images['box_highlighted']
-
-
-class EditorGui(object):
-
-	def __init__(self, world_editor, ingame_gui, session):
-		self._world_editor = world_editor
-		self._ingame_gui = ingame_gui
-		self._session = session
-
-		self._ingame_gui.widgets['minimap'].mapEvents({'build': self._show_settings})
-		self._show_settings()
-
-		self._ingame_gui.resource_overview.hide()
-
-		# Hide unnecessary buttons in hud
-		for widget in ("speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
-			self._ingame_gui.widgets['minimap'].findChild(name=widget).hide()
-
-	def _show_settings(self):
-		"""Display settings widget to change brush size and select tiles."""
-		tab = TabWidget(self._ingame_gui, tabs=[SettingsTab(self._world_editor, self._session)])
-		self._ingame_gui.show_menu(tab)
