@@ -96,7 +96,7 @@ class Session(LivingObject):
 
 	log = logging.getLogger('session')
 
-	def __init__(self, gui, db, rng_seed=None):
+	def __init__(self, gui, db, rng_seed=None, ingame_gui=IngameGui):
 		super(Session, self).__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
@@ -120,8 +120,7 @@ class Session(LivingObject):
 
 		#GUI
 		self.gui.session = self
-		from horizons.editor.ingamegui import IngameGui
-		self.ingame_gui = IngameGui(self, self.gui)
+		self.ingame_gui = ingame_gui(self, self.gui)
 		self.keylistener = IngameKeyListener(self)
 		self.coordinates_tooltip = None
 		self.display_speed()

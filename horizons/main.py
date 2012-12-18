@@ -43,6 +43,7 @@ import horizons.globals
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
+from horizons.gui.ingamegui import IngameGui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED, GFX, VERSION
 from horizons.network.networkinterface import NetworkInterface
@@ -291,7 +292,7 @@ def quit():
 	"""Quits the game"""
 	horizons.globals.fife.quit()
 
-def start_singleplayer(options):
+def start_singleplayer(options, gui=IngameGui):
 	"""Starts a singleplayer game."""
 	global preloading
 	preload_game_join(preloading)
@@ -309,7 +310,7 @@ def start_singleplayer(options):
 		_modules.session.end()
 	# start new session
 	from horizons.spsession import SPSession
-	_modules.session = SPSession(_modules.gui, horizons.globals.db)
+	_modules.session = SPSession(_modules.gui, horizons.globals.db, ingame_gui=gui)
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
@@ -481,7 +482,8 @@ def _edit_map(map_file):
 		return False
 
 	options = StartGameOptions.create_editor_load(map_file)
-	start_singleplayer(options)
+	from horizons.editor.ingamegui import IngameGui
+	start_singleplayer(options, IngameGui)
 
 	from horizons.editor.worldeditor import WorldEditor
 	_modules.session.world_editor = WorldEditor(_modules.session.world)

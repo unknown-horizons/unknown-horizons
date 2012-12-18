@@ -116,7 +116,8 @@ class EditorCreateMapWidget(object):
 				# the empty list is interpreted as the empty list of random map island strings
 				options = StartGameOptions.create_editor_load([])
 				options.map_padding = size // 2
-				session = horizons.main.start_singleplayer(options)
+				from horizons.editor.ingamegui import IngameGui
+				session = horizons.main.start_singleplayer(options, IngameGui)
 				session.world_editor = WorldEditor(session.world)
 				return
 

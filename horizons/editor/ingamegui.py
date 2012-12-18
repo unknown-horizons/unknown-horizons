@@ -42,7 +42,6 @@ class IngameGui(object):
 		self.display_game_speed = Dummy
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
-		self.resource_overview = Dummy
 
 		self.widgets = LazyWidgetsDict({})
 		minimap = self.widgets['minimap']
