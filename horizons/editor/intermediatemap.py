@@ -60,13 +60,19 @@ class IntermediateMap(object):
 				orig_x = x + self.world.min_x - 1
 				self._map[(x, y)] = self._get_tile_repr((orig_x, orig_y))
 
+		self.max_x = width - 1
+		self.max_y = height - 1
+
 	def _get_intermediate_coords(self, coords):
 		return (coords[0] - self.world.min_x, coords[1] - self.world.min_y)
+
+	def distance_from_edge(self, (x, y)):
+		return min(min(x, self.max_x - x), min(y, self.max_y - y))
 
 	def _update_intermediate_coords(self, coords, new_type):
 		if self._map[coords] == new_type:
 			return
-		self._map[coords] = new_type
+		self._map[coords] = min(new_type, self.distance_from_edge(coords))
 
 	def _fix_map(self, coords_list, new_type):
 		changes = True
