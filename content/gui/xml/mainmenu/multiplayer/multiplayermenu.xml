@@ -38,14 +38,14 @@
 		</VBox>
 	</Container>
 
-	<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side">
+	<VBox max_size="320,480"  min_size="320,480"  position="520,150"  name="right_side">
 
 		<HBox max_size="290,30"  min_size="290,30">
-			<Label text="Active games:"  name="active_games_lbl" />
+			<Label text="Active games:"  name="headline_active_games_lbl" />
 			<Spacer />
 			<Label name="refr_gamelist_lbl"  text="Refresh list:"  position="150,50" />
 			<ImageButton name="refresh"  helptext="Refresh list of active games"
-				is_focusable="0"
+				is_focusable="0" max_size="24,24"
 				up_image="content/gui/icons/widgets/minimap/rotate_right.png"
 				down_image="content/gui/icons/widgets/minimap/rotate_right.png"
 				hover_image="content/gui/icons/widgets/minimap/rotate_left.png" />

@@ -806,14 +806,14 @@ def set_translations():
 		},
 
 	"multiplayermenu.xml" : {
-		# (text of widget: active_games_lbl)
-		("active_games_lbl"            , "text"    ): _("Active games:"),
 		# (text of widget: create_game_lbl)
 		("create_game_lbl"             , "text"    ): _("Create game:"),
 		# (text of widget: exit_to_main_menu_lbl)
 		("exit_to_main_menu_lbl"       , "text"    ): _("Main menu:"),
 		# (text of widget: game_showonlyownversion)
 		("game_showonlyownversion"     , "text"    ): _("Only show games with the same version:"),
+		# (text of widget: headline_active_games_lbl)
+		("headline_active_games_lbl"   , "text"    ): _("Active games:"),
 		# (text of widget: headline_left)
 		("headline_left"               , "text"    ): _("New game - Multiplayer"),
 		# (text of widget: join_game_lbl)
