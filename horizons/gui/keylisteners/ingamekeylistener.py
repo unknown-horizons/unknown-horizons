@@ -24,9 +24,6 @@ import horizons.globals
 
 from horizons.util.living import LivingObject
 from horizons.gui.keylisteners import KeyConfig
-from horizons.component.selectablecomponent import SelectableComponent
-from horizons.command.game import TogglePauseCommand, SpeedDownCommand, SpeedUpCommand
-from horizons.constants import VERSION
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
@@ -74,100 +71,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			handled_by_ingame_gui = self.session.ingame_gui.on_escape()
 			if not handled_by_ingame_gui:
 				key_event_handled = False # let the MainListener handle this
-		elif action == _Actions.GRID:
-			gridrenderer = self.session.view.renderer['GridRenderer']
-			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
-		elif action == _Actions.COORD_TOOLTIP:
-			self.session.coordinates_tooltip.toggle()
-		elif action == _Actions.DESTROY_TOOL:
-			self.session.toggle_destroy_tool()
-		elif action == _Actions.REMOVE_SELECTED:
-			self.session.remove_selected()
-		elif action == _Actions.ROAD_TOOL:
-			self.session.ingame_gui.toggle_road_tool()
-		elif action == _Actions.SPEED_UP:
-			SpeedUpCommand().execute(self.session)
-		elif action == _Actions.SPEED_DOWN:
-			SpeedDownCommand().execute(self.session)
-		elif action == _Actions.PAUSE:
-			TogglePauseCommand().execute(self.session)
-		elif action == _Actions.PLAYERS_OVERVIEW:
-			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='players')
-		elif action == _Actions.SETTLEMENTS_OVERVIEW:
-			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='settlements')
-		elif action == _Actions.SHIPS_OVERVIEW:
-			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='ships')
-		elif action == _Actions.LOGBOOK:
-			self.session.ingame_gui.logbook.toggle_visibility()
-		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
-			import pdb; pdb.set_trace()
-		elif action == _Actions.BUILD_TOOL:
-			self.session.ingame_gui.show_build_menu()
-		elif action == _Actions.ROTATE_RIGHT:
-			if hasattr(self.session.cursor, "rotate_right"):
-				# used in e.g. build preview to rotate building instead of map
-				self.session.cursor.rotate_right()
-			else:
-				self.session.view.rotate_right()
-				self.session.ingame_gui.minimap.rotate_right()
-		elif action == _Actions.ROTATE_LEFT:
-			if hasattr(self.session.cursor, "rotate_left"):
-				self.session.cursor.rotate_left()
-			else:
-				self.session.view.rotate_left()
-				self.session.ingame_gui.minimap.rotate_left()
-		elif action == _Actions.CHAT:
-			self.session.ingame_gui.show_chat_dialog()
-		elif action == _Actions.TRANSLUCENCY:
-			self.session.world.toggle_translucency()
-		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
-			self.session.world.toggle_owner_highlight()
-		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4, fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
-			num = int(keyval - fife.Key.NUM_0)
-			if evt.isControlPressed():
-				# create new group (only consider units owned by the player)
-				self.session.selection_groups[num] = \
-				    set(filter(lambda unit : unit.owner.is_local_player,
-				               self.session.selected_instances))
-				# drop units of the new group from all other groups
-				for group in self.session.selection_groups:
-					if group is not self.session.selection_groups[num]:
-						group -= self.session.selection_groups[num]
-			else:
-				# deselect
-				# we need to make sure to have a cursor capable of selection (for apply_select())
-				# this handles deselection implicitly in the destructor
-				self.session.set_cursor('selection')
-
-				# apply new selection
-				for instance in self.session.selection_groups[num]:
-					instance.get_component(SelectableComponent).select(reset_cam=True)
-				# assign copy since it will be randomly changed, the unit should only be changed on ctrl-events
-				self.session.selected_instances = self.session.selection_groups[num].copy()
-				# show menu depending on the entities selected
-				if self.session.selected_instances:
-					self.session.cursor.apply_select()
-				else:
-					# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
-					self.session.ingame_gui.show_menu(None)
-		elif action == _Actions.QUICKSAVE:
-			self.session.quicksave() # load is only handled by the MainListener
-		elif action == _Actions.PIPETTE:
-			# copy mode: pipette tool
-			self.session.toggle_cursor('pipette')
-		elif action == _Actions.HEALTH_BAR:
-			# shows health bar of every instance with an health component
-			self.session.world.toggle_health_for_all_health_instances()
-		elif action == _Actions.SHOW_SELECTED:
-			if self.session.selected_instances:
-				# scroll to first one, we can never guarantee to display all selected units
-				instance = iter(self.session.selected_instances).next()
-				self.session.view.center( * instance.position.center.to_tuple())
-				for instance in self.session.selected_instances:
-					if hasattr(instance, "path") and instance.owner.is_local_player:
-						self.session.ingame_gui.minimap.show_unit_path(instance)
 		else:
-			key_event_handled = False # nope, nothing triggered
+			key_event_handled = self.session.ingame_gui.handle_key_press(action, evt)
 
 		if key_event_handled:
 			evt.consume() # prevent other listeners from being called

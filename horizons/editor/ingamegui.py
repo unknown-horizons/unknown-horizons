@@ -128,3 +128,6 @@ class IngameGui(object):
 
 	def on_escape(self):
 		pass
+
+	def handle_key_press(self, action, evt):
+		pass
