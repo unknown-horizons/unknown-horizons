@@ -43,6 +43,7 @@ from horizons.gui.modules.editorstartmenu import EditorStartMenu
 
 from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
                                   SelectSavegameDialog)
+from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.command.game import PauseCommand, UnPauseCommand
 
 class Gui(object):
@@ -90,6 +91,8 @@ class Gui(object):
 		self.help_dialog = HelpDialog(self)
 		self.selectsavegame_dialog = SelectSavegameDialog(self)
 		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
+
+		self.fps_display = FPSDisplay()
 
 	def subscribe(self):
 		"""Subscribe to the necessary messages."""

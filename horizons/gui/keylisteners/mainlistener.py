@@ -59,6 +59,8 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 		if action == _Actions.ESCAPE:
 			self.gui.on_escape()
+		elif action == _Actions.CONSOLE:
+			self.gui.fps_display.toggle()
 		elif action == _Actions.HELP:
 			self.gui.on_help()
 		elif action == _Actions.SCREENSHOT:
