@@ -25,7 +25,6 @@ import os.path
 from collections import deque
 
 from horizons.command.unit import RemoveUnit
-from horizons.editor.gui import EditorGui
 from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
 from horizons.gui.widgets.minimap import Minimap
@@ -43,7 +42,6 @@ class WorldEditor(object):
 		self._center_view()
 
 		self.brush_size = 1
-		self._gui = EditorGui(self, self.session.ingame_gui, self.session)
 
 		self._tile_delete_set = set()
 

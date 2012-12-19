@@ -19,13 +19,80 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
+import re
 
+import horizons.globals
 from horizons.constants import GROUND
+from horizons.ext.dummy import Dummy
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.minimap import Minimap
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
+
+
+class IngameGui(object):
+
+	def __init__(self, session, main_gui):
+		self.session = session
+		self.main_gui = main_gui
+
+		# Mocks needed to act like the real IngameGui
+		self.message_widget = Dummy
+		self.show_menu = Dummy
+		self.hide_menu = Dummy
+
+		self.widgets = LazyWidgetsDict({})
+		minimap = self.widgets['minimap']
+		minimap.position_technique = "right+0:top+0"
+
+		icon = minimap.findChild(name="minimap")
+		self.minimap = Minimap(icon,
+		                       targetrenderer=horizons.globals.fife.targetrenderer,
+		                       imagemanager=horizons.globals.fife.imagemanager,
+		                       session=self.session,
+		                       view=self.session.view)
+
+		minimap.mapEvents({
+			'zoomIn': self.session.view.zoom_in,
+			'zoomOut': self.session.view.zoom_out,
+			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
+			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'gameMenuButton' : self.main_gui.toggle_pause,
+		})
+
+		minimap.show()
+
+		# Hide unnecessary buttons in hud
+		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
+			self.widgets['minimap'].findChild(name=widget).hide()
+
+		self.save_map_dialog = SaveMapDialog(self.main_gui, self.session, self.widgets['save_map'])
+
+	def load(self, savegame):
+		self.minimap.draw()
+
+	def setup(self):
+		"""Called after the world editor was initialized."""
+		self._settings_tab = TabWidget(self, tabs=[SettingsTab(self.session.world_editor, self.session)])
+		self._settings_tab.show()
+
+	def minimap_to_front(self):
+		"""Make sure the full right top gui is visible and not covered by some dialog"""
+		self.widgets['minimap'].hide()
+		self.widgets['minimap'].show()
+
+	def show_save_map_dialog(self):
+		"""Shows a dialog where the user can set the name of the saved map."""
+		self.save_map_dialog.show()
+
+	def on_escape(self):
+		pass
+
+	def on_key_press(self, action, evt):
+		pass
 
 
 class SettingsTab(TabInterface):
@@ -75,23 +142,42 @@ class SettingsTab(TabInterface):
 		b.up_image = images['box_highlighted']
 
 
-class EditorGui(object):
+class SaveMapDialog(object):
+	"""Shows a dialog where the user can set the name of the saved map."""
 
-	def __init__(self, world_editor, ingame_gui, session):
-		self._world_editor = world_editor
-		self._ingame_gui = ingame_gui
+	def __init__(self, main_gui, session, widget):
+		self._main_gui = main_gui
 		self._session = session
+		self._widget = widget
 
-		self._ingame_gui.widgets['minimap'].mapEvents({'build': self._show_settings})
-		self._show_settings()
+		events = {
+			OkButton.DEFAULT_NAME: self._do_save,
+			CancelButton.DEFAULT_NAME: self.hide
+		}
+		self._widget.mapEvents(events)
 
-		self._ingame_gui.resource_overview.hide()
+	def show(self):
+		self._main_gui.on_escape = self.hide
 
-		# Hide unnecessary buttons in hud
-		for widget in ("speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
-			self._ingame_gui.widgets['minimap'].findChild(name=widget).hide()
+		name = self._widget.findChild(name='map_name')
+		name.text = u''
+		name.capture(self._do_save)
 
-	def _show_settings(self):
-		"""Display settings widget to change brush size and select tiles."""
-		tab = TabWidget(self._ingame_gui, tabs=[SettingsTab(self._world_editor, self._session)])
-		self._ingame_gui.show_menu(tab)
+		self._widget.show()
+		name.requestFocus()
+
+	def hide(self):
+		self._main_gui.on_escape = self._main_gui.toggle_pause
+		self._widget.hide()
+
+	def _do_save(self):
+		name = self._widget.collectData('map_name')
+		if re.match('^[a-zA-Z0-9_-]+$', name):
+			self._session.save_map(name)
+			self.hide()
+		else:
+			#xgettext:python-format
+			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
+			#xgettext:python-format
+			advice = _('Try a name that only contains letters and numbers.')
+			self._main_gui.show_error_popup(_('Error'), message, advice)

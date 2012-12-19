@@ -118,6 +118,7 @@ class EditorCreateMapWidget(object):
 				options.map_padding = size // 2
 				session = horizons.main.start_singleplayer(options)
 				session.world_editor = WorldEditor(session.world)
+				session.ingame_gui.setup()
 				return
 
 
