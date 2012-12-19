@@ -56,7 +56,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, LAYERS
 from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
 from horizons.world.managers.statusiconmanager import StatusIconManager
-from horizons.messaging import AutosaveIntervalChanged, MessageBus
+from horizons.messaging import AutosaveIntervalChanged, MessageBus, SpeedChanged
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -123,7 +123,6 @@ class Session(LivingObject):
 		self.ingame_gui = IngameGui(self, self.gui)
 		self.keylistener = IngameKeyListener(self)
 		self.coordinates_tooltip = None
-		self.display_speed()
 		LastActivePlayerSettlementManager.create_instance(self)
 
 
@@ -403,32 +402,8 @@ class Session(LivingObject):
 			if time_to_next_tick > 0: # only do this if we aren't late
 				self.timer.tick_next_time += (time_to_next_tick * old / ticks)
 			"""
-		self.display_speed()
 
-	def display_speed(self):
-		text = u''
-		up_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedUp')
-		down_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedDown')
-		tps = self.timer.ticks_per_second
-		if tps == 0: # pause
-			text = u'0x'
-			up_icon.set_inactive()
-			down_icon.set_inactive()
-		else:
-			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = unicode("%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND))
-				#%1g: displays 0.5x, but 2x instead of 2.0x
-			index = GAME_SPEED.TICK_RATES.index(tps)
-			if index + 1 >= len(GAME_SPEED.TICK_RATES):
-				up_icon.set_inactive()
-			else:
-				up_icon.set_active()
-			if index > 0:
-				down_icon.set_active()
-			else:
-				down_icon.set_inactive()
-		self.ingame_gui.display_game_speed(text)
-
+		SpeedChanged.broadcast(self, old, ticks)
 
 	def speed_up(self):
 		if self.speed_is_paused():
