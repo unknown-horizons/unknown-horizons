@@ -29,11 +29,13 @@ from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
+from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 
 
-class IngameGui(object):
+class IngameGui(LivingObject):
+	minimap = livingProperty()
 
 	def __init__(self, session, main_gui):
 		self.session = session
@@ -70,6 +72,17 @@ class IngameGui(object):
 			self.widgets['minimap'].findChild(name=widget).hide()
 
 		self.save_map_dialog = SaveMapDialog(self.main_gui, self.session, self.widgets['save_map'])
+
+	def end(self):
+		self.widgets['minimap'].mapEvents({
+			'zoomIn': None,
+			'zoomOut': None,
+			'rotateRight': None,
+			'rotateLeft': None,
+			'gameMenuButton': None
+		})
+		self.minimap = None
+		super(IngameGui, self).end()
 
 	def load(self, savegame):
 		self.minimap.draw()
