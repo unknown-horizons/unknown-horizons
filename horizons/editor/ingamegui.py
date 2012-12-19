@@ -22,12 +22,14 @@
 import re
 
 import horizons.globals
-from horizons.editor.gui import SettingsTab
+from horizons.constants import GROUND
 from horizons.ext.dummy import Dummy
 from horizons.gui.tabs import TabWidget
+from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
+from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 
 
@@ -130,3 +132,50 @@ class IngameGui(object):
 
 	def handle_key_press(self, action, evt):
 		pass
+
+
+class SettingsTab(TabInterface):
+	widget = 'editor_settings.xml'
+
+	def __init__(self, world_editor, session):
+		super(SettingsTab, self).__init__(widget=self.widget)
+
+		self._world_editor = world_editor
+
+		# Brush size
+		for i in range(1, 4):
+			b = self.widget.findChild(name='size_%d' % i)
+			b.capture(Callback(self._change_brush_size, i))
+
+		# Activate radio button for default brush size
+		self._change_brush_size(self._world_editor.brush_size)
+
+		# Tile selection
+		for tile_type in ('default_land', 'sand', 'shallow_water', 'water'):
+			image = self.widget.findChild(name=tile_type)
+			tile = getattr(GROUND, tile_type.upper())
+			image.up_image = self._get_tile_image(tile)
+			image.size = image.min_size = image.max_size = (64, 32)
+			image.capture(Callback(session.set_cursor, 'tile_layer', tile))
+
+	def _get_tile_image(self, tile):
+		# TODO TileLayingTool does almost the same thing, perhaps put this in a better place
+		tile_sets = TileSetLoader.get_sets()
+
+		ground_id, action_id, rotation = tile
+		set_id = horizons.globals.db.get_random_tile_set(ground_id)
+		return tile_sets[set_id][action_id][rotation].keys()[0]
+
+	def _change_brush_size(self, size):
+		"""Change the brush size and update the gui."""
+		images = {
+		  'box_highlighted': 'content/gui/icons/ship/smallbutton_a.png',
+		  'box': 'content/gui/icons/ship/smallbutton.png',
+		}
+
+		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+		b.up_image = images['box']
+
+		self._world_editor.brush_size = size
+		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+		b.up_image = images['box_highlighted']
