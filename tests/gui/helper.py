@@ -373,7 +373,7 @@ class GuiHelper(object):
 		evt.isShiftPressed.return_value = shift
 
 		if self.session:
-			keylistener = self.session.keylistener
+			keylistener = self.session.ingame_gui.keylistener
 		else:
 			keylistener = horizons.main._modules.gui.mainlistener
 
