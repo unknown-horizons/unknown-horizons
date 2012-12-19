@@ -30,8 +30,8 @@ from horizons.timer import Timer
 class SPSession(Session):
 	"""Session tailored for singleplayer games."""
 
-	def __init__(self,gui, db, rng_seed=None):
-		super(SPSession, self).__init__(gui, db, rng_seed)
+	def __init__(self, *args, **kwargs):
+		super(SPSession, self).__init__(*args, **kwargs)
 		self.world_editor = None
 
 	def in_editor_mode(self):

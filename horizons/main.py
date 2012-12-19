@@ -43,6 +43,7 @@ import horizons.globals
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
+from horizons.gui.ingamegui import IngameGui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED, GFX, VERSION
 from horizons.network.networkinterface import NetworkInterface
@@ -308,8 +309,12 @@ def start_singleplayer(options):
 	if _modules.session is not None and _modules.session.is_alive:
 		_modules.session.end()
 	# start new session
+	if options.is_editor:
+		from horizons.editor.ingamegui import IngameGui
+	else:
+		from horizons.gui.ingamegui import IngameGui
 	from horizons.spsession import SPSession
-	_modules.session = SPSession(_modules.gui, horizons.globals.db)
+	_modules.session = SPSession(_modules.gui, horizons.globals.db, ingame_gui=IngameGui)
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
@@ -485,6 +490,7 @@ def _edit_map(map_file):
 
 	from horizons.editor.worldeditor import WorldEditor
 	_modules.session.world_editor = WorldEditor(_modules.session.world)
+	_modules.session.ingame_gui.setup()
 	return True
 
 def edit_map(map_name):

@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import re
 import horizons.globals
 from fife import fife
 
@@ -39,16 +38,18 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import LazyWidgetsDict
-from horizons.constants import BUILDINGS, GUI
+from horizons.constants import BUILDINGS, GUI, VERSION, GAME_SPEED
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
-from horizons.command.game import SpeedDownCommand, SpeedUpCommand
+from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.tabs import MainSquareOverviewTab
+from horizons.gui.keylisteners import KeyConfig
 from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged, TabWidgetChanged
+from horizons.messaging import (SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize,
+                                HoverSettlementChanged, TabWidgetChanged, SpeedChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
 class IngameGui(LivingObject):
@@ -133,6 +134,9 @@ class IngameGui(LivingObject):
 		SettlerUpdate.subscribe(self._on_settler_level_change)
 		SettlerInhabitantsChanged.subscribe(self._on_settler_inhabitant_change)
 		HoverSettlementChanged.subscribe(self._cityinfo_set)
+		SpeedChanged.subscribe(self._on_speed_changed)
+
+		self._display_speed(self.session.timer.ticks_per_second)
 
 	def _on_resourcebar_resize(self, message):
 		self._update_cityinfo_position()
@@ -163,6 +167,7 @@ class IngameGui(LivingObject):
 		ResourceBarResize.unsubscribe(self._on_resourcebar_resize)
 		HoverSettlementChanged.unsubscribe(self._cityinfo_set)
 		SettlerInhabitantsChanged.unsubscribe(self._on_settler_inhabitant_change)
+		SpeedChanged.unsubscribe(self._on_speed_changed)
 
 		super(IngameGui, self).end()
 
@@ -443,39 +448,6 @@ class IngameGui(LivingObject):
 			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self.session)
 		self._hide_change_name_dialog()
 
-	def show_save_map_dialog(self):
-		"""Shows a dialog where the user can set the name of the saved map."""
-		events = {
-			OkButton.DEFAULT_NAME: self.save_map,
-			CancelButton.DEFAULT_NAME: self._hide_save_map_dialog
-		}
-		self.main_gui.on_escape = self._hide_save_map_dialog
-		dialog = self.widgets['save_map']
-		name = dialog.findChild(name='map_name')
-		name.text = u''
-		dialog.mapEvents(events)
-		name.capture(Callback(self.save_map))
-		dialog.show()
-		name.requestFocus()
-
-	def _hide_save_map_dialog(self):
-		"""Closes the map saving dialog."""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
-		self.widgets['save_map'].hide()
-
-	def save_map(self):
-		"""Saves the map and hides the dialog."""
-		name = self.widgets['save_map'].collectData('map_name')
-		if re.match('^[a-zA-Z0-9_-]+$', name):
-			self.session.save_map(name)
-			self._hide_save_map_dialog()
-		else:
-			#xgettext:python-format
-			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
-			#xgettext:python-format
-			advice = _('Try a name that only contains letters and numbers.')
-			self.session.gui.show_error_popup(_('Error'), message, advice)
-
 	def on_escape(self):
 		if self.main_widget:
 			self.main_widget.hide()
@@ -490,15 +462,6 @@ class IngameGui(LivingObject):
 			self.main_widget = None
 			old_main_widget.hide()
 		self.main_widget = widget
-
-	def display_game_speed(self, text):
-		"""
-		@param text: unicode string to display as speed value
-		"""
-		wdg = self.widgets['minimap'].findChild(name="speed_text")
-		wdg.text = text
-		wdg.resizeToContent()
-		self.widgets['minimap'].show()
 
 	def _on_settler_level_change(self, message):
 		"""Gets called when the player changes"""
@@ -545,3 +508,134 @@ class IngameGui(LivingObject):
 		self.widgets['chat'].findChild(name='msg').text = u''
 		self._hide_chat_dialog()
 
+	def handle_key_press(self, action, evt):
+		_Actions = KeyConfig._Actions
+		keyval = evt.getKey().getValue()
+
+		if action == _Actions.GRID:
+			gridrenderer = self.session.view.renderer['GridRenderer']
+			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
+		elif action == _Actions.COORD_TOOLTIP:
+			self.session.coordinates_tooltip.toggle()
+		elif action == _Actions.DESTROY_TOOL:
+			self.session.toggle_destroy_tool()
+		elif action == _Actions.REMOVE_SELECTED:
+			self.session.remove_selected()
+		elif action == _Actions.ROAD_TOOL:
+			self.toggle_road_tool()
+		elif action == _Actions.SPEED_UP:
+			SpeedUpCommand().execute(self.session)
+		elif action == _Actions.SPEED_DOWN:
+			SpeedDownCommand().execute(self.session)
+		elif action == _Actions.PAUSE:
+			TogglePauseCommand().execute(self.session)
+		elif action == _Actions.PLAYERS_OVERVIEW:
+			self.logbook.toggle_stats_visibility(widget='players')
+		elif action == _Actions.SETTLEMENTS_OVERVIEW:
+			self.logbook.toggle_stats_visibility(widget='settlements')
+		elif action == _Actions.SHIPS_OVERVIEW:
+			self.logbook.toggle_stats_visibility(widget='ships')
+		elif action == _Actions.LOGBOOK:
+			self.logbook.toggle_visibility()
+		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
+			import pdb; pdb.set_trace()
+		elif action == _Actions.BUILD_TOOL:
+			self.show_build_menu()
+		elif action == _Actions.ROTATE_RIGHT:
+			if hasattr(self.session.cursor, "rotate_right"):
+				# used in e.g. build preview to rotate building instead of map
+				self.session.cursor.rotate_right()
+			else:
+				self.session.view.rotate_right()
+				self.minimap.rotate_right()
+		elif action == _Actions.ROTATE_LEFT:
+			if hasattr(self.session.cursor, "rotate_left"):
+				self.session.cursor.rotate_left()
+			else:
+				self.session.view.rotate_left()
+				self.minimap.rotate_left()
+		elif action == _Actions.CHAT:
+			self.show_chat_dialog()
+		elif action == _Actions.TRANSLUCENCY:
+			self.session.world.toggle_translucency()
+		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
+			self.session.world.toggle_owner_highlight()
+		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4,
+		                fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
+			num = int(keyval - fife.Key.NUM_0)
+			if evt.isControlPressed():
+				# create new group (only consider units owned by the player)
+				self.session.selection_groups[num] = \
+				    set(filter(lambda unit : unit.owner.is_local_player,
+				               self.session.selected_instances))
+				# drop units of the new group from all other groups
+				for group in self.session.selection_groups:
+					if group is not self.session.selection_groups[num]:
+						group -= self.session.selection_groups[num]
+			else:
+				# deselect
+				# we need to make sure to have a cursor capable of selection (for apply_select())
+				# this handles deselection implicitly in the destructor
+				self.session.set_cursor('selection')
+
+				# apply new selection
+				for instance in self.session.selection_groups[num]:
+					instance.get_component(SelectableComponent).select(reset_cam=True)
+				# assign copy since it will be randomly changed, the unit should only be changed on ctrl-events
+				self.session.selected_instances = self.session.selection_groups[num].copy()
+				# show menu depending on the entities selected
+				if self.session.selected_instances:
+					self.session.cursor.apply_select()
+				else:
+					# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
+					self.session.ingame_gui.show_menu(None)
+		elif action == _Actions.QUICKSAVE:
+			self.session.quicksave() # load is only handled by the MainListener
+		elif action == _Actions.PIPETTE:
+			# copy mode: pipette tool
+			self.session.toggle_cursor('pipette')
+		elif action == _Actions.HEALTH_BAR:
+			# shows health bar of every instance with an health component
+			self.session.world.toggle_health_for_all_health_instances()
+		elif action == _Actions.SHOW_SELECTED:
+			if self.session.selected_instances:
+				# scroll to first one, we can never guarantee to display all selected units
+				instance = iter(self.session.selected_instances).next()
+				self.session.view.center( * instance.position.center.to_tuple())
+				for instance in self.session.selected_instances:
+					if hasattr(instance, "path") and instance.owner.is_local_player:
+						self.minimap.show_unit_path(instance)
+		else:
+			return False
+
+		return True
+
+	def _on_speed_changed(self, message):
+		self._display_speed(message.new)
+
+	def _display_speed(self, tps):
+		text = u''
+		up_icon = self.widgets['minimap'].findChild(name='speedUp')
+		down_icon = self.widgets['minimap'].findChild(name='speedDown')
+		if tps == 0: # pause
+			text = u'0x'
+			up_icon.set_inactive()
+			down_icon.set_inactive()
+		else:
+			if tps != GAME_SPEED.TICKS_PER_SECOND:
+				text = unicode("%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND))
+				#%1g: displays 0.5x, but 2x instead of 2.0x
+			index = GAME_SPEED.TICK_RATES.index(tps)
+			if index + 1 >= len(GAME_SPEED.TICK_RATES):
+				up_icon.set_inactive()
+			else:
+				up_icon.set_active()
+			if index > 0:
+				down_icon.set_active()
+			else:
+				down_icon.set_inactive()
+
+		wdg = self.widgets['minimap'].findChild(name="speed_text")
+		wdg.text = text
+		wdg.resizeToContent()
+		self.widgets['minimap'].show()

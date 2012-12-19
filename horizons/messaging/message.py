@@ -213,3 +213,7 @@ class MinimapRotationSettingChanged(Message):
 class LanguageChanged(Message):
 	"""Sent when the language has changed."""
 	pass
+
+class SpeedChanged(Message):
+	"""Sent when the ingame speed has changed."""
+	arguments = ('old', 'new', )
