@@ -19,44 +19,41 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
 from fife import fife
 
+import horizons.globals
+from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.namedcomponent import SettlementNameComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import BUILDINGS, GUI, GAME_SPEED, VERSION
 from horizons.entities import Entities
-from horizons.util.living import livingProperty, LivingObject
-from horizons.util.pychanchildfinder import PychanChildFinder
-from horizons.util.python.callback import Callback
-from horizons.gui.keylisteners import IngameKeyListener
+from horizons.extscheduler import ExtScheduler
+from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog
 from horizons.gui.mousetools import BuildingTool
-from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
+from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
-from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.playersoverview import PlayersOverview
 from horizons.gui.widgets.playerssettlements import PlayersSettlements
-from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.widgets.playersships import PlayersShips
-from horizons.extscheduler import ExtScheduler
-from horizons.gui.util import LazyWidgetsDict
-from horizons.constants import BUILDINGS, GUI, GAME_SPEED, VERSION
-from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
-from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.gui.tabs import MainSquareOverviewTab
-from horizons.gui.keylisteners import KeyConfig
-from horizons.component.namedcomponent import SettlementNameComponent
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.component.selectablecomponent import SelectableComponent
+from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.messaging import (SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize,
                                 HoverSettlementChanged, TabWidgetChanged, SpeedChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
+from horizons.util.living import livingProperty, LivingObject
+from horizons.util.pychanchildfinder import PychanChildFinder
+from horizons.util.python.callback import Callback
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
 	Assumes that only 1 instance is used (class variables)"""
 
 	gui = livingProperty()
-	tabwidgets = livingProperty()
 	message_widget = livingProperty()
 	minimap = livingProperty()
 	keylistener = livingProperty()
@@ -74,10 +71,7 @@ class IngameGui(LivingObject):
 		assert isinstance(self.session, horizons.session.Session)
 		self.main_gui = gui
 		self.main_widget = None
-		self.tabwidgets = {}
 		self.settlement = None
-		self.resource_source = None
-		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
 
 		self.keylistener = IngameKeyListener(self.session)
@@ -161,7 +155,6 @@ class IngameGui(LivingObject):
 			if w.parent is None:
 				w.hide()
 		self.message_widget = None
-		self.tabwidgets = None
 		self.minimap = None
 		self.resource_overview.end()
 		self.resource_overview = None
