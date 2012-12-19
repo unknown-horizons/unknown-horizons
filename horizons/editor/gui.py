@@ -24,6 +24,7 @@ import re
 import horizons.globals
 from horizons.constants import GROUND
 from horizons.ext.dummy import Dummy
+from horizons.gui.keylisteners import IngameKeyListener
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import LazyWidgetsDict
@@ -36,10 +37,12 @@ from horizons.util.python.callback import Callback
 
 class IngameGui(LivingObject):
 	minimap = livingProperty()
+	keylistener = livingProperty()
 
 	def __init__(self, session, main_gui):
 		self.session = session
 		self.main_gui = main_gui
+		self.keylistener = IngameKeyListener(self.session)
 
 		# Mocks needed to act like the real IngameGui
 		self.message_widget = Dummy
@@ -82,6 +85,7 @@ class IngameGui(LivingObject):
 			'gameMenuButton': None
 		})
 		self.minimap = None
+		self.keylistener = None
 		super(IngameGui, self).end()
 
 	def load(self, savegame):

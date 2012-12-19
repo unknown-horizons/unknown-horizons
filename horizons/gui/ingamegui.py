@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import re
 import horizons.globals
 from fife import fife
 
@@ -27,10 +26,10 @@ from horizons.entities import Entities
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
+from horizons.gui.keylisteners import IngameKeyListener
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
@@ -60,6 +59,7 @@ class IngameGui(LivingObject):
 	tabwidgets = livingProperty()
 	message_widget = livingProperty()
 	minimap = livingProperty()
+	keylistener = livingProperty()
 
 	styles = {
 		'city_info' : 'resource_bar',
@@ -80,6 +80,7 @@ class IngameGui(LivingObject):
 		self.resources_needed, self.resources_usable = {}, {}
 		self._old_menu = None
 
+		self.keylistener = IngameKeyListener(self.session)
 		self.widgets = LazyWidgetsDict(self.styles)
 
 		self.cityinfo = self.widgets['city_info']
@@ -164,6 +165,7 @@ class IngameGui(LivingObject):
 		self.minimap = None
 		self.resource_overview.end()
 		self.resource_overview = None
+		self.keylistener = None
 		self.hide_menu()
 		SettlerUpdate.unsubscribe(self._on_settler_level_change)
 		ResourceBarResize.unsubscribe(self._on_resourcebar_resize)

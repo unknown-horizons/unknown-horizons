@@ -37,7 +37,6 @@ from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, Bui
 from horizons.command.building import Tear
 from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
-from horizons.gui.keylisteners import IngameKeyListener
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.view import View
@@ -91,7 +90,6 @@ class Session(LivingObject):
 	manager = livingProperty()
 	view = livingProperty()
 	ingame_gui = livingProperty()
-	keylistener = livingProperty()
 	scenario_eventhandler = livingProperty()
 
 	log = logging.getLogger('session')
@@ -121,7 +119,6 @@ class Session(LivingObject):
 		#GUI
 		self.gui.session = self
 		self.ingame_gui = ingame_gui_class(self, self.gui)
-		self.keylistener = IngameKeyListener(self)
 		self.coordinates_tooltip = None
 		LastActivePlayerSettlementManager.create_instance(self)
 
@@ -232,7 +229,6 @@ class Session(LivingObject):
 		self.cursor = None
 		self.world.end() # must be called before the world ref is gone
 		self.world = None
-		self.keylistener = None
 		self.view = None
 		self.manager = None
 		self.timer = None
