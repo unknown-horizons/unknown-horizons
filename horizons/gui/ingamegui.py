@@ -92,6 +92,7 @@ class IngameGui(LivingObject):
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
 		self.chat_dialog = ChatDialog(self.main_gui, self.session, self.widgets['chat'])
+		self.change_name_dialog = ChangeNameDialog(self.main_gui, self.session, self.widgets['change_name'])
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
@@ -411,44 +412,8 @@ class IngameGui(LivingObject):
 		self.minimap.draw() # update minimap to new world
 
 	def show_change_name_dialog(self, instance):
-		"""Shows a dialog where the user can change the name of a NamedComponant.
-		The game gets paused while the dialog is executed."""
-		events = {
-			OkButton.DEFAULT_NAME: Callback(self.change_name, instance),
-			CancelButton.DEFAULT_NAME: self._hide_change_name_dialog
-		}
-		self.main_gui.on_escape = self._hide_change_name_dialog
-		changename = self.widgets['change_name']
-		oldname = changename.findChild(name='old_name')
-		oldname.text = instance.get_component(SettlementNameComponent).name
-		newname = changename.findChild(name='new_name')
-		changename.mapEvents(events)
-		newname.capture(Callback(self.change_name, instance))
-
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.main_gui.on_escape()
-		newname.capture( forward_escape, "keyPressed" )
-
-		changename.show()
-		newname.requestFocus()
-
-	def _hide_change_name_dialog(self):
-		"""Escapes the change_name dialog"""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
-		self.widgets['change_name'].hide()
-
-	def change_name(self, instance):
-		"""Applies the change_name dialogs input and hides it.
-		If the new name has length 0 or only contains blanks, the old name is kept.
-		"""
-		new_name = self.widgets['change_name'].collectData('new_name')
-		self.widgets['change_name'].findChild(name='new_name').text = u''
-		if not new_name or not new_name.isspace():
-			# different namedcomponent classes share the name
-			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self.session)
-		self._hide_change_name_dialog()
+		"""Shows a dialog where the user can change the name of an object."""
+		self.change_name_dialog.show(instance)
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
@@ -685,4 +650,49 @@ class ChatDialog(object):
 		msg = self._widget.findChild(name="msg").text
 		Chat(msg).execute(self._session)
 		self._widget.findChild(name="msg").text = u''
+		self.hide()
+
+
+class ChangeNameDialog(object):
+	"""Shows a dialog where the user can change the name of a NamedComponent."""
+
+	def __init__(self, main_gui, session, widget):
+		self._main_gui = main_gui
+		self._session = session
+		self._widget = widget
+
+		self._widget.mapEvents({CancelButton.DEFAULT_NAME: self.hide})
+
+		def forward_escape(event):
+			# the textfield will eat everything, even control events
+			if event.getKey().getValue() == fife.Key.ESCAPE:
+				self._main_gui.on_escape()
+
+		self._widget.findChild(name="new_name").capture(forward_escape, "keyPressed")
+
+	def show(self, instance):
+		self._main_gui.on_escape = self.hide
+
+		cb = Callback(self._do_change_name, instance)
+		self._widget.mapEvents({OkButton.DEFAULT_NAME: cb})
+		self._widget.findChild(name="new_name").capture(cb)
+
+		oldname = self._widget.findChild(name='old_name')
+		oldname.text = instance.get_component(NamedComponent).name
+
+		self._widget.show()
+		self._widget.findChild(name="new_name").requestFocus()
+
+	def hide(self):
+		self._main_gui.on_escape = self._main_gui.toggle_pause
+		self._widget.hide()
+
+	def _do_change_name(self, instance):
+		new_name = self._widget.collectData('new_name')
+		self._widget.findChild(name='new_name').text = u''
+
+		if not new_name or not new_name.isspace():
+			# different namedcomponent classes share the name
+			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self._session)
+
 		self.hide()
