@@ -189,6 +189,9 @@ def start(_command_line_arguments):
 		else:
 			GFX.USE_ATLASES = True
 			PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
+	elif not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
+		GFX.USE_ATLASES = True
+		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
 	horizons.globals.db = _create_main_db()
 	horizons.globals.fife.init_animation_loader(GFX.USE_ATLASES)
