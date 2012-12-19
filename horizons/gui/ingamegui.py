@@ -27,6 +27,7 @@ from horizons.entities import Entities
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
+from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
@@ -40,13 +41,11 @@ from horizons.gui.widgets.playersships import PlayersShips
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI, GAME_SPEED, VERSION
-from horizons.command.uioptions import RenameObject
-from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.tabs import MainSquareOverviewTab
 from horizons.gui.keylisteners import KeyConfig
-from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
+from horizons.component.namedcomponent import SettlementNameComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.messaging import (SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize,
@@ -612,87 +611,3 @@ class IngameGui(LivingObject):
 			return False
 
 		return True
-
-
-class ChatDialog(object):
-	"""Allow player to send messages to other players."""
-
-	def __init__(self, main_gui, session, widget):
-		self._main_gui = main_gui
-		self._session = session
-		self._widget = widget
-
-		events = {
-			OkButton.DEFAULT_NAME: self._do_chat,
-			CancelButton.DEFAULT_NAME: self.hide
-		}
-		self._widget.mapEvents(events)
-
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self._main_gui.on_escape()
-
-		self._widget.findChild(name="msg").capture(forward_escape, "keyPressed")
-		self._widget.findChild(name="msg").capture(self._do_chat)
-
-	def show(self):
-		self._main_gui.on_escape = self.hide
-		self._widget.show()
-		self._widget.findChild(name="msg").requestFocus()
-
-	def hide(self):
-		self._main_gui.on_escape = self._main_gui.toggle_pause
-		self._widget.hide()
-
-	def _do_chat(self):
-		"""Actually initiates chatting and hides the dialog"""
-		msg = self._widget.findChild(name="msg").text
-		Chat(msg).execute(self._session)
-		self._widget.findChild(name="msg").text = u''
-		self.hide()
-
-
-class ChangeNameDialog(object):
-	"""Shows a dialog where the user can change the name of a NamedComponent."""
-
-	def __init__(self, main_gui, session, widget):
-		self._main_gui = main_gui
-		self._session = session
-		self._widget = widget
-
-		self._widget.mapEvents({CancelButton.DEFAULT_NAME: self.hide})
-
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self._main_gui.on_escape()
-
-		self._widget.findChild(name="new_name").capture(forward_escape, "keyPressed")
-
-	def show(self, instance):
-		self._main_gui.on_escape = self.hide
-
-		cb = Callback(self._do_change_name, instance)
-		self._widget.mapEvents({OkButton.DEFAULT_NAME: cb})
-		self._widget.findChild(name="new_name").capture(cb)
-
-		oldname = self._widget.findChild(name='old_name')
-		oldname.text = instance.get_component(NamedComponent).name
-
-		self._widget.show()
-		self._widget.findChild(name="new_name").requestFocus()
-
-	def hide(self):
-		self._main_gui.on_escape = self._main_gui.toggle_pause
-		self._widget.hide()
-
-	def _do_change_name(self, instance):
-		new_name = self._widget.collectData('new_name')
-		self._widget.findChild(name='new_name').text = u''
-
-		if not new_name or not new_name.isspace():
-			# different namedcomponent classes share the name
-			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self._session)
-
-		self.hide()

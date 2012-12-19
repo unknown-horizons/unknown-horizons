@@ -33,24 +33,3 @@ def test_ticket_1342(gui):
 	assert gui.find(name='ships_list')
 	gui.press_key(gui.Key.F3)
 	assert gui.find(name='ships_list') is None
-
-
-@gui_test(use_dev_map=True, timeout=60)
-def test_chat(gui):
-	"""Opens chat dialog.
-
-	NOTE: Doesn't test if anything was send, just checking that nothing
-	crashes.
-	"""
-
-	assert not gui.find(name='chat_dialog_window')
-	gui.press_key(gui.Key.C)
-	assert gui.find(name='chat_dialog_window')
-	gui.trigger('chat_dialog_window', 'cancelButton')
-	assert not gui.find(name='chat_dialog_window')
-
-	gui.press_key(gui.Key.C)
-	assert gui.find(name='chat_dialog_window')
-	gui.find('msg').write('Hello World')
-	gui.trigger('chat_dialog_window', 'okButton')
-	assert not gui.find(name='chat_dialog_window')

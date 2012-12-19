@@ -44,3 +44,24 @@ def test_change_name(gui):
 	new_name = ship.get_component(NamedComponent).name
 	assert old_name != new_name
 	assert new_name == 'Dagobert'
+
+
+@gui_test(use_dev_map=True, timeout=60)
+def test_chat(gui):
+	"""Opens chat dialog.
+
+	NOTE: Doesn't test if anything was send, just checking that nothing
+	crashes.
+	"""
+
+	assert not gui.find(name='chat_dialog_window')
+	gui.press_key(gui.Key.C)
+	assert gui.find(name='chat_dialog_window')
+	gui.trigger('chat_dialog_window', 'cancelButton')
+	assert not gui.find(name='chat_dialog_window')
+
+	gui.press_key(gui.Key.C)
+	assert gui.find(name='chat_dialog_window')
+	gui.find('msg').write('Hello World')
+	gui.trigger('chat_dialog_window', 'okButton')
+	assert not gui.find(name='chat_dialog_window')
