@@ -91,6 +91,7 @@ class IngameGui(LivingObject):
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
+		self.chat_dialog = ChatDialog(self.main_gui, self.session, self.widgets['chat'])
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
@@ -511,37 +512,6 @@ class IngameGui(LivingObject):
 				instance = list(self.session.selected_instances)[0]
 				instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
 
-	def show_chat_dialog(self):
-		"""Show a dialog where the user can enter a chat message"""
-		events = {
-			OkButton.DEFAULT_NAME: self._do_chat,
-			CancelButton.DEFAULT_NAME: self._hide_chat_dialog
-		}
-		self.main_gui.on_escape = self._hide_chat_dialog
-
-		self.widgets['chat'].mapEvents(events)
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.main_gui.on_escape()
-
-		self.widgets['chat'].findChild(name='msg').capture( forward_escape, "keyPressed" )
-		self.widgets['chat'].findChild(name='msg').capture( self._do_chat )
-		self.widgets['chat'].show()
-		self.widgets['chat'].findChild(name="msg").requestFocus()
-
-	def _hide_chat_dialog(self):
-		"""Escapes the chat dialog"""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
-		self.widgets['chat'].hide()
-
-	def _do_chat(self):
-		"""Actually initiates chatting and hides the dialog"""
-		msg = self.widgets['chat'].findChild(name='msg').text
-		Chat(msg).execute(self.session)
-		self.widgets['chat'].findChild(name='msg').text = u''
-		self._hide_chat_dialog()
-
 	def _on_speed_changed(self, message):
 		self._display_speed(message.new)
 
@@ -623,7 +593,7 @@ class IngameGui(LivingObject):
 				self.session.view.rotate_left()
 				self.minimap.rotate_left()
 		elif action == _Actions.CHAT:
-			self.show_chat_dialog()
+			self.chat_dialog.show()
 		elif action == _Actions.TRANSLUCENCY:
 			self.session.world.toggle_translucency()
 		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
@@ -677,3 +647,42 @@ class IngameGui(LivingObject):
 			return False
 
 		return True
+
+
+class ChatDialog(object):
+	"""Allow player to send messages to other players."""
+
+	def __init__(self, main_gui, session, widget):
+		self._main_gui = main_gui
+		self._session = session
+		self._widget = widget
+
+		events = {
+			OkButton.DEFAULT_NAME: self._do_chat,
+			CancelButton.DEFAULT_NAME: self.hide
+		}
+		self._widget.mapEvents(events)
+
+		def forward_escape(event):
+			# the textfield will eat everything, even control events
+			if event.getKey().getValue() == fife.Key.ESCAPE:
+				self._main_gui.on_escape()
+
+		self._widget.findChild(name="msg").capture(forward_escape, "keyPressed")
+		self._widget.findChild(name="msg").capture(self._do_chat)
+
+	def show(self):
+		self._main_gui.on_escape = self.hide
+		self._widget.show()
+		self._widget.findChild(name="msg").requestFocus()
+
+	def hide(self):
+		self._main_gui.on_escape = self._main_gui.toggle_pause
+		self._widget.hide()
+
+	def _do_chat(self):
+		"""Actually initiates chatting and hides the dialog"""
+		msg = self._widget.findChild(name="msg").text
+		Chat(msg).execute(self._session)
+		self._widget.findChild(name="msg").text = u''
+		self.hide()
