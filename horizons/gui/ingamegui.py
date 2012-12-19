@@ -38,7 +38,7 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import LazyWidgetsDict
-from horizons.constants import BUILDINGS, GUI, VERSION
+from horizons.constants import BUILDINGS, GUI, VERSION, GAME_SPEED
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
@@ -48,7 +48,8 @@ from horizons.gui.keylisteners import KeyConfig
 from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged, TabWidgetChanged
+from horizons.messaging import (SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize,
+                                HoverSettlementChanged, TabWidgetChanged, SpeedChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
 class IngameGui(LivingObject):
@@ -133,6 +134,9 @@ class IngameGui(LivingObject):
 		SettlerUpdate.subscribe(self._on_settler_level_change)
 		SettlerInhabitantsChanged.subscribe(self._on_settler_inhabitant_change)
 		HoverSettlementChanged.subscribe(self._cityinfo_set)
+		SpeedChanged.subscribe(self._on_speed_changed)
+
+		self._display_speed(self.session.timer.ticks_per_second)
 
 	def _on_resourcebar_resize(self, message):
 		self._update_cityinfo_position()
@@ -163,6 +167,7 @@ class IngameGui(LivingObject):
 		ResourceBarResize.unsubscribe(self._on_resourcebar_resize)
 		HoverSettlementChanged.unsubscribe(self._cityinfo_set)
 		SettlerInhabitantsChanged.unsubscribe(self._on_settler_inhabitant_change)
+		SpeedChanged.unsubscribe(self._on_speed_changed)
 
 		super(IngameGui, self).end()
 
@@ -458,15 +463,6 @@ class IngameGui(LivingObject):
 			old_main_widget.hide()
 		self.main_widget = widget
 
-	def display_game_speed(self, text):
-		"""
-		@param text: unicode string to display as speed value
-		"""
-		wdg = self.widgets['minimap'].findChild(name="speed_text")
-		wdg.text = text
-		wdg.resizeToContent()
-		self.widgets['minimap'].show()
-
 	def _on_settler_level_change(self, message):
 		"""Gets called when the player changes"""
 		if message.sender.owner.is_local_player:
@@ -613,3 +609,33 @@ class IngameGui(LivingObject):
 			return False
 
 		return True
+
+	def _on_speed_changed(self, message):
+		self._display_speed(message.new)
+
+	def _display_speed(self, tps):
+		text = u''
+		up_icon = self.widgets['minimap'].findChild(name='speedUp')
+		down_icon = self.widgets['minimap'].findChild(name='speedDown')
+		if tps == 0: # pause
+			text = u'0x'
+			up_icon.set_inactive()
+			down_icon.set_inactive()
+		else:
+			if tps != GAME_SPEED.TICKS_PER_SECOND:
+				text = unicode("%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND))
+				#%1g: displays 0.5x, but 2x instead of 2.0x
+			index = GAME_SPEED.TICK_RATES.index(tps)
+			if index + 1 >= len(GAME_SPEED.TICK_RATES):
+				up_icon.set_inactive()
+			else:
+				up_icon.set_active()
+			if index > 0:
+				down_icon.set_active()
+			else:
+				down_icon.set_inactive()
+
+		wdg = self.widgets['minimap'].findChild(name="speed_text")
+		wdg.text = text
+		wdg.resizeToContent()
+		self.widgets['minimap'].show()

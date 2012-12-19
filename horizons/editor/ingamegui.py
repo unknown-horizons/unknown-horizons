@@ -39,7 +39,6 @@ class IngameGui(object):
 
 		# Mocks needed to act like the real IngameGui
 		self.message_widget = Dummy
-		self.display_game_speed = Dummy
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
 
