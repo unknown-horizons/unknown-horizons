@@ -67,7 +67,7 @@ Section "-Misc"
 	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons.lnk" "$INSTDIR\python\pythonw.exe" "run_uh.py" "${UH_ICON}"
 	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Unknown Horizons Debug-Mode.lnk" "$INSTDIR\unknown-horizons-debug.bat" "" "${UH_ICON}"
 	CreateShortCut "$SMPROGRAMS\Unknown Horizons\Uninstall.lnk" "$INSTDIR\uninst.exe"
-	CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\Python27\pythonw.exe" "run_uh.py" "${UH_ICON}"
+	CreateShortCut "$DESKTOP\Unknown Horizons.lnk" "$INSTDIR\python\pythonw.exe" "run_uh.py" "${UH_ICON}"
 SectionEnd
 
 Section "Uninstall"
