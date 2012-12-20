@@ -319,6 +319,10 @@ class IngameGui(LivingObject):
 		# Open menus later; they may need unit data not yet inited
 		self.cursor.apply_select()
 
+		if not self.session.is_game_loaded():
+			# Fire a message for new world creation
+			self.session.ingame_gui.message_widget.add(point=None, string_id='NEW_WORLD')
+
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""
 		self.change_name_dialog.show(instance)
