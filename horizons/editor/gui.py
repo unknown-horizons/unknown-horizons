@@ -31,6 +31,7 @@ from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
@@ -47,9 +48,10 @@ class IngameGui(LivingObject):
 		self.cursor = None
 		self.coordinates_tooltip = None
 		self.keylistener = IngameKeyListener(self.session)
+		# used by NavigationTool
+		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.message_widget = Dummy
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
 
@@ -90,6 +92,8 @@ class IngameGui(LivingObject):
 		})
 		self.minimap = None
 		self.keylistener = None
+		LastActivePlayerSettlementManager().remove()
+		LastActivePlayerSettlementManager.destroy_instance()
 
 		if self.cursor:
 			self.cursor.remove()
