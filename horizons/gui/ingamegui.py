@@ -23,14 +23,11 @@ from fife import fife
 
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.component.namedcomponent import SettlementNameComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.constants import BUILDINGS, GUI, GAME_SPEED, VERSION
+from horizons.constants import BUILDINGS, GAME_SPEED, VERSION
 from horizons.entities import Entities
-from horizons.extscheduler import ExtScheduler
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog
+from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -42,18 +39,15 @@ from horizons.gui.widgets.playersoverview import PlayersOverview
 from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
-from horizons.messaging import (SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize,
-                                HoverSettlementChanged, TabWidgetChanged, SpeedChanged)
+from horizons.messaging import SettlerUpdate, TabWidgetChanged, SpeedChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
-from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
 	Assumes that only 1 instance is used (class variables)"""
 
-	gui = livingProperty()
 	message_widget = livingProperty()
 	minimap = livingProperty()
 	keylistener = livingProperty()
@@ -77,8 +71,7 @@ class IngameGui(LivingObject):
 		self.keylistener = IngameKeyListener(self.session)
 		self.widgets = LazyWidgetsDict(self.styles)
 
-		self.cityinfo = self.widgets['city_info']
-		self.cityinfo.child_finder = PychanChildFinder(self.cityinfo)
+		self.cityinfo = CityInfo(self, self.widgets['city_info'])
 
 		self.logbook = LogBook(self.session)
 		self.message_widget = MessageWidget(self.session)
@@ -125,18 +118,12 @@ class IngameGui(LivingObject):
 		self.widgets['tooltip'].hide()
 
 		self.resource_overview = ResourceOverviewBar(self.session)
-		ResourceBarResize.subscribe(self._on_resourcebar_resize)
 
 		# Register for messages
 		SettlerUpdate.subscribe(self._on_settler_level_change)
-		SettlerInhabitantsChanged.subscribe(self._on_settler_inhabitant_change)
-		HoverSettlementChanged.subscribe(self._cityinfo_set)
 		SpeedChanged.subscribe(self._on_speed_changed)
 
 		self._display_speed(self.session.timer.ticks_per_second)
-
-	def _on_resourcebar_resize(self, message):
-		self._update_cityinfo_position()
 
 	def end(self):
 		self.widgets['minimap'].mapEvents({
@@ -161,123 +148,9 @@ class IngameGui(LivingObject):
 		self.keylistener = None
 		self.hide_menu()
 		SettlerUpdate.unsubscribe(self._on_settler_level_change)
-		ResourceBarResize.unsubscribe(self._on_resourcebar_resize)
-		HoverSettlementChanged.unsubscribe(self._cityinfo_set)
-		SettlerInhabitantsChanged.unsubscribe(self._on_settler_inhabitant_change)
 		SpeedChanged.unsubscribe(self._on_speed_changed)
 
 		super(IngameGui, self).end()
-
-	def _cityinfo_set(self, message):
-		"""Sets the city name at top center of screen.
-
-		Show/Hide is handled automatically
-		To hide cityname, set name to ''
-		@param message: HoverSettlementChanged message
-		"""
-		settlement = message.settlement
-		old_was_player_settlement = False
-		if self.settlement is not None:
-			self.settlement.remove_change_listener(self.update_settlement)
-			old_was_player_settlement = self.settlement.owner.is_local_player
-
-		# save reference to new "current" settlement in self.settlement
-		self.settlement = settlement
-
-		if settlement is None: # we want to hide the widget now (but perhaps delayed).
-			if old_was_player_settlement:
-				# After scrolling away from settlement, leave name on screen for some
-				# seconds. Players can still click on it to rename the settlement now.
-				ExtScheduler().add_new_object(self.cityinfo.hide, self,
-				      run_in=GUI.CITYINFO_UPDATE_DELAY)
-				#TODO 'click to rename' tooltip of cityinfo can stay visible in
-				# certain cases if cityinfo gets hidden in tooltip delay buffer.
-			else:
-				# hovered settlement of other player, simply hide the widget
-				self.cityinfo.hide()
-
-		else:# do not hide if settlement is hovered and a hide was previously scheduled
-			ExtScheduler().rem_call(self, self.cityinfo.hide)
-
-			self.update_settlement() # calls show()
-			settlement.add_change_listener(self.update_settlement)
-
-	def _on_settler_inhabitant_change(self, message):
-		assert isinstance(message, SettlerInhabitantsChanged)
-		foundlabel = self.cityinfo.child_finder('city_inhabitants')
-		old_amount = int(foundlabel.text) if foundlabel.text else 0
-		foundlabel.text = u' {amount:>4d}'.format(amount=old_amount+message.change)
-		foundlabel.resizeToContent()
-
-	def update_settlement(self):
-		city_name_label = self.cityinfo.child_finder('city_name')
-		if self.settlement.owner.is_local_player: # allow name changes
-			# Update settlement on the resource overview to make sure it
-			# is setup correctly for the coming calculations
-			self.resource_overview.set_inventory_instance(self.settlement)
-			cb = Callback(self.show_change_name_dialog, self.settlement)
-			helptext = _("Click to change the name of your settlement")
-			city_name_label.enable_cursor_change_on_hover()
-		else: # no name changes
-			cb = lambda : AmbientSoundComponent.play_special('error')
-			helptext = u""
-			city_name_label.disable_cursor_change_on_hover()
-		self.cityinfo.mapEvents({
-			'city_name': cb
-		})
-		city_name_label.helptext = helptext
-
-		foundlabel = self.cityinfo.child_finder('owner_emblem')
-		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)
-		foundlabel.helptext = self.settlement.owner.name
-
-		foundlabel = self.cityinfo.child_finder('city_name')
-		foundlabel.text = self.settlement.get_component(SettlementNameComponent).name
-		foundlabel.resizeToContent()
-
-		foundlabel = self.cityinfo.child_finder('city_inhabitants')
-		foundlabel.text = u' {amount:>4d}'.format(amount=self.settlement.inhabitants)
-		foundlabel.resizeToContent()
-
-		self._update_cityinfo_position()
-
-	def _update_cityinfo_position(self):
-		""" Places cityinfo widget depending on resource bar dimensions.
-
-		For a normal-sized resource bar and reasonably large resolution:
-		* determine resource bar length (includes gold)
-		* determine empty horizontal space between resbar end and minimap start
-		* display cityinfo centered in that area if it is sufficiently large
-
-		If too close to the minimap (cityinfo larger than length of this empty space)
-		move cityinfo centered to very upper screen edge. Looks bad, works usually.
-		In this case, the resbar is redrawn to put the cityinfo "behind" it visually.
-		"""
-		width = horizons.globals.fife.engine_settings.getScreenWidth()
-		resbar = self.resource_overview.get_size()
-		is_foreign = (self.settlement.owner != self.session.world.player)
-		blocked = self.cityinfo.size[0] + int(1.5*self.minimap.get_size()[1])
-		# minimap[1] returns width! Use 1.5*width because of the GUI around it
-
-		if is_foreign: # other player, no resbar exists
-			self.cityinfo.pos = ('center', 'top')
-			xoff = 0
-			yoff = 19
-		elif blocked < width < resbar[0] + blocked: # large resbar / small resolution
-			self.cityinfo.pos = ('center', 'top')
-			xoff = 0
-			yoff = 0 # upper screen edge
-		else:
-			self.cityinfo.pos = ('left', 'top')
-			xoff = resbar[0] + (width - blocked - resbar[0]) // 2
-			yoff = 24
-
-		self.cityinfo.offset = (xoff, yoff)
-		self.cityinfo.position_technique = "{pos[0]}{off[0]:+d}:{pos[1]}{off[1]:+d}".format(
-				pos=self.cityinfo.pos,
-				off=self.cityinfo.offset)
-		self.cityinfo.hide()
-		self.cityinfo.show()
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""
@@ -401,7 +274,7 @@ class IngameGui(LivingObject):
 		self.resource_overview.load(db)
 
 		cur_settlement = LastActivePlayerSettlementManager().get_current_settlement()
-		self._cityinfo_set( HoverSettlementChanged(self, cur_settlement) )
+		self.cityinfo.set_settlement(cur_settlement)
 
 		self.minimap.draw() # update minimap to new world
 
