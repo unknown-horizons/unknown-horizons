@@ -85,7 +85,6 @@ class LogBook(PickBeltWidget):
 		  'stats_ships' : Callback(self.show_statswidget, widget='ships'),
 		  'chatTextField' : self._send_chat_message,
 		  })
-		self._gui.position_technique = "automatic" # "center:center"
 
 		# stuff in the game message / chat history subwidget
 		self.textfield = self._gui.findChild(name="chatTextField")
