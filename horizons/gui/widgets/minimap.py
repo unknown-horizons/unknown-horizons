@@ -138,7 +138,7 @@ class Minimap(object):
 		self.session = None
 		self.renderer = None
 		if self.use_rotation:
-			SettingChanged.unsubscribe(self._on_setting_change)
+			SettingChanged.unsubscribe(self._on_setting_changed)
 
 	def disable(self):
 		"""Due to the way the minimap works, there isn't really a show/hide,
