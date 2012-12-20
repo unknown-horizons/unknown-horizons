@@ -12,6 +12,4 @@
 <CancelButton position="25,220" is_focusable="0" />
 <OkButton position="410,220" is_focusable="1" /> <!-- needed to be able to trigger this on enter -->
 
-
-
 </Container>
