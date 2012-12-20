@@ -173,12 +173,7 @@ class Session(LivingObject):
 		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 
-		if horizons.globals.fife.get_fife_setting("PlaySounds"):
-			for emitter in horizons.globals.fife.sound.emitter['ambient'][:]:
-				emitter.stop()
-				horizons.globals.fife.sound.emitter['ambient'].remove(emitter)
-			horizons.globals.fife.sound.emitter['effects'].stop()
-			horizons.globals.fife.sound.emitter['speech'].stop()
+		horizons.globals.fife.sound.end()
 
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world

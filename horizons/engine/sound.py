@@ -56,6 +56,14 @@ class Sound(object):
 
 		self.setup_sound()
 
+	def end(self):
+		if self.engine.get_fife_setting("PlaySounds"):
+			for emitter in self.emitter['ambient'][:]:
+				emitter.stop()
+				self.emitter['ambient'].remove(emitter)
+			self.emitter['effects'].stop()
+			self.emitter['speech'].stop()
+
 	def setup_sound(self):
 		if self.engine.get_fife_setting("PlaySounds"):
 			self.enable_sound()
