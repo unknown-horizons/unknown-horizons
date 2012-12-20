@@ -55,7 +55,7 @@ class ProductionFinishedIconManager(object):
 
 	def disable(self):
 		Scheduler().rem_all_classinst_calls(self)
-		ResourceProduced.unsubscribe(self._on_resource_produced)
+		ResourceProduced.discard(self._on_resource_produced)
 		for group in self.run:
 			self.renderer.removeAll(group)
 
