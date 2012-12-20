@@ -45,6 +45,7 @@ class IngameGui(LivingObject):
 		self.main_gui = main_gui
 
 		self.cursor = None
+		self.coordinates_tooltip = None
 		self.keylistener = IngameKeyListener(self.session)
 
 		# Mocks needed to act like the real IngameGui
