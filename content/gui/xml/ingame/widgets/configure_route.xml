@@ -18,8 +18,6 @@
 		</HBox>
 	</VBox>
 
-
-
 	<!-- right side -->
 
 	<VBox name="right_vbox" max_size="330,508" min_size="330,508" position="516,40" padding="2">
@@ -44,6 +42,5 @@
 			<OkButton helptext="Exit" />
 		</HBox>
 	</VBox>
-<!-- Here pickbelts could be added to achieve more space.
-Refer to gui/credits/*.xml for sample implementation. -->
+<!-- Here pickbelts could be added to achieve more space.-->
 </Container>
