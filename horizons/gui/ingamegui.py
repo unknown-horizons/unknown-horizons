@@ -146,6 +146,8 @@ class IngameGui(LivingObject):
 		self.resource_overview.end()
 		self.resource_overview = None
 		self.keylistener = None
+		self.cityinfo.end()
+		self.cityinfo = None
 		self.hide_menu()
 		SettlerUpdate.unsubscribe(self._on_settler_level_change)
 		SpeedChanged.unsubscribe(self._on_speed_changed)
