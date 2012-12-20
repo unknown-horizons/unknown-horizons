@@ -33,7 +33,6 @@ import horizons.main
 
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
-from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool, TileLayingTool
 from horizons.command.building import Tear
 from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
@@ -79,8 +78,6 @@ class Session(LivingObject):
 	* view - horizons.view instance. Used to control the ingame camera.
 	* ingame_gui - horizons.gui.ingame_gui instance. Used to control the ingame gui framework.
 		(This is different from gui, which is the main menu and general session-independent gui)
-	* cursor - horizons.gui.{navigation/cursor/selection/building}tool instance. Used to handle
-			   mouse events.
 	* selected_instances - Set that holds the currently selected instances (building, units).
 
 	TUTORIAL:
@@ -215,18 +212,13 @@ class Session(LivingObject):
 				horizons.globals.fife.sound.emitter['ambient'].remove(emitter)
 			horizons.globals.fife.sound.emitter['effects'].stop()
 			horizons.globals.fife.sound.emitter['speech'].stop()
-		if hasattr(self, "cursor"): # the line below would crash uglily on ^C
-			self.cursor.remove()
 
-		if hasattr(self, 'cursor') and self.cursor is not None:
-			self.cursor.end()
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
 
 		LastActivePlayerSettlementManager().remove() # keep after ingame_gui
 		LastActivePlayerSettlementManager.destroy_instance()
 
-		self.cursor = None
 		self.world.end() # must be called before the world ref is gone
 		self.world = None
 		self.view = None
@@ -251,36 +243,6 @@ class Session(LivingObject):
 		AutosaveIntervalChanged.unsubscribe(self._on_autosave_interval_changed)
 		MessageBus().reset()
 		self.gui.subscribe()
-
-	def toggle_cursor(self, which, *args, **kwargs):
-		"""Alternate between the cursor which and default.
-		args and kwargs are used to construct which."""
-		if self.current_cursor == which:
-			self.set_cursor()
-		else:
-			self.set_cursor(which, *args, **kwargs)
-
-	def set_cursor(self, which='default', *args, **kwargs):
-		"""Sets the mousetool (i.e. cursor).
-		This is done here for encapsulation and control over destructors.
-		Further arguments are passed to the mouse tool constructor."""
-		self.cursor.remove()
-		self.current_cursor = which
-		klass = {
-			'default'        : SelectionTool,
-			'selection'      : SelectionTool,
-			'tearing'        : TearingTool,
-			'pipette'        : PipetteTool,
-			'attacking'      : AttackingTool,
-			'building'       : BuildingTool,
-			'tile_layer'     : TileLayingTool
-
-		}[which]
-		self.cursor = klass(self, *args, **kwargs)
-
-	def toggle_destroy_tool(self):
-		"""Initiate the destroy tool"""
-		self.toggle_cursor('tearing')
 
 	def autosave(self):
 		raise NotImplementedError
@@ -340,7 +302,6 @@ class Session(LivingObject):
 		self.world.init_fish_indexer() # now the fish should exist
 		if self.is_game_loaded():
 			LastActivePlayerSettlementManager().load(savegame_db) # before ingamegui
-		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.get_object_by_id(instance_id[0])
@@ -350,12 +311,7 @@ class Session(LivingObject):
 			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
 
-		# cursor has to be inited last, else player interacts with a not inited world with it.
-		self.current_cursor = 'default'
-		self.cursor = SelectionTool(self)
-		# Set cursor correctly, menus might need to be opened.
-		# Open menus later; they may need unit data not yet inited
-		self.cursor.apply_select()
+		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
 		Scheduler().before_ticking()
 		savegame_db.close()

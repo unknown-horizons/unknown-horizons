@@ -26,9 +26,9 @@ from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseC
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import BUILDINGS, GAME_SPEED, VERSION
 from horizons.entities import Entities
+from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
-from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import LazyWidgetsDict
@@ -68,6 +68,7 @@ class IngameGui(LivingObject):
 		self.settlement = None
 		self._old_menu = None
 
+		self.cursor = None
 		self.keylistener = IngameKeyListener(self.session)
 		self.widgets = LazyWidgetsDict(self.styles)
 
@@ -106,7 +107,7 @@ class IngameGui(LivingObject):
 			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
 			'speedUp' : speed_up,
 			'speedDown' : speed_down,
-			'destroy_tool' : self.session.toggle_destroy_tool,
+			'destroy_tool' : self.toggle_destroy_tool,
 			'build' : self.show_build_menu,
 			'diplomacyButton' : self.show_diplomacy_menu,
 			'gameMenuButton' : self.main_gui.toggle_pause,
@@ -150,6 +151,11 @@ class IngameGui(LivingObject):
 		SettlerUpdate.unsubscribe(self._on_settler_level_change)
 		SpeedChanged.unsubscribe(self._on_speed_changed)
 
+		if self.cursor:
+			self.cursor.remove()
+			self.cursor.end()
+			self.cursor = None
+
 		super(IngameGui, self).end()
 
 	def minimap_to_front(self):
@@ -186,7 +192,7 @@ class IngameGui(LivingObject):
 			if not update: # this was only a toggle call, don't reshow
 				return
 
-		self.session.set_cursor() # set default cursor for build menu
+		self.set_cursor() # set default cursor for build menu
 		self.deselect_all()
 
 		if not any( settlement.owner.is_local_player for settlement in self.session.world.settlements):
@@ -213,13 +219,13 @@ class IngameGui(LivingObject):
 		cls = Entities.buildings[building_id]
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
-		self.session.set_cursor('building', cls, None if unit is None else unit())
+		self.set_cursor('building', cls, None if unit is None else unit())
 
 	def toggle_road_tool(self):
-		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL:
+		if not isinstance(self.cursor, mousetools.BuildingTool) or self.cursor._class.id != BUILDINGS.TRAIL:
 			self._build(BUILDINGS.TRAIL)
 		else:
-			self.session.set_cursor()
+			self.set_cursor()
 
 	def _get_menu_object(self, menu):
 		"""Returns pychan object if menu is a string, else returns menu
@@ -277,6 +283,12 @@ class IngameGui(LivingObject):
 		self.cityinfo.set_settlement(cur_settlement)
 
 		self.minimap.draw() # update minimap to new world
+
+		self.current_cursor = 'default'
+		self.cursor = mousetools.SelectionTool(self.session)
+		# Set cursor correctly, menus might need to be opened.
+		# Open menus later; they may need unit data not yet inited
+		self.cursor.apply_select()
 
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""
@@ -355,7 +367,7 @@ class IngameGui(LivingObject):
 		elif action == _Actions.COORD_TOOLTIP:
 			self.session.coordinates_tooltip.toggle()
 		elif action == _Actions.DESTROY_TOOL:
-			self.session.toggle_destroy_tool()
+			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
 			self.session.remove_selected()
 		elif action == _Actions.ROAD_TOOL:
@@ -379,15 +391,15 @@ class IngameGui(LivingObject):
 		elif action == _Actions.BUILD_TOOL:
 			self.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:
-			if hasattr(self.session.cursor, "rotate_right"):
+			if hasattr(self.cursor, "rotate_right"):
 				# used in e.g. build preview to rotate building instead of map
-				self.session.cursor.rotate_right()
+				self.cursor.rotate_right()
 			else:
 				self.session.view.rotate_right()
 				self.minimap.rotate_right()
 		elif action == _Actions.ROTATE_LEFT:
-			if hasattr(self.session.cursor, "rotate_left"):
-				self.session.cursor.rotate_left()
+			if hasattr(self.cursor, "rotate_left"):
+				self.cursor.rotate_left()
 			else:
 				self.session.view.rotate_left()
 				self.minimap.rotate_left()
@@ -413,7 +425,7 @@ class IngameGui(LivingObject):
 				# deselect
 				# we need to make sure to have a cursor capable of selection (for apply_select())
 				# this handles deselection implicitly in the destructor
-				self.session.set_cursor('selection')
+				self.set_cursor('selection')
 
 				# apply new selection
 				for instance in self.session.selection_groups[num]:
@@ -422,7 +434,7 @@ class IngameGui(LivingObject):
 				self.session.selected_instances = self.session.selection_groups[num].copy()
 				# show menu depending on the entities selected
 				if self.session.selected_instances:
-					self.session.cursor.apply_select()
+					self.cursor.apply_select()
 				else:
 					# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
 					self.show_menu(None)
@@ -430,7 +442,7 @@ class IngameGui(LivingObject):
 			self.session.quicksave() # load is only handled by the MainListener
 		elif action == _Actions.PIPETTE:
 			# copy mode: pipette tool
-			self.session.toggle_cursor('pipette')
+			self.toggle_cursor('pipette')
 		elif action == _Actions.HEALTH_BAR:
 			# shows health bar of every instance with an health component
 			self.session.world.toggle_health_for_all_health_instances()
@@ -446,3 +458,31 @@ class IngameGui(LivingObject):
 			return False
 
 		return True
+
+	def toggle_cursor(self, which, *args, **kwargs):
+		"""Alternate between the cursor which and default.
+		args and kwargs are used to construct which."""
+		if self.current_cursor == which:
+			self.set_cursor()
+		else:
+			self.set_cursor(which, *args, **kwargs)
+
+	def set_cursor(self, which='default', *args, **kwargs):
+		"""Sets the mousetool (i.e. cursor).
+		This is done here for encapsulation and control over destructors.
+		Further arguments are passed to the mouse tool constructor."""
+		self.cursor.remove()
+		self.current_cursor = which
+		klass = {
+			'default'        : mousetools.SelectionTool,
+			'selection'      : mousetools.SelectionTool,
+			'tearing'        : mousetools.TearingTool,
+			'pipette'        : mousetools.PipetteTool,
+			'attacking'      : mousetools.AttackingTool,
+			'building'       : mousetools.BuildingTool,
+		}[which]
+		self.cursor = klass(self.session, *args, **kwargs)
+
+	def toggle_destroy_tool(self):
+		"""Initiate the destroy tool"""
+		self.toggle_cursor('tearing')

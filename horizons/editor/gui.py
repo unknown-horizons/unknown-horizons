@@ -25,6 +25,7 @@ import horizons.globals
 from horizons.constants import GROUND
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener
+from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import LazyWidgetsDict
@@ -42,6 +43,8 @@ class IngameGui(LivingObject):
 	def __init__(self, session, main_gui):
 		self.session = session
 		self.main_gui = main_gui
+
+		self.cursor = None
 		self.keylistener = IngameKeyListener(self.session)
 
 		# Mocks needed to act like the real IngameGui
@@ -86,14 +89,22 @@ class IngameGui(LivingObject):
 		})
 		self.minimap = None
 		self.keylistener = None
+
+		if self.cursor:
+			self.cursor.remove()
+			self.cursor.end()
+			self.cursor = None
+
 		super(IngameGui, self).end()
 
 	def load(self, savegame):
 		self.minimap.draw()
 
+		self.cursor = SelectionTool(self.session)
+
 	def setup(self):
 		"""Called after the world editor was initialized."""
-		self._settings_tab = TabWidget(self, tabs=[SettingsTab(self.session.world_editor, self.session)])
+		self._settings_tab = TabWidget(self, tabs=[SettingsTab(self.session.world_editor, self)])
 		self._settings_tab.show()
 
 	def minimap_to_front(self):
@@ -111,11 +122,23 @@ class IngameGui(LivingObject):
 	def on_key_press(self, action, evt):
 		pass
 
+	def set_cursor(self, which='default', *args, **kwargs):
+		"""Sets the mousetool (i.e. cursor).
+		This is done here for encapsulation and control over destructors.
+		Further arguments are passed to the mouse tool constructor.
+		"""
+		self.cursor.remove()
+		klass = {
+			'default': SelectionTool,
+			'tile_layer': TileLayingTool
+		}[which]
+		self.cursor = klass(self.session, *args, **kwargs)
+
 
 class SettingsTab(TabInterface):
 	widget = 'editor_settings.xml'
 
-	def __init__(self, world_editor, session):
+	def __init__(self, world_editor, ingame_gui):
 		super(SettingsTab, self).__init__(widget=self.widget)
 
 		self._world_editor = world_editor
@@ -134,7 +157,7 @@ class SettingsTab(TabInterface):
 			tile = getattr(GROUND, tile_type.upper())
 			image.up_image = self._get_tile_image(tile)
 			image.size = image.min_size = image.max_size = (64, 32)
-			image.capture(Callback(session.set_cursor, 'tile_layer', tile))
+			image.capture(Callback(ingame_gui.set_cursor, 'tile_layer', tile))
 
 	def _get_tile_image(self, tile):
 		# TODO TileLayingTool does almost the same thing, perhaps put this in a better place

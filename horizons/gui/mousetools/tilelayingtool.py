@@ -76,7 +76,7 @@ class TileLayingTool(NavigationTool):
 		super(TileLayingTool, self).remove()
 
 	def on_escape(self):
-		self.session.set_cursor()
+		self.session.ingame_gui.set_cursor()
 
 	def mouseMoved(self, evt):
 		self.update_coloring(evt)

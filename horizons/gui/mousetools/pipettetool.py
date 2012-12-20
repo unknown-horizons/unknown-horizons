@@ -48,7 +48,7 @@ class PipetteTool(NavigationTool):
 		super(PipetteTool, self).remove()
 
 	def on_escape(self):
-		self.session.set_cursor()
+		self.session.ingame_gui.set_cursor()
 
 	def mouseMoved(self, evt):
 		self.update_coloring(evt)
@@ -57,7 +57,7 @@ class PipetteTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			obj = self._get_object(evt)
 			if obj and self._is_buildable(obj.id):
-				self.session.set_cursor('building', Entities.buildings[obj.id])
+				self.session.ingame_gui.set_cursor('building', Entities.buildings[obj.id])
 			elif obj: # object that is not buildable
 				AmbientSoundComponent.play_special('error')
 				self.on_escape()

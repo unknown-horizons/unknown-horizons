@@ -160,10 +160,10 @@ class SelectionTool(NavigationTool):
 				self.deselect_at_end = False # Handover to AttackingTool without deselecting
 				break
 
-		if attacking_unit_found and not isinstance(self.session.cursor, AttackingTool):
-			self.session.set_cursor('attacking')
-		if not attacking_unit_found and isinstance(self.session.cursor, AttackingTool):
-			self.session.set_cursor()
+		if attacking_unit_found and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
+			self.session.ingame_gui.set_cursor('attacking')
+		if not attacking_unit_found and isinstance(self.session.ingame_gui.cursor, AttackingTool):
+			self.session.ingame_gui.set_cursor()
 			horizons.globals.fife.set_cursor_image('default')
 
 	def mousePressed(self, evt):

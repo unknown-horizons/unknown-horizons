@@ -472,7 +472,7 @@ class BuildingTool(NavigationTool):
 		self._build_logic.on_escape(self.session)
 		if self.__class__.gui is not None:
 			self.__class__.gui.hide()
-		self.session.set_cursor() # will call remove()
+		self.session.ingame_gui.set_cursor() # will call remove()
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
