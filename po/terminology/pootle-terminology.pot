@@ -205,9 +205,6 @@ msgstr ""
 msgid "file"
 msgstr ""
 
-msgid "horizons"
-msgstr ""
-
 msgid "increment"
 msgstr ""
 
@@ -328,9 +325,6 @@ msgstr ""
 msgid "build menu"
 msgstr ""
 
-msgid "Captain's"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 msgid "confectionery"
 msgstr ""
@@ -380,9 +374,6 @@ msgstr ""
 msgid "creator"
 msgstr ""
 
-msgid "Don't"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 msgid "faith"
 msgstr ""
@@ -400,9 +391,6 @@ msgid "leave"
 msgstr ""
 
 msgid "location"
-msgstr ""
-
-msgid "lot"
 msgstr ""
 
 msgid "multiple buildings"
@@ -460,9 +448,6 @@ msgstr ""
 msgid "Captain's log"
 msgstr ""
 
-msgid "clicking"
-msgstr ""
-
 msgid "cloth"
 msgstr ""
 
@@ -479,9 +464,6 @@ msgid "entries"
 msgstr ""
 
 msgid "feature"
-msgstr ""
-
-msgid "fine"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -540,10 +522,6 @@ msgid "read"
 msgstr ""
 
 msgid "screen"
-msgstr ""
-
-#. (text of widget: selling_label)
-msgid "selling"
 msgstr ""
 
 msgid "service"
@@ -608,9 +586,6 @@ msgstr ""
 msgid "completed"
 msgstr ""
 
-msgid "feel"
-msgstr ""
-
 msgid "forum"
 msgstr ""
 
@@ -621,12 +596,6 @@ msgid "harvest"
 msgstr ""
 
 msgid "in range"
-msgstr ""
-
-msgid "IRC"
-msgstr ""
-
-msgid "joining"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -673,13 +642,7 @@ msgstr ""
 msgid "values"
 msgstr ""
 
-msgid "waiting"
-msgstr ""
-
 msgid "wheel"
-msgstr ""
-
-msgid "buy/sell"
 msgstr ""
 
 #. (helptext of widget: avg_icon)
@@ -748,12 +711,6 @@ msgstr ""
 msgid "consume"
 msgstr ""
 
-msgid "game version"
-msgstr ""
-
-msgid "holding"
-msgstr ""
-
 msgid "idle"
 msgstr ""
 
@@ -776,16 +733,8 @@ msgstr ""
 msgid "build settlement"
 msgstr ""
 
-#. (text of widget: buying_label)
-#. (text of widget: buy_expenses_label)
-msgid "buying"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 msgid "charcoal"
-msgstr ""
-
-msgid "dragging"
 msgstr ""
 
 msgid "empty"
@@ -837,9 +786,6 @@ msgid "error"
 msgstr ""
 
 msgid "deposit"
-msgstr ""
-
-msgid "failed"
 msgstr ""
 
 msgid "invalid"
@@ -922,9 +868,6 @@ msgid "details"
 msgstr ""
 
 msgid "found"
-msgstr ""
-
-msgid "game's"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -1123,9 +1066,6 @@ msgstr ""
 msgid "drag"
 msgstr ""
 
-msgid "drag roads"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 msgid "education"
 msgstr ""
@@ -1160,9 +1100,6 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 msgid "honeycombs"
-msgstr ""
-
-msgid "invalid filename"
 msgstr ""
 
 msgid "inventory"
@@ -1302,7 +1239,4 @@ msgid "won"
 msgstr ""
 
 msgid "written"
-msgstr ""
-
-msgid "you entered"
 msgstr ""
