@@ -72,6 +72,8 @@ class IngameGui(LivingObject):
 		self._old_menu = None
 
 		self.cursor = None
+		self.coordinates_tooltip = None
+
 		self.keylistener = IngameKeyListener(self.session)
 		self.widgets = LazyWidgetsDict(self.styles)
 
@@ -392,7 +394,7 @@ class IngameGui(LivingObject):
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
 		elif action == _Actions.COORD_TOOLTIP:
-			self.session.coordinates_tooltip.toggle()
+			self.coordinates_tooltip.toggle()
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:

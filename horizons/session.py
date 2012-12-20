@@ -113,7 +113,6 @@ class Session(LivingObject):
 		#GUI
 		self.gui.session = self
 		self.ingame_gui = ingame_gui_class(self, self.gui)
-		self.coordinates_tooltip = None
 
 		self.selected_instances = set()
 		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.

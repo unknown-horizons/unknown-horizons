@@ -69,8 +69,8 @@ class NavigationTool(CursorTool):
 		class CoordsTooltip(object):
 			@classmethod
 			def get_instance(cls, cursor_tool):
-				if cursor_tool.session.coordinates_tooltip is not None:
-					inst = cursor_tool.session.coordinates_tooltip
+				if cursor_tool.session.ingame_gui.coordinates_tooltip is not None:
+					inst = cursor_tool.session.ingame_gui.coordinates_tooltip
 					inst.cursor_tool = cursor_tool
 					return inst
 				else:
@@ -78,7 +78,7 @@ class NavigationTool(CursorTool):
 
 			def __init__(self, cursor_tool, **kwargs):
 				super(CoordsTooltip, self).__init__(**kwargs)
-				cursor_tool.session.coordinates_tooltip = self
+				cursor_tool.session.ingame_gui.coordinates_tooltip = self
 				self.cursor_tool = cursor_tool
 				self.enabled = False
 
