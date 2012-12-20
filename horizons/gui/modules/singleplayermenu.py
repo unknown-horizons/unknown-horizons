@@ -536,14 +536,14 @@ class MapPreview(object):
 		from horizons.entities import Entities
 		from horizons.ext.dummy import Dummy
 		if not VERSION.IS_DEV_VERSION:
-			# Hack enable atlases, so that we use the correct tileset loader
-			# later as fife animation loader. If the main application uses atlases 
-			# the minimap generator has to use them as well, otherwise it will
-			# run into trouble loading paths that are not available.
-			# There is no other way to figure out if we use atlases at this point.
-			# Should we use the dev version and still use atlases, we just ignore 
-			# it and pretend we don't use atlases, as all paths are available in 
-			# dev checkouts
+			# Hack enable atlases.
+			# Usually the minimap generator uses single tile files, but in release
+			# mode these are not available. Therefor we have to hackenable atlases
+			# for the minimap generation in this case. This forces the game to use
+			# the correct imageloader
+			# In normal dev mode + enabled atlases we ignore this and just continue 
+			# to use single tile files instead of atlases for the minimap generation.
+			# These are always available in dev checkouts
 			PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 		db = _create_main_db()	
 		horizons.globals.db = db

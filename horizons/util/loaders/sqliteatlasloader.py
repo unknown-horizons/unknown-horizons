@@ -132,6 +132,8 @@ class SQLiteAtlasLoader(object):
 			return loader
 
 	def load_image(self, file, actionset, action, rotation):
+		if not self.inited:
+			self.init()
 		loader = self._get_loader(actionset)
 		entry = loader.get_sets()[actionset][action][int(rotation)][file]
 		# we don't need to load images at this point to query for its parameters
