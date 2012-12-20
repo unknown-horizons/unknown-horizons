@@ -35,7 +35,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 from horizons.engine import UH_MODULE
-from horizons.messaging import AutosaveIntervalChanged, MinimapRotationSettingChanged
+
 
 class SettingsHandler(object):
 	"""Handles settings-related boilerplate code as well as gui."""
@@ -48,15 +48,8 @@ class SettingsHandler(object):
 		return self.engine._setting
 
 	def add_settings(self):
-		def update_minimap(*args):
-			MinimapRotationSettingChanged.broadcast(None)
-
-		def update_autosave_interval(*args):
-			AutosaveIntervalChanged.broadcast(None)
-
 		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
-		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval",
-		                                applyfunction=update_autosave_interval)
+		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval")
 		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
 		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
@@ -65,8 +58,7 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "MiddleMousePan", "middle_mouse_pan")
 		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
 		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
-		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation",
-		                                applyfunction=update_minimap)
+		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation")
 
 		self._setting.createAndAddEntry(UH_MODULE, "QuotesType", "quotestype",
 		                                initialdata=QUOTES_SETTINGS)

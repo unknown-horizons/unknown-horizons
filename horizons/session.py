@@ -51,7 +51,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED
-from horizons.messaging import AutosaveIntervalChanged, MessageBus, SpeedChanged
+from horizons.messaging import SettingChanged, MessageBus, SpeedChanged
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -127,7 +127,7 @@ class Session(LivingObject):
 		"""Actually starts the game."""
 		self.timer.activate()
 		self.reset_autosave()
-		AutosaveIntervalChanged.subscribe(self._on_autosave_interval_changed)
+		SettingChanged.subscribe(self._on_setting_changed)
 
 	def reset_autosave(self):
 		"""(Re-)Set up autosave. Called if autosave interval has been changed."""
@@ -140,8 +140,9 @@ class Session(LivingObject):
 				self.log.debug("Initing autosave every %s minutes", interval)
 				ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
 
-	def _on_autosave_interval_changed(self, message):
-		self.reset_autosave()
+	def _on_setting_changed(self, message):
+		if message.setting_name == 'AutosaveInterval':
+			self.reset_autosave()
 
 	def create_manager(self):
 		"""Returns instance of command manager (currently MPManager or SPManager)"""
@@ -201,7 +202,7 @@ class Session(LivingObject):
 
 		# subscriptions shouldn't survive listeners (except the main Gui)
 		self.gui.unsubscribe()
-		AutosaveIntervalChanged.unsubscribe(self._on_autosave_interval_changed)
+		SettingChanged.unsubscribe(self._on_setting_changed)
 		MessageBus().reset()
 		self.gui.subscribe()
 

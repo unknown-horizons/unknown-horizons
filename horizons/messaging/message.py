@@ -202,14 +202,6 @@ class PlayerInventoryUpdated(Message):
 	"""Message sent whenever a player's inventory is updated"""
 	pass
 
-class AutosaveIntervalChanged(Message):
-	"""Sent when the autosave interval is changed."""
-	pass
-
-class MinimapRotationSettingChanged(Message):
-	"""Sent when the setting that enables/disables rotating the minimap with the map is changed."""
-	pass
-
 class LanguageChanged(Message):
 	"""Sent when the language has changed."""
 	pass
