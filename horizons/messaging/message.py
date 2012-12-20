@@ -217,3 +217,7 @@ class LanguageChanged(Message):
 class SpeedChanged(Message):
 	"""Sent when the ingame speed has changed."""
 	arguments = ('old', 'new', )
+
+class SettingChanged(Message):
+	"""Sent when a setting is changed in the dialog."""
+	arguments = ('setting_name', 'old_value', 'new_value', )

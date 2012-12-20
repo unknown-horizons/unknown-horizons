@@ -24,7 +24,7 @@ from fife import fife
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.constants import BUILDINGS, GAME_SPEED, VERSION
+from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
@@ -43,6 +43,9 @@ from horizons.messaging import SettlerUpdate, TabWidgetChanged, SpeedChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
+from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
+from horizons.world.managers.statusiconmanager import StatusIconManager
+
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -82,6 +85,16 @@ class IngameGui(LivingObject):
 		self.players_ships = PlayersShips(self.session)
 		self.chat_dialog = ChatDialog(self.main_gui, self.session, self.widgets['chat'])
 		self.change_name_dialog = ChangeNameDialog(self.main_gui, self.session, self.widgets['change_name'])
+
+		# Icon manager
+		self.status_icon_manager = StatusIconManager(
+			renderer=self.session.view.renderer['GenericRenderer'],
+			layer=self.session.view.layers[LAYERS.OBJECTS]
+		)
+		self.production_finished_icon_manager = ProductionFinishedIconManager(
+			renderer=self.session.view.renderer['GenericRenderer'],
+			layer=self.session.view.layers[LAYERS.OBJECTS]
+		)
 
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
@@ -161,6 +174,11 @@ class IngameGui(LivingObject):
 
 		LastActivePlayerSettlementManager().remove()
 		LastActivePlayerSettlementManager.destroy_instance()
+
+		self.production_finished_icon_manager.end()
+		self.production_finished_icon_manager = None
+		self.status_icon_manager.end()
+		self.status_icon_manager = None
 
 		super(IngameGui, self).end()
 

@@ -28,6 +28,7 @@ import horizons.main
 from horizons.engine import UH_MODULE
 from horizons.constants import LANGUAGENAMES
 from horizons.gui.widgets.pickbeltwidget import OptionsPickbeltWidget
+from horizons.messaging import SettingChanged
 
 class SettingsDialog(Setting):
 	"""
@@ -109,5 +110,7 @@ class SettingsDialog(Setting):
 		# catch events for settings that should be displayed in another way than they should be saved
 		if module == UH_MODULE and name == "Language":
 			val = LANGUAGENAMES.get_by_value(val)
+
+		SettingChanged.broadcast(self, name, self.get(module, name), val)
 		return super(SettingsDialog, self).set(module, name, val, extra_attrs)
 
