@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="configure_route" size="1020,580" position="-20,0">
+<Container name="configure_route" size="1020,580">
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 
 	<!-- left side -->
