@@ -73,6 +73,7 @@ class IngameGui(LivingObject):
 		self.widgets = LazyWidgetsDict(self.styles)
 
 		self.cityinfo = CityInfo(self, self.widgets['city_info'])
+		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		self.logbook = LogBook(self.session)
 		self.message_widget = MessageWidget(self.session)
@@ -155,6 +156,9 @@ class IngameGui(LivingObject):
 			self.cursor.remove()
 			self.cursor.end()
 			self.cursor = None
+
+		LastActivePlayerSettlementManager().remove()
+		LastActivePlayerSettlementManager.destroy_instance()
 
 		super(IngameGui, self).end()
 
@@ -273,14 +277,17 @@ class IngameGui(LivingObject):
 		self.message_widget.save(db)
 		self.logbook.save(db)
 		self.resource_overview.save(db)
+		LastActivePlayerSettlementManager().save(db)
 
 	def load(self, db):
 		self.message_widget.load(db)
 		self.logbook.load(db)
 		self.resource_overview.load(db)
 
-		cur_settlement = LastActivePlayerSettlementManager().get_current_settlement()
-		self.cityinfo.set_settlement(cur_settlement)
+		if self.session.is_game_loaded():
+			LastActivePlayerSettlementManager().load(db)
+			cur_settlement = LastActivePlayerSettlementManager().get_current_settlement()
+			self.cityinfo.set_settlement(cur_settlement)
 
 		self.minimap.draw() # update minimap to new world
 

@@ -45,7 +45,6 @@ from horizons.util.living import LivingObject, livingProperty
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.worldobject import WorldObject
 from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
 from horizons.savegamemanager import SavegameManager
@@ -117,7 +116,6 @@ class Session(LivingObject):
 		self.gui.session = self
 		self.ingame_gui = ingame_gui_class(self, self.gui)
 		self.coordinates_tooltip = None
-		LastActivePlayerSettlementManager.create_instance(self)
 
 
 		self.status_icon_manager = StatusIconManager(
@@ -216,9 +214,6 @@ class Session(LivingObject):
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
 
-		LastActivePlayerSettlementManager().remove() # keep after ingame_gui
-		LastActivePlayerSettlementManager.destroy_instance()
-
 		self.world.end() # must be called before the world ref is gone
 		self.world = None
 		self.view = None
@@ -300,8 +295,6 @@ class Session(LivingObject):
 			self.scenario_eventhandler.load(savegame_db)
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
 		self.world.init_fish_indexer() # now the fish should exist
-		if self.is_game_loaded():
-			LastActivePlayerSettlementManager().load(savegame_db) # before ingamegui
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.get_object_by_id(instance_id[0])
@@ -468,7 +461,6 @@ class Session(LivingObject):
 			self.view.save(db)
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
-			LastActivePlayerSettlementManager().save(db)
 
 			for instance in self.selected_instances:
 				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
