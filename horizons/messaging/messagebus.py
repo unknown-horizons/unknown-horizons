@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 from collections import defaultdict
 
 from horizons.util.python.singleton import Singleton
@@ -28,6 +29,8 @@ class MessageBus(object):
 	"""The MessageBus class is used to send Message instances from a sender to
 	one or multiple recipients."""
 	__metaclass__ = Singleton
+	
+	log = logging.getLogger("messaging.messagebus")
 
 	def __init__(self):
 		# Register {MessageType: [list of receiver callbacks]}
@@ -77,10 +80,10 @@ class MessageBus(object):
 		# there shouldn't be anything left now, warn if there is
 		for messagetype, cb_list in self.global_receivers.iteritems():
 			if cb_list:
-				print "MessageBus: leftover global receivers {cb} for {messagetype}".format(cb=[str(i) for i in cb_list], messagetype=messagetype)
+				self.log.debug("MessageBus: leftover global receivers {cb} for {messagetype}".format(cb=[str(i) for i in cb_list], messagetype=messagetype))
 		for messagetype, cb_list in self.local_receivers.iteritems():
 			if cb_list:
-				print "MessageBus: leftover local receivers {cb} for {messagetype}".format(cb=[str(i) for i in cb_list], messagetype=messagetype)
+				self.log.debug("MessageBus: leftover local receivers {cb} for {messagetype}".format(cb=[str(i) for i in cb_list], messagetype=messagetype))
 
 		# suicide, next instance will be created on demand
 		self.__class__.destroy_instance()
