@@ -40,12 +40,17 @@ class SQLiteAtlasLoader(object):
 		#horizons.globals.db.execute_script(sql)
 
 		self.atlases = horizons.globals.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
+		self.inited = False
 
+		
+	def init(self):
+		"""Used to lazy init the loader"""
 		for (atlas,) in self.atlases:
 			# print 'creating', atlas
 			# cast explicit to str because the imagemanager is not able to handle unicode strings
 			img = horizons.globals.fife.imagemanager.create(str(atlas))
 			self.atlaslib.append(img)
+		self.inited = True
 
 
 	def loadResource(self, location):
@@ -60,6 +65,8 @@ class SQLiteAtlasLoader(object):
 		- cut:
 		#TODO: complete documentation
 		"""
+		if not self.inited:
+			self.init()
 		commands = location.split(':')
 		id = commands.pop(0)
 		actionset, action, rotation = id.split('+')

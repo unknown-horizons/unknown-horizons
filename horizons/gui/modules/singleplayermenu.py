@@ -32,7 +32,7 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
-from horizons.constants import LANGUAGENAMES
+from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
 from horizons.util.python.callback import Callback
@@ -535,7 +535,11 @@ class MapPreview(object):
 		from horizons.main import _create_main_db
 		from horizons.entities import Entities
 		from horizons.ext.dummy import Dummy
-		db = _create_main_db()
+		if not VERSION.IS_DEV_VERSION:
+			PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
+		db = _create_main_db()	
+		horizons.globals.db = db
+		horizons.globals.fife.init_animation_loader(not VERSION.IS_DEV_VERSION)
 		Entities.load_grounds(db, load_now=False) # create all references
 		map_file = SingleplayerMenu._generate_random_map( parameters )
 		world = cls._load_raw_world(map_file)
