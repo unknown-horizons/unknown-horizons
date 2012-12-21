@@ -638,7 +638,7 @@ class Minimap(object):
 		self.minimap_image.rendertarget.resizeImage(name, p, img, new_width, new_height)
 
 
-	def rotate_right (self):
+	def rotate_right(self):
 		# keep track of rotation at any time, but only apply
 		# if it's actually used
 		self.rotation -= 1
@@ -646,7 +646,7 @@ class Minimap(object):
 		if self._get_rotation_setting():
 			self.draw()
 
-	def rotate_left (self):
+	def rotate_left(self):
 		# see above
 		self.rotation += 1
 		self.rotation %= 4
@@ -681,7 +681,7 @@ class Minimap(object):
 				         2 : math.pi,
 				         3 : math.pi / 2
 				         }
-	def _get_rotated_coords (self, tup):
+	def _get_rotated_coords(self, tup):
 		"""Rotates according to current rotation settings.
 		Input coord must be relative to screen origin, not minimap origin"""
 		return self._rotate(tup, self._rotations)
@@ -691,10 +691,10 @@ class Minimap(object):
 				              2 : math.pi,
 				              3 : 3 * math.pi / 2
 				              }
-	def _get_from_rotated_coords (self, tup):
+	def _get_from_rotated_coords(self, tup):
 		return self._rotate (tup, self._from_rotations)
 
-	def _rotate (self, tup, rotations):
+	def _rotate(self, tup, rotations):
 		rotation = rotations[ self.rotation ]
 
 		x = tup[0]
