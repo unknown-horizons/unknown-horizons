@@ -350,7 +350,7 @@ class ResourceOverviewBar(object):
 		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD]
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")
 		gold_available_lbl.text = unicode(gold)
-		# reposition according to magic forumula passed down from the elders in order to support centering
+		# reposition according to magic formula passed down from the elders in order to support centering
 		gold_available_lbl.resizeToContent() # this sets new size values
 		gold_available_lbl.position = (42 - (gold_available_lbl.size[0] // 2), 51)
 
@@ -380,7 +380,7 @@ class ResourceOverviewBar(object):
 			label = cur_gui.findChild(name="res_available")
 			label.text = unicode( inv[res] )
 
-			# reposition according to magic forumula passed down from the elders in order to support centering
+			# reposition according to magic formula passed down from the elders in order to support centering
 			cur_gui.adaptLayout() # update size values (e.g. if amount of digits changed)
 			cur_gui.show()
 			label.position = (24 - (label.size[0] // 2), 44)
