@@ -71,7 +71,7 @@ def init_pychan():
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 	from horizons.gui.widgets.progressbar import ProgressBar
 	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
-	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, MainmenuButton, OkButton
+	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, ImageButton, MainmenuButton, OkButton
 	from horizons.gui.widgets.icongroup import TabBG, TilingHBox
 	from horizons.gui.widgets.stepslider import StepSlider
 	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
@@ -84,6 +84,8 @@ def init_pychan():
 	           HealthWidget, StanceWidget, WeaponStorageWidget,
 	           AutoResizeContainer, RenameLabel, RenameImageButton,
 	           TilingHBox,
+			 # This overwrites the ImageButton provided by FIFE!
+	           ImageButton,
 	           ]
 
 	for widget in widgets:
