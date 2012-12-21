@@ -149,11 +149,11 @@ CREATE TABLE "message_icon" (
 	"down_image" TEXT NOT NULL,
 	"hover_image" TEXT NOT NULL
 );
-INSERT INTO "message_icon" VALUES(1, 'content/gui/icons/widgets/messages/msg_letter_n.png', 'content/gui/icons/widgets/messages/msg_letter_d.png', 'content/gui/icons/widgets/messages/msg_letter_h.png');
-INSERT INTO "message_icon" VALUES(2, 'content/gui/icons/widgets/messages/msg_system_n.png', 'content/gui/icons/widgets/messages/msg_system_d.png', 'content/gui/icons/widgets/messages/msg_system_h.png');
-INSERT INTO "message_icon" VALUES(3, 'content/gui/icons/widgets/messages/msg_save_n.png',   'content/gui/icons/widgets/messages/msg_save_d.png',   'content/gui/icons/widgets/messages/msg_save_h.png');
-INSERT INTO "message_icon" VALUES(4, 'content/gui/icons/widgets/messages/msg_anchor_n.png', 'content/gui/icons/widgets/messages/msg_anchor_d.png', 'content/gui/icons/widgets/messages/msg_anchor_h.png');
-INSERT INTO "message_icon" VALUES(5, 'content/gui/icons/widgets/messages/msg_money_n.png',  'content/gui/icons/widgets/messages/msg_money_d.png',  'content/gui/icons/widgets/messages/msg_money_h.png');
+INSERT INTO "message_icon" VALUES(1, 'content/gui/icons/widgets/messages/msg_letter.png', 'content/gui/icons/widgets/messages/msg_letter_d.png', 'content/gui/icons/widgets/messages/msg_letter_h.png');
+INSERT INTO "message_icon" VALUES(2, 'content/gui/icons/widgets/messages/msg_system.png', 'content/gui/icons/widgets/messages/msg_system_d.png', 'content/gui/icons/widgets/messages/msg_system_h.png');
+INSERT INTO "message_icon" VALUES(3, 'content/gui/icons/widgets/messages/msg_save.png',   'content/gui/icons/widgets/messages/msg_save_d.png',   'content/gui/icons/widgets/messages/msg_save_h.png');
+INSERT INTO "message_icon" VALUES(4, 'content/gui/icons/widgets/messages/msg_anchor.png', 'content/gui/icons/widgets/messages/msg_anchor_d.png', 'content/gui/icons/widgets/messages/msg_anchor_h.png');
+INSERT INTO "message_icon" VALUES(5, 'content/gui/icons/widgets/messages/msg_money.png',  'content/gui/icons/widgets/messages/msg_money_d.png',  'content/gui/icons/widgets/messages/msg_money_h.png');
 
 CREATE TABLE "ai" (
 	"client_id" TEXT NOT NULL,
