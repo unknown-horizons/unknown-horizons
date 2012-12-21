@@ -41,6 +41,9 @@ class BuySellTab(TabInterface):
 	"""
 	log = logging.getLogger("gui")
 
+	widget = 'buysellmenu.xml'
+	icon_path = 'icons/tabwidget/warehouse/buysell'
+
 	buy_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
 	buy_hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	sell_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
@@ -48,8 +51,7 @@ class BuySellTab(TabInterface):
 
 	dummy_icon_path = "icons/resources/none_gray"
 
-	def __init__(self, instance, widget='buysellmenu.xml',
-	             icon_path='icons/tabwidget/warehouse/buysell'):
+	def __init__(self, instance):
 		"""Set up the GUI and game logic for the buyselltab."""
 		self.inited = False # prevents execution of commands during init
 		# this makes sharing code easier
@@ -57,7 +59,7 @@ class BuySellTab(TabInterface):
 		self.trade_post = instance.settlement.get_component(TradePostComponent)
 		assert isinstance(self.trade_post, TradePostComponent)
 
-		super(BuySellTab, self).__init__(widget=widget, icon_path=icon_path)
+		super(BuySellTab, self).__init__()
 
 	def init_widget(self):
 		# don't access instance beyond this point, only components

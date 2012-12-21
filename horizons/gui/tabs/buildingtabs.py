@@ -22,6 +22,7 @@
 
 from horizons.constants import GAME_SPEED
 from horizons.gui.tabs import OverviewTab
+from horizons.i18n import _lazy
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
@@ -32,12 +33,8 @@ from horizons.component.depositcomponent import DepositComponent
 
 class WarehouseOverviewTab(OverviewTab):
 	""" the main tab of warehouses and storages """
-	def __init__(self, instance):
-		self.helptext = _("Warehouse overview")
-		super(WarehouseOverviewTab, self).__init__(
-			widget = 'overview_warehouse.xml',
-			instance = instance
-		)
+	widget = 'overview_warehouse.xml'
+	helptext = _lazy("Warehouse overview")
 
 	def init_widget(self):
 		super(WarehouseOverviewTab, self).init_widget()
@@ -71,22 +68,16 @@ class WarehouseOverviewTab(OverviewTab):
 		super(WarehouseOverviewTab, self).on_instance_removed()
 
 class TowerOverviewTab(OverviewTab): # defensive tower
-	def __init__(self, instance):
-		self.helptext = _("Tower overview")
-		super(TowerOverviewTab, self).__init__(
-			widget='overview_tower.xml',
-			instance=instance)
+	widget = 'overview_tower.xml'
+	helptext = _lazy("Tower overview")
 
 	def init_widget(self):
 		super(TowerOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 
 class SignalFireOverviewTab(OverviewTab):
-	def __init__(self, instance):
-		self.helptext = _("Overview")
-		super(SignalFireOverviewTab, self).__init__(
-			widget='overview_signalfire.xml',
-			instance=instance)
+	widget = 'overview_signalfire.xml'
+	helptext = _lazy("Overview")
 
 	def init_widget(self):
 		super(SignalFireOverviewTab, self).init_widget()
@@ -96,10 +87,7 @@ class SignalFireOverviewTab(OverviewTab):
 		self.widget.findChild(name="building_image").image = image
 
 class ResourceDepositOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(ResourceDepositOverviewTab, self).__init__(
-			widget='overview_resourcedeposit.xml',
-			instance=instance)
+	widget = 'overview_resourcedeposit.xml'
 
 	def init_widget(self):
 		super(ResourceDepositOverviewTab, self).init_widget()

@@ -57,12 +57,11 @@ class Inventory(Container):
 		return not self._inited or self._inventory is not inventory
 
 	def init(self, db, inventory, ordinal=None):
-		"""
+		"""This inits the logic of the inventory. @see __init__().
 		@param ordinal: {res: (min, max)} Display ordinal scale with these boundaries instead of numbers for a particular resource. Currently implemented via ImageFillStatusButton.
 		"""
 		# check if we must init everything anew
 		if self.init_needed(inventory):
-			# this inits the logic of the inventory. @see __init__().
 			self._inited = True
 			self.db = db
 			self._inventory = inventory

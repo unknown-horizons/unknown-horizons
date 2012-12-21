@@ -31,6 +31,7 @@ from horizons.constants import GAME_SPEED, PRODUCTION
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.pychananimation import PychanAnimation
@@ -39,6 +40,10 @@ from horizons.world.production.producer import Producer
 
 
 class ProductionOverviewTab(OverviewTab):
+	widget = 'overview_productionbuilding.xml'
+	helptext = _lazy("Production overview")
+	production_line_gui_xml = 'overview_productionline.xml'
+
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/large"
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button.png"
 	ARROW_TOP = "content/gui/icons/templates/production/production_arrow_top.png"
@@ -47,12 +52,9 @@ class ProductionOverviewTab(OverviewTab):
 	ARROW_CONNECT_UP = "content/gui/icons/templates/production/production_arrow_connect_up.png"
 	ARROW_CONNECT_DOWN = "content/gui/icons/templates/production/production_arrow_connect_down.png"
 
-	def  __init__(self, instance, widget='overview_productionbuilding.xml',
-		         production_line_gui_xml='overview_productionline.xml'):
-		self.helptext = _("Production overview")
-		self.production_line_gui_xml = production_line_gui_xml
+	def  __init__(self, instance):
 		self._animations = []
-		super(ProductionOverviewTab, self).__init__(widget=widget, instance=instance)
+		super(ProductionOverviewTab, self).__init__(instance=instance)
 
 	def get_displayed_productions(self):
 		"""List all possible productions of a buildings sorted by production line id.
@@ -229,16 +231,13 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	"""Only display productions for which we have a related 'field' in range.
 	Requires the building class using this tab to implement get_providers().
 	"""
+	widget = 'overview_farm.xml'
+	helptext = _lazy("Production overview")
+	production_line_gui_xml = "overview_farmproductionline.xml"
+
 	# the farm uses small buttons
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/small"
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
-	def  __init__(self, instance):
-		self.helptext = _("Production overview")
-		super(SmallProductionOverviewTab, self).__init__(
-			instance=instance,
-			widget='overview_farm.xml',
-			production_line_gui_xml="overview_farmproductionline.xml"
-		)
 
 	def get_displayed_productions(self):
 		possible_res = set(res for field in self.instance.get_providers()

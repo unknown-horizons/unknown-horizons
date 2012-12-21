@@ -27,20 +27,21 @@ from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponTo
 from horizons.entities import Entities
 from horizons.gui.tabs import OverviewTab, TradeTab
 from horizons.gui.widgets.routeconfig import RouteConfig
+from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.selectablecomponent import SelectableComponent
 
 
 class ShipOverviewTab(OverviewTab):
-	def __init__(self, instance, widget='overview_trade_ship.xml',
-			icon_path='icons/tabwidget/ship/ship_inv'):
-		self.helptext = _("Ship overview")
-		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
+	widget = 'overview_trade_ship.xml'
+	icon_path = 'icons/tabwidget/ship/ship_inv'
+	helptext = _lazy("Ship overview")
 
 	def init_widget(self):
 		super(ShipOverviewTab, self).init_widget()
-		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
+		ship_inv = self.instance.get_component(StorageComponent).inventory
+		self.widget.child_finder('inventory').init(self.instance.session.db, ship_inv)
 
 		# FIXME having to access the WindowManager this way is pretty ugly
 		self._windows = self.instance.session.ingame_gui.windows
@@ -126,12 +127,14 @@ class ShipOverviewTab(OverviewTab):
 
 
 class FightingShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_war_ship.xml'
+	# TODO why is this here:
+	icon_path = 'icons/tabwidget/ship/ship_inv'
+
 	has_stance = True
-	def __init__(self, instance, widget='overview_war_ship.xml',
-			icon_path='icons/tabwidget/ship/ship_inv'):
-		super(FightingShipOverviewTab, self).__init__(instance, widget, icon_path)
 
-
+	def init_widget(self):
+		super(FightingShipOverviewTab, self).init_widget()
 		#create weapon inventory, needed only in gui for inventory widget
 		self.weapon_inventory = self.instance.get_weapon_storage()
 		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, self.weapon_inventory)
@@ -165,18 +168,15 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		super(FightingShipOverviewTab, self).on_instance_removed()
 
 class TraderShipOverviewTab(OverviewTab):
-	def __init__(self, instance):
-		super(TraderShipOverviewTab, self).__init__(
-			widget = 'overview_tradership.xml',
-			icon_path='icons/tabwidget/ship/ship_inv',
-			instance = instance)
-		self.helptext = _("Ship overview")
+	widget = 'overview_tradership.xml'
+	icon_path = 'icons/tabwidget/ship/ship_inv'
+	helptext = _lazy("Ship overview")
 
 class EnemyShipOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(EnemyShipOverviewTab, self).__init__(
-			widget = 'overview_enemyunit.xml',
-			icon_path='icons/tabwidget/ship/ship_inv',
-			instance = instance)
+	widget = 'overview_enemyunit.xml'
+	icon_path = 'icons/tabwidget/ship/ship_inv'
+	helptext = _lazy("Ship overview")
+
+	def init_widget(self):
+		super(ShipOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.owner.name
-		self.helptext = _("Ship overview")

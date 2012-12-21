@@ -27,6 +27,7 @@ from fife.extensions.pychan.widgets import Icon
 from horizons.util.python.callback import Callback
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
+from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
 from horizons.component.healthcomponent import HealthComponent
@@ -40,10 +41,14 @@ class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
 	"""
+	widget = 'overview_select_multi.xml'
+	icon_path = 'icons/tabwidget/common/inventory'
+	helptext = _lazy("Selected Units")
+
 	max_row_entry_number = 3
 	max_column_entry_number = 4
-	def __init__(self, selected_instances=None, widget='overview_select_multi.xml',
-	             icon_path='icons/tabwidget/common/inventory'):
+
+	def __init__(self, selected_instances=None):
 		self.selected_instances = selected_instances or []
 
 		# keep track of units that have stance
@@ -53,7 +58,6 @@ class SelectMultiTab(TabInterface):
 		# keep track of number of instances per type
 		self.type_number = defaultdict(int)
 
-		self.helptext = _("Selected Units")
 		for i in self.selected_instances:
 			if hasattr(i, 'stance'):
 				self.stance_unit_number += 1
@@ -64,7 +68,7 @@ class SelectMultiTab(TabInterface):
 
 		self._scheduled_refresh = False
 
-		super(SelectMultiTab, self).__init__(widget=widget, icon_path=icon_path)
+		super(SelectMultiTab, self).__init__()
 
 	def init_widget(self):
 		if self.stance_unit_number != 0:

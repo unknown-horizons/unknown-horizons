@@ -45,6 +45,7 @@ class BuildTab(TabInterface):
 	Check buildtab.xml for details. Icons without image are transparent.
 	"""
 	lazy_loading = True
+	widget = 'buildtab.xml'
 
 	build_menus = [
 	  "content/objects/gui_buildmenu/build_menu_per_tier.yaml",
@@ -113,7 +114,7 @@ class BuildTab(TabInterface):
 		self.helptext = _(helptext) if helptext else self.headline
 		self.build_menu_config = build_menu_config
 
-		super(BuildTab, self).__init__(widget='buildtab.xml', icon_path=icon_path)
+		super(BuildTab, self).__init__(icon_path=icon_path)
 
 	def init_widget(self):
 		self.__current_settlement = None

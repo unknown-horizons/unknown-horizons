@@ -21,29 +21,22 @@
 # ###################################################
 
 from horizons.gui.tabs import OverviewTab
+from horizons.i18n import _lazy
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 
 
 class EnemyBuildingOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(EnemyBuildingOverviewTab, self).__init__(
-			widget = 'overview_enemybuilding.xml',
-			instance = instance
-		)
+	widget = 'overview_enemybuilding.xml'
 
 	def init_widget(self):
 		super(EnemyBuildingOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.owner.name
 
 class EnemyWarehouseOverviewTab(OverviewTab):
-	def __init__(self, instance):
-		self.helptext = _("Warehouse overview")
-		super(EnemyWarehouseOverviewTab, self).__init__(
-			widget = 'overview_enemywarehouse.xml',
-			instance = instance
-		)
+	widget = 'overview_enemywarehouse.xml'
+	helptext = _lazy("Warehouse overview")
 
 	def init_widget(self):
 		super(EnemyWarehouseOverviewTab, self).init_widget()

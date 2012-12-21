@@ -24,14 +24,15 @@ from horizons.extscheduler import ExtScheduler
 from horizons.component.storagecomponent import StorageComponent
 
 class InventoryTab(TabInterface):
+	widget = 'island_inventory.xml'
+	icon_path = 'icons/tabwidget/common/inventory'
+	helptext = _("Settlement inventory")
 
 	lazy_loading = True
 
-	def __init__(self, instance=None, widget='island_inventory.xml',
-	             icon_path='icons/tabwidget/common/inventory'):
+	def __init__(self, instance=None):
 		self.instance = instance
-		self.helptext = _("Settlement inventory")
-		super(InventoryTab, self).__init__(widget=widget, icon_path=icon_path)
+		super(InventoryTab, self).__init__()
 
 	def init_widget(self):
 		self.widget.child_finder('inventory').init(self.instance.session.db,

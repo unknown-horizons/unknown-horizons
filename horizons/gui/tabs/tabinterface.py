@@ -44,8 +44,8 @@ class TabInterface(object):
 	TabWidget will call this method based on callbacks. If you set any callbacks
 	yourself, make sure you get them removed when the widget is deleted.
 
-	Make sure to call the init_values() function after you set self.widget, to
-	ensure proper initialization of needed properties.
+	@param widget: Filename of widget to load.
+	@param icon_path: Where to look for ImageButton icons. Note: this is a `path` attribute!
 	"""
 
 	"""
@@ -59,16 +59,24 @@ class TabInterface(object):
 	"""
 	lazy_loading = False
 
+	"""
+	Override this in your subclass either as class attribute, or by passing it
+	to the constructor. The value of the constructor has preference over the
+	class attribute.
+	"""
+	widget = None
+	icon_path = 'images/tabwidget/tab'
+
 	scheduled_update_delay = 0.4 # seconds, update after this time when an update is scheduled
 
-	def __init__(self, widget=None, icon_path='images/tabwidget/tab', **kwargs):
+	def __init__(self, widget=None, icon_path=None, **kwargs):
 		"""
-		@param widget: filename of a widget. Set this to None if you create your own widget at self.widget
-		@param icon_path: Where to look for ImageButton icons. Note: this is a `path` attribute!
+		@param widget: filename of a widget. Set this to None if you create your
+		               widget in `get_widget`.
 		"""
 		super(TabInterface, self).__init__()
-		if widget is not None:
-			self.widget = widget
+		if widget or self.__class__.widget:
+			self.widget = widget or self.__class__.widget
 			if not self.__class__.lazy_loading:
 				self._setup_widget()
 		else:
@@ -80,9 +88,9 @@ class TabInterface(object):
 		self.button_background_image_active = 'content/gui/images/tabwidget/tab_active_xxl.png'
 
 		# `path` attribute for ImageButton, i.e. without 'content/gui/' and '.png'
-		self.path = icon_path
+		self.path = icon_path or self.__class__.icon_path
 		# the active tab image has no special down or hover images, so this works with `path` too
-		self.path_active = icon_path + '_a'
+		self.path_active = self.path + '_a'
 
 		self._refresh_scheduled = False
 
@@ -93,7 +101,6 @@ class TabInterface(object):
 		active once the tab is about to be shown.
 		"""
 		self.widget = self.get_widget()
-		self.x_pos, self.y_pos = self.widget.position
 		self.widget.child_finder = PychanChildFinder(self.widget)
 		self.init_widget()
 

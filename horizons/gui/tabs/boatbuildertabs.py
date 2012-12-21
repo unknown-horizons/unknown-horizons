@@ -28,6 +28,7 @@ from horizons.command.production import AddProduction, RemoveFromQueue, CancelCu
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
@@ -42,13 +43,11 @@ class _BoatbuilderOverviewTab(OverviewTab):
 
 
 class BoatbuilderTab(_BoatbuilderOverviewTab):
+	widget = 'boatbuilder.xml'
+	helptext = _lazy("Boat builder overview")
 
 	SHIP_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
 	SHIP_PREVIEW_IMG = "content/gui/images/objects/ships/116/{type_id}.png"
-
-	def __init__(self, instance):
-		self.helptext = _("Boat builder overview")
-		super(BoatbuilderTab, self).__init__(widget='boatbuilder.xml', instance=instance)
 
 	def show(self):
 		super(BoatbuilderTab, self).show()
@@ -168,13 +167,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 # * abort building process: delete task, remove all resources, display [start view] again
 
 class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
-	def __init__(self, instance, ships, iconname, helptext):
-		self.helptext = helptext
-		self.ships = ships
-		super(BoatbuilderSelectTab, self).__init__(
-				instance=instance,
-		          widget='boatbuilder_showcase.xml',
-		          icon_path='icons/tabwidget/boatbuilder/{name}'.format(name=iconname))
+	widget = 'boatbuilder_showcase.xml'
 
 	def init_widget(self):
 		super(BoatbuilderSelectTab, self).init_widget()
@@ -237,49 +230,52 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 
 
 class BoatbuilderFisherTab(BoatbuilderSelectTab):
-	def __init__(self, instance):
-		ships = [
-			#(UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
-			#(UNITS.CUTTER, PRODUCTIONLINES.xxx),
-			#(UNITS.HERRING_FISHER, PRODUCTIONLINES.xxx),
-			#(UNITS.WHALER, PRODUCTIONLINES.xxx),
-		]
-		helptext = _("Fisher boats")
-		super(BoatbuilderFisherTab, self).__init__(instance, ships, 'fisher', helptext)
+	icon_path = 'icons/tabwidget/boatbuilder/fisher'
+	helptext = _lazy("Fisher boats")
+
+	ships = [
+		#(UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
+		#(UNITS.CUTTER, PRODUCTIONLINES.xxx),
+		#(UNITS.HERRING_FISHER, PRODUCTIONLINES.xxx),
+		#(UNITS.WHALER, PRODUCTIONLINES.xxx),
+	]
 
 
 class BoatbuilderTradeTab(BoatbuilderSelectTab):
-	def __init__(self, instance):
-		ships = [
-			(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
-			#(UNITS.COURIER_BOAT, PRODUCTIONLINES.xxx),
-			#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.xxx),
-			#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.xxx),
-		]
-		helptext = _("Trade boats")
-		super(BoatbuilderTradeTab, self).__init__(instance, ships, 'trade', helptext)
+	icon_path = 'icons/tabwidget/boatbuilder/trade'
+	helptext = _lazy("Trade boats")
+
+	ships = [
+		(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
+		#(UNITS.COURIER_BOAT, PRODUCTIONLINES.xxx),
+		#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.xxx),
+		#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.xxx),
+	]
+
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
-	def __init__(self, instance):
-		ships = [
-			#(UNITS.SMALL_GUNBOAT, PRODUCTIONLINES.SMALL_GUNBOAT),
-			#(UNITS.NAVAL_CUTTER, PRODUCTIONLINES.NAVAL_CUTTER),
-			#(UNITS.BOMBADIERE, PRODUCTIONLINES.BOMBADIERE),
-			#(UNITS.SLOOP_O_WAR, PRODUCTIONLINES.SLOOP_O_WAR),
-		]
-		helptext = _("War boats")
-		super(BoatbuilderWar1Tab, self).__init__(instance, ships, 'war1', helptext)
+	icon_path = 'icons/tabwidget/boatbuilder/war1'
+	helptext = _lazy("War boats")
+
+	ships = [
+		#(UNITS.SMALL_GUNBOAT, PRODUCTIONLINES.SMALL_GUNBOAT),
+		#(UNITS.NAVAL_CUTTER, PRODUCTIONLINES.NAVAL_CUTTER),
+		#(UNITS.BOMBADIERE, PRODUCTIONLINES.BOMBADIERE),
+		#(UNITS.SLOOP_O_WAR, PRODUCTIONLINES.SLOOP_O_WAR),
+	]
+
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
-	def __init__(self, instance):
-		ships = [
-			#(UNITS.GALLEY, PRODUCTIONLINES.GALLEY),
-			#(UNITS.BIG_GUNBOAT, PRODUCTIONLINES.BIG_GUNBOAT),
-			#(UNITS.CORVETTE, PRODUCTIONLINES.CORVETTE),
-			(UNITS.FRIGATE, PRODUCTIONLINES.FRIGATE),
-		]
-		helptext = _("War ships")
-		super(BoatbuilderWar2Tab, self).__init__(instance, ships, 'war2', helptext)
+	icon_path = 'icons/tabwidget/boatbuilder/war2'
+	helptext = _lazy("War ships")
+
+	ships = [
+		#(UNITS.GALLEY, PRODUCTIONLINES.GALLEY),
+		#(UNITS.BIG_GUNBOAT, PRODUCTIONLINES.BIG_GUNBOAT),
+		#(UNITS.CORVETTE, PRODUCTIONLINES.CORVETTE),
+		(UNITS.FRIGATE, PRODUCTIONLINES.FRIGATE),
+	]
+
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)
@@ -288,13 +284,8 @@ class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 #	the tooltips contain this info as well.
 
 class BoatbuilderConfirmTab(_BoatbuilderOverviewTab):
-
-	def __init__(self, instance):
-		self.helptext = _("Confirm order")
-		super(BoatbuilderConfirmTab, self).__init__(
-			widget = 'boatbuilder_confirm.xml',
-			instance = instance
-		)
+	widget = 'boatbuilder_confirm.xml'
+	helptext = _lazy("Confirm order")
 
 	def init_widget(self):
 		super(BoatbuilderConfirmTab, self).init_widget()

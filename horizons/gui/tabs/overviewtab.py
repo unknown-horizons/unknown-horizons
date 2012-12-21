@@ -21,16 +21,19 @@
 # ###################################################
 
 from horizons.gui.tabs.tabinterface import TabInterface
-
+from horizons.i18n import _lazy
 from horizons.component.namedcomponent import NamedComponent
 
 
 class OverviewTab(TabInterface):
+	widget = 'overviewtab.xml'
+	icon_path = 'icons/tabwidget/common/building_overview'
+	helptext = _lazy("Overview")
+
 	has_stance = False
-	def __init__(self, instance, widget='overviewtab.xml',
-	             icon_path='icons/tabwidget/common/building_overview'):
+
+	def __init__(self, instance, widget=None, icon_path=None):
 		self.instance = instance
-		self.helptext = _("Overview")
 		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
 
 	def init_widget(self):
@@ -96,12 +99,10 @@ class OverviewTab(TabInterface):
 
 
 class GroundUnitOverviewTab(OverviewTab):
+	widget = 'overview_groundunit.xml'
+	helptext = _lazy("Unit overview")
+
 	has_stance = True
-	def __init__(self, instance):
-		self.helptext = _("Unit overview")
-		super(GroundUnitOverviewTab, self).__init__(
-			widget = 'overview_groundunit.xml',
-			instance = instance)
 	
 	def init_widget(self):
 		super(GroundUnitOverviewTab, self).init_widget()
@@ -113,8 +114,4 @@ class GroundUnitOverviewTab(OverviewTab):
 		self.add_remove_listener(weapon_storage_widget.remove)
 
 class FireStationOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(FireStationOverviewTab, self).__init__(
-			widget = 'overview_firestation.xml',
-			instance = instance
-		)
+	widget = 'overview_firestation.xml'
