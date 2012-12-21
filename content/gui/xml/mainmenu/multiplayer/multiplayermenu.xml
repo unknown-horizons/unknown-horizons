@@ -45,9 +45,7 @@
 			<Spacer />
 			<Label name="refr_gamelist_lbl"  text="Refresh list:"  position="150,50" />
 			<ImageButton name="refresh"  helptext="Refresh list of active games"
-				is_focusable="0" max_size="24,24"
-				up_image="content/gui/icons/widgets/minimap/rotate_right.png"
-				down_image="content/gui/icons/widgets/minimap/rotate_right.png"
+				path="icons/widgets/minimap/rotate_right" max_size="24,24"
 				hover_image="content/gui/icons/widgets/minimap/rotate_left.png" />
 		</HBox>
 

@@ -38,12 +38,8 @@
 	</Container>
 
 	<Container size="260,50"  position="25,240">
-	<ToggleImageButton name="show_production_overview" position="160,0" border_size="0"
-		inactive_image="content/gui/icons/widgets/cityinfo/settlement.png"
-		up_image="content/gui/icons/widgets/cityinfo/settlement.png"
-		down_image="content/gui/icons/widgets/cityinfo/settlement.png"
-		hover_image="content/gui/icons/widgets/cityinfo/settlement.png"
-		is_focusable="0"
+	<ImageButton name="show_production_overview" position="160,0"
+		path="icons/widgets/cityinfo/settlement"
 		helptext="Show resources produced in this settlement" />
 	</Container>
 

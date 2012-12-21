@@ -39,15 +39,9 @@
 
 	<Container position="20,333" size="220,30">
 		<!--Upgrades-->
-		<ImageButton position="20,0"
-				up_image="content/gui/images/background/sq.png"
-				hover_image="content/gui/images/background/sq_h.png"
-				down_image="content/gui/images/background/sq_h.png" />
+		<ImageButton position="20,0" path="images/background/sq" />
 		<Label name="BB_upgrade_cannons" position="50,4" text="Cannons" />
-		<ImageButton position="120,0"
-				up_image="content/gui/images/background/sq_ok.png"
-				hover_image="content/gui/images/background/sq_h.png"
-				down_image="content/gui/images/background/sq_h.png" />
+		<ImageButton position="120,0" path="images/background/sq_ok" />
 		<Label name="BB_upgrade_hull" position="150,4" text="Hull" />
 	</Container>
 

@@ -35,16 +35,12 @@
 		<VBox position="125,95" name="BB_upgrades_box" />
 
 		<!-- one of those button gets removed at runtime -->
-		<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
-			down_image="content/gui/icons/templates/production/toggle_active_d.png"
-			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+		<ImageButton path="icons/templates/production/toggle_active" helptext="Pause"
 			position="140,150"  border_size="0"  name="toggle_active_active"
-			comment="Pauses the current ship production, can be resumed later"  helptext="Pause" />
-		<ImageButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
-			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
-			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
+			comment="Pauses the current ship production, can be resumed later" />
+		<ImageButton path="icons/templates/production/toggle_inactive" helptext="Resume"
 			position="140,150"  border_size="0"  name="toggle_active_inactive"
-		comment="Resumes the currently paused ship production"  helptext="Resume" />
+			comment="Resumes the currently paused ship production" />
 	</Container>
 
 	<Container position="25,325" size="260,110" name="BB_progress_container">
