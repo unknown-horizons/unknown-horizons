@@ -477,7 +477,6 @@ class PATHS:
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sql")
-	ISLAND_TEMPLATE = os.path.join("content", "island_template.sql")
 
 	ATLAS_FILES_DIR = os.path.join("content", "gfx", "atlas")
 	ATLAS_DB_PATH = os.path.join("content", "atlas.sql")

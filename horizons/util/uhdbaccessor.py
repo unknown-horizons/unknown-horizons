@@ -303,7 +303,3 @@ class UhDbAccessor(DbReader):
 def read_savegame_template(db):
 	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
 	db.execute_script( savegame_template.read() )
-
-def read_island_template(db):
-	savegame_template = open(PATHS.ISLAND_TEMPLATE, "r")
-	db.execute_script( savegame_template.read() )
