@@ -22,7 +22,7 @@ class AlarmException(Exception):
 def alarmhandler(signum, frame):
   raise AlarmException
 
-def nbrawinput(prompt = '', timeout = 1):
+def nbrawinput(prompt='', timeout=1):
   signal.signal(signal.SIGALRM, alarmhandler)
   signal.alarm(timeout)
   try:
@@ -42,7 +42,7 @@ def usage():
 def onquit(*args):
   try:
     client.disconnect()
-  except horizons.network.NetworkException as e:
+  except horizons.network.NetworkException:
     """ignore the errors"""
   sys.exit(0)
 

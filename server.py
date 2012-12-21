@@ -60,7 +60,7 @@ def redirect(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
 	os.dup2(ofd.fileno(), sys.stdout.fileno())
 	os.dup2(efd.fileno(), sys.stderr.fileno())
 
-def usage(fd = sys.stdout):
+def usage(fd=sys.stdout):
 	fd.write("Usage: %s " % (sys.argv[0]))
 	if os.name == "posix":
 		fd.write("[-d] ")

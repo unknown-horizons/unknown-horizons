@@ -21,6 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import sys
 from unittest import TestCase
 
 from horizons.world.storage import (GenericStorage, SpecializedStorage, SizedSpecializedStorage,
@@ -58,7 +59,6 @@ class TestGenericStorage(TestCase):
 		self.assertEqual(s[2], 0)
 
 	def test_limit(self):
-		import sys
 		s = GenericStorage()
 		self.assertEqual(s.get_limit(), sys.maxint)
 		self.assertEqual(s.get_limit(1), sys.maxint)
@@ -182,4 +182,3 @@ class TestOtherStorages(TestCase):
 		self.assertEqual(s.alter(3, 5), 0)
 
 		self.assertEqual(s.alter(4, 1), 1)
-

@@ -575,7 +575,7 @@ class MovingWeaponHolder(WeaponHolder):
 		db("INSERT INTO stance(worldid, stance, state) VALUES(?, ?, ?)",
 			self.worldid, self.stance.NAME, self.get_component(self.stance).get_state())
 
-	def load (self, db, worldid):
+	def load(self, db, worldid):
 		super(MovingWeaponHolder, self).load(db, worldid)
 		self.__init()
 		stance, state = db("SELECT stance, state FROM stance WHERE worldid = ?", worldid)[0]
