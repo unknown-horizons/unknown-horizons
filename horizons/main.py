@@ -54,12 +54,13 @@ from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.util.savegameaccessor import SavegameAccessor
-
+from horizons.statistics.statsmanager import StatsManager
 
 # private module pointers of this module
 class Modules(object):
 	gui = None
 	session = None
+	statistics = StatsManager()
 _modules = Modules()
 
 # used to save a reference to the string previewer to ensure it is not removed by
@@ -287,6 +288,7 @@ def start(_command_line_arguments):
 		from tests.gui import TestRunner
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
+	Modules.statistics.upload_data('gamestart', {'version':VERSION.RELEASE_VERSION})
 	horizons.globals.fife.run()
 
 def quit():

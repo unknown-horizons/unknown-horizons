@@ -519,6 +519,9 @@ class NETWORK:
 	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
 	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
+	
+class STATISTICS:
+	SERVER_URL = "http://localhost:9000"
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):
