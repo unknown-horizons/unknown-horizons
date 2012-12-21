@@ -493,7 +493,6 @@ class PATHS:
 	                                 for d in (
 	                                 "/base",
 	                                 "/buildings",
-	                                 "/buildings_preview",
 	                                 "/misc",
 	                                 "/terrain",
 	                                 "/units",
