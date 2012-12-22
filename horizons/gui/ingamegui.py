@@ -394,6 +394,9 @@ class IngameGui(LivingObject):
 		_Actions = KeyConfig._Actions
 		keyval = evt.getKey().getValue()
 
+		if action == _Actions.ESCAPE:
+			return self.on_escape()
+
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )

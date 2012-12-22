@@ -125,7 +125,8 @@ class IngameGui(LivingObject):
 		pass
 
 	def on_key_press(self, action, evt):
-		pass
+		if action == _Actions.ESCAPE:
+			return self.on_escape()
 
 	def set_cursor(self, which='default', *args, **kwargs):
 		"""Sets the mousetool (i.e. cursor).
