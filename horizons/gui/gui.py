@@ -23,9 +23,10 @@ import glob
 import logging
 import random
 
+from fife.extensions import pychan
+
 import horizons.globals
 import horizons.main
-
 from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.widgets.imagebutton import OkButton
@@ -82,7 +83,11 @@ class Gui(object):
 		self.show_error_popup = self.windows.show_error_popup
 
 		self.__pause_displayed = False
-		self._background_image = self._get_random_background()
+
+		self._background = pychan.Icon(image=self._get_random_background(),
+		                               position=(0, 0))
+		self._background.show()
+
 		self.subscribe()
 
 		self.singleplayermenu = SingleplayerMenu(self)
@@ -103,6 +108,9 @@ class Gui(object):
 # basic menu widgets
 	def show_main(self):
 		"""Shows the main menu """
+		if not self._background.isVisible():
+			self._background.show()
+
 		self._switch_current_widget('mainmenu', show=True, event_map={
 			'single_button': self.singleplayermenu.show,
 			'single_label' : self.singleplayermenu.show,
@@ -120,7 +128,7 @@ class Gui(object):
 			'credits_label' : self.show_credits,
 			'load_button': self.load_game,
 			'load_label' : self.load_game,
-			'changeBackground' : self.get_random_background_by_button,
+			'changeBackground' : self.randomize_background
 		})
 
 		self.on_escape = self.show_quit
@@ -263,6 +271,10 @@ class Gui(object):
 			self.current.hide()
 			self.windows.hide_modal_background()
 
+	def hide_all(self):
+		self.hide()
+		self._background.hide()
+
 	def is_visible(self):
 		return self.current is not None and self.current.isVisible()
 
@@ -303,10 +315,6 @@ class Gui(object):
 			self.current = self.widgets[new_widget]
 		else:
 			self.current = new_widget
-		bg = self.current.findChild(name='background')
-		if bg:
-			# Set background image
-			bg.image = self._background_image
 		if event_map:
 			self.current.mapEvents(event_map)
 		self.current.position_technique = "automatic" # == "center:center"
@@ -315,13 +323,10 @@ class Gui(object):
 
 		return old
 
-	def get_random_background_by_button(self):
+	def randomize_background(self):
 		"""Randomly select a background image to use. This function is triggered by
 		change background button from main menu."""
-		#we need to redraw screen to apply changes.
-		self.hide()
-		self._background_image = self._get_random_background()
-		self.show_main()
+		self._background.image = self._get_random_background()
 
 	def _get_random_background(self):
 		"""Randomly select a background image to use through out the game menu."""
