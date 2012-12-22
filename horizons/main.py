@@ -61,7 +61,6 @@ from horizons.statistics.statsmanager import StatsManager
 class Modules(object):
 	gui = None
 	session = None
-	statistics = StatsManager()
 _modules = Modules()
 
 # used to save a reference to the string previewer to ensure it is not removed by

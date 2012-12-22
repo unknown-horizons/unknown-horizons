@@ -21,7 +21,6 @@
 # ###################################################
 
 import json
-<<<<<<< HEAD
 from multiprocessing import Process
 from urllib2 import Request, urlopen
 
