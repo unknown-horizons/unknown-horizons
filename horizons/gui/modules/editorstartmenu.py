@@ -32,6 +32,7 @@ class EditorStartMenu(object):
 		self._from_main_menu = from_main_menu
 		self.parent = parent
 		self._gui = load_uh_widget('editor_start_menu.xml', style='book')
+		self._gui.position_technique = "automatic" # == "center:center"
 		self._right_side = None
 		self._old_on_escape = None
 		self._old_current_widget = self.parent.current
@@ -63,10 +64,11 @@ class EditorStartMenu(object):
 		if isinstance(self._right_side, modes[mode]):
 			return
 
-		self.hide()
-		self.findChild(name=mode).marked = True
+		self._gui.hide()
+		self._gui.findChild(name=mode).marked = True
 		self._right_side = modes[mode](self, self._gui.findChild(name='right_side'))
-		self.show()
+		self._right_side.show()
+		self._gui.show()
 
 	def cancel(self):
 		self.hide()
@@ -84,9 +86,6 @@ class EditorStartMenu(object):
 
 	def act(self):
 		self._right_side.act()
-
-	def findChild(self, **kwargs):
-		return self._gui.findChild(**kwargs)
 
 
 class EditorCreateMapWidget(object):

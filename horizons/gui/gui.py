@@ -331,5 +331,7 @@ class Gui(object):
 
 	def show_editor_start_menu(self, from_main_menu=True):
 		editor_start_menu = EditorStartMenu(self, from_main_menu)
-		self._switch_current_widget(editor_start_menu, hide_old=True)
+		self.hide()
+		self.current = editor_start_menu
+		self.current.show()
 		return True
