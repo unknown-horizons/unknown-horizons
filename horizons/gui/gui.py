@@ -53,7 +53,6 @@ class Gui(object):
 	  'mainmenu': 'menu',
 	  'requirerestart': 'book',
 	  'ingamemenu': 'headline',
-	  'help': 'book',
 	  'singleplayermenu': 'book',
 	  'sp_random': 'book',
 	  'sp_scenario': 'book',
@@ -65,7 +64,6 @@ class Gui(object):
 	  'playerdataselection' : 'book',
 	  'aidataselection' : 'book',
 	  'select_savegame': 'book',
-	  'ingame_pause': 'book',
 	  'game_settings' : 'book',
 	  'editor_pause_menu': 'headline',
 	  }

@@ -28,6 +28,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent
 from horizons.constants import GUI
 from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.messaging import SettlerInhabitantsChanged, HoverSettlementChanged, ResourceBarResize
 from horizons.util.pychanchildfinder import PychanChildFinder
@@ -37,10 +38,10 @@ from horizons.util.python.callback import Callback
 class ChatDialog(object):
 	"""Allow player to send messages to other players."""
 
-	def __init__(self, main_gui, session, widget):
+	def __init__(self, main_gui, session):
 		self._main_gui = main_gui
 		self._session = session
-		self._widget = widget
+		self._widget = load_uh_widget('chat.xml', 'book')
 
 		events = {
 			OkButton.DEFAULT_NAME: self._do_chat,
@@ -76,10 +77,10 @@ class ChatDialog(object):
 class ChangeNameDialog(object):
 	"""Shows a dialog where the user can change the name of a NamedComponent."""
 
-	def __init__(self, main_gui, session, widget):
+	def __init__(self, main_gui, session):
 		self._main_gui = main_gui
 		self._session = session
-		self._widget = widget
+		self._widget = load_uh_widget('change_name.xml', 'book')
 
 		self._widget.mapEvents({CancelButton.DEFAULT_NAME: self.hide})
 
@@ -125,9 +126,9 @@ class CityInfo(object):
 	# FIXME well. However, an update to the settlement's name triggers repositioning
 	# FIXME too, and we'd need a clean way to pass that info the ingamegui.
 
-	def __init__(self, ingame_gui, widget):
+	def __init__(self, ingame_gui):
 		self._ingame_gui = ingame_gui
-		self._widget = widget
+		self._widget = load_uh_widget('city_info.xml', 'resource_bar')
 		self._child_finder = PychanChildFinder(self._widget)
 
 		self._settlement = None

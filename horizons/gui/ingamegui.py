@@ -55,13 +55,6 @@ class IngameGui(LivingObject):
 	minimap = livingProperty()
 	keylistener = livingProperty()
 
-	styles = {
-		'city_info' : 'resource_bar',
-		'change_name' : 'book',
-		'save_map' : 'book',
-		'chat' : 'book',
-	}
-
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
 		self.session = session
@@ -75,9 +68,9 @@ class IngameGui(LivingObject):
 		self.coordinates_tooltip = None
 
 		self.keylistener = IngameKeyListener(self.session)
-		self.widgets = LazyWidgetsDict(self.styles)
+		self.widgets = LazyWidgetsDict({})
 
-		self.cityinfo = CityInfo(self, self.widgets['city_info'])
+		self.cityinfo = CityInfo(self)
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		self.logbook = LogBook(self.session)
@@ -85,8 +78,8 @@ class IngameGui(LivingObject):
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
-		self.chat_dialog = ChatDialog(self.main_gui, self.session, self.widgets['chat'])
-		self.change_name_dialog = ChangeNameDialog(self.main_gui, self.session, self.widgets['change_name'])
+		self.chat_dialog = ChatDialog(self.main_gui, self.session)
+		self.change_name_dialog = ChangeNameDialog(self.main_gui, self.session)
 
 		# Icon manager
 		self.status_icon_manager = StatusIconManager(

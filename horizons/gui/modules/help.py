@@ -21,6 +21,7 @@
 
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.messaging import LanguageChanged
 
@@ -29,7 +30,7 @@ class HelpDialog(object):
 
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
-		self.widgets = mainmenu.widgets
+		self.widget = load_uh_widget('help.xml', 'book')
 
 		self.keyconf = KeyConfig() # before _build_strings
 		self.HELPSTRING_LAYOUT = None
@@ -47,8 +48,7 @@ class HelpDialog(object):
 		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
 
-		widgets = self.widgets['help']
-		labels = widgets.getNamedChildren()
+		labels = self.widget.getNamedChildren()
 		# filter misc labels that do not describe key functions
 		labels = dict( (name[4:], lbl[0]) for (name, lbl) in labels.iteritems()
 								    if name.startswith('lbl_') )
@@ -69,7 +69,6 @@ class HelpDialog(object):
 		Toggles help screen via static variable *help_is_displayed*.
 		Can be called both from main menu and in-game interface.
 		"""
-		help_dlg = self.widgets['help']
 		if not self._is_displayed:
 			self._is_displayed = True
 			# make game pause if there is a game and we're not in the main menu
@@ -77,10 +76,10 @@ class HelpDialog(object):
 				PauseCommand().execute(self.mainmenu.session)
 			if self.mainmenu.session is not None:
 				self.mainmenu.session.ingame_gui.on_escape() # close dialogs that might be open
-			self.mainmenu.show_dialog(help_dlg, {OkButton.DEFAULT_NAME : True})
+			self.mainmenu.show_dialog(self.widget, {OkButton.DEFAULT_NAME : True})
 			self.toggle() # toggle state
 		else:
 			self._is_displayed = False
 			if self.mainmenu.session is not None and self.mainmenu.current != self.widgets['ingamemenu']:
 				UnPauseCommand().execute(self.mainmenu.session)
-			help_dlg.hide()
+			self.widget.hide()
