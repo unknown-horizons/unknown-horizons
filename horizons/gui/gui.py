@@ -85,7 +85,7 @@ class Gui(object):
 		self.__pause_displayed = False
 
 		self._background = pychan.Icon(image=self._get_random_background(),
-		                               position=(0, 0))
+		                               position_technique='automatic')
 		self._background.show()
 
 		self.subscribe()
