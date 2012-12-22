@@ -56,7 +56,7 @@ class SingleplayerMenu(object):
 		self.hide = mainmenu.hide
 		self.current = None
 
-	def show_single(self, show='scenario'): # show scenarios to highlight tutorials
+	def show(self, show='scenario'): # show scenarios to highlight tutorials
 		"""
 		@param show: string, which type of games to show
 		"""

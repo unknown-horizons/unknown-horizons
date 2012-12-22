@@ -23,8 +23,6 @@ import glob
 import logging
 import random
 
-from fife import fife
-
 import horizons.globals
 import horizons.main
 
@@ -106,10 +104,10 @@ class Gui(object):
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', show=True, event_map={
-			'single_button': self.show_single,
-			'single_label' : self.show_single,
-			'multi_button': self.show_multi,
-			'multi_label' : self.show_multi,
+			'single_button': self.singleplayermenu.show,
+			'single_label' : self.singleplayermenu.show,
+			'multi_button': self.multiplayermenu.show,
+			'multi_label' : self.multiplayermenu.show,
 			'settings_button': self.show_settings,
 			'settings_label' : self.show_settings,
 			'help_button': self.on_help,
@@ -244,15 +242,9 @@ class Gui(object):
 		else:
 			return False
 
-	def show_credits(self, number=0):
+	def show_credits(self):
 		"""Shows the credits dialog. """
 		widget = CreditsPickbeltWidget().get_widget()
-		# Overwrite a few style pieces
-		for box in widget.findChildren(name='box'):
-			box.margins = (30, 0) # to get some indentation
-			box.padding = 3
-		for listbox in widget.findChildren(name='translators'):
-			listbox.background_color = fife.Color(255, 255, 255, 0)
 		self.show_dialog(widget, {OkButton.DEFAULT_NAME: True})
 
 # display
@@ -352,9 +344,3 @@ class Gui(object):
 		editor_start_menu = EditorStartMenu(self, from_main_menu)
 		self._switch_current_widget(editor_start_menu, hide_old=True)
 		return True
-
-	def show_single(self):
-		self.singleplayermenu.show_single()
-
-	def show_multi(self):
-		self.multiplayermenu.show_multi()

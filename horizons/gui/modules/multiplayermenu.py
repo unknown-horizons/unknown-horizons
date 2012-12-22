@@ -45,7 +45,7 @@ class MultiplayerMenu(object):
 		self.widgets = mainmenu.widgets
 		self.current = None
 
-	def show_multi(self):
+	def show(self):
 		"""Shows main multiplayer menu"""
 		if enet is None:
 			headline = _(u"Unable to find pyenet")
@@ -166,13 +166,13 @@ class MultiplayerMenu(object):
 	def __player_kicked(self, game, player, myself):
 		if myself:
 			self.mainmenu.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
-			self.show_multi()
+			self.show()
 		else:
 			self.__print_event_message(_("{player} got kicked by creator").format(player=player.name))
 
 	def __game_terminated(self, game, errorstr):
 		self.mainmenu.show_popup(_("Terminated"), errorstr)
-		self.show_multi()
+		self.show()
 
 	def _display_game_name(self, game):
 		same_version = game.version == NetworkInterface().get_clientversion()
@@ -357,7 +357,7 @@ class MultiplayerMenu(object):
 		"""Shows lobby (gui for waiting until all players have joined). Allows chatting"""
 		game = self.__get_selected_game()
 		event_map = {
-			'cancel' : self.show_multi,
+			'cancel' : self.show,
 			'ready_btn' : self.__toggle_ready,
 		}
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
@@ -459,7 +459,7 @@ class MultiplayerMenu(object):
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""
 		event_map = {
-			'cancel' : self.show_multi,
+			'cancel' : self.show,
 			'create' : self.__create_game
 		}
 		self.__apply_new_nickname()
