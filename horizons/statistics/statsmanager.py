@@ -21,29 +21,40 @@
 # ###################################################
 
 import json
-import thread
+from multiprocessing import Process
 from urllib2 import Request, urlopen
 from horizons.constants import STATISTICS
+from horizons.extscheduler import ExtScheduler
 
 class StatsManager(object):
 
-	action_mapping = { 'gamestart': "/upload" }
+	action = "/upload"
 
 	def __init__(self):
 		self.url = STATISTICS.SERVER_URL
+		self.sent_data = {}
+		self.data = {}
+		ExtScheduler().add_new_object(self.upload_data, self, 60, -1)
+		
+	def collect_data(self, data):
+		self.data.update(data)
 
-
-	def upload_data(self, action, data):
+	def upload_data(self):
 		"""
 		@param action: action name from action_mapping that the data is to be sent to
 		@param data: dict containing data that is sent to url json encoded"""
-		# Create two threads as follows
+		if len(self.data) == 0:
+			return
 		try:
-			thread.start_new_thread( self.__upload_data, (action, data) )
+			p = Process(target=self.__upload_data, args=(self.data.copy(),))
+			p.start()
 		except:
-			print "Error: unable to start thread"
+			print "Error: unable to start process"
+		# TODO Not threadsafe at all 
+		self.sent_data.update(self.data)
+		self.data.clear()
 
-	def __upload_data(self, action, data):
-		req = Request(self.url + self.action_mapping[action])
+	def __upload_data(self, data):
+		req = Request(self.url + self.action)
 		req.add_header('Content-Type', 'application/json')
 		urlopen(req, json.dumps(data))
