@@ -24,3 +24,6 @@ fife = None
 
 # The global read-only data database (includes most content/*.sql)
 db = None
+
+# The global statsmanager
+statsmanager = None

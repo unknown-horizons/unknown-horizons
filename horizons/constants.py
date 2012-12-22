@@ -521,7 +521,7 @@ class NETWORK:
 	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
 	
 class STATISTICS:
-	SERVER_URL = "http://localhost:9000"
+	SERVER_URL = "http://localhost:5000"
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):

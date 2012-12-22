@@ -27,7 +27,7 @@ from horizons.constants import STATISTICS
 
 class StatsManager(object):
 
-	action_mapping = { 'gamestart': "/data/gamestart" }
+	action_mapping = { 'gamestart': "/upload" }
 
 	def __init__(self):
 		self.url = STATISTICS.SERVER_URL
