@@ -27,13 +27,13 @@ from fife.extensions import pychan
 import horizons.globals
 from horizons.engine import pychan_util
 from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 
 class WindowManager(object):
 
-	def __init__(self, widgets):
-		self.widgets = widgets
+	def __init__(self):
 		self.dialog_executed = False
 		self._modal_background = None
 
@@ -168,8 +168,7 @@ class WindowManager(object):
 
 		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
 		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
-		self.widgets.reload(wdg_name)
-		popup = self.widgets[wdg_name]
+		popup = load_uh_widget(wdg_name + '.xml')
 
 		if not show_cancel_button:
 			cancel_button = popup.findChild(name=CancelButton.DEFAULT_NAME)

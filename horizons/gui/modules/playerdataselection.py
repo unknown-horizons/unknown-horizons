@@ -19,24 +19,25 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
 from fife.extensions.pychan.widgets import HBox, Label
 
+import horizons.globals
+from horizons.gui.util import load_uh_widget
 from horizons.util.color import Color
 from horizons.util.python.callback import Callback
+
 
 class PlayerDataSelection(object):
 	"""Subwidget for selecting player name and color.
 	Used by Multiplayer and Singleplayer menu."""
 
-	def __init__(self, parent_gui, widgets, color_palette=None):
+	def __init__(self, parent_gui, color_palette=None):
 		"""
 		Adds the playerdataselection container to a parent gui
 		@param parent_gui: a pychan gui object containing a container named "playerdataselectioncontainer"
 		@param widgets: WidgetsDict
 		"""
-		widgets.reload( 'playerdataselection' )
-		self.gui = widgets[ 'playerdataselection' ]
+		self.gui = load_uh_widget('playerdataselection.xml', 'book')
 
 		self.colors = self.gui.findChild(name='playercolor')
 		self.selected_color = horizons.globals.fife.get_uh_setting("ColorID") # starts at 1!

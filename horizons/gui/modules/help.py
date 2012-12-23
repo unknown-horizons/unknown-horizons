@@ -30,7 +30,6 @@ class HelpDialog(object):
 
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
-		self.widgets = self.mainmenu.widgets
 		self.widget = load_uh_widget('help.xml', 'book')
 
 		self.keyconf = KeyConfig() # before _build_strings
@@ -73,7 +72,7 @@ class HelpDialog(object):
 		if not self._is_displayed:
 			self._is_displayed = True
 			# make game pause if there is a game and we're not in the main menu
-			if self.mainmenu.session is not None and self.mainmenu.current != self.widgets['ingamemenu']:
+			if self.mainmenu.session is not None and not self.mainmenu._Gui__pause_displayed:
 				PauseCommand().execute(self.mainmenu.session)
 			if self.mainmenu.session is not None:
 				self.mainmenu.session.ingame_gui.on_escape() # close dialogs that might be open
@@ -81,6 +80,6 @@ class HelpDialog(object):
 			self.toggle() # toggle state
 		else:
 			self._is_displayed = False
-			if self.mainmenu.session is not None and self.mainmenu.current != self.widgets['ingamemenu']:
+			if self.mainmenu.session is not None and not self.mainmenu._Gui__pause_displayed:
 				UnPauseCommand().execute(self.mainmenu.session)
 			self.widget.hide()

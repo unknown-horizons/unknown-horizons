@@ -22,18 +22,19 @@
 import horizons.globals
 
 from horizons.constants import MULTIPLAYER
+from horizons.gui.util import load_uh_widget
+
 
 class AIDataSelection(object):
 	"""Subwidget for selecting AI settings."""
 
-	def __init__(self, parent_gui, widgets):
+	def __init__(self, parent_gui):
 		"""
 		Adds the aidataselection container to a parent gui
 		@param parent_gui: a pychan gui object containing a container named "aidataselectioncontainer"
 		@param widgets: WidgetsDict
 		"""
-		widgets.reload('aidataselection')
-		self.gui = widgets['aidataselection']
+		self.gui = load_uh_widget('aidataselection.xml', 'book')
 		self.hidden = False
 
 		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(MULTIPLAYER.MAX_PLAYER_COUNT)]})

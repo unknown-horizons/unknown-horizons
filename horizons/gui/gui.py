@@ -33,7 +33,7 @@ from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 
 from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
@@ -47,33 +47,12 @@ class Gui(object):
 	"""
 	log = logging.getLogger("gui")
 
-	# styles to apply to a widget
-	styles = {
-	  'mainmenu': 'menu',
-	  'requirerestart': 'book',
-	  'ingamemenu': 'headline',
-	  'singleplayermenu': 'book',
-	  'sp_random': 'book',
-	  'sp_scenario': 'book',
-	  'sp_free_maps': 'book',
-	  'multiplayermenu' : 'book',
-	  'multiplayer_creategame' : 'book',
-	  'multiplayer_gamelobby' : 'book',
-	  'set_password' : 'book',
-	  'playerdataselection' : 'book',
-	  'aidataselection' : 'book',
-	  'select_savegame': 'book',
-	  'game_settings' : 'book',
-	  'editor_pause_menu': 'headline',
-	  }
-
 	def __init__(self):
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
-		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
 		self.session = None
 
-		self.windows = WindowManager(self.widgets)
+		self.windows = WindowManager()
 		# temporary aliases for compatibility with rest of the code
 		self.show_dialog = self.windows.show_dialog
 		self.show_popup = self.windows.show_popup
@@ -93,6 +72,7 @@ class Gui(object):
 		self.selectsavegame_dialog = SelectSavegameDialog(self)
 		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
 		self.loadingscreen = LoadingScreen()
+		self.mainmenu = load_uh_widget('mainmenu.xml', 'menu')
 
 		self.fps_display = FPSDisplay()
 
@@ -109,7 +89,7 @@ class Gui(object):
 		if not self._background.isVisible():
 			self._background.show()
 
-		self._switch_current_widget('mainmenu', show=True, event_map={
+		self._switch_current_widget(self.mainmenu, show=True, event_map={
 			'single_button': self.singleplayermenu.show,
 			'single_label' : self.singleplayermenu.show,
 			'multi_button': self.multiplayermenu.show,
@@ -163,8 +143,8 @@ class Gui(object):
 			# reload the menu because caching creates spacing problems
 			# see http://trac.unknown-horizons.org/t/ticket/1047
 			in_editor_mode = self.session.in_editor_mode()
-			menu_name = 'editor_pause_menu' if in_editor_mode else 'ingamemenu'
-			self.widgets.reload(menu_name)
+			menu_name = 'editor_pause_menu.xml' if in_editor_mode else 'ingamemenu.xml'
+			menu_widget = load_uh_widget(menu_name, 'headline')
 			def do_load():
 				did_load = self.load_game()
 				if did_load:
@@ -183,7 +163,7 @@ class Gui(object):
 				'e_start': self.toggle_pause,
 				'e_quit' : do_quit,
 			}
-			self._switch_current_widget(menu_name, show=False, event_map={
+			self._switch_current_widget(menu_widget, show=False, event_map={
 				  # icons
 				'loadgameButton' : events['e_load'],
 				'savegameButton' : events['e_save'],
@@ -295,10 +275,7 @@ class Gui(object):
 			self.log.debug("Gui: hiding %s", old)
 			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
-		if isinstance(new_widget, str):
-			self.current = self.widgets[new_widget]
-		else:
-			self.current = new_widget
+		self.current = new_widget
 		if event_map:
 			self.current.mapEvents(event_map)
 		self.current.position_technique = "automatic" # == "center:center"
