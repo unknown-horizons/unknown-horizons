@@ -133,7 +133,7 @@ class SelectSavegameDialog(object):
 
 		retval = self.mainmenu.show_dialog(self.current, bind)
 		if not retval: # cancelled
-			self.current = old_current
+			self.mainmenu.current = old_current # return back to old state
 			return
 
 		if retval == 'delete':
