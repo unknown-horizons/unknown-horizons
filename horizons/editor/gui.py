@@ -28,7 +28,7 @@ from horizons.gui.keylisteners import IngameKeyListener
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
@@ -55,18 +55,17 @@ class IngameGui(LivingObject):
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
 
-		self.widgets = LazyWidgetsDict({})
-		minimap = self.widgets['minimap']
-		minimap.position_technique = "right+0:top+0"
+		self.mainhud = load_uh_widget('minimap.xml')
+		self.mainhud.position_technique = "right+0:top+0"
 
-		icon = minimap.findChild(name="minimap")
+		icon = self.mainhud.findChild(name="minimap")
 		self.minimap = Minimap(icon,
 		                       targetrenderer=horizons.globals.fife.targetrenderer,
 		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       session=self.session,
 		                       view=self.session.view)
 
-		minimap.mapEvents({
+		self.mainhud.mapEvents({
 			'zoomIn': self.session.view.zoom_in,
 			'zoomOut': self.session.view.zoom_out,
 			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
@@ -74,16 +73,16 @@ class IngameGui(LivingObject):
 			'gameMenuButton' : self.main_gui.toggle_pause,
 		})
 
-		minimap.show()
+		self.mainhud.show()
 
 		# Hide unnecessary buttons in hud
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
-			self.widgets['minimap'].findChild(name=widget).hide()
+			self.mainhud.findChild(name=widget).hide()
 
-		self.save_map_dialog = SaveMapDialog(self.main_gui, self.session, self.widgets['save_map'])
+		self.save_map_dialog = SaveMapDialog(self.main_gui, self.session)
 
 	def end(self):
-		self.widgets['minimap'].mapEvents({
+		self.mainhud.mapEvents({
 			'zoomIn': None,
 			'zoomOut': None,
 			'rotateRight': None,
@@ -114,8 +113,8 @@ class IngameGui(LivingObject):
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""
-		self.widgets['minimap'].hide()
-		self.widgets['minimap'].show()
+		self.mainhud.hide()
+		self.mainhud.show()
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
@@ -191,10 +190,10 @@ class SettingsTab(TabInterface):
 class SaveMapDialog(object):
 	"""Shows a dialog where the user can set the name of the saved map."""
 
-	def __init__(self, main_gui, session, widget):
+	def __init__(self, main_gui, session):
 		self._main_gui = main_gui
 		self._session = session
-		self._widget = widget
+		self._widget = load_uh_widget('save_map.xml')
 
 		events = {
 			OkButton.DEFAULT_NAME: self._do_save,
