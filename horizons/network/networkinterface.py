@@ -47,16 +47,7 @@ class ClientData(object):
 		self.name = horizons.globals.fife.get_uh_setting("Nickname")
 		self.color = horizons.globals.fife.get_uh_setting("ColorID")
 		self.version = VERSION.RELEASE_VERSION
-
-		try:
-			self.id = uuid.UUID(horizons.globals.fife.get_uh_setting("ClientID")).hex
-		except (ValueError, TypeError):
-			# We need a new client id
-			client_id = uuid.uuid4()
-			horizons.globals.fife.set_uh_setting("ClientID", client_id)
-			horizons.globals.fife.save_settings()
-			self.id = client_id.hex
-
+		self.id = uuid.UUID(horizons.globals.fife.get_uh_setting("ClientID")).hex
 
 class NetworkInterface(object):
 	"""Interface for low level networking"""

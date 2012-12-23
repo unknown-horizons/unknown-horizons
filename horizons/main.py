@@ -288,7 +288,7 @@ def start(_command_line_arguments):
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
 	horizons.globals.statsmanager = StatsManager()
-	horizons.globals.statsmanager.collect_data({'gamestart': {'version':VERSION.RELEASE_VERSION}})
+	horizons.globals.statsmanager.collect_data({'gamestart': {'version':VERSION.RELEASE_VERSION, 'uuid': horizons.globals.fife.get_uh_setting("ClientID")}})
 	horizons.globals.fife.run()
 
 def quit():

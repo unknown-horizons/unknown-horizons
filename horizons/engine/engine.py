@@ -24,6 +24,7 @@ import os
 import shutil
 import sys
 import locale
+import uuid
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
@@ -58,6 +59,7 @@ class Fife(ApplicationBase):
 		super(Fife, self).initLogging()
 
 		self.loadSettings()
+		self.setupUUID()
 
 		self.pychan = pychan
 
@@ -304,3 +306,13 @@ class Fife(ApplicationBase):
 		""" Quits the engine.
 		"""
 		self.quit_requested = True
+		
+	
+	def setupUUID(self):
+		try:
+			uuid.UUID(self.get_uh_setting("ClientID")).hex
+		except (ValueError, TypeError):
+			# We need a new client id
+			client_id = uuid.uuid4()
+			self.set_uh_setting("ClientID", client_id)
+			self.save_settings()
