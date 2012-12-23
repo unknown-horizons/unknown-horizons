@@ -54,3 +54,7 @@ class LoadingScreen(object):
 
 	def hide(self):
 		self._widget.hide()
+
+	def isVisible(self):
+		# TODO remote me once window manager works
+		return self._widget.isVisible()
