@@ -10,7 +10,7 @@
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-	<VBox position="30,45" size="220,280" padding="25">
+	<VBox position="30,45" size="220,280" padding="10">
 		<Label name="howto_1_need_warehouse"  wrap_text="1"
 			min_size="210,60"  max_size="210,60"
 			text="You need to found a settlement before you can construct buildings!" />
@@ -22,6 +22,11 @@
 		<Label name="howto_3_build_warehouse"  wrap_text="1"
 			min_size="210,60"  max_size="210,60"
 			text="Afterwards, press the large button in the ship overview tab." />
+			
+		<Container size="50,50">
+			<Icon image="content/gui/images/buttons/msg_button.png" />
+			<Icon image="content/gui/icons/ship/anchor.png" position="6,5" />
+		</Container>
 	</VBox>
 </Container>
 </Container>
