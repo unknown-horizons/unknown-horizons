@@ -203,8 +203,8 @@ class View(ChangeListener):
 		return self.cam.getZoom()
 
 	def set_zoom(self, zoom):
-		in_icon = self.session.ingame_gui.widgets['minimap'].findChild(name='zoomIn')
-		out_icon = self.session.ingame_gui.widgets['minimap'].findChild(name='zoomOut')
+		in_icon = self.session.ingame_gui.mainhud.findChild(name='zoomIn')
+		out_icon = self.session.ingame_gui.mainhud.findChild(name='zoomOut')
 		self.cam.setZoom(zoom)
 		if zoom == VIEW.ZOOM_MIN:
 			out_icon.set_inactive()

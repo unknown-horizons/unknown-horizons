@@ -31,7 +31,7 @@ from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
@@ -68,7 +68,6 @@ class IngameGui(LivingObject):
 		self.coordinates_tooltip = None
 
 		self.keylistener = IngameKeyListener(self.session)
-		self.widgets = LazyWidgetsDict({})
 
 		self.cityinfo = CityInfo(self)
 		LastActivePlayerSettlementManager.create_instance(self.session)
@@ -91,12 +90,12 @@ class IngameGui(LivingObject):
 			layer=self.session.view.layers[LAYERS.OBJECTS]
 		)
 
-		# self.widgets['minimap'] is the guichan gui around the actual minimap,
-		# which is saved in self.minimap
-		minimap = self.widgets['minimap']
-		minimap.position_technique = "right+0:top+0"
+		# 'minimap' is the guichan gui around the actual minimap, which is saved
+		# in self.minimap
+		self.mainhud = load_uh_widget('minimap.xml')
+		self.mainhud.position_technique = "right+0:top+0"
 
-		icon = minimap.findChild(name="minimap")
+		icon = self.mainhud.findChild(name="minimap")
 		self.minimap = Minimap(icon,
 		                       targetrenderer=horizons.globals.fife.targetrenderer,
 		                       imagemanager=horizons.globals.fife.imagemanager,
@@ -109,7 +108,7 @@ class IngameGui(LivingObject):
 		def speed_down():
 			SpeedDownCommand().execute(self.session)
 
-		minimap.mapEvents({
+		self.mainhud.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
 			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
@@ -122,10 +121,7 @@ class IngameGui(LivingObject):
 			'gameMenuButton' : self.main_gui.toggle_pause,
 			'logbook' : self.logbook.toggle_visibility
 		})
-		minimap.show()
-		#minimap.position_technique = "right+15:top+153"
-
-		self.widgets['tooltip'].hide()
+		self.mainhud.show()
 
 		self.resource_overview = ResourceOverviewBar(self.session)
 
@@ -136,7 +132,7 @@ class IngameGui(LivingObject):
 		self._display_speed(self.session.timer.ticks_per_second)
 
 	def end(self):
-		self.widgets['minimap'].mapEvents({
+		self.mainhud.mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
 			'rotateRight' : None,
@@ -148,9 +144,6 @@ class IngameGui(LivingObject):
 			'gameMenuButton' : None
 		})
 
-		for w in self.widgets.itervalues():
-			if w.parent is None:
-				w.hide()
 		self.message_widget = None
 		self.minimap = None
 		self.resource_overview.end()
@@ -179,8 +172,8 @@ class IngameGui(LivingObject):
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""
-		self.widgets['minimap'].hide()
-		self.widgets['minimap'].show()
+		self.mainhud.hide()
+		self.mainhud.show()
 
 	def show_diplomacy_menu(self):
 		# check if the menu is already shown
@@ -246,14 +239,6 @@ class IngameGui(LivingObject):
 		else:
 			self.set_cursor()
 
-	def _get_menu_object(self, menu):
-		"""Returns pychan object if menu is a string, else returns menu
-		@param menu: str with the guiname or pychan object.
-		"""
-		if isinstance(menu, str):
-			menu = self.widgets[menu]
-		return menu
-
 	def get_cur_menu(self):
 		"""Returns menu that is currently displayed"""
 		return self._old_menu
@@ -267,7 +252,7 @@ class IngameGui(LivingObject):
 				self._old_menu.remove_remove_listener( Callback(self.show_menu, None) )
 			self._old_menu.hide()
 
-		self._old_menu = self._get_menu_object(menu)
+		self._old_menu = menu
 		if self._old_menu is not None:
 			if hasattr(self._old_menu, "add_remove_listener"):
 				self._old_menu.add_remove_listener( Callback(self.show_menu, None) )
@@ -278,15 +263,6 @@ class IngameGui(LivingObject):
 
 	def hide_menu(self):
 		self.show_menu(None)
-
-	def toggle_menu(self, menu):
-		"""Shows a menu or hides it if it is already displayed.
-		@param menu: parameter supported by show_menu().
-		"""
-		if self.get_cur_menu() == self._get_menu_object(menu):
-			self.hide_menu()
-		else:
-			self.show_menu(menu)
 
 	def save(self, db):
 		self.message_widget.save(db)
@@ -354,8 +330,8 @@ class IngameGui(LivingObject):
 
 	def _display_speed(self, tps):
 		text = u''
-		up_icon = self.widgets['minimap'].findChild(name='speedUp')
-		down_icon = self.widgets['minimap'].findChild(name='speedDown')
+		up_icon = self.mainhud.findChild(name='speedUp')
+		down_icon = self.mainhud.findChild(name='speedDown')
 		if tps == 0: # pause
 			text = u'0x'
 			up_icon.set_inactive()
@@ -374,10 +350,10 @@ class IngameGui(LivingObject):
 			else:
 				down_icon.set_inactive()
 
-		wdg = self.widgets['minimap'].findChild(name="speed_text")
+		wdg = self.mainhud.findChild(name="speed_text")
 		wdg.text = text
 		wdg.resizeToContent()
-		self.widgets['minimap'].show()
+		self.mainhud.show()
 
 	def on_key_press(self, action, evt):
 		"""Handle a key press in-game.

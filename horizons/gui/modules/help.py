@@ -30,6 +30,7 @@ class HelpDialog(object):
 
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
+		self.widgets = self.mainmenu.widgets
 		self.widget = load_uh_widget('help.xml', 'book')
 
 		self.keyconf = KeyConfig() # before _build_strings
