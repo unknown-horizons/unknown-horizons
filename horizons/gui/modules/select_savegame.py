@@ -186,11 +186,15 @@ class SelectSavegameDialog(object):
 			gui.findChild(name="screenshot").image = None
 			map_file = None
 			map_file_index = gui.collectData(savegamelist)
+
+			savegame_details_box = gui.findChild(name="savegame_details")
+			savegame_details_parent = savegame_details_box.parent
 			if map_file_index == -1:
-				gui.findChild(name="savegame_details").hide()
+				if savegame_details_box not in savegame_details_parent.hidden_children:
+					savegame_details_parent.hideChild(savegame_details_box)
 				return
 			else:
-				gui.findChild(name="savegame_details").show()
+				savegame_details_parent.showChild(savegame_details_box)
 			try:
 				map_file = map_files[map_file_index]
 			except IndexError:
