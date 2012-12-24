@@ -91,8 +91,6 @@ class SelectSavegameDialog(object):
 			if password_box not in name_box.parent.hidden_children:
 				password_box.parent.hideChild(password_box)
 
-		self.current.show()
-
 		if not hasattr(self, 'filename_hbox'):
 			self.filename_hbox = self.current.findChild(name='enter_filename')
 			self.filename_hbox_parent = self.filename_hbox.parent
@@ -131,7 +129,7 @@ class SelectSavegameDialog(object):
 		if mode == 'save':
 			bind['savegamefile'] = True
 
-		retval = self.mainmenu.show_dialog(self.current, bind)
+		retval = self.mainmenu.show_dialog(self.current, bind, focus='savegamefile')
 		if not retval: # cancelled
 			self.mainmenu.current = old_current # return back to old state
 			return
