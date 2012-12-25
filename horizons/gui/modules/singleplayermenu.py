@@ -84,8 +84,10 @@ class SingleplayerMenu(object):
 			right_side.parent.hideChild(right_side)
 
 		# create and add permanent left side widgets
-		self.current.playerdata = PlayerDataSelection(self.current)
-		self.current.aidata = AIDataSelection(self.current)
+		self.current.playerdata = PlayerDataSelection()
+		self.current.findChild(name="playerdataselectioncontainer").addChild(self.current.playerdata.get_widget())
+		self.current.aidata = AIDataSelection()
+		self.current.findChild(name="aidataselectioncontainer").addChild(self.current.aidata.get_widget())
 
 		self.map_preview = MapPreview(lambda : self.current)
 

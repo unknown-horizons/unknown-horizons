@@ -31,10 +31,8 @@ class PlayerDataSelection(object):
 	"""Subwidget for selecting player name and color.
 	Used by Multiplayer and Singleplayer menu."""
 
-	def __init__(self, parent_gui, color_palette=None):
+	def __init__(self, color_palette=None):
 		"""
-		Adds the playerdataselection container to a parent gui
-		@param parent_gui: a pychan gui object containing a container named "playerdataselectioncontainer"
 		@param widgets: WidgetsDict
 		"""
 		self.gui = load_uh_widget('playerdataselection.xml', 'book')
@@ -67,8 +65,7 @@ class PlayerDataSelection(object):
 		self.gui.distributeData({
 			'playername': unicode(horizons.globals.fife.get_uh_setting("Nickname")),
 		})
-		parent_gui.findChild(name="playerdataselectioncontainer").addChild( self.gui )
-		parent_gui.mapEvents(events)
+		self.gui.mapEvents(events)
 
 	def set_color(self, color_id):
 		"""Updates the background color of large label where players
@@ -92,3 +89,5 @@ class PlayerDataSelection(object):
 		"""Returns the color that the player selected as Color obj"""
 		return self.selected_color
 
+	def get_widget(self):
+		return self.gui

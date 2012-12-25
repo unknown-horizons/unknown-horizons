@@ -101,7 +101,8 @@ class MultiplayerMenu(object):
 			return
 		self.current.findChild(name='gamelist').capture(self.__update_game_details)
 		self.current.findChild(name='showonlyownversion').capture(self.__show_only_own_version_toggle)
-		self.current.playerdata = PlayerDataSelection(self.current)
+		self.current.playerdata = PlayerDataSelection()
+		self.current.findChild(name="playerdataselectioncontainer").addChild(self.current.playerdata.get_widget())
 
 		self.current.show()
 
@@ -633,8 +634,8 @@ class MultiplayerMenu(object):
 		#remove all children of color and name pop-up and then show them
 		set_player_details_dialog.findChild(name="playerdataselectioncontainer").removeAllChildren()
 		#assign playerdata to self.current.playerdata to use self.__apply_new_color() and __apply_new_nickname()
-		self.current.playerdata = PlayerDataSelection(set_player_details_dialog,
-		                                              color_palette=_get_unused_colors())
+		self.current.playerdata = PlayerDataSelection(color_palette=_get_unused_colors())
+		set_player_details_dialog.findChild(name="playerdataselectioncontainer").addChild(self.current.playerdata.get_widget())
 		self.current.playerdata.set_player_name(NetworkInterface().get_client_name())
 		self.current.playerdata.set_color(NetworkInterface().get_client_color())
 
