@@ -24,10 +24,14 @@ import os.path
 import tempfile
 import time
 
+from fife import fife
+
+import horizons.globals
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.savegameupgrader import SavegameUpgrader
+from horizons.extscheduler import ExtScheduler
 
 
 class SelectSavegameDialog(object):
@@ -65,6 +69,7 @@ class SelectSavegameDialog(object):
 		# Prepare widget
 		old_current = self.mainmenu._switch_current_widget('select_savegame')
 		self.current = self.mainmenu.current
+		self.last_click_event = ()
 		if mode == 'save':
 			helptext = _('Save game')
 		elif mode == 'load':
@@ -117,7 +122,8 @@ class SelectSavegameDialog(object):
 		cb_details = self._create_show_savegame_details(self.current, map_files, 'savegamelist')
 		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
 		cb() # Refresh data on start
-		self.current.mapEvents({'savegamelist/action': cb})
+		self.current.mapEvents({'savegamelist/action': cb,
+								'savegamelist/mouseClicked': self.check_double_click})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		bind = {
@@ -177,6 +183,22 @@ class SelectSavegameDialog(object):
 			ret = selected_savegame
 		self.mainmenu.current = old_current # reuse old widget
 		return ret
+
+	def check_double_click(self, event):
+		if event.getButton() != fife.MouseEvent.LEFT:
+			return
+		if self.last_click_event == (event.getX(), event.getY()) and self.clicked:
+			self.clicked = False
+			ExtScheduler().rem_call(self, self.reset_click_status)
+			self.current.hide()
+			horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=True)
+		else:
+			self.clicked = True
+			ExtScheduler().add_new_object(self.reset_click_status, self, run_in=0.3, loops=0)
+			self.last_click_event = (event.getX(), event.getY())
+
+	def reset_click_status(self):
+		self.clicked = False
 
 	def _create_show_savegame_details(self, gui, map_files, savegamelist):
 		"""Creates a function that displays details of a savegame in gui"""
