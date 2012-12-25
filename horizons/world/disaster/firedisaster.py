@@ -46,7 +46,7 @@ class FireDisaster(Disaster):
 
 	# Defines the minimum number of pioneer or higher residences that need to be in a
 	# settlement before this disaster can break loose
-	MIN_SETTLERS_FOR_BREAKOUT = 7
+	MIN_PIONEERS_FOR_BREAKOUT = 7
 
 	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
 	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1 # try twice before dying
@@ -83,7 +83,7 @@ class FireDisaster(Disaster):
 	@classmethod
 	def can_breakout(cls, settlement):
 		return settlement.owner.settler_level >= TIER.PIONEERS and \
-		       settlement.count_buildings(BUILDINGS.RESIDENTIAL) > cls.MIN_SETTLERS_FOR_BREAKOUT
+		       settlement.count_buildings(BUILDINGS.RESIDENTIAL) > cls.MIN_PIONEERS_FOR_BREAKOUT
 
 	def expand(self):
 		if not self.evaluate():
