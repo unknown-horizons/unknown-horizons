@@ -293,6 +293,8 @@ class Gui(object):
 				@param widget: widget to execute
 				@param bind: Dictionary with buttons and return values
 			"""
+			# FIXME:This is a workaround for lack of native implementation of execute() in FIFE. 
+			#		Ref. FIFE ticket #750.
 			for name,returnValue in bind.items():
 				def _quitThisDialog(returnValue = returnValue ):
 					horizons.globals.fife.pychanmanager.breakFromMainLoop( returnValue )
