@@ -185,6 +185,7 @@ class SelectSavegameDialog(object):
 		return ret
 
 	def check_double_click(self, event):
+		"""Check if there was a left dobule click"""
 		if event.getButton() != fife.MouseEvent.LEFT:
 			return
 		if self.last_click_event == (event.getX(), event.getY()) and self.clicked:
@@ -198,6 +199,7 @@ class SelectSavegameDialog(object):
 			self.last_click_event = (event.getX(), event.getY())
 
 	def reset_click_status(self):
+		"""Callback function to reset the click status by Scheduler"""
 		self.clicked = False
 
 	def _create_show_savegame_details(self, gui, map_files, savegamelist):
