@@ -39,14 +39,14 @@ class FireDisaster(Disaster):
 	TYPE = "The Flames Of The End"
 	NOTIFICATION_TYPE = 'BUILDING_ON_FIRE'
 
-	SEED_CHANCE = 0.1
+	SEED_CHANCE = 0.005
 
 
 	EXPANSION_RADIUS = 3
 
-	# Defines the mininum number of settler buildings that need to be in a
+	# Defines the minimum number of pioneer or higher residences that need to be in a
 	# settlement before this disaster can break loose
-	MIN_SETTLERS_FOR_BREAKOUT = 5
+	MIN_SETTLERS_FOR_BREAKOUT = 7
 
 	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
 	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1 # try twice before dying
