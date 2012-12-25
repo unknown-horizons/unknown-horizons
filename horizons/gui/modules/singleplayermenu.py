@@ -33,7 +33,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.constants import LANGUAGENAMES
-from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.util import LazyWidgetsDict, load_uh_widget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
 from horizons.util.python.callback import Callback
@@ -54,42 +54,41 @@ class SingleplayerMenu(object):
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
 		self.widgets = LazyWidgetsDict({
-			'singleplayermenu': 'book',
 			'sp_random': 'book',
 			'sp_scenario': 'book',
 			'sp_free_maps': 'book',
 			'game_settings': 'book',
 		})
 		self.hide = mainmenu.hide
-		self.current = None
+
+		self._gui = None
+		self._playerdata = None
+		self._aidata = None
 
 	def show(self, show='scenario'): # show scenarios to highlight tutorials
 		"""
 		@param show: string, which type of games to show
 		"""
-		# save player name before removing playerdata container
-		self._save_player_name()
 		self.hide()
 
 		# start with default single player settings
-		self.widgets.reload('singleplayermenu')
-		self.mainmenu._switch_current_widget(self.widgets['singleplayermenu'])
-		self.current = self.mainmenu.current
+		self._gui = load_uh_widget('singleplayermenu.xml', 'book')
+		self.mainmenu.current = self._gui
 		self.active_right_side = None
 
 		for mode in ('random', 'scenario', 'free_maps'):
 			self.widgets.reload('sp_%s' % mode)
 			right_side = self.widgets['sp_%s' % mode]
-			self.current.findChild(name="right_side_box").addChild(right_side)
+			self._gui.findChild(name="right_side_box").addChild(right_side)
 			right_side.parent.hideChild(right_side)
 
 		# create and add permanent left side widgets
-		self.current.playerdata = PlayerDataSelection()
-		self.current.findChild(name="playerdataselectioncontainer").addChild(self.current.playerdata.get_widget())
-		self.current.aidata = AIDataSelection()
-		self.current.findChild(name="aidataselectioncontainer").addChild(self.current.aidata.get_widget())
+		self._playerdata = PlayerDataSelection()
+		self._gui.findChild(name="playerdataselectioncontainer").addChild(self._playerdata.get_widget())
+		self._aidata = AIDataSelection()
+		self._gui.findChild(name="aidataselectioncontainer").addChild(self._aidata.get_widget())
 
-		self.map_preview = MapPreview(lambda : self.current)
+		self.map_preview = MapPreview(lambda : self._gui)
 
 		self._select_single(show)
 
@@ -103,12 +102,12 @@ class SingleplayerMenu(object):
 			'random'    : Callback(self._select_single, show='random'),
 			'free_maps' : Callback(self._select_single, show='free_maps')
 		}
-		self.current.mapEvents(event_map)
+		self._gui.mapEvents(event_map)
 
 		# init gui for subcategory
 		right_side = self.widgets['sp_%s' % show]
-		self.current.findChild(name=show).marked = True
-		self.current.aidata.hide()
+		self._gui.findChild(name=show).marked = True
+		self._aidata.hide()
 
 		# hide previous widget, unhide new right side widget
 		if self.active_right_side is not None:
@@ -120,10 +119,10 @@ class SingleplayerMenu(object):
 			self._setup_random_map_selection(right_side)
 			self._setup_game_settings_selection()
 			self._on_random_map_parameter_changed()
-			self.current.aidata.show()
+			self._aidata.show()
 
 		elif show == 'free_maps':
-			self.current.files, maps_display = SavegameManager.get_maps()
+			self._files, maps_display = SavegameManager.get_maps()
 
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 			# update preview whenever something is selected in the list
@@ -133,17 +132,17 @@ class SingleplayerMenu(object):
 			self._setup_game_settings_selection()
 			if maps_display: # select first entry
 				self.active_right_side.distributeData({'maplist': 0})
-			self.current.aidata.show()
+			self._aidata.show()
 			self._update_free_map_infos()
 
 		elif show == 'scenario':
-			self.current.files, maps_display = SavegameManager.get_available_scenarios(hide_test_scenarios=True)
+			self._files, maps_display = SavegameManager.get_available_scenarios(hide_test_scenarios=True)
 			# get the map files and their display names. display tutorials on top.
 			prefer_tutorial = lambda x : ('tutorial' not in x, x)
 			maps_display.sort(key=prefer_tutorial)
-			self.current.files.sort(key=prefer_tutorial)
+			self._files.sort(key=prefer_tutorial)
 			#add all locales to lang list, select current locale as default and sort
-			lang_list = self.current.findChild(name="uni_langlist")
+			lang_list = self._gui.findChild(name="uni_langlist")
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 			if maps_display: # select first entry
 				self.active_right_side.distributeData({'maplist': 0})
@@ -159,28 +158,27 @@ class SingleplayerMenu(object):
 			})
 			self._update_scenario_infos()
 
-		self.current.show()
+		self._gui.show()
 		self.mainmenu.on_escape = self.mainmenu.show_main
 
 	def start_single(self):
 		""" Starts a single player horizons. """
-		assert self.current is self.widgets['singleplayermenu']
-		playername = self.current.playerdata.get_player_name()
+		playername = self._playerdata.get_player_name()
 		if not playername:
 			self.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
-		playercolor = self.current.playerdata.get_player_color()
+		playercolor = self._playerdata.get_player_color()
 		self._save_player_name()
 
-		if self.current.collectData('random'):
+		if self._gui.collectData('random'):
 			map_file = self._get_random_map_file()
 		else:
 			assert self.active_right_side.collectData('maplist') != -1
 			map_file = self._get_selected_map()
 
-		is_scenario = bool(self.current.collectData('scenario'))
+		is_scenario = bool(self._gui.collectData('scenario'))
 		if not is_scenario:
-			ai_players = int(self.current.aidata.get_ai_players())
+			ai_players = int(self._aidata.get_ai_players())
 			horizons.globals.fife.set_uh_setting("AIPlayers", ai_players)
 		horizons.globals.fife.save_settings()
 
@@ -273,35 +271,35 @@ class SingleplayerMenu(object):
 		on_island_size_deviation_slider_change()
 
 	def _get_random_map_parameters(self):
-		seed_string = self.current.findChild(name='seed_string_field').text
-		map_size = self.map_sizes[int(self.current.findChild(name='map_size_slider').value)]
-		water_percent = self.water_percents[int(self.current.findChild(name='water_percent_slider').value)]
-		max_island_size = self.island_sizes[int(self.current.findChild(name='max_island_size_slider').value)]
-		preferred_island_size = self.island_sizes[int(self.current.findChild(name='preferred_island_size_slider').value)]
-		island_size_deviation = self.island_size_deviations[int(self.current.findChild(name='island_size_deviation_slider').value)]
+		seed_string = self._gui.findChild(name='seed_string_field').text
+		map_size = self.map_sizes[int(self._gui.findChild(name='map_size_slider').value)]
+		water_percent = self.water_percents[int(self._gui.findChild(name='water_percent_slider').value)]
+		max_island_size = self.island_sizes[int(self._gui.findChild(name='max_island_size_slider').value)]
+		preferred_island_size = self.island_sizes[int(self._gui.findChild(name='preferred_island_size_slider').value)]
+		island_size_deviation = self.island_size_deviations[int(self._gui.findChild(name='island_size_deviation_slider').value)]
 		return (seed_string, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
 
 	def _setup_game_settings_selection(self):
 		widget = self.widgets['game_settings']
 		if widget.parent is not None:
 			widget.parent.removeChild(widget)
-		settings_box = self.current.findChild(name='game_settings_box')
+		settings_box = self._gui.findChild(name='game_settings_box')
 		settings_box.addChild(widget)
 
 		# make click on labels change the respective checkboxes
 		for (setting, setting_save_name) in (u'free_trader', 'MapSettingsFreeTraderEnabled'), (u'pirates','MapSettingsPirateEnabled'), (u'disasters','MapSettingsDisastersEnabled'):
 			def on_box_toggle(setting, setting_save_name):
 				"""Called whenever the checkbox is toggled"""
-				box = self.current.findChild(name=setting)
+				box = self._gui.findChild(name=setting)
 				horizons.globals.fife.set_uh_setting(setting_save_name, box.marked)
 				horizons.globals.fife.save_settings()
 			def toggle(setting, setting_save_name):
 				"""Called by the label to toggle the checkbox"""
-				box = self.current.findChild(name=setting)
+				box = self._gui.findChild(name=setting)
 				box.marked = not box.marked
-			self.current.findChild(name=setting).capture(Callback(on_box_toggle, setting, setting_save_name))
-			self.current.findChild(name=setting).marked = horizons.globals.fife.get_uh_setting(setting_save_name)
-			self.current.findChild(name=u'lbl_'+setting).capture(Callback(toggle, setting, setting_save_name))
+			self._gui.findChild(name=setting).capture(Callback(on_box_toggle, setting, setting_save_name))
+			self._gui.findChild(name=setting).marked = horizons.globals.fife.get_uh_setting(setting_save_name)
+			self._gui.findChild(name=u'lbl_'+setting).capture(Callback(toggle, setting, setting_save_name))
 
 		resource_density_slider = widget.findChild(name='resource_density_slider')
 		def on_resource_density_slider_change():
@@ -319,7 +317,7 @@ class SingleplayerMenu(object):
 
 	def _get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
-		return self.current.files[ self.active_right_side.collectData('maplist') ]
+		return self._files[self.active_right_side.collectData('maplist')]
 
 	def _show_invalid_scenario_file_popup(self, exception):
 		"""Shows a popup complaining about invalid scenario file.
@@ -333,13 +331,13 @@ class SingleplayerMenu(object):
 	def _update_free_map_infos(self):
 		number_of_players = SavegameManager.get_recommended_number_of_players( self._get_selected_map() )
 		#xgettext:python-format
-		self.current.findChild(name="recommended_number_of_players_lbl").text = \
+		self._gui.findChild(name="recommended_number_of_players_lbl").text = \
 			_("Recommended number of players: {number}").format(number=number_of_players)
 		self.map_preview.update_map(self._get_selected_map())
 
 	def _update_scenario_infos(self):
 		"""Fill in infos of selected scenario to label"""
-		lang_list = self.current.findChild(name="uni_langlist")
+		lang_list = self._gui.findChild(name="uni_langlist")
 		cur_selected_language = lang_list.selected_item
 		lang_list.items = self._get_available_languages()
 		if cur_selected_language in lang_list.items:
@@ -377,20 +375,20 @@ class SingleplayerMenu(object):
 			return
 
 		#xgettext:python-format
-		self.current.findChild(name="uni_map_difficulty").text = \
+		self._gui.findChild(name="uni_map_difficulty").text = \
 			_("Difficulty: {difficulty}").format(difficulty=difficulty)
 		#xgettext:python-format
-		self.current.findChild(name="uni_map_author").text = \
+		self._gui.findChild(name="uni_map_author").text = \
 			_("Author: {author}").format(author=author)
 		#xgettext:python-format
-		self.current.findChild(name="uni_map_desc").text = \
+		self._gui.findChild(name="uni_map_desc").text = \
 			_("Description: {desc}").format(desc=desc)
 
 	def _update_scenario_translation_infos(self, new_map_name):
 		"""Fill in translation infos of selected scenario to translation label.
 		This function also sets scenario map name using locale.
 		(e.g. tutorial -> tutorial_en.yaml)"""
-		translation_status_label = self.current.findChild(name="translation_status")
+		translation_status_label = self._gui.findChild(name="translation_status")
 		yamldata = YamlCache.get_file(new_map_name, game_data=True)
 		translation_status = yamldata.get('translation_status')
 		if translation_status:
@@ -398,7 +396,7 @@ class SingleplayerMenu(object):
 			translation_status_label.show()
 		else:
 			translation_status_label.hide()
-		self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name
+		self._files[self.active_right_side.collectData('maplist')] = new_map_name
 
 	def _find_map_filename(self, cur_locale, mapfile=None):
 		"""Finds the given map's filename with its locale."""
@@ -415,19 +413,18 @@ class SingleplayerMenu(object):
 							  if os.path.exists(self._find_map_filename(lang, mapfile)) ])
 
 	def _save_player_name(self):
-		if hasattr(self.current, 'playerdata'):
-			playername = self.current.playerdata.get_player_name()
-			horizons.globals.fife.set_uh_setting("Nickname", playername)
+		playername = self._playerdata.get_player_name()
+		horizons.globals.fife.set_uh_setting("Nickname", playername)
 
 	def _on_random_map_parameter_changed(self):
 		"""Called to update the map preview"""
 		def on_click(event, drag):
-			seed_string_field = self.current.findChild(name='seed_string_field')
+			seed_string_field = self._gui.findChild(name='seed_string_field')
 			seed_string_field.text = generate_random_seed(seed_string_field.text)
 			self._on_random_map_parameter_changed()
 		# the user might have changed the menu since the update and we would
 		# crash if we don't find the fields with the parameters
-		if self.current is self.widgets['singleplayermenu']:
+		if self.mainmenu.current is self._gui:
 			self.map_preview.update_random_map( self._get_random_map_parameters(), on_click )
 
 	def _get_random_map_file(self):
@@ -443,7 +440,7 @@ class MapPreview(object):
 	"""Semiprivate class dealing with the map preview icon"""
 	def __init__(self, get_widget):
 		"""
-		@param get_widget: returns the current widget (self.current)
+		@param get_widget: returns the current widget
 		"""
 		self.minimap = None
 		self.calc_proc = None # handle to background calculation process
