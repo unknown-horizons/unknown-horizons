@@ -232,10 +232,20 @@ def exithandler(exitcode, signum, frame):
 		logfile.close()
 	sys.exit(exitcode)
 
+def setup_streams():
+	"""Ignore output to stderr and stdout if writing to them is not possible."""
+	if sys.__stderr__.fileno() < 0:
+		sys.stderr = open(os.devnull, 'w')
+	if sys.__stdout__.fileno() < 0:
+		sys.stdout = open(os.devnull, 'w')
+
 def main():
 	# abort silently on signal
 	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
 	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
+
+	# avoid crashing when writing to unavailable standard streams
+	setup_streams()
 
 	# use locale-specific time.strftime handling.
 	try:
