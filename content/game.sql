@@ -171,7 +171,7 @@ INSERT INTO "related_buildings" VALUES( 3,  4, 1);
 INSERT INTO "related_buildings" VALUES( 3,  5, 1);
 INSERT INTO "related_buildings" VALUES( 3, 21, 1);
 INSERT INTO "related_buildings" VALUES( 3, 32, 1);
-INSERT INTO "related_buildings" VALUES( 3, 42, 1);
+-- INSERT INTO "related_buildings" VALUES( 3, 42, 1);
 INSERT INTO "related_buildings" VALUES( 6,  1, 0);
 INSERT INTO "related_buildings" VALUES( 8, 17, 1);
 INSERT INTO "related_buildings" VALUES(20, 18, 1);
