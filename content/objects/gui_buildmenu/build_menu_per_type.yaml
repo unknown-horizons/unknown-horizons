@@ -20,7 +20,7 @@ tab1:
 -
   - _ Precaution #TODO better name?
   - BUILDINGS.FIRE_STATION
-  - BUILDINGS.DOCTOR
+#  - BUILDINGS.DOCTOR
 
 tab2:
 - icon: content/gui/icons/tabwidget/buildmenu/class/fields_%s.png
@@ -35,14 +35,14 @@ tab2:
   - _ Settlers
   - BUILDINGS.TOBACCO_FIELD
   - BUILDINGS.CATTLE_RUN
-  - BUILDINGS.HERBARY
-  - BUILDINGS.SPICE_FIELD
+#  - BUILDINGS.HERBARY
+#  - BUILDINGS.SPICE_FIELD
 -
   - _ Citizens
   - BUILDINGS.CORN_FIELD
-  - BUILDINGS.COCOA_FIELD
-  - BUILDINGS.VINEYARD
-  - BUILDINGS.ALVEARIES
+#  - BUILDINGS.COCOA_FIELD
+#  - BUILDINGS.VINEYARD
+#  - BUILDINGS.ALVEARIES
 
 tab3:
 - icon: content/gui/icons/tabwidget/buildmenu/class/agricultural_companies_%s.png
@@ -60,13 +60,13 @@ tab3:
 -
   - _ Workshops
   - BUILDINGS.WEAVER
-  - BUILDINGS.BLENDER
+#  - BUILDINGS.BLENDER
 -
   - _ Workshops
   - BUILDINGS.DISTILLERY
   - BUILDINGS.TOBACCONIST
-  - BUILDINGS.VINTNER
-  - BUILDINGS.PASTRY_SHOP
+#  - BUILDINGS.VINTNER
+#  - BUILDINGS.PASTRY_SHOP
 
 
 
@@ -97,14 +97,14 @@ tab5:
 -
   - _ Military Service
   - BUILDINGS.BOAT_BUILDER
-  - # empty
-  - BUILDINGS.BARRACKS
+#  - # empty
+#  - BUILDINGS.BARRACKS
 
-tab6:
-- icon: content/gui/icons/tabwidget/buildmenu/class/aesthetics_%s.png
-- headline: _ Aesthetics
--
-  -
+#tab6:
+#- icon: content/gui/icons/tabwidget/buildmenu/class/aesthetics_%s.png
+#- headline: _ Aesthetics
+#-
+#  -
 
 
 meta:
