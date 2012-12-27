@@ -54,7 +54,7 @@ class SingleplayerMenu(object):
 
 		self._mode = None
 
-		self._gui = load_uh_widget('singleplayermenu.xml', 'book')
+		self._gui = load_uh_widget('singleplayermenu.xml')
 		self._gui.mapEvents({
 			'cancel'   : self.cancel,
 			'okay'     : self.act,
@@ -122,7 +122,7 @@ class GameSettingsWidget(object):
 	resource_densities = [0.5, 0.7, 1, 1.4, 2]
 
 	def __init__(self):
-		self._gui = load_uh_widget('game_settings.xml', 'book')
+		self._gui = load_uh_widget('game_settings.xml')
 
 	def get_widget(self):
 		return self._gui
@@ -189,7 +189,7 @@ class RandomMapWidget(object):
 		self._singleplayer_menu = singleplayer_menu
 		self._aidata = aidata
 
-		self._gui = load_uh_widget('sp_random.xml', 'book')
+		self._gui = load_uh_widget('sp_random.xml')
 		self._map_parameters = {}  # stores the current values from the sliders
 		self._game_settings = GameSettingsWidget()
 
@@ -365,7 +365,7 @@ class FreeMapsWidget(object):
 		self._singleplayer_menu = singleplayer_menu
 		self._aidata = aidata
 
-		self._gui = load_uh_widget('sp_free_maps.xml', 'book')
+		self._gui = load_uh_widget('sp_free_maps.xml')
 		self._game_settings = GameSettingsWidget()
 
 		self._map_preview = None
@@ -450,7 +450,7 @@ class ScenarioMapWidget(object):
 		self._singleplayer_menu = singleplayer_menu
 		self._aidata = aidata
 
-		self._gui = load_uh_widget('sp_scenario.xml', 'book')
+		self._gui = load_uh_widget('sp_scenario.xml')
 
 	def end(self):
 		pass

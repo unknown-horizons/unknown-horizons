@@ -31,7 +31,7 @@ class EditorStartMenu(object):
 	def __init__(self, parent, from_main_menu):
 		self._from_main_menu = from_main_menu
 		self.parent = parent
-		self._gui = load_uh_widget('editor_start_menu.xml', style='book')
+		self._gui = load_uh_widget('editor_start_menu.xml')
 		self._gui.position_technique = "automatic" # == "center:center"
 		self._right_side = None
 		self._old_on_escape = None
@@ -94,7 +94,7 @@ class EditorCreateMapWidget(object):
 	def __init__(self, parent, parent_widget):
 		self.parent = parent
 		self._parent_widget = parent_widget
-		self._gui = load_uh_widget('editor_create_map.xml', style='book')
+		self._gui = load_uh_widget('editor_create_map.xml')
 		self._gui.findChild(name='size_150').marked = True
 
 		for size in self.sizes:

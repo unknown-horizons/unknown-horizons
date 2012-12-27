@@ -35,7 +35,7 @@ class PlayerDataSelection(object):
 		"""
 		@param widgets: WidgetsDict
 		"""
-		self.gui = load_uh_widget('playerdataselection.xml', 'book')
+		self.gui = load_uh_widget('playerdataselection.xml')
 
 		self.colors = self.gui.findChild(name='playercolor')
 		self.selected_color = horizons.globals.fife.get_uh_setting("ColorID") # starts at 1!
