@@ -123,7 +123,7 @@ class SelectSavegameDialog(object):
 		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
 		cb() # Refresh data on start
 		self.current.mapEvents({'savegamelist/action': cb,
-								'savegamelist/mouseClicked': self.check_double_click})
+								'savegamelist/mouseClicked': self.check_double_click}) #FIXME: Workaround till FIFE handles Double click.
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		bind = {
@@ -186,12 +186,14 @@ class SelectSavegameDialog(object):
 
 	def check_double_click(self, event):
 		"""Check if there was a left dobule click"""
+		#FIXME: FIFE should detect double click events in Mouselistner.
 		if event.getButton() != fife.MouseEvent.LEFT:
 			return
 		if self.last_click_event == (event.getX(), event.getY()) and self.clicked:
 			self.clicked = False
 			ExtScheduler().rem_call(self, self.reset_click_status)
 			self.current.hide()
+			#Dirty way to exit execute() and return True to stimulate a okButton event.
 			horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=True)
 		else:
 			self.clicked = True
