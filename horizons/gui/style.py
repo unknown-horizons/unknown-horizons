@@ -21,49 +21,63 @@
 
 from fife.fife import Color
 
+BROWN = { 64: Color(80, 80, 40,  64),
+          96: Color(80, 80, 40,  96),
+         128: Color(80, 80, 40, 128),
+         192: Color(80, 80, 40, 192),
+         255: Color(80, 80, 40, 255),
+}
+
+WHITE = { 32: Color(255, 255, 255,  32),
+          64: Color(255, 255, 255,  64),
+          96: Color(255, 255, 255,  96),
+         160: Color(255, 255, 255, 160),
+         255: Color(255, 255, 255, 255),
+}
+
+NOTHING = Color(0, 0, 0, 0)
+
 STYLES = {
 'default': {
 		'default': {
 			'border_size': 0,
 			'margins': (0, 0),
-			'selection_color': Color(80, 80, 40, 192),
-			'background_color': Color(0, 0, 0, 0),
-			'foreground_color': Color(80, 80, 40),
-			'base_color': Color(40, 40, 40, 0),
+			'selection_color': BROWN[192],
+			'background_color': NOTHING,
+			'foreground_color': BROWN[255],
+			'base_color': NOTHING,
 			'font': '14_black',
 		},
 		'Button': {
-			'background_color': Color(255, 255, 255, 32),
-			'foreground_color': Color(80, 80, 40, 192),
-			'base_color': Color(80, 80, 40, 64),
+			'background_color': WHITE[32],
+			'foreground_color': BROWN[192],
+			'base_color': BROWN[64],
 			'margins': (10, 5),
 		},
 		'RadioButton': {
-			'foreground_color': Color(80, 80, 40),
-			'background_color': Color(255, 255, 255, 96),
+			'foreground_color': BROWN[255],
+			'background_color': WHITE[96],
 		},
 		('Slider', 'StepSlider'): {
-			'base_color': Color(90, 90, 40, 96),
+			'base_color': BROWN[96],
 		},
 		'CheckBox': {
-			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 96),
-			'foreground_color': Color(80, 80, 40),
+			'selection_color': WHITE[255],
+			'background_color': WHITE[96],
+			'foreground_color': BROWN[255],
 		},
 		'ListBox': {
-			'background_color': Color(0, 0, 0, 0),
-			'selection_color': Color(255, 255, 255, 160),
+			'selection_color': WHITE[160],
 		},
 		'TextField': {
-			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 64),
-			'base_color': Color(0, 0, 0, 0),
+			'selection_color': WHITE[255],
+			'background_color': WHITE[64],
 			'horizontal_scrollbar': 0,
 		},
 		'ScrollArea': {
-			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 64),
-			'base_color': Color(90, 90, 40, 96),
+			'selection_color': WHITE[255],
+			'background_color': WHITE[64],
+			'base_color': BROWN[96],
 			'horizontal_scrollbar': 0,
 		},
 		('Container', 'HBox', 'VBox'): {
