@@ -82,8 +82,6 @@ STYLES = {
 		},
 },
 
-'book': {}, #TODO remove me after rewriting multiplayermenu
-
 'menu_black': { # style for build menu etc.
 		'default': {
 			'font': '14_black',
