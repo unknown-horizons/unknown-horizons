@@ -131,7 +131,7 @@ class GameSettingsWidget(object):
 		# make click on labels change the respective checkboxes
 		checkboxes = [('free_trader', 'MapSettingsFreeTraderEnabled'),
 		              ('pirates', 'MapSettingsPirateEnabled'),
-					  ('disasters', 'MapSettingsDisastersEnabled')]
+		              ('disasters', 'MapSettingsDisastersEnabled')]
 
 		for (setting, setting_save_name) in checkboxes:
 			def on_box_toggle(setting, setting_save_name):
