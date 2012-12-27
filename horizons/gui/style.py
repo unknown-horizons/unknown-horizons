@@ -84,8 +84,6 @@ STYLES = {
 
 'book': {}, #TODO remove me after rewriting multiplayermenu
 
-'menu_black': {},
-
 'resource_bar': {
 		'default': {
 			'font': 'small_black',

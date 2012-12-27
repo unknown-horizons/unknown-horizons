@@ -94,7 +94,6 @@ class Inventory(Container):
 		self._draw(vbox, current_hbox)
 
 		self.adaptLayout()
-		self.stylize('menu_black')
 
 	def _draw(self, vbox, current_hbox, index=0):
 		"""Draws the inventory."""
