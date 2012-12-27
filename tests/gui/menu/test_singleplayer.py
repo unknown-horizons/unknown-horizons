@@ -40,15 +40,6 @@ def _start_game(gui):
 		return start_mock.call_args[0][0]
 
 
-def _cleanup():
-	# FIXME this kills the map preview process before the test ends
-	# it will print out errors otherwise because the user directory
-	# doesn't exist anymore
-	proc = horizons.main._modules.gui.singleplayermenu.map_preview.calc_proc
-	if proc:
-		proc.kill()
-
-
 @gui_test()
 def test_start_scenario(gui):
 	"""Test starting a scenario."""
@@ -62,8 +53,6 @@ def test_start_scenario(gui):
 	options = _start_game(gui)
 	assert options.is_scenario
 	assert options.game_identifier.endswith('tutorial_en.yaml')
-
-	_cleanup()
 
 
 @gui_test()
@@ -86,8 +75,6 @@ def test_start_random_map(gui):
 	assert options.trader_enabled
 	assert options.ai_players == 3
 	assert options.natural_resource_multiplier == 2
-
-	_cleanup()
 
 
 @gui_test()
@@ -112,5 +99,3 @@ def test_start_map(gui):
 	assert not options.trader_enabled
 	assert options.disasters_enabled
 	assert options.ai_players == 1
-
-	_cleanup()
