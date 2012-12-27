@@ -135,7 +135,7 @@ class TabInterface(object):
 		self.init_values()
 
 	def _load_widget(self, widget):
-		widget = load_uh_widget(widget, style="menu_black")
+		widget = load_uh_widget(widget)
 		widget.child_finder = PychanChildFinder(widget)
 		return widget
 
