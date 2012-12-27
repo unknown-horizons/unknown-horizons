@@ -41,6 +41,8 @@ def _start_game(gui):
 
 
 def _cleanup():
+	return  # TODO remove once map preview is working again
+
 	# FIXME this kills the map preview process before the test ends
 	# it will print out errors otherwise because the user directory
 	# doesn't exist anymore
