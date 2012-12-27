@@ -58,25 +58,6 @@ class MapPreview(object):
 		self.get_widget = get_widget
 		self._last_random_map_params = None
 
-	def update_map(self, map_file):
-		"""Direct map preview update.
-		Only use for existing maps, it's too slow for random maps"""
-		if self.minimap is not None:
-			self.minimap.end()
-		world = self._load_raw_world(map_file)
-		self.minimap = Minimap(self._get_map_preview_icon(),
-		                       session=None,
-		                       view=None,
-		                       world=world,
-		                       targetrenderer=horizons.globals.fife.targetrenderer,
-		                       imagemanager=horizons.globals.fife.imagemanager,
-		                       cam_border=False,
-		                       use_rotation=False,
-		                       tooltip=None,
-		                       on_click=None,
-		                       preview=True)
-		self.minimap.draw()
-
 	def update_random_map(self, map_params, on_click):
 		"""Called when a random map parameter has changed.
 		@param map_params: _get_random_map() output
@@ -422,6 +403,8 @@ class FreeMapsWidget(object):
 		self._gui = load_uh_widget('sp_free_maps.xml', 'book')
 		self._game_settings = GameSettingsWidget()
 
+		self._map_preview = None
+
 	def get_widget(self):
 		return self._gui
 
@@ -455,16 +438,40 @@ class FreeMapsWidget(object):
 		self._aidata.show()
 
 	def _update_map_infos(self):
-		number_of_players = SavegameManager.get_recommended_number_of_players(self._get_selected_map())
+		map_file = self._get_selected_map()
+
+		number_of_players = SavegameManager.get_recommended_number_of_players(map_file)
 		#xgettext:python-format
 		self._gui.findChild(name="recommended_number_of_players_lbl").text = \
 			_("Recommended number of players: {number}").format(number=number_of_players)
+
+		self._update_map_preview(map_file)
 
 	def _get_selected_map(self):
 		selection_index = self._gui.collectData('maplist')
 		assert selection_index != -1
 
 		return self._files[self._gui.collectData('maplist')]
+
+	def _update_map_preview(self, map_file):
+		if self._map_preview:
+			self._map_preview.end()
+
+		world = load_raw_world(map_file)
+		self._map_preview = Minimap(
+			self._gui.findChild(name='map_preview_minimap'),
+			session=None,
+			view=None,
+			world=world,
+			targetrenderer=horizons.globals.fife.targetrenderer,
+			imagemanager=horizons.globals.fife.imagemanager,
+			cam_border=False,
+			use_rotation=False,
+			tooltip=None,
+			on_click=None,
+			preview=True)
+
+		self._map_preview.draw()
 
 
 class ScenarioMapWidget(object):
@@ -615,3 +622,11 @@ class ScenarioMapWidget(object):
 		assert selection_index != -1
 
 		return self._files[self._gui.collectData('maplist')]
+
+
+def load_raw_world(map_file):
+	WorldObject.reset()
+	world = World(session=None)
+	world.inited = True
+	world.load_raw_map(SavegameAccessor(map_file, True), preview=True)
+	return world
