@@ -121,7 +121,6 @@ class ProductionOverviewTab(OverviewTab):
 				'toggle_active': Callback(toggle_active.execute, self.instance.session)
 			})
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
-			container.stylize('menu_black')
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
 
