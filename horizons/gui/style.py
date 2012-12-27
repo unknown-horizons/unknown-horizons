@@ -26,10 +26,10 @@ STYLES = {
 		'default': {
 			'border_size': 0,
 			'margins': (0, 0),
-			'base_color': Color(40, 40, 40, 0),
-			'foreground_color': Color( 80, 80, 40, 0),
-			'background_color': Color(0, 0, 0, 0),
 			'selection_color': Color(80, 80, 40, 192),
+			'background_color': Color(0, 0, 0, 0),
+			'foreground_color': Color(80, 80, 40),
+			'base_color': Color(40, 40, 40, 0),
 			'font': '14_black',
 		},
 		'Button': {
@@ -38,8 +38,12 @@ STYLES = {
 			'base_color': Color(80, 80, 40, 64),
 			'margins': (10, 5),
 		},
+		'RadioButton': {
+			'foreground_color': Color(80, 80, 40),
+			'background_color': Color(255, 255, 255, 96),
+		},
 		('Slider', 'StepSlider'): {
-			'base_color': Color(80, 80, 40, 128),
+			'base_color': Color(90, 90, 40, 96),
 		},
 		'CheckBox': {
 			'selection_color': Color(255, 255, 255),
@@ -47,13 +51,24 @@ STYLES = {
 			'foreground_color': Color(80, 80, 40),
 		},
 		'ListBox': {
-			'background_color': Color(255, 255, 255, 64),
+			'background_color': Color(0, 0, 0, 0),
 			'selection_color': Color(255, 255, 255, 160),
 		},
-		'Label': {
+		'TextField': {
+			'selection_color': Color(255, 255, 255),
+			'background_color': Color(255, 255, 255, 64),
+			'base_color': Color(0, 0, 0, 0),
+			'horizontal_scrollbar': 0,
+		},
+		'ScrollArea': {
+			'selection_color': Color(255, 255, 255),
+			'background_color': Color(255, 255, 255, 64),
+			'base_color': Color(90, 90, 40, 96),
+			'horizontal_scrollbar': 0,
 		},
 		('Container', 'HBox', 'VBox'): {
-			'opaque': 0,
+		},
+		'Label': {
 		},
 },
 
@@ -66,6 +81,8 @@ STYLES = {
 			'font': 'mainmenu',
 		},
 },
+
+'book': {}, #TODO remove me after rewriting multiplayermenu
 
 'menu_black': { # style for build menu etc.
 		'default': {
@@ -103,42 +120,6 @@ STYLES = {
 		},
 },
 
-'book': { # style for book widgets
-		'default': {
-			'border_size': 0,
-			'margins': (0, 0),
-			'foreground_color': Color(80, 80, 40),
-			'font': '14_black',
-		},
-		'Label': {
-		},
-		('Slider', 'StepSlider'): {
-			'base_color': Color(90, 90, 40, 96),
-		},
-		'RadioButton': {
-			'foreground_color': Color(80, 80, 40),
-			'background_color': Color(255, 255, 255, 96),
-		},
-		'ListBox': {
-			'background_color': Color(0, 0, 0, 0),
-			'selection_color': Color(255, 255, 255, 160),
-		},
-		'TextField': {
-			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 64),
-			'base_color': Color(0, 0, 0, 0),
-			'horizontal_scrollbar': 0,
-		},
-		'ScrollArea': {
-			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 64),
-			'base_color': Color(90, 90, 40, 96),
-			'horizontal_scrollbar': 0,
-		},
-		('Container', 'HBox', 'VBox'): {
-			'opaque': 0,
-		},
-},
 
 'tooltip': { # style for tooltips
 		'default': {
