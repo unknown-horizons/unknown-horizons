@@ -53,7 +53,7 @@ mpmenu_test = functools.partial(gui_test, additional_cmdline=["--mp-master", "lo
 def test_show_menu(gui):
 	"""Test that the multiplayer page shows up and closes correctly."""
 	gui.trigger('menu', 'multi_button')
-	gui.trigger('menu', 'cancel')
+	gui.trigger('multiplayermenu', 'cancel')
 
 
 @with_setup(start_server, stop_server)
@@ -64,9 +64,9 @@ def test_games_list(gui):
 
 	gui.trigger('menu', 'multi_button')
 
-	gui.trigger('menu', 'refresh')
-	gui.trigger('menu', 'showonlyownversion')
-	gui.trigger('menu', 'refresh')
+	gui.trigger('multiplayermenu', 'refresh')
+	gui.trigger('multiplayermenu', 'showonlyownversion')
+	gui.trigger('multiplayermenu', 'refresh')
 
 
 @with_setup(start_server, stop_server)
@@ -79,10 +79,10 @@ def test_create_game(gui):
 	assert len(games) == 0
 
 	# create a game and enter lobby
-	gui.trigger('menu', 'create')
+	gui.trigger('multiplayermenu', 'create')
 	gui.find('maplist').select('quattro')
 	gui.find('playerlimit').select(2)
-	gui.trigger('menu', 'create')
+	gui.trigger('multiplayer_creategame', 'create')
 
 	games = NetworkInterface().get_active_games()
 	assert len(games) == 1
@@ -91,12 +91,12 @@ def test_create_game(gui):
 	gui.find('chatTextField').write(u'Text').enter()
 
 	# change player color (click on color)
-	gui.trigger('menu', 'pcolor_' + NetworkInterface().get_client_name())
+	gui.trigger('multiplayer_gamelobby', 'pcolor_' + NetworkInterface().get_client_name())
 	gui.trigger('set_player_details_dialog_window', 'cyan')
 	gui.trigger('set_player_details_dialog_window', 'okButton')
 
 	# change player name (click on name)
-	gui.trigger('menu', 'pname_' + NetworkInterface().get_client_name())
+	gui.trigger('multiplayer_gamelobby', 'pname_' + NetworkInterface().get_client_name())
 	gui.find('playername').write(u'Darkwing')
 	gui.trigger('set_player_details_dialog_window', 'okButton')
 
@@ -104,7 +104,7 @@ def test_create_game(gui):
 	gui.run(2)
 	assert NetworkInterface().get_client_name() == 'Darkwing'
 
-	gui.trigger('menu', 'cancel')
+	gui.trigger('multiplayer_gamelobby', 'cancel')
 
 	games = NetworkInterface().get_active_games()
 	assert len(games) == 0

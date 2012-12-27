@@ -81,6 +81,7 @@ class NetworkInterface(object):
 
 		self._messagebus = SimpleMessageBus(message_types)
 		self.subscribe = self._messagebus.subscribe
+		self.unsubscribe = self._messagebus.unsubscribe
 		self.broadcast = self._messagebus.broadcast
 
 		# create a game_details_changed callback
