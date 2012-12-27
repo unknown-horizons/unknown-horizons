@@ -47,38 +47,33 @@ STYLES = {
 			'foreground_color': BROWN[255],
 			'base_color': NOTHING,
 			'font': '14_black',
+			'horizontal_scrollbar': 0,
 		},
 		'Button': {
-			'background_color': WHITE[32],
 			'foreground_color': BROWN[192],
 			'base_color': BROWN[64],
 			'margins': (10, 5),
 		},
 		'RadioButton': {
-			'foreground_color': BROWN[255],
 			'background_color': WHITE[96],
 		},
 		('Slider', 'StepSlider'): {
 			'base_color': BROWN[96],
 		},
 		'CheckBox': {
-			'selection_color': WHITE[255],
 			'background_color': WHITE[96],
-			'foreground_color': BROWN[255],
 		},
 		'ListBox': {
 			'selection_color': WHITE[160],
 		},
 		'TextField': {
-			'selection_color': WHITE[255],
+			'selection_color': BROWN[96],
 			'background_color': WHITE[64],
-			'horizontal_scrollbar': 0,
 		},
 		'ScrollArea': {
 			'selection_color': WHITE[255],
 			'background_color': WHITE[64],
-			'base_color': BROWN[96],
-			'horizontal_scrollbar': 0,
+			'base_color': BROWN[64],
 		},
 		('Container', 'HBox', 'VBox'): {
 		},
