@@ -84,17 +84,7 @@ STYLES = {
 
 'book': {}, #TODO remove me after rewriting multiplayermenu
 
-'menu_black': { # style for build menu etc.
-		'default': {
-			'font': '14_black',
-		},
-		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container', 'HBox', 'VBox'): {
-		},
-		# once more, better not ask why this is necessary (#1607)
-		'CheckBox': {
-		},
-},
+'menu_black': {},
 
 'resource_bar': {
 		'default': {
