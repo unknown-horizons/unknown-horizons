@@ -225,6 +225,7 @@ class RandomMapWidget(object):
 
 	def show(self):
 		seed_string_field = self._gui.findChild(name='seed_string_field')
+		seed_string_field.capture(self._on_random_parameter_changed)
 		seed_string_field.text = generate_random_seed(seed_string_field.text)
 
 		parameters = (
@@ -275,6 +276,11 @@ class RandomMapWidget(object):
 		self._update_map_preview()
 
 	# Map preview
+
+	def _on_preview_click(self, event, drag):
+		seed_string_field = self._gui.findChild(name='seed_string_field')
+		seed_string_field.text = generate_random_seed(seed_string_field.text)
+		self._on_random_parameter_changed()
 
 	def _update_map_preview(self):
 		"""Start a new process to generate a map preview."""
@@ -340,8 +346,8 @@ class RandomMapWidget(object):
 			imagemanager=horizons.globals.fife.imagemanager,
 			cam_border=False,
 			use_rotation=False,
-			tooltip=_(""),  # FIXME minimap crashes with tooltip=None
-			on_click=None,
+			tooltip=_("Click to generate a different random map"),
+			on_click=self._on_preview_click,
 			preview=True)
 
 		self._map_preview.draw_data(data)
