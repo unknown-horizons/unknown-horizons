@@ -389,7 +389,7 @@ class RouteConfig(object):
 
 		self._gui.adaptLayout()
 
-	def on_click(self, event, drag):
+	def on_map_click(self, event, drag):
 		if drag:
 			return
 		if event.getButton() == fife.MouseEvent.LEFT:
@@ -420,7 +420,7 @@ class RouteConfig(object):
 		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
-		                       on_click=self.on_click)
+		                       on_click=self.on_map_click)
 
 		resources = self.session.db.get_res_id_and_icon(only_tradeable=True)
 		# map an icon for a resource
