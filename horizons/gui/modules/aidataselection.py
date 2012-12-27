@@ -29,7 +29,7 @@ class AIDataSelection(object):
 	"""Subwidget for selecting AI settings."""
 
 	def __init__(self):
-		self.gui = load_uh_widget('aidataselection.xml', 'book')
+		self.gui = load_uh_widget('aidataselection.xml')
 
 		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(MULTIPLAYER.MAX_PLAYER_COUNT)]})
 		self.gui.distributeData({
