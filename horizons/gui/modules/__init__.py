@@ -28,3 +28,4 @@ from multiplayermenu import MultiplayerMenu
 from help import HelpDialog
 from select_savegame import SelectSavegameDialog
 from loadingscreen import LoadingScreen
+from pausemenu import PauseMenu

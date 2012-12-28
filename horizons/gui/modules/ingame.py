@@ -38,8 +38,9 @@ from horizons.util.python.callback import Callback
 class ChatDialog(object):
 	"""Allow player to send messages to other players."""
 
-	def __init__(self, main_gui, session):
+	def __init__(self, main_gui, ingame_gui, session):
 		self._main_gui = main_gui
+		self._ingame_gui = ingame_gui
 		self._session = session
 		self._widget = load_uh_widget('chat.xml', 'book')
 
@@ -63,7 +64,7 @@ class ChatDialog(object):
 		self._widget.findChild(name="msg").requestFocus()
 
 	def hide(self):
-		self._main_gui.on_escape = self._main_gui.toggle_pause
+		self._main_gui.on_escape = self._ingame_gui.toggle_pause
 		self._widget.hide()
 
 	def _do_chat(self):
@@ -77,8 +78,9 @@ class ChatDialog(object):
 class ChangeNameDialog(object):
 	"""Shows a dialog where the user can change the name of a NamedComponent."""
 
-	def __init__(self, main_gui, session):
+	def __init__(self, main_gui, ingame_gui, session):
 		self._main_gui = main_gui
+		self._ingame_gui = ingame_gui
 		self._session = session
 		self._widget = load_uh_widget('change_name.xml', 'book')
 
@@ -105,7 +107,7 @@ class ChangeNameDialog(object):
 		self._widget.findChild(name="new_name").requestFocus()
 
 	def hide(self):
-		self._main_gui.on_escape = self._main_gui.toggle_pause
+		self._main_gui.on_escape = self._ingame_gui.toggle_pause
 		self._widget.hide()
 
 	def _do_change_name(self, instance):
