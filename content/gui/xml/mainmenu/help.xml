@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<Container name="help_window" size="800,580" position="100,100">
-<Icon image="content/gui/images/background/book.png" />
+<Container name="help_window" size="800,580" position_technique="automatic"
+	background_image="content/gui/images/background/book.png">
 
-<VBox position="107,42" max_size="340,485" min_size="340,485" padding="10">
+<VBox position="72,40" max_size="340,485" min_size="340,485" padding="10">
 	<Label text="Key bindings" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox>
@@ -34,7 +34,7 @@
 	<Spacer />
 </VBox>
 
-<VBox position="447,62" max_size="340,465" min_size="340,465" padding="10">
+<VBox position="412,60" max_size="340,465" min_size="340,465" padding="10">
 	<VBox>
 		<Label name="lbl_TRANSLUCENCY" text="Toggle translucency of ambient buildings"
 			wrap_text="1"  max_size="290,40"  min_size="290,20" />

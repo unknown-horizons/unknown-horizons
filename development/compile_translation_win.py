@@ -44,4 +44,3 @@ for x in files:
 	os.system(command)
 
 print '\n== Completed generating translations ==\n'
-raw_input('Press any key to exit...')

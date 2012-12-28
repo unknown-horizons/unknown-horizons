@@ -47,6 +47,33 @@ def test_change_name(gui):
 
 
 @gui_test(use_dev_map=True, timeout=60)
+def test_change_name_empty_not_allowed(gui):
+	"""Make sure an object's name can't be changed to some empty string.
+
+	See issue #1978.
+	"""
+	ship = get_player_ship(gui.session)
+	old_name = ship.get_component(NamedComponent).name
+
+	# try empty name
+	gui.select([ship])
+	gui.trigger('overview_trade_ship', 'name')
+	gui.find('new_name').write('')
+	gui.trigger('change_name_dialog_window', 'okButton')
+
+	new_name = ship.get_component(NamedComponent).name
+	assert old_name == new_name
+
+	# try name with just spaces
+	gui.trigger('overview_trade_ship', 'name')
+	gui.find('new_name').write('   ')
+	gui.trigger('change_name_dialog_window', 'okButton')
+
+	new_name = ship.get_component(NamedComponent).name
+	assert old_name == new_name
+
+
+@gui_test(use_dev_map=True, timeout=60)
 def test_chat(gui):
 	"""Opens chat dialog.
 

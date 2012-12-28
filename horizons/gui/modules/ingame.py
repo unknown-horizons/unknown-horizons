@@ -112,7 +112,7 @@ class ChangeNameDialog(object):
 		new_name = self._widget.collectData('new_name')
 		self._widget.findChild(name='new_name').text = u''
 
-		if not new_name or not new_name.isspace():
+		if new_name and not new_name.isspace():
 			# different namedcomponent classes share the name
 			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self._session)
 

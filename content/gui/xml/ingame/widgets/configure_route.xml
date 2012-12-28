@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<Container name="configure_route" size="1020,580" position="-20,0">
-	<Icon image="content/gui/images/background/book.png" position="100,0" />
+<Container name="configure_route" size="800,580"
+	background_image="content/gui/images/background/book.png">
 
 	<!-- left side -->
 
-	<VBox name="left_vbox" max_size="350,508" min_size="350,508" position="175,40" padding="5" />
+	<VBox name="left_vbox" max_size="350,508" min_size="350,508" position="75,40" padding="5" />
 	<VBox position="250,495">
 		<HBox>
 			<Label name="lbl_wait_at_load" text="Wait at load:"
@@ -18,11 +18,9 @@
 		</HBox>
 	</VBox>
 
-
-
 	<!-- right side -->
 
-	<VBox name="right_vbox" max_size="330,508" min_size="330,508" position="516,40" padding="2">
+	<VBox name="right_vbox" max_size="330,508" min_size="330,508" position="416,40" padding="2">
 		<Icon name="minimap" size="300,300" max_size="300,300" is_focusable="0" /> <!-- settlement selection in minimap -->
 
 		<!-- this box is only displayed on resource selection. -->
@@ -44,6 +42,5 @@
 			<OkButton helptext="Exit" />
 		</HBox>
 	</VBox>
-<!-- Here pickbelts could be added to achieve more space.
-Refer to gui/credits/*.xml for sample implementation. -->
+<!-- Here pickbelts could be added to achieve more space.-->
 </Container>

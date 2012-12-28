@@ -47,7 +47,7 @@
 
 		<!-- http://fife.trac.cvsdude.com/engine/ticket/692 ::
 		<ScrollArea min_size="215,200" max_size="215,200" position="21,52" vertical_scroll_amount="50">-->
-		<ScrollArea min_size="215,250" max_size="215,250" position="21,42" name="fife_ticket_692">
+		<ScrollArea min_size="215,270" max_size="215,270" position="21,42" name="fife_ticket_692">
 			<Inventory name="inventory" min_size="215,250" max_size="215,1000" items_per_line="4" />
 		</ScrollArea>
 	</Container>

@@ -308,6 +308,7 @@ class RouteConfig(object):
 		self.slots[entry] = {}
 		for num in range(slot_amount):
 			slot = load_uh_widget('trade_single_slot.xml')
+			slot.name = 'slot_%d' % num
 			slot.position = (x_position, 0)
 
 			slot.action = "load"
@@ -336,6 +337,7 @@ class RouteConfig(object):
 	def add_gui_entry(self, warehouse, resource_list=None):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
+		entry.name = 'container_%s' % len(self.widgets)
 		entry.settlement = weakref.ref( warehouse.settlement )
 		self.widgets.append(entry)
 
@@ -387,6 +389,15 @@ class RouteConfig(object):
 
 		self._gui.adaptLayout()
 
+	def on_map_click(self, event, drag):
+		if drag:
+			return
+		if event.getButton() == fife.MouseEvent.LEFT:
+			map_coords = event.map_coords
+			tile = self.session.world.get_tile(Point(*map_coords))
+			if tile is not None and tile.settlement is not None:
+				self.append_warehouse( tile.settlement.warehouse )
+
 	def _init_gui(self):
 		"""
 		Initial init of gui.
@@ -400,14 +411,7 @@ class RouteConfig(object):
 		self.slots_per_entry = 3
 
 		icon = self._gui.findChild(name="minimap")
-		def on_click(event, drag):
-			if drag:
-				return
-			if event.getButton() == fife.MouseEvent.LEFT:
-				map_coords = event.map_coords
-				tile = self.session.world.get_tile(Point(*map_coords))
-				if tile is not None and tile.settlement is not None:
-					self.append_warehouse( tile.settlement.warehouse )
+
 
 		self.minimap = Minimap(icon, session=self.session,
 		                       world=self.session.world,
@@ -416,7 +420,7 @@ class RouteConfig(object):
 		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
-		                       on_click=on_click)
+		                       on_click=self.on_map_click)
 
 		resources = self.session.db.get_res_id_and_icon(only_tradeable=True)
 		# map an icon for a resource

@@ -35,8 +35,9 @@ class FPSDisplay(AutoResizeContainer):
 	def __init__(self):
 		super(FPSDisplay, self).__init__()
 
-		self._label = Label(text=u"FPS: ")
+		self._label = Label(text=u"- - -")
 		self.addChild(self._label)
+		self.stylize('menu')
 		self.position_technique = "left+0:bottom+0"
 
 		self._timemanager = horizons.globals.fife.engine.getTimeManager()
@@ -45,6 +46,8 @@ class FPSDisplay(AutoResizeContainer):
 		fps = 1000 / self._timemanager.getAverageFrameTime()
 		self._label.text = u"FPS: %.1f" % fps
 		self.resizeToContent()
+		self.toggle()  # hide and show again to fix position (pychan...)
+		self.toggle()
 
 	def show(self):
 		ExtScheduler().add_new_object(self._update, self, loops=-1)

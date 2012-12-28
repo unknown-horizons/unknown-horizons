@@ -77,8 +77,8 @@ class Inventory(Container):
 				self.__icon.position = (130, 53)
 				self.legend.position = (150, 53)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				self.__icon.position = ( 0, 203)
-				self.legend.position = (20, 203)
+				self.__icon.position = ( 0, 248)
+				self.legend.position = (20, 248)
 
 		self.update()
 

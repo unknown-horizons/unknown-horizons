@@ -54,17 +54,39 @@ class WindowManager(object):
 		if self._modal_background:
 			self._modal_background.hide()
 
-	def show_dialog(self, dlg, bind, event_map=None, modal=False):
+	def show_dialog(self, dlg, bind, event_map=None, modal=False, focus=None):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
 		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 		@param modal: Whether to block user interaction while displaying the dialog
+		@param focus: Which child widget should take focus
 		"""
 		if event_map is not None:
 			dlg.mapEvents(event_map)
 		if modal:
 			self.show_modal_background()
+
+		def execute(widget, bind):
+			""" Execute the dialog synchronously. ## We implement this again as we want to 
+						retain focus for child widget sometimes.
+				@param widget: widget to execute
+				@param bind: Dictionary with buttons and return values
+			"""
+			# FIXME:This is a workaround for lack of native implementation of focus handling within execute() in FIFE. 
+			#		Ref. FIFE ticket #750.
+			for name,returnValue in bind.items():
+				def _quitThisDialog(returnValue = returnValue ):
+					horizons.globals.fife.pychanmanager.breakFromMainLoop( returnValue )
+					widget.hide()
+				widget.findChild(name=name).capture( _quitThisDialog , group_name = "__execute__" )
+			widget.show()
+			if focus and widget.findChild(name=focus):
+				widget.findChild(name=focus).requestFocus() # child widget takes focus
+			else:
+				widget.is_focusable = True
+				widget.requestFocus()
+			return horizons.globals.fife.pychanmanager.mainLoop()
 
 		# handle escape and enter keypresses
 		def _on_keypress(event, dlg=dlg): # rebind to make sure this dlg is used
@@ -88,7 +110,7 @@ class WindowManager(object):
 
 		# show that a dialog is being executed, this can sometimes require changes in program logic elsewhere
 		self.dialog_executed = True
-		ret = dlg.execute(bind)
+		ret = execute(dlg, bind)
 		self.dialog_executed = False
 		if modal:
 			self.hide_modal_background()

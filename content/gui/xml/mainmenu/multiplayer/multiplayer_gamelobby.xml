@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <Container name="menu"  size="1024,768" position_technique="automatic">
 
-<Container size="800,800"  position="100,100">
+<Container size="800,580"  position="100,100">
+	<!-- TODO use background_image instead of Icon-->
 	<Icon image="content/gui/images/background/book.png" />
 
 	<Container size="320,500"  position="55,32"  name="left_page">
@@ -39,7 +40,7 @@
 		<Label name="game_playersnum" position="0,190" />
 		<Label name="game_player_color" position="130,190" text="Color" />
 		<Label name="game_player_status" position="205,190" text="Status" />
-		<VBox name="players_vbox" position="0,215"></VBox>
+		<VBox name="players_vbox" position="0,215" />
 	</Container>
 
 </Container>

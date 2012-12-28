@@ -30,7 +30,8 @@ import horizons.globals
 import horizons.main
 
 from horizons.world import World  # FIXME placing this import at the end results in a cycle
-from horizons.constants import LANGUAGENAMES
+from horizons.constants import LANGUAGENAMES, PATHS, VERSION
+from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import find_available_languages
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
@@ -610,7 +611,20 @@ def generate_random_minimap(size, parameters):
 	from horizons.ext.dummy import Dummy
 	from horizons.main import _create_main_db
 
+	if not VERSION.IS_DEV_VERSION:
+		# Hack enable atlases.
+		# Usually the minimap generator uses single tile files, but in release
+		# mode these are not available. Therefor we have to hackenable atlases
+		# for the minimap generation in this case. This forces the game to use
+		# the correct imageloader
+		# In normal dev mode + enabled atlases we ignore this and just continue 
+		# to use single tile files instead of atlases for the minimap generation.
+		# These are always available in dev checkouts
+		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
+
 	db = _create_main_db()
+	horizons.globals.db = db
+	horizons.globals.fife.init_animation_loader(not VERSION.IS_DEV_VERSION)
 	Entities.load_grounds(db, load_now=False) # create all references
 	map_file = generate_random_map(*parameters)
 	world = load_raw_world(map_file)

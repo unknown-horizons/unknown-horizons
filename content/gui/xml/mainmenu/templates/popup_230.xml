@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="popup_window"  size="374,230"  position="325,235"
+<Container name="popup_window"  size="374,230"  position_technique="automatic"
 	background_image="content/gui/images/background/notice230.png">
 
 <VBox position="30,30"  name="message_box">

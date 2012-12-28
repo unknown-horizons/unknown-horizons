@@ -45,7 +45,7 @@ except ImportError as e:
 	sys.exit(1)
 
 from run_uh import init_environment
-init_environment()
+init_environment(False)
 
 import horizons.main
 

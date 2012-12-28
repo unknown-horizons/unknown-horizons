@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="popup_window"  size="472,290"
+<Container name="popup_window"  size="472,290"  position_technique="automatic"
 	background_image="content/gui/images/background/notice290.png">
 
 <VBox position="30,30"  name="message_box">
@@ -11,7 +11,5 @@
 
 <CancelButton position="25,220" is_focusable="0" />
 <OkButton position="410,220" is_focusable="1" /> <!-- needed to be able to trigger this on enter -->
-
-
 
 </Container>

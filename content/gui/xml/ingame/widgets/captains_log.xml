@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<Container name="captains_log" size="1020,580" position="-20,0">
+<Container name="captains_log" size="1000,580">
 <Icon image="content/gui/images/background/book.png" position="100,0" />
 
 <Container name="left_pickbelts" size="195,580" position="30,0" />
-<HBox name="logbook" max_size="700,508" min_size="700,508" padding="-7">
+<HBox name="logbook" max_size="700,508" min_size="700,508" padding="-7" position="168,40">
 	<!-- left page -->
 	<VBox max_size="350,508" min_size="350,508" padding="5" name="logbook_left">
 		<VBox name="custom_widgets_left" max_size="350,472" min_size="350,0"
@@ -36,7 +36,7 @@
 	</VBox> <!-- closes VBox logbook right page -->
 </HBox> <!-- closes: <HBox name="logbook"> -->
 
-<VBox name="statistics" max_size="700,508" min_size="700,508">
+<VBox name="statistics" max_size="700,508" min_size="700,508" position="168,40">
 	<Label name="headline_statistics" text="Statistics"
 		wrap_text="0" max_size="323, 25" min_size="323, 25" />
 	<Icon image="content/gui/images/background/hr.png" />
@@ -47,7 +47,7 @@
 	</HBox>
 </VBox> <!--closes: <VBox name="statistics">-->
 
-<HBox name="chat_overview" max_size="700,508" min_size="700,508" padding="0">
+<HBox name="chat_overview" max_size="700,508" min_size="700,508" padding="0" position="168,40">
 	<VBox name="game_messages" comment="Left page" max_size="345,508" min_size="345,508">
 		<Label name="headline_game_messages" text="Game messages"
 			wrap_text="0" max_size="323, 25" min_size="323, 25" />

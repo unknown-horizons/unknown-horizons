@@ -168,7 +168,6 @@ class View(ChangeListener):
 			horizons.globals.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self._changed()
 
-
 	def _prepare_zoom_to_cursor(self, zoom):
 		"""Change the camera's position to accommodation zooming to the specified setting."""
 		def middle(click_coord, scale, length):
@@ -180,8 +179,8 @@ class View(ChangeListener):
 		new_x = middle(x, scale, horizons.globals.fife.engine_settings.getScreenWidth())
 		new_y = middle(y, scale, horizons.globals.fife.engine_settings.getScreenHeight())
 		screen_point = fife.ScreenPoint(new_x, new_y)
-		map_point = self.session.view.cam.toMapCoordinates(screen_point, False)
-		self.session.view.center(map_point.x, map_point.y)
+		map_point = self.cam.toMapCoordinates(screen_point, False)
+		self.center(map_point.x, map_point.y)
 
 	def zoom_out(self, track_cursor=False):
 		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR

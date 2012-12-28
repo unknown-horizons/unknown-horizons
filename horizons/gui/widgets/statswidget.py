@@ -30,9 +30,10 @@ class StatsWidget(object):
 
 	widget_file_name = None # name of the widget's XML file
 
-	def __init__(self, session):
+	def __init__(self, session, center_widget=False):
 		super(StatsWidget, self).__init__()
 		self.session = session
+		self.center_widget = center_widget
 		self._initialized = False
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 
@@ -75,8 +76,9 @@ class StatsWidget(object):
 			self.refresh()
 
 	def _init_gui(self):
-		self._gui = load_uh_widget(self.widget_file_name)
-		self._gui.position_technique = 'center:center+25'
+		self._gui = load_uh_widget(self.widget_file_name, center_widget=self.center_widget)
+		if not self.center_widget:
+			self._gui.position_technique = 'center+20:center+25'
 		self._content_vbox = self._gui.findChild(name='content_vbox')
 		self.refresh()
 

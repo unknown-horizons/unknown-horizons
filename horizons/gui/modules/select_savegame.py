@@ -24,11 +24,15 @@ import os.path
 import tempfile
 import time
 
+from fife import fife
+
+import horizons.globals
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.savegameupgrader import SavegameUpgrader
+from horizons.extscheduler import ExtScheduler
 
 
 class SelectSavegameDialog(object):
@@ -67,6 +71,7 @@ class SelectSavegameDialog(object):
 		# Prepare widget
 		old_current = self.mainmenu._switch_current_widget(self._widget)
 		self.current = self.mainmenu.current
+		self.last_click_event = ()
 		if mode == 'save':
 			helptext = _('Save game')
 		elif mode == 'load':
@@ -92,8 +97,6 @@ class SelectSavegameDialog(object):
 				name_box.parent.hideChild(name_box)
 			if password_box not in name_box.parent.hidden_children:
 				password_box.parent.hideChild(password_box)
-
-		self.current.show()
 
 		if not hasattr(self, 'filename_hbox'):
 			self.filename_hbox = self.current.findChild(name='enter_filename')
@@ -121,7 +124,8 @@ class SelectSavegameDialog(object):
 		cb_details = self._create_show_savegame_details(self.current, map_files, 'savegamelist')
 		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
 		cb() # Refresh data on start
-		self.current.mapEvents({'savegamelist/action': cb})
+		self.current.mapEvents({'savegamelist/action': cb,
+								'savegamelist/mouseClicked': self.check_double_click})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		bind = {
@@ -133,9 +137,9 @@ class SelectSavegameDialog(object):
 		if mode == 'save':
 			bind['savegamefile'] = True
 
-		retval = self.mainmenu.show_dialog(self.current, bind)
+		retval = self.mainmenu.show_dialog(self.current, bind, focus='savegamefile')
 		if not retval: # cancelled
-			self.current = old_current
+			self.mainmenu.current = old_current # return back to old state
 			return
 
 		if retval == 'delete':
@@ -182,6 +186,24 @@ class SelectSavegameDialog(object):
 		self.mainmenu.current = old_current # reuse old widget
 		return ret
 
+	def check_double_click(self, event):
+		"""Check if there was a left dobule click"""
+		if event.getButton() != fife.MouseEvent.LEFT:
+			return
+		if self.last_click_event == (event.getX(), event.getY()) and self.clicked:
+			self.clicked = False
+			ExtScheduler().rem_call(self, self.reset_click_status)
+			self.current.hide()
+			horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=True)
+		else:
+			self.clicked = True
+			ExtScheduler().add_new_object(self.reset_click_status, self, run_in=0.3, loops=0)
+			self.last_click_event = (event.getX(), event.getY())
+
+	def reset_click_status(self):
+		"""Callback function to reset the click status by Scheduler"""
+		self.clicked = False
+
 	def _create_show_savegame_details(self, gui, map_files, savegamelist):
 		"""Creates a function that displays details of a savegame in gui"""
 
@@ -190,11 +212,15 @@ class SelectSavegameDialog(object):
 			gui.findChild(name="screenshot").image = None
 			map_file = None
 			map_file_index = gui.collectData(savegamelist)
+
+			savegame_details_box = gui.findChild(name="savegame_details")
+			savegame_details_parent = savegame_details_box.parent
 			if map_file_index == -1:
-				gui.findChild(name="savegame_details").hide()
+				if savegame_details_box not in savegame_details_parent.hidden_children:
+					savegame_details_parent.hideChild(savegame_details_box)
 				return
 			else:
-				gui.findChild(name="savegame_details").show()
+				savegame_details_parent.showChild(savegame_details_box)
 			try:
 				map_file = map_files[map_file_index]
 			except IndexError:

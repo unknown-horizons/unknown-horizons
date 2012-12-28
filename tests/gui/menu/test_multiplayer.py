@@ -36,7 +36,8 @@ _master_server = None
 
 def start_server():
 	global _master_server
-	_master_server = subprocess.Popen([sys.executable, "server.py", "-h", "localhost", "-p", "2002"])
+	args = [sys.executable, "server.py", "-h", "localhost", "-p", "2002"]
+	_master_server = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def stop_server():

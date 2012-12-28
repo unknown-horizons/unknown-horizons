@@ -42,7 +42,7 @@ class ProductionOverview(StatsWidget):
 	widget_file_name = 'island_production.xml'
 
 	def __init__(self, settlement):
-		super(ProductionOverview, self).__init__(settlement.session)
+		super(ProductionOverview, self).__init__(settlement.session, center_widget=True)
 		self.settlement = settlement
 		self.db = self.settlement.session.db
 		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
