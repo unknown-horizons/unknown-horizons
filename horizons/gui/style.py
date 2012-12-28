@@ -54,7 +54,8 @@ STYLES = {
 			'foreground_color': BROWN[192],
 			'margins': (10, 5),
 		},
-		#FIXME #TODO combine the following two, just like Slider&StepSlider
+		#TODO combine the following two after the tuple notation bug is fixed:
+		# http://fife.trac.cvsdude.com/engine/ticket/656
 		'CheckBox': {
 			'background_color': WHITE[96],
 		},
@@ -69,7 +70,11 @@ STYLES = {
 			'background_color': WHITE[64],
 			'base_color': BROWN[64],
 		},
-		('Slider', 'StepSlider'): {
+		#TODO combine the following two after the tuple notation bug is fixed
+		'Slider': {
+			'base_color': BROWN[96],
+		},
+		'StepSlider': {
 			'base_color': BROWN[96],
 		},
 		'TextField': {
@@ -77,7 +82,11 @@ STYLES = {
 			'background_color': WHITE[64],
 		},
 		#FIXME #TODO why are these here
-		('Container', 'HBox', 'VBox'): {
+		'Container': {
+		},
+		'HBox': {
+		},
+		'VBox': {
 		},
 		'Label': {
 		},
