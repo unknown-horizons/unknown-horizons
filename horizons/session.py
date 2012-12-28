@@ -112,7 +112,7 @@ class Session(LivingObject):
 
 		#GUI
 		self.gui.session = self
-		self.ingame_gui = ingame_gui_class(self, self.gui)
+		self._ingame_gui_class = ingame_gui_class
 
 		self.selected_instances = set()
 		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
@@ -259,6 +259,7 @@ class Session(LivingObject):
 
 		# load the old gui positions and stuff
 		# Do this before loading selections, they need the minimap setup
+		self.ingame_gui = self._ingame_gui_class(self, self.gui)
 		self.ingame_gui.load(savegame_db)
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
