@@ -202,17 +202,7 @@ class View(ChangeListener):
 		return self.cam.getZoom()
 
 	def set_zoom(self, zoom):
-		in_icon = self.session.ingame_gui.mainhud.findChild(name='zoomIn')
-		out_icon = self.session.ingame_gui.mainhud.findChild(name='zoomOut')
 		self.cam.setZoom(zoom)
-		if zoom == VIEW.ZOOM_MIN:
-			out_icon.set_inactive()
-		else:
-			out_icon.set_active()
-		if zoom == VIEW.ZOOM_MAX:
-			in_icon.set_inactive()
-		else:
-			in_icon.set_active()
 		self._changed()
 
 	def rotate_right(self):

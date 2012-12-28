@@ -24,7 +24,7 @@ from fife import fife
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS
+from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
@@ -128,6 +128,7 @@ class IngameGui(LivingObject):
 		# Register for messages
 		SettlerUpdate.subscribe(self._on_settler_level_change)
 		SpeedChanged.subscribe(self._on_speed_changed)
+		self.session.view.add_change_listener(self._update_zoom)
 
 		self._display_speed(self.session.timer.ticks_per_second)
 
@@ -154,6 +155,7 @@ class IngameGui(LivingObject):
 		self.hide_menu()
 		SettlerUpdate.unsubscribe(self._on_settler_level_change)
 		SpeedChanged.unsubscribe(self._on_speed_changed)
+		self.session.view.remove_change_listener(self._update_zoom)
 
 		if self.cursor:
 			self.cursor.remove()
@@ -491,3 +493,17 @@ class IngameGui(LivingObject):
 	def toggle_destroy_tool(self):
 		"""Initiate the destroy tool"""
 		self.toggle_cursor('tearing')
+
+	def _update_zoom(self):
+		"""Enable/disable zoom buttons"""
+		zoom = self.session.view.get_zoom()
+		in_icon = self.mainhud.findChild(name='zoomIn')
+		out_icon = self.mainhud.findChild(name='zoomOut')
+		if zoom == VIEW.ZOOM_MIN:
+			out_icon.set_inactive()
+		else:
+			out_icon.set_active()
+		if zoom == VIEW.ZOOM_MAX:
+			in_icon.set_inactive()
+		else:
+			in_icon.set_active()
