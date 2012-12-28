@@ -106,7 +106,7 @@ class Session(LivingObject):
 		self.timer = self.create_timer()
 		Scheduler.create_instance(self.timer)
 		self.manager = self.create_manager()
-		self.view = View(self)
+		self.view = View()
 		Entities.load(self.db)
 		self.scenario_eventhandler = ScenarioEventHandler(self) # dummy handler with no events
 
@@ -248,7 +248,7 @@ class Session(LivingObject):
 
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(savegame_db, options.force_player_id, disasters_enabled=options.disasters_enabled)
-		self.view.load(savegame_db) # load view
+		self.view.load(savegame_db, self.world) # load view
 		if not self.is_game_loaded():
 			options.init_new_world(self)
 		else:
@@ -257,6 +257,10 @@ class Session(LivingObject):
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
 		self.world.init_fish_indexer() # now the fish should exist
 
+		# load the old gui positions and stuff
+		# Do this before loading selections, they need the minimap setup
+		self.ingame_gui.load(savegame_db)
+
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.get_object_by_id(instance_id[0])
 			self.selected_instances.add(obj)
@@ -264,8 +268,6 @@ class Session(LivingObject):
 		for group in xrange(len(self.selection_groups)): # load user defined unit groups
 			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
-
-		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
 		Scheduler().before_ticking()
 		savegame_db.close()

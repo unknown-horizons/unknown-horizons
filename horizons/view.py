@@ -32,12 +32,9 @@ from horizons.constants import LAYERS, VIEW, GAME_SPEED
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
-	def __init__(self, session):
-		"""
-		@param session: Session instance
-		"""
+	def __init__(self):
 		super(View, self).__init__()
-		self.session = session
+		self.world = None
 		self.model = horizons.globals.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
@@ -149,15 +146,15 @@ class View(ChangeListener):
 			pos.x += y * math.sin(new_angle) / zoom_factor
 			pos.y += y * math.cos(new_angle) / zoom_factor
 
-		if pos.x > self.session.world.max_x:
-			pos.x = self.session.world.max_x
-		elif pos.x < self.session.world.min_x:
-			pos.x = self.session.world.min_x
+		if pos.x > self.world.max_x:
+			pos.x = self.world.max_x
+		elif pos.x < self.world.min_x:
+			pos.x = self.world.min_x
 
-		if pos.y > self.session.world.max_y:
-			pos.y = self.session.world.max_y
-		elif pos.y < self.session.world.min_y:
-			pos.y = self.session.world.min_y
+		if pos.y > self.world.max_y:
+			pos.y = self.world.max_y
+		elif pos.y < self.world.min_y:
+			pos.y = self.world.min_y
 
 		self.cam.setLocation(loc)
 		for i in ['speech', 'effects']:
@@ -232,8 +229,9 @@ class View(ChangeListener):
 		db("INSERT INTO view(zoom, rotation, location_x, location_y) VALUES(?, ?, ?, ?)",
 			 self.cam.getZoom(), self.cam.getRotation(), loc.x, loc.y)
 
-	def load(self, db):
+	def load(self, db, world):
 		# NOTE: this is no class function, since view is initiated before loading
+		self.world = world
 		res = db("SELECT zoom, rotation, location_x, location_y FROM view")
 		if not res:
 			# no view info
