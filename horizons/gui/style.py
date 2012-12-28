@@ -101,17 +101,11 @@ STYLES = {
 		'default': {
 			'font': '18',
 		},
-		'Label': {
-			#HACK apply defaults to xml widgets without adaptLayout code
-		},
 },
 
 'headline': { # style for headlines
 		'default': {
 			'font': 'headline',
-		},
-		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container', 'HBox', 'VBox'): {
 		},
 },
 
@@ -120,8 +114,6 @@ STYLES = {
 		'default': {
 			'font': 'tooltip',
 		},
-		'Label': {
-		},
-	},
+},
 
 }
