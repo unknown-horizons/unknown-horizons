@@ -40,7 +40,7 @@ from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
                                   SelectSavegameDialog, LoadingScreen)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager
-from horizons.command.game import PauseCommand, UnPauseCommand
+
 
 class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
@@ -120,71 +120,6 @@ class Gui(object):
 		options = StartGameOptions(saved_game)
 		horizons.main.start_singleplayer(options)
 		return True
-
-	def toggle_pause(self):
-		"""Shows in-game pause menu if the game is currently not paused.
-		Else unpauses and hides the menu. Multiple layers of the 'paused' concept exist;
-		if two widgets are opened which would both pause the game, we do not want to
-		unpause after only one of them is closed. Uses PauseCommand and UnPauseCommand.
-		"""
-		# TODO: logically, this now belongs to the ingame_gui (it used to be different)
-		#       this manifests itself by the need for the __pause_displayed hack below
-		#       in the long run, this should be moved, therefore eliminating the hack, and
-		#       ensuring correct setup/teardown.
-		if self.__pause_displayed:
-			self.__pause_displayed = False
-			self.hide()
-			self.current = None
-			UnPauseCommand(suggestion=True).execute(self.session)
-			self.on_escape = self.toggle_pause
-
-		else:
-			self.__pause_displayed = True
-			# reload the menu because caching creates spacing problems
-			# see http://trac.unknown-horizons.org/t/ticket/1047
-			in_editor_mode = self.session.in_editor_mode()
-			menu_name = 'editor_pause_menu.xml' if in_editor_mode else 'ingamemenu.xml'
-			menu_widget = load_uh_widget(menu_name, 'headline')
-			def do_load():
-				did_load = self.load_game()
-				if did_load:
-					self.__pause_displayed = False
-			def do_load_map():
-				self.show_editor_start_menu(False)
-			def do_quit():
-				did_quit = self.quit_session()
-				if did_quit:
-					self.__pause_displayed = False
-			events = { # needed twice, save only once here
-				'e_load' : do_load_map if in_editor_mode else do_load,
-				'e_save' : self.session.ingame_gui.show_save_map_dialog if in_editor_mode else self.save_game,
-				'e_sett' : self.show_settings,
-				'e_help' : self.on_help,
-				'e_start': self.toggle_pause,
-				'e_quit' : do_quit,
-			}
-			self._switch_current_widget(menu_widget, show=False, event_map={
-				  # icons
-				'loadgameButton' : events['e_load'],
-				'savegameButton' : events['e_save'],
-				'settingsLink'   : events['e_sett'],
-				'helpLink'       : events['e_help'],
-				'startGame'      : events['e_start'],
-				'closeButton'    : events['e_quit'],
-				# labels
-				'loadgame' : events['e_load'],
-				'savegame' : events['e_save'],
-				'settings' : events['e_sett'],
-				'help'     : events['e_help'],
-				'start'    : events['e_start'],
-				'quit'     : events['e_quit'],
-			})
-
-			self.windows.show_modal_background()
-			self.current.show()
-
-			PauseCommand(suggestion=True).execute(self.session)
-			self.on_escape = self.toggle_pause
 
 # what happens on button clicks
 

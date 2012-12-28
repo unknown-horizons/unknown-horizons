@@ -25,6 +25,7 @@ import horizons.globals
 from horizons.constants import GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
+from horizons.gui.modules import PauseMenu
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -70,7 +71,7 @@ class IngameGui(LivingObject):
 			'zoomOut': self.session.view.zoom_out,
 			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
 			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
-			'gameMenuButton' : self.main_gui.toggle_pause,
+			'gameMenuButton': self.toggle_pause,
 		})
 
 		self.mainhud.show()
@@ -80,7 +81,8 @@ class IngameGui(LivingObject):
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
 			self.mainhud.findChild(name=widget).hide()
 
-		self.save_map_dialog = SaveMapDialog(self.main_gui, self.session)
+		self.save_map_dialog = SaveMapDialog(self.main_gui, self, self.session)
+		self.pausemenu = PauseMenu(self.session, self.main_gui, self, in_editor_mode=True)
 
 	def end(self):
 		self.mainhud.mapEvents({
@@ -102,6 +104,9 @@ class IngameGui(LivingObject):
 			self.cursor = None
 
 		super(IngameGui, self).end()
+
+	def toggle_pause(self):
+		self.pausemenu.toggle()
 
 	def load(self, savegame):
 		self.minimap.draw()
@@ -207,8 +212,9 @@ class SettingsTab(TabInterface):
 class SaveMapDialog(object):
 	"""Shows a dialog where the user can set the name of the saved map."""
 
-	def __init__(self, main_gui, session):
+	def __init__(self, main_gui, ingame_gui, session):
 		self._main_gui = main_gui
+		self._ingame_gui = ingame_gui
 		self._session = session
 		self._widget = load_uh_widget('save_map.xml')
 
@@ -229,7 +235,7 @@ class SaveMapDialog(object):
 		name.requestFocus()
 
 	def hide(self):
-		self._main_gui.on_escape = self._main_gui.toggle_pause
+		self._main_gui.on_escape = self._ingame_gui.toggle_pause
 		self._widget.hide()
 
 	def _do_save(self):

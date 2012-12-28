@@ -28,6 +28,7 @@ from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
+from horizons.gui.modules import PauseMenu
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -77,8 +78,9 @@ class IngameGui(LivingObject):
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
-		self.chat_dialog = ChatDialog(self.main_gui, self.session)
-		self.change_name_dialog = ChangeNameDialog(self.main_gui, self.session)
+		self.chat_dialog = ChatDialog(self.main_gui, self, self.session)
+		self.change_name_dialog = ChangeNameDialog(self.main_gui, self, self.session)
+		self.pausemenu = PauseMenu(self.session, self.main_gui, self, in_editor_mode=False)
 
 		# Icon manager
 		self.status_icon_manager = StatusIconManager(
@@ -118,7 +120,7 @@ class IngameGui(LivingObject):
 			'destroy_tool' : self.toggle_destroy_tool,
 			'build' : self.show_build_menu,
 			'diplomacyButton' : self.show_diplomacy_menu,
-			'gameMenuButton' : self.main_gui.toggle_pause,
+			'gameMenuButton' : self.toggle_pause,
 			'logbook' : self.logbook.toggle_visibility
 		})
 		self.mainhud.show()
@@ -171,6 +173,9 @@ class IngameGui(LivingObject):
 		self.status_icon_manager = None
 
 		super(IngameGui, self).end()
+
+	def toggle_pause(self):
+		self.pausemenu.toggle()
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""

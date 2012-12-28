@@ -54,7 +54,7 @@ class ProductionOverview(StatsWidget):
 
 	def hide(self):
 		super(ProductionOverview, self).hide()
-		self.session.gui.on_escape = self.session.gui.toggle_pause
+		self.session.gui.on_escape = self.session.ingame_gui.toggle_pause
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()

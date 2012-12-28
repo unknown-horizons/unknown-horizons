@@ -73,7 +73,7 @@ class TogglePauseCommand(Command):
 
 	def __call__(self, issuer):
 		session = issuer.session
-		session.gui.toggle_pause()
+		session.ingame_gui.toggle_pause()
 
 Command.allow_network(TogglePauseCommand)
 
