@@ -24,7 +24,7 @@ import re
 import horizons.globals
 from horizons.constants import GROUND
 from horizons.ext.dummy import Dummy
-from horizons.gui.keylisteners import IngameKeyListener
+from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -124,6 +124,7 @@ class IngameGui(LivingObject):
 		pass
 
 	def on_key_press(self, action, evt):
+		_Actions = KeyConfig._Actions
 		if action == _Actions.ESCAPE:
 			return self.on_escape()
 
