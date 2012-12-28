@@ -61,6 +61,9 @@ class Pirate(GenericAI):
 
 		# choose a random water tile on the coast and call it home
 		self.home_point = self.session.world.get_random_possible_coastal_ship_position()
+		# random sea tile if costal tile not found. Empty map?
+		if not self.home_point:
+			self.home_point = self.session.world.get_random_possible_ship_position()
 		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y, self.home_radius)
 		self.__init()
 
