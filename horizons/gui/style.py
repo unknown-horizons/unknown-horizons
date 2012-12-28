@@ -81,15 +81,6 @@ STYLES = {
 			'selection_color': BROWN[96],
 			'background_color': WHITE[64],
 		},
-		#FIXME #TODO why are these here
-		'Container': {
-		},
-		'HBox': {
-		},
-		'VBox': {
-		},
-		'Label': {
-		},
 },
 
 'menu': { #Used in the main menu
