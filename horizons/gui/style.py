@@ -40,41 +40,43 @@ NOTHING = Color(0, 0, 0, 0)
 STYLES = {
 'default': {
 		'default': {
+			'background_color': NOTHING,
+			'base_color': NOTHING,
+			'foreground_color': BROWN[255],
+			'selection_color': BROWN[192],
 			'border_size': 0,
 			'margins': (0, 0),
-			'selection_color': BROWN[192],
-			'background_color': NOTHING,
-			'foreground_color': BROWN[255],
-			'base_color': NOTHING,
 			'font': '14_black',
 			'horizontal_scrollbar': 0,
 		},
 		'Button': {
-			'foreground_color': BROWN[192],
 			'base_color': BROWN[64],
+			'foreground_color': BROWN[192],
 			'margins': (10, 5),
+		},
+		#FIXME #TODO combine the following two, just like Slider&StepSlider
+		'CheckBox': {
+			'background_color': WHITE[96],
 		},
 		'RadioButton': {
 			'background_color': WHITE[96],
 		},
-		('Slider', 'StepSlider'): {
-			'base_color': BROWN[96],
-		},
-		'CheckBox': {
-			'background_color': WHITE[96],
-		},
 		'ListBox': {
 			'selection_color': WHITE[160],
-		},
-		'TextField': {
-			'selection_color': BROWN[96],
-			'background_color': WHITE[64],
 		},
 		'ScrollArea': {
 			'selection_color': WHITE[255],
 			'background_color': WHITE[64],
 			'base_color': BROWN[64],
 		},
+		('Slider', 'StepSlider'): {
+			'base_color': BROWN[96],
+		},
+		'TextField': {
+			'selection_color': BROWN[96],
+			'background_color': WHITE[64],
+		},
+		#FIXME #TODO why are these here
 		('Container', 'HBox', 'VBox'): {
 		},
 		'Label': {
@@ -110,7 +112,6 @@ STYLES = {
 			'font': 'headline',
 		},
 },
-
 
 'tooltip': { # style for tooltips
 		'default': {
