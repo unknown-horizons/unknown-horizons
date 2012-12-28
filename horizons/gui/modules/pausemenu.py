@@ -87,3 +87,7 @@ class PauseMenu(object):
 		message = _("Are you sure you want to abort the running session?")
 		if self._mainmenu.show_popup(_("Quit Session"), message, show_cancel_button=True):
 			self._mainmenu.quit_session(force=True)
+
+	def isVisible(self):
+		# TODO remove me once window manager works
+		return self._gui.isVisible()
