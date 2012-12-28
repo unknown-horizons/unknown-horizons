@@ -22,7 +22,7 @@
 import re
 
 import horizons.globals
-from horizons.constants import GROUND
+from horizons.constants import GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
@@ -74,6 +74,7 @@ class IngameGui(LivingObject):
 		})
 
 		self.mainhud.show()
+		self.session.view.add_change_listener(self._update_zoom)
 
 		# Hide unnecessary buttons in hud
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
@@ -93,6 +94,7 @@ class IngameGui(LivingObject):
 		self.keylistener = None
 		LastActivePlayerSettlementManager().remove()
 		LastActivePlayerSettlementManager.destroy_instance()
+		self.session.view.remove_change_listener(self._update_zoom)
 
 		if self.cursor:
 			self.cursor.remove()
@@ -139,6 +141,20 @@ class IngameGui(LivingObject):
 			'tile_layer': TileLayingTool
 		}[which]
 		self.cursor = klass(self.session, *args, **kwargs)
+
+	def _update_zoom(self):
+		"""Enable/disable zoom buttons"""
+		zoom = self.session.view.get_zoom()
+		in_icon = self.mainhud.findChild(name='zoomIn')
+		out_icon = self.mainhud.findChild(name='zoomOut')
+		if zoom == VIEW.ZOOM_MIN:
+			out_icon.set_inactive()
+		else:
+			out_icon.set_active()
+		if zoom == VIEW.ZOOM_MAX:
+			in_icon.set_inactive()
+		else:
+			in_icon.set_active()
 
 
 class SettingsTab(TabInterface):
