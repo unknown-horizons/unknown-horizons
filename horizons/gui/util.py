@@ -116,36 +116,6 @@ def create_resource_icon(res_id, db):
 	widget.helptext = db.get_res_name(res_id)
 	return widget
 
-class LazyWidgetsDict(dict):
-	"""Dictionary for UH widgets. Loads widget on first access."""
-	def __init__(self, styles, *args, **kwargs):
-		"""
-		@param styles: Dictionary, { 'widgetname' : 'stylename' }. parameter for stylize().
-		"""
-		super(LazyWidgetsDict, self).__init__(*args, **kwargs)
-		self.styles = styles
-
-	def __getitem__(self, widgetname):
-		try:
-			return dict.__getitem__(self, widgetname)
-		except KeyError:
-			self._load_widget(widgetname)
-			return dict.__getitem__(self, widgetname)
-
-	def _load_widget(self, widgetname):
-		"""
-		We do styling before setting headlines to the default headline style.
-		If you want your headlines to not be styled, rename them.
-		"""
-		self[widgetname] = load_uh_widget(widgetname+'.xml',
-		                                  style=self.styles.get(widgetname))
-
-	def reload(self, widgetname):
-		"""Reloads a widget"""
-		if widgetname in self:
-			del self[widgetname]
-		# loading happens automatically on next access
-
 
 def create_resource_selection_dialog(on_click, inventory, db,
 		widget='select_trade_resource.xml', res_filter=None, amount_per_line=None):
