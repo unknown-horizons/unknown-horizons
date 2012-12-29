@@ -31,7 +31,7 @@ class PauseMenu(object):
 		self._ingame_gui = ingame_gui
 
 		name = 'editor_pause_menu.xml' if in_editor_mode else 'ingamemenu.xml'
-		self._gui = load_uh_widget(name, 'headline')
+		self._gui = load_uh_widget(name)
 		self._gui.position_technique = 'center:center'
 
 		def do_load_map():
