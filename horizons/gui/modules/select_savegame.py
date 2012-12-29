@@ -39,7 +39,7 @@ class SelectSavegameDialog(object):
 
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
-		self._widget = load_uh_widget('select_savegame.xml', 'book')
+		self._widget = load_uh_widget('select_savegame.xml')
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.
@@ -269,7 +269,6 @@ class SelectSavegameDialog(object):
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
 			details_label.text += u'\n'
-			details_label.stylize('book')
 
 			from horizons.constants import VERSION
 			try:

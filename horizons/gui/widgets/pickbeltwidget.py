@@ -29,13 +29,12 @@ class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
 	sections = () # Tuple with widget name and Label
 	widget_xml = '' # xml to load for the widget
-	style = 'book'
 	pickbelt_start_pos = (5, 150)
 	page_pos = (185, 45)
 
 	def __init__(self):
 		self.page_widgets = {}
-		self.widget = load_uh_widget(self.widget_xml, style=self.style, center_widget=True)
+		self.widget = load_uh_widget(self.widget_xml, center_widget=True)
 
 		# Lists holding pickbelt ImageButtons, placed to the left/right of the book
 		self.buttons = {'left': [], 'right': []}

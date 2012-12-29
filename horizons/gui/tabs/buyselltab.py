@@ -147,7 +147,6 @@ class BuySellTab(TabInterface):
 			slot.findChild(name='button').up_image = self.dummy_icon_path
 			slot.findChild(name='button').down_image = self.dummy_icon_path
 			slot.findChild(name='button').hover_image = self.dummy_icon_path
-			slot.findChild(name='amount').stylize('menu_black')
 			slider = slot.findChild(name="slider")
 			slider.scale_start = 0.0
 			slider.scale_end = float(self.trade_post.get_inventory().limit)

@@ -42,7 +42,7 @@ class ChatDialog(object):
 		self._main_gui = main_gui
 		self._ingame_gui = ingame_gui
 		self._session = session
-		self._widget = load_uh_widget('chat.xml', 'book')
+		self._widget = load_uh_widget('chat.xml')
 
 		events = {
 			OkButton.DEFAULT_NAME: self._do_chat,
@@ -82,7 +82,7 @@ class ChangeNameDialog(object):
 		self._main_gui = main_gui
 		self._ingame_gui = ingame_gui
 		self._session = session
-		self._widget = load_uh_widget('change_name.xml', 'book')
+		self._widget = load_uh_widget('change_name.xml')
 
 		self._widget.mapEvents({CancelButton.DEFAULT_NAME: self.hide})
 

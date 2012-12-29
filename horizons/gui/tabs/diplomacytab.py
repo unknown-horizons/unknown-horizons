@@ -58,9 +58,6 @@ class PlayerDiplomacyTab(TabInterface):
 		self.button_hover_image = icon_path % color
 		self.helptext = player.name
 
-		self.widget.stylize("menu_black")
-		self.widget.findChild(name='headline').stylize('headline')
-
 	def show(self):
 		super(PlayerDiplomacyTab, self).show()
 		# if diplomacy is changed by any player, change the checkbox
