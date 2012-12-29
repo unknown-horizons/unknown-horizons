@@ -31,7 +31,7 @@ class LoadingScreen(object):
 
 	def __init__(self):
 		self._widget = load_uh_widget('loadingscreen.xml')
-		self._widget.position_technique = "automatic" # == "center:center"
+		self._widget.position_technique = "center:center"
 
 	def show(self):
 		qotl_type_label = self._widget.findChild(name='qotl_type_label')

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container name="change_name_dialog_window" size="374,230"
-	position_technique="automatic"
+	position_technique="center:center"
 	background_image="content/gui/images/background/notice230.png">
 
 <VBox position="50,30" padding="10">

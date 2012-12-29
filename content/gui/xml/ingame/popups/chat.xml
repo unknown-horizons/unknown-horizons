@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container name="chat_dialog_window" size="472,290"
-	position_technique="automatic"
+	position_technique="center:center"
 	background_image="content/gui/images/background/notice290.png">
 <VBox position="90,30">
 	<Label text="Chat" name="headline" />

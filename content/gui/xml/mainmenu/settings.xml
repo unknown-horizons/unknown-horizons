@@ -87,7 +87,7 @@
 		</VBox>
 
 		<VBox name="mouse_settings" padding="2">
-			<Label name="headline_mouse" text="Mouse" font="headline" position_technique="automatic" />
+			<Label name="headline_mouse" text="Mouse" font="headline" position_technique="center:center" />
 			<Icon image="content/gui/images/background/hr.png" />
 
 			<HBox>
@@ -129,7 +129,7 @@
 		<!-- Left pane -->
 		<VBox name="game_left" max_size="320,500" min_size="320,0" padding="20">
 			<VBox name="saving_settings" padding="2">
-				<Label name="headline_saving" text="Saving" font="headline" position_technique="automatic" />
+				<Label name="headline_saving" text="Saving" font="headline" position_technique="center:center" />
 				<Icon image="content/gui/images/background/hr.png" />
 
 				<HBox>
@@ -158,7 +158,7 @@
 			</VBox>
 
 			<VBox name="language_settings" padding="2">
-				<Label text="Language" position_technique="automatic" name="headline_language" font="headline" />
+				<Label text="Language" position_technique="center:center" name="headline_language" font="headline" />
 				<Icon image="content/gui/images/background/hr.png" />
 
 				<ScrollArea min_size="165,206">
@@ -170,7 +170,7 @@
 		<!-- Right pane -->
 		<VBox name="game_right" max_size="320,500" min_size="320,0" padding="20">
 			<VBox name="misc_settings" padding="2">
-				<Label name="headline_misc" text="General" font="headline" position_technique="automatic" />
+				<Label name="headline_misc" text="General" font="headline" position_technique="center:center" />
 				<Icon image="content/gui/images/background/hr.png" />
 
 				<HBox>
@@ -224,7 +224,7 @@
 			</VBox>
 
 			<VBox name="network_settings" padding="2">
-				<Label name="headline_network" text="Network" font="headline" position_technique="automatic" />
+				<Label name="headline_network" text="Network" font="headline" position_technique="center:center" />
 				<Icon image="content/gui/images/background/hr.png" />
 				<HBox max_size="320,60">
 					<Label text="Network port:" name="network_port_lbl"
