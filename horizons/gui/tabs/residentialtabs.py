@@ -110,7 +110,6 @@ def setup_tax_slider(slider, val_label, settlement, level):
 	slider.scale_end = SETTLER.TAX_SETTINGS_MAX
 	slider.step_length = SETTLER.TAX_SETTINGS_STEP
 	slider.value = settlement.tax_settings[level]
-	slider.stylize('book')
 	def on_slider_change():
 		val_label.text = unicode(slider.value)
 		if settlement.tax_settings[level] != slider.value:

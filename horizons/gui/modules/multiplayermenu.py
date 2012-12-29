@@ -43,12 +43,7 @@ class MultiplayerMenu(object):
 
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
-		self.widgets = LazyWidgetsDict({
-			'multiplayermenu': 'book',
-			'multiplayer_creategame': 'book',
-			'multiplayer_gamelobby': 'book',
-			'set_password': 'book',
-		})
+		self.widgets = LazyWidgetsDict({})
 		self.current = None
 
 	def show(self):

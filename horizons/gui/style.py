@@ -21,39 +21,65 @@
 
 from fife.fife import Color
 
+BROWN = { 64: Color(80, 80, 40,  64),
+          96: Color(80, 80, 40,  96),
+         128: Color(80, 80, 40, 128),
+         192: Color(80, 80, 40, 192),
+         255: Color(80, 80, 40, 255),
+}
+
+WHITE = { 32: Color(255, 255, 255,  32),
+          64: Color(255, 255, 255,  64),
+          96: Color(255, 255, 255,  96),
+         160: Color(255, 255, 255, 160),
+         255: Color(255, 255, 255, 255),
+}
+
+NOTHING = Color(0, 0, 0, 0)
+
 STYLES = {
 'default': {
 		'default': {
+			'background_color': NOTHING,
+			'base_color': NOTHING,
+			'foreground_color': BROWN[255],
+			'selection_color': BROWN[192],
 			'border_size': 0,
 			'margins': (0, 0),
-			'base_color': Color(40, 40, 40, 0),
-			'foreground_color': Color( 80, 80, 40, 0),
-			'background_color': Color(0, 0, 0, 0),
-			'selection_color': Color(80, 80, 40, 192),
 			'font': '14_black',
+			'horizontal_scrollbar': 0,
 		},
 		'Button': {
-			'background_color': Color(255, 255, 255, 32),
-			'foreground_color': Color(80, 80, 40, 192),
-			'base_color': Color(80, 80, 40, 64),
+			'base_color': BROWN[64],
+			'foreground_color': BROWN[192],
 			'margins': (10, 5),
 		},
-		('Slider', 'StepSlider'): {
-			'base_color': Color(80, 80, 40, 128),
-		},
+		#TODO combine the following two after the tuple notation bug is fixed:
+		# http://fife.trac.cvsdude.com/engine/ticket/656
 		'CheckBox': {
-			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 96),
-			'foreground_color': Color(80, 80, 40),
+			'background_color': WHITE[96],
+		},
+		'RadioButton': {
+			'background_color': WHITE[96],
 		},
 		'ListBox': {
-			'background_color': Color(255, 255, 255, 64),
-			'selection_color': Color(255, 255, 255, 160),
+			'selection_color': WHITE[160],
 		},
-		'Label': {
+		'ScrollArea': {
+			'selection_color': WHITE[255],
+			'background_color': WHITE[64],
+			'base_color': BROWN[64],
 		},
-		('Container', 'HBox', 'VBox'): {
-			'opaque': 0,
+		#TODO combine the following two after the tuple notation bug is fixed
+		'Slider': {
+			'base_color': BROWN[96],
+		},
+		'StepSlider': {
+			'base_color': BROWN[96],
+		},
+		'TextField': {
+			'selection_color': BROWN[96],
+			'background_color': WHITE[64],
 		},
 },
 
@@ -67,18 +93,6 @@ STYLES = {
 		},
 },
 
-'menu_black': { # style for build menu etc.
-		'default': {
-			'font': '14_black',
-		},
-		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container', 'HBox', 'VBox'): {
-		},
-		# once more, better not ask why this is necessary (#1607)
-		'CheckBox': {
-		},
-},
-
 'resource_bar': {
 		'default': {
 			'font': 'small_black',
@@ -89,54 +103,11 @@ STYLES = {
 		'default': {
 			'font': '18',
 		},
-		'Label': {
-			#HACK apply defaults to xml widgets without adaptLayout code
-		},
 },
 
 'headline': { # style for headlines
 		'default': {
 			'font': 'headline',
-		},
-		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container', 'HBox', 'VBox'): {
-		},
-},
-
-'book': { # style for book widgets
-		'default': {
-			'border_size': 0,
-			'margins': (0, 0),
-			'foreground_color': Color(80, 80, 40),
-			'font': '14_black',
-		},
-		'Label': {
-		},
-		('Slider', 'StepSlider'): {
-			'base_color': Color(90, 90, 40, 96),
-		},
-		'RadioButton': {
-			'foreground_color': Color(80, 80, 40),
-			'background_color': Color(255, 255, 255, 96),
-		},
-		'ListBox': {
-			'background_color': Color(0, 0, 0, 0),
-			'selection_color': Color(255, 255, 255, 160),
-		},
-		'TextField': {
-			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 64),
-			'base_color': Color(0, 0, 0, 0),
-			'horizontal_scrollbar': 0,
-		},
-		'ScrollArea': {
-			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 64),
-			'base_color': Color(90, 90, 40, 96),
-			'horizontal_scrollbar': 0,
-		},
-		('Container', 'HBox', 'VBox'): {
-			'opaque': 0,
 		},
 },
 
@@ -144,8 +115,6 @@ STYLES = {
 		'default': {
 			'font': 'tooltip',
 		},
-		'Label': {
-		},
-	},
+},
 
 }
