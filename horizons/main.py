@@ -100,8 +100,8 @@ def start(_command_line_arguments):
 	horizons.globals.fife = Fife()
 
 	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
-		from horizons.gui.modules.singleplayermenu import MapPreview
-		MapPreview.generate_minimap( * json.loads(
+		from horizons.gui.modules.singleplayermenu import generate_random_minimap
+		generate_random_minimap( * json.loads(
 		  command_line_arguments.generate_minimap
 		  ) )
 		sys.exit(0)
