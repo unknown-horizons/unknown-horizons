@@ -10,13 +10,13 @@
 	<Icon image="content/gui/images/buttons/msg_button.png" />
 </VBox>
 
-<VBox name="button_labels"  padding="35"  position="68,32" max_size="185,312" min_size="185,312">
-	<Label name="start" text="Return to game" />
-	<Label name="savegame" text="Save game"  />
-	<Label name="loadgame" text="Load game" />
-	<Label name="settings" text="Settings" />
-	<Label name="help" text="Help"        />
-	<Label name="quit" text="Cancel game" />
+<VBox name="button_labels" padding="31" position="68,32" max_size="185,312" min_size="185,312">
+	<Label font="headline" name="start" text="Return to game" />
+	<Label font="headline" name="savegame" text="Save game"  />
+	<Label font="headline" name="loadgame" text="Load game" />
+	<Label font="headline" name="settings" text="Settings" />
+	<Label font="headline" name="help" text="Help"        />
+	<Label font="headline" name="quit" text="Cancel game" />
 </VBox>
 
 <VBox name="button_images"  padding="21"  position="25,25">
