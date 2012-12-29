@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="help_window" size="800,580" position_technique="automatic"
+<Container name="help_window" size="800,580" position_technique="center:center"
 	background_image="content/gui/images/background/book.png">
 
 <VBox position="72,40" max_size="340,485" min_size="340,485" padding="10">

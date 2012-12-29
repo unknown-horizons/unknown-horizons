@@ -82,7 +82,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 		elif w.name.startswith("uni_") or w.comment.startswith("uni_"):
 			w.font = '16_black_unifont'
 	if center_widget:
-		widget.position_technique = "automatic" # "center:center"
+		widget.position_technique = "center:center"
 
 	return widget
 
