@@ -110,6 +110,9 @@ class SimpleMessageBus(object):
 
 		self._callbacks[type].append(callback)
 
+	def unsubscribe(self, type, callback):
+		self._callbacks[type].remove(callback)
+
 	def broadcast(self, type, *args, **kwargs):
 		if not type in self._message_types:
 			return
