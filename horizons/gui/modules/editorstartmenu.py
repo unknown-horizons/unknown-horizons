@@ -32,7 +32,7 @@ class EditorStartMenu(object):
 		self._from_main_menu = from_main_menu
 		self.parent = parent
 		self._gui = load_uh_widget('editor_start_menu.xml', style='book')
-		self._gui.position_technique = "automatic" # == "center:center"
+		self._gui.position_technique = "center:center"
 		self._right_side = None
 		self._old_on_escape = None
 		self._old_current_widget = self.parent.current

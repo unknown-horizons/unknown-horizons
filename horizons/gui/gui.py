@@ -61,7 +61,7 @@ class Gui(object):
 		self.__pause_displayed = False
 
 		self._background = pychan.Icon(image=self._get_random_background(),
-		                               position_technique='automatic')
+		                               position_technique='center:center')
 		self._background.show()
 
 		self.subscribe()
@@ -213,7 +213,7 @@ class Gui(object):
 		self.current = new_widget
 		if event_map:
 			self.current.mapEvents(event_map)
-		self.current.position_technique = "automatic" # == "center:center"
+		self.current.position_technique = "center:center"
 		if show:
 			self.current.show()
 

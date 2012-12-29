@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container name="production_overview" size="800,580" position_technique="automatic"
+<Container name="production_overview" size="800,580" position_technique="center:center"
 	background_image="content/gui/images/background/book.png">
 
 	<VBox max_size="695,508" min_size="695,508" position="72,40" padding="5">
