@@ -131,6 +131,7 @@ class IngameGui(LivingObject):
 		pass
 
 	def on_key_press(self, action, evt):
+		_Actions = KeyConfig._Actions
 		if action == _Actions.ESCAPE:
 			return self.on_escape()
 
