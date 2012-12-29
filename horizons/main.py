@@ -291,6 +291,8 @@ def start(_command_line_arguments):
 
 def quit():
 	"""Quits the game"""
+	# joing preload thread before quiting in case active
+	preload_game_join(preloading)
 	horizons.globals.fife.quit()
 
 def start_singleplayer(options):
