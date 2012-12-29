@@ -34,7 +34,6 @@ from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 class WindowManager(object):
 
 	def __init__(self):
-		self.dialog_executed = False
 		self._modal_background = None
 
 	def show_modal_background(self):
@@ -111,9 +110,7 @@ class WindowManager(object):
 		dlg.capture(_on_keypress, event_name="keyPressed")
 
 		# show that a dialog is being executed, this can sometimes require changes in program logic elsewhere
-		self.dialog_executed = True
 		ret = execute(dlg, bind)
-		self.dialog_executed = False
 		if modal:
 			self.hide_modal_background()
 		return ret
