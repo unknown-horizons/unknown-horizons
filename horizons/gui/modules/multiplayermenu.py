@@ -220,10 +220,36 @@ class MultiplayerMenu(object):
 			                            own_version=NetworkInterface().get_clientversion()))
 			return
 
-		if not NetworkInterface().joingame(game.uuid):
-			return
+		password = ""
+		if game.password:
+			# Repeatedly ask the player for the password
+			success = False
+			while not success:
+				password = self._request_game_password(game)
+				if password is None:
+					break
+				password = hashlib.sha1(password).hexdigest()
+				success = NetworkInterface().joingame(game.uuid, password)
+
+			if not success:
+				return
+		else:
+			if not NetworkInterface().joingame(game.uuid, password):
+				return
 
 		self.show_lobby()
+
+	def _request_game_password(self, game):
+		"""Show dialog to ask player for a password."""
+		dialog = load_uh_widget('set_password.xml')
+
+		bind = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
+		retval = self._mainmenu.show_dialog(dialog, bind, modal=True, focus="password")
+
+		if retval:
+			return dialog.collectData("password")
+		else:
+			return None
 
 	def _create_game(self):
 		window = CreateGame(self._mainmenu, self)
@@ -288,9 +314,6 @@ class CreateGame(object):
 			'maplist/action': self._update_infos
 		})
 		self._gui.show()
-
-		# TODO Remove once passwords are implemented again
-		self._gui.findChild(name='password').parent.hide()
 
 	def act(self):
 		mapindex = self._gui.collectData('maplist')
