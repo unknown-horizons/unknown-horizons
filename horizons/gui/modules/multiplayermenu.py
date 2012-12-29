@@ -26,6 +26,7 @@ import textwrap
 from fife.extensions.pychan.widgets import Button, HBox, Icon, Label
 
 from horizons.gui.modules import PlayerDataSelection
+from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.savegamemanager import SavegameManager
 from horizons.constants import MULTIPLAYER
@@ -42,10 +43,15 @@ class MultiplayerMenu(object):
 
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
-		self.widgets = mainmenu.widgets
+		self.widgets = LazyWidgetsDict({
+			'multiplayermenu': 'book',
+			'multiplayer_creategame': 'book',
+			'multiplayer_gamelobby': 'book',
+			'set_password': 'book',
+		})
 		self.current = None
 
-	def show_multi(self):
+	def show(self):
 		"""Shows main multiplayer menu"""
 		if enet is None:
 			headline = _(u"Unable to find pyenet")
@@ -86,7 +92,7 @@ class MultiplayerMenu(object):
 		self.__apply_new_color()
 		# reload because changing modes (not yet implemented) will need it
 		self.widgets.reload('multiplayermenu')
-		self.mainmenu._switch_current_widget('multiplayermenu', event_map=event_map, hide_old=True)
+		self.mainmenu._switch_current_widget(self.widgets['multiplayermenu'], event_map=event_map, hide_old=True)
 		self.current = self.mainmenu.current
 
 		refresh_worked = self.__refresh()
@@ -95,7 +101,8 @@ class MultiplayerMenu(object):
 			return
 		self.current.findChild(name='gamelist').capture(self.__update_game_details)
 		self.current.findChild(name='showonlyownversion').capture(self.__show_only_own_version_toggle)
-		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
+		self.current.playerdata = PlayerDataSelection()
+		self.current.findChild(name="playerdataselectioncontainer").addChild(self.current.playerdata.get_widget())
 
 		self.current.show()
 
@@ -144,7 +151,7 @@ class MultiplayerMenu(object):
 		"""Error callback"""
 		if fatal and self.mainmenu.session is not None:
 			self.mainmenu.session.timer.ticks_per_second = 0
-		if self.mainmenu.dialog_executed:
+		if self.mainmenu.windows.dialog_executed:
 			# another message dialog is being executed, and we were called by that action.
 			# if we now trigger another message dialog, we will probably loop.
 			return
@@ -166,13 +173,13 @@ class MultiplayerMenu(object):
 	def __player_kicked(self, game, player, myself):
 		if myself:
 			self.mainmenu.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
-			self.show_multi()
+			self.show()
 		else:
 			self.__print_event_message(_("{player} got kicked by creator").format(player=player.name))
 
 	def __game_terminated(self, game, errorstr):
 		self.mainmenu.show_popup(_("Terminated"), errorstr)
-		self.show_multi()
+		self.show()
 
 	def _display_game_name(self, game):
 		same_version = game.version == NetworkInterface().get_clientversion()
@@ -338,7 +345,7 @@ class MultiplayerMenu(object):
 		password.capture(_enter_password)
 
 	def __prepare_game(self, game):
-		self.mainmenu._switch_current_widget('loadingscreen', show=True)
+		self.mainmenu.show_loading_screen()
 		self.current = self.mainmenu.current
 		# send map data
 		# NetworkClient().sendmapdata(...)
@@ -357,11 +364,11 @@ class MultiplayerMenu(object):
 		"""Shows lobby (gui for waiting until all players have joined). Allows chatting"""
 		game = self.__get_selected_game()
 		event_map = {
-			'cancel' : self.show_multi,
+			'cancel' : self.show,
 			'ready_btn' : self.__toggle_ready,
 		}
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
-		self.mainmenu._switch_current_widget('multiplayer_gamelobby', event_map=event_map, hide_old=True)
+		self.mainmenu._switch_current_widget(self.widgets['multiplayer_gamelobby'], event_map=event_map, hide_old=True)
 		self.current = self.mainmenu.current
 
 		self.__update_game_details(game)
@@ -459,12 +466,12 @@ class MultiplayerMenu(object):
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""
 		event_map = {
-			'cancel' : self.show_multi,
+			'cancel' : self.show,
 			'create' : self.__create_game
 		}
 		self.__apply_new_nickname()
 		self.__apply_new_color()
-		self.mainmenu._switch_current_widget('multiplayer_creategame', event_map=event_map, hide_old=True)
+		self.mainmenu._switch_current_widget(self.widgets['multiplayer_creategame'], event_map=event_map, hide_old=True)
 		self.current = self.mainmenu.current
 
 		self.current.files, self.maps_display = SavegameManager.get_maps()
@@ -627,8 +634,8 @@ class MultiplayerMenu(object):
 		#remove all children of color and name pop-up and then show them
 		set_player_details_dialog.findChild(name="playerdataselectioncontainer").removeAllChildren()
 		#assign playerdata to self.current.playerdata to use self.__apply_new_color() and __apply_new_nickname()
-		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets,
-		                                              color_palette=_get_unused_colors())
+		self.current.playerdata = PlayerDataSelection(color_palette=_get_unused_colors())
+		set_player_details_dialog.findChild(name="playerdataselectioncontainer").addChild(self.current.playerdata.get_widget())
 		self.current.playerdata.set_player_name(NetworkInterface().get_client_name())
 		self.current.playerdata.set_color(NetworkInterface().get_client_color())
 

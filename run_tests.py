@@ -40,19 +40,15 @@ except ImportError:
 from horizons.ext.dummy import Dummy
 
 
-def mock_fife_and_gui():
+def mock_fife():
 	"""
-	Using a custom import hook, we catch all imports of fife, horizons.gui and enet
-	and provide a dummy module. Unfortunately horizons.gui has to be mocked too,
-	pychan will fail otherwise (isinstance checks that Dummy fails, metaclass
-	errors - pretty bad stuff).
+	Using a custom import hook, we catch all imports of fife and provide a
+	dummy module.
 	"""
 	class Importer(object):
 
 		def find_module(self, fullname, path=None):
-			if fullname.startswith('fife') or \
-			   fullname.startswith('horizons.gui'):
-#			   fullname.startswith('enet'):
+			if fullname.startswith('fife'):
 				return self
 
 			return None
@@ -70,7 +66,7 @@ def setup_horizons():
 
 	# This needs to run at first to avoid that other code gets a reference to
 	# the real fife module
-	mock_fife_and_gui()
+	mock_fife()
 
 	# set global reference to fife
 	import horizons.globals

@@ -425,7 +425,7 @@ class ResourceOverviewBar(object):
 
 	def _show_resource_selection_dialog(self, slot_num):
 		"""Shows gui for selecting a resource for slot slot_num"""
-		if isinstance(self.session.cursor, BuildingTool):
+		if isinstance(self.session.ingame_gui.cursor, BuildingTool):
 			return
 
 		self._hide_resource_selection_dialog()
@@ -436,8 +436,8 @@ class ResourceOverviewBar(object):
 		self._show_dummy_slot()
 
 		# set mousetool to get notified on clicks outside the resbar area
-		if not isinstance(self.session.cursor, ResBarMouseTool):
-			self.session.cursor = ResBarMouseTool(self.session, self.session.cursor,
+		if not isinstance(self.session.ingame_gui.cursor, ResBarMouseTool):
+			self.session.ingame_gui.cursor = ResBarMouseTool(self.session, self.session.ingame_gui.cursor,
 			                                      self.close_resource_selection_mode)
 
 
@@ -527,8 +527,8 @@ class ResourceOverviewBar(object):
 			ResourceBarResize.broadcast(self)
 		self.redraw()
 
-		if isinstance(self.session.cursor, ResBarMouseTool):
-			self.session.cursor.reset()
+		if isinstance(self.session.ingame_gui.cursor, ResBarMouseTool):
+			self.session.ingame_gui.cursor.reset()
 
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):
@@ -673,14 +673,14 @@ class ResBarMouseTool(NavigationTool):
 		self.reset()
 		# this click should still count, especially in case the res
 		# selection dialog has been closed by other means than clicking
-		self.session.cursor.mousePressed(evt)
+		self.session.ingame_gui.cursor.mousePressed(evt)
 
 	def reset(self):
 		"""Enable old tool again"""
 		if self.old_tool:
-			self.session.cursor = self.old_tool
+			self.session.ingame_gui.cursor = self.old_tool
 		self.remove()
 		if self.old_tool:
 			self.old_tool.enable()
 		else:
-			self.session.set_cursor()
+			self.session.ingame_gui.set_cursor()

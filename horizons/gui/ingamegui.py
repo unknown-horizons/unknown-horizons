@@ -24,14 +24,14 @@ from fife import fife
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.constants import BUILDINGS, GAME_SPEED, VERSION
+from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS
 from horizons.entities import Entities
+from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
-from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
@@ -43,6 +43,9 @@ from horizons.messaging import SettlerUpdate, TabWidgetChanged, SpeedChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
+from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
+from horizons.world.managers.statusiconmanager import StatusIconManager
+
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -51,13 +54,6 @@ class IngameGui(LivingObject):
 	message_widget = livingProperty()
 	minimap = livingProperty()
 	keylistener = livingProperty()
-
-	styles = {
-		'city_info' : 'resource_bar',
-		'change_name' : 'book',
-		'save_map' : 'book',
-		'chat' : 'book',
-	}
 
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
@@ -68,25 +64,38 @@ class IngameGui(LivingObject):
 		self.settlement = None
 		self._old_menu = None
 
-		self.keylistener = IngameKeyListener(self.session)
-		self.widgets = LazyWidgetsDict(self.styles)
+		self.cursor = None
+		self.coordinates_tooltip = None
 
-		self.cityinfo = CityInfo(self, self.widgets['city_info'])
+		self.keylistener = IngameKeyListener(self.session)
+
+		self.cityinfo = CityInfo(self)
+		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		self.logbook = LogBook(self.session)
 		self.message_widget = MessageWidget(self.session)
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
-		self.chat_dialog = ChatDialog(self.main_gui, self.session, self.widgets['chat'])
-		self.change_name_dialog = ChangeNameDialog(self.main_gui, self.session, self.widgets['change_name'])
+		self.chat_dialog = ChatDialog(self.main_gui, self.session)
+		self.change_name_dialog = ChangeNameDialog(self.main_gui, self.session)
 
-		# self.widgets['minimap'] is the guichan gui around the actual minimap,
-		# which is saved in self.minimap
-		minimap = self.widgets['minimap']
-		minimap.position_technique = "right+0:top+0"
+		# Icon manager
+		self.status_icon_manager = StatusIconManager(
+			renderer=self.session.view.renderer['GenericRenderer'],
+			layer=self.session.view.layers[LAYERS.OBJECTS]
+		)
+		self.production_finished_icon_manager = ProductionFinishedIconManager(
+			renderer=self.session.view.renderer['GenericRenderer'],
+			layer=self.session.view.layers[LAYERS.OBJECTS]
+		)
 
-		icon = minimap.findChild(name="minimap")
+		# 'minimap' is the guichan gui around the actual minimap, which is saved
+		# in self.minimap
+		self.mainhud = load_uh_widget('minimap.xml')
+		self.mainhud.position_technique = "right+0:top+0"
+
+		icon = self.mainhud.findChild(name="minimap")
 		self.minimap = Minimap(icon,
 		                       targetrenderer=horizons.globals.fife.targetrenderer,
 		                       imagemanager=horizons.globals.fife.imagemanager,
@@ -99,23 +108,20 @@ class IngameGui(LivingObject):
 		def speed_down():
 			SpeedDownCommand().execute(self.session)
 
-		minimap.mapEvents({
+		self.mainhud.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
 			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
 			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
 			'speedUp' : speed_up,
 			'speedDown' : speed_down,
-			'destroy_tool' : self.session.toggle_destroy_tool,
+			'destroy_tool' : self.toggle_destroy_tool,
 			'build' : self.show_build_menu,
 			'diplomacyButton' : self.show_diplomacy_menu,
 			'gameMenuButton' : self.main_gui.toggle_pause,
 			'logbook' : self.logbook.toggle_visibility
 		})
-		minimap.show()
-		#minimap.position_technique = "right+15:top+153"
-
-		self.widgets['tooltip'].hide()
+		self.mainhud.show()
 
 		self.resource_overview = ResourceOverviewBar(self.session)
 
@@ -126,7 +132,7 @@ class IngameGui(LivingObject):
 		self._display_speed(self.session.timer.ticks_per_second)
 
 	def end(self):
-		self.widgets['minimap'].mapEvents({
+		self.mainhud.mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
 			'rotateRight' : None,
@@ -138,9 +144,6 @@ class IngameGui(LivingObject):
 			'gameMenuButton' : None
 		})
 
-		for w in self.widgets.itervalues():
-			if w.parent is None:
-				w.hide()
 		self.message_widget = None
 		self.minimap = None
 		self.resource_overview.end()
@@ -152,12 +155,25 @@ class IngameGui(LivingObject):
 		SettlerUpdate.unsubscribe(self._on_settler_level_change)
 		SpeedChanged.unsubscribe(self._on_speed_changed)
 
+		if self.cursor:
+			self.cursor.remove()
+			self.cursor.end()
+			self.cursor = None
+
+		LastActivePlayerSettlementManager().remove()
+		LastActivePlayerSettlementManager.destroy_instance()
+
+		self.production_finished_icon_manager.end()
+		self.production_finished_icon_manager = None
+		self.status_icon_manager.end()
+		self.status_icon_manager = None
+
 		super(IngameGui, self).end()
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""
-		self.widgets['minimap'].hide()
-		self.widgets['minimap'].show()
+		self.mainhud.hide()
+		self.mainhud.show()
 
 	def show_diplomacy_menu(self):
 		# check if the menu is already shown
@@ -188,7 +204,7 @@ class IngameGui(LivingObject):
 			if not update: # this was only a toggle call, don't reshow
 				return
 
-		self.session.set_cursor() # set default cursor for build menu
+		self.set_cursor() # set default cursor for build menu
 		self.deselect_all()
 
 		if not any( settlement.owner.is_local_player for settlement in self.session.world.settlements):
@@ -215,21 +231,13 @@ class IngameGui(LivingObject):
 		cls = Entities.buildings[building_id]
 		if hasattr(cls, 'show_build_menu'):
 			cls.show_build_menu()
-		self.session.set_cursor('building', cls, None if unit is None else unit())
+		self.set_cursor('building', cls, None if unit is None else unit())
 
 	def toggle_road_tool(self):
-		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL:
+		if not isinstance(self.cursor, mousetools.BuildingTool) or self.cursor._class.id != BUILDINGS.TRAIL:
 			self._build(BUILDINGS.TRAIL)
 		else:
-			self.session.set_cursor()
-
-	def _get_menu_object(self, menu):
-		"""Returns pychan object if menu is a string, else returns menu
-		@param menu: str with the guiname or pychan object.
-		"""
-		if isinstance(menu, str):
-			menu = self.widgets[menu]
-		return menu
+			self.set_cursor()
 
 	def get_cur_menu(self):
 		"""Returns menu that is currently displayed"""
@@ -244,7 +252,7 @@ class IngameGui(LivingObject):
 				self._old_menu.remove_remove_listener( Callback(self.show_menu, None) )
 			self._old_menu.hide()
 
-		self._old_menu = self._get_menu_object(menu)
+		self._old_menu = menu
 		if self._old_menu is not None:
 			if hasattr(self._old_menu, "add_remove_listener"):
 				self._old_menu.add_remove_listener( Callback(self.show_menu, None) )
@@ -256,29 +264,33 @@ class IngameGui(LivingObject):
 	def hide_menu(self):
 		self.show_menu(None)
 
-	def toggle_menu(self, menu):
-		"""Shows a menu or hides it if it is already displayed.
-		@param menu: parameter supported by show_menu().
-		"""
-		if self.get_cur_menu() == self._get_menu_object(menu):
-			self.hide_menu()
-		else:
-			self.show_menu(menu)
-
 	def save(self, db):
 		self.message_widget.save(db)
 		self.logbook.save(db)
 		self.resource_overview.save(db)
+		LastActivePlayerSettlementManager().save(db)
 
 	def load(self, db):
 		self.message_widget.load(db)
 		self.logbook.load(db)
 		self.resource_overview.load(db)
 
-		cur_settlement = LastActivePlayerSettlementManager().get_current_settlement()
-		self.cityinfo.set_settlement(cur_settlement)
+		if self.session.is_game_loaded():
+			LastActivePlayerSettlementManager().load(db)
+			cur_settlement = LastActivePlayerSettlementManager().get_current_settlement()
+			self.cityinfo.set_settlement(cur_settlement)
 
 		self.minimap.draw() # update minimap to new world
+
+		self.current_cursor = 'default'
+		self.cursor = mousetools.SelectionTool(self.session)
+		# Set cursor correctly, menus might need to be opened.
+		# Open menus later; they may need unit data not yet inited
+		self.cursor.apply_select()
+
+		if not self.session.is_game_loaded():
+			# Fire a message for new world creation
+			self.session.ingame_gui.message_widget.add(point=None, string_id='NEW_WORLD')
 
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""
@@ -318,8 +330,8 @@ class IngameGui(LivingObject):
 
 	def _display_speed(self, tps):
 		text = u''
-		up_icon = self.widgets['minimap'].findChild(name='speedUp')
-		down_icon = self.widgets['minimap'].findChild(name='speedDown')
+		up_icon = self.mainhud.findChild(name='speedUp')
+		down_icon = self.mainhud.findChild(name='speedDown')
 		if tps == 0: # pause
 			text = u'0x'
 			up_icon.set_inactive()
@@ -338,10 +350,10 @@ class IngameGui(LivingObject):
 			else:
 				down_icon.set_inactive()
 
-		wdg = self.widgets['minimap'].findChild(name="speed_text")
+		wdg = self.mainhud.findChild(name="speed_text")
 		wdg.text = text
 		wdg.resizeToContent()
-		self.widgets['minimap'].show()
+		self.mainhud.show()
 
 	def on_key_press(self, action, evt):
 		"""Handle a key press in-game.
@@ -351,13 +363,16 @@ class IngameGui(LivingObject):
 		_Actions = KeyConfig._Actions
 		keyval = evt.getKey().getValue()
 
+		if action == _Actions.ESCAPE:
+			return self.on_escape()
+
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
 		elif action == _Actions.COORD_TOOLTIP:
-			self.session.coordinates_tooltip.toggle()
+			self.coordinates_tooltip.toggle()
 		elif action == _Actions.DESTROY_TOOL:
-			self.session.toggle_destroy_tool()
+			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
 			self.session.remove_selected()
 		elif action == _Actions.ROAD_TOOL:
@@ -381,15 +396,15 @@ class IngameGui(LivingObject):
 		elif action == _Actions.BUILD_TOOL:
 			self.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:
-			if hasattr(self.session.cursor, "rotate_right"):
+			if hasattr(self.cursor, "rotate_right"):
 				# used in e.g. build preview to rotate building instead of map
-				self.session.cursor.rotate_right()
+				self.cursor.rotate_right()
 			else:
 				self.session.view.rotate_right()
 				self.minimap.rotate_right()
 		elif action == _Actions.ROTATE_LEFT:
-			if hasattr(self.session.cursor, "rotate_left"):
-				self.session.cursor.rotate_left()
+			if hasattr(self.cursor, "rotate_left"):
+				self.cursor.rotate_left()
 			else:
 				self.session.view.rotate_left()
 				self.minimap.rotate_left()
@@ -415,7 +430,7 @@ class IngameGui(LivingObject):
 				# deselect
 				# we need to make sure to have a cursor capable of selection (for apply_select())
 				# this handles deselection implicitly in the destructor
-				self.session.set_cursor('selection')
+				self.set_cursor('selection')
 
 				# apply new selection
 				for instance in self.session.selection_groups[num]:
@@ -424,7 +439,7 @@ class IngameGui(LivingObject):
 				self.session.selected_instances = self.session.selection_groups[num].copy()
 				# show menu depending on the entities selected
 				if self.session.selected_instances:
-					self.session.cursor.apply_select()
+					self.cursor.apply_select()
 				else:
 					# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
 					self.show_menu(None)
@@ -432,7 +447,7 @@ class IngameGui(LivingObject):
 			self.session.quicksave() # load is only handled by the MainListener
 		elif action == _Actions.PIPETTE:
 			# copy mode: pipette tool
-			self.session.toggle_cursor('pipette')
+			self.toggle_cursor('pipette')
 		elif action == _Actions.HEALTH_BAR:
 			# shows health bar of every instance with an health component
 			self.session.world.toggle_health_for_all_health_instances()
@@ -448,3 +463,31 @@ class IngameGui(LivingObject):
 			return False
 
 		return True
+
+	def toggle_cursor(self, which, *args, **kwargs):
+		"""Alternate between the cursor which and default.
+		args and kwargs are used to construct which."""
+		if self.current_cursor == which:
+			self.set_cursor()
+		else:
+			self.set_cursor(which, *args, **kwargs)
+
+	def set_cursor(self, which='default', *args, **kwargs):
+		"""Sets the mousetool (i.e. cursor).
+		This is done here for encapsulation and control over destructors.
+		Further arguments are passed to the mouse tool constructor."""
+		self.cursor.remove()
+		self.current_cursor = which
+		klass = {
+			'default'        : mousetools.SelectionTool,
+			'selection'      : mousetools.SelectionTool,
+			'tearing'        : mousetools.TearingTool,
+			'pipette'        : mousetools.PipetteTool,
+			'attacking'      : mousetools.AttackingTool,
+			'building'       : mousetools.BuildingTool,
+		}[which]
+		self.cursor = klass(self.session, *args, **kwargs)
+
+	def toggle_destroy_tool(self):
+		"""Initiate the destroy tool"""
+		self.toggle_cursor('tearing')

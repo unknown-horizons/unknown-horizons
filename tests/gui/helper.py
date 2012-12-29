@@ -154,7 +154,7 @@ class GuiHelper(object):
 
 	@property
 	def cursor(self):
-		return self.session.cursor
+		return self.session.ingame_gui.cursor
 
 	@property
 	def active_widgets(self):
@@ -357,7 +357,7 @@ class GuiHelper(object):
 		corresponding tab will be shown.
 		"""
 		self.session.selected_instances = set(objects)
-		self.session.cursor.apply_select()
+		self.cursor.apply_select()
 
 	def press_key(self, keycode, shift=False, ctrl=False):
 		"""Simulate a global keypress.

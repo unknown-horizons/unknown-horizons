@@ -45,13 +45,7 @@ def test_example(gui):
 	# Main menu
 	main_menu = gui.find(name='menu')
 	gui.trigger(main_menu, 'single_button')
-
-	filter_non_tooltip = lambda l : [i for i in l if i.name != "tooltip_container"]
-
-	# Single-player menu
-	assert len( filter_non_tooltip( gui.active_widgets ) ) == 1
-	singleplayer_menu = gui.active_widgets[0]
-	gui.trigger(singleplayer_menu, 'okay') # start a game
+	gui.trigger('menu', 'okay')
 
 	# Hopefully we're ingame now
 	assert gui.active_widgets

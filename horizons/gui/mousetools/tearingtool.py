@@ -70,7 +70,7 @@ class TearingTool(NavigationTool):
 		evt.consume()
 
 	def on_escape(self):
-		self.session.set_cursor()
+		self.session.ingame_gui.set_cursor()
 
 	def mouseReleased(self, evt):
 		"""Tear selected instances and set selection tool as cursor"""

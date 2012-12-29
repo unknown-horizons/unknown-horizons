@@ -20,6 +20,8 @@
 
 import itertools
 import json
+import math
+from math import sin, cos
 
 import horizons.globals
 from fife import fife
@@ -29,10 +31,8 @@ from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
-from horizons.messaging import MinimapRotationSettingChanged
+from horizons.messaging import SettingChanged
 
-import math
-from math import sin, cos
 
 class Minimap(object):
 	"""A basic minimap.
@@ -130,7 +130,7 @@ class Minimap(object):
 
 		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
 		if self.use_rotation:
-			MinimapRotationSettingChanged.subscribe(self._on_rotation_setting_change)
+			SettingChanged.subscribe(self._on_setting_changed)
 
 	def end(self):
 		self.disable()
@@ -138,7 +138,7 @@ class Minimap(object):
 		self.session = None
 		self.renderer = None
 		if self.use_rotation:
-			MinimapRotationSettingChanged.unsubscribe(self._on_rotation_setting_change)
+			SettingChanged.unsubscribe(self._on_setting_changed)
 
 	def disable(self):
 		"""Due to the way the minimap works, there isn't really a show/hide,
@@ -671,9 +671,10 @@ class Minimap(object):
 			return False
 		return self._rotation_setting
 
-	def _on_rotation_setting_change(self, message):
-		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
-		self.draw()
+	def _on_setting_changed(self, message):
+		if message.setting_name == "MinimapRotation":
+			self._rotation_setting = message.new_value
+			self.draw()
 
 	_rotations = { 0 : 0,
 				         1 : 3 * math.pi / 2,

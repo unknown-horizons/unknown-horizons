@@ -25,7 +25,7 @@ from horizons.constants import GAME_SPEED
 
 import horizons.globals
 from horizons.gui.util import get_res_icon_path
-from horizons.messaging import ResourceProduced
+from horizons.messaging import ResourceProduced, SettingChanged
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
@@ -45,15 +45,34 @@ class ProductionFinishedIconManager(object):
 		self.animation_steps = 1 # The steps that the image makes every run
 		self.background = "content/gui/images/background/produced_notification.png"
 
+		if bool(horizons.globals.fife.get_uh_setting("ShowResourceIcons")):
+			self.enable()
+
+		SettingChanged.subscribe(self._on_setting_changed)
+
+	def enable(self):
 		ResourceProduced.subscribe(self._on_resource_produced)
 
-	def end(self):
+	def disable(self):
 		Scheduler().rem_all_classinst_calls(self)
-		for group in self.run.keys():
+		ResourceProduced.discard(self._on_resource_produced)
+		for group in self.run:
 			self.renderer.removeAll(group)
+
+		self.run = {}
+
+	def end(self):
+		self.disable()
 		self.run = None
 		self.renderer = None
-		ResourceProduced.unsubscribe(self._on_resource_produced)
+		SettingChanged.unsubscribe(self._on_setting_changed)
+
+	def _on_setting_changed(self, message):
+		if message.setting_name == 'ShowResourceIcons':
+			if message.new_value is True:
+				self.enable()
+			else:
+				self.disable()
 
 	def _on_resource_produced(self, message):
 		"""This is called by the message bus with ResourceProduced messages"""

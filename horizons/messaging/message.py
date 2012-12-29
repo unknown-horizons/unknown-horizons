@@ -202,14 +202,6 @@ class PlayerInventoryUpdated(Message):
 	"""Message sent whenever a player's inventory is updated"""
 	pass
 
-class AutosaveIntervalChanged(Message):
-	"""Sent when the autosave interval is changed."""
-	pass
-
-class MinimapRotationSettingChanged(Message):
-	"""Sent when the setting that enables/disables rotating the minimap with the map is changed."""
-	pass
-
 class LanguageChanged(Message):
 	"""Sent when the language has changed."""
 	pass
@@ -217,3 +209,7 @@ class LanguageChanged(Message):
 class SpeedChanged(Message):
 	"""Sent when the ingame speed has changed."""
 	arguments = ('old', 'new', )
+
+class SettingChanged(Message):
+	"""Sent when a setting is changed in the dialog."""
+	arguments = ('setting_name', 'old_value', 'new_value', )

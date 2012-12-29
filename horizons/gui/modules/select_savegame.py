@@ -27,6 +27,7 @@ import time
 from fife import fife
 
 import horizons.globals
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
@@ -38,6 +39,7 @@ class SelectSavegameDialog(object):
 
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
+		self._widget = load_uh_widget('select_savegame.xml', 'book')
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.
@@ -67,7 +69,7 @@ class SelectSavegameDialog(object):
 				map_files, map_file_display = SavegameManager.get_multiplayersaves()
 
 		# Prepare widget
-		old_current = self.mainmenu._switch_current_widget('select_savegame')
+		old_current = self.mainmenu._switch_current_widget(self._widget)
 		self.current = self.mainmenu.current
 		self.last_click_event = ()
 		if mode == 'save':

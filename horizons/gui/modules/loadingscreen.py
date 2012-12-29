@@ -19,41 +19,42 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
+import random
 
-from horizons.constants import MULTIPLAYER
+import horizons.globals
+from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.util import load_uh_widget
 
 
-class AIDataSelection(object):
-	"""Subwidget for selecting AI settings."""
+class LoadingScreen(object):
+	"""Show quotes/gameplay tips while loading the game"""
 
 	def __init__(self):
-		self.gui = load_uh_widget('aidataselection.xml', 'book')
-
-		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(MULTIPLAYER.MAX_PLAYER_COUNT)]})
-		self.gui.distributeData({
-			'ai_players': int(horizons.globals.fife.get_uh_setting("AIPlayers"))
-		})
-
-		# FIXME
-		# pychan raises an RuntimeError if you attempt to hide a child in a container
-		# that is already hidden (or does not exist). Work around by tracking the
-		# state of the widget. The initial state depends on the parent widget.
-		self.hidden = False
-
-	def get_ai_players(self):
-		"""Returns the number that was entered by the user"""
-		return self.gui.collectData('ai_players')
+		self._widget = load_uh_widget('loadingscreen.xml')
+		self._widget.position_technique = "automatic" # == "center:center"
 
 	def show(self):
-		self.gui.parent.showChild(self.gui)
-		self.hidden = False
+		qotl_type_label = self._widget.findChild(name='qotl_type_label')
+		qotl_label = self._widget.findChild(name='qotl_label')
+		quote_type = int(horizons.globals.fife.get_uh_setting("QuotesType"))
+		if quote_type == 2:
+			quote_type = random.randint(0, 1) # choose a random type
+
+		if quote_type == 0:
+			name = GAMEPLAY_TIPS["name"]
+			items = GAMEPLAY_TIPS["items"]
+		elif quote_type == 1:
+			name = FUN_QUOTES["name"]
+			items = FUN_QUOTES["items"]
+
+		qotl_type_label.text = unicode(name)
+		qotl_label.text = unicode(random.choice(items)) # choose a random quote / gameplay tip
+
+		self._widget.show()
 
 	def hide(self):
-		if not self.hidden:
-			self.gui.parent.hideChild(self.gui)
-			self.hidden = True
+		self._widget.hide()
 
-	def get_widget(self):
-		return self.gui
+	def isVisible(self):
+		# TODO remote me once window manager works
+		return self._widget.isVisible()

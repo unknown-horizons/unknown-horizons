@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
 from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util.python.callback import Callback
@@ -102,3 +103,13 @@ class CreditsPickbeltWidget(PickBeltWidget):
 		('credits_packagers', u'Packagers'),
 		('credits_thanks', u'Thanks'),
 	)
+
+	def get_widget(self):
+		# Overwrite a few style pieces
+		widget = super(CreditsPickbeltWidget, self).get_widget()
+		for box in widget.findChildren(name='box'):
+			box.margins = (30, 0) # to get some indentation
+			box.padding = 3
+		for listbox in widget.findChildren(name='translators'):
+			listbox.background_color = fife.Color(255, 255, 255, 0)
+		return widget

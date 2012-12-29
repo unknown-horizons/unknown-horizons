@@ -33,6 +33,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
+from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
 from horizons.util.python.callback import Callback
@@ -52,11 +53,17 @@ class SingleplayerMenu(object):
 
 	def __init__(self, mainmenu):
 		self.mainmenu = mainmenu
-		self.widgets = mainmenu.widgets
+		self.widgets = LazyWidgetsDict({
+			'singleplayermenu': 'book',
+			'sp_random': 'book',
+			'sp_scenario': 'book',
+			'sp_free_maps': 'book',
+			'game_settings': 'book',
+		})
 		self.hide = mainmenu.hide
 		self.current = None
 
-	def show_single(self, show='scenario'): # show scenarios to highlight tutorials
+	def show(self, show='scenario'): # show scenarios to highlight tutorials
 		"""
 		@param show: string, which type of games to show
 		"""
@@ -66,7 +73,7 @@ class SingleplayerMenu(object):
 
 		# start with default single player settings
 		self.widgets.reload('singleplayermenu')
-		self.mainmenu._switch_current_widget('singleplayermenu')
+		self.mainmenu._switch_current_widget(self.widgets['singleplayermenu'])
 		self.current = self.mainmenu.current
 		self.active_right_side = None
 
@@ -77,8 +84,10 @@ class SingleplayerMenu(object):
 			right_side.parent.hideChild(right_side)
 
 		# create and add permanent left side widgets
-		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
-		self.current.aidata = AIDataSelection(self.current, self.widgets)
+		self.current.playerdata = PlayerDataSelection()
+		self.current.findChild(name="playerdataselectioncontainer").addChild(self.current.playerdata.get_widget())
+		self.current.aidata = AIDataSelection()
+		self.current.findChild(name="aidataselectioncontainer").addChild(self.current.aidata.get_widget())
 
 		self.map_preview = MapPreview(lambda : self.current)
 

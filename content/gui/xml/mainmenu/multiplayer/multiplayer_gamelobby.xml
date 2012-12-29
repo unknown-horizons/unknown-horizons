@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <Container name="menu"  size="1024,768" position_technique="automatic">
-<Icon name="background" />
 
 <Container size="800,580"  position="100,100">
 	<!-- TODO use background_image instead of Icon-->

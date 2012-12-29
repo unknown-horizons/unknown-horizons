@@ -25,11 +25,13 @@ import horizons.globals
 from horizons.constants import GROUND
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener
+from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
@@ -42,25 +44,28 @@ class IngameGui(LivingObject):
 	def __init__(self, session, main_gui):
 		self.session = session
 		self.main_gui = main_gui
+
+		self.cursor = None
+		self.coordinates_tooltip = None
 		self.keylistener = IngameKeyListener(self.session)
+		# used by NavigationTool
+		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.message_widget = Dummy
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
 
-		self.widgets = LazyWidgetsDict({})
-		minimap = self.widgets['minimap']
-		minimap.position_technique = "right+0:top+0"
+		self.mainhud = load_uh_widget('minimap.xml')
+		self.mainhud.position_technique = "right+0:top+0"
 
-		icon = minimap.findChild(name="minimap")
+		icon = self.mainhud.findChild(name="minimap")
 		self.minimap = Minimap(icon,
 		                       targetrenderer=horizons.globals.fife.targetrenderer,
 		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       session=self.session,
 		                       view=self.session.view)
 
-		minimap.mapEvents({
+		self.mainhud.mapEvents({
 			'zoomIn': self.session.view.zoom_in,
 			'zoomOut': self.session.view.zoom_out,
 			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
@@ -68,16 +73,16 @@ class IngameGui(LivingObject):
 			'gameMenuButton' : self.main_gui.toggle_pause,
 		})
 
-		minimap.show()
+		self.mainhud.show()
 
 		# Hide unnecessary buttons in hud
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
-			self.widgets['minimap'].findChild(name=widget).hide()
+			self.mainhud.findChild(name=widget).hide()
 
-		self.save_map_dialog = SaveMapDialog(self.main_gui, self.session, self.widgets['save_map'])
+		self.save_map_dialog = SaveMapDialog(self.main_gui, self.session)
 
 	def end(self):
-		self.widgets['minimap'].mapEvents({
+		self.mainhud.mapEvents({
 			'zoomIn': None,
 			'zoomOut': None,
 			'rotateRight': None,
@@ -86,20 +91,30 @@ class IngameGui(LivingObject):
 		})
 		self.minimap = None
 		self.keylistener = None
+		LastActivePlayerSettlementManager().remove()
+		LastActivePlayerSettlementManager.destroy_instance()
+
+		if self.cursor:
+			self.cursor.remove()
+			self.cursor.end()
+			self.cursor = None
+
 		super(IngameGui, self).end()
 
 	def load(self, savegame):
 		self.minimap.draw()
 
+		self.cursor = SelectionTool(self.session)
+
 	def setup(self):
 		"""Called after the world editor was initialized."""
-		self._settings_tab = TabWidget(self, tabs=[SettingsTab(self.session.world_editor, self.session)])
+		self._settings_tab = TabWidget(self, tabs=[SettingsTab(self.session.world_editor, self)])
 		self._settings_tab.show()
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""
-		self.widgets['minimap'].hide()
-		self.widgets['minimap'].show()
+		self.mainhud.hide()
+		self.mainhud.show()
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
@@ -109,13 +124,26 @@ class IngameGui(LivingObject):
 		pass
 
 	def on_key_press(self, action, evt):
-		pass
+		if action == _Actions.ESCAPE:
+			return self.on_escape()
+
+	def set_cursor(self, which='default', *args, **kwargs):
+		"""Sets the mousetool (i.e. cursor).
+		This is done here for encapsulation and control over destructors.
+		Further arguments are passed to the mouse tool constructor.
+		"""
+		self.cursor.remove()
+		klass = {
+			'default': SelectionTool,
+			'tile_layer': TileLayingTool
+		}[which]
+		self.cursor = klass(self.session, *args, **kwargs)
 
 
 class SettingsTab(TabInterface):
 	widget = 'editor_settings.xml'
 
-	def __init__(self, world_editor, session):
+	def __init__(self, world_editor, ingame_gui):
 		super(SettingsTab, self).__init__(widget=self.widget)
 
 		self._world_editor = world_editor
@@ -134,7 +162,7 @@ class SettingsTab(TabInterface):
 			tile = getattr(GROUND, tile_type.upper())
 			image.up_image = self._get_tile_image(tile)
 			image.size = image.min_size = image.max_size = (64, 32)
-			image.capture(Callback(session.set_cursor, 'tile_layer', tile))
+			image.capture(Callback(ingame_gui.set_cursor, 'tile_layer', tile))
 
 	def _get_tile_image(self, tile):
 		# TODO TileLayingTool does almost the same thing, perhaps put this in a better place
@@ -162,10 +190,10 @@ class SettingsTab(TabInterface):
 class SaveMapDialog(object):
 	"""Shows a dialog where the user can set the name of the saved map."""
 
-	def __init__(self, main_gui, session, widget):
+	def __init__(self, main_gui, session):
 		self._main_gui = main_gui
 		self._session = session
-		self._widget = widget
+		self._widget = load_uh_widget('save_map.xml')
 
 		events = {
 			OkButton.DEFAULT_NAME: self._do_save,

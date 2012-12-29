@@ -33,7 +33,6 @@ import horizons.main
 
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
-from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool, TileLayingTool
 from horizons.command.building import Tear
 from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
@@ -46,16 +45,13 @@ from horizons.util.living import LivingObject, livingProperty
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.worldobject import WorldObject
 from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import GAME_SPEED, LAYERS
-from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
-from horizons.world.managers.statusiconmanager import StatusIconManager
-from horizons.messaging import AutosaveIntervalChanged, MessageBus, SpeedChanged
+from horizons.constants import GAME_SPEED
+from horizons.messaging import SettingChanged, MessageBus, SpeedChanged
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -79,8 +75,6 @@ class Session(LivingObject):
 	* view - horizons.view instance. Used to control the ingame camera.
 	* ingame_gui - horizons.gui.ingame_gui instance. Used to control the ingame gui framework.
 		(This is different from gui, which is the main menu and general session-independent gui)
-	* cursor - horizons.gui.{navigation/cursor/selection/building}tool instance. Used to handle
-			   mouse events.
 	* selected_instances - Set that holds the currently selected instances (building, units).
 
 	TUTORIAL:
@@ -119,17 +113,6 @@ class Session(LivingObject):
 		#GUI
 		self.gui.session = self
 		self.ingame_gui = ingame_gui_class(self, self.gui)
-		self.coordinates_tooltip = None
-		LastActivePlayerSettlementManager.create_instance(self)
-
-
-		self.status_icon_manager = StatusIconManager(
-		  renderer=self.view.renderer['GenericRenderer'],
-		  layer=self.view.layers[LAYERS.OBJECTS]
-		  )
-		self.production_finished_icon_manager = None
-		self.create_production_finished_icon_manager()
-
 
 		self.selected_instances = set()
 		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
@@ -139,25 +122,11 @@ class Session(LivingObject):
 	def in_editor_mode(self):
 		return False
 
-	def create_production_finished_icon_manager(self):
-		""" Checks the settings if we should display resrouce icons.
-		If True: Create the ProductionFinishedIconManager
-		If False and a manager is currently running: End it
-		"""
-		show_resource_icons = bool(horizons.globals.fife.get_uh_setting("ShowResourceIcons"))
-		if show_resource_icons:
-			self.production_finished_icon_manager = ProductionFinishedIconManager(
-				renderer=self.view.renderer['GenericRenderer'],
-				layer=self.view.layers[LAYERS.OBJECTS]
-			)
-		else:
-			self.end_production_finished_icon_manager()
-
 	def start(self):
 		"""Actually starts the game."""
 		self.timer.activate()
 		self.reset_autosave()
-		AutosaveIntervalChanged.subscribe(self._on_autosave_interval_changed)
+		SettingChanged.subscribe(self._on_setting_changed)
 
 	def reset_autosave(self):
 		"""(Re-)Set up autosave. Called if autosave interval has been changed."""
@@ -170,8 +139,9 @@ class Session(LivingObject):
 				self.log.debug("Initing autosave every %s minutes", interval)
 				ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
 
-	def _on_autosave_interval_changed(self, message):
-		self.reset_autosave()
+	def _on_setting_changed(self, message):
+		if message.setting_name == 'AutosaveInterval':
+			self.reset_autosave()
 
 	def create_manager(self):
 		"""Returns instance of command manager (currently MPManager or SPManager)"""
@@ -193,11 +163,6 @@ class Session(LivingObject):
 		AIPlayer.clear_caches()
 		SelectableBuildingComponent.reset()
 
-	def end_production_finished_icon_manager(self):
-		if self.production_finished_icon_manager is not None:
-			self.production_finished_icon_manager.end()
-			self.production_finished_icon_manager = None
-
 	def end(self):
 		self.log.debug("Ending session")
 		self.is_alive = False
@@ -205,28 +170,14 @@ class Session(LivingObject):
 		self.gui.session = None
 
 		# Has to be done here, cause the manager uses Scheduler!
-		self.end_production_finished_icon_manager()
 		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 
-		if horizons.globals.fife.get_fife_setting("PlaySounds"):
-			for emitter in horizons.globals.fife.sound.emitter['ambient'][:]:
-				emitter.stop()
-				horizons.globals.fife.sound.emitter['ambient'].remove(emitter)
-			horizons.globals.fife.sound.emitter['effects'].stop()
-			horizons.globals.fife.sound.emitter['speech'].stop()
-		if hasattr(self, "cursor"): # the line below would crash uglily on ^C
-			self.cursor.remove()
+		horizons.globals.fife.sound.end()
 
-		if hasattr(self, 'cursor') and self.cursor is not None:
-			self.cursor.end()
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
 
-		LastActivePlayerSettlementManager().remove() # keep after ingame_gui
-		LastActivePlayerSettlementManager.destroy_instance()
-
-		self.cursor = None
 		self.world.end() # must be called before the world ref is gone
 		self.world = None
 		self.view = None
@@ -240,47 +191,14 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
-		self.status_icon_manager.end()
-		self.status_icon_manager = None
-
 		horizons.main._modules.session = None
 		self._clear_caches()
 
 		# subscriptions shouldn't survive listeners (except the main Gui)
 		self.gui.unsubscribe()
-		AutosaveIntervalChanged.unsubscribe(self._on_autosave_interval_changed)
+		SettingChanged.unsubscribe(self._on_setting_changed)
 		MessageBus().reset()
 		self.gui.subscribe()
-
-	def toggle_cursor(self, which, *args, **kwargs):
-		"""Alternate between the cursor which and default.
-		args and kwargs are used to construct which."""
-		if self.current_cursor == which:
-			self.set_cursor()
-		else:
-			self.set_cursor(which, *args, **kwargs)
-
-	def set_cursor(self, which='default', *args, **kwargs):
-		"""Sets the mousetool (i.e. cursor).
-		This is done here for encapsulation and control over destructors.
-		Further arguments are passed to the mouse tool constructor."""
-		self.cursor.remove()
-		self.current_cursor = which
-		klass = {
-			'default'        : SelectionTool,
-			'selection'      : SelectionTool,
-			'tearing'        : TearingTool,
-			'pipette'        : PipetteTool,
-			'attacking'      : AttackingTool,
-			'building'       : BuildingTool,
-			'tile_layer'     : TileLayingTool
-
-		}[which]
-		self.cursor = klass(self, *args, **kwargs)
-
-	def toggle_destroy_tool(self):
-		"""Initiate the destroy tool"""
-		self.toggle_cursor('tearing')
 
 	def autosave(self):
 		raise NotImplementedError
@@ -338,9 +256,6 @@ class Session(LivingObject):
 			self.scenario_eventhandler.load(savegame_db)
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
 		self.world.init_fish_indexer() # now the fish should exist
-		if self.is_game_loaded():
-			LastActivePlayerSettlementManager().load(savegame_db) # before ingamegui
-		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.get_object_by_id(instance_id[0])
@@ -350,12 +265,7 @@ class Session(LivingObject):
 			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
 
-		# cursor has to be inited last, else player interacts with a not inited world with it.
-		self.current_cursor = 'default'
-		self.cursor = SelectionTool(self)
-		# Set cursor correctly, menus might need to be opened.
-		# Open menus later; they may need unit data not yet inited
-		self.cursor.apply_select()
+		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
 		Scheduler().before_ticking()
 		savegame_db.close()
@@ -440,9 +350,6 @@ class Session(LivingObject):
 			if self._pause_stack == 0:
 				self.speed_set(self.paused_ticks_per_second)
 
-				# check if resource icons should be displayed (possible changes in settings)
-				self.create_production_finished_icon_manager()
-
 	def speed_toggle_pause(self, suggestion=False):
 		if self.speed_is_paused():
 			self.speed_unpause(suggestion)
@@ -512,7 +419,6 @@ class Session(LivingObject):
 			self.view.save(db)
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
-			LastActivePlayerSettlementManager().save(db)
 
 			for instance in self.selected_instances:
 				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
