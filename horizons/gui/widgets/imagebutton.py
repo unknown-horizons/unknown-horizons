@@ -42,6 +42,10 @@ class ImageButton(FifeImageButton):
 
 	def __init__(self, path='', is_focusable=False, **kwargs):
 		super(ImageButton, self).__init__(is_focusable=is_focusable, **kwargs)
+		if path:
+			# initializing from python, not xml, so path is available here
+			# and should be set
+			self.path = path
 
 	def _get_path(self):
 		return self.__path
