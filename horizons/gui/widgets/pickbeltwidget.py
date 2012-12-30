@@ -20,10 +20,10 @@
 # ###################################################
 
 from fife import fife
-from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util.python.callback import Callback
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
@@ -45,9 +45,9 @@ class PickBeltWidget(object):
 		# Create the required pickbelts
 		for i, (name, text) in enumerate(self.sections):
 			for side in self.buttons:
-				pickbelt = ImageButton(is_focusable=False, text=text)
+				pickbelt = ImageButton(text=text)
 				pickbelt.name = name + '_' + side
-				pickbelt.up_image = 'content/gui/images/background/pickbelt_%s.png' % side
+				pickbelt.path = 'images/background/pickbelt_%s' % side
 				pickbelt.font = "small_tooltip"
 
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
