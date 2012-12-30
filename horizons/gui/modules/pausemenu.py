@@ -40,7 +40,7 @@ class PauseMenu(object):
 			'load' : lambda: 0 if in_editor_mode else mainmenu.load_game,
 			'save' : ingame_gui.show_save_map_dialog if in_editor_mode else mainmenu.save_game,
 			'sett' : horizons.globals.fife.show_settings,
-			'help' : mainmenu.on_help,
+			'help' : ingame_gui.toggle_help,
 			'start': self.hide,
 			'quit' : self._do_quit,
 		}

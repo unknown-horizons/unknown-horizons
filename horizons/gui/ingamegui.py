@@ -178,6 +178,9 @@ class IngameGui(LivingObject):
 	def toggle_pause(self):
 		self.pausemenu.toggle()
 
+	def toggle_help(self):
+		self.help_dialog.toggle()
+
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""
 		self.mainhud.hide()
@@ -468,7 +471,7 @@ class IngameGui(LivingObject):
 					if hasattr(instance, "path") and instance.owner.is_local_player:
 						self.minimap.show_unit_path(instance)
 		elif action == _Actions.HELP:
-			self.help_dialog.toggle()
+			self.toggle_help()
 		else:
 			return False
 
