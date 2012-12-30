@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.globals
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.util import load_uh_widget
 
@@ -40,7 +41,7 @@ class PauseMenu(object):
 		events = {
 			'load' : do_load_map if in_editor_mode else mainmenu.load_game,
 			'save' : ingame_gui.show_save_map_dialog if in_editor_mode else mainmenu.save_game,
-			'sett' : mainmenu.show_settings,
+			'sett' : horizons.globals.fife.show_settings,
 			'help' : mainmenu.on_help,
 			'start': self.hide,
 			'quit' : self._do_quit,

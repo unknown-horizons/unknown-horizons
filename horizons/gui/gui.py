@@ -37,7 +37,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 
 from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
-                                  SelectSavegameDialog, LoadingScreen)
+                                  SelectSavegameDialog, LoadingScreen, SettingsDialog)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager
 
@@ -72,6 +72,7 @@ class Gui(object):
 		self.selectsavegame_dialog = SelectSavegameDialog(self)
 		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
 		self.loadingscreen = LoadingScreen()
+		self.settings_dialog = SettingsDialog(self.windows)
 
 		self.mainmenu = load_uh_widget('mainmenu.xml', 'menu')
 		self.mainmenu.mapEvents({
@@ -79,8 +80,8 @@ class Gui(object):
 			'single_label' : lambda: self.windows.show(self.singleplayermenu),
 			'multi_button': lambda: self.windows.show(self.multiplayermenu),
 			'multi_label' : lambda: self.windows.show(self.multiplayermenu),
-			'settings_button': self.show_settings,
-			'settings_label' : self.show_settings,
+			'settings_button': lambda: self.windows.show(self.settings_dialog),
+			'settings_label' : lambda: self.windows.show(self.settings_dialog),
 			'help_button': self.on_help,
 			'help_label' : self.on_help,
 			'quit_button': self.show_quit,
@@ -133,10 +134,6 @@ class Gui(object):
 		if not success:
 			# There was a problem during the 'save game' procedure.
 			self.show_popup(_('Error'), _('Failed to save.'))
-
-	def show_settings(self):
-		"""Displays settings gui derived from the FIFE settings module."""
-		horizons.globals.fife.show_settings()
 
 	def on_help(self):
 		self.help_dialog.toggle()
