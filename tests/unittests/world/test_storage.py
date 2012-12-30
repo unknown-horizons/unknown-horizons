@@ -130,8 +130,7 @@ class TestGlobalLimitStorage(TestCase):
 
 class TestOtherStorages(TestCase):
 
-	def test_total(self):
-		s = TotalStorage(10)
+	def test_total(self, s = TotalStorage(10)):
 
 		self.assertEqual(s.get_limit(), 10)
 		self.assertEqual(s.get_limit(1), 10)
@@ -150,8 +149,7 @@ class TestOtherStorages(TestCase):
 		self.assertEqual(s.get_free_space_for(1), 0)
 		self.assertEqual(s.get_free_space_for(2), 0)
 
-	def test_positive(self):
-		s = PositiveStorage()
+	def test_positive(self, s = PositiveStorage()):
 
 		self.assertEqual(s.alter(1, -2), -2)
 		self.assertEqual(s.alter(1, 2), 0)
