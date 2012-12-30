@@ -23,6 +23,7 @@ from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
+from horizons.gui.windows import Window
 from horizons.messaging import LanguageChanged
 
 
@@ -83,3 +84,21 @@ class HelpDialog(object):
 			if self.mainmenu.session is not None and not self.mainmenu._Gui__pause_displayed:
 				UnPauseCommand().execute(self.mainmenu.session)
 			self.widget.hide()
+
+
+class MainMenuHelpDialog(HelpDialog, Window):
+	# Modified HelpDialog to work as a window
+	# TODO once windows ingame are using the WindowManager both HelpDialog
+	# classes can be merged
+
+	def __init__(self, windows):
+		HelpDialog.__init__(self, None)
+		Window.__init__(self, windows)
+
+		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+
+	def show(self):
+		self.widget.show()
+
+	def hide(self):
+		self.widget.hide()

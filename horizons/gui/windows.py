@@ -124,6 +124,13 @@ class WindowManager(object):
 
 		self._windows[-1].hide()
 
+	def toggle(self, window, **kwargs):
+		"""Hide window if is currently visible (and on top), show it otherwise."""
+		if self._windows and self._windows[-1] == window:
+			self.close()
+		else:
+			self.show(window, **kwargs)
+
 	def show_modal_background(self):
 		""" Loads transparent background that de facto prohibits
 		access to other gui elements by eating all input events.

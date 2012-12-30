@@ -35,7 +35,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 
-from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
+from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, MainMenuHelpDialog,
                                   SelectSavegameDialog, LoadingScreen, SettingsDialog)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager, Window
@@ -106,7 +106,7 @@ class Gui(object):
 
 		self.singleplayermenu = SingleplayerMenu(self, self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
-		self.help_dialog = HelpDialog(self)
+		self.help_dialog = MainMenuHelpDialog(self.windows)
 		self.selectsavegame_dialog = SelectSavegameDialog(self)
 		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
 		self.loadingscreen = LoadingScreen()
@@ -150,7 +150,7 @@ class Gui(object):
 			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def on_help(self):
-		self.help_dialog.toggle()
+		self.windows.toggle(self.help_dialog)
 
 	def quit_session(self, force=False):
 		"""Quits the current session. Usually returns to main menu afterwards.
