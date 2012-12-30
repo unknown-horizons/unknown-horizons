@@ -35,7 +35,7 @@
 				up_image="content/gui/icons/ship/traderoute_disabled.png"
 				down_image="content/gui/icons/ship/traderoute_disabled.png"
 				hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
-				helptext="Start route" comment="Trade route" is_focusable="0" />
+				helptext="Start route" comment="Trade route" />
 
 			<Spacer fixed_size="58" />
 

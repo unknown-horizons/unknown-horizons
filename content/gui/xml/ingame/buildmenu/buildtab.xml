@@ -86,6 +86,6 @@
 		</HBox>
 	</Container>
 
-	<ImageButton name="switch_build_menu_config_button" up_image="content/gui/icons/tabwidget/buildmenu/tier.png" position="200,0" is_focusable="0" />
+	<ImageButton name="switch_build_menu_config_button" path="icons/tabwidget/buildmenu/tier" position="200,0" />
 </Container>
 </Container>

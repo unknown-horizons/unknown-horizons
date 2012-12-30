@@ -35,33 +35,23 @@
 		<Label text="Exchange:" name="exchange_label" position="0,3" />
 
 		<ImageButton name="size_1" text="" size="32,32" position="5, 25"
-			up_image="content/gui/icons/ship/smallbutton.png"
-			down_image="content/gui/icons/ship/smallbutton_d.png"
-			hover_image="content/gui/icons/ship/smallbutton_h.png" />
+			path="icons/ship/smallbutton" />
 		<Label position="13, 58" text="1t" name="lbl_1" comment="noi18n" />
 
 		<ImageButton name="size_2" text="" size="32,32" position="47, 25"
-			up_image="content/gui/icons/ship/smallbutton.png"
-			down_image="content/gui/icons/ship/smallbutton_d.png"
-			hover_image="content/gui/icons/ship/smallbutton_h.png" />
+			path="icons/ship/smallbutton" />
 		<Label position="55, 58" text="5t" name="lbl_5" comment="noi18n" />
 
 		<ImageButton name="size_3" text="" size="32,32" position="90, 25"
-			up_image="content/gui/icons/ship/smallbutton.png"
-			down_image="content/gui/icons/ship/smallbutton_d.png"
-			hover_image="content/gui/icons/ship/smallbutton_h.png" />
+			path="icons/ship/smallbutton" />
 		<Label position="95, 58" text="10t" name="lbl_10" comment="noi18n" />
 
 		<ImageButton name="size_4" text="" size="32,32" position="132, 25"
-			up_image="content/gui/icons/ship/smallbutton.png"
-			down_image="content/gui/icons/ship/smallbutton_d.png"
-			hover_image="content/gui/icons/ship/smallbutton_h.png" />
+			path="icons/ship/smallbutton" />
 		<Label position="137, 58" text="20t" name="lbl_20" comment="noi18n" />
 
 		<ImageButton name="size_5" text="" size="32,32" position="174, 25"
-			up_image="content/gui/icons/ship/smallbutton.png"
-			down_image="content/gui/icons/ship/smallbutton_d.png"
-			hover_image="content/gui/icons/ship/smallbutton_h.png" />
+			path="icons/ship/smallbutton" />
 		<Label position="179, 58" text="50t" name="lbl_50" comment="noi18n" />
 
 </Container>

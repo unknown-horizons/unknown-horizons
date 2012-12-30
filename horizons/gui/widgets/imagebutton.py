@@ -19,8 +19,51 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import ImageButton
+from fife.extensions.pychan.widgets import ImageButton as FifeImageButton
 from fife.extensions.pychan.widgets.common import Attr
+
+
+class ImageButton(FifeImageButton):
+	"""Extends ImageButton functionality by providing a new path= attribute.
+	Unless manually overridden, specifying path="path/to/file" (note: no .png
+	extension) will interpret that as these attributes:
+
+	      up_image = "content/gui/path/to/file.png"
+	    down_image = "content/gui/path/to/file_d.png"
+	   hover_image = "content/gui/path/to/file_h.png"
+	inactive_image = "content/gui/path/to/file_bw.png"
+
+	If some of those files could not be found, pychan uses up_image instead.
+	inactive_image only applies to ToggleImageButton (a custom UH widget)
+	and widgets derived from it. Sets is_focusable to False unless overridden.
+	"""
+	ATTRIBUTES = FifeImageButton.ATTRIBUTES + [Attr('path')]
+	IMAGE = "content/gui/{path}{{mode}}.png"
+
+	def __init__(self, path='', is_focusable=False, **kwargs):
+		super(ImageButton, self).__init__(is_focusable=is_focusable, **kwargs)
+
+	def _get_path(self):
+		return self.__path
+
+	def _set_path(self, path):
+		self.__path = path
+		image_path = self.IMAGE.format(path=path)
+		self.up_image = image_path.format(mode='')
+		try:
+			self.hover_image = image_path.format(mode='_h')
+		except RuntimeError:
+			# RuntimeError: _[NotFound]_ , Something was searched, but not found
+			# by default, pychan will set hover_image to be the same as up_image
+			pass
+		try:
+			self.down_image = image_path.format(mode='_d')
+		except RuntimeError:
+			pass
+
+		#TODO move ToggleImageButton into this file
+
+	path = property(_get_path, _set_path)
 
 
 class OkButton(ImageButton):

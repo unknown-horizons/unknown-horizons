@@ -14,18 +14,10 @@
 		<HBox max_size="80,36">
 			<ToggleImageButton name="backwardButton" helptext="Read previous entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
-				inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
-				up_image="content/gui/images/buttons/parrow_left.png"
-				hover_image="content/gui/images/buttons/parrow_left_h.png"
-				down_image="content/gui/images/buttons/parrow_left_d.png"
-				is_focusable="0" />
+				path="images/buttons/parrow_left" />
 			<ToggleImageButton name="forwardButton" helptext="Read next entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
-				inactive_image ="content/gui/images/buttons/parrow_right_bw.png"
-				up_image="content/gui/images/buttons/parrow_right.png"
-				hover_image="content/gui/images/buttons/parrow_right_h.png"
-				down_image="content/gui/images/buttons/parrow_right_d.png"
-				is_focusable="0" />
+				path="images/buttons/parrow_right" />
 		</HBox>
 	</VBox> <!-- closes VBox logbook left page -->
 

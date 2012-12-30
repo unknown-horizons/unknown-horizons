@@ -2,7 +2,7 @@
 <Container size="60,60" opaque="0">
 	<ImageButton name="buysell" />
 	<Icon name="icon" image="content/gui/images/background/inv_bg.png" position="0,10" />
-	<ImageButton up_image="content/gui/images/background/inv_bg.png" name="button" position="0,10" />
+	<ImageButton path="images/background/inv_bg" name="button" position="0,10" />
 
 	<!-- Label that displays the amount that is being sold or bought -->
 	<Label name="amount" text="" position="0,42" />

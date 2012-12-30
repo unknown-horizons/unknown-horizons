@@ -40,10 +40,8 @@
 
 		<Icon image="content/gui/images/icons/hud/main/production_arrow.png" position="61,16" />
 
-		<ImageButton name="toggle_active" border_size="0" position="90,10" 
-			up_image="content/gui/images/icons/hud/main/toggle_active.png" 
-			down_image="content/gui/images/icons/hud/main/toggle_active_h.png" 
-			hover_image="content/gui/images/icons/hud/main/toggle_active_h.png" />
+		<ImageButton name="toggle_active" border_size="0" position="90,10"
+			path="images/icons/hud/main/toggle_active"  />
 		<VBox name="output_res">
 			<!- icons are added at runtime here ->
 		</VBox>
@@ -53,6 +51,3 @@
 
 </Container>
 </Container>
-
-
-

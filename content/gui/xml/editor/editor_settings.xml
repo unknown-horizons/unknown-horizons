@@ -3,30 +3,21 @@
 	<TabBG amount="4" />
 
 	<Container position="0, 20" size="250, 350" max_size="250, 350">
-		<ImageButton name="size_1" text="" size="32,32" position="25, 55"
-			is_focusable="0"
-			up_image="content/gui/icons/ship/smallbutton.png"
-			down_image="content/gui/icons/ship/smallbutton_d.png"
-			hover_image="content/gui/icons/ship/smallbutton_h.png" />
+		<ImageButton name="size_1" size="32,32" position="25, 55"
+			path="icons/ship/smallbutton" />
 		<Label position="33, 88" text="1" name="lbl_1" comment="noi18n" />
 
-		<ImageButton name="size_2" text="" size="32,32" position="67, 55"
-			is_focusable="0"
-			up_image="content/gui/icons/ship/smallbutton.png"
-			down_image="content/gui/icons/ship/smallbutton_d.png"
-			hover_image="content/gui/icons/ship/smallbutton_h.png" />
+		<ImageButton name="size_2" size="32,32" position="67, 55"
+			path="icons/ship/smallbutton" />
 		<Label position="75, 88" text="2" name="lbl_2" comment="noi18n" />
 
-		<ImageButton name="size_3" text="" size="32,32" position="110, 55"
-			is_focusable="0"
-			up_image="content/gui/icons/ship/smallbutton.png"
-			down_image="content/gui/icons/ship/smallbutton_d.png"
-			hover_image="content/gui/icons/ship/smallbutton_h.png" />
+		<ImageButton name="size_3" size="32,32" position="110, 55"
+			path="icons/ship/smallbutton" />
 		<Label position="115, 88" text="3" name="lbl_3" comment="noi18n" />
 	</Container>
 
-	<ImageButton position="40,150" name="default_land" is_focusable="0" />
-	<ImageButton position="120,150" name="sand" is_focusable="0" />
-	<ImageButton position="40,200" name="shallow_water" is_focusable="0" />
-	<ImageButton position="120,200" name="water" is_focusable="0" />
+	<ImageButton position="40,150" name="default_land" />
+	<ImageButton position="120,150" name="sand" />
+	<ImageButton position="40,200" name="shallow_water" />
+	<ImageButton position="120,200" name="water" />
 </Container>

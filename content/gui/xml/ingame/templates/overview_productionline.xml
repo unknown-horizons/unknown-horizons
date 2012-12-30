@@ -16,14 +16,10 @@
 		<VBox name="output_box" position="136,17" />
 
 		<!-- one of those button gets removed at runtime -->
-		<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
-			down_image="content/gui/icons/templates/production/toggle_active_d.png"
-			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+		<ImageButton path="icons/templates/production/toggle_active"
 			border_size="0" position="80,0" name="toggle_active_active" helptext="Pause production" />
 
-		<ImageButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
-			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
-			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
+		<ImageButton path="icons/templates/production/toggle_inactive"
 			border_size="0" position="80,0" name="toggle_active_inactive" helptext="Start production" />
 
 		<VBox name="output_res" position="158,4" />

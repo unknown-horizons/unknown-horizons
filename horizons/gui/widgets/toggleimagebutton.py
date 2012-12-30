@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import ImageButton
 from fife.extensions.pychan.widgets.common import Attr
+
+from horizons.gui.widgets.imagebutton import ImageButton
 
 
 class ToggleImageButton(ImageButton):
@@ -67,6 +68,15 @@ class ToggleImageButton(ImageButton):
 			self.down_image = self.inactive_image
 			self.hover_image = self.inactive_image
 			self.state = self.INACTIVE
+
+	def _set_path(self, path):
+		super(ToggleImageButton, self)._set_path(path)
+		image_path = self.IMAGE.format(path=path)
+		try:
+			self.inactive_image = image_path.format(mode='_bw')
+		except RuntimeError:
+			# this one would not be replaced automatically by pychan
+			self.inactive_image = self.up_image
 
 	def _get_inactive_image(self):
 		return self.__inactiveimage
