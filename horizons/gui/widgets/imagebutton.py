@@ -69,7 +69,7 @@ class ImageButton(FifeImageButton):
 class OkButton(ImageButton):
 	"""The OkButton is a shortcut for an ImageButton with our OK / apply icon.
 	Its default attributes are:
-	name="okButton" path="content/gui/images/buttons/ok"
+	name="okButton" path="images/buttons/ok"
 	"""
 	DEFAULT_NAME = 'okButton'
 	def __init__(self, name=None, **kwargs):
