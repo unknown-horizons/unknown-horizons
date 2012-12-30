@@ -105,6 +105,12 @@ class WindowManager(object):
 		window = self._windows.pop()
 		window.close()
 		if self._windows:
+			# TODO temporary, try to stay compatible with rest of the code
+			top = self._windows[-1]
+			self._mainmenu.current = top
+			if hasattr(top, 'on_escape'):
+				self._mainmenu.on_escape = top.on_escape
+
 			self._windows[-1].show()
 
 	def hide(self):
