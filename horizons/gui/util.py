@@ -88,17 +88,23 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	return widget
 
 @decorators.cachedfunction
-def get_res_icon_path(res, size=32, greyscale=False):
+def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 	"""Returns path of a resource icon or placeholder path, if icon does not exist.
 	@param res: resource id. Pass 'placeholder' to get placeholder path.
+	@param full_path: whether to return full icon path or a stub path suitable for ImageButton path=
 	"""
-	icon_path = 'content/gui/icons/resources/{size}/'.format(size=size)
+	icon_path = 'icons/resources/{size}/'.format(size=size)
 	if greyscale:
 		icon_path = icon_path + 'greyscale/'
 	if res == 'placeholder':
-		icon_path = icon_path + 'placeholder.png'
+		icon_path = icon_path + 'placeholder'
 	else:
-		icon_path = icon_path + '{res:03d}.png'.format(res=res)
+		icon_path = icon_path + '{res:03d}'.format(res=res)
+
+	if not full_path:
+		return icon_path
+
+	icon_path = 'content/gui/' + icon_path + '.png'
 	try:
 		Icon(image=icon_path)
 	except RuntimeError: # ImageManager: image not found, use placeholder or die

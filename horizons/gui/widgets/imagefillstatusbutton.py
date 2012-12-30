@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import Container, Icon, ImageButton, Label
+from fife.extensions.pychan.widgets import Container, Icon, Label
 
 from horizons.util.python.callback import Callback
 from horizons.gui.util import get_res_icon_path
+from horizons.gui.widgets.imagebutton import ImageButton
 
 class ImageFillStatusButton(Container):
 
@@ -30,14 +31,15 @@ class ImageFillStatusButton(Container):
 	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
 	PADDING = 3
 
-	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="",
+	def __init__(self, path, text, res_id, helptext="",
 	             filled=0, marker=0, uncached=False, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from Container, but also takes the args of the Imagebutton,
 		in order to display the image. The container is only used, because ImageButtons can't have children.
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
-		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, text
+		self.path = path
+		self.text = text
 		self.helptext = _(helptext)
 		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
@@ -57,16 +59,11 @@ class ImageFillStatusButton(Container):
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
 		greyscale = use_inactive_icon and amount == 0
-		image = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale)
+		path = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale, full_path=False)
 		helptext = db.get_res_name(res)
-		return cls(up_image=image, down_image=image, hover_image=image,
-		           text=unicode(amount),
-		           helptext=helptext,
-		           size=cls.CELL_SIZE,
-		           res_id=res,
-		           filled=filled,
-		           marker=marker,
-		           uncached=uncached)
+		return cls(path=path, text=unicode(amount), helptext=helptext,
+		           size=cls.CELL_SIZE, res_id=res, filled=filled,
+		           marker=marker, uncached=uncached)
 
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
@@ -84,9 +81,7 @@ class ImageFillStatusButton(Container):
 		# hash buttons by creation function call
 		# NOTE: there may be problems with multiple buttons with the same
 		# images and helptext at the same time
-		create_btn = Callback(ImageButton, up_image=self.up_image,
-		                      down_image=self.down_image, hover_image=self.hover_image,
-		                      helptext=self.helptext)
+		create_btn = Callback(ImageButton, path=self.path, helptext=self.helptext)
 		self.button = None
 		if self.uncached:
 			self.button = create_btn()
