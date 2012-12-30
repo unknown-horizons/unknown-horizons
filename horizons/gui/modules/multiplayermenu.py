@@ -30,6 +30,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.windows import Window
 from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
@@ -37,11 +38,11 @@ from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 
 
-class MultiplayerMenu(object):
+class MultiplayerMenu(Window):
 
 	def __init__(self, mainmenu, windows):
+		super(MultiplayerMenu, self).__init__(windows)
 		self._mainmenu = mainmenu
-		self._windows = windows
 
 	def hide(self):
 		self._gui.hide()
@@ -96,9 +97,6 @@ class MultiplayerMenu(object):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 		self._mainmenu.show_main()
-
-	def on_escape(self):
-		self._windows.close()
 
 	def _check_connection(self):
 		"""

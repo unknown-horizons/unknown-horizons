@@ -36,6 +36,7 @@ from horizons.i18n import find_available_languages
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.windows import Window
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 from horizons.util.python.callback import Callback
@@ -47,11 +48,11 @@ from horizons.util.worldobject import WorldObject
 from horizons.util.yamlcache import YamlCache
 
 
-class SingleplayerMenu(object):
+class SingleplayerMenu(Window):
 
 	def __init__(self, mainmenu, windows):
+		super(SingleplayerMenu, self).__init__(windows)
 		self._mainmenu = mainmenu
-		self._windows = windows
 
 		self._mode = None
 
@@ -75,9 +76,6 @@ class SingleplayerMenu(object):
 	def close(self):
 		self.hide()
 		self._mainmenu.show_main()
-
-	def on_escape(self):
-		self._windows.close()
 
 	def show(self):
 		self._gui.findChild(name='scenario').marked = True

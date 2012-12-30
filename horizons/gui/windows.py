@@ -30,6 +30,50 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 
+class Window(object):
+
+	def __init__(self, windows=None):
+		# Reference to the window manager. Use it to show new windows or close
+		# this window.
+		self._windows = windows
+
+	def show(self, **kwargs):
+		"""Show the window.
+
+		After this call, the window should be visible. If you decide to not show
+		the window here (e.g. an error occured), you'll need to call
+		`self._windows.close()` to remove the window from the manager.
+		"""
+		raise NotImplementedError
+
+	def hide(self):
+		"""Hide the window.
+
+		After this call, the window should not be visible anymore. However, it remains
+		in the stack of open windows and will be visible once it becomes the topmost
+		window again.
+
+		You should *never* call this directly in your code, other than in `close()`
+		when you overwrote it in your subclass.
+		"""
+		raise NotImplementedError
+
+	def close(self):
+		"""Closes the window.
+
+		You should *never* call this directly in your code. Use `self._windows.close()`
+		to ask the WindowManager to remove the window instead.
+		"""
+		self.hide()
+
+	def on_escape(self):
+		"""Define what happens when ESC is pressed.
+
+		By default, the window will be closed.
+		"""
+		self._windows.close()
+
+
 class WindowManager(object):
 
 	def __init__(self, mainmenu):
