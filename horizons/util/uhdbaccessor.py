@@ -178,13 +178,13 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT icon FROM message where id_string = ?"
 		return self.cached_query(sql, msg_id_string)[0][0]
 
-	def get_msg_icons(self, msg_id_string):
+	def get_msg_icon_path(self, msg_id_string):
 		"""
 		@param msg_id_string: string id of the message
-		@return: tuple: (up, down, hover) images
+		@return: str: path attribute to message icon suitable for ImageButton
 		"""
-		sql = "SELECT up_image, down_image, hover_image FROM message_icon WHERE icon_id = ?"
-		return self.cached_query(sql, msg_id_string)[0]
+		sql = "SELECT path FROM message_icon WHERE icon_id = ?"
+		return self.cached_query(sql, msg_id_string)[0][0]
 
 	#
 	#

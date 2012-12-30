@@ -145,15 +145,13 @@ INSERT INTO "message_text" VALUES('YOU_LOST',         'You failed the scenario.'
 
 CREATE TABLE "message_icon" (
 	"icon_id" INT NOT NULL,
-	"up_image" TEXT NOT NULL,
-	"down_image" TEXT NOT NULL,
-	"hover_image" TEXT NOT NULL
+	"path" TEXT NOT NULL
 );
-INSERT INTO "message_icon" VALUES(1, 'content/gui/icons/widgets/messages/msg_letter.png', 'content/gui/icons/widgets/messages/msg_letter_d.png', 'content/gui/icons/widgets/messages/msg_letter_h.png');
-INSERT INTO "message_icon" VALUES(2, 'content/gui/icons/widgets/messages/msg_system.png', 'content/gui/icons/widgets/messages/msg_system_d.png', 'content/gui/icons/widgets/messages/msg_system_h.png');
-INSERT INTO "message_icon" VALUES(3, 'content/gui/icons/widgets/messages/msg_save.png',   'content/gui/icons/widgets/messages/msg_save_d.png',   'content/gui/icons/widgets/messages/msg_save_h.png');
-INSERT INTO "message_icon" VALUES(4, 'content/gui/icons/widgets/messages/msg_anchor.png', 'content/gui/icons/widgets/messages/msg_anchor_d.png', 'content/gui/icons/widgets/messages/msg_anchor_h.png');
-INSERT INTO "message_icon" VALUES(5, 'content/gui/icons/widgets/messages/msg_money.png',  'content/gui/icons/widgets/messages/msg_money_d.png',  'content/gui/icons/widgets/messages/msg_money_h.png');
+INSERT INTO "message_icon" VALUES(1, 'icons/widgets/messages/msg_letter');
+INSERT INTO "message_icon" VALUES(2, 'icons/widgets/messages/msg_system');
+INSERT INTO "message_icon" VALUES(3, 'icons/widgets/messages/msg_save');
+INSERT INTO "message_icon" VALUES(4, 'icons/widgets/messages/msg_anchor');
+INSERT INTO "message_icon" VALUES(5, 'icons/widgets/messages/msg_money');
 
 CREATE TABLE "ai" (
 	"client_id" TEXT NOT NULL,

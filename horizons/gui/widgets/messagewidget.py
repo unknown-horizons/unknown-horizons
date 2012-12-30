@@ -23,7 +23,7 @@ import logging
 import textwrap
 import itertools
 
-from fife.extensions.pychan.widgets import Icon, ImageButton
+from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
 
@@ -33,6 +33,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point
 from horizons.scheduler import Scheduler
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.i18n.voice import get_speech_file
 
@@ -159,10 +160,7 @@ class MessageWidget(LivingObject):
 				continue
 			button = ImageButton()
 			button.name = str(index)
-			button.up_image = message.up_image
-			button.hover_image = message.hover_image
-			button.down_image = message.down_image
-			button.is_focusable = False
+			button.path = message.path
 			# show text on hover
 			events = {
 				button.name + "/mouseEntered": Callback(self.show_text, index),
@@ -307,7 +305,7 @@ class _IngameMessage(object):
 		self.created = created
 		self.display = display if display is not None else horizons.globals.db.get_msg_visibility(id)
 		icon = icon_id if icon_id else horizons.globals.db.get_msg_icon_id(id)
-		self.up_image, self.down_image, self.hover_image = horizons.globals.db.get_msg_icons(icon)
+		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
 			assert isinstance(message, unicode), "Message is not unicode: %s" % message
 			self.message = message
