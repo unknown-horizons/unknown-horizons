@@ -75,8 +75,7 @@ class PlayersShips(StatsWidget):
 
 		from horizons.engine.pychan_util import RenameImageButton
 		rename_icon = RenameImageButton(name='rename_%d' % ship.worldid)
-		rename_icon.up_image = "content/gui/images/background/rename_feather_20.png"
-		rename_icon.hover_image = "content/gui/images/background/rename_feather_20_h.png"
+		rename_icon.path = "images/background/rename_feather_20"
 		rename_icon.helptext = _("Click to change the name of this ship")
 		rename_icon.max_size = (20, 20) # (width, height)
 

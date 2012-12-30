@@ -46,7 +46,7 @@ class BuySellTab(TabInterface):
 	sell_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 
-	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
+	dummy_icon_path = "icons/resources/none_gray"
 
 	def __init__(self, instance, widget='buysellmenu.xml',
 	             icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png'):
@@ -144,9 +144,7 @@ class BuySellTab(TabInterface):
 			slot.res = None
 			slot.name = "slot_%d" % i
 			slot.findChild(name='button').capture(self.handle_click, event_name='mouseClicked')
-			slot.findChild(name='button').up_image = self.dummy_icon_path
-			slot.findChild(name='button').down_image = self.dummy_icon_path
-			slot.findChild(name='button').hover_image = self.dummy_icon_path
+			slot.findChild(name='button').path = self.dummy_icon_path
 			slider = slot.findChild(name="slider")
 			slider.scale_start = 0.0
 			slider.scale_end = float(self.trade_post.get_inventory().limit)
@@ -202,7 +200,7 @@ class BuySellTab(TabInterface):
 		fillbar = slot.findChild(name="fillbar")
 		# reset slot value for new res
 		if resource_id == 0:
-			button.up_image, button.down_image, button.hover_image = [ self.dummy_icon_path ] * 3
+			button.path = self.dummy_icon_path
 			button.helptext = u""
 			slot.findChild(name="amount").text = u""
 			slot.findChild(name="slider").value = 0.0

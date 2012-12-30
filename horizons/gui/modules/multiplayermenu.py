@@ -445,9 +445,7 @@ class GameLobby(object):
 				pkick = CancelButton(name="pkick_%s" % player['name'])
 				pkick.helptext = _("Kick {player}").format(player=player['name'])
 				pkick.capture(Callback(NetworkInterface().kick, player['sid']))
-				pkick.up_image = "content/gui/images/buttons/delete_small.png"
-				pkick.down_image = "content/gui/images/buttons/delete_small.png"
-				pkick.hover_image = "content/gui/images/buttons/delete_small_h.png"
+				pkick.path = "images/buttons/delete_small"
 				pkick.min_size = pkick.max_size = (20, 15)
 				hbox.addChild(pkick)
 

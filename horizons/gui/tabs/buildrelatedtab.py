@@ -20,10 +20,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import Icon, ImageButton
+from fife.extensions.pychan.widgets import Icon
 
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.util.python.callback import Callback
 from horizons.entities import Entities
 from horizons.component.selectablecomponent import SelectableComponent
@@ -80,11 +81,9 @@ class BuildRelatedTab(OverviewTab):
 
 	def _create_build_buttons(self, building_id, container):
 		# {{mode}} in double braces because it is replaced as a second step
-		path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
 		helptext = self.instance.session.db.get_building_tooltip(building_id)
 		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=helptext)
-		build_button.up_image = path.format(mode='')
-		build_button.down_image = build_button.hover_image = path.format(mode='_h')
+		build_button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
 		build_button.capture(Callback(self.build_related, building_id))
 		return build_button
 
