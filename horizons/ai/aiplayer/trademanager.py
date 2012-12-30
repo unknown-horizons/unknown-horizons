@@ -346,11 +346,11 @@ class SingleResourceTradeManager(WorldObject):
 		for quota_holder, quota in self.quotas.iteritems():
 			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)
 		for settlement_manager_id, amount in self.partners.iteritems():
-			settlement_name = 'unknown'
 			try:
-				settlement_name = WorldObject.get_object_by_id(settlement_manager_id).settlement.get_component(NamedComponent).name
+				settlement = WorldObject.get_object_by_id(settlement_manager_id).settlement
+				settlement_name = settlement.get_component(NamedComponent).name
 			except WorldObjectNotFound:
-				pass
+				settlement_name = 'unknown'
 			result += '\n  import %.5f from %s' % (amount, settlement_name)
 		return result
 
