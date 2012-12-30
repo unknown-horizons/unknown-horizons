@@ -28,7 +28,6 @@ from fife.extensions import pychan
 import horizons.globals
 import horizons.main
 from horizons.gui.keylisteners import MainListener
-from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.messaging import GuiAction
@@ -174,8 +173,8 @@ class Gui(object):
 
 	def show_credits(self):
 		"""Shows the credits dialog. """
-		widget = CreditsPickbeltWidget().get_widget()
-		self.show_dialog(widget, {OkButton.DEFAULT_NAME: True})
+		window = CreditsPickbeltWidget(self.windows)
+		self.windows.show(window)
 
 # display
 

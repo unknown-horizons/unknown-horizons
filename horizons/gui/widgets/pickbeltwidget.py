@@ -24,6 +24,9 @@ from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util.python.callback import Callback
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import OkButton
+from horizons.gui.windows import Window
+
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
@@ -91,7 +94,7 @@ class OptionsPickbeltWidget(PickBeltWidget):
 		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
 
 
-class CreditsPickbeltWidget(PickBeltWidget):
+class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
 	# Can set as class attribute directly since no gettext calls
@@ -103,12 +106,21 @@ class CreditsPickbeltWidget(PickBeltWidget):
 		('credits_thanks', u'Thanks'),
 	)
 
-	def get_widget(self):
+	def __init__(self, windows):
+		Window.__init__(self, windows)
+		PickBeltWidget.__init__(self)
+
 		# Overwrite a few style pieces
-		widget = super(CreditsPickbeltWidget, self).get_widget()
-		for box in widget.findChildren(name='box'):
+		for box in self.widget.findChildren(name='box'):
 			box.margins = (30, 0) # to get some indentation
 			box.padding = 3
-		for listbox in widget.findChildren(name='translators'):
+		for listbox in self.widget.findChildren(name='translators'):
 			listbox.background_color = fife.Color(255, 255, 255, 0)
-		return widget
+
+		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+
+	def show(self):
+		self.widget.show()
+
+	def hide(self):
+		self.widget.hide()
