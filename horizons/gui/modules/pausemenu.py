@@ -35,11 +35,9 @@ class PauseMenu(object):
 		self._gui = load_uh_widget(name)
 		self._gui.position_technique = 'center:center'
 
-		def do_load_map():
-			mainmenu.show_editor_start_menu(False)
-
 		events = {
-			'load' : do_load_map if in_editor_mode else mainmenu.load_game,
+			# FIXME reenable editor start menu once we're using the window manager ingame
+			'load' : lambda: 0 if in_editor_mode else mainmenu.load_game,
 			'save' : ingame_gui.show_save_map_dialog if in_editor_mode else mainmenu.save_game,
 			'sett' : horizons.globals.fife.show_settings,
 			'help' : mainmenu.on_help,

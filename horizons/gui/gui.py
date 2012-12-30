@@ -224,9 +224,6 @@ class Gui(object):
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
 
-	def show_editor_start_menu(self, from_main_menu=True):
-		editor_start_menu = EditorStartMenu(self, from_main_menu)
-		self.hide()
-		self.current = editor_start_menu
-		self.current.show()
-		return True
+	def show_editor_start_menu(self):
+		editor_start_menu = EditorStartMenu(self, self.windows)
+		self.windows.show(editor_start_menu)
