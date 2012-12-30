@@ -27,13 +27,14 @@ from fife.extensions import pychan
 from horizons.gui.style import STYLES
 from horizons.messaging import GuiAction
 from horizons.util.python.callback import Callback
+from horizons.gui.widgets.imagebutton import ImageButton
 
 import horizons.globals
 
 class RenameLabel(pychan.widgets.Label):
 	"""A regular label that signals that it will display a rename dialog when clicked upon (by changing the cursor)"""
 	pass # implementation added dynamically below
-class RenameImageButton(pychan.widgets.ImageButton):
+class RenameImageButton(ImageButton):
 	pass # as above
 
 def handle_gcn_exception(e, msg=None):
@@ -71,7 +72,8 @@ def init_pychan():
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 	from horizons.gui.widgets.progressbar import ProgressBar
 	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
-	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, ImageButton, MainmenuButton, OkButton
+	# additionally, ImageButton is imported from widgets.imagebutton above
+	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, MainmenuButton, OkButton
 	from horizons.gui.widgets.icongroup import TabBG, TilingHBox
 	from horizons.gui.widgets.stepslider import StepSlider
 	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
