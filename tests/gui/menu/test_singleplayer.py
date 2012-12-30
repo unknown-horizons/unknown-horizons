@@ -21,7 +21,6 @@
 
 import mock
 
-import horizons.main
 from tests.gui import gui_test
 
 
@@ -29,13 +28,13 @@ from tests.gui import gui_test
 def test_show_menu(gui):
 	"""Test that the singleplayer page shows up and closes correctly."""
 	gui.trigger('menu', 'single_button')
-	gui.trigger('menu', 'cancel')
+	gui.trigger('singleplayermenu', 'cancel')
 
 
 def _start_game(gui):
 	"""Starts the game from the menu and returns the game options used."""
 	with mock.patch('horizons.main.start_singleplayer') as start_mock:
-		gui.trigger('menu', 'okay')
+		gui.trigger('singleplayermenu', 'okay')
 
 		return start_mock.call_args[0][0]
 
@@ -44,7 +43,7 @@ def _start_game(gui):
 def test_start_scenario(gui):
 	"""Test starting a scenario."""
 	gui.trigger('menu', 'single_button')
-	gui.trigger('menu', 'scenario')
+	gui.trigger('singleplayermenu', 'scenario')
 
 	# trigger update of scenario infos
 	gui.find('maplist').select('tutorial')
@@ -59,11 +58,11 @@ def test_start_scenario(gui):
 def test_start_random_map(gui):
 	"""Test starting a new random map."""
 	gui.trigger('menu', 'single_button')
-	gui.trigger('menu', 'random')
+	gui.trigger('singleplayermenu', 'random')
 
 	# disable pirates and disasters
-	gui.trigger('menu', 'lbl_pirates')
-	gui.trigger('menu', 'lbl_disasters')
+	gui.trigger('singleplayermenu', 'lbl_pirates')
+	gui.trigger('singleplayermenu', 'lbl_disasters')
 
 	gui.find('ai_players').select('3')
 	gui.find('resource_density_slider').slide(4)
@@ -81,7 +80,7 @@ def test_start_random_map(gui):
 def test_start_map(gui):
 	"""Test starting an existing map."""
 	gui.trigger('menu', 'single_button')
-	gui.trigger('menu', 'free_maps')
+	gui.trigger('singleplayermenu', 'free_maps')
 
 	# trigger update of map info
 	gui.find('maplist').select('development')
@@ -89,8 +88,8 @@ def test_start_map(gui):
 	gui.find('ai_players').select('1')
 
 	# disable pirates and trader
-	gui.trigger('menu', 'lbl_pirates')
-	gui.trigger('menu', 'lbl_free_trader')
+	gui.trigger('singleplayermenu', 'lbl_pirates')
+	gui.trigger('singleplayermenu', 'lbl_free_trader')
 
 	options = _start_game(gui)
 	assert options.game_identifier.endswith('development.sqlite')
