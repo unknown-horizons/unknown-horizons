@@ -31,7 +31,7 @@
 				inactive_image="content/gui/icons/ship/traderoute_configure_onroute.png"
 				up_image="content/gui/icons/ship/traderoute_configure.png"
 				down_image="content/gui/icons/ship/traderoute_configure_pressed.png"
-				hover_image="content/gui/icons/ship/traderoute_configure_hover.png"  is_focusable="0" />
+				hover_image="content/gui/icons/ship/traderoute_configure_hover.png" />
 				<!--TODO fix weird image names-->
 		</Container>
 

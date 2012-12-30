@@ -237,10 +237,10 @@
 
 <!-- General section -->
 	<HBox position="180,500" padding="245">
-		<DeleteButton name="defaultButton" helptext="Reset to default settings" is_focusable="0" />
-		<CancelButton helptext="Discard current changes" is_focusable="0" />
+		<DeleteButton name="defaultButton" helptext="Reset to default settings" />
+		<CancelButton helptext="Discard current changes" />
 		<Spacer fixed_size="60" />
-		<OkButton helptext="Apply" is_focusable="0" />
+		<OkButton helptext="Apply" />
 	</HBox>
 
 <!-- This dropdown is invisible, but required by fife to be here -->
