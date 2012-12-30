@@ -151,11 +151,10 @@ class BuildTab(TabInterface):
 			#check whether to disable build menu icon (not enough res available)
 			if enough_res:
 				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
-				path = "icons/buildmenu/{id:03d}".format(id=building_id)
+				button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
 			else:
 				icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
-				path = "icons/buildmenu/greyscale/{id:03d}".format(id=building_id)
-			button.path = path
+				button.path = "icons/buildmenu/greyscale/{id:03d}".format(id=building_id)
 
 			button.capture(Callback(self.build_callback, building_id))
 
