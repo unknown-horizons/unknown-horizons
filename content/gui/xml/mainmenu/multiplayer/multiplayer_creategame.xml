@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
-<Container name="multiplayer_creategame"  size="1024,768"  position_technique="center:center">
-
-<Container size="800,580"  position="100,100">
-	<!-- TODO use background_image instead of Icon-->
-	<Icon image="content/gui/images/background/book.png" />
+<Container name="multiplayer_creategame" size="800,580" position_technique="center:center"
+	background_image="content/gui/images/background/book.png">
 
 	<Container size="320,500"  position="55,32"  name="left_side">
 		<Label text="Create game - Multiplayer"  position="70,10" name="headline" />
@@ -57,5 +54,4 @@
 		<OkButton  name="create"  helptext="Create this new game" />
 	</HBox>
 
-</Container>
 </Container>

@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<Container name="editor_start_menu" size="1024,768" position_technique="center:center">
-	<Icon image="content/gui/images/background/book.png"  position="100,100" />
+<Container name="editor_start_menu" size="800,580" position_technique="center:center"
+	background_image="content/gui/images/background/book.png">
 
-	<Container name="editor_start_menu_content" position="170,140" size="660,510">
-		<VBox name="left_side" size="320,465" position="0,0">
-			<Container position="0,0" size="320,45">
+	<Container name="editor_start_menu_content" position="70,40" size="660,510">
+		<VBox name="left_side" size="320,465">
+			<Container size="320,45">
 				<Label text="Select map source" position="70,0" name="headline" />
 				<Icon image="content/gui/images/background/hr.png" position="50,30" />
 			</Container>
