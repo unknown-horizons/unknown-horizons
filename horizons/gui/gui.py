@@ -52,7 +52,7 @@ class Gui(object):
 		self.current = None # currently active window
 		self.session = None
 
-		self.windows = WindowManager()
+		self.windows = WindowManager(self)
 		# temporary aliases for compatibility with rest of the code
 		self.show_dialog = self.windows.show_dialog
 		self.show_popup = self.windows.show_popup
@@ -66,8 +66,8 @@ class Gui(object):
 
 		self.subscribe()
 
-		self.singleplayermenu = SingleplayerMenu(self)
-		self.multiplayermenu = MultiplayerMenu(self)
+		self.singleplayermenu = SingleplayerMenu(self, self.windows)
+		self.multiplayermenu = MultiplayerMenu(self, self.windows)
 		self.help_dialog = HelpDialog(self)
 		self.selectsavegame_dialog = SelectSavegameDialog(self)
 		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
@@ -75,10 +75,10 @@ class Gui(object):
 
 		self.mainmenu = load_uh_widget('mainmenu.xml', 'menu')
 		self.mainmenu.mapEvents({
-			'single_button': self.singleplayermenu.show,
-			'single_label' : self.singleplayermenu.show,
-			'multi_button': self.multiplayermenu.show,
-			'multi_label' : self.multiplayermenu.show,
+			'single_button': lambda: self.windows.show(self.singleplayermenu),
+			'single_label' : lambda: self.windows.show(self.singleplayermenu),
+			'multi_button': lambda: self.windows.show(self.multiplayermenu),
+			'multi_label' : lambda: self.windows.show(self.multiplayermenu),
 			'settings_button': self.show_settings,
 			'settings_label' : self.show_settings,
 			'help_button': self.on_help,

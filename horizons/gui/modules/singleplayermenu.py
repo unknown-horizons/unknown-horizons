@@ -49,14 +49,15 @@ from horizons.util.yamlcache import YamlCache
 
 class SingleplayerMenu(object):
 
-	def __init__(self, mainmenu):
+	def __init__(self, mainmenu, windows):
 		self._mainmenu = mainmenu
+		self._windows = windows
 
 		self._mode = None
 
 		self._gui = load_uh_widget('singleplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel'   : self.cancel,
+			'cancel'   : self._windows.close,
 			'okay'     : self.act,
 			'scenario' : Callback(self._select_mode, 'scenario'),
 			'random'   : Callback(self._select_mode, 'random'),
@@ -71,14 +72,14 @@ class SingleplayerMenu(object):
 	def hide(self):
 		self._gui.hide()
 
-	def cancel(self):
+	def close(self):
+		self.hide()
 		self._mainmenu.show_main()
 
-	def show(self):
-		self._mainmenu.hide()
-		self._mainmenu.current = self
-		self._mainmenu.on_escape = self.cancel
+	def on_escape(self):
+		self._windows.close()
 
+	def show(self):
 		self._gui.findChild(name='scenario').marked = True
 		self._select_mode('scenario')
 
@@ -113,6 +114,7 @@ class SingleplayerMenu(object):
 
 		horizons.globals.fife.set_uh_setting("Nickname", player_name)
 
+		self._windows.close()
 		self._mode.act(player_name, player_color)
 
 

@@ -25,7 +25,6 @@ from fife import fife
 from fife.extensions import pychan
 
 import horizons.globals
-from horizons.engine import pychan_util
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
@@ -33,8 +32,47 @@ from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 class WindowManager(object):
 
-	def __init__(self):
+	def __init__(self, mainmenu):
+		self._mainmenu = mainmenu
+		self._windows = []
 		self._modal_background = None
+
+	def show(self, window, **kwargs):
+		"""Show a new window on top.
+
+		Hide the current one and show the new one.
+		Keyword arguments will be passed through to the window's `show` method.
+		"""
+		self.hide()
+
+		# TODO temporary, try to stay compatible with rest of the code
+		self._mainmenu.current = window
+		if hasattr(window, 'on_escape'):
+			self._mainmenu.on_escape = window.on_escape
+
+		self._windows.append(window)
+		return window.show(**kwargs)
+
+	def close(self):
+		"""Close the top window.
+
+		If there is another window left, show it.
+		"""
+		window = self._windows.pop()
+		window.close()
+		if self._windows:
+			self._windows[-1].show()
+
+	def hide(self):
+		"""Attempt to hide the current window.
+
+		A window that does not permit other windows on top of it will be closed,
+		any other will be hidden.
+		"""
+		if not self._windows:
+			return
+
+		self._windows[-1].hide()
 
 	def show_modal_background(self):
 		""" Loads transparent background that de facto prohibits

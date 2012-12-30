@@ -39,23 +39,21 @@ from horizons.util.python.callback import Callback
 
 class MultiplayerMenu(object):
 
-	def __init__(self, mainmenu):
+	def __init__(self, mainmenu, windows):
 		self._mainmenu = mainmenu
+		self._windows = windows
 
 	def hide(self):
 		self._gui.hide()
 
 	def show(self):
 		if not self._check_connection():
+			self._windows.close()
 			return
-
-		self._mainmenu.hide()
-		self._mainmenu.current = self
-		self._mainmenu.on_escape = self.close
 
 		self._gui = load_uh_widget('multiplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel' : self.close,
+			'cancel' : self._windows.close,
 			'join'   : self._join_game,
 			'create' : self._create_game,
 			'refresh': Callback(self._refresh, play_sound=True)
@@ -68,7 +66,7 @@ class MultiplayerMenu(object):
 
 		refresh_worked = self._refresh()
 		if not refresh_worked:
-			self.cancel()
+			self._windows.close()
 			return
 
 		NetworkInterface().subscribe("game_prepare", self._prepare_game)
@@ -81,6 +79,11 @@ class MultiplayerMenu(object):
 		self._gui.findChild(name='load').parent.hide()
 
 	def close(self):
+		# when the connection to the master server fails, the window will be closed before
+		# anything has been setup
+		if not hasattr(self, '_gui'):
+			return
+
 		self.hide()
 
 		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
@@ -93,6 +96,9 @@ class MultiplayerMenu(object):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 		self._mainmenu.show_main()
+
+	def on_escape(self):
+		self._windows.close()
 
 	def _check_connection(self):
 		"""
