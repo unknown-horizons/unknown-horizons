@@ -72,24 +72,9 @@ class Gui(object):
 		self.selectsavegame_dialog = SelectSavegameDialog(self)
 		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
 		self.loadingscreen = LoadingScreen()
+
 		self.mainmenu = load_uh_widget('mainmenu.xml', 'menu')
-
-		self.fps_display = FPSDisplay()
-
-	def subscribe(self):
-		"""Subscribe to the necessary messages."""
-		GuiAction.subscribe(self._on_gui_action)
-
-	def unsubscribe(self):
-		GuiAction.unsubscribe(self._on_gui_action)
-
-# basic menu widgets
-	def show_main(self):
-		"""Shows the main menu """
-		if not self._background.isVisible():
-			self._background.show()
-
-		self._switch_current_widget(self.mainmenu, show=True, event_map={
+		self.mainmenu.mapEvents({
 			'single_button': self.singleplayermenu.show,
 			'single_label' : self.singleplayermenu.show,
 			'multi_button': self.multiplayermenu.show,
@@ -109,7 +94,25 @@ class Gui(object):
 			'changeBackground' : self.randomize_background
 		})
 
+		self.fps_display = FPSDisplay()
+
+	def subscribe(self):
+		"""Subscribe to the necessary messages."""
+		GuiAction.subscribe(self._on_gui_action)
+
+	def unsubscribe(self):
+		GuiAction.unsubscribe(self._on_gui_action)
+
+# basic menu widgets
+	def show_main(self):
+		"""Shows the main menu """
+		if not self._background.isVisible():
+			self._background.show()
+
+		self.hide()
 		self.on_escape = self.show_quit
+		self.current = self.mainmenu
+		self.current.show()
 
 	def load_game(self):
 		saved_game = self.show_select_savegame(mode='load')
@@ -195,29 +198,6 @@ class Gui(object):
 		self.hide()
 		self.current = self.loadingscreen
 		self.current.show()
-
-# helper
-
-	def _switch_current_widget(self, new_widget, event_map=None, show=False, hide_old=False):
-		"""Switches self.current to a new widget.
-		@param new_widget: str (widget name) or loaded pychan widget
-		@param event_map: pychan event map to apply to new widget
-		@param show: bool, if True old window gets hidden and new one shown
-		@param hide_old: bool, if True old window gets hidden. Implied by show
-		@return: instance of old widget"""
-		old = self.current
-		if (show or hide_old) and old is not None:
-			self.log.debug("Gui: hiding %s", old)
-			self.hide()
-		self.log.debug("Gui: setting current to %s", new_widget)
-		self.current = new_widget
-		if event_map:
-			self.current.mapEvents(event_map)
-		self.current.position_technique = "center:center"
-		if show:
-			self.current.show()
-
-		return old
 
 	def randomize_background(self):
 		"""Randomly select a background image to use. This function is triggered by

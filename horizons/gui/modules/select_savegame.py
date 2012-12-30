@@ -69,8 +69,8 @@ class SelectSavegameDialog(object):
 				map_files, map_file_display = SavegameManager.get_multiplayersaves()
 
 		# Prepare widget
-		old_current = self.mainmenu._switch_current_widget(self._widget)
-		self.current = self.mainmenu.current
+		old_current = self.mainmenu.current
+		self.current = self.mainmenu.current = self._widget
 		self.last_click_event = ()
 		if mode == 'save':
 			helptext = _('Save game')
