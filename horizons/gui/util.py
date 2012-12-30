@@ -22,9 +22,10 @@
 import os
 
 from fife.extensions.pychan import loadXML
-from fife.extensions.pychan.widgets import Icon, ImageButton, HBox
+from fife.extensions.pychan.widgets import Container, HBox, Icon
 
 from horizons.i18n import translate_widget
+from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
@@ -129,11 +130,13 @@ def create_resource_selection_dialog(on_click, inventory, db,
 	@param amount_per_line: how many resource icons per line. Default: try to fit layout
 	"""
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
+	dummy_icon_path = "icons/resources/none_gray"
 
 	dlg = load_uh_widget(widget)
 
-	button_width = ImageFillStatusButton.CELL_SIZE[0] # used for dummy button
+	icon_size = ImageFillStatusButton.ICON_SIZE # used for dummy button
+	cell_size = ImageFillStatusButton.CELL_SIZE
+	button_width = cell_size[0]
 	vbox = dlg.findChild(name="resources")
 	amount_per_line = amount_per_line or vbox.width // button_width
 	# Add the zero element to the beginning that allows to remove the currently
@@ -147,8 +150,10 @@ def create_resource_selection_dialog(on_click, inventory, db,
 			continue
 		# create button (dummy one or real one)
 		if res_id == 0 or inventory is None:
-			button = ImageButton( size=(button_width, button_width), name="resource_icon_00")
-			button.up_image, button.down_image, button.hover_image = (dummy_icon_path,)*3
+			reset_button = ImageButton(max_size=icon_size, name="resource_icon_00")
+			reset_button.path = dummy_icon_path
+			button = Container(size=cell_size)
+			button.addChild(reset_button)
 		else:
 			amount = inventory[res_id]
 			filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
