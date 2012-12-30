@@ -10,13 +10,6 @@
 		<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="104,103" />
 		<Icon image="content/gui/images/background/hr.png"  position="52,230" />
 
-		<!--
-		<RadioButton position="22,50" size="32,32" name="showInternet" text="Internet games" group="gametype" />
-		<RadioButton position="22,80" size="32,32" name="showLAN" text="LAN games" group="gametype" />
-		<RadioButton position="22,110" size="32,32" name="showFavorites" text="Favorites" group="gametype" />
-		<Icon image="content/gui/images/background/hr.png" position="52,140" />
-		-->
-
 		<VBox position="42,370"  max_size="290,125"  min_size="290,125">
 
 			<HBox>
@@ -54,7 +47,7 @@
 
 		<VBox name="game_info">
 			<Label name="game_map"         wrap_text="1"  max_size="300,40" />
-			<Label name="game_name"         wrap_text="1"  max_size="300,40" />
+			<Label name="game_name"        wrap_text="1"  max_size="300,40" />
 			<Label name="game_creator"     wrap_text="1"  max_size="300,40" />
 			<Label name="game_playersnum"  wrap_text="1"  max_size="300,100" />
 			<Label name="game_isloaded"    wrap_text="1"  max_size="300,100" />
