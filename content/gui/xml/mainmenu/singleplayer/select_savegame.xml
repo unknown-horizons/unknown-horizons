@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- widget for ingame save and load -->
-<Container name="load_game_window" size="800,580" position="100,100"
+<Container name="load_game_window" size="800,580" position_technique="center:center"
 	 background_image="content/gui/images/background/book.png">
 
 	<VBox name="left_page" max_size="335,495" min_size="335,495" position="85,45" padding="12">
