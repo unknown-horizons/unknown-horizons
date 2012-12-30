@@ -93,18 +93,14 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 	@param res: resource id. Pass 'placeholder' to get placeholder path.
 	@param full_path: whether to return full icon path or a stub path suitable for ImageButton path=
 	"""
-	icon_path = 'icons/resources/{size}/'.format(size=size)
+	icon_path = 'content/gui/icons/resources/{size}/'.format(size=size)
 	if greyscale:
 		icon_path = icon_path + 'greyscale/'
 	if res == 'placeholder':
-		icon_path = icon_path + 'placeholder'
+		icon_path = icon_path + 'placeholder.png'
 	else:
-		icon_path = icon_path + '{res:03d}'.format(res=res)
+		icon_path = icon_path + '{res:03d}.png'.format(res=res)
 
-	if not full_path:
-		return icon_path
-
-	icon_path = 'content/gui/' + icon_path + '.png'
 	try:
 		Icon(image=icon_path)
 	except RuntimeError: # ImageManager: image not found, use placeholder or die
@@ -113,7 +109,12 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 		else:
 			print '[WW] Image not found: {icon_path}'.format(icon_path=icon_path)
 			icon_path = get_res_icon_path('placeholder', size)
-	return icon_path
+
+	if full_path:
+		return icon_path
+	else:
+		# remove 'content/gui/' and '.png'
+		return icon_path[12:][:-4]
 
 def create_resource_icon(res_id, db):
 	"""Creates a pychan Icon for a resource. Helptext is set to name of *res_id*.
