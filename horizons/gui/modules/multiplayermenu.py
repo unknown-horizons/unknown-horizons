@@ -96,7 +96,6 @@ class MultiplayerMenu(Window):
 
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
-		self._mainmenu.show_main()
 
 	def _check_connection(self):
 		"""

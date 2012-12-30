@@ -73,10 +73,6 @@ class SingleplayerMenu(Window):
 	def hide(self):
 		self._gui.hide()
 
-	def close(self):
-		self.hide()
-		self._mainmenu.show_main()
-
 	def show(self):
 		self._gui.findChild(name='scenario').marked = True
 		self._select_mode('scenario')
