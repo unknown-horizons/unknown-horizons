@@ -26,6 +26,7 @@ from horizons.gui.util import get_res_icon_path
 
 class ImageFillStatusButton(Container):
 
+	ICON_SIZE = (32, 32)
 	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
 	PADDING = 3
 
@@ -56,7 +57,7 @@ class ImageFillStatusButton(Container):
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
 		greyscale = use_inactive_icon and amount == 0
-		image = get_res_icon_path(res, 32, greyscale)
+		image = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale)
 		helptext = db.get_res_name(res)
 		return cls(up_image=image, down_image=image, hover_image=image,
 		           text=unicode(amount),
