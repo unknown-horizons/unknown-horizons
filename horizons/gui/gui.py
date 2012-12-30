@@ -200,9 +200,7 @@ class Gui(object):
 		return self.current is not None and self.current.isVisible()
 
 	def show_loading_screen(self):
-		self.hide()
-		self.current = self.loadingscreen
-		self.current.show()
+		self.windows.show(self.loadingscreen)
 
 	def randomize_background(self):
 		"""Randomly select a background image to use. This function is triggered by
