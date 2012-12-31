@@ -108,7 +108,8 @@ class Dialog(Window):
 	def prepare(self, **kwargs):
 		"""Setup the dialog gui.
 
-		The widget has to be stored in `self._gui`.
+		The widget has to be stored in `self._gui`. If you want to abort the dialog
+		here return False.
 		"""
 		raise NotImplementedError
 
@@ -131,7 +132,11 @@ class Dialog(Window):
 			self._gui.requestFocus()
 			return
 
-		self.prepare(**kwargs)
+		# if `prepare` returned False, we stop the dialog
+		if self.prepare(**kwargs) == False:
+			self._windows.close()
+			return
+
 		self._gui.capture(self._on_keypress, event_name="keyPressed")
 		self._gui.show()
 

@@ -67,9 +67,8 @@ class SelectSavegameDialog(Dialog):
 		if self._mode == 'load':
 			self._map_files, self._map_file_display = SavegameManager.get_saves()
 			if not self._map_files:
-				self._windows.close()
 				self._windows.show_popup(_("No saved games"), _("There are no saved games to load."))
-				return
+				return False
 		elif self._mode == 'save':
 			self._map_files, self._map_file_display = SavegameManager.get_regular_saves()
 
