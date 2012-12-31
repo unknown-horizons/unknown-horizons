@@ -74,6 +74,81 @@ class Window(object):
 		self._windows.close()
 
 
+class Dialog(Window):
+
+	def __init__(self, windows):
+		super(Dialog, self).__init__(windows)
+
+		self._gui = None
+		self._hidden = False
+		self._return_events = {}
+
+	def prepare(self, **kwargs):
+		"""Setup the dialog gui.
+
+		The widget has to be stored in `self._gui`.
+		"""
+		raise NotImplementedError
+
+	def act(self, retval):
+		"""Do something after dialog is closed.
+
+		If you want to show the dialog again, you need to do that explicitly, e.g. with:
+
+			self._windows.show(self)
+		"""
+		raise NotImplementedError
+
+	def show(self, **kwargs):
+		# if the dialog is already running but has been hidden, just show the widget
+		if self._hidden:
+			self._hidden = False
+			self._gui.show()
+			self._gui.requestFocus()
+			return
+
+		self.prepare(**kwargs)
+		self._gui.capture(self._on_keypress, event_name="keyPressed")
+		self._gui.show()
+
+		retval = self._gui.execute(self.return_events)
+
+		self._windows.close()
+		return self.act(retval)
+
+	def hide(self):
+		self._gui.hide()
+		self._hidden = True
+
+	def close(self):
+		self.hide()
+
+	def on_escape(self):
+		# escape is handled in `_on_keypress`
+		pass
+
+	def _on_keypress(self, event):
+		"""Intercept ESC and ENTER keys and execute the appropriate actions."""
+
+		# Convention says use cancel action
+		if event.getKey().getValue() == fife.Key.ESCAPE:
+			retval = self.return_events.get(CancelButton.DEFAULT_NAME)
+			if retval:
+				self.abort(retval)
+		# Convention says use ok action
+		elif event.getKey().getValue() == fife.Key.ENTER:
+			retval = self.return_events.get(OkButton.DEFAULT_NAME)
+			if retval:
+				self.abort(retval)
+
+	def abort(self, retval=False):
+		"""Break out of mainloop.
+
+		Program flow continues after the `self._gui.execute` call in `show`.
+		"""
+		horizons.globals.fife.pychanmanager.breakFromMainLoop(retval)
+
+
 class WindowManager(object):
 
 	def __init__(self, mainmenu):

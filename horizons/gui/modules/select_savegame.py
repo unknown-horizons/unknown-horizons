@@ -26,18 +26,20 @@ import time
 
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
+from horizons.gui.windows import Dialog
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.savegameupgrader import SavegameUpgrader
 
 
-class SelectSavegameDialog(object):
+class SelectSavegameDialog(Dialog):
 
 	def __init__(self, mode, mainmenu, windows):
+		super(SelectSavegameDialog, self).__init__(windows)
+
 		assert mode in ('load', 'save', )
 		self._mode = mode
 		self._mainmenu = mainmenu
-		self._windows = windows
 
 		self._gui = load_uh_widget('select_savegame.xml')
 
@@ -61,15 +63,7 @@ class SelectSavegameDialog(object):
 		elif w not in w.parent.hidden_children:
 			w.parent.hideChild(w)
 
-		self._hidden = False
-
-	def show(self):
-		# if the dialog is already running but has been hidden, just show the widget
-		if self._hidden:
-			self._hidden = False
-			self._gui.show()
-			return
-
+	def prepare(self):
 		if self._mode == 'load':
 			self._map_files, self._map_file_display = SavegameManager.get_saves()
 			if not self._map_files:
@@ -99,28 +93,13 @@ class SelectSavegameDialog(object):
 		self._gui.mapEvents({'savegamelist/action': self._cb})
 		self._gui.findChild(name="savegamelist").capture(self._cb, event_name="keyPressed")
 
-		bind = {
+		self.return_events = {
 			OkButton.DEFAULT_NAME    : True,
 			CancelButton.DEFAULT_NAME: False,
 			DeleteButton.DEFAULT_NAME: 'delete'
 		}
 		if self._mode == 'save':
-			bind['savegamefile'] = True
-
-		retval = self._gui.execute(bind)
-
-		self._windows.close()
-		return self.act(retval)
-
-	def hide(self):
-		self._gui.hide()
-		self._hidden = True
-
-	def close(self):
-		pass
-
-	def on_escape(self):
-		pass
+			self.return_events['savegamefile'] = True
 
 	def act(self, retval):
 		if not retval:  # cancelled
