@@ -141,6 +141,8 @@ class IngameGui(LivingObject):
 		if action == _Actions.ESCAPE:
 			if self.windows.visible:
 				self.windows.on_escape()
+			elif not isinstance(self.cursor, SelectionTool):
+				self.cursor.on_escape()
 			else:
 				self.toggle_pause()
 		elif action == _Actions.HELP:

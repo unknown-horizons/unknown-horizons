@@ -313,12 +313,11 @@ class IngameGui(LivingObject):
 	def on_escape(self):
 		if self.windows.visible:
 			self.windows.on_escape()
-			return True
-
-		if self.main_widget:
-			self.main_widget.hide()
+		elif not isinstance(self.cursor, mousetools.SelectionTool):
+			self.cursor.on_escape()
 		else:
-			return False
+			self.toggle_pause()
+
 		return True
 
 	def on_switch_main_widget(self, widget):
