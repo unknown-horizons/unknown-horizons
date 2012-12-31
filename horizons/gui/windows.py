@@ -37,6 +37,8 @@ class Window(object):
 		# this window.
 		self._windows = windows
 
+		self._modal_background = None
+
 	def show(self, **kwargs):
 		"""Show the window.
 
@@ -73,8 +75,26 @@ class Window(object):
 		"""
 		self._windows.close()
 
+	def _show_modal_background(self):
+		"""
+		Loads transparent background that de facto prohibits access to other
+		gui elements by eating all input events.
+		"""
+		height = horizons.globals.fife.engine_settings.getScreenHeight()
+		width = horizons.globals.fife.engine_settings.getScreenWidth()
+		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
+		image = fife.GuiImage(image)
+		self._modal_background = pychan.Icon(image=image)
+		self._modal_background.position = (0, 0)
+		self._modal_background.show()
+
+	def _hide_modal_background(self):
+		self._modal_background.hide()
+
 
 class Dialog(Window):
+	# Whether to block user interaction while displaying the dialog
+	modal = False
 
 	def __init__(self, windows):
 		super(Dialog, self).__init__(windows)
@@ -103,6 +123,8 @@ class Dialog(Window):
 		# if the dialog is already running but has been hidden, just show the widget
 		if self._hidden:
 			self._hidden = False
+			if self.modal:
+				self._show_modal_background()
 			self._gui.show()
 			self._gui.requestFocus()
 			return
@@ -111,12 +133,17 @@ class Dialog(Window):
 		self._gui.capture(self._on_keypress, event_name="keyPressed")
 		self._gui.show()
 
+		if self.modal:
+			self._show_modal_background()
+
 		retval = self._gui.execute(self.return_events)
 
 		self._windows.close()
 		return self.act(retval)
 
 	def hide(self):
+		if self.modal:
+			self._hide_modal_background()
 		self._gui.hide()
 		self._hidden = True
 
@@ -154,7 +181,6 @@ class WindowManager(object):
 	def __init__(self, mainmenu):
 		self._mainmenu = mainmenu
 		self._windows = []
-		self._modal_background = None
 
 	def show(self, window, **kwargs):
 		"""Show a new window on top.
@@ -206,36 +232,15 @@ class WindowManager(object):
 		else:
 			self.show(window, **kwargs)
 
-	def show_modal_background(self):
-		""" Loads transparent background that de facto prohibits
-		access to other gui elements by eating all input events.
-		Used for modal popups and our in-game menu.
-		"""
-		height = horizons.globals.fife.engine_settings.getScreenHeight()
-		width = horizons.globals.fife.engine_settings.getScreenWidth()
-		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
-		image = fife.GuiImage(image)
-		self._modal_background = pychan.Icon(image=image)
-		self._modal_background.position = (0, 0)
-		self._modal_background.show()
-
-	def hide_modal_background(self):
-		if self._modal_background:
-			self._modal_background.hide()
-
 	def show_dialog(self, dlg, bind, event_map=None, modal=False, focus=None):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
 		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
-		@param modal: Whether to block user interaction while displaying the dialog
 		@param focus: Which child widget should take focus
 		"""
-		self.current_dialog = dlg
 		if event_map is not None:
 			dlg.mapEvents(event_map)
-		if modal:
-			self.show_modal_background()
 
 		def execute(widget, bind):
 			""" Execute the dialog synchronously. ## We implement this again as we want to 
@@ -281,8 +286,6 @@ class WindowManager(object):
 
 		# show that a dialog is being executed, this can sometimes require changes in program logic elsewhere
 		ret = execute(dlg, bind)
-		if modal:
-			self.hide_modal_background()
 		return ret
 
 	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
