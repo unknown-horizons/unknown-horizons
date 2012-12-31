@@ -25,7 +25,6 @@ from fife import fife
 from fife.extensions import pychan
 
 import horizons.globals
-from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
@@ -288,6 +287,7 @@ class WindowManager(object):
 
 	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
 		"""Displays a popup with the specified text
+
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, show cancel button or not
@@ -295,19 +295,31 @@ class WindowManager(object):
 		@param modal: Whether to block user interaction while displaying the popup
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
-		popup = self._build_popup(windowtitle, message, show_cancel_button, size=size)
-		# ok should be triggered on enter, therefore we need to focus the button
-		# pychan will only allow it after the widgets is shown
-		def focus_ok_button():
-			popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus()
-		ExtScheduler().add_new_object(focus_ok_button, self, run_in=0)
-		if show_cancel_button:
-			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True,
-			                                CancelButton.DEFAULT_NAME : False},
-			                        modal=modal)
+		if size == 0:
+			wdg_name = "popup_230"
+		elif size == 1:
+			wdg_name = "popup_290"
+		elif size == 2:
+			wdg_name = "popup_350"
 		else:
-			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True},
-			                        modal=modal)
+			assert False, "size should be 0 <= size <= 2, but is " + str(size)
+
+		popup = load_uh_widget(wdg_name + '.xml')
+
+		headline = popup.findChild(name='headline')
+		headline.text = _(windowtitle)
+		message_lbl = popup.findChild(name='popup_message')
+		message_lbl.text = _(message)
+		popup.adaptLayout() # recalculate widths
+
+		if show_cancel_button:
+			bind = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
+		else:
+			bind = {OkButton.DEFAULT_NAME: True}
+			cancel_button = popup.findChild(name=CancelButton.DEFAULT_NAME)
+			cancel_button.parent.removeChild(cancel_button)
+
+		return self.show_dialog(popup, bind, modal=modal)
 
 	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
@@ -328,7 +340,7 @@ class WindowManager(object):
 			msg += _("Details: {error_details}").format(error_details=details)
 		try:
 			self.show_popup( _("Error: {error_message}").format(error_message=windowtitle),
-			                 msg, show_cancel_button=False)
+			                 msg)
 		except SystemExit: # user really wants us to die
 			raise
 		except:
@@ -340,35 +352,3 @@ class WindowManager(object):
 				return self.show_error_popup(windowtitle, description, advice, details, _first=False)
 			else:
 				raise # it persists, we have to die.
-
-	def _build_popup(self, windowtitle, message, show_cancel_button=False, size=0):
-		""" Creates a pychan popup widget with the specified properties.
-		@param windowtitle: the title of the popup
-		@param message: the text displayed in the popup
-		@param show_cancel_button: boolean, include cancel button or not
-		@param size: 0, 1 or 2
-		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
-		"""
-		if size == 0:
-			wdg_name = "popup_230"
-		elif size == 1:
-			wdg_name = "popup_290"
-		elif size == 2:
-			wdg_name = "popup_350"
-		else:
-			assert False, "size should be 0 <= size <= 2, but is "+str(size)
-
-		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
-		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
-		popup = load_uh_widget(wdg_name + '.xml')
-
-		if not show_cancel_button:
-			cancel_button = popup.findChild(name=CancelButton.DEFAULT_NAME)
-			cancel_button.parent.removeChild(cancel_button)
-
-		popup.headline = popup.findChild(name='headline')
-		popup.headline.text = _(windowtitle)
-		popup.message = popup.findChild(name='popup_message')
-		popup.message.text = _(message)
-		popup.adaptLayout() # recalculate widths
-		return popup
