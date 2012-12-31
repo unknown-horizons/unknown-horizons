@@ -32,6 +32,7 @@ from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.windows import WindowManager, Window
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -81,8 +82,9 @@ class IngameGui(LivingObject):
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
 			self.mainhud.findChild(name=widget).hide()
 
-		self.save_map_dialog = SaveMapDialog(self.main_gui, self, self.session)
-		self.pausemenu = PauseMenu(self.session, self.main_gui, self, in_editor_mode=True)
+		self.windows = WindowManager(Dummy)
+		self.save_map_dialog = SaveMapDialog(self.session, self.windows)
+		self.pausemenu = PauseMenu(self.session, self.main_gui, self, self.windows, in_editor_mode=True)
 
 	def end(self):
 		self.mainhud.mapEvents({
@@ -106,7 +108,7 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).end()
 
 	def toggle_pause(self):
-		self.pausemenu.toggle()
+		self.windows.toggle(self.pausemenu)
 
 	def toggle_help(self):
 		# TODO the pausemenu expects the ingamegui to have this method, either show
@@ -130,7 +132,7 @@ class IngameGui(LivingObject):
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
-		self.save_map_dialog.show()
+		self.windows.show(self.save_map_dialog)
 
 	def on_escape(self):
 		pass
@@ -138,7 +140,11 @@ class IngameGui(LivingObject):
 	def on_key_press(self, action, evt):
 		_Actions = KeyConfig._Actions
 		if action == _Actions.ESCAPE:
-			return self.on_escape()
+			if self.windows.visible:
+				self.windows.on_escape()
+			else:
+				self.toggle_pause()
+			return True
 
 	def set_cursor(self, which='default', *args, **kwargs):
 		"""Sets the mousetool (i.e. cursor).
@@ -214,43 +220,40 @@ class SettingsTab(TabInterface):
 		b.up_image = images['box_highlighted']
 
 
-class SaveMapDialog(object):
+class SaveMapDialog(Window):
 	"""Shows a dialog where the user can set the name of the saved map."""
 
-	def __init__(self, main_gui, ingame_gui, session):
-		self._main_gui = main_gui
-		self._ingame_gui = ingame_gui
+	def __init__(self, session, windows):
+		super(SaveMapDialog, self).__init__(windows)
+
 		self._session = session
 		self._widget = load_uh_widget('save_map.xml')
-
-		events = {
-			OkButton.DEFAULT_NAME: self._do_save,
-			CancelButton.DEFAULT_NAME: self.hide
-		}
-		self._widget.mapEvents(events)
-
-	def show(self):
-		self._main_gui.on_escape = self.hide
 
 		name = self._widget.findChild(name='map_name')
 		name.text = u''
 		name.capture(self._do_save)
 
+		events = {
+			OkButton.DEFAULT_NAME: self._do_save,
+			CancelButton.DEFAULT_NAME: self._windows.close,
+		}
+		self._widget.mapEvents(events)
+
+	def show(self):
 		self._widget.show()
-		name.requestFocus()
+		self._widget.findChild(name='map_name').requestFocus()
 
 	def hide(self):
-		self._main_gui.on_escape = self._ingame_gui.toggle_pause
 		self._widget.hide()
 
 	def _do_save(self):
 		name = self._widget.collectData('map_name')
 		if re.match('^[a-zA-Z0-9_-]+$', name):
 			self._session.save_map(name)
-			self.hide()
+			self._windows.close()
 		else:
 			#xgettext:python-format
 			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
 			#xgettext:python-format
 			advice = _('Try a name that only contains letters and numbers.')
-			self._main_gui.show_error_popup(_('Error'), message, advice)
+			self._windows.show_error_popup(_('Error'), message, advice)
