@@ -96,6 +96,9 @@ class Dialog(Window):
 	# Whether to block user interaction while displaying the dialog
 	modal = False
 
+	# Name of widget that should get the focus once the dialog is shown
+	focus = None
+
 	def __init__(self, windows):
 		super(Dialog, self).__init__(windows)
 
@@ -117,7 +120,7 @@ class Dialog(Window):
 
 			self._windows.show(self)
 		"""
-		raise NotImplementedError
+		return retval
 
 	def show(self, **kwargs):
 		# if the dialog is already running but has been hidden, just show the widget
@@ -136,7 +139,7 @@ class Dialog(Window):
 		if self.modal:
 			self._show_modal_background()
 
-		retval = self._gui.execute(self.return_events)
+		retval = Dialog.execute(self._gui, self.return_events, self.focus)
 
 		self._windows.close()
 		return self.act(retval)
@@ -160,12 +163,12 @@ class Dialog(Window):
 		# Convention says use cancel action
 		if event.getKey().getValue() == fife.Key.ESCAPE:
 			retval = self.return_events.get(CancelButton.DEFAULT_NAME)
-			if retval:
+			if retval is not None:
 				self.abort(retval)
 		# Convention says use ok action
 		elif event.getKey().getValue() == fife.Key.ENTER:
 			retval = self.return_events.get(OkButton.DEFAULT_NAME)
-			if retval:
+			if retval is not None:
 				self.abort(retval)
 
 	def abort(self, retval=False):
@@ -174,6 +177,33 @@ class Dialog(Window):
 		Program flow continues after the `self._gui.execute` call in `show`.
 		"""
 		horizons.globals.fife.pychanmanager.breakFromMainLoop(retval)
+
+	@staticmethod
+	def execute(widget, bind, focus=None):
+		"""Execute the dialog synchronously.
+		
+		Note: We implement this again as we want to retain focus for child widget sometimes.
+
+		@param widget: widget to execute
+		@param bind: Dictionary with buttons and return values
+		"""
+		# FIXME This is a workaround for lack of native implementation of focus handling within execute() in FIFE. 
+		#       Ref. FIFE ticket #750.
+
+		for name, retval in bind.items():
+			def _quitThisDialog(retval=retval):
+				horizons.globals.fife.pychanmanager.breakFromMainLoop(retval)
+
+		widget.findChild(name=name).capture(_quitThisDialog, group_name="__execute__")
+		widget.show()
+
+		if focus and widget.findChild(name=focus):
+			widget.findChild(name=focus).requestFocus() # child widget takes focus
+		else:
+			widget.is_focusable = True
+			widget.requestFocus()
+
+		return horizons.globals.fife.pychanmanager.mainLoop()
 
 
 class WindowManager(object):
@@ -234,59 +264,27 @@ class WindowManager(object):
 
 	def show_dialog(self, dlg, bind, event_map=None, modal=False, focus=None):
 		"""Shows any pychan dialog.
+
 		@param dlg: dialog that is to be shown
-		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
+		@param bind: events that make the dialog return + return values {'ok': True, 'cancel': False}
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
+		@param modal: Whether to block user interaction while displaying the popup
 		@param focus: Which child widget should take focus
 		"""
-		if event_map is not None:
-			dlg.mapEvents(event_map)
 
-		def execute(widget, bind):
-			""" Execute the dialog synchronously. ## We implement this again as we want to 
-						retain focus for child widget sometimes.
-				@param widget: widget to execute
-				@param bind: Dictionary with buttons and return values
-			"""
-			# FIXME:This is a workaround for lack of native implementation of focus handling within execute() in FIFE. 
-			#		Ref. FIFE ticket #750.
-			for name,returnValue in bind.items():
-				def _quitThisDialog(returnValue = returnValue ):
-					horizons.globals.fife.pychanmanager.breakFromMainLoop( returnValue )
-					widget.hide()
-				widget.findChild(name=name).capture( _quitThisDialog , group_name = "__execute__" )
-			widget.show()
-			if focus and widget.findChild(name=focus):
-				widget.findChild(name=focus).requestFocus() # child widget takes focus
-			else:
-				widget.is_focusable = True
-				widget.requestFocus()
-			return horizons.globals.fife.pychanmanager.mainLoop()
+		def prepare(self, **kwargs):
+			self._gui = dlg
+			if event_map:
+				self._gui.mapEvents(event_map)
 
-		# handle escape and enter keypresses
-		def _on_keypress(event, dlg=dlg): # rebind to make sure this dlg is used
-			from horizons.engine import pychan_util
-			if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
-				btn = dlg.findChild(name=CancelButton.DEFAULT_NAME)
-				callback = pychan_util.get_button_event(btn) if btn else None
-				if callback:
-					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
-				else:
-					# escape should hide the dialog default
-					horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=False)
-					dlg.hide()
-			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
-				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
-				callback = pychan_util.get_button_event(btn) if btn else None
-				if callback:
-					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
-				# can't guess a default action here
+		TempDialog = type('TempDialog', (Dialog, ), {
+			'modal': modal,
+			'return_events': bind,
+			'focus': focus,
+			'prepare': prepare,
+		})
 
-		dlg.capture(_on_keypress, event_name="keyPressed")
-
-		# show that a dialog is being executed, this can sometimes require changes in program logic elsewhere
-		ret = execute(dlg, bind)
-		return ret
+		return self.show(TempDialog(self))
 
 	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
 		"""Displays a popup with the specified text
