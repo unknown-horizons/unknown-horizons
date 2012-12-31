@@ -64,7 +64,6 @@ class PauseMenu(object):
 
 	def show(self):
 		PauseCommand(suggestion=True).execute(self._session)
-		self._mainmenu.windows.show_modal_background()
 		self._mainmenu.current = self
 		self._mainmenu.on_escape = self.hide
 		self._gui.show()
@@ -73,7 +72,6 @@ class PauseMenu(object):
 		self._gui.hide()
 		self._mainmenu.current = None
 		self._mainmenu.on_escape = self.show
-		self._mainmenu.windows.hide_modal_background()
 		UnPauseCommand(suggestion=True).execute(self._session)
 
 	def toggle(self):

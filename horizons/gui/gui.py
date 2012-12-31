@@ -192,7 +192,6 @@ class Gui(object):
 		self.log.debug("Gui: hiding current: %s", self.current)
 		if self.current is not None:
 			self.current.hide()
-			self.windows.hide_modal_background()
 
 	def hide_all(self):
 		self.hide()
