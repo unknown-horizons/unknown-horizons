@@ -25,7 +25,7 @@ import horizons.globals
 from horizons.constants import GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu
+from horizons.gui.modules import PauseMenu, HelpDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -85,6 +85,7 @@ class IngameGui(LivingObject):
 		self.windows = WindowManager(Dummy)
 		self.save_map_dialog = SaveMapDialog(self.session, self.windows)
 		self.pausemenu = PauseMenu(self.session, self.main_gui, self, self.windows, in_editor_mode=True)
+		self.help_dialog = HelpDialog(self.windows, session=self.session)
 
 	def end(self):
 		self.mainhud.mapEvents({
@@ -111,9 +112,7 @@ class IngameGui(LivingObject):
 		self.windows.toggle(self.pausemenu)
 
 	def toggle_help(self):
-		# TODO the pausemenu expects the ingamegui to have this method, either show
-		#      an editor-specific help or remove the button in the pausemenu
-		pass
+		self.windows.toggle(self.help_dialog)
 
 	def load(self, savegame):
 		self.minimap.draw()
@@ -144,7 +143,11 @@ class IngameGui(LivingObject):
 				self.windows.on_escape()
 			else:
 				self.toggle_pause()
-			return True
+		elif action == _Actions.HELP:
+			self.toggle_help()
+		else:
+			return False
+		return True
 
 	def set_cursor(self, which='default', *args, **kwargs):
 		"""Sets the mousetool (i.e. cursor).
