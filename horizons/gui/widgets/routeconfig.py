@@ -69,10 +69,7 @@ class RouteConfig(object):
 		self.instance.add_remove_listener(self.on_instance_removed, no_duplicates=True)
 		self.instance.route.add_change_listener(self.on_route_change, no_duplicates=True, call_listener_now=True)
 
-		self.session.ingame_gui.on_switch_main_widget(self)
-
 	def hide(self):
-		self.session.ingame_gui.on_switch_main_widget(None)
 		self.minimap.disable()
 		self._gui.hide()
 

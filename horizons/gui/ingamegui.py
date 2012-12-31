@@ -63,7 +63,6 @@ class IngameGui(LivingObject):
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
 		self.main_gui = gui
-		self.main_widget = None
 		self.settlement = None
 		self._old_menu = None
 
@@ -319,14 +318,6 @@ class IngameGui(LivingObject):
 			self.toggle_pause()
 
 		return True
-
-	def on_switch_main_widget(self, widget):
-		"""The main widget has been switched to the given one (possibly None)."""
-		if self.main_widget and self.main_widget != widget: # close the old one if it exists
-			old_main_widget = self.main_widget
-			self.main_widget = None
-			old_main_widget.hide()
-		self.main_widget = widget
 
 	def _on_settler_level_change(self, message):
 		"""Gets called when the player changes"""

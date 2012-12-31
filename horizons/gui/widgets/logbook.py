@@ -143,12 +143,10 @@ class LogBook(PickBeltWidget):
 			self._redraw_captainslog()
 			if self.current_mode == self.statistics_index:
 				self.show_statswidget(self.last_stats_widget)
-			self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
 		if not self._hiding_widget:
 			self._hiding_widget = True
-			self.session.ingame_gui.on_switch_main_widget(None)
 			self._hide_statswidgets()
 			self._gui.hide()
 			self._hiding_widget = False
