@@ -35,11 +35,9 @@ def test_credits(gui):
 def test_help(gui):
 	"""Test that the help page shows up."""
 
-	def func():
-		gui.trigger('help_window', 'okButton/action/__execute__')
-
-	with gui.handler(func):
-		gui.trigger('menu', 'help_button')
+	gui.trigger('menu', 'help_button')
+	gui.trigger('help_window', 'okButton')
+	assert not gui.find('help_window')
 
 
 @gui_test(timeout=60)
