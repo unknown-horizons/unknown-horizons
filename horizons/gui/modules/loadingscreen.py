@@ -24,9 +24,10 @@ import random
 import horizons.globals
 from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.util import load_uh_widget
+from horizons.gui.windows import Window
 
 
-class LoadingScreen(object):
+class LoadingScreen(Window):
 	"""Show quotes/gameplay tips while loading the game"""
 
 	def __init__(self):

@@ -36,6 +36,7 @@ from horizons.i18n import find_available_languages
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.windows import Window
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 from horizons.util.python.callback import Callback
@@ -47,16 +48,17 @@ from horizons.util.worldobject import WorldObject
 from horizons.util.yamlcache import YamlCache
 
 
-class SingleplayerMenu(object):
+class SingleplayerMenu(Window):
 
-	def __init__(self, mainmenu):
+	def __init__(self, mainmenu, windows):
+		super(SingleplayerMenu, self).__init__(windows)
 		self._mainmenu = mainmenu
 
 		self._mode = None
 
 		self._gui = load_uh_widget('singleplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel'   : self.cancel,
+			'cancel'   : self._windows.close,
 			'okay'     : self.act,
 			'scenario' : Callback(self._select_mode, 'scenario'),
 			'random'   : Callback(self._select_mode, 'random'),
@@ -71,14 +73,7 @@ class SingleplayerMenu(object):
 	def hide(self):
 		self._gui.hide()
 
-	def cancel(self):
-		self._mainmenu.show_main()
-
 	def show(self):
-		self._mainmenu.hide()
-		self._mainmenu.current = self
-		self._mainmenu.on_escape = self.cancel
-
 		self._gui.findChild(name='scenario').marked = True
 		self._select_mode('scenario')
 
@@ -113,6 +108,7 @@ class SingleplayerMenu(object):
 
 		horizons.globals.fife.set_uh_setting("Nickname", player_name)
 
+		self._windows.close()
 		self._mode.act(player_name, player_color)
 
 

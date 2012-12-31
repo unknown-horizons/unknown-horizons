@@ -30,6 +30,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.windows import Window
 from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
@@ -37,9 +38,10 @@ from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 
 
-class MultiplayerMenu(object):
+class MultiplayerMenu(Window):
 
-	def __init__(self, mainmenu):
+	def __init__(self, mainmenu, windows):
+		super(MultiplayerMenu, self).__init__(windows)
 		self._mainmenu = mainmenu
 
 	def hide(self):
@@ -47,17 +49,14 @@ class MultiplayerMenu(object):
 
 	def show(self):
 		if not self._check_connection():
+			self._windows.close()
 			return
-
-		self._mainmenu.hide()
-		self._mainmenu.current = self
-		self._mainmenu.on_escape = self.close
 
 		self._gui = load_uh_widget('multiplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel' : self.close,
+			'cancel' : self._windows.close,
 			'join'   : self._join_game,
-			'create' : self._create_game,
+			'create' : lambda: self._windows.show(CreateGame(self._windows)),
 			'refresh': Callback(self._refresh, play_sound=True)
 		})
 
@@ -68,7 +67,7 @@ class MultiplayerMenu(object):
 
 		refresh_worked = self._refresh()
 		if not refresh_worked:
-			self.cancel()
+			self._windows.close()
 			return
 
 		NetworkInterface().subscribe("game_prepare", self._prepare_game)
@@ -81,6 +80,11 @@ class MultiplayerMenu(object):
 		self._gui.findChild(name='load').parent.hide()
 
 	def close(self):
+		# when the connection to the master server fails, the window will be closed before
+		# anything has been setup
+		if not hasattr(self, '_gui'):
+			return
+
 		self.hide()
 
 		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
@@ -92,7 +96,6 @@ class MultiplayerMenu(object):
 
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
-		self._mainmenu.show_main()
 
 	def _check_connection(self):
 		"""
@@ -237,7 +240,8 @@ class MultiplayerMenu(object):
 			if not NetworkInterface().joingame(game.uuid, password):
 				return
 
-		self.show_lobby()
+		window = GameLobby(self._windows)
+		self._windows.show(window)
 
 	def _request_game_password(self, game):
 		"""Show dialog to ask player for a password."""
@@ -251,14 +255,6 @@ class MultiplayerMenu(object):
 		else:
 			return None
 
-	def _create_game(self):
-		window = CreateGame(self._mainmenu, self)
-		window.show()
-
-	def show_lobby(self):
-		window = GameLobby(self._mainmenu, self)
-		window.show()
-
 	def _prepare_game(self, game):
 		self._mainmenu.show_loading_screen()
 		horizons.main.prepare_multiplayer(game)
@@ -268,16 +264,15 @@ class MultiplayerMenu(object):
 		horizons.main.start_multiplayer(game)
 
 
-class CreateGame(object):
+class CreateGame(Window):
 	"""Interface for creating a multiplayer game"""
 
-	def __init__(self, mainmenu, multiplayer_menu):
-		self._mainmenu = mainmenu
-		self._multiplayer_menu = multiplayer_menu
+	def __init__(self, windows):
+		super(CreateGame, self).__init__(windows)
 
 		self._gui = load_uh_widget('multiplayer_creategame.xml')
 		self._gui.mapEvents({
-			'cancel': self.close,
+			'cancel': self._windows.close,
 			'create': self.act,
 		})
 
@@ -287,15 +282,7 @@ class CreateGame(object):
 	def hide(self):
 		self._gui.hide()
 
-	def close(self):
-		self.hide()
-		self._multiplayer_menu.show()
-
 	def show(self):
-		self._mainmenu.current.hide()
-		self._mainmenu.current = self
-		self._mainmenu.on_escape = self.close
-
 		self._files, self._maps_display = SavegameManager.get_maps()
 
 		self._gui.distributeInitialData({
@@ -326,7 +313,13 @@ class CreateGame(object):
 		password = hashlib.sha1(password).hexdigest() if password != "" else ""
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, maphash, password)
 		if game:
-			self._multiplayer_menu.show_lobby()
+			# FIXME When canceling the lobby, I'd like the player to return to the main mp
+			# menu, and not see the 'create game' again. We need to close this window, however,
+			# this will trigger the display of the main gui, which will part the game in
+			# `MultiplayerMenu._check_connection`
+			#self._windows.close()
+			window = GameLobby(self._windows)
+			self._windows.show(window)
 
 	def _update_infos(self):
 		index = self._gui.collectData('maplist')
@@ -337,21 +330,32 @@ class CreateGame(object):
 				_("Recommended number of players: {number}").format(number=number_of_players)
 
 
-class GameLobby(object):
+class GameLobby(Window):
 	"""Chat with other players, change name, wait for the game to begin."""
 
-	def __init__(self, mainmenu, multiplayer_menu):
-		self._mainmenu = mainmenu
-		self._multiplayer_menu = multiplayer_menu
+	def __init__(self, windows):
+		super(GameLobby, self).__init__(windows)
 
 		self._gui = load_uh_widget('multiplayer_gamelobby.xml')
 		self._gui.mapEvents({
-			'cancel': self.close,
+			'cancel': self._cancel,
 			'ready_btn': NetworkInterface().toggle_ready,
 		})
 
 	def hide(self):
 		self._gui.hide()
+
+	def _cancel(self):
+		"""When the lobby is cancelled, close the window and leave the game.
+
+		We can't do this in `close`, because the window will be closed when a game starts
+		as well, and we don't want to leave the game then.
+		"""
+		self._windows.close()
+		NetworkInterface().leavegame()
+
+	def on_escape(self):
+		self._cancel()
 
 	def close(self):
 		self.hide()
@@ -365,13 +369,7 @@ class GameLobby(object):
 		NetworkInterface().unsubscribe("lobbygame_toggleready", self._on_player_toggled_ready)
 		NetworkInterface().unsubscribe("game_details_changed", self._update_game_details)
 
-		self._multiplayer_menu.show()
-
 	def show(self):
-		self._mainmenu.current.hide()
-		self._mainmenu.current = self
-		self._mainmenu.on_escape = self.close
-
 		textfield = self._gui.findChild(name="chatTextField")
 		textfield.capture(self._send_chat_message)
 
@@ -485,7 +483,6 @@ class GameLobby(object):
 			CancelButton.DEFAULT_NAME: _cancel
 		})
 
-		self._mainmenu.on_escape = _cancel
 		dialog.show()
 
 	# Functions for handling events on the left side (chat)
@@ -551,7 +548,7 @@ class GameLobby(object):
 
 	def _on_player_kicked(self, game, player, myself):
 		if myself:
-			self._mainmenu.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
-			self.close()
+			self._windows.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
+			self._windows.close()
 		else:
 			self._print_event(_("{player} got kicked by creator").format(player=player.name))

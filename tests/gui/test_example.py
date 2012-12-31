@@ -45,7 +45,7 @@ def test_example(gui):
 	# Main menu
 	main_menu = gui.find(name='menu')
 	gui.trigger(main_menu, 'single_button')
-	gui.trigger('menu', 'okay')
+	gui.trigger('singleplayermenu', 'okay')
 
 	# Hopefully we're ingame now
 	assert gui.active_widgets

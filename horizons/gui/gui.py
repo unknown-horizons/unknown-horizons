@@ -28,7 +28,6 @@ from fife.extensions import pychan
 import horizons.globals
 import horizons.main
 from horizons.gui.keylisteners import MainListener
-from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.messaging import GuiAction
@@ -36,10 +35,49 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 
-from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
-                                  SelectSavegameDialog, LoadingScreen)
+from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, MainMenuHelpDialog,
+                                  SelectSavegameDialog, LoadingScreen, SettingsDialog)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
-from horizons.gui.windows import WindowManager
+from horizons.gui.windows import WindowManager, Window
+
+
+class MainMenu(Window):
+
+	def __init__(self, gui, windows):
+		super(MainMenu, self).__init__(windows)
+
+		self._gui = load_uh_widget('mainmenu.xml', 'menu')
+		self._gui.mapEvents({
+			'single_button': lambda: self._windows.show(gui.singleplayermenu),
+			'single_label' : lambda: self._windows.show(gui.singleplayermenu),
+			'multi_button': lambda: self._windows.show(gui.multiplayermenu),
+			'multi_label' : lambda: self._windows.show(gui.multiplayermenu),
+			'settings_button': lambda: self._windows.show(gui.settings_dialog),
+			'settings_label' : lambda: self._windows.show(gui.settings_dialog),
+			'help_button': gui.on_help,
+			'help_label' : gui.on_help,
+			'quit_button': self.on_escape,
+			'quit_label' : self.on_escape,
+			'editor_button': gui.show_editor_start_menu,
+			'editor_label' : gui.show_editor_start_menu,
+			'credits_button': gui.show_credits,
+			'credits_label' : gui.show_credits,
+			'load_button': gui.load_game,
+			'load_label' : gui.load_game,
+			'changeBackground' : gui.randomize_background
+		})
+
+	def show(self):
+		self._gui.show()
+
+	def hide(self):
+		self._gui.hide()
+
+	def on_escape(self):
+		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
+		message = _("Are you sure you want to quit Unknown Horizons?")
+		if self._windows.show_popup(_("Quit Game"), message, show_cancel_button=True):
+			horizons.main.quit()
 
 
 class Gui(object):
@@ -52,7 +90,7 @@ class Gui(object):
 		self.current = None # currently active window
 		self.session = None
 
-		self.windows = WindowManager()
+		self.windows = WindowManager(self)
 		# temporary aliases for compatibility with rest of the code
 		self.show_dialog = self.windows.show_dialog
 		self.show_popup = self.windows.show_popup
@@ -66,34 +104,12 @@ class Gui(object):
 
 		self.subscribe()
 
-		self.singleplayermenu = SingleplayerMenu(self)
-		self.multiplayermenu = MultiplayerMenu(self)
-		self.help_dialog = HelpDialog(self)
-		self.selectsavegame_dialog = SelectSavegameDialog(self)
-		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
+		self.singleplayermenu = SingleplayerMenu(self, self.windows)
+		self.multiplayermenu = MultiplayerMenu(self, self.windows)
+		self.help_dialog = MainMenuHelpDialog(self.windows)
 		self.loadingscreen = LoadingScreen()
-
-		self.mainmenu = load_uh_widget('mainmenu.xml', 'menu')
-		self.mainmenu.mapEvents({
-			'single_button': self.singleplayermenu.show,
-			'single_label' : self.singleplayermenu.show,
-			'multi_button': self.multiplayermenu.show,
-			'multi_label' : self.multiplayermenu.show,
-			'settings_button': self.show_settings,
-			'settings_label' : self.show_settings,
-			'help_button': self.on_help,
-			'help_label' : self.on_help,
-			'quit_button': self.show_quit,
-			'quit_label' : self.show_quit,
-			'editor_button': self.show_editor_start_menu,
-			'editor_label' : self.show_editor_start_menu,
-			'credits_button': self.show_credits,
-			'credits_label' : self.show_credits,
-			'load_button': self.load_game,
-			'load_label' : self.load_game,
-			'changeBackground' : self.randomize_background
-		})
-
+		self.settings_dialog = SettingsDialog(self.windows)
+		self.mainmenu = MainMenu(self, self.windows)
 		self.fps_display = FPSDisplay()
 
 	def subscribe(self):
@@ -109,10 +125,11 @@ class Gui(object):
 		if not self._background.isVisible():
 			self._background.show()
 
-		self.hide()
-		self.on_escape = self.show_quit
-		self.current = self.mainmenu
-		self.current.show()
+		self.windows.show(self.mainmenu)
+
+	def show_select_savegame(self, mode):
+		window = SelectSavegameDialog(mode, self, self.windows)
+		return self.windows.show(window)
 
 	def load_game(self):
 		saved_game = self.show_select_savegame(mode='load')
@@ -134,18 +151,8 @@ class Gui(object):
 			# There was a problem during the 'save game' procedure.
 			self.show_popup(_('Error'), _('Failed to save.'))
 
-	def show_settings(self):
-		"""Displays settings gui derived from the FIFE settings module."""
-		horizons.globals.fife.show_settings()
-
 	def on_help(self):
-		self.help_dialog.toggle()
-
-	def show_quit(self):
-		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
-		message = _("Are you sure you want to quit Unknown Horizons?")
-		if self.show_popup(_("Quit Game"), message, show_cancel_button=True):
-			horizons.main.quit()
+		self.windows.toggle(self.help_dialog)
 
 	def quit_session(self, force=False):
 		"""Quits the current session. Usually returns to main menu afterwards.
@@ -168,8 +175,8 @@ class Gui(object):
 
 	def show_credits(self):
 		"""Shows the credits dialog. """
-		widget = CreditsPickbeltWidget().get_widget()
-		self.show_dialog(widget, {OkButton.DEFAULT_NAME: True})
+		window = CreditsPickbeltWidget(self.windows)
+		self.windows.show(window)
 
 # display
 
@@ -185,7 +192,6 @@ class Gui(object):
 		self.log.debug("Gui: hiding current: %s", self.current)
 		if self.current is not None:
 			self.current.hide()
-			self.windows.hide_modal_background()
 
 	def hide_all(self):
 		self.hide()
@@ -195,9 +201,7 @@ class Gui(object):
 		return self.current is not None and self.current.isVisible()
 
 	def show_loading_screen(self):
-		self.hide()
-		self.current = self.loadingscreen
-		self.current.show()
+		self.windows.show(self.loadingscreen)
 
 	def randomize_background(self):
 		"""Randomly select a background image to use. This function is triggered by
@@ -221,9 +225,6 @@ class Gui(object):
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
 
-	def show_editor_start_menu(self, from_main_menu=True):
-		editor_start_menu = EditorStartMenu(self, from_main_menu)
-		self.hide()
-		self.current = editor_start_menu
-		self.current.show()
-		return True
+	def show_editor_start_menu(self):
+		editor_start_menu = EditorStartMenu(self, self.windows)
+		self.windows.show(editor_start_menu)

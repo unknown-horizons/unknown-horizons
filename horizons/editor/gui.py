@@ -108,6 +108,11 @@ class IngameGui(LivingObject):
 	def toggle_pause(self):
 		self.pausemenu.toggle()
 
+	def toggle_help(self):
+		# TODO the pausemenu expects the ingamegui to have this method, either show
+		#      an editor-specific help or remove the button in the pausemenu
+		pass
+
 	def load(self, savegame):
 		self.minimap.draw()
 

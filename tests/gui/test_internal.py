@@ -112,13 +112,11 @@ def test_trigger(gui):
 def test_dialog(gui):
 	"""Test handling of a dialog."""
 
-	assert not gui.find('help_window')
+	assert not gui.find('popup_window')
 
 	def func():
-		assert gui.find('help_window')
-		gui.trigger('help_window', 'okButton/action/__execute__')
+		assert gui.find('popup_window')
+		gui.trigger('popup_window', 'okButton/action/__execute__')
 
 	with gui.handler(func):
-		gui.trigger('menu', 'help_button')
-
-	assert not gui.find('help_window')
+		gui.trigger('menu', 'quit_button')

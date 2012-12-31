@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.globals
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.util import load_uh_widget
 
@@ -34,14 +35,12 @@ class PauseMenu(object):
 		self._gui = load_uh_widget(name)
 		self._gui.position_technique = 'center:center'
 
-		def do_load_map():
-			mainmenu.show_editor_start_menu(False)
-
 		events = {
-			'load' : do_load_map if in_editor_mode else mainmenu.load_game,
+			# FIXME reenable editor start menu once we're using the window manager ingame
+			'load' : lambda: 0 if in_editor_mode else mainmenu.load_game,
 			'save' : ingame_gui.show_save_map_dialog if in_editor_mode else mainmenu.save_game,
-			'sett' : mainmenu.show_settings,
-			'help' : mainmenu.on_help,
+			'sett' : horizons.globals.fife.show_settings,
+			'help' : ingame_gui.toggle_help,
 			'start': self.hide,
 			'quit' : self._do_quit,
 		}
@@ -65,7 +64,6 @@ class PauseMenu(object):
 
 	def show(self):
 		PauseCommand(suggestion=True).execute(self._session)
-		self._mainmenu.windows.show_modal_background()
 		self._mainmenu.current = self
 		self._mainmenu.on_escape = self.hide
 		self._gui.show()
@@ -74,7 +72,6 @@ class PauseMenu(object):
 		self._gui.hide()
 		self._mainmenu.current = None
 		self._mainmenu.on_escape = self.show
-		self._mainmenu.windows.hide_modal_background()
 		UnPauseCommand(suggestion=True).execute(self._session)
 
 	def toggle(self):
