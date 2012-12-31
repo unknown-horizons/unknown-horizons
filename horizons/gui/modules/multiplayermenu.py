@@ -338,12 +338,24 @@ class GameLobby(Window):
 
 		self._gui = load_uh_widget('multiplayer_gamelobby.xml')
 		self._gui.mapEvents({
-			'cancel': self._windows.close,
+			'cancel': self._cancel,
 			'ready_btn': NetworkInterface().toggle_ready,
 		})
 
 	def hide(self):
 		self._gui.hide()
+
+	def _cancel(self):
+		"""When the lobby is cancelled, close the window and leave the game.
+
+		We can't do this in `close`, because the window will be closed when a game starts
+		as well, and we don't want to leave the game then.
+		"""
+		self._windows.close()
+		NetworkInterface().leavegame()
+
+	def on_escape(self):
+		self._cancel()
 
 	def close(self):
 		self.hide()
