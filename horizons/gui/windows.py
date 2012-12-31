@@ -192,8 +192,8 @@ class Dialog(Window):
 		for name, retval in bind.items():
 			def _quitThisDialog(retval=retval):
 				horizons.globals.fife.pychanmanager.breakFromMainLoop(retval)
+			widget.findChild(name=name).capture(_quitThisDialog, group_name="__execute__")
 
-		widget.findChild(name=name).capture(_quitThisDialog, group_name="__execute__")
 		widget.show()
 
 		if focus and widget.findChild(name=focus):
