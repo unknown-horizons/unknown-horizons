@@ -107,8 +107,6 @@ class Gui(object):
 		self.singleplayermenu = SingleplayerMenu(self, self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
 		self.help_dialog = MainMenuHelpDialog(self.windows)
-		self.selectsavegame_dialog = SelectSavegameDialog(self)
-		self.show_select_savegame = self.selectsavegame_dialog.show_select_savegame
 		self.loadingscreen = LoadingScreen()
 		self.settings_dialog = SettingsDialog(self.windows)
 		self.mainmenu = MainMenu(self, self.windows)
@@ -128,6 +126,10 @@ class Gui(object):
 			self._background.show()
 
 		self.windows.show(self.mainmenu)
+
+	def show_select_savegame(self, mode):
+		window = SelectSavegameDialog(mode, self, self.windows)
+		return self.windows.show(window)
 
 	def load_game(self):
 		saved_game = self.show_select_savegame(mode='load')

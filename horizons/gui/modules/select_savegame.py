@@ -24,187 +24,136 @@ import os.path
 import tempfile
 import time
 
-from fife import fife
-
-import horizons.globals
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.savegameupgrader import SavegameUpgrader
-from horizons.extscheduler import ExtScheduler
 
 
 class SelectSavegameDialog(object):
 
-	def __init__(self, mainmenu):
-		self.mainmenu = mainmenu
-		self._widget = load_uh_widget('select_savegame.xml')
+	def __init__(self, mode, mainmenu, windows):
+		assert mode in ('load', 'save', )
+		self._mode = mode
+		self._mainmenu = mainmenu
+		self._windows = windows
 
-	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
-		"""Shows menu to select a savegame.
-		@param mode: Valid options are 'save', 'load', 'mp_load', 'mp_save'
-		@param sanity_checker: only allow manually entered names that pass this test
-		@param sanity_criteria: explain which names are allowed to the user
-		@return: Path to savegamefile or None"""
-		assert mode in ('save', 'load', 'mp_load', 'mp_save')
-		map_files, map_file_display = None, None
-		args = mode, sanity_checker, sanity_criteria # for reshow
-		mp = mode.startswith('mp_')
-		if mp:
-			mode = mode[3:]
-		# below this line, mp_load == load, mp_save == save
-		if mode == 'load':
-			if not mp:
-				map_files, map_file_display = SavegameManager.get_saves()
-			else:
-				map_files, map_file_display = SavegameManager.get_multiplayersaves()
-			if not map_files:
-				self.mainmenu.show_popup(_("No saved games"), _("There are no saved games to load."))
-				return
-		else: # don't show autosave and quicksave on save
-			if not mp:
-				map_files, map_file_display = SavegameManager.get_regular_saves()
-			else:
-				map_files, map_file_display = SavegameManager.get_multiplayersaves()
+		self._gui = load_uh_widget('select_savegame.xml')
 
-		# Prepare widget
-		old_current = self.mainmenu.current
-		self.current = self.mainmenu.current = self._widget
-		self.last_click_event = ()
-		if mode == 'save':
+		if self._mode == 'save':
 			helptext = _('Save game')
-		elif mode == 'load':
+		elif self._mode == 'load':
 			helptext = _('Load game')
-		# else: not a valid mode, so we can as well crash on the following
-		self.current.findChild(name='headline').text = helptext
-		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
+		self._gui.findChild(name='headline').text = helptext
+		self._gui.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
 
-		name_box = self.current.findChild(name="gamename_box")
-		password_box = self.current.findChild(name="gamepassword_box")
-		if mp and mode == 'load': # have gamename
-			name_box.parent.showChild(name_box)
-			password_box.parent.showChild(password_box)
-			gamename_textfield = self.current.findChild(name="gamename")
-			gamepassword_textfield = self.current.findChild(name="gamepassword")
-			gamepassword_textfield.text = u""
-			def clear_gamedetails_textfields():
-				gamename_textfield.text = u""
-				gamepassword_textfield.text = u""
-			gamename_textfield.capture(clear_gamedetails_textfields, 'mouseReleased', 'default')
-		else:
-			if name_box not in name_box.parent.hidden_children:
-				name_box.parent.hideChild(name_box)
-			if password_box not in name_box.parent.hidden_children:
-				password_box.parent.hideChild(password_box)
+		w = self._gui.findChild(name="gamename_box")
+		if w not in w.parent.hidden_children:
+			w.parent.hideChild(w)
+		w = self._gui.findChild(name="gamepassword_box")
+		if w not in w.parent.hidden_children:
+			w.parent.hideChild(w)
 
-		if not hasattr(self, 'filename_hbox'):
-			self.filename_hbox = self.current.findChild(name='enter_filename')
-			self.filename_hbox_parent = self.filename_hbox.parent
+		w = self._gui.findChild(name='enter_filename')
+		if self._mode == 'save': # only show enter_filename on save
+			w.parent.showChild(w)
+		elif w not in w.parent.hidden_children:
+			w.parent.hideChild(w)
 
-		if mode == 'save': # only show enter_filename on save
-			self.filename_hbox_parent.showChild(self.filename_hbox)
-		elif self.filename_hbox not in self.filename_hbox_parent.hidden_children:
-			self.filename_hbox_parent.hideChild(self.filename_hbox)
+		self._hidden = False
 
-		def tmp_selected_changed():
-			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if mode != 'save': # set textbox only if we are in save mode
+	def show(self):
+		# if the dialog is already running but has been hidden, just show the widget
+		if self._hidden:
+			self._hidden = False
+			self._gui.show()
+			return
+
+		if self._mode == 'load':
+			self._map_files, self._map_file_display = SavegameManager.get_saves()
+			if not self._map_files:
+				self._windows.close()
+				self._windows.show_popup(_("No saved games"), _("There are no saved games to load."))
 				return
-			if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
-				self.current.findChild(name="savegamefile").text = u""
-			else:
-				savegamefile = map_file_display[self.current.collectData('savegamelist')]
-				self.current.distributeData({'savegamefile': savegamefile})
+		elif self._mode == 'save':
+			self._map_files, self._map_file_display = SavegameManager.get_regular_saves()
 
-		self.current.distributeInitialData({'savegamelist': map_file_display})
-		# Select first item when loading, nothing when saving
-		selected_item = -1 if mode == 'save' else 0
-		self.current.distributeData({'savegamelist': selected_item})
-		cb_details = self._create_show_savegame_details(self.current, map_files, 'savegamelist')
-		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
-		cb() # Refresh data on start
-		self.current.mapEvents({'savegamelist/action': cb,
-								'savegamelist/mouseClicked': self.check_double_click}) #FIXME: Workaround till FIFE handles Double click.
-		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
+		self._gui.distributeInitialData({'savegamelist': self._map_file_display})
+		if self._mode == 'load':
+			self._gui.distributeData({'savegamelist': 0})
+
+		self._cb = self._create_show_savegame_details(self._gui, self._map_files, 'savegamelist')
+		if self._mode == 'save':
+			def selected_changed():
+				"""Fills in the name of the savegame in the textbox when selected in the list"""
+				if self._gui.collectData('savegamelist') == -1: # set blank if nothing is selected
+					self._gui.findChild(name="savegamefile").text = u""
+				else:
+					savegamefile = self._map_file_display[self._gui.collectData('savegamelist')]
+					self._gui.distributeData({'savegamefile': savegamefile})
+
+			self._cb = Callback.ChainedCallbacks(self._cb, selected_changed)
+
+		self._cb()  # Refresh data on start
+		self._gui.mapEvents({'savegamelist/action': self._cb})
+		self._gui.findChild(name="savegamelist").capture(self._cb, event_name="keyPressed")
 
 		bind = {
-			OkButton.DEFAULT_NAME     : True,
-			CancelButton.DEFAULT_NAME : False,
-			DeleteButton.DEFAULT_NAME : 'delete'
+			OkButton.DEFAULT_NAME    : True,
+			CancelButton.DEFAULT_NAME: False,
+			DeleteButton.DEFAULT_NAME: 'delete'
 		}
-
-		if mode == 'save':
+		if self._mode == 'save':
 			bind['savegamefile'] = True
 
-		retval = self.mainmenu.show_dialog(self.current, bind, focus='savegamefile')
-		if not retval: # cancelled
-			self.mainmenu.current = old_current # return back to old state
+		retval = self._gui.execute(bind)
+
+		self._windows.close()
+		return self.act(retval)
+
+	def hide(self):
+		self._gui.hide()
+		self._hidden = True
+
+	def close(self):
+		pass
+
+	def on_escape(self):
+		pass
+
+	def act(self, retval):
+		if not retval:  # cancelled
 			return
 
 		if retval == 'delete':
 			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
-			delete_retval = self._delete_savegame(map_files)
+			delete_retval = self._delete_savegame(self._map_files)
 			if delete_retval:
-				self.current.distributeData({'savegamelist' : -1})
-				cb()
-			self.mainmenu.current = old_current
-			return self.show_select_savegame(*args)
+				self._gui.distributeData({'savegamelist' : -1})
+				self._cb()
+			return self._windows.show(self)
 
 		selected_savegame = None
-		if mode == 'save': # return from textfield
-			selected_savegame = self.current.collectData('savegamefile')
+		if self._mode == 'save':  # return from textfield
+			selected_savegame = self._gui.collectData('savegamefile')
 			if selected_savegame == "":
-				self.mainmenu.show_error_popup(windowtitle=_("No filename given"),
+				self._windows.show_error_popup(windowtitle=_("No filename given"),
 				                               description=_("Please enter a valid filename."))
-				self.mainmenu.current = old_current
-				return self.show_select_savegame(*args) # reshow dialog
-			elif selected_savegame in map_file_display: # savegamename already exists
+				return self._windows.show(self)
+			elif selected_savegame in self._map_file_display: # savegamename already exists
 				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
-				if not self.mainmenu.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-					self.mainmenu.current = old_current
-					return self.show_select_savegame(*args) # reshow dialog
-			elif sanity_checker and sanity_criteria:
-				if not sanity_checker(selected_savegame):
-					self.mainmenu.show_error_popup(windowtitle=_("Invalid filename given"),
-					                               description=sanity_criteria)
-					self.mainmenu.current = old_current
-					return self.show_select_savegame(*args) # reshow dialog
-		else: # return selected item from list
-			selected_savegame = self.current.collectData('savegamelist')
+				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
+					return self._windows.show(self)
+		elif self._mode == 'load':  # return selected item from list
+			selected_savegame = self._gui.collectData('savegamelist')
 			assert selected_savegame != -1, "No savegame selected in savegamelist"
-			selected_savegame = map_files[selected_savegame]
+			selected_savegame = self._map_files[selected_savegame]
 
-		if mp and mode == 'load': # also name
-			gamename_textfield = self.current.findChild(name="gamename")
-			ret = selected_savegame, self.current.collectData('gamename'), self.current.collectData('gamepassword')
-		else:
-			ret = selected_savegame
-		self.mainmenu.current = old_current # reuse old widget
-		return ret
-
-	def check_double_click(self, event):
-		"""Check if there was a left dobule click"""
-		#FIXME: FIFE should detect double click events in Mouselistner.
-		if event.getButton() != fife.MouseEvent.LEFT:
-			return
-		if self.last_click_event == (event.getX(), event.getY()) and self.clicked:
-			self.clicked = False
-			ExtScheduler().rem_call(self, self.reset_click_status)
-			self.current.hide()
-			#Dirty way to exit execute() and return True to stimulate a okButton event.
-			horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=True)
-		else:
-			self.clicked = True
-			ExtScheduler().add_new_object(self.reset_click_status, self, run_in=0.3, loops=0)
-			self.last_click_event = (event.getX(), event.getY())
-
-	def reset_click_status(self):
-		"""Callback function to reset the click status by Scheduler"""
-		self.clicked = False
+		return selected_savegame
 
 	def _create_show_savegame_details(self, gui, map_files, savegamelist):
 		"""Creates a function that displays details of a savegame in gui"""
@@ -290,24 +239,24 @@ class SelectSavegameDialog(object):
 
 	def _delete_savegame(self, map_files):
 		"""Deletes the selected savegame if the user confirms
-		self.current has to contain the widget "savegamelist"
+		self._gui has to contain the widget "savegamelist"
 		@param map_files: list of files that corresponds to the entries of 'savegamelist'
 		@return: True if something was deleted, else False
 		"""
-		selected_item = self.current.collectData("savegamelist")
+		selected_item = self._gui.collectData("savegamelist")
 		if selected_item == -1 or selected_item >= len(map_files):
-			self.mainmenu.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
+			self._windows.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
 		#xgettext:python-format
 		message = _("Do you really want to delete the savegame '{name}'?").format(
 		             name=SavegameManager.get_savegamename_from_filename(selected_file))
-		if self.mainmenu.show_popup(_("Confirm deletion"), message, show_cancel_button=True):
+		if self._windows.show_popup(_("Confirm deletion"), message, show_cancel_button=True):
 			try:
 				os.unlink(selected_file)
 				return True
 			except:
-				self.mainmenu.show_popup(_("Error!"), _("Failed to delete savefile!"))
+				self._windows.show_popup(_("Error!"), _("Failed to delete savefile!"))
 				return False
 		else: # player cancelled deletion
 			return False
