@@ -26,11 +26,9 @@ from tests.gui import gui_test
 def test_credits(gui):
 	"""Test that the credits page shows up."""
 
-	def func():
-		gui.trigger('credits_window', 'okButton/action/__execute__')
-
-	with gui.handler(func):
-		gui.trigger('menu', 'credits_button')
+	gui.trigger('menu', 'credits_button')
+	gui.trigger('credits_window', 'okButton')
+	assert not gui.find('credits_window')
 
 
 @gui_test(timeout=60)
