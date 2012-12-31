@@ -8,7 +8,7 @@
 	<Icon image="content/gui/images/background/hr.png" position="21,30" />
 
 	<!-- Displays list of resources to select one which is displayed in this slot. -->
-	<ScrollArea min_size="225,270" max_size="225,270" size="225,270" position="25,40">
+	<ScrollArea min_size="225,260" max_size="225,260" size="225,260" position="12,39">
 		<VBox name="resources" size="225,0">
 			<Spacer />
 		</VBox>
@@ -18,7 +18,6 @@
 
 	<ImageButton name="make_default_btn" path="images/buttons/store" position="15,308"
 	             helptext="Save current resource configuration as default for all settlements." />
-	<!-- TODO: Use a better restore icon here. -->
 	<ImageButton name="reset_default_btn" path="images/buttons/restore" position="200,308"
 	             helptext="Reset default resource configuration for all settlements." />
 
