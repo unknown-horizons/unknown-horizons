@@ -30,41 +30,40 @@ from horizons.constants import GUI
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.windows import Window
 from horizons.messaging import SettlerInhabitantsChanged, HoverSettlementChanged, ResourceBarResize
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 
 
-class ChatDialog(object):
+class ChatDialog(Window):
 	"""Allow player to send messages to other players."""
 
-	def __init__(self, main_gui, ingame_gui, session):
-		self._main_gui = main_gui
-		self._ingame_gui = ingame_gui
+	def __init__(self, windows, session):
+		super(ChatDialog, self).__init__(windows)
+
 		self._session = session
 		self._widget = load_uh_widget('chat.xml')
 
 		events = {
 			OkButton.DEFAULT_NAME: self._do_chat,
-			CancelButton.DEFAULT_NAME: self.hide
+			CancelButton.DEFAULT_NAME: self._windows.close
 		}
 		self._widget.mapEvents(events)
 
 		def forward_escape(event):
 			# the textfield will eat everything, even control events
 			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self._main_gui.on_escape()
+				self._windows.close()
 
 		self._widget.findChild(name="msg").capture(forward_escape, "keyPressed")
 		self._widget.findChild(name="msg").capture(self._do_chat)
 
 	def show(self):
-		self._main_gui.on_escape = self.hide
 		self._widget.show()
 		self._widget.findChild(name="msg").requestFocus()
 
 	def hide(self):
-		self._main_gui.on_escape = self._ingame_gui.toggle_pause
 		self._widget.hide()
 
 	def _do_chat(self):
@@ -72,30 +71,28 @@ class ChatDialog(object):
 		msg = self._widget.findChild(name="msg").text
 		Chat(msg).execute(self._session)
 		self._widget.findChild(name="msg").text = u''
-		self.hide()
+		self._windows.close()
 
 
-class ChangeNameDialog(object):
+class ChangeNameDialog(Window):
 	"""Shows a dialog where the user can change the name of a NamedComponent."""
 
-	def __init__(self, main_gui, ingame_gui, session):
-		self._main_gui = main_gui
-		self._ingame_gui = ingame_gui
+	def __init__(self, windows, session):
+		super(ChangeNameDialog, self).__init__(windows)
+
 		self._session = session
 		self._widget = load_uh_widget('change_name.xml')
 
-		self._widget.mapEvents({CancelButton.DEFAULT_NAME: self.hide})
+		self._widget.mapEvents({CancelButton.DEFAULT_NAME: self._windows.close})
 
 		def forward_escape(event):
 			# the textfield will eat everything, even control events
 			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self._main_gui.on_escape()
+				self._windows.close()
 
 		self._widget.findChild(name="new_name").capture(forward_escape, "keyPressed")
 
 	def show(self, instance):
-		self._main_gui.on_escape = self.hide
-
 		cb = Callback(self._do_change_name, instance)
 		self._widget.mapEvents({OkButton.DEFAULT_NAME: cb})
 		self._widget.findChild(name="new_name").capture(cb)
@@ -107,7 +104,6 @@ class ChangeNameDialog(object):
 		self._widget.findChild(name="new_name").requestFocus()
 
 	def hide(self):
-		self._main_gui.on_escape = self._ingame_gui.toggle_pause
 		self._widget.hide()
 
 	def _do_change_name(self, instance):
@@ -118,7 +114,7 @@ class ChangeNameDialog(object):
 			# different namedcomponent classes share the name
 			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self._session)
 
-		self.hide()
+		self._windows.close()
 
 
 class CityInfo(object):
