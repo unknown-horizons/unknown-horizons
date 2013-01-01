@@ -220,7 +220,8 @@ class WindowManager(object):
 		Hide the current one and show the new one.
 		Keyword arguments will be passed through to the window's `show` method.
 		"""
-		self.hide()
+		if self._windows:
+			self._windows[-1].hide()
 
 		self._windows.append(window)
 		return window.show(**kwargs)
@@ -234,17 +235,6 @@ class WindowManager(object):
 		window.close()
 		if self._windows:
 			self._windows[-1].show()
-
-	def hide(self):
-		"""Attempt to hide the current window.
-
-		A window that does not permit other windows on top of it will be closed,
-		any other will be hidden.
-		"""
-		if not self._windows:
-			return
-
-		self._windows[-1].hide()
 
 	def toggle(self, window, **kwargs):
 		"""Hide window if is currently visible (and on top), show it otherwise."""
