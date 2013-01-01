@@ -28,8 +28,9 @@ The results are formatted as code that can be used for writing GUI tests.
 import logging
 from functools import wraps
 
-from horizons.gui import mousetools, Gui
+from horizons.gui import mousetools
 from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
+from horizons.gui.windows import WindowManager
 
 from fife import fife
 from fife.extensions.pychan import tools, widgets
@@ -186,7 +187,7 @@ class GuiHooks(object):
 				return result
 			return wrapper
 
-		Gui.show_dialog = deco4(Gui.show_dialog)
+		WindowManager.show_dialog = deco4(WindowManager.show_dialog)
 
 
 class TestCodeGenerator(object):
