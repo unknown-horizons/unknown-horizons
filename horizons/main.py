@@ -313,13 +313,12 @@ def start_singleplayer(options):
 		_modules.session.end()
 
 	if options.is_editor:
-		from horizons.editor.gui import IngameGui
+		from horizons.editor.session import EditorSession as session_class
 	else:
-		from horizons.gui.ingamegui import IngameGui
+		from horizons.spsession import SPSession as session_class
 
 	# start new session
-	from horizons.spsession import SPSession
-	_modules.session = SPSession(_modules.gui, horizons.globals.db, ingame_gui_class=IngameGui)
+	_modules.session = session_class(_modules.gui, horizons.globals.db)
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
@@ -492,10 +491,6 @@ def _edit_map(map_file):
 
 	options = StartGameOptions.create_editor_load(map_file)
 	start_singleplayer(options)
-
-	from horizons.editor.worldeditor import WorldEditor
-	_modules.session.world_editor = WorldEditor(_modules.session.world)
-	_modules.session.ingame_gui.setup()
 	return True
 
 def edit_map(map_name):

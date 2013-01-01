@@ -119,9 +119,6 @@ class Session(LivingObject):
 
 		self._old_autosave_interval = None
 
-	def in_editor_mode(self):
-		return False
-
 	def start(self):
 		"""Actually starts the game."""
 		self.timer.activate()

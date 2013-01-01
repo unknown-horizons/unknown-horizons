@@ -21,7 +21,6 @@
 
 import horizons.main
 
-from horizons.editor.worldeditor import WorldEditor
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
 from horizons.savegamemanager import SavegameManager
@@ -103,9 +102,7 @@ class EditorCreateMapWidget(object):
 				# the empty list is interpreted as the empty list of random map island strings
 				options = StartGameOptions.create_editor_load([])
 				options.map_padding = size // 2
-				session = horizons.main.start_singleplayer(options)
-				session.world_editor = WorldEditor(session.world)
-				session.ingame_gui.setup()
+				horizons.main.start_singleplayer(options)
 				return
 
 

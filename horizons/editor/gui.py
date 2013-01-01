@@ -255,7 +255,7 @@ class SaveMapDialog(Window):
 	def _do_save(self):
 		name = self._widget.collectData('map_name')
 		if re.match('^[a-zA-Z0-9_-]+$', name):
-			self._session.save_map(name)
+			self._session.save(name)
 			self._windows.close()
 		else:
 			#xgettext:python-format

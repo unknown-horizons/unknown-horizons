@@ -23,19 +23,12 @@ import random
 
 from horizons.session import Session
 from horizons.manager import SPManager
-from horizons.constants import PATHS, SINGLEPLAYER
+from horizons.constants import SINGLEPLAYER
 from horizons.savegamemanager import SavegameManager
 from horizons.timer import Timer
 
 class SPSession(Session):
 	"""Session tailored for singleplayer games."""
-
-	def __init__(self, *args, **kwargs):
-		super(SPSession, self).__init__(*args, **kwargs)
-		self.world_editor = None
-
-	def in_editor_mode(self):
-		return self.world_editor is not None
 
 	def create_manager(self):
 		return SPManager(self)
@@ -53,9 +46,6 @@ class SPSession(Session):
 
 	def autosave(self):
 		"""Called automatically in an interval"""
-		if self.in_editor_mode():
-			return
-
 		self.log.debug("Session: autosaving")
 		success = self._do_save(SavegameManager.create_autosave_filename())
 		if success:
@@ -64,9 +54,6 @@ class SPSession(Session):
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
-		if self.in_editor_mode():
-			return
-
 		self.log.debug("Session: quicksaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = self._do_save(SavegameManager.create_quicksave_filename())
@@ -85,9 +72,6 @@ class SPSession(Session):
 		@param savegamename: string with the full path of the savegame file or None to let user pick one
 		@return: bool, whether no error happened (user aborting dialog means success)
 		"""
-		if self.in_editor_mode():
-			return False
-
 		if savegamename is None:
 			savegamename = self.gui.show_select_savegame(mode='save')
 			if savegamename is None:
@@ -98,6 +82,3 @@ class SPSession(Session):
 		if success:
 			self.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
 		return success
-
-	def save_map(self, name):
-		self.world_editor.save_map(PATHS.USER_MAPS_DIR, name)
