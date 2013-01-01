@@ -155,6 +155,9 @@ class Dialog(Window):
 
 	def close(self):
 		self.hide()
+		# this dialog is gone (not just hidden), next time `show` is called,
+		# we want to execute the dialog again
+		self._hidden = False
 
 	def on_escape(self):
 		# escape is handled in `_on_keypress`
