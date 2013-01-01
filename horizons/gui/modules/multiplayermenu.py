@@ -71,7 +71,6 @@ class MultiplayerMenu(Window):
 			return
 
 		NetworkInterface().subscribe("game_prepare", self._prepare_game)
-		NetworkInterface().subscribe("game_starts", self._start_game)
 		NetworkInterface().subscribe("error", self._on_error)
 
 		self._gui.show()
@@ -88,10 +87,10 @@ class MultiplayerMenu(Window):
 		self.hide()
 
 		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
-		NetworkInterface().unsubscribe("game_starts", self._start_game)
 		NetworkInterface().unsubscribe("error", self._on_error)
 
-		if NetworkInterface().is_connected:
+		# the window is also closed when a game starts, don't disconnect in that case
+		if NetworkInterface().is_connected and not NetworkInterface().is_joined:
 			NetworkInterface().disconnect()
 
 		NetworkInterface().change_name(self._playerdata.get_player_name())
@@ -258,10 +257,6 @@ class MultiplayerMenu(Window):
 	def _prepare_game(self, game):
 		self._mainmenu.show_loading_screen()
 		horizons.main.prepare_multiplayer(game)
-
-	def _start_game(self, game):
-		# TODO listening for this event could be moved to MPSession
-		horizons.main.start_multiplayer(game)
 
 
 class CreateGame(Window):

@@ -21,6 +21,7 @@
 
 import random
 
+import horizons.main
 from horizons.session import Session
 from horizons.manager import MPManager
 from horizons.timer import Timer
@@ -36,7 +37,23 @@ class MPSession(Session):
 		@param rng_seed: seed for random number generator
 		"""
 		self.__network_interface = network_interface
+		self.__network_interface.subscribe("game_starts", self._start_game)
+		self.__network_interface.subscribe("error", self._on_error)
 		super(MPSession, self).__init__(gui, db, **kwargs)
+
+	def _start_game(self, game):
+		horizons.main.start_multiplayer(game)
+
+	def _on_error(self, exception, fatal=True):
+		"""Error callback"""
+		if fatal:
+			self.timer.ticks_per_second = 0
+			self.ingame_gui.windows.show_popup(_("Fatal Network Error"),
+		                                       _("Something went wrong with the network:") + u'\n' +
+		                                       unicode(exception) )
+			self.gui.quit_session(force=True)
+		else:
+			self.gui.show_popup(_("Error"), unicode(exception))
 
 	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""
@@ -53,6 +70,8 @@ class MPSession(Session):
 		return Timer(freeze_protection=False)
 
 	def end(self):
+		self.__network_interface.unsubscribe("error", self._on_error)
+		self.__network_interface.unsubscribe("game_starts", self._start_game)
 		self.__network_interface.disconnect()
 		super(MPSession, self).end()
 
