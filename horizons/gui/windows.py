@@ -138,7 +138,6 @@ class Dialog(Window):
 			return
 
 		self._gui.capture(self._on_keypress, event_name="keyPressed")
-		self._gui.show()
 
 		if self.modal:
 			self._show_modal_background()
