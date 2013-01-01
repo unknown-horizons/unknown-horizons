@@ -153,6 +153,7 @@ class IngameGui(LivingObject):
 			'gameMenuButton' : None
 		})
 
+		self.windows.close_all()
 		self.message_widget = None
 		self.minimap = None
 		self.resource_overview.end()

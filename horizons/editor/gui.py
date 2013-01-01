@@ -96,6 +96,7 @@ class IngameGui(LivingObject):
 			'rotateLeft': None,
 			'gameMenuButton': None
 		})
+		self.windows.close_all()
 		self.minimap = None
 		self.keylistener = None
 		LastActivePlayerSettlementManager().remove()
