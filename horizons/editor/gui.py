@@ -54,6 +54,7 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
+		self.message_widget = Dummy
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
 
