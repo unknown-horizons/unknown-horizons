@@ -97,7 +97,7 @@ def do_win(session):
 	                                          _("Do you want to continue playing?"),
 	                                          show_cancel_button=True)
 	if not continue_playing:
-		Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, run_in=0)
+		Scheduler().add_new_object(session.quit, session, run_in=0)
 	else:
 		UnPauseCommand().execute(session)
 

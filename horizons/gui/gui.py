@@ -146,21 +146,6 @@ class Gui(object):
 	def on_help(self):
 		self.windows.toggle(self.help_dialog)
 
-	def quit_session(self, force=False):
-		"""Quits the current session. Usually returns to main menu afterwards.
-		@param force: whether to ask for confirmation"""
-		message = _("Are you sure you want to abort the running session?")
-
-		if force or self.show_popup(_("Quit Session"), message, show_cancel_button=True):
-			if self.session is not None:
-				self.session.end()
-				self.session = None
-
-			self.show_main()
-			return True
-		else:
-			return False
-
 	def show_credits(self):
 		"""Shows the credits dialog. """
 		window = CreditsPickbeltWidget(self.windows)

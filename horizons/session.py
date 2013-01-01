@@ -197,6 +197,10 @@ class Session(LivingObject):
 		MessageBus().reset()
 		self.gui.subscribe()
 
+	def quit(self):
+		self.end()
+		self.gui.show_main()
+
 	def autosave(self):
 		raise NotImplementedError
 	def quicksave(self):

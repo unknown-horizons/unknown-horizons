@@ -144,7 +144,7 @@ class MultiplayerMenu(Window):
 			self._windows.show_popup(_("Fatal Network Error"),
 		                             _("Something went wrong with the network:") + u'\n' +
 		                             unicode(exception) )
-			self._mainmenu.quit_session(force=True)
+			self._mainmenu.show_main()
 
 	def _display_game_name(self, game):
 		same_version = game.version == NetworkInterface().get_clientversion()

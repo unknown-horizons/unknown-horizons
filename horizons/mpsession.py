@@ -51,7 +51,7 @@ class MPSession(Session):
 			self.ingame_gui.windows.show_popup(_("Fatal Network Error"),
 		                                       _("Something went wrong with the network:") + u'\n' +
 		                                       unicode(exception) )
-			self.gui.quit_session(force=True)
+			self.quit()
 		else:
 			self.gui.show_popup(_("Error"), unicode(exception))
 
