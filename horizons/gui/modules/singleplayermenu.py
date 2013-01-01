@@ -437,7 +437,8 @@ class FreeMapsWidget(object):
 class ScenarioMapWidget(object):
 	"""Start a scenario (with a specific language)."""
 
-	def __init__(self, singleplayer_menu, aidata):
+	def __init__(self, windows, singleplayer_menu, aidata):
+		self._windows = windows
 		self._singleplayer_menu = singleplayer_menu
 		self._aidata = aidata
 
