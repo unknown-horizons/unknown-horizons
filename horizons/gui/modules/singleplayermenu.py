@@ -50,9 +50,8 @@ from horizons.util.yamlcache import YamlCache
 
 class SingleplayerMenu(Window):
 
-	def __init__(self, mainmenu, windows):
+	def __init__(self, windows):
 		super(SingleplayerMenu, self).__init__(windows)
-		self._mainmenu = mainmenu
 
 		self._mode = None
 
@@ -91,7 +90,7 @@ class SingleplayerMenu(Window):
 			self._mode.end()
 			self._gui.findChild(name="right_side_box").removeChild(self._mode.get_widget())
 
-		self._mode = modes[mode](self._mainmenu, self, self._aidata)
+		self._mode = modes[mode](self._windows, self, self._aidata)
 		self._mode.show()
 
 		self._gui.findChild(name="right_side_box").addChild(self._mode.get_widget())
@@ -103,7 +102,7 @@ class SingleplayerMenu(Window):
 		player_name = self._playerdata.get_player_name()
 
 		if not player_name:
-			self._mainmenu.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
+			self._windows.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
 
 		horizons.globals.fife.set_uh_setting("Nickname", player_name)
@@ -180,8 +179,8 @@ class RandomMapWidget(object):
 	island_sizes = [30, 40, 50, 60, 70]
 	island_size_deviations = [5, 10, 20, 30, 40]
 
-	def __init__(self, mainmenu, singleplayer_menu, aidata):
-		self._mainmenu = mainmenu
+	def __init__(self, windows, singleplayer_menu, aidata):
+		self._windows = windows
 		self._singleplayer_menu = singleplayer_menu
 		self._aidata = aidata
 
@@ -206,7 +205,6 @@ class RandomMapWidget(object):
 
 	def act(self, player_name, player_color):
 		self.end()
-		self._mainmenu.show_loading_screen()
 
 		map_file = generate_random_map(*self._get_map_parameters())
 
@@ -356,8 +354,8 @@ class RandomMapWidget(object):
 class FreeMapsWidget(object):
 	"""Start a game by selecting an existing map."""
 
-	def __init__(self, mainmenu, singleplayer_menu, aidata):
-		self._mainmenu = mainmenu
+	def __init__(self, windows, singleplayer_menu, aidata):
+		self._windows = windows
 		self._singleplayer_menu = singleplayer_menu
 		self._aidata = aidata
 
@@ -373,8 +371,6 @@ class FreeMapsWidget(object):
 		return self._gui
 
 	def act(self, player_name, player_color):
-		self._mainmenu.show_loading_screen()
-
 		map_file = self._get_selected_map()
 
 		options = StartGameOptions.create_start_map(map_file)
@@ -441,8 +437,7 @@ class FreeMapsWidget(object):
 class ScenarioMapWidget(object):
 	"""Start a scenario (with a specific language)."""
 
-	def __init__(self, mainmenu, singleplayer_menu, aidata):
-		self._mainmenu = mainmenu
+	def __init__(self, singleplayer_menu, aidata):
 		self._singleplayer_menu = singleplayer_menu
 		self._aidata = aidata
 
@@ -455,8 +450,6 @@ class ScenarioMapWidget(object):
 		return self._gui
 
 	def act(self, player_name, player_color):
-		self._mainmenu.show_loading_screen()
-
 		map_file = self._get_selected_map()
 
 		try:
@@ -501,7 +494,7 @@ class ScenarioMapWidget(object):
 		@param exception: Something that str() will convert to an error message
 		"""
 		print "Error: ", unicode(str(exception))
-		self._mainmenu.show_error_popup(
+		self._windows.show_error_popup(
 			_("Invalid scenario file"),
 		    description=_("The selected file is not a valid scenario file."),
 			details=_("Error message:") + u' ' + unicode(str(exception)),

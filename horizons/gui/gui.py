@@ -100,7 +100,7 @@ class Gui(object):
 
 		self.subscribe()
 
-		self.singleplayermenu = SingleplayerMenu(self, self.windows)
+		self.singleplayermenu = SingleplayerMenu(self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
 		self.help_dialog = HelpDialog(self.windows)
 		self.loadingscreen = LoadingScreen()
@@ -131,7 +131,6 @@ class Gui(object):
 		if saved_game is None:
 			return False # user aborted dialog
 
-		self.show_loading_screen()
 		options = StartGameOptions(saved_game)
 		horizons.main.start_singleplayer(options)
 		return True
@@ -202,5 +201,5 @@ class Gui(object):
 		AmbientSoundComponent.play_special('click')
 
 	def show_editor_start_menu(self):
-		editor_start_menu = EditorStartMenu(self, self.windows)
+		editor_start_menu = EditorStartMenu(self.windows)
 		self.windows.show(editor_start_menu)

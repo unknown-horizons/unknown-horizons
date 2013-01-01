@@ -106,7 +106,7 @@ class MultiplayerMenu(Window):
 			descr = _(u'The multiplayer feature requires the library "pyenet", '
 			          u"which could not be found on your system.")
 			advice = _(u"Linux users: Try to install pyenet through your package manager.")
-			self._mainmenu.show_error_popup(headline, descr, advice)
+			self._windows.show_error_popup(headline, descr, advice)
 			return False
 
 		if NetworkInterface() is None:
@@ -116,7 +116,7 @@ class MultiplayerMenu(Window):
 				headline = _(u"Failed to initialize networking.")
 				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _("Check the settings you specified in the network section.")
-				self._mainmenu.show_error_popup(headline, descr, advice, unicode(e))
+				self._windows.show_error_popup(headline, descr, advice, unicode(e))
 				return False
 
 		if not NetworkInterface().is_connected:
@@ -127,7 +127,7 @@ class MultiplayerMenu(Window):
 				descr = _(u"Could not connect to master server.")
 				advice = _(u"Please check your Internet connection. If it is fine, "
 						   u"it means our master server is temporarily down.")
-				self._mainmenu.show_error_popup(headline, descr, advice, unicode(err))
+				self._windows.show_error_popup(headline, descr, advice, unicode(err))
 				return False
 
 		if NetworkInterface().is_joined:
@@ -138,12 +138,10 @@ class MultiplayerMenu(Window):
 
 	def _on_error(self, exception, fatal=True):
 		"""Error callback"""
-		if fatal and self._mainmenu.session is not None:
-			self._mainmenu.session.timer.ticks_per_second = 0
 		if not fatal:
-			self._mainmenu.show_popup(_("Error"), unicode(exception))
+			self._windows.show_popup(_("Error"), unicode(exception))
 		else:
-			self._mainmenu.show_popup(_("Fatal Network Error"),
+			self._windows.show_popup(_("Fatal Network Error"),
 		                             _("Something went wrong with the network:") + u'\n' +
 		                             unicode(exception) )
 			self._mainmenu.quit_session(force=True)
@@ -212,7 +210,7 @@ class MultiplayerMenu(Window):
 			return
 
 		if game.version != NetworkInterface().get_clientversion():
-			self._mainmenu.show_popup(_("Wrong version"),
+			self._windows.show_popup(_("Wrong version"),
 			                          #xgettext:python-format
 			                          _("The game's version differs from your version. "
 			                            "Every player in a multiplayer game must use the same version. "
@@ -247,7 +245,7 @@ class MultiplayerMenu(Window):
 		dialog = load_uh_widget('set_password.xml')
 
 		bind = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		retval = self._mainmenu.show_dialog(dialog, bind, modal=True, focus="password")
+		retval = self._windows.show_dialog(dialog, bind, modal=True, focus="password")
 
 		if retval:
 			return dialog.collectData("password")
@@ -255,7 +253,6 @@ class MultiplayerMenu(Window):
 			return None
 
 	def _prepare_game(self, game):
-		self._mainmenu.show_loading_screen()
 		horizons.main.prepare_multiplayer(game)
 
 

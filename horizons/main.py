@@ -297,6 +297,8 @@ def quit():
 
 def start_singleplayer(options):
 	"""Starts a singleplayer game."""
+	_modules.gui.show_loading_screen()
+
 	global preloading
 	preload_game_join(preloading)
 
@@ -304,9 +306,6 @@ def start_singleplayer(options):
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
 	horizons.globals.fife.engine.pump()
 	horizons.globals.fife.set_cursor_image('default')
-
-	# hide whatever is displayed before the game starts
-	_modules.gui.close_all()
 
 	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:
@@ -323,9 +322,11 @@ def start_singleplayer(options):
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
 		_modules.session.load(options)
+		_modules.gui.close_all()
 	except InvalidScenarioFileFormat:
 		raise
 	except Exception:
+		_modules.gui.close_all()
 		# don't catch errors when we should fail fast (used by tests)
 		if os.environ.get('FAIL_FAST', False):
 			raise
@@ -350,17 +351,15 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	"""Starts a multiplayer game server
 	TODO: actual game data parameter passing
 	"""
-	global preloading
+	_modules.gui.show_loading_screen()
 
+	global preloading
 	preload_game_join(preloading)
 
 	# remove cursor while loading
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
 	horizons.globals.fife.engine.pump()
 	horizons.globals.fife.set_cursor_image('default')
-
-	# hide whatever is displayed before the game starts
-	_modules.gui.close_all()
 
 	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:
@@ -382,6 +381,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	_modules.session.load(options)
 
 def start_multiplayer(game):
+	_modules.gui.close_all()
 	_modules.session.start()
 
 
@@ -399,7 +399,6 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
 	if not map_file:
 		return False
 
-	_modules.gui.show_loading_screen()
 	options = StartGameOptions.create_start_singleplayer(map_file, is_scenario,
 		ai_players, trader_enabled, pirate_enabled, force_player_id, is_map)
 	start_singleplayer(options)
@@ -420,7 +419,6 @@ def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	if not map_file:
 		return False
 
-	_modules.gui.show_loading_screen()
 	options = StartGameOptions.create_load_game(map_file, force_player_id)
 	start_singleplayer(options)
 	return True
@@ -474,7 +472,6 @@ def _load_last_quicksave(session=None, force_player_id=None):
 			return False
 
 	save = max(save_files)
-	_modules.gui.show_loading_screen()
 	options = StartGameOptions.create_load_game(save, force_player_id)
 	start_singleplayer(options)
 	return True
