@@ -34,12 +34,11 @@ from horizons.util.savegameupgrader import SavegameUpgrader
 
 class SelectSavegameDialog(Dialog):
 
-	def __init__(self, mode, mainmenu, windows):
+	def __init__(self, mode, windows):
 		super(SelectSavegameDialog, self).__init__(windows)
 
 		assert mode in ('load', 'save', )
 		self._mode = mode
-		self._mainmenu = mainmenu
 
 		self._gui = load_uh_widget('select_savegame.xml')
 

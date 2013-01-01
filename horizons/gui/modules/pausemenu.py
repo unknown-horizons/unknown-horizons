@@ -19,21 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main
 from horizons.command.game import PauseCommand, UnPauseCommand
-from horizons.gui.modules.settings import SettingsDialog
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
+from horizons.gui.modules.settings import SettingsDialog
+from horizons.gui.modules.select_savegame import SelectSavegameDialog
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.util.startgameoptions import StartGameOptions
 
 
 class PauseMenu(Window):
 
-	def __init__(self, session, mainmenu, ingame_gui, windows, in_editor_mode=False):
+	def __init__(self, session, ingame_gui, windows, in_editor_mode=False):
 		super(PauseMenu, self).__init__(windows)
 
 		self._session = session
-		self._mainmenu = mainmenu
 		self._ingame_gui = ingame_gui
+		self._in_editor_mode = in_editor_mode
 
 		self.settings_dialog = SettingsDialog(self._windows)
 
@@ -42,8 +45,8 @@ class PauseMenu(Window):
 		self._gui.position_technique = 'center:center'
 
 		events = {
-			'load' : self._show_editor_start_menu if in_editor_mode else mainmenu.load_game,
-			'save' : ingame_gui.show_save_map_dialog if in_editor_mode else mainmenu.save_game,
+			'load' : self._load_game,
+			'save' : self._save_game,
 			'sett' : lambda: self._windows.show(self.settings_dialog),
 			'help' : ingame_gui.toggle_help,
 			'start': self._windows.close,
@@ -80,6 +83,25 @@ class PauseMenu(Window):
 		if self._windows.show_popup(_("Quit Session"), message, show_cancel_button=True):
 			self._session.quit()
 
-	def _show_editor_start_menu(self):
-		editor_start_menu = EditorStartMenu(self._mainmenu, self._windows)
-		self._windows.show(editor_start_menu)
+	def _save_game(self):
+		if self._in_editor_mode:
+			self._ingame_gui.show_save_map_dialog()
+		else:
+			success = self._session.save()
+			if not success:
+				# There was a problem during the 'save game' procedure.
+				self._windows.show_popup(_('Error'), _('Failed to save.'))
+
+	def _load_game(self):
+		if self._in_editor_mode:
+			editor_start_menu = EditorStartMenu(self._windows)
+			self._windows.show(editor_start_menu)
+		else:
+			window = SelectSavegameDialog('load', self._windows)
+			saved_game = self._windows.show(window)
+			if saved_game is None:
+				return
+
+			options = StartGameOptions(saved_game)
+			horizons.main.start_singleplayer(options)
+			return True

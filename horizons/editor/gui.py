@@ -85,7 +85,7 @@ class IngameGui(LivingObject):
 
 		self.windows = WindowManager()
 		self.save_map_dialog = SaveMapDialog(self.session, self.windows)
-		self.pausemenu = PauseMenu(self.session, self.main_gui, self, self.windows, in_editor_mode=True)
+		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=True)
 		self.help_dialog = HelpDialog(self.windows, session=self.session)
 
 	def end(self):

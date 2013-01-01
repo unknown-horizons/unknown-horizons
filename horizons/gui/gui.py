@@ -123,7 +123,7 @@ class Gui(object):
 		self.windows.show(self.mainmenu)
 
 	def show_select_savegame(self, mode):
-		window = SelectSavegameDialog(mode, self, self.windows)
+		window = SelectSavegameDialog(mode, self.windows)
 		return self.windows.show(window)
 
 	def load_game(self):
@@ -134,14 +134,6 @@ class Gui(object):
 		options = StartGameOptions(saved_game)
 		horizons.main.start_singleplayer(options)
 		return True
-
-	def save_game(self):
-		"""Wrapper for saving for separating gui messages from save logic
-		"""
-		success = self.session.save()
-		if not success:
-			# There was a problem during the 'save game' procedure.
-			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def on_help(self):
 		self.windows.toggle(self.help_dialog)

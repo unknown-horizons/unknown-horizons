@@ -85,7 +85,7 @@ class IngameGui(LivingObject):
 
 		self.chat_dialog = ChatDialog(self.windows, self.session)
 		self.change_name_dialog = ChangeNameDialog(self.windows, self.session)
-		self.pausemenu = PauseMenu(self.session, self.main_gui, self, self.windows, in_editor_mode=False)
+		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=False)
 		self.help_dialog = HelpDialog(self.windows, session=self.session)
 
 		# Icon manager
