@@ -86,16 +86,13 @@ class Gui(object):
 
 	def __init__(self):
 		self.mainlistener = MainListener(self)
-		self.current = None # currently active window
 		self.session = None
 
-		self.windows = WindowManager(self)
+		self.windows = WindowManager()
 		# temporary aliases for compatibility with rest of the code
 		self.show_dialog = self.windows.show_dialog
 		self.show_popup = self.windows.show_popup
 		self.show_error_popup = self.windows.show_error_popup
-
-		self.__pause_displayed = False
 
 		self._background = pychan.Icon(image=self._get_random_background(),
 		                               position_technique='center:center')
@@ -118,7 +115,6 @@ class Gui(object):
 	def unsubscribe(self):
 		GuiAction.unsubscribe(self._on_gui_action)
 
-# basic menu widgets
 	def show_main(self):
 		"""Shows the main menu """
 		if not self._background.isVisible():
@@ -140,8 +136,6 @@ class Gui(object):
 		horizons.main.start_singleplayer(options)
 		return True
 
-# what happens on button clicks
-
 	def save_game(self):
 		"""Wrapper for saving for separating gui messages from save logic
 		"""
@@ -159,10 +153,6 @@ class Gui(object):
 		message = _("Are you sure you want to abort the running session?")
 
 		if force or self.show_popup(_("Quit Session"), message, show_cancel_button=True):
-			if self.current is not None:
-				# this can be None if not called from gui (e.g. scenario finished)
-				self.hide()
-				self.current = None
 			if self.session is not None:
 				self.session.end()
 				self.session = None
@@ -177,29 +167,16 @@ class Gui(object):
 		window = CreditsPickbeltWidget(self.windows)
 		self.windows.show(window)
 
-# display
-
 	def on_escape(self):
-		pass
+		self.windows.on_escape()
 
-	def show(self):
-		self.log.debug("Gui: showing current: %s", self.current)
-		if self.current is not None:
-			self.current.show()
-
-	def hide(self):
-		self.log.debug("Gui: hiding current: %s", self.current)
-		if self.current is not None:
-			self.current.hide()
-
-	def hide_all(self):
-		self.hide()
+	def close_all(self):
+		self.windows.close_all()
 		self._background.hide()
 
-	def is_visible(self):
-		return self.current is not None and self.current.isVisible()
-
 	def show_loading_screen(self):
+		if not self._background.isVisible():
+			self._background.show()
 		self.windows.show(self.loadingscreen)
 
 	def randomize_background(self):

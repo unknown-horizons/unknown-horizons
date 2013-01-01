@@ -306,7 +306,7 @@ def start_singleplayer(options):
 	horizons.globals.fife.set_cursor_image('default')
 
 	# hide whatever is displayed before the game starts
-	_modules.gui.hide_all()
+	_modules.gui.close_all()
 
 	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:
@@ -361,7 +361,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	horizons.globals.fife.set_cursor_image('default')
 
 	# hide whatever is displayed before the game starts
-	_modules.gui.hide_all()
+	_modules.gui.close_all()
 
 	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:

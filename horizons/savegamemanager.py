@@ -244,12 +244,12 @@ class SavegameManager(object):
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		height = horizons.globals.fife.engine_settings.getScreenHeight()
 
-
 		# hide whatever dialog we have
 		dialog_hidden = False
-		if horizons.main._modules.gui.is_visible():
+		windows = horizons.main._modules.gui.session.ingame_gui.windows
+		if windows.visible:
 			dialog_hidden = True
-			horizons.main._modules.gui.hide()
+			windows.hide_all()
 			# pump twice to make it work on some machines
 			horizons.globals.fife.engine.pump()
 			horizons.globals.fife.engine.pump()
@@ -262,7 +262,7 @@ class SavegameManager(object):
 		backend.captureScreen(screenshot_filename, new_width, new_height)
 
 		if dialog_hidden:
-			horizons.main._modules.gui.show()
+			windows.show_all()
 			horizons.globals.fife.engine.pump()
 
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()

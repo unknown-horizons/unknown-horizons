@@ -82,7 +82,7 @@ class IngameGui(LivingObject):
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
 			self.mainhud.findChild(name=widget).hide()
 
-		self.windows = WindowManager(Dummy)
+		self.windows = WindowManager()
 		self.save_map_dialog = SaveMapDialog(self.session, self.windows)
 		self.pausemenu = PauseMenu(self.session, self.main_gui, self, self.windows, in_editor_mode=True)
 		self.help_dialog = HelpDialog(self.windows, session=self.session)

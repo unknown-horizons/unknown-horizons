@@ -212,8 +212,7 @@ class Dialog(Window):
 
 class WindowManager(object):
 
-	def __init__(self, mainmenu):
-		self._mainmenu = mainmenu
+	def __init__(self):
 		self._windows = []
 
 	def show(self, window, **kwargs):
@@ -223,11 +222,6 @@ class WindowManager(object):
 		Keyword arguments will be passed through to the window's `show` method.
 		"""
 		self.hide()
-
-		# TODO temporary, try to stay compatible with rest of the code
-		self._mainmenu.current = window
-		if hasattr(window, 'on_escape'):
-			self._mainmenu.on_escape = window.on_escape
 
 		self._windows.append(window)
 		return window.show(**kwargs)
@@ -240,12 +234,6 @@ class WindowManager(object):
 		window = self._windows.pop()
 		window.close()
 		if self._windows:
-			# TODO temporary, try to stay compatible with rest of the code
-			top = self._windows[-1]
-			self._mainmenu.current = top
-			if hasattr(top, 'on_escape'):
-				self._mainmenu.on_escape = top.on_escape
-
 			self._windows[-1].show()
 
 	def hide(self):
@@ -277,6 +265,32 @@ class WindowManager(object):
 	def visible(self):
 		"""Whether any windows are visible right now."""
 		return bool(self._windows)
+
+	def close_all(self):
+		while self._windows:
+			w = self._windows.pop()
+			w.close()
+
+	def hide_all(self):
+		"""Hide all windows.
+
+		Use `show_all` to restore the old state.
+		"""
+		if not self._windows:
+			return
+
+		# because we only show one window at a time, it is enough to hide the
+		# top-most window
+		self._windows[-1].hide()
+
+	def show_all(self):
+		"""Undo what `hide_all` did."""
+		if not self._windows:
+			return
+
+		# because we only show one window at a time, it is enough to show the
+		# most recently added window
+		self._windows[-1].show()
 
 	def show_dialog(self, dlg, bind, event_map=None, modal=False, focus=None):
 		"""Shows any pychan dialog.

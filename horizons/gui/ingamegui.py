@@ -26,7 +26,6 @@ from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseC
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
-from horizons.ext.dummy import Dummy
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog
@@ -74,7 +73,7 @@ class IngameGui(LivingObject):
 		self.cityinfo = CityInfo(self)
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
-		self.windows = WindowManager(Dummy)
+		self.windows = WindowManager()
 		self.logbook = LogBook(self.session)
 		self.message_widget = MessageWidget(self.session)
 		self.players_overview = PlayersOverview(self.session)
