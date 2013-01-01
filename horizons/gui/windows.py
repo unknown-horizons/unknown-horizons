@@ -251,6 +251,8 @@ class WindowManager(object):
 		if self._windows and self._windows[-1] == window:
 			self.close()
 		else:
+			if window in self._windows:
+				self._windows.remove(window)
 			self.show(window, **kwargs)
 
 	def on_escape(self):
