@@ -73,12 +73,16 @@ class IngameGui(LivingObject):
 		self.cityinfo = CityInfo(self)
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
-		self.windows = WindowManager()
-		self.logbook = LogBook(self.session)
 		self.message_widget = MessageWidget(self.session)
+
+		# Windows
+		self.windows = WindowManager()
+
+		self.logbook = LogBook(self.session, self.windows)
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
+
 		self.chat_dialog = ChatDialog(self.windows, self.session)
 		self.change_name_dialog = ChangeNameDialog(self.windows, self.session)
 		self.pausemenu = PauseMenu(self.session, self.main_gui, self, self.windows, in_editor_mode=False)
@@ -123,7 +127,7 @@ class IngameGui(LivingObject):
 			'build' : self.show_build_menu,
 			'diplomacyButton' : self.show_diplomacy_menu,
 			'gameMenuButton' : self.toggle_pause,
-			'logbook' : self.logbook.toggle_visibility
+			'logbook' : lambda: self.windows.toggle(self.logbook)
 		})
 		self.mainhud.show()
 
@@ -397,7 +401,7 @@ class IngameGui(LivingObject):
 		elif action == _Actions.SHIPS_OVERVIEW:
 			self.logbook.toggle_stats_visibility(widget='ships')
 		elif action == _Actions.LOGBOOK:
-			self.logbook.toggle_visibility()
+			self.windows.toggle(self.logbook)
 		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
 			import pdb; pdb.set_trace()
 		elif action == _Actions.BUILD_TOOL:
