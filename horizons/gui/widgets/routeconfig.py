@@ -30,6 +30,7 @@ from horizons.util.shapes import Point
 from fife.extensions.pychan import widgets
 from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.windows import Window
 from horizons.command.uioptions import RouteConfigCommand
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -38,7 +39,7 @@ from horizons.gui.widgets.imagebutton import OkButton
 
 import horizons.globals
 
-class RouteConfig(object):
+class RouteConfig(Window):
 	"""
 	Widget that allows configurating a ship's trading route
 	"""
@@ -48,7 +49,9 @@ class RouteConfig(object):
 	hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	MAX_ENTRIES = 7
 	MIN_ENTRIES = 2
-	def __init__(self, instance):
+	def __init__(self, windows, instance):
+		super(RouteConfig, self).__init__(windows)
+
 		self.instance = instance
 
 		if not hasattr(instance, 'route'):
@@ -81,7 +84,7 @@ class RouteConfig(object):
 			self.session.ingame_gui.message_widget.add(point=None, string_id="ROUTE_DISABLED")
 
 	def on_instance_removed(self):
-		self.hide()
+		self._windows.close()
 		self.instance = None
 
 	def on_route_change(self):
@@ -114,15 +117,6 @@ class RouteConfig(object):
 			self.start_route()
 		else:
 			self.stop_route()
-
-	def is_visible(self):
-		return self._gui.isVisible()
-
-	def toggle_visibility(self):
-		if self.is_visible():
-			self.hide()
-		else:
-			self.show()
 
 	def remove_entry(self, entry):
 		if self.resource_menu_shown:
@@ -448,7 +442,7 @@ class RouteConfig(object):
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
-		  OkButton.DEFAULT_NAME : self.hide,
+		  OkButton.DEFAULT_NAME : self._windows.close,
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 
