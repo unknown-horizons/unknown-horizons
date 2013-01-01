@@ -26,6 +26,7 @@ from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseC
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
+from horizons.ext.dummy import Dummy
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog
@@ -40,6 +41,7 @@ from horizons.gui.widgets.playersoverview import PlayersOverview
 from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
+from horizons.gui.windows import WindowManager
 from horizons.messaging import SettlerUpdate, TabWidgetChanged, SpeedChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
@@ -61,7 +63,6 @@ class IngameGui(LivingObject):
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
 		self.main_gui = gui
-		self.main_widget = None
 		self.settlement = None
 		self._old_menu = None
 
@@ -73,15 +74,16 @@ class IngameGui(LivingObject):
 		self.cityinfo = CityInfo(self)
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
+		self.windows = WindowManager(Dummy)
 		self.logbook = LogBook(self.session)
 		self.message_widget = MessageWidget(self.session)
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
-		self.chat_dialog = ChatDialog(self.main_gui, self, self.session)
-		self.change_name_dialog = ChangeNameDialog(self.main_gui, self, self.session)
-		self.pausemenu = PauseMenu(self.session, self.main_gui, self, in_editor_mode=False)
-		self.help_dialog = HelpDialog(self.main_gui)
+		self.chat_dialog = ChatDialog(self.windows, self.session)
+		self.change_name_dialog = ChangeNameDialog(self.windows, self.session)
+		self.pausemenu = PauseMenu(self.session, self.main_gui, self, self.windows, in_editor_mode=False)
+		self.help_dialog = HelpDialog(self.windows, session=self.session)
 
 		# Icon manager
 		self.status_icon_manager = StatusIconManager(
@@ -176,10 +178,10 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).end()
 
 	def toggle_pause(self):
-		self.pausemenu.toggle()
+		self.windows.toggle(self.pausemenu)
 
 	def toggle_help(self):
-		self.help_dialog.toggle()
+		self.windows.toggle(self.help_dialog)
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""
@@ -305,22 +307,17 @@ class IngameGui(LivingObject):
 
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""
-		self.change_name_dialog.show(instance)
+		self.windows.show(self.change_name_dialog, instance=instance)
 
 	def on_escape(self):
-		if self.main_widget:
-			self.main_widget.hide()
+		if self.windows.visible:
+			self.windows.on_escape()
+		elif not isinstance(self.cursor, mousetools.SelectionTool):
+			self.cursor.on_escape()
 		else:
-			return False
-		return True
+			self.toggle_pause()
 
-	def on_switch_main_widget(self, widget):
-		"""The main widget has been switched to the given one (possibly None)."""
-		if self.main_widget and self.main_widget != widget: # close the old one if it exists
-			old_main_widget = self.main_widget
-			self.main_widget = None
-			old_main_widget.hide()
-		self.main_widget = widget
+		return True
 
 	def _on_settler_level_change(self, message):
 		"""Gets called when the player changes"""
@@ -420,7 +417,7 @@ class IngameGui(LivingObject):
 				self.session.view.rotate_left()
 				self.minimap.rotate_left()
 		elif action == _Actions.CHAT:
-			self.chat_dialog.show()
+			self.windows.show(self.chat_dialog)
 		elif action == _Actions.TRANSLUCENCY:
 			self.session.world.toggle_translucency()
 		elif action == _Actions.TILE_OWNER_HIGHLIGHT:

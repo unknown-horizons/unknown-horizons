@@ -27,16 +27,20 @@ from horizons.gui.windows import Window
 from horizons.messaging import LanguageChanged
 
 
-class HelpDialog(object):
+class HelpDialog(Window):
 
-	def __init__(self, mainmenu):
-		self.mainmenu = mainmenu
+	def __init__(self, windows, session=None):
+		super(HelpDialog, self).__init__(windows)
+
+		self._session = session
 		self.widget = load_uh_widget('help.xml')
 
 		self.keyconf = KeyConfig() # before _build_strings
 		self.HELPSTRING_LAYOUT = None
 		self._build_strings()
 		self._is_displayed = False
+
+		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 
 		LanguageChanged.subscribe(lambda msg: self._build_strings())
 
@@ -65,40 +69,12 @@ class HelpDialog(object):
 			lbl.explanation = _(lbl.text)
 			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=keyname)
 
-	def toggle(self):
-		"""Called on help action.
-		Toggles help screen via static variable *help_is_displayed*.
-		Can be called both from main menu and in-game interface.
-		"""
-		if not self._is_displayed:
-			self._is_displayed = True
-			# make game pause if there is a game and we're not in the main menu
-			if self.mainmenu.session is not None and not self.mainmenu._Gui__pause_displayed:
-				PauseCommand().execute(self.mainmenu.session)
-			if self.mainmenu.session is not None:
-				self.mainmenu.session.ingame_gui.on_escape() # close dialogs that might be open
-			self.mainmenu.show_dialog(self.widget, {OkButton.DEFAULT_NAME : True})
-			self.toggle() # toggle state
-		else:
-			self._is_displayed = False
-			if self.mainmenu.session is not None and not self.mainmenu._Gui__pause_displayed:
-				UnPauseCommand().execute(self.mainmenu.session)
-			self.widget.hide()
-
-
-class MainMenuHelpDialog(HelpDialog, Window):
-	# Modified HelpDialog to work as a window
-	# TODO once windows ingame are using the WindowManager both HelpDialog
-	# classes can be merged
-
-	def __init__(self, windows):
-		HelpDialog.__init__(self, None)
-		Window.__init__(self, windows)
-
-		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
-
 	def show(self):
 		self.widget.show()
+		if self._session:
+			PauseCommand().execute(self._session)
 
 	def hide(self):
+		if self._session:
+			UnPauseCommand().execute(self._session)
 		self.widget.hide()

@@ -19,29 +19,34 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
 from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.gui.modules.settings import SettingsDialog
+from horizons.gui.modules.editorstartmenu import EditorStartMenu
 from horizons.gui.util import load_uh_widget
+from horizons.gui.windows import Window
 
 
-class PauseMenu(object):
+class PauseMenu(Window):
 
-	def __init__(self, session, mainmenu, ingame_gui, in_editor_mode=False):
+	def __init__(self, session, mainmenu, ingame_gui, windows, in_editor_mode=False):
+		super(PauseMenu, self).__init__(windows)
+
 		self._session = session
 		self._mainmenu = mainmenu
 		self._ingame_gui = ingame_gui
+
+		self.settings_dialog = SettingsDialog(self._windows)
 
 		name = 'editor_pause_menu.xml' if in_editor_mode else 'ingamemenu.xml'
 		self._gui = load_uh_widget(name)
 		self._gui.position_technique = 'center:center'
 
 		events = {
-			# FIXME reenable editor start menu once we're using the window manager ingame
-			'load' : lambda: 0 if in_editor_mode else mainmenu.load_game,
+			'load' : self._show_editor_start_menu if in_editor_mode else mainmenu.load_game,
 			'save' : ingame_gui.show_save_map_dialog if in_editor_mode else mainmenu.save_game,
-			'sett' : horizons.globals.fife.show_settings,
+			'sett' : lambda: self._windows.show(self.settings_dialog),
 			'help' : ingame_gui.toggle_help,
-			'start': self.hide,
+			'start': self._windows.close,
 			'quit' : self._do_quit,
 		}
 
@@ -64,27 +69,17 @@ class PauseMenu(object):
 
 	def show(self):
 		PauseCommand(suggestion=True).execute(self._session)
-		self._mainmenu.current = self
-		self._mainmenu.on_escape = self.hide
 		self._gui.show()
 
 	def hide(self):
 		self._gui.hide()
-		self._mainmenu.current = None
-		self._mainmenu.on_escape = self.show
 		UnPauseCommand(suggestion=True).execute(self._session)
-
-	def toggle(self):
-		if self._gui.isVisible():
-			self.hide()
-		else:
-			self.show()
 
 	def _do_quit(self):
 		message = _("Are you sure you want to abort the running session?")
-		if self._mainmenu.show_popup(_("Quit Session"), message, show_cancel_button=True):
+		if self._windows.show_popup(_("Quit Session"), message, show_cancel_button=True):
 			self._mainmenu.quit_session(force=True)
 
-	def isVisible(self):
-		# TODO remove me once window manager works
-		return self._gui.isVisible()
+	def _show_editor_start_menu(self):
+		editor_start_menu = EditorStartMenu(self._mainmenu, self._windows)
+		self._windows.show(editor_start_menu)

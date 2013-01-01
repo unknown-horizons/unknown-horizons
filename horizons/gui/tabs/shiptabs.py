@@ -39,9 +39,12 @@ class ShipOverviewTab(OverviewTab):
 		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 		self.helptext = _("Ship overview")
 
+		# FIXME having to access the WindowManager this way is pretty ugly
+		self._windows = self.instance.session.ingame_gui.windows
+		self.route_menu = RouteConfig(self._windows, self.instance)
+
 	def _configure_route(self):
-		self.route_menu = RouteConfig(self.instance)
-		self.route_menu.toggle_visibility()
+		self._windows.toggle(self.route_menu)
 
 	def _refresh_found_settlement_button(self, events):
 		island_without_player_settlement_found = False

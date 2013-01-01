@@ -66,9 +66,12 @@ class AccountTab(MainSquareTab):
 		  'show_production_overview/mouseClicked' : self.show_production_overview
 		  })
 
+		# FIXME having to access the WindowManager this way is pretty ugly
+		self._windows = self.instance.session.ingame_gui.windows
+		self.prod_overview = ProductionOverview(self._windows, self.settlement)
+
 	def show_production_overview(self):
-		self.prod_overview = ProductionOverview(self.settlement)
-		self.prod_overview.toggle_visibility()
+		self._windows.toggle(self.prod_overview)
 
 	def refresh(self):
 		super(AccountTab, self).refresh()

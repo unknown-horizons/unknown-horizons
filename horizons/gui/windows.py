@@ -266,6 +266,18 @@ class WindowManager(object):
 		else:
 			self.show(window, **kwargs)
 
+	def on_escape(self):
+		"""Let the topmost window handle an escape key event."""
+		if not self._windows:
+			return
+
+		self._windows[-1].on_escape()
+
+	@property
+	def visible(self):
+		"""Whether any windows are visible right now."""
+		return bool(self._windows)
+
 	def show_dialog(self, dlg, bind, event_map=None, modal=False, focus=None):
 		"""Shows any pychan dialog.
 

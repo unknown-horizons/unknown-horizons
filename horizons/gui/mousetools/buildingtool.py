@@ -126,8 +126,6 @@ class BuildingTool(NavigationTool):
 		self.__class__.gui.show()
 		self.session.ingame_gui.minimap_to_front()
 
-		self.session.gui.on_escape = self.on_escape
-
 		self.highlight_buildable()
 		WorldObjectDeleted.subscribe(self._on_worldobject_deleted)
 

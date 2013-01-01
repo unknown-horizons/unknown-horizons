@@ -34,8 +34,7 @@ from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
-
-from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, MainMenuHelpDialog,
+from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
                                   SelectSavegameDialog, LoadingScreen, SettingsDialog)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager, Window
@@ -106,7 +105,7 @@ class Gui(object):
 
 		self.singleplayermenu = SingleplayerMenu(self, self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
-		self.help_dialog = MainMenuHelpDialog(self.windows)
+		self.help_dialog = HelpDialog(self.windows)
 		self.loadingscreen = LoadingScreen()
 		self.settings_dialog = SettingsDialog(self.windows)
 		self.mainmenu = MainMenu(self, self.windows)
