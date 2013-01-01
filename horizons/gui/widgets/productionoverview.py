@@ -28,11 +28,12 @@ from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.gui.util import create_resource_icon
+from horizons.gui.windows import Window
 from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets.imagebutton import OkButton
 
-class ProductionOverview(StatsWidget):
+class ProductionOverview(StatsWidget, Window):
 	"""
 	Widget that shows every produced resource in this game.
 
@@ -41,20 +42,17 @@ class ProductionOverview(StatsWidget):
 
 	widget_file_name = 'island_production.xml'
 
-	def __init__(self, settlement):
-		super(ProductionOverview, self).__init__(settlement.session, center_widget=True)
+	def __init__(self, windows, settlement):
+		StatsWidget.__init__(self, settlement.session, center_widget=True)
+		Window.__init__(self, windows)
+
 		self.settlement = settlement
 		self.db = self.settlement.session.db
 		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
-		self.session.gui.on_escape = self.hide
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self.hide)
-
-	def hide(self):
-		super(ProductionOverview, self).hide()
-		self.session.gui.on_escape = self.session.ingame_gui.toggle_pause
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
