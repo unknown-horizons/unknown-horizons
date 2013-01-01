@@ -459,10 +459,10 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	@param session: value of session
 	@return: bool, whether loading succeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
-	if session is not None:
+	if _modules.session is not None:
 		if not save_files:
-			session.gui.show_popup(_("No quicksaves found"),
-			                       _("You need to quicksave before you can quickload."))
+			_modules.session.gui.show_popup(_("No quicksaves found"),
+			                                _("You need to quicksave before you can quickload."))
 			return False
 	else:
 		if not save_files:

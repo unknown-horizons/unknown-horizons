@@ -246,7 +246,7 @@ class SavegameManager(object):
 
 		# hide whatever dialog we have
 		dialog_hidden = False
-		windows = horizons.main._modules.gui.session.ingame_gui.windows
+		windows = horizons.main._modules.session.ingame_gui.windows
 		if windows.visible:
 			dialog_hidden = True
 			windows.hide_all()

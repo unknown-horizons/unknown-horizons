@@ -86,7 +86,6 @@ class Gui(object):
 
 	def __init__(self):
 		self.mainlistener = MainListener(self)
-		self.session = None
 
 		self.windows = WindowManager()
 		# temporary aliases for compatibility with rest of the code

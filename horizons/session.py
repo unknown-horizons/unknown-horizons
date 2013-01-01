@@ -111,7 +111,6 @@ class Session(LivingObject):
 		self.scenario_eventhandler = ScenarioEventHandler(self) # dummy handler with no events
 
 		#GUI
-		self.gui.session = self
 		self._ingame_gui_class = ingame_gui_class
 
 		self.selected_instances = set()
@@ -163,8 +162,6 @@ class Session(LivingObject):
 	def end(self):
 		self.log.debug("Ending session")
 		self.is_alive = False
-
-		self.gui.session = None
 
 		# Has to be done here, cause the manager uses Scheduler!
 		Scheduler().rem_all_classinst_calls(self)
