@@ -250,20 +250,6 @@ class World(BuildingOwner, WorldObject):
 		if self.session.is_game_loaded():
 			self.diplomacy.load(self, savegame_db)
 
-		# add diplomacy notification listeners
-		def notify_change(caller, old_state, new_state, a, b):
-			player1 = u"%s" % a.name
-			player2 = u"%s" % b.name
-
-			data = {'player1' : player1, 'player2' : player2}
-
-			string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
-			                                                  new=new_state.upper())
-			self.session.ingame_gui.message_widget.add(point=None, string_id=string_id,
-			                                           message_dict=data)
-
-		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
-
 	def _load_disasters(self, savegame_db):
 		# disasters are only enabled if they are explicitly set to be enabled
 		disasters_disabled = not self.properties.get('disasters_enabled')

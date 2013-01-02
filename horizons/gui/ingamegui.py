@@ -309,6 +309,19 @@ class IngameGui(LivingObject):
 			# Fire a message for new world creation
 			self.session.ingame_gui.message_widget.add(point=None, string_id='NEW_WORLD')
 
+		# Show message when the relationship between players changed
+		def notify_change(caller, old_state, new_state, a, b):
+			player1 = u"%s" % a.name
+			player2 = u"%s" % b.name
+
+			data = {'player1' : player1, 'player2' : player2}
+
+			string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
+			                                                  new=new_state.upper())
+			self.message_widget.add(string_id=string_id, message_dict=data)
+
+		self.session.world.diplomacy.add_diplomacy_status_changed_listener(notify_change)
+
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""
 		self.windows.show(self.change_name_dialog, instance=instance)
