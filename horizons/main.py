@@ -299,7 +299,7 @@ def start_singleplayer(options):
 	"""Starts a singleplayer game."""
 	_modules.gui.show_loading_screen()
 
-	LoadingProgress.broadcast(None, 'loading objects')
+	LoadingProgress.broadcast(None, 'load_objects')
 	global preloading
 	preload_game_join(preloading)
 

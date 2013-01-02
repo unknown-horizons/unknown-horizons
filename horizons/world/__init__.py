@@ -154,17 +154,17 @@ class World(BuildingOwner, WorldObject):
 		self._load_players(savegame_db, force_player_id)
 
 		# all static data
-		LoadingProgress.broadcast(self, 'loading map')
+		LoadingProgress.broadcast(self, 'world_load_map')
 		self.load_raw_map(savegame_db)
 
 		# load world buildings (e.g. fish)
-		LoadingProgress.broadcast(self, 'loading buildings')
+		LoadingProgress.broadcast(self, 'world_load_buildings')
 		for (building_worldid, building_typeid) in \
 		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
 		# use a dict because it's directly supported by the pathfinding algo
-		LoadingProgress.broadcast(self, 'looking for water')
+		LoadingProgress.broadcast(self, 'world_init_water')
 		self.water = dict((tile, 1.0) for tile in self.ground_map)
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
@@ -206,7 +206,7 @@ class World(BuildingOwner, WorldObject):
 				self.pirate = Pirate.load(self.session, savegame_db, pirate_data[0][0])
 
 		# load all units (we do it here cause all buildings are loaded by now)
-		LoadingProgress.broadcast(self, 'loading units')
+		LoadingProgress.broadcast(self, 'world_load_units')
 		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
 			Entities.units[typeid].load(self.session, savegame_db, worldid)
 
@@ -220,7 +220,7 @@ class World(BuildingOwner, WorldObject):
 				self.pirate.finish_loading(savegame_db)
 
 			# load the AI stuff only when we have AI players
-			LoadingProgress.broadcast(self, 'initiate skynet')
+			LoadingProgress.broadcast(self, 'world_setup_ai')
 			if any(isinstance(player, AIPlayer) for player in self.players):
 				AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 
@@ -230,7 +230,7 @@ class World(BuildingOwner, WorldObject):
 				if not isinstance(player, HumanPlayer):
 					player.finish_loading(savegame_db)
 
-		LoadingProgress.broadcast(self, 'load stuff')
+		LoadingProgress.broadcast(self, 'world_load_stuff')
 		self._load_combat(savegame_db)
 		self._load_diplomacy(savegame_db)
 		self._load_disasters(savegame_db)

@@ -19,7 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pprint
 import random
+import time
 
 import horizons.globals
 from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
@@ -28,12 +30,31 @@ from horizons.gui.windows import Window
 from horizons.messaging import LoadingProgress
 
 
+# run game with LoadingScreen.profile True to get these values
+LOAD_PROGRESS = {
+	'finish': 100,
+	'load_objects': 0,
+	'session_create_world': 4,
+	'session_index_fish': 64,
+	'session_load_gui': 90,
+	'start': 0,
+	'world_init_water': 22,
+	'world_load_buildings': 17,
+	'world_load_map': 4,
+	'world_load_stuff': 24,
+	'world_load_units': 24
+}
+
+
 class LoadingScreen(Window):
 	"""Show quotes/gameplay tips while loading the game"""
+	profile = False
 
 	def __init__(self):
 		self._widget = load_uh_widget('loadingscreen.xml')
 		self._widget.position_technique = "center:center"
+
+		self._times = []
 
 	def show(self):
 		qotl_type_label = self._widget.findChild(name='qotl_type_label')
@@ -55,12 +76,27 @@ class LoadingScreen(Window):
 		self._widget.show()
 		LoadingProgress.subscribe(self._update)
 
+		if self.profile:
+			self._times.append(('start', time.time()))
+
 	def hide(self):
 		LoadingProgress.unsubscribe(self._update)
 		self._widget.hide()
 
+		if self.profile:
+			start = self._times[0][1]
+			total = self._times[-1][1] - start
+			pprint.pprint(dict([(stage, int(100 * (t - start) / total)) for (stage, t) in self._times]))
+
 	def _update(self, message):
+		if self.profile:
+			self._times.append((message.stage, time.time()))
+
 		label = self._widget.findChild(name='loading_label')
-		label.text = unicode(message.text)
+		label.text = unicode(message.stage)
 		label.adaptLayout()
+
+		if not self.profile:
+			self._widget.findChild(name='progress').progress = LOAD_PROGRESS[message.stage]
+
 		horizons.globals.fife.engine.pump()

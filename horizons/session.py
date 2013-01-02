@@ -244,7 +244,7 @@ class Session(LivingObject):
 			# changing the rng is safe for mp, as all players have to have the same map
 			self.random.setstate(rng_state_tuple)
 
-		LoadingProgress.broadcast(self, 'creating world')
+		LoadingProgress.broadcast(self, 'session_create_world')
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(savegame_db, options.force_player_id, disasters_enabled=options.disasters_enabled)
 		self.view.load(savegame_db, self.world) # load view
@@ -254,11 +254,12 @@ class Session(LivingObject):
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
-		LoadingProgress.broadcast(self, "count fish")
+		LoadingProgress.broadcast(self, "session_index_fish")
 		self.world.init_fish_indexer() # now the fish should exist
 
 		# load the old gui positions and stuff
 		# Do this before loading selections, they need the minimap setup
+		LoadingProgress.broadcast(self, "session_load_gui")
 		self.ingame_gui = self._ingame_gui_class(self, self.gui)
 		self.ingame_gui.load(savegame_db)
 
@@ -274,7 +275,7 @@ class Session(LivingObject):
 		savegame_db.close()
 
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
-		LoadingProgress.broadcast(self, "we're done here")
+		LoadingProgress.broadcast(self, "finish")
 		"""
 		TUTORIAL:
 		That's it. After that, we call start() to activate the timer, and we're live.

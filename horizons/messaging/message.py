@@ -223,4 +223,4 @@ class MineEmpty(Message):
 	arguments = ('mine', )
 
 class LoadingProgress(Message):
-	arguments = ('text', )
+	arguments = ('stage', )
