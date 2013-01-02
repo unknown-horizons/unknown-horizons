@@ -51,7 +51,6 @@ class MultiplayerMenu(Window):
 
 	def show(self):
 		if not self._check_connection():
-			self._windows.close()
 			return
 
 		self._gui = load_uh_widget('multiplayermenu.xml')
@@ -101,9 +100,14 @@ class MultiplayerMenu(Window):
 	def _check_connection(self):
 		"""
 		Check if all dependencies for multiplayer games are met and we can connect to
-		the master server.
+		the master server. If any dependency is not met, the window is closed.
 		"""
+		# It is important to close this window before showing the error popup.
+		# Otherwise closing the popup will trigger `show` again, a new attempt
+		# to connect is made, which ends up in an endless loop.
+
 		if enet is None:
+			self._windows.close()
 			headline = _(u"Unable to find pyenet")
 			descr = _(u'The multiplayer feature requires the library "pyenet", '
 			          u"which could not be found on your system.")
@@ -115,6 +119,7 @@ class MultiplayerMenu(Window):
 			try:
 				NetworkInterface.create_instance()
 			except RuntimeError as e:
+				self._windows.close()
 				headline = _(u"Failed to initialize networking.")
 				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _("Check the settings you specified in the network section.")
@@ -125,6 +130,7 @@ class MultiplayerMenu(Window):
 			try:
 				NetworkInterface().connect()
 			except Exception as err:
+				self._windows.close()
 				headline = _(u"Fatal Network Error")
 				descr = _(u"Could not connect to master server.")
 				advice = _(u"Please check your Internet connection. If it is fine, "
@@ -134,6 +140,7 @@ class MultiplayerMenu(Window):
 
 		if NetworkInterface().is_joined:
 			if not NetworkInterface().leavegame():
+				self._windows.close()
 				return False
 
 		return True
