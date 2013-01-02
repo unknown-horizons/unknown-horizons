@@ -50,6 +50,7 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
+from horizons.util.savegameaccessor import SavegameAccessor
 
 class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -738,6 +739,14 @@ class World(BuildingOwner, WorldObject):
 def load_building(session, db, typeid, worldid):
 	"""Loads a saved building. Don't load buildings yourself in the game code."""
 	return Entities.buildings[typeid].load(session, db, worldid)
+
+
+def load_raw_world(map_file):
+	WorldObject.reset()
+	world = World(session=None)
+	world.inited = True
+	world.load_raw_map(SavegameAccessor(map_file, True), preview=True)
+	return world
 
 
 decorators.bind_all(World)

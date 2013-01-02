@@ -29,7 +29,7 @@ import tempfile
 import horizons.globals
 import horizons.main
 
-from horizons.world import World  # FIXME placing this import at the end results in a cycle
+from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import find_available_languages
@@ -41,10 +41,8 @@ from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
-from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.shapes import Rect
 from horizons.util.startgameoptions import StartGameOptions
-from horizons.util.worldobject import WorldObject
 from horizons.util.yamlcache import YamlCache
 
 
@@ -583,14 +581,6 @@ class ScenarioMapWidget(object):
 		assert selection_index != -1
 
 		return self._files[self._gui.collectData('maplist')]
-
-
-def load_raw_world(map_file):
-	WorldObject.reset()
-	world = World(session=None)
-	world.inited = True
-	world.load_raw_map(SavegameAccessor(map_file, True), preview=True)
-	return world
 
 
 def generate_random_minimap(size, parameters):
