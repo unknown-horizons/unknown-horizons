@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import sys
-import math
 
 usage = "<filename> [lower_bound] [upper_bound]"
 usage = "<filename>"
