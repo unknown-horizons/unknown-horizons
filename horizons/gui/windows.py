@@ -199,7 +199,7 @@ class Dialog(Window):
 		"""
 		for name, retval in self.return_events.items():
 			cb = Callback(self._abort, retval)
-			self._gui.findChild(name=name).capture(cb, group_name="__execute__")
+			self._gui.findChild(name=name).capture(cb)
 
 		self._gui.show()
 

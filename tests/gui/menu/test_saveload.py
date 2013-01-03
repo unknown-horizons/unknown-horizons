@@ -45,7 +45,7 @@ def test_load_game(gui):
 		gui.find('savegamelist').select(u'boatbuilder')
 
 		with mock.patch('horizons.main.start_singleplayer') as start_mock:
-			gui.trigger('load_game_window', 'okButton/action/__execute__')
+			gui.trigger('load_game_window', 'okButton')
 
 			# we need to run the game for a bit, because start_singleplayer isn't
 			# called right away, probably because load/save is a dialog
@@ -62,7 +62,7 @@ def test_load_game(gui):
 def test_load_game_no_savegames(gui):
 	"""Trying to load a game with no save games available will show a popup."""
 	def func1():
-		gui.trigger('popup_window', 'okButton/action/__execute__')
+		gui.trigger('popup_window', 'okButton')
 
 	with gui.handler(func1):
 		gui.trigger('menu', 'load_button')
@@ -78,7 +78,7 @@ def test_save_game_new_file(gui):
 
 	def func1():
 		gui.find('savegamefile').write('testsave')
-		gui.trigger('load_game_window', 'okButton/action/__execute__')
+		gui.trigger('load_game_window', 'okButton')
 
 	with gui.handler(func1):
 		gui.trigger('menu', 'savegameButton')
@@ -102,10 +102,10 @@ def test_save_game_override(gui):
 
 		# handle "do you want to override file" popup
 		def func2():
-			gui.trigger('popup_window', 'okButton/action/__execute__')
+			gui.trigger('popup_window', 'okButton')
 
 		with gui.handler(func2):
-			gui.trigger('load_game_window', 'okButton/action/__execute__')
+			gui.trigger('load_game_window', 'okButton')
 
 	with gui.handler(func1):
 		gui.trigger('menu', 'savegameButton')
@@ -126,16 +126,16 @@ def test_delete_game(gui):
 
 	def confirm_deletion():
 		def close_dialog():
-			gui.trigger('load_game_window', 'cancelButton/action/__execute__')
+			gui.trigger('load_game_window', 'cancelButton')
 
 		with gui.handler(close_dialog):
-			gui.trigger('popup_window', 'okButton/action/__execute__')
+			gui.trigger('popup_window', 'okButton')
 
 	def func1():
 		gui.find('savegamelist').select(u'boatbuilder')
 
 		with gui.handler(confirm_deletion):
-			gui.trigger('load_game_window', 'deleteButton/action/__execute__')
+			gui.trigger('load_game_window', 'deleteButton')
 
 	with gui.handler(func1):
 		gui.trigger('menu', 'load_button')
@@ -153,16 +153,16 @@ def test_delete_game_abort(gui):
 
 	def confirm_deletion():
 		def close_dialog():
-			gui.trigger('load_game_window', 'cancelButton/action/__execute__')
+			gui.trigger('load_game_window', 'cancelButton')
 
 		with gui.handler(close_dialog):
-			gui.trigger('popup_window', 'cancelButton/action/__execute__')
+			gui.trigger('popup_window', 'cancelButton')
 
 	def func1():
 		gui.find('savegamelist').select(u'boatbuilder')
 
 		with gui.handler(confirm_deletion):
-			gui.trigger('load_game_window', 'deleteButton/action/__execute__')
+			gui.trigger('load_game_window', 'deleteButton')
 
 	with gui.handler(func1):
 		gui.trigger('menu', 'load_button')

@@ -77,7 +77,7 @@ def test_example(gui):
 
 	# Cancel current game
 	def dialog():
-		gui.trigger('popup_window', 'okButton/action/__execute__')
+		gui.trigger('popup_window', 'okButton')
 
 	# Dialog handling has to be done by a separate generator.
 	with gui.handler(dialog):

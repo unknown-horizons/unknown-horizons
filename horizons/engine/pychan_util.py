@@ -202,20 +202,3 @@ def setup_trigger_signals_on_action():
 		cls.__init__ = add_action_triggers_a_signal( cls.__init__ )
 
 	make_action_trigger_a_signal(pychan.widgets.Widget)
-
-
-def get_button_event(button):
-	"""Returns the callback that is triggered when the button is clicked on.
-	If this should run in combination with --gui-log, call the returned event callback with parameters like this:
-		pychan.tools.applyOnlySuitable(callback, event=event, widget=widget)
-
-	@param button: pychan Button"""
-	try:
-		# try dialog action
-		return button.event_mapper.callbacks['__execute__']['action']
-	except KeyError:
-		try:
-			# try mapped event
-			return button.event_mapper.callbacks['default']['action']
-		except KeyError:
-			return None

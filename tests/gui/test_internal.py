@@ -116,7 +116,7 @@ def test_dialog(gui):
 
 	def func():
 		assert gui.find('popup_window')
-		gui.trigger('popup_window', 'okButton/action/__execute__')
+		gui.trigger('popup_window', 'okButton')
 
 	with gui.handler(func):
 		gui.trigger('menu', 'quit_button')
