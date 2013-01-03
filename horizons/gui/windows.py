@@ -27,6 +27,7 @@ from fife.extensions import pychan
 import horizons.globals
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.util.python.callback import Callback
 
 
 class Window(object):
@@ -92,6 +93,12 @@ class Window(object):
 
 
 class Dialog(Window):
+	"""
+	A dialog is very similar to a window, the major difference between the two
+	is that when showing a `Window`, control flow will continue immediately.
+	However the call to show a `Dialog` will only return when the dialog is
+	closed.
+	"""
 	# Whether to block user interaction while displaying the dialog
 	modal = False
 
@@ -142,7 +149,7 @@ class Dialog(Window):
 		if self.modal:
 			self._show_modal_background()
 
-		retval = Dialog.execute(self._gui, self.return_events, self.focus)
+		retval = self._execute()
 
 		self._windows.close()
 		return self.act(retval)
@@ -170,46 +177,39 @@ class Dialog(Window):
 		if event.getKey().getValue() == fife.Key.ESCAPE:
 			retval = self.return_events.get(CancelButton.DEFAULT_NAME)
 			if retval is not None:
-				self.abort(retval)
+				self._abort(retval)
 		# Convention says use ok action
 		elif event.getKey().getValue() == fife.Key.ENTER:
 			retval = self.return_events.get(OkButton.DEFAULT_NAME)
 			if retval is not None:
-				self.abort(retval)
+				self._abort(retval)
 
-	def abort(self, retval=False):
+	def _abort(self, retval=False):
 		"""Break out of mainloop.
 
-		Program flow continues after the `self._gui.execute` call in `show`.
+		Program flow continues after the `self._execute` call in `show`.
 		"""
-		horizons.globals.fife.pychanmanager.breakFromMainLoop(retval)
+		horizons.globals.fife.breakLoop(retval)
 
-	@staticmethod
-	def execute(widget, bind, focus=None):
+	def _execute(self):
 		"""Execute the dialog synchronously.
 		
-		Note: We implement this again as we want to retain focus for child widget sometimes.
-
-		@param widget: widget to execute
-		@param bind: Dictionary with buttons and return values
+		This is done by entering a new mainloop in the engine until the dialog
+		is closed (see `abort`).
 		"""
-		# FIXME This is a workaround for lack of native implementation of focus handling within execute() in FIFE. 
-		#       Ref. FIFE ticket #750.
+		for name, retval in self.return_events.items():
+			cb = Callback(self._abort, retval)
+			self._gui.findChild(name=name).capture(cb, group_name="__execute__")
 
-		for name, retval in bind.items():
-			def _quitThisDialog(retval=retval):
-				horizons.globals.fife.pychanmanager.breakFromMainLoop(retval)
-			widget.findChild(name=name).capture(_quitThisDialog, group_name="__execute__")
+		self._gui.show()
 
-		widget.show()
-
-		if focus and widget.findChild(name=focus):
-			widget.findChild(name=focus).requestFocus() # child widget takes focus
+		if self.focus:
+			self._gui.findChild(name=self.focus).requestFocus()
 		else:
-			widget.is_focusable = True
-			widget.requestFocus()
+			self._gui.is_focusable = True
+			self._gui.requestFocus()
 
-		return horizons.globals.fife.pychanmanager.mainLoop()
+		return horizons.globals.fife.loop()
 
 
 class WindowManager(object):
