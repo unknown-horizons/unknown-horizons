@@ -128,6 +128,10 @@ class SettlerUpdate(Message):
 	"""
 	arguments = ('level', 'change', )
 
+class PlayerLevelUpgrade(Message):
+	"""Sent when the settler level of a player increases."""
+	arguments = ('level', 'building', )
+
 class SettlerInhabitantsChanged(Message):
 	"""Class to signal that the number of inhabitants in a settler building
 	have changed."""

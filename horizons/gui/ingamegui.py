@@ -41,8 +41,8 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
-from horizons.messaging import (SettlerUpdate, TabWidgetChanged, SpeedChanged, NewDisaster,
-                                NewSettlement)
+from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster,
+                                NewSettlement, PlayerLevelUpgrade)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
@@ -135,10 +135,10 @@ class IngameGui(LivingObject):
 		self.resource_overview = ResourceOverviewBar(self.session)
 
 		# Register for messages
-		SettlerUpdate.subscribe(self._on_settler_level_change)
 		SpeedChanged.subscribe(self._on_speed_changed)
 		NewDisaster.subscribe(self._on_new_disaster)
 		NewSettlement.subscribe(self._on_new_settlement)
+		PlayerLevelUpgrade.subscribe(self._on_player_level_upgrade)
 		self.session.view.add_change_listener(self._update_zoom)
 
 		self._display_speed(self.session.timer.ticks_per_second)
@@ -165,10 +165,10 @@ class IngameGui(LivingObject):
 		self.cityinfo.end()
 		self.cityinfo = None
 		self.hide_menu()
-		SettlerUpdate.unsubscribe(self._on_settler_level_change)
 		SpeedChanged.unsubscribe(self._on_speed_changed)
 		NewDisaster.unsubscribe(self._on_new_disaster)
 		NewSettlement.unsubscribe(self._on_new_settlement)
+		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
 		self.session.view.remove_change_listener(self._update_zoom)
 
 		if self.cursor:
@@ -340,20 +340,6 @@ class IngameGui(LivingObject):
 			self.toggle_pause()
 
 		return True
-
-	def _on_settler_level_change(self, message):
-		"""Gets called when the player changes"""
-		if message.sender.owner.is_local_player:
-			menu = self.get_cur_menu()
-			if hasattr(menu, "name") and menu.name == "build_menu_tab_widget":
-				# player changed and build menu is currently displayed
-				self.show_build_menu(update=True)
-
-			# TODO: Use a better measure then first tab
-			# Quite fragile, makes sure the tablist in the mainsquare menu is updated
-			if hasattr(menu, '_tabs') and isinstance(menu._tabs[0], MainSquareOverviewTab):
-				instance = list(self.session.selected_instances)[0]
-				instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
 
 	def _on_speed_changed(self, message):
 		self._display_speed(message.new)
@@ -552,3 +538,26 @@ class IngameGui(LivingObject):
 			message_dict={'player': player.name},
 			play_sound=player.is_local_player
 		)
+
+	def _on_player_level_upgrade(self, message):
+		"""Called when a player's population reaches a new level."""
+		if not message.sender.is_local_player:
+			return
+
+		# show notification
+		self.message_widget.add(
+			point=message.building.position.center,
+			string_id='SETTLER_LEVEL_UP',
+			message_dict={'level': message.level + 1}
+		)
+
+		# update build menu to show new buildings
+		menu = self.get_cur_menu()
+		if hasattr(menu, "name") and menu.name == "build_menu_tab_widget":
+			self.show_build_menu(update=True)
+
+		# TODO: Use a better measure then first tab
+		# Quite fragile, makes sure the tablist in the mainsquare menu is updated
+		if hasattr(menu, '_tabs') and isinstance(menu._tabs[0], MainSquareOverviewTab):
+			instance = list(self.session.selected_instances)[0]
+			instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
