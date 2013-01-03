@@ -41,7 +41,7 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
-from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster,
+from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
                                 NewSettlement, PlayerLevelUpgrade)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
@@ -139,6 +139,7 @@ class IngameGui(LivingObject):
 		NewDisaster.subscribe(self._on_new_disaster)
 		NewSettlement.subscribe(self._on_new_settlement)
 		PlayerLevelUpgrade.subscribe(self._on_player_level_upgrade)
+		MineEmpty.subscribe(self._on_mine_empty)
 		self.session.view.add_change_listener(self._update_zoom)
 
 		self._display_speed(self.session.timer.ticks_per_second)
@@ -169,6 +170,7 @@ class IngameGui(LivingObject):
 		NewDisaster.unsubscribe(self._on_new_disaster)
 		NewSettlement.unsubscribe(self._on_new_settlement)
 		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
+		MineEmpty.unsubscribe(self._on_mine_empty)
 		self.session.view.remove_change_listener(self._update_zoom)
 
 		if self.cursor:
@@ -561,3 +563,6 @@ class IngameGui(LivingObject):
 		if hasattr(menu, '_tabs') and isinstance(menu._tabs[0], MainSquareOverviewTab):
 			instance = list(self.session.selected_instances)[0]
 			instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
+
+	def _on_mine_empty(self, message):
+		self.message_widget.add(point=message.mine.position.center, string_id='MINE_EMPTY')

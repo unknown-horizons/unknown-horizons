@@ -38,6 +38,7 @@ from horizons.messaging import AddStatusIcon, RemoveStatusIcon
 from horizons.world.production.utilization import Utilization, FullUtilization, FieldUtilization
 from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
+from horizons.messaging import MineEmpty
 
 @metaChangeListenerDecorator("production_finished")
 @metaChangeListenerDecorator("activity_changed")
@@ -449,7 +450,7 @@ class MineProducer(Producer):
 			# this is never going to change, the building is useless now.
 			if self.is_active():
 				self.set_active(active=False)
-			self.instance.owner.notify_mine_empty(self.instance)
+			MineEmpty.broadcast(self, self.instance)
 
 
 class QueueProducer(Producer):

@@ -76,7 +76,7 @@ from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
-from horizons.messaging import SettlementRangeChanged, NewDisaster
+from horizons.messaging import SettlementRangeChanged, NewDisaster, MineEmpty
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
@@ -155,6 +155,7 @@ class AIPlayer(GenericAI):
 		self.international_trade_manager = InternationalTradeManager(self)
 		SettlementRangeChanged.subscribe(self._on_settlement_range_changed)
 		NewDisaster.subscribe(self.notify_new_disaster)
+		MineEmpty.subscribe(self.notify_mine_empty)
 
 	def get_random_profile(self, token):
 		return BehaviorProfileManager.get_random_player_profile(self, token)
@@ -395,9 +396,9 @@ class AIPlayer(GenericAI):
 	def count_buildings(self, building_id):
 		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
 
-	def notify_mine_empty(self, mine):
+	def notify_mine_empty(self, message):
 		"""The Mine calls this function to let the player know that the mine is empty."""
-		self._settlement_manager_by_settlement_id[mine.settlement.worldid].production_builder.handle_mine_empty(mine)
+		self._settlement_manager_by_settlement_id[message.mine.settlement.worldid].production_builder.handle_mine_empty(message.mine)
 
 	def notify_new_disaster(self, message):
 		Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[message.building.settlement.worldid].handle_disaster, message), self, run_in=0)
@@ -481,6 +482,7 @@ class AIPlayer(GenericAI):
 		self._enabled = False
 		SettlementRangeChanged.unsubscribe(self._on_settlement_range_changed)
 		NewDisaster.unsubscribe(self.notify_new_disaster)
+		MineEmpty.unsubscribe(self.notify_mine_empty)
 
 	def end(self):
 		assert not self._enabled

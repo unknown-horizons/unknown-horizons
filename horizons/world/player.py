@@ -139,10 +139,6 @@ class Player(ComponentHolder, WorldObject):
 			self._changed()
 			PlayerLevelUpgrade.broadcast(self, self.settler_level, message.sender)
 
-	def notify_mine_empty(self, mine):
-		"""The Mine calls this function to let the player know that the mine is empty."""
-		pass
-
 	def end(self):
 		self._stats = None
 		self.session = None
@@ -180,9 +176,6 @@ class HumanPlayer(Player):
 	def __init(self, *args, **kwargs):
 		super(HumanPlayer, self).__init(*args, **kwargs)
 		self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated, self.get_component(StorageComponent), 4)
-
-	def notify_mine_empty(self, mine):
-		self.session.ingame_gui.message_widget.add(point=mine.position.center, string_id='MINE_EMPTY')
 
 	def end(self):
 		if hasattr(self, '__inventory_checker'):
