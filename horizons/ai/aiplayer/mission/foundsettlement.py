@@ -109,7 +109,6 @@ class FoundSettlement(ShipMission):
 
 		island = land_manager.island
 		personality = land_manager.owner.personality_manager.get('FoundSettlement')
-		too_close_penalty_threshold_sq = personality.too_close_penalty_threshold * personality.too_close_penalty_threshold
 
 		available_spots_list = list(sorted(island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size].intersection(island.available_land_cache.cache[warehouse_class.size])))
 		if not available_spots_list:
