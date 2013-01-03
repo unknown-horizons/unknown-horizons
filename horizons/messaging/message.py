@@ -169,7 +169,7 @@ class HoverSettlementChanged(Message):
 
 class NewSettlement(Message):
 	"""Sent when a new settlement is created"""
-	arguments = ('settlement', )
+	arguments = ('settlement', 'warehouse_position', )
 
 class HoverInstancesChanged(Message):
 	"""Sent when hovering over a different set of instances.

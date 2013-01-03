@@ -76,7 +76,7 @@ from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
-from horizons.messaging import SettlementRangeChanged
+from horizons.messaging import SettlementRangeChanged, NewDisaster
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
@@ -154,6 +154,7 @@ class AIPlayer(GenericAI):
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
 		self.international_trade_manager = InternationalTradeManager(self)
 		SettlementRangeChanged.subscribe(self._on_settlement_range_changed)
+		NewDisaster.subscribe(self.notify_new_disaster)
 
 	def get_random_profile(self, token):
 		return BehaviorProfileManager.get_random_player_profile(self, token)
@@ -399,7 +400,6 @@ class AIPlayer(GenericAI):
 		self._settlement_manager_by_settlement_id[mine.settlement.worldid].production_builder.handle_mine_empty(mine)
 
 	def notify_new_disaster(self, message):
-		super(AIPlayer, self).notify_new_disaster(message)
 		Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[message.building.settlement.worldid].handle_disaster, message), self, run_in=0)
 
 	def _on_settlement_range_changed(self, message):
@@ -480,6 +480,7 @@ class AIPlayer(GenericAI):
 		assert self._enabled
 		self._enabled = False
 		SettlementRangeChanged.unsubscribe(self._on_settlement_range_changed)
+		NewDisaster.unsubscribe(self.notify_new_disaster)
 
 	def end(self):
 		assert not self._enabled

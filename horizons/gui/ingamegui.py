@@ -41,7 +41,8 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
-from horizons.messaging import SettlerUpdate, TabWidgetChanged, SpeedChanged
+from horizons.messaging import (SettlerUpdate, TabWidgetChanged, SpeedChanged, NewDisaster,
+                                NewSettlement)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
@@ -136,6 +137,8 @@ class IngameGui(LivingObject):
 		# Register for messages
 		SettlerUpdate.subscribe(self._on_settler_level_change)
 		SpeedChanged.subscribe(self._on_speed_changed)
+		NewDisaster.subscribe(self._on_new_disaster)
+		NewSettlement.subscribe(self._on_new_settlement)
 		self.session.view.add_change_listener(self._update_zoom)
 
 		self._display_speed(self.session.timer.ticks_per_second)
@@ -164,6 +167,8 @@ class IngameGui(LivingObject):
 		self.hide_menu()
 		SettlerUpdate.unsubscribe(self._on_settler_level_change)
 		SpeedChanged.unsubscribe(self._on_speed_changed)
+		NewDisaster.unsubscribe(self._on_new_disaster)
+		NewSettlement.unsubscribe(self._on_new_settlement)
 		self.session.view.remove_change_listener(self._update_zoom)
 
 		if self.cursor:
@@ -532,3 +537,18 @@ class IngameGui(LivingObject):
 			in_icon.set_inactive()
 		else:
 			in_icon.set_active()
+
+	def _on_new_disaster(self, message):
+		"""Called when a building is 'infected' with a disaster."""
+		if message.building.owner.is_local_player:
+			pos = message.building.position.center
+			self.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
+
+	def _on_new_settlement(self, message):
+		player = message.settlement.owner
+		self.message_widget.add(
+			string_id='NEW_SETTLEMENT',
+			point=message.warehouse_position,
+			message_dict={'player': player.name},
+			play_sound=player.is_local_player
+		)

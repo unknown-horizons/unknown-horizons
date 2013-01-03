@@ -34,7 +34,7 @@ from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
-from horizons.messaging import SettlerUpdate, NewDisaster, PlayerInventoryUpdated
+from horizons.messaging import SettlerUpdate, PlayerInventoryUpdated
 from horizons.component.tradepostcomponent import TradePostComponent
 
 class Player(ComponentHolder, WorldObject):
@@ -86,7 +86,6 @@ class Player(ComponentHolder, WorldObject):
 
 		if self.regular_player:
 			SettlerUpdate.subscribe(self.notify_settler_reached_level)
-			NewDisaster.subscribe(self.notify_new_disaster, sender=self)
 
 	@property
 	def is_local_player(self):
@@ -149,19 +148,12 @@ class Player(ComponentHolder, WorldObject):
 		"""The Mine calls this function to let the player know that the mine is empty."""
 		pass
 
-	def notify_new_disaster(self, message):
-		"""The message bus calls this when a building is 'infected' with a disaster."""
-		if self.is_local_player:
-			pos = message.building.position.center
-			self.session.ingame_gui.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
-
 	def end(self):
 		self._stats = None
 		self.session = None
 
 		if self.regular_player:
 			SettlerUpdate.unsubscribe(self.notify_settler_reached_level)
-			NewDisaster.unsubscribe(self.notify_new_disaster, sender=self)
 
 	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
 	def get_balance_estimation(self):
@@ -210,4 +202,3 @@ class HumanPlayer(Player):
 		if hasattr(self, '__inventory_checker'):
 			self.__inventory_checker.remove()
 		super(HumanPlayer, self).end()
-		
