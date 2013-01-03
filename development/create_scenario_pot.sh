@@ -22,7 +22,7 @@
 # call this script directly thus, unless you want to translate more scenarios.
 
 # ###################################################
-# Copyright (C) 2012 The Unknown Horizons Team
+# Copyright (C) 2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
