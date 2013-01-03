@@ -94,8 +94,6 @@ def init_pychan():
 		pychan.widgets.registerWidget(widget)
 
 	# add uh styles
-	# NOTE: do this before adding tooltip feature, because pychan has a design issue
-	# where it sometimes uses the class hierarchy and sometimes treats each class differently.
 	for name, stylepart in STYLES.iteritems():
 		pychan.manager.addStyle(name, stylepart)
 
