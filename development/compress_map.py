@@ -22,27 +22,26 @@
 
 import bz2
 import sys
-import os
 
 args = sys.argv[1:]
 
 if not args:
-	print "USAGE: "+sys.argv[0]+" map1.sqlite map2.sqlite ... mapx.sqlite"
+	print 'USAGE: ' + sys.argv[0] + ' map1.sqlite map2.sqlite ... mapx.sqlite'
 	print
-	print "maps will be saved as \"mapx.map\""
-	print "to convert all maps, use \""+sys.argv[0]+" content/maps/*sqlite\""
+	print 'maps will be saved as "mapx.map"'
+	print 'to convert all maps, use "' + sys.argv[0] + ' content/maps/*sqlite"'
 	sys.exit()
 
 for filename in args:
 	if not filename.endswith(".sqlite"):
-		print "Invalid filename:",filename
+		print "Invalid filename:", filename
 		continue
 	infile = None
 	try:
 		infile = open(filename, "r")
 	except IOError as e:
-		print "Error:",e.message
+		print "Error:", e.message
 		continue
 
-	outfile = open(filename.replace('.sqlite','.map'),'w')
+	outfile = open(filename.replace('.sqlite','.map'), 'w')
 	outfile.write( bz2.compress( infile.read() ) )
