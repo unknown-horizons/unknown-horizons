@@ -52,7 +52,7 @@ class ProductionOverview(StatsWidget, Window):
 
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
-		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self.hide)
+		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
