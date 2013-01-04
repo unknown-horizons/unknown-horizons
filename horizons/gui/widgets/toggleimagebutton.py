@@ -108,4 +108,3 @@ class ToggleImageButton(ImageButton):
 		self.__inactiveimage = inactive_image
 
 	inactive_image = property(_get_inactive_image, _set_inactive_image)
-
