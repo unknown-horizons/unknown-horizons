@@ -125,9 +125,6 @@ class Minimap(object):
 
 		self.minimap_image = _MinimapImage(self, targetrenderer)
 
-		#import random
-		#ExtScheduler().add_new_object(lambda : self.highlight( (50+random.randint(-50,50), random.randint(-50,50) + 50 )), self, 2, loops=-1)
-
 		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
 		if self.use_rotation:
 			SettingChanged.subscribe(self._on_setting_changed)
