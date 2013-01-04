@@ -81,7 +81,10 @@ class SavegameAccessor(DbReader):
 			with open('content/map-template.sql') as map_template:
 				random_map_db.execute_script(map_template.read())
 			for island_id, island_string in enumerate(random_island_sequence):
-				create_random_island(random_map_db, island_id, island_string)
+				random_map_db("BEGIN TRANSACTION")
+				for (x, y, tile) in create_random_island(island_string):
+					random_map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, x, y, *tile)
+				random_map_db("COMMIT")
 			random_map_db.close()
 			self._map_path = self._temp_path2
 

@@ -49,7 +49,10 @@ def run():
 		db.execute_script(template.read())
 
 	for index, island_string in enumerate(islands):
-		random_map.create_random_island(db, index, island_string)
+		db("BEGIN TRANSACTION")
+		for (x, y, tile) in random_map.create_random_island(island_string):
+			db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", index, x, y, *tile)
+		db("COMMIT")
 
 
 t = timeit.Timer('run()', setup='from __main__ import run')

@@ -35,7 +35,7 @@ _random_island_id_template = "random:${creation_method}:${width}:${height}:${see
 _random_island_id_regexp = r"^random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+):([\-]?[0-9]+):([\-]?[0-9]+)$"
 
 
-def create_random_island(map_db, island_id, id_string):
+def create_random_island(id_string):
 	"""Creates a random island as sqlite db.
 	It is rather primitive; it places shapes on the dict.
 	The coordinates of tiles will be 0 <= x < width and 0 <= y < height
@@ -88,12 +88,9 @@ def create_random_island(map_db, island_id, id_string):
 				elif shape_coord in map_set:
 					map_set.discard(shape_coord)
 
-	# write values to db
-	map_db("BEGIN TRANSACTION")
-
 	# add grass tiles
 	for x, y in map_set:
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *GROUND.DEFAULT_LAND)
+		yield island_x + x, island_y + y, GROUND.DEFAULT_LAND
 
 	def fill_tiny_spaces(tile):
 		"""Fills 1 tile gulfs and straits with the specified tile
@@ -181,7 +178,7 @@ def create_random_island(map_db, island_id, id_string):
 			if to_fill:
 				for x, y in to_fill:
 					map_set.add((x, y))
-					map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
+					yield island_x + x, island_y + y, tile
 
 				old_size = len(edge_set)
 				edge_set = edge_set.difference(to_ignore).union(to_fill)
@@ -214,7 +211,8 @@ def create_random_island(map_db, island_id, id_string):
 		return result
 
 	# add grass to sand tiles
-	fill_tiny_spaces(GROUND.DEFAULT_LAND)
+	for ground in fill_tiny_spaces(GROUND.DEFAULT_LAND):
+		yield ground
 	outline = get_island_outline()
 	for x, y in outline:
 		filled = []
@@ -264,11 +262,13 @@ def create_random_island(map_db, island_id, id_string):
 				tile = GROUND.SAND_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
+		yield island_x + x, island_y + y, tile
+
 	map_set = map_set.union(outline)
 
 	# add sand to shallow water tiles
-	fill_tiny_spaces(GROUND.SAND)
+	for ground in fill_tiny_spaces(GROUND.SAND):
+		yield ground
 	outline = get_island_outline()
 	for x, y in outline:
 		filled = []
@@ -318,11 +318,13 @@ def create_random_island(map_db, island_id, id_string):
 				tile = GROUND.COAST_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
+		yield island_x + x, island_y + y, tile
+
 	map_set = map_set.union(outline)
 
 	# add shallow water to deep water tiles
-	fill_tiny_spaces(GROUND.SHALLOW_WATER)
+	for ground in fill_tiny_spaces(GROUND.SHALLOW_WATER):
+		yield ground
 	outline = get_island_outline()
 	for x, y in outline:
 		filled = []
@@ -372,9 +374,8 @@ def create_random_island(map_db, island_id, id_string):
 				tile = GROUND.DEEP_WATER_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
+		yield island_x + x, island_y + y, tile
 
-	map_db("COMMIT")
 
 def _simplify_seed(seed):
 	"""
