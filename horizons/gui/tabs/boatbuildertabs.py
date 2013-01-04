@@ -194,9 +194,9 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
 		widget.addChild(bg_icon)
 
-		icon_path = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
+		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
 		helptext = self.instance.session.db.get_ship_tooltip(ship)
-		unit_icon = Icon(image=icon_path, name='icon_%s'%index, position=(2, 2),
+		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
