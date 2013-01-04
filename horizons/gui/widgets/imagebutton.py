@@ -53,12 +53,16 @@ class ImageButton(FifeImageButton):
 	def _set_path(self, path):
 		self.__path = path
 		image_path = self.IMAGE.format(path=path)
-		self.up_image = image_path.format(mode='')
 		try:
-			self.hover_image = image_path.format(mode='_h')
+			self.up_image = image_path.format(mode='')
 		except RuntimeError:
 			# RuntimeError: _[NotFound]_ , Something was searched, but not found
 			# by default, pychan will set hover_image to be the same as up_image
+			#TODO Temporarily try to find _u for the tabwidget
+			self.up_image = image_path.format(mode='_u')
+		try:
+			self.hover_image = image_path.format(mode='_h')
+		except RuntimeError:
 			pass
 		try:
 			self.down_image = image_path.format(mode='_d')
