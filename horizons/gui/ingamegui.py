@@ -145,6 +145,14 @@ class IngameGui(LivingObject):
 		self._display_speed(self.session.timer.ticks_per_second)
 
 	def end(self):
+		# unsubscribe early, to avoid messages coming in while we're shutting down
+		SpeedChanged.unsubscribe(self._on_speed_changed)
+		NewDisaster.unsubscribe(self._on_new_disaster)
+		NewSettlement.unsubscribe(self._on_new_settlement)
+		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
+		MineEmpty.unsubscribe(self._on_mine_empty)
+		self.session.view.remove_change_listener(self._update_zoom)
+
 		self.mainhud.mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
@@ -156,6 +164,8 @@ class IngameGui(LivingObject):
 			'diplomacyButton' : None,
 			'gameMenuButton' : None
 		})
+		self.mainhud.hide()
+		self.mainhud = None
 
 		self.windows.close_all()
 		self.message_widget = None
@@ -166,12 +176,6 @@ class IngameGui(LivingObject):
 		self.cityinfo.end()
 		self.cityinfo = None
 		self.hide_menu()
-		SpeedChanged.unsubscribe(self._on_speed_changed)
-		NewDisaster.unsubscribe(self._on_new_disaster)
-		NewSettlement.unsubscribe(self._on_new_settlement)
-		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
-		MineEmpty.unsubscribe(self._on_mine_empty)
-		self.session.view.remove_change_listener(self._update_zoom)
 
 		if self.cursor:
 			self.cursor.remove()
