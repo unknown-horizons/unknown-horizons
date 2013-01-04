@@ -141,7 +141,8 @@ class SettingsHandler(object):
 		if backend == 'SDL':
 			headline = _("Warning")
 			#i18n Warning popup shown in settings when SDL is selected as renderer.
-			message = _("The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n\nUse at own risk!")
+			message = _("The SDL renderer is meant as a fallback solution only "
+			            "and has serious graphical glitches. \n\nUse at own risk!")
 			horizons.main._modules.gui.show_popup(headline, message)
 
 	def update_slider_values(self, slider, factor=1, unit=''):
