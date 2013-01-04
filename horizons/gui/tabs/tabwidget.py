@@ -24,7 +24,6 @@ import weakref
 
 from fife.extensions.pychan.widgets import Container, Icon, ImageButton
 
-import horizons.globals
 from horizons.gui.util import load_uh_widget
 from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
@@ -36,11 +35,10 @@ class TabWidget(object):
 	"""
 	log = logging.getLogger("gui.tabs.tabwidget")
 
-	def __init__(self, ingame_gui, tabs=None, position=None, name=None, active_tab=None):
+	def __init__(self, ingame_gui, tabs=None, name=None, active_tab=None):
 		"""
 		@param ingame_gui: IngameGui instance
 		@param tabs: tab instances to show
-		@param position: position as tuple (x, y)
 		@param name: optional name for the tabwidget
 		@param active_tab: int id of tab, 0 <= active_tab < len(tabs)
 		"""
@@ -50,14 +48,7 @@ class TabWidget(object):
 		self._tabs = [] if not tabs else tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
 		self.widget = load_uh_widget("tab_base.xml")
-		if position is None:
-			# add positioning here
-			self.widget.position = (
-				horizons.globals.fife.engine_settings.getScreenWidth() - 290,
-				209
-			)
-		else:
-			self.widget.position = position
+		self.widget.position_technique = 'right-239:top+207'
 		self.content = self.widget.findChild(name='content')
 		self._init_tabs()
 		# select a tab to show (first one is default)
@@ -151,9 +142,11 @@ class TabWidget(object):
 	def show(self):
 		"""Show the current widget"""
 		self.current_tab.ensure_loaded()
+		# show before drawing so that position_technique properly sets
+		# button positions (which we want to draw our tabs relative to)
+		self.widget.show()
 		self._draw_widget()
 		self.current_tab.show()
-		self.widget.show()
 		self.ingame_gui.minimap_to_front()
 
 	def hide(self, caller=None):
