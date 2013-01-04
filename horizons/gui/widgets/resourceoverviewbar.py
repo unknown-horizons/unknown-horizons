@@ -590,7 +590,7 @@ class ResourceOverviewBar(object):
 			for num, image in enumerate(images):
 				# keep in sync with comment there until we can use that data:
 				# ./content/gui/xml/ingame/hud/resource_overview_bar_stats.xml
-				box = HBox(padding=0, min_size=(70,0), name="resbar_stats_line_%s"%num)
+				box = HBox(padding=0, min_size=(70, 0), name="resbar_stats_line_%s"%num)
 				box.addChild(Icon(image=image))
 				box.addSpacer(Spacer())
 				box.addChild(Label(name="resbar_stats_entry_%s"%num))

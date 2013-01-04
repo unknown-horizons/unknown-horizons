@@ -107,5 +107,5 @@ class ImageFillStatusButton(Container):
 			marker_icon = Icon(image="content/gui/icons/templates/production/marker.png")
 			marker_level = (self.button.height * self.marker) // 100
 			marker_icon.position = (self.button.width - 1, self.button.height - marker_level)
-			marker_icon.max_size = (5,1)
+			marker_icon.max_size = (5, 1)
 			self.addChild(marker_icon)

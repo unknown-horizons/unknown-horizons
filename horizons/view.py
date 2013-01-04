@@ -79,7 +79,7 @@ class View(ChangeListener):
 		          'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
-			self.renderer[r].setEnabled(r in ('InstanceRenderer','GenericRenderer'))
+			self.renderer[r].setEnabled(r in ('InstanceRenderer', 'GenericRenderer'))
 		self.renderer['InstanceRenderer'].activateAllLayers(self.map)
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.GROUND])

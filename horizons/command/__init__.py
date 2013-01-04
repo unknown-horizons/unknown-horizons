@@ -61,7 +61,7 @@ class GenericCommand(Command):
 
 	class MyCommand(GenericCommand):
 	  def __init__(self, obj):
-	    super(MyCommand,self).__init__(obj, "mymethod", 42, 1337)
+	    super(MyCommand, self).__init__(obj, "mymethod", 42, 1337)
 	 """
 	def __init__(self, obj, method, *args, **kwargs):
 		self.obj_id = obj.worldid

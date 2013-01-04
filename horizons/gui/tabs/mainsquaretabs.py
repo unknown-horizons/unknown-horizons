@@ -181,7 +181,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 			if not container.findChild(name="resident_"+str(column)):
 				label = Label(name="resident_"+str(column), position=(position_x, 0), text=unicode(number))
 				container.addChild(label)
-				count_label = Label(name="resident_count_"+str(column), position=(position_x - 1,20), text=unicode(house_count))
+				count_label = Label(name="resident_count_"+str(column), position=(position_x - 1, 20), text=unicode(house_count))
 				container.addChild(count_label)
 			else:
 				container.findChild(name="resident_"+str(column)).text = unicode(number)

@@ -45,7 +45,7 @@ class LogBook(PickBeltWidget, Window):
 	log = logging.getLogger('gui.widgets.logbook')
 
 	widget_xml = 'captains_log.xml'
-	page_pos = (170,38)
+	page_pos = (170, 38)
 	sections = (('logbook', _(u'Logbook')),
 	            ('statistics', _(u'Statistics')),
 	            ('chat_overview', _(u'Chat')))
@@ -136,7 +136,7 @@ class LogBook(PickBeltWidget, Window):
 			self.set_cur_entry(int(value[0][0])) # this also redraws
 
 	def show(self, msg_id=None):
-		if not hasattr(self,'_gui'):
+		if not hasattr(self, '_gui'):
 			self._init_gui()
 		if msg_id:
 			self._cur_entry = self._page_ids[msg_id]

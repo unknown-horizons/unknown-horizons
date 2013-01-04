@@ -31,7 +31,7 @@ from horizons.component.stancecomponent import DEFAULT_STANCES
 class StanceWidget(Container):
 	"""Widget used for setting up the stance for one instance"""
 	def __init__(self, **kwargs):
-		super(StanceWidget, self).__init__(size=(245,50), **kwargs)
+		super(StanceWidget, self).__init__(size=(245, 50), **kwargs)
 		widget = load_uh_widget('stancewidget.xml')
 		self.addChild(widget)
 		ExtScheduler().add_new_object(self.refresh, self, run_in=0.3, loops=-1)
@@ -72,7 +72,7 @@ class StanceWidget(Container):
 class HealthWidget(Container):
 	"""Widget that shows a health bar for an unit"""
 	def __init__(self, **kwargs):
-		super(HealthWidget, self).__init__(size=(50,25), **kwargs)
+		super(HealthWidget, self).__init__(size=(50, 25), **kwargs)
 		widget = load_uh_widget('healthwidget.xml')
 		self.addChild(widget)
 

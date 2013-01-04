@@ -97,7 +97,7 @@ def get_file_path(dir_name, var_id):
 			return infile
 	variation_count = count_variations(dir_name)
 	if variation_count > 0:
-		rand = randrange(0,variation_count)
+		rand = randrange(0, variation_count)
 		filelist = glob.glob( os.path.join(dir_name, '*.*') )
 		return filelist[rand]
 	else:
@@ -107,7 +107,7 @@ def get_dir_path(lang, category_name, spkr_id):
 	return os.path.join(PATHS.VOICE_DIR, lang, str(spkr_id), str(category_name))
 
 def count_variations(dir_name):
-	return len([file for file in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name,file))])
+	return len([file for file in os.listdir(dir_name) if os.path.isfile(os.path.join(dir_name, file))])
 
 def eval_category_name(category):
 	cat_name = None
