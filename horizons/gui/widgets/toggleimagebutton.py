@@ -45,7 +45,9 @@ class ToggleImageButton(ImageButton):
 		self.state = None
 		super(ToggleImageButton, self).__init__(**kwargs)
 		self.state = self.ACTIVE
-		self.inactive_image = inactive_image
+		self.old_images = (None, None, None)
+		if inactive_image:
+			self.inactive_image = inactive_image
 
 	def toggle(self):
 		if self.state == self.ACTIVE:
