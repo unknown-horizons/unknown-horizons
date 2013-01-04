@@ -140,7 +140,7 @@ class Dialog(Window):
 			return
 
 		# if `prepare` returned False, we stop the dialog
-		if self.prepare(**kwargs) == False:
+		if self.prepare(**kwargs) is False:
 			self._windows.close()
 			return
 
