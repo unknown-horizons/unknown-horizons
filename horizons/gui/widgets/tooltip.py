@@ -104,8 +104,8 @@ class _Tooltip(object):
 		translated_tooltip = _(self.helptext)
 		#HACK this looks better than splitting into several lines & joining
 		# them. works because replace_whitespace in fill defaults to True:
-		replaced = translated_tooltip.replace(r'\n', self.CHARS_PER_LINE*' ')
-		replaced = replaced.replace(r'[br]', self.CHARS_PER_LINE*' ')
+		replaced = translated_tooltip.replace(r'\n', self.CHARS_PER_LINE * ' ')
+		replaced = replaced.replace('[br]', self.CHARS_PER_LINE * ' ')
 		tooltip = textwrap.fill(replaced, self.CHARS_PER_LINE)
 
 		line_count = len(tooltip.splitlines()) - 1

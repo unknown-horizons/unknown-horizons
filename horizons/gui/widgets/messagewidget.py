@@ -195,9 +195,9 @@ class MessageWidget(LivingObject):
 		assert isinstance(index, int)
 		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
 		label = self.text_widget.findChild(name='text')
-		text = self.active_messages[self.item+index].message
-		text = text.replace(r'\n', self.CHARS_PER_LINE*' ')
-		text = text.replace(r'[br]', self.CHARS_PER_LINE*' ')
+		text = self.active_messages[self.item + index].message
+		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
+		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
 
 		self.bg_middle = self.text_widget.findChild(name='msg_bg_middle')

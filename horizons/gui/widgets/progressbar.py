@@ -43,7 +43,7 @@ class ProgressBar(Container):
 		self._draw()
 
 	def _draw(self):
-		self.icon.size = (int(self.progress/100.0*self.size[0]), self.size[1])
+		self.icon.size = (int(self.progress / 100.0 * self.size[0]), self.size[1])
 
 	def _set_progress(self, progress):
 		self.__progress = progress

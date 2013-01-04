@@ -78,7 +78,7 @@ class SPSession(Session):
 				return True # user aborted dialog
 			savegamename = SavegameManager.create_filename(savegamename)
 
-		success= self._do_save(savegamename)
+		success = self._do_save(savegamename)
 		if success:
 			self.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
 		return success

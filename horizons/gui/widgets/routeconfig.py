@@ -318,7 +318,7 @@ class RouteConfig(Window):
 
 			icon = slot.findChild(name="icon")
 			fillbar = slot.findChild(name="fillbar")
-			fillbar.position = (icon.width - fillbar.width -1, icon.height)
+			fillbar.position = (icon.width - fillbar.width - 1, icon.height)
 			x_position += 60
 
 			entry.addChild(slot)

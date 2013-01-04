@@ -229,7 +229,7 @@ class CityInfo(object):
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		resbar = self._ingame_gui.resource_overview.get_size()
 		is_foreign = (self._settlement.owner != self._ingame_gui.session.world.player)
-		blocked = self._widget.size[0] + int(1.5*self._ingame_gui.minimap.get_size()[1])
+		blocked = self._widget.size[0] + int(1.5 * self._ingame_gui.minimap.get_size()[1])
 		# minimap[1] returns width! Use 1.5*width because of the GUI around it
 
 		if is_foreign: # other player, no resbar exists
