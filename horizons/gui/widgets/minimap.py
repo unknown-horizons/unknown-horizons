@@ -595,10 +595,10 @@ class Minimap(object):
 			if ship in self.session.selected_instances:
 				self.minimap_image.rendertarget.addPoint(render_name, dummy_point0, *Minimap.COLORS["water"])
 				for x_off, y_off in ((-2,  0),
-					                   (+2,  0),
-					                   ( 0, -2),
-					                   ( 0, +2)):
-					dummy_point1.set(coord[0]+x_off, coord[1] + y_off)
+				                     (+2,  0),
+				                     ( 0, -2),
+				                     ( 0, +2)):
+					dummy_point1.set(coord[0] + x_off, coord[1] + y_off)
 					self.minimap_image.rendertarget.addPoint(render_name, dummy_point1, *color)
 
 		# draw settlement warehouses if something has changed
