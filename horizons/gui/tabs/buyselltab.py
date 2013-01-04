@@ -129,14 +129,13 @@ class BuySellTab(TabInterface):
 		if not self.trade_post.buy_list and not self.trade_post.sell_list:
 			self._set_hint(_("Click on one of the resource slots to add a trade offer."))
 
-	def add_slots(self, num):
+	def add_slots(self, amount):
 		"""
-		Add num slot widgets to the buysellmenu.
-		@param num: number of slot widgets that are to be added.
+		Add `amount` slot widgets to the buysellmenu.
+		@param amount: number of slot widgets that are to be added.
 		"""
 		content = self.widget.findChild(name="content")
-		assert(content is not None)
-		for i in xrange(num):
+		for i in xrange(amount):
 			slot = load_uh_widget('trade_single_slot.xml')
 			self.slot_widgets[i] = slot
 			slot.id = i
