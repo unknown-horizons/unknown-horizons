@@ -107,7 +107,7 @@ class Inventory(Container):
 
 			while len(self._res_order) + len(new_res) > self._inventory.slotnum:
 				for i in xrange(self._inventory.slotnum):
-					if self._inventory[self._res_order[i]]:
+					if len(self._res_order) <= i or self._inventory[self._res_order[i]]:
 						# search empty slot
 						continue
 					# insert new res here
