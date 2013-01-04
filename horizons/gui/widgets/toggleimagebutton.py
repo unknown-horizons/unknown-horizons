@@ -58,9 +58,10 @@ class ToggleImageButton(ImageButton):
 	def set_active(self):
 		"""Sets the button active. Restores up, down and hover image to
 		previous state."""
-		if self.state != self.ACTIVE:
-			self.up_image, self.down_image, self.hover_image = self.old_images
-			self.state = self.ACTIVE
+		if self.state == self.ACTIVE:
+			return
+		self.up_image, self.down_image, self.hover_image = self.old_images
+		self.state = self.ACTIVE
 
 	def set_inactive(self):
 		"""Sets the button inactive. Overrides up, down and hover image with
