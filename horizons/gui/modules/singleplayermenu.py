@@ -34,6 +34,7 @@ from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n import find_available_languages
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
+from horizons.gui.modules.mappreview import MapPreview
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
@@ -360,7 +361,7 @@ class FreeMapsWidget(object):
 		self._gui = load_uh_widget('sp_free_maps.xml')
 		self._game_settings = GameSettingsWidget()
 
-		self._map_preview = None
+		self._map_preview = MapPreview(self._gui.findChild(name='map_preview_minimap'))
 
 	def end(self):
 		pass
@@ -403,33 +404,13 @@ class FreeMapsWidget(object):
 		#xgettext:python-format
 		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
 
-		self._update_map_preview(map_file)
+		self._map_preview.draw(map_file)
 
 	def _get_selected_map(self):
 		selection_index = self._gui.collectData('maplist')
 		assert selection_index != -1
 
 		return self._files[self._gui.collectData('maplist')]
-
-	def _update_map_preview(self, map_file):
-		if self._map_preview:
-			self._map_preview.end()
-
-		world = load_raw_world(map_file)
-		self._map_preview = Minimap(
-			self._gui.findChild(name='map_preview_minimap'),
-			session=None,
-			view=None,
-			world=world,
-			targetrenderer=horizons.globals.fife.targetrenderer,
-			imagemanager=horizons.globals.fife.imagemanager,
-			cam_border=False,
-			use_rotation=False,
-			tooltip=None,
-			on_click=None,
-			preview=True)
-
-		self._map_preview.draw()
 
 
 class ScenarioMapWidget(object):

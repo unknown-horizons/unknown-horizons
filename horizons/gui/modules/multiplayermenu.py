@@ -28,16 +28,15 @@ import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import MULTIPLAYER
 from horizons.gui.modules import PlayerDataSelection
+from horizons.gui.modules.mappreview import MapPreview
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
-from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
 from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
 from horizons.util.color import Color
 from horizons.util.python.callback import Callback
-from horizons.world import load_raw_world
 
 
 class MultiplayerMenu(Window):
@@ -279,7 +278,7 @@ class CreateGame(Window):
 
 		self._files = []
 		self._maps_display = []
-		self._map_preview = None
+		self._map_preview = MapPreview(self._gui.findChild(name='map_preview_minimap'))
 
 	def hide(self):
 		self._gui.hide()
@@ -332,27 +331,7 @@ class CreateGame(Window):
 		#xgettext:python-format
 		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
 
-		self._update_map_preview(mapfile)
-
-	def _update_map_preview(self, map_file):
-		if self._map_preview:
-			self._map_preview.end()
-
-		world = load_raw_world(map_file)
-		self._map_preview = Minimap(
-			self._gui.findChild(name='map_preview_minimap'),
-			session=None,
-			view=None,
-			world=world,
-			targetrenderer=horizons.globals.fife.targetrenderer,
-			imagemanager=horizons.globals.fife.imagemanager,
-			cam_border=False,
-			use_rotation=False,
-			tooltip=None,
-			on_click=None,
-			preview=True)
-
-		self._map_preview.draw()
+		self._map_preview.draw(mapfile)
 
 
 class GameLobby(Window):
