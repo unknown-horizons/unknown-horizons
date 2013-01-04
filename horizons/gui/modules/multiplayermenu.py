@@ -327,9 +327,10 @@ class CreateGame(Window):
 		index = self._gui.collectData('maplist')
 		mapfile = self._files[index]
 		number_of_players = SavegameManager.get_recommended_number_of_players(mapfile)
+
+		lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
 		#xgettext:python-format
-		self._gui.findChild(name="recommended_number_of_players_lbl").text = \
-				_("Recommended number of players: {number}").format(number=number_of_players)
+		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
 
 		self._update_map_preview(mapfile)
 

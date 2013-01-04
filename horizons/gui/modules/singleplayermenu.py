@@ -399,9 +399,9 @@ class FreeMapsWidget(object):
 		map_file = self._get_selected_map()
 
 		number_of_players = SavegameManager.get_recommended_number_of_players(map_file)
+		lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
 		#xgettext:python-format
-		self._gui.findChild(name="recommended_number_of_players_lbl").text = \
-			_("Recommended number of players: {number}").format(number=number_of_players)
+		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
 
 		self._update_map_preview(map_file)
 
@@ -537,15 +537,17 @@ class ScenarioMapWidget(object):
 			self._show_invalid_scenario_file_popup(e)
 			return
 
+		lbl = self._gui.findChild(name="uni_map_difficulty")
 		#xgettext:python-format
-		self._gui.findChild(name="uni_map_difficulty").text = \
-			_("Difficulty: {difficulty}").format(difficulty=difficulty)
+		lbl.text = _("Difficulty: {difficulty}").format(difficulty=difficulty)
+
+		lbl = self._gui.findChild(name="uni_map_author")
 		#xgettext:python-format
-		self._gui.findChild(name="uni_map_author").text = \
-			_("Author: {author}").format(author=author)
+		lbl.text = _("Author: {author}").format(author=author)
+
+		lbl = self._gui.findChild(name="uni_map_desc")
 		#xgettext:python-format
-		self._gui.findChild(name="uni_map_desc").text = \
-			_("Description: {desc}").format(desc=desc)
+		lbl.text = _("Description: {desc}").format(desc=desc)
 
 	def _update_scenario_translation_infos(self, new_map_name):
 		"""Fill in translation infos of selected scenario to translation label.

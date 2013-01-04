@@ -150,13 +150,13 @@ class SettingsHandler(object):
 		factor - value will be multiplied by factor
 		unit - this string will be added to the end
 		"""
+		slider_lbl = self.settings_dialog.findChild(name=slider + '_value')
+		slider_value = self.settings_dialog.findChild(name=slider).value * factor
 		if slider == "mousesensitivity" or slider == "scrollspeed":
 			#for floating wanted
-			self.settings_dialog.findChild(name=slider + '_value').text = \
-				u"%.2f%s" % (float(self.settings_dialog.findChild(name=slider).value * factor), unit)
+			slider_lbl.text = u"%.2f%s" % (float(slider_value), unit)
 		else:
-			self.settings_dialog.findChild(name=slider + '_value').text = \
-				u"%s%s" % (int(self.settings_dialog.findChild(name=slider).value * factor), unit)
+			slider_lbl.text = u"%s%s" % (int(slider_value), unit)
 
 
 	# Handlers for setting interaction
