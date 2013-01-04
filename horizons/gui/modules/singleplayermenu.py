@@ -19,30 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import json
 import locale
 import os
-import subprocess
-import sys
-import tempfile
 
 import horizons.globals
 import horizons.main
 
-from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
-from horizons.constants import LANGUAGENAMES, PATHS, VERSION
-from horizons.extscheduler import ExtScheduler
+import horizons.world
+from horizons.constants import LANGUAGENAMES
 from horizons.i18n import find_available_languages
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.modules.mappreview import MapPreview
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
-from horizons.util.shapes import Rect
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.yamlcache import YamlCache
 
@@ -191,13 +184,14 @@ class RandomMapWidget(object):
 		self._last_map_parameters = None
 		self._preview_process = None
 		self._preview_output = None
-		self._map_preview = None
+
+		minimap_icon = self._gui.findChild(name='map_preview_minimap')
+		self._map_preview = MapPreview(minimap_icon)
+		minimap_icon.capture(Callback(self._on_preview_click, self), "mousePressed")
+		minimap_icon.helptext = _("Click to generate a different random map")
 
 	def end(self):
-		if self._preview_process:
-			self._preview_process.kill()
-			self._preview_process = None
-		ExtScheduler().rem_all_classinst_calls(self)
+		self._map_preview.end()
 
 	def get_widget(self):
 		return self._gui
@@ -266,17 +260,6 @@ class RandomMapWidget(object):
 		)
 
 	def _on_random_parameter_changed(self):
-		self._update_map_preview()
-
-	# Map preview
-
-	def _on_preview_click(self, event, drag):
-		seed_string_field = self._gui.findChild(name='seed_string_field')
-		seed_string_field.text = generate_random_seed(seed_string_field.text)
-		self._on_random_parameter_changed()
-
-	def _update_map_preview(self):
-		"""Start a new process to generate a map preview."""
 		current_parameters = self._get_map_parameters()
 		if self._last_map_parameters == current_parameters:
 			# nothing changed, don't generate a new preview
@@ -284,70 +267,18 @@ class RandomMapWidget(object):
 
 		self._last_map_parameters = current_parameters
 
-		if self._preview_process:
-			self._preview_process.kill() # process exists, therefore up is scheduled already
+		data = generate_random_map(*current_parameters)
+		if data:
+			self._gui.findChild(name="map_preview_status_label").text = _(u"Generating preview...")
+			self._map_preview.draw_random_map(data, self._map_parameters['map_size'], self._map_preview_done)
 
-		# launch process in background to calculate minimap data
-		minimap_icon = self._gui.findChild(name='map_preview_minimap')
-		params = json.dumps(((minimap_icon.width, minimap_icon.height), current_parameters))
+	def _map_preview_done(self):
+		self._gui.findChild(name="map_preview_status_label").text = u""
 
-		args = [sys.executable, sys.argv[0], "--generate-minimap", params]
-		# We're running UH in a new process, make sure fife is setup correctly
-		if horizons.main.command_line_arguments.fife_path:
-			args.extend(["--fife-path", horizons.main.command_line_arguments.fife_path])
-
-		handle, self._preview_output = tempfile.mkstemp()
-		os.close(handle)
-		self._preview_process = subprocess.Popen(args=args, stdout=open(self._preview_output, "w"))
-		self._set_map_preview_status(u"Generating preview...")
-
-		ExtScheduler().add_new_object(self._poll_preview_process, self, 0.5)
-
-	def _poll_preview_process(self):
-		"""This will be called regularly to see if the process ended.
-
-		If the process has not yet finished, schedule a new callback to this function.
-		Otherwise use the data to update the minimap.
-		"""
-		if not self._preview_process:
-			return
-
-		self._preview_process.poll()
-
-		if self._preview_process.returncode is None: # not finished
-			ExtScheduler().add_new_object(self._poll_preview_process, self, 0.1)
-			return
-		elif self._preview_process.returncode != 0:
-			self._set_map_preview_status(u"An unknown error occured while generating the map preview")
-			return
-
-		with open(self._preview_output, 'r') as f:
-			data = f.read()
-
-		os.unlink(self._preview_output)
-		self._preview_process = None
-
-		if self._map_preview:
-			self._map_preview.end()
-
-		self._map_preview = Minimap(
-			self._gui.findChild(name='map_preview_minimap'),
-			session=None,
-			view=None,
-			world=None,
-			targetrenderer=horizons.globals.fife.targetrenderer,
-			imagemanager=horizons.globals.fife.imagemanager,
-			cam_border=False,
-			use_rotation=False,
-			tooltip=_("Click to generate a different random map"),
-			on_click=self._on_preview_click,
-			preview=True)
-
-		self._map_preview.draw_data(data)
-		self._set_map_preview_status(u"")
-
-	def _set_map_preview_status(self, text):
-		self._gui.findChild(name="map_preview_status_label").text = text
+	def _on_preview_click(self, event):
+		seed_string_field = self._gui.findChild(name='seed_string_field')
+		seed_string_field.text = generate_random_seed(seed_string_field.text)
+		self._on_random_parameter_changed()
 
 
 class FreeMapsWidget(object):
@@ -364,7 +295,7 @@ class FreeMapsWidget(object):
 		self._map_preview = MapPreview(self._gui.findChild(name='map_preview_minimap'))
 
 	def end(self):
-		pass
+		self._map_preview.end()
 
 	def get_widget(self):
 		return self._gui
@@ -564,44 +495,3 @@ class ScenarioMapWidget(object):
 		assert selection_index != -1
 
 		return self._files[self._gui.collectData('maplist')]
-
-
-def generate_random_minimap(size, parameters):
-	"""Called as subprocess, calculates minimap data and passes it via string via stdout"""
-	# called as standalone basically, so init everything we need
-	from horizons.entities import Entities
-	from horizons.ext.dummy import Dummy
-	from horizons.main import _create_main_db
-
-	if not VERSION.IS_DEV_VERSION:
-		# Hack enable atlases.
-		# Usually the minimap generator uses single tile files, but in release
-		# mode these are not available. Therefor we have to hackenable atlases
-		# for the minimap generation in this case. This forces the game to use
-		# the correct imageloader
-		# In normal dev mode + enabled atlases we ignore this and just continue 
-		# to use single tile files instead of atlases for the minimap generation.
-		# These are always available in dev checkouts
-		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
-
-	db = _create_main_db()	
-	horizons.globals.db = db
-	horizons.globals.fife.init_animation_loader(not VERSION.IS_DEV_VERSION)
-	Entities.load_grounds(db, load_now=False) # create all references
-
-	map_file = generate_random_map(*parameters)
-	world = load_raw_world(map_file)
-	location = Rect.init_from_topleft_and_size_tuples((0, 0), size)
-	minimap = Minimap(
-		location,
-		session=None,
-		view=None,
-		world=world,
-		targetrenderer=Dummy(),
-		imagemanager=Dummy(),
-		cam_border=False,
-		use_rotation=False,
-		preview=True)
-
-	# communicate via stdout
-	print minimap.dump_data()

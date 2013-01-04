@@ -99,13 +99,6 @@ def start(_command_line_arguments):
 	# init fife before mp_bind is parsed, since it's needed there
 	horizons.globals.fife = Fife()
 
-	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
-		from horizons.gui.modules.singleplayermenu import generate_random_minimap
-		generate_random_minimap( * json.loads(
-		  command_line_arguments.generate_minimap
-		  ) )
-		sys.exit(0)
-
 	if debug: # also True if a specific module is logged (but not 'fife')
 		if not (command_line_arguments.debug_module
 		        and 'fife' not in command_line_arguments.debug_module):
