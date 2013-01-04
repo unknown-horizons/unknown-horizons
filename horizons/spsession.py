@@ -49,7 +49,7 @@ class SPSession(Session):
 		self.log.debug("Session: autosaving")
 		success = self._do_save(SavegameManager.create_autosave_filename())
 		if success:
-			SavegameManager.delete_dispensable_savegames(autosaves = True)
+			SavegameManager.delete_dispensable_savegames(autosaves=True)
 			self.ingame_gui.message_widget.add(point=None, string_id='AUTOSAVE')
 
 	def quicksave(self):
@@ -58,7 +58,7 @@ class SPSession(Session):
 		# call saving through horizons.main and not directly through session, so that save errors are handled
 		success = self._do_save(SavegameManager.create_quicksave_filename())
 		if success:
-			SavegameManager.delete_dispensable_savegames(quicksaves = True)
+			SavegameManager.delete_dispensable_savegames(quicksaves=True)
 			self.ingame_gui.message_widget.add(point=None, string_id='QUICKSAVE')
 		else:
 			headline = _(u"Failed to quicksave.")
