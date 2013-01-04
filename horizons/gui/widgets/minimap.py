@@ -565,7 +565,7 @@ class Minimap(object):
 			ship_icon = self.imagemanager.load(ship_icon_path)
 			dummy_point1.set(coord[0], coord[1])
 			self.minimap_image.rendertarget.addImage(render_name, dummy_point1, ship_icon)
-			if ship.owner.regular_player is True:
+			if ship.owner.regular_player:
 				# add the 'flag' over the ship icon, with the color of the owner
 				dummy_point0.set(coord[0] - 5, coord[1] - 5)
 				dummy_point1.set(coord[0], coord[1] - 5)
