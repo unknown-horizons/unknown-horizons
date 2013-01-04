@@ -39,7 +39,7 @@ class BuildRelatedTab(OverviewTab):
 	template_gui_xml = 'related_buildings_container.xml'
 
 	def  __init__(self, instance, widget='related_buildings.xml',
-	              icon_path='content/gui/icons/tabwidget/production/related_%s.png'):
+	              icon_path='icons/tabwidget/production/related'):
 		super(BuildRelatedTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.helptext = _("Build related buildings")
 

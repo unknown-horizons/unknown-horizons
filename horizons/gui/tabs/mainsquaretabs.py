@@ -59,7 +59,7 @@ class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
 	def __init__(self, instance):
 		super(AccountTab, self).__init__(instance=instance, widget='tab_account.xml',
-		                                 icon_path='content/gui/icons/tabwidget/warehouse/account_%s.png')
+		                                 icon_path='icons/tabwidget/warehouse/account')
 		self.helptext = _("Account")
 
 		self.widget.mapEvents({
@@ -106,7 +106,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 	LEVEL = None # overwrite in subclass
 	def __init__(self, instance):
 		widget = "mainsquare_inhabitants.xml"
-		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{incr}_%s.png'.format(incr=self.__class__.LEVEL)
+		icon_path = 'icons/tabwidget/mainsquare/inhabitants{incr}'.format(incr=self.__class__.LEVEL)
 		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
 		self.min_inhabitants = instance.session.db.get_settler_inhabitants_min(self.__class__.LEVEL)

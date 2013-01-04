@@ -35,7 +35,7 @@ class SelectMultiTab(TabInterface):
 	max_row_entry_number = 3
 	max_column_entry_number = 4
 	def __init__(self, session=None, widget='overview_select_multi.xml',
-	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
+	             icon_path='icons/tabwidget/common/inventory'):
 		super(SelectMultiTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.session = session
 		self.init_values()

@@ -22,9 +22,10 @@
 import logging
 import weakref
 
-from fife.extensions.pychan.widgets import Container, Icon, ImageButton
+from fife.extensions.pychan.widgets import Container, Icon
 
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 
@@ -70,17 +71,13 @@ class TabWidget(object):
 			tab.add_remove_listener(Callback(on_tab_removal, weakref.ref(self)))
 			container = Container(name="container_%s" % index)
 			background = Icon(name="bg_%s" % index)
-			button = ImageButton(name=str(index))
+			button = ImageButton(name=str(index), size=(50, 50))
 			if self.current_tab is tab:
 				background.image = tab.button_background_image_active
-				button.up_image = tab.button_active_image
+				button.path = tab.path_active
 			else:
 				background.image = tab.button_background_image
-				button.up_image = tab.button_up_image
-			button.down_image = tab.button_down_image
-			button.hover_image = tab.button_hover_image
-			button.is_focusable = False
-			button.size = (50, 50)
+				button.path = tab.path
 			button.capture(Callback(self._show_tab, index))
 			if hasattr(tab, 'helptext') and tab.helptext is not None:
 				button.helptext = tab.helptext
@@ -110,12 +107,12 @@ class TabWidget(object):
 		old_bg.image = self.current_tab.button_background_image
 		name = str(self._tabs.index(self.current_tab))
 		old_button = self.content.findChild(name=name)
-		old_button.up_image = self.current_tab.button_up_image
+		old_button.path = self.current_tab.path
 
 		new_bg = self.content.findChild(name = "bg_%s" % number)
 		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=str(number))
-		new_button.up_image = new_tab.button_active_image
+		new_button.path = new_tab.path_active
 		self.current_tab = new_tab
 		# important to display the tabs correctly in front
 		self.widget.hide()

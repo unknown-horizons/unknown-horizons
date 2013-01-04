@@ -42,8 +42,6 @@ class TabInterface(object):
 
 	Make sure to call the init_values() function after you set self.widget, to
 	ensure proper initialization of needed properties.
-
-	@param icon_path: Where to look for a,d,h,u icons; must contain '%s'
 	"""
 
 	"""
@@ -56,9 +54,10 @@ class TabInterface(object):
 
 	scheduled_update_delay = 0.4 # seconds, update after this time when an update is scheduled
 
-	def __init__(self, widget=None, icon_path='content/gui/images/tabwidget/tab_%s.png', **kwargs):
+	def __init__(self, widget=None, icon_path='images/tabwidget/tab', **kwargs):
 		"""
 		@param widget: filename of a widget. Set this to None if you create your own widget at self.widget
+		@param icon_path: Where to look for ImageButton icons. Note: this is a `path` attribute!
 		"""
 		super(TabInterface, self).__init__()
 		if widget is not None:
@@ -69,13 +68,15 @@ class TabInterface(object):
 		else:
 			# set manually by child
 			self.widget = None
-		self.button_background_image = 'content/gui/images/tabwidget/tab_dark.png' # TabButtons background image
-		self.button_background_image_active = 'content/gui/images/tabwidget/tab_active_xxl.png' # TabButtons background image when selected
-		# Override these by modifying icon_path if you want different icons for your tab:
-		self.button_up_image = icon_path % 'u' # TabButtons usual image
-		self.button_down_image = icon_path % 'd' # TabButtons image when mouse is pressed
-		self.button_hover_image = icon_path % 'h' # TabButtons hoverimage
-		self.button_active_image = icon_path % 'a' # TabButtons active image
+
+		# Regular `image` paths for Icon
+		self.button_background_image = 'content/gui/images/tabwidget/tab_dark.png'
+		self.button_background_image_active = 'content/gui/images/tabwidget/tab_active_xxl.png'
+
+		# `path` attribute for ImageButton, i.e. without 'content/gui/' and '.png'
+		self.path = icon_path
+		# the active tab image has no special down or hover images, so this works with `path` too
+		self.path_active = icon_path + '_a'
 
 		self._refresh_scheduled = False
 

@@ -28,7 +28,7 @@ class InventoryTab(TabInterface):
 	lazy_loading = True
 
 	def __init__(self, instance=None, widget='island_inventory.xml',
-	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
+	             icon_path='icons/tabwidget/common/inventory'):
 		super(InventoryTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.instance = instance
 		self.helptext = _("Settlement inventory")

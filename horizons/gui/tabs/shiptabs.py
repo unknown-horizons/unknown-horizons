@@ -34,7 +34,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 
 class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance, widget='overview_trade_ship.xml',
-			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
+			icon_path='icons/tabwidget/ship/ship_inv'):
 		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
 		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 		self.helptext = _("Ship overview")
@@ -125,7 +125,7 @@ class ShipOverviewTab(OverviewTab):
 class FightingShipOverviewTab(ShipOverviewTab):
 	has_stance = True
 	def __init__(self, instance, widget='overview_war_ship.xml',
-			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
+			icon_path='icons/tabwidget/ship/ship_inv'):
 		super(FightingShipOverviewTab, self).__init__(instance, widget, icon_path)
 
 
@@ -165,7 +165,7 @@ class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
 		super(TraderShipOverviewTab, self).__init__(
 			widget = 'overview_tradership.xml',
-			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
+			icon_path='icons/tabwidget/ship/ship_inv',
 			instance = instance)
 		self.helptext = _("Ship overview")
 
@@ -173,7 +173,7 @@ class EnemyShipOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(EnemyShipOverviewTab, self).__init__(
 			widget = 'overview_enemyunit.xml',
-			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
+			icon_path='icons/tabwidget/ship/ship_inv',
 			instance = instance)
 		self.widget.findChild(name="headline").text = self.instance.owner.name
 		self.helptext = _("Ship overview")

@@ -49,7 +49,7 @@ class BuySellTab(TabInterface):
 	dummy_icon_path = "icons/resources/none_gray"
 
 	def __init__(self, instance, widget='buysellmenu.xml',
-	             icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png'):
+	             icon_path='icons/tabwidget/warehouse/buysell'):
 		"""Set up the GUI and game logic for the buyselltab."""
 		super(BuySellTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.inited = False # prevents execution of commands during init

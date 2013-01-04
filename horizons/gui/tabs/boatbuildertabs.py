@@ -175,7 +175,7 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		super(BoatbuilderSelectTab, self).__init__(
 				instance=instance,
 		          widget='boatbuilder_showcase.xml',
-		          icon_path='content/gui/icons/tabwidget/boatbuilder/{name}_%s.png'.format(name=iconname))
+		          icon_path='icons/tabwidget/boatbuilder/{name}'.format(name=iconname))
 		self.add_showcases(ships)
 		self.helptext = helptext
 		self.widget.findChild(name='headline').text = helptext
