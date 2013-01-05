@@ -106,7 +106,7 @@ class BuildingTool(NavigationTool):
 		self.buildings_action_set_ids = [] # list action set ids of list above
 		self.buildings_fife_instances = {} # fife instances of possible builds
 		self.buildings_missing_resources = {} # missing resources for possible builds
-		self.rotation = 45 + random.randint(0, 3)*90
+		self.rotation = 45 + random.randint(0, 3) * 90
 		self.start_point, self.end_point = None, None
 		self.last_change_listener = None
 		self._transparencified_instances = set() # fife instances modified for transparency
