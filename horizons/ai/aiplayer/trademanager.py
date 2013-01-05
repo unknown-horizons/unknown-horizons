@@ -30,7 +30,7 @@ from building import AbstractBuilding
 from horizons.util.worldobject import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.util.python import decorators
-from horizons.constants import RES
+from horizons.constants import RES, STORAGE
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
 
@@ -161,8 +161,8 @@ class TradeManager(WorldObject):
 	def _get_source_settlement_manager(self):
 		"""Return the settlement manager of the settlement from which we should pick up resources next or None if none are needed."""
 		# TODO: find a better way of getting the following constants
-		ship_capacity = 120
-		ship_resource_slots = 4
+		ship_capacity = STORAGE.SHIP_TOTAL_STORAGE
+		ship_resource_slots = STORAGE.SHIP_TOTAL_SLOTS_NUMBER
 
 		options = [] # [(available resource amount, available number of resources, settlement_manager_id), ...]
 		for settlement_manager in self.owner.settlement_managers:
