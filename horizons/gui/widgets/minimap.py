@@ -413,8 +413,8 @@ class Minimap(object):
 		# the path always contains the full path, the unit might be somewhere in it
 		position_of_unit_in_path = 0
 		unit_pos = unit.position.to_tuple()
-		for i in xrange(len(path)):
-			if path[i] == unit_pos:
+		for i, pos in enumerate(path):
+			if pos == unit_pos:
 				position_of_unit_in_path = i
 				break
 

@@ -183,8 +183,7 @@ class VillageBuilder(AreaBuilder):
 				if self.land_manager.coords_usable(coords):
 					self.plan[coords] = (BUILDING_PURPOSE.ROAD, (0, None))
 
-		for i in xrange(len(section_plans)):
-			section_plan = section_plans[i]
+		for i, section_plan in enumerate(section_plans):
 			self._optimize_section_plan(section_plan)
 			tent_lookup = self._create_tent_queue(section_plan)
 			for coords, purpose in section_plan.iteritems():

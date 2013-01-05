@@ -51,7 +51,7 @@ class cmd_creategame(packet):
 	def validate(pkt, protocol):
 		if not isinstance(pkt.clientversion, unicode):
 			raise NetworkException("Invalid datatype: clientversion")
-		if not len(pkt.clientversion):
+		if not pkt.clientversion:
 			raise SoftNetworkException("Invalid client version")
 
 		if protocol == 0:
@@ -63,7 +63,7 @@ class cmd_creategame(packet):
 
 		if not isinstance(pkt.playername, unicode):
 			raise NetworkException("Invalid datatype: playername")
-		if not len(pkt.playername):
+		if not pkt.playername:
 			raise SoftNetworkException("Your player name cannot be empty")
 
 		if protocol == 0:
@@ -76,12 +76,12 @@ class cmd_creategame(packet):
 
 		if not isinstance(pkt.name, unicode):
 			raise NetworkException("Invalid datatype: name")
-		if not len(pkt.name):
+		if not pkt.name:
 			pkt.name = u"Unnamed Game"
 
 		if not isinstance(pkt.mapname, unicode):
 			raise NetworkException("Invalid datatype: mapname")
-		if not len(pkt.mapname):
+		if not pkt.mapname:
 			raise SoftNetworkException("You can't run a game with an empty mapname")
 
 		if not isinstance(pkt.maxplayers, int):
@@ -147,7 +147,7 @@ class cmd_joingame(packet):
 
 		if not isinstance(pkt.clientversion, unicode):
 			raise NetworkException("Invalid datatype: clientversion")
-		if not len(pkt.clientversion):
+		if not pkt.clientversion:
 			raise SoftNetworkException("Invalid client version")
 
 		if protocol == 0:
@@ -159,7 +159,7 @@ class cmd_joingame(packet):
 
 		if not isinstance(pkt.playername, unicode):
 			raise NetworkException("Invalid datatype: playername")
-		if not len(pkt.playername):
+		if not pkt.playername:
 			raise SoftNetworkException("Your player name cannot be empty")
 
 		if protocol == 0:
@@ -199,7 +199,7 @@ class cmd_chatmsg(packet):
 	def validate(pkt, protocol):
 		if not isinstance(pkt.chatmsg, unicode):
 			raise NetworkException("Invalid datatype: chatmsg")
-		if not len(pkt.chatmsg):
+		if not pkt.chatmsg:
 			raise SoftNetworkException("Chat message cannot be empty")
 
 SafeUnpickler.add('client', cmd_chatmsg)
@@ -216,7 +216,7 @@ class cmd_changename(packet):
 	def validate(pkt, protocol):
 		if not isinstance(pkt.playername, unicode):
 			raise NetworkException("Invalid datatype: playername")
-		if not len(pkt.playername):
+		if not pkt.playername:
 			raise SoftNetworkException("You must have a non empty name")
 
 SafeUnpickler.add('client', cmd_changename)
@@ -291,7 +291,7 @@ class cmd_sessionprops(packet):
 		if hasattr(pkt, 'lang'):
 			if not isinstance(pkt.lang, str):
 				raise NetworkException("Invalid datatype: lang")
-			if not len(pkt.lang):
+			if not pkt.lang:
 				raise SoftNetworkException("Invalid language property")
 
 SafeUnpickler.add('client', cmd_sessionprops)

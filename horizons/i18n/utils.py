@@ -30,7 +30,7 @@ LANGCACHE = {}
 def find_available_languages(domain='unknown-horizons', update=False):
 	"""Returns a dict( lang_key -> locale_dir )"""
 	global LANGCACHE
-	if len(LANGCACHE) and not update:
+	if LANGCACHE and not update:
 		return LANGCACHE
 
 	alternatives = ('content/lang',

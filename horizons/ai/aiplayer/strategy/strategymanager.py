@@ -110,13 +110,13 @@ class StrategyManager(object):
 		enemy_ships = self.unit_manager.filter_ships(enemy_ships, (self.unit_manager.filtering_rules.fighting(),))
 
 		# infinitely more powerful
-		if len(ships) and not len(enemy_ships):
+		if ships and not enemy_ships:
 			return max_balance
 
 		# infinitely less powerful
-		elif not len(ships) and len(enemy_ships):
+		elif not ships and enemy_ships:
 			return min_balance
-		elif not len(ships) and not len(enemy_ships):
+		elif not ships and not enemy_ships:
 			return 1.0
 
 		return UnitManager.calculate_power_balance(ships, enemy_ships)

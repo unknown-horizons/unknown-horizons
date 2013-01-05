@@ -174,8 +174,7 @@ class ProductionChainSubtreeChoice(object):
 
 		# need to increase production: build the cheapest subtree
 		expected_costs = []
-		for i in xrange(len(available_options)):
-			option = available_options[i]
+		for i, option in enumerate(available_options):
 			cost = option.get_expected_cost(amount - current_production + option.get_final_production_level())
 			if cost is not None:
 				expected_costs.append((cost, i, option))

@@ -106,8 +106,7 @@ class AIPlayer(GenericAI):
 		""" Start the AI tick process. Try to space out their ticks evenly. """
 		ai_players = 0
 		position = None
-		for i in xrange(len(self.world.players)):
-			player = self.world.players[i]
+		for player in self.world.players:
 			if isinstance(player, AIPlayer):
 				if player is self:
 					position = ai_players
