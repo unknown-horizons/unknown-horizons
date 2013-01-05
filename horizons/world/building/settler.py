@@ -267,10 +267,14 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			SettlerInhabitantsChanged.broadcast(self, change)
 			self._changed()
 
+	def can_level_up(self):
+		return self.happiness > self.__get_data("happiness_level_up_requirement") and \
+		   self.inhabitants >= self.inhabitants_min and not self._has_disaster()
+
 	def level_check(self):
-		"""Checks whether we should level up or down."""
-		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
-		   self.inhabitants >= self.inhabitants_min:
+		"""Checks whether we should level up or down. 
+			Ignores buildings with a active disaster. """
+		if self.can_level_up():
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
 				if self.owner.max_tier_notification < self.level_max:
@@ -343,6 +347,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# Remove the building and then place the Ruin
 		Scheduler().add_new_object(Callback.ChainedCallbacks(
 			self.remove, Callback(command, self.owner)), self, run_in=0)
+
+	def _has_disaster(self):
+		return hasattr(self, "disaster") and self.disaster
 
 	def _check_main_square_in_range(self):
 		"""Notifies the user via a message in case there is no main square in range"""
