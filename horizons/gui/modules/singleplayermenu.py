@@ -27,6 +27,7 @@ import horizons.main
 
 import horizons.world
 from horizons.constants import LANGUAGENAMES
+from horizons.extscheduler import ExtScheduler
 from horizons.i18n import find_available_languages
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.modules.mappreview import MapPreview
@@ -262,14 +263,20 @@ class RandomMapWidget(object):
 	def _on_random_parameter_changed(self):
 		current_parameters = self._get_map_parameters()
 		if self._last_map_parameters == current_parameters:
-			# nothing changed, don't generate a new preview
 			return
 
 		self._last_map_parameters = current_parameters
+		self._gui.findChild(name="map_preview_status_label").text = _(u"Generating preview...")
 
-		data = generate_random_map(*current_parameters)
+		# only trigger an update if the parameters haven't changed in 0.5s
+		# it's likely that the random map creation takes longer than this, so we
+		# avoid some generations that won't finish anyway
+		ExtScheduler().rem_call(self, self._update_map_preview)
+		ExtScheduler().add_new_object(self._update_map_preview, self, 0.5)
+
+	def _update_map_preview(self):
+		data = generate_random_map(*self._last_map_parameters)
 		if data:
-			self._gui.findChild(name="map_preview_status_label").text = _(u"Generating preview...")
 			self._map_preview.draw_random_map(data, self._map_parameters['map_size'], self._map_preview_done)
 
 	def _map_preview_done(self):
