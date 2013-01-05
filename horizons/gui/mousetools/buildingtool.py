@@ -85,7 +85,7 @@ class BuildingTool(NavigationTool):
 	buildable_color = (255, 255, 255)
 	not_buildable_color = (255, 0, 0, 160)
 	related_building_color = (0, 192, 0, 160)
-	related_building_outline = (16, 228, 16, 2)
+	related_building_outline = (32, 192, 32, 3)
 	nearby_objects_radius = 4
 
 	# archive the last roads built, for possible user notification
