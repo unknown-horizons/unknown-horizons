@@ -268,11 +268,11 @@ class RandomMapWidget(object):
 		self._last_map_parameters = current_parameters
 		self._gui.findChild(name="map_preview_status_label").text = _(u"Generating preview...")
 
-		# only trigger an update if the parameters haven't changed in 0.5s
+		# only trigger an update if the parameters haven't changed in 100ms
 		# it's likely that the random map creation takes longer than this, so we
 		# avoid some generations that won't finish anyway
 		ExtScheduler().rem_call(self, self._update_map_preview)
-		ExtScheduler().add_new_object(self._update_map_preview, self, 0.5)
+		ExtScheduler().add_new_object(self._update_map_preview, self, 0.1)
 
 	def _update_map_preview(self):
 		data = generate_random_map(*self._last_map_parameters)

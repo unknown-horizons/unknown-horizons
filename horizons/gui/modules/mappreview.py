@@ -80,7 +80,7 @@ class MapPreview(object):
 		self._finish_callback = finish_callback
 		self._worker = multiprocessing.Process(target=get_random_map_data, args=(map_data, map_size, self._worker_shared))
 		self._worker.start()
-		ExtScheduler().add_new_object(self._poll_worker, self, 0.5)
+		ExtScheduler().add_new_object(self._poll_worker, self, 0.1)
 
 	def _poll_worker(self):
 		if self._worker.is_alive():
