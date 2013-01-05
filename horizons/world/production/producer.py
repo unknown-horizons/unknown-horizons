@@ -499,8 +499,7 @@ class QueueProducer(Producer):
 		state = self._get_current_state()
 		return len(self.production_queue) > 0 and \
 		       (state is PRODUCTION.STATES.done or
-		        state is PRODUCTION.STATES.none or
-		        state is PRODUCTION.STATES.paused)
+		        state is PRODUCTION.STATES.none)
 
 	def on_queue_element_finished(self, production):
 		"""Callback used for the SingleUseProduction"""

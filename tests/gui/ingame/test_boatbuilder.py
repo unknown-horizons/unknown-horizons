@@ -103,6 +103,43 @@ def test_ticket_1294(gui):
 		gui.run()
 
 
+
+@gui_test(use_fixture='boatbuilder', timeout=120)
+def test_ticket_1830(gui):
+	"""
+	Boatbuilder should not replace main production while it's paused.
+	"""
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOAT_BUILDER][0]
+	producer = boatbuilder.get_component(Producer)
+
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
+
+	# Select trade ships tab
+	gui.trigger('tab_base', '1')
+
+	# Build huker
+	gui.trigger('boatbuilder_showcase', 'ok_0')
+
+	# Pause huker construction
+	gui.trigger('BB_main_tab', 'toggle_active_active')
+
+	# Select war ships tab
+	gui.trigger('tab_base', '2')
+
+	# Build frigate
+	gui.trigger('boatbuilder_showcase', 'ok_0')
+
+	# Check if Main-Production is still Huker and is paused. 
+	assert producer.get_productions()[0].prod_data["produces"][0][0] == 1000001
+	assert producer.get_productions()[0]._state == PRODUCTION.STATES.paused
+	
+	# One entry (Frigate) in queue
+	assert len(producer.production_queue) == 1
+
+
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_remove_from_queue(gui):
 	"""
