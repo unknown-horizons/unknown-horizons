@@ -83,8 +83,8 @@ class BuildingTool(NavigationTool):
 	log = logging.getLogger("gui.buildingtool")
 
 	buildable_color = (255, 255, 255)
-	not_buildable_color = (255, 0, 0)
-	related_building_color = (0, 192, 0)
+	not_buildable_color = (255, 0, 0, 160)
+	related_building_color = (0, 192, 0, 160)
 	related_building_outline = (16, 228, 16, 2)
 	nearby_objects_radius = 4
 
