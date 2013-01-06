@@ -253,13 +253,21 @@ class Buildable(object):
 
 	@classmethod
 	def _check_settlement(cls, session, position, ship=None, issuer=None):
-		"""Check if there is a settlement and if it belongs to the human player"""
-		settlement = session.world.get_settlement(position.center)
+		"""Check that there is a settlement that belongs to the player."""
 		player = issuer if issuer is not None else session.world.player
-		if settlement is None:
-			raise _NotBuildableError(BuildableErrorTypes.NO_SETTLEMENT)
-		if player != settlement.owner:
-			raise _NotBuildableError(BuildableErrorTypes.OTHER_PLAYERS_SETTLEMENT)
+		first_legal_settlement = None
+		for coords in position.tuple_iter():
+			if coords not in session.world.full_map:
+				raise _NotBuildableError(BuildableErrorTypes.NO_SETTLEMENT)
+			settlement = session.world.full_map[coords].settlement
+			if settlement is None:
+				raise _NotBuildableError(BuildableErrorTypes.NO_SETTLEMENT)
+			if player != settlement.owner:
+				raise _NotBuildableError(BuildableErrorTypes.OTHER_PLAYERS_SETTLEMENT)
+			# there should be exactly one legal settlement under the position
+			assert first_legal_settlement is None or first_legal_settlement is settlement
+			first_legal_settlement = settlement
+		assert first_legal_settlement
 
 	@classmethod
 	def _check_buildings(cls, session, position, island=None):
