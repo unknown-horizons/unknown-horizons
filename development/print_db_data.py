@@ -48,7 +48,7 @@ from run_uh import init_environment
 init_environment(False)
 
 import horizons.main
-from horizons.constants import UNITS, SETTLER, BUILDINGS
+from horizons.constants import UNITS, BUILDINGS, TIER
 from horizons.scenario.actions import ACTIONS
 from horizons.scenario.conditions import CONDITIONS
 
@@ -81,9 +81,9 @@ def get_res_name(res):
 		name = get_obj_name(res)
 	return name
 
-def get_settler_name(incr):
+def get_settler_name(tier):
 	global db
-	return db("SELECT name FROM settler_level WHERE level = ?", incr)[0][0]
+	return db("SELECT name FROM settler_level WHERE level = ?", tier)[0][0]
 
 def format_prodline(line_list, depth):
 	for res, amount in line_list:
@@ -230,15 +230,15 @@ def print_collector_restrictions():
 				for building in data.get('allowed'):
 					print '\t%s(%s)' % (building_name_mapping[building], building)
 
-def print_increment_data():
+def print_tier_data():
 	print 'Data has been moved, this view is unavailable for now'
 	return
-	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
-	print '%15s %s %s  %s' % ('increment', 'max_inh', 'base_tax', 'upgrade_prod_line')
+	upgrade_tiers = xrange(1, TIER.CURRENT_MAX+1)
+	print '%15s %s %s  %s' % ('tier', 'max_inh', 'base_tax', 'upgrade_prod_line')
 	print '=' * 64
 	for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM settler_level'):
 		str = '%3s %11s %5s    %4s' % ((inc+1), name, inh, tax)
-		if inc+1 in upgrade_increments:
+		if inc+1 in upgrade_tiers:
 			line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc+1)[0][0]
 			str += 5 * ' ' + '%2s: ' % line
 			(consumption, _) = get_prod_line(line, list)
@@ -285,7 +285,7 @@ def print_settler_needs():
 		for l in level:
 			per_level[l].extend( [ res for (res, num) in line_data[u'consumes'] ] )
 	data = dict( (k, sorted(db.get_res_name(i) for i in v)) for k,v in per_level.iteritems())
-	print "Needed resources per increment"
+	print "Needed resources per tier"
 	pprint.pprint(data)
 	print '\nChanges per level:'
 	for i in xrange(len(data)-2):
@@ -307,7 +307,7 @@ functions = {
 		'collectors' : print_collectors,
 		'collector_restrictions': print_collector_restrictions,
 		'conditions' : print_scenario_conditions,
-		'increments' : print_increment_data,
+		'tiers' : print_tier_data,
 		'lines' : print_production_lines,
 		'names' : print_names,
 		'resources' : print_res,
@@ -323,13 +323,13 @@ abbrevs = {
 		'c' : 'collectors',
 		'cl' : 'colors',
 		'cr': 'collector_restrictions',
-		'i' : 'increments',
-		'increment' : 'increments',
+		'i' : 'tiers',
+		'tier' : 'tiers',
 		'n' : 'names',
 		'pl' : 'lines',
 		'res' : 'resources',
-		'settler_lines': 'increments',
-		'sl': 'increments',
+		'settler_lines': 'tiers',
+		'sl': 'tiers',
 		'sn': 'settler_needs',
 		'unit': 'units',
 		'vl': 'verbose_lines',

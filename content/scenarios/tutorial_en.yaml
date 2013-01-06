@@ -52,8 +52,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - The fisherman needs some boards to build his vessel as well.
   - In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.
   - [Gallery, ["content/gui/icons/widgets/minimap/build.png"]]
-  - The build menu is sorted by increments.
-  - You are currently in the first increment (the Sailors level) so are offered only the basic buildings.
+  - The build menu is sorted by tiers.
+  - You are currently in the first tier (the Sailors level) so are offered only the basic buildings.
   - [Pagebreak]
   - |
 
@@ -78,7 +78,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, "NEW TASK: FOOD SUPPLY"]
   - [Image, "content/gui/images/background/hr.png"]
   - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first increment are the Hunter and Fisher.
+  - Available companies in the first tier are the Hunter and Fisher.
   - The Hunter hunts animals in the forest, thus needs trees nearby.
   - Note that you can place your Hunter close to the lumberjack's forest.
   - It can happen that the animals don't reproduce fast enough or simply hide well.
@@ -124,7 +124,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
   - If your balance is positive, you all-in-all make a profit.
   - [Gallery, ["content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png"]]
-  - In the different increment overview tabs you can see statistics about your inhabitants. You also set the increment-specific global tax here and allow or deny inhabitants of this increment to upgrade to the next higher one.
+  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 
 - &FIRSTTENT
@@ -133,7 +133,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, "content/gui/images/background/hr.png"]
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
   - [Gallery, ["content/gui/icons/buildmenu/003_h.png"]]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher increments.
+  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - |
 
@@ -178,7 +178,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     After this little advertisment, the trader will also stop by and look into your warehouse if it planned to sail past it.
   - You can propose deals via the warehouse tab "Buy/Sell".
   - [Gallery, ["content/gui/icons/tabwidget/warehouse/buysell_a.png"]]
-  - At the 'sailors' increment, you are equipped with three trading slots.
+  - At the 'sailors' tier, you are equipped with three trading slots.
   - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
   - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
   - |
@@ -242,10 +242,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &NEXTTIER
   - [Message, "Set the tax level to Low (left end) and wait for your sailors to upgrade."]
-  - [Headline, "NEW TASK: NEXT INCREMENT"]
+  - [Headline, "NEW TASK: NEXT TIER"]
   - [Image, "content/gui/images/background/hr.png"]
   - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
-  - If the sailors are happy enough, they want to advance to the next increment called Pioneers.
+  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
   - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
   - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
   - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
@@ -266,7 +266,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, "Build a farm and keep some empty space around it."]
   - [Headline, "NEW TASK: BUILD A FARM"]
   - [Image, "content/gui/images/background/hr.png"]
-  - Congratulations! Some of your inhabitants have reached increment II!
+  - Congratulations! Some of your inhabitants have reached tier II!
   - Now you have access to new buildings, take a look at the Build menu again.
   - [Gallery, ["content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png"]]
   - A shiny new tab appeared there.
@@ -315,7 +315,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 - &STORAGE
-  - [Message, "Build a storage tent (increment I tab) where it makes sense."]
+  - [Message, "Build a storage tent (tier I tab) where it makes sense."]
   - [Headline, "NEW TASK: BUILD STORAGE"]
   - [Image, "content/gui/images/background/hr.png"]
   - Did you watch your lumberjack recently?
@@ -332,7 +332,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.
   - |
-    Another solution is to build the last increment-I building which has not been mentioned so far: the storage tent.
+    Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.
   - |
     This building has two purposes. It:
     * Offers more storage for your goods, and

@@ -133,7 +133,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		return self.session.world.get_island(self.warehouse.position.origin)
 
 	def level_upgrade(self, lvl):
-		"""Upgrades settlement to a new increment.
+		"""Upgrades settlement to a new tier.
 		It only delegates the upgrade to its buildings."""
 		for building in self.buildings:
 			building.level_upgrade(lvl)

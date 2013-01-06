@@ -439,8 +439,8 @@ def set_translations():
 		"tooltip_text"                : _("Defends your settlement."),
 		},
 
-	"content/objects/gui_buildmenu/build_menu_per_increment.yaml" : {
-		# headline of gui_buildmenu:build_menu_per_increment
+	"content/objects/gui_buildmenu/build_menu_per_tier.yaml" : {
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
 		# headline of gui_buildmenu:build_menu_per_increment
 		"headline"                    : _("Companies"),

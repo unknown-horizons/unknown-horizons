@@ -280,7 +280,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 				if self.owner.max_tier_notification < self.level_max:
 					if self.owner.is_local_player:
 						self.session.ingame_gui.message_widget.add(
-							point=self.position.center, string_id='MAX_INCR_REACHED')
+							point=self.position.center, string_id='MAX_TIER_REACHED')
 					self.owner.max_tier_notification = self.level_max
 				return
 			if self._upgrade_production:

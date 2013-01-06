@@ -108,4 +108,4 @@ tab5:
 
 
 meta:
-  unlocking_strategy: single_per_increment
+  unlocking_strategy: single_per_tier

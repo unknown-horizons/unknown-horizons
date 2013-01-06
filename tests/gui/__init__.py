@@ -157,10 +157,10 @@ class TestRunner(object):
 		self._stop()
 
 	def _custom_setup(self):
-		"""Change build menu to 'per increment' for tests."""
+		"""Change build menu to 'per tier' for tests."""
 		from horizons.gui.tabs import BuildTab
 
-		BuildTab.default_build_menu_config = BuildTab.cur_build_menu_config = BuildTab.build_menu_config_per_increment
+		BuildTab.default_build_menu_config = BuildTab.cur_build_menu_config = BuildTab.build_menu_config_per_tier
 
 	def _filter_traceback(self):
 		"""Remove test internals from exception tracebacks.

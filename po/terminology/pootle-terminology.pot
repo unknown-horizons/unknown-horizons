@@ -205,7 +205,7 @@ msgstr ""
 msgid "file"
 msgstr ""
 
-msgid "increment"
+msgid "tier"
 msgstr ""
 
 msgid "key"

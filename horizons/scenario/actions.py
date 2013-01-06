@@ -149,13 +149,13 @@ def highlight_position(session, where, play_sound=False, color=(0, 0, 0)):
 	if play_sound:
 		horizons.globals.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
 
-@register()
-def change_increment(session, increment):
-	""" Changes the increment of the settlements. """
+@register(name='change_increment')
+def change_tier(session, tier):
+	""" Changes the tier of the settlements. """
 	for settlement in session.world.settlements:
 		if settlement.owner == session.world.player:
 			# Settler levels are zero-based!
-			SettlerUpdate.broadcast(settlement.warehouse, increment - 1, increment - 1)
+			SettlerUpdate.broadcast(settlement.warehouse, tier - 1, tier - 1)
 
 @register()
 def spawn_ships(session, owner_id, ship_id, number, *position):
