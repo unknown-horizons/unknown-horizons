@@ -23,7 +23,7 @@ import tempfile
 import os
 
 import horizons.main
-from horizons.constants import BUILDINGS, PRODUCTION
+from horizons.constants import BUILDINGS, PRODUCTION, UNITS
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.world.production.producer import Producer
 
@@ -103,7 +103,6 @@ def test_ticket_1294(gui):
 		gui.run()
 
 
-
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1830(gui):
 	"""
@@ -132,8 +131,9 @@ def test_ticket_1830(gui):
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
-	# Check if Main-Production is still Huker and is paused. 
-	assert producer.get_productions()[0].prod_data["produces"][0][0] == 1000001
+	# Check if Main-Production is still just Huker and is paused. 
+	assert len(producer.get_productions()) == 1
+	assert producer.get_productions()[0].get_produced_units()[UNITS.HUKER_SHIP] == 1
 	assert producer.get_productions()[0]._state == PRODUCTION.STATES.paused
 	
 	# One entry (Frigate) in queue
