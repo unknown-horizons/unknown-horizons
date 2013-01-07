@@ -47,7 +47,6 @@ msgstr "produzir"
 msgid "field"
 msgstr "plantação"
 
-#
 msgid "map"
 msgstr "mapa"
 
@@ -75,7 +74,6 @@ msgstr "residente"
 msgid "main square"
 msgstr "praça principal"
 
-# 85%
 msgid "sailors"
 msgstr "marinheiros"
 
@@ -184,7 +182,6 @@ msgstr "estrada"
 msgid "save"
 msgstr "salvar"
 
-# 80%
 msgid "built"
 msgstr "construído"
 
@@ -272,7 +269,6 @@ msgstr "modo"
 msgid "move"
 msgstr "mover"
 
-# 87%
 msgid "pioneers"
 msgstr "pioneiros"
 
@@ -348,7 +344,6 @@ msgstr "localização"
 msgid "offer"
 msgstr "oferta"
 
-# 75%
 msgid "potatoes"
 msgstr "batatas"
 
@@ -388,7 +383,6 @@ msgstr "ativo"
 msgid "afford"
 msgstr "disposição"
 
-# 85%
 msgid "animals"
 msgstr "animais"
 
@@ -467,7 +461,6 @@ msgstr "venda"
 msgid "screen"
 msgstr "tela"
 
-# 80%
 msgid "sound"
 msgstr "som"
 
@@ -495,7 +488,6 @@ msgstr "visita"
 msgid "world"
 msgstr "mundo"
 
-# 80%
 msgid "yield"
 msgstr "produção"
 
@@ -583,7 +575,6 @@ msgstr "tabaco"
 msgid "charcoal"
 msgstr "carvão vegetal"
 
-#
 msgid "sugar field"
 msgstr "plantação de cana-de-açúcar"
 
@@ -623,6 +614,5 @@ msgstr "valores"
 #~ msgid "animal"
 #~ msgstr "animal"
 
-#
 #~ msgid "trade partner"
 #~ msgstr "parceiro comercial"

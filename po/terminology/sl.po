@@ -47,7 +47,6 @@ msgstr "proizvedi"
 msgid "field"
 msgstr "polje"
 
-#
 msgid "map"
 msgstr "začetek"
 
@@ -69,7 +68,6 @@ msgstr "kliknite"
 msgid "lumberjack"
 msgstr "gozdar"
 
-# 88%
 #, fuzzy
 msgid "resident"
 msgstr "prebivalci"
@@ -77,7 +75,6 @@ msgstr "prebivalci"
 msgid "main square"
 msgstr "glavni trg"
 
-# 85%
 #, fuzzy
 msgid "sailors"
 msgstr "mornar"
@@ -184,7 +181,6 @@ msgstr "zapisnik"
 msgid "road"
 msgstr ""
 
-#
 msgid "save"
 msgstr "shrani"
 
@@ -254,7 +250,6 @@ msgstr "orodje"
 msgid "button"
 msgstr ""
 
-#
 msgid "continue"
 msgstr "nadaljuj"
 
@@ -273,26 +268,21 @@ msgstr "stopnja"
 msgid "mode"
 msgstr "način"
 
-#
 msgid "move"
 msgstr "premakni"
 
-# 87%
 #, fuzzy
 msgid "pioneers"
 msgstr "pionir"
 
-# 87%
 #, fuzzy
 msgid "citizens"
 msgstr "državljan"
 
-# 88%
 #, fuzzy
 msgid "merchants"
 msgstr "trgovec"
 
-# 90%
 #, fuzzy
 msgid "aristocrats"
 msgstr "aristokrat"
@@ -303,7 +293,6 @@ msgstr "krompir"
 msgid "settler"
 msgstr "naseljenec"
 
-# 80%
 #, fuzzy
 msgid "speed"
 msgstr "seme"
@@ -338,25 +327,21 @@ msgstr "izgradnja"
 msgid "decrease"
 msgstr "zmanjšaj"
 
-#
 msgid "description"
 msgstr "opis"
 
 msgid "fish"
 msgstr "riba"
 
-#
 msgid "increase"
 msgstr "povečaj"
 
 msgid "lamb"
 msgstr "jagnje"
 
-#
 msgid "leave"
 msgstr "odidi"
 
-#
 msgid "liquor"
 msgstr "žganje"
 
@@ -366,7 +351,6 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
-# 75%
 #, fuzzy
 msgid "potatoes"
 msgstr "krompir"
@@ -377,7 +361,6 @@ msgstr "doseg"
 msgid "reached"
 msgstr "doseženo"
 
-#
 msgid "run"
 msgstr "poženi"
 
@@ -408,16 +391,13 @@ msgstr "dejavno"
 msgid "afford"
 msgstr ""
 
-# 85%
 #, fuzzy
 msgid "animals"
 msgstr "žival"
 
-#
 msgid "Captain's log"
 msgstr "Kapitanov dnevnik"
 
-# 75%
 #, fuzzy
 msgid "construct"
 msgstr "izgradnja"
@@ -437,7 +417,6 @@ msgstr "zmožnost"
 msgid "forest"
 msgstr "gozd"
 
-# 80%
 #, fuzzy
 msgid "grows"
 msgstr "rasti"
@@ -451,16 +430,12 @@ msgstr ""
 msgid "income"
 msgstr "prihodek"
 
-#
 msgid "information"
 msgstr "informacija"
 
-# (keyboard)
-#
 msgid "key"
 msgstr "ključ"
 
-#
 msgid "lamb wool"
 msgstr "ovčja volna"
 
@@ -476,7 +451,6 @@ msgstr "težave"
 msgid "plant"
 msgstr ""
 
-#
 msgid "play"
 msgstr "igraj"
 
@@ -486,23 +460,19 @@ msgstr "igranje"
 msgid "price"
 msgstr ""
 
-# 75%
 #, fuzzy
 msgid "read"
 msgstr "rdeče"
 
-#
 msgid "return"
 msgstr "vrni se"
 
 msgid "sale"
 msgstr "prodaj"
 
-#
 msgid "screen"
 msgstr "zaslon"
 
-#
 msgid "sound"
 msgstr "zvok"
 
@@ -512,7 +482,6 @@ msgstr ""
 msgid "store"
 msgstr ""
 
-# 75%
 #, fuzzy
 msgid "tear"
 msgstr "ekipa"
@@ -532,7 +501,6 @@ msgstr "obišči"
 msgid "world"
 msgstr ""
 
-# 83%
 #, fuzzy
 msgid "yield"
 msgstr "izkoristki"
@@ -543,7 +511,6 @@ msgstr ""
 msgid "back"
 msgstr "nazaj"
 
-#
 msgid "build settlement"
 msgstr "izgradi naselbino"
 
@@ -571,41 +538,33 @@ msgstr ""
 msgid "ensure"
 msgstr ""
 
-#
 msgid "fulfill"
 msgstr "izpolni"
 
-#
 msgid "graphics"
 msgstr "grafika"
 
 msgid "harvest"
 msgstr ""
 
-#
 msgid "hunts"
 msgstr "lovi"
 
-#
 msgid "multiple"
 msgstr "več"
 
-#
 msgid "potato field"
 msgstr "polje krompirja"
 
-#
 msgid "school"
 msgstr "šola"
 
 msgid "seed"
 msgstr "seme"
 
-#
 msgid "service"
 msgstr "storitev"
 
-#
 msgid "sheep"
 msgstr "ovca"
 
@@ -615,7 +574,6 @@ msgstr "signalni ogenj"
 msgid "statistics"
 msgstr ""
 
-# 75%
 msgid "clay"
 msgstr "glina"
 
@@ -631,7 +589,6 @@ msgstr "tobak"
 msgid "charcoal"
 msgstr "oglje"
 
-#
 msgid "sugar field"
 msgstr "polje sladkornega trsa"
 
@@ -665,7 +622,6 @@ msgstr ""
 #~ msgid "found"
 #~ msgstr "najdeno"
 
-#
 #~ msgid "raw"
 #~ msgstr "surovo"
 
@@ -675,18 +631,15 @@ msgstr ""
 #~ msgid "inventory"
 #~ msgstr "inventer"
 
-# 80%
 #~ msgid "moved"
 #~ msgstr "premaknjeno"
 
-# 87%
 #~ msgid "produced"
 #~ msgstr "proizvedeno"
 
 #~ msgid "hunter"
 #~ msgstr "lovec"
 
-#
 #~ msgid "market"
 #~ msgstr "trg"
 
@@ -708,14 +661,12 @@ msgstr ""
 #~ msgid "aristocrat"
 #~ msgstr "aristokrat"
 
-#
 #~ msgid "refresh"
 #~ msgstr "osveži"
 
 #~ msgid "residents"
 #~ msgstr "prebivalci"
 
-#
 #~ msgid "output"
 #~ msgstr "izhod"
 
@@ -725,46 +676,36 @@ msgstr ""
 #~ msgid "animal"
 #~ msgstr "žival"
 
-#
 #~ msgid "fisherman"
 #~ msgstr "ribič"
 
-#
 #~ msgid "forum"
 #~ msgstr "forum"
 
 #~ msgid "grow"
 #~ msgstr "rasti"
 
-# 80%
 #~ msgid "hunt"
 #~ msgstr "lov"
 
-#
 #~ msgid "load/unload"
 #~ msgstr "naloži/razloži"
 
-#
 #~ msgid "ship inventory"
 #~ msgstr "inventar ladje"
 
-#
 #~ msgid "starting"
 #~ msgstr "začenjanje"
 
-#
 #~ msgid "trade partner"
 #~ msgstr "trgovnski partner"
 
-#
 #~ msgid "yields"
 #~ msgstr "izkoristki"
 
-#
 #~ msgid "green"
 #~ msgstr "zeleno"
 
-#
 #~ msgid "red"
 #~ msgstr "rdeče"
 
@@ -774,7 +715,6 @@ msgstr ""
 #~ msgid "dialogue"
 #~ msgstr "dialog"
 
-# 75%
 #~ msgid "ruin"
 #~ msgstr "ruševine"
 
@@ -802,10 +742,8 @@ msgstr ""
 #~ msgid "education"
 #~ msgstr "izobraževanje"
 
-# 
 #~ msgid "market place"
 #~ msgstr "tržnica"
 
-# 
 #~ msgid "SHIFT"
 #~ msgstr "SHIFT"

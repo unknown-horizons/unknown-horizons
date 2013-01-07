@@ -47,7 +47,6 @@ msgstr "produrre"
 msgid "field"
 msgstr "campo"
 
-#
 msgid "map"
 msgstr "mappa"
 
@@ -69,14 +68,12 @@ msgstr "clicca"
 msgid "lumberjack"
 msgstr "taglialegna / tagliaboschi"
 
-# 88%
 msgid "resident"
 msgstr "residente"
 
 msgid "main square"
 msgstr "piazza principale"
 
-# 85%
 msgid "sailors"
 msgstr "marinai"
 
@@ -179,11 +176,9 @@ msgstr "casa"
 msgid "log"
 msgstr "diario / registro"
 
-# 75%
 msgid "road"
 msgstr "strada"
 
-#
 msgid "save"
 msgstr "salvare"
 
@@ -254,7 +249,6 @@ msgstr "strumenti"
 msgid "button"
 msgstr "pulsante"
 
-#
 msgid "continue"
 msgstr "continua"
 
@@ -273,23 +267,18 @@ msgstr "livello"
 msgid "mode"
 msgstr "modo"
 
-#
 msgid "move"
 msgstr "muovi"
 
-# 87%
 msgid "pioneers"
 msgstr "pionieri"
 
-# 87%
 msgid "citizens"
 msgstr "cittadini"
 
-# 88%
 msgid "merchants"
 msgstr "mercanti"
 
-# 90%
 msgid "aristocrats"
 msgstr "aristocratici"
 
@@ -299,8 +288,6 @@ msgstr "patate"
 msgid "settler"
 msgstr "colono"
 
-# In base alla frase.
-# 80%
 #, fuzzy
 msgid "speed"
 msgstr "velocità"
@@ -335,25 +322,21 @@ msgstr "costruzione"
 msgid "decrease"
 msgstr "diminuire"
 
-#
 msgid "description"
 msgstr "descrizione"
 
 msgid "fish"
 msgstr "pesce"
 
-#
 msgid "increase"
 msgstr "incrementa"
 
 msgid "lamb"
 msgstr "agnello"
 
-#
 msgid "leave"
 msgstr "invia"
 
-#
 msgid "liquor"
 msgstr "liquore"
 
@@ -364,7 +347,6 @@ msgstr "posizione"
 msgid "offer"
 msgstr "offerta"
 
-# 75%
 msgid "potatoes"
 msgstr "patate"
 
@@ -374,7 +356,6 @@ msgstr "gamma"
 msgid "reached"
 msgstr "raggiungere"
 
-#
 msgid "run"
 msgstr "correre"
 
@@ -405,19 +386,15 @@ msgstr "attivo"
 msgid "afford"
 msgstr ""
 
-# 85%
 msgid "animals"
 msgstr "animali"
 
-#
 msgid "Captain's log"
 msgstr "diario del capitano"
 
-# 75%
 msgid "construct"
 msgstr "costruisci"
 
-# Dipende dal contesto della frase.
 msgid "consume"
 msgstr "consumare"
 
@@ -433,7 +410,6 @@ msgstr "caratteristica"
 msgid "forest"
 msgstr "foresta"
 
-# 80%
 msgid "grows"
 msgstr "cresce"
 
@@ -446,16 +422,12 @@ msgstr "inattivo"
 msgid "income"
 msgstr "reddito"
 
-#
 msgid "information"
 msgstr "informazione"
 
-# (keyboard)
-#
 msgid "key"
 msgstr "chiave"
 
-#
 msgid "lamb wool"
 msgstr "lana d'agnello"
 
@@ -471,7 +443,6 @@ msgstr "problemi"
 msgid "plant"
 msgstr "pianta"
 
-#
 msgid "play"
 msgstr "giocare"
 
@@ -481,22 +452,18 @@ msgstr "giocando"
 msgid "price"
 msgstr "prezzo"
 
-# 75%
 msgid "read"
 msgstr "leggi"
 
-#
 msgid "return"
 msgstr "ritorna"
 
 msgid "sale"
 msgstr "vendita"
 
-#
 msgid "screen"
 msgstr "schermo"
 
-#
 msgid "sound"
 msgstr "suono"
 
@@ -506,7 +473,6 @@ msgstr "speciale"
 msgid "store"
 msgstr "negozio"
 
-# 75%
 #, fuzzy
 msgid "tear"
 msgstr "lacrima"
@@ -526,7 +492,6 @@ msgstr "visita"
 msgid "world"
 msgstr "mondo"
 
-# 83%
 #, fuzzy
 msgid "yield"
 msgstr "produzione"
@@ -537,11 +502,9 @@ msgstr "la tua nave"
 msgid "back"
 msgstr "indietro"
 
-#
 msgid "build settlement"
 msgstr "costruire insediamenti"
 
-# 75%
 msgid "load"
 msgstr "carica"
 
@@ -566,42 +529,33 @@ msgstr "vuoto"
 msgid "ensure"
 msgstr "assicurati"
 
-#
 msgid "fulfill"
 msgstr "eseguire"
 
-#
 msgid "graphics"
 msgstr "grafica"
 
 msgid "harvest"
 msgstr "raccolto"
 
-#
 msgid "hunts"
 msgstr "caccia"
 
-#
 msgid "multiple"
 msgstr "di più"
 
-#
 msgid "potato field"
 msgstr "campo di patate"
 
-#
 msgid "school"
 msgstr "scuola"
 
-# In base alla frase.
 msgid "seed"
 msgstr "seme / seminare"
 
-#
 msgid "service"
 msgstr "servizio"
 
-#
 msgid "sheep"
 msgstr "pecore"
 
@@ -611,7 +565,6 @@ msgstr "segnale di fuoco"
 msgid "statistics"
 msgstr "statistiche"
 
-# 75%
 msgid "clay"
 msgstr "argilla"
 
@@ -627,7 +580,6 @@ msgstr "tabacco"
 msgid "charcoal"
 msgstr "carbone"
 
-#
 msgid "sugar field"
 msgstr "campo di zucchero"
 
@@ -661,7 +613,6 @@ msgstr "valori"
 #~ msgid "found"
 #~ msgstr "trovati"
 
-#
 #~ msgid "raw"
 #~ msgstr "grezzo"
 
@@ -671,18 +622,15 @@ msgstr "valori"
 #~ msgid "inventory"
 #~ msgstr "inventario"
 
-# 80%
 #~ msgid "moved"
 #~ msgstr "muovi"
 
-# 87%
 #~ msgid "produced"
 #~ msgstr "prodotto"
 
 #~ msgid "hunter"
 #~ msgstr "cacciatore"
 
-#
 #~ msgid "market"
 #~ msgstr "mercato"
 
@@ -704,14 +652,12 @@ msgstr "valori"
 #~ msgid "aristocrat"
 #~ msgstr "aristocratico"
 
-#
 #~ msgid "refresh"
 #~ msgstr "rinfrescare"
 
 #~ msgid "residents"
 #~ msgstr "residenti"
 
-#
 #~ msgid "output"
 #~ msgstr "uscita"
 
@@ -721,46 +667,36 @@ msgstr "valori"
 #~ msgid "animal"
 #~ msgstr "animale"
 
-#
 #~ msgid "fisherman"
 #~ msgstr "pescatore"
 
-#
 #~ msgid "forum"
 #~ msgstr "forum"
 
 #~ msgid "grow"
 #~ msgstr "coltivare"
 
-# 80%
 #~ msgid "hunt"
 #~ msgstr "caccia"
 
-#
 #~ msgid "load/unload"
 #~ msgstr "carica/scarica"
 
-#
 #~ msgid "ship inventory"
 #~ msgstr "inventario nave"
 
-#
 #~ msgid "starting"
 #~ msgstr "avviamento"
 
-#
 #~ msgid "trade partner"
 #~ msgstr "partner commerciale"
 
-#
 #~ msgid "yields"
 #~ msgstr "rendimenti"
 
-#
 #~ msgid "green"
 #~ msgstr "verde"
 
-#
 #~ msgid "red"
 #~ msgstr "rosso"
 
@@ -770,7 +706,6 @@ msgstr "valori"
 #~ msgid "dialogue"
 #~ msgstr "dialogo"
 
-# 75%
 #~ msgid "ruin"
 #~ msgstr "rovina"
 
@@ -798,6 +733,5 @@ msgstr "valori"
 #~ msgid "education"
 #~ msgstr "educazione"
 
-# 
 #~ msgid "market place"
 #~ msgstr "piazza del mercato"

@@ -47,7 +47,6 @@ msgstr "tuottaa / valmistaa"
 msgid "field"
 msgstr "pelto"
 
-#
 msgid "map"
 msgstr "kartta"
 
@@ -182,7 +181,6 @@ msgstr "tukki / lokikirja"
 msgid "road"
 msgstr "tie, polku"
 
-#
 msgid "save"
 msgstr "tallenna"
 
@@ -252,7 +250,6 @@ msgstr "työkaluja"
 msgid "button"
 msgstr "painike"
 
-#
 msgid "continue"
 msgstr "jatka(a)"
 
@@ -271,7 +268,6 @@ msgstr "taso"
 msgid "mode"
 msgstr "tila"
 
-#
 msgid "move"
 msgstr "siirtää, liikuttaa"
 
@@ -326,25 +322,21 @@ msgstr "rakentaminen"
 msgid "decrease"
 msgstr "vähentää"
 
-#
 msgid "description"
 msgstr "kuvaus"
 
 msgid "fish"
 msgstr "kala"
 
-#
 msgid "increase"
 msgstr "kasvattaa"
 
 msgid "lamb"
 msgstr "karitsa, (lammas)"
 
-#
 msgid "leave"
 msgstr "jättää, poistua"
 
-#
 msgid "liquor"
 msgstr "viini, juoma"
 
@@ -363,7 +355,6 @@ msgstr "kantama / etäisyydellä / välillä"
 msgid "reached"
 msgstr "saavutettu"
 
-#
 msgid "run"
 msgstr "suorittaa"
 
@@ -397,7 +388,6 @@ msgstr "antaa, suoda, tuottaa"
 msgid "animals"
 msgstr "eläin"
 
-#
 msgid "Captain's log"
 msgstr "Kapteenin päiväkirja"
 
@@ -433,16 +423,12 @@ msgstr ""
 "palkka (payment for working) / tienesti (earnings, but overly casual form), "
 "nettotuotto (net profit, but too scientific word despite widespreadness)"
 
-#
 msgid "information"
 msgstr "tieto"
 
-# (keyboard)
-#
 msgid "key"
 msgstr "näppäin"
 
-#
 msgid "lamb wool"
 msgstr "lampaan villa"
 
@@ -458,7 +444,6 @@ msgstr ""
 msgid "plant"
 msgstr "kasvi"
 
-#
 msgid "play"
 msgstr "pelaa"
 
@@ -471,18 +456,15 @@ msgstr "hinta"
 msgid "read"
 msgstr "lukea"
 
-#
 msgid "return"
 msgstr "palata"
 
 msgid "sale"
 msgstr "myynti"
 
-#
 msgid "screen"
 msgstr "näyttö"
 
-#
 msgid "sound"
 msgstr "ääni"
 
@@ -519,7 +501,6 @@ msgstr "alukse(si)"
 msgid "back"
 msgstr "takaisin"
 
-#
 msgid "build settlement"
 msgstr "rakentaa siirtokunta"
 
@@ -547,41 +528,33 @@ msgstr "tyhjä"
 msgid "ensure"
 msgstr "varmistaa"
 
-#
 msgid "fulfill"
 msgstr "panna täytäntöön, toteuttaa"
 
-#
 msgid "graphics"
 msgstr "näyttö, grafiikka"
 
 msgid "harvest"
 msgstr "sato"
 
-#
 msgid "hunts"
 msgstr "metsästää"
 
-#
 msgid "multiple"
 msgstr "usea"
 
-#
 msgid "potato field"
 msgstr "perunapelto"
 
-#
 msgid "school"
 msgstr "koulu"
 
 msgid "seed"
 msgstr "siemen"
 
-#
 msgid "service"
 msgstr "palvelu/palvelus, palvella"
 
-#
 msgid "sheep"
 msgstr "lammas"
 
@@ -591,7 +564,6 @@ msgstr "merkkituli"
 msgid "statistics"
 msgstr "tilasto"
 
-# 75%
 msgid "clay"
 msgstr "savi"
 
@@ -607,7 +579,6 @@ msgstr "tupakka"
 msgid "charcoal"
 msgstr "puuhiili"
 
-#
 msgid "sugar field"
 msgstr "sokeripelto"
 
@@ -641,7 +612,6 @@ msgstr "arvot"
 #~ msgid "found"
 #~ msgstr "löydetty"
 
-#
 #~ msgid "raw"
 #~ msgstr "raaka"
 
@@ -654,7 +624,6 @@ msgstr "arvot"
 #~ msgid "hunter"
 #~ msgstr "metsästäjä"
 
-#
 #~ msgid "market"
 #~ msgstr "tori"
 
@@ -676,14 +645,12 @@ msgstr "arvot"
 #~ msgid "aristocrat"
 #~ msgstr "aatelinen"
 
-#
 #~ msgid "refresh"
 #~ msgstr "päivitä"
 
 #~ msgid "residents"
 #~ msgstr "asukkaat"
 
-#
 #~ msgid "output"
 #~ msgstr "ulostulo"
 
@@ -693,46 +660,36 @@ msgstr "arvot"
 #~ msgid "animal"
 #~ msgstr "eläin"
 
-#
 #~ msgid "fisherman"
 #~ msgstr "kalastaja"
 
-#
 #~ msgid "forum"
 #~ msgstr "keskustelupalsta"
 
 #~ msgid "grow"
 #~ msgstr "kasvata"
 
-# 80%
 #~ msgid "hunt"
 #~ msgstr "metsästää"
 
-#
 #~ msgid "load/unload"
 #~ msgstr "ota kyytiin/pois"
 
-#
 #~ msgid "ship inventory"
 #~ msgstr "laivan tavaranäkymä"
 
-#
 #~ msgid "starting"
 #~ msgstr "alkaen"
 
-#
 #~ msgid "trade partner"
 #~ msgstr "kauppakumppani"
 
-#
 #~ msgid "yields"
 #~ msgstr "saa"
 
-#
 #~ msgid "green"
 #~ msgstr "vihreä"
 
-#
 #~ msgid "red"
 #~ msgstr "punainen"
 
@@ -766,10 +723,8 @@ msgstr "arvot"
 #~ msgid "education"
 #~ msgstr "koulutus"
 
-# 
 #~ msgid "market place"
 #~ msgstr "kauppapaikka"
 
-# 
 #~ msgid "SHIFT"
 #~ msgstr "VAIHTO"

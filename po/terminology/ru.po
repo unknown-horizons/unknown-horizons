@@ -47,7 +47,6 @@ msgstr "производить"
 msgid "field"
 msgstr "поле"
 
-#
 msgid "map"
 msgstr "карта"
 
@@ -69,14 +68,12 @@ msgstr "нажатие / клик / нажимать"
 msgid "lumberjack"
 msgstr "лесоруб"
 
-# 88%
 msgid "resident"
 msgstr "житель"
 
 msgid "main square"
 msgstr "главная площадь"
 
-# 85%
 msgid "sailors"
 msgstr "моряки"
 
@@ -182,7 +179,6 @@ msgstr "лог / журнал / бревно"
 msgid "road"
 msgstr "дорога"
 
-#
 msgid "save"
 msgstr "сохнанять / сохранение"
 
@@ -252,7 +248,6 @@ msgstr "инструменты"
 msgid "button"
 msgstr "кнопка"
 
-#
 msgid "continue"
 msgstr "продолжать"
 
@@ -271,23 +266,18 @@ msgstr "уровень"
 msgid "mode"
 msgstr "режим"
 
-#
 msgid "move"
 msgstr "двигать"
 
-# 87%
 msgid "pioneers"
 msgstr "первооткрыватели"
 
-# 87%
 msgid "citizens"
 msgstr "горожане"
 
-# 88%
 msgid "merchants"
 msgstr "торговцы"
 
-# 90%
 msgid "aristocrats"
 msgstr "аристократы"
 
@@ -297,7 +287,6 @@ msgstr "картофель"
 msgid "settler"
 msgstr "поселенец"
 
-# 80%
 msgid "speed"
 msgstr "скорость / успех"
 
@@ -331,25 +320,21 @@ msgstr "здание / сооружение"
 msgid "decrease"
 msgstr "уменьшать"
 
-#
 msgid "description"
 msgstr "описание"
 
 msgid "fish"
 msgstr "рыба"
 
-#
 msgid "increase"
 msgstr "увеличивать"
 
 msgid "lamb"
 msgstr "овца"
 
-#
 msgid "leave"
 msgstr "покидать"
 
-#
 msgid "liquor"
 msgstr "алкоголь"
 
@@ -359,7 +344,6 @@ msgstr "расположение"
 msgid "offer"
 msgstr "предложение"
 
-# 75%
 msgid "potatoes"
 msgstr "картофель"
 
@@ -369,7 +353,6 @@ msgstr "область действия / радиус / дистанция"
 msgid "reached"
 msgstr "достигнутый"
 
-#
 msgid "run"
 msgstr "запускать"
 
@@ -400,15 +383,12 @@ msgstr "активный"
 msgid "afford"
 msgstr "себе"
 
-# 85%
 msgid "animals"
 msgstr "животные"
 
-#
 msgid "Captain's log"
 msgstr "судовой журнал"
 
-# 75%
 msgid "construct"
 msgstr "сооружение"
 
@@ -427,7 +407,6 @@ msgstr "возможность / функция"
 msgid "forest"
 msgstr "лес"
 
-# 80%
 msgid "grows"
 msgstr "растёт"
 
@@ -440,16 +419,12 @@ msgstr "бездействие"
 msgid "income"
 msgstr "доход / прибыль"
 
-#
 msgid "information"
 msgstr "информация"
 
-# (keyboard)
-#
 msgid "key"
 msgstr "клавиша / ключ"
 
-#
 msgid "lamb wool"
 msgstr "овечья шерсть"
 
@@ -465,7 +440,6 @@ msgstr "проблемы"
 msgid "plant"
 msgstr "поле"
 
-#
 msgid "play"
 msgstr "играть"
 
@@ -475,22 +449,18 @@ msgstr "играя"
 msgid "price"
 msgstr "цена"
 
-# 75%
 msgid "read"
 msgstr "читать"
 
-#
 msgid "return"
 msgstr "возвращать / возврат"
 
 msgid "sale"
 msgstr "продажа"
 
-#
 msgid "screen"
 msgstr "экран"
 
-#
 msgid "sound"
 msgstr "звук"
 
@@ -500,7 +470,6 @@ msgstr "специальный"
 msgid "store"
 msgstr "рынок"
 
-# 75%
 msgid "tear"
 msgstr "разрыв"
 
@@ -519,7 +488,6 @@ msgstr "посещать"
 msgid "world"
 msgstr "мир"
 
-# 83%
 msgid "yield"
 msgstr "прибыль"
 
@@ -529,7 +497,6 @@ msgstr "ваш корабль"
 msgid "back"
 msgstr "назад"
 
-#
 msgid "build settlement"
 msgstr "основывать поселение"
 
@@ -557,41 +524,33 @@ msgstr "пусто"
 msgid "ensure"
 msgstr "обеспечить"
 
-#
 msgid "fulfill"
 msgstr "выполнять"
 
-#
 msgid "graphics"
 msgstr "графика"
 
 msgid "harvest"
 msgstr "урожай"
 
-# 3-е лицо
 msgid "hunts"
 msgstr "охотится"
 
-#
 msgid "multiple"
 msgstr "несколько"
 
-#
 msgid "potato field"
 msgstr "картофельное поле"
 
-#
 msgid "school"
 msgstr "школа"
 
 msgid "seed"
 msgstr "семя / сеять / начальное значение (генератора случайных чисел)"
 
-#
 msgid "service"
 msgstr "услуги"
 
-#
 msgid "sheep"
 msgstr "овца"
 
@@ -601,7 +560,6 @@ msgstr "сигнальный огонь"
 msgid "statistics"
 msgstr "статистика"
 
-# 75%
 msgid "clay"
 msgstr "глина"
 
@@ -617,7 +575,6 @@ msgstr "табак"
 msgid "charcoal"
 msgstr "уголь"
 
-#
 msgid "sugar field"
 msgstr "сахарная плантация"
 
@@ -651,7 +608,6 @@ msgstr "показатели"
 #~ msgid "found"
 #~ msgstr "основывать"
 
-#
 #~ msgid "raw"
 #~ msgstr "необработанный / сырой"
 
@@ -661,18 +617,15 @@ msgstr "показатели"
 #~ msgid "inventory"
 #~ msgstr "инвентарь / запасы / товары"
 
-# 80%
 #~ msgid "moved"
 #~ msgstr "перемещённый"
 
-# 87%
 #~ msgid "produced"
 #~ msgstr "произведённый"
 
 #~ msgid "hunter"
 #~ msgstr "охотник"
 
-#
 #~ msgid "market"
 #~ msgstr "рынок"
 
@@ -694,14 +647,12 @@ msgstr "показатели"
 #~ msgid "aristocrat"
 #~ msgstr "аристократ"
 
-#
 #~ msgid "refresh"
 #~ msgstr "обновлять"
 
 #~ msgid "residents"
 #~ msgstr "жители"
 
-#
 #~ msgid "output"
 #~ msgstr "вывод"
 
@@ -711,47 +662,36 @@ msgstr "показатели"
 #~ msgid "animal"
 #~ msgstr "животное"
 
-#
 #~ msgid "fisherman"
 #~ msgstr "рыбак"
 
-#
 #~ msgid "forum"
 #~ msgstr "форум"
 
 #~ msgid "grow"
 #~ msgstr "расти"
 
-# 3-е лицо
-# 80%
 #~ msgid "hunt"
 #~ msgstr "охотится"
 
-#
 #~ msgid "load/unload"
 #~ msgstr "загружать/разгружать"
 
-#
 #~ msgid "ship inventory"
 #~ msgstr "запасы на корабле"
 
-#
 #~ msgid "starting"
 #~ msgstr "исходный / начальный"
 
-#
 #~ msgid "trade partner"
 #~ msgstr "компаньон / партнёр по торговле"
 
-#
 #~ msgid "yields"
 #~ msgstr "прибыль / доходы"
 
-#
 #~ msgid "green"
 #~ msgstr "зелёный"
 
-#
 #~ msgid "red"
 #~ msgstr "красный"
 
@@ -761,7 +701,6 @@ msgstr "показатели"
 #~ msgid "dialogue"
 #~ msgstr "диалог"
 
-# 75%
 #~ msgid "ruin"
 #~ msgstr "руины / разрушать"
 
@@ -789,10 +728,8 @@ msgstr "показатели"
 #~ msgid "education"
 #~ msgstr "образование"
 
-# 
 #~ msgid "market place"
 #~ msgstr "рынок / рыночная площадь"
 
-# Is this about the key ?
 #~ msgid "SHIFT"
 #~ msgstr "SHIFT"

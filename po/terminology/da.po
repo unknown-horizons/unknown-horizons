@@ -47,7 +47,6 @@ msgstr "producere"
 msgid "field"
 msgstr "felt"
 
-#
 msgid "map"
 msgstr "kort"
 
@@ -69,7 +68,6 @@ msgstr "klik"
 msgid "lumberjack"
 msgstr "skovhugger"
 
-# 88%
 #, fuzzy
 msgid "resident"
 msgstr "beboere"
@@ -77,7 +75,6 @@ msgstr "beboere"
 msgid "main square"
 msgstr "største torv"
 
-# 85%
 #, fuzzy
 msgid "sailors"
 msgstr "sømand"
@@ -186,7 +183,6 @@ msgstr "logbog"
 msgid "road"
 msgstr ""
 
-#
 msgid "save"
 msgstr "spare"
 
@@ -257,7 +253,6 @@ msgstr "værktøjer"
 msgid "button"
 msgstr ""
 
-#
 msgid "continue"
 msgstr "fortsætte"
 
@@ -276,26 +271,21 @@ msgstr "niveau"
 msgid "mode"
 msgstr "mode"
 
-#
 msgid "move"
 msgstr "flytte"
 
-# 87%
 #, fuzzy
 msgid "pioneers"
 msgstr "pioner"
 
-# 87%
 #, fuzzy
 msgid "citizens"
 msgstr "borger"
 
-# 88%
 #, fuzzy
 msgid "merchants"
 msgstr "handelsmand"
 
-# 90%
 #, fuzzy
 msgid "aristocrats"
 msgstr "aristokrat"
@@ -306,7 +296,6 @@ msgstr "kartoffel"
 msgid "settler"
 msgstr "bosætter"
 
-# 80%
 #, fuzzy
 msgid "speed"
 msgstr "frø"
@@ -341,25 +330,21 @@ msgstr "byggeri"
 msgid "decrease"
 msgstr "faldet"
 
-#
 msgid "description"
 msgstr "beskrivelse"
 
 msgid "fish"
 msgstr "fisk"
 
-#
 msgid "increase"
 msgstr "stigning"
 
 msgid "lamb"
 msgstr ""
 
-#
 msgid "leave"
 msgstr "orlov"
 
-#
 msgid "liquor"
 msgstr "spiritus"
 
@@ -369,7 +354,6 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
-# 75%
 #, fuzzy
 msgid "potatoes"
 msgstr "kartoffel"
@@ -380,7 +364,6 @@ msgstr "rækkevidde"
 msgid "reached"
 msgstr "nået"
 
-#
 msgid "run"
 msgstr "køre"
 
@@ -411,7 +394,6 @@ msgstr "aktive"
 msgid "afford"
 msgstr ""
 
-# 85%
 #, fuzzy
 msgid "animals"
 msgstr "dyr"
@@ -419,7 +401,6 @@ msgstr "dyr"
 msgid "Captain's log"
 msgstr "Kaptajnens logbog"
 
-# 75%
 #, fuzzy
 msgid "construct"
 msgstr "byggeri"
@@ -439,7 +420,6 @@ msgstr "funktion"
 msgid "forest"
 msgstr "skov"
 
-# 80%
 #, fuzzy
 msgid "grows"
 msgstr "vokse"
@@ -453,12 +433,9 @@ msgstr ""
 msgid "income"
 msgstr "indkomst"
 
-#
 msgid "information"
 msgstr "oplysninger"
 
-# (keyboard)
-#
 msgid "key"
 msgstr "nøgle"
 
@@ -477,7 +454,6 @@ msgstr "problemer"
 msgid "plant"
 msgstr ""
 
-#
 msgid "play"
 msgstr "spiller"
 
@@ -488,23 +464,19 @@ msgstr "spille"
 msgid "price"
 msgstr ""
 
-# 75%
 #, fuzzy
 msgid "read"
 msgstr "rød"
 
-#
 msgid "return"
 msgstr "tilbage"
 
 msgid "sale"
 msgstr "salg"
 
-#
 msgid "screen"
 msgstr "skærm"
 
-#
 msgid "sound"
 msgstr "lyd"
 
@@ -514,7 +486,6 @@ msgstr ""
 msgid "store"
 msgstr ""
 
-# 75%
 #, fuzzy
 msgid "tear"
 msgstr "hold"
@@ -534,7 +505,6 @@ msgstr "besøg"
 msgid "world"
 msgstr ""
 
-# 83%
 #, fuzzy
 msgid "yield"
 msgstr "udbytter"
@@ -545,7 +515,6 @@ msgstr ""
 msgid "back"
 msgstr "tilbage"
 
-#
 msgid "build settlement"
 msgstr "opbygge afregning"
 
@@ -573,31 +542,25 @@ msgstr ""
 msgid "ensure"
 msgstr ""
 
-#
 msgid "fulfill"
 msgstr "opfylde"
 
-#
 msgid "graphics"
 msgstr "grafik"
 
 msgid "harvest"
 msgstr ""
 
-# 80%
 #, fuzzy
 msgid "hunts"
 msgstr "jagt"
 
-#
 msgid "multiple"
 msgstr "flere"
 
-#
 msgid "potato field"
 msgstr "kartoffelmark"
 
-#
 msgid "school"
 msgstr "skole"
 
@@ -607,7 +570,6 @@ msgstr "frø"
 msgid "service"
 msgstr "service"
 
-#
 msgid "sheep"
 msgstr "får"
 
@@ -617,7 +579,6 @@ msgstr "signal brand"
 msgid "statistics"
 msgstr ""
 
-# 75%
 msgid "clay"
 msgstr "ler"
 
@@ -633,7 +594,6 @@ msgstr "tobak"
 msgid "charcoal"
 msgstr "trækul"
 
-#
 msgid "sugar field"
 msgstr "sukker felt"
 
@@ -667,7 +627,6 @@ msgstr ""
 #~ msgid "found"
 #~ msgstr "fundet"
 
-#
 #~ msgid "raw"
 #~ msgstr "rå"
 
@@ -677,18 +636,15 @@ msgstr ""
 #~ msgid "inventory"
 #~ msgstr "opgørelse"
 
-# 80%
 #~ msgid "moved"
 #~ msgstr "flyttet"
 
-# 87%
 #~ msgid "produced"
 #~ msgstr "produceret"
 
 #~ msgid "hunter"
 #~ msgstr "jæger"
 
-#
 #~ msgid "market"
 #~ msgstr "marked"
 
@@ -707,7 +663,6 @@ msgstr ""
 #~ msgid "aristocrat"
 #~ msgstr "aristokrat"
 
-#
 #~ msgid "refresh"
 #~ msgstr "genopfriske"
 
@@ -723,11 +678,9 @@ msgstr ""
 #~ msgid "animal"
 #~ msgstr "dyr"
 
-#
 #~ msgid "fisherman"
 #~ msgstr "fisker"
 
-#
 #~ msgid "forum"
 #~ msgstr "forum"
 
@@ -737,27 +690,21 @@ msgstr ""
 #~ msgid "hunt"
 #~ msgstr "jagt"
 
-#
 #~ msgid "load/unload"
 #~ msgstr "last / losse"
 
-#
 #~ msgid "ship inventory"
 #~ msgstr "skib opgørelse"
 
-#
 #~ msgid "trade partner"
 #~ msgstr "handelspartner"
 
-#
 #~ msgid "yields"
 #~ msgstr "udbytter"
 
-#
 #~ msgid "green"
 #~ msgstr "grøn"
 
-#
 #~ msgid "red"
 #~ msgstr "rød"
 
@@ -767,7 +714,6 @@ msgstr ""
 #~ msgid "dialogue"
 #~ msgstr "dialog"
 
-# 75%
 #~ msgid "ruin"
 #~ msgstr "ødelægge"
 
@@ -789,6 +735,5 @@ msgstr ""
 #~ msgid "education"
 #~ msgstr "uddannelse"
 
-# 
 #~ msgid "market place"
 #~ msgstr "markedsplads"
