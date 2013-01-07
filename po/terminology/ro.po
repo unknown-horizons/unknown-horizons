@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2011-12-15 01:10+0200\n"
-"Last-Translator: trendy <trendynickname@gmail.com>\n"
+"PO-Revision-Date: 2012-12-30 08:43+0000\n"
+"Last-Translator: tbmale <tbmale@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.5.0-beta1\n"
+"X-POOTLE-MTIME: 1356857003.0\n"
 
 msgid "build"
 msgstr "construire"
@@ -68,15 +69,17 @@ msgstr "clic"
 msgid "lumberjack"
 msgstr "tăietor de lemne"
 
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "rezidenți / locuitori"
 
 #, fuzzy
 msgid "main square"
 msgstr "piață principală"
 
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "marinar"
 
 msgid "food"
 msgstr "hrană"
@@ -271,17 +274,21 @@ msgstr "mod"
 msgid "move"
 msgstr "deplasa"
 
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "pionier"
 
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "cetățean"
 
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "negustor"
 
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "aristocrat"
 
 msgid "potato"
 msgstr "cartof"
@@ -290,7 +297,7 @@ msgid "settler"
 msgstr "colonist"
 
 msgid "speed"
-msgstr ""
+msgstr "viteză"
 
 msgid "stop"
 msgstr "stop / a opri"
@@ -347,7 +354,7 @@ msgid "offer"
 msgstr ""
 
 msgid "potatoes"
-msgstr ""
+msgstr "cartofi"
 
 msgid "range"
 msgstr "rază de acțiune / interval"
@@ -388,13 +395,14 @@ msgid "afford"
 msgstr ""
 
 msgid "animals"
-msgstr ""
+msgstr "animale"
 
 msgid "Captain's log"
 msgstr "jurnal de bord"
 
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "construire / construcție"
 
 msgid "consume"
 msgstr "a consuma"
@@ -411,8 +419,9 @@ msgstr "funcție / trăsătură"
 msgid "forest"
 msgstr "pădure"
 
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "a crește"
 
 msgid "hold"
 msgstr "a ține"
@@ -453,8 +462,9 @@ msgstr "joacă"
 msgid "price"
 msgstr ""
 
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "citește"
 
 msgid "return"
 msgstr "a reîntoarce / a reveni"
@@ -474,8 +484,9 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "echipă"
 
 msgid "from time to time"
 msgstr "din când în când"
@@ -492,8 +503,9 @@ msgstr "a vizita / vizită"
 msgid "world"
 msgstr ""
 
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "randament"
 
 msgid "your ship"
 msgstr ""
@@ -537,8 +549,9 @@ msgstr "grafică"
 msgid "harvest"
 msgstr ""
 
+#, fuzzy
 msgid "hunts"
-msgstr ""
+msgstr "a vâna"
 
 msgid "multiple"
 msgstr "multiplu"
@@ -565,8 +578,9 @@ msgstr "foc de semnalizare"
 msgid "statistics"
 msgstr ""
 
+#, fuzzy
 msgid "clay"
-msgstr ""
+msgstr "joacă"
 
 msgid "iron"
 msgstr ""
