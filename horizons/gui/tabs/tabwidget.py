@@ -80,7 +80,7 @@ class TabWidget(object):
 				background.image = tab.button_background_image
 				button.path = tab.path
 			button.capture(Callback(self._show_tab, index))
-			if hasattr(tab, 'helptext') and tab.helptext is not None:
+			if hasattr(tab, 'helptext') and tab.helptext:
 				button.helptext = tab.helptext
 			container.size = background.size
 			container.addChild(background)
