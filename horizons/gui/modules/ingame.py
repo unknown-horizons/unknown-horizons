@@ -239,7 +239,7 @@ class CityInfo(object):
 		elif blocked < width < resbar[0] + blocked: # large resbar / small resolution
 			self._widget.pos = ('center', 'top')
 			xoff = 0
-			yoff = 0 # upper screen edge
+			yoff = resbar[1] # below resbar
 		else:
 			self._widget.pos = ('left', 'top')
 			xoff = resbar[0] + (width - blocked - resbar[0]) // 2
