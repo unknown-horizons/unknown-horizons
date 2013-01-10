@@ -71,7 +71,7 @@ class TilingHBox(TilingBackground, HBox):
 	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
 	def __init__(self, **kwargs):
 		super(TilingHBox, self).__init__(
-			amount=0, name='tab_background_icons',
+			amount=0, name='city_info_background',
 			base_path="content/gui/images/background/widgets/cityinfo_",
 			start_img="left.png", tiles_img="fill.png", final_img="right.png",
 			**kwargs)
