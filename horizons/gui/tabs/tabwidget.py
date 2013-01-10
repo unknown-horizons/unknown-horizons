@@ -50,7 +50,7 @@ class TabWidget(object):
 		self._tabs = [] if not tabs else tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
 		self.widget = load_uh_widget("tab_base.xml")
-		self.widget.position_technique = 'right-239:top+207'
+		self.widget.position_technique = 'right-239:top+209'
 		self.content = self.widget.findChild(name='content')
 		self._init_tabs()
 		# select a tab to show (first one is default)
