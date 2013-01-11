@@ -38,7 +38,7 @@ class FPSDisplay(AutoResizeContainer):
 		self._label = Label(text=u"- - -")
 		self.addChild(self._label)
 		self.stylize('menu')
-		self.position_technique = "left+0:bottom+0"
+		self.position_technique = "left:bottom"
 
 		self._timemanager = horizons.globals.fife.engine.getTimeManager()
 

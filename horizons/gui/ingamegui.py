@@ -102,7 +102,7 @@ class IngameGui(LivingObject):
 		# 'minimap' is the guichan gui around the actual minimap, which is saved
 		# in self.minimap
 		self.mainhud = load_uh_widget('minimap.xml')
-		self.mainhud.position_technique = "right+0:top+0"
+		self.mainhud.position_technique = "right:top"
 
 		icon = self.mainhud.findChild(name="minimap")
 		self.minimap = Minimap(icon,
