@@ -87,7 +87,7 @@ class ConcreteObject(WorldObject):
 
 	def act(self, action, facing_loc=None, repeating=False, force_restart=True):
 		"""
-		@param repeating: maps to fife, currently broken: http://fife.trac.cvsdude.com/engine/ticket/708
+		@param repeating: maps to fife, currently broken: http://fife.trac.cloudforge.com/engine/ticket/708
 		@param force_restart: whether to always restart, even if action is already displayed
 		"""
 		if not self.has_action(action):

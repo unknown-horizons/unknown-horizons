@@ -140,7 +140,7 @@ class Sound(object):
 			assert emitter is not None, "You need to supply an initialized emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
-			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
+			#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/701
 			emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 			emitter.play()
 

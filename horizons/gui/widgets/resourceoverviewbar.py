@@ -594,7 +594,7 @@ class ResourceOverviewBar(object):
 				box.addChild(Icon(image=image))
 				box.addSpacer(Spacer())
 				box.addChild(Label(name="resbar_stats_entry_%s"%num))
-				# workaround for fife font bug, probably http://fife.trac.cvsdude.com/engine/ticket/666
+				# workaround for fife font bug, probably http://fife.trac.cloudforge.com/engine/ticket/666
 				box.addChild(Label(text=u" "))
 
 				if num < len(images)-1: # regular one

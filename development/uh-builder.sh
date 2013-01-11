@@ -131,7 +131,7 @@ else
 	mkdir fife
 	mkdir unknown-horizons
 	cd fife
-	svn co http://fife.svn.cvsdude.com/engine/trunk
+	svn co http://fife.svn.cloudforge.com/engine/trunk
 	cd trunk
 	scons -c && scons ext && scons fife-python
 	cd ../..

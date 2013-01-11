@@ -125,7 +125,7 @@ class TradeTab(TabInterface):
 
 	def __remove_changelisteners(self):
 		# never redraw on clicks immediately because of
-		# http://fife.trac.cvsdude.com/engine/ticket/387
+		# http://fife.trac.cloudforge.com/engine/ticket/387
 		# This way, there is a chance of clicks being noticed by pychan.
 		# The cost is to delay all updates, which in this case is 0.3 sec, therefore deemed bearable.
 
