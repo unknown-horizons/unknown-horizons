@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+import traceback
 import weakref
 
 from fife.extensions.pychan.widgets import Container, Icon
@@ -96,7 +97,6 @@ class TabWidget(object):
 		"""
 		if not number in range(len(self._tabs)):
 			# this usually indicates a non-critical error, therefore we can handle it without crashing
-			import traceback
 			traceback.print_stack()
 			self.log.warning("Invalid tab number %s, available tabs: %s", number, self._tabs)
 			return

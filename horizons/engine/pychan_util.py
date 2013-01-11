@@ -21,6 +21,7 @@
 # ###################################################
 
 import functools
+import traceback
 
 from fife.extensions import pychan
 
@@ -42,7 +43,6 @@ def handle_gcn_exception(e, msg=None):
 	@param e: RuntimeError (python, not pychan)
 	@param msg: additional info as string
 	"""
-	import traceback
 	traceback.print_stack()
 	print 'Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.'
 	if msg:

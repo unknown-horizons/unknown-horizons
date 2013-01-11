@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import traceback
+
 from fife import fife
 
 import horizons.globals
@@ -174,7 +176,6 @@ class SelectionTool(NavigationTool):
 				# this is a very odd corner case, it should only happen after the session has been ended
 				# we can't allow to just let it crash however
 				print 'WARNING: selected_instance is None. Please report this!'
-				import traceback
 				traceback.print_stack()
 				print 'WARNING: selected_instance is None. Please report this!'
 				return
