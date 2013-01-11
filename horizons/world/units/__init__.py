@@ -59,13 +59,14 @@ class UnitClass(IngameType):
 		"""Loads the object with all animations.
 		"""
 		cls.log.debug('Loading unit %s', cls.id)
+		model = horizons.globals.fife.engine.getModel()
 		try:
-			cls._real_object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'unit')
+			cls._real_object = model.createObject(str(cls.id), 'unit')
 		except RuntimeError:
 			cls.log.debug('Already loaded unit %s', cls.id)
-			cls._real_object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'unit')
+			cls._real_object = model.getObject(str(cls.id), 'unit')
 			return
-		cls._real_object.setPather(horizons.globals.fife.engine.getModel().getPather('RoutePather'))
+		cls._real_object.setPather(model.getPather('RoutePather'))
 		cls._real_object.setBlocking(False)
 		cls._real_object.setStatic(False)
 		all_action_sets = ActionSetLoader.get_sets()
