@@ -100,13 +100,18 @@ class IngameType(type):
 		# TODO: move this to the producer component as soon as there is support for class attributes there
 		self.additional_provided_resources = yaml_data.get('additional_provided_resources', [])
 
-		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
-		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py
+		"""TUTORIAL: Now you know the basic attributes each type has.
+		Further attributes specific to buildings and units can be found in
+		horizons/world/{building,units}/__init__.py
 		which contains the unit and building specific attributes and loading.
 
-		By now you should know the basic constructs used in UH, so we feel comfortable
-		stopping the tutorial here. Be sure to join our IRC channel and idle around there.
-		You'll find tasks for getting into the code in our trac.unknown-horizons.org.
+		By now you should know the basic constructs used in UH, so we feel
+		comfortable stopping the tutorial here. Be sure to join our IRC
+		channel and idle around there, ask us if you're stuck and so on.
+
+		You'll find tasks for getting into the code in our issue tracker at
+		https://github.com/unknown-horizons/unknown-horizons/issues
+		Especially look for issues with the 'starter' label attached!
 
 		Other relevant parts of the code you might be interested in are:
 		* commands: horizons/commands. Abstracts all user interactions.
