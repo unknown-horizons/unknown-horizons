@@ -17,10 +17,10 @@
 
 		<!-- one of those button gets removed at runtime -->
 		<ImageButton path="icons/templates/production/toggle_active"
-			border_size="0" position="80,0" name="toggle_active_active" helptext="Pause production" />
+			position="80,0" name="toggle_active_active" helptext="Pause production" />
 
 		<ImageButton path="icons/templates/production/toggle_inactive"
-			border_size="0" position="80,0" name="toggle_active_inactive" helptext="Start production" />
+			position="80,0" name="toggle_active_inactive" helptext="Start production" />
 
 		<VBox name="output_res" position="158,4" />
 	</Container>
