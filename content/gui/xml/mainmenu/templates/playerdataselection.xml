@@ -2,7 +2,7 @@
 <VBox position="100,190" name="playerdataselection" border_size="0" padding="15">
 	<HBox min_size="250,20">
 		<Label name="player_label" text="Player name:" />
-		<TextField name="playername" text="" max_size="250,20" min_size="150,20" />
+		<TextField name="playername" max_size="250,20" min_size="150,20" />
 	</HBox>
 
 	<HBox>

@@ -361,7 +361,7 @@
 	<VBox position="185,45" name="credits">
 		<Label text="Special Thanks" name="headline" />
 		<Icon image="content/gui/images/background/hr.png" />
-		<VBox> <Label text="" name="headline" />
+		<VBox> <Label name="headline" />
 			<VBox name="box">
 				<Label text="The whole FIFE team (fifengine.net)" />
 				<Label text="mvBarracuda (Martin Vohland)" />

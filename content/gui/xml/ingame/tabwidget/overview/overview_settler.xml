@@ -7,7 +7,7 @@
 
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
 		<Spacer min_size="0"  max_size="50" />
-			<RenameLabel name="headline" text="" helptext="Click to change the name of your settlement" />
+			<RenameLabel name="headline" helptext="Click to change the name of your settlement" />
 		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -17,7 +17,7 @@
 			<Icon name="building_image" position="30,14" />
 
 			<!-- happiness and residents -->
-			<Label name='name' position="0,140" text="" />
+			<Label name='name' position="0,140" />
 			<Icon name="happiness_label" position="0,167"
 				image="content/gui/icons/templates/happiness/average.png"
 				helptext="Happiness" />
@@ -26,18 +26,18 @@
 			<Icon name="residents_label" position="140,166"
 				image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
 				helptext="Residents" />
-			<Label name='inhabitants' position="160,165" text=""
+			<Label name='inhabitants' position="160,165"
 				helptext="Residents" />
 
 			<!-- Taxes -->
 			<Icon image="content/gui/images/background/hr.png" position="0,190" />
 			<Label position="0,205" name="tax_label" text="Taxes:" />
-			<Label name='taxes' position="55,205" text=""
+			<Label name='taxes' position="55,205"
 				helptext="Paid taxes" />
 			<Icon name="paid_taxes_label" position="72,205"
 				image="content/gui/icons/resources/running_costs.png"
 				helptext="Paid taxes" />
-			<Label name='tax_val_label' position="160,205" text=""
+			<Label name='tax_val_label' position="160,205"
 				helptext="Tax rate" />
 			<Icon name="paid_taxes_label" position="185,205"
 				image="content/gui/icons/resources/running_costs.png"

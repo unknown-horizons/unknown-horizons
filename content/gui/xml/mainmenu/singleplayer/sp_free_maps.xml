@@ -4,7 +4,7 @@
 	<ScrollArea max_size="290,140"  min_size="290,140"  horizontal_scrollbar="0"  name="map_list_area">
 		<ListBox name="maplist" is_focusable="0" />
 	</ScrollArea>
-	<Label name="recommended_number_of_players_lbl" text="" />
+	<Label name="recommended_number_of_players_lbl" />
 	<Icon name="map_preview_minimap" size="128,128" max_size="128,128" is_focusable="0" /> 
 
 

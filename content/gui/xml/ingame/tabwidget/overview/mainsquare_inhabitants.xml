@@ -24,12 +24,12 @@ resources.
 			      image="content/gui/icons/resources/running_costs.png"
 			      helptext="Paid taxes" />
 			<Label position="20,0" name="tax_label" text="Taxes:" />
-			<Label name="taxes" position="98,0" text=""
+			<Label name="taxes" position="98,0"
 			       helptext="Paid taxes" />
 			<Icon name="tax_rate_icon" position="160,0"
 			      image="content/gui/icons/resources/running_costs.png"
 			      helptext="Tax rate" />
-			<Label name="tax_val_label" position="180,0" text=""
+			<Label name="tax_val_label" position="180,0"
 			       helptext="Tax rate" />
 			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" is_focusable="0" />
 		</Container>

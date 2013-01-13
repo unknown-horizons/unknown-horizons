@@ -8,7 +8,7 @@
 	<Icon image="content/gui/images/background/hr.png" />
 	<HBox padding="10">
 		<Label name="old_name_label" text="Old name:" />
-		<Label name="old_name" text="" />
+		<Label name="old_name" />
 	</HBox>
 	<Label name="enter_new_name_lbl" text="Enter new name:"
 		wrap_text="1" max_size="150,40" />

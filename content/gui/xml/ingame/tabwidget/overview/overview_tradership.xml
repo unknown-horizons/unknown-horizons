@@ -18,7 +18,7 @@
 		<HBox position="25,235">
 				<!-- The trader doesn't need health, does it?
 			<Label name="health_label" text="Health:" />
-			<Label name='health' text="" />
+			<Label name='health' />
 				Maybe later on pirates will also try tp attack the trader and players can
 				decide whom to help from time to time … but that's a longer way to go (-,
 				-->

@@ -17,7 +17,7 @@
 			path="icons/widgets/minimap/rotate_right" />
 
 		<Label position="73,65" name="running_costs_label" text="Running costs:" />
-		<Label position="189,65" name="running_costs" text="" />
+		<Label position="189,65" name="running_costs" />
 
 	</Container>
 </Container>
