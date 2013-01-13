@@ -1,17 +1,8 @@
-[Font/mainmenu]
+[Font/pickbelt]
 
 type: truetype
-source: content/fonts/LinLibertineBI.ttf
-size: 22
-color: 255,255,255
-antialias: 1
-
-
-[Font/cityinfo]
-
-type: truetype
-source: content/fonts/LinLibertineBI.ttf
-size: 18
+source: content/fonts/LinLibertineB.ttf
+size: 13
 color: 255,255,255
 antialias: 1
 
@@ -43,6 +34,24 @@ color: 188,154,114
 antialias: 1
 
 
+[Font/tooltip]
+
+type: truetype
+source: content/fonts/LinLibertineI.ttf
+size: 15
+color: 68,42,2
+antialias: 1
+
+
+[Font/message]
+
+type: truetype
+source: content/fonts/LinLibertineB.ttf
+size: 15
+color: 255,255,255
+antialias: 1
+
+
 [Font/resourcebar]
 
 type: truetype
@@ -52,12 +61,21 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/large_load]
+[Font/unifont]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 16
+color: 68,42,2
+antialias: 1
+
+
+[Font/cityinfo]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
-size: 34
-color: 120,100,65
+size: 18
+color: 255,255,255
 antialias: 1
 
 
@@ -79,37 +97,19 @@ color: 188,154,114
 antialias: 1
 
 
-[Font/tooltip]
+[Font/mainmenu]
 
 type: truetype
-source: content/fonts/LinLibertineI.ttf
-size: 15
-color: 68,42,2
-antialias: 1
-
-
-[Font/message]
-
-type: truetype
-source: content/fonts/LinLibertineB.ttf
-size: 15
+source: content/fonts/LinLibertineBI.ttf
+size: 22
 color: 255,255,255
 antialias: 1
 
 
-[Font/pickbelt]
+[Font/large_load]
 
 type: truetype
-source: content/fonts/LinLibertineB.ttf
-size: 13
-color: 255,255,255
-antialias: 1
-
-
-[Font/unifont]
-
-type: truetype
-source: content/fonts/Unifont.ttf
-size: 16
-color: 68,42,2
+source: content/fonts/LinLibertineBI.ttf
+size: 34
+color: 120,100,65
 antialias: 1
