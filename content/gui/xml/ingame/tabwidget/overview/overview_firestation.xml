@@ -14,8 +14,6 @@
 		<Container size="260,550" position="25,43">
 			<Label name="name_label" position="0,0" text="Name:" />
 			<Label name='name' position="55,0" />
-			<!--<Label position="0,25" name="health_label" text="Health:" />
-			<Label name='health' position="55,25" />-->
 		</Container>
 		<HBox min_size="125,20" max_size="225,20" position="25,65">
 			<Icon name="running_costs_label" helptext="Running costs"

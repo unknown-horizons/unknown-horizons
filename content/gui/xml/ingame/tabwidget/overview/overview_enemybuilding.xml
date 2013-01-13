@@ -13,9 +13,6 @@
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-		<HBox size="260,550" position="25,43">
-			<Label name="name" position="0,0" /> <!-- set to instance name-->
-			<!--<Label position="0,25" name="health_label" text="Health:" /><Label name='health' position="55,25" />-->
-		</HBox>
+		<Label name="name" position="25,43" /> <!-- set to instance name-->
 	</Container>
 </Container>
