@@ -21,50 +21,50 @@ resources.
 			<!-- TODO include icon, label, paid taxes in box to adjust with length
 				of translated strings (can vary a lot between en and nl) -->
 			<Icon name="paid_taxes_icon" position="0,0"
-			      image="content/gui/icons/resources/running_costs.png"
-			      helptext="Paid taxes" />
+				image="content/gui/icons/resources/running_costs.png"
+				helptext="Paid taxes" />
 			<Label position="20,0" name="tax_label" text="Taxes:" />
 			<Label name="taxes" position="98,0"
-			       helptext="Paid taxes" />
+				helptext="Paid taxes" />
 			<Icon name="tax_rate_icon" position="160,0"
-			      image="content/gui/icons/resources/running_costs.png"
-			      helptext="Tax rate" />
+				image="content/gui/icons/resources/running_costs.png"
+				helptext="Tax rate" />
 			<Label name="tax_val_label" position="180,0"
-			       helptext="Tax rate" />
+				helptext="Tax rate" />
 			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" is_focusable="0" />
 		</Container>
 
 		<Container size="260,60" position="25,95">
 			<Label name="upgrades_lbl" position="0,0" text="Upgrade permissions:" />
 			<ToggleImageButton name="allow_upgrades" border_size="0" position="0,20"
-			                   inactive_image="content/gui/images/buttons/upgrade/disallow.png"
-			                   up_image="content/gui/images/buttons/upgrade/allow.png"
-			                   down_image="content/gui/images/buttons/upgrade/allow.png"
-			                   hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png" />
+				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
+				up_image="content/gui/images/buttons/upgrade/allow.png"
+				down_image="content/gui/images/buttons/upgrade/allow.png"
+				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png" />
 		</Container>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,160" />
 
-        <Container size="260,72" position="25,165">
-            <Label name="headline_happiness_per_house" position="0,0" text="Happiness per house" />
-            <Icon position="30,25" image="content/gui/icons/templates/happiness/sad.png" name="sad_icon" helptext="sad" />
-            <Icon position="80,25" image="content/gui/icons/templates/happiness/average.png" name="avg_icon" helptext="satisfied" />
-            <Icon position="130,25" image="content/gui/icons/templates/happiness/happy.png" name="happy_icon" helptext="happy" />
+		<Container size="260,72" position="25,165">
+			<Label name="headline_happiness_per_house" position="0,0" text="Happiness per house" />
+			<Icon position="30,25" image="content/gui/icons/templates/happiness/sad.png" name="sad_icon" helptext="sad" />
+			<Icon position="80,25" image="content/gui/icons/templates/happiness/average.png" name="avg_icon" helptext="satisfied" />
+			<Icon position="130,25" image="content/gui/icons/templates/happiness/happy.png" name="happy_icon" helptext="happy" />
 
-            <Icon position="0,46" image="content/gui/icons/widgets/cityinfo/house_small.png" name="happiness_house_icon"
-                  helptext="Amount of houses with this happiness" />
-            <Label position="30,45" name="sad_amount" />
-            <Label position="80,45" name="avg_amount" />
-            <Label position="130,45" name="happy_amount" />
-        </Container>
+			<Icon position="0,46" image="content/gui/icons/widgets/cityinfo/house_small.png" name="happiness_house_icon"
+				helptext="Amount of houses with this happiness" />
+			<Label position="30,45" name="sad_amount" />
+			<Label position="80,45" name="avg_amount" />
+			<Label position="130,45" name="happy_amount" />
+		</Container>
 
 		<Container name="residents_per_house_container" size="260,60" position="25,230">
 			<Label name="headline_residents_per_house" position="0,0" text="Residents per house" />
-            <Icon name="inhabitants_icon" position="0,21" image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
-                  helptext="Number of inhabitants per house" />
-            <Icon name="houses_icon" position="0,41" image="content/gui/icons/widgets/cityinfo/house_small.png"
-                  helptext="Houses with this amount of inhabitants" />
-            <Container name="residents_per_house_table" position="20,20" size="240,40" />
+			<Icon name="inhabitants_icon" position="0,21" image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
+				helptext="Number of inhabitants per house" />
+			<Icon name="houses_icon" position="0,41" image="content/gui/icons/widgets/cityinfo/house_small.png"
+				helptext="Houses with this amount of inhabitants" />
+			<Container name="residents_per_house_table" position="20,20" size="240,40" />
 		</Container>
 
 		<Container name="residents_total" size="260,60" position="25,290">
