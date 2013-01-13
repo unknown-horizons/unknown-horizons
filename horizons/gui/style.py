@@ -47,6 +47,7 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0, 0),
 			'font': '14_black',
+			'vertical_scrollbar': 1,
 			'horizontal_scrollbar': 0,
 		},
 		'Button': {

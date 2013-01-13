@@ -135,8 +135,7 @@
 	<VBox position="185,45" padding="0">
 		<Label text="Translators" name="headline" />
 		<Icon image="content/gui/images/background/hr.png" />
-	<ScrollArea name="translators" vertical_scrollbar="1"
-			max_size="310,470" min_size="310,470">
+	<ScrollArea name="translators" max_size="310,470" min_size="310,470">
 	<VBox name="credits" padding="3">
 		<VBox> <Label text="Bulgarian" name="headline" />
 			<VBox name="box">
@@ -241,8 +240,7 @@
 	</VBox>
 
 	<!-- split at char 13 of the alphabet (start new page with N) -->
-	<ScrollArea name="translators" vertical_scrollbar="1"
-			position="525,45" max_size="310,475" min_size="310,475">
+	<ScrollArea name="translators" position="525,45" max_size="310,475" min_size="310,475">
 	<VBox name="credits2" padding="3">
 		<VBox> <Label text="Norwegian" name="headline" />
 			<VBox name="box">
@@ -361,7 +359,7 @@
 	<VBox position="185,45" name="credits">
 		<Label text="Special Thanks" name="headline" />
 		<Icon image="content/gui/images/background/hr.png" />
-		<VBox> <Label text="" name="headline" />
+		<VBox> <Label name="headline" />
 			<VBox name="box">
 				<Label text="The whole FIFE team (fifengine.net)" />
 				<Label text="mvBarracuda (Martin Vohland)" />

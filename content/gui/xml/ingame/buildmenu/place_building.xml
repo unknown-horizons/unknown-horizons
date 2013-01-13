@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="250,450" border_size="0" name="place_building">
+<Container size="250,450" name="place_building">
 <TabBG amount="6" />
 
 	<Container position="0,70" size="250,400">
@@ -17,7 +17,7 @@
 			path="icons/widgets/minimap/rotate_right" />
 
 		<Label position="73,65" name="running_costs_label" text="Running costs:" />
-		<Label position="189,65" name="running_costs" text="" />
+		<Label position="189,65" name="running_costs" />
 
 	</Container>
 </Container>
