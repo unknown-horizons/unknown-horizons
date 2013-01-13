@@ -4,14 +4,14 @@
 	<VBox name="map_vbox">
 	
 		<Label text="Choose a map to play:"  name="choose_map_lbl" wrap_text="1" max_size="170,40"  min_size="140,20" />
-		<ScrollArea max_size="170,200"  min_size="140,200"  horizontal_scrollbar="0"  name="map_list_area">
+		<ScrollArea max_size="170,200" min_size="140,200" name="map_list_area">
 			<ListBox name="maplist" is_focusable="0" />
 		</ScrollArea>
 	</VBox>
 	<Spacer />
 	<VBox name="language_hbox">
 		<Label text="Select a language:"  name="select_lang_lbl" wrap_text="1" max_size="140,40"  min_size="140,20" />
-		<ScrollArea max_size="140,200"  min_size="140,200"  horizontal_scrollbar="0"  name="lang_list_area">
+		<ScrollArea max_size="140,200" min_size="140,200" name="lang_list_area">
 			<ListBox name="uni_langlist" is_focusable="0" />
 		</ScrollArea>
 	</VBox>
