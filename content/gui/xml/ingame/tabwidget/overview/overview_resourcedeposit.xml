@@ -11,11 +11,6 @@
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-		<!-- Picture -->
-		<!--
-		<Icon name="image" image="" position="15,40" />
-		<Icon image="content/gui/images/background/hr.png" position="20,210" />
-		-->
 		<VBox position="25,50">
 			<Label name="res_dep_description_lbl" text="This is a resource deposit where you can build a mine to dig up resources." wrap_text="1" max_size="212,100" />
 			<Label name="res_dep_description_lbl2" text="It contains these resources:" wrap_text="1" max_size="212,100"
