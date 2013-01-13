@@ -34,15 +34,6 @@ color: 188,154,114
 antialias: 1
 
 
-[Font/tooltip]
-
-type: truetype
-source: content/fonts/LinLibertineI.ttf
-size: 15
-color: 68,42,2
-antialias: 1
-
-
 [Font/message]
 
 type: truetype

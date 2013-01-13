@@ -112,10 +112,4 @@ STYLES = {
 		},
 },
 
-'tooltip': { # style for tooltips
-		'default': {
-			'font': 'tooltip',
-		},
-},
-
 }
