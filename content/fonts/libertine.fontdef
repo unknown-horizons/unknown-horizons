@@ -1,21 +1,3 @@
-[Font/13]
-
-type: truetype
-source: content/fonts/LinLibertineBI.ttf
-size: 14
-color: 255,255,255
-antialias: 1
-
-
-[Font/14]
-
-type: truetype
-source: content/fonts/LinLibertineBI.ttf
-size: 15
-color: 255,255,255
-antialias: 1
-
-
 [Font/mainmenu]
 
 type: truetype
@@ -30,15 +12,6 @@ antialias: 1
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
 size: 18
-color: 255,255,255
-antialias: 1
-
-
-[Font/small]
-
-type: truetype
-source: content/fonts/LinLibertine.ttf
-size: 17
 color: 255,255,255
 antialias: 1
 
@@ -70,30 +43,12 @@ color: 188,154,114
 antialias: 1
 
 
-[Font/18_black]
-
-type: truetype
-source: content/fonts/LinLibertineI.ttf
-size: 19
-color: 68,42,2
-antialias: 1
-
-
 [Font/resourcebar]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
 size: 16
 color: 68,42,2
-antialias: 1
-
-
-[Font/large]
-
-type: truetype
-source: content/fonts/LinLibertine.ttf
-size: 24
-color: 255,255,255
 antialias: 1
 
 
