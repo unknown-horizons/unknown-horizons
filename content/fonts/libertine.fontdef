@@ -25,7 +25,7 @@ color: 255,255,255
 antialias: 1
 
 
-[Font/18]
+[Font/cityinfo]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
@@ -43,7 +43,7 @@ color: 255,255,255
 antialias: 1
 
 
-[Font/14_black]
+[Font/default]
 
 type: truetype
 source: content/fonts/LinLibertineI.ttf
@@ -52,7 +52,7 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/14_bold]
+[Font/default_bold]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
@@ -61,7 +61,7 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/14_bold_light]
+[Font/default_load]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
@@ -79,7 +79,7 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/small_black]
+[Font/resourcebar]
 
 type: truetype
 source: content/fonts/LinLibertineBI.ttf
@@ -142,7 +142,7 @@ color: 255,255,255
 antialias: 1
 
 
-[Font/small_tooltip]
+[Font/pickbelt]
 
 type: truetype
 source: content/fonts/LinLibertineB.ttf
@@ -151,7 +151,7 @@ color: 255,255,255
 antialias: 1
 
 
-[Font/16_black_unifont]
+[Font/unifont]
 
 type: truetype
 source: content/fonts/Unifont.ttf

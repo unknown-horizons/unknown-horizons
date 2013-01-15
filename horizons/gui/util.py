@@ -81,7 +81,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 		if w.name.startswith("headline") or w.name == "name":
 			w.stylize('headline')
 		elif w.name.startswith("uni_") or w.comment.startswith("uni_"):
-			w.font = '16_black_unifont'
+			w.font = 'unifont'
 	if center_widget:
 		widget.position_technique = "center:center"
 
