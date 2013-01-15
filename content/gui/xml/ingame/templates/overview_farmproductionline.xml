@@ -11,7 +11,7 @@
 <AutoResizeContainer size="240,52" position="25,110" name="production_line_container">
 	<VBox name="input_res" position="2,0" />
 
-	<Container name="centered_production_icons" size="200,52" position="0,0">
+	<Container name="centered_production_icons" size="200,52">
 		<Icon image="content/gui/icons/templates/production/production_arrow_head.png" position="107,17" />
 		<VBox name="output_box" position="136,17" />
 

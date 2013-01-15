@@ -12,7 +12,7 @@
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	<Container size="260,250" position="25,43">
 
-		<Label name="headline_income_label" position="0,0" text="Income:" />
+		<Label name="headline_income_label" text="Income:" />
 		<Icon image="content/gui/images/resbar_stats/income.png" position="0,20" />
 		<Label name="taxes_label" position="19,20" text="Taxes" />
 		<Label position="160,20" name="taxes" min_size="100,15" />

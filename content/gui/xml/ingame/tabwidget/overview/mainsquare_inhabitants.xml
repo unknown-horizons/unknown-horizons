@@ -20,7 +20,7 @@ resources.
 			<!-- Taxes -->
 			<!-- TODO include icon, label, paid taxes in box to adjust with length
 				of translated strings (can vary a lot between en and nl) -->
-			<Icon name="paid_taxes_icon" position="0,0"
+			<Icon name="paid_taxes_icon"
 				image="content/gui/icons/resources/running_costs.png"
 				helptext="Paid taxes" />
 			<Label position="20,0" name="tax_label" text="Taxes:" />
@@ -35,7 +35,7 @@ resources.
 		</Container>
 
 		<Container size="260,60" position="25,95">
-			<Label name="upgrades_lbl" position="0,0" text="Upgrade permissions:" />
+			<Label name="upgrades_lbl" text="Upgrade permissions:" />
 			<ToggleImageButton name="allow_upgrades" position="0,20"
 				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
 				up_image="content/gui/images/buttons/upgrade/allow.png"
@@ -46,7 +46,7 @@ resources.
 		<Icon image="content/gui/images/background/hr.png" position="20,160" />
 
 		<Container size="260,72" position="25,165">
-			<Label name="headline_happiness_per_house" position="0,0" text="Happiness per house" />
+			<Label name="headline_happiness_per_house" text="Happiness per house" />
 			<Icon position="30,25" image="content/gui/icons/templates/happiness/sad.png" name="sad_icon" helptext="sad" />
 			<Icon position="80,25" image="content/gui/icons/templates/happiness/average.png" name="avg_icon" helptext="satisfied" />
 			<Icon position="130,25" image="content/gui/icons/templates/happiness/happy.png" name="happy_icon" helptext="happy" />
@@ -59,7 +59,7 @@ resources.
 		</Container>
 
 		<Container name="residents_per_house_container" size="260,60" position="25,230">
-			<Label name="headline_residents_per_house" position="0,0" text="Residents per house" />
+			<Label name="headline_residents_per_house" text="Residents per house" />
 			<Icon name="inhabitants_icon" position="0,21" image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
 				helptext="Number of inhabitants per house" />
 			<Icon name="houses_icon" position="0,41" image="content/gui/icons/widgets/cityinfo/house_small.png"
@@ -68,7 +68,7 @@ resources.
 		</Container>
 
 		<Container name="residents_total" size="260,60" position="25,290">
-			<Label name="headline_residents_total" position="0,0" text="Summary" />
+			<Label name="headline_residents_total" text="Summary" />
 			<Label name="houses" position="10,20" text="houses" />
 			<Label position="160,20" name="house_count" />
 			<Label name="residents" position="10,40" text="residents" />

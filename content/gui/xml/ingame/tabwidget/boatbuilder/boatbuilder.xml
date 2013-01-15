@@ -25,7 +25,7 @@
 
 	<Container position="25,110" size="260,210" name="container_active">
 		<!-- Current order, pause -->
-		<Label name="BB_current_order" position="0,0" text="Currently building:"
+		<Label name="BB_current_order" text="Currently building:"
 			comment="Information about the ship currently under construction at the boat builder" />
 		<HBox name="queue_container" position="0,18" />
 		<Label name="headline_BB_builtship_label" position="0,63" />

@@ -13,7 +13,7 @@
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 		<Container position="22,40" min_size="230,20" size="230,50">
-			<Container position="0,0" size="50,50">
+			<Container size="50,50">
 				<ToggleImageButton name="trade_bg" path="images/buttons/msg_button" />
 				<ToggleImageButton name="trade" helptext="Trade" position="10,9"
 					path="icons/ship/civil_32" />

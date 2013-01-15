@@ -7,7 +7,7 @@
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	<!-- Displays list of resources to select one for trade. -->
 	<ScrollArea min_size="217,270" max_size="217,270" position="8,35">
-		<VBox name="resources" size="217,0" position="0,0">
+		<VBox name="resources" size="217,0">
 			<Spacer />
 		</VBox>
 	</ScrollArea>

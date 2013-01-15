@@ -13,7 +13,7 @@
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
 		<Container position="22,40" min_size="230,20" size="230,50">
-			<Container position="0,0" size="50,50">
+			<Container size="50,50">
 				<ToggleImageButton name="trade_bg" path="images/buttons/msg_button" />
 				<ToggleImageButton name="trade" helptext="Trade" position="10,9"
 					path="icons/ship/civil_32"
@@ -50,7 +50,7 @@
 		<StanceWidget position="0,190" size="230,40" name="stance" />
 		<Container position="22,190" size="50,50">
 			<Icon position="5,4" />
-			<Inventory name="weapon_inventory" size="50,50" position="0,0" uncached="1" />
+			<Inventory name="weapon_inventory" size="50,50" uncached="1" />
 		</Container>
 	</Container>
 </Container>
