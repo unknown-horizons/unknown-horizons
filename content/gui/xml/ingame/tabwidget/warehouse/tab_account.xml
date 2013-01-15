@@ -6,7 +6,7 @@
 
 	<HBox position="22,7"  min_size="170,20"  size="230,20">
 	<Spacer min_size="0"  max_size="50" />
-		<RenameLabel name="headline"  text="" />
+		<RenameLabel name="headline" />
 	</HBox>
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -45,56 +45,3 @@
 
 </Container>
 </Container>
-
-
-
-
-
-<!--
-using hboxes and vboxes (padding problem with margins)
-
-<Container  size="250,450">
-<TabBG amount="6" />
-
-<Container position="22,77" size="250,450">
-
-	<HBox min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
-		<Label name="headline"  text="Account" />
-	</HBox>
-
-	<Icon image="content/gui/images/background/hr.png" position="-2,30" />
-	<HBox size="230,450" min_size="230,450" position="0,43">
-
-<VBox margins="20,0" size="210,450" min_size="140,450">
-		<Label name="headline_income_label" text="Income:" />
-		<Label name="taxes_label"           text="Taxes" />
-		<Label name="sell_income_label"     text="Sale" />
-
-		<Label name="headline_expenses_label" text="Expenses:" />
-		<Label name="running_costs_label"     text="Running costs" />
-		<Label name="buy_expenses_label"      text="Buying" />
-
-		<Label name="headline_balance_label"  text="Balance:" />
-</VBox>
-
-<Spacer min_size="0" max_size="30" />
-
-<VBox min_size="20,450">
-		<Label name="" />
-		<Label name="taxes" />
-		<Label name="sale" />
-
-		<Label name="" />
-		<Label name="running_costs" />
-		<Label name="buying" />
-
-		<Label name="balance" />
-</VBox>
-
-
-	</HBox>
-</Container>
-</Container>
-
--->

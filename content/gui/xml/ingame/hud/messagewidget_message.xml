@@ -7,5 +7,5 @@
 		<Icon image="content/gui/images/background/widgets/message_bg_bottom.png" />
 	</VBox>
 
-	<Label name="text" text=""  position="6,3"  font="message"  size="300,0" />
+	<Label name="text" position="6,3" font="message" size="300,0" />
 </Container>
