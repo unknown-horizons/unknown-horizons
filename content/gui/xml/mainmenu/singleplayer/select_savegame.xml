@@ -51,8 +51,6 @@
 						min_size="290, 0"  max_size="290, 290" />
 
 				</VBox>
-
-<!-- here a small screenshot will help the player to recognize the saved file -->
 			</HBox>
 		</VBox>
 	<Spacer />
