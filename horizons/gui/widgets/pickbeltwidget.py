@@ -50,7 +50,7 @@ class PickBeltWidget(object):
 				pickbelt = ImageButton(text=text)
 				pickbelt.name = name + '_' + side
 				pickbelt.path = 'images/background/pickbelt_%s' % side
-				pickbelt.font = "small_tooltip"
+				pickbelt.font = "pickbelt"
 
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
 

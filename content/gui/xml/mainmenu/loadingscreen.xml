@@ -7,7 +7,7 @@
 		max_size="250,50" min_size="150,50" />
 	<Label name="qotl_type_label" position="360,662" font="headline_light"
 		max_size="315,80" min_size="315,80" wrap_text="0" />
-	<Label name="qotl_label" position="360,688" font="14_bold_light"
+	<Label name="qotl_label" position="360,688" font="default_load"
 		max_size="315,75" min_size="315,75" wrap_text="1" />
 	<Label name="version_label" position="780,735" font="headline_light" />
 </Container>
