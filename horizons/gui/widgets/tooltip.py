@@ -123,7 +123,6 @@ class _Tooltip(object):
 
 		label = Label(text=tooltip, position=(10, 5))
 		self.gui.addChild(label)
-		self.gui.stylize('tooltip')
 		size_y = self.SIZE_BG_TOP + self.LINE_HEIGHT * line_count + self.SIZE_BG_BOTTOM
 		self.gui.size = (145, size_y)
 		self.gui.show()

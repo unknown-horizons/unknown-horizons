@@ -8,7 +8,7 @@ In case you change the size of this Container, also adapt the ingamegui position
 <Container name="background_and_buttons" position="-30,0" size="240,240">
 	<Icon name="minimap_overlay_image" position="31, 1"
 		image="content/gui/images/background/widgets/map_bg.png" />
-	<Label name="speed_text" text="" position="48,88" font="small_black" />
+	<Label name="speed_text" position="50,90" font="default_bold" />
 
 	<ToggleImageButton name="speedUp" position="48,63"
 		path="icons/widgets/minimap/speed_up" helptext="Increase game speed (+)" />
