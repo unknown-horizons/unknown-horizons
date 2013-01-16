@@ -32,16 +32,22 @@ class EnemyBuildingOverviewTab(OverviewTab):
 			widget = 'overview_enemybuilding.xml',
 			instance = instance
 		)
+
+	def init_widget(self):
+		super(EnemyBuildingOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.owner.name
 
 class EnemyWarehouseOverviewTab(OverviewTab):
 	def __init__(self, instance):
+		self.helptext = _("Warehouse overview")
 		super(EnemyWarehouseOverviewTab, self).__init__(
 			widget = 'overview_enemywarehouse.xml',
 			instance = instance
 		)
+
+	def init_widget(self):
+		super(EnemyWarehouseOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		self.helptext = _("Warehouse overview")
 
 	def refresh(self):
 		settlement = self.instance.settlement

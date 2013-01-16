@@ -101,7 +101,6 @@ class BuildTab(TabInterface):
 		if not icon_path:
 			raise InvalidBuildMenuFileFormat("icon_path definition is missing.")
 
-		super(BuildTab, self).__init__(widget='buildtab.xml', icon_path=icon_path)
 		self.session = session
 		self.tabindex = tabindex
 		self.build_callback = build_callback
@@ -114,18 +113,15 @@ class BuildTab(TabInterface):
 		self.helptext = _(helptext) if helptext else self.headline
 		self.build_menu_config = build_menu_config
 
-	def _lazy_loading_init(self):
-		super(BuildTab, self)._lazy_loading_init()
-		self.init_gui()
-		self.__current_settlement = None
+		super(BuildTab, self).__init__(widget='buildtab.xml', icon_path=icon_path)
 
-	def init_gui(self):
+	def init_widget(self):
+		self.__current_settlement = None
 		headline_lbl = self.widget.child_finder('headline')
 		if self.headline: # prefer specific headline
 			headline_lbl.text = self.headline
 		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
 			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
-
 
 	def set_content(self):
 		"""Parses self.row_definitions and sets the content accordingly"""

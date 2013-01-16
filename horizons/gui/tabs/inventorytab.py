@@ -29,12 +29,11 @@ class InventoryTab(TabInterface):
 
 	def __init__(self, instance=None, widget='island_inventory.xml',
 	             icon_path='icons/tabwidget/common/inventory'):
-		super(InventoryTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.instance = instance
 		self.helptext = _("Settlement inventory")
+		super(InventoryTab, self).__init__(widget=widget, icon_path=icon_path)
 
-	def _lazy_loading_init(self):
-		super(InventoryTab, self)._lazy_loading_init()
+	def init_widget(self):
 		self.widget.child_finder('inventory').init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory)
 

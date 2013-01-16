@@ -35,9 +35,12 @@ from horizons.component.selectablecomponent import SelectableComponent
 class ShipOverviewTab(OverviewTab):
 	def __init__(self, instance, widget='overview_trade_ship.xml',
 			icon_path='icons/tabwidget/ship/ship_inv'):
-		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
-		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 		self.helptext = _("Ship overview")
+		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
+
+	def init_widget(self):
+		super(ShipOverviewTab, self).init_widget()
+		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
 
 		# FIXME having to access the WindowManager this way is pretty ugly
 		self._windows = self.instance.session.ingame_gui.windows

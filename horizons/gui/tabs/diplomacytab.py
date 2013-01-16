@@ -33,14 +33,20 @@ class PlayerDiplomacyTab(TabInterface):
 	"""
 	def __init__(self, player, widget='diplomacy.xml',
 	             icon_path='images/tabwidget/emblems/emblem_%s'):
-		super(PlayerDiplomacyTab, self).__init__(widget)
-
 		self.local_player = player.session.world.player
 		self.player = player
 		self.diplomacy = player.session.world.diplomacy
-		self.init_values()
+		self.icon_path = icon_path
 
-		self.widget.findChild(name='headline').text = player.name
+		super(PlayerDiplomacyTab, self).__init__(widget, icon_path)
+
+		color = self.player.color.name
+		# Set these here to override the defaults in TabInterface.__init__
+		# before they are used.
+		self.path = self.path_active = self.icon_path % color
+
+	def init_widget(self):
+		self.widget.findChild(name='headline').text = self.player.name
 		self.widget.mapEvents({
 			'ally_label' : self.add_ally,
 			'ally_check_box' : self.add_ally,
@@ -50,11 +56,7 @@ class PlayerDiplomacyTab(TabInterface):
 			'enemy_check_box' : self.add_enemy})
 
 		self.check_diplomacy_state()
-
-		#TODO what the heck
-		self.path = self.active_path = icon_path % player.color.name
-
-		self.helptext = player.name
+		self.helptext = self.player.name
 
 	def show(self):
 		super(PlayerDiplomacyTab, self).show()

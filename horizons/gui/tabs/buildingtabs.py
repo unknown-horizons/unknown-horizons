@@ -33,12 +33,15 @@ from horizons.component.depositcomponent import DepositComponent
 class WarehouseOverviewTab(OverviewTab):
 	""" the main tab of warehouses and storages """
 	def __init__(self, instance):
+		self.helptext = _("Warehouse overview")
 		super(WarehouseOverviewTab, self).__init__(
 			widget = 'overview_warehouse.xml',
 			instance = instance
 		)
+
+	def init_widget(self):
+		super(WarehouseOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		self.helptext = _("Warehouse overview")
 		self._refresh_collector_utilization()
 
 	def _refresh_collector_utilization(self):
@@ -69,28 +72,37 @@ class WarehouseOverviewTab(OverviewTab):
 
 class TowerOverviewTab(OverviewTab): # defensive tower
 	def __init__(self, instance):
+		self.helptext = _("Tower overview")
 		super(TowerOverviewTab, self).__init__(
 			widget='overview_tower.xml',
 			instance=instance)
+
+	def init_widget(self):
+		super(TowerOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		self.helptext = _("Tower overview")
 
 class SignalFireOverviewTab(OverviewTab):
 	def __init__(self, instance):
+		self.helptext = _("Overview")
 		super(SignalFireOverviewTab, self).__init__(
 			widget='overview_signalfire.xml',
 			instance=instance)
+
+	def init_widget(self):
+		super(SignalFireOverviewTab, self).init_widget()
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
-		self.helptext = _("Overview")
 
 class ResourceDepositOverviewTab(OverviewTab):
 	def  __init__(self, instance):
 		super(ResourceDepositOverviewTab, self).__init__(
 			widget='overview_resourcedeposit.xml',
 			instance=instance)
+
+	def init_widget(self):
+		super(ResourceDepositOverviewTab, self).init_widget()
 		# display range starts 0, not min_amount, else it looks like there's nothing in it
 		# when parts of the ore have been mined already
 		resources = self.instance.get_component(DepositComponent).get_res_ranges()

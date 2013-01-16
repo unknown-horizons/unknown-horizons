@@ -47,8 +47,8 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 	SHIP_PREVIEW_IMG = "content/gui/images/objects/ships/116/{type_id}.png"
 
 	def __init__(self, instance):
-		super(BoatbuilderTab, self).__init__(widget='boatbuilder.xml', instance=instance)
 		self.helptext = _("Boat builder overview")
+		super(BoatbuilderTab, self).__init__(widget='boatbuilder.xml', instance=instance)
 
 	def show(self):
 		super(BoatbuilderTab, self).show()
@@ -169,18 +169,19 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 	def __init__(self, instance, ships, iconname, helptext):
+		self.helptext = helptext
+		self.ships = ships
 		super(BoatbuilderSelectTab, self).__init__(
 				instance=instance,
 		          widget='boatbuilder_showcase.xml',
 		          icon_path='icons/tabwidget/boatbuilder/{name}'.format(name=iconname))
-		self.add_showcases(ships)
-		self.helptext = helptext
-		self.widget.findChild(name='headline').text = helptext
-		self.init_values()
 
-	def add_showcases(self, ships):
+	def init_widget(self):
+		super(BoatbuilderSelectTab, self).init_widget()
+		self.widget.findChild(name='headline').text = self.helptext
+
 		showcases = self.widget.findChild(name='showcases')
-		for i, (ship, prodline) in enumerate(ships):
+		for i, (ship, prodline) in enumerate(self.ships):
 			showcase = self.build_ship_info(i, ship, prodline)
 			showcases.addChild(showcase)
 
@@ -289,13 +290,16 @@ class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 class BoatbuilderConfirmTab(_BoatbuilderOverviewTab):
 
 	def __init__(self, instance):
+		self.helptext = _("Confirm order")
 		super(BoatbuilderConfirmTab, self).__init__(
 			widget = 'boatbuilder_confirm.xml',
 			instance = instance
 		)
+
+	def init_widget(self):
+		super(BoatbuilderConfirmTab, self).init_widget()
 		events = { 'create_unit': self.start_production }
 		self.widget.mapEvents(events)
-		self.helptext = _("Confirm order")
 
 	def start_production(self):
 		AddProduction(self.producer, 15).execute(self.instance.session)

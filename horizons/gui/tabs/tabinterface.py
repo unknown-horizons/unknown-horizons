@@ -31,8 +31,12 @@ class TabInterface(object):
 	The TabInterface should be used by all classes that represent Tabs for the
 	TabWidget.
 
-	It is important that the currently used widget by the tab is always set to
-	self.widget, to ensure proper functionality.
+	By default the code will the widget from a file given by `widget`. If you
+	want to run code after the widget has been loaded, override `init_widget`.
+	To handle widget loading yourself, override `get_widget` and return the new
+	widget.
+	In both cases the widget is accessible at `self.widget`.
+
 	If you want to override the TabButton image used for the tab, you also have
 	to set the button_image_{up,down,hover} variables.
 
@@ -46,9 +50,12 @@ class TabInterface(object):
 
 	"""
 	Whether to load the tab only when it's shown.
+<<<<<<< HEAD
 	If True, self.widget will only be valid after _lazy_loading_init, which
 	is guaranteed to be executed before show(), refresh() and the like.
 	Usually, you will want to overwrite _lazy_loading_init and call the super impl as first step.
+=======
+>>>>>>> c13e15a... Unify interface for normal and lazy loading of tab widgets
 	"""
 	lazy_loading = False
 
@@ -61,10 +68,9 @@ class TabInterface(object):
 		"""
 		super(TabInterface, self).__init__()
 		if widget is not None:
+			self.widget = widget
 			if not self.__class__.lazy_loading:
-				self.widget = self._load_widget(widget)
-			else:
-				self.widget = widget
+				self._setup_widget()
 		else:
 			# set manually by child
 			self.widget = None
@@ -80,8 +86,30 @@ class TabInterface(object):
 
 		self._refresh_scheduled = False
 
-	def init_values(self):
-		"""Call this method after the widget has been initialized."""
+	def _setup_widget(self):
+		"""Gets the widget and sets up some attributes and helper.
+
+		This is called when the Tab is created, or, when lazy loading is
+		active once the tab is about to be shown.
+		"""
+		self.widget = self.get_widget()
+		self.x_pos, self.y_pos = self.widget.position
+		self.widget.child_finder = PychanChildFinder(self.widget)
+		self.init_widget()
+
+	def get_widget(self):
+		"""Loads the filename in self.widget.
+
+		Override this in your subclass if you want to handle widget
+		loading/creation yourself.
+		"""
+		return load_uh_widget(self.widget)
+
+	def init_widget(self):
+		"""Initialize widget after it was loaded.
+
+		Override this in your subclass if you have custom post-load code.
+		"""
 		pass
 
 	def show(self):
@@ -126,19 +154,8 @@ class TabInterface(object):
 	def ensure_loaded(self):
 		"""Called when a tab is shown, acts as hook for lazy loading"""
 		if self.__class__.lazy_loading and not hasattr(self, "_lazy_loading_loaded"):
-			self._lazy_loading_init()
+			self._setup_widget()
 			self._lazy_loading_loaded = True
-
-	def _lazy_loading_init(self):
-		"""Called when widget is initialized for lazily initialized tabs.
-		You may want to overwrite this in the subclass."""
-		self.widget = self._load_widget(self.widget)
-		self.init_values()
-
-	def _load_widget(self, widget):
-		widget = load_uh_widget(widget)
-		widget.child_finder = PychanChildFinder(widget)
-		return widget
 
 	def _get_position(self):
 		return self.widget.position

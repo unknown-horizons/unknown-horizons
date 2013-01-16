@@ -49,10 +49,10 @@ class ProductionOverviewTab(OverviewTab):
 
 	def  __init__(self, instance, widget='overview_productionbuilding.xml',
 		         production_line_gui_xml='overview_productionline.xml'):
-		super(ProductionOverviewTab, self).__init__(widget=widget, instance=instance)
 		self.helptext = _("Production overview")
 		self.production_line_gui_xml = production_line_gui_xml
 		self._animations = []
+		super(ProductionOverviewTab, self).__init__(widget=widget, instance=instance)
 
 	def get_displayed_productions(self):
 		"""List all possible productions of a buildings sorted by production line id.
@@ -233,12 +233,12 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/small"
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
 	def  __init__(self, instance):
+		self.helptext = _("Production overview")
 		super(SmallProductionOverviewTab, self).__init__(
 			instance=instance,
 			widget='overview_farm.xml',
 			production_line_gui_xml="overview_farmproductionline.xml"
 		)
-		self.helptext = _("Production overview")
 
 	def get_displayed_productions(self):
 		possible_res = set(res for field in self.instance.get_providers()

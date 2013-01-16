@@ -29,14 +29,11 @@ class OverviewTab(TabInterface):
 	has_stance = False
 	def __init__(self, instance, widget='overviewtab.xml',
 	             icon_path='icons/tabwidget/common/building_overview'):
-		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.instance = instance
-		self.init_values()
 		self.helptext = _("Overview")
+		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
 
-		if self.__class__.has_stance:
-			self.init_stance_widget()
-
+	def init_widget(self):
 		# set player emblem
 		if self.widget.child_finder('player_emblem'):
 			emblem = 'content/gui/images/tabwidget/emblems/emblem_%s.png'
@@ -45,6 +42,8 @@ class OverviewTab(TabInterface):
 			else:
 				self.widget.child_finder('player_emblem').image = emblem % 'no_player'
 
+		if self.__class__.has_stance:
+			self.init_stance_widget()
 
 	def refresh(self):
 		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
@@ -99,10 +98,13 @@ class OverviewTab(TabInterface):
 class GroundUnitOverviewTab(OverviewTab):
 	has_stance = True
 	def __init__(self, instance):
+		self.helptext = _("Unit overview")
 		super(GroundUnitOverviewTab, self).__init__(
 			widget = 'overview_groundunit.xml',
 			instance = instance)
-		self.helptext = _("Unit overview")
+	
+	def init_widget(self):
+		super(GroundUnitOverviewTab, self).init_widget()
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)

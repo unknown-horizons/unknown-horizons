@@ -51,14 +51,16 @@ class BuySellTab(TabInterface):
 	def __init__(self, instance, widget='buysellmenu.xml',
 	             icon_path='icons/tabwidget/warehouse/buysell'):
 		"""Set up the GUI and game logic for the buyselltab."""
-		super(BuySellTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.inited = False # prevents execution of commands during init
 		# this makes sharing code easier
 		self.session = instance.session
 		self.trade_post = instance.settlement.get_component(TradePostComponent)
 		assert isinstance(self.trade_post, TradePostComponent)
+
+		super(BuySellTab, self).__init__(widget=widget, icon_path=icon_path)
+
+	def init_widget(self):
 		# don't access instance beyond this point, only components
-		self.init_values()
 
 		# add the buy/sell slot widgets
 		self.slot_widgets = {}

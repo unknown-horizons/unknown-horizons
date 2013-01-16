@@ -32,11 +32,14 @@ from horizons.messaging import SettlerUpdate
 
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
+		self.helptext = _("Settler overview")
 		super(SettlerOverviewTab, self).__init__(
 			widget = 'overview_settler.xml',
 			instance = instance
 		)
-		self.helptext = _("Settler overview")
+
+	def init_widget(self):
+		super(SettlerOverviewTab, self).init_widget()
 		name = self.instance.settlement.get_component(NamedComponent).name
 		self.widget.findChild(name="headline").text = name
 		setup_tax_slider(self.widget.child_finder('tax_slider'),
