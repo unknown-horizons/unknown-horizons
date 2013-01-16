@@ -320,6 +320,12 @@ class SavegameUpgrader(object):
 		for row in db("SELECT rowid FROM building WHERE type = ?", BUILDINGS.FISH_DEPOSIT):
 			db("INSERT INTO fish_data(rowid, last_usage_tick) VALUES(?, ?)", row[0], -1000000)
 
+	def _upgrade_to_rev71(self, db):
+		old = 'MAX_INCR_REACHED'
+		new = 'MAX_TIER_REACHED'
+		db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
+		db("UPDATE message_widget_archive SET id = ? WHERE id = ?", new, old)
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -381,6 +387,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev69(db)
 			if rev < 70:
 				self._upgrade_to_rev70(db)
+			if rev < 71:
+				self._upgrade_to_rev71(db)
 
 			db('COMMIT')
 			db.close()
