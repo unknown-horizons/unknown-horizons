@@ -36,14 +36,17 @@ class TilingBackground(object):
 		self.start_img = base_path + start_img
 		self.tiles_img = base_path + tiles_img
 		self.final_img = base_path + final_img
-		start_img = Icon(image=self.start_img, name=self.name + '0')
-		self.addChild(start_img)
 
 	def _get_tile_amount(self):
 		return self.__tile_amount
 
 	def _set_tile_amount(self, amount):
+		if amount == self.__tile_amount:
+			return
 		self.__tile_amount = amount
+		self.removeAllChildren()
+		start_img = Icon(image=self.start_img, name=self.name + '0')
+		self.addChild(start_img)
 		for i in xrange(self.amount):
 			mid = Icon(image=self.tiles_img, name=self.name + str(i+1))
 			self.addChild(mid)
