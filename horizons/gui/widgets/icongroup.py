@@ -54,6 +54,15 @@ class TilingBackground(object):
 
 	amount = property(_get_tile_amount, _set_tile_amount)
 
+class TooltipBG(TilingBackground, VBox):
+	"""Not usable from xml!"""
+	def __init__(self, **kwargs):
+		super(TooltipBG, self).__init__(
+			amount=0, name='tooltip_background',
+			base_path="content/gui/images/background/widgets/tooltip_bg_",
+			start_img="top.png", tiles_img="middle.png", final_img="bottom.png",
+			**kwargs)
+
 class TabBG(TilingBackground, VBox):
 	"""Intended to be used for any tab we display.
 	Uses content/gui/images/tabwidget/main_bg_*.png.

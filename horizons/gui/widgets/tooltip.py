@@ -21,25 +21,22 @@
 
 import textwrap
 from fife import fife
-from fife.extensions.pychan.widgets import Icon, Label
+from fife.extensions.pychan.widgets import Label
 
 import horizons.globals
 
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.container import AutoResizeContainer
+from horizons.gui.widgets.icongroup import TooltipBG
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
-	LINE_HEIGHT = 18 # distance of segments in px. should approx. be line height
-	SIZE_BG_TOP = 17 # height of the image tooltip_bg_top.png
-	SIZE_BG_BOTTOM = 17 # height of the image tooltip_bg_bottom.png
 	CHARS_PER_LINE = 19 # character count after which we start new line. no wrap
-	TOP_IMAGE = 'content/gui/images/background/widgets/tooltip_bg_top.png'
-	MIDDLE_IMAGE = 'content/gui/images/background/widgets/tooltip_bg_middle.png'
-	BOTTOM_IMAGE = 'content/gui/images/background/widgets/tooltip_bg_bottom.png'
 
 	def init_tooltip(self):
 		self.gui = None
+		self.bg = None
+		self.label = None
 		self.mapEvents({
 			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
 			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
@@ -66,7 +63,11 @@ class _Tooltip(object):
 			x, y = where.getX(), where.getY()
 
 		if self.gui is None:
-			self.gui = load_uh_widget('tooltip.xml')
+			self.gui = AutoResizeContainer()
+			self.label = Label(position=(10, 5))
+			self.bg = TooltipBG()
+			self.gui.addChildren(self.bg, self.label)
+
 		widget_position = self.getAbsolutePos()
 
 		# Sometimes, we get invalid events from pychan, it is probably related to changing the
@@ -96,11 +97,7 @@ class _Tooltip(object):
 	def show_tooltip(self):
 		if not self.helptext:
 			return
-		# recreate full tooltip since new text needs to be relayouted
-		if self.gui is None:
-			self.gui = load_uh_widget('tooltip.xml')
-		else:
-			self.gui.removeAllChildren()
+
 		translated_tooltip = _(self.helptext)
 		#HACK this looks better than splitting into several lines & joining
 		# them. works because replace_whitespace in fill defaults to True:
@@ -108,28 +105,15 @@ class _Tooltip(object):
 		replaced = replaced.replace('[br]', self.CHARS_PER_LINE * ' ')
 		tooltip = textwrap.fill(replaced, self.CHARS_PER_LINE)
 
-		line_count = len(tooltip.splitlines()) - 1
-		top_image = Icon(image=self.TOP_IMAGE, position=(0, 0))
-		self.gui.addChild(top_image)
-		top_x, top_y = top_image.position
-		top_y += self.SIZE_BG_TOP
-		for i in xrange(0, line_count):
-			middle_image = Icon(image=self.MIDDLE_IMAGE)
-			middle_image.position = (top_x, top_y + self.LINE_HEIGHT * i)
-			self.gui.addChild(middle_image)
-		bottom_image = Icon(image=self.BOTTOM_IMAGE)
-		bottom_image.position = (top_x, top_y + self.LINE_HEIGHT * line_count)
-		self.gui.addChild(bottom_image)
+		#TODO allow 0 here -- for some reason they get no background currently if 0
+		self.bg.amount = len(tooltip.splitlines()) - 1 or 1
 
-		label = Label(text=tooltip, position=(10, 5))
-		self.gui.addChild(label)
-		size_y = self.SIZE_BG_TOP + self.LINE_HEIGHT * line_count + self.SIZE_BG_BOTTOM
-		self.gui.size = (145, size_y)
+		self.label.text = tooltip
+		self.gui.adaptLayout()
 		self.gui.show()
 
 	def hide_tooltip(self, event=None):
 		if self.gui is not None:
 			self.gui.hide()
-			self.gui.removeAllChildren()
 		ExtScheduler().rem_call(self, self.show_tooltip)
 		self.tooltip_shown = False
