@@ -47,7 +47,8 @@
 			<Inventory name="inventory" size="230,70" position="4,4" uncached="1" />
 		</Container>
 
-		<StanceWidget position="0,190" size="230,50" name="stance" />
+		<StanceWidget position="85,190" name="stance" />
+
 		<Container position="22,190" size="50,50">
 			<Icon position="5,4" />
 			<Inventory name="weapon_inventory" size="50,50" uncached="1" />
