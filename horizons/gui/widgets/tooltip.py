@@ -95,8 +95,6 @@ class _Tooltip(object):
 		if not self.tooltip_shown:
 			ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
 			self.tooltip_shown = True
-		else:
-			self.gui.show()
 
 	def show_tooltip(self):
 		if not self.helptext:
