@@ -47,7 +47,7 @@ class _Tooltip(object):
 			})
 		self.tooltip_shown = False
 
-	def _init_gui(self):
+	def __init_gui(self):
 		self.gui = AutoResizeContainer()
 		self.label = Label(position=(10, 5))
 		self.bg = TooltipBG()
@@ -69,7 +69,7 @@ class _Tooltip(object):
 			x, y = where.getX(), where.getY()
 
 		if self.gui is None:
-			self._init_gui()
+			self.__init_gui()
 
 		widget_position = self.getAbsolutePos()
 
@@ -100,7 +100,7 @@ class _Tooltip(object):
 		if not self.helptext:
 			return
 		if self.gui is None:
-			self._init_gui()
+			self.__init_gui()
 
 		translated_tooltip = _(self.helptext)
 		#HACK this looks better than splitting into several lines & joining
