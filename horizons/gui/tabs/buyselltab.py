@@ -192,8 +192,6 @@ class BuySellTab(TabInterface):
 				self.clear_slot(slot_id)
 			if resource_id != 0:
 				self.set_slot_info(slot.id, resource_id, False, value)
-		else:
-			assert False
 
 		button = slot.findChild(name="button")
 		fillbar = slot.findChild(name="fillbar")
@@ -241,16 +239,14 @@ class BuySellTab(TabInterface):
 			# setting to sell
 			self._show_sell(slot_widget)
 			slot_widget.action = "sell"
-			if slot_widget.res is not None:
-				self.set_slot_info(slot_widget.id, slot_widget.res, True, limit)
 		elif slot_widget.action is "sell":
 			# setting to buy
 			self._show_buy(slot_widget)
 			slot_widget.action = "buy"
-			if slot_widget.res is not None:
-				self.set_slot_info(slot_widget.id, slot_widget.res, False, limit)
-		else:
-			assert False
+
+		if slot_widget.res is not None:
+			selling = slot_widget.action == "sell"
+			self.set_slot_info(slot_widget.id, slot_widget.res, selling, limit)
 
 		if not keep_hint:
 			self._update_hint(slot_id)
