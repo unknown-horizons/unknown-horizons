@@ -105,8 +105,7 @@ class _Tooltip(object):
 		replaced = replaced.replace('[br]', self.CHARS_PER_LINE * ' ')
 		tooltip = textwrap.fill(replaced, self.CHARS_PER_LINE)
 
-		#TODO allow 0 here -- for some reason they get no background currently if 0
-		self.bg.amount = len(tooltip.splitlines()) - 1 or 1
+		self.bg.amount = len(tooltip.splitlines()) - 1
 
 		self.label.text = tooltip
 		self.gui.adaptLayout()

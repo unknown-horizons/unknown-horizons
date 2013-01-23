@@ -41,7 +41,8 @@ class TilingBackground(object):
 		return self.__tile_amount
 
 	def _set_tile_amount(self, amount):
-		if amount == self.__tile_amount:
+		if amount == self.__tile_amount and amount > 0:
+			# Default amount of 0 should still add top/bottom graphics once
 			return
 		self.__tile_amount = amount
 		self.removeAllChildren()
