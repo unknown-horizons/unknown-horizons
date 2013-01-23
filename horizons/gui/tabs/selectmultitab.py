@@ -21,6 +21,8 @@
 
 from collections import defaultdict
 
+from fife.extensions.pychan.widgets import HBox
+
 from horizons.util.python.callback import Callback
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
@@ -30,11 +32,11 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
 	"""
-	max_row_entry_number = 3
 	max_column_entry_number = 4
 	def __init__(self, session=None, widget='overview_select_multi.xml',
 	             icon_path='icons/tabwidget/common/inventory'):
@@ -58,31 +60,27 @@ class SelectMultiTab(TabInterface):
 				i.add_remove_listener(Callback(self.on_instance_removed, i))
 			self.type_number[i.id] += 1
 
-		if self.stance_unit_number != 0:
+		if self.stance_unit_number > 0:
 			self.show_stance_widget()
 
 		self._scheduled_refresh = False
 		self.draw_selected_units_widget()
 
 	def add_entry(self, entry):
-		if self.column_number > self.max_column_entry_number - 1:
-			self.column_number = 0
+		if self.row_number == 1 or self.column_number >= self.max_column_entry_number:
+			self.hbox = HBox(name="hbox_%s" % self.row_number)
+			self.widget.findChild(name="selected_units").addChild(self.hbox)
+			self.column_number = 1
 			self.row_number += 1
-		if self.row_number >= 3:
-			# TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-			# This crashes when more than 2 rows are needed.
-			# There just aren't any hboxes in the xml.
-			# TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-			self.row_number = 2
-			return
-		self.column_number += 1
-		self.widget.findChild(name="hbox_%s" % self.row_number).addChild(entry.widget)
+
+		self.hbox.addChild(entry.widget)
 		self.entries.append(entry)
+		self.column_number += 1
 
 	def draw_selected_units_widget(self):
 		self.entries = []
-		self.row_number = 0
-		self.column_number = 0
+		self.row_number = 1
+		self.column_number = 1
 		# if only one type of units is selected draw individual widgets for selected units
 		if len(self.type_number) == 1:
 			for instance in self.instances:
@@ -100,8 +98,7 @@ class SelectMultiTab(TabInterface):
 	def hide_selected_units_widget(self):
 		for entry in self.entries:
 			entry.remove()
-		for i in xrange(0, self.max_row_entry_number):
-			self.widget.findChild(name="hbox_%s" % i).removeAllChildren()
+		self.widget.findChild(name="selected_units").removeAllChildren()
 
 	def schedule_unit_widget_refresh(self):
 		if not self._scheduled_refresh:
@@ -153,14 +150,13 @@ class SelectMultiTab(TabInterface):
 			self.hide_stance_widget()
 
 	def show_stance_widget(self):
-		stance_widget = load_uh_widget('stancewidget.xml')
-		self.widget.findChild(name='stance').addChild(stance_widget)
-		self.toggle_stance()
 		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
 		self.widget.mapEvents( events )
+		self.widget.findChild(name='stance').show()
+		self.toggle_stance()
 
 	def hide_stance_widget(self):
-		self.widget.findChild(name='stance').removeAllChildren()
+		self.widget.findChild(name='stance').hide()
 
 	def set_stance(self, stance):
 		for i in self.instances:
