@@ -47,6 +47,12 @@ class _Tooltip(object):
 			})
 		self.tooltip_shown = False
 
+	def _init_gui(self):
+		self.gui = AutoResizeContainer()
+		self.label = Label(position=(10, 5))
+		self.bg = TooltipBG()
+		self.gui.addChildren(self.bg, self.label)
+
 	def position_tooltip(self, event):
 		"""Calculates a nice position for the tooltip.
 		@param event: mouse event from fife or tuple screenpoint
@@ -63,10 +69,7 @@ class _Tooltip(object):
 			x, y = where.getX(), where.getY()
 
 		if self.gui is None:
-			self.gui = AutoResizeContainer()
-			self.label = Label(position=(10, 5))
-			self.bg = TooltipBG()
-			self.gui.addChildren(self.bg, self.label)
+			self._init_gui()
 
 		widget_position = self.getAbsolutePos()
 
@@ -98,6 +101,8 @@ class _Tooltip(object):
 	def show_tooltip(self):
 		if not self.helptext:
 			return
+		if self.gui is None:
+			self._init_gui()
 
 		translated_tooltip = _(self.helptext)
 		#HACK this looks better than splitting into several lines & joining
