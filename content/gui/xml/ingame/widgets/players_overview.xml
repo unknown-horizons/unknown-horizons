@@ -3,7 +3,7 @@
 		<HBox>
 			<Label name="headline"  text="Player scores" />
 		</HBox>
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 
 		<VBox max_size="650,20">
 			<HBox>

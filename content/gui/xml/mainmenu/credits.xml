@@ -8,7 +8,7 @@
 <HBox name="credits_team" position="185,45" padding="10">
 	<VBox max_size="310,500" min_size="310,500">
 		<Label text="UH-Team" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
 			<VBox name="box">
 				<Label text="Nihathrael (Thomas Kinnen)" />
@@ -76,7 +76,7 @@
 <HBox name="credits_patchers" position="185,45" padding="10">
 	<VBox position="185,45" padding="0" max_size="310,470" min_size="310,470">
 		<Label text="Patchers" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox name="credits">
 			<VBox> <Label text="2009" name="headline" />
 				<VBox name="box">
@@ -134,7 +134,7 @@
 <HBox name="credits_translators" position="185,45" padding="10">
 	<VBox position="185,45" padding="0">
 		<Label text="Translators" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 	<ScrollArea name="translators" max_size="310,470" min_size="310,470">
 	<VBox name="credits" padding="3">
 		<VBox> <Label text="Bulgarian" name="headline" />
@@ -327,7 +327,7 @@
 <HBox name="credits_packagers" position="185,45" padding="10">
 	<VBox position="185,45" padding="0" max_size="310,470" min_size="310,470">
 		<Label text="Packagers" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox name="credits">
 			<VBox> <Label text="Debian" name="headline" />
 				<VBox name="box">
@@ -358,7 +358,7 @@
 <HBox name="credits_thanks" position="185,45" padding="10">
 	<VBox position="185,45" name="credits">
 		<Label text="Special Thanks" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox> <Label name="headline" />
 			<VBox name="box">
 				<Label text="The whole FIFE team (fifengine.net)" />

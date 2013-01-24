@@ -6,7 +6,7 @@
 	<Container position="0,70" size="260,80">
 		<!-- Headline -->
 		<Label name="headline" position="75,7" /> <!-- text filled at runtime -->
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 	</Container>
 
 	<Container position="20,95" size="260,450" name="showcases" />

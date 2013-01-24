@@ -9,7 +9,7 @@
 		<RenameLabel name="headline" />
 	</HBox>
 
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 	<Container size="260,250" position="25,43">
 
 		<Label name="headline_income_label" text="Income:" />

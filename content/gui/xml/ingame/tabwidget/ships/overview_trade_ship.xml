@@ -10,7 +10,7 @@
 			<RenameLabel name="name" helptext="Click to change the name of this ship" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 
 		<Container position="22,40" min_size="230,20" size="230,50">
 			<Container size="50,50">
@@ -33,7 +33,7 @@
 				<!--TODO fix weird image names-->
 		</Container>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,100" />
+		<hr position="20,100" />
 
 		<Container position="22,110" size="230,75">
 			<HBox padding="5" min_size="215,50" max_size="215,50" position="3,2">
