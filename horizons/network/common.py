@@ -172,9 +172,9 @@ class Game(object):
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):
 		# NOTE: don't return _ANY_ private data here as these object
-		# gets sent in onlistgames too. if really necessary remove that
-		# data in data_gameslist.addgame
-		# NOTE: this classes get used on the client too, so beware of
+		# will be used to build the public game list. if really necessary remove
+    # the private data in packets.data_gameslist.addgame
+		# NOTE: this classes are used on the client too, so beware of
 		# datatype changes
 		state = self.__dict__.copy()
 
@@ -182,8 +182,10 @@ class Game(object):
 		state['password'] = bool(self.password)
 
 		# make data backwards compatible
+		# 2012.1
 		state['creator'] = self.creator.name
 		state['clientversion'] = self.creator.version
+		state['load'] = bool(self.maphash)
 
 		return state
 
