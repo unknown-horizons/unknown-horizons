@@ -44,6 +44,7 @@ class ProgressBar(AutoResizeContainer):
 		self.tiles = TilingHBox()
 		self.tiles.tiles_img = self.fill
 		self.tiles.start_img = self.tiles.final_img = None
+		self.addChild(self.tiles)
 
 	def _set_progress(self, progress):
 		self.__progress = progress
@@ -55,7 +56,6 @@ class ProgressBar(AutoResizeContainer):
 	def _set_background(self, background):
 		self.__background = background
 		self.addChild(Icon(image=background))
-		self.addChild(self.tiles)
 
 	def _get_background(self):
 		return self.__background
