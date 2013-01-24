@@ -29,6 +29,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import MULTIPLAYER
 from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.icongroup import hr as HRule
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
@@ -432,8 +433,8 @@ class GameLobby(Window):
 		players_vbox = self._gui.findChild(name="players_vbox")
 		players_vbox.removeAllChildren()
 
-		gicon = Icon(name="gslider", image="content/gui/images/background/hr.png")
-		players_vbox.addChild(gicon)
+		hr = HRule()
+		players_vbox.addChild(hr)
 
 		def _add_player_line(player):
 			pname = Label(name="pname_%s" % player['name'])
