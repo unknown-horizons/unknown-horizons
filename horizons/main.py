@@ -246,10 +246,8 @@ def start(_command_line_arguments):
 	elif command_line_arguments.create_mp_game:
 		_modules.gui.show_main()
 		_modules.gui.windows.show(_modules.gui.multiplayermenu)
-		from horizons.gui.modules.multiplayermenu import CreateGame
-		mpgame = CreateGame(_modules.gui.windows)
-		_modules.gui.windows.show(mpgame)
-		mpgame.act()
+		_modules.gui.multiplayermenu._create_game()
+		_modules.gui.windows._windows[-1].act()
 	elif command_line_arguments.join_mp_game:
 		_modules.gui.show_main()
 		_modules.gui.windows.show(_modules.gui.multiplayermenu)

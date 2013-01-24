@@ -57,7 +57,7 @@ class MultiplayerMenu(Window):
 		self._gui.mapEvents({
 			'cancel' : self._windows.close,
 			'join'   : self._join_game,
-			'create' : lambda: self._windows.show(CreateGame(self._windows)),
+			'create' : self._create_game,
 			'refresh': Callback(self._refresh, play_sound=True)
 		})
 
@@ -229,6 +229,9 @@ class MultiplayerMenu(Window):
 			                            own_version=NetworkInterface().get_clientversion()))
 			return
 
+		NetworkInterface().change_name(self._playerdata.get_player_name())
+		NetworkInterface().change_color(self._playerdata.get_player_color().id)
+
 		password = ""
 		if game.password:
 			# Repeatedly ask the player for the password
@@ -264,6 +267,10 @@ class MultiplayerMenu(Window):
 	def _prepare_game(self, game):
 		horizons.main.prepare_multiplayer(game)
 
+	def _create_game(self):
+		NetworkInterface().change_name(self._playerdata.get_player_name())
+		NetworkInterface().change_color(self._playerdata.get_player_color().id)
+		self._windows.show(CreateGame(self._windows)),
 
 class CreateGame(Window):
 	"""Interface for creating a multiplayer game"""
