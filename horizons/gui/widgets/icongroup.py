@@ -88,3 +88,8 @@ class TilingHBox(TilingBackground, HBox):
 			base_path="content/gui/images/background/widgets/cityinfo_",
 			start_img="left.png", tiles_img="fill.png", final_img="right.png",
 			**kwargs)
+
+
+class hr(Icon):
+	def __init__(self, **kwargs):
+		super(hr, self).__init__(image="content/gui/images/background/hr.png", **kwargs)
