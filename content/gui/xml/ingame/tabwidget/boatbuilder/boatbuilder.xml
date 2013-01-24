@@ -45,7 +45,8 @@
 
 	<Container position="25,325" size="260,110" name="BB_progress_container">
 		<!-- Progress display -->
-		<ProgressBar position="0,5" name="progress" />
+		<ProgressBar name="progress" max_size="100,12" position="9,3"
+			background="content/gui/images/background/bar_bg.png" />
 		<Label position="0,20" name="BB_progress_label" text="Construction progress:"
 			comment="Refers to the resources still missing to complete the current boat builder task" />
 		<Label position="165,20" name="BB_progress_perc" />
