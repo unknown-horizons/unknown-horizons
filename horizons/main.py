@@ -245,12 +245,15 @@ def start(_command_line_arguments):
 		__string_previewer.show()
 	elif command_line_arguments.create_mp_game:
 		_modules.gui.show_main()
-		_modules.gui.show_multi()
-		_modules.gui.create_default_mp_game()
+		_modules.gui.windows.show(_modules.gui.multiplayermenu)
+		from horizons.gui.modules.multiplayermenu import CreateGame
+		mpgame = CreateGame(_modules.gui.windows)
+		_modules.gui.windows.show(mpgame)
+		mpgame.act()
 	elif command_line_arguments.join_mp_game:
 		_modules.gui.show_main()
-		_modules.gui.show_multi()
-		_modules.gui.join_mp_game()
+		_modules.gui.windows.show(_modules.gui.multiplayermenu)
+		_modules.gui.multiplayermenu._join_game()
 	else: # no commandline parameter, show main screen
 
 		# initalize update checker
