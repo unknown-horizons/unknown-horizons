@@ -173,7 +173,7 @@ class Game(object):
 	def __getstate__(self):
 		# NOTE: don't return _ANY_ private data here as these object
 		# will be used to build the public game list. if really necessary remove
-    # the private data in packets.data_gameslist.addgame
+		# the private data in packets.data_gameslist.addgame
 		# NOTE: this classes are used on the client too, so beware of
 		# datatype changes
 		state = self.__dict__.copy()
