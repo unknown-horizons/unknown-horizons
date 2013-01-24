@@ -4,7 +4,7 @@
 
 <VBox position="50,30" padding="10">
 	<Label name="headline_set_player_details" text="Change player details" />
-	<Icon image="content/gui/images/background/hr.png" />
+	<hr />
 	<VBox name="playerdataselectioncontainer"  position="0,60" />
 
 	<HBox>

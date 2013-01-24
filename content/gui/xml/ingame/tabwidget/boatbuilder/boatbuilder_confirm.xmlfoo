@@ -6,7 +6,7 @@
 	<Container position="0,70" size="260,40">
 		<!-- Headline-->
 		<Label name="headline" position="60,7" text="Confirm order" />
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 	</Container>
 
 	<Container position="20,110" size="95,95">
@@ -34,7 +34,7 @@
 		<Label name="headline_BB_builtship_label" position="15,0" text="Sloop-o'-war" />
 		<Label name="BB_description_frigate" position="15,25" text="Three-masted most common classified war ship with one gun deck." wrap_text="1" max_size="212,60" />
 		<Label name="headline_upgrades" position="50,90" text="Buy Upgrades" />
-		<Icon image="content/gui/images/background/hr.png" position="0,113" />
+		<hr position="0,113" />
 	</Container>
 
 	<Container position="20,333" size="220,30">

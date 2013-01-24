@@ -10,7 +10,7 @@
 		<Label name="name" />
 	</HBox>
 
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 
 	<HBox min_size="125,20" max_size="225,20" position="25,40">
 		<!-- the widgets in this container have no text because it is set
@@ -25,7 +25,7 @@
 	</HBox>
 
 
-	<!--<Icon image="content/gui/images/background/hr.png" position="20,122" />-->
+	<!--<hr position="20,122" />-->
 
 	<VBox name="production_lines" position="20,70" />
 	<!--

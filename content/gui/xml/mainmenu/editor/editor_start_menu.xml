@@ -6,7 +6,7 @@
 		<VBox name="left_side" size="320,465">
 			<Container size="320,45">
 				<Label text="Select map source" position="70,0" name="headline" />
-				<Icon image="content/gui/images/background/hr.png" position="50,30" />
+				<hr position="50,30" />
 			</Container>
 
 			<VBox padding="5">

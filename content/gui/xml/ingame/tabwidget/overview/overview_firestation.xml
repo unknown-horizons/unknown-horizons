@@ -10,7 +10,7 @@
 			<Label name="headline" text="Building overview" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 		<Container size="260,550" position="25,43">
 			<Label name="name_label" text="Name:" />
 			<Label name='name' position="55,0" />

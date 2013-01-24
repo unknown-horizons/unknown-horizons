@@ -125,7 +125,7 @@ with open(OUTPUT, 'w') as f:
 				write(f, 1, u'<VBox max_size="310,500" min_size="310,500">')
 			if LR == 'L':
 				write(f, 2, u'<Label text="%s" name="headline" />' % h1.string)
-				write(f, 2, u'<Icon image="content/gui/images/background/hr.png" />')
+				write(f, 2, u'<hr />')
 			for h3, ul in sorted(dct.items(), key=h3sort):  # subheadings
 				write(f, 2, u'<VBox> <Label text="%s" name="headline" />' % h3.string)
 				for items in ul:  # logical groups, unsorted

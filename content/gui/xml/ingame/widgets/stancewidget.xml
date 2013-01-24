@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--Stance widget, used by fighting ship and multi tab-->
 <Container size="245,70">
-	<Icon image="content/gui/images/background/hr.png" position="22,0" />
+	<hr position="22,0" />
 	<HBox position="82,7">
 		<ToggleImageButton name="aggressive_stance" position="175,480"
 			path="icons/units/stances/aggressive" helptext="Aggressive"

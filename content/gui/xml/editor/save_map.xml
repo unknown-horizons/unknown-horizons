@@ -3,7 +3,7 @@
 	background_image="content/gui/images/background/notice230.png">
 	<VBox position="50,30" padding="10">
 		<Label name="headline_change_name" text="Save map" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<Label name="enter_new_name_lbl" text="Enter name:" wrap_text="1" max_size="150,40" />
 		<TextField name="map_name" max_size="150,20" min_size="150,20" />
 

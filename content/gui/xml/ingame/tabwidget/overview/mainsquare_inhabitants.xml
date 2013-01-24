@@ -14,7 +14,7 @@ resources.
 			<Label name="headline" text="Settler overview" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 
 		<Container size="260,50" position="25,43">
 			<!-- Taxes -->
@@ -43,7 +43,7 @@ resources.
 				hover_image="content/gui/images/buttons/upgrade/hover_to_disallow.png" />
 		</Container>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,160" />
+		<hr position="20,160" />
 
 		<Container size="260,72" position="25,165">
 			<Label name="headline_happiness_per_house" text="Happiness per house" />
