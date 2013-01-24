@@ -37,7 +37,7 @@
 		<Label name="game_playersnum" position="0,190" />
 		<Label name="game_player_color" position="130,190" text="Color" />
 		<Label name="game_player_status" position="205,190" text="Status" />
-		<VBox name="players_vbox" position="0,215" />
+		<VBox name="players_vbox" position="0,210" />
 	</Container>
 
 </Container>
