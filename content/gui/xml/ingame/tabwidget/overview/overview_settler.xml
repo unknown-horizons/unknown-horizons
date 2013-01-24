@@ -21,8 +21,8 @@
 			<Icon name="happiness_label" position="0,167"
 				image="content/gui/icons/templates/happiness/average.png"
 				helptext="Happiness" />
-			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,20" />
-			<ProgressBar name='happiness' position="21,166" size="78,18" helptext="Happiness" />
+			<ProgressBar name='happiness' position="21,166" helptext="Happiness"
+				background="content/gui/images/background/bar_bg.png" />
 			<Icon name="residents_label" position="140,166"
 				image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
 				helptext="Residents" />
