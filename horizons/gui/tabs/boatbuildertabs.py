@@ -213,8 +213,8 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		widget.addChild(button)
 
 		#TODO since this code uses the boat builder as producer, the
-		# gold cost of ships is in consumed res is always 0 since it
-		# is paid from player inventory, not from the boat builder one.
+		# gold cost of ships in consumed res is always 0 since it is
+		# paid from player inventory, not from the boat builder one.
 		production = self.producer.create_production(prodline)
 		# consumed == negative, reverse to sort in *ascending* order:
 		costs = sorted(production.get_consumed_resources().iteritems(), key=itemgetter(1))

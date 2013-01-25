@@ -50,7 +50,7 @@ class BuildingTool(NavigationTool):
 	of random artifacts that used to have a purpose once.
 
 	Terminology:
-	- Related buildings: Buildings lower in the hiearchy, needed by current building to operate (tree when building lumberjack)
+	- Related buildings: Buildings lower in the hierarchy, needed by current building to operate (tree when building lumberjack)
 	- Inversely related building: lumberjack for tree. Need to show its range to place building, it must be in range.
 	- Building instances/fife instances: the image of a building, that is dragged around.
 
@@ -419,7 +419,7 @@ class BuildingTool(NavigationTool):
 			self._transparencified_instances.add(weakref.ref(inst))
 
 	def _highlight_inversely_related_buildings(self, building, settlement):
-		"""Point out buildings that are inversly relevant (e.g. lumberjacks when building trees)
+		"""Point out buildings that are inversely related (e.g. lumberjacks when building trees)
 		This is triggered on each preview change and highlights only those in range"""
 		# tuple for fast lookup with few elements
 		ids = tuple(self.session.db.get_inverse_related_building_ids(self._class.id))
