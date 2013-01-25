@@ -304,7 +304,7 @@ class _IngameMessage(object):
 		self.read = read
 		self.created = created
 		self.display = display if display is not None else horizons.globals.db.get_msg_visibility(id)
-		icon = icon_id if icon_id else horizons.globals.db.get_msg_icon_id(id)
+		icon = icon_id if icon_id is not None else horizons.globals.db.get_msg_icon_id(id)
 		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
 			assert isinstance(message, unicode), "Message is not unicode: %s" % message
