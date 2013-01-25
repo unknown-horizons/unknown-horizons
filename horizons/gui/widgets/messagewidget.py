@@ -175,7 +175,7 @@ class MessageWidget(LivingObject):
 					   Callback(self.session.view.center, message.x, message.y),
 					   Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
 				   )
-			if message.type == "logbook":
+			if message.msg_type == "logbook":
 				# open logbook to relevant page
 				callback = Callback.ChainedCallbacks(
 					   callback, # this makes it so the order of callback assignment doesn't matter
@@ -301,7 +301,7 @@ class _IngameMessage(object):
 		if point is not None:
 			self.x, self.y = point.x, point.y
 		self.id = id
-		self.type = msg_type
+		self.msg_type = msg_type
 		self.read = read
 		self.created = created
 		self.display = display if display is not None else horizons.globals.db.get_msg_visibility(id)
