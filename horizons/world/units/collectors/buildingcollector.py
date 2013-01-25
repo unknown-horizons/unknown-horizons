@@ -69,13 +69,15 @@ class BuildingCollector(Collector):
 		current_tick = Scheduler().cur_tick
 
 		# save home_building and creation tick
-		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
+		# pre-translate the tick number for the loading process
+		translated_creation_tick = self._creation_tick - current_tick + 1
 		db("INSERT INTO building_collector(rowid, home_building, creation_tick) VALUES(?, ?, ?)",
-			 self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
+			self.worldid, self.home_building.worldid if self.home_building is not None else None,
+			translated_creation_tick)
 
 		# save job history
 		for tick, utilization in self._job_history:
-				# pre-translate the tick number for the loading process
+			# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + Scheduler.FIRST_TICK_ID
 			db("INSERT INTO building_collector_job_history(collector, tick, utilisation) VALUES(?, ?, ?)",
 				 self.worldid, translated_tick, utilization)
@@ -231,7 +233,7 @@ class BuildingCollector(Collector):
 		@param res: optional, only search for buildings that provide res"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.home_building.island.get_providers_in_range(reach, reslist=reslist,
-								                                            player=self.owner)
+		                                                        player=self.owner)
 
 	def handle_path_home_blocked(self):
 		"""Called when we get blocked while trying to move to the job location. """
