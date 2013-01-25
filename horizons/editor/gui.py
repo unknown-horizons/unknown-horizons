@@ -255,12 +255,13 @@ class SaveMapDialog(Window):
 
 	def _do_save(self):
 		name = self._widget.collectData('map_name')
-		if re.match('^[a-zA-Z0-9_-]+$', name):
+		regex = r'[a-zA-Z0-9_-]+'
+		if re.match('^' + regex + '$', name):
 			self._session.save(name)
 			self._windows.close()
 		else:
 			#xgettext:python-format
-			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
+			message = _('Valid map names are in the following form: {expression}').format(expression=regex)
 			#xgettext:python-format
 			advice = _('Try a name that only contains letters and numbers.')
 			self._windows.show_error_popup(_('Error'), message, advice)
