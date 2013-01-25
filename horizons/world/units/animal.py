@@ -286,7 +286,6 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 	the farm grows, and collectors from the farm can collect their produced resources.
 	"""
 	job_ordering = JobList.order_by.random
-	grazingTime = 2
 
 	def __init__(self, home_building, start_hidden=False, **kwargs):
 		super(FarmAnimal, self).__init__(home_building=home_building,
