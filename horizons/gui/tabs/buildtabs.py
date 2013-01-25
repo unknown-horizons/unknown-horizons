@@ -301,5 +301,3 @@ class BuildTab(TabInterface):
 						if isinstance(entry, int): # actual building button
 							building_tiers[entry] = tier
 		return building_tiers
-
-

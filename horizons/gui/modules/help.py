@@ -56,7 +56,7 @@ class HelpDialog(Window):
 		labels = self.widget.getNamedChildren()
 		# filter misc labels that do not describe key functions
 		labels = dict( (name[4:], lbl[0]) for (name, lbl) in labels.iteritems()
-								    if name.startswith('lbl_') )
+		                                  if name.startswith('lbl_') )
 
 		# now prepend the actual keys to the function strings defined in xml
 		for (name, lbl) in labels.items():
