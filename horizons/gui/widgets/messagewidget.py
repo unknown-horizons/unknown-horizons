@@ -86,7 +86,7 @@ class MessageWidget(LivingObject):
 		"""Adds a message to the MessageWidget.
 		@param point: point where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
-		@param type: message type; determines what happens on click
+		@param msg_type: message type; determines what happens on click
 		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 		@param play_sound: whether to play the default message speech for string_id
 		@param check_duplicate: check for pseudo-duplicates (similar messages recently nearby)
@@ -291,8 +291,9 @@ class _IngameMessage(object):
 	@param x, y: int position on the map where the action took place.
 	@param id: message id string, needed to retrieve the message from the database.
 	@param created: tickid when the message was created. Keeps message order after load.
-	@param count: a unique message id number
+	@param msg_type: messages coupled with logbook entries use this to link to pages
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
+	@param icon_id: which icon to display. Loads preset for `id` if None.
 	"""
 	def __init__(self, point, id, created,
 	             msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
