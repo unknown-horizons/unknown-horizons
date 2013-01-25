@@ -42,11 +42,13 @@ class StorageBuilding(StorageResourceHandler,
 		super(StorageBuilding, self).initialize()
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 		# add limit, it will be saved so don't set on load()
-		self.get_component(StorageComponent).inventory.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
+		inv = self.get_component(StorageComponent).inventory
+		inv.adjust_limit(self.session.db.get_storage_building_capacity(self.id))
 
 	def remove(self):
-		self.get_component(StorageComponent).inventory.remove_change_listener(self._changed)
-		self.get_component(StorageComponent).inventory.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
+		inv = self.get_component(StorageComponent).inventory
+		inv.remove_change_listener(self._changed)
+		inv.adjust_limit(-self.session.db.get_storage_building_capacity(self.id))
 		super(StorageBuilding, self).remove()
 
 	def load(self, db, worldid):
@@ -56,7 +58,8 @@ class StorageBuilding(StorageResourceHandler,
 
 	def get_utilization_history_length(self):
 		collecting_comp = self.get_component(CollectingComponent)
-		return None if not collecting_comp.get_local_collectors() else collecting_comp.get_local_collectors()[0].get_utilization_history_length()
+		if collecting_comp.get_local_collectors():
+			return collecting_comp.get_local_collectors()[0].get_utilization_history_length()
 
 	def get_collector_utilization(self):
 		collectors = self.get_component(CollectingComponent).get_local_collectors()

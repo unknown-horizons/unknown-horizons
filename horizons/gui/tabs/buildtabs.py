@@ -142,8 +142,9 @@ class BuildTab(TabInterface):
 			enough_res = False # don't show building by default
 			if settlement is not None: # settlement is None when the mouse has left the settlement
 				res_overview = self.session.ingame_gui.resource_overview
+				show_costs = Callback(res_overview.set_construction_mode, settlement, building.costs)
 				button.mapEvents({
-				  button.name+"/mouseEntered/buildtab" : Callback(res_overview.set_construction_mode, settlement, building.costs),
+				  button.name+"/mouseEntered/buildtab" : show_costs,
 				  button.name+"/mouseExited/buildtab" : res_overview.close_construction_mode
 				  })
 
