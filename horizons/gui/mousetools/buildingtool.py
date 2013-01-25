@@ -223,8 +223,6 @@ class BuildingTool(NavigationTool):
 	def load_gui(self):
 		if self.__class__.gui is None:
 			self.__class__.gui = load_uh_widget("place_building.xml")
-			top_bar = self.__class__.gui.findChild(name='top_bar')
-			top_bar.position = ((self.__class__.gui.size[0] // 2) - (top_bar.size[0] // 2) - 16, 50)
 			self.__class__.gui.position_technique = "right-1:top+157"
 		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
 		                                "rotate_right": self.rotate_right } )
