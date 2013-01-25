@@ -221,13 +221,9 @@
 ### Debian
 * christoph_debian (Christoph Egger)
 
-### Fedora
+### Fedora & openSUSE
 * nmarques (Nelson Marques)
-
-- - - - -
-
-### openSUSE
-* nmarques (Nelson Marques)
+* gryffus (Lukáš Krejza)
 
 ### OS X
 * hoffi (Stefan Hoffmann)
