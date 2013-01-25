@@ -277,7 +277,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 	def __str__(self):
 		return "%s(health=%s)" % (super(WildAnimal, self).__str__(),
-															self.health if hasattr(self, 'health') else None)
+		                          getattr(self, 'health', None))
 
 
 class FarmAnimal(CollectorAnimal, BuildingCollector):
@@ -289,8 +289,8 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 	grazingTime = 2
 
 	def __init__(self, home_building, start_hidden=False, **kwargs):
-		super(FarmAnimal, self).__init__(home_building = home_building,
-																 start_hidden = start_hidden, **kwargs)
+		super(FarmAnimal, self).__init__(home_building=home_building,
+		                                 start_hidden=start_hidden, **kwargs)
 
 	def register_at_home_building(self, unregister=False):
 		if unregister:
