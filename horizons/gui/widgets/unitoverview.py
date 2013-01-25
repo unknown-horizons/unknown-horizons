@@ -113,8 +113,10 @@ class WeaponStorageWidget(HBox):
 			for weapon, amount in storage:
 				weapons_added = True
 				icon_image = get_res_icon_path(weapon, 24)
-				icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
-				icon = Icon(image=icon_image, helptext=icon_tooltip)
+				weapon_name = self.instance.session.db.get_res_name(weapon)
+				#xgettext:python-format
+				helptext = _('{weapon}: {amount}').format(weapon=weapon_name, amount=amount)
+				icon = Icon(image=icon_image, helptext=helptext)
 				self.addChild(icon)
 		if not weapons_added:
 			icon_image = "content/gui/icons/resources/none.png"
