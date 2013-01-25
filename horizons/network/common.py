@@ -182,10 +182,11 @@ class Game(object):
 		state['password'] = bool(self.password)
 
 		# make data backwards compatible
-		# 2012.1
 		state['creator'] = self.creator.name
 		state['clientversion'] = self.creator.version
-		state['load'] = bool(self.maphash)
+		if self.creator.protocol == 0:
+			state['load'] = self.maphash if self.maphash else None
+			del state['maphash']
 
 		return state
 

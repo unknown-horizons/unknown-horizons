@@ -35,6 +35,9 @@ if not enet:
 
 MAX_PEERS = 4095
 CONNECTION_TIMEOUT = 500
+# protocols used by uh versions:
+# 0 ... 2012.1
+# 1 ... >2012.1
 PROTOCOLS = [0, 1]
 
 logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
