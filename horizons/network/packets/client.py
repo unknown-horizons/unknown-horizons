@@ -67,6 +67,7 @@ class cmd_creategame(packet):
 			raise SoftNetworkException("Your player name cannot be empty")
 
 		if protocol == 0:
+			# hardcoded playercolor
 			pkt.playercolor = 1
 		else:
 			if not isinstance(pkt.playercolor, int):
@@ -87,6 +88,11 @@ class cmd_creategame(packet):
 		if not isinstance(pkt.maxplayers, int):
 			raise NetworkException("Invalid datatype: maxplayers")
 
+		if protocol == 0:
+			if pkt.load is None:
+				pkt.maphash = ""
+			elif isinstance(pkt.load, str):
+				pkt.maphash = pkt.load
 		if not isinstance(pkt.maphash, str):
 			raise NetworkException("Invalid datatype: maphash")
 
