@@ -22,7 +22,7 @@
 import hashlib
 import textwrap
 
-from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.widgets import HBox, Label
 
 import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
