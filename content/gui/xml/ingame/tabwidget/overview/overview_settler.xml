@@ -10,7 +10,7 @@
 			<RenameLabel name="headline" helptext="Click to change the name of your settlement" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 		<Container size="260,550" position="22,20">
 
 			<!-- Building image -->
@@ -30,7 +30,7 @@
 				helptext="Residents" />
 
 			<!-- Taxes -->
-			<Icon image="content/gui/images/background/hr.png" position="0,190" />
+			<hr position="0,190" />
 			<Label position="0,205" name="tax_label" text="Taxes:" />
 			<Label name='taxes' position="55,205"
 				helptext="Paid taxes" />
@@ -45,7 +45,7 @@
 			<StepSlider position="2,230" size="200,20" name="tax_slider" orientation="0" is_focusable="0" />
 
 			<!-- Resources -->
-			<Icon image="content/gui/images/background/hr.png" position="0,255" />
+			<hr position="0,255" />
 			<Label position="0,265" name="needed_res_label" text="Needed resources:" />
 			<HBox name='needed_res' position="0,285" padding="8" />
 

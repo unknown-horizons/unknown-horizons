@@ -6,7 +6,7 @@
 		<HBox name="head_box" position="0,7" size="250,100">
 			<Label name="headline" text="Build" />
 		</HBox>
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 		<Icon name="building" position="0,70" />
 	</Container>
 

@@ -131,7 +131,7 @@ def write_page(heading, content):
 	write_page_header()
 
 	write(f, 2, u'<Label text="%s" name="headline" />' % heading)
-	write(f, 2, u'<Icon image="content/gui/images/background/hr.png" />')
+	write(f, 2, u'<hr />')
 
 	wide = heading in wide_pages
 	for h3, lines in content.items():

@@ -8,7 +8,7 @@
 		<Label name="headline" />
 	</HBox>
 
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 	
 	<VBox position="50, 50" size="70,70">
 		<Label name="ally_label" text="ally" comment="Diplomacy state of player" />

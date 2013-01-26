@@ -4,7 +4,7 @@
 
 <VBox position="72,40" max_size="340,485" min_size="340,485" padding="10">
 	<Label text="Key bindings" name="headline" />
-	<Icon image="content/gui/images/background/hr.png" />
+	<hr />
 	<VBox>
 		<Label name="lbl_LEFT" text="Scroll left" />
 		<Label name="lbl_RIGHT" text="Scroll right" />

@@ -13,7 +13,7 @@ afterwards run development/generate_credits.py to refresh this file.
 <HBox name="credits_team" position="185,45" padding="10">
 	<VBox max_size="310,500" min_size="310,500">
 		<Label text="UH-Team" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
 			<VBox name="box">
 				<Label text="Nightraven (Tobias Schroefel)" />
@@ -76,7 +76,7 @@ afterwards run development/generate_credits.py to refresh this file.
 <HBox name="credits_patchers" position="185,45" padding="10">
 	<VBox max_size="310,500" min_size="310,500">
 		<Label text="Patchers" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox> <Label text="2009" name="headline" />
 			<VBox name="box">
 				<Label text="abeaumont (Building bugfix)" />
@@ -125,10 +125,10 @@ afterwards run development/generate_credits.py to refresh this file.
 </HBox>
 
 <HBox name="credits_translators" position="185,45" padding="10">
-	<ScrollArea name="translators" vertical_scrollbar="1" max_size="310,500" min_size="310,500">
+	<ScrollArea name="translators" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
 		<Label text="Translators" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox> <Label text="Bulgarian" name="headline" />
 			<VBox name="box">
 				<Label text="balward" />
@@ -229,7 +229,7 @@ afterwards run development/generate_credits.py to refresh this file.
 		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="translators" vertical_scrollbar="1" max_size="310,500" min_size="310,500">
+	<ScrollArea name="translators" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
 		<VBox> <Label text="Norwegian" name="headline" />
 			<VBox name="box">
@@ -312,7 +312,7 @@ afterwards run development/generate_credits.py to refresh this file.
 <HBox name="credits_packagers" position="185,45" padding="10">
 	<VBox max_size="310,500" min_size="310,500">
 		<Label text="Packagers" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox> <Label text="Debian" name="headline" />
 			<VBox name="box">
 				<Label text="christoph_debian (Christoph Egger)" />
@@ -335,7 +335,7 @@ afterwards run development/generate_credits.py to refresh this file.
 <HBox name="credits_thanks" position="185,45" padding="10">
 	<VBox max_size="310,500" min_size="310,500">
 		<Label text="Special Thanks" name="headline" />
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 		<VBox> <Label text="Thanks, all of you are awesome!" name="headline" />
 			<VBox name="box_wide">
 				<Label text="Alexia and Widelands team (http://widelands.org)" />

@@ -9,7 +9,7 @@
 			<Label name='name' />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 
 		<!-- Picture -->
 		<Icon name="building_image" position="15,40" />

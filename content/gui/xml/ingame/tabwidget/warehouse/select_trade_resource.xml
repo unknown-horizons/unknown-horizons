@@ -4,7 +4,7 @@
 
 <Container name="content" position="10,70" size="225,305">
 	<Label name="headline" text="Select resources:" position="50,7" />
-	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+	<hr position="20,30" />
 	<!-- Displays list of resources to select one for trade. -->
 	<ScrollArea min_size="217,270" max_size="217,270" position="8,35">
 		<VBox name="resources" size="217,0">

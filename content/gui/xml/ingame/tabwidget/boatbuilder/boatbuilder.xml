@@ -9,7 +9,7 @@
 			<Label name='name' position="25,40" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 		<Icon name="running_costs_label"	position="180,40" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
 		<Label name="running_costs" position="200,40" />
