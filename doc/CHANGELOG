@@ -3,8 +3,8 @@ Unknown Horizons
 
 -----------------------------------------------------
 
-2012-??-??: Milestone 2012.2
-changelog date: OCT 03
+2013-01-27: Milestone 2013.1
+changelog date: JAN 27
 
 Gameplay and Balancing
 * New features
@@ -19,12 +19,20 @@ Gameplay and Balancing
   # fire station: 4 bricks (was: 5), tavern: 4 bricks (was: 2)
   # trees take 120s to grow (was: 60) and cost 50 gold coins (was: 10)
   # producing boards requires 2 trees (was: 1)
+  # charcoal production consumes 3 boards (was: 5)
+  # increase storage size for coal in the charcoalburning to 4 (was: 2)
+  # Messages now only displayed once in scenarios - #1897
+  # don't allow empty names for ships/settlements
+  # allow frigates to trade - #1989
+  # require buildings other than warehouses to be entirely within settlements - #1970, #969
 * Fixed bugs and problems
   ~ fixed wrong graphics of tree growth sequence - #924
   ~ burnt down residential buildings replaced by ruin
+  ~ save freetrader, pirate and disaster settings - #1372
 
 Media Content
 * New files and features
+  + new tileset graphics (Daniel)
   + docs: contribution guidelines
   + font: GNU Unifont as general font fallback
   + sound: error sound, refresh sound, click sound (Kinshuk)
@@ -37,6 +45,7 @@ Media Content
 * Brush-ups and modifications
   # resource icons are now 32px everywhere
   # buildings retain their rotation when upgraded
+  # remove alpha palette from fish images - #1906
 
 User Interface
 * Additions and new features
@@ -52,6 +61,8 @@ User Interface
   + error sounds for invalid and impossible actions
   + click sound for all gui actions
   + second build menu layout (toggle with icon)
+  + new ingame map editor, replaces the old external one
+  + new widget to show FPS via F10
 * Repositioning and modifications
   # BuildRelated tabs now use one line per tier
   # cleaned up and polished production overview, inventory tabs, boat
@@ -60,6 +71,9 @@ User Interface
   # highlight fish deposits in range of fishers, improve fish highlight
   # dynamic cityinfo placement, depends on resource overview bar size
   # popups now modal by default
+  # reworked layout of Game-Settings page - #1751
+  # use 'abcd' image for roads as buildpreview if it exists
+  # restyle city info
 * Fixed bugs and usability problems
   ~ only display status icons when and where they make sense
   ~ multiplayer: check required building costs early - #1486
@@ -68,6 +82,9 @@ User Interface
   ~ clicks on scenario messages open corresponding logbook page
   ~ warehouse selection unintuitive - #1246
   ~ select most recent savegame in "Load game" dialog
+  ~ make the coordinates tooltip show integer coordinates again
+  ~ save max tier notification per player
+  ~ update building preview on player or settlementinventory change - #1680
 
 Codebase
 * New functionalities
@@ -78,6 +95,14 @@ Codebase
   + scenario actions:
       highlight_position, change_increment, alter_inventory
   + scenario tests
+  + store hotkey key values in settings file - #1302
+  + add  enet.so library for x64 Mac users with system python 2.7
+  + new atlases generator, enable/disable via settings.xml or commandline
+  + add the --no-freeze-protection flag to disable freeze protection
+  + show a warning of unsupported fife revision
+  + silently upgrade savegames our savegame upgrader can upgrade
+  + add the --edit-game-map option to edit the maps of saved games
+  + GCI Scroll Settings - #720
 * Modified structures
   # own implementation of yaml cache, replacing shelve
   # less verbose api for horizons.messaging
@@ -86,18 +111,24 @@ Codebase
   # --nature-seed flag is gone, --sp-seed provides its functionality
   # rewrote mp client/server methods, support older client protocols
   # globals in horizons.main now live in horizons.globals
+  # remove support for preview action sets, allow weighting action sets
+  # use yyyy-mm-dd.nn format for profiling data files.
+  # change --load-map to --load-game
+  # remove the entire campaign system
 * Fixed crashes and inconsistencies
   ~ use unicode everywhere, only convert it when talking to fife
   ~ storages provide itercontents() and iterslots() instead of __iter__
   ~ invalid LC_TIME, LANG, LOCALE environment variables no longer crash
+  ~ add workaround for FIFE's inconsistent instance rotation round
+  ~ Fix animal location saving
 
 User-Contributed Content
 * Translations
    + new translation project: multiplayer error messages
-   + new translations:
-   + new terminology translations:
-   + new tutorial translations:
-   + new translations of 'The Unknown': de, es
+   + new translations: ml, uk
+   + new terminology translations: uk
+   + new tutorial translations: ml, uk
+   + new translations of 'The Unknown': de, es, fr, nl, pt_BR
 
 * Campaigns, scenarios and maps
 
