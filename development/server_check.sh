@@ -12,7 +12,7 @@ function do_crontab
 {
   tmpfile=tmpcron
   crontab -l > $tmpfile 2>/dev/null
-  echo "*/1 * * * * $self cron" >> $tmpfile && \
+  echo "*/1 * * * * $self cron check" >> $tmpfile && \
   crontab $tmpfile
   rm -f $tmpfile
   echo "Added crontab successfully..."
