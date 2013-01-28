@@ -19,37 +19,46 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import Container, Icon
 
-class ProgressBar(Container):
+from fife.extensions.pychan.widgets import Icon
+from fife.extensions.pychan.widgets.common import Attr, IntAttr
+
+from horizons.gui.widgets.container import AutoResizeContainer
+from horizons.gui.widgets.icongroup import TilingHBox
+
+
+class ProgressBar(AutoResizeContainer):
 	"""The ProgressBar is a pychan widget. It can be used in xml files like this:
 	<ProgressBar />
 	It is used to display a ProgressBar with a certain progress ;). Set the
 	widgets progress attribute to set the progress. Pretty straight forward.
 	The progress is a value from 0 to 100. Think of it as percent.
 	"""
+	ATTRIBUTES = AutoResizeContainer.ATTRIBUTES + [IntAttr('progress'), Attr('background')]
 
-	def __init__(self, progress=0, **kwargs):
+	def __init__(self, progress=0, background=None, **kwargs):
 		super(ProgressBar, self).__init__(**kwargs)
-		self.size = (200, 10)
+		self.fill = "content/gui/images/background/widgets/progressbar_fill.png"
 		self.__progress = progress
-		self.icon = None
-		self._init_gui()
-
-	def _init_gui(self):
-		self.icon = Icon(image="content/gui/images/background/widgets/progressbar_bg.png")
-		self.icon.min_size = (0, 0)
-		self.addChild(self.icon)
-		self._draw()
-
-	def _draw(self):
-		self.icon.size = (int(self.progress / 100.0 * self.size[0]), self.size[1])
+		self.__background = background
+		self.tiles = TilingHBox()
+		self.tiles.tiles_img = self.fill
+		self.tiles.start_img = self.tiles.final_img = None
+		self.addChild(self.tiles)
 
 	def _set_progress(self, progress):
 		self.__progress = progress
-		self._draw()
+		self.tiles.amount = int(progress)
 
 	def _get_progress(self):
 		return self.__progress
 
+	def _set_background(self, background):
+		self.__background = background
+		self.addChild(Icon(image=background))
+
+	def _get_background(self):
+		return self.__background
+
 	progress = property(_get_progress, _set_progress)
+	background = property(_get_background, _set_background)
