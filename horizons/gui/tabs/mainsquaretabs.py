@@ -63,6 +63,8 @@ class AccountTab(MainSquareTab):
 		super(AccountTab, self).__init__(instance=instance, widget='tab_account.xml',
 		                                 icon_path='icons/tabwidget/warehouse/account')
 		self.helptext = _("Account")
+		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
+		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
 		self.widget.mapEvents({
 		  'show_production_overview/mouseClicked' : self.show_production_overview
@@ -89,20 +91,16 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('sale').text = unicode(sell_income)
 		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
 
+		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
+		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
+		self.widget.mapEvents({'headline': rename})
+
+
 class MainSquareOverviewTab(AccountTab):
 	def __init__(self, instance):
 		super(MainSquareOverviewTab, self).__init__(instance=instance)
 		self.helptext = _('Main square overview')
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
-	def refresh(self):
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		events = {
-				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
-		         }
-		self.widget.mapEvents(events)
-		super(MainSquareOverviewTab, self).refresh()
 
 class MainSquareSettlerLevelTab(MainSquareTab):
 	LEVEL = None # overwrite in subclass
@@ -206,6 +204,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def toggle_upgrades(self):
 		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL, not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)
+
 
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SAILORS
