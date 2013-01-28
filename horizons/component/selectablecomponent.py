@@ -59,13 +59,14 @@ class SelectableComponent(Component):
 		t = arguments.pop('type')
 		return TYPES[ t ]( **arguments )
 
-	def __init__(self, tabs, enemy_tabs):
+	def __init__(self, tabs, enemy_tabs, active_tab=None):
 		super(SelectableComponent, self).__init__()
 		# resolve tab
 		from horizons.gui import tabs as tab_classes
 		resolve_tab = lambda tab_class_name : getattr(tab_classes, tab_class_name)
 		self.tabs = map(resolve_tab, tabs)
 		self.enemy_tabs = map(resolve_tab, enemy_tabs)
+		self.active_tab = active_tab
 		self._selected = False
 
 	def show_menu(self, jump_to_tabclass=None):
@@ -82,7 +83,7 @@ class SelectableComponent(Component):
 		if tablist:
 			tabs = [ tabclass(self.instance) for tabclass in tablist if
 			         tabclass.shown_for(self.instance) ]
-			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs)
+			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs, active_tab=self.active_tab)
 
 			if jump_to_tabclass:
 				for i, tab in enumerate(tabs):
@@ -134,10 +135,8 @@ class SelectableBuildingComponent(SelectableComponent):
 		cls._selected_tiles.l = []
 		cls._selected_fake_tiles.l = []
 
-
-	def __init__(self, tabs, enemy_tabs, range_applies_only_on_island=True):
-		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs)
-
+	def __init__(self, tabs, enemy_tabs, active_tab=None, range_applies_only_on_island=True):
+		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs, active_tab=active_tab)
 		self.range_applies_only_on_island = range_applies_only_on_island
 
 	def initialize(self):
