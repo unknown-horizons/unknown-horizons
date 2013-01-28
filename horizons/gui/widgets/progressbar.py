@@ -48,7 +48,7 @@ class ProgressBar(AutoResizeContainer):
 
 	def _set_progress(self, progress):
 		self.__progress = progress
-		self.tiles.amount = int(progress)
+		self.tiles.amount = int(progress * self.max_size[0] / 100)
 		self.adaptLayout()
 
 	def _get_progress(self):
@@ -56,7 +56,9 @@ class ProgressBar(AutoResizeContainer):
 
 	def _set_background(self, background):
 		self.__background = background
-		self.addChild(Icon(image=background))
+		icon = Icon(image=background)
+		icon.min_size = icon.size = self.max_size
+		self.addChild(icon)
 
 	def _get_background(self):
 		return self.__background
