@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from functools import partial
+
 from fife.extensions.pychan.widgets import Label
 
 from horizons.gui.widgets.productionoverview import ProductionOverview
@@ -189,12 +191,11 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
 		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
-		self.widget.child_finder('sad_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, max_happiness=sad))
-		self.widget.child_finder('avg_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, sad, happy))
-		self.widget.child_finder('happy_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, happy))
+		inhabitants = partial(self.settlement.get_residentials_of_lvl_for_happiness,
+		                      self.__class__.LEVEL)
+		self.widget.child_finder('sad_amount').text = unicode(inhabitants(max_happiness=sad))
+		self.widget.child_finder('avg_amount').text = unicode(inhabitants(sad, happy))
+		self.widget.child_finder('happy_amount').text = unicode(inhabitants(happy))
 
 		# refresh the summary
 		self.widget.child_finder('house_count').text = unicode(houses)
