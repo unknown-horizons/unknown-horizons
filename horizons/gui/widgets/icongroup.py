@@ -28,8 +28,8 @@ class TilingBackground(object):
 	but the layout also requires some kind of border around those tiling panels.
 	Default attributes are set in the widgets inheriting from TilingBackground.
 	"""
-	def __init__(self, amount, name, base_path, start_img, tiles_img, final_img, **kwargs):
-		super(TilingBackground, self).__init__(name=name, padding=0, border_size=0, **kwargs)
+	def __init__(self, amount, base_path, start_img, tiles_img, final_img, **kwargs):
+		super(TilingBackground, self).__init__()
 		# Note: Don't set the tile amount in the constructor,
 		# as it will not layout correctly, blame pychan for it :-)
 		self.__tile_amount = amount
@@ -55,39 +55,42 @@ class TilingBackground(object):
 
 	amount = property(_get_tile_amount, _set_tile_amount)
 
-class TooltipBG(TilingBackground, VBox):
+class TooltipBG(VBox, TilingBackground):
 	"""Not usable from xml!"""
 	def __init__(self, **kwargs):
-		super(TooltipBG, self).__init__(
-			amount=0, name='tooltip_background',
+		TilingBackground.__init__(self,
+			amount=0,
 			base_path="content/gui/images/background/widgets/tooltip_bg_",
 			start_img="top.png", tiles_img="middle.png", final_img="bottom.png",
 			**kwargs)
+		VBox.__init__(self, name='tooltip_background')
 
-class TabBG(TilingBackground, VBox):
+class TabBG(VBox, TilingBackground):
 	"""Intended to be used for any tab we display.
 	Uses content/gui/images/tabwidget/main_bg_*.png.
 	@param amount: amount of 50px tiles/panels in between top and bottom icon
 	"""
 	ATTRIBUTES = VBox.ATTRIBUTES + [IntAttr('amount')]
 	def __init__(self, **kwargs):
-		super(TabBG, self).__init__(
-			amount=0, name='tab_background_icons',
+		TilingBackground.__init__(self, 
+			amount=0,
 			base_path="content/gui/images/tabwidget/main_bg_",
 			start_img="top.png", tiles_img="fill.png", final_img="bottom.png",
 			**kwargs)
+		VBox.__init__(self, name='tab_background_icons')
 
-class TilingHBox(TilingBackground, HBox):
+class TilingHBox(HBox, TilingBackground):
 	"""Currently only used by cityinfo, thus using its arguments as defaults.
 	@param amount: amount of 10px tiles/panels in between left and right icon
 	"""
 	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
 	def __init__(self, **kwargs):
-		super(TilingHBox, self).__init__(
-			amount=0, name='city_info_background',
+		TilingBackground.__init__(self, 
+			amount=0,
 			base_path="content/gui/images/background/widgets/cityinfo_",
 			start_img="left.png", tiles_img="fill.png", final_img="right.png",
 			**kwargs)
+		HBox.__init__(self, name='city_info_background')
 
 
 class hr(Icon):
