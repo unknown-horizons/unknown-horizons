@@ -87,6 +87,8 @@ def update_all_translations():
 		for (element_name, attribute), translation in all_widgets.iteritems():
 			element = widget.findChild(name=element_name)
 			replace_attribute(element, attribute, translation)
+			#NOTE pychan + reloading font = ???
+			element.font = element.font
 		widget.adaptLayout()
 
 
