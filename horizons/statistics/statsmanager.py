@@ -31,6 +31,9 @@ from horizons.extscheduler import ExtScheduler
 class StatsManager(object):
 
 	action = "/upload"
+	
+	# interval in seconds in which collected data is sent
+	SEND_EVERY = 15
 
 	# interval in seconds in which collected data is sent
 	SEND_EVERY = 15
