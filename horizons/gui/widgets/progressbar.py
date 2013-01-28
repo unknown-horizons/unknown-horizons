@@ -20,7 +20,7 @@
 # ###################################################
 
 
-from fife.extensions.pychan.widgets import Icon
+from fife.extensions.pychan.widgets import Icon, Widget
 from fife.extensions.pychan.widgets.common import Attr, IntAttr
 
 from horizons.gui.widgets.container import AutoResizeContainer
@@ -39,6 +39,8 @@ class ProgressBar(AutoResizeContainer):
 	def __init__(self, progress=0, background=None, **kwargs):
 		super(ProgressBar, self).__init__(**kwargs)
 		self.fill = "content/gui/images/background/widgets/progressbar_fill.png"
+		if self.max_size == Widget.DEFAULT_MAX_SIZE:
+			self.max_size = (100, 16)
 		self.__progress = progress
 		self.__background = background
 		self.tiles = TilingHBox()
