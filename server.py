@@ -48,7 +48,7 @@ def fork():
 	except OSError, e:
 		sys.stderr.write("Unable to fork: (%d) %s\n" % (e.errno, e.strerror))
 		sys.exit(1)
-	return pid
+	return os.getpid()
 
 def redirect(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
 	for f in sys.stdout, sys.stderr:
@@ -61,12 +61,12 @@ def redirect(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
 	os.dup2(efd.fileno(), sys.stderr.fileno())
 
 def usage(fd=sys.stdout):
-	fd.write("Usage: %s " % (sys.argv[0]))
+	fd.write("Usage: %s" % (sys.argv[0]))
 	if os.name == "posix":
-		fd.write("[-d] ")
-	fd.write("-h host [-p port] [-s statistic_file]")
+		fd.write(" [-d]")
+	fd.write(" -h host [-p port] [-s statistic_file]")
 	if os.name == "posix":
-		fd.write("[-l logfile] [-P pidfile]")
+		fd.write(" [-l logfile] [-P pidfile] ")
 	fd.write("\n")
 
 host = None
