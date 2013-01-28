@@ -514,6 +514,7 @@ class MULTIPLAYER:
 
 class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
+	# change port to 2022 for development server updated after UH commits
 	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
 	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
