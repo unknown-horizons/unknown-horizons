@@ -57,7 +57,6 @@ class TilingBackground(object):
 
 class TooltipBG(TilingBackground, VBox):
 	"""Not usable from xml!"""
-	__metaclass__ = VBox.__metaclass__
 	def __init__(self, **kwargs):
 		super(TooltipBG, self).__init__(
 			amount=0, name='tooltip_background',
@@ -71,7 +70,6 @@ class TabBG(TilingBackground, VBox):
 	@param amount: amount of 50px tiles/panels in between top and bottom icon
 	"""
 	ATTRIBUTES = VBox.ATTRIBUTES + [IntAttr('amount')]
-	__metaclass__ = VBox.__metaclass__
 	def __init__(self, **kwargs):
 		super(TabBG, self).__init__(
 			amount=0, name='tab_background_icons',
@@ -84,7 +82,6 @@ class TilingHBox(TilingBackground, HBox):
 	@param amount: amount of 10px tiles/panels in between left and right icon
 	"""
 	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
-	__metaclass__ = VBox.__metaclass__
 	def __init__(self, **kwargs):
 		super(TilingHBox, self).__init__(
 			amount=0, name='city_info_background',
