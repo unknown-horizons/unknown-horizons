@@ -31,6 +31,7 @@ Continue to horizons.session for further ingame digging.
 import os
 import sys
 import os.path
+import platform
 import json
 import traceback
 import threading
@@ -288,7 +289,7 @@ def start(_command_line_arguments):
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
 	horizons.globals.statsmanager = StatsManager()
-	horizons.globals.statsmanager.collect_data({'gamestart': {'version':VERSION.RELEASE_VERSION, 'uuid': horizons.globals.fife.get_uh_setting("ClientID")}})
+	horizons.globals.statsmanager.collect_data({'gamestart': {'version':VERSION.RELEASE_VERSION, 'system': platform.system(), 'release': platform.release(), 'uuid': horizons.globals.fife.get_uh_setting("ClientID")}})
 	horizons.globals.fife.run()
 
 def quit():
