@@ -49,6 +49,7 @@ class ProgressBar(AutoResizeContainer):
 	def _set_progress(self, progress):
 		self.__progress = progress
 		self.tiles.amount = int(progress)
+		self.adaptLayout()
 
 	def _get_progress(self):
 		return self.__progress
