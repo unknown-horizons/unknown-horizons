@@ -92,11 +92,11 @@ class LoadingScreen(Window):
 		if self.profile:
 			self._times.append((message.stage, time.time()))
 
-		label = self._widget.findChild(name='loading_label')
+		label = self._widget.findChild(name='loading_stage')
 		label.text = unicode(message.stage)
 		label.adaptLayout()
 
 		if not self.profile:
-			self._widget.findChild(name='progress').progress = LOAD_PROGRESS[message.stage]
+			self._widget.findChild(name='loading_progress').progress = LOAD_PROGRESS[message.stage]
 
 		horizons.globals.fife.engine.pump()

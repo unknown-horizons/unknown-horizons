@@ -10,5 +10,6 @@
 		max_size="315,75" min_size="315,75" wrap_text="1" />
 	<Label name="version_label" position="780,735" font="headline_light" />
 
-	<ProgressBar name="progress" position="410,420" size="230, 10" />
+	<Label name="loading_stage" position="20,688" font="default_load" />
+	<ProgressBar name="loading_progress" position="410,420" size="230,10" />
 </Container>
