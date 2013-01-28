@@ -12,7 +12,7 @@ function do_crontab
 {
   tmpfile=tmpcron
   crontab -l > $tmpfile 2>/dev/null
-  echo "*/1 * * * * $self cron check" >> $tmpfile && \
+  echo "*/1 * * * * $self quiet check" >> $tmpfile && \
   crontab $tmpfile
   rm -f $tmpfile
   echo "Added crontab successfully..."
@@ -80,7 +80,7 @@ function get_pid
   fi
 }
 
-if [ "$1" = "cron" ]
+if [ "$1" = "quiet" ]
 then
   SILENT=1
   shift
