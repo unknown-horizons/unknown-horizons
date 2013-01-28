@@ -16,6 +16,7 @@ components:
 - SelectableComponent:
     type: building
     tabs: [WarehouseOverviewTab, InventoryTab, AccountTab]
+    active_tab: 1  # InventoryTab
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent:

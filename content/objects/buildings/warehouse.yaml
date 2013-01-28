@@ -15,6 +15,7 @@ components:
 - SelectableComponent:
     type: building
     tabs: [WarehouseOverviewTab, InventoryTab, BuySellTab, AccountTab]
+    active_tab: 1  # InventoryTab
     enemy_tabs: [EnemyWarehouseOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 # NOTE: productions in combinations with SettlementStorage are allowed here since there is only this one warehouse per settlement
