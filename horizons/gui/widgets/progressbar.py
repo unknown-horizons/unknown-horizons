@@ -77,3 +77,56 @@ class ProgressBar(AutoResizeContainer):
 	progress = property(_get_progress, _set_progress)
 	fill = property(_get_fill_image, _set_fill_image)
 	background = property(_get_background, _set_background)
+
+
+class TilingProgressBar(ProgressBar):
+	"""ProgressBar that tiles its fill image instead of stretching.
+
+	Also supports distinct left and right border/frame images which count
+	towards the displayed progress value and fill images of width > 1px.
+	"""
+	ATTRIBUTES = ProgressBar.ATTRIBUTES + [Attr('left'), Attr('right')]
+
+	def __init__(self, left=None, right=None, **kwargs):
+		super(TilingProgressBar, self).__init__(**kwargs)
+		self.__left = left
+		self.__right = right
+		self.tiles = TilingHBox()
+		self.addChild(self.tiles)
+		self.tiles_width = 1
+		self.left_width = 0
+		self.right_width = 0
+
+	def _get_progress(self):
+		return self.__progress
+	def _set_progress(self, progress):
+		self.__progress = progress
+		fill_width = (progress / 100.0) * (self.max_size[0] / self.tiles_width)
+		self.tiles.amount = fill_width - self.left_width - self.right_width
+		self.adaptLayout()
+
+	def _get_left_image(self):
+		return self.__left
+	def _set_left_image(self, image):
+		self.__left = image
+		self.left_width = Icon(image=image).size[0]
+		self.tiles.start_img = image
+
+	def _get_fill_image(self):
+		return self.__fill
+	def _set_fill_image(self, image):
+		self.__fill = image
+		self.tiles_width = Icon(image=image).size[0]
+		self.tiles.tiles_img = image
+
+	def _get_right_image(self):
+		return self.__right
+	def _set_right_image(self, image):
+		self.__right = image
+		self.right_width = Icon(image=image).size[0]
+		self.tiles.final_img = image
+
+	progress = property(_get_progress, _set_progress)
+	left = property(_get_left_image, _set_left_image)
+	fill = property(_get_fill_image, _set_fill_image)
+	right = property(_get_right_image, _set_right_image)

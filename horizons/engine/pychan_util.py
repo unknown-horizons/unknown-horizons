@@ -70,7 +70,7 @@ def init_pychan():
 	from horizons.gui.widgets.inventory import Inventory
 	from horizons.gui.widgets.buysellinventory import BuySellInventory
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-	from horizons.gui.widgets.progressbar import ProgressBar
+	from horizons.gui.widgets.progressbar import ProgressBar, TilingProgressBar
 	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
 	# additionally, ImageButton is imported from widgets.imagebutton above
 	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, MainmenuButton, OkButton
@@ -85,7 +85,7 @@ def init_pychan():
 	           ProgressBar, StepSlider, TabBG, ToggleImageButton,
 	           HealthWidget, StanceWidget, WeaponStorageWidget,
 	           AutoResizeContainer, RenameLabel, RenameImageButton,
-	           TilingHBox, hr,
+	           TilingHBox, TilingProgressBar, hr,
 			 # This overwrites the ImageButton provided by FIFE!
 	           ImageButton,
 	           ]
