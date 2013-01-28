@@ -221,3 +221,6 @@ class SettingChanged(Message):
 class MineEmpty(Message):
 	"""Sent when there are no more resources left in a mine."""
 	arguments = ('mine', )
+
+class LoadingProgress(Message):
+	arguments = ('text', )

@@ -25,6 +25,7 @@ import horizons.globals
 from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.messaging import LoadingProgress
 
 
 class LoadingScreen(Window):
@@ -52,10 +53,14 @@ class LoadingScreen(Window):
 		qotl_label.text = unicode(random.choice(items)) # choose a random quote / gameplay tip
 
 		self._widget.show()
+		LoadingProgress.subscribe(self._update)
 
 	def hide(self):
+		LoadingProgress.unsubscribe(self._update)
 		self._widget.hide()
 
-	def isVisible(self):
-		# TODO remote me once window manager works
-		return self._widget.isVisible()
+	def _update(self, message):
+		label = self._widget.findChild(name='loading_label')
+		label.text = unicode(message.text)
+		label.adaptLayout()
+		horizons.globals.fife.engine.pump()
