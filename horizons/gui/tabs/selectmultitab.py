@@ -19,6 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
+from fife.extensions.pychan.widgets import Icon
+
 from horizons.util.python.callback import Callback
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
@@ -186,6 +190,7 @@ class SelectMultiTab(TabInterface):
 
 class UnitEntry(object):
 	def __init__(self, instances, show_number=True):
+		self.log = logging.getLogger("gui.tabs")
 		self.instances = instances
 		self.widget = load_uh_widget("unit_entry_widget.xml")
 		# get the icon of the first instance
@@ -204,7 +209,14 @@ class UnitEntry(object):
 	def get_thumbnail_icon(self, unit_id):
 		"""Returns path of the thumbnail icon for unit with id *unit_id*."""
 		#TODO get a system for loading thumbnail by id
-		return "content/gui/icons/thumbnails/{unit_id}.png".format(unit_id=unit_id)
+		template = "content/gui/icons/thumbnails/{unit_id}.png"
+		path = template.format(unit_id=unit_id)
+		try:
+			Icon(image=path)
+		except RuntimeError:
+			self.log.warning('Missing thumbnail for id {0}'.format(unit_id))
+			path = template.format(unit_id=-1)
+		return path
 
 	def on_instance_removed(self, instance):
 		self.instances.remove(instance)
