@@ -155,14 +155,14 @@ class SelectionTool(NavigationTool):
 		# local import to prevent cycle
 		from horizons.gui.mousetools.attackingtool import AttackingTool
 		# change session cursor to attacking tool if selected instances can attack
-		attacking_unit_found = any(hasattr(i, 'attack') and i.owner.is_local_player
-		                           for i in selected)
+		found_military = any(hasattr(i, 'attack') and i.owner.is_local_player
+		                     for i in selected)
 		# Handover to AttackingTool without deselecting
-		self.deselect_at_end = not attacking_unit_found
+		self.deselect_at_end = not found_military
 
-		if attacking_unit_found and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
+		if found_military and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
 			self.session.ingame_gui.set_cursor('attacking')
-		if not attacking_unit_found and isinstance(self.session.ingame_gui.cursor, AttackingTool):
+		if not found_military and isinstance(self.session.ingame_gui.cursor, AttackingTool):
 			self.session.ingame_gui.set_cursor('default')
 
 	def mousePressed(self, evt):
