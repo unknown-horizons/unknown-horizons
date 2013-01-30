@@ -80,7 +80,9 @@ class TabBG(VBox, TilingBackground):
 			**kwargs)
 
 class TilingHBox(HBox, TilingBackground):
-	"""Currently only used by cityinfo, thus using its arguments as defaults.
+	"""Currently mostly used by cityinfo, thus using its arguments as defaults.
+
+	Another use case is the TilingProgressBar.
 	@param amount: amount of 10px tiles/panels in between left and right icon
 	"""
 	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
