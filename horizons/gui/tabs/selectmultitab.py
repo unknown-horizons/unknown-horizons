@@ -134,15 +134,12 @@ class SelectMultiTab(TabInterface):
 			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
 
 		if self.widget.isVisible():
-			# if all units die, hide the tab
-			if not self.instances:
+			if len(self.instances) < 2:
+				# hide the multi-selection tab
 				instance.session.ingame_gui.hide_menu()
-				return
-
-			# if one unit remains, show its menu
-			if len(self.instances) == 1:
-				instance.session.ingame_gui.hide_menu()
-				self.instances[0].get_component(SelectableComponent).show_menu()
+				# if one unit remains, show its menu
+				if len(self.instances) == 1:
+					self.instances[0].get_component(SelectableComponent).show_menu()
 				return
 
 		self.type_number[instance.id] -= 1
