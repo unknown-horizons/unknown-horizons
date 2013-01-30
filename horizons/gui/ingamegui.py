@@ -223,7 +223,7 @@ class IngameGui(LivingObject):
 
 	def show_build_menu(self, update=False):
 		"""
-		@param update: set when build possiblities change (e.g. after settler upgrade)
+		@param update: set when build possibilities change (e.g. after inhabitant tier upgrade)
 		"""
 		# check if build menu is already shown
 		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
