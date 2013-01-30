@@ -58,12 +58,12 @@ class TilingBackground(object):
 class TooltipBG(VBox, TilingBackground):
 	"""Not usable from xml!"""
 	def __init__(self, **kwargs):
+		VBox.__init__(self, name='tooltip_background', padding=0)
 		TilingBackground.__init__(self,
 			amount=0,
 			base_path="content/gui/images/background/widgets/tooltip_bg_",
 			start_img="top.png", tiles_img="middle.png", final_img="bottom.png",
 			**kwargs)
-		VBox.__init__(self, name='tooltip_background')
 
 class TabBG(VBox, TilingBackground):
 	"""Intended to be used for any tab we display.
@@ -72,12 +72,12 @@ class TabBG(VBox, TilingBackground):
 	"""
 	ATTRIBUTES = VBox.ATTRIBUTES + [IntAttr('amount')]
 	def __init__(self, **kwargs):
+		VBox.__init__(self, name='tab_background_icons', padding=0)
 		TilingBackground.__init__(self, 
 			amount=0,
 			base_path="content/gui/images/tabwidget/main_bg_",
 			start_img="top.png", tiles_img="fill.png", final_img="bottom.png",
 			**kwargs)
-		VBox.__init__(self, name='tab_background_icons')
 
 class TilingHBox(HBox, TilingBackground):
 	"""Currently only used by cityinfo, thus using its arguments as defaults.
@@ -85,12 +85,12 @@ class TilingHBox(HBox, TilingBackground):
 	"""
 	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
 	def __init__(self, **kwargs):
+		HBox.__init__(self, name='city_info_background', padding=0)
 		TilingBackground.__init__(self, 
 			amount=0,
 			base_path="content/gui/images/background/widgets/cityinfo_",
 			start_img="left.png", tiles_img="fill.png", final_img="right.png",
 			**kwargs)
-		HBox.__init__(self, name='city_info_background')
 
 
 class hr(Icon):
