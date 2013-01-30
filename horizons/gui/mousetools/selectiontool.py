@@ -150,7 +150,7 @@ class SelectionTool(NavigationTool):
 			return
 		if len(selected) == 1:
 			iter(selected).next().get_component(SelectableComponent).show_menu()
-		elif all(i.is_unit for i in selected):
+		else:
 			self.session.ingame_gui.show_multi_select_tab(selected)
 
 		#change session cursor to attacking tool if selected instances can attack
