@@ -43,7 +43,7 @@ class _BoatbuilderOverviewTab(OverviewTab):
 
 class BoatbuilderTab(_BoatbuilderOverviewTab):
 
-	SHIP_THUMBNAIL = "content/gui/icons/units/thumbnails/{type_id}.png"
+	SHIP_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
 	SHIP_PREVIEW_IMG = "content/gui/images/objects/ships/116/{type_id}.png"
 
 	def __init__(self, instance):

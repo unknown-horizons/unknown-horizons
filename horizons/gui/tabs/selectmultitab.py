@@ -204,7 +204,7 @@ class UnitEntry(object):
 	def get_thumbnail_icon(self, unit_id):
 		"""Returns path of the thumbnail icon for unit with id *unit_id*."""
 		#TODO get a system for loading thumbnail by id
-		return "content/gui/icons/units/thumbnails/{unit_id}.png".format(unit_id=unit_id)
+		return "content/gui/icons/thumbnails/{unit_id}.png".format(unit_id=unit_id)
 
 	def on_instance_removed(self, instance):
 		self.instances.remove(instance)
