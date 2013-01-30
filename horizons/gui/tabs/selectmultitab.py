@@ -32,16 +32,17 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
 	"""
 	max_row_entry_number = 3
 	max_column_entry_number = 4
-	def __init__(self, session=None, widget='overview_select_multi.xml',
+	def __init__(self, selected_instances=None, widget='overview_select_multi.xml',
 	             icon_path='icons/tabwidget/common/inventory'):
 		super(SelectMultiTab, self).__init__(widget=widget, icon_path=icon_path)
-		self.session = session
+		self.selected_instances = selected_instances or []
 		self.init_values()
 
 		# keep track of units that have stance
@@ -52,7 +53,7 @@ class SelectMultiTab(TabInterface):
 		self.type_number = {}
 
 		self.helptext = _("Selected Units")
-		for i in self.session.selected_instances:
+		for i in self.selected_instances:
 			if hasattr(i, 'stance'):
 				self.stance_unit_number += 1
 			self.instances.append(i)
@@ -135,12 +136,12 @@ class SelectMultiTab(TabInterface):
 		if self.widget.isVisible():
 			# if all units die, hide the tab
 			if not self.instances:
-				self.session.ingame_gui.hide_menu()
+				instance.session.ingame_gui.hide_menu()
 				return
 
 			# if one unit remains, show its menu
 			if len(self.instances) == 1:
-				self.session.ingame_gui.hide_menu()
+				instance.session.ingame_gui.hide_menu()
 				self.instances[0].get_component(SelectableComponent).show_menu()
 				return
 
