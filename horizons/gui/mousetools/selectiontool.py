@@ -23,7 +23,6 @@ import traceback
 
 from fife import fife
 
-import horizons.globals
 from horizons.command.unit import Act
 from horizons.util.worldobject import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
@@ -166,8 +165,7 @@ class SelectionTool(NavigationTool):
 		if attacking_unit_found and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
 			self.session.ingame_gui.set_cursor('attacking')
 		if not attacking_unit_found and isinstance(self.session.ingame_gui.cursor, AttackingTool):
-			self.session.ingame_gui.set_cursor()
-			horizons.globals.fife.set_cursor_image('default')
+			self.session.ingame_gui.set_cursor('default')
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
