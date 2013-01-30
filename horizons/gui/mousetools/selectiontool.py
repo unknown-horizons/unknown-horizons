@@ -220,9 +220,6 @@ class SelectionTool(NavigationTool):
 			instances = self.select_old.symmetric_difference(instances)
 
 		# sanity:
-		# - if at least one unit, then only units
-		if any( not instance.is_building for instance in instances ):
-			instances = [ instance for instance in instances if not instance.is_building ]
 		# - no multiple entities from enemy selected
 		if len(instances) > 1:
 			user_instances = self.filter_owner(instances)
