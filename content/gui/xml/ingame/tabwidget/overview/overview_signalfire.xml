@@ -1,22 +1,10 @@
 <?xml version="1.0"?>
-<Container size="250,350" name="overview_signalfire">
-<TabBG amount="4" />
+<TabContainer name="overview_signalfire">
 
-	<Container position="0,70" size="245,350">
-		<!-- Name of building -->
-		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
-			<Label name='name' />
-		</HBox>
+		<Icon name="building_image" position="-10,5" comment="Picture" />
 
-		<hr position="20,30" />
-
-		<!-- Picture -->
-		<Icon name="building_image" position="15,40" />
-
-		<Label name="signal_fire_description_lbl" position="75,60"
+		<Label name="signal_fire_description_lbl" position="40,25"
 			text="The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 			wrap_text="1" max_size="175,300" />
 
-	</Container>
-</Container>
+</TabContainer>
