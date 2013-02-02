@@ -159,11 +159,11 @@ class NavigationTool(CursorTool):
 		x, y = 0, 0
 		if mousepoint.x < VIEW.AUTOSCROLL_WIDTH:
 			x -= VIEW.AUTOSCROLL_WIDTH - mousepoint.x
-		elif mousepoint.x >= (self.session.view.cam.getViewPort().right()-VIEW.AUTOSCROLL_WIDTH):
+		elif mousepoint.x > (self.session.view.cam.getViewPort().right()-VIEW.AUTOSCROLL_WIDTH):
 			x += VIEW.AUTOSCROLL_WIDTH + mousepoint.x - self.session.view.cam.getViewPort().right()
 		if mousepoint.y < VIEW.AUTOSCROLL_WIDTH:
 			y -= VIEW.AUTOSCROLL_WIDTH - mousepoint.y
-		elif mousepoint.y >= (self.session.view.cam.getViewPort().bottom()-VIEW.AUTOSCROLL_WIDTH):
+		elif mousepoint.y > (self.session.view.cam.getViewPort().bottom()-VIEW.AUTOSCROLL_WIDTH):
 			y += VIEW.AUTOSCROLL_WIDTH + mousepoint.y - self.session.view.cam.getViewPort().bottom()
 		x *= 10
 		y *= 10
