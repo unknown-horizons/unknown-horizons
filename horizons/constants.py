@@ -324,6 +324,7 @@ class VIEW:
 	CELL_IMAGE_DIMENSIONS = (64, 32)
 	ROTATION = 45.0
 	TILT = -60
+	AUTOSCROLL_WIDTH = 10
 
 ## The Production States available in the game sorted by importance from least
 ## to most important
