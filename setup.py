@@ -165,8 +165,8 @@ class _build_i18n(distutils.cmd.Command):
 				if mo_files:
 					mo_files_generated = True
 				data_files.extend(mo_files)
-			except (RuntimeError) as e:
-				print e.message
+			except RuntimeError as e:
+				print(e.message)
 				return
 
 		# merge .in with translation
