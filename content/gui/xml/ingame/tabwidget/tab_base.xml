@@ -1,5 +1,23 @@
 <?xml version="1.0"?>
-<Container size="50,50" name="tab_base">
-	<VBox name="content">
-	</VBox>
-</Container>
+<AutoResizeContainer name="tab_base">
+
+	<TabBG name="tab_background" amount="1" />
+
+	<!-- TODO
+	<Icon name="header_icon_left" position="25,50" />
+	<Icon name="header_icon_right" position="205,50" />
+	-->
+
+	<!--  -->
+	<AutoResizeContainer name="template" position="15,70">
+		<!-- TODO center -->
+		<!-- TODO RenameLabel replacement if rename=True -->
+		<Label name="headline" comment="TODO center me TODO" />
+
+		<hr position="5,22" />
+
+		<AutoResizeContainer name="content" position="5,25" />
+	</AutoResizeContainer>
+
+
+</AutoResizeContainer>

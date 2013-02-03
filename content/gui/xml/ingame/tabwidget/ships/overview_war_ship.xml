@@ -1,56 +1,42 @@
 <?xml version="1.0"?>
-<Container size="250,400">
-	<TabBG amount="5" />
-	<Icon name="player_emblem" position="25,50" />
-
-	<Container position="0,70" size="245,320">
-		<!-- Name of Ship -->
-		<HBox position="22,7" min_size="170,20" size="230,20">
-			<Spacer min_size="0" max_size="50" />
-			<RenameLabel name="name" helptext="Click to change the name of this ship" />
-		</HBox>
-
-		<hr position="20,30" />
-
-		<Container position="22,40" min_size="230,20" size="230,50">
-			<Container size="50,50">
-				<ImageButton name="trade_bg" path="images/buttons/msg_button" />
-				<ImageButton name="trade" helptext="Trade" position="10,9"
-					path="icons/ship/civil_32"
-					down_image="content/gui/icons/ship/civil_32_h.png" />
-					<!--TODO fix explicit down_image-->
-			</Container>
-
-			<Container position="77,0" size="50,50">
-				<ImageButton name="found_settlement_bg" path="images/buttons/msg_button" />
-				<ImageButton name="found_settlement" position="6,5"
-					path="icons/ship/anchor" helptext="Build settlement" />
-			</Container>
-
-			<ImageButton name="configure_route" position="155,0" helptext="Configure trading route"
-				inactive_image="content/gui/icons/ship/traderoute_configure_onroute.png"
-				up_image="content/gui/icons/ship/traderoute_configure.png"
-				down_image="content/gui/icons/ship/traderoute_configure_pressed.png"
-				hover_image="content/gui/icons/ship/traderoute_configure_hover.png" />
-				<!--TODO fix weird image names-->
-		</Container>
-
-		<hr position="20,100" />
-
-		<Container position="22,110" size="230,75">
-			<HBox padding="5" min_size="215,50" max_size="215,50" position="3,2">
-				<Icon image="content/gui/images/background/inv_bg.png" />
-				<Icon image="content/gui/images/background/inv_bg.png" />
-				<Icon image="content/gui/images/background/inv_bg.png" />
-				<Icon image="content/gui/images/background/inv_bg.png" />
-			</HBox>
-			<Inventory name="inventory" size="230,70" position="4,4" uncached="1" />
-		</Container>
-
-		<StanceWidget position="0,190" size="230,40" name="stance" />
-		<Container position="22,190" size="50,50">
-			<Icon position="5,4" />
-			<Inventory name="weapon_inventory" size="50,50" uncached="1" />
-		</Container>
+<AutoResizeContainer>
+	<Container position="0,10" size="50,50">
+		<ToggleImageButton name="trade_bg" path="images/buttons/msg_button" />
+		<ToggleImageButton name="trade" helptext="Trade" position="10,9"
+			path="icons/ship/civil_32"
+			down_image="content/gui/icons/ship/civil_32_h.png" />
+			<!--TODO fix explicit down_image-->
 	</Container>
-</Container>
+
+	<Container position="77,10" size="50,50">
+		<ToggleImageButton name="found_settlement_bg" path="images/buttons/msg_button" />
+		<ToggleImageButton name="found_settlement" position="6,5"
+			path="icons/ship/anchor" helptext="Build settlement" />
+	</Container>
+
+	<hr position="20,100" />
+
+	<ToggleImageButton name="configure_route" position="155,10" helptext="Configure trading route"
+		inactive_image="content/gui/icons/ship/traderoute_configure_onroute.png"
+		up_image="content/gui/icons/ship/traderoute_configure.png"
+		down_image="content/gui/icons/ship/traderoute_configure_pressed.png"
+		hover_image="content/gui/icons/ship/traderoute_configure_hover.png" />
+		<!--TODO fix weird image names-->
+
+	<Container position="0,60" size="230,75">
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="3,2">
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+		</HBox>
+		<Inventory name="inventory" size="230,70" position="4,4" uncached="1" />
+	</Container>
+
+	<AutoResizeContainer position="0,140">
+		<StanceWidget size="230,40" name="stance" />
+		<Icon position="5,4" />
+		<Inventory name="weapon_inventory" size="50,50" uncached="1" />
+	</AutoResizeContainer>
+
+</AutoResizeContainer>

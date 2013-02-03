@@ -1,18 +1,9 @@
 <?xml version="1.0"?>
-<Container size="250,350" name="overview_trade_ship">
-	<TabBG amount="4" />
-	<Icon name="player_emblem" position="25,50" />
+<AutoResizeContainer>
 
-	<Container position="0,70" size="245,320">
-		<!-- Name of Ship -->
-		<HBox position="22,7" min_size="170,20" size="230,20">
-			<Spacer min_size="0" max_size="50" />
-			<RenameLabel name="name" helptext="Click to change the name of this ship" />
-		</HBox>
+		<RenameLabel name="name" helptext="Click to change the name of this ship" position="-1000,0" />
 
-		<hr position="20,30" />
-
-		<Container position="22,40" min_size="230,20" size="230,50">
+		<Container position="0,10" min_size="230,20" size="230,50">
 			<Container size="50,50">
 				<ImageButton name="trade_bg" path="images/buttons/msg_button" />
 				<ImageButton name="trade" helptext="Trade" position="10,9"
@@ -33,9 +24,9 @@
 				<!--TODO fix weird image names-->
 		</Container>
 
-		<hr position="20,100" />
+		<hr position="5,70" />
 
-		<Container position="22,110" size="230,75">
+		<Container position="0,80" size="230,75">
 			<HBox padding="5" min_size="215,50" max_size="215,50" position="3,2">
 				<Icon image="content/gui/images/background/inv_bg.png" />
 				<Icon image="content/gui/images/background/inv_bg.png" />
@@ -44,5 +35,5 @@
 			</HBox>
 			<Inventory name="inventory" size="230,70" position="4,4" uncached="1" /> <!-- uncached since icons collide with the traderoute tab -->
 		</Container>
-	</Container>
-</Container>
+
+</AutoResizeContainer>

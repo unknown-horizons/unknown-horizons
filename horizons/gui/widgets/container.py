@@ -21,6 +21,7 @@
 
 
 from fife.extensions.pychan.widgets import Container
+from fife.extensions.pychan.widgets.common import BoolAttr, UnicodeAttr
 
 
 class AutoResizeContainer(Container):
@@ -29,7 +30,7 @@ class AutoResizeContainer(Container):
 	def resizeToContent(self):
 		"""resizeToContent for unlayouted containers. Sets size to smallest box"""
 		for child in self.children:
-			child.adaptLayout() # recalc values for children
+			child.adaptLayout() # recalculate values for children
 
 		max_x = max_y = 0
 		for child in self.children:
@@ -40,3 +41,48 @@ class AutoResizeContainer(Container):
 			if y > max_y:
 				max_y = y
 		self.size = (max_x, max_y)
+
+
+class TabContainer(Container):
+	"""A regular pychan container with fixed width and auto-resizing.
+
+	Used as parent widget for all xml-defined tabs.
+	Ideally, you do not need to specify its size at all."""
+	ATTRIBUTES = AutoResizeContainer.ATTRIBUTES + [
+		UnicodeAttr('headline'), BoolAttr('rename'),
+	]
+
+	def __init__(self, headline=None, rename=False, fixed_width=0, **kwargs):
+		super(TabContainer, self).__init__(**kwargs)
+		# TODO make this work as attribute:
+		self.fixed_width = 225
+		self.headline = headline
+		# TODO make this work and do something at all:
+		self.rename = rename
+		self.adaptLayout()
+
+	def resizeToContent(self):
+		for child in self.children:
+			child.adaptLayout()
+		if not self.children:
+			max_y = 0
+		else:
+			max_y = max(child.position[1] + child.size[1] for child in self.children)
+		self.size = (self.fixed_width, max_y)
+		self.max_size = (self.fixed_width, max_y)
+
+	def _get_rename(self):
+		return self.__rename
+
+	def _set_rename(self, rename):
+		self.__rename = rename
+
+	rename = property(_get_rename, _set_rename)
+
+	def _get_headline(self):
+		return self.__headline
+
+	def _set_headline(self, headline):
+		self.__headline = headline
+
+	headline = property(_get_headline, _set_headline)
