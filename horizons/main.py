@@ -251,12 +251,13 @@ def start(_command_line_arguments):
 		_modules.gui.multiplayermenu._join_game()
 	else: # no commandline parameter, show main screen
 
-		# initalize update checker
+		# initialize update checker
 		if not command_line_arguments.gui_test:
 			from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
 			update_info = UpdateInfo()
 			update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
 			update_check_thread.start()
+
 			def update_info_handler(info):
 				if info.status == UpdateInfo.UNINITIALISED:
 					ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
