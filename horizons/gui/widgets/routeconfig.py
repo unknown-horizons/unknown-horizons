@@ -34,7 +34,8 @@ from horizons.gui.windows import Window
 from horizons.command.uioptions import RouteConfigCommand
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.gui.util import create_resource_selection_dialog
+from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
+
 from horizons.gui.widgets.imagebutton import OkButton
 
 import horizons.globals
@@ -413,12 +414,13 @@ class RouteConfig(Window):
 		                       use_rotation=False,
 		                       on_click=self.on_map_click)
 
-		resources = self.session.db.get_res_id_and_icon(only_tradeable=True)
+		resources = self.session.db.get_res(only_tradeable=True)
 		# map an icon for a resource
 		# map a resource for an icon
-		self.resource_for_icon = {}
-		self.icon_for_resource = {}
-		for res_id, icon in list(resources) + [(0, self.dummy_icon_path)]:
+		self.resource_for_icon = {self.dummy_icon_path: 0}
+		self.icon_for_resource = {0: self.dummy_icon_path}
+		for res_id in resources:
+			icon = get_res_icon_path(res_id)
 			self.resource_for_icon[icon] = res_id
 			self.icon_for_resource[res_id] = icon
 
