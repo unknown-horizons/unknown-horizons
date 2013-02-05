@@ -19,8 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import RES
-from horizons.constants import BUILDINGS
+from horizons.constants import RES, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.util.python.registry import Registry
