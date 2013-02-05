@@ -34,7 +34,7 @@ import os.path
 import json
 import traceback
 import threading
-from thread import error as thread_error  # raised by threading.Lock.release
+from thread import error as ThreadError  # raised by threading.Lock.release
 import subprocess
 
 from fife import fife as fife_module
@@ -565,5 +565,5 @@ def preload_game_join(preloading):
 	else:
 		try:
 			lock.release()
-		except thread_error:
+		except ThreadError:
 			pass # due to timing issues, the lock might be released already
