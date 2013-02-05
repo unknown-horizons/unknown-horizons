@@ -96,6 +96,11 @@ class IngameGui(LivingObject):
 			'rotateLeft': None,
 			'gameMenuButton': None
 		})
+		self.mainhud.hide()
+		self.mainhud = None
+		self._settings_tab.hide()
+		self._settings_tab = None
+
 		self.windows.close_all()
 		self.minimap = None
 		self.keylistener = None
