@@ -134,6 +134,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
   - [Gallery, ["content/gui/icons/buildmenu/003_h.png"]]
   - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
+  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
+  - Consider to disable the upgrade if your stock of these materials is low. 
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - |
 
