@@ -109,18 +109,15 @@ def start(_command_line_arguments):
 	if debug: # also True if a specific module is logged (but not 'fife')
 		if not (command_line_arguments.debug_module
 		        and 'fife' not in command_line_arguments.debug_module):
-			horizons.globals.fife._log.lm.setLogToPrompt(True)
-		# After the next FIFE release, we should use this instead which is possible as of r3960:
-		# horizons.globals.fife._log.logToPrompt = True
+			horizons.globals.fife._log.logToPrompt = True
 
 		if command_line_arguments.debug_log_only:
 			# This is a workaround to not show fife logs in the shell even if
 			# (due to the way the fife logger works) these logs will not be
 			# redirected to the UH logfile and instead written to a file fife.log
 			# in the current directory. See #1782 for background information.
-			horizons.globals.fife._log.lm.setLogToPrompt(False)
-			horizons.globals.fife._log.lm.setLogToFile(True)
-			# same as above applies here, use property after next FIFE release
+			horizons.globals.fife._log.logToPrompt = False
+			horizons.globals.fife._log.logToFile = True
 
 	if command_line_arguments.mp_bind:
 		try:
