@@ -32,7 +32,10 @@ from horizons.component.depositcomponent import DepositComponent
 
 
 class WarehouseOverviewTab(OverviewTab):
-	""" the main tab of warehouses and storages """
+	""" the main tab of warehouses and storages
+
+	TODO Currently unused, port collector utilization to AccountTab and bury this
+	"""
 	widget = 'overview_warehouse.xml'
 	helptext = _lazy("Warehouse overview")
 

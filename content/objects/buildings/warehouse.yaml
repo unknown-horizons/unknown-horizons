@@ -14,7 +14,7 @@ show_status_icons: false
 components:
 - SelectableComponent:
     type: building
-    tabs: [WarehouseOverviewTab, InventoryTab, BuySellTab, AccountTab]
+    tabs: [AccountTab, InventoryTab, BuySellTab]
     active_tab: InventoryTab
     enemy_tabs: [EnemyWarehouseOverviewTab,]
 - HealthComponent: {maxhealth: 1000}

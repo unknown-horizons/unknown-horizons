@@ -15,7 +15,7 @@ buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4}
 components:
 - SelectableComponent:
     type: building
-    tabs: [WarehouseOverviewTab, InventoryTab, AccountTab]
+    tabs: [AccountTab, InventoryTab]
     active_tab: InventoryTab
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
