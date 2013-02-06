@@ -113,7 +113,7 @@ class ShipOverviewTab(OverviewTab):
 	def refresh(self):
 		# show rename when you click on name
 		events = {
-			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
+		#	'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
 			'configure_route/mouseClicked': Callback(self._configure_route)
 		}
 
@@ -128,8 +128,6 @@ class ShipOverviewTab(OverviewTab):
 
 class FightingShipOverviewTab(ShipOverviewTab):
 	widget = 'overview_war_ship.xml'
-	# TODO why is this here:
-	icon_path = 'icons/tabwidget/ship/ship_inv'
 
 	has_stance = True
 
