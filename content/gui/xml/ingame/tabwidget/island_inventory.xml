@@ -1,55 +1,14 @@
 <?xml version="1.0"?>
-<Container size="250,450">
-<TabBG amount="6" />
+<TabContainer headline="Settlement inventory">
 
-	<Container position="0,70" size="600,450">
-		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
-			<Label name="headline"  text="Settlement inventory" />
-		</HBox>
+	<AutoResizeContainer name="boxes" position="0,5"
+		comment="Moving this into the ScrollArea below causes it to no longer be found by findChild. The heck?" />
 
-		<hr position="20,30" />
+	<!-- http://fife.trac.cloudforge.com/engine/ticket/692 :: vertical_scroll_amount="50" -->
+	<ScrollArea min_size="215,270" max_size="215,270" position="0,5" name="fife_ticket_692">
 
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,40">
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-		</HBox>
+		<Inventory name="inventory" items_per_line="4" position="1,2"
+			min_size="215,250" max_size="215,1000" />
+	</ScrollArea>
 
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,90">
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-		</HBox>
-
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,140">
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-		</HBox>
-
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,190">
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-		</HBox>
-
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,240">
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-			<Icon image="content/gui/images/background/inv_bg.png" />
-		</HBox>
-
-		<!-- http://fife.trac.cloudforge.com/engine/ticket/692 ::
-		<ScrollArea min_size="215,200" max_size="215,200" position="21,52" vertical_scroll_amount="50">-->
-		<ScrollArea min_size="215,270" max_size="215,270" position="21,42" name="fife_ticket_692">
-			<Inventory name="inventory" min_size="215,250" max_size="215,1000" items_per_line="4" />
-		</ScrollArea>
-	</Container>
-
-</Container>
+</TabContainer>

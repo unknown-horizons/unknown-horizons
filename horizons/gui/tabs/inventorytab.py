@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions.pychan.widgets import HBox, Icon
+
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.i18n import _lazy
 from horizons.extscheduler import ExtScheduler
@@ -36,6 +38,15 @@ class InventoryTab(TabInterface):
 		super(InventoryTab, self).__init__()
 
 	def init_widget(self):
+		boxes = self.widget.child_finder('boxes')
+		# TODO magic numbers everywhere here
+		for i in xrange(5):
+			hbox = HBox(padding=5, min_size=(215, 50), max_size=(215, 50))
+			hbox.position = (0, i * 50)
+			for j in xrange(4):
+				hbox.addChild(Icon(image="content/gui/images/background/inv_bg.png"))
+			boxes.addChild(hbox)
+
 		self.widget.child_finder('inventory').init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory)
 
