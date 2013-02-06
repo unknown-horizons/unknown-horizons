@@ -19,6 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
+from fife.extensions.pychan.widgets import Icon
+
 from horizons.util.python.callback import Callback
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
@@ -28,16 +32,17 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
 	"""
 	max_row_entry_number = 3
 	max_column_entry_number = 4
-	def __init__(self, session=None, widget='overview_select_multi.xml',
+	def __init__(self, selected_instances=None, widget='overview_select_multi.xml',
 	             icon_path='icons/tabwidget/common/inventory'):
 		super(SelectMultiTab, self).__init__(widget=widget, icon_path=icon_path)
-		self.session = session
+		self.selected_instances = selected_instances or []
 		self.init_values()
 
 		# keep track of units that have stance
@@ -48,7 +53,7 @@ class SelectMultiTab(TabInterface):
 		self.type_number = {}
 
 		self.helptext = _("Selected Units")
-		for i in self.session.selected_instances:
+		for i in self.selected_instances:
 			if hasattr(i, 'stance'):
 				self.stance_unit_number += 1
 			self.instances.append(i)
@@ -129,15 +134,12 @@ class SelectMultiTab(TabInterface):
 			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
 
 		if self.widget.isVisible():
-			# if all units die, hide the tab
-			if not self.instances:
-				self.session.ingame_gui.hide_menu()
-				return
-
-			# if one unit remains, show its menu
-			if len(self.instances) == 1:
-				self.session.ingame_gui.hide_menu()
-				self.instances[0].get_component(SelectableComponent).show_menu()
+			if len(self.instances) < 2:
+				# hide the multi-selection tab
+				instance.session.ingame_gui.hide_menu()
+				# if one unit remains, show its menu
+				if len(self.instances) == 1:
+					self.instances[0].get_component(SelectableComponent).show_menu()
 				return
 
 		self.type_number[instance.id] -= 1
@@ -186,6 +188,7 @@ class SelectMultiTab(TabInterface):
 
 class UnitEntry(object):
 	def __init__(self, instances, show_number=True):
+		self.log = logging.getLogger("gui.tabs")
 		self.instances = instances
 		self.widget = load_uh_widget("unit_entry_widget.xml")
 		# get the icon of the first instance
@@ -204,7 +207,14 @@ class UnitEntry(object):
 	def get_thumbnail_icon(self, unit_id):
 		"""Returns path of the thumbnail icon for unit with id *unit_id*."""
 		#TODO get a system for loading thumbnail by id
-		return "content/gui/icons/units/thumbnails/{unit_id}.png".format(unit_id=unit_id)
+		template = "content/gui/icons/thumbnails/{unit_id}.png"
+		path = template.format(unit_id=unit_id)
+		try:
+			Icon(image=path)
+		except RuntimeError:
+			self.log.warning('Missing thumbnail for id {0}'.format(unit_id))
+			path = template.format(unit_id=-1)
+		return path
 
 	def on_instance_removed(self, instance):
 		self.instances.remove(instance)

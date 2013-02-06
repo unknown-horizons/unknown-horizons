@@ -217,8 +217,8 @@ class IngameGui(LivingObject):
 		tab = DiplomacyTab(self, self.session.world)
 		self.show_menu(tab)
 
-	def show_multi_select_tab(self):
-		tab = TabWidget(self, tabs=[SelectMultiTab(self.session)], name='select_multi')
+	def show_multi_select_tab(self, instances):
+		tab = TabWidget(self, tabs=[SelectMultiTab(instances)], name='select_multi')
 		self.show_menu(tab)
 
 	def show_build_menu(self, update=False):
