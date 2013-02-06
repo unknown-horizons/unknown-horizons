@@ -1,22 +1,12 @@
 <?xml version="1.0"?>
-<Container size="250,450">
-<TabBG amount="6" />
+<TabContainer headline="Resource deposit">
 
-	<Container position="0,70" size="245,350">
+	<VBox position="5,5">
+		<Label name="res_dep_description_lbl" wrap_text="1" max_size="212,100"
+			text="This is a resource deposit where you can build a mine to dig up resources." />
+		<Label name="res_dep_description_lbl2" wrap_text="1" max_size="212,100"
+			text="It contains these resources:" comment="It == The resource deposit" />
+		<Inventory name="inventory" size="200,100" display_legend="0" />
+	</VBox>
 
-	<HBox position="22,7"  min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
-		<Label name="headline" text="Resource deposit" />
-	</HBox>
-
-		<hr position="20,30" />
-
-		<VBox position="25,50">
-			<Label name="res_dep_description_lbl" text="This is a resource deposit where you can build a mine to dig up resources." wrap_text="1" max_size="212,100" />
-			<Label name="res_dep_description_lbl2" text="It contains these resources:" wrap_text="1" max_size="212,100"
-				comment="It == The resource deposit" />
-			<Inventory name="inventory" size="200,100" display_legend="0" />
-		</VBox>
-
-	</Container>
-</Container>
+</TabContainer>
