@@ -47,7 +47,6 @@ class PlayerDiplomacyTab(TabInterface):
 		self.path = self.path_active = self.icon_path % color
 
 	def init_widget(self):
-		self.widget.findChild(name='headline').text = self.player.name
 		self.widget.mapEvents({
 			'ally_label' : self.add_ally,
 			'ally_check_box' : self.add_ally,
