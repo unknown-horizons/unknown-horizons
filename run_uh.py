@@ -449,9 +449,9 @@ def setup_fife():
 		            version, VERSION.MIN_FIFE_REVISION)
 
 def init_environment(use_fife):
-	"""Sets up everything. Use in any program that requires access to FIFE and uh modules.
-	It will parse sys.args, so this var has to contain only valid uh options."""
+	"""Sets up everything.
 
+	Use in any program that requires access to FIFE and UH modules."""
 	# install dummy translation
 	gettext.install('', unicode=True)
 	if use_fife:
