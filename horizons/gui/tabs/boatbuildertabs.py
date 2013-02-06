@@ -171,7 +171,6 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 
 	def init_widget(self):
 		super(BoatbuilderSelectTab, self).init_widget()
-		self.widget.findChild(name='headline').text = self.helptext
 
 		showcases = self.widget.findChild(name='showcases')
 		for i, (ship, prodline) in enumerate(self.ships):
