@@ -1,38 +1,27 @@
 <?xml version="1.0"?>
 <!-- Enemy warehouse overview tab -->
-<Container  size="250,350">
-<TabBG amount="4" />
-	<Icon name="player_emblem" position="25,50" />
+<TabContainer headline="{instance.owner.name}">
 
-	<Container position="0,70" size="600,400">
-
-		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
-			<Label name="headline" /> <!-- set to owner player name-->
+	<!-- Resources for sale in the settlement -->
+	<Container size="220,70" position="0,0">
+		<Label name="selling_label" text="Selling" />
+		<HBox padding="5" min_size="160,50" max_size="160,50" position="0,20">
+			<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+			<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+			<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
 		</HBox>
-
-		<hr position="20,30" />
-
-		<!-- Resources for sale in the settlement -->
-		<Container size="520,70" position="20,40">
-			<Label name="selling_label" text="Selling" />
-			<HBox padding="5" min_size="160,50" max_size="160,50" position="0,20">
-				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
-				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
-				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
-			</HBox>
-			<BuySellInventory name="selling_inventory" size="300,70" position="1,21" uncached="1" />
-		</Container>
-
-		<!-- Resources being bought in the settlement -->
-		<Container size="520,70" position="20,110">
-			<Label name="buying_label" text="Buying" />
-			<HBox padding="5" min_size="160,50" max_size="160,50" position="0,20">
-				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
-				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
-				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
-			</HBox>
-			<BuySellInventory name="buying_inventory" size="300,70" position="1,21" uncached="1" />
-		</Container>
+		<BuySellInventory name="selling_inventory" size="300,70" position="1,21" uncached="1" />
 	</Container>
-</Container>
+
+	<!-- Resources being bought in the settlement -->
+	<Container size="220,70" position="0,70">
+		<Label name="buying_label" text="Buying" />
+		<HBox padding="5" min_size="160,50" max_size="160,50" position="0,20">
+			<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+			<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+			<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+		</HBox>
+		<BuySellInventory name="buying_inventory" size="300,70" position="1,21" uncached="1" />
+	</Container>		
+
+</TabContainer>
