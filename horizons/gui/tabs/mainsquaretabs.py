@@ -71,9 +71,6 @@ class AccountTab(MainSquareTab):
 		self._windows = self.instance.session.ingame_gui.windows
 		self.prod_overview = ProductionOverview(self._windows, self.settlement)
 
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
-
 		path = 'icons/widgets/cityinfo/settlement_%s' % self.settlement.owner.color.name
 		self.widget.child_finder('show_production_overview').path = path
 
@@ -94,9 +91,6 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('buying').text = unicode(buy_expenses)
 		self.widget.child_finder('sale').text = unicode(sell_income)
 		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
-		self.widget.mapEvents({'headline': rename})
 
 	def refresh_collector_utilization(self):
 		if self.instance.has_component(CollectingComponent):
