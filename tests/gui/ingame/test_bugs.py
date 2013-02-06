@@ -333,3 +333,21 @@ def test_ticket_1948(gui):
 	gui.trigger('tab', 'button_11')
 	# Build storage at the border of the settlement
 	gui.cursor_click(37, 20, 'left')
+
+
+@gui_test(use_fixture='boatbuilder')
+def test_ticket_2002(gui):
+	"""Crash when trying to rename settlement while rename dialog is open
+
+	Implemented with testing ship renames instead of settlement renames
+	because this does not require cursor placement magic (the city info
+	hides automatically if its settlement was not focused for a while).
+	"""
+	# Select ship
+	gui.cursor_click(58, -1, 'left')
+
+	gui.trigger('overview_trade_ship', 'name')
+
+	gui.trigger('overview_trade_ship', 'name')
+
+	gui.trigger('change_name_dialog_window', 'okButton')
