@@ -1,24 +1,11 @@
 <?xml version="1.0"?>
-<Container size="250,450">
-<TabBG amount="6" />
+<TabContainer>
 
-	<Container position="0,70" size="245,350">
-		<!-- Name of Ship -->
-		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
-			<Label name='name' />
-		</HBox>
+	<!-- Picture -->
+	<Icon name="ship_image" image="content/gui/images/objects/ships/trader.png" position="0,5" />
+	<hr position="0,175" />
 
-		<hr position="20,30" />
+	<Label name="trader_description_lbl" wrap_text="1" max_size="212,160" position="5,180"
+		text="This is the free trader's ship. It will visit you from time to time to buy or sell goods." />
 
-		<!-- Picture -->
-		<Icon name="shipImage" image="content/gui/images/objects/ships/trader.png" position="15,40" />
-		<hr position="20,210" />
-
-		<HBox position="25,235">
-			<Label name="trader_description_lbl" wrap_text="1" max_size="212,160"
-				text="This is the free trader's ship. It will visit you from time to time to buy or sell goods." />
-		</HBox>
-
-	</Container>
-</Container>
+</TabContainer>
