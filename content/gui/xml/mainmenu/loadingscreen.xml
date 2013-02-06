@@ -9,4 +9,7 @@
 	<Label name="qotl_label" position="360,688" font="default_load"
 		max_size="315,75" min_size="315,75" wrap_text="1" />
 	<Label name="version_label" position="780,735" font="headline_light" />
+
+	<Label name="loading_stage" position="20,688" font="default_load" />
+	<ProgressBar name="loading_progress" position="410,420" max_size="200,12" />
 </Container>

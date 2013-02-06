@@ -25,14 +25,21 @@ import horizons.globals
 from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
+from horizons.messaging import LoadingProgress
 
 
 class LoadingScreen(Window):
 	"""Show quotes/gameplay tips while loading the game"""
 
+	# how often the LoadingProgress message is send when loading a game,
+	# used to update the progress bar
+	total_steps = 11
+
 	def __init__(self):
 		self._widget = load_uh_widget('loadingscreen.xml')
 		self._widget.position_technique = "center:center"
+
+		self._current_step = 0
 
 	def show(self):
 		qotl_type_label = self._widget.findChild(name='qotl_type_label')
@@ -52,10 +59,20 @@ class LoadingScreen(Window):
 		qotl_label.text = unicode(random.choice(items)) # choose a random quote / gameplay tip
 
 		self._widget.show()
+		LoadingProgress.subscribe(self._update)
 
 	def hide(self):
+		self._current_step = 0
+		LoadingProgress.discard(self._update)
 		self._widget.hide()
 
-	def isVisible(self):
-		# TODO remote me once window manager works
-		return self._widget.isVisible()
+	def _update(self, message):
+		self._current_step += 1
+
+		label = self._widget.findChild(name='loading_stage')
+		label.text = unicode(message.stage)
+		label.adaptLayout()
+
+		self._widget.findChild(name='loading_progress').progress = int(100 * self._current_step / self.total_steps)
+
+		horizons.globals.fife.engine.pump()
