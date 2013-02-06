@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<!-- Overview tab -->
 <Container name="main_container" size="50,50">
 	<ImageButton name="unit_button" max_size="48,48" min_size="48,48" />
 	<Label name="instance_number" />
