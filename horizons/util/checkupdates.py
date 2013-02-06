@@ -29,9 +29,9 @@ from horizons.constants import NETWORK, VERSION
 from horizons.gui.widgets.imagebutton import OkButton
 
 class UpdateInfo(object):
-	INVALID, READY, UNINITIALISED = range(3)
+	INVALID, READY, UNINITIALIZED = range(3)
 	def __init__(self):
-		self.status = UpdateInfo.UNINITIALISED
+		self.status = UpdateInfo.UNINITIALIZED
 		self.version = None
 		self.link = None
 

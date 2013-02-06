@@ -259,7 +259,7 @@ def start(_command_line_arguments):
 			update_check_thread.start()
 
 			def update_info_handler(info):
-				if info.status == UpdateInfo.UNINITIALISED:
+				if info.status == UpdateInfo.UNINITIALIZED:
 					ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
 				elif info.status == UpdateInfo.READY:
 					show_new_version_hint(_modules.gui, info)
