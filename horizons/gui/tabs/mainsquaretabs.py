@@ -33,6 +33,7 @@ from horizons.messaging import UpgradePermissionsChanged
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, TIER
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.namedcomponent import NamedComponent
 
 class MainSquareTab(OverviewTab):
@@ -81,6 +82,7 @@ class AccountTab(MainSquareTab):
 
 	def refresh(self):
 		super(AccountTab, self).refresh()
+		self.refresh_collector_utilization()
 		taxes = self.settlement.cumulative_taxes
 		running_costs = self.settlement.cumulative_running_costs
 		buy_expenses = self.settlement.get_component(TradePostComponent).buy_expenses
@@ -92,10 +94,17 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('buying').text = unicode(buy_expenses)
 		self.widget.child_finder('sale').text = unicode(sell_income)
 		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
-
 		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
 		self.widget.mapEvents({'headline': rename})
+
+	def refresh_collector_utilization(self):
+		if self.instance.has_component(CollectingComponent):
+			utilization = int(round(self.instance.get_collector_utilization() * 100))
+			utilization = unicode(utilization) + u'%'
+		else:
+			utilization = u'---'
+		self.widget.findChild(name="collector_utilization").text = utilization
 
 
 class MainSquareOverviewTab(AccountTab):

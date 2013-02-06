@@ -25,7 +25,7 @@ from inventorytab import InventoryTab
 from tradetab import TradeTab
 from overviewtab import OverviewTab, GroundUnitOverviewTab, FireStationOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
-						TowerOverviewTab, WarehouseOverviewTab
+						TowerOverviewTab
 from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
 from productiontabs import ProductionOverviewTab, SmallProductionOverviewTab
 from residentialtabs import SettlerOverviewTab

@@ -20,55 +20,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import GAME_SPEED
 from horizons.gui.tabs import OverviewTab
 from horizons.i18n import _lazy
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.python.callback import Callback
-from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.depositcomponent import DepositComponent
 
-
-class WarehouseOverviewTab(OverviewTab):
-	""" the main tab of warehouses and storages
-
-	TODO Currently unused, port collector utilization to AccountTab and bury this
-	"""
-	widget = 'overview_warehouse.xml'
-	helptext = _lazy("Warehouse overview")
-
-	def init_widget(self):
-		super(WarehouseOverviewTab, self).init_widget()
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		self._refresh_collector_utilization()
-
-	def _refresh_collector_utilization(self):
-		utilization = int(round(self.instance.get_collector_utilization() * 100))
-		self.widget.findChild(name="collector_utilization").text = unicode(utilization) + u'%'
-
-	def refresh(self):
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		events = {
-				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
-		         }
-		self.widget.mapEvents(events)
-		self._refresh_collector_utilization()
-		super(WarehouseOverviewTab, self).refresh()
-
-	def show(self):
-		super(WarehouseOverviewTab, self).show()
-		Scheduler().add_new_object(Callback(self._refresh_collector_utilization),
-		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
-
-	def hide(self):
-		super(WarehouseOverviewTab, self).hide()
-		Scheduler().rem_all_classinst_calls(self)
-
-	def on_instance_removed(self):
-		Scheduler().rem_all_classinst_calls(self)
-		super(WarehouseOverviewTab, self).on_instance_removed()
 
 class TowerOverviewTab(OverviewTab): # defensive tower
 	widget = 'overview_tower.xml'
