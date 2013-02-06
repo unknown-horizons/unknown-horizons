@@ -46,9 +46,12 @@ class ProgressBar(AutoResizeContainer):
 		self.__fill = fill
 		self.__background = background
 		self.tiles = None
+		self.bg_icon = None
 
 	def _set_progress(self, progress):
 		self.__progress = progress
+		if self.bg_icon is None:
+			self.background = "content/gui/images/background/bar_bg.png"
 		if self.tiles is None:
 			self.fill = "content/gui/images/background/widgets/progressbar_fill.png"
 		self.tiles.size = (int(progress * self.max_size[0] / 100), self.max_size[1])
@@ -67,9 +70,9 @@ class ProgressBar(AutoResizeContainer):
 
 	def _set_background(self, background):
 		self.__background = background
-		icon = Icon(image=background)
-		icon.min_size = icon.size = self.max_size
-		self.addChild(icon)
+		self.bg_icon = Icon(image=background)
+		self.bg_icon.min_size = self.bg_icon.size = self.max_size
+		self.addChild(self.bg_icon)
 
 	def _get_background(self):
 		return self.__background
