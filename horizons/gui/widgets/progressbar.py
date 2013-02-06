@@ -105,7 +105,7 @@ class TilingProgressBar(ProgressBar):
 	def _set_progress(self, progress):
 		self.__progress = progress
 		fill_width = (progress / 100.0) * (self.max_size[0] / self.tiles_width)
-		self.tiles.amount = fill_width - self.left_width - self.right_width
+		self.tiles.amount = int(fill_width) - self.left_width - self.right_width
 		self.adaptLayout()
 
 	def _get_left_image(self):
