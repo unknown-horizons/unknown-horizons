@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="242,29">
+<Container size="242,29" name="city_info">
 	<TilingHBox amount="23" />
 <!-- City Info widget: Includes city name and number of inhabitants.
 	Displayed when hovering player settlement. -->
