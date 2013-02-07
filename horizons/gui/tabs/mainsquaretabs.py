@@ -106,8 +106,12 @@ class MainSquareOverviewTab(AccountTab):
 
 	def init_widget(self):
 		super(MainSquareOverviewTab, self).init_widget()
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
+		# TODO get this rename callback working
+		#rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog,
+		#                  self.instance.settlement)
+		#self.widget.mapEvents({'headline': rename})
+
+		#self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
 
 class MainSquareSettlerLevelTab(MainSquareTab):

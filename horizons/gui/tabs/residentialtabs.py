@@ -37,8 +37,10 @@ class SettlerOverviewTab(OverviewTab):
 
 	def init_widget(self):
 		super(SettlerOverviewTab, self).init_widget()
-		name = self.instance.settlement.get_component(NamedComponent).name
-		self.widget.findChild(name="headline").text = name
+		# TODO get this rename callback working
+		#rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog,
+		#                  self.instance.settlement)
+		#self.widget.mapEvents({'headline': rename})
 		setup_tax_slider(self.widget.child_finder('tax_slider'),
 		                 self.widget.child_finder('tax_val_label'),
 		                 self.instance.settlement,
@@ -46,6 +48,7 @@ class SettlerOverviewTab(OverviewTab):
 
 		taxes = self.instance.settlement.tax_settings[self.instance.level]
 		self.widget.child_finder('tax_val_label').text = unicode(taxes)
+
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
@@ -80,13 +83,7 @@ class SettlerOverviewTab(OverviewTab):
 		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
-		name = self.instance.settlement.get_component(NamedComponent).name
-		self.widget.findChild(name="headline").text = name
-		events = {
-				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog,
-				                     self.instance.settlement)
-		         }
-		self.widget.mapEvents(events)
+		# TODO subscribe to settlement name changes here
 		super(SettlerOverviewTab, self).refresh()
 
 	def update_consumed_res(self):
