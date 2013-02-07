@@ -34,12 +34,23 @@ from horizons.component.selectablecomponent import SelectableComponent
 
 
 class ShipOverviewTab(OverviewTab):
-	widget = 'overview_trade_ship.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
 	helptext = _lazy("Ship overview")
 
+
+class TraderShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_tradership.xml'
+
+
+class EnemyShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_enemybuilding.xml'
+
+
+class PlayerShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_trade_ship.xml'
+
 	def init_widget(self):
-		super(ShipOverviewTab, self).init_widget()
+		super(PlayerShipOverviewTab, self).init_widget()
 		ship_inv = self.instance.get_component(StorageComponent).inventory
 		self.widget.child_finder('inventory').init(self.instance.session.db, ship_inv)
 
@@ -123,10 +134,10 @@ class ShipOverviewTab(OverviewTab):
 
 		self.widget.child_finder('inventory').update()
 		self._refresh_combat()
-		super(ShipOverviewTab, self).refresh()
+		super(PlayerShipOverviewTab, self).refresh()
 
 
-class FightingShipOverviewTab(ShipOverviewTab):
+class FightingShipOverviewTab(PlayerShipOverviewTab):
 	widget = 'overview_war_ship.xml'
 
 	has_stance = True
