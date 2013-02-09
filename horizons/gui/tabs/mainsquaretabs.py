@@ -60,6 +60,7 @@ class AccountTab(MainSquareTab):
 	widget = 'tab_account.xml'
 	icon_path = 'icons/tabwidget/warehouse/account'
 	helptext = _lazy("Account")
+	show_emblem = True
 
 	def init_widget(self):
 		super(AccountTab, self).init_widget()
@@ -103,6 +104,7 @@ class AccountTab(MainSquareTab):
 
 class MainSquareOverviewTab(AccountTab):
 	helptext = _lazy('Main square overview')
+	show_emblem = True
 
 	def init_widget(self):
 		super(MainSquareOverviewTab, self).init_widget()

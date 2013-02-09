@@ -44,10 +44,12 @@ class TraderShipOverviewTab(ShipOverviewTab):
 
 class EnemyShipOverviewTab(ShipOverviewTab):
 	widget = 'overview_enemybuilding.xml'
+	show_emblem = True
 
 
 class PlayerShipOverviewTab(ShipOverviewTab):
 	widget = 'overview_trade_ship.xml'
+	show_emblem = True
 
 	def init_widget(self):
 		super(PlayerShipOverviewTab, self).init_widget()
