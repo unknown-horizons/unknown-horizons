@@ -9,14 +9,14 @@
 	-->
 
 	<!--  -->
-	<AutoResizeContainer name="template" position="15,70">
+	<AutoResizeContainer name="template" position="20,70">
 		<!-- TODO center -->
 		<!-- TODO RenameLabel replacement if rename=True -->
 		<Label name="headline" comment="TODO center me TODO" />
 
-		<hr position="5,22" />
+		<hr position="0,22" />
 
-		<AutoResizeContainer name="content" position="5,25" />
+		<AutoResizeContainer name="content" position="0,25" />
 	</AutoResizeContainer>
 
 
