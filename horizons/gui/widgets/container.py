@@ -50,15 +50,19 @@ class TabContainer(Container):
 	Ideally, you do not need to specify its size at all."""
 	ATTRIBUTES = AutoResizeContainer.ATTRIBUTES + [
 		UnicodeAttr('headline'), BoolAttr('rename'),
+		UnicodeAttr('left_icon'), UnicodeAttr('right_icon'),
 	]
 
-	def __init__(self, headline=None, rename=False, fixed_width=0, **kwargs):
+	def __init__(self, headline=None, rename=False, fixed_width=0,
+	                   left_icon=None, right_icon=None, **kwargs):
 		super(TabContainer, self).__init__(**kwargs)
-		# TODO make this work as attribute:
-		self.fixed_width = 225
 		self.headline = headline
 		# TODO make this work and do something at all:
 		self.rename = rename
+		# TODO make this work as attribute:
+		self.fixed_width = 225
+		self.left_icon = left_icon
+		self.right_icon = right_icon
 		self.adaptLayout()
 
 	def resizeToContent(self):

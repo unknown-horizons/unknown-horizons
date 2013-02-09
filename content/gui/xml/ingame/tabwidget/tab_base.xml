@@ -3,10 +3,8 @@
 
 	<TabBG name="tab_background" amount="1" />
 
-	<!-- TODO
-	<Icon name="header_icon_left" position="25,50" />
-	<Icon name="header_icon_right" position="205,50" />
-	-->
+	<Icon name="header_icon_left" position="25,40" />
+	<Icon name="header_icon_right" position="200,40" />
 
 	<!--  -->
 	<AutoResizeContainer name="template" position="20,70">

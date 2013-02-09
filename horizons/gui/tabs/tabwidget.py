@@ -57,6 +57,9 @@ class TabWidget(object):
 
 		self.tab_bg = self.widget.findChild(name='tab_background')
 		self.content = self.widget.findChild(name='content')
+		self.left_icon = self.widget.findChild(name='header_icon_left')
+		self.right_icon = self.widget.findChild(name='header_icon_right')
+
 		self._init_tab_buttons()
 		# select a tab to show (first one is default)
 		if active_tab is None:
@@ -136,6 +139,11 @@ class TabWidget(object):
 
 		headline = self.content.parent.findChild(name='headline')
 		headline.text = headline_text
+
+		left_icon = getattr(self.current_tab.widget, 'left_icon', None)
+		self.left_icon.image = left_icon
+		right_icon = getattr(self.current_tab.widget, 'right_icon', None)
+		self.right_icon.image = right_icon
 
 		self.content.removeAllChildren()
 		self.content.addChild(self.current_tab.widget)
