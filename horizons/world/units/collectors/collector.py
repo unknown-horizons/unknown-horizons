@@ -414,12 +414,12 @@ class Collector(Unit):
 	def cancel(self, continue_action):
 		"""Aborts the current job.
 		@param continue_action: Callback, gets called after cancel. Specifies what collector
-			                      is supposed to now.
+		                        is supposed to do now.
 		NOTE: Subclasses set this to a proper action that makes the collector continue to work.
 		      If the collector is supposed to be remove, use a noop.
 		"""
 		self.stop()
-		self.log.debug("%s was canceled, continue action is %s", self, continue_action)
+		self.log.debug("%s was cancelled, continue action is %s", self, continue_action)
 		if self.job is not None:
 			# remove us as incoming collector at target
 			if self.state != self.states.moving_home:
@@ -433,10 +433,11 @@ class Collector(Unit):
 			self.job = None
 			self.state = self.states.idle
 		# NOTE:
-		# Some blocked movement callbacks use this callback. All blocked movement callbacks have to
-		# be canceled here, else the unit will try to continue the movement later when its state has already changed.
-		# This line should fix it sufficiently for now and the problem could be deprecated when the
-		# switch to a component-based system is accomplished.
+		# Some blocked movement callbacks use this callback. All blocked
+		# movement callbacks have to be cancelled here, else the unit will try
+		# to continue the movement later when its state has already changed.
+		# This line should fix it sufficiently for now and the problem could be
+		# deprecated when the switch to a component-based system is accomplished.
 		Scheduler().rem_call(self, self.resume_movement)
 		continue_action()
 
