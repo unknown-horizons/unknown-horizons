@@ -114,7 +114,7 @@ class SimpleMessageBus(object):
 		self._callbacks[type].remove(callback)
 
 	def broadcast(self, type, *args, **kwargs):
-		if not type in self._message_types:
+		if type not in self._message_types:
 			return
 
 		for cb in self._callbacks[type]:
