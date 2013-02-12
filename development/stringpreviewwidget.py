@@ -22,14 +22,17 @@
 from horizons.gui.util import load_uh_widget
 from horizons.util.yamlcache import YamlCache
 from horizons.savegamemanager import SavegameManager
+from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.logbook import LogBook
+from horizons.gui.windows import Window, WindowManager
 from horizons.scheduler import Scheduler
 
-class StringPreviewWidget(object):
+class StringPreviewWidget(Window):
 	"""Widget for testing Logbook strings.
 	It provides a list of scenarios, of which the user can select one and display
 	its strings in a logbook"""
 	def __init__(self, session):
+		super(StringPreviewWidget, self).__init__()
 		self._init_gui(session)
 		# allow for misc delayed initialization to finish before pausing
 		Scheduler().add_new_object(session.speed_pause, self, 2)
@@ -47,7 +50,12 @@ class StringPreviewWidget(object):
 
 		self.statslabel = self._gui.findChild(name="stats")
 
-		self.logbook = LogBook(session)
+		self.windows = WindowManager()
+		self.logbook = LogBook(session, self.windows)
+		self.logbook._gui.mapEvents({
+			OkButton.DEFAULT_NAME : self.logbook.hide,
+		})
+		self.update_infos()
 
 	def update_infos(self):
 		"""Updates the status label while scrolling the scenario list. No up-
