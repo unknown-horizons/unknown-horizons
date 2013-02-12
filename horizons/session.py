@@ -190,7 +190,8 @@ class Session(LivingObject):
 
 		# subscriptions shouldn't survive listeners (except the main Gui)
 		self.gui.unsubscribe()
-		SettingChanged.unsubscribe(self._on_setting_changed)
+		# discard() in case loading failed and we did not yet subscribe
+		SettingChanged.discard(self._on_setting_changed)
 		MessageBus().reset()
 		self.gui.subscribe()
 
