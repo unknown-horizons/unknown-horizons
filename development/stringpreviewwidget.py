@@ -46,6 +46,7 @@ class StringPreviewWidget(Window):
 		self.scenarios = SavegameManager.get_scenarios()
 		self.listbox = self._gui.findChild(name="scenario_list")
 		self.listbox.items = self.scenarios[1]
+		self.listbox.distributeData({'scenario_list': 0})
 		self.listbox.capture(self.update_infos)
 
 		self.statslabel = self._gui.findChild(name="stats")
@@ -68,28 +69,23 @@ class StringPreviewWidget(Window):
 
 	def load(self):
 		"""Load selected scenario and show strings"""
-		if self.listbox.selected == -1:
-			self._gui.findChild(name="hintlbl").text = u"Select a scenario first."
-		else:
-			self._gui.findChild(name="hintlbl").text = u""
+		# remember current entry
+		cur_entry = self.logbook.get_cur_entry()
+		cur_entry = cur_entry if cur_entry is not None else 0
+		self.logbook.clear()
 
-			# remember current entry
-			cur_entry = self.logbook.get_cur_entry()
-			cur_entry = cur_entry if cur_entry is not None else 0
-			self.logbook.clear()
+		# get logbook actions from scenario file and add them to our logbook
+		scenario_file_path = self.scenarios[0][self.listbox.selected]
+		data = YamlCache.load_yaml_data(open(scenario_file_path, 'r'))
+		events = data['events']
+		for event in events:
+			for action in event['actions']:
+				if action['type'] in ('logbook', 'logbook'):
+					self.logbook.add_captainslog_entry(action['arguments'], show_logbook=False)
 
-			# get logbook actions from scenario file and add them to our logbook
-			scenario_file_path = self.scenarios[0][self.listbox.selected]
-			data = YamlCache.load_yaml_data(open(scenario_file_path, 'r'))
-			events = data['events']
-			for event in events:
-				for action in event['actions']:
-					if action['type'] in ('logbook', 'logbook'):
-						self.logbook.add_captainslog_entry(action['arguments'], show_logbook=False)
-
-			try:
-				self.logbook.set_cur_entry(cur_entry)
-			except ValueError:
-				pass # no entries
-			self.logbook._redraw_captainslog()
-			self.logbook.show()
+		try:
+			self.logbook.set_cur_entry(cur_entry)
+		except ValueError:
+			pass # no entries
+		self.logbook._redraw_captainslog()
+		self.logbook.show()
