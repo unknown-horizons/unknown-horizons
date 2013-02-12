@@ -172,7 +172,9 @@ class Session(LivingObject):
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
 
-		self.world.end() # must be called before the world ref is gone
+		if hasattr(self, 'world'):
+			# must be called before the world ref is gone, but may not exist yet while loading
+			self.world.end()
 		self.world = None
 		self.view = None
 		self.manager = None
