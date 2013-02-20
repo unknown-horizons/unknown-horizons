@@ -30,7 +30,7 @@ from horizons.constants import GUI
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
-from horizons.gui.windows import Window
+from horizons.gui.windows import Dialog, Window
 from horizons.messaging import SettlerInhabitantsChanged, HoverSettlementChanged, ResourceBarResize
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
@@ -74,47 +74,46 @@ class ChatDialog(Window):
 		self._windows.close()
 
 
-class ChangeNameDialog(Window):
+class ChangeNameDialog(Dialog):
 	"""Shows a dialog where the user can change the name of a NamedComponent."""
+	modal = True
+	focus = 'new_name'
 
 	def __init__(self, windows, session):
 		super(ChangeNameDialog, self).__init__(windows)
 
 		self._session = session
-		self._widget = load_uh_widget('change_name.xml')
 
-		self._widget.mapEvents({CancelButton.DEFAULT_NAME: self._windows.close})
+	def prepare(self, instance):
+		self._gui = load_uh_widget('change_name.xml')
+
+		self._gui.mapEvents({CancelButton.DEFAULT_NAME: self._windows.close})
 
 		def forward_escape(event):
 			# the textfield will eat everything, even control events
 			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self._windows.close()
+				super(ChangeNameDialog, self).hide()
 
-		self._widget.findChild(name="new_name").capture(forward_escape, "keyPressed")
+		self._gui.findChild(name="new_name").capture(forward_escape, "keyPressed")
+		self.return_events = {
+			OkButton.DEFAULT_NAME    : True,
+			CancelButton.DEFAULT_NAME: False,
+		}
 
-	def show(self, instance):
 		cb = Callback(self._do_change_name, instance)
-		self._widget.mapEvents({OkButton.DEFAULT_NAME: cb})
-		self._widget.findChild(name="new_name").capture(cb)
+		self._gui.mapEvents({OkButton.DEFAULT_NAME: cb})
+		self._gui.findChild(name="new_name").capture(cb)
 
-		oldname = self._widget.findChild(name='old_name')
+		oldname = self._gui.findChild(name='old_name')
 		oldname.text = instance.get_component(NamedComponent).name
 
-		self._widget.show()
-		self._widget.findChild(name="new_name").requestFocus()
-
-	def hide(self):
-		self._widget.hide()
-
 	def _do_change_name(self, instance):
-		new_name = self._widget.collectData('new_name')
-		self._widget.findChild(name='new_name').text = u''
+		new_name = self._gui.collectData('new_name')
+		self._gui.findChild(name='new_name').text = u''
 
 		if new_name and not new_name.isspace():
 			# different namedcomponent classes share the name
 			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self._session)
-
-		self._windows.close()
 
 
 class CityInfo(object):
