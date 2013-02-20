@@ -66,6 +66,12 @@ class LoadingScreen(Window):
 		LoadingProgress.discard(self._update)
 		self._widget.hide()
 
+	def on_escape(self):
+		"""Hitting Esc should not attempt to close the loading screen.
+
+		See #2018 for what happens else."""
+		pass
+
 	def _update(self, message):
 		self._current_step += 1
 
