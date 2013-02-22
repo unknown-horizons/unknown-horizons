@@ -81,7 +81,6 @@ class ChangeNameDialog(Dialog):
 
 	def __init__(self, windows, session):
 		super(ChangeNameDialog, self).__init__(windows)
-
 		self._session = session
 
 	def prepare(self, instance):
