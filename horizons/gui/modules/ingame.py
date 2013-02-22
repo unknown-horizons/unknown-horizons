@@ -105,7 +105,6 @@ class ChangeNameDialog(Dialog):
 			return
 
 		new_name = self._gui.collectData('new_name')
-		self._gui.findChild(name='new_name').text = u''
 
 		if new_name and not new_name.isspace():
 			# different namedcomponent classes share the name
