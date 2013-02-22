@@ -87,33 +87,31 @@ class ChangeNameDialog(Dialog):
 	def prepare(self, instance):
 		self._gui = load_uh_widget('change_name.xml')
 
-		self._gui.mapEvents({CancelButton.DEFAULT_NAME: self._windows.close})
-
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				super(ChangeNameDialog, self).hide()
-
-		self._gui.findChild(name="new_name").capture(forward_escape, "keyPressed")
+		self._gui.findChild(name="new_name").capture(self._on_keypress, "keyPressed")
 		self.return_events = {
-			OkButton.DEFAULT_NAME    : True,
+			OkButton.DEFAULT_NAME: instance,
 			CancelButton.DEFAULT_NAME: False,
 		}
-
-		cb = Callback(self._do_change_name, instance)
-		self._gui.mapEvents({OkButton.DEFAULT_NAME: cb})
-		self._gui.findChild(name="new_name").capture(cb)
-
 		oldname = self._gui.findChild(name='old_name')
 		oldname.text = instance.get_component(NamedComponent).name
 
-	def _do_change_name(self, instance):
+	def act(self, named_instance):
+		"""Renames the instance that is returned by the dialog, if confirmed.
+
+		Hitting Esc or the Cancel button will not trigger a rename.
+		if no name was entered or the new name only consists of spaces, abort
+		the renaming as well.
+		"""
+		if not named_instance:
+			return
+
 		new_name = self._gui.collectData('new_name')
 		self._gui.findChild(name='new_name').text = u''
 
 		if new_name and not new_name.isspace():
 			# different namedcomponent classes share the name
-			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self._session)
+			namedcomp = named_instance.get_component_by_name(NamedComponent.NAME)
+			RenameObject(namedcomp, new_name).execute(self._session)
 
 
 class CityInfo(object):
