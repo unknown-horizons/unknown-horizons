@@ -23,7 +23,7 @@
 import os
 import glob
 
-if os.getcwd().rpartition('\\')[2] != 'development':
+if os.path.basename(os.getcwd()) != 'development':
 	print 'Please run the script from the "development" directory!'
 	quit()
 

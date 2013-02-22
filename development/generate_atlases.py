@@ -109,6 +109,10 @@ class AtlasBook(object):
 
 	def save(self):
 		"""Write the entire image to a file with the given path."""
+		if not os.path.exists(PATHS.ATLAS_FILES_DIR): 
+			# Make sure atlas directory is available
+			os.mkdir(PATHS.ATLAS_FILES_DIR)
+		
 		im = Image.new('RGBA', (self.max_size, self.max_size), (255, 0, 255, 255))
 
 		# place the sub-images in the right places
