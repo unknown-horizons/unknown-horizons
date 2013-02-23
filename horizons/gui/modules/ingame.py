@@ -70,8 +70,6 @@ class ChangeNameDialog(Dialog):
 
 	def prepare(self, instance):
 		self._gui = load_uh_widget('change_name.xml')
-
-		self._gui.findChild(name="new_name").capture(self._on_keypress, "keyPressed")
 		self.return_events = {
 			OkButton.DEFAULT_NAME: instance,
 			CancelButton.DEFAULT_NAME: False,
