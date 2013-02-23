@@ -110,7 +110,7 @@ class Dialog(Window):
 
 		self._gui = None
 		self._hidden = False
-		self.return_events = {}
+		self._return_events = {}
 
 	def prepare(self, **kwargs):
 		"""Setup the dialog gui.
