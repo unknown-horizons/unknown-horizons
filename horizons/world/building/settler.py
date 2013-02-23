@@ -223,7 +223,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
-		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
+		# see http://wiki.unknown-horizons.org/w/Settler_taxing
 
 		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		happiness_tax_modifier = 0.5 + (float(self.happiness)/70.0)
