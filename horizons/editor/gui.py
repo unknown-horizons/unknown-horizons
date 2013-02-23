@@ -31,6 +31,7 @@ from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import WindowManager, Window
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
@@ -42,6 +43,7 @@ from horizons.util.python.callback import Callback
 class IngameGui(LivingObject):
 	minimap = livingProperty()
 	keylistener = livingProperty()
+	message_widget = livingProperty()
 
 	def __init__(self, session, main_gui):
 		self.session = session
@@ -54,9 +56,10 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.message_widget = Dummy
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
+		# a logbook Dummy is necessary for message_widget to work
+		self.logbook = Dummy
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
@@ -84,6 +87,7 @@ class IngameGui(LivingObject):
 			self.mainhud.findChild(name=widget).hide()
 
 		self.windows = WindowManager()
+		self.message_widget = MessageWidget(self.session)
 		self.save_map_dialog = SaveMapDialog(self.session, self.windows)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=True)
 		self.help_dialog = HelpDialog(self.windows, session=self.session)
@@ -145,6 +149,8 @@ class IngameGui(LivingObject):
 
 	def on_key_press(self, action, evt):
 		_Actions = KeyConfig._Actions
+		if action == _Actions.QUICKSAVE:
+			self.session.quicksave()
 		if action == _Actions.ESCAPE:
 			if self.windows.visible:
 				self.windows.on_escape()
