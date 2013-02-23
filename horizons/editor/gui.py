@@ -37,11 +37,14 @@ from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSett
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
+from horizons.gui.widgets.messagewidget import MessageWidget
+from horizons.gui.widgets.logbook import LogBook
 
 
 class IngameGui(LivingObject):
 	minimap = livingProperty()
 	keylistener = livingProperty()
+	message_widget = livingProperty()
 
 	def __init__(self, session, main_gui):
 		self.session = session
@@ -53,8 +56,13 @@ class IngameGui(LivingObject):
 		# used by NavigationTool
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
+		# These are needed to show messages to the player
+		# logbook exists because message_widget doesn't seem to work without it
+		self.windows = WindowManager()
+		self.message_widget = MessageWidget(self.session)
+		self.logbook = LogBook(self.session, self.windows)
+
 		# Mocks needed to act like the real IngameGui
-		self.message_widget = Dummy
 		self.show_menu = Dummy
 		self.hide_menu = Dummy
 
@@ -145,6 +153,8 @@ class IngameGui(LivingObject):
 
 	def on_key_press(self, action, evt):
 		_Actions = KeyConfig._Actions
+		if action == _Actions.QUICKSAVE:
+			self.session.quicksave()
 		if action == _Actions.ESCAPE:
 			if self.windows.visible:
 				self.windows.on_escape()
