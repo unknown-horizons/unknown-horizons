@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 
 import horizons.globals
+
 from horizons.command.misc import Chat
 from horizons.command.uioptions import RenameObject
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
