@@ -268,4 +268,4 @@ class SaveMapDialog(Window):
 			#xgettext:python-format
 			message = _('Valid map names are in the following form: {expression}').format(expression=regex)
 			advice = _('Try a name that only contains letters and numbers.')
-			self._windows.show_error_popup(_('Error'), message, advice)
+			self._windows.show_error_popup(_('Invalid name'), message, advice)
