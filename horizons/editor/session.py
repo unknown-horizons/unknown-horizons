@@ -53,12 +53,14 @@ class EditorSession(Session):
 		self.start()
 
 	def autosave(self):
-		# TODO see issue 1935
-		pass
+		self.log.debug("Session: autosaving map")
+		self.world_editor.save_map(PATHS.USER_MAPS_DIR, 'autosave')
+		self.ingame_gui.message_widget.add(point=None, string_id='AUTOSAVE')
 
 	def quicksave(self):
-		# TODO see issue 1935
-		pass
+		self.log.debug("Session: quicksaving map")
+		self.world_editor.save_map(PATHS.USER_MAPS_DIR, 'quicksave')
+		self.ingame_gui.message_widget.add(point=None, string_id='QUICKSAVE')
 
 	def save(self, name):
 		self.world_editor.save_map(PATHS.USER_MAPS_DIR, name)
