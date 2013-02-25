@@ -23,6 +23,8 @@
 import json
 from multiprocessing import Process
 from urllib2 import Request, urlopen
+
+import horizons.globals
 from horizons.constants import STATISTICS
 from horizons.extscheduler import ExtScheduler
 
@@ -49,10 +51,12 @@ class StatsManager(object):
 		if len(self.data) == 0:
 			return
 		try:
+			self.data['uuid'] = horizons.globals.fife.get_uh_setting("ClientID")
 			p = Process(target=self.__upload_data, args=(self.data.copy(),))
 			p.start()
-		except:
+		except Exception as e:
 			print "Error: unable to start process"
+			print e
 		# TODO Not threadsafe at all 
 		self.sent_data.update(self.data)
 		self.data.clear()
@@ -60,4 +64,5 @@ class StatsManager(object):
 	def __upload_data(self, data):
 		req = Request(self.url + self.action)
 		req.add_header('Content-Type', 'application/json')
+		print "Submitting:", json.dumps(data)
 		urlopen(req, json.dumps(data))

@@ -131,6 +131,7 @@ class Gui(object):
 			return False # user aborted dialog
 
 		options = StartGameOptions(saved_game)
+		options.is_loaded = True
 		horizons.main.start_singleplayer(options)
 		return True
 

@@ -289,7 +289,7 @@ def start(_command_line_arguments):
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
 	horizons.globals.statsmanager = StatsManager()
-	horizons.globals.statsmanager.collect_data({'gamestart': {'version':VERSION.RELEASE_VERSION, 'system': platform.system(), 'release': platform.release(), 'uuid': horizons.globals.fife.get_uh_setting("ClientID")}})
+	horizons.globals.statsmanager.collect_data({'gamestart': {'version': VERSION.RELEASE_VERSION, 'system': platform.system(), 'release': platform.release() }})
 	horizons.globals.fife.run()
 
 def quit():
@@ -305,6 +305,8 @@ def start_singleplayer(options):
 	LoadingProgress.broadcast(None, 'load_objects')
 	global preloading
 	preload_game_join(preloading)
+	
+	horizons.globals.statsmanager.collect_data({'mapstart': options.statistics_dict()})
 
 	# remove cursor while loading
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)

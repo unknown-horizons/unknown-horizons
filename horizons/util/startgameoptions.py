@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import json
+from os import path
 from operator import itemgetter
 
 from horizons.constants import AI, COLORS
@@ -39,6 +41,8 @@ class StartGameOptions(object):
 		self.is_map = False
 		self.is_multiplayer = False
 		self.is_scenario = False
+		self.is_random = False
+		self.is_loaded = False
 
 		self.player_name = 'Player'
 		self.player_color = None
@@ -127,6 +131,7 @@ class StartGameOptions(object):
 		options.ai_players = ai_players
 		options.force_player_id = force_player_id
 		options.is_map = True
+		options.is_random = True
 		return options
 
 	@classmethod
@@ -157,6 +162,7 @@ class StartGameOptions(object):
 	def create_load_game(cls, saved_game, force_player_id):
 		options = StartGameOptions(saved_game)
 		options.force_player_id = force_player_id
+		options.is_loaded = True
 		return options
 
 	@classmethod
@@ -174,3 +180,14 @@ class StartGameOptions(object):
 		options._player_list = player_list
 		options.is_map = True
 		return options
+		
+	
+	def statistics_dict(self):
+		data = {}		
+		if self.is_random:
+			data['map'] = "random"
+		elif self.is_loaded:
+			data['map'] = "loaded"
+		else:
+			data['map'] = path.basename(self.game_identifier)
+		return data

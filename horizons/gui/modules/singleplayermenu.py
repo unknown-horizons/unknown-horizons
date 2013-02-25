@@ -207,6 +207,7 @@ class RandomMapWidget(object):
 		map_file = generate_random_map(*self._get_map_parameters())
 
 		options = StartGameOptions.create_start_map(map_file)
+		options.is_random = True
 		options.set_human_data(player_name, player_color)
 		options.ai_players = self._aidata.get_ai_players()
 		options.trader_enabled = self._game_settings.free_trader
