@@ -22,6 +22,7 @@
 import os
 import os.path
 import sqlite3
+import logging
 
 from collections import deque
 
@@ -45,6 +46,8 @@ class WorldEditor(object):
 		self.brush_size = 1
 
 		self._tile_delete_set = set()
+
+		self.log = logging.getLogger("gui")
 
 	def _remove_unnecessary_objects(self):
 		# Delete all ships.
@@ -96,7 +99,7 @@ class WorldEditor(object):
 		with open('content/map-template.sql') as map_template:
 			db.execute_script(map_template.read())
 
-		save_succesful = True
+		save_successful = True
 		try:
 			db('BEGIN')
 			for island_id, coords_list in self._iter_islands():
@@ -105,12 +108,12 @@ class WorldEditor(object):
 					db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
 			db('COMMIT')
 		except sqlite3.Error as e:
-			print 'Error: {error}'.format(error = e.args[0])
-			save_succesful = False
+			self.log.debug('Error: {error}'.format(error=e.args[0]))
+			save_successful = False
 		finally:
 			db.close()
 
-		return save_succesful
+		return save_successful
 
 	def _delete_tile_instance(self, old_tile):
 		self._tile_delete_set.remove(old_tile)
