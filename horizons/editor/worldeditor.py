@@ -21,6 +21,7 @@
 
 import os
 import os.path
+import sqlite3
 
 from collections import deque
 
@@ -95,13 +96,21 @@ class WorldEditor(object):
 		with open('content/map-template.sql') as map_template:
 			db.execute_script(map_template.read())
 
-		db('BEGIN')
-		for island_id, coords_list in self._iter_islands():
-			for x, y in coords_list:
-				tile = self.world.full_map[(x, y)]
-				db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
-		db('COMMIT')
-		db.close()
+		save_succesful = True
+		try:
+			db('BEGIN')
+			for island_id, coords_list in self._iter_islands():
+				for x, y in coords_list:
+					tile = self.world.full_map[(x, y)]
+					db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
+			db('COMMIT')
+		except sqlite3.Error as e:
+			print 'Error: {error}'.format(error = e.args[0])
+			save_succesful = False
+		finally:
+			db.close()
+
+		return save_succesful
 
 	def _delete_tile_instance(self, old_tile):
 		self._tile_delete_set.remove(old_tile)
