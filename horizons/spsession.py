@@ -61,10 +61,10 @@ class SPSession(Session):
 			SavegameManager.delete_dispensable_savegames(quicksaves=True)
 			self.ingame_gui.message_widget.add(point=None, string_id='QUICKSAVE')
 		else:
-			headline = _(u"Failed to quicksave.")
-			descr = _(u"An error happened during quicksave. Your game has not been saved.")
-			advice = _(u"If this error happens again, please contact the development team:") + \
-			           u"unknown-horizons.org/support/"
+			headline = _("Failed to quicksave.")
+			descr = _("An error happened during quicksave. Your game has not been saved.")
+			advice = _("If this error happens again, please contact the development team: "
+			           "{website}").format(website="http://unknown-horizons.org/support/")
 			self.gui.show_error_popup(headline, descr, advice)
 
 	def save(self, savegamename=None):
