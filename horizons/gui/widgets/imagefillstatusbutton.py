@@ -48,8 +48,9 @@ class ImageFillStatusButton(Container):
 		self.marker = marker
 		self.filled = filled # <- black magic at work! this calls _draw()
 
+		
 	@classmethod
-	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False):
+	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False, showprice=False):
 		"""Inites the button to display the icons for res
 		@param db: dbreader to get info about res icon.
 		@param res: resource id
@@ -60,11 +61,16 @@ class ImageFillStatusButton(Container):
 		@return: ImageFillStatusButton instance"""
 		greyscale = use_inactive_icon and amount == 0
 		path = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale, full_path=False)
-		helptext = db.get_res_name(res)
-		return cls(path=path, text=unicode(amount), helptext=helptext,
-		           size=cls.CELL_SIZE, res_id=res, filled=filled,
-		           marker=marker, uncached=uncached)
+		helptext = ''
+		if showprice:
+			helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=int(db.get_res_value(res)))
+		else:
+			helptext = db.get_res_name(res)
 
+		return cls(path=path, text=unicode(amount), helptext=helptext,
+			   size=cls.CELL_SIZE, res_id=res, filled=filled,
+			   marker=marker, uncached=uncached)
+	
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
 		self._filled = percent
