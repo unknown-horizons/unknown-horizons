@@ -65,7 +65,7 @@ class VERSION:
 	IS_DEV_VERSION = True
 	#RELEASE_VERSION = u'2012.1'
 
-	MIN_FIFE_REVISION = 4077
+	MIN_FIFE_REVISION = 4103
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION = 71
