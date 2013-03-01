@@ -3,7 +3,7 @@
 <!--  /!\ WARNING /!\
 This document was auto-generated from doc/AUTHORS.md.
 Please edit doc/AUTHORS.md instead if you need to change something,
-afterwards run development/generate_credits.py to refresh this file.
+afterwards run ./development/generate_credits.py to refresh this file.
 -->
 
 <Container name="credits_window" size="1000,580">
@@ -34,6 +34,7 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="RainCT (Siegfried Gevatter)" />
 				<Label text="spq (Kristoffer Janke)" />
 				<Label text="squiddy (Reiner Gerecke)" />
+				<Label text="ThePawnBreak (Mocanu Cristian-Alexandru)" />
 				<Label text="totycro (Bernhard Mallinger)" />
 				<Label text="tuempl (Harald Demel)" />
 				<Label text="yonibear (Jonathan Sieber)" />

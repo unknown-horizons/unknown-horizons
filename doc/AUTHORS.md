@@ -17,6 +17,7 @@
 * RainCT (Siegfried Gevatter)
 * spq (Kristoffer Janke)
 * squiddy (Reiner Gerecke)
+* ThePawnBreak (Mocanu Cristian-Alexandru)
 * totycro (Bernhard Mallinger)
 * tuempl (Harald Demel)
 * yonibear (Jonathan Sieber)
