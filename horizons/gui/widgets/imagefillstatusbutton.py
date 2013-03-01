@@ -77,7 +77,7 @@ class ImageFillStatusButton(Container):
 		return cls(path=path, text=unicode(amount), helptext=helptext,
 			   size=cls.CELL_SIZE, res_id=res, filled=filled,
 			   marker=marker, uncached=uncached)
-	
+
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
 		self._filled = percent
