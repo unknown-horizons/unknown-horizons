@@ -21,6 +21,7 @@
 
 from fife.extensions.pychan.widgets import Container, Icon, Label
 
+from horizons.constants import TRADER
 from horizons.util.python.callback import Callback
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.imagebutton import ImageButton
@@ -48,7 +49,6 @@ class ImageFillStatusButton(Container):
 		self.marker = marker
 		self.filled = filled # <- black magic at work! this calls _draw()
 
-		
 	@classmethod
 	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False, showprice=False):
 		"""Inites the button to display the icons for res
@@ -61,9 +61,16 @@ class ImageFillStatusButton(Container):
 		@return: ImageFillStatusButton instance"""
 		greyscale = use_inactive_icon and amount == 0
 		path = get_res_icon_path(res, cls.ICON_SIZE[0], greyscale, full_path=False)
-		helptext = ''
+
 		if showprice:
-			helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=int(db.get_res_value(res)))
+			value = db.get_res_value(res)
+			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
+				helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
+			else:
+				buyprice = value * TRADER.PRICE_MODIFIER_BUY
+				sellprice = value * TRADER.PRICE_MODIFIER_SELL
+				helptext = _('{resource_name}[br]buy for {buyprice} gold[br]sell for {sellprice} gold'
+						     ).format(resource_name=db.get_res_name(res), buyprice=buyprice, sellprice=sellprice)
 		else:
 			helptext = db.get_res_name(res)
 
