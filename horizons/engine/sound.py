@@ -45,12 +45,15 @@ class Sound(object):
 		self.ingame_music = glob.glob('content/audio/music/*.ogg')
 		self.menu_music = glob.glob('content/audio/music/menu/*.ogg')
 		# store the three most recently played files to avoid repetition
-		self.last_tracks = deque(maxlen=3)
+		# If we don't have three files available, reduce accordingly:
+		# At least one track not in last_tracks always needs to exist
+		sample_size = min(3, len(self.ingame_music) - 1)
+		self.last_tracks = deque(maxlen=sample_size)
 		if len(self.menu_music) <= 1:
 			# sad stuff: we only have few menu tracks
 			# => also play some ingame_tracks after the menu
 			# music finished, but start with the menu tracks
-			ingame_tracks = random.sample(self.ingame_music, 3)
+			ingame_tracks = random.sample(self.ingame_music, sample_size)
 			self.menu_music.extend(ingame_tracks)
 			self.last_tracks.extend(ingame_tracks)
 
@@ -114,7 +117,10 @@ class Sound(object):
 		@param play_menu_tracks: Whether to start the playlist with menu music. Only works with refresh_playlist=True.
 		"""
 		if refresh_playlist:
-			self.music = self.menu_music if play_menu_tracks else self.ingame_music
+			if play_menu_tracks and self.menu_music:
+				self.music = self.menu_music
+			else:
+				self.music = self.ingame_music
 		self._new_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
 		self._new_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 		#TODO find cleaner way to check for this:
