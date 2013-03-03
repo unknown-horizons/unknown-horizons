@@ -19,11 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
 import os
 import os.path
 import tempfile
 import time
 
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.gui.windows import Dialog
@@ -62,6 +64,8 @@ class SelectSavegameDialog(Dialog):
 		elif w not in w.parent.hidden_children:
 			w.parent.hideChild(w)
 
+		self.last_click_event = None
+
 	def prepare(self):
 		if self._mode == 'load':
 			self._map_files, self._map_file_display = SavegameManager.get_saves()
@@ -90,6 +94,7 @@ class SelectSavegameDialog(Dialog):
 		self._cb()  # Refresh data on start
 		self._gui.mapEvents({'savegamelist/action': self._cb})
 		self._gui.findChild(name="savegamelist").capture(self._cb, event_name="keyPressed")
+		self._gui.findChild(name="savegamelist").capture(self.check_double_click, event_name="mousePressed")
 
 		self.return_events = {
 			OkButton.DEFAULT_NAME    : True,
@@ -98,6 +103,25 @@ class SelectSavegameDialog(Dialog):
 		}
 		if self._mode == 'save':
 			self.return_events['savegamefile'] = True
+
+	def check_double_click(self, event):
+		"""Load save game when if there was a left double click"""
+		if event.getButton() != fife.MouseEvent.LEFT:
+			return
+		if self.last_click_event == (event.getX(), event.getY()) and self.clicked:
+			self.clicked = False
+			ExtScheduler().rem_call(self, self.reset_click_status)
+			retval = self.return_events.get(OkButton.DEFAULT_NAME)
+			if retval is not None:
+				self._abort(retval)
+		else:
+			self.clicked = True
+			ExtScheduler().add_new_object(self.reset_click_status, self, run_in=0.3, loops=0)
+			self.last_click_event = (event.getX(), event.getY())
+
+	def reset_click_status(self):
+		"""Callback function to reset the click status by Scheduler"""
+		self.clicked = False
 
 	def act(self, retval):
 		if not retval:  # cancelled
