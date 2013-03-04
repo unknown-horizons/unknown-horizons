@@ -358,6 +358,13 @@ afterwards run ./development/generate_credits.py to refresh this file.
 			</VBox>
 		</VBox>
 	</VBox>
+	<VBox max_size="310,500" min_size="310,500">
+		<VBox> <Label text="Portfolio Sites" name="headline" />
+			<VBox name="box">
+				<Label text="novatlan: http://novatlan-sound.de/" />
+			</VBox>
+		</VBox>
+	</VBox>
 </HBox>
 
 <OkButton position="800,500" helptext="Exit to main menu" />
