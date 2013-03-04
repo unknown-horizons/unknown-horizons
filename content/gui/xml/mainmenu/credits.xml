@@ -338,8 +338,9 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		<Label text="Special Thanks" name="headline" />
 		<hr />
 		<VBox> <Label text="Thanks, all of you are awesome!" name="headline" />
-			<VBox name="box_wide">
-				<Label text="Alexia and Widelands team (http://widelands.org)" />
+			<VBox name="box">
+				<Label text="Alexia and the Widelands team" />
+				<Label text="(http://widelands.org)" />
 				<Label text="BartK and www.OpenGameArt.org" />
 				<Label text="Dreimer (Daniel Reimer)" />
 				<Label text="hoehrer (Werner Hoehrer)" />
@@ -348,10 +349,12 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="LinuxDonald (Thomas Kowaliczek)" />
 				<Label text="mattn (Martin Gerhardry)" />
 				<Label text="mvBarracuda (Martin Vohland)" />
-				<Label text="Reiner Prokein (http://reinerstileset.4players.de)" />
-				<Label text="The Battle for Wesnoth team (http://wesnoth.org)" />
+				<Label text="OpenClipArt (http://openclipart.org)" />
+				<Label text="Reiner Prokein" />
+				<Label text="(http://reinerstileset.4players.de)" />
+				<Label text="The Battle for Wesnoth team" />
+				<Label text="(http://wesnoth.org)" />
 				<Label text="The whole FIFE team (http://fifengine.net)" />
-				<Label text="www.OpenClipArt.org" />
 			</VBox>
 		</VBox>
 	</VBox>

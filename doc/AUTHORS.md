@@ -233,7 +233,8 @@
 ## Special Thanks ##
 
 #### Thanks, all of you are awesome!
-* Alexia and Widelands team (http://widelands.org)
+* Alexia and the Widelands team
+  * (http://widelands.org)
 * BartK and www.OpenGameArt.org
 * Dreimer (Daniel Reimer)
 * hoehrer (Werner Hoehrer)
@@ -242,7 +243,9 @@
 * LinuxDonald (Thomas Kowaliczek)
 * mattn (Martin Gerhardry)
 * mvBarracuda (Martin Vohland)
-* Reiner Prokein (http://reinerstileset.4players.de)
-* The Battle for Wesnoth team (http://wesnoth.org)
+* OpenClipArt (http://openclipart.org)
+* Reiner Prokein
+  * (http://reinerstileset.4players.de)
+* The Battle for Wesnoth team
+  * (http://wesnoth.org)
 * The whole FIFE team (http://fifengine.net)
-* www.OpenClipArt.org
