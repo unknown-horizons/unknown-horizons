@@ -44,10 +44,12 @@ class Sound(object):
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
 		self.ingame_music = glob.glob('content/audio/music/*.ogg')
 		self.menu_music = glob.glob('content/audio/music/menu/*.ogg')
+
 		# store the three most recently played files to avoid repetition
 		# If we don't have three files available, reduce accordingly:
 		# At least one track not in last_tracks always needs to exist
-		sample_size = min(3, len(self.ingame_music) - 1)
+		available = max(0, len(self.ingame_music) - 1)
+		sample_size = min(3, available)
 		self.last_tracks = deque(maxlen=sample_size)
 		if len(self.menu_music) <= 1:
 			# sad stuff: we only have few menu tracks
