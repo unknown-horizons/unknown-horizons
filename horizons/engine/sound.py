@@ -121,14 +121,18 @@ class Sound(object):
 		if refresh_playlist:
 			if play_menu_tracks and self.menu_music:
 				self.music = self.menu_music
-			else:
+			elif self.ingame_music:
 				self.music = self.ingame_music
+			else:
+				self.music = None  # Cannot play any tracks if there are none
+
 		self._new_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
 		self._new_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 		#TODO find cleaner way to check for this:
 		# check whether last track has finished:
-		if self._new_byte_pos == self._old_byte_pos and \
-		   self._new_smpl_pos == self._old_smpl_pos:
+		if (self.music is not None
+		    and self._new_byte_pos == self._old_byte_pos
+		    and self._new_smpl_pos == self._old_smpl_pos):
 			# choose random new track, but not one we played very recently
 			track = random.choice([m for m in self.music if m not in self.last_tracks])
 			self.play_sound('bgsound', track)
