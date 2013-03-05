@@ -33,7 +33,7 @@ class Sound(object):
 
 	def __init__(self, engine):
 		"""
-		@param engine: fife from horizons.engine.py
+		@param engine: Fife from horizons.engine.engine
 		"""
 		self.engine = engine
 		self.emitter = {}
@@ -109,7 +109,6 @@ class Sound(object):
 			self.emitter['speech'].reset()
 		ExtScheduler().rem_call(self, self.check_music)
 
-
 	def check_music(self, refresh_playlist=False, play_menu_tracks=False):
 		"""Used as callback to check if music is still running or if we have
 		to load the next song.
@@ -141,7 +140,6 @@ class Sound(object):
 		self._old_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
 		self._old_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 
-
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
 		@param emitter: string: name of emitter that is to play the sound
@@ -152,7 +150,6 @@ class Sound(object):
 			assert emitter is not None, "You need to supply an initialized emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
-			#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/701
+			#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/449
 			emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 			emitter.play()
-
