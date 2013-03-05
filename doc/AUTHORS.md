@@ -31,6 +31,7 @@
 
 #### Sound and Music Artists
 * draikon (Sebastian Ahlen)
+* Matthew Pablo
 * novatlan (Tobias Escher)
 * ThomasD (Thomas Davey)
 
@@ -253,4 +254,5 @@
 - - - - -
 
 #### Portfolio Sites
+* Matthew Pablo: http://matthewpablo.com/
 * novatlan: http://novatlan-sound.de/

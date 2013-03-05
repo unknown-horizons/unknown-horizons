@@ -52,6 +52,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		<VBox> <Label text="Sound and Music Artists" name="headline" />
 			<VBox name="box">
 				<Label text="draikon (Sebastian Ahlen)" />
+				<Label text="Matthew Pablo" />
 				<Label text="novatlan (Tobias Escher)" />
 				<Label text="ThomasD (Thomas Davey)" />
 			</VBox>
@@ -361,6 +362,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	<VBox max_size="310,500" min_size="310,500">
 		<VBox> <Label text="Portfolio Sites" name="headline" />
 			<VBox name="box">
+				<Label text="Matthew Pablo: http://matthewpablo.com/" />
 				<Label text="novatlan: http://novatlan-sound.de/" />
 			</VBox>
 		</VBox>
