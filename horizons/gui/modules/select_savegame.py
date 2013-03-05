@@ -105,15 +105,13 @@ class SelectSavegameDialog(Dialog):
 			self.return_events['savegamefile'] = True
 
 	def check_double_click(self, event):
-		"""Load save game when if there was a left double click"""
+		"""Apply OK button if there was a left double click"""
 		if event.getButton() != fife.MouseEvent.LEFT:
 			return
 		if self.last_click_event == (event.getX(), event.getY()) and self.clicked:
 			self.clicked = False
 			ExtScheduler().rem_call(self, self.reset_click_status)
-			retval = self.return_events.get(OkButton.DEFAULT_NAME)
-			if retval is not None:
-				self._abort(retval)
+			self.trigger_close(OkButton.DEFAULT_NAME)
 		else:
 			self.clicked = True
 			ExtScheduler().add_new_object(self.reset_click_status, self, run_in=0.3, loops=0)

@@ -175,14 +175,16 @@ class Dialog(Window):
 
 		# Convention says use cancel action
 		if event.getKey().getValue() == fife.Key.ESCAPE:
-			retval = self.return_events.get(CancelButton.DEFAULT_NAME)
-			if retval is not None:
-				self._abort(retval)
+			self.trigger_close(OkButton.DEFAULT_NAME)
 		# Convention says use ok action
 		elif event.getKey().getValue() == fife.Key.ENTER:
-			retval = self.return_events.get(OkButton.DEFAULT_NAME)
-			if retval is not None:
-				self._abort(retval)
+			self.trigger_close(OkButton.DEFAULT_NAME)
+
+	def trigger_close(self, event_name):
+		"""Close the dialog and execute the received event"""
+		event_to_call = self.return_events.get(event_name)
+		if event_to_call is not None:
+			self._abort(event_to_call)
 
 	def _abort(self, retval=False):
 		"""Break out of mainloop.
