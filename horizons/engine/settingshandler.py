@@ -77,6 +77,8 @@ class SettingsHandler(object):
 		                                applyfunction=self.set_volume_music)
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
 		                                applyfunction=self.set_volume_effects)
+		
+		self._setting.createAndAddEntry(UH_MODULE, "CollectStatistics", "statistics_enabled",applyfunction=self.set_statistics_collect)
 
 		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
 		                                applyfunction=self.set_network_port)
@@ -212,6 +214,8 @@ class SettingsHandler(object):
 			self.engine.sound.emitter['bgsound'].setGain(value)
 		self.update_slider_values('volume_music', factor=500, unit='%')
 
+	def set_statistics_collect(self, value):
+		horizons.globals.statsmanager.set_enabled(value)
 
 	def set_network_port(self, port):
 		"""Sets a new value for client network port"""

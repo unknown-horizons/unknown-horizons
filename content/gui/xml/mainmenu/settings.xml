@@ -224,6 +224,12 @@
 			</VBox>
 
 			<VBox name="network_settings" padding="2">
+				<Label name="statistics" text="Statistics" font="headline" position_technique="center:center" />
+				<hr />
+				<HBox>
+					<Label name="statistics_opt_text" text="Enable statistics collection:" helptext="Please help us improve the game experience by [br]allowing us to collect anonymous statistics [br]on the game's usage. [br]No personal information will be saved!"/>
+					<CheckBox min_size="24,24" name="statistics_enabled" helptext="Please help us improve the game experience by [br]allowing us to collect anonymous statistics [br]on the game's usage. [br]No personal information will be saved!"/>
+				</HBox>
 				<Label name="headline_network" text="Network" font="headline" position_technique="center:center" />
 				<hr />
 				<HBox max_size="320,60">

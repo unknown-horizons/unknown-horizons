@@ -61,6 +61,7 @@
 		<Setting name="AtlasesEnabled" type="bool">True</Setting>
 		<Setting name="AtlasGenerationEnabled" type="bool">True</Setting>
 		<Setting name="MaxAtlasSize" type="int">2048</Setting>
+		<Setting name="CollectStatistics" type="bool">True</Setting>
 	</Module>
 	<Module name="keys">
 		<Setting name="GRID" type="list"> G </Setting>
@@ -97,6 +98,6 @@
 		<Setting name="CONSOLE" type="list"> F10 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 32 </Setting>
+		<Setting name="SettingsVersion" type="int"> 33 </Setting>
 	</Module>
 </Settings>

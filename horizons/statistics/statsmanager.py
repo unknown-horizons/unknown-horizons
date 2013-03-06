@@ -22,7 +22,7 @@
 
 import json
 from multiprocessing import Process
-from urllib2 import Request, urlopen
+from urllib2 import Request, urlopen, URLError
 
 import horizons.globals
 from horizons.constants import STATISTICS
@@ -33,7 +33,7 @@ class StatsManager(object):
 	action = "/upload"
 	
 	# interval in seconds in which collected data is sent
-	SEND_EVERY = 15
+	SEND_EVERY = 2
 
 	# interval in seconds in which collected data is sent
 	SEND_EVERY = 15
@@ -42,7 +42,8 @@ class StatsManager(object):
 		self.url = STATISTICS.SERVER_URL
 		self.sent_data = {}
 		self.data = {}
-		ExtScheduler().add_new_object(self.upload_data, self, self.SEND_EVERY, -1)
+		if horizons.globals.fife.get_uh_setting("CollectStatistics"):
+			ExtScheduler().add_new_object(self.upload_data, self, self.SEND_EVERY, -1)
 
 	def collect_data(self, data):
 		self.data.update(data)
@@ -68,4 +69,13 @@ class StatsManager(object):
 		req = Request(self.url + self.action)
 		req.add_header('Content-Type', 'application/json')
 		print "Submitting:", json.dumps(data)
-		urlopen(req, json.dumps(data))
+		try:
+			urlopen(req, json.dumps(data))		
+		except URLError as e:
+			print "Caught exception", e
+		
+	def set_enabled(self, enabled):
+		if enabled:
+			ExtScheduler().add_new_object(self.upload_data, self, self.SEND_EVERY, -1)			
+		else:
+			ExtScheduler().rem_all_classinst_calls(self)			
