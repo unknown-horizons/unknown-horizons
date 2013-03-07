@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-04-09 23:03+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2013-03-06 13:27+0000\n"
+"Last-Translator: Lukáš <gryffus@hkfree.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1362576447.0\n"
 
 # 78%
 # 97%
@@ -23,13 +24,11 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr "{player} založil novou osadu."
+msgstr "Nová osada byla založena hráčem {player}."
 
 # 82%
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
 msgid "A new ship has been created."
-msgstr "Postavena nová loď."
+msgstr "Nová loď byla postavena."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -39,9 +38,8 @@ msgstr "Byl vytvořen nový svět."
 # 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
-#, fuzzy
 msgid "Aristocrats"
-msgstr "šlechtic"
+msgstr "Šlechtici"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -60,14 +58,13 @@ msgstr "Občané"
 # 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
-#, fuzzy
 msgid "Merchants"
-msgstr "obchodník"
+msgstr "Obchodníci"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Jedno z Vašich polí není v dosahu farmy."
+msgstr "Jedno z vašich polí není v dosahu farmy."
 
 # 75%
 #. (text of widget: headline)
@@ -76,13 +73,13 @@ msgstr "Jedno z Vašich polí není v dosahu farmy."
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Pioneers"
-msgstr "Průzkumníci"
+msgstr "Průkopníci"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py sql
 msgid "Sailors"
-msgstr "Námořník"
+msgstr "Námořníci"
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -105,35 +102,35 @@ msgstr "Osadníci"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Někteří Vaši obyvatelé nemají přístup k hlavnímu náměstí."
+msgstr "Někteří vaši obyvatelé nemají přístup k tržnici."
 
 # 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr "Někteří z Vašich osadníků se odstěhovali."
+msgstr "Někteří z vašich osadníků se odstěhovali."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
-"Obchodní cesta je připravena. Začněte jí tlačítkem \"Započít cestu\" v menu "
-"\"Nastavení cesty\"."
+"Obchodní cesta je připravena. Začnete jí tlačítkem \"započít cestu\" v menu "
+"\"nastavení cesty\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "Cestu je možné postavit i tažením myší."
+msgstr "Cestu je možné postavit i tahem myši."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Sklad není možné zbourat. Vaši osádníci jej potřebují."
+msgstr "Obchodní přístav není možné zbourat, vaši osadníci jej potřebují."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Neuspěl jsi ve scénáři."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -147,7 +144,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr "K postavení budovy potřebujete více {resource}."
+msgstr "Chybí dostatek {resource} k postavení této budovy."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -157,12 +154,12 @@ msgstr "Vyhráli jste!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Vaše budova hoří!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr "Vaši lidé odmítají opustit mapu."
+msgstr "Vaši lidé odmítají opustit tuto mapu."
 
 # automatic save
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -180,7 +177,7 @@ msgstr "Hra byla rychle uložena."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr "Hra byla automaticky uložena."
+msgstr "Hra byla uložena."
 
 # 77%
 # 97%
@@ -193,7 +190,7 @@ msgstr "Vaši obyvatelé dosáhli úrovně {level}."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr "Ve Vašem dole už nejsou žádné suroviny."
+msgstr "Ve vašem dole už nejsou žádné suroviny."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -218,7 +215,7 @@ msgstr "cihly"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "candles"
-msgstr "svíce"
+msgstr "svíčky"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -475,7 +472,7 @@ msgstr "nářadí"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "trees"
-msgstr ""
+msgstr "stromy"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -530,7 +527,6 @@ msgstr "Hráči {player1} a {player2} začali válku na život a na smrt."
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
 
-#: editor/editor.py
 msgid "Specify the path to FIFE root directory."
 msgstr "Určete cestu k adresáři s FIFE."
 
@@ -665,12 +661,12 @@ msgstr ""
 
 #: horizons/engine/settingshandler.py
 msgid "Logging enabled"
-msgstr ""
+msgstr "Protokolování povoleno"
 
 #: horizons/engine/settingshandler.py
 #, python-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "Logy se ukládají do adresáře {}"
 
 #: horizons/gui/gui.py
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -737,12 +733,9 @@ msgstr "Potvrďte přepsání"
 msgid "Invalid filename given"
 msgstr "Zadán neplatný název souboru"
 
-#: horizons/gui/gui.py
 msgid "Please select a savegame or click on cancel."
 msgstr "Prosím vyberte uloženou hru nebo klikněte na zrušit."
 
-#. ok button has been pressed, but no savegame was selected
-#: horizons/gui/gui.py
 msgid "Select a savegame"
 msgstr "Vyberte uloženou hru"
 
@@ -753,7 +746,6 @@ msgstr "Vyberte uloženou hru"
 msgid "Details:"
 msgstr "Podbrobnosti:"
 
-#: horizons/gui/gui.py
 msgid "Error:"
 msgstr "Chyba:"
 
@@ -784,7 +776,7 @@ msgstr "Uložená verze hry {version}"
 #: horizons/gui/gui.py
 #, python-format
 msgid "(potentially incompatible)"
-msgstr ""
+msgstr "(potenciálně nekompatibilní)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -858,7 +850,6 @@ msgstr "Zkuste jméno, které obsahuje pouze písmena a číslice."
 msgid "Unable to find pyenet"
 msgstr "Nelze najít pyenet"
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
 "Multiplayer vyžaduje knihovnu \"pyenet\", která nebyla ve vašem systému "
@@ -868,7 +859,6 @@ msgstr ""
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr "Uživatelé linuxu: Zkus instalovat pyenet přes správce balíčků."
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr "Uživatelé Windows: V současné době není dostupna podpora pro Windows."
 
@@ -913,7 +903,6 @@ msgstr "Jméno hry: {game_name}"
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Hráči: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Creator: {player}"
 msgstr "Stvořitel: {player}"
@@ -922,15 +911,12 @@ msgstr "Stvořitel: {player}"
 msgid "This savegame is missing (click here)"
 msgstr "Tato hra chybí (klikněte zde)"
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr "Pro načtení v módu multiplayeru je nutné mít správnou hru."
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr "To se nepovedlo a doufáme, že brzy bude tento problém lépe vyřešen."
 
-#: horizons/gui/modules/multiplayermenu.py
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
 "Prosím, získejte z generátoru her soubor {path} a vložte jej do adresáře "
@@ -968,11 +954,11 @@ msgstr "Doporučený počet hráčů: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "Translation status:"
-msgstr ""
+msgstr "Stav překladu:"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "{translated} translated messages, {untranslated} untranslated messages"
-msgstr ""
+msgstr "{translated} přeložených zpráv, {untranslated} nepřeložených zpráv"
 
 #: horizons/gui/modules/singleplayermenu.py
 #: horizons/gui/modules/singleplayermenu.py
@@ -1052,7 +1038,7 @@ msgstr "Klikněte pro vytvoření jiné náhodné mapy"
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py
 msgid "Build {building}"
-msgstr ""
+msgstr "Postavit {building}"
 
 #: horizons/gui/mousetools/navigationtool.py
 msgid "Press H to remove this hint"
@@ -1099,7 +1085,7 @@ msgstr "Potvrdit"
 #: horizons/gui/tabs/buildingtabs.py
 #: horizons/gui/tabs/enemybuildingtabs.py
 msgid "Warehouse overview"
-msgstr "Přehled skladiště"
+msgstr "Přehled obchodního přístavu"
 
 #: horizons/gui/tabs/buildingtabs.py
 msgid "Tower overview"
@@ -1113,7 +1099,7 @@ msgstr "Přehled"
 
 #: horizons/gui/tabs/buildrelatedtab.py
 msgid "Build related buildings"
-msgstr ""
+msgstr "Vybuduj související stavby"
 
 # 83%
 #. (text of widget: headline)
@@ -1139,11 +1125,15 @@ msgstr ""
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"Nakoupit {resource_name} za {price} zlata/t, kdykoliv je zásoba menší než "
+"{limit}t."
 
 #: horizons/gui/tabs/buyselltab.py
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
+"Prodat {resource_name} za {price} zlata/t, kdykoliv je zásoba větší než "
+"{limit}t."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py horizons/i18n/guitranslations.py
@@ -1215,9 +1205,9 @@ msgstr "Naložit/Vyložit"
 msgid "Buy/Sell"
 msgstr "Koupit/Prodat"
 
-#: horizons/gui/tabs/shiptabs.py
 msgid "Too far from the nearest own or allied warehouse"
-msgstr "Příliš daleko od nejbližšího vlastního či spojeneckého skladiště"
+msgstr ""
+"Příliš daleko od nejbližšího vlastního či spojeneckého obchodního přístavu"
 
 # 94%
 #: horizons/gui/tabs/shiptabs.py
@@ -1327,23 +1317,25 @@ msgstr "Klikněte pro přidání nového oddílu"
 #: horizons/gui/widgets/resourceoverviewbar.py
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to default"
-msgstr ""
+msgstr "Obnovit výchozí"
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "Obnovit toto nastavení na výchozí tovární nastavení."
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
-msgstr ""
+msgstr "Obnovit zobrazení surovin této osady na vámi uložené výchozí nastavení."
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to factory"
-msgstr ""
+msgstr "Obnovit výchozí tovární nastavení."
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
 msgstr ""
+"Obnovit výchozí nastavení (zde zobrazeno) na výchozí tovární nastavení pro "
+"všechny osady."
 
 #. (helptext of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py horizons/i18n/guitranslations.py
@@ -1479,8 +1471,6 @@ msgstr "Přiblížit"
 msgid "Zoom out"
 msgstr "Oddálit"
 
-#. (helptext of widget: background_icon)
-#: horizons/i18n/guitranslations.py
 msgid "Gold"
 msgstr "Zlato"
 
@@ -1509,8 +1499,6 @@ msgstr "Použít nové jméno"
 msgid "Enter your message:"
 msgstr "Vaše zpráva:"
 
-#. (text of widget: enter_new_name_lbl)
-#: horizons/i18n/guitranslations.py
 msgid "Enter prefix:"
 msgstr "Zadejte předponu:"
 
@@ -1594,8 +1582,6 @@ msgstr "Pauza"
 msgid "Resume"
 msgstr "Návrat do hry"
 
-#. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
-#: horizons/i18n/guitranslations.py
 msgid "Huker"
 msgstr "Hoker"
 
@@ -1612,29 +1598,19 @@ msgstr "Postavit loď!"
 msgid "Money"
 msgstr "Peníze"
 
-#. (helptext of widget: costs_003)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Cloth"
 msgstr "Oděvy"
 
 # 83%
-#. (helptext of widget: costs_004)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Boards"
 msgstr "Prkna"
 
-#. (helptext of widget: costs_006)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Tools"
 msgstr "Nářadí"
 
-#. (text of widget: headline_BB_war1_ship1)
-#: horizons/i18n/guitranslations.py
 msgid "Frigate"
 msgstr "Fregata"
 
-#. (helptext of widget: costs_040)
-#: horizons/i18n/guitranslations.py
 msgid "Cannons"
 msgstr "Děla"
 
@@ -1653,8 +1629,6 @@ msgstr "nepřítel"
 msgid "neutral"
 msgstr "nestranný"
 
-#. (text of widget: headline)
-#: horizons/i18n/guitranslations.py
 msgid "Build fields"
 msgstr "Postavit pole"
 
@@ -1685,46 +1659,27 @@ msgstr "Souhrn"
 msgid "houses"
 msgstr "domy"
 
-#. (text of widget: resident_1)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "1 resident"
 msgstr "1 obyvatel"
 
-#. (text of widget: resident_2)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "2 residents"
 msgstr "2 obyvatelé"
 
-#. (text of widget: resident_3)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
 msgid "3 residents"
 msgstr "3 obyvatelé"
 
-#. (text of widget: resident_4)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "4 residents"
 msgstr "4 obyvatelé"
 
-#. (text of widget: resident_5)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "5 residents"
 msgstr "5 obyvatelů"
 
-#. (text of widget: resident_6)
-#: horizons/i18n/guitranslations.py
 msgid "6 residents"
 msgstr "6 obyvatelů"
 
-#. (text of widget: resident_7)
-#: horizons/i18n/guitranslations.py
 msgid "7 residents"
 msgstr "7 obyvatelů"
 
-#. (text of widget: resident_8)
-#: horizons/i18n/guitranslations.py
 msgid "8 residents"
 msgstr "8 obyvatelů"
 
@@ -1741,13 +1696,9 @@ msgstr "obyvatelé"
 msgid "Taxes:"
 msgstr "Daně:"
 
-#. (text of widget: upgrades_lbl)
-#: horizons/i18n/guitranslations.py
 msgid "Upgrade not possible:"
 msgstr "Vylepšení není možné:"
 
-#. (helptext of widget: allow_upgrades)
-#: horizons/i18n/guitranslations.py
 msgid "This is the current maximum increment!"
 msgstr "Toto je maximální možná úroveň!"
 
@@ -1787,13 +1738,9 @@ msgstr "Zaplacené daně"
 msgid "Tax rate"
 msgstr "Daňové zatížení"
 
-#. (text of widget: avg_happiness_lbl)
-#: horizons/i18n/guitranslations.py
 msgid "Average happiness:"
 msgstr "Průměrná spokojenost:"
 
-#. (text of widget: most_needed_res_lbl)
-#: horizons/i18n/guitranslations.py
 msgid "Most needed resource:"
 msgstr "Nejžádanější surovina:"
 
@@ -1831,9 +1778,8 @@ msgstr "Zbraně:"
 # 76%
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Resource deposit"
-msgstr "Naleziště zdrojů"
+msgstr "Naleziště surovin"
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py
@@ -1876,12 +1822,9 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
-"Toto je loď svobodného obchodníka. Občas navštíví Vaší osadu, aby nakoupil "
-"či prodal své zboží."
+"Toto je loď svobodného obchodníka. Čas od času navštíví vaši osadu aby "
+"nakoupil či prodal své zboží."
 
-#. (helptext of widget: collector_utilisation_label)
-#. (helptext of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Collector utilisation"
 msgstr "Vytížení výběrčího daní"
 
@@ -1964,12 +1907,12 @@ msgstr "Začít výrobu"
 #. (text of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py
 msgid "Save as default"
-msgstr ""
+msgstr "Uložit jako výchozí"
 
 #. (text of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py
 msgid "Restore default"
-msgstr ""
+msgstr "Obnovit výchozí"
 
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
@@ -1980,12 +1923,12 @@ msgstr "Vyberte zboží:"
 #. (helptext of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
+msgstr "Uložit stávající nastavení surovin jako výchozí pro všechny osady."
 
 #. (helptext of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "Obnovit výchozí nastavení surovin pro všechny osady."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py
@@ -2024,13 +1967,9 @@ msgstr "Mé osady"
 msgid "My ships"
 msgstr "Mé lodě"
 
-#. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
-#: horizons/i18n/guitranslations.py
 msgid "Own settlements"
 msgstr "Vlastní osady"
 
-#. (text of widget: wb5) Sends the chat message to all allied players.
-#: horizons/i18n/guitranslations.py
 msgid "Allies"
 msgstr "Spojenci"
 
@@ -2065,30 +2004,22 @@ msgstr "Přečíst předchozí záznamy"
 msgid "Read next entries"
 msgstr "Přečíst další záznamy"
 
-#. (text of widget: head_left)
-#: horizons/i18n/guitranslations.py
 msgid "Available Scenarios"
 msgstr "Dostupné scénáře"
 
-#. (text of widget: head_right)
-#: horizons/i18n/guitranslations.py
 msgid "Scenario description"
 msgstr "Popis scénáře"
 
-#. (helptext of widget: cancelButton) Players either select the next scenario they want to play or press this button
-#: horizons/i18n/guitranslations.py
 msgid "Continue playing"
 msgstr "Pokračovat ve hře"
 
-#. (helptext of widget: choose_scenario) Select which scenario to play
-#: horizons/i18n/guitranslations.py
 msgid "Choose this scenario"
 msgstr "Vybrat tento scénář"
 
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py
 msgid "Route activity:"
-msgstr ""
+msgstr "Obchodní aktivita:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py
@@ -2147,42 +2078,46 @@ msgstr "Jednotky"
 #. (helptext of widget: building_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Hodnota všech budov v hráčových osadách."
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
 msgstr ""
+"Hodnota použitelné země, například rozloha země, která může být použita k "
+"stavbě budov "
 
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Hráčovo aktuální bohatství + příjem očekávaný v blízké budoucnosti"
 
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
 msgid "Player Name"
-msgstr ""
+msgstr "Jméno hráče:"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
-msgstr ""
+msgstr "Hodnota surovin generovaná ze všech možných zdrojů v hráčových osadách"
 
 #. (helptext of widget: settler_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
 msgstr ""
+"Hodnota označující pokrok osad na základě obyvatel, budov a celkového štěstí"
 
 #. (helptext of widget: total_score)
 #: horizons/i18n/guitranslations.py
 msgid "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
+"Celková hodnota ze všech jednotlivých entit, neboli zkráceně: Hráčovo skóre"
 
 #. (helptext of widget: unit_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Hodnota všech jednotek ve vlastnictví hráče"
 
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py
@@ -2230,13 +2165,9 @@ msgstr "Držet území"
 msgid "Passive"
 msgstr "Pasivní"
 
-#. (text of widget: fife_and_uh_team)
-#: horizons/i18n/guitranslations.py
 msgid "The FIFE and Unknown Horizons development teams"
 msgstr "Vývojové týmy FIFE a Unknown Horizons"
 
-#. (text of widget: have_fun)
-#: horizons/i18n/guitranslations.py
 msgid "Have fun."
 msgstr "Bavte se."
 
@@ -2402,8 +2333,6 @@ msgstr "Nastavení"
 msgid "Loading ..."
 msgstr "Načítám ..."
 
-#. (text of widget: chimebell)
-#: horizons/i18n/guitranslations.py
 msgid "Attention please!"
 msgstr "Důležité!"
 
@@ -2467,8 +2396,6 @@ msgstr "Odejít do menu hry více hráčů"
 msgid "Create this new game"
 msgstr "Vytvořit novou hru"
 
-#. (helptext of widget: gamename_lbl)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "This will be displayed to other players so they recognise the game."
 msgstr "Toto bude zobrazeno ostatním hráčům, aby vybrali hru."
 
@@ -2477,8 +2404,6 @@ msgstr "Toto bude zobrazeno ostatním hráčům, aby vybrali hru."
 msgid "Leave:"
 msgstr "Opustit hru:"
 
-#. (text of widget: game_start_notice)
-#: horizons/i18n/guitranslations.py
 msgid "The game will start as soon as enough players have joined."
 msgstr "Hra začne jakmile se připojí dost hráčů."
 
@@ -2491,7 +2416,7 @@ msgstr "Chat:"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Gamelobby"
-msgstr ""
+msgstr "Herní lobby"
 
 #. (text of widget: startmessage)
 #: horizons/i18n/guitranslations.py
@@ -2501,7 +2426,7 @@ msgstr "Podrobnosti hry:"
 #. (helptext of widget: cancel)
 #: horizons/i18n/guitranslations.py
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "Opustit herní lobby"
 
 #. (text of widget: active_games_lbl)
 #: horizons/i18n/guitranslations.py
@@ -2583,7 +2508,7 @@ msgstr "Barevná hloubka:"
 #. (text of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Enable logging"
-msgstr ""
+msgstr "Povolit protokolování"
 
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py
@@ -2598,7 +2523,7 @@ msgstr "Hlasitost efektů:"
 #. (text of widget: fps_label)
 #: horizons/i18n/guitranslations.py
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Limit frekvence snímků:"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py
@@ -2620,8 +2545,6 @@ msgstr "Síť"
 msgid "Saving"
 msgstr "Ukládám..."
 
-#. (text of widget: language_label)
-#: horizons/i18n/guitranslations.py
 msgid "Select language:"
 msgstr "Vyberte jazyk:"
 
@@ -2705,6 +2628,8 @@ msgstr "Je li zadána 0, použít výchozí"
 #: horizons/i18n/guitranslations.py
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Nepoužívat v normálním herním sezení. Rozhoduje zda zapisovat ladící "
+"informace v adresáři logování vašeho uživatelského adresáře. Zpomaluje hru."
 
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py
@@ -2714,7 +2639,7 @@ msgstr "Posunout náhled, pokud je myš blízko okraje mapy"
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Nastavit maximální obnovovací frekvenci. Výchozí: 60 fps."
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py
@@ -2744,7 +2669,7 @@ msgstr "SDL není podporovaný a může způsobit potíže!"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Random map archive"
-msgstr ""
+msgstr "Archiv náhodných map"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py
@@ -2777,8 +2702,6 @@ msgstr "Nová hra jednoho hráče"
 msgid "Start game:"
 msgstr "Začít hru:"
 
-#. (text of widget: campaign)
-#: horizons/i18n/guitranslations.py
 msgid "Campaign"
 msgstr "Kampaň"
 
@@ -2943,7 +2866,7 @@ msgstr "Uhlíř"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "Spaluje spoustu prken."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py
@@ -3014,7 +2937,7 @@ msgstr "Obhospodařuje pole a chová dobytek."
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py
 msgid "Fire Station"
-msgstr ""
+msgstr "Požární stanice"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py
@@ -3096,8 +3019,6 @@ msgstr "Kácí stromy a vyrábí z nich prkna."
 msgid "Main Square"
 msgstr "Náměstí"
 
-#. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py
 msgid "Supplies citizens with goods."
 msgstr "Zásobuje občany zbožím."
 
@@ -3209,7 +3130,7 @@ msgstr "Kameník"
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
 msgid "Carver"
-msgstr ""
+msgstr "Kameník"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
@@ -3226,17 +3147,17 @@ msgstr "Kamenný lom"
 msgid "Gets stone from a mountain."
 msgstr "Ze skály těží kámen."
 
+# 1st tier
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
 msgid "Storage Tent"
 msgstr "Skladovací stan"
 
-# 75%
+# 2nd tier
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Storage Hut"
-msgstr "Skladovací stan"
+msgstr "Skladiště"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
@@ -3271,29 +3192,28 @@ msgstr "Stan"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Hut"
-msgstr ""
+msgstr "Chata"
 
 # 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "House"
-msgstr "Myš"
+msgstr "Dům"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Stone house"
-msgstr ""
+msgstr "Zděný dům"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Estate"
-msgstr ""
+msgstr "Sídliště"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Manor"
-msgstr ""
+msgstr "Statky"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py
@@ -3385,14 +3305,13 @@ msgstr "Hrozny zpracovává na víno."
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py
 msgid "Warehouse"
-msgstr "Sklad"
+msgstr "Obchodní přístav"
 
 # 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Weaver's Hut"
-msgstr "Tkadlec"
+msgstr "Tkalcovská dílna"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py
@@ -3476,32 +3395,32 @@ msgstr "Jídlo"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Fortifications"
-msgstr ""
+msgstr "Pevnosti"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Infrastructure"
-msgstr ""
+msgstr "Infrastruktura"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Military Service"
-msgstr ""
+msgstr "Vojenství"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Residential"
-msgstr ""
+msgstr "Obydlí"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Sea"
-msgstr ""
+msgstr "Moře"
 
 #. tab6_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
-msgstr ""
+msgstr "Estetika"
 
 #: horizons/main.py
 msgid "Failed to start/load the game"
@@ -3509,23 +3428,20 @@ msgstr "Start/načtení hry se nezdařil(o)"
 
 #: horizons/main.py
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "Vámi zvolená hra nemohla být spuštěna."
 
 #: horizons/main.py
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr "Hra se zdá poškozenou či uloženou starší verzí hry."
 
-#: horizons/main.py
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
 "Z technických důvodů bude kampaň zkopírována do adresáře kampaní ({path})."
 
-#: horizons/main.py
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr "Toto znamená, že změny v vybraném souboru nebudou ve hře použity přímo."
 
-#: horizons/main.py
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
@@ -3597,15 +3513,12 @@ msgstr "Název hry obsahuje znaky, které nejsou podporovány."
 msgid "Access is denied"
 msgstr "Přístup zamítnut"
 
-#: horizons/session.py
 msgid "The savegame file is probably read-only."
 msgstr "Soubor hry je pravděpodobně jen k čtení."
 
-#: horizons/session.py
 msgid "File used by another process"
 msgstr "Soubor je využíván jiným procesem"
 
-#: horizons/session.py
 msgid "The savegame file is currently used by another program."
 msgstr "Soubor hry je zrovna používán jiným programem."
 
@@ -3648,27 +3561,27 @@ msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Tato budova smí být postavena jen na pobřeží."
 
 #: horizons/world/building/buildable.py
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "Tento povrch není vyhovující pro tuto budovu."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Tato budova musí být postavena uvnitř osady."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "Toto území je již obsazeno jiným hráčem."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "Tato plocha je již zabrána jinou stavbou."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "Tato oblast je už obsazená jednotkou."
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on the coastline."
@@ -3676,7 +3589,7 @@ msgstr "Tato budova smí být postavena jen na pobřeží."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "Tato budova musí být postavena v blízkosti oceánu."
 
 #: horizons/world/building/buildable.py
 msgid "This spot is too far away from your ship."
@@ -3688,27 +3601,27 @@ msgstr "Tato budova smí být postavena jen na ložisku surovin."
 
 #: horizons/world/building/buildable.py
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Tento ostrov jsi už osídlil."
 
 #: horizons/world/status.py
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Tato budova hoří!"
 
 #: horizons/world/status.py
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Tito obyvatelé jsou nešťastní."
 
 #: horizons/world/status.py
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Zásoby této budovy jsou plné."
 
 #: horizons/world/status.py
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Tato budova má velmi nízkou produktivitu."
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
-msgstr ""
+msgstr "Tato budova je vyřazena z provozu."
 
 #: horizons/world/traderoute.py
 #, python-format
@@ -3759,7 +3672,6 @@ msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons spadly."
 
 # 83%
-#: run_uh.py
 msgid "We are very sorry for this and want to fix underlying error."
 msgstr "Velice se omlouváme a snažíme se tuto chybu vyřešit."
 
@@ -3770,18 +3682,17 @@ msgstr "K této věci potřebujeme informace z logovacího souboru:"
 #: run_uh.py
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Prosím ozvěte se nám přes IRC, nebo naše fórum, oboje najdete na http"
+"://unknown-horizons.org ."
 
-#: run_uh.py
 msgid "Error: Unable to find required libraries"
 msgstr "Nebylo možné najít potřebné knihovny"
 
-#: run_uh.py
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
 "Omlouváme se, ale knihovna nutná pro hraní Unknown Horizons chybí, a musí "
 "být doinstalována."
 
-#: run_uh.py
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
 "Pro uživatele Windows je instalátor dostupný na "
@@ -3792,7 +3703,6 @@ msgstr ""
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Děkujeme Vám za hraní Unknown Horizons!"
 
-#: run_uh.py
 msgid "FIFE was not found."
 msgstr "FIFE nebylo nalezeno."
 
