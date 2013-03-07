@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2013-03-06 13:27+0000\n"
-"Last-Translator: Lukáš <gryffus@hkfree.org>\n"
+"PO-Revision-Date: 2013-03-07 21:24+0000\n"
+"Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1362576447.0\n"
+"X-POOTLE-MTIME: 1362691465.0\n"
 
 # 78%
 # 97%
@@ -3002,12 +3002,12 @@ msgstr "Zvětšuje hráčovo zorné pole."
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py
 msgid "Lumberjack Tent"
-msgstr "Dřevorubcův stan"
+msgstr "Dřevorubecký srub"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py
 msgid "Lumberjack Hut"
-msgstr "Dřevorubcova bouda"
+msgstr "Dřevorubecký srub"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py
@@ -3268,7 +3268,7 @@ msgstr "Strom"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr "Poskytuje kmeny stromů."
+msgstr "Poskytuje kmeny stromů. Ty kácí dřevorubci."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py
