@@ -29,7 +29,7 @@ class MessageBus(object):
 	"""The MessageBus class is used to send Message instances from a sender to
 	one or multiple recipients."""
 	__metaclass__ = Singleton
-	
+
 	log = logging.getLogger("messaging.messagebus")
 
 	def __init__(self):

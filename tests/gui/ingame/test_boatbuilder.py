@@ -131,11 +131,11 @@ def test_ticket_1830(gui):
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
-	# Check if Main-Production is still just Huker and is paused. 
+	# Check if Main-Production is still just Huker and is paused.
 	assert len(producer.get_productions()) == 1
 	assert producer.get_productions()[0].get_produced_units()[UNITS.HUKER_SHIP] == 1
 	assert producer.get_productions()[0]._state == PRODUCTION.STATES.paused
-	
+
 	# One entry (Frigate) in queue
 	assert len(producer.production_queue) == 1
 

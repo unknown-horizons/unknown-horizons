@@ -304,9 +304,9 @@ class BuildingCollector(Collector):
 			total_utilization += relevant_ticks * self._job_history[i][1]
 
 		#assert -1e-7 < total_utilization / float(history_length) < 1 + 1e-7
-		
+
 		return total_utilization / float(history_length)
-	
+
 	def _clean_job_history_log(self):
 		""" remove too old entries """
 		first_relevant_tick = Scheduler().cur_tick - self.get_utilization_history_length()

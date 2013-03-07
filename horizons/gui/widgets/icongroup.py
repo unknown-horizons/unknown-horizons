@@ -73,7 +73,7 @@ class TabBG(VBox, TilingBackground):
 	ATTRIBUTES = VBox.ATTRIBUTES + [IntAttr('amount')]
 	def __init__(self, **kwargs):
 		VBox.__init__(self, name='tab_background_icons', padding=0)
-		TilingBackground.__init__(self, 
+		TilingBackground.__init__(self,
 			amount=0,
 			base_path="content/gui/images/tabwidget/main_bg_",
 			start_img="top.png", tiles_img="fill.png", final_img="bottom.png",
@@ -88,7 +88,7 @@ class TilingHBox(HBox, TilingBackground):
 	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
 	def __init__(self, **kwargs):
 		HBox.__init__(self, name='city_info_background', padding=0)
-		TilingBackground.__init__(self, 
+		TilingBackground.__init__(self,
 			amount=0,
 			base_path="content/gui/images/background/widgets/cityinfo_",
 			start_img="left.png", tiles_img="fill.png", final_img="right.png",

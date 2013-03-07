@@ -58,7 +58,7 @@
 * MSSSSM (Several improvements)
 * soeb (Translation enhancements)
 
-#### 2010 
+#### 2010
 * Afrit (Resource tree)
 * cubathy (Language bugfix)
 * dario (Savegame versioning)

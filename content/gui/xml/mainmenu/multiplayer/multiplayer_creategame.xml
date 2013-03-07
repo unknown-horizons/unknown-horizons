@@ -17,7 +17,7 @@
 		</VBox>
 
 		<Label name="exit_to_mp_menu_lbl"  text="Back:"  position="60,470" />
-		<CancelButton position="100,460"  name="cancel" 
+		<CancelButton position="100,460"  name="cancel"
 			helptext="Exit to multiplayer menu" />
 	</Container>
 

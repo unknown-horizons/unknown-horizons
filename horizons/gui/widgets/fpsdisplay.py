@@ -28,7 +28,7 @@ from horizons.gui.widgets.container import AutoResizeContainer
 
 class FPSDisplay(AutoResizeContainer):
 	"""Display the frames per second.
-	
+
 	Updates once a second if visible.
 	"""
 

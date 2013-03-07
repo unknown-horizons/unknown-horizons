@@ -272,8 +272,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		   self.inhabitants >= self.inhabitants_min and not self._has_disaster()
 
 	def level_check(self):
-		"""Checks whether we should level up or down. 
-			Ignores buildings with a active disaster. """
+		"""Checks whether we should level up or down.
+
+		Ignores buildings with a active disaster. """
 		if self.can_level_up():
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
