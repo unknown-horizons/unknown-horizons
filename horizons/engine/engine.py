@@ -31,14 +31,14 @@ from fife.extensions import pychan
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 from fife.extensions.fife_settings import FIFE_MODULE
 
+from horizons.constants import LANGUAGENAMES, PATHS
+from horizons.engine import UH_MODULE, KEY_MODULE
+from horizons.engine.pychan_util import init_pychan
+from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
+from horizons.engine.settingsdialog import SettingsDialog
+from horizons.engine.sound import Sound
 from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
-from horizons.constants import LANGUAGENAMES, PATHS
-from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
-from horizons.engine.sound import Sound
-from horizons.engine.settingsdialog import SettingsDialog
-from horizons.engine.pychan_util import init_pychan
-from horizons.engine import UH_MODULE, KEY_MODULE
 
 
 class Fife(ApplicationBase):
