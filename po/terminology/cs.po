@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-04 23:52+0200\n"
-"PO-Revision-Date: 2013-03-07 16:28+0000\n"
+"PO-Revision-Date: 2013-03-07 21:23+0000\n"
 "Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1362673696.0\n"
+"X-POOTLE-MTIME: 1362691391.0\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -1551,7 +1551,7 @@ msgstr "lovit"
 
 #. name_0 of buildings:lumberjackcamp
 msgid "lumberjack tent"
-msgstr ""
+msgstr "dřevorubecký srub"
 
 msgid "please contact"
 msgstr ""
