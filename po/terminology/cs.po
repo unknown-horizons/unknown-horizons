@@ -2,650 +2,2223 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-03-14 11:06+0200\n"
-"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-03-07 16:28+0000\n"
+"Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1362673696.0\n"
 
-msgid "build"
-msgstr "postavit"
-
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (37)
+#
+#
+#
 msgid "game"
 msgstr "hra"
 
+# (poterminology) uh-tutorial/tutorial.pot (26)
+#
+# (poterminology) uh/unknownhorizons.pot (12)
+#
+#
+#
 msgid "building"
-msgstr "budování"
+msgstr "budova"
 
+# (poterminology) uh-tutorial/tutorial.pot (43)
+#
+# (poterminology) uh/unknownhorizons.pot (10)
+#
+#
+#
+#. (text of widget: headline)
+msgid "build"
+msgstr "postavit"
+
+msgid "player"
+msgstr "hráč"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+#
+# (poterminology) uh/unknownhorizons.pot (5)
+#
+#
+#
+#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "osada"
 
-msgid "farm"
-msgstr "farma"
-
+# (poterminology) uh-tutorial/tutorial.pot (13)
+#
+# (poterminology) uh/unknownhorizons.pot (9)
+#
+#
+#
 msgid "ship"
 msgstr "loď"
 
+# (poterminology) uh-tutorial/tutorial.pot (24)
+#
+# (poterminology) uh/unknownhorizons.pot (6)
+#
+#
+#
+#. name_0 of buildings:tent
 msgid "tent"
 msgstr "stan"
 
-msgid "warehouse"
-msgstr "skladiště"
+# (poterminology) uh-tutorial/tutorial.pot (19)
+#
+# (poterminology) uh/unknownhorizons.pot (5)
+#
+#
+#
+#. name of buildings:farm
+msgid "farm"
+msgstr "farma"
 
-msgid "resource"
-msgstr "zdroje"
-
-msgid "produce"
-msgstr "produkování"
-
-msgid "field"
-msgstr "pole"
-
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (10)
+#
+#
+#
 msgid "map"
 msgstr "mapa"
 
+# (poterminology) uh-tutorial/tutorial.pot (8)
+#
+# (poterminology) uh/unknownhorizons.pot (14)
+#
+#
+#
+msgid "resource"
+msgstr "surovina"
+
+#. name of buildings:warehouse
+msgid "warehouse"
+msgstr "obchodní přístav"
+
+# (poterminology) uh-tutorial/tutorial.pot (12)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. (helptext of widget: city_info_inhabitants)
+#. (text of widget: inhabitants)
+msgid "inhabitants"
+msgstr "obyvatelé"
+
+# (poterminology) uh-tutorial/tutorial.pot (5)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+msgid "change"
+msgstr "změna"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (10)
+#
+#
+#
+msgid "unknown"
+msgstr "neznámé"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+msgid "produce"
+msgstr "produkování"
+
+msgid "no"
+msgstr "ne"
+
+# (poterminology) uh-tutorial/tutorial.pot (8)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+#. (helptext of widget: trade)
+#. (text of widget: headline)
 msgid "trade"
 msgstr "obchod"
 
-msgid "inhabitants"
-msgstr "obyvatel"
+msgid "check"
+msgstr "zkontrolovat / kontrol"
 
+# (poterminology) uh-tutorial/tutorial.pot (13)
+#
+# (poterminology) uh/unknownhorizons.pot (6)
+#
+#
+#
+msgid "field"
+msgstr "pole"
+
+# (poterminology) uh-tutorial/tutorial.pot (11)
+#
+# (poterminology) uh/unknownhorizons.pot (5)
+#
+#
+#
+msgid "main"
+msgstr "hlavní"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
 msgid "buy"
 msgstr "koupit"
 
-msgid "overview"
-msgstr "přehled"
-
+# (poterminology) uh-tutorial/tutorial.pot (8)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
 msgid "click"
 msgstr "klik"
 
+# (poterminology) uh-tutorial/tutorial.pot (5)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "left"
+msgstr "vlevo"
+
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (8)
+#
+#
+#
+msgid "overview"
+msgstr "přehled"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+msgid "running"
+msgstr "běh"
+
+msgid "square"
+msgstr "náměstí"
+
+# (poterminology) uh-tutorial/tutorial.pot (11)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 msgid "lumberjack"
 msgstr "dřevorubec"
 
-#, fuzzy
-msgid "resident"
-msgstr "obyvatel"
+msgid "unable"
+msgstr "nemožné"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "continue"
+msgstr "pokračování"
+
+# (poterminology) uh-tutorial/tutorial.pot (10)
+# (poterminology) uh/unknownhorizons.pot (2)
+#. name of buildings:mainsquare
 msgid "main square"
 msgstr "tržnice"
 
-#, fuzzy
-msgid "sailors"
-msgstr "námořník"
-
-msgid "food"
-msgstr "jídlo"
-
-msgid "increment"
-msgstr "úroveň"
-
+# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh/unknownhorizons.pot (4)
 msgid "production"
 msgstr "výroba"
 
-msgid "select"
-msgstr "výběr"
+# (poterminology) uh-tutorial/tutorial.pot (12)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "sailors"
+msgstr "námořníci"
 
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
 msgid "sell"
 msgstr "prodat"
 
-msgid "setting"
-msgstr "nastavení"
-
+# (poterminology) uh-tutorial/tutorial.pot (11)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 msgid "storage"
 msgstr "skladiště"
 
-msgid "tab"
-msgstr "záložka"
+msgid "contact"
+msgstr "kontakt"
 
-msgid "upgrade"
-msgstr ""
+# (poterminology) uh-tutorial/tutorial.pot (5)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. name_2 of buildings:tent
+msgid "house"
+msgstr "dům"
 
-msgid "your inhabitants"
-msgstr ""
-
-msgid "close"
-msgstr ""
-
-msgid "companies"
-msgstr "společnosti"
-
-msgid "island"
-msgstr ""
-
-msgid "time"
-msgstr "čas"
-
-msgid "unit"
-msgstr ""
-
-msgid "balance"
-msgstr "vyvážení"
-
-msgid "coast"
-msgstr "pobřeží"
-
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (8)
+#
+#
+#
 msgid "menu"
 msgstr "menu"
 
-msgid "slot"
-msgstr "slot"
+# (poterminology) uh-tutorial/tutorial.pot (13)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "tab"
+msgstr "záložka"
 
+#. (helptext of widget: okButton)
+msgid "close"
+msgstr "zavřít"
+
+# (poterminology) uh-tutorial/tutorial.pot (5)
+#
+# (poterminology) uh/unknownhorizons.pot (6)
+#
+#
+#
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "jídlo"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+msgid "free"
+msgstr "zdarma"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#. TODO: add support for selecting difficulty levels to the GUI
+msgid "ready"
+msgstr "připraven"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "setting"
+msgstr "nastavení"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (9)
+#
+#
+#
 msgid "start"
 msgstr "start"
 
+# (poterminology) uh-tutorial/tutorial.pot (13)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "time"
+msgstr "čas"
+
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+msgid "trader"
+msgstr "obchodník"
+
+msgid "unit"
+msgstr "jednotka"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (11)
+#
+#
+#
+msgid "version"
+msgstr "verze"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "oheň"
+
+msgid "island"
+msgstr "ostrov"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (4)
+msgid "select"
+msgstr "výběr"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "slot"
+msgstr "slot"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "stock"
 msgstr "zásoba"
 
-msgid "trail"
-msgstr "stezka"
+msgid "upgrade"
+msgstr "vylepšit"
 
-msgid "Unknown Horizons"
-msgstr ""
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "coast"
+msgstr "pobřeží"
 
-msgid "wool"
-msgstr "vlna"
+#. (text of widget: game_player_color)
+msgid "color"
+msgstr "barva"
 
-msgid "boards"
-msgstr "nástěnka"
+# (poterminology) uh-tutorial/tutorial.pot (8)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+msgid "companies"
+msgstr "společnosti"
 
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (3)
+msgid "file"
+msgstr "soubor"
+
+# (poterminology) uh-tutorial/tutorial.pot (10)
+# (poterminology) uh/unknownhorizons.pot (1)
+msgid "increment"
+msgstr "úroveň"
+
+# (keyboard)
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "key"
+msgstr "klíč"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#. (text of widget: taxes_label)
+#. (text of widget: taxes)
+msgid "taxes"
+msgstr "daně"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh/unknownhorizons.pot (1)
 msgid "collector"
 msgstr "nosič"
 
 msgid "connection"
 msgstr "spojení"
 
-msgid "fire"
-msgstr "oheň"
-
-msgid "change"
-msgstr "změna"
-
-msgid "connect"
-msgstr "spojit"
-
-msgid "cost"
-msgstr "cena"
-
-msgid "house"
-msgstr "dům"
-
+# (poterminology) uh-tutorial/tutorial.pot (5)
+#
+# (poterminology) uh/unknownhorizons.pot (5)
+#
+#
+#
 msgid "log"
 msgstr "záznam"
 
-msgid "road"
-msgstr ""
+#. (text of widget: start_multi) Opens widget to join or create multiplayer games
+msgid "multiplayer"
+msgstr "více hráčů"
 
-msgid "save"
-msgstr "uložit"
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 88%
+msgid "resident"
+msgstr "obyvatel"
 
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "vlna"
+
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "nástěnka"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "built"
 msgstr "postavený"
 
-msgid "pasture"
-msgstr "pastvina"
+msgid "button"
+msgstr "tlačítko"
 
-msgid "reach"
-msgstr "dosah"
-
-msgid "tree"
-msgstr "strom"
-
-msgid "your"
-msgstr "vaše"
-
-msgid "your settlement"
-msgstr ""
-
-msgid "add"
-msgstr "přidat"
-
-msgid "check"
-msgstr "zkontrolovat / kontrol"
-
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 msgid "choose"
 msgstr "vybrat"
 
-msgid "confectionery"
-msgstr ""
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "connect"
+msgstr "spojit"
 
-msgid "fisher"
-msgstr "rybář"
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "cost"
+msgstr "cena"
 
-msgid "free trader"
-msgstr "svobodný obchodník"
-
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+#. (helptext of widget: happiness_label)
+#. (helptext of widget: happiness)
 msgid "happiness"
 msgstr "štěstí"
 
-msgid "in stock"
-msgstr ""
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+msgid "road"
+msgstr "cesta"
 
-msgid "money"
-msgstr ""
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "save"
+msgstr "uložit"
 
-msgid "pavilion"
-msgstr "pavilón"
-
-msgid "running costs"
-msgstr "provozní náklady"
-
-msgid "sugar"
-msgstr "cukr"
-
-msgid "taxes"
-msgstr "daně"
-
-msgid "tax"
-msgstr "daň"
-
-msgid "tools"
-msgstr "nářadí"
-
-msgid "button"
-msgstr ""
-
-msgid "continue"
-msgstr "pokračování"
-
-msgid "faith"
-msgstr "víra"
-
-msgid "help"
-msgstr "pomoc"
-
-msgid "left"
-msgstr "vlevo"
-
-msgid "level"
-msgstr "úroveň"
-
-msgid "mode"
-msgstr "režim"
-
-msgid "move"
-msgstr "pohyb"
-
-#, fuzzy
-msgid "pioneers"
-msgstr "průkopník"
-
-#, fuzzy
-msgid "citizens"
-msgstr "občan"
-
-#, fuzzy
-msgid "merchants"
-msgstr "obchodník"
-
-#, fuzzy
-msgid "aristocrats"
-msgstr "šlechtic"
-
-msgid "potato"
-msgstr "brambora"
-
-msgid "settler"
-msgstr "osadník"
-
-#, fuzzy
-msgid "speed"
-msgstr "osivo / semeno"
-
-msgid "stop"
-msgstr "stop"
-
-msgid "storage tent"
-msgstr "skladovací stan"
-
-msgid "wait"
-msgstr ""
-
-msgid "access"
-msgstr ""
-
-msgid "account"
-msgstr "účet"
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. name of buildings:tree
+msgid "tree"
+msgstr "strom"
 
 msgid "amount"
-msgstr ""
+msgstr "množství"
 
-msgid "build menu"
-msgstr "stavební menu"
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "reach"
+msgstr "dosah"
 
-msgid "cloth"
-msgstr "látka"
+msgid "size"
+msgstr "velikost"
 
-msgid "construction"
-msgstr "výstavba"
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "add"
+msgstr "přidat"
 
-msgid "decrease"
-msgstr "snížení"
+# (poterminology) uh-tutorial/tutorial.pot (5)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "fisher"
+msgstr "rybář"
 
-msgid "description"
-msgstr "popis"
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (1)
+#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
+msgid "free trader"
+msgstr "svobodný obchodník"
 
-msgid "fish"
-msgstr "ryba"
+msgid "in stock"
+msgstr "ve skladu"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 msgid "increase"
 msgstr "zvýšení"
 
-msgid "lamb"
-msgstr "jehně"
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "mode"
+msgstr "režim"
 
-msgid "leave"
-msgstr "opustit"
+msgid "password"
+msgstr "heslo"
 
-msgid "liquor"
-msgstr "kořalka"
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. name of buildings:pasture
+msgid "pasture"
+msgstr "pastvina"
 
-msgid "location"
-msgstr ""
-
-msgid "offer"
-msgstr ""
-
-msgid "potatoes"
-msgstr "brambory"
-
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "range"
 msgstr "rozsah"
 
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+msgid "signal"
+msgstr "signál"
+
+# 80%
+msgid "speed"
+msgstr "rychlost"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "cukr"
+
+msgid "access"
+msgstr "přístup"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "build menu"
+msgstr "stavební menu"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "sladkosti"
+
+msgid "enabled"
+msgstr "povoleno"
+
+msgid "fetch"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. (text of widget: help)
+#. (text of widget: help) Main / in-game menu entry
+msgid "help"
+msgstr "pomoc"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "income"
+msgstr "příjem"
+
+msgid "join"
+msgstr "připojit se"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "level"
+msgstr "úroveň"
+
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+msgid "move"
+msgstr "pohyb"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "multiple"
+msgstr "násobek"
+
+msgid "please check"
+msgstr "prosím zkonrolujte"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "potato"
+msgstr "brambora"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (6)
+#
+#
+#
+msgid "settler"
+msgstr "osadník"
+
+#. (text of widget: total_score)
+msgid "total"
+msgstr "celkem"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "construction"
+msgstr "výstavba"
+
+msgid "creator"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "víra"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "hold"
+msgstr "držet"
+
+#, fuzzy
+msgid "icon"
+msgstr "železo"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "lamb"
+msgstr "jehně"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "leave"
+msgstr "opustit"
+
+msgid "location"
+msgstr "oblast"
+
+msgid "multiple buildings"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "pioneers"
+msgstr "průkopníci"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
 msgid "reached"
 msgstr "dosaženo"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "run"
 msgstr "běh"
+
+msgid "session"
+msgstr "sezení"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "SHIFT"
+msgstr "SHIFT"
 
 msgid "slider"
 msgstr "posuvník"
 
-msgid "solution"
-msgstr "řešení"
-
 msgid "space"
-msgstr ""
+msgstr "prostor"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. name_0 of buildings:storagetent
+msgid "storage tent"
+msgstr "skladovací stan"
 
 msgid "target"
+msgstr "cíl"
+
+msgid "terminated"
 msgstr ""
 
-msgid "team"
-msgstr "tým"
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "nářadí"
 
-msgid "total"
-msgstr ""
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "account"
+msgstr "účet"
 
-msgid "unable"
-msgstr ""
-
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
 msgid "active"
 msgstr "aktivní"
 
 msgid "afford"
-msgstr ""
+msgstr "dovolit si"
 
-#, fuzzy
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
 msgid "animals"
-msgstr "zvíře"
+msgstr "zvířata"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (3)
 msgid "Captain's log"
 msgstr "Lodní deník"
 
-#, fuzzy
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "cloth"
+msgstr "látka"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
 msgid "construct"
-msgstr "výstavba"
+msgstr "postavit"
 
-msgid "consume"
-msgstr "spotřebovat"
+msgid "cursor"
+msgstr "kurzor"
 
-msgid "enabled"
-msgstr ""
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "description"
+msgstr "popis"
 
 msgid "entries"
-msgstr ""
+msgstr "položky"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "feature"
 msgstr "vlastnost"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "ryba"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "forest"
 msgstr "les"
 
-msgid "grows"
-msgstr "roste"
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "from time to time"
+msgstr "čas od času"
 
-msgid "hold"
-msgstr "držet"
-
-msgid "idle"
+msgid "global"
 msgstr ""
 
-msgid "income"
-msgstr "příjem"
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+msgid "grow"
+msgstr "růst / roste"
 
+#. (helptext of widget: happy_icon)
+msgid "happy"
+msgstr ""
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "information"
 msgstr "informace"
 
-msgid "key"
-msgstr "klíč"
-
-msgid "lamb wool"
-msgstr "jehněčí vlna"
-
-msgid "overview tab"
-msgstr ""
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "kořalka"
 
 msgid "minimap"
 msgstr "minimapa"
 
-msgid "issues"
-msgstr "problémy"
+msgid "offer"
+msgstr "nabídka"
+
+msgid "overview tab"
+msgstr "záložka přehledu"
 
 msgid "plant"
-msgstr ""
+msgstr "zasadit"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 msgid "play"
 msgstr "hrát"
 
-msgid "playing"
-msgstr "hraní"
-
-msgid "price"
+msgid "please check your"
 msgstr ""
 
-#, fuzzy
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "brambory"
+
+msgid "price"
+msgstr "cena"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
 msgid "read"
-msgstr "červený"
+msgstr "číst"
 
-msgid "return"
-msgstr "návrat"
-
-msgid "sale"
-msgstr "prodej"
-
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 msgid "screen"
 msgstr "obraz"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "service"
+msgstr "služba"
+
+msgid "short"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "solution"
+msgstr "řešení"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "zvuk"
 
 msgid "special"
-msgstr ""
+msgstr "speciální"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh/unknownhorizons.pot (1)
+#, fuzzy
+msgid "spot"
+msgstr "slot"
+
+#. (text of widget: headline_statistics)
+msgid "statistics"
+msgstr "statistiky"
 
 msgid "store"
-msgstr ""
+msgstr "uložit, obchod"
 
-#, fuzzy
-msgid "tear"
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "team"
 msgstr "tým"
 
-msgid "from time to time"
-msgstr "čas od času"
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+msgid "tear"
+msgstr "trhat"
 
+msgid "time to time"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "trading"
 msgstr "obchodování"
 
-msgid "village"
-msgstr "vesnice"
+msgid "unsupported"
+msgstr "nepodporováno"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 msgid "visit"
 msgstr "návštěva"
 
 msgid "world"
+msgstr "svět"
+
+msgid "wrong"
+msgstr "špatně"
+
+msgid "bar"
 msgstr ""
 
-#, fuzzy
-msgid "yield"
-msgstr "výnosy"
-
-msgid "your ship"
-msgstr ""
-
-msgid "back"
-msgstr "zpět"
-
-msgid "build settlement"
-msgstr "postav osadu"
-
-msgid "load"
-msgstr ""
-
-msgid "unload"
-msgstr ""
+msgid "bug"
+msgstr "chyba"
 
 msgid "command"
-msgstr ""
+msgstr "příkaz"
 
 msgid "completed"
+msgstr "hotovo"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "forum"
+msgstr "fórum"
+
+msgid "happen"
 msgstr ""
-
-msgid "condition"
-msgstr "stav"
-
-msgid "contact"
-msgstr "kontakt"
-
-msgid "empty"
-msgstr ""
-
-msgid "ensure"
-msgstr ""
-
-msgid "fulfill"
-msgstr "splnit"
-
-msgid "graphics"
-msgstr "grafiky"
 
 msgid "harvest"
+msgstr "těžit"
+
+msgid "in range"
 msgstr ""
 
-msgid "hunts"
-msgstr "lovy"
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "jehněčí vlna"
 
-msgid "multiple"
-msgstr "násobek"
+msgid "left the game"
+msgstr ""
 
-msgid "potato field"
-msgstr "bramborové pole"
+msgid "lot of boards"
+msgstr ""
 
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "hraní"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+# (poterminology) uh/unknownhorizons.pot (4)
+# 87%
+msgid "produced"
+msgstr "vyrobeno"
+
+msgid "report"
+msgstr "hlášení"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. (text of widget: sell_income_label)
+msgid "sale"
+msgstr "prodej"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 msgid "school"
 msgstr "škola"
 
-msgid "seed"
-msgstr "osivo / semeno"
-
-msgid "service"
-msgstr "služba"
-
-msgid "sheep"
-msgstr "ovce"
-
-msgid "signal fire"
-msgstr "signální oheň"
-
-msgid "statistics"
-msgstr ""
-
-msgid "clay"
-msgstr "jíl"
-
-msgid "iron"
-msgstr "železo"
-
-msgid "ore"
-msgstr "ruda"
-
-msgid "tobacco"
-msgstr "tabák"
-
-msgid "charcoal"
-msgstr "dřevěné uhlí"
-
-msgid "sugar field"
-msgstr "cukrové pole"
+msgid "started"
+msgstr "spuštěno"
 
 msgid "temporarily"
 msgstr "dočasně"
 
-msgid "values"
+msgid "trade with"
 msgstr ""
 
+msgid "values"
+msgstr "hodnoty"
+
+msgid "wheel"
+msgstr ""
+
+#. (helptext of widget: avg_icon)
+msgid "satisfied"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. (text of widget: balance)
+msgid "balance"
+msgstr "bilance"
+
+msgid "load"
+msgstr "naložit, načíst"
+
+# (poterminology) uh-tutorial/tutorial.pot (10)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. name_0 of buildings:trail
+msgid "trail"
+msgstr "stezka"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "železo"
+
+msgid "tobacco"
+msgstr "tabák"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 75%
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "jíl"
+
+#. (text of widget: money_score)
+msgid "money"
+msgstr "peníze"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. name of buildings:pavilion
+msgid "pavilion"
+msgstr "pavilón"
+
+msgid "tax"
+msgstr "daň"
+
+#. headline of gui_buildmenu:build_menu_per_type
+msgid "residential"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "stop"
+msgstr "stop"
+
+msgid "wait"
+msgstr "počkat"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "decrease"
+msgstr "snížení"
+
+msgid "ore"
+msgstr "ruda"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. (helptext of widget: okButton)
+#. (helptext of widget: cancelButton)
+msgid "return"
+msgstr "návrat"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "spotřebovat"
+
+msgid "idle"
+msgstr "nečinný"
+
+msgid "lower"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
+msgid "saved"
+msgstr "uloženo"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "village"
+msgstr "vesnice"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "yields"
+msgstr "výnosy"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "back"
+msgstr "zpět"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. (helptext of widget: found_settlement)
+msgid "build settlement"
+msgstr "postavit osadu"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "dřevěné uhlí"
+
+msgid "empty"
+msgstr "prázdný"
+
+msgid "existing"
+msgstr ""
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "fulfill"
+msgstr "splnit"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. (text of widget: headline_graphics)
+msgid "graphics"
+msgstr "grafiky"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+msgid "hunt"
+msgstr "lovit"
+
+#. name_0 of buildings:lumberjackcamp
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#. name of buildings:potatofield
+msgid "potato field"
+msgstr "bramborové pole"
+
+msgid "seed"
+msgstr "osivo / semeno"
+
+msgid "send"
+msgstr "odeslat"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "sheep"
+msgstr "ovce"
+
+#. name of buildings:signalfire
+msgid "signal fire"
+msgstr "signální oheň"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#. name of buildings:sugarfield
+msgid "sugar field"
+msgstr "třtinové pole"
+
+#. There was a problem during the 'save game' procedure.
+msgid "error"
+msgstr "chyba"
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+#. (text of widget: headline_network)
+msgid "network"
+msgstr "síť"
+
+msgid "route"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (4)
+#, fuzzy
+msgid "selected"
+msgstr "výběr"
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (5)
+# (poterminology) uh/unknownhorizons.pot (1)
+#. (text of widget: headline_mouse)
+msgid "mouse"
+msgstr "myš"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+msgid "partner"
+msgstr "partner"
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr "konfigurace"
+
+msgid "delete"
+msgstr "smazat"
+
+msgid "enter"
+msgstr ""
+
+#. (text of widget: lbl_QUICKSAVE)
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr "kámen"
+
+msgid "weapon"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "skot"
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr "přístav"
+
+#. (text of widget: scenario)
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr "koření"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "kakao"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "kukuřice"
+
+msgid "details"
+msgstr "podrobnosti"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+msgid "found"
+msgstr "nalezeno"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "bylinky"
+
+#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
+msgid "pause"
+msgstr "pozastavit"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "prasata"
+
+msgid "press"
+msgstr "stisknout"
+
+#. (text of widget: quit) Completely shut down UH
+msgid "quit"
+msgstr "ukončit"
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+#. (helptext of widget: okButton)
+msgid "apply"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr ""
+
+#. (text of widget: headline)
+#. (text of widget: headline_chat)
+#. (text of widget: lbl_CHAT)
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr "potvrdit"
+
+msgid "default settings"
+msgstr ""
+
+#. (helptext of widget: diplomacyButton)
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+#. (text of widget: health)
+msgid "health"
+msgstr ""
+
+#. (text of widget: land_score)
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr "načítání"
+
+msgid "logging"
+msgstr "protokolování"
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+#. (helptext of widget: player_name)
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+#. (text of widget: reset_mouse_sensitivity)
+msgid "reset to default"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+#. This is a database entry: the name of a resource.
+#, fuzzy
+msgid "salt"
+msgstr "prodej"
+
+msgid "saved games"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (8)
+# (poterminology) uh/unknownhorizons.pot (14)
+#, fuzzy
+msgid "source"
+msgstr "zdroje"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "trade partner"
+msgstr "obchodní partner"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:alvearies
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+#. name of buildings:boatbuilder
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "citizens"
+msgstr "občané"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:claydeposit
+msgid "clay deposit"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+#. name of buildings:doctor
+msgid "doctor"
+msgstr "lékař"
+
+msgid "drag"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "education"
+msgstr "vzdělání"
+
+msgid "ensure"
+msgstr "zajistit"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "inventory"
+msgstr "inventář"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+#. (text of widget: loadgame)
+#. (text of widget: loadgame) Open a widget to select which game to load
+msgid "load game"
+msgstr "načíst hru"
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+#. (text of widget: lbl_QUICKLOAD)
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+#. (text of widget: random)
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+#. (text of widget: headline)
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (text of widget: running_costs_label)
+#. (text of widget: running_costs)
+msgid "running costs"
+msgstr "provozní náklady"
+
+#. (text of widget: lbl_SCREENSHOT)
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (6)
+#, fuzzy
+msgid "settled"
+msgstr "osadník"
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (13)
+# (poterminology) uh/unknownhorizons.pot (2)
+#, fuzzy
+msgid "tile"
+msgstr "čas"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+#~ msgid "your inhabitants"
+#~ msgstr "vaši obyvatelé"
+
+#~ msgid "Unknown Horizons"
+#~ msgstr "Unknown Horizons"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (2)
+#~ msgid "your"
+#~ msgstr "vaše"
+
+#~ msgid "your settlement"
+#~ msgstr "Vaše osada"
+
+# 88%
+#~ msgid "merchants"
+#~ msgstr "obchodníci"
+
+# 90%
+#~ msgid "aristocrats"
+#~ msgstr "šlechtici"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#~ msgid "grows"
+#~ msgstr "roste"
+
+#~ msgid "issues"
+#~ msgstr "problémy"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 83%
+#~ msgid "yield"
+#~ msgstr "úroda"
+
+#~ msgid "your ship"
+#~ msgstr "Tvá loď"
+
+#~ msgid "unload"
+#~ msgstr "vyložit"
+
+#~ msgid "condition"
+#~ msgstr "stav"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "hunts"
+#~ msgstr "lovy"
+
+# (poterminology) uh-tutorial/tutorial.pot (21)
+# (poterminology) uh/unknownhorizons.pot (2)
 #~ msgid "branch office"
 #~ msgstr "Obchodní přístav"
 
-#~ msgid "main"
-#~ msgstr "hlavní"
-
-#~ msgid "unknown"
-#~ msgstr "neznámé"
-
-#~ msgid "free"
-#~ msgstr "zdarma"
-
-#~ msgid "trader"
-#~ msgstr "obchodník"
-
-#~ msgid "version"
-#~ msgstr "verze"
-
-#~ msgid "signal"
-#~ msgstr "signál"
-
-#~ msgid "found"
-#~ msgstr "nalezeno"
-
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
 #~ msgid "raw"
 #~ msgstr "surový"
 
-#~ msgid "running"
-#~ msgstr "běh"
-
-#~ msgid "inventory"
-#~ msgstr "inventář"
-
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "moved"
 #~ msgstr "pohyboval"
 
-#~ msgid "produced"
-#~ msgstr "vyrobeno"
-
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "hunter"
 #~ msgstr "lovec"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 #~ msgid "market"
 #~ msgstr "obchod"
 
-#~ msgid "partner"
-#~ msgstr "partner"
-
+# (poterminology) uh-tutorial/tutorial.pot (12)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
 #~ msgid "sailor"
 #~ msgstr "námořník"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 #~ msgid "pioneer"
 #~ msgstr "průkopník"
 
@@ -658,74 +2231,135 @@ msgstr ""
 #~ msgid "aristocrat"
 #~ msgstr "šlechtic"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 #~ msgid "refresh"
 #~ msgstr "obnovit"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 #~ msgid "residents"
 #~ msgstr "obyvatel"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 #~ msgid "output"
 #~ msgstr "výstup"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "weaver"
 #~ msgstr "tkadlec"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
 #~ msgid "animal"
 #~ msgstr "zvíře"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "fisherman"
 #~ msgstr "rybář"
 
-#~ msgid "forum"
-#~ msgstr "fórum"
-
-#~ msgid "grow"
-#~ msgstr "růst / roste"
-
-#~ msgid "hunt"
-#~ msgstr "lovit"
-
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "load/unload"
 #~ msgstr "naložit/vyložit"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "ship inventory"
 #~ msgstr "lodní inventář"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "starting"
 #~ msgstr "výchozí"
 
-#~ msgid "trade partner"
-#~ msgstr "obchodní partner"
-
-#~ msgid "yields"
-#~ msgstr "výnosy"
-
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "green"
 #~ msgstr "zelený"
 
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
 #~ msgid "red"
 #~ msgstr "červený"
-
-#~ msgid "no"
-#~ msgstr "ne"
 
 #~ msgid "dialogue"
 #~ msgstr "dialog"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
 #~ msgid "ruin"
 #~ msgstr "ruina"
 
 #~ msgid "salt ponds"
 #~ msgstr "solná jezera"
 
-#~ msgid "cattle"
-#~ msgstr "skot"
-
 #~ msgid "pig"
 #~ msgstr "prase"
-
-#~ msgid "herbs"
-#~ msgstr "bylinky"
 
 #~ msgid "herbary"
 #~ msgstr "bylinkářství"
@@ -733,20 +2367,29 @@ msgstr ""
 #~ msgid "butchery"
 #~ msgstr "řeznictví"
 
-#~ msgid "doctor"
-#~ msgstr "lékař"
-
-#~ msgid "education"
-#~ msgstr "vzdělání"
-
+# 
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
 #~ msgid "market place"
 #~ msgstr "tržiště"
 
-#~ msgid "SHIFT"
-#~ msgstr "SHIFT"
-
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# 
+# (poterminology) uh/unknownhorizons.pot (1)
+# 
+#
+#
 #~ msgid "IRC"
 #~ msgstr "IRC"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# 
+# (poterminology) uh/unknownhorizons.pot (1)
+# 
 #~ msgid "LEFT"
 #~ msgstr "ZBÝVÁ"
