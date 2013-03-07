@@ -6,7 +6,7 @@ tab1:
   - BUILDINGS.STORAGE
   - BUILDINGS.TRAIL
   - BUILDINGS.LOOKOUT
-- # second row 
+- # second row
   - _ Services
   - BUILDINGS.MAIN_SQUARE
   - BUILDINGS.PAVILION
@@ -20,7 +20,7 @@ tab1:
 
 tab2:
 - icon: icons/tabwidget/buildmenu/tier/tier2
-- 
+-
   - _ Companies
   - BUILDINGS.CLAY_PIT
   - BUILDINGS.BRICKYARD
@@ -42,7 +42,7 @@ tab2:
 
 tab3:
 - icon: icons/tabwidget/buildmenu/tier/tier3
-- 
+-
   - _ Mining
   - BUILDINGS.IRON_MINE
   - BUILDINGS.SMELTERY
@@ -71,7 +71,7 @@ tab3:
 
 tab4:
 - icon: icons/tabwidget/buildmenu/tier/tier4
-- 
+-
   - _ Companies
   - BUILDINGS.WINDMILL
   - BUILDINGS.BAKERY

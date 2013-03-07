@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# usage: 
+# usage:
 # copy the full content/ folder into src/Contents/Resources/
 # moreover copy the fife dir into the current dir
 # details can be found at http://wiki.unknown-horizons.org/w/MacOS_build_notes

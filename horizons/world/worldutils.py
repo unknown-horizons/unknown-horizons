@@ -308,7 +308,7 @@ def get_random_possible_coastal_ship_position(world):
 	"""Returns a position in water, that is not at the border of the world
 	but on the coast of an island"""
 	offset = 2
-	# Don't look for a point if there are no islands for some reason 
+	# Don't look for a point if there are no islands for some reason
 	if not world.islands:
 		return
 	while True:

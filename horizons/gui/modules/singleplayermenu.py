@@ -598,12 +598,12 @@ def generate_random_minimap(size, parameters):
 		# mode these are not available. Therefor we have to hackenable atlases
 		# for the minimap generation in this case. This forces the game to use
 		# the correct imageloader
-		# In normal dev mode + enabled atlases we ignore this and just continue 
+		# In normal dev mode + enabled atlases we ignore this and just continue
 		# to use single tile files instead of atlases for the minimap generation.
 		# These are always available in dev checkouts
 		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
-	db = _create_main_db()	
+	db = _create_main_db()
 	horizons.globals.db = db
 	horizons.globals.fife.init_animation_loader(not VERSION.IS_DEV_VERSION)
 	Entities.load_grounds(db, load_now=False) # create all references

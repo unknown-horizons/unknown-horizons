@@ -1,4 +1,4 @@
-UNKNOWN HORIZONS 
+UNKNOWN HORIZONS
 ----------------
 
 
@@ -30,9 +30,9 @@ is derived from a file licensed by the GIMP team ( http://gimp.org ) under the
 terms of the GNU General Public License, version 2.
 
 
-The file  
+The file
 
-/horizons/ext/enum.py  
+/horizons/ext/enum.py
 
 is derived from  http://cheeseshop.python.org/pypi/enum version 0.4.3  which is
 licensed under the terms of the GNU General Public License, version 2 or later.
