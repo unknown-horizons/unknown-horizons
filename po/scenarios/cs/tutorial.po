@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2013-01-25 16:02+0000\n"
+"PO-Revision-Date: 2013-03-07 10:05+0000\n"
 "Last-Translator: Lukáš <gryffus@hkfree.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1359129739.0\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1362650735.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py:2
@@ -775,7 +775,7 @@ msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock."
 msgstr ""
 "Pokud nakupujete zboží, bude nakoupeno tolik zboží, aby byla udržena \"cílová "
-"hodnota\" ve skladu."
+"hodnota\" zásob."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:192
@@ -783,8 +783,8 @@ msgid ""
 "When selling, the 'target value' is the stock amount at which you will always "
 "stop selling until you get more of that resource again."
 msgstr ""
-"Pokud zboží prodáváte, \"cílová hodnota\" určuje množství zboží, které "
-"uchováváte jako rezervu a nebude prodáno."
+"Pokud zboží prodáváte, \"cílová hodnota\" určuje množství zásob, na kterém "
+"vždy přestanete prodávat dokud této suroviny nezískáte zase více."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:194
@@ -797,8 +797,8 @@ msgstr ""
 "\n"
 "Ukážeme si to na příkladu:\n"
 "Pokud máme nastavený slot na \"Nákup\" a na skladě máme 5 tun daného zboží, "
-"tak nastavení posuvníku na hodnotu 9 tun způsobí nákup maximálně 4 další "
-"tuny zboží. "
+"tak nastavení posuvníku na hodnotu 9 tun způsobí nákup maximálně 4 dalších "
+"tun zboží. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:196
@@ -1515,6 +1515,8 @@ msgid ""
 "is now at your command, waiting for your free aspirations and brave "
 "explorations!"
 msgstr ""
+"Úspěšně jsi dokončil všechny úkoly které ti byly svěřeny. Svět je teď pod "
+"tvým vedením, čekající na tvoje ambice a statečné průzkumy!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:366
@@ -1522,11 +1524,13 @@ msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
 msgstr ""
+"Pokud máte nějaké návrhy co bychom mohli, nebo měli vylepšit, přidat, či "
+"vynechat:"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:368
 msgid "www.unknown-horizons.org"
-msgstr ""
+msgstr "www.unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:370
@@ -1541,7 +1545,7 @@ msgstr "team@unknown-horizons.org"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:374
 msgid "Our forums are open to you as well!"
-msgstr ""
+msgstr "Naše fóra jsou vám také otevřena!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:376
@@ -1549,6 +1553,8 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"Nejlepších výsledků doposud bylo dosaženo připojením k našemu IRC kanálu, "
+"takže zkuste začít tam (-;"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:378
