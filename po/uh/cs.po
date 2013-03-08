@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2013-03-07 21:24+0000\n"
+"PO-Revision-Date: 2013-03-08 22:13+0000\n"
 "Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1362691465.0\n"
+"X-POOTLE-MTIME: 1362780781.0\n"
 
 # 78%
 # 97%
@@ -2556,7 +2556,7 @@ msgstr "Otočit minimapu zároveň s mapou:"
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py
 msgid "Mouse sensitivity:"
-msgstr "Hustota zdrojů:"
+msgstr "Citlivost myši:"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py
@@ -3192,7 +3192,7 @@ msgstr "Stan"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Hut"
-msgstr "Chata"
+msgstr "Chatrč"
 
 # 80%
 #. name_2 of buildings:tent
