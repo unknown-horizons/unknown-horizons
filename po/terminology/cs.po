@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-04 23:52+0200\n"
-"PO-Revision-Date: 2013-03-07 21:23+0000\n"
+"PO-Revision-Date: 2013-03-08 11:47+0000\n"
 "Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1362691391.0\n"
+"X-POOTLE-MTIME: 1362743261.0\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -746,7 +746,7 @@ msgid "enabled"
 msgstr "povoleno"
 
 msgid "fetch"
-msgstr ""
+msgstr "získat, stáhnout"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -834,7 +834,7 @@ msgid "construction"
 msgstr "výstavba"
 
 msgid "creator"
-msgstr ""
+msgstr "tvůrce, autor"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -855,9 +855,8 @@ msgstr "víra"
 msgid "hold"
 msgstr "držet"
 
-#, fuzzy
 msgid "icon"
-msgstr "železo"
+msgstr "ikona"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -883,7 +882,7 @@ msgid "location"
 msgstr "oblast"
 
 msgid "multiple buildings"
-msgstr ""
+msgstr "více budov"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -945,7 +944,7 @@ msgid "target"
 msgstr "cíl"
 
 msgid "terminated"
-msgstr ""
+msgstr "ukončeno"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -1059,7 +1058,7 @@ msgid "from time to time"
 msgstr "čas od času"
 
 msgid "global"
-msgstr ""
+msgstr "globální"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1070,7 +1069,7 @@ msgstr "růst / roste"
 
 #. (helptext of widget: happy_icon)
 msgid "happy"
-msgstr ""
+msgstr "šťastný"
 
 #
 #
@@ -1119,7 +1118,7 @@ msgid "play"
 msgstr "hrát"
 
 msgid "please check your"
-msgstr ""
+msgstr "prosím zkontrolujte svůj"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1163,7 +1162,7 @@ msgid "service"
 msgstr "služba"
 
 msgid "short"
-msgstr ""
+msgstr "krátký, zkratka"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1191,9 +1190,8 @@ msgstr "speciální"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 # (poterminology) uh/unknownhorizons.pot (1)
-#, fuzzy
 msgid "spot"
-msgstr "slot"
+msgstr "bod, spatřit"
 
 #. (text of widget: headline_statistics)
 msgid "statistics"
@@ -1218,7 +1216,7 @@ msgid "tear"
 msgstr "trhat"
 
 msgid "time to time"
-msgstr ""
+msgstr "čas od času"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1248,7 +1246,7 @@ msgid "wrong"
 msgstr "špatně"
 
 msgid "bar"
-msgstr ""
+msgstr "sloupec, indikátor"
 
 msgid "bug"
 msgstr "chyba"
@@ -1271,13 +1269,13 @@ msgid "forum"
 msgstr "fórum"
 
 msgid "happen"
-msgstr ""
+msgstr "stát se, přihodit se"
 
 msgid "harvest"
 msgstr "těžit"
 
 msgid "in range"
-msgstr ""
+msgstr "v rozsahu, v dosahu"
 
 #
 #
@@ -1292,16 +1290,16 @@ msgid "lamb wool"
 msgstr "jehněčí vlna"
 
 msgid "left the game"
-msgstr ""
+msgstr "opustil hru"
 
 msgid "lot of boards"
-msgstr ""
+msgstr "spoustu prken, hodně prken"
 
 msgid "marketplace"
-msgstr ""
+msgstr "tržiště"
 
 msgid "moment"
-msgstr ""
+msgstr "moment, chvilka"
 
 msgid "playing"
 msgstr "hraní"
@@ -1343,17 +1341,17 @@ msgid "temporarily"
 msgstr "dočasně"
 
 msgid "trade with"
-msgstr ""
+msgstr "obchodovat s"
 
 msgid "values"
 msgstr "hodnoty"
 
 msgid "wheel"
-msgstr ""
+msgstr "kolo"
 
 #. (helptext of widget: avg_icon)
 msgid "satisfied"
-msgstr ""
+msgstr "spokojený, uspokojený"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 #
@@ -1379,7 +1377,7 @@ msgid "trail"
 msgstr "stezka"
 
 msgid "default"
-msgstr ""
+msgstr "výchozí"
 
 msgid "iron"
 msgstr "železo"
@@ -1413,7 +1411,7 @@ msgstr "daň"
 
 #. headline of gui_buildmenu:build_menu_per_type
 msgid "residential"
-msgstr ""
+msgstr "obytný"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1453,7 +1451,7 @@ msgid "return"
 msgstr "návrat"
 
 msgid "savegame"
-msgstr ""
+msgstr "uložená hra"
 
 msgid "consume"
 msgstr "spotřebovat"
@@ -1462,7 +1460,7 @@ msgid "idle"
 msgstr "nečinný"
 
 msgid "lower"
-msgstr ""
+msgstr "nižší, menší"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1518,7 +1516,7 @@ msgid "empty"
 msgstr "prázdný"
 
 msgid "existing"
-msgstr ""
+msgstr "existující"
 
 #
 #
@@ -1554,7 +1552,7 @@ msgid "lumberjack tent"
 msgstr "dřevorubecký srub"
 
 msgid "please contact"
-msgstr ""
+msgstr "prosím kontaktujte"
 
 #
 #
@@ -1606,32 +1604,31 @@ msgid "error"
 msgstr "chyba"
 
 msgid "deposit"
-msgstr ""
+msgstr "uložit, vklad, naleziště"
 
 msgid "invalid"
-msgstr ""
+msgstr "neplatný"
 
 #. (text of widget: headline_network)
 msgid "network"
 msgstr "síť"
 
 msgid "route"
-msgstr ""
+msgstr "cesta"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (4)
-#, fuzzy
 msgid "selected"
-msgstr "výběr"
+msgstr "vybraný"
 
 msgid "boat"
-msgstr ""
+msgstr "loďka"
 
 msgid "create"
-msgstr ""
+msgstr "vytvořit"
 
 msgid "filename"
-msgstr ""
+msgstr "název souboru"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1645,7 +1642,7 @@ msgid "partner"
 msgstr "partner"
 
 msgid "reset"
-msgstr ""
+msgstr "obnovit"
 
 msgid "configuration"
 msgstr "konfigurace"
@@ -1654,31 +1651,31 @@ msgid "delete"
 msgstr "smazat"
 
 msgid "enter"
-msgstr ""
+msgstr "vložit, vejít, enter"
 
 #. (text of widget: lbl_QUICKSAVE)
 msgid "quicksave"
-msgstr ""
+msgstr "rychle uložit"
 
 msgid "stone"
 msgstr "kámen"
 
 msgid "weapon"
-msgstr ""
+msgstr "zbraň"
 
 #. This is a database entry: the name of a resource.
 msgid "cattle"
 msgstr "skot"
 
 msgid "message"
-msgstr ""
+msgstr "zpráva"
 
 msgid "port"
 msgstr "přístav"
 
 #. (text of widget: scenario)
 msgid "scenario"
-msgstr ""
+msgstr "scénář"
 
 msgid "spice"
 msgstr "koření"
@@ -1723,68 +1720,68 @@ msgid "quit"
 msgstr "ukončit"
 
 msgid "savegame file"
-msgstr ""
+msgstr "soubor uložené hry"
 
 msgid "valid"
-msgstr ""
+msgstr "platný"
 
 msgid "war"
-msgstr ""
+msgstr "válka"
 
 msgid "all settlements"
-msgstr ""
+msgstr "všechny osady"
 
 #. (helptext of widget: okButton)
 msgid "apply"
-msgstr ""
+msgstr "použít"
 
 #. This is a database entry: the name of a resource.
 msgid "bricks"
-msgstr ""
+msgstr "cihly"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
 #. (text of widget: lbl_CHAT)
 msgid "chat"
-msgstr ""
+msgstr "konverzace"
 
 msgid "confirm"
 msgstr "potvrdit"
 
 msgid "default settings"
-msgstr ""
+msgstr "výchozí nastavení"
 
 #. (helptext of widget: diplomacyButton)
 msgid "diplomacy"
-msgstr ""
+msgstr "diplomacie"
 
 msgid "displayed"
-msgstr ""
+msgstr "zobrazeno"
 
 #. This is a database entry: the name of a resource.
 msgid "flour"
-msgstr ""
+msgstr "mouka"
 
 #. This is a database entry: the name of a resource.
 msgid "grapes"
-msgstr ""
+msgstr "hrozny"
 
 msgid "ground"
-msgstr ""
+msgstr "zem"
 
 #. (text of widget: health)
 msgid "health"
-msgstr ""
+msgstr "zdraví"
 
 #. (text of widget: land_score)
 msgid "land"
-msgstr ""
+msgstr "země"
 
 msgid "library"
-msgstr ""
+msgstr "knihovna"
 
 msgid "limit"
-msgstr ""
+msgstr "limit, omezení"
 
 msgid "loading"
 msgstr "načítání"
@@ -1793,40 +1790,38 @@ msgid "logging"
 msgstr "protokolování"
 
 msgid "mine"
-msgstr ""
+msgstr "důl, moje"
 
 msgid "mouse button"
-msgstr ""
+msgstr "tlačítko myši"
 
 msgid "not ready"
-msgstr ""
+msgstr "nepřipraven"
 
 #. (helptext of widget: player_name)
 msgid "player name"
-msgstr ""
+msgstr "jméno hráče"
 
 msgid "quote"
-msgstr ""
+msgstr "citovat, uvozovka"
 
 #. (text of widget: reset_mouse_sensitivity)
 msgid "reset to default"
-msgstr ""
+msgstr "obnovit výchozí"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (1)
 #. This is a database entry: the name of a resource.
-#, fuzzy
 msgid "salt"
-msgstr "prodej"
+msgstr "sůl"
 
 msgid "saved games"
-msgstr ""
+msgstr "uložené hry"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 # (poterminology) uh/unknownhorizons.pot (14)
-#, fuzzy
 msgid "source"
-msgstr "zdroje"
+msgstr "zdroj"
 
 #
 #
@@ -1840,31 +1835,31 @@ msgid "trade partner"
 msgstr "obchodní partner"
 
 msgid "user"
-msgstr ""
+msgstr "uživatel"
 
 msgid "alliance"
-msgstr ""
+msgstr "spojenectví"
 
 msgid "allied"
-msgstr ""
+msgstr "spojenecký"
 
 #. This is a database entry: the name of a resource.
 #. name of buildings:alvearies
 msgid "alvearies"
-msgstr ""
+msgstr "včelíny, úly"
 
 msgid "beans"
-msgstr ""
+msgstr "fazole"
 
 #. name of buildings:boatbuilder
 msgid "boat builder"
-msgstr ""
+msgstr "stavitel lodí"
 
 msgid "builder"
-msgstr ""
+msgstr "stavitel"
 
 msgid "capacity"
-msgstr ""
+msgstr "kapacita"
 
 # 87%
 #. headline of gui_buildmenu:build_menu_per_type
@@ -1875,44 +1870,44 @@ msgstr "občané"
 #. This is a database entry: the name of a resource.
 #. name of buildings:claydeposit
 msgid "clay deposit"
-msgstr ""
+msgstr "ložisko jílu"
 
 #. This is a database entry: the name of a resource.
 msgid "cocoa beans"
-msgstr ""
+msgstr "kakaové boby"
 
 #. This is a database entry: the name of a resource.
 msgid "community"
-msgstr ""
+msgstr "komunita"
 
 #. This is a database entry: the name of a resource.
 msgid "condiments"
-msgstr ""
+msgstr "koření, ochucovadla"
 
 msgid "configure"
-msgstr ""
+msgstr "nastavit"
 
 msgid "created"
-msgstr ""
+msgstr "vytvořeno"
 
 msgid "crops"
-msgstr ""
+msgstr "plodiny"
 
 msgid "deer"
-msgstr ""
+msgstr "jelen"
 
 msgid "directory"
-msgstr ""
+msgstr "složka, adresář"
 
 msgid "disease"
-msgstr ""
+msgstr "nemoc, choroba"
 
 #. name of buildings:doctor
 msgid "doctor"
 msgstr "lékař"
 
 msgid "drag"
-msgstr ""
+msgstr "táhnout, přesunout"
 
 #. This is a database entry: the name of a resource.
 msgid "education"
@@ -1922,33 +1917,33 @@ msgid "ensure"
 msgstr "zajistit"
 
 msgid "entered"
-msgstr ""
+msgstr "vešel"
 
 msgid "expenses"
-msgstr ""
+msgstr "výdaje, náklady"
 
 msgid "fallback"
-msgstr ""
+msgstr "záložní, náhradní"
 
 msgid "fixed"
-msgstr ""
+msgstr "opraveno"
 
 msgid "future"
-msgstr ""
+msgstr "budoucnost, budouci"
 
 msgid "game menu"
-msgstr ""
+msgstr "herní menu"
 
 #. This is a database entry: the name of a resource.
 msgid "get-together"
-msgstr ""
+msgstr "setkání, sraz, slezina"
 
 msgid "going to location"
-msgstr ""
+msgstr "jde do oblasti"
 
 #. This is a database entry: the name of a resource.
 msgid "honeycombs"
-msgstr ""
+msgstr "včelí plástve"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1961,13 +1956,13 @@ msgstr "inventář"
 
 #. This is a database entry: the name of a resource.
 msgid "iron ore"
-msgstr ""
+msgstr "železná ruda"
 
 msgid "letters"
-msgstr ""
+msgstr "dopisy, znaky"
 
 msgid "linux users"
-msgstr ""
+msgstr "uživatelé linuxu"
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -1975,67 +1970,67 @@ msgid "load game"
 msgstr "načíst hru"
 
 msgid "manager"
-msgstr ""
+msgstr "správce"
 
 msgid "map size"
-msgstr ""
+msgstr "velikost mapy"
 
 msgid "maximum"
-msgstr ""
+msgstr "maximum"
 
 msgid "meant"
-msgstr ""
+msgstr "myšleno"
 
 msgid "meant as"
-msgstr ""
+msgstr "myšleno jako"
 
 msgid "missing"
-msgstr ""
+msgstr "chybí"
 
 msgid "network port"
-msgstr ""
+msgstr "síťový port"
 
 msgid "package"
-msgstr ""
+msgstr "balíček"
 
 msgid "package manager"
-msgstr ""
+msgstr "správce balíčků"
 
 msgid "place multiple buildings"
-msgstr ""
+msgstr "umístit více budov"
 
 msgid "position"
-msgstr ""
+msgstr "pozice, poloha"
 
 msgid "production overview"
-msgstr ""
+msgstr "přehled výroby, přehled produkce"
 
 #. (text of widget: lbl_QUICKLOAD)
 msgid "quickload"
-msgstr ""
+msgstr "rychle načíst"
 
 msgid "random"
-msgstr ""
+msgstr "náhodný"
 
 #. (text of widget: random)
 msgid "random map"
-msgstr ""
+msgstr "náhodná mapa"
 
 msgid "related"
-msgstr ""
+msgstr "příbuzný, související"
 
 #. (text of widget: headline)
 msgid "related buildings"
-msgstr ""
+msgstr "související budovy"
 
 msgid "remove"
-msgstr ""
+msgstr "odstranit"
 
 msgid "renderer"
-msgstr ""
+msgstr "vykreslit, vykreslovač"
 
 msgid "run out"
-msgstr ""
+msgstr "dojít, spotřebovat, vyčerpat"
 
 #. (helptext of widget: running_costs_label)
 #. (helptext of widget: running_costs)
@@ -2054,52 +2049,50 @@ msgstr "provozní náklady"
 
 #. (text of widget: lbl_SCREENSHOT)
 msgid "screenshot"
-msgstr ""
+msgstr "snímek obrazovky"
 
 msgid "selected units"
-msgstr ""
+msgstr "zvolené jednotky, označené jednotky"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (6)
-#, fuzzy
 msgid "settled"
-msgstr "osadník"
+msgstr "usedlý, ustálený, zabydlený"
 
 msgid "ship overview"
-msgstr ""
+msgstr "přehled lodi"
 
 msgid "station"
-msgstr ""
+msgstr "stanice"
 
 msgid "suitable"
-msgstr ""
+msgstr "vhodný, vyhovující"
 
 msgid "system"
-msgstr ""
+msgstr "systém"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 # (poterminology) uh/unknownhorizons.pot (2)
-#, fuzzy
 msgid "tile"
-msgstr "čas"
+msgstr "kachličky, dlaždice, vydláždit"
 
 msgid "tops"
-msgstr ""
+msgstr "vrcholky"
 
 msgid "tower"
-msgstr ""
+msgstr "věž"
 
 msgid "unable to find"
-msgstr ""
+msgstr "nelze nalézt"
 
 msgid "want to continue"
-msgstr ""
+msgstr "chtít pokračovat"
 
 msgid "won"
-msgstr ""
+msgstr "vyhrál"
 
 msgid "written"
-msgstr ""
+msgstr "napsáno"
 
 #~ msgid "your inhabitants"
 #~ msgstr "vaši obyvatelé"
