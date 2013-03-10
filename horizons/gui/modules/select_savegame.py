@@ -48,11 +48,11 @@ class SelectSavegameDialog(Dialog):
 			helptext = _('Save game')
 		elif self._mode == 'load':
 			helptext = _('Load game')
-                elif self._mode == 'editor-save':
-                        helptext = _('Save map')
+		elif self._mode == 'editor-save':
+			helptext = _('Save map')
 		self._gui.findChild(name='headline').text = helptext
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
-                
+
 		w = self._gui.findChild(name="gamename_box")
 		if w not in w.parent.hidden_children:
 			w.parent.hideChild(w)
@@ -76,8 +76,8 @@ class SelectSavegameDialog(Dialog):
 				return False
 		elif self._mode == 'save':
 			self._map_files, self._map_file_display = SavegameManager.get_regular_saves()
-                elif self._mode == 'editor-save':
-                        self._map_files, self._map_file_display = SavegameManager.get_maps()
+		elif self._mode == 'editor-save':
+			self._map_files, self._map_file_display = SavegameManager.get_maps()
 
 		self._gui.distributeInitialData({'savegamelist': self._map_file_display})
 		if self._mode == 'load':
@@ -151,8 +151,9 @@ class SelectSavegameDialog(Dialog):
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 					return self._windows.show(self)
-                elif self._mode == 'editor-save':
-                        selected_savegame = self._gui.collectData('savegamefile')
+
+		elif self._mode == 'editor-save':
+			selected_savegame = self._gui.collectData('savegamefile')
 			if selected_savegame == "":
 				self._windows.show_error_popup(windowtitle=_("No filename given"),
 				                               description=_("Please enter a valid filename."))
