@@ -33,6 +33,6 @@
 				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
 			</HBox>
 			<BuySellInventory name="buying_inventory" size="300,70" position="1,21" uncached="1" />
-		</Container>		
+		</Container>
 	</Container>
 </Container>

@@ -193,7 +193,7 @@ class Dialog(Window):
 
 	def _execute(self):
 		"""Execute the dialog synchronously.
-		
+
 		This is done by entering a new mainloop in the engine until the dialog
 		is closed (see `abort`).
 		"""

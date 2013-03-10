@@ -3,7 +3,7 @@
 	background_image="content/gui/images/background/book.png">
 
 	<Container size="320,510"  position="75,32"  name="left_side">
-		<Label text="New game - Multiplayer"  position="70,10"  name="headline_left" 
+		<Label text="New game - Multiplayer"  position="70,10"  name="headline_left"
 			font="headline" />
 		<hr position="52,30" />
 		<VBox name="playerdataselectioncontainer"  position="0,60" />
@@ -57,7 +57,7 @@
 				<CheckBox min_size="32,32"  name="showonlyownversion" marked="1" />
 			</HBox>
 		</VBox>
-		
+
 		<Spacer />
 
 		<HBox min_size="0,40"><Spacer />

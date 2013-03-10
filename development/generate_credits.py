@@ -29,8 +29,6 @@ section_widgets.update({'UH-Team': 'credits_team', 'Special Thanks': 'credits_th
 
 # Whether to add ScrollAreas around the page
 huge_pages = ['Translators']
-# Whether to reduce the section margins
-wide_pages = ['Special Thanks']
 
 INPUT = 'doc/AUTHORS.md'
 OUTPUT = 'content/gui/xml/mainmenu/credits.xml'
@@ -133,10 +131,9 @@ def write_page(heading, content):
 	write(f, 2, u'<Label text="%s" name="headline" />' % heading)
 	write(f, 2, u'<hr />')
 
-	wide = heading in wide_pages
 	for h3, lines in content.items():
 		try:
-			write_subsection(h3, lines, wide=wide)
+			write_subsection(h3, lines)
 		except PageBreak:
 			# On to the right part of this page, add second VBox to HBox
 			write_page_footer()
@@ -146,9 +143,9 @@ def write_page(heading, content):
 	close_hbox(0)
 
 
-def write_subsection(subheading, subcontent, wide=False):
+def write_subsection(subheading, subcontent):
 	write(f, 2, u'<VBox> <Label text="%s" name="headline" />' % subheading)
-	write(f, 3, u'<VBox name="box%s">' % (wide and u'_wide' or u''))
+	write(f, 3, u'<VBox name="box">')
 	for line in subcontent['items']:  # finally, names
 		if set(line) == set('- '):
 			close_vbox(3)

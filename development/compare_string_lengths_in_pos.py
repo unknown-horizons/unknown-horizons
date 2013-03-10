@@ -41,7 +41,7 @@ state = 0
 for line in file:
 	line = line.strip()
 
-	if state == 0: 
+	if state == 0:
 		if not "msgid" in line:
 			continue
 		translations[i] = {}
@@ -73,7 +73,7 @@ for t in translations:
 	if orig.startswith("msgid"): orig = orig[6:]
 	if trans.startswith("msgstr"): trans = trans[7:]
 
-	if trans == "\"\"": 
+	if trans == "\"\"":
 		continue
 
 	len_ratio = float(len(orig))/len(trans)
@@ -83,6 +83,6 @@ for t in translations:
 		print 'string length ratio:', len_ratio
 		print orig
 		print trans
-		print 
+		print
 
 

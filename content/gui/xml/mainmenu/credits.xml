@@ -3,7 +3,7 @@
 <!--  /!\ WARNING /!\
 This document was auto-generated from doc/AUTHORS.md.
 Please edit doc/AUTHORS.md instead if you need to change something,
-afterwards run development/generate_credits.py to refresh this file.
+afterwards run ./development/generate_credits.py to refresh this file.
 -->
 
 <Container name="credits_window" size="1000,580">
@@ -34,6 +34,7 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="RainCT (Siegfried Gevatter)" />
 				<Label text="spq (Kristoffer Janke)" />
 				<Label text="squiddy (Reiner Gerecke)" />
+				<Label text="ThePawnBreak (Mocanu Cristian-Alexandru)" />
 				<Label text="totycro (Bernhard Mallinger)" />
 				<Label text="tuempl (Harald Demel)" />
 				<Label text="yonibear (Jonathan Sieber)" />
@@ -51,6 +52,7 @@ afterwards run development/generate_credits.py to refresh this file.
 		<VBox> <Label text="Sound and Music Artists" name="headline" />
 			<VBox name="box">
 				<Label text="draikon (Sebastian Ahlen)" />
+				<Label text="Matthew Pablo" />
 				<Label text="novatlan (Tobias Escher)" />
 				<Label text="ThomasD (Thomas Davey)" />
 			</VBox>
@@ -337,8 +339,9 @@ afterwards run development/generate_credits.py to refresh this file.
 		<Label text="Special Thanks" name="headline" />
 		<hr />
 		<VBox> <Label text="Thanks, all of you are awesome!" name="headline" />
-			<VBox name="box_wide">
-				<Label text="Alexia and Widelands team (http://widelands.org)" />
+			<VBox name="box">
+				<Label text="Alexia and the Widelands team" />
+				<Label text="(http://widelands.org)" />
 				<Label text="BartK and www.OpenGameArt.org" />
 				<Label text="Dreimer (Daniel Reimer)" />
 				<Label text="hoehrer (Werner Hoehrer)" />
@@ -347,10 +350,20 @@ afterwards run development/generate_credits.py to refresh this file.
 				<Label text="LinuxDonald (Thomas Kowaliczek)" />
 				<Label text="mattn (Martin Gerhardry)" />
 				<Label text="mvBarracuda (Martin Vohland)" />
-				<Label text="Reiner Prokein (http://reinerstileset.4players.de)" />
-				<Label text="The Battle for Wesnoth team (http://wesnoth.org)" />
+				<Label text="OpenClipArt (http://openclipart.org)" />
+				<Label text="Reiner Prokein" />
+				<Label text="(http://reinerstileset.4players.de)" />
+				<Label text="The Battle for Wesnoth team" />
+				<Label text="(http://wesnoth.org)" />
 				<Label text="The whole FIFE team (http://fifengine.net)" />
-				<Label text="www.OpenClipArt.org" />
+			</VBox>
+		</VBox>
+	</VBox>
+	<VBox max_size="310,500" min_size="310,500">
+		<VBox> <Label text="Portfolio Sites" name="headline" />
+			<VBox name="box">
+				<Label text="Matthew Pablo: http://matthewpablo.com/" />
+				<Label text="novatlan: http://novatlan-sound.de/" />
 			</VBox>
 		</VBox>
 	</VBox>

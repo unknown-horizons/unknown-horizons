@@ -102,22 +102,22 @@ def test_upgrade_disallowed_with_fire(s):
 	"""
 	dis_man = s.world.disaster_manager
 	settlement = s.world.player.settlements[0]
-	
+
 	# need this so that fires can break out
 	s.world.player.settler_level = 1
 
 	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
-	
+
 	# Fullfil all needs to level up
 	for settler in settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]:
 		happiness = s.db("SELECT value FROM balance_values WHERE name = 'happiness_level_up_requirement'")[0][0]
 		settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, happiness + 1)
 		settler.inhabitants = settler.inhabitants_min
-	
+
 	# Now seed a fire
 	while not dis_man._active_disaster:
 		dis_man.run()
-			
+
 	assert dis_man._active_disaster[settlement]._affected_buildings, "No building is on fire!"
 	assert not dis_man._active_disaster[settlement]._affected_buildings[0].can_level_up(), \
 				"Buildings should not get upgraded when they are affected by a fire!"

@@ -5,7 +5,7 @@
 	Displayed when hovering player settlement. -->
 	<Icon name="owner_emblem"  position="4,1" />
 	<Icon name="city_info_inhabitants"  position="170,-6"
-		image="content/gui/icons/widgets/cityinfo/inhabitants.png" 
+		image="content/gui/icons/widgets/cityinfo/inhabitants.png"
 		helptext="Inhabitants" />
 
 	<RenameLabel name="city_name" position="35,4" />

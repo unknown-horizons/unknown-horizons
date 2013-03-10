@@ -26,7 +26,7 @@ class ColorMeta(type):
 	"""Metaclass allows iteration and indexing of the Color class.
 
 	Example:
-		
+
 		for c in Color:
 			pass
 

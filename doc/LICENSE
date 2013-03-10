@@ -1,4 +1,4 @@
-UNKNOWN HORIZONS 
+UNKNOWN HORIZONS
 ----------------
 
 
@@ -30,9 +30,9 @@ is derived from a file licensed by the GIMP team ( http://gimp.org ) under the
 terms of the GNU General Public License, version 2.
 
 
-The file  
+The file
 
-/horizons/ext/enum.py  
+/horizons/ext/enum.py
 
 is derived from  http://cheeseshop.python.org/pypi/enum version 0.4.3  which is
 licensed under the terms of the GNU General Public License, version 2 or later.
@@ -98,8 +98,19 @@ More details on the painting can be found at  http://the-athenaeum.org/art/detai
 "striking a Bell (15cm large)" by Stephan used in content/audio/sounds/ships_bell.ogg.
 More details can be found at  http://www.pdsounds.org/sounds/striking_a_bell_15cm_large .
 
+The file content/audio/music/Peer Gynt Suite No. 1, Op. 46 - I. Morning.ogg
+composed by Edvard Grieg performed by the Czech National Symphony Orchestra
+More details can be found at http://www.musopen.org/music/piece/1568
 
-Published under the terms of Creative Commons Attribution Sharealike 3.0 Unported License is:
+
+Published under the terms of Creative Commons Attribution 3.0 Unported License are:
+
+"Ireland's Coast (Game Edition - LIVE PLAYERS)" by Matthew Pablo (http://www.matthewpablo.com)
+used as content/audio/music/irelands_coast.ogg . More details here:
+http://opengameart.org/content/irelands-coast-game-edition-live-players
+
+
+Published under the terms of Creative Commons Attribution Sharealike 3.0 Unported License are:
 
 "Trout School Animation" by Lamoot used in content/gfx/terrain/resources/as_fish0/ .
 More details on the work can be found at  http://opengameart.org/content/trout-school-animation .

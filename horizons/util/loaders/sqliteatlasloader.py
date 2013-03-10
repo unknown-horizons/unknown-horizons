@@ -42,7 +42,7 @@ class SQLiteAtlasLoader(object):
 		self.atlases = horizons.globals.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
 		self.inited = False
 
-		
+
 	def init(self):
 		"""Used to lazy init the loader"""
 		for (atlas,) in self.atlases:
