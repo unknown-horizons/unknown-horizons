@@ -50,7 +50,7 @@ class SelectSavegameDialog(Dialog):
                         helptext = _('Save map')
 		self._gui.findChild(name='headline').text = helptext
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
-                
+
 		w = self._gui.findChild(name="gamename_box")
 		if w not in w.parent.hidden_children:
 			w.parent.hideChild(w)
@@ -129,8 +129,9 @@ class SelectSavegameDialog(Dialog):
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 					return self._windows.show(self)
-                elif self._mode == 'editor-save':
-                        selected_savegame = self._gui.collectData('savegamefile')
+
+		elif self._mode == 'editor-save':
+			selected_savegame = self._gui.collectData('savegamefile')
 			if selected_savegame == "":
 				self._windows.show_error_popup(windowtitle=_("No filename given"),
 				                               description=_("Please enter a valid filename."))
