@@ -25,7 +25,7 @@ import horizons.globals
 from horizons.constants import GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog
+from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -87,8 +87,6 @@ class IngameGui(LivingObject):
 			self.mainhud.findChild(name=widget).hide()
 
 		self.windows = WindowManager()
-		self.message_widget = MessageWidget(self.session)
-		self.save_map_dialog = SaveMapDialog(self.session, self.windows)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=True)
 		self.help_dialog = HelpDialog(self.windows, session=self.session)
 
@@ -142,7 +140,7 @@ class IngameGui(LivingObject):
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
-		self.windows.show(self.save_map_dialog)
+                self.session.save()
 
 	def on_escape(self):
 		pass
@@ -264,8 +262,8 @@ class SaveMapDialog(Window):
 	def hide(self):
 		self._widget.hide()
 
-	def _do_save(self):
-		name = self._widget.collectData('map_name')
+	def _do_save(self, name):
+		# name = self._widget.collectData('map_name')
 		regex = r'[a-zA-Z0-9_-]+'
 		if re.match('^' + regex + '$', name):
 			self._session.save(name)
