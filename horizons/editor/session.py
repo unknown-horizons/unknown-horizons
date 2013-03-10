@@ -21,6 +21,7 @@
 
 import random
 
+from horizons.savegamemanager import SavegameManager
 from horizons.constants import PATHS
 from horizons.editor.gui import IngameGui
 from horizons.editor.worldeditor import WorldEditor
@@ -72,5 +73,13 @@ class EditorSession(Session):
 				   "{website}").format(website="http://unknown-horizons.org/support/")
 			self.gui.show_error_popup(headline, descr, advice)
 
-	def save(self, name):
-		self.world_editor.save_map(PATHS.USER_MAPS_DIR, name)
+	def save(self, savegamename=None):
+		if savegamename is None:
+			savegamename = self.gui.show_select_savegame(mode='editor-save')
+			if savegamename is None:
+				return True # user aborted dialog
+
+		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename)
+		if success:
+			self.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
+		return success                
