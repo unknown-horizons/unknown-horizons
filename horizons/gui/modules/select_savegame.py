@@ -37,7 +37,7 @@ class SelectSavegameDialog(Dialog):
 	def __init__(self, mode, windows):
 		super(SelectSavegameDialog, self).__init__(windows)
 
-		assert mode in ('load', 'save', )
+		assert mode in ('load', 'save', 'editor-save' )
 		self._mode = mode
 
 		self._gui = load_uh_widget('select_savegame.xml')
@@ -46,9 +46,11 @@ class SelectSavegameDialog(Dialog):
 			helptext = _('Save game')
 		elif self._mode == 'load':
 			helptext = _('Load game')
+                elif self._mode == 'editor-save':
+                        helptext = _('Save map')
 		self._gui.findChild(name='headline').text = helptext
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
-
+                
 		w = self._gui.findChild(name="gamename_box")
 		if w not in w.parent.hidden_children:
 			w.parent.hideChild(w)
@@ -57,7 +59,7 @@ class SelectSavegameDialog(Dialog):
 			w.parent.hideChild(w)
 
 		w = self._gui.findChild(name='enter_filename')
-		if self._mode == 'save': # only show enter_filename on save
+		if self._mode == 'save' or self._mode == 'editor-save': # only show enter_filename on save
 			w.parent.showChild(w)
 		elif w not in w.parent.hidden_children:
 			w.parent.hideChild(w)
@@ -70,13 +72,15 @@ class SelectSavegameDialog(Dialog):
 				return False
 		elif self._mode == 'save':
 			self._map_files, self._map_file_display = SavegameManager.get_regular_saves()
+                elif self._mode == 'editor-save':
+                        self._map_files, self._map_file_display = SavegameManager.get_maps()
 
 		self._gui.distributeInitialData({'savegamelist': self._map_file_display})
 		if self._mode == 'load':
 			self._gui.distributeData({'savegamelist': 0})
 
 		self._cb = self._create_show_savegame_details(self._gui, self._map_files, 'savegamelist')
-		if self._mode == 'save':
+		if self._mode == 'save' or self._mode == 'editor-save':
 			def selected_changed():
 				"""Fills in the name of the savegame in the textbox when selected in the list"""
 				if self._gui.collectData('savegamelist') == -1: # set blank if nothing is selected
@@ -96,7 +100,7 @@ class SelectSavegameDialog(Dialog):
 			CancelButton.DEFAULT_NAME: False,
 			DeleteButton.DEFAULT_NAME: 'delete'
 		}
-		if self._mode == 'save':
+		if self._mode == 'save' or self._mode == 'editor-save':
 			self.return_events['savegamefile'] = True
 
 	def act(self, retval):
@@ -125,6 +129,19 @@ class SelectSavegameDialog(Dialog):
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 					return self._windows.show(self)
+                elif self._mode == 'editor-save':
+                        selected_savegame = self._gui.collectData('savegamefile')
+			if selected_savegame == "":
+				self._windows.show_error_popup(windowtitle=_("No filename given"),
+				                               description=_("Please enter a valid filename."))
+				return self._windows.show(self)
+			elif selected_savegame in self._map_file_display: # savegamename already exists
+				#xgettext:python-format
+				message = _("A map with the name '{name}' already exists.").format(
+				             name=selected_savegame) + u"\n" + _('Overwrite it?')
+				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
+				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
+					return self._windows.show(self)                        
 		elif self._mode == 'load':  # return selected item from list
 			selected_savegame = self._gui.collectData('savegamelist')
 			assert selected_savegame != -1, "No savegame selected in savegamelist"
