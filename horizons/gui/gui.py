@@ -36,6 +36,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
                                   SelectSavegameDialog, LoadingScreen, SettingsDialog)
+from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager, Window
 
@@ -101,7 +102,7 @@ class Gui(object):
 
 		self.singleplayermenu = SingleplayerMenu(self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
-		self.help_dialog = HelpDialog(self.windows)
+		self.help_dialog = HotkeyConfiguration(self.windows)
 		self.loadingscreen = LoadingScreen()
 		self.settings_dialog = SettingsDialog(self.windows)
 		self.mainmenu = MainMenu(self, self.windows)
