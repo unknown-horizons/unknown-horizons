@@ -138,7 +138,7 @@ class SelectSavegameDialog(Dialog):
 			return self._windows.show(self)
 
 		selected_savegame = None
-		if self._mode == 'save':  # return from textfield
+		if self._mode == 'save' or self._mode == 'editor-save':  # return from textfield
 			selected_savegame = self._gui.collectData('savegamefile')
 			if selected_savegame == "":
 				self._windows.show_error_popup(windowtitle=_("No filename given"),
@@ -146,25 +146,16 @@ class SelectSavegameDialog(Dialog):
 				return self._windows.show(self)
 			elif selected_savegame in self._map_file_display: # savegamename already exists
 				#xgettext:python-format
-				message = _("A savegame with the name '{name}' already exists.").format(
-				             name=selected_savegame) + u"\n" + _('Overwrite it?')
+				if self._mode == 'save':
+					save_type = 'savegame'
+				elif self._mode == 'editor-save':
+					save_type = 'map'
+				message = _("A {save_type} with the name '{name}' already exists.").format(
+				             save_type=save_type, name=selected_savegame) + u"\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 					return self._windows.show(self)
 
-		elif self._mode == 'editor-save':
-			selected_savegame = self._gui.collectData('savegamefile')
-			if selected_savegame == "":
-				self._windows.show_error_popup(windowtitle=_("No filename given"),
-				                               description=_("Please enter a valid filename."))
-				return self._windows.show(self)
-			elif selected_savegame in self._map_file_display: # savegamename already exists
-				#xgettext:python-format
-				message = _("A map with the name '{name}' already exists.").format(
-				             name=selected_savegame) + u"\n" + _('Overwrite it?')
-				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
-				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-					return self._windows.show(self)                        
 		elif self._mode == 'load':  # return selected item from list
 			selected_savegame = self._gui.collectData('savegamelist')
 			assert selected_savegame != -1, "No savegame selected in savegamelist"
