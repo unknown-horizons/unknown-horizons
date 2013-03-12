@@ -21,10 +21,10 @@
 
 import random
 
-from horizons.savegamemanager import SavegameManager
 from horizons.constants import PATHS
 from horizons.editor.gui import IngameGui
 from horizons.editor.worldeditor import WorldEditor
+from horizons.savegamemanager import SavegameManager
 from horizons.session import Session
 from horizons.manager import SPManager
 from horizons.timer import Timer
@@ -82,4 +82,4 @@ class EditorSession(Session):
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename)
 		if success:
 			self.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
-		return success                
+		return success
