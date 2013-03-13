@@ -210,7 +210,7 @@ class UnitEntry(object):
 		try:
 			Icon(image=path)
 		except RuntimeError:
-			self.log.warning('Missing thumbnail for id {0}'.format(unit_id))
+			self.log.warning('Missing thumbnail {0}'.format(path))
 			path = template.format(unit_id=-1)
 		return path
 
