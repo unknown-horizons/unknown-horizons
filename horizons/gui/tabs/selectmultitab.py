@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+from collections import defaultdict
 
 from fife.extensions.pychan.widgets import Icon
 
@@ -50,7 +51,7 @@ class SelectMultiTab(TabInterface):
 		# keep local track of selected instances
 		self.instances = []
 		# keep track of number of instances per type
-		self.type_number = {}
+		self.type_number = defaultdict(int)
 
 		self.helptext = _("Selected Units")
 		for i in self.selected_instances:
@@ -59,10 +60,7 @@ class SelectMultiTab(TabInterface):
 			self.instances.append(i)
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
 				i.add_remove_listener(Callback(self.on_instance_removed, i))
-			if not i.id in self.type_number:
-				self.type_number[i.id] = 1
-			else:
-				self.type_number[i.id] += 1
+			self.type_number[i.id] += 1
 
 		if self.stance_unit_number != 0:
 			self.show_stance_widget()
