@@ -423,7 +423,7 @@ def find_fife():
 	# Look for FIFE in the neighborhood of the game dir.
 	paths = []
 	for opt1 in ('.', '..', '..' + os.sep + '..'):
-		for opt2 in ('.', 'fife', 'FIFE', 'Fife'):
+		for opt2 in ('.', 'fife', 'FIFE', 'Fife', 'fifengine'):
 			for opt3 in ('.', 'trunk'):
 				path = os.path.abspath(os.path.join('.', opt1, opt2, opt3, 'engine', 'python'))
 				if os.path.exists(path):
