@@ -174,6 +174,7 @@ def start(_command_line_arguments):
 
 	ExtScheduler.create_instance(horizons.globals.fife.pump)
 	horizons.globals.fife.init()
+	horizons.globals.statsmanager = StatsManager()
 
 	if atlas_generator is not None:
 		atlas_generator.wait()
@@ -288,7 +289,6 @@ def start(_command_line_arguments):
 		from tests.gui import TestRunner
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
-	horizons.globals.statsmanager = StatsManager()
 	horizons.globals.statsmanager.collect_data({'gamestart': {'version': VERSION.RELEASE_VERSION, 'system': platform.system(), 'release': platform.release() }})
 	horizons.globals.fife.run()
 
@@ -305,7 +305,7 @@ def start_singleplayer(options):
 	LoadingProgress.broadcast(None, 'load_objects')
 	global preloading
 	preload_game_join(preloading)
-	
+
 	horizons.globals.statsmanager.collect_data({'mapstart': options.statistics_dict()})
 
 	# remove cursor while loading
