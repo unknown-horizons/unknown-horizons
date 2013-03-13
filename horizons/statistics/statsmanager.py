@@ -31,12 +31,9 @@ from horizons.extscheduler import ExtScheduler
 class StatsManager(object):
 
 	action = "/upload"
-	
-	# interval in seconds in which collected data is sent
-	SEND_EVERY = 2
 
 	# interval in seconds in which collected data is sent
-	SEND_EVERY = 15
+	SEND_EVERY = 2
 
 	def __init__(self):
 		self.url = STATISTICS.SERVER_URL
@@ -61,7 +58,7 @@ class StatsManager(object):
 		except Exception as e:
 			print "Error: unable to start process"
 			print e
-		# TODO Not threadsafe at all 
+		# TODO Not threadsafe at all
 		self.sent_data.update(self.data)
 		self.data.clear()
 
@@ -70,12 +67,12 @@ class StatsManager(object):
 		req.add_header('Content-Type', 'application/json')
 		print "Submitting:", json.dumps(data)
 		try:
-			urlopen(req, json.dumps(data))		
+			urlopen(req, json.dumps(data))
 		except URLError as e:
 			print "Caught exception", e
-		
+
 	def set_enabled(self, enabled):
 		if enabled:
-			ExtScheduler().add_new_object(self.upload_data, self, self.SEND_EVERY, -1)			
+			ExtScheduler().add_new_object(self.upload_data, self, self.SEND_EVERY, -1)
 		else:
-			ExtScheduler().rem_all_classinst_calls(self)			
+			ExtScheduler().rem_all_classinst_calls(self)
