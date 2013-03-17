@@ -114,9 +114,11 @@ def change_language(language=None):
 			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
 			                            languages=[language], fallback=fallback)
 			trans.install(unicode=True, names=['ngettext',])
-		except (IOError, KeyError):
+		except (IOError, KeyError, ValueError):
 			# KeyError can happen with a settings file written to by more than one UH
 			# installation (one that has compiled language files and one that hasn't)
+			# ValueError can be raised by gettext if for instance the plural forms are
+			# corrupted.
 			log.debug("Configured language %s could not be loaded.", language)
 			horizons.globals.fife.set_uh_setting('Language', LANGUAGENAMES[''])
 			return change_language() # recurse
