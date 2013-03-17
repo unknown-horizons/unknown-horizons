@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2012-12-17 22:51+0100\n"
+"PO-Revision-Date: 2013-03-17 18:02+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zu\n"
@@ -15,7 +15,48 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"X-Generator: Pootle 2.5.0-beta1\n"
+"X-POOTLE-MTIME: 1354238599.0\n"
+
+#: run_uh.py
+msgid "Unknown Horizons has crashed."
+msgstr ""
+
+#: run_uh.py
+msgid "We are very sorry for this and want to fix the underlying error."
+msgstr ""
+
+#: run_uh.py
+msgid "In order to do this, we need the information from the logfile:"
+msgstr ""
+
+#: run_uh.py
+msgid ""
+"Please give it to us via IRC or our forum, for both see http://unknown-"
+"horizons.org ."
+msgstr ""
+
+#: run_uh.py
+msgid "Error: Unable to find required library \"PyYAML\"."
+msgstr ""
+
+#: run_uh.py
+msgid "PyYAML (a required library) is missing and needs to be installed."
+msgstr ""
+
+#: run_uh.py
+msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
+msgstr ""
+
+#: run_uh.py
+msgid ""
+"Linux users should find it using their package manager under the name "
+"\"pyyaml\" or \"python-yaml\"."
+msgstr ""
+
+#: run_uh.py
+msgid "Thank you for using Unknown Horizons!"
+msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -25,7 +66,8 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "A new ship has been created."
+#, python-format
+msgid "A new ship by the name of {name} has been created."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -33,7 +75,7 @@ msgstr ""
 msgid "A new world has been created."
 msgstr ""
 
-#. This is a database entry: the name of an inhabitant increment (tier / level).
+#. This is a database entry: the name of an inhabitant tier (level).
 #: database files sql
 msgid "Aristocrats"
 msgstr ""
@@ -43,15 +85,13 @@ msgstr ""
 msgid "Cannot go here."
 msgstr ""
 
-#. (text of widget: headline)
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py
-#: horizons/i18n/objecttranslations.py sql
+#. This is a database entry: the name of an inhabitant tier (level).
+#: database files horizons/i18n/objecttranslations.py sql
 msgid "Citizens"
 msgstr ""
 
-#. This is a database entry: the name of an inhabitant increment (tier / level).
+#. This is a database entry: the name of an inhabitant tier (level).
 #: database files sql
 msgid "Merchants"
 msgstr ""
@@ -61,17 +101,14 @@ msgstr ""
 msgid "One of your fields requires a farm to harvest its crops."
 msgstr ""
 
-#. (text of widget: headline)
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py
-#: horizons/i18n/objecttranslations.py sql
+#. This is a database entry: the name of an inhabitant tier (level).
+#: database files horizons/i18n/objecttranslations.py sql
 msgid "Pioneers"
 msgstr ""
 
-#. (text of widget: headline)
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py sql
+#. This is a database entry: the name of an inhabitant tier (level).
+#: database files sql
 msgid "Sailors"
 msgstr ""
 
@@ -81,12 +118,10 @@ msgstr ""
 msgid "Screenshot has been saved to {file}."
 msgstr ""
 
-#. (text of widget: headline)
 #. (text of widget: settler_score)
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant increment (tier / level).
+#. This is a database entry: the name of an inhabitant tier (level).
 #: database files horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Settlers"
 msgstr ""
@@ -103,7 +138,9 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
+msgid ""
+"The route is now configured. Start it via the \"start route\" button in the "
+"\"configure route\" menu."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -123,7 +160,9 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
+msgid ""
+"You have reached the current maximum increment. Your inhabitants will not "
+"upgrade further."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -478,7 +517,9 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
+msgid ""
+"{player1} and {player2} have ended their alliance and are now in a state of "
+"war."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -505,10 +546,6 @@ msgstr ""
 msgid "{player}: {message}"
 msgstr ""
 
-#: editor/editor.py
-msgid "Specify the path to FIFE root directory."
-msgstr ""
-
 #: horizons/command/game.py
 msgid "Invalid filename"
 msgstr ""
@@ -518,8 +555,7 @@ msgid "Received an invalid filename for a save command."
 msgstr ""
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py horizons/gui/gui.py
-#: horizons/gui/ingamegui.py horizons/gui/modules/multiplayermenu.py
+#: horizons/command/game.py horizons/gui/gui.py horizons/gui/ingamegui.py
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Error"
 msgstr ""
@@ -577,11 +613,25 @@ msgid "Restore default settings"
 msgstr ""
 
 #: horizons/engine/settingsdialog.py
-msgid "Restoring the default settings will delete all changes to the settings you made so far."
+msgid ""
+"Restoring the default settings will delete all changes to the settings you "
+"made so far."
 msgstr ""
 
 #: horizons/engine/settingsdialog.py
 msgid "Do you want to continue?"
+msgstr ""
+
+#: horizons/engine/settingshandler.py
+msgid "16 bit"
+msgstr ""
+
+#: horizons/engine/settingshandler.py
+msgid "32 bit"
+msgstr ""
+
+#: horizons/engine/settingshandler.py
+msgid "Default"
 msgstr ""
 
 #: horizons/engine/settingshandler.py
@@ -591,7 +641,8 @@ msgstr ""
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py
 msgid ""
-"The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
+"The SDL renderer is meant as a fallback solution only and has serious "
+"graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
@@ -601,30 +652,33 @@ msgid "Invalid network port"
 msgstr ""
 
 #: horizons/engine/settingshandler.py
-msgid "The port you specified is not valid. It must be a number between 1 and 65535."
+msgid ""
+"The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 
 #: horizons/engine/settingshandler.py
-msgid "Please check the port you entered and make sure it is in the specified range."
+msgid ""
+"Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 
 #: horizons/engine/settingshandler.py
 msgid "Failed to apply new network settings."
 msgstr ""
 
-#: horizons/engine/settingshandler.py
-#: horizons/gui/modules/multiplayermenu.py
-msgid "Network features could not be initialized with the current configuration."
+#: horizons/engine/settingshandler.py horizons/gui/modules/multiplayermenu.py
+msgid ""
+"Network features could not be initialized with the current configuration."
 msgstr ""
 
-#: horizons/engine/settingshandler.py
-#: horizons/gui/modules/multiplayermenu.py
+#: horizons/engine/settingshandler.py horizons/gui/modules/multiplayermenu.py
 msgid "Check the settings you specified in the network section."
 msgstr ""
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py
-msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
+msgid ""
+"Low port numbers sometimes require special access privileges, try 0 or a "
+"number greater than 1024."
 msgstr ""
 
 #: horizons/engine/settingshandler.py
@@ -653,147 +707,18 @@ msgid "Quit Session"
 msgstr ""
 
 #: horizons/gui/gui.py
-msgid "No saved games"
+msgid "Details: {error_details}"
 msgstr ""
 
 #: horizons/gui/gui.py
-msgid "There are no saved games to load."
+msgid "Error: {error_message}"
 msgstr ""
 
-#. (text of widget: loadgame)
-#. (text of widget: loadgame) Open a widget to select which game to load
-#: horizons/gui/gui.py horizons/gui/gui.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Load game"
-msgstr ""
-
-#. (text of widget: savegame)
-#: horizons/gui/gui.py horizons/gui/gui.py
-#: horizons/i18n/guitranslations.py
-msgid "Save game"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "No filename given"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Please enter a valid filename."
-msgstr ""
-
-#. reshow dialog
-#. savegamename already exists
-#: horizons/gui/gui.py
-#, python-format
-msgid "A savegame with the name '{name}' already exists."
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Overwrite it?"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Confirmation for overwriting"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Invalid filename given"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Please select a savegame or click on cancel."
-msgstr ""
-
-#. ok button has been pressed, but no savegame was selected
-#: horizons/gui/gui.py
-msgid "Select a savegame"
-msgstr ""
-
-#. (text of widget: scenario_details) More text describing the scenario
-#. (text of widget: headline_details_label) More text describing the savegame
-#: horizons/gui/gui.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
-msgid "Details:"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Error:"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Unknown savedate"
-msgstr ""
-
-#: horizons/gui/gui.py
-#, python-format
-msgid "Saved at {time}"
-msgstr ""
-
-#. N_ takes care of plural forms for different languages
-#: horizons/gui/gui.py
-#, python-format
-msgid "Saved {amount} time"
-msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
-
-#: horizons/gui/gui.py
-#, python-format
-msgid "Savegame version {version}"
-msgstr ""
-
-#: horizons/gui/gui.py
-#, python-format
-msgid "(potentially incompatible)"
-msgstr ""
-
-#. this should only happen for very old savegames, so having this unfriendly
-#. error is ok (savegame is quite certainly fully unusable).
-#: horizons/gui/gui.py
-msgid "Incompatible version"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "No file selected"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "You need to select a savegame to delete."
-msgstr ""
-
-#: horizons/gui/gui.py
-#, python-format
-msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Confirm deletion"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Error!"
-msgstr ""
-
-#: horizons/gui/gui.py
-msgid "Failed to delete savefile!"
-msgstr ""
-
-#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/gui.py
-#, python-format
-msgid "[{key}] = {text}"
-msgstr ""
-
-#. (helptext of widget: headline)
 #: horizons/gui/ingamegui.py horizons/gui/tabs/mainsquaretabs.py
 #: horizons/gui/widgets/playerssettlements.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
 msgid "Click to change the name of your settlement"
 msgstr ""
 
-#. e.g. when the pirate is disabled
-#. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py
 msgid "No diplomacy possible"
 msgstr ""
@@ -812,12 +737,23 @@ msgstr ""
 msgid "Try a name that only contains letters and numbers."
 msgstr ""
 
+#: horizons/gui/modules/editorstartmenu.py
+msgid "{size}x{size} tiles"
+msgstr ""
+
+#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
+#: horizons/gui/modules/help.py
+msgid "[{key}] = {text}"
+msgstr ""
+
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Unable to find pyenet"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
-msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
+msgid ""
+"The multiplayer feature requires the library \"pyenet\", which could not be "
+"found on your system."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
@@ -825,14 +761,9 @@ msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
-msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py
 msgid "Failed to initialize networking."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Fatal Network Error"
 msgstr ""
@@ -842,11 +773,29 @@ msgid "Could not connect to master server."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
-msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
+msgid ""
+"Please check your Internet connection. If it is fine, it means our master "
+"server is temporarily down."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Something went wrong with the network:"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+msgid "Kicked"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+msgid "You have been kicked from the game by creator"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+msgid "{player} got kicked by creator"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+msgid "Terminated"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
@@ -863,13 +812,12 @@ msgid "Name: {game_name}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
-#, python-format
-msgid "Players: {player_amount}/{player_limit}"
+msgid "Creator: {game_creator}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
-msgid "Creator: {player}"
+msgid "Players: {player_amount}/{player_limit}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
@@ -877,21 +825,18 @@ msgid "This savegame is missing (click here)"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
-msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
+msgid ""
+"For multiplayer load, it is necessary for you to have the correct savegame "
+"file."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
-msgid "This is not nice and we hope to offer a more convenient solution very soon."
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
+msgid "The file will be downloaded when the game starts."
 msgstr ""
 
 #. (text of widget: help)
-#. (text of widget: help) Main / in-game menu entry
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#. (text of widget: help_label) Main / in-game menu entry
+#: horizons/gui/modules/multiplayermenu.py horizons/i18n/guitranslations.py
 msgid "Help"
 msgstr ""
 
@@ -905,7 +850,62 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
-msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
+msgid ""
+"The game's version differs from your version. Every player in a multiplayer "
+"game must use the same version. This can be fixed by every player updating "
+"to the latest version. Game version: {game_version} Your version: "
+"{own_version}"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
+msgid "{player} has joined the game"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
+msgid "{player} has left the game"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+msgid "You are now ready"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+msgid "You are not ready anymore"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
+msgid "{player} is now ready"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
+msgid "{player} not ready anymore"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
+msgid "You are now known as {new_name}"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
+msgid "{player} is now known as {new_name}"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+msgid "You changed your color"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
+msgid "{player} changed their color"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py
+msgid "You fetched the savegame data"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
@@ -914,33 +914,116 @@ msgstr ""
 msgid "Recommended number of players: {number}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py
-msgid "Translation status:"
+#: horizons/gui/modules/multiplayermenu.py
+msgid "Click here to change your name and/or color"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py
-msgid "{translated} translated messages, {untranslated} untranslated messages"
+#: horizons/gui/modules/multiplayermenu.py
+msgid "Kick {player}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/widgets/choose_next_scenario.py
+#: horizons/gui/modules/select_savegame.py
+msgid "No saved games"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "There are no saved games to load."
+msgstr ""
+
+#. (text of widget: savegame)
+#: horizons/gui/modules/select_savegame.py horizons/i18n/guitranslations.py
+msgid "Save game"
+msgstr ""
+
+#. (text of widget: loadgame)
+#. (text of widget: load_label) Open a widget to select which game to load
+#: horizons/gui/modules/select_savegame.py horizons/i18n/guitranslations.py
+msgid "Load game"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "No filename given"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "Please enter a valid filename."
+msgstr ""
+
+#. reshow dialog
+#. savegamename already exists
+#: horizons/gui/modules/select_savegame.py
 #, python-format
-msgid "Difficulty: {difficulty}"
+msgid "A savegame with the name '{name}' already exists."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/widgets/choose_next_scenario.py
-#, python-format
-msgid "Author: {author}"
+#: horizons/gui/modules/select_savegame.py
+msgid "Overwrite it?"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/modules/singleplayermenu.py
-#: horizons/gui/widgets/choose_next_scenario.py
+#. keep the pop-up non-modal because otherwise it is double-modal (#1876)
+#: horizons/gui/modules/select_savegame.py
+msgid "Confirmation for overwriting"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "Invalid filename given"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "Unknown savedate"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
 #, python-format
-msgid "Description: {desc}"
+msgid "Saved at {time}"
+msgstr ""
+
+#. N_ takes care of plural forms for different languages
+#: horizons/gui/modules/select_savegame.py
+#, python-format
+msgid "Saved {amount} time"
+msgid_plural "Saved {amount} times"
+msgstr[0] ""
+msgstr[1] ""
+
+#: horizons/gui/modules/select_savegame.py
+#, python-format
+msgid "Savegame version {version}"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "(probably incompatible)"
+msgstr ""
+
+#. this should only happen for very old savegames, so having this unfriendly
+#. error is ok (savegame is quite certainly fully unusable).
+#: horizons/gui/modules/select_savegame.py
+msgid "Incompatible version"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "No file selected"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "You need to select a savegame to delete."
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+#, python-format
+msgid "Do you really want to delete the savegame '{name}'?"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "Confirm deletion"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "Error!"
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+msgid "Failed to delete savefile!"
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py
@@ -991,6 +1074,21 @@ msgstr ""
 msgid "Please report this to the author."
 msgstr ""
 
+#: horizons/gui/modules/singleplayermenu.py
+#, python-format
+msgid "Difficulty: {difficulty}"
+msgstr ""
+
+#: horizons/gui/modules/singleplayermenu.py
+#, python-format
+msgid "Author: {author}"
+msgstr ""
+
+#: horizons/gui/modules/singleplayermenu.py
+#, python-format
+msgid "Description: {desc}"
+msgstr ""
+
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py
 msgid "Click to generate a different random map"
@@ -1010,27 +1108,22 @@ msgid "Boat builder overview"
 msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py
-#, python-format
 msgid "{ship} (place in queue: {place})"
 msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py
-msgid "Resources still needed:"
+msgid "Build this ship!"
 msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py
 msgid "Fisher boats"
 msgstr ""
 
-#. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertabs.py
-#: horizons/i18n/guitranslations.py
 msgid "Trade boats"
 msgstr ""
 
-#. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertabs.py
-#: horizons/i18n/guitranslations.py
 msgid "War boats"
 msgstr ""
 
@@ -1042,8 +1135,7 @@ msgstr ""
 msgid "Confirm order"
 msgstr ""
 
-#: horizons/gui/tabs/buildingtabs.py
-#: horizons/gui/tabs/enemybuildingtabs.py
+#: horizons/gui/tabs/buildingtabs.py horizons/gui/tabs/enemybuildingtabs.py
 msgid "Warehouse overview"
 msgstr ""
 
@@ -1051,9 +1143,7 @@ msgstr ""
 msgid "Tower overview"
 msgstr ""
 
-#. (text of widget: headline)
 #: horizons/gui/tabs/buildingtabs.py horizons/gui/tabs/overviewtab.py
-#: horizons/i18n/guitranslations.py
 msgid "Overview"
 msgstr ""
 
@@ -1061,11 +1151,9 @@ msgstr ""
 msgid "Build related buildings"
 msgstr ""
 
-#. (text of widget: headline)
 #. (helptext of widget: trade)
+#. (text of widget: headline)
 #: horizons/gui/tabs/buyselltab.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
 msgid "Trade"
 msgstr ""
 
@@ -1075,17 +1163,34 @@ msgstr ""
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py
-msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
+msgid ""
+"Set to buy or sell by clicking on that label, then adjust the amount via the "
+"slider to the right."
 msgstr ""
 
 #: horizons/gui/tabs/buyselltab.py
 #, python-format
-msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
+msgid ""
+"Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
+"in stock."
 msgstr ""
 
 #: horizons/gui/tabs/buyselltab.py
 #, python-format
-msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
+msgid ""
+"Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
+"available."
+msgstr ""
+
+#. (text of widget: buying_label)
+#. (text of widget: buy_expenses_label)
+#: horizons/gui/tabs/buyselltab.py horizons/i18n/guitranslations.py
+msgid "Buying"
+msgstr ""
+
+#. (text of widget: selling_label)
+#: horizons/gui/tabs/buyselltab.py horizons/i18n/guitranslations.py
+msgid "Selling"
 msgstr ""
 
 #. (text of widget: headline)
@@ -1093,8 +1198,7 @@ msgstr ""
 msgid "Settlement inventory"
 msgstr ""
 
-#. (text of widget: headline)
-#: horizons/gui/tabs/mainsquaretabs.py horizons/i18n/guitranslations.py
+#: horizons/gui/tabs/mainsquaretabs.py
 msgid "Account"
 msgstr ""
 
@@ -1115,13 +1219,11 @@ msgid "Unit overview"
 msgstr ""
 
 #: horizons/gui/tabs/productiontabs.py
-#: horizons/gui/tabs/productiontabs.py
 msgid "Production overview"
 msgstr ""
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/residentialtabs.py
-#: horizons/i18n/guitranslations.py
+#: horizons/gui/tabs/residentialtabs.py horizons/i18n/guitranslations.py
 msgid "Settler overview"
 msgstr ""
 
@@ -1129,7 +1231,6 @@ msgstr ""
 msgid "Selected Units"
 msgstr ""
 
-#: horizons/gui/tabs/shiptabs.py horizons/gui/tabs/shiptabs.py
 #: horizons/gui/tabs/shiptabs.py
 msgid "Ship overview"
 msgstr ""
@@ -1144,7 +1245,6 @@ msgstr ""
 
 #. (helptext of widget: found_settlement)
 #: horizons/gui/tabs/shiptabs.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
 msgid "Build settlement"
 msgstr ""
 
@@ -1157,7 +1257,7 @@ msgid "Buy/Sell"
 msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py
-msgid "Too far from the nearest own or allied warehouse"
+msgid "Too far from the nearest tradeable warehouse"
 msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py
@@ -1176,7 +1276,26 @@ msgstr ""
 msgid "Unequip weapon"
 msgstr ""
 
-#: horizons/gui/widgets/buysellinventory.py
+#. (helptext of widget: sad_icon)
+#: horizons/gui/util.py horizons/i18n/guitranslations.py
+msgid "sad"
+msgstr ""
+
+#. (helptext of widget: avg_icon)
+#: horizons/gui/util.py horizons/i18n/guitranslations.py
+msgid "satisfied"
+msgstr ""
+
+#. (helptext of widget: happy_icon)
+#: horizons/gui/util.py horizons/i18n/guitranslations.py
+msgid "happy"
+msgstr ""
+
+#: horizons/gui/widgets/inventory.py
+#, python-format
+msgid "{stored}/{limit}"
+msgstr ""
+
 #: horizons/gui/widgets/inventory.py
 #, python-format
 msgid "Limit: {amount}t per slot"
@@ -1195,7 +1314,6 @@ msgstr ""
 #. (text of widget: headline_chat)
 #. (text of widget: lbl_CHAT)
 #: horizons/gui/widgets/logbook.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Chat"
 msgstr ""
 
@@ -1208,15 +1326,9 @@ msgid "There is nothing written in your logbook yet!"
 msgstr ""
 
 #. (text of widget: headline_graphics)
-#: horizons/gui/widgets/pickbeltwidget.py
-#: horizons/i18n/guitranslations.py
+#. can't set this as class attribute directly since it's evaluated before gettext is set up
+#: horizons/gui/widgets/pickbeltwidget.py horizons/i18n/guitranslations.py
 msgid "Graphics"
-msgstr ""
-
-#. (text of widget: headline_sound)
-#: horizons/gui/widgets/pickbeltwidget.py
-#: horizons/i18n/guitranslations.py
-msgid "Sound"
 msgstr ""
 
 #: horizons/gui/widgets/pickbeltwidget.py
@@ -1229,8 +1341,7 @@ msgid "Settlements of {player}"
 msgstr ""
 
 #. (text of widget: total_score)
-#: horizons/gui/widgets/playerssettlements.py
-#: horizons/i18n/guitranslations.py
+#: horizons/gui/widgets/playerssettlements.py horizons/i18n/guitranslations.py
 msgid "Total"
 msgstr ""
 
@@ -1239,9 +1350,7 @@ msgstr ""
 msgid "Ships of {player}"
 msgstr ""
 
-#. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Click to change the name of this ship"
 msgstr ""
 
@@ -1260,12 +1369,11 @@ msgid "Production overview of {settlement}"
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py
-msgid "Click to add a new slot"
+msgid "Click to show statistics"
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py
-#: horizons/gui/widgets/resourceoverviewbar.py
-msgid "Reset to default"
+msgid "Click to add a new slot"
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py
@@ -1273,15 +1381,53 @@ msgid "Reset this configuration to the factory default."
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py
-msgid "Reset this settlement's displayed resources to the default configuration you have saved."
+msgid ""
+"Reset this settlement's displayed resources to the default configuration you "
+"have saved."
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py
-msgid "Reset to factory"
+msgid ""
+"Reset the default configuration (which you see here) to the factory default "
+"for all settlements."
+msgstr ""
+
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (text of widget: running_costs_label)
+#. (text of widget: running_costs)
+#: horizons/gui/widgets/resourceoverviewbar.py
+#: horizons/i18n/guitranslations.py
+msgid "Running costs"
+msgstr ""
+
+#. (text of widget: taxes_label)
+#. (text of widget: taxes)
+#: horizons/gui/widgets/resourceoverviewbar.py
+#: horizons/i18n/guitranslations.py
+msgid "Taxes"
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py
-msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
+msgid "Buy expenses"
+msgstr ""
+
+#: horizons/gui/widgets/resourceoverviewbar.py
+msgid "Sell income"
+msgstr ""
+
+#. (text of widget: balance)
+#: horizons/gui/widgets/resourceoverviewbar.py
+#: horizons/i18n/guitranslations.py
+msgid "Balance"
 msgstr ""
 
 #. (helptext of widget: start_route) Trade route
@@ -1314,11 +1460,48 @@ msgid "Unloading from ship"
 msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py
-msgid "Select a resource:"
+msgid "You are not allowed to trade with this player"
 msgstr ""
 
 #: horizons/gui/widgets/unitoverview.py
 msgid "none"
+msgstr ""
+
+#. (text of widget: loadgame)
+#: horizons/i18n/guitranslations.py
+msgid "Load map"
+msgstr ""
+
+#. (text of widget: quit)
+#: horizons/i18n/guitranslations.py
+msgid "Exit editor"
+msgstr ""
+
+#. (text of widget: savegame)
+#. (text of widget: headline_change_name)
+#: horizons/i18n/guitranslations.py
+msgid "Save map"
+msgstr ""
+
+#. (text of widget: settings)
+#. (text of widget: settings_label) Main / in-game menu entry
+#: horizons/i18n/guitranslations.py
+msgid "Settings"
+msgstr ""
+
+#. (text of widget: start)
+#: horizons/i18n/guitranslations.py
+msgid "Return to editor"
+msgstr ""
+
+#. (text of widget: enter_new_name_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Enter name:"
+msgstr ""
+
+#. (helptext of widget: okButton)
+#: horizons/i18n/guitranslations.py
+msgid "Save the map"
 msgstr ""
 
 #. (text of widget: headline)
@@ -1351,9 +1534,14 @@ msgstr ""
 msgid "Running costs:"
 msgstr ""
 
+#. (text of widget: headline)
+#: horizons/i18n/guitranslations.py
+msgid "Related buildings"
+msgstr ""
+
 #. (helptext of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Inhabitants"
 msgstr ""
 
@@ -1412,11 +1600,6 @@ msgstr ""
 msgid "Zoom out"
 msgstr ""
 
-#. (helptext of widget: background_icon)
-#: horizons/i18n/guitranslations.py
-msgid "Gold"
-msgstr ""
-
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Enter new name:"
@@ -1442,21 +1625,6 @@ msgstr ""
 msgid "Enter your message:"
 msgstr ""
 
-#. (text of widget: enter_new_name_lbl)
-#: horizons/i18n/guitranslations.py
-msgid "Enter prefix:"
-msgstr ""
-
-#. (text of widget: headline_change_name)
-#: horizons/i18n/guitranslations.py
-msgid "Save map"
-msgstr ""
-
-#. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py
-msgid "Save the map"
-msgstr ""
-
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py
 msgid "Cancel building:"
@@ -1474,7 +1642,14 @@ msgstr ""
 
 #. (text of widget: BB_howto_build_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
+msgid ""
+"To build a boat, click on one of the class tabs, select the desired ship and "
+"confirm the order."
+msgstr ""
+
+#. (text of widget: BB_needed_res_label)
+#: horizons/i18n/guitranslations.py
+msgid "Resources still needed:"
 msgstr ""
 
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
@@ -1482,37 +1657,9 @@ msgstr ""
 msgid "Construction progress:"
 msgstr ""
 
-#. (text of widget: headline)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Building overview"
-msgstr ""
-
 #. (helptext of widget: BB_cancel_button) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py
 msgid "Cancel all building progress"
-msgstr ""
-
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (text of widget: running_costs_label)
-#. (text of widget: running_costs)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
-msgid "Running costs"
 msgstr ""
 
 #. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
@@ -1523,49 +1670,6 @@ msgstr ""
 #. (helptext of widget: toggle_active_inactive) Resumes the currently paused ship production
 #: horizons/i18n/guitranslations.py
 msgid "Resume"
-msgstr ""
-
-#. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
-#: horizons/i18n/guitranslations.py
-msgid "Huker"
-msgstr ""
-
-#. (helptext of widget: BB_build_trade_1)
-#. (helptext of widget: BB_build_war1_1)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Build this ship!"
-msgstr ""
-
-#. (helptext of widget: costs_001)
-#. (text of widget: money_score)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
-msgid "Money"
-msgstr ""
-
-#. (helptext of widget: costs_003)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Cloth"
-msgstr ""
-
-#. (helptext of widget: costs_004)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Boards"
-msgstr ""
-
-#. (helptext of widget: costs_006)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Tools"
-msgstr ""
-
-#. (text of widget: headline_BB_war1_ship1)
-#: horizons/i18n/guitranslations.py
-msgid "Frigate"
-msgstr ""
-
-#. (helptext of widget: costs_040)
-#: horizons/i18n/guitranslations.py
-msgid "Cannons"
 msgstr ""
 
 #. (text of widget: ally_label) Diplomacy state of player
@@ -1585,169 +1689,85 @@ msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
-msgid "Build fields"
+msgid "Building overview"
 msgstr ""
 
-#. (helptext of widget: capacity_utilisation_label)
-#. (helptext of widget: capacity_utilisation)
-#. (helptext of widget: capacity_utilisation_label)
-#. (helptext of widget: capacity_utilisation)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#. (helptext of widget: capacity_utilization_label)
+#. (helptext of widget: capacity_utilization)
+#. (helptext of widget: capacity_utilization_label)
+#. (helptext of widget: capacity_utilization)
+#: horizons/i18n/guitranslations.py
 msgid "Capacity utilization"
 msgstr ""
 
+#. (text of widget: headline_happiness_per_house)
+#: horizons/i18n/guitranslations.py
+msgid "Happiness per house"
+msgstr ""
+
 #. (text of widget: headline_residents_per_house)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Residents per house"
 msgstr ""
 
 #. (text of widget: headline_residents_total)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Summary"
 msgstr ""
 
 #. (text of widget: houses)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "houses"
 msgstr ""
 
-#. (text of widget: resident_1)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "1 resident"
-msgstr ""
-
-#. (text of widget: resident_2)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "2 residents"
-msgstr ""
-
-#. (text of widget: resident_3)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
-msgid "3 residents"
-msgstr ""
-
-#. (text of widget: resident_4)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "4 residents"
-msgstr ""
-
-#. (text of widget: resident_5)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "5 residents"
-msgstr ""
-
-#. (text of widget: resident_6)
-#: horizons/i18n/guitranslations.py
-msgid "6 residents"
-msgstr ""
-
-#. (text of widget: resident_7)
-#: horizons/i18n/guitranslations.py
-msgid "7 residents"
-msgstr ""
-
-#. (text of widget: resident_8)
-#: horizons/i18n/guitranslations.py
-msgid "8 residents"
-msgstr ""
-
 #. (text of widget: residents)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "residents"
 msgstr ""
 
 #. (text of widget: tax_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
 msgid "Taxes:"
 msgstr ""
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "Upgrade not possible:"
+msgid "Upgrade permissions:"
 msgstr ""
 
-#. (helptext of widget: allow_upgrades)
+#. (helptext of widget: happiness_house_icon)
 #: horizons/i18n/guitranslations.py
-msgid "This is the current maximum increment!"
+msgid "Amount of houses with this happiness"
 msgstr ""
 
-#. (helptext of widget: paid_taxes_icon)
-#. (helptext of widget: taxes)
-#. (helptext of widget: paid_taxes_icon)
-#. (helptext of widget: taxes)
-#. (helptext of widget: paid_taxes_icon)
-#. (helptext of widget: taxes)
+#. (helptext of widget: houses_icon)
+#: horizons/i18n/guitranslations.py
+msgid "Houses with this amount of inhabitants"
+msgstr ""
+
+#. (helptext of widget: inhabitants_icon)
+#: horizons/i18n/guitranslations.py
+msgid "Number of inhabitants per house"
+msgstr ""
+
 #. (helptext of widget: paid_taxes_icon)
 #. (helptext of widget: taxes)
 #. (helptext of widget: paid_taxes_label)
 #. (helptext of widget: taxes)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Paid taxes"
 msgstr ""
 
 #. (helptext of widget: tax_rate_icon)
 #. (helptext of widget: tax_val_label)
-#. (helptext of widget: tax_rate_icon)
-#. (helptext of widget: tax_val_label)
-#. (helptext of widget: tax_rate_icon)
-#. (helptext of widget: tax_val_label)
-#. (helptext of widget: tax_rate_icon)
-#. (helptext of widget: tax_val_label)
 #. (helptext of widget: paid_taxes_label)
 #. (helptext of widget: tax_val_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Tax rate"
 msgstr ""
 
-#. (text of widget: avg_happiness_lbl)
-#: horizons/i18n/guitranslations.py
-msgid "Average happiness:"
-msgstr ""
-
-#. (text of widget: most_needed_res_lbl)
-#: horizons/i18n/guitranslations.py
-msgid "Most needed resource:"
-msgstr ""
-
-#. (text of widget: upgrades_lbl)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
-msgid "Upgrade permissions:"
-msgstr ""
-
-#. (text of widget: buying_label)
-#. (text of widget: buy_expenses_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
-msgid "Buying"
-msgstr ""
-
-#. (text of widget: selling_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Selling"
-msgstr ""
-
 #. (text of widget: name_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Name:"
 msgstr ""
 
@@ -1763,7 +1783,8 @@ msgstr ""
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "This is a resource deposit where you can build a mine to dig up resources."
+msgid ""
+"This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 
 #. (text of widget: res_dep_description_lbl2) It == The resource deposit
@@ -1778,50 +1799,54 @@ msgstr ""
 
 #. (helptext of widget: happiness_label)
 #. (helptext of widget: happiness)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Happiness"
 msgstr ""
 
 #. (helptext of widget: residents_label)
 #. (helptext of widget: inhabitants)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Residents"
 msgstr ""
 
 #. (text of widget: signal_fire_description_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
+msgid ""
+"The signal fire shows the free trader how to reach your settlement in case "
+"you want to buy or sell goods."
 msgstr ""
 
 #. (text of widget: trader_description_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
+msgid ""
+"This is the free trader's ship. It will visit you from time to time to buy "
+"or sell goods."
 msgstr ""
 
-#. (helptext of widget: collector_utilisation_label)
-#. (helptext of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Collector utilisation"
+#. (helptext of widget: collector_utilization_label)
+#. (helptext of widget: collector_utilization) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
+#: horizons/i18n/guitranslations.py
+msgid "Collector utilization"
+msgstr ""
+
+#. (helptext of widget: configure_route)
+#: horizons/i18n/guitranslations.py
+msgid "Configure trading route"
 msgstr ""
 
 #. (text of widget: exchange_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Exchange:"
 msgstr ""
 
 #. (text of widget: ship_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Ship:"
 msgstr ""
 
 #. (text of widget: trade_with_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Trade partner:"
-msgstr ""
-
-#. (helptext of widget: configure_route)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Configure trading route"
 msgstr ""
 
 #. (text of widget: headline)
@@ -1859,35 +1884,19 @@ msgstr ""
 msgid "Sale"
 msgstr ""
 
-#. (text of widget: taxes_label)
-#. (text of widget: taxes)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Taxes"
-msgstr ""
-
 #. (helptext of widget: show_production_overview)
 #: horizons/i18n/guitranslations.py
 msgid "Show resources produced in this settlement"
 msgstr ""
 
 #. (helptext of widget: toggle_active_active)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Pause production"
 msgstr ""
 
 #. (helptext of widget: toggle_active_inactive)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Start production"
-msgstr ""
-
-#. (text of widget: make_default_btn)
-#: horizons/i18n/guitranslations.py
-msgid "Save as default"
-msgstr ""
-
-#. (text of widget: reset_default_btn)
-#: horizons/i18n/guitranslations.py
-msgid "Restore default"
 msgstr ""
 
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
@@ -1907,7 +1916,9 @@ msgstr ""
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py
-msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
+msgid ""
+"The resource you select is displayed instead of the current one. Empty by "
+"clicking on X."
 msgstr ""
 
 #. (helptext of widget: delete_warehouse) Trade route entry
@@ -1925,6 +1936,11 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
+#. (text of widget: select_res_label)
+#: horizons/i18n/guitranslations.py
+msgid "Select a resource:"
+msgstr ""
+
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py
 msgid "Players"
@@ -1940,22 +1956,12 @@ msgstr ""
 msgid "My ships"
 msgstr ""
 
-#. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
-#: horizons/i18n/guitranslations.py
-msgid "Own settlements"
-msgstr ""
-
-#. (text of widget: wb5) Sends the chat message to all allied players.
-#: horizons/i18n/guitranslations.py
-msgid "Allies"
-msgstr ""
-
 #. (text of widget: weird_button_1) Displays all notifications and game messages
 #: horizons/i18n/guitranslations.py
 msgid "Whole world"
 msgstr ""
 
-#. (text of widget: weird_button_4) Sends the chat message to all players (default)
+#. (text of widget: weird_button_4) Sends the chat messages to all players (default)
 #: horizons/i18n/guitranslations.py
 msgid "Everybody"
 msgstr ""
@@ -1967,8 +1973,13 @@ msgstr ""
 
 #. (helptext of widget: okButton)
 #. (text of widget: start)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Return to game"
+msgstr ""
+
+#. (helptext of widget: weird_button_4) Sends the chat messages to all players (default)
+#: horizons/i18n/guitranslations.py
+msgid "Sends the chat messages to all players."
 msgstr ""
 
 #. (helptext of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
@@ -1979,26 +1990,6 @@ msgstr ""
 #. (helptext of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py
 msgid "Read next entries"
-msgstr ""
-
-#. (text of widget: head_left)
-#: horizons/i18n/guitranslations.py
-msgid "Available Scenarios"
-msgstr ""
-
-#. (text of widget: head_right)
-#: horizons/i18n/guitranslations.py
-msgid "Scenario description"
-msgstr ""
-
-#. (helptext of widget: cancelButton) Players either select the next scenario they want to play or press this button
-#: horizons/i18n/guitranslations.py
-msgid "Continue playing"
-msgstr ""
-
-#. (helptext of widget: choose_scenario) Select which scenario to play
-#: horizons/i18n/guitranslations.py
-msgid "Choose this scenario"
 msgstr ""
 
 #. (text of widget: lbl_route_activity)
@@ -2041,10 +2032,14 @@ msgstr ""
 msgid "Land"
 msgstr ""
 
+#. (text of widget: money_score)
+#: horizons/i18n/guitranslations.py
+msgid "Money"
+msgstr ""
+
 #. (text of widget: player_name)
 #. (text of widget: settlement_name)
 #. (text of widget: ship_name)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
 msgid "Name"
 msgstr ""
@@ -2066,7 +2061,8 @@ msgstr ""
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
-msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
+msgid ""
+"Value of usable land i.e Amount of Land that can be used to create buildings "
 msgstr ""
 
 #. (helptext of widget: money_score)
@@ -2081,27 +2077,27 @@ msgstr ""
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
-msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
+msgid ""
+"Value of resources generated from all the possible sources in the player's "
+"settlement(s)"
 msgstr ""
 
 #. (helptext of widget: settler_score)
 #: horizons/i18n/guitranslations.py
-msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
+msgid ""
+"Value denoting the progress of the settlement(s) in terms of inhabitants, "
+"buildings and overall happiness"
 msgstr ""
 
 #. (helptext of widget: total_score)
 #: horizons/i18n/guitranslations.py
-msgid "The total value from all individual entities or in short : Total Player Score"
+msgid ""
+"The total value from all individual entities or in short : Total Player Score"
 msgstr ""
 
 #. (helptext of widget: unit_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the units owned by the player"
-msgstr ""
-
-#. (text of widget: balance)
-#: horizons/i18n/guitranslations.py
-msgid "Balance"
 msgstr ""
 
 #. (text of widget: health)
@@ -2115,6 +2111,7 @@ msgid "Type"
 msgstr ""
 
 #. (text of widget: status)
+#. (text of widget: game_player_status)
 #: horizons/i18n/guitranslations.py
 msgid "Status"
 msgstr ""
@@ -2144,14 +2141,50 @@ msgstr ""
 msgid "Passive"
 msgstr ""
 
-#. (text of widget: fife_and_uh_team)
+#. (text of widget: headline_choose_map_size_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "The FIFE and Unknown Horizons development teams"
+msgid "Choose a map size:"
 msgstr ""
 
-#. (text of widget: have_fun)
+#. (text of widget: headline_choose_map_lbl)
+#. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
-msgid "Have fun."
+msgid "Choose a map:"
+msgstr ""
+
+#. (text of widget: headline_choose_saved_game_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Choose a saved game's map:"
+msgstr ""
+
+#. (text of widget: headline)
+#: horizons/i18n/guitranslations.py
+msgid "Select map source"
+msgstr ""
+
+#. (text of widget: create_new_map)
+#: horizons/i18n/guitranslations.py
+msgid "Create new map"
+msgstr ""
+
+#. (text of widget: load_existing_map)
+#: horizons/i18n/guitranslations.py
+msgid "Load existing map"
+msgstr ""
+
+#. (text of widget: load_saved_game_map)
+#: horizons/i18n/guitranslations.py
+msgid "Load saved game's map"
+msgstr ""
+
+#. (helptext of widget: cancel)
+#: horizons/i18n/guitranslations.py
+msgid "Exit to main menu"
+msgstr ""
+
+#. (helptext of widget: okay)
+#: horizons/i18n/guitranslations.py
+msgid "Start editor"
 msgstr ""
 
 #. (text of widget: headline)
@@ -2184,9 +2217,19 @@ msgstr ""
 msgid "Scroll down"
 msgstr ""
 
+#. (text of widget: lbl_ESCAPE)
+#: horizons/i18n/guitranslations.py
+msgid "Close dialogs"
+msgstr ""
+
 #. (text of widget: lbl_GRID)
 #: horizons/i18n/guitranslations.py
 msgid "Toggle grid on/off"
+msgstr ""
+
+#. (text of widget: lbl_HEALTH_BAR)
+#: horizons/i18n/guitranslations.py
+msgid "Toggle health bars"
 msgstr ""
 
 #. (text of widget: lbl_HELP)
@@ -2207,6 +2250,11 @@ msgstr ""
 #. (text of widget: lbl_PAUSE)
 #: horizons/i18n/guitranslations.py
 msgid "Pause game"
+msgstr ""
+
+#. (text of widget: lbl_PIPETTE)
+#: horizons/i18n/guitranslations.py
+msgid "Enable pipette mode (clone buildings)"
 msgstr ""
 
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
@@ -2269,6 +2317,11 @@ msgstr ""
 msgid "Show ship list"
 msgstr ""
 
+#. (text of widget: lbl_SHOW_SELECTED)
+#: horizons/i18n/guitranslations.py
+msgid "Focus camera on selection"
+msgstr ""
+
 #. (text of widget: lbl_SPEED_DOWN)
 #: horizons/i18n/guitranslations.py
 msgid "Decrease game speed"
@@ -2295,8 +2348,7 @@ msgid "Scroll up"
 msgstr ""
 
 #. (helptext of widget: okButton)
-#. (helptext of widget: cancelButton)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Return"
 msgstr ""
 
@@ -2305,44 +2357,38 @@ msgstr ""
 msgid "Cancel game"
 msgstr ""
 
-#. (text of widget: settings)
-#. (text of widget: settings) Main / in-game menu entry
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Settings"
-msgstr ""
-
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py
 msgid "Loading ..."
 msgstr ""
 
-#. (text of widget: chimebell)
-#: horizons/i18n/guitranslations.py
-msgid "Attention please!"
-msgstr ""
-
-#. (text of widget: credits)
+#. (text of widget: credits_label)
 #: horizons/i18n/guitranslations.py
 msgid "Credits"
 msgstr ""
 
-#. (text of widget: quit) Completely shut down UH
+#. (text of widget: editor_label) Map editor
 #: horizons/i18n/guitranslations.py
-msgid "Quit"
+msgid "Editor"
 msgstr ""
 
-#. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
-#: horizons/i18n/guitranslations.py
-msgid "Singleplayer"
-msgstr ""
-
-#. (text of widget: start_multi) Opens widget to join or create multiplayer games
+#. (text of widget: multi_label) Opens widget to join or create multiplayer games
 #: horizons/i18n/guitranslations.py
 msgid "Multiplayer"
 msgstr ""
 
+#. (text of widget: quit_label) Completely shut down UH
+#: horizons/i18n/guitranslations.py
+msgid "Quit"
+msgstr ""
+
+#. (text of widget: single_label) Opens widget to create singleplayer games (scenarios, random maps, free play)
+#: horizons/i18n/guitranslations.py
+msgid "Singleplayer"
+msgstr ""
+
 #. (text of widget: create_game_lbl)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Create game:"
 msgstr ""
 
@@ -2352,13 +2398,8 @@ msgid "Back:"
 msgstr ""
 
 #. (text of widget: gamename_lbl)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Name of the game:"
-msgstr ""
-
-#. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
-msgid "Choose a map:"
+msgid "Name of the game:"
 msgstr ""
 
 #. (text of widget: headline)
@@ -2369,6 +2410,12 @@ msgstr ""
 #. (text of widget: mp_player_limit_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Player limit:"
+msgstr ""
+
+#. (text of widget: password_lbl)
+#. (text of widget: gamepassword_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Password of the game:"
 msgstr ""
 
 #. (helptext of widget: cancel)
@@ -2382,8 +2429,13 @@ msgid "Create this new game"
 msgstr ""
 
 #. (helptext of widget: gamename_lbl)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "This will be displayed to other players so they recognise the game."
+#: horizons/i18n/guitranslations.py
+msgid "This will be displayed to other players so they recognize the game."
+msgstr ""
+
+#. (helptext of widget: password_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "This game's password. Required to join this game."
 msgstr ""
 
 #. (text of widget: exit_to_mp_menu_lbl)
@@ -2391,9 +2443,14 @@ msgstr ""
 msgid "Leave:"
 msgstr ""
 
+#. (text of widget: game_player_color)
+#: horizons/i18n/guitranslations.py
+msgid "Color"
+msgstr ""
+
 #. (text of widget: game_start_notice)
 #: horizons/i18n/guitranslations.py
-msgid "The game will start as soon as enough players have joined."
+msgid "The game will start as soon as all players are ready."
 msgstr ""
 
 #. (text of widget: headline)
@@ -2406,6 +2463,11 @@ msgstr ""
 msgid "Gamelobby"
 msgstr ""
 
+#. (text of widget: ready_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Ready:"
+msgstr ""
+
 #. (text of widget: startmessage)
 #: horizons/i18n/guitranslations.py
 msgid "Game details:"
@@ -2416,6 +2478,11 @@ msgstr ""
 msgid "Exit gamelobby"
 msgstr ""
 
+#. (helptext of widget: ready_btn)
+#: horizons/i18n/guitranslations.py
+msgid "Sets your state to ready (necessary for the game to start)"
+msgstr ""
+
 #. (text of widget: active_games_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Active games:"
@@ -2423,7 +2490,7 @@ msgstr ""
 
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Main menu:"
 msgstr ""
 
@@ -2452,11 +2519,6 @@ msgstr ""
 msgid "Refresh list:"
 msgstr ""
 
-#. (helptext of widget: cancel)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Exit to main menu"
-msgstr ""
-
 #. (helptext of widget: create)
 #: horizons/i18n/guitranslations.py
 msgid "Create a new game"
@@ -2477,6 +2539,26 @@ msgstr ""
 msgid "Refresh list of active games"
 msgstr ""
 
+#. (text of widget: headline_set_password)
+#: horizons/i18n/guitranslations.py
+msgid "Password of the game"
+msgstr ""
+
+#. (text of widget: password_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Enter password:"
+msgstr ""
+
+#. (text of widget: headline_set_player_details)
+#: horizons/i18n/guitranslations.py
+msgid "Change player details"
+msgstr ""
+
+#. (text of widget: reset_mouse_sensitivity)
+#: horizons/i18n/guitranslations.py
+msgid "Reset to default"
+msgstr ""
+
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py
 msgid "Auto-unload ship:"
@@ -2492,9 +2574,14 @@ msgstr ""
 msgid "Color depth:"
 msgstr ""
 
+#. (text of widget: cursor_centered_zoom_label)
+#: horizons/i18n/guitranslations.py
+msgid "Cursor centered zoom:"
+msgstr ""
+
 #. (text of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "Enable logging"
+msgid "Enable logging:"
 msgstr ""
 
 #. (text of widget: edge_scrolling_label)
@@ -2517,6 +2604,11 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#. (text of widget: headline_misc)
+#: horizons/i18n/guitranslations.py
+msgid "General"
+msgstr ""
+
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py
 msgid "Mouse"
@@ -2532,9 +2624,14 @@ msgstr ""
 msgid "Saving"
 msgstr ""
 
-#. (text of widget: language_label)
+#. (text of widget: headline_sound)
 #: horizons/i18n/guitranslations.py
-msgid "Select language:"
+msgid "Sound"
+msgstr ""
+
+#. (text of widget: middle_mouse_pan_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Middle mouse button pan:"
 msgstr ""
 
 #. (text of widget: minimap_rotation_label)
@@ -2567,6 +2664,11 @@ msgstr ""
 msgid "Number of quicksaves:"
 msgstr ""
 
+#. (text of widget: quote_type_label)
+#: horizons/i18n/guitranslations.py
+msgid "Choose a quote type:"
+msgstr ""
+
 #. (text of widget: screen_fullscreen_text)
 #: horizons/i18n/guitranslations.py
 msgid "Full screen:"
@@ -2575,6 +2677,16 @@ msgstr ""
 #. (text of widget: screen_resolution_label)
 #: horizons/i18n/guitranslations.py
 msgid "Screen resolution:"
+msgstr ""
+
+#. (text of widget: scroll_speed_label)
+#: horizons/i18n/guitranslations.py
+msgid "Scroll delay:"
+msgstr ""
+
+#. (text of widget: show_resource_icons_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Production indicators:"
 msgstr ""
 
 #. (text of widget: sound_enable_opt_text)
@@ -2590,6 +2702,11 @@ msgstr ""
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py
 msgid "Used renderer:"
+msgstr ""
+
+#. (helptext of widget: cancelButton)
+#: horizons/i18n/guitranslations.py
+msgid "Discard current changes"
 msgstr ""
 
 #. (helptext of widget: defaultButton)
@@ -2612,19 +2729,34 @@ msgstr ""
 msgid "If set to 0, use the driver default"
 msgstr ""
 
+#. (helptext of widget: cursor_centered_zoom_label)
+#: horizons/i18n/guitranslations.py
+msgid ""
+"When enabled, mouse wheel zoom will use the cursor position as new viewport "
+"center. When disabled, always zoom to current viewport center."
+msgstr ""
+
 #. (helptext of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
+msgid ""
+"Don't use in normal game session. Decides whether to write debug information "
+"in the logging directory of your user directory. Slows the game down."
 msgstr ""
 
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py
-msgid "Whether to move the viewport when the mouse pointer is close to map edges"
+msgid ""
+"Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
 
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py
 msgid "Set the maximum frame rate used. Default: 60 fps."
+msgstr ""
+
+#. (helptext of widget: middle_mouse_pan_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
 #. (helptext of widget: minimap_rotation_label)
@@ -2642,6 +2774,22 @@ msgstr ""
 msgid "If set to 0, use the router default"
 msgstr ""
 
+#. (helptext of widget: quote_type_label)
+#: horizons/i18n/guitranslations.py
+msgid "What kind of quote to display while loading a game"
+msgstr ""
+
+#. (helptext of widget: scroll_speed_label)
+#: horizons/i18n/guitranslations.py
+msgid "Higher values slow down scrolling."
+msgstr ""
+
+#. (helptext of widget: show_resource_icons_lbl)
+#: horizons/i18n/guitranslations.py
+msgid ""
+"Whether to show resource icons over buildings whenever they finish production"
+msgstr ""
+
 #. (helptext of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py
 msgid "When enabled, do not exit the build mode after successful construction"
@@ -2652,14 +2800,14 @@ msgstr ""
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
 
-#. (text of widget: headline)
-#: horizons/i18n/guitranslations.py
-msgid "Random map archive"
-msgstr ""
-
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py
 msgid "Enter filename:"
+msgstr ""
+
+#. (text of widget: headline_details_label) More text describing the savegame
+#: horizons/i18n/guitranslations.py
+msgid "Details:"
 msgstr ""
 
 #. (text of widget: headline_saved_games_label)
@@ -2677,6 +2825,11 @@ msgstr ""
 msgid "Delete selected savegame"
 msgstr ""
 
+#. (helptext of widget: gamepassword_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Password of the game. Required to join this game"
+msgstr ""
+
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "New game - Singleplayer"
@@ -2685,11 +2838,6 @@ msgstr ""
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py
 msgid "Start game:"
-msgstr ""
-
-#. (text of widget: campaign)
-#: horizons/i18n/guitranslations.py
-msgid "Campaign"
 msgstr ""
 
 #. (text of widget: free_maps)
@@ -2712,10 +2860,8 @@ msgstr ""
 msgid "Start game"
 msgstr ""
 
-#. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
 #. (text of widget: choose_map_lbl)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
 msgid "Choose a map to play:"
 msgstr ""
@@ -2728,6 +2874,11 @@ msgstr ""
 #. (text of widget: seed_string_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Seed:"
+msgstr ""
+
+#. (text of widget: select_lang_lbl)
+#: horizons/i18n/guitranslations.py
+msgid "Select a language:"
 msgstr ""
 
 #. (text of widget: ai_players_label)
@@ -3007,7 +3158,7 @@ msgstr ""
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py
-msgid "Supplies citizens with goods."
+msgid "Supplies citizens with goods. Provides community."
 msgstr ""
 
 #. name of buildings:mountain
@@ -3235,9 +3386,19 @@ msgstr ""
 msgid "Produces tools out of iron."
 msgstr ""
 
-#. name of buildings:trail
+#. name_0 of buildings:trail
 #: horizons/i18n/objecttranslations.py
 msgid "Trail"
+msgstr ""
+
+#. name_1 of buildings:trail
+#: horizons/i18n/objecttranslations.py
+msgid "Gravel Path"
+msgstr ""
+
+#. name_3 of buildings:trail
+#: horizons/i18n/objecttranslations.py
+msgid "Cobblestone Street"
 msgstr ""
 
 #. tooltip_text of buildings:trail
@@ -3323,18 +3484,11 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_increment
 #. tab4_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
 msgid "Companies"
 msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_increment
 #. tab2_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 msgid "Fields"
 msgstr ""
@@ -3342,13 +3496,11 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_increment
 #. tab5_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
 msgid "Military"
 msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_increment
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 msgid "Mining"
 msgstr ""
@@ -3356,15 +3508,11 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_increment
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
 msgid "Residents and infrastructure"
 msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_increment
 #. headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 msgid "Services"
 msgstr ""
@@ -3391,6 +3539,11 @@ msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
+msgid "Precaution"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
 msgid "Residential"
 msgstr ""
 
@@ -3399,9 +3552,85 @@ msgstr ""
 msgid "Sea"
 msgstr ""
 
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Wood"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Workshops"
+msgstr ""
+
+#. tab1_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Settlement"
+msgstr ""
+
+#. tab3_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Agriculture"
+msgstr ""
+
 #. tab6_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "Quotes"
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "Gameplay Tips"
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "Press 'ESC' to access Game Menu."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "Use 'SHIFT' to place multiple buildings."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "Currently only the first {tier} tiers are playable."
+msgstr ""
+
+#. TODO: This tip should be removed when all tiers are playable!!
+#: horizons/i18n/quotes.py
+msgid "You can pause the game with 'P'."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "You can drag roads by holding the left mouse button."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "You can build multiple buildings by holding the 'SHIFT' key."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid ""
+"You can increase the happiness of your inhabitants by lowering the taxes."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid ""
+"Build fire stations and doctors to protect your inhabitants from fire and "
+"disease."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "Build storage tents to increase your storage capacity."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "Make sure every house is in range of a marketplace."
+msgstr ""
+
+#: horizons/i18n/quotes.py
+msgid "Press 'T' to make trees transparent."
 msgstr ""
 
 #: horizons/main.py
@@ -3417,20 +3646,6 @@ msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 
 #: horizons/main.py
-#, python-format
-msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
-msgstr ""
-
-#: horizons/main.py
-msgid "This means that changes in the file you specified will not apply to the game directly."
-msgstr ""
-
-#: horizons/main.py
-#, python-format
-msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
-msgstr ""
-
-#: horizons/main.py
 msgid "No quicksaves found"
 msgstr ""
 
@@ -3441,7 +3656,9 @@ msgstr ""
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
 #: horizons/manager.py
-msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
+msgid ""
+"The games have run out of sync. This indicates an unknown internal error, "
+"the game cannot continue."
 msgstr ""
 
 #: horizons/manager.py
@@ -3460,6 +3677,15 @@ msgstr ""
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
 
+#: horizons/network/networkinterface.py
+msgid "Not Ready"
+msgstr ""
+
+#. TODO: add support for selecting difficulty levels to the GUI
+#: horizons/network/networkinterface.py
+msgid "Ready"
+msgstr ""
+
 #: horizons/scenario/actions.py
 msgid "You have won!"
 msgstr ""
@@ -3472,7 +3698,6 @@ msgstr ""
 msgid "Do you want to continue playing?"
 msgstr ""
 
-#: horizons/scenario/scenarioeventhandler.py
 #: horizons/scenario/scenarioeventhandler.py
 msgid "unknown"
 msgstr ""
@@ -3487,7 +3712,9 @@ msgid "There has been an error while creating your savegame file."
 msgstr ""
 
 #: horizons/session.py
-msgid "This usually means that the savegame name contains unsupported special characters."
+msgid ""
+"This usually means that the savegame name contains unsupported special "
+"characters."
 msgstr ""
 
 #: horizons/session.py
@@ -3495,15 +3722,7 @@ msgid "Access is denied"
 msgstr ""
 
 #: horizons/session.py
-msgid "The savegame file is probably read-only."
-msgstr ""
-
-#: horizons/session.py
-msgid "File used by another process"
-msgstr ""
-
-#: horizons/session.py
-msgid "The savegame file is currently used by another program."
+msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 
 #: horizons/spsession.py
@@ -3524,7 +3743,9 @@ msgstr ""
 
 #: horizons/util/checkupdates.py
 #, python-format
-msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
+msgid ""
+"There is a more recent release of Unknown Horizons ({new_version}) than the "
+"one you are currently using ({old_version})."
 msgstr ""
 
 #: horizons/util/checkupdates.py
@@ -3538,6 +3759,15 @@ msgstr ""
 #: horizons/util/uhdbaccessor.py
 #, python-format
 msgid "{building}: {description}"
+msgstr ""
+
+#. i18n Ship storage properties
+#: horizons/util/uhdbaccessor.py
+msgid "{slotnum} slots, {limit}t"
+msgstr ""
+
+#: horizons/util/uhdbaccessor.py
+msgid "Health: {health}"
 msgstr ""
 
 #: horizons/world/building/buildable.py
@@ -3584,6 +3814,10 @@ msgstr ""
 msgid "You have already settled this island."
 msgstr ""
 
+#: horizons/world/building/buildable.py
+msgid "This building must be partly on flat land."
+msgstr ""
+
 #: horizons/world/status.py
 msgid "This building is on fire!"
 msgstr ""
@@ -3602,6 +3836,10 @@ msgstr ""
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
+msgstr ""
+
+#: horizons/world/status.py
+msgid "The inhabitants of this building have the plague."
 msgstr ""
 
 #: horizons/world/traderoute.py
@@ -3646,40 +3884,4 @@ msgstr ""
 #: horizons/world/units/weaponholder.py
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
-
-#: run_uh.py
-msgid "Unknown Horizons has crashed."
-msgstr ""
-
-#: run_uh.py
-msgid "We are very sorry for this and want to fix underlying error."
-msgstr ""
-
-#: run_uh.py
-msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
-
-#: run_uh.py
-msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
-msgstr ""
-
-#: run_uh.py
-msgid "Error: Unable to find required libraries"
-msgstr ""
-
-#: run_uh.py
-msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
-msgstr ""
-
-#: run_uh.py
-msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
-msgstr ""
-
-#: run_uh.py
-msgid "Thank you for using Unknown Horizons!"
-msgstr ""
-
-#: run_uh.py
-msgid "FIFE was not found."
 msgstr ""
