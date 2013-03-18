@@ -19,19 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-from fife import fife
-from fife.extensions.pychan.widgets import HBox, Icon, Label, Spacer
 import json
 import weakref
 import itertools
 import functools
+
+from fife import fife
+from fife.extensions.pychan.widgets import HBox, Icon, Label, Spacer
 
 import horizons.globals
 
 from horizons.constants import TIER, RES
 from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.mousetools.buildingtool import BuildingTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
@@ -657,7 +658,6 @@ class ResourceOverviewBar(object):
 		return icon.position
 
 
-from horizons.gui.mousetools import NavigationTool
 class ResBarMouseTool(NavigationTool):
 	"""Temporary mousetool for resource selection.
 	Terminates self on mousePressed and restores old tool"""
