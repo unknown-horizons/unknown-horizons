@@ -196,7 +196,7 @@ class CityInfo(object):
 		city_name_label.helptext = helptext
 
 		foundlabel = self._child_finder('owner_emblem')
-		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self._settlement.owner.color.name)
+		foundlabel.image = 'content/gui/icons/widgets/cityinfo/settlement_%s.png' % (self._settlement.owner.color.name)
 		foundlabel.helptext = self._settlement.owner.name
 
 		foundlabel = self._child_finder('city_name')
@@ -230,7 +230,7 @@ class CityInfo(object):
 		if is_foreign: # other player, no resbar exists
 			self._widget.pos = ('center', 'top')
 			xoff = 0
-			yoff = 19
+			yoff = 10
 		elif blocked < width < resbar[0] + blocked: # large resbar / small resolution
 			self._widget.pos = ('center', 'top')
 			xoff = 0
@@ -238,7 +238,7 @@ class CityInfo(object):
 		else:
 			self._widget.pos = ('left', 'top')
 			xoff = resbar[0] + (width - blocked - resbar[0]) // 2
-			yoff = 24
+			yoff = 15
 
 		self._widget.offset = (xoff, yoff)
 		self._widget.position_technique = "{pos[0]}{off[0]:+d}:{pos[1]}{off[1]:+d}".format(
