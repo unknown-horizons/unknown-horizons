@@ -84,7 +84,7 @@ class SelectSavegameDialog(Dialog):
 			self._gui.distributeData({'savegamelist': 0})
 
 		self._cb = self._create_show_savegame_details(self._gui, self._map_files, 'savegamelist')
-		if self._mode == 'save' or self._mode == 'editor-save':
+		if self._mode in ('save', 'editor-save'):
 			def selected_changed():
 				"""Fills in the name of the savegame in the textbox when selected in the list"""
 				if self._gui.collectData('savegamelist') == -1: # set blank if nothing is selected
@@ -138,7 +138,7 @@ class SelectSavegameDialog(Dialog):
 			return self._windows.show(self)
 
 		selected_savegame = None
-		if self._mode == 'save' or self._mode == 'editor-save':  # return from textfield
+		if self._mode in ('save', 'editor-save'):  # return from textfield
 			selected_savegame = self._gui.collectData('savegamefile')
 			if selected_savegame == "":
 				self._windows.show_error_popup(windowtitle=_("No filename given"),
@@ -147,11 +147,11 @@ class SelectSavegameDialog(Dialog):
 			elif selected_savegame in self._map_file_display: # savegamename already exists
 				#xgettext:python-format
 				if self._mode == 'save':
-					save_type = 'savegame'
+					message = _("A savegame with the name {name} already exists")
 				elif self._mode == 'editor-save':
-					save_type = 'map'
-				message = _("A {save_type} with the name '{name}' already exists.").format(
-				             save_type=save_type, name=selected_savegame) + u"\n" + _('Overwrite it?')
+					message = _("A map with the name {name} already exists")
+				message = message.format(name=selected_savegame)
+				message += u"\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 					return self._windows.show(self)

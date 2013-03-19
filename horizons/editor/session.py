@@ -10,7 +10,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -75,11 +75,7 @@ class EditorSession(Session):
 
 	def save(self, savegamename=None):
 		if savegamename is None:
-			savegamename = self.gui.show_select_savegame(mode='editor-save')
-			if savegamename is None:
-				return True # user aborted dialog
+			return False # user aborted dialog
 
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename)
-		if success:
-			self.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
 		return success
