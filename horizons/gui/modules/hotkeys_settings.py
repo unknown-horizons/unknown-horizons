@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.globals
 from fife import fife
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
@@ -38,71 +39,77 @@ class HotkeyConfiguration(Window):
 		self._session = session
 		self.widget = load_uh_widget('hotkeys.xml')
 
-                self.actions = ['LEFT', 'RIGHT', 'UP', 'DOWN', 'SPEED_UP']
-                self.special_key_names = {fife.Key.LEFT_SHIFT : 'Shift', fife.Key.LEFT_CONTROL : 'Ctrl', fife.Key.LEFT_ALT : 'Alt'}
-                
+		self.actions = ['LEFT', 'RIGHT', 'UP', 'DOWN', 'SPEED_UP']
+		self.special_key_names = {fife.Key.LEFT_SHIFT : 'Shift', fife.Key.LEFT_CONTROL : 'Ctrl', fife.Key.LEFT_ALT : 'Alt'}
+
 		self.keyconf = KeyConfig()
 		self.HELPSTRING_LAYOUT = None
 		self._is_displayed = False
-                self._build_interface()
+		self._build_interface()
 
-                self.detecting = False
-                self.current_button = None
-                self.last_combination = []
+		self.detecting = False
+		self.current_button = None
+		self.current_index = None
+		self.last_combination = []
 
-                self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
+		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
 
 		# self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 
-        def _build_interface(self):
-                container = self.widget.findChild(name='keys_container')
-                button_container = self.widget.findChild(name='button_container')
-                for action in self.actions:
-                        label = self._create_label(action)
-                        button = self._create_button(action, 'prim')
-                        button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button)})
-                        container.addChild(label)
-                        button_container.addChild(button)
+	def _build_interface(self):
+			container = self.widget.findChild(name='keys_container')
+			button_container = self.widget.findChild(name='button_container')
+			for i in range(len(self.actions)):
+					action = self.actions[i]
+					label = self._create_label(action)
+					button = self._create_button(action, 'prim', i)
+					button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button)})
+					container.addChild(label)
+					button_container.addChild(button)
 
 	def _create_label(self, action):
-		text = _('lbl_{action_name}'.format(action_name=action))
-                label = Label(text=text)
-                label.max_size = (130,42)
-                return label
+			text = _('lbl_{action_name}'.format(action_name=action))
+			label = Label(text=text)
+			label.max_size = (130,42)
+			return label
 
-        def _create_button(self, action, prefix):
-                keyname = _(self.keyconf.get_current_keys(action)[0])
-		button = Button(text=keyname)
-                button.name = action
-		button.max_size = (130,19)
-                return button
+	def _create_button(self, action, prefix, index):
+			keyname = _(self.keyconf.get_current_keys(action)[0])
+			button = Button(text=keyname)
+			button.name = str(index)
+			button.max_size = (130,19)
+			return button
 
-        def _detect_click_on_button(self, button):
-                self.detecting = True
-                self.current_button = button
-                button.text = _("Press desired key")
+	def _detect_click_on_button(self, button):
+			self.detecting = True
+			self.current_button = button
+			self.current_index = int(button.name)
+			button.text = _("Press desired key")
 
-        def _detect_keypress(self, event):
-                print event.getKey().getValue()
-                if self.detecting:
-                        self.last_combination.append(event.getKey())
-                        self.detecting = False
-                        self.apply_change()
+	def _detect_keypress(self, event):
+			print event.getKey().getValue()
+			if self.detecting:
+					self.last_combination.append(event.getKey())
+					self.detecting = False
+					self.apply_change()
 
-        def keyName(self, key):
-                value = key.getValue()
-                if value < 128:
-                        return key.getAsString()
-                elif self.special_key_names.get(value):
-                        return self.special_key_names.get(value)
-                return 'Special'
+	def keyName(self, key):
+			value = key.getValue()
+			if value < 128:
+					return key.getAsString()
+			elif self.special_key_names.get(value):
+					return self.special_key_names.get(value)
+			return 'Special'
 
-        def apply_change(self):
-                self.current_button.text = _(self.keyName(self.last_combination[0]))
-                self.last_combination = []
+	def apply_change(self):
+			key = self.last_combination[0]
+			self.current_button.text = _(self.keyName(self.last_combination[0]))
+			self.last_combination = []
+			horizons.globals.fife.set_key_for_action(self.actions[self.current_index], self.keyName(key))
+			horizons.globals.fife.save_settings()
 
-        def show(self):
-                self.widget.show()
+	def show(self):
+			self.widget.show()
 
-        def hide(self):
-                self.widget.hide()
+	def hide(self):
+			self.widget.hide()
