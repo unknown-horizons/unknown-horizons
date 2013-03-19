@@ -1,0 +1,134 @@
+
+# DON'T EDIT THIS FILE.
+
+# It was automatically generated with development/create_scenario_pot.sh using
+# translation files from pootle. Documentation on this process is found here:
+#   development/copy_pofiles.sh
+
+author: Kikody, UH-Team
+description: !!python/unicode 'U bent de kapitein van een Engels schip in het jaar
+  1740. U en uw bemanning waren op weg naar een Engelse kolonie in de grote oceaan.
+
+  Alles liep volgens plan, tot u allen in een storm terecht kwamen.
+
+  '
+difficulty: !!python/unicode 'makkelijk'
+events:
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '20 November 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Na vier dagen zakt de storm eindelijk en kunnen we wat uitrusten.
+      Maar er is maar weinig voedsel meer over en het schip is zwaar beschadigd. De
+      navigatie-instrumenten en de zeekaarten zijn verloren gegaan. '
+    - "We moeten snel het land zien te bereiken. E\xE9n van de matrozen heeft een\
+      \ paar vogels zien vissen, dus land kan niet meer ver weg zijn. Gelukkig hebben\
+      \ we altijd wat gereedschap en planken aan boord, zodat we enkele simpele hutten\
+      \ kunnen bouwen."
+    - !!python/unicode 'Opdracht:
+
+      Vind land en bouw een haven.'
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [0]
+    type: time_passed
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '22 November 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'De haven is gebouwd en daar putten we nieuwe hoop uit. Ik
+      maak me echter nog steeds zorgen over de komende dagen... het voedsel raakt
+      op en we hebben een tekort aan bouwmaterialen.'
+    - !!python/unicode 'Om te overleven moeten we de onze basisbehoeften zeker stellen.
+      Het is tijd om een aantal mensen er op uit te sturen, op zoek naar voedsel en
+      hout, zodat we kunnen overleven en een onderkomen kunnen bouwen.'
+    - "Opdracht:\nBouw van elk minstens \xE9\xE9n:\n* Houthakker\n* Visser\n* Jager\n\
+      Verzamel bovendien 5 voedsel en 5 planken."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [0]
+    type: settlements_num_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '25 November 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'We hebben nu voorzien in onze basisbehoefte naar voedsel en
+      hebben wat hout verzameld zodat onze nederzetting kan blijven groeien. Onze
+      mensen eisen een plek om te wonen en een plek om de dagelijkst benodigdheden
+      in te slaan.'
+    - !!python/unicode 'Het is tijd om wat tenten te bouwen om in te wonen en een
+      klein marktplein te maken om onze bewoners van de benodigde goederen te voorzien.'
+    - !!python/unicode 'Opdracht:
+
+      Bouw een marktplein en op zijn minst tien tenten.'
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [BUILDINGS.FISHER, 0]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.HUNTER, 0]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.LUMBERJACK, 0]
+    type: building_num_of_type_greater
+  - arguments: [RES.BOARDS, 4]
+    type: settlement_res_stored_greater
+  - arguments: [RES.FOOD, 4]
+    type: settlement_res_stored_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '1 December 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Eindelijk hebben we weer genoeg te eten en weer een plek om
+      te wonen. Mijn tent is niet echt comfortabel, maar het houdt me droog en ik
+      heb ''s nachts een dak boven het hoofd.'
+    - !!python/unicode 'Ik heb ''s nachts de sterren bekeken, maar zonder mijn zeekaart
+      en bijbehorende instrumenten blijft hun betekenis onbekend. Ik heb het gevoel
+      dat we hier nog wel een tijdje zullen zitten, dus we moeten er maar het beste
+      van maken.
+
+      We kunnen alleen maar proberen hier een samenleving op te bouwen en een weg
+      terug naar huis te vinden...'
+    - !!python/unicode 'Opdracht:
+
+      Groei uit tot een dorpje met tenminste 250 inwoners en een positieve balans.'
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [BUILDINGS.RESIDENTIAL, 4]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.MAIN_SQUARE, 0]
+    type: building_num_of_type_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '27 Augustus 1745']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Het gaat goed moet ons dorp, het heeft al meer dan 250 inwoners.
+      Ik begin te wennen aan ons nieuw thuis, maar dit eiland is te klein om hier
+      met zijn allen te kunnen blijven.'
+    - !!python/unicode 'We moeten ons schip beladen en op zoek gaan naar een groter
+      eiland, met genoeg ruimte en grondstoffen voor mijn mensen. Ik heb een simpele
+      zeekaart gemaakt aan de hand van de sterren die ''s nachts aan de hemel staan.
+      Het is niet perfect, maar ik hoop dat het toereikend is om later weer naar hier
+      terug te kunnen keren.'
+    - !!python/unicode 'Opdracht:
+
+      Neem contact op met het Unknown Horizons Team (www.unknown-horizons.org) en
+      ontdek hou jij kan bijdragen aan het verlengen en verbeteren van dit scenario!'
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [250]
+    type: settlement_inhabitants_greater
+  - arguments: [0]
+    type: player_balance_greater
+locale: nl
+mapfile: development.sqlite
+translation_status: 22 translated messages.
+

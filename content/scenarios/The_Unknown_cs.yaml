@@ -1,0 +1,129 @@
+
+# DON'T EDIT THIS FILE.
+
+# It was automatically generated with development/create_scenario_pot.sh using
+# translation files from pootle. Documentation on this process is found here:
+#   development/copy_pofiles.sh
+
+author: Kikody, UH-Team
+description: "Jsi kapit\xE1n lodi pod vlajkou Anglie roku 1740. Ty a tvoje pos\xE1\
+  dka jste byli na cest\u011B do Anglick\xE9 kolonie v Tich\xE9m oce\xE1nu.\nV\u0161\
+  echno \u0161lo dob\u0159e a\u017E do chv\xEDle, kdy v\xE1s potkala bou\u0159e....\n"
+difficulty: "lehk\xE1"
+events:
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '20. listopadu 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Po \u010Dty\u0159ech dnech se bou\u0159e kone\u010Dn\u011B vytratila a my si\
+      \ m\u016F\u017Eeme odpo\u010Dinout. Zb\xFDv\xE1 n\xE1m ale u\u017E jen m\xE1\
+      lo j\xEDdla a na\u0161e lo\u010F je na tom \u0161patn\u011B. Naviga\u010Dn\xED\
+      \ n\xE1stroje a mapy jsou ztraceny."
+    - "Mus\xEDme brzy narazit na pevninu. Jeden z m\xFDch chlap\u016F vid\u011Bl pt\xE1\
+      ky lov\xEDc\xED ryby, tak\u017Ee zem\u011B nem\u016F\u017Ee b\xFDt daleko. Na\u0161\
+      t\u011Bst\xED m\xE1me v\u017Edy n\u011Bjak\xE9 n\xE1stroje a prkna na palub\u011B\
+      , tak\u017Ee m\u016F\u017Eeme postavit n\u011Bjak\xFD prost\xFD p\u0159\xED\
+      st\u0159e\u0161ek."
+    - "\xDAkol:\nNajdi zemi a postav p\u0159\xEDstav."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [0]
+    type: time_passed
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '22. listopadu 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "P\u0159\xEDstav je postaven a vznik\xE1 nov\xE1 nad\u011Bje. St\xE1le m\xE1\
+      m obavy z nadch\xE1zej\xEDc\xEDch dn\u016F... doch\xE1z\xED n\xE1m j\xEDdlo\
+      \ a chyb\xED z\xE1kladn\xED stavebn\xED materi\xE1l."
+    - "Pot\u0159ebujeme zajistit na\u0161e z\xE1kladn\xED pot\u0159eby abychom z\u016F\
+      stali na\u017Eivu. P\u0159i\u0161el \u010Das vyslat lidi nashrom\xE1\u017Edit\
+      \ j\xEDdlo a d\u0159evo abychom byli schopni p\u0159e\u017E\xEDt a postavit\
+      \ n\u011Bjak\xFD p\u0159\xEDst\u0159e\u0161ek."
+    - "\xDAkol:\nPostav alespo\u0148 jeden od ka\u017Ed\xE9ho:\n* D\u0159evorubec\n\
+      * Ryb\xE1\u0159\n* Lovec\nNashrom\xE1\u017Edi 5 kus\u016F j\xEDdla a 5 prken."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [0]
+    type: settlements_num_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '25. listopadu 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Zabezpe\u010Dili jsme na\u0161e z\xE1kladn\xED pot\u0159eby j\xEDdla a nashrom\xE1\
+      \u017Edili n\u011Bjak\xE9 d\u0159evo k zachov\xE1n\xED r\u016Fstu na\u0161\xED\
+      \ nov\xE9 osady. Na\u0161i lid\xE9 se do\u017Eaduj\xED m\xEDsta kde \u017E\xED\
+      t a kde vym\u011B\u0148ovat zbo\u017E\xED pro jejich ka\u017Edodenn\xED pot\u0159\
+      ebu."
+    - "P\u0159i\u0161el \u010Das postavit n\u011Bjak\xE9 stany ve kter\xFDch bychom\
+      \ mohli \u017E\xEDt a malou tr\u017Enici k z\xE1soben\xED na\u0161ich ob\u010D\
+      an\u016F zbo\u017E\xEDm."
+    - "\xDAkol:\nPostav tr\u017Enici a alespo\u0148 10 stan\u016F."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [BUILDINGS.FISHER, 0]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.HUNTER, 0]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.LUMBERJACK, 0]
+    type: building_num_of_type_greater
+  - arguments: [RES.BOARDS, 4]
+    type: settlement_res_stored_greater
+  - arguments: [RES.FOOD, 4]
+    type: settlement_res_stored_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '1. prosince 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Kone\u010Dn\u011B m\xE1me dostatek j\xEDdla a znovu m\xEDsto kde \u017E\xED\
+      t. M\u016Fj stan sice nen\xED moc pohodln\xFD, ale dr\u017E\xED m\u011B v suchu\
+      \ a j\xE1 m\xE1m v noci zase pocit st\u0159echy nad hlavou."
+    - "V noci jsem zkoumal hv\u011Bzdy, ale bez m\xFDch mo\u0159sk\xFDch map a naviga\u010D\
+      n\xEDch n\xE1stroj\u016F z\u016Fst\xE1v\xE1 jejich v\xFDznam nezn\xE1m\xFD.\
+      \ C\xEDt\xEDm, \u017Ee tu chv\xEDli z\u016Fstaneme uv\xEDznut\xED, tak\u017E\
+      e budeme muset vyt\u011B\u017Eit z na\u0161\xED situace co nejv\xEDce.\nM\u016F\
+      \u017Eeme se jedin\u011B pokusit vytvo\u0159it civilizaci a naj\xEDt cestu dom\u016F\
+      ..."
+    - "\xDAkol:\nRoz\u0161i\u0159 vesnici dokud nebude m\xEDt alespo\u0148 250 obyvatel\
+      \ a pozitivn\xED bilanci."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [BUILDINGS.RESIDENTIAL, 4]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.MAIN_SQUARE, 0]
+    type: building_num_of_type_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '27. srpna 1745']
+    - [Image, content/gui/images/background/hr.png]
+    - "Na\u0161\xED vesnici se da\u0159\xED dob\u0159e, m\u011Bsto u\u017E m\xE1 p\u0159\
+      es 250 obyvatel. Za\u010Dal jsem si zvykat na m\u016Fj nov\xFD domov, ale tento\
+      \ ostrov je p\u0159\xEDli\u0161 mal\xFD abychom tu z\u016Fstali nav\u017Edy."
+    - "M\u011Bli bychom nalo\u017Eit na\u0161i lo\u010F a vyrazit hledat v\u011Bt\u0161\
+      \xED ostrov nab\xEDzej\xEDc\xED prostor a suroviny pro moje lidi. Vytvo\u0159\
+      il jsem z\xE1kladn\xED naviga\u010Dn\xED mapu pomoc\xED hv\u011Bzd kter\xE9\
+      \ v noci pozoruji. Nen\xED perfektn\xED, ale douf\xE1m, \u017Ee bude sta\u010D\
+      it k n\xE1vratu sem."
+    - "\xDAkol:\nZkontaktuj t\xFDm Unknown Horizons (www.unknown-horizons.org) a zjisti\
+      \ jak bys mohl p\u0159isp\u011Bt ud\u011Blat tento sc\xE9n\xE1\u0159 del\u0161\
+      \xED a lep\u0161\xED!"
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [250]
+    type: settlement_inhabitants_greater
+  - arguments: [0]
+    type: player_balance_greater
+locale: cs
+mapfile: development.sqlite
+translation_status: 22 translated messages.
+
