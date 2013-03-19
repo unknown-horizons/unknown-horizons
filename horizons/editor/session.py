@@ -73,7 +73,7 @@ class EditorSession(Session):
 				   "{website}").format(website="http://unknown-horizons.org/support/")
 			self.gui.show_error_popup(headline, descr, advice)
 
-	def save(self, savegamename=None):
+	def save(self, savegamename):
 		if savegamename is None:
 			return False # user aborted dialog
 

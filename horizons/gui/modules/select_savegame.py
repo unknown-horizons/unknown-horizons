@@ -61,7 +61,7 @@ class SelectSavegameDialog(Dialog):
 			w.parent.hideChild(w)
 
 		w = self._gui.findChild(name='enter_filename')
-		if self._mode == 'save' or self._mode == 'editor-save': # only show enter_filename on save
+		if self._mode in ('save', 'editor-save'): # only show enter_filename on save
 			w.parent.showChild(w)
 		elif w not in w.parent.hidden_children:
 			w.parent.hideChild(w)
@@ -105,7 +105,7 @@ class SelectSavegameDialog(Dialog):
 			CancelButton.DEFAULT_NAME: False,
 			DeleteButton.DEFAULT_NAME: 'delete'
 		}
-		if self._mode == 'save' or self._mode == 'editor-save':
+		if self._mode in ('save', 'editor-save'):
 			self.return_events['savegamefile'] = True
 
 	def check_double_click(self, event):
