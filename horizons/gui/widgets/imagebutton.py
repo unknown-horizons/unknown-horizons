@@ -63,11 +63,11 @@ class ImageButton(FifeImageButton):
 		try:
 			self.hover_image = image_path.format(mode='_h')
 		except RuntimeError:
-			pass
+			self.hover_image = self.up_image
 		try:
 			self.down_image = image_path.format(mode='_d')
 		except RuntimeError:
-			pass
+			self.down_image = self.up_image
 
 		#TODO move ToggleImageButton into this file
 
