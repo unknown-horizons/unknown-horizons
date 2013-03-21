@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # ###################################################
 # Copyright (C) 2013 The Unknown Horizons Team
@@ -390,7 +390,7 @@ class AtlasGenerator(object):
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1:
-		print 'Usage: python generate_atlases.py max_size'
+		print 'Usage: python2 generate_atlases.py max_size'
 		exit(1)
 
 	max_size = int(math.pow(2, int(math.log(int(args[0]), 2))))
