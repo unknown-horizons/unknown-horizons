@@ -54,6 +54,8 @@ class HotkeyConfiguration(Window):
 
 		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
 
+		self.keys = self.keyconf.get_keys_by_value()
+
 		# self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 
 	def _build_interface(self):
@@ -95,18 +97,22 @@ class HotkeyConfiguration(Window):
 
 	def keyName(self, key):
 			value = key.getValue()
-			if value < 128:
-					return key.getAsString()
-			elif self.special_key_names.get(value):
-					return self.special_key_names.get(value)
-			return 'Special'
+			return self.keys[value]
 
 	def apply_change(self):
 			key = self.last_combination[0]
+			dct = self.keyconf.keyval_action_mappings
+			if not dct.get(key.getValue()):
+					horizons.globals.fife.set_key_for_action(self.actions[self.current_index], self.keyName(key))
+					print 'Binded ' + self.keyName(key) + ' to ' + self.actions[self.current_index]
+					horizons.globals.fife.save_settings()
+			else:
+					print 'ID: ' + str(dct.get(key.getValue()))
+					# oldaction = dct.get(key.getValue())
+					# horizons.globals.fife.set_key_for_action(oldaction, "LEFT")
+					# horizons.globals.fife.set_key_for_action(self.actions[self.current_index], self.keyName(key))
 			self.current_button.text = _(self.keyName(self.last_combination[0]))
 			self.last_combination = []
-			horizons.globals.fife.set_key_for_action(self.actions[self.current_index], self.keyName(key))
-			horizons.globals.fife.save_settings()
 
 	def show(self):
 			self.widget.show()

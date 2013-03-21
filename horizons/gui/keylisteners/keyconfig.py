@@ -88,6 +88,18 @@ class KeyConfig(object):
 		return dict( (k, v) for k, v in fife.Key.__dict__.iteritems()
 		                    if is_available(k, v))
 
+	def get_keys_by_value(self):
+		def is_available(key, value):
+			special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
+			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
+			return (key.startswith(tuple(ascii_uppercase)) and
+			        not key.startswith(special_keys))
+		return dict( (v, k) for k, v in fife.Key.__dict__.iteritems()
+		                    if is_available(k, v))
+
+	def get_keyval_to_actionid_map(self):
+		return self.keyval_action_mappings
+
 	def get_current_keys(self, action):
 		return horizons.globals.fife.get_keys_for_action(action)
 
