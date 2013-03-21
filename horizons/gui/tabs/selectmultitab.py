@@ -32,6 +32,7 @@ from horizons.command.unit import SetStance
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import UNITS
 
 
 class SelectMultiTab(TabInterface):
@@ -211,7 +212,11 @@ class UnitEntry(object):
 			Icon(image=path)
 		except RuntimeError:
 			self.log.warning('Missing thumbnail {0}'.format(path))
-			path = template.format(unit_id=-1)
+			if unit_id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
+				placeholder = 'unknown_building'
+			else:
+				placeholder = 'unknown_unit'
+			path = template.format(unit_id=placeholder)
 		return path
 
 	def on_instance_removed(self, instance):
