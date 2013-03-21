@@ -33,6 +33,7 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import UNITS
+from horizons.util.loaders.actionsetloader import ActionSetLoader
 
 
 class SelectMultiTab(TabInterface):
@@ -191,7 +192,16 @@ class UnitEntry(object):
 		self.instances = instances
 		self.widget = load_uh_widget("unit_entry_widget.xml")
 		# get the icon of the first instance
-		self.widget.findChild(name="unit_button").up_image = self.get_thumbnail_icon(instances[0].id)
+		i = instances[0]
+		if i.id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
+			# A building. Generate dynamic thumbnail from its action set.
+			imgs = ActionSetLoader.get_sets()[i._action_set_id].items()[0][1]
+			thumbnail = imgs[45].keys()[0]
+		else:
+			# Units use manually created thumbnails because those need to be
+			# precise and recognizable in combat situations.
+			thumbnail = self.get_unit_thumbnail(i.id)
+		self.widget.findChild(name="unit_button").up_image = thumbnail
 		if show_number:
 			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
 		# only two callbacks are needed so drop unwanted changelistener inheritance
@@ -203,20 +213,15 @@ class UnitEntry(object):
 				health_component.add_damage_dealt_listener(self.draw_health)
 		self.draw_health()
 
-	def get_thumbnail_icon(self, unit_id):
+	def get_unit_thumbnail(self, unit_id):
 		"""Returns path of the thumbnail icon for unit with id *unit_id*."""
-		#TODO get a system for loading thumbnail by id
 		template = "content/gui/icons/thumbnails/{unit_id}.png"
 		path = template.format(unit_id=unit_id)
 		try:
 			Icon(image=path)
 		except RuntimeError:
-			self.log.warning('Missing thumbnail {0}'.format(path))
-			if unit_id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
-				placeholder = 'unknown_building'
-			else:
-				placeholder = 'unknown_unit'
-			path = template.format(unit_id=placeholder)
+			self.log.warning('Missing unit thumbnail {0}'.format(path))
+			path = template.format(unit_id='unknown_unit')
 		return path
 
 	def on_instance_removed(self, instance):
