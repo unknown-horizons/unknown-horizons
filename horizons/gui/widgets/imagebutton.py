@@ -57,12 +57,17 @@ class ImageButton(FifeImageButton):
 			self.up_image = image_path.format(mode='')
 		except RuntimeError:
 			# RuntimeError: _[NotFound]_ , Something was searched, but not found
-			# by default, pychan will set hover_image to be the same as up_image
 			#TODO Temporarily try to find _u for the tabwidget
 			self.up_image = image_path.format(mode='_u')
 		try:
 			self.hover_image = image_path.format(mode='_h')
 		except RuntimeError:
+			# By default, guichan/pychan will set hover_image to be the same as
+			# up_image even if it is not explicitly set here (the following line
+			# just reading `pass` instead of setting hover_image to up_image).
+			# This however is stored internally in a way that would segfault FIFE
+			# when trying to restore images from self.old_images that were set
+			# like that implicitly (see #2000).
 			self.hover_image = self.up_image
 		try:
 			self.down_image = image_path.format(mode='_d')
