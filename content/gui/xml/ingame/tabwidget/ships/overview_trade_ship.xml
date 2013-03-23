@@ -14,18 +14,18 @@
 
 		<Container position="22,40" min_size="230,20" size="230,50">
 			<Container size="50,50">
-				<ToggleImageButton name="trade_bg" path="images/buttons/msg_button" />
-				<ToggleImageButton name="trade" helptext="Trade" position="10,9"
+				<ImageButton name="trade_bg" path="images/buttons/msg_button" />
+				<ImageButton name="trade" helptext="Trade" position="10,9"
 					path="icons/ship/civil_32" />
 			</Container>
 
 			<Container position="77,0" size="50,50">
-				<ToggleImageButton name="found_settlement_bg" path="images/buttons/msg_button" />
-				<ToggleImageButton name="found_settlement" position="6,5"
+				<ImageButton name="found_settlement_bg" path="images/buttons/msg_button" />
+				<ImageButton name="found_settlement" position="6,5"
 					path="icons/ship/anchor" helptext="Build settlement" />
 			</Container>
 
-			<ToggleImageButton name="configure_route" position="155,0" helptext="Configure trading route"
+			<ImageButton name="configure_route" position="155,0" helptext="Configure trading route"
 				inactive_image="content/gui/icons/ship/traderoute_configure_onroute.png"
 				up_image="content/gui/icons/ship/traderoute_configure.png"
 				down_image="content/gui/icons/ship/traderoute_configure_pressed.png"
