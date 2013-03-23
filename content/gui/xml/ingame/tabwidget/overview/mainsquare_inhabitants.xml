@@ -36,7 +36,7 @@ resources.
 
 		<Container size="260,60" position="25,95">
 			<Label name="upgrades_lbl" text="Upgrade permissions:" />
-			<ToggleImageButton name="allow_upgrades" position="0,20"
+			<ImageButton name="allow_upgrades" position="0,20"
 				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
 				up_image="content/gui/images/buttons/upgrade/allow.png"
 				down_image="content/gui/images/buttons/upgrade/allow.png"

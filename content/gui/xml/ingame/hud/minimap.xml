@@ -10,9 +10,9 @@ In case you change the size of this Container, also adapt the ingamegui position
 		image="content/gui/images/background/widgets/map_bg.png" />
 	<Label name="speed_text" position="50,90" font="default_bold" />
 
-	<ToggleImageButton name="speedUp" position="48,63"
+	<ImageButton name="speedUp" position="48,63"
 		path="icons/widgets/minimap/speed_up" helptext="Increase game speed (+)" />
-	<ToggleImageButton name="speedDown" position="48,105"
+	<ImageButton name="speedDown" position="48,105"
 		path="icons/widgets/minimap/speed_down" helptext="Decrease game speed (-)" />
 
 	<ImageButton name="rotateLeft" position="96,19"
@@ -20,9 +20,9 @@ In case you change the size of this Container, also adapt the ingamegui position
 	<ImageButton name="rotateRight" position="150,19"
 		path="icons/widgets/minimap/rotate_right" helptext="Rotate map clockwise (.)" />
 
-	<ToggleImageButton name="zoomIn" position="195,63"
+	<ImageButton name="zoomIn" position="195,63"
 		path="icons/widgets/minimap/zoom_in" helptext="Zoom in" />
-	<ToggleImageButton name="zoomOut" position="195,105"
+	<ImageButton name="zoomOut" position="195,105"
 		path="icons/widgets/minimap/zoom_out" helptext="Zoom out" />
 </Container>
 

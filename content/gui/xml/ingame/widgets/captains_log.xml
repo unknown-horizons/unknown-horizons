@@ -12,10 +12,10 @@
 		<Spacer />
 
 		<HBox max_size="80,36">
-			<ToggleImageButton name="backwardButton" helptext="Read previous entries"
+			<ImageButton name="backwardButton" helptext="Read previous entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
 				path="images/buttons/parrow_left" />
-			<ToggleImageButton name="forwardButton" helptext="Read next entries"
+			<ImageButton name="forwardButton" helptext="Read next entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
 				path="images/buttons/parrow_right" />
 		</HBox>
