@@ -45,7 +45,7 @@ except ImportError as e:
 
 
 from run_uh import init_environment
-init_environment(False)
+init_environment(True)
 
 import horizons.main
 from horizons.constants import UNITS, BUILDINGS, TIER
