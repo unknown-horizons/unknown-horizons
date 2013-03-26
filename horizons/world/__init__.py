@@ -84,6 +84,11 @@ class World(BuildingOwner, WorldObject):
 		if False:
 			assert isinstance(session, horizons.session.Session)
 		self.session = session
+		# create shiplist, which is currently used for saving ships
+		# and having at least one reference to them
+		self.ships = []
+		self.ground_units = []
+
 		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 
 	def end(self):
@@ -189,11 +194,6 @@ class World(BuildingOwner, WorldObject):
 		# create ship position list. entries: ship_map[(x, y)] = ship
 		self.ship_map = {}
 		self.ground_unit_map = {}
-
-		# create shiplist, which is currently used for saving ships
-		# and having at least one reference to them
-		self.ships = []
-		self.ground_units = []
 
 		# create bullets list, used for saving bullets in ongoing attacks
 		self.bullets = []
