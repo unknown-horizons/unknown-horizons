@@ -230,7 +230,7 @@ class TradeShip(Ship):
 		super(TradeShip, self).__init__(x, y, **kwargs)
 
 	def _possible_names(self):
-		return [_(u'Trader')]
+		return [_('Trader')]
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""
