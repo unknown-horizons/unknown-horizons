@@ -286,7 +286,8 @@ class SelectableBuildingComponent(SelectableComponent):
 		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
 		if not hasattr(SelectableBuildingComponent, "_fake_tile_obj"):
 			# create object to create instances from
-			SelectableBuildingComponent._fake_tile_obj = horizons.globals.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
+			fake_tile_obj = horizons.globals.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
+			SelectableBuildingComponent._fake_tile_obj = fake_tile_obj
 			fife.ObjectVisual.create(SelectableBuildingComponent._fake_tile_obj)
 
 			img_path = 'content/gfx/fake_water.png'
