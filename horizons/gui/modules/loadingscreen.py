@@ -79,6 +79,6 @@ class LoadingScreen(Window):
 		label.text = unicode(message.stage)
 		label.adaptLayout()
 
-		self._widget.findChild(name='loading_progress').progress = int(100 * self._current_step / self.total_steps)
+		self._widget.findChild(name='loading_progress').progress = (100 * self._current_step) // self.total_steps
 
 		horizons.globals.fife.engine.pump()
