@@ -39,7 +39,7 @@ class SelectSavegameDialog(Dialog):
 	def __init__(self, mode, windows):
 		super(SelectSavegameDialog, self).__init__(windows)
 
-		assert mode in ('load', 'save', 'editor-save' )
+		assert mode in ('load', 'save', 'editor-save')
 		self._mode = mode
 
 		self._gui = load_uh_widget('select_savegame.xml')
@@ -145,11 +145,12 @@ class SelectSavegameDialog(Dialog):
 				                               description=_("Please enter a valid filename."))
 				return self._windows.show(self)
 			elif selected_savegame in self._map_file_display: # savegamename already exists
-				#xgettext:python-format
 				if self._mode == 'save':
-					message = _("A savegame with the name {name} already exists")
+				#xgettext:python-format
+					message = _("A savegame with the name {name} already exists.")
 				elif self._mode == 'editor-save':
-					message = _("A map with the name {name} already exists")
+				#xgettext:python-format
+					message = _("A map with the name {name} already exists.")
 				message = message.format(name=selected_savegame)
 				message += u"\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
