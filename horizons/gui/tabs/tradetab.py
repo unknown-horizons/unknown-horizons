@@ -132,19 +132,25 @@ class TradeTab(TabInterface):
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
 			self.instance.discard_change_listener(self._schedule_refresh)
-			self.instance.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
+			inv = self.instance.get_component(StorageComponent).inventory
+			inv.discard_change_listener(self._schedule_refresh)
 		if self.partner:
-			self.partner.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
-			self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self._schedule_refresh)
+			inv = self.partner.get_component(StorageComponent).inventory
+			inv.discard_change_listener(self._schedule_refresh)
+			tradepost = self.partner.settlement.get_component(TradePostComponent)
+			tradepost.discard_change_listener(self._schedule_refresh)
 
 	def __add_changelisteners(self):
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
 			self.instance.add_change_listener(self._schedule_refresh, no_duplicates=True)
-			self.instance.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
+			inv = self.instance.get_component(StorageComponent).inventory
+			inv.add_change_listener(self._schedule_refresh, no_duplicates=True)
 		if self.partner:
-			self.partner.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
-			self.partner.settlement.get_component(TradePostComponent).add_change_listener(self._schedule_refresh, no_duplicates=True)
+			inv = self.partner.get_component(StorageComponent).inventory
+			inv.add_change_listener(self._schedule_refresh, no_duplicates=True)
+			tradepost = self.partner.settlement.get_component(TradePostComponent)
+			tradepost.add_change_listener(self._schedule_refresh, no_duplicates=True)
 
 	def hide(self):
 		self.widget.hide()
