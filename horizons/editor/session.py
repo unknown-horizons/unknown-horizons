@@ -74,8 +74,5 @@ class EditorSession(Session):
 			self.gui.show_error_popup(headline, descr, advice)
 
 	def save(self, savegamename):
-		if savegamename is None:
-			return False # user aborted dialog
-
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename)
 		return success
