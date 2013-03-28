@@ -105,7 +105,7 @@ class SpecialDomesticTradeManager(object):
 		for (source_settlement_manager, destination_settlement_manager), option in sorted(options.iteritems()):
 			total_amount = 0
 			total_value = 0
-			for _, amount, price, resource_id in option:
+			for unused, amount, price, resource_id in option:
 				amount = min(amount, ship.get_component(StorageComponent).inventory.get_limit(resource_id) - total_amount)
 				total_value += amount * price
 				total_amount += amount

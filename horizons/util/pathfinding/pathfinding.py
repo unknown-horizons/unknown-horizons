@@ -165,7 +165,7 @@ class FindPath(object):
 		while to_check:
 
 			# find next node to check, which is the one with best rating
-			(_, cur_node_coords) = heappop(heap)
+			(unused, cur_node_coords) = heappop(heap)
 			cur_node_data = to_check[cur_node_coords]
 
 			# shortcuts:

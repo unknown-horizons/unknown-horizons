@@ -71,7 +71,7 @@ class RoadPathFinder(object):
 
 		# perform A*
 		while heap:
-			(_, distance_so_far, key) = heapq.heappop(heap)
+			(unused, distance_so_far, key) = heapq.heappop(heap)
 			if distance[key] < distance_so_far:
 				continue
 			if (key[0], key[1]) == destination:
