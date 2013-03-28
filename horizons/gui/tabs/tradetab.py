@@ -228,7 +228,7 @@ class TradeTab(TabInterface):
 		nearest_dist = None
 		for partner in partners:
 			dist = partner.position.distance(self.instance.position)
-			if dist < nearest_dist or nearest_dist is None:
+			if nearest_dist is None or dist < nearest_dist:
 				nearest_dist = dist
 				nearest = partners.index(partner)
 		return nearest
