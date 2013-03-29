@@ -59,5 +59,6 @@
 	</ScrollArea>
 </HBox>
 
+<OkButton position="600,400" helptext="Exit to main menu" />
 
 </Container>
