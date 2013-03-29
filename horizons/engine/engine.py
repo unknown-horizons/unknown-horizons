@@ -236,6 +236,16 @@ class Fife(ApplicationBase):
 		new_keys = set(old_keys + [addkey])
 		self.set_key_for_action(action, list(new_keys))
 
+	def remove_key_for_action(self, action, remkey):
+		"""Removes hotkey *remkey* from list of hotkeys for action *action*."""
+		old_keys = self._setting.get(KEY_MODULE, action, defaultValue=[])
+		if remkey in old_keys:
+				old_keys.remove(remkey)
+		if len(old_keys) == 0:
+				print 'Cannot have no binding for action'
+				return
+		self.set_key_for_action(action, old_keys)
+
 	def save_settings(self):
 		self._setting.saveSettings()
 
