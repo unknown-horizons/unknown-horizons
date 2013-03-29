@@ -24,6 +24,7 @@ import random
 from horizons.constants import PATHS
 from horizons.editor.gui import IngameGui
 from horizons.editor.worldeditor import WorldEditor
+from horizons.savegamemanager import SavegameManager
 from horizons.session import Session
 from horizons.manager import SPManager
 from horizons.timer import Timer
@@ -72,5 +73,6 @@ class EditorSession(Session):
 				   "{website}").format(website="http://unknown-horizons.org/support/")
 			self.gui.show_error_popup(headline, descr, advice)
 
-	def save(self, name):
-		self.world_editor.save_map(PATHS.USER_MAPS_DIR, name)
+	def save(self, savegamename):
+		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename)
+		return success
