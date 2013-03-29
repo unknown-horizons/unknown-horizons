@@ -39,8 +39,7 @@ class HotkeyConfiguration(Window):
 		self._session = session
 		self.widget = load_uh_widget('hotkeys.xml')
 
-		self.actions = ['LEFT', 'RIGHT', 'UP', 'DOWN', 'SPEED_UP']
-		self.special_key_names = {fife.Key.LEFT_SHIFT : 'Shift', fife.Key.LEFT_CONTROL : 'Ctrl', fife.Key.LEFT_ALT : 'Alt'}
+		self.actions = [action for action in horizons.globals.fife.get_hotkey_settings()]
 
 		self.keyconf = KeyConfig()
 		self.HELPSTRING_LAYOUT = None
@@ -52,11 +51,11 @@ class HotkeyConfiguration(Window):
 		self.current_index = None
 		self.last_combination = []
 
-		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
-
 		self.keys = self.keyconf.get_keys_by_value()
 
-		# self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
+
+		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 
 	def _build_interface(self):
 			container = self.widget.findChild(name='keys_container')
@@ -99,18 +98,39 @@ class HotkeyConfiguration(Window):
 			value = key.getValue()
 			return self.keys[value]
 
+	def key_is_set(self, key):
+		keys_mappings = self.keyconf.keyval_action_mappings
+		if keys_mappings.get(key.getValue()):
+				return True
+		return False
+
+	def get_action_name(self, key):
+		key_name = self.keyName(key)
+		print 'looking for ', key_name
+		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
+		for action in custom_key_actions:
+			k = custom_key_actions[action]
+			if key_name in k:
+				return action
+		print "Action name not found. Key name must be wrong. This is not supposed to ever happen"
+
 	def apply_change(self):
 			key = self.last_combination[0]
-			dct = self.keyconf.keyval_action_mappings
-			if not dct.get(key.getValue()):
-					horizons.globals.fife.set_key_for_action(self.actions[self.current_index], self.keyName(key))
-					print 'Binded ' + self.keyName(key) + ' to ' + self.actions[self.current_index]
-					horizons.globals.fife.save_settings()
+			action = self.actions[self.current_index]
+			key_name = self.keyName(key)
+			horizons.globals.fife.remove_key_for_action(action, key_name)
+
+			if not self.key_is_set(key):
+				print 'setting', key_name, 'to', action
+				horizons.globals.fife.set_key_for_action(action, key_name)
 			else:
-					print 'ID: ' + str(dct.get(key.getValue()))
-					# oldaction = dct.get(key.getValue())
-					# horizons.globals.fife.set_key_for_action(oldaction, "LEFT")
-					# horizons.globals.fife.set_key_for_action(self.actions[self.current_index], self.keyName(key))
+				oldaction = self.get_action_name(key)
+				# Here we should ask whether the user wants to change the old binding
+				# TODO define remove_key() in engine.py
+				horizons.globals.fife.set_key_for_action(oldaction, 'Q')
+				horizons.globals.fife.set_key_for_action(action, key_name)
+			horizons.globals.fife.save_settings()
+
 			self.current_button.text = _(self.keyName(self.last_combination[0]))
 			self.last_combination = []
 
