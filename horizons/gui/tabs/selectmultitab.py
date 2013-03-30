@@ -94,12 +94,9 @@ class SelectMultiTab(TabInterface):
 			for instance in self.instances:
 				self.add_entry(UnitEntry([instance], False))
 		else:
-			entry_instances = {}
+			entry_instances = defaultdict(list)
 			for instance in self.instances:
-				if instance.id not in entry_instances:
-					entry_instances[instance.id] = [instance]
-				else:
-					entry_instances[instance.id].append(instance)
+				entry_instances[instance.id].append(instance)
 			for instances in entry_instances.values():
 				self.add_entry(UnitEntry(instances))
 
