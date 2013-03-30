@@ -62,7 +62,6 @@ class IngameGui(LivingObject):
 		super(IngameGui, self).__init__()
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
-		self.main_gui = gui
 		self.settlement = None
 		self._old_menu = None
 
@@ -210,8 +209,8 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.main_gui.show_popup(_("No diplomacy possible"),
-			                         _("Cannot do diplomacy as there are no other players."))
+			self.windows.show_popup(_("No diplomacy possible"),
+			                        _("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
