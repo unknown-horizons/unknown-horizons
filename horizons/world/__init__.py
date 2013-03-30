@@ -84,10 +84,19 @@ class World(BuildingOwner, WorldObject):
 		if False:
 			assert isinstance(session, horizons.session.Session)
 		self.session = session
+
+		# create playerlist
+		self.players = []
+		self.player = None # player sitting in front of this machine
+		self.trader = None
+		self.pirate = None
+
 		# create shiplist, which is currently used for saving ships
 		# and having at least one reference to them
 		self.ships = []
 		self.ground_units = []
+
+		self.islands = []
 
 		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 
@@ -149,12 +158,6 @@ class World(BuildingOwner, WorldObject):
 		if not 'disasters_enabled' in self.properties:
 			# set on first init
 			self.properties['disasters_enabled'] = disasters_enabled
-
-		# create playerlist
-		self.players = []
-		self.player = None # player sitting in front of this machine
-		self.trader = None
-		self.pirate = None
 
 		self._load_players(savegame_db, force_player_id)
 
@@ -268,7 +271,6 @@ class World(BuildingOwner, WorldObject):
 		self.map_name = savegame_db.map_name
 
 		# load islands
-		self.islands = []
 		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
 			island = Island(savegame_db, islandid, self.session, preview=preview)
 			self.islands.append(island)
