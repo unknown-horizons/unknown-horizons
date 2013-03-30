@@ -59,6 +59,7 @@
 	</ScrollArea>
 </HBox>
 
-<OkButton position="600,400" helptext="Exit to main menu" />
+<OkButton position="640,500" helptext="Exit to main menu" />
+<Button name="reset_to_default" text="Reset to default keys" position="540,450" helptext="Reset to default" />
 
 </Container>
