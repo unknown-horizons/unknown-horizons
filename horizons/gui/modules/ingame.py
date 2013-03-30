@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
 
 import horizons.globals
+
 from horizons.command.misc import Chat
 from horizons.command.uioptions import RenameObject
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -30,48 +30,33 @@ from horizons.constants import GUI
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
-from horizons.gui.windows import Dialog, Window
+from horizons.gui.windows import Dialog
 from horizons.messaging import SettlerInhabitantsChanged, HoverSettlementChanged, ResourceBarResize
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 
 
-class ChatDialog(Window):
+class ChatDialog(Dialog):
 	"""Allow player to send messages to other players."""
+	focus = 'msg'
 
 	def __init__(self, windows, session):
 		super(ChatDialog, self).__init__(windows)
-
 		self._session = session
-		self._widget = load_uh_widget('chat.xml')
 
-		events = {
-			OkButton.DEFAULT_NAME: self._do_chat,
-			CancelButton.DEFAULT_NAME: self._windows.close
+	def prepare(self):
+		self._gui = load_uh_widget('chat.xml')
+		self.return_events = {
+			OkButton.DEFAULT_NAME: True,
+			CancelButton.DEFAULT_NAME: False,
 		}
-		self._widget.mapEvents(events)
 
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self._windows.close()
-
-		self._widget.findChild(name="msg").capture(forward_escape, "keyPressed")
-		self._widget.findChild(name="msg").capture(self._do_chat)
-
-	def show(self):
-		self._widget.show()
-		self._widget.findChild(name="msg").requestFocus()
-
-	def hide(self):
-		self._widget.hide()
-
-	def _do_chat(self):
+	def act(self, send_message):
 		"""Actually initiates chatting and hides the dialog"""
-		msg = self._widget.findChild(name="msg").text
+		if not send_message:
+			return
+		msg = self._gui.findChild(name="msg").text
 		Chat(msg).execute(self._session)
-		self._widget.findChild(name="msg").text = u''
-		self._windows.close()
 
 
 class ChangeNameDialog(Dialog):
@@ -85,8 +70,6 @@ class ChangeNameDialog(Dialog):
 
 	def prepare(self, instance):
 		self._gui = load_uh_widget('change_name.xml')
-
-		self._gui.findChild(name="new_name").capture(self._on_keypress, "keyPressed")
 		self.return_events = {
 			OkButton.DEFAULT_NAME: instance,
 			CancelButton.DEFAULT_NAME: False,
