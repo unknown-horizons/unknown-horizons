@@ -160,6 +160,7 @@ class SelectMultiTab(TabInterface):
 		self.widget.mapEvents( events )
 
 	def hide_stance_widget(self):
+		Scheduler().rem_all_classinst_calls(self)
 		self.widget.findChild(name='stance').removeAllChildren()
 
 	def set_stance(self, stance):
