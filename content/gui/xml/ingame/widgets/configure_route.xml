@@ -30,7 +30,7 @@
 		<HBox min_size="310,60" max_size="310,60">
 			<Spacer min_size="60" max_size="60" />
 			<Label name="lbl_route_activity" text="Route activity:" position="0,7" />
-			<ToggleImageButton name="start_route" max_size="52,52"
+			<ImageButton name="start_route" max_size="52,52"
 				inactive_image="content/gui/icons/ship/traderoute.png"
 				up_image="content/gui/icons/ship/traderoute_disabled.png"
 				down_image="content/gui/icons/ship/traderoute_disabled.png"
