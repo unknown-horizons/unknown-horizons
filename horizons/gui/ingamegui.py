@@ -339,7 +339,7 @@ class IngameGui(LivingObject):
 	def on_escape(self):
 		if self.windows.visible:
 			self.windows.on_escape()
-		elif not isinstance(self.cursor, mousetools.SelectionTool):
+		elif hasattr(self.cursor, 'on_escape'):
 			self.cursor.on_escape()
 		else:
 			self.toggle_pause()
