@@ -58,7 +58,7 @@ class IngameGui(LivingObject):
 	minimap = livingProperty()
 	keylistener = livingProperty()
 
-	def __init__(self, session, gui):
+	def __init__(self, session):
 		super(IngameGui, self).__init__()
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)

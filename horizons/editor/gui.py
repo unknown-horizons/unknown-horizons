@@ -43,7 +43,7 @@ class IngameGui(LivingObject):
 	keylistener = livingProperty()
 	message_widget = livingProperty()
 
-	def __init__(self, session, main_gui):
+	def __init__(self, session):
 		self.session = session
 
 		self.cursor = None
