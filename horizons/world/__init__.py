@@ -100,11 +100,8 @@ class World(BuildingOwner, WorldObject):
 			if hasattr(player, 'early_end'):
 				player.early_end()
 
-		if hasattr(self, 'ships'):
-			# when loading a game fails and the world is destructed again,
-			# self.ships may not yet have been assigned
-			for ship in self.ships[:]:
-				ship.remove()
+		for ship in self.ships[:]:
+			ship.remove()
 		for island in self.islands:
 			island.end()
 		for player in self.players:
