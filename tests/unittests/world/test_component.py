@@ -1,5 +1,3 @@
-#!/usr/bin/env python2
-
 # ###################################################
 # Copyright (C) 2013 The Unknown Horizons Team
 # team@unknown-horizons.org
