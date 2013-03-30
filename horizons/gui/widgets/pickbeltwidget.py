@@ -19,10 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.fife import Color
-
 from horizons.util.python.callback import Callback
 from horizons.gui.util import load_uh_widget
+from horizons.gui.style import NOTHING
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
 
@@ -114,7 +113,7 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 			box.margins = (30, 0) # to get some indentation
 			box.padding = 3
 		for listbox in self.widget.findChildren(name='translators'):
-			listbox.background_color = Color(255, 255, 255, 0)
+			listbox.background_color = NOTHING
 
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 
