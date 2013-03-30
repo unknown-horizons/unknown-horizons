@@ -70,9 +70,7 @@ class ToggleImageButton(ImageButton):
 			# of old_images with inactive_image
 			return
 		self.old_images = (self.up_image, self.down_image, self.hover_image)
-		self.up_image = self.inactive_image
-		self.down_image = self.inactive_image
-		self.hover_image = self.inactive_image
+		self.up_image = self.down_image = self.hover_image = self.inactive_image
 		self.state = self.INACTIVE
 
 	def _get_path(self):
