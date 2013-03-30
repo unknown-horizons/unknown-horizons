@@ -29,8 +29,14 @@ class SettingsDialog(Window):
 	def show(self):
 		horizons.globals.fife.show_settings()
 
+		fife_setting = horizons.globals.fife._setting
+		if not hasattr(fife_setting, '_optionsDialog'):
+			#TODO fifechan / FIFE 0.3.5+ compat
+			# this is the old API
+			widget = fife_setting.OptionsDlg
+		else:
+			widget = fife_setting._optionsDialog
 		# Patch original dialog
-		widget = horizons.globals.fife._setting.OptionsDlg
 		if not hasattr(widget, '__patched__'):
 			# replace hide method so we take control over how the dialog
 			# is hidden
