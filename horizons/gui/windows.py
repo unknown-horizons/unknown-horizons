@@ -175,7 +175,7 @@ class Dialog(Window):
 
 		# Convention says use cancel action
 		if event.getKey().getValue() == fife.Key.ESCAPE:
-			self.trigger_close(OkButton.DEFAULT_NAME)
+			self.trigger_close(CancelButton.DEFAULT_NAME)
 		# Convention says use ok action
 		elif event.getKey().getValue() == fife.Key.ENTER:
 			self.trigger_close(OkButton.DEFAULT_NAME)
