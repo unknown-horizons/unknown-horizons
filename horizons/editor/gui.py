@@ -25,7 +25,7 @@ from horizons.constants import GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog
-from horizons.gui.mousetools import SelectionTool, TileLayingTool
+from horizons.gui.mousetools import SelectionTool, TileLayingTool, SelectSavegameDialog
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
@@ -45,7 +45,6 @@ class IngameGui(LivingObject):
 
 	def __init__(self, session, main_gui):
 		self.session = session
-		self.main_gui = main_gui
 
 		self.cursor = None
 		self.coordinates_tooltip = None
@@ -139,7 +138,8 @@ class IngameGui(LivingObject):
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
-		savegamename = self.main_gui.show_select_savegame(mode='editor-save')
+		window = SelectSavegameDialog('editor-save', self.windows)
+		savegamename = self.windows.show(window)
 		if savegamename is None:
 			return False # user aborted dialog
 		success = self.session.save(savegamename)
