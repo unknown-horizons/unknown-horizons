@@ -260,7 +260,7 @@ class Session(LivingObject):
 		# load the old gui positions and stuff
 		# Do this before loading selections, they need the minimap setup
 		LoadingProgress.broadcast(self, "session_load_gui")
-		self.ingame_gui = self._ingame_gui_class(self, self.gui)
+		self.ingame_gui = self._ingame_gui_class(self)
 		self.ingame_gui.load(savegame_db)
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
