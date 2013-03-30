@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import ImageButton as FifeImageButton
+from fife.extensions.pychan.widgets import Icon, ImageButton as FifeImageButton
 from fife.extensions.pychan.widgets.common import Attr
 
 
@@ -31,21 +31,61 @@ class ImageButton(FifeImageButton):
 	      up_image = "content/gui/path/to/file.png"
 	    down_image = "content/gui/path/to/file_d.png"
 	   hover_image = "content/gui/path/to/file_h.png"
-	inactive_image = "content/gui/path/to/file_bw.png"
+	inactive_image = "content/gui/path/to/file_bw.png" ("black/white")
 
-	If some of those files could not be found, pychan uses up_image instead.
-	inactive_image only applies to ToggleImageButton (a custom UH widget)
-	and widgets derived from it. Sets is_focusable to False unless overridden.
+	Other possible names also checked are
+	      up_image = "content/gui/path/to/file_u.png" ("up", for tabwidget)
+	inactive_image = "content/gui/path/to/file_gr.png" ("grayscale")
+
+	If some of those files could not be found, we use up_image instead.
+	Sets is_focusable to False unless overridden.
+
+	You can set the button active or inactive (only in code for now).
+	Setting to inactive will change *all* images (up, down and hover) to the
+	inactive image. If you set it active again, everything will be reset.
 	"""
-	ATTRIBUTES = FifeImageButton.ATTRIBUTES + [Attr('path')]
+	ATTRIBUTES = FifeImageButton.ATTRIBUTES + [Attr('path'), Attr('inactive_image')]
 	IMAGE = "content/gui/{path}{{mode}}.png"
+	# These two constants are used to describe the toggle state of the widget.
+	ACTIVE = 0
+	INACTIVE = 1
 
-	def __init__(self, path='', is_focusable=False, **kwargs):
+	def __init__(self, path='', inactive_image=None, is_focusable=False, **kwargs):
 		super(ImageButton, self).__init__(is_focusable=is_focusable, **kwargs)
+		self.old_images = (None, None, None)
 		if path:
 			# initializing from python, not xml, so path is available here
 			# and should be set
 			self.path = path
+		if inactive_image:
+			self.inactive_image = inactive_image
+		self.state = self.ACTIVE
+
+	def toggle(self):
+		if self.state == self.ACTIVE:
+			self.set_inactive()
+		else:
+			self.set_active()
+
+	def set_active(self):
+		"""Sets the button active. Restores up, down and hover image to
+		previous state."""
+		if self.state == self.ACTIVE:
+			return
+		self.up_image, self.down_image, self.hover_image = self.old_images
+		self.state = self.ACTIVE
+
+	def set_inactive(self):
+		"""Sets the button inactive. Overrides up, down and hover image with
+		inactive image."""
+		if self.state == self.INACTIVE:
+			# running this with inactive state would overwrite all elements
+			# of old_images with inactive_image
+			return
+		# store old images to be reloaded when button is set active again
+		self.old_images = (self.up_image, self.down_image, self.hover_image)
+		self.up_image = self.down_image = self.hover_image = self.inactive_image
+		self.state = self.INACTIVE
 
 	def _get_path(self):
 		return self.__path
@@ -74,7 +114,22 @@ class ImageButton(FifeImageButton):
 		except RuntimeError:
 			self.down_image = self.up_image
 
-		#TODO move ToggleImageButton into this file
+		# Since inactive_image is no image attribute in pychan, it would
+		# not be validated upon setting self.inactive_image (which works
+		# for ImageButton.{up,down,hover}_image and Icon.image).
+		# Instead, we try to load an Icon with that image and manually
+		# set inactive_image to the path that worked, if there is any.
+		try:
+			image = image_path.format(mode='_bw')
+			Icon(image=image)
+			self.inactive_image = image
+		except RuntimeError:
+			try:
+				image = image_path.format(mode='_gr')
+				Icon(image=image)
+				self.inactive_image = image
+			except RuntimeError:
+				self.inactive_image = self.up_image
 
 	path = property(_get_path, _set_path)
 

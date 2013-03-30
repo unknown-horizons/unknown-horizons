@@ -3,16 +3,16 @@
 <Container size="245,70">
 	<hr position="22,0" />
 	<HBox position="82,7">
-		<ToggleImageButton name="aggressive_stance" position="175,480"
+		<ImageButton name="aggressive_stance" position="175,480"
 			path="icons/units/stances/aggressive" helptext="Aggressive"
 			comment="Description of combat stance (how units behave when fighting)" />
-		<ToggleImageButton name="hold_ground_stance" position="175,480"
+		<ImageButton name="hold_ground_stance" position="175,480"
 			path="icons/units/stances/hold_ground" helptext="Hold ground"
 			comment="Description of combat stance (how units behave when fighting)" />
-		<ToggleImageButton name="none_stance" position="175,480"
+		<ImageButton name="none_stance" position="175,480"
 			path="icons/units/stances/none" helptext="Passive"
 			comment="Description of combat stance (how units behave when fighting)" />
-		<ToggleImageButton name="flee_stance" position="175,480"
+		<ImageButton name="flee_stance" position="175,480"
 			path="icons/units/stances/flee" helptext="Flee"
 			comment="Description of combat stance (how units behave when fighting)" />
 	</HBox>
