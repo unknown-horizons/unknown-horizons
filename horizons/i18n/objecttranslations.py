@@ -442,29 +442,27 @@ def set_translations():
 	"content/objects/gui_buildmenu/build_menu_per_tier.yaml" : {
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
-		# headline of gui_buildmenu:build_menu_per_increment
-		"headline"                    : _("Military"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Mining"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Residents and infrastructure"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Services"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Services"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Services"),
 		},
 
@@ -513,7 +511,5 @@ def set_translations():
 		"tab4_headline"               : _("Companies"),
 		# tab5_headline of gui_buildmenu:build_menu_per_type
 		"tab5_headline"               : _("Military"),
-		# tab6_headline of gui_buildmenu:build_menu_per_type
-		"tab6_headline"               : _("Aesthetics"),
 		},
 	})
