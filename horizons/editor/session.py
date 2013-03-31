@@ -24,7 +24,6 @@ import random
 from horizons.constants import PATHS
 from horizons.editor.gui import IngameGui
 from horizons.editor.worldeditor import WorldEditor
-from horizons.savegamemanager import SavegameManager
 from horizons.session import Session
 from horizons.manager import SPManager
 from horizons.timer import Timer
