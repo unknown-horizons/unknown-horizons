@@ -145,7 +145,9 @@ class BuildTab(TabInterface):
 			for resource_id, amount_needed in sorted(building.costs.items()):
 				resource_name = self.session.db.get_res_name(resource_id)
 				button.helptext += u'[br]'
-				button.helptext += _('{resource}: {amount}').format(resource=resource_name, amount = amount_needed)
+				#xgettext:python-format
+				# You usually do not need to change anything here when translating
+				button.helptext += _('{resource}: {amount}').format(resource=resource_name, amount=amount_needed)
 
 			enough_res = False # don't show building by default
 			if settlement is not None: # settlement is None when the mouse has left the settlement

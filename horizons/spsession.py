@@ -63,6 +63,7 @@ class SPSession(Session):
 		else:
 			headline = _("Failed to quicksave.")
 			descr = _("An error happened during quicksave.") + u"\n" + _("Your game has not been saved.")
+			#xgettext:python-format
 			advice = _("If this error happens again, please contact the development team: "
 			           "{website}").format(website="http://unknown-horizons.org/support/")
 			self.gui.show_error_popup(headline, descr, advice)
