@@ -141,7 +141,7 @@ class BuildTab(TabInterface):
 
 			# Add necessary resources to tooltip
 			# [br] means newline
-			button.helptext += '[br]Resources needed:[br]'
+			button.helptext += u'[br]' + _('Resources needed:') + u'[br]'
 			for resource_id, amount_needed in sorted(building.costs.items()):
 				resource_name = self.session.db.get_res_name(resource_id)
 				button.helptext += u'[br]'
