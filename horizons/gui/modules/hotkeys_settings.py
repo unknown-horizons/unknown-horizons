@@ -111,7 +111,6 @@ class HotkeyConfiguration(Window):
 
 	def get_action_name(self, key):
 		key_name = self.keyName(key)
-		print 'looking for ', key_name
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for action in custom_key_actions:
 			k = custom_key_actions[action]
@@ -143,13 +142,14 @@ class HotkeyConfiguration(Window):
 			horizons.globals.fife.set_key_for_action(action, key_name)
 		else:
 			oldaction = self.get_action_name(key)
+			oldkey = self.keyconf.get_current_keys(action)[0]
 			# Here we should ask whether the user wants to change the old binding
 			# TODO define remove_key() in engine.py
-			horizons.globals.fife.set_key_for_action(oldaction, 'Q')
+			horizons.globals.fife.set_key_for_action(oldaction, oldkey)
 			horizons.globals.fife.set_key_for_action(action, key_name)
 		horizons.globals.fife.save_settings()
 
-		self.current_button.text = _(self.keyName(self.last_combination[0]))
+		self.update_buttons_text()
 		self.last_combination = []
 
 	def show(self):
