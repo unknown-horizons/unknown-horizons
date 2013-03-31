@@ -148,6 +148,7 @@ class OkButton(ImageButton):
 			name=name, is_focusable=False,
 			max_size=size, min_size=size, size=size, **kwargs)
 		self.path = "images/buttons/ok"
+		self.inactive_image = "content/gui/images/buttons/close.png"
 
 class CancelButton(ImageButton):
 	"""The CancelButton is a shortcut for an ImageButton with our cancel / close

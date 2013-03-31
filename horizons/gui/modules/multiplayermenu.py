@@ -376,9 +376,14 @@ class GameLobby(Window):
 		super(GameLobby, self).__init__(windows)
 
 		self._gui = load_uh_widget('multiplayer_gamelobby.xml')
+
+		def ready_cb():
+			NetworkInterface().toggle_ready()
+			self._gui.findChild(name="ready_btn").toggle()
+
 		self._gui.mapEvents({
 			'cancel': self._cancel,
-			'ready_btn': NetworkInterface().toggle_ready,
+			'ready_btn': ready_cb,
 		})
 
 		NetworkInterface().subscribe("game_prepare", self._prepare_game)
