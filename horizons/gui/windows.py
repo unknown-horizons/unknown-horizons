@@ -364,8 +364,10 @@ class WindowManager(object):
 		if advice:
 			msg += advice + u"\n"
 		if details:
+			#xgettext:python-format
 			msg += _("Details: {error_details}").format(error_details=details)
 		try:
+			#xgettext:python-format
 			self.show_popup( _("Error: {error_message}").format(error_message=windowtitle),
 			                 msg)
 		except SystemExit: # user really wants us to die

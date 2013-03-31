@@ -65,12 +65,17 @@ class ImageFillStatusButton(Container):
 		if showprice:
 			value = db.get_res_value(res)
 			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
+				#xgettext:python-format
 				helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
 			else:
 				buyprice = value * TRADER.PRICE_MODIFIER_BUY
 				sellprice = value * TRADER.PRICE_MODIFIER_SELL
-				helptext = _('{resource_name}[br]buy for {buyprice} gold[br]sell for {sellprice} gold'
-						     ).format(resource_name=db.get_res_name(res), buyprice=buyprice, sellprice=sellprice)
+				helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
+				#xgettext:python-format
+				            + _('buy for {buyprice} gold').format(buyprice=buyprice)
+				            + u'[br]'
+				#xgettext:python-format
+				            + _('sell for {sellprice} gold').format(sellprice=sellprice))
 		else:
 			helptext = db.get_res_name(res)
 

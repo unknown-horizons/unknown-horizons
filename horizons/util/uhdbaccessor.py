@@ -100,6 +100,7 @@ class UhDbAccessor(DbReader):
 		"""
 		buildingtype = Entities.buildings[building_class_id]
 		#xgettext:python-format
+		# You usually do not need to change anything here when translating
 		tooltip = _("{building}: {description}")
 		return tooltip.format(building=_(buildingtype._name),
 		                      description=_(buildingtype.tooltip_text))
@@ -269,8 +270,9 @@ class UhDbAccessor(DbReader):
 		try:
 			comp = ship.get_component_template('StorageComponent')
 			storage = comp['PositiveTotalNumSlotsStorage']
-			#i18n Ship storage properties
-			helptext = _('{slotnum} slots, {limit}t') #xgettext:python-format
+			#xgettext:python-format
+			# Ship storage properties
+			helptext = _('{slotnum} slots, {limit}t')
 			helptext = helptext.format(slotnum=storage['slotnum'],
 			                           limit=storage['limit'])
 			helptexts.append(helptext)
@@ -278,7 +280,8 @@ class UhDbAccessor(DbReader):
 			pass
 		try:
 			comp = ship.get_component_template('HealthComponent')
-			helptext = _('Health: {health}') #xgettext:python-format
+			#xgettext:python-format
+			helptext = _('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)
 		except KeyError: # Component not found, ignore this part

@@ -84,7 +84,9 @@ class EditorCreateMapWidget(object):
 
 		for size in self.sizes:
 			option_name = 'size_%d' % size
-			self._gui.findChild(name=option_name).text = _(u'{size}x{size} tiles').format(size=size)
+			#xgettext:python-format
+			# size of empty map in map editor
+			self._gui.findChild(name=option_name).text = _('{size}x{size} tiles').format(size=size)
 
 	def show(self):
 		self._parent_widget.removeAllChildren()

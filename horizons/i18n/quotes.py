@@ -60,6 +60,7 @@ def set_translations():
 		'items': [
 		    _("Press 'ESC' to access Game Menu."),
 		    _("Use 'SHIFT' to place multiple buildings."),
+		    #xgettext:python-format
 		    _("Currently only the first {tier} tiers are playable.").format(
 		        tier=TIER.CURRENT_MAX + 1), #TODO: This tip should be removed when all tiers are playable!!
 		    _("You can pause the game with 'P'."),
