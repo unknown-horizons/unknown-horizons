@@ -360,6 +360,8 @@ class Server(object):
 		logging.debug("[LIST]")
 		gameslist = packets.server.data_gameslist()
 		for _game in self.games:
+			if _game.creator.protocol != player.protocol:
+				continue
 			if not _game.is_open():
 				continue
 			if _game.is_full():
