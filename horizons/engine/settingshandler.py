@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from functools import partial
 import logging
 
 from fife import fife
@@ -48,55 +49,49 @@ class SettingsHandler(object):
 		return self.engine._setting
 
 	def add_settings(self):
-		#self.createAndAddEntry(self, module, name, widgetname, applyfunction=None, initialdata=None, requiresrestart=False)
-		self._setting.createAndAddEntry(UH_MODULE, "AutosaveInterval", "autosaveinterval")
-		self._setting.createAndAddEntry(UH_MODULE, "AutosaveMaxCount", "autosavemaxcount")
-		self._setting.createAndAddEntry(UH_MODULE, "QuicksaveMaxCount", "quicksavemaxcount")
-		self._setting.createAndAddEntry(UH_MODULE, "EdgeScrolling", "edgescrolling")
-		self._setting.createAndAddEntry(UH_MODULE, "CursorCenteredZoom", "cursor_centered_zoom")
-		self._setting.createAndAddEntry(UH_MODULE, "ScrollSpeed", "scrollspeed")
-		self._setting.createAndAddEntry(UH_MODULE, "MiddleMousePan", "middle_mouse_pan")
-		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
-		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
-		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation")
+		#self.createAndAddEntry(module, name_in_settings_xml, widgetname,
+		#                       applyfunction=None, initialdata=None, requiresrestart=False)
+		uh_add = partial(self._setting.createAndAddEntry, UH_MODULE)
+		fife_add = partial(self._setting.createAndAddEntry, FIFE_MODULE)
 
-		self._setting.createAndAddEntry(UH_MODULE, "QuotesType", "quotestype",
-		                                initialdata=QUOTES_SETTINGS)
-		self._setting.createAndAddEntry(UH_MODULE, "ShowResourceIcons", "show_resource_icons")
+		uh_add("AutosaveInterval", "autosaveinterval")
+		uh_add("AutosaveMaxCount", "autosavemaxcount")
+		uh_add("QuicksaveMaxCount", "quicksavemaxcount")
+		uh_add("EdgeScrolling", "edgescrolling")
+		uh_add("CursorCenteredZoom", "cursor_centered_zoom")
+		uh_add("ScrollSpeed", "scrollspeed")
+		uh_add("MiddleMousePan", "middle_mouse_pan")
+		uh_add("UninterruptedBuilding", "uninterrupted_building")
+		uh_add("AutoUnload", "auto_unload")
+		uh_add("MinimapRotation", "minimaprotation")
+		uh_add("QuotesType", "quotestype", initialdata=QUOTES_SETTINGS)
+		uh_add("ShowResourceIcons", "show_resource_icons")
 
-		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
-		                                initialdata={0: _("Default"), 16: _("16 bit"), 32: _("32 bit")},
-		                                requiresrestart=True)
+		bpp = {0: _("Default"), 16: _("16 bit"), 32: _("32 bit")}
+		fife_add("BitsPerPixel", "screen_bpp", initialdata=bpp, requiresrestart=True)
 
 		languages = find_available_languages().keys()
+		uh_add("Language", "uni_language", applyfunction=self.update_languages,
+		       initialdata=[LANGUAGENAMES[x] for x in sorted(languages)])
 
-		self._setting.createAndAddEntry(UH_MODULE, "Language", "uni_language",
-		                                applyfunction=self.update_languages,
-		                                initialdata=[LANGUAGENAMES[x] for x in sorted(languages)])
-		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",
-		                                applyfunction=self.set_volume_music)
-		self._setting.createAndAddEntry(UH_MODULE, "VolumeEffects", "volume_effects",
-		                                applyfunction=self.set_volume_effects)
+		uh_add("VolumeMusic", "volume_music", applyfunction=self.set_volume_music)
+		uh_add("VolumeEffects", "volume_effects", applyfunction=self.set_volume_effects)
+		uh_add("NetworkPort", "network_port", applyfunction=self.set_network_port)
+		uh_add("DebugLog", "debug_log", applyfunction=self.set_debug_log)
 
-		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
-		                                applyfunction=self.set_network_port)
+		play_sounds = self._setting.entries[FIFE_MODULE]['PlaySounds']
+		play_sounds.applyfunction = lambda x: self.engine.sound.setup_sound()
+		play_sounds.requiresrestart = False  # This is set to True in FIFE
 
-		self._setting.createAndAddEntry(UH_MODULE, "DebugLog", "debug_log",
-		                                applyfunction=self.set_debug_log)
+		render_backend = self._setting.entries[FIFE_MODULE]['RenderBackend']
+		render_backend.applyfunction = lambda x: self._show_renderbackend_warning()
 
+		fps = [30, 45, 60, 90, 120]
+		fife_add("FrameLimit", "fps_rate", initialdata=fps, requiresrestart=True)
 
-		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.engine.sound.setup_sound()
-		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
-
-		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
-
-		self._setting.createAndAddEntry(FIFE_MODULE, "FrameLimit", "fps_rate",
-		                                initialdata=[30, 45, 60, 90, 120], requiresrestart=True)
-
-		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity",
-		                                # read comment in set_mouse_sensitivity function about this
-		                                #applyfunction=self.set_mouse_sensitivity,
-		                                requiresrestart=True)
+		fife_add("MouseSensitivity", "mousesensitivity", requiresrestart=True)
+		#FIXME read comment in set_mouse_sensitivity function about this
+		#applyfunction=self.set_mouse_sensitivity,
 
 	def apply_settings(self):
 		"""Called on startup to apply the effects of settings"""
