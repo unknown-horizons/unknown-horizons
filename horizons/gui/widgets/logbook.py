@@ -46,9 +46,9 @@ class LogBook(PickBeltWidget, Window):
 
 	widget_xml = 'captains_log.xml'
 	page_pos = (170, 38)
-	sections = (('logbook', _(u'Logbook')),
-	            ('statistics', _(u'Statistics')),
-	            ('chat_overview', _(u'Chat')))
+	sections = (('logbook', _('Logbook')),
+	            ('statistics', _('Statistics')),
+	            ('chat_overview', _('Chat')))
 
 	def __init__(self, session, windows):
 		self.statistics_index = [i for i, sec in self.sections].index('statistics')

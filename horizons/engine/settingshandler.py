@@ -232,7 +232,7 @@ class SettingsHandler(object):
 					NetworkInterface.create_instance()
 				NetworkInterface().network_data_changed()
 			except Exception as e:
-				headline = _(u"Failed to apply new network settings.")
+				headline = _("Failed to apply new network settings.")
 				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _("Check the settings you specified in the network section.")
 				if 0 < parse_port(port) < 1024:
