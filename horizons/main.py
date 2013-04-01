@@ -341,8 +341,8 @@ def start_singleplayer(options):
 				traceback.print_exc()
 				print "Additionally to failing when loading, cleanup afterwards also failed"
 		_modules.gui.show_main()
-		headline = _(u"Failed to start/load the game")
-		descr = _(u"The game you selected could not be started.") + u" " +\
+		headline = _("Failed to start/load the game")
+		descr = _("The game you selected could not be started.") + u" " + \
 		        _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		_modules.gui.load_game()
