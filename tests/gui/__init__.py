@@ -87,7 +87,7 @@ class GuiTestPlugin(Plugin):
 
 	Because nose runs in a different process than the real test, we cannot easily
 	show the traceback as if the exception occured here. The real traceback will
-	be used as message in an `TestFailed` exception, which we capture here and
+	be used as message in a `TestFailed` exception, which we capture here and
 	remove the traceback (from the TestFailed raise) entirely, leaving us just
 	with the exception.
 
