@@ -61,13 +61,16 @@ class HotkeyConfiguration(Window):
 	def _build_interface(self):
 		container = self.widget.findChild(name='keys_container')
 		button_container = self.widget.findChild(name='button_container')
+		sec_button_container = self.widget.findChild(name='sec_button_container')
 		for i in range(len(self.actions)):
- 			action = self.actions[i]
+			action = self.actions[i]
 			label = self._create_label(action)
 			button = self._create_button(action, 'prim', i)
+			button2 = self._create_button(action, 'sec', i)
 			button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button)})
 			container.addChild(label)
 			button_container.addChild(button)
+			sec_button_container.addChild(button2)
 			self.buttons.append(button)
 
 	def _create_label(self, action):
@@ -93,7 +96,6 @@ class HotkeyConfiguration(Window):
 		button.text = _("Press desired key")
 
 	def _detect_keypress(self, event):
-		print event.getKey().getValue()
 		if self.detecting:
 			self.last_combination.append(event.getKey())
 			self.detecting = False
@@ -143,10 +145,15 @@ class HotkeyConfiguration(Window):
 		else:
 			oldaction = self.get_action_name(key)
 			oldkey = self.keyconf.get_current_keys(action)[0]
-			# Here we should ask whether the user wants to change the old binding
-			# TODO define remove_key() in engine.py
-			horizons.globals.fife.set_key_for_action(oldaction, oldkey)
-			horizons.globals.fife.set_key_for_action(action, key_name)
+
+			#xgettext:python-format
+			message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
+					                      key=key_name, action=oldaction)
+			if self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
+				horizons.globals.fife.set_key_for_action(oldaction, oldkey)
+				horizons.globals.fife.set_key_for_action(action, key_name)
+
+
 		horizons.globals.fife.save_settings()
 
 		self.update_buttons_text()

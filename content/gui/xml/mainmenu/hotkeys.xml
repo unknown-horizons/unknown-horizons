@@ -54,6 +54,9 @@
 	  <VBox name="button_container" position="150, 0">
 
 	  </VBox>
+	  <VBox name="sec_button_container" position="250, 0">
+
+	  </VBox>
 	  </HBox>
 
 	</ScrollArea>
