@@ -46,9 +46,10 @@ class ImageFillStatusButton(Container):
 		self.res_id = res_id
 		self.text_position = (9, 30)
 		self.marker = marker
-		self.filled = filled # <- black magic at work! this calls _draw()
 		# force no cache. needed when the same icon has to appear several times at the same time
 		self.uncached = uncached
+		# Since draw() needs all other stuff initialized, only set this in the end:
+		self.filled = filled # <- black magic at work! this calls _draw()
 
 	@classmethod
 	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False, showprice=False):
