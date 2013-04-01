@@ -176,7 +176,6 @@ class Fife(ApplicationBase):
 		self.pychan.init(self.engine, debug_pychan) # pychan debug mode may have performance impacts
 
 		init_pychan()
-		self.pychanmanager = pychan.internal.get_manager()
 
 		self._setting_handler.apply_settings()
 
