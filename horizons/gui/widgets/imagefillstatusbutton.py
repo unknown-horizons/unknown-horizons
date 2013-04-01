@@ -34,9 +34,9 @@ class ImageFillStatusButton(Container):
 
 	def __init__(self, path, text, res_id, helptext="",
 	             filled=0, marker=0, uncached=False, **kwargs):
-		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
-		Derives from Container, but also takes the args of the Imagebutton,
-		in order to display the image. The container is only used, because ImageButtons can't have children.
+		"""Represents the image in the ingame gui, with a bar to show how full
+		the inventory is for that resource. Derives from Container and also takes
+		all arguments of Imagebutton in order to display the resource icon.
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.path = path
@@ -45,9 +45,10 @@ class ImageFillStatusButton(Container):
 		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (9, 30)
-		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time
 		self.marker = marker
 		self.filled = filled # <- black magic at work! this calls _draw()
+		# force no cache. needed when the same icon has to appear several times at the same time
+		self.uncached = uncached
 
 	@classmethod
 	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False, showprice=False):
@@ -80,8 +81,9 @@ class ImageFillStatusButton(Container):
 			helptext = db.get_res_name(res)
 
 		return cls(path=path, text=unicode(amount), helptext=helptext,
-			   size=cls.CELL_SIZE, res_id=res, filled=filled,
-			   marker=marker, uncached=uncached)
+		           size=cls.CELL_SIZE, res_id=res, filled=filled,
+		           max_size=cls.CELL_SIZE, min_size=cls.CELL_SIZE,
+		           marker=marker, uncached=uncached)
 
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
