@@ -22,7 +22,7 @@
 import traceback
 
 from fife import fife
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
 from horizons.gui.util import load_uh_widget
@@ -84,7 +84,7 @@ class Window(object):
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
 		image = fife.GuiImage(image)
-		self._modal_background = pychan.Icon(image=image)
+		self._modal_background = Icon(image=image)
 		self._modal_background.position = (0, 0)
 		self._modal_background.show()
 
