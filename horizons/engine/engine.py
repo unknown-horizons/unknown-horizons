@@ -172,7 +172,6 @@ class Fife(ApplicationBase):
 		#init pychan
 		debug_pychan = self.get_fife_setting('PychanDebug') # default is False
 		self.pychan.init(self.engine, debug_pychan) # pychan debug mode may have performance impacts
-		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
 		init_pychan()
 		self.pychanmanager = pychan.internal.get_manager()
