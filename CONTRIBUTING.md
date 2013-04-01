@@ -76,8 +76,8 @@ A better example is [FIFE epydoc] (http://www.fifengine.net/epydoc) which helps 
 
 Tests
 -----
-* [Wiki overview page] (http://wiki.unknown-horizons.org/w/Tests)
-* [Writing GUI tests] (http://wiki.unknown-horizons.org/w/Writing_GUI_tests)
+* [Wiki overview page] (http://github.com/unknown-horizons/unknown-horizons/wiki/Tests)
+* [Writing GUI tests] (http://github.com/unknown-horizons/unknown-horizons/wiki/Writing-gui-tests)
 
 Github help
 -----------
