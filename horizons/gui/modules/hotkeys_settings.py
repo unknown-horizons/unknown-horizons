@@ -77,6 +77,7 @@ class HotkeyConfiguration(Window):
 			sec_button_container.addChild(button2)
 			self.buttons.append(button)
 			self.secondary_buttons.append(button2)
+			self.update_buttons_text()
 
 	def _create_label(self, action):
 		#xgettext:python-format
@@ -95,8 +96,7 @@ class HotkeyConfiguration(Window):
 				keyname = current_binding[action_index]
 
 		#xgettext:python-format
-		keyname = _(keyname)
-		button = Button(text=keyname)
+		button = Button()
 		button.name = str(index)
 		button.max_size = (130,18)
 		return button
@@ -164,19 +164,11 @@ class HotkeyConfiguration(Window):
 			else:
 				secondary_button.text = _("-")
 
-	def update_button_text(self, index, column, text):
-		if column == 1:
-			button = self.buttons[index]
-		elif column == 2:
-			button = self.secondary_buttons[index]
-		button.text = _(text)
-
 	def apply_change(self):
 		key = self.last_combination[0]
 		key_name = self.keyName(key)
 		action = self.actions[self.current_index]
 		column = self.current_column
-		key_to_replace = False
 
 		if self.key_is_set(key):
 			oldaction = self.get_action_name(key)
