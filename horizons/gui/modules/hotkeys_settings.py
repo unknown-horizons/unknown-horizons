@@ -130,8 +130,7 @@ class HotkeyConfiguration(Window):
 	def key_is_set(self, key):
 		key_name = self.keyName(key)
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
-		for action in custom_key_actions:
-			k = custom_key_actions[action]
+		for k in custom_key_actions.itervalues():
 			if key_name in k:
 				return True
 		return False
