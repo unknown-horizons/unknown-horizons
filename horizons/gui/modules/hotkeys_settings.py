@@ -41,9 +41,9 @@ class HotkeyConfiguration(Window):
 		self.buttons = []
 		self.secondary_buttons = []
 
+		self.keyconf = KeyConfig()
 		self.actions = sorted([action for action in horizons.globals.fife.get_hotkey_settings()])
 
-		self.keyconf = KeyConfig()
 		self.HELPSTRING_LAYOUT = None
 		self._is_displayed = False
 		self._build_interface()
@@ -102,7 +102,7 @@ class HotkeyConfiguration(Window):
 		return button
 
 	def get_current_bindings(self):
-		""" Returns a dict mapping action -> list of keys"""
+		""" Returns a dict mapping action -> list of keys """
 		bindings = {}
 		for action in self.actions:
 			keys = self.keyconf.get_current_keys(action)
@@ -164,23 +164,38 @@ class HotkeyConfiguration(Window):
 			else:
 				secondary_button.text = _("-")
 
+	def update_button_text(self, index, column, text):
+		if column == 1:
+			button = self.buttons[index]
+		elif column == 2:
+			button = self.secondary_buttons[index]
+		button.text = _(text)
+
 	def apply_change(self):
 		key = self.last_combination[0]
 		key_name = self.keyName(key)
 		action = self.actions[self.current_index]
+		column = self.current_column
+		key_to_replace = False
 
-		if not self.key_is_set(key):
-			horizons.globals.fife.set_key_for_action(action, key_name)
-		else:
+		if self.key_is_set(key):
 			oldaction = self.get_action_name(key)
-			oldkey = self.keyconf.get_current_keys(action)[0]
-
 			#xgettext:python-format
 			message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
 					                      key=key_name, action=oldaction)
 			if self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-				horizons.globals.fife.set_key_for_action(oldaction, oldkey)
-				horizons.globals.fife.set_key_for_action(action, key_name)
+				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
+
+		bindings = self.keyconf.get_current_keys(action)
+		if column == 1:
+			bindings[0] = key_name
+		if column == 2:
+			if len(bindings) < 2:
+				bindings.append(key_name)
+			else:
+				bindings[1] = key_name
+
+		horizons.globals.fife.set_key_for_action(action, bindings)
 
 		self.update_buttons_text()
 		self.last_combination = []
