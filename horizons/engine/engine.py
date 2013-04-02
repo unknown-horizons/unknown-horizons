@@ -246,6 +246,15 @@ class Fife(ApplicationBase):
 				return
 		self.set_key_for_action(action, old_keys)
 
+	def replace_key_for_action(self, action, oldkey, newkey):
+		"""Replaces key *oldkey* with key *newkey* for action *action*"""
+		old_keys = self._setting.get(KEY_MODULE, action, defaultValue=[])
+		if not oldkey in old_keys:
+			return
+		index = old_keys.index(oldkey)
+		old_keys[index] = newkey
+		self.set_key_for_action(action, old_keys)
+
 	def save_settings(self):
 		self._setting.saveSettings()
 
