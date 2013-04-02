@@ -156,6 +156,9 @@ class HotkeyConfiguration(Window):
 		for i in range(len(self.buttons)):
 			action = self.actions[i]
 			bindings = self.keyconf.get_current_keys(action)
+			for j in range(len(bindings)):
+				if bindings[j] == 'UNASSIGNED':
+					bindings[j] = '-'
 			button = self.buttons[i]
 			secondary_button = self.secondary_buttons[i]
 			button.text = _(bindings[0])
