@@ -42,6 +42,7 @@ class KeyConfig(object):
 	def __init__(self):
 		_Actions = self._Actions
 
+
 		self.all_keys = self.get_keys_by_name()
 		# map key ID (int) to action it triggers (int)
 		self.keyval_action_mappings = {}
@@ -102,3 +103,6 @@ class KeyConfig(object):
 
 	def get_default_keys(self, action):
 		return horizons.globals.fife.get_keys_for_action(action, default=True)
+
+	def get_actions_by_name(self):
+		return [str(x) for x in self._Actions]
