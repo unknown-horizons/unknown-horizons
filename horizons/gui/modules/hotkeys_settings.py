@@ -42,7 +42,8 @@ class HotkeyConfiguration(Window):
 		self.secondary_buttons = []
 
 		self.keyconf = KeyConfig()
-		self.actions = sorted([action for action in horizons.globals.fife.get_hotkey_settings()])
+		self.actions = self.keyconf.get_actions_by_name()
+		self.keys = self.keyconf.get_keys_by_value()
 
 		self.HELPSTRING_LAYOUT = None
 		self._is_displayed = False
@@ -53,8 +54,6 @@ class HotkeyConfiguration(Window):
 		self.current_index = None
 		self.last_combination = []
 		self.last_column = 1
-
-		self.keys = self.keyconf.get_keys_by_value()
 
 		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self.save_settings)
