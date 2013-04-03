@@ -24,6 +24,7 @@ from string import ascii_uppercase
 from fife import fife
 
 import horizons.globals
+from horizons.ext.enum import Enum
 from horizons.util.python.singleton import Singleton
 
 class KeyConfig(object):
@@ -32,15 +33,11 @@ class KeyConfig(object):
 	"""
 	__metaclass__ = Singleton
 
-	class _Actions(object):
-		"""Internal data. Use inside keylistener module."""
-		GRID, COORD_TOOLTIP, DESTROY_TOOL, PLAYERS_OVERVIEW, ROAD_TOOL, SPEED_UP, SPEED_DOWN, \
-		PAUSE, SETTLEMENTS_OVERVIEW, SHIPS_OVERVIEW, LOGBOOK, BUILD_TOOL, ROTATE_RIGHT, \
-		ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, \
-		PIPETTE, HEALTH_BAR, ESCAPE, LEFT, RIGHT, UP, DOWN, DEBUG, CONSOLE, HELP, SCREENSHOT, \
-		SHOW_SELECTED, REMOVE_SELECTED = \
-		range(32)
-
+	_Actions = Enum('GRID', 'COORD_TOOLTIP', 'DESTROY_TOOL', 'PLAYERS_OVERVIEW', 'ROAD_TOOL', 'SPEED_UP', 'SPEED_DOWN', \
+		'PAUSE', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW', 'LOGBOOK', 'BUILD_TOOL', 'ROTATE_RIGHT', \
+		'ROTATE_LEFT', 'CHAT', 'TRANSLUCENCY', 'TILE_OWNER_HIGHLIGHT', 'QUICKSAVE', 'QUICKLOAD', \
+		'PIPETTE', 'HEALTH_BAR', 'ESCAPE', 'LEFT', 'RIGHT', 'UP', 'DOWN', 'DEBUG', 'CONSOLE', 'HELP', 'SCREENSHOT', \
+		'SHOW_SELECTED', 'REMOVE_SELECTED')
 
 	def __init__(self):
 		_Actions = self._Actions
