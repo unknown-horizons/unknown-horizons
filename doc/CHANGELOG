@@ -9,65 +9,61 @@ changelog date: APR 05
 Gameplay and Balancing
 * New features
 * Modifications and changes
-	# Reduce upgrade cost of residential buildings (boards)
-	# Rename 'increment' to 'tier
+  # reduce boards upgrade cost of all residential buildings by 1
+  # rename 'increment' to 'tier
 * Fixed bugs and problems
-	~ Boatbuilder eating the player's money - #2046
-	~ Residences being affected by disasters shouldn't upgrade - #1835
-	~ Undefined boat builder behavior when pausing construction and ordering new ship - #1830
-	~ Don't crash on special unloading and loading combinations - #1999
+  ~ boatbuilder eating the player's money - #2046
+  ~ re-enable almost all ambient sounds
+  ~ residences being affected by disasters shouldn't upgrade - #1835
+  ~ undefined boat builder behavior when pausing construction and ordering new ship - #1830
+  ~ crash on special unloading and loading combinations - #1999
 
 Media Content
 * New files and features
-	+ Add warehouse graphics for tier 3 (Daniel)
-	+ Use player-colored settlement icon in cityinfo and account tab
-	+ New music track: Ireland's Coast by Matthew Pablo
-	+ New music track: Peer Gynt Suite No. 1, Op. 46 - I. Morning
+  + warehouse graphics for tier 3 (Daniel)
+  + Use player-colored settlement icon in cityinfo and account tab
+  + music track: Ireland's Coast by Matthew Pablo
+  + music track: Peer Gynt Suite No. 1, Op. 46 - I. Morning
 * Brush-ups and modification
 
 User Interface
 * Additions and new features
-	+ Allow multiselect combinations of units and buildings
-	+ Start savegames with doubleclick - #2036 (ThePawnBreak)
-	+ Add support for different buy and sell prices (ThePawnBreak)
-	+ Add information about price in tooltip in Select Resources widget (ThePawnBreak)
-	+ Add necessary resources tooltip to build menu - #1886 (ThePawnBreak)
+  + allow multiselect combinations of units and buildings
+  + start savegames with doubleclick - #2036 (ThePawnBreak)
+  + support for different buy and sell prices (ThePawnBreak)
+  + information about price in tooltip in Select Resources widget (ThePawnBreak)
+  + necessary resources tooltip to build menu - #1886 (ThePawnBreak)
 * Repositioning and modifications
-	# Update distillery build menu icon
-	# Update charcoal burning build menu icon
-	# Move settlement rename functionality into AccountTab
-	#	Buildingtool: More obtrusive highlights for related buildings
-	# Buidlingtool: Less obtrusive buildability highlights
+  # update distillery and charcoal burning build menu icons
+  # Buildingtool: tweak color highlights
 * Fixed bugs and usability problems
-	~ Don't crash multiselect tab after hiding it when pressing delete
-	~ Don't crash on clicking on multiplayer menu when there's no internet connection
-	~ Certain ToggleImageButtons segfault on hover - #2000
-	~ Cityinfo widget position with large resource overview bar - #1866
-	~ Crate-Icon in Overview of Resource-Deposits - #2001
+  ~ multiselect tab crashes after hiding it when pressing delete
+  ~ clicking on multiplayer menu crashes when there's no internet connection
+  ~ certain ToggleImageButtons segfault on hover - #2000
+  ~ cityinfo widget position with large resource overview bar - #1866
+  ~ crate icon in overview of resource deposits - #2001
 
 Codebase
 * New functionalities
-	+ Implement quicksave and autosave for editor - #1935 (ThePawnBreak)
-	+ Added script to create a linux tarball
-	+ Add progressbar to loading screen
-	+ Add TilingProgressBar	that tiles its fill image instead of stretching
+  + quicksave and autosave for editor - #1935 (ThePawnBreak)
+  + progressbar on loading screen
+  + font change on runtime - #1740
+  + script to create a linux tarball
+  + TilingProgressBar that tiles its fill image instead of stretching
 * Modified structures
-	# Multiplayer sever only returns games running the same protocol version.i
-	# Remove unused and outdated install script
-	# Make the AI try to react to disaster and mine depletion events only when they are about that player
-	# Update credits generation script
-	# Leave the MP game when the game lobby is cancelled
+  # multiplayer sever only returns games running the same protocol version
+  # remove unused and outdated install script
+  # make the AI try to react to disaster and mine depletion events only when they are about that player
+  # leave the MP game when the game lobby is cancelled
 * Fixed crashes and inconsistencies
-	~ A bug eating almost all ambient sounds
-	~ Hitting Esc while loading screen is active crashes - #2018
-	~ Font change on runtime - #1740
-	~ Multiplayer backward compatiblity for 2012.1
+  ~ hitting Esc while loading screen is active crashes - #2018
+  ~ multiplayer backward compatibility for 2012.1
 
 * New team members with this release, Annotations
-	+ Push access was granted to: ThePawnBreak
-	+ Add gryffus to AUTHORS, packaging for Fedora and openSUSE Linux distribution.
-	+ Translators that joined our teams and contributed several strings:
-		Please refer to the credits!
+  + Push access was granted to: ThePawnBreak
+  + Add gryffus to AUTHORS, packaging for Fedora and openSUSE Linux distribution.
+  + Translators that joined our teams and contributed several strings:
+    Please refer to the credits!
 
 -----------------------------------------------------
 
