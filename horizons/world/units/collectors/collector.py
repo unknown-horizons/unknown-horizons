@@ -430,12 +430,11 @@ class Collector(Unit):
 		self.log.debug("%s was cancelled, continue action is %s", self, continue_action)
 		# remove us as incoming collector at target
 		self._abort_collector_job()
-		removed_calls = 0
 		if self.job is not None:
 			# clean up depending on state
 			if self.state == self.states.working:
 				removed_calls = Scheduler().rem_call(self, self.finish_working)
-				assert removed_calls <= 1, 'removed %s calls instead of one' % removed_calls
+				assert removed_calls == 1, 'removed %s calls instead of one' % removed_calls
 			self.job = None
 			self.state = self.states.idle
 		# NOTE:
@@ -445,11 +444,6 @@ class Collector(Unit):
 		# This line should fix it sufficiently for now and the problem could be
 		# deprecated when the switch to a component-based system is accomplished.
 		Scheduler().rem_call(self, self.resume_movement)
-		if removed_calls == 0:
-			# Collector never was working, probably error while loading a game.
-			# It is very likely that any action we wanted to continue with (like
-			# moving to home building) also breaks due to missing initialization.
-			return
 		continue_action()
 
 	def __str__(self):
