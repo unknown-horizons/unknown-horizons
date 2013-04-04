@@ -434,6 +434,7 @@ def setup_fife():
 	log_paths()
 	log_sys_info()
 	if not find_fife():
+		#TODO useful error message anyone?
 		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
 
 	from fife import fife
