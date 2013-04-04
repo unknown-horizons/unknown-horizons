@@ -216,10 +216,10 @@ class _build_man(build):
 			self.warn("Can't build manpage, needs xsltproc")
 			return
 
-		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, \
-								   (['xsltproc',
-								     'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
-								     'doc/manpage.xml'],))
+		data = (['xsltproc',
+		        'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
+		        'doc/manpage.xml'], )
+		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, data)
 		self.distribution.data_files.append(('share/man/man6', ('unknown-horizons.6',)))
 
 build.sub_commands.append(('build_man', None))
