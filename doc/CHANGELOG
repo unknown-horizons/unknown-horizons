@@ -160,7 +160,7 @@ Codebase
       highlight_position, change_increment, alter_inventory
   + scenario tests
   + store hotkey key values in settings file - #1302
-  + add  enet.so library for x64 Mac users with system python 2.7
+  + add enet.so library for x64 Mac users with system python 2.7
   + new atlases generator, enable/disable via settings.xml or commandline
   + add the --no-freeze-protection flag to disable freeze protection
   + show a warning of unsupported fife revision
@@ -188,21 +188,21 @@ Codebase
 
 User-Contributed Content
 * Translations
-   + new translation project: multiplayer error messages
-   + new translations: ml, uk
-   + new terminology translations: uk
-   + new tutorial translations: ml, uk
-   + new translations of 'The Unknown': de, es, fr, nl, pt_BR
+  + new translation project: multiplayer error messages
+  + new translations: ml, uk
+  + new terminology translations: uk
+  + new tutorial translations: ml, uk
+  + new translations of 'The Unknown': de, es, fr, nl, pt_BR
 
 * Campaigns, scenarios and maps
 
 * New team members with this release, Annotations
-   + Push access was granted to: mesutcank, Kiryx,
-   + We accepted pull requests or patches by:
-     Foaly, Srijan Mishra, Vivek Sagar, MasterofJOKers, Magnus Knutas,
-     desophos,
-   + Translators that joined our teams and contributed several strings:
-     Please refer to the credits!
+  + Push access was granted to: mesutcank, Kiryx,
+  + We accepted pull requests or patches by:
+    Foaly, Srijan Mishra, Vivek Sagar, MasterofJOKers, Magnus Knutas,
+    desophos,
+  + Translators that joined our teams and contributed several strings:
+    Please refer to the credits!
 
 -----------------------------------------------------
 
