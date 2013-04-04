@@ -34,3 +34,5 @@ components:
 actionsets:
   TIER.SAILORS:
     as_warehouse0:
+  TIER.SETTLERS:
+    as_warehouse_settler0:
