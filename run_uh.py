@@ -62,7 +62,7 @@ def exit_with_error(title, message):
 		window = Tkinter.Tk()
 		window.wm_withdraw()
 		tkMessageBox.showerror(title, message)
-	except:
+	except ImportError:
 		# tkinter may be missing
 		pass
 	exit(1)
