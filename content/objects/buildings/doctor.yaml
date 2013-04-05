@@ -21,10 +21,11 @@ components:
       HERBS:
         consumes:
         - [RES.MEDICAL_HERBS, -2]
+        - [RES.BLACKDEATH, -1]
         time: 60
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {RES.MEDICAL_HERBS: 8}
+        slot_sizes: {RES.MEDICAL_HERBS: 8, RES.BLACKDEATH: 4}
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
