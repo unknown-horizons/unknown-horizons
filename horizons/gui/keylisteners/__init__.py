@@ -23,5 +23,3 @@ from keyconfig import KeyConfig
 
 from mainlistener import MainListener
 from ingamekeylistener import IngameKeyListener
-from hotkeyslistener import HotkeysListener
-

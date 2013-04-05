@@ -21,15 +21,16 @@
 
 import horizons.globals
 from fife import fife
-from horizons.command.game import PauseCommand, UnPauseCommand
+from fife.extensions.pychan.widgets import Button, Label
 from horizons.gui.keylisteners import HotkeysListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.windows import Window
 from horizons.messaging import LanguageChanged
+from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
-from fife.extensions.pychan.widgets import Button, Label
+import horizons.globals
 
 
 class HotkeyConfiguration(Window):
@@ -209,3 +210,30 @@ class HotkeyConfiguration(Window):
 
 	def hide(self):
 		self.widget.hide()
+
+
+class HotkeysListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
+	"""HotkeysListener Class to process events of hotkeys binding interface"""
+
+	def __init__(self):
+		super(HotkeysListener, self).__init__()
+		fife.IKeyListener.__init__(self)
+		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
+		fife.ICommandListener.__init__(self)
+		horizons.globals.fife.eventmanager.addCommandListener(self)
+
+	def end(self):
+		horizons.globals.fife.eventmanager.removeKeyListener(self)
+		super(HotkeysListener, self).end()
+
+	def keyPressed(self, evt):
+		print 'hotkey_listener detected keypress'
+		evt.consume()
+
+	def keyReleased(self, evt):
+		pass
+
+	def onCommand(self, command):
+		if command.getCommandType() == fife.CMD_QUIT_GAME:
+			horizons.main.quit()
+			command.consume()
