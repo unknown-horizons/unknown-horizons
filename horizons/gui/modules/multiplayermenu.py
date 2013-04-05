@@ -63,7 +63,6 @@ class MultiplayerMenu(Window):
 		})
 
 		self._gui.findChild(name='gamelist').capture(self._update_game_details)
-		self._gui.findChild(name='showonlyownversion').capture(self._refresh)
 		self._playerdata = PlayerDataSelection()
 		self._gui.findChild(name="playerdataselectioncontainer").addChild(self._playerdata.get_widget())
 
@@ -176,8 +175,7 @@ class MultiplayerMenu(Window):
 		if play_sound:
 			AmbientSoundComponent.play_special('refresh')
 
-		only_this_version_allowed = self._gui.findChild(name='showonlyownversion').marked
-		self._games = NetworkInterface().get_active_games(only_this_version_allowed)
+		self._games = NetworkInterface().get_active_games()
 		if self._games is None:
 			return False
 
