@@ -331,8 +331,6 @@ class SavegameUpgrader(object):
 		for (settler_id, ) in db("SELECT rowid FROM building WHERE type = ?", 3):
 			db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)", settler_id, 98, 1)
 
-
-
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
