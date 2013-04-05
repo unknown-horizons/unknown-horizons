@@ -22,6 +22,7 @@
 import horizons.globals
 from fife import fife
 from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.gui.keylisteners import HotkeysListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
@@ -40,6 +41,8 @@ class HotkeyConfiguration(Window):
 		self.widget = load_uh_widget('hotkeys.xml')
 		self.buttons = []
 		self.secondary_buttons = []
+
+		self.listener = HotkeysListener()
 
 		self.keyconf = KeyConfig()
 		self.actions = self.keyconf.get_actions_by_name()
@@ -117,6 +120,7 @@ class HotkeyConfiguration(Window):
 		button.text = _("Press desired key")
 
 	def _detect_keypress(self, event):
+		print 'hotkey_interface detected keypress'
 		if self.detecting:
 			self.last_combination.append(event.getKey())
 			self.detecting = False
