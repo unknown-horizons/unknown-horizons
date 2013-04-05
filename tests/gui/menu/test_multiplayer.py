@@ -65,8 +65,6 @@ def test_games_list(gui):
 	gui.trigger('menu', 'multi_button')
 
 	gui.trigger('multiplayermenu', 'refresh')
-	gui.trigger('multiplayermenu', 'showonlyownversion')
-	gui.trigger('multiplayermenu', 'refresh')
 
 
 @with_setup(start_server, stop_server)
