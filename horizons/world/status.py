@@ -69,6 +69,11 @@ class StatusIcon(object):
 	def __str__(self):
 		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
 
+class BlackDeathStatusIcon(StatusIcon):
+	""" Black Death disaster """
+	priority = 3000
+	icon = 'as_pestilence+idle+45'
+	_helptext = _("The inhabitants are infected by the Black Death!")
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """

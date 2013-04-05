@@ -605,6 +605,11 @@ CREATE TABLE "fish_data" (
 	"last_usage_tick" INT NOT NULL
 );
 
+CREATE TABLE "black_death_disaster" (
+	"disaster" INT NOT NULL, -- disaster and building together make up the key
+	"building" INT NOT NULL,
+	"remaining_ticks_havoc" INT NOT NULL
+);
 
 
 COMMIT;

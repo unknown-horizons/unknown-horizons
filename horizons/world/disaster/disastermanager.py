@@ -23,6 +23,7 @@
 import logging
 
 from horizons.world.disaster.firedisaster import FireDisaster
+from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.worldobject import WorldObject
@@ -45,7 +46,7 @@ class DisasterManager(object):
 		self.session = session
 		self.disabled = disabled
 		# List of possible disaster classes
-		self.disasters = [FireDisaster]
+		self.disasters = [FireDisaster, BlackDeathDisaster]
 
 		# Mapping settlement -> active disasters
 		self._active_disaster = {}
