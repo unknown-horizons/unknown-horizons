@@ -54,6 +54,7 @@ from horizons.constants import BUILDINGS, RES, GAME_SPEED, TIER
 from horizons.entities import Entities
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from horizons.world.disaster.firedisaster import FireDisaster
 from horizons.world.production.producer import Producer
 
