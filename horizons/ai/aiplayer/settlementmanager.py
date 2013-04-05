@@ -439,7 +439,20 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 	def handle_disaster(self, message):
-		if issubclass(message.disaster_class, FireDisaster):
+		if issubclass(message.disaster_class, BlackDeathDisaster):
+			position = message.building.position
+			doctor_radius = Entities.buildings[BUILDINGS.DOCTOR].radius
+			handled = False
+
+			for doctor in self.settlement.buildings_by_id[BUILDINGS.DOCTOR]:
+				if doctor.position.distance(position) > doctor_radius:
+					continue
+				# TODO: check whether the building and the doctor are connected by road
+				self.log.info('%s ignoring %s at %s because %s should be able to handle it', self, message.disaster_class.__name__, message.building, doctor)
+				handled = True
+				break
+
+		elif issubclass(message.disaster_class, FireDisaster):
 			position = message.building.position
 			fire_station_radius = Entities.buildings[BUILDINGS.FIRE_STATION].radius
 			handled = False
