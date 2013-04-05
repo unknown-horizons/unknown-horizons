@@ -3,8 +3,8 @@ Unknown Horizons
 
 -----------------------------------------------------
 
-2013-04-05: Milestone 2013.2
-changelog date: APR 05
+2013-04-06: Milestone 2013.2
+changelog date: APR 06
 
 Gameplay and Balancing
 * New features
@@ -42,6 +42,7 @@ User Interface
   ~ certain ToggleImageButtons segfault on hover - #2000
   ~ cityinfo widget position with large resource overview bar - #1866
   ~ crate icon in overview of resource deposits - #2001
+	~ Remove same version only checkbox in multiplayer menu - #2068
 
 Codebase
 * New functionalities
@@ -58,6 +59,7 @@ Codebase
 * Fixed crashes and inconsistencies
   ~ hitting Esc while loading screen is active crashes - #2018
   ~ multiplayer backward compatibility for 2012.1
+	~ Remove double extensions (.sqlite.sqlite) from savegames - #2065
 
 * New team members with this release, Annotations
   + Push access was granted to: ThePawnBreak
