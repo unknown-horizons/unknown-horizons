@@ -216,7 +216,7 @@ class HotkeyConfiguration(Window):
 		self.listener.deactivate()
 
 
-class HotkeysListener(fife.IKeyListener, LivingObject):
+class HotkeysListener(fife.IKeyListener):
 	"""HotkeysListener Class to process events of hotkeys binding interface"""
 
 	def __init__(self, detect_keypress):
