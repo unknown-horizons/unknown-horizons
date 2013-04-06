@@ -154,7 +154,7 @@ class SelectSavegameDialog(Dialog):
 				message = message.format(name=selected_savegame)
 				message += u"\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
-				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
+				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True):
 					return self._windows.show(self)
 
 		elif self._mode == 'load':  # return selected item from list
