@@ -213,6 +213,30 @@ class Dialog(Window):
 
 		return horizons.globals.fife.loop()
 
+	@classmethod
+	def create_from_widget(cls, dlg, bind, event_map=None, modal=False, focus=None):
+		"""Shows any pychan dialog.
+
+		@param dlg: dialog that is to be shown
+		@param bind: events that make the dialog return + return values {'ok': True, 'cancel': False}
+		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
+		@param modal: Whether to block user interaction while displaying the dialog
+		@param focus: Which child widget should take focus
+		"""
+		def prepare(self, **kwargs):
+			self._gui = dlg
+			if event_map:
+				self._gui.mapEvents(event_map)
+
+		TempDialog = type('TempDialog', (Dialog, ), {
+			'modal': modal,
+			'return_events': bind,
+			'focus': focus,
+			'prepare': prepare,
+		})
+
+		return TempDialog
+
 
 class Popup(Dialog):
 	"""Displays a popup with the specified text"""
@@ -324,30 +348,6 @@ class WindowManager(object):
 		# because we only show one window at a time, it is enough to show the
 		# most recently added window
 		self._windows[-1].show()
-
-	def show_dialog(self, dlg, bind, event_map=None, modal=False, focus=None):
-		"""Shows any pychan dialog.
-
-		@param dlg: dialog that is to be shown
-		@param bind: events that make the dialog return + return values {'ok': True, 'cancel': False}
-		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
-		@param modal: Whether to block user interaction while displaying the dialog
-		@param focus: Which child widget should take focus
-		"""
-
-		def prepare(self, **kwargs):
-			self._gui = dlg
-			if event_map:
-				self._gui.mapEvents(event_map)
-
-		TempDialog = type('TempDialog', (Dialog, ), {
-			'modal': modal,
-			'return_events': bind,
-			'focus': focus,
-			'prepare': prepare,
-		})
-
-		return self.show(TempDialog(self))
 
 	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0):
 		"""
