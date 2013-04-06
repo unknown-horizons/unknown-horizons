@@ -67,8 +67,7 @@ class HotkeyConfiguration(Window):
 		container = self.widget.findChild(name='keys_container')
 		button_container = self.widget.findChild(name='button_container')
 		sec_button_container = self.widget.findChild(name='sec_button_container')
-		for i in range(len(self.actions)):
-			action = self.actions[i]
+		for i, action in enumerate(self.actions):
 			label = self._create_label(action)
 			button = self._create_button(action, 0, i)
 			button2 = self._create_button(action, 1, i)
@@ -122,13 +121,12 @@ class HotkeyConfiguration(Window):
 			self.apply_change()
 
 	def update_buttons_text(self):
-		for i in range(len(self.buttons)):
+		for i, button in enumerate(self.buttons):
 			action = self.actions[i]
 			bindings = self.keyconf.get_current_keys(action)
 			for j in range(len(bindings)):
 				if bindings[j] == 'UNASSIGNED':
 					bindings[j] = '-'
-			button = self.buttons[i]
 			secondary_button = self.secondary_buttons[i]
 			button.text = _(bindings[0])
 			if len(bindings) > 1:
