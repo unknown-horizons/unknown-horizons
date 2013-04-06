@@ -7,15 +7,15 @@
 	<ScrollArea name="hotkeys_list" max_size="600,500" min_size="600,500">
 		<HBox name="label_button_columns" padding="30">
 			<VBox name="keys_container">
-				<Label text="Actions" name="headline" />
+			  <Label text="Actions" name="labels_headline" />
 			</VBox>
 
 			<VBox name="button_container" position="150, 0">
-				<Label text="Primary" name="headline" />
+				<Label text="Primary" name="primary_buttons_headline" />
 			</VBox>
 
 			<VBox name="sec_button_container" position="350, 0">
-				<Label text="Secondary" name="headline" />
+				<Label text="Secondary" name="secondary_buttons_headline" />
 			</VBox>
 	      </HBox>
 	</ScrollArea>
