@@ -105,12 +105,14 @@ class Dialog(Window):
 	# Name of widget that should get the focus once the dialog is shown
 	focus = None
 
+	# Maps Button names to return values that you can handle in `act`
+	return_events = {}
+
 	def __init__(self, windows):
 		super(Dialog, self).__init__(windows)
 
 		self._gui = None
 		self._hidden = False
-		self._return_events = {}
 
 	def prepare(self, **kwargs):
 		"""Setup the dialog gui.
