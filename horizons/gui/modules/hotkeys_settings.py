@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.globals
 from fife import fife
 from fife.extensions.pychan.widgets import Button, Label
+
+import horizons.globals
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
@@ -29,7 +30,6 @@ from horizons.gui.windows import Window
 from horizons.messaging import LanguageChanged
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
-
 
 class HotkeyConfiguration(Window):
 

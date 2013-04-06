@@ -42,7 +42,6 @@ class KeyConfig(object):
 	def __init__(self):
 		_Actions = self._Actions
 
-
 		self.all_keys = self.get_keys_by_name()
 		# map key ID (int) to action it triggers (int)
 		self.keyval_action_mappings = {}
