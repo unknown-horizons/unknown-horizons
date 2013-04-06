@@ -22,7 +22,6 @@
 import horizons.globals
 from fife import fife
 from fife.extensions.pychan.widgets import Button, Label
-from horizons.gui.keylisteners import HotkeysListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
@@ -30,20 +29,16 @@ from horizons.gui.windows import Window
 from horizons.messaging import LanguageChanged
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
-import horizons.globals
 
 
 class HotkeyConfiguration(Window):
 
-	def __init__(self, windows, session=None):
+	def __init__(self, windows):
 		super(HotkeyConfiguration, self).__init__(windows)
 
-		self._session = session
 		self.widget = load_uh_widget('hotkeys.xml')
 		self.buttons = []
 		self.secondary_buttons = []
-
-		self.listener = HotkeysListener()
 
 		self.keyconf = KeyConfig()
 		self.actions = self.keyconf.get_actions_by_name()
@@ -52,12 +47,14 @@ class HotkeyConfiguration(Window):
 		self.HELPSTRING_LAYOUT = None
 		self._is_displayed = False
 		self._build_interface()
-
+		
 		self.detecting = False
 		self.current_button = None
 		self.current_index = None
 		self.last_combination = []
 		self.last_column = 1
+
+		self.listener = HotkeysListener(self._detect_keypress)
 
 		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self.save_settings)
@@ -88,6 +85,9 @@ class HotkeyConfiguration(Window):
 		label = Label(text=text)
 		label.max_size = (130,42)
 		return label
+
+	def _detect_press(self, evt):
+		print evt
 
 	def _create_button(self, action, action_index, index):
 		current_binding = self.keyconf.get_current_keys(action)
@@ -121,7 +121,6 @@ class HotkeyConfiguration(Window):
 		button.text = _("Press desired key")
 
 	def _detect_keypress(self, event):
-		print 'hotkey_interface detected keypress'
 		if self.detecting:
 			self.last_combination.append(event.getKey())
 			self.detecting = False
@@ -215,19 +214,23 @@ class HotkeyConfiguration(Window):
 class HotkeysListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 	"""HotkeysListener Class to process events of hotkeys binding interface"""
 
-	def __init__(self):
+	def __init__(self, detect_keypress):
 		super(HotkeysListener, self).__init__()
 		fife.IKeyListener.__init__(self)
 		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
 		fife.ICommandListener.__init__(self)
 		horizons.globals.fife.eventmanager.addCommandListener(self)
 
+		self.detect = detect_keypress
+
+		detect_keypress("test")
+
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		super(HotkeysListener, self).end()
 
 	def keyPressed(self, evt):
-		print 'hotkey_listener detected keypress'
+		self.detect(evt)
 		evt.consume()
 
 	def keyReleased(self, evt):
