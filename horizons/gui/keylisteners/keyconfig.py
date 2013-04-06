@@ -45,16 +45,18 @@ class KeyConfig(object):
 		self.all_keys = self.get_keys_by_name()
 		# map key ID (int) to action it triggers (int)
 		self.keyval_action_mappings = {}
+		self.loadKeyConfiguration()
 
+		self.requires_shift = set([_Actions.DEBUG])
+
+	def loadKeyConfiguration(self):
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for action in custom_key_actions:
-			action_id = getattr(_Actions, action)
+			action_id = getattr(self._Actions, action)
 			keys_for_action = horizons.globals.fife.get_keys_for_action(action)
 			for key in keys_for_action:
 				key_id = self.get_key_by_name(key.upper())
 				self.keyval_action_mappings[key_id] = action_id
-
-		self.requires_shift = set([_Actions.DEBUG])
 
 	def translate(self, evt):
 		"""

@@ -203,6 +203,7 @@ class HotkeyConfiguration(Window):
 
 	def save_settings(self):
 		horizons.globals.fife.save_settings()
+		self.keyconf.loadKeyConfiguration()
 		self._windows.close()
 
 	def show(self):
