@@ -89,7 +89,6 @@ class Gui(object):
 
 		self.windows = WindowManager()
 		# temporary aliases for compatibility with rest of the code
-		self.show_dialog = self.windows.show_dialog
 		self.show_popup = self.windows.show_popup
 		self.show_error_popup = self.windows.show_error_popup
 
