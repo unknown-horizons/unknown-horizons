@@ -206,24 +206,27 @@ class HotkeyConfiguration(Window):
 
 	def show(self):
 		self.widget.show()
+		self.listener.activate()
 
 	def hide(self):
 		self.widget.hide()
+		self.listener.deactivate()		
 
 
-class HotkeysListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
+class HotkeysListener(fife.IKeyListener, LivingObject):
 	"""HotkeysListener Class to process events of hotkeys binding interface"""
 
 	def __init__(self, detect_keypress):
 		super(HotkeysListener, self).__init__()
 		fife.IKeyListener.__init__(self)
-		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
-		fife.ICommandListener.__init__(self)
-		horizons.globals.fife.eventmanager.addCommandListener(self)
 
 		self.detect = detect_keypress
 
-		detect_keypress("test")
+	def activate(self):
+		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
+
+	def deactivate(self):
+		horizons.globals.fife.eventmanager.removeKeyListener(self)
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
@@ -235,8 +238,3 @@ class HotkeysListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 	def keyReleased(self, evt):
 		pass
-
-	def onCommand(self, command):
-		if command.getCommandType() == fife.CMD_QUIT_GAME:
-			horizons.main.quit()
-			command.consume()
