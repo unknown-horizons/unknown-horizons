@@ -294,7 +294,7 @@ class WindowManager(object):
 		@param dlg: dialog that is to be shown
 		@param bind: events that make the dialog return + return values {'ok': True, 'cancel': False}
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
-		@param modal: Whether to block user interaction while displaying the popup
+		@param modal: Whether to block user interaction while displaying the dialog
 		@param focus: Which child widget should take focus
 		"""
 
