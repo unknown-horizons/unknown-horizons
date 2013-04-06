@@ -47,13 +47,15 @@ class HotkeyConfiguration(Window):
 		self.HELPSTRING_LAYOUT = None
 		self._is_displayed = False
 		self._build_interface()
-		
+
 		self.detecting = False
 		self.current_button = None
 		self.current_index = None
 		self.last_combination = []
 		self.last_column = 1
 
+		# There are some keys which are not detected by the event widget/keyPressed
+		# In that case, the key presses are detected by the listener, which calls _detect_keypress
 		self.listener = HotkeysListener(self._detect_keypress)
 
 		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
@@ -86,9 +88,6 @@ class HotkeyConfiguration(Window):
 		label.max_size = (130,42)
 		return label
 
-	def _detect_press(self, evt):
-		print evt
-
 	def _create_button(self, action, action_index, index):
 		current_binding = self.keyconf.get_current_keys(action)
 
@@ -104,14 +103,6 @@ class HotkeyConfiguration(Window):
 		button.max_size = (130,18)
 		return button
 
-	def get_current_bindings(self):
-		""" Returns a dict mapping action -> list of keys """
-		bindings = {}
-		for action in self.actions:
-			keys = self.keyconf.get_current_keys(action)
-			bindings[action] = keys
-		return bindings
-
 	def _detect_click_on_button(self, button, column):
 		self.detecting = True
 		self.current_button = button
@@ -122,37 +113,13 @@ class HotkeyConfiguration(Window):
 
 	def _detect_keypress(self, event):
 		if self.detecting:
-			self.last_combination.append(event.getKey())
+			key = event.getKey()
+			# if the key is not supported, act as if it was not detected
+			if not self.keyName(key):
+				return
+			self.last_combination.append(key)
 			self.detecting = False
 			self.apply_change()
-
-	def keyName(self, key):
-		value = key.getValue()
-		return self.keys[value]
-
-	def key_is_set(self, key):
-		key_name = self.keyName(key)
-		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
-		for k in custom_key_actions.itervalues():
-			if key_name in k:
-				return True
-		return False
-
-	def get_action_name(self, key):
-		key_name = self.keyName(key)
-		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
-		for action in custom_key_actions:
-			k = custom_key_actions[action]
-			if key_name in k:
-				return action
-		print "Action name not found. Key name must be wrong. This is not supposed to ever happen"
-
-	def reset_to_default(self):
-		for action in self.actions:
-			default_key = horizons.globals.fife.get_keys_for_action(action, default=True)
-			horizons.globals.fife.set_key_for_action(action, default_key)
-
-		self.update_buttons_text()
 
 	def update_buttons_text(self):
 		for i in range(len(self.buttons)):
@@ -200,6 +167,42 @@ class HotkeyConfiguration(Window):
 		self.update_buttons_text()
 		self.last_combination = []
 
+	def keyName(self, key):
+		value = key.getValue()
+		return self.keys.get(value)
+
+	def key_is_set(self, key):
+		key_name = self.keyName(key)
+		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
+		for k in custom_key_actions.itervalues():
+			if key_name in k:
+				return True
+		return False
+
+	def get_current_bindings(self):
+		""" Returns a dict mapping action -> list of keys """
+		bindings = {}
+		for action in self.actions:
+			keys = self.keyconf.get_current_keys(action)
+			bindings[action] = keys
+		return bindings
+
+	def get_action_name(self, key):
+		key_name = self.keyName(key)
+		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
+		for action in custom_key_actions:
+			k = custom_key_actions[action]
+			if key_name in k:
+				return action
+		print "Action name not found. Key name must be wrong. This is not supposed to ever happen"
+
+	def reset_to_default(self):
+		for action in self.actions:
+			default_key = horizons.globals.fife.get_keys_for_action(action, default=True)
+			horizons.globals.fife.set_key_for_action(action, default_key)
+
+		self.update_buttons_text()
+
 	def save_settings(self):
 		horizons.globals.fife.save_settings()
 		self._windows.close()
@@ -210,7 +213,7 @@ class HotkeyConfiguration(Window):
 
 	def hide(self):
 		self.widget.hide()
-		self.listener.deactivate()		
+		self.listener.deactivate()
 
 
 class HotkeysListener(fife.IKeyListener, LivingObject):
