@@ -214,6 +214,43 @@ class Dialog(Window):
 		return horizons.globals.fife.loop()
 
 
+class Popup(Dialog):
+	"""Displays a popup with the specified text"""
+	modal = True
+
+	def __init__(self, windows, windowtitle, message, show_cancel_button=False, size=0):
+		self.windowtitle = windowtitle
+		self.message = message
+		self.show_cancel_button = show_cancel_button
+		self.size = size
+		super(Popup, self).__init__(windows)
+
+	def prepare(self):
+		if self.size == 0:
+			wdg_name = "popup_230"
+		elif self.size == 1:
+			wdg_name = "popup_290"
+		elif self.size == 2:
+			wdg_name = "popup_350"
+		else:
+			assert False, "size should be 0 <= size <= 2, but is " + str(self.size)
+
+		self._gui = load_uh_widget(wdg_name + '.xml')
+
+		headline = self._gui.findChild(name='headline')
+		headline.text = _(self.windowtitle)
+		message_lbl = self._gui.findChild(name='popup_message')
+		message_lbl.text = _(self.message)
+		self._gui.adaptLayout() # recalculate widths
+
+		self.return_events = {OkButton.DEFAULT_NAME: True}
+		if self.show_cancel_button:
+			self.return_events[CancelButton.DEFAULT_NAME] = False
+		else:
+			cancel_button = self._gui.findChild(name=CancelButton.DEFAULT_NAME)
+			cancel_button.parent.removeChild(cancel_button)
+
+
 class WindowManager(object):
 
 	def __init__(self):
@@ -312,41 +349,15 @@ class WindowManager(object):
 
 		return self.show(TempDialog(self))
 
-	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
-		"""Displays a popup with the specified text
-
+	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0):
+		"""
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, show cancel button or not
 		@param size: 0, 1 or 2. Larger means bigger.
-		@param modal: Whether to block user interaction while displaying the popup
-		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
-		if size == 0:
-			wdg_name = "popup_230"
-		elif size == 1:
-			wdg_name = "popup_290"
-		elif size == 2:
-			wdg_name = "popup_350"
-		else:
-			assert False, "size should be 0 <= size <= 2, but is " + str(size)
-
-		popup = load_uh_widget(wdg_name + '.xml')
-
-		headline = popup.findChild(name='headline')
-		headline.text = _(windowtitle)
-		message_lbl = popup.findChild(name='popup_message')
-		message_lbl.text = _(message)
-		popup.adaptLayout() # recalculate widths
-
-		if show_cancel_button:
-			bind = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		else:
-			bind = {OkButton.DEFAULT_NAME: True}
-			cancel_button = popup.findChild(name=CancelButton.DEFAULT_NAME)
-			cancel_button.parent.removeChild(cancel_button)
-
-		return self.show_dialog(popup, bind, modal=modal)
+		window = Popup(self, windowtitle, message, show_cancel_button, size)
+		return self.show(window)
 
 	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
