@@ -86,6 +86,7 @@ class LoadingScreen(Window):
 	def _get_stage_description(self, stage):
 		"""Return a player friendly description of the current loading stage."""
 		translations = {
+			# translators: these are descriptions of the current task while loading a game
 			'session_create_world': _('Starting engine...'),
 			'session_index_fish': _('Catching fish...'),
 			'session_load_gui': _('Drawing user interface...'),
