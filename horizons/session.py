@@ -256,7 +256,7 @@ class Session(LivingObject):
 		else:
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)
-		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
+		self.manager.load(savegame_db) # load the manager (there might be old scheduled ticks).
 		LoadingProgress.broadcast(self, "session_index_fish")
 		self.world.init_fish_indexer() # now the fish should exist
 
