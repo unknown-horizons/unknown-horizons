@@ -105,8 +105,8 @@ class RouteConfig(Window):
 
 	def start_route(self):
 		if not self.instance.route.can_enable():
-			self.instance.session.gui.show_popup(_("Need at least two settlements"),
-			                                     _("You need at least two different settlements in your route."))
+			self.instance.session.ingame_gui.show_popup(_("Need at least two settlements"),
+			                                            _("You need at least two different settlements in your route."))
 		else:
 			self._route_cmd("enable")
 
