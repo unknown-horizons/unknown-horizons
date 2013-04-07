@@ -278,7 +278,7 @@ class Session(LivingObject):
 		savegame_db.close()
 
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
-		LoadingProgress.broadcast(self, "finish")
+		LoadingProgress.broadcast(self, "session_finish")
 		"""
 		TUTORIAL:
 		That's it. After that, we call start() to activate the timer, and we're live.
