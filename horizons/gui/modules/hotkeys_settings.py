@@ -149,6 +149,7 @@ class HotkeyConfiguration(Window):
 				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
 			else:
 				self.update_buttons_text()
+				self.last_combination = []
 				return
 
 		bindings = self.keyconf.get_current_keys(action)
