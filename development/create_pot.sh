@@ -46,9 +46,6 @@
 # Create pot files to be uploaded at pootle.
 # (language Templates, project Unknown Horizons)
 # Update strings extracted from xml, yaml and sql files.
-# The flag -keep forces to skip this update.
-# The flags -keepxml, keepyaml and -keepsql partially skip.
-# Only use one of them.
 
 # script assumes working dir to be our base directory
 cd "$(dirname "$0")"/..
@@ -65,24 +62,16 @@ SQL_POT_FILE=horizons/i18n/sqlite_strings.pot
 function strip_entries()
 {
   # some strings contain two entries per line => remove line numbers from both
-  perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' $1
-  perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' $1
+  perl -pi -e 's@(#: .*):[0-9]+@\1@g' $1
+  perl -pi -e 's@(#: .*):[0-9]+@\1@g' $1
 }
 
-if [ ! "x$1" = "x-keep" ]; then
-	if [ ! "x$1" = "x-keepxml" ]; then
-		PYTHONPATH="." python2 development/extract_strings_from_xml.py $XML_PY_FILE 2&>/dev/null
-		echo "   * Regenerated xml translation file at $XML_PY_FILE."
-	fi
-	if [ ! "x$1" = "x-keepyaml" ]; then
-		PYTHONPATH="." python2 development/extract_strings_from_objects.py $YAML_PY_FILE
-		echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
-	fi
-	if [ ! "x$1" = "x-keepsql" ]; then
-		PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > $SQL_POT_FILE
-		echo "   * Regenerated sql translation file at $SQL_POT_FILE."
-	fi
-fi
+PYTHONPATH="." python2 development/extract_strings_from_xml.py $XML_PY_FILE 2&>/dev/null
+echo "   * Regenerated xml translation file at $XML_PY_FILE."
+PYTHONPATH="." python2 development/extract_strings_from_objects.py $YAML_PY_FILE
+echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
+PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > $SQL_POT_FILE
+echo "   * Regenerated sql translation file at $SQL_POT_FILE."
 
 # Get all files to translate.
 (
@@ -97,13 +86,13 @@ fi
              --package-version="$VERSION" \
              --msgid-bugs-address='team@unknown-horizons.org' \
              --keyword=N_:1,2
-#this also catches N_() plural-aware calls
+# --keyword=N_ also catches N_() plural-aware ngettext calls
 strip_entries $RESULT_FILE
 echo "=> Created UH gettext pot template file at ${RESULT_FILE}."
 
 
 # generate translation file for server
-# --keyword disables all known keywords
+# empty --keyword disables all known keywords
 (
   find horizons/network -iname \*.py
 ) | xgettext --files-from=- --output=$RESULT_FILE_SERVER \
