@@ -224,7 +224,7 @@ class Fife(ApplicationBase):
 			keys = self._default_hotkeys.get(action)
 		else:
 			keys = self._setting.get(KEY_MODULE, action)
-		return sorted(keys, key=len)
+		return keys
 
 	def set_key_for_action(self, action, newkey):
 		"""Replaces all existing hotkeys for *action* with *newkey*."""
