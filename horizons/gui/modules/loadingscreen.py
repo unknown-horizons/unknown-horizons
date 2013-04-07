@@ -76,9 +76,28 @@ class LoadingScreen(Window):
 		self._current_step += 1
 
 		label = self._widget.findChild(name='loading_stage')
-		label.text = unicode(message.stage)
+		label.text = self._get_stage_description(message.stage)
 		label.adaptLayout()
 
 		self._widget.findChild(name='loading_progress').progress = (100 * self._current_step) // self.total_steps
 
 		horizons.globals.fife.engine.pump()
+
+	def _get_stage_description(self, stage):
+		"""Return a player friendly description of the current loading stage."""
+		translations = {
+			'session_create_world': _('session_create_world'),
+			'session_index_fish': _('session_index_fish'),
+			'session_load_gui': _('session_load_gui'),
+			'session_finish': _('session_finish'),
+			'load_objects': _('load_objects'),
+			'world_load_map': _('world_load_map'),
+			'world_load_buildings': _('world_load_buildings'),
+			'world_init_water': _('world_init_water'),
+			'world_load_units': _('world_load_units'),
+			'world_setup_ai': _('world_setup_ai'),
+			'world_load_stuff': _('world_load_stuff'),
+			'finish': _('finish'),
+		}
+
+		return translations.get(stage, stage)
