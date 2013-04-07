@@ -127,6 +127,9 @@
 * Mihkel Rämmel (RM87)
 * Üllar Lainväe (ussikene)
 
+#### Finnish
+* Aleksi Kinnunen
+
 #### French
 * Antoine Pernot (mumuxe)
 * Hugues Fafard (Antagonym)
@@ -209,7 +212,6 @@
 * Andrej Žnidaršič (andrejz)
 
 #### Swedish
-* Aleksi Kinnunen (alluk.)
 * Nagrim
 * pilen
 
