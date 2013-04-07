@@ -20,16 +20,11 @@
 # ###################################################
 
 import horizons.globals
+from horizons.gui.windows import Window
 
 
-class SettingsDialog(object):
+class SettingsDialog(Window):
 	"""Wrapper around fife's settings dialog to make it work with the WindowManager."""
-
-	def __init__(self, windows):
-		self._windows = windows
-
-	def on_escape(self):
-		self._windows.close()
 
 	def show(self):
 		horizons.globals.fife.show_settings()
@@ -50,6 +45,3 @@ class SettingsDialog(object):
 
 	def hide(self):
 		self._original_hide()
-
-	def close(self):
-		self.hide()
