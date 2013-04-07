@@ -92,13 +92,22 @@ def test_chat(gui):
 	"""
 
 	assert not gui.find(name='chat_dialog_window')
-	gui.press_key(gui.Key.C)
-	assert gui.find(name='chat_dialog_window')
-	gui.trigger('chat_dialog_window', 'cancelButton')
+
+	def func1():
+		assert gui.find(name='chat_dialog_window')
+		gui.trigger('chat_dialog_window', 'cancelButton')
+
+	with gui.handler(func1):
+		gui.press_key(gui.Key.C)
+
 	assert not gui.find(name='chat_dialog_window')
 
-	gui.press_key(gui.Key.C)
-	assert gui.find(name='chat_dialog_window')
-	gui.find('msg').write('Hello World')
-	gui.trigger('chat_dialog_window', 'okButton')
+	def func2():
+		assert gui.find(name='chat_dialog_window')
+		gui.find('msg').write('Hello World')
+		gui.trigger('chat_dialog_window', 'okButton')
+
+	with gui.handler(func2):
+		gui.press_key(gui.Key.C)
+
 	assert not gui.find(name='chat_dialog_window')
