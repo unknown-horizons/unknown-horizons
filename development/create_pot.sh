@@ -91,7 +91,8 @@ echo "   * Regenerated sql translation file at $SQL_POT_FILE."
              --package-name='Unknown Horizons' \
              --package-version="$VERSION" \
              --msgid-bugs-address='team@unknown-horizons.org' \
-             --keyword=N_:1,2
+             --keyword=N_:1,2 \
+             --keyword=_lazy
 # --keyword=N_ also catches N_() plural-aware ngettext calls
 echo "=> Creating UH gettext pot template file at ${RESULT_FILE}."
 strip_entries $RESULT_FILE
