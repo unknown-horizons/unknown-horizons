@@ -50,6 +50,11 @@ is licensed by nosklo under the terms of the  MIT license.  Information can be
 obtained at http://www.opensource.org/licenses/mit-license.php .
 
 
+/horizons/ext/speaklater.py
+
+is licensed by Armin Ronacher under the terms of the 3-clause BSD license. See
+/doc/LICENSE_speaklater.
+
 The files
 
 /horizons/network/darwin-x64/enet.so
