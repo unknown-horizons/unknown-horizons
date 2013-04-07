@@ -28,7 +28,7 @@
 		<Label name="lbl_HELP" text="Display help" />
 		<Label name="lbl_QUICKSAVE" text="Quicksave" />
 		<Label name="lbl_QUICKLOAD" text="Quickload" />
-		<Label name="lbl_CONSOLE" text="Toggle console on/off" />
+		<Label name="lbl_CONSOLE" text="Display FPS counter" />
 	</VBox>
 
 	<Spacer />
