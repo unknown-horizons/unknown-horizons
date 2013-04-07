@@ -62,8 +62,14 @@ SQL_POT_FILE=horizons/i18n/sqlite_strings.pot
 function strip_entries()
 {
   # some strings contain two entries per line => remove line numbers from both
-  perl -pi -e 's@(#: .*):[0-9]+@\1@g' $1
-  perl -pi -e 's@(#: .*):[0-9]+@\1@g' $1
+  perl -pi -e 's@(#: .*):[0-9]+@\1@g' "$1"
+  perl -pi -e 's@(#: .*):[0-9]+@\1@g' "$1"
+  numstat=$(git diff --numstat -- "$1" | cut -f1,2)
+  if [ "$numstat" = "2	2" ]; then
+    # no need to commit, only program version and date in header changed (2+ 2-)
+    echo "  -> No content changes in $1, resetting to previous state."
+    git checkout -- "$1"
+  fi
 }
 
 PYTHONPATH="." python2 development/extract_strings_from_xml.py $XML_PY_FILE 2&>/dev/null
@@ -87,8 +93,8 @@ echo "   * Regenerated sql translation file at $SQL_POT_FILE."
              --msgid-bugs-address='team@unknown-horizons.org' \
              --keyword=N_:1,2
 # --keyword=N_ also catches N_() plural-aware ngettext calls
+echo "=> Creating UH gettext pot template file at ${RESULT_FILE}."
 strip_entries $RESULT_FILE
-echo "=> Created UH gettext pot template file at ${RESULT_FILE}."
 
 
 # generate translation file for server
@@ -106,5 +112,5 @@ echo "=> Created UH gettext pot template file at ${RESULT_FILE}."
              --keyword=S_:2 \
              --keyword=SN_:2,3 \
              --keyword=__
+echo "=> Creating UH Server gettext pot template file at ${RESULT_FILE_SERVER}."
 strip_entries $RESULT_FILE_SERVER
-echo "=> Created UH Server gettext pot template file at ${RESULT_FILE_SERVER}."
