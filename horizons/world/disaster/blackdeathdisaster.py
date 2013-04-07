@@ -27,6 +27,7 @@ from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
+import random
 
 class BlackDeathDisaster(Disaster):
 	"""Simulates the Black Death.
@@ -46,10 +47,10 @@ class BlackDeathDisaster(Disaster):
 
 	# Defines the minimum number of pioneer or higher residences that need to be in a
 	# settlement before this disaster can break loose
-	MIN_PIONEERS_FOR_BREAKOUT = 15
+	MIN_SETTLERS_FOR_BREAKOUT = 15
 
-	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 3
-	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1 # try twice before dying
+	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 4
+	EXPANSION_TIME = TIME_BEFORE_HAVOC // 2 # try twice before dying
 
 	DISASTER_RES = RES.BLACKDEATH
 
@@ -114,12 +115,12 @@ class BlackDeathDisaster(Disaster):
 		if load:
 			db, worldid = load
 			havoc_time = db("SELECT remaining_ticks_havoc FROM black_death_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
-
+		print "infect 2"
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
 
 	def recover(self, building):
 		super(BlackDeathDisaster, self).recover(building)
-		RemoveStatusIcon.broadcast(self, building, BlackDeathIcon)
+		RemoveStatusIcon.broadcast(self, building, BlackDeathStatusIcon)
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
 		self._affected_buildings.remove(building)
 
@@ -127,6 +128,10 @@ class BlackDeathDisaster(Disaster):
 		return len(self._affected_buildings) > 0
 
 	def wreak_havoc(self, building):
+		"""Some inhabitants have to die."""
 		super(BlackDeathDisaster, self).wreak_havoc(building)
 		self._affected_buildings.remove(building)
-		building.make_ruin()
+		if building.inhabitants > 1:
+			inhabitants_that_will_die = random.randint(1, building.inhabitants)
+			building.inhabitants -= inhabitants_that_will_die
+			self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
