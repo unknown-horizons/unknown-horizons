@@ -170,8 +170,7 @@ def content_from_file(filename, parse=True):
 		content_from_element('Icon', parsed, 'helptext') + \
 		content_from_element('ImageButton', parsed, 'helptext') + \
 		content_from_element('Label', parsed, 'helptext') + \
-		content_from_element('ProgressBar', parsed, 'helptext') + \
-		content_from_element('ToggleImageButton', parsed, 'helptext')
+		content_from_element('ProgressBar', parsed, 'helptext')
 
 	printname = filename.rsplit("/",1)[1]
 	if len(strings) and parse:
