@@ -72,7 +72,7 @@ function strip_entries()
   fi
 }
 
-PYTHONPATH="." python2 development/extract_strings_from_xml.py $XML_PY_FILE 2&>/dev/null
+PYTHONPATH="." python2 development/extract_strings_from_xml.py $XML_PY_FILE
 echo "   * Regenerated xml translation file at $XML_PY_FILE."
 PYTHONPATH="." python2 development/extract_strings_from_objects.py $YAML_PY_FILE
 echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
