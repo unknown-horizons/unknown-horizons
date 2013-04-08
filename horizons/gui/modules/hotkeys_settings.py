@@ -68,24 +68,15 @@ class HotkeyConfiguration(Window):
 		button_container = self.widget.findChild(name='button_container')
 		sec_button_container = self.widget.findChild(name='sec_button_container')
 		for i, action in enumerate(self.actions):
-		   #label = self._create_label(action)
 			button = self._create_button(action, 0, i)
 			button2 = self._create_button(action, 1, i)
 			button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button, 1)})
 			button2.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button2, 2)})
-			# container.addChild(label)
 			button_container.addChild(button)
 			sec_button_container.addChild(button2)
 			self.buttons.append(button)
 			self.secondary_buttons.append(button2)
 			self.update_buttons_text()
-
-	def _create_label(self, action):
-		#xgettext:python-format
-		text = _('{action_name}'.format(action_name=action))
-		label = Label(text=text)
-		label.max_size = (130,42)
-		return label
 
 	def _create_button(self, action, action_index, index):
 		current_binding = self.keyconf.get_current_keys(action)
