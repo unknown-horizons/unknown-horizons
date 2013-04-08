@@ -49,11 +49,13 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 
 	STATUS_ICON = BlackDeathStatusIcon
 
+	RESCUE_BUILDING_TYPE = BUILDINGS.DOCTOR
+
 	def wreak_havoc(self, building):
 		"""Some inhabitants have to die."""
 		super(BlackDeathDisaster, self)
 		if building.inhabitants > 1:
 			inhabitants_that_will_die = self.session.random.randint(1, building.inhabitants)
 			building.inhabitants -= inhabitants_that_will_die
-		#	building.
+			building.
 			self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
