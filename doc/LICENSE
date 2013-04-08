@@ -10,20 +10,6 @@ For more information visit  http://www.gnu.org/copyleft/gpl.html .
 
 The file
 
-/content/fonts/UMing.ttc
-
-is licensed under the terms of the the Arphic Public License (see APL).
-Currently supported charsets:
-ISO8859-1,2,3,4,7,9,10,13,14,15  Big5  HKSCS-2004  GB2312-80  as well as
-Bopomofo Extensions for Hakka, Minnan (Unicode 5.0) and their MBE variants.
-Partly supported:
-CNS 11643  GBK  GB18030  Japanese  Korean
-AR PL UMing is a font under development, for the project homepage, visit
-http://www.freedesktop.org/wiki/Software/CJKUnifonts .
-
-
-The file
-
 content/gui/images/cursors/cursor_pipette.png
 
 is derived from a file licensed by the GIMP team ( http://gimp.org ) under the
