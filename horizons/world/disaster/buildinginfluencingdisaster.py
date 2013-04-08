@@ -22,7 +22,6 @@
 
 from horizons.world.disaster import Disaster
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
-from horizons.world.status import BlackDeathStatusIcon
 from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
@@ -30,15 +29,22 @@ from horizons.util.worldobject import WorldObject
 
 class BuildingInfluencingDisaster(Disaster):
 	"""Simulates a building influencing disaster.
+
+	Starts at a certain building and will spread out over time.
+
 	"""
 
-	# per default it infects the residents of a settlement
+	# Defines the building type that should be influenced, by default it infects the residents of a settlement
 	BUILDING_TYPE = BUILDINGS.RESIDENTIAL
 
-	MIN_BREAKOUT_TIER = TIER.SETTLERS
+	# Defines the minimum tier a settlement needs before this disaster can break out, by default its the PIONEER tier
+	MIN_BREAKOUT_TIER = TIER.PIONEERS
 
+	# Defines the minimum number of pioneer or higher residences that need to be in a
+	# settlement before this disaster can break loose
 	MIN_INHABITANTS_FOR_BREAKOUT = 5
 
+	# Defines the status icon for the influenced BUILDING_TYPE
 	STATUS_ICON = None
 
 
@@ -64,15 +70,15 @@ class BuildingInfluencingDisaster(Disaster):
 	def breakout(self):
 		assert self.can_breakout(self._settlement)
 		super(BuildingInfluencingDisaster, self).breakout()
-		possible_buildings = self._settlement.buildings_by_id[BUILDING_TYPE]
+		possible_buildings = self._settlement.buildings_by_id[self.BUILDING_TYPE]
 		building = self._settlement.session.random.choice(possible_buildings)
 		self.infect(building)
 		self.log.debug("%s breakout out on %s at %s", self, building, building.position)
 
 	@classmethod
 	def can_breakout(cls, settlement):
-		return settlement.owner.settler_level >= MIN_BREAKOUT_TIER and \
-		       settlement.count_buildings(BUILDING_TYPE) > cls.MIN_INHABITANTS_FOR_BREAKOUT
+		return settlement.owner.settler_level >= cls.MIN_BREAKOUT_TIER and \
+		       settlement.count_buildings(self.BUILDING_TYPE) > cls.MIN_INHABITANTS_FOR_BREAKOUT
 
 	def expand(self):
 		if not self.evaluate():
@@ -83,7 +89,7 @@ class BuildingInfluencingDisaster(Disaster):
 		self.log.debug("%s still active, expanding..", self)
 		for building in self._affected_buildings:
 			for tile in self._settlement.get_tiles_in_radius(building.position, self.EXPANSION_RADIUS, False):
-				if tile.object is not None and tile.object.id == BUILDING_TYPE and tile.object not in self._affected_buildings:
+				if tile.object is not None and tile.object.id == self.BUILDING_TYPE and tile.object not in self._affected_buildings:
 					if self._settlement.session.random.random() <= self.SEED_CHANCE:
 						self.infect(tile.object)
 						return
@@ -95,7 +101,7 @@ class BuildingInfluencingDisaster(Disaster):
 		"""@load: (db, disaster_worldid), set on restoring infected state of savegame"""
 		super(BuildingInfluencingDisaster, self).infect(building, load=load)
 		# keep in sync with load()
-		AddStatusIcon.broadcast(building, STATUS_ICON(building))
+		AddStatusIcon.broadcast(building, self.STATUS_ICON(building))
 		NewDisaster.broadcast(building.owner, building, BuildingInfluencingDisaster)
 		self._affected_buildings.append(building)
 		havoc_time = self.TIME_BEFORE_HAVOC
@@ -106,7 +112,7 @@ class BuildingInfluencingDisaster(Disaster):
 
 	def recover(self, building):
 		super(BuildingInfluencingDisaster, self).recover(building)
-		RemoveStatusIcon.broadcast(self, building, STATUS_ICON)
+		RemoveStatusIcon.broadcast(self, building, self.STATUS_ICON)
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
 		self._affected_buildings.remove(building)
 
