@@ -147,9 +147,9 @@ def change_language(language=None):
 # FIXME hack pychan's text2gui function it does an isinstance check that breaks
 # the lazy string. we should be passing unicode to widgets all the time, if not
 # that should be fixed
-from fife.extensions.pychan.widgets.common import get_manager
 def text2gui(text):
-	return text.encode("utf8",*get_manager().unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+	unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
+	return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
 
 from fife.extensions.pychan.widgets import textfield, basictextwidget
 textfield.text2gui = text2gui
