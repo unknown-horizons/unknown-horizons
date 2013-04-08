@@ -586,7 +586,7 @@ CREATE TABLE "disaster" (
 	"remaining_ticks_expand" INT NOT NULL -- ticks until the disaster will expand next
 );
 
-CREATE TABLE "building_influcing_disaster" (
+CREATE TABLE "building_influencing_disaster" (
 	"disaster" INT NOT NULL, -- disaster and building together make up the key
 	"building" INT NOT NULL,
 	"remaining_ticks_havoc" INT NOT NULL
