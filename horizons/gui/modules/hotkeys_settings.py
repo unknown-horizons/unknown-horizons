@@ -41,7 +41,7 @@ class HotkeyConfiguration(Window):
 		self.secondary_buttons = []
 
 		self.keyconf = KeyConfig()
-		self.actions = self.keyconf.get_actions_by_name()
+		self.actions = self.keyconf.get_bindable_actions_by_name()
 		self.keys = self.keyconf.get_keys_by_value()
 
 		self.HELPSTRING_LAYOUT = None

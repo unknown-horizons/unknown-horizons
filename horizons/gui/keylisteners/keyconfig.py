@@ -107,4 +107,13 @@ class KeyConfig(object):
 		return horizons.globals.fife.get_keys_for_action(action, default=True)
 
 	def get_actions_by_name(self):
+		"""Returns a list of the names of all the actions"""
 		return [str(x) for x in self._Actions]
+
+	def get_bindable_actions_by_name(self):
+		"""Returns a list of the names of the actions which can be binded in the hotkeys interface"""
+		actions = [str(x) for x in self._Actions]
+		unbindable_actions = ['DEBUG', 'ESCAPE']
+		for action in unbindable_actions:
+			actions.remove(action)
+		return actions
