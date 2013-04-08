@@ -62,12 +62,12 @@ class BlackDeathDisaster(Disaster):
 		super(BlackDeathDisaster, self).save(db)
 		for building in self._affected_buildings:
 			ticks = Scheduler().get_remaining_ticks(self, Callback(self.wreak_havoc, building), True)
-			db("INSERT INTO black_death_disaster(disaster, building, remaining_ticks_havoc) VALUES(?, ?, ?)",
+			db("INSERT INTO building_influcing_disaster(disaster, building, remaining_ticks_havoc) VALUES(?, ?, ?)",
 			   self.worldid, building.worldid, ticks)
 
 	def load(self, db, worldid):
 		super(BlackDeathDisaster, self).load(db, worldid)
-		for building_id, ticks in db("SELECT building, remaining_ticks_havoc FROM BlackDeathDisaster WHERE disaster = ?", worldid):
+		for building_id, ticks in db("SELECT building, remaining_ticks_havoc FROM building_influcing_disaster WHERE disaster = ?", worldid):
 			# do half of infect()
 			building = WorldObject.get_object_by_id(building_id)
 			self.log.debug("%s loading disaster %s", self, building)
@@ -114,8 +114,7 @@ class BlackDeathDisaster(Disaster):
 		havoc_time = self.TIME_BEFORE_HAVOC
 		if load:
 			db, worldid = load
-			havoc_time = db("SELECT remaining_ticks_havoc FROM black_death_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
-		print "infect 2"
+			havoc_time = db("SELECT remaining_ticks_havoc FROM building_influcing_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
 
 	def recover(self, building):
