@@ -42,7 +42,7 @@ import horizons.globals
 
 from horizons.constants import LANGUAGENAMES
 from horizons.ext.speaklater import make_lazy_gettext
-from horizons.i18n import objecttranslations, guitranslations, quotes
+from horizons.i18n import objecttranslations, guitranslations
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.messaging import LanguageChanged
 
@@ -79,7 +79,6 @@ def update_all_translations():
 	global translated_widgets
 	guitranslations.set_translations()
 	objecttranslations.set_translations()
-	quotes.set_translations()
 	for (filename, widget) in translated_widgets.iteritems():
 		widget = widget() # resolve weakref
 		if not widget:
