@@ -22,10 +22,27 @@
 import random
 
 import horizons.globals
+from horizons.i18n import _lazy
 from horizons.i18n.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
 from horizons.messaging import LoadingProgress
+
+
+stage_text = {
+	# translators: these are descriptions of the current task while loading a game
+	'session_create_world': _lazy('Starting engine...'),
+	'session_index_fish': _lazy('Catching fish...'),
+	'session_load_gui': _lazy('Drawing user interface...'),
+	'session_finish': _lazy('Activating timer...'),
+	'load_objects': _lazy('Chomping game data...'),
+	'world_load_map': _lazy('Shaping islands...'),
+	'world_load_buildings': _lazy('Preparing blueprints...'),
+	'world_init_water': _lazy('Filling world with water...'),
+	'world_load_units': _lazy('Raising animals...'),
+	'world_setup_ai': _lazy('Convincing AI...'),
+	'world_load_stuff': _lazy('Burying treasures...'),
+}
 
 
 class LoadingScreen(Window):
@@ -33,7 +50,7 @@ class LoadingScreen(Window):
 
 	# how often the LoadingProgress message is send when loading a game,
 	# used to update the progress bar
-	total_steps = 11
+	total_steps = len(stage_text)
 
 	def __init__(self):
 		self._widget = load_uh_widget('loadingscreen.xml')
@@ -76,28 +93,9 @@ class LoadingScreen(Window):
 		self._current_step += 1
 
 		label = self._widget.findChild(name='loading_stage')
-		label.text = self._get_stage_description(message.stage)
+		label.text = stage_text.get(message.stage, message.stage)
 		label.adaptLayout()
 
 		self._widget.findChild(name='loading_progress').progress = (100 * self._current_step) // self.total_steps
 
 		horizons.globals.fife.engine.pump()
-
-	def _get_stage_description(self, stage):
-		"""Return a player friendly description of the current loading stage."""
-		translations = {
-			# translators: these are descriptions of the current task while loading a game
-			'session_create_world': _('Starting engine...'),
-			'session_index_fish': _('Catching fish...'),
-			'session_load_gui': _('Drawing user interface...'),
-			'session_finish': _('Activating timer...'),
-			'load_objects': _('Chomping game data...'),
-			'world_load_map': _('Shaping islands...'),
-			'world_load_buildings': _('Preparing blueprints...'),
-			'world_init_water': _('Filling world with water...'),
-			'world_load_units': _('Raising animals...'),
-			'world_setup_ai': _('Convincing AI...'),
-			'world_load_stuff': _('Burying treasures...'),
-		}
-
-		return translations.get(stage, stage)
