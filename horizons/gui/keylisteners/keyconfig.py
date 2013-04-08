@@ -50,6 +50,7 @@ class KeyConfig(object):
 		self.requires_shift = set([_Actions.DEBUG])
 
 	def loadKeyConfiguration(self):
+		self.keyval_action_mappings = {}
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for action in custom_key_actions:
 			action_id = getattr(self._Actions, action)
