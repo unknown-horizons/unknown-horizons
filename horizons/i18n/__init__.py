@@ -41,15 +41,10 @@ import horizons.globals
 
 from horizons.constants import LANGUAGENAMES
 from horizons.ext.speaklater import make_lazy_gettext
-from horizons.i18n import objecttranslations
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.messaging import LanguageChanged
 
 log = logging.getLogger("i18n")
-
-def update_all_translations():
-	"""Update the translations in every active widget"""
-	objecttranslations.set_translations()
 
 
 def change_language(language=None):
@@ -92,8 +87,6 @@ def change_language(language=None):
 	fontdef = get_fontdef_for_locale(new_locale)
 	horizons.globals.fife.pychan.loadFonts(fontdef)
 
-	# dynamically reset all translations of active widgets
-	update_all_translations()
 	LanguageChanged.broadcast(None)
 
 

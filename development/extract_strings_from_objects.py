@@ -77,6 +77,8 @@ HEADER = '''\
 #
 ###############################################################################
 
+from horizons.messaging import LanguageChanged
+
 object_translations = {}
 
 def set_translations():
@@ -91,6 +93,8 @@ def set_translations():
 
 FOOTER = '''
 	})
+
+LanguageChanged.subscribe(set_translations)
 '''
 ROWINDENT = '''
 		'''

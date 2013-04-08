@@ -40,6 +40,8 @@
 #
 ###############################################################################
 
+from horizons.messaging import LanguageChanged
+
 object_translations = {}
 
 def set_translations():
@@ -513,3 +515,5 @@ def set_translations():
 		"tab5_headline"               : _("Military"),
 		},
 	})
+
+LanguageChanged.subscribe(set_translations)
