@@ -441,10 +441,8 @@ class SettlementManager(WorldObject):
 
 	def handle_disaster(self, message):
 		position = message.building.position
-		if issubclass(message.disaster_class, BlackDeathDisaster):
-			rescue = BUILDINGS.DOCTOR
-		elif issubclass(message.disaster_class, FireDisaster):
-			rescue = BUILDINGS.FIRE_STATION
+		if issubclass(message.disaster_class, BuildingInfluencingDisaster):
+			rescue = BUILDINGS.RESCUE_BUILDING_TYPE
 		else:
 			self.log.info('%s ignoring unknown disaster of type %s', self, message.disaster_class.__name__)
 			return

@@ -49,6 +49,8 @@ class FireDisaster(BuildingInfluencingDisaster):
 
 	STATUS_ICON = FireStatusIcon
 
+	RESCUE_BUILDING_TYPE = BUILDINGS.FIRE_STATION
+
 	def wreak_havoc(self, building):
 		super(FireDisaster, self).wreak_havoc(building)
 		self._affected_buildings.remove(building)

@@ -47,6 +47,9 @@ class BuildingInfluencingDisaster(Disaster):
 	# Defines the status icon for the influenced BUILDING_TYPE
 	STATUS_ICON = None
 
+	# Defines building type that consumes resources of type DISASTER_RES
+	RESCUE_BUILDING_TYPE = None
+
 
 	def __init__(self, settlement, manager):
 		super (BuildingInfluencingDisaster, self).__init__(settlement, manager)
