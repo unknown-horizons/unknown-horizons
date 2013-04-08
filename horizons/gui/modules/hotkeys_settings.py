@@ -131,7 +131,10 @@ class HotkeyConfiguration(Window):
 		action = self.actions[self.current_index]
 		column = self.current_column
 
-		if self.key_is_set(key):
+		if key_name == 'ESCAPE':
+			key_name = 'UNASSIGNED'
+
+		elif self.key_is_set(key):
 			oldaction = self.get_action_name(key)
 			#xgettext:python-format
 			message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
