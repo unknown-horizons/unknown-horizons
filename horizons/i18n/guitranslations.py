@@ -67,6 +67,12 @@ def set_translations():
 		},
 
 	'editor_settings.xml' : {
+		# (text of widget: cursor_hint)
+		(u'cursor_hint'                  , 'text'    ): _("(right click to stop)"),
+		# (text of widget: headline_brush_size)
+		(u'headline_brush_size'          , 'text'    ): _("Select brush size:"),
+		# (text of widget: headline_terrain)
+		(u'headline_terrain'             , 'text'    ): _("Select terrain:"),
 		},
 
 	'buildtab.xml' : {
