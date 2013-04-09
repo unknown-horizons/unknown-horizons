@@ -11,4 +11,7 @@
 	<RenameLabel name="city_name" position="45,14" />
 	<Label name="city_inhabitants" position="206,14" />
 	<!-- text for these two is set at runtime: horizons.gui.ingamegui.update_settlement -->
+
+	<TilingHBox amount="9" position="75,35" comment="Box below contains at most 4 icons 20x20px each" />
+	<HBox name="fertility_icons" position="81,40" />
 </AutoResizeContainer>
