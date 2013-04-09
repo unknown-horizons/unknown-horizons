@@ -80,9 +80,6 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		super(Island, self).__init__(worldid=island_id)
 
-		if False:
-			from horizons.session import Session
-			assert isinstance(session, Session)
 		self.session = session
 
 		self.terrain_cache = None
