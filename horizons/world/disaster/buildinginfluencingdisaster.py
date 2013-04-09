@@ -81,7 +81,7 @@ class BuildingInfluencingDisaster(Disaster):
 	@classmethod
 	def can_breakout(cls, settlement):
 		return settlement.owner.settler_level >= cls.MIN_BREAKOUT_TIER and \
-		       settlement.count_buildings(self.BUILDING_TYPE) > cls.MIN_INHABITANTS_FOR_BREAKOUT
+		       settlement.count_buildings(cls.BUILDING_TYPE) > cls.MIN_INHABITANTS_FOR_BREAKOUT
 
 	def expand(self):
 		if not self.evaluate():
@@ -105,7 +105,7 @@ class BuildingInfluencingDisaster(Disaster):
 		super(BuildingInfluencingDisaster, self).infect(building, load=load)
 		# keep in sync with load()
 		AddStatusIcon.broadcast(building, self.STATUS_ICON(building))
-		NewDisaster.broadcast(building.owner, building, BuildingInfluencingDisaster)
+		NewDisaster.broadcast(building.owner, building, self.__class__)
 		self._affected_buildings.append(building)
 		havoc_time = self.TIME_BEFORE_HAVOC
 		if load:

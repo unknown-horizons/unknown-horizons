@@ -54,8 +54,7 @@ from horizons.constants import BUILDINGS, RES, GAME_SPEED, TIER
 from horizons.entities import Entities
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
-from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
-from horizons.world.disaster.firedisaster import FireDisaster
+from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.production.producer import Producer
 
 class SettlementManager(WorldObject):
@@ -442,7 +441,7 @@ class SettlementManager(WorldObject):
 	def handle_disaster(self, message):
 		position = message.building.position
 		if issubclass(message.disaster_class, BuildingInfluencingDisaster):
-			rescue = BUILDINGS.RESCUE_BUILDING_TYPE
+			rescue = message.disaster_class.RESCUE_BUILDING_TYPE
 		else:
 			self.log.info('%s ignoring unknown disaster of type %s', self, message.disaster_class.__name__)
 			return
