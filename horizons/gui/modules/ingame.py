@@ -164,7 +164,6 @@ class CityInfo(object):
 			helptext = u""
 			city_name_label.disable_cursor_change_on_hover()
 
-		self._settlement.fertility = []
 		fertility_box = self._child_finder('fertility_icons')
 		fertility_box.removeAllChildren()
 		fertility_box.padding = 3

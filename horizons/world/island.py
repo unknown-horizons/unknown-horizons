@@ -33,6 +33,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from horizons.world.settlement import Settlement
 from horizons.constants import BUILDINGS, RES, UNITS
+from horizons.constants import BUILDINGS, FERTILITY, RES, UNITS
 from horizons.command.building import Tear
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
@@ -82,6 +83,7 @@ class Island(BuildingOwner, WorldObject):
 		super(Island, self).__init__(worldid=island_id)
 
 		self.session = session
+		self.fertility = []
 
 		self.terrain_cache = None
 		self.available_land_cache = None
@@ -150,6 +152,11 @@ class Island(BuildingOwner, WorldObject):
 		self.settlements = []
 		self.wild_animals = []
 		self.num_trees = 0
+
+		#TODO all of this is temporary, display some icons eligible for fertility restrictions
+		resources = zip(*FERTILITY.MAPPING.iteritems())[0]
+		self.fertility = self.session.random.sample(resources, self.session.random.randint(1, 4))
+		#//TODO
 
 		# define the rectangle with the smallest area that contains every island tile its position
 		min_x = min(zip(*self.ground_map.keys())[0])
