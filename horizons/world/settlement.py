@@ -132,6 +132,13 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""Returns the island this settlement is on"""
 		return self.session.world.get_island(self.warehouse.position.origin)
 
+	@property
+	def fertility(self):
+		# Needs to live in settlement too because player-issued research could
+		# change this (for that player, not everyone on the island).
+		# For now, identical to what the island we live on provides us with.
+		return self.island.fertility
+
 	def level_upgrade(self, lvl):
 		"""Upgrades settlement to a new tier.
 		It only delegates the upgrade to its buildings."""
