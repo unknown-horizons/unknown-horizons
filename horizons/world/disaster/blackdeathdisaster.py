@@ -32,7 +32,7 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 	TYPE = "Happy dying."
 	NOTIFICATION_TYPE = 'BUILDING_INFECTED_BY_BLACK_DEATH'
 
-	SEED_CHANCE = 0.01
+	SEED_CHANCE = 0.5
 
 	EXPANSION_RADIUS = 7
 
@@ -57,5 +57,5 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 		if building.inhabitants > 1:
 			inhabitants_that_will_die = self.session.random.randint(1, building.inhabitants)
 			building.inhabitants -= inhabitants_that_will_die
-			building.
+			print building.happiness
 			self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
