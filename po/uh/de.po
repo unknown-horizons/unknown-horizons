@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-03-31 21:03+0200\n"
-"PO-Revision-Date: 2013-04-04 05:20+0000\n"
+"POT-Creation-Date: 2013-04-09 05:16+0200\n"
+"PO-Revision-Date: 2013-04-09 03:24+0000\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1365052851.0\n"
+"X-POOTLE-MTIME: 1365477891.0\n"
 
 # 86%
 #: run_uh.py
@@ -278,6 +278,51 @@ msgstr "[{key}] = {text}"
 msgid "Click to change the name of your settlement"
 msgstr "Hier klicken, um den Namen Eurer Siedlung zu ändern"
 
+#. translators: these are descriptions of the current task while loading a game
+#: horizons/gui/modules/loadingscreen.py
+msgid "Starting engine..."
+msgstr "Motor anwerfen..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Catching fish..."
+msgstr "Fische fangen..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Drawing user interface..."
+msgstr "Bedienoberfläche zeichnen..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Activating timer..."
+msgstr "Wecker stellen..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Chomping game data..."
+msgstr "Spieldaten verarbeiten..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Shaping islands..."
+msgstr "Inseln formen..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Preparing blueprints..."
+msgstr "Blaupausen vorbereiten..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Filling world with water..."
+msgstr "Spielwelt fluten..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Raising animals..."
+msgstr "Tiere aufziehen..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Convincing AI..."
+msgstr "KI überreden..."
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Burying treasures..."
+msgstr "Schätze vergraben..."
+
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Unable to find pyenet"
 msgstr "Pyenet konnte nicht gefunden werden"
@@ -454,9 +499,8 @@ msgid "Load game"
 msgstr "Lade Spiel"
 
 #. (text of widget: savegame)
-#. (text of widget: headline_change_name)
 #: horizons/gui/modules/select_savegame.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Save map"
 msgstr "Karte speichern"
 
@@ -1106,15 +1150,20 @@ msgstr "Einstellungen"
 msgid "Return to editor"
 msgstr "Zurück zum Editor"
 
-#. (text of widget: enter_new_name_lbl)
+#. (text of widget: cursor_hint)
 #: horizons/i18n/guitranslations.py
-msgid "Enter name:"
-msgstr "Namen eingeben:"
+msgid "(right click to stop)"
+msgstr "(mit Rechtsklick stoppen)"
 
-#. (helptext of widget: okButton)
+#. (text of widget: headline_brush_size)
 #: horizons/i18n/guitranslations.py
-msgid "Save the map"
-msgstr "Speichere Karte ab"
+msgid "Select brush size:"
+msgstr "Pinselgröße wählen:"
+
+#. (text of widget: headline_terrain)
+#: horizons/i18n/guitranslations.py
+msgid "Select terrain:"
+msgstr "Terrain wählen:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
@@ -1799,7 +1848,7 @@ msgstr "Kartengröße wählen:"
 msgid "Choose a map:"
 msgstr "Wählt eine Karte:"
 
-#. (text of widget: headline_choose_saved_game_lbl)
+#. (text of widget: headline_choose_saved_game)
 #: horizons/i18n/guitranslations.py
 msgid "Choose a saved game's map:"
 msgstr "Karte aus Spielstand laden:"
@@ -1847,8 +1896,8 @@ msgstr "Baumenü aufrufen"
 
 #. (text of widget: lbl_CONSOLE)
 #: horizons/i18n/guitranslations.py
-msgid "Toggle console on/off"
-msgstr "Konsole an-/ausschalten"
+msgid "Display FPS counter"
+msgstr "Bildwiederholrate anzeigen"
 
 #. (text of widget: lbl_COORD_TOOLTIP)
 #: horizons/i18n/guitranslations.py
@@ -2141,12 +2190,6 @@ msgstr "Status auf 'Bereit' stellen (notwendig um das Spiel zu starten)"
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Main menu:"
 msgstr "Hauptmenü:"
-
-# 78%
-#. (text of widget: game_showonlyownversion)
-#: horizons/i18n/guitranslations.py
-msgid "Only show games with the same version:"
-msgstr "Zeige nur Spiele gleicher Version:"
 
 #. (text of widget: headline_active_games_lbl)
 #: horizons/i18n/guitranslations.py
@@ -2942,7 +2985,7 @@ msgstr "Gewürzfeld"
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py
 msgid "Grows spices. Needs a farm."
-msgstr "Wächst Gewürze. Benötigt eine Farm."
+msgstr "Baut Gewürze an. Benötigt eine Farm."
 
 #. name_2 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
@@ -2967,7 +3010,7 @@ msgstr "Steinbruch"
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py
 msgid "Gets stone from a mountain."
-msgstr "Holt Steine von einem Berg."
+msgstr "Schlägt Steine aus einem Berg."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py
@@ -4103,6 +4146,19 @@ msgstr "{player1} und {player2} werden bis zum Tod kämpfen."
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#~ msgid "Enter name:"
+#~ msgstr "Namen eingeben:"
+
+#~ msgid "Save the map"
+#~ msgstr "Speichere Karte ab"
+
+#~ msgid "Toggle console on/off"
+#~ msgstr "Konsole an-/ausschalten"
+
+# 78%
+#~ msgid "Only show games with the same version:"
+#~ msgstr "Zeige nur Spiele gleicher Version:"
 
 #~ msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 #~ msgstr ""
