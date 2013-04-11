@@ -179,7 +179,7 @@ class MessageWidget(LivingObject):
 				# open logbook to relevant page
 				callback = Callback.ChainedCallbacks(
 					   callback, # this makes it so the order of callback assignment doesn't matter
-					   Callback(self.session.ingame_gui.logbook.show, message.created)
+					   Callback(self.session.ingame_gui.windows.toggle, self.session.ingame_gui.logbook, msg_id=message.created)
 				)
 			if callback:
 				events[button.name] = callback
