@@ -204,7 +204,12 @@ class TestRunner(object):
 
 		This function will be called by the engine's mainloop each frame.
 		"""
-		cooperative.schedule()
+		try:
+			cooperative.schedule()
+		except:
+			import traceback
+			traceback.print_exc()
+			sys.exit(1)
 
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
