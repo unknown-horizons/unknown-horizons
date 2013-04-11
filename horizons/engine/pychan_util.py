@@ -133,6 +133,16 @@ def init_pychan():
 			# see #1597 and #1647
 			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
 
+	# FIXME hack pychan's text2gui function, it does an isinstance check that breaks
+	# the lazy string from horizons.i18n. we should be passing unicode to
+	# widgets all the time, therefore we don't need the additional check.
+	def text2gui(text):
+		unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
+		return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+
+	pychan.widgets.textfield.text2gui = text2gui
+	pychan.widgets.basictextwidget.text2gui = text2gui
+
 
 	setup_cursor_change_on_hover()
 
