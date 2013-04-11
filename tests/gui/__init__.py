@@ -147,7 +147,7 @@ class TestRunner(object):
 		self._gui_handlers = []
 
 		self._custom_setup()
-		self._filter_traceback()
+		#self._filter_traceback()
 		test = self._load_test(test_path)
 		testlet = cooperative.spawn(test, GuiHelper(self._engine.pychan, self))
 		testlet.link(self._stop_test)
@@ -294,7 +294,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 						print stdout
 					if not 'Traceback' in stderr:
 						stderr += '\nNo usable error output received, possibly a segfault.'
-					raise TestFailed('\n\n' + stderr)
+					raise TestFailed(u'\n\n' + stderr.decode('utf-8', 'replace'))
 				else:
 					raise TestFailed()
 

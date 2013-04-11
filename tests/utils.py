@@ -109,5 +109,5 @@ class ReRunInfoPlugin(Plugin):
 
 	def addOutputToErr(self, ev, output):
 		if isinstance(ev, Exception):
-			ev = unicode(ev.message)
+			ev = unicode(ev)
 		return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])
