@@ -28,7 +28,7 @@ from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
+from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog, ResearchDialog
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -89,6 +89,7 @@ class IngameGui(LivingObject):
 		self.change_name_dialog = ChangeNameDialog(self.windows, self.session)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=False)
 		self.help_dialog = HelpDialog(self.windows, session=self.session)
+		self.research_dialog = ResearchDialog(self.windows, session=self.session)
 
 		# Icon manager
 		self.status_icon_manager = StatusIconManager(
@@ -202,6 +203,9 @@ class IngameGui(LivingObject):
 
 	def toggle_help(self):
 		self.windows.toggle(self.help_dialog)
+
+	def toggle_research(self):
+		self.windows.toggle(self.research_dialog)
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""
@@ -497,7 +501,7 @@ class IngameGui(LivingObject):
 		elif action == _Actions.HELP:
 			self.toggle_help()
 		elif action == _Actions.RESEARCH:
-			pass
+			self.toggle_research()
 		else:
 			return False
 

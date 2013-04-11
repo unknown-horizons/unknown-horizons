@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,15 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""Modules for gui/ingamegui"""
+from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import OkButton
+from horizons.gui.windows import Window
 
-from playerdataselection import PlayerDataSelection
-from aidataselection import AIDataSelection
-from singleplayermenu import SingleplayerMenu
-from multiplayermenu import MultiplayerMenu
-from help import HelpDialog
-from select_savegame import SelectSavegameDialog
-from loadingscreen import LoadingScreen
-from pausemenu import PauseMenu
-from settings import SettingsDialog
-from research import ResearchDialog
+
+class ResearchDialog(Window):
+	def __init__(self, windows, session=None):
+		super(ResearchDialog, self).__init__(windows)
+
+		self._session = session
+		self._gui = load_uh_widget('research.xml')
+
+		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
+
+	def show(self):
+		self._gui.show()
+
+	def hide(self):
+		self._gui.hide()
