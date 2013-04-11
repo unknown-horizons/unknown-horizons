@@ -38,7 +38,7 @@ class KeyConfig(object):
 	                'ROTATE_LEFT', 'ROTATE_RIGHT', 'SPEED_UP', 'SPEED_DOWN', 'PAUSE',
 	                'BUILD_TOOL', 'DESTROY_TOOL', 'ROAD_TOOL', 'PIPETTE',
 	                'PLAYERS_OVERVIEW', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW',
-	                'LOGBOOK', 'CHAT',
+	                'LOGBOOK', 'CHAT', 'RESEARCH',
 	                'QUICKSAVE', 'QUICKLOAD', 'ESCAPE',
 	                'TRANSLUCENCY', 'TILE_OWNER_HIGHLIGHT',
 	                'HEALTH_BAR', 'SHOW_SELECTED', 'REMOVE_SELECTED',

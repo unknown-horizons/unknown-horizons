@@ -496,6 +496,8 @@ class IngameGui(LivingObject):
 						self.minimap.show_unit_path(instance)
 		elif action == _Actions.HELP:
 			self.toggle_help()
+		elif action == _Actions.RESEARCH:
+			pass
 		else:
 			return False
 
