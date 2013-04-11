@@ -41,7 +41,8 @@ import weakref
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES
-from horizons.i18n import objecttranslations, guitranslations, quotes
+from horizons.ext.speaklater import make_lazy_gettext
+from horizons.i18n import objecttranslations, guitranslations
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.messaging import LanguageChanged
 
@@ -78,7 +79,6 @@ def update_all_translations():
 	global translated_widgets
 	guitranslations.set_translations()
 	objecttranslations.set_translations()
-	quotes.set_translations()
 	for (filename, widget) in translated_widgets.iteritems():
 		widget = widget() # resolve weakref
 		if not widget:
@@ -142,3 +142,18 @@ def change_language(language=None):
 	# dynamically reset all translations of active widgets
 	update_all_translations()
 	LanguageChanged.broadcast(None)
+
+
+# FIXME hack pychan's text2gui function it does an isinstance check that breaks
+# the lazy string. we should be passing unicode to widgets all the time, if not
+# that should be fixed
+def text2gui(text):
+	unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
+	return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+
+from fife.extensions.pychan.widgets import textfield, basictextwidget
+textfield.text2gui = text2gui
+basictextwidget.text2gui = text2gui
+
+
+_lazy = make_lazy_gettext(lambda: lambda s: _(s))
