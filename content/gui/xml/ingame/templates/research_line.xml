@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!--
+	300px: [120] ==60=> [120]
+-->
+<Container name="research_parent" size="300,120" position="70,80">
+
+	<Icon name="research_arrow" position="101,51" comment="Early on for correct z order"
+		image="content/gui/icons/templates/production/production_arrow.png" />
+
+	<Container name="left_outer" position="0,0" size="120,120">
+		<ProgressBar name="left_progress" position="20,103" max_size="80,12" progress="38" />
+		<Icon name="left_bg" />
+		<Icon name="left_inner" position="20,20" size="80,80"
+			image="content/gui/images/background/square_80.png" />
+	</Container>
+
+	<Container name="right_outer" position="180,0" size="120,120">
+		<ProgressBar name="right_progress" position="20,103" max_size="80,12" progress="0" />
+		<Icon name="right_bg" />
+		<Icon name="right_inner" position="20,20" size="80,80"
+			image="content/gui/images/background/square_80.png" />
+	</Container>
+
+</Container>
