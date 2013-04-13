@@ -26,10 +26,9 @@ import sys
 import locale
 
 from fife import fife
-from fife.extensions.basicapplication import ApplicationBase
-from fife.extensions import pychan
-from fife.extensions.serializers.simplexml import SimpleXMLSerializer
+from fife.extensions import pychan, fifelog
 from fife.extensions.fife_settings import FIFE_MODULE
+from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.engine import UH_MODULE, KEY_MODULE
@@ -41,7 +40,7 @@ from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
 
 
-class Fife(ApplicationBase):
+class Fife(object):
 	"""
 	Basic initiation of engine. Followed later by init().
 	"""
@@ -55,9 +54,8 @@ class Fife(ApplicationBase):
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
 
-		super(Fife, self).initLogging()
-
-		self.loadSettings()
+		self.init_logging()
+		self.load_settings()
 
 		self.pychan = pychan
 
@@ -144,6 +142,84 @@ class Fife(ApplicationBase):
 		                               default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
 
 		self._setting_handler.add_settings()
+
+	def load_settings(self):
+		"""
+		Load the settings from a python file and load them into the engine.
+		Called in the ApplicationBase constructor.
+		"""
+
+		
+		# get finalSetting (from the xml file, or if absent the default value)
+		self._finalSetting = self._setting.getSettingsFromFile("FIFE", self._log)
+		
+		engineSetting = self.engine.getSettings()
+		
+		engineSetting.setDefaultFontGlyphs(self._finalSetting['FontGlyphs'])
+		engineSetting.setDefaultFontPath(self._finalSetting['Font'])
+		engineSetting.setDefaultFontSize(self._finalSetting['DefaultFontSize'])
+		engineSetting.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
+		engineSetting.setInitialVolume(self._finalSetting['InitialVolume'])
+		engineSetting.setSDLRemoveFakeAlpha(self._finalSetting['SDLRemoveFakeAlpha'])
+		engineSetting.setGLCompressImages(self._finalSetting['GLCompressImages'])
+		engineSetting.setGLUseFramebuffer(self._finalSetting['GLUseFramebuffer'])
+		engineSetting.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
+		(width, height) = self._finalSetting['ScreenResolution'].split('x')
+		engineSetting.setScreenWidth(int(width))
+		engineSetting.setScreenHeight(int(height))
+		engineSetting.setRenderBackend(self._finalSetting['RenderBackend'])
+		engineSetting.setFullScreen(self._finalSetting['FullScreen'])
+		engineSetting.setVideoDriver(self._finalSetting['VideoDriver'])
+		engineSetting.setLightingModel(self._finalSetting['Lighting'])
+
+		try:
+			engineSetting.setColorKeyEnabled(self._finalSetting['ColorKeyEnabled'])
+		except:
+			pass
+
+		try:
+			engineSetting.setColorKey(self._finalSetting['ColorKey'][0],self._finalSetting['ColorKey'][1],self._finalSetting['ColorKey'][2])
+		except:
+			pass
+
+		try:
+			engineSetting.setWindowTitle(self._finalSetting['WindowTitle'])
+			engineSetting.setWindowIcon(self._finalSetting['WindowIcon'])
+		except:
+			pass
+			
+		try:
+			engineSetting.setFrameLimitEnabled(self._finalSetting['FrameLimitEnabled'])
+			engineSetting.setFrameLimit(self._finalSetting['FrameLimit'])
+		except:
+			pass
+
+		try:
+			engineSetting.setMouseSensitivity(self._finalSetting['MouseSensitivity'])
+		except:
+			pass
+
+		try:
+			engineSetting.setMouseAccelerationEnabled(self._finalSetting['MouseAcceleration'])
+		except:
+			pass
+
+	def init_logging(self):
+		"""
+		Initialize the LogManager.
+		"""
+
+		logmodules = self._setting.get("FIFE", "LogModules", ["controller"])
+
+		#log to both the console and log file
+		self._log = fifelog.LogManager(self.engine,
+									   self._setting.get("FIFE", "LogToPrompt", "0"),
+									   self._setting.get("FIFE", "LogToFile", "0"))
+
+		self._log.setLevelFilter(self._setting.get("FIFE", "LogLevelFilter", fife.LogManager.LEVEL_DEBUG))
+
+		if logmodules:
+			self._log.setVisibleModules(*logmodules)
 
 	def init(self):
 		"""Second initialization stage of engine
