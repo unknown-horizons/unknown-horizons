@@ -72,6 +72,7 @@ def setup_horizons():
 	import horizons.globals
 	import fife
 	horizons.globals.fife = fife.fife
+	horizons.globals.statsmanager = Dummy()
 
 	from run_uh import create_user_dirs
 	create_user_dirs()
