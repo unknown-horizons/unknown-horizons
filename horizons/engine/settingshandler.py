@@ -28,7 +28,7 @@ from fife.extensions.fife_settings import FIFE_MODULE
 
 import horizons.main
 
-from horizons.i18n import change_language, find_available_languages
+from horizons.i18n import _lazy, change_language, find_available_languages
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
@@ -67,7 +67,7 @@ class SettingsHandler(object):
 		uh_add("QuotesType", "quotestype", initialdata=QUOTES_SETTINGS)
 		uh_add("ShowResourceIcons", "show_resource_icons")
 
-		bpp = {0: _("Default"), 16: _("16 bit"), 32: _("32 bit")}
+		bpp = {0: _lazy("Default"), 16: _lazy("16 bit"), 32: _lazy("32 bit")}
 		fife_add("BitsPerPixel", "screen_bpp", initialdata=bpp, requiresrestart=True)
 
 		languages = find_available_languages().keys()
