@@ -80,18 +80,6 @@ class PickBeltWidget(object):
 			belt.hide()
 
 
-class OptionsPickbeltWidget(PickBeltWidget):
-	"""Widget for Options dialog with pickbelt style pages"""
-	widget_xml = 'settings.xml'
-
-	def __init__(self, *args, **kwargs):
-		# can't set this as class attribute directly since it's evaluated before gettext is set up
-		self.__class__.sections = (('graphics_settings', _('Graphics')),
-		                           ('game_settings', _('Game')))
-
-		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
-
-
 class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'

@@ -63,3 +63,6 @@ class Settings(object):
 		data = self.get(UH_MODULE, "Language")
 		language = LANGUAGENAMES.get_by_value(data)
 		change_language(language)
+
+	def set_defaults(self):
+		pass

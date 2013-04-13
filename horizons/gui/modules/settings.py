@@ -20,28 +20,43 @@
 # ###################################################
 
 import horizons.globals
+
+from horizons.i18n import _lazy
+from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 
 
-class SettingsDialog(Window):
-	"""Wrapper around fife's settings dialog to make it work with the WindowManager."""
+class SettingsDialog(PickBeltWidget, Window):
+	"""Widget for Options dialog with pickbelt style pages"""
+
+	widget_xml = 'settings.xml'
+	sections = (('graphics_settings', _lazy('Graphics')),
+			    ('game_settings', _lazy('Game')))
+
+	def __init__(self, windows):
+		Window.__init__(self, windows)
+		PickBeltWidget.__init__(self)
+
+		self.widget.mapEvents({
+			'okButton': self.apply_settings,
+			'defaultButton': self.set_defaults,
+			'cancelButton': self._windows.close,
+		})
 
 	def show(self):
-		horizons.globals.fife.show_settings()
-
-		# Patch original dialog
-		widget = horizons.globals.fife._setting.OptionsDlg
-		if not hasattr(widget, '__patched__'):
-			# replace hide method so we take control over how the dialog
-			# is hidden
-			self._original_hide = widget.hide
-			widget.hide = self._windows.close
-
-			widget.mapEvents({
-				'cancelButton': widget.hide
-			})
-
-			widget.__patched__ = True
+		self.widget.show()
 
 	def hide(self):
-		self._original_hide()
+		self.widget.hide()
+
+	def set_defaults(self):
+		title = _("Restore default settings")
+		msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
+				u" " + _("Do you want to continue?")
+
+		if self._windows.show_popup(title, msg, show_cancel_button=True):
+			horizons.globals.fife._setting.set_defaults()
+
+	def apply_settings(self):
+		horizons.globals.fife._setting.save()
+		self._windows.close()
