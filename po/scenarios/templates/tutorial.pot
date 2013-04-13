@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 5915e1a\n"
+"Project-Id-Version: Unknown Horizons d2cf69d\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2012-11-24 17:55+0100\n"
+"POT-Creation-Date: 2013-04-13 06:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,6 @@ msgstr ""
 #. scenario difficulty
 #: po/tutorial.py
 msgid "Tutorial"
-msgstr ""
-
-#. scenario author
-#: po/tutorial.py
-msgid "The UH team"
 msgstr ""
 
 #. scenario description
@@ -186,14 +181,14 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py
-msgid "The build menu is sorted by increments."
+msgid "The build menu is sorted by tiers."
 msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py
 msgid ""
-"You are currently in the first increment (the Sailors level) so are offered "
-"only the basic buildings."
+"You are currently in the first tier (the Sailors level) so are offered only "
+"the basic buildings."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -264,7 +259,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py
-msgid "Available companies in the first increment are the Hunter and Fisher."
+msgid "Available companies in the first tier are the Hunter and Fisher."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -409,9 +404,9 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py
 msgid ""
-"In the different increment overview tabs you can see statistics about your "
-"inhabitants. You also set the increment-specific global tax here and allow or "
-"deny inhabitants of this increment to upgrade to the next higher one."
+"In the different tier overview tabs you can see statistics about your "
+"inhabitants. You also set the tier-specific global tax here and allow or deny "
+"inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -435,7 +430,19 @@ msgstr ""
 #: po/tutorial.py
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
-"upgrade it when they reach higher increments."
+"upgrade it when they reach higher tiers."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py
+msgid ""
+"Note that the upgrade of each building requires construction material, like "
+"wood for their first upgrade."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py
+msgid "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -577,7 +584,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py
-msgid "At the 'sailors' increment, you are equipped with three trading slots."
+msgid "At the 'sailors' tier, you are equipped with three trading slots."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -780,7 +787,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py
-msgid "NEW TASK: NEXT INCREMENT"
+msgid "NEW TASK: NEXT TIER"
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -793,8 +800,8 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py
 msgid ""
-"If the sailors are happy enough, they want to advance to the next increment "
-"called Pioneers."
+"If the sailors are happy enough, they want to advance to the next tier called "
+"Pioneers."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -869,7 +876,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py
-msgid "Congratulations! Some of your inhabitants have reached increment II!"
+msgid "Congratulations! Some of your inhabitants have reached tier II!"
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -1030,7 +1037,7 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py
-msgid "Build a storage tent (increment I tab) where it makes sense."
+msgid "Build a storage tent (tier I tab) where it makes sense."
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -1091,7 +1098,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py
 msgid ""
-"Another solution is to build the last increment-I building which has not been "
+"Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the storage tent."
 msgstr ""
 
