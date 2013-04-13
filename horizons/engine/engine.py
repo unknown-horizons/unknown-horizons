@@ -20,21 +20,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import shutil
-import sys
 import locale
 
 from fife import fife
 from fife.extensions import pychan, fifelog
 from fife.extensions.fife_settings import FIFE_MODULE
-from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 
-from horizons.constants import LANGUAGENAMES, PATHS
+from horizons.constants import LANGUAGENAMES
 from horizons.engine import UH_MODULE, KEY_MODULE
 from horizons.engine.pychan_util import init_pychan
-from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
-from horizons.engine.settingsdialog import SettingsDialog
 from horizons.engine.sound import Sound
 from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
@@ -46,10 +40,6 @@ class Fife(object):
 	"""
 	def __init__(self):
 		self.pump = []
-
-		self._setting_handler = SettingsHandler(self)
-		self._setup_settings()
-		self._set_window_icon()
 
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
@@ -63,85 +53,6 @@ class Fife(object):
 		self.break_requested = False
 		self.return_values = None
 		self._got_inited = False
-
-
-	# existing settings not part of this gui or the fife defaults
-	# (required for preserving values when upgrading settings file)
-	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers", "ClientID"]}
-
-	def _set_window_icon(self):
-		"""Use different window icon for Mac."""
-		if sys.platform == 'darwin':
-			if self.get_fife_setting('WindowIcon') == PATHS.DEFAULT_WINDOW_ICON_PATH:
-				self.set_fife_setting('WindowIcon', PATHS.MAC_WINDOW_ICON_PATH)
-
-	def _setup_settings(self, check_file_version=True):
-		# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently
-		# (although the doc states otherwise) - thus translate paths to absolute ones
-		_template_config_file = os.path.join(os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE)
-		template_config_parser = SimpleXMLSerializer(_template_config_file)
-		template_settings_version = template_config_parser.get("meta", "SettingsVersion")
-		self._default_hotkeys = template_config_parser.getAllSettings(KEY_MODULE)
-
-		_user_config_file = os.path.join(os.getcwd(), PATHS.USER_CONFIG_FILE)
-		if check_file_version and os.path.exists(_user_config_file):
-			# check if user settings file is the current one
-			user_config_parser = SimpleXMLSerializer(_user_config_file)
-			user_settings_version = user_config_parser.get("meta", "SettingsVersion", -1)
-
-			if template_settings_version > user_settings_version: # we have to update the file
-				print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
-				      (user_settings_version, template_settings_version)
-				# create settings so we have a list of all settings
-				self._setup_settings(check_file_version=False)
-
-				# save settings here
-				entries = []
-
-				# need safe default value
-				default_value = object()
-
-				def update_value(modulename, entryname):
-					# retrieve values from loaded settings file
-					try:
-						value = self._setting.get(modulename, entryname, default_value)
-					except UnicodeEncodeError: # this can happen when unicode data is saved as str
-						value = "default"
-					if value is not default_value:
-						entries.append( (modulename, entryname, value) )
-
-				# collect values from known settings and unreferenced settings
-				for modulename, module in self._setting.entries.iteritems():
-					for entryname in module.iterkeys():
-						update_value(modulename, entryname)
-				for modulename, entry_list in self.UNREFERENCED_SETTINGS.iteritems():
-					for entryname in entry_list:
-						update_value(modulename, entryname)
-
-				# patch old values
-				if user_settings_version <= 10:
-					old_entries = entries
-					entries = []
-					for i in old_entries:
-						if i[0] == UH_MODULE and i[1] == "Language":
-							entries.append( (i[0], i[1], LANGUAGENAMES.get_by_value(i[2])) )
-						else:
-							entries.append(i)
-
-				# write actual new file
-				shutil.copy(PATHS.CONFIG_TEMPLATE_FILE, PATHS.USER_CONFIG_FILE)
-				user_config_parser = SimpleXMLSerializer(_user_config_file)
-				for modulename, entryname, value in entries:
-					user_config_parser.set(modulename, entryname, value)
-				user_config_parser.save()
-
-		self._setting = SettingsDialog(app_name=UH_MODULE,
-		                               settings_file=PATHS.USER_CONFIG_FILE,
-		                               settings_gui_xml="settings.xml",
-		                               changes_gui_xml="requirerestart.xml",
-		                               default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
-
-		self._setting_handler.add_settings()
 
 	def load_settings(self):
 		"""
@@ -251,8 +162,6 @@ class Fife(object):
 
 		init_pychan()
 
-		self._setting_handler.apply_settings()
-
 		self._got_inited = True
 
 	def init_animation_loader(self, use_atlases):
@@ -262,13 +171,6 @@ class Fife(object):
 			self.animationloader = SQLiteAtlasLoader()
 		else:
 			self.animationloader = SQLiteAnimationLoader()
-
-	def show_settings(self):
-		"""Show fife settings gui"""
-		if not hasattr(self, "_settings_extra_inited"):
-			self._setting_handler.setup_setting_extras()
-			self._settings_extra_inited = True
-		self._setting.onOptionsPress()
 
 	def set_cursor_image(self, which="default"):
 		"""Sets a certain cursor image.
@@ -337,10 +239,6 @@ class Fife(object):
 		"""
 		"""
 		assert self._got_inited
-
-		# Screen Resolutions can only be queried after the engine has been inited
-		available_resolutions = get_screen_resolutions(self.get_fife_setting('ScreenResolution'))
-		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = available_resolutions
 
 		self.engine.initializePumping()
 		self.loop()
