@@ -42,10 +42,22 @@ class Settings(object):
 		self._serializer.load(settings_file)
 
 	def get(self, module, name, default=None):
-		return self._serializer.get(module, name, default)
+		v = self._serializer.get(module, name, default)
+		getter = getattr(self, 'get_' + module + '_' + name, None)
+		if getter:
+			return getter(v)
+		else:
+			return v
 
 	def set(self, module, name, value):
-		pass
+		setter = getattr(self, 'set_' + module + '_' + name, None)
+		if setter:
+			value = setter(value)
+
+		if module in self._module_settings:
+			self._module_settings[module][name] = value
+
+		self._serializer.set(module, name, value, {})
 
 	def get_module_settings(self, module):
 		self._module_settings[module] = self._serializer.getAllSettings(module)
@@ -66,3 +78,13 @@ class Settings(object):
 
 	def set_defaults(self):
 		pass
+
+	# settings
+
+	def get_unknownhorizons_Language(self, value):
+		if value is None: # the entry is None for empty strings
+			value = ""
+		return LANGUAGENAMES[value]
+
+	def set_unknownhorizons_Language(self, value):
+		return LANGUAGENAMES.get_by_value(value)

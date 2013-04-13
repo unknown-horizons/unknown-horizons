@@ -19,11 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import namedtuple
+
 import horizons.globals
 
-from horizons.i18n import _lazy
+from horizons.constants import LANGUAGENAMES
+from horizons.engine import UH_MODULE
+from horizons.i18n import _lazy, find_available_languages
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
+
+
+Setting = namedtuple('Setting', 'module name widget_name initial_data')
 
 
 class SettingsDialog(PickBeltWidget, Window):
@@ -37,11 +44,22 @@ class SettingsDialog(PickBeltWidget, Window):
 		Window.__init__(self, windows)
 		PickBeltWidget.__init__(self)
 
+		self._settings = horizons.globals.fife._setting
+
 		self.widget.mapEvents({
 			'okButton': self.apply_settings,
 			'defaultButton': self.set_defaults,
 			'cancelButton': self._windows.close,
 		})
+
+		languages = find_available_languages().keys()
+		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
+
+		self._options = [
+			Setting(UH_MODULE, 'Language', 'uni_language', language_names)
+		]
+
+		self._fill_widgets()
 
 	def show(self):
 		self.widget.show()
@@ -55,8 +73,37 @@ class SettingsDialog(PickBeltWidget, Window):
 				u" " + _("Do you want to continue?")
 
 		if self._windows.show_popup(title, msg, show_cancel_button=True):
-			horizons.globals.fife._setting.set_defaults()
+			self._settings.set_defaults()
 
 	def apply_settings(self):
-		horizons.globals.fife._setting.save()
+		for entry in self._options:
+			widget = self.widget.findChild(name=entry.widget_name)
+			data = widget.getData()
+
+			if isinstance(entry.initial_data, list):
+				data = entry.initial_data[data]
+			elif isinstance(entry.initial_data, dict):
+				data = entry.initial_data.keys()[data]
+
+			self._settings.set(entry.module, entry.name, data)
+
+		self._settings.apply()
+		self._settings.save()
 		self._windows.close()
+
+	def _fill_widgets(self):
+		for entry in self._options:
+			value = self._settings.get(entry.module, entry.name)
+			widget = self.widget.findChild(name=entry.widget_name)
+
+			if entry.initial_data:
+				if isinstance(entry.initial_data, dict):
+					widget.setInitialData(entry.initial_data.values())
+					value = entry.initial_data.keys().index(value)
+				elif isinstance(entry.initial_data, list):
+					widget.setInitialData(entry.initial_data)
+					value = entry.initial_data.index(value)
+				else:
+					widget.setInitialData(entry.initial_data)
+
+			widget.setData(value)
