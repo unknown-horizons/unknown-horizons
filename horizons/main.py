@@ -174,7 +174,7 @@ def start(_command_line_arguments):
 
 	ExtScheduler.create_instance(horizons.globals.fife.pump)
 	horizons.globals.fife.init()
-	horizons.globals.statsmanager = StatsManager()
+	horizons.globals.statsmanager = StatsManager(disable=command_line_arguments.gui_test)
 
 	if atlas_generator is not None:
 		atlas_generator.wait()

@@ -35,11 +35,11 @@ class StatsManager(object):
 	# interval in seconds in which collected data is sent
 	SEND_EVERY = 2
 
-	def __init__(self):
+	def __init__(self, disable=False):
 		self.url = STATISTICS.SERVER_URL
 		self.sent_data = {}
 		self.data = {}
-		if horizons.globals.fife.get_uh_setting("CollectStatistics"):
+		if horizons.globals.fife.get_uh_setting("CollectStatistics") and not disable:
 			ExtScheduler().add_new_object(self.upload_data, self, self.SEND_EVERY, -1)
 
 	def collect_data(self, data):
