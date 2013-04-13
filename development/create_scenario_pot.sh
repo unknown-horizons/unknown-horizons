@@ -114,11 +114,7 @@ for event in scenario['events']:
 				write(comment, widget)
 END
 
-if [ "$1" = 'tutorial' ]; then
-	OUTPUT_DIR="po/uh-$1"
-else
-	OUTPUT_DIR="po/scenarios/templates"
-fi
+OUTPUT_DIR="po/scenarios/templates"
 
 xgettext --output-dir=$OUTPUT_DIR --output=$1.pot \
          --from-code=UTF-8 \
