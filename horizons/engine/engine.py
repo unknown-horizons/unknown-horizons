@@ -26,9 +26,10 @@ from fife import fife
 from fife.extensions import pychan, fifelog
 from fife.extensions.fife_settings import FIFE_MODULE
 
-from horizons.constants import LANGUAGENAMES
+from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.engine import UH_MODULE, KEY_MODULE
 from horizons.engine.pychan_util import init_pychan
+from horizons.engine.settings import Settings
 from horizons.engine.sound import Sound
 from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
@@ -41,6 +42,7 @@ class Fife(object):
 	def __init__(self):
 		self.pump = []
 
+		self._setting = Settings(PATHS.USER_CONFIG_FILE)
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
 
@@ -62,7 +64,7 @@ class Fife(object):
 
 		
 		# get finalSetting (from the xml file, or if absent the default value)
-		self._finalSetting = self._setting.getSettingsFromFile("FIFE", self._log)
+		self._finalSetting = self._setting.get_module_settings("FIFE")
 		
 		engineSetting = self.engine.getSettings()
 		
@@ -161,6 +163,7 @@ class Fife(object):
 		self.pychan.init(self.engine, debug_pychan) # pychan debug mode may have performance impacts
 
 		init_pychan()
+		self._setting.apply()
 
 		self._got_inited = True
 
@@ -192,7 +195,7 @@ class Fife(object):
 		self._setting.set(UH_MODULE, settingname, value)
 
 	def get_hotkey_settings(self):
-		return self._setting.getSettingsFromFile(KEY_MODULE)
+		return self._setting.get_module_settings(KEY_MODULE)
 
 	def get_keys_for_action(self, action, default=False):
 		"""Returns list of current hotkeys for *action* or its default hotkeys."""
@@ -213,7 +216,7 @@ class Fife(object):
 		self.set_key_for_action(action, list(new_keys))
 
 	def save_settings(self):
-		self._setting.saveSettings()
+		self._setting.save()
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
