@@ -63,7 +63,7 @@ def setup_paths():
 		language = dirname.split(os.path.sep)[-1]
 	else:
 		language = language_path
-		language_path = PO_INPUT_PATH.format(scenario=scenario_path, language=language)
+		language_path = PO_INPUT_PATH.format(scenario=scenario, language=language)
 
 	yaml_output = YAML_PATH.format(scenario=scenario, language=language)
 	msgfmt_output = MSGFMT_PATH.format(MO_OUTPUT=MO_OUTPUT, language=language) + '%s.mo' % scenario
