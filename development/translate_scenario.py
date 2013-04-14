@@ -77,8 +77,15 @@ def setup_paths():
 
 
 def setup_gettext(scenario, language):
-	translation = gettext.translation(scenario, MO_OUTPUT, [language])
-	translation.install(unicode=True)
+	try:
+		translation = gettext.translation(scenario, MO_OUTPUT, [language])
+	except IOError:
+		# IOError: [Errno 2] No translation file found for domain
+		print('No compiled translation for domain `%s` and language `%s` in `%s`. '
+		      'Exiting.' % (scenario, language, MO_OUTPUT))
+		sys.exit(1)
+	else:
+		translation.install(unicode=True)
 
 
 def compile_scenario_po(input_po, output_mo):
@@ -92,8 +99,11 @@ def compile_scenario_po(input_po, output_mo):
 		], stderr=subprocess.STDOUT)
 	except subprocess.CalledProcessError:
 		#TODO handle
-		stats = None
-	return stats
+		print('Error while compiling translation `%s`, probably malformed `.po`. '
+		      'Exiting.' % input_po)
+		sys.exit(1)
+	else:
+		return stats
 
 
 def write_translated_yaml(fileish, where, metadata=None):
@@ -197,10 +207,7 @@ def main():
 	(scenario, scenario_path, language, language_path, yaml_output, msgfmt_output) = setup_paths()
 	# This writes .mo files in the *scenario* domain, so setup_gettext needs
 	# to come afterwards!
-	tl_status = compile_scenario_po(language, msgfmt_output)
-	if tl_status is None:
-		print 'Error while compiling translation, probably malformed `.po`. Exiting.'
-		sys.exit(1)
+	tl_status = compile_scenario_po(language_path, msgfmt_output)
 	setup_gettext(scenario, language)
 
 	#TODO Make this do something!
