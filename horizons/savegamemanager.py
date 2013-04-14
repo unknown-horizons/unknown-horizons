@@ -330,15 +330,12 @@ class SavegameManager(object):
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames=True, locales=False, hide_test_scenarios=False):
+	def get_available_scenarios(cls, include_displaynames=True, locales=False):
 		"""Returns available scenarios."""
 		afiles = []
 		anames = []
 		sfiles, snames = cls.get_scenarios(include_displaynames=True)
 		for i, sname in enumerate(snames):
-			if hide_test_scenarios and cls.get_scenario_info(name=sname).get('test_scenario'):
-				continue
-
 			#get file's locale
 			cur_locale = '_' + cls.get_scenario_info(name=sname).get('locale')
 

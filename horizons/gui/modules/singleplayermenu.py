@@ -461,7 +461,7 @@ class ScenarioMapWidget(object):
 	def show(self):
 		self._aidata.hide()
 
-		self._files, maps_display = SavegameManager.get_available_scenarios(hide_test_scenarios=True)
+		self._files, maps_display = SavegameManager.get_available_scenarios()
 
 		# get the map files and their display names. display tutorials on top.
 		prefer_tutorial = lambda x: ('tutorial' not in x, x)
