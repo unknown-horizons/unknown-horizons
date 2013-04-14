@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import json
 from os import path
 from operator import itemgetter
 
@@ -180,14 +179,15 @@ class StartGameOptions(object):
 		options._player_list = player_list
 		options.is_map = True
 		return options
-		
-	
+
 	def statistics_dict(self):
-		data = {}		
+		data = {}
 		if self.is_random:
 			data['map'] = "random"
 		elif self.is_loaded:
 			data['map'] = "loaded"
+		elif self.is_editor:
+			data['map'] = "editor"
 		else:
 			data['map'] = path.basename(self.game_identifier)
 		return data

@@ -65,11 +65,11 @@ class StatsManager(object):
 	def __upload_data(self, data):
 		req = Request(self.url + self.action)
 		req.add_header('Content-Type', 'application/json')
-		print "Submitting:", json.dumps(data)
 		try:
 			urlopen(req, json.dumps(data))
-		except URLError as e:
-			print "Caught exception", e
+		except URLError:
+			# Probably can't contact server, so disable for this session
+			self.set_enabled(False)
 
 	def set_enabled(self, enabled):
 		if enabled:
