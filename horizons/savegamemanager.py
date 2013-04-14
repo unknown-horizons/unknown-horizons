@@ -378,7 +378,7 @@ class SavegameManager(object):
 				return {}
 			index = snames.index(name)
 		elif filename:
-			if not filename in sfiles:
+			if filename not in sfiles:
 				cls.log.error("Error: Cannot find scenario '{name}'.".format(name=filename))
 				return {}
 			index = sfiles.index(filename)
