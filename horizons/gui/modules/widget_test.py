@@ -19,15 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""Modules for gui/ingamegui"""
+from horizons.gui.util import load_uh_widget
+from horizons.gui.windows import Window
 
-from playerdataselection import PlayerDataSelection
-from aidataselection import AIDataSelection
-from singleplayermenu import SingleplayerMenu
-from multiplayermenu import MultiplayerMenu
-from help import HelpDialog
-from select_savegame import SelectSavegameDialog
-from loadingscreen import LoadingScreen
-from pausemenu import PauseMenu
-from settings import SettingsDialog
-from widget_test import WidgetTest
+
+class WidgetTest(Window):
+
+	def __init__(self, windows):
+		super(WidgetTest, self).__init__(windows)
+
+		self._gui = load_uh_widget('widget_test.xml')
+
+	def show(self):
+		self._gui.show()
+
+	def hide(self):
+		self._gui.hide()

@@ -35,7 +35,8 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
-                                  SelectSavegameDialog, LoadingScreen, SettingsDialog)
+                                  SelectSavegameDialog, LoadingScreen, SettingsDialog,
+                                  WidgetTest)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager, Window
 
@@ -45,10 +46,14 @@ class MainMenu(Window):
 	def __init__(self, gui, windows):
 		super(MainMenu, self).__init__(windows)
 
+		self.widget_test = WidgetTest(windows)
+
 		self._gui = load_uh_widget('mainmenu.xml', 'menu')
 		self._gui.mapEvents({
-			'single_button': lambda: self._windows.show(gui.singleplayermenu),
-			'single_label' : lambda: self._windows.show(gui.singleplayermenu),
+			#'single_button': lambda: self._windows.show(gui.singleplayermenu),
+			#'single_label' : lambda: self._windows.show(gui.singleplayermenu),
+			'single_button': lambda: self._windows.show(self.widget_test),
+			'single_label' : lambda: self._windows.show(self.widget_test),
 			'multi_button': lambda: self._windows.show(gui.multiplayermenu),
 			'multi_label' : lambda: self._windows.show(gui.multiplayermenu),
 			'settings_button': lambda: self._windows.show(gui.settings_dialog),
