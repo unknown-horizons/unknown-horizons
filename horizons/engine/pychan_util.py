@@ -32,6 +32,9 @@ from horizons.gui.widgets.imagebutton import ImageButton
 
 import horizons.globals
 
+from horizons.ext.dummy import Dummy
+pychan.internal.Manager.stylize = Dummy()
+
 class RenameLabel(pychan.widgets.Label):
 	"""A regular label that signals that it will display a rename dialog when clicked upon (by changing the cursor)"""
 	pass # implementation added dynamically below
