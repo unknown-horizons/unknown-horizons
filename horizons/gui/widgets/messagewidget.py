@@ -119,7 +119,7 @@ class MessageWidget(LivingObject):
 		""" See docstring for add().
 		"""
 		message_dict = {'player': player, 'message': messagetext}
-		self.add(point=None, string_id='CHAT', msg_type=None, message_dict=message_dict)
+		self.add('CHAT', msg_type=None, message_dict=message_dict)
 		self.chat.append(self.active_messages[0])
 
 	def _add_message(self, message, sound=None):
