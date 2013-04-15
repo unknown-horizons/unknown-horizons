@@ -257,8 +257,12 @@ class RouteConfig(Window):
 		if event.getButton() == fife.MouseEvent.LEFT:
 			self.show_resource_menu(widget.parent, widget.parent.parent)
 		elif event.getButton() == fife.MouseEvent.RIGHT:
-			# remove the load/unload order
-			self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
+			if self.resource_menu_shown:
+				# abort resource selection (#1310)
+				self.hide_resource_menu()
+			else:
+				# remove the load/unload order
+				self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
 
 	def show_resource_menu(self, slot, entry):
 		position = self.widgets.index(entry)
