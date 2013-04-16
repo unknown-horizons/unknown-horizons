@@ -223,6 +223,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		location_list = fife.LocationList([self._fife_location2]*5)
 		#TODO Remove thisown, it exists for FIFE 0.3.4 compat. See #1993.
 		location_list.thisown = 0
+		self._route.thisown = 0
 		self._route.setPath(location_list)
 		self._route.setRouteStatus(3)  #fife.RouteStatus.ROUTE_SOLVED)
 
