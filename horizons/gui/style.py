@@ -105,12 +105,6 @@ STYLES = {
 		},
 },
 
-'city_info': { # style for city info
-		'default': {
-			'font': 'cityinfo',
-		},
-},
-
 'headline': { # style for headlines
 		'default': {
 			'font': 'headline',

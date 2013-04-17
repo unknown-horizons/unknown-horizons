@@ -61,15 +61,6 @@ color: 68,42,2
 antialias: 1
 
 
-[Font/cityinfo]
-
-type: truetype
-source: content/fonts/Unifont.ttf
-size: 18
-color: 255,255,255
-antialias: 1
-
-
 [Font/headline]
 
 type: truetype
