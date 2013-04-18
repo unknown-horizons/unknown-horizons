@@ -225,7 +225,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		location_list.thisown = 0
 		self._route.thisown = 0
 		self._route.setPath(location_list)
-		self._route.setRouteStatus(3)  #fife.RouteStatus.ROUTE_SOLVED)
 
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
 		action = self._move_action+"_"+str(self._action_set_id)
