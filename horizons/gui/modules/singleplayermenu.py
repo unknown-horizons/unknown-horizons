@@ -495,7 +495,7 @@ class ScenarioMapWidget(object):
 		print "Error: ", unicode(str(exception))
 		self._windows.show_error_popup(
 			_("Invalid scenario file"),
-		    description=_("The selected file is not a valid scenario file."),
+			description=_("The selected file is not a valid scenario file."),
 			details=_("Error message:") + u' ' + unicode(str(exception)),
 			advice=_("Please report this to the author."))
 
