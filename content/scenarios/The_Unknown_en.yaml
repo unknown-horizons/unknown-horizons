@@ -14,11 +14,8 @@
 #
 # for notes, see: http://wiki.unknown-horizons.org/w/Kikody%27s_scenario
 
-events:
-- # start
-  actions:
-  - type: logbook
-    arguments:
+logbook-data:
+- &INTRO
       - [Headline, "20th November 1740"]
       - [Image, "content/gui/images/background/hr.png"]
       - |
@@ -31,14 +28,7 @@ events:
       - [Pagebreak]
       - |
 
-  conditions:
-    - type: time_passed
-      arguments: [0]
-
-- # with port
-  actions:
-  - type: logbook
-    arguments:
+- &FOOD_BOARDS
     - [Headline, "22nd November 1740"]
     - [Image, "content/gui/images/background/hr.png"]
     - |
@@ -55,14 +45,7 @@ events:
     - [Pagebreak]
     - |
 
-  conditions:
-  - type: settlements_num_greater
-    arguments: [0]
-
-- # basic production setup
-  actions:
-  - type: logbook
-    arguments:
+- &TENTS
     - [Headline, "25th November 1740"]
     - [Image, "content/gui/images/background/hr.png"]
     - |
@@ -75,6 +58,55 @@ events:
     - [Pagebreak]
     - |
 
+- &GROW_SETTLEMENT
+    - [Headline, "1st December 1740"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - |
+      Finally we have enough to eat and a place to live again. My tent is not very comfortable but it keeps me dry and I have the feeling of having a roof over my head at night.
+    - |
+      I have been researching the stars at night, but without my sea charts and instruments their meaning remains unknown. I have the feeling we will be stuck here for a while, so we'll have to make the best of situation.
+      We can only try to to build up a civilisation and find a way home...
+    - |
+      Task:
+      Grow the village until you have at least 250 inhabitants and a positive balance.
+    - [Pagebreak]
+    - |
+
+- &WON
+    - [Headline, "27th August 1745"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - |
+      Our village is doing well, the city has grown to over 250 inhabitants. I have started getting used to my new home, but this island is too small to stay here forever.
+    - |
+      We should load our ship and move out to find a bigger island offering room and resources for my people. I have created a basic navigational map again, using the stars I see at night. It is not perfect, but I hope it will suffice to return here.
+    - |
+      Task:
+      Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how you can contribute to making this scenario longer and better!
+    - [Pagebreak]
+    - |
+
+
+events:
+- # start
+  actions:
+  - type: logbook
+    arguments: *INTRO
+  conditions:
+    - type: time_passed
+      arguments: [0]
+
+- # with port
+  actions:
+  - type: logbook
+    arguments: *FOOD_BOARDS
+  conditions:
+  - type: settlements_num_greater
+    arguments: [0]
+
+- # basic production setup
+  actions:
+  - type: logbook
+    arguments: *TENTS
   conditions:
   - type: building_num_of_type_greater
     arguments: [BUILDINGS.FISHER, 0]
@@ -90,20 +122,7 @@ events:
 - # basic residence setup
   actions:
   - type: logbook
-    arguments:
-    - [Headline, "1st December 1740"]
-    - [Image, "content/gui/images/background/hr.png"]
-    - |
-      Finally we have enough to eat and a place to live again. My tent is not very comfortable but it keeps me dry and I have the feeling of having a roof over my head at night.
-    - |
-      I have been researching the stars at night, but without my sea charts and instruments their meaning remains unknown. I have the feeling we will be stuck here for a while, so we'll have to make the best of situation.
-      We can only try to to build up a civilisation and find a way home...
-    - |
-      Task:
-      Grow the village until you have at least 250 inhabitants and a positive balance.
-    - [Pagebreak]
-    - |
-
+    arguments: *GROW_SETTLEMENT
   conditions:
   - type: building_num_of_type_greater
     arguments: [BUILDINGS.RESIDENTIAL, 4]
@@ -113,18 +132,7 @@ events:
 - # 250 people
   actions: # TODO: bigger map action
   - type: logbook
-    arguments:
-    - [Headline, "27th August 1745"]
-    - [Image, "content/gui/images/background/hr.png"]
-    - |
-      Our village is doing well, the city has grown to over 250 inhabitants. I have started getting used to my new home, but this island is too small to stay here forever.
-    - |
-      We should load our ship and move out to find a bigger island offering room and resources for my people. I have created a basic navigational map again, using the stars I see at night. It is not perfect, but I hope it will suffice to return here.
-    - |
-      Task:
-      Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how you can contribute to making this scenario longer and better!
-    - [Pagebreak]
-    - |
+    arguments: *WON
   conditions:
   - type: settlement_inhabitants_greater
     arguments: [250]
