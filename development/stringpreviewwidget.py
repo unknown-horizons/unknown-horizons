@@ -64,7 +64,13 @@ class StringPreviewWidget(Window):
 		"""
 		scenario_file_path = self.scenarios[0][self.listbox.selected]
 		data = YamlCache.load_yaml_data(open(scenario_file_path, 'r'))
-		stats = data.get('translation_status', '') # no stats available => empty label
+
+		if 'metadata' in data:
+			# no stats available => empty label
+			stats = data['metadata'].get('translation_status', '')
+		else:
+			# Old scenario syntax version without metadata
+			stats = data.get('translation_status', '')
 		self.statslabel.text = unicode(stats)
 
 	def load(self):
