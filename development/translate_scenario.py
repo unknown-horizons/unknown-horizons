@@ -172,7 +172,12 @@ def write_translated_yaml(fileish, where, metadata=None):
 		# reasonable to translate.
 		for key in ('author', 'description', 'difficulty'):
 			value = file_metadata[key]
-			translated_metadata[key] = translate(value)
+			if key == 'description':
+				#TODO remove this hack once translations were updated properly
+				# to exclude the trailing newline for 'description's
+				translated_metadata[key] = _(value)
+			else:
+				translated_metadata[key] = translate(value)
 		# Add (untranslated) information passed to this function, such as
 		# translation status from gettext or the file locale, if available.
 		if metadata:
