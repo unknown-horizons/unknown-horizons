@@ -164,6 +164,25 @@ def write_translated_yaml(fileish, where, metadata=None):
 
 		where.write(new_anchor + '\n')
 
+	def write_translated_metadata(translated_metadata):
+		# Prepare 'metadata' dictionary for the translated scenario
+		file_metadata = yaml.safe_load(''.join(fileish))['metadata']
+		translated_metadata = file_metadata.copy()
+		# Manually invoke translation of strings exposed to player that are
+		# reasonable to translate.
+		for key in ('author', 'description', 'difficulty'):
+			value = file_metadata[key]
+			translated_metadata[key] = translate(value)
+		# Add (untranslated) information passed to this function, such as
+		# translation status from gettext or the file locale, if available.
+		if metadata:
+			translated_metadata.update(metadata)
+		# All of this is dumped to file when we encounter a 'metadata:' line
+		# while manually parsing the original scenario line-by-line. Ugly.
+		m = {'metadata': translated_metadata}
+		dumped = yaml.safe_dump(m, allow_unicode=True, width=1000, default_flow_style=False)
+		where.write(dumped)
+
 	# Manually track currently seen anchor (to delimit sections)
 	anchors = []
 	# List of yaml content lines for each section (to be loaded by `yaml`)
@@ -176,8 +195,10 @@ def write_translated_yaml(fileish, where, metadata=None):
 	for line in fileish:
 
 		if copy_again:
+			if line.startswith('metadata:'):
+				write_translated_metadata(1)
+				break
 			where.write(line)
-			continue
 
 		elif line.startswith('- '):
 			# New anchor detected.
@@ -210,19 +231,19 @@ def main():
 	tl_status = compile_scenario_po(language_path, msgfmt_output)
 	setup_gettext(scenario, language)
 
-	#TODO Make this do something!
 	metadata = {
 		'translation_status': tl_status.rstrip(),
 		'locale': language,
 	}
 	with open(yaml_output, 'w') as out:
 		with open(scenario_path, 'r') as f:
-			write_translated_yaml(f, out, metadata)
+			english_scenario = f.readlines()
+		write_translated_yaml(english_scenario, out, metadata)
 
 
 if __name__ == '__main__':
 	if len(sys.argv) != 3:
-		print 'Usage: {} scenario_name language_name'.format(__file__)
+		print 'Usage: {0} scenario_name language_name'.format(__file__.lstrip('./'))
 		print '\tscenario_name: Either `tutorial` or `content/scenarios/tutorial_en.yaml`'
 		print '\tlanguage_name: Either `sv` or `po/scenarios/sv/The_Unknown.po`'
 		print 'Run from main UH directory!'
