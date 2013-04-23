@@ -212,7 +212,7 @@ def main():
 
 	#TODO Make this do something!
 	metadata = {
-		'translation_status': tl_status,
+		'translation_status': tl_status.rstrip(),
 		'locale': language,
 	}
 	with open(yaml_output, 'w') as out:
