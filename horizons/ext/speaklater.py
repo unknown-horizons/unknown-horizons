@@ -171,6 +171,9 @@ class _LazyString(object):
     def __ge__(self, other):
         return self.value >= other
 
+    def __hash__(self):
+        return hash(self.value)
+
     def __getattr__(self, name):
         if name == '__members__':
             return self.__dir__()
