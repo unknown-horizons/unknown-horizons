@@ -91,7 +91,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.loading_area = self.position # shape where collector get resources
 
 		origin = self.position.origin
-		self._instance, _unused = self.getInstance(self.session, origin.x, origin.y,
+		self._instance, action_name = self.getInstance(self.session, origin.x, origin.y,
 		    rotation=self.rotation, action_set_id=self._action_set_id, world_id=str(self.worldid))
 
 		if self.has_running_costs: # Get payout every 30 seconds
