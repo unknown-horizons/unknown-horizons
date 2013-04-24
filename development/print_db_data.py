@@ -182,12 +182,8 @@ def print_storage():
 		for res, amount in stor.values()[0].values()[0].iteritems():
 			print "\t%2s tons of %s(%s)" % (amount, get_res_name(res), res)
 
-	print "\nAll others can store 30 tons of each res:" # show buildings with default storage
-	return
-	all = set(db('SELECT id FROM building'))
-	entries = set(db('SELECT object_id FROM storage')) # also includes units, they are ignored
-	for id, in sorted(all - entries):
-		print "%s(%i)" % (get_obj_name(id), id)
+	print "\nAll others can store 30 tons of each res."
+	#TODO show buildings with default storage here
 
 def print_collectors():
 	print 'Collectors: (building amount collector)'
