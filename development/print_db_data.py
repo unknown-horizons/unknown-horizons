@@ -174,13 +174,12 @@ def print_storage():
 			continue
 		if not stor:
 			continue
-		inv = stor['inventory']
 		try:
-			inv.values()[0].values()[0]
+			stor.values()[0].values()[0]
 		except IndexError:
 			continue
 		print '%s(%i) can store:' % (b.name, b.id)
-		for res, amount in inv.values()[0].values()[0].iteritems():
+		for res, amount in stor.values()[0].values()[0].iteritems():
 			print "\t%2s tons of %s(%s)" % (amount, get_res_name(res), res)
 
 	print "\nAll others can store 30 tons of each res:" # show buildings with default storage
