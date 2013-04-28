@@ -91,7 +91,7 @@ class ReRunInfoPlugin(Plugin):
 	def formatError(self, test, err):
 		_, module, call = test.address()
 
-		output = ['python', 'run_tests.py', u'%s:%s' % (module, call)]
+		output = ['python2', 'run_tests.py', u'%s:%s' % (module, call)]
 
 		# add necessary flags
 		if 'tests.gui' in module:
