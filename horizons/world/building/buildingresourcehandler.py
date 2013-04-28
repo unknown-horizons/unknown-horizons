@@ -67,12 +67,9 @@ class BuildingResourceHandler(ResourceHandler):
 		return resources.keys()[0] in \
 		       self.island.session.db.get_res(only_tradeable=True, only_inventory=True)
 
-	def _set_running_costs_to_status(self, caller, is_active):
-		current_setting_is_active = self.running_costs_active()
-		if current_setting_is_active and not is_active:
-			self.toggle_costs()
-			self._changed()
-		elif not current_setting_is_active and is_active:
+	def _set_running_costs_to_status(self, caller, activate):
+		currently_active = self.running_costs_active()
+		if (currently_active and not activate) or (not currently_active and activate):
 			self.toggle_costs()
 			self._changed()
 
