@@ -46,7 +46,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	tearable = True
 	layer = LAYERS.OBJECTS
 
-
 	log = logging.getLogger("world.building")
 
 	"""
@@ -105,11 +104,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				self.running_costs_inactive, self.running_costs
 
 	def running_costs_active(self):
-		"""Returns whether the building currently payes the running costs for status 'active'"""
+		"""Returns whether the building currently pays the running costs for status 'active'"""
 		return (self.running_costs > self.running_costs_inactive)
 
 	def get_payout(self):
-		"""gets the payout from the settlement in form of it's running costs"""
+		"""Gets the payout from the settlement in form of its running costs"""
 		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, -self.running_costs)
 
 	def remove(self):

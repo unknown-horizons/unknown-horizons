@@ -23,6 +23,7 @@ from horizons.messaging import ResourceProduced
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.production.producer import Producer
 
+
 class BuildingResourceHandler(ResourceHandler):
 	"""A Resourcehandler that is also a building.
 	This class exists because we keep a list of all buildings, that provide something at the island.
@@ -81,4 +82,3 @@ class UnitProducerBuilding(BuildingResourceHandler):
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
 	building specific behavior."""
 	pass
-
