@@ -117,8 +117,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		if hasattr(self, "disaster"):
 			self.disaster.recover(self)
 		self.island.remove_building(self)
-		#instance is owned by layer...
-		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
 		# NOTE: removing layers from the renderer here will affect others players too!
 
