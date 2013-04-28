@@ -196,7 +196,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		@param level: int level number"""
 		action_set = self.__class__.get_random_action_set(level, exact_level=True)
 		if action_set:
-			self._action_set_id = action_set # Set the new action_set
+			self._action_set_id = action_set  # Set the new action_set
 			self.act(self._action, repeating=True)
 
 	def level_upgrade(self, lvl):
