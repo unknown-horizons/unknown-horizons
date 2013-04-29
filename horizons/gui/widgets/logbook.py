@@ -238,8 +238,8 @@ class LogBook(PickBeltWidget, Window):
 			if not duplicate_message:
 				self._messages_to_display.append(message) # the new message has not been displayed
 		else:
-			print '[WW] Warning: Unknown parameter type {typ} in parameter {prm}'.format(
-				typ=parameter[0], prm=parameter)
+			self.log.warning('Unknown parameter type %s in parameter %s',
+			                 parameter[0], parameter)
 			add = None
 		return add
 
