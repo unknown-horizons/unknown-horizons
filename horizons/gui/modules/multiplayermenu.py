@@ -22,7 +22,7 @@
 import hashlib
 import textwrap
 
-from fife.extensions.pychan.widgets import HBox, Label
+from fife.extensions.pychan.widgets import HBox, Label, TextField
 
 import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -32,7 +32,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.icongroup import hr as HRule
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
-from horizons.gui.windows import Window, Dialog
+from horizons.gui.windows import Popup, Window
 from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
@@ -231,38 +231,21 @@ class MultiplayerMenu(Window):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 
-		password = ""
 		if game.password:
-			# Repeatedly ask the player for the password
-			success = False
-			while not success:
-				password = self._request_game_password(game)
-				if password is None:
-					break
-				password = hashlib.sha1(password).hexdigest()
-				success = NetworkInterface().joingame(game.uuid, password)
-
+			# ask the player for the password
+			popup = PasswordInput(self._windows)
+			password = self._windows.show(popup)
+			if password is None:
+				return
+			password = hashlib.sha1(password).hexdigest()
+			success = NetworkInterface().joingame(game.uuid, password)
 			if not success:
 				return
-		else:
-			if not NetworkInterface().joingame(game.uuid, password):
-				return
+		elif not NetworkInterface().joingame(game.uuid, ''):
+			return
 
 		window = GameLobby(self._windows)
 		self._windows.show(window)
-
-	def _request_game_password(self, game):
-		"""Show dialog to ask player for a password."""
-		dialog = load_uh_widget('set_password.xml')
-
-		bind = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		window = Dialog.create_from_widget(dialog, bind, modal=True, focus="password")
-		retval = self._windows.show(window)
-
-		if retval:
-			return dialog.collectData("password")
-		else:
-			return None
 
 	def _prepare_game(self, game):
 		horizons.main.prepare_multiplayer(game)
@@ -271,6 +254,28 @@ class MultiplayerMenu(Window):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 		self._windows.show(CreateGame(self._windows)),
+
+
+class PasswordInput(Popup):
+	"""Popup where players enter a password to join multiplayer games."""
+	focus = 'password'
+
+	def __init__(self, windows):
+		title = _('Password of the game')
+		text = _('Enter password:')
+		super(PasswordInput, self).__init__(windows, title, text, show_cancel_button=True)
+
+	def prepare(self, **kwargs):
+		super(PasswordInput, self).prepare(**kwargs)
+		pw = TextField(name='password', max_size=(320, 20), min_size=(320, 20))
+		box = self._gui.findChild(name='message_box')
+		box.addChild(pw)
+
+	def act(self, send_password):
+		if not send_password:
+			return
+		return self._gui.collectData("password")
+
 
 class CreateGame(Window):
 	"""Interface for creating a multiplayer game"""
