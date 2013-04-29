@@ -1,10 +1,18 @@
 <?xml version="1.0"?>
 
-<Container name="hotkeys_window" size="1000,580">
-<Icon image="content/gui/images/background/book.png" position="10,0" />
+<AutoResizeContainer name="hotkeys_window">
+<!-- Hotkeys section -->
+<HBox name="hotkeys" padding="10">
+	<!-- Left pane
+	<VBox name="graphics_left" max_size="320,500" min_size="320,0" padding="25">
+	</VBox> -->
 
-<HBox name="hotkeys" position="125,45" padding="10">
-	<ScrollArea name="hotkeys_list" max_size="600,500" min_size="600,500">
+	<!-- Right pane
+	<VBox name="graphics_right" max_size="320,500" min_size="320,0" padding="25">
+	</VBox> -->
+
+
+	<ScrollArea name="hotkeys_list" max_size="600,450" min_size="600,450">
 		<HBox name="label_button_columns" padding="30">
 			<VBox name="keys_container">
 				<Label text="Actions" name="labels_headline" />
@@ -51,7 +59,8 @@
 	</ScrollArea>
 </HBox>
 
-<OkButton position="640,500" helptext="Exit to main menu" />
-<Button name="reset_to_default" text="Reset to default keys" position="540,450" helptext="Reset to default" />
-
-</Container>
+<OkButton position="1640,500" helptext="Exit to main menu" />
+<Button name="reset_to_default" text="Reset to default keys" position="1540,450" helptext="Reset to default" />
+<!--
+-->
+</AutoResizeContainer>

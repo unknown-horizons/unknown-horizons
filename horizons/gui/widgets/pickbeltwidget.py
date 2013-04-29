@@ -22,6 +22,7 @@
 from fife import fife
 
 from horizons.util.python.callback import Callback
+from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
@@ -88,9 +89,17 @@ class OptionsPickbeltWidget(PickBeltWidget):
 	def __init__(self, *args, **kwargs):
 		# can't set this as class attribute directly since it's evaluated before gettext is set up
 		self.__class__.sections = (('graphics_settings', _('Graphics')),
+		                           ('hotkeys_settings', _('Hotkeys')),
 		                           ('game_settings', _('Game')))
 
 		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
+
+	def update_view(self, number=0):
+		if number == self.__class__.sections.index(('hotkeys_settings', _('Hotkeys'))):
+			hk = HotkeyConfiguration()
+			self.page_widgets[number].addChild(hk.widget)
+
+		super(OptionsPickbeltWidget, self).update_view(number=number)
 
 
 class CreditsPickbeltWidget(PickBeltWidget, Window):

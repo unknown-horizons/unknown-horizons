@@ -235,6 +235,9 @@
 		</VBox>
 	</HBox>
 
+<!-- Hotkeys section -->
+<HBox name="hotkeys_settings" position="185,45" padding="25" />
+
 <!-- General section -->
 	<HBox position="180,500" padding="245">
 		<DeleteButton name="defaultButton" helptext="Reset to default settings" />

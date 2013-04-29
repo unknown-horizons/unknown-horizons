@@ -31,10 +31,10 @@ from horizons.messaging import LanguageChanged
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
 
-class HotkeyConfiguration(Window):
+class HotkeyConfiguration(object):
 
-	def __init__(self, windows):
-		super(HotkeyConfiguration, self).__init__(windows)
+	def __init__(self):
+		super(HotkeyConfiguration, self).__init__()
 
 		self.widget = load_uh_widget('hotkeys.xml')
 		self.buttons = []
@@ -139,12 +139,12 @@ class HotkeyConfiguration(Window):
 			#xgettext:python-format
 			message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
 					                      key=key_name, action=oldaction)
-			if self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
-			else:
-				self.update_buttons_text()
-				self.last_combination = []
-				return
+			#if self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
+			#	horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
+			#else:
+			#	self.update_buttons_text()
+			#	self.last_combination = []
+			#	return
 
 		bindings = self.keyconf.get_current_keys(action)
 		if column == 1:
@@ -199,7 +199,7 @@ class HotkeyConfiguration(Window):
 	def save_settings(self):
 		horizons.globals.fife.save_settings()
 		self.keyconf.loadKeyConfiguration()
-		self._windows.close()
+		#self._windows.close()
 
 	def show(self):
 		self.widget.show()
