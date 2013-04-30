@@ -110,7 +110,7 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 			raise Exception('Image not found: {icon_path}'.format(icon_path=icon_path))
 		else:
 			log = logging.getLogger('gui')
-			log.warn('Image not found: %s', icon_path)
+			log.warning('Image not found: %s', icon_path)
 			icon_path = get_res_icon_path('placeholder', size)
 
 	if full_path:
