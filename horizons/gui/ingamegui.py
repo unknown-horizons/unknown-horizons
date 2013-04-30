@@ -537,13 +537,12 @@ class IngameGui(LivingObject):
 				# doesn't handle that case.
 				self.show_menu(None)
 
-	def toggle_cursor(self, which, *args, **kwargs):
-		"""Alternate between the cursor which and default.
-		args and kwargs are used to construct which."""
-		if self.current_cursor == which:
+	def toggle_cursor(self, which):
+		"""Alternate between the cursor *which* and the default cursor."""
+		if which == self.current_cursor:
 			self.set_cursor()
 		else:
-			self.set_cursor(which, *args, **kwargs)
+			self.set_cursor(which)
 
 	def set_cursor(self, which='default', *args, **kwargs):
 		"""Sets the mousetool (i.e. cursor).
