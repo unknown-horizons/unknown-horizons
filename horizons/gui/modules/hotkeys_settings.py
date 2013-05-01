@@ -98,6 +98,7 @@ class HotkeyConfiguration(object):
 		self.current_button = button
 		self.current_index = int(button.name)
 		self.current_column = column
+		self.listener.activate()
 		#xgettext:python-format
 		button.text = _("Press desired key")
 
@@ -109,6 +110,7 @@ class HotkeyConfiguration(object):
 				return
 			self.last_combination.append(key)
 			self.detecting = False
+			self.listener.deactivate()
 			self.apply_change()
 
 	def update_buttons_text(self):
@@ -190,6 +192,7 @@ class HotkeyConfiguration(object):
 		print "Action name not found. Key name must be wrong. This is not supposed to ever happen"
 
 	def reset_to_default(self):
+		print 'default intrat'
 		for action in self.actions:
 			default_key = horizons.globals.fife.get_keys_for_action(action, default=True)
 			horizons.globals.fife.set_key_for_action(action, default_key)
@@ -199,15 +202,14 @@ class HotkeyConfiguration(object):
 	def save_settings(self):
 		horizons.globals.fife.save_settings()
 		self.keyconf.loadKeyConfiguration()
-		#self._windows.close()
 
 	def show(self):
 		self.widget.show()
-		self.listener.activate()
+		# self.listener.activate()
 
 	def hide(self):
 		self.widget.hide()
-		self.listener.deactivate()
+		# self.listener.deactivate()
 
 
 class HotkeysListener(fife.IKeyListener):
