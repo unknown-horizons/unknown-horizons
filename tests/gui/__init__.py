@@ -27,8 +27,8 @@ When this test is run, it will launch the game in a subprocess, passing it the
 dotted path to the test (along with other options), similar to this code:
 
 	def test_example():
-		returncode = subprocess.call(['python', 'run_uh.py', '--gui-test',
-									  'tests.gui.minimap'])
+		returncode = subprocess.call(['python2', 'run_uh.py', '--gui-test',
+		                              'tests.gui.minimap'])
 		if returncode != 0:
 			assert False
 
