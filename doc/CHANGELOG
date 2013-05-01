@@ -12,7 +12,7 @@ Gameplay and Balancing
 * Modifications and changes
   # 
 * Fixed bugs and problems
-  ~ crash when clicking on messagewidget messages in scenarios
+  ~ 9d4a7e1: crash when clicking on messagewidget messages in scenarios
   ~ #2039: introduce memory leak to fix `RuntimeError: _[NotFound]_ ,
     Something was searched, but not found :: action move_as_[corrupted]`
 
@@ -24,7 +24,7 @@ Media Content
 
 User Interface
 * Additions and new features
-  + loading screen displays readable messages about current stage
+  + d413693: improved loading screen messages about current stage
 * Repositioning and modifications
   # #1310: right clicks in trade route resource selection are now
     special-cased to abort selection (not empty slot) sometimes
@@ -33,13 +33,13 @@ User Interface
 
 Codebase
 * New functionalities
-  + lazy translation (`speaklater` library)
+  + #2077: lazy translation (`speaklater` library)
 * Modified structures
   # #2053: default hashbang now is `/usr/bin/env python2`
-  # allow running with FIFE newer than 0.3.4
-  # migrate script to translate a scenario to python
+  # #2058: allow running with FIFE newer than 0.3.4
+  # 0a1d6db: migrate script to translate a scenario to python
 * Fixed crashes and inconsistencies
-  ~ handle unknown actions in hotkey settings
+  ~ 3c363f4: handle unknown actions in hotkey settings
 
 User-Contributed Content
 * Translations
