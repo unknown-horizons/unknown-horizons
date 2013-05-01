@@ -4,7 +4,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2013-07-01: Milestone 2013.3
-changelog date: APR 18
+changelog date: MAY 01
 
 Gameplay and Balancing
 * New features
@@ -35,6 +35,7 @@ Codebase
 * New functionalities
   + lazy translation (`speaklater` library)
 * Modified structures
+  # #2053: default hashbang now is `/usr/bin/env python2`
   # allow running with FIFE newer than 0.3.4
   # migrate script to translate a scenario to python
 * Fixed crashes and inconsistencies
