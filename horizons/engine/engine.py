@@ -149,6 +149,24 @@ class Fife(ApplicationBase):
 		"""Second initialization stage of engine
 		"""
 		self.engine.init()
+		
+		#there is no default value for the LatestBackground setting inside the
+		#settings-template.xml file. As this file is used to populate settings.xml
+		#when the game is first run, we will examine the LatestBackground setting
+		#to determine if the game has run before
+		if (self.get_uh_setting('LatestBackground') == None):
+			#the game hasn't run before (or the settings.xml file has been deleted)
+			#set the game's resolution to the current desktop resolution
+			desktop_width = self.engine.getDeviceCaps().getDesktopWidth()
+			desktop_height = self.engine.getDeviceCaps().getDesktopHeight()
+			desktop_resolution = '{w}x{h}'.format(w=desktop_width,h=desktop_height)
+			#we need to destroy and re-initialise the engine to force the change
+			self.engine.destroy()
+			self.set_fife_setting('ScreenResolution',desktop_resolution)
+			self.save_settings()
+			self.engine_settings.setScreenWidth(desktop_width)
+			self.engine_settings.setScreenHeight(desktop_height)
+			self.engine.init()
 
 		#init stuff
 		self.eventmanager = self.engine.getEventManager()
