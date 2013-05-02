@@ -142,7 +142,7 @@ class HotkeyConfiguration(object):
 			message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
 					                      key=key_name, action=oldaction)
 			#if self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-			#	horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
+			horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
 			#else:
 			#	self.update_buttons_text()
 			#	self.last_combination = []
