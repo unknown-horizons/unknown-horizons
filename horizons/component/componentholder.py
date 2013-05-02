@@ -61,22 +61,22 @@ class ComponentHolder(object):
 	"""
 
 	class_mapping = {
-	    'StorageComponent': StorageComponent,
-	    'NamedComponent': NamedComponent,
-	    'ShipNameComponent': ShipNameComponent,
-	    'PirateShipNameComponent': PirateShipNameComponent,
-	    'SettlementNameComponent': SettlementNameComponent,
-	    'TradePostComponent': TradePostComponent,
 	    'AmbientSoundComponent': AmbientSoundComponent,
-	    "HealthComponent": HealthComponent,
-	    'ProducerComponent': Producer,
-	    'QueueProducerComponent': QueueProducer,
-	    'DepositComponent': DepositComponent,
-	    'UnitProducerComponent': UnitProducer,
-	    'SelectableComponent': SelectableComponent,
 	    'CommandableComponent': CommandableComponent,
 	    'CollectingComponent': CollectingComponent,
+	    'DepositComponent': DepositComponent,
+	    'HealthComponent': HealthComponent,
+	    'NamedComponent': NamedComponent,
+	    'PirateShipNameComponent': PirateShipNameComponent,
+	    'ProducerComponent': Producer,
+	    'SettlementNameComponent': SettlementNameComponent,
+	    'ShipNameComponent': ShipNameComponent,
+	    'StorageComponent': StorageComponent,
+	    'QueueProducerComponent': QueueProducer,
 	    'RestrictedPickup': RestrictedPickup,
+	    'SelectableComponent': SelectableComponent,
+	    'TradePostComponent': TradePostComponent,
+	    'UnitProducerComponent': UnitProducer,
 	}
 
 	def __init__(self, *args, **kwargs):
