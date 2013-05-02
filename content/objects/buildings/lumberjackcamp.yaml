@@ -39,6 +39,15 @@ components:
 - CollectingComponent:
     collectors:
       UNITS.LUMBERJACK_COLLECTOR: 1
+- InventoryOverlayComponent:
+    properties: null
+    overlays:
+      as_lumberjack_barrack0:
+        RES.BOARDS:
+          - [0, null]
+          - [2, anim_idle]
+#         - [2, boards_2]
+          - [5, boards_5]
 actionsets:
   TIER.SAILORS:
     as_lumberjack0:

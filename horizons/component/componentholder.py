@@ -26,6 +26,7 @@ from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.depositcomponent import DepositComponent
 from horizons.component.healthcomponent import HealthComponent
+from horizons.component.inventoryoverlaycomponent import InventoryOverlayComponent
 from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
 from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.selectablecomponent import SelectableComponent
@@ -66,6 +67,7 @@ class ComponentHolder(object):
 	    'CollectingComponent': CollectingComponent,
 	    'DepositComponent': DepositComponent,
 	    'HealthComponent': HealthComponent,
+	    'InventoryOverlayComponent': InventoryOverlayComponent,
 	    'NamedComponent': NamedComponent,
 	    'PirateShipNameComponent': PirateShipNameComponent,
 	    'ProducerComponent': Producer,
