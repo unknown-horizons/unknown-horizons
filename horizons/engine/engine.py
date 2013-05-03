@@ -171,18 +171,18 @@ class Fife(ApplicationBase):
 			# Compare the desktop's resolution with the game's current resolution
 			desktop_width = self.engine.getDeviceCaps().getDesktopWidth()
 			desktop_height = self.engine.getDeviceCaps().getDesktopHeight()
-			closest_width_difference = desktop_width - current_width
-			closest_height_difference = desktop_height - current_height
+			closest_width_difference = abs(desktop_width - current_width)
+			closest_height_difference = abs(desktop_height - current_height)
 			
 			# Compare all available resolutions with the game's current resolution
 			for available_resolution in available_resolutions:
 				(width, height) = available_resolution.split('x')
-				width_difference = desktop_width - int(width)
-				height_difference = desktop_height - int(height)
+				width_difference = abs(desktop_width - int(width))
+				height_difference = abs(desktop_height - int(height))
 				
 				# If another available resolution is closer to the desktop's resolution
-				if ((abs(width_difference) <= closest_width_difference) and
-					(abs(height_difference) <= closest_height_difference)):
+				if (width_difference <= closest_width_difference and
+					height_difference <= closest_height_difference):
 					# Update the closest resolution
 					closest_width = width
 					closest_width_difference = width_difference
