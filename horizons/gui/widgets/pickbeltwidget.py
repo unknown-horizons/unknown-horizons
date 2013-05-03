@@ -91,14 +91,10 @@ class OptionsPickbeltWidget(PickBeltWidget):
 		self.__class__.sections = (('graphics_settings', _('Graphics')),
 		                           ('hotkeys_settings', _('Hotkeys')),
 		                           ('game_settings', _('Game')))
-
+		
 		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
 
 	def update_view(self, number=0):
-		if number == self.__class__.sections.index(('hotkeys_settings', _('Hotkeys'))):
-			hk = HotkeyConfiguration()
-			self.page_widgets[number].addChild(hk.widget)
-
 		super(OptionsPickbeltWidget, self).update_view(number=number)
 
 

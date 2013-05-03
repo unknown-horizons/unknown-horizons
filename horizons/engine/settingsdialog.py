@@ -29,6 +29,7 @@ from horizons.engine import UH_MODULE
 from horizons.constants import LANGUAGENAMES
 from horizons.gui.widgets.pickbeltwidget import OptionsPickbeltWidget
 from horizons.messaging import SettingChanged
+from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 
 class SettingsDialog(Setting):
 	"""
@@ -40,7 +41,14 @@ class SettingsDialog(Setting):
 		# as well as the require-restart message. Here, we allow us to ignore
 		# the parameter since _showChangeRequireRestartDialog() is overwritten as well
 
-		wdg = OptionsPickbeltWidget().get_widget()
+		optionsPickbelt = OptionsPickbeltWidget()
+		wdg = optionsPickbelt.get_widget()
+		hk = HotkeyConfiguration()
+		number = optionsPickbelt.__class__.sections.index(('hotkeys_settings', _('Hotkeys')))
+		optionsPickbelt.page_widgets[number].addChild(hk.widget)
+
+		self.hotkeyInterface = hk
+		
 		# HACK: fife settings call stylize, which breaks our styling on widget load
 		no_restyle_str = "do_not_restyle_this"
 		self.setGuiStyle(no_restyle_str)
@@ -69,6 +77,7 @@ class SettingsDialog(Setting):
 		if confirmed:
 			try:
 				super(SettingsDialog, self).setDefaults()
+				self.hotkeyInterface.reset_to_default()
 			except AttributeError as err: #weird stuff happens in settings module reset
 				print "A problem occured while updating: %s" % err + "\n" + \
 					  "Please contact the developers if this happens more than once."
@@ -92,3 +101,6 @@ class SettingsDialog(Setting):
 		SettingChanged.broadcast(self, name, self.get(module, name), val)
 		return super(SettingsDialog, self).set(module, name, val, extra_attrs)
 
+	def applySettings(self):
+		self.hotkeyInterface.save_settings()
+		super(SettingsDialog, self).applySettings()

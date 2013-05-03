@@ -192,7 +192,6 @@ class HotkeyConfiguration(object):
 		print "Action name not found. Key name must be wrong. This is not supposed to ever happen"
 
 	def reset_to_default(self):
-		print 'default intrat'
 		for action in self.actions:
 			default_key = horizons.globals.fife.get_keys_for_action(action, default=True)
 			horizons.globals.fife.set_key_for_action(action, default_key)
@@ -205,11 +204,9 @@ class HotkeyConfiguration(object):
 
 	def show(self):
 		self.widget.show()
-		# self.listener.activate()
 
 	def hide(self):
 		self.widget.hide()
-		# self.listener.deactivate()
 
 
 class HotkeysListener(fife.IKeyListener):
