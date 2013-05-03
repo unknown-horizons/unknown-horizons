@@ -34,11 +34,12 @@ from horizons.gui.windows import Window
 
 
 class Setting(object):
-	def __init__(self, module, name, widget_name, initial_data=None):
+	def __init__(self, module, name, widget_name, initial_data=None, restart=False):
 		self.module = module
 		self.name = name
 		self.widget_name = widget_name
 		self.initial_data = initial_data
+		self.restart = restart
 
 
 class SettingsDialog(PickBeltWidget, Window):
@@ -70,11 +71,11 @@ class SettingsDialog(PickBeltWidget, Window):
 
 		self._options = [
 			# Graphics/Sound/Input
-			Setting(FIFE_MODULE, 'ScreenResolution', 'screen_resolution', get_resolutions),
-			Setting(FIFE_MODULE, 'BitsPerPixel', 'screen_bpp', bpp),
-			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen'),
-			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe']),
-			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', [30, 45, 60, 90, 120]),
+			Setting(FIFE_MODULE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
+			Setting(FIFE_MODULE, 'BitsPerPixel', 'screen_bpp', bpp, restart=True),
+			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen', restart=True),
+			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True),
+			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', [30, 45, 60, 90, 120], restart=True),
 
 			Setting(UH_MODULE, 'VolumeMusic', 'volume_music'),
 			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects'),
@@ -82,7 +83,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH_MODULE, 'EdgeScrolling', 'edgescrolling'),
 			Setting(UH_MODULE, 'CursorCenteredZoom', 'cursor_centered_zoom'),
 			Setting(UH_MODULE, 'MiddleMousePan', 'middle_mouse_pan'),
-			Setting(FIFE_MODULE, 'MouseSensitivity', 'mousesensitivity'),
+			Setting(FIFE_MODULE, 'MouseSensitivity', 'mousesensitivity', restart=True),
 
 			# Game
 			Setting(UH_MODULE, 'AutosaveInterval', 'autosaveinterval'),
@@ -117,6 +118,8 @@ class SettingsDialog(PickBeltWidget, Window):
 			self._settings.set_defaults()
 
 	def apply_settings(self):
+		restart_required = False
+
 		for entry in self._options:
 			widget = self.widget.findChild(name=entry.widget_name)
 			data = widget.getData()
@@ -131,7 +134,20 @@ class SettingsDialog(PickBeltWidget, Window):
 			elif isinstance(initial_data, dict):
 				data = initial_data.keys()[data]
 
+			if data != self._settings.get(entry.module, entry.name):
+				if entry.restart:
+					restart_required = True
+
+				cb = getattr(self, '_on_%s_changed' % entry.name, None)
+				if cb:
+					cb(self._settings.get(entry.module, entry.name), data)
+
 			self._settings.set(entry.module, entry.name, data)
+
+		if restart_required:
+			headline = _("Restart required")
+			message = _("Some of your changes require a restart of Unknown Horizons.")
+			self._windows.show_popup(headline, message)
 
 		self._settings.apply()
 		self._settings.save()
@@ -158,6 +174,16 @@ class SettingsDialog(PickBeltWidget, Window):
 					widget.setInitialData(initial_data)
 
 			widget.setData(value)
+
+	# callbacks for changes of settings
+
+	def _on_RenderBackend_changed(self, old, new):
+		if new == 'SDL':
+			headline = _("Warning")
+			#i18n Warning popup shown in settings when SDL is selected as renderer.
+			message = _("The SDL renderer is meant as a fallback solution only "
+			            "and has serious graphical glitches. \n\nUse at own risk!")
+			self._windows.show_popup(headline, message)
 
 
 def get_screen_resolutions(selected_default):
