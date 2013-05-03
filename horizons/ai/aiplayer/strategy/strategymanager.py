@@ -18,9 +18,10 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import collections
 
+import collections
 import logging
+
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack

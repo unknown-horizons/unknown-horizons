@@ -23,18 +23,19 @@ import logging
 
 from fife import fife
 
+from horizons.command.building import Build
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.componentholder import ComponentHolder
+from horizons.constants import RES, LAYERS, GAME
 from horizons.scheduler import Scheduler
-from horizons.world.concreteobject import ConcreteObject
-from horizons.world.settlement import Settlement
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
 from horizons.util.shapes import ConstRect, distances, Point
 from horizons.util.worldobject import WorldObject
-from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
-from horizons.command.building import Build
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.componentholder import ComponentHolder
+from horizons.world.concreteobject import ConcreteObject
+from horizons.world.settlement import Settlement
+
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
