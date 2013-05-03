@@ -19,18 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from collections import namedtuple
+import collections
+
+from fife import fife
 
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES
-from horizons.engine import UH_MODULE
+from horizons.engine import UH_MODULE, FIFE_MODULE
 from horizons.i18n import _lazy, find_available_languages
+from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 
 
-Setting = namedtuple('Setting', 'module name widget_name initial_data')
+class Setting(object):
+	def __init__(self, module, name, widget_name, initial_data=None):
+		self.module = module
+		self.name = name
+		self.widget_name = widget_name
+		self.initial_data = initial_data
 
 
 class SettingsDialog(PickBeltWidget, Window):
@@ -55,8 +63,41 @@ class SettingsDialog(PickBeltWidget, Window):
 		languages = find_available_languages().keys()
 		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
 
+		bpp = {0: _lazy("Default"), 16: _lazy("16 bit"), 32: _lazy("32 bit")}
+
+		def get_resolutions():
+			return get_screen_resolutions(self._settings.get(FIFE_MODULE, 'ScreenResolution'))
+
 		self._options = [
-			Setting(UH_MODULE, 'Language', 'uni_language', language_names)
+			# Graphics/Sound/Input
+			Setting(FIFE_MODULE, 'ScreenResolution', 'screen_resolution', get_resolutions),
+			Setting(FIFE_MODULE, 'BitsPerPixel', 'screen_bpp', bpp),
+			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen'),
+			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe']),
+			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', [30, 45, 60, 90, 120]),
+
+			Setting(UH_MODULE, 'VolumeMusic', 'volume_music'),
+			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects'),
+			Setting(FIFE_MODULE, 'PlaySounds', 'enable_sound'),
+			Setting(UH_MODULE, 'EdgeScrolling', 'edgescrolling'),
+			Setting(UH_MODULE, 'CursorCenteredZoom', 'cursor_centered_zoom'),
+			Setting(UH_MODULE, 'MiddleMousePan', 'middle_mouse_pan'),
+			Setting(FIFE_MODULE, 'MouseSensitivity', 'mousesensitivity'),
+
+			# Game
+			Setting(UH_MODULE, 'AutosaveInterval', 'autosaveinterval'),
+			Setting(UH_MODULE, 'AutosaveMaxCount', 'autosavemaxcount'),
+			Setting(UH_MODULE, 'QuicksaveMaxCount', 'quicksavemaxcount'),
+			Setting(UH_MODULE, 'Language', 'uni_language', language_names),
+
+			Setting(UH_MODULE, 'MinimapRotation', 'minimaprotation'),
+			Setting(UH_MODULE, 'UninterruptedBuilding', 'uninterrupted_building'),
+			Setting(UH_MODULE, 'AutoUnload', 'auto_unload'),
+			Setting(UH_MODULE, 'DebugLog', 'debug_log'),
+			Setting(UH_MODULE, 'ShowResourceIcons', 'show_resource_icons'),
+			Setting(UH_MODULE, 'ScrollSpeed', 'scrollspeed'),
+			Setting(UH_MODULE, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
+			Setting(UH_MODULE, 'NetworkPort', 'network_port'),
 		]
 
 		self._fill_widgets()
@@ -97,13 +138,43 @@ class SettingsDialog(PickBeltWidget, Window):
 			widget = self.widget.findChild(name=entry.widget_name)
 
 			if entry.initial_data:
-				if isinstance(entry.initial_data, dict):
-					widget.setInitialData(entry.initial_data.values())
-					value = entry.initial_data.keys().index(value)
-				elif isinstance(entry.initial_data, list):
-					widget.setInitialData(entry.initial_data)
-					value = entry.initial_data.index(value)
+				if isinstance(entry.initial_data, collections.Callable):
+					initial_data = entry.initial_data()
 				else:
-					widget.setInitialData(entry.initial_data)
+					initial_data = entry.initial_data
+
+				if isinstance(initial_data, dict):
+					widget.setInitialData(initial_data.values())
+					value = initial_data.keys().index(value)
+				elif isinstance(initial_data, list):
+					widget.setInitialData(initial_data)
+					value = initial_data.index(value)
+				else:
+					widget.setInitialData(initial_data)
 
 			widget.setData(value)
+
+
+def get_screen_resolutions(selected_default):
+	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
+
+	NOTE: This call only works if the engine is inited.
+	"""
+	possible_resolutions = set([selected_default])
+
+	MIN_X = 800
+	MIN_Y = 600
+
+	devicecaps = fife.DeviceCaps()
+	devicecaps.fillDeviceCaps()
+
+	for screenmode in devicecaps.getSupportedScreenModes():
+		x = screenmode.getWidth()
+		y = screenmode.getHeight()
+		if x < MIN_X or y < MIN_Y:
+			continue
+		res = str(x) + 'x' + str(y)
+		possible_resolutions.add(res)
+
+	by_width = lambda res: int(res.split('x')[0])
+	return sorted(possible_resolutions, key=by_width)

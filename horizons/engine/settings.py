@@ -30,6 +30,43 @@ from horizons.i18n import change_language
 DEFAULT_SETTINGS = {
 	'FIFE': {
 		'VideoDriver': '',
+		'FullScreen': False,
+		'PychanDebug': False,
+		'ProfilingOn': False,
+		'SDLRemoveFakeAlpha': 0,
+		'ScreenResolution': '1024x768',
+		'BitsPerPixel':0,
+		'FrameLimitEnabled': False,
+		'FrameLimit': 60,
+
+		'RenderBackend': 'OpenGL',
+		'GLCompressImages': False,
+		'GLUseFramebuffer': True,
+		'GLUseNPOT': True,
+
+		'InitialVolume': 5.0,
+		'PlaySounds': True,
+
+		'WindowTitle': '',
+		'WindowIcon': '',
+
+		'Font': '',
+		'FontGlyphs': r' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`\'*#=[]"',
+		'DefaultFontSize': 12,
+
+		'Lighting': 0,
+		'ColorKeyEnabled': False,
+		'ColorKey': [255,0,255],
+
+		'LogToFile': 0,
+		'LogToPrompt': 0,
+		'LogLevelFilter': [0],
+		'LogModules': ['controller','script'],
+
+		'MouseSensitivity': 0.0,
+		'MouseAcceleration': False,
+
+		'UsePsyco': False,
 	}
 }
 
@@ -42,6 +79,9 @@ class Settings(object):
 		self._serializer.load(settings_file)
 
 	def get(self, module, name, default=None):
+		if default is None:
+			default = DEFAULT_SETTINGS.get(module, {}).get(name)
+
 		v = self._serializer.get(module, name, default)
 		getter = getattr(self, 'get_' + module + '_' + name, None)
 		if getter:
