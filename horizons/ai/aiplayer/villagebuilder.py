@@ -560,7 +560,7 @@ class VillageBuilder(AreaBuilder):
 		self._replace_planned_residence(BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings, self.personality.max_coverage_building_capacity)
 		self._replace_planned_residence(BUILDING_PURPOSE.TAVERN, num_other_buildings, self.personality.max_coverage_building_capacity)
 
-		num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) / self.personality.normal_fire_station_capacity)))
+		num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) // self.personality.normal_fire_station_capacity)))
 		self._replace_planned_residence(BUILDING_PURPOSE.FIRE_STATION, num_fire_stations, self.personality.max_fire_station_capacity)
 
 		self._create_special_village_building_assignments()
