@@ -81,7 +81,7 @@ class StrategyManager(object):
 		for player in [self.owner, other_player]:
 			resources_value = 0.0
 			for settlement in player.settlements:
-				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount\
+				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount
 					in settlement.get_component(StorageComponent).inventory.itercontents() if self.session.db.get_res_value(resource)))
 			resource_values.append(resources_value)
 		ai_resources, enemy_resources = resource_values
