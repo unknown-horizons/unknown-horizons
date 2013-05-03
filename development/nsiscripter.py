@@ -41,8 +41,6 @@ remf = []
 remd = []
 
 for root, dirs, files in os.walk('.'):
-	if '.svn' in dirs:
-		dirs.remove('.svn')
 	if 'development' in dirs:
 		dirs.remove('development')
 	if '.git' in dirs:

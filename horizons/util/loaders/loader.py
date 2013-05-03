@@ -139,6 +139,6 @@ class GeneralLoader(object):
 		"""Returns directories that are important for loading action sets.
 		Discards everything else that we found living there in the past.
 		"""
-		junk = set(['.DS_Store', '.svn'])
+		junk = set(('.DS_Store', ))
 		return [d for d in os.listdir(directory)
 		          if d not in junk]

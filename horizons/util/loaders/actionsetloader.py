@@ -51,7 +51,7 @@ class ActionSetLoader(object):
 			if entry.startswith("as_"):
 				cls.action_sets[entry] = GeneralLoader._load_action(full_path)
 			else:
-				if os.path.isdir(full_path) and entry != ".svn" and entry != ".DS_Store":
+				if os.path.isdir(full_path) and entry != ".DS_Store":
 					cls._find_action_sets(full_path)
 
 	@classmethod
