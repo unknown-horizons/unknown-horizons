@@ -121,10 +121,15 @@ class SettingsDialog(PickBeltWidget, Window):
 			widget = self.widget.findChild(name=entry.widget_name)
 			data = widget.getData()
 
-			if isinstance(entry.initial_data, list):
-				data = entry.initial_data[data]
-			elif isinstance(entry.initial_data, dict):
-				data = entry.initial_data.keys()[data]
+			if isinstance(entry.initial_data, collections.Callable):
+				initial_data = entry.initial_data()
+			else:
+				initial_data = entry.initial_data
+
+			if isinstance(initial_data, list):
+				data = initial_data[data]
+			elif isinstance(initial_data, dict):
+				data = initial_data.keys()[data]
 
 			self._settings.set(entry.module, entry.name, data)
 

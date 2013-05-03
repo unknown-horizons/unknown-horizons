@@ -75,6 +75,7 @@ class Settings(object):
 
 	def __init__(self, settings_file):
 		self._module_settings = {}
+		self._settings_file = settings_file
 		self._serializer = SimpleXMLSerializer()
 		self._serializer.load(settings_file)
 
@@ -109,7 +110,7 @@ class Settings(object):
 		return self._module_settings[module]
 
 	def save(self):
-		pass
+		self._serializer.save(self._settings_file)
 
 	def apply(self):
 		data = self.get(UH_MODULE, "Language")
