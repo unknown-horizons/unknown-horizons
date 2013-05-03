@@ -22,14 +22,13 @@
 from fife import fife
 from fife.extensions.pychan.widgets import Button, Label
 
-import horizons.globals
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.windows import Window
 from horizons.messaging import LanguageChanged
-from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
+import horizons.globals
 
 class HotkeyConfiguration(object):
 
@@ -69,13 +68,13 @@ class HotkeyConfiguration(object):
 		sec_button_container = self.widget.findChild(name='sec_button_container')
 		for i, action in enumerate(self.actions):
 			button = self._create_button(action, 0, i)
-			button2 = self._create_button(action, 1, i)
+			sec_button = self._create_button(action, 1, i)
 			button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button, 1)})
-			button2.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button2, 2)})
+			sec_button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, sec_button, 2)})
 			button_container.addChild(button)
-			sec_button_container.addChild(button2)
+			sec_button_container.addChild(sec_button)
 			self.buttons.append(button)
-			self.secondary_buttons.append(button2)
+			self.secondary_buttons.append(sec_button)
 			self.update_buttons_text()
 
 	def _create_button(self, action, action_index, index):

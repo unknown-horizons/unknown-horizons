@@ -25,11 +25,11 @@ from fife.extensions.fife_settings import Setting
 
 import horizons.main
 
-from horizons.engine import UH_MODULE
 from horizons.constants import LANGUAGENAMES
+from horizons.engine import UH_MODULE
+from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.widgets.pickbeltwidget import OptionsPickbeltWidget
 from horizons.messaging import SettingChanged
-from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 
 class SettingsDialog(Setting):
 	"""
