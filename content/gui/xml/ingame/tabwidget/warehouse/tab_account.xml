@@ -39,7 +39,6 @@
 
 	<Container size="260,50"  position="25,240">
 	<ImageButton name="show_production_overview" position="160,0"
-		path="icons/widgets/cityinfo/settlement"
 		helptext="Show resources produced in this settlement" />
 	</Container>
 

@@ -119,7 +119,7 @@ class MessageWidget(LivingObject):
 		""" See docstring for add().
 		"""
 		message_dict = {'player': player, 'message': messagetext}
-		self.add(point=None, string_id='CHAT', msg_type=None, message_dict=message_dict)
+		self.add('CHAT', msg_type=None, message_dict=message_dict)
 		self.chat.append(self.active_messages[0])
 
 	def _add_message(self, message, sound=None):
@@ -179,7 +179,7 @@ class MessageWidget(LivingObject):
 				# open logbook to relevant page
 				callback = Callback.ChainedCallbacks(
 					   callback, # this makes it so the order of callback assignment doesn't matter
-					   Callback(self.session.ingame_gui.logbook.show, message.created)
+					   Callback(self.session.ingame_gui.windows.toggle, self.session.ingame_gui.logbook, msg_id=message.created)
 				)
 			if callback:
 				events[button.name] = callback

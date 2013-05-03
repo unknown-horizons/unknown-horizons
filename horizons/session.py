@@ -172,7 +172,9 @@ class Session(LivingObject):
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
 
-		self.world.end() # must be called before the world ref is gone
+		if hasattr(self, 'world'):
+			# must be called before the world ref is gone, but may not exist yet while loading
+			self.world.end()
 		self.world = None
 		self.view = None
 		self.manager = None
@@ -190,7 +192,8 @@ class Session(LivingObject):
 
 		# subscriptions shouldn't survive listeners (except the main Gui)
 		self.gui.unsubscribe()
-		SettingChanged.unsubscribe(self._on_setting_changed)
+		# discard() in case loading failed and we did not yet subscribe
+		SettingChanged.discard(self._on_setting_changed)
 		MessageBus().reset()
 		self.gui.subscribe()
 
@@ -253,14 +256,14 @@ class Session(LivingObject):
 		else:
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)
-		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
+		self.manager.load(savegame_db) # load the manager (there might be old scheduled ticks).
 		LoadingProgress.broadcast(self, "session_index_fish")
 		self.world.init_fish_indexer() # now the fish should exist
 
 		# load the old gui positions and stuff
 		# Do this before loading selections, they need the minimap setup
 		LoadingProgress.broadcast(self, "session_load_gui")
-		self.ingame_gui = self._ingame_gui_class(self, self.gui)
+		self.ingame_gui = self._ingame_gui_class(self)
 		self.ingame_gui.load(savegame_db)
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
@@ -275,7 +278,7 @@ class Session(LivingObject):
 		savegame_db.close()
 
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
-		LoadingProgress.broadcast(self, "finish")
+		LoadingProgress.broadcast(self, "session_finish")
 		"""
 		TUTORIAL:
 		That's it. After that, we call start() to activate the timer, and we're live.

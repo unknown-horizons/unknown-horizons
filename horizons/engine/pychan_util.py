@@ -71,7 +71,6 @@ def init_pychan():
 	from horizons.gui.widgets.buysellinventory import BuySellInventory
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 	from horizons.gui.widgets.progressbar import ProgressBar, TilingProgressBar
-	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
 	# additionally, ImageButton is imported from widgets.imagebutton above
 	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, MainmenuButton, OkButton
 	from horizons.gui.widgets.icongroup import TabBG, TilingHBox, hr
@@ -82,7 +81,7 @@ def init_pychan():
 
 	widgets = [OkButton, CancelButton, DeleteButton, MainmenuButton,
 	           Inventory, BuySellInventory, ImageFillStatusButton,
-	           ProgressBar, StepSlider, TabBG, ToggleImageButton,
+	           ProgressBar, StepSlider, TabBG,
 	           HealthWidget, StanceWidget, WeaponStorageWidget,
 	           AutoResizeContainer, RenameLabel, RenameImageButton,
 	           TilingHBox, TilingProgressBar, hr,
@@ -133,6 +132,16 @@ def init_pychan():
 			# these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
 			# see #1597 and #1647
 			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
+
+	# FIXME hack pychan's text2gui function, it does an isinstance check that breaks
+	# the lazy string from horizons.i18n. we should be passing unicode to
+	# widgets all the time, therefore we don't need the additional check.
+	def text2gui(text):
+		unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
+		return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+
+	pychan.widgets.textfield.text2gui = text2gui
+	pychan.widgets.basictextwidget.text2gui = text2gui
 
 
 	setup_cursor_change_on_hover()

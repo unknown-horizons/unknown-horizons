@@ -73,9 +73,9 @@ class SavegameManager(object):
 
 	# Use {{}} because this string is formatted twice and
 	# {timestamp} is replaced in the second format() call.
-	save_filename_timeformat = u"{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M.{ext}"
-	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename, ext=savegame_extension)
-	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename, ext=savegame_extension)
+	save_filename_timeformat = u"{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M"
+	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename)
+	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename)
 
 	filename = u"{{directory}}{sep}{{name}}.{ext}".format(sep=os.path.sep, ext=savegame_extension)
 
@@ -330,15 +330,12 @@ class SavegameManager(object):
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames=True, locales=False, hide_test_scenarios=False):
+	def get_available_scenarios(cls, include_displaynames=True, locales=False):
 		"""Returns available scenarios."""
 		afiles = []
 		anames = []
 		sfiles, snames = cls.get_scenarios(include_displaynames=True)
 		for i, sname in enumerate(snames):
-			if hide_test_scenarios and cls.get_scenario_info(name=sname).get('test_scenario'):
-				continue
-
 			#get file's locale
 			cur_locale = '_' + cls.get_scenario_info(name=sname).get('locale')
 
@@ -381,7 +378,7 @@ class SavegameManager(object):
 				return {}
 			index = snames.index(name)
 		elif filename:
-			if not filename in sfiles:
+			if filename not in sfiles:
 				cls.log.error("Error: Cannot find scenario '{name}'.".format(name=filename))
 				return {}
 			index = sfiles.index(filename)

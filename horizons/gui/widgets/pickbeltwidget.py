@@ -19,14 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
-from horizons.util.python.callback import Callback
-from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
+from horizons.gui.style import NOTHING
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
-
+from horizons.i18n import _lazy
+from horizons.util.python.callback import Callback
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
@@ -86,13 +84,9 @@ class OptionsPickbeltWidget(PickBeltWidget):
 	"""Widget for Options dialog with pickbelt style pages"""
 	widget_xml = 'settings.xml'
 
-	def __init__(self, *args, **kwargs):
-		# can't set this as class attribute directly since it's evaluated before gettext is set up
-		self.__class__.sections = (('graphics_settings', _('Graphics')),
-		                           ('hotkeys_settings', _('Hotkeys')),
-		                           ('game_settings', _('Game')))
-
-		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
+	sections = (('graphics_settings', _lazy('Graphics')),
+                ('hotkeys_settings', _('Hotkeys')),
+	            ('game_settings', _lazy('Game')))
 
 	def update_view(self, number=0):
 		super(OptionsPickbeltWidget, self).update_view(number=number)
@@ -101,7 +95,6 @@ class OptionsPickbeltWidget(PickBeltWidget):
 class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
-	# Can set as class attribute directly since no gettext calls
 	sections = (
 		('credits_team', u'UH-Team'),
 		('credits_patchers', u'Patchers'),
@@ -119,7 +112,7 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 			box.margins = (30, 0) # to get some indentation
 			box.padding = 3
 		for listbox in self.widget.findChildren(name='translators'):
-			listbox.background_color = fife.Color(255, 255, 255, 0)
+			listbox.background_color = NOTHING
 
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 

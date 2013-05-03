@@ -58,11 +58,10 @@ class IngameGui(LivingObject):
 	minimap = livingProperty()
 	keylistener = livingProperty()
 
-	def __init__(self, session, gui):
+	def __init__(self, session):
 		super(IngameGui, self).__init__()
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
-		self.main_gui = gui
 		self.settlement = None
 		self._old_menu = None
 
@@ -78,6 +77,8 @@ class IngameGui(LivingObject):
 
 		# Windows
 		self.windows = WindowManager()
+		self.show_popup = self.windows.show_popup
+		self.show_error_popup = self.windows.show_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
 		self.players_overview = PlayersOverview(self.session)
@@ -210,8 +211,8 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.main_gui.show_popup(_("No diplomacy possible"),
-			                         _("Cannot do diplomacy as there are no other players."))
+			self.windows.show_popup(_("No diplomacy possible"),
+			                        _("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
@@ -318,7 +319,7 @@ class IngameGui(LivingObject):
 
 		if not self.session.is_game_loaded():
 			# Fire a message for new world creation
-			self.session.ingame_gui.message_widget.add(point=None, string_id='NEW_WORLD')
+			self.session.ingame_gui.message_widget.add('NEW_WORLD')
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
@@ -340,7 +341,7 @@ class IngameGui(LivingObject):
 	def on_escape(self):
 		if self.windows.visible:
 			self.windows.on_escape()
-		elif not isinstance(self.cursor, mousetools.SelectionTool):
+		elif hasattr(self.cursor, 'on_escape'):
 			self.cursor.on_escape()
 		else:
 			self.toggle_pause()

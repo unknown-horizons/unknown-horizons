@@ -19,21 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import re
-
 import horizons.globals
+
 from horizons.constants import GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog
+from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
 from horizons.gui.tabs import TabWidget
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
-from horizons.gui.windows import WindowManager, Window
+from horizons.gui.windows import WindowManager
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -45,9 +43,8 @@ class IngameGui(LivingObject):
 	keylistener = livingProperty()
 	message_widget = livingProperty()
 
-	def __init__(self, session, main_gui):
+	def __init__(self, session):
 		self.session = session
-		self.main_gui = main_gui
 
 		self.cursor = None
 		self.coordinates_tooltip = None
@@ -88,7 +85,6 @@ class IngameGui(LivingObject):
 
 		self.windows = WindowManager()
 		self.message_widget = MessageWidget(self.session)
-		self.save_map_dialog = SaveMapDialog(self.session, self.windows)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=True)
 		self.help_dialog = HelpDialog(self.windows, session=self.session)
 
@@ -142,7 +138,13 @@ class IngameGui(LivingObject):
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
-		self.windows.show(self.save_map_dialog)
+		window = SelectSavegameDialog('editor-save', self.windows)
+		savegamename = self.windows.show(window)
+		if savegamename is None:
+			return False # user aborted dialog
+		success = self.session.save(savegamename)
+		if success:
+				self.message_widget.add('SAVED_GAME')
 
 	def on_escape(self):
 		pass
@@ -154,7 +156,7 @@ class IngameGui(LivingObject):
 		if action == _Actions.ESCAPE:
 			if self.windows.visible:
 				self.windows.on_escape()
-			elif not isinstance(self.cursor, SelectionTool):
+			elif hasattr(self.cursor, 'on_escape'):
 				self.cursor.on_escape()
 			else:
 				self.toggle_pause()
@@ -236,42 +238,3 @@ class SettingsTab(TabInterface):
 		self._world_editor.brush_size = size
 		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
 		b.up_image = images['box_highlighted']
-
-
-class SaveMapDialog(Window):
-	"""Shows a dialog where the user can set the name of the saved map."""
-
-	def __init__(self, session, windows):
-		super(SaveMapDialog, self).__init__(windows)
-
-		self._session = session
-		self._widget = load_uh_widget('save_map.xml')
-
-		name = self._widget.findChild(name='map_name')
-		name.text = u''
-		name.capture(self._do_save)
-
-		events = {
-			OkButton.DEFAULT_NAME: self._do_save,
-			CancelButton.DEFAULT_NAME: self._windows.close,
-		}
-		self._widget.mapEvents(events)
-
-	def show(self):
-		self._widget.show()
-		self._widget.findChild(name='map_name').requestFocus()
-
-	def hide(self):
-		self._widget.hide()
-
-	def _do_save(self):
-		name = self._widget.collectData('map_name')
-		regex = r'[a-zA-Z0-9_-]+'
-		if re.match('^' + regex + '$', name):
-			self._session.save(name)
-			self._windows.close()
-		else:
-			#xgettext:python-format
-			message = _('Valid map names are in the following form: {expression}').format(expression=regex)
-			advice = _('Try a name that only contains letters and numbers.')
-			self._windows.show_error_popup(_('Invalid name'), message, advice)

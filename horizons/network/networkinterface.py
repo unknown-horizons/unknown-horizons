@@ -286,13 +286,13 @@ class NetworkInterface(object):
 			return False
 		return True
 
-	def get_active_games(self, only_this_version_allowed=False):
+	def get_active_games(self):
 		"""Returns a list of active games or None on fatal error"""
 		ret_mp_games = []
 		try:
 			self._assert_connection()
 			self.log.debug("[LIST]")
-			version = self._client_data.version if only_this_version_allowed else -1
+			version = self._client_data.version
 			self.send_packet(packets.client.cmd_listgames(version))
 			packet = self._connection.receive_packet(packets.server.data_gameslist)
 			games = packet[1].games

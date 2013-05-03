@@ -77,7 +77,7 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 			# ingame message if there is a session
 			session = horizons.main._modules.session
 			if session:
-				session.ingame_gui.message_widget.add(point=None, string_id='SCREENSHOT',
+				session.ingame_gui.message_widget.add('SCREENSHOT',
 				                                      message_dict={'file': final_path})
 		elif action == _Actions.QUICKLOAD:
 			horizons.main._load_last_quicksave()

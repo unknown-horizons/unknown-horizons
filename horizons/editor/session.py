@@ -57,20 +57,22 @@ class EditorSession(Session):
 		self.log.debug("Session: autosaving map")
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, 'autosave')
 		if success:
-			self.ingame_gui.message_widget.add(point=None, string_id='AUTOSAVE')
+			self.ingame_gui.message_widget.add('AUTOSAVE')
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
 		self.log.debug("Session: quicksaving map")
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, 'quicksave')
 		if success:
-			self.ingame_gui.message_widget.add(point=None, string_id='QUICKSAVE')
+			self.ingame_gui.message_widget.add('QUICKSAVE')
 		else:
 			headline = _("Failed to quicksave.")
-			descr = _("An error happened during quicksave. Your map has not been saved.")
+			descr = _("An error happened during quicksave.") + u"\n" + _("Your map has not been saved.")
+			#xgettext:python-format
 			advice = _("If this error happens again, please contact the development team: "
 				   "{website}").format(website="http://unknown-horizons.org/support/")
 			self.gui.show_error_popup(headline, descr, advice)
 
-	def save(self, name):
-		self.world_editor.save_map(PATHS.USER_MAPS_DIR, name)
+	def save(self, savegamename):
+		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename)
+		return success

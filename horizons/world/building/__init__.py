@@ -77,7 +77,6 @@ class BuildingClass(IngameType):
 	def __str__(self):
 		return "Building[{id}]({name})".format(id=self.id, name=self.name)
 
-
 	def _loadObject(cls):
 		"""Loads building from the db.
 		"""

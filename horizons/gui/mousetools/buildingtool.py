@@ -227,6 +227,7 @@ class BuildingTool(NavigationTool):
 		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
 		                                "rotate_right": self.rotate_right } )
 		# set translated building name in gui
+		#xgettext:python-format
 		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
@@ -527,7 +528,7 @@ class BuildingTool(NavigationTool):
 				BuildingTool._last_road_built.append(now)
 				if len(BuildingTool._last_road_built) > 2:
 					if (now - BuildingTool._last_road_built[-3]) < 1.2:
-						self.session.ingame_gui.message_widget.add(point=None, string_id="DRAG_ROADS_HINT")
+						self.session.ingame_gui.message_widget.add('DRAG_ROADS_HINT')
 						# don't display hint multiple times at the same build situation
 						BuildingTool._last_road_built = []
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]

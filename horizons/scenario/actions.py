@@ -59,13 +59,13 @@ def show_message(session, type=None, *messages):
 	If you pass more than one message, they are shown simultaneously."""
 	visible_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_VISIBLE_FOR)
 
-	return [session.ingame_gui.message_widget.add_custom(point=None, messagetext=msg, msg_type=type, visible_for=visible_ticks)
+	return [session.ingame_gui.message_widget.add_custom(msg, msg_type=type, visible_for=visible_ticks)
 	        for msg in messages]
 
 @register(name='db_message')
 def show_db_message(session, database_message_id):
 	"""Shows a message with predefined text in the messagewidget."""
-	session.ingame_gui.message_widget.add(point=None, string_id=database_message_id)
+	session.ingame_gui.message_widget.add(database_message_id)
 
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *parameters):
@@ -92,10 +92,10 @@ def do_win(session):
 	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.globals.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
-	continue_playing = session.gui.show_popup(_("You have won!"),
-	                                          _("You have completed this scenario.") + u" " +
-	                                          _("Do you want to continue playing?"),
-	                                          show_cancel_button=True)
+	continue_playing = session.ingame_gui.show_popup(_("You have won!"),
+	                                                 _("You have completed this scenario.") + u" " +
+	                                                 _("Do you want to continue playing?"),
+	                                                 show_cancel_button=True)
 	if not continue_playing:
 		Scheduler().add_new_object(session.quit, session, run_in=0)
 	else:

@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+from collections import defaultdict
 
 from fife.extensions.pychan.widgets import Icon
 
@@ -31,6 +32,8 @@ from horizons.command.unit import SetStance
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.constants import UNITS
+from horizons.util.loaders.actionsetloader import ActionSetLoader
 
 
 class SelectMultiTab(TabInterface):
@@ -50,7 +53,7 @@ class SelectMultiTab(TabInterface):
 		# keep local track of selected instances
 		self.instances = []
 		# keep track of number of instances per type
-		self.type_number = {}
+		self.type_number = defaultdict(int)
 
 		self.helptext = _("Selected Units")
 		for i in self.selected_instances:
@@ -59,10 +62,7 @@ class SelectMultiTab(TabInterface):
 			self.instances.append(i)
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
 				i.add_remove_listener(Callback(self.on_instance_removed, i))
-			if not i.id in self.type_number:
-				self.type_number[i.id] = 1
-			else:
-				self.type_number[i.id] += 1
+			self.type_number[i.id] += 1
 
 		if self.stance_unit_number != 0:
 			self.show_stance_widget()
@@ -94,12 +94,9 @@ class SelectMultiTab(TabInterface):
 			for instance in self.instances:
 				self.add_entry(UnitEntry([instance], False))
 		else:
-			entry_instances = {}
+			entry_instances = defaultdict(list)
 			for instance in self.instances:
-				if instance.id not in entry_instances:
-					entry_instances[instance.id] = [instance]
-				else:
-					entry_instances[instance.id].append(instance)
+				entry_instances[instance.id].append(instance)
 			for instances in entry_instances.values():
 				self.add_entry(UnitEntry(instances))
 
@@ -163,6 +160,7 @@ class SelectMultiTab(TabInterface):
 		self.widget.mapEvents( events )
 
 	def hide_stance_widget(self):
+		Scheduler().rem_all_classinst_calls(self)
 		self.widget.findChild(name='stance').removeAllChildren()
 
 	def set_stance(self, stance):
@@ -192,7 +190,16 @@ class UnitEntry(object):
 		self.instances = instances
 		self.widget = load_uh_widget("unit_entry_widget.xml")
 		# get the icon of the first instance
-		self.widget.findChild(name="unit_button").up_image = self.get_thumbnail_icon(instances[0].id)
+		i = instances[0]
+		if i.id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
+			# A building. Generate dynamic thumbnail from its action set.
+			imgs = ActionSetLoader.get_sets()[i._action_set_id].items()[0][1]
+			thumbnail = imgs[45].keys()[0]
+		else:
+			# Units use manually created thumbnails because those need to be
+			# precise and recognizable in combat situations.
+			thumbnail = self.get_unit_thumbnail(i.id)
+		self.widget.findChild(name="unit_button").up_image = thumbnail
 		if show_number:
 			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
 		# only two callbacks are needed so drop unwanted changelistener inheritance
@@ -204,16 +211,15 @@ class UnitEntry(object):
 				health_component.add_damage_dealt_listener(self.draw_health)
 		self.draw_health()
 
-	def get_thumbnail_icon(self, unit_id):
+	def get_unit_thumbnail(self, unit_id):
 		"""Returns path of the thumbnail icon for unit with id *unit_id*."""
-		#TODO get a system for loading thumbnail by id
 		template = "content/gui/icons/thumbnails/{unit_id}.png"
 		path = template.format(unit_id=unit_id)
 		try:
 			Icon(image=path)
 		except RuntimeError:
-			self.log.warning('Missing thumbnail for id {0}'.format(unit_id))
-			path = template.format(unit_id=-1)
+			self.log.warning('Missing unit thumbnail {0}'.format(path))
+			path = template.format(unit_id='unknown_unit')
 		return path
 
 	def on_instance_removed(self, instance):

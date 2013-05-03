@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # ###################################################
 # Copyright (C) 2013 The Unknown Horizons Team
@@ -62,7 +62,7 @@ def exit_with_error(title, message):
 		window = Tkinter.Tk()
 		window.wm_withdraw()
 		tkMessageBox.showerror(title, message)
-	except:
+	except ImportError:
 		# tkinter may be missing
 		pass
 	exit(1)
@@ -423,7 +423,7 @@ def find_fife():
 	# Look for FIFE in the neighborhood of the game dir.
 	paths = []
 	for opt1 in ('.', '..', '..' + os.sep + '..'):
-		for opt2 in ('.', 'fife', 'FIFE', 'Fife'):
+		for opt2 in ('.', 'fife', 'FIFE', 'Fife', 'fifengine'):
 			for opt3 in ('.', 'trunk'):
 				path = os.path.abspath(os.path.join('.', opt1, opt2, opt3, 'engine', 'python'))
 				if os.path.exists(path):
@@ -434,6 +434,7 @@ def setup_fife():
 	log_paths()
 	log_sys_info()
 	if not find_fife():
+		#TODO useful error message anyone?
 		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
 
 	from fife import fife

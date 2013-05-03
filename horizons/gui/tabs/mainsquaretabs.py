@@ -66,6 +66,9 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
+		path = 'icons/widgets/cityinfo/settlement_%s' % self.settlement.owner.color.name
+		self.widget.child_finder('show_production_overview').path = path
+
 		self.widget.mapEvents({
 		  'show_production_overview/mouseClicked' : self.show_production_overview
 		  })

@@ -23,7 +23,7 @@ import glob
 import logging
 import random
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
 import horizons.main
@@ -89,12 +89,11 @@ class Gui(object):
 
 		self.windows = WindowManager()
 		# temporary aliases for compatibility with rest of the code
-		self.show_dialog = self.windows.show_dialog
 		self.show_popup = self.windows.show_popup
 		self.show_error_popup = self.windows.show_error_popup
 
-		self._background = pychan.Icon(image=self._get_random_background(),
-		                               position_technique='center:center')
+		self._background = Icon(image=self._get_random_background(),
+		                        position_technique='center:center')
 		self._background.show()
 
 		self.subscribe()

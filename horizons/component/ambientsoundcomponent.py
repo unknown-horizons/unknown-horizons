@@ -53,7 +53,7 @@ class AmbientSoundComponent(Component):
 			horizons.globals.fife.sound.emitter['ambient'].append(self.__emitter)
 
 	def _init_playing(self):
-		if hasattr(self.instance, "is_local_player") and self.instance.owner.is_local_player:
+		if hasattr(self.instance.owner, "is_local_player") and self.instance.owner.is_local_player:
 			# don't use session random, this is player dependent
 			play_every = self.__class__.AMBIENT_SOUND_INTERVAL + \
 												random.randint( * self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE )

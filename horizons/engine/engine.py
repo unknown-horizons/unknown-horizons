@@ -172,10 +172,8 @@ class Fife(ApplicationBase):
 		#init pychan
 		debug_pychan = self.get_fife_setting('PychanDebug') # default is False
 		self.pychan.init(self.engine, debug_pychan) # pychan debug mode may have performance impacts
-		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
 		init_pychan()
-		self.pychanmanager = pychan.internal.get_manager()
 
 		self._setting_handler.apply_settings()
 
@@ -194,7 +192,12 @@ class Fife(ApplicationBase):
 		if not hasattr(self, "_settings_extra_inited"):
 			self._setting_handler.setup_setting_extras()
 			self._settings_extra_inited = True
-		self._setting.onOptionsPress()
+		if hasattr(self._setting, 'showSettingsDialog'):
+			#TODO fifechan / FIFE 0.3.5+ compat
+			self._setting.showSettingsDialog()
+		else:
+			# this is the old (0.3.4 and earlier) API
+			self._setting.onOptionsPress()
 
 	def set_cursor_image(self, which="default"):
 		"""Sets a certain cursor image.

@@ -65,7 +65,7 @@ class VERSION:
 	IS_DEV_VERSION = True
 	#RELEASE_VERSION = u'2012.1'
 
-	MIN_FIFE_REVISION = 4077
+	MIN_FIFE_REVISION = 4103
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION = 71
@@ -345,8 +345,8 @@ class PRODUCTIONLINES:
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
-	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month" (running costs and taxes are
-	# payed in this interval).
+	# seconds: duration of a "month" (running costs and taxes are paid in this interval)
+	INGAME_TICK_INTERVAL = 30
 
 	WORLD_WORLDID = 0 # worldid of World object
 	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # ###################################################
 # Copyright (C) 2013 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -45,7 +45,7 @@ except ImportError as e:
 
 
 from run_uh import init_environment
-init_environment(False)
+init_environment(True)
 
 import horizons.main
 from horizons.constants import UNITS, BUILDINGS, TIER
@@ -174,21 +174,16 @@ def print_storage():
 			continue
 		if not stor:
 			continue
-		inv = stor['inventory']
 		try:
-			inv.values()[0].values()[0]
+			stor.values()[0].values()[0]
 		except IndexError:
 			continue
 		print '%s(%i) can store:' % (b.name, b.id)
-		for res, amount in inv.values()[0].values()[0].iteritems():
+		for res, amount in stor.values()[0].values()[0].iteritems():
 			print "\t%2s tons of %s(%s)" % (amount, get_res_name(res), res)
 
-	print "\nAll others can store 30 tons of each res:" # show buildings with default storage
-	return
-	all = set(db('SELECT id FROM building'))
-	entries = set(db('SELECT object_id FROM storage')) # also includes units, they are ignored
-	for id, in sorted(all - entries):
-		print "%s(%i)" % (get_obj_name(id), id)
+	print "\nAll others can store 30 tons of each res."
+	#TODO show buildings with default storage here
 
 def print_collectors():
 	print 'Collectors: (building amount collector)'

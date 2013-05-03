@@ -96,18 +96,18 @@ class SQLiteAtlasLoader(object):
 				if command == 'shift':
 					x, y = arg.split(',')
 					if x.startswith('left'):
-						x = int(x[4:]) + int(width / 2)
+						x = int(x[4:]) + (width // 2)
 					elif x.startswith('right'):
-						x = int(x[5:]) - int(width / 2)
+						x = int(x[5:]) - (width // 2)
 					elif x.startswith(('center', 'middle')):
 						x = int(x[6:])
 					else:
 						x = int(x)
 
 					if y.startswith('top'):
-						y = int(y[3:]) + int(height / 2)
+						y = int(y[3:]) + (height // 2)
 					elif y.startswith('bottom'):
-						y = int(y[6:]) - int(height / 2)
+						y = int(y[6:]) - (height // 2)
 					elif y.startswith(('center', 'middle')):
 						y = int(y[6:])
 					else:

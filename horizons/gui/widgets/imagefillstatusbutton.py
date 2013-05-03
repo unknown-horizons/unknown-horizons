@@ -34,9 +34,9 @@ class ImageFillStatusButton(Container):
 
 	def __init__(self, path, text, res_id, helptext="",
 	             filled=0, marker=0, uncached=False, **kwargs):
-		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
-		Derives from Container, but also takes the args of the Imagebutton,
-		in order to display the image. The container is only used, because ImageButtons can't have children.
+		"""Represents the image in the ingame gui, with a bar to show how full
+		the inventory is for that resource. Derives from Container and also takes
+		all arguments of Imagebutton in order to display the resource icon.
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.path = path
@@ -45,8 +45,10 @@ class ImageFillStatusButton(Container):
 		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (9, 30)
-		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time
 		self.marker = marker
+		# force no cache. needed when the same icon has to appear several times at the same time
+		self.uncached = uncached
+		# Since draw() needs all other stuff initialized, only set this in the end:
 		self.filled = filled # <- black magic at work! this calls _draw()
 
 	@classmethod
@@ -65,18 +67,24 @@ class ImageFillStatusButton(Container):
 		if showprice:
 			value = db.get_res_value(res)
 			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
+				#xgettext:python-format
 				helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
 			else:
 				buyprice = value * TRADER.PRICE_MODIFIER_BUY
 				sellprice = value * TRADER.PRICE_MODIFIER_SELL
-				helptext = _('{resource_name}[br]buy for {buyprice} gold[br]sell for {sellprice} gold'
-						     ).format(resource_name=db.get_res_name(res), buyprice=buyprice, sellprice=sellprice)
+				helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
+				#xgettext:python-format
+				            + _('buy for {buyprice} gold').format(buyprice=buyprice)
+				            + u'[br]'
+				#xgettext:python-format
+				            + _('sell for {sellprice} gold').format(sellprice=sellprice))
 		else:
 			helptext = db.get_res_name(res)
 
 		return cls(path=path, text=unicode(amount), helptext=helptext,
-			   size=cls.CELL_SIZE, res_id=res, filled=filled,
-			   marker=marker, uncached=uncached)
+		           size=cls.CELL_SIZE, res_id=res, filled=filled,
+		           max_size=cls.CELL_SIZE, min_size=cls.CELL_SIZE,
+		           marker=marker, uncached=uncached)
 
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
