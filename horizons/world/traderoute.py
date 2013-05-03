@@ -154,15 +154,17 @@ class TradeRoute(ChangeListener):
 			if amount == 0:
 				continue
 
+			ship_inv = self.ship.get_component(StorageComponent).inventory
+			settlement_inv = settlement.get_component(StorageComponent).inventory
 			if amount > 0:
 				# load from settlement onto ship
 				if settlement.owner is self.ship.owner:
-					if settlement.get_component(StorageComponent).inventory[res] < amount: # not enough res
-						amount = settlement.get_component(StorageComponent).inventory[res]
+					if settlement_inv[res] < amount: # not enough res
+						amount = settlement_inv[res]
 
 					# the ship should never pick up more than the number defined in the route config
-					if self.ship.get_component(StorageComponent).inventory[res] + amount > self.get_location()['resource_list'][res]:
-						amount = self.get_location()['resource_list'][res] - self.ship.get_component(StorageComponent).inventory[res]
+					if ship_inv[res] + amount > self.get_location()['resource_list'][res]:
+						amount = self.get_location()['resource_list'][res] - ship_inv[res]
 
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
@@ -173,22 +175,20 @@ class TradeRoute(ChangeListener):
 						# pretend to have everything and move on, waiting doesn't make sense
 						amount_transferred = amount
 
-
-				inv_comp = self.ship.get_component(StorageComponent)
 				if amount_transferred < status.remaining_transfers[res] and \
-				   inv_comp.inventory.get_free_space_for(res) > 0 and \
-				   inv_comp.inventory[res] < self.get_location()['resource_list'][res]:
+				   ship_inv.get_free_space_for(res) > 0 and \
+				   ship_inv[res] < self.get_location()['resource_list'][res]:
 					status.settlement_provides_enough_res = False
 				status.remaining_transfers[res] -= amount_transferred
 			else:
 				# load from ship onto settlement
 				amount = -amount # use positive below
 				if settlement.owner is self.ship.owner:
-					if self.ship.get_component(StorageComponent).inventory[res] < amount: # check if ship has as much as planned
-						amount = self.ship.get_component(StorageComponent).inventory[res]
+					if ship_inv[res] < amount: # check if ship has as much as planned
+						amount = ship_inv[res]
 
-					if settlement.get_component(StorageComponent).inventory.get_free_space_for(res) < amount: # too little space
-						amount = settlement.get_component(StorageComponent).inventory.get_free_space_for(res)
+					if settlement_inv.get_free_space_for(res) < amount: # too little space
+						amount = settlement_inv.get_free_space_for(res)
 
 					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
 				else:
@@ -197,7 +197,7 @@ class TradeRoute(ChangeListener):
 					if error == TRADE_ERROR_TYPE.PERMANENT:
 						amount_transferred = amount # is negative
 
-				if amount_transferred < -status.remaining_transfers[res] and self.ship.get_component(StorageComponent).inventory[res] > 0:
+				if amount_transferred < -status.remaining_transfers[res] and ship_inv[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False
 				status.remaining_transfers[res] += amount_transferred
 		return status
