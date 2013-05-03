@@ -255,7 +255,7 @@ class StrategyManager(object):
 
 	def request_to_pause_mission(self, mission, **environment):
 		"""
-		@return: returns True is mission is allowed to pause, False otherwise
+		@return: returns True if mission is allowed to pause, False otherwise
 		@rtype: bool
 		"""
 		# TODO: make that decision based on environment (**environment as argument)
