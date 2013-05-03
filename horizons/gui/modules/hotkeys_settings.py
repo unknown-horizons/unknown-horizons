@@ -47,10 +47,12 @@ class HotkeyConfiguration(object):
 		self._is_displayed = False
 		self._build_interface()
 
+		# When detecing is True, the interface detects keypresses and binds them to actions
 		self.detecting = False
 		self.current_button = None
 		self.current_index = None
 		self.last_combination = []
+		# Stores whether the last button pressed was for a primary or secondary binding (1 or 2)
 		self.last_column = 1
 
 		# There are some keys which are not detected by the event widget/keyPressed
@@ -77,14 +79,15 @@ class HotkeyConfiguration(object):
 			self.secondary_buttons.append(sec_button)
 			self.update_buttons_text()
 
-	def _create_button(self, action, action_index, index):
+	def _create_button(self, action, priority, index):
+		"""Important! The button name is set to index so that when a button is pressed, we know its index"""
 		current_binding = self.keyconf.get_current_keys(action)
 
-		if len(current_binding) <= action_index:
+		if len(current_binding) <= priority:
 				# if there are less bindings than buttons
 				keyname = "-"
 		else:
-				keyname = current_binding[action_index]
+				keyname = current_binding[priority]
 
 		#xgettext:python-format
 		button = Button()
@@ -93,6 +96,7 @@ class HotkeyConfiguration(object):
 		return button
 
 	def _detect_click_on_button(self, button, column):
+		"""Starts the listener and remembers the position and index of the pressed button"""
 		self.detecting = True
 		self.current_button = button
 		self.current_index = int(button.name)
@@ -127,19 +131,25 @@ class HotkeyConfiguration(object):
 				secondary_button.text = _("-")
 
 	def apply_change(self):
+		"""Binds the last keypress to the corresponding action and resets the interface to the state where it is listening for clicks on buttons"""
 		key = self.last_combination[0]
 		key_name = self.keyName(key)
 		action = self.actions[self.current_index]
 		column = self.current_column
 
+		# Escape is used to unassign bindings
 		if key_name == 'ESCAPE':
 			key_name = 'UNASSIGNED'
 
+		# If *key* is already set, replace the entry for *key* with UNASSIGNED for the last action.
+		# This is done to avoid binding one key for two actions.
 		elif self.key_is_set(key):
 			oldaction = self.get_action_name(key)
+			# The following commented lines are left in for use when the optionsPickBelt will support pop-ups
+			
 			#xgettext:python-format
-			message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
-					                      key=key_name, action=oldaction)
+			#message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
+			#		                      key=key_name, action=oldaction)
 			#if self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 			horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
 			#else:
@@ -191,6 +201,7 @@ class HotkeyConfiguration(object):
 		print "Action name not found. Key name must be wrong. This is not supposed to ever happen"
 
 	def reset_to_default(self):
+		"""Resets all bindings to default"""
 		for action in self.actions:
 			default_key = horizons.globals.fife.get_keys_for_action(action, default=True)
 			horizons.globals.fife.set_key_for_action(action, default_key)
@@ -198,6 +209,7 @@ class HotkeyConfiguration(object):
 		self.update_buttons_text()
 
 	def save_settings(self):
+		"""Saves the settings and reloads the keyConfiguration so that the settings take effect without a restart"""
 		horizons.globals.fife.save_settings()
 		self.keyconf.loadKeyConfiguration()
 
