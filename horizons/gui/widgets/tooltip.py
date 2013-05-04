@@ -46,6 +46,7 @@ class _Tooltip(object):
 			self.name + '/mouseDragged/tooltip' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
+		self.shown = False
 
 	def __init_gui(self):
 		self.gui = AutoResizeContainer()
@@ -97,6 +98,10 @@ class _Tooltip(object):
 			self.tooltip_shown = True
 
 	def show_tooltip(self):
+		if self.shown is True:
+			return
+		self.shown = True
+
 		if not self.helptext:
 			return
 		if self.gui is None:
@@ -116,6 +121,7 @@ class _Tooltip(object):
 		self.gui.show()
 
 	def hide_tooltip(self, event=None):
+		self.shown = False
 		if self.gui is not None:
 			self.gui.hide()
 		ExtScheduler().rem_call(self, self.show_tooltip)
