@@ -97,6 +97,9 @@ class MultiplayerMenu(Window):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 
+	def on_return(self):
+		self._join_game()
+
 	def _check_connection(self):
 		"""
 		Check if all dependencies for multiplayer games are met and we can connect to
