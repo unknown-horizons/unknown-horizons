@@ -144,6 +144,9 @@ class Gui(object):
 	def on_escape(self):
 		self.windows.on_escape()
 
+	def on_return(self):
+		self.windows.on_return()
+
 	def close_all(self):
 		self.windows.close_all()
 		self._background.hide()

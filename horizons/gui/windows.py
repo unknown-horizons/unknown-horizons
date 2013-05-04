@@ -75,6 +75,10 @@ class Window(object):
 		"""
 		self._windows.close()
 
+	def on_return(self):
+		"""Define what happens when RETURN is pressed."""
+		pass
+
 	def _show_modal_background(self):
 		"""
 		Loads transparent background that de facto prohibits access to other
@@ -319,6 +323,13 @@ class WindowManager(object):
 			return
 
 		self._windows[-1].on_escape()
+
+	def on_return(self):
+		"""Let the topmost window handle an return key event."""
+		if not self._windows:
+			return
+
+		self._windows[-1].on_return()
 
 	@property
 	def visible(self):

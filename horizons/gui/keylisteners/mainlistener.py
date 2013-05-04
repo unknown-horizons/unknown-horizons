@@ -54,11 +54,14 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 		action = KeyConfig().translate(evt)
 		_Actions = KeyConfig._Actions
+		keyval = evt.getKey().getValue()
 
 		key_event_handled = True
 
 		if action == _Actions.ESCAPE:
 			self.gui.on_escape()
+		elif keyval == fife.Key.ENTER:
+			self.gui.on_return()
 		elif action == _Actions.CONSOLE:
 			self.gui.fps_display.toggle()
 		elif action == _Actions.HELP:
