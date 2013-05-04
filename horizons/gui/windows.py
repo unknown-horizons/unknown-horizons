@@ -325,7 +325,7 @@ class WindowManager(object):
 		self._windows[-1].on_escape()
 
 	def on_return(self):
-		"""Let the topmost window handle an return key event."""
+		"""Let the topmost window handle a return key event."""
 		if not self._windows:
 			return
 
