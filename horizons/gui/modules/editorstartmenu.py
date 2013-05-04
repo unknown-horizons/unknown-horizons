@@ -66,6 +66,9 @@ class EditorStartMenu(Window):
 		self._right_side.show()
 		self._gui.show()
 
+	def on_return(self):
+		self.act()
+
 	def hide(self):
 		self._gui.hide()
 
