@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-09-26 03:59+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-05-05 13:10+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.1-pre\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367759453.0\n"
 
 #: horizons/network/server.py
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -47,7 +49,7 @@ msgstr ""
 
 #: horizons/network/server.py
 msgid "Wrong password"
-msgstr ""
+msgstr "Грешна парола"
 
 #: horizons/network/server.py
 msgid "There's already a player with your name inside this game. Change your name"
@@ -63,7 +65,7 @@ msgstr ""
 
 #: horizons/network/server.py
 msgid "You are not inside a game"
-msgstr ""
+msgstr "Не сте влезли в игра"
 
 #: horizons/network/server.py
 msgid "The game has been terminated. The creator has left the game."
