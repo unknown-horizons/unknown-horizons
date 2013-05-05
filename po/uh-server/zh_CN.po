@@ -8,36 +8,36 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-09-26 03:59+0200\n"
-"PO-Revision-Date: 2012-11-29 02:38+0000\n"
-"Last-Translator: zhang <avalon3515@163.com>\n"
+"PO-Revision-Date: 2013-05-05 13:23+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354156718.0\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367760185.0\n"
 
 #: horizons/network/server.py
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr "过时的或者不支持的多人游戏协议。请检查游戏版本"
+msgstr "旧的，或者是不支持的多人游戏协议。请检查游戏版本"
 
 #: horizons/network/server.py
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "未知或损坏的包。请检查你的游戏版本"
+msgstr "未知或损坏的包，请检查你的游戏版本"
 
 #: horizons/network/server.py
 msgid "Invalid/Unknown session"
-msgstr "无效或者未知的会话"
+msgstr "无效或未知的会话"
 
 #: horizons/network/server.py
 msgid "You can't join a game while in another game"
-msgstr "你不能加入这个游戏，因为你已加入其他游戏"
+msgstr "你不能加入这个游戏，因为你正在另一个游戏中"
 
 #: horizons/network/server.py
 msgid "Unknown game or game is running a different version"
-msgstr "未知游戏或者未知版本"
+msgstr "未知游戏，或者是，这个游戏在一个不同的版本中运行"
 
 #: horizons/network/server.py
 msgid "Game has already started. No more joining"
@@ -49,11 +49,11 @@ msgstr "游戏满员了"
 
 #: horizons/network/server.py
 msgid "Wrong password"
-msgstr "密码错误"
+msgstr "错误的密码"
 
 #: horizons/network/server.py
 msgid "There's already a player with your name inside this game. Change your name"
-msgstr "已经有一个和重名的玩家在这个游戏里。请更换你的名字"
+msgstr "已经有一个和你一样名字的玩家在这个游戏里。请更换你的名字"
 
 #: horizons/network/server.py
 msgid "There's already a player with your color inside this game. Change your color"
@@ -61,15 +61,15 @@ msgstr "已经有一个和你一样颜色的玩家在这个游戏里。请更换
 
 #: horizons/network/server.py
 msgid "There's already a player with your unique player ID inside this game. This should never occur."
-msgstr "你和已加入游戏玩家的ID完全一致。这是决不允许的"
+msgstr "已经有一个和你一样唯一的玩家ID在这个游戏里。这应该永远不会发生"
 
 #: horizons/network/server.py
 msgid "You are not inside a game"
-msgstr "你还未加入一个游戏"
+msgstr "你还不在一个游戏里"
 
 #: horizons/network/server.py
 msgid "The game has been terminated. The creator has left the game."
-msgstr "游戏已经终止。游戏创建者离开了游戏"
+msgstr "这场游戏终止了。创建这场游戏的玩家退出了。"
 
 #: horizons/network/server.py
 msgid "I feel like a bad bunny but one player has terminated the game which currently for technical reasons means that the game cannot continue. Sorry :*("
@@ -77,7 +77,7 @@ msgstr "非常抱歉，因为技术上的原因一名玩家已经退出了这场
 
 #: horizons/network/server.py
 msgid "There's already a player with your name inside this game. Unable to change your name"
-msgstr "已经有一个和你重名的玩家在这个游戏里。无法修改你的名字"
+msgstr "已经有一个和你一样名字的玩家在这个游戏里。无法修改你的名字"
 
 #: horizons/network/server.py
 msgid "There's already a player with your color inside this game. Unable to change your color"
@@ -85,4 +85,4 @@ msgstr "已经有一个和你一样颜色的玩家在这个游戏里。无法修
 
 #: horizons/network/server.py
 msgid "You can't fetch a game while in another game"
-msgstr "你不能创建新游戏，因为你在另一个游戏中"
+msgstr "你不能创建这个游戏，因为你正在另一个游戏中"
