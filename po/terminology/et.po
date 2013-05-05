@@ -2,19 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-01-08 15:02+0200\n"
-"Last-Translator: Üllar <ussikene@gmail.com>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-03-03 17:35+0000\n"
+"Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
-
-msgid "build"
-msgstr "ehita"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1362332134.0\n"
 
 msgid "game"
 msgstr "mäng"
@@ -22,139 +20,207 @@ msgstr "mäng"
 msgid "building"
 msgstr "ehitis"
 
+#. (text of widget: headline)
+msgid "build"
+msgstr "ehita"
+
+msgid "player"
+msgstr "Mängija"
+
+#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "koloonia"
-
-msgid "farm"
-msgstr "farm"
 
 msgid "ship"
 msgstr "laev"
 
+#. name_0 of buildings:tent
 msgid "tent"
 msgstr "telk"
 
-msgid "warehouse"
-msgstr ""
-
-msgid "resource"
-msgstr "ressurss"
-
-msgid "produce"
-msgstr "tooda"
-
-msgid "field"
-msgstr "põld"
+#. name of buildings:farm
+msgid "farm"
+msgstr "farm"
 
 msgid "map"
 msgstr "kaart"
 
+msgid "resource"
+msgstr "ressurss"
+
+#. name of buildings:warehouse
+msgid "warehouse"
+msgstr "ladu"
+
+#. (helptext of widget: city_info_inhabitants)
+#. (text of widget: inhabitants)
+msgid "inhabitants"
+msgstr "elanikud"
+
+msgid "change"
+msgstr "muuda"
+
+msgid "unknown"
+msgstr "tundmatu"
+
+msgid "produce"
+msgstr "tooda"
+
+msgid "no"
+msgstr "ei"
+
+#. (helptext of widget: trade)
+#. (text of widget: headline)
 msgid "trade"
 msgstr "kauple"
 
-msgid "inhabitants"
-msgstr "elanikud"
+msgid "check"
+msgstr "kontrolli"
+
+msgid "field"
+msgstr "põld"
+
+msgid "main"
+msgstr "põhiline"
 
 msgid "buy"
 msgstr "osta"
 
+msgid "click"
+msgstr "vajuta"
+
+msgid "left"
+msgstr "vasak"
+
 msgid "overview"
 msgstr "ülevaade"
 
-msgid "click"
-msgstr "vajuta"
+msgid "running"
+msgstr "jooksvad"
+
+msgid "square"
+msgstr "plats"
 
 msgid "lumberjack"
 msgstr "puuraidur"
 
-# 88%
-#, fuzzy
-msgid "resident"
-msgstr "elanikud"
+msgid "unable"
+msgstr "ei ole võimalik"
 
+msgid "continue"
+msgstr "jätka"
+
+#. name of buildings:mainsquare
 msgid "main square"
 msgstr "peaväljak"
-
-# 85%
-#, fuzzy
-msgid "sailors"
-msgstr "meremees"
-
-msgid "food"
-msgstr "toit"
-
-msgid "increment"
-msgstr ""
 
 msgid "production"
 msgstr "tootmine"
 
-msgid "select"
-msgstr "vali"
+# 85%
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "sailors"
+msgstr "meremehed"
 
 msgid "sell"
 msgstr "müü"
 
-msgid "setting"
-msgstr "seade"
-
 msgid "storage"
 msgstr "ladu"
+
+msgid "contact"
+msgstr "kontakt"
+
+#. name_2 of buildings:tent
+msgid "house"
+msgstr "maja"
+
+msgid "menu"
+msgstr "menüü"
 
 # vaheleht?
 msgid "tab"
 msgstr "vaheleht"
 
-msgid "upgrade"
-msgstr ""
-
-msgid "your inhabitants"
-msgstr ""
-
+#. (helptext of widget: okButton)
 msgid "close"
-msgstr ""
+msgstr "sulge"
 
-msgid "companies"
-msgstr "kompaniid"
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "toit"
 
-msgid "island"
-msgstr ""
+msgid "free"
+msgstr "tasuta"
 
-msgid "time"
-msgstr "aeg"
+# 75%
+#. TODO: add support for selecting difficulty levels to the GUI
+msgid "ready"
+msgstr "valmis"
 
-msgid "unit"
-msgstr ""
-
-msgid "balance"
-msgstr "bilanss"
-
-msgid "coast"
-msgstr "rannik"
-
-msgid "menu"
-msgstr "menüü"
-
-msgid "slot"
-msgstr "ava"
+msgid "setting"
+msgstr "seade"
 
 msgid "start"
 msgstr "alusta"
 
+msgid "time"
+msgstr "aeg"
+
+msgid "trader"
+msgstr "kaupleja"
+
+msgid "unit"
+msgstr "ühik"
+
+msgid "version"
+msgstr "versioon"
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "tuli"
+
+msgid "island"
+msgstr "saar"
+
+msgid "select"
+msgstr "vali/valima"
+
+msgid "slot"
+msgstr "pesa"
+
 msgid "stock"
 msgstr "kaup"
 
-msgid "trail"
-msgstr "teerada"
-
-msgid "Unknown Horizons"
+msgid "upgrade"
 msgstr ""
 
-msgid "wool"
-msgstr "vill"
+msgid "coast"
+msgstr "rannik"
 
-msgid "boards"
-msgstr "lauad"
+#. (text of widget: game_player_color)
+msgid "color"
+msgstr "värvus"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+msgid "companies"
+msgstr "kompaniid"
+
+msgid "file"
+msgstr "fail"
+
+msgid "increment"
+msgstr ""
+
+msgid "key"
+msgstr "võti"
+
+#. (text of widget: taxes_label)
+#. (text of widget: taxes)
+msgid "taxes"
+msgstr "maksud"
 
 msgid "collector"
 msgstr "koguja"
@@ -162,11 +228,34 @@ msgstr "koguja"
 msgid "connection"
 msgstr "ühendus"
 
-msgid "fire"
-msgstr "tuli"
+msgid "log"
+msgstr "palk"
 
-msgid "change"
-msgstr "muuda"
+#. (text of widget: start_multi) Opens widget to join or create multiplayer games
+msgid "multiplayer"
+msgstr "mitmemäng"
+
+# 88%
+msgid "resident"
+msgstr "elanik"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "vill"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "lauad"
+
+# 80%
+msgid "built"
+msgstr "ehitatud"
+
+msgid "button"
+msgstr "nupp"
+
+msgid "choose"
+msgstr "vali"
 
 msgid "connect"
 msgstr "ühenda"
@@ -174,125 +263,110 @@ msgstr "ühenda"
 msgid "cost"
 msgstr "hind"
 
-msgid "house"
-msgstr "maja"
+#. This is a database entry: the name of a resource.
+#. (helptext of widget: happiness_label)
+#. (helptext of widget: happiness)
+msgid "happiness"
+msgstr "heaolu"
 
-msgid "log"
-msgstr "palk"
-
+# 75%
 msgid "road"
-msgstr ""
+msgstr "tee"
 
 msgid "save"
 msgstr "salvesta"
 
-# 80%
-msgid "built"
-msgstr "ehitatud"
+#. name of buildings:tree
+msgid "tree"
+msgstr "puu"
 
-msgid "pasture"
-msgstr "karjamaa"
+msgid "amount"
+msgstr "kogus"
 
 msgid "reach"
 msgstr "ulatus"
 
-msgid "tree"
-msgstr "puu"
-
-msgid "your"
-msgstr "sinu"
-
-msgid "your settlement"
-msgstr ""
+msgid "size"
+msgstr "suurus"
 
 msgid "add"
 msgstr "lisa"
 
-msgid "check"
-msgstr "kontrolli"
-
-msgid "choose"
-msgstr "vali"
-
-msgid "confectionery"
-msgstr ""
-
 msgid "fisher"
 msgstr "kalur"
 
+#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr "vaba kaupleja"
 
-msgid "happiness"
-msgstr "heaolu"
-
 msgid "in stock"
-msgstr ""
+msgstr "laos"
 
-msgid "money"
-msgstr ""
-
-msgid "pavilion"
-msgstr "paviljon"
-
-msgid "running costs"
-msgstr "jooksvad kulud"
-
-msgid "sugar"
-msgstr "suhkur"
-
-msgid "taxes"
-msgstr "maksud"
-
-msgid "tax"
-msgstr "maks"
-
-msgid "tools"
-msgstr "tööriistad"
-
-msgid "button"
-msgstr ""
-
-msgid "continue"
-msgstr "jätka"
-
-msgid "faith"
-msgstr "usk"
-
-msgid "help"
-msgstr "abi"
-
-msgid "left"
-msgstr "vasak"
-
-msgid "level"
-msgstr "tase"
+msgid "increase"
+msgstr "suurenda"
 
 msgid "mode"
 msgstr "moodus"
 
+msgid "password"
+msgstr "parool"
+
+#. name of buildings:pasture
+msgid "pasture"
+msgstr "karjamaa"
+
+msgid "range"
+msgstr "ulatus"
+
+msgid "signal"
+msgstr "signaal"
+
+# 80%
+msgid "speed"
+msgstr "kiirus"
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "suhkur"
+
+msgid "access"
+msgstr ""
+
+msgid "build menu"
+msgstr "ehitiste menüü"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr ""
+
+msgid "enabled"
+msgstr "lubatud"
+
+msgid "fetch"
+msgstr ""
+
+#. (text of widget: help)
+#. (text of widget: help) Main / in-game menu entry
+msgid "help"
+msgstr "abi"
+
+msgid "income"
+msgstr "sissetulek"
+
+msgid "join"
+msgstr "ühine(ma)"
+
+msgid "level"
+msgstr "tase"
+
 msgid "move"
 msgstr "liiguta"
 
-# 87%
-#, fuzzy
-msgid "pioneers"
-msgstr "teerajaja"
+msgid "multiple"
+msgstr "mitu"
 
-# 87%
-#, fuzzy
-msgid "citizens"
-msgstr "kodanik"
-
-# 88%
-#, fuzzy
-msgid "merchants"
-msgstr "kaupmees"
-
-# 90%
-#, fuzzy
-msgid "aristocrats"
-msgstr "aristokraat"
+msgid "please check"
+msgstr "palun kontrolli"
 
 msgid "potato"
 msgstr "kartul"
@@ -300,72 +374,43 @@ msgstr "kartul"
 msgid "settler"
 msgstr "asunik"
 
-# 80%
-#, fuzzy
-msgid "speed"
-msgstr "seeme"
-
-msgid "stop"
-msgstr "stopp"
-
-msgid "storage tent"
-msgstr "laotelk"
-
-msgid "wait"
+#. (text of widget: total_score)
+msgid "total"
 msgstr ""
-
-msgid "access"
-msgstr ""
-
-msgid "account"
-msgstr "konto"
-
-msgid "amount"
-msgstr ""
-
-msgid "build menu"
-msgstr "ehitiste menüü"
-
-msgid "cloth"
-msgstr "riie"
 
 msgid "construction"
 msgstr "ehitus"
 
-msgid "decrease"
-msgstr "vähenda"
+msgid "creator"
+msgstr "looja"
 
-msgid "description"
-msgstr "kirjeldus"
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "usk"
 
-msgid "fish"
-msgstr "kala"
+msgid "hold"
+msgstr "ootel"
 
-msgid "increase"
-msgstr "suurenda"
+msgid "icon"
+msgstr "ikoon"
 
 msgid "lamb"
-msgstr ""
+msgstr "tall"
 
 msgid "leave"
 msgstr "lahku"
 
-msgid "liquor"
-msgstr "alkohol"
-
 msgid "location"
-msgstr ""
+msgstr "asukoht"
 
-msgid "offer"
-msgstr ""
+msgid "multiple buildings"
+msgstr "mitu ehitist"
 
-# 75%
-#, fuzzy
-msgid "potatoes"
-msgstr "kartul"
-
-msgid "range"
-msgstr "ulatus"
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "pioneers"
+msgstr "pioneerid"
 
 msgid "reached"
 msgstr "jõudnud"
@@ -373,29 +418,34 @@ msgstr "jõudnud"
 msgid "run"
 msgstr "käivita"
 
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr "SHIFT"
+
 msgid "slider"
 msgstr "liugur"
-
-msgid "solution"
-msgstr "lahendus"
 
 msgid "space"
 msgstr ""
 
+#. name_0 of buildings:storagetent
+msgid "storage tent"
+msgstr "laotelk"
+
 msgid "target"
 msgstr ""
 
-# släng! meeskond(mitte just parim variant)/võistkond(imelik)???
-# Rühm oleks ka veidi imelik.
-#, fuzzy
-msgid "team"
-msgstr "tiim"
-
-msgid "total"
+msgid "terminated"
 msgstr ""
 
-msgid "unable"
-msgstr ""
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "tööriistad"
+
+msgid "account"
+msgstr "konto"
 
 msgid "active"
 msgstr "aktiivne"
@@ -404,64 +454,66 @@ msgid "afford"
 msgstr ""
 
 # 85%
-#, fuzzy
 msgid "animals"
-msgstr "loom"
+msgstr "loomad"
 
 msgid "Captain's log"
 msgstr "Kapteni päevik"
 
+msgid "cloth"
+msgstr "riie"
+
 # 75%
-#, fuzzy
 msgid "construct"
-msgstr "ehitus"
+msgstr "ehitama"
 
-msgid "consume"
-msgstr "tarbima"
+msgid "cursor"
+msgstr "kursor"
 
-msgid "enabled"
-msgstr ""
+msgid "description"
+msgstr "kirjeldus"
 
 msgid "entries"
-msgstr ""
+msgstr "sissekannded/kirjed"
 
 msgid "feature"
 msgstr "iseärasus"
 
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "kala"
+
 msgid "forest"
 msgstr "mets"
 
-# 80%
-#, fuzzy
-msgid "grows"
+msgid "from time to time"
+msgstr "aegajalt"
+
+msgid "global"
+msgstr "globaalne"
+
+msgid "grow"
 msgstr "kasvata"
 
-msgid "hold"
-msgstr "ootel"
-
-msgid "idle"
-msgstr ""
-
-msgid "income"
-msgstr "sissetulek"
+#. (helptext of widget: happy_icon)
+msgid "happy"
+msgstr "õnnelik"
 
 msgid "information"
 msgstr "informatsioon"
 
-msgid "key"
-msgstr "võti"
-
-msgid "lamb wool"
-msgstr "lambavill"
-
-msgid "overview tab"
-msgstr ""
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "alkohol"
 
 msgid "minimap"
 msgstr "mini kaart"
 
-msgid "issues"
-msgstr "küsimustes"
+msgid "offer"
+msgstr "pakkumine /pakkuma"
+
+msgid "overview tab"
+msgstr ""
 
 msgid "plant"
 msgstr ""
@@ -469,34 +521,56 @@ msgstr ""
 msgid "play"
 msgstr "mängi"
 
-msgid "playing"
-msgstr "mängib"
-
-msgid "price"
+msgid "please check your"
 msgstr ""
 
 # 75%
-#, fuzzy
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "kartulid"
+
+msgid "price"
+msgstr "hind"
+
+# 75%
 msgid "read"
-msgstr "punane"
-
-msgid "return"
-msgstr "tagasi"
-
-msgid "sale"
-msgstr "müük"
+msgstr "lugema"
 
 msgid "screen"
 msgstr "ekraan"
 
+msgid "service"
+msgstr "teenindus"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "lahendus"
+
+#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "heli"
 
 msgid "special"
 msgstr ""
 
+#, fuzzy
+msgid "spot"
+msgstr "koht"
+
+#. (text of widget: headline_statistics)
+msgid "statistics"
+msgstr "statistika"
+
 msgid "store"
 msgstr ""
+
+# släng! meeskond(mitte just parim variant)/võistkond(imelik)???
+# Rühm oleks ka veidi imelik.
+#, fuzzy
+msgid "team"
+msgstr "tiim"
 
 # släng! meeskond(mitte just parim variant)/võistkond(imelik)???
 # Rühm oleks ka veidi imelik.
@@ -505,169 +579,754 @@ msgstr ""
 msgid "tear"
 msgstr "tiim"
 
-msgid "from time to time"
-msgstr "aegajalt"
+msgid "time to time"
+msgstr "ajast aega"
 
 msgid "trading"
 msgstr "kauplemine"
 
-msgid "village"
-msgstr "küla"
+msgid "unsupported"
+msgstr "mittetoetatud"
 
 msgid "visit"
 msgstr "külasta"
 
 msgid "world"
+msgstr "maailm"
+
+msgid "wrong"
+msgstr "vale"
+
+msgid "bar"
 msgstr ""
 
-# üle kontrollida mängus!
-# 83%
-#, fuzzy
-msgid "yield"
-msgstr "saagikus"
-
-msgid "your ship"
-msgstr ""
-
-msgid "back"
-msgstr "tagasi"
-
-msgid "build settlement"
-msgstr "ehita koloonia"
-
-msgid "load"
-msgstr ""
-
-msgid "unload"
-msgstr ""
+msgid "bug"
+msgstr "viga"
 
 msgid "command"
-msgstr ""
+msgstr "käsk"
 
 msgid "completed"
 msgstr ""
 
-msgid "condition"
-msgstr "seisund"
+msgid "forum"
+msgstr "foorum"
 
-msgid "contact"
-msgstr "kontakt"
-
-msgid "empty"
-msgstr ""
-
-msgid "ensure"
-msgstr ""
-
-msgid "fulfill"
-msgstr "vii täide"
-
-msgid "graphics"
-msgstr "graafika"
+msgid "happen"
+msgstr "juhtuma"
 
 msgid "harvest"
+msgstr "saaki koristama"
+
+msgid "in range"
 msgstr ""
 
-# 80%
-#, fuzzy
-msgid "hunts"
-msgstr "jahi"
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "lambavill"
 
-msgid "multiple"
-msgstr "mitu"
+msgid "left the game"
+msgstr "lahkus mängust"
 
-msgid "potato field"
-msgstr ""
+msgid "lot of boards"
+msgstr "hunnik laudu"
+
+msgid "marketplace"
+msgstr "turuplats"
+
+msgid "moment"
+msgstr "moment"
+
+msgid "playing"
+msgstr "mängib"
+
+msgid "produced"
+msgstr "toodetud"
+
+msgid "report"
+msgstr "aruanne"
+
+#. (text of widget: sell_income_label)
+msgid "sale"
+msgstr "müük"
 
 msgid "school"
 msgstr "kool"
 
-msgid "seed"
-msgstr "seeme"
-
-msgid "service"
-msgstr "teenindus"
-
-msgid "sheep"
-msgstr "lammas"
-
-msgid "signal fire"
-msgstr "signaaltuli"
-
-msgid "statistics"
-msgstr ""
-
-msgid "clay"
-msgstr "savi"
-
-msgid "iron"
-msgstr "raud"
-
-msgid "ore"
-msgstr "maak"
-
-msgid "tobacco"
-msgstr "tubakas"
-
-msgid "charcoal"
-msgstr "süsi"
-
-msgid "sugar field"
+msgid "started"
 msgstr ""
 
 msgid "temporarily"
 msgstr "ajutiselt"
 
+#, fuzzy
+msgid "trade with"
+msgstr "kauple"
+
 msgid "values"
 msgstr ""
+
+#, fuzzy
+msgid "wheel"
+msgstr "hiireratas / ratas"
+
+#. (helptext of widget: avg_icon)
+msgid "satisfied"
+msgstr "rahulolev"
+
+#. (text of widget: balance)
+msgid "balance"
+msgstr "bilanss"
+
+# 75%
+#, fuzzy
+msgid "load"
+msgstr "laadima"
+
+#. name_0 of buildings:trail
+msgid "trail"
+msgstr "teerada"
+
+msgid "default"
+msgstr "vaikeväärtus"
+
+msgid "iron"
+msgstr "raud"
+
+msgid "tobacco"
+msgstr "tubakas"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "savi"
+
+#. (text of widget: money_score)
+msgid "money"
+msgstr "raha"
+
+#. name of buildings:pavilion
+msgid "pavilion"
+msgstr "paviljon"
+
+msgid "tax"
+msgstr "maks"
+
+#. headline of gui_buildmenu:build_menu_per_type
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "stopp"
+
+msgid "wait"
+msgstr "oota"
+
+msgid "decrease"
+msgstr "vähenda"
+
+msgid "ore"
+msgstr "maak"
+
+#. (helptext of widget: okButton)
+#. (helptext of widget: cancelButton)
+msgid "return"
+msgstr "tagasi"
+
+msgid "savegame"
+msgstr "salvestatud mäng"
+
+msgid "consume"
+msgstr "tarbima"
+
+msgid "idle"
+msgstr "jõude"
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr "salvestatud"
+
+msgid "village"
+msgstr "küla"
+
+# üle kontrollida mängus!
+# 83%
+#, fuzzy
+msgid "yields"
+msgstr "saagikus"
+
+msgid "back"
+msgstr "tagasi"
+
+#. (helptext of widget: found_settlement)
+msgid "build settlement"
+msgstr "ehita koloonia"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "süsi"
+
+msgid "empty"
+msgstr "tühi"
+
+msgid "existing"
+msgstr "olemasolev"
+
+msgid "fulfill"
+msgstr "vii täide"
+
+#. (text of widget: headline_graphics)
+msgid "graphics"
+msgstr "graafika"
+
+msgid "hunt"
+msgstr "jahi"
+
+#. name_0 of buildings:lumberjackcamp
+msgid "lumberjack tent"
+msgstr "puuraiduri telk"
+
+msgid "please contact"
+msgstr "palun kontakteeru"
+
+#. name of buildings:potatofield
+msgid "potato field"
+msgstr ""
+
+msgid "seed"
+msgstr "seeme"
+
+msgid "send"
+msgstr "saatma"
+
+msgid "sheep"
+msgstr "lammas"
+
+#. name of buildings:signalfire
+msgid "signal fire"
+msgstr "signaaltuli"
+
+#. name of buildings:sugarfield
+msgid "sugar field"
+msgstr "suhkrupõld"
+
+#. There was a problem during the 'save game' procedure.
+msgid "error"
+msgstr "tõrge"
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr "vigane"
+
+#. (text of widget: headline_network)
+msgid "network"
+msgstr "võrk"
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr "valitud"
+
+msgid "boat"
+msgstr "paat"
+
+msgid "create"
+msgstr "looma"
+
+msgid "filename"
+msgstr "failinimi"
+
+#. (text of widget: headline_mouse)
+msgid "mouse"
+msgstr "hiir"
+
+msgid "partner"
+msgstr "partner"
+
+msgid "reset"
+msgstr "lähtesta"
+
+msgid "configuration"
+msgstr "seadistus"
+
+msgid "delete"
+msgstr "kustuta"
+
+msgid "enter"
+msgstr "sisenema"
+
+#. (text of widget: lbl_QUICKSAVE)
+msgid "quicksave"
+msgstr "kiirsalvestus"
+
+msgid "stone"
+msgstr "kivi"
+
+msgid "weapon"
+msgstr "relv"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "eluskari"
+
+msgid "message"
+msgstr "teade"
+
+msgid "port"
+msgstr "sadam"
+
+#. (text of widget: scenario)
+msgid "scenario"
+msgstr "stsenaarium"
+
+msgid "spice"
+msgstr "vürtsid"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "kakao"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "mais"
+
+msgid "details"
+msgstr "üksikasjad"
+
+msgid "found"
+msgstr "leitud"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "ravimtaimed"
+
+#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
+msgid "pause"
+msgstr "paus"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "sead"
+
+#, fuzzy
+msgid "press"
+msgstr "vajuta"
+
+#. (text of widget: quit) Completely shut down UH
+msgid "quit"
+msgstr "välju"
+
+msgid "savegame file"
+msgstr "salvestatud mängu fail"
+
+msgid "valid"
+msgstr "kehtiv"
+
+msgid "war"
+msgstr "sõda"
+
+msgid "all settlements"
+msgstr "kõik kolooniad"
+
+#. (helptext of widget: okButton)
+msgid "apply"
+msgstr "rakenda"
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "tellised"
+
+#. (text of widget: headline)
+#. (text of widget: headline_chat)
+#. (text of widget: lbl_CHAT)
+msgid "chat"
+msgstr "vestlus"
+
+msgid "confirm"
+msgstr "kinnita"
+
+msgid "default settings"
+msgstr "vaikeseaded"
+
+#. (helptext of widget: diplomacyButton)
+msgid "diplomacy"
+msgstr "diplomaatia"
+
+msgid "displayed"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "jahu"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "viinamarjad"
+
+msgid "ground"
+msgstr "Maapind"
+
+#. (text of widget: health)
+msgid "health"
+msgstr ""
+
+#. (text of widget: land_score)
+msgid "land"
+msgstr "maa"
+
+msgid "library"
+msgstr "raamatukogu"
+
+#, fuzzy
+msgid "limit"
+msgstr "piir"
+
+msgid "loading"
+msgstr "laadimine"
+
+msgid "logging"
+msgstr "logimine"
+
+msgid "mine"
+msgstr "kaevandus / minu"
+
+msgid "mouse button"
+msgstr "hiirenupp"
+
+msgid "not ready"
+msgstr "pole valmis"
+
+#. (helptext of widget: player_name)
+msgid "player name"
+msgstr "mängija nimi"
+
+msgid "quote"
+msgstr "tsitaat"
+
+#. (text of widget: reset_mouse_sensitivity)
+msgid "reset to default"
+msgstr "taasta vaikeseaded"
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "sool"
+
+msgid "saved games"
+msgstr "salvestatud mängud"
+
+#, fuzzy
+msgid "source"
+msgstr "lähtekood"
+
+msgid "trade partner"
+msgstr "kaubanduspartner"
+
+msgid "user"
+msgstr "kasutaja"
+
+msgid "alliance"
+msgstr "liit"
+
+msgid "allied"
+msgstr "liitusid"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:alvearies
+msgid "alvearies"
+msgstr "meetarud"
+
+msgid "beans"
+msgstr "oad"
+
+#. name of buildings:boatbuilder
+msgid "boat builder"
+msgstr "paadiehitaja"
+
+msgid "builder"
+msgstr "ehitaja"
+
+msgid "capacity"
+msgstr "mahtuvus"
+
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "citizens"
+msgstr "kodanikud"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:claydeposit
+msgid "clay deposit"
+msgstr "savi lade"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "kakaooad"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "Kogukond"
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "maitseained"
+
+msgid "configure"
+msgstr "seadistama"
+
+msgid "created"
+msgstr "loodud"
+
+#, fuzzy
+msgid "crops"
+msgstr "põllukultuurid"
+
+msgid "deer"
+msgstr "põder"
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr "tõbi"
+
+#. name of buildings:doctor
+msgid "doctor"
+msgstr "arst"
+
+msgid "drag"
+msgstr "lohistama"
+
+#. This is a database entry: the name of a resource.
+msgid "education"
+msgstr "haridus"
+
+msgid "ensure"
+msgstr ""
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr "kulud"
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr "fikseeritud"
+
+msgid "future"
+msgstr "tulevik"
+
+msgid "game menu"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "meekärjed"
+
+msgid "inventory"
+msgstr "inventar"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "rauamaak"
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr "linuxi kasutajad"
+
+#. (text of widget: loadgame)
+#. (text of widget: loadgame) Open a widget to select which game to load
+msgid "load game"
+msgstr "laadi mäng"
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr "kaardi suurus"
+
+msgid "maximum"
+msgstr "maksimaalne"
+
+msgid "meant"
+msgstr "mõeldud"
+
+msgid "meant as"
+msgstr "mõeldud kui"
+
+msgid "missing"
+msgstr "puuduv"
+
+msgid "network port"
+msgstr "võrguport"
+
+msgid "package"
+msgstr "pakett"
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr "tootmise ülevaade"
+
+#. (text of widget: lbl_QUICKLOAD)
+msgid "quickload"
+msgstr "kiirlaadimine"
+
+msgid "random"
+msgstr "juhuslik"
+
+#. (text of widget: random)
+msgid "random map"
+msgstr "juhuslik kaart"
+
+msgid "related"
+msgstr ""
+
+#. (text of widget: headline)
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr "eemalda"
+
+msgid "renderer"
+msgstr "renderdaja"
+
+#, fuzzy
+msgid "run out"
+msgstr "otsa saama"
+
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (text of widget: running_costs_label)
+#. (text of widget: running_costs)
+msgid "running costs"
+msgstr "jooksvad kulud"
+
+#. (text of widget: lbl_SCREENSHOT)
+msgid "screenshot"
+msgstr "ekraanitõmmis"
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr ""
+
+msgid "ship overview"
+msgstr "laeva ülevaade"
+
+#, fuzzy
+msgid "station"
+msgstr "jaam"
+
+msgid "suitable"
+msgstr "sobilik"
+
+msgid "system"
+msgstr "süsteem"
+
+msgid "tile"
+msgstr ""
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr "torn"
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr "soovid jätkata"
+
+msgid "won"
+msgstr "võitnud"
+
+msgid "written"
+msgstr ""
+
+#~ msgid "your"
+#~ msgstr "sinu"
+
+# 88%
+#, fuzzy
+#~ msgid "merchants"
+#~ msgstr "kaupmees"
+
+# 90%
+#, fuzzy
+#~ msgid "aristocrats"
+#~ msgstr "aristokraat"
+
+# 80%
+#, fuzzy
+#~ msgid "grows"
+#~ msgstr "kasvata"
+
+#~ msgid "issues"
+#~ msgstr "küsimustes"
+
+# üle kontrollida mängus!
+# 83%
+#, fuzzy
+#~ msgid "yield"
+#~ msgstr "saagikus"
+
+#~ msgid "condition"
+#~ msgstr "seisund"
+
+# 80%
+#, fuzzy
+#~ msgid "hunts"
+#~ msgstr "jahi"
 
 #~ msgid "branch office"
 #~ msgstr "harukontor"
 
-#~ msgid "main"
-#~ msgstr "põhiline"
-
-#~ msgid "unknown"
-#~ msgstr "tundmatu"
-
-#~ msgid "free"
-#~ msgstr "tasuta"
-
-#~ msgid "trader"
-#~ msgstr "kaupleja"
-
-#~ msgid "version"
-#~ msgstr "versioon"
-
-#~ msgid "signal"
-#~ msgstr "signaal"
-
-#~ msgid "found"
-#~ msgstr "leitud"
-
 #~ msgid "raw"
 #~ msgstr "toores"
 
-#~ msgid "running"
-#~ msgstr "jooksvad"
-
-#~ msgid "inventory"
-#~ msgstr "inventar"
-
 #~ msgid "moved"
 #~ msgstr "liigutatud"
-
-#~ msgid "produced"
-#~ msgstr "toodetud"
 
 #~ msgid "hunter"
 #~ msgstr "jahimees"
 
 #~ msgid "market"
 #~ msgstr "turg"
-
-#~ msgid "partner"
-#~ msgstr "partner"
 
 #~ msgid "sailor"
 #~ msgstr "meremees"
@@ -702,15 +1361,6 @@ msgstr ""
 #~ msgid "fisherman"
 #~ msgstr "kalur"
 
-#~ msgid "forum"
-#~ msgstr "foorum"
-
-#~ msgid "grow"
-#~ msgstr "kasvata"
-
-#~ msgid "hunt"
-#~ msgstr "jahi"
-
 #~ msgid "load/unload"
 #~ msgstr "lae/ära lae"
 
@@ -720,17 +1370,11 @@ msgstr ""
 #~ msgid "starting"
 #~ msgstr "alustab"
 
-#~ msgid "trade partner"
-#~ msgstr "kaubanduspartner"
-
 #~ msgid "green"
 #~ msgstr "roheline"
 
 #~ msgid "red"
 #~ msgstr "punane"
-
-#~ msgid "no"
-#~ msgstr "ei"
 
 #~ msgid "dialogue"
 #~ msgstr "dialoog"
@@ -741,23 +1385,11 @@ msgstr ""
 #~ msgid "salt ponds"
 #~ msgstr "soolatiigid"
 
-#~ msgid "cattle"
-#~ msgstr "eluskari"
-
 #~ msgid "pig"
 #~ msgstr "siga"
-
-#~ msgid "herbs"
-#~ msgstr "ravimtaimed"
 
 #~ msgid "herbary"
 #~ msgstr "apteek"
 
 #~ msgid "butchery"
 #~ msgstr "lihunik"
-
-#~ msgid "doctor"
-#~ msgstr "arst"
-
-#~ msgid "education"
-#~ msgstr "haridus"
