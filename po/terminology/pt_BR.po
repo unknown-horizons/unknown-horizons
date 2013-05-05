@@ -2,155 +2,224 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-11-26 15:24+0000\n"
-"Last-Translator: fmanna <fmanna775@gmail.com>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:33+0000\n"
+"Last-Translator: israelsantanna <israel.santanna@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1353943494.0\n"
-
-msgid "build"
-msgstr "construir"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367757215.0\n"
 
 msgid "game"
-msgstr "jogo / partida"
+msgstr "jogo"
 
 msgid "building"
 msgstr "construção"
 
+#. (text of widget: headline)
+msgid "build"
+msgstr "construir"
+
+msgid "player"
+msgstr "jogador"
+
+#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "colônia"
-
-msgid "farm"
-msgstr "fazenda"
 
 msgid "ship"
 msgstr "embarcação"
 
+#. name_0 of buildings:tent
 msgid "tent"
 msgstr "tenda"
 
-msgid "warehouse"
-msgstr "armazém"
+#. name of buildings:farm
+msgid "farm"
+msgstr "fazenda"
+
+#
+msgid "map"
+msgstr "mapa"
 
 msgid "resource"
 msgstr "recurso"
 
+#. name of buildings:warehouse
+msgid "warehouse"
+msgstr "armazém"
+
+#. (helptext of widget: city_info_inhabitants)
+#. (text of widget: inhabitants)
+msgid "inhabitants"
+msgstr "habitantes"
+
+msgid "change"
+msgstr "alterar"
+
+msgid "unknown"
+msgstr "desconhecido"
+
 msgid "produce"
 msgstr "produzir"
+
+msgid "no"
+msgstr "não"
+
+#. (helptext of widget: trade)
+#. (text of widget: headline)
+msgid "trade"
+msgstr "comércio"
+
+msgid "check"
+msgstr "verificar"
 
 msgid "field"
 msgstr "plantação"
 
-msgid "map"
-msgstr "mapa"
-
-msgid "trade"
-msgstr "comércio"
-
-msgid "inhabitants"
-msgstr "habitantes"
+msgid "main"
+msgstr "principal"
 
 msgid "buy"
 msgstr "comprar"
 
+msgid "click"
+msgstr "clique"
+
+msgid "left"
+msgstr "esquerda"
+
 msgid "overview"
 msgstr "visão geral"
 
-msgid "click"
-msgstr "clique"
+msgid "running"
+msgstr "executando"
+
+msgid "square"
+msgstr "praça"
 
 msgid "lumberjack"
 msgstr "lenhador"
 
-msgid "resident"
-msgstr "residente"
+msgid "unable"
+msgstr "incapaz"
 
+msgid "continue"
+msgstr "continuar"
+
+#. name of buildings:mainsquare
 msgid "main square"
 msgstr "praça principal"
-
-msgid "sailors"
-msgstr "marinheiros"
-
-msgid "food"
-msgstr "alimento"
-
-msgid "increment"
-msgstr "nível"
 
 msgid "production"
 msgstr "produção"
 
-msgid "select"
-msgstr "selecionar"
+# 85%
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "sailors"
+msgstr "marinheiros"
 
 msgid "sell"
 msgstr "vender"
 
-msgid "setting"
-msgstr "configuração"
-
 msgid "storage"
 msgstr "depósito"
 
-msgid "tab"
-msgstr "aba"
+msgid "contact"
+msgstr "contato"
 
-msgid "upgrade"
-msgstr "aprimoramento"
-
-msgid "your inhabitants"
-msgstr "seus habitantes"
-
-msgid "close"
-msgstr "fechar"
-
-msgid "companies"
-msgstr "companhias"
-
-msgid "island"
-msgstr "ilha"
-
-msgid "time"
-msgstr "tempo"
-
-msgid "unit"
-msgstr "unidade"
-
-msgid "balance"
-msgstr "balanço"
-
-msgid "coast"
-msgstr "costa"
+#. name_2 of buildings:tent
+msgid "house"
+msgstr "casa"
 
 msgid "menu"
 msgstr "menu"
 
-msgid "slot"
-msgstr "slot"
+msgid "tab"
+msgstr "aba"
+
+#. (helptext of widget: okButton)
+msgid "close"
+msgstr "fechar"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "alimento"
+
+msgid "free"
+msgstr "livre"
+
+#. TODO: add support for selecting difficulty levels to the GUI
+msgid "ready"
+msgstr "pronto"
+
+msgid "setting"
+msgstr "configuração"
 
 msgid "start"
 msgstr "início / iniciar"
 
+msgid "time"
+msgstr "tempo"
+
+msgid "trader"
+msgstr "comerciante"
+
+msgid "unit"
+msgstr "unidade"
+
+msgid "version"
+msgstr "versão"
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "fogo"
+
+msgid "island"
+msgstr "ilha"
+
+msgid "select"
+msgstr "selecionar"
+
+msgid "slot"
+msgstr "slot"
+
 msgid "stock"
 msgstr "estoque"
 
-msgid "trail"
-msgstr "trilha"
+msgid "upgrade"
+msgstr "aprimoramento"
 
-msgid "Unknown Horizons"
-msgstr "Unknown Horizons"
+msgid "coast"
+msgstr "costa"
 
-msgid "wool"
-msgstr "lã"
+#. (text of widget: game_player_color)
+msgid "color"
+msgstr "cor"
 
-msgid "boards"
-msgstr "tábuas"
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+msgid "companies"
+msgstr "companhias"
+
+msgid "file"
+msgstr "arquivo"
+
+msgid "increment"
+msgstr "nível"
+
+msgid "key"
+msgstr "tecla"
+
+#. (text of widget: taxes_label)
+#. (text of widget: taxes)
+msgid "taxes"
+msgstr "impostos"
 
 msgid "collector"
 msgstr "coletor"
@@ -158,11 +227,33 @@ msgstr "coletor"
 msgid "connection"
 msgstr "conexão"
 
-msgid "fire"
-msgstr "fogo"
+msgid "log"
+msgstr "registro"
 
-msgid "change"
-msgstr "alterar"
+#. (text of widget: start_multi) Opens widget to join or create multiplayer games
+msgid "multiplayer"
+msgstr "multijogador"
+
+msgid "resident"
+msgstr "residente"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "lã"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "tábuas"
+
+# 80%
+msgid "built"
+msgstr "construído"
+
+msgid "button"
+msgstr "botão"
+
+msgid "choose"
+msgstr "escolher"
 
 msgid "connect"
 msgstr "conectar"
@@ -170,11 +261,11 @@ msgstr "conectar"
 msgid "cost"
 msgstr "custo"
 
-msgid "house"
-msgstr "casa"
-
-msgid "log"
-msgstr "registro"
+#. This is a database entry: the name of a resource.
+#. (helptext of widget: happiness_label)
+#. (helptext of widget: happiness)
+msgid "happiness"
+msgstr "satisfação"
 
 msgid "road"
 msgstr "estrada"
@@ -182,104 +273,96 @@ msgstr "estrada"
 msgid "save"
 msgstr "salvar"
 
-msgid "built"
-msgstr "construído"
+#. name of buildings:tree
+msgid "tree"
+msgstr "árvore"
 
-msgid "pasture"
-msgstr "pastagem"
+msgid "amount"
+msgstr "quantidade"
 
 msgid "reach"
 msgstr "atingir"
 
-msgid "tree"
-msgstr "árvore"
-
-msgid "your"
-msgstr "seu"
-
-msgid "your settlement"
-msgstr "sua colônia"
+msgid "size"
+msgstr "tamanho"
 
 msgid "add"
 msgstr "adicionar"
 
-msgid "check"
-msgstr "verificar"
-
-msgid "choose"
-msgstr "escolher"
-
-msgid "confectionery"
-msgstr "confeitaria"
-
 msgid "fisher"
 msgstr "pescador"
 
+#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr "mercador livre"
-
-msgid "happiness"
-msgstr "satisfação"
 
 msgid "in stock"
 msgstr "em estoque"
 
-msgid "money"
-msgstr "dinheiro"
-
-msgid "pavilion"
-msgstr "pavilhão"
-
-msgid "running costs"
-msgstr "custos de operação"
-
-msgid "sugar"
-msgstr "açúcar"
-
-msgid "taxes"
-msgstr "impostos"
-
-msgid "tax"
-msgstr "imposto"
-
-msgid "tools"
-msgstr "ferramentas"
-
-msgid "button"
-msgstr "botão"
-
-msgid "continue"
-msgstr "continuar"
-
-msgid "faith"
-msgstr "fé"
-
-msgid "help"
-msgstr "ajuda"
-
-msgid "left"
-msgstr "esquerda"
-
-msgid "level"
-msgstr "nível"
+msgid "increase"
+msgstr "aumentar"
 
 msgid "mode"
 msgstr "modo"
 
+msgid "password"
+msgstr "senha"
+
+#. name of buildings:pasture
+msgid "pasture"
+msgstr "pastagem"
+
+msgid "range"
+msgstr "alcance"
+
+msgid "signal"
+msgstr "sinal"
+
+msgid "speed"
+msgstr "velocidade"
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "açúcar"
+
+msgid "access"
+msgstr "acesso"
+
+msgid "build menu"
+msgstr "menu de construção"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "confeitaria"
+
+msgid "enabled"
+msgstr "habilitado"
+
+msgid "fetch"
+msgstr "obter"
+
+#. (text of widget: help)
+#. (text of widget: help) Main / in-game menu entry
+msgid "help"
+msgstr "ajuda"
+
+msgid "income"
+msgstr "receita"
+
+msgid "join"
+msgstr "entrar"
+
+msgid "level"
+msgstr "nível"
+
 msgid "move"
 msgstr "mover"
 
-msgid "pioneers"
-msgstr "pioneiros"
+msgid "multiple"
+msgstr "múltiplo"
 
-msgid "citizens"
-msgstr "cidadãos"
-
-msgid "merchants"
-msgstr "mercadores"
-
-msgid "aristocrats"
-msgstr "aristocratas"
+msgid "please check"
+msgstr "por favor, verifique"
 
 msgid "potato"
 msgstr "batata"
@@ -287,47 +370,25 @@ msgstr "batata"
 msgid "settler"
 msgstr "colono"
 
-msgid "speed"
-msgstr "velocidade"
-
-msgid "stop"
-msgstr "parar"
-
-msgid "storage tent"
-msgstr "tenda de armazenamento"
-
-msgid "wait"
-msgstr "aguardar"
-
-msgid "access"
-msgstr "acesso"
-
-msgid "account"
-msgstr "finanças"
-
-msgid "amount"
-msgstr "quantidade"
-
-msgid "build menu"
-msgstr "menu de construção"
-
-msgid "cloth"
-msgstr "tecido"
+#. (text of widget: total_score)
+msgid "total"
+msgstr "total"
 
 msgid "construction"
 msgstr "construção"
 
-msgid "decrease"
-msgstr "diminuir"
+msgid "creator"
+msgstr "criador"
 
-msgid "description"
-msgstr "descrição"
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "fé"
 
-msgid "fish"
-msgstr "peixe"
+msgid "hold"
+msgstr "manter"
 
-msgid "increase"
-msgstr "aumentar"
+msgid "icon"
+msgstr "ícone"
 
 msgid "lamb"
 msgstr "carneiro"
@@ -335,20 +396,17 @@ msgstr "carneiro"
 msgid "leave"
 msgstr "sair / deixar"
 
-msgid "liquor"
-msgstr "álcool"
-
 msgid "location"
 msgstr "localização"
 
-msgid "offer"
-msgstr "oferta"
+msgid "multiple buildings"
+msgstr "construções múltiplas"
 
-msgid "potatoes"
-msgstr "batatas"
-
-msgid "range"
-msgstr "alcance"
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "pioneers"
+msgstr "pioneiros"
 
 msgid "reached"
 msgstr "alcançado"
@@ -356,26 +414,34 @@ msgstr "alcançado"
 msgid "run"
 msgstr "correr"
 
+msgid "session"
+msgstr "sessão"
+
+msgid "SHIFT"
+msgstr "SHIFT"
+
 msgid "slider"
 msgstr "controle deslizante"
-
-msgid "solution"
-msgstr "solução"
 
 msgid "space"
 msgstr "espaço"
 
+#. name_0 of buildings:storagetent
+msgid "storage tent"
+msgstr "tenda de armazenamento"
+
 msgid "target"
 msgstr "objetivo"
 
-msgid "team"
-msgstr "equipe"
+msgid "terminated"
+msgstr "encerrado"
 
-msgid "total"
-msgstr "total"
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "ferramentas"
 
-msgid "unable"
-msgstr "incapaz"
+msgid "account"
+msgstr "finanças"
 
 msgid "active"
 msgstr "ativo"
@@ -383,20 +449,24 @@ msgstr "ativo"
 msgid "afford"
 msgstr "disposição"
 
+# 85%
 msgid "animals"
 msgstr "animais"
 
 msgid "Captain's log"
-msgstr "Diário do Capitão"
+msgstr "diário do Capitão"
+
+msgid "cloth"
+msgstr "tecido"
 
 msgid "construct"
 msgstr "construir"
 
-msgid "consume"
-msgstr "consumir"
+msgid "cursor"
+msgstr "ponteiro"
 
-msgid "enabled"
-msgstr "habilitado"
+msgid "description"
+msgstr "descrição"
 
 msgid "entries"
 msgstr "entradas"
@@ -404,38 +474,41 @@ msgstr "entradas"
 msgid "feature"
 msgstr "característica"
 
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "peixe"
+
 msgid "forest"
 msgstr "floresta"
 
-msgid "grows"
-msgstr "crescimento / prosperidade"
+msgid "from time to time"
+msgstr "de vez em quando"
 
-msgid "hold"
-msgstr "manter"
+msgid "global"
+msgstr "global"
 
-msgid "idle"
-msgstr "ocioso"
+msgid "grow"
+msgstr "crescer"
 
-msgid "income"
-msgstr "receita"
+#. (helptext of widget: happy_icon)
+msgid "happy"
+msgstr "feliz"
 
 msgid "information"
 msgstr "informação"
 
-msgid "key"
-msgstr "tecla"
-
-msgid "lamb wool"
-msgstr "lã de ovelha"
-
-msgid "overview tab"
-msgstr "aba de visão geral"
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "álcool"
 
 msgid "minimap"
 msgstr "minimapa"
 
-msgid "issues"
-msgstr "problemas"
+msgid "offer"
+msgstr "oferta"
+
+msgid "overview tab"
+msgstr "aba de visão geral"
 
 msgid "plant"
 msgstr "planta / fábrica"
@@ -443,8 +516,13 @@ msgstr "planta / fábrica"
 msgid "play"
 msgstr "jogar"
 
-msgid "playing"
-msgstr "jogando"
+msgid "please check your"
+msgstr "por favor, verifique seu/sua"
+
+# 75%
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "batatas"
 
 msgid "price"
 msgstr "preço"
@@ -452,35 +530,50 @@ msgstr "preço"
 msgid "read"
 msgstr "ler"
 
-msgid "return"
-msgstr "retornar"
-
-msgid "sale"
-msgstr "venda"
-
 msgid "screen"
 msgstr "tela"
 
+msgid "service"
+msgstr "serviço"
+
+msgid "short"
+msgstr "curto"
+
+msgid "solution"
+msgstr "solução"
+
+# 80%
+#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "som"
 
 msgid "special"
 msgstr "especial"
 
+msgid "spot"
+msgstr "ponto"
+
+#. (text of widget: headline_statistics)
+msgid "statistics"
+msgstr "estatísticas"
+
 msgid "store"
 msgstr "loja"
+
+msgid "team"
+msgstr "equipe"
 
 msgid "tear"
 msgstr "demolir"
 
-msgid "from time to time"
-msgstr "de vez em quando"
+msgid "time to time"
+msgstr "agora é a hora"
 
 msgid "trading"
 msgstr "comércio"
 
-msgid "village"
-msgstr "aldeia"
+msgid "unsupported"
+msgstr "não suportado"
 
 msgid "visit"
 msgstr "visita"
@@ -488,23 +581,14 @@ msgstr "visita"
 msgid "world"
 msgstr "mundo"
 
-msgid "yield"
-msgstr "produção"
+msgid "wrong"
+msgstr "errado"
 
-msgid "your ship"
-msgstr "sua embarcação"
+msgid "bar"
+msgstr "bar"
 
-msgid "back"
-msgstr "voltar"
-
-msgid "build settlement"
-msgstr "fundar colônia"
-
-msgid "load"
-msgstr "carregar"
-
-msgid "unload"
-msgstr "descarregar"
+msgid "bug"
+msgstr "erro"
 
 msgid "command"
 msgstr "comando"
@@ -512,98 +596,702 @@ msgstr "comando"
 msgid "completed"
 msgstr "concluído"
 
-msgid "condition"
-msgstr "condição"
+msgid "forum"
+msgstr "fórum"
 
-msgid "contact"
-msgstr "contato"
-
-msgid "empty"
-msgstr "vazio"
-
-msgid "ensure"
-msgstr "garantir"
-
-msgid "fulfill"
-msgstr "cumprir"
-
-msgid "graphics"
-msgstr "gráficos"
+msgid "happen"
+msgstr "acontecer"
 
 msgid "harvest"
 msgstr "colheita"
 
-msgid "hunts"
-msgstr "caças"
+msgid "in range"
+msgstr "no intervalo"
 
-msgid "multiple"
-msgstr "múltiplo"
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "lã de ovelha"
 
-msgid "potato field"
-msgstr "plantação de batatas"
+msgid "left the game"
+msgstr "sair do jogo"
+
+msgid "lot of boards"
+msgstr "lote de placas"
+
+msgid "marketplace"
+msgstr "mercado"
+
+msgid "moment"
+msgstr "momento"
+
+msgid "playing"
+msgstr "jogando"
+
+msgid "produced"
+msgstr "produzido"
+
+msgid "report"
+msgstr "relatório"
+
+#. (text of widget: sell_income_label)
+msgid "sale"
+msgstr "venda"
 
 msgid "school"
 msgstr "escola"
 
-msgid "seed"
-msgstr "semente"
-
-msgid "service"
-msgstr "serviço"
-
-msgid "sheep"
-msgstr "ovelha"
-
-msgid "signal fire"
-msgstr "sinal de fogo"
-
-msgid "statistics"
-msgstr "estatísticas"
-
-msgid "clay"
-msgstr "argila"
-
-msgid "iron"
-msgstr "ferro"
-
-msgid "ore"
-msgstr "minério"
-
-msgid "tobacco"
-msgstr "tabaco"
-
-msgid "charcoal"
-msgstr "carvão vegetal"
-
-msgid "sugar field"
-msgstr "plantação de cana-de-açúcar"
+msgid "started"
+msgstr "iniciado"
 
 msgid "temporarily"
 msgstr "temporariamente"
 
+msgid "trade with"
+msgstr "trocar com"
+
 msgid "values"
 msgstr "valores"
 
-#~ msgid "main"
-#~ msgstr "principal"
+msgid "wheel"
+msgstr "roda"
 
-#~ msgid "unknown"
-#~ msgstr "desconhecido"
+#. (helptext of widget: avg_icon)
+msgid "satisfied"
+msgstr "satisfeito"
 
-#~ msgid "free"
-#~ msgstr "livre"
+#. (text of widget: balance)
+msgid "balance"
+msgstr "balanço"
 
-#~ msgid "trader"
-#~ msgstr "comerciante"
+msgid "load"
+msgstr "carregar"
 
-#~ msgid "version"
-#~ msgstr "versão"
+#. name_0 of buildings:trail
+msgid "trail"
+msgstr "trilha"
 
-#~ msgid "signal"
-#~ msgstr "sinal"
+msgid "default"
+msgstr "padrão"
 
-#~ msgid "found"
-#~ msgstr "estabelecer / (fundar)"
+msgid "iron"
+msgstr "ferro"
+
+msgid "tobacco"
+msgstr "tabaco"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "argila"
+
+#. (text of widget: money_score)
+msgid "money"
+msgstr "dinheiro"
+
+#. name of buildings:pavilion
+msgid "pavilion"
+msgstr "pavilhão"
+
+msgid "tax"
+msgstr "imposto"
+
+#. headline of gui_buildmenu:build_menu_per_type
+msgid "residential"
+msgstr "residencial"
+
+msgid "stop"
+msgstr "parar"
+
+msgid "wait"
+msgstr "aguardar"
+
+msgid "decrease"
+msgstr "diminuir"
+
+msgid "ore"
+msgstr "minério"
+
+#. (helptext of widget: okButton)
+#. (helptext of widget: cancelButton)
+msgid "return"
+msgstr "retornar"
+
+msgid "savegame"
+msgstr "jogo salvo"
+
+msgid "consume"
+msgstr "consumir"
+
+msgid "idle"
+msgstr "ocioso"
+
+msgid "lower"
+msgstr "menor"
+
+msgid "saved"
+msgstr "salvo"
+
+msgid "village"
+msgstr "aldeia"
+
+msgid "yields"
+msgstr "rendimentos"
+
+msgid "back"
+msgstr "voltar"
+
+#. (helptext of widget: found_settlement)
+msgid "build settlement"
+msgstr "fundar colônia"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "carvão vegetal"
+
+msgid "empty"
+msgstr "vazio"
+
+msgid "existing"
+msgstr "existente"
+
+msgid "fulfill"
+msgstr "cumprir"
+
+#. (text of widget: headline_graphics)
+msgid "graphics"
+msgstr "gráficos"
+
+msgid "hunt"
+msgstr "caçar"
+
+#. name_0 of buildings:lumberjackcamp
+msgid "lumberjack tent"
+msgstr "tenda do lenhador"
+
+msgid "please contact"
+msgstr "por favor, entre em contato"
+
+#. name of buildings:potatofield
+msgid "potato field"
+msgstr "plantação de batatas"
+
+msgid "seed"
+msgstr "semente"
+
+msgid "send"
+msgstr "Enviar"
+
+msgid "sheep"
+msgstr "ovelha"
+
+#. name of buildings:signalfire
+msgid "signal fire"
+msgstr "sinal de fogo"
+
+#
+#. name of buildings:sugarfield
+msgid "sugar field"
+msgstr "plantação de cana-de-açúcar"
+
+#. There was a problem during the 'save game' procedure.
+msgid "error"
+msgstr "erro"
+
+msgid "deposit"
+msgstr "depósito"
+
+msgid "invalid"
+msgstr "inválido"
+
+#. (text of widget: headline_network)
+msgid "network"
+msgstr "rede"
+
+msgid "route"
+msgstr "rota"
+
+msgid "selected"
+msgstr "selecionado"
+
+msgid "boat"
+msgstr "bote"
+
+msgid "create"
+msgstr "criar"
+
+msgid "filename"
+msgstr "nome do arquivo"
+
+#. (text of widget: headline_mouse)
+msgid "mouse"
+msgstr "mouse"
+
+msgid "partner"
+msgstr "parceiro"
+
+msgid "reset"
+msgstr "redefinir"
+
+msgid "configuration"
+msgstr "configuração"
+
+msgid "delete"
+msgstr "excluir"
+
+msgid "enter"
+msgstr "enter"
+
+#. (text of widget: lbl_QUICKSAVE)
+msgid "quicksave"
+msgstr "salvar"
+
+msgid "stone"
+msgstr "pedra"
+
+msgid "weapon"
+msgstr "arma"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "gado"
+
+msgid "message"
+msgstr "mensagem"
+
+msgid "port"
+msgstr "porta"
+
+#. (text of widget: scenario)
+msgid "scenario"
+msgstr "cenário"
+
+msgid "spice"
+msgstr "especiarias"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "cacau"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "milho"
+
+msgid "details"
+msgstr "detalhes"
+
+msgid "found"
+msgstr "estabelecer / (fundar)"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "ervas"
+
+#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
+msgid "pause"
+msgstr "pausa"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "porcos"
+
+msgid "press"
+msgstr "pressione"
+
+#. (text of widget: quit) Completely shut down UH
+msgid "quit"
+msgstr "sair"
+
+msgid "savegame file"
+msgstr "arquivo de jogo salvo"
+
+msgid "valid"
+msgstr "válido"
+
+msgid "war"
+msgstr "guerra"
+
+msgid "all settlements"
+msgstr "todas as colônias"
+
+#. (helptext of widget: okButton)
+msgid "apply"
+msgstr "aplicar"
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "tijolos"
+
+#. (text of widget: headline)
+#. (text of widget: headline_chat)
+#. (text of widget: lbl_CHAT)
+msgid "chat"
+msgstr "chat"
+
+msgid "confirm"
+msgstr "confirmar"
+
+msgid "default settings"
+msgstr "configurações padrão"
+
+#. (helptext of widget: diplomacyButton)
+msgid "diplomacy"
+msgstr "diplomacia"
+
+msgid "displayed"
+msgstr "exibido"
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "farinha"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "uvas"
+
+msgid "ground"
+msgstr "chão"
+
+#. (text of widget: health)
+msgid "health"
+msgstr "vida"
+
+#. (text of widget: land_score)
+msgid "land"
+msgstr "terra"
+
+msgid "library"
+msgstr "biblioteca"
+
+msgid "limit"
+msgstr "limite"
+
+msgid "loading"
+msgstr "carregando"
+
+msgid "logging"
+msgstr "Entrando"
+
+msgid "mine"
+msgstr "meu/mina"
+
+msgid "mouse button"
+msgstr "botão do mouse"
+
+msgid "not ready"
+msgstr "Não está pronto"
+
+#. (helptext of widget: player_name)
+msgid "player name"
+msgstr "nome do jogador"
+
+msgid "quote"
+msgstr "citação"
+
+#. (text of widget: reset_mouse_sensitivity)
+msgid "reset to default"
+msgstr "restaurar padrão"
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "sal"
+
+msgid "saved games"
+msgstr "jogos salvos"
+
+msgid "source"
+msgstr "fonte"
+
+#
+msgid "trade partner"
+msgstr "parceiro comercial"
+
+msgid "user"
+msgstr "usuário"
+
+msgid "alliance"
+msgstr "aliança"
+
+msgid "allied"
+msgstr "aliado"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:alvearies
+msgid "alvearies"
+msgstr "Alvearis"
+
+msgid "beans"
+msgstr "feijões"
+
+#. name of buildings:boatbuilder
+msgid "boat builder"
+msgstr "construtor naval"
+
+msgid "builder"
+msgstr "construtor"
+
+msgid "capacity"
+msgstr "capacidade"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "citizens"
+msgstr "cidadãos"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:claydeposit
+msgid "clay deposit"
+msgstr "depósito de argila"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "cacau"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "comunidade"
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "condimentos"
+
+msgid "configure"
+msgstr "configurar"
+
+msgid "created"
+msgstr "criado"
+
+msgid "crops"
+msgstr "recortes"
+
+msgid "deer"
+msgstr "veado"
+
+msgid "directory"
+msgstr "diretório"
+
+msgid "disease"
+msgstr "doença"
+
+#. name of buildings:doctor
+msgid "doctor"
+msgstr "médico"
+
+msgid "drag"
+msgstr "arrastar"
+
+#. This is a database entry: the name of a resource.
+msgid "education"
+msgstr "educação"
+
+msgid "ensure"
+msgstr "garantir"
+
+msgid "entered"
+msgstr "entrou"
+
+msgid "expenses"
+msgstr "despesas"
+
+msgid "fallback"
+msgstr "reserva"
+
+msgid "fixed"
+msgstr "corrigido"
+
+msgid "future"
+msgstr "futuro"
+
+msgid "game menu"
+msgstr "menu do jogo"
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr "juntar"
+
+msgid "going to location"
+msgstr "indo para local"
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "favos de mel"
+
+msgid "inventory"
+msgstr "inventário"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "minério de ferro"
+
+msgid "letters"
+msgstr "cartas"
+
+msgid "linux users"
+msgstr "usuários linux"
+
+#. (text of widget: loadgame)
+#. (text of widget: loadgame) Open a widget to select which game to load
+msgid "load game"
+msgstr "carregar jogo"
+
+msgid "manager"
+msgstr "gerenciador"
+
+msgid "map size"
+msgstr "tamanho do mapa"
+
+msgid "maximum"
+msgstr "máximo"
+
+msgid "meant"
+msgstr "significado"
+
+msgid "meant as"
+msgstr "concebida como"
+
+msgid "missing"
+msgstr "faltando"
+
+msgid "network port"
+msgstr "porta de rede"
+
+msgid "package"
+msgstr "pacote"
+
+msgid "package manager"
+msgstr "gerenciador de pacotes"
+
+msgid "place multiple buildings"
+msgstr "posicionar várias construções"
+
+msgid "position"
+msgstr "posição"
+
+msgid "production overview"
+msgstr "visão geral da produção"
+
+#. (text of widget: lbl_QUICKLOAD)
+msgid "quickload"
+msgstr "carregamento rápido"
+
+msgid "random"
+msgstr "aleatório"
+
+#. (text of widget: random)
+msgid "random map"
+msgstr "mapa aleatório"
+
+msgid "related"
+msgstr "relacionado"
+
+#. (text of widget: headline)
+msgid "related buildings"
+msgstr "construções relacionadas"
+
+msgid "remove"
+msgstr "remover"
+
+msgid "renderer"
+msgstr "renderizador"
+
+msgid "run out"
+msgstr "sair fora"
+
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (text of widget: running_costs_label)
+#. (text of widget: running_costs)
+msgid "running costs"
+msgstr "custos de operação"
+
+#. (text of widget: lbl_SCREENSHOT)
+msgid "screenshot"
+msgstr "captura de tela"
+
+msgid "selected units"
+msgstr "unidades selecionadas"
+
+msgid "settled"
+msgstr "colono"
+
+msgid "ship overview"
+msgstr "visão geral da embarcação"
+
+msgid "station"
+msgstr "estação"
+
+msgid "suitable"
+msgstr "adequado"
+
+msgid "system"
+msgstr "sistema"
+
+msgid "tile"
+msgstr "peça"
+
+msgid "tops"
+msgstr "úmido"
+
+msgid "tower"
+msgstr "torre"
+
+msgid "unable to find"
+msgstr "não foi possível encontrar"
+
+msgid "want to continue"
+msgstr "quer continuar"
+
+msgid "won"
+msgstr "vencido"
+
+msgid "written"
+msgstr "escrito"
+
+#~ msgid "your inhabitants"
+#~ msgstr "seus habitantes"
+
+#~ msgid "Unknown Horizons"
+#~ msgstr "Unknown Horizons"
+
+#~ msgid "your"
+#~ msgstr "seu"
+
+#~ msgid "your settlement"
+#~ msgstr "sua colônia"
+
+#~ msgid "merchants"
+#~ msgstr "mercadores"
+
+#~ msgid "aristocrats"
+#~ msgstr "aristocratas"
+
+#~ msgid "grows"
+#~ msgstr "crescimento / prosperidade"
+
+#~ msgid "issues"
+#~ msgstr "problemas"
+
+# 80%
+#~ msgid "yield"
+#~ msgstr "produção"
+
+#~ msgid "your ship"
+#~ msgstr "sua embarcação"
+
+#~ msgid "unload"
+#~ msgstr "descarregar"
+
+#~ msgid "condition"
+#~ msgstr "condição"
+
+#~ msgid "hunts"
+#~ msgstr "caças"
 
 #~ msgid "sailor"
 #~ msgstr "marinheiro"
@@ -613,6 +1301,3 @@ msgstr "valores"
 
 #~ msgid "animal"
 #~ msgstr "animal"
-
-#~ msgid "trade partner"
-#~ msgstr "parceiro comercial"
