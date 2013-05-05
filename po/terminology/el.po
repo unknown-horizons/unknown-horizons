@@ -2,19 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-05-05 21:08+0200\n"
-"Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2012-12-08 00:46+0000\n"
+"Last-Translator: karavolosmike <karavolosmike@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
-
-msgid "build"
-msgstr "χτίσιμο"
+"X-Generator: Translate Toolkit 1.9.1-pre\n"
+"X-POOTLE-MTIME: 1354927600.0\n"
 
 msgid "game"
 msgstr "παιχνίδι"
@@ -22,134 +20,204 @@ msgstr "παιχνίδι"
 msgid "building"
 msgstr "κτίριο"
 
+#. (text of widget: headline)
+msgid "build"
+msgstr "χτίσιμο"
+
+msgid "player"
+msgstr ""
+
+#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "αποικία"
-
-msgid "farm"
-msgstr "φάρμα"
 
 msgid "ship"
 msgstr "πλοίο"
 
+#. name_0 of buildings:tent
 msgid "tent"
 msgstr "σκηνή"
 
-msgid "warehouse"
-msgstr "αποθήκη"
-
-msgid "resource"
-msgstr "πόρος"
-
-msgid "produce"
-msgstr "παραγωγή"
-
-msgid "field"
-msgstr "χωράφι"
+#. name of buildings:farm
+msgid "farm"
+msgstr "φάρμα"
 
 msgid "map"
 msgstr "χάρτης"
 
+msgid "resource"
+msgstr "πόρος"
+
+#. name of buildings:warehouse
+msgid "warehouse"
+msgstr "αποθήκη"
+
+#. (helptext of widget: city_info_inhabitants)
+#. (text of widget: inhabitants)
+msgid "inhabitants"
+msgstr "κάτοικοι"
+
+msgid "change"
+msgstr "αλλαγή"
+
+msgid "unknown"
+msgstr ""
+
+msgid "produce"
+msgstr "παραγωγή"
+
+msgid "no"
+msgstr ""
+
+#. (helptext of widget: trade)
+#. (text of widget: headline)
 msgid "trade"
 msgstr "εμπόριο"
 
-msgid "inhabitants"
-msgstr "κάτοικοι"
+msgid "check"
+msgstr "έλεγχος"
+
+msgid "field"
+msgstr "χωράφι"
+
+msgid "main"
+msgstr ""
 
 msgid "buy"
 msgstr "αγορά"
 
+msgid "click"
+msgstr "κλικ"
+
+msgid "left"
+msgstr "αριστερά"
+
 msgid "overview"
 msgstr "επισκόπηση"
 
-msgid "click"
-msgstr "κλικ"
+msgid "running"
+msgstr ""
+
+msgid "square"
+msgstr ""
 
 msgid "lumberjack"
 msgstr "ξυλοκόπος"
 
-msgid "resident"
-msgstr "κάτοικος"
+msgid "unable"
+msgstr "αδυναμία εκτέλεσης"
 
+msgid "continue"
+msgstr "συνέχεια"
+
+#. name of buildings:mainsquare
 msgid "main square"
 msgstr "κεντρική πλατεία"
-
-msgid "sailors"
-msgstr "ναυτικοί"
-
-msgid "food"
-msgstr "τροφή"
-
-msgid "increment"
-msgstr "βήμα"
 
 msgid "production"
 msgstr "παραγωγή"
 
-msgid "select"
-msgstr "επιλογή"
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "sailors"
+msgstr "ναυτικοί"
 
 msgid "sell"
 msgstr "πώληση"
 
-msgid "setting"
-msgstr "ρύθμιση"
-
 msgid "storage"
 msgstr "αποθήκευση"
 
-msgid "tab"
-msgstr "καρτέλα"
+msgid "contact"
+msgstr "επικοινωνία"
 
-msgid "upgrade"
-msgstr "αναβάθμιση"
-
-msgid "your inhabitants"
-msgstr "οι κάτοικοί σας"
-
-msgid "close"
-msgstr "κλείσιμο"
-
-msgid "companies"
-msgstr "εταιρείες"
-
-msgid "island"
-msgstr "νησί"
-
-msgid "time"
-msgstr "χρόνος"
-
-msgid "unit"
-msgstr "μονάδα"
-
-msgid "balance"
-msgstr "ισορροπία"
-
-msgid "coast"
-msgstr "ακτή"
+#. name_2 of buildings:tent
+msgid "house"
+msgstr "σπίτι"
 
 msgid "menu"
 msgstr "μενού"
 
-msgid "slot"
-msgstr "υποδοχή"
+msgid "tab"
+msgstr "καρτέλα"
+
+#. (helptext of widget: okButton)
+msgid "close"
+msgstr "κλείσιμο"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "τροφή"
+
+msgid "free"
+msgstr ""
+
+#. TODO: add support for selecting difficulty levels to the GUI
+msgid "ready"
+msgstr ""
+
+msgid "setting"
+msgstr "ρύθμιση"
 
 msgid "start"
 msgstr "εκκίνηση"
 
+msgid "time"
+msgstr "χρόνος"
+
+msgid "trader"
+msgstr ""
+
+msgid "unit"
+msgstr "μονάδα"
+
+msgid "version"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "φωτιά"
+
+msgid "island"
+msgstr "νησί"
+
+msgid "select"
+msgstr "επιλογή"
+
+msgid "slot"
+msgstr "υποδοχή"
+
 msgid "stock"
 msgstr "απόθεμα"
 
-msgid "trail"
-msgstr "μονοπάτι"
+msgid "upgrade"
+msgstr "αναβάθμιση"
 
-msgid "Unknown Horizons"
-msgstr "Άγνωστοι ορίζοντες"
+msgid "coast"
+msgstr "ακτή"
 
-msgid "wool"
-msgstr "μαλλί"
+#. (text of widget: game_player_color)
+msgid "color"
+msgstr ""
 
-msgid "boards"
-msgstr "σανίδες"
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+msgid "companies"
+msgstr "εταιρείες"
+
+msgid "file"
+msgstr ""
+
+msgid "increment"
+msgstr "βήμα"
+
+msgid "key"
+msgstr "κλειδί"
+
+#. (text of widget: taxes_label)
+#. (text of widget: taxes)
+msgid "taxes"
+msgstr "φόροι"
 
 msgid "collector"
 msgstr "συλλέκτης"
@@ -157,11 +225,32 @@ msgstr "συλλέκτης"
 msgid "connection"
 msgstr "σύνδεση"
 
-msgid "fire"
-msgstr "φωτιά"
+msgid "log"
+msgstr "κορμός δέντρου"
 
-msgid "change"
-msgstr "αλλαγή"
+#. (text of widget: start_multi) Opens widget to join or create multiplayer games
+msgid "multiplayer"
+msgstr ""
+
+msgid "resident"
+msgstr "κάτοικος"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "μαλλί"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "σανίδες"
+
+msgid "built"
+msgstr "χτισμένος(-η/ο)"
+
+msgid "button"
+msgstr "κουμπί"
+
+msgid "choose"
+msgstr "επιλογή"
 
 msgid "connect"
 msgstr "σύνδεση"
@@ -169,11 +258,11 @@ msgstr "σύνδεση"
 msgid "cost"
 msgstr "κόστος"
 
-msgid "house"
-msgstr "σπίτι"
-
-msgid "log"
-msgstr "κορμός δέντρου"
+#. This is a database entry: the name of a resource.
+#. (helptext of widget: happiness_label)
+#. (helptext of widget: happiness)
+msgid "happiness"
+msgstr "ευτυχία"
 
 msgid "road"
 msgstr "δρόμος"
@@ -181,104 +270,96 @@ msgstr "δρόμος"
 msgid "save"
 msgstr "αποθήκευση"
 
-msgid "built"
-msgstr "χτισμένος(-η/ο)"
+#. name of buildings:tree
+msgid "tree"
+msgstr "δέντρο"
 
-msgid "pasture"
-msgstr "βοσκότοπος"
+msgid "amount"
+msgstr "ποσότητα"
 
 msgid "reach"
 msgstr "προσέγγιση"
 
-msgid "tree"
-msgstr "δέντρο"
-
-msgid "your"
+msgid "size"
 msgstr ""
-
-msgid "your settlement"
-msgstr "η αποικία σου"
 
 msgid "add"
 msgstr "προσθήκη"
 
-msgid "check"
-msgstr "έλεγχος"
-
-msgid "choose"
-msgstr "επιλογή"
-
-msgid "confectionery"
-msgstr "γλυκίσματα"
-
 msgid "fisher"
 msgstr "ψαράς"
 
+#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr "ελεύθερος έμπορος"
-
-msgid "happiness"
-msgstr "ευτυχία"
 
 msgid "in stock"
 msgstr "σε απόθεμα"
 
-msgid "money"
-msgstr "χρήματα"
-
-msgid "pavilion"
-msgstr "περίπτερο"
-
-msgid "running costs"
-msgstr "κόστος λειτουργίας"
-
-msgid "sugar"
-msgstr "ζάχαρη"
-
-msgid "taxes"
-msgstr "φόροι"
-
-msgid "tax"
-msgstr "φόρος"
-
-msgid "tools"
-msgstr "εργαλεία"
-
-msgid "button"
-msgstr "κουμπί"
-
-msgid "continue"
-msgstr "συνέχεια"
-
-msgid "faith"
-msgstr "πίστη"
-
-msgid "help"
-msgstr "βοήθεια"
-
-msgid "left"
-msgstr "αριστερά"
-
-msgid "level"
-msgstr "επίπεδο"
+msgid "increase"
+msgstr "αύξηση"
 
 msgid "mode"
 msgstr "λειτουργία"
 
+msgid "password"
+msgstr ""
+
+#. name of buildings:pasture
+msgid "pasture"
+msgstr "βοσκότοπος"
+
+msgid "range"
+msgstr "εύρος"
+
+msgid "signal"
+msgstr ""
+
+msgid "speed"
+msgstr "ταχύτητα"
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "ζάχαρη"
+
+msgid "access"
+msgstr "πρόσβαση"
+
+msgid "build menu"
+msgstr "μενού χτισίματος"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "γλυκίσματα"
+
+msgid "enabled"
+msgstr "ενεργοποιημένο"
+
+msgid "fetch"
+msgstr ""
+
+#. (text of widget: help)
+#. (text of widget: help) Main / in-game menu entry
+msgid "help"
+msgstr "βοήθεια"
+
+msgid "income"
+msgstr "εισόδημα"
+
+msgid "join"
+msgstr ""
+
+msgid "level"
+msgstr "επίπεδο"
+
 msgid "move"
 msgstr "μετακίνηση"
 
-msgid "pioneers"
-msgstr "πιονέροι"
+msgid "multiple"
+msgstr "πολλαπλός(-ή/ό)"
 
-msgid "citizens"
-msgstr "πολίτες"
-
-msgid "merchants"
-msgstr "έμποροι"
-
-msgid "aristocrats"
-msgstr "αριστοκράτες"
+msgid "please check"
+msgstr ""
 
 msgid "potato"
 msgstr "πατάτα"
@@ -286,47 +367,25 @@ msgstr "πατάτα"
 msgid "settler"
 msgstr "άποικος"
 
-msgid "speed"
-msgstr "ταχύτητα"
-
-msgid "stop"
-msgstr "διακοπή"
-
-msgid "storage tent"
-msgstr "σκηνή αποθήκευσης"
-
-msgid "wait"
-msgstr "αναμονή"
-
-msgid "access"
-msgstr "πρόσβαση"
-
-msgid "account"
-msgstr "λογαριασμός"
-
-msgid "amount"
-msgstr "ποσότητα"
-
-msgid "build menu"
-msgstr "μενού χτισίματος"
-
-msgid "cloth"
-msgstr "ύφασμα"
+#. (text of widget: total_score)
+msgid "total"
+msgstr "σύνολο"
 
 msgid "construction"
 msgstr "κατασκευή"
 
-msgid "decrease"
-msgstr "μείωση"
+msgid "creator"
+msgstr ""
 
-msgid "description"
-msgstr "περιγραφή"
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "πίστη"
 
-msgid "fish"
-msgstr "ψάρι"
+msgid "hold"
+msgstr "Διατηρώ"
 
-msgid "increase"
-msgstr "αύξηση"
+msgid "icon"
+msgstr ""
 
 msgid "lamb"
 msgstr "αρνί"
@@ -334,47 +393,51 @@ msgstr "αρνί"
 msgid "leave"
 msgstr "έξοδος"
 
-msgid "liquor"
-msgstr "λικέρ"
-
 msgid "location"
 msgstr "τοποθεσία"
 
-msgid "offer"
-msgstr "προσφορά"
+msgid "multiple buildings"
+msgstr ""
 
-msgid "potatoes"
-msgstr "πατάτες"
-
-msgid "range"
-msgstr "εύρος"
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "pioneers"
+msgstr "πιονέροι"
 
 msgid "reached"
 msgstr "προσεγγίστηκε"
 
 msgid "run"
+msgstr "Τρέχω"
+
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
 msgstr ""
 
 msgid "slider"
 msgstr "ρυθμιστικό"
 
-msgid "solution"
-msgstr "λύση"
-
 msgid "space"
 msgstr "χώρος"
+
+#. name_0 of buildings:storagetent
+msgid "storage tent"
+msgstr "σκηνή αποθήκευσης"
 
 msgid "target"
 msgstr "στόχος"
 
-msgid "team"
-msgstr "ομάδα"
+msgid "terminated"
+msgstr ""
 
-msgid "total"
-msgstr "σύνολο"
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "εργαλεία"
 
-msgid "unable"
-msgstr "αδυναμία εκτέλεσης"
+msgid "account"
+msgstr "λογαριασμός"
 
 msgid "active"
 msgstr "ενεργός(-ή/ό)"
@@ -388,14 +451,17 @@ msgstr "ζώα"
 msgid "Captain's log"
 msgstr "Ημερολόγιο καπετάνιου"
 
+msgid "cloth"
+msgstr "ύφασμα"
+
 msgid "construct"
 msgstr "κατασκευή"
 
-msgid "consume"
-msgstr "κατανάλωση"
+msgid "cursor"
+msgstr ""
 
-msgid "enabled"
-msgstr "ενεργοποιημένο"
+msgid "description"
+msgstr "περιγραφή"
 
 msgid "entries"
 msgstr "καταχωρίσεις"
@@ -403,38 +469,41 @@ msgstr "καταχωρίσεις"
 msgid "feature"
 msgstr "λειτουργία"
 
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "ψάρι"
+
 msgid "forest"
 msgstr "δάσος"
 
-msgid "grows"
+msgid "from time to time"
+msgstr "κατά διαστήματα"
+
+msgid "global"
 msgstr ""
 
-msgid "hold"
+msgid "grow"
 msgstr ""
 
-msgid "idle"
-msgstr "σε αδράνεια"
-
-msgid "income"
-msgstr "εισόδημα"
+#. (helptext of widget: happy_icon)
+msgid "happy"
+msgstr ""
 
 msgid "information"
 msgstr "πληροφορίες"
 
-msgid "key"
-msgstr "κλειδί"
-
-msgid "lamb wool"
-msgstr "αρνίσιο μαλλί"
-
-msgid "overview tab"
-msgstr "καρτέλα επισκόπησης"
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "λικέρ"
 
 msgid "minimap"
 msgstr "μίνι χάρτης"
 
-msgid "issues"
-msgstr "προβλήματα"
+msgid "offer"
+msgstr "προσφορά"
+
+msgid "overview tab"
+msgstr "καρτέλα επισκόπησης"
 
 msgid "plant"
 msgstr "φυτό"
@@ -442,8 +511,12 @@ msgstr "φυτό"
 msgid "play"
 msgstr "παιχνίδι"
 
-msgid "playing"
+msgid "please check your"
 msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "πατάτες"
 
 msgid "price"
 msgstr "τιμή"
@@ -451,35 +524,49 @@ msgstr "τιμή"
 msgid "read"
 msgstr "ανάγνωση"
 
-msgid "return"
-msgstr "επιστροφή"
-
-msgid "sale"
-msgstr "πώληση"
-
 msgid "screen"
 msgstr "οθόνη"
 
+msgid "service"
+msgstr "εξυπηρέτηση"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "λύση"
+
+#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "ήχος"
 
 msgid "special"
 msgstr "ειδικός(-ή/ό)"
 
+msgid "spot"
+msgstr ""
+
+#. (text of widget: headline_statistics)
+msgid "statistics"
+msgstr "στατιστικά στοιχεία"
+
 msgid "store"
 msgstr "κατάστημα"
+
+msgid "team"
+msgstr "ομάδα"
 
 msgid "tear"
 msgstr "καταστροφή"
 
-msgid "from time to time"
-msgstr "κατά διαστήματα"
-
-msgid "trading"
+msgid "time to time"
 msgstr ""
 
-msgid "village"
-msgstr "χωριό"
+msgid "trading"
+msgstr "εμπορεύοντας"
+
+msgid "unsupported"
+msgstr ""
 
 msgid "visit"
 msgstr "επίσκεψη"
@@ -487,23 +574,14 @@ msgstr "επίσκεψη"
 msgid "world"
 msgstr "κόσμος"
 
-msgid "yield"
-msgstr "απόδοση"
+msgid "wrong"
+msgstr ""
 
-msgid "your ship"
-msgstr "το πλοίο σου"
+msgid "bar"
+msgstr ""
 
-msgid "back"
-msgstr "πίσω"
-
-msgid "build settlement"
-msgstr "χτίσιμο αποικίας"
-
-msgid "load"
-msgstr "φόρτωση"
-
-msgid "unload"
-msgstr "εκφόρτωση"
+msgid "bug"
+msgstr ""
 
 msgid "command"
 msgstr "εντολή"
@@ -511,74 +589,693 @@ msgstr "εντολή"
 msgid "completed"
 msgstr "ολοκληρώθηκε"
 
-msgid "condition"
-msgstr "κατάσταση"
+msgid "forum"
+msgstr ""
 
-msgid "contact"
-msgstr "επικοινωνία"
-
-msgid "empty"
-msgstr "κενός(-ή/ό)"
-
-msgid "ensure"
-msgstr "διασφάλιση"
-
-msgid "fulfill"
-msgstr "εκπλήρωση"
-
-msgid "graphics"
-msgstr "γραφικά"
+msgid "happen"
+msgstr ""
 
 msgid "harvest"
 msgstr "συγκομιδή"
 
-msgid "hunts"
-msgstr "κυνήγι"
+msgid "in range"
+msgstr ""
 
-msgid "multiple"
-msgstr "πολλαπλός(-ή/ό)"
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "αρνίσιο μαλλί"
 
-msgid "potato field"
-msgstr "χωράφι πατάτας"
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "παίζοντας"
+
+msgid "produced"
+msgstr ""
+
+msgid "report"
+msgstr ""
+
+#. (text of widget: sell_income_label)
+msgid "sale"
+msgstr "πώληση"
 
 msgid "school"
 msgstr "σχολείο"
 
-msgid "seed"
-msgstr "σπόρος"
-
-msgid "service"
-msgstr "εξυπηρέτηση"
-
-msgid "sheep"
-msgstr "πρόβατο"
-
-msgid "signal fire"
-msgstr "σήμα φωτιάς"
-
-msgid "statistics"
-msgstr "στατιστικά στοιχεία"
-
-msgid "clay"
-msgstr "άργιλος"
-
-msgid "iron"
-msgstr "σίδηρος"
-
-msgid "ore"
-msgstr "μετάλλευμα"
-
-msgid "tobacco"
-msgstr "καπνός"
-
-msgid "charcoal"
-msgstr "κάρβουνο"
-
-msgid "sugar field"
-msgstr "χωράφι ζάχαρης"
+msgid "started"
+msgstr ""
 
 msgid "temporarily"
 msgstr "προσωρινά"
 
+msgid "trade with"
+msgstr ""
+
 msgid "values"
 msgstr "τιμές"
+
+msgid "wheel"
+msgstr ""
+
+#. (helptext of widget: avg_icon)
+msgid "satisfied"
+msgstr ""
+
+#. (text of widget: balance)
+msgid "balance"
+msgstr "ισορροπία"
+
+msgid "load"
+msgstr "φόρτωση"
+
+#. name_0 of buildings:trail
+msgid "trail"
+msgstr "μονοπάτι"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "σίδηρος"
+
+msgid "tobacco"
+msgstr "καπνός"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "άργιλος"
+
+#. (text of widget: money_score)
+msgid "money"
+msgstr "χρήματα"
+
+#. name of buildings:pavilion
+msgid "pavilion"
+msgstr "περίπτερο"
+
+msgid "tax"
+msgstr "φόρος"
+
+#. headline of gui_buildmenu:build_menu_per_type
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "διακοπή"
+
+msgid "wait"
+msgstr "αναμονή"
+
+msgid "decrease"
+msgstr "μείωση"
+
+msgid "ore"
+msgstr "μετάλλευμα"
+
+#. (helptext of widget: okButton)
+#. (helptext of widget: cancelButton)
+msgid "return"
+msgstr "επιστροφή"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "κατανάλωση"
+
+msgid "idle"
+msgstr "σε αδράνεια"
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr ""
+
+msgid "village"
+msgstr "χωριό"
+
+msgid "yields"
+msgstr ""
+
+msgid "back"
+msgstr "πίσω"
+
+#. (helptext of widget: found_settlement)
+msgid "build settlement"
+msgstr "χτίσιμο αποικίας"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "κάρβουνο"
+
+msgid "empty"
+msgstr "κενός(-ή/ό)"
+
+msgid "existing"
+msgstr ""
+
+msgid "fulfill"
+msgstr "εκπλήρωση"
+
+#. (text of widget: headline_graphics)
+msgid "graphics"
+msgstr "γραφικά"
+
+msgid "hunt"
+msgstr ""
+
+#. name_0 of buildings:lumberjackcamp
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+#. name of buildings:potatofield
+msgid "potato field"
+msgstr "χωράφι πατάτας"
+
+msgid "seed"
+msgstr "σπόρος"
+
+msgid "send"
+msgstr ""
+
+msgid "sheep"
+msgstr "πρόβατο"
+
+#. name of buildings:signalfire
+msgid "signal fire"
+msgstr "σήμα φωτιάς"
+
+#. name of buildings:sugarfield
+msgid "sugar field"
+msgstr "χωράφι ζάχαρης"
+
+#. There was a problem during the 'save game' procedure.
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+#. (text of widget: headline_network)
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr ""
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+#. (text of widget: headline_mouse)
+msgid "mouse"
+msgstr ""
+
+msgid "partner"
+msgstr ""
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+#. (text of widget: lbl_QUICKSAVE)
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr ""
+
+msgid "weapon"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr ""
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+#. (text of widget: scenario)
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr ""
+
+#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
+msgid "pause"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+#. (text of widget: quit) Completely shut down UH
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+#. (helptext of widget: okButton)
+msgid "apply"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr ""
+
+#. (text of widget: headline)
+#. (text of widget: headline_chat)
+#. (text of widget: lbl_CHAT)
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+#. (helptext of widget: diplomacyButton)
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+#. (text of widget: health)
+msgid "health"
+msgstr ""
+
+#. (text of widget: land_score)
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+#. (helptext of widget: player_name)
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+#. (text of widget: reset_mouse_sensitivity)
+msgid "reset to default"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr ""
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "trade partner"
+msgstr ""
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:alvearies
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+#. name of buildings:boatbuilder
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "citizens"
+msgstr "πολίτες"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:claydeposit
+msgid "clay deposit"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+#. name of buildings:doctor
+msgid "doctor"
+msgstr ""
+
+msgid "drag"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "education"
+msgstr ""
+
+msgid "ensure"
+msgstr "διασφάλιση"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+#. (text of widget: loadgame)
+#. (text of widget: loadgame) Open a widget to select which game to load
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+#. (text of widget: lbl_QUICKLOAD)
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+#. (text of widget: random)
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+#. (text of widget: headline)
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (text of widget: running_costs_label)
+#. (text of widget: running_costs)
+msgid "running costs"
+msgstr "κόστος λειτουργίας"
+
+#. (text of widget: lbl_SCREENSHOT)
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr ""
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr ""
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+#~ msgid "your inhabitants"
+#~ msgstr "οι κάτοικοί σας"
+
+#~ msgid "Unknown Horizons"
+#~ msgstr "Άγνωστοι ορίζοντες"
+
+#~ msgid "your settlement"
+#~ msgstr "η αποικία σου"
+
+#~ msgid "merchants"
+#~ msgstr "έμποροι"
+
+#~ msgid "aristocrats"
+#~ msgstr "αριστοκράτες"
+
+#~ msgid "grows"
+#~ msgstr "Αναπτύσσεται"
+
+#~ msgid "issues"
+#~ msgstr "προβλήματα"
+
+#~ msgid "yield"
+#~ msgstr "απόδοση"
+
+#~ msgid "your ship"
+#~ msgstr "το πλοίο σου"
+
+#~ msgid "unload"
+#~ msgstr "εκφόρτωση"
+
+#~ msgid "condition"
+#~ msgstr "κατάσταση"
+
+#~ msgid "hunts"
+#~ msgstr "κυνήγι"
