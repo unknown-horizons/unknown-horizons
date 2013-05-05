@@ -2,19 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-05-08 08:51+0200\n"
-"Last-Translator: knutas <magnusknutas@gmail.com>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:28+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
-
-msgid "build"
-msgstr "bygg"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367756909.0\n"
 
 msgid "game"
 msgstr "spel"
@@ -22,146 +20,247 @@ msgstr "spel"
 msgid "building"
 msgstr "byggnad"
 
+#. (text of widget: headline)
+msgid "build"
+msgstr "bygg"
+
+msgid "player"
+msgstr "spelare"
+
+#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "bosättning"
-
-msgid "farm"
-msgstr "gård"
 
 msgid "ship"
 msgstr "fartyg"
 
+#. name_0 of buildings:tent
 msgid "tent"
 msgstr "tält"
 
+#. name of buildings:farm
+msgid "farm"
+msgstr "gård"
+
+#
+msgid "map"
+msgstr "karta"
+
+msgid "resource"
+msgstr "resurs"
+
+#. name of buildings:warehouse
 msgid "warehouse"
 msgstr "lager"
 
-msgid "resource"
-msgstr "vara / råvara / resurs"
+#. (helptext of widget: city_info_inhabitants)
+#. (text of widget: inhabitants)
+msgid "inhabitants"
+msgstr "invånare"
+
+msgid "change"
+msgstr "förändring"
+
+msgid "unknown"
+msgstr "okänd"
 
 msgid "produce"
-msgstr "tillverka / producera"
+msgstr "producera / tillverka"
+
+msgid "no"
+msgstr "nej"
+
+#. (helptext of widget: trade)
+#. (text of widget: headline)
+msgid "trade"
+msgstr "handel"
+
+msgid "check"
+msgstr "kontrollera"
 
 msgid "field"
 msgstr "fält"
 
-msgid "map"
-msgstr "karta"
-
-msgid "trade"
-msgstr "handel"
-
-msgid "inhabitants"
-msgstr "invånare"
+msgid "main"
+msgstr "huvudsakliga"
 
 msgid "buy"
 msgstr "köp"
 
-msgid "overview"
-msgstr "översikt"
-
 msgid "click"
 msgstr "klicka"
 
+msgid "left"
+msgstr "vänster"
+
+msgid "overview"
+msgstr "översikt"
+
+msgid "running"
+msgstr "springer"
+
+msgid "square"
+msgstr "kvadrat"
+
+# lumberjack och lumberjacks camp syftar till samma byggnad/yrke
 msgid "lumberjack"
 msgstr "skogshuggare"
 
-msgid "resident"
-msgstr "boende"
+msgid "unable"
+msgstr "kan inte"
 
+#
+msgid "continue"
+msgstr "fortsätt"
+
+#. name of buildings:mainsquare
 msgid "main square"
 msgstr "torg"
-
-msgid "sailors"
-msgstr "sjömän"
-
-msgid "food"
-msgstr "föda"
-
-msgid "increment"
-msgstr "tillväxtsteg / tillväxtgrad"
 
 msgid "production"
 msgstr "produktion"
 
-msgid "select"
-msgstr "välj"
+# 85%
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "sailors"
+msgstr "sjömän"
 
 msgid "sell"
 msgstr "sälj"
 
-msgid "setting"
-msgstr "inställning"
-
 msgid "storage"
 msgstr "lager"
 
-msgid "tab"
-msgstr "flik"
+msgid "contact"
+msgstr "kontakt"
 
-msgid "upgrade"
-msgstr "uppgradering"
-
-msgid "your inhabitants"
-msgstr "invånare"
-
-msgid "close"
-msgstr "stäng"
-
-msgid "companies"
-msgstr "företag"
-
-msgid "island"
-msgstr "ö"
-
-msgid "time"
-msgstr "tid"
-
-msgid "unit"
-msgstr "enhet"
-
-msgid "balance"
-msgstr "balans"
-
-msgid "coast"
-msgstr "kust"
+#. name_2 of buildings:tent
+msgid "house"
+msgstr "hus"
 
 msgid "menu"
 msgstr "meny"
 
-msgid "slot"
-msgstr "plats"
+msgid "tab"
+msgstr "flik"
 
+#. (helptext of widget: okButton)
+msgid "close"
+msgstr "stäng"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "mat"
+
+msgid "free"
+msgstr "fri"
+
+# 75%
+#. TODO: add support for selecting difficulty levels to the GUI
+msgid "ready"
+msgstr "redo"
+
+msgid "setting"
+msgstr "inställning"
+
+#, fuzzy
 msgid "start"
 msgstr "starta"
+
+msgid "time"
+msgstr "tid"
+
+msgid "trader"
+msgstr "köpman"
+
+msgid "unit"
+msgstr "enhet"
+
+msgid "version"
+msgstr "version"
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "eld"
+
+msgid "island"
+msgstr "ö"
+
+msgid "select"
+msgstr "välj"
+
+msgid "slot"
+msgstr "plats"
 
 msgid "stock"
 msgstr "lager"
 
-msgid "trail"
-msgstr "stig"
+msgid "upgrade"
+msgstr "uppgradera / uppgradering"
 
-msgid "Unknown Horizons"
-msgstr "Okänd Horizont"
+msgid "coast"
+msgstr "kust"
 
-msgid "wool"
-msgstr "ull"
+#. (text of widget: game_player_color)
+msgid "color"
+msgstr "färg"
 
-msgid "boards"
-msgstr "brädor"
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+msgid "companies"
+msgstr "företag"
 
+msgid "file"
+msgstr "fil"
+
+msgid "increment"
+msgstr "tillväxtgrad"
+
+# (keyboard)
+#
+msgid "key"
+msgstr "nyckel / tangent"
+
+#. (text of widget: taxes_label)
+#. (text of widget: taxes)
+msgid "taxes"
+msgstr "skatter"
+
+# syftar i spelet på de som hämtar saker från företagen
 msgid "collector"
 msgstr "insamlare"
 
 msgid "connection"
 msgstr "anslutning"
 
-msgid "fire"
-msgstr "eld / brand"
+msgid "log"
+msgstr "logg"
 
-msgid "change"
-msgstr "förändring"
+#. (text of widget: start_multi) Opens widget to join or create multiplayer games
+msgid "multiplayer"
+msgstr "multiplayer"
+
+# 88%
+msgid "resident"
+msgstr "boende"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "ull / ylle"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "brädor"
+
+msgid "built"
+msgstr "byggd / byggt"
+
+msgid "button"
+msgstr "knapp"
+
+msgid "choose"
+msgstr "välj / välja"
 
 msgid "connect"
 msgstr "anslut"
@@ -169,119 +268,115 @@ msgstr "anslut"
 msgid "cost"
 msgstr "kostnad"
 
-msgid "house"
-msgstr "hus"
-
-msgid "log"
-msgstr "logg"
+#. This is a database entry: the name of a resource.
+#. (helptext of widget: happiness_label)
+#. (helptext of widget: happiness)
+msgid "happiness"
+msgstr "lycka"
 
 msgid "road"
 msgstr "väg"
 
+#
 msgid "save"
 msgstr "spara"
 
-msgid "built"
-msgstr "byggd / byggt"
-
-msgid "pasture"
-msgstr "betesmark"
-
-msgid "reach"
-msgstr "nå / räckhåll"
-
+#. name of buildings:tree
 msgid "tree"
 msgstr "träd"
 
-msgid "your"
-msgstr "din"
+msgid "amount"
+msgstr "mängd"
 
-msgid "your settlement"
-msgstr "din bosättning"
+# Beroende på om det syftar till verb eller substantiv
+msgid "reach"
+msgstr "nå / räckhåll"
+
+msgid "size"
+msgstr "storlek"
 
 msgid "add"
-msgstr "lägga till"
-
-msgid "check"
-msgstr "kontrollera / bocka av"
-
-msgid "choose"
-msgstr "välj / välja"
-
-msgid "confectionery"
-msgstr "konfektyr"
+msgstr "lägga till / addera"
 
 msgid "fisher"
 msgstr "fiskare"
 
+# syftar i spelet på fartyget som man kan köpa/sälja av.
+#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
-msgstr "fria handelsfaryget"
-
-msgid "happiness"
-msgstr "lycka"
+msgstr "fritt handelsfartyg"
 
 msgid "in stock"
 msgstr "i lager"
 
-msgid "money"
-msgstr "pengar"
+# 75%
+msgid "increase"
+msgstr "öka"
 
-msgid "pavilion"
-msgstr "kapell"
+# 75%
+msgid "mode"
+msgstr "läge"
 
-msgid "running costs"
-msgstr "driftskostnader"
+msgid "password"
+msgstr "lösenord"
 
+#. name of buildings:pasture
+msgid "pasture"
+msgstr "betesmark"
+
+msgid "range"
+msgstr "räckvidd / intervall"
+
+msgid "signal"
+msgstr "signal"
+
+# 80%
+msgid "speed"
+msgstr "hastighet / fart"
+
+#. This is a database entry: the name of a resource.
 msgid "sugar"
 msgstr "socker"
 
-msgid "taxes"
-msgstr "skatter"
+msgid "access"
+msgstr "åtkomst"
 
-msgid "tax"
-msgstr "skatt"
+msgid "build menu"
+msgstr "byggmeny"
 
-msgid "tools"
-msgstr "verktyg"
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "konfektyr"
 
-msgid "button"
-msgstr "knapp"
+msgid "enabled"
+msgstr "aktiverad"
 
-msgid "continue"
-msgstr "fortsätt / fortsätta"
+msgid "fetch"
+msgstr "hämta"
 
-msgid "faith"
-msgstr "tro / religion"
-
+#. (text of widget: help)
+#. (text of widget: help) Main / in-game menu entry
 msgid "help"
 msgstr "hjälp"
 
-msgid "left"
-msgstr "över / vänster"
+msgid "income"
+msgstr "inkomst"
+
+msgid "join"
+msgstr "hämta"
 
 msgid "level"
 msgstr "nivå / plan"
 
-msgid "mode"
-msgstr "läge"
-
+#
 msgid "move"
-msgstr "flytta"
+msgstr "flytta / dra"
 
-msgid "pioneers"
-msgstr "pionjärer"
+msgid "multiple"
+msgstr "flera"
 
-#, fuzzy
-msgid "citizens"
-msgstr "medborgare"
-
-#, fuzzy
-msgid "merchants"
-msgstr "handelsman"
-
-#, fuzzy
-msgid "aristocrats"
-msgstr "aristokrat"
+msgid "please check"
+msgstr "kontrollera"
 
 msgid "potato"
 msgstr "potatis"
@@ -289,47 +384,26 @@ msgstr "potatis"
 msgid "settler"
 msgstr "nybyggare"
 
-msgid "speed"
-msgstr "fart"
-
-msgid "stop"
-msgstr "stopp / stoppa"
-
-msgid "storage tent"
-msgstr "lagertält"
-
-msgid "wait"
-msgstr "vänta"
-
-msgid "access"
-msgstr "åtkomst"
-
-msgid "account"
-msgstr "konto"
-
-msgid "amount"
-msgstr "mängd"
-
-msgid "build menu"
-msgstr "byggmenyn"
-
-msgid "cloth"
-msgstr "tyg"
+#. (text of widget: total_score)
+msgid "total"
+msgstr "totalt / summa"
 
 msgid "construction"
 msgstr "byggnad"
 
-msgid "decrease"
-msgstr "minska"
+msgid "creator"
+msgstr "skapare"
 
-msgid "description"
-msgstr "beskrivning"
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "tro / religion"
 
-msgid "fish"
-msgstr "fisk"
+msgid "hold"
+msgstr "håll / hålla"
 
-msgid "increase"
-msgstr "öka"
+#, fuzzy
+msgid "icon"
+msgstr "ikon"
 
 msgid "lamb"
 msgstr "lamm"
@@ -337,48 +411,54 @@ msgstr "lamm"
 msgid "leave"
 msgstr "lämna"
 
-msgid "liquor"
-msgstr "sprit"
-
 msgid "location"
 msgstr "plats"
 
-msgid "offer"
-msgstr "erbjuda"
+msgid "multiple buildings"
+msgstr "flera byggnader"
 
-#, fuzzy
-msgid "potatoes"
-msgstr "potatis"
-
-msgid "range"
-msgstr "räckvidd"
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "pioneers"
+msgstr "pionjärer"
 
 msgid "reached"
 msgstr "uppnått / /uppnådd / nått / nådd"
 
+#
 msgid "run"
 msgstr "kör / springa"
+
+msgid "session"
+msgstr "session"
+
+#
+msgid "SHIFT"
+msgstr "SHIFT"
 
 msgid "slider"
 msgstr "reglage"
 
-msgid "solution"
-msgstr "lösning"
-
 msgid "space"
-msgstr "plats"
+msgstr "blanksteg"
+
+#. name_0 of buildings:storagetent
+msgid "storage tent"
+msgstr "lagertält"
 
 msgid "target"
 msgstr "mål"
 
-msgid "team"
-msgstr "lag"
+msgid "terminated"
+msgstr "avslutad"
 
-msgid "total"
-msgstr "totalt"
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "verktyg"
 
-msgid "unable"
-msgstr "inte"
+msgid "account"
+msgstr "konto"
 
 msgid "active"
 msgstr "aktiv / verksam"
@@ -386,261 +466,913 @@ msgstr "aktiv / verksam"
 msgid "afford"
 msgstr "råd"
 
+# 85%
 #, fuzzy
 msgid "animals"
 msgstr "djur"
 
+#
 msgid "Captain's log"
 msgstr "Kaptenens loggbok"
 
+msgid "cloth"
+msgstr "tyg"
+
+# 75%
 #, fuzzy
 msgid "construct"
 msgstr "byggnad"
 
-msgid "consume"
-msgstr "konsumera / förbruka"
+msgid "cursor"
+msgstr "markör"
 
-msgid "enabled"
-msgstr "aktiverad"
+#
+msgid "description"
+msgstr "beskrivning"
 
 msgid "entries"
-msgstr ""
+msgstr "poster"
 
 msgid "feature"
 msgstr "funktion / kännetecken"
 
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "fisk"
+
 msgid "forest"
 msgstr "skog"
-
-#, fuzzy
-msgid "grows"
-msgstr "växa / öka / odla"
-
-msgid "hold"
-msgstr "håll / hålla"
-
-msgid "idle"
-msgstr ""
-
-msgid "income"
-msgstr "inkomst"
-
-msgid "information"
-msgstr "information"
-
-msgid "key"
-msgstr "nyckel / tangent"
-
-msgid "lamb wool"
-msgstr "lammull"
-
-msgid "overview tab"
-msgstr ""
-
-msgid "minimap"
-msgstr "världskarta"
-
-msgid "issues"
-msgstr "problem / frågor"
-
-msgid "plant"
-msgstr ""
-
-msgid "play"
-msgstr "spela"
-
-msgid "playing"
-msgstr "spelar"
-
-msgid "price"
-msgstr ""
-
-#, fuzzy
-msgid "read"
-msgstr "röd"
-
-msgid "return"
-msgstr "tillbaka / återgå / återlämna"
-
-msgid "sale"
-msgstr "försäljning / rea"
-
-msgid "screen"
-msgstr "skärm"
-
-msgid "sound"
-msgstr "ljud"
-
-msgid "special"
-msgstr ""
-
-msgid "store"
-msgstr ""
-
-#, fuzzy
-msgid "tear"
-msgstr "lag"
 
 msgid "from time to time"
 msgstr "då och då"
 
+msgid "global"
+msgstr "global"
+
+msgid "grow"
+msgstr "växa / öka / odla"
+
+#. (helptext of widget: happy_icon)
+msgid "happy"
+msgstr "lycklig"
+
+#
+msgid "information"
+msgstr "information"
+
+#
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "sprit"
+
+msgid "minimap"
+msgstr "världskarta"
+
+msgid "offer"
+msgstr "erbjuda"
+
+# English "tab" = Swedish "flik"
+msgid "overview tab"
+msgstr "översiktsflik"
+
+msgid "plant"
+msgstr "växt / plantera"
+
+msgid "play"
+msgstr "spela"
+
+msgid "please check your"
+msgstr "kontrollera dina"
+
+# 75%
+#. This is a database entry: the name of a resource.
+#, fuzzy
+msgid "potatoes"
+msgstr "potatis"
+
+msgid "price"
+msgstr "pris"
+
+# 75%
+#, fuzzy
+msgid "read"
+msgstr "röd"
+
+#
+msgid "screen"
+msgstr "skärm"
+
+#
+msgid "service"
+msgstr "service / tjänst"
+
+msgid "short"
+msgstr "kort"
+
+msgid "solution"
+msgstr "lösning"
+
+#
+#. (text of widget: headline_sound)
+msgid "sound"
+msgstr "ljud"
+
+msgid "special"
+msgstr "speciell"
+
+#, fuzzy
+msgid "spot"
+msgstr "plats"
+
+#. (text of widget: headline_statistics)
+msgid "statistics"
+msgstr "statistik"
+
+msgid "store"
+msgstr "lagra / butik"
+
+msgid "team"
+msgstr "lag / grupp"
+
+# 75%
+#, fuzzy
+msgid "tear"
+msgstr "lag"
+
+msgid "time to time"
+msgstr "tid till annan tid"
+
 msgid "trading"
 msgstr "handel"
 
-msgid "village"
-msgstr "by"
+msgid "unsupported"
+msgstr "stöds inte"
 
 msgid "visit"
 msgstr "besök / besöka"
 
 msgid "world"
-msgstr ""
+msgstr "värld"
 
-#, fuzzy
-msgid "yield"
-msgstr "ger"
+msgid "wrong"
+msgstr "fel"
 
-msgid "your ship"
-msgstr ""
+msgid "bar"
+msgstr "bar"
 
-msgid "back"
-msgstr "tillbaka / bakåt"
-
-msgid "build settlement"
-msgstr "bygg bosättning"
-
-msgid "load"
-msgstr ""
-
-msgid "unload"
-msgstr ""
+msgid "bug"
+msgstr "bugg"
 
 msgid "command"
-msgstr ""
+msgstr "kommando"
 
 msgid "completed"
-msgstr ""
+msgstr "färdigt"
 
-msgid "condition"
-msgstr "villkor / skick / tillstånd"
+#
+msgid "forum"
+msgstr "forum"
 
-msgid "contact"
-msgstr "kontakt / kontakta"
-
-msgid "empty"
-msgstr ""
-
-msgid "ensure"
-msgstr ""
-
-msgid "fulfill"
-msgstr "uppfylla"
-
-msgid "graphics"
-msgstr "grafik"
+msgid "happen"
+msgstr "hända"
 
 msgid "harvest"
-msgstr ""
+msgstr "skörd / skörda"
 
-#, fuzzy
-msgid "hunts"
-msgstr "jaga / jakt / jakten"
+msgid "in range"
+msgstr "inom räckvidd"
 
-msgid "multiple"
-msgstr "flera"
+#
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "lammull"
 
-msgid "potato field"
-msgstr "potatisfält"
+msgid "left the game"
+msgstr "lämnade spelet"
 
+msgid "lot of boards"
+msgstr "enhet brädor"
+
+msgid "marketplace"
+msgstr "marknad"
+
+msgid "moment"
+msgstr "ögonblick"
+
+msgid "playing"
+msgstr "spelar"
+
+# 87%
+msgid "produced"
+msgstr "tillverkad / producerad"
+
+msgid "report"
+msgstr "rapport"
+
+# 75%
+#. (text of widget: sell_income_label)
+msgid "sale"
+msgstr "försäljning / rea"
+
+#
 msgid "school"
 msgstr "skola"
 
-msgid "seed"
-msgstr "seeder / distributör? / frö / säd"
-
-msgid "service"
-msgstr "service / tjänst"
-
-msgid "sheep"
-msgstr "får"
-
-msgid "signal fire"
-msgstr "signaleld"
-
-msgid "statistics"
-msgstr ""
-
-msgid "clay"
-msgstr "lera"
-
-msgid "iron"
-msgstr "järn"
-
-msgid "ore"
-msgstr "malm"
-
-msgid "tobacco"
-msgstr "tobak"
-
-msgid "charcoal"
-msgstr "träkol"
-
-msgid "sugar field"
-msgstr "sockerfält"
+msgid "started"
+msgstr "startad"
 
 msgid "temporarily"
 msgstr "tillfälligt"
 
+msgid "trade with"
+msgstr "handla med"
+
 msgid "values"
+msgstr "värden"
+
+msgid "wheel"
+msgstr "hjul"
+
+#. (helptext of widget: avg_icon)
+msgid "satisfied"
+msgstr "nöjd"
+
+#. (text of widget: balance)
+msgid "balance"
+msgstr "balans / saldo"
+
+# load as in "loading map" or load as in ship load? Or even "load ship"?
+msgid "load"
+msgstr "last / lasta"
+
+#. name_0 of buildings:trail
+msgid "trail"
+msgstr "stig"
+
+msgid "default"
+msgstr "standard"
+
+msgid "iron"
+msgstr "järn"
+
+msgid "tobacco"
+msgstr "tobak"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "lera"
+
+#. (text of widget: money_score)
+msgid "money"
+msgstr "pengar"
+
+# för kyrkobyggnad
+#. name of buildings:pavilion
+msgid "pavilion"
+msgstr "kapell"
+
+msgid "tax"
+msgstr "skatt"
+
+#. headline of gui_buildmenu:build_menu_per_type
+msgid "residential"
+msgstr "bostadsområde"
+
+msgid "stop"
+msgstr "stopp / stoppa"
+
+msgid "wait"
+msgstr "vänta"
+
+msgid "decrease"
+msgstr "minska"
+
+msgid "ore"
+msgstr "malm"
+
+#. (helptext of widget: okButton)
+#. (helptext of widget: cancelButton)
+msgid "return"
+msgstr "tillbaka / återgå / återlämna"
+
+msgid "savegame"
+msgstr "sparat spel"
+
+msgid "consume"
+msgstr "konsumera / förbruka"
+
+msgid "idle"
+msgstr "inaktiv / overksam"
+
+msgid "lower"
+msgstr "lägre"
+
+#, fuzzy
+msgid "saved"
+msgstr "sparad"
+
+msgid "village"
+msgstr "by"
+
+msgid "yields"
+msgstr "ger"
+
+msgid "back"
+msgstr "tillbaka / bakåt"
+
+#
+#. (helptext of widget: found_settlement)
+msgid "build settlement"
+msgstr "bygg bosättning"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "träkol"
+
+msgid "empty"
+msgstr "tom"
+
+msgid "existing"
 msgstr ""
 
+#
+msgid "fulfill"
+msgstr "uppfylla"
+
+#
+#. (text of widget: headline_graphics)
+msgid "graphics"
+msgstr "grafik"
+
+msgid "hunt"
+msgstr "jaga / jakt / jakten"
+
+#. name_0 of buildings:lumberjackcamp
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+#
+#. name of buildings:potatofield
+msgid "potato field"
+msgstr "potatisfält"
+
+msgid "seed"
+msgstr "seeder / distributör? / frö / säd"
+
+#, fuzzy
+msgid "send"
+msgstr "seeder / distributör? / frö / säd"
+
+#
+msgid "sheep"
+msgstr "får"
+
+# Signaleld är en bettydligt bättre översättning än signalbrand då det i spelet syftar på byggnaden.
+#. name of buildings:signalfire
+msgid "signal fire"
+msgstr "signaleld"
+
+#
+#. name of buildings:sugarfield
+msgid "sugar field"
+msgstr "sockerfält"
+
+#. There was a problem during the 'save game' procedure.
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+#. (text of widget: headline_network)
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+#, fuzzy
+msgid "selected"
+msgstr "välj"
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+#. (text of widget: headline_mouse)
+#, fuzzy
+msgid "mouse"
+msgstr "hus"
+
+msgid "partner"
+msgstr "partner / delägare"
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+#. (text of widget: lbl_QUICKSAVE)
+msgid "quicksave"
+msgstr ""
+
+#, fuzzy
+msgid "stone"
+msgstr "lagra / butik"
+
+msgid "weapon"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "boskap / nötkreatur"
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+#. (text of widget: scenario)
+msgid "scenario"
+msgstr ""
+
+#, fuzzy
+msgid "spice"
+msgstr "plats"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr "hittade"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "örter"
+
+#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
+msgid "pause"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+#. (text of widget: quit) Completely shut down UH
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+#. (helptext of widget: okButton)
+msgid "apply"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr ""
+
+#. (text of widget: headline)
+#. (text of widget: headline_chat)
+#. (text of widget: lbl_CHAT)
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+#. (helptext of widget: diplomacyButton)
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+#. (text of widget: health)
+msgid "health"
+msgstr ""
+
+#. (text of widget: land_score)
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+#. (helptext of widget: player_name)
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+#. (text of widget: reset_mouse_sensitivity)
+msgid "reset to default"
+msgstr ""
+
+# 75%
+#. This is a database entry: the name of a resource.
+#, fuzzy
+msgid "salt"
+msgstr "försäljning / rea"
+
+msgid "saved games"
+msgstr ""
+
+#, fuzzy
+msgid "source"
+msgstr "vara / råvara / resurs"
+
+#
+msgid "trade partner"
+msgstr "handelspartner"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:alvearies
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+#. name of buildings:boatbuilder
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+#, fuzzy
+msgid "citizens"
+msgstr "medborgare"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:claydeposit
+msgid "clay deposit"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+#. name of buildings:doctor
+msgid "doctor"
+msgstr "läkare"
+
+msgid "drag"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "education"
+msgstr "utbildning"
+
+msgid "ensure"
+msgstr "säkra / försäkra"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "inventarie"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+#. (text of widget: loadgame)
+#. (text of widget: loadgame) Open a widget to select which game to load
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+#. (text of widget: lbl_QUICKLOAD)
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+#. (text of widget: random)
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+#. (text of widget: headline)
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (text of widget: running_costs_label)
+#. (text of widget: running_costs)
+msgid "running costs"
+msgstr "driftskostnader"
+
+#. (text of widget: lbl_SCREENSHOT)
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+#, fuzzy
+msgid "settled"
+msgstr "nybyggare"
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr "station"
+
+msgid "suitable"
+msgstr "passande"
+
+msgid "system"
+msgstr "system"
+
+#, fuzzy
+msgid "tile"
+msgstr "tid"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr "torn"
+
+msgid "unable to find"
+msgstr "kan inte hitta"
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr "vann"
+
+msgid "written"
+msgstr "skrivet"
+
+#~ msgid "your inhabitants"
+#~ msgstr "invånare"
+
+#~ msgid "Unknown Horizons"
+#~ msgstr "Okänd Horizont"
+
+#~ msgid "your"
+#~ msgstr "din"
+
+#~ msgid "your settlement"
+#~ msgstr "din bosättning"
+
+# 88%
+#, fuzzy
+#~ msgid "merchants"
+#~ msgstr "handelsman"
+
+# 90%
+#, fuzzy
+#~ msgid "aristocrats"
+#~ msgstr "aristokrat"
+
+# 80%
+#, fuzzy
+#~ msgid "grows"
+#~ msgstr "växa / öka / odla"
+
+#~ msgid "issues"
+#~ msgstr "problem / frågor"
+
+# 83%
+#, fuzzy
+#~ msgid "yield"
+#~ msgstr "ger"
+
+#~ msgid "condition"
+#~ msgstr "villkor / skick / tillstånd"
+
+# 80%
+#, fuzzy
+#~ msgid "hunts"
+#~ msgstr "jaga / jakt / jakten"
+
+# Otydlig. Ursprungliga översättning från tyskans "kontor".
 #~ msgid "branch office"
 #~ msgstr "handelskontor"
 
-#~ msgid "main"
-#~ msgstr "huvudsakliga"
-
-#~ msgid "unknown"
-#~ msgstr "okänd"
-
-#~ msgid "free"
-#~ msgstr "fri"
-
-#~ msgid "trader"
-#~ msgstr "köpman"
-
-#~ msgid "version"
-#~ msgstr "version"
-
-#~ msgid "signal"
-#~ msgstr "signal"
-
-#~ msgid "found"
-#~ msgstr "hittade"
-
+#
 #~ msgid "raw"
 #~ msgstr "rå"
 
-#~ msgid "running"
-#~ msgstr "kör / springer"
-
-#~ msgid "inventory"
-#~ msgstr "inventarie"
-
+# 80%
 #~ msgid "moved"
 #~ msgstr "flyttad / flyttat"
-
-#~ msgid "produced"
-#~ msgstr "tillverkad / producerad"
 
 #~ msgid "hunter"
 #~ msgstr "jägare"
 
+#
 #~ msgid "market"
 #~ msgstr "marknad"
-
-#~ msgid "partner"
-#~ msgstr "partner / delägare"
 
 #~ msgid "sailor"
 #~ msgstr "sjöman"
@@ -651,6 +1383,7 @@ msgstr ""
 #~ msgid "citizen"
 #~ msgstr "medborgare"
 
+# merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att lösa detta.
 #~ msgid "merchant"
 #~ msgstr "handelsman"
 
@@ -672,59 +1405,41 @@ msgstr ""
 #~ msgid "animal"
 #~ msgstr "djur"
 
+#
 #~ msgid "fisherman"
 #~ msgstr "fiskare"
 
-#~ msgid "forum"
-#~ msgstr "forum"
-
-#~ msgid "grow"
-#~ msgstr "växa / öka / odla"
-
-#~ msgid "hunt"
-#~ msgstr "jaga / jakt / jakten"
-
+#
 #~ msgid "load/unload"
 #~ msgstr "lasta/lasta av"
 
+#
 #~ msgid "ship inventory"
 #~ msgstr "fartygs inventarie"
 
 #~ msgid "starting"
 #~ msgstr "startar"
 
-#~ msgid "trade partner"
-#~ msgstr "handelspartner"
-
-#~ msgid "yields"
-#~ msgstr "ger"
-
+#
 #~ msgid "green"
 #~ msgstr "grön"
 
+#
 #~ msgid "red"
 #~ msgstr "röd"
-
-#~ msgid "no"
-#~ msgstr "nej / ingen / inga"
 
 #~ msgid "dialogue"
 #~ msgstr "dialog"
 
+# 75%
 #~ msgid "ruin"
 #~ msgstr "ruin / ruinera / förstöra / ödelägga"
 
 #~ msgid "salt ponds"
 #~ msgstr "salin"
 
-#~ msgid "cattle"
-#~ msgstr "boskap / nötkreatur"
-
 #~ msgid "pig"
 #~ msgstr "gris"
-
-#~ msgid "herbs"
-#~ msgstr "örter"
 
 #~ msgid "herbary"
 #~ msgstr "örtagård"
@@ -732,14 +1447,6 @@ msgstr ""
 #~ msgid "butchery"
 #~ msgstr "slakteri"
 
-#~ msgid "doctor"
-#~ msgstr "läkare"
-
-#~ msgid "education"
-#~ msgstr "utbildning"
-
+# 
 #~ msgid "market place"
 #~ msgstr "marknadsplats"
-
-#~ msgid "SHIFT"
-#~ msgstr "SHIFT"
