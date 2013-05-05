@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
-"100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Translate Toolkit 1.9.1-pre\n"
 
 msgid "game"
@@ -20,25 +20,21 @@ msgstr "žaidimas"
 msgid "building"
 msgstr "pastatas"
 
-#. (text of widget: headline)
 msgid "build"
 msgstr "statyti"
 
 msgid "player"
 msgstr ""
 
-#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "nausėdija"
 
 msgid "ship"
 msgstr "laivas"
 
-#. name_0 of buildings:tent
 msgid "tent"
 msgstr "palapinė"
 
-#. name of buildings:farm
 msgid "farm"
 msgstr "ūkis"
 
@@ -48,12 +44,9 @@ msgstr "žemėlapis"
 msgid "resource"
 msgstr "šaltinis"
 
-#. name of buildings:warehouse
 msgid "warehouse"
 msgstr ""
 
-#. (helptext of widget: city_info_inhabitants)
-#. (text of widget: inhabitants)
 msgid "inhabitants"
 msgstr "gyventojai"
 
@@ -69,8 +62,6 @@ msgstr "gaminti"
 msgid "no"
 msgstr "ne"
 
-#. (helptext of widget: trade)
-#. (text of widget: headline)
 msgid "trade"
 msgstr "prekyba"
 
@@ -110,14 +101,12 @@ msgstr ""
 msgid "continue"
 msgstr "tęsti"
 
-#. name of buildings:mainsquare
 msgid "main square"
 msgstr "pagrindinė aikštė"
 
 msgid "production"
 msgstr "gamyba"
 
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "sailors"
 msgstr ""
 
@@ -130,7 +119,6 @@ msgstr "saugykla"
 msgid "contact"
 msgstr "susisiekti"
 
-#. name_2 of buildings:tent
 msgid "house"
 msgstr "namas"
 
@@ -140,19 +128,15 @@ msgstr "meniu"
 msgid "tab"
 msgstr "skirtukas"
 
-#. (helptext of widget: okButton)
 msgid "close"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of a resource.
 msgid "food"
 msgstr "maistas"
 
 msgid "free"
 msgstr "laisvas"
 
-#. TODO: add support for selecting difficulty levels to the GUI
 msgid "ready"
 msgstr ""
 
@@ -174,7 +158,6 @@ msgstr ""
 msgid "version"
 msgstr "versija"
 
-#. This is a database entry: the name of a resource.
 msgid "fire"
 msgstr "ugnis"
 
@@ -196,26 +179,21 @@ msgstr ""
 msgid "coast"
 msgstr "pakrantė"
 
-#. (text of widget: game_player_color)
 msgid "color"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_increment
-#. tab4_headline of gui_buildmenu:build_menu_per_type
 msgid "companies"
 msgstr "įmonės"
 
 msgid "file"
 msgstr ""
 
-msgid "increment"
-msgstr "prieaugis"
+msgid "tier"
+msgstr ""
 
 msgid "key"
 msgstr "klavišas"
 
-#. (text of widget: taxes_label)
-#. (text of widget: taxes)
 msgid "taxes"
 msgstr "mokesčiai"
 
@@ -228,18 +206,15 @@ msgstr "ryšys"
 msgid "log"
 msgstr "žurnalas"
 
-#. (text of widget: start_multi) Opens widget to join or create multiplayer games
 msgid "multiplayer"
 msgstr ""
 
 msgid "resident"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "wool"
 msgstr "vilna"
 
-#. This is a database entry: the name of a resource.
 msgid "boards"
 msgstr "lentos"
 
@@ -258,9 +233,6 @@ msgstr "užmegzti ryšį"
 msgid "cost"
 msgstr "kaina"
 
-#. This is a database entry: the name of a resource.
-#. (helptext of widget: happiness_label)
-#. (helptext of widget: happiness)
 msgid "happiness"
 msgstr "laimė"
 
@@ -270,7 +242,6 @@ msgstr ""
 msgid "save"
 msgstr "įrašyti"
 
-#. name of buildings:tree
 msgid "tree"
 msgstr "medis"
 
@@ -289,7 +260,6 @@ msgstr "papildyti"
 msgid "fisher"
 msgstr "žvejys"
 
-#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr "nepriklausomas pirklys"
 
@@ -305,7 +275,6 @@ msgstr "būsena"
 msgid "password"
 msgstr ""
 
-#. name of buildings:pasture
 msgid "pasture"
 msgstr "ganykla"
 
@@ -318,7 +287,6 @@ msgstr "signalas"
 msgid "speed"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "sugar"
 msgstr "cukrus"
 
@@ -328,7 +296,6 @@ msgstr ""
 msgid "build menu"
 msgstr "statymo meniu"
 
-#. This is a database entry: the name of a resource.
 msgid "confectionery"
 msgstr ""
 
@@ -338,8 +305,6 @@ msgstr ""
 msgid "fetch"
 msgstr ""
 
-#. (text of widget: help)
-#. (text of widget: help) Main / in-game menu entry
 msgid "help"
 msgstr "pagalba"
 
@@ -367,7 +332,6 @@ msgstr "bulvės"
 msgid "settler"
 msgstr "naujakurys"
 
-#. (text of widget: total_score)
 msgid "total"
 msgstr ""
 
@@ -377,7 +341,6 @@ msgstr "statyba"
 msgid "creator"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "faith"
 msgstr "tikėjimas"
 
@@ -399,8 +362,6 @@ msgstr ""
 msgid "multiple buildings"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "pioneers"
 msgstr ""
 
@@ -422,7 +383,6 @@ msgstr "šliaužiklis"
 msgid "space"
 msgstr ""
 
-#. name_0 of buildings:storagetent
 msgid "storage tent"
 msgstr "saugojimo palapinė"
 
@@ -432,7 +392,6 @@ msgstr ""
 msgid "terminated"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "tools"
 msgstr "įrankiai"
 
@@ -469,7 +428,6 @@ msgstr ""
 msgid "feature"
 msgstr "funkcija"
 
-#. This is a database entry: the name of a resource.
 msgid "fish"
 msgstr "žuvis"
 
@@ -485,14 +443,12 @@ msgstr ""
 msgid "grow"
 msgstr "augti"
 
-#. (helptext of widget: happy_icon)
 msgid "happy"
 msgstr ""
 
 msgid "information"
 msgstr "informacija"
 
-#. This is a database entry: the name of a resource.
 msgid "liquor"
 msgstr "alkoholis"
 
@@ -514,7 +470,6 @@ msgstr "žaisti"
 msgid "please check your"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "potatoes"
 msgstr ""
 
@@ -536,7 +491,6 @@ msgstr ""
 msgid "solution"
 msgstr "sprendimas"
 
-#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "garsas"
 
@@ -546,7 +500,6 @@ msgstr ""
 msgid "spot"
 msgstr ""
 
-#. (text of widget: headline_statistics)
 msgid "statistics"
 msgstr ""
 
@@ -601,7 +554,6 @@ msgstr ""
 msgid "in range"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "lamb wool"
 msgstr "ėriuko vilna"
 
@@ -626,7 +578,6 @@ msgstr "pagamintas"
 msgid "report"
 msgstr ""
 
-#. (text of widget: sell_income_label)
 msgid "sale"
 msgstr "pardavimas"
 
@@ -648,18 +599,15 @@ msgstr ""
 msgid "wheel"
 msgstr ""
 
-#. (helptext of widget: avg_icon)
 msgid "satisfied"
 msgstr ""
 
-#. (text of widget: balance)
 msgid "balance"
 msgstr "balansas"
 
 msgid "load"
 msgstr ""
 
-#. name_0 of buildings:trail
 msgid "trail"
 msgstr "takas"
 
@@ -672,22 +620,18 @@ msgstr "geležis"
 msgid "tobacco"
 msgstr "tabakas"
 
-#. This is a database entry: the name of a resource.
 msgid "clay"
 msgstr "molis"
 
-#. (text of widget: money_score)
 msgid "money"
 msgstr ""
 
-#. name of buildings:pavilion
 msgid "pavilion"
 msgstr "paviljonas"
 
 msgid "tax"
 msgstr "mokestis"
 
-#. headline of gui_buildmenu:build_menu_per_type
 msgid "residential"
 msgstr ""
 
@@ -703,8 +647,6 @@ msgstr "sumažinti"
 msgid "ore"
 msgstr "rūda"
 
-#. (helptext of widget: okButton)
-#. (helptext of widget: cancelButton)
 msgid "return"
 msgstr "grįžti"
 
@@ -732,11 +674,9 @@ msgstr "derlius"
 msgid "back"
 msgstr "grįžti"
 
-#. (helptext of widget: found_settlement)
 msgid "build settlement"
 msgstr "statyti nausėdiją"
 
-#. This is a database entry: the name of a resource.
 msgid "charcoal"
 msgstr "anglis"
 
@@ -749,21 +689,18 @@ msgstr ""
 msgid "fulfill"
 msgstr "patenkinti"
 
-#. (text of widget: headline_graphics)
 msgid "graphics"
 msgstr "grafika"
 
 msgid "hunt"
 msgstr "medžioklė"
 
-#. name_0 of buildings:lumberjackcamp
 msgid "lumberjack tent"
 msgstr ""
 
 msgid "please contact"
 msgstr ""
 
-#. name of buildings:potatofield
 msgid "potato field"
 msgstr ""
 
@@ -776,15 +713,12 @@ msgstr ""
 msgid "sheep"
 msgstr "avis"
 
-#. name of buildings:signalfire
 msgid "signal fire"
 msgstr "ugnies signalas"
 
-#. name of buildings:sugarfield
 msgid "sugar field"
 msgstr ""
 
-#. There was a problem during the 'save game' procedure.
 msgid "error"
 msgstr ""
 
@@ -794,7 +728,6 @@ msgstr ""
 msgid "invalid"
 msgstr ""
 
-#. (text of widget: headline_network)
 msgid "network"
 msgstr ""
 
@@ -813,7 +746,6 @@ msgstr ""
 msgid "filename"
 msgstr ""
 
-#. (text of widget: headline_mouse)
 msgid "mouse"
 msgstr ""
 
@@ -832,7 +764,6 @@ msgstr ""
 msgid "enter"
 msgstr ""
 
-#. (text of widget: lbl_QUICKSAVE)
 msgid "quicksave"
 msgstr ""
 
@@ -842,7 +773,6 @@ msgstr ""
 msgid "weapon"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cattle"
 msgstr "galvijai"
 
@@ -852,18 +782,15 @@ msgstr ""
 msgid "port"
 msgstr ""
 
-#. (text of widget: scenario)
 msgid "scenario"
 msgstr ""
 
 msgid "spice"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cocoa"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "corn"
 msgstr ""
 
@@ -873,22 +800,18 @@ msgstr ""
 msgid "found"
 msgstr "rasti"
 
-#. This is a database entry: the name of a resource.
 msgid "herbs"
 msgstr "vaistažolės"
 
-#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 msgid "pause"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "pigs"
 msgstr ""
 
 msgid "press"
 msgstr ""
 
-#. (text of widget: quit) Completely shut down UH
 msgid "quit"
 msgstr ""
 
@@ -904,17 +827,12 @@ msgstr ""
 msgid "all settlements"
 msgstr ""
 
-#. (helptext of widget: okButton)
 msgid "apply"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "bricks"
 msgstr ""
 
-#. (text of widget: headline)
-#. (text of widget: headline_chat)
-#. (text of widget: lbl_CHAT)
 msgid "chat"
 msgstr ""
 
@@ -924,29 +842,24 @@ msgstr ""
 msgid "default settings"
 msgstr ""
 
-#. (helptext of widget: diplomacyButton)
 msgid "diplomacy"
 msgstr ""
 
 msgid "displayed"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "flour"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "grapes"
 msgstr ""
 
 msgid "ground"
 msgstr ""
 
-#. (text of widget: health)
 msgid "health"
 msgstr ""
 
-#. (text of widget: land_score)
 msgid "land"
 msgstr ""
 
@@ -971,18 +884,15 @@ msgstr ""
 msgid "not ready"
 msgstr ""
 
-#. (helptext of widget: player_name)
 msgid "player name"
 msgstr ""
 
 msgid "quote"
 msgstr ""
 
-#. (text of widget: reset_mouse_sensitivity)
 msgid "reset to default"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "salt"
 msgstr ""
 
@@ -1004,15 +914,12 @@ msgstr ""
 msgid "allied"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#. name of buildings:alvearies
 msgid "alvearies"
 msgstr ""
 
 msgid "beans"
 msgstr ""
 
-#. name of buildings:boatbuilder
 msgid "boat builder"
 msgstr ""
 
@@ -1022,25 +929,18 @@ msgstr ""
 msgid "capacity"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "citizens"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#. name of buildings:claydeposit
 msgid "clay deposit"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cocoa beans"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "community"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "condiments"
 msgstr ""
 
@@ -1062,14 +962,12 @@ msgstr ""
 msgid "disease"
 msgstr ""
 
-#. name of buildings:doctor
 msgid "doctor"
 msgstr "gydytojas"
 
 msgid "drag"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "education"
 msgstr "išsilavinimas"
 
@@ -1094,21 +992,18 @@ msgstr ""
 msgid "game menu"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "get-together"
 msgstr ""
 
 msgid "going to location"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "honeycombs"
 msgstr ""
 
 msgid "inventory"
 msgstr "inventorius"
 
-#. This is a database entry: the name of a resource.
 msgid "iron ore"
 msgstr ""
 
@@ -1118,8 +1013,6 @@ msgstr ""
 msgid "linux users"
 msgstr ""
 
-#. (text of widget: loadgame)
-#. (text of widget: loadgame) Open a widget to select which game to load
 msgid "load game"
 msgstr ""
 
@@ -1159,21 +1052,18 @@ msgstr ""
 msgid "production overview"
 msgstr ""
 
-#. (text of widget: lbl_QUICKLOAD)
 msgid "quickload"
 msgstr ""
 
 msgid "random"
 msgstr ""
 
-#. (text of widget: random)
 msgid "random map"
 msgstr ""
 
 msgid "related"
 msgstr ""
 
-#. (text of widget: headline)
 msgid "related buildings"
 msgstr ""
 
@@ -1186,22 +1076,9 @@ msgstr ""
 msgid "run out"
 msgstr ""
 
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (text of widget: running_costs_label)
-#. (text of widget: running_costs)
 msgid "running costs"
 msgstr "einamosios išlaidos"
 
-#. (text of widget: lbl_SCREENSHOT)
 msgid "screenshot"
 msgstr ""
 
@@ -1244,92 +1121,33 @@ msgstr ""
 msgid "written"
 msgstr ""
 
-#~ msgid "your"
-#~ msgstr "jūsų"
 
-#~ msgid "issues"
-#~ msgstr "pelnas"
 
-#~ msgid "condition"
-#~ msgstr "sąlyga"
 
-#~ msgid "branch office"
-#~ msgstr "filialas"
 
-#~ msgid "raw"
-#~ msgstr "žaliava"
 
-#~ msgid "moved"
-#~ msgstr "perkeltas"
 
-#~ msgid "hunter"
-#~ msgstr "medžiotojas"
 
-#~ msgid "market"
-#~ msgstr "turgus"
 
-#~ msgid "sailor"
-#~ msgstr "jūreivis"
 
-#~ msgid "pioneer"
-#~ msgstr "pionierius"
 
-#~ msgid "citizen"
-#~ msgstr "miestiečiai"
 
-#~ msgid "merchant"
-#~ msgstr "pirklys"
 
-#~ msgid "aristocrat"
-#~ msgstr "aristokratas"
 
-#~ msgid "refresh"
-#~ msgstr "atnaujinti"
 
-#~ msgid "residents"
-#~ msgstr "gyventojai"
 
-#~ msgid "output"
-#~ msgstr "išvesti"
 
-#~ msgid "weaver"
-#~ msgstr "audėjas"
 
-#~ msgid "animal"
-#~ msgstr "gyvūnas"
 
-#~ msgid "fisherman"
-#~ msgstr "žvejys"
 
-#~ msgid "load/unload"
-#~ msgstr "įkelti/perkrauti"
 
-#~ msgid "ship inventory"
-#~ msgstr "laivo inventorius"
 
-#~ msgid "starting"
-#~ msgstr "pradinis"
 
-#~ msgid "green"
-#~ msgstr "žalias"
 
-#~ msgid "red"
-#~ msgstr "raudonas"
 
-#~ msgid "dialogue"
-#~ msgstr "dialogas"
 
-#~ msgid "ruin"
-#~ msgstr "griuvėsiai"
 
-#~ msgid "salt ponds"
-#~ msgstr "druskos tvenkiniai"
 
-#~ msgid "pig"
-#~ msgstr "kiaulė"
 
-#~ msgid "herbary"
-#~ msgstr "herbariumas"
 
-#~ msgid "butchery"
-#~ msgstr "skerdykla"
+

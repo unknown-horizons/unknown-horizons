@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
 "X-POOTLE-MTIME: 1367758397.0\n"
 
@@ -21,25 +21,21 @@ msgstr "igra"
 msgid "building"
 msgstr "zgrada"
 
-#. (text of widget: headline)
 msgid "build"
 msgstr "Izgradi"
 
 msgid "player"
 msgstr ""
 
-#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "selo"
 
 msgid "ship"
 msgstr "brod"
 
-#. name_0 of buildings:tent
 msgid "tent"
 msgstr "sator"
 
-#. name of buildings:farm
 msgid "farm"
 msgstr "njiva"
 
@@ -49,12 +45,9 @@ msgstr ""
 msgid "resource"
 msgstr ""
 
-#. name of buildings:warehouse
 msgid "warehouse"
 msgstr ""
 
-#. (helptext of widget: city_info_inhabitants)
-#. (text of widget: inhabitants)
 msgid "inhabitants"
 msgstr ""
 
@@ -70,8 +63,6 @@ msgstr ""
 msgid "no"
 msgstr ""
 
-#. (helptext of widget: trade)
-#. (text of widget: headline)
 msgid "trade"
 msgstr ""
 
@@ -111,14 +102,12 @@ msgstr ""
 msgid "continue"
 msgstr ""
 
-#. name of buildings:mainsquare
 msgid "main square"
 msgstr ""
 
 msgid "production"
 msgstr ""
 
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "sailors"
 msgstr ""
 
@@ -131,7 +120,6 @@ msgstr ""
 msgid "contact"
 msgstr ""
 
-#. name_2 of buildings:tent
 msgid "house"
 msgstr ""
 
@@ -141,19 +129,15 @@ msgstr ""
 msgid "tab"
 msgstr ""
 
-#. (helptext of widget: okButton)
 msgid "close"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of a resource.
 msgid "food"
 msgstr ""
 
 msgid "free"
 msgstr ""
 
-#. TODO: add support for selecting difficulty levels to the GUI
 msgid "ready"
 msgstr ""
 
@@ -175,7 +159,6 @@ msgstr ""
 msgid "version"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "fire"
 msgstr ""
 
@@ -197,26 +180,21 @@ msgstr ""
 msgid "coast"
 msgstr ""
 
-#. (text of widget: game_player_color)
 msgid "color"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_increment
-#. tab4_headline of gui_buildmenu:build_menu_per_type
 msgid "companies"
 msgstr ""
 
 msgid "file"
 msgstr ""
 
-msgid "increment"
+msgid "tier"
 msgstr ""
 
 msgid "key"
 msgstr ""
 
-#. (text of widget: taxes_label)
-#. (text of widget: taxes)
 msgid "taxes"
 msgstr ""
 
@@ -229,22 +207,18 @@ msgstr ""
 msgid "log"
 msgstr ""
 
-#. (text of widget: start_multi) Opens widget to join or create multiplayer games
 msgid "multiplayer"
 msgstr ""
 
 msgid "resident"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "wool"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "boards"
 msgstr ""
 
-#, fuzzy
 msgid "built"
 msgstr "Izgradi"
 
@@ -260,9 +234,6 @@ msgstr ""
 msgid "cost"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#. (helptext of widget: happiness_label)
-#. (helptext of widget: happiness)
 msgid "happiness"
 msgstr ""
 
@@ -272,7 +243,6 @@ msgstr ""
 msgid "save"
 msgstr ""
 
-#. name of buildings:tree
 msgid "tree"
 msgstr ""
 
@@ -291,7 +261,6 @@ msgstr ""
 msgid "fisher"
 msgstr ""
 
-#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr ""
 
@@ -307,7 +276,6 @@ msgstr ""
 msgid "password"
 msgstr ""
 
-#. name of buildings:pasture
 msgid "pasture"
 msgstr ""
 
@@ -320,7 +288,6 @@ msgstr ""
 msgid "speed"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "sugar"
 msgstr ""
 
@@ -330,7 +297,6 @@ msgstr ""
 msgid "build menu"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "confectionery"
 msgstr ""
 
@@ -340,8 +306,6 @@ msgstr ""
 msgid "fetch"
 msgstr ""
 
-#. (text of widget: help)
-#. (text of widget: help) Main / in-game menu entry
 msgid "help"
 msgstr ""
 
@@ -369,7 +333,6 @@ msgstr ""
 msgid "settler"
 msgstr ""
 
-#. (text of widget: total_score)
 msgid "total"
 msgstr ""
 
@@ -379,7 +342,6 @@ msgstr ""
 msgid "creator"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "faith"
 msgstr ""
 
@@ -401,8 +363,6 @@ msgstr ""
 msgid "multiple buildings"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "pioneers"
 msgstr ""
 
@@ -424,7 +384,6 @@ msgstr ""
 msgid "space"
 msgstr ""
 
-#. name_0 of buildings:storagetent
 msgid "storage tent"
 msgstr ""
 
@@ -434,7 +393,6 @@ msgstr ""
 msgid "terminated"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "tools"
 msgstr ""
 
@@ -471,7 +429,6 @@ msgstr ""
 msgid "feature"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "fish"
 msgstr ""
 
@@ -487,14 +444,12 @@ msgstr ""
 msgid "grow"
 msgstr ""
 
-#. (helptext of widget: happy_icon)
 msgid "happy"
 msgstr ""
 
 msgid "information"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "liquor"
 msgstr ""
 
@@ -516,7 +471,6 @@ msgstr ""
 msgid "please check your"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "potatoes"
 msgstr ""
 
@@ -538,7 +492,6 @@ msgstr ""
 msgid "solution"
 msgstr ""
 
-#. (text of widget: headline_sound)
 msgid "sound"
 msgstr ""
 
@@ -548,7 +501,6 @@ msgstr ""
 msgid "spot"
 msgstr ""
 
-#. (text of widget: headline_statistics)
 msgid "statistics"
 msgstr ""
 
@@ -603,7 +555,6 @@ msgstr ""
 msgid "in range"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "lamb wool"
 msgstr ""
 
@@ -628,7 +579,6 @@ msgstr ""
 msgid "report"
 msgstr ""
 
-#. (text of widget: sell_income_label)
 msgid "sale"
 msgstr ""
 
@@ -650,18 +600,15 @@ msgstr ""
 msgid "wheel"
 msgstr ""
 
-#. (helptext of widget: avg_icon)
 msgid "satisfied"
 msgstr ""
 
-#. (text of widget: balance)
 msgid "balance"
 msgstr ""
 
 msgid "load"
 msgstr ""
 
-#. name_0 of buildings:trail
 msgid "trail"
 msgstr ""
 
@@ -674,22 +621,18 @@ msgstr ""
 msgid "tobacco"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "clay"
 msgstr ""
 
-#. (text of widget: money_score)
 msgid "money"
 msgstr ""
 
-#. name of buildings:pavilion
 msgid "pavilion"
 msgstr ""
 
 msgid "tax"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
 msgid "residential"
 msgstr ""
 
@@ -705,8 +648,6 @@ msgstr ""
 msgid "ore"
 msgstr ""
 
-#. (helptext of widget: okButton)
-#. (helptext of widget: cancelButton)
 msgid "return"
 msgstr ""
 
@@ -734,11 +675,9 @@ msgstr ""
 msgid "back"
 msgstr ""
 
-#. (helptext of widget: found_settlement)
 msgid "build settlement"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "charcoal"
 msgstr ""
 
@@ -751,21 +690,18 @@ msgstr ""
 msgid "fulfill"
 msgstr ""
 
-#. (text of widget: headline_graphics)
 msgid "graphics"
 msgstr ""
 
 msgid "hunt"
 msgstr ""
 
-#. name_0 of buildings:lumberjackcamp
 msgid "lumberjack tent"
 msgstr ""
 
 msgid "please contact"
 msgstr ""
 
-#. name of buildings:potatofield
 msgid "potato field"
 msgstr ""
 
@@ -778,15 +714,12 @@ msgstr ""
 msgid "sheep"
 msgstr ""
 
-#. name of buildings:signalfire
 msgid "signal fire"
 msgstr ""
 
-#. name of buildings:sugarfield
 msgid "sugar field"
 msgstr ""
 
-#. There was a problem during the 'save game' procedure.
 msgid "error"
 msgstr ""
 
@@ -796,7 +729,6 @@ msgstr ""
 msgid "invalid"
 msgstr ""
 
-#. (text of widget: headline_network)
 msgid "network"
 msgstr ""
 
@@ -815,7 +747,6 @@ msgstr ""
 msgid "filename"
 msgstr ""
 
-#. (text of widget: headline_mouse)
 msgid "mouse"
 msgstr ""
 
@@ -834,7 +765,6 @@ msgstr ""
 msgid "enter"
 msgstr ""
 
-#. (text of widget: lbl_QUICKSAVE)
 msgid "quicksave"
 msgstr ""
 
@@ -844,7 +774,6 @@ msgstr ""
 msgid "weapon"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cattle"
 msgstr ""
 
@@ -854,18 +783,15 @@ msgstr ""
 msgid "port"
 msgstr ""
 
-#. (text of widget: scenario)
 msgid "scenario"
 msgstr ""
 
 msgid "spice"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cocoa"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "corn"
 msgstr ""
 
@@ -875,22 +801,18 @@ msgstr ""
 msgid "found"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "herbs"
 msgstr ""
 
-#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 msgid "pause"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "pigs"
 msgstr ""
 
 msgid "press"
 msgstr ""
 
-#. (text of widget: quit) Completely shut down UH
 msgid "quit"
 msgstr ""
 
@@ -906,17 +828,12 @@ msgstr ""
 msgid "all settlements"
 msgstr ""
 
-#. (helptext of widget: okButton)
 msgid "apply"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "bricks"
 msgstr ""
 
-#. (text of widget: headline)
-#. (text of widget: headline_chat)
-#. (text of widget: lbl_CHAT)
 msgid "chat"
 msgstr ""
 
@@ -926,29 +843,24 @@ msgstr ""
 msgid "default settings"
 msgstr ""
 
-#. (helptext of widget: diplomacyButton)
 msgid "diplomacy"
 msgstr ""
 
 msgid "displayed"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "flour"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "grapes"
 msgstr ""
 
 msgid "ground"
 msgstr ""
 
-#. (text of widget: health)
 msgid "health"
 msgstr ""
 
-#. (text of widget: land_score)
 msgid "land"
 msgstr ""
 
@@ -973,18 +885,15 @@ msgstr ""
 msgid "not ready"
 msgstr ""
 
-#. (helptext of widget: player_name)
 msgid "player name"
 msgstr ""
 
 msgid "quote"
 msgstr ""
 
-#. (text of widget: reset_mouse_sensitivity)
 msgid "reset to default"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "salt"
 msgstr ""
 
@@ -1006,15 +915,12 @@ msgstr ""
 msgid "allied"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#. name of buildings:alvearies
 msgid "alvearies"
 msgstr ""
 
 msgid "beans"
 msgstr ""
 
-#. name of buildings:boatbuilder
 msgid "boat builder"
 msgstr ""
 
@@ -1024,25 +930,18 @@ msgstr ""
 msgid "capacity"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "citizens"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#. name of buildings:claydeposit
 msgid "clay deposit"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cocoa beans"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "community"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "condiments"
 msgstr ""
 
@@ -1064,14 +963,12 @@ msgstr ""
 msgid "disease"
 msgstr ""
 
-#. name of buildings:doctor
 msgid "doctor"
 msgstr ""
 
 msgid "drag"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "education"
 msgstr ""
 
@@ -1096,21 +993,18 @@ msgstr ""
 msgid "game menu"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "get-together"
 msgstr ""
 
 msgid "going to location"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "honeycombs"
 msgstr ""
 
 msgid "inventory"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "iron ore"
 msgstr ""
 
@@ -1120,8 +1014,6 @@ msgstr ""
 msgid "linux users"
 msgstr ""
 
-#. (text of widget: loadgame)
-#. (text of widget: loadgame) Open a widget to select which game to load
 msgid "load game"
 msgstr ""
 
@@ -1161,21 +1053,18 @@ msgstr ""
 msgid "production overview"
 msgstr ""
 
-#. (text of widget: lbl_QUICKLOAD)
 msgid "quickload"
 msgstr ""
 
 msgid "random"
 msgstr ""
 
-#. (text of widget: random)
 msgid "random map"
 msgstr ""
 
 msgid "related"
 msgstr ""
 
-#. (text of widget: headline)
 msgid "related buildings"
 msgstr ""
 
@@ -1188,22 +1077,9 @@ msgstr ""
 msgid "run out"
 msgstr ""
 
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (text of widget: running_costs_label)
-#. (text of widget: running_costs)
 msgid "running costs"
 msgstr ""
 
-#. (text of widget: lbl_SCREENSHOT)
 msgid "screenshot"
 msgstr ""
 

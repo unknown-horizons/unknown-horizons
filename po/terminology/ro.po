@@ -21,25 +21,21 @@ msgstr "joc"
 msgid "building"
 msgstr "clădire"
 
-#. (text of widget: headline)
 msgid "build"
 msgstr "construire"
 
 msgid "player"
 msgstr "jucător"
 
-#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "colonie"
 
 msgid "ship"
 msgstr "navă"
 
-#. name_0 of buildings:tent
 msgid "tent"
 msgstr "cort"
 
-#. name of buildings:farm
 msgid "farm"
 msgstr "fermă"
 
@@ -49,12 +45,9 @@ msgstr "hartă"
 msgid "resource"
 msgstr "resursă"
 
-#. name of buildings:warehouse
 msgid "warehouse"
 msgstr "depozit"
 
-#. (helptext of widget: city_info_inhabitants)
-#. (text of widget: inhabitants)
 msgid "inhabitants"
 msgstr "locuitori / coloniști"
 
@@ -70,8 +63,6 @@ msgstr "produs / a produce"
 msgid "no"
 msgstr "nu"
 
-#. (helptext of widget: trade)
-#. (text of widget: headline)
 msgid "trade"
 msgstr "comerț"
 
@@ -111,16 +102,12 @@ msgstr "incapabil"
 msgid "continue"
 msgstr "continua"
 
-#. name of buildings:mainsquare
-#, fuzzy
 msgid "main square"
 msgstr "piață principală"
 
 msgid "production"
 msgstr "producție"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#, fuzzy
 msgid "sailors"
 msgstr "marinar"
 
@@ -133,7 +120,6 @@ msgstr "depozit"
 msgid "contact"
 msgstr "contact"
 
-#. name_2 of buildings:tent
 msgid "house"
 msgstr "casă"
 
@@ -143,20 +129,15 @@ msgstr "meniu"
 msgid "tab"
 msgstr "tab"
 
-#. (helptext of widget: okButton)
 msgid "close"
 msgstr "închide"
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of a resource.
 msgid "food"
 msgstr "hrană"
 
 msgid "free"
 msgstr "liber / independent"
 
-#. TODO: add support for selecting difficulty levels to the GUI
-#, fuzzy
 msgid "ready"
 msgstr "citește"
 
@@ -178,7 +159,6 @@ msgstr "unitate"
 msgid "version"
 msgstr "versiune"
 
-#. This is a database entry: the name of a resource.
 msgid "fire"
 msgstr "foc"
 
@@ -200,27 +180,21 @@ msgstr "îmbunătățire"
 msgid "coast"
 msgstr "coastă"
 
-#. (text of widget: game_player_color)
 msgid "color"
 msgstr "culoare"
 
-#. headline of gui_buildmenu:build_menu_per_increment
-#. tab4_headline of gui_buildmenu:build_menu_per_type
 msgid "companies"
 msgstr "companii / întreprinderi"
 
-#, fuzzy
 msgid "file"
 msgstr "foc"
 
-msgid "increment"
-msgstr "nivel"
+msgid "tier"
+msgstr ""
 
 msgid "key"
 msgstr "cheie"
 
-#. (text of widget: taxes_label)
-#. (text of widget: taxes)
 msgid "taxes"
 msgstr "taxe"
 
@@ -233,19 +207,15 @@ msgstr "conexiune"
 msgid "log"
 msgstr "jurnal / jurnal de bord / protocol"
 
-#. (text of widget: start_multi) Opens widget to join or create multiplayer games
 msgid "multiplayer"
 msgstr "multiplayer"
 
-#, fuzzy
 msgid "resident"
 msgstr "rezidenți / locuitori"
 
-#. This is a database entry: the name of a resource.
 msgid "wool"
 msgstr "lână"
 
-#. This is a database entry: the name of a resource.
 msgid "boards"
 msgstr "scânduri"
 
@@ -264,27 +234,21 @@ msgstr "conecta"
 msgid "cost"
 msgstr "cost"
 
-#. This is a database entry: the name of a resource.
-#. (helptext of widget: happiness_label)
-#. (helptext of widget: happiness)
 msgid "happiness"
 msgstr "fericire"
 
-#, fuzzy
 msgid "road"
 msgstr "citește"
 
 msgid "save"
 msgstr "a salva / salvare"
 
-#. name of buildings:tree
 msgid "tree"
 msgstr "arbore"
 
 msgid "amount"
 msgstr "cantitate"
 
-#, fuzzy
 msgid "reach"
 msgstr "în rază"
 
@@ -297,7 +261,6 @@ msgstr "adaugă"
 msgid "fisher"
 msgstr "pescar / a pescui"
 
-#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr "negustor independent"
 
@@ -313,7 +276,6 @@ msgstr "mod"
 msgid "password"
 msgstr "parolă"
 
-#. name of buildings:pasture
 msgid "pasture"
 msgstr "pasture"
 
@@ -326,7 +288,6 @@ msgstr "semnal"
 msgid "speed"
 msgstr "viteză"
 
-#. This is a database entry: the name of a resource.
 msgid "sugar"
 msgstr "zahăr"
 
@@ -336,7 +297,6 @@ msgstr "acces"
 msgid "build menu"
 msgstr "meniu de construcție"
 
-#. This is a database entry: the name of a resource.
 msgid "confectionery"
 msgstr "cofetărie"
 
@@ -346,8 +306,6 @@ msgstr "activat"
 msgid "fetch"
 msgstr "adu"
 
-#. (text of widget: help)
-#. (text of widget: help) Main / in-game menu entry
 msgid "help"
 msgstr "ajutor"
 
@@ -375,7 +333,6 @@ msgstr "cartof"
 msgid "settler"
 msgstr "colonist"
 
-#. (text of widget: total_score)
 msgid "total"
 msgstr ""
 
@@ -385,7 +342,6 @@ msgstr "construire / construcție"
 msgid "creator"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "faith"
 msgstr "credință"
 
@@ -407,17 +363,12 @@ msgstr ""
 msgid "multiple buildings"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
-#, fuzzy
 msgid "pioneers"
 msgstr "pionier"
 
 msgid "reached"
 msgstr "atins / ajuns"
 
-# 75%
-#, fuzzy
 msgid "run"
 msgstr "fugi"
 
@@ -433,7 +384,6 @@ msgstr "reglabil / glisor"
 msgid "space"
 msgstr "spațiu"
 
-#. name_0 of buildings:storagetent
 msgid "storage tent"
 msgstr "cort de depozitare"
 
@@ -443,7 +393,6 @@ msgstr "țintă"
 msgid "terminated"
 msgstr "terminat"
 
-#. This is a database entry: the name of a resource.
 msgid "tools"
 msgstr "unelte"
 
@@ -465,7 +414,6 @@ msgstr "jurnal de bord"
 msgid "cloth"
 msgstr "îmbrăcăminte"
 
-#, fuzzy
 msgid "construct"
 msgstr "construire / construcție"
 
@@ -481,7 +429,6 @@ msgstr "intrări"
 msgid "feature"
 msgstr "funcție / trăsătură"
 
-#. This is a database entry: the name of a resource.
 msgid "fish"
 msgstr "pește"
 
@@ -497,14 +444,12 @@ msgstr "global"
 msgid "grow"
 msgstr "a crește"
 
-#. (helptext of widget: happy_icon)
 msgid "happy"
 msgstr "fericit"
 
 msgid "information"
 msgstr "informație"
 
-#. This is a database entry: the name of a resource.
 msgid "liquor"
 msgstr "lichior"
 
@@ -526,14 +471,12 @@ msgstr "joacă"
 msgid "please check your"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "potatoes"
 msgstr "cartofi"
 
 msgid "price"
 msgstr ""
 
-#, fuzzy
 msgid "read"
 msgstr "citește"
 
@@ -549,18 +492,15 @@ msgstr ""
 msgid "solution"
 msgstr "soluție"
 
-#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "sunet"
 
 msgid "special"
 msgstr ""
 
-#, fuzzy
 msgid "spot"
 msgstr "slot / plasament"
 
-#. (text of widget: headline_statistics)
 msgid "statistics"
 msgstr ""
 
@@ -570,7 +510,6 @@ msgstr ""
 msgid "team"
 msgstr "echipă"
 
-#, fuzzy
 msgid "tear"
 msgstr "echipă"
 
@@ -616,7 +555,6 @@ msgstr ""
 msgid "in range"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "lamb wool"
 msgstr "lână de oaie"
 
@@ -641,7 +579,6 @@ msgstr "produs"
 msgid "report"
 msgstr ""
 
-#. (text of widget: sell_income_label)
 msgid "sale"
 msgstr "a vinde / tranzacție"
 
@@ -663,19 +600,15 @@ msgstr ""
 msgid "wheel"
 msgstr ""
 
-#. (helptext of widget: avg_icon)
 msgid "satisfied"
 msgstr ""
 
-#. (text of widget: balance)
 msgid "balance"
 msgstr "balanță / bilanț"
 
-#, fuzzy
 msgid "load"
 msgstr "citește"
 
-#. name_0 of buildings:trail
 msgid "trail"
 msgstr "urmă"
 
@@ -688,23 +621,18 @@ msgstr ""
 msgid "tobacco"
 msgstr "tutun"
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
 msgid "clay"
 msgstr "joacă"
 
-#. (text of widget: money_score)
 msgid "money"
 msgstr ""
 
-#. name of buildings:pavilion
 msgid "pavilion"
 msgstr "pavilion"
 
 msgid "tax"
 msgstr "taxă"
 
-#. headline of gui_buildmenu:build_menu_per_type
 msgid "residential"
 msgstr ""
 
@@ -720,8 +648,6 @@ msgstr "a scade / a micșora"
 msgid "ore"
 msgstr ""
 
-#. (helptext of widget: okButton)
-#. (helptext of widget: cancelButton)
 msgid "return"
 msgstr "a reîntoarce / a reveni"
 
@@ -737,7 +663,6 @@ msgstr ""
 msgid "lower"
 msgstr ""
 
-#, fuzzy
 msgid "saved"
 msgstr "a salva / salvare"
 
@@ -750,11 +675,9 @@ msgstr "randament"
 msgid "back"
 msgstr "înapoi"
 
-#. (helptext of widget: found_settlement)
 msgid "build settlement"
 msgstr "fondează o colonie"
 
-#. This is a database entry: the name of a resource.
 msgid "charcoal"
 msgstr ""
 
@@ -767,44 +690,36 @@ msgstr ""
 msgid "fulfill"
 msgstr "a completa / a realiza"
 
-#. (text of widget: headline_graphics)
 msgid "graphics"
 msgstr "grafică"
 
 msgid "hunt"
 msgstr "a vâna"
 
-#. name_0 of buildings:lumberjackcamp
 msgid "lumberjack tent"
 msgstr ""
 
 msgid "please contact"
 msgstr ""
 
-#. name of buildings:potatofield
 msgid "potato field"
 msgstr ""
 
 msgid "seed"
 msgstr "semințe / rădăcină"
 
-#, fuzzy
 msgid "send"
 msgstr "semințe / rădăcină"
 
 msgid "sheep"
 msgstr "oaie"
 
-#. name of buildings:signalfire
-#, fuzzy
 msgid "signal fire"
 msgstr "foc de semnalizare"
 
-#. name of buildings:sugarfield
 msgid "sugar field"
 msgstr ""
 
-#. There was a problem during the 'save game' procedure.
 msgid "error"
 msgstr ""
 
@@ -814,14 +729,12 @@ msgstr ""
 msgid "invalid"
 msgstr ""
 
-#. (text of widget: headline_network)
 msgid "network"
 msgstr ""
 
 msgid "route"
 msgstr ""
 
-#, fuzzy
 msgid "selected"
 msgstr "selecționare"
 
@@ -834,8 +747,6 @@ msgstr ""
 msgid "filename"
 msgstr ""
 
-#. (text of widget: headline_mouse)
-#, fuzzy
 msgid "mouse"
 msgstr "casă"
 
@@ -854,7 +765,6 @@ msgstr ""
 msgid "enter"
 msgstr ""
 
-#. (text of widget: lbl_QUICKSAVE)
 msgid "quicksave"
 msgstr ""
 
@@ -864,7 +774,6 @@ msgstr ""
 msgid "weapon"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cattle"
 msgstr "bovine"
 
@@ -874,18 +783,15 @@ msgstr ""
 msgid "port"
 msgstr ""
 
-#. (text of widget: scenario)
 msgid "scenario"
 msgstr ""
 
 msgid "spice"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cocoa"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "corn"
 msgstr ""
 
@@ -895,22 +801,18 @@ msgstr ""
 msgid "found"
 msgstr "găsit"
 
-#. This is a database entry: the name of a resource.
 msgid "herbs"
 msgstr "ierburi"
 
-#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 msgid "pause"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "pigs"
 msgstr ""
 
 msgid "press"
 msgstr ""
 
-#. (text of widget: quit) Completely shut down UH
 msgid "quit"
 msgstr ""
 
@@ -926,17 +828,12 @@ msgstr ""
 msgid "all settlements"
 msgstr ""
 
-#. (helptext of widget: okButton)
 msgid "apply"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "bricks"
 msgstr ""
 
-#. (text of widget: headline)
-#. (text of widget: headline_chat)
-#. (text of widget: lbl_CHAT)
 msgid "chat"
 msgstr ""
 
@@ -946,29 +843,24 @@ msgstr ""
 msgid "default settings"
 msgstr ""
 
-#. (helptext of widget: diplomacyButton)
 msgid "diplomacy"
 msgstr ""
 
 msgid "displayed"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "flour"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "grapes"
 msgstr ""
 
 msgid "ground"
 msgstr ""
 
-#. (text of widget: health)
 msgid "health"
 msgstr ""
 
-#. (text of widget: land_score)
 msgid "land"
 msgstr ""
 
@@ -993,26 +885,21 @@ msgstr ""
 msgid "not ready"
 msgstr ""
 
-#. (helptext of widget: player_name)
 msgid "player name"
 msgstr ""
 
 msgid "quote"
 msgstr ""
 
-#. (text of widget: reset_mouse_sensitivity)
 msgid "reset to default"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
 msgid "salt"
 msgstr "a vinde / tranzacție"
 
 msgid "saved games"
 msgstr ""
 
-#, fuzzy
 msgid "source"
 msgstr "resurse"
 
@@ -1028,15 +915,12 @@ msgstr ""
 msgid "allied"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#. name of buildings:alvearies
 msgid "alvearies"
 msgstr ""
 
 msgid "beans"
 msgstr ""
 
-#. name of buildings:boatbuilder
 msgid "boat builder"
 msgstr ""
 
@@ -1046,26 +930,18 @@ msgstr ""
 msgid "capacity"
 msgstr ""
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
-#, fuzzy
 msgid "citizens"
 msgstr "cetățean"
 
-#. This is a database entry: the name of a resource.
-#. name of buildings:claydeposit
 msgid "clay deposit"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cocoa beans"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "community"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "condiments"
 msgstr ""
 
@@ -1087,14 +963,12 @@ msgstr ""
 msgid "disease"
 msgstr ""
 
-#. name of buildings:doctor
 msgid "doctor"
 msgstr ""
 
 msgid "drag"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "education"
 msgstr ""
 
@@ -1119,21 +993,18 @@ msgstr ""
 msgid "game menu"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "get-together"
 msgstr ""
 
 msgid "going to location"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "honeycombs"
 msgstr ""
 
 msgid "inventory"
 msgstr "inventar / stoc"
 
-#. This is a database entry: the name of a resource.
 msgid "iron ore"
 msgstr ""
 
@@ -1143,8 +1014,6 @@ msgstr ""
 msgid "linux users"
 msgstr ""
 
-#. (text of widget: loadgame)
-#. (text of widget: loadgame) Open a widget to select which game to load
 msgid "load game"
 msgstr ""
 
@@ -1184,21 +1053,18 @@ msgstr ""
 msgid "production overview"
 msgstr ""
 
-#. (text of widget: lbl_QUICKLOAD)
 msgid "quickload"
 msgstr ""
 
 msgid "random"
 msgstr ""
 
-#. (text of widget: random)
 msgid "random map"
 msgstr ""
 
 msgid "related"
 msgstr ""
 
-#. (text of widget: headline)
 msgid "related buildings"
 msgstr ""
 
@@ -1211,29 +1077,15 @@ msgstr ""
 msgid "run out"
 msgstr ""
 
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (text of widget: running_costs_label)
-#. (text of widget: running_costs)
 msgid "running costs"
 msgstr "costuri de funcționare"
 
-#. (text of widget: lbl_SCREENSHOT)
 msgid "screenshot"
 msgstr ""
 
 msgid "selected units"
 msgstr ""
 
-#, fuzzy
 msgid "settled"
 msgstr "colonist"
 
@@ -1249,7 +1101,6 @@ msgstr ""
 msgid "system"
 msgstr ""
 
-#, fuzzy
 msgid "tile"
 msgstr "timp"
 
@@ -1271,106 +1122,36 @@ msgstr ""
 msgid "written"
 msgstr ""
 
-#~ msgid "your"
-#~ msgstr "dumneavoastră / a dumneavoastră"
 
-#, fuzzy
-#~ msgid "merchants"
-#~ msgstr "negustor"
 
-#, fuzzy
-#~ msgid "aristocrats"
-#~ msgstr "aristocrat"
 
-#, fuzzy
-#~ msgid "grows"
-#~ msgstr "a crește"
 
-#~ msgid "issues"
-#~ msgstr "probleme"
 
-#, fuzzy
-#~ msgid "yield"
-#~ msgstr "randament"
 
-#~ msgid "condition"
-#~ msgstr "condiție / stare"
 
-#, fuzzy
-#~ msgid "hunts"
-#~ msgstr "a vâna"
 
-#~ msgid "branch office"
-#~ msgstr "sucursală"
 
-#~ msgid "raw"
-#~ msgstr "brut / neprelucrat"
 
-#~ msgid "moved"
-#~ msgstr "deplasat"
 
-#~ msgid "hunter"
-#~ msgstr "vânător"
 
-#~ msgid "market"
-#~ msgstr "piață"
 
-#~ msgid "sailor"
-#~ msgstr "marinar"
 
-#~ msgid "pioneer"
-#~ msgstr "pionier"
 
-#~ msgid "citizen"
-#~ msgstr "cetățean"
 
-#~ msgid "merchant"
-#~ msgstr "negustor"
 
-#~ msgid "aristocrat"
-#~ msgstr "aristocrat"
 
-#~ msgid "refresh"
-#~ msgstr "actualizare / a actualiza"
 
-#~ msgid "residents"
-#~ msgstr "rezidenți / locuitori"
 
-#~ msgid "output"
-#~ msgstr "producție / rezultat"
 
-#~ msgid "weaver"
-#~ msgstr "țesător"
 
-#~ msgid "animal"
-#~ msgstr "animal"
 
-#~ msgid "fisherman"
-#~ msgstr "pescar"
 
-#~ msgid "load/unload"
-#~ msgstr "încarcă / descarcă"
 
-#~ msgid "ship inventory"
-#~ msgstr "inventar / cargou"
 
-#~ msgid "starting"
-#~ msgstr "lansare / începe / debutează"
 
-#~ msgid "green"
-#~ msgstr "verde"
 
-#~ msgid "red"
-#~ msgstr "roșu"
 
-#~ msgid "dialogue"
-#~ msgstr "dialog"
 
-#~ msgid "ruin"
-#~ msgstr "ruină"
 
-#~ msgid "salt ponds"
-#~ msgstr "saline"
 
-#~ msgid "pig"
-#~ msgstr "porc"
+
