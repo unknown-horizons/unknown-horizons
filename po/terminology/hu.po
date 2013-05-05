@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
 "PO-Revision-Date: 2012-04-14 21:01+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,10 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
-
-msgid "build"
-msgstr "építés"
+"X-Generator: Translate Toolkit 1.9.1-pre\n"
 
 msgid "game"
 msgstr "játék"
@@ -22,137 +19,205 @@ msgstr "játék"
 msgid "building"
 msgstr "épület"
 
+#. (text of widget: headline)
+msgid "build"
+msgstr "építés"
+
+msgid "player"
+msgstr ""
+
+#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "gyarmat"
-
-msgid "farm"
-msgstr "tanya"
 
 msgid "ship"
 msgstr "hajó"
 
+#. name_0 of buildings:tent
 msgid "tent"
 msgstr "sátor"
 
-msgid "warehouse"
-msgstr "raktárház"
-
-msgid "resource"
-msgstr "nyersanyag"
-
-msgid "produce"
-msgstr "termel"
-
-msgid "field"
-msgstr "mező"
+#. name of buildings:farm
+msgid "farm"
+msgstr "tanya"
 
 msgid "map"
 msgstr "térkép"
 
+msgid "resource"
+msgstr "nyersanyag"
+
+#. name of buildings:warehouse
+msgid "warehouse"
+msgstr "raktárház"
+
+#. (helptext of widget: city_info_inhabitants)
+#. (text of widget: inhabitants)
+msgid "inhabitants"
+msgstr "lakosok"
+
+msgid "change"
+msgstr "változtat"
+
+msgid "unknown"
+msgstr "ismeretlen"
+
+msgid "produce"
+msgstr "termel"
+
+msgid "no"
+msgstr "nem"
+
+#. (helptext of widget: trade)
+#. (text of widget: headline)
 msgid "trade"
 msgstr "kereskedelem"
 
-msgid "inhabitants"
-msgstr "lakosok"
+msgid "check"
+msgstr "ellenőrzés"
+
+msgid "field"
+msgstr "mező"
+
+msgid "main"
+msgstr "fő"
 
 msgid "buy"
 msgstr "vásárol"
 
+msgid "click"
+msgstr "klikk"
+
+msgid "left"
+msgstr "bal"
+
 msgid "overview"
 msgstr "áttekintés"
 
-msgid "click"
-msgstr "klikk"
+msgid "running"
+msgstr "futás"
+
+msgid "square"
+msgstr ""
 
 msgid "lumberjack"
 msgstr "favágó"
 
-# 88%
-msgid "resident"
-msgstr "lakos"
+msgid "unable"
+msgstr "képtelen"
 
+msgid "continue"
+msgstr "folytatás"
+
+#. name of buildings:mainsquare
 msgid "main square"
 msgstr "főtér"
-
-# 85%
-msgid "sailors"
-msgstr "tengerészek"
-
-msgid "food"
-msgstr "étel"
-
-msgid "increment"
-msgstr "növekedés"
 
 msgid "production"
 msgstr "termelés"
 
-msgid "select"
-msgstr "választás"
+# 85%
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "sailors"
+msgstr "tengerészek"
 
 msgid "sell"
 msgstr "elad"
 
-msgid "setting"
-msgstr "beállítás"
-
 msgid "storage"
 msgstr "raktár"
 
-msgid "tab"
-msgstr "fül"
+msgid "contact"
+msgstr "kapcsolat"
 
-msgid "upgrade"
-msgstr "fejlesztés"
-
-msgid "your inhabitants"
-msgstr "a lakosaid"
-
-msgid "close"
-msgstr "bezár"
-
-msgid "companies"
-msgstr "vállalatok"
-
-msgid "island"
-msgstr "sziget"
-
-msgid "time"
-msgstr "idő"
-
-msgid "unit"
-msgstr "egység"
-
-msgid "balance"
-msgstr "egyensúly"
-
-msgid "coast"
-msgstr "part"
+#. name_2 of buildings:tent
+msgid "house"
+msgstr "ház"
 
 msgid "menu"
 msgstr "menü"
 
-msgid "slot"
-msgstr "egység"
+msgid "tab"
+msgstr "fül"
+
+#. (helptext of widget: okButton)
+msgid "close"
+msgstr "bezár"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "étel"
+
+msgid "free"
+msgstr "szabad"
+
+#. TODO: add support for selecting difficulty levels to the GUI
+msgid "ready"
+msgstr ""
+
+msgid "setting"
+msgstr "beállítás"
 
 msgid "start"
 msgstr "kezdés"
 
+msgid "time"
+msgstr "idő"
+
+msgid "trader"
+msgstr "kereskedő"
+
+msgid "unit"
+msgstr "egység"
+
+msgid "version"
+msgstr "verzió"
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "tűz"
+
+msgid "island"
+msgstr "sziget"
+
+msgid "select"
+msgstr "választás"
+
+msgid "slot"
+msgstr "egység"
+
 msgid "stock"
 msgstr "készlet"
 
-# thrall = rabszolga.. what is "trall"?
-msgid "trail"
-msgstr "ösvény"
+msgid "upgrade"
+msgstr "fejlesztés"
 
-msgid "Unknown Horizons"
-msgstr "Ismeretlen vizeken"
+msgid "coast"
+msgstr "part"
 
-msgid "wool"
-msgstr "gyapjú"
+#. (text of widget: game_player_color)
+msgid "color"
+msgstr ""
 
-msgid "boards"
-msgstr "táblák"
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+msgid "companies"
+msgstr "vállalatok"
+
+msgid "file"
+msgstr ""
+
+msgid "increment"
+msgstr "növekedés"
+
+msgid "key"
+msgstr "kulcs"
+
+#. (text of widget: taxes_label)
+#. (text of widget: taxes)
+msgid "taxes"
+msgstr "adók"
 
 msgid "collector"
 msgstr "begyűjtő"
@@ -160,11 +225,33 @@ msgstr "begyűjtő"
 msgid "connection"
 msgstr "kapcsolódás"
 
-msgid "fire"
-msgstr "tűz"
+msgid "log"
+msgstr "napló"
 
-msgid "change"
-msgstr "változtat"
+#. (text of widget: start_multi) Opens widget to join or create multiplayer games
+msgid "multiplayer"
+msgstr ""
+
+# 88%
+msgid "resident"
+msgstr "lakos"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "gyapjú"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "táblák"
+
+msgid "built"
+msgstr "épült"
+
+msgid "button"
+msgstr "gomb"
+
+msgid "choose"
+msgstr "választás"
 
 msgid "connect"
 msgstr "kapcsolódás"
@@ -172,11 +259,11 @@ msgstr "kapcsolódás"
 msgid "cost"
 msgstr "ár"
 
-msgid "house"
-msgstr "ház"
-
-msgid "log"
-msgstr "napló"
+#. This is a database entry: the name of a resource.
+#. (helptext of widget: happiness_label)
+#. (helptext of widget: happiness)
+msgid "happiness"
+msgstr "boldogság"
 
 msgid "road"
 msgstr "út"
@@ -184,108 +271,97 @@ msgstr "út"
 msgid "save"
 msgstr "mentés"
 
-msgid "built"
-msgstr "épült"
+#. name of buildings:tree
+msgid "tree"
+msgstr "fa"
 
-msgid "pasture"
-msgstr "legelő"
+msgid "amount"
+msgstr "mennyiség"
 
 msgid "reach"
 msgstr "elér"
 
-msgid "tree"
-msgstr "fa"
-
-msgid "your"
-msgstr "tiéd"
-
-msgid "your settlement"
-msgstr "a gyarmatod"
+msgid "size"
+msgstr ""
 
 msgid "add"
 msgstr "hozzáadás"
 
-msgid "check"
-msgstr "ellenőrzés"
-
-msgid "choose"
-msgstr "választás"
-
-msgid "confectionery"
-msgstr "cukrászat"
-
 msgid "fisher"
 msgstr "halász"
 
+#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr "szabad kereskedő"
-
-msgid "happiness"
-msgstr "boldogság"
 
 msgid "in stock"
 msgstr "raktáron"
 
-msgid "money"
-msgstr "pénz"
-
-msgid "pavilion"
-msgstr "pavilon"
-
-msgid "running costs"
-msgstr "üzemeltetési ár"
-
-msgid "sugar"
-msgstr "cukor"
-
-msgid "taxes"
-msgstr "adók"
-
-msgid "tax"
-msgstr "adó"
-
-msgid "tools"
-msgstr "eszközök"
-
-msgid "button"
-msgstr "gomb"
-
-msgid "continue"
-msgstr "folytatás"
-
-msgid "faith"
-msgstr "gyűlölet"
-
-msgid "help"
-msgstr "súgó"
-
-msgid "left"
-msgstr "bal"
-
-msgid "level"
-msgstr "szint"
+msgid "increase"
+msgstr "növekedés"
 
 msgid "mode"
 msgstr "mód"
 
+msgid "password"
+msgstr ""
+
+#. name of buildings:pasture
+msgid "pasture"
+msgstr "legelő"
+
+msgid "range"
+msgstr "távolság"
+
+msgid "signal"
+msgstr "jelzés"
+
+# 80%
+msgid "speed"
+msgstr "sebesség"
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "cukor"
+
+msgid "access"
+msgstr "hozzáférés"
+
+msgid "build menu"
+msgstr "építési menü"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "cukrászat"
+
+msgid "enabled"
+msgstr "engedélyezett"
+
+msgid "fetch"
+msgstr ""
+
+#. (text of widget: help)
+#. (text of widget: help) Main / in-game menu entry
+msgid "help"
+msgstr "súgó"
+
+msgid "income"
+msgstr "bevétel"
+
+msgid "join"
+msgstr ""
+
+msgid "level"
+msgstr "szint"
+
 msgid "move"
 msgstr "mozgás"
 
-# 87%
-msgid "pioneers"
-msgstr "telepesek"
+msgid "multiple"
+msgstr "több"
 
-# 87%
-msgid "citizens"
-msgstr "polgárok"
-
-# 88%
-msgid "merchants"
-msgstr "kereskedők"
-
-# 90%
-msgid "aristocrats"
-msgstr "arisztokraták"
+msgid "please check"
+msgstr ""
 
 msgid "potato"
 msgstr "paradicsom"
@@ -293,48 +369,25 @@ msgstr "paradicsom"
 msgid "settler"
 msgstr "gyarmatos"
 
-# 80%
-msgid "speed"
-msgstr "sebesség"
-
-msgid "stop"
-msgstr "állj"
-
-msgid "storage tent"
-msgstr "raktár sátor"
-
-msgid "wait"
-msgstr "várakozás"
-
-msgid "access"
-msgstr "hozzáférés"
-
-msgid "account"
-msgstr "fiók"
-
-msgid "amount"
-msgstr "mennyiség"
-
-msgid "build menu"
-msgstr "építési menü"
-
-msgid "cloth"
-msgstr "ruha"
+#. (text of widget: total_score)
+msgid "total"
+msgstr "teljes"
 
 msgid "construction"
 msgstr "építés"
 
-msgid "decrease"
-msgstr "csökkentés"
+msgid "creator"
+msgstr ""
 
-msgid "description"
-msgstr "leírás"
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "gyűlölet"
 
-msgid "fish"
-msgstr "hal"
+msgid "hold"
+msgstr "tart"
 
-msgid "increase"
-msgstr "növekedés"
+msgid "icon"
+msgstr ""
 
 msgid "lamb"
 msgstr "bárány"
@@ -342,21 +395,17 @@ msgstr "bárány"
 msgid "leave"
 msgstr "elhagy"
 
-msgid "liquor"
-msgstr "likőr"
-
 msgid "location"
 msgstr "helyzet"
 
-msgid "offer"
-msgstr "ajánlat"
+msgid "multiple buildings"
+msgstr ""
 
-# 75%
-msgid "potatoes"
-msgstr "paradicsomok"
-
-msgid "range"
-msgstr "távolság"
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "pioneers"
+msgstr "telepesek"
 
 msgid "reached"
 msgstr "elérve"
@@ -364,26 +413,34 @@ msgstr "elérve"
 msgid "run"
 msgstr "futás"
 
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr ""
+
 msgid "slider"
 msgstr "csúszka"
-
-msgid "solution"
-msgstr "megoldás"
 
 msgid "space"
 msgstr "hely"
 
+#. name_0 of buildings:storagetent
+msgid "storage tent"
+msgstr "raktár sátor"
+
 msgid "target"
 msgstr "cél"
 
-msgid "team"
-msgstr "csapat"
+msgid "terminated"
+msgstr ""
 
-msgid "total"
-msgstr "teljes"
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "eszközök"
 
-msgid "unable"
-msgstr "képtelen"
+msgid "account"
+msgstr "fiók"
 
 msgid "active"
 msgstr "aktív"
@@ -398,15 +455,18 @@ msgstr "állatok"
 msgid "Captain's log"
 msgstr "A Kapitány naplója"
 
+msgid "cloth"
+msgstr "ruha"
+
 # 75%
 msgid "construct"
 msgstr "építés"
 
-msgid "consume"
-msgstr "fogyasztás"
+msgid "cursor"
+msgstr ""
 
-msgid "enabled"
-msgstr "engedélyezett"
+msgid "description"
+msgstr "leírás"
 
 msgid "entries"
 msgstr "bejegyzések"
@@ -414,39 +474,41 @@ msgstr "bejegyzések"
 msgid "feature"
 msgstr "funkció"
 
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "hal"
+
 msgid "forest"
 msgstr "erdő"
 
-# 80%
-msgid "grows"
-msgstr "nő"
+msgid "from time to time"
+msgstr "időről időre"
 
-msgid "hold"
-msgstr "tart"
+msgid "global"
+msgstr ""
 
-msgid "idle"
-msgstr "tétlen"
+msgid "grow"
+msgstr "növekedés"
 
-msgid "income"
-msgstr "bevétel"
+#. (helptext of widget: happy_icon)
+msgid "happy"
+msgstr ""
 
 msgid "information"
 msgstr "információ"
 
-msgid "key"
-msgstr "kulcs"
-
-msgid "lamb wool"
-msgstr "bárány gyapjú"
-
-msgid "overview tab"
-msgstr "áttekintő fül"
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "likőr"
 
 msgid "minimap"
 msgstr "kis térkép"
 
-msgid "issues"
-msgstr "kérdések"
+msgid "offer"
+msgstr "ajánlat"
+
+msgid "overview tab"
+msgstr "áttekintő fül"
 
 msgid "plant"
 msgstr "növény"
@@ -454,8 +516,13 @@ msgstr "növény"
 msgid "play"
 msgstr "játék"
 
-msgid "playing"
-msgstr "játszik"
+msgid "please check your"
+msgstr ""
+
+# 75%
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "paradicsomok"
 
 msgid "price"
 msgstr "ár"
@@ -464,36 +531,50 @@ msgstr "ár"
 msgid "read"
 msgstr "olvas"
 
-msgid "return"
-msgstr "vissza"
-
-msgid "sale"
-msgstr "eladás"
-
 msgid "screen"
 msgstr "kép"
 
+msgid "service"
+msgstr "szolgáltatás"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "megoldás"
+
+#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "hang"
 
 msgid "special"
 msgstr "speciális"
 
+msgid "spot"
+msgstr ""
+
+#. (text of widget: headline_statistics)
+msgid "statistics"
+msgstr "statisztikák"
+
 msgid "store"
 msgstr "raktár"
 
-# csapat? :) az a team 
+msgid "team"
+msgstr "csapat"
+
+# csapat? :) az a team
 msgid "tear"
 msgstr "csepp"
 
-msgid "from time to time"
-msgstr "időről időre"
+msgid "time to time"
+msgstr ""
 
 msgid "trading"
 msgstr "kereskedés"
 
-msgid "village"
-msgstr "falu"
+msgid "unsupported"
+msgstr ""
 
 msgid "visit"
 msgstr "látogatás"
@@ -501,24 +582,14 @@ msgstr "látogatás"
 msgid "world"
 msgstr "világ"
 
-# hozam helyett inkább kitermelés
-msgid "yield"
-msgstr "kitermelés"
+msgid "wrong"
+msgstr ""
 
-msgid "your ship"
-msgstr "a te hajód"
+msgid "bar"
+msgstr ""
 
-msgid "back"
-msgstr "vissza"
-
-msgid "build settlement"
-msgstr "település építése"
-
-msgid "load"
-msgstr "berakodás"
-
-msgid "unload"
-msgstr "kirakodás"
+msgid "bug"
+msgstr ""
 
 msgid "command"
 msgstr "parancs"
@@ -526,126 +597,721 @@ msgstr "parancs"
 msgid "completed"
 msgstr "befejezve"
 
-msgid "condition"
-msgstr "állapot"
+msgid "forum"
+msgstr "fórum"
 
-msgid "contact"
-msgstr "kapcsolat"
-
-msgid "empty"
-msgstr "üres"
-
-msgid "ensure"
-msgstr "biztosít"
-
-msgid "fulfill"
-msgstr "eleget"
-
-msgid "graphics"
-msgstr "grafika"
+msgid "happen"
+msgstr ""
 
 msgid "harvest"
 msgstr "aratás"
 
-# 80%
-msgid "hunts"
-msgstr "vadászat"
+msgid "in range"
+msgstr ""
 
-msgid "multiple"
-msgstr "több"
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "bárány gyapjú"
 
-msgid "potato field"
-msgstr "paradicsom mezők"
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "játszik"
+
+msgid "produced"
+msgstr "termelt"
+
+msgid "report"
+msgstr ""
+
+#. (text of widget: sell_income_label)
+msgid "sale"
+msgstr "eladás"
 
 msgid "school"
 msgstr "iskola"
 
-msgid "seed"
-msgstr "mag"
-
-msgid "service"
-msgstr "szolgáltatás"
-
-msgid "sheep"
-msgstr "bárány"
-
-msgid "signal fire"
-msgstr "jelző tűz"
-
-msgid "statistics"
-msgstr "statisztikák"
-
-msgid "clay"
-msgstr "agyag"
-
-msgid "iron"
-msgstr "vas"
-
-msgid "ore"
-msgstr "érc"
-
-msgid "tobacco"
-msgstr "dohány"
-
-msgid "charcoal"
-msgstr "faszén"
-
-msgid "sugar field"
-msgstr "cukor mező"
+msgid "started"
+msgstr ""
 
 msgid "temporarily"
 msgstr "ideiglenesen"
 
+msgid "trade with"
+msgstr ""
+
 msgid "values"
 msgstr "értékek"
+
+msgid "wheel"
+msgstr ""
+
+#. (helptext of widget: avg_icon)
+msgid "satisfied"
+msgstr ""
+
+#. (text of widget: balance)
+msgid "balance"
+msgstr "egyensúly"
+
+msgid "load"
+msgstr "berakodás"
+
+# thrall = rabszolga.. what is "trall"?
+#. name_0 of buildings:trail
+msgid "trail"
+msgstr "ösvény"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "vas"
+
+msgid "tobacco"
+msgstr "dohány"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "agyag"
+
+#. (text of widget: money_score)
+msgid "money"
+msgstr "pénz"
+
+#. name of buildings:pavilion
+msgid "pavilion"
+msgstr "pavilon"
+
+msgid "tax"
+msgstr "adó"
+
+#. headline of gui_buildmenu:build_menu_per_type
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "állj"
+
+msgid "wait"
+msgstr "várakozás"
+
+msgid "decrease"
+msgstr "csökkentés"
+
+msgid "ore"
+msgstr "érc"
+
+#. (helptext of widget: okButton)
+#. (helptext of widget: cancelButton)
+msgid "return"
+msgstr "vissza"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "fogyasztás"
+
+msgid "idle"
+msgstr "tétlen"
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr ""
+
+msgid "village"
+msgstr "falu"
+
+msgid "yields"
+msgstr "hozam"
+
+msgid "back"
+msgstr "vissza"
+
+#. (helptext of widget: found_settlement)
+msgid "build settlement"
+msgstr "település építése"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "faszén"
+
+msgid "empty"
+msgstr "üres"
+
+msgid "existing"
+msgstr ""
+
+msgid "fulfill"
+msgstr "eleget"
+
+#. (text of widget: headline_graphics)
+msgid "graphics"
+msgstr "grafika"
+
+msgid "hunt"
+msgstr "vadászat"
+
+#. name_0 of buildings:lumberjackcamp
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+#. name of buildings:potatofield
+msgid "potato field"
+msgstr "paradicsom mezők"
+
+msgid "seed"
+msgstr "mag"
+
+msgid "send"
+msgstr ""
+
+msgid "sheep"
+msgstr "bárány"
+
+#. name of buildings:signalfire
+msgid "signal fire"
+msgstr "jelző tűz"
+
+#. name of buildings:sugarfield
+msgid "sugar field"
+msgstr "cukor mező"
+
+#. There was a problem during the 'save game' procedure.
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+#. (text of widget: headline_network)
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr ""
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+#. (text of widget: headline_mouse)
+msgid "mouse"
+msgstr ""
+
+msgid "partner"
+msgstr "társ"
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+#. (text of widget: lbl_QUICKSAVE)
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr ""
+
+msgid "weapon"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "marha"
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+#. (text of widget: scenario)
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr "talált"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "gyógynövények"
+
+#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
+msgid "pause"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+#. (text of widget: quit) Completely shut down UH
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+#. (helptext of widget: okButton)
+msgid "apply"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr ""
+
+#. (text of widget: headline)
+#. (text of widget: headline_chat)
+#. (text of widget: lbl_CHAT)
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+#. (helptext of widget: diplomacyButton)
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+#. (text of widget: health)
+msgid "health"
+msgstr ""
+
+#. (text of widget: land_score)
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+#. (helptext of widget: player_name)
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+#. (text of widget: reset_mouse_sensitivity)
+msgid "reset to default"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr ""
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "trade partner"
+msgstr "kereskedő partner"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:alvearies
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+#. name of buildings:boatbuilder
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "citizens"
+msgstr "polgárok"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:claydeposit
+msgid "clay deposit"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+#. name of buildings:doctor
+msgid "doctor"
+msgstr "orvos"
+
+msgid "drag"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "education"
+msgstr "oktatás"
+
+msgid "ensure"
+msgstr "biztosít"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "raktár"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+#. (text of widget: loadgame)
+#. (text of widget: loadgame) Open a widget to select which game to load
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+#. (text of widget: lbl_QUICKLOAD)
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+#. (text of widget: random)
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+#. (text of widget: headline)
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (text of widget: running_costs_label)
+#. (text of widget: running_costs)
+msgid "running costs"
+msgstr "üzemeltetési ár"
+
+#. (text of widget: lbl_SCREENSHOT)
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr ""
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr ""
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+#~ msgid "your inhabitants"
+#~ msgstr "a lakosaid"
+
+#~ msgid "Unknown Horizons"
+#~ msgstr "Ismeretlen vizeken"
+
+#~ msgid "your"
+#~ msgstr "tiéd"
+
+#~ msgid "your settlement"
+#~ msgstr "a gyarmatod"
+
+# 88%
+#~ msgid "merchants"
+#~ msgstr "kereskedők"
+
+# 90%
+#~ msgid "aristocrats"
+#~ msgstr "arisztokraták"
+
+# 80%
+#~ msgid "grows"
+#~ msgstr "nő"
+
+#~ msgid "issues"
+#~ msgstr "kérdések"
+
+# hozam helyett inkább kitermelés
+#~ msgid "yield"
+#~ msgstr "kitermelés"
+
+#~ msgid "your ship"
+#~ msgstr "a te hajód"
+
+#~ msgid "unload"
+#~ msgstr "kirakodás"
+
+#~ msgid "condition"
+#~ msgstr "állapot"
+
+# 80%
+#~ msgid "hunts"
+#~ msgstr "vadászat"
 
 #~ msgid "branch office"
 #~ msgstr "fiókiroda"
 
-#~ msgid "main"
-#~ msgstr "fő"
-
-#~ msgid "unknown"
-#~ msgstr "ismeretlen"
-
-#~ msgid "free"
-#~ msgstr "szabad"
-
-#~ msgid "trader"
-#~ msgstr "kereskedő"
-
-#~ msgid "version"
-#~ msgstr "verzió"
-
-#~ msgid "signal"
-#~ msgstr "jelzés"
-
-#~ msgid "found"
-#~ msgstr "talált"
-
 #~ msgid "raw"
 #~ msgstr "nyers"
 
-#~ msgid "running"
-#~ msgstr "futás"
-
-#~ msgid "inventory"
-#~ msgstr "raktár"
-
 #~ msgid "moved"
 #~ msgstr "áthelyezve"
-
-#~ msgid "produced"
-#~ msgstr "termelt"
 
 #~ msgid "hunter"
 #~ msgstr "vadász"
 
 #~ msgid "market"
 #~ msgstr "piac"
-
-#~ msgid "partner"
-#~ msgstr "társ"
 
 #~ msgid "sailor"
 #~ msgstr "tengerész"
@@ -680,15 +1346,6 @@ msgstr "értékek"
 #~ msgid "fisherman"
 #~ msgstr "halász"
 
-#~ msgid "forum"
-#~ msgstr "fórum"
-
-#~ msgid "grow"
-#~ msgstr "növekedés"
-
-#~ msgid "hunt"
-#~ msgstr "vadászat"
-
 #~ msgid "load/unload"
 #~ msgstr "berakod/kirakod"
 
@@ -698,20 +1355,11 @@ msgstr "értékek"
 #~ msgid "starting"
 #~ msgstr "kezdés"
 
-#~ msgid "trade partner"
-#~ msgstr "kereskedő partner"
-
-#~ msgid "yields"
-#~ msgstr "hozam"
-
 #~ msgid "green"
 #~ msgstr "zőld"
 
 #~ msgid "red"
 #~ msgstr "piros"
-
-#~ msgid "no"
-#~ msgstr "nem"
 
 #~ msgid "dialogue"
 #~ msgstr "párbeszéd"
@@ -722,23 +1370,11 @@ msgstr "értékek"
 #~ msgid "salt ponds"
 #~ msgstr "sós tavak"
 
-#~ msgid "cattle"
-#~ msgstr "marha"
-
 #~ msgid "pig"
 #~ msgstr "malac"
-
-#~ msgid "herbs"
-#~ msgstr "gyógynövények"
 
 #~ msgid "herbary"
 #~ msgstr "gyógynövényes"
 
 #~ msgid "butchery"
 #~ msgstr "mészárszék"
-
-#~ msgid "doctor"
-#~ msgstr "orvos"
-
-#~ msgid "education"
-#~ msgstr "oktatás"
