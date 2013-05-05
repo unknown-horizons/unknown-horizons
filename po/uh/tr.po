@@ -6,21 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-12-17 22:51+0100\n"
-"PO-Revision-Date: 2012-12-18 18:13+0000\n"
-"Last-Translator: cuil <canumut87@gmail.com>\n"
+"POT-Creation-Date: 2013-04-09 05:16+0200\n"
+"PO-Revision-Date: 2013-03-01 18:01+0000\n"
+"Last-Translator: vgezer <volkangezer@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1355854397.0\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1362160917.0\n"
 
 #: run_uh.py
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons hata verdi ve kapatıldı."
+msgstr "Unknown Horizons çöktü."
 
 #: run_uh.py
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -61,491 +61,6 @@ msgstr ""
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Unkown Horizons'u kullandığınız için teşekkürler!"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "A new settlement was founded by {player}."
-msgstr "{player} tarafından yeni bir yerleşim yeri kuruldu."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "A new ship by the name of {name} has been created."
-msgstr "{name} adında yeni bir gemi yaratıldı."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "A new world has been created."
-msgstr "Yeni bir dünya yaratıldı."
-
-#. This is a database entry: the name of an inhabitant tier (level).
-#: database files sql
-msgid "Aristocrats"
-msgstr "Ariktokratlar"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Cannot go here."
-msgstr "Buraya gidemez."
-
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
-#: database files horizons/i18n/objecttranslations.py sql
-msgid "Citizens"
-msgstr "Vatandaşlar"
-
-#. This is a database entry: the name of an inhabitant tier (level).
-#: database files sql
-msgid "Merchants"
-msgstr "Tüccarlar"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Tarım alanlarınızdan birinde hasat yapılması için çiftlik lazım."
-
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
-#: database files horizons/i18n/objecttranslations.py sql
-msgid "Pioneers"
-msgstr "Öncüler"
-
-#. This is a database entry: the name of an inhabitant tier (level).
-#: database files sql
-msgid "Sailors"
-msgstr "Denizciler"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "Screenshot has been saved to {file}."
-msgstr "Ekran görüntüsü {file}'a kaydedildi."
-
-#. (text of widget: settler_score)
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
-#: database files horizons/i18n/guitranslations.py
-#: horizons/i18n/objecttranslations.py sql
-msgid "Settlers"
-msgstr "Göçmenler"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "Yerlilerden bazılarının ana meydana ulaşamıyor."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Some of your inhabitants just moved out."
-msgstr "Bazı yerliler şehirden ayrıldı."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
-msgstr ""
-"Rota ayarlandı. \"Rotayı ayarla\" menüsündeki  \"Rotayı başlat\" butonuna "
-"tıklayarak başlatabilirsiniz."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "You can also drag roads."
-msgstr "Yolları da sürükleyebilirsiniz."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Ambarınızı yıkamazsınız, yerleşim alanının buna ihtiyacı var."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "You failed the scenario."
-msgstr "Senaryoyu tamamlayamadınız."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
-"Şimdilik maksimum seviyeye ulaştınız. Halkınız daha fazla gelişemeyecek."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "You need more {resource} to build this building."
-msgstr "Bu bina için daha fazla {resource}'a gereksiniminiz var."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "You won!"
-msgstr "Kazandın!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Your building has caught fire!"
-msgstr "Binanda yangın çıktı!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Your crew refuses to leave this map."
-msgstr "Tayfanız bu haritayı terketmek istemiyor."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Your game has been autosaved."
-msgstr "Oyunun otomatik olarak kaydedildi."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Your game has been quicksaved."
-msgstr "Oyun kaydedildi."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Your game has been saved."
-msgstr "Oyun kaydedildi."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "Yerliler {}. seviyeye ulaştı."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-msgid "Your mine has run out of resources."
-msgstr "Madeninizde kaynak kalmadı."
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "acorns"
-msgstr "palamut"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "alvearies"
-msgstr "arı kovanları"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "boards"
-msgstr "paneller"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "bricks"
-msgstr "tuğlalar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "candles"
-msgstr "mumlar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "cannon"
-msgstr "top"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "cattle"
-msgstr "sığır"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "cattle for slaughter"
-msgstr "kasaplık et"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "charcoal"
-msgstr "kömür"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "clay"
-msgstr "kil"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "clay deposit"
-msgstr "kil yatağı"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "cocoa"
-msgstr "kakao"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "cocoa beans"
-msgstr "kakao taneleri"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "coins"
-msgstr "bozunluklar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "community"
-msgstr "topluluk"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "condiments"
-msgstr "çeşni"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "confectionery"
-msgstr "şekerleme fabrikası"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "corn"
-msgstr "mısır"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "dagger"
-msgstr "kama"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "deer food A"
-msgstr "geyik yemeği A"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "deer meat"
-msgstr "geyik eti"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "education"
-msgstr "eğitim"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "faith"
-msgstr "inanç"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "fire"
-msgstr "ateş"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "fish"
-msgstr "balık"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "flour"
-msgstr "un"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "food"
-msgstr "yemek"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "get-together"
-msgstr "birliktelik"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "grain"
-msgstr "tahıl"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "grapes"
-msgstr "üzüm"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "grass"
-msgstr "çim"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "happiness"
-msgstr "mutluluk"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "herbs"
-msgstr "şifalı otlar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "honeycombs"
-msgstr "bal peteği"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "iron deposit"
-msgstr "demir yatağı"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "iron ingots"
-msgstr "demir külçesi"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "iron ore"
-msgstr "demir cevheri"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "lamb wool"
-msgstr "kuzu yünü"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "liquor"
-msgstr "içki"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "medical herbs"
-msgstr "tıbbi otlar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "pigs"
-msgstr "domuzlar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "pigs for slaughter"
-msgstr "kasaplık domuz"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "potatoes"
-msgstr "patates"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "salt"
-msgstr "tuz"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "spice plants"
-msgstr "baharatlık bitkiler"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "spices"
-msgstr "baharatlar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "stone deposit"
-msgstr "taş yatağı"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "stone tops"
-msgstr "taş kapaklar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "sugar"
-msgstr "şeker"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "sugar cane"
-msgstr "şeker kamışı"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "textile"
-msgstr "tekstil"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "tobacco leaves"
-msgstr "tütün yaprağı"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "tobacco plants"
-msgstr "tütün bitkisi"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "tobaccos"
-msgstr "tütün"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "tools"
-msgstr "aletler"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "trees"
-msgstr "ağaçlar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "vines"
-msgstr "asmalar"
-
-#. This is a database entry: the name of a resource.
-#: database files sql
-msgid "wool"
-msgstr "yün"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} ve {player2} müttefik oldular."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} ve {player2} savaşı sonlandırıp müttefik oldular."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
-msgstr "{player1} ve {player2} ittifakı sonlandırıp savaşa başladılar."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} ve {player2} düşman oldular."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} ve {player2} ittifaklarını sonlandırdılar."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} ve {player2} ölümüne savaşa başladılar."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: database files sql
-#, python-format
-msgid "{player}: {message}"
-msgstr "{player}: {message}"
-
 #: horizons/command/game.py
 msgid "Invalid filename"
 msgstr "Geçersiz dosya adı"
@@ -555,12 +70,12 @@ msgid "Received an invalid filename for a save command."
 msgstr "Kaydetme komutu için verilen dosya adı geçersiz."
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py horizons/gui/gui.py
-#: horizons/gui/ingamegui.py horizons/gui/modules/multiplayermenu.py
+#: horizons/command/game.py horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/pausemenu.py horizons/mpsession.py
 msgid "Error"
 msgstr "Hata"
 
-#: horizons/command/game.py horizons/gui/gui.py
+#: horizons/command/game.py horizons/gui/modules/pausemenu.py
 msgid "Failed to save."
 msgstr "Kaydedilemedi."
 
@@ -599,6 +114,23 @@ msgstr "Ticaret ortağının parası bu ürünü almaya yetmiyor."
 #: horizons/component/tradepostcomponent.py
 msgid "The trade partner does not buy more of this."
 msgstr "Ticaret ortağı bu üründen daha fazla satın almıyor."
+
+#: horizons/editor/session.py horizons/spsession.py
+msgid "Failed to quicksave."
+msgstr "Hızlı kaydet başarısız."
+
+#: horizons/editor/session.py horizons/spsession.py
+msgid "An error happened during quicksave."
+msgstr ""
+
+#: horizons/editor/session.py
+msgid "Your map has not been saved."
+msgstr ""
+
+#: horizons/editor/session.py horizons/spsession.py
+#, python-format
+msgid "If this error happens again, please contact the development team: {website}"
+msgstr ""
 
 #: horizons/engine/settingsdialog.py
 msgid "Restart required"
@@ -645,6 +177,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"SDL hazırlayıcısı, sadece bir geri düşüş çözümü amaçlıdır ve ciddi grafiksel "
+"sorunları bulunmaktadır. \n"
+"\n"
+"Kendi riskinizle kullanın!"
 
 #: horizons/engine/settingshandler.py
 msgid "Invalid network port"
@@ -697,27 +233,6 @@ msgstr "Unknown Horizons oyunundan çıkmak istediğinizden emin misiniz?"
 msgid "Quit Game"
 msgstr "Oyundan çık"
 
-#: horizons/gui/gui.py
-msgid "Are you sure you want to abort the running session?"
-msgstr "Bu oturumu kapatmak istediğinizden emin misiniz?"
-
-#: horizons/gui/gui.py
-msgid "Quit Session"
-msgstr "Oturumu Kapat"
-
-#: horizons/gui/gui.py
-msgid "Details: {error_details}"
-msgstr "Ayrıntılar: {error_details}"
-
-#: horizons/gui/gui.py
-msgid "Error: {error_message}"
-msgstr "Hata: {error_message}"
-
-#: horizons/gui/ingamegui.py horizons/gui/tabs/mainsquaretabs.py
-#: horizons/gui/widgets/playerssettlements.py
-msgid "Click to change the name of your settlement"
-msgstr "Yerleşim biriminizin adını değiştirmek için tıklayın"
-
 #: horizons/gui/ingamegui.py
 msgid "No diplomacy possible"
 msgstr "Diplomasi mümkün değil"
@@ -726,17 +241,9 @@ msgstr "Diplomasi mümkün değil"
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Başka oyuncular olmadığı için diplomasi yapılamaz."
 
-#: horizons/gui/ingamegui.py
-#, python-format
-msgid "Valid map names are in the following form: {expression}"
-msgstr "Geçerli harita adları şu biçimde olmalı: {expression}"
-
-#: horizons/gui/ingamegui.py
-#, python-format
-msgid "Try a name that only contains letters and numbers."
-msgstr "sadece harf ve rakam içeren bir isim deneyiniz."
-
+#. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py
+#, python-format
 msgid "{size}x{size} tiles"
 msgstr "{size}x{size} karo"
 
@@ -744,6 +251,56 @@ msgstr "{size}x{size} karo"
 #: horizons/gui/modules/help.py
 msgid "[{key}] = {text}"
 msgstr "[{key}] = {text}"
+
+#: horizons/gui/modules/ingame.py horizons/gui/tabs/mainsquaretabs.py
+#: horizons/gui/widgets/playerssettlements.py
+msgid "Click to change the name of your settlement"
+msgstr "Yerleşim biriminizin adını değiştirmek için tıklayın"
+
+#. translators: these are descriptions of the current task while loading a game
+#: horizons/gui/modules/loadingscreen.py
+msgid "Starting engine..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Catching fish..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Drawing user interface..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Activating timer..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Chomping game data..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Shaping islands..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Preparing blueprints..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Filling world with water..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Raising animals..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Convincing AI..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Burying treasures..."
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Unable to find pyenet"
@@ -766,7 +323,7 @@ msgid "Failed to initialize networking."
 msgstr "Ağ oluşturma başarısız."
 
 #: horizons/gui/modules/multiplayermenu.py
-#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py horizons/mpsession.py
 msgid "Fatal Network Error"
 msgstr " Ağ Hatası"
 
@@ -780,71 +337,37 @@ msgstr ""
 "Lütfen Internet bağlantınızı kontrol edin. Bağlantınız çalışıyorsa şu anda "
 "ana sunucumuzda geçici bir sorun olabilir."
 
-#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py horizons/mpsession.py
 msgid "Something went wrong with the network:"
 msgstr "Ağda bir sorun oluştu."
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "Kicked"
-msgstr "Atıldı"
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "You have been kicked from the game by creator"
-msgstr "Oyun sahibi tarafından oyundan atıldınız"
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "{player} got kicked by creator"
-msgstr "{player} oyun sahibi tarafından oyundan atıldı"
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "Terminated"
-msgstr "Sonlandırıldı"
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Version differs!"
 msgstr "Versiyon farklı"
 
 #: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Harita: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
 msgid "Name: {game_name}"
 msgstr "Oyun adı: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
 msgid "Creator: {game_creator}"
 msgstr "Yaratan: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Oyuncular: {player_amount}/{player_limit}"
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "This savegame is missing (click here)"
-msgstr "Bu kayıtlı oyun bulunamadı (buraya tıklayın)"
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "For multiplayer load, it is necessary for you to have the correct savegame file."
-msgstr "Çok oyunculu yükleme için doğru bir kayıt dosyası gerekiyor."
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "The file will be downloaded when the game starts."
-msgstr "Dosya, oyun başladığında indirilecek."
-
-#. (text of widget: help)
-#. (text of widget: help_label) Main / in-game menu entry
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
-msgid "Help"
-msgstr "Yardım"
-
-#: horizons/gui/modules/multiplayermenu.py
-msgid "This is a savegame."
-msgstr "Bu bir kayıtlı oyun."
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Wrong version"
@@ -858,6 +381,22 @@ msgstr ""
 "oyuncuların kullandığı sürüm aynı olmalıdır. Tüm oyuncular son versiyona "
 "yüksektilse bu sorun çözülebilir. Oyunun sürümü: {game_version} Sizin "
 "sürümünüz: {own_version}"
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
+#, python-format
+msgid "Recommended number of players: {number}"
+msgstr "Önerilen oyuncu sayısı: {number}"
+
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
+msgid "Click here to change your name and/or color"
+msgstr "Adınızı ve/veya renginizi değiştirmek için buraya tıklayınız."
+
+#: horizons/gui/modules/multiplayermenu.py
+#, python-format
+msgid "Kick {player}"
+msgstr "{player} adlı oyuncuyu kov"
 
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
@@ -907,31 +446,25 @@ msgid "{player} changed their color"
 msgstr "{player} rengini değiştirdi"
 
 #: horizons/gui/modules/multiplayermenu.py
-msgid "You fetched the savegame data"
-msgstr "Kayıtlı oyun verisini yüklediniz"
+msgid "Kicked"
+msgstr "Atıldı"
 
 #: horizons/gui/modules/multiplayermenu.py
-#: horizons/gui/modules/singleplayermenu.py
+msgid "You have been kicked from the game by creator"
+msgstr "Oyun sahibi tarafından oyundan atıldınız"
+
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
-msgid "Recommended number of players: {number}"
-msgstr "Önerilen oyuncu sayısı: {number}"
+msgid "{player} got kicked by creator"
+msgstr "{player} oyun sahibi tarafından oyundan atıldı"
 
-#: horizons/gui/modules/multiplayermenu.py
-#: horizons/gui/modules/multiplayermenu.py
-msgid "Click here to change your name and/or color"
-msgstr "Adınızı ve/veya renginizi değiştirmek için buraya tıklayınız."
+#: horizons/gui/modules/pausemenu.py
+msgid "Are you sure you want to abort the running session?"
+msgstr "Bu oturumu kapatmak istediğinizden emin misiniz?"
 
-#: horizons/gui/modules/multiplayermenu.py
-msgid "Kick {player}"
-msgstr "{player} adlı oyuncuyu kov"
-
-#: horizons/gui/modules/select_savegame.py
-msgid "No saved games"
-msgstr "Kayıtlı oyun yok"
-
-#: horizons/gui/modules/select_savegame.py
-msgid "There are no saved games to load."
-msgstr "Yüklenecek bir kayıtlı oyun yok."
+#: horizons/gui/modules/pausemenu.py
+msgid "Quit Session"
+msgstr "Oturumu Kapat"
 
 #. (text of widget: savegame)
 #: horizons/gui/modules/select_savegame.py
@@ -946,6 +479,20 @@ msgstr "Oyunu kaydet"
 msgid "Load game"
 msgstr "Oyunü yükle"
 
+#. (text of widget: savegame)
+#: horizons/gui/modules/select_savegame.py
+#: horizons/i18n/guitranslations.py
+msgid "Save map"
+msgstr "Haritayı kaydet"
+
+#: horizons/gui/modules/select_savegame.py
+msgid "No saved games"
+msgstr "Kayıtlı oyun yok"
+
+#: horizons/gui/modules/select_savegame.py
+msgid "There are no saved games to load."
+msgstr "Yüklenecek bir kayıtlı oyun yok."
+
 #: horizons/gui/modules/select_savegame.py
 msgid "No filename given"
 msgstr "Dosya adı verilmedi"
@@ -954,12 +501,15 @@ msgstr "Dosya adı verilmedi"
 msgid "Please enter a valid filename."
 msgstr "Lütfen geçerli bir dosya adı girin"
 
-#. reshow dialog
-#. savegamename already exists
 #: horizons/gui/modules/select_savegame.py
 #, python-format
-msgid "A savegame with the name '{name}' already exists."
-msgstr "'{name}' isimli bir kayıtlı oyun zaten var."
+msgid "A savegame with the name {name} already exists."
+msgstr ""
+
+#: horizons/gui/modules/select_savegame.py
+#, python-format
+msgid "A map with the name {name} already exists."
+msgstr ""
 
 #: horizons/gui/modules/select_savegame.py
 msgid "Overwrite it?"
@@ -969,10 +519,6 @@ msgstr "Üstüne yazılsın mı?"
 #: horizons/gui/modules/select_savegame.py
 msgid "Confirmation for overwriting"
 msgstr "Üstüne yazma onayı"
-
-#: horizons/gui/modules/select_savegame.py
-msgid "Invalid filename given"
-msgstr "Geçersiz dosya adı verildi"
 
 #: horizons/gui/modules/select_savegame.py
 msgid "Unknown savedate"
@@ -1039,6 +585,10 @@ msgid "You entered an invalid playername."
 msgstr "Geçersiz bir kullanıcı adı girdiniz"
 
 #: horizons/gui/modules/singleplayermenu.py
+msgid "Resource density:"
+msgstr "Kaynak yoğunluğu:"
+
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Map size:"
 msgstr "Harita boyutu:"
 
@@ -1059,8 +609,8 @@ msgid "Island size deviation:"
 msgstr "Ada boyutu sapması:"
 
 #: horizons/gui/modules/singleplayermenu.py
-msgid "Resource density:"
-msgstr "Kaynak yoğunluğu:"
+msgid "Click to generate a different random map"
+msgstr "Rasgele harita yaratmak için buraya tıklayınız."
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "Invalid scenario file"
@@ -1093,13 +643,9 @@ msgstr "Yazar: {author}"
 msgid "Description: {desc}"
 msgstr "Tanım: {desc}"
 
-#. dialog already gone
-#: horizons/gui/modules/singleplayermenu.py
-msgid "Click to generate a different random map"
-msgstr "Rasgele harita yaratmak için buraya tıklayınız."
-
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py
+#, python-format
 msgid "Build {building}"
 msgstr "{building} inşa et."
 
@@ -1112,6 +658,7 @@ msgid "Boat builder overview"
 msgstr "Tekne yapıcısı genel görünümü"
 
 #: horizons/gui/tabs/boatbuildertabs.py
+#, python-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (Sıradaki yeri: {place})"
 
@@ -1155,6 +702,18 @@ msgstr "Genel görünüm"
 #: horizons/gui/tabs/buildrelatedtab.py
 msgid "Build related buildings"
 msgstr "İlgili binaları inşa et"
+
+#. Add necessary resources to tooltip
+#. [br] means newline
+#: horizons/gui/tabs/buildtabs.py
+msgid "Resources needed:"
+msgstr ""
+
+#. You usually do not need to change anything here when translating
+#: horizons/gui/tabs/buildtabs.py
+#, python-format
+msgid "{resource}: {amount}"
+msgstr ""
 
 #. (helptext of widget: trade)
 #. (text of widget: headline)
@@ -1275,11 +834,11 @@ msgstr "Ticaret yapan en yakın ambar çok uzakta"
 
 #: horizons/gui/tabs/shiptabs.py
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Silahlı ticaret gemisi edinilemez."
 
 #: horizons/gui/tabs/shiptabs.py
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "Silahlı ticaret gemisi kuşanmak mümkün değil."
 
 #: horizons/gui/tabs/shiptabs.py
 msgid "Equip weapon"
@@ -1303,6 +862,21 @@ msgstr "memnun"
 #: horizons/gui/util.py horizons/i18n/guitranslations.py
 msgid "happy"
 msgstr "mutlu"
+
+#: horizons/gui/widgets/imagefillstatusbutton.py
+#, python-format
+msgid "{resource_name}: {price} gold"
+msgstr ""
+
+#: horizons/gui/widgets/imagefillstatusbutton.py
+#, python-format
+msgid "buy for {buyprice} gold"
+msgstr ""
+
+#: horizons/gui/widgets/imagefillstatusbutton.py
+#, python-format
+msgid "sell for {sellprice} gold"
+msgstr ""
 
 #: horizons/gui/widgets/inventory.py
 #, python-format
@@ -1347,29 +921,28 @@ msgid "Graphics"
 msgstr "Grafikler"
 
 #: horizons/gui/widgets/pickbeltwidget.py
-#, fuzzy
 msgid "Game"
-msgstr "İsim"
+msgstr "Oyun"
 
 #: horizons/gui/widgets/playerssettlements.py
 #, python-format
 msgid "Settlements of {player}"
-msgstr ""
+msgstr "{player} oyuncusunun köyleri"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py
 #: horizons/i18n/guitranslations.py
 msgid "Total"
-msgstr ""
+msgstr "Toplam"
 
 #: horizons/gui/widgets/playersships.py
 #, python-format
 msgid "Ships of {player}"
-msgstr ""
+msgstr "{player} oyuncusunun gemileri"
 
 #: horizons/gui/widgets/playersships.py
 msgid "Click to change the name of this ship"
-msgstr ""
+msgstr "Bu geminin adını değiştirmek için tıklayın"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py
@@ -1400,10 +973,14 @@ msgstr "Fabrika ayarlarına geri dön"
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
+"Bu köyün görüntülenen kaynaklarını, kaydettiğiniz varsayılan yapılandırmaya "
+"sıfırla."
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
 msgstr ""
+"Varsayılan yapılandırmayı (burada gördüğünüz), tüm köyler için fabrika "
+"varsayılanlarına sıfırla."
 
 #. (helptext of widget: running_costs_label)
 #. (helptext of widget: running_costs)
@@ -1432,7 +1009,6 @@ msgstr "İşletme giderleri"
 #. (text of widget: taxes)
 #: horizons/gui/widgets/resourceoverviewbar.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Taxes"
 msgstr "Vergiler"
 
@@ -1451,7 +1027,8 @@ msgid "Balance"
 msgstr "Bilanço"
 
 #. (helptext of widget: start_route) Trade route
-#: horizons/gui/widgets/routeconfig.py horizons/i18n/guitranslations.py
+#: horizons/gui/widgets/routeconfig.py
+#: horizons/i18n/guitranslations.py
 msgid "Start route"
 msgstr "Rotayı başlat"
 
@@ -1483,9 +1060,32 @@ msgstr "Gemiden indiriliyor"
 msgid "You are not allowed to trade with this player"
 msgstr "Bu oyuncu ile ticaret yapamazsınız"
 
+#. You usually do not need to change anything here when translating
+#: horizons/gui/widgets/unitoverview.py
+#, python-format
+msgid "{weapon}: {amount}"
+msgstr ""
+
 #: horizons/gui/widgets/unitoverview.py
 msgid "none"
 msgstr "hiçbiri"
+
+#: horizons/gui/windows.py
+#, python-format
+msgid "Details: {error_details}"
+msgstr "Ayrıntılar: {error_details}"
+
+#: horizons/gui/windows.py
+#, python-format
+msgid "Error: {error_message}"
+msgstr "Hata: {error_message}"
+
+#. (text of widget: help)
+#. (text of widget: help_label) Main / in-game menu entry
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
+msgid "Help"
+msgstr "Yardım"
 
 #. (text of widget: loadgame)
 #: horizons/i18n/guitranslations.py
@@ -1496,12 +1096,6 @@ msgstr "Haritayı yükle"
 #: horizons/i18n/guitranslations.py
 msgid "Exit editor"
 msgstr "Düzenleyiciden çık"
-
-#. (text of widget: savegame)
-#. (text of widget: headline_change_name)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-msgid "Save map"
-msgstr "Haritayı kaydet"
 
 #. (text of widget: settings)
 #. (text of widget: settings_label) Main / in-game menu entry
@@ -1515,15 +1109,20 @@ msgstr "Ayarlar"
 msgid "Return to editor"
 msgstr "Düzenleyiciye geri dön"
 
-#. (text of widget: enter_new_name_lbl)
+#. (text of widget: cursor_hint)
 #: horizons/i18n/guitranslations.py
-msgid "Enter name:"
-msgstr "İsim giriniz:"
+msgid "(right click to stop)"
+msgstr ""
 
-#. (helptext of widget: okButton)
+#. (text of widget: headline_brush_size)
 #: horizons/i18n/guitranslations.py
-msgid "Save the map"
-msgstr "Haritayı kaydet"
+msgid "Select brush size:"
+msgstr ""
+
+#. (text of widget: headline_terrain)
+#: horizons/i18n/guitranslations.py
+msgid "Select terrain:"
+msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
@@ -1696,22 +1295,22 @@ msgstr "Devam Et"
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py
 msgid "ally"
-msgstr ""
+msgstr "ittifak"
 
 #. (text of widget: enemy_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py
 msgid "enemy"
-msgstr ""
+msgstr "düşman"
 
 #. (text of widget: neutral_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py
 msgid "neutral"
-msgstr ""
+msgstr "tarafsız"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Building overview"
-msgstr ""
+msgstr "İnşa etme görünümü"
 
 #. (helptext of widget: capacity_utilization_label)
 #. (helptext of widget: capacity_utilization)
@@ -1720,22 +1319,22 @@ msgstr ""
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Capacity utilization"
-msgstr ""
+msgstr "Kapasite kullanımı"
 
 #. (text of widget: headline_happiness_per_house)
 #: horizons/i18n/guitranslations.py
 msgid "Happiness per house"
-msgstr ""
+msgstr "Her evdeki mutluluk"
 
 #. (text of widget: headline_residents_per_house)
 #: horizons/i18n/guitranslations.py
 msgid "Residents per house"
-msgstr ""
+msgstr "Her evdeki oturan"
 
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py
 msgid "Summary"
-msgstr ""
+msgstr "Özet"
 
 #. (text of widget: houses)
 #: horizons/i18n/guitranslations.py
@@ -1883,20 +1482,18 @@ msgstr "Ticaret geçmişi"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Select resources:"
-msgstr "Kaynak seç: "
+msgstr "Kaynakları seç:"
 
 #. (text of widget: headline_balance_label)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Balance:"
-msgstr "Bilanço"
+msgstr "Bakiye:"
 
 #. (text of widget: headline_expenses_label)
 #: horizons/i18n/guitranslations.py
 msgid "Expenses:"
-msgstr ""
+msgstr "Harcamalar:"
 
 #. (text of widget: headline_income_label)
 #: horizons/i18n/guitranslations.py
@@ -1932,16 +1529,19 @@ msgstr "Kaynak seç: "
 #: horizons/i18n/guitranslations.py
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
+"Geçerli kaynak yapılandırmasını tüm köyler için varsayılan olarak kaydet."
 
 #. (helptext of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "Tüm köyleri varsayılan kaynak yapılandırmasına sıfırla."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
 msgstr ""
+"Seçtiğiniz kaynak, şimdiki yerine görüntülenecek. X üzerine tıklayarak "
+"boşaltın."
 
 #. (helptext of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py
@@ -1976,12 +1576,12 @@ msgstr "Yerleşim yerlerim"
 #. (text of widget: stats_ships)
 #: horizons/i18n/guitranslations.py
 msgid "My ships"
-msgstr ""
+msgstr "Gemilerim"
 
 #. (text of widget: weird_button_1) Displays all notifications and game messages
 #: horizons/i18n/guitranslations.py
 msgid "Whole world"
-msgstr ""
+msgstr "Tüm dünya"
 
 #. (text of widget: weird_button_4) Sends the chat messages to all players (default)
 #: horizons/i18n/guitranslations.py
@@ -2017,7 +1617,7 @@ msgstr "Sonraki girdileri oku"
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py
 msgid "Route activity:"
-msgstr ""
+msgstr "Rota etkinliği:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py
@@ -2071,6 +1671,14 @@ msgstr "İsim"
 #: horizons/i18n/guitranslations.py
 msgid "Resources"
 msgstr "Kaynaklar"
+
+#. (text of widget: settler_score)
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql-database-files
+msgid "Settlers"
+msgstr "Göçmenler"
 
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py
@@ -2169,49 +1777,49 @@ msgstr "Dingin"
 #. (text of widget: headline_choose_map_size_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Choose a map size:"
-msgstr ""
+msgstr "Bir harita boyutu seçin:"
 
 #. (text of widget: headline_choose_map_lbl)
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Choose a map:"
-msgstr ""
+msgstr "Bir harita seçin:"
 
-#. (text of widget: headline_choose_saved_game_lbl)
+#. (text of widget: headline_choose_saved_game)
 #: horizons/i18n/guitranslations.py
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Bir kayıtlı oyun haritası seçin:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Select map source"
-msgstr ""
+msgstr "Kaynak haritasını seçin"
 
 #. (text of widget: create_new_map)
 #: horizons/i18n/guitranslations.py
 msgid "Create new map"
-msgstr ""
+msgstr "Yeni harita oluştur"
 
 #. (text of widget: load_existing_map)
 #: horizons/i18n/guitranslations.py
 msgid "Load existing map"
-msgstr ""
+msgstr "Mevcut haritayı yükle"
 
 #. (text of widget: load_saved_game_map)
 #: horizons/i18n/guitranslations.py
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Kayıtlı haritayı yükle"
 
 #. (helptext of widget: cancel)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
 msgid "Exit to main menu"
-msgstr ""
+msgstr "Ana menüye çık"
 
 #. (helptext of widget: okay)
 #: horizons/i18n/guitranslations.py
 msgid "Start editor"
-msgstr ""
+msgstr "Düzenleyiciyi başlat"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
@@ -2225,7 +1833,7 @@ msgstr "İnşaat menüsünü göster"
 
 #. (text of widget: lbl_CONSOLE)
 #: horizons/i18n/guitranslations.py
-msgid "Toggle console on/off"
+msgid "Display FPS counter"
 msgstr ""
 
 #. (text of widget: lbl_COORD_TOOLTIP)
@@ -2251,12 +1859,12 @@ msgstr "Pencereyi kapat"
 #. (text of widget: lbl_GRID)
 #: horizons/i18n/guitranslations.py
 msgid "Toggle grid on/off"
-msgstr ""
+msgstr "Izgarayı aç/kapat"
 
 #. (text of widget: lbl_HEALTH_BAR)
 #: horizons/i18n/guitranslations.py
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Sağlık çubuğunun aç/kapat"
 
 #. (text of widget: lbl_HELP)
 #: horizons/i18n/guitranslations.py
@@ -2271,32 +1879,32 @@ msgstr "Sola kaydır"
 #. (text of widget: lbl_LOGBOOK)
 #: horizons/i18n/guitranslations.py
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "Kaptanın günlüğünü aç/kapat"
 
 #. (text of widget: lbl_PAUSE)
 #: horizons/i18n/guitranslations.py
 msgid "Pause game"
-msgstr ""
+msgstr "Oyunu beklet"
 
 #. (text of widget: lbl_PIPETTE)
 #: horizons/i18n/guitranslations.py
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "Pipet kipini aç (binaları çoğalt)"
 
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
 #: horizons/i18n/guitranslations.py
 msgid "Show player scores"
-msgstr ""
+msgstr "Oyuncu puanlarını göster"
 
 #. (text of widget: lbl_QUICKLOAD)
 #: horizons/i18n/guitranslations.py
 msgid "Quickload"
-msgstr ""
+msgstr "Hızlı Yükle"
 
 #. (text of widget: lbl_QUICKSAVE)
 #: horizons/i18n/guitranslations.py
 msgid "Quicksave"
-msgstr ""
+msgstr "Hızlı Kaydet"
 
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py
@@ -2341,18 +1949,17 @@ msgstr "Birden fazla bina yerleştirmek için basılı tut"
 #. (text of widget: lbl_SHIPS_OVERVIEW)
 #: horizons/i18n/guitranslations.py
 msgid "Show ship list"
-msgstr ""
+msgstr "Gemi listesini göster"
 
 #. (text of widget: lbl_SHOW_SELECTED)
 #: horizons/i18n/guitranslations.py
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "Kamerayı seçime odakla"
 
 #. (text of widget: lbl_SPEED_DOWN)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Decrease game speed"
-msgstr "Oyun hızını arttır"
+msgstr "Oyun hızını azalt"
 
 #. (text of widget: lbl_SPEED_UP)
 #: horizons/i18n/guitranslations.py
@@ -2362,12 +1969,12 @@ msgstr "Oyun hızını arttır"
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Döşeme sahipliğini vurgula"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "Çevreleyen binaların saydamlığını değiştir"
 
 #. (text of widget: lbl_UP)
 #: horizons/i18n/guitranslations.py
@@ -2431,21 +2038,19 @@ msgstr "Oyunun adı:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Create game - Multiplayer"
-msgstr "Yeni Oyun - Çoklu oyuncu"
+msgstr "Oyun oluştur - Çoklu oyuncu"
 
 #. (text of widget: mp_player_limit_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Player limit:"
-msgstr ""
+msgstr "Oyuncu sınırı:"
 
 #. (text of widget: password_lbl)
 #. (text of widget: gamepassword_lbl)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Password of the game:"
-msgstr "Oyunun şifresi"
+msgstr "Oyunun şifresi:"
 
 #. (helptext of widget: cancel)
 #: horizons/i18n/guitranslations.py
@@ -2460,7 +2065,7 @@ msgstr "Yeni oyun yarat"
 #. (helptext of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "This will be displayed to other players so they recognize the game."
-msgstr ""
+msgstr "Bu, diğer oyuncuların oyunu tanıyabilmesi için gösterilecek."
 
 #. (helptext of widget: password_lbl)
 #: horizons/i18n/guitranslations.py
@@ -2495,12 +2100,12 @@ msgstr "Oyun lobisi"
 #. (text of widget: ready_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Ready:"
-msgstr ""
+msgstr "Hazır:"
 
 #. (text of widget: startmessage)
 #: horizons/i18n/guitranslations.py
 msgid "Game details:"
-msgstr ""
+msgstr "Oyun ayrıntıları:"
 
 #. (helptext of widget: cancel)
 #: horizons/i18n/guitranslations.py
@@ -2512,21 +2117,16 @@ msgstr "Oyun alanından çık"
 msgid "Sets your state to ready (necessary for the game to start)"
 msgstr "Size hazır durumuna geçirir (oyunun başlaması için gereklidir)"
 
-#. (text of widget: active_games_lbl)
-#: horizons/i18n/guitranslations.py
-msgid "Active games:"
-msgstr "Etkin oyunlar:"
-
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Main menu:"
 msgstr "Ana menü:"
 
-#. (text of widget: game_showonlyownversion)
+#. (text of widget: headline_active_games_lbl)
 #: horizons/i18n/guitranslations.py
-msgid "Only show games with the same version:"
-msgstr "Sadece aynı sürüme sahip oyunları göster:"
+msgid "Active games:"
+msgstr "Etkin oyunlar:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py
@@ -2596,17 +2196,17 @@ msgstr "Gemiyi otomatik olarak boşalt:"
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Her şu dakikada otomatik kaydet:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py
 msgid "Color depth:"
-msgstr ""
+msgstr "Renk derinliği:"
 
 #. (text of widget: cursor_centered_zoom_label)
 #: horizons/i18n/guitranslations.py
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "İmleç merkezli yakınlaştırma:"
 
 #. (text of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py
@@ -2616,7 +2216,7 @@ msgstr "Kayıtlamayı aç:"
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "Harita kenarında kaydır:"
 
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py
@@ -2656,7 +2256,7 @@ msgstr "Kayıt"
 #. (text of widget: headline_sound)
 #: horizons/i18n/guitranslations.py
 msgid "Sound"
-msgstr ""
+msgstr "Ses"
 
 #. (text of widget: middle_mouse_pan_lbl)
 #: horizons/i18n/guitranslations.py
@@ -2666,12 +2266,12 @@ msgstr "Farenin orta düğmesi:"
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Küçük haritayı harita ile döndür:"
 
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py
 msgid "Mouse sensitivity:"
-msgstr ""
+msgstr "Fare hassasiyeti:"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py
@@ -2696,7 +2296,7 @@ msgstr "Hızlı kayıt sayısı:"
 #. (text of widget: quote_type_label)
 #: horizons/i18n/guitranslations.py
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "Alıntı türü seçin:"
 
 #. (text of widget: screen_fullscreen_text)
 #: horizons/i18n/guitranslations.py
@@ -2731,12 +2331,12 @@ msgstr "Durdurulmamış bina:"
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py
 msgid "Used renderer:"
-msgstr ""
+msgstr "Kullanılan hazırlayıcı:"
 
 #. (helptext of widget: cancelButton)
 #: horizons/i18n/guitranslations.py
 msgid "Discard current changes"
-msgstr ""
+msgstr "Geçerli değişiklikleri iptal et"
 
 #. (helptext of widget: defaultButton)
 #: horizons/i18n/guitranslations.py
@@ -2751,37 +2351,44 @@ msgstr "Uygula"
 #. (helptext of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Bir köy kurduktan sonra geminin boşaltılıp boşaltılmayacağı"
 
 #. (helptext of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Eğer 0 ise, sürücü varsayılanını kullan"
 
 #. (helptext of widget: cursor_centered_zoom_label)
 #: horizons/i18n/guitranslations.py
 msgid "When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center."
 msgstr ""
+"Etkin ise, fare tekerleği ile yakınlaştırma, imleç konumunu yeni bakış "
+"noktası merkezi olarak kullanacak. Kapalı ise, her zaman geçerli bakış "
+"noktası merkezine odaklan."
 
 #. (helptext of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Normal oyun oturumunda kullanma. Kullanıcı dizininizin günlük klasörüne hata "
+"çözme bilgisini yazıp yazmamasına karar verir. Oyunu yavaşlatır."
 
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
+"Fare imleci harita kenarlarına geldiğinde bakış noktasının hareket ettirilip "
+"ettirilmemesi."
 
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Kullanılan azami kare oranını ayarla. Varsayılan: 60 fps."
 
 #. (helptext of widget: middle_mouse_pan_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "When enabled, dragging the middle mouse button will pan the camera"
-msgstr ""
+msgstr "Etkin ise, orta fare tuşu kamerayı hareket ettirir"
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py
@@ -2796,12 +2403,12 @@ msgstr "Öntanımlı sistem ayarları 0'dır"
 #. (helptext of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "0 ise, yönlendirici varsayılanını kullan"
 
 #. (helptext of widget: quote_type_label)
 #: horizons/i18n/guitranslations.py
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Oyun yuüklenirken ne tür alıntılar gösterilecek"
 
 #. (helptext of widget: scroll_speed_label)
 #: horizons/i18n/guitranslations.py
@@ -2812,16 +2419,18 @@ msgstr "Yüksek değerler kaydırmayı yavaşlatır."
 #: horizons/i18n/guitranslations.py
 msgid "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"Üretimi bitirdiklerinde, bina üzerlerinde kaynak simgelerinin gösterilip "
+"gösterilmemesi"
 
 #. (helptext of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr ""
+msgstr "Etkin ise, başarılı inşa etmeden sonra inşa etme kipinden çıkma"
 
 #. (helptext of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr ""
+msgstr "SDL, sadece desteklenmeyen fallback'tir ve problemler oluşturabilir!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py
@@ -2851,18 +2460,17 @@ msgstr "Seçili oyunları sil"
 #. (helptext of widget: gamepassword_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "Oyunun şifresi. Bu oyuna katılmak için gerekli"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Yeni oyun - Tek oyuncu"
 
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Start game:"
-msgstr "Oyuna başla"
+msgstr "Oyunu başlat:"
 
 #. (text of widget: free_maps)
 #: horizons/i18n/guitranslations.py
@@ -2912,35 +2520,33 @@ msgstr "Yapay Zeka oyuncuları"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Game settings:"
-msgstr "Harita ayarları:"
+msgstr "Oyun ayarları:"
 
 #. (text of widget: lbl_disasters) Whether there should be disasters in the game.
 #: horizons/i18n/guitranslations.py
 msgid "Disasters"
-msgstr ""
+msgstr "Doğa olayları"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py
 msgid "Free Trader"
-msgstr ""
+msgstr "Serbest Tüccar"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py
 msgid "Pirates"
-msgstr ""
+msgstr "Korsanlar"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Color:"
-msgstr "Renk"
+msgstr "Renk:"
 
 #. (text of widget: player_label)
 #: horizons/i18n/guitranslations.py
 msgid "Player name:"
-msgstr ""
+msgstr "Oyuncu adı:"
 
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py
@@ -2991,7 +2597,7 @@ msgstr "Tekne Yapıcı"
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py
 msgid "Builds boats and small ships. Built on coast."
-msgstr ""
+msgstr "Sallar ve küçük gemiler inşa eder. Sahile inşa edilir."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py
@@ -3020,9 +2626,8 @@ msgstr "Sığır Ahırı"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
-msgstr "Domuz yetiştirir. Çiftlik gerektirir."
+msgstr "Büyükbaş hayvan yetiştirir. Çiftlik gerektirir."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py
@@ -3082,17 +2687,17 @@ msgstr "Şekerden içki yapar."
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py
 msgid "Doctor"
-msgstr ""
+msgstr "Doktor"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Hastalıkları iyileştirir. Ot kullanır."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py
 msgid "Farm"
-msgstr ""
+msgstr "Çiftlik"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py
@@ -3192,27 +2797,27 @@ msgstr "Ürünleri halka ulaştırır. \"Topluluk\" sağlar."
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py
 msgid "Mountain"
-msgstr ""
+msgstr "Dağ"
 
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Hamur Dükkanı"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Her çeşit pasta türü üretir."
 
 #. name of buildings:pasture
 #: horizons/i18n/objecttranslations.py
 msgid "Pasture"
-msgstr ""
+msgstr "Çayır"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "Kuzu yetiştirir. Yün üretir. Çiftlik gerektirir."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py
@@ -3262,7 +2867,7 @@ msgstr "Tuz kurutur. Deniz kıyısına kurulur."
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py
 msgid "Signal Fire"
-msgstr ""
+msgstr "Yangın Sinyali"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py
@@ -3357,33 +2962,32 @@ msgstr "Çadır"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Hut"
-msgstr ""
+msgstr "Barınak"
 
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "House"
-msgstr "Fare"
+msgstr "Ev"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Stone house"
-msgstr ""
+msgstr "Taş ev"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Estate"
-msgstr ""
+msgstr "Mülk"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Manor"
-msgstr ""
+msgstr "Tımar"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py
 msgid "Houses your inhabitants."
-msgstr ""
+msgstr "Halkınızı barındırır."
 
 #. name of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py
@@ -3392,19 +2996,18 @@ msgstr "Tütün Ekim Alanı"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
-msgstr "Şifalı bitki üretir. Çiftlik gerektirir."
+msgstr "Tütün üretir. Çiftlik gerektirir."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tütüncü"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py
 msgid "Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Tütünden, tütün oluşturur."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py
@@ -3459,22 +3062,22 @@ msgstr "Eğitim verir."
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py
 msgid "Vineyard"
-msgstr ""
+msgstr "Üzüm bağı"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
+msgstr "Şarap ve pastahanecilik için üzün üretir. Çiftlik gerektirir."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py
 msgid "Vintner"
-msgstr ""
+msgstr "Şarap Tüccarı"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Üzümlerden şarap üretir."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py
@@ -3484,12 +3087,12 @@ msgstr "Ambar"
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Dokumacı Barınağı"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py
 msgid "Turns lamb wool into cloth."
-msgstr ""
+msgstr "Kuzu yününden kumaş yapar."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py
@@ -3499,19 +3102,19 @@ msgstr "Değirmen"
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Mısırı una eler."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Ahşam Kule"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py
 msgid "Defends your settlement."
-msgstr ""
+msgstr "Köyünüzü korur."
 
-#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
@@ -3521,7 +3124,7 @@ msgstr ""
 msgid "Companies"
 msgstr "Şirketler"
 
-#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
@@ -3530,28 +3133,21 @@ msgstr "Şirketler"
 msgid "Fields"
 msgstr "Ekim Alanları"
 
-#. headline of gui_buildmenu:build_menu_per_increment
-#. tab5_headline of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-msgid "Military"
-msgstr "Ordu"
-
-#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 msgid "Mining"
 msgstr "Madencilik"
 
-#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 msgid "Residents and infrastructure"
 msgstr "Halk ve altyapı"
 
-#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
@@ -3561,10 +3157,15 @@ msgid "Services"
 msgstr "Hizmetler"
 
 #. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+#: horizons/i18n/objecttranslations.py sql-database-files
+msgid "Citizens"
+msgstr "Vatandaşlar"
+
+#. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Food"
-msgstr "Yemek"
+msgstr "Yiyecek"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
@@ -3579,50 +3180,55 @@ msgstr "Altyapı"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Military Service"
-msgstr ""
+msgstr "Ordu Hizmeti"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+#: horizons/i18n/objecttranslations.py sql-database-files
+msgid "Pioneers"
+msgstr "Öncüler"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Precaution"
-msgstr ""
+msgstr "Önlem"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Residential"
-msgstr ""
+msgstr "Yerleşim"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Sea"
-msgstr ""
+msgstr "Deniz"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Wood"
-msgstr "yemek"
+msgstr "Odun"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 msgid "Workshops"
-msgstr ""
+msgstr "Çalışma alanları"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Settlement"
-msgstr ""
+msgstr "Köy"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Agriculture"
-msgstr ""
+msgstr "Tarım"
 
-#. tab6_headline of gui_buildmenu:build_menu_per_type
+#. tab5_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-msgid "Aesthetics"
-msgstr ""
+msgid "Military"
+msgstr "Ordu"
 
 #: horizons/i18n/quotes.py
 msgid "Quotes"
@@ -3641,6 +3247,7 @@ msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Birden fazla bina yerleştirmek için 'SHIFT' tuşuna basınız."
 
 #: horizons/i18n/quotes.py
+#, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "Şimdilik yalnızca ilk {tier} aşama oynanabilir."
 
@@ -3705,6 +3312,8 @@ msgstr "Hızlı oyun başlatmak için öncelikle hızlı oyun kaydetmeniz gereki
 #: horizons/manager.py
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
 msgstr ""
+"Oyun eşzamanlaması bitti. Bu bilinmeyen dahili bir hata demek, oyun devam "
+"edemez."
 
 #: horizons/manager.py
 msgid "We are very sorry and hope to have this bug fixed in a future version."
@@ -3712,37 +3321,44 @@ msgstr "Bu hata için çok üzgünüz ve hatayı en kısa sürede çözmeyi umuy
 
 #: horizons/mpsession.py
 msgid "Not possible"
-msgstr ""
+msgstr "Mümkün değil"
 
 #: horizons/mpsession.py
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "Çoklu oyunlar için kaydetme/yükleme henüz mümkün değil"
 
 #: horizons/mpsession.py
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
+msgstr "Dosya adı sadece harf, sayı, boşluk ve _.- içermeli"
+
+#: horizons/network/connection.py horizons/network/connection.py
+msgid "Unable to connect to server."
+msgstr ""
+
+#: horizons/network/connection.py
+msgid "Maybe invalid or irresolvable server address."
 msgstr ""
 
 #: horizons/network/networkinterface.py
 msgid "Not Ready"
-msgstr ""
+msgstr "Hazır Değil"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/network/networkinterface.py
 msgid "Ready"
-msgstr ""
+msgstr "Hazır"
 
 #: horizons/scenario/actions.py
 msgid "You have won!"
-msgstr ""
+msgstr "Kazandınız!"
 
 #: horizons/scenario/actions.py
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Bu senaryoyu tamamladınız."
 
 #: horizons/scenario/actions.py
-#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr "Devam etmek istiyor musunuz?"
+msgstr "Oynamaya devam etmek istiyor musunuz?"
 
 #: horizons/scenario/scenarioeventhandler.py
 msgid "unknown"
@@ -3772,53 +3388,48 @@ msgstr ""
 "olabilir."
 
 #: horizons/spsession.py
-#, fuzzy
-msgid "Failed to quicksave."
-msgstr "Kaydedilemedi."
-
-#: horizons/spsession.py
-msgid "An error happened during quicksave. Your game has not been saved."
-msgstr "Hızlı kayıt sırasında bir hata meydana geldi. Oyununuz kaydedilmedi."
-
-#: horizons/spsession.py
-msgid "If this error happens again, please contact the development team:"
+msgid "Your game has not been saved."
 msgstr ""
-"Bu hata tekrar meydana gelirse lütfen geliştirme ekibiyle iletişime geçiniz:"
 
 #: horizons/util/checkupdates.py
 msgid "New version of Unknown Horizons"
-msgstr ""
+msgstr "Unknown Horizons'un yeni sürümü"
 
 #: horizons/util/checkupdates.py
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Unknown Horizons'un şuan kullandığınız sürümünden ({old_version}) daha yeni "
+"bir sürümü ({new_version}) mevcut."
 
 #: horizons/util/checkupdates.py
 msgid "Click to download"
-msgstr ""
+msgstr "İndirmek için tıklayın"
 
 #: horizons/util/checkupdates.py
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Tarayıcınızda bir sayfa açıldı."
 
+#. You usually do not need to change anything here when translating
 #: horizons/util/uhdbaccessor.py
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
-#. i18n Ship storage properties
+#. Ship storage properties
 #: horizons/util/uhdbaccessor.py
+#, python-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} yer, {limit}t"
 
 #: horizons/util/uhdbaccessor.py
+#, python-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "Sağlık: {health}"
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Bu bina bir adaya yapılmalı."
 
 #: horizons/world/building/buildable.py
 msgid "This ground is not suitable for this building."
@@ -3858,35 +3469,35 @@ msgstr "Bu bina yalnızca bir özkaynak yatağına kurulabilir."
 
 #: horizons/world/building/buildable.py
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Bu adaya zaten yerleştiniz."
 
 #: horizons/world/building/buildable.py
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "Bu bina, kısmen düz bir zeminde olmalı."
 
 #: horizons/world/status.py
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Bu bina yanıyor!"
 
 #: horizons/world/status.py
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Bu sakinler mutsuz."
 
 #: horizons/world/status.py
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Bu binanın stoğu dolu."
 
 #: horizons/world/status.py
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Bu binanın üretkenliği düşük."
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
-msgstr ""
+msgstr "Bu bina devreden çıkarıldı."
 
 #: horizons/world/status.py
 msgid "The inhabitants of this building have the plague."
-msgstr ""
+msgstr "Bu binanın sakinlerinin bulaşıcı hastalığı var."
 
 #: horizons/world/traderoute.py
 #, python-format
@@ -3919,19 +3530,541 @@ msgid "Idle at {x}, {y}"
 msgstr "{x}, {y} konumunda boş duruyor"
 
 #: horizons/world/units/ship.py
-#, fuzzy
 msgid "Trader"
 msgstr "Tüccar"
 
 #: horizons/world/units/weaponholder.py
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Saldırılıyor: {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py
 #, python-format
 msgid "Attacking {owner}"
+msgstr "{owner} saldırıyor"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr "{player} tarafından yeni bir yerleşim yeri kuruldu."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr "{name} adında yeni bir gemi yaratıldı."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "A new world has been created."
+msgstr "Yeni bir dünya yaratıldı."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+#: sql-database-files
+msgid "Aristocrats"
+msgstr "Ariktokratlar"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Cannot go here."
+msgstr "Buraya gidemez."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+#: sql-database-files
+msgid "Merchants"
+msgstr "Tüccarlar"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "Tarım alanlarınızdan birinde hasat yapılması için çiftlik lazım."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+#: sql-database-files
+msgid "Sailors"
+msgstr "Denizciler"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "Screenshot has been saved to {file}."
+msgstr "Ekran görüntüsü {file}'a kaydedildi."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "Yerlilerden bazılarının ana meydana ulaşamıyor."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Some of your inhabitants just moved out."
+msgstr "Bazı yerliler şehirden ayrıldı."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"Rota ayarlandı. \"Rotayı ayarla\" menüsündeki  \"Rotayı başlat\" butonuna "
+"tıklayarak başlatabilirsiniz."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "You can also drag roads."
+msgstr "Yolları da sürükleyebilirsiniz."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr "Ambarınızı yıkamazsınız, yerleşim alanının buna ihtiyacı var."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "You failed the scenario."
+msgstr "Senaryoyu tamamlayamadınız."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "You have reached the current maximum tier. Your inhabitants will not upgrade further."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "You need more {resource} to build this building."
+msgstr "Bu bina için daha fazla {resource}'a gereksiniminiz var."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "You won!"
+msgstr "Kazandın!"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Your building has caught fire!"
+msgstr "Binanda yangın çıktı!"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Your crew refuses to leave this map."
+msgstr "Tayfanız bu haritayı terketmek istemiyor."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Your game has been autosaved."
+msgstr "Oyunun otomatik olarak kaydedildi."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Your game has been quicksaved."
+msgstr "Oyun kaydedildi."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Your game has been saved."
+msgstr "Oyun kaydedildi."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr "Yerliler {}. seviyeye ulaştı."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+msgid "Your mine has run out of resources."
+msgstr "Madeninizde kaynak kalmadı."
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "acorns"
+msgstr "palamut"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "alvearies"
+msgstr "arı kovanları"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "boards"
+msgstr "paneller"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "bricks"
+msgstr "tuğlalar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "candles"
+msgstr "mumlar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "cannon"
+msgstr "top"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "cattle"
+msgstr "sığır"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "cattle for slaughter"
+msgstr "kasaplık et"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "charcoal"
+msgstr "kömür"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "clay"
+msgstr "kil"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "clay deposit"
+msgstr "kil yatağı"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "cocoa"
+msgstr "kakao"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "cocoa beans"
+msgstr "kakao taneleri"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "coins"
+msgstr "bozunluklar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "community"
+msgstr "topluluk"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "condiments"
+msgstr "çeşni"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "confectionery"
+msgstr "şekerleme fabrikası"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "corn"
+msgstr "mısır"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "dagger"
+msgstr "kama"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "deer food A"
+msgstr "geyik yemeği A"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "deer meat"
+msgstr "geyik eti"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "education"
+msgstr "eğitim"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "faith"
+msgstr "inanç"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "fire"
+msgstr "ateş"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "fish"
+msgstr "balık"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "flour"
+msgstr "un"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "food"
+msgstr "yemek"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "get-together"
+msgstr "birliktelik"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "grain"
+msgstr "tahıl"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "grapes"
+msgstr "üzüm"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "grass"
+msgstr "çim"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "happiness"
+msgstr "mutluluk"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "herbs"
+msgstr "şifalı otlar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "honeycombs"
+msgstr "bal peteği"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "iron deposit"
+msgstr "demir yatağı"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "iron ingots"
+msgstr "demir külçesi"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "iron ore"
+msgstr "demir cevheri"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "lamb wool"
+msgstr "kuzu yünü"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "liquor"
+msgstr "içki"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "medical herbs"
+msgstr "tıbbi otlar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "pigs"
+msgstr "domuzlar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "pigs for slaughter"
+msgstr "kasaplık domuz"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "potatoes"
+msgstr "patates"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "salt"
+msgstr "tuz"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "spice plants"
+msgstr "baharatlık bitkiler"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "spices"
+msgstr "baharatlar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "stone deposit"
+msgstr "taş yatağı"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "stone tops"
+msgstr "taş kapaklar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "sugar"
+msgstr "şeker"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "sugar cane"
+msgstr "şeker kamışı"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "textile"
+msgstr "tekstil"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "tobacco leaves"
+msgstr "tütün yaprağı"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "tobacco plants"
+msgstr "tütün bitkisi"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "tobaccos"
+msgstr "tütün"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "tools"
+msgstr "aletler"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "trees"
+msgstr "ağaçlar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "vines"
+msgstr "asmalar"
+
+#. This is a database entry: the name of a resource.
+#: sql-database-files
+msgid "wool"
+msgstr "yün"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "{player1} and {player2} have allied their forces."
+msgstr "{player1} ve {player2} müttefik oldular."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
+msgstr "{player1} ve {player2} savaşı sonlandırıp müttefik oldular."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
+msgstr "{player1} ve {player2} ittifakı sonlandırıp savaşa başladılar."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1} ve {player2} düşman oldular."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr "{player1} ve {player2} ittifaklarını sonlandırdılar."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} ve {player2} ölümüne savaşa başladılar."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql-database-files
+#, python-format
+msgid "{player}: {message}"
+msgstr "{player}: {message}"
+
+#~ msgid "Enter name:"
+#~ msgstr "İsim giriniz:"
+
+#~ msgid "Save the map"
+#~ msgstr "Haritayı kaydet"
+
+#~ msgid "Toggle console on/off"
+#~ msgstr "Konsolu aç/kapat"
+
+#~ msgid "Only show games with the same version:"
+#~ msgstr "Sadece aynı sürüme sahip oyunları göster:"
+
+#~ msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
+#~ msgstr ""
+#~ "Şimdilik maksimum seviyeye ulaştınız. Halkınız daha fazla gelişemeyecek."
+
+#, python-format
+#~ msgid "Valid map names are in the following form: {expression}"
+#~ msgstr "Geçerli harita adları şu biçimde olmalı: {expression}"
+
+#, python-format
+#~ msgid "Try a name that only contains letters and numbers."
+#~ msgstr "sadece harf ve rakam içeren bir isim deneyiniz."
+
+#~ msgid "Terminated"
+#~ msgstr "Sonlandırıldı"
+
+#~ msgid "This savegame is missing (click here)"
+#~ msgstr "Bu kayıtlı oyun bulunamadı (buraya tıklayın)"
+
+#~ msgid "For multiplayer load, it is necessary for you to have the correct savegame file."
+#~ msgstr "Çok oyunculu yükleme için doğru bir kayıt dosyası gerekiyor."
+
+#~ msgid "The file will be downloaded when the game starts."
+#~ msgstr "Dosya, oyun başladığında indirilecek."
+
+#~ msgid "This is a savegame."
+#~ msgstr "Bu bir kayıtlı oyun."
+
+#~ msgid "You fetched the savegame data"
+#~ msgstr "Kayıtlı oyun verisini yüklediniz"
+
+#, python-format
+#~ msgid "A savegame with the name '{name}' already exists."
+#~ msgstr "'{name}' isimli bir kayıtlı oyun zaten var."
+
+#~ msgid "Invalid filename given"
+#~ msgstr "Geçersiz dosya adı verildi"
+
+#~ msgid "Aesthetics"
+#~ msgstr "Estetik"
+
+#~ msgid "An error happened during quicksave. Your game has not been saved."
+#~ msgstr "Hızlı kayıt sırasında bir hata meydana geldi. Oyununuz kaydedilmedi."
+
+#~ msgid "If this error happens again, please contact the development team:"
+#~ msgstr ""
+#~ "Bu hata tekrar meydana gelirse lütfen geliştirme ekibiyle iletişime geçiniz:"
 
 #, python-format
 #~ msgid "Current key: [{key}]"
