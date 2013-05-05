@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-04-09 05:16+0200\n"
-"PO-Revision-Date: 2013-04-09 03:24+0000\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"PO-Revision-Date: 2013-05-05 13:19+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1365477891.0\n"
+"X-POOTLE-MTIME: 1367759963.0\n"
 
 # 86%
 #: run_uh.py
@@ -901,7 +901,7 @@ msgstr "glücklich"
 #: horizons/gui/widgets/imagefillstatusbutton.py
 #, python-format
 msgid "{resource_name}: {price} gold"
-msgstr "{resource_name}: {price} gold"
+msgstr "{resource_name}: {price} Gold"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py
 #, python-format
@@ -1321,7 +1321,7 @@ msgstr ""
 #. (text of widget: BB_needed_res_label)
 #: horizons/i18n/guitranslations.py
 msgid "Resources still needed:"
-msgstr "Fehlende Ressourcen:"
+msgstr "Fehlende Rohstoffe:"
 
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
 #: horizons/i18n/guitranslations.py
@@ -2590,7 +2590,7 @@ msgstr "Seed:"
 #. (text of widget: select_lang_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Select a language:"
-msgstr "Wähle eine Sprache:"
+msgstr "Wählt eine Sprache:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py
@@ -3544,7 +3544,7 @@ msgstr "Gesundheit: {health}"
 # 80%
 #: horizons/world/building/buildable.py
 msgid "This building must be built on an island."
-msgstr "Dieses Gebäude muss aauf der Insel errichtet werden."
+msgstr "Dieses Gebäude muss auf einer Insel errichtet werden."
 
 # 95%
 #: horizons/world/building/buildable.py
@@ -4066,7 +4066,7 @@ msgstr "Zuckerrohr"
 #. This is a database entry: the name of a resource.
 #: sql-database-files
 msgid "textile"
-msgstr "Kleidung"
+msgstr "Stoffe"
 
 #. This is a database entry: the name of a resource.
 #: sql-database-files
