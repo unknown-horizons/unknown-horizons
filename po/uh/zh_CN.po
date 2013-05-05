@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-04-09 05:16+0200\n"
-"PO-Revision-Date: 2013-04-12 02:49+0000\n"
-"Last-Translator: mkhael_foo <mkhael.foo@gmail.com>\n"
+"PO-Revision-Date: 2013-05-05 13:30+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1365734952.0\n"
+"X-POOTLE-MTIME: 1367760642.0\n"
 
 #: run_uh.py
 msgid "Unknown Horizons has crashed."
@@ -115,7 +115,7 @@ msgstr "保存失败。"
 
 #: horizons/editor/session.py horizons/spsession.py
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "在进行快速保存时程序发生错误"
 
 #: horizons/editor/session.py
 #, fuzzy
@@ -125,7 +125,7 @@ msgstr "你的游戏已经存档了。"
 #: horizons/editor/session.py horizons/spsession.py
 #, python-format
 msgid "If this error happens again, please contact the development team: {website}"
-msgstr ""
+msgstr "如果这项错误再次发生, 请联系开发团队: {website}"
 
 #: horizons/engine/settingsdialog.py
 msgid "Restart required"
@@ -149,15 +149,15 @@ msgstr "你想继续么？"
 
 #: horizons/engine/settingshandler.py
 msgid "16 bit"
-msgstr ""
+msgstr "16 位"
 
 #: horizons/engine/settingshandler.py
 msgid "32 bit"
-msgstr ""
+msgstr "32 位"
 
 #: horizons/engine/settingshandler.py
 msgid "Default"
-msgstr ""
+msgstr "默认值"
 
 #: horizons/engine/settingshandler.py
 msgid "Warning"
@@ -379,20 +379,20 @@ msgstr "{palyer}的船只"
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{玩家} 加入了游戏"
 
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{玩家} 离开了游戏"
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "You are now ready"
-msgstr ""
+msgstr "你已经准备就绪了"
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "你不再处于就绪状态"
 
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
@@ -416,7 +416,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "You changed your color"
-msgstr ""
+msgstr "你修改了你的颜色"
 
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
@@ -429,12 +429,12 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "你被创建者踢出了游戏"
 
 #: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{玩家} 被创建者踢出了游戏"
 
 #: horizons/gui/modules/pausemenu.py
 msgid "Are you sure you want to abort the running session?"
@@ -461,7 +461,7 @@ msgstr "装载游戏"
 #: horizons/gui/modules/select_savegame.py
 #: horizons/i18n/guitranslations.py
 msgid "Save map"
-msgstr ""
+msgstr "保存地图"
 
 #: horizons/gui/modules/select_savegame.py
 msgid "No saved games"
@@ -950,7 +950,7 @@ msgstr "将此殖民地所显示的资源量恢复到你上次存储的默认值
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
-msgstr ""
+msgstr "重置为默认设置"
 
 #. (helptext of widget: running_costs_label)
 #. (helptext of widget: running_costs)
@@ -1141,7 +1141,7 @@ msgstr "居民"
 #. (helptext of widget: build)
 #: horizons/i18n/guitranslations.py
 msgid "Build menu (B)"
-msgstr "建造菜单（B）"
+msgstr "建造菜单 (B)"
 
 #. (helptext of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py
@@ -1171,7 +1171,7 @@ msgstr "逆时针旋转地图(,)"
 #. (helptext of widget: rotateRight)
 #: horizons/i18n/guitranslations.py
 msgid "Rotate map clockwise (.)"
-msgstr "顺时针旋转地图(.)"
+msgstr "顺时针旋转地图 (.)"
 
 #. (helptext of widget: speedDown)
 #: horizons/i18n/guitranslations.py
@@ -1196,37 +1196,37 @@ msgstr "缩小"
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Enter new name:"
-msgstr ""
+msgstr "输入新名称："
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py
 msgid "Change name"
-msgstr ""
+msgstr "改变名称"
 
 #. (text of widget: old_name_label)
 #: horizons/i18n/guitranslations.py
 msgid "Old name:"
-msgstr ""
+msgstr "原名"
 
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py
 msgid "Apply the new name"
-msgstr ""
+msgstr "应用新的名称"
 
 #. (text of widget: chat_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "Enter your message:"
-msgstr ""
+msgstr "输入你的信息："
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py
 msgid "Cancel building:"
-msgstr "取消建设："
+msgstr "取消建设:"
 
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py
 msgid "(lose all resources)"
-msgstr "（失去所有的资源）"
+msgstr "(失去所有的资源)"
 
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py
@@ -1256,12 +1256,12 @@ msgstr "取消所有在建的建筑物"
 #. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 #: horizons/i18n/guitranslations.py
 msgid "Pause"
-msgstr ""
+msgstr "暂停"
 
 #. (helptext of widget: toggle_active_inactive) Resumes the currently paused ship production
 #: horizons/i18n/guitranslations.py
 msgid "Resume"
-msgstr ""
+msgstr "继续"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py
@@ -1301,7 +1301,7 @@ msgstr "幸福"
 #. (text of widget: headline_residents_per_house)
 #: horizons/i18n/guitranslations.py
 msgid "Residents per house"
-msgstr ""
+msgstr "居民住宅"
 
 #. (text of widget: headline_residents_total)
 #: horizons/i18n/guitranslations.py
@@ -1316,7 +1316,7 @@ msgstr "住宅"
 #. (text of widget: residents)
 #: horizons/i18n/guitranslations.py
 msgid "residents"
-msgstr ""
+msgstr "居民"
 
 #. (text of widget: tax_label)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
@@ -1351,7 +1351,7 @@ msgstr "你的一些居民刚刚搬走了。"
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Paid taxes"
-msgstr ""
+msgstr "纳税"
 
 #. (helptext of widget: tax_rate_icon)
 #. (helptext of widget: tax_val_label)
@@ -1360,7 +1360,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Tax rate"
-msgstr ""
+msgstr "税率"
 
 #. (text of widget: name_label)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
@@ -1536,7 +1536,7 @@ msgstr ""
 #. (text of widget: select_res_label)
 #: horizons/i18n/guitranslations.py
 msgid "Select a resource:"
-msgstr "选择一个资源："
+msgstr "选择一个资源:"
 
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py
@@ -1632,7 +1632,7 @@ msgstr ""
 #. (text of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Money"
-msgstr ""
+msgstr "金钱"
 
 #. (text of widget: player_name)
 #. (text of widget: settlement_name)
@@ -3566,7 +3566,7 @@ msgstr "截图已保存至文件{file}。"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql-database-files
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "有些居民不能到达广场。"
+msgstr "有些居民不能进入广场。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql-database-files
