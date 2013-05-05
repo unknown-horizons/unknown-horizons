@@ -59,11 +59,8 @@ XML_PY_FILE=horizons/i18n/guitranslations.py
 YAML_PY_FILE=horizons/i18n/objecttranslations.py
 SQL_POT_FILE=horizons/i18n/sqlite_strings.pot
 
-function strip_entries()
+function reset_if_empty()
 {
-  # some strings contain two entries per line => remove line numbers from both
-  perl -pi -e 's@(#: .*):[0-9]+@\1@g' "$1"
-  perl -pi -e 's@(#: .*):[0-9]+@\1@g' "$1"
   numstat=$(git diff --numstat -- "$1" | cut -f1,2)
   if [ "$numstat" = "2	2" ]; then
     # no need to commit, only program version and date in header changed (2+ 2-)
@@ -95,7 +92,7 @@ echo "   * Regenerated sql translation file at $SQL_POT_FILE."
              --keyword=_lazy
 # --keyword=N_ also catches N_() plural-aware ngettext calls
 echo "=> Creating UH gettext pot template file at ${RESULT_FILE}."
-strip_entries $RESULT_FILE
+reset_if_empty $RESULT_FILE
 
 
 # generate translation file for server
@@ -114,4 +111,4 @@ strip_entries $RESULT_FILE
              --keyword=SN_:2,3 \
              --keyword=__
 echo "=> Creating UH Server gettext pot template file at ${RESULT_FILE_SERVER}."
-strip_entries $RESULT_FILE_SERVER
+reset_if_empty $RESULT_FILE_SERVER
