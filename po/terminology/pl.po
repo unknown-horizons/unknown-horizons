@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-04 23:52+0200\n"
-"PO-Revision-Date: 2013-05-05 12:10+0000\n"
+"PO-Revision-Date: 2013-05-05 12:11+0000\n"
 "Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1367755831.0\n"
+"X-POOTLE-MTIME: 1367755893.0\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (37)
@@ -787,11 +787,11 @@ msgid "values"
 msgstr "wartości"
 
 msgid "wheel"
-msgstr ""
+msgstr "koło"
 
 #. (helptext of widget: avg_icon)
 msgid "satisfied"
-msgstr ""
+msgstr "satysfakcjonujący"
 
 #. (text of widget: balance)
 msgid "balance"
@@ -805,7 +805,7 @@ msgid "trail"
 msgstr "ścieżka"
 
 msgid "default"
-msgstr ""
+msgstr "domyślne"
 
 msgid "iron"
 msgstr "żelazo"
@@ -864,7 +864,7 @@ msgid "return"
 msgstr "powrót"
 
 msgid "savegame"
-msgstr ""
+msgstr "zapis gry"
 
 msgid "consume"
 msgstr "konsumować"
@@ -873,11 +873,10 @@ msgid "idle"
 msgstr "bezrobotni"
 
 msgid "lower"
-msgstr ""
+msgstr "dolny"
 
-#, fuzzy
 msgid "saved"
-msgstr "zapis"
+msgstr "zapisany"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -914,11 +913,11 @@ msgid "empty"
 msgstr "pusty"
 
 msgid "existing"
-msgstr ""
+msgstr "istniejący"
 
 #, fuzzy
 msgid "fulfill"
-msgstr "spełniać"
+msgstr "zapełniony"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -931,10 +930,10 @@ msgstr "polowanie"
 
 #. name_0 of buildings:lumberjackcamp
 msgid "lumberjack tent"
-msgstr ""
+msgstr "namiot drwala"
 
 msgid "please contact"
-msgstr ""
+msgstr "proszę skontaktować się"
 
 #
 #. name of buildings:potatofield
@@ -946,7 +945,7 @@ msgstr "ziarno"
 
 #, fuzzy
 msgid "send"
-msgstr "ziarno"
+msgstr "wyślij"
 
 #
 #
@@ -970,7 +969,7 @@ msgstr "pole cukrowe"
 
 #. There was a problem during the 'save game' procedure.
 msgid "error"
-msgstr ""
+msgstr "błąd"
 
 msgid "deposit"
 msgstr "depozyt"
