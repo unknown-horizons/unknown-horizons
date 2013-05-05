@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-24 17:55+0100\n"
-"PO-Revision-Date: 2013-03-17 19:08+0000\n"
-"Last-Translator: Gallaecio <adriyetichaves@gmail.com>\n"
+"PO-Revision-Date: 2013-05-05 13:25+0000\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1363547310.0\n"
+"X-POOTLE-MTIME: 1367760335.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py
@@ -125,7 +125,7 @@ msgstr "E agora, a xogar."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "Novo obxectivo — Asentarse nunha illa"
+msgstr "Novo obxectivo — Asentarse"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py
@@ -189,7 +189,7 @@ msgstr "Contrata un leñador e conéctao co almacén mediante un sendeiro."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "Novo obxectivo — Contratar un leñador"
+msgstr "Novo obxectivo — Un leñador"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py
@@ -211,7 +211,7 @@ msgid ""
 "This is essential because, at this stage, boards are the only poles your "
 "sailors can afford to hang their tents over."
 msgstr ""
-"A madeira é un material esencial durante os primeiros pasos do asentamento, "
+"A táboas de madeira son esenciais durante os primeiros pasos do asentamento, "
 "dado que é o único material que se poden permitir os mariñeiros para "
 "construír as súas tendas."
 
