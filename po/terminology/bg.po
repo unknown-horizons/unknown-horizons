@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
 "PO-Revision-Date: 2011-08-03 14:52+0200\n"
 "Last-Translator: Nikolay <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,10 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
-
-msgid "build"
-msgstr "построй"
+"X-Generator: Translate Toolkit 1.9.1-pre\n"
 
 msgid "game"
 msgstr "игра"
@@ -22,138 +19,206 @@ msgstr "игра"
 msgid "building"
 msgstr "сграда"
 
+#. (text of widget: headline)
+msgid "build"
+msgstr "построй"
+
+msgid "player"
+msgstr ""
+
+#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "заселване"
-
-msgid "farm"
-msgstr "ферма"
 
 msgid "ship"
 msgstr "кораб"
 
+#. name_0 of buildings:tent
 msgid "tent"
 msgstr "палатка"
 
-msgid "warehouse"
-msgstr ""
-
-msgid "resource"
-msgstr "ресурс"
-
-msgid "produce"
-msgstr "произведи"
-
-msgid "field"
-msgstr "поле"
+#. name of buildings:farm
+msgid "farm"
+msgstr "ферма"
 
 msgid "map"
 msgstr "карта"
 
+msgid "resource"
+msgstr "ресурс"
+
+#. name of buildings:warehouse
+msgid "warehouse"
+msgstr ""
+
+#. (helptext of widget: city_info_inhabitants)
+#. (text of widget: inhabitants)
+msgid "inhabitants"
+msgstr "жители"
+
+msgid "change"
+msgstr "промени"
+
+msgid "unknown"
+msgstr "неизвестен"
+
+msgid "produce"
+msgstr "произведи"
+
+msgid "no"
+msgstr "няма"
+
+#. (helptext of widget: trade)
+#. (text of widget: headline)
 msgid "trade"
 msgstr "търговия"
 
-msgid "inhabitants"
-msgstr "жители"
+msgid "check"
+msgstr "провери"
+
+msgid "field"
+msgstr "поле"
+
+msgid "main"
+msgstr "главен"
 
 msgid "buy"
 msgstr "купи"
 
+msgid "click"
+msgstr "натисни"
+
+msgid "left"
+msgstr "наляво"
+
 msgid "overview"
 msgstr "преглед"
 
-msgid "click"
-msgstr "натисни"
+msgid "running"
+msgstr "текущ"
+
+msgid "square"
+msgstr ""
 
 msgid "lumberjack"
 msgstr "дървар"
 
-# 88%
-#, fuzzy
-msgid "resident"
-msgstr "местни жители"
+msgid "unable"
+msgstr ""
 
+msgid "continue"
+msgstr "продължи"
+
+#. name of buildings:mainsquare
 msgid "main square"
 msgstr "централен площад"
-
-# 85%
-#, fuzzy
-msgid "sailors"
-msgstr "моряк"
-
-msgid "food"
-msgstr "храна"
-
-msgid "increment"
-msgstr "приръст"
 
 msgid "production"
 msgstr "продукция"
 
-msgid "select"
-msgstr "избери"
+# 85%
+#. This is a database entry: the name of an inhabitant tier (level).
+#, fuzzy
+msgid "sailors"
+msgstr "моряк"
 
 msgid "sell"
 msgstr "продай"
 
-msgid "setting"
-msgstr "инсталиране"
-
 msgid "storage"
 msgstr "склад"
 
-msgid "tab"
-msgstr "таб"
+msgid "contact"
+msgstr "контакт"
 
-msgid "upgrade"
-msgstr ""
-
-msgid "your inhabitants"
-msgstr ""
-
-msgid "close"
-msgstr ""
-
-msgid "companies"
-msgstr "фирми"
-
-msgid "island"
-msgstr ""
-
-msgid "time"
-msgstr "време"
-
-msgid "unit"
-msgstr ""
-
-msgid "balance"
-msgstr "баланс"
-
-msgid "coast"
-msgstr "бряг"
+#. name_2 of buildings:tent
+msgid "house"
+msgstr "къща"
 
 msgid "menu"
 msgstr "меню"
 
-msgid "slot"
-msgstr "място"
+msgid "tab"
+msgstr "таб"
+
+#. (helptext of widget: okButton)
+msgid "close"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "храна"
+
+msgid "free"
+msgstr "свободен"
+
+#. TODO: add support for selecting difficulty levels to the GUI
+msgid "ready"
+msgstr ""
+
+msgid "setting"
+msgstr "инсталиране"
 
 msgid "start"
 msgstr "старт"
 
+msgid "time"
+msgstr "време"
+
+msgid "trader"
+msgstr "търговец"
+
+msgid "unit"
+msgstr ""
+
+msgid "version"
+msgstr "версия"
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "огън"
+
+msgid "island"
+msgstr ""
+
+msgid "select"
+msgstr "избери"
+
+msgid "slot"
+msgstr "място"
+
 msgid "stock"
 msgstr "запас"
 
-msgid "trail"
-msgstr "следа"
-
-msgid "Unknown Horizons"
+msgid "upgrade"
 msgstr ""
 
-msgid "wool"
-msgstr "вълна"
+msgid "coast"
+msgstr "бряг"
 
-msgid "boards"
-msgstr "дъски"
+#. (text of widget: game_player_color)
+msgid "color"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+msgid "companies"
+msgstr "фирми"
+
+msgid "file"
+msgstr ""
+
+msgid "increment"
+msgstr "приръст"
+
+msgid "key"
+msgstr "ключ"
+
+#. (text of widget: taxes_label)
+#. (text of widget: taxes)
+msgid "taxes"
+msgstr "такси"
 
 msgid "collector"
 msgstr "събирач"
@@ -161,11 +226,34 @@ msgstr "събирач"
 msgid "connection"
 msgstr "свържи се"
 
-msgid "fire"
-msgstr "огън"
+msgid "log"
+msgstr "дневник"
 
-msgid "change"
-msgstr "промени"
+#. (text of widget: start_multi) Opens widget to join or create multiplayer games
+msgid "multiplayer"
+msgstr ""
+
+# 88%
+#, fuzzy
+msgid "resident"
+msgstr "местни жители"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "вълна"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "дъски"
+
+msgid "built"
+msgstr "построен"
+
+msgid "button"
+msgstr ""
+
+msgid "choose"
+msgstr "избери"
 
 msgid "connect"
 msgstr "свържи се"
@@ -173,11 +261,11 @@ msgstr "свържи се"
 msgid "cost"
 msgstr "струва"
 
-msgid "house"
-msgstr "къща"
-
-msgid "log"
-msgstr "дневник"
+#. This is a database entry: the name of a resource.
+#. (helptext of widget: happiness_label)
+#. (helptext of widget: happiness)
+msgid "happiness"
+msgstr "щастие"
 
 msgid "road"
 msgstr ""
@@ -185,112 +273,98 @@ msgstr ""
 msgid "save"
 msgstr "запази"
 
-msgid "built"
-msgstr "построен"
+#. name of buildings:tree
+msgid "tree"
+msgstr "дърво"
 
-msgid "pasture"
-msgstr "пасище"
+msgid "amount"
+msgstr ""
 
 msgid "reach"
 msgstr "достига"
 
-msgid "tree"
-msgstr "дърво"
-
-msgid "your"
-msgstr "твой"
-
-msgid "your settlement"
+msgid "size"
 msgstr ""
 
 msgid "add"
 msgstr "добави"
 
-msgid "check"
-msgstr "провери"
-
-msgid "choose"
-msgstr "избери"
-
-msgid "confectionery"
-msgstr ""
-
 msgid "fisher"
 msgstr "рибар"
 
+#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr "свободен търговец"
-
-msgid "happiness"
-msgstr "щастие"
 
 msgid "in stock"
 msgstr ""
 
-msgid "money"
-msgstr ""
-
-msgid "pavilion"
-msgstr "палата"
-
-msgid "running costs"
-msgstr "текущи плащания"
-
-msgid "sugar"
-msgstr "захар"
-
-msgid "taxes"
-msgstr "такси"
-
-msgid "tax"
-msgstr "такса"
-
-msgid "tools"
-msgstr "инструменти"
-
-msgid "button"
-msgstr ""
-
-msgid "continue"
-msgstr "продължи"
-
-msgid "faith"
-msgstr "доверие"
-
-msgid "help"
-msgstr "помощ"
-
-msgid "left"
-msgstr "наляво"
-
-msgid "level"
-msgstr "ниво"
+msgid "increase"
+msgstr "нараства"
 
 msgid "mode"
 msgstr "метод"
 
+msgid "password"
+msgstr ""
+
+#. name of buildings:pasture
+msgid "pasture"
+msgstr "пасище"
+
+msgid "range"
+msgstr "обхват"
+
+msgid "signal"
+msgstr "сигнал"
+
+# 80%
+#, fuzzy
+msgid "speed"
+msgstr "садя"
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "захар"
+
+msgid "access"
+msgstr ""
+
+msgid "build menu"
+msgstr "меню за строеж"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "fetch"
+msgstr ""
+
+#. (text of widget: help)
+#. (text of widget: help) Main / in-game menu entry
+msgid "help"
+msgstr "помощ"
+
+msgid "income"
+msgstr "приход"
+
+msgid "join"
+msgstr ""
+
+msgid "level"
+msgstr "ниво"
+
 msgid "move"
 msgstr "премести"
 
-# 87%
-#, fuzzy
-msgid "pioneers"
-msgstr "новозаселник"
+msgid "multiple"
+msgstr "многоброен"
 
-# 87%
-#, fuzzy
-msgid "citizens"
-msgstr "гражданин"
-
-# 88%
-#, fuzzy
-msgid "merchants"
-msgstr "търговец"
-
-# 90%
-#, fuzzy
-msgid "aristocrats"
-msgstr "аристократ"
+msgid "please check"
+msgstr ""
 
 msgid "potato"
 msgstr "картоф"
@@ -298,49 +372,25 @@ msgstr "картоф"
 msgid "settler"
 msgstr "заселник"
 
-# 80%
-#, fuzzy
-msgid "speed"
-msgstr "садя"
-
-msgid "stop"
-msgstr "спри"
-
-msgid "storage tent"
-msgstr "палатка склад"
-
-msgid "wait"
+#. (text of widget: total_score)
+msgid "total"
 msgstr ""
-
-msgid "access"
-msgstr ""
-
-msgid "account"
-msgstr "сметка"
-
-msgid "amount"
-msgstr ""
-
-msgid "build menu"
-msgstr "меню за строеж"
-
-msgid "cloth"
-msgstr "плат"
 
 msgid "construction"
 msgstr "изграждане"
 
-msgid "decrease"
-msgstr "намалява"
+msgid "creator"
+msgstr ""
 
-msgid "description"
-msgstr "описание"
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "доверие"
 
-msgid "fish"
-msgstr "риба"
+msgid "hold"
+msgstr "задържам"
 
-msgid "increase"
-msgstr "нараства"
+msgid "icon"
+msgstr ""
 
 msgid "lamb"
 msgstr ""
@@ -348,22 +398,18 @@ msgstr ""
 msgid "leave"
 msgstr "напусни"
 
-msgid "liquor"
-msgstr "ликьор"
-
 msgid "location"
 msgstr ""
 
-msgid "offer"
+msgid "multiple buildings"
 msgstr ""
 
-# 75%
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
 #, fuzzy
-msgid "potatoes"
-msgstr "картоф"
-
-msgid "range"
-msgstr "обхват"
+msgid "pioneers"
+msgstr "новозаселник"
 
 msgid "reached"
 msgstr "достигна"
@@ -371,26 +417,34 @@ msgstr "достигна"
 msgid "run"
 msgstr "пусни"
 
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr ""
+
 msgid "slider"
 msgstr "плъзгач"
-
-msgid "solution"
-msgstr "решение"
 
 msgid "space"
 msgstr ""
 
+#. name_0 of buildings:storagetent
+msgid "storage tent"
+msgstr "палатка склад"
+
 msgid "target"
 msgstr ""
 
-msgid "team"
-msgstr "екип"
-
-msgid "total"
+msgid "terminated"
 msgstr ""
 
-msgid "unable"
-msgstr ""
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "инструменти"
+
+msgid "account"
+msgstr "сметка"
 
 msgid "active"
 msgstr "активен"
@@ -406,16 +460,19 @@ msgstr "животно"
 msgid "Captain's log"
 msgstr "Дневникът на капитана"
 
+msgid "cloth"
+msgstr "плат"
+
 # 75%
 #, fuzzy
 msgid "construct"
 msgstr "изграждане"
 
-msgid "consume"
-msgstr "консумирам"
-
-msgid "enabled"
+msgid "cursor"
 msgstr ""
+
+msgid "description"
+msgstr "описание"
 
 msgid "entries"
 msgstr ""
@@ -423,40 +480,41 @@ msgstr ""
 msgid "feature"
 msgstr "характерна черта"
 
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "риба"
+
 msgid "forest"
 msgstr "гора"
 
-# 80%
-#, fuzzy
-msgid "grows"
-msgstr "растя"
+msgid "from time to time"
+msgstr "от време на време"
 
-msgid "hold"
-msgstr "задържам"
-
-msgid "idle"
+msgid "global"
 msgstr ""
 
-msgid "income"
-msgstr "приход"
+msgid "grow"
+msgstr "растя"
+
+#. (helptext of widget: happy_icon)
+msgid "happy"
+msgstr ""
 
 msgid "information"
 msgstr "информация"
 
-msgid "key"
-msgstr "ключ"
-
-msgid "lamb wool"
-msgstr "агнешка вълна"
-
-msgid "overview tab"
-msgstr ""
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "ликьор"
 
 msgid "minimap"
 msgstr "миникарта"
 
-msgid "issues"
-msgstr "въпроси"
+msgid "offer"
+msgstr ""
+
+msgid "overview tab"
+msgstr ""
 
 msgid "plant"
 msgstr ""
@@ -464,8 +522,14 @@ msgstr ""
 msgid "play"
 msgstr "играй"
 
-msgid "playing"
-msgstr "играене"
+msgid "please check your"
+msgstr ""
+
+# 75%
+#. This is a database entry: the name of a resource.
+#, fuzzy
+msgid "potatoes"
+msgstr "картоф"
 
 msgid "price"
 msgstr ""
@@ -475,37 +539,51 @@ msgstr ""
 msgid "read"
 msgstr "червен"
 
-msgid "return"
-msgstr "върни"
-
-msgid "sale"
-msgstr "продай"
-
 msgid "screen"
 msgstr "екран"
 
+msgid "service"
+msgstr "услуга"
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "решение"
+
+#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "звук"
 
 msgid "special"
 msgstr ""
 
+msgid "spot"
+msgstr ""
+
+#. (text of widget: headline_statistics)
+msgid "statistics"
+msgstr ""
+
 msgid "store"
 msgstr ""
+
+msgid "team"
+msgstr "екип"
 
 # 75%
 #, fuzzy
 msgid "tear"
 msgstr "екип"
 
-msgid "from time to time"
-msgstr "от време на време"
+msgid "time to time"
+msgstr ""
 
 msgid "trading"
 msgstr "търгуване"
 
-msgid "village"
-msgstr "село"
+msgid "unsupported"
+msgstr ""
 
 msgid "visit"
 msgstr "посети"
@@ -513,24 +591,13 @@ msgstr "посети"
 msgid "world"
 msgstr ""
 
-# 83%
-#, fuzzy
-msgid "yield"
-msgstr "добиви"
-
-msgid "your ship"
+msgid "wrong"
 msgstr ""
 
-msgid "back"
-msgstr "върни"
-
-msgid "build settlement"
-msgstr "построй колония"
-
-msgid "load"
+msgid "bar"
 msgstr ""
 
-msgid "unload"
+msgid "bug"
 msgstr ""
 
 msgid "command"
@@ -539,127 +606,711 @@ msgstr ""
 msgid "completed"
 msgstr ""
 
-msgid "condition"
-msgstr "условие"
+msgid "forum"
+msgstr "форум"
 
-msgid "contact"
-msgstr "контакт"
-
-msgid "empty"
+msgid "happen"
 msgstr ""
-
-msgid "ensure"
-msgstr ""
-
-msgid "fulfill"
-msgstr "изпълнявам"
-
-msgid "graphics"
-msgstr "графики"
 
 msgid "harvest"
 msgstr ""
 
-# 80%
-#, fuzzy
-msgid "hunts"
-msgstr "ловувам"
-
-msgid "multiple"
-msgstr "многоброен"
-
-msgid "potato field"
+msgid "in range"
 msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "агнешка вълна"
+
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "играене"
+
+msgid "produced"
+msgstr "произведен"
+
+msgid "report"
+msgstr ""
+
+#. (text of widget: sell_income_label)
+msgid "sale"
+msgstr "продай"
 
 msgid "school"
 msgstr "училище"
 
-msgid "seed"
-msgstr "садя"
-
-msgid "service"
-msgstr "услуга"
-
-msgid "sheep"
-msgstr "овца"
-
-msgid "signal fire"
-msgstr "сигнален огън"
-
-msgid "statistics"
-msgstr ""
-
-msgid "clay"
-msgstr "глина"
-
-msgid "iron"
-msgstr "желязо"
-
-msgid "ore"
-msgstr "руда"
-
-msgid "tobacco"
-msgstr "тютюн"
-
-msgid "charcoal"
-msgstr "дървени въглища"
-
-msgid "sugar field"
+msgid "started"
 msgstr ""
 
 msgid "temporarily"
 msgstr "временно"
 
+msgid "trade with"
+msgstr ""
+
 msgid "values"
 msgstr ""
+
+msgid "wheel"
+msgstr ""
+
+#. (helptext of widget: avg_icon)
+msgid "satisfied"
+msgstr ""
+
+#. (text of widget: balance)
+msgid "balance"
+msgstr "баланс"
+
+msgid "load"
+msgstr ""
+
+#. name_0 of buildings:trail
+msgid "trail"
+msgstr "следа"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "желязо"
+
+msgid "tobacco"
+msgstr "тютюн"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "глина"
+
+#. (text of widget: money_score)
+msgid "money"
+msgstr ""
+
+#. name of buildings:pavilion
+msgid "pavilion"
+msgstr "палата"
+
+msgid "tax"
+msgstr "такса"
+
+#. headline of gui_buildmenu:build_menu_per_type
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "спри"
+
+msgid "wait"
+msgstr ""
+
+msgid "decrease"
+msgstr "намалява"
+
+msgid "ore"
+msgstr "руда"
+
+#. (helptext of widget: okButton)
+#. (helptext of widget: cancelButton)
+msgid "return"
+msgstr "върни"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "консумирам"
+
+msgid "idle"
+msgstr ""
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr ""
+
+msgid "village"
+msgstr "село"
+
+msgid "yields"
+msgstr "добиви"
+
+msgid "back"
+msgstr "върни"
+
+#. (helptext of widget: found_settlement)
+msgid "build settlement"
+msgstr "построй колония"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "дървени въглища"
+
+msgid "empty"
+msgstr ""
+
+msgid "existing"
+msgstr ""
+
+msgid "fulfill"
+msgstr "изпълнявам"
+
+#. (text of widget: headline_graphics)
+msgid "graphics"
+msgstr "графики"
+
+msgid "hunt"
+msgstr "ловувам"
+
+#. name_0 of buildings:lumberjackcamp
+msgid "lumberjack tent"
+msgstr ""
+
+msgid "please contact"
+msgstr ""
+
+#. name of buildings:potatofield
+msgid "potato field"
+msgstr ""
+
+msgid "seed"
+msgstr "садя"
+
+msgid "send"
+msgstr ""
+
+msgid "sheep"
+msgstr "овца"
+
+#. name of buildings:signalfire
+msgid "signal fire"
+msgstr "сигнален огън"
+
+#. name of buildings:sugarfield
+msgid "sugar field"
+msgstr ""
+
+#. There was a problem during the 'save game' procedure.
+msgid "error"
+msgstr ""
+
+msgid "deposit"
+msgstr ""
+
+msgid "invalid"
+msgstr ""
+
+#. (text of widget: headline_network)
+msgid "network"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "selected"
+msgstr ""
+
+msgid "boat"
+msgstr ""
+
+msgid "create"
+msgstr ""
+
+msgid "filename"
+msgstr ""
+
+#. (text of widget: headline_mouse)
+msgid "mouse"
+msgstr ""
+
+msgid "partner"
+msgstr "партньор"
+
+msgid "reset"
+msgstr ""
+
+msgid "configuration"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+msgid "enter"
+msgstr ""
+
+#. (text of widget: lbl_QUICKSAVE)
+msgid "quicksave"
+msgstr ""
+
+msgid "stone"
+msgstr ""
+
+msgid "weapon"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "добитък"
+
+msgid "message"
+msgstr ""
+
+msgid "port"
+msgstr ""
+
+#. (text of widget: scenario)
+msgid "scenario"
+msgstr ""
+
+msgid "spice"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "found"
+msgstr "основавам"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "билки"
+
+#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
+msgid "pause"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr ""
+
+msgid "press"
+msgstr ""
+
+#. (text of widget: quit) Completely shut down UH
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+#. (helptext of widget: okButton)
+msgid "apply"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr ""
+
+#. (text of widget: headline)
+#. (text of widget: headline_chat)
+#. (text of widget: lbl_CHAT)
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+#. (helptext of widget: diplomacyButton)
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+#. (text of widget: health)
+msgid "health"
+msgstr ""
+
+#. (text of widget: land_score)
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+#. (helptext of widget: player_name)
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+#. (text of widget: reset_mouse_sensitivity)
+msgid "reset to default"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr ""
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "trade partner"
+msgstr "търговски партньор"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:alvearies
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+#. name of buildings:boatbuilder
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+# 87%
+#. headline of gui_buildmenu:build_menu_per_type
+#. This is a database entry: the name of an inhabitant tier (level).
+#, fuzzy
+msgid "citizens"
+msgstr "гражданин"
+
+#. This is a database entry: the name of a resource.
+#. name of buildings:claydeposit
+msgid "clay deposit"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+#. name of buildings:doctor
+msgid "doctor"
+msgstr "лекар"
+
+msgid "drag"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "education"
+msgstr "образование"
+
+msgid "ensure"
+msgstr ""
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "инвентар"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+#. (text of widget: loadgame)
+#. (text of widget: loadgame) Open a widget to select which game to load
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+#. (text of widget: lbl_QUICKLOAD)
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+#. (text of widget: random)
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+#. (text of widget: headline)
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
+#. (text of widget: running_costs_label)
+#. (text of widget: running_costs)
+msgid "running costs"
+msgstr "текущи плащания"
+
+#. (text of widget: lbl_SCREENSHOT)
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr ""
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr ""
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+#~ msgid "your"
+#~ msgstr "твой"
+
+# 88%
+#, fuzzy
+#~ msgid "merchants"
+#~ msgstr "търговец"
+
+# 90%
+#, fuzzy
+#~ msgid "aristocrats"
+#~ msgstr "аристократ"
+
+# 80%
+#, fuzzy
+#~ msgid "grows"
+#~ msgstr "растя"
+
+#~ msgid "issues"
+#~ msgstr "въпроси"
+
+# 83%
+#, fuzzy
+#~ msgid "yield"
+#~ msgstr "добиви"
+
+#~ msgid "condition"
+#~ msgstr "условие"
+
+# 80%
+#, fuzzy
+#~ msgid "hunts"
+#~ msgstr "ловувам"
 
 #~ msgid "branch office"
 #~ msgstr "бранш офис"
 
-#~ msgid "main"
-#~ msgstr "главен"
-
-#~ msgid "unknown"
-#~ msgstr "неизвестен"
-
-#~ msgid "free"
-#~ msgstr "свободен"
-
-#~ msgid "trader"
-#~ msgstr "търговец"
-
-#~ msgid "version"
-#~ msgstr "версия"
-
-#~ msgid "signal"
-#~ msgstr "сигнал"
-
-#~ msgid "found"
-#~ msgstr "основавам"
-
 #~ msgid "raw"
 #~ msgstr "суровина"
 
-#~ msgid "running"
-#~ msgstr "текущ"
-
-#~ msgid "inventory"
-#~ msgstr "инвентар"
-
 #~ msgid "moved"
 #~ msgstr "преместен"
-
-#~ msgid "produced"
-#~ msgstr "произведен"
 
 #~ msgid "hunter"
 #~ msgstr "ловец"
 
 #~ msgid "market"
 #~ msgstr "пазар"
-
-#~ msgid "partner"
-#~ msgstr "партньор"
 
 #~ msgid "sailor"
 #~ msgstr "моряк"
@@ -694,15 +1345,6 @@ msgstr ""
 #~ msgid "fisherman"
 #~ msgstr "рибар"
 
-#~ msgid "forum"
-#~ msgstr "форум"
-
-#~ msgid "grow"
-#~ msgstr "растя"
-
-#~ msgid "hunt"
-#~ msgstr "ловувам"
-
 #~ msgid "load/unload"
 #~ msgstr "зареди/презареди"
 
@@ -712,20 +1354,11 @@ msgstr ""
 #~ msgid "starting"
 #~ msgstr "стартиране"
 
-#~ msgid "trade partner"
-#~ msgstr "търговски партньор"
-
-#~ msgid "yields"
-#~ msgstr "добиви"
-
 #~ msgid "green"
 #~ msgstr "зелен"
 
 #~ msgid "red"
 #~ msgstr "червен"
-
-#~ msgid "no"
-#~ msgstr "няма"
 
 #~ msgid "dialogue"
 #~ msgstr "диалог"
@@ -736,23 +1369,11 @@ msgstr ""
 #~ msgid "salt ponds"
 #~ msgstr "солници"
 
-#~ msgid "cattle"
-#~ msgstr "добитък"
-
 #~ msgid "pig"
 #~ msgstr "свиня"
-
-#~ msgid "herbs"
-#~ msgstr "билки"
 
 #~ msgid "herbary"
 #~ msgstr "дрогерия"
 
 #~ msgid "butchery"
 #~ msgstr "кланица"
-
-#~ msgid "doctor"
-#~ msgstr "лекар"
-
-#~ msgid "education"
-#~ msgstr "образование"
