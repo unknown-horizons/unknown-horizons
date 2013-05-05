@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-04-09 05:16+0200\n"
-"PO-Revision-Date: 2013-04-15 09:44+0000\n"
+"PO-Revision-Date: 2013-05-05 13:19+0000\n"
 "Last-Translator: Hugues Fafard <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1366019068.0\n"
+"X-POOTLE-MTIME: 1367759977.0\n"
 
 # 86%
 #: run_uh.py
@@ -280,7 +280,7 @@ msgstr "Cliquez afin de changer le nom de votre colonie."
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py
 msgid "Starting engine..."
-msgstr ""
+msgstr "Lance le moteur ..."
 
 #: horizons/gui/modules/loadingscreen.py
 msgid "Catching fish..."
