@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2013-04-07 18:14+0000\n"
+"PO-Revision-Date: 2013-05-05 13:25+0000\n"
 "Last-Translator: supermario <giorgio.saragnese@hotmail.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1365358494.0\n"
+"X-POOTLE-MTIME: 1367760306.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py:2
@@ -72,15 +72,14 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
-#, fuzzy
 msgid ""
 "After you close this log, it can be re-opened with the \"Captain's Log\" icon "
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
 "Dopo la chiusura il diario può essere riaperto con l'icona \"Diario del "
-"Capitano\" nell'angolo in alto a destra (sotto la mini-mappa, con il "
-"documento sigillato e una piuma)."
+"Capitano\" nell'angolo in alto a destra (sotto la mini-mappa, con documento "
+"sigillato e una piuma)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:18
@@ -190,7 +189,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "Cominceremo con il costruire un capanno del taglialegna."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:46
@@ -401,6 +400,8 @@ msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
 msgstr ""
+"Perciò serve un collegamento con un sentiero tra le case e la piazza "
+"principale."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
