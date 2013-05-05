@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-04 23:52+0200\n"
-"PO-Revision-Date: 2013-03-17 16:06+0000\n"
-"Last-Translator: Gallaecio <adriyetichaves@gmail.com>\n"
+"PO-Revision-Date: 2013-05-05 13:21+0000\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1363536402.0\n"
+"X-POOTLE-MTIME: 1367760065.0\n"
 
 msgid "game"
 msgstr "partida"
@@ -99,13 +99,13 @@ msgid "running"
 msgstr "funcionando"
 
 msgid "square"
-msgstr "Praza"
+msgstr "praza"
 
 msgid "lumberjack"
 msgstr "leñador"
 
 msgid "unable"
-msgstr "imposible"
+msgstr "imposíbel"
 
 msgid "continue"
 msgstr "continuar"
@@ -193,7 +193,7 @@ msgid "stock"
 msgstr "existencias"
 
 msgid "upgrade"
-msgstr "Anovar"
+msgstr "avanzar"
 
 msgid "coast"
 msgstr "costa"
@@ -335,7 +335,7 @@ msgstr "menú de construción"
 
 #. This is a database entry: the name of a resource.
 msgid "confectionery"
-msgstr "confección"
+msgstr "confeitaría"
 
 msgid "enabled"
 msgstr "activado"
@@ -399,10 +399,10 @@ msgid "leave"
 msgstr "folla"
 
 msgid "location"
-msgstr "localización"
+msgstr "lugar"
 
 msgid "multiple buildings"
-msgstr "edificios múltiples"
+msgstr "varios edificios"
 
 # 87%
 #. headline of gui_buildmenu:build_menu_per_type
@@ -430,10 +430,10 @@ msgstr "espazo"
 
 #. name_0 of buildings:storagetent
 msgid "storage tent"
-msgstr "tenda de almacenamento"
+msgstr "tenda de depósito"
 
 msgid "target"
-msgstr "destino"
+msgstr "obxectivo"
 
 msgid "terminated"
 msgstr "rematado"
@@ -466,13 +466,13 @@ msgid "construct"
 msgstr "construír"
 
 msgid "cursor"
-msgstr "Cursor"
+msgstr "cursor"
 
 msgid "description"
 msgstr "descrición"
 
 msgid "entries"
-msgstr "Entradas"
+msgstr "entradas"
 
 msgid "feature"
 msgstr "funcionalidade"
@@ -488,14 +488,14 @@ msgid "from time to time"
 msgstr "de vez en cando"
 
 msgid "global"
-msgstr "Global"
+msgstr "global"
 
 msgid "grow"
 msgstr "cultivar"
 
 #. (helptext of widget: happy_icon)
 msgid "happy"
-msgstr "Feliz"
+msgstr "feliz"
 
 msgid "information"
 msgstr "información"
@@ -508,7 +508,7 @@ msgid "minimap"
 msgstr "minimapa"
 
 msgid "offer"
-msgstr "oferta"
+msgstr "ofrecer"
 
 msgid "overview tab"
 msgstr "lapela de información"
@@ -607,7 +607,7 @@ msgid "happen"
 msgstr "ocorrer"
 
 msgid "harvest"
-msgstr "recoller"
+msgstr "colleita"
 
 msgid "in range"
 msgstr "ao alcance"
@@ -620,7 +620,7 @@ msgid "left the game"
 msgstr "saíu da partida"
 
 msgid "lot of boards"
-msgstr "moitos taboleiros"
+msgstr "moitas táboas"
 
 msgid "marketplace"
 msgstr "mercado"
@@ -707,7 +707,7 @@ msgid "stop"
 msgstr "deter"
 
 msgid "wait"
-msgstr "agardar"
+msgstr "esperar"
 
 msgid "decrease"
 msgstr "diminuír"
