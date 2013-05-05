@@ -3,228 +3,230 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-04 23:52+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-03-22 16:28+0000\n"
+"Last-Translator: Cebin <cebinjosephbenny@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ml\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.1-pre\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1363969717.0\n"
 
 msgid "game"
-msgstr ""
+msgstr "കളി"
 
 msgid "building"
-msgstr ""
+msgstr "കെട്ടിടം"
 
 #. (text of widget: headline)
 msgid "build"
-msgstr ""
+msgstr "നിര്‍മ്മിതി"
 
 msgid "player"
-msgstr ""
+msgstr "കളിക്കാരന്‍"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
-msgstr ""
+msgstr "വാസകേന്ദ്രം"
 
 msgid "ship"
-msgstr ""
+msgstr "കപ്പല്‍"
 
 #. name_0 of buildings:tent
 msgid "tent"
-msgstr ""
+msgstr "കൂടാരം"
 
 #. name of buildings:farm
 msgid "farm"
-msgstr ""
+msgstr "ഫാം"
 
 msgid "map"
-msgstr ""
+msgstr "ഭുപടം"
 
 msgid "resource"
-msgstr ""
+msgstr "വിഭവം"
 
 #. name of buildings:warehouse
 msgid "warehouse"
-msgstr ""
+msgstr "കലവറ"
 
 #. (helptext of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
 msgid "inhabitants"
-msgstr ""
+msgstr "നിവാസികള്‍"
 
 msgid "change"
-msgstr ""
+msgstr "മാറ്റം"
 
 msgid "unknown"
-msgstr ""
+msgstr "അജ്ഞാതമായ"
 
 msgid "produce"
-msgstr ""
+msgstr "ഉത്‌പാദിപ്പിക്കുക"
 
 msgid "no"
-msgstr ""
+msgstr "ഇല്ല"
 
 #. (helptext of widget: trade)
 #. (text of widget: headline)
 msgid "trade"
-msgstr ""
+msgstr "വ്യാപാരം"
 
 msgid "check"
-msgstr ""
+msgstr "പരിശോധിക്കുക"
 
 msgid "field"
-msgstr ""
+msgstr "വിളഭൂമി"
 
 msgid "main"
-msgstr ""
+msgstr "പ്രധാന"
 
 msgid "buy"
-msgstr ""
+msgstr "വാങ്ങിക്കുക"
 
 msgid "click"
-msgstr ""
+msgstr "ക്ളിക്ക് ചെയ്യുക"
 
 msgid "left"
-msgstr ""
+msgstr "ഇടത്"
 
 msgid "overview"
-msgstr ""
+msgstr "അവലോകനം"
 
 msgid "running"
-msgstr ""
+msgstr "പ്രവര്‍ത്തിക്കുന്ന"
 
 msgid "square"
-msgstr ""
+msgstr "ജംങ്‌ഷന്‍"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "മരപ്പണിക്കാരന്‍"
 
 msgid "unable"
-msgstr ""
+msgstr "സാധ്യമല്ല"
 
 msgid "continue"
-msgstr ""
+msgstr "തുടരുക"
 
 #. name of buildings:mainsquare
 msgid "main square"
-msgstr ""
+msgstr "പ്രധാന ജംങ്‌ഷന്‍"
 
 msgid "production"
-msgstr ""
+msgstr "ഉത്പാദനം"
 
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "sailors"
-msgstr ""
+msgstr "നാവികര്‍"
 
 msgid "sell"
-msgstr ""
+msgstr "വില്‍ക്കുക"
 
 msgid "storage"
-msgstr ""
+msgstr "സംഭരണശാല"
 
 msgid "contact"
-msgstr ""
+msgstr "സമ്പര്‍ക്കം"
 
 #. name_2 of buildings:tent
 msgid "house"
-msgstr ""
+msgstr "വീട്"
 
 msgid "menu"
-msgstr ""
+msgstr "മെനു"
 
 msgid "tab"
-msgstr ""
+msgstr "ടാബ്"
 
 #. (helptext of widget: okButton)
 msgid "close"
-msgstr ""
+msgstr "ക്ലോസ്"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of a resource.
 msgid "food"
-msgstr ""
+msgstr "ഭക്ഷണം"
 
 msgid "free"
-msgstr ""
+msgstr "സ്വതന്ത്ര"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 msgid "ready"
-msgstr ""
+msgstr "തയ്യാര്‍"
 
 msgid "setting"
-msgstr ""
+msgstr "സജ്ജീകരണം"
 
 msgid "start"
-msgstr ""
+msgstr "ആരംഭിക്കുക"
 
 msgid "time"
-msgstr ""
+msgstr "സമയം"
 
 msgid "trader"
-msgstr ""
+msgstr "വ്യാപാരി"
 
 msgid "unit"
-msgstr ""
+msgstr "അളവ്"
 
 msgid "version"
-msgstr ""
+msgstr "പതിപ്പ്"
 
 #. This is a database entry: the name of a resource.
 msgid "fire"
-msgstr ""
+msgstr "തീ"
 
 msgid "island"
-msgstr ""
+msgstr "ദ്വീപ്‌"
 
 msgid "select"
-msgstr ""
+msgstr "തിരഞ്ഞെടുക്കുക"
 
 msgid "slot"
-msgstr ""
+msgstr "സ്ഥാനം"
 
 msgid "stock"
-msgstr ""
+msgstr "ശേഖരം"
 
 msgid "upgrade"
-msgstr ""
+msgstr "നവീകരണം"
 
 msgid "coast"
-msgstr ""
+msgstr "തീരം"
 
 #. (text of widget: game_player_color)
 msgid "color"
-msgstr ""
+msgstr "നിറം"
 
 #. headline of gui_buildmenu:build_menu_per_increment
 #. tab4_headline of gui_buildmenu:build_menu_per_type
 msgid "companies"
-msgstr ""
+msgstr "കമ്പനികൾ"
 
 msgid "file"
-msgstr ""
+msgstr "ഫയല്‍"
 
 msgid "increment"
-msgstr ""
+msgstr "വര്‍ദ്ധനവ്"
 
 msgid "key"
-msgstr ""
+msgstr "താക്കോല്‍"
 
 #. (text of widget: taxes_label)
 #. (text of widget: taxes)
 msgid "taxes"
-msgstr ""
+msgstr "നികുതികൾ"
 
 msgid "collector"
-msgstr ""
+msgstr "സമാഹര്‍ത്താവ്‌"
 
 msgid "connection"
-msgstr ""
+msgstr "ബന്ധം"
 
 msgid "log"
-msgstr ""
+msgstr "മരത്തടി"
 
 #. (text of widget: start_multi) Opens widget to join or create multiplayer games
 msgid "multiplayer"
