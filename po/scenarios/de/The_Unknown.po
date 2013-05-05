@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-30 00:00+0100\n"
-"PO-Revision-Date: 2012-11-29 23:08+0000\n"
+"PO-Revision-Date: 2013-05-05 13:24+0000\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1354230513.0\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367760266.0\n"
 
 #. scenario difficulty
 #: po/The_Unknown.py
@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Wir haben unsere Grundbedürfnis der Nahrung abgesichert und haben etwas Holz "
 "gesammelt, um das Wachstum unserer Siedlung voran zu treiben. Unsere Leute "
-"verlangen nach einem Ort zum Leben und einen, um Waren für ihre täglichen "
+"verlangen nach einem Ort zum Leben und einem, um Waren für ihre täglichen "
 "Bedürfnisse auszutauschen."
 
 #. This is the text body of a logbook page.
@@ -147,7 +147,7 @@ msgid ""
 "Build a main square and at least 10 tents."
 msgstr ""
 "Aufgabe:\n"
-"Baue einen Marktplatz und mindestens zehn Zelte."
+"Errichte einen Marktplatz und mindestens zehn Zelte."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
