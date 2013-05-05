@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-11-23 23:36+0000\n"
+"PO-Revision-Date: 2013-02-10 11:24+0000\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1353713763.0\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1360495481.0\n"
 
 #. scenario difficulty
 #: po/tutorial.py:2
@@ -57,8 +57,8 @@ msgid ""
 "notification of each task will be provided on the left of the screen."
 msgstr ""
 "Tämä on Kapteenin päiväkirja, johon kirjataan kaikki pelin kannalta "
-"olennaiset tiedot. Jokaisesta tehtävästä ilmoitetaan pelin vasemmassa "
-"reunassa."
+"olennaiset tiedot. Pelin aikana tulee tehtäviä, jotka ovat näkyvillä peli-"
+"ikkunan vasemmassa reunassa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:14
@@ -214,7 +214,7 @@ msgid ""
 "In order to construct lumberjacks; open the build menu by either clicking the "
 "big icon below the mini map or pressing B key."
 msgstr ""
-"Rakenna puunhakkaajan näin: avaa aluksi rakennusvalikko joko napsauttamalla "
+"Rakenna puunhakkaaja näin: avaa aluksi rakennusvalikko joko napsauttamalla "
 "pikkukartan alapuolella olevista napeista keskimmäistä tai painamalla "
 "pikanäppäintä B."
 
@@ -303,7 +303,7 @@ msgstr "Rakenna puunhakkaaja ja yhdistä se sivutoimistoon polulla."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:72
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "RUOKAVARANTO"
+msgstr "RUOKAVARASTO"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
@@ -356,8 +356,8 @@ msgid ""
 "in range."
 msgstr ""
 "\n"
-"Kalastaja pitää rakentaa rannikolle kuten sivutoimistokin ja tarvitsee "
-"kalastuskoulun kantamaansa."
+"Kalastaja pitää rakentaa rannikolle kuten sivutoimistokin ja sen lähelle "
+"tulee myöhemmin rakentaa kalastuskoulu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
@@ -611,7 +611,7 @@ msgid ""
 "TASK: Build at least three additional tents."
 msgstr ""
 "\n"
-"TEHTÄVÄ: Rakenna vähintään kolme telttaa lisää."
+"TEHTÄVÄ: Rakenna vielä vähintään kolme telttaa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
