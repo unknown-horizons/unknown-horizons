@@ -34,6 +34,7 @@ User Interface
 Codebase
 * New functionalities
   + #2077: lazy translation (`speaklater` library)
+  + 3195744: script to update existing translations against new template
 * Modified structures
   # #2053: default hashbang now is `/usr/bin/env python2`
   # #2058: allow running with FIFE newer than 0.3.4
@@ -43,6 +44,7 @@ Codebase
 
 User-Contributed Content
 * Translations
+  # Now hosted on http://hosted.weblate.org/projects/uh/
 
 * Campaigns, scenarios and maps
 
