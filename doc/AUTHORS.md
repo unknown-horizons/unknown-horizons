@@ -90,6 +90,9 @@
 
 ## Translators
 
+#### Hosting Weblate
+* Michal Čihař (nijel)
+
 #### Bulgarian
 * balward
 
@@ -242,6 +245,7 @@
 * Dreimer (Daniel Reimer)
 * hoehrer (Werner Hoehrer)
 * Ivanovic (Nils Kneuper)
+* nijel (Michal Čihař)
 * Lamoot (Matjaz Lamut)
 * LinuxDonald (Thomas Kowaliczek)
 * mattn (Martin Gerhardry)
