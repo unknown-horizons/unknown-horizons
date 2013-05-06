@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-05 15:40+0200\n"
-"PO-Revision-Date: 2013-03-08 22:13+0000\n"
-"Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-06 11:50+0200\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"X-Generator: Weblate 1.6-dev\n"
 "X-POOTLE-MTIME: 1362780781.0\n"
 
 #: run_uh.py:220
@@ -234,7 +234,7 @@ msgstr "Protokolování povoleno"
 #: horizons/engine/settingshandler.py:279
 #, python-format
 msgid "Logs are written to {directory}."
-msgstr "Logy se ukládají do adresáře {}"
+msgstr "Logy se ukládají do adresáře {directory}."
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1139,7 +1139,7 @@ msgstr "Pro cestu potřebujete nejméně dvě různé osady."
 
 #: horizons/gui/widgets/routeconfig.py:140
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Kliknutím na osadu přidejte vyčkávací pozici."
+msgstr "Kliknutím na osadu přidejte vyčkávací pozici!"
 
 #: horizons/gui/widgets/routeconfig.py:179
 msgid "Loading into ship"
@@ -1824,7 +1824,7 @@ msgstr "Hráčovo aktuální bohatství + příjem očekávaný v blízké budou
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py:561
 msgid "Player Name"
-msgstr "Jméno hráče:"
+msgstr "Jméno hráče"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py:563
