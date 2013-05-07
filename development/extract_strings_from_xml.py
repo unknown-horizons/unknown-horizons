@@ -33,7 +33,10 @@
 #
 ###############################################################################
 
+import re
+import os
 import sys
+from xml.dom import minidom
 
 if len(sys.argv) != 2:
 	print 'Error: Provide a file to write strings to as argument. Exiting.'
@@ -110,9 +113,7 @@ files_to_skip = [
 	'startup_error_popup.xml',
 	]
 
-from xml.dom import minidom
-import os
-import sys
+KEEP_STUFF_RE = re.compile(r'noi18n_\w+')
 
 def print_n_no_name(n, text):
 	print '\tWarning: ',
@@ -146,8 +147,13 @@ def content_from_element(element_name, parse_tree, attribute):
 		name = element.getAttribute('name')
 		text = element.getAttribute(attribute)
 		i18n = element.getAttribute('comment') # translator comment about widget context
-		if i18n.startswith('noi18n'):
-			# comment='noi18n foo' in widgets where translation is not desired
+		if i18n == 'noi18n':
+			# comment='noi18n' in widgets where translation is not desired
+			continue
+
+		if 'noi18n_%s' % attribute in i18n:
+			# comment='noi18n_tooltip' in widgets where tooltip translation is not
+			# desired, but text should be translated.
 			continue
 
 		if not name:
@@ -156,7 +162,8 @@ def content_from_element(element_name, parse_tree, attribute):
 			elif text:
 				print_n_no_name(element_name, text)
 
-		if text and name and not i18n.startswith('noi18n'):
+		if text and name:
+			i18n = KEEP_STUFF_RE.sub('', i18n).strip()
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
