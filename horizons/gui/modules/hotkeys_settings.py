@@ -103,6 +103,7 @@ class HotkeyConfiguration(object):
 		self.current_column = column
 		self.listener.activate()
 		#xgettext:python-format
+		self.update_buttons_text()
 		button.text = _("Press desired key")
 
 	def _detect_keypress(self, event):
@@ -146,7 +147,7 @@ class HotkeyConfiguration(object):
 		elif self.key_is_set(key):
 			oldaction = self.get_action_name(key)
 			# The following commented lines are left in for use when the optionsPickBelt will support pop-ups
-			
+
 			#xgettext:python-format
 			#message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
 			#		                      key=key_name, action=oldaction)
