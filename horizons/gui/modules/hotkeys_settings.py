@@ -146,17 +146,17 @@ class HotkeyConfiguration(object):
 		# This is done to avoid binding one key for two actions.
 		elif self.key_is_set(key):
 			oldaction = self.get_action_name(key)
-			# The following commented lines are left in for use when the optionsPickBelt will support pop-ups
 
 			#xgettext:python-format
-			#message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
-			#		                      key=key_name, action=oldaction)
-			#if self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-			horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
-			#else:
-			#	self.update_buttons_text()
-			#	self.last_combination = []
-			#	return
+			message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
+					                      key=key_name, action=oldaction)
+			confirmed = horizons.main._modules.gui.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True)
+			if confirmed:
+				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
+			else:
+				self.update_buttons_text()
+				self.last_combination = []
+				return
 
 		bindings = self.keyconf.get_current_keys(action)
 		if column == 1:

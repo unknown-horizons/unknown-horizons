@@ -53,7 +53,7 @@ class SettingsDialog(FifePychanSettings):
 		optionsPickbelt.page_widgets[number].addChild(hk.widget)
 
 		self.hotkeyInterface = hk
-		
+
 		# HACK: fife settings call stylize, which breaks our styling on widget load
 		no_restyle_str = "do_not_restyle_this"
 		self.setGuiStyle(no_restyle_str)
