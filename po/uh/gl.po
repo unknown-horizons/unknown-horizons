@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-05 15:40+0200\n"
-"PO-Revision-Date: 2013-04-08 22:05+0200\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2013-05-07 09:09+0200\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"Language-Team: Galician <http://hosted.weblate.org/projects/uh/uh/gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 "X-POOTLE-MTIME: 1365380852.0\n"
 
 #: run_uh.py:220
@@ -1221,7 +1221,7 @@ msgstr "(clic secundario para deter)"
 #. (text of widget: headline_brush_size)
 #: horizons/i18n/guitranslations.py:73
 msgid "Select brush size:"
-msgstr "Escolle o tamaño do pincel"
+msgstr "Escolle o tamaño do pincel:"
 
 #. (text of widget: headline_terrain)
 #: horizons/i18n/guitranslations.py:75
@@ -2321,7 +2321,7 @@ msgstr "Valores predeterminados"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:845
 msgid "Auto-unload ship:"
-msgstr "Descargar o barco automaticamente"
+msgstr "Descargar o barco automaticamente:"
 
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:847
