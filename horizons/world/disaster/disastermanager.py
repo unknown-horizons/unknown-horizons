@@ -101,5 +101,11 @@ class DisasterManager(object):
 		"""Returns whether there is currently a disaster in a settlement"""
 		return settlement in self._active_disaster
 
+	def get_disaster(self, settlement):
+		"""Returns the currently active disaster for the given settlement. None is
+		returned in case no disaster is currently active."""
+		if self.is_affected(settlement):
+			return self._active_disaster[settlement]
+		return None
 
 
