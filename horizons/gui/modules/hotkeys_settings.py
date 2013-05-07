@@ -92,8 +92,7 @@ class HotkeyConfiguration(object):
 		#xgettext:python-format
 		button = Button()
 		button.name = str(index)
-		button.max_size = (100,18)
-		button.min_size = (100,18)
+		button.max_size = button.min_size = (100, 18)
 		return button
 
 	def _detect_click_on_button(self, button, column):
