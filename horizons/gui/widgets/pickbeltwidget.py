@@ -19,13 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.util import load_uh_widget
 from horizons.gui.style import NOTHING
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
 from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
-
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
@@ -84,8 +83,13 @@ class PickBeltWidget(object):
 class OptionsPickbeltWidget(PickBeltWidget):
 	"""Widget for Options dialog with pickbelt style pages"""
 	widget_xml = 'settings.xml'
+
 	sections = (('graphics_settings', _lazy('Graphics')),
+                ('hotkeys_settings', _('Hotkeys')),
 	            ('game_settings', _lazy('Game')))
+
+	def update_view(self, number=0):
+		super(OptionsPickbeltWidget, self).update_view(number=number)
 
 
 class CreditsPickbeltWidget(PickBeltWidget, Window):

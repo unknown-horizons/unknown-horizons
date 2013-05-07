@@ -25,6 +25,7 @@ from string import ascii_uppercase
 from fife import fife
 
 import horizons.globals
+from horizons.ext.enum import Enum
 from horizons.util.python.singleton import Singleton
 
 class KeyConfig(object):
@@ -33,15 +34,11 @@ class KeyConfig(object):
 	"""
 	__metaclass__ = Singleton
 
-	class _Actions(object):
-		"""Internal data. Use inside keylistener module."""
-		GRID, COORD_TOOLTIP, DESTROY_TOOL, PLAYERS_OVERVIEW, ROAD_TOOL, SPEED_UP, SPEED_DOWN, \
-		PAUSE, SETTLEMENTS_OVERVIEW, SHIPS_OVERVIEW, LOGBOOK, BUILD_TOOL, ROTATE_RIGHT, \
-		ROTATE_LEFT, CHAT, TRANSLUCENCY, TILE_OWNER_HIGHLIGHT, QUICKSAVE, QUICKLOAD, \
-		PIPETTE, HEALTH_BAR, ESCAPE, LEFT, RIGHT, UP, DOWN, DEBUG, CONSOLE, HELP, SCREENSHOT, \
-		SHOW_SELECTED, REMOVE_SELECTED = \
-		range(32)
-
+	_Actions = Enum('GRID', 'COORD_TOOLTIP', 'DESTROY_TOOL', 'PLAYERS_OVERVIEW', 'ROAD_TOOL', 'SPEED_UP', 'SPEED_DOWN', \
+		'PAUSE', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW', 'LOGBOOK', 'BUILD_TOOL', 'ROTATE_RIGHT', \
+		'ROTATE_LEFT', 'CHAT', 'TRANSLUCENCY', 'TILE_OWNER_HIGHLIGHT', 'QUICKSAVE', 'QUICKLOAD', \
+		'PIPETTE', 'HEALTH_BAR', 'ESCAPE', 'LEFT', 'RIGHT', 'UP', 'DOWN', 'DEBUG', 'CONSOLE', 'HELP', 'SCREENSHOT', \
+		'SHOW_SELECTED', 'REMOVE_SELECTED')
 
 	def __init__(self):
 		_Actions = self._Actions
@@ -50,19 +47,23 @@ class KeyConfig(object):
 		self.all_keys = self.get_keys_by_name()
 		# map key ID (int) to action it triggers (int)
 		self.keyval_action_mappings = {}
+		self.loadKeyConfiguration()
 
+		self.requires_shift = set([_Actions.DEBUG])
+
+	def loadKeyConfiguration(self):
+		self.keyval_action_mappings = {}
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for action in custom_key_actions:
-			action_id = getattr(_Actions, action, None)
+			action_id = getattr(self._Actions, action, None)
 			if action_id is None:
 				self.log.warn('Unknown hotkey in settings: %s', action)
 				continue
+
 			keys_for_action = horizons.globals.fife.get_keys_for_action(action)
 			for key in keys_for_action:
 				key_id = self.get_key_by_name(key.upper())
 				self.keyval_action_mappings[key_id] = action_id
-
-		self.requires_shift = set([_Actions.DEBUG])
 
 	def translate(self, evt):
 		"""
@@ -93,8 +94,32 @@ class KeyConfig(object):
 		return dict( (k, v) for k, v in fife.Key.__dict__.iteritems()
 		                    if is_available(k, v))
 
+	def get_keys_by_value(self):
+		def is_available(key, value):
+			special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
+			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
+			return (key.startswith(tuple(ascii_uppercase)) and
+			        not key.startswith(special_keys))
+		return dict( (v, k) for k, v in fife.Key.__dict__.iteritems()
+		                    if is_available(k, v))
+
+	def get_keyval_to_actionid_map(self):
+		return self.keyval_action_mappings
+
 	def get_current_keys(self, action):
 		return horizons.globals.fife.get_keys_for_action(action)
 
 	def get_default_keys(self, action):
 		return horizons.globals.fife.get_keys_for_action(action, default=True)
+
+	def get_actions_by_name(self):
+		"""Returns a list of the names of all the actions"""
+		return [str(x) for x in self._Actions]
+
+	def get_bindable_actions_by_name(self):
+		"""Returns a list of the names of the actions which can be binded in the hotkeys interface"""
+		actions = [str(x) for x in self._Actions]
+		unbindable_actions = ['DEBUG', 'ESCAPE']
+		for action in unbindable_actions:
+			actions.remove(action)
+		return actions
