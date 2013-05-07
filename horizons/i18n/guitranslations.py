@@ -710,6 +710,81 @@ def set_translations():
 		(u'okButton'                     , 'helptext'): _("Return"),
 		},
 
+	'hotkeys.xml' : {
+		# (text of widget: reset_to_default)
+		(u'reset_to_default'             , 'text'    ): _("Reset to default keys"),
+		# (text of widget: labels_headline)
+		(u'labels_headline'              , 'text'    ): _("Actions"),
+		# (text of widget: primary_buttons_headline)
+		(u'primary_buttons_headline'     , 'text'    ): _("Primary"),
+		# (text of widget: secondary_buttons_headline)
+		(u'secondary_buttons_headline'   , 'text'    ): _("Secondary"),
+		# (helptext of widget: okButton)
+		(u'okButton'                     , 'helptext'): _("Exit to main menu"),
+		# (helptext of widget: reset_to_default)
+		(u'reset_to_default'             , 'helptext'): _("Reset to default"),
+		# (helptext of widget: lbl_BUILD_TOOL)
+		(u'lbl_BUILD_TOOL'               , 'helptext'): _("Show build menu"),
+		# (helptext of widget: lbl_CHAT)
+		(u'lbl_CHAT'                     , 'helptext'): _("Chat"),
+		# (helptext of widget: lbl_CONSOLE)
+		(u'lbl_CONSOLE'                  , 'helptext'): _("Toggle showing FPS on/off"),
+		# (helptext of widget: lbl_COORD_TOOLTIP)
+		(u'lbl_COORD_TOOLTIP'            , 'helptext'): _("Show coordinate values (Debug)"),
+		# (helptext of widget: lbl_DESTROY_TOOL)
+		(u'lbl_DESTROY_TOOL'             , 'helptext'): _("Enable destruct mode"),
+		# (helptext of widget: lbl_DOWN)
+		(u'lbl_DOWN'                     , 'helptext'): _("Scroll down"),
+		# (helptext of widget: lbl_GRID)
+		(u'lbl_GRID'                     , 'helptext'): _("Toggle grid on/off"),
+		# (helptext of widget: lbl_HEALTH_BAR)
+		(u'lbl_HEALTH_BAR'               , 'helptext'): _("Toggle health bars"),
+		# (helptext of widget: lbl_HELP)
+		(u'lbl_HELP'                     , 'helptext'): _("Display help"),
+		# (helptext of widget: lbl_LEFT)
+		(u'lbl_LEFT'                     , 'helptext'): _("Scroll left"),
+		# (helptext of widget: lbl_LOGBOOK)
+		(u'lbl_LOGBOOK'                  , 'helptext'): _("Toggle Captain's log"),
+		# (helptext of widget: lbl_PAUSE)
+		(u'lbl_PAUSE'                    , 'helptext'): _("Pause game"),
+		# (helptext of widget: lbl_PIPETTE)
+		(u'lbl_PIPETTE'                  , 'helptext'): _("Enable pipette mode (clone buildings)"),
+		# (helptext of widget: lbl_PLAYERS_OVERVIEW)
+		(u'lbl_PLAYERS_OVERVIEW'         , 'helptext'): _("Show player scores"),
+		# (helptext of widget: lbl_QUICKLOAD)
+		(u'lbl_QUICKLOAD'                , 'helptext'): _("Quickload"),
+		# (helptext of widget: lbl_QUICKSAVE)
+		(u'lbl_QUICKSAVE'                , 'helptext'): _("Quicksave"),
+		# (helptext of widget: lbl_REMOVE_SELECTED)
+		(u'lbl_REMOVE_SELECTED'          , 'helptext'): _("Remove selected units / buildings"),
+		# (helptext of widget: lbl_RIGHT)
+		(u'lbl_RIGHT'                    , 'helptext'): _("Scroll right"),
+		# (helptext of widget: lbl_ROAD_TOOL)
+		(u'lbl_ROAD_TOOL'                , 'helptext'): _("Enable road building mode"),
+		# (helptext of widget: lbl_ROTATE_LEFT)
+		(u'lbl_ROTATE_LEFT'              , 'helptext'): _("Rotate building or map counterclockwise"),
+		# (helptext of widget: lbl_ROTATE_RIGHT)
+		(u'lbl_ROTATE_RIGHT'             , 'helptext'): _("Rotate building or map clockwise"),
+		# (helptext of widget: lbl_SCREENSHOT)
+		(u'lbl_SCREENSHOT'               , 'helptext'): _("Screenshot"),
+		# (helptext of widget: lbl_SETTLEMENTS_OVERVIEW)
+		(u'lbl_SETTLEMENTS_OVERVIEW'     , 'helptext'): _("Show settlement list"),
+		# (helptext of widget: lbl_SHIPS_OVERVIEW)
+		(u'lbl_SHIPS_OVERVIEW'           , 'helptext'): _("Show ship list"),
+		# (helptext of widget: lbl_SHOW_SELECTED)
+		(u'lbl_SHOW_SELECTED'            , 'helptext'): _("Focus camera on selection"),
+		# (helptext of widget: lbl_SPEED_DOWN)
+		(u'lbl_SPEED_DOWN'               , 'helptext'): _("Decrease game speed"),
+		# (helptext of widget: lbl_SPEED_UP)
+		(u'lbl_SPEED_UP'                 , 'helptext'): _("Increase game speed"),
+		# (helptext of widget: lbl_TILE_OWNER_HIGHLIGHT)
+		(u'lbl_TILE_OWNER_HIGHLIGHT'     , 'helptext'): _("Highlight tile ownership"),
+		# (helptext of widget: lbl_TRANSLUCENCY)
+		(u'lbl_TRANSLUCENCY'             , 'helptext'): _("Toggle translucency of ambient buildings"),
+		# (helptext of widget: lbl_UP)
+		(u'lbl_UP'                       , 'helptext'): _("Scroll up"),
+		},
+
 	'ingamemenu.xml' : {
 		# (text of widget: help)
 		(u'help'                         , 'text'    ): _("Help"),

@@ -3,15 +3,6 @@
 <AutoResizeContainer name="hotkeys_window">
 <!-- Hotkeys section -->
 <HBox name="hotkeys" padding="10">
-	<!-- Left pane
-	<VBox name="graphics_left" max_size="320,500" min_size="320,0" padding="25">
-	</VBox> -->
-
-	<!-- Right pane
-	<VBox name="graphics_right" max_size="320,500" min_size="320,0" padding="25">
-	</VBox> -->
-
-
 	<ScrollArea name="hotkeys_list" max_size="600,450" min_size="600,450">
 		<HBox name="label_button_columns" padding="30">
 			<VBox name="keys_container">
