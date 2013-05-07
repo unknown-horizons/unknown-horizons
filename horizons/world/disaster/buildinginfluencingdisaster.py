@@ -22,7 +22,7 @@
 
 from horizons.world.disaster import Disaster
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
-from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
+from horizons.constants import BUILDINGS, TIER
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
@@ -116,7 +116,8 @@ class BuildingInfluencingDisaster(Disaster):
 	def recover(self, building):
 		super(BuildingInfluencingDisaster, self).recover(building)
 		RemoveStatusIcon.broadcast(self, building, self.STATUS_ICON)
-		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
+		callback = Callback(self.wreak_havoc, building)
+		Scheduler().rem_call(self, callback)
 		self._affected_buildings.remove(building)
 
 	def evaluate(self):
