@@ -1216,19 +1216,17 @@ msgstr "Volver ao editor"
 #. (text of widget: cursor_hint)
 #: horizons/i18n/guitranslations.py:71
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(clic secundario para deter)"
 
 #. (text of widget: headline_brush_size)
 #: horizons/i18n/guitranslations.py:73
-#, fuzzy
 msgid "Select brush size:"
-msgstr "Escoller un recurso:"
+msgstr "Escolle o tamaño do pincel"
 
 #. (text of widget: headline_terrain)
 #: horizons/i18n/guitranslations.py:75
-#, fuzzy
 msgid "Select terrain:"
-msgstr "Escoller un recurso:"
+msgstr "Escolle un terreo:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:83
@@ -3428,7 +3426,6 @@ msgstr ""
 "lista aínda."
 
 #: horizons/mpsession.py:97
-#, fuzzy
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
