@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-05 15:40+0200\n"
-"PO-Revision-Date: 2013-03-31 20:29+0000\n"
-"Last-Translator: Fringillus <fringillus92@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-07 09:09+0200\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"Language-Team: Swedish <http://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 "X-POOTLE-MTIME: 1364761781.0\n"
 
 #: run_uh.py:220
@@ -1171,7 +1171,7 @@ msgstr ""
 #: horizons/gui/windows.py:384
 #, python-format
 msgid "Error: {error_message}"
-msgstr "Felmeddelande:"
+msgstr "Felmeddelande: {error_message}"
 
 #. (text of widget: help)
 #. (text of widget: help_label) Main / in-game menu entry
