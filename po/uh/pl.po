@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-05 15:40+0200\n"
-"PO-Revision-Date: 2013-05-05 12:18+0000\n"
-"Last-Translator: Anonymous Pootle User\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-07 09:08+0200\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"Language-Team: Polish <http://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.6-dev\n"
 "X-POOTLE-MTIME: 1367756304.0\n"
 
 # 86%
@@ -2081,7 +2081,7 @@ msgstr "Kies een kaart:"
 #. (text of widget: headline_choose_saved_game)
 #: horizons/i18n/guitranslations.py:624
 msgid "Choose a saved game's map:"
-msgstr "Wybierz mapę zapisanej gry"
+msgstr "Wybierz mapę zapisanej gry:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:629
@@ -3891,7 +3891,7 @@ msgstr ""
 #: horizons/util/uhdbaccessor.py:284
 #, python-format
 msgid "Health: {health}"
-msgstr "Zdrowie:"
+msgstr "Zdrowie: {health}"
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
