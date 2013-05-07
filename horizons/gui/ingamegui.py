@@ -351,8 +351,6 @@ class IngameGui(LivingObject):
 	def on_return(self):
 		if self.windows.visible:
 			self.windows.on_return()
-		elif hasattr(self.cursor, 'on_return'):
-			self.cursor.on_return()
 
 		return True
 
