@@ -55,7 +55,7 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 		"""Some inhabitants have to die."""
 		super(BlackDeathDisaster, self)
 		if building.inhabitants > 1:
-			inhabitants_that_will_die = self.session.random.randint(1, building.inhabitants)
+			inhabitants_that_will_die = self._manager.session.random.randint(1, building.inhabitants)
 			building.inhabitants -= inhabitants_that_will_die
 			print building.happiness
 			self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
