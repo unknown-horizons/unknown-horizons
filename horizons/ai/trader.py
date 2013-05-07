@@ -21,17 +21,18 @@
 
 import logging
 
+from horizons.ai.generic import GenericAI
+from horizons.constants import UNITS, BUILDINGS, TRADER
+from horizons.command.unit import CreateUnit
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.ext.enum import Enum
+from horizons.messaging import NewSettlement
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
-from horizons.constants import UNITS, BUILDINGS, TRADER
-from horizons.ai.generic import GenericAI
-from horizons.ext.enum import Enum
+from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.command.unit import CreateUnit
-from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.messaging import NewSettlement
 
 
 class Trader(GenericAI):
@@ -174,6 +175,8 @@ class Trader(GenericAI):
 		               (warehouse is None))
 		#TODO maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		warehouses = self.session.world.get_warehouses()
+		# Remove all warehouses that are not safe to visit
+		warehouses = filter(self.is_warehouse_safe, warehouses)
 		if not warehouses: # there aren't any warehouses, move randomly
 			self.send_ship_random(ship)
 		else: # select a warehouse
@@ -186,6 +189,10 @@ class Trader(GenericAI):
 				self.ships[ship] = self.shipStates.moving_to_warehouse
 			except MoveNotPossible:
 				self.send_ship_random(ship)
+
+	def is_warehouse_safe(self, warehouse):
+		"""Checkes whether a warehouse is safe to visit"""
+		return not isinstance(self.session.world.disaster_manager.get_disaster(warehouse.settlement), BlackDeathDisaster)
 
 	def reached_warehouse(self, ship):
 		"""Actions that need to be taken when reaching a warehouse:
