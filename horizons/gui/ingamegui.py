@@ -348,6 +348,14 @@ class IngameGui(LivingObject):
 
 		return True
 
+	def on_return(self):
+		if self.windows.visible:
+			self.windows.on_return()
+		elif hasattr(self.cursor, 'on_return'):
+			self.cursor.on_return()
+
+		return True
+
 	def _on_speed_changed(self, message):
 		self._display_speed(message.new)
 
@@ -388,6 +396,8 @@ class IngameGui(LivingObject):
 
 		if action == _Actions.ESCAPE:
 			return self.on_escape()
+		elif keyval == fife.Key.ENTER:
+			return self.on_return()
 
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
