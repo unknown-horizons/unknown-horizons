@@ -76,12 +76,17 @@ echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
 PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > $SQL_POT_FILE
 echo "   * Regenerated sql translation file at $SQL_POT_FILE."
 
+# XML files
+find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | \
+  itstool -i development/pychan-its-rule.xml -o $RESULT_FILE $(cat -)
+
 # Get all files to translate.
 (
   find . -mindepth 1 -maxdepth 1 -name \*.py && \
-  find horizons -name \*.py && \
+  find horizons \( -name \*.py ! -name "guitranslations.py" \) && \
   echo $SQL_POT_FILE
 ) | xgettext --files-from=- --output=$RESULT_FILE \
+             --join-existing \
              --from-code=UTF-8 --add-comments \
              --no-wrap --sort-by-file \
              --copyright-holder='The Unknown Horizons Team' \
