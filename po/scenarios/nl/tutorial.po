@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-11-29 13:29+0000\n"
-"Last-Translator: Joenit <joenit@hotmail.nl>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-07 15:51+0200\n"
+"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
+"Language-Team: Dutch <http://hosted.weblate.org/projects/uh/tutorial/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-beta1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 "X-POOTLE-MTIME: 1354195785.0\n"
 
 #. scenario difficulty
@@ -868,7 +868,7 @@ msgid ""
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
 "\n"
-"OPDRACHT: Koop zo veel mogelijk gereedschap zodat je er minimaal 30 op "
+"OPDRACHT: Koop zo veel mogelijk gereedschap, zodat je er minimaal 30 op "
 "voorraad hebt."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1471,7 +1471,7 @@ msgid ""
 msgstr ""
 "Als je een weverij dicht bij een boerderij bouwt en alle paden er na toe "
 "afbreekt, dan zul je zien dat er nog steeds wol wordt afgehaald en stof "
-"wordt geproduceerd. "
+"wordt geproduceerd."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:346
