@@ -34,15 +34,15 @@ class KeyConfig(object):
 	"""
 	__metaclass__ = Singleton
 
-	_Actions = Enum('LEFT', 'RIGHT', 'UP', 'DOWN', \
-	                'ROTATE_LEFT', 'ROTATE_RIGHT', 'SPEED_UP', 'SPEED_DOWN', 'PAUSE', \
-	                'BUILD_TOOL', 'DESTROY_TOOL', 'ROAD_TOOL', 'PIPETTE',\
-					'PLAYERS_OVERVIEW', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW', \
-	                'LOGBOOK', 'CHAT', \
-	                'QUICKSAVE', 'QUICKLOAD', 'ESCAPE', \
-	                'TRANSLUCENCY', 'TILE_OWNER_HIGHLIGHT', \
-		 			'HEALTH_BAR', 'SHOW_SELECTED', 'REMOVE_SELECTED', \
-	                'HELP', 'SCREENSHOT', \
+	_Actions = Enum('LEFT', 'RIGHT', 'UP', 'DOWN',
+	                'ROTATE_LEFT', 'ROTATE_RIGHT', 'SPEED_UP', 'SPEED_DOWN', 'PAUSE',
+	                'BUILD_TOOL', 'DESTROY_TOOL', 'ROAD_TOOL', 'PIPETTE',
+	                'PLAYERS_OVERVIEW', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW',
+	                'LOGBOOK', 'CHAT',
+	                'QUICKSAVE', 'QUICKLOAD', 'ESCAPE',
+	                'TRANSLUCENCY', 'TILE_OWNER_HIGHLIGHT',
+	                'HEALTH_BAR', 'SHOW_SELECTED', 'REMOVE_SELECTED',
+	                'HELP', 'SCREENSHOT',
 	                'DEBUG', 'CONSOLE', 'GRID', 'COORD_TOOLTIP')
 
 	def __init__(self):
