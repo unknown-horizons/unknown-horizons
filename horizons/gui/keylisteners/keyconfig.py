@@ -34,11 +34,16 @@ class KeyConfig(object):
 	"""
 	__metaclass__ = Singleton
 
-	_Actions = Enum('GRID', 'COORD_TOOLTIP', 'DESTROY_TOOL', 'PLAYERS_OVERVIEW', 'ROAD_TOOL', 'SPEED_UP', 'SPEED_DOWN', \
-		'PAUSE', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW', 'LOGBOOK', 'BUILD_TOOL', 'ROTATE_RIGHT', \
-		'ROTATE_LEFT', 'CHAT', 'TRANSLUCENCY', 'TILE_OWNER_HIGHLIGHT', 'QUICKSAVE', 'QUICKLOAD', \
-		'PIPETTE', 'HEALTH_BAR', 'ESCAPE', 'LEFT', 'RIGHT', 'UP', 'DOWN', 'DEBUG', 'CONSOLE', 'HELP', 'SCREENSHOT', \
-		'SHOW_SELECTED', 'REMOVE_SELECTED')
+	_Actions = Enum('LEFT', 'RIGHT', 'UP', 'DOWN', \
+	                'ROTATE_LEFT', 'ROTATE_RIGHT', 'SPEED_UP', 'SPEED_DOWN', 'PAUSE', \
+	                'BUILD_TOOL', 'DESTROY_TOOL', 'ROAD_TOOL', 'PIPETTE',\
+					'PLAYERS_OVERVIEW', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW', \
+	                'LOGBOOK', 'CHAT', \
+	                'QUICKSAVE', 'QUICKLOAD', 'ESCAPE', \
+	                'TRANSLUCENCY', 'TILE_OWNER_HIGHLIGHT', \
+		 			'HEALTH_BAR', 'SHOW_SELECTED', 'REMOVE_SELECTED', \
+	                'HELP', 'SCREENSHOT', \
+	                'DEBUG', 'CONSOLE', 'GRID', 'COORD_TOOLTIP')
 
 	def __init__(self):
 		_Actions = self._Actions
