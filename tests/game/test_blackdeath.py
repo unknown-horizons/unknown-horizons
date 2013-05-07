@@ -20,9 +20,8 @@
 # ###################################################
 
 
-from horizons.constants import RES, BUILDINGS
-from horizons.command.building import Build, Tear
-from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS
+from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 
 from tests.game import game_test
 
@@ -42,6 +41,8 @@ def test_blackdeath_destroy(s):
 
 	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
 	old_num = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
+
+	assert old_num > BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
 
 	while not dis_man._active_disaster:
 		dis_man.run() # try to seed until we have the black death
