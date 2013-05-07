@@ -3,8 +3,60 @@ Unknown Horizons
 
 -----------------------------------------------------
 
-2013-04-05: Milestone 2013.2
-changelog date: APR 05
+2013-07-01: Milestone 2013.3
+changelog date: MAY 01
+
+Gameplay and Balancing
+* New features
+  + 
+* Modifications and changes
+  # 
+* Fixed bugs and problems
+  ~ 9d4a7e1: crash when clicking on messagewidget messages in scenarios
+  ~ #2039: introduce memory leak to fix `RuntimeError: _[NotFound]_ ,
+    Something was searched, but not found :: action move_as_[corrupted]`
+
+Media Content
+* New files and features
+  + 
+* Brush-ups and modification
+  # 
+
+User Interface
+* Additions and new features
+  + d413693: improved loading screen messages about current stage
+* Repositioning and modifications
+  # #1310: right clicks in trade route resource selection are now
+    special-cased to abort selection (not empty slot) sometimes
+* Fixed bugs and usability problems
+  ~ #2081: explanatory labels for map editor
+
+Codebase
+* New functionalities
+  + #2077: lazy translation (`speaklater` library)
+* Modified structures
+  # #2053: default hashbang now is `/usr/bin/env python2`
+  # #2058: allow running with FIFE newer than 0.3.4
+  # 0a1d6db: migrate script to translate a scenario to python
+* Fixed crashes and inconsistencies
+  ~ 3c363f4: handle unknown actions in hotkey settings
+
+User-Contributed Content
+* Translations
+
+* Campaigns, scenarios and maps
+
+* New team members with this release, Annotations
+  + Push access was granted to:
+  + We accepted pull requests or patches by: alluk
+  + Translators that joined our teams and contributed several strings:
+    Please refer to the credits!
+
+
+-----------------------------------------------------
+
+2013-04-06: Milestone 2013.2
+changelog date: APR 06
 
 Gameplay and Balancing
 * New features
@@ -42,6 +94,7 @@ User Interface
   ~ certain ToggleImageButtons segfault on hover - #2000
   ~ cityinfo widget position with large resource overview bar - #1866
   ~ crate icon in overview of resource deposits - #2001
+	~ Remove same version only checkbox in multiplayer menu - #2068
 
 Codebase
 * New functionalities
@@ -58,6 +111,7 @@ Codebase
 * Fixed crashes and inconsistencies
   ~ hitting Esc while loading screen is active crashes - #2018
   ~ multiplayer backward compatibility for 2012.1
+	~ Remove double extensions (.sqlite.sqlite) from savegames - #2065
 
 * New team members with this release, Annotations
   + Push access was granted to: ThePawnBreak

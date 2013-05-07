@@ -28,8 +28,8 @@ from fife.extensions.fife_settings import FIFE_MODULE
 
 import horizons.main
 
-from horizons.i18n.quotes import QUOTES_SETTINGS
-from horizons.i18n import change_language, find_available_languages
+from horizons.i18n import _lazy, change_language, find_available_languages
+from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.extscheduler import ExtScheduler
@@ -67,7 +67,7 @@ class SettingsHandler(object):
 		uh_add("QuotesType", "quotestype", initialdata=QUOTES_SETTINGS)
 		uh_add("ShowResourceIcons", "show_resource_icons")
 
-		bpp = {0: _("Default"), 16: _("16 bit"), 32: _("32 bit")}
+		bpp = {0: _lazy("Default"), 16: _lazy("16 bit"), 32: _lazy("32 bit")}
 		fife_add("BitsPerPixel", "screen_bpp", initialdata=bpp, requiresrestart=True)
 
 		languages = find_available_languages().keys()
@@ -107,7 +107,11 @@ class SettingsHandler(object):
 		#which will update slider as value
 		#read fife-extension-pychan-Widget-widget.py if u want know how it works
 		slider_event_map = {}
-		self.settings_dialog = self._setting.loadSettingsDialog()
+		if not hasattr(self.engine._setting, '_loadSettingsDialog'):
+			#TODO fifechan / FIFE 0.3.5+ compat
+			# manually copy the old (0.3.4 and earlier) API to the new one
+			self._setting._loadSettingsDialog = self._setting.loadSettingsDialog
+		self.settings_dialog = self._setting._loadSettingsDialog()
 		slider_dict = {'AutosaveInterval': 'autosaveinterval',
 		               'AutosaveMaxCount': 'autosavemaxcount',
 		               'QuicksaveMaxCount': 'quicksavemaxcount',

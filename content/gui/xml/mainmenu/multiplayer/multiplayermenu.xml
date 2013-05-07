@@ -51,11 +51,6 @@
 			<Label name="game_creator"     wrap_text="1"  max_size="300,40" />
 			<Label name="game_playersnum"  wrap_text="1"  max_size="300,100" />
 			<Label name="game_isloaded"    wrap_text="1"  max_size="300,100" />
-
-			<HBox name="game_info_last">
-				<Label name="game_showonlyownversion"  text="Only show games with the same version:" />
-				<CheckBox min_size="32,32"  name="showonlyownversion" marked="1" />
-			</HBox>
 		</VBox>
 
 		<Spacer />

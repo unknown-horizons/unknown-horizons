@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python.callback import Callback
 from horizons.gui.util import load_uh_widget
 from horizons.gui.style import NOTHING
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
+from horizons.i18n import _lazy
+from horizons.util.python.callback import Callback
 
 
 class PickBeltWidget(object):
@@ -83,19 +84,13 @@ class PickBeltWidget(object):
 class OptionsPickbeltWidget(PickBeltWidget):
 	"""Widget for Options dialog with pickbelt style pages"""
 	widget_xml = 'settings.xml'
-
-	def __init__(self, *args, **kwargs):
-		# can't set this as class attribute directly since it's evaluated before gettext is set up
-		self.__class__.sections = (('graphics_settings', _('Graphics')),
-		                           ('game_settings', _('Game')))
-
-		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
+	sections = (('graphics_settings', _lazy('Graphics')),
+	            ('game_settings', _lazy('Game')))
 
 
 class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
-	# Can set as class attribute directly since no gettext calls
 	sections = (
 		('credits_team', u'UH-Team'),
 		('credits_patchers', u'Patchers'),

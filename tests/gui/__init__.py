@@ -27,8 +27,8 @@ When this test is run, it will launch the game in a subprocess, passing it the
 dotted path to the test (along with other options), similar to this code:
 
 	def test_example():
-		returncode = subprocess.call(['python', 'run_uh.py', '--gui-test',
-									  'tests.gui.minimap'])
+		returncode = subprocess.call(['python2', 'run_uh.py', '--gui-test',
+		                              'tests.gui.minimap'])
 		if returncode != 0:
 			assert False
 
@@ -147,7 +147,7 @@ class TestRunner(object):
 		self._gui_handlers = []
 
 		self._custom_setup()
-		self._filter_traceback()
+		#self._filter_traceback()
 		test = self._load_test(test_path)
 		testlet = cooperative.spawn(test, GuiHelper(self._engine.pychan, self))
 		testlet.link(self._stop_test)
@@ -204,7 +204,12 @@ class TestRunner(object):
 
 		This function will be called by the engine's mainloop each frame.
 		"""
-		cooperative.schedule()
+		try:
+			cooperative.schedule()
+		except:
+			import traceback
+			traceback.print_exc()
+			sys.exit(1)
 
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
@@ -294,7 +299,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 						print stdout
 					if not 'Traceback' in stderr:
 						stderr += '\nNo usable error output received, possibly a segfault.'
-					raise TestFailed('\n\n' + stderr)
+					raise TestFailed('\n\n' + stderr.decode('ascii', 'ignore'))
 				else:
 					raise TestFailed()
 

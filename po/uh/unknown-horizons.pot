@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons e862766\n"
+"Project-Id-Version: Unknown Horizons 039d18b\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-03-31 21:03+0200\n"
+"POT-Creation-Date: 2013-04-09 05:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -241,6 +241,51 @@ msgstr ""
 msgid "Click to change the name of your settlement"
 msgstr ""
 
+#. translators: these are descriptions of the current task while loading a game
+#: horizons/gui/modules/loadingscreen.py
+msgid "Starting engine..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Catching fish..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Drawing user interface..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Activating timer..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Chomping game data..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Shaping islands..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Preparing blueprints..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Filling world with water..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Raising animals..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Convincing AI..."
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py
+msgid "Burying treasures..."
+msgstr ""
+
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Unable to find pyenet"
 msgstr ""
@@ -409,9 +454,8 @@ msgid "Load game"
 msgstr ""
 
 #. (text of widget: savegame)
-#. (text of widget: headline_change_name)
 #: horizons/gui/modules/select_savegame.py
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Save map"
 msgstr ""
 
@@ -1029,14 +1073,19 @@ msgstr ""
 msgid "Return to editor"
 msgstr ""
 
-#. (text of widget: enter_new_name_lbl)
+#. (text of widget: cursor_hint)
 #: horizons/i18n/guitranslations.py
-msgid "Enter name:"
+msgid "(right click to stop)"
 msgstr ""
 
-#. (helptext of widget: okButton)
+#. (text of widget: headline_brush_size)
 #: horizons/i18n/guitranslations.py
-msgid "Save the map"
+msgid "Select brush size:"
+msgstr ""
+
+#. (text of widget: headline_terrain)
+#: horizons/i18n/guitranslations.py
+msgid "Select terrain:"
 msgstr ""
 
 #. (text of widget: headline)
@@ -1685,7 +1734,7 @@ msgstr ""
 msgid "Choose a map:"
 msgstr ""
 
-#. (text of widget: headline_choose_saved_game_lbl)
+#. (text of widget: headline_choose_saved_game)
 #: horizons/i18n/guitranslations.py
 msgid "Choose a saved game's map:"
 msgstr ""
@@ -1733,7 +1782,7 @@ msgstr ""
 
 #. (text of widget: lbl_CONSOLE)
 #: horizons/i18n/guitranslations.py
-msgid "Toggle console on/off"
+msgid "Display FPS counter"
 msgstr ""
 
 #. (text of widget: lbl_COORD_TOOLTIP)
@@ -2021,11 +2070,6 @@ msgstr ""
 #. (text of widget: main_menu_label)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Main menu:"
-msgstr ""
-
-#. (text of widget: game_showonlyownversion)
-#: horizons/i18n/guitranslations.py
-msgid "Only show games with the same version:"
 msgstr ""
 
 #. (text of widget: headline_active_games_lbl)

@@ -35,7 +35,7 @@ class SaveCommand(Command):
 		except RuntimeError as e:
 			headline = _("Invalid filename")
 			msg = _("Received an invalid filename for a save command.")
-			session.gui.show_error_popup(headline, msg, unicode(e))
+			session.ingame_gui.show_error_popup(headline, msg, unicode(e))
 			return
 
 		self.log.debug("SaveCommand: save to %s", path)
@@ -43,9 +43,9 @@ class SaveCommand(Command):
 		success = session._do_save(path)
 		if success:
 			# TODO: distinguish auto/quick/normal
-			session.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
+			session.ingame_gui.message_widget.add('SAVED_GAME')
 		else:
-			session.gui.show_popup(_('Error'), _('Failed to save.'))
+			session.ingame_gui.show_popup(_('Error'), _('Failed to save.'))
 
 Command.allow_network(SaveCommand)
 

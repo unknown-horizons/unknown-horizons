@@ -77,6 +77,8 @@ class IngameGui(LivingObject):
 
 		# Windows
 		self.windows = WindowManager()
+		self.show_popup = self.windows.show_popup
+		self.show_error_popup = self.windows.show_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
 		self.players_overview = PlayersOverview(self.session)
@@ -317,7 +319,7 @@ class IngameGui(LivingObject):
 
 		if not self.session.is_game_loaded():
 			# Fire a message for new world creation
-			self.session.ingame_gui.message_widget.add(point=None, string_id='NEW_WORLD')
+			self.session.ingame_gui.message_widget.add('NEW_WORLD')
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):

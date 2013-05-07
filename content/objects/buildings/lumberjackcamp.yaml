@@ -4,7 +4,7 @@
 # The lumberjack has a HealthComponent in order to be destructible,
 # and a ProducerComponent to produce boards out of the raw trees the lumberjack unit collects.
 # The storage component has space for both raw trees and boards.
-# The actionsets define how the building looks like in the different settler levels.
+# Finally, actionsets define how the building looks like in different tiers.
 id: 8
 name:
   TIER.SAILORS: _ Lumberjack Tent

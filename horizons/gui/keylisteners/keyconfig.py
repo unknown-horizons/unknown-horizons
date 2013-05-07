@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 from string import ascii_uppercase
 
 from fife import fife
@@ -44,6 +45,7 @@ class KeyConfig(object):
 
 	def __init__(self):
 		_Actions = self._Actions
+		self.log = logging.getLogger("gui.keys")
 
 		self.all_keys = self.get_keys_by_name()
 		# map key ID (int) to action it triggers (int)
@@ -51,7 +53,10 @@ class KeyConfig(object):
 
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for action in custom_key_actions:
-			action_id = getattr(_Actions, action)
+			action_id = getattr(_Actions, action, None)
+			if action_id is None:
+				self.log.warn('Unknown hotkey in settings: %s', action)
+				continue
 			keys_for_action = horizons.globals.fife.get_keys_for_action(action)
 			for key in keys_for_action:
 				key_id = self.get_key_by_name(key.upper())

@@ -182,6 +182,11 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="Üllar Lainväe (ussikene)" />
 			</VBox>
 		</VBox>
+		<VBox> <Label text="Finnish" name="headline" />
+			<VBox name="box">
+				<Label text="Aleksi Kinnunen" />
+			</VBox>
+		</VBox>
 		<VBox> <Label text="French" name="headline" />
 			<VBox name="box">
 				<Label text="Antoine Pernot (mumuxe)" />
@@ -297,7 +302,6 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		</VBox>
 		<VBox> <Label text="Swedish" name="headline" />
 			<VBox name="box">
-				<Label text="Aleksi Kinnunen (alluk.)" />
 				<Label text="Nagrim" />
 				<Label text="pilen" />
 			</VBox>

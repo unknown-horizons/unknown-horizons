@@ -35,7 +35,7 @@ class TileSetLoader(object):
 	for example that would be: ts_shallow/90/0.png
 	Note that all directories except for the rotation dir, all dirs have to be empty and
 	must not include additional tile sets.
-	@param start_dir: directory that is used to begin search in"""
+	"""
 
 	log = logging.getLogger("util.loaders.tilesetloader")
 

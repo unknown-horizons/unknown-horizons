@@ -32,7 +32,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.icongroup import hr as HRule
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
-from horizons.gui.windows import Window
+from horizons.gui.windows import Window, Dialog
 from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
@@ -63,7 +63,6 @@ class MultiplayerMenu(Window):
 		})
 
 		self._gui.findChild(name='gamelist').capture(self._update_game_details)
-		self._gui.findChild(name='showonlyownversion').capture(self._refresh)
 		self._playerdata = PlayerDataSelection()
 		self._gui.findChild(name="playerdataselectioncontainer").addChild(self._playerdata.get_widget())
 
@@ -176,8 +175,7 @@ class MultiplayerMenu(Window):
 		if play_sound:
 			AmbientSoundComponent.play_special('refresh')
 
-		only_this_version_allowed = self._gui.findChild(name='showonlyownversion').marked
-		self._games = NetworkInterface().get_active_games(only_this_version_allowed)
+		self._games = NetworkInterface().get_active_games()
 		if self._games is None:
 			return False
 
@@ -258,7 +256,8 @@ class MultiplayerMenu(Window):
 		dialog = load_uh_widget('set_password.xml')
 
 		bind = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		retval = self._windows.show_dialog(dialog, bind, modal=True, focus="password")
+		window = Dialog.create_from_widget(dialog, bind, modal=True, focus="password")
+		retval = self._windows.show(window)
 
 		if retval:
 			return dialog.collectData("password")
