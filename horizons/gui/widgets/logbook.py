@@ -52,6 +52,7 @@ class LogBook(PickBeltWidget, Window):
 
 	def __init__(self, session, windows):
 		self.statistics_index = [i for i, sec in self.sections].index('statistics')
+		self.logbook_index = [i for i, sec in self.sections].index('logbook')
 		self._page_ids = {} # dict mapping self._cur_entry to message.msgcount
 		super(LogBook, self).__init__()
 		self.session = session
@@ -284,6 +285,7 @@ class LogBook(PickBeltWidget, Window):
 		if show_logbook and hasattr(self, "_gui"):
 			self._redraw_captainslog()
 			self._windows.show(self)
+			self.show_logbookwidget()
 
 	def clear(self):
 		"""Remove all entries"""
@@ -310,6 +312,11 @@ class LogBook(PickBeltWidget, Window):
 		self._cur_entry = new_cur
 		AmbientSoundComponent.play_special('flippage')
 		self._redraw_captainslog()
+
+	def show_logbookwidget(self):
+		"""Shows logbook with Logbook page selected"""
+		if self.current_mode != self.logbook_index:
+			self.update_view(self.logbook_index)
 
 ########
 #        STATISTICS  SUBWIDGET
