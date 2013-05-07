@@ -41,7 +41,7 @@
 				<Label name="lbl_RIGHT" text="RIGHT" helptext="Scroll right" />
 				<Label name="lbl_UP" text="UP" helptext="Scroll up" />
 				<Label name="lbl_DOWN" text="DOWN" helptext="Scroll down" />
-				<Label name="lbl_CONSOLE" text="CONSOLE" helptext="Toggle console on/off" />
+				<Label name="lbl_CONSOLE" text="SHOW_FPS" helptext="Toggle showing FPS on/off" />
 				<Label name="lbl_HELP" text="HELP" helptext="Display help" />
 				<Label name="lbl_SCREENSHOT" text="SCREENSHOT" helptext="Screenshot" />
 				<Label name="lbl_SHOW_SELECTED" text="SHOW_SELECTED" helptext="Focus camera on selection" />
