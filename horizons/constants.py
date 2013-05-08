@@ -363,7 +363,7 @@ class GUI:
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
 	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
-	LOGBOOK_DEFAULT_DELAY = 4 # delay between condition fulfilled and logbook popping up
+	LOGBOOK_DEFAULT_DELAY = 1 # delay between condition fulfilled and logbook popping up
 
 # AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:
