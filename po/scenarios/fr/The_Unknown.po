@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-11-30 00:00+0100\n"
-"PO-Revision-Date: 2012-11-30 10:43+0000\n"
-"Last-Translator: Hugues <fafardh@hotmail.de>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-08 17:15+0200\n"
+"Last-Translator: Jérôme Beaugendre <jej27andre@gmail.com>\n"
+"Language-Team: French <http://hosted.weblate.org/projects/uh/the-"
+"unknown/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.5.0-beta1\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 "X-POOTLE-MTIME: 1354272223.0\n"
 
 #. scenario difficulty
@@ -30,10 +31,10 @@ msgid ""
 "crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm....\n"
 msgstr ""
-"Vous êtes le capitaine d'un navire sous le drapeau d'Angleterre en 1740. "
+"Vous êtes le capitaine d'un navire sous le drapeau de l'Angleterre en 1740. "
 "Vous et votre équipage étiez en chemin vers une colonie d'Angleterre dans "
 "l'océan pacifique.\n"
-"Tout allais bien jusqu’à ce que vous entriez dans une tempête....\n"
+"Tout se passait bien jusqu’à ce que vous entriez dans une tempête....\n"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
@@ -48,9 +49,9 @@ msgid ""
 "instruments and sea charts are lost."
 msgstr ""
 "Au bout de quatre jours, la tempête s'atténue enfin et nous pouvons nous "
-"reposer. Cependant il ne nous reste que très peut de nourriture et le navire "
-"est dans un mauvais état. Les instruments de navigations et les cartes "
-"marines sont perdues."
+"reposer. Cependant il ne nous reste que très peu de nourriture et le navire "
+"est dans un mauvais état. Les instruments de navigation et les cartes "
+"marines sont perdus."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -59,10 +60,10 @@ msgid ""
 "so land can't be far. Fortunately we always have some tools and boards "
 "onboard, so we can build some basic shelter."
 msgstr ""
-"Nous devons atteindre de la terre ferme bientôt. L'un de mes matelots a "
-"aperçu un oiseau chassant des poissons, donc il doit y avoir de la terre "
-"tout près. Heureusement nous avons toujours quelques outils et des planches "
-"abord, donc nous pourrons donc ériger des abris rudimentaires."
+"Nous devons atteindre la terre ferme bientôt. L'un de mes matelots a aperçu "
+"un oiseau chassant des poissons, donc il doit y avoir de la terre tout près. "
+"Heureusement nous avons toujours quelques outils et des planches à bord, "
+"ainsi nous pourrons ériger des abris rudimentaires."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -71,12 +72,12 @@ msgid ""
 "Find land and build a port."
 msgstr ""
 "Mission:\n"
-"Trouvez de la terre ferme es érigez un port."
+"Trouvez de la terre ferme et construisez un port."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
 msgid "22nd November 1740"
-msgstr "22 Novembre 1740"
+msgstr "22 novembre 1740"
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -85,8 +86,8 @@ msgid ""
 "days... we are running out of food and lack basic building material."
 msgstr ""
 "Le port est achevé et de nouveaux espoirs naissent. Néanmoins, je suis "
-"inquiet au sujet des jours à venir... nos réserves de nourritures s'épuisent "
-"et nous manquons de matériaux de construction de base."
+"inquiet pour les prochains jours... nos réserves de nourriture s'épuisent et "
+"nous manquons de matériaux de construction de base."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -118,7 +119,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
 msgid "25th November 1740"
-msgstr "25 Novembre 1740"
+msgstr "25 novembre 1740"
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -129,7 +130,7 @@ msgid ""
 msgstr ""
 "Nous avons assuré nos besoins en nourriture et amassé un peu de bois afin de "
 "continuer le développement de notre nouvelle colonie. Nos citoyens exigent "
-"un endroit où vivre et échanger des biens pour la vie de tous les jours."
+"un endroit où vivre et échanger des biens pour leurs besoins quotidiens."
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -152,7 +153,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/The_Unknown.py
 msgid "1st December 1740"
-msgstr "1er Décembre 1740"
+msgstr "1er décembre 1740"
 
 #. This is the text body of a logbook page.
 #: po/The_Unknown.py
@@ -174,9 +175,9 @@ msgid ""
 "We can only try to to build up a civilisation and find a way home..."
 msgstr ""
 "J'ai étudié les étoiles la nuit mais sans mes instruments et mes cartes "
-"marines leur signification reste caché. J'ai le sentiment que nous sommes "
-"pris ici pour quelques temps, alors faisons le meilleur de la situation.\n"
-"Tous ce que nous pouvons faire c'est d'établir une civilisation et trouver "
+"marines leur signification reste inconnue. J'ai le sentiment que nous sommes "
+"bloqués ici pour quelques temps, alors faisons le meilleur de la situation.\n"
+"Tous ce que nous pouvons faire c'est fonder une civilisation et trouver "
 "notre chemin de retour..."
 
 #. This is the text body of a logbook page.
