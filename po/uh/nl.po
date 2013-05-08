@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-07 14:40+0200\n"
-"PO-Revision-Date: 2013-05-07 15:37+0200\n"
-"Last-Translator: Joenit Joenit <joenit@hotmail.nl>\n"
+"PO-Revision-Date: 2013-05-08 12:34+0200\n"
+"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -766,9 +766,8 @@ msgstr "Zend het chatbericht naar alle spelers."
 #. (itstool) path: Container/TextField@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Voer uw bericht in:"
+msgstr "Voer hier uw bericht in"
 
 #. (itstool) path: Container/OkButton@helptext
 #. (itstool) path: VBox/Label@text
@@ -844,11 +843,10 @@ msgstr "Land"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-#, fuzzy
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
-"Waarde van bruikbaar land d.w.z. Hoeveelheid land waarom gebouwd kan worden"
+"Waarde van bruikbaar land d.w.z. Hoeveelheid land waarop gebouwd kan worden"
 
 #. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
@@ -983,7 +981,7 @@ msgstr "Programmeurs"
 #: content/gui/xml/mainmenu/credits.xml:45
 #, fuzzy
 msgid "Game-Play Design"
-msgstr "Game-Play Design"
+msgstr "Game-Play ontwerp"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:52
@@ -1004,22 +1002,22 @@ msgstr "Patchers"
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:82
 msgid "2009"
-msgstr ""
+msgstr "2009"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:91
 msgid "2010"
-msgstr ""
+msgstr "2010"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:105
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:117
 msgid "2012"
-msgstr ""
+msgstr "2012"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:132
@@ -1030,136 +1028,133 @@ msgstr "Vertalers"
 #: content/gui/xml/mainmenu/credits.xml:134
 #, fuzzy
 msgid "Hosting Weblate"
-msgstr "Logging ingeschakeld"
+msgstr "Hosting van Weblate"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:139
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgaars"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:144
 msgid "Catalan"
-msgstr ""
+msgstr "Catalaans"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:150
 msgid "Czech"
-msgstr ""
+msgstr "Tsjechisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:160
 msgid "Danish"
-msgstr ""
+msgstr "Deens"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:165
 msgid "German"
-msgstr ""
+msgstr "Duits"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:172
-#, fuzzy
 msgid "Spanish"
-msgstr "Bedrijven"
+msgstr "Spaans"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:184
 msgid "Estonian"
-msgstr ""
+msgstr "Estisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:190
 msgid "Finnish"
-msgstr ""
+msgstr "Fins"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:195
 msgid "French"
-msgstr ""
+msgstr "Frans"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:207
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:212
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:217
 msgid "Hungarian"
-msgstr ""
+msgstr "Hongaars"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:223
 msgid "Italian"
-msgstr ""
+msgstr "Italiaans"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:231
 msgid "Japanese"
-msgstr ""
+msgstr "Japans"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:237
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litouws"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:246
 msgid "Norwegian"
-msgstr ""
+msgstr "Noors"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:253
-#, fuzzy
 msgid "Dutch"
-msgstr "Slagerij"
+msgstr "Nederlands"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:264
 msgid "Polish"
-msgstr ""
+msgstr "Pools"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:275
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugees"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:283
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Braziliaans-Portugees"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:291
 msgid "Romanian"
-msgstr ""
+msgstr "Roemeens"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:296
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:303
 msgid "Slovenian"
-msgstr ""
+msgstr "Sloveens"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:308
 msgid "Swedish"
-msgstr ""
+msgstr "Zweeds"
 
 # Is this vines as in plants, or vines as in ore-vines? I assumed plants here, otherwise change this to "aders".
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:314
-#, fuzzy
 msgid "Chinese"
-msgstr "struiken"
+msgstr "Chinees"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:325
@@ -1169,17 +1164,17 @@ msgstr ""
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
-msgstr ""
+msgstr "Debian"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:332
 msgid "Fedora &amp; openSUSE"
-msgstr ""
+msgstr "Fedora &amp; openSUSE"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:338
 msgid "OS X"
-msgstr ""
+msgstr "OS X"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:348
@@ -1194,7 +1189,7 @@ msgstr ""
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:373
 msgid "Portfolio Sites"
-msgstr ""
+msgstr "Portfolio websites"
 
 #. (itstool) path: Container/OkButton@helptext
 #. (itstool) path: HBox/CancelButton@helptext
@@ -1354,7 +1349,7 @@ msgstr "Snel laden"
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:31
 msgid "Display FPS counter"
-msgstr ""
+msgstr "Aantal beelden per seconden weergeven"
 
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
@@ -1471,9 +1466,8 @@ msgstr "Terug"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "AI instellingen"
+msgstr "Acties"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/hotkeys.xml:10
@@ -1680,9 +1674,8 @@ msgstr "Laden ..."
 
 #. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:6
-#, fuzzy
 msgid "Unknown Horizons"
-msgstr "Unknown Horizons is vast gelopen."
+msgstr "Unknown Horizons"
 
 #. (itstool) path: Container/ImageButton@text
 #: content/gui/xml/mainmenu/mainmenu.xml:7
@@ -1750,15 +1743,14 @@ msgstr ""
 #. (itstool) path: HBox/TextField@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
-#, fuzzy
 msgid "Unnamed Game"
-msgstr "Spel laden"
+msgstr "Onbenoemd spel"
 
 #. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr "Spelnaam:"
+msgstr "Spelwachtwoord:"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
@@ -1972,13 +1964,11 @@ msgstr "De map scrollen als de muis dicht langs de rand staat"
 
 #. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:101
-#, fuzzy
 msgid "Cursor centered zoom:"
 msgstr "Om muisaanwijzer zoomen:"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:101
-#, fuzzy
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
@@ -1993,11 +1983,10 @@ msgstr "Aanzicht verschuiven met de middelste muisknop:"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
-"Indien ingeschakeld, zal het slepen van de middelste muisknop de camera "
-"verschuiven."
+"Indien ingeschakeld zal het slepen met de middelste muisknop de camera "
+"verschuiven"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:115
@@ -2048,7 +2037,7 @@ msgstr "Roteer de mini-kaart:"
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Mini-kaart mee roteren met de kaart?"
+msgstr "Mini-kaart meedraaien met de kaart"
 
 #. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:184
@@ -2069,7 +2058,7 @@ msgstr "Schip automatisch uitladen:"
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Whether to unload the ship after founding a settlement"
-msgstr "Schip uitladen bij de start van een nederzetting?"
+msgstr "Schip uitladen bij de start van een nederzetting"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:196
@@ -2092,12 +2081,11 @@ msgstr "Productieoverzicht:"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:202
-#, fuzzy
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
 "Icoon van de geproduceerd waren na productie boven het desbetreffende gebouw "
-"laten zien."
+"laten zien"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:210
@@ -2600,12 +2588,10 @@ msgid "Filling world with water..."
 msgstr "Wereld met water vullen..."
 
 #: horizons/gui/modules/loadingscreen.py:108
-#, fuzzy
 msgid "Raising animals..."
 msgstr "Dieren fokken..."
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Convincing AI..."
 msgstr "AI overtuigen..."
 
@@ -4017,12 +4003,10 @@ msgid "Save/load for multiplayer games is not possible yet"
 msgstr "Opslaan/laden van multiplayer spellen is nog niet mogelijk"
 
 #: horizons/mpsession.py:97
-#, fuzzy
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
-msgstr ""
-"De bestandsnaam moet alleen bestaan uit letters, nummers, spaties en _.-"
+msgstr "De bestandsnaam mag alleen bestaan uit letters, nummers, spaties en _.-"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
