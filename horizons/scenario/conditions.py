@@ -191,7 +191,6 @@ def time_passed(session, seconds):
 @register(periodically=False)
 def game_started(session):
 	"""Returns whether the game just started"""
-	print 'condition called'
 	return Scheduler().cur_tick == -1
 
 @register()
