@@ -188,10 +188,10 @@ def time_passed(session, seconds):
 	"""Returns whether at least *seconds* seconds have passed since the game started."""
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(seconds))
 
-@register(periodically=False)
+@register()
 def game_started(session):
-	"""Returns whether the game just started"""
-	return Scheduler().cur_tick == -1
+	"""Always return True. Used for one-off events"""
+	return True
 
 @register()
 def var_eq(session, variable, value):
