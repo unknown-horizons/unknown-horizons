@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-07 14:40+0200\n"
-"PO-Revision-Date: 2013-05-06 14:05+0200\n"
+"PO-Revision-Date: 2013-05-08 09:22+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -773,9 +773,8 @@ msgstr "Sendet die Chatnachrichten an alle Spieler."
 #. (itstool) path: Container/TextField@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Gebt Eure Nachricht ein:"
+msgstr "Gebt Eure Nachricht ein"
 
 #. (itstool) path: Container/OkButton@helptext
 #. (itstool) path: VBox/Label@text
@@ -853,7 +852,6 @@ msgstr "Gebiet"
 
 #. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-#, fuzzy
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr "Wert der nutzbaren Flächen (bebaubares Land)"
@@ -998,7 +996,6 @@ msgstr "Audiodesigner"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:60
-#, fuzzy
 msgid "Graphics Artists"
 msgstr "Graphikdesign"
 
@@ -1011,22 +1008,22 @@ msgstr "Patcher"
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:82
 msgid "2009"
-msgstr ""
+msgstr "2009"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:91
 msgid "2010"
-msgstr ""
+msgstr "2010"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:105
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:117
 msgid "2012"
-msgstr ""
+msgstr "2012"
 
 # FIXME: Keep this short! [15 char. at max!]
 #. (itstool) path: VBox/Label@text
@@ -1043,130 +1040,127 @@ msgstr "Spielverlaufsprotokolle aktiviert"
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:139
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgarisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:144
 msgid "Catalan"
-msgstr ""
+msgstr "Katalanisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:150
 msgid "Czech"
-msgstr ""
+msgstr "Tschechisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:160
 msgid "Danish"
-msgstr ""
+msgstr "Dänisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:165
 msgid "German"
-msgstr ""
+msgstr "Deutsch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:172
-#, fuzzy
 msgid "Spanish"
-msgstr "Betriebe"
+msgstr "Spanisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:184
 msgid "Estonian"
-msgstr ""
+msgstr "Estnisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:190
 msgid "Finnish"
-msgstr ""
+msgstr "Finnisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:195
 msgid "French"
-msgstr ""
+msgstr "Französisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:207
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:212
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:217
 msgid "Hungarian"
-msgstr ""
+msgstr "Ungarisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:223
 msgid "Italian"
-msgstr ""
+msgstr "Italienisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:231
 msgid "Japanese"
-msgstr ""
+msgstr "Japanisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:237
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litauisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:246
 msgid "Norwegian"
-msgstr ""
+msgstr "Norwegisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:253
-#, fuzzy
 msgid "Dutch"
-msgstr "Metzgerei"
+msgstr "Niederländisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:264
 msgid "Polish"
-msgstr ""
+msgstr "Polnisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:275
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugiesisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:283
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Portugiesisch (Brasilien)"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:291
 msgid "Romanian"
-msgstr ""
+msgstr "Rumänisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:296
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:303
 msgid "Slovenian"
-msgstr ""
+msgstr "Slowenisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:308
 msgid "Swedish"
-msgstr ""
+msgstr "Schwedisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:314
-#, fuzzy
 msgid "Chinese"
-msgstr "Reben"
+msgstr "Chinesisch"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:325
@@ -1176,17 +1170,17 @@ msgstr ""
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
-msgstr ""
+msgstr "Debian"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:332
 msgid "Fedora &amp; openSUSE"
-msgstr ""
+msgstr "Fedora &amp; openSUSE"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:338
 msgid "OS X"
-msgstr ""
+msgstr "OS X"
 
 # FIXME: Keep this short! (15 char max)
 #. (itstool) path: VBox/Label@text
@@ -1202,7 +1196,7 @@ msgstr ""
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:373
 msgid "Portfolio Sites"
-msgstr ""
+msgstr "Portfolio-Webseiten"
 
 #. (itstool) path: Container/OkButton@helptext
 #. (itstool) path: HBox/CancelButton@helptext
@@ -1482,9 +1476,8 @@ msgstr "Zurück"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "KI-Einstellungen"
+msgstr "Aktionen"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/hotkeys.xml:10
@@ -1618,9 +1611,8 @@ msgstr ""
 
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/hotkeys.xml:34
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Gitternetz an-/ausschalten"
+msgstr "FPS-Anzeige an-/ausschalten"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/hotkeys.xml:35
@@ -1663,9 +1655,8 @@ msgstr "Auf Standard"
 # make it very short: two words should be enough wo show it it UH correctly
 #. (itstool) path: AutoResizeContainer/Button@text
 #: content/gui/xml/mainmenu/hotkeys.xml:53
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Auf Standard"
+msgstr "Auf Standard zurücksetzen"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
@@ -1693,14 +1684,13 @@ msgstr "Lade ..."
 
 #. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:6
-#, fuzzy
 msgid "Unknown Horizons"
-msgstr "Unknown Horizons ist abgestürzt."
+msgstr "Unknown Horizons"
 
 #. (itstool) path: Container/ImageButton@text
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Hintergrundbild ändern"
 
 #. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:11
@@ -1763,9 +1753,8 @@ msgstr ""
 #. (itstool) path: HBox/TextField@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
-#, fuzzy
 msgid "Unnamed Game"
-msgstr " Spiel Laden "
+msgstr "Unbenanntes Spiel"
 
 #. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
