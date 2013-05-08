@@ -410,8 +410,7 @@ events:
    - type: set_var
      arguments: ["tutorial_progress", 16]
   conditions:
-   - type: time_passed
-     arguments: [0]
+   - type: game_started
 
 - # Tell the player to build the first building - lumberjack
   actions:

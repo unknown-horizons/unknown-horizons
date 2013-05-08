@@ -189,6 +189,11 @@ def time_passed(session, seconds):
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(seconds))
 
 @register()
+def game_started(session):
+	"""Always return True. Used for one-off events"""
+	return True
+
+@register()
 def var_eq(session, variable, value):
 	"""Returns whether *variable* has a value equal to *value*.
 	Returns False if variable was never set in the current session."""
