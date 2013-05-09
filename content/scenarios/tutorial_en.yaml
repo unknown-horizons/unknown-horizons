@@ -652,10 +652,11 @@ events:
    - type: var_gt
      arguments: ["tutorial_progress", 60]
 
-mapfile: development.sqlite
-difficulty: Tutorial
-author: The UH team
-description: |
- The tutorial:
- Build your first settlement and learn how to play!
-locale: en
+metadata:
+  mapfile: development.sqlite
+  difficulty: Tutorial
+  author: The UH team
+  description: |
+   The tutorial:
+   Build your first settlement and learn how to play!
+  locale: en

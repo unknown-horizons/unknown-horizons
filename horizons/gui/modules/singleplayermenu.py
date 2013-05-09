@@ -32,7 +32,6 @@ import horizons.main
 from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
-from horizons.i18n import find_available_languages
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.minimap import Minimap
@@ -43,7 +42,6 @@ from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.shapes import Rect
 from horizons.util.startgameoptions import StartGameOptions
-from horizons.util.yamlcache import YamlCache
 
 
 class SingleplayerMenu(Window):
@@ -442,6 +440,7 @@ class ScenarioMapWidget(object):
 		self._windows = windows
 		self._singleplayer_menu = singleplayer_menu
 		self._aidata = aidata
+		self._scenarios = {}
 
 		self._gui = load_uh_widget('sp_scenario.xml')
 
@@ -464,20 +463,24 @@ class ScenarioMapWidget(object):
 	def show(self):
 		self._aidata.hide()
 
-		self._files, maps_display = SavegameManager.get_available_scenarios()
+		self._scenarios = SavegameManager.get_available_scenarios()
 
 		# get the map files and their display names. display tutorials on top.
-		prefer_tutorial = lambda x: ('tutorial' not in x, x)
-		maps_display.sort(key=prefer_tutorial)
-		self._files.sort(key=prefer_tutorial)
+		self.maps_display = self._scenarios.keys()
+		if not self.maps_display:
+			return
 
-		self._gui.distributeInitialData({'maplist' : maps_display})
-		if maps_display:
-			self._gui.distributeData({'maplist': 0})
+		prefer_tutorial = lambda x: ('tutorial' not in x, x)
+		self.maps_display.sort(key=prefer_tutorial)
+
+		self._gui.distributeInitialData({'maplist' : self.maps_display})
+		self._gui.distributeData({'maplist': 0})
 
 		# add all locales to lang list, select current locale as default and sort
+		scenario_langs = list(set(l for s in self._scenarios.values() for l, filename in s))
 		lang_list = self._gui.findChild(name="uni_langlist")
-		lang_list.items = self._get_available_languages()
+		lang_list.items = sorted([LANGUAGENAMES[l] for l in scenario_langs])
+
 		cur_locale = horizons.globals.fife.get_locale()
 		if LANGUAGENAMES[cur_locale] in lang_list.items:
 			lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
@@ -503,89 +506,93 @@ class ScenarioMapWidget(object):
 			advice=_("Please report this to the author."))
 
 	def _update_infos(self):
-		"""Fill in infos of selected scenario to label"""
+		"""Fill in infos of selected scenario to label
+
+		TODO document the 100 side effects"""
+		scenario = self._gui.findChild(name="maplist").selected_item
 		lang_list = self._gui.findChild(name="uni_langlist")
-		cur_selected_language = lang_list.selected_item
-		lang_list.items = self._get_available_languages()
-		if cur_selected_language in lang_list.items:
-			lang_list.selected = lang_list.items.index(cur_selected_language)
-		else:
-			lang_list.selected = 0
+		selected_language = lang_list.selected_item
+
+		lang_list.items = self._get_available_languages(scenario)
+		lang_list.selected = 0
+		if selected_language in lang_list.items:
+			lang_list.selected = lang_list.items.index(selected_language)
 
 		cur_locale = LANGUAGENAMES.get_by_value(lang_list.selected_item)
-		translated_scenario = self._find_map_filename(cur_locale)
-		if os.path.exists(translated_scenario):
-			self._update_scenario_translation_infos(translated_scenario)
-		else:
-			try:
-				default_locale, default_encoding = locale.getdefaultlocale()
-			except ValueError: # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
-				default_locale = 'en'
+		translated_scenario = self._find_map_filename(scenario, cur_locale)
 
-			possibilities = [ # try to find a file for the system locale before falling back to en
-				default_locale,
-				default_locale.split('_')[0],
-				'en',
-			]
+		if translated_scenario is None:
+			translated_scenario = self._guess_suitable_default_locale(scenario)
+			if translated_scenario is None:
+				return
+		self._update_scenario_translation_infos(translated_scenario)
 
-			lang_list.selected = 0
-			for lang in possibilities:
-				if LANGUAGENAMES[lang] in lang_list.items:
-					lang_list.selected = lang_list.items.index(LANGUAGENAMES[lang])
-					break
+	def _guess_suitable_default_locale(self, scenario):
+		"""Attempts to guess a reasonable localized scenario to preselect in SP menu.
 
+		If no filename was found so far for our scenario:
+		 1. Try harder to find locale of user
+		 2. Try to find a file for the system locale
+		 3. Fall back to English
+		"""
 		try:
-			difficulty, author, desc = ScenarioEventHandler.get_metadata_from_file(self._get_selected_map())
+			default_locale, default_encoding = locale.getdefaultlocale()
+		except ValueError: # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
+			default_locale = 'en'
+
+		possibilities = [
+			default_locale,
+			default_locale.split('@')[0],
+			default_locale.split('_')[0],
+			'en',
+		]
+		lang_list = self._gui.findChild(name="uni_langlist")
+		for lang in possibilities:
+			if LANGUAGENAMES[lang] in lang_list.items:
+				lang_list.selected = lang_list.items.index(LANGUAGENAMES[lang])
+				return self._find_map_filename(scenario, lang)
+
+	def _update_scenario_translation_infos(self, scenario):
+		"""Fill in translation infos of selected scenario to translation label."""
+		try:
+			metadata = ScenarioEventHandler.get_metadata_from_file(scenario)
 		except InvalidScenarioFileFormat as e:
 			self._show_invalid_scenario_file_popup(e)
 			return
 
+		translation_status = metadata.get('translation_status', u'')
+		lbl = self._gui.findChild(name="translation_status")
+		lbl.text = translation_status
+
 		lbl = self._gui.findChild(name="uni_map_difficulty")
 		#xgettext:python-format
-		lbl.text = _("Difficulty: {difficulty}").format(difficulty=difficulty)
+		lbl.text = _("Difficulty: {difficulty}").format(difficulty=metadata['difficulty'])
 
 		lbl = self._gui.findChild(name="uni_map_author")
 		#xgettext:python-format
-		lbl.text = _("Author: {author}").format(author=author)
+		lbl.text = _("Author: {author}").format(author=metadata['author'])
 
 		lbl = self._gui.findChild(name="uni_map_desc")
 		#xgettext:python-format
-		lbl.text = _("Description: {desc}").format(desc=desc)
+		lbl.text = _("Description: {desc}").format(desc=metadata['description'])
 
-	def _update_scenario_translation_infos(self, new_map_name):
-		"""Fill in translation infos of selected scenario to translation label.
-		This function also sets scenario map name using locale.
-		(e.g. tutorial -> tutorial_en.yaml)"""
-		translation_status_label = self._gui.findChild(name="translation_status")
-		yamldata = YamlCache.get_file(new_map_name, game_data=True)
-		translation_status = yamldata.get('translation_status')
-		if translation_status:
-			translation_status_label.text = translation_status
-			translation_status_label.show()
-		else:
-			translation_status_label.hide()
-
-		self._files[self._gui.collectData('maplist')] = new_map_name
-
-	def _find_map_filename(self, cur_locale, mapfile=None):
+	def _find_map_filename(self, scenario_name, target_locale):
 		"""Finds the given map's filename with its locale."""
-		mapfile = mapfile or self._get_selected_map()
-		if mapfile.endswith('.yaml'):
-			yamldata = YamlCache.get_file(mapfile, game_data=True)
-			split_locale = yamldata['locale']
-			mapfile = mapfile.split('_' + split_locale)[0]
-		return mapfile + '_' + cur_locale + '.' + SavegameManager.scenario_extension
+		for language, mapfile in self._scenarios[scenario_name]:
+			if language == target_locale and os.path.exists(mapfile):
+				return mapfile
 
-	def _get_available_languages(self, mapfile=None):
-		return sorted(
-			[LANGUAGENAMES[lang] for lang in find_available_languages()
-			 if os.path.exists(self._find_map_filename(lang, mapfile))])
+	def _get_available_languages(self, scenario):
+		sc = self._scenarios[scenario]
+		scenario_langs = list(set(language for language, filename in sc))
+		return [LANGUAGENAMES[l] for l in sorted(scenario_langs)]
 
 	def _get_selected_map(self):
 		selection_index = self._gui.collectData('maplist')
 		assert selection_index != -1
-
-		return self._files[self._gui.collectData('maplist')]
+		scenario = self._scenarios[self.maps_display[selection_index]]
+		language_index = self._gui.collectData('uni_langlist')
+		return scenario[language_index][1]
 
 
 def generate_random_minimap(size, parameters):

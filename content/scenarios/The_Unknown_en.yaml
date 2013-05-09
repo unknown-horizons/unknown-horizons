@@ -139,10 +139,11 @@ events:
     arguments: [0]
 
 
-mapfile: development.sqlite
-difficulty: easy
-author: Kikody, UH-Team
-description: |
-  You are the captain of a ship under the flag of England in 1740. You and your crew were on the way to a colony of England in the pacific ocean.
-  Everything went fine until you came into a storm....
-locale: en
+metadata:
+  mapfile: development.sqlite
+  difficulty: easy
+  author: Kikody, UH-Team
+  description: |
+    You are the captain of a ship under the flag of England in 1740. You and your crew were on the way to a colony of England in the pacific ocean.
+    Everything went fine until you came into a storm....
+  locale: en
