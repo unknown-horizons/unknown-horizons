@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:01+0200\n"
+"POT-Creation-Date: 2013-05-09 15:14+0200\n"
 "PO-Revision-Date: 2012-01-10 02:38+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1422,11 +1422,6 @@ msgstr "Zrušit hru"
 #, fuzzy
 msgid "Loading ..."
 msgstr "Načítám ..."
-
-#: content/gui/xml/mainmenu/mainmenu.xml:6
-#, fuzzy
-msgid "Unknown Horizons"
-msgstr "Unknown Horizons Version %s"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -4628,6 +4623,10 @@ msgstr "Hráči {player1} a {player2} začali válku na život a na smrt."
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#, fuzzy
+#~ msgid "Unknown Horizons"
+#~ msgstr "Unknown Horizons Version %s"
 
 #, fuzzy
 #~ msgid "Save the map"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:01+0200\n"
+"POT-Creation-Date: 2013-05-09 15:14+0200\n"
 "PO-Revision-Date: 2011-11-28 01:21+0200\n"
 "Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1239,10 +1239,6 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
-msgstr ""
-
-#: content/gui/xml/mainmenu/mainmenu.xml:6
-msgid "Unknown Horizons"
 msgstr ""
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7

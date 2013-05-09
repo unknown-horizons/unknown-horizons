@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:01+0200\n"
+"POT-Creation-Date: 2013-05-09 15:14+0200\n"
 "PO-Revision-Date: 2012-05-10 18:41+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1273,11 +1273,6 @@ msgstr "Cancelar o jogo"
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
 msgstr "A carregar ..."
-
-#: content/gui/xml/mainmenu/mainmenu.xml:6
-#, fuzzy
-msgid "Unknown Horizons"
-msgstr "A execução do Unknown Horizons foi interrompida com erro."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -4218,6 +4213,10 @@ msgstr "{player1} e {player2} lutarão até à morte."
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#, fuzzy
+#~ msgid "Unknown Horizons"
+#~ msgstr "A execução do Unknown Horizons foi interrompida com erro."
 
 #~ msgid "Save the map"
 #~ msgstr "Guardar o mapa"

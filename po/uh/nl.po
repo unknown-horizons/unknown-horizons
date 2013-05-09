@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:01+0200\n"
+"POT-Creation-Date: 2013-05-09 15:14+0200\n"
 "PO-Revision-Date: 2013-05-07 15:37+0200\n"
 "Last-Translator: Joenit Joenit <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
@@ -1291,10 +1291,6 @@ msgstr "Verlaat spel"
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
 msgstr "Laden ..."
-
-#: content/gui/xml/mainmenu/mainmenu.xml:6
-msgid "Unknown Horizons"
-msgstr "Unknown Horizons"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -4235,6 +4231,9 @@ msgstr "{player1} en {player2} zullen vechten op leven en dood."
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#~ msgid "Unknown Horizons"
+#~ msgstr "Unknown Horizons"
 
 #~ msgid "Enter name:"
 #~ msgstr "Voer naam in:"

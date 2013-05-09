@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:01+0200\n"
+"POT-Creation-Date: 2013-05-09 15:14+0200\n"
 "PO-Revision-Date: 2012-12-12 12:21+0000\n"
 "Last-Translator: supercracker111 <supercracker111@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1292,11 +1292,6 @@ msgstr "Cancelar a partida"
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
 msgstr "Cargando…"
-
-#: content/gui/xml/mainmenu/mainmenu.xml:6
-#, fuzzy
-msgid "Unknown Horizons"
-msgstr "“Horizontes por explorar” quebrou."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -4297,6 +4292,10 @@ msgstr "{player1} e {player2} loitarán o un contra o outro ata o final."
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#, fuzzy
+#~ msgid "Unknown Horizons"
+#~ msgstr "“Horizontes por explorar” quebrou."
 
 #~ msgid "Save the map"
 #~ msgstr "Gardar o mapa"

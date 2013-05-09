@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:01+0200\n"
+"POT-Creation-Date: 2013-05-09 15:14+0200\n"
 "PO-Revision-Date: 2012-09-14 20:04+0000\n"
 "Last-Translator: Administrator <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1293,11 +1293,6 @@ msgstr "Avbryt Spill"
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
 msgstr "Laster ..."
-
-#: content/gui/xml/mainmenu/mainmenu.xml:6
-#, fuzzy
-msgid "Unknown Horizons"
-msgstr "Unknown Horizons krasjet."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -4202,6 +4197,10 @@ msgstr ""
 #, python-format
 msgid "{player}: {message}"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Unknown Horizons"
+#~ msgstr "Unknown Horizons krasjet."
 
 # 83%
 #~ msgid "Error:"

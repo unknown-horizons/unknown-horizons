@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:01+0200\n"
+"POT-Creation-Date: 2013-05-09 15:14+0200\n"
 "PO-Revision-Date: 2013-04-04 19:17+0000\n"
 "Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1277,11 +1277,6 @@ msgstr "Скасувати гру"
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
 msgstr "Завантаження…"
-
-#: content/gui/xml/mainmenu/mainmenu.xml:6
-#, fuzzy
-msgid "Unknown Horizons"
-msgstr "Крах Unknown Horizons."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -4164,6 +4159,10 @@ msgstr "{player1} і {player2} будуть боротися один з одн�
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#, fuzzy
+#~ msgid "Unknown Horizons"
+#~ msgstr "Крах Unknown Horizons."
 
 #~ msgid "Enter name:"
 #~ msgstr "Введіть назву:"

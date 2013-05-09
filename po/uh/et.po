@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:01+0200\n"
+"POT-Creation-Date: 2013-05-09 15:14+0200\n"
 "PO-Revision-Date: 2013-05-05 12:47+0000\n"
 "Last-Translator: Mihkel Rämmel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1282,11 +1282,6 @@ msgstr "Katkesta mäng"
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
 msgstr "Laadimine ..."
-
-#: content/gui/xml/mainmenu/mainmenu.xml:6
-#, fuzzy
-msgid "Unknown Horizons"
-msgstr "Unknown Horizons jooksis kokku."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -4182,6 +4177,10 @@ msgstr "{player1} ja {player2} võitlevad üksteisega kuni surmani."
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#, fuzzy
+#~ msgid "Unknown Horizons"
+#~ msgstr "Unknown Horizons jooksis kokku."
 
 #~ msgid "Enter name:"
 #~ msgstr "Sisesta nimi:"
