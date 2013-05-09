@@ -47,6 +47,8 @@
 # (language Templates, project Unknown Horizons)
 # Update strings extracted from xml, yaml and sql files.
 
+set -e
+
 # script assumes working dir to be our base directory
 cd "$(dirname "$0")"/..
 
@@ -69,31 +71,34 @@ function strip_itstool()
 
 function reset_if_empty()
 {
+  # See whether anything except version and date changed in header (2+ 2-)
+  # If so, reset file to previous version in git (no update necessary)
   numstat=$(git diff --numstat -- "$1" | cut -f1,2)
   if [ "$numstat" = "2	2" ]; then
-    # no need to commit, only program version and date in header changed (2+ 2-)
     echo "  -> No content changes in $1, resetting to previous state."
     git checkout -- "$1"
   fi
 }
 
-PYTHONPATH="." python2 development/extract_strings_from_xml.py $XML_PY_FILE
+PYTHONPATH="." python2 development/extract_strings_from_xml.py "$XML_PY_FILE"
 echo "   * Regenerated xml translation file at $XML_PY_FILE."
-PYTHONPATH="." python2 development/extract_strings_from_objects.py $YAML_PY_FILE
+PYTHONPATH="." python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
 echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
-PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > $SQL_POT_FILE
+PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
 echo "   * Regenerated sql translation file at $SQL_POT_FILE."
 
+
+echo "=> Creating UH gettext pot template file at $RESULT_FILE."
 # XML files
-find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | \
-  itstool -i development/pychan-its-rule.xml -o $RESULT_FILE $(cat -)
+find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
+  itstool -i development/pychan-its-rule.xml -o "$RESULT_FILE"
 
 # Get all files to translate.
 (
   find . -mindepth 1 -maxdepth 1 -name \*.py && \
   find horizons \( -name \*.py ! -name "guitranslations.py" \) && \
-  echo $SQL_POT_FILE
-) | xgettext --files-from=- --output=$RESULT_FILE \
+  echo "$SQL_POT_FILE"
+) | xgettext --files-from=- --output="$RESULT_FILE" \
              --join-existing \
              --from-code=UTF-8 --add-comments \
              --no-wrap --sort-by-file \
@@ -104,16 +109,16 @@ find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | \
              --keyword=N_:1,2 \
              --keyword=_lazy
 # --keyword=N_ also catches N_() plural-aware ngettext calls
-echo "=> Creating UH gettext pot template file at ${RESULT_FILE}."
 strip_itstool "$RESULT_FILE"
 reset_if_empty "$RESULT_FILE"
 
 
 # generate translation file for server
 # empty --keyword disables all known keywords
+echo "=> Creating UH Server gettext pot template file at $RESULT_FILE_SERVER."
 (
   find horizons/network -iname \*.py
-) | xgettext --files-from=- --output=$RESULT_FILE_SERVER \
+) | xgettext --files-from=- --output="$RESULT_FILE_SERVER" \
              --from-code=UTF-8 --add-comments \
              --no-wrap --sort-by-file \
              --copyright-holder='The Unknown Horizons Team' \
@@ -124,5 +129,4 @@ reset_if_empty "$RESULT_FILE"
              --keyword=S_:2 \
              --keyword=SN_:2,3 \
              --keyword=__
-echo "=> Creating UH Server gettext pot template file at ${RESULT_FILE_SERVER}."
-reset_if_empty $RESULT_FILE_SERVER
+reset_if_empty "$RESULT_FILE_SERVER"
