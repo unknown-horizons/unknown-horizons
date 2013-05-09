@@ -73,8 +73,9 @@ def write(comment, string):
 	print retval.encode('utf-8')
 
 scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
-write('scenario difficulty', prep(scenario['difficulty']))
-write('scenario description', prep(scenario['description']))
+metadata = scenario['metadata']
+write('scenario difficulty', prep(metadata['difficulty']))
+write('scenario description', prep(metadata['description']))
 
 for event in scenario['events']:
 	for action in event['actions']:
