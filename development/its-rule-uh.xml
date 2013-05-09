@@ -1,13 +1,4 @@
 <its:rules version="1.0" xmlns:its="http://www.w3.org/2005/11/its">
-  <!-- Disable extraction of tag content (which, by default, is enabled) for everything -->
-  <its:translateRule translate="no"  selector="//*" />
-
-  <!-- Enable translation for selected attributes (text, helptext) -->
-  <its:translateRule translate="yes" selector="//@text|//@helptext" />
-
-  <!-- Use stuff in `comment=` as comment for translators for all translated attributes -->
-  <its:locNoteRule locNoteType="description" selector="//*/@*" locNotePointer="../@comment" />
-
   <!-- Do not translate labels with contributor names in credits.xml -->
   <its:translateRule translate="no"  selector="/Container[@name='credits_window']/HBox/VBox/VBox/VBox/Label/@text" />
   <its:translateRule translate="no"  selector="/Container[@name='credits_window']/HBox/ScrollArea/VBox/VBox/VBox/Label/@text" />

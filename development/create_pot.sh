@@ -91,7 +91,9 @@ echo "   * Regenerated sql translation file at $SQL_POT_FILE."
 echo "=> Creating UH gettext pot template file at $RESULT_FILE."
 # XML files
 find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
-  itstool -i development/pychan-its-rule.xml -o "$RESULT_FILE"
+  itstool -i development/its-rule-pychan.xml \
+          -i development/its-rule-uh.xml \
+          -o "$RESULT_FILE"
 
 # Get all files to translate.
 (
