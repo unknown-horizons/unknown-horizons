@@ -59,6 +59,14 @@ XML_PY_FILE=horizons/i18n/guitranslations.py
 YAML_PY_FILE=horizons/i18n/objecttranslations.py
 SQL_POT_FILE=horizons/i18n/sqlite_strings.pot
 
+function strip_itstool()
+{
+  # Remove lines containing comments like these ones:
+  #. (itstool) path: Container/Label@text
+  #. (itstool) comment: Container/Label@text
+  sed -i '/^#\. (itstool) /d' $1
+}
+
 function reset_if_empty()
 {
   numstat=$(git diff --numstat -- "$1" | cut -f1,2)
@@ -97,7 +105,8 @@ find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | \
              --keyword=_lazy
 # --keyword=N_ also catches N_() plural-aware ngettext calls
 echo "=> Creating UH gettext pot template file at ${RESULT_FILE}."
-reset_if_empty $RESULT_FILE
+strip_itstool "$RESULT_FILE"
+reset_if_empty "$RESULT_FILE"
 
 
 # generate translation file for server
