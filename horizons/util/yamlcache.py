@@ -101,7 +101,7 @@ class YamlCache(object):
 	def get_file(cls, filename, game_data=False):
 		"""Get contents of a yaml file
 		@param filename: path to the file
-		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACk to resolve
+		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACK to resolve
 		"""
 
 		# calc the hash
