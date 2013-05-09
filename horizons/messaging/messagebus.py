@@ -107,6 +107,8 @@ class SimpleMessageBus(object):
 	def subscribe(self, type, callback):
 		if type not in self._message_types:
 			raise TypeError("Unsupported type")
+		if callback in self._callbacks[type]:
+			raise Exception("Callback %s already subscribed to %s" % (callback, type))
 
 		self._callbacks[type].append(callback)
 
