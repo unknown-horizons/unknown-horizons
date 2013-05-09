@@ -100,7 +100,7 @@ class HotkeyConfiguration(object):
 			return
 		key = event.getKey()
 		# if the key is not supported, act as if it was not detected
-		if not self.keyName(key):
+		if not self.key_name(key):
 			return
 		self.last_combination.append(key)
 		self.detecting = False
@@ -124,7 +124,7 @@ class HotkeyConfiguration(object):
 	def apply_change(self):
 		"""Binds the last keypress to the corresponding action and resets the interface to the state where it is listening for clicks on buttons"""
 		key = self.last_combination[0]
-		key_name = self.keyName(key)
+		key_name = self.key_name(key)
 		action = self.actions[self.current_index]
 		column = self.current_column
 
@@ -151,7 +151,7 @@ class HotkeyConfiguration(object):
 		bindings = self.keyconf.get_current_keys(action)
 		if column == 1:
 			bindings[0] = key_name
-		if column == 2:
+		elif column == 2:
 			if len(bindings) < 2:
 				bindings.append(key_name)
 			else:
@@ -162,12 +162,12 @@ class HotkeyConfiguration(object):
 		self.update_buttons_text()
 		self.last_combination = []
 
-	def keyName(self, key):
+	def key_name(self, key):
 		value = key.getValue()
 		return self.keys.get(value)
 
 	def key_is_set(self, key):
-		key_name = self.keyName(key)
+		key_name = self.key_name(key)
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for k in custom_key_actions.itervalues():
 			if key_name in k:
@@ -183,7 +183,7 @@ class HotkeyConfiguration(object):
 		return bindings
 
 	def get_action_name(self, key):
-		key_name = self.keyName(key)
+		key_name = self.key_name(key)
 		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for action in custom_key_actions:
 			k = custom_key_actions[action]
