@@ -96,15 +96,16 @@ class HotkeyConfiguration(object):
 		button.text = _("Press desired key")
 
 	def _detect_keypress(self, event):
-		if self.detecting:
-			key = event.getKey()
-			# if the key is not supported, act as if it was not detected
-			if not self.keyName(key):
-				return
-			self.last_combination.append(key)
-			self.detecting = False
-			self.listener.deactivate()
-			self.apply_change()
+		if not self.detecting:
+			return
+		key = event.getKey()
+		# if the key is not supported, act as if it was not detected
+		if not self.keyName(key):
+			return
+		self.last_combination.append(key)
+		self.detecting = False
+		self.listener.deactivate()
+		self.apply_change()
 
 	def update_buttons_text(self):
 		for i, button in enumerate(self.buttons):
