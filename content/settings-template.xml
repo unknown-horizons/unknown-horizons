@@ -72,7 +72,7 @@
 		<Setting name="HEALTH_BAR" type="list"> K </Setting>
 		<Setting name="LOGBOOK" type="list"> L </Setting>
 		<Setting name="PIPETTE" type="list"> O </Setting>
-		<Setting name="PAUSE" type="list"> P </Setting>
+		<Setting name="PAUSE" type="list"> P ; PAUSE </Setting>
 		<Setting name="ROAD_TOOL" type="list"> R </Setting>
 		<Setting name="SCREENSHOT" type="list"> S </Setting>
 		<Setting name="TRANSLUCENCY" type="list"> T </Setting>
