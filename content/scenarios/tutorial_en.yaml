@@ -411,6 +411,7 @@ events:
      arguments: ["tutorial_progress", 16]
   conditions:
    - type: game_started
+     arguments: []
 
 - # Tell the player to build the first building - lumberjack
   actions:
