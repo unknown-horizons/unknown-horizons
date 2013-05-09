@@ -17,5 +17,7 @@
   <!-- Do not translate {attribute} of widget with comment='noi18n_{attribute}' -->
   <its:translateRule translate="no"  selector="//*[@text and @comment='noi18n_text']/@text" />
   <its:translateRule translate="no"  selector="//*[@helptext and @comment='noi18n_helptext']/@helptext" />
+  <!-- Do not translate version_label widget text (it is overwritten with version string later) -->
+  <its:translateRule translate="no"  selector="//*[@name='version_label']/@text" />
 
 </its:rules>
