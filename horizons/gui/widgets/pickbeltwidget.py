@@ -85,7 +85,7 @@ class OptionsPickbeltWidget(PickBeltWidget):
 	widget_xml = 'settings.xml'
 
 	sections = (('graphics_settings', _lazy('Graphics')),
-                ('hotkeys_settings', _('Hotkeys')),
+	            ('hotkeys_settings', _lazy('Hotkeys')),
 	            ('game_settings', _lazy('Game')))
 
 	def update_view(self, number=0):
