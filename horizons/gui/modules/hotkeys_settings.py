@@ -65,12 +65,11 @@ class HotkeyConfiguration(object):
 		self.widget.findChild(name="reset_to_default").capture(self.reset_to_default)
 
 	def _build_interface(self):
-		container = self.widget.findChild(name='keys_container')
 		button_container = self.widget.findChild(name='button_container')
 		sec_button_container = self.widget.findChild(name='sec_button_container')
 		for i, action in enumerate(self.actions):
-			button = self._create_button(action, 0, i)
-			sec_button = self._create_button(action, 1, i)
+			button = self._create_button(action, i)
+			sec_button = self._create_button(action, i)
 			button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button, 1)})
 			sec_button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, sec_button, 2)})
 			button_container.addChild(button)
@@ -79,17 +78,8 @@ class HotkeyConfiguration(object):
 			self.secondary_buttons.append(sec_button)
 			self.update_buttons_text()
 
-	def _create_button(self, action, priority, index):
+	def _create_button(self, action, index):
 		"""Important! The button name is set to index so that when a button is pressed, we know its index"""
-		current_binding = self.keyconf.get_current_keys(action)
-
-		if len(current_binding) <= priority:
-				# if there are less bindings than buttons
-				keyname = "-"
-		else:
-				keyname = current_binding[priority]
-
-		#xgettext:python-format
 		button = Button()
 		button.name = str(index)
 		button.max_size = button.min_size = (100, 18)
@@ -102,7 +92,6 @@ class HotkeyConfiguration(object):
 		self.current_index = int(button.name)
 		self.current_column = column
 		self.listener.activate()
-		#xgettext:python-format
 		self.update_buttons_text()
 		button.text = _("Press desired key")
 
