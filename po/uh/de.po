@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 13:49+0200\n"
-"PO-Revision-Date: 2013-05-09 14:27+0200\n"
+"PO-Revision-Date: 2013-05-09 14:29+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -2003,7 +2003,7 @@ msgstr "[{key}] = {text}"
 
 #: horizons/gui/modules/hotkeys_settings.py:107
 msgid "Press desired key"
-msgstr ""
+msgstr "Taste drücken"
 
 #: horizons/gui/modules/hotkeys_settings.py:132
 msgid "-"
