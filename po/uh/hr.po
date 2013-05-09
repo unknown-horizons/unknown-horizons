@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 13:49+0200\n"
+"POT-Creation-Date: 2013-05-09 15:01+0200\n"
 "PO-Revision-Date: 2012-01-07 07:48+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1907,21 +1907,21 @@ msgstr ""
 msgid "[{key}] = {text}"
 msgstr ""
 
-#: horizons/gui/modules/hotkeys_settings.py:107
+#: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
 msgstr ""
 
-#: horizons/gui/modules/hotkeys_settings.py:132
-msgid "-"
+#: horizons/gui/modules/hotkeys_settings.py:141
+#, python-format
+msgid "{key} is already set to {action}."
 msgstr ""
 
-#: horizons/gui/modules/hotkeys_settings.py:151
-#, python-format
-msgid "{key} is already set to {action}. Whould you like to overwrite it?"
+#: horizons/gui/modules/hotkeys_settings.py:142
+msgid "Would you like to overwrite it?"
 msgstr ""
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
-#: horizons/gui/modules/hotkeys_settings.py:153
+#: horizons/gui/modules/hotkeys_settings.py:143
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Confirmation for overwriting"
 msgstr ""
