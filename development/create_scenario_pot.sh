@@ -125,7 +125,7 @@ xgettext --output-dir=$OUTPUT_DIR --output=$1.pot \
          --copyright-holder='The Unknown Horizons Team' \
          --package-name='Unknown Horizons' \
          --package-version=$VERSION \
-         --msgid-bugs-address=translate-uh@lists.unknown-horizons.org \
+         --msgid-bugs-address=team@lists.unknown-horizons.org \
          po/$1.py
 rm po/$1.py
 
