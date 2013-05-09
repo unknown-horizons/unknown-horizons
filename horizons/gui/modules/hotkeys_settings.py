@@ -138,8 +138,8 @@ class HotkeyConfiguration(object):
 			oldaction = self.get_action_name(key)
 
 			#xgettext:python-format
-			message = _("{key} is already set to {action}. Whould you like to overwrite it?").format(
-					                      key=key_name, action=oldaction)
+			message = _("{key} is already set to {action}.").format(key=key_name, action=oldaction)
+			message += _("Would you like to overwrite it?")
 			confirmed = horizons.main._modules.gui.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True)
 			if confirmed:
 				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
