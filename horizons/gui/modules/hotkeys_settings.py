@@ -20,15 +20,15 @@
 # ###################################################
 
 from fife import fife
-from fife.extensions.pychan.widgets import Button, Label
+from fife.extensions.pychan.widgets import Button
+
+import horizons.globals
 
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
-from horizons.gui.windows import Window
-from horizons.messaging import LanguageChanged
 from horizons.util.python.callback import Callback
-import horizons.globals
+
 
 class HotkeyConfiguration(object):
 
