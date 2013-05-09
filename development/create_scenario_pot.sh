@@ -119,9 +119,8 @@ OUTPUT_DIR="po/scenarios/templates"
 xgettext --output-dir=$OUTPUT_DIR --output=$1.pot \
          --from-code=UTF-8 \
          --add-comments \
-         --add-location \
+         --no-location \
          --width=80 \
-         --sort-by-file  \
          --copyright-holder='The Unknown Horizons Team' \
          --package-name='Unknown Horizons' \
          --package-version=$VERSION \
@@ -129,13 +128,8 @@ xgettext --output-dir=$OUTPUT_DIR --output=$1.pot \
          po/$1.py
 rm po/$1.py
 
-# some strings contain two entries per line => remove line numbers from both
-perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' $OUTPUT_DIR/$1.pot
-perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' $OUTPUT_DIR/$1.pot
-
-
-diff=$(git diff --numstat $OUTPUT_DIR/$1.pot |awk '{print $1;}')
-if [ $diff -le 2 ]; then
-    # only changed version and date (two lines) => discard this template change
+numstat=$(git diff --numstat -- "$OUTPUT_DIR/$1.pot" | cut -f1,2)
+if [ "$numstat" = "2	2" ]; then
+    echo "  -> No content changes in $1.pot, resetting to previous state."
     git checkout -- $OUTPUT_DIR/$1.pot
 fi
