@@ -83,6 +83,7 @@ class NetworkInterface(object):
 		self.subscribe = self._messagebus.subscribe
 		self.unsubscribe = self._messagebus.unsubscribe
 		self.broadcast = self._messagebus.broadcast
+		self.discard = self._messagebus.discard
 
 		# create a game_details_changed callback
 		for t in ('lobbygame_join', 'lobbygame_leave', 'lobbygame_changename',

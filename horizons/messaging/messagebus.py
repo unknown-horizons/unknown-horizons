@@ -115,6 +115,10 @@ class SimpleMessageBus(object):
 	def unsubscribe(self, type, callback):
 		self._callbacks[type].remove(callback)
 
+	def discard(self, type, callback):
+		if callback in self._callbacks[type]:
+			self._callbacks[type].remove(callback)
+
 	def broadcast(self, type, *args, **kwargs):
 		if type not in self._message_types:
 			return

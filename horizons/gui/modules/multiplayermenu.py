@@ -71,7 +71,12 @@ class MultiplayerMenu(Window):
 			self._windows.close()
 			return
 
-		NetworkInterface().subscribe("game_prepare", self._prepare_game)
+		# FIXME workaround for multiple callback registrations
+		# this happens because subscription is done when the window is showed, unsubscription
+		# only when it is closed. if new windows appear and disappear, show is called multiple
+		# times. the error handler is used throughout the entire mp menu, that's why we can't
+		# unsubscribe in hide. need to find a better solution.
+		NetworkInterface().discard("error", self._on_error)
 		NetworkInterface().subscribe("error", self._on_error)
 
 		self._gui.show()
@@ -87,7 +92,6 @@ class MultiplayerMenu(Window):
 
 		self.hide()
 
-		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
 		NetworkInterface().unsubscribe("error", self._on_error)
 
 		# the window is also closed when a game starts, don't disconnect in that case
@@ -250,9 +254,6 @@ class MultiplayerMenu(Window):
 		window = GameLobby(self._windows)
 		self._windows.show(window)
 
-	def _prepare_game(self, game):
-		horizons.main.prepare_multiplayer(game)
-
 	def _create_game(self):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
@@ -382,6 +383,8 @@ class GameLobby(Window):
 			'ready_btn': NetworkInterface().toggle_ready,
 		})
 
+		NetworkInterface().subscribe("game_prepare", self._prepare_game)
+
 	def hide(self):
 		self._gui.hide()
 
@@ -408,6 +411,7 @@ class GameLobby(Window):
 		NetworkInterface().unsubscribe("lobbygame_changecolor", self._on_player_changed_color)
 		NetworkInterface().unsubscribe("lobbygame_toggleready", self._on_player_toggled_ready)
 		NetworkInterface().unsubscribe("game_details_changed", self._update_game_details)
+		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
 
 	def show(self):
 		textfield = self._gui.findChild(name="chatTextField")
@@ -425,6 +429,9 @@ class GameLobby(Window):
 		NetworkInterface().subscribe("game_details_changed", self._update_game_details)
 
 		self._gui.show()
+
+	def _prepare_game(self, game):
+		horizons.main.prepare_multiplayer(game)
 
 	def _update_game_details(self):
 		"""Set map name and other misc data"""
