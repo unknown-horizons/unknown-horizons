@@ -97,6 +97,6 @@
 		<Setting name="DEBUG" type="list"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 32 </Setting>
+		<Setting name="SettingsVersion" type="int"> 33 </Setting>
 	</Module>
 </Settings>
