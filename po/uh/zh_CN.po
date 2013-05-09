@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-07 14:40+0200\n"
-"PO-Revision-Date: 2013-05-05 13:30+0000\n"
-"Last-Translator: Anonymous Pootle User\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-09 02:57+0200\n"
+"Last-Translator: Zhang June <avalon3515@163.com>\n"
+"Language-Team: Simplified Chinese "
+"<http://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"X-Generator: Weblate 1.6-dev\n"
 "X-POOTLE-MTIME: 1367760642.0\n"
 
 #: run_uh.py:220
@@ -63,9 +64,8 @@ msgstr "感谢您使用Unknown Horizons!     "
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:14
-#, fuzzy
 msgid "Return to editor"
-msgstr "重置为出厂设置"
+msgstr "返回编辑器"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:15
@@ -75,9 +75,8 @@ msgstr "保存地图"
 
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:16
-#, fuzzy
 msgid "Load map"
-msgstr "装载游戏"
+msgstr "装载地图"
 
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: Container/Label@text
@@ -85,7 +84,7 @@ msgstr "装载游戏"
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: Container/Label@text
@@ -98,22 +97,23 @@ msgstr "帮助"
 #. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "退出编辑器"
 
 #. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:6
+#, fuzzy
 msgid "Select brush size:"
-msgstr ""
+msgstr "选择画笔的大小："
 
 #. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "选择地形："
 
 #. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "（右键单击停止)"
 
 #. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
@@ -147,9 +147,8 @@ msgstr "运营成本"
 
 #. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
-#, fuzzy
 msgid "Related buildings"
-msgstr "建造相关的建筑物"
+msgstr "相关的建筑物"
 
 #. (itstool) path: Container/Icon@helptext
 #. (itstool) path: HBox/Label@text
