@@ -115,11 +115,11 @@ class HotkeyConfiguration(object):
 				if bindings[j] == 'UNASSIGNED':
 					bindings[j] = '-'
 			secondary_button = self.secondary_buttons[i]
-			button.text = _(bindings[0])
+			button.text = unicode(bindings[0])
 			if len(bindings) > 1:
-				secondary_button.text = _(bindings[1])
+				secondary_button.text = unicode(bindings[1])
 			else:
-				secondary_button.text = _("-")
+				secondary_button.text = u"-"
 
 	def apply_change(self):
 		"""Binds the last keypress to the corresponding action and resets the interface to the state where it is listening for clicks on buttons"""
