@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 13:49+0200\n"
-"PO-Revision-Date: 2013-05-06 14:05+0200\n"
+"PO-Revision-Date: 2013-05-09 14:27+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -993,7 +993,7 @@ msgstr "Chinesisch"
 
 #: content/gui/xml/mainmenu/credits.xml:325
 msgid "Packagers"
-msgstr ""
+msgstr "Software-Pakete"
 
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
@@ -1264,12 +1264,12 @@ msgstr "FPS-Anzeige an-/ausschalten"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Primär"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundär"
 
 # make it very short: two words should be enough wo show it it UH correctly
 #: content/gui/xml/mainmenu/hotkeys.xml:54
@@ -1862,7 +1862,7 @@ msgstr ""
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Tastenbelegung"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
