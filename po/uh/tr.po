@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-08 15:03+0200\n"
+"POT-Creation-Date: 2013-05-09 13:49+0200\n"
 "PO-Revision-Date: 2013-03-01 18:01+0000\n"
 "Last-Translator: vgezer <volkangezer@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,177 +64,143 @@ msgstr ""
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Unkown Horizons'u kullandığınız için teşekkürler!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
 msgstr "Düzenleyiciye geri dön"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 msgid "Save map"
 msgstr "Haritayı kaydet"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
 msgstr "Haritayı yükle"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
 msgstr "Ayarlar"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
 msgstr "Yardım"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
 msgstr "Düzenleyiciden çık"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
 msgstr "Oyun başlıyor"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr "Bir bina inşa etmeden önce bir yerleşim yeri kurmalısınız!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
 msgstr "Geminizi seçin ve farenin sağ tuşuna tıklayarak sahile yanaşın."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr "Sonra, gemi genel görünüm sekmesindeki geniş ikona basın."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
 msgstr "İnşa Et"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
 msgstr "İşletme giderleri"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
 msgstr "İlgili binalar"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
 msgstr "Halk"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr "Oyun hızını arttır (+)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Oyun hızını azalt (-)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
 msgstr "Haritayı saat yönünün tersine döndür (,)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
 msgstr "Haritayı saat yönünde döndür (.)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
 msgstr "Yakınlaştır"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
 msgstr "Uzaklaştır"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:39
 msgid "Destroy (X)"
 msgstr "İmha et (X)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
 msgstr "Kaptanın günlüğü (L)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:43
 msgid "Build menu (B)"
 msgstr "İnşa menüsü (B)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomasi"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:47
 msgid "Game menu (Esc)"
 msgstr "Oyun menüsü (Esc)"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
 msgstr "İsmi değiştir"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
 msgstr "Eski isim:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
 msgstr "Yeni isim giriniz:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
 msgstr "Yeni ismi uygula"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
@@ -242,16 +208,10 @@ msgstr "Yeni ismi uygula"
 msgid "Chat"
 msgstr "Sohbet"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
 msgstr "Mesajınızı girin:"
 
-#. (itstool) path: Container/Label@text
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:21
@@ -269,7 +229,6 @@ msgstr "Mesajınızı girin:"
 msgid "Running costs"
 msgstr "İşletme giderleri"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
@@ -278,69 +237,67 @@ msgstr ""
 "Bir tekne inşa etmek için bir sınıf sekmesine tıklayıp istediğiniz gemiyi "
 "seçin ve siparişi doğrulayın."
 
-#. (itstool) path: Container/Label@text
+#. Information about the ship currently under construction at the boat
+#. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
 msgstr "Mevcut inşaat:"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
 msgstr "Duraklat"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
 msgstr "Devam Et"
 
-#. (itstool) path: Container/Label@text
+#. Refers to the resources still missing to complete the current boat
+#. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
 msgstr "İnşaat durumu"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
 msgstr "Gereken kaynaklar:"
 
-#. (itstool) path: Container/Label@text
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
 msgstr "İnşaatı iptal et:"
 
-#. (itstool) path: Container/Label@text
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
 msgstr "(tüm kaynaklar kaybedilir)"
 
-#. (itstool) path: Container/CancelButton@helptext
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
 msgstr "Tüm inşa işlerini iptal et"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
 msgstr "ittifak"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
 msgstr "tarafsız"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
 msgstr "düşman"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
 msgid "Building overview"
 msgstr "İnşa etme görünümü"
 
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
@@ -348,20 +305,16 @@ msgstr "İnşa etme görünümü"
 msgid "Capacity utilization"
 msgstr "Kapasite kullanımı"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
 msgid "Settlement inventory"
 msgstr "Yerleşim birimi envanteri"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:39
 msgid "Settler overview"
 msgstr "Göçebe genel görünümü"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
@@ -369,14 +322,11 @@ msgstr "Göçebe genel görünümü"
 msgid "Paid taxes"
 msgstr "Ödenen vergiler"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
 msgstr "Vergiler"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
@@ -384,77 +334,63 @@ msgstr "Vergiler"
 msgid "Tax rate"
 msgstr "Vergi oranı"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
 msgstr "Geliştirme izinleri:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
 msgstr "Her evdeki mutluluk"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
 msgstr "üzgün"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
 msgid "satisfied"
 msgstr "memnun"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:60
 msgid "happy"
 msgstr "mutlu"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
 msgstr "Bu mutluluk seviyesindeki ev sayısı"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
 msgstr "Her evdeki oturan"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
 msgstr "Ev başına kişi sayısı"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
 msgstr "Bu sayıda oturanı bulunan evler"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
 msgstr "Özet"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
 msgstr "evler"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "sakinler"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:348
 msgid "Selling"
 msgstr "Satılıyor"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
@@ -462,36 +398,30 @@ msgstr "Satılıyor"
 msgid "Buying"
 msgstr "Alınıyor"
 
-#. (itstool) path: HBox/Label@text
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
 msgid "Name:"
 msgstr "İsim:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
 msgstr "Silahlar:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
 msgstr "Kaynak deposu"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr "Bu bir kaynak deposu. Bir maden kurarak kaynak çıkarabilirsiniz."
 
-#. (itstool) path: VBox/Label@text
+#. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
 msgstr "Şu kaynakları içerir:"
 
-#. (itstool) path: HBox/RenameLabel@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -500,33 +430,26 @@ msgstr "Şu kaynakları içerir:"
 msgid "Click to change the name of your settlement"
 msgstr "Yerleşim biriminizin adını değiştirmek için tıklayın"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/ProgressBar@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
 msgstr "Mutluluk"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
 msgstr "Sakinler"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
 msgstr "Gerekli kaynaklar:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr "İşaret ateşi, tüccarların yerleşim yerinizi bulmasını sağlar."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
@@ -535,22 +458,19 @@ msgstr ""
 "Bu, tüccar gemisi. Ürün satın alıp satmak için zaman zaman sizi ziyaret "
 "edecek."
 
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
+#. Percentage describing how busy the collectors were (100% = always going
+#. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:27
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:29
 msgid "Collector utilization"
 msgstr "Toplayıcı faydalanma oranı"
 
-#. (itstool) path: HBox/RenameLabel@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
 msgstr "Bu geminin adını değiştirmek için tıklayın"
 
-#. (itstool) path: Container/ImageButton@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
@@ -558,100 +478,85 @@ msgstr "Bu geminin adını değiştirmek için tıklayın"
 msgid "Trade"
 msgstr "Ticaret"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:64
 msgid "Build settlement"
 msgstr "Yerleşim yeri kur"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
 msgstr "Ticaret rotasını ayarlıyor"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
 msgstr "Gemi:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
 msgstr "Takas:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
 msgstr "Ticari ortak: "
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
 msgstr "Kaynak al ya da sat"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
 msgstr "Ticaret geçmişi"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
 msgstr "Kaynakları seç:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 msgid "Income:"
 msgstr "Gelir:"
 
-#. (itstool) path: Container/Label@text
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:620
 msgid "Taxes"
 msgstr "Vergiler"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 msgid "Sale"
 msgstr "Satış"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Expenses:"
 msgstr "Harcamalar:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 msgid "Balance:"
 msgstr "Bakiye:"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:42
 msgid "Show resources produced in this settlement"
 msgstr "Bu yerleşim yerinde üretilen kaynakları göster"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
 msgid "Pause production"
 msgstr "Üretimi durdur"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
 msgid "Start production"
 msgstr "Üretime başla"
 
-#. (itstool) path: Container/Label@text
+#. Please keep the translation similarly short and concise, else the
+#. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
 msgstr "Kaynak seç: "
 
-#. (itstool) path: Container/Label@helptext
+#. Please keep the translation similarly short and concise, else the
+#. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
@@ -660,167 +565,145 @@ msgstr ""
 "Seçtiğiniz kaynak, şimdiki yerine görüntülenecek. X üzerine tıklayarak "
 "boşaltın."
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
 "Geçerli kaynak yapılandırmasını tüm köyler için varsayılan olarak kaydet."
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
 msgstr "Tüm köyleri varsayılan kaynak yapılandırmasına sıfırla."
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 msgid "Move up"
 msgstr "Yukarı taşı"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
 msgstr "Girdiyi sil"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 msgid "Move down"
 msgstr "Aşağı taşı"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
 msgstr "Bir kaynak seç:"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
 msgstr "Geçmiş girdileri oku"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
 msgstr "Sonraki girdileri oku"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
 msgid "Statistics"
 msgstr "İstatistikler"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 msgid "Players"
 msgstr "Oyuncular"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 msgid "My ships"
 msgstr "Gemilerim"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 msgid "My settlements"
 msgstr "Yerleşim yerlerim"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
 msgstr "Oyun mesajları"
 
-#. (itstool) path: HBox/Button@text
+#. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
 msgid "Whole world"
 msgstr "Tüm dünya"
 
-#. (itstool) path: HBox/Button@text
+#. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Everybody"
 msgstr "Herkes"
 
-#. (itstool) path: HBox/Button@helptext
+#. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
 msgstr "Sohbet mesajlarını tüm oyunculara gönder."
 
-#. (itstool) path: VBox/TextField@text
-#. (itstool) path: Container/TextField@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 #, fuzzy
 msgid "Enter your message here"
 msgstr "Mesajınızı girin:"
 
-#. (itstool) path: Container/OkButton@helptext
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
 msgstr "Oyuna geri dön"
 
-#. (itstool) path: HBox/Label@text
+#. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
 msgid "Wait at load:"
 msgstr "Yüklerken bekle:"
 
-#. (itstool) path: HBox/Label@text
+#. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
 msgid "Wait at unload:"
 msgstr "Boşaltırken bekle:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
 msgstr "Rota etkinliği:"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:100
 msgid "Start route"
 msgstr "Rotayı başlat"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
 msgid "Exit"
 msgstr "Çıkış"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/widgets/island_production.xml:24
 msgid "Close"
 msgstr "Kapat"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
 msgid "Player scores"
 msgstr "Oyuncu puanları"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
 msgstr "İsim"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
 msgstr "Oyuncu Adı"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Money"
 msgstr "Para"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
 msgstr "Oyuncunun mevcut hazinesi + yakın gelecekte beklenen gelir"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
 msgstr "Kara"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 #, fuzzy
 msgid ""
@@ -829,12 +712,10 @@ msgstr ""
 "Kullanılabilir alanın değeri, yani binalar inşa etmek için kullanılabilecek "
 "Arazi Miktarı"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
 msgstr "Kaynaklar"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
@@ -843,17 +724,14 @@ msgstr ""
 "Oyuncunun yerleşim yerindeki tüm kaynak depolarından elde edilebilecek "
 "kaynakların değeri"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
 msgstr "Binalar"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Oyuncunun yerleşim yer(ler)indeki tüm binaların değeri"
 
-#. (itstool) path: HBox/Label@text
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -861,7 +739,6 @@ msgstr "Oyuncunun yerleşim yer(ler)indeki tüm binaların değeri"
 msgid "Settlers"
 msgstr "Göçmenler"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
@@ -870,17 +747,14 @@ msgstr ""
 "Yerleşim yerinin gelişmişliğini sakinler, binalar ve genel refah bakımından "
 "gösteren değer"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
 msgstr "Birimler"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
 msgstr "Oyuncunun sahip olduğu tüm birimlerin değeri"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
@@ -888,296 +762,241 @@ msgstr ""
 "Tüm bireysel varlıklardan elde edilen değer, ya da kısacası: Toplam Oyuncu "
 "Puanı"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:118
 msgid "Total"
 msgstr "Toplam"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
 msgstr "Bilanço"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
 msgid "Type"
 msgstr "Tür"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
 msgstr "Silahlar"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 msgid "Health"
 msgstr "Sağlık"
 
-#. (itstool) path: HBox/Label@text
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:39
 msgid "Status"
 msgstr "Durum"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
 msgid "Aggressive"
 msgstr "Saldırgan"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
 msgstr "Geri adım atma"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
 msgstr "Dingin"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
 msgstr "Kaç"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:15
 msgid "UH-Team"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:17
 #, fuzzy
 msgid "Project Coordination"
 msgstr "Önlem"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:23
 msgid "Programming"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:45
 #, fuzzy
 msgid "Game-Play Design"
 msgstr "Oyun tüyoları"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:52
 msgid "Sound and Music Artists"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:60
 #, fuzzy
 msgid "Graphics Artists"
 msgstr "Grafikler"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:80
 #, fuzzy
 msgid "Patchers"
 msgstr "Kasap"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:82
 msgid "2009"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:91
 msgid "2010"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:105
 msgid "2011"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:117
 msgid "2012"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:132
 msgid "Translators"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:134
 #, fuzzy
 msgid "Hosting Weblate"
 msgstr "Günlükleme açıldı."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:139
 msgid "Bulgarian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:144
 msgid "Catalan"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:150
 msgid "Czech"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:160
 msgid "Danish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:165
 msgid "German"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:172
 #, fuzzy
 msgid "Spanish"
 msgstr "Şirketler"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:184
 msgid "Estonian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:190
 msgid "Finnish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:195
 msgid "French"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:207
 msgid "Croatian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:212
 msgid "Hindi"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:217
 msgid "Hungarian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:223
 msgid "Italian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:231
 msgid "Japanese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:237
 msgid "Lithuanian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:246
 msgid "Norwegian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:253
 #, fuzzy
 msgid "Dutch"
 msgstr "Kasap"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:264
 msgid "Polish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:275
 msgid "Portuguese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:283
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:291
 msgid "Romanian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:296
 msgid "Russian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:303
 msgid "Slovenian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:308
 msgid "Swedish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:314
 #, fuzzy
 msgid "Chinese"
 msgstr "asmalar"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:325
 msgid "Packagers"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:332
 msgid "Fedora &amp; openSUSE"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:338
 msgid "OS X"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:348
 msgid "Special Thanks"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:350
 msgid "Thanks, all of you are awesome!"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:373
 msgid "Portfolio Sites"
 msgstr ""
 
-#. (itstool) path: Container/OkButton@helptext
-#. (itstool) path: HBox/CancelButton@helptext
-#. (itstool) path: AutoResizeContainer/OkButton@helptext
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
@@ -1186,610 +1005,502 @@ msgstr ""
 msgid "Exit to main menu"
 msgstr "Ana menüye çık"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
 msgstr "Bir harita boyutu seçin:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:33
 msgid "Choose a map:"
 msgstr "Bir harita seçin:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
 msgstr "Bir kayıtlı oyun haritası seçin:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
 msgstr "Kaynak haritasını seçin"
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
 msgstr "Yeni harita oluştur"
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
 msgstr "Mevcut haritayı yükle"
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
 msgstr "Kayıtlı haritayı yükle"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
 msgstr "Düzenleyiciyi başlat"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:6
 msgid "Key bindings"
 msgstr "Tuş kombinasyonu"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
 msgstr "Sola kaydır"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:10
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
 msgstr "Sağa kaydır"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:11
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 msgid "Scroll up"
 msgstr "Yukarı kaydır"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:12
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 msgid "Scroll down"
 msgstr "Aşağı kaydır"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:15
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
 msgstr "Oyun hızını arttır"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:16
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
 msgstr "Oyun hızını azalt"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:18
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
 msgstr "Binayı veya haritayı saatin tersi yönünde döndür"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:20
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
 msgstr "Binayı veya haritayı saat yönünde döndür"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:23
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Show build menu"
 msgstr "İnşaat menüsünü göster"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
 msgstr "Kaptanın günlüğünü aç/kapat"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:25
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
 msgstr "Oyunu beklet"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:28
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
 msgstr "Yardımı göster"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:29
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
 msgstr "Hızlı Kaydet"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:30
 #: content/gui/xml/mainmenu/hotkeys.xml:29
 msgid "Quickload"
 msgstr "Hızlı Yükle"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:31
 msgid "Display FPS counter"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:40
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
 msgstr "Çevreleyen binaların saydamlığını değiştir"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:41
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
 msgstr "Yol inşa modunu aç"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:42
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Enable destruct mode"
 msgstr "Yıkım modunu etkinleştir"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:44
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
 msgstr "Pipet kipini aç (binaları çoğalt)"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:45
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
 msgstr "Sağlık çubuğunun aç/kapat"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:48
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:51
 msgid "Hold to place multiple buildings"
 msgstr "Birden fazla bina yerleştirmek için basılı tut"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:52
 msgid "Close dialogs"
 msgstr "Pencereyi kapat"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:55
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
 msgstr "Oyuncu puanlarını göster"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:56
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show ship list"
 msgstr "Gemi listesini göster"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:57
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Show settlement list"
 msgstr "Yerleşim yeri listesi"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:58
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
 msgstr "Döşeme sahipliğini vurgula"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:62
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
 msgstr "Seçili birimleri/binaları kaldır"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:63
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
 msgstr "Kamerayı seçime odakla"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
 msgstr "Izgarayı aç/kapat"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:65
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Show coordinate values (Debug)"
 msgstr "Koordinat değerlerini göster (Hata ayıklama)"
 
-#. (itstool) path: Container/OkButton@helptext
 #: content/gui/xml/mainmenu/help.xml:70
 msgid "Return"
 msgstr "Geri dön"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 #, fuzzy
 msgid "Actions"
 msgstr "eğitim"
 
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 #, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Izgarayı aç/kapat"
 
-#. (itstool) path: VBox/Label@text
+#. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
+#. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
 msgstr ""
 
-#. (itstool) path: VBox/Button@text
-#. (itstool) path: AutoResizeContainer/Button@helptext
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
 msgid "Reset to default"
 msgstr "Öntanımlı ayarlara dön"
 
-#. (itstool) path: AutoResizeContainer/Button@text
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #, fuzzy
 msgid "Reset to default keys"
 msgstr "Öntanımlı ayarlara dön"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
 msgid "Save game"
 msgstr "Oyunu kaydet"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:50
 msgid "Load game"
 msgstr "Oyunü yükle"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
 msgstr "Oyunu iptal et"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
 msgstr "Yükleniyor ..."
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:6
 #, fuzzy
 msgid "Unknown Horizons"
 msgstr "Unknown Horizons çöktü."
 
-#. (itstool) path: Container/ImageButton@text
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
+#. Opens widget to create singleplayer games (scenarios, random maps, free
+#. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
 msgstr "Tekli oyuncu"
 
-#. (itstool) path: Container/Label@text
+#. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
 msgid "Multiplayer"
 msgstr "Çoklu oyuncu"
 
-#. (itstool) path: Container/Label@text
+#. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
 msgid "Quit"
 msgstr "Çık"
 
-#. (itstool) path: Container/Label@text
+#. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
 msgstr "Editör"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
 msgstr "Emeği Geçenler"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
 msgstr "Oyun oluştur - Çoklu oyuncu"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
 msgstr "Oyuncu sınırı:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Back:"
 msgstr "Geri:"
 
-#. (itstool) path: Container/CancelButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:21
 msgid "Exit to multiplayer menu"
 msgstr "Çoklu oyuncu menüsüne geri dön"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
 msgstr "Oyunun adı:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
 msgstr "Bu, diğer oyuncuların oyunu tanıyabilmesi için gösterilecek."
 
-#. (itstool) path: HBox/TextField@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
 msgstr "Oyunun şifresi:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 msgid "This game's password. Required to join this game."
 msgstr "Bu oyunun şifresi. Oyuna katılmak için gereklidir."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:54
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
 msgid "Create game:"
 msgstr "Oyun Yarat:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:55
 msgid "Create this new game"
 msgstr "Yeni oyun yarat"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
 msgstr "Oyun lobisi"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
 msgstr "Sohbet:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Leave:"
 msgstr "Çık:"
 
-#. (itstool) path: Container/CancelButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:18
 msgid "Exit gamelobby"
 msgstr "Oyun alanından çık"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:19
 msgid "Ready:"
 msgstr "Hazır:"
 
-#. (itstool) path: Container/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:20
 msgid "Sets your state to ready (necessary for the game to start)"
 msgstr "Size hazır durumuna geçirir (oyunun başlaması için gereklidir)"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
 msgid "The game will start as soon as all players are ready."
 msgstr "Diğer oyuncular hazır olduğunda oyun başlayacak."
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
 msgid "Game details:"
 msgstr "Oyun ayrıntıları:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
 msgid "Color"
 msgstr "Renk"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
 msgstr "Yeni Oyun - Çoklu oyuncu"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Create a new game"
 msgstr "Yeni bir oyun yarat"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Oyunu yükle:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 msgid "Load a saved game"
 msgstr "Kaydedilmiş bir oyunu yükle"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:26
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:16
 msgid "Main menu:"
 msgstr "Ana menü:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:36
 msgid "Active games:"
 msgstr "Etkin oyunlar:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:38
 msgid "Refresh list:"
 msgstr "Listeyi yenile:"
 
-#. (itstool) path: HBox/ImageButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:41
 msgid "Refresh list of active games"
 msgstr "Etkin oyun listesini yenile"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:59
 msgid "Join game"
 msgstr "Oyuna katıl"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:60
 msgid "Join the selected game"
 msgstr "Seçili oyuna katıl"
 
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/multiplayer/set_password.xml:6
-msgid "Password of the game"
-msgstr "Oyunun şifresi"
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/multiplayer/set_password.xml:9
-msgid "Enter password:"
-msgstr "Şifre gir:"
-
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
 msgstr "Oyuncu ayrıntılarını değiştir"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/widgets/pickbeltwidget.py:87
 msgid "Graphics"
 msgstr "Grafikler"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:18
 msgid "Screen resolution:"
 msgstr "Ekran çözünürlüğü"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "Color depth:"
 msgstr "Renk derinliği:"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "If set to 0, use the driver default"
 msgstr "Eğer 0 ise, sürücü varsayılanını kullan"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:35
 msgid "Full screen:"
 msgstr "Tam ekran:"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:43
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr "SDL, sadece desteklenmeyen fallback'tir ve problemler oluşturabilir!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:43
 msgid "Used renderer:"
 msgstr "Kullanılan hazırlayıcı:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Frame rate limit:"
 msgstr "Film karesi hız limiti"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr "Kullanılan azami kare oranını ayarla. Varsayılan: 60 fps."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:62
 msgid "Sound"
 msgstr "Ses"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:67
 msgid "Music volume:"
 msgstr "Müzik ses seviyesi:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:76
 msgid "Effects volume:"
 msgstr "Efekt sesleri:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:84
 msgid "Enable sound:"
 msgstr "Sesleri aç:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:90
 msgid "Mouse"
 msgstr "Fare"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid "Scroll at map edge:"
 msgstr "Harita kenarında kaydır:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
@@ -1797,12 +1508,10 @@ msgstr ""
 "Fare imleci harita kenarlarına geldiğinde bakış noktasının hareket ettirilip "
 "ettirilmemesi."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid "Cursor centered zoom:"
 msgstr "İmleç merkezli yakınlaştırma:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
@@ -1812,87 +1521,70 @@ msgstr ""
 "noktası merkezi olarak kullanacak. Kapalı ise, her zaman geçerli bakış "
 "noktası merkezine odaklan."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "Middle mouse button pan:"
 msgstr "Farenin orta düğmesi:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr "Etkin ise, orta fare tuşu kamerayı hareket ettirir"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "0 is default system settings"
 msgstr "Öntanımlı sistem ayarları 0'dır"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Fare hassasiyeti:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:132
 msgid "Saving"
 msgstr "Kayıt"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:137
 msgid "Autosave interval in minutes:"
 msgstr "Her şu dakikada otomatik kaydet:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:145
 msgid "Number of autosaves:"
 msgstr "Otomatik kayıt sayısı:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:153
 msgid "Number of quicksaves:"
 msgstr "Hızlı kayıt sayısı:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Language"
 msgstr "Dil"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "General"
 msgstr "Genel"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Rotate minimap with map:"
 msgstr "Küçük haritayı harita ile döndür:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr "Normal harita döndürüldüğünde mini harita da döndürülsün mü"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "Uninterrupted building:"
 msgstr "Durdurulmamış bina:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr "Etkin ise, başarılı inşa etmeden sonra inşa etme kipinden çıkma"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Auto-unload ship:"
 msgstr "Gemiyi otomatik olarak boşalt:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Whether to unload the ship after founding a settlement"
 msgstr "Bir köy kurduktan sonra geminin boşaltılıp boşaltılmayacağı"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
@@ -1901,17 +1593,14 @@ msgstr ""
 "Normal oyun oturumunda kullanma. Kullanıcı dizininizin günlük klasörüne hata "
 "çözme bilgisini yazıp yazmamasına karar verir. Oyunu yavaşlatır."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid "Enable logging:"
 msgstr "Kayıtlamayı aç:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
 msgstr "Üretim belirteçleri"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
@@ -1919,168 +1608,139 @@ msgstr ""
 "Üretimi bitirdiklerinde, bina üzerlerinde kaynak simgelerinin gösterilip "
 "gösterilmemesi"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Higher values slow down scrolling."
 msgstr "Yüksek değerler kaydırmayı yavaşlatır."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Scroll delay:"
 msgstr "Kaydırma gecikmesi:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "Choose a quote type:"
 msgstr "Alıntı türü seçin:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "What kind of quote to display while loading a game"
 msgstr "Oyun yuüklenirken ne tür alıntılar gösterilecek"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:227
 msgid "Network"
 msgstr "Ağ"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "If set to 0, use the router default"
 msgstr "0 ise, yönlendirici varsayılanını kullan"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "Network port:"
 msgstr "Ağ portu:"
 
-#. (itstool) path: HBox/DeleteButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Reset to default settings"
 msgstr "Öntanımlı ayarlara geri dön"
 
-#. (itstool) path: HBox/CancelButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:244
 msgid "Discard current changes"
 msgstr "Geçerli değişiklikleri iptal et"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
 msgstr "Uygula"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
 msgstr "Kaydedilmiş oyunlarınız"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
 msgstr "Oyunun şifresi. Bu oyuna katılmak için gerekli"
 
-#. (itstool) path: HBox/DeleteButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Delete selected savegame"
 msgstr "Seçili oyunları sil"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
 msgstr "Dosya adı gir:"
 
-#. (itstool) path: VBox/Label@text
+#. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
 msgid "Details:"
 msgstr "Ayrıntılar:"
 
-#. (itstool) path: HBox/CancelButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
 msgid "Cancel"
 msgstr "İptal"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
 msgstr "Yeni oyun - Tek oyuncu"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
 msgstr "Senaryo"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
 msgstr "Rasgele harita"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
 msgstr "Serbest oyun"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:36
 msgid "Start game:"
 msgstr "Oyunu başlat:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
 msgstr "Oyuna başla"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
 msgstr "Oynamak için bir harita seçin:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
 msgstr "Harita ayarları:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr "Kaynak"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
 msgstr "Bir dil seçin:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
 msgstr "Yapay Zeka oyuncuları"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
 msgstr "Oyun ayarları:"
 
-#. (itstool) path: HBox/Label@text
+#. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
 msgstr "Serbest Tüccar"
 
-#. (itstool) path: HBox/Label@text
+#. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
 msgstr "Korsanlar"
 
-#. (itstool) path: HBox/Label@text
+#. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
 msgstr "Doğa olayları"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
 msgstr "Oyuncu adı:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
 msgstr "Renk:"
@@ -2094,7 +1754,7 @@ msgid "Received an invalid filename for a save command."
 msgstr "Kaydetme komutu için verilen dosya adı geçersiz."
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:154
+#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
 #: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
 msgid "Error"
 msgstr "Hata"
@@ -2235,13 +1895,13 @@ msgid "Failed to apply new network settings."
 msgstr "Yeni ağ ayarları uygulanamadı."
 
 #: horizons/engine/settingshandler.py:237
-#: horizons/gui/modules/multiplayermenu.py:127
+#: horizons/gui/modules/multiplayermenu.py:131
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr "Mevcut konfigürasyonla network özellikleri başlatılamıyor."
 
 #: horizons/engine/settingshandler.py:238
-#: horizons/gui/modules/multiplayermenu.py:128
+#: horizons/gui/modules/multiplayermenu.py:132
 msgid "Check the settings you specified in the network section."
 msgstr "Network kısmındaki ayarları kontrol ediniz."
 
@@ -2414,11 +2074,11 @@ msgstr ""
 msgid "Burying treasures..."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:114
+#: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
 msgstr "pyenet bulunamadı"
 
-#: horizons/gui/modules/multiplayermenu.py:115
+#: horizons/gui/modules/multiplayermenu.py:119
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
@@ -2426,25 +2086,25 @@ msgstr ""
 "Çok oyunculu oynama özelliği \"pyenet\" kütüphanesini gerektiriyor; "
 "sisteminizde bu dosya bulunamadı."
 
-#: horizons/gui/modules/multiplayermenu.py:117
+#: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
 "Linux kullanıcıları: pyenet'i paket yöneticiniz yardımıyla yüklemeye çalışın."
 
-#: horizons/gui/modules/multiplayermenu.py:126
+#: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
 msgstr "Ağ oluşturma başarısız."
 
-#: horizons/gui/modules/multiplayermenu.py:137
-#: horizons/gui/modules/multiplayermenu.py:156 horizons/mpsession.py:51
+#: horizons/gui/modules/multiplayermenu.py:141
+#: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
 msgid "Fatal Network Error"
 msgstr " Ağ Hatası"
 
-#: horizons/gui/modules/multiplayermenu.py:138
+#: horizons/gui/modules/multiplayermenu.py:142
 msgid "Could not connect to master server."
 msgstr "Ana sunucuya bağlanılamadı."
 
-#: horizons/gui/modules/multiplayermenu.py:139
+#: horizons/gui/modules/multiplayermenu.py:143
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
@@ -2452,43 +2112,43 @@ msgstr ""
 "Lütfen Internet bağlantınızı kontrol edin. Bağlantınız çalışıyorsa şu anda "
 "ana sunucumuzda geçici bir sorun olabilir."
 
-#: horizons/gui/modules/multiplayermenu.py:157 horizons/mpsession.py:52
+#: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Ağda bir sorun oluştu."
 
-#: horizons/gui/modules/multiplayermenu.py:170
+#: horizons/gui/modules/multiplayermenu.py:174
 msgid "Version differs!"
 msgstr "Versiyon farklı"
 
-#: horizons/gui/modules/multiplayermenu.py:200
-#: horizons/gui/modules/multiplayermenu.py:429
+#: horizons/gui/modules/multiplayermenu.py:204
+#: horizons/gui/modules/multiplayermenu.py:441
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Harita: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:201
-#: horizons/gui/modules/multiplayermenu.py:431
+#: horizons/gui/modules/multiplayermenu.py:205
+#: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Name: {game_name}"
 msgstr "Oyun adı: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:202
-#: horizons/gui/modules/multiplayermenu.py:433
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr "Yaratan: {game_creator}"
 
-#: horizons/gui/modules/multiplayermenu.py:204
-#: horizons/gui/modules/multiplayermenu.py:435
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:447
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Oyuncular: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:224
+#: horizons/gui/modules/multiplayermenu.py:228
 msgid "Wrong version"
 msgstr "Yanlış sürüm."
 
-#: horizons/gui/modules/multiplayermenu.py:226
+#: horizons/gui/modules/multiplayermenu.py:230
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2501,78 +2161,86 @@ msgstr ""
 "yüksektilse bu sorun çözülebilir. Oyunun sürümü: {game_version} Sizin "
 "sürümünüz: {own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:343
+#: horizons/gui/modules/multiplayermenu.py:268
+msgid "Password of the game"
+msgstr "Oyunun şifresi"
+
+#: horizons/gui/modules/multiplayermenu.py:269
+msgid "Enter password:"
+msgstr "Şifre gir:"
+
+#: horizons/gui/modules/multiplayermenu.py:349
 #: horizons/gui/modules/singleplayermenu.py:407
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Önerilen oyuncu sayısı: {number}"
 
-#: horizons/gui/modules/multiplayermenu.py:453
-#: horizons/gui/modules/multiplayermenu.py:461
+#: horizons/gui/modules/multiplayermenu.py:465
+#: horizons/gui/modules/multiplayermenu.py:473
 msgid "Click here to change your name and/or color"
 msgstr "Adınızı ve/veya renginizi değiştirmek için buraya tıklayınız."
 
-#: horizons/gui/modules/multiplayermenu.py:480
+#: horizons/gui/modules/multiplayermenu.py:492
 #, python-format
 msgid "Kick {player}"
 msgstr "{player} adlı oyuncuyu kov"
 
-#: horizons/gui/modules/multiplayermenu.py:548
+#: horizons/gui/modules/multiplayermenu.py:560
 #, python-format
 msgid "{player} has joined the game"
 msgstr "{player} oyuna katıldı"
 
-#: horizons/gui/modules/multiplayermenu.py:552
+#: horizons/gui/modules/multiplayermenu.py:564
 #, python-format
 msgid "{player} has left the game"
 msgstr "{player} oyundan ayrıldı"
 
-#: horizons/gui/modules/multiplayermenu.py:558
+#: horizons/gui/modules/multiplayermenu.py:570
 msgid "You are now ready"
 msgstr "Şimdi hazırsınız"
 
-#: horizons/gui/modules/multiplayermenu.py:560
+#: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are not ready anymore"
 msgstr "Artık hazır değilsiniz"
 
-#: horizons/gui/modules/multiplayermenu.py:564
+#: horizons/gui/modules/multiplayermenu.py:576
 #, python-format
 msgid "{player} is now ready"
 msgstr "{player} şimdi hazır"
 
-#: horizons/gui/modules/multiplayermenu.py:567
+#: horizons/gui/modules/multiplayermenu.py:579
 #, python-format
 msgid "{player} not ready anymore"
 msgstr "{player} artık hazır değil"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:584
 #, python-format
 msgid "You are now known as {new_name}"
 msgstr "Adınız {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:575
+#: horizons/gui/modules/multiplayermenu.py:587
 #, python-format
 msgid "{player} is now known as {new_name}"
 msgstr "{player} artık {new_name} olarak biliniyor."
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:591
 msgid "You changed your color"
 msgstr "Renginizi değiştirdiniz"
 
-#: horizons/gui/modules/multiplayermenu.py:582
+#: horizons/gui/modules/multiplayermenu.py:594
 #, python-format
 msgid "{player} changed their color"
 msgstr "{player} rengini değiştirdi"
 
-#: horizons/gui/modules/multiplayermenu.py:586
+#: horizons/gui/modules/multiplayermenu.py:598
 msgid "Kicked"
 msgstr "Atıldı"
 
-#: horizons/gui/modules/multiplayermenu.py:586
+#: horizons/gui/modules/multiplayermenu.py:598
 msgid "You have been kicked from the game by creator"
 msgstr "Oyun sahibi tarafından oyundan atıldınız"
 
-#: horizons/gui/modules/multiplayermenu.py:590
+#: horizons/gui/modules/multiplayermenu.py:602
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr "{player} oyun sahibi tarafından oyundan atıldı"
@@ -3801,12 +3469,12 @@ msgstr ""
 msgid "Maybe invalid or irresolvable server address."
 msgstr ""
 
-#: horizons/network/networkinterface.py:525
+#: horizons/network/networkinterface.py:526
 msgid "Not Ready"
 msgstr "Hazır Değil"
 
 #. TODO: add support for selecting difficulty levels to the GUI
-#: horizons/network/networkinterface.py:525
+#: horizons/network/networkinterface.py:526
 msgid "Ready"
 msgstr "Hazır"
 
@@ -3822,30 +3490,30 @@ msgstr "Bu senaryoyu tamamladınız."
 msgid "Do you want to continue playing?"
 msgstr "Oynamaya devam etmek istiyor musunuz?"
 
-#: horizons/scenario/scenarioeventhandler.py:159
+#: horizons/scenario/scenarioeventhandler.py:158
 msgid "unknown"
 msgstr "bilinmiyor"
 
 #. usually invalid filename
-#: horizons/session.py:408
+#: horizons/session.py:409
 msgid "Failed to create savegame file"
 msgstr "Oyun kayıt dosyası oluşturulamadı."
 
-#: horizons/session.py:409
+#: horizons/session.py:410
 msgid "There has been an error while creating your savegame file."
 msgstr "Oyun kayıt dosyası oluşturulurken bir hatayla karşılaşıldı."
 
-#: horizons/session.py:410
+#: horizons/session.py:411
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr "Oyun kayıt dosyası desteklenmeyen özel karakterler içeriyor olabilir."
 
-#: horizons/session.py:416
+#: horizons/session.py:417
 msgid "Access is denied"
 msgstr "Erişim engellendi"
 
-#: horizons/session.py:417
+#: horizons/session.py:418
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 "Oyun kayıt dosyası salt okunur ya da başka bir işlem tarafından kullanılıyor "

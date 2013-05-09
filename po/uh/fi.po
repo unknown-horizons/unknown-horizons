@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-08 15:03+0200\n"
+"POT-Creation-Date: 2013-05-09 13:49+0200\n"
 "PO-Revision-Date: 2013-03-30 18:33+0000\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,184 +65,150 @@ msgstr ""
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Kiitos, että pelasit Unknown Horizonsia!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
 msgstr "Takaisin karttamuokkaimeen"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 msgid "Save map"
 msgstr "Tallenna kartta"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
 msgstr "Lataa kartta"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
 msgstr "Asetukset"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
 msgstr "Ohje"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
 msgstr "Poistu kartanmuokkauksesta"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
 msgstr "Aloita peli"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr "Rakennuksia voi rakentaa vasta, kun siirtokunta kun perustettu!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
 msgstr "Napsauta alustasi ja sitten rannikkoa hiiren oikealla näppäimellä."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr ""
 "Napsauta tämän jälkeen isoa ankkurinnäköistä kuvaketta aluksen "
 "yleiskatsauksessa."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
 msgstr "Rakenna"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
 msgstr "Juoksevat menot:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
 msgstr "Muita rakennuksia"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
 msgstr "Asukkaat"
 
 # 82
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr "Nopeuta peliä (+)"
 
 # 82%
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Hidasta peliä (-)"
 
 # 87%
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
 msgstr "Käännä karttaa vastapäivään (,)"
 
 # 83%
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
 msgstr "Käännä karttaa myötäpäivään (.)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
 msgstr "Lähennä kuvaa"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
 msgstr "Loitonna kuvaa"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:39
 msgid "Destroy (X)"
 msgstr "Tuhoa (X)"
 
 # 76%
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
 msgstr "Kapteenin päiväkirja (L)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:43
 msgid "Build menu (B)"
 msgstr "Rakennusvalikko (B)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomatia"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:47
 msgid "Game menu (Esc)"
 msgstr "Pelivalikko (Esc)"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
 msgstr "Vaihda nimi"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
 msgstr "Nykyinen nimi:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
 msgstr "Kirjoita uusi nimi:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
 msgstr "Ota uusi nimi käyttöön"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
@@ -250,16 +216,10 @@ msgstr "Ota uusi nimi käyttöön"
 msgid "Chat"
 msgstr "Keskustelu"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
 msgstr "Kirjoita viesti:"
 
-#. (itstool) path: Container/Label@text
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:21
@@ -277,7 +237,6 @@ msgstr "Kirjoita viesti:"
 msgid "Running costs"
 msgstr "Juoksevat kustannukset"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
@@ -286,70 +245,68 @@ msgstr ""
 "Rakenna vene napsauttamalla yhtä välilehdistä, valitsemalla haluttu alus ja "
 "vahvistamalla päätös."
 
-#. (itstool) path: Container/Label@text
+#. Information about the ship currently under construction at the boat
+#. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
 msgstr "Rakennetaan:"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
 msgstr "Pysäytä"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
 msgstr "Jatka"
 
-#. (itstool) path: Container/Label@text
+#. Refers to the resources still missing to complete the current boat
+#. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
 msgstr "Rakennettu:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
 msgstr "Puuttuvat resurssit:"
 
-#. (itstool) path: Container/Label@text
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
 msgstr "Peruuta rakentaminen:"
 
-#. (itstool) path: Container/Label@text
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
 msgstr "(menetät kaikki resurssisi)"
 
-#. (itstool) path: Container/CancelButton@helptext
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
 msgstr "Peruuta kaikki rakentamiset"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
 msgstr "liittolainen"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
 msgstr "puolueeton"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
 msgstr "vihollinen"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
 msgid "Building overview"
 msgstr "Rakennuksen tiedot"
 
 # 95
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
@@ -357,20 +314,16 @@ msgstr "Rakennuksen tiedot"
 msgid "Capacity utilization"
 msgstr "Käyttöosuus"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
 msgid "Settlement inventory"
 msgstr "Tavaravalikko"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:39
 msgid "Settler overview"
 msgstr "Asukaskatsaus"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
@@ -378,15 +331,12 @@ msgstr "Asukaskatsaus"
 msgid "Paid taxes"
 msgstr "Maksetut verot"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
 msgstr "Verot:"
 
 # 87%
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
@@ -394,78 +344,64 @@ msgstr "Verot:"
 msgid "Tax rate"
 msgstr "Veroprosentti"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
 msgstr "Päivitysoikeudet:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
 msgstr "Talokohtainen tyytyväisyys"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
 msgstr "Surullinen"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
 msgid "satisfied"
 msgstr "Tyytyväinen"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:60
 msgid "happy"
 msgstr "Onnellinen"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
 msgstr "Näin tyytyväisten talojen lukumäärä:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
 msgstr "Asukkaita per talo"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
 msgstr "Talokohtainen asukasluku"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
 msgstr "Näin monta asukasta asuu näin monessa talossa:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
 msgstr "Yhteenveto"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
 msgstr "taloja"
 
 # 88%
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "asukkaita"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:348
 msgid "Selling"
 msgstr "Myydään"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
@@ -473,25 +409,20 @@ msgstr "Myydään"
 msgid "Buying"
 msgstr "Ostetaan"
 
-#. (itstool) path: HBox/Label@text
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
 msgid "Name:"
 msgstr "Nimi:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
 msgstr "Aseistettu:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
 msgstr "Luonnonvara"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
@@ -499,13 +430,12 @@ msgstr ""
 "Tämä on luonnonvaralöydös, josta voit kaivaa resursseja ylös louhoksen "
 "avulla."
 
-#. (itstool) path: VBox/Label@text
+#. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
 msgstr "Sisältää näitä luonnonvaroja:"
 
 # 97%
-#. (itstool) path: HBox/RenameLabel@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -514,26 +444,20 @@ msgstr "Sisältää näitä luonnonvaroja:"
 msgid "Click to change the name of your settlement"
 msgstr "Vaihda siirtokuntasi nimeä napsauttamalla tätä"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/ProgressBar@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
 msgstr "Onnellisuus"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
 msgstr "Asukkaat"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
 msgstr "Tarvittavat resurssit:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
@@ -542,7 +466,6 @@ msgstr ""
 "Merkkituli näyttää vapaakauppiaalle reitin sivutoimistollesi, jonka ansiosta "
 "voit myydä ja ostaa tavaraa."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
@@ -551,8 +474,8 @@ msgstr ""
 "Tämä on vapaakauppiaan alus. Se vierailee silloin tällöin ostamaan ja "
 "myymään tavaraa."
 
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
+#. Percentage describing how busy the collectors were (100% = always going
+#. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:27
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:29
 #, fuzzy
@@ -560,15 +483,12 @@ msgid "Collector utilization"
 msgstr "Kerääjien työmäärä"
 
 # 97%
-#. (itstool) path: HBox/RenameLabel@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
 msgstr "Vaihda aluksen nimi napsauttamalla tästä"
 
-#. (itstool) path: Container/ImageButton@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
@@ -576,7 +496,6 @@ msgstr "Vaihda aluksen nimi napsauttamalla tästä"
 msgid "Trade"
 msgstr "Kaupankäynti"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:64
@@ -584,94 +503,80 @@ msgid "Build settlement"
 msgstr "Rakenna asutuskeskus"
 
 # 95%
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
 msgstr "Muuta kauppareittiä"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
 msgstr "Alus:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
 msgstr "Siirto:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
 msgstr "Kauppakumppani:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
 msgstr "Osta tai myy"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
 msgstr "Kauppahistoria"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
 msgstr "Valitse resurssit:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 msgid "Income:"
 msgstr "Tulot:"
 
-#. (itstool) path: Container/Label@text
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:620
 msgid "Taxes"
 msgstr "Verot"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 msgid "Sale"
 msgstr "Myynti"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Expenses:"
 msgstr "Menot:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 msgid "Balance:"
 msgstr "Tasapaino:"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:42
 msgid "Show resources produced in this settlement"
 msgstr "Näytä tässä siirtokunnassa tuotetut resurssit"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
 msgid "Pause production"
 msgstr "Pysäytä tuotanto"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
 msgid "Start production"
 msgstr "Käynnistä tuotanto"
 
 # 94%
-#. (itstool) path: Container/Label@text
+#. Please keep the translation similarly short and concise, else the
+#. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
 msgstr "Valitse resurssi"
 
-#. (itstool) path: Container/Label@helptext
+#. Please keep the translation similarly short and concise, else the
+#. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
@@ -679,200 +584,173 @@ msgid ""
 msgstr ""
 "Valitsemasi resurssi näytetään nykyisen paikalla. Tyhjennä napsauttamalla X."
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
 "Tallenna nykyinen resurssi oletukseksi tähän paikkaan kaikissa "
 "siirtokunnissa."
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
 msgstr "Palauta tämän paikan alkuperäinen resurssi kaikissa siirtokunnissa."
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 msgid "Move up"
 msgstr "Siirrä ylös"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
 msgstr "Poista merkintä"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 msgid "Move down"
 msgstr "Siirrä alas"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
 msgstr "Valitse resurssi:"
 
 # 80%
-#. (itstool) path: HBox/ImageButton@helptext
+#. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
 msgstr "Edellinen merkintä"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
 msgstr "Seuraava merkintä"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
 msgid "Statistics"
 msgstr "Tilastot"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 msgid "Players"
 msgstr "Pelaajat"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 msgid "My ships"
 msgstr "Alukset"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 msgid "My settlements"
 msgstr "Siirtokunnat"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
 msgstr "Peli-ilmoitukset"
 
-#. (itstool) path: HBox/Button@text
+#. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
 msgid "Whole world"
 msgstr "Maailma"
 
-#. (itstool) path: HBox/Button@text
+#. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Everybody"
 msgstr "Kaikki"
 
-#. (itstool) path: HBox/Button@helptext
+#. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
 msgstr "Pikaviesti lähetetään kaikille pelaajille."
 
-#. (itstool) path: VBox/TextField@text
-#. (itstool) path: Container/TextField@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 #, fuzzy
 msgid "Enter your message here"
 msgstr "Kirjoita viesti:"
 
-#. (itstool) path: Container/OkButton@helptext
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
 msgstr "Jatka peliä"
 
-#. (itstool) path: HBox/Label@text
+#. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
 msgid "Wait at load:"
 msgstr "Odota lastausta:"
 
-#. (itstool) path: HBox/Label@text
+#. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
 msgid "Wait at unload:"
 msgstr "Odota purkamista:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
 msgstr "Reitin toiminnot:"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:100
 msgid "Start route"
 msgstr "Aloita reitti"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
 msgid "Exit"
 msgstr "Poistu"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/widgets/island_production.xml:24
 msgid "Close"
 msgstr "Sulje"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
 msgid "Player scores"
 msgstr "Pelitulokset"
 
 # 80%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
 msgstr "Nimi"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
 msgstr "Pelaajan nimi"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Money"
 msgstr "Raha"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
 msgstr "Pelaajan nykyiset rahavarannot + odotetut lähitulevaisuuden verotulot"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
 msgstr "Maa"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 #, fuzzy
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr "Käyttökelpoisen eli rakennuskelpoisen maan määrä"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
 msgstr "Resurssit"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr "Kaikkien siirtokuntien tuottamien resurssien kokonaismäärä"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
 msgstr "Rakennukset"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Pelaajan kaikkien siirtokuntien rakennusten lukumäärä"
 
 # 75%
-#. (itstool) path: HBox/Label@text
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -880,322 +758,263 @@ msgstr "Pelaajan kaikkien siirtokuntien rakennusten lukumäärä"
 msgid "Settlers"
 msgstr "Uudisasukkaat"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
 msgstr "Yksiköt"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
 msgstr "Pelaajan omistamien yksiköiden kokonaismäärä"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:118
 msgid "Total"
 msgstr "Yhteensä"
 
 # 87%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
 msgstr "Tasapaino"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
 msgid "Type"
 msgstr "Tyyppi"
 
 # 87%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
 msgstr "Aseistus"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 msgid "Health"
 msgstr "Kunto"
 
-#. (itstool) path: HBox/Label@text
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:39
 msgid "Status"
 msgstr "Tila"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
 msgid "Aggressive"
 msgstr "Aggressiivinen"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
 msgstr ""
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
 msgstr "Passiivinen"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
 msgstr "Pakene"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:15
 msgid "UH-Team"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:17
 #, fuzzy
 msgid "Project Coordination"
 msgstr "Turvallisuus"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:23
 msgid "Programming"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:45
 #, fuzzy
 msgid "Game-Play Design"
 msgstr "Pelivinkki"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:52
 msgid "Sound and Music Artists"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:60
 #, fuzzy
 msgid "Graphics Artists"
 msgstr "Grafiikka"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:80
 #, fuzzy
 msgid "Patchers"
 msgstr "Teurastamo"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:82
 msgid "2009"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:91
 msgid "2010"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:105
 msgid "2011"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:117
 msgid "2012"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:132
 #, fuzzy
 msgid "Translators"
 msgstr "Käännöstilanne:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:134
 #, fuzzy
 msgid "Hosting Weblate"
 msgstr "Lokitietojen tallennus"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:139
 msgid "Bulgarian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:144
 msgid "Catalan"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:150
 msgid "Czech"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:160
 msgid "Danish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:165
 msgid "German"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:172
 #, fuzzy
 msgid "Spanish"
 msgstr "Yritykset"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:184
 msgid "Estonian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:190
 msgid "Finnish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:195
 msgid "French"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:207
 msgid "Croatian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:212
 msgid "Hindi"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:217
 msgid "Hungarian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:223
 msgid "Italian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:231
 msgid "Japanese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:237
 msgid "Lithuanian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:246
 msgid "Norwegian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:253
 #, fuzzy
 msgid "Dutch"
 msgstr "Teurastamo"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:264
 msgid "Polish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:275
 msgid "Portuguese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:283
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:291
 msgid "Romanian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:296
 msgid "Russian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:303
 msgid "Slovenian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:308
 msgid "Swedish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:314
 #, fuzzy
 msgid "Chinese"
 msgstr "viiniköynnöksiä"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:325
 msgid "Packagers"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:332
 msgid "Fedora &amp; openSUSE"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:338
 msgid "OS X"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:348
 msgid "Special Thanks"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:350
 msgid "Thanks, all of you are awesome!"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:373
 msgid "Portfolio Sites"
 msgstr ""
 
-#. (itstool) path: Container/OkButton@helptext
-#. (itstool) path: HBox/CancelButton@helptext
-#. (itstool) path: AutoResizeContainer/OkButton@helptext
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
@@ -1204,624 +1023,514 @@ msgstr ""
 msgid "Exit to main menu"
 msgstr "Palaa päävalikkoon"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
 msgstr "Valitse kartan koko:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:33
 msgid "Choose a map:"
 msgstr "Valitse kartta:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
 msgstr "Valitse karttalähde"
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
 msgstr "Luo uusi kartta"
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
 msgstr "Lataa nykyinen kartta"
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
 msgstr "Lataa tallennettu pelikartta"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
 msgstr "Käynnistä kartanmuokkaus"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:6
 msgid "Key bindings"
 msgstr "Pikanäppäimet"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
 msgstr "Vieritä vasemmalle"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:10
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
 msgstr "Vieritä oikealle"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:11
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 msgid "Scroll up"
 msgstr "Vieritä ylös"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:12
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 msgid "Scroll down"
 msgstr "Vieritä alas"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:15
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
 msgstr "Kiihdytä pelin nopeutta"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:16
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
 msgstr "Hidasta pelin nopeutta"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:18
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
 msgstr "Käännä rakennusta tai karttaa vastapäivään"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:20
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
 msgstr "Käännä rakennusta tai karttaa myötäpäivään"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:23
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Show build menu"
 msgstr "Näytä rakennusvalikko"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
 msgstr "Avaa/sulje Kapteenin päiväkirja"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:25
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
 msgstr "Pysäytä peli"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:28
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
 msgstr "Tuo esiin tämän ohjeen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:29
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
 msgstr "Pikatallennus"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:30
 #: content/gui/xml/mainmenu/hotkeys.xml:29
 msgid "Quickload"
 msgstr "Pikalataus"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:31
 msgid "Display FPS counter"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:40
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
 msgstr "Muuta ympäristön läpikuultavuutta"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:41
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
 msgstr "Tienrakennustyökalu"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:42
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Enable destruct mode"
 msgstr "Tuhoamistyökalu"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:44
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
 msgstr "Rakennusten kopiointityökalu"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:45
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:48
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Screenshot"
 msgstr "Ota kuvakaappaus"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:51
 msgid "Hold to place multiple buildings"
 msgstr "Sijoita useita rakennuksia kerralla pitämällä pohjassa"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:52
 msgid "Close dialogs"
 msgstr "Sulje dialogi"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:55
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
 msgstr "Näytä pelitulokset"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:56
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show ship list"
 msgstr "Näytä lista aluksista"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:57
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Show settlement list"
 msgstr "Näytä asukaslista"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:58
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
 msgstr "Korosta maa-alueen omistajat"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:62
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
 msgstr "Poista valitut yksiköt/rakennukset"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:63
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
 msgstr "Kohdista kamera valintaan"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
 msgstr "Ruudukko päälle/pois"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:65
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Show coordinate values (Debug)"
 msgstr "Näytä koordinaatit (Debug)"
 
-#. (itstool) path: Container/OkButton@helptext
 #: content/gui/xml/mainmenu/help.xml:70
 msgid "Return"
 msgstr "Poistu"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 #, fuzzy
 msgid "Actions"
 msgstr "sivistystä"
 
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 #, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Ruudukko päälle/pois"
 
-#. (itstool) path: VBox/Label@text
+#. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
+#. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
 msgstr ""
 
-#. (itstool) path: VBox/Button@text
-#. (itstool) path: AutoResizeContainer/Button@helptext
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
 msgid "Reset to default"
 msgstr "Palauta oletus"
 
-#. (itstool) path: AutoResizeContainer/Button@text
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #, fuzzy
 msgid "Reset to default keys"
 msgstr "Palauta oletus"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
 msgid "Save game"
 msgstr "Tallenna peli"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:50
 msgid "Load game"
 msgstr "Lataa peli"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
 msgstr "Poistu pelistä"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading ..."
 msgstr "Ladataan..."
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:6
 #, fuzzy
 msgid "Unknown Horizons"
 msgstr "Unknown Horizons kaatui."
 
-#. (itstool) path: Container/ImageButton@text
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
+#. Opens widget to create singleplayer games (scenarios, random maps, free
+#. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
 msgstr "Yksinpeli"
 
-#. (itstool) path: Container/Label@text
+#. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
 msgid "Multiplayer"
 msgstr "Moninpeli"
 
-#. (itstool) path: Container/Label@text
+#. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
 msgid "Quit"
 msgstr "Lopeta"
 
-#. (itstool) path: Container/Label@text
+#. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
 msgstr "Kartanluonti"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
 msgstr "Tekijät"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
 msgstr "Luo peli - Moninpeli"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
 msgstr "Pelaajaraja:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Back:"
 msgstr "Takaisin:"
 
-#. (itstool) path: Container/CancelButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:21
 msgid "Exit to multiplayer menu"
 msgstr "Poistu moninpelivalikkoon"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
 msgstr "Pelin nimi:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 #, fuzzy
 msgid "This will be displayed to other players so they recognize the game."
 msgstr "Muut pelaajat tunnistavat pelin sen nimen perusteella."
 
-#. (itstool) path: HBox/TextField@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
 msgstr "Pelin salasana:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 msgid "This game's password. Required to join this game."
 msgstr "Pelin salasana. Edellytetään peliin liittymiseksi."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:54
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
 msgid "Create game:"
 msgstr "Luo peli:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:55
 msgid "Create this new game"
 msgstr "Luo tämä uusi peli"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
 msgstr "Pelihuone"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
 msgstr "Keskustelu:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Leave:"
 msgstr "Poistu:"
 
-#. (itstool) path: Container/CancelButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:18
 msgid "Exit gamelobby"
 msgstr "Poistu pelihuoneesta"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:19
 msgid "Ready:"
 msgstr "Valmiina:"
 
-#. (itstool) path: Container/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:20
 msgid "Sets your state to ready (necessary for the game to start)"
 msgstr ""
 "Ilmoita olevasi valmis pelin alkamiseen (edellytys peliin osallistumiseen)"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
 msgid "The game will start as soon as all players are ready."
 msgstr "Peli alkaa, kun tarpeeksi monta pelaajaa on liittynyt siihen."
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
 msgid "Game details:"
 msgstr "Pelin yksityiskohdat:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
 msgid "Color"
 msgstr "Peliväri"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
 msgstr "Uusi peli - Moninpeli"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Create a new game"
 msgstr "Luo uusi peli"
 
 # 90%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Lataa peli:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 msgid "Load a saved game"
 msgstr "Lataa tallennettu peli"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:26
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:16
 msgid "Main menu:"
 msgstr "Päävalikko:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:36
 msgid "Active games:"
 msgstr "Aktiivisia pelejä:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:38
 msgid "Refresh list:"
 msgstr "Päivitä lista:"
 
-#. (itstool) path: HBox/ImageButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:41
 msgid "Refresh list of active games"
 msgstr "Päivitä lista aktiivisista peleistä"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:59
 msgid "Join game"
 msgstr "Liity peliin"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:60
 msgid "Join the selected game"
 msgstr "Liity valitsemaasi peliin"
 
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/multiplayer/set_password.xml:6
-msgid "Password of the game"
-msgstr "Pelin salasana"
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/multiplayer/set_password.xml:9
-msgid "Enter password:"
-msgstr "Kirjoita salasana:"
-
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
 msgstr "Muuta pelaajatietoja"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/widgets/pickbeltwidget.py:87
 msgid "Graphics"
 msgstr "Grafiikka"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:18
 msgid "Screen resolution:"
 msgstr "Resoluutio:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "Color depth:"
 msgstr "Värisyvyys:"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "If set to 0, use the driver default"
 msgstr "Arvon ollessa 0, käytetään näyttösovittimen oletusta."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:35
 msgid "Full screen:"
 msgstr "Käytä koko näyttöä:"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:43
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr "SDL on tarkoitettu vain hätätapauksiin ja voi aiheuttaa ongelmia!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:43
 msgid "Used renderer:"
 msgstr "Valitse näyttösovitin:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Frame rate limit:"
 msgstr "Suurin kuvanopeus:"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr "Valitse suurin sallittu kuvapäivitysnopeus. Oletus: 60."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:62
 msgid "Sound"
 msgstr "Äänet"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:67
 msgid "Music volume:"
 msgstr "Musiikin äänenvoimakkuus:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:76
 msgid "Effects volume:"
 msgstr "Tehosteiden äänenvoimakkuus:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:84
 msgid "Enable sound:"
 msgstr "Äänet käytössä:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:90
 msgid "Mouse"
 msgstr "Hiiri"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid "Scroll at map edge:"
 msgstr "Vieritä karttaa hiirellä:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr "Karttaa voi vierittää myös viemällä hiiren kartan reunaan."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid "Cursor centered zoom:"
 msgstr "Keskitetty hiirikohdistus:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
@@ -1831,94 +1540,77 @@ msgstr ""
 "ominaisuus on käytössä. Jos tämä ominaisuus ei ole käytössä, kuva "
 "kohdistetaan aina keskelle."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "Middle mouse button pan:"
 msgstr "Hiiren keskipainikkeen toiminta:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 "Siirrä karttaa pitämällä hiiren keskipainiketta tai rullaa pohjassa, kun "
 "tämä ominaisuus on käytössä."
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "0 is default system settings"
 msgstr "Palauta oletusasetukset"
 
 # 76%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Hiiren herkkyys:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:132
 msgid "Saving"
 msgstr "Tallennukset"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:137
 msgid "Autosave interval in minutes:"
 msgstr "Automaattisten tallennusten tekoväli minuuteissa:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:145
 msgid "Number of autosaves:"
 msgstr "Automaattisten tallennusten määrä:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:153
 msgid "Number of quicksaves:"
 msgstr "Pikatallennusten määrä:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Language"
 msgstr "Kieli"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "General"
 msgstr "Yleiset"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Rotate minimap with map:"
 msgstr "Käännä pikkukarttaa pääkarttaa käännettäessä:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr "Pikkukarttaa käännetään pääkartan tapaan pääkarttaa käännettäessä."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "Uninterrupted building:"
 msgstr "Keskeytymätön rakentaminen:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 "Rakennustilasta ei poistuta, ennen kuin vähintään yksi rakennus on "
 "rakennettu onnistuneesti."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Auto-unload ship:"
 msgstr "Pura laivan lasti automaattisesti:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
 "Laivan lasti puretaan automaattisesti uuden siirtokunnan perustamisen "
 "jälkeen."
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
@@ -1927,17 +1619,14 @@ msgstr ""
 "Älä käytä normaalissa pelitilanteessa. Pelin virhetietoja kerätään "
 "kotikansiossasi olevaan lokitiedostoon. Hidastaa peliä."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid "Enable logging:"
 msgstr "Lokitietojen tallennus:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
 msgstr "Rakennusten tilailmaisimet:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
@@ -1945,169 +1634,140 @@ msgstr ""
 "Näytä resurssikuvakkeet rakennusten päällä, kun niiden tuotanto on "
 "valmistunut."
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Higher values slow down scrolling."
 msgstr "Korkeampi arvo hidastaa liikkumista."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Scroll delay:"
 msgstr "Hiiren osoittimen liikkumisviive:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "Choose a quote type:"
 msgstr "Latausnäkymän teksti:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "What kind of quote to display while loading a game"
 msgstr "Latausnäkymässä näytettävä viesti."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:227
 msgid "Network"
 msgstr "Verkko"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "If set to 0, use the router default"
 msgstr "Arvon ollessa 0, käytetään reitittimen oletusta."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "Network port:"
 msgstr "Verkkoportti:"
 
-#. (itstool) path: HBox/DeleteButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Reset to default settings"
 msgstr "Palauta oletusasetukset"
 
-#. (itstool) path: HBox/CancelButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:244
 msgid "Discard current changes"
 msgstr "Poistu tallentamatta muutoksia"
 
 # 83%
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
 msgstr "Hyväksy"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
 msgstr "Tallennetut pelit:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
 msgstr "Pelin salasana. Vaaditaan peliin liittymiseen"
 
-#. (itstool) path: HBox/DeleteButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Delete selected savegame"
 msgstr "Poista valittu pelitallennus"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
 msgstr "Kirjoita tiedostonimi:"
 
-#. (itstool) path: VBox/Label@text
+#. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
 msgid "Details:"
 msgstr "Tiedot:"
 
-#. (itstool) path: HBox/CancelButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
 msgid "Cancel"
 msgstr "Peruuta"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
 msgstr "Uusi peli - Yksinpeli"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
 msgstr "Juonipeli"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
 msgstr "Satunnainen kartta"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
 msgstr "Vapaamuotoinen peli"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:36
 msgid "Start game:"
 msgstr "Aloita peli:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
 msgstr "Aloita peli"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
 msgstr "Valitse pelattava kartta:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
 msgstr "Kartan asetukset:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr "Kartta:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
 msgstr "Valitse kieli:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
 msgstr "Tietokonepelaajat:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
 msgstr "Pelin asetukset:"
 
-#. (itstool) path: HBox/Label@text
+#. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
 msgstr "Vapaakauppias"
 
-#. (itstool) path: HBox/Label@text
+#. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
 msgstr "Merirosvot"
 
-#. (itstool) path: HBox/Label@text
+#. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
 msgstr "Katastrofit"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
 msgstr "Pelaajan nimi:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
 msgstr "Väri:"
@@ -2121,7 +1781,7 @@ msgid "Received an invalid filename for a save command."
 msgstr ""
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:154
+#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
 #: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
 msgid "Error"
 msgstr "Virhe"
@@ -2271,14 +1931,14 @@ msgstr "Verkkoasetusten käyttöönotto epäonnistui."
 
 # 78%
 #: horizons/engine/settingshandler.py:237
-#: horizons/gui/modules/multiplayermenu.py:127
+#: horizons/gui/modules/multiplayermenu.py:131
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr "Verkkoa ei voitu ottaa käyttöön näillä asetuksilla."
 
 # 75%
 #: horizons/engine/settingshandler.py:238
-#: horizons/gui/modules/multiplayermenu.py:128
+#: horizons/gui/modules/multiplayermenu.py:132
 msgid "Check the settings you specified in the network section."
 msgstr "Tarkista verkko-osion tiedot."
 
@@ -2452,34 +2112,34 @@ msgstr ""
 msgid "Burying treasures..."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:114
+#: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
 msgstr "Tiedostoa \"pyenet\" ei löydy"
 
-#: horizons/gui/modules/multiplayermenu.py:115
+#: horizons/gui/modules/multiplayermenu.py:119
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr "Moninpeliin vaadittava kirjasto \"pyenet\" ei ole käytettävissä."
 
-#: horizons/gui/modules/multiplayermenu.py:117
+#: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr "Yritä asentaa \"pyenet\" paketinhallinnallasi."
 
-#: horizons/gui/modules/multiplayermenu.py:126
+#: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
 msgstr "Virhe verkon käyttöön ottamisessa."
 
-#: horizons/gui/modules/multiplayermenu.py:137
-#: horizons/gui/modules/multiplayermenu.py:156 horizons/mpsession.py:51
+#: horizons/gui/modules/multiplayermenu.py:141
+#: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
 msgid "Fatal Network Error"
 msgstr "Vakava verkkovirhe"
 
-#: horizons/gui/modules/multiplayermenu.py:138
+#: horizons/gui/modules/multiplayermenu.py:142
 msgid "Could not connect to master server."
 msgstr "Isäntäpalvelimeen ei voitu muodostaa yhteyttä."
 
-#: horizons/gui/modules/multiplayermenu.py:139
+#: horizons/gui/modules/multiplayermenu.py:143
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
@@ -2488,43 +2148,43 @@ msgstr ""
 "väliaikainen ongelma."
 
 # 97%
-#: horizons/gui/modules/multiplayermenu.py:157 horizons/mpsession.py:52
+#: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Verkon kanssa ilmeni ongelma:"
 
-#: horizons/gui/modules/multiplayermenu.py:170
+#: horizons/gui/modules/multiplayermenu.py:174
 msgid "Version differs!"
 msgstr "Versio ei ole sama!"
 
-#: horizons/gui/modules/multiplayermenu.py:200
-#: horizons/gui/modules/multiplayermenu.py:429
+#: horizons/gui/modules/multiplayermenu.py:204
+#: horizons/gui/modules/multiplayermenu.py:441
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Kartta: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:201
-#: horizons/gui/modules/multiplayermenu.py:431
+#: horizons/gui/modules/multiplayermenu.py:205
+#: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Name: {game_name}"
 msgstr "Nimi: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:202
-#: horizons/gui/modules/multiplayermenu.py:433
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr "Pelin ylläpitäjä: {game_creator}"
 
-#: horizons/gui/modules/multiplayermenu.py:204
-#: horizons/gui/modules/multiplayermenu.py:435
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:447
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Pelaajat: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:224
+#: horizons/gui/modules/multiplayermenu.py:228
 msgid "Wrong version"
 msgstr "Väärä versio"
 
-#: horizons/gui/modules/multiplayermenu.py:226
+#: horizons/gui/modules/multiplayermenu.py:230
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2537,79 +2197,87 @@ msgstr ""
 "päivittämällä peli jokaisella osapuolella uusimpaan versioon. Vaadittu "
 "versio: {game_version} Oma versiosi: {own_version}"
 
+#: horizons/gui/modules/multiplayermenu.py:268
+msgid "Password of the game"
+msgstr "Pelin salasana"
+
+#: horizons/gui/modules/multiplayermenu.py:269
+msgid "Enter password:"
+msgstr "Kirjoita salasana:"
+
 # 79%
-#: horizons/gui/modules/multiplayermenu.py:343
+#: horizons/gui/modules/multiplayermenu.py:349
 #: horizons/gui/modules/singleplayermenu.py:407
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Pelaajien suositeltu määrä: {number}"
 
-#: horizons/gui/modules/multiplayermenu.py:453
-#: horizons/gui/modules/multiplayermenu.py:461
+#: horizons/gui/modules/multiplayermenu.py:465
+#: horizons/gui/modules/multiplayermenu.py:473
 msgid "Click here to change your name and/or color"
 msgstr "Vaihda peliväriä ja nimimerkkiä napsauttamalla tästä"
 
-#: horizons/gui/modules/multiplayermenu.py:480
+#: horizons/gui/modules/multiplayermenu.py:492
 #, python-format
 msgid "Kick {player}"
 msgstr "Poista {player} pelistä"
 
-#: horizons/gui/modules/multiplayermenu.py:548
+#: horizons/gui/modules/multiplayermenu.py:560
 #, python-format
 msgid "{player} has joined the game"
 msgstr "{player} liittyi peliin"
 
-#: horizons/gui/modules/multiplayermenu.py:552
+#: horizons/gui/modules/multiplayermenu.py:564
 #, python-format
 msgid "{player} has left the game"
 msgstr "{player} poistui pelistä"
 
-#: horizons/gui/modules/multiplayermenu.py:558
+#: horizons/gui/modules/multiplayermenu.py:570
 msgid "You are now ready"
 msgstr "Olet nyt valmis!"
 
-#: horizons/gui/modules/multiplayermenu.py:560
+#: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are not ready anymore"
 msgstr "Et ole enää valmis"
 
-#: horizons/gui/modules/multiplayermenu.py:564
+#: horizons/gui/modules/multiplayermenu.py:576
 #, python-format
 msgid "{player} is now ready"
 msgstr "{player} on nyt valmis!"
 
-#: horizons/gui/modules/multiplayermenu.py:567
+#: horizons/gui/modules/multiplayermenu.py:579
 #, python-format
 msgid "{player} not ready anymore"
 msgstr "{player} ei ole enää valmis"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:584
 #, python-format
 msgid "You are now known as {new_name}"
 msgstr "Muut näkevät sinut nimimerkillä {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:575
+#: horizons/gui/modules/multiplayermenu.py:587
 #, python-format
 msgid "{player} is now known as {new_name}"
 msgstr "Pelaajan {player} nimimerkki on nyt {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:591
 msgid "You changed your color"
 msgstr "Vaihdoit peliväriä"
 
-#: horizons/gui/modules/multiplayermenu.py:582
+#: horizons/gui/modules/multiplayermenu.py:594
 #, fuzzy, python-format
 msgid "{player} changed their color"
 msgstr "{player} vaihtoi peliväriä"
 
-#: horizons/gui/modules/multiplayermenu.py:586
+#: horizons/gui/modules/multiplayermenu.py:598
 msgid "Kicked"
 msgstr "Poistettiin pelistä"
 
-#: horizons/gui/modules/multiplayermenu.py:586
+#: horizons/gui/modules/multiplayermenu.py:598
 msgid "You have been kicked from the game by creator"
 msgstr "Pelin ylläpitäjä poisti sinut pelistä"
 
-#: horizons/gui/modules/multiplayermenu.py:590
+#: horizons/gui/modules/multiplayermenu.py:602
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr "Ylläpitäjä poisti pelaajan {player} pelistä"
@@ -3869,12 +3537,12 @@ msgstr ""
 msgid "Maybe invalid or irresolvable server address."
 msgstr ""
 
-#: horizons/network/networkinterface.py:525
+#: horizons/network/networkinterface.py:526
 msgid "Not Ready"
 msgstr "Ei valmiina:"
 
 #. TODO: add support for selecting difficulty levels to the GUI
-#: horizons/network/networkinterface.py:525
+#: horizons/network/networkinterface.py:526
 msgid "Ready"
 msgstr "Valmiina:"
 
@@ -3892,20 +3560,20 @@ msgstr "Olet suorittanut tämän juonipelin läpi."
 msgid "Do you want to continue playing?"
 msgstr "Haluatko jatkaa pelaamista?"
 
-#: horizons/scenario/scenarioeventhandler.py:159
+#: horizons/scenario/scenarioeventhandler.py:158
 msgid "unknown"
 msgstr "tuntematon"
 
 #. usually invalid filename
-#: horizons/session.py:408
+#: horizons/session.py:409
 msgid "Failed to create savegame file"
 msgstr "Tallennustiedoston luominen epäonnistui"
 
-#: horizons/session.py:409
+#: horizons/session.py:410
 msgid "There has been an error while creating your savegame file."
 msgstr "Yritettäessä luoda tallennustiedostoa virhe tapahtui."
 
-#: horizons/session.py:410
+#: horizons/session.py:411
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
@@ -3913,11 +3581,11 @@ msgstr ""
 "Tämä johtuu yleensä siitä, että tallennuksen nimi sisältää erikoismerkkejä, "
 "joita ei tueta."
 
-#: horizons/session.py:416
+#: horizons/session.py:417
 msgid "Access is denied"
 msgstr "Pääsy estetty"
 
-#: horizons/session.py:417
+#: horizons/session.py:418
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 

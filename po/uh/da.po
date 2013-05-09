@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-08 15:03+0200\n"
+"POT-Creation-Date: 2013-05-09 13:49+0200\n"
 "PO-Revision-Date: 2013-05-05 13:11+0000\n"
 "Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,25 +64,21 @@ msgstr ""
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Tak fordi du bruger Unknown Horizons!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 #, fuzzy
 msgid "Save map"
 msgstr "Kaart opslaan"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
@@ -90,76 +86,62 @@ msgstr ""
 msgid "Settings"
 msgstr "Instellingen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
 msgstr "Hjælp"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 #, fuzzy
 msgid "Game start"
 msgstr "Start spel"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 #, fuzzy
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr "Er is een nederzetting nodig voordat gebouwen gebouwd kunnen worden!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 #, fuzzy
 msgid "Select your ship and approach the coast via right-click."
 msgstr "Selecteer je schip en benader de kust met de rechtermuisknop."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 #, fuzzy
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr "Daarna klik je op de grote knop in het scheepsoverzicht."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
 msgstr "Byg"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 #, fuzzy
 msgid "Running costs:"
 msgstr "Operationele kosten:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
 msgstr ""
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 #, fuzzy
@@ -167,96 +149,80 @@ msgid "Inhabitants"
 msgstr "Inwoners"
 
 # 82%
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, fuzzy
 msgid "Increase game speed (+)"
 msgstr "Speelsnelheid verhogen (+)"
 
 # 82%
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Speelsnelheid verlagen (-)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, fuzzy
 msgid "Rotate map counterclockwise (,)"
 msgstr "Draai de kaart tegen de klok in (,)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, fuzzy
 msgid "Rotate map clockwise (.)"
 msgstr "Draai de kaart met de klok mee (.)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
 msgstr "Zoom in"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
 msgstr "Zoom uit"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, fuzzy
 msgid "Destroy (X)"
 msgstr "Vernietigen (X)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:41
 #, fuzzy
 msgid "Captain's log (L)"
 msgstr "Logboek van de Kapitein (L)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:43
 #, fuzzy
 msgid "Build menu (B)"
 msgstr "Bouwmenu (B)"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:45
 #, fuzzy
 msgid "Diplomacy"
 msgstr "Diplomatie"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, fuzzy
 msgid "Game menu (Esc)"
 msgstr "Spelmenu (Esc)"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:7
 #, fuzzy
 msgid "Change name"
 msgstr "Verander naam"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:10
 #, fuzzy
 msgid "Old name:"
 msgstr "Oude naam:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/change_name.xml:14
 #, fuzzy
 msgid "Enter new name:"
 msgstr "Voer nieuwe naam in:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/popups/change_name.xml:19
 #, fuzzy
 msgid "Apply the new name"
 msgstr "Pas de nieuwe naam toe"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
@@ -265,17 +231,11 @@ msgstr "Pas de nieuwe naam toe"
 msgid "Chat"
 msgstr "Chat"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/popups/chat.xml:8
 #, fuzzy
 msgid "Enter your message:"
 msgstr "Voer uw bericht in:"
 
-#. (itstool) path: Container/Label@text
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:21
@@ -294,7 +254,6 @@ msgstr "Voer uw bericht in:"
 msgid "Running costs"
 msgstr "Operationele kosten"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 #, fuzzy
 msgid ""
@@ -304,77 +263,75 @@ msgstr ""
 "Om een boot te maken, klik op een van de tabbladen, selecteer het gewenste "
 "schip en bevestig de order."
 
-#. (itstool) path: Container/Label@text
+#. Information about the ship currently under construction at the boat
+#. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 #, fuzzy
 msgid "Currently building:"
 msgstr "Momenteel onder constructie:"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
 msgstr "Pauseer"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 #, fuzzy
 msgid "Resume"
 msgstr "Hervat"
 
-#. (itstool) path: Container/Label@text
+#. Refers to the resources still missing to complete the current boat
+#. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 #, fuzzy
 msgid "Construction progress:"
 msgstr "Voortgang constructie:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
 msgstr "Ressourcer stadig brug for:"
 
-#. (itstool) path: Container/Label@text
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 #, fuzzy
 msgid "Cancel building:"
 msgstr "Annuleer constructie:"
 
-#. (itstool) path: Container/Label@text
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 #, fuzzy
 msgid "(lose all resources)"
 msgstr "(U verliest alle grondstoffen)"
 
-#. (itstool) path: Container/CancelButton@helptext
+#. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
 msgstr "Annuleer alle constructieve vooruitgang"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 #, fuzzy
 msgid "ally"
 msgstr "bondgenoot"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
 msgstr "neutraal"
 
-#. (itstool) path: VBox/Label@text
+#. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 #, fuzzy
 msgid "enemy"
 msgstr "vijand"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
 #, fuzzy
 msgid "Building overview"
 msgstr "Gebouwenoverzicht"
 
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
@@ -383,20 +340,16 @@ msgstr "Gebouwenoverzicht"
 msgid "Capacity utilization"
 msgstr "Verbruiksstatistieken"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
 msgid "Settlement inventory"
 msgstr "Afregning opgørelse"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:39
 msgid "Settler overview"
 msgstr "Bosætter overblik"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
@@ -405,7 +358,6 @@ msgstr "Bosætter overblik"
 msgid "Paid taxes"
 msgstr "Betaalde belastingen"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 #, fuzzy
@@ -413,8 +365,6 @@ msgid "Taxes:"
 msgstr "Belastingen:"
 
 # 87%
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
@@ -423,83 +373,69 @@ msgstr "Belastingen:"
 msgid "Tax rate"
 msgstr "Belastingtarief"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 #, fuzzy
 msgid "Upgrade permissions:"
 msgstr "Toegestane verbeteringen:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
 msgstr ""
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
 msgstr ""
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
 msgid "satisfied"
 msgstr ""
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:60
 msgid "happy"
 msgstr ""
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 #, fuzzy
 msgid "Residents per house"
 msgstr "Bewoners per huis"
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
 msgstr ""
 
-#. (itstool) path: Container/Icon@helptext
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 #, fuzzy
 msgid "Summary"
 msgstr "Overzicht"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 #, fuzzy
 msgid "houses"
 msgstr "huizen"
 
 # 88%
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 #, fuzzy
 msgid "residents"
 msgstr "inwoners"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:348
 msgid "Selling"
 msgstr "Salg"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
@@ -509,8 +445,6 @@ msgstr "Køb"
 
 # 75%
 # 80%
-#. (itstool) path: HBox/Label@text
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
@@ -518,18 +452,15 @@ msgstr "Køb"
 msgid "Name:"
 msgstr "Naam:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 #, fuzzy
 msgid "Weapons:"
 msgstr "Wapens:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
 msgstr "Resource depositum"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 #, fuzzy
 msgid ""
@@ -538,14 +469,13 @@ msgstr ""
 "Dit is een grondstofafzetting waar u een mijn kan plaatsen om grondstoffen "
 "op te graven."
 
-#. (itstool) path: VBox/Label@text
+#. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 #, fuzzy
 msgid "It contains these resources:"
 msgstr "Het bevat de volgende grondstoffen:"
 
 # 97%
-#. (itstool) path: HBox/RenameLabel@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -555,29 +485,23 @@ msgid "Click to change the name of your settlement"
 msgstr "Klik her for at ændre navnet på din løsning"
 
 # 88%
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/ProgressBar@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 #, fuzzy
 msgid "Happiness"
 msgstr "glæde"
 
-#. (itstool) path: Container/Icon@helptext
-#. (itstool) path: Container/Label@helptext
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 #, fuzzy
 msgid "Residents"
 msgstr "Inwoners"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 #, fuzzy
 msgid "Needed resources:"
 msgstr "Vereiste grondstoffen:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 #, fuzzy
 msgid ""
@@ -587,7 +511,6 @@ msgstr ""
 "Het signaalvuur toont de vrije handelaars hoe uw kolonie bereikt kan worden "
 "mocht u goederen willen kopen of verkopen."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 #, fuzzy
 msgid ""
@@ -597,8 +520,8 @@ msgstr ""
 "Dit is een schip van de vrije handelaars. Van tijd tot tijd zal deze u "
 "bezoeken om goederen te kopen of verkopen."
 
-#. (itstool) path: HBox/Icon@helptext
-#. (itstool) path: HBox/Label@helptext
+#. Percentage describing how busy the collectors were (100% = always going
+#. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:27
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:29
 #, fuzzy
@@ -606,15 +529,12 @@ msgid "Collector utilization"
 msgstr "Gebruikspercentage"
 
 # 97%
-#. (itstool) path: HBox/RenameLabel@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
 msgstr "Klik her for at ændre navnet på dette skib"
 
-#. (itstool) path: Container/ImageButton@helptext
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
@@ -623,100 +543,83 @@ msgstr "Klik her for at ændre navnet på dette skib"
 msgid "Trade"
 msgstr "Handel"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:64
 msgid "Build settlement"
 msgstr "Byg afvikling"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 #, fuzzy
 msgid "Configure trading route"
 msgstr "Stel handelsroute in"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 #, fuzzy
 msgid "Ship:"
 msgstr "Schip:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
 msgstr "Handel:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
 msgstr "Handelspartner:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 #, fuzzy
 msgid "Buy or sell resources"
 msgstr "Koop of verkoop grondstof"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 #, fuzzy
 msgid "Trade history"
 msgstr "Handelsgeschiedenis"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 #, fuzzy
 msgid "Select resources:"
 msgstr "Selecteer grondstoffen:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #, fuzzy
 msgid "Income:"
 msgstr "Inkomsten:"
 
-#. (itstool) path: Container/Label@text
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:620
 msgid "Taxes"
 msgstr "Skatter"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #, fuzzy
 msgid "Sale"
 msgstr "Verkoop"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 #, fuzzy
 msgid "Expenses:"
 msgstr "Uitgaven:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #, fuzzy
 msgid "Balance:"
 msgstr "Balans:"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:42
 #, fuzzy
 msgid "Show resources produced in this settlement"
 msgstr "Laat in deze nederzetting geproduceerde middelen zien"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
 #, fuzzy
 msgid "Pause production"
 msgstr "Pauzeer productie"
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
 #, fuzzy
@@ -724,13 +627,15 @@ msgid "Start production"
 msgstr "Start productie"
 
 # 94%
-#. (itstool) path: Container/Label@text
+#. Please keep the translation similarly short and concise, else the
+#. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 #, fuzzy
 msgid "Select resource:"
 msgstr "Selecteer grondstof:"
 
-#. (itstool) path: Container/Label@helptext
+#. Please keep the translation similarly short and concise, else the
+#. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 #, fuzzy
 msgid ""
@@ -740,191 +645,169 @@ msgstr ""
 "De geselecteerde grondstof wordt in plaats van de huidige getoond. Druk op X "
 "om te wissen."
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 #, fuzzy
 msgid "Save current resource configuration as default for all settlements."
 msgstr "Grondstof configuratie opslaan als standaard voor alle nederzettingen."
 
-#. (itstool) path: Container/ImageButton@helptext
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 #, fuzzy
 msgid "Reset default resource configuration for all settlements."
 msgstr ""
 "Standaardinstellingen herstellen voor grondstoffen voor alle nederzettingen."
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 #, fuzzy
 msgid "Move up"
 msgstr "Naar boven verplaatsen"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 #, fuzzy
 msgid "Delete entry"
 msgstr "Item verwijderen"
 
-#. (itstool) path: Container/ImageButton@helptext
+#. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 #, fuzzy
 msgid "Move down"
 msgstr "Naar beneden verplaatsen"
 
 # 83%
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy
 msgid "Select a resource:"
 msgstr "Selecteer grondstoffen:"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 #, fuzzy
 msgid "Read previous entries"
 msgstr "Lees vorige berichten"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 #, fuzzy
 msgid "Read next entries"
 msgstr "Lees volgende berichten"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
 msgid "Statistics"
 msgstr "Statistik"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 #, fuzzy
 msgid "Players"
 msgstr "Spelers"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 #, fuzzy
 msgid "My ships"
 msgstr "Mijn schepen"
 
-#. (itstool) path: HBox/Button@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 #, fuzzy
 msgid "My settlements"
 msgstr "Mijn nederzettingen"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 #, fuzzy
 msgid "Game messages"
 msgstr "Spelberichten"
 
 # "Hele wereld" would be litteral, but I think this is more to the point.
-#. (itstool) path: HBox/Button@text
+#. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
 #, fuzzy
 msgid "Whole world"
 msgstr "Alle berichten"
 
-#. (itstool) path: HBox/Button@text
+#. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Everybody"
 msgstr "Iedereen"
 
-#. (itstool) path: HBox/Button@helptext
+#. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
 msgstr ""
 
-#. (itstool) path: VBox/TextField@text
-#. (itstool) path: Container/TextField@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 #, fuzzy
 msgid "Enter your message here"
 msgstr "Voer uw bericht in:"
 
-#. (itstool) path: Container/OkButton@helptext
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 #, fuzzy
 msgid "Return to game"
 msgstr "Keer terug naar het spel"
 
-#. (itstool) path: HBox/Label@text
+#. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
 #, fuzzy
 msgid "Wait at load:"
 msgstr "Wacht bij het laden:"
 
-#. (itstool) path: HBox/Label@text
+#. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
 #, fuzzy
 msgid "Wait at unload:"
 msgstr "Wacht bij het lossen:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 #, fuzzy
 msgid "Route activity:"
 msgstr "Routegebruik:"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:100
 msgid "Start route"
 msgstr "Start rute"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
 msgid "Exit"
 msgstr "Einde"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/ingame/widgets/island_production.xml:24
 #, fuzzy
 msgid "Close"
 msgstr "Sluiten"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
 #, fuzzy
 msgid "Player scores"
 msgstr "Score van speler"
 
 # 80%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
 msgstr "Naam"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
 msgstr "Spelersnaam"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 #, fuzzy
 msgid "Money"
 msgstr "Geld"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
 msgstr ""
 "Huidige schatkist van de speler + verwacht inkomen in de nabije toekomst"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
 msgstr "Land"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 #, fuzzy
 msgid ""
@@ -932,13 +815,11 @@ msgid ""
 msgstr ""
 "Waarde van bruikbaar land d.w.z. Hoeveelheid land waarom gebouwd kan worden"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 #, fuzzy
 msgid "Resources"
 msgstr "Grondstoffen"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
@@ -947,19 +828,16 @@ msgstr ""
 "Waarde van alle middelen die zijn voortgekomen uit alle bronnen binnen de "
 "nederzetting(en) van de speler"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 #, fuzzy
 msgid "Buildings"
 msgstr "Gebouwen"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Waarde van alle gebouwen in de nederzetting(en) van de speler"
 
 # 75%
-#. (itstool) path: HBox/Label@text
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -968,7 +846,6 @@ msgstr "Waarde van alle gebouwen in de nederzetting(en) van de speler"
 msgid "Settlers"
 msgstr "nybygger"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
@@ -977,25 +854,21 @@ msgstr ""
 "Waarde ter aanduiding van de voortgang van de nederzetting(en) uitgaande van "
 "aantal inwoners, gebouwen en algehele tevredenheid"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 #, fuzzy
 msgid "Units"
 msgstr "Eenheden"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
 msgstr "Waarde van alle eenheden die eigendom zijn van de speler"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
 "De totale waarde van alle individuele eenheden, kortweg: Totale Spelersscore"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:118
 #, fuzzy
@@ -1003,294 +876,240 @@ msgid "Total"
 msgstr "Totaal"
 
 # 87%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
 msgstr "Afbalancer"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
 msgid "Type"
 msgstr "Type"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 #, fuzzy
 msgid "Weapons"
 msgstr "Wapens"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 #, fuzzy
 msgid "Health"
 msgstr "Gezondheid"
 
-#. (itstool) path: HBox/Label@text
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:39
 msgid "Status"
 msgstr "Status"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
 #, fuzzy
 msgid "Aggressive"
 msgstr "Agressief"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 #, fuzzy
 msgid "Hold ground"
 msgstr "Stand houden"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 #, fuzzy
 msgid "Passive"
 msgstr "Passief"
 
-#. (itstool) path: HBox/ImageButton@helptext
+#. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 #, fuzzy
 msgid "Flee"
 msgstr "Vluchten"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:15
 msgid "UH-Team"
 msgstr "UH Team"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:17
 msgid "Project Coordination"
 msgstr "Project Coördinatie"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:23
 msgid "Programming"
 msgstr "Programmeurs"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:45
 msgid "Game-Play Design"
 msgstr "Game-Play Design"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:52
 msgid "Sound and Music Artists"
 msgstr "Geluid en Muziek Artiesten"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:60
 #, fuzzy
 msgid "Graphics Artists"
 msgstr "Grafische Artiesten"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:80
 msgid "Patchers"
 msgstr "Patchers"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:82
 msgid "2009"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:91
 msgid "2010"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:105
 msgid "2011"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:117
 msgid "2012"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:132
 msgid "Translators"
 msgstr "Vertalers"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:134
 #, fuzzy
 msgid "Hosting Weblate"
 msgstr "Logning slået til"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:139
 msgid "Bulgarian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:144
 msgid "Catalan"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:150
 msgid "Czech"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:160
 msgid "Danish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:165
 msgid "German"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:172
 #, fuzzy
 msgid "Spanish"
 msgstr "Virksomheder"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:184
 msgid "Estonian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:190
 msgid "Finnish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:195
 msgid "French"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:207
 msgid "Croatian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:212
 msgid "Hindi"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:217
 msgid "Hungarian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:223
 msgid "Italian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:231
 msgid "Japanese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:237
 msgid "Lithuanian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:246
 msgid "Norwegian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:253
 #, fuzzy
 msgid "Dutch"
 msgstr "Slagerij"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:264
 msgid "Polish"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:275
 msgid "Portuguese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:283
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:291
 msgid "Romanian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:296
 msgid "Russian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:303
 msgid "Slovenian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:308
 msgid "Swedish"
 msgstr ""
 
 # Is this vines as in plants, or vines as in ore-vines? I assumed plants here, otherwise change this to "aders".
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:314
 #, fuzzy
 msgid "Chinese"
 msgstr "vinstokke"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:325
 msgid "Packagers"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:332
 msgid "Fedora &amp; openSUSE"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:338
 msgid "OS X"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:348
 msgid "Special Thanks"
 msgstr "Bijzonder Dank"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:350
 msgid "Thanks, all of you are awesome!"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/credits.xml:373
 msgid "Portfolio Sites"
 msgstr ""
 
-#. (itstool) path: Container/OkButton@helptext
-#. (itstool) path: HBox/CancelButton@helptext
-#. (itstool) path: AutoResizeContainer/OkButton@helptext
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
@@ -1300,426 +1119,369 @@ msgstr ""
 msgid "Exit to main menu"
 msgstr "Verlaat naar hoofdmenu"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:33
 #, fuzzy
 msgid "Choose a map:"
 msgstr "Kies een kaart:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
 msgstr ""
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
 msgstr ""
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
 msgstr ""
 
-#. (itstool) path: VBox/RadioButton@text
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
 msgstr ""
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:6
 #, fuzzy
 msgid "Key bindings"
 msgstr "Sneltoetsen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
 #, fuzzy
 msgid "Scroll left"
 msgstr "Naar links scrollen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:10
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 #, fuzzy
 msgid "Scroll right"
 msgstr "Naar rechts scrollen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:11
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 #, fuzzy
 msgid "Scroll up"
 msgstr "Naar boven scrollen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:12
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 #, fuzzy
 msgid "Scroll down"
 msgstr "Naar onder scrollen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:15
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 #, fuzzy
 msgid "Increase game speed"
 msgstr "Speelsnelheid verhogen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:16
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 #, fuzzy
 msgid "Decrease game speed"
 msgstr "Speelsnelheid verlagen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:18
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 #, fuzzy
 msgid "Rotate building or map counterclockwise"
 msgstr "Draai gebouw of kaart tegen de klok in"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:20
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 #, fuzzy
 msgid "Rotate building or map clockwise"
 msgstr "Draai gebouw of kaart met de klok mee"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:23
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 #, fuzzy
 msgid "Show build menu"
 msgstr "Toon constructie menu"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 #, fuzzy
 msgid "Toggle Captain's log"
 msgstr "Naar het kapiteins logboek"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:25
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 #, fuzzy
 msgid "Pause game"
 msgstr "Pauseer spel"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:28
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 #, fuzzy
 msgid "Display help"
 msgstr "Toon help"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:29
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 #, fuzzy
 msgid "Quicksave"
 msgstr "Snel opslaan"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:30
 #: content/gui/xml/mainmenu/hotkeys.xml:29
 msgid "Quickload"
 msgstr "Snel laden"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:31
 msgid "Display FPS counter"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:40
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 #, fuzzy
 msgid "Toggle translucency of ambient buildings"
 msgstr "Selecteer de doorzichtigheid van algemene gebouwen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:41
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 #, fuzzy
 msgid "Enable road building mode"
 msgstr "Activeer wegenbouw-modus"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:42
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 #, fuzzy
 msgid "Enable destruct mode"
 msgstr "Schakel afbraakmodes in"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:44
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:45
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:48
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 #, fuzzy
 msgid "Screenshot"
 msgstr "Schermafbeelding"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:51
 #, fuzzy
 msgid "Hold to place multiple buildings"
 msgstr "Ingedrukt houden om meerdere gebouwen te plaatsen"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/help.xml:52
 msgid "Close dialogs"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:55
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 #, fuzzy
 msgid "Show player scores"
 msgstr "Toon scores"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:56
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 #, fuzzy
 msgid "Show ship list"
 msgstr "Toon lijst met schepen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:57
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 #, fuzzy
 msgid "Show settlement list"
 msgstr "Toon lijst met nederzettingen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:58
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 #, fuzzy
 msgid "Highlight tile ownership"
 msgstr "Verlicht beheerste vlakken"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:62
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 #, fuzzy
 msgid "Remove selected units / buildings"
 msgstr "Verwijder geselecteerde eenheden / gebouwen"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:63
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 #, fuzzy
 msgid "Toggle grid on/off"
 msgstr "Raster aan/uit"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:65
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 #, fuzzy
 msgid "Show coordinate values (Debug)"
 msgstr "Vis koordinat-værdier (Debug)"
 
-#. (itstool) path: Container/OkButton@helptext
 #: content/gui/xml/mainmenu/help.xml:70
 #, fuzzy
 msgid "Return"
 msgstr "Terug"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 #, fuzzy
 msgid "Actions"
 msgstr "AI instellingen"
 
-#. (itstool) path: VBox/Label@helptext
+#. noi18n_text
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 #, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Raster aan/uit"
 
-#. (itstool) path: VBox/Label@text
+#. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
+#. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
 msgstr ""
 
-#. (itstool) path: VBox/Button@text
-#. (itstool) path: AutoResizeContainer/Button@helptext
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
 #, fuzzy
 msgid "Reset to default"
 msgstr "Standaard herstellen"
 
-#. (itstool) path: AutoResizeContainer/Button@text
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #, fuzzy
 msgid "Reset to default keys"
 msgstr "Standaard herstellen"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
 msgid "Save game"
 msgstr "Gem spil"
 
-#. (itstool) path: VBox/Label@text
-#. (itstool) path: Container/Label@text
+#. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:50
 msgid "Load game"
 msgstr "Hent spil"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 #, fuzzy
 msgid "Cancel game"
 msgstr "Verlaat spel"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 #, fuzzy
 msgid "Loading ..."
 msgstr "Laden ..."
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:6
 #, fuzzy
 msgid "Unknown Horizons"
 msgstr "Unknown Horizons is vast gelopen."
 
-#. (itstool) path: Container/ImageButton@text
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
+#. Opens widget to create singleplayer games (scenarios, random maps, free
+#. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
 msgstr "Enkelspel"
 
-#. (itstool) path: Container/Label@text
+#. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
-#. (itstool) path: Container/Label@text
+#. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
 #, fuzzy
 msgid "Quit"
 msgstr "Stoppen"
 
-#. (itstool) path: Container/Label@text
+#. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
 msgstr "Dankwoord"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 #, fuzzy
 msgid "Create game - Multiplayer"
 msgstr "Spel maken - Multiplayer"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 #, fuzzy
 msgid "Player limit:"
 msgstr "Spelerslimiet:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 #, fuzzy
 msgid "Back:"
 msgstr "Terug:"
 
-#. (itstool) path: Container/CancelButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:21
 #, fuzzy
 msgid "Exit to multiplayer menu"
 msgstr "Verlaten naar multiplayer menu"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 #, fuzzy
 msgid "Name of the game:"
 msgstr "Spelnaam:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 #, fuzzy
@@ -1727,366 +1489,296 @@ msgid "This will be displayed to other players so they recognize the game."
 msgstr ""
 "Dit wordt aan andere spelers getoond, zodat zij het spel kunnen herkennen."
 
-#. (itstool) path: HBox/TextField@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 #, fuzzy
 msgid "Unnamed Game"
 msgstr "Spel laden"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
 msgstr ""
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 msgid "This game's password. Required to join this game."
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:54
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
 #, fuzzy
 msgid "Create game:"
 msgstr "Maak spel:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:55
 #, fuzzy
 msgid "Create this new game"
 msgstr "Maak dit nieuwe spel"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
 msgstr "Spellobby"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
 msgstr "Chat:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 #, fuzzy
 msgid "Leave:"
 msgstr "Verlaten:"
 
-#. (itstool) path: Container/CancelButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:18
 #, fuzzy
 msgid "Exit gamelobby"
 msgstr "Verlaat spellobby"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:19
 msgid "Ready:"
 msgstr ""
 
-#. (itstool) path: Container/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:20
 msgid "Sets your state to ready (necessary for the game to start)"
 msgstr ""
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
 #, fuzzy
 msgid "The game will start as soon as all players are ready."
 msgstr "Spillet starter så snart nok spillere har forbundet."
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
 #, fuzzy
 msgid "Game details:"
 msgstr "Speleigenschappen:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
 #, fuzzy
 msgid "Color"
 msgstr "Farve:"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 #, fuzzy
 msgid "New game - Multiplayer"
 msgstr "Nieuw spel - Multiplayer"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 #, fuzzy
 msgid "Create a new game"
 msgstr "Maak een nieuw spel"
 
 # 90%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Hent spil:"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #, fuzzy
 msgid "Load a saved game"
 msgstr "Laden"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:26
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:16
 #, fuzzy
 msgid "Main menu:"
 msgstr "Hoofdmenu:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:36
 #, fuzzy
 msgid "Active games:"
 msgstr "Actieve spellen:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:38
 #, fuzzy
 msgid "Refresh list:"
 msgstr "Vernieuw lijst:"
 
-#. (itstool) path: HBox/ImageButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:41
 #, fuzzy
 msgid "Refresh list of active games"
 msgstr "Vernieuw lijst van actieve spellen"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:59
 #, fuzzy
 msgid "Join game"
 msgstr "Meespelen"
 
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:60
 #, fuzzy
 msgid "Join the selected game"
 msgstr "Speel mee met geselecteerd spel"
 
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/multiplayer/set_password.xml:6
-msgid "Password of the game"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/multiplayer/set_password.xml:9
-msgid "Enter password:"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/widgets/pickbeltwidget.py:87
 msgid "Graphics"
 msgstr "Grafik"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:18
 #, fuzzy
 msgid "Screen resolution:"
 msgstr "Schermresolutie:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:28
 #, fuzzy
 msgid "Color depth:"
 msgstr "Kleurdiepte:"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:28
 #, fuzzy
 msgid "If set to 0, use the driver default"
 msgstr "Indien 0, wordt de standaard driver gebruikt"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:35
 #, fuzzy
 msgid "Full screen:"
 msgstr "Volledig scherm:"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:43
 #, fuzzy
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr "SDL wordt niet ondersteund en kan problemen geven!"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:43
 #, fuzzy
 msgid "Used renderer:"
 msgstr "Gebruikte renderer:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:51
 #, fuzzy
 msgid "Frame rate limit:"
 msgstr "Maximum aantal beelden per seconden:"
 
-#. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:51
 #, fuzzy
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr "Stel het maximaal behaalde beelden in. Standaard: 60 fps."
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:62
 msgid "Sound"
 msgstr "Lyd"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:67
 #, fuzzy
 msgid "Music volume:"
 msgstr "Muziekvolume:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:76
 #, fuzzy
 msgid "Effects volume:"
 msgstr "Effectenvolume:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:84
 #, fuzzy
 msgid "Enable sound:"
 msgstr "Geluid inschakelen:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:90
 #, fuzzy
 msgid "Mouse"
 msgstr "Muis"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:95
 #, fuzzy
 msgid "Scroll at map edge:"
 msgstr "Scrollen aan de rand van de map:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:95
 #, fuzzy
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr "De map scrollen als de muis dicht langs de rand staat"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid "Cursor centered zoom:"
 msgstr ""
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "Middle mouse button pan:"
 msgstr ""
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "0 is default system settings"
 msgstr "0 = standaard instellingen"
 
 # 76%
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:115
 #, fuzzy
 msgid "Mouse sensitivity:"
 msgstr "Muisgevoeligheid:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:132
 #, fuzzy
 msgid "Saving"
 msgstr "Opslaan"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:137
 #, fuzzy
 msgid "Autosave interval in minutes:"
 msgstr "Automatisch opslaan interval in minuten:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:145
 #, fuzzy
 msgid "Number of autosaves:"
 msgstr "Aantal automatisch opgeslagen spelen:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:153
 #, fuzzy
 msgid "Number of quicksaves:"
 msgstr "Aantal snel opgeslagen spellen:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:161
 #, fuzzy
 msgid "Language"
 msgstr "Taal"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "General"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:178
 #, fuzzy
 msgid "Rotate minimap with map:"
 msgstr "Roteer de mini-kaart:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:178
 #, fuzzy
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr "Mini-kaart mee roteren met de kaart?"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:184
 #, fuzzy
 msgid "Uninterrupted building:"
 msgstr "Onverstoord gebouw:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:184
 #, fuzzy
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 "Indien geselecteerd wordt de bouwmodus niet verlaten na succesvol bouwen"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:190
 #, fuzzy
 msgid "Auto-unload ship:"
 msgstr "Schip automatisch uitladen:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:190
 #, fuzzy
 msgid "Whether to unload the ship after founding a settlement"
 msgstr "Schip uitladen bij de start van een nederzetting?"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:196
 #, fuzzy
 msgid ""
@@ -2096,138 +1788,115 @@ msgstr ""
 "Niet gebruiken in normale spel sessie. Kies waar u de debug informatie wilt "
 "wegschrijven in de map van uw gebruikers map. Maakt het spel langzamer."
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:196
 #, fuzzy
 msgid "Enable logging:"
 msgstr "Aktiver logning"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
 msgstr ""
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Higher values slow down scrolling."
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Scroll delay:"
 msgstr ""
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "Choose a quote type:"
 msgstr ""
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "What kind of quote to display while loading a game"
 msgstr ""
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:227
 #, fuzzy
 msgid "Network"
 msgstr "Netwerk"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/settings.xml:231
 #, fuzzy
 msgid "If set to 0, use the router default"
 msgstr "Indien 0, wordt de standaardinstelling gebruikt"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/settings.xml:231
 #, fuzzy
 msgid "Network port:"
 msgstr "Netwerkpoort:"
 
 # 84%
-#. (itstool) path: HBox/DeleteButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:243
 #, fuzzy
 msgid "Reset to default settings"
 msgstr "Gendan standartindstillingerne"
 
-#. (itstool) path: HBox/CancelButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:244
 msgid "Discard current changes"
 msgstr ""
 
 # 83%
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/settings.xml:246
 #, fuzzy
 msgid "Apply"
 msgstr "Toepassen"
 
 # 76%
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
 msgstr "Ingen gemte spil:"
 
-#. (itstool) path: HBox/Label@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
 msgstr ""
 
-#. (itstool) path: HBox/DeleteButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 #, fuzzy
 msgid "Delete selected savegame"
 msgstr "Verwijder geselecteerde opgeslagen spel"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 #, fuzzy
 msgid "Enter filename:"
 msgstr "Voer bestandsnaam in:"
 
-#. (itstool) path: VBox/Label@text
+#. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
 msgid "Details:"
 msgstr "detaljer:"
 
-#. (itstool) path: HBox/CancelButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
 #, fuzzy
 msgid "Cancel"
 msgstr "Annuleer"
 
-#. (itstool) path: Container/Label@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 #, fuzzy
 msgid "New game - Singleplayer"
 msgstr "Nieuw spel - Singleplayer"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
 msgstr "Scenario"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 #, fuzzy
 msgid "Random map"
 msgstr "Willekeurige kaart"
 
-#. (itstool) path: Container/RadioButton@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 #, fuzzy
 msgid "Free play"
 msgstr "Vrij spel"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:36
 #, fuzzy
 msgid "Start game:"
@@ -2235,71 +1904,62 @@ msgstr "Start spel:"
 
 # 90%
 # 100%
-#. (itstool) path: HBox/OkButton@helptext
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 #, fuzzy
 msgid "Start game"
 msgstr "Start spel"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 #, fuzzy
 msgid "Choose a map to play:"
 msgstr "Kies een kaart om te spelen:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 #, fuzzy
 msgid "Map settings:"
 msgstr "Kaartinstellingen:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr "Level-seed:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 #, fuzzy
 msgid "Select a language:"
 msgstr "Vælg sprog:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 #, fuzzy
 msgid "AI players:"
 msgstr "Computerspelers:"
 
-#. (itstool) path: VBox/Label@text
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 #, fuzzy
 msgid "Game settings:"
 msgstr "Spelinstellingen:"
 
-#. (itstool) path: HBox/Label@text
+#. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
 msgstr "Vrije Handelaar"
 
-#. (itstool) path: HBox/Label@text
+#. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
 msgstr "Piraten"
 
-#. (itstool) path: HBox/Label@text
+#. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 #, fuzzy
 msgid "Disasters"
 msgstr "Rampen"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 #, fuzzy
 msgid "Player name:"
 msgstr "Spelersnaam:"
 
-#. (itstool) path: HBox/Label@text
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 #, fuzzy
 msgid "Color:"
@@ -2314,7 +1974,7 @@ msgid "Received an invalid filename for a save command."
 msgstr "Modtaget et ugyldigt filnavn for et kommandoen Gem."
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:154
+#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
 #: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
 msgid "Error"
 msgstr "Fejl"
@@ -2463,14 +2123,14 @@ msgid "Failed to apply new network settings."
 msgstr "Kunne ikke anvende nye netværksindstillinger."
 
 #: horizons/engine/settingshandler.py:237
-#: horizons/gui/modules/multiplayermenu.py:127
+#: horizons/gui/modules/multiplayermenu.py:131
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr ""
 "Netværk funktioner kunne ikke initialiseres med den aktuelle konfiguration."
 
 #: horizons/engine/settingshandler.py:238
-#: horizons/gui/modules/multiplayermenu.py:128
+#: horizons/gui/modules/multiplayermenu.py:132
 msgid "Check the settings you specified in the network section."
 msgstr "Kontroller indstillingerne, du har angivet i afsnittet Netværk."
 
@@ -2641,34 +2301,34 @@ msgstr ""
 msgid "Burying treasures..."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:114
+#: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
 msgstr "Kunne ikke finde pyenet"
 
-#: horizons/gui/modules/multiplayermenu.py:115
+#: horizons/gui/modules/multiplayermenu.py:119
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:117
+#: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr "Linux-brugere: Prøv at installere pyenet gennem din pakkehåndtering."
 
-#: horizons/gui/modules/multiplayermenu.py:126
+#: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
 msgstr "Kunne ikke initialisere netværk."
 
-#: horizons/gui/modules/multiplayermenu.py:137
-#: horizons/gui/modules/multiplayermenu.py:156 horizons/mpsession.py:51
+#: horizons/gui/modules/multiplayermenu.py:141
+#: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
 msgid "Fatal Network Error"
 msgstr "Fatal Netværksfejl"
 
-#: horizons/gui/modules/multiplayermenu.py:138
+#: horizons/gui/modules/multiplayermenu.py:142
 msgid "Could not connect to master server."
 msgstr "Kunne ikke forbinde til master serveren."
 
-#: horizons/gui/modules/multiplayermenu.py:139
+#: horizons/gui/modules/multiplayermenu.py:143
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
@@ -2677,43 +2337,43 @@ msgstr ""
 "master server er midlertidigt nede."
 
 # 97%
-#: horizons/gui/modules/multiplayermenu.py:157 horizons/mpsession.py:52
+#: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Noget gik galt med netværket:"
 
-#: horizons/gui/modules/multiplayermenu.py:170
+#: horizons/gui/modules/multiplayermenu.py:174
 msgid "Version differs!"
 msgstr "Version adskiller sig!"
 
-#: horizons/gui/modules/multiplayermenu.py:200
-#: horizons/gui/modules/multiplayermenu.py:429
+#: horizons/gui/modules/multiplayermenu.py:204
+#: horizons/gui/modules/multiplayermenu.py:441
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Kort: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:201
-#: horizons/gui/modules/multiplayermenu.py:431
+#: horizons/gui/modules/multiplayermenu.py:205
+#: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Name: {game_name}"
 msgstr "Navn: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:202
-#: horizons/gui/modules/multiplayermenu.py:433
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:204
-#: horizons/gui/modules/multiplayermenu.py:435
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:447
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Spillere: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:224
+#: horizons/gui/modules/multiplayermenu.py:228
 msgid "Wrong version"
 msgstr "Forkert version"
 
-#: horizons/gui/modules/multiplayermenu.py:226
+#: horizons/gui/modules/multiplayermenu.py:230
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2726,78 +2386,86 @@ msgstr ""
 "spiller at opdatere til den nyeste version. Spil version: {game_version} Din "
 "version: {own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:343
+#: horizons/gui/modules/multiplayermenu.py:268
+msgid "Password of the game"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:269
+msgid "Enter password:"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:349
 #: horizons/gui/modules/singleplayermenu.py:407
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Anbefalet antal spillere: {number}"
 
-#: horizons/gui/modules/multiplayermenu.py:453
-#: horizons/gui/modules/multiplayermenu.py:461
+#: horizons/gui/modules/multiplayermenu.py:465
+#: horizons/gui/modules/multiplayermenu.py:473
 msgid "Click here to change your name and/or color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:480
+#: horizons/gui/modules/multiplayermenu.py:492
 #, python-format
 msgid "Kick {player}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:548
+#: horizons/gui/modules/multiplayermenu.py:560
 #, python-format
 msgid "{player} has joined the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:552
+#: horizons/gui/modules/multiplayermenu.py:564
 #, python-format
 msgid "{player} has left the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:558
+#: horizons/gui/modules/multiplayermenu.py:570
 msgid "You are now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:560
+#: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are not ready anymore"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:564
+#: horizons/gui/modules/multiplayermenu.py:576
 #, python-format
 msgid "{player} is now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:567
+#: horizons/gui/modules/multiplayermenu.py:579
 #, python-format
 msgid "{player} not ready anymore"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:584
 #, python-format
 msgid "You are now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:575
+#: horizons/gui/modules/multiplayermenu.py:587
 #, python-format
 msgid "{player} is now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:591
 msgid "You changed your color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:582
+#: horizons/gui/modules/multiplayermenu.py:594
 #, python-format
 msgid "{player} changed their color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:586
+#: horizons/gui/modules/multiplayermenu.py:598
 msgid "Kicked"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:586
+#: horizons/gui/modules/multiplayermenu.py:598
 msgid "You have been kicked from the game by creator"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:590
+#: horizons/gui/modules/multiplayermenu.py:602
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr ""
@@ -4163,12 +3831,12 @@ msgstr ""
 msgid "Maybe invalid or irresolvable server address."
 msgstr ""
 
-#: horizons/network/networkinterface.py:525
+#: horizons/network/networkinterface.py:526
 msgid "Not Ready"
 msgstr ""
 
 #. TODO: add support for selecting difficulty levels to the GUI
-#: horizons/network/networkinterface.py:525
+#: horizons/network/networkinterface.py:526
 msgid "Ready"
 msgstr ""
 
@@ -4188,23 +3856,23 @@ msgstr "U heeft het scenario voltooid."
 msgid "Do you want to continue playing?"
 msgstr "Ønsker du at fortsætte?"
 
-#: horizons/scenario/scenarioeventhandler.py:159
+#: horizons/scenario/scenarioeventhandler.py:158
 #, fuzzy
 msgid "unknown"
 msgstr "onbekend"
 
 #. usually invalid filename
-#: horizons/session.py:408
+#: horizons/session.py:409
 #, fuzzy
 msgid "Failed to create savegame file"
 msgstr "Opslaan van het savegame-bestand is mislukt"
 
-#: horizons/session.py:409
+#: horizons/session.py:410
 #, fuzzy
 msgid "There has been an error while creating your savegame file."
 msgstr "Er is een fout opgetreden bij het opslaan van uw savegame-bestand."
 
-#: horizons/session.py:410
+#: horizons/session.py:411
 #, fuzzy
 msgid ""
 "This usually means that the savegame name contains unsupported special "
@@ -4213,12 +3881,12 @@ msgstr ""
 "Dit betekent vaak dat in de savegamenaam speciale tekens staan die niet "
 "worden ondersteund."
 
-#: horizons/session.py:416
+#: horizons/session.py:417
 #, fuzzy
 msgid "Access is denied"
 msgstr "De toegang is geweigerd"
 
-#: horizons/session.py:417
+#: horizons/session.py:418
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 
