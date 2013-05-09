@@ -103,7 +103,6 @@ FILE = '''
 '''
 
 ENTRY = '''\
-		# ({attribute} of widget: {widget}){comment}
 		({widget!r:<32}, {attribute!r:<10}): {text},
 '''
 
@@ -163,13 +162,11 @@ def content_from_element(element_name, parse_tree, attribute):
 				print_n_no_name(element_name, text)
 
 		if text and name:
-			i18n = KEEP_STUFF_RE.sub('', i18n).strip()
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
 				text = '_("%s")' % text
-			comment = ' %s' % (i18n) if i18n else ''
-			newline = ENTRY.format(attribute=attribute, comment=comment, widget=name, text=text)
+			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
 	return ''.join(sorted(element_strings))
