@@ -92,8 +92,7 @@ events:
   - type: logbook
     arguments: *INTRO
   conditions:
-    - type: time_passed
-      arguments: [0]
+    - type: game_started
 
 - # with port
   actions:

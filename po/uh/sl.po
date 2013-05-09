@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-07 14:40+0200\n"
+"POT-Creation-Date: 2013-05-08 15:03+0200\n"
 "PO-Revision-Date: 2013-05-05 12:56+0000\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -270,7 +270,7 @@ msgstr "Pas de nieuwe naam toe"
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
-#: content/gui/xml/mainmenu/hotkeys.xml:24 horizons/gui/widgets/logbook.py:51
+#: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 #, fuzzy
 msgid "Chat"
 msgstr "Chat"
@@ -1332,7 +1332,7 @@ msgstr ""
 #. (itstool) path: AutoResizeContainer/OkButton@helptext
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
-#: content/gui/xml/mainmenu/hotkeys.xml:52
+#: content/gui/xml/mainmenu/hotkeys.xml:53
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:27
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:18
 #, fuzzy
@@ -1389,7 +1389,7 @@ msgstr "Sneltoetsen"
 
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
-#: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:31
+#: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
 #, fuzzy
 msgid "Scroll left"
 msgstr "Naar links scrollen"
@@ -1397,7 +1397,7 @@ msgstr "Naar links scrollen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:10
-#: content/gui/xml/mainmenu/hotkeys.xml:31
+#: content/gui/xml/mainmenu/hotkeys.xml:11
 #, fuzzy
 msgid "Scroll right"
 msgstr "Naar rechts scrollen"
@@ -1405,7 +1405,7 @@ msgstr "Naar rechts scrollen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:11
-#: content/gui/xml/mainmenu/hotkeys.xml:32
+#: content/gui/xml/mainmenu/hotkeys.xml:12
 #, fuzzy
 msgid "Scroll up"
 msgstr "Naar boven scrollen"
@@ -1413,7 +1413,7 @@ msgstr "Naar boven scrollen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:12
-#: content/gui/xml/mainmenu/hotkeys.xml:33
+#: content/gui/xml/mainmenu/hotkeys.xml:13
 #, fuzzy
 msgid "Scroll down"
 msgstr "Naar onder scrollen"
@@ -1421,7 +1421,7 @@ msgstr "Naar onder scrollen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:15
-#: content/gui/xml/mainmenu/hotkeys.xml:15
+#: content/gui/xml/mainmenu/hotkeys.xml:16
 #, fuzzy
 msgid "Increase game speed"
 msgstr "Speelsnelheid verhogen"
@@ -1429,7 +1429,7 @@ msgstr "Speelsnelheid verhogen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:16
-#: content/gui/xml/mainmenu/hotkeys.xml:16
+#: content/gui/xml/mainmenu/hotkeys.xml:17
 #, fuzzy
 msgid "Decrease game speed"
 msgstr "Speelsnelheid verlagen"
@@ -1437,7 +1437,7 @@ msgstr "Speelsnelheid verlagen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:18
-#: content/gui/xml/mainmenu/hotkeys.xml:23
+#: content/gui/xml/mainmenu/hotkeys.xml:15
 #, fuzzy
 msgid "Rotate building or map counterclockwise"
 msgstr "Rotera byggnad eller karta moturs"
@@ -1445,7 +1445,7 @@ msgstr "Rotera byggnad eller karta moturs"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:20
-#: content/gui/xml/mainmenu/hotkeys.xml:22
+#: content/gui/xml/mainmenu/hotkeys.xml:14
 #, fuzzy
 msgid "Rotate building or map clockwise"
 msgstr "Rotera byggnad eller karta medurs"
@@ -1453,7 +1453,7 @@ msgstr "Rotera byggnad eller karta medurs"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:23
-#: content/gui/xml/mainmenu/hotkeys.xml:21
+#: content/gui/xml/mainmenu/hotkeys.xml:19
 #, fuzzy
 msgid "Show build menu"
 msgstr "Toon constructie menu"
@@ -1461,7 +1461,7 @@ msgstr "Toon constructie menu"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:24
-#: content/gui/xml/mainmenu/hotkeys.xml:20
+#: content/gui/xml/mainmenu/hotkeys.xml:26
 #, fuzzy
 msgid "Toggle Captain's log"
 msgstr "Naar het kapiteins logboek"
@@ -1469,7 +1469,7 @@ msgstr "Naar het kapiteins logboek"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:25
-#: content/gui/xml/mainmenu/hotkeys.xml:17
+#: content/gui/xml/mainmenu/hotkeys.xml:18
 #, fuzzy
 msgid "Pause game"
 msgstr "Pauseer spel"
@@ -1485,7 +1485,7 @@ msgstr "Toon help"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:29
-#: content/gui/xml/mainmenu/hotkeys.xml:27
+#: content/gui/xml/mainmenu/hotkeys.xml:28
 #, fuzzy
 msgid "Quicksave"
 msgstr "Snel opslaan"
@@ -1493,7 +1493,7 @@ msgstr "Snel opslaan"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:30
-#: content/gui/xml/mainmenu/hotkeys.xml:28
+#: content/gui/xml/mainmenu/hotkeys.xml:29
 #, fuzzy
 msgid "Quickload"
 msgstr "Snel laden"
@@ -1506,7 +1506,7 @@ msgstr ""
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:40
-#: content/gui/xml/mainmenu/hotkeys.xml:25
+#: content/gui/xml/mainmenu/hotkeys.xml:30
 #, fuzzy
 msgid "Toggle translucency of ambient buildings"
 msgstr "Selecteer de doorzichtigheid van algemene gebouwen"
@@ -1514,7 +1514,7 @@ msgstr "Selecteer de doorzichtigheid van algemene gebouwen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:41
-#: content/gui/xml/mainmenu/hotkeys.xml:14
+#: content/gui/xml/mainmenu/hotkeys.xml:21
 #, fuzzy
 msgid "Enable road building mode"
 msgstr "Aktivera vägbyggarläge"
@@ -1522,7 +1522,7 @@ msgstr "Aktivera vägbyggarläge"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:42
-#: content/gui/xml/mainmenu/hotkeys.xml:12
+#: content/gui/xml/mainmenu/hotkeys.xml:20
 #, fuzzy
 msgid "Enable destruct mode"
 msgstr "Schakel afbraakmodes in"
@@ -1530,14 +1530,14 @@ msgstr "Schakel afbraakmodes in"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:44
-#: content/gui/xml/mainmenu/hotkeys.xml:29
+#: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
 msgstr ""
 
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:45
-#: content/gui/xml/mainmenu/hotkeys.xml:30
+#: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
 msgstr ""
 
@@ -1563,7 +1563,7 @@ msgstr ""
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:55
-#: content/gui/xml/mainmenu/hotkeys.xml:13
+#: content/gui/xml/mainmenu/hotkeys.xml:23
 #, fuzzy
 msgid "Show player scores"
 msgstr "Toon scores"
@@ -1571,7 +1571,7 @@ msgstr "Toon scores"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:56
-#: content/gui/xml/mainmenu/hotkeys.xml:19
+#: content/gui/xml/mainmenu/hotkeys.xml:25
 #, fuzzy
 msgid "Show ship list"
 msgstr "Toon lijst met schepen"
@@ -1579,7 +1579,7 @@ msgstr "Toon lijst met schepen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:57
-#: content/gui/xml/mainmenu/hotkeys.xml:18
+#: content/gui/xml/mainmenu/hotkeys.xml:24
 #, fuzzy
 msgid "Show settlement list"
 msgstr "Toon lijst met nederzettingen"
@@ -1587,7 +1587,7 @@ msgstr "Toon lijst met nederzettingen"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:58
-#: content/gui/xml/mainmenu/hotkeys.xml:26
+#: content/gui/xml/mainmenu/hotkeys.xml:31
 #, fuzzy
 msgid "Highlight tile ownership"
 msgstr "Färglägg rutornas ägare"
@@ -1595,7 +1595,7 @@ msgstr "Färglägg rutornas ägare"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:62
-#: content/gui/xml/mainmenu/hotkeys.xml:38
+#: content/gui/xml/mainmenu/hotkeys.xml:34
 #, fuzzy
 msgid "Remove selected units / buildings"
 msgstr "Ta bort markerade enheter / byggnader"
@@ -1603,14 +1603,14 @@ msgstr "Ta bort markerade enheter / byggnader"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:63
-#: content/gui/xml/mainmenu/hotkeys.xml:37
+#: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
 msgstr ""
 
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:64
-#: content/gui/xml/mainmenu/hotkeys.xml:10
+#: content/gui/xml/mainmenu/hotkeys.xml:38
 #, fuzzy
 msgid "Toggle grid on/off"
 msgstr "Raster aan/uit"
@@ -1618,7 +1618,7 @@ msgstr "Raster aan/uit"
 #. (itstool) path: VBox/Label@text
 #. (itstool) path: VBox/Label@helptext
 #: content/gui/xml/mainmenu/help.xml:65
-#: content/gui/xml/mainmenu/hotkeys.xml:11
+#: content/gui/xml/mainmenu/hotkeys.xml:39
 #, fuzzy
 msgid "Show coordinate values (Debug)"
 msgstr "Toon coördinaten (Debug)"
@@ -1635,182 +1635,32 @@ msgstr "Terug"
 msgid "Actions"
 msgstr "AI instellingen"
 
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:10
-msgid "GRID"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:11
-msgid "COORD_TOOLTIP"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:12
-msgid "DESTROY_TOOL"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:13
-msgid "PLAYERS_OVERVIEW"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:14
-msgid "ROAD_TOOL"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:15
-msgid "SPEED_UP"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:16
-msgid "SPEED_DOWN"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:17
-msgid "PAUSE"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:18
-msgid "SETTLEMENTS_OVERVIEW"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:19
-msgid "SHIPS_OVERVIEW"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:20
-msgid "LOGBOOK"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:21
-msgid "BUILD_TOOL"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:22
-msgid "ROTATE_RIGHT"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:23
-msgid "ROTATE_LEFT"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:24
-msgid "CHAT"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:25
-msgid "TRANSLUCENCY"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:26
-msgid "TILE_OWNER_HIGHLIGHT"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:27
-msgid "QUICKSAVE"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:28
-msgid "QUICKLOAD"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:29
-msgid "PIPETTE"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:30
-msgid "HEALTH_BAR"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:31
-msgid "LEFT"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:31
-msgid "RIGHT"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:32
-msgid "UP"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:33
-msgid "DOWN"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:34
-msgid "SHOW_FPS"
-msgstr ""
-
 #. (itstool) path: VBox/Label@helptext
-#: content/gui/xml/mainmenu/hotkeys.xml:34
+#: content/gui/xml/mainmenu/hotkeys.xml:37
 #, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Raster aan/uit"
 
 #. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:35
-msgid "HELP"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:36
-msgid "SCREENSHOT"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:37
-msgid "SHOW_SELECTED"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:38
-msgid "REMOVE_SELECTED"
-msgstr ""
-
-#. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:42
+#: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
 msgstr ""
 
 #. (itstool) path: VBox/Label@text
-#: content/gui/xml/mainmenu/hotkeys.xml:46
+#: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
 msgstr ""
 
 #. (itstool) path: VBox/Button@text
 #. (itstool) path: AutoResizeContainer/Button@helptext
-#: content/gui/xml/mainmenu/hotkeys.xml:53
+#: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
 #, fuzzy
 msgid "Reset to default"
 msgstr "Återställ till standard"
 
 #. (itstool) path: AutoResizeContainer/Button@text
-#: content/gui/xml/mainmenu/hotkeys.xml:53
+#: content/gui/xml/mainmenu/hotkeys.xml:54
 #, fuzzy
 msgid "Reset to default keys"
 msgstr "Återställ till standard"
@@ -2519,7 +2369,7 @@ msgid "Received an invalid filename for a save command."
 msgstr "Mottog ett felaktigt filnamn vid försök att spara."
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:151
+#: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:154
 #: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
 #, fuzzy
 msgid "Error"
@@ -2691,14 +2541,14 @@ msgid "Failed to apply new network settings."
 msgstr "Het toepassen van de netwerkinstellingen is mislukt."
 
 #: horizons/engine/settingshandler.py:237
-#: horizons/gui/modules/multiplayermenu.py:124
+#: horizons/gui/modules/multiplayermenu.py:127
 #, fuzzy
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr "Nätverksfunktioner kan inte initieras med den valda konfigurationen."
 
 #: horizons/engine/settingshandler.py:238
-#: horizons/gui/modules/multiplayermenu.py:125
+#: horizons/gui/modules/multiplayermenu.py:128
 #, fuzzy
 msgid "Check the settings you specified in the network section."
 msgstr "Kolla inställningar som du specificerat under nätverkssektionen."
@@ -2744,7 +2594,7 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Kan inte göra diplomati eftersom det inte finns några andra spelare."
 
 #. size of empty map in map editor
-#: horizons/gui/modules/editorstartmenu.py:89
+#: horizons/gui/modules/editorstartmenu.py:92
 #, python-format
 msgid "{size}x{size} tiles"
 msgstr ""
@@ -2876,40 +2726,40 @@ msgstr ""
 msgid "Burying treasures..."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:111
+#: horizons/gui/modules/multiplayermenu.py:114
 #, fuzzy
 msgid "Unable to find pyenet"
 msgstr "Kan pyenet niet vinden"
 
-#: horizons/gui/modules/multiplayermenu.py:112
+#: horizons/gui/modules/multiplayermenu.py:115
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:114
+#: horizons/gui/modules/multiplayermenu.py:117
 #, fuzzy
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
 "Linux gebruikers: Probeer pyenet te installeren door middel van de "
 "pakketmanager."
 
-#: horizons/gui/modules/multiplayermenu.py:123
+#: horizons/gui/modules/multiplayermenu.py:126
 #, fuzzy
 msgid "Failed to initialize networking."
 msgstr "Netwerk initialisatie mislukt."
 
-#: horizons/gui/modules/multiplayermenu.py:134
-#: horizons/gui/modules/multiplayermenu.py:153 horizons/mpsession.py:51
+#: horizons/gui/modules/multiplayermenu.py:137
+#: horizons/gui/modules/multiplayermenu.py:156 horizons/mpsession.py:51
 #, fuzzy
 msgid "Fatal Network Error"
 msgstr "Fatale Netwerkfout"
 
-#: horizons/gui/modules/multiplayermenu.py:135
+#: horizons/gui/modules/multiplayermenu.py:138
 msgid "Could not connect to master server."
 msgstr "Kan niet verbinden met de masterserver."
 
-#: horizons/gui/modules/multiplayermenu.py:136
+#: horizons/gui/modules/multiplayermenu.py:139
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
@@ -2918,46 +2768,46 @@ msgstr ""
 "masterserver tijdelijk niet beschikbaar is."
 
 # 97%
-#: horizons/gui/modules/multiplayermenu.py:154 horizons/mpsession.py:52
+#: horizons/gui/modules/multiplayermenu.py:157 horizons/mpsession.py:52
 #, fuzzy
 msgid "Something went wrong with the network:"
 msgstr "Er is een netwerkfout opgetreden:"
 
-#: horizons/gui/modules/multiplayermenu.py:167
+#: horizons/gui/modules/multiplayermenu.py:170
 #, fuzzy
 msgid "Version differs!"
 msgstr "Verschillende versies!"
 
-#: horizons/gui/modules/multiplayermenu.py:197
-#: horizons/gui/modules/multiplayermenu.py:426
+#: horizons/gui/modules/multiplayermenu.py:200
+#: horizons/gui/modules/multiplayermenu.py:429
 #, fuzzy, python-format
 msgid "Map: {map_name}"
 msgstr "Karta: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:198
-#: horizons/gui/modules/multiplayermenu.py:428
+#: horizons/gui/modules/multiplayermenu.py:201
+#: horizons/gui/modules/multiplayermenu.py:431
 #, fuzzy, python-format
 msgid "Name: {game_name}"
 msgstr "Namn: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:199
-#: horizons/gui/modules/multiplayermenu.py:430
+#: horizons/gui/modules/multiplayermenu.py:202
+#: horizons/gui/modules/multiplayermenu.py:433
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:201
-#: horizons/gui/modules/multiplayermenu.py:432
+#: horizons/gui/modules/multiplayermenu.py:204
+#: horizons/gui/modules/multiplayermenu.py:435
 #, fuzzy, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Spelare: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:221
+#: horizons/gui/modules/multiplayermenu.py:224
 #, fuzzy
 msgid "Wrong version"
 msgstr "Verkeerde versie"
 
-#: horizons/gui/modules/multiplayermenu.py:223
+#: horizons/gui/modules/multiplayermenu.py:226
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2970,78 +2820,78 @@ msgstr ""
 "door iedere speler te laten updaten naar de laatste versie. Spelversie: "
 "{game_version}, uw versie: {own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:340
-#: horizons/gui/modules/singleplayermenu.py:404
+#: horizons/gui/modules/multiplayermenu.py:343
+#: horizons/gui/modules/singleplayermenu.py:407
 #, fuzzy, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Rekommenderat antal spelare: {number}"
 
-#: horizons/gui/modules/multiplayermenu.py:450
-#: horizons/gui/modules/multiplayermenu.py:458
+#: horizons/gui/modules/multiplayermenu.py:453
+#: horizons/gui/modules/multiplayermenu.py:461
 msgid "Click here to change your name and/or color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:477
+#: horizons/gui/modules/multiplayermenu.py:480
 #, python-format
 msgid "Kick {player}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:545
+#: horizons/gui/modules/multiplayermenu.py:548
 #, python-format
 msgid "{player} has joined the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:549
+#: horizons/gui/modules/multiplayermenu.py:552
 #, python-format
 msgid "{player} has left the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:555
+#: horizons/gui/modules/multiplayermenu.py:558
 msgid "You are now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:557
+#: horizons/gui/modules/multiplayermenu.py:560
 msgid "You are not ready anymore"
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py:561
-#, python-format
-msgid "{player} is now ready"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:564
 #, python-format
-msgid "{player} not ready anymore"
+msgid "{player} is now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:569
+#: horizons/gui/modules/multiplayermenu.py:567
 #, python-format
-msgid "You are now known as {new_name}"
+msgid "{player} not ready anymore"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:572
 #, python-format
+msgid "You are now known as {new_name}"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:575
+#, python-format
 msgid "{player} is now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:576
+#: horizons/gui/modules/multiplayermenu.py:579
 msgid "You changed your color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:582
 #, python-format
 msgid "{player} changed their color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:583
+#: horizons/gui/modules/multiplayermenu.py:586
 msgid "Kicked"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:583
+#: horizons/gui/modules/multiplayermenu.py:586
 msgid "You have been kicked from the game by creator"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:587
+#: horizons/gui/modules/multiplayermenu.py:590
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr ""
@@ -3159,84 +3009,84 @@ msgstr "Fout!"
 msgid "Failed to delete savefile!"
 msgstr "Verwijderen van opgeslagen spel mislukt!"
 
-#: horizons/gui/modules/singleplayermenu.py:103
+#: horizons/gui/modules/singleplayermenu.py:106
 #, fuzzy
 msgid "Invalid player name"
 msgstr "Ongeldige spelersnaam"
 
-#: horizons/gui/modules/singleplayermenu.py:103
+#: horizons/gui/modules/singleplayermenu.py:106
 #, fuzzy
 msgid "You entered an invalid playername."
 msgstr "Du angav ett ogiltigt spelarnamn."
 
 # 76%
-#: horizons/gui/modules/singleplayermenu.py:146
+#: horizons/gui/modules/singleplayermenu.py:149
 #, fuzzy
 msgid "Resource density:"
 msgstr "Grondstofafzettingen:"
 
-#: horizons/gui/modules/singleplayermenu.py:224
+#: horizons/gui/modules/singleplayermenu.py:227
 #, fuzzy
 msgid "Map size:"
 msgstr "Kaartgrootte:"
 
-#: horizons/gui/modules/singleplayermenu.py:225
+#: horizons/gui/modules/singleplayermenu.py:228
 #, fuzzy
 msgid "Water:"
 msgstr "Water:"
 
-#: horizons/gui/modules/singleplayermenu.py:226
+#: horizons/gui/modules/singleplayermenu.py:229
 #, fuzzy
 msgid "Max island size:"
 msgstr "Max. eilandgrootte:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:230
 #, fuzzy
 msgid "Preferred island size:"
 msgstr "Voorkeurseilandgrootte:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:231
 #, fuzzy
 msgid "Island size deviation:"
 msgstr "Eilandgrootte-afwijking:"
 
-#: horizons/gui/modules/singleplayermenu.py:341
+#: horizons/gui/modules/singleplayermenu.py:344
 #, fuzzy
 msgid "Click to generate a different random map"
 msgstr "Klicka för att skapa en ny slumpmässig karta"
 
-#: horizons/gui/modules/singleplayermenu.py:497
+#: horizons/gui/modules/singleplayermenu.py:500
 #, fuzzy
 msgid "Invalid scenario file"
 msgstr "Ongeldig scenario-bestand"
 
-#: horizons/gui/modules/singleplayermenu.py:498
+#: horizons/gui/modules/singleplayermenu.py:501
 #, fuzzy
 msgid "The selected file is not a valid scenario file."
 msgstr "Het geselecteerde bestand is geen geldig scenario-bestand."
 
-#: horizons/gui/modules/singleplayermenu.py:499
+#: horizons/gui/modules/singleplayermenu.py:502
 #, fuzzy
 msgid "Error message:"
 msgstr "Foutmelding:"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:503
 #, fuzzy
 msgid "Please report this to the author."
 msgstr "Meld dit alstublieft aan de auteur."
 
-#: horizons/gui/modules/singleplayermenu.py:542
+#: horizons/gui/modules/singleplayermenu.py:545
 #, fuzzy, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Svårighetsgrad: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:546
+#: horizons/gui/modules/singleplayermenu.py:549
 #, fuzzy, python-format
 msgid "Author: {author}"
 msgstr "Upphovsman: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:550
+#: horizons/gui/modules/singleplayermenu.py:553
 #, fuzzy, python-format
 msgid "Description: {desc}"
 msgstr "Beskrivning: {desc}"
@@ -3480,12 +3330,12 @@ msgid "Logbook"
 msgstr "Loggbok"
 
 # Rubriken när loggboken är tom. Något bättre alternativ?
-#: horizons/gui/widgets/logbook.py:182
+#: horizons/gui/widgets/logbook.py:183
 #, fuzzy
 msgid "Emptiness"
 msgstr "Leegte"
 
-#: horizons/gui/widgets/logbook.py:185
+#: horizons/gui/widgets/logbook.py:186
 #, fuzzy
 msgid "There is nothing written in your logbook yet!"
 msgstr "Er staat nog niks in je logboek!"
@@ -3604,12 +3454,12 @@ msgstr ""
 msgid "none"
 msgstr "geen"
 
-#: horizons/gui/windows.py:381
+#: horizons/gui/windows.py:392
 #, python-format
 msgid "Details: {error_details}"
 msgstr ""
 
-#: horizons/gui/windows.py:384
+#: horizons/gui/windows.py:395
 #, python-format
 msgid "Error: {error_message}"
 msgstr ""

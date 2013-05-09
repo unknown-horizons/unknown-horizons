@@ -259,7 +259,8 @@ class MultiplayerMenu(Window):
 		dialog = load_uh_widget('set_password.xml')
 
 		bind = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		window = Dialog.create_from_widget(dialog, bind, modal=True, focus="password")
+		window_cls = Dialog.create_from_widget(dialog, bind, modal=True, focus="password")
+		window = window_cls(self._windows)
 		retval = self._windows.show(window)
 
 		if retval:

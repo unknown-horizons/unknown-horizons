@@ -10,5 +10,9 @@
   <its:translateRule translate="no"  selector="/Container[@name='credits_window']/HBox/ScrollArea/VBox/VBox/VBox/Label/@text" />
 
   <!-- Do not translate anything with comment='noi18n' even if it would match previously -->
-  <its:translateRule translate="no"  selector="//*[@text and @comment='noi18n']/@*" />
+  <its:translateRule translate="no"  selector="//*[@comment='noi18n']/@*" />
+  <!-- Do not translate {attribute} of widget with comment='noi18n_{attribute}' -->
+  <its:translateRule translate="no"  selector="//*[@text and @comment='noi18n_text']/@text" />
+  <its:translateRule translate="no"  selector="//*[@helptext and @comment='noi18n_helptext']/@helptext" />
+
 </its:rules>
