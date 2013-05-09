@@ -40,11 +40,11 @@
 			</VBox>
 
 			<VBox name="button_container" position="150, 0">
-				<Label text="Primary" name="primary_buttons_headline" />
+				<Label text="Primary" name="primary_buttons_headline" comment="First hotkey assigned to this action" />
 			</VBox>
 
 			<VBox name="sec_button_container" position="350, 0">
-				<Label text="Secondary" name="secondary_buttons_headline" />
+				<Label text="Secondary" name="secondary_buttons_headline" comment="Second hotkey assigned to this action" />
 			</VBox>
 	      </HBox>
 	</ScrollArea>
