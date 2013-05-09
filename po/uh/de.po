@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:01+0200\n"
-"PO-Revision-Date: 2013-05-09 15:05+0200\n"
+"PO-Revision-Date: 2013-05-09 15:11+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -887,9 +887,8 @@ msgid "Translators"
 msgstr "Übersetzer"
 
 #: content/gui/xml/mainmenu/credits.xml:134
-#, fuzzy
 msgid "Hosting Weblate"
-msgstr "Spielverlaufsprotokolle aktiviert"
+msgstr "Bereitstellen von Weblate"
 
 #: content/gui/xml/mainmenu/credits.xml:139
 msgid "Bulgarian"
