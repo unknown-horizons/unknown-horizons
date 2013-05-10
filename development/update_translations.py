@@ -31,8 +31,12 @@ INTERFACE_TEMPLATE = 'po/uh/unknown-horizons.pot'
 GLOSSARY_TRANSLATIONS = glob('po/terminology/*.po')
 GLOSSARY_TEMPLATE = 'po/terminology/pootle-terminology.pot'
 
-#SCENARIO_TRANSLATIONS = glob('po/scenarios/*/*.po')
-#SCENARIO_TEMPLATE = glob('po/scenarios/templates/*.pot')
+SCENARIO_TRANSLATIONS = {}
+SCENARIO_TEMPLATE = {}
+ALL_SCENARIOS = ('tutorial', 'The_Unknown')
+for s in ALL_SCENARIOS:
+	SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/%s.po' % s)
+	SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/%s.pot' % s
 
 
 def update_from_template(input_po, input_template):
@@ -64,7 +68,9 @@ def main():
 		update_from_template(f, GLOSSARY_TEMPLATE)
 
 	# Scenario translation (old 'scenarios' project in pootle)
-	#TODO devise workflow here
+	for scenario, translations in SCENARIO_TRANSLATIONS.iteritems():
+		for f in translations:
+			update_from_template(f, SCENARIO_TEMPLATE[scenario])
 
 
 if __name__ == '__main__':
