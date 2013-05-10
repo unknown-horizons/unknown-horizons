@@ -72,7 +72,7 @@ class MessageWidget(LivingObject):
 		self.widget.position = (5, (screenheight // 2) - (self.widget.size[1] // 2))
 
 		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
-		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
+		self.reference_text_widget_position = (self.widget.x + self.widget.width, self.widget.y)
 
 		self.widget.show()
 		self.item = 0 # number of current message
@@ -207,6 +207,13 @@ class MessageWidget(LivingObject):
 		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
 			middle_icon = Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
+
+		button = self.widget.findChild(name=str(index))
+		# y position relative to parent
+		button_y = button.position[1]
+		# Show text next to corresponding icon
+		x, y = self.reference_text_widget_position
+		self.text_widget.position = (x, y + button_y)
 
 		message_container = self.text_widget.findChild(name='message')
 		message_container.size = (300, 21 + self.IMG_HEIGHT * line_count + 21)
