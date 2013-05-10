@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-05-07 15:51+0200\n"
+"PO-Revision-Date: 2013-05-10 11:54+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/tutorial/nl/>\n"
 "Language: nl\n"
@@ -23,22 +23,20 @@ msgid "Tutorial"
 msgstr "Oefening"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
 "De opdracht:\n"
-"Plaats uw eerste kolonie en leer het spelverloop!\n"
+"Plaats jouw eerste nederzetting en leer hoe je verder moet spelen!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
 msgstr ""
 "Bouw een hoofdkantoor aan de kust, zodat deze makkelijk bereikbaar is voor "
-"andere schepen als die van de vrije handelaar."
+"andere schepen zoals die van de Vrije Handelaar."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -199,18 +197,16 @@ msgstr ""
 "grote icoontje onder de kaart of door het drukken op de B op je toetsenbord."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "The build menu is sorted by tiers."
-msgstr "Het bouwmenu is op gebouwd in een stappenplan."
+msgstr "Het bouwmenu is ingedeeld per beschavingsniveau."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "You are currently in the first tier (the Sailors level) so are offered only "
 "the basic buildings."
 msgstr ""
-"Je zit op dit moment in de beginfase (Zeeman's niveau) je hebt alleen de "
-"beschikking over de basisgebouwen."
+"Je zit op dit moment in de beginfase (Zeeman's niveau), waardoor je alleen "
+"de beschikking hebt over de basisgebouwen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -287,10 +283,10 @@ msgstr ""
 "(en zeker zeelui) zijn heel hongerig."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Available companies in the first tier are the Hunter and Fisher."
 msgstr ""
-"Beschikbare bedrijven in het eerste beschavingsniveau zijn jagers en vissers."
+"Beschikbare bedrijven in het eerste beschavingsniveau zijn jagers en "
+"vissers."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
@@ -449,7 +445,6 @@ msgid "If your balance is positive, you all-in-all make a profit."
 msgstr "Als je balans positief is, dan maak je winst."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "In the different tier overview tabs you can see statistics about your "
 "inhabitants. You also set the tier-specific global tax here and allow or "
@@ -477,7 +472,6 @@ msgstr ""
 "stad willen wonen! Je zult dus tenten moeten bouwen."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
@@ -490,11 +484,15 @@ msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
 msgstr ""
+"Let op dat het verbeteren van elk gebouw ook bouwmaterialen vereisen, zo is "
+"er voor de eerste verbetering hout nodig."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"Overweeg om deze verbetering te verbieden als je te weinig van dit materiaal "
+"op voorraad hebt."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -654,9 +652,8 @@ msgstr ""
 "Verkoop\"."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "At the 'sailors' tier, you are equipped with three trading slots."
-msgstr "In het 'Zeeman' niveau staan u drie handelsvakken ter beschikking."
+msgstr "In het \"Zeeman's\" niveau staan drie handelsvakken ter beschikking."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -685,11 +682,12 @@ msgstr ""
 "OPDRACHT: Plaats een signaalvuur bij de kust nabij het pakhuis."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid ""
 "Reach an island stock of at least 30 tools. Note that this might take a "
 "while."
-msgstr "Bereik een voorraad van tenminste 30 stuks gereedschap op het eiland."
+msgstr ""
+"Bereik op dit eiland een voorraad van tenminste 30 stuks gereedschap. Let "
+"op, dit kan een tijdje duren."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
@@ -892,7 +890,6 @@ msgstr ""
 "promoveren."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 msgid "NEW TASK: NEXT TIER"
 msgstr "OPDRACHT: VOLGENDE NIVEAU"
 
@@ -905,7 +902,6 @@ msgstr ""
 "regelmatig kunnen bezoeken en als er voldoende voedsel voorhanden is."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "If the sailors are happy enough, they want to advance to the next tier "
 "called Pioneers."
@@ -996,9 +992,8 @@ msgid "NEW TASK: BUILD A FARM"
 msgstr "OPDRACHT: BOUW EEN BOERDERIJ"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Congratulations! Some of your inhabitants have reached tier II!"
-msgstr "Gefeliciteerd! Sommige inwoners hebben beschavingsniveau III bereikt!"
+msgstr "Gefeliciteerd! Sommige inwoners hebben beschavingsniveau II bereikt!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1185,9 +1180,8 @@ msgstr ""
 "en voeg als je dat wilt ook een aardappelveld toe."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid "Build a storage tent (tier I tab) where it makes sense."
-msgstr "Plaats een opslag tent (niveau I tabblad)."
+msgstr "Plaats een opslag tent (niveau I tabblad) op een logische plaats."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD STORAGE"
@@ -1252,13 +1246,12 @@ msgstr ""
 "hebt, en deze niet wilt slopen."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the storage tent."
 msgstr ""
 "Een andere oplossing is het laatste gebouw uit het eerste beschavingsniveau "
-"dat tot nu toe nog niet genoemd is: de opslagtent."
+"dat nog niet eerder genoemd is: de opslagtent."
 
 #. This is the text body of a logbook page.
 msgid ""
