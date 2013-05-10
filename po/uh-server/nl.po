@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-09-26 03:59+0200\n"
-"PO-Revision-Date: 2013-05-10 11:30+0200\n"
+"PO-Revision-Date: 2013-05-10 11:34+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh-server/nl/>\n"
 "Language: nl\n"
@@ -35,7 +35,7 @@ msgstr "Ongeldige/Onbekende sessie"
 
 #: horizons/network/server.py
 msgid "You can't join a game while in another game"
-msgstr "U kunt niet meedoen met een spel als u nog in een ander spel zit"
+msgstr "Je kunt niet meedoen met een spel als je nog in een ander spel zit"
 
 #: horizons/network/server.py
 msgid "Unknown game or game is running a different version"
@@ -43,7 +43,7 @@ msgstr "Onbekend spel of een spel uit een andere programmaversie"
 
 #: horizons/network/server.py
 msgid "Game has already started. No more joining"
-msgstr "Het spel is al begonnen. U kunt niet meer meedoen"
+msgstr "Het spel is al begonnen. Meedoen is niet meer mogelijk"
 
 #: horizons/network/server.py
 msgid "Game is full"
@@ -55,21 +55,21 @@ msgstr "Verkeerd wachtwoord"
 
 #: horizons/network/server.py
 msgid "There's already a player with your name inside this game. Change your name"
-msgstr "Er is al een speler met uw naam is dit spel. Verander uw naam"
+msgstr "Er is al een speler met jouw naam is dit spel. Verander jouw naam"
 
 #: horizons/network/server.py
 msgid "There's already a player with your color inside this game. Change your color"
-msgstr "Er is al een speler met uw kleur is dit spel. Verander uw kleur"
+msgstr "Er is al een speler met jouw kleur is dit spel. Verander jouw kleur"
 
 #: horizons/network/server.py
 msgid "There's already a player with your unique player ID inside this game. This should never occur."
 msgstr ""
-"Er is al een speler met uw unieke speler ID in dit spel. Dit zou nooit mogen "
-"voorkomen."
+"Er is al een speler met jouw unieke speler ID in dit spel. Dit zou nooit "
+"mogen voorkomen."
 
 #: horizons/network/server.py
 msgid "You are not inside a game"
-msgstr "U zit niet in een spel"
+msgstr "Jij zit niet in een spel"
 
 #: horizons/network/server.py
 msgid "The game has been terminated. The creator has left the game."
@@ -86,15 +86,15 @@ msgstr ""
 #: horizons/network/server.py
 msgid "There's already a player with your name inside this game. Unable to change your name"
 msgstr ""
-"Er is al een speler met uw naam is dit spel. Het is niet mogelijk om u naam "
-"te veranderen"
+"Er is al een speler met jouw naam is dit spel. Jouw naam kon niet veranderd "
+"worden"
 
 #: horizons/network/server.py
 msgid "There's already a player with your color inside this game. Unable to change your color"
 msgstr ""
-"Er is al een speler met uw kleur in dit spel. Het is niet mogelijk om u "
-"kleur te veranderen"
+"Er is al een speler met jouw kleur in dit spel. Jouw kleur kon niet "
+"verandert worden"
 
 #: horizons/network/server.py
 msgid "You can't fetch a game while in another game"
-msgstr "U kunt geen spel laden wanneer u nog met een ander spel bezig bent"
+msgstr "Je kunt geen spel laden wanneer je nog met een ander spel bezig bent"
