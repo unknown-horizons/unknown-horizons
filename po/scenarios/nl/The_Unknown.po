@@ -7,10 +7,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:12+0200\n"
-"PO-Revision-Date: 2013-05-07 15:49+0200\n"
+"PO-Revision-Date: 2013-05-10 12:07+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
-"Language-Team: Dutch <http://hosted.weblate.org/projects/uh/the-unknown/nl/"
-">\n"
+"Language-Team: Dutch <http://hosted.weblate.org/projects/uh/the-unknown/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,19 +23,18 @@ msgid "easy"
 msgstr "makkelijk"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm..."
 msgstr ""
-"U bent de kapitein van een Engels schip in het jaar 1740. U en uw bemanning "
-"waren op weg naar een Engelse kolonie in de grote oceaan.\n"
-"Alles liep volgens plan, tot u allen in een storm terecht kwamen.\n"
+"U bent de kapitein van een schip onder de Engelse vlag in het jaar 1740. U "
+"en uw bemanning waren op weg naar een Engelse kolonie in de grote oceaan.\n"
+"Alles liep volgens plan, tot u allen in een storm terecht kwamen..."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr "20 November 1740"
+msgstr "20 november 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -69,7 +67,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr "22 November 1740"
+msgstr "22 november 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -108,7 +106,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr "25 November 1740"
+msgstr "25 november 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -117,8 +115,8 @@ msgid ""
 "exchange goods for their everyday needs."
 msgstr ""
 "We hebben nu voorzien in onze basisbehoefte naar voedsel en hebben wat hout "
-"verzameld zodat onze nederzetting kan blijven groeien. Onze mensen eisen een "
-"plek om te wonen en een plek om de dagelijkst benodigdheden in te slaan."
+"verzameld, zodat onze nederzetting kan blijven groeien. Onze mensen eisen "
+"een plek om te wonen en een plek om de dagelijkst benodigdheden in te slaan."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -138,7 +136,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr "1 December 1740"
+msgstr "1 december 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -147,8 +145,8 @@ msgid ""
 "my head at night."
 msgstr ""
 "Eindelijk hebben we weer genoeg te eten en weer een plek om te wonen. Mijn "
-"tent is niet echt comfortabel, maar het houdt me droog en ik heb 's nachts "
-"een dak boven het hoofd."
+"tent is niet echt comfortabel, maar het houdt me droog en ik weet dat ik 's "
+"nachts een dak boven het hoofd heb."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -171,11 +169,12 @@ msgid ""
 "balance."
 msgstr ""
 "Opdracht:\n"
-"Groei uit tot een dorpje met tenminste 250 inwoners en een positieve balans."
+"Laat het dorp groeien tot je tenminste 250 inwoners en een positieve balans "
+"hebt."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr "27 Augustus 1745"
+msgstr "27 augustus 1745"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -183,8 +182,8 @@ msgid ""
 "have started getting used to my new home, but this island is too small to "
 "stay here forever."
 msgstr ""
-"Het gaat goed moet ons dorp, het heeft al meer dan 250 inwoners. Ik begin te "
-"wennen aan ons nieuw thuis, maar dit eiland is te klein om hier met zijn "
+"Het gaat goed moet onze stad, het heeft al meer dan 250 inwoners. Ik begin "
+"te wennen aan ons nieuw thuis, maar dit eiland is te klein om hier met zijn "
 "allen te kunnen blijven."
 
 #. This is the text body of a logbook page.
@@ -208,5 +207,5 @@ msgid ""
 msgstr ""
 "Opdracht:\n"
 "Neem contact op met het Unknown Horizons Team (www.unknown-horizons.org) en "
-"ontdek hou jij kan bijdragen aan het verlengen en verbeteren van dit "
+"ontdek hoe jij kan bijdragen aan het verlengen en verbeteren van dit "
 "scenario!"
