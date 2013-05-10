@@ -75,7 +75,7 @@ def write(comment, string):
 scenario = yaml.load(open('content/scenarios/$1_en.yaml', 'r'))
 metadata = scenario['metadata']
 write('scenario difficulty', prep(metadata['difficulty']))
-write('scenario description', prep(metadata['description']))
+write('scenario description', prep(metadata['description'].rstrip('\n')))
 
 for event in scenario['events']:
 	for action in event['actions']:
