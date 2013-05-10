@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-10 11:08+0200\n"
+"PO-Revision-Date: 2013-05-10 11:28+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -850,9 +850,8 @@ msgid "Sound and Music Artists"
 msgstr "Geluid en Muziek Artiesten"
 
 #: content/gui/xml/mainmenu/credits.xml:60
-#, fuzzy
 msgid "Graphics Artists"
-msgstr "Grafische Artiesten"
+msgstr "Grafisch ontwerpers"
 
 #: content/gui/xml/mainmenu/credits.xml:80
 msgid "Patchers"
@@ -879,7 +878,6 @@ msgid "Translators"
 msgstr "Vertalers"
 
 #: content/gui/xml/mainmenu/credits.xml:134
-#, fuzzy
 msgid "Hosting Weblate"
 msgstr "Hosting van Weblate"
 
@@ -985,8 +983,9 @@ msgid "Chinese"
 msgstr "Chinees"
 
 #: content/gui/xml/mainmenu/credits.xml:325
+#, fuzzy
 msgid "Packagers"
-msgstr ""
+msgstr "Software packagers"
 
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
@@ -1172,8 +1171,9 @@ msgstr "Pipetmodus activeren (gebouwen kopiëren)"
 #. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:45
 #: content/gui/xml/mainmenu/hotkeys.xml:32
+#, fuzzy
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Gezondheidsbalk weergeven"
 
 #. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:48
@@ -1247,9 +1247,8 @@ msgstr "Acties"
 
 #. noi18n_text
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Raster aan/uit"
+msgstr "Weergave aantal beelden per minuut (FPS) aan/uit"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
@@ -1263,7 +1262,6 @@ msgstr "Secundair"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
-#, fuzzy
 msgid "Reset to default"
 msgstr "Standaard herstellen"
 
@@ -1841,7 +1839,7 @@ msgstr ""
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Sneltoetsen"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
@@ -1981,22 +1979,22 @@ msgstr "[{key}] = {text}"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Gewenste toets indrukken"
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 #, python-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} is al toegewezen aan {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:142
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Wilt je deze overschrijven?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:143
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Confirmation for overwriting"
-msgstr "Bevestig overschrijven"
+msgstr "Overschrijven bevestigen"
 
 #: horizons/gui/modules/loadingscreen.py:36
 msgid "Quotes"
@@ -2004,7 +2002,7 @@ msgstr "Citaten"
 
 #: horizons/gui/modules/loadingscreen.py:58
 msgid "Gameplay Tips"
-msgstr "Game-Play Design"
+msgstr "Speltips"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Press 'ESC' to access Game Menu."
