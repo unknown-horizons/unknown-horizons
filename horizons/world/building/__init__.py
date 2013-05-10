@@ -28,7 +28,6 @@ import horizons.globals
 from fife import fife
 
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.i18n.objecttranslations import object_translations
 from horizons.world.ingametype import IngameType
 from horizons.world.production.producer import Producer
 
@@ -52,7 +51,7 @@ class BuildingClass(IngameType):
 		self.settler_level = yaml_data['settler_level']
 		try:
 			# NOTE: tooltip texts are always untranslated here, use db.get_building_tooltip()
-			self.tooltip_text = object_translations[yaml_data['yaml_file']]['tooltip_text']
+			self.tooltip_text = self._strip_translation_marks(yaml_data['yaml_file']['tooltip_text'])
 		except KeyError: # not found => use value defined in yaml unless it is null
 			tooltip_text = yaml_data['tooltip_text']
 			self.tooltip_text = tooltip_text or u''
@@ -119,3 +118,15 @@ class BuildingClass(IngameType):
 			anim = horizons.globals.fife.animationloader.loadResource(path)
 			action.get2dGfxVisual().addAnimation(int(rotation), anim)
 			action.setDuration(anim.getDuration())
+
+	def get_tooltip(self):
+		"""Returns tooltip text of a building class.
+		ATTENTION: This text is automatically translated when loaded
+		already. DO NOT wrap the return value of this method in _()!
+		@return: string tooltip_text
+		"""
+		#xgettext:python-format
+		# You usually do not need to change anything here when translating
+		tooltip = _("{building}: {description}")
+		return tooltip.format(building=self._name,
+		                      description=self.tooltip_text)

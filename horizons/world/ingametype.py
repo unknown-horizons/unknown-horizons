@@ -22,6 +22,7 @@
 import hashlib
 
 from horizons.constants import TIER
+from horizons.i18n import _lazy
 
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
@@ -61,7 +62,7 @@ class IngameType(type):
 
 	def _strip_translation_marks(self, string):
 		if string.startswith("_ "):
-			return string[2:]
+			return _lazy(string[2:])
 		else:
 			return string
 
@@ -84,11 +85,11 @@ class IngameType(type):
 					"Found:\n%s" % (name_data, start_tier)
 					self._level_specific_names[lvl] = name
 				else:
-					self._level_specific_names[lvl] = _(self._strip_translation_marks(name))
+					self._level_specific_names[lvl] = self._strip_translation_marks(name)
 
 			self._name = self._level_specific_names[start_tier] # default name: lowest available
 		else: # assume just one string
-			self._name = _( self._strip_translation_marks( name_data ) )
+			self._name = self._strip_translation_marks( name_data )
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']

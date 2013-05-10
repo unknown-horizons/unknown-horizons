@@ -77,24 +77,20 @@ HEADER = '''\
 #
 ###############################################################################
 
-from horizons.messaging import LanguageChanged
 
-object_translations = {}
 
-def set_translations():
-	"""Instead of overwriting object_translations, operates on the same
-	object (i.e. deleting dict keys, then updating) so that everything
-	importing object_translations once keeps getting updates. #1905, #1909
-	"""
-	global object_translations
-	object_translations.clear()
-	object_translations.update({
+
+
+
+
+
+
+
+object_translations = {
 '''
 
 FOOTER = '''
-	})
-
-LanguageChanged.subscribe(lambda m: set_translations())
+}
 '''
 ROWINDENT = '''
 		'''
