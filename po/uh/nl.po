@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-07 15:37+0200\n"
-"Last-Translator: Joenit Joenit <joenit@hotmail.nl>\n"
+"PO-Revision-Date: 2013-05-10 11:08+0200\n"
+"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -842,9 +842,8 @@ msgid "Programming"
 msgstr "Programmeurs"
 
 #: content/gui/xml/mainmenu/credits.xml:45
-#, fuzzy
 msgid "Game-Play Design"
-msgstr "Game-Play ontwerp"
+msgstr "Spelontwerp"
 
 #: content/gui/xml/mainmenu/credits.xml:52
 msgid "Sound and Music Artists"
@@ -1255,22 +1254,22 @@ msgstr "Raster aan/uit"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Primair"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Secundair"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
+#, fuzzy
 msgid "Reset to default"
 msgstr "Standaard herstellen"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Standaard herstellen"
+msgstr "Standaardtoetsen herstellen"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1294,7 +1293,7 @@ msgstr "Laden ..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Achtergrond veranderen"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
