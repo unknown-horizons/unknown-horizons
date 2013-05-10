@@ -94,7 +94,7 @@ def set_translations():
 FOOTER = '''
 	})
 
-LanguageChanged.subscribe(set_translations)
+LanguageChanged.subscribe(lambda m: set_translations())
 '''
 ROWINDENT = '''
 		'''
