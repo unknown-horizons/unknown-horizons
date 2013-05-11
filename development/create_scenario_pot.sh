@@ -9,17 +9,13 @@
 #
 ###############################################################################
 
-# Extract strings from a scenario file for easy translation in pootle.
+# Extract strings from a scenario file for easy translation in Weblate
 #
-# Usage: sh create_scenario_pot.sh scenario [po-directory]
-#
-# If a path is given, it's assumed to be the path to the translation files
-# from pootle for the scenario, and the .po files in there are used to
-# generate translated scenarios in horizons/scenarios/.
+# Usage: sh create_scenario_pot.sh scenario_name
 #
 # If you are looking for a way to compile the tutorial translations:
-# The file development/copy_pofiles.sh does this (and a bit more). No need to
-# call this script directly thus, unless you want to translate more scenarios.
+# The file development/translate_scenario.py does this. There is, however,
+# no need to call that script directly since it is integrated with Weblate.
 
 # ###################################################
 # Copyright (C) 2008-2013 The Unknown Horizons Team

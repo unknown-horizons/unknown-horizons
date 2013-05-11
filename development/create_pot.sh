@@ -24,7 +24,7 @@
 #    idea what '%s' means, especially with multiple substitutions. BIG FAT NOTE
 #    You will need to add the following line right before your string in python
 #      #xgettext:python-format
-#    for the string to be properly recognized in pootle.          /BIG FAT NOTE
+#    for the string to be properly recognized in Weblate.         /BIG FAT NOTE
 #    This comment can also go inline after the format string, but prefer above.
 #
 # ** I changed or added strings in the tutorial yaml file
@@ -34,8 +34,10 @@
 #    "foobar_en.yaml"
 # => Run  development/create_scenario_pot.sh foobar
 #
-# ** I want to see the current translations from pootle in-game
-# => Run  development/copy_pofiles.sh && ./setup.py build_i18n
+# ** I want to see the current translations from Weblate in-game
+# => Run  ./setup.py build_i18n
+# => You can instead follow this guide:
+#    http://github.com/unknown-horizons/unknown-horizons/wiki/Interface-translation
 #
 # ** I have no idea what 'i18n' means
 # => Short for 'internationalization': i + 18 letters + n.
@@ -43,8 +45,8 @@
 #
 ###############################################################################
 #
-# Create pot files to be uploaded at pootle.
-# (language Templates, project Unknown Horizons)
+# Create pot files for the Weblate subprojects "Interface" (`uh/uh/`) and
+# "MP-Server" (`uh/uh-server/`)
 # Update strings extracted from xml, yaml and sql files.
 
 set -e
