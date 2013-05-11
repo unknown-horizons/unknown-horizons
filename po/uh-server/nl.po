@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-05 15:40+0200\n"
-"PO-Revision-Date: 2013-05-11 11:00+0200\n"
+"PO-Revision-Date: 2013-05-11 11:01+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh-server/nl/>\n"
 "Language: nl\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
-msgstr "De maximale grote per datapakket is overschreden."
+msgstr "De maximale grote per datapakket (per packet size) is overschreden."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
