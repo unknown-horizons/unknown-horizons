@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-10 11:28+0200\n"
+"PO-Revision-Date: 2013-05-11 11:05+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -982,7 +982,6 @@ msgid "Chinese"
 msgstr "Chinees"
 
 #: content/gui/xml/mainmenu/credits.xml:325
-#, fuzzy
 msgid "Packagers"
 msgstr "Software packagers"
 
