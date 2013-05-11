@@ -28,6 +28,9 @@ from glob import glob
 INTERFACE_TRANSLATIONS = glob('po/uh/*.po')
 INTERFACE_TEMPLATE = 'po/uh/unknown-horizons.pot'
 
+MP_SERVER_TRANSLATIONS = glob('po/uh-server/*.po')
+MP_SERVER_TEMPLATE = 'po/uh-server/unknown-horizons-server.pot'
+
 GLOSSARY_TRANSLATIONS = glob('po/terminology/*.po')
 GLOSSARY_TEMPLATE = 'po/terminology/pootle-terminology.pot'
 
@@ -63,9 +66,13 @@ def main():
 	for f in INTERFACE_TRANSLATIONS:
 		update_from_template(f, INTERFACE_TEMPLATE)
 
+	# MP server message translation (old 'mp-server' project in pootle)
+	for f in MP_SERVER_TRANSLATIONS:
+		update_from_template(f, MP_SERVER_TEMPLATE)
+
 	# Glossary translation (old 'terminology' project in pootle)
-	for f in GLOSSARY_TRANSLATIONS:
-		update_from_template(f, GLOSSARY_TEMPLATE)
+	#for f in GLOSSARY_TRANSLATIONS:
+	#	update_from_template(f, GLOSSARY_TEMPLATE)
 
 	# Scenario translation (old 'scenarios' project in pootle)
 	for scenario, translations in SCENARIO_TRANSLATIONS.iteritems():
