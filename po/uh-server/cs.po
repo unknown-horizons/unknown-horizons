@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-09-26 03:59+0200\n"
+"POT-Creation-Date: 2013-05-05 15:40+0200\n"
 "PO-Revision-Date: 2013-03-06 13:28+0000\n"
 "Last-Translator: Lukáš <gryffus@hkfree.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,74 +19,112 @@ msgstr ""
 "X-Generator: Pootle 2.5.0-rc1\n"
 "X-POOTLE-MTIME: 1362576483.0\n"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Zastaralý či nepodporovaný protokol pro hru po síti. Prosím zkontrolujte "
 "verzi hry"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:284
+msgid "You've exceeded the global packet size."
+msgstr ""
+
+#: horizons/network/server.py:285 horizons/network/server.py:303
+msgid "This should never happen. Please contact us or file a bug report."
+msgstr ""
+
+#: horizons/network/server.py:302
+msgid "You've exceeded the per packet size."
+msgstr ""
+
+#: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr "Neznámý, či poškozený packet. Prosím zkontrolujte verzi vaší hry"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
 msgstr "Chybné/Neznámé sezení"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:393
 msgid "You can't join a game while in another game"
 msgstr "Nemůžete vstoupit do hry, pokud již v nějaké jste"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:398
 msgid "Unknown game or game is running a different version"
 msgstr "Neznámá hra, nebo hra běží na jiné verzi"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:401
 msgid "Game has already started. No more joining"
 msgstr "Hra začala. Již se nejde připojit"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:404
 msgid "Game is full"
 msgstr "Hra je obsazena"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:407
 msgid "Wrong password"
 msgstr "Nesprávné heslo"
 
-#: horizons/network/server.py
-msgid "There's already a player with your name inside this game. Change your name"
+#: horizons/network/server.py:424 horizons/network/server.py:532
+#, fuzzy
+msgid "There's already a player with your name inside this game."
 msgstr "Ve hře již je hráč s vaším jménem. Změňte si prosím svou přezdívku"
 
-#: horizons/network/server.py
-msgid "There's already a player with your color inside this game. Change your color"
-msgstr "Ve hře již je hráč s vámi zvolenou barvou. Změňte si prosím svou barvou"
+#: horizons/network/server.py:425
+msgid "Please change your name."
+msgstr ""
 
-#: horizons/network/server.py
-msgid "There's already a player with your unique player ID inside this game. This should never occur."
+#: horizons/network/server.py:428 horizons/network/server.py:560
+#, fuzzy
+msgid "There's already a player with your color inside this game."
+msgstr ""
+"Ve hře již je hráč s vámi zvolenou barvou. Změňte si prosím svou barvou"
+
+#: horizons/network/server.py:429
+msgid "Please change your color."
+msgstr ""
+
+#: horizons/network/server.py:432
+msgid ""
+"There's already a player with your unique player ID inside this game. This "
+"should never occur."
 msgstr "Ve hře již je hráč s vaším unikátním ID. Toto by se nemělo nikdy stát."
 
-#: horizons/network/server.py
+#: horizons/network/server.py:448
 msgid "You are not inside a game"
 msgstr "Nejste ve hře"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:478
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Hra byla ukončena. Zakládající hráč ji opustil."
 
-#: horizons/network/server.py
-msgid "I feel like a bad bunny but one player has terminated the game which currently for technical reasons means that the game cannot continue. Sorry :*("
+#: horizons/network/server.py:482
+msgid ""
+"I feel like a bad bunny but one player has terminated the game which "
+"currently for technical reasons means that the game cannot continue. Sorry :"
+"*("
 msgstr ""
 "Citím se velmi zle, ale jeden hráč ukončil hru, která z technických důvodů "
 "nebude moci pokračovat. Je mi líto :*("
 
-#: horizons/network/server.py
-msgid "There's already a player with your name inside this game. Unable to change your name"
-msgstr "Ve hře již je hráč s vaším jménem. Nelze změnit jméno"
+#: horizons/network/server.py:533
+msgid "Unable to change your name."
+msgstr ""
 
-#: horizons/network/server.py
-msgid "There's already a player with your color inside this game. Unable to change your color"
-msgstr "Ve hře již je hráč s vámi zvolenou barvou. Nelze ji změnit"
+#: horizons/network/server.py:561
+msgid "Unable to change your color."
+msgstr ""
 
-#: horizons/network/server.py
+#: horizons/network/server.py:648
 msgid "You can't fetch a game while in another game"
 msgstr "Nemůžete přeskočit do hry pokud již v nějaké jste"
+
+#~ msgid ""
+#~ "There's already a player with your name inside this game. Unable to "
+#~ "change your name"
+#~ msgstr "Ve hře již je hráč s vaším jménem. Nelze změnit jméno"
+
+#~ msgid ""
+#~ "There's already a player with your color inside this game. Unable to "
+#~ "change your color"
+#~ msgstr "Ve hře již je hráč s vámi zvolenou barvou. Nelze ji změnit"

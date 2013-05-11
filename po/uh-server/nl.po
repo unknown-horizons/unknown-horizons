@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-09-26 03:59+0200\n"
+"POT-Creation-Date: 2013-05-05 15:40+0200\n"
 "PO-Revision-Date: 2013-05-10 11:34+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh-server/nl/>\n"
@@ -19,82 +19,119 @@ msgstr ""
 "X-Generator: Weblate 1.6-dev\n"
 "X-POOTLE-MTIME: 1351867572.0\n"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Oude of niet ondersteunde multiplayer protocol. Gelieve de programmaversie "
 "te controleren"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:284
+msgid "You've exceeded the global packet size."
+msgstr ""
+
+#: horizons/network/server.py:285 horizons/network/server.py:303
+msgid "This should never happen. Please contact us or file a bug report."
+msgstr ""
+
+#: horizons/network/server.py:302
+msgid "You've exceeded the per packet size."
+msgstr ""
+
+#: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr "Onbekend of misvormd pakket. Gelieve de programmaversie controleren"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
 msgstr "Ongeldige/Onbekende sessie"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:393
 msgid "You can't join a game while in another game"
 msgstr "Je kunt niet meedoen met een spel als je nog in een ander spel zit"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:398
 msgid "Unknown game or game is running a different version"
 msgstr "Onbekend spel of een spel uit een andere programmaversie"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:401
 msgid "Game has already started. No more joining"
 msgstr "Het spel is al begonnen. Meedoen is niet meer mogelijk"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:404
 msgid "Game is full"
 msgstr "Het spel is vol"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:407
 msgid "Wrong password"
 msgstr "Verkeerd wachtwoord"
 
-#: horizons/network/server.py
-msgid "There's already a player with your name inside this game. Change your name"
+#: horizons/network/server.py:424 horizons/network/server.py:532
+#, fuzzy
+msgid "There's already a player with your name inside this game."
 msgstr "Er is al een speler met jouw naam is dit spel. Verander jouw naam"
 
-#: horizons/network/server.py
-msgid "There's already a player with your color inside this game. Change your color"
+#: horizons/network/server.py:425
+msgid "Please change your name."
+msgstr ""
+
+#: horizons/network/server.py:428 horizons/network/server.py:560
+#, fuzzy
+msgid "There's already a player with your color inside this game."
 msgstr "Er is al een speler met jouw kleur is dit spel. Verander jouw kleur"
 
-#: horizons/network/server.py
-msgid "There's already a player with your unique player ID inside this game. This should never occur."
+#: horizons/network/server.py:429
+msgid "Please change your color."
+msgstr ""
+
+#: horizons/network/server.py:432
+msgid ""
+"There's already a player with your unique player ID inside this game. This "
+"should never occur."
 msgstr ""
 "Er is al een speler met jouw unieke speler ID in dit spel. Dit zou nooit "
 "mogen voorkomen."
 
-#: horizons/network/server.py
+#: horizons/network/server.py:448
 msgid "You are not inside a game"
 msgstr "Jij zit niet in een spel"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:478
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Het spel is beëindigd. De maker heeft het spel verlaten."
 
 # "I feel like a bad bunny" = idiom
-#: horizons/network/server.py
-msgid "I feel like a bad bunny but one player has terminated the game which currently for technical reasons means that the game cannot continue. Sorry :*("
+#: horizons/network/server.py:482
+msgid ""
+"I feel like a bad bunny but one player has terminated the game which "
+"currently for technical reasons means that the game cannot continue. Sorry :"
+"*("
 msgstr ""
 "Één speler heeft het spel beëindigd, wat momenteel betekend dat om "
-"technische redenen het spel niet verder kan gaan. Excuses voor het ongemak "
-":*("
+"technische redenen het spel niet verder kan gaan. Excuses voor het ongemak :"
+"*("
 
-#: horizons/network/server.py
-msgid "There's already a player with your name inside this game. Unable to change your name"
+#: horizons/network/server.py:533
+msgid "Unable to change your name."
 msgstr ""
-"Er is al een speler met jouw naam is dit spel. Jouw naam kon niet veranderd "
-"worden"
 
-#: horizons/network/server.py
-msgid "There's already a player with your color inside this game. Unable to change your color"
+#: horizons/network/server.py:561
+msgid "Unable to change your color."
 msgstr ""
-"Er is al een speler met jouw kleur in dit spel. Jouw kleur kon niet "
-"verandert worden"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:648
 msgid "You can't fetch a game while in another game"
 msgstr "Je kunt geen spel laden wanneer je nog met een ander spel bezig bent"
+
+#~ msgid ""
+#~ "There's already a player with your name inside this game. Unable to "
+#~ "change your name"
+#~ msgstr ""
+#~ "Er is al een speler met jouw naam is dit spel. Jouw naam kon niet "
+#~ "veranderd worden"
+
+#~ msgid ""
+#~ "There's already a player with your color inside this game. Unable to "
+#~ "change your color"
+#~ msgstr ""
+#~ "Er is al een speler met jouw kleur in dit spel. Jouw kleur kon niet "
+#~ "verandert worden"
