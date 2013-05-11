@@ -46,8 +46,11 @@
 ###############################################################################
 #
 # Create pot files for the Weblate subprojects "Interface" (`uh/uh/`) and
-# "MP-Server" (`uh/uh-server/`)
+# "MP-Server" (`uh/uh-server/`).
 # Update strings extracted from xml, yaml and sql files.
+#
+# You may want to run  development/update_translations.py  afterwards to
+# update all translation files against those new templates.
 
 set -e
 
