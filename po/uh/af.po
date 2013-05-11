@@ -16,7 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
-"X-POOTLE-MTIME: 1363542932.0\n"
 
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."

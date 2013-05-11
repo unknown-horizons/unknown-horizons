@@ -17,7 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 1.6-dev\n"
-"X-POOTLE-MTIME: 1367757717.0\n"
 
 # 86%
 #: run_uh.py:220

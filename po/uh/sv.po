@@ -16,7 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.6-dev\n"
-"X-POOTLE-MTIME: 1364761781.0\n"
 
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
