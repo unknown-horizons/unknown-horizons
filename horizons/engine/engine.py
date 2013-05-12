@@ -68,9 +68,7 @@ class Fife(object):
 		
 		engineSetting = self.engine.getSettings()
 		
-		engineSetting.setDefaultFontGlyphs(self._finalSetting['FontGlyphs'])
 		engineSetting.setDefaultFontPath(self._finalSetting['Font'])
-		engineSetting.setDefaultFontSize(self._finalSetting['DefaultFontSize'])
 		engineSetting.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
 		engineSetting.setInitialVolume(self._finalSetting['InitialVolume'])
 		engineSetting.setSDLRemoveFakeAlpha(self._finalSetting['SDLRemoveFakeAlpha'])

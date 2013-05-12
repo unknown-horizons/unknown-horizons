@@ -51,8 +51,6 @@ DEFAULT_SETTINGS = {
 		'WindowIcon': '',
 
 		'Font': '',
-		'FontGlyphs': r' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`\'*#=[]"',
-		'DefaultFontSize': 12,
 
 		'Lighting': 0,
 		'ColorKeyEnabled': False,
