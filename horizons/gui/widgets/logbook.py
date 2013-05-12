@@ -32,7 +32,7 @@ from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.windows import Window
-from horizons.scenario.actions import show_message, remove_message
+from horizons.scenario.actions import show_message
 
 
 class LogBook(PickBeltWidget, Window):
@@ -271,7 +271,7 @@ class LogBook(PickBeltWidget, Window):
 
 		# If a scenario goal has been completed, remove the corresponding message
 		for message in self._displayed_messages:
-			remove_message(self.session, message)
+			self.session.ingame_gui.message_widget.remove(messagetext)
 
 		self._displayed_messages = [] # Reset displayed messages
 		for parameter_list in _split_on_pagebreaks(parameters):
