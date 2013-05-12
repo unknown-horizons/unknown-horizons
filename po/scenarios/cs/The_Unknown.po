@@ -8,30 +8,29 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:12+0200\n"
-"PO-Revision-Date: 2013-03-06 13:33+0000\n"
-"Last-Translator: Lukáš <gryffus@hkfree.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-12 15:47+0200\n"
+"Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
+"Language-Team: Czech <http://hosted.weblate.org/projects/uh/the-unknown/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #. scenario difficulty
 msgid "easy"
 msgstr "lehká"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm..."
 msgstr ""
 "Jsi kapitán lodi pod vlajkou Anglie roku 1740. Ty a tvoje posádka jste byli "
-"na cestě do Anglické kolonie v Tichém oceánu.\n"
-"Všechno šlo dobře až do chvíle, kdy vás potkala bouře....\n"
+"na cestě do jedné Anglické kolonie uprostřed Tichého oceánu.\n"
+"Všechno šlo dobře až do chvíle, kdy vás potkala bouře..."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
