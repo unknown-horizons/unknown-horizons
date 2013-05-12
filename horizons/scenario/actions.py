@@ -62,6 +62,11 @@ def show_message(session, type=None, *messages):
 	return [session.ingame_gui.message_widget.add_custom(msg, msg_type=type, visible_for=visible_ticks)
 	        for msg in messages]
 
+@register()
+def remove_message(session, messagetext):
+	"""Removes a message with custom text from the messagewidget."""
+	session.ingame_gui.message_widget.remove(messagetext)
+
 @register(name='db_message')
 def show_db_message(session, database_message_id):
 	"""Shows a message with predefined text in the messagewidget."""
