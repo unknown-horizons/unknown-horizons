@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-05 15:40+0200\n"
-"PO-Revision-Date: 2013-03-06 13:28+0000\n"
-"Last-Translator: Lukáš <gryffus@hkfree.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-12 16:36+0200\n"
+"Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
+"Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh-server/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -26,15 +26,17 @@ msgstr ""
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Překročil jsi globální maximální velikost packetu."
 
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Toto by nikdy nemělo nastat. Prosím kontaktujte nás, nebo podejte hlášení o "
+"chybě."
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Překročil jsi maximální velikost konkrétního packetu."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
@@ -65,13 +67,12 @@ msgid "Wrong password"
 msgstr "Nesprávné heslo"
 
 #: horizons/network/server.py:424 horizons/network/server.py:532
-#, fuzzy
 msgid "There's already a player with your name inside this game."
-msgstr "Ve hře již je hráč s vaším jménem. Změňte si prosím svou přezdívku"
+msgstr "V této hře již je hráč s vaším jménem."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
-msgstr ""
+msgstr "Změňte si prosím své jméno."
 
 #: horizons/network/server.py:428 horizons/network/server.py:560
 #, fuzzy
