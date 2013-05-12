@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,7 +35,7 @@ class TileSetLoader(object):
 	for example that would be: ts_shallow/90/0.png
 	Note that all directories except for the rotation dir, all dirs have to be empty and
 	must not include additional tile sets.
-	@param start_dir: directory that is used to begin search in"""
+	"""
 
 	log = logging.getLogger("util.loaders.tilesetloader")
 
@@ -51,7 +51,7 @@ class TileSetLoader(object):
 			if entry.startswith("ts_"):
 				cls.tile_sets[entry] = GeneralLoader._load_action(full_path)
 			else:
-				if os.path.isdir(full_path) and entry != ".svn" and entry != ".DS_Store":
+				if os.path.isdir(full_path) and entry != ".DS_Store":
 					cls._find_tile_sets(full_path)
 
 	@classmethod

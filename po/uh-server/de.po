@@ -6,100 +6,133 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-09-26 03:59+0200\n"
-"PO-Revision-Date: 2012-10-08 14:31+0000\n"
+"POT-Creation-Date: 2013-05-05 15:40+0200\n"
+"PO-Revision-Date: 2013-05-11 10:25+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: German <http://hosted.weblate.org/projects/uh/uh-server/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1349706703.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
 "Veraltetes oder nicht unterstütztes Multiplayerprotokoll. Überprüft bitte "
 "Eure Spielversion"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:284
+msgid "You've exceeded the global packet size."
+msgstr "Die globale Datenpaketgröße wurde überschritten."
+
+#: horizons/network/server.py:285 horizons/network/server.py:303
+msgid "This should never happen. Please contact us or file a bug report."
+msgstr ""
+"Dies sollte niemals auftreten. Bitte kontaktiert das Team und meldet diesen "
+"Fehler."
+
+#: horizons/network/server.py:302
+msgid "You've exceeded the per packet size."
+msgstr "Die Maximalgröße per Datenpaket wurde überschritten."
+
+#: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
 "Unbekanntes oder falsch aufgebautes Paket. Überprüft bitte Eure Spielversion"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
 msgstr "Nicht zulässige/Unbekannte Sitzung"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:393
 msgid "You can't join a game while in another game"
 msgstr ""
 "Ihr könnt keinem Spiel beitreten, während Ihr Euch bereits in einem Spiel "
 "befindet"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:398
 msgid "Unknown game or game is running a different version"
 msgstr "Unbekanntes Spiel oder unterschiedliche Spielversion"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:401
 msgid "Game has already started. No more joining"
 msgstr "Spiel hat schon begonnen. Beitreten ist nicht mehr möglich"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:404
 msgid "Game is full"
 msgstr "Spiel ist voll"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:407
 msgid "Wrong password"
 msgstr "Falsches Passwort"
 
-#: horizons/network/server.py
-msgid "There's already a player with your name inside this game. Change your name"
-msgstr ""
-"Es gibt bereits einen Mitspieler mit Eurem Namen. Versucht einen anderen "
-"Namen"
+#: horizons/network/server.py:424 horizons/network/server.py:532
+msgid "There's already a player with your name inside this game."
+msgstr "Es gibt bereits einen Mitspieler mit Eurem Namen."
 
-#: horizons/network/server.py
-msgid "There's already a player with your color inside this game. Change your color"
-msgstr ""
-"Es gibt bereits einen Mitspieler mit Eurer Farbe. Versucht eine andere Farbe"
+#: horizons/network/server.py:425
+msgid "Please change your name."
+msgstr "Versucht einen anderen Namen."
 
-#: horizons/network/server.py
-msgid "There's already a player with your unique player ID inside this game. This should never occur."
+#: horizons/network/server.py:428 horizons/network/server.py:560
+msgid "There's already a player with your color inside this game."
+msgstr "Es gibt bereits einen Mitspieler mit Eurer Farbe."
+
+#: horizons/network/server.py:429
+msgid "Please change your color."
+msgstr "Versucht eine andere Farbe."
+
+#: horizons/network/server.py:432
+msgid ""
+"There's already a player with your unique player ID inside this game. This "
+"should never occur."
 msgstr ""
 "Es gibt bereits einen Mitspieler mit Eurer eindeutigen Spieler-ID. Dies "
 "sollte niemals auftreten."
 
-#: horizons/network/server.py
+#: horizons/network/server.py:448
 msgid "You are not inside a game"
 msgstr "Ihr befindet euch momentan nicht in einem Spiel"
 
-#: horizons/network/server.py
+#: horizons/network/server.py:478
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Das Spiel wurde beendet. Der Spielersteller hat das Spiel verlassen."
 
-#: horizons/network/server.py
-msgid "I feel like a bad bunny but one player has terminated the game which currently for technical reasons means that the game cannot continue. Sorry :*("
+#: horizons/network/server.py:482
+msgid ""
+"I feel like a bad bunny but one player has terminated the game which "
+"currently for technical reasons means that the game cannot continue. Sorry :"
+"*("
 msgstr ""
 "Ein Spieler hat das Spiel verlassen und das Spiel kann aus technischen "
 "Gründen daher momentan nicht fortgesetzt werden."
 
-#: horizons/network/server.py
-msgid "There's already a player with your name inside this game. Unable to change your name"
-msgstr ""
-"Es gibt bereits einen Mitspieler mit Eurem Namen. Euer Name konnte nicht "
-"abgeändert werden"
+#: horizons/network/server.py:533
+msgid "Unable to change your name."
+msgstr "Euer Name konnte nicht geändert werden."
 
-#: horizons/network/server.py
-msgid "There's already a player with your color inside this game. Unable to change your color"
-msgstr ""
-"Es gibt bereits einen Mitspieler mit Eurer Farbe. Eure Farbe konnte nicht "
-"abgeändert werden"
+#: horizons/network/server.py:561
+msgid "Unable to change your color."
+msgstr "Eure Farbe konnte nicht geändert werden."
 
-#: horizons/network/server.py
+#: horizons/network/server.py:648
 msgid "You can't fetch a game while in another game"
 msgstr ""
 "Ihr könnt keine Spiel-Informationen abfragen, während Ihr Euch bereits in "
 "einem Spiel befindet"
+
+#~ msgid ""
+#~ "There's already a player with your name inside this game. Unable to "
+#~ "change your name"
+#~ msgstr ""
+#~ "Es gibt bereits einen Mitspieler mit Eurem Namen. Euer Name konnte nicht "
+#~ "abgeändert werden"
+
+#~ msgid ""
+#~ "There's already a player with your color inside this game. Unable to "
+#~ "change your color"
+#~ msgstr ""
+#~ "Es gibt bereits einen Mitspieler mit Eurer Farbe. Eure Farbe konnte nicht "
+#~ "abgeändert werden"

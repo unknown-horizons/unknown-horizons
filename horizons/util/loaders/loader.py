@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -34,7 +34,6 @@ class GeneralLoader(object):
 	for example that would be: fisher1/work/90/0.png
 	Note that all directories except for the rotation dir, all dirs have to be empty and
 	must not include additional action sets.
-	@param start_dir: directory that is used to begin search in
 	"""
 
 	log = logging.getLogger("util.loaders.loader")
@@ -140,6 +139,6 @@ class GeneralLoader(object):
 		"""Returns directories that are important for loading action sets.
 		Discards everything else that we found living there in the past.
 		"""
-		junk = set(['.DS_Store', '.svn'])
+		junk = set(('.DS_Store', ))
 		return [d for d in os.listdir(directory)
 		          if d not in junk]

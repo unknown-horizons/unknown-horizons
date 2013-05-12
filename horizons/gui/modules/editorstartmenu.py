@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -65,6 +65,9 @@ class EditorStartMenu(Window):
 		self._right_side = modes[mode](self._windows, self._gui.findChild(name='right_side'))
 		self._right_side.show()
 		self._gui.show()
+
+	def on_return(self):
+		self.act()
 
 	def hide(self):
 		self._gui.hide()

@@ -4,7 +4,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2013-07-01: Milestone 2013.3
-changelog date: APR 08
+changelog date: MAY 01
 
 Gameplay and Balancing
 * New features
@@ -12,7 +12,9 @@ Gameplay and Balancing
 * Modifications and changes
   # 
 * Fixed bugs and problems
-  ~ 
+  ~ 9d4a7e1: crash when clicking on messagewidget messages in scenarios
+  ~ #2039: introduce memory leak to fix `RuntimeError: _[NotFound]_ ,
+    Something was searched, but not found :: action move_as_[corrupted]`
 
 Media Content
 * New files and features
@@ -22,22 +24,27 @@ Media Content
 
 User Interface
 * Additions and new features
-  + loading screen displays readable messages about current stage
+  + d413693: improved loading screen messages about current stage
 * Repositioning and modifications
-  # 
+  # #1310: right clicks in trade route resource selection are now
+    special-cased to abort selection (not empty slot) sometimes
 * Fixed bugs and usability problems
-  ~ 
+  ~ #2081: explanatory labels for map editor
 
 Codebase
 * New functionalities
-  + 
+  + #2077: lazy translation (`speaklater` library)
+  + 3195744: script to update existing translations against new template
 * Modified structures
-  # 
+  # #2053: default hashbang now is `/usr/bin/env python2`
+  # #2058: allow running with FIFE newer than 0.3.4
+  # 0a1d6db: migrate script to translate a scenario to python
 * Fixed crashes and inconsistencies
-  ~ 
+  ~ 3c363f4: handle unknown actions in hotkey settings
 
 User-Contributed Content
 * Translations
+  # Now hosted on http://hosted.weblate.org/projects/uh/
 
 * Campaigns, scenarios and maps
 

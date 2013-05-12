@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -54,11 +54,14 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 		action = KeyConfig().translate(evt)
 		_Actions = KeyConfig._Actions
+		keyval = evt.getKey().getValue()
 
 		key_event_handled = True
 
 		if action == _Actions.ESCAPE:
 			self.gui.on_escape()
+		elif keyval == fife.Key.ENTER:
+			self.gui.on_return()
 		elif action == _Actions.CONSOLE:
 			self.gui.fps_display.toggle()
 		elif action == _Actions.HELP:
@@ -77,7 +80,7 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 			# ingame message if there is a session
 			session = horizons.main._modules.session
 			if session:
-				session.ingame_gui.message_widget.add(point=None, string_id='SCREENSHOT',
+				session.ingame_gui.message_widget.add('SCREENSHOT',
 				                                      message_dict={'file': final_path})
 		elif action == _Actions.QUICKLOAD:
 			horizons.main._load_last_quicksave()

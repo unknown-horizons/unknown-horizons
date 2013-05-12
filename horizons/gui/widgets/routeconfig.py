@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -82,7 +82,7 @@ class RouteConfig(Window):
 
 		# make sure user knows that it's not enabled (if it appears to be complete)
 		if not self.instance.route.enabled and self.instance.route.can_enable():
-			self.session.ingame_gui.message_widget.add(point=None, string_id="ROUTE_DISABLED")
+			self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
 
 	def on_instance_removed(self):
 		self._windows.close()
@@ -257,8 +257,12 @@ class RouteConfig(Window):
 		if event.getButton() == fife.MouseEvent.LEFT:
 			self.show_resource_menu(widget.parent, widget.parent.parent)
 		elif event.getButton() == fife.MouseEvent.RIGHT:
-			# remove the load/unload order
-			self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
+			if self.resource_menu_shown:
+				# abort resource selection (#1310)
+				self.hide_resource_menu()
+			else:
+				# remove the load/unload order
+				self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
 
 	def show_resource_menu(self, slot, entry):
 		position = self.widgets.index(entry)
@@ -364,7 +368,7 @@ class RouteConfig(Window):
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if not self.session.world.diplomacy.can_trade(self.session.world.player, warehouse.owner):
-			self.session.ingame_gui.message_widget.add_custom(point=None, messagetext=_("You are not allowed to trade with this player"))
+			self.session.ingame_gui.message_widget.add_custom(_("You are not allowed to trade with this player"))
 			return
 
 		if len(self.widgets) >= self.MAX_ENTRIES:

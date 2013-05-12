@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -528,7 +528,7 @@ class BuildingTool(NavigationTool):
 				BuildingTool._last_road_built.append(now)
 				if len(BuildingTool._last_road_built) > 2:
 					if (now - BuildingTool._last_road_built[-3]) < 1.2:
-						self.session.ingame_gui.message_widget.add(point=None, string_id="DRAG_ROADS_HINT")
+						self.session.ingame_gui.message_widget.add('DRAG_ROADS_HINT')
 						# don't display hint multiple times at the same build situation
 						BuildingTool._last_road_built = []
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]

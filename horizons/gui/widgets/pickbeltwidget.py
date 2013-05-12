@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,12 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python.callback import Callback
-from horizons.gui.util import load_uh_widget
 from horizons.gui.style import NOTHING
+from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
-
+from horizons.i18n import _lazy
+from horizons.util.python.callback import Callback
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
@@ -83,7 +83,6 @@ class PickBeltWidget(object):
 class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
-	# Can set as class attribute directly since no gettext calls
 	sections = (
 		('credits_team', u'UH-Team'),
 		('credits_patchers', u'Patchers'),

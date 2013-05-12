@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -144,7 +144,7 @@ class IngameGui(LivingObject):
 			return False # user aborted dialog
 		success = self.session.save(savegamename)
 		if success:
-				self.message_widget.add(point=None, string_id='SAVED_GAME')
+				self.message_widget.add('SAVED_GAME')
 
 	def on_escape(self):
 		pass

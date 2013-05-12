@@ -131,6 +131,11 @@ afterwards run ./development/generate_credits.py to refresh this file.
 	<VBox min_size="310,500">
 		<Label text="Translators" name="headline" />
 		<hr />
+		<VBox> <Label text="Hosting Weblate" name="headline" />
+			<VBox name="box">
+				<Label text="Michal Čihař (nijel)" />
+			</VBox>
+		</VBox>
 		<VBox> <Label text="Bulgarian" name="headline" />
 			<VBox name="box">
 				<Label text="balward" />
@@ -350,6 +355,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="Dreimer (Daniel Reimer)" />
 				<Label text="hoehrer (Werner Hoehrer)" />
 				<Label text="Ivanovic (Nils Kneuper)" />
+				<Label text="nijel (Michal Čihař)" />
 				<Label text="Lamoot (Matjaz Lamut)" />
 				<Label text="LinuxDonald (Thomas Kowaliczek)" />
 				<Label text="mattn (Martin Gerhardry)" />

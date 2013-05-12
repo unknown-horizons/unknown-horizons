@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-04 23:52+0200\n"
-"PO-Revision-Date: 2013-01-30 21:35+0000\n"
+"PO-Revision-Date: 2013-05-05 12:11+0000\n"
 "Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -12,58 +12,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.5.0-beta1\n"
-"X-POOTLE-MTIME: 1359581758.0\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367755893.0\n"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (37)
 msgid "game"
 msgstr "gra"
 
 msgid "building"
 msgstr "budynki"
 
-# (poterminology) uh-tutorial/tutorial.pot (43)
-#
-# (poterminology) uh/unknownhorizons.pot (10)
-#
-#
-#
-#. (text of widget: headline)
 msgid "build"
 msgstr "buduj"
 
 msgid "player"
-msgstr "gracz"
+msgstr "gracz----"
 
-#. tab1_headline of gui_buildmenu:build_menu_per_type
 msgid "settlement"
 msgstr "osada"
 
 msgid "ship"
 msgstr "okręt"
 
-#. name_0 of buildings:tent
 msgid "tent"
 msgstr "namiot"
 
-#. name of buildings:farm
 msgid "farm"
 msgstr "farma"
 
-#
 msgid "map"
 msgstr "mapa"
 
 msgid "resource"
 msgstr "towar"
 
-#. name of buildings:warehouse
 msgid "warehouse"
 msgstr "skład"
 
-#. (helptext of widget: city_info_inhabitants)
-#. (text of widget: inhabitants)
 msgid "inhabitants"
 msgstr "mieszkańcy"
 
@@ -79,8 +63,6 @@ msgstr "produkuj"
 msgid "no"
 msgstr "nie"
 
-#. (helptext of widget: trade)
-#. (text of widget: headline)
 msgid "trade"
 msgstr "handel"
 
@@ -106,36 +88,26 @@ msgid "overview"
 msgstr "przegląd"
 
 msgid "running"
-msgstr ""
+msgstr "działa"
 
 msgid "square"
-msgstr ""
+msgstr "plac"
 
-# (poterminology) uh-tutorial/tutorial.pot (11)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 msgid "lumberjack"
 msgstr "drwal"
 
 msgid "unable"
 msgstr "niemożliwe"
 
-#
 msgid "continue"
 msgstr "wznów"
 
-#. name of buildings:mainsquare
 msgid "main square"
 msgstr "rynek"
 
 msgid "production"
 msgstr "produkcja"
 
-# 85%
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "sailors"
 msgstr "marynarze"
 
@@ -148,7 +120,6 @@ msgstr "zapasów"
 msgid "contact"
 msgstr "kontakt"
 
-#. name_2 of buildings:tent
 msgid "house"
 msgstr "dom"
 
@@ -158,25 +129,15 @@ msgstr "menu"
 msgid "tab"
 msgstr "zakładka"
 
-#. (helptext of widget: okButton)
 msgid "close"
 msgstr "zamknij"
 
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of a resource.
 msgid "food"
 msgstr "jedzenie"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-# (poterminology) uh/unknownhorizons.pot (2)
-# 75%
 msgid "free"
 msgstr "darmowy"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (1)
-# 75%
-#. TODO: add support for selecting difficulty levels to the GUI
 msgid "ready"
 msgstr "gotowy"
 
@@ -198,7 +159,6 @@ msgstr "jednostka"
 msgid "version"
 msgstr "wersja"
 
-#. This is a database entry: the name of a resource.
 msgid "fire"
 msgstr "ogień"
 
@@ -217,33 +177,24 @@ msgstr "zapasów"
 msgid "upgrade"
 msgstr "ulepsz"
 
-# (poterminology) uh-tutorial/tutorial.pot (7)
-# (poterminology) uh/unknownhorizons.pot (1)
 msgid "coast"
 msgstr "wybrzeże"
 
-#. (text of widget: game_player_color)
 msgid "color"
 msgstr "kolor"
 
-#. headline of gui_buildmenu:build_menu_per_increment
-#. tab4_headline of gui_buildmenu:build_menu_per_type
 msgid "companies"
 msgstr "firmy"
 
 msgid "file"
 msgstr "plik"
 
-msgid "increment"
-msgstr "stadium rozwoju"
+msgid "tier"
+msgstr ""
 
-# (keyboard)
-#
 msgid "key"
 msgstr "klawisz"
 
-#. (text of widget: taxes_label)
-#. (text of widget: taxes)
 msgid "taxes"
 msgstr "podatki"
 
@@ -253,28 +204,21 @@ msgstr "poborca"
 msgid "connection"
 msgstr "połączenie"
 
-# also check wooden log (part of tree)
 msgid "log"
 msgstr "kłoda"
 
-#. (text of widget: start_multi) Opens widget to join or create multiplayer games
 msgid "multiplayer"
 msgstr "gra wieloosobowa"
 
-# 88%
 msgid "resident"
 msgstr "mieszkaniec"
 
-#. This is a database entry: the name of a resource.
 msgid "wool"
 msgstr "wełna"
 
-#. This is a database entry: the name of a resource.
 msgid "boards"
 msgstr "deski"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-# (poterminology) uh/unknownhorizons.pot (1)
 msgid "built"
 msgstr "zbudowano"
 
@@ -287,34 +231,18 @@ msgstr "wybierz"
 msgid "connect"
 msgstr "połącz"
 
-# (poterminology) uh-tutorial/tutorial.pot (7)
-# (poterminology) uh/unknownhorizons.pot (1)
-# 80%
 msgid "cost"
 msgstr "koszt"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-# (poterminology) uh/unknownhorizons.pot (3)
-#. This is a database entry: the name of a resource.
-#. (helptext of widget: happiness_label)
-#. (helptext of widget: happiness)
 msgid "happiness"
 msgstr "szczęście"
 
 msgid "road"
 msgstr "droga"
 
-#
 msgid "save"
 msgstr "zapis"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#. name of buildings:tree
 msgid "tree"
 msgstr "drzewo"
 
@@ -327,23 +255,12 @@ msgstr "osiągnąć"
 msgid "size"
 msgstr "rozmiar"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-# (poterminology) uh/unknownhorizons.pot (1)
 msgid "add"
 msgstr "dodaj"
 
-# (poterminology) uh-tutorial/tutorial.pot (5)
-# (poterminology) uh/unknownhorizons.pot (2)
 msgid "fisher"
 msgstr "rybak"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 msgid "free trader"
 msgstr "darmowy handlarz"
 
@@ -353,14 +270,12 @@ msgstr "w magazynie"
 msgid "increase"
 msgstr "zwiększyć"
 
-# 75%
 msgid "mode"
 msgstr "tryb"
 
 msgid "password"
 msgstr "hasło"
 
-#. name of buildings:pasture
 msgid "pasture"
 msgstr "pastwisko"
 
@@ -370,29 +285,18 @@ msgstr "zasięg"
 msgid "signal"
 msgstr "sygnał"
 
-# 80%
 msgid "speed"
 msgstr "prędkość"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-#. This is a database entry: the name of a resource.
 msgid "sugar"
 msgstr "cukier"
 
 msgid "access"
 msgstr "dostęp"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-# (poterminology) uh/unknownhorizons.pot (2)
 msgid "build menu"
 msgstr "menu budowy"
 
-#. This is a database entry: the name of a resource.
 msgid "confectionery"
 msgstr "cukiernia"
 
@@ -402,8 +306,6 @@ msgstr "włączone"
 msgid "fetch"
 msgstr ""
 
-#. (text of widget: help)
-#. (text of widget: help) Main / in-game menu entry
 msgid "help"
 msgstr "pomoc"
 
@@ -416,7 +318,6 @@ msgstr "dołącz"
 msgid "level"
 msgstr "poziom"
 
-#
 msgid "move"
 msgstr "przesuń"
 
@@ -426,15 +327,12 @@ msgstr "wielokrotny"
 msgid "please check"
 msgstr "proszę sprawdzić"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-# (poterminology) uh/unknownhorizons.pot (2)
 msgid "potato"
 msgstr "ziemniak"
 
 msgid "settler"
 msgstr "osadnik"
 
-#. (text of widget: total_score)
 msgid "total"
 msgstr "razem"
 
@@ -444,7 +342,6 @@ msgstr "konstrukcja"
 msgid "creator"
 msgstr "twórca"
 
-#. This is a database entry: the name of a resource.
 msgid "faith"
 msgstr "wiara"
 
@@ -466,11 +363,6 @@ msgstr "położenie"
 msgid "multiple buildings"
 msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-# (poterminology) uh/unknownhorizons.pot (2)
-# 87%
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "pioneers"
 msgstr "pionierzy"
 
@@ -484,7 +376,7 @@ msgid "session"
 msgstr "sesja"
 
 msgid "SHIFT"
-msgstr ""
+msgstr "SHIFT"
 
 msgid "slider"
 msgstr "suwak"
@@ -492,7 +384,6 @@ msgstr "suwak"
 msgid "space"
 msgstr "przestrzeń"
 
-#. name_0 of buildings:storagetent
 msgid "storage tent"
 msgstr "namiot magazynowy"
 
@@ -500,18 +391,11 @@ msgid "target"
 msgstr "cel"
 
 msgid "terminated"
-msgstr ""
+msgstr "zakończono"
 
-#. This is a database entry: the name of a resource.
 msgid "tools"
 msgstr "narzędzia"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "account"
 msgstr "konto"
 
@@ -521,35 +405,21 @@ msgstr "aktywny"
 msgid "afford"
 msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-# (poterminology) uh/unknownhorizons.pot (3)
-# 85%
 msgid "animals"
 msgstr "zwierzęta"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
 msgid "Captain's log"
 msgstr "Dziennik kapitański"
 
 msgid "cloth"
 msgstr "tkanina"
 
-# 75%
-#, fuzzy
 msgid "construct"
 msgstr "konstruuj"
 
 msgid "cursor"
-msgstr ""
+msgstr "kursor"
 
-#
 msgid "description"
 msgstr "opis"
 
@@ -559,44 +429,27 @@ msgstr "wpisy"
 msgid "feature"
 msgstr "właściwości"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#. This is a database entry: the name of a resource.
 msgid "fish"
 msgstr "ryba"
 
 msgid "forest"
 msgstr "las"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "from time to time"
 msgstr "od czasu do czasu"
 
 msgid "global"
-msgstr ""
+msgstr "globalna"
 
 msgid "grow"
 msgstr "wzrost"
 
-#. (helptext of widget: happy_icon)
 msgid "happy"
-msgstr ""
+msgstr "szczęśliwy"
 
-#
 msgid "information"
 msgstr "informacja"
 
-#
-#. This is a database entry: the name of a resource.
 msgid "liquor"
 msgstr "alkohol"
 
@@ -616,28 +469,17 @@ msgid "play"
 msgstr "graj"
 
 msgid "please check your"
-msgstr ""
+msgstr "proszę sprawdzić twoje"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#. This is a database entry: the name of a resource.
 msgid "potatoes"
 msgstr "ziemniaki"
 
 msgid "price"
 msgstr "cena"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (1)
-# 75%
 msgid "read"
 msgstr "czytaj"
 
-#
 msgid "screen"
 msgstr "ekran"
 
@@ -645,61 +487,34 @@ msgid "service"
 msgstr "serwis"
 
 msgid "short"
-msgstr ""
+msgstr "krótki"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "solution"
 msgstr "rozwiązanie"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#. (text of widget: headline_sound)
 msgid "sound"
 msgstr "dźwięk"
 
 msgid "special"
 msgstr "specjalne"
 
-#, fuzzy
 msgid "spot"
-msgstr "miejsce (slot)"
+msgstr "miejsce"
 
-#. (text of widget: headline_statistics)
 msgid "statistics"
 msgstr "statystyki"
 
 msgid "store"
 msgstr "sklep"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "team"
 msgstr "drużyna"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-# (poterminology) uh/unknownhorizons.pot (1)
-# 75%
-#, fuzzy
 msgid "tear"
-msgstr "rozdzierać"
+msgstr "niszczyć"
 
 msgid "time to time"
-msgstr ""
+msgstr "od czasu do czasu"
 
 msgid "trading"
 msgstr "handlować"
@@ -717,7 +532,7 @@ msgid "wrong"
 msgstr "zły"
 
 msgid "bar"
-msgstr ""
+msgstr "sztabka"
 
 msgid "bug"
 msgstr "błąd"
@@ -732,7 +547,7 @@ msgid "forum"
 msgstr "forum"
 
 msgid "happen"
-msgstr ""
+msgstr "zdarzyć"
 
 msgid "harvest"
 msgstr "zbiory"
@@ -740,73 +555,65 @@ msgstr "zbiory"
 msgid "in range"
 msgstr "w zasięgu"
 
-#
-#. This is a database entry: the name of a resource.
 msgid "lamb wool"
 msgstr "wełna owcza"
 
 msgid "left the game"
-msgstr ""
+msgstr "opuścić grę"
 
 msgid "lot of boards"
-msgstr ""
+msgstr "dużo desek"
 
 msgid "marketplace"
-msgstr ""
+msgstr "rynek"
 
 msgid "moment"
-msgstr ""
+msgstr "moment"
 
 msgid "playing"
 msgstr "granie"
 
-# 87%
 msgid "produced"
 msgstr "wyprodukowane"
 
 msgid "report"
-msgstr ""
+msgstr "zgłoś"
 
-#. (text of widget: sell_income_label)
 msgid "sale"
 msgstr "sprzedaż"
 
-#
 msgid "school"
 msgstr "szkoła"
 
 msgid "started"
-msgstr ""
+msgstr "zaczynać"
 
 msgid "temporarily"
 msgstr "tymczasowo"
 
 msgid "trade with"
-msgstr ""
+msgstr "handlować z"
 
 msgid "values"
 msgstr "wartości"
 
 msgid "wheel"
-msgstr ""
+msgstr "koło"
 
-#. (helptext of widget: avg_icon)
 msgid "satisfied"
-msgstr ""
+msgstr "satysfakcjonujący"
 
-#. (text of widget: balance)
 msgid "balance"
 msgstr "równowaga"
 
 msgid "load"
 msgstr "załaduj"
 
-#. name_0 of buildings:trail
 msgid "trail"
 msgstr "ścieżka"
 
 msgid "default"
-msgstr ""
+msgstr "domyślne"
 
 msgid "iron"
 msgstr "żelazo"
@@ -814,31 +621,21 @@ msgstr "żelazo"
 msgid "tobacco"
 msgstr "tytoń"
 
-#. This is a database entry: the name of a resource.
 msgid "clay"
 msgstr "glina"
 
-#. (text of widget: money_score)
 msgid "money"
 msgstr "pieniądze"
 
-#. name of buildings:pavilion
 msgid "pavilion"
 msgstr "pawilon"
 
 msgid "tax"
 msgstr "podatek"
 
-#. headline of gui_buildmenu:build_menu_per_type
 msgid "residential"
 msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "stop"
 msgstr "stop"
 
@@ -851,21 +648,11 @@ msgstr "obniżyć"
 msgid "ore"
 msgstr "ruda"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#. (helptext of widget: okButton)
-#. (helptext of widget: cancelButton)
 msgid "return"
 msgstr "powrót"
 
 msgid "savegame"
-msgstr ""
+msgstr "zapis gry"
 
 msgid "consume"
 msgstr "konsumować"
@@ -874,40 +661,23 @@ msgid "idle"
 msgstr "bezrobotni"
 
 msgid "lower"
-msgstr ""
+msgstr "dolny"
 
-#, fuzzy
 msgid "saved"
-msgstr "zapis"
+msgstr "zapisany"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
 msgid "village"
 msgstr "wioska"
 
 msgid "yields"
 msgstr "plony"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "back"
 msgstr "wróć"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (2)
-#. (helptext of widget: found_settlement)
 msgid "build settlement"
 msgstr "zbuduj osadę"
 
-#. This is a database entry: the name of a resource.
 msgid "charcoal"
 msgstr "węgiel drzewny"
 
@@ -915,230 +685,182 @@ msgid "empty"
 msgstr "pusty"
 
 msgid "existing"
-msgstr ""
+msgstr "istniejący"
 
-#, fuzzy
 msgid "fulfill"
-msgstr "spełniać"
+msgstr "zapełniony"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (1)
-#. (text of widget: headline_graphics)
 msgid "graphics"
 msgstr "grafika"
 
 msgid "hunt"
 msgstr "polowanie"
 
-#. name_0 of buildings:lumberjackcamp
 msgid "lumberjack tent"
-msgstr ""
+msgstr "namiot drwala"
 
 msgid "please contact"
-msgstr ""
+msgstr "proszę skontaktować się"
 
-#
-#. name of buildings:potatofield
 msgid "potato field"
 msgstr "pole ziemniaczane"
 
 msgid "seed"
 msgstr "ziarno"
 
-#, fuzzy
 msgid "send"
-msgstr "ziarno"
+msgstr "wyślij"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "sheep"
 msgstr "owca"
 
-#. name of buildings:signalfire
 msgid "signal fire"
 msgstr "ogień sygnałowy"
 
-#
-#. name of buildings:sugarfield
 msgid "sugar field"
 msgstr "pole cukrowe"
 
-#. There was a problem during the 'save game' procedure.
 msgid "error"
-msgstr ""
+msgstr "błąd"
 
 msgid "deposit"
-msgstr ""
+msgstr "depozyt"
 
 msgid "invalid"
-msgstr ""
+msgstr "nieprawidłówy"
 
-#. (text of widget: headline_network)
 msgid "network"
-msgstr ""
+msgstr "sieć"
 
 msgid "route"
-msgstr ""
+msgstr "droga"
 
-#, fuzzy
 msgid "selected"
-msgstr "wybierz"
+msgstr "wybrany"
 
 msgid "boat"
-msgstr ""
+msgstr "łódź"
 
 msgid "create"
-msgstr ""
+msgstr "stwórz"
 
 msgid "filename"
-msgstr ""
+msgstr "nazwa pliku"
 
-#. (text of widget: headline_mouse)
-#, fuzzy
 msgid "mouse"
-msgstr "dom"
+msgstr "mysz"
 
 msgid "partner"
 msgstr "towarzysz"
 
 msgid "reset"
-msgstr ""
+msgstr "reset"
 
 msgid "configuration"
-msgstr ""
+msgstr "konfiguracja"
 
 msgid "delete"
-msgstr ""
+msgstr "usuń"
 
 msgid "enter"
-msgstr ""
+msgstr "enter"
 
-#. (text of widget: lbl_QUICKSAVE)
 msgid "quicksave"
 msgstr ""
 
-#, fuzzy
 msgid "stone"
-msgstr "sklep"
+msgstr "kamień"
 
 msgid "weapon"
-msgstr ""
+msgstr "broń"
 
-#. This is a database entry: the name of a resource.
 msgid "cattle"
 msgstr "bydło"
 
 msgid "message"
-msgstr ""
+msgstr "wiadomość"
 
 msgid "port"
-msgstr ""
+msgstr "port"
 
-#. (text of widget: scenario)
 msgid "scenario"
-msgstr ""
+msgstr "scenariusz"
 
-#, fuzzy
 msgid "spice"
-msgstr "przestrzeń"
+msgstr "przyprawa"
 
-#. This is a database entry: the name of a resource.
 msgid "cocoa"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "corn"
-msgstr ""
+msgstr "kukurydza"
 
 msgid "details"
-msgstr ""
+msgstr "detale"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (2)
-# 80%
 msgid "found"
 msgstr "stwierdzono"
 
-#. This is a database entry: the name of a resource.
 msgid "herbs"
 msgstr "zioła"
 
-#. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
 msgid "pause"
-msgstr ""
+msgstr "pauza"
 
-#. This is a database entry: the name of a resource.
 msgid "pigs"
-msgstr ""
+msgstr "świnie"
 
 msgid "press"
-msgstr ""
+msgstr "naciśnij"
 
-#. (text of widget: quit) Completely shut down UH
 msgid "quit"
-msgstr ""
+msgstr "zamknij"
 
 msgid "savegame file"
-msgstr ""
+msgstr "plik zapisu gry"
 
 msgid "valid"
-msgstr ""
+msgstr "poprawny"
 
 msgid "war"
-msgstr ""
+msgstr "wojna"
 
 msgid "all settlements"
 msgstr ""
 
-#. (helptext of widget: okButton)
 msgid "apply"
-msgstr ""
+msgstr "potwierdź"
 
-#. This is a database entry: the name of a resource.
 msgid "bricks"
-msgstr ""
+msgstr "cegły"
 
-#. (text of widget: headline)
-#. (text of widget: headline_chat)
-#. (text of widget: lbl_CHAT)
 msgid "chat"
-msgstr ""
+msgstr "chat"
 
 msgid "confirm"
-msgstr ""
+msgstr "potwierdź"
 
 msgid "default settings"
-msgstr ""
+msgstr "domyślne ustawienia"
 
-#. (helptext of widget: diplomacyButton)
 msgid "diplomacy"
-msgstr ""
+msgstr "dyplomacja"
 
 msgid "displayed"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "flour"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "grapes"
 msgstr ""
 
 msgid "ground"
 msgstr ""
 
-#. (text of widget: health)
 msgid "health"
 msgstr ""
 
-#. (text of widget: land_score)
 msgid "land"
 msgstr ""
 
@@ -1163,26 +885,21 @@ msgstr ""
 msgid "not ready"
 msgstr ""
 
-#. (helptext of widget: player_name)
 msgid "player name"
 msgstr ""
 
 msgid "quote"
 msgstr ""
 
-#. (text of widget: reset_mouse_sensitivity)
 msgid "reset to default"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#, fuzzy
 msgid "salt"
 msgstr "sprzedaż"
 
 msgid "saved games"
 msgstr ""
 
-#, fuzzy
 msgid "source"
 msgstr "towar"
 
@@ -1198,15 +915,12 @@ msgstr ""
 msgid "allied"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#. name of buildings:alvearies
 msgid "alvearies"
 msgstr ""
 
 msgid "beans"
 msgstr ""
 
-#. name of buildings:boatbuilder
 msgid "boat builder"
 msgstr ""
 
@@ -1216,26 +930,18 @@ msgstr ""
 msgid "capacity"
 msgstr ""
 
-# 87%
-#. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
 msgid "citizens"
 msgstr "mieszkańcy"
 
-#. This is a database entry: the name of a resource.
-#. name of buildings:claydeposit
 msgid "clay deposit"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "cocoa beans"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "community"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "condiments"
 msgstr ""
 
@@ -1257,14 +963,12 @@ msgstr ""
 msgid "disease"
 msgstr ""
 
-#. name of buildings:doctor
 msgid "doctor"
 msgstr "doktor"
 
 msgid "drag"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "education"
 msgstr "edukacja"
 
@@ -1289,21 +993,18 @@ msgstr ""
 msgid "game menu"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "get-together"
 msgstr ""
 
 msgid "going to location"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
 msgid "honeycombs"
 msgstr ""
 
 msgid "inventory"
 msgstr "zapasów"
 
-#. This is a database entry: the name of a resource.
 msgid "iron ore"
 msgstr ""
 
@@ -1313,8 +1014,6 @@ msgstr ""
 msgid "linux users"
 msgstr ""
 
-#. (text of widget: loadgame)
-#. (text of widget: loadgame) Open a widget to select which game to load
 msgid "load game"
 msgstr ""
 
@@ -1354,21 +1053,18 @@ msgstr ""
 msgid "production overview"
 msgstr ""
 
-#. (text of widget: lbl_QUICKLOAD)
 msgid "quickload"
 msgstr ""
 
 msgid "random"
 msgstr ""
 
-#. (text of widget: random)
 msgid "random map"
 msgstr ""
 
 msgid "related"
 msgstr ""
 
-#. (text of widget: headline)
 msgid "related buildings"
 msgstr ""
 
@@ -1381,29 +1077,15 @@ msgstr ""
 msgid "run out"
 msgstr ""
 
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (helptext of widget: running_costs_label)
-#. (helptext of widget: running_costs)
-#. (text of widget: running_costs_label)
-#. (text of widget: running_costs)
 msgid "running costs"
 msgstr "koszty utrzymania"
 
-#. (text of widget: lbl_SCREENSHOT)
 msgid "screenshot"
 msgstr ""
 
 msgid "selected units"
 msgstr ""
 
-#, fuzzy
 msgid "settled"
 msgstr "osadnik"
 
@@ -1419,7 +1101,6 @@ msgstr ""
 msgid "system"
 msgstr ""
 
-#, fuzzy
 msgid "tile"
 msgstr "czas"
 
@@ -1441,166 +1122,44 @@ msgstr ""
 msgid "written"
 msgstr ""
 
-#~ msgid "your inhabitants"
-#~ msgstr "twoi mieszkańcy"
 
-#~ msgid "Unknown Horizons"
-#~ msgstr "Unknown Horizons"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-# (poterminology) uh/unknownhorizons.pot (2)
-#~ msgid "your"
-#~ msgstr "twój"
 
-#~ msgid "your settlement"
-#~ msgstr "twoja osada"
 
-# 88%
-#~ msgid "merchants"
-#~ msgstr "kupcy"
 
-# 90%
-#~ msgid "aristocrats"
-#~ msgstr "arystokraci"
 
-# 80%
-#~ msgid "grows"
-#~ msgstr "wzrost"
 
-#~ msgid "issues"
-#~ msgstr "problemy"
 
-# 83%
-#~ msgid "yield"
-#~ msgstr "zysk"
 
-#~ msgid "your ship"
-#~ msgstr "twój statek"
 
-#~ msgid "unload"
-#~ msgstr "wyładuj"
 
-#~ msgid "condition"
-#~ msgstr "kondycja (stan)"
 
-# 80%
-#, fuzzy
-#~ msgid "hunts"
-#~ msgstr "polowania"
 
-#~ msgid "branch office"
-#~ msgstr "faktorii handlowej"
 
-#~ msgid "raw"
-#~ msgstr "surowy"
 
-# 80%
-#~ msgid "moved"
-#~ msgstr "przesunięty"
 
-# (poterminology) uh-tutorial/tutorial.pot (6)
-# (poterminology) uh/unknownhorizons.pot (1)
-#~ msgid "hunter"
-#~ msgstr "łowca"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (2)
-#~ msgid "market"
-#~ msgstr "rynek"
 
-#~ msgid "sailor"
-#~ msgstr "marynarz"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#~ msgid "pioneer"
-#~ msgstr "pionier"
 
-#~ msgid "citizen"
-#~ msgstr "mieszkaniec"
 
-#~ msgid "merchant"
-#~ msgstr "kupiec"
 
-#~ msgid "aristocrat"
-#~ msgstr "arystokrata"
 
-#
-#~ msgid "refresh"
-#~ msgstr "odśwież"
 
-#~ msgid "residents"
-#~ msgstr "mieszkańcy"
 
-#~ msgid "output"
-#~ msgstr "wyjście"
 
-#~ msgid "weaver"
-#~ msgstr "tkacz"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#~ msgid "animal"
-#~ msgstr "zwierzę"
 
-#
-#~ msgid "fisherman"
-#~ msgstr "rybak"
 
-#
-#~ msgid "load/unload"
-#~ msgstr "załaduj/rozładuj"
 
-#
-#~ msgid "ship inventory"
-#~ msgstr "ładownia okrętu"
 
-#~ msgid "starting"
-#~ msgstr "startować"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (1)
-#~ msgid "green"
-#~ msgstr "zielony"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#~ msgid "red"
-#~ msgstr "czerwony"
 
-#~ msgid "dialogue"
-#~ msgstr "dialog"
 
-#~ msgid "ruin"
-#~ msgstr "ruina"
 
-#~ msgid "salt ponds"
-#~ msgstr "uncje soli"
 
-#~ msgid "pig"
-#~ msgstr "świnia"
 
-#~ msgid "herbary"
-#~ msgstr "zielarz"
 
-#~ msgid "butchery"
-#~ msgstr "rzeźnik"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (2)
-#~ msgid "market place"
-#~ msgstr "targ"
+

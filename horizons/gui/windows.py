@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -74,6 +74,10 @@ class Window(object):
 		By default, the window will be closed.
 		"""
 		self._windows.close()
+
+	def on_return(self):
+		"""Define what happens when RETURN is pressed."""
+		pass
 
 	def _show_modal_background(self):
 		"""
@@ -319,6 +323,13 @@ class WindowManager(object):
 			return
 
 		self._windows[-1].on_escape()
+
+	def on_return(self):
+		"""Let the topmost window handle a return key event."""
+		if not self._windows:
+			return
+
+		self._windows[-1].on_return()
 
 	@property
 	def visible(self):

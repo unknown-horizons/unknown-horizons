@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,14 +33,17 @@
 #
 ###############################################################################
 
+import re
+import os
 import sys
+from xml.dom import minidom
 
 if len(sys.argv) != 2:
 	print 'Error: Provide a file to write strings to as argument. Exiting.'
 	sys.exit(1)
 
 header = '''# ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -100,7 +103,6 @@ FILE = '''
 '''
 
 ENTRY = '''\
-		# ({attribute} of widget: {widget}){comment}
 		({widget!r:<32}, {attribute!r:<10}): {text},
 '''
 
@@ -110,9 +112,7 @@ files_to_skip = [
 	'startup_error_popup.xml',
 	]
 
-from xml.dom import minidom
-import os
-import sys
+KEEP_STUFF_RE = re.compile(r'noi18n_\w+')
 
 def print_n_no_name(n, text):
 	print '\tWarning: ',
@@ -146,8 +146,13 @@ def content_from_element(element_name, parse_tree, attribute):
 		name = element.getAttribute('name')
 		text = element.getAttribute(attribute)
 		i18n = element.getAttribute('comment') # translator comment about widget context
-		if i18n.startswith('noi18n'):
-			# comment='noi18n foo' in widgets where translation is not desired
+		if i18n == 'noi18n':
+			# comment='noi18n' in widgets where translation is not desired
+			continue
+
+		if 'noi18n_%s' % attribute in i18n:
+			# comment='noi18n_tooltip' in widgets where tooltip translation is not
+			# desired, but text should be translated.
 			continue
 
 		if not name:
@@ -156,13 +161,12 @@ def content_from_element(element_name, parse_tree, attribute):
 			elif text:
 				print_n_no_name(element_name, text)
 
-		if text and name and not i18n.startswith('noi18n'):
+		if text and name:
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
 				text = '_("%s")' % text
-			comment = ' %s' % (i18n) if i18n else ''
-			newline = ENTRY.format(attribute=attribute, comment=comment, widget=name, text=text)
+			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
 	return ''.join(sorted(element_strings))

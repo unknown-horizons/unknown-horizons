@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -107,11 +107,17 @@ class SimpleMessageBus(object):
 	def subscribe(self, type, callback):
 		if type not in self._message_types:
 			raise TypeError("Unsupported type")
+		if callback in self._callbacks[type]:
+			raise Exception("Callback %s already subscribed to %s" % (callback, type))
 
 		self._callbacks[type].append(callback)
 
 	def unsubscribe(self, type, callback):
 		self._callbacks[type].remove(callback)
+
+	def discard(self, type, callback):
+		if callback in self._callbacks[type]:
+			self._callbacks[type].remove(callback)
 
 	def broadcast(self, type, *args, **kwargs):
 		if type not in self._message_types:

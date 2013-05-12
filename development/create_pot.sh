@@ -24,7 +24,7 @@
 #    idea what '%s' means, especially with multiple substitutions. BIG FAT NOTE
 #    You will need to add the following line right before your string in python
 #      #xgettext:python-format
-#    for the string to be properly recognized in pootle.          /BIG FAT NOTE
+#    for the string to be properly recognized in Weblate.         /BIG FAT NOTE
 #    This comment can also go inline after the format string, but prefer above.
 #
 # ** I changed or added strings in the tutorial yaml file
@@ -34,8 +34,10 @@
 #    "foobar_en.yaml"
 # => Run  development/create_scenario_pot.sh foobar
 #
-# ** I want to see the current translations from pootle in-game
-# => Run  development/copy_pofiles.sh && ./setup.py build_i18n
+# ** I want to see the current translations from Weblate in-game
+# => Run  ./setup.py build_i18n
+# => You can instead follow this guide:
+#    http://github.com/unknown-horizons/unknown-horizons/wiki/Interface-translation
 #
 # ** I have no idea what 'i18n' means
 # => Short for 'internationalization': i + 18 letters + n.
@@ -43,9 +45,14 @@
 #
 ###############################################################################
 #
-# Create pot files to be uploaded at pootle.
-# (language Templates, project Unknown Horizons)
+# Create pot files for the Weblate subprojects "Interface" (`uh/uh/`) and
+# "MP-Server" (`uh/uh-server/`).
 # Update strings extracted from xml, yaml and sql files.
+#
+# You may want to run  development/update_translations.py  afterwards to
+# update all translation files against those new templates.
+
+set -e
 
 # script assumes working dir to be our base directory
 cd "$(dirname "$0")"/..
@@ -59,32 +66,47 @@ XML_PY_FILE=horizons/i18n/guitranslations.py
 YAML_PY_FILE=horizons/i18n/objecttranslations.py
 SQL_POT_FILE=horizons/i18n/sqlite_strings.pot
 
-function strip_entries()
+function strip_itstool()
 {
-  # some strings contain two entries per line => remove line numbers from both
-  perl -pi -e 's@(#: .*):[0-9]+@\1@g' "$1"
-  perl -pi -e 's@(#: .*):[0-9]+@\1@g' "$1"
+  # Remove lines containing comments like these ones:
+  #. (itstool) path: Container/Label@text
+  #. (itstool) comment: Container/Label@text
+  sed -i '/^#\. (itstool) /d' $1
+}
+
+function reset_if_empty()
+{
+  # See whether anything except version and date changed in header (2+ 2-)
+  # If so, reset file to previous version in git (no update necessary)
   numstat=$(git diff --numstat -- "$1" | cut -f1,2)
   if [ "$numstat" = "2	2" ]; then
-    # no need to commit, only program version and date in header changed (2+ 2-)
     echo "  -> No content changes in $1, resetting to previous state."
     git checkout -- "$1"
   fi
 }
 
-PYTHONPATH="." python2 development/extract_strings_from_xml.py $XML_PY_FILE
+PYTHONPATH="." python2 development/extract_strings_from_xml.py "$XML_PY_FILE"
 echo "   * Regenerated xml translation file at $XML_PY_FILE."
-PYTHONPATH="." python2 development/extract_strings_from_objects.py $YAML_PY_FILE
+PYTHONPATH="." python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
 echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
-PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > $SQL_POT_FILE
+PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
 echo "   * Regenerated sql translation file at $SQL_POT_FILE."
+
+
+echo "=> Creating UH gettext pot template file at $RESULT_FILE."
+# XML files
+find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
+  itstool -i development/its-rule-pychan.xml \
+          -i development/its-rule-uh.xml \
+          -o "$RESULT_FILE"
 
 # Get all files to translate.
 (
   find . -mindepth 1 -maxdepth 1 -name \*.py && \
-  find horizons -name \*.py && \
-  echo $SQL_POT_FILE
-) | xgettext --files-from=- --output=$RESULT_FILE \
+  find horizons \( -name \*.py ! -name "guitranslations.py" \) && \
+  echo "$SQL_POT_FILE"
+) | xgettext --files-from=- --output="$RESULT_FILE" \
+             --join-existing \
              --from-code=UTF-8 --add-comments \
              --no-wrap --sort-by-file \
              --copyright-holder='The Unknown Horizons Team' \
@@ -94,15 +116,16 @@ echo "   * Regenerated sql translation file at $SQL_POT_FILE."
              --keyword=N_:1,2 \
              --keyword=_lazy
 # --keyword=N_ also catches N_() plural-aware ngettext calls
-echo "=> Creating UH gettext pot template file at ${RESULT_FILE}."
-strip_entries $RESULT_FILE
+strip_itstool "$RESULT_FILE"
+reset_if_empty "$RESULT_FILE"
 
 
 # generate translation file for server
 # empty --keyword disables all known keywords
+echo "=> Creating UH Server gettext pot template file at $RESULT_FILE_SERVER."
 (
   find horizons/network -iname \*.py
-) | xgettext --files-from=- --output=$RESULT_FILE_SERVER \
+) | xgettext --files-from=- --output="$RESULT_FILE_SERVER" \
              --from-code=UTF-8 --add-comments \
              --no-wrap --sort-by-file \
              --copyright-holder='The Unknown Horizons Team' \
@@ -113,5 +136,4 @@ strip_entries $RESULT_FILE
              --keyword=S_:2 \
              --keyword=SN_:2,3 \
              --keyword=__
-echo "=> Creating UH Server gettext pot template file at ${RESULT_FILE_SERVER}."
-strip_entries $RESULT_FILE_SERVER
+reset_if_empty "$RESULT_FILE_SERVER"

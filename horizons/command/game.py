@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -43,7 +43,7 @@ class SaveCommand(Command):
 		success = session._do_save(path)
 		if success:
 			# TODO: distinguish auto/quick/normal
-			session.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
+			session.ingame_gui.message_widget.add('SAVED_GAME')
 		else:
 			session.ingame_gui.show_popup(_('Error'), _('Failed to save.'))
 

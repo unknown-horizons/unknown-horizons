@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -34,7 +34,7 @@ from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
-from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
+from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu,
                                   SelectSavegameDialog, LoadingScreen, SettingsDialog)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager, Window
@@ -100,7 +100,7 @@ class Gui(object):
 
 		self.singleplayermenu = SingleplayerMenu(self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
-		self.help_dialog = HelpDialog(self.windows)
+		self.help_dialog = None
 		self.loadingscreen = LoadingScreen()
 		self.settings_dialog = SettingsDialog(self.windows)
 		self.mainmenu = MainMenu(self, self.windows)
@@ -143,6 +143,9 @@ class Gui(object):
 
 	def on_escape(self):
 		self.windows.on_escape()
+
+	def on_return(self):
+		self.windows.on_return()
 
 	def close_all(self):
 		self.windows.close_all()

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -183,7 +183,7 @@ class TradePostComponent(ChangeListener, Component):
 
 		def err(string, err_type):
 			if not suppress_messages and ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(point=ship.position, messagetext=string)
+				self.session.ingame_gui.message_widget.add_custom(string, point=ship.position)
 			return 0 if not add_error_type else (0, err_type)
 
 		if resource_id not in self.sell_list:
@@ -225,7 +225,7 @@ class TradePostComponent(ChangeListener, Component):
 
 		def err(string, err_type):
 			if not suppress_messages and ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(point=ship.position, messagetext=string)
+				self.session.ingame_gui.message_widget.add_custom(string, point=ship.position)
 			return 0 if not add_error_type else 0, err_type
 
 		if resource_id not in self.buy_list:

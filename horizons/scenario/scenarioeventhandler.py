@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -79,11 +79,10 @@ class ScenarioEventHandler(LivingObject):
 
 		self.sleep_ticks_remaining = 0
 
-		self.start()
-
 
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
+		self.check_events("game_started")
 		Scheduler().add_new_object(self._scheduled_check, self,
 		                           run_in=Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL),
 		                           loops=-1)
@@ -149,19 +148,29 @@ class ScenarioEventHandler(LivingObject):
 			self._remove_event(event)
 
 	def get_map_file(self):
-		return self._data['mapfile']
+		try:
+			return self._data['metadata']['mapfile']
+		except KeyError:
+			# Old scenario format
+			return self._data['mapfile']
 
 	@classmethod
 	def get_metadata_from_file(cls, filename):
-		"""Returns (difficulty, author, description) from a yaml file.
-		Returns "unknown" for all of these fields not specified.
-		@throws InvalidScenarioFile"""
+		"""Returns metadata dictionary from a yaml scenario file.
+
+		Dictionary contains "unknown" for all of these fields if not specified
+		in the scenario file:
+		 - difficulty
+		 - author
+		 - description
+
+		@throws InvalidScenarioFileFormat on yaml parse error
+		"""
 		fallback = _('unknown')
-		yamldata = cls._parse_yaml_file(filename)
-		difficulty = yamldata.get('difficulty', fallback)
-		author = yamldata.get('author', fallback)
-		desc = yamldata.get('description', fallback)
-		return difficulty, author, desc
+		metadata = cls._parse_yaml_file(filename).get('metadata', {})
+		for required_key in ('author', 'difficulty', 'description'):
+			metadata.setdefault(required_key, fallback)
+		return metadata
 
 	def drop_events(self):
 		"""Removes all events. Useful when player lost."""

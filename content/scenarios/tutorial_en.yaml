@@ -410,8 +410,8 @@ events:
    - type: set_var
      arguments: ["tutorial_progress", 16]
   conditions:
-   - type: time_passed
-     arguments: [0]
+   - type: game_started
+     arguments: []
 
 - # Tell the player to build the first building - lumberjack
   actions:
@@ -653,10 +653,11 @@ events:
    - type: var_gt
      arguments: ["tutorial_progress", 60]
 
-mapfile: development.sqlite
-difficulty: Tutorial
-author: The UH team
-description: |
- The tutorial:
- Build your first settlement and learn how to play!
-locale: en
+metadata:
+  mapfile: development.sqlite
+  difficulty: Tutorial
+  author: The UH team
+  description: |
+   The tutorial:
+   Build your first settlement and learn how to play!
+  locale: en

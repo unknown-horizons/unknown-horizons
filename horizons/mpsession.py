@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -93,7 +93,10 @@ class MPSession(Session):
 					return False
 				else:
 					return True
-			sanity_criteria = _("The filename must consist only of letters, numbers, spaces and _.-")
+			sanity_criteria = _(
+				"The filename must consist only of letters, numbers, spaces "
+				"and these characters: _ . -"
+			)
 			savegamename = self.gui.show_select_savegame(mode='mp_save', sanity_checker=sanity_checker,
 			                                             sanity_criteria=sanity_criteria)
 			if savegamename is None:

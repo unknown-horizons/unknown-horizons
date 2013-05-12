@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,6 +28,7 @@ import horizons.globals
 from horizons.constants import LANGUAGENAMES
 from horizons.engine import UH_MODULE, FIFE_MODULE
 from horizons.i18n import _lazy, find_available_languages
+from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
@@ -47,6 +48,7 @@ class SettingsDialog(PickBeltWidget, Window):
 
 	widget_xml = 'settings.xml'
 	sections = (('graphics_settings', _lazy('Graphics')),
+	            ('hotkeys_settings', _lazy('Hotkeys')),
 			    ('game_settings', _lazy('Game')))
 
 	def __init__(self, windows):
@@ -103,6 +105,12 @@ class SettingsDialog(PickBeltWidget, Window):
 
 		self._fill_widgets()
 
+		# key configuration
+		hk = HotkeyConfiguration()
+		number = self.sections.index(('hotkeys_settings', _('Hotkeys')))
+		self.page_widgets[number].addChild(hk.widget)
+		self.hotkey_interface = hk
+
 	def show(self):
 		self.widget.show()
 
@@ -115,6 +123,7 @@ class SettingsDialog(PickBeltWidget, Window):
 				u" " + _("Do you want to continue?")
 
 		if self._windows.show_popup(title, msg, show_cancel_button=True):
+			self.hotkey_interface.reset_to_default()
 			self._settings.set_defaults()
 
 	def apply_settings(self):
@@ -149,6 +158,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			message = _("Some of your changes require a restart of Unknown Horizons.")
 			self._windows.show_popup(headline, message)
 
+		self.hotkey_interface.save_settings()
 		self._settings.apply()
 		self._settings.save()
 		self._windows.close()

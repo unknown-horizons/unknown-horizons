@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,9 +18,10 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import collections
 
+import collections
 import logging
+
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
@@ -81,7 +82,7 @@ class StrategyManager(object):
 		for player in [self.owner, other_player]:
 			resources_value = 0.0
 			for settlement in player.settlements:
-				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount\
+				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount
 					in settlement.get_component(StorageComponent).inventory.itercontents() if self.session.db.get_res_value(resource)))
 			resource_values.append(resources_value)
 		ai_resources, enemy_resources = resource_values
@@ -255,7 +256,7 @@ class StrategyManager(object):
 
 	def request_to_pause_mission(self, mission, **environment):
 		"""
-		@return: returns True is mission is allowed to pause, False otherwise
+		@return: returns True if mission is allowed to pause, False otherwise
 		@rtype: bool
 		"""
 		# TODO: make that decision based on environment (**environment as argument)

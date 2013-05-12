@@ -4,7 +4,7 @@
 
 	<VBox name="map_settings"  padding="8">
 		<HBox name="seed_string">
-			<Label name="seed_string_lbl" min_size="150,20" text="Seed:" />
+			<Label name="seed_string_lbl" min_size="150,20" text="Seed:" comment="String to initialize random number generator with" />
 			<TextField name="seed_string_field" max_size="250,20" min_size="125,20" />
 		</HBox>
 		<HBox name="map_size">

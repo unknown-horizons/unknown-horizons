@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -91,7 +91,7 @@ class SettlementManager(WorldObject):
 
 		if not self.feeder_island:
 			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes,
-				self.personality.initial_citizen_taxes, self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades, \
+				self.personality.initial_citizen_taxes, self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades,
 				self.personality.initial_pioneer_upgrades, self.personality.initial_settler_upgrades)
 
 	def __init(self, land_manager):

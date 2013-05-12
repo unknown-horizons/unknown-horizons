@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -203,7 +203,7 @@ class Fife(object):
 			keys = self._default_hotkeys.get(action)
 		else:
 			keys = self._setting.get(KEY_MODULE, action)
-		return sorted(keys, key=len)
+		return keys
 
 	def set_key_for_action(self, action, newkey):
 		"""Replaces all existing hotkeys for *action* with *newkey*."""
@@ -211,9 +211,28 @@ class Fife(object):
 
 	def add_key_for_action(self, action, addkey):
 		"""Adds hotkey *addkey* to list of hotkeys for action *action*."""
-		old_keys = self._setting.get(KEY_MODULE, action, defaultValue=[])
+		old_keys = self._setting.get(KEY_MODULE, action, [])
 		new_keys = set(old_keys + [addkey])
 		self.set_key_for_action(action, list(new_keys))
+
+	def remove_key_for_action(self, action, remkey):
+		"""Removes hotkey *remkey* from list of hotkeys for action *action*."""
+		old_keys = self._setting.get(KEY_MODULE, action, [])
+		if remkey in old_keys:
+				old_keys.remove(remkey)
+		if len(old_keys) == 0:
+				print 'Cannot have no binding for action'
+				return
+		self.set_key_for_action(action, old_keys)
+
+	def replace_key_for_action(self, action, oldkey, newkey):
+		"""Replaces key *oldkey* with key *newkey* for action *action*"""
+		old_keys = self._setting.get(KEY_MODULE, action, [])
+		if not oldkey in old_keys:
+			return
+		index = old_keys.index(oldkey)
+		old_keys[index] = newkey
+		self.set_key_for_action(action, old_keys)
 
 	def save_settings(self):
 		self._setting.save()

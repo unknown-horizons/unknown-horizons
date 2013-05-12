@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -41,8 +41,6 @@ remf = []
 remd = []
 
 for root, dirs, files in os.walk('.'):
-	if '.svn' in dirs:
-		dirs.remove('.svn')
 	if 'development' in dirs:
 		dirs.remove('development')
 	if '.git' in dirs:

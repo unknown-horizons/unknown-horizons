@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -57,14 +57,14 @@ class EditorSession(Session):
 		self.log.debug("Session: autosaving map")
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, 'autosave')
 		if success:
-			self.ingame_gui.message_widget.add(point=None, string_id='AUTOSAVE')
+			self.ingame_gui.message_widget.add('AUTOSAVE')
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
 		self.log.debug("Session: quicksaving map")
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, 'quicksave')
 		if success:
-			self.ingame_gui.message_widget.add(point=None, string_id='QUICKSAVE')
+			self.ingame_gui.message_widget.add('QUICKSAVE')
 		else:
 			headline = _("Failed to quicksave.")
 			descr = _("An error happened during quicksave.") + u"\n" + _("Your map has not been saved.")

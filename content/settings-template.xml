@@ -12,8 +12,6 @@
 		<Setting name="WindowTitle" type="str">Unknown Horizons</Setting>
 		<Setting name="WindowIcon" type="str">content/gui/images/logos/uh_32.png</Setting>
 		<Setting name="Font" type="str"> content/fonts/LinLibertine.ttf </Setting>
-		<Setting name="FontGlyphs" strip="0" type="str"> abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?-+/():;%&amp;`'*#=[]\"</Setting>
-		<Setting name="DefaultFontSize" type="int"> 15 </Setting>
 		<Setting name="LogModules" type="list"> all </Setting>
 		<Setting name="PychanDebug" type="bool"> False </Setting>
 		<Setting name="LogToPrompt" type="bool"> False </Setting>
@@ -72,7 +70,7 @@
 		<Setting name="HEALTH_BAR" type="list"> K </Setting>
 		<Setting name="LOGBOOK" type="list"> L </Setting>
 		<Setting name="PIPETTE" type="list"> O </Setting>
-		<Setting name="PAUSE" type="list"> P </Setting>
+		<Setting name="PAUSE" type="list"> P ; PAUSE </Setting>
 		<Setting name="ROAD_TOOL" type="list"> R </Setting>
 		<Setting name="SCREENSHOT" type="list"> S </Setting>
 		<Setting name="TRANSLUCENCY" type="list"> T </Setting>
@@ -97,6 +95,6 @@
 		<Setting name="DEBUG" type="list"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 32 </Setting>
+		<Setting name="SettingsVersion" type="int"> 34 </Setting>
 	</Module>
 </Settings>

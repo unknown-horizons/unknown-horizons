@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -121,6 +121,7 @@ class Session(LivingObject):
 	def start(self):
 		"""Actually starts the game."""
 		self.timer.activate()
+		self.scenario_eventhandler.start()
 		self.reset_autosave()
 		SettingChanged.subscribe(self._on_setting_changed)
 

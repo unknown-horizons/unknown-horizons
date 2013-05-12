@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -50,7 +50,7 @@ class SPSession(Session):
 		success = self._do_save(SavegameManager.create_autosave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(autosaves=True)
-			self.ingame_gui.message_widget.add(point=None, string_id='AUTOSAVE')
+			self.ingame_gui.message_widget.add('AUTOSAVE')
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
@@ -59,7 +59,7 @@ class SPSession(Session):
 		success = self._do_save(SavegameManager.create_quicksave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(quicksaves=True)
-			self.ingame_gui.message_widget.add(point=None, string_id='QUICKSAVE')
+			self.ingame_gui.message_widget.add('QUICKSAVE')
 		else:
 			headline = _("Failed to quicksave.")
 			descr = _("An error happened during quicksave.") + u"\n" + _("Your game has not been saved.")
@@ -81,5 +81,5 @@ class SPSession(Session):
 
 		success = self._do_save(savegamename)
 		if success:
-			self.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
+			self.ingame_gui.message_widget.add('SAVED_GAME')
 		return success

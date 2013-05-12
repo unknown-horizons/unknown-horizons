@@ -18,4 +18,5 @@ events:
   conditions:
   - {type: building_num_of_type_greater, arguments: [BUILDINGS.FISHER, 0]}
 
-mapfile: development.sqlite
+metadata:
+  mapfile: development.sqlite

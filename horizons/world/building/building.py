@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,18 +23,19 @@ import logging
 
 from fife import fife
 
+from horizons.command.building import Build
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.componentholder import ComponentHolder
+from horizons.constants import RES, LAYERS, GAME
 from horizons.scheduler import Scheduler
-from horizons.world.concreteobject import ConcreteObject
-from horizons.world.settlement import Settlement
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
 from horizons.util.shapes import ConstRect, distances, Point
 from horizons.util.worldobject import WorldObject
-from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
-from horizons.command.building import Build
-from horizons.component.storagecomponent import StorageComponent
-from horizons.component.componentholder import ComponentHolder
+from horizons.world.concreteobject import ConcreteObject
+from horizons.world.settlement import Settlement
+
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
@@ -45,7 +46,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	is_building = True
 	tearable = True
 	layer = LAYERS.OBJECTS
-
 
 	log = logging.getLogger("world.building")
 
@@ -91,7 +91,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.loading_area = self.position # shape where collector get resources
 
 		origin = self.position.origin
-		self._instance, _unused = self.getInstance(self.session, origin.x, origin.y,
+		self._instance, action_name = self.getInstance(self.session, origin.x, origin.y,
 		    rotation=self.rotation, action_set_id=self._action_set_id, world_id=str(self.worldid))
 
 		if self.has_running_costs: # Get payout every 30 seconds
@@ -105,11 +105,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				self.running_costs_inactive, self.running_costs
 
 	def running_costs_active(self):
-		"""Returns whether the building currently payes the running costs for status 'active'"""
+		"""Returns whether the building currently pays the running costs for status 'active'"""
 		return (self.running_costs > self.running_costs_inactive)
 
 	def get_payout(self):
-		"""gets the payout from the settlement in form of it's running costs"""
+		"""Gets the payout from the settlement in form of its running costs"""
 		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, -self.running_costs)
 
 	def remove(self):
@@ -118,8 +118,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		if hasattr(self, "disaster"):
 			self.disaster.recover(self)
 		self.island.remove_building(self)
-		#instance is owned by layer...
-		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
 		# NOTE: removing layers from the renderer here will affect others players too!
 
@@ -196,7 +194,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		@param level: int level number"""
 		action_set = self.__class__.get_random_action_set(level, exact_level=True)
 		if action_set:
-			self._action_set_id = action_set # Set the new action_set
+			self._action_set_id = action_set  # Set the new action_set
 			self.act(self._action, repeating=True)
 
 	def level_upgrade(self, lvl):

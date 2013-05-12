@@ -2,20 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-11-23 22:50+0000\n"
-"Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:30+0000\n"
+"Last-Translator: Pihpe <petri@rikos.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1353711002.0\n"
-
-msgid "build"
-msgstr "rakentaa"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367757023.0\n"
 
 msgid "game"
 msgstr "peli"
@@ -23,11 +20,14 @@ msgstr "peli"
 msgid "building"
 msgstr "rakennus"
 
+msgid "build"
+msgstr "rakentaa"
+
+msgid "player"
+msgstr "pelaaja"
+
 msgid "settlement"
 msgstr "siirtokunta"
-
-msgid "farm"
-msgstr "maatila"
 
 msgid "ship"
 msgstr "alus, laiva"
@@ -35,124 +35,167 @@ msgstr "alus, laiva"
 msgid "tent"
 msgstr "teltta"
 
-msgid "warehouse"
-msgstr "sivutoimisto"
-
-msgid "resource"
-msgstr "resurssi"
-
-msgid "produce"
-msgstr "tuottaa / valmistaa"
-
-msgid "field"
-msgstr "pelto"
+msgid "farm"
+msgstr "maatila"
 
 msgid "map"
 msgstr "kartta"
 
-msgid "trade"
-msgstr "kaupankäynti"
+msgid "resource"
+msgstr "resurssi"
+
+msgid "warehouse"
+msgstr "sivutoimisto"
 
 msgid "inhabitants"
 msgstr "asukkaat"
 
+msgid "change"
+msgstr "vaihtaa, muuttaa"
+
+msgid "unknown"
+msgstr "tuntematon"
+
+msgid "produce"
+msgstr "tuottaa / valmistaa"
+
+msgid "no"
+msgstr "ei"
+
+msgid "trade"
+msgstr "kaupankäynti"
+
+msgid "check"
+msgstr "tarkistaa"
+
+msgid "field"
+msgstr "pelto"
+
+msgid "main"
+msgstr "pää-"
+
 msgid "buy"
 msgstr "osta"
-
-msgid "overview"
-msgstr "yleiskatsaus"
 
 msgid "click"
 msgstr "napsauta"
 
+msgid "left"
+msgstr "jäljellä"
+
+msgid "overview"
+msgstr "yleiskatsaus"
+
+msgid "running"
+msgstr "juokseva / suorittaminen"
+
+msgid "square"
+msgstr "ruutu"
+
 msgid "lumberjack"
 msgstr "puunhakkaaja"
 
-msgid "resident"
-msgstr "asukas"
+msgid "unable"
+msgstr "ei käytettävissä, ei mahdollista"
+
+msgid "continue"
+msgstr "jatka(a)"
 
 msgid "main square"
 msgstr "keskustori"
 
-msgid "sailors"
-msgstr "merimies (siirtokuntataso I)"
-
-msgid "food"
-msgstr "ruoka"
-
-msgid "increment"
-msgstr ""
-"siirtokuntataso (colony level) / kasvutaso (increase level) / asutustaso "
-"(residentual level)"
-
 msgid "production"
 msgstr "tuotanto"
 
-msgid "select"
-msgstr "valitse"
+msgid "sailors"
+msgstr "merimies (siirtokuntataso I)"
 
 msgid "sell"
 msgstr "myydä"
 
-msgid "setting"
-msgstr "asetus"
-
 msgid "storage"
 msgstr "varasto"
 
-msgid "tab"
-msgstr "välilehti"
+msgid "contact"
+msgstr "ota yhteyttä"
 
-msgid "upgrade"
-msgstr "päivittää, päivitys"
-
-msgid "your inhabitants"
-msgstr "asukkaat, (asukkaasi)"
-
-msgid "close"
-msgstr "sulkea, lähellä"
-
-msgid "companies"
-msgstr "yritykset"
-
-msgid "island"
-msgstr "saari"
-
-msgid "time"
-msgstr "aika"
-
-msgid "unit"
-msgstr "alus, yksikkö"
-
-msgid "balance"
-msgstr "tasapaino"
-
-msgid "coast"
-msgstr "rannikko"
+msgid "house"
+msgstr "talo"
 
 msgid "menu"
 msgstr "valikko"
 
-msgid "slot"
-msgstr "paikka, tavararuutu"
+msgid "tab"
+msgstr "välilehti"
+
+msgid "close"
+msgstr "sulkea, lähellä"
+
+msgid "food"
+msgstr "ruoka"
+
+msgid "free"
+msgstr "ilmainen, vapaa"
+
+msgid "ready"
+msgstr "valmis"
+
+msgid "setting"
+msgstr "asetus"
 
 msgid "start"
 msgstr "aloita"
 
+msgid "time"
+msgstr "aika"
+
+msgid "trader"
+msgstr "kauppias"
+
+msgid "unit"
+msgstr "alus, yksikkö"
+
+msgid "version"
+msgstr "versio"
+
+msgid "fire"
+msgstr "tuli"
+
+msgid "island"
+msgstr "saari"
+
+msgid "select"
+msgstr "valitse"
+
+msgid "slot"
+msgstr "paikka, tavararuutu"
+
 msgid "stock"
 msgstr "tarjonta, valikoima, varasto"
 
-msgid "trail"
-msgstr "polku, jälki"
+msgid "upgrade"
+msgstr "päivittää, päivitys"
 
-msgid "Unknown Horizons"
-msgstr "Unknown Horizons, -issa, -in, -iin"
+msgid "coast"
+msgstr "rannikko"
 
-msgid "wool"
-msgstr "villa"
+msgid "color"
+msgstr "väri"
 
-msgid "boards"
-msgstr "laudat"
+msgid "companies"
+msgstr "yritykset"
+
+msgid "file"
+msgstr "tiedosto"
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "näppäin"
+
+msgid "taxes"
+msgstr "veroja"
 
 msgid "collector"
 msgstr "kerääjä"
@@ -160,11 +203,29 @@ msgstr "kerääjä"
 msgid "connection"
 msgstr "yhteys"
 
-msgid "fire"
-msgstr "tuli"
+msgid "log"
+msgstr "tukki / lokikirja"
 
-msgid "change"
-msgstr "vaihtaa, muuttaa"
+msgid "multiplayer"
+msgstr "moninpeli"
+
+msgid "resident"
+msgstr "asukas"
+
+msgid "wool"
+msgstr "villa"
+
+msgid "boards"
+msgstr "laudat"
+
+msgid "built"
+msgstr "rakennettu"
+
+msgid "button"
+msgstr "painike"
+
+msgid "choose"
+msgstr "valita"
 
 msgid "connect"
 msgstr "yhdistää"
@@ -172,11 +233,8 @@ msgstr "yhdistää"
 msgid "cost"
 msgstr "kustannus, maksaa, meno"
 
-msgid "house"
-msgstr "talo"
-
-msgid "log"
-msgstr "tukki / lokikirja"
+msgid "happiness"
+msgstr "onnellisuus"
 
 msgid "road"
 msgstr "tie, polku"
@@ -184,35 +242,20 @@ msgstr "tie, polku"
 msgid "save"
 msgstr "tallenna"
 
-msgid "built"
-msgstr "rakennettu"
+msgid "tree"
+msgstr "puu"
 
-msgid "pasture"
-msgstr "laidun"
+msgid "amount"
+msgstr "määrä"
 
 msgid "reach"
 msgstr "saavuttaa"
 
-msgid "tree"
-msgstr "puu"
-
-msgid "your"
-msgstr "ei yleensä suomenneta, tarvittaessa -si"
-
-msgid "your settlement"
-msgstr "siirtokunta(si)"
+msgid "size"
+msgstr "koko"
 
 msgid "add"
 msgstr "lisää"
-
-msgid "check"
-msgstr "tarkistaa"
-
-msgid "choose"
-msgstr "valita"
-
-msgid "confectionery"
-msgstr "makeinen"
 
 msgid "fisher"
 msgstr "kalastaja"
@@ -220,68 +263,70 @@ msgstr "kalastaja"
 msgid "free trader"
 msgstr "vapaakauppias"
 
-msgid "happiness"
-msgstr "onnellisuus"
-
 msgid "in stock"
 msgstr "varastossa"
 
-msgid "money"
-msgstr "raha(a)"
-
-msgid "pavilion"
-msgstr "kirkko"
-
-msgid "running costs"
-msgstr "juoksevat kustannukset/menot"
-
-msgid "sugar"
-msgstr "sokeri"
-
-msgid "taxes"
-msgstr "veroja"
-
-msgid "tax"
-msgstr "vero"
-
-msgid "tools"
-msgstr "työkaluja"
-
-msgid "button"
-msgstr "painike"
-
-msgid "continue"
-msgstr "jatka(a)"
-
-msgid "faith"
-msgstr "usko"
-
-msgid "help"
-msgstr "ohje, auttaa"
-
-msgid "left"
-msgstr "jäljellä"
-
-msgid "level"
-msgstr "taso"
+msgid "increase"
+msgstr "kasvattaa"
 
 msgid "mode"
 msgstr "tila"
 
+msgid "password"
+msgstr "salasana"
+
+msgid "pasture"
+msgstr "laidun"
+
+msgid "range"
+msgstr "kantama / etäisyydellä / välillä"
+
+msgid "signal"
+msgstr "merkki"
+
+msgid "speed"
+msgstr "nopeus, nopea"
+
+msgid "sugar"
+msgstr "sokeri"
+
+msgid "access"
+msgstr "pääsy, -lupa, -oikeus"
+
+msgid "build menu"
+msgstr "rakennusvalikko"
+
+msgid "confectionery"
+msgstr "makeinen"
+
+msgid "enabled"
+msgstr "käytössä"
+
+msgid "fetch"
+msgstr "nouda"
+
+msgid "help"
+msgstr "ohje, auttaa"
+
+msgid "income"
+msgstr ""
+"palkka (payment for working) / tienesti (earnings, but overly casual form), "
+"nettotuotto (net profit, but too scientific word despite widespreadness)"
+
+msgid "join"
+msgstr "liity"
+
+msgid "level"
+msgstr "taso"
+
 msgid "move"
 msgstr "siirtää, liikuttaa"
 
-msgid "pioneers"
-msgstr "kansoittaja (siirtokuntataso II), uudisasukas (yleisesti)"
+msgid "multiple"
+msgstr "usea"
 
-msgid "citizens"
-msgstr "kansalainen (siirtokuntataso IV)"
-
-msgid "merchants"
-msgstr "kauppias (siirtokuntataso V)"
-
-msgid "aristocrats"
-msgstr "aristokraatti (siirtokuntataso VI)"
+msgid "please check"
+msgstr "tarkista"
 
 msgid "potato"
 msgstr "peruna"
@@ -289,47 +334,23 @@ msgstr "peruna"
 msgid "settler"
 msgstr "uudisasukas (siirtokuntataso III ja uudisasukkaat yleisesti)"
 
-msgid "speed"
-msgstr "nopeus, nopea"
-
-msgid "stop"
-msgstr "pysäyttää"
-
-msgid "storage tent"
-msgstr "varastoteltta"
-
-msgid "wait"
-msgstr "odottaa"
-
-msgid "access"
-msgstr "pääsy, -lupa, -oikeus"
-
-msgid "account"
-msgstr "budjetti, (käyttäjä)tili, pankkitili"
-
-msgid "amount"
-msgstr "määrä"
-
-msgid "build menu"
-msgstr "rakennusvalikko"
-
-msgid "cloth"
-msgstr "vaate"
+msgid "total"
+msgstr "yhteensä"
 
 msgid "construction"
 msgstr "rakentaminen"
 
-msgid "decrease"
-msgstr "vähentää"
+msgid "creator"
+msgstr "tekijä"
 
-msgid "description"
-msgstr "kuvaus"
+msgid "faith"
+msgstr "usko"
 
-msgid "fish"
-msgstr "kala"
+msgid "hold"
+msgstr "pidä"
 
-msgid "increase"
-msgstr "kasvattaa"
+msgid "icon"
+msgstr "kuvake"
 
 msgid "lamb"
 msgstr "karitsa, (lammas)"
@@ -337,20 +358,14 @@ msgstr "karitsa, (lammas)"
 msgid "leave"
 msgstr "jättää, poistua"
 
-msgid "liquor"
-msgstr "viini, juoma"
-
 msgid "location"
 msgstr "sijainti"
 
-msgid "offer"
-msgstr "tarjota, tarjous"
+msgid "multiple buildings"
+msgstr "useita rakennuksia"
 
-msgid "potatoes"
-msgstr "peruna"
-
-msgid "range"
-msgstr "kantama / etäisyydellä / välillä"
+msgid "pioneers"
+msgstr "kansoittaja (siirtokuntataso II), uudisasukas (yleisesti)"
 
 msgid "reached"
 msgstr "saavutettu"
@@ -358,26 +373,32 @@ msgstr "saavutettu"
 msgid "run"
 msgstr "suorittaa"
 
+msgid "session"
+msgstr "istunto"
+
+msgid "SHIFT"
+msgstr "VAIHTO"
+
 msgid "slider"
 msgstr "vieritin"
-
-msgid "solution"
-msgstr "ratkaisu"
 
 msgid "space"
 msgstr "tila, välilyönti"
 
+msgid "storage tent"
+msgstr "varastoteltta"
+
 msgid "target"
 msgstr "kohde"
 
-msgid "team"
-msgstr "joukkue, ryhmä"
+msgid "terminated"
+msgstr "lopetettu"
 
-msgid "total"
-msgstr "yhteensä"
+msgid "tools"
+msgstr "työkaluja"
 
-msgid "unable"
-msgstr "ei käytettävissä, ei mahdollista"
+msgid "account"
+msgstr "budjetti, (käyttäjä)tili, pankkitili"
 
 msgid "active"
 msgstr "aktiivinen"
@@ -391,55 +412,56 @@ msgstr "eläin"
 msgid "Captain's log"
 msgstr "Kapteenin päiväkirja"
 
+msgid "cloth"
+msgstr "vaate"
+
 msgid "construct"
 msgstr "rakentaminen, rakentaa"
 
-msgid "consume"
-msgstr "kuluttaa, kulutus"
+msgid "cursor"
+msgstr "osoitin"
 
-msgid "enabled"
-msgstr "käytössä"
+msgid "description"
+msgstr "kuvaus"
 
 msgid "entries"
-msgstr ""
+msgstr "Merkinnät"
 
 msgid "feature"
 msgstr "ominaisuus"
 
+msgid "fish"
+msgstr "kala"
+
 msgid "forest"
 msgstr "metsä"
 
-msgid "grows"
-msgstr "kasvaa"
+msgid "from time to time"
+msgstr "säännöllisesti, loputtomiin"
 
-msgid "hold"
-msgstr "pidä"
+msgid "global"
+msgstr "globaali"
 
-msgid "idle"
-msgstr "työttä"
+msgid "grow"
+msgstr "kasvata"
 
-msgid "income"
-msgstr ""
-"palkka (payment for working) / tienesti (earnings, but overly casual form), "
-"nettotuotto (net profit, but too scientific word despite widespreadness)"
+msgid "happy"
+msgstr "iloinen"
 
 msgid "information"
 msgstr "tieto"
 
-msgid "key"
-msgstr "näppäin"
-
-msgid "lamb wool"
-msgstr "lampaan villa"
-
-msgid "overview tab"
-msgstr "yleiskatsaus, tiedot"
+msgid "liquor"
+msgstr "viini, juoma"
 
 msgid "minimap"
 msgstr "pikkukartta"
 
-msgid "issues"
-msgstr ""
+msgid "offer"
+msgstr "tarjota, tarjous"
+
+msgid "overview tab"
+msgstr "yleiskatsaus, tiedot"
 
 msgid "plant"
 msgstr "kasvi"
@@ -447,8 +469,11 @@ msgstr "kasvi"
 msgid "play"
 msgstr "pelaa"
 
-msgid "playing"
-msgstr "pelaa, pelataan"
+msgid "please check your"
+msgstr "tarkista"
+
+msgid "potatoes"
+msgstr "peruna"
 
 msgid "price"
 msgstr "hinta"
@@ -456,14 +481,17 @@ msgstr "hinta"
 msgid "read"
 msgstr "lukea"
 
-msgid "return"
-msgstr "palata"
-
-msgid "sale"
-msgstr "myynti"
-
 msgid "screen"
 msgstr "näyttö"
+
+msgid "service"
+msgstr "palvelu/palvelus, palvella"
+
+msgid "short"
+msgstr "lyhyt"
+
+msgid "solution"
+msgstr "ratkaisu"
 
 msgid "sound"
 msgstr "ääni"
@@ -471,20 +499,29 @@ msgstr "ääni"
 msgid "special"
 msgstr "erityinen, erityis-"
 
+msgid "spot"
+msgstr "paikka, tavararuutu"
+
+msgid "statistics"
+msgstr "tilasto"
+
 msgid "store"
 msgstr "kauppa"
+
+msgid "team"
+msgstr "joukkue, ryhmä"
 
 msgid "tear"
 msgstr "tuhota, poistaa, repiä"
 
-msgid "from time to time"
-msgstr "säännöllisesti, loputtomiin"
+msgid "time to time"
+msgstr "ajoittain"
 
 msgid "trading"
 msgstr "kaupustelemalla"
 
-msgid "village"
-msgstr "kylä"
+msgid "unsupported"
+msgstr "ei tuettu"
 
 msgid "visit"
 msgstr "vierailla"
@@ -492,23 +529,14 @@ msgstr "vierailla"
 msgid "world"
 msgstr "maailma"
 
-msgid "yield"
-msgstr "tuottaa"
+msgid "wrong"
+msgstr "väärin"
 
-msgid "your ship"
-msgstr "alukse(si)"
+msgid "bar"
+msgstr ""
 
-msgid "back"
-msgstr "takaisin"
-
-msgid "build settlement"
-msgstr "rakentaa siirtokunta"
-
-msgid "load"
-msgstr "ladata, lastata, käynnistää"
-
-msgid "unload"
-msgstr "purkaa lasti"
+msgid "bug"
+msgstr "virhe"
 
 msgid "command"
 msgstr "komento"
@@ -516,17 +544,149 @@ msgstr "komento"
 msgid "completed"
 msgstr "suoritettu"
 
-msgid "condition"
-msgstr "ehto / kunto"
+msgid "forum"
+msgstr "keskustelupalsta"
 
-msgid "contact"
-msgstr "ota yhteyttä"
+msgid "happen"
+msgstr "tapahtua"
+
+msgid "harvest"
+msgstr "sato"
+
+msgid "in range"
+msgstr "kantamalla"
+
+msgid "lamb wool"
+msgstr "lampaan villa"
+
+msgid "left the game"
+msgstr "poistui pelistä"
+
+msgid "lot of boards"
+msgstr "paljon lautoja"
+
+msgid "marketplace"
+msgstr "markkinapaikka"
+
+msgid "moment"
+msgstr "tiima"
+
+msgid "playing"
+msgstr "pelaa, pelataan"
+
+msgid "produced"
+msgstr "tuottaa / valmistaa"
+
+msgid "report"
+msgstr "raportti"
+
+msgid "sale"
+msgstr "myynti"
+
+msgid "school"
+msgstr "koulu"
+
+msgid "started"
+msgstr "aloitettu"
+
+msgid "temporarily"
+msgstr "väliaikaisesti"
+
+msgid "trade with"
+msgstr ""
+
+msgid "values"
+msgstr "arvot"
+
+msgid "wheel"
+msgstr "pyörä"
+
+msgid "satisfied"
+msgstr ""
+
+msgid "balance"
+msgstr "tasapaino"
+
+msgid "load"
+msgstr "ladata, lastata, käynnistää"
+
+msgid "trail"
+msgstr "polku, jälki"
+
+msgid "default"
+msgstr "oletus"
+
+msgid "iron"
+msgstr "rauta"
+
+msgid "tobacco"
+msgstr "tupakka"
+
+msgid "clay"
+msgstr "savi"
+
+msgid "money"
+msgstr "raha(a)"
+
+msgid "pavilion"
+msgstr "kirkko"
+
+msgid "tax"
+msgstr "vero"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "pysäyttää"
+
+msgid "wait"
+msgstr "odottaa"
+
+msgid "decrease"
+msgstr "vähentää"
+
+msgid "ore"
+msgstr "malmi"
+
+msgid "return"
+msgstr "palata"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "kuluttaa, kulutus"
+
+msgid "idle"
+msgstr "työttä"
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr "tallenna"
+
+msgid "village"
+msgstr "kylä"
+
+msgid "yields"
+msgstr "saa"
+
+msgid "back"
+msgstr "takaisin"
+
+msgid "build settlement"
+msgstr "rakentaa siirtokunta"
+
+msgid "charcoal"
+msgstr "puuhiili"
 
 msgid "empty"
 msgstr "tyhjä"
 
-msgid "ensure"
-msgstr "varmistaa"
+msgid "existing"
+msgstr ""
 
 msgid "fulfill"
 msgstr "panna täytäntöön, toteuttaa"
@@ -534,26 +694,23 @@ msgstr "panna täytäntöön, toteuttaa"
 msgid "graphics"
 msgstr "näyttö, grafiikka"
 
-msgid "harvest"
-msgstr "sato"
-
-msgid "hunts"
+msgid "hunt"
 msgstr "metsästää"
 
-msgid "multiple"
-msgstr "usea"
+msgid "lumberjack tent"
+msgstr "puunhakkaajan teltta"
+
+msgid "please contact"
+msgstr "ota yhteyttä"
 
 msgid "potato field"
 msgstr "perunapelto"
 
-msgid "school"
-msgstr "koulu"
-
 msgid "seed"
 msgstr "siemen"
 
-msgid "service"
-msgstr "palvelu/palvelus, palvella"
+msgid "send"
+msgstr "siemen"
 
 msgid "sheep"
 msgstr "lammas"
@@ -561,170 +718,446 @@ msgstr "lammas"
 msgid "signal fire"
 msgstr "merkkituli"
 
-msgid "statistics"
-msgstr "tilasto"
-
-msgid "clay"
-msgstr "savi"
-
-msgid "iron"
-msgstr "rauta"
-
-msgid "ore"
-msgstr "malmi"
-
-msgid "tobacco"
-msgstr "tupakka"
-
-msgid "charcoal"
-msgstr "puuhiili"
-
 msgid "sugar field"
 msgstr "sokeripelto"
 
-msgid "temporarily"
-msgstr "väliaikaisesti"
+msgid "error"
+msgstr "virhe"
 
-msgid "values"
-msgstr "arvot"
+msgid "deposit"
+msgstr ""
 
-#~ msgid "branch office"
-#~ msgstr "sivutoimisto"
+msgid "invalid"
+msgstr ""
 
-#~ msgid "main"
-#~ msgstr "pää-"
+msgid "network"
+msgstr ""
 
-#~ msgid "unknown"
-#~ msgstr "tuntematon"
+msgid "route"
+msgstr ""
 
-#~ msgid "free"
-#~ msgstr "ilmainen, vapaa"
+msgid "selected"
+msgstr "valitse"
 
-#~ msgid "trader"
-#~ msgstr "kauppias"
+msgid "boat"
+msgstr ""
 
-#~ msgid "version"
-#~ msgstr "versio"
+msgid "create"
+msgstr ""
 
-#~ msgid "signal"
-#~ msgstr "merkki"
+msgid "filename"
+msgstr "tiedostonimi"
 
-#~ msgid "found"
-#~ msgstr "löydetty"
+msgid "mouse"
+msgstr "talo"
 
-#~ msgid "raw"
-#~ msgstr "raaka"
+msgid "partner"
+msgstr "kumppani"
 
-#~ msgid "running"
-#~ msgstr "juokseva / suorittaminen"
+msgid "reset"
+msgstr ""
 
-#~ msgid "inventory"
-#~ msgstr "tavaravalikko"
+msgid "configuration"
+msgstr ""
 
-#~ msgid "hunter"
-#~ msgstr "metsästäjä"
+msgid "delete"
+msgstr ""
 
-#~ msgid "market"
-#~ msgstr "tori"
+msgid "enter"
+msgstr ""
 
-#~ msgid "partner"
-#~ msgstr "kumppani"
+msgid "quicksave"
+msgstr ""
 
-#~ msgid "sailor"
-#~ msgstr "merenkävijä"
+msgid "stone"
+msgstr "kauppa"
 
-#~ msgid "pioneer"
-#~ msgstr "kansoittaja (siirtokunnan tasona), uudisasukas (yleisesti)"
+msgid "weapon"
+msgstr ""
 
-#~ msgid "citizen"
-#~ msgstr "kansalainen"
+msgid "cattle"
+msgstr "karja"
 
-#~ msgid "merchant"
-#~ msgstr "kauppias"
+msgid "message"
+msgstr ""
 
-#~ msgid "aristocrat"
-#~ msgstr "aatelinen"
+msgid "port"
+msgstr ""
 
-#~ msgid "refresh"
-#~ msgstr "päivitä"
+msgid "scenario"
+msgstr ""
 
-#~ msgid "residents"
-#~ msgstr "asukkaat"
+msgid "spice"
+msgstr "tila, välilyönti"
 
-#~ msgid "output"
-#~ msgstr "ulostulo"
+msgid "cocoa"
+msgstr ""
 
-#~ msgid "weaver"
-#~ msgstr "kutomo"
+msgid "corn"
+msgstr ""
 
-#~ msgid "animal"
-#~ msgstr "eläin"
+msgid "details"
+msgstr ""
 
-#~ msgid "fisherman"
-#~ msgstr "kalastaja"
+msgid "found"
+msgstr "löydetty"
 
-#~ msgid "forum"
-#~ msgstr "keskustelupalsta"
+msgid "herbs"
+msgstr "yrttejä"
 
-#~ msgid "grow"
-#~ msgstr "kasvata"
+msgid "pause"
+msgstr ""
 
-#~ msgid "hunt"
-#~ msgstr "metsästää"
+msgid "pigs"
+msgstr ""
 
-#~ msgid "load/unload"
-#~ msgstr "ota kyytiin/pois"
+msgid "press"
+msgstr ""
 
-#~ msgid "ship inventory"
-#~ msgstr "laivan tavaranäkymä"
+msgid "quit"
+msgstr ""
 
-#~ msgid "starting"
-#~ msgstr "alkaen"
+msgid "savegame file"
+msgstr ""
 
-#~ msgid "trade partner"
-#~ msgstr "kauppakumppani"
+msgid "valid"
+msgstr ""
 
-#~ msgid "yields"
-#~ msgstr "saa"
+msgid "war"
+msgstr ""
 
-#~ msgid "green"
-#~ msgstr "vihreä"
+msgid "all settlements"
+msgstr ""
 
-#~ msgid "red"
-#~ msgstr "punainen"
+msgid "apply"
+msgstr ""
 
-#~ msgid "no"
-#~ msgstr "ei"
+msgid "bricks"
+msgstr ""
 
-#~ msgid "dialogue"
-#~ msgstr "keskustelu, vuoropuhelu"
+msgid "chat"
+msgstr ""
 
-#~ msgid "salt ponds"
-#~ msgstr "suola-altaat"
+msgid "confirm"
+msgstr ""
 
-#~ msgid "cattle"
-#~ msgstr "karja"
+msgid "default settings"
+msgstr ""
 
-#~ msgid "pig"
-#~ msgstr "sika"
+msgid "diplomacy"
+msgstr ""
 
-#~ msgid "herbs"
-#~ msgstr "yrttejä"
+msgid "displayed"
+msgstr ""
 
-#~ msgid "herbary"
-#~ msgstr "yrittitarha"
+msgid "flour"
+msgstr ""
 
-#~ msgid "butchery"
-#~ msgstr "teurastamo"
+msgid "grapes"
+msgstr ""
 
-#~ msgid "doctor"
-#~ msgstr "lääkäri"
+msgid "ground"
+msgstr ""
 
-#~ msgid "education"
-#~ msgstr "koulutus"
+msgid "health"
+msgstr ""
 
-#~ msgid "market place"
-#~ msgstr "kauppapaikka"
+msgid "land"
+msgstr ""
 
-#~ msgid "SHIFT"
-#~ msgstr "VAIHTO"
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr "myynti"
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr "resurssi"
+
+msgid "trade partner"
+msgstr "kauppakumppani"
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "kansalainen (siirtokuntataso IV)"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr "lääkäri"
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr "koulutus"
+
+msgid "ensure"
+msgstr "varmistaa"
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "tavaravalikko"
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr "juoksevat kustannukset/menot"
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr "uudisasukas (siirtokuntataso III ja uudisasukkaat yleisesti)"
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr "aika"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

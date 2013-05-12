@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -319,7 +319,7 @@ class IngameGui(LivingObject):
 
 		if not self.session.is_game_loaded():
 			# Fire a message for new world creation
-			self.session.ingame_gui.message_widget.add(point=None, string_id='NEW_WORLD')
+			self.session.ingame_gui.message_widget.add('NEW_WORLD')
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
@@ -345,6 +345,12 @@ class IngameGui(LivingObject):
 			self.cursor.on_escape()
 		else:
 			self.toggle_pause()
+
+		return True
+
+	def on_return(self):
+		if self.windows.visible:
+			self.windows.on_return()
 
 		return True
 
@@ -388,6 +394,8 @@ class IngameGui(LivingObject):
 
 		if action == _Actions.ESCAPE:
 			return self.on_escape()
+		elif keyval == fife.Key.ENTER:
+			return self.on_return()
 
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']

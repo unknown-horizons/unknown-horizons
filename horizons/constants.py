@@ -1,6 +1,6 @@
 # -.- coding: utf-8 -.-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -345,8 +345,8 @@ class PRODUCTIONLINES:
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
-	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month" (running costs and taxes are
-	# payed in this interval).
+	# seconds: duration of a "month" (running costs and taxes are paid in this interval)
+	INGAME_TICK_INTERVAL = 30
 
 	WORLD_WORLDID = 0 # worldid of World object
 	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
@@ -363,7 +363,7 @@ class GUI:
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
 	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
-	LOGBOOK_DEFAULT_DELAY = 4 # delay between condition fulfilled and logbook popping up
+	LOGBOOK_DEFAULT_DELAY = 1 # delay between condition fulfilled and logbook popping up
 
 # AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:

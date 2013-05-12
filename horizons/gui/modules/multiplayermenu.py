@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,7 +22,7 @@
 import hashlib
 import textwrap
 
-from fife.extensions.pychan.widgets import HBox, Label
+from fife.extensions.pychan.widgets import HBox, Label, TextField
 
 import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -32,7 +32,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.icongroup import hr as HRule
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.minimap import Minimap
-from horizons.gui.windows import Window, Dialog
+from horizons.gui.windows import Popup, Window
 from horizons.network import enet
 from horizons.network.networkinterface import NetworkInterface
 from horizons.savegamemanager import SavegameManager
@@ -71,7 +71,12 @@ class MultiplayerMenu(Window):
 			self._windows.close()
 			return
 
-		NetworkInterface().subscribe("game_prepare", self._prepare_game)
+		# FIXME workaround for multiple callback registrations
+		# this happens because subscription is done when the window is showed, unsubscription
+		# only when it is closed. if new windows appear and disappear, show is called multiple
+		# times. the error handler is used throughout the entire mp menu, that's why we can't
+		# unsubscribe in hide. need to find a better solution.
+		NetworkInterface().discard("error", self._on_error)
 		NetworkInterface().subscribe("error", self._on_error)
 
 		self._gui.show()
@@ -87,7 +92,6 @@ class MultiplayerMenu(Window):
 
 		self.hide()
 
-		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
 		NetworkInterface().unsubscribe("error", self._on_error)
 
 		# the window is also closed when a game starts, don't disconnect in that case
@@ -96,6 +100,9 @@ class MultiplayerMenu(Window):
 
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
+
+	def on_return(self):
+		self._join_game()
 
 	def _check_connection(self):
 		"""
@@ -231,46 +238,48 @@ class MultiplayerMenu(Window):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 
-		password = ""
 		if game.password:
-			# Repeatedly ask the player for the password
-			success = False
-			while not success:
-				password = self._request_game_password(game)
-				if password is None:
-					break
-				password = hashlib.sha1(password).hexdigest()
-				success = NetworkInterface().joingame(game.uuid, password)
-
+			# ask the player for the password
+			popup = PasswordInput(self._windows)
+			password = self._windows.show(popup)
+			if password is None:
+				return
+			password = hashlib.sha1(password).hexdigest()
+			success = NetworkInterface().joingame(game.uuid, password)
 			if not success:
 				return
-		else:
-			if not NetworkInterface().joingame(game.uuid, password):
-				return
+		elif not NetworkInterface().joingame(game.uuid, ''):
+			return
 
 		window = GameLobby(self._windows)
 		self._windows.show(window)
-
-	def _request_game_password(self, game):
-		"""Show dialog to ask player for a password."""
-		dialog = load_uh_widget('set_password.xml')
-
-		bind = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
-		window = Dialog.create_from_widget(dialog, bind, modal=True, focus="password")
-		retval = self._windows.show(window)
-
-		if retval:
-			return dialog.collectData("password")
-		else:
-			return None
-
-	def _prepare_game(self, game):
-		horizons.main.prepare_multiplayer(game)
 
 	def _create_game(self):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 		self._windows.show(CreateGame(self._windows)),
+
+
+class PasswordInput(Popup):
+	"""Popup where players enter a password to join multiplayer games."""
+	focus = 'password'
+
+	def __init__(self, windows):
+		title = _('Password of the game')
+		text = _('Enter password:')
+		super(PasswordInput, self).__init__(windows, title, text, show_cancel_button=True)
+
+	def prepare(self, **kwargs):
+		super(PasswordInput, self).prepare(**kwargs)
+		pw = TextField(name='password', max_size=(320, 20), min_size=(320, 20))
+		box = self._gui.findChild(name='message_box')
+		box.addChild(pw)
+
+	def act(self, send_password):
+		if not send_password:
+			return
+		return self._gui.collectData("password")
+
 
 class CreateGame(Window):
 	"""Interface for creating a multiplayer game"""
@@ -374,6 +383,8 @@ class GameLobby(Window):
 			'ready_btn': NetworkInterface().toggle_ready,
 		})
 
+		NetworkInterface().subscribe("game_prepare", self._prepare_game)
+
 	def hide(self):
 		self._gui.hide()
 
@@ -400,6 +411,7 @@ class GameLobby(Window):
 		NetworkInterface().unsubscribe("lobbygame_changecolor", self._on_player_changed_color)
 		NetworkInterface().unsubscribe("lobbygame_toggleready", self._on_player_toggled_ready)
 		NetworkInterface().unsubscribe("game_details_changed", self._update_game_details)
+		NetworkInterface().unsubscribe("game_prepare", self._prepare_game)
 
 	def show(self):
 		textfield = self._gui.findChild(name="chatTextField")
@@ -417,6 +429,9 @@ class GameLobby(Window):
 		NetworkInterface().subscribe("game_details_changed", self._update_game_details)
 
 		self._gui.show()
+
+	def _prepare_game(self, game):
+		horizons.main.prepare_multiplayer(game)
 
 	def _update_game_details(self):
 		"""Set map name and other misc data"""
