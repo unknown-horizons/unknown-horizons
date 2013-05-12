@@ -108,7 +108,7 @@ class MessageWidget(LivingObject):
 	def remove(self, messagetext):
 		"""Remove a message containing the text *messagetext*"""
 		index = -1
-		for i, message in  enumerate(self.active_messages):
+		for i, message in enumerate(self.active_messages):
 			if messagetext == message.message:
 				index = i
 				break

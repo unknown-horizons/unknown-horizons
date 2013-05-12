@@ -32,7 +32,7 @@ from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.windows import Window
-from horizons.scenario.actions import show_message
+from horizons.scenario.actions import show_message, remove_message
 
 
 class LogBook(PickBeltWidget, Window):
@@ -268,6 +268,10 @@ class LogBook(PickBeltWidget, Window):
 			#TODO n successive pagebreaks should insert (n-1) blank pages (currently 0 are inserted)
 			"""
 			return [list(l[1]) for l in groupby(parameters, lambda x: x != ['Pagebreak']) if l[0]]
+
+		# If a scenario goal has been completed, remove the corresponding message
+		for message in self._displayed_messages:
+			remove_message(self.session, message)
 
 		self._displayed_messages = [] # Reset displayed messages
 		for parameter_list in _split_on_pagebreaks(parameters):
