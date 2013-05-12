@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-05 15:40+0200\n"
-"PO-Revision-Date: 2013-05-12 16:36+0200\n"
+"PO-Revision-Date: 2013-05-12 16:40+0200\n"
 "Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
 "Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh-server/cs/>\n"
 "Language: cs\n"
@@ -75,14 +75,12 @@ msgid "Please change your name."
 msgstr "Změňte si prosím své jméno."
 
 #: horizons/network/server.py:428 horizons/network/server.py:560
-#, fuzzy
 msgid "There's already a player with your color inside this game."
-msgstr ""
-"Ve hře již je hráč s vámi zvolenou barvou. Změňte si prosím svou barvou"
+msgstr "V této hře již je hráč s vaší barvou."
 
 #: horizons/network/server.py:429
 msgid "Please change your color."
-msgstr ""
+msgstr "Změňte si prosím svou barvu."
 
 #: horizons/network/server.py:432
 msgid ""
@@ -109,11 +107,11 @@ msgstr ""
 
 #: horizons/network/server.py:533
 msgid "Unable to change your name."
-msgstr ""
+msgstr "Vaše jméno nelze změnit."
 
 #: horizons/network/server.py:561
 msgid "Unable to change your color."
-msgstr ""
+msgstr "Vaši barvu nelze změnit."
 
 #: horizons/network/server.py:648
 msgid "You can't fetch a game while in another game"
