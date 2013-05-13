@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-05 12:35+0000\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-13 13:37+0200\n"
+"Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
+"Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 # 86%
 #: run_uh.py:220
@@ -97,15 +97,15 @@ msgstr "Salir del editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Seleccione el tamaño del pincel:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Seleccione el terreno:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(clic derecho para detener)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -655,9 +655,8 @@ msgstr "Enviar los mensages del chat a todos los jugadores."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Introduce tu mensaje:"
+msgstr "Introduzca aquí su mensaje"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -704,9 +703,8 @@ msgid "Name"
 msgstr "Nombre"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
-#, fuzzy
 msgid "Player Name"
-msgstr "Nombre de jugador:"
+msgstr "Nombre de jugador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Money"
@@ -724,6 +722,8 @@ msgstr "Tierra"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
+"Valor de terreno utilizable, es decir, cantidad de terreno que puede ser "
+"usado para crear edificios"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -743,7 +743,7 @@ msgstr "Edificios"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Valor de todos los edificios en el/los asentamiento/tos del jugador"
 
 # 75%
 #. headline of gui_buildmenu:build_menu_per_type
@@ -845,7 +845,6 @@ msgid "Sound and Music Artists"
 msgstr "Artistas de sonido y música"
 
 #: content/gui/xml/mainmenu/credits.xml:60
-#, fuzzy
 msgid "Graphics Artists"
 msgstr "Artistas gráficos"
 
@@ -855,19 +854,19 @@ msgstr "Hacedores de parches"
 
 #: content/gui/xml/mainmenu/credits.xml:82
 msgid "2009"
-msgstr ""
+msgstr "2009"
 
 #: content/gui/xml/mainmenu/credits.xml:91
 msgid "2010"
-msgstr ""
+msgstr "2010"
 
 #: content/gui/xml/mainmenu/credits.xml:105
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 #: content/gui/xml/mainmenu/credits.xml:117
 msgid "2012"
-msgstr ""
+msgstr "2012"
 
 #: content/gui/xml/mainmenu/credits.xml:132
 msgid "Translators"
@@ -880,106 +879,103 @@ msgstr "Registro activado"
 
 #: content/gui/xml/mainmenu/credits.xml:139
 msgid "Bulgarian"
-msgstr ""
+msgstr "Búlgaro"
 
 #: content/gui/xml/mainmenu/credits.xml:144
 msgid "Catalan"
-msgstr ""
+msgstr "Catalán"
 
 #: content/gui/xml/mainmenu/credits.xml:150
 msgid "Czech"
-msgstr ""
+msgstr "Checo"
 
 #: content/gui/xml/mainmenu/credits.xml:160
 msgid "Danish"
-msgstr ""
+msgstr "Danés"
 
 #: content/gui/xml/mainmenu/credits.xml:165
 msgid "German"
-msgstr ""
+msgstr "Alemán"
 
 #: content/gui/xml/mainmenu/credits.xml:172
-#, fuzzy
 msgid "Spanish"
-msgstr "Compañías"
+msgstr "Español"
 
 #: content/gui/xml/mainmenu/credits.xml:184
 msgid "Estonian"
-msgstr ""
+msgstr "Estonio"
 
 #: content/gui/xml/mainmenu/credits.xml:190
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandés"
 
 #: content/gui/xml/mainmenu/credits.xml:195
 msgid "French"
-msgstr ""
+msgstr "Francés"
 
 #: content/gui/xml/mainmenu/credits.xml:207
 msgid "Croatian"
-msgstr ""
+msgstr "Croata"
 
 #: content/gui/xml/mainmenu/credits.xml:212
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: content/gui/xml/mainmenu/credits.xml:217
 msgid "Hungarian"
-msgstr ""
+msgstr "Húngaro"
 
 #: content/gui/xml/mainmenu/credits.xml:223
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 #: content/gui/xml/mainmenu/credits.xml:231
 msgid "Japanese"
-msgstr ""
+msgstr "Japonés"
 
 #: content/gui/xml/mainmenu/credits.xml:237
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lituano"
 
 #: content/gui/xml/mainmenu/credits.xml:246
 msgid "Norwegian"
-msgstr ""
+msgstr "Noruego"
 
 #: content/gui/xml/mainmenu/credits.xml:253
-#, fuzzy
 msgid "Dutch"
-msgstr "Carnicería"
+msgstr "Holandés"
 
 #: content/gui/xml/mainmenu/credits.xml:264
 msgid "Polish"
-msgstr ""
+msgstr "Polaco"
 
 #: content/gui/xml/mainmenu/credits.xml:275
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugués"
 
 #: content/gui/xml/mainmenu/credits.xml:283
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Portugués brasileño"
 
 #: content/gui/xml/mainmenu/credits.xml:291
 msgid "Romanian"
-msgstr ""
+msgstr "Rumano"
 
 #: content/gui/xml/mainmenu/credits.xml:296
 msgid "Russian"
-msgstr ""
+msgstr "Ruso"
 
 #: content/gui/xml/mainmenu/credits.xml:303
 msgid "Slovenian"
-msgstr ""
+msgstr "Esloveno"
 
 #: content/gui/xml/mainmenu/credits.xml:308
 msgid "Swedish"
-msgstr ""
+msgstr "Sueco"
 
 #: content/gui/xml/mainmenu/credits.xml:314
-#, fuzzy
 msgid "Chinese"
-msgstr "viñedos"
+msgstr "Chino"
 
 #: content/gui/xml/mainmenu/credits.xml:325
 msgid "Packagers"
@@ -987,15 +983,15 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
-msgstr ""
+msgstr "Debian"
 
 #: content/gui/xml/mainmenu/credits.xml:332
 msgid "Fedora &amp; openSUSE"
-msgstr ""
+msgstr "Fedora y openSuse"
 
 #: content/gui/xml/mainmenu/credits.xml:338
 msgid "OS X"
-msgstr ""
+msgstr "OS X"
 
 #: content/gui/xml/mainmenu/credits.xml:348
 msgid "Special Thanks"
@@ -1003,7 +999,7 @@ msgstr "Agradecimientos especiales"
 
 #: content/gui/xml/mainmenu/credits.xml:350
 msgid "Thanks, all of you are awesome!"
-msgstr ""
+msgstr "Gracias, ¡sois todos impresionantes!"
 
 #: content/gui/xml/mainmenu/credits.xml:373
 msgid "Portfolio Sites"
@@ -1044,7 +1040,7 @@ msgstr "Cargar un mapa existente"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Cargar mapa de juego guardado"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -1140,7 +1136,7 @@ msgstr "Cargado rápido"
 
 #: content/gui/xml/mainmenu/help.xml:31
 msgid "Display FPS counter"
-msgstr ""
+msgstr "Mostrar contador de FPS"
 
 #. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:40
@@ -1245,19 +1241,18 @@ msgstr "Opciones IA"
 
 #. noi18n_text
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Mostrar/Ocultar rejilla"
+msgstr "Mostrar/Ocultar FPS"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Primario"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Secundario"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
@@ -1265,7 +1260,6 @@ msgid "Reset to default"
 msgstr "Restablecer configuración por defecto"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
 msgstr "Restablecer configuración por defecto"
 
@@ -1291,7 +1285,7 @@ msgstr "Cargando..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Cambiar fondo"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1347,9 +1341,8 @@ msgstr "Se mostrará a los demás jugadores para que reconozcan la partida."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
-#, fuzzy
 msgid "Unnamed Game"
-msgstr " Cargar partida"
+msgstr "Partida sin nombre"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1394,9 +1387,9 @@ msgid "Sets your state to ready (necessary for the game to start)"
 msgstr "Indica tu estado como listo (necesario para el juego para comenzar)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
-#, fuzzy
 msgid "The game will start as soon as all players are ready."
-msgstr "El juego comenzará cuando se unan suficientes jugadores."
+msgstr ""
+"El juego comenzará tan pronto como todos los jugadores estén preparados."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
 msgid "Game details:"
@@ -1450,7 +1443,7 @@ msgstr "Unirse a la partida seleccionada"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr ""
+msgstr "Cambiar detalles del jugador"
 
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/widgets/pickbeltwidget.py:87
@@ -1613,9 +1606,8 @@ msgstr ""
 "Ralentiza la partida."
 
 #: content/gui/xml/mainmenu/settings.xml:196
-#, fuzzy
 msgid "Enable logging:"
-msgstr "Activar archivo de registro"
+msgstr "Activar archivo de registro:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
@@ -1733,9 +1725,8 @@ msgid "Seed:"
 msgstr "Semilla:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
-#, fuzzy
 msgid "Select a language:"
-msgstr "Seleccionar idioma:"
+msgstr "Seleccionar un idioma:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
@@ -1829,24 +1820,25 @@ msgstr "El guardado rápido ha fallado."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Ocurrió un error durante el guardado rápido."
 
 # 86%
 #: horizons/editor/session.py:70
-#, fuzzy
 msgid "Your map has not been saved."
-msgstr "Tu partida ha sido guardada."
+msgstr "Tu mapa no ha sido guardado."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:67
 #, python-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"Si este error ocurre de nuevo, por favor contacte con el equipo de "
+"desarrollo: {website}"
 
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Atajos de teclado"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
@@ -1980,16 +1972,16 @@ msgstr "[{key}] = {text}"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Presione la tecla deseada"
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 #, python-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} ya está asociado/da a {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:142
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "¿Desea sobreescribirlo?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:143
@@ -2003,7 +1995,7 @@ msgstr "Citas"
 
 #: horizons/gui/modules/loadingscreen.py:58
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "Consejos de jugabilidad"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Press 'ESC' to access Game Menu."
@@ -2017,7 +2009,7 @@ msgstr "Usa 'SHIFT' para asentar múltiples edificios"
 #: horizons/gui/modules/loadingscreen.py:64
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Actualmente sólo los primeros niveles de {nivel} son jugables."
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "You can pause the game with 'P'."
@@ -2064,39 +2056,39 @@ msgstr "Presiona 'T' para hacer los árboles transparentes."
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine..."
-msgstr ""
+msgstr "Iniciando motor..."
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish..."
-msgstr ""
+msgstr "Capturando pescado..."
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface..."
-msgstr ""
+msgstr "Dibujando interfaz de usuario..."
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer..."
-msgstr ""
+msgstr "Activando temporizador..."
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data..."
-msgstr ""
+msgstr "Convidando datos del juego..."
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands..."
-msgstr ""
+msgstr "Conformando islas..."
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints..."
-msgstr ""
+msgstr "Preparando planos..."
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water..."
-msgstr ""
+msgstr "Llenando el mundo de agua..."
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals..."
-msgstr ""
+msgstr "Criando animales..."
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI..."
