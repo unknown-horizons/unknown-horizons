@@ -102,7 +102,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	def is_infected(self):
 		"""Returns whether a settlement is infected by the black death"""
 		disaster = self.session.world.disaster_manager.get_disaster(self)
-		return disaster.is_infectious() if disaster is not None else False
+		return disaster.IS_INFECTIOUS if disaster else False
 
 	@property
 	def inhabitants(self):

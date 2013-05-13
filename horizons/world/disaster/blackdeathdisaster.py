@@ -53,6 +53,8 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 
 	RESCUE_BUILDING_TYPE = BUILDINGS.DOCTOR
 
+	IS_INFECTIOUS = True
+
 	def __init__(self, settlement, manager):
 		super (BlackDeathDisaster, self).__init__(settlement, manager)
 		self.healed_buildings = []
@@ -76,7 +78,3 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 	def recover(self, building):
 		self.healed_buildings.append(building)
 		super(BlackDeathDisaster, self).recover(building)
-
-	def is_infectious(self):
-		"""Returns whether the disaster can spread via infections over to other islands. E.g. by ship"""
-		return True

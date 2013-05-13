@@ -45,6 +45,8 @@ class Disaster(WorldObject):
 	#	This is how preventory units (doctors) spot affected buildings.
 	DISASTER_RES = None
 
+	IS_INFECTIOUS = False
+
 	def __init__(self, settlement, manager):
 		"""
 		@param settlement: Settlement instance this disaster operates on
@@ -113,8 +115,3 @@ class Disaster(WorldObject):
 		"""End this class, used for cleanup. Called by the DisasterManager
 		in end_disaster() automatically"""
 		pass
-
-
-	def is_infectious(self):
-		"""Returns whether the disaster can spread via infections over to other islands. E.g. by ship"""
-		return False
