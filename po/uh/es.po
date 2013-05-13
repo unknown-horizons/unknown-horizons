@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-13 13:56+0200\n"
+"PO-Revision-Date: 2013-05-13 15:48+0200\n"
 "Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -713,6 +713,7 @@ msgstr "Dinero"
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
 msgstr ""
+"Tesoros vigentes del jugador más los ingresos esperados en un futuro cercano"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -979,7 +980,7 @@ msgstr "Chino"
 
 #: content/gui/xml/mainmenu/credits.xml:325
 msgid "Packagers"
-msgstr ""
+msgstr "Empaquetadores"
 
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
@@ -3628,19 +3629,16 @@ msgid "This building has to be built within your settlement."
 msgstr "Este edificio tiene que ser construido dentro de tu asentamiento."
 
 #: horizons/world/building/buildable.py:43
-#, fuzzy
 msgid "This area is already occupied by another player."
-msgstr "Este área ya está ocupado por otro jugador."
+msgstr "Esta área ya está ocupada por otro jugador."
 
 #: horizons/world/building/buildable.py:44
-#, fuzzy
 msgid "This area is already occupied by another building."
-msgstr "Este área ya está ocupado por otro edificio."
+msgstr "Esta área ya está ocupada por otro edificio."
 
 #: horizons/world/building/buildable.py:45
-#, fuzzy
 msgid "This area is already occupied by a unit."
-msgstr "Este área ya está ocupado por una unidad."
+msgstr "Esta área ya está ocupada por una unidad."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building must be built on the coastline."
@@ -3686,11 +3684,11 @@ msgstr "Este edificio tiene una producción muy baja."
 
 #: horizons/world/status.py:110
 msgid "This building is decomissioned."
-msgstr ""
+msgstr "Este edificio está dado de baja."
 
 #: horizons/world/status.py:116
 msgid "The inhabitants of this building have the plague."
-msgstr ""
+msgstr "Los habitantes de este edificio tienen la peste."
 
 #: horizons/world/traderoute.py:320
 #, python-format
@@ -3827,7 +3825,7 @@ msgstr "No has logrado completar el escenario"
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "Has alcanzado el nivel máximo vigente. Tus habitantes no mejorarán más."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql-database-files
