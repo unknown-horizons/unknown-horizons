@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-13 13:37+0200\n"
+"PO-Revision-Date: 2013-05-13 13:56+0200\n"
 "Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -2092,11 +2092,11 @@ msgstr "Criando animales..."
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI..."
-msgstr ""
+msgstr "Convenciendo IA..."
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures..."
-msgstr ""
+msgstr "Enterrando tesoros..."
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -2193,7 +2193,7 @@ msgstr "Contraseña del juego"
 
 #: horizons/gui/modules/multiplayermenu.py:269
 msgid "Enter password:"
-msgstr ""
+msgstr "Introduzca contraseña:"
 
 #: horizons/gui/modules/multiplayermenu.py:349
 #: horizons/gui/modules/singleplayermenu.py:407
@@ -2296,14 +2296,14 @@ msgid "Please enter a valid filename."
 msgstr "Por favor pon un nombre válido para el archivo."
 
 #: horizons/gui/modules/select_savegame.py:150
-#, fuzzy, python-format
+#, python-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Ya existe un partida guardada con el nombre de $'{name}'."
+msgstr "Ya existe un partida guardada con el nombre de {name}."
 
 #: horizons/gui/modules/select_savegame.py:153
-#, fuzzy, python-format
+#, python-format
 msgid "A map with the name {name} already exists."
-msgstr "Ya existe un partida guardada con el nombre de $'{name}'."
+msgstr "Ya existe un mapa con el nombre de {name}."
 
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
@@ -2502,13 +2502,13 @@ msgstr "Construir edificios relacionados"
 #. [br] means newline
 #: horizons/gui/tabs/buildtabs.py:144
 msgid "Resources needed:"
-msgstr ""
+msgstr "Recursos necesarios:"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/tabs/buildtabs.py:150
 #, python-format
 msgid "{resource}: {amount}"
-msgstr ""
+msgstr "{resource}: {amount}"
 
 #: horizons/gui/tabs/buyselltab.py:130
 msgid "Click on one of the resource slots to add a trade offer."
@@ -2594,9 +2594,8 @@ msgid "Buy/Sell"
 msgstr "Comprar/Vender"
 
 #: horizons/gui/tabs/shiptabs.py:98
-#, fuzzy
 msgid "Too far from the nearest tradeable warehouse"
-msgstr "Demasiado lejos de un almacén propio o aliado"
+msgstr "Demasiado lejos del almacén comerciante más cercano"
 
 #: horizons/gui/tabs/shiptabs.py:104
 msgid "Cannot equip trade ship with weapons"
@@ -2617,22 +2616,22 @@ msgstr "Quitar arma"
 #: horizons/gui/widgets/imagefillstatusbutton.py:71
 #, python-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} piezas de oro"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "comprar por {buyprice} piezas de oro"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:80
 #, python-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "vender por {sellprice} piezas de oro"
 
 #: horizons/gui/widgets/inventory.py:168
 #, python-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:171
 #, python-format
@@ -2748,7 +2747,7 @@ msgstr "No tienes permiso para comerciar con este jugador"
 #: horizons/gui/widgets/unitoverview.py:119
 #, python-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:124
 msgid "none"
@@ -2856,7 +2855,7 @@ msgstr "Quemadero de carbón"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:114
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "Quema un montón de tablas."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:119
@@ -3012,8 +3011,9 @@ msgstr "Plaza principal"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:224
+#, fuzzy
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "Suministra a los ciudadanos con mercancías. Proporciona comunidad."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:229
@@ -3123,7 +3123,7 @@ msgstr "Albañil"
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:304
 msgid "Carver"
-msgstr ""
+msgstr "Escultor"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:306
@@ -3255,7 +3255,7 @@ msgstr "Camino de grava"
 #. name_3 of buildings:trail
 #: horizons/i18n/objecttranslations.py:383
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "Calle de adoquines"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:385
@@ -3432,7 +3432,6 @@ msgstr "Mar"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:495
-#, fuzzy
 msgid "Wood"
 msgstr "Madera"
 
@@ -3451,7 +3450,7 @@ msgstr "Asentamiento"
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:509
 msgid "Agriculture"
-msgstr ""
+msgstr "Agricultura"
 
 #. tab5_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:513
@@ -3463,7 +3462,6 @@ msgid "Failed to start/load the game"
 msgstr "Fallo al comenzar/cargar el juego"
 
 #: horizons/main.py:345
-#, fuzzy
 msgid "The game you selected could not be started."
 msgstr "El juego seleccionado no puede comenzar."
 
@@ -3506,20 +3504,20 @@ msgid "Save/load for multiplayer games is not possible yet"
 msgstr "Guardar/Cargar partidas de multijugador no es posible todavía"
 
 #: horizons/mpsession.py:97
-#, fuzzy
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
-"El nombre de archivo sólo puede contener letras, números, espacios y _.-"
+"El nombre de archivo sólo puede contener letras, números, espacios y estos "
+"caracteres: _.-"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Incapaz de conectar con el servidor."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Dirección del servidor irresoluble o tal vez inválida."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
@@ -3527,9 +3525,8 @@ msgstr "No está listo"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/network/networkinterface.py:526
-#, fuzzy
 msgid "Ready"
-msgstr "Listo:"
+msgstr "Preparado"
 
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
@@ -3571,12 +3568,13 @@ msgstr "Acceso denegado"
 #: horizons/session.py:418
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"El nombre de archivo de la partida guardada podría ser de sólo lectura o "
+"estar bloqueada por otro proceso."
 
 # 86%
 #: horizons/spsession.py:65
-#, fuzzy
 msgid "Your game has not been saved."
-msgstr "Tu partida ha sido guardada."
+msgstr "Tu partida no ha sido guardada."
 
 # 92%
 #: horizons/util/checkupdates.py:81
@@ -3615,15 +3613,13 @@ msgstr ""
 #: horizons/util/uhdbaccessor.py:284
 #, python-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "Salud: {health}"
 
 #: horizons/world/building/buildable.py:40
-#, fuzzy
 msgid "This building must be built on an island."
-msgstr "Este edificio debe ser construido a orillas de la costa."
+msgstr "Este edificio debe ser construido sobre una isla."
 
 #: horizons/world/building/buildable.py:41
-#, fuzzy
 msgid "This ground is not suitable for this building."
 msgstr "El terreno no es apropiado para este edificio."
 
