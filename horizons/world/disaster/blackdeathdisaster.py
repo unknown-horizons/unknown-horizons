@@ -76,3 +76,7 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 	def recover(self, building):
 		self.healed_buildings.append(building)
 		super(BlackDeathDisaster, self).recover(building)
+
+	def is_infectious(self):
+		"""Returns whether the disaster can spread via infections over to other islands. E.g. by ship"""
+		return True

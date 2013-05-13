@@ -31,7 +31,6 @@ from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
-from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from horizons.world.units.movingobject import MoveNotPossible
 
 
@@ -192,7 +191,7 @@ class Trader(GenericAI):
 
 	def is_warehouse_safe(self, warehouse):
 		"""Checkes whether a warehouse is safe to visit"""
-		return not isinstance(self.session.world.disaster_manager.get_disaster(warehouse.settlement), BlackDeathDisaster)
+		return not warehouse.settlement.is_infected()
 
 	def reached_warehouse(self, ship):
 		"""Actions that need to be taken when reaching a warehouse:

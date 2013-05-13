@@ -113,3 +113,8 @@ class Disaster(WorldObject):
 		"""End this class, used for cleanup. Called by the DisasterManager
 		in end_disaster() automatically"""
 		pass
+
+
+	def is_infectious(self):
+		"""Returns whether the disaster can spread via infections over to other islands. E.g. by ship"""
+		return False
