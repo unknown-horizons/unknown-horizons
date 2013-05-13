@@ -271,7 +271,7 @@ class LogBook(PickBeltWidget, Window):
 
 		# If a scenario goal has been completed, remove the corresponding message
 		for message in self._displayed_messages:
-			self.session.ingame_gui.message_widget.remove(messagetext)
+			self.session.ingame_gui.message_widget.remove(message)
 
 		self._displayed_messages = [] # Reset displayed messages
 		for parameter_list in _split_on_pagebreaks(parameters):
