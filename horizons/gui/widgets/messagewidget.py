@@ -105,6 +105,16 @@ class MessageWidget(LivingObject):
 		                                        created=self.msgcount.next(), message_dict=message_dict),
 		                         sound=sound)
 
+	def remove(self, messagetext):
+		"""Remove a message containing the text *messagetext*"""
+		index = -1
+		for i, message in enumerate(self.active_messages):
+			if messagetext == message.message:
+				index = i
+				break
+		if index > -1:
+			del self.active_messages[index]
+
 	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
 		Uses no predefined message template from content database like add() does.
