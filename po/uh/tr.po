@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-03-01 18:01+0000\n"
-"Last-Translator: vgezer <volkangezer@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-14 16:43+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
@@ -498,7 +498,7 @@ msgstr "Takas:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
-msgstr "Ticari ortak: "
+msgstr "Ticari ortak:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
@@ -552,7 +552,7 @@ msgstr "Üretime başla"
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr "Kaynak seç: "
+msgstr "Kaynak seç:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -1991,7 +1991,7 @@ msgstr "Oyunu 'P' tuşu ile durdurabilirsiniz."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can drag roads by holding the left mouse button."
-msgstr "Farenin sol tuşuna basarak yolları sürükleyebilirsiniz. "
+msgstr "Farenin sol tuşuna basarak yolları sürükleyebilirsiniz."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
@@ -2092,7 +2092,7 @@ msgstr "Ağ oluşturma başarısız."
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
 msgid "Fatal Network Error"
-msgstr " Ağ Hatası"
+msgstr "Ağ Hatası"
 
 #: horizons/gui/modules/multiplayermenu.py:142
 msgid "Could not connect to master server."
@@ -2732,7 +2732,7 @@ msgstr "Arı kovanları"
 #: horizons/i18n/objecttranslations.py:58
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
-"Arıları korur. Şekerlermeler için bak petekleri üretir. Çiftlik gerektirir. "
+"Arıları korur. Şekerlermeler için bak petekleri üretir. Çiftlik gerektirir."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:63
@@ -3645,7 +3645,7 @@ msgstr "Ticaret rotası: {location} şehrine gidiyor"
 #: horizons/world/units/ship.py:216
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr "Gidilen yer: {x}, {y} "
+msgstr "Gidilen yer: {x}, {y}"
 
 #: horizons/world/units/ship.py:221
 #, python-format
