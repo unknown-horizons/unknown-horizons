@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-13 15:48+0200\n"
-"Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
+"PO-Revision-Date: 2013-05-14 16:28+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgid ""
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
 "Los usuarios de Linux pueden instalar la librería usando su gestor de "
-"paquetes. El nombre de la librería es \"pyyaml\" o \"python-yaml\". "
+"paquetes. El nombre de la librería es \"pyyaml\" o \"python-yaml\"."
 
 #: run_uh.py:310
 msgid "Thank you for using Unknown Horizons!"
@@ -1577,7 +1577,7 @@ msgstr "Rotar minimapa con el mapa:"
 
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Ya sea para rotar también el minimapa cuando gire el mapa principal "
+msgstr "Ya sea para rotar también el minimapa cuando gire el mapa principal"
 
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "Uninterrupted building:"
