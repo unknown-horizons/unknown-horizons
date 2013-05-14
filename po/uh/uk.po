@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-14 16:12+0200\n"
+"PO-Revision-Date: 2013-05-14 16:34+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Ukrainian <http://hosted.weblate.org/projects/uh/uh/uk/>\n"
 "Language: uk\n"
@@ -60,7 +60,7 @@ msgstr ""
 
 #: run_uh.py:310
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Дякуємо за використання Unknown Horizons!     "
+msgstr "Дякуємо за використання Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -324,14 +324,14 @@ msgstr "Сплачено податків"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr "Податки"
+msgstr "Податки:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "Податкова ставка:"
+msgstr "Податкова ставка"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
@@ -597,7 +597,7 @@ msgstr "Вибрати ресурс:"
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
-msgstr "Читати попередні записи:"
+msgstr "Читати попередні записи"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
@@ -1046,7 +1046,7 @@ msgstr "Прив'язка клавіш"
 #. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
-msgstr "Прокрутка ліворуч "
+msgstr "Прокрутка ліворуч"
 
 #. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:10
@@ -1401,7 +1401,7 @@ msgstr "Створити нову гру"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
-msgstr "Завантажити гру"
+msgstr "Завантажити гру:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 msgid "Load a saved game"
@@ -1545,7 +1545,7 @@ msgstr "Інтервал автозбереження у хвилинах:"
 
 #: content/gui/xml/mainmenu/settings.xml:145
 msgid "Number of autosaves:"
-msgstr "Кількість автозбережень"
+msgstr "Кількість автозбережень:"
 
 #: content/gui/xml/mainmenu/settings.xml:153
 msgid "Number of quicksaves:"
@@ -1579,7 +1579,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Auto-unload ship:"
-msgstr "Авторозвантаження судна"
+msgstr "Авторозвантаження судна:"
 
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Whether to unload the ship after founding a settlement"
@@ -1663,7 +1663,7 @@ msgstr "Вилучити вибрану збережену гру"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
-msgstr "Введіть ім'я файлу: "
+msgstr "Введіть ім'я файлу:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
@@ -1692,7 +1692,7 @@ msgstr "Вільна гра"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:36
 msgid "Start game:"
-msgstr "Розпочати гру"
+msgstr "Розпочати гру:"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
@@ -2169,7 +2169,7 @@ msgstr "Пароль гри"
 
 #: horizons/gui/modules/multiplayermenu.py:269
 msgid "Enter password:"
-msgstr "Введіть пароль: "
+msgstr "Введіть пароль:"
 
 #: horizons/gui/modules/multiplayermenu.py:349
 #: horizons/gui/modules/singleplayermenu.py:407
