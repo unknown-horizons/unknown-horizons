@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-07 09:09+0200\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"PO-Revision-Date: 2013-05-14 16:32+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Italian <http://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -1031,7 +1031,7 @@ msgstr "Seleziona una mappa da una partita salvata:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr "Seleziona sorgente mappa:"
+msgstr "Seleziona sorgente mappa"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
@@ -1953,7 +1953,7 @@ msgstr "Esci dal Gioco"
 
 #: horizons/gui/ingamegui.py:214
 msgid "No diplomacy possible"
-msgstr "Nessuna azione diplomatica possibile. "
+msgstr "Nessuna azione diplomatica possibile."
 
 #: horizons/gui/ingamegui.py:215
 msgid "Cannot do diplomacy as there are no other players."
@@ -1965,7 +1965,7 @@ msgstr ""
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-format
 msgid "{size}x{size} tiles"
-msgstr "{size}x{sixe} blocchi "
+msgstr "{size}x{sixe} blocchi"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/modules/help.py:54
