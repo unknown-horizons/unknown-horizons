@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-07 09:09+0200\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"PO-Revision-Date: 2013-05-14 16:36+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Swedish <http://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -1414,7 +1414,7 @@ msgstr "Speldetaljer:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
 msgid "Color"
-msgstr "Färg:"
+msgstr "Färg"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1622,7 +1622,7 @@ msgstr "Aktivera ljud:"
 # Mellanslag, bindesstreck eller utan genitiv?
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
-msgstr "Produktionsöversikt"
+msgstr "Produktionsöversikt:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid ""
@@ -2184,7 +2184,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:268
 msgid "Password of the game"
-msgstr "Spelets namn:"
+msgstr "Spelets namn"
 
 #: horizons/gui/modules/multiplayermenu.py:269
 msgid "Enter password:"
@@ -2702,7 +2702,7 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:623
 msgid "Buy expenses"
-msgstr "Utgifter:"
+msgstr "Utgifter"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:626
 msgid "Sell income"
@@ -2780,12 +2780,12 @@ msgstr "Konsumerar mjöl. Producerar mat."
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:70
 msgid "Barracks"
-msgstr "Baracker "
+msgstr "Baracker"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:72
 msgid "Recruits units suitable for ground combat."
-msgstr "Rekryterar artillerienheter. "
+msgstr "Rekryterar artillerienheter."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:77
