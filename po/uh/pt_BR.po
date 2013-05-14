@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-05 12:32+0000\n"
-"Last-Translator: GabrielSantiago <mgsantiagox@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-14 16:33+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 # 86%
 #: run_uh.py:220
@@ -1550,7 +1551,7 @@ msgstr "Spel laden"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr "Senha do jogo"
+msgstr "Senha do jogo:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 msgid "This game's password. Required to join this game."
@@ -1764,7 +1765,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "Middle mouse button pan:"
-msgstr "Botão central do mouse"
+msgstr "Botão central do mouse:"
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "When enabled, dragging the middle mouse button will pan the camera"
@@ -1852,7 +1853,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid "Enable logging:"
-msgstr "Habilitar registros"
+msgstr "Habilitar registros:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
@@ -1869,7 +1870,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Scroll delay:"
-msgstr "Atraso da Rolagem"
+msgstr "Atraso da Rolagem:"
 
 #: content/gui/xml/mainmenu/settings.xml:219
 #, fuzzy
@@ -2314,11 +2315,11 @@ msgstr "Tipos de Jogo"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Pressione \"ESC\" para acessar o Menu do Jogo"
+msgstr "Pressione \"ESC\" para acessar o Menu do Jogo."
 
 #: horizons/gui/modules/loadingscreen.py:61
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Use \"SHIFT\" para colocar várias construções"
+msgstr "Use \"SHIFT\" para colocar várias construções."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:64
@@ -2355,11 +2356,11 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Make sure every house is in range of a marketplace."
-msgstr "Cuide para que todas as casas tenham acesso ao mercado"
+msgstr "Cuide para que todas as casas tenham acesso ao mercado."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Press 'T' to make trees transparent."
-msgstr "Pressione \"T\" para tornar as árvores transparentes"
+msgstr "Pressione \"T\" para tornar as árvores transparentes."
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:100
@@ -3946,7 +3947,7 @@ msgstr "Pioniers"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
 msgid "Precaution"
-msgstr "Precaução "
+msgstr "Precaução"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
@@ -4117,7 +4118,7 @@ msgstr "De toegang is geweigerd"
 
 #: horizons/session.py:418
 msgid "The savegame file could be read-only or locked by another process."
-msgstr "O arquivo de jogo só pode ser lido ou fechado por outro processo"
+msgstr "O arquivo de jogo só pode ser lido ou fechado por outro processo."
 
 # 86%
 #: horizons/spsession.py:65
@@ -4224,7 +4225,7 @@ msgstr "U heeft al een nederzetting gevestigd op dit eiland."
 
 #: horizons/world/building/buildable.py:51
 msgid "This building must be partly on flat land."
-msgstr "Este edifício deve ser construído em uma ilha"
+msgstr "Este edifício deve ser construído em uma ilha."
 
 #: horizons/world/status.py:76
 #, fuzzy
@@ -4253,7 +4254,7 @@ msgstr "Dit gebouw is stilgelegd."
 
 #: horizons/world/status.py:116
 msgid "The inhabitants of this building have the plague."
-msgstr "Os habitantes desta construção estão doentes"
+msgstr "Os habitantes desta construção estão doentes."
 
 #: horizons/world/traderoute.py:320
 #, fuzzy, python-format
@@ -4312,7 +4313,7 @@ msgstr "{player} heeft een nieuwe nederzetting gesticht."
 #: sql-database-files
 #, python-format
 msgid "A new ship by the name of {name} has been created."
-msgstr "Um novo navio de nome {name} foi criado. "
+msgstr "Um novo navio de nome {name} foi criado."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql-database-files
