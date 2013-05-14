@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-03-30 18:33+0000\n"
-"Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-14 16:35+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"Language-Team: Finnish <http://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 # 86%
 #: run_uh.py:220
@@ -368,7 +368,7 @@ msgstr "Onnellinen"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr "Näin tyytyväisten talojen lukumäärä:"
+msgstr "Näin tyytyväisten talojen lukumäärä"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -380,7 +380,7 @@ msgstr "Talokohtainen asukasluku"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "Näin monta asukasta asuu näin monessa talossa:"
+msgstr "Näin monta asukasta asuu näin monessa talossa"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -572,7 +572,7 @@ msgstr "Käynnistä tuotanto"
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr "Valitse resurssi"
+msgstr "Valitse resurssi:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -3533,12 +3533,12 @@ msgstr ""
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
-msgstr "Ei valmiina:"
+msgstr "Ei valmiina"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/network/networkinterface.py:526
 msgid "Ready"
-msgstr "Valmiina:"
+msgstr "Valmiina"
 
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
