@@ -22,11 +22,13 @@
 # ###################################################
 
 import re
-is_function = re.compile('^(\\s*)def\\s+([^\\s(]+)\\s*[(](.*)[)]\\s*:\\s*$')
-is_decorator = re.compile('^(\\s*)@\\s*(.+)\\s*$')
-func_param = re.compile('\\s*(?:,\\s*)?([^,=\\s]+)(?:\\s*=\\s*([^\\s,]+))?')
-is_empty = re.compile('^(\\s*)(?:#.*)?$')
 import sys
+
+is_function = re.compile(r'^(\s*)def ([^(]+)[(](.*)[)]:\s*$')
+is_decorator = re.compile(r'^(\s*)@\s*(.+)\s*$')
+func_param = re.compile(r'\s*(?:,\s*)?([^,=\s]+)(?:\s*=\s*([^\s,]+))?')
+is_empty = re.compile(r'^(\s*)(?:#.*)?$')
+
 files = sys.argv[1:]
 for filename in files:
 	print 'Adding documentation stubs to:', filename
@@ -42,7 +44,7 @@ for filename in files:
 			funk_reg = None
 		elif funk_reg is not None:
 			params = func_param.findall(funk_reg.group(3))
-			indent = funk_reg.group(1)*2 if funk_reg.group(2) != '__init__' else funk_reg.group(1)
+			indent = funk_reg.group(1) + '\t' * (funk_reg.group(2) != '__init__')
 			docstub = [(indent + '"""\n')]
 			for i in params:
 				if i[0] != 'self' and i[0] != 'cls':
