@@ -103,7 +103,7 @@ class MSGID_collect:
 	def __str__(self):
 		s = []
 		for text, locations in self.msgids.items():
-			comment = '#. This is a database entry: %s.\n#: sql-database-files\n' % ','.join(locations)
+			comment = '#. This is a database entry: %s.\n' % ','.join(locations)
 			if "{" in text and "}" in text:
 				comment += '#, python-format\n'
 			s += [comment + build_msgid(text)]
