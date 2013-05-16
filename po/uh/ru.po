@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-07 09:09+0200\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"PO-Revision-Date: 2013-05-16 09:17+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Russian <http://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
 # 86%
@@ -1861,7 +1861,7 @@ msgid ""
 "made so far."
 msgstr ""
 "Восстановление настроек по умолчанию, сбросит все сделаные вами когда-либо "
-"изменения. "
+"изменения."
 
 #: horizons/engine/settingsdialog.py:76
 msgid "Do you want to continue?"
@@ -2255,7 +2255,7 @@ msgstr "Удален"
 
 #: horizons/gui/modules/multiplayermenu.py:598
 msgid "You have been kicked from the game by creator"
-msgstr "Вы были удалены из игры "
+msgstr "Вы были удалены из игры"
 
 #: horizons/gui/modules/multiplayermenu.py:602
 #, python-format
@@ -2443,7 +2443,7 @@ msgid "Boat builder overview"
 msgstr "Обзор судостроителя"
 
 #: horizons/gui/tabs/boatbuildertabs.py:96
-#, python-format
+#, fuzzy, python-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (place in queue: {place})"
 
