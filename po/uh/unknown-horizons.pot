@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 0ee358b\n"
+"Project-Id-Version: Unknown Horizons edab94f\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:14+0200\n"
+"POT-Creation-Date: 2013-05-16 17:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,9 @@ msgid "In order to do this, we need the information from the logfile:"
 msgstr ""
 
 #: run_uh.py:225
-msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
+msgid ""
+"Please give it to us via IRC or our forum, for both see http://unknown-"
+"horizons.org ."
 msgstr ""
 
 #: run_uh.py:273
@@ -47,7 +49,9 @@ msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
 
 #: run_uh.py:276
-msgid "Linux users should find it using their package manager under the name \"pyyaml\" or \"python-yaml\"."
+msgid ""
+"Linux users should find it using their package manager under the name "
+"\"pyyaml\" or \"python-yaml\"."
 msgstr ""
 
 #: run_uh.py:310
@@ -220,7 +224,9 @@ msgid "Running costs"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
-msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
+msgid ""
+"To build a boat, click on one of the class tabs, select the desired ship and "
+"confirm the order."
 msgstr ""
 
 #. Information about the ship currently under construction at the boat
@@ -399,7 +405,8 @@ msgid "Resource deposit"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
-msgid "This is a resource deposit where you can build a mine to dig up resources."
+msgid ""
+"This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 
 #. It == The resource deposit
@@ -430,11 +437,15 @@ msgid "Needed resources:"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
-msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
+msgid ""
+"The signal fire shows the free trader how to reach your settlement in case "
+"you want to buy or sell goods."
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
-msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
+msgid ""
+"This is the free trader's ship. It will visit you from time to time to buy "
+"or sell goods."
 msgstr ""
 
 #. Percentage describing how busy the collectors were (100% = always going
@@ -537,7 +548,9 @@ msgstr ""
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
+msgid ""
+"The resource you select is displayed instead of the current one. Empty by "
+"clicking on X."
 msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
@@ -678,7 +691,8 @@ msgid "Land"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-msgid "Value of usable land i.e Amount of Land that can be used to create buildings"
+msgid ""
+"Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
@@ -686,7 +700,9 @@ msgid "Resources"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
-msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
+msgid ""
+"Value of resources generated from all the possible sources in the player's "
+"settlement(s)"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
@@ -700,12 +716,14 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493 sql-database-files
+#: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
+msgid ""
+"Value denoting the progress of the settlement(s) in terms of inhabitants, "
+"buildings and overall happiness"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
@@ -717,7 +735,8 @@ msgid "Value of all the units owned by the player"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
-msgid "The total value from all individual entities or in short : Total Player Score"
+msgid ""
+"The total value from all individual entities or in short : Total Player Score"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
@@ -1444,7 +1463,8 @@ msgid "Scroll at map edge:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:95
-msgid "Whether to move the viewport when the mouse pointer is close to map edges"
+msgid ""
+"Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:101
@@ -1452,7 +1472,9 @@ msgid "Cursor centered zoom:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:101
-msgid "When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center."
+msgid ""
+"When enabled, mouse wheel zoom will use the cursor position as new viewport "
+"center. When disabled, always zoom to current viewport center."
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:107
@@ -1520,7 +1542,9 @@ msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:196
-msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
+msgid ""
+"Don't use in normal game session. Decides whether to write debug information "
+"in the logging directory of your user directory. Slows the game down."
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:196
@@ -1532,7 +1556,8 @@ msgid "Production indicators:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:202
-msgid "Whether to show resource icons over buildings whenever they finish production"
+msgid ""
+"Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:210
@@ -1633,6 +1658,7 @@ msgstr ""
 msgid "Map settings:"
 msgstr ""
 
+#. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr ""
@@ -1740,7 +1766,8 @@ msgstr ""
 
 #: horizons/editor/session.py:72 horizons/spsession.py:67
 #, python-format
-msgid "If this error happens again, please contact the development team: {website}"
+msgid ""
+"If this error happens again, please contact the development team: {website}"
 msgstr ""
 
 #: horizons/engine/settingsdialog.py:52
@@ -1761,7 +1788,9 @@ msgid "Restore default settings"
 msgstr ""
 
 #: horizons/engine/settingsdialog.py:75
-msgid "Restoring the default settings will delete all changes to the settings you made so far."
+msgid ""
+"Restoring the default settings will delete all changes to the settings you "
+"made so far."
 msgstr ""
 
 #: horizons/engine/settingsdialog.py:76
@@ -1787,7 +1816,8 @@ msgstr ""
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py:143
 msgid ""
-"The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
+"The SDL renderer is meant as a fallback solution only and has serious "
+"graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
@@ -1797,11 +1827,13 @@ msgid "Invalid network port"
 msgstr ""
 
 #: horizons/engine/settingshandler.py:223
-msgid "The port you specified is not valid. It must be a number between 1 and 65535."
+msgid ""
+"The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 
 #: horizons/engine/settingshandler.py:224
-msgid "Please check the port you entered and make sure it is in the specified range."
+msgid ""
+"Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 
 #: horizons/engine/settingshandler.py:236
@@ -1810,7 +1842,8 @@ msgstr ""
 
 #: horizons/engine/settingshandler.py:237
 #: horizons/gui/modules/multiplayermenu.py:131
-msgid "Network features could not be initialized with the current configuration."
+msgid ""
+"Network features could not be initialized with the current configuration."
 msgstr ""
 
 #: horizons/engine/settingshandler.py:238
@@ -1820,7 +1853,9 @@ msgstr ""
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:242
-msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
+msgid ""
+"Low port numbers sometimes require special access privileges, try 0 or a "
+"number greater than 1024."
 msgstr ""
 
 #: horizons/engine/settingshandler.py:277
@@ -1913,11 +1948,14 @@ msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:69
-msgid "You can increase the happiness of your inhabitants by lowering the taxes."
+msgid ""
+"You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:70
-msgid "Build fire stations and doctors to protect your inhabitants from fire and disease."
+msgid ""
+"Build fire stations and doctors to protect your inhabitants from fire and "
+"disease."
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:71
@@ -1982,7 +2020,9 @@ msgid "Unable to find pyenet"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:119
-msgid "The multiplayer feature requires the library \"pyenet\", which could not be found on your system."
+msgid ""
+"The multiplayer feature requires the library \"pyenet\", which could not be "
+"found on your system."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:121
@@ -2003,7 +2043,9 @@ msgid "Could not connect to master server."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:143
-msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
+msgid ""
+"Please check your Internet connection. If it is fine, it means our master "
+"server is temporarily down."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
@@ -2044,7 +2086,11 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:230
 #, python-format
-msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
+msgid ""
+"The game's version differs from your version. Every player in a multiplayer "
+"game must use the same version. This can be fixed by every player updating "
+"to the latest version. Game version: {game_version} Your version: "
+"{own_version}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:268
@@ -2056,7 +2102,7 @@ msgid "Enter password:"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:349
-#: horizons/gui/modules/singleplayermenu.py:407
+#: horizons/gui/modules/singleplayermenu.py:405
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr ""
@@ -2226,69 +2272,69 @@ msgstr ""
 msgid "Failed to delete savefile!"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "You entered an invalid playername."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:149
+#: horizons/gui/modules/singleplayermenu.py:147
 msgid "Resource density:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Water:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Max island size:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Preferred island size:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Island size deviation:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:342
 msgid "Click to generate a different random map"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:501
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:502
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:545
+#: horizons/gui/modules/singleplayermenu.py:569
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:549
+#: horizons/gui/modules/singleplayermenu.py:573
 #, python-format
 msgid "Author: {author}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:553
+#: horizons/gui/modules/singleplayermenu.py:577
 #, python-format
 msgid "Description: {desc}"
 msgstr ""
@@ -2371,17 +2417,23 @@ msgstr ""
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:173
-msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
+msgid ""
+"Set to buy or sell by clicking on that label, then adjust the amount via the "
+"slider to the right."
 msgstr ""
 
 #: horizons/gui/tabs/buyselltab.py:318
 #, python-format
-msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
+msgid ""
+"Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
+"in stock."
 msgstr ""
 
 #: horizons/gui/tabs/buyselltab.py:322
 #, python-format
-msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
+msgid ""
+"Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
+"available."
 msgstr ""
 
 #: horizons/gui/tabs/mainsquaretabs.py:65
@@ -2532,11 +2584,15 @@ msgid "Reset this configuration to the factory default."
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
-msgid "Reset this settlement's displayed resources to the default configuration you have saved."
+msgid ""
+"Reset this settlement's displayed resources to the default configuration you "
+"have saved."
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
-msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
+msgid ""
+"Reset the default configuration (which you see here) to the factory default "
+"for all settlements."
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:623
@@ -3204,7 +3260,7 @@ msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471 sql-database-files
+#: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr ""
 
@@ -3230,7 +3286,7 @@ msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483 sql-database-files
+#: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr ""
 
@@ -3299,7 +3355,9 @@ msgstr ""
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
 #: horizons/manager.py:175
-msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
+msgid ""
+"The games have run out of sync. This indicates an unknown internal error, "
+"the game cannot continue."
 msgstr ""
 
 #: horizons/manager.py:176
@@ -3315,7 +3373,9 @@ msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
 
 #: horizons/mpsession.py:97
-msgid "The filename must consist only of letters, numbers, spaces and these characters: _ . -"
+msgid ""
+"The filename must consist only of letters, numbers, spaces and these "
+"characters: _ . -"
 msgstr ""
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
@@ -3347,7 +3407,7 @@ msgstr ""
 msgid "Do you want to continue playing?"
 msgstr ""
 
-#: horizons/scenario/scenarioeventhandler.py:158
+#: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
 msgstr ""
 
@@ -3361,7 +3421,9 @@ msgid "There has been an error while creating your savegame file."
 msgstr ""
 
 #: horizons/session.py:411
-msgid "This usually means that the savegame name contains unsupported special characters."
+msgid ""
+"This usually means that the savegame name contains unsupported special "
+"characters."
 msgstr ""
 
 #: horizons/session.py:417
@@ -3382,7 +3444,9 @@ msgstr ""
 
 #: horizons/util/checkupdates.py:83
 #, python-format
-msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
+msgid ""
+"There is a more recent release of Unknown Horizons ({new_version}) than the "
+"one you are currently using ({old_version})."
 msgstr ""
 
 #: horizons/util/checkupdates.py:93
@@ -3527,463 +3591,379 @@ msgid "Attacking {owner}"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new settlement was founded by {player}."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new ship by the name of {name} has been created."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "A new world has been created."
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Aristocrats"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Cannot go here."
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Merchants"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Sailors"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "Screenshot has been saved to {file}."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants just moved out."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You can also drag roads."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You failed the scenario."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You have reached the current maximum tier. Your inhabitants will not upgrade further."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "You need more {resource} to build this building."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You won!"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your building has caught fire!"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your crew refuses to leave this map."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been autosaved."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been quicksaved."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been saved."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your mine has run out of resources."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "acorns"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "alvearies"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "boards"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "bricks"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "candles"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cannon"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle for slaughter"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "charcoal"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay deposit"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa beans"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "coins"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "community"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "condiments"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "confectionery"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "corn"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "dagger"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer food A"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer meat"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "education"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "faith"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fire"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fish"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "flour"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "food"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "get-together"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grain"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grapes"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grass"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "happiness"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "herbs"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "honeycombs"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron deposit"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ingots"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ore"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "lamb wool"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "liquor"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "medical herbs"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs for slaughter"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "potatoes"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "salt"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spice plants"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spices"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone deposit"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone tops"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar cane"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "textile"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco leaves"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco plants"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobaccos"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tools"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "trees"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "vines"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "wool"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "Your building has caught fire!"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "medical herbs"
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Aristocrats"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "happiness"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Some of your inhabitants just moved out."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco leaves"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "stone tops"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "pigs for slaughter"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "trees"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "clay deposit"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Merchants"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "iron ingots"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "{player1} and {player2} have settled their hostility."
+msgid "Screenshot has been saved to {file}."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cattle"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "You can also drag roads."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid ""
+"You have reached the current maximum tier. Your inhabitants will not upgrade "
+"further."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid ""
+"The route is now configured. Start it via the \"start route\" button in the "
+"\"configure route\" menu."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "Cannot go here."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "sugar cane"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Some of your inhabitants have no access to a main square."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
 msgstr ""
 
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Sailors"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "grain"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "spices"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "dagger"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "spice plants"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cattle for slaughter"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "tobaccos"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "deer meat"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "coins"
+msgstr ""
+
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "You won!"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "stone deposit"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You failed the scenario."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "acorns"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco plants"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "You need more {resource} to build this building."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your crew refuses to leave this map."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have settled their hostility."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "grass"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "alvearies"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been autosaved."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your mine has run out of resources."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "iron deposit"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "education"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid ""
+"{player1} and {player2} have ended their alliance and are now in a state of "
+"war."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "textile"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "{player}: {message}"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "cannon"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "A new world has been created."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been quicksaved."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "deer food A"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "candles"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "vines"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been saved."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
 msgstr ""
