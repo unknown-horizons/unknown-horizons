@@ -33,13 +33,14 @@
 #
 ###############################################################################
 
+import os
 import sqlalchemy
 import sqlalchemy.orm
 import sqlalchemy.ext.declarative
 import sqlite3
-import tempfile
-import os
 import sys
+import tempfile
+from collections import defaultdict
 
 sys.path.append(".")
 sys.path.append("./horizons")
@@ -91,16 +92,13 @@ class SettlerLevel(Base):
 #
 
 class MSGID_collect:
-	msgids = {}
+	msgids = defaultdict(list)
 
 	def __init__(self):
 		pass
 
 	def add_to_collection(self, msgid, place):
-		if self.msgids.has_key(msgid):
-			self.msgids[msgid].append(place)
-		else:
-			self.msgids[msgid] = [place]
+		self.msgids[msgid].append(place)
 
 	def __str__(self):
 		s = []
