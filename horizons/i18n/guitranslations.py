@@ -528,7 +528,7 @@ def set_translations():
 		},
 
 	'loadingscreen.xml' : {
-		(u'loading_label'                , 'text'    ): _(u"Loading ..."),
+		(u'loading_label'                , 'text'    ): _(u"Loading…"),
 		},
 
 	'mainmenu.xml' : {

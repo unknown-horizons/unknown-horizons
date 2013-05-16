@@ -1,3 +1,4 @@
+# Encoding: utf-8
 # ###################################################
 # Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -48,7 +49,7 @@ FUN_QUOTES = {
 		"If one does not know to which port one is sailing, no wind is favorable",
 		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails",
 		"Travel beyond the horizon and discover unknown worlds!",
-		"War... war never changes",
+		u"War… war never changes",
 		"Support Unknown Horizons with Cookies!"
     ]
 }
@@ -97,17 +98,17 @@ def get_random_quote():
 
 stage_text = {
 	# translators: these are descriptions of the current task while loading a game
-	'session_create_world': _lazy('Starting engine...'),
-	'session_index_fish': _lazy('Catching fish...'),
-	'session_load_gui': _lazy('Drawing user interface...'),
-	'session_finish': _lazy('Activating timer...'),
-	'load_objects': _lazy('Chomping game data...'),
-	'world_load_map': _lazy('Shaping islands...'),
-	'world_load_buildings': _lazy('Preparing blueprints...'),
-	'world_init_water': _lazy('Filling world with water...'),
-	'world_load_units': _lazy('Raising animals...'),
-	'world_setup_ai': _lazy('Convincing AI...'),
-	'world_load_stuff': _lazy('Burying treasures...'),
+	'session_create_world': _lazy(u'Starting engine…'),
+	'session_index_fish': _lazy(u'Catching fish…'),
+	'session_load_gui': _lazy(u'Drawing user interface…'),
+	'session_finish': _lazy(u'Activating timer…'),
+	'load_objects': _lazy(u'Chomping game data…'),
+	'world_load_map': _lazy(u'Shaping islands…'),
+	'world_load_buildings': _lazy(u'Preparing blueprints…'),
+	'world_init_water': _lazy(u'Filling world with water…'),
+	'world_load_units': _lazy(u'Raising animals…'),
+	'world_setup_ai': _lazy(u'Convincing AI…'),
+	'world_load_stuff': _lazy(u'Burying treasures…'),
 }
 
 
