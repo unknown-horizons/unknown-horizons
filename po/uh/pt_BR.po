@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-14 16:33+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <http://hosted.weblate.org/projects/uh/uh/"
-"pt_BR/>\n"
+"PO-Revision-Date: 2013-05-17 16:36+0200\n"
+"Last-Translator: Pedro Henrique <system.pedrohenrique@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,9 +20,8 @@ msgstr ""
 
 # 86%
 #: run_uh.py:220
-#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons is vastgelopen."
+msgstr "Unknown Horizons travou."
 
 # 83%
 #: run_uh.py:222
@@ -30,18 +29,17 @@ msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "Desculpe por isso, iremos resolver este problema."
 
 #: run_uh.py:223
-#, fuzzy
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Hiervoor hebben we de informatie van het logbestand nodig:"
+msgstr ""
+"Para podermos fazer isso, nos precisamos de informações do arquivo de log:"
 
 #: run_uh.py:225
-#, fuzzy
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Stuur het ons via IRC of ons forum, voor meer informatie zie http://unknown-"
-"horizons.org ."
+"Por favor entre em contato por IRC ou nosso forum, para os dois veja http"
+"://unknown-horizons.org ."
 
 #: run_uh.py:273
 msgid "Error: Unable to find required library \"PyYAML\"."
@@ -66,9 +64,8 @@ msgstr ""
 "procurando pelo nome \"pyyaml\", ou \"python-yaml\"."
 
 #: run_uh.py:310
-#, fuzzy
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Bedankt voor het spelen van Unknown Horizons!"
+msgstr "Obrigado por usar Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -76,9 +73,8 @@ msgstr "Voltar ao Editor"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
-#, fuzzy
 msgid "Save map"
-msgstr "Kaart opslaan"
+msgstr "Salvar o mapa"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
@@ -88,17 +84,15 @@ msgstr "Carregando mapa"
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
-#, fuzzy
 msgid "Settings"
-msgstr "Instellingen"
+msgstr "Configurações"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
-#, fuzzy
 msgid "Help"
-msgstr "Help"
+msgstr "Ajuda"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
@@ -106,15 +100,15 @@ msgstr "Sair do Editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Selecione o tamanho do pincel:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Selecione o terreno:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(clique com direito para parar)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 #, fuzzy
@@ -122,132 +116,110 @@ msgid "Game start"
 msgstr "Start spel"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
-#, fuzzy
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Er is een nederzetting nodig voordat gebouwen gebouwd kunnen worden!"
+msgstr ""
+"Você precisa encontrar uma colônia antes de começar a construir edifícios!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
-#, fuzzy
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Selecteer je schip en benader de kust met de rechtermuisknop."
+msgstr "Selecione seu navio e aproxime da costa clicando com direito."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
-#, fuzzy
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Daarna klik je op de grote knop in het scheepsoverzicht."
+msgstr "Depois, clique no botão grande na tab de informações do navio."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
-#, fuzzy
 msgid "Build"
-msgstr "Bouw"
+msgstr "Edifício"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
-#, fuzzy
 msgid "Running costs:"
-msgstr "Operationele kosten:"
+msgstr "Custos de funcionamento:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr "construções relacionadas"
+msgstr "Construções relacionadas"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
-#, fuzzy
 msgid "Inhabitants"
-msgstr "Inwoners"
+msgstr "habitantes"
 
 # 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Speelsnelheid verhogen (+)"
+msgstr "Aumentar a velocidade do jogo (+)"
 
 # 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Speelsnelheid verlagen (-)"
+msgstr "Diminuir a velocidade do jogo (-)"
 
 # 87%
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy
 msgid "Rotate map counterclockwise (,)"
-msgstr "Draai de kaart tegen de klok in (,)"
+msgstr "Rotacionar o mapa em sentido anti-horário (,)"
 
 # 83%
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy
 msgid "Rotate map clockwise (.)"
-msgstr "Draai de kaart met de klok mee (.)"
+msgstr "Rotacionar o mapa em sentido horário (.)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
-#, fuzzy
 msgid "Zoom in"
-msgstr "Zoom in"
+msgstr "Mais zoom"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
-#, fuzzy
 msgid "Zoom out"
-msgstr "Zoom uit"
+msgstr "Menos zoom"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy
 msgid "Destroy (X)"
-msgstr "Vernietigen (X)"
+msgstr "Destruir (X)"
 
 # 76%
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy
 msgid "Captain's log (L)"
-msgstr "Logboek van de Kapitein (L)"
+msgstr "Diário do Capitão (L)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy
 msgid "Build menu (B)"
-msgstr "Bouwmenu (B)"
+msgstr "Menu de construção (B)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
-#, fuzzy
 msgid "Diplomacy"
-msgstr "Diplomatie"
+msgstr "Diplomacia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy
 msgid "Game menu (Esc)"
-msgstr "Spelmenu (Esc)"
+msgstr "Menu do jogo (Esc)"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
-#, fuzzy
 msgid "Change name"
-msgstr "Verander naam"
+msgstr "Alterar o nome"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
-#, fuzzy
 msgid "Old name:"
-msgstr "Oude naam:"
+msgstr "Antigo nome:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
-#, fuzzy
 msgid "Enter new name:"
-msgstr "Voer nieuwe naam in:"
+msgstr "Digite o novo nome:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
-#, fuzzy
 msgid "Apply the new name"
-msgstr "Pas de nieuwe naam toe"
+msgstr "Aplicar o novo nome"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
-#, fuzzy
 msgid "Chat"
 msgstr "Chat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
-#, fuzzy
 msgid "Enter your message:"
-msgstr "Voer uw bericht in:"
+msgstr "Digite sua mensagem:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -263,9 +235,8 @@ msgstr "Voer uw bericht in:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:28
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:617
-#, fuzzy
 msgid "Running costs"
-msgstr "Operationele kosten"
+msgstr "Custos de funcionamento"
 
 # #############
 # #  no need to translate the following (until next comment)
@@ -283,124 +254,105 @@ msgstr ""
 #. Information about the ship currently under construction at the boat
 #. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
-#, fuzzy
 msgid "Currently building:"
-msgstr "Momenteel onder constructie:"
+msgstr "Edifício atual:"
 
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
-#, fuzzy
 msgid "Pause"
-msgstr "Pauseer"
+msgstr "Pause"
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
-#, fuzzy
 msgid "Resume"
-msgstr "Hervat"
+msgstr "Continuar"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
-#, fuzzy
 msgid "Construction progress:"
-msgstr "Voortgang constructie:"
+msgstr "Progresso de construção:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
-#, fuzzy
 msgid "Resources still needed:"
-msgstr "Nog benodigde grondstoffen:"
+msgstr "Recursos ainda necessários:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
-#, fuzzy
 msgid "Cancel building:"
-msgstr "Annuleer constructie:"
+msgstr "Cancelar construção:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
-#, fuzzy
 msgid "(lose all resources)"
-msgstr "(U verliest alle grondstoffen)"
+msgstr "(perde todos os recursos)"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
-#, fuzzy
 msgid "Cancel all building progress"
-msgstr "Annuleer alle constructieve vooruitgang"
+msgstr "Cancelar o progresso de todas as construções"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
-#, fuzzy
 msgid "ally"
-msgstr "bondgenoot"
+msgstr "aliado"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
-#, fuzzy
 msgid "neutral"
-msgstr "neutraal"
+msgstr "neutro"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
-#, fuzzy
 msgid "enemy"
-msgstr "vijand"
+msgstr "Inimigo"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
-#, fuzzy
 msgid "Building overview"
-msgstr "Gebouwenoverzicht"
+msgstr "Visão geral das construções"
 
 # 95%
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
-#, fuzzy
 msgid "Capacity utilization"
-msgstr "Verbruiksstatistieken"
+msgstr "Capacidade de utilização"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
-#, fuzzy
 msgid "Settlement inventory"
-msgstr "Inventaris nederzetting"
+msgstr "Inventário da colônia"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:39
-#, fuzzy
 msgid "Settler overview"
-msgstr "Kolonistenoverzicht"
+msgstr "Visão geral do colono"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
-#, fuzzy
 msgid "Paid taxes"
-msgstr "Betaalde belastingen"
+msgstr "Impostos pagos"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
-#, fuzzy
 msgid "Taxes:"
-msgstr "Belastingen:"
+msgstr "Impostos:"
 
 # 87%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
-#, fuzzy
 msgid "Tax rate"
-msgstr "Belastingtarief"
+msgstr "Taxa de imposto"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
-#, fuzzy
 msgid "Upgrade permissions:"
-msgstr "Toegestane verbeteringen:"
+msgstr "Melhorar permissões:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
@@ -409,7 +361,7 @@ msgstr "Satisfação por casa"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
-msgstr ""
+msgstr "triste"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
@@ -419,16 +371,15 @@ msgstr "Satisfeito"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:60
 msgid "happy"
-msgstr ""
+msgstr "feliz"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
 msgstr "Quantidade de casas com essa satisfação"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
-#, fuzzy
 msgid "Residents per house"
-msgstr "Bewoners per huis"
+msgstr "Residentes por casa"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
@@ -439,66 +390,56 @@ msgid "Houses with this amount of inhabitants"
 msgstr "Casas com essa quantidade de habitantes"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
-#, fuzzy
 msgid "Summary"
-msgstr "Overzicht"
+msgstr "Sumário"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
-#, fuzzy
 msgid "houses"
-msgstr "huizen"
+msgstr "casas"
 
 # 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
-#, fuzzy
 msgid "residents"
-msgstr "inwoners"
+msgstr "residentes"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:348
-#, fuzzy
 msgid "Selling"
-msgstr "Verkopen"
+msgstr "Vendendo"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: horizons/gui/tabs/buyselltab.py:341
-#, fuzzy
 msgid "Buying"
-msgstr "Aankopen"
+msgstr "Comprando"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
-#, fuzzy
 msgid "Name:"
-msgstr "Naam:"
+msgstr "Nome:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
-#, fuzzy
 msgid "Weapons:"
-msgstr "Wapens:"
+msgstr "Armas:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
-#, fuzzy
 msgid "Resource deposit"
-msgstr "Grondstofafzetting"
+msgstr "Depósito de recursos"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
-#, fuzzy
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Dit is een grondstofafzetting waar u een mijn kan plaatsen om grondstoffen "
-"op te graven."
+"Este é um depósito de recursos onde você pode construir a mina para coletar "
+"recursos."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
-#, fuzzy
 msgid "It contains these resources:"
-msgstr "Het bevat de volgende grondstoffen:"
+msgstr "Ele contem estes recursos:"
 
 # 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
@@ -506,140 +447,118 @@ msgstr "Het bevat de volgende grondstoffen:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
 #: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:67
 #: horizons/gui/widgets/playerssettlements.py:97
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Klik om de naam van uw nederzetting te wijzigen"
+msgstr "Clique para alterar o nome da sua colônia"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
-#, fuzzy
 msgid "Happiness"
-msgstr "Tevredenheid"
+msgstr "Felicidade"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
-#, fuzzy
 msgid "Residents"
-msgstr "Inwoners"
+msgstr "Residentes"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Vereiste grondstoffen:"
+msgstr "Recursos necessários:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
-#, fuzzy
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Het signaalvuur toont de vrije handelaars hoe uw kolonie bereikt kan worden "
-"mocht u goederen willen kopen of verkopen."
+"O sinal de fogo mostra ao livre comércio como chegar a sua colônia em caso "
+"de você desejar comprar ou vender bens."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
-#, fuzzy
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Dit is een schip van de vrije handelaars. Van tijd tot tijd zal deze u "
-"bezoeken om goederen te kopen of verkopen."
+"Este é um navio livro de troca. Ele ira visitar você de tempo em tempo para "
+"comprar ou vender bens."
 
 # 95%
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:27
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:29
-#, fuzzy
 msgid "Collector utilization"
-msgstr "Coletores utilizados"
+msgstr "Utilização dos coletores"
 
 # 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Klik om de naam van dit schip te wijzigen"
+msgstr "Clique para alterar o nome deste navio"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:84
-#, fuzzy
 msgid "Trade"
-msgstr "Handel"
+msgstr "Comércio"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:64
-#, fuzzy
 msgid "Build settlement"
-msgstr "Plaats nederzetting"
+msgstr "Construir colônia"
 
 # 95%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
-#, fuzzy
 msgid "Configure trading route"
-msgstr "Stel handelsroute in"
+msgstr "Configurar rota de comércio"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
-#, fuzzy
 msgid "Ship:"
-msgstr "Schip:"
+msgstr "Navio:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
-#, fuzzy
 msgid "Exchange:"
-msgstr "Handel:"
+msgstr "Troca:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
-#, fuzzy
 msgid "Trade partner:"
-msgstr "Handelspartner:"
+msgstr "Parceiro comercial:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
-#, fuzzy
 msgid "Buy or sell resources"
-msgstr "Koop of verkoop grondstof"
+msgstr "Comprar ou vender recursos"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
-#, fuzzy
 msgid "Trade history"
-msgstr "Handelsgeschiedenis"
+msgstr "História do comércio"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
-#, fuzzy
 msgid "Select resources:"
-msgstr "Selecteer grondstoffen:"
+msgstr "Selecionar recursos:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
-#, fuzzy
 msgid "Income:"
-msgstr "Inkomsten:"
+msgstr "Renda:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:620
-#, fuzzy
 msgid "Taxes"
-msgstr "Belastingen"
+msgstr "Impostos"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
-#, fuzzy
 msgid "Sale"
-msgstr "Verkoop"
+msgstr "Venda"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
-#, fuzzy
 msgid "Expenses:"
-msgstr "Uitgaven:"
+msgstr "Despesas:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
-#, fuzzy
 msgid "Balance:"
-msgstr "Balans:"
+msgstr "Saldo:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:42
 #, fuzzy
