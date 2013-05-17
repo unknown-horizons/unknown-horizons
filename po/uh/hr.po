@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-16 19:36+0200\n"
+"PO-Revision-Date: 2013-05-17 17:24+0200\n"
 "Last-Translator: Daniel Tominac <tominaccell@gmail.com>\n"
 "Language-Team: Croatian <http://hosted.weblate.org/projects/uh/uh/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
 #: run_uh.py:220
@@ -969,15 +969,15 @@ msgstr "Pakeri"
 
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
-msgstr ""
+msgstr "Debian operativni sustavi"
 
 #: content/gui/xml/mainmenu/credits.xml:332
 msgid "Fedora &amp; openSUSE"
-msgstr ""
+msgstr "Fedora &amp; openSUSE operativni sustavi"
 
 #: content/gui/xml/mainmenu/credits.xml:338
 msgid "OS X"
-msgstr ""
+msgstr "OS X operativni sustavi"
 
 #: content/gui/xml/mainmenu/credits.xml:348
 msgid "Special Thanks"
@@ -1819,11 +1819,11 @@ msgstr "Želite li nastaviti?"
 
 #: horizons/engine/settingshandler.py:70
 msgid "16 bit"
-msgstr ""
+msgstr "16 bita"
 
 #: horizons/engine/settingshandler.py:70
 msgid "32 bit"
-msgstr ""
+msgstr "32 bita"
 
 #: horizons/engine/settingshandler.py:70
 msgid "Default"
