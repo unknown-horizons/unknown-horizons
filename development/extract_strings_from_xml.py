@@ -112,7 +112,6 @@ files_to_skip = [
 	'startup_error_popup.xml',
 	]
 
-KEEP_STUFF_RE = re.compile(r'noi18n_\w+')
 
 def print_n_no_name(n, text):
 	print '\tWarning: ',
