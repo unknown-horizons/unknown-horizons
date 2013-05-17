@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-17 16:36+0200\n"
+"PO-Revision-Date: 2013-05-17 17:58+0200\n"
 "Last-Translator: Pedro Henrique <system.pedrohenrique@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
@@ -561,40 +561,35 @@ msgid "Balance:"
 msgstr "Saldo:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:42
-#, fuzzy
 msgid "Show resources produced in this settlement"
-msgstr "Laat in deze nederzetting geproduceerde middelen zien"
+msgstr "Mostrar recursos produzidos nesta colônia"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
-#, fuzzy
 msgid "Pause production"
-msgstr "Pauzeer productie"
+msgstr "Pausar produção"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
-#, fuzzy
 msgid "Start production"
-msgstr "Start productie"
+msgstr "Começar produção"
 
 # 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Selecteer grondstof:"
+msgstr "Selecionar recurso:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
-"De geselecteerde grondstof wordt in plaats van de huidige getoond. Druk op X "
-"om te wissen."
+"O recurso que você selecionou sera mostrado em vez do atual. Esvazie "
+"clicando no X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 #, fuzzy
