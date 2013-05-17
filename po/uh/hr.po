@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-17 17:24+0200\n"
+"PO-Revision-Date: 2013-05-17 20:02+0200\n"
 "Last-Translator: Daniel Tominac <tominaccell@gmail.com>\n"
 "Language-Team: Croatian <http://hosted.weblate.org/projects/uh/uh/hr/>\n"
 "Language: hr\n"
@@ -2057,37 +2057,41 @@ msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"Igra s više igrača zahtjeva \"pyenet\" biblioteku, a ona nije pronađena u tvom "
+"sistemu."
 
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Linuks korisnici: Pokušajte instalirati pyenet kroz upravitelj paketa."
 
 #: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Neuspješno iniciranje mrežnog povezivanja."
 
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Kobna greška mreže"
 
 #: horizons/gui/modules/multiplayermenu.py:142
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Neuspješno povezivanje na glavni poslužitelj."
 
 #: horizons/gui/modules/multiplayermenu.py:143
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
+"Molimo provjerite internet vezu. Ukoliko je ona u redu, onda su vjerojatno "
+"naši poslužitelji privremeno neaktivni."
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Nešto se krivo dogodilo s mrežom:"
 
 #: horizons/gui/modules/multiplayermenu.py:174
 msgid "Version differs!"
-msgstr ""
+msgstr "Verzija nije ista!"
 
 #: horizons/gui/modules/multiplayermenu.py:204
 #: horizons/gui/modules/multiplayermenu.py:441
@@ -2099,13 +2103,13 @@ msgstr "Mapa: {map_name}"
 #: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Ime: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:206
 #: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Creator: {game_creator}"
-msgstr ""
+msgstr "Stvaratelj: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 #: horizons/gui/modules/multiplayermenu.py:447
@@ -2125,14 +2129,18 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
+"Vrezija igre je različita od tvoje verzije. U igri s više igrača je nužno da "
+"sve verzije igre budu iste. Ovo se popravlja tako da svi igrači nadograde "
+"igru na najnoviju verziju. Verzija igre: {game_version} Tvoja verzija: "
+"{own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:268
 msgid "Password of the game"
-msgstr ""
+msgstr "Lozinka igre"
 
 #: horizons/gui/modules/multiplayermenu.py:269
 msgid "Enter password:"
-msgstr ""
+msgstr "Unesite lozinku:"
 
 #: horizons/gui/modules/multiplayermenu.py:349
 #: horizons/gui/modules/singleplayermenu.py:405
@@ -2143,80 +2151,80 @@ msgstr "Preporučen broj igrača: {number}"
 #: horizons/gui/modules/multiplayermenu.py:465
 #: horizons/gui/modules/multiplayermenu.py:473
 msgid "Click here to change your name and/or color"
-msgstr ""
+msgstr "Kliknite ovdje kako bi promijenili svoje ime i/ili boju"
 
 #: horizons/gui/modules/multiplayermenu.py:492
 #, python-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "Izbaci {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:560
 #, python-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{player} se pridružio igri"
 
 #: horizons/gui/modules/multiplayermenu.py:564
 #, python-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{player} je napustio igru"
 
 #: horizons/gui/modules/multiplayermenu.py:570
 msgid "You are now ready"
-msgstr ""
+msgstr "Sada si spreman"
 
 #: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "Više nisi spreman"
 
 #: horizons/gui/modules/multiplayermenu.py:576
 #, python-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} je spreman"
 
 #: horizons/gui/modules/multiplayermenu.py:579
 #, python-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} nije više spreman"
 
 #: horizons/gui/modules/multiplayermenu.py:584
 #, python-format
 msgid "You are now known as {new_name}"
-msgstr ""
+msgstr "Sada te svi znaju kao {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:587
 #, python-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "{player} je sada znan kao {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 msgid "You changed your color"
-msgstr ""
+msgstr "Promijenili ste svoju boju"
 
 #: horizons/gui/modules/multiplayermenu.py:594
 #, python-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player} je promijenio svoju boju"
 
 #: horizons/gui/modules/multiplayermenu.py:598
 msgid "Kicked"
-msgstr ""
+msgstr "Izbačen"
 
 #: horizons/gui/modules/multiplayermenu.py:598
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "Kreator igre vas je izbacio iz mape"
 
 #: horizons/gui/modules/multiplayermenu.py:602
 #, python-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player} je izbačen od strane kreatora igre"
 
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Jeste li sigurni da želite prekinuti pokrenutu sesiju?"
 
 #: horizons/gui/modules/pausemenu.py:83
 msgid "Quit Session"
-msgstr ""
+msgstr "Odustani od sesije"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "No saved games"
@@ -2224,75 +2232,75 @@ msgstr "Nema sačuvanih igara"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "Nema spremljenih igara za učitavanje."
 
 #: horizons/gui/modules/select_savegame.py:144
 msgid "No filename given"
-msgstr ""
+msgstr "Nije dato ime datoteke"
 
 #: horizons/gui/modules/select_savegame.py:145
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Molimo unesite ispravno ime datoteke."
 
 #: horizons/gui/modules/select_savegame.py:150
 #, python-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "Spremljena igra sa imenom {name} već postoji."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-format
 msgid "A map with the name {name} already exists."
-msgstr ""
+msgstr "Mapa sa imenom {name} već postoji."
 
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Prepiši preko toga?"
 
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Nepoznat datum spremljene igre"
 
 #: horizons/gui/modules/select_savegame.py:223
 #, python-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Spremljeno {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:228
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Spremljeno {amount} vremena"
+msgstr[1] "Spremljenih {amount} vremena"
+msgstr[2] "Spremljena {amount} vremena"
 
 #: horizons/gui/modules/select_savegame.py:236
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Verzija spremljene igre {version}"
 
 #: horizons/gui/modules/select_savegame.py:240
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "(vjerojatno nekompatibilan)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
 #: horizons/gui/modules/select_savegame.py:244
 msgid "Incompatible version"
-msgstr ""
+msgstr "Inkompatibilna verzija"
 
 #: horizons/gui/modules/select_savegame.py:257
 msgid "No file selected"
-msgstr ""
+msgstr "Datoteka nije odabrana"
 
 #: horizons/gui/modules/select_savegame.py:257
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Morate odabrati spremljenu igru kako bi obrisali."
 
 #: horizons/gui/modules/select_savegame.py:261
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Dali stvarno želite obrisati spremljenu igru '{name}'?"
 
 #: horizons/gui/modules/select_savegame.py:263
 msgid "Confirm deletion"
@@ -2304,7 +2312,7 @@ msgstr "Greška!"
 
 #: horizons/gui/modules/select_savegame.py:268
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Neuspješno brisanje spremljene datoteke!"
 
 #: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
@@ -2312,11 +2320,11 @@ msgstr "Nevažeće ime igrača"
 
 #: horizons/gui/modules/singleplayermenu.py:104
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Unijeli ste neispravno ime igrača."
 
 #: horizons/gui/modules/singleplayermenu.py:147
 msgid "Resource density:"
-msgstr ""
+msgstr "Gustoća resursa:"
 
 #: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
@@ -2340,15 +2348,15 @@ msgstr "Odstupanje veličine otoka:"
 
 #: horizons/gui/modules/singleplayermenu.py:342
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Kliknite kako bi stvorili nasumičnu mapu"
 
 #: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "Neispravna datoteka scenarija"
 
 #: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "Odabrana datoteka nije ispravna datoteka scenarija."
 
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
@@ -2356,7 +2364,7 @@ msgstr "Poruka greške:"
 
 #: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
-msgstr ""
+msgstr "Molimo prijavite ovo autoru."
 
 #: horizons/gui/modules/singleplayermenu.py:569
 #, python-format
@@ -2377,15 +2385,15 @@ msgstr "Opis: {desc}"
 #: horizons/gui/mousetools/buildingtool.py:231
 #, python-format
 msgid "Build {building}"
-msgstr ""
+msgstr "Sagradi {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Pritisni H kako bi uklonio savjet"
 
 #: horizons/gui/tabs/boatbuildertabs.py:51
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Pregled graditelja broda"
 
 #: horizons/gui/tabs/boatbuildertabs.py:96
 #, python-format
@@ -2398,7 +2406,7 @@ msgstr "Izgradi ovaj brod!"
 
 #: horizons/gui/tabs/boatbuildertabs.py:250
 msgid "Fisher boats"
-msgstr ""
+msgstr "Ribolovni brodovi"
 
 #: horizons/gui/tabs/boatbuildertabs.py:262
 msgid "Trade boats"
@@ -2414,32 +2422,31 @@ msgstr "Brodovi za rat"
 
 #: horizons/gui/tabs/boatbuildertabs.py:302
 msgid "Confirm order"
-msgstr ""
+msgstr "Potvrdi naredbu"
 
 # 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Pregled glavnog trga"
+msgstr "Pregled skladišta"
 
 #: horizons/gui/tabs/buildingtabs.py:76
 msgid "Tower overview"
-msgstr ""
+msgstr "Pregled tornja"
 
 #: horizons/gui/tabs/buildingtabs.py:87 horizons/gui/tabs/overviewtab.py:35
 msgid "Overview"
-msgstr ""
+msgstr "Pregled"
 
 #: horizons/gui/tabs/buildrelatedtab.py:44
 msgid "Build related buildings"
-msgstr ""
+msgstr "Sagradi srodne građevine"
 
 #. Add necessary resources to tooltip
 #. [br] means newline
 #: horizons/gui/tabs/buildtabs.py:144
 msgid "Resources needed:"
-msgstr ""
+msgstr "Potrebni resursi:"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/tabs/buildtabs.py:150
