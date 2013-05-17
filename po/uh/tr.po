@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:14+0200\n"
+"POT-Creation-Date: 2013-05-16 17:34+0200\n"
 "PO-Revision-Date: 2013-05-14 16:43+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
@@ -734,7 +734,7 @@ msgstr "Oyuncunun yerleşim yer(ler)indeki tüm binaların değeri"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493 sql-database-files
+#: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
 msgstr "Göçmenler"
 
@@ -1700,6 +1700,7 @@ msgstr "Oynamak için bir harita seçin:"
 msgid "Map settings:"
 msgstr "Harita ayarları:"
 
+#. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr "Kaynak"
@@ -2164,7 +2165,7 @@ msgid "Enter password:"
 msgstr "Şifre gir:"
 
 #: horizons/gui/modules/multiplayermenu.py:349
-#: horizons/gui/modules/singleplayermenu.py:407
+#: horizons/gui/modules/singleplayermenu.py:405
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Önerilen oyuncu sayısı: {number}"
@@ -2333,69 +2334,69 @@ msgstr "Hata!"
 msgid "Failed to delete savefile!"
 msgstr "Oyun silinemedi."
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
 msgstr "Geçersiz oyuncu adı"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "You entered an invalid playername."
 msgstr "Geçersiz bir kullanıcı adı girdiniz"
 
-#: horizons/gui/modules/singleplayermenu.py:149
+#: horizons/gui/modules/singleplayermenu.py:147
 msgid "Resource density:"
 msgstr "Kaynak yoğunluğu:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
 msgstr "Harita boyutu:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Water:"
 msgstr "Su:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Max island size:"
 msgstr "Maksimum ada boyutu:"
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Preferred island size:"
 msgstr "Tercih edilen ada boyutu:"
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Island size deviation:"
 msgstr "Ada boyutu sapması:"
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:342
 msgid "Click to generate a different random map"
 msgstr "Rasgele harita yaratmak için buraya tıklayınız."
 
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
 msgstr "Geçersiz senaryo dosyası"
 
-#: horizons/gui/modules/singleplayermenu.py:501
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
 msgstr "Seçilen dosya geçerli bir senaryo dosyası değil."
 
-#: horizons/gui/modules/singleplayermenu.py:502
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
 msgstr "Hata mesajı:"
 
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
 msgstr "Lütfen bunu geliştiricilere bildirin."
 
-#: horizons/gui/modules/singleplayermenu.py:545
+#: horizons/gui/modules/singleplayermenu.py:569
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Zorluk: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:549
+#: horizons/gui/modules/singleplayermenu.py:573
 #, python-format
 msgid "Author: {author}"
 msgstr "Yazar: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:553
+#: horizons/gui/modules/singleplayermenu.py:577
 #, python-format
 msgid "Description: {desc}"
 msgstr "Tanım: {desc}"
@@ -3334,7 +3335,7 @@ msgstr "Hizmetler"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471 sql-database-files
+#: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "Vatandaşlar"
 
@@ -3360,7 +3361,7 @@ msgstr "Ordu Hizmeti"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483 sql-database-files
+#: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "Öncüler"
 
@@ -3484,7 +3485,7 @@ msgstr "Bu senaryoyu tamamladınız."
 msgid "Do you want to continue playing?"
 msgstr "Oynamaya devam etmek istiyor musunuz?"
 
-#: horizons/scenario/scenarioeventhandler.py:158
+#: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
 msgstr "bilinmiyor"
 
@@ -3672,65 +3673,127 @@ msgid "Attacking {owner}"
 msgstr "{owner} saldırıyor"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "A new settlement was founded by {player}."
-msgstr "{player} tarafından yeni bir yerleşim yeri kuruldu."
+msgid "{player1} and {player2} have allied their forces."
+msgstr "{player1} ve {player2} müttefik oldular."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new ship by the name of {name} has been created."
-msgstr "{name} adında yeni bir gemi yaratıldı."
+msgid "Your building has caught fire!"
+msgstr "Binanda yangın çıktı!"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "A new world has been created."
-msgstr "Yeni bir dünya yaratıldı."
+#. This is a database entry: the name of a resource.
+msgid "medical herbs"
+msgstr "tıbbi otlar"
 
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Aristocrats"
 msgstr "Ariktokratlar"
 
+#. This is a database entry: the name of a resource.
+msgid "happiness"
+msgstr "mutluluk"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Cannot go here."
-msgstr "Buraya gidemez."
+msgid "Some of your inhabitants just moved out."
+msgstr "Bazı yerliler şehirden ayrıldı."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "şeker"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco leaves"
+msgstr "tütün yaprağı"
+
+#. This is a database entry: the name of a resource.
+msgid "stone tops"
+msgstr "taş kapaklar"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "yün"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "kakao taneleri"
+
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "yemek"
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "un"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs for slaughter"
+msgstr "kasaplık domuz"
+
+#. This is a database entry: the name of a resource.
+msgid "trees"
+msgstr "ağaçlar"
+
+#. This is a database entry: the name of a resource.
+msgid "clay deposit"
+msgstr "kil yatağı"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
+msgstr "{player1} ve {player2} savaşı sonlandırıp müttefik oldular."
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "kakao"
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "patates"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "demir cevheri"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "kil"
 
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Merchants"
 msgstr "Tüccarlar"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Tarım alanlarınızdan birinde hasat yapılması için çiftlik lazım."
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "içki"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Sailors"
-msgstr "Denizciler"
+#. This is a database entry: the name of a resource.
+msgid "iron ingots"
+msgstr "demir külçesi"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr "Ekran görüntüsü {file}'a kaydedildi."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "Yerlilerden bazılarının ana meydana ulaşamıyor."
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "sığır"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants just moved out."
-msgstr "Bazı yerliler şehirden ayrıldı."
+msgid "You can also drag roads."
+msgstr "Yolları da sürükleyebilirsiniz."
+
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "kuzu yünü"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid ""
+"You have reached the current maximum tier. Your inhabitants will not upgrade "
+"further."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
@@ -3739,407 +3802,255 @@ msgstr ""
 "tıklayarak başlatabilirsiniz."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You can also drag roads."
-msgstr "Yolları da sürükleyebilirsiniz."
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr "{player1} ve {player2} ittifaklarını sonlandırdılar."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Ambarınızı yıkamazsınız, yerleşim alanının buna ihtiyacı var."
+msgid "Cannot go here."
+msgstr "Buraya gidemez."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar cane"
+msgstr "şeker kamışı"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "mısır"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "üzüm"
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "bal peteği"
+
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "inanç"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "paneller"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "Yerlilerden bazılarının ana meydana ulaşamıyor."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} ve {player2} ölümüne savaşa başladılar."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Sailors"
+msgstr "Denizciler"
+
+#. This is a database entry: the name of a resource.
+msgid "grain"
+msgstr "tahıl"
+
+#. This is a database entry: the name of a resource.
+msgid "spices"
+msgstr "baharatlar"
+
+#. This is a database entry: the name of a resource.
+msgid "dagger"
+msgstr "kama"
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "tuğlalar"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "topluluk"
+
+#. This is a database entry: the name of a resource.
+msgid "spice plants"
+msgstr "baharatlık bitkiler"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle for slaughter"
+msgstr "kasaplık et"
+
+#. This is a database entry: the name of a resource.
+msgid "tobaccos"
+msgstr "tütün"
+
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "aletler"
+
+#. This is a database entry: the name of a resource.
+msgid "deer meat"
+msgstr "geyik eti"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "şekerleme fabrikası"
+
+#. This is a database entry: the name of a resource.
+msgid "coins"
+msgstr "bozunluklar"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You won!"
+msgstr "Kazandın!"
+
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "balık"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "kömür"
+
+#. This is a database entry: the name of a resource.
+msgid "stone deposit"
+msgstr "taş yatağı"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You failed the scenario."
 msgstr "Senaryoyu tamamlayamadınız."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid ""
-"You have reached the current maximum tier. Your inhabitants will not upgrade "
-"further."
-msgstr ""
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "ateş"
+
+#. This is a database entry: the name of a resource.
+msgid "acorns"
+msgstr "palamut"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco plants"
+msgstr "tütün bitkisi"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr "Bu bina için daha fazla {resource}'a gereksiniminiz var."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You won!"
-msgstr "Kazandın!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your building has caught fire!"
-msgstr "Binanda yangın çıktı!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "Your crew refuses to leave this map."
 msgstr "Tayfanız bu haritayı terketmek istemiyor."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been autosaved."
-msgstr "Oyunun otomatik olarak kaydedildi."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been quicksaved."
-msgstr "Oyun kaydedildi."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been saved."
-msgstr "Oyun kaydedildi."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "Yerliler {}. seviyeye ulaştı."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your mine has run out of resources."
-msgstr "Madeninizde kaynak kalmadı."
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1} ve {player2} düşman oldular."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "acorns"
-msgstr "palamut"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "alvearies"
-msgstr "arı kovanları"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "boards"
-msgstr "paneller"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "bricks"
-msgstr "tuğlalar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "candles"
-msgstr "mumlar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cannon"
-msgstr "top"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle"
-msgstr "sığır"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle for slaughter"
-msgstr "kasaplık et"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "charcoal"
-msgstr "kömür"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay"
-msgstr "kil"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay deposit"
-msgstr "kil yatağı"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa"
-msgstr "kakao"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa beans"
-msgstr "kakao taneleri"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "coins"
-msgstr "bozunluklar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "community"
-msgstr "topluluk"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "condiments"
-msgstr "çeşni"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "confectionery"
-msgstr "şekerleme fabrikası"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "corn"
-msgstr "mısır"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "dagger"
-msgstr "kama"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer food A"
-msgstr "geyik yemeği A"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer meat"
-msgstr "geyik eti"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "education"
-msgstr "eğitim"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "faith"
-msgstr "inanç"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fire"
-msgstr "ateş"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fish"
-msgstr "balık"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "flour"
-msgstr "un"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "food"
-msgstr "yemek"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "get-together"
-msgstr "birliktelik"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grain"
-msgstr "tahıl"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grapes"
-msgstr "üzüm"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "grass"
 msgstr "çim"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "happiness"
-msgstr "mutluluk"
+msgid "alvearies"
+msgstr "arı kovanları"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been autosaved."
+msgstr "Oyunun otomatik olarak kaydedildi."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "Tarım alanlarınızdan birinde hasat yapılması için çiftlik lazım."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your mine has run out of resources."
+msgstr "Madeninizde kaynak kalmadı."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr "Yerliler {}. seviyeye ulaştı."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "herbs"
-msgstr "şifalı otlar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "honeycombs"
-msgstr "bal peteği"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "iron deposit"
 msgstr "demir yatağı"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ingots"
-msgstr "demir külçesi"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ore"
-msgstr "demir cevheri"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "lamb wool"
-msgstr "kuzu yünü"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "liquor"
-msgstr "içki"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "medical herbs"
-msgstr "tıbbi otlar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs"
-msgstr "domuzlar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs for slaughter"
-msgstr "kasaplık domuz"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "potatoes"
-msgstr "patates"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "salt"
-msgstr "tuz"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spice plants"
-msgstr "baharatlık bitkiler"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spices"
-msgstr "baharatlar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone deposit"
-msgstr "taş yatağı"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone tops"
-msgstr "taş kapaklar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar"
-msgstr "şeker"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar cane"
-msgstr "şeker kamışı"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "textile"
-msgstr "tekstil"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco leaves"
-msgstr "tütün yaprağı"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco plants"
-msgstr "tütün bitkisi"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobaccos"
-msgstr "tütün"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tools"
-msgstr "aletler"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "trees"
-msgstr "ağaçlar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "vines"
-msgstr "asmalar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "wool"
-msgstr "yün"
+msgid "education"
+msgstr "eğitim"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} ve {player2} müttefik oldular."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} ve {player2} savaşı sonlandırıp müttefik oldular."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr "{player1} ve {player2} ittifakı sonlandırıp savaşa başladılar."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} ve {player2} düşman oldular."
+#. This is a database entry: the name of a resource.
+msgid "textile"
+msgstr "tekstil"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} ve {player2} ittifaklarını sonlandırdılar."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} ve {player2} ölümüne savaşa başladılar."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#. This is a database entry: the name of a resource.
+msgid "cannon"
+msgstr "top"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr "{name} adında yeni bir gemi yaratıldı."
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr "birliktelik"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "A new world has been created."
+msgstr "Yeni bir dünya yaratıldı."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been quicksaved."
+msgstr "Oyun kaydedildi."
+
+#. This is a database entry: the name of a resource.
+msgid "deer food A"
+msgstr "geyik yemeği A"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "şifalı otlar"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "domuzlar"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr "Ambarınızı yıkamazsınız, yerleşim alanının buna ihtiyacı var."
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "çeşni"
+
+#. This is a database entry: the name of a resource.
+msgid "candles"
+msgstr "mumlar"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr "{player} tarafından yeni bir yerleşim yeri kuruldu."
+
+#. This is a database entry: the name of a resource.
+msgid "vines"
+msgstr "asmalar"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been saved."
+msgstr "Oyun kaydedildi."
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "tuz"
 
 #, fuzzy
 #~ msgid "Unknown Horizons"

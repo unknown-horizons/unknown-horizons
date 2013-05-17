@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:14+0200\n"
+"POT-Creation-Date: 2013-05-16 17:34+0200\n"
 "PO-Revision-Date: 2013-05-15 18:37+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
@@ -754,7 +754,7 @@ msgstr "Waarde van alle gebouwen in de nederzetting(en) van de speler"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493 sql-database-files
+#: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
 msgstr "Kolonisten"
 
@@ -1718,6 +1718,7 @@ msgstr "Kies een kaart om te spelen:"
 msgid "Map settings:"
 msgstr "Kaartinstellingen:"
 
+#. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr "Level-seed:"
@@ -2197,7 +2198,7 @@ msgid "Enter password:"
 msgstr "Voer voorvoegsel in:"
 
 #: horizons/gui/modules/multiplayermenu.py:349
-#: horizons/gui/modules/singleplayermenu.py:407
+#: horizons/gui/modules/singleplayermenu.py:405
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Aanbevolen aantal spelers: {number}"
@@ -2371,71 +2372,71 @@ msgstr "Fout!"
 msgid "Failed to delete savefile!"
 msgstr "Verwijderen van opgeslagen spel mislukt!"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
 msgstr "Ongeldige spelersnaam"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "You entered an invalid playername."
 msgstr "Er is een ongeldige spelersnaam ingevuld."
 
 # 76%
-#: horizons/gui/modules/singleplayermenu.py:149
+#: horizons/gui/modules/singleplayermenu.py:147
 msgid "Resource density:"
 msgstr "Grondstofafzettingen:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
 msgstr "Kaartgrootte:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Water:"
 msgstr "Water:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Max island size:"
 msgstr "Max. eilandgrootte:"
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Preferred island size:"
 msgstr "Voorkeurseilandgrootte:"
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Island size deviation:"
 msgstr "Eilandgrootte-afwijking:"
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:342
 msgid "Click to generate a different random map"
 msgstr "Klik om een nieuwe willekeurige kaart te genereren"
 
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
 msgstr "Ongeldig scenario-bestand"
 
-#: horizons/gui/modules/singleplayermenu.py:501
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
 msgstr "Het geselecteerde bestand is geen geldig scenario-bestand."
 
-#: horizons/gui/modules/singleplayermenu.py:502
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
 msgstr "Foutmelding:"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
 msgstr "Meld dit alstublieft aan de auteur."
 
-#: horizons/gui/modules/singleplayermenu.py:545
+#: horizons/gui/modules/singleplayermenu.py:569
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Moeilijkheidsgraad: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:549
+#: horizons/gui/modules/singleplayermenu.py:573
 #, python-format
 msgid "Author: {author}"
 msgstr "Auteur: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:553
+#: horizons/gui/modules/singleplayermenu.py:577
 #, python-format
 msgid "Description: {desc}"
 msgstr "Beschrijving: {desc}"
@@ -3391,7 +3392,7 @@ msgstr "Diensten"
 # 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471 sql-database-files
+#: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "Burgerij"
 
@@ -3418,7 +3419,7 @@ msgstr "Militaire Dienst"
 # 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483 sql-database-files
+#: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "Pioniers"
 
@@ -3547,7 +3548,7 @@ msgstr "U heeft het scenario voltooid."
 msgid "Do you want to continue playing?"
 msgstr "Wil je doorspelen?"
 
-#: horizons/scenario/scenarioeventhandler.py:158
+#: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
 msgstr "onbekend"
 
@@ -3738,69 +3739,136 @@ msgid "Attacking {owner}"
 msgstr "Valt {owner} aan"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "A new settlement was founded by {player}."
-msgstr "{player} heeft een nieuwe nederzetting gesticht."
-
-# 82%
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new ship by the name of {name} has been created."
-msgstr "Er is een nieuw schip gebouwd met de naam {name}."
+msgid "{player1} and {player2} have allied their forces."
+msgstr "{player1} en {player2} hebben hun krachten verenigd."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "A new world has been created."
-msgstr "Er is een nieuwe wereld geschapen."
+msgid "Your building has caught fire!"
+msgstr "Uw gebouw heeft vlam gevat!"
+
+#. This is a database entry: the name of a resource.
+msgid "medical herbs"
+msgstr "medische kruiden"
 
 # 81%
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Aristocrats"
 msgstr "Aristocraat"
 
+#. This is a database entry: the name of a resource.
+msgid "happiness"
+msgstr "blijdschap"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Cannot go here."
-msgstr "Kan hier niet naartoe."
+msgid "Some of your inhabitants just moved out."
+msgstr "Sommige inwoners zijn zojuist weggetrokken."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "suiker"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco leaves"
+msgstr "tabaksbladeren"
+
+# What is this exactly?
+#. This is a database entry: the name of a resource.
+msgid "stone tops"
+msgstr "stenen platen"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "wol"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "cacaobonen"
+
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "voedsel"
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "bloem"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs for slaughter"
+msgstr "varkens voor de slacht"
+
+#. This is a database entry: the name of a resource.
+msgid "trees"
+msgstr "bomen"
+
+# 83%
+#. This is a database entry: the name of a resource.
+msgid "clay deposit"
+msgstr "kleiafzetting"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
+msgstr ""
+"{player1} en {player2} zijn niet langer in oorlog en vormen nu een "
+"bondgenootschap."
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "cacao"
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "aardappels"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "ijzererts"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "klei"
 
 # 77%
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Merchants"
 msgstr "Kooplieden"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Een van je velden vereist een boerderij om te kunnen oogsten."
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "drank"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Sailors"
-msgstr "Zeelui"
+#. This is a database entry: the name of a resource.
+msgid "iron ingots"
+msgstr "ijzeren staven"
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr "Screenshot is opgeslagen als {file}."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "Sommige inwoners hebben geen toegang tot een marktplaats."
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "vee"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants just moved out."
-msgstr "Sommige inwoners zijn zojuist weggetrokken."
+msgid "You can also drag roads."
+msgstr "Het is ook mogelijk om wegen te slepen."
+
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "lamswol"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid ""
+"You have reached the current maximum tier. Your inhabitants will not upgrade "
+"further."
+msgstr ""
+"Uw inwoners hebben het momenteel hoogst speelbare beschavingsniveau bereikt. "
+"Uw inwoners zullen zich niet verder verbeteren."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
@@ -3809,390 +3877,183 @@ msgstr ""
 "\"configureer route\"-menu."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You can also drag roads."
-msgstr "Het is ook mogelijk om wegen te slepen."
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr "{player1} en {player2} hebben hun bondgenootschap opgeheven."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "U kunt het pakhuis niet afbreken, de nederzetting kan niet zonder."
+msgid "Cannot go here."
+msgstr "Kan hier niet naartoe."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar cane"
+msgstr "suikerriet"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "mais"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "druiven"
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "honingraat"
+
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "geloof"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "planken"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "Sommige inwoners hebben geen toegang tot een marktplaats."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} en {player2} zullen vechten op leven en dood."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Sailors"
+msgstr "Zeelui"
+
+#. This is a database entry: the name of a resource.
+msgid "grain"
+msgstr "graan"
+
+#. This is a database entry: the name of a resource.
+msgid "spices"
+msgstr "specerijen"
+
+#. This is a database entry: the name of a resource.
+msgid "dagger"
+msgstr "dolk"
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "bakstenen"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "gemeenschap"
+
+#. This is a database entry: the name of a resource.
+msgid "spice plants"
+msgstr "specerijplanten"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle for slaughter"
+msgstr "slachtvee"
+
+#. This is a database entry: the name of a resource.
+msgid "tobaccos"
+msgstr "tabak"
+
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "gereedschap"
+
+#. This is a database entry: the name of a resource.
+msgid "deer meat"
+msgstr "hertenvlees"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "suikergoed"
+
+#. This is a database entry: the name of a resource.
+msgid "coins"
+msgstr "munten"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You won!"
+msgstr "U heeft gewonnen!"
+
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "vis"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "houtskool"
+
+# 76%
+#. This is a database entry: the name of a resource.
+msgid "stone deposit"
+msgstr "steenafzetting"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You failed the scenario."
 msgstr "U heeft dit scenario verloren."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid ""
-"You have reached the current maximum tier. Your inhabitants will not upgrade "
-"further."
-msgstr ""
-"Uw inwoners hebben het momenteel hoogst speelbare beschavingsniveau bereikt. "
-"Uw inwoners zullen zich niet verder verbeteren."
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "vuur"
+
+#. This is a database entry: the name of a resource.
+msgid "acorns"
+msgstr "eikels"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco plants"
+msgstr "tabaksplanten"
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr "U heeft meer {resource} nodig om dit gebouw te plaatsen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You won!"
-msgstr "U heeft gewonnen!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your building has caught fire!"
-msgstr "Uw gebouw heeft vlam gevat!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "Your crew refuses to leave this map."
 msgstr "De bemanning weigert deze kaart te verlaten."
 
-# 86%
+# Just to be sure, this means they are no longer hostile, right?
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been autosaved."
-msgstr "Uw spel is automatisch opgeslagen."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been quicksaved."
-msgstr "Uw spel is snel opgeslagen."
-
-# 86%
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been saved."
-msgstr "Uw spel is opgeslagen."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "Uw inwoners hebben beschavingsniveau {level} bereikt."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your mine has run out of resources."
-msgstr "Uw mijn heeft geen grondstoffen meer."
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1} en {player2} zijn niet meer vijandig tegenover elkaar."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "acorns"
-msgstr "eikels"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "alvearies"
-msgstr "bijenkorf"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "boards"
-msgstr "planken"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "bricks"
-msgstr "bakstenen"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "candles"
-msgstr "kaarsen"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cannon"
-msgstr "kanon"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle"
-msgstr "vee"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle for slaughter"
-msgstr "slachtvee"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "charcoal"
-msgstr "houtskool"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay"
-msgstr "klei"
-
-# 83%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay deposit"
-msgstr "kleiafzetting"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa"
-msgstr "cacao"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa beans"
-msgstr "cacaobonen"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "coins"
-msgstr "munten"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "community"
-msgstr "gemeenschap"
-
-# From wiki: condiments are sauces or spices to add flavor to food.
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "condiments"
-msgstr "toevoegingen"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "confectionery"
-msgstr "suikergoed"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "corn"
-msgstr "mais"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "dagger"
-msgstr "dolk"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer food A"
-msgstr "hertenvoer A"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer meat"
-msgstr "hertenvlees"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "education"
-msgstr "onderwijs"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "faith"
-msgstr "geloof"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fire"
-msgstr "vuur"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fish"
-msgstr "vis"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "flour"
-msgstr "bloem"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "food"
-msgstr "voedsel"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "get-together"
-msgstr "samenkomst"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grain"
-msgstr "graan"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grapes"
-msgstr "druiven"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "grass"
 msgstr "gras"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "happiness"
-msgstr "blijdschap"
+msgid "alvearies"
+msgstr "bijenkorf"
+
+# 86%
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been autosaved."
+msgstr "Uw spel is automatisch opgeslagen."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "Een van je velden vereist een boerderij om te kunnen oogsten."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your mine has run out of resources."
+msgstr "Uw mijn heeft geen grondstoffen meer."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr "Uw inwoners hebben beschavingsniveau {level} bereikt."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "herbs"
-msgstr "kruiden"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "honeycombs"
-msgstr "honingraat"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "iron deposit"
 msgstr "ijzerafzetting"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ingots"
-msgstr "ijzeren staven"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ore"
-msgstr "ijzererts"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "lamb wool"
-msgstr "lamswol"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "liquor"
-msgstr "drank"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "medical herbs"
-msgstr "medische kruiden"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs"
-msgstr "varkens"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs for slaughter"
-msgstr "varkens voor de slacht"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "potatoes"
-msgstr "aardappels"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "salt"
-msgstr "zout"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spice plants"
-msgstr "specerijplanten"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spices"
-msgstr "specerijen"
-
-# 76%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone deposit"
-msgstr "steenafzetting"
-
-# What is this exactly?
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone tops"
-msgstr "stenen platen"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar"
-msgstr "suiker"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar cane"
-msgstr "suikerriet"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "textile"
-msgstr "textiel"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco leaves"
-msgstr "tabaksbladeren"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco plants"
-msgstr "tabaksplanten"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobaccos"
-msgstr "tabak"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tools"
-msgstr "gereedschap"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "trees"
-msgstr "bomen"
-
-# Is this vines as in plants, or vines as in ore-vines? I assumed plants here, otherwise change this to "aders".
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "vines"
-msgstr "struiken"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "wool"
-msgstr "wol"
+msgid "education"
+msgstr "onderwijs"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} en {player2} hebben hun krachten verenigd."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
-"{player1} en {player2} zijn niet langer in oorlog en vormen nu een "
-"bondgenootschap."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
@@ -4201,30 +4062,80 @@ msgstr ""
 "{player1} en {player2} vormen geen alliantie meer en zijn nu in staat van "
 "oorlog."
 
-# Just to be sure, this means they are no longer hostile, right?
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} en {player2} zijn niet meer vijandig tegenover elkaar."
+#. This is a database entry: the name of a resource.
+msgid "textile"
+msgstr "textiel"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} en {player2} hebben hun bondgenootschap opgeheven."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} en {player2} zullen vechten op leven en dood."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#. This is a database entry: the name of a resource.
+msgid "cannon"
+msgstr "kanon"
+
+# 82%
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr "Er is een nieuw schip gebouwd met de naam {name}."
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr "samenkomst"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "A new world has been created."
+msgstr "Er is een nieuwe wereld geschapen."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been quicksaved."
+msgstr "Uw spel is snel opgeslagen."
+
+#. This is a database entry: the name of a resource.
+msgid "deer food A"
+msgstr "hertenvoer A"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "kruiden"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "varkens"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr "U kunt het pakhuis niet afbreken, de nederzetting kan niet zonder."
+
+# From wiki: condiments are sauces or spices to add flavor to food.
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "toevoegingen"
+
+#. This is a database entry: the name of a resource.
+msgid "candles"
+msgstr "kaarsen"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr "{player} heeft een nieuwe nederzetting gesticht."
+
+# Is this vines as in plants, or vines as in ore-vines? I assumed plants here, otherwise change this to "aders".
+#. This is a database entry: the name of a resource.
+msgid "vines"
+msgstr "struiken"
+
+# 86%
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been saved."
+msgstr "Uw spel is opgeslagen."
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "zout"
 
 #~ msgid "Unknown Horizons"
 #~ msgstr "Unknown Horizons"

@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:14+0200\n"
+"POT-Creation-Date: 2013-05-16 17:34+0200\n"
 "PO-Revision-Date: 2013-05-17 03:27+0200\n"
 "Last-Translator: Zhang June <avalon3515@163.com>\n"
-"Language-Team: Simplified Chinese "
-"<http://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
+"Language-Team: Simplified Chinese <http://hosted.weblate.org/projects/uh/uh/"
+"zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -730,7 +730,7 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493 sql-database-files
+#: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
 msgstr "移民"
 
@@ -1692,6 +1692,7 @@ msgstr ""
 msgid "Map settings:"
 msgstr ""
 
+#. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr ""
@@ -2142,7 +2143,7 @@ msgid "Enter password:"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:349
-#: horizons/gui/modules/singleplayermenu.py:407
+#: horizons/gui/modules/singleplayermenu.py:405
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "需要玩家数量：{number}"
@@ -2311,69 +2312,69 @@ msgstr "出错！"
 msgid "Failed to delete savefile!"
 msgstr "删除游戏存档失败！"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
 msgstr "无效的玩家名"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "You entered an invalid playername."
 msgstr "你输入了一个无效的玩家名。"
 
-#: horizons/gui/modules/singleplayermenu.py:149
+#: horizons/gui/modules/singleplayermenu.py:147
 msgid "Resource density:"
 msgstr "资源密度："
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
 msgstr "地图大小："
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Water:"
 msgstr "水域："
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Max island size:"
 msgstr "最大岛屿大小："
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Preferred island size:"
 msgstr "推荐岛屿大小："
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Island size deviation:"
 msgstr "岛屿大小偏差："
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:342
 msgid "Click to generate a different random map"
 msgstr "点击生成不同的随机地图"
 
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
 msgstr "无效的场景文件"
 
-#: horizons/gui/modules/singleplayermenu.py:501
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
 msgstr "选择的文件不是有效的场景文件。"
 
-#: horizons/gui/modules/singleplayermenu.py:502
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
 msgstr "错误信息："
 
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
 msgstr "请报告给作者。"
 
-#: horizons/gui/modules/singleplayermenu.py:545
+#: horizons/gui/modules/singleplayermenu.py:569
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "难度：{difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:549
+#: horizons/gui/modules/singleplayermenu.py:573
 #, python-format
 msgid "Author: {author}"
 msgstr "作者：{author}"
 
-#: horizons/gui/modules/singleplayermenu.py:553
+#: horizons/gui/modules/singleplayermenu.py:577
 #, python-format
 msgid "Description: {desc}"
 msgstr "描述：{desc}"
@@ -3302,7 +3303,7 @@ msgstr "服务"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471 sql-database-files
+#: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "市民"
 
@@ -3329,7 +3330,7 @@ msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483 sql-database-files
+#: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "拓荒者"
 
@@ -3455,7 +3456,7 @@ msgstr ""
 msgid "Do you want to continue playing?"
 msgstr "你想继续么？"
 
-#: horizons/scenario/scenarioeventhandler.py:158
+#: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
 msgstr ""
 
@@ -3641,87 +3642,121 @@ msgid "Attacking {owner}"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "A new settlement was founded by {player}."
-msgstr "一个新殖民地由{player}建立了。"
+msgid "{player1} and {player2} have allied their forces."
+msgstr "{player1} 和 {player2} 组成联盟了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new ship by the name of {name} has been created."
-msgstr "制造了一艘新船。"
+msgid "Your building has caught fire!"
+msgstr "您的建筑物着火了！"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "A new world has been created."
-msgstr "创建了新世界。"
+#. This is a database entry: the name of a resource.
+msgid "medical herbs"
+msgstr "草药"
 
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Aristocrats"
 msgstr "贵族"
 
+#. This is a database entry: the name of a resource.
+msgid "happiness"
+msgstr "幸福"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Cannot go here."
-msgstr "不能到达那里。"
+msgid "Some of your inhabitants just moved out."
+msgstr "你的一些居民刚刚搬走了。"
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "糖"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco leaves"
+msgstr "烟叶"
+
+#. This is a database entry: the name of a resource.
+msgid "stone tops"
+msgstr "石顶"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "羊毛"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "可可豆"
+
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "食物"
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "面粉"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs for slaughter"
+msgstr "屠宰用猪"
+
+#. This is a database entry: the name of a resource.
+msgid "trees"
+msgstr "树"
+
+#. This is a database entry: the name of a resource.
+msgid "clay deposit"
+msgstr "粘土存量"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
+msgstr "{player1} 和{player2} 已经结束了战争，现在结盟了。"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "可可"
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "土豆"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "铁矿"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "粘土"
 
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Merchants"
 msgstr "商人"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "你的一块田地需要农场收割作物。"
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "白酒"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Sailors"
-msgstr "水手"
+#. This is a database entry: the name of a resource.
+msgid "iron ingots"
+msgstr "铁锭"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr "截图已保存至文件{file}。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "有些居民不能进入广场。"
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "家畜"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants just moved out."
-msgstr "你的一些居民刚刚搬走了。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid ""
-"The route is now configured. Start it via the \"start route\" button in the "
-"\"configure route\" menu."
-msgstr "路径已配置。请通过“配置路径”菜单上的“开启路径”按钮启用。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "You can also drag roads."
 msgstr "你也可以拖拽道路。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "你不能分割仓库，你的殖民地需要它。"
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "羔羊毛"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You failed the scenario."
-msgstr "本次剧情您失败了。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, fuzzy
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
@@ -3729,386 +3764,262 @@ msgid ""
 msgstr "你已经达成最大增长。你的居民不会再继续升级了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid ""
+"The route is now configured. Start it via the \"start route\" button in the "
+"\"configure route\" menu."
+msgstr "路径已配置。请通过“配置路径”菜单上的“开启路径”按钮启用。"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr "{player1} 和 {player2} 终止了结盟。"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Cannot go here."
+msgstr "不能到达那里。"
+
+#. This is a database entry: the name of a resource.
+msgid "sugar cane"
+msgstr "糖料甘蔗"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "玉米"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "葡萄"
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "蜂窝"
+
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "信仰"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "木板"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "有些居民不能进入广场。"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} 和 {player2} 将斗争到底。"
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Sailors"
+msgstr "水手"
+
+#. This is a database entry: the name of a resource.
+msgid "grain"
+msgstr "粮食"
+
+#. This is a database entry: the name of a resource.
+msgid "spices"
+msgstr "香料"
+
+#. This is a database entry: the name of a resource.
+msgid "dagger"
+msgstr "匕首"
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "砖"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "社区"
+
+#. This is a database entry: the name of a resource.
+msgid "spice plants"
+msgstr "香料植物"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle for slaughter"
+msgstr "宰杀的家畜"
+
+#. This is a database entry: the name of a resource.
+msgid "tobaccos"
+msgstr "烟草"
+
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "工具"
+
+#. This is a database entry: the name of a resource.
+msgid "deer meat"
+msgstr "鹿肉"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "糖果"
+
+#. This is a database entry: the name of a resource.
+msgid "coins"
+msgstr "硬币"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You won!"
+msgstr "你赢了！"
+
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "鱼"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "木炭"
+
+#. This is a database entry: the name of a resource.
+msgid "stone deposit"
+msgstr "石料库存"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You failed the scenario."
+msgstr "本次剧情您失败了。"
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "火"
+
+#. This is a database entry: the name of a resource.
+msgid "acorns"
+msgstr "橡树果实"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco plants"
+msgstr "烟草作物"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr "你需要更多的{resource}来建造此建筑物。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You won!"
-msgstr "你赢了！"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your building has caught fire!"
-msgstr "您的建筑物着火了！"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "Your crew refuses to leave this map."
 msgstr "你的船员拒绝离开此地图。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been autosaved."
-msgstr "你的游戏已经自动存档了。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been quicksaved."
-msgstr "你的游戏已经快速存档了。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been saved."
-msgstr "你的游戏已经存档了。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "你的居民升至{level}级。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your mine has run out of resources."
-msgstr "你的矿厂资源已经开采尽了。"
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1} 和{player2} 正在敌对状态。"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "acorns"
-msgstr "橡树果实"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-#, fuzzy
-msgid "alvearies"
-msgstr "洞窑"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "boards"
-msgstr "木板"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "bricks"
-msgstr "砖"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "candles"
-msgstr "蜡烛"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cannon"
-msgstr "加农炮"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle"
-msgstr "家畜"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle for slaughter"
-msgstr "宰杀的家畜"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "charcoal"
-msgstr "木炭"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay"
-msgstr "粘土"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay deposit"
-msgstr "粘土存量"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa"
-msgstr "可可"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa beans"
-msgstr "可可豆"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "coins"
-msgstr "硬币"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "community"
-msgstr "社区"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "condiments"
-msgstr "佐料"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "confectionery"
-msgstr "糖果"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "corn"
-msgstr "玉米"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "dagger"
-msgstr "匕首"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer food A"
-msgstr "鹿食物A"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer meat"
-msgstr "鹿肉"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "education"
-msgstr "教育"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "faith"
-msgstr "信仰"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fire"
-msgstr "火"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fish"
-msgstr "鱼"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "flour"
-msgstr "面粉"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "food"
-msgstr "食物"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "get-together"
-msgstr "聚会"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grain"
-msgstr "粮食"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grapes"
-msgstr "葡萄"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "grass"
 msgstr "草坪"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "happiness"
-msgstr "幸福"
+#, fuzzy
+msgid "alvearies"
+msgstr "洞窑"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been autosaved."
+msgstr "你的游戏已经自动存档了。"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "你的一块田地需要农场收割作物。"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your mine has run out of resources."
+msgstr "你的矿厂资源已经开采尽了。"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr "你的居民升至{level}级。"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "herbs"
-msgstr "药草"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "honeycombs"
-msgstr "蜂窝"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "iron deposit"
 msgstr "铁库存"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ingots"
-msgstr "铁锭"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ore"
-msgstr "铁矿"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "lamb wool"
-msgstr "羔羊毛"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "liquor"
-msgstr "白酒"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "medical herbs"
-msgstr "草药"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs"
-msgstr "猪"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs for slaughter"
-msgstr "屠宰用猪"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "potatoes"
-msgstr "土豆"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "salt"
-msgstr "盐"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spice plants"
-msgstr "香料植物"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spices"
-msgstr "香料"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone deposit"
-msgstr "石料库存"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone tops"
-msgstr "石顶"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar"
-msgstr "糖"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar cane"
-msgstr "糖料甘蔗"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "textile"
-msgstr "纺织品"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco leaves"
-msgstr "烟叶"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco plants"
-msgstr "烟草作物"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobaccos"
-msgstr "烟草"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tools"
-msgstr "工具"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "trees"
-msgstr "树"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "vines"
-msgstr "葡萄"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "wool"
-msgstr "羊毛"
+msgid "education"
+msgstr "教育"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} 和 {player2} 组成联盟了。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} 和{player2} 已经结束了战争，现在结盟了。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr "{player1} 和{player2} 已经结束了联盟，现在处于战争状态。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} 和{player2} 正在敌对状态。"
+#. This is a database entry: the name of a resource.
+msgid "textile"
+msgstr "纺织品"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} 和 {player2} 终止了结盟。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} 和 {player2} 将斗争到底。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}：{message}"
+
+#. This is a database entry: the name of a resource.
+msgid "cannon"
+msgstr "加农炮"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr "制造了一艘新船。"
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr "聚会"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "A new world has been created."
+msgstr "创建了新世界。"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been quicksaved."
+msgstr "你的游戏已经快速存档了。"
+
+#. This is a database entry: the name of a resource.
+msgid "deer food A"
+msgstr "鹿食物A"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "药草"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "猪"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr "你不能分割仓库，你的殖民地需要它。"
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "佐料"
+
+#. This is a database entry: the name of a resource.
+msgid "candles"
+msgstr "蜡烛"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr "一个新殖民地由{player}建立了。"
+
+#. This is a database entry: the name of a resource.
+msgid "vines"
+msgstr "葡萄"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been saved."
+msgstr "你的游戏已经存档了。"
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "盐"
 
 #, fuzzy
 #~ msgid "Unknown Horizons"
