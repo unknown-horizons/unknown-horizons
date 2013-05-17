@@ -92,7 +92,6 @@ class Session(LivingObject):
 		super(Session, self).__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
-		self.gui = gui # main gui, not ingame gui
 		self.db = db # main db for game data (game.sql)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
