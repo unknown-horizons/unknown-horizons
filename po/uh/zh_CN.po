@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-11 06:41+0200\n"
+"PO-Revision-Date: 2013-05-17 03:27+0200\n"
 "Last-Translator: Zhang June <avalon3515@163.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
@@ -93,7 +93,6 @@ msgid "Exit editor"
 msgstr "退出编辑器"
 
 #: content/gui/xml/editor/editor_settings.xml:6
-#, fuzzy
 msgid "Select brush size:"
 msgstr "选择画笔的大小："
 
@@ -277,7 +276,7 @@ msgstr "取消所有在建的建筑物"
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
-msgstr ""
+msgstr "盟友"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
@@ -332,7 +331,7 @@ msgstr "税率"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "升级权限："
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 #, fuzzy
