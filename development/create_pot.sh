@@ -72,6 +72,7 @@ function strip_itstool()
   #. (itstool) path: Container/Label@text
   #. (itstool) comment: Container/Label@text
   sed -i '/^#\. (itstool) /d' $1
+  sed -i '/^#\. noi18n_\(help\)\?text$/d' $1
 }
 
 function reset_if_empty()
