@@ -28,7 +28,7 @@ from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog
+from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -192,6 +192,10 @@ class IngameGui(LivingObject):
 		self.status_icon_manager = None
 
 		super(IngameGui, self).end()
+
+	def show_select_savegame(self, mode):
+		window = SelectSavegameDialog(mode, self.windows)
+		return self.windows.show(window)
 
 	def toggle_pause(self):
 		self.windows.toggle(self.pausemenu)

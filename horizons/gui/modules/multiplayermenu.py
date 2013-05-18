@@ -160,6 +160,8 @@ class MultiplayerMenu(Window):
 			self._windows.show_popup(_("Fatal Network Error"),
 		                             _("Something went wrong with the network:") + u'\n' +
 		                             unicode(exception) )
+			# FIXME this shouldn't be necessary, the main menu window is still somewhere
+			# in the stack and we just need to get rid of all MP related windows
 			self._mainmenu.show_main()
 
 	def _display_game_name(self, game):

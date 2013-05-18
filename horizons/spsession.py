@@ -66,7 +66,7 @@ class SPSession(Session):
 			#xgettext:python-format
 			advice = _("If this error happens again, please contact the development team: "
 			           "{website}").format(website="http://unknown-horizons.org/support/")
-			self.gui.show_error_popup(headline, descr, advice)
+			self.ingame_gui.show_error_popup(headline, descr, advice)
 
 	def save(self, savegamename=None):
 		"""Saves a game
@@ -74,7 +74,7 @@ class SPSession(Session):
 		@return: bool, whether no error happened (user aborting dialog means success)
 		"""
 		if savegamename is None:
-			savegamename = self.gui.show_select_savegame(mode='save')
+			savegamename = self.ingame_gui.show_select_savegame(mode='save')
 			if savegamename is None:
 				return True # user aborted dialog
 			savegamename = SavegameManager.create_filename(savegamename)

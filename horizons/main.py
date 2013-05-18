@@ -295,6 +295,11 @@ def quit():
 	preload_game_join(preloading)
 	horizons.globals.fife.quit()
 
+def quit_session():
+	"""Quits the current game."""
+	_modules.session = None
+	_modules.gui.show_main()
+
 def start_singleplayer(options):
 	"""Starts a singleplayer game."""
 	_modules.gui.show_loading_screen()
@@ -318,7 +323,7 @@ def start_singleplayer(options):
 		from horizons.spsession import SPSession as session_class
 
 	# start new session
-	_modules.session = session_class(_modules.gui, horizons.globals.db)
+	_modules.session = session_class(horizons.globals.db)
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
@@ -370,7 +375,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	# get random seed for game
 	uuid = game.uuid
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
-	_modules.session = MPSession(_modules.gui, horizons.globals.db, NetworkInterface(), rng_seed=random)
+	_modules.session = MPSession(horizons.globals.db, NetworkInterface(), rng_seed=random)
 
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
 	if game.is_savegame:
@@ -462,8 +467,8 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	save_files = SavegameManager.get_quicksaves()[0]
 	if _modules.session is not None:
 		if not save_files:
-			_modules.gui.show_popup(_("No quicksaves found"),
-			                        _("You need to quicksave before you can quickload."))
+			_modules.session.ingame_gui.show_popup(_("No quicksaves found"),
+			                                       _("You need to quicksave before you can quickload."))
 			return False
 	else:
 		if not save_files:
