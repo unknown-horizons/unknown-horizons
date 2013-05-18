@@ -4,7 +4,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2013-07-01: Milestone 2013.3
-changelog date: MAY 01
+changelog date: MAY 18
 
 Gameplay and Balancing
 * New features
@@ -15,6 +15,7 @@ Gameplay and Balancing
   ~ 9d4a7e1: crash when clicking on messagewidget messages in scenarios
   ~ #2039: introduce memory leak to fix `RuntimeError: _[NotFound]_ ,
     Something was searched, but not found :: action move_as_[corrupted]`
+  ~ #2078: crash when joining password-protected multiplayer game
 
 Media Content
 * New files and features
@@ -25,20 +26,34 @@ Media Content
 User Interface
 * Additions and new features
   + d413693: improved loading screen messages about current stage
+  + #2070: interface to change hotkeys in settings
+  + #2094: return key confirms singleplayer, multiplayer and editor menu
+  + 8d0d248: PAUSE as secondary key for pausing game (primary: P)
 * Repositioning and modifications
   # #1310: right clicks in trade route resource selection are now
     special-cased to abort selection (not empty slot) sometimes
+  # 420e17d: LOGBOOK_DEFAULT_DELAY reduced to 1-4 seconds (was: 4-7)
+
 * Fixed bugs and usability problems
   ~ #2081: explanatory labels for map editor
+  ~ #1789: show message text next to corresponding icon
+  ~ #1587: show correct logbook section when scenario goal is reached
+  ~ #1577: messages of accomplished scenario tasks disappear
 
 Codebase
 * New functionalities
   + #2077: lazy translation (`speaklater` library)
   + 3195744: script to update existing translations against new template
+  + #2100: scenario condition game_started
 * Modified structures
   # #2053: default hashbang now is `/usr/bin/env python2`
   # #2058: allow running with FIFE newer than 0.3.4
   # 0a1d6db: migrate script to translate a scenario to python
+  # 58a192d: correct location comment for translations extracted from xml
+  # #2088: copyright headers now `2008-2013` instead of just `2013`
+  # 771b65e: SimpleMessageBus allows same callback only once per message
+  # #2090: 'metadata' container for scenarios, rewrite scenario menu
+  # 47c50a2: remove reference to main gui in session
 * Fixed crashes and inconsistencies
   ~ 3c363f4: handle unknown actions in hotkey settings
 
@@ -50,7 +65,7 @@ User-Contributed Content
 
 * New team members with this release, Annotations
   + Push access was granted to:
-  + We accepted pull requests or patches by: alluk
+  + We accepted pull requests or patches by: alluk, Daenor
   + Translators that joined our teams and contributed several strings:
     Please refer to the credits!
 
