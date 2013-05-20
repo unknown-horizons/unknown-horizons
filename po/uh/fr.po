@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-15 00:49+0200\n"
-"Last-Translator: Hugues Fafard <fafardh@hotmail.de>\n"
+"PO-Revision-Date: 2013-05-20 17:12+0200\n"
+"Last-Translator: Clement Coste <clement.coste2@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -104,7 +104,7 @@ msgstr "Choisir la taille de la brosse:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Sélectionner le terrain :"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
@@ -870,19 +870,19 @@ msgstr "Patcheurs"
 
 #: content/gui/xml/mainmenu/credits.xml:82
 msgid "2009"
-msgstr ""
+msgstr "2009"
 
 #: content/gui/xml/mainmenu/credits.xml:91
 msgid "2010"
-msgstr ""
+msgstr "2010"
 
 #: content/gui/xml/mainmenu/credits.xml:105
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 #: content/gui/xml/mainmenu/credits.xml:117
 msgid "2012"
-msgstr ""
+msgstr "2012"
 
 #: content/gui/xml/mainmenu/credits.xml:132
 msgid "Translators"
@@ -894,23 +894,23 @@ msgstr "Host de Weblate"
 
 #: content/gui/xml/mainmenu/credits.xml:139
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgare"
 
 #: content/gui/xml/mainmenu/credits.xml:144
 msgid "Catalan"
-msgstr ""
+msgstr "Catalan"
 
 #: content/gui/xml/mainmenu/credits.xml:150
 msgid "Czech"
-msgstr ""
+msgstr "Tchèque"
 
 #: content/gui/xml/mainmenu/credits.xml:160
 msgid "Danish"
-msgstr ""
+msgstr "Danois"
 
 #: content/gui/xml/mainmenu/credits.xml:165
 msgid "German"
-msgstr ""
+msgstr "Allemand"
 
 #: content/gui/xml/mainmenu/credits.xml:172
 msgid "Spanish"
@@ -918,43 +918,43 @@ msgstr "Espagnol"
 
 #: content/gui/xml/mainmenu/credits.xml:184
 msgid "Estonian"
-msgstr ""
+msgstr "Estonien"
 
 #: content/gui/xml/mainmenu/credits.xml:190
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandais"
 
 #: content/gui/xml/mainmenu/credits.xml:195
 msgid "French"
-msgstr ""
+msgstr "Français"
 
 #: content/gui/xml/mainmenu/credits.xml:207
 msgid "Croatian"
-msgstr ""
+msgstr "Croate"
 
 #: content/gui/xml/mainmenu/credits.xml:212
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: content/gui/xml/mainmenu/credits.xml:217
 msgid "Hungarian"
-msgstr ""
+msgstr "Hongrois"
 
 #: content/gui/xml/mainmenu/credits.xml:223
 msgid "Italian"
-msgstr ""
+msgstr "Italien"
 
 #: content/gui/xml/mainmenu/credits.xml:231
 msgid "Japanese"
-msgstr ""
+msgstr "Japonais"
 
 #: content/gui/xml/mainmenu/credits.xml:237
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lituanien"
 
 #: content/gui/xml/mainmenu/credits.xml:246
 msgid "Norwegian"
-msgstr ""
+msgstr "Norvégien"
 
 #: content/gui/xml/mainmenu/credits.xml:253
 msgid "Dutch"
@@ -962,31 +962,31 @@ msgstr "Néerlandais"
 
 #: content/gui/xml/mainmenu/credits.xml:264
 msgid "Polish"
-msgstr ""
+msgstr "Polonais"
 
 #: content/gui/xml/mainmenu/credits.xml:275
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugais"
 
 #: content/gui/xml/mainmenu/credits.xml:283
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Portugais brésilien"
 
 #: content/gui/xml/mainmenu/credits.xml:291
 msgid "Romanian"
-msgstr ""
+msgstr "Roumain"
 
 #: content/gui/xml/mainmenu/credits.xml:296
 msgid "Russian"
-msgstr ""
+msgstr "Russe"
 
 #: content/gui/xml/mainmenu/credits.xml:303
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovène"
 
 #: content/gui/xml/mainmenu/credits.xml:308
 msgid "Swedish"
-msgstr ""
+msgstr "Suédois"
 
 #: content/gui/xml/mainmenu/credits.xml:314
 msgid "Chinese"
@@ -998,15 +998,16 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/credits.xml:327
 msgid "Debian"
-msgstr ""
+msgstr "Débian"
 
 #: content/gui/xml/mainmenu/credits.xml:332
+#, fuzzy
 msgid "Fedora &amp; openSUSE"
-msgstr ""
+msgstr "Fedora &amp; openSUSE"
 
 #: content/gui/xml/mainmenu/credits.xml:338
 msgid "OS X"
-msgstr ""
+msgstr "OS X"
 
 #: content/gui/xml/mainmenu/credits.xml:348
 msgid "Special Thanks"
@@ -1014,7 +1015,7 @@ msgstr "Remerciements spéciaux"
 
 #: content/gui/xml/mainmenu/credits.xml:350
 msgid "Thanks, all of you are awesome!"
-msgstr ""
+msgstr "Merci, vous êtes géniaux!"
 
 #: content/gui/xml/mainmenu/credits.xml:373
 msgid "Portfolio Sites"
@@ -1136,7 +1137,7 @@ msgstr "Chargement rapide"
 
 #: content/gui/xml/mainmenu/help.xml:31
 msgid "Display FPS counter"
-msgstr ""
+msgstr "Afficher le compteur d'images par seconde"
 
 #: content/gui/xml/mainmenu/help.xml:40
 #: content/gui/xml/mainmenu/hotkeys.xml:30
@@ -1233,12 +1234,12 @@ msgstr "Activer/Désactiver l'affichage des FPS"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Primaire"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Secondaire"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
@@ -1831,7 +1832,7 @@ msgstr ""
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Raccourcis clavier"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
@@ -1973,16 +1974,16 @@ msgstr "[{key}] = {text}"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Appuyez sur la touche choisie"
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 #, python-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} est déjà liée à {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:142
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Voulez vous l'écraser ?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:143
@@ -3901,7 +3902,7 @@ msgstr "laine de mouton"
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "Vous avez atteint le dernier age. Vos habitants ne s'amélioreront plus."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid ""
