@@ -7,35 +7,36 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2012-03-06 18:14+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-20 13:50+0200\n"
+"Last-Translator: Daniel Tominac <tominaccell@gmail.com>\n"
+"Language-Team: Croatian <http://hosted.weblate.org/projects/uh/tutorial/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.1.5\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
-msgstr ""
+msgstr "Vodič"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
-"Turorial:\n"
-"Izgradi svoje prvo naseljenje i nauči kako igrati!\n"
+"Vodič:\n"
+"Izgradi svoju prvu naseobinu i nauči kako igrati!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
 msgstr ""
+"Izgradi skladište na obali, kako bi bilo lako dostupno za druge brodove kao "
+"što su slobodni trgovci."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -46,12 +47,16 @@ msgid ""
 "This is your Captain's log where all important information is stored. A "
 "short notification of each task will be provided on the left of the screen."
 msgstr ""
+"Ovo je kapetanov dnevnik tu su pohranjene sve bitne informacije. Kratka "
+"obavijest za svaki zadatak će biti prikazana na lijevoj strani ekrana."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you are interested in longer descriptions, your log will hopefully "
 "provide all the help you need."
 msgstr ""
+"Ako ste zainteresirani za duže opise, u vašim zapisima će te pronaći sve što "
+"vam je potrebno."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -59,6 +64,9 @@ msgid ""
 "icon in the top-right corner (below the mini-map, with a sealed document and "
 "a feather)."
 msgstr ""
+"Kada zatvorite ovaj zapis, možete ga opet otvoriti sa  \"Kapetanovi zapisi\" "
+"sličicom u gornjem desnom kutu (ispod minijaturne mape, sličica sa "
+"zatvorenim dokumentom i perom)."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -66,6 +74,9 @@ msgid ""
 "To see your first task, click on the button \"Read next entries\" in the "
 "navigation panel! It looks like this:"
 msgstr ""
+"\n"
+"Kako bi vidjeli svoj prvi zadatak, kliknite na dugme \"Pročitaj sljedeće "
+"unose\" u navigacijskoj ploči! Ona izgleda ovako:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -74,16 +85,22 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to "
 "improve the tutorial!"
 msgstr ""
+"\n"
+"Bilo kakve sugestije za tekst, teme koje bi da su bolje objašnjene ili čak "
+"situacije s greškom: Molimo da to kažete kako bi poboljšali vodič!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
+"\n"
+"Posjetite www.unknown-horizons.org za pomoć oko toga kako kontaktirati "
+"ekipu!"
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the actual game."
-msgstr ""
+msgstr "I sad, ajmo kreniti u igru."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: SETTLE ON AN ISLAND"
