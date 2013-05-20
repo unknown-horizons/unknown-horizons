@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-14 16:43+0200\n"
+"PO-Revision-Date: 2013-05-20 04:30+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
@@ -128,7 +128,7 @@ msgstr "İnşa Et"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "İşletme giderleri"
+msgstr "İşletme giderleri:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -255,7 +255,7 @@ msgstr "Devam Et"
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "İnşaat durumu"
+msgstr "İnşaat durumu:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
@@ -323,7 +323,7 @@ msgstr "Ödenen vergiler"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr "Vergiler"
+msgstr "Vergiler:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
@@ -1411,7 +1411,7 @@ msgstr "Grafikler"
 
 #: content/gui/xml/mainmenu/settings.xml:18
 msgid "Screen resolution:"
-msgstr "Ekran çözünürlüğü"
+msgstr "Ekran çözünürlüğü:"
 
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "Color depth:"
@@ -1435,7 +1435,7 @@ msgstr "Kullanılan hazırlayıcı:"
 
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Frame rate limit:"
-msgstr "Film karesi hız limiti"
+msgstr "Film karesi hız limiti:"
 
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Set the maximum frame rate used. Default: 60 fps."
@@ -1563,7 +1563,7 @@ msgstr "Kayıtlamayı aç:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
-msgstr "Üretim belirteçleri"
+msgstr "Üretim belirteçleri:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid ""
@@ -1614,7 +1614,7 @@ msgstr "Uygula"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
-msgstr "Kaydedilmiş oyunlarınız"
+msgstr "Kaydedilmiş oyunlarınız:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
@@ -1673,7 +1673,7 @@ msgstr "Harita ayarları:"
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr "Kaynak"
+msgstr "Kaynak:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
@@ -1681,7 +1681,7 @@ msgstr "Bir dil seçin:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr "Yapay Zeka oyuncuları"
+msgstr "Yapay Zeka oyuncuları:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
@@ -2079,7 +2079,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
-msgstr "Ağda bir sorun oluştu."
+msgstr "Ağda bir sorun oluştu:"
 
 #: horizons/gui/modules/multiplayermenu.py:174
 msgid "Version differs!"
