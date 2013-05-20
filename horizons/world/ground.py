@@ -139,6 +139,8 @@ class GroundClass(type):
 		"""Loads the ground object from the db (animations, etc)"""
 		cls._fife_objects = {}
 		tile_sets = TileSetLoader.get_sets()
+		model = horizons.globals.fife.engine.getModel()
+		load_image = horizons.globals.fife.animationloader.load_image
 		tile_set_data = db("SELECT set_id FROM tile_set WHERE ground_id=?", cls.id)
 		for tile_set_row in tile_set_data:
 			tile_set_id = str(tile_set_row[0])
@@ -146,10 +148,10 @@ class GroundClass(type):
 			cls.log.debug('Loading ground %s', cls_name)
 			fife_object = None
 			try:
-				fife_object = horizons.globals.fife.engine.getModel().createObject(cls_name, 'ground_' + tile_set_id)
+				fife_object = model.createObject(cls_name, 'ground_' + tile_set_id)
 			except RuntimeError:
 				cls.log.debug('Already loaded ground %d-%s', cls.id, cls.shape)
-				fife_object = horizons.globals.fife.engine.getModel().getObject(cls_name, 'ground_' + tile_set_id)
+				fife_object = model.getObject(cls_name, 'ground_' + tile_set_id)
 				return
 
 			fife.ObjectVisual.create(fife_object)
@@ -163,7 +165,7 @@ class GroundClass(type):
 					raise ValueError('Currently only static tiles are supported. '
 						'Found this data for tile set `%s` in rotation `%s`: '
 						'%s' % (tile_set_id, rotation, data))
-				img = horizons.globals.fife.animationloader.load_image(data.keys()[0], tile_set_id, cls.shape, str(rotation))
+				img = load_image(data.keys()[0], tile_set_id, cls.shape, str(rotation))
 				visual.addStaticImage(rotation, img.getHandle())
 
 			# Save the object
