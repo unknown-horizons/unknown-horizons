@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-05 13:11+0000\n"
-"Last-Translator: Anonymous Pootle User\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-21 12:52+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"Language-Team: Danish <http://hosted.weblate.org/projects/uh/uh/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 # 86%
 #: run_uh.py:220
@@ -2682,7 +2682,7 @@ msgstr ""
 #: horizons/gui/tabs/buyselltab.py:130
 msgid "Click on one of the resource slots to add a trade offer."
 msgstr ""
-"Klik på en af ​​de ressourcemæssige slots til at tilføje en handel tilbud."
+"Klik på en af de ressourcemæssige slots til at tilføje en handel tilbud."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:173
