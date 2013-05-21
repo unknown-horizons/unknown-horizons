@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-21 12:52+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"PO-Revision-Date: 2013-05-21 23:31+0200\n"
+"Last-Translator: Jacob Hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: Danish <http://hosted.weblate.org/projects/uh/uh/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -23,10 +23,8 @@ msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons er gået ned."
 
 #: run_uh.py:222
-#, fuzzy
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr ""
-"Vi er meget kede af for dette og ønsker at fastsætte underliggende fejl."
+msgstr "Vi er meget kede af det og ønsker at rette årsagen til fejlen."
 
 #: run_uh.py:223
 msgid "In order to do this, we need the information from the logfile:"
@@ -37,17 +35,18 @@ msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Giv det til os via IRC eller vores forum, for begge ser http://unknown-"
-"horizons.org ."
+"Send den venligst til os via IRC eller vores forum, for begge se http"
+"://unknown-horizons.org ."
 
 #: run_uh.py:273
-#, fuzzy
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "Fejl: Kunne ikke finde de påkrævede biblioteker"
+msgstr "Fejl: Kunne ikke finde det påkrævede bibliotek \"PyYAML\"."
 
 #: run_uh.py:274
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr ""
+"PyYAML (et nødvendigt bibliotek) mangler og er nødt til at blive "
+"installeret."
 
 #: run_uh.py:275
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
@@ -69,9 +68,8 @@ msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
-#, fuzzy
 msgid "Save map"
-msgstr "Kaart opslaan"
+msgstr "Gem kort"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
@@ -81,9 +79,8 @@ msgstr ""
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
-#, fuzzy
 msgid "Settings"
-msgstr "Instellingen"
+msgstr "Indstillinger"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
@@ -109,14 +106,12 @@ msgid "(right click to stop)"
 msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
-#, fuzzy
 msgid "Game start"
-msgstr "Start spel"
+msgstr "Start spil"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
-#, fuzzy
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Er is een nederzetting nodig voordat gebouwen gebouwd kunnen worden!"
+msgstr "Du er nødt til at grundlægge en by, før du kan bygge bygninger!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 #, fuzzy
@@ -133,9 +128,8 @@ msgid "Build"
 msgstr "Byg"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
-#, fuzzy
 msgid "Running costs:"
-msgstr "Operationele kosten:"
+msgstr "Driftsomkostninger:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -164,22 +158,20 @@ msgid "Rotate map counterclockwise (,)"
 msgstr "Draai de kaart tegen de klok in (,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy
 msgid "Rotate map clockwise (.)"
-msgstr "Draai de kaart met de klok mee (.)"
+msgstr "Roter kort med uret (.)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
-msgstr "Zoom in"
+msgstr "Zoom ind"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
-msgstr "Zoom uit"
+msgstr "Zoom ud"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy
 msgid "Destroy (X)"
-msgstr "Vernietigen (X)"
+msgstr "Destruer (X)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 #, fuzzy
@@ -187,29 +179,24 @@ msgid "Captain's log (L)"
 msgstr "Logboek van de Kapitein (L)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy
 msgid "Build menu (B)"
-msgstr "Bouwmenu (B)"
+msgstr "Byggemenu (B)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
-#, fuzzy
 msgid "Diplomacy"
-msgstr "Diplomatie"
+msgstr "Diplomati"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy
 msgid "Game menu (Esc)"
-msgstr "Spelmenu (Esc)"
+msgstr "Spilmenu (Esc)"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
-#, fuzzy
 msgid "Change name"
-msgstr "Verander naam"
+msgstr "Skift navn"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
-#, fuzzy
 msgid "Old name:"
-msgstr "Oude naam:"
+msgstr "Gammelt navn:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 #, fuzzy
@@ -940,7 +927,7 @@ msgstr "Game-Play Design"
 
 #: content/gui/xml/mainmenu/credits.xml:52
 msgid "Sound and Music Artists"
-msgstr "Geluid en Muziek Artiesten"
+msgstr "Lyd og Musik Komponister"
 
 #: content/gui/xml/mainmenu/credits.xml:60
 #, fuzzy
@@ -953,23 +940,23 @@ msgstr "Patchers"
 
 #: content/gui/xml/mainmenu/credits.xml:82
 msgid "2009"
-msgstr ""
+msgstr "2009"
 
 #: content/gui/xml/mainmenu/credits.xml:91
 msgid "2010"
-msgstr ""
+msgstr "2010"
 
 #: content/gui/xml/mainmenu/credits.xml:105
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 #: content/gui/xml/mainmenu/credits.xml:117
 msgid "2012"
-msgstr ""
+msgstr "2012"
 
 #: content/gui/xml/mainmenu/credits.xml:132
 msgid "Translators"
-msgstr "Vertalers"
+msgstr "Oversættere"
 
 #: content/gui/xml/mainmenu/credits.xml:134
 #, fuzzy
@@ -1098,7 +1085,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/credits.xml:348
 msgid "Special Thanks"
-msgstr "Bijzonder Dank"
+msgstr "Særlig tak"
 
 #: content/gui/xml/mainmenu/credits.xml:350
 msgid "Thanks, all of you are awesome!"
@@ -2039,11 +2026,11 @@ msgstr "Ønsker du at fortsætte?"
 
 #: horizons/engine/settingshandler.py:70
 msgid "16 bit"
-msgstr ""
+msgstr "16 bit"
 
 #: horizons/engine/settingshandler.py:70
 msgid "32 bit"
-msgstr ""
+msgstr "32 bit"
 
 #: horizons/engine/settingshandler.py:70
 msgid "Default"
@@ -2074,7 +2061,8 @@ msgstr "Ugyldig netværksport"
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Havnen du har angivet er ikke gyldig. Det skal være et tal mellem 1 og 65535."
+"Havnen du har angivet er ikke gyldig. Det skal være et tal mellem 1 og "
+"65535."
 
 #: horizons/engine/settingshandler.py:224
 msgid ""
@@ -2138,7 +2126,7 @@ msgstr "Kan ikke gøre diplomati som der ikke er andre spillere."
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} felter"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/modules/help.py:54
@@ -2348,8 +2336,8 @@ msgid ""
 msgstr ""
 "Spillets versionen adskiller sig fra din version. Hver spiller i et "
 "multiplayer-spil skal bruge den samme version. Dette kan fastsættes ved hver "
-"spiller at opdatere til den nyeste version. Spil version: {game_version} Din "
-"version: {own_version}"
+"spiller at opdatere til den nyeste version. Spil version: {game_version} "
+"Din version: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:268
 msgid "Password of the game"
@@ -2378,12 +2366,12 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:560
 #, python-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{player} har tilsluttet sig spillet"
 
 #: horizons/gui/modules/multiplayermenu.py:564
 #, python-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{player} har forladt spillet"
 
 #: horizons/gui/modules/multiplayermenu.py:570
 msgid "You are now ready"
@@ -2396,12 +2384,12 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:576
 #, python-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} er nu klar"
 
 #: horizons/gui/modules/multiplayermenu.py:579
 #, python-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} er ikke klar mere"
 
 #: horizons/gui/modules/multiplayermenu.py:584
 #, python-format
@@ -2411,7 +2399,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:587
 #, python-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "{player} er nu kendt som {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 msgid "You changed your color"
@@ -2420,7 +2408,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:594
 #, python-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player} skiftede deres farve"
 
 #: horizons/gui/modules/multiplayermenu.py:598
 msgid "Kicked"
@@ -2433,7 +2421,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:602
 #, python-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player} blev smidt ud af skaber"
 
 # ook u aangepast
 #: horizons/gui/modules/pausemenu.py:82
@@ -2677,7 +2665,7 @@ msgstr ""
 #: horizons/gui/tabs/buildtabs.py:150
 #, python-format
 msgid "{resource}: {amount}"
-msgstr ""
+msgstr "{resource}: {amount}"
 
 #: horizons/gui/tabs/buyselltab.py:130
 msgid "Click on one of the resource slots to add a trade offer."
@@ -2786,7 +2774,7 @@ msgstr "Unequip våben"
 #: horizons/gui/widgets/imagefillstatusbutton.py:71
 #, python-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} guld"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-format
@@ -2801,7 +2789,7 @@ msgstr ""
 #: horizons/gui/widgets/inventory.py:168
 #, python-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:171
 #, fuzzy, python-format
@@ -2919,7 +2907,7 @@ msgstr ""
 #: horizons/gui/widgets/unitoverview.py:119
 #, python-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:124
 #, fuzzy
@@ -3337,7 +3325,7 @@ msgstr "Verwerkt verschillende soorten erts."
 #. name of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:295
 msgid "Spice Field"
-msgstr "Specerijenveld"
+msgstr "Krydderimark"
 
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:297
@@ -3365,7 +3353,7 @@ msgstr "Maakt bouwstenen van stenen platen."
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:311
 msgid "Stone Pit"
-msgstr "Steengroeve"
+msgstr "Stengrav"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:313
@@ -3542,7 +3530,7 @@ msgstr "Levert scholing."
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:404
 msgid "Vineyard"
-msgstr "Wijngaard"
+msgstr "Vingård"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:406
@@ -3584,7 +3572,7 @@ msgstr "Maakt doeken van wol."
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
 msgid "Windmill"
-msgstr "Windmolen"
+msgstr "Vindmølle"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:432
@@ -4049,7 +4037,7 @@ msgstr "glæde"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
-msgstr "Nogle af dine indbyggere netop er flyttet ud."
+msgstr "Nogle af dine indbyggere er netop flyttet ud."
 
 #. This is a database entry: the name of a resource.
 msgid "sugar"
@@ -4267,7 +4255,7 @@ msgstr "trækul"
 # 76%
 #. This is a database entry: the name of a resource.
 msgid "stone deposit"
-msgstr "sten depositum"
+msgstr "stendepot"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy
@@ -4363,7 +4351,7 @@ msgstr "kanon"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "Et nyt skib ved navn {name} er blevet bygget."
 
 #. This is a database entry: the name of a resource.
 msgid "get-together"
