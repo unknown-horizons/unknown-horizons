@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-17 03:27+0200\n"
+"PO-Revision-Date: 2013-05-21 10:03+0200\n"
 "Last-Translator: Zhang June <avalon3515@163.com>\n"
-"Language-Team: Simplified Chinese <http://hosted.weblate.org/projects/uh/uh/"
-"zh_CN/>\n"
+"Language-Team: Simplified Chinese "
+"<http://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -333,28 +333,27 @@ msgid "Upgrade permissions:"
 msgstr "升级权限："
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
-#, fuzzy
 msgid "Happiness per house"
-msgstr "幸福"
+msgstr "每间房屋的幸福指数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
-msgstr ""
+msgstr "悲伤"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
 msgid "satisfied"
-msgstr ""
+msgstr "满足"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:60
 msgid "happy"
-msgstr ""
+msgstr "快乐"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "所有居民的幸福感"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -363,7 +362,7 @@ msgstr "居民住宅"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 #, fuzzy
 msgid "Number of inhabitants per house"
-msgstr "你的一些居民刚刚搬走了。"
+msgstr "每套住房的居民数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
@@ -397,18 +396,16 @@ msgstr "购买"
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
-#, fuzzy
 msgid "Name:"
-msgstr "游戏"
+msgstr "姓名："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
-msgstr ""
+msgstr "武器："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
-#, fuzzy
 msgid "Resource deposit"
-msgstr "资源密度："
+msgstr "资源储量："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
