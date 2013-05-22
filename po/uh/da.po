@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-17 15:21+0200\n"
-"PO-Revision-Date: 2013-05-21 23:31+0200\n"
+"PO-Revision-Date: 2013-05-22 13:31+0200\n"
 "Last-Translator: Jacob Hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: Danish <http://hosted.weblate.org/projects/uh/uh/da/>\n"
 "Language: da\n"
@@ -51,6 +51,7 @@ msgstr ""
 #: run_uh.py:275
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
+"Windows-installationsprogrammet kan findes på http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:276
 msgid ""
@@ -64,7 +65,7 @@ msgstr "Tak fordi du bruger Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Tilbage til redigering"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
@@ -95,11 +96,11 @@ msgstr "Afslut rediger"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Vælg penselstørrelse:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Vælg terræn:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
@@ -114,14 +115,12 @@ msgid "You need to found a settlement before you can construct buildings!"
 msgstr "Du er nødt til at grundlægge en by, før du kan bygge bygninger!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
-#, fuzzy
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Selecteer je schip en benader de kust met de rechtermuisknop."
+msgstr "Vælg dit skib og nærm dig kysten via højreklik."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
-#, fuzzy
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Daarna klik je op de grote knop in het scheepsoverzicht."
+msgstr "Tryk derefter på den store knap i skibsoversigten."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -133,29 +132,26 @@ msgstr "Driftsomkostninger:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "Relaterede bygninger"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
-#, fuzzy
 msgid "Inhabitants"
-msgstr "Inwoners"
+msgstr "Indbygger"
 
 # 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Speelsnelheid verhogen (+)"
+msgstr "Øg spilhastighed (+)"
 
 # 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
-msgstr "Speelsnelheid verlagen (-)"
+msgstr "Formindsk spilhastighed (-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy
 msgid "Rotate map counterclockwise (,)"
-msgstr "Draai de kaart tegen de klok in (,)"
+msgstr "Roter kortet mod uret (,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
@@ -174,9 +170,8 @@ msgid "Destroy (X)"
 msgstr "Destruer (X)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy
 msgid "Captain's log (L)"
-msgstr "Logboek van de Kapitein (L)"
+msgstr "Kaptajnens logbog(L)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 msgid "Build menu (B)"
@@ -199,27 +194,23 @@ msgid "Old name:"
 msgstr "Gammelt navn:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
-#, fuzzy
 msgid "Enter new name:"
-msgstr "Voer nieuwe naam in:"
+msgstr "Indtast nyt navn:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
-#, fuzzy
 msgid "Apply the new name"
-msgstr "Pas de nieuwe naam toe"
+msgstr "Godkend det nye navn"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
-#, fuzzy
 msgid "Chat"
 msgstr "Chat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
-#, fuzzy
 msgid "Enter your message:"
-msgstr "Voer uw bericht in:"
+msgstr "Skriv din meddelelse:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -235,9 +226,8 @@ msgstr "Voer uw bericht in:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:28
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:617
-#, fuzzy
 msgid "Running costs"
-msgstr "Operationele kosten"
+msgstr "Driftsomkostninger"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 #, fuzzy
