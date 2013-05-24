@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-17 15:21+0200\n"
+"POT-Creation-Date: 2013-05-24 23:39+0200\n"
 "PO-Revision-Date: 2013-05-15 18:37+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
@@ -826,187 +826,6 @@ msgstr "Passief"
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
 msgstr "Vluchten"
-
-#: content/gui/xml/mainmenu/credits.xml:15
-msgid "UH-Team"
-msgstr "UH Team"
-
-#: content/gui/xml/mainmenu/credits.xml:17
-msgid "Project Coordination"
-msgstr "Project Coördinatie"
-
-#: content/gui/xml/mainmenu/credits.xml:23
-msgid "Programming"
-msgstr "Programmeurs"
-
-#: content/gui/xml/mainmenu/credits.xml:45
-msgid "Game-Play Design"
-msgstr "Spelontwerp"
-
-#: content/gui/xml/mainmenu/credits.xml:52
-msgid "Sound and Music Artists"
-msgstr "Geluid en Muziek Artiesten"
-
-#: content/gui/xml/mainmenu/credits.xml:60
-msgid "Graphics Artists"
-msgstr "Grafisch ontwerpers"
-
-#: content/gui/xml/mainmenu/credits.xml:80
-msgid "Patchers"
-msgstr "Patchers"
-
-#: content/gui/xml/mainmenu/credits.xml:82
-msgid "2009"
-msgstr "2009"
-
-#: content/gui/xml/mainmenu/credits.xml:91
-msgid "2010"
-msgstr "2010"
-
-#: content/gui/xml/mainmenu/credits.xml:105
-msgid "2011"
-msgstr "2011"
-
-#: content/gui/xml/mainmenu/credits.xml:117
-msgid "2012"
-msgstr "2012"
-
-#: content/gui/xml/mainmenu/credits.xml:132
-msgid "Translators"
-msgstr "Vertalers"
-
-#: content/gui/xml/mainmenu/credits.xml:134
-msgid "Hosting Weblate"
-msgstr "Hosting van Weblate"
-
-#: content/gui/xml/mainmenu/credits.xml:139
-msgid "Bulgarian"
-msgstr "Bulgaars"
-
-#: content/gui/xml/mainmenu/credits.xml:144
-msgid "Catalan"
-msgstr "Catalaans"
-
-#: content/gui/xml/mainmenu/credits.xml:150
-msgid "Czech"
-msgstr "Tsjechisch"
-
-#: content/gui/xml/mainmenu/credits.xml:160
-msgid "Danish"
-msgstr "Deens"
-
-#: content/gui/xml/mainmenu/credits.xml:165
-msgid "German"
-msgstr "Duits"
-
-#: content/gui/xml/mainmenu/credits.xml:172
-msgid "Spanish"
-msgstr "Spaans"
-
-#: content/gui/xml/mainmenu/credits.xml:184
-msgid "Estonian"
-msgstr "Estisch"
-
-#: content/gui/xml/mainmenu/credits.xml:190
-msgid "Finnish"
-msgstr "Fins"
-
-#: content/gui/xml/mainmenu/credits.xml:195
-msgid "French"
-msgstr "Frans"
-
-#: content/gui/xml/mainmenu/credits.xml:207
-msgid "Croatian"
-msgstr "Kroatisch"
-
-#: content/gui/xml/mainmenu/credits.xml:212
-msgid "Hindi"
-msgstr "Hindi"
-
-#: content/gui/xml/mainmenu/credits.xml:217
-msgid "Hungarian"
-msgstr "Hongaars"
-
-#: content/gui/xml/mainmenu/credits.xml:223
-msgid "Italian"
-msgstr "Italiaans"
-
-#: content/gui/xml/mainmenu/credits.xml:231
-msgid "Japanese"
-msgstr "Japans"
-
-#: content/gui/xml/mainmenu/credits.xml:237
-msgid "Lithuanian"
-msgstr "Litouws"
-
-#: content/gui/xml/mainmenu/credits.xml:246
-msgid "Norwegian"
-msgstr "Noors"
-
-#: content/gui/xml/mainmenu/credits.xml:253
-msgid "Dutch"
-msgstr "Nederlands"
-
-#: content/gui/xml/mainmenu/credits.xml:264
-msgid "Polish"
-msgstr "Pools"
-
-#: content/gui/xml/mainmenu/credits.xml:275
-msgid "Portuguese"
-msgstr "Portugees"
-
-#: content/gui/xml/mainmenu/credits.xml:283
-msgid "Brazilian Portuguese"
-msgstr "Braziliaans-Portugees"
-
-#: content/gui/xml/mainmenu/credits.xml:291
-msgid "Romanian"
-msgstr "Roemeens"
-
-#: content/gui/xml/mainmenu/credits.xml:296
-msgid "Russian"
-msgstr "Russisch"
-
-#: content/gui/xml/mainmenu/credits.xml:303
-msgid "Slovenian"
-msgstr "Sloveens"
-
-#: content/gui/xml/mainmenu/credits.xml:308
-msgid "Swedish"
-msgstr "Zweeds"
-
-# Is this vines as in plants, or vines as in ore-vines? I assumed plants here, otherwise change this to "aders".
-#: content/gui/xml/mainmenu/credits.xml:314
-msgid "Chinese"
-msgstr "Chinees"
-
-#: content/gui/xml/mainmenu/credits.xml:325
-msgid "Packagers"
-msgstr "Software packagers"
-
-#: content/gui/xml/mainmenu/credits.xml:327
-msgid "Debian"
-msgstr "Debian"
-
-#: content/gui/xml/mainmenu/credits.xml:332
-msgid "Fedora &amp; openSUSE"
-msgstr "Fedora &amp; openSUSE"
-
-#: content/gui/xml/mainmenu/credits.xml:338
-msgid "OS X"
-msgstr "OS X"
-
-#: content/gui/xml/mainmenu/credits.xml:348
-msgid "Special Thanks"
-msgstr "Bijzonder Dank"
-
-#: content/gui/xml/mainmenu/credits.xml:350
-msgid "Thanks, all of you are awesome!"
-msgstr "Bedankt, jullie zijn allemaal geweldig!"
-
-#: content/gui/xml/mainmenu/credits.xml:373
-msgid "Portfolio Sites"
-msgstr "Portfolio websites"
 
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
@@ -1926,11 +1745,11 @@ msgstr "Weet u zeker dat u Unknown Horizons wilt verlaten?"
 msgid "Quit Game"
 msgstr "Verlaat spel"
 
-#: horizons/gui/ingamegui.py:214
+#: horizons/gui/ingamegui.py:218
 msgid "No diplomacy possible"
 msgstr "Geen diplomatie mogelijk"
 
-#: horizons/gui/ingamegui.py:215
+#: horizons/gui/ingamegui.py:219
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Diplomatie is niet mogelijk omdat er geen andere spelers zijn."
 
@@ -2114,39 +1933,39 @@ msgstr ""
 msgid "Something went wrong with the network:"
 msgstr "Er is een netwerkfout opgetreden:"
 
-#: horizons/gui/modules/multiplayermenu.py:174
+#: horizons/gui/modules/multiplayermenu.py:176
 msgid "Version differs!"
 msgstr "Verschillende versies!"
 
-#: horizons/gui/modules/multiplayermenu.py:204
-#: horizons/gui/modules/multiplayermenu.py:441
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Kaart: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:205
-#: horizons/gui/modules/multiplayermenu.py:443
+#: horizons/gui/modules/multiplayermenu.py:207
+#: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Name: {game_name}"
 msgstr "Naam: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:445
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:447
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr "Maker: {player}"
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:447
+#: horizons/gui/modules/multiplayermenu.py:210
+#: horizons/gui/modules/multiplayermenu.py:449
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Spelers: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:228
+#: horizons/gui/modules/multiplayermenu.py:230
 msgid "Wrong version"
 msgstr "Verkeerde versie"
 
-#: horizons/gui/modules/multiplayermenu.py:230
+#: horizons/gui/modules/multiplayermenu.py:232
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2159,87 +1978,87 @@ msgstr ""
 "door iedere speler te laten updaten naar de laatste versie. Spelversie: "
 "{game_version}, uw versie: {own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:268
+#: horizons/gui/modules/multiplayermenu.py:270
 msgid "Password of the game"
 msgstr "Wachtwoord van het spel"
 
-#: horizons/gui/modules/multiplayermenu.py:269
+#: horizons/gui/modules/multiplayermenu.py:271
 msgid "Enter password:"
 msgstr "Voer voorvoegsel in:"
 
-#: horizons/gui/modules/multiplayermenu.py:349
+#: horizons/gui/modules/multiplayermenu.py:351
 #: horizons/gui/modules/singleplayermenu.py:405
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Aanbevolen aantal spelers: {number}"
 
 # 97%
-#: horizons/gui/modules/multiplayermenu.py:465
-#: horizons/gui/modules/multiplayermenu.py:473
+#: horizons/gui/modules/multiplayermenu.py:467
+#: horizons/gui/modules/multiplayermenu.py:475
 msgid "Click here to change your name and/or color"
 msgstr "Klik om de naam van uw nederzetting te wijzigen"
 
-#: horizons/gui/modules/multiplayermenu.py:492
+#: horizons/gui/modules/multiplayermenu.py:494
 #, python-format
 msgid "Kick {player}"
 msgstr "Schepen van {player}"
 
-#: horizons/gui/modules/multiplayermenu.py:560
+#: horizons/gui/modules/multiplayermenu.py:562
 #, python-format
 msgid "{player} has joined the game"
 msgstr "{player} doet mee met het spel"
 
-#: horizons/gui/modules/multiplayermenu.py:564
+#: horizons/gui/modules/multiplayermenu.py:566
 #, python-format
 msgid "{player} has left the game"
 msgstr "{player} heeft het spel verlaten"
 
-#: horizons/gui/modules/multiplayermenu.py:570
+#: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are now ready"
 msgstr "Je bent nu gereed"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:574
 msgid "You are not ready anymore"
 msgstr "Je bent niet meer gereed"
 
-#: horizons/gui/modules/multiplayermenu.py:576
+#: horizons/gui/modules/multiplayermenu.py:578
 #, python-format
 msgid "{player} is now ready"
 msgstr "{player} is nu gereed"
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:581
 #, python-format
 msgid "{player} not ready anymore"
 msgstr "{player} is niet meer gereed"
 
-#: horizons/gui/modules/multiplayermenu.py:584
+#: horizons/gui/modules/multiplayermenu.py:586
 #, python-format
 msgid "You are now known as {new_name}"
 msgstr "Jouw naam is nu {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:587
+#: horizons/gui/modules/multiplayermenu.py:589
 #, python-format
 msgid "{player} is now known as {new_name}"
 msgstr "{player}'s naam is nu {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:591
+#: horizons/gui/modules/multiplayermenu.py:593
 msgid "You changed your color"
 msgstr "Je hebt je kleur verandert"
 
-#: horizons/gui/modules/multiplayermenu.py:594
+#: horizons/gui/modules/multiplayermenu.py:596
 #, python-format
 msgid "{player} changed their color"
 msgstr "{player} heeft zijn kleur verandert"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "Kicked"
 msgstr "Verwijderd"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "You have been kicked from the game by creator"
 msgstr "De spelleider heeft je uit het spel verwijderd"
 
-#: horizons/gui/modules/multiplayermenu.py:602
+#: horizons/gui/modules/multiplayermenu.py:604
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr "{player} is door de spelleider verwijderd"
@@ -3435,25 +3254,25 @@ msgstr "Landbouw"
 msgid "Military"
 msgstr "Leger"
 
-#: horizons/main.py:344
+#: horizons/main.py:349
 msgid "Failed to start/load the game"
 msgstr "Starten/laden van het spel is mislukt"
 
-#: horizons/main.py:345
+#: horizons/main.py:350
 msgid "The game you selected could not be started."
 msgstr "Het spel dat u heeft geselecteerd kan niet worden gestart."
 
-#: horizons/main.py:346
+#: horizons/main.py:351
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 "Het opgeslagen spel is defect of is door een eerdere versie van het spel "
 "gemaakt."
 
-#: horizons/main.py:465
+#: horizons/main.py:470
 msgid "No quicksaves found"
 msgstr "Geen snel opgeslagen bestanden gevonden"
 
-#: horizons/main.py:466
+#: horizons/main.py:471
 msgid "You need to quicksave before you can quickload."
 msgstr "U dient snel op te slaan voor u kunt snelladen."
 
@@ -3523,15 +3342,15 @@ msgid "unknown"
 msgstr "onbekend"
 
 #. usually invalid filename
-#: horizons/session.py:409
+#: horizons/session.py:404
 msgid "Failed to create savegame file"
 msgstr "Opslaan van het savegame-bestand is mislukt"
 
-#: horizons/session.py:410
+#: horizons/session.py:405
 msgid "There has been an error while creating your savegame file."
 msgstr "Er is een fout opgetreden bij het opslaan van uw savegame-bestand."
 
-#: horizons/session.py:411
+#: horizons/session.py:406
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
@@ -3539,11 +3358,11 @@ msgstr ""
 "Dit betekent vaak dat in de savegamenaam speciale tekens staan die niet "
 "worden ondersteund."
 
-#: horizons/session.py:417
+#: horizons/session.py:412
 msgid "Access is denied"
 msgstr "De toegang is geweigerd"
 
-#: horizons/session.py:418
+#: horizons/session.py:413
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 "Het snelopslaan bestand in momenteel in gebruik door een ander programma."
@@ -4106,6 +3925,142 @@ msgstr "Uw spel is opgeslagen."
 #. This is a database entry: the name of a resource.
 msgid "salt"
 msgstr "zout"
+
+#~ msgid "UH-Team"
+#~ msgstr "UH Team"
+
+#~ msgid "Project Coordination"
+#~ msgstr "Project Coördinatie"
+
+#~ msgid "Programming"
+#~ msgstr "Programmeurs"
+
+#~ msgid "Game-Play Design"
+#~ msgstr "Spelontwerp"
+
+#~ msgid "Sound and Music Artists"
+#~ msgstr "Geluid en Muziek Artiesten"
+
+#~ msgid "Graphics Artists"
+#~ msgstr "Grafisch ontwerpers"
+
+#~ msgid "Patchers"
+#~ msgstr "Patchers"
+
+#~ msgid "2009"
+#~ msgstr "2009"
+
+#~ msgid "2010"
+#~ msgstr "2010"
+
+#~ msgid "2011"
+#~ msgstr "2011"
+
+#~ msgid "2012"
+#~ msgstr "2012"
+
+#~ msgid "Translators"
+#~ msgstr "Vertalers"
+
+#~ msgid "Hosting Weblate"
+#~ msgstr "Hosting van Weblate"
+
+#~ msgid "Bulgarian"
+#~ msgstr "Bulgaars"
+
+#~ msgid "Catalan"
+#~ msgstr "Catalaans"
+
+#~ msgid "Czech"
+#~ msgstr "Tsjechisch"
+
+#~ msgid "Danish"
+#~ msgstr "Deens"
+
+#~ msgid "German"
+#~ msgstr "Duits"
+
+#~ msgid "Spanish"
+#~ msgstr "Spaans"
+
+#~ msgid "Estonian"
+#~ msgstr "Estisch"
+
+#~ msgid "Finnish"
+#~ msgstr "Fins"
+
+#~ msgid "French"
+#~ msgstr "Frans"
+
+#~ msgid "Croatian"
+#~ msgstr "Kroatisch"
+
+#~ msgid "Hindi"
+#~ msgstr "Hindi"
+
+#~ msgid "Hungarian"
+#~ msgstr "Hongaars"
+
+#~ msgid "Italian"
+#~ msgstr "Italiaans"
+
+#~ msgid "Japanese"
+#~ msgstr "Japans"
+
+#~ msgid "Lithuanian"
+#~ msgstr "Litouws"
+
+#~ msgid "Norwegian"
+#~ msgstr "Noors"
+
+#~ msgid "Dutch"
+#~ msgstr "Nederlands"
+
+#~ msgid "Polish"
+#~ msgstr "Pools"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugees"
+
+#~ msgid "Brazilian Portuguese"
+#~ msgstr "Braziliaans-Portugees"
+
+#~ msgid "Romanian"
+#~ msgstr "Roemeens"
+
+#~ msgid "Russian"
+#~ msgstr "Russisch"
+
+#~ msgid "Slovenian"
+#~ msgstr "Sloveens"
+
+#~ msgid "Swedish"
+#~ msgstr "Zweeds"
+
+# Is this vines as in plants, or vines as in ore-vines? I assumed plants here, otherwise change this to "aders".
+#~ msgid "Chinese"
+#~ msgstr "Chinees"
+
+#~ msgid "Packagers"
+#~ msgstr "Software packagers"
+
+#~ msgid "Debian"
+#~ msgstr "Debian"
+
+#~ msgid "Fedora &amp; openSUSE"
+#~ msgstr "Fedora &amp; openSUSE"
+
+#~ msgid "OS X"
+#~ msgstr "OS X"
+
+#~ msgid "Special Thanks"
+#~ msgstr "Bijzonder Dank"
+
+#~ msgid "Thanks, all of you are awesome!"
+#~ msgstr "Bedankt, jullie zijn allemaal geweldig!"
+
+#~ msgid "Portfolio Sites"
+#~ msgstr "Portfolio websites"
 
 #~ msgid "Unknown Horizons"
 #~ msgstr "Unknown Horizons"
