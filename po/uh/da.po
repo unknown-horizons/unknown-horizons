@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-24 23:39+0200\n"
-"PO-Revision-Date: 2013-05-22 13:31+0200\n"
+"PO-Revision-Date: 2013-05-24 18:08+0200\n"
 "Last-Translator: Jacob Hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: Danish <http://hosted.weblate.org/projects/uh/uh/da/>\n"
 "Language: da\n"
@@ -894,7 +894,7 @@ msgstr "Afslut til hovedmenu"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr "Vælg kortstørrelse "
+msgstr "Vælg kortstørrelse"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:33
@@ -1914,7 +1914,7 @@ msgstr "Spiltip"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Tryk 'ESC' for at komme til Spil Menu"
+msgstr "Tryk 'ESC' for at komme til Spil Menu."
 
 #: horizons/gui/modules/loadingscreen.py:61
 msgid "Use 'SHIFT' to place multiple buildings."
@@ -1953,11 +1953,11 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Byg lagertelte for at forhøje lagerkapasitet. "
+msgstr "Byg lagertelte for at forhøje lagerkapasitet"
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Make sure every house is in range of a marketplace."
-msgstr "Vær sikker op at alle huse har en markedspads inden for rækkevide"
+msgstr "Vær sikker op at alle huse har en markedspads inden for rækkevide."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Press 'T' to make trees transparent."
@@ -1990,7 +1990,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints..."
-msgstr "Forbereder perspektivplan"
+msgstr "Forbereder perspektivplan..."
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water..."
