@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-24 23:39+0200\n"
-"PO-Revision-Date: 2013-05-25 18:58+0200\n"
+"PO-Revision-Date: 2013-05-25 19:42+0200\n"
 "Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
 "Language-Team: Russian <http://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -1790,7 +1790,7 @@ msgstr "На данный момент максимальный уровень �
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "You can pause the game with 'P'."
-msgstr "Вы можете поставить на паузу нажав 'P'"
+msgstr "Вы можете поставить на паузу нажав 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can drag roads by holding the left mouse button."
@@ -1798,7 +1798,7 @@ msgstr "Вы можете перетаскивать дороги удержив
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr "Вы можете построить несколько зданий подряд нажав 'SHIFT'"
+msgstr "Вы можете построить несколько зданий подряд нажав 'SHIFT'."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid ""
@@ -1858,7 +1858,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals..."
-msgstr ""
+msgstr "Выращивание животных..."
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI..."
@@ -1953,7 +1953,7 @@ msgid ""
 "{own_version}"
 msgstr ""
 "Версия игры на хосте ({game_version}) отличается от вашей ({own_version}). "
-"Все игроки в сетевой игре должены использовать одинаковые версии."
+"Все игроки в сетевой игре должны использовать одинаковые версии."
 
 #: horizons/gui/modules/multiplayermenu.py:270
 msgid "Password of the game"
@@ -2220,9 +2220,9 @@ msgid "Boat builder overview"
 msgstr "Обзор судостроителя"
 
 #: horizons/gui/tabs/boatbuildertabs.py:96
-#, fuzzy, python-format
+#, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr "{ship} (place in queue: {place})"
+msgstr "{ship} (место в очереди: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:208
 msgid "Build this ship!"
@@ -2271,13 +2271,13 @@ msgstr "Строить связанные построыки"
 #. [br] means newline
 #: horizons/gui/tabs/buildtabs.py:144
 msgid "Resources needed:"
-msgstr ""
+msgstr "Требуются ресурсы:"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/tabs/buildtabs.py:150
 #, python-format
 msgid "{resource}: {amount}"
-msgstr ""
+msgstr "{resource}: {amount}"
 
 #: horizons/gui/tabs/buyselltab.py:130
 msgid "Click on one of the resource slots to add a trade offer."
@@ -2361,9 +2361,8 @@ msgid "Buy/Sell"
 msgstr "Покупка/Продажа"
 
 #: horizons/gui/tabs/shiptabs.py:98
-#, fuzzy
 msgid "Too far from the nearest tradeable warehouse"
-msgstr "Слишком далеко от ближайшего собственного или союзного складов"
+msgstr "Слишком далеко от склада"
 
 #: horizons/gui/tabs/shiptabs.py:104
 msgid "Cannot equip trade ship with weapons"
@@ -2384,22 +2383,22 @@ msgstr "Снять оружие"
 #: horizons/gui/widgets/imagefillstatusbutton.py:71
 #, python-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} золотых"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "покупка за {buyprice} золотых"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:80
 #, python-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "продажа за {sellprice} золотых"
 
 #: horizons/gui/widgets/inventory.py:168
 #, python-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:171
 #, python-format
@@ -2450,7 +2449,7 @@ msgstr "{settlement}: Обзор продукции"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr ""
+msgstr "Показать статистику"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
@@ -2478,11 +2477,11 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:623
 msgid "Buy expenses"
-msgstr ""
+msgstr "Расходы на покупку"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:626
 msgid "Sell income"
-msgstr ""
+msgstr "Доходы от продажи"
 
 #: horizons/gui/widgets/routeconfig.py:104
 msgid "Stop route"
@@ -2518,7 +2517,7 @@ msgstr "Вам нельзя торговать с этим игроком"
 #: horizons/gui/widgets/unitoverview.py:119
 #, python-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:124
 msgid "none"
@@ -3027,7 +3026,7 @@ msgstr "Гравийная дорога"
 #. name_3 of buildings:trail
 #: horizons/i18n/objecttranslations.py:383
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "Мостовая"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:385
@@ -3072,7 +3071,7 @@ msgstr "Винная лавка"
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:413
 msgid "Produces wine out of grapes."
-msgstr "Производит вино из винограда"
+msgstr "Производит вино из винограда."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:418
@@ -3203,21 +3202,20 @@ msgstr "Море"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:495
-#, fuzzy
 msgid "Wood"
-msgstr "еда"
+msgstr "Древесина"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:497
 #: horizons/i18n/objecttranslations.py:499
 #: horizons/i18n/objecttranslations.py:501
 msgid "Workshops"
-msgstr ""
+msgstr "Мастерские"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:503
 msgid "Settlement"
-msgstr ""
+msgstr "Поселение"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:509
@@ -3281,15 +3279,16 @@ msgstr ""
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
-msgstr "Имя файла должно состоять только из букв, цифр, пробелов и _.-"
+msgstr ""
+"Имя файла должно состоять только из латинских букв, цифр, пробелов и _.-"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Невозможно подключиться к серверу."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Возможно неверный или несуществующий адрес сервера."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
@@ -3340,12 +3339,13 @@ msgstr "Отказано в доступе"
 #: horizons/session.py:413
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"Файл сохранения доступен только для чтения или заблокирован другим "
+"процессом."
 
 # 86%
 #: horizons/spsession.py:65
-#, fuzzy
 msgid "Your game has not been saved."
-msgstr "Игра сохранена."
+msgstr "Ваша игра НЕ была сохранена."
 
 # 92%
 #: horizons/util/checkupdates.py:81
@@ -3464,7 +3464,7 @@ msgstr "Эта постройка выведена из эксплуатации
 
 #: horizons/world/status.py:116
 msgid "The inhabitants of this building have the plague."
-msgstr ""
+msgstr "Жители этого здания заболели чумой."
 
 #: horizons/world/traderoute.py:320
 #, python-format
@@ -3635,6 +3635,8 @@ msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr ""
+"Вы достигли максимально-доступного на текущий момент уровня развития. Ваши "
+"поселенцы более не будут развиваться."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid ""
