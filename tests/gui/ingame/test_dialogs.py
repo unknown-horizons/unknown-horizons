@@ -41,7 +41,7 @@ def test_change_name(gui):
 		gui.trigger('change_name_dialog_window', 'okButton')
 
 	with gui.handler(rename):
-		gui.trigger('overview_trade_ship', 'name')
+		gui.trigger('content', 'name')
 
 	assert not gui.find(name='change_name_dialog_window')
 	new_name = ship.get_component(NamedComponent).name
@@ -66,7 +66,7 @@ def test_change_name_empty_not_allowed(gui):
 		gui.trigger('change_name_dialog_window', 'okButton')
 
 	with gui.handler(rename_empty):
-		gui.trigger('overview_trade_ship', 'name')
+		gui.trigger('content', 'name')
 
 	new_name = ship.get_component(NamedComponent).name
 	assert old_name == new_name
@@ -77,7 +77,7 @@ def test_change_name_empty_not_allowed(gui):
 		gui.trigger('change_name_dialog_window', 'okButton')
 
 	with gui.handler(rename_spaces):
-		gui.trigger('overview_trade_ship', 'name')
+		gui.trigger('content', 'name')
 
 	new_name = ship.get_component(NamedComponent).name
 	assert old_name == new_name

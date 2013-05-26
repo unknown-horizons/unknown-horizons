@@ -33,7 +33,7 @@ def test_tearing(gui):
 
 	# build 4 tents
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('content', 'button_01')
 	gui.cursor_drag((7, 9), (10, 12), 'left')
 
 	# try to remove an area that includes the tents, some trees and
@@ -53,7 +53,7 @@ def test_pipette(gui):
 
 	# build signal fire
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_22')
+	gui.trigger('content', 'button_22')
 	gui.cursor_click(7, 7, 'left')
 
 	# activate pipette, select signal fire, place it next to the other

@@ -48,7 +48,7 @@ def test_trade(gui):
 	move_ship(gui, ship, (68, 23))
 
 	# click trade button
-	gui.trigger('overview_trade_ship', 'trade')
+	gui.trigger('content', 'trade')
 
 	# trade widget visible
 	assert gui.find(name='buy_sell_goods')

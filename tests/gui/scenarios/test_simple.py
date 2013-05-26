@@ -51,18 +51,18 @@ def test_mission1(gui):
 
 	# Build warehouse
 	gui.select([ship])
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('content', 'found_settlement')
 	gui.cursor_click(10, 5, 'left')
 	assert_goal_reached(gui, 'warehouse')
 
 	# Build main square
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_02')
+	gui.trigger('content', 'button_02')
 	gui.cursor_click(9, 11, 'left')
 	assert_goal_reached(gui, 'mainsquare')
 
 	# Build fisher
-	gui.trigger('tab', 'button_33')
+	gui.trigger('content', 'button_33')
 	gui.cursor_click(7, 7, 'left')
 
 	assert_win(gui)

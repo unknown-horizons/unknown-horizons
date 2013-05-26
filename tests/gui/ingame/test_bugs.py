@@ -88,7 +88,7 @@ def test_ticket_1369(gui):
 	move_ship(gui, ship, (68, 23))
 
 	# click trade button
-	gui.trigger('overview_trade_ship', 'trade')
+	gui.trigger('content', 'trade')
 
 	# trade widget visible
 	assert gui.find(name='buy_sell_goods')
@@ -102,7 +102,7 @@ def test_ticket_1369(gui):
 
 	# but the ship overview should be
 	assert gui.find(name='buy_sell_goods')
-#	assert gui.find(name='overview_trade_ship')
+#	assert gui.find(name='content')
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -145,14 +145,14 @@ def test_ticket_1371(gui):
 
 	# Build lumberjack
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_03')
+	gui.trigger('content', 'button_03')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select lumberjack
 	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Select tree
 	gui.trigger('overview_buildrelated', 'build17')
@@ -215,13 +215,13 @@ def test_ticket_1520(gui):
 
 	# Build a tent
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('content', 'button_01')
 	gui.cursor_click(7, 9, 'left')
 
 	assert ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL
 
 	# Start building a mainsquare (not releasing left mouse button)
-	gui.trigger('tab', 'button_02')
+	gui.trigger('content', 'button_02')
 	gui.cursor_move(13, 11)
 	gui.cursor_press_button(13, 11, 'left')
 
@@ -242,18 +242,18 @@ def test_ticket_1509(gui):
 
 	# Build a tent
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('content', 'button_01')
 	gui.cursor_click(7, 10, 'left')
 
 	# Select tent
 	gui.cursor_click(7, 10, 'left')
 
 	# quickly switch between tabs
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 	gui.run()
-	gui.trigger('tab_base', '0')
+	gui.trigger('buttons', '0')
 	gui.run()
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -280,14 +280,14 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 
 	# Build settler
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_01')
+	gui.trigger('content', 'button_01')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select settler
 	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Select pavilion
 	gui.trigger('overview_buildrelated', 'build5')
@@ -307,7 +307,7 @@ def test_ticket_1848(gui):
 
 	# Build huker
 	gui.cursor_click(64, 10, 'left')
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Wait until production ends
@@ -330,7 +330,7 @@ def test_ticket_1948(gui):
 
 	# Select storage tent
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_11')
+	gui.trigger('content', 'button_11')
 	# Build storage at the border of the settlement
 	gui.cursor_click(37, 20, 'left')
 

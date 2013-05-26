@@ -50,7 +50,7 @@ def test_ticket_1224(gui):
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -77,7 +77,7 @@ def test_ticket_1294(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -86,7 +86,7 @@ def test_ticket_1294(gui):
 	gui.trigger('BB_main_tab', 'toggle_active_active')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2')
+	gui.trigger('buttons', '2')
 
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -117,7 +117,7 @@ def test_ticket_1830(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -126,7 +126,7 @@ def test_ticket_1830(gui):
 	gui.trigger('BB_main_tab', 'toggle_active_active')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2')
+	gui.trigger('buttons', '2')
 
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -150,13 +150,13 @@ def test_remove_from_queue(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2')
+	gui.trigger('buttons', '2')
 
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -175,13 +175,13 @@ def test_cancel_ticket_1424(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2')
+	gui.trigger('buttons', '2')
 
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -202,13 +202,13 @@ def test_save_load_ticket_1421(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2')
+	gui.trigger('buttons', '2')
 
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -242,7 +242,7 @@ def test_ticket_1513(gui):
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
@@ -280,7 +280,7 @@ def test_ticket_1514(gui):
 	assert not gui.find('BB_cancel_button')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
