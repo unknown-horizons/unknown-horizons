@@ -37,6 +37,7 @@ from horizons.constants import UNITS
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 
 
+
 class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
