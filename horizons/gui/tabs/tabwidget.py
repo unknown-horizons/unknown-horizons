@@ -53,7 +53,7 @@ class TabWidget(object):
 		self.widget = load_uh_widget("tab_base.xml")
 		self.widget.position_technique = 'right:top+159'
 
-		self.buttons = VBox(position_technique='right-239:top+209')
+		self.buttons = VBox(name='buttons', position_technique='right-239:top+209')
 
 		self.tab_bg = self.widget.findChild(name='tab_background')
 		self.content = self.widget.findChild(name='content')
