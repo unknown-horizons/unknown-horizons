@@ -115,5 +115,6 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
 
+
 class FireStationOverviewTab(OverviewTab):
 	widget = 'overview_firestation.xml'

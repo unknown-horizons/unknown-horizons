@@ -36,6 +36,7 @@ from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.namedcomponent import NamedComponent
 
+
 class MainSquareTab(OverviewTab):
 	"""Tab for main square. Refreshes when one building on the settlement changes"""
 	@property
@@ -54,6 +55,7 @@ class MainSquareTab(OverviewTab):
 		for building in self.settlement.buildings:
 			if building.has_change_listener(self._schedule_refresh):
 				building.remove_change_listener(self._schedule_refresh)
+
 
 class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
@@ -114,6 +116,7 @@ class MainSquareOverviewTab(AccountTab):
 		#self.widget.mapEvents({'headline': rename})
 
 		#self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
+
 
 
 class MainSquareSettlerLevelTab(MainSquareTab):
