@@ -160,6 +160,10 @@ class TabWidget(object):
 		self.ingame_gui.minimap_to_front()
 
 	def hide(self, caller=None):
-		"""Hide the current widget"""
+		"""Hide the current widget and currently active tab"""
+		# See `on_tab_removal`: "usually desired" to hide all tabs
+		# `tab.hide` can do important cleanup work like removing scheduler objects
+		self.current_tab.hide()
+		# Now hide the actual widget
 		self.buttons.hide()
 		self.widget.hide()
