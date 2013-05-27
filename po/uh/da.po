@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-24 23:39+0200\n"
-"PO-Revision-Date: 2013-05-24 18:08+0200\n"
+"PO-Revision-Date: 2013-05-27 09:05+0200\n"
 "Last-Translator: Jacob Hellwing <jacob.kage@hotmail.com>\n"
 "Language-Team: Danish <http://hosted.weblate.org/projects/uh/uh/da/>\n"
 "Language: da\n"
@@ -229,20 +229,18 @@ msgid "Running costs"
 msgstr "Driftsomkostninger"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
-#, fuzzy
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Om een boot te maken, klik op een van de tabbladen, selecteer het gewenste "
-"schip en bevestig de order."
+"For at bygge et skib skal du vælge en kategori, vælge det ønskede skib og "
+"trykke godkend."
 
 #. Information about the ship currently under construction at the boat
 #. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
-#, fuzzy
 msgid "Currently building:"
-msgstr "Momenteel onder constructie:"
+msgstr "Bygges nu:"
 
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
@@ -251,16 +249,14 @@ msgstr "Pauseer"
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
-#, fuzzy
 msgid "Resume"
-msgstr "Hervat"
+msgstr "Fortsæt"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
-#, fuzzy
 msgid "Construction progress:"
-msgstr "Voortgang constructie:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
@@ -268,15 +264,13 @@ msgstr "Ressourcer der stadig er brug for:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
-#, fuzzy
 msgid "Cancel building:"
-msgstr "Annuleer constructie:"
+msgstr "Afbryd bygning:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
-#, fuzzy
 msgid "(lose all resources)"
-msgstr "(U verliest alle grondstoffen)"
+msgstr "(mist alle ressurser)"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
@@ -285,9 +279,8 @@ msgstr "Annuleer alle constructieve vooruitgang"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
-#, fuzzy
 msgid "ally"
-msgstr "bondgenoot"
+msgstr "allieret"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
@@ -301,17 +294,15 @@ msgstr "fjende"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
-#, fuzzy
 msgid "Building overview"
-msgstr "Gebouwenoverzicht"
+msgstr "Bygningsoversigt"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
-#, fuzzy
 msgid "Capacity utilization"
-msgstr "Verbruiksstatistieken"
+msgstr "Kapacitetsudnyttelse"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
@@ -327,24 +318,21 @@ msgstr "Kolonist oversigt"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
-#, fuzzy
 msgid "Paid taxes"
-msgstr "Betaalde belastingen"
+msgstr "Betalt skat"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
-#, fuzzy
 msgid "Taxes:"
-msgstr "Belastingen:"
+msgstr "Skatter:"
 
 # 87%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
-#, fuzzy
 msgid "Tax rate"
-msgstr "Belastingtarief"
+msgstr "Skatterate"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 #, fuzzy
@@ -358,7 +346,7 @@ msgstr "Glæde per hus"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
-msgstr ""
+msgstr "trist"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
@@ -375,22 +363,20 @@ msgid "Amount of houses with this happiness"
 msgstr "Antal huse med denne glæde"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
-#, fuzzy
 msgid "Residents per house"
-msgstr "Bewoners per huis"
+msgstr "Beboere per hus"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr ""
+msgstr "Antal indbyggere per house"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "Huse med dette antal indbyggere"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
-#, fuzzy
 msgid "Summary"
-msgstr "Overzicht"
+msgstr "Oversigt"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
@@ -398,9 +384,8 @@ msgstr "huse"
 
 # 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
-#, fuzzy
 msgid "residents"
-msgstr "inwoners"
+msgstr "inbyggere"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -420,32 +405,28 @@ msgstr "Køb"
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
-#, fuzzy
 msgid "Name:"
-msgstr "Naam:"
+msgstr "Navn:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
-#, fuzzy
 msgid "Weapons:"
-msgstr "Wapens:"
+msgstr "Våben:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
 msgstr "Resource depositum"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
-#, fuzzy
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Dit is een grondstofafzetting waar u een mijn kan plaatsen om grondstoffen "
-"op te graven."
+"Dette er et ressourcedepot, hvor du kan bygge en mine og grave  ressourcerne "
+"op."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
-#, fuzzy
 msgid "It contains these resources:"
-msgstr "Het bevat de volgende grondstoffen:"
+msgstr "Indholder disse ressourcer:"
 
 # 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
@@ -464,14 +445,12 @@ msgstr "Glæde"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
-#, fuzzy
 msgid "Residents"
-msgstr "Inwoners"
+msgstr "Beboere"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Vereiste grondstoffen:"
+msgstr "Ressourcer der mangler:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 #, fuzzy
@@ -3152,7 +3131,7 @@ msgstr "Tent"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:343
 msgid "Hut"
-msgstr "Hut"
+msgstr "Hytte"
 
 # 80%
 #. name_2 of buildings:tent
