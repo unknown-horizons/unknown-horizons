@@ -150,6 +150,8 @@ class TabWidget(object):
 		self.current_tab.show()
 		self.current_tab.refresh()
 		self.content.parent.adaptLayout()  # resize AutoResizeContainer
+		# Height of background image tiles is 50px
+		# Round up for a bit so the tab does not look too small
 		self.tab_bg.amount = (self.content.parent.size[1] + 25) // 50
 		self.widget.adaptLayout()  # resize AutoResizeContainer
 
