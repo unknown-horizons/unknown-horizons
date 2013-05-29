@@ -33,7 +33,6 @@
 #
 ###############################################################################
 
-import re
 import os
 import sys
 from xml.dom import minidom
