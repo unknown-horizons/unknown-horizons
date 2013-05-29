@@ -148,7 +148,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			# comment='noi18n' in widgets where translation is not desired
 			continue
 
-		if 'noi18n_%s' % attribute in i18n:
+		if i18n == 'noi18n_%s' % attribute:
 			# comment='noi18n_tooltip' in widgets where tooltip translation is not
 			# desired, but text should be translated.
 			continue
