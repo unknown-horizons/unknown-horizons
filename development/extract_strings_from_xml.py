@@ -155,6 +155,10 @@ def content_from_element(element_name, parse_tree, attribute):
 			# desired, but text should be translated.
 			continue
 
+		if attribute == 'headline' and text.startswith('{') and text.endswith('}'):
+			# TabContainer headline magic, only translate actual text as headline
+			continue
+
 		if not name:
 			if element_name in default_names:
 				name = default_names[element_name]
@@ -192,6 +196,8 @@ def content_from_file(filename, parse=True):
 		strings += content_from_element(w, parsed, 'text')
 	for w in ['CancelButton', 'DeleteButton', 'OkButton', 'Button', 'Icon', 'ImageButton', 'Label', 'ProgressBar']:
 		strings += content_from_element(w, parsed, 'helptext')
+	for w in ['TabContainer']:
+		strings += content_from_element(w, parsed, 'headline')
 
 	if not strings:
 		return empty()
