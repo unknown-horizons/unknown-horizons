@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-07 09:09+0200\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"POT-Creation-Date: 2013-05-24 23:39+0200\n"
+"PO-Revision-Date: 2013-05-25 19:42+0200\n"
+"Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
 "Language-Team: Russian <http://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
 # 86%
@@ -67,7 +67,7 @@ msgstr "Спасибо за использование Неизведанных 
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Вернуться к редактору"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
@@ -76,7 +76,7 @@ msgstr "Сохранение карты"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr ""
+msgstr "Загрузить карту"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
@@ -94,19 +94,19 @@ msgstr "Помощь"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "Выйти из редактора"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Выберите размер кисти:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Выберите тип местности:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(Правый клик чтобы остановить)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -201,7 +201,6 @@ msgstr "Введите новое имя:"
 msgid "Apply the new name"
 msgstr "Применить новое имя"
 
-#. noi18n_text
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
@@ -343,7 +342,7 @@ msgstr "Разрешённые улучшения:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "Счастья на дом"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
@@ -374,7 +373,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "Дома с таким же количеством жильцов"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -400,7 +399,7 @@ msgstr "Продажа"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: horizons/gui/tabs/buyselltab.py:341
 msgid "Buying"
-msgstr "Покупки"
+msgstr "Покупка"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
@@ -748,7 +747,7 @@ msgstr "Стоимость всех построек в поселении(ях)
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493 sql-database-files
+#: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
 msgstr "Первопроходцы"
 
@@ -822,193 +821,6 @@ msgstr "Пассивно"
 msgid "Flee"
 msgstr "Бежать"
 
-#: content/gui/xml/mainmenu/credits.xml:15
-msgid "UH-Team"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:17
-msgid "Project Coordination"
-msgstr "Руководство проектом"
-
-#: content/gui/xml/mainmenu/credits.xml:23
-msgid "Programming"
-msgstr "Программирование"
-
-#: content/gui/xml/mainmenu/credits.xml:45
-#, fuzzy
-msgid "Game-Play Design"
-msgstr "Советы по игре"
-
-#: content/gui/xml/mainmenu/credits.xml:52
-msgid "Sound and Music Artists"
-msgstr "Звуковое и музыкальное сопровождение"
-
-#: content/gui/xml/mainmenu/credits.xml:60
-#, fuzzy
-msgid "Graphics Artists"
-msgstr "Графика"
-
-#: content/gui/xml/mainmenu/credits.xml:80
-#, fuzzy
-msgid "Patchers"
-msgstr "Бойня"
-
-#: content/gui/xml/mainmenu/credits.xml:82
-msgid "2009"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:91
-msgid "2010"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:105
-msgid "2011"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:117
-msgid "2012"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:132
-msgid "Translators"
-msgstr "Переводчики"
-
-#: content/gui/xml/mainmenu/credits.xml:134
-#, fuzzy
-msgid "Hosting Weblate"
-msgstr "Журналирование включено"
-
-#: content/gui/xml/mainmenu/credits.xml:139
-msgid "Bulgarian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:144
-msgid "Catalan"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:150
-msgid "Czech"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:160
-msgid "Danish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:165
-msgid "German"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:172
-#, fuzzy
-msgid "Spanish"
-msgstr "Компании"
-
-#: content/gui/xml/mainmenu/credits.xml:184
-msgid "Estonian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:190
-msgid "Finnish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:195
-msgid "French"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:207
-msgid "Croatian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:212
-msgid "Hindi"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:217
-msgid "Hungarian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:223
-msgid "Italian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:231
-msgid "Japanese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:237
-msgid "Lithuanian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:246
-msgid "Norwegian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:253
-#, fuzzy
-msgid "Dutch"
-msgstr "Бойня"
-
-#: content/gui/xml/mainmenu/credits.xml:264
-msgid "Polish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:275
-msgid "Portuguese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:283
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:291
-msgid "Romanian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:296
-msgid "Russian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:303
-msgid "Slovenian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:308
-msgid "Swedish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:314
-#, fuzzy
-msgid "Chinese"
-msgstr "виноградные лозы"
-
-#: content/gui/xml/mainmenu/credits.xml:325
-msgid "Packagers"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:327
-msgid "Debian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:332
-msgid "Fedora &amp; openSUSE"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:338
-msgid "OS X"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:348
-msgid "Special Thanks"
-msgstr "Отдельная благодарность"
-
-#: content/gui/xml/mainmenu/credits.xml:350
-msgid "Thanks, all of you are awesome!"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:373
-msgid "Portfolio Sites"
-msgstr ""
-
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
@@ -1019,7 +831,7 @@ msgstr "Выйти в главное меню"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr ""
+msgstr "Выберите размер карты:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:33
@@ -1028,19 +840,19 @@ msgstr "Выберите карту:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Выберите сохраненную карту:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "Выберите источник карты"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr ""
+msgstr "Создание новой карты"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "Загрузка существующей карты"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
@@ -1048,90 +860,76 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr ""
+msgstr "Запуск редактора"
 
 #: content/gui/xml/mainmenu/help.xml:6
 msgid "Key bindings"
 msgstr "Назначение клавиш"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
 msgstr "Прокрутить влево"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:10
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
 msgstr "Прокрутить вправо"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:11
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 msgid "Scroll up"
 msgstr "Прокрутить вверх"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:12
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 msgid "Scroll down"
 msgstr "Прокрутить вниз"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:15
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
 msgstr "Увеличить скорость игры"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:16
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
 msgstr "Уменьшить скорость игры"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:18
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
 msgstr "Повернуть здание или карту против часовой стрелки"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:20
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
 msgstr "Повернуть здание или карту по часовой стрелке"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:23
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Show build menu"
 msgstr "Вызвать меню строительства"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
 msgstr "Судовой журнал"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:25
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
 msgstr "Пауза"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:28
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
 msgstr "Помощь"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:29
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
 msgstr "Быстрое сохранение"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:30
 #: content/gui/xml/mainmenu/hotkeys.xml:29
 msgid "Quickload"
@@ -1139,39 +937,33 @@ msgstr "Быстрая загрузка"
 
 #: content/gui/xml/mainmenu/help.xml:31
 msgid "Display FPS counter"
-msgstr ""
+msgstr "Показать счетчик FPS"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:40
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
 msgstr "Переключить полупрозрачность элементов окружения"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:41
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
 msgstr "Вкл. режим строительства дорог"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:42
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Enable destruct mode"
 msgstr "Уничтожение объекта"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:44
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "Разрешить режим пипетки(клонирование зданий)"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:45
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Отобразить полоски здоровья"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:48
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Screenshot"
@@ -1186,49 +978,41 @@ msgid "Close dialogs"
 msgstr ""
 
 # 92%
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:55
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
 msgstr "Показать статистику игрока"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:56
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show ship list"
 msgstr "Показать список кораблей"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:57
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Show settlement list"
 msgstr "Показать список поселений"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:58
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
 msgstr "Выделить область владения"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:62
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
 msgstr "Удалить выделенные единицы/сооружения"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:63
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "Фокус камеры на выделенном объекте"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
 msgstr "Вкл/выкл сетку"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:65
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Show coordinate values (Debug)"
@@ -1239,25 +1023,22 @@ msgid "Return"
 msgstr "Возврат"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "Настройки ИИ"
+msgstr "Действия"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Вкл/выкл сетку"
+msgstr "Вкл/выкл отображение FPS"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Основной"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Вторичный"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
@@ -1291,7 +1072,7 @@ msgstr "Загрузка ..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Сменить фон"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1312,7 +1093,7 @@ msgstr "Выйти"
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "Редактор"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
@@ -1347,9 +1128,8 @@ msgstr "Это будет показано другим игрокам, чтоб
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
-#, fuzzy
 msgid "Unnamed Game"
-msgstr "Загрузить игру"
+msgstr "Безымянная игра"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1395,18 +1175,16 @@ msgid "Sets your state to ready (necessary for the game to start)"
 msgstr "Установить \"Готов\" (необходимо для запуска игры)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
-#, fuzzy
 msgid "The game will start as soon as all players are ready."
-msgstr "Игра начнется, как только войдет достаточное число игроков."
+msgstr "Игра начнется, как только все игроки будут готовы."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
 msgid "Game details:"
 msgstr "Описание игры:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
-#, fuzzy
 msgid "Color"
-msgstr "Цвет:"
+msgstr "Цвет"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1526,7 +1304,7 @@ msgstr "Прокрутка экрана при приближении курсо
 
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "Увеличение с фокусом на курсор:"
 
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid ""
@@ -1536,11 +1314,11 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Панорамирование средней кнопкой мыши:"
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "When enabled, dragging the middle mouse button will pan the camera"
-msgstr ""
+msgstr "Разрешает панорамирование мышью с зажатой средней кнопкой"
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "0 is default system settings"
@@ -1609,9 +1387,8 @@ msgstr ""
 "информации в каталог логов пользователя. Замедляет игру."
 
 #: content/gui/xml/mainmenu/settings.xml:196
-#, fuzzy
 msgid "Enable logging:"
-msgstr "Включить ведение журнала"
+msgstr "Включить ведение журнала:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
@@ -1624,19 +1401,19 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "Большие значения замедляют прокрутку."
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Scroll delay:"
-msgstr ""
+msgstr "Задержка прокрутки:"
 
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "Выберите тип цитат:"
 
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Тип цитат, отображаемый в процессе загрузки игры"
 
 #: content/gui/xml/mainmenu/settings.xml:227
 msgid "Network"
@@ -1657,7 +1434,7 @@ msgstr "Восстановить настройки по умолчанию"
 
 #: content/gui/xml/mainmenu/settings.xml:244
 msgid "Discard current changes"
-msgstr ""
+msgstr "Отменить сделанные изменения"
 
 # 83%
 #: content/gui/xml/mainmenu/settings.xml:246
@@ -1723,6 +1500,7 @@ msgstr "Выберите карту:"
 msgid "Map settings:"
 msgstr "Настройки карты:"
 
+#. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr "Источник:"
@@ -1827,9 +1605,8 @@ msgstr "Ошибка быстрого сохранения."
 
 # 86%
 #: horizons/editor/session.py:70
-#, fuzzy
 msgid "Your map has not been saved."
-msgstr "Игра сохранена."
+msgstr "Ваша карта НЕ сохранена."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:67
 #, python-format
@@ -1840,7 +1617,7 @@ msgstr "Если ошибка повторится, сообщите разра�
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Горячие клавиши"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
@@ -1861,7 +1638,7 @@ msgid ""
 "made so far."
 msgstr ""
 "Восстановление настроек по умолчанию, сбросит все сделаные вами когда-либо "
-"изменения. "
+"изменения."
 
 #: horizons/engine/settingsdialog.py:76
 msgid "Do you want to continue?"
@@ -1951,11 +1728,11 @@ msgstr "Вы уверены, что хотите покинуть Неизвед
 msgid "Quit Game"
 msgstr "Выйти из игры"
 
-#: horizons/gui/ingamegui.py:214
+#: horizons/gui/ingamegui.py:218
 msgid "No diplomacy possible"
 msgstr "Дипломатия не возможна"
 
-#: horizons/gui/ingamegui.py:215
+#: horizons/gui/ingamegui.py:219
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Дипломатия не возможна, т.к. нет здесь других игроков."
 
@@ -1972,16 +1749,16 @@ msgstr "[{key}] = {text}"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Нажмите желаемую клавишу"
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 #, python-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} уже назначена для {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:142
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Хотите перезаписать?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:143
@@ -1991,7 +1768,7 @@ msgstr "Подтверждение перезаписи"
 
 #: horizons/gui/modules/loadingscreen.py:36
 msgid "Quotes"
-msgstr ""
+msgstr "Цитаты"
 
 #: horizons/gui/modules/loadingscreen.py:58
 msgid "Gameplay Tips"
@@ -2009,24 +1786,24 @@ msgstr "Используйте 'SHIFT' чтобы разместить неск�
 #: horizons/gui/modules/loadingscreen.py:64
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "На данный момент максимальный уровень развития: {tier}."
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "You can pause the game with 'P'."
-msgstr "Вы можете поставить на паузу нажав 'P'"
+msgstr "Вы можете поставить на паузу нажав 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "Вы можете перетаскивать дороги удерживая левую кнопку мыши."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr "Вы можете построить несколько зданий подряд нажав 'SHIFT'"
+msgstr "Вы можете построить несколько зданий подряд нажав 'SHIFT'."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "Вы можете осчастливить своих поселенцев снизив налоги."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
@@ -2069,11 +1846,11 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands..."
-msgstr ""
+msgstr "Формирование островов..."
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints..."
-msgstr ""
+msgstr "Подготовка чертежей..."
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water..."
@@ -2081,7 +1858,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals..."
-msgstr ""
+msgstr "Выращивание животных..."
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI..."
@@ -2135,39 +1912,39 @@ msgstr ""
 msgid "Something went wrong with the network:"
 msgstr "Проблемы с сетью:"
 
-#: horizons/gui/modules/multiplayermenu.py:174
+#: horizons/gui/modules/multiplayermenu.py:176
 msgid "Version differs!"
 msgstr "Версия не совпадает!"
 
-#: horizons/gui/modules/multiplayermenu.py:204
-#: horizons/gui/modules/multiplayermenu.py:441
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Карта: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:205
-#: horizons/gui/modules/multiplayermenu.py:443
+#: horizons/gui/modules/multiplayermenu.py:207
+#: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Name: {game_name}"
 msgstr "Название: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:445
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:447
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr "Создатель: {game_creator}"
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:447
+#: horizons/gui/modules/multiplayermenu.py:210
+#: horizons/gui/modules/multiplayermenu.py:449
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Игроков: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:228
+#: horizons/gui/modules/multiplayermenu.py:230
 msgid "Wrong version"
 msgstr "Неправильная версия"
 
-#: horizons/gui/modules/multiplayermenu.py:230
+#: horizons/gui/modules/multiplayermenu.py:232
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2176,88 +1953,88 @@ msgid ""
 "{own_version}"
 msgstr ""
 "Версия игры на хосте ({game_version}) отличается от вашей ({own_version}). "
-"Все игроки в сетевой игре должены использовать одинаковые версии."
+"Все игроки в сетевой игре должны использовать одинаковые версии."
 
-#: horizons/gui/modules/multiplayermenu.py:268
+#: horizons/gui/modules/multiplayermenu.py:270
 msgid "Password of the game"
 msgstr "Пароль"
 
-#: horizons/gui/modules/multiplayermenu.py:269
+#: horizons/gui/modules/multiplayermenu.py:271
 msgid "Enter password:"
 msgstr "Введите пароль:"
 
-#: horizons/gui/modules/multiplayermenu.py:349
-#: horizons/gui/modules/singleplayermenu.py:407
+#: horizons/gui/modules/multiplayermenu.py:351
+#: horizons/gui/modules/singleplayermenu.py:405
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Рекомендованное число игроков: {number}"
 
-#: horizons/gui/modules/multiplayermenu.py:465
-#: horizons/gui/modules/multiplayermenu.py:473
+#: horizons/gui/modules/multiplayermenu.py:467
+#: horizons/gui/modules/multiplayermenu.py:475
 msgid "Click here to change your name and/or color"
 msgstr "Нажмите чтобы изменить имя и/или цвет"
 
-#: horizons/gui/modules/multiplayermenu.py:492
+#: horizons/gui/modules/multiplayermenu.py:494
 #, python-format
 msgid "Kick {player}"
 msgstr "Удалить {player}"
 
-#: horizons/gui/modules/multiplayermenu.py:560
+#: horizons/gui/modules/multiplayermenu.py:562
 #, python-format
 msgid "{player} has joined the game"
 msgstr "{player} присоединился к игре"
 
-#: horizons/gui/modules/multiplayermenu.py:564
+#: horizons/gui/modules/multiplayermenu.py:566
 #, python-format
 msgid "{player} has left the game"
 msgstr "{player} вышел из игры"
 
-#: horizons/gui/modules/multiplayermenu.py:570
+#: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are now ready"
 msgstr "Теперь Вы готовы"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:574
 msgid "You are not ready anymore"
 msgstr "Вы пока не готовы"
 
-#: horizons/gui/modules/multiplayermenu.py:576
+#: horizons/gui/modules/multiplayermenu.py:578
 #, python-format
 msgid "{player} is now ready"
 msgstr "{player} готов"
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:581
 #, python-format
 msgid "{player} not ready anymore"
 msgstr "{player} не готов"
 
-#: horizons/gui/modules/multiplayermenu.py:584
+#: horizons/gui/modules/multiplayermenu.py:586
 #, python-format
 msgid "You are now known as {new_name}"
 msgstr "Теперь вы {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:587
+#: horizons/gui/modules/multiplayermenu.py:589
 #, python-format
 msgid "{player} is now known as {new_name}"
 msgstr "{player} теперь известен как {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:591
+#: horizons/gui/modules/multiplayermenu.py:593
 msgid "You changed your color"
 msgstr "Вы поменяли свой цвет"
 
-#: horizons/gui/modules/multiplayermenu.py:594
+#: horizons/gui/modules/multiplayermenu.py:596
 #, python-format
 msgid "{player} changed their color"
 msgstr "{player} изменил цвет"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "Kicked"
 msgstr "Удален"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "You have been kicked from the game by creator"
-msgstr "Вы были удалены из игры "
+msgstr "Вы были удалены из игры"
 
-#: horizons/gui/modules/multiplayermenu.py:602
+#: horizons/gui/modules/multiplayermenu.py:604
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr "{player} был удален"
@@ -2359,71 +2136,71 @@ msgstr "Ошибка!"
 msgid "Failed to delete savefile!"
 msgstr "Не удалось уничтожить файл сохранения!"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
 msgstr "Недопустимое имя игрока"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "You entered an invalid playername."
 msgstr "Вы ввели недопустимое имя игрока."
 
 # 76%
-#: horizons/gui/modules/singleplayermenu.py:149
+#: horizons/gui/modules/singleplayermenu.py:147
 msgid "Resource density:"
 msgstr "Плотность месторождений:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
 msgstr "Размер карты:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Water:"
 msgstr "Вода:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Max island size:"
 msgstr "Максимальный размер острова:"
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Preferred island size:"
 msgstr "Предпочтительный размер острова:"
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Island size deviation:"
 msgstr "Отклонение размера острова:"
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:342
 msgid "Click to generate a different random map"
 msgstr "Нажмите для генерации другой случайной карты"
 
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
 msgstr "Неверный файл сценария игры"
 
-#: horizons/gui/modules/singleplayermenu.py:501
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
 msgstr "Выбранный файл не является файлом сценария."
 
-#: horizons/gui/modules/singleplayermenu.py:502
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
 msgstr "Сообщение об ошибке:"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
 msgstr "Пожалуйста, сообщите это разработчикам."
 
-#: horizons/gui/modules/singleplayermenu.py:545
+#: horizons/gui/modules/singleplayermenu.py:569
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Сложность: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:549
+#: horizons/gui/modules/singleplayermenu.py:573
 #, python-format
 msgid "Author: {author}"
 msgstr "Автор: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:553
+#: horizons/gui/modules/singleplayermenu.py:577
 #, python-format
 msgid "Description: {desc}"
 msgstr "Описание: {desc}"
@@ -2445,7 +2222,7 @@ msgstr "Обзор судостроителя"
 #: horizons/gui/tabs/boatbuildertabs.py:96
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr "{ship} (place in queue: {place})"
+msgstr "{ship} (место в очереди: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:208
 msgid "Build this ship!"
@@ -2494,13 +2271,13 @@ msgstr "Строить связанные построыки"
 #. [br] means newline
 #: horizons/gui/tabs/buildtabs.py:144
 msgid "Resources needed:"
-msgstr ""
+msgstr "Требуются ресурсы:"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/tabs/buildtabs.py:150
 #, python-format
 msgid "{resource}: {amount}"
-msgstr ""
+msgstr "{resource}: {amount}"
 
 #: horizons/gui/tabs/buyselltab.py:130
 msgid "Click on one of the resource slots to add a trade offer."
@@ -2584,9 +2361,8 @@ msgid "Buy/Sell"
 msgstr "Покупка/Продажа"
 
 #: horizons/gui/tabs/shiptabs.py:98
-#, fuzzy
 msgid "Too far from the nearest tradeable warehouse"
-msgstr "Слишком далеко от ближайшего собственного или союзного складов"
+msgstr "Слишком далеко от склада"
 
 #: horizons/gui/tabs/shiptabs.py:104
 msgid "Cannot equip trade ship with weapons"
@@ -2607,22 +2383,22 @@ msgstr "Снять оружие"
 #: horizons/gui/widgets/imagefillstatusbutton.py:71
 #, python-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} золотых"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "покупка за {buyprice} золотых"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:80
 #, python-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "продажа за {sellprice} золотых"
 
 #: horizons/gui/widgets/inventory.py:168
 #, python-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:171
 #, python-format
@@ -2673,7 +2449,7 @@ msgstr "{settlement}: Обзор продукции"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr ""
+msgstr "Показать статистику"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
@@ -2701,11 +2477,11 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:623
 msgid "Buy expenses"
-msgstr ""
+msgstr "Расходы на покупку"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:626
 msgid "Sell income"
-msgstr ""
+msgstr "Доходы от продажи"
 
 #: horizons/gui/widgets/routeconfig.py:104
 msgid "Stop route"
@@ -2741,7 +2517,7 @@ msgstr "Вам нельзя торговать с этим игроком"
 #: horizons/gui/widgets/unitoverview.py:119
 #, python-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:124
 msgid "none"
@@ -3250,7 +3026,7 @@ msgstr "Гравийная дорога"
 #. name_3 of buildings:trail
 #: horizons/i18n/objecttranslations.py:383
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "Мостовая"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:385
@@ -3295,7 +3071,7 @@ msgstr "Винная лавка"
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:413
 msgid "Produces wine out of grapes."
-msgstr "Производит вино из винограда"
+msgstr "Производит вино из винограда."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:418
@@ -3378,7 +3154,7 @@ msgstr "Услуги"
 # 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471 sql-database-files
+#: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "Горожане"
 
@@ -3405,7 +3181,7 @@ msgstr "Военная служба"
 # 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483 sql-database-files
+#: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "Пионеры"
 
@@ -3426,21 +3202,20 @@ msgstr "Море"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:495
-#, fuzzy
 msgid "Wood"
-msgstr "еда"
+msgstr "Древесина"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:497
 #: horizons/i18n/objecttranslations.py:499
 #: horizons/i18n/objecttranslations.py:501
 msgid "Workshops"
-msgstr ""
+msgstr "Мастерские"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:503
 msgid "Settlement"
-msgstr ""
+msgstr "Поселение"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:509
@@ -3452,25 +3227,25 @@ msgstr "Земледелие"
 msgid "Military"
 msgstr "Военные"
 
-#: horizons/main.py:344
+#: horizons/main.py:349
 msgid "Failed to start/load the game"
 msgstr "Не удалось запустить/загрузить игру"
 
 # 95%
 # 100%
-#: horizons/main.py:345
+#: horizons/main.py:350
 msgid "The game you selected could not be started."
 msgstr "Выбранная вами игра не может быть запущена."
 
-#: horizons/main.py:346
+#: horizons/main.py:351
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr "Сохранение может быть повреждено или сохранено в предыдущей версии."
 
-#: horizons/main.py:465
+#: horizons/main.py:470
 msgid "No quicksaves found"
 msgstr "Не найдено быстрое сохранение"
 
-#: horizons/main.py:466
+#: horizons/main.py:471
 msgid "You need to quicksave before you can quickload."
 msgstr "Вам нужно выполнить быстрое сохранение, прежде чем загружать его."
 
@@ -3487,7 +3262,7 @@ msgstr ""
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
-"Мы сожалеем, и надеемся, что эта ошибка будет исправлена ​​в будущих версиях."
+"Мы сожалеем, и надеемся, что эта ошибка будет исправлена в будущих версиях."
 
 #: horizons/mpsession.py:85
 msgid "Not possible"
@@ -3504,15 +3279,16 @@ msgstr ""
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
-msgstr "Имя файла должно состоять только из букв, цифр, пробелов и _.-"
+msgstr ""
+"Имя файла должно состоять только из латинских букв, цифр, пробелов и _.-"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Невозможно подключиться к серверу."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Возможно неверный или несуществующий адрес сервера."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
@@ -3535,20 +3311,20 @@ msgstr "Вы завершили сценарий."
 msgid "Do you want to continue playing?"
 msgstr "Хотите продолжить игру?"
 
-#: horizons/scenario/scenarioeventhandler.py:158
+#: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
 msgstr "неизвестно"
 
 #. usually invalid filename
-#: horizons/session.py:409
+#: horizons/session.py:404
 msgid "Failed to create savegame file"
 msgstr "Не удалось создать файл сохранения"
 
-#: horizons/session.py:410
+#: horizons/session.py:405
 msgid "There has been an error while creating your savegame file."
 msgstr "В ходе создания файла сохранения произошла ошибка."
 
-#: horizons/session.py:411
+#: horizons/session.py:406
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
@@ -3556,19 +3332,20 @@ msgstr ""
 "Обычно это значит, что имя файла сохранения содержит недопустимые "
 "специальные символы."
 
-#: horizons/session.py:417
+#: horizons/session.py:412
 msgid "Access is denied"
 msgstr "Отказано в доступе"
 
-#: horizons/session.py:418
+#: horizons/session.py:413
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"Файл сохранения доступен только для чтения или заблокирован другим "
+"процессом."
 
 # 86%
 #: horizons/spsession.py:65
-#, fuzzy
 msgid "Your game has not been saved."
-msgstr "Игра сохранена."
+msgstr "Ваша игра НЕ была сохранена."
 
 # 92%
 #: horizons/util/checkupdates.py:81
@@ -3687,7 +3464,7 @@ msgstr "Эта постройка выведена из эксплуатации
 
 #: horizons/world/status.py:116
 msgid "The inhabitants of this building have the plague."
-msgstr ""
+msgstr "Жители этого здания заболели чумой."
 
 #: horizons/world/traderoute.py:320
 #, python-format
@@ -3733,70 +3510,135 @@ msgstr "Атакую {target} '{name}' ({owner})"
 msgid "Attacking {owner}"
 msgstr "Атакую {owner}"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "A new settlement was founded by {player}."
-msgstr "Игроком {player} было найдено новое поселение."
+msgid "{player1} and {player2} have allied their forces."
+msgstr "{player1} и {player2} объединили свои силы."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new ship by the name of {name} has been created."
-msgstr "Создан новый корабль по имени {name}."
+msgid "Your building has caught fire!"
+msgstr "Ваша постройка горит!"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "A new world has been created."
-msgstr "Новый мир был создан."
+#. This is a database entry: the name of a resource.
+msgid "medical herbs"
+msgstr "лечебные травы"
 
 # 81%
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Aristocrats"
 msgstr "Аристократы"
 
+# Счастье?
+#. This is a database entry: the name of a resource.
+msgid "happiness"
+msgstr "удовлетворение"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Cannot go here."
-msgstr "Туда невозможно пройти."
+msgid "Some of your inhabitants just moved out."
+msgstr "Некоторые ваши жители только что уехали."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "сахар"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco leaves"
+msgstr "листья табака"
+
+#. This is a database entry: the name of a resource.
+msgid "stone tops"
+msgstr "каменные плиты"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "шерсть"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "какао-бобы"
+
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "еда"
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "мука"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs for slaughter"
+msgstr "свиньи для бойни"
+
+#. This is a database entry: the name of a resource.
+msgid "trees"
+msgstr "деревья"
+
+# 83%
+#. This is a database entry: the name of a resource.
+msgid "clay deposit"
+msgstr "Месторождение глины"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
+msgstr "{player1} и {player2} закончили войну и объединились."
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "какао"
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "картофель"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "железная руда"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "глина"
 
 # 77%
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Merchants"
 msgstr "Торговцы"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Одному из полей требуется ферма для сбора урожая."
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "алкоголь"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Sailors"
-msgstr "Моряки"
+#. This is a database entry: the name of a resource.
+msgid "iron ingots"
+msgstr "железные слитки"
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr "Снимок экрана сохранен в {file}."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "Некоторые жители не могут попасть на главную площадь."
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "скот"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants just moved out."
-msgstr "Некоторые ваши жители только что уехали."
+msgid "You can also drag roads."
+msgstr "Вы также можете двигать дороги, удерживая кнопку мыши."
+
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "овечья шерсть"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid ""
+"You have reached the current maximum tier. Your inhabitants will not upgrade "
+"further."
+msgstr ""
+"Вы достигли максимально-доступного на текущий момент уровня развития. Ваши "
+"поселенцы более не будут развиваться."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
@@ -3805,416 +3647,306 @@ msgstr ""
 "меню \"настройка маршрута\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You can also drag roads."
-msgstr "Вы также можете двигать дороги, удерживая кнопку мыши."
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr "{player1} и {player2} разорвали союз."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Вы не можете снести склад, он требуется вашему поселению."
+msgid "Cannot go here."
+msgstr "Туда невозможно пройти."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar cane"
+msgstr "сахарный тростник"
+
+# вариант: зерновые культуры
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "злаки"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "виноград"
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "соты"
+
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "вера"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "доски"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "Некоторые жители не могут попасть на главную площадь."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} и {player2} будут бороться друг с другом до самой смерти."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Sailors"
+msgstr "Моряки"
+
+#. This is a database entry: the name of a resource.
+msgid "grain"
+msgstr "зерно"
+
+#. This is a database entry: the name of a resource.
+msgid "spices"
+msgstr "пряности"
+
+#. This is a database entry: the name of a resource.
+msgid "dagger"
+msgstr "кинжал"
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "кирпич"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "общество"
+
+#. This is a database entry: the name of a resource.
+msgid "spice plants"
+msgstr "пряные растения"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle for slaughter"
+msgstr "скот на убой"
+
+#. This is a database entry: the name of a resource.
+msgid "tobaccos"
+msgstr "табачные изделия"
+
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "инструменты"
+
+#. This is a database entry: the name of a resource.
+msgid "deer meat"
+msgstr "мясо оленя"
+
+# варианты: конфеты, сласти
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "кондитерские изделия"
+
+#. This is a database entry: the name of a resource.
+msgid "coins"
+msgstr "монеты"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You won!"
+msgstr "Вы победили!"
+
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "рыба"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "древесный уголь"
+
+# 76%
+#. This is a database entry: the name of a resource.
+msgid "stone deposit"
+msgstr "месторождение камня"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You failed the scenario."
 msgstr "Вы провалили сценарий."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid ""
-"You have reached the current maximum tier. Your inhabitants will not upgrade "
-"further."
-msgstr ""
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "огонь"
+
+#. This is a database entry: the name of a resource.
+msgid "acorns"
+msgstr "жёлуди"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco plants"
+msgstr "табачные растения"
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr "Вам необходимо больше {resource} для постройки этого строения."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You won!"
-msgstr "Вы победили!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your building has caught fire!"
-msgstr "Ваша постройка горит!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "Your crew refuses to leave this map."
 msgstr "Ваша команда отказывается покинуть эту карту."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+#, python-format
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1}и {player2} продолжают устойчиво враждовать."
+
+#. This is a database entry: the name of a resource.
+msgid "grass"
+msgstr "трава"
+
+#. This is a database entry: the name of a resource.
+msgid "alvearies"
+msgstr "ульи"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been autosaved."
 msgstr "Автосохранение прошло успешно."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been quicksaved."
-msgstr "Быстрое сохранение успешно выполнено."
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "Одному из полей требуется ферма для сбора урожая."
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been saved."
-msgstr "Игра сохранена."
+msgid "Your mine has run out of resources."
+msgstr "Ваш рудник иссяк."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "Your inhabitants reached level {level}."
 msgstr "Ваши жители достигли {level} уровня."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your mine has run out of resources."
-msgstr "Ваш рудник иссяк."
-
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "acorns"
-msgstr "жёлуди"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "alvearies"
-msgstr "ульи"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "boards"
-msgstr "доски"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "bricks"
-msgstr "кирпич"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "candles"
-msgstr "свечи"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cannon"
-msgstr "пушки"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle"
-msgstr "скот"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle for slaughter"
-msgstr "скот на убой"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "charcoal"
-msgstr "древесный уголь"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay"
-msgstr "глина"
-
-# 83%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay deposit"
-msgstr "Месторождение глины"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa"
-msgstr "какао"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa beans"
-msgstr "какао-бобы"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "coins"
-msgstr "монеты"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "community"
-msgstr "общество"
-
-# варианты: специи, пряности
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "condiments"
-msgstr "приправы"
-
-# варианты: конфеты, сласти
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "confectionery"
-msgstr "кондитерские изделия"
-
-# вариант: зерновые культуры
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "corn"
-msgstr "злаки"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "dagger"
-msgstr "кинжал"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer food A"
-msgstr "еда оленя A"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer meat"
-msgstr "мясо оленя"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "education"
-msgstr "образование"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "faith"
-msgstr "вера"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fire"
-msgstr "огонь"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fish"
-msgstr "рыба"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "flour"
-msgstr "мука"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "food"
-msgstr "еда"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "get-together"
-msgstr "общение"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grain"
-msgstr "зерно"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grapes"
-msgstr "виноград"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grass"
-msgstr "трава"
-
-# Счастье?
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "happiness"
-msgstr "удовлетворение"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "herbs"
-msgstr "травы"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "honeycombs"
-msgstr "соты"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "iron deposit"
 msgstr "месторождение железа"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ingots"
-msgstr "железные слитки"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ore"
-msgstr "железная руда"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "lamb wool"
-msgstr "овечья шерсть"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "liquor"
-msgstr "алкоголь"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "medical herbs"
-msgstr "лечебные травы"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs"
-msgstr "свиньи"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs for slaughter"
-msgstr "свиньи для бойни"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "potatoes"
-msgstr "картофель"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "salt"
-msgstr "соль"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spice plants"
-msgstr "пряные растения"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spices"
-msgstr "пряности"
-
-# 76%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone deposit"
-msgstr "месторождение камня"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone tops"
-msgstr "каменные плиты"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar"
-msgstr "сахар"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar cane"
-msgstr "сахарный тростник"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "textile"
-msgstr "ткань"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco leaves"
-msgstr "листья табака"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco plants"
-msgstr "табачные растения"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobaccos"
-msgstr "табачные изделия"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tools"
-msgstr "инструменты"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "trees"
-msgstr "деревья"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "vines"
-msgstr "виноградные лозы"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "wool"
-msgstr "шерсть"
+msgid "education"
+msgstr "образование"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} и {player2} объединили свои силы."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} и {player2} закончили войну и объединились."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr "{player1} и {player2} разорвали союз и начали войну."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1}и {player2} продолжают устойчиво враждовать."
+#. This is a database entry: the name of a resource.
+msgid "textile"
+msgstr "ткань"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} и {player2} разорвали союз."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} и {player2} будут бороться друг с другом до самой смерти."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#. This is a database entry: the name of a resource.
+msgid "cannon"
+msgstr "пушки"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr "Создан новый корабль по имени {name}."
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr "общение"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "A new world has been created."
+msgstr "Новый мир был создан."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been quicksaved."
+msgstr "Быстрое сохранение успешно выполнено."
+
+#. This is a database entry: the name of a resource.
+msgid "deer food A"
+msgstr "еда оленя A"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "травы"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "свиньи"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr "Вы не можете снести склад, он требуется вашему поселению."
+
+# варианты: специи, пряности
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "приправы"
+
+#. This is a database entry: the name of a resource.
+msgid "candles"
+msgstr "свечи"
+
+# 97%
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr "Игроком {player} было найдено новое поселение."
+
+#. This is a database entry: the name of a resource.
+msgid "vines"
+msgstr "виноградные лозы"
+
+# 86%
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been saved."
+msgstr "Игра сохранена."
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "соль"
+
+#~ msgid "Project Coordination"
+#~ msgstr "Руководство проектом"
+
+#~ msgid "Programming"
+#~ msgstr "Программирование"
+
+#, fuzzy
+#~ msgid "Game-Play Design"
+#~ msgstr "Советы по игре"
+
+#~ msgid "Sound and Music Artists"
+#~ msgstr "Звуковое и музыкальное сопровождение"
+
+#, fuzzy
+#~ msgid "Graphics Artists"
+#~ msgstr "Графика"
+
+#, fuzzy
+#~ msgid "Patchers"
+#~ msgstr "Бойня"
+
+#~ msgid "Translators"
+#~ msgstr "Переводчики"
+
+#, fuzzy
+#~ msgid "Hosting Weblate"
+#~ msgstr "Журналирование включено"
+
+#, fuzzy
+#~ msgid "Spanish"
+#~ msgstr "Компании"
+
+#, fuzzy
+#~ msgid "Dutch"
+#~ msgstr "Бойня"
+
+#, fuzzy
+#~ msgid "Chinese"
+#~ msgstr "виноградные лозы"
+
+#~ msgid "Special Thanks"
+#~ msgstr "Отдельная благодарность"
 
 #, fuzzy
 #~ msgid "Unknown Horizons"

@@ -77,9 +77,10 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 			final_path = os.path.join(PATHS.SCREENSHOT_DIR, filename)
 			shutil.move(temp_path, final_path)
 
-			# ingame message if there is a session
+			# ingame message if there is a session and it is fully initialized:
+			# pressing S on loading screen finds a session but no gui usually.
 			session = horizons.main._modules.session
-			if session:
+			if session and hasattr(session, 'ingame_gui'):
 				session.ingame_gui.message_widget.add('SCREENSHOT',
 				                                      message_dict={'file': final_path})
 		elif action == _Actions.QUICKLOAD:

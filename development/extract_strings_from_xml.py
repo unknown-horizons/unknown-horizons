@@ -24,7 +24,7 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -33,7 +33,6 @@
 #
 ###############################################################################
 
-import re
 import os
 import sys
 from xml.dom import minidom
@@ -67,7 +66,7 @@ header = '''# ###################################################
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -112,7 +111,6 @@ files_to_skip = [
 	'startup_error_popup.xml',
 	]
 
-KEEP_STUFF_RE = re.compile(r'noi18n_\w+')
 
 def print_n_no_name(n, text):
 	print '\tWarning: ',
@@ -150,7 +148,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			# comment='noi18n' in widgets where translation is not desired
 			continue
 
-		if 'noi18n_%s' % attribute in i18n:
+		if i18n == 'noi18n_%s' % attribute:
 			# comment='noi18n_tooltip' in widgets where tooltip translation is not
 			# desired, but text should be translated.
 			continue

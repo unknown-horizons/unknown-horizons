@@ -96,8 +96,6 @@ class Gui(object):
 		                        position_technique='center:center')
 		self._background.show()
 
-		self.subscribe()
-
 		self.singleplayermenu = SingleplayerMenu(self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
 		self.help_dialog = None
@@ -106,15 +104,10 @@ class Gui(object):
 		self.mainmenu = MainMenu(self, self.windows)
 		self.fps_display = FPSDisplay()
 
-	def subscribe(self):
-		"""Subscribe to the necessary messages."""
-		GuiAction.subscribe(self._on_gui_action)
-
-	def unsubscribe(self):
-		GuiAction.unsubscribe(self._on_gui_action)
-
 	def show_main(self):
 		"""Shows the main menu """
+		GuiAction.subscribe(self._on_gui_action)
+
 		if not self._background.isVisible():
 			self._background.show()
 
@@ -148,6 +141,7 @@ class Gui(object):
 		self.windows.on_return()
 
 	def close_all(self):
+		GuiAction.discard(self._on_gui_action)
 		self.windows.close_all()
 		self._background.hide()
 

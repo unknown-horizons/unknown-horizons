@@ -93,8 +93,7 @@ class PlayerDiplomacyTab(TabInterface):
 		"""
 		Checks the box with the diplomacy status between local player and selected player
 		"""
-
-		#set all boxes true
+		# uncheck all boxes
 		self.widget.distributeData({
 			'ally_check_box' : False,
 			'neutral_check_box' : False,

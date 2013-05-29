@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-03-30 18:33+0000\n"
-"Last-Translator: Aleksi <aleksi.kinnunen@outlook.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-05-24 23:39+0200\n"
+"PO-Revision-Date: 2013-05-14 16:35+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"Language-Team: Finnish <http://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 # 86%
 #: run_uh.py:220
@@ -207,7 +207,6 @@ msgstr "Kirjoita uusi nimi:"
 msgid "Apply the new name"
 msgstr "Ota uusi nimi käyttöön"
 
-#. noi18n_text
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
@@ -368,7 +367,7 @@ msgstr "Onnellinen"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr "Näin tyytyväisten talojen lukumäärä:"
+msgstr "Näin tyytyväisten talojen lukumäärä"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -380,7 +379,7 @@ msgstr "Talokohtainen asukasluku"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "Näin monta asukasta asuu näin monessa talossa:"
+msgstr "Näin monta asukasta asuu näin monessa talossa"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -572,7 +571,7 @@ msgstr "Käynnistä tuotanto"
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr "Valitse resurssi"
+msgstr "Valitse resurssi:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -753,7 +752,7 @@ msgstr "Pelaajan kaikkien siirtokuntien rakennusten lukumäärä"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493 sql-database-files
+#: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
 msgstr "Uudisasukkaat"
 
@@ -825,195 +824,6 @@ msgstr "Passiivinen"
 msgid "Flee"
 msgstr "Pakene"
 
-#: content/gui/xml/mainmenu/credits.xml:15
-msgid "UH-Team"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:17
-#, fuzzy
-msgid "Project Coordination"
-msgstr "Turvallisuus"
-
-#: content/gui/xml/mainmenu/credits.xml:23
-msgid "Programming"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:45
-#, fuzzy
-msgid "Game-Play Design"
-msgstr "Pelivinkki"
-
-#: content/gui/xml/mainmenu/credits.xml:52
-msgid "Sound and Music Artists"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:60
-#, fuzzy
-msgid "Graphics Artists"
-msgstr "Grafiikka"
-
-#: content/gui/xml/mainmenu/credits.xml:80
-#, fuzzy
-msgid "Patchers"
-msgstr "Teurastamo"
-
-#: content/gui/xml/mainmenu/credits.xml:82
-msgid "2009"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:91
-msgid "2010"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:105
-msgid "2011"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:117
-msgid "2012"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:132
-#, fuzzy
-msgid "Translators"
-msgstr "Käännöstilanne:"
-
-#: content/gui/xml/mainmenu/credits.xml:134
-#, fuzzy
-msgid "Hosting Weblate"
-msgstr "Lokitietojen tallennus"
-
-#: content/gui/xml/mainmenu/credits.xml:139
-msgid "Bulgarian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:144
-msgid "Catalan"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:150
-msgid "Czech"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:160
-msgid "Danish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:165
-msgid "German"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:172
-#, fuzzy
-msgid "Spanish"
-msgstr "Yritykset"
-
-#: content/gui/xml/mainmenu/credits.xml:184
-msgid "Estonian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:190
-msgid "Finnish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:195
-msgid "French"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:207
-msgid "Croatian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:212
-msgid "Hindi"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:217
-msgid "Hungarian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:223
-msgid "Italian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:231
-msgid "Japanese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:237
-msgid "Lithuanian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:246
-msgid "Norwegian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:253
-#, fuzzy
-msgid "Dutch"
-msgstr "Teurastamo"
-
-#: content/gui/xml/mainmenu/credits.xml:264
-msgid "Polish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:275
-msgid "Portuguese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:283
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:291
-msgid "Romanian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:296
-msgid "Russian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:303
-msgid "Slovenian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:308
-msgid "Swedish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:314
-#, fuzzy
-msgid "Chinese"
-msgstr "viiniköynnöksiä"
-
-#: content/gui/xml/mainmenu/credits.xml:325
-msgid "Packagers"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:327
-msgid "Debian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:332
-msgid "Fedora &amp; openSUSE"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:338
-msgid "OS X"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:348
-msgid "Special Thanks"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:350
-msgid "Thanks, all of you are awesome!"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:373
-msgid "Portfolio Sites"
-msgstr ""
-
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
@@ -1059,84 +869,70 @@ msgstr "Käynnistä kartanmuokkaus"
 msgid "Key bindings"
 msgstr "Pikanäppäimet"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
 msgstr "Vieritä vasemmalle"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:10
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
 msgstr "Vieritä oikealle"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:11
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 msgid "Scroll up"
 msgstr "Vieritä ylös"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:12
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 msgid "Scroll down"
 msgstr "Vieritä alas"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:15
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
 msgstr "Kiihdytä pelin nopeutta"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:16
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
 msgstr "Hidasta pelin nopeutta"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:18
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
 msgstr "Käännä rakennusta tai karttaa vastapäivään"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:20
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
 msgstr "Käännä rakennusta tai karttaa myötäpäivään"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:23
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Show build menu"
 msgstr "Näytä rakennusvalikko"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
 msgstr "Avaa/sulje Kapteenin päiväkirja"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:25
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
 msgstr "Pysäytä peli"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:28
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
 msgstr "Tuo esiin tämän ohjeen"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:29
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
 msgstr "Pikatallennus"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:30
 #: content/gui/xml/mainmenu/hotkeys.xml:29
 msgid "Quickload"
@@ -1146,37 +942,31 @@ msgstr "Pikalataus"
 msgid "Display FPS counter"
 msgstr ""
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:40
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
 msgstr "Muuta ympäristön läpikuultavuutta"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:41
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
 msgstr "Tienrakennustyökalu"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:42
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Enable destruct mode"
 msgstr "Tuhoamistyökalu"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:44
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
 msgstr "Rakennusten kopiointityökalu"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:45
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
 msgstr ""
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:48
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Screenshot"
@@ -1190,49 +980,41 @@ msgstr "Sijoita useita rakennuksia kerralla pitämällä pohjassa"
 msgid "Close dialogs"
 msgstr "Sulje dialogi"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:55
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
 msgstr "Näytä pelitulokset"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:56
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show ship list"
 msgstr "Näytä lista aluksista"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:57
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Show settlement list"
 msgstr "Näytä asukaslista"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:58
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
 msgstr "Korosta maa-alueen omistajat"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:62
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
 msgstr "Poista valitut yksiköt/rakennukset"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:63
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
 msgstr "Kohdista kamera valintaan"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
 msgstr "Ruudukko päälle/pois"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:65
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Show coordinate values (Debug)"
@@ -1247,7 +1029,6 @@ msgstr "Poistu"
 msgid "Actions"
 msgstr "sivistystä"
 
-#. noi18n_text
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 #, fuzzy
 msgid "Toggle showing FPS on/off"
@@ -1727,6 +1508,7 @@ msgstr "Valitse pelattava kartta:"
 msgid "Map settings:"
 msgstr "Kartan asetukset:"
 
+#. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr "Kartta:"
@@ -1962,11 +1744,11 @@ msgstr "Haluatko varmasti lopettaa pelin?"
 msgid "Quit Game"
 msgstr "Poistu pelistä"
 
-#: horizons/gui/ingamegui.py:214
+#: horizons/gui/ingamegui.py:218
 msgid "No diplomacy possible"
 msgstr "Diplomatia ei ole käytössä"
 
-#: horizons/gui/ingamegui.py:215
+#: horizons/gui/ingamegui.py:219
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Muita pelaajia ei ole, joten diplomatia on tarpeetonta."
 
@@ -2146,39 +1928,39 @@ msgstr ""
 msgid "Something went wrong with the network:"
 msgstr "Verkon kanssa ilmeni ongelma:"
 
-#: horizons/gui/modules/multiplayermenu.py:174
+#: horizons/gui/modules/multiplayermenu.py:176
 msgid "Version differs!"
 msgstr "Versio ei ole sama!"
 
-#: horizons/gui/modules/multiplayermenu.py:204
-#: horizons/gui/modules/multiplayermenu.py:441
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Kartta: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:205
-#: horizons/gui/modules/multiplayermenu.py:443
+#: horizons/gui/modules/multiplayermenu.py:207
+#: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Name: {game_name}"
 msgstr "Nimi: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:445
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:447
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr "Pelin ylläpitäjä: {game_creator}"
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:447
+#: horizons/gui/modules/multiplayermenu.py:210
+#: horizons/gui/modules/multiplayermenu.py:449
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Pelaajat: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:228
+#: horizons/gui/modules/multiplayermenu.py:230
 msgid "Wrong version"
 msgstr "Väärä versio"
 
-#: horizons/gui/modules/multiplayermenu.py:230
+#: horizons/gui/modules/multiplayermenu.py:232
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2191,87 +1973,87 @@ msgstr ""
 "päivittämällä peli jokaisella osapuolella uusimpaan versioon. Vaadittu "
 "versio: {game_version} Oma versiosi: {own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:268
+#: horizons/gui/modules/multiplayermenu.py:270
 msgid "Password of the game"
 msgstr "Pelin salasana"
 
-#: horizons/gui/modules/multiplayermenu.py:269
+#: horizons/gui/modules/multiplayermenu.py:271
 msgid "Enter password:"
 msgstr "Kirjoita salasana:"
 
 # 79%
-#: horizons/gui/modules/multiplayermenu.py:349
-#: horizons/gui/modules/singleplayermenu.py:407
+#: horizons/gui/modules/multiplayermenu.py:351
+#: horizons/gui/modules/singleplayermenu.py:405
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Pelaajien suositeltu määrä: {number}"
 
-#: horizons/gui/modules/multiplayermenu.py:465
-#: horizons/gui/modules/multiplayermenu.py:473
+#: horizons/gui/modules/multiplayermenu.py:467
+#: horizons/gui/modules/multiplayermenu.py:475
 msgid "Click here to change your name and/or color"
 msgstr "Vaihda peliväriä ja nimimerkkiä napsauttamalla tästä"
 
-#: horizons/gui/modules/multiplayermenu.py:492
+#: horizons/gui/modules/multiplayermenu.py:494
 #, python-format
 msgid "Kick {player}"
 msgstr "Poista {player} pelistä"
 
-#: horizons/gui/modules/multiplayermenu.py:560
+#: horizons/gui/modules/multiplayermenu.py:562
 #, python-format
 msgid "{player} has joined the game"
 msgstr "{player} liittyi peliin"
 
-#: horizons/gui/modules/multiplayermenu.py:564
+#: horizons/gui/modules/multiplayermenu.py:566
 #, python-format
 msgid "{player} has left the game"
 msgstr "{player} poistui pelistä"
 
-#: horizons/gui/modules/multiplayermenu.py:570
+#: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are now ready"
 msgstr "Olet nyt valmis!"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:574
 msgid "You are not ready anymore"
 msgstr "Et ole enää valmis"
 
-#: horizons/gui/modules/multiplayermenu.py:576
+#: horizons/gui/modules/multiplayermenu.py:578
 #, python-format
 msgid "{player} is now ready"
 msgstr "{player} on nyt valmis!"
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:581
 #, python-format
 msgid "{player} not ready anymore"
 msgstr "{player} ei ole enää valmis"
 
-#: horizons/gui/modules/multiplayermenu.py:584
+#: horizons/gui/modules/multiplayermenu.py:586
 #, python-format
 msgid "You are now known as {new_name}"
 msgstr "Muut näkevät sinut nimimerkillä {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:587
+#: horizons/gui/modules/multiplayermenu.py:589
 #, python-format
 msgid "{player} is now known as {new_name}"
 msgstr "Pelaajan {player} nimimerkki on nyt {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:591
+#: horizons/gui/modules/multiplayermenu.py:593
 msgid "You changed your color"
 msgstr "Vaihdoit peliväriä"
 
-#: horizons/gui/modules/multiplayermenu.py:594
+#: horizons/gui/modules/multiplayermenu.py:596
 #, fuzzy, python-format
 msgid "{player} changed their color"
 msgstr "{player} vaihtoi peliväriä"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "Kicked"
 msgstr "Poistettiin pelistä"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "You have been kicked from the game by creator"
 msgstr "Pelin ylläpitäjä poisti sinut pelistä"
 
-#: horizons/gui/modules/multiplayermenu.py:602
+#: horizons/gui/modules/multiplayermenu.py:604
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr "Ylläpitäjä poisti pelaajan {player} pelistä"
@@ -2381,72 +2163,72 @@ msgstr "Virhe!"
 msgid "Failed to delete savefile!"
 msgstr "Tallennuksen poistaminen epäonnistui!"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "Invalid player name"
 msgstr "Virheellinen pelaajanimi"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:104
 msgid "You entered an invalid playername."
 msgstr "Antamasi pelaajanimi on virheellinen."
 
 # 76%
-#: horizons/gui/modules/singleplayermenu.py:149
+#: horizons/gui/modules/singleplayermenu.py:147
 msgid "Resource density:"
 msgstr "Luonnonvarat:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
 msgstr "Kartan koko:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Water:"
 msgstr "Veden määrä:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Max island size:"
 msgstr "Saaren enimmäiskoko:"
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Preferred island size:"
 msgstr "Saaren suosituskoko:"
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Island size deviation:"
 msgstr "Saarten koonvaihtelu:"
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:342
 msgid "Click to generate a different random map"
 msgstr "Luo satunnainen kartta napsauttamalla"
 
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
 msgstr "Virheellinen juonipelitiedosto"
 
-#: horizons/gui/modules/singleplayermenu.py:501
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
 msgstr "Tämä tiedosto ei ole käyttökelpoinen juonipelitiedosto."
 
-#: horizons/gui/modules/singleplayermenu.py:502
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
 msgstr "Virheilmoitus:"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
 msgstr "Ole hyvä ja ilmoita tästä tekijälle."
 
-#: horizons/gui/modules/singleplayermenu.py:545
+#: horizons/gui/modules/singleplayermenu.py:569
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Vaikeustaso: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:549
+#: horizons/gui/modules/singleplayermenu.py:573
 #, python-format
 msgid "Author: {author}"
 msgstr "Tekijä: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:553
+#: horizons/gui/modules/singleplayermenu.py:577
 #, python-format
 msgid "Description: {desc}"
 msgstr "Kuvaus: {desc}"
@@ -3398,7 +3180,7 @@ msgstr "Palvelut"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471 sql-database-files
+#: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "Kansalaiset"
 
@@ -3425,7 +3207,7 @@ msgstr "Asepalvelus"
 # 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483 sql-database-files
+#: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "Kansoittajat"
 
@@ -3471,24 +3253,24 @@ msgstr "Maatalous"
 msgid "Military"
 msgstr "Sodankäynti"
 
-#: horizons/main.py:344
+#: horizons/main.py:349
 msgid "Failed to start/load the game"
 msgstr "Pelin aloittaminen/avaaminen epäonnistui"
 
-#: horizons/main.py:345
+#: horizons/main.py:350
 msgid "The game you selected could not be started."
 msgstr "Peliä ei voida käynnistää."
 
-#: horizons/main.py:346
+#: horizons/main.py:351
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 "Kyseinen tallennus saattaa olla rikki tai tehty pelin vanhemmalla versiolla."
 
-#: horizons/main.py:465
+#: horizons/main.py:470
 msgid "No quicksaves found"
 msgstr "Yhtäkään pikatallennusta ei löytynyt"
 
-#: horizons/main.py:466
+#: horizons/main.py:471
 msgid "You need to quicksave before you can quickload."
 msgstr "Tarvitset pikatallennuksen ennen kuin voit pikaladata."
 
@@ -3533,12 +3315,12 @@ msgstr ""
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
-msgstr "Ei valmiina:"
+msgstr "Ei valmiina"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/network/networkinterface.py:526
 msgid "Ready"
-msgstr "Valmiina:"
+msgstr "Valmiina"
 
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
@@ -3554,20 +3336,20 @@ msgstr "Olet suorittanut tämän juonipelin läpi."
 msgid "Do you want to continue playing?"
 msgstr "Haluatko jatkaa pelaamista?"
 
-#: horizons/scenario/scenarioeventhandler.py:158
+#: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
 msgstr "tuntematon"
 
 #. usually invalid filename
-#: horizons/session.py:409
+#: horizons/session.py:404
 msgid "Failed to create savegame file"
 msgstr "Tallennustiedoston luominen epäonnistui"
 
-#: horizons/session.py:410
+#: horizons/session.py:405
 msgid "There has been an error while creating your savegame file."
 msgstr "Yritettäessä luoda tallennustiedostoa virhe tapahtui."
 
-#: horizons/session.py:411
+#: horizons/session.py:406
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
@@ -3575,11 +3357,11 @@ msgstr ""
 "Tämä johtuu yleensä siitä, että tallennuksen nimi sisältää erikoismerkkejä, "
 "joita ei tueta."
 
-#: horizons/session.py:417
+#: horizons/session.py:412
 msgid "Access is denied"
 msgstr "Pääsy estetty"
 
-#: horizons/session.py:418
+#: horizons/session.py:413
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 
@@ -3742,66 +3524,131 @@ msgid "Attacking {owner}"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "A new settlement was founded by {player}."
-msgstr "{player} loi uuden siirtokunnan."
+msgid "{player1} and {player2} have allied their forces."
+msgstr "{player1} ja {player2} ovat nyt liittolaisia."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new ship by the name of {name} has been created."
-msgstr "{name} otti käyttöön uuden laivan."
+msgid "Your building has caught fire!"
+msgstr "Yksi rakennuksista on syttynyt palamaan!"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "A new world has been created."
-msgstr "Uusi maailma luotu."
+#. This is a database entry: the name of a resource.
+msgid "medical herbs"
+msgstr "lääkeyrttejä"
 
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Aristocrats"
 msgstr "Aristokraatit"
 
+#. This is a database entry: the name of a resource.
+msgid "happiness"
+msgstr "onnellisuutta"
+
+# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Cannot go here."
-msgstr "Tänne ei voi mennä."
+msgid "Some of your inhabitants just moved out."
+msgstr "Jotkut uudisasukkaat muuttivat juuri pois."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "sokeria"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco leaves"
+msgstr "tupakanlehtiä"
+
+#. This is a database entry: the name of a resource.
+msgid "stone tops"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "villaa"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "kaakaopapuja"
+
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "ruokaa"
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "jauhoa"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs for slaughter"
+msgstr "teurassikoja"
+
+#. This is a database entry: the name of a resource.
+msgid "trees"
+msgstr "puita"
+
+#. This is a database entry: the name of a resource.
+#, fuzzy
+msgid "clay deposit"
+msgstr "Savimaa"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
+msgstr ""
+"{player1} ja {player2} ovat lopettaneet sodan ja ovat nyt liittolaisia."
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "kaakaota"
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "perunoita"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "rautamalmia"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "savea"
 
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Merchants"
 msgstr "Kauppiaat"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Yksi pelloistasi tarvitsee maatilan lähistölleen."
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "viiniä"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Sailors"
-msgstr "Merimiehet"
+#. This is a database entry: the name of a resource.
+msgid "iron ingots"
+msgstr "rautaharkkoja"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr "Kuvakaappaus tallennettu tiedostoon {file}."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "Joillakin asukkaillasi ei ole keskustoria lähellään."
-
-# 77%
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants just moved out."
-msgstr "Jotkut uudisasukkaat muuttivat juuri pois."
+# 83%
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "karjaa"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "You can also drag roads."
+msgstr "Rakenna pidempiä polkuja vetämällä polkua hiirellä."
+
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "lampaan villaa"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid ""
+"You have reached the current maximum tier. Your inhabitants will not upgrade "
+"further."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
@@ -3810,386 +3657,183 @@ msgstr ""
 "määritysvalikosta."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You can also drag roads."
-msgstr "Rakenna pidempiä polkuja vetämällä polkua hiirellä."
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr "{player1} ja {player2} eivät ole enää liittolaisia."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Sivutoimistoa ei voi poistaa, sillä siirtokuntasi tarvitsee sitä."
+msgid "Cannot go here."
+msgstr "Tänne ei voi mennä."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar cane"
+msgstr "sokeriruokoa"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "maissia"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "viinirypäleitä"
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "hunajakennoja"
+
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "uskoa"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "lautoja"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "Joillakin asukkaillasi ei ole keskustoria lähellään."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} ja {player2} julistivat toisilleen sodan."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Sailors"
+msgstr "Merimiehet"
+
+#. This is a database entry: the name of a resource.
+msgid "grain"
+msgstr "jyviä"
+
+#. This is a database entry: the name of a resource.
+msgid "spices"
+msgstr "mausteita"
+
+#. This is a database entry: the name of a resource.
+msgid "dagger"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "tiiliä"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "yhteisöä"
+
+#. This is a database entry: the name of a resource.
+msgid "spice plants"
+msgstr "maustekasveja"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle for slaughter"
+msgstr "teuraskarjaa"
+
+#. This is a database entry: the name of a resource.
+msgid "tobaccos"
+msgstr "tupakkaa"
+
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "työkaluja"
+
+#. This is a database entry: the name of a resource.
+msgid "deer meat"
+msgstr "peuranlihaa"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "makeisia"
+
+#. This is a database entry: the name of a resource.
+msgid "coins"
+msgstr "kolikoita"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You won!"
+msgstr "Sinä voitit!"
+
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "kalaa"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "puuhiiltä"
+
+# 76%
+#. This is a database entry: the name of a resource.
+#, fuzzy
+msgid "stone deposit"
+msgstr "raakakiveä"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You failed the scenario."
 msgstr "Hävisit tämän juonipelin."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid ""
-"You have reached the current maximum tier. Your inhabitants will not upgrade "
-"further."
-msgstr ""
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "fuli"
+
+#. This is a database entry: the name of a resource.
+msgid "acorns"
+msgstr "tammenterhoja"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco plants"
+msgstr "tupakkakasveja"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr "Tarvitset enemmän {resource} tämän rakennuksen rakentamiseen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You won!"
-msgstr "Sinä voitit!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your building has caught fire!"
-msgstr "Yksi rakennuksista on syttynyt palamaan!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "Your crew refuses to leave this map."
 msgstr "Miehistö kieltäytyy poistumasta tältä kartalta."
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been autosaved."
-msgstr "Peli tallennettiin automaattisesti."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been quicksaved."
-msgstr "Pelillesi suoritettiin pikatallennus."
-
-# 86%
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been saved."
-msgstr "Pelisi on tallennettu."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "Uudisasukkaasi saavuttivat tason {level}."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your mine has run out of resources."
-msgstr "Kaivoksesi on tyhjentynyt."
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1} ja {player2} ovat sopineet rauhan."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "acorns"
-msgstr "tammenterhoja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-#, fuzzy
-msgid "alvearies"
-msgstr "Mehiläispesä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "boards"
-msgstr "lautoja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "bricks"
-msgstr "tiiliä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "candles"
-msgstr "kynttilöitä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cannon"
-msgstr "tykkiä"
-
-# 83%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle"
-msgstr "karjaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle for slaughter"
-msgstr "teuraskarjaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "charcoal"
-msgstr "puuhiiltä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay"
-msgstr "savea"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-#, fuzzy
-msgid "clay deposit"
-msgstr "Savimaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa"
-msgstr "kaakaota"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa beans"
-msgstr "kaakaopapuja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "coins"
-msgstr "kolikoita"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "community"
-msgstr "yhteisöä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "condiments"
-msgstr "kastikkeita"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "confectionery"
-msgstr "makeisia"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "corn"
-msgstr "maissia"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "dagger"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer food A"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer meat"
-msgstr "peuranlihaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "education"
-msgstr "sivistystä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "faith"
-msgstr "uskoa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fire"
-msgstr "fuli"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fish"
-msgstr "kalaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "flour"
-msgstr "jauhoa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "food"
-msgstr "ruokaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "get-together"
-msgstr "pitoja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grain"
-msgstr "jyviä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grapes"
-msgstr "viinirypäleitä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "grass"
 msgstr "ruohoa"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "happiness"
-msgstr "onnellisuutta"
+#, fuzzy
+msgid "alvearies"
+msgstr "Mehiläispesä"
+
+# 86%
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been autosaved."
+msgstr "Peli tallennettiin automaattisesti."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "Yksi pelloistasi tarvitsee maatilan lähistölleen."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your mine has run out of resources."
+msgstr "Kaivoksesi on tyhjentynyt."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr "Uudisasukkaasi saavuttivat tason {level}."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "herbs"
-msgstr "yrttejä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "honeycombs"
-msgstr "hunajakennoja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "iron deposit"
 msgstr "raakarautaa"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ingots"
-msgstr "rautaharkkoja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ore"
-msgstr "rautamalmia"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "lamb wool"
-msgstr "lampaan villaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "liquor"
-msgstr "viiniä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "medical herbs"
-msgstr "lääkeyrttejä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs"
-msgstr "sikoja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs for slaughter"
-msgstr "teurassikoja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "potatoes"
-msgstr "perunoita"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "salt"
-msgstr "suolaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spice plants"
-msgstr "maustekasveja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spices"
-msgstr "mausteita"
-
-# 76%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-#, fuzzy
-msgid "stone deposit"
-msgstr "raakakiveä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone tops"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar"
-msgstr "sokeria"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar cane"
-msgstr "sokeriruokoa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "textile"
-msgstr "kankaita"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco leaves"
-msgstr "tupakanlehtiä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco plants"
-msgstr "tupakkakasveja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobaccos"
-msgstr "tupakkaa"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tools"
-msgstr "työkaluja"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "trees"
-msgstr "puita"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "vines"
-msgstr "viiniköynnöksiä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "wool"
-msgstr "villaa"
+msgid "education"
+msgstr "sivistystä"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} ja {player2} ovat nyt liittolaisia."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
-"{player1} ja {player2} ovat lopettaneet sodan ja ovat nyt liittolaisia."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
@@ -4198,29 +3842,113 @@ msgstr ""
 "{player1} ja {player2} eivät ole enää liittolaisia ja julistivat toisilleen "
 "sodan."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} ja {player2} ovat sopineet rauhan."
+#. This is a database entry: the name of a resource.
+msgid "textile"
+msgstr "kankaita"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} ja {player2} eivät ole enää liittolaisia."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} ja {player2} julistivat toisilleen sodan."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#. This is a database entry: the name of a resource.
+msgid "cannon"
+msgstr "tykkiä"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr "{name} otti käyttöön uuden laivan."
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr "pitoja"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "A new world has been created."
+msgstr "Uusi maailma luotu."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been quicksaved."
+msgstr "Pelillesi suoritettiin pikatallennus."
+
+#. This is a database entry: the name of a resource.
+msgid "deer food A"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "yrttejä"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "sikoja"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr "Sivutoimistoa ei voi poistaa, sillä siirtokuntasi tarvitsee sitä."
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "kastikkeita"
+
+#. This is a database entry: the name of a resource.
+msgid "candles"
+msgstr "kynttilöitä"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr "{player} loi uuden siirtokunnan."
+
+#. This is a database entry: the name of a resource.
+msgid "vines"
+msgstr "viiniköynnöksiä"
+
+# 86%
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been saved."
+msgstr "Pelisi on tallennettu."
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "suolaa"
+
+#, fuzzy
+#~ msgid "Project Coordination"
+#~ msgstr "Turvallisuus"
+
+#, fuzzy
+#~ msgid "Game-Play Design"
+#~ msgstr "Pelivinkki"
+
+#, fuzzy
+#~ msgid "Graphics Artists"
+#~ msgstr "Grafiikka"
+
+#, fuzzy
+#~ msgid "Patchers"
+#~ msgstr "Teurastamo"
+
+#, fuzzy
+#~ msgid "Translators"
+#~ msgstr "Käännöstilanne:"
+
+#, fuzzy
+#~ msgid "Hosting Weblate"
+#~ msgstr "Lokitietojen tallennus"
+
+#, fuzzy
+#~ msgid "Spanish"
+#~ msgstr "Yritykset"
+
+#, fuzzy
+#~ msgid "Dutch"
+#~ msgstr "Teurastamo"
+
+#, fuzzy
+#~ msgid "Chinese"
+#~ msgstr "viiniköynnöksiä"
 
 #, fuzzy
 #~ msgid "Unknown Horizons"
