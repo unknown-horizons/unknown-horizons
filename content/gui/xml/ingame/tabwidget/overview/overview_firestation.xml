@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TabContainer headline="Building overview">
+<TabContainer name="overview_firestation" headline="Building overview">
 
 	<Container size="225,25" position="5,3">
 		<Label name="name_label" text="Name:" />

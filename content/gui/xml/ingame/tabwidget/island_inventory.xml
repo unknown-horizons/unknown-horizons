@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TabContainer headline="Settlement inventory">
+<TabContainer name="island_inventory" headline="Settlement inventory">
 
 	<AutoResizeContainer name="boxes" position="0,5"
 		comment="Moving this into the ScrollArea below causes it to no longer be found by findChild. The heck?" />

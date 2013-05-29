@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TabContainer headline="Resource deposit">
+<TabContainer name="overview_resourcedeposit" headline="Resource deposit">
 
 	<VBox position="5,5">
 		<Label name="res_dep_description_lbl" wrap_text="1" max_size="212,100"
