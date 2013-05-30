@@ -41,7 +41,9 @@ if len(sys.argv) != 2:
 	print 'Error: Provide a file to write strings to as argument. Exiting.'
 	sys.exit(1)
 
-header = '''# ###################################################
+header = u'''\
+# Encoding: utf-8
+# ###################################################
 # Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -92,16 +94,16 @@ def set_translations():
 	text_translations = {
 '''
 
-FOOTER = '''
+FOOTER = u'''
 	}
 '''
 
-FILE = '''
+FILE = u'''
 	{filename!r} : {{
 {entries}		}},
 '''
 
-ENTRY = '''\
+ENTRY = u'''\
 		({widget!r:<32}, {attribute!r:<10}): {text},
 '''
 
@@ -163,7 +165,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
-				text = '_("%s")' % text
+				text = '_(u"%s")' % text
 			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
@@ -201,4 +203,4 @@ filesnippets = ''.join(content for content in filesnippets if content)
 
 output = '%s%s%s' % (header, filesnippets, FOOTER)
 
-file(sys.argv[1], 'w').write(output)
+file(sys.argv[1], 'w').write(output.encode('utf-8'))
