@@ -108,6 +108,7 @@ INSERT INTO "message" VALUES('SETTLERS_MOVED_OUT', 1, 40.0, NULL);
 INSERT INTO "message" VALUES('WAREHOUSE_NOT_TEARABLE', 1, 30.0, NULL);
 INSERT INTO "message" VALUES('YOU_HAVE_WON',     1, 60.0, NULL);
 INSERT INTO "message" VALUES('YOU_LOST',         1, 60.0, NULL);
+INSERT INTO "message" VALUES('BUILDING_INFECTED_BY_BLACK_DEATH', 1, 30.0, NULL);
 
 CREATE TABLE "message_text" (
 	"id_string" TEXT NOT NULL,
@@ -142,6 +143,7 @@ INSERT INTO "message_text" VALUES('SETTLERS_MOVED_OUT', 'Some of your inhabitant
 INSERT INTO "message_text" VALUES('WAREHOUSE_NOT_TEARABLE', 'You cannot tear the warehouse, your settlements needs it.');
 INSERT INTO "message_text" VALUES('YOU_HAVE_WON',     'You won!');
 INSERT INTO "message_text" VALUES('YOU_LOST',         'You failed the scenario.');
+INSERT INTO "message_text" VALUES('BUILDING_INFECTED_BY_BLACK_DEATH', 'The inhabitants of this building are infected by the Black Death!');
 
 CREATE TABLE "message_icon" (
 	"icon_id" INT NOT NULL,
@@ -169,7 +171,7 @@ INSERT INTO "related_buildings" VALUES( 3,  4, 1);
 INSERT INTO "related_buildings" VALUES( 3,  5, 1);
 INSERT INTO "related_buildings" VALUES( 3, 21, 1);
 INSERT INTO "related_buildings" VALUES( 3, 32, 1);
--- INSERT INTO "related_buildings" VALUES( 3, 42, 1);
+INSERT INTO "related_buildings" VALUES( 3, 42, 1);
 INSERT INTO "related_buildings" VALUES( 6,  1, 0);
 INSERT INTO "related_buildings" VALUES( 8, 17, 1);
 INSERT INTO "related_buildings" VALUES(20, 18, 1);
@@ -249,7 +251,7 @@ INSERT INTO "resource" VALUES(34, 'pigs', 0, 0, 0); -- unused and thus made untr
 INSERT INTO "resource" VALUES(35, 'cattle for slaughter', 2, 0, 1);
 INSERT INTO "resource" VALUES(36, 'pigs for slaughter', 2, 0, 0); -- unused and thus made untradable and hidden from inventories
 INSERT INTO "resource" VALUES(37, 'herbs', 0, 0, 1);
-INSERT INTO "resource" VALUES(38, 'medical herbs', 2.5, 0, 0); -- unused and thus made untradable and hidden from inventories
+INSERT INTO "resource" VALUES(38, 'medical herbs', 2.5, 1, 1);
 INSERT INTO "resource" VALUES(39, 'acorns', 0, 0, 0); -- unused and thus made untradable and hidden from inventories
 INSERT INTO "resource" VALUES(40, 'cannon', 100, 1, 1);
 INSERT INTO "resource" VALUES(41, 'dagger', 10, 0, 0); -- unused and thus made untradable and hidden from inventories
@@ -271,6 +273,7 @@ INSERT INTO "resource" VALUES(58, 'grapes', 2.5, 0, 0); -- unused and thus made 
 INSERT INTO "resource" VALUES(59, 'alvearies', 2, 0, 0); -- unused and thus made untradable and hidden from inventories
 INSERT INTO "resource" VALUES(60, 'honeycombs', 2.5, 0, 0); -- unused and thus made untradable and hidden from inventories
 INSERT INTO "resource" VALUES(99, 'fire', NULL, 0, 0);
+INSERT INTO "resource" VALUES(98, 'blackdeath', NULL, 0, 0);
 
 CREATE TABLE "weapon" (
 	"id" INT,

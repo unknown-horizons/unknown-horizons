@@ -73,6 +73,8 @@ class InternationalTradeManager(object):
 		for settlement in self.world.settlements:
 			if settlement.owner is self.owner:
 				continue # don't allow routes of this type between the player's own settlements
+			if settlement.is_infected():
+				continue # Don't go to settlements that are infected with the black death
 			for settlement_manager in self.owner.settlement_managers:
 				if self._trade_mission_exists(settlement, settlement_manager):
 					continue # allow only one international trade route between a pair of settlements

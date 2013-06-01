@@ -45,6 +45,8 @@ class Disaster(WorldObject):
 	#	This is how preventory units (doctors) spot affected buildings.
 	DISASTER_RES = None
 
+	IS_INFECTIOUS = False
+
 	def __init__(self, settlement, manager):
 		"""
 		@param settlement: Settlement instance this disaster operates on

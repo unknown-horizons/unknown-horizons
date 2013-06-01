@@ -99,6 +99,11 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 			UpgradePermissionsChanged.broadcast(self)
 
+	def is_infected(self):
+		"""Returns whether a settlement is infected by the black death"""
+		disaster = self.session.world.disaster_manager.get_disaster(self)
+		return disaster.IS_INFECTIOUS if disaster else False
+
 	@property
 	def inhabitants(self):
 		"""Returns number of inhabitants (sum of inhabitants of its buildings)"""

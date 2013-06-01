@@ -549,7 +549,7 @@ class VillageBuilder(AreaBuilder):
 			self.register_change_list([coords], new_purpose, (self.plan[coords][1][0], None))
 
 	def _reserve_special_village_building_spots(self):
-		"""Replace residence spots with special village buildings such as pavilions, schools, taverns, and fire stations."""
+		"""Replace residence spots with special village buildings such as pavilions, schools, taverns, doctors and fire stations."""
 		num_other_buildings = 0 # the maximum number of each village producer that should be placed
 		residences = len(self.tent_queue)
 		while residences > 0:
@@ -560,8 +560,12 @@ class VillageBuilder(AreaBuilder):
 		self._replace_planned_residence(BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings, self.personality.max_coverage_building_capacity)
 		self._replace_planned_residence(BUILDING_PURPOSE.TAVERN, num_other_buildings, self.personality.max_coverage_building_capacity)
 
-		num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) // self.personality.normal_fire_station_capacity)))
+		num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) // self.persionality.normal_fire_station_capacity)))
 		self._replace_planned_residence(BUILDING_PURPOSE.FIRE_STATION, num_fire_stations, self.personality.max_fire_station_capacity)
+
+		num_doctors = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) // self.persionality.normal_doctor_capacity)))
+		self._replace_planned_residence(BUILDING_PURPOSE.DOCTOR, num_doctors, self.personality.max_doctor_capacity)
+
 
 		self._create_special_village_building_assignments()
 
@@ -864,6 +868,7 @@ class VillageBuilder(AreaBuilder):
 		village_school_color = (128, 128, 255)
 		tavern_color = (255, 255, 0)
 		fire_station_color = (255, 64, 64)
+		doctor_color(255, 128, 64)
 		reserved_color = (0, 0, 255)
 		unknown_color = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -884,6 +889,8 @@ class VillageBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *tavern_color)
 			elif purpose == BUILDING_PURPOSE.FIRE_STATION:
 				renderer.addColored(tile._instance, *fire_station_color)
+			elif purpose == BUILDING_PURPOSE.DOCTOR:
+				renderer.addColored(tile._instance, *doctor_color)
 			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_color)
 			else:

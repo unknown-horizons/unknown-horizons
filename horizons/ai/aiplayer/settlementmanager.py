@@ -34,6 +34,7 @@ from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaG
 from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
 	FeederTobaccoProductsGoal, FeederSaltGoal
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
+from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
@@ -54,7 +55,7 @@ from horizons.constants import BUILDINGS, RES, GAME_SPEED, TIER
 from horizons.entities import Entities
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
-from horizons.world.disaster.firedisaster import FireDisaster
+from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.production.producer import Producer
 
 class SettlementManager(WorldObject):
@@ -439,24 +440,28 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 	def handle_disaster(self, message):
-		if issubclass(message.disaster_class, FireDisaster):
-			position = message.building.position
-			fire_station_radius = Entities.buildings[BUILDINGS.FIRE_STATION].radius
-			handled = False
-
-			for fire_station in self.settlement.buildings_by_id[BUILDINGS.FIRE_STATION]:
-				if fire_station.position.distance(position) > fire_station_radius:
-					continue
-				# TODO: check whether the building and the fire station are connected by road
-				self.log.info('%s ignoring %s at %s because %s should be able to handle it', self, message.disaster_class.__name__, message.building, fire_station)
-				handled = True
-				break
-
-			if not handled:
-				self.log.info('%s removing %s because of %s', self, message.building, message.disaster_class.__name__)
-				Tear(message.building).execute(self.session)
+		position = message.building.position
+		if issubclass(message.disaster_class, BuildingInfluencingDisaster):
+			rescue = message.disaster_class.RESCUE_BUILDING_TYPE
 		else:
 			self.log.info('%s ignoring unknown disaster of type %s', self, message.disaster_class.__name__)
+			return
+
+		rescue_radius = Entities.buildings[rescue].radius
+		handled = False
+
+		for b in self.settlement.buildings_by_id[rescue]:
+			if b.position.distance(position) > rescue_radius:
+				continue
+			# TODO: check whether the building and the doctor/fire station are connected by road
+			self.log.info('%s ignoring %s at %s because %s should be able to handle it',
+			              self, message.disaster_class.__name__, message.building, rescue)
+			handled = True
+			break
+
+		if not handled:
+			self.log.info('%s removing %s because of %s', self, message.building, message.disaster_class.__name__)
+			Tear(message.building).execute(self.session)
 
 	def __str__(self):
 		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
