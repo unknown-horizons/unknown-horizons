@@ -343,28 +343,30 @@ class Minimap(object):
 			self.icon.hide_tooltip()
 
 	def _show_tooltip(self, event):
-		if hasattr(self, "icon"): # only supported for icon mode atm
-			if self.fixed_tooltip is not None:
-				self.icon.helptext = self.fixed_tooltip
-				self.icon.position_tooltip(event)
-				#self.icon.show_tooltip()
-			else:
-				coords = self._get_event_coords(event)
-				if not coords: # no valid/relevant event location
-					self.icon.hide_tooltip()
-					return
+		if not hasattr(self, "icon"):
+			# only supported for icon mode atm
+			return
+		if self.fixed_tooltip is not None:
+			self.icon.helptext = self.fixed_tooltip
+			self.icon.position_tooltip(event)
+			#self.icon.show_tooltip()
+		else:
+			coords = self._get_event_coords(event)
+			if not coords: # no valid/relevant event location
+				self.icon.hide_tooltip()
+				return
 
-				tile = self.world.get_tile( Point(*coords) )
-				if tile is not None and tile.settlement is not None:
-					new_helptext = tile.settlement.get_component(NamedComponent).name
-					if self.icon.helptext != new_helptext:
-						self.icon.helptext = new_helptext
-						self.icon.show_tooltip()
-					else:
-						self.icon.position_tooltip(event)
+			tile = self.world.get_tile( Point(*coords) )
+			if tile is not None and tile.settlement is not None:
+				new_helptext = tile.settlement.get_component(NamedComponent).name
+				if self.icon.helptext != new_helptext:
+					self.icon.helptext = new_helptext
+					self.icon.show_tooltip()
 				else:
-					# mouse not over relevant part of the minimap
-					self.icon.hide_tooltip()
+					self.icon.position_tooltip(event)
+			else:
+				# mouse not over relevant part of the minimap
+				self.icon.hide_tooltip()
 
 	def highlight(self, tup, factor=1.0, speed=1.0, finish_callback=None, color=(0, 0, 0)):
 		"""Try to get the users attention on a certain point of the minimap.
