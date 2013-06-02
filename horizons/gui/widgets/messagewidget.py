@@ -338,8 +338,8 @@ class _IngameMessage(object):
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
 				self.message = msg
-				print u'Warning: Unsubstituted string {err} in {id} message "{msg}", dict {dic}'.format(
-				       err=err, msg=msg, id=id, dic=message_dict)
+				self.log.warning(u'Unsubstituted string %s in %s message "%s", dict %s',
+				                 err, msg, id, message_dict)
 
 	def __repr__(self):
 		return "% 4d: %s  '%s'  %s %s%s" % (self.created, self.id, self.message,
