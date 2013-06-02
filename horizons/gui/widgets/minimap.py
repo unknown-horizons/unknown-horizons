@@ -370,7 +370,7 @@ class Minimap(object):
 
 	def highlight(self, tup, factor=1.0, speed=1.0, finish_callback=None, color=(0, 0, 0)):
 		"""Try to get the users attention on a certain point of the minimap.
-		@param tuple: world coords
+		@param tup: world coords
 		@param factor: float indicating importance of event
 		@param speed: animation speed as factor
 		@param finish_callback: executed when animation finishes
