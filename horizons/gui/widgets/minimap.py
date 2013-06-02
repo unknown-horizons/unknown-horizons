@@ -287,11 +287,11 @@ class Minimap(object):
 		if self.preview:
 			return # we don't do anything in this mode
 		map_coords = event.map_coords
-		moveable_selecteds = [ i for i in self.session.selected_instances if i.movable ]
-		if moveable_selecteds and event.getButton() == fife.MouseEvent.RIGHT:
+		movable_selecteds = [i for i in self.session.selected_instances if i.movable]
+		if movable_selecteds and event.getButton() == fife.MouseEvent.RIGHT:
 			if drag:
 				return
-			for i in moveable_selecteds:
+			for i in movable_selecteds:
 				Act(i, *map_coords).execute(self.session)
 		elif event.getButton() == fife.MouseEvent.LEFT:
 			if self.view is None:
