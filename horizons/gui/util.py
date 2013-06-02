@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 import os
 
 from fife.extensions.pychan import loadXML
@@ -68,7 +69,8 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	try:
 		widget = loadXML(get_gui_files_map()[filename])
 	except (IOError, ValueError) as error:
-		print u'PLEASE REPORT: invalid path {path} in translation! {error}'.format(path=filename, error=error)
+		log = logging.getLogger('gui')
+		log.error(u'PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
 		raise
 
 	# translate
@@ -107,7 +109,8 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 		if res == 'placeholder':
 			raise Exception('Image not found: {icon_path}'.format(icon_path=icon_path))
 		else:
-			print '[WW] Image not found: {icon_path}'.format(icon_path=icon_path)
+			log = logging.getLogger('gui')
+			log.warn('Image not found: %s', icon_path)
 			icon_path = get_res_icon_path('placeholder', size)
 
 	if full_path:
