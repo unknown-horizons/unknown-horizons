@@ -220,8 +220,7 @@ class Tear(Command):
 			self.log.debug("Tear: building %s already gone, not tearing it again.", self.building)
 			return # invalid command, possibly caused by mp delay
 		if building is None or building.fife_instance is None:
-			self.log.warning("Tear: attempting to tear down a building that shouldn't exist %s", building)
-			print "Tear: attempting to tear down a building that shouldn't exist %s" % building
+			self.log.error("Tear: attempting to tear down a building that shouldn't exist %s", building)
 		else:
 			self.log.debug("Tear: tearing down %s", building)
 			building.remove()
