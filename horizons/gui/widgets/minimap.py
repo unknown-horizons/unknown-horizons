@@ -286,14 +286,15 @@ class Minimap(object):
 		"""
 		if self.preview:
 			return # we don't do anything in this mode
+		button = event.getButton()
 		map_coords = event.map_coords
-		movable_selecteds = [i for i in self.session.selected_instances if i.movable]
-		if movable_selecteds and event.getButton() == fife.MouseEvent.RIGHT:
+		if button == fife.MouseEvent.RIGHT:
 			if drag:
 				return
-			for i in movable_selecteds:
-				Act(i, *map_coords).execute(self.session)
-		elif event.getButton() == fife.MouseEvent.LEFT:
+			for i in self.session.selected_instances:
+				if i.movable:
+					Act(i, *map_coords).execute(self.session)
+		elif button == fife.MouseEvent.LEFT:
 			if self.view is None:
 				print "Warning: Can't handle minimap clicks since we have no view object"
 			else:
