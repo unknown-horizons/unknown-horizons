@@ -507,8 +507,8 @@ class Minimap(object):
 				This code should be here, but since python can't do inlining, we have to inline
 				ourselves for performance reasons
 				covered_area = Rect.init_from_topleft_and_size(
-				  int(x * pixel_per_coord_x)+world_min_x, \
-				  int(y * pixel_per_coord_y)+world_min_y), \
+				  int(x * pixel_per_coord_x)+world_min_x,
+				  int(y * pixel_per_coord_y)+world_min_y),
 				  int(pixel_per_coord_x), int(pixel_per_coord_y))
 				real_map_point = covered_area.center
 				"""
