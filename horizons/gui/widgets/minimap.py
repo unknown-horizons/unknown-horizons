@@ -457,7 +457,8 @@ class Minimap(object):
 			self.minimap_image.set_drawing_enabled()
 			self.minimap_image.rendertarget.removeAll(render_name)
 
-		self.highlight(path[ -1 ], factor=0.4, speed= ( (1.0+math.sqrt(5) / 2) ), finish_callback=cleanup, color=color)
+		speed = 1.0 + math.sqrt(5) / 2
+		self.highlight(path[-1], factor=0.4, speed=speed, finish_callback=cleanup, color=color)
 
 		return True
 
