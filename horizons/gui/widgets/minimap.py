@@ -400,8 +400,9 @@ class Minimap(object):
 
 			radius = MIN_RAD + int(( float(part) / (STEPS // 2) ) * (MAX_RAD - MIN_RAD) )
 
+			draw_point = self.minimap_image.rendertarget.addPoint
 			for x, y in Circle( Point(*tup), radius=radius ).get_border_coordinates():
-				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), *color)
+				draw_point(render_name, fife.Point(x, y), *color)
 
 			ExtScheduler().add_new_object(lambda : high(i), self, INTERVAL, loops=1)
 
@@ -441,6 +442,7 @@ class Minimap(object):
 		render_name = self._get_render_name("ship_route") + str(self.__class__.__ship_route_counter.next())
 		color = unit.owner.color.to_tuple()
 		last_coord = None
+		draw_point = self.minimap_image.rendertarget.addPoint
 		for i in relevant_coords:
 			coord = self._world_to_minimap(i, use_rotation)
 			if last_coord is not None and \
@@ -449,8 +451,7 @@ class Minimap(object):
 			last_coord = coord
 			p.x = coord[0]
 			p.y = coord[1]
-			self.minimap_image.rendertarget.addPoint(render_name,
-			                                         p, *color)
+			draw_point(render_name, p, *color)
 
 		def cleanup():
 			self.minimap_image.set_drawing_enabled()
@@ -596,14 +597,15 @@ class Minimap(object):
 
 			# TODO: nicer selected view
 			dummy_point0.set(coord[0], coord[1])
+			draw_point = self.minimap_image.rendertarget.addPoint
 			if ship in self.session.selected_instances:
-				self.minimap_image.rendertarget.addPoint(render_name, dummy_point0, *Minimap.COLORS["water"])
+				draw_point(render_name, dummy_point0, *Minimap.COLORS["water"])
 				for x_off, y_off in ((-2,  0),
 				                     (+2,  0),
 				                     ( 0, -2),
 				                     ( 0, +2)):
 					dummy_point1.set(coord[0] + x_off, coord[1] + y_off)
-					self.minimap_image.rendertarget.addPoint(render_name, dummy_point1, *color)
+					draw_point(render_name, dummy_point1, *color)
 
 		# draw settlement warehouses if something has changed
 		settlements = self.world.settlements
