@@ -86,7 +86,7 @@ class Minimap(object):
 		@param world: World object or fake thereof
 		@param view: View object for cam control. Can be None to disable this
 		@param renderer: renderer to be used if position isn't an icon
-		@param targetrenderer: fife target rendererfor drawing on icons
+		@param targetrenderer: fife target renderer for drawing on icons
 		@param imagemanager: fife imagemanager for drawing on icons
 		@param cam_border: boolean, whether to draw the cam border
 		@param use_rotation: boolean, whether to use rotation (it must also be enabled in the settings)

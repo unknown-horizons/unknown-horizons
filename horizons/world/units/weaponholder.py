@@ -389,7 +389,7 @@ class WeaponHolder(object):
 
 	def act_attack(self, dest):
 		"""
-		Overridde in subclasses for action code
+		Override in subclasses for action code
 		"""
 		pass
 
