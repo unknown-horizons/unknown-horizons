@@ -333,6 +333,7 @@ class _IngameMessage(object):
 			self.message = message
 		else:
 			msg = _(horizons.globals.db.get_msg_text(id))
+			#TODO why can message_dict not be used with custom messages (`if` branch above)
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
