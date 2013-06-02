@@ -305,10 +305,14 @@ class _IngameMessage(object):
 	like the following: {player}, {gold}. The *message_dict* needed to fill in
 	these placeholders needs to be provided when creating _IngameMessages.
 
-	@param x, y: int position on the map where the action took place.
+	@param point: Point position on the map where the action took place, or None.
 	@param id: message id string, needed to retrieve the message from the database.
 	@param created: tickid when the message was created. Keeps message order after load.
+
 	@param msg_type: messages coupled with logbook entries use this to link to pages
+	@param read: #TODO
+	@param display: #TODO
+	@param message: message text to display. Loads preset for `id` if None.
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	@param icon_id: which icon to display. Loads preset for `id` if None.
 	"""
