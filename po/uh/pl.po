@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-05-07 09:08+0200\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"PO-Revision-Date: 2013-06-03 22:56+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Polish <http://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -483,7 +483,7 @@ msgstr "Het bevat de volgende grondstoffen:"
 #: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:67
 #: horizons/gui/widgets/playerssettlements.py:97
 msgid "Click to change the name of your settlement"
-msgstr "Kliknij aby zmienić nazwę swojej osady."
+msgstr "Kliknij aby zmienić nazwę swojej osady"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -1420,7 +1420,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr "Ustaw maksymalną liczbę klatek na sekundę (fps). Standardowa: 60 fps"
+msgstr "Ustaw maksymalną liczbę klatek na sekundę (fps). Standardowa: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:62
 #, fuzzy
@@ -2013,7 +2013,7 @@ msgstr ""
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr "Możesz zwiększyć zadowolenie swoich mieszkańców obniżając podatki. "
+msgstr "Możesz zwiększyć zadowolenie swoich mieszkańców obniżając podatki."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
@@ -2747,7 +2747,7 @@ msgstr "Handelsroute stoppen"
 
 #: horizons/gui/widgets/routeconfig.py:108
 msgid "Need at least two settlements"
-msgstr "Potrzeba przynajmniej dwóch osad."
+msgstr "Potrzeba przynajmniej dwóch osad"
 
 #: horizons/gui/widgets/routeconfig.py:109
 msgid "You need at least two different settlements in your route."
@@ -2760,7 +2760,7 @@ msgstr "Klik op een nederzetting om een waypoint toe te voegen!"
 
 #: horizons/gui/widgets/routeconfig.py:179
 msgid "Loading into ship"
-msgstr "Załaduj na statek."
+msgstr "Załaduj na statek"
 
 #: horizons/gui/widgets/routeconfig.py:186
 msgid "Unloading from ship"
@@ -2824,7 +2824,7 @@ msgstr "Koszary"
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:72
 msgid "Recruits units suitable for ground combat."
-msgstr "Rekrutuje jednostki do walki lądowej"
+msgstr "Rekrutuje jednostki do walki lądowej."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:77
@@ -3680,14 +3680,14 @@ msgstr "Opslaan van de savegame mislukt"
 
 #: horizons/session.py:405
 msgid "There has been an error while creating your savegame file."
-msgstr "W trakcie tworzenia lub zapisywania gry wystąpił błąd. "
+msgstr "W trakcie tworzenia lub zapisywania gry wystąpił błąd."
 
 #: horizons/session.py:406
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr ""
-"Zazwyczaj oznacza to że nazwa zapisu zawiera nieobsługiwane znaki specjalne"
+"Zazwyczaj oznacza to że nazwa zapisu zawiera nieobsługiwane znaki specjalne."
 
 #: horizons/session.py:412
 msgid "Access is denied"
@@ -4047,7 +4047,7 @@ msgstr "deski"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Kilku z Twoich mieszkańców nie ma dostępu do rynku"
+msgstr "Kilku z Twoich mieszkańców nie ma dostępu do rynku."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
