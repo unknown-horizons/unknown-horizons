@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-06-03 22:20+0200\n"
+"PO-Revision-Date: 2013-06-03 23:03+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Afrikaans <http://hosted.weblate.org/projects/uh/uh/af/>\n"
 "Language: af\n"
@@ -543,7 +543,7 @@ msgstr "Saldo:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:42
 msgid "Show resources produced in this settlement"
-msgstr "Amosar recursos producidos neste asentamento."
+msgstr ""
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
@@ -712,7 +712,7 @@ msgstr "Cartos"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Tesouraría actual do xogador, máis ingresos futuros esperados."
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -735,8 +735,6 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
-"Valor dos recursos xerados de todas as fontes posíbeis dos asentamentos do "
-"xogador."
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 #, fuzzy
@@ -745,7 +743,7 @@ msgstr "Edificios"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Valor dos edificios dos asentamentos do xogador."
+msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
@@ -759,8 +757,6 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
-"Valor que denota o progreso dos asentamentos en cuestión de habitantes, "
-"edificios e felicidade xeral."
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -768,14 +764,12 @@ msgstr "Unidades"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "Valor de todas as unidades do xogador."
+msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
-"O valor total de todas as entradas individuais ou, para acurtar, a "
-"«puntuación total do xogador»."
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:118
@@ -1258,7 +1252,6 @@ msgstr "Profundidade de cor:"
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "If set to 0, use the driver default"
 msgstr ""
-"Se lle asignas o valor 0, usarase o valor predeterminado do controlador."
 
 #: content/gui/xml/mainmenu/settings.xml:35
 msgid "Full screen:"
@@ -1266,7 +1259,7 @@ msgstr "Pantalla completa:"
 
 #: content/gui/xml/mainmenu/settings.xml:43
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr "SDL está deseñado como sistema de reserva, e pode causar problemas."
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:43
 msgid "Used renderer:"
@@ -1310,7 +1303,7 @@ msgstr "Desprazarse ata o bordo do mapa:"
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "Se mover a vista cando o punteiro do rato se achega ao bordo do mapa."
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid "Cursor centered zoom:"
@@ -1332,7 +1325,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "0 is default system settings"
-msgstr "O valor predeterminado da configuración do sistema é 0."
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
@@ -1369,7 +1362,7 @@ msgstr "Rotar o minimapa xunto co mapa:"
 
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Se rotar tamén o minimapa ao rotar o mapa normal."
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "Uninterrupted building:"
@@ -1378,8 +1371,6 @@ msgstr "Construción continua:"
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
-"Activa esta opción para non saír do modo de construción despois de construír "
-"un edificio."
 
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Auto-unload ship:"
@@ -1387,7 +1378,7 @@ msgstr "Descargar o barco automaticamente"
 
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Whether to unload the ship after founding a settlement"
-msgstr "Se descargar o barco tras fundar un asentamento."
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid ""
@@ -1434,7 +1425,7 @@ msgstr "Rede"
 
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "If set to 0, use the router default"
-msgstr "Se escoller o valor 0, usarase o valor predeterminado do encamiñador."
+msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "Network port:"
@@ -1632,7 +1623,7 @@ msgstr ""
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
-msgstr "Debes reiniciar."
+msgstr ""
 
 #: horizons/engine/settingsdialog.py:70
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -1727,7 +1718,7 @@ msgstr ""
 
 #: horizons/engine/settingshandler.py:277
 msgid "Logging enabled"
-msgstr "Activouse o historial."
+msgstr ""
 
 #: horizons/engine/settingshandler.py:279
 #, python-format
@@ -1886,7 +1877,7 @@ msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
-msgstr "Non é posíbel atopar pyenet."
+msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid ""
@@ -1964,11 +1955,6 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"A versión da partida é distinta da túa versión do xogo. Todos os xogadores "
-"dunha mesma partida deben usar a mesma versión do xogo. O mellor para "
-"solucionalo é que todos os xogadores actualicen a súa versión do xogo á "
-"última. Versión da partida: {game_version}; versión do xogo instalada "
-"localmente: {own_version}."
 
 #: horizons/gui/modules/multiplayermenu.py:270
 msgid "Password of the game"
@@ -2224,7 +2210,7 @@ msgstr "Construír {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr "Preme H para retirar este consello."
+msgstr ""
 
 #: horizons/gui/tabs/boatbuildertabs.py:51
 msgid "Boat builder overview"
@@ -3232,7 +3218,7 @@ msgstr "Militar"
 
 #: horizons/main.py:349
 msgid "Failed to start/load the game"
-msgstr "Non foi posíbel comezar ou cargar a partida."
+msgstr ""
 
 #: horizons/main.py:350
 msgid "The game you selected could not be started."
@@ -3246,7 +3232,7 @@ msgstr ""
 
 #: horizons/main.py:470
 msgid "No quicksaves found"
-msgstr "Non se atoparon partidas gardadas con gardado rápido."
+msgstr ""
 
 #: horizons/main.py:471
 msgid "You need to quicksave before you can quickload."
@@ -3277,8 +3263,6 @@ msgstr "Imposíbel"
 #: horizons/mpsession.py:85
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
-"A funcionalidade de gardar e cargar partidas de varios xogadores non está "
-"lista aínda."
 
 #: horizons/mpsession.py:97
 #, fuzzy
