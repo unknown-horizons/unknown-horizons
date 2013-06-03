@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-05-14 16:28+0200\n"
+"PO-Revision-Date: 2013-06-03 22:55+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -25,7 +25,7 @@ msgstr "Unknown Horizons se ha caído."
 # 83%
 #: run_uh.py:222
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Lamentamos mucho lo sucedido y queremos reparar el problema subyacente"
+msgstr "Lamentamos mucho lo sucedido y queremos reparar el problema subyacente."
 
 #: run_uh.py:223
 msgid "In order to do this, we need the information from the logfile:"
@@ -41,7 +41,7 @@ msgstr ""
 
 #: run_uh.py:273
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "No se pueden encontrar la librería \"PyYAML\""
+msgstr "No se pueden encontrar la librería \"PyYAML\"."
 
 #: run_uh.py:274
 msgid "PyYAML (a required library) is missing and needs to be installed."
@@ -50,7 +50,7 @@ msgstr "PyYAML (Librería requirida) no se encuentra y necesita ser instalada."
 #: run_uh.py:275
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
-"El instalador de windows está disponible en http://pyyaml.org/wiki/PyYAML"
+"El instalador de windows está disponible en http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:276
 msgid ""
@@ -479,7 +479,7 @@ msgstr "Eficiencia de transporte"
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
-msgstr "Haz clic para cambiar el nombre de este navío."
+msgstr "Haz clic para cambiar el nombre de este navío"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
@@ -1273,7 +1273,7 @@ msgstr "Límite de imágenes por segundo (frame rate):"
 
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr "Fija un máximo de ratio de frames. Por defecto: 60 fps"
+msgstr "Fija un máximo de ratio de frames. Por defecto: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:62
 msgid "Sound"
@@ -1377,7 +1377,7 @@ msgstr "Construcción sin interrupciones:"
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 "Cuando está activado, no se sale del modo de construcción al completar un "
-"edificio."
+"edificio"
 
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Auto-unload ship:"
@@ -1795,7 +1795,7 @@ msgstr "Presiona 'ESC' para acceder el Menú del juego."
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Usa 'SHIFT' para asentar múltiples edificios"
+msgstr "Usa 'SHIFT' para asentar múltiples edificios."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
@@ -2492,7 +2492,7 @@ msgstr "Haz clic para añadir una nueva casilla"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr "Restablecer esta configuración como predeterminada"
+msgstr "Restablecer esta configuración como predeterminada."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
@@ -3784,7 +3784,7 @@ msgstr "depósito de piedra"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You failed the scenario."
-msgstr "No has logrado completar el escenario"
+msgstr "No has logrado completar el escenario."
 
 #. This is a database entry: the name of a resource.
 msgid "fire"
