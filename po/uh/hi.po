@@ -7,39 +7,33 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2012-12-12 12:21+0000\n"
-"Last-Translator: supercracker111 <supercracker111@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-06-03 22:26+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"Language-Team: Hindi <http://hosted.weblate.org/projects/uh/uh/hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #: run_uh.py:220
-#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr "“Horizontes por explorar” quebrou."
+msgstr ""
 
 #: run_uh.py:222
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "हमें इस बात के लिए बहुत खेद है और अंतर्निहित त्रुटि को ठीक करना चाहते हैं |"
 
 #: run_uh.py:223
-#, fuzzy
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "E para poder arranxalo, necesitamos a información do historial:"
+msgstr ""
 
 #: run_uh.py:225
-#, fuzzy
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Agradeceriámosche que nolo fixeses chegar. Podes contactar connosco ben por "
-"IRC ou ben a través dos foros. Para máis información, visita o noso sitio "
-"web: «http://unknown-horizons.org»."
 
 #: run_uh.py:273
 msgid "Error: Unable to find required library \"PyYAML\"."
@@ -62,9 +56,8 @@ msgstr ""
 "\" नाम पर पा सकते है |"
 
 #: run_uh.py:310
-#, fuzzy
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Grazas por xogar a Unknown Horizons!"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -73,7 +66,7 @@ msgstr ""
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 msgid "Save map"
-msgstr "Gardar o mapa"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
@@ -84,14 +77,14 @@ msgstr ""
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr "Configuración"
+msgstr ""
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
-msgstr "Axuda"
+msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
@@ -111,30 +104,27 @@ msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr "Comezo da partida"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Debes fundar un asentamento para poder construír edificios."
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Selecciona o teu barco e preme na costa co botón secundario para achegarte a "
-"ela."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr ""
-"A continuación, preme o botón grande da lapela de información do barco."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr "Construír"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "Custos de funcionamento:"
+msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -143,78 +133,78 @@ msgstr ""
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
-msgstr "Habitantes"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
-msgstr "Aumentar a velocidade da partida (+)"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
-msgstr "Reducir a velocidade da partida (-)"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
-msgstr "Rotar o mapa en sentido contrario ao das agullas do reloxo (,)"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
-msgstr "Rotar o mapa no sentido das agullas do reloxo (.)"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
-msgstr "Achegar"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
-msgstr "Afastar"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 msgid "Destroy (X)"
-msgstr "Destruír (X)"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
-msgstr "Bitácora (L)"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 msgid "Build menu (B)"
-msgstr "Menú de construción (B)"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
-msgstr "Diplomacia"
+msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
 msgid "Game menu (Esc)"
-msgstr "Menú da partida (Esc)"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
-msgstr "Cambiar o nome"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
-msgstr "Nome anterior:"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr "Escribe o novo nome:"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr "Aplicar o novo nome"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/help.xml:49
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
-msgstr "Conversa"
+msgstr ""
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "Escribe a túa mensaxe:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -231,116 +221,114 @@ msgstr "Escribe a túa mensaxe:"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Running costs"
-msgstr "Custos de funcionamento"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Para construír un barco, preme unha das lapelas de tipo de barco, selecciona "
-"o barco que queres e conforma a solicitude."
 
 #. Information about the ship currently under construction at the boat
 #. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr "Construíndose:"
+msgstr ""
 
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
-msgstr "Parar"
+msgstr ""
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr "Continuar"
+msgstr ""
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "Progreso da construción:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
-msgstr "Faltan recursos:"
+msgstr ""
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr "Cancelar a construción:"
+msgstr ""
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
-msgstr "(perder todos os recursos)"
+msgstr ""
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "Cancelar o proceso de construción"
+msgstr ""
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
-msgstr "aliado"
+msgstr ""
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
-msgstr "neutral"
+msgstr ""
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr "inimigo"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
 msgid "Building overview"
-msgstr "Información de construción"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr "Uso da capacidade"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
 msgid "Settlement inventory"
-msgstr "Inventario do asentamento"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:39
 msgid "Settler overview"
-msgstr "Informe do colono"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr "Impostos pagados"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr "Impostos:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "Taxa de impostos"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr "Permiso para avanzar:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
@@ -367,7 +355,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr "Residentes por casa"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
@@ -379,54 +367,52 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr "Resumo"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
-msgstr "casas"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr "residentes"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:348
 msgid "Selling"
-msgstr "Vender"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: horizons/gui/tabs/buyselltab.py:341
 msgid "Buying"
-msgstr "Mercar"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
 msgid "Name:"
-msgstr "Nome:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
-msgstr "Armas:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr "Depósito de recursos"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Este é un depósito de recursos; podes construír unha mina nel para extraer "
-"os seus recursos."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr "Contén os seguintes recursos:"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -434,18 +420,17 @@ msgstr "Contén os seguintes recursos:"
 #: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:67
 #: horizons/gui/widgets/playerssettlements.py:97
 msgid "Click to change the name of your settlement"
-msgstr "Premer para renomear o asentamento"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
-#, fuzzy
 msgid "Happiness"
-msgstr "Felicidade"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr "Residentes"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
