@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-05-20 04:30+0200\n"
+"PO-Revision-Date: 2013-06-03 23:00+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
@@ -1283,7 +1283,7 @@ msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
 "Fare imleci harita kenarlarına geldiğinde bakış noktasının hareket ettirilip "
-"ettirilmemesi."
+"ettirilmemesi"
 
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid "Cursor centered zoom:"
@@ -1610,7 +1610,7 @@ msgstr "Değişiklerinizin etkin olması için oyunu yeniden başlatınız."
 
 #: horizons/engine/settingsdialog.py:74
 msgid "Restore default settings"
-msgstr "Varsayılan ayarlara geri dön."
+msgstr "Varsayılan ayarlara geri dön"
 
 #: horizons/engine/settingsdialog.py:75
 msgid ""
@@ -1694,7 +1694,7 @@ msgstr ""
 
 #: horizons/engine/settingshandler.py:277
 msgid "Logging enabled"
-msgstr "Günlükleme açıldı."
+msgstr "Günlükleme açıldı"
 
 #: horizons/engine/settingshandler.py:279
 #, python-format
@@ -1805,7 +1805,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
-msgstr "Ağaçları saydamlaştırmak için 'T' ye basınız"
+msgstr "Ağaçları saydamlaştırmak için 'T' ye basınız."
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:101
@@ -1896,7 +1896,7 @@ msgstr "Ağda bir sorun oluştu:"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Version differs!"
-msgstr "Versiyon farklı"
+msgstr "Versiyon farklı!"
 
 #: horizons/gui/modules/multiplayermenu.py:206
 #: horizons/gui/modules/multiplayermenu.py:443
@@ -1924,7 +1924,7 @@ msgstr "Oyuncular: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:230
 msgid "Wrong version"
-msgstr "Yanlış sürüm."
+msgstr "Yanlış sürüm"
 
 #: horizons/gui/modules/multiplayermenu.py:232
 #, python-format
@@ -1956,7 +1956,7 @@ msgstr "Önerilen oyuncu sayısı: {number}"
 #: horizons/gui/modules/multiplayermenu.py:467
 #: horizons/gui/modules/multiplayermenu.py:475
 msgid "Click here to change your name and/or color"
-msgstr "Adınızı ve/veya renginizi değiştirmek için buraya tıklayınız."
+msgstr "Adınızı ve/veya renginizi değiştirmek için buraya tıklayınız"
 
 #: horizons/gui/modules/multiplayermenu.py:494
 #, python-format
@@ -1999,7 +1999,7 @@ msgstr "Adınız {new_name}"
 #: horizons/gui/modules/multiplayermenu.py:589
 #, python-format
 msgid "{player} is now known as {new_name}"
-msgstr "{player} artık {new_name} olarak biliniyor."
+msgstr "{player} artık {new_name} olarak biliniyor"
 
 #: horizons/gui/modules/multiplayermenu.py:593
 msgid "You changed your color"
@@ -2045,7 +2045,7 @@ msgstr "Dosya adı verilmedi"
 
 #: horizons/gui/modules/select_savegame.py:145
 msgid "Please enter a valid filename."
-msgstr "Lütfen geçerli bir dosya adı girin"
+msgstr "Lütfen geçerli bir dosya adı girin."
 
 #: horizons/gui/modules/select_savegame.py:150
 #, python-format
@@ -2123,7 +2123,7 @@ msgstr "Geçersiz oyuncu adı"
 
 #: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
-msgstr "Geçersiz bir kullanıcı adı girdiniz"
+msgstr "Geçersiz bir kullanıcı adı girdiniz."
 
 #: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
@@ -2151,7 +2151,7 @@ msgstr "Ada boyutu sapması:"
 
 #: horizons/gui/modules/singleplayermenu.py:343
 msgid "Click to generate a different random map"
-msgstr "Rasgele harita yaratmak için buraya tıklayınız."
+msgstr "Rasgele harita yaratmak için buraya tıklayınız"
 
 #: horizons/gui/modules/singleplayermenu.py:504
 msgid "Invalid scenario file"
@@ -2188,7 +2188,7 @@ msgstr "Tanım: {desc}"
 #: horizons/gui/mousetools/buildingtool.py:231
 #, python-format
 msgid "Build {building}"
-msgstr "{building} inşa et."
+msgstr "{building} inşa et"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
@@ -2344,7 +2344,7 @@ msgstr "Ticaret yapan en yakın ambar çok uzakta"
 
 #: horizons/gui/tabs/shiptabs.py:104
 msgid "Cannot equip trade ship with weapons"
-msgstr "Silahlı ticaret gemisi edinilemez."
+msgstr "Silahlı ticaret gemisi edinilemez"
 
 #: horizons/gui/tabs/shiptabs.py:105
 msgid "It is not possible to equip a trade ship with weapons."
@@ -2433,7 +2433,7 @@ msgstr "Yeni bir raf eklemek için tıklayın"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr "Fabrika ayarlarına geri dön"
+msgstr "Fabrika ayarlarına geri dön."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
@@ -2469,7 +2469,7 @@ msgstr "En az iki yerleşim yeri gerekiyor"
 
 #: horizons/gui/widgets/routeconfig.py:109
 msgid "You need at least two different settlements in your route."
-msgstr "Rotanızda en az iki yerleşim yeri olmalı"
+msgstr "Rotanızda en az iki yerleşim yeri olmalı."
 
 #: horizons/gui/widgets/routeconfig.py:140
 msgid "Click on a settlement to add a waypoint!"
@@ -3204,7 +3204,7 @@ msgstr "Kayıtlı oyun hasar görmüş ya da eski bir sürümle kaydilmiş olabi
 
 #: horizons/main.py:470
 msgid "No quicksaves found"
-msgstr "Hızlı oyun bulunamadı."
+msgstr "Hızlı oyun bulunamadı"
 
 #: horizons/main.py:471
 msgid "You need to quicksave before you can quickload."
@@ -3275,7 +3275,7 @@ msgstr "bilinmiyor"
 #. usually invalid filename
 #: horizons/session.py:404
 msgid "Failed to create savegame file"
-msgstr "Oyun kayıt dosyası oluşturulamadı."
+msgstr "Oyun kayıt dosyası oluşturulamadı"
 
 #: horizons/session.py:405
 msgid "There has been an error while creating your savegame file."
