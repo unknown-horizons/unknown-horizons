@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-24 23:39+0200\n"
+"POT-Creation-Date: 2013-06-03 22:01+0200\n"
 "PO-Revision-Date: 2013-05-20 17:12+0200\n"
 "Last-Translator: Clement Coste <clement.coste2@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh/fr/>\n"
@@ -1087,7 +1087,8 @@ msgid "Cancel game"
 msgstr "Abandonner la partie"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-msgid "Loading ..."
+#, fuzzy
+msgid "Loading…"
 msgstr "Chargement ..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
@@ -1810,50 +1811,50 @@ msgstr "Voulez vous l'écraser ?"
 msgid "Confirmation for overwriting"
 msgstr "Confirmation du remplacement"
 
-#: horizons/gui/modules/loadingscreen.py:36
+#: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
 msgstr "Citations"
 
-#: horizons/gui/modules/loadingscreen.py:58
+#: horizons/gui/modules/loadingscreen.py:59
 msgid "Gameplay Tips"
 msgstr "Conception de la jouabilité"
 
-#: horizons/gui/modules/loadingscreen.py:60
+#: horizons/gui/modules/loadingscreen.py:61
 msgid "Press 'ESC' to access Game Menu."
 msgstr "Appuyez «ESC» afin d'accéder au menu."
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Maintenir «SHIFT» afin de placer plusieurs bâtiments."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:64
+#: horizons/gui/modules/loadingscreen.py:65
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "Pour l'instant seulement les premiers {tier} niveaux sont jouables."
 
-#: horizons/gui/modules/loadingscreen.py:66
+#: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
 msgstr "Vous pouvez interrompre la partie avec «P»."
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
 msgstr "Vous pouvez tirer des rues en maintenant la souris gauche enfoncé."
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
 "Vous pouvez construire plusieurs bâtiments en maintenant la touche «SHIFT» "
 "enfoncé."
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
 "Vous pouvez augmenter la satisfaction de vos habitants en réduisant les "
 "taxes."
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
@@ -1861,62 +1862,73 @@ msgstr ""
 "Érigez des casernes de pompiers et des docteurs afin de protéger vos "
 "habitants de feux et de maladies."
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
 msgstr "Érigez des dépôts afin d'augmenter votre capacité de stockage."
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
 msgstr ""
 "Assurez-vous que chaque habitation est dans le rayon d'action d'un marché."
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
 msgstr "Appuyez «T» afin de rendre les arbres transparents."
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:100
-msgid "Starting engine..."
+#: horizons/gui/modules/loadingscreen.py:101
+#, fuzzy
+msgid "Starting engine…"
 msgstr "Lance le moteur ..."
 
-#: horizons/gui/modules/loadingscreen.py:101
-msgid "Catching fish..."
+#: horizons/gui/modules/loadingscreen.py:102
+#, fuzzy
+msgid "Catching fish…"
 msgstr "Attraper du poisson..."
 
-#: horizons/gui/modules/loadingscreen.py:102
-msgid "Drawing user interface..."
+#: horizons/gui/modules/loadingscreen.py:103
+#, fuzzy
+msgid "Drawing user interface…"
 msgstr "Dessiner l'interface usager..."
 
-#: horizons/gui/modules/loadingscreen.py:103
-msgid "Activating timer..."
+#: horizons/gui/modules/loadingscreen.py:104
+#, fuzzy
+msgid "Activating timer…"
 msgstr "Activer le compte-minutes..."
 
-#: horizons/gui/modules/loadingscreen.py:104
-msgid "Chomping game data..."
+#: horizons/gui/modules/loadingscreen.py:105
+#, fuzzy
+msgid "Chomping game data…"
 msgstr "Processer les données du jeu..."
 
-#: horizons/gui/modules/loadingscreen.py:105
-msgid "Shaping islands..."
+#: horizons/gui/modules/loadingscreen.py:106
+#, fuzzy
+msgid "Shaping islands…"
 msgstr "Former les îles..."
 
-#: horizons/gui/modules/loadingscreen.py:106
-msgid "Preparing blueprints..."
+#: horizons/gui/modules/loadingscreen.py:107
+#, fuzzy
+msgid "Preparing blueprints…"
 msgstr "Préparer les plans de construction..."
 
-#: horizons/gui/modules/loadingscreen.py:107
-msgid "Filling world with water..."
+#: horizons/gui/modules/loadingscreen.py:108
+#, fuzzy
+msgid "Filling world with water…"
 msgstr "Inonder le monde..."
 
-#: horizons/gui/modules/loadingscreen.py:108
-msgid "Raising animals..."
+#: horizons/gui/modules/loadingscreen.py:109
+#, fuzzy
+msgid "Raising animals…"
 msgstr "Élever des animaux..."
 
-#: horizons/gui/modules/loadingscreen.py:109
-msgid "Convincing AI..."
+#: horizons/gui/modules/loadingscreen.py:110
+#, fuzzy
+msgid "Convincing AI…"
 msgstr "Persuader l'IA..."
 
-#: horizons/gui/modules/loadingscreen.py:110
-msgid "Burying treasures..."
+#: horizons/gui/modules/loadingscreen.py:111
+#, fuzzy
+msgid "Burying treasures…"
 msgstr "Enterrer les trésors..."
 
 #: horizons/gui/modules/multiplayermenu.py:118
@@ -2017,7 +2029,7 @@ msgstr "Entrez le préfixe :"
 
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:351
-#: horizons/gui/modules/singleplayermenu.py:405
+#: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Nombre de joueurs recommandé : {number}"
@@ -2197,72 +2209,72 @@ msgstr "Erreur !"
 msgid "Failed to delete savefile!"
 msgstr "Échec lors de l'effacement de la sauvegarde !"
 
-#: horizons/gui/modules/singleplayermenu.py:104
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "Invalid player name"
 msgstr "Nom du joueur invalide"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:104
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Vous avez entré un nom de joueur invalide."
 
 # 76%
-#: horizons/gui/modules/singleplayermenu.py:147
+#: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Densité des ressources :"
 
-#: horizons/gui/modules/singleplayermenu.py:225
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Map size:"
 msgstr "Taille de la carte :"
 
-#: horizons/gui/modules/singleplayermenu.py:226
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Water:"
 msgstr "Eau :"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Max island size:"
 msgstr "Taille maximale des îles :"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Preferred island size:"
 msgstr "Taille préférée des îles :"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:230
 msgid "Island size deviation:"
 msgstr "Divergence de la taille des îles :"
 
-#: horizons/gui/modules/singleplayermenu.py:342
+#: horizons/gui/modules/singleplayermenu.py:343
 msgid "Click to generate a different random map"
 msgstr "Cliquez ici pour générer une carte aléatoire différente"
 
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "Invalid scenario file"
 msgstr "Nom de scénario invalide"
 
-#: horizons/gui/modules/singleplayermenu.py:504
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "The selected file is not a valid scenario file."
 msgstr "Le fichier sélectionné n'est pas un scénario valide."
 
-#: horizons/gui/modules/singleplayermenu.py:505
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Error message:"
 msgstr "Message d'erreur :"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:506
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Veuillez rapporter ceci à l'auteur."
 
-#: horizons/gui/modules/singleplayermenu.py:569
+#: horizons/gui/modules/singleplayermenu.py:570
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Difficulté : {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:573
+#: horizons/gui/modules/singleplayermenu.py:574
 #, python-format
 msgid "Author: {author}"
 msgstr "Auteur : {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:577
+#: horizons/gui/modules/singleplayermenu.py:578
 #, python-format
 msgid "Description: {desc}"
 msgstr "Description : {desc}"

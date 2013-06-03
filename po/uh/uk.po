@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-24 23:39+0200\n"
+"POT-Creation-Date: 2013-06-03 22:01+0200\n"
 "PO-Revision-Date: 2013-05-21 12:55+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Ukrainian <http://hosted.weblate.org/projects/uh/uh/uk/>\n"
@@ -1055,7 +1055,8 @@ msgid "Cancel game"
 msgstr "Скасувати гру"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-msgid "Loading ..."
+#, fuzzy
+msgid "Loading…"
 msgstr "Завантаження…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
@@ -1755,107 +1756,107 @@ msgstr ""
 msgid "Confirmation for overwriting"
 msgstr "Підтвердження перезапису"
 
-#: horizons/gui/modules/loadingscreen.py:36
+#: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
 msgstr "Лапки"
 
-#: horizons/gui/modules/loadingscreen.py:58
+#: horizons/gui/modules/loadingscreen.py:59
 msgid "Gameplay Tips"
 msgstr "Поради щодо гри"
 
-#: horizons/gui/modules/loadingscreen.py:60
+#: horizons/gui/modules/loadingscreen.py:61
 msgid "Press 'ESC' to access Game Menu."
 msgstr "Натисніть \"ESC\" для доступу до меню гри."
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Використовуйте \"SHIFT\", щоб розмістити кілька будівель."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:64
+#: horizons/gui/modules/loadingscreen.py:65
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "В даний час тільки перші {tier} рівні можуть відтворюватися."
 
-#: horizons/gui/modules/loadingscreen.py:66
+#: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
 msgstr "Ви можете призупинити гру з 'P'."
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
 msgstr "Ви можете перетягнути дороги, утримуючи ліву кнопку миші."
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr "Ви можете побудувати декілька будівель, утримуючи клавішу 'Shift'."
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr "Ви можете збільшити щастя ваших жителів за рахунок зниження податків."
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
 "Будуйте пожежну станцію та лікарів, щоб захистити жителів від пожеж і хвороб."
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
 msgstr "Будуйте намети для зберігання, щоби збільшити ємність."
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
 msgstr "Переконайтеся, що кожен будинок знаходиться в області дії ринку."
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
 msgstr "Натисніть 'T', щоби зробити дерева прозорими."
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:100
-msgid "Starting engine..."
-msgstr ""
-
 #: horizons/gui/modules/loadingscreen.py:101
-msgid "Catching fish..."
+msgid "Starting engine…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:102
-msgid "Drawing user interface..."
+msgid "Catching fish…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:103
-msgid "Activating timer..."
+msgid "Drawing user interface…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:104
-msgid "Chomping game data..."
+msgid "Activating timer…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:105
-msgid "Shaping islands..."
+msgid "Chomping game data…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:106
-msgid "Preparing blueprints..."
+msgid "Shaping islands…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:107
-msgid "Filling world with water..."
+msgid "Preparing blueprints…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:108
-msgid "Raising animals..."
+msgid "Filling world with water…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:109
-msgid "Convincing AI..."
+msgid "Raising animals…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:110
-msgid "Burying treasures..."
+msgid "Convincing AI…"
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:111
+msgid "Burying treasures…"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:118
@@ -1954,7 +1955,7 @@ msgid "Enter password:"
 msgstr "Введіть пароль:"
 
 #: horizons/gui/modules/multiplayermenu.py:351
-#: horizons/gui/modules/singleplayermenu.py:405
+#: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Рекомендоване число гравців: {number}"
@@ -2125,69 +2126,69 @@ msgstr "Помилка!"
 msgid "Failed to delete savefile!"
 msgstr "Не вдалося вилучити збережену гру！"
 
-#: horizons/gui/modules/singleplayermenu.py:104
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "Invalid player name"
 msgstr "Некоректне ім'я користувача"
 
-#: horizons/gui/modules/singleplayermenu.py:104
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Ви ввели некоректне ім'я гравця."
 
-#: horizons/gui/modules/singleplayermenu.py:147
+#: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Густина родовищ:"
 
-#: horizons/gui/modules/singleplayermenu.py:225
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Map size:"
 msgstr "Розмір карти:"
 
-#: horizons/gui/modules/singleplayermenu.py:226
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Water:"
 msgstr "Вода:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Max island size:"
 msgstr "Максимальний розмір острова:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Preferred island size:"
 msgstr "Переважний розмір острова:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:230
 msgid "Island size deviation:"
 msgstr "Відхилення розміру острова:"
 
-#: horizons/gui/modules/singleplayermenu.py:342
+#: horizons/gui/modules/singleplayermenu.py:343
 msgid "Click to generate a different random map"
 msgstr "Натисніть для генерації іншої випадкової карти"
 
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "Invalid scenario file"
 msgstr "Неправильний файл сценарію гри"
 
-#: horizons/gui/modules/singleplayermenu.py:504
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "The selected file is not a valid scenario file."
 msgstr "Вибраний файл не є правильним файлом сценарієм."
 
-#: horizons/gui/modules/singleplayermenu.py:505
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Error message:"
 msgstr "Повідомлення про помилку:"
 
-#: horizons/gui/modules/singleplayermenu.py:506
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Будь ласка, повідомте про це авторам."
 
-#: horizons/gui/modules/singleplayermenu.py:569
+#: horizons/gui/modules/singleplayermenu.py:570
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Складність: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:573
+#: horizons/gui/modules/singleplayermenu.py:574
 #, python-format
 msgid "Author: {author}"
 msgstr "Автор: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:577
+#: horizons/gui/modules/singleplayermenu.py:578
 #, python-format
 msgid "Description: {desc}"
 msgstr "Опис: {desc}"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-24 23:39+0200\n"
+"POT-Creation-Date: 2013-06-03 22:01+0200\n"
 "PO-Revision-Date: 2013-05-20 12:13+0200\n"
 "Last-Translator: Daniel Tominac <tominaccell@gmail.com>\n"
 "Language-Team: Croatian <http://hosted.weblate.org/projects/uh/uh/hr/>\n"
@@ -1055,7 +1055,8 @@ msgid "Cancel game"
 msgstr "Otkaži igru"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-msgid "Loading ..."
+#, fuzzy
+msgid "Loading…"
 msgstr "Učitavanje ..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
@@ -1763,47 +1764,47 @@ msgstr "Da li želite spremiti preko postojeće?"
 msgid "Confirmation for overwriting"
 msgstr "Potvrdi za spremanje preko postojećeg"
 
-#: horizons/gui/modules/loadingscreen.py:36
+#: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
 msgstr "Citati"
 
-#: horizons/gui/modules/loadingscreen.py:58
+#: horizons/gui/modules/loadingscreen.py:59
 msgid "Gameplay Tips"
 msgstr "Gameplay savjeti"
 
-#: horizons/gui/modules/loadingscreen.py:60
+#: horizons/gui/modules/loadingscreen.py:61
 msgid "Press 'ESC' to access Game Menu."
 msgstr "Pritisnite 'ESC' kako bi ušli u izbornik igre."
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Pritisnite 'SHIFT' kako bi postavili više građevina."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:64
+#: horizons/gui/modules/loadingscreen.py:65
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "Trenutno su samo prvih {tier} razina dostupni za igru."
 
-#: horizons/gui/modules/loadingscreen.py:66
+#: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
 msgstr "Igru možete pauzirati sa tipkom 'P'."
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
 msgstr "Možete vući ceste držeći lijevu tipku miša."
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr "Možete izgraditi više zgrada držeći tipku 'SHIFT'."
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
 "Možete povećati razinu sreće svojih stanovnika tako da smanjite poreze."
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
@@ -1811,61 +1812,72 @@ msgstr ""
 "Izgradite vatrogasnu stanicu i doktore kako bi zaštitili svoje stanovnike od "
 "vatre i bolesti."
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
 msgstr "Izgradite skaldišne šatore kako bi povećali kapacitet skladišta."
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
 msgstr "Budite sigurni da je svaka kuća u dometu tržnice."
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
 msgstr "Pritisnite 'T' kako bi stabla postala prozirna."
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:100
-msgid "Starting engine..."
+#: horizons/gui/modules/loadingscreen.py:101
+#, fuzzy
+msgid "Starting engine…"
 msgstr "Pokrećem mehanizam..."
 
-#: horizons/gui/modules/loadingscreen.py:101
-msgid "Catching fish..."
+#: horizons/gui/modules/loadingscreen.py:102
+#, fuzzy
+msgid "Catching fish…"
 msgstr "Hvatam ribu..."
 
-#: horizons/gui/modules/loadingscreen.py:102
-msgid "Drawing user interface..."
+#: horizons/gui/modules/loadingscreen.py:103
+#, fuzzy
+msgid "Drawing user interface…"
 msgstr "Crtam korisničko sučelje..."
 
-#: horizons/gui/modules/loadingscreen.py:103
-msgid "Activating timer..."
+#: horizons/gui/modules/loadingscreen.py:104
+#, fuzzy
+msgid "Activating timer…"
 msgstr "Aktiviram štopericu..."
 
-#: horizons/gui/modules/loadingscreen.py:104
-msgid "Chomping game data..."
+#: horizons/gui/modules/loadingscreen.py:105
+#, fuzzy
+msgid "Chomping game data…"
 msgstr "Cjepam podatke igre..."
 
-#: horizons/gui/modules/loadingscreen.py:105
-msgid "Shaping islands..."
+#: horizons/gui/modules/loadingscreen.py:106
+#, fuzzy
+msgid "Shaping islands…"
 msgstr "Oblikujem otoke..."
 
-#: horizons/gui/modules/loadingscreen.py:106
-msgid "Preparing blueprints..."
+#: horizons/gui/modules/loadingscreen.py:107
+#, fuzzy
+msgid "Preparing blueprints…"
 msgstr "Pripremam nacrte..."
 
-#: horizons/gui/modules/loadingscreen.py:107
-msgid "Filling world with water..."
+#: horizons/gui/modules/loadingscreen.py:108
+#, fuzzy
+msgid "Filling world with water…"
 msgstr "Punim svijet vodom..."
 
-#: horizons/gui/modules/loadingscreen.py:108
-msgid "Raising animals..."
+#: horizons/gui/modules/loadingscreen.py:109
+#, fuzzy
+msgid "Raising animals…"
 msgstr "Uzgajam životinje..."
 
-#: horizons/gui/modules/loadingscreen.py:109
-msgid "Convincing AI..."
+#: horizons/gui/modules/loadingscreen.py:110
+#, fuzzy
+msgid "Convincing AI…"
 msgstr "Uvjeravam umjetnu inteligenciju..."
 
-#: horizons/gui/modules/loadingscreen.py:110
-msgid "Burying treasures..."
+#: horizons/gui/modules/loadingscreen.py:111
+#, fuzzy
+msgid "Burying treasures…"
 msgstr "Kupujem blaga..."
 
 #: horizons/gui/modules/multiplayermenu.py:118
@@ -1963,7 +1975,7 @@ msgid "Enter password:"
 msgstr "Unesite lozinku:"
 
 #: horizons/gui/modules/multiplayermenu.py:351
-#: horizons/gui/modules/singleplayermenu.py:405
+#: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Preporučen broj igrača: {number}"
@@ -2134,69 +2146,69 @@ msgstr "Greška!"
 msgid "Failed to delete savefile!"
 msgstr "Neuspješno brisanje spremljene datoteke!"
 
-#: horizons/gui/modules/singleplayermenu.py:104
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "Invalid player name"
 msgstr "Nevažeće ime igrača"
 
-#: horizons/gui/modules/singleplayermenu.py:104
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Unijeli ste neispravno ime igrača."
 
-#: horizons/gui/modules/singleplayermenu.py:147
+#: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Gustoća resursa:"
 
-#: horizons/gui/modules/singleplayermenu.py:225
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Map size:"
 msgstr "Veličina mape:"
 
-#: horizons/gui/modules/singleplayermenu.py:226
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Water:"
 msgstr "Voda:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Max island size:"
 msgstr "Maksimalna veličina otoka:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Preferred island size:"
 msgstr "Preporučena veličina otoka:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:230
 msgid "Island size deviation:"
 msgstr "Odstupanje veličine otoka:"
 
-#: horizons/gui/modules/singleplayermenu.py:342
+#: horizons/gui/modules/singleplayermenu.py:343
 msgid "Click to generate a different random map"
 msgstr "Kliknite kako bi stvorili nasumičnu mapu"
 
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "Invalid scenario file"
 msgstr "Neispravna datoteka scenarija"
 
-#: horizons/gui/modules/singleplayermenu.py:504
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "The selected file is not a valid scenario file."
 msgstr "Odabrana datoteka nije ispravna datoteka scenarija."
 
-#: horizons/gui/modules/singleplayermenu.py:505
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Error message:"
 msgstr "Poruka greške:"
 
-#: horizons/gui/modules/singleplayermenu.py:506
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Molimo prijavite ovo autoru."
 
-#: horizons/gui/modules/singleplayermenu.py:569
+#: horizons/gui/modules/singleplayermenu.py:570
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Težina: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:573
+#: horizons/gui/modules/singleplayermenu.py:574
 #, python-format
 msgid "Author: {author}"
 msgstr "Autor: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:577
+#: horizons/gui/modules/singleplayermenu.py:578
 #, python-format
 msgid "Description: {desc}"
 msgstr "Opis: {desc}"
