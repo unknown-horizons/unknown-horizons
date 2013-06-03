@@ -39,7 +39,7 @@ class AbstractDoctor(AbstractBuilding):
 
 	@property
 	def producer_building(self):
-		"""Fire stations don't produce any resources."""
+		"""Doctors don't produce any resources."""
 		return False
 
 	@property
