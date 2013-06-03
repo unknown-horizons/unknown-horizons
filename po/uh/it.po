@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-05-14 16:32+0200\n"
+"PO-Revision-Date: 2013-06-03 23:08+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Italian <http://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
@@ -655,7 +655,7 @@ msgstr "Tutti"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "Manda i messaggi in chat a tutti i giocatori"
+msgstr "Manda i messaggi in chat a tutti i giocatori."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -1740,7 +1740,7 @@ msgstr "Esci dal Gioco"
 
 #: horizons/gui/ingamegui.py:218
 msgid "No diplomacy possible"
-msgstr "Nessuna azione diplomatica possibile."
+msgstr "Nessuna azione diplomatica possibile"
 
 #: horizons/gui/ingamegui.py:219
 msgid "Cannot do diplomacy as there are no other players."
@@ -3543,7 +3543,7 @@ msgstr "felicità"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
-msgstr "Alcuni dei tuoi abitanti se ne sono appena andati"
+msgstr "Alcuni dei tuoi abitanti se ne sono appena andati."
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -3653,8 +3653,8 @@ msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
-"La tua rotta è configurata. Avviala con il pulsante \"inizia rotta\" nel "
-"menu \"configura rotta\""
+"La tua rotta è configurata. Avviala con il pulsante \"inizia rotta\" nel menu "
+"\"configura rotta\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
@@ -3692,7 +3692,7 @@ msgstr "tavole"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Alcuni abitanti non hanno accesso alla piazza principale"
+msgstr "Alcuni abitanti non hanno accesso alla piazza principale."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
@@ -3770,7 +3770,7 @@ msgstr "deposito di roccia"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You failed the scenario."
-msgstr "Hai fallito lo scenario"
+msgstr "Hai fallito lo scenario."
 
 #. This is a database entry: the name of a resource.
 msgid "fire"
@@ -3816,7 +3816,7 @@ msgstr "La tua partita è stata salvata automaticamente."
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "One of your fields requires a farm to harvest its crops."
 msgstr ""
-"Uno dei tuoi campi ha bisogno di una fattoria per effettuare il raccolto"
+"Uno dei tuoi campi ha bisogno di una fattoria per effettuare il raccolto."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your mine has run out of resources."
@@ -3890,7 +3890,7 @@ msgstr "maiali"
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr ""
-"Non puoi distruggere il deposito, è indispensabile per il tuo insediamento"
+"Non puoi distruggere il deposito, è indispensabile per il tuo insediamento."
 
 #. This is a database entry: the name of a resource.
 msgid "condiments"
