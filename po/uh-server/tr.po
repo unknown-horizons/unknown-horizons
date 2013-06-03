@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-05 15:40+0200\n"
+"POT-Creation-Date: 2013-06-03 22:09+0200\n"
 "PO-Revision-Date: 2013-02-14 16:36+0000\n"
 "Last-Translator: vgezer <volkangezer@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,7 +64,7 @@ msgstr "Oyun dolu"
 msgid "Wrong password"
 msgstr "Hatalı şifre"
 
-#: horizons/network/server.py:424 horizons/network/server.py:532
+#: horizons/network/server.py:424 horizons/network/server.py:534
 #, fuzzy
 msgid "There's already a player with your name inside this game."
 msgstr ""
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Please change your name."
 msgstr ""
 
-#: horizons/network/server.py:428 horizons/network/server.py:560
+#: horizons/network/server.py:428 horizons/network/server.py:562
 #, fuzzy
 msgid "There's already a player with your color inside this game."
 msgstr ""
@@ -99,23 +99,23 @@ msgstr "Oyunda değilsiniz"
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Oyun sonlandırıldı. Oyunu oluşturan oyunu terketti."
 
-#: horizons/network/server.py:482
+#: horizons/network/server.py:483
+#, fuzzy
 msgid ""
-"I feel like a bad bunny but one player has terminated the game which "
-"currently for technical reasons means that the game cannot continue. Sorry :"
-"*("
+"One player has terminated their game. For technical reasons, this currently "
+"means the game cannot continue. We are very sorry about that."
 msgstr ""
 "Kötü tavşan gibi hissediyorum ama bir oyuncu oyunu sonlandırdı. Şimdilik "
 "teknik sebeplerden dolayı oyun devam edemeyecek. Üzgünüm :*("
 
-#: horizons/network/server.py:533
+#: horizons/network/server.py:535
 msgid "Unable to change your name."
 msgstr ""
 
-#: horizons/network/server.py:561
+#: horizons/network/server.py:563
 msgid "Unable to change your color."
 msgstr ""
 
-#: horizons/network/server.py:648
+#: horizons/network/server.py:650
 msgid "You can't fetch a game while in another game"
 msgstr "Farklı bir oyundayken bir oyun alamazsınız"

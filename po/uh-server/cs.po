@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-05 15:40+0200\n"
+"POT-Creation-Date: 2013-06-03 22:09+0200\n"
 "PO-Revision-Date: 2013-05-12 16:40+0200\n"
 "Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
 "Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh-server/cs/>\n"
@@ -66,7 +66,7 @@ msgstr "Hra je obsazena"
 msgid "Wrong password"
 msgstr "Nesprávné heslo"
 
-#: horizons/network/server.py:424 horizons/network/server.py:532
+#: horizons/network/server.py:424 horizons/network/server.py:534
 msgid "There's already a player with your name inside this game."
 msgstr "V této hře již je hráč s vaším jménem."
 
@@ -74,7 +74,7 @@ msgstr "V této hře již je hráč s vaším jménem."
 msgid "Please change your name."
 msgstr "Změňte si prosím své jméno."
 
-#: horizons/network/server.py:428 horizons/network/server.py:560
+#: horizons/network/server.py:428 horizons/network/server.py:562
 msgid "There's already a player with your color inside this game."
 msgstr "V této hře již je hráč s vaší barvou."
 
@@ -96,24 +96,24 @@ msgstr "Nejste ve hře"
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Hra byla ukončena. Zakládající hráč ji opustil."
 
-#: horizons/network/server.py:482
+#: horizons/network/server.py:483
+#, fuzzy
 msgid ""
-"I feel like a bad bunny but one player has terminated the game which "
-"currently for technical reasons means that the game cannot continue. Sorry :"
-"*("
+"One player has terminated their game. For technical reasons, this currently "
+"means the game cannot continue. We are very sorry about that."
 msgstr ""
 "Citím se velmi zle, ale jeden hráč ukončil hru, která z technických důvodů "
 "nebude moci pokračovat. Je mi líto :*("
 
-#: horizons/network/server.py:533
+#: horizons/network/server.py:535
 msgid "Unable to change your name."
 msgstr "Vaše jméno nelze změnit."
 
-#: horizons/network/server.py:561
+#: horizons/network/server.py:563
 msgid "Unable to change your color."
 msgstr "Vaši barvu nelze změnit."
 
-#: horizons/network/server.py:648
+#: horizons/network/server.py:650
 msgid "You can't fetch a game while in another game"
 msgstr "Nemůžete přeskočit do hry pokud již v nějaké jste"
 
