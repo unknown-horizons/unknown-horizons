@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-05-09 15:21+0200\n"
+"PO-Revision-Date: 2013-06-03 22:13+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -1083,9 +1083,8 @@ msgid "Cancel game"
 msgstr "Spiel beenden"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Lade ..."
+msgstr "Lade…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1865,59 +1864,48 @@ msgstr "Drückt 'T', um durch Bäume zu sehen."
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:101
-#, fuzzy
 msgid "Starting engine…"
-msgstr "Motor anwerfen..."
+msgstr "Motor anwerfen…"
 
 #: horizons/gui/modules/loadingscreen.py:102
-#, fuzzy
 msgid "Catching fish…"
-msgstr "Fische fangen..."
+msgstr "Fische fangen…"
 
 #: horizons/gui/modules/loadingscreen.py:103
-#, fuzzy
 msgid "Drawing user interface…"
-msgstr "Bedienoberfläche zeichnen..."
+msgstr "Bedienoberfläche zeichnen…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-#, fuzzy
 msgid "Activating timer…"
-msgstr "Wecker stellen..."
+msgstr "Wecker stellen…"
 
 #: horizons/gui/modules/loadingscreen.py:105
-#, fuzzy
 msgid "Chomping game data…"
-msgstr "Spieldaten verarbeiten..."
+msgstr "Spieldaten verarbeiten…"
 
 #: horizons/gui/modules/loadingscreen.py:106
-#, fuzzy
 msgid "Shaping islands…"
-msgstr "Inseln formen..."
+msgstr "Inseln formen…"
 
 #: horizons/gui/modules/loadingscreen.py:107
-#, fuzzy
 msgid "Preparing blueprints…"
-msgstr "Blaupausen vorbereiten..."
+msgstr "Blaupausen vorbereiten…"
 
 #: horizons/gui/modules/loadingscreen.py:108
-#, fuzzy
 msgid "Filling world with water…"
-msgstr "Spielwelt fluten..."
+msgstr "Spielwelt fluten…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Raising animals…"
-msgstr "Tiere aufziehen..."
+msgstr "Tiere aufziehen…"
 
 #: horizons/gui/modules/loadingscreen.py:110
-#, fuzzy
 msgid "Convincing AI…"
-msgstr "KI überreden..."
+msgstr "KI überreden…"
 
 #: horizons/gui/modules/loadingscreen.py:111
-#, fuzzy
 msgid "Burying treasures…"
-msgstr "Schätze vergraben..."
+msgstr "Schätze vergraben…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
