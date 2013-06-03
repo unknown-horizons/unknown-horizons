@@ -479,8 +479,10 @@ class Server(object):
 		else:
 			for _player in game.players:
 				if _player.peer.state == enet.PEER_STATE_CONNECTED:
-					self.fatalerror(_player, __("I feel like a bad bunny but one player has terminated the game"
-						" which currently for technical reasons means that the game cannot continue. Sorry :*("))
+					self.fatalerror(_player,
+						__("One player has terminated their game. "
+						"For technical reasons, this currently means the game cannot continue. "
+						"We are very sorry about that."))
 		self.call_callbacks('deletegame', game)
 
 
