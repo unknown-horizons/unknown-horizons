@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2013-05-14 16:21+0200\n"
+"PO-Revision-Date: 2013-06-03 22:35+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Polish <http://hosted.weblate.org/projects/uh/uh-server/pl/>\n"
 "Language: pl\n"
@@ -61,7 +61,7 @@ msgstr "Het spel is vol"
 
 #: horizons/network/server.py:407
 msgid "Wrong password"
-msgstr "Błędne hasło."
+msgstr "Błędne hasło"
 
 #: horizons/network/server.py:424 horizons/network/server.py:534
 msgid "There's already a player with your name inside this game."
@@ -69,7 +69,7 @@ msgstr "Gracz o twojej nazwie jest już w grze."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
-msgstr "Proszę zmienić nazwę"
+msgstr "Proszę zmienić nazwę."
 
 #: horizons/network/server.py:428 horizons/network/server.py:562
 msgid "There's already a player with your color inside this game."
