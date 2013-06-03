@@ -7,19 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-01-28 19:01+0000\n"
-"Last-Translator: davezh <quel.thalas1987@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-06-03 22:39+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"Language-Team: Indonesian <http://hosted.weblate.org/projects/uh/uh/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons mengalami crash"
+msgstr "Unknown Horizons mengalami crash."
 
 #: run_uh.py:222
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -1571,7 +1571,7 @@ msgstr ""
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
-msgstr "Restart diperlukan."
+msgstr "Restart diperlukan"
 
 #: horizons/engine/settingsdialog.py:70
 msgid "Some of your changes require a restart of Unknown Horizons."
