@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-05-14 16:35+0200\n"
+"PO-Revision-Date: 2013-06-03 22:40+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Finnish <http://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
@@ -40,6 +40,7 @@ msgstr ""
 "osoitteesta http://unknown-horizons.org ."
 
 #: run_uh.py:273
+#, fuzzy
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "Virhe: Vaadittuja kirjastoja ei löydy"
 
@@ -1252,7 +1253,7 @@ msgstr "Värisyvyys:"
 
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "If set to 0, use the driver default"
-msgstr "Arvon ollessa 0, käytetään näyttösovittimen oletusta."
+msgstr "Arvon ollessa 0, käytetään näyttösovittimen oletusta"
 
 #: content/gui/xml/mainmenu/settings.xml:35
 msgid "Full screen:"
@@ -1301,7 +1302,7 @@ msgstr "Vieritä karttaa hiirellä:"
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "Karttaa voi vierittää myös viemällä hiiren kartan reunaan."
+msgstr "Karttaa voi vierittää myös viemällä hiiren kartan reunaan"
 
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid "Cursor centered zoom:"
@@ -1324,7 +1325,7 @@ msgstr "Hiiren keskipainikkeen toiminta:"
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 "Siirrä karttaa pitämällä hiiren keskipainiketta tai rullaa pohjassa, kun "
-"tämä ominaisuus on käytössä."
+"tämä ominaisuus on käytössä"
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "0 is default system settings"
@@ -1365,7 +1366,7 @@ msgstr "Käännä pikkukarttaa pääkarttaa käännettäessä:"
 
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Pikkukarttaa käännetään pääkartan tapaan pääkarttaa käännettäessä."
+msgstr "Pikkukarttaa käännetään pääkartan tapaan pääkarttaa käännettäessä"
 
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "Uninterrupted building:"
@@ -1375,7 +1376,7 @@ msgstr "Keskeytymätön rakentaminen:"
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 "Rakennustilasta ei poistuta, ennen kuin vähintään yksi rakennus on "
-"rakennettu onnistuneesti."
+"rakennettu onnistuneesti"
 
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Auto-unload ship:"
@@ -1385,7 +1386,7 @@ msgstr "Pura laivan lasti automaattisesti:"
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
 "Laivan lasti puretaan automaattisesti uuden siirtokunnan perustamisen "
-"jälkeen."
+"jälkeen"
 
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid ""
@@ -1408,7 +1409,7 @@ msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
 "Näytä resurssikuvakkeet rakennusten päällä, kun niiden tuotanto on "
-"valmistunut."
+"valmistunut"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Higher values slow down scrolling."
@@ -1424,7 +1425,7 @@ msgstr "Latausnäkymän teksti:"
 
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "What kind of quote to display while loading a game"
-msgstr "Latausnäkymässä näytettävä viesti."
+msgstr "Latausnäkymässä näytettävä viesti"
 
 #: content/gui/xml/mainmenu/settings.xml:227
 msgid "Network"
@@ -1432,7 +1433,7 @@ msgstr "Verkko"
 
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "If set to 0, use the router default"
-msgstr "Arvon ollessa 0, käytetään reitittimen oletusta."
+msgstr "Arvon ollessa 0, käytetään reitittimen oletusta"
 
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "Network port:"
@@ -2395,7 +2396,7 @@ msgstr "Osta/Myy"
 
 #: horizons/gui/tabs/shiptabs.py:98
 msgid "Too far from the nearest tradeable warehouse"
-msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta."
+msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta"
 
 #: horizons/gui/tabs/shiptabs.py:104
 msgid "Cannot equip trade ship with weapons"
@@ -2540,7 +2541,7 @@ msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:371
 msgid "You are not allowed to trade with this player"
-msgstr "Et saa käydä kauppaa tämän pelaajan kanssa."
+msgstr "Et saa käydä kauppaa tämän pelaajan kanssa"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:119
