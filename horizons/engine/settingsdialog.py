@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,16 +21,22 @@
 # ###################################################
 
 
-from fife.extensions.fife_settings import Setting
+try:
+	#TODO fifechan / FIFE 0.3.5+ compat
+	from fife.extensions.pychan.fife_pychansettings import FifePychanSettings
+except ImportError:
+	# this is the old (0.3.4 and earlier) API
+	from fife.extensions.fife_settings import Setting as FifePychanSettings
 
 import horizons.main
 
-from horizons.engine import UH_MODULE
 from horizons.constants import LANGUAGENAMES
+from horizons.engine import UH_MODULE
+from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.widgets.pickbeltwidget import OptionsPickbeltWidget
 from horizons.messaging import SettingChanged
 
-class SettingsDialog(Setting):
+class SettingsDialog(FifePychanSettings):
 	"""
 	Localized settings dialog by using load_uh_widget() instead of
 	plain load_xml().
@@ -40,7 +46,14 @@ class SettingsDialog(Setting):
 		# as well as the require-restart message. Here, we allow us to ignore
 		# the parameter since _showChangeRequireRestartDialog() is overwritten as well
 
-		wdg = OptionsPickbeltWidget().get_widget()
+		optionsPickbelt = OptionsPickbeltWidget()
+		wdg = optionsPickbelt.get_widget()
+		hk = HotkeyConfiguration()
+		number = optionsPickbelt.__class__.sections.index(('hotkeys_settings', _('Hotkeys')))
+		optionsPickbelt.page_widgets[number].addChild(hk.widget)
+
+		self.hotkeyInterface = hk
+
 		# HACK: fife settings call stylize, which breaks our styling on widget load
 		no_restyle_str = "do_not_restyle_this"
 		self.setGuiStyle(no_restyle_str)
@@ -69,6 +82,7 @@ class SettingsDialog(Setting):
 		if confirmed:
 			try:
 				super(SettingsDialog, self).setDefaults()
+				self.hotkeyInterface.reset_to_default()
 			except AttributeError as err: #weird stuff happens in settings module reset
 				print "A problem occured while updating: %s" % err + "\n" + \
 					  "Please contact the developers if this happens more than once."
@@ -92,3 +106,6 @@ class SettingsDialog(Setting):
 		SettingChanged.broadcast(self, name, self.get(module, name), val)
 		return super(SettingsDialog, self).set(module, name, val, extra_attrs)
 
+	def applySettings(self):
+		self.hotkeyInterface.save_settings()
+		super(SettingsDialog, self).applySettings()

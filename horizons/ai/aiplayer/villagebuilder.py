@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -183,8 +183,7 @@ class VillageBuilder(AreaBuilder):
 				if self.land_manager.coords_usable(coords):
 					self.plan[coords] = (BUILDING_PURPOSE.ROAD, (0, None))
 
-		for i in xrange(len(section_plans)):
-			section_plan = section_plans[i]
+		for i, section_plan in enumerate(section_plans):
 			self._optimize_section_plan(section_plan)
 			tent_lookup = self._create_tent_queue(section_plan)
 			for coords, purpose in section_plan.iteritems():
@@ -561,7 +560,7 @@ class VillageBuilder(AreaBuilder):
 		self._replace_planned_residence(BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings, self.personality.max_coverage_building_capacity)
 		self._replace_planned_residence(BUILDING_PURPOSE.TAVERN, num_other_buildings, self.personality.max_coverage_building_capacity)
 
-		num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) / self.personality.normal_fire_station_capacity)))
+		num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) // self.personality.normal_fire_station_capacity)))
 		self._replace_planned_residence(BUILDING_PURPOSE.FIRE_STATION, num_fire_stations, self.personality.max_fire_station_capacity)
 
 		self._create_special_village_building_assignments()

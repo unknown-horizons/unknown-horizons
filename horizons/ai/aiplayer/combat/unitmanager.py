@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -221,8 +221,8 @@ class UnitManager(object):
 		@rtype: float
 		"""
 
-		assert len(ship_group), "Request to calculate balance with 0 ships in ship_group"
-		assert len(enemy_ship_group), "Request to calculate balance with 0 ships in enemy_ship_group"
+		assert ship_group, "Request to calculate balance with 0 ships in ship_group"
+		assert enemy_ship_group, "Request to calculate balance with 0 ships in enemy_ship_group"
 
 		# dps_multiplier - 4vs2 ships equal 2 times more DPS. Multiply that factor when calculating power balance.
 		dps_multiplier = len(ship_group) / float(len(enemy_ship_group))

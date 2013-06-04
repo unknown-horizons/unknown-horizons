@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,7 +30,14 @@ class ToggleActive(GenericComponentCommand):
 	def __call__(self, issuer):
 		# NOTE: special call method, cause production must be saved as id, not as Production obj
 		obj = self._get_object().get_component_by_name(self.component_name)
-		return getattr(obj, self.method)( None if self._production is None else obj._get_production(self._production))
+
+		if self._production is not None:
+			production = obj._get_production(self._production)
+			assert production is not None, "%s does not have a production %s" % (obj, self._production)
+		else:
+			production = None
+
+		return getattr(obj, self.method)( production )
 
 GenericComponentCommand.allow_network(ToggleActive)
 

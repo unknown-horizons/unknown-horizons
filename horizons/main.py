@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -34,7 +34,7 @@ import os.path
 import json
 import traceback
 import threading
-from thread import error as thread_error  # raised by threading.Lock.release
+from thread import error as ThreadError  # raised by threading.Lock.release
 import subprocess
 
 from fife import fife as fife_module
@@ -45,6 +45,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED, GFX, VERSION
+from horizons.messaging import LoadingProgress
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -102,18 +103,15 @@ def start(_command_line_arguments):
 	if debug: # also True if a specific module is logged (but not 'fife')
 		if not (command_line_arguments.debug_module
 		        and 'fife' not in command_line_arguments.debug_module):
-			horizons.globals.fife._log.lm.setLogToPrompt(True)
-		# After the next FIFE release, we should use this instead which is possible as of r3960:
-		# horizons.globals.fife._log.logToPrompt = True
+			horizons.globals.fife._log.logToPrompt = True
 
 		if command_line_arguments.debug_log_only:
 			# This is a workaround to not show fife logs in the shell even if
 			# (due to the way the fife logger works) these logs will not be
 			# redirected to the UH logfile and instead written to a file fife.log
 			# in the current directory. See #1782 for background information.
-			horizons.globals.fife._log.lm.setLogToPrompt(False)
-			horizons.globals.fife._log.lm.setLogToFile(True)
-			# same as above applies here, use property after next FIFE release
+			horizons.globals.fife._log.logToPrompt = False
+			horizons.globals.fife._log.logToFile = True
 
 	if command_line_arguments.mp_bind:
 		try:
@@ -238,22 +236,24 @@ def start(_command_line_arguments):
 		__string_previewer.show()
 	elif command_line_arguments.create_mp_game:
 		_modules.gui.show_main()
-		_modules.gui.show_multi()
-		_modules.gui.create_default_mp_game()
+		_modules.gui.windows.show(_modules.gui.multiplayermenu)
+		_modules.gui.multiplayermenu._create_game()
+		_modules.gui.windows._windows[-1].act()
 	elif command_line_arguments.join_mp_game:
 		_modules.gui.show_main()
-		_modules.gui.show_multi()
-		_modules.gui.join_mp_game()
+		_modules.gui.windows.show(_modules.gui.multiplayermenu)
+		_modules.gui.multiplayermenu._join_game()
 	else: # no commandline parameter, show main screen
 
-		# initalize update checker
+		# initialize update checker
 		if not command_line_arguments.gui_test:
 			from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
 			update_info = UpdateInfo()
 			update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
 			update_check_thread.start()
+
 			def update_info_handler(info):
-				if info.status == UpdateInfo.UNINITIALISED:
+				if info.status == UpdateInfo.UNINITIALIZED:
 					ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
 				elif info.status == UpdateInfo.READY:
 					show_new_version_hint(_modules.gui, info)
@@ -288,10 +288,16 @@ def quit():
 	preload_game_join(preloading)
 	horizons.globals.fife.quit()
 
+def quit_session():
+	"""Quits the current game."""
+	_modules.session = None
+	_modules.gui.show_main()
+
 def start_singleplayer(options):
 	"""Starts a singleplayer game."""
 	_modules.gui.show_loading_screen()
 
+	LoadingProgress.broadcast(None, 'load_objects')
 	global preloading
 	preload_game_join(preloading)
 
@@ -310,7 +316,7 @@ def start_singleplayer(options):
 		from horizons.spsession import SPSession as session_class
 
 	# start new session
-	_modules.session = session_class(_modules.gui, horizons.globals.db)
+	_modules.session = session_class(horizons.globals.db)
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
@@ -333,8 +339,8 @@ def start_singleplayer(options):
 				traceback.print_exc()
 				print "Additionally to failing when loading, cleanup afterwards also failed"
 		_modules.gui.show_main()
-		headline = _(u"Failed to start/load the game")
-		descr = _(u"The game you selected could not be started.") + u" " +\
+		headline = _("Failed to start/load the game")
+		descr = _("The game you selected could not be started.") + u" " + \
 		        _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		_modules.gui.load_game()
@@ -362,7 +368,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	# get random seed for game
 	uuid = game.uuid
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
-	_modules.session = MPSession(_modules.gui, horizons.globals.db, NetworkInterface(), rng_seed=random)
+	_modules.session = MPSession(horizons.globals.db, NetworkInterface(), rng_seed=random)
 
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
 	if game.is_savegame:
@@ -454,8 +460,8 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	save_files = SavegameManager.get_quicksaves()[0]
 	if _modules.session is not None:
 		if not save_files:
-			_modules.session.gui.show_popup(_("No quicksaves found"),
-			                                _("You need to quicksave before you can quickload."))
+			_modules.session.ingame_gui.show_popup(_("No quicksaves found"),
+			                                       _("You need to quicksave before you can quickload."))
 			return False
 	else:
 		if not save_files:
@@ -560,5 +566,5 @@ def preload_game_join(preloading):
 	else:
 		try:
 			lock.release()
-		except thread_error:
+		except ThreadError:
 			pass # due to timing issues, the lock might be released already

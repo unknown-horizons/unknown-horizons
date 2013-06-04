@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 # ###################################################
 
 import functools
+import traceback
 
 from fife.extensions import pychan
 
@@ -42,7 +43,6 @@ def handle_gcn_exception(e, msg=None):
 	@param e: RuntimeError (python, not pychan)
 	@param msg: additional info as string
 	"""
-	import traceback
 	traceback.print_stack()
 	print 'Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.'
 	if msg:
@@ -54,7 +54,7 @@ def init_pychan():
 
 	# quick hack to allow up_image/down_image values to be unicode
 	# TODO solve this problem in a better way (e.g. passing str explicitly)
-	# or waiting for a fix of http://fife.trac.cvsdude.com/engine/ticket/701
+	# or waiting for a fix of http://fife.trac.cloudforge.com/engine/ticket/701
 	from fife.extensions.pychan.properties import ImageProperty
 
 	def patch_imageproperty(func):
@@ -70,11 +70,10 @@ def init_pychan():
 	from horizons.gui.widgets.inventory import Inventory
 	from horizons.gui.widgets.buysellinventory import BuySellInventory
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-	from horizons.gui.widgets.progressbar import ProgressBar
-	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
+	from horizons.gui.widgets.progressbar import ProgressBar, TilingProgressBar
 	# additionally, ImageButton is imported from widgets.imagebutton above
 	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, MainmenuButton, OkButton
-	from horizons.gui.widgets.icongroup import TabBG, TilingHBox
+	from horizons.gui.widgets.icongroup import TabBG, TilingHBox, hr
 	from horizons.gui.widgets.stepslider import StepSlider
 	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 	from horizons.gui.widgets.container import AutoResizeContainer
@@ -82,10 +81,10 @@ def init_pychan():
 
 	widgets = [OkButton, CancelButton, DeleteButton, MainmenuButton,
 	           Inventory, BuySellInventory, ImageFillStatusButton,
-	           ProgressBar, StepSlider, TabBG, ToggleImageButton,
+	           ProgressBar, StepSlider, TabBG,
 	           HealthWidget, StanceWidget, WeaponStorageWidget,
 	           AutoResizeContainer, RenameLabel, RenameImageButton,
-	           TilingHBox,
+	           TilingHBox, TilingProgressBar, hr,
 			 # This overwrites the ImageButton provided by FIFE!
 	           ImageButton,
 	           ]
@@ -133,6 +132,16 @@ def init_pychan():
 			# these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
 			# see #1597 and #1647
 			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
+
+	# FIXME hack pychan's text2gui function, it does an isinstance check that breaks
+	# the lazy string from horizons.i18n. we should be passing unicode to
+	# widgets all the time, therefore we don't need the additional check.
+	def text2gui(text):
+		unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
+		return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+
+	pychan.widgets.textfield.text2gui = text2gui
+	pychan.widgets.basictextwidget.text2gui = text2gui
 
 
 	setup_cursor_change_on_hover()

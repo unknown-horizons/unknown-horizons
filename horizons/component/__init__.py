@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -56,7 +56,7 @@ class Component(object):
 		This is called by the ComponentHolder after it set the instance.
 		Use this to initialize any needed infrastructure.
 		When this is called, it is guaranteed that all other components this one
-		has a dependency on have been added, but initalized may not have been called
+		has a dependency on have been added, but initalize may not have been called
 		on them, only __init__. It is only called after construction, not on load().
 		"""
 		pass
@@ -88,7 +88,7 @@ class Component(object):
 		"""
 		This function is used to instantiate classes from yaml data. Override this if
 		the component has more than just a basic constructor with primitive types
-		(takes Custom classes as arguments e.g. Storages)
+		(takes custom classes as arguments, e.g. Storages)
 		"""
 		arguments = arguments or {}
 		return cls(**arguments)

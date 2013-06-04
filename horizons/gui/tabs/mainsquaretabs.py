@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,6 +18,8 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+from functools import partial
 
 from fife.extensions.pychan.widgets import Label
 
@@ -59,8 +61,13 @@ class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
 	def __init__(self, instance):
 		super(AccountTab, self).__init__(instance=instance, widget='tab_account.xml',
-		                                 icon_path='content/gui/icons/tabwidget/warehouse/account_%s.png')
+		                                 icon_path='icons/tabwidget/warehouse/account')
 		self.helptext = _("Account")
+		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
+		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
+
+		path = 'icons/widgets/cityinfo/settlement_%s' % self.settlement.owner.color.name
+		self.widget.child_finder('show_production_overview').path = path
 
 		self.widget.mapEvents({
 		  'show_production_overview/mouseClicked' : self.show_production_overview
@@ -87,26 +94,22 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('sale').text = unicode(sell_income)
 		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
 
+		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
+		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
+		self.widget.mapEvents({'headline': rename})
+
+
 class MainSquareOverviewTab(AccountTab):
 	def __init__(self, instance):
 		super(MainSquareOverviewTab, self).__init__(instance=instance)
 		self.helptext = _('Main square overview')
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
-	def refresh(self):
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		events = {
-				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
-		         }
-		self.widget.mapEvents(events)
-		super(MainSquareOverviewTab, self).refresh()
 
 class MainSquareSettlerLevelTab(MainSquareTab):
 	LEVEL = None # overwrite in subclass
 	def __init__(self, instance):
 		widget = "mainsquare_inhabitants.xml"
-		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{incr}_%s.png'.format(incr=self.__class__.LEVEL)
+		icon_path = 'icons/tabwidget/mainsquare/inhabitants{tier}'.format(tier=self.__class__.LEVEL)
 		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
 		self.min_inhabitants = instance.session.db.get_settler_inhabitants_min(self.__class__.LEVEL)
@@ -158,7 +161,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		# refresh upgrade permissions
 		upgrades_button = self.widget.child_finder('allow_upgrades')
-		if self.__class__.LEVEL < TIER.CURRENT_MAX: #max incr => cannot allow upgrades
+		if self.__class__.LEVEL < TIER.CURRENT_MAX: #max tier => cannot allow upgrades
 			if self.settlement.upgrade_permissions[self.__class__.LEVEL]:
 				upgrades_button.set_active()
 				upgrades_button.helptext = _("Don't allow upgrades")
@@ -189,12 +192,11 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
 		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
-		self.widget.child_finder('sad_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, max_happiness=sad))
-		self.widget.child_finder('avg_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, sad, happy))
-		self.widget.child_finder('happy_amount').text = unicode(
-			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, happy))
+		inhabitants = partial(self.settlement.get_residentials_of_lvl_for_happiness,
+		                      self.__class__.LEVEL)
+		self.widget.child_finder('sad_amount').text = unicode(inhabitants(max_happiness=sad))
+		self.widget.child_finder('avg_amount').text = unicode(inhabitants(sad, happy))
+		self.widget.child_finder('happy_amount').text = unicode(inhabitants(happy))
 
 		# refresh the summary
 		self.widget.child_finder('house_count').text = unicode(houses)
@@ -205,6 +207,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def toggle_upgrades(self):
 		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL, not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)
+
 
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SAILORS

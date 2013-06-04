@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -41,7 +41,8 @@ import weakref
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES
-from horizons.i18n import objecttranslations, guitranslations, quotes
+from horizons.ext.speaklater import make_lazy_gettext
+from horizons.i18n import objecttranslations, guitranslations
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.messaging import LanguageChanged
 
@@ -78,7 +79,6 @@ def update_all_translations():
 	global translated_widgets
 	guitranslations.set_translations()
 	objecttranslations.set_translations()
-	quotes.set_translations()
 	for (filename, widget) in translated_widgets.iteritems():
 		widget = widget() # resolve weakref
 		if not widget:
@@ -87,6 +87,8 @@ def update_all_translations():
 		for (element_name, attribute), translation in all_widgets.iteritems():
 			element = widget.findChild(name=element_name)
 			replace_attribute(element, attribute, translation)
+			#NOTE pychan + reloading font = ???
+			element.font = element.font
 		widget.adaptLayout()
 
 
@@ -112,8 +114,14 @@ def change_language(language=None):
 			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
 			                            languages=[language], fallback=fallback)
 			trans.install(unicode=True, names=['ngettext',])
-		except IOError:
-			log.debug("Configured language %s could not be loaded.", language)
+		except (IOError, KeyError, ValueError) as err:
+			# KeyError can happen with a settings file written to by more than one UH
+			# installation (one that has compiled language files and one that hasn't)
+			# ValueError can be raised by gettext if for instance the plural forms are
+			# corrupted.
+			log.warning("Configured language %s could not be loaded.", language)
+			log.warning("Error: %s", err)
+			log.warning("Continuing with English as fallback.")
 			horizons.globals.fife.set_uh_setting('Language', LANGUAGENAMES[''])
 			return change_language() # recurse
 	else:
@@ -134,3 +142,6 @@ def change_language(language=None):
 	# dynamically reset all translations of active widgets
 	update_all_translations()
 	LanguageChanged.broadcast(None)
+
+
+_lazy = make_lazy_gettext(lambda: lambda s: _(s))

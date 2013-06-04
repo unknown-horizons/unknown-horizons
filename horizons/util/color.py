@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,7 @@ class ColorMeta(type):
 	"""Metaclass allows iteration and indexing of the Color class.
 
 	Example:
-		
+
 		for c in Color:
 			pass
 
@@ -67,13 +67,15 @@ class Color(object):
 		@params: int (0, 255)
 		"""
 		self.r, self.g, self.b, self.a = r, g, b, a
-		self.name = None
+		query = horizons.globals.db('SELECT name, rowid FROM colors '
+		                            'WHERE red = ? AND green = ? AND blue = ?',
+		                            self.r, self.g, self.b)
 		try:
 			# load name for the color, if it's a standard color
-			self.name, self.id = horizons.globals.db('SELECT name, rowid FROM colors WHERE red = ? AND green = ? AND blue = ?',
-			                                         self.r, self.g, self.b)[0]
-		except:
-			pass
+			self.name, self.id = query[0]
+		except IndexError:
+			# id is not set to indicate this is a nondefault color
+			self.name = None
 
 	def to_tuple(self):
 		"""Returns color as (r, g, b)-tuple, where each value is between 0 and 255"""

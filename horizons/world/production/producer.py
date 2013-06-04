@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -149,6 +149,13 @@ class Producer(Component):
 		return production_class(inventory=self.instance.get_component(StorageComponent).inventory,
 		                        owner_inventory=owner_inventory, prod_id=id, prod_data=data,
 		                        load=load, start_finished=self.__start_finished)
+
+	def create_production_line(self, id):
+		"""Creates a production line instance, this is meant only for data transfer and READONLY use!
+		If you want to use production lines for anything else, go the proper way of the production class."""
+		assert id in self.production_lines
+		data = self.production_lines[id]
+		return ProductionLine(id, data)
 
 	def add_production_by_id(self, production_line_id):
 		"""Convenience method.
@@ -499,8 +506,7 @@ class QueueProducer(Producer):
 		state = self._get_current_state()
 		return len(self.production_queue) > 0 and \
 		       (state is PRODUCTION.STATES.done or
-		        state is PRODUCTION.STATES.none or
-		        state is PRODUCTION.STATES.paused)
+		        state is PRODUCTION.STATES.none)
 
 	def on_queue_element_finished(self, production):
 		"""Callback used for the SingleUseProduction"""
@@ -551,7 +557,7 @@ class UnitProducer(QueueProducer):
 		Does not include the currently produced unit. List is in order."""
 		queue = []
 		for prod_line_id in self.production_queue:
-			prod_line = ProductionLine(prod_line_id, self.production_lines[prod_line_id])
+			prod_line = self.create_production_line(prod_line_id)
 			units = prod_line.unit_production.keys()
 			if len(units) > 1:
 				print 'WARNING: unit production system has been designed for 1 type per order'

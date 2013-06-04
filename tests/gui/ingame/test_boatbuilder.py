@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,7 @@ import tempfile
 import os
 
 import horizons.main
-from horizons.constants import BUILDINGS, PRODUCTION
+from horizons.constants import BUILDINGS, PRODUCTION, UNITS
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.world.production.producer import Producer
 
@@ -101,6 +101,43 @@ def test_ticket_1294(gui):
 
 	while producer.get_productions():
 		gui.run()
+
+
+@gui_test(use_fixture='boatbuilder', timeout=120)
+def test_ticket_1830(gui):
+	"""
+	Boatbuilder should not replace main production while it's paused.
+	"""
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOAT_BUILDER][0]
+	producer = boatbuilder.get_component(Producer)
+
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
+
+	# Select trade ships tab
+	gui.trigger('tab_base', '1')
+
+	# Build huker
+	gui.trigger('boatbuilder_showcase', 'ok_0')
+
+	# Pause huker construction
+	gui.trigger('BB_main_tab', 'toggle_active_active')
+
+	# Select war ships tab
+	gui.trigger('tab_base', '2')
+
+	# Build frigate
+	gui.trigger('boatbuilder_showcase', 'ok_0')
+
+	# Check if Main-Production is still just Huker and is paused.
+	assert len(producer.get_productions()) == 1
+	assert producer.get_productions()[0].get_produced_units()[UNITS.HUKER_SHIP] == 1
+	assert producer.get_productions()[0]._state == PRODUCTION.STATES.paused
+
+	# One entry (Frigate) in queue
+	assert len(producer.production_queue) == 1
 
 
 @gui_test(use_fixture='boatbuilder', timeout=60)

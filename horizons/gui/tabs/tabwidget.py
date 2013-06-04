@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,12 +20,13 @@
 # ###################################################
 
 import logging
+import traceback
 import weakref
 
-from fife.extensions.pychan.widgets import Container, Icon, ImageButton
+from fife.extensions.pychan.widgets import Container, Icon
 
-import horizons.globals
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 
@@ -36,11 +37,10 @@ class TabWidget(object):
 	"""
 	log = logging.getLogger("gui.tabs.tabwidget")
 
-	def __init__(self, ingame_gui, tabs=None, position=None, name=None, active_tab=None):
+	def __init__(self, ingame_gui, tabs=None, name=None, active_tab=None):
 		"""
 		@param ingame_gui: IngameGui instance
 		@param tabs: tab instances to show
-		@param position: position as tuple (x, y)
 		@param name: optional name for the tabwidget
 		@param active_tab: int id of tab, 0 <= active_tab < len(tabs)
 		"""
@@ -50,14 +50,7 @@ class TabWidget(object):
 		self._tabs = [] if not tabs else tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
 		self.widget = load_uh_widget("tab_base.xml")
-		if position is None:
-			# add positioning here
-			self.widget.position = (
-				horizons.globals.fife.engine_settings.getScreenWidth() - 290,
-				209
-			)
-		else:
-			self.widget.position = position
+		self.widget.position_technique = 'right-239:top+209'
 		self.content = self.widget.findChild(name='content')
 		self._init_tabs()
 		# select a tab to show (first one is default)
@@ -79,19 +72,15 @@ class TabWidget(object):
 			tab.add_remove_listener(Callback(on_tab_removal, weakref.ref(self)))
 			container = Container(name="container_%s" % index)
 			background = Icon(name="bg_%s" % index)
-			button = ImageButton(name=str(index))
+			button = ImageButton(name=str(index), size=(50, 50))
 			if self.current_tab is tab:
 				background.image = tab.button_background_image_active
-				button.up_image = tab.button_active_image
+				button.path = tab.path_active
 			else:
 				background.image = tab.button_background_image
-				button.up_image = tab.button_up_image
-			button.down_image = tab.button_down_image
-			button.hover_image = tab.button_hover_image
-			button.is_focusable = False
-			button.size = (50, 50)
+				button.path = tab.path
 			button.capture(Callback(self._show_tab, index))
-			if hasattr(tab, 'helptext') and tab.helptext is not None:
+			if hasattr(tab, 'helptext') and tab.helptext:
 				button.helptext = tab.helptext
 			container.size = background.size
 			container.addChild(background)
@@ -108,7 +97,6 @@ class TabWidget(object):
 		"""
 		if not number in range(len(self._tabs)):
 			# this usually indicates a non-critical error, therefore we can handle it without crashing
-			import traceback
 			traceback.print_stack()
 			self.log.warning("Invalid tab number %s, available tabs: %s", number, self._tabs)
 			return
@@ -119,12 +107,12 @@ class TabWidget(object):
 		old_bg.image = self.current_tab.button_background_image
 		name = str(self._tabs.index(self.current_tab))
 		old_button = self.content.findChild(name=name)
-		old_button.up_image = self.current_tab.button_up_image
+		old_button.path = self.current_tab.path
 
 		new_bg = self.content.findChild(name = "bg_%s" % number)
 		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=str(number))
-		new_button.up_image = new_tab.button_active_image
+		new_button.path = new_tab.path_active
 		self.current_tab = new_tab
 		# important to display the tabs correctly in front
 		self.widget.hide()
@@ -151,9 +139,11 @@ class TabWidget(object):
 	def show(self):
 		"""Show the current widget"""
 		self.current_tab.ensure_loaded()
+		# show before drawing so that position_technique properly sets
+		# button positions (which we want to draw our tabs relative to)
+		self.widget.show()
 		self._draw_widget()
 		self.current_tab.show()
-		self.widget.show()
 		self.ingame_gui.minimap_to_front()
 
 	def hide(self, caller=None):

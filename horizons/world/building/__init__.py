@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -76,7 +76,6 @@ class BuildingClass(IngameType):
 
 	def __str__(self):
 		return "Building[{id}]({name})".format(id=self.id, name=self.name)
-
 
 	def _loadObject(cls):
 		"""Loads building from the db.

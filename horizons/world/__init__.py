@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -50,6 +50,7 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
+from horizons.messaging import LoadingProgress
 
 class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -82,6 +83,20 @@ class World(BuildingOwner, WorldObject):
 		if False:
 			assert isinstance(session, horizons.session.Session)
 		self.session = session
+
+		# create playerlist
+		self.players = []
+		self.player = None # player sitting in front of this machine
+		self.trader = None
+		self.pirate = None
+
+		# create shiplist, which is currently used for saving ships
+		# and having at least one reference to them
+		self.ships = []
+		self.ground_units = []
+
+		self.islands = []
+
 		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 
 	def end(self):
@@ -143,23 +158,20 @@ class World(BuildingOwner, WorldObject):
 			# set on first init
 			self.properties['disasters_enabled'] = disasters_enabled
 
-		# create playerlist
-		self.players = []
-		self.player = None # player sitting in front of this machine
-		self.trader = None
-		self.pirate = None
-
 		self._load_players(savegame_db, force_player_id)
 
 		# all static data
+		LoadingProgress.broadcast(self, 'world_load_map')
 		self.load_raw_map(savegame_db)
 
 		# load world buildings (e.g. fish)
+		LoadingProgress.broadcast(self, 'world_load_buildings')
 		for (building_worldid, building_typeid) in \
 		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
 		# use a dict because it's directly supported by the pathfinding algo
+		LoadingProgress.broadcast(self, 'world_init_water')
 		self.water = dict((tile, 1.0) for tile in self.ground_map)
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
@@ -182,11 +194,6 @@ class World(BuildingOwner, WorldObject):
 		self.ship_map = {}
 		self.ground_unit_map = {}
 
-		# create shiplist, which is currently used for saving ships
-		# and having at least one reference to them
-		self.ships = []
-		self.ground_units = []
-
 		# create bullets list, used for saving bullets in ongoing attacks
 		self.bullets = []
 
@@ -201,6 +208,7 @@ class World(BuildingOwner, WorldObject):
 				self.pirate = Pirate.load(self.session, savegame_db, pirate_data[0][0])
 
 		# load all units (we do it here cause all buildings are loaded by now)
+		LoadingProgress.broadcast(self, 'world_load_units')
 		for (worldid, typeid) in savegame_db("SELECT rowid, type FROM unit ORDER BY rowid"):
 			Entities.units[typeid].load(self.session, savegame_db, worldid)
 
@@ -214,6 +222,7 @@ class World(BuildingOwner, WorldObject):
 				self.pirate.finish_loading(savegame_db)
 
 			# load the AI stuff only when we have AI players
+			LoadingProgress.broadcast(self, 'world_setup_ai')
 			if any(isinstance(player, AIPlayer) for player in self.players):
 				AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
 
@@ -223,6 +232,7 @@ class World(BuildingOwner, WorldObject):
 				if not isinstance(player, HumanPlayer):
 					player.finish_loading(savegame_db)
 
+		LoadingProgress.broadcast(self, 'world_load_stuff')
 		self._load_combat(savegame_db)
 		self._load_diplomacy(savegame_db)
 		self._load_disasters(savegame_db)
@@ -260,7 +270,6 @@ class World(BuildingOwner, WorldObject):
 		self.map_name = savegame_db.map_name
 
 		# load islands
-		self.islands = []
 		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
 			island = Island(savegame_db, islandid, self.session)
 			self.islands.append(island)

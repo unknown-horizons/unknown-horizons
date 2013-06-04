@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,14 +31,14 @@ from fife.extensions import pychan
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 from fife.extensions.fife_settings import FIFE_MODULE
 
+from horizons.constants import LANGUAGENAMES, PATHS
+from horizons.engine import UH_MODULE, KEY_MODULE
+from horizons.engine.pychan_util import init_pychan
+from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
+from horizons.engine.settingsdialog import SettingsDialog
+from horizons.engine.sound import Sound
 from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
-from horizons.constants import LANGUAGENAMES, PATHS
-from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
-from horizons.engine.sound import Sound
-from horizons.engine.settingsdialog import SettingsDialog
-from horizons.engine.pychan_util import init_pychan
-from horizons.engine import UH_MODULE, KEY_MODULE
 
 
 class Fife(ApplicationBase):
@@ -172,10 +172,8 @@ class Fife(ApplicationBase):
 		#init pychan
 		debug_pychan = self.get_fife_setting('PychanDebug') # default is False
 		self.pychan.init(self.engine, debug_pychan) # pychan debug mode may have performance impacts
-		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
 		init_pychan()
-		self.pychanmanager = pychan.internal.get_manager()
 
 		self._setting_handler.apply_settings()
 
@@ -194,7 +192,12 @@ class Fife(ApplicationBase):
 		if not hasattr(self, "_settings_extra_inited"):
 			self._setting_handler.setup_setting_extras()
 			self._settings_extra_inited = True
-		self._setting.onOptionsPress()
+		if hasattr(self._setting, 'showSettingsDialog'):
+			#TODO fifechan / FIFE 0.3.5+ compat
+			self._setting.showSettingsDialog()
+		else:
+			# this is the old (0.3.4 and earlier) API
+			self._setting.onOptionsPress()
 
 	def set_cursor_image(self, which="default"):
 		"""Sets a certain cursor image.
@@ -224,7 +227,7 @@ class Fife(ApplicationBase):
 			keys = self._default_hotkeys.get(action)
 		else:
 			keys = self._setting.get(KEY_MODULE, action)
-		return sorted(keys, key=len)
+		return keys
 
 	def set_key_for_action(self, action, newkey):
 		"""Replaces all existing hotkeys for *action* with *newkey*."""
@@ -235,6 +238,25 @@ class Fife(ApplicationBase):
 		old_keys = self._setting.get(KEY_MODULE, action, defaultValue=[])
 		new_keys = set(old_keys + [addkey])
 		self.set_key_for_action(action, list(new_keys))
+
+	def remove_key_for_action(self, action, remkey):
+		"""Removes hotkey *remkey* from list of hotkeys for action *action*."""
+		old_keys = self._setting.get(KEY_MODULE, action, defaultValue=[])
+		if remkey in old_keys:
+				old_keys.remove(remkey)
+		if len(old_keys) == 0:
+				print 'Cannot have no binding for action'
+				return
+		self.set_key_for_action(action, old_keys)
+
+	def replace_key_for_action(self, action, oldkey, newkey):
+		"""Replaces key *oldkey* with key *newkey* for action *action*"""
+		old_keys = self._setting.get(KEY_MODULE, action, defaultValue=[])
+		if not oldkey in old_keys:
+			return
+		index = old_keys.index(oldkey)
+		old_keys[index] = newkey
+		self.set_key_for_action(action, old_keys)
 
 	def save_settings(self):
 		self._setting.saveSettings()

@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -62,15 +62,19 @@ def exit_with_error(title, message):
 		window = Tkinter.Tk()
 		window.wm_withdraw()
 		tkMessageBox.showerror(title, message)
-	except:
+	except ImportError:
 		# tkinter may be missing
 		pass
 	exit(1)
 
-if __name__ == '__main__':
+def check_python_version():
 	# python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
 	if platform.python_version_tuple()[0] not in (2,'2'):
 		exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
+
+
+check_python_version()
+
 
 def log():
 	"""Returns Logger"""
@@ -417,7 +421,7 @@ def find_fife():
 	# Look for FIFE in the neighborhood of the game dir.
 	paths = []
 	for opt1 in ('.', '..', '..' + os.sep + '..'):
-		for opt2 in ('.', 'fife', 'FIFE', 'Fife'):
+		for opt2 in ('.', 'fife', 'FIFE', 'Fife', 'fifengine'):
 			for opt3 in ('.', 'trunk'):
 				path = os.path.abspath(os.path.join('.', opt1, opt2, opt3, 'engine', 'python'))
 				if os.path.exists(path):
@@ -428,6 +432,7 @@ def setup_fife():
 	log_paths()
 	log_sys_info()
 	if not find_fife():
+		#TODO useful error message anyone?
 		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
 
 	from fife import fife
@@ -443,9 +448,9 @@ def setup_fife():
 		            version, VERSION.MIN_FIFE_REVISION)
 
 def init_environment(use_fife):
-	"""Sets up everything. Use in any program that requires access to FIFE and uh modules.
-	It will parse sys.args, so this var has to contain only valid uh options."""
+	"""Sets up everything.
 
+	Use in any program that requires access to FIFE and UH modules."""
 	# install dummy translation
 	gettext.install('', unicode=True)
 	if use_fife:

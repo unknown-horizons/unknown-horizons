@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -46,13 +46,7 @@ class DbReader(object):
 		assert not command.endswith(";")
 		command = '%s;' % command
 		self.cur.execute(command, args)
-		# fetch rows only on select statements, PEP-249 specifies that an error should be
-		# raised when fetching results on other statements that produced no results. This
-		# does not happen on CPython, but on PyPy
-		if command.startswith("SELECT"):
-			return self.cur.fetchall()
-		else:
-			return []
+		return self.cur.fetchall()
 
 	@decorators.cachedmethod
 	def cached_query(self, command, *args):

@@ -4,9 +4,9 @@
 
 	<VBox max_size="695,508" min_size="695,508" position="72,40" padding="5">
 		<HBox>
-			<Label name="headline" text="" min_size="300,20" />
+			<Label name="headline" min_size="300,20" />
 		</HBox>
-		<Icon image="content/gui/images/background/hr.png" />
+		<hr />
 
 		<VBox name="content_vbox" />
 <!--

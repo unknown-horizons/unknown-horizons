@@ -1,5 +1,6 @@
+# Encoding: utf-8
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +24,7 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -48,996 +49,661 @@ def set_translations():
 	global text_translations
 	text_translations = {
 
-	"stringpreviewwidget.xml" : {
+	'stringpreviewwidget.xml' : {
 		},
 
-	"editor_pause_menu.xml" : {
-		# (text of widget: help)
-		("help"                        , "text"    ): _("Help"),
-		# (text of widget: loadgame)
-		("loadgame"                    , "text"    ): _("Load map"),
-		# (text of widget: quit)
-		("quit"                        , "text"    ): _("Exit editor"),
-		# (text of widget: savegame)
-		("savegame"                    , "text"    ): _("Save map"),
-		# (text of widget: settings)
-		("settings"                    , "text"    ): _("Settings"),
-		# (text of widget: start)
-		("start"                       , "text"    ): _("Return to editor"),
+	'editor_pause_menu.xml' : {
+		(u'help'                         , 'text'    ): _(u"Help"),
+		(u'loadgame'                     , 'text'    ): _(u"Load map"),
+		(u'quit'                         , 'text'    ): _(u"Exit editor"),
+		(u'savegame'                     , 'text'    ): _(u"Save map"),
+		(u'settings'                     , 'text'    ): _(u"Settings"),
+		(u'start'                        , 'text'    ): _(u"Return to editor"),
 		},
 
-	"editor_settings.xml" : {
+	'editor_settings.xml' : {
+		(u'cursor_hint'                  , 'text'    ): _(u"(right click to stop)"),
+		(u'headline_brush_size'          , 'text'    ): _(u"Select brush size:"),
+		(u'headline_terrain'             , 'text'    ): _(u"Select terrain:"),
 		},
 
-	"save_map.xml" : {
-		# (text of widget: enter_new_name_lbl)
-		("enter_new_name_lbl"          , "text"    ): _("Enter name:"),
-		# (text of widget: headline_change_name)
-		("headline_change_name"        , "text"    ): _("Save map"),
-		# (helptext of widget: okButton)
-		("okButton"                    , "helptext"): _("Save the map"),
+	'buildtab.xml' : {
 		},
 
-	"buildtab.xml" : {
+	'buildtab_no_settlement.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Game start"),
+		(u'howto_1_need_warehouse'       , 'text'    ): _(u"You need to found a settlement before you can construct buildings!"),
+		(u'howto_2_navigate_ship'        , 'text'    ): _(u"Select your ship and approach the coast via right-click."),
+		(u'howto_3_build_warehouse'      , 'text'    ): _(u"Afterwards, press the large button in the ship overview tab."),
 		},
 
-	"buildtab_no_settlement.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Game start"),
-		# (text of widget: howto_1_need_warehouse)
-		("howto_1_need_warehouse"      , "text"    ): _("You need to found a settlement before you can construct buildings!"),
-		# (text of widget: howto_2_navigate_ship)
-		("howto_2_navigate_ship"       , "text"    ): _("Select your ship and approach the coast via right-click."),
-		# (text of widget: howto_3_build_warehouse)
-		("howto_3_build_warehouse"     , "text"    ): _("Afterwards, press the large button in the ship overview tab."),
+	'place_building.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Build"),
+		(u'running_costs_label'          , 'text'    ): _(u"Running costs:"),
 		},
 
-	"place_building.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Build"),
-		# (text of widget: running_costs_label)
-		("running_costs_label"         , "text"    ): _("Running costs:"),
+	'related_buildings.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Related buildings"),
 		},
 
-	"related_buildings.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Related buildings"),
+	'city_info.xml' : {
+		(u'city_info_inhabitants'        , 'helptext'): _(u"Inhabitants"),
 		},
 
-	"city_info.xml" : {
-		# (helptext of widget: city_info_inhabitants)
-		("city_info_inhabitants"       , "helptext"): _("Inhabitants"),
+	'messagewidget_icon.xml' : {
 		},
 
-	"messagewidget_icon.xml" : {
-		},
-
-	"messagewidget_message.xml" : {
-		},
-
-	"minimap.xml" : {
-		# (helptext of widget: build)
-		("build"                       , "helptext"): _("Build menu (B)"),
-		# (helptext of widget: destroy_tool)
-		("destroy_tool"                , "helptext"): _("Destroy (X)"),
-		# (helptext of widget: diplomacyButton)
-		("diplomacyButton"             , "helptext"): _("Diplomacy"),
-		# (helptext of widget: gameMenuButton)
-		("gameMenuButton"              , "helptext"): _("Game menu (Esc)"),
-		# (helptext of widget: logbook)
-		("logbook"                     , "helptext"): _("Captain's log (L)"),
-		# (helptext of widget: rotateLeft)
-		("rotateLeft"                  , "helptext"): _("Rotate map counterclockwise (,)"),
-		# (helptext of widget: rotateRight)
-		("rotateRight"                 , "helptext"): _("Rotate map clockwise (.)"),
-		# (helptext of widget: speedDown)
-		("speedDown"                   , "helptext"): _("Decrease game speed (-)"),
-		# (helptext of widget: speedUp)
-		("speedUp"                     , "helptext"): _("Increase game speed (+)"),
-		# (helptext of widget: zoomIn)
-		("zoomIn"                      , "helptext"): _("Zoom in"),
-		# (helptext of widget: zoomOut)
-		("zoomOut"                     , "helptext"): _("Zoom out"),
-		},
-
-	"resource_overview_bar_entry.xml" : {
-		},
-
-	"resource_overview_bar_gold.xml" : {
-		},
-
-	"resource_overview_bar_stats.xml" : {
-		},
-
-	"change_name.xml" : {
-		# (text of widget: enter_new_name_lbl)
-		("enter_new_name_lbl"          , "text"    ): _("Enter new name:"),
-		# (text of widget: headline_change_name)
-		("headline_change_name"        , "text"    ): _("Change name"),
-		# (text of widget: old_name_label)
-		("old_name_label"              , "text"    ): _("Old name:"),
-		# (helptext of widget: okButton)
-		("okButton"                    , "helptext"): _("Apply the new name"),
-		},
-
-	"chat.xml" : {
-		# (text of widget: chat_lbl)
-		("chat_lbl"                    , "text"    ): _("Enter your message:"),
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Chat"),
-		},
-
-	"boatbuilder.xml" : {
-		# (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
-		("BB_cancel_build_label"       , "text"    ): _("Cancel building:"),
-		# (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
-		("BB_cancel_warning_label"     , "text"    ): _("(lose all resources)"),
-		# (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
-		("BB_current_order"            , "text"    ): _("Currently building:"),
-		# (text of widget: BB_howto_build_lbl)
-		("BB_howto_build_lbl"          , "text"    ): _("To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
-		# (text of widget: BB_needed_res_label)
-		("BB_needed_res_label"         , "text"    ): _("Resources still needed:"),
-		# (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
-		("BB_progress_label"           , "text"    ): _("Construction progress:"),
-		# (helptext of widget: BB_cancel_button) abort construction of a ship, lose invested resources
-		("BB_cancel_button"            , "helptext"): _("Cancel all building progress"),
-		# (helptext of widget: running_costs_label)
-		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
-		("toggle_active_active"        , "helptext"): _("Pause"),
-		# (helptext of widget: toggle_active_inactive) Resumes the currently paused ship production
-		("toggle_active_inactive"      , "helptext"): _("Resume"),
-		},
-
-	"boatbuilder_showcase.xml" : {
-		},
-
-	"diplomacy.xml" : {
-		# (text of widget: ally_label) Diplomacy state of player
-		("ally_label"                  , "text"    ): _("ally"),
-		# (text of widget: enemy_label) Diplomacy state of player
-		("enemy_label"                 , "text"    ): _("enemy"),
-		# (text of widget: neutral_label) Diplomacy state of player
-		("neutral_label"               , "text"    ): _("neutral"),
-		},
-
-	"overview_farm.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Building overview"),
-		# (helptext of widget: capacity_utilization_label)
-		("capacity_utilization_label"  , "helptext"): _("Capacity utilization"),
-		# (helptext of widget: running_costs_label)
-		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: capacity_utilization)
-		("capacity_utilization"        , "helptext"): _("Capacity utilization"),
-		# (helptext of widget: running_costs)
-		("running_costs"               , "helptext"): _("Running costs"),
-		},
-
-	"island_inventory.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Settlement inventory"),
-		},
-
-	"mainsquare_inhabitants.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Settler overview"),
-		# (text of widget: headline_happiness_per_house)
-		("headline_happiness_per_house", "text"    ): _("Happiness per house"),
-		# (text of widget: headline_residents_per_house)
-		("headline_residents_per_house", "text"    ): _("Residents per house"),
-		# (text of widget: headline_residents_total)
-		("headline_residents_total"    , "text"    ): _("Summary"),
-		# (text of widget: houses)
-		("houses"                      , "text"    ): _("houses"),
-		# (text of widget: residents)
-		("residents"                   , "text"    ): _("residents"),
-		# (text of widget: tax_label)
-		("tax_label"                   , "text"    ): _("Taxes:"),
-		# (text of widget: upgrades_lbl)
-		("upgrades_lbl"                , "text"    ): _("Upgrade permissions:"),
-		# (helptext of widget: avg_icon)
-		("avg_icon"                    , "helptext"): _("satisfied"),
-		# (helptext of widget: happiness_house_icon)
-		("happiness_house_icon"        , "helptext"): _("Amount of houses with this happiness"),
-		# (helptext of widget: happy_icon)
-		("happy_icon"                  , "helptext"): _("happy"),
-		# (helptext of widget: houses_icon)
-		("houses_icon"                 , "helptext"): _("Houses with this amount of inhabitants"),
-		# (helptext of widget: inhabitants_icon)
-		("inhabitants_icon"            , "helptext"): _("Number of inhabitants per house"),
-		# (helptext of widget: paid_taxes_icon)
-		("paid_taxes_icon"             , "helptext"): _("Paid taxes"),
-		# (helptext of widget: sad_icon)
-		("sad_icon"                    , "helptext"): _("sad"),
-		# (helptext of widget: tax_rate_icon)
-		("tax_rate_icon"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: tax_val_label)
-		("tax_val_label"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: taxes)
-		("taxes"                       , "helptext"): _("Paid taxes"),
-		},
-
-	"overview_enemybuilding.xml" : {
-		},
-
-	"overview_enemyunit.xml" : {
-		},
-
-	"overview_enemywarehouse.xml" : {
-		# (text of widget: buying_label)
-		("buying_label"                , "text"    ): _("Buying"),
-		# (text of widget: selling_label)
-		("selling_label"               , "text"    ): _("Selling"),
-		},
-
-	"overview_firestation.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Building overview"),
-		# (text of widget: name_label)
-		("name_label"                  , "text"    ): _("Name:"),
-		# (helptext of widget: running_costs_label)
-		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: running_costs)
-		("running_costs"               , "helptext"): _("Running costs"),
-		},
-
-	"overview_groundunit.xml" : {
-		# (text of widget: lbl_weapon_storage)
-		("lbl_weapon_storage"          , "text"    ): _("Weapons:"),
-		},
-
-	"overview_productionbuilding.xml" : {
-		# (helptext of widget: capacity_utilization_label)
-		("capacity_utilization_label"  , "helptext"): _("Capacity utilization"),
-		# (helptext of widget: running_costs_label)
-		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: capacity_utilization)
-		("capacity_utilization"        , "helptext"): _("Capacity utilization"),
-		# (helptext of widget: running_costs)
-		("running_costs"               , "helptext"): _("Running costs"),
-		},
-
-	"overview_resourcedeposit.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Resource deposit"),
-		# (text of widget: res_dep_description_lbl)
-		("res_dep_description_lbl"     , "text"    ): _("This is a resource deposit where you can build a mine to dig up resources."),
-		# (text of widget: res_dep_description_lbl2) It == The resource deposit
-		("res_dep_description_lbl2"    , "text"    ): _("It contains these resources:"),
-		},
-
-	"overview_settler.xml" : {
-		# (text of widget: needed_res_label)
-		("needed_res_label"            , "text"    ): _("Needed resources:"),
-		# (text of widget: tax_label)
-		("tax_label"                   , "text"    ): _("Taxes:"),
-		# (helptext of widget: happiness_label)
-		("happiness_label"             , "helptext"): _("Happiness"),
-		# (helptext of widget: paid_taxes_label)
-		("paid_taxes_label"            , "helptext"): _("Paid taxes"),
-		# (helptext of widget: paid_taxes_label)
-		("paid_taxes_label"            , "helptext"): _("Tax rate"),
-		# (helptext of widget: residents_label)
-		("residents_label"             , "helptext"): _("Residents"),
-		# (helptext of widget: inhabitants)
-		("inhabitants"                 , "helptext"): _("Residents"),
-		# (helptext of widget: tax_val_label)
-		("tax_val_label"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: taxes)
-		("taxes"                       , "helptext"): _("Paid taxes"),
-		# (helptext of widget: happiness)
-		("happiness"                   , "helptext"): _("Happiness"),
-		},
-
-	"overview_signalfire.xml" : {
-		# (text of widget: signal_fire_description_lbl)
-		("signal_fire_description_lbl" , "text"    ): _("The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."),
-		},
-
-	"overview_tower.xml" : {
-		# (text of widget: name_label)
-		("name_label"                  , "text"    ): _("Name:"),
-		# (helptext of widget: running_costs_label)
-		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: running_costs)
-		("running_costs"               , "helptext"): _("Running costs"),
-		},
-
-	"overview_tradership.xml" : {
-		# (text of widget: trader_description_lbl)
-		("trader_description_lbl"      , "text"    ): _("This is the free trader's ship. It will visit you from time to time to buy or sell goods."),
-		},
-
-	"overview_warehouse.xml" : {
-		# (text of widget: name_label)
-		("name_label"                  , "text"    ): _("Name:"),
-		# (helptext of widget: collector_utilization_label)
-		("collector_utilization_label" , "helptext"): _("Collector utilization"),
-		# (helptext of widget: running_costs_label)
-		("running_costs_label"         , "helptext"): _("Running costs"),
-		# (helptext of widget: collector_utilization) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
-		("collector_utilization"       , "helptext"): _("Collector utilization"),
-		# (helptext of widget: running_costs)
-		("running_costs"               , "helptext"): _("Running costs"),
-		},
-
-	"overviewtab.xml" : {
-		},
-
-	"overview_select_multi.xml" : {
-		},
-
-	"unit_entry_widget.xml" : {
-		},
-
-	"overview_trade_ship.xml" : {
-		# (helptext of widget: configure_route)
-		("configure_route"             , "helptext"): _("Configure trading route"),
-		# (helptext of widget: found_settlement)
-		("found_settlement"            , "helptext"): _("Build settlement"),
-		# (helptext of widget: trade)
-		("trade"                       , "helptext"): _("Trade"),
-		},
-
-	"overview_war_ship.xml" : {
-		# (helptext of widget: configure_route)
-		("configure_route"             , "helptext"): _("Configure trading route"),
-		# (helptext of widget: found_settlement)
-		("found_settlement"            , "helptext"): _("Build settlement"),
-		# (helptext of widget: trade)
-		("trade"                       , "helptext"): _("Trade"),
-		},
-
-	"tradetab.xml" : {
-		# (text of widget: buying_label)
-		("buying_label"                , "text"    ): _("Buying"),
-		# (text of widget: exchange_label)
-		("exchange_label"              , "text"    ): _("Exchange:"),
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Trade"),
-		# (text of widget: selling_label)
-		("selling_label"               , "text"    ): _("Selling"),
-		# (text of widget: ship_label)
-		("ship_label"                  , "text"    ): _("Ship:"),
-		# (text of widget: trade_with_label)
-		("trade_with_label"            , "text"    ): _("Trade partner:"),
-		},
-
-	"tab_base.xml" : {
-		},
-
-	"buysellmenu.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Buy or sell resources"),
-		# (text of widget: headline_trade_history)
-		("headline_trade_history"      , "text"    ): _("Trade history"),
-		},
-
-	"select_trade_resource.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Select resources:"),
-		},
-
-	"tab_account.xml" : {
-		# (text of widget: buy_expenses_label)
-		("buy_expenses_label"          , "text"    ): _("Buying"),
-		# (text of widget: headline_balance_label)
-		("headline_balance_label"      , "text"    ): _("Balance:"),
-		# (text of widget: headline_expenses_label)
-		("headline_expenses_label"     , "text"    ): _("Expenses:"),
-		# (text of widget: headline_income_label)
-		("headline_income_label"       , "text"    ): _("Income:"),
-		# (text of widget: running_costs_label)
-		("running_costs_label"         , "text"    ): _("Running costs"),
-		# (text of widget: sell_income_label)
-		("sell_income_label"           , "text"    ): _("Sale"),
-		# (text of widget: taxes_label)
-		("taxes_label"                 , "text"    ): _("Taxes"),
-		# (helptext of widget: show_production_overview)
-		("show_production_overview"    , "helptext"): _("Show resources produced in this settlement"),
-		},
-
-	"trade_single_slot.xml" : {
-		},
-
-	"overview_farmproductionline.xml" : {
-		# (helptext of widget: toggle_active_active)
-		("toggle_active_active"        , "helptext"): _("Pause production"),
-		# (helptext of widget: toggle_active_inactive)
-		("toggle_active_inactive"      , "helptext"): _("Start production"),
-		},
-
-	"overview_productionline.xml" : {
-		# (helptext of widget: toggle_active_active)
-		("toggle_active_active"        , "helptext"): _("Pause production"),
-		# (helptext of widget: toggle_active_inactive)
-		("toggle_active_inactive"      , "helptext"): _("Start production"),
-		},
-
-	"related_buildings_container.xml" : {
-		},
-
-	"resbar_resource_selection.xml" : {
-		# (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
-		("headline"                    , "text"    ): _("Select resource:"),
-		# (helptext of widget: make_default_btn)
-		("make_default_btn"            , "helptext"): _("Save current resource configuration as default for all settlements."),
-		# (helptext of widget: reset_default_btn)
-		("reset_default_btn"           , "helptext"): _("Reset default resource configuration for all settlements."),
-		# (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
-		("headline"                    , "helptext"): _("The resource you select is displayed instead of the current one. Empty by clicking on X."),
-		},
-
-	"route_entry.xml" : {
-		# (helptext of widget: delete_warehouse) Trade route entry
-		("delete_warehouse"            , "helptext"): _("Delete entry"),
-		# (helptext of widget: move_down) Trade route entry
-		("move_down"                   , "helptext"): _("Move down"),
-		# (helptext of widget: move_up) Trade route entry
-		("move_up"                     , "helptext"): _("Move up"),
-		},
-
-	"trade_history_item.xml" : {
-		},
-
-	"traderoute_resource_selection.xml" : {
-		# (text of widget: select_res_label)
-		("select_res_label"            , "text"    ): _("Select a resource:"),
-		},
-
-	"captains_log.xml" : {
-		# (text of widget: stats_players)
-		("stats_players"               , "text"    ): _("Players"),
-		# (text of widget: stats_settlements)
-		("stats_settlements"           , "text"    ): _("My settlements"),
-		# (text of widget: stats_ships)
-		("stats_ships"                 , "text"    ): _("My ships"),
-		# (text of widget: weird_button_1) Displays all notifications and game messages
-		("weird_button_1"              , "text"    ): _("Whole world"),
-		# (text of widget: weird_button_4) Sends the chat messages to all players (default)
-		("weird_button_4"              , "text"    ): _("Everybody"),
-		# (text of widget: headline_chat)
-		("headline_chat"               , "text"    ): _("Chat"),
-		# (text of widget: headline_game_messages)
-		("headline_game_messages"      , "text"    ): _("Game messages"),
-		# (text of widget: headline_statistics)
-		("headline_statistics"         , "text"    ): _("Statistics"),
-		# (helptext of widget: okButton)
-		("okButton"                    , "helptext"): _("Return to game"),
-		# (helptext of widget: weird_button_4) Sends the chat messages to all players (default)
-		("weird_button_4"              , "helptext"): _("Sends the chat messages to all players."),
-		# (helptext of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
-		("backwardButton"              , "helptext"): _("Read previous entries"),
-		# (helptext of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
-		("forwardButton"               , "helptext"): _("Read next entries"),
-		},
-
-	"configure_route.xml" : {
-		# (text of widget: lbl_route_activity)
-		("lbl_route_activity"          , "text"    ): _("Route activity:"),
-		# (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
-		("lbl_wait_at_load"            , "text"    ): _("Wait at load:"),
-		# (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
-		("lbl_wait_at_unload"          , "text"    ): _("Wait at unload:"),
-		# (helptext of widget: okButton)
-		("okButton"                    , "helptext"): _("Exit"),
-		# (helptext of widget: start_route) Trade route
-		("start_route"                 , "helptext"): _("Start route"),
-		},
-
-	"healthwidget.xml" : {
-		},
-
-	"island_production.xml" : {
-		# (helptext of widget: okButton)
-		("okButton"                    , "helptext"): _("Close"),
-		},
-
-	"players_overview.xml" : {
-		# (text of widget: building_score)
-		("building_score"              , "text"    ): _("Buildings"),
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Player scores"),
-		# (text of widget: land_score)
-		("land_score"                  , "text"    ): _("Land"),
-		# (text of widget: money_score)
-		("money_score"                 , "text"    ): _("Money"),
-		# (text of widget: player_name)
-		("player_name"                 , "text"    ): _("Name"),
-		# (text of widget: resource_score)
-		("resource_score"              , "text"    ): _("Resources"),
-		# (text of widget: settler_score)
-		("settler_score"               , "text"    ): _("Settlers"),
-		# (text of widget: total_score)
-		("total_score"                 , "text"    ): _("Total"),
-		# (text of widget: unit_score)
-		("unit_score"                  , "text"    ): _("Units"),
-		# (helptext of widget: building_score)
-		("building_score"              , "helptext"): _("Value of all the buildings in the player's settlement(s)"),
-		# (helptext of widget: land_score)
-		("land_score"                  , "helptext"): _("Value of usable land i.e Amount of Land that can be used to create buildings "),
-		# (helptext of widget: money_score)
-		("money_score"                 , "helptext"): _("Player's current treasury + income expected in near future"),
-		# (helptext of widget: player_name)
-		("player_name"                 , "helptext"): _("Player Name"),
-		# (helptext of widget: resource_score)
-		("resource_score"              , "helptext"): _("Value of resources generated from all the possible sources in the player's settlement(s)"),
-		# (helptext of widget: settler_score)
-		("settler_score"               , "helptext"): _("Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"),
-		# (helptext of widget: total_score)
-		("total_score"                 , "helptext"): _("The total value from all individual entities or in short : Total Player Score"),
-		# (helptext of widget: unit_score)
-		("unit_score"                  , "helptext"): _("Value of all the units owned by the player"),
-		},
-
-	"players_settlements.xml" : {
-		# (text of widget: balance)
-		("balance"                     , "text"    ): _("Balance"),
-		# (text of widget: inhabitants)
-		("inhabitants"                 , "text"    ): _("Inhabitants"),
-		# (text of widget: running_costs)
-		("running_costs"               , "text"    ): _("Running costs"),
-		# (text of widget: settlement_name)
-		("settlement_name"             , "text"    ): _("Name"),
-		# (text of widget: taxes)
-		("taxes"                       , "text"    ): _("Taxes"),
-		},
-
-	"ships_list.xml" : {
-		# (text of widget: health)
-		("health"                      , "text"    ): _("Health"),
-		# (text of widget: ship_name)
-		("ship_name"                   , "text"    ): _("Name"),
-		# (text of widget: ship_type)
-		("ship_type"                   , "text"    ): _("Type"),
-		# (text of widget: status)
-		("status"                      , "text"    ): _("Status"),
-		# (text of widget: weapons)
-		("weapons"                     , "text"    ): _("Weapons"),
-		},
-
-	"stancewidget.xml" : {
-		# (helptext of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
-		("aggressive_stance"           , "helptext"): _("Aggressive"),
-		# (helptext of widget: flee_stance) Description of combat stance (how units behave when fighting)
-		("flee_stance"                 , "helptext"): _("Flee"),
-		# (helptext of widget: hold_ground_stance) Description of combat stance (how units behave when fighting)
-		("hold_ground_stance"          , "helptext"): _("Hold ground"),
-		# (helptext of widget: none_stance) Description of combat stance (how units behave when fighting)
-		("none_stance"                 , "helptext"): _("Passive"),
-		},
-
-	"tooltip.xml" : {
-		},
-
-	"credits.xml" : {
-		},
-
-	"editor_create_map.xml" : {
-		# (text of widget: headline_choose_map_size_lbl)
-		("headline_choose_map_size_lbl", "text"    ): _("Choose a map size:"),
-		},
-
-	"editor_select_map.xml" : {
-		# (text of widget: headline_choose_map_lbl)
-		("headline_choose_map_lbl"     , "text"    ): _("Choose a map:"),
-		},
-
-	"editor_select_saved_game.xml" : {
-		# (text of widget: headline_choose_saved_game_lbl)
-		("headline_choose_saved_game_lbl", "text"    ): _("Choose a saved game's map:"),
-		},
-
-	"editor_start_menu.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Select map source"),
-		# (text of widget: create_new_map)
-		("create_new_map"              , "text"    ): _("Create new map"),
-		# (text of widget: load_existing_map)
-		("load_existing_map"           , "text"    ): _("Load existing map"),
-		# (text of widget: load_saved_game_map)
-		("load_saved_game_map"         , "text"    ): _("Load saved game's map"),
-		# (helptext of widget: cancel)
-		("cancel"                      , "helptext"): _("Exit to main menu"),
-		# (helptext of widget: okay)
-		("okay"                        , "helptext"): _("Start editor"),
-		},
-
-	"help.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Key bindings"),
-		# (text of widget: lbl_BUILD_TOOL)
-		("lbl_BUILD_TOOL"              , "text"    ): _("Show build menu"),
-		# (text of widget: lbl_CHAT)
-		("lbl_CHAT"                    , "text"    ): _("Chat"),
-		# (text of widget: lbl_CONSOLE)
-		("lbl_CONSOLE"                 , "text"    ): _("Toggle console on/off"),
-		# (text of widget: lbl_COORD_TOOLTIP)
-		("lbl_COORD_TOOLTIP"           , "text"    ): _("Show coordinate values (Debug)"),
-		# (text of widget: lbl_DESTROY_TOOL)
-		("lbl_DESTROY_TOOL"            , "text"    ): _("Enable destruct mode"),
-		# (text of widget: lbl_DOWN)
-		("lbl_DOWN"                    , "text"    ): _("Scroll down"),
-		# (text of widget: lbl_ESCAPE)
-		("lbl_ESCAPE"                  , "text"    ): _("Close dialogs"),
-		# (text of widget: lbl_GRID)
-		("lbl_GRID"                    , "text"    ): _("Toggle grid on/off"),
-		# (text of widget: lbl_HEALTH_BAR)
-		("lbl_HEALTH_BAR"              , "text"    ): _("Toggle health bars"),
-		# (text of widget: lbl_HELP)
-		("lbl_HELP"                    , "text"    ): _("Display help"),
-		# (text of widget: lbl_LEFT)
-		("lbl_LEFT"                    , "text"    ): _("Scroll left"),
-		# (text of widget: lbl_LOGBOOK)
-		("lbl_LOGBOOK"                 , "text"    ): _("Toggle Captain's log"),
-		# (text of widget: lbl_PAUSE)
-		("lbl_PAUSE"                   , "text"    ): _("Pause game"),
-		# (text of widget: lbl_PIPETTE)
-		("lbl_PIPETTE"                 , "text"    ): _("Enable pipette mode (clone buildings)"),
-		# (text of widget: lbl_PLAYERS_OVERVIEW)
-		("lbl_PLAYERS_OVERVIEW"        , "text"    ): _("Show player scores"),
-		# (text of widget: lbl_QUICKLOAD)
-		("lbl_QUICKLOAD"               , "text"    ): _("Quickload"),
-		# (text of widget: lbl_QUICKSAVE)
-		("lbl_QUICKSAVE"               , "text"    ): _("Quicksave"),
-		# (text of widget: lbl_REMOVE_SELECTED)
-		("lbl_REMOVE_SELECTED"         , "text"    ): _("Remove selected units / buildings"),
-		# (text of widget: lbl_RIGHT)
-		("lbl_RIGHT"                   , "text"    ): _("Scroll right"),
-		# (text of widget: lbl_ROAD_TOOL)
-		("lbl_ROAD_TOOL"               , "text"    ): _("Enable road building mode"),
-		# (text of widget: lbl_ROTATE_LEFT)
-		("lbl_ROTATE_LEFT"             , "text"    ): _("Rotate building or map counterclockwise"),
-		# (text of widget: lbl_ROTATE_RIGHT)
-		("lbl_ROTATE_RIGHT"            , "text"    ): _("Rotate building or map clockwise"),
-		# (text of widget: lbl_SCREENSHOT)
-		("lbl_SCREENSHOT"              , "text"    ): _("Screenshot"),
-		# (text of widget: lbl_SETTLEMENTS_OVERVIEW)
-		("lbl_SETTLEMENTS_OVERVIEW"    , "text"    ): _("Show settlement list"),
-		# (text of widget: lbl_SHIFT)
-		("lbl_SHIFT"                   , "text"    ): _("Hold to place multiple buildings"),
-		# (text of widget: lbl_SHIPS_OVERVIEW)
-		("lbl_SHIPS_OVERVIEW"          , "text"    ): _("Show ship list"),
-		# (text of widget: lbl_SHOW_SELECTED)
-		("lbl_SHOW_SELECTED"           , "text"    ): _("Focus camera on selection"),
-		# (text of widget: lbl_SPEED_DOWN)
-		("lbl_SPEED_DOWN"              , "text"    ): _("Decrease game speed"),
-		# (text of widget: lbl_SPEED_UP)
-		("lbl_SPEED_UP"                , "text"    ): _("Increase game speed"),
-		# (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
-		("lbl_TILE_OWNER_HIGHLIGHT"    , "text"    ): _("Highlight tile ownership"),
-		# (text of widget: lbl_TRANSLUCENCY)
-		("lbl_TRANSLUCENCY"            , "text"    ): _("Toggle translucency of ambient buildings"),
-		# (text of widget: lbl_UP)
-		("lbl_UP"                      , "text"    ): _("Scroll up"),
-		# (helptext of widget: okButton)
-		("okButton"                    , "helptext"): _("Return"),
-		},
-
-	"ingamemenu.xml" : {
-		# (text of widget: help)
-		("help"                        , "text"    ): _("Help"),
-		# (text of widget: loadgame)
-		("loadgame"                    , "text"    ): _("Load game"),
-		# (text of widget: quit)
-		("quit"                        , "text"    ): _("Cancel game"),
-		# (text of widget: savegame)
-		("savegame"                    , "text"    ): _("Save game"),
-		# (text of widget: settings)
-		("settings"                    , "text"    ): _("Settings"),
-		# (text of widget: start)
-		("start"                       , "text"    ): _("Return to game"),
-		},
-
-	"loadingscreen.xml" : {
-		# (text of widget: loading_label)
-		("loading_label"               , "text"    ): _("Loading ..."),
-		},
-
-	"mainmenu.xml" : {
-		# (text of widget: credits_label)
-		("credits_label"               , "text"    ): _("Credits"),
-		# (text of widget: editor_label) Map editor
-		("editor_label"                , "text"    ): _("Editor"),
-		# (text of widget: help_label) Main / in-game menu entry
-		("help_label"                  , "text"    ): _("Help"),
-		# (text of widget: load_label) Open a widget to select which game to load
-		("load_label"                  , "text"    ): _("Load game"),
-		# (text of widget: multi_label) Opens widget to join or create multiplayer games
-		("multi_label"                 , "text"    ): _("Multiplayer"),
-		# (text of widget: quit_label) Completely shut down UH
-		("quit_label"                  , "text"    ): _("Quit"),
-		# (text of widget: settings_label) Main / in-game menu entry
-		("settings_label"              , "text"    ): _("Settings"),
-		# (text of widget: single_label) Opens widget to create singleplayer games (scenarios, random maps, free play)
-		("single_label"                , "text"    ): _("Singleplayer"),
-		# (text of widget: version_label)
-		("version_label"               , "text"    ): VERSION.string(),
-		},
-
-	"multiplayer_creategame.xml" : {
-		# (text of widget: create_game_lbl)
-		("create_game_lbl"             , "text"    ): _("Create game:"),
-		# (text of widget: exit_to_mp_menu_lbl)
-		("exit_to_mp_menu_lbl"         , "text"    ): _("Back:"),
-		# (text of widget: gamename_lbl)
-		("gamename_lbl"                , "text"    ): _("Name of the game:"),
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Choose a map:"),
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Create game - Multiplayer"),
-		# (text of widget: mp_player_limit_lbl)
-		("mp_player_limit_lbl"         , "text"    ): _("Player limit:"),
-		# (text of widget: password_lbl)
-		("password_lbl"                , "text"    ): _("Password of the game:"),
-		# (helptext of widget: cancel)
-		("cancel"                      , "helptext"): _("Exit to multiplayer menu"),
-		# (helptext of widget: create)
-		("create"                      , "helptext"): _("Create this new game"),
-		# (helptext of widget: gamename_lbl)
-		("gamename_lbl"                , "helptext"): _("This will be displayed to other players so they recognize the game."),
-		# (helptext of widget: password_lbl)
-		("password_lbl"                , "helptext"): _("This game's password. Required to join this game."),
-		},
-
-	"multiplayer_gamelobby.xml" : {
-		# (text of widget: exit_to_mp_menu_lbl)
-		("exit_to_mp_menu_lbl"         , "text"    ): _("Leave:"),
-		# (text of widget: game_player_color)
-		("game_player_color"           , "text"    ): _("Color"),
-		# (text of widget: game_player_status)
-		("game_player_status"          , "text"    ): _("Status"),
-		# (text of widget: game_start_notice)
-		("game_start_notice"           , "text"    ): _("The game will start as soon as all players are ready."),
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Chat:"),
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Gamelobby"),
-		# (text of widget: ready_lbl)
-		("ready_lbl"                   , "text"    ): _("Ready:"),
-		# (text of widget: startmessage)
-		("startmessage"                , "text"    ): _("Game details:"),
-		# (helptext of widget: cancel)
-		("cancel"                      , "helptext"): _("Exit gamelobby"),
-		# (helptext of widget: ready_btn)
-		("ready_btn"                   , "helptext"): _("Sets your state to ready (necessary for the game to start)"),
-		},
-
-	"multiplayermenu.xml" : {
-		# (text of widget: create_game_lbl)
-		("create_game_lbl"             , "text"    ): _("Create game:"),
-		# (text of widget: exit_to_main_menu_lbl)
-		("exit_to_main_menu_lbl"       , "text"    ): _("Main menu:"),
-		# (text of widget: game_showonlyownversion)
-		("game_showonlyownversion"     , "text"    ): _("Only show games with the same version:"),
-		# (text of widget: headline_active_games_lbl)
-		("headline_active_games_lbl"   , "text"    ): _("Active games:"),
-		# (text of widget: headline_left)
-		("headline_left"               , "text"    ): _("New game - Multiplayer"),
-		# (text of widget: join_game_lbl)
-		("join_game_lbl"               , "text"    ): _("Join game"),
-		# (text of widget: load_game_lbl)
-		("load_game_lbl"               , "text"    ): _("Load game:"),
-		# (text of widget: refr_gamelist_lbl)
-		("refr_gamelist_lbl"           , "text"    ): _("Refresh list:"),
-		# (helptext of widget: cancel)
-		("cancel"                      , "helptext"): _("Exit to main menu"),
-		# (helptext of widget: create)
-		("create"                      , "helptext"): _("Create a new game"),
-		# (helptext of widget: join)
-		("join"                        , "helptext"): _("Join the selected game"),
-		# (helptext of widget: load)
-		("load"                        , "helptext"): _("Load a saved game"),
-		# (helptext of widget: refresh)
-		("refresh"                     , "helptext"): _("Refresh list of active games"),
-		},
-
-	"set_password.xml" : {
-		# (text of widget: headline_set_password)
-		("headline_set_password"       , "text"    ): _("Password of the game"),
-		# (text of widget: password_lbl)
-		("password_lbl"                , "text"    ): _("Enter password:"),
-		},
-
-	"set_player_details.xml" : {
-		# (text of widget: headline_set_player_details)
-		("headline_set_player_details" , "text"    ): _("Change player details"),
-		},
-
-	"settings.xml" : {
-		# (text of widget: reset_mouse_sensitivity)
-		("reset_mouse_sensitivity"     , "text"    ): _("Reset to default"),
-		# (text of widget: auto_unload_label)
-		("auto_unload_label"           , "text"    ): _("Auto-unload ship:"),
-		# (text of widget: autosave_interval_label)
-		("autosave_interval_label"     , "text"    ): _("Autosave interval in minutes:"),
-		# (text of widget: color_depth_label)
-		("color_depth_label"           , "text"    ): _("Color depth:"),
-		# (text of widget: cursor_centered_zoom_label)
-		("cursor_centered_zoom_label"  , "text"    ): _("Cursor centered zoom:"),
-		# (text of widget: debug_log_lbl)
-		("debug_log_lbl"               , "text"    ): _("Enable logging:"),
-		# (text of widget: edge_scrolling_label)
-		("edge_scrolling_label"        , "text"    ): _("Scroll at map edge:"),
-		# (text of widget: effect_volume_label)
-		("effect_volume_label"         , "text"    ): _("Effects volume:"),
-		# (text of widget: fps_label)
-		("fps_label"                   , "text"    ): _("Frame rate limit:"),
-		# (text of widget: headline_graphics)
-		("headline_graphics"           , "text"    ): _("Graphics"),
-		# (text of widget: headline_language)
-		("headline_language"           , "text"    ): _("Language"),
-		# (text of widget: headline_misc)
-		("headline_misc"               , "text"    ): _("General"),
-		# (text of widget: headline_mouse)
-		("headline_mouse"              , "text"    ): _("Mouse"),
-		# (text of widget: headline_network)
-		("headline_network"            , "text"    ): _("Network"),
-		# (text of widget: headline_saving)
-		("headline_saving"             , "text"    ): _("Saving"),
-		# (text of widget: headline_sound)
-		("headline_sound"              , "text"    ): _("Sound"),
-		# (text of widget: middle_mouse_pan_lbl)
-		("middle_mouse_pan_lbl"        , "text"    ): _("Middle mouse button pan:"),
-		# (text of widget: minimap_rotation_label)
-		("minimap_rotation_label"      , "text"    ): _("Rotate minimap with map:"),
-		# (text of widget: mouse_sensitivity_label)
-		("mouse_sensitivity_label"     , "text"    ): _("Mouse sensitivity:"),
-		# (text of widget: music_volume_label)
-		("music_volume_label"          , "text"    ): _("Music volume:"),
-		# (text of widget: network_port_lbl)
-		("network_port_lbl"            , "text"    ): _("Network port:"),
-		# (text of widget: number_of_autosaves_label)
-		("number_of_autosaves_label"   , "text"    ): _("Number of autosaves:"),
-		# (text of widget: number_of_quicksaves_label)
-		("number_of_quicksaves_label"  , "text"    ): _("Number of quicksaves:"),
-		# (text of widget: quote_type_label)
-		("quote_type_label"            , "text"    ): _("Choose a quote type:"),
-		# (text of widget: screen_fullscreen_text)
-		("screen_fullscreen_text"      , "text"    ): _("Full screen:"),
-		# (text of widget: screen_resolution_label)
-		("screen_resolution_label"     , "text"    ): _("Screen resolution:"),
-		# (text of widget: scroll_speed_label)
-		("scroll_speed_label"          , "text"    ): _("Scroll delay:"),
-		# (text of widget: show_resource_icons_lbl)
-		("show_resource_icons_lbl"     , "text"    ): _("Production indicators:"),
-		# (text of widget: sound_enable_opt_text)
-		("sound_enable_opt_text"       , "text"    ): _("Enable sound:"),
-		# (text of widget: uninterrupted_building_label)
-		("uninterrupted_building_label", "text"    ): _("Uninterrupted building:"),
-		# (text of widget: use_renderer_label)
-		("use_renderer_label"          , "text"    ): _("Used renderer:"),
-		# (helptext of widget: cancelButton)
-		("cancelButton"                , "helptext"): _("Discard current changes"),
-		# (helptext of widget: defaultButton)
-		("defaultButton"               , "helptext"): _("Reset to default settings"),
-		# (helptext of widget: okButton)
-		("okButton"                    , "helptext"): _("Apply"),
-		# (helptext of widget: auto_unload_label)
-		("auto_unload_label"           , "helptext"): _("Whether to unload the ship after founding a settlement"),
-		# (helptext of widget: color_depth_label)
-		("color_depth_label"           , "helptext"): _("If set to 0, use the driver default"),
-		# (helptext of widget: cursor_centered_zoom_label)
-		("cursor_centered_zoom_label"  , "helptext"): _("When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center."),
-		# (helptext of widget: debug_log_lbl)
-		("debug_log_lbl"               , "helptext"): _("Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."),
-		# (helptext of widget: edge_scrolling_label)
-		("edge_scrolling_label"        , "helptext"): _("Whether to move the viewport when the mouse pointer is close to map edges"),
-		# (helptext of widget: fps_label)
-		("fps_label"                   , "helptext"): _("Set the maximum frame rate used. Default: 60 fps."),
-		# (helptext of widget: middle_mouse_pan_lbl)
-		("middle_mouse_pan_lbl"        , "helptext"): _("When enabled, dragging the middle mouse button will pan the camera"),
-		# (helptext of widget: minimap_rotation_label)
-		("minimap_rotation_label"      , "helptext"): _("Whether to also rotate the minimap whenever the regular map is rotated"),
-		# (helptext of widget: mouse_sensitivity_label)
-		("mouse_sensitivity_label"     , "helptext"): _("0 is default system settings"),
-		# (helptext of widget: network_port_lbl)
-		("network_port_lbl"            , "helptext"): _("If set to 0, use the router default"),
-		# (helptext of widget: quote_type_label)
-		("quote_type_label"            , "helptext"): _("What kind of quote to display while loading a game"),
-		# (helptext of widget: scroll_speed_label)
-		("scroll_speed_label"          , "helptext"): _("Higher values slow down scrolling."),
-		# (helptext of widget: show_resource_icons_lbl)
-		("show_resource_icons_lbl"     , "helptext"): _("Whether to show resource icons over buildings whenever they finish production"),
-		# (helptext of widget: uninterrupted_building_label)
-		("uninterrupted_building_label", "helptext"): _("When enabled, do not exit the build mode after successful construction"),
-		# (helptext of widget: use_renderer_label)
-		("use_renderer_label"          , "helptext"): _("SDL is only meant as unsupported fallback and might cause problems!"),
-		},
-
-	"select_savegame.xml" : {
-		# (text of widget: enter_filename_label)
-		("enter_filename_label"        , "text"    ): _("Enter filename:"),
-		# (text of widget: gamename_lbl)
-		("gamename_lbl"                , "text"    ): _("Name of the game:"),
-		# (text of widget: gamepassword_lbl)
-		("gamepassword_lbl"            , "text"    ): _("Password of the game:"),
-		# (text of widget: headline_details_label) More text describing the savegame
-		("headline_details_label"      , "text"    ): _("Details:"),
-		# (text of widget: headline_saved_games_label)
-		("headline_saved_games_label"  , "text"    ): _("Your saved games:"),
-		# (helptext of widget: cancelButton)
-		("cancelButton"                , "helptext"): _("Cancel"),
-		# (helptext of widget: deleteButton)
-		("deleteButton"                , "helptext"): _("Delete selected savegame"),
-		# (helptext of widget: gamename_lbl)
-		("gamename_lbl"                , "helptext"): _("This will be displayed to other players so they recognize the game."),
-		# (helptext of widget: gamepassword_lbl)
-		("gamepassword_lbl"            , "helptext"): _("Password of the game. Required to join this game"),
-		},
-
-	"singleplayermenu.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("New game - Singleplayer"),
-		# (text of widget: main_menu_label)
-		("main_menu_label"             , "text"    ): _("Main menu:"),
-		# (text of widget: start_game_label)
-		("start_game_label"            , "text"    ): _("Start game:"),
-		# (text of widget: free_maps)
-		("free_maps"                   , "text"    ): _("Free play"),
-		# (text of widget: random)
-		("random"                      , "text"    ): _("Random map"),
-		# (text of widget: scenario)
-		("scenario"                    , "text"    ): _("Scenario"),
-		# (helptext of widget: cancel)
-		("cancel"                      , "helptext"): _("Exit to main menu"),
-		# (helptext of widget: okay)
-		("okay"                        , "helptext"): _("Start game"),
-		},
-
-	"sp_free_maps.xml" : {
-		# (text of widget: headline_choose_map_lbl)
-		("headline_choose_map_lbl"     , "text"    ): _("Choose a map to play:"),
-		},
-
-	"sp_random.xml" : {
-		# (text of widget: headline_map_settings_lbl)
-		("headline_map_settings_lbl"   , "text"    ): _("Map settings:"),
-		# (text of widget: seed_string_lbl)
-		("seed_string_lbl"             , "text"    ): _("Seed:"),
-		},
-
-	"sp_scenario.xml" : {
-		# (text of widget: choose_map_lbl)
-		("choose_map_lbl"              , "text"    ): _("Choose a map to play:"),
-		# (text of widget: select_lang_lbl)
-		("select_lang_lbl"             , "text"    ): _("Select a language:"),
-		},
-
-	"aidataselection.xml" : {
-		# (text of widget: ai_players_label)
-		("ai_players_label"            , "text"    ): _("AI players:"),
-		},
-
-	"game_settings.xml" : {
-		# (text of widget: headline_game_settings_lbl)
-		("headline_game_settings_lbl"  , "text"    ): _("Game settings:"),
-		# (text of widget: lbl_disasters) Whether there should be disasters in the game.
-		("lbl_disasters"               , "text"    ): _("Disasters"),
-		# (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
-		("lbl_free_trader"             , "text"    ): _("Free Trader"),
-		# (text of widget: lbl_pirates) Whether to create this kind of player in the game.
-		("lbl_pirates"                 , "text"    ): _("Pirates"),
-		},
-
-	"playerdataselection.xml" : {
-		# (text of widget: color_label)
-		("color_label"                 , "text"    ): _("Color:"),
-		# (text of widget: player_label)
-		("player_label"                , "text"    ): _("Player name:"),
-		},
-
-	"popup_230.xml" : {
-		},
-
-	"popup_290.xml" : {
-		},
-
-	"popup_350.xml" : {
-		},
-
-	"startup_error_popup.xml" : {
+	'messagewidget_message.xml' : {
 		},
+
+	'minimap.xml' : {
+		(u'build'                        , 'helptext'): _(u"Build menu (B)"),
+		(u'destroy_tool'                 , 'helptext'): _(u"Destroy (X)"),
+		(u'diplomacyButton'              , 'helptext'): _(u"Diplomacy"),
+		(u'gameMenuButton'               , 'helptext'): _(u"Game menu (Esc)"),
+		(u'logbook'                      , 'helptext'): _(u"Captain's log (L)"),
+		(u'rotateLeft'                   , 'helptext'): _(u"Rotate map counterclockwise (,)"),
+		(u'rotateRight'                  , 'helptext'): _(u"Rotate map clockwise (.)"),
+		(u'speedDown'                    , 'helptext'): _(u"Decrease game speed (-)"),
+		(u'speedUp'                      , 'helptext'): _(u"Increase game speed (+)"),
+		(u'zoomIn'                       , 'helptext'): _(u"Zoom in"),
+		(u'zoomOut'                      , 'helptext'): _(u"Zoom out"),
+		},
+
+	'resource_overview_bar_entry.xml' : {
+		},
+
+	'resource_overview_bar_gold.xml' : {
+		},
+
+	'resource_overview_bar_stats.xml' : {
+		},
+
+	'change_name.xml' : {
+		(u'enter_new_name_lbl'           , 'text'    ): _(u"Enter new name:"),
+		(u'headline_change_name'         , 'text'    ): _(u"Change name"),
+		(u'old_name_label'               , 'text'    ): _(u"Old name:"),
+		(u'okButton'                     , 'helptext'): _(u"Apply the new name"),
+		},
+
+	'chat.xml' : {
+		(u'chat_lbl'                     , 'text'    ): _(u"Enter your message:"),
+		(u'headline'                     , 'text'    ): _(u"Chat"),
+		},
+
+	'boatbuilder.xml' : {
+		(u'BB_cancel_build_label'        , 'text'    ): _(u"Cancel building:"),
+		(u'BB_cancel_warning_label'      , 'text'    ): _(u"(lose all resources)"),
+		(u'BB_current_order'             , 'text'    ): _(u"Currently building:"),
+		(u'BB_howto_build_lbl'           , 'text'    ): _(u"To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
+		(u'BB_needed_res_label'          , 'text'    ): _(u"Resources still needed:"),
+		(u'BB_progress_label'            , 'text'    ): _(u"Construction progress:"),
+		(u'BB_cancel_button'             , 'helptext'): _(u"Cancel all building progress"),
+		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
+		(u'toggle_active_active'         , 'helptext'): _(u"Pause"),
+		(u'toggle_active_inactive'       , 'helptext'): _(u"Resume"),
+		},
+
+	'boatbuilder_showcase.xml' : {
+		},
+
+	'diplomacy.xml' : {
+		(u'ally_label'                   , 'text'    ): _(u"ally"),
+		(u'enemy_label'                  , 'text'    ): _(u"enemy"),
+		(u'neutral_label'                , 'text'    ): _(u"neutral"),
+		},
+
+	'overview_farm.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Building overview"),
+		(u'capacity_utilization_label'   , 'helptext'): _(u"Capacity utilization"),
+		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
+		(u'capacity_utilization'         , 'helptext'): _(u"Capacity utilization"),
+		(u'running_costs'                , 'helptext'): _(u"Running costs"),
+		},
+
+	'island_inventory.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Settlement inventory"),
+		},
+
+	'mainsquare_inhabitants.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Settler overview"),
+		(u'headline_happiness_per_house' , 'text'    ): _(u"Happiness per house"),
+		(u'headline_residents_per_house' , 'text'    ): _(u"Residents per house"),
+		(u'headline_residents_total'     , 'text'    ): _(u"Summary"),
+		(u'houses'                       , 'text'    ): _(u"houses"),
+		(u'residents'                    , 'text'    ): _(u"residents"),
+		(u'tax_label'                    , 'text'    ): _(u"Taxes:"),
+		(u'upgrades_lbl'                 , 'text'    ): _(u"Upgrade permissions:"),
+		(u'avg_icon'                     , 'helptext'): _(u"satisfied"),
+		(u'happiness_house_icon'         , 'helptext'): _(u"Amount of houses with this happiness"),
+		(u'happy_icon'                   , 'helptext'): _(u"happy"),
+		(u'houses_icon'                  , 'helptext'): _(u"Houses with this amount of inhabitants"),
+		(u'inhabitants_icon'             , 'helptext'): _(u"Number of inhabitants per house"),
+		(u'paid_taxes_icon'              , 'helptext'): _(u"Paid taxes"),
+		(u'sad_icon'                     , 'helptext'): _(u"sad"),
+		(u'tax_rate_icon'                , 'helptext'): _(u"Tax rate"),
+		(u'tax_val_label'                , 'helptext'): _(u"Tax rate"),
+		(u'taxes'                        , 'helptext'): _(u"Paid taxes"),
+		},
+
+	'overview_enemybuilding.xml' : {
+		},
+
+	'overview_enemyunit.xml' : {
+		},
+
+	'overview_enemywarehouse.xml' : {
+		(u'buying_label'                 , 'text'    ): _(u"Buying"),
+		(u'selling_label'                , 'text'    ): _(u"Selling"),
+		},
+
+	'overview_firestation.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Building overview"),
+		(u'name_label'                   , 'text'    ): _(u"Name:"),
+		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
+		(u'running_costs'                , 'helptext'): _(u"Running costs"),
+		},
+
+	'overview_groundunit.xml' : {
+		(u'lbl_weapon_storage'           , 'text'    ): _(u"Weapons:"),
+		},
+
+	'overview_productionbuilding.xml' : {
+		(u'capacity_utilization_label'   , 'helptext'): _(u"Capacity utilization"),
+		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
+		(u'capacity_utilization'         , 'helptext'): _(u"Capacity utilization"),
+		(u'running_costs'                , 'helptext'): _(u"Running costs"),
+		},
+
+	'overview_resourcedeposit.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Resource deposit"),
+		(u'res_dep_description_lbl'      , 'text'    ): _(u"This is a resource deposit where you can build a mine to dig up resources."),
+		(u'res_dep_description_lbl2'     , 'text'    ): _(u"It contains these resources:"),
+		},
+
+	'overview_settler.xml' : {
+		(u'needed_res_label'             , 'text'    ): _(u"Needed resources:"),
+		(u'tax_label'                    , 'text'    ): _(u"Taxes:"),
+		(u'happiness_label'              , 'helptext'): _(u"Happiness"),
+		(u'paid_taxes_label'             , 'helptext'): _(u"Paid taxes"),
+		(u'paid_taxes_label'             , 'helptext'): _(u"Tax rate"),
+		(u'residents_label'              , 'helptext'): _(u"Residents"),
+		(u'inhabitants'                  , 'helptext'): _(u"Residents"),
+		(u'tax_val_label'                , 'helptext'): _(u"Tax rate"),
+		(u'taxes'                        , 'helptext'): _(u"Paid taxes"),
+		(u'happiness'                    , 'helptext'): _(u"Happiness"),
+		},
+
+	'overview_signalfire.xml' : {
+		(u'signal_fire_description_lbl'  , 'text'    ): _(u"The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."),
+		},
+
+	'overview_tower.xml' : {
+		(u'name_label'                   , 'text'    ): _(u"Name:"),
+		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
+		(u'running_costs'                , 'helptext'): _(u"Running costs"),
+		},
+
+	'overview_tradership.xml' : {
+		(u'trader_description_lbl'       , 'text'    ): _(u"This is the free trader's ship. It will visit you from time to time to buy or sell goods."),
+		},
+
+	'overview_warehouse.xml' : {
+		(u'name_label'                   , 'text'    ): _(u"Name:"),
+		(u'collector_utilization_label'  , 'helptext'): _(u"Collector utilization"),
+		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
+		(u'collector_utilization'        , 'helptext'): _(u"Collector utilization"),
+		(u'running_costs'                , 'helptext'): _(u"Running costs"),
+		},
+
+	'overviewtab.xml' : {
+		},
+
+	'overview_select_multi.xml' : {
+		},
+
+	'unit_entry_widget.xml' : {
+		},
+
+	'overview_trade_ship.xml' : {
+		(u'configure_route'              , 'helptext'): _(u"Configure trading route"),
+		(u'found_settlement'             , 'helptext'): _(u"Build settlement"),
+		(u'trade'                        , 'helptext'): _(u"Trade"),
+		},
+
+	'overview_war_ship.xml' : {
+		(u'configure_route'              , 'helptext'): _(u"Configure trading route"),
+		(u'found_settlement'             , 'helptext'): _(u"Build settlement"),
+		(u'trade'                        , 'helptext'): _(u"Trade"),
+		},
+
+	'tradetab.xml' : {
+		(u'buying_label'                 , 'text'    ): _(u"Buying"),
+		(u'exchange_label'               , 'text'    ): _(u"Exchange:"),
+		(u'headline'                     , 'text'    ): _(u"Trade"),
+		(u'selling_label'                , 'text'    ): _(u"Selling"),
+		(u'ship_label'                   , 'text'    ): _(u"Ship:"),
+		(u'trade_with_label'             , 'text'    ): _(u"Trade partner:"),
+		},
+
+	'tab_base.xml' : {
+		},
+
+	'buysellmenu.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Buy or sell resources"),
+		(u'headline_trade_history'       , 'text'    ): _(u"Trade history"),
+		},
+
+	'select_trade_resource.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Select resources:"),
+		},
+
+	'tab_account.xml' : {
+		(u'buy_expenses_label'           , 'text'    ): _(u"Buying"),
+		(u'headline_balance_label'       , 'text'    ): _(u"Balance:"),
+		(u'headline_expenses_label'      , 'text'    ): _(u"Expenses:"),
+		(u'headline_income_label'        , 'text'    ): _(u"Income:"),
+		(u'running_costs_label'          , 'text'    ): _(u"Running costs"),
+		(u'sell_income_label'            , 'text'    ): _(u"Sale"),
+		(u'taxes_label'                  , 'text'    ): _(u"Taxes"),
+		(u'show_production_overview'     , 'helptext'): _(u"Show resources produced in this settlement"),
+		},
+
+	'trade_single_slot.xml' : {
+		},
+
+	'overview_farmproductionline.xml' : {
+		(u'toggle_active_active'         , 'helptext'): _(u"Pause production"),
+		(u'toggle_active_inactive'       , 'helptext'): _(u"Start production"),
+		},
+
+	'overview_productionline.xml' : {
+		(u'toggle_active_active'         , 'helptext'): _(u"Pause production"),
+		(u'toggle_active_inactive'       , 'helptext'): _(u"Start production"),
+		},
+
+	'related_buildings_container.xml' : {
+		},
+
+	'resbar_resource_selection.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Select resource:"),
+		(u'make_default_btn'             , 'helptext'): _(u"Save current resource configuration as default for all settlements."),
+		(u'reset_default_btn'            , 'helptext'): _(u"Reset default resource configuration for all settlements."),
+		(u'headline'                     , 'helptext'): _(u"The resource you select is displayed instead of the current one. Empty by clicking on X."),
+		},
+
+	'route_entry.xml' : {
+		(u'delete_warehouse'             , 'helptext'): _(u"Delete entry"),
+		(u'move_down'                    , 'helptext'): _(u"Move down"),
+		(u'move_up'                      , 'helptext'): _(u"Move up"),
+		},
+
+	'trade_history_item.xml' : {
+		},
+
+	'traderoute_resource_selection.xml' : {
+		(u'select_res_label'             , 'text'    ): _(u"Select a resource:"),
+		},
+
+	'captains_log.xml' : {
+		(u'stats_players'                , 'text'    ): _(u"Players"),
+		(u'stats_settlements'            , 'text'    ): _(u"My settlements"),
+		(u'stats_ships'                  , 'text'    ): _(u"My ships"),
+		(u'weird_button_1'               , 'text'    ): _(u"Whole world"),
+		(u'weird_button_4'               , 'text'    ): _(u"Everybody"),
+		(u'headline_chat'                , 'text'    ): _(u"Chat"),
+		(u'headline_game_messages'       , 'text'    ): _(u"Game messages"),
+		(u'headline_statistics'          , 'text'    ): _(u"Statistics"),
+		(u'okButton'                     , 'helptext'): _(u"Return to game"),
+		(u'weird_button_4'               , 'helptext'): _(u"Sends the chat messages to all players."),
+		(u'backwardButton'               , 'helptext'): _(u"Read previous entries"),
+		(u'forwardButton'                , 'helptext'): _(u"Read next entries"),
+		},
+
+	'configure_route.xml' : {
+		(u'lbl_route_activity'           , 'text'    ): _(u"Route activity:"),
+		(u'lbl_wait_at_load'             , 'text'    ): _(u"Wait at load:"),
+		(u'lbl_wait_at_unload'           , 'text'    ): _(u"Wait at unload:"),
+		(u'okButton'                     , 'helptext'): _(u"Exit"),
+		(u'start_route'                  , 'helptext'): _(u"Start route"),
+		},
+
+	'healthwidget.xml' : {
+		},
+
+	'island_production.xml' : {
+		(u'okButton'                     , 'helptext'): _(u"Close"),
+		},
+
+	'players_overview.xml' : {
+		(u'building_score'               , 'text'    ): _(u"Buildings"),
+		(u'headline'                     , 'text'    ): _(u"Player scores"),
+		(u'land_score'                   , 'text'    ): _(u"Land"),
+		(u'money_score'                  , 'text'    ): _(u"Money"),
+		(u'player_name'                  , 'text'    ): _(u"Name"),
+		(u'resource_score'               , 'text'    ): _(u"Resources"),
+		(u'settler_score'                , 'text'    ): _(u"Settlers"),
+		(u'total_score'                  , 'text'    ): _(u"Total"),
+		(u'unit_score'                   , 'text'    ): _(u"Units"),
+		(u'building_score'               , 'helptext'): _(u"Value of all the buildings in the player's settlement(s)"),
+		(u'land_score'                   , 'helptext'): _(u"Value of usable land i.e Amount of Land that can be used to create buildings "),
+		(u'money_score'                  , 'helptext'): _(u"Player's current treasury + income expected in near future"),
+		(u'player_name'                  , 'helptext'): _(u"Player Name"),
+		(u'resource_score'               , 'helptext'): _(u"Value of resources generated from all the possible sources in the player's settlement(s)"),
+		(u'settler_score'                , 'helptext'): _(u"Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"),
+		(u'total_score'                  , 'helptext'): _(u"The total value from all individual entities or in short : Total Player Score"),
+		(u'unit_score'                   , 'helptext'): _(u"Value of all the units owned by the player"),
+		},
+
+	'players_settlements.xml' : {
+		(u'balance'                      , 'text'    ): _(u"Balance"),
+		(u'inhabitants'                  , 'text'    ): _(u"Inhabitants"),
+		(u'running_costs'                , 'text'    ): _(u"Running costs"),
+		(u'settlement_name'              , 'text'    ): _(u"Name"),
+		(u'taxes'                        , 'text'    ): _(u"Taxes"),
+		},
+
+	'ships_list.xml' : {
+		(u'health'                       , 'text'    ): _(u"Health"),
+		(u'ship_name'                    , 'text'    ): _(u"Name"),
+		(u'ship_type'                    , 'text'    ): _(u"Type"),
+		(u'status'                       , 'text'    ): _(u"Status"),
+		(u'weapons'                      , 'text'    ): _(u"Weapons"),
+		},
+
+	'stancewidget.xml' : {
+		(u'aggressive_stance'            , 'helptext'): _(u"Aggressive"),
+		(u'flee_stance'                  , 'helptext'): _(u"Flee"),
+		(u'hold_ground_stance'           , 'helptext'): _(u"Hold ground"),
+		(u'none_stance'                  , 'helptext'): _(u"Passive"),
+		},
+
+	'credits.xml' : {
+		},
+
+	'editor_create_map.xml' : {
+		(u'headline_choose_map_size_lbl' , 'text'    ): _(u"Choose a map size:"),
+		},
+
+	'editor_select_map.xml' : {
+		(u'headline_choose_map_lbl'      , 'text'    ): _(u"Choose a map:"),
+		},
+
+	'editor_select_saved_game.xml' : {
+		(u'headline_choose_saved_game'   , 'text'    ): _(u"Choose a saved game's map:"),
+		},
+
+	'editor_start_menu.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Select map source"),
+		(u'create_new_map'               , 'text'    ): _(u"Create new map"),
+		(u'load_existing_map'            , 'text'    ): _(u"Load existing map"),
+		(u'load_saved_game_map'          , 'text'    ): _(u"Load saved game's map"),
+		(u'cancel'                       , 'helptext'): _(u"Exit to main menu"),
+		(u'okay'                         , 'helptext'): _(u"Start editor"),
+		},
+
+	'help.xml' : {
+		(u'headline'                     , 'text'    ): _(u"Key bindings"),
+		(u'lbl_BUILD_TOOL'               , 'text'    ): _(u"Show build menu"),
+		(u'lbl_CHAT'                     , 'text'    ): _(u"Chat"),
+		(u'lbl_CONSOLE'                  , 'text'    ): _(u"Display FPS counter"),
+		(u'lbl_COORD_TOOLTIP'            , 'text'    ): _(u"Show coordinate values (Debug)"),
+		(u'lbl_DESTROY_TOOL'             , 'text'    ): _(u"Enable destruct mode"),
+		(u'lbl_DOWN'                     , 'text'    ): _(u"Scroll down"),
+		(u'lbl_ESCAPE'                   , 'text'    ): _(u"Close dialogs"),
+		(u'lbl_GRID'                     , 'text'    ): _(u"Toggle grid on/off"),
+		(u'lbl_HEALTH_BAR'               , 'text'    ): _(u"Toggle health bars"),
+		(u'lbl_HELP'                     , 'text'    ): _(u"Display help"),
+		(u'lbl_LEFT'                     , 'text'    ): _(u"Scroll left"),
+		(u'lbl_LOGBOOK'                  , 'text'    ): _(u"Toggle Captain's log"),
+		(u'lbl_PAUSE'                    , 'text'    ): _(u"Pause game"),
+		(u'lbl_PIPETTE'                  , 'text'    ): _(u"Enable pipette mode (clone buildings)"),
+		(u'lbl_PLAYERS_OVERVIEW'         , 'text'    ): _(u"Show player scores"),
+		(u'lbl_QUICKLOAD'                , 'text'    ): _(u"Quickload"),
+		(u'lbl_QUICKSAVE'                , 'text'    ): _(u"Quicksave"),
+		(u'lbl_REMOVE_SELECTED'          , 'text'    ): _(u"Remove selected units / buildings"),
+		(u'lbl_RIGHT'                    , 'text'    ): _(u"Scroll right"),
+		(u'lbl_ROAD_TOOL'                , 'text'    ): _(u"Enable road building mode"),
+		(u'lbl_ROTATE_LEFT'              , 'text'    ): _(u"Rotate building or map counterclockwise"),
+		(u'lbl_ROTATE_RIGHT'             , 'text'    ): _(u"Rotate building or map clockwise"),
+		(u'lbl_SCREENSHOT'               , 'text'    ): _(u"Screenshot"),
+		(u'lbl_SETTLEMENTS_OVERVIEW'     , 'text'    ): _(u"Show settlement list"),
+		(u'lbl_SHIFT'                    , 'text'    ): _(u"Hold to place multiple buildings"),
+		(u'lbl_SHIPS_OVERVIEW'           , 'text'    ): _(u"Show ship list"),
+		(u'lbl_SHOW_SELECTED'            , 'text'    ): _(u"Focus camera on selection"),
+		(u'lbl_SPEED_DOWN'               , 'text'    ): _(u"Decrease game speed"),
+		(u'lbl_SPEED_UP'                 , 'text'    ): _(u"Increase game speed"),
+		(u'lbl_TILE_OWNER_HIGHLIGHT'     , 'text'    ): _(u"Highlight tile ownership"),
+		(u'lbl_TRANSLUCENCY'             , 'text'    ): _(u"Toggle translucency of ambient buildings"),
+		(u'lbl_UP'                       , 'text'    ): _(u"Scroll up"),
+		(u'okButton'                     , 'helptext'): _(u"Return"),
+		},
+
+	'hotkeys.xml' : {
+		(u'reset_to_default'             , 'text'    ): _(u"Reset to default keys"),
+		(u'labels_headline'              , 'text'    ): _(u"Actions"),
+		(u'primary_buttons_headline'     , 'text'    ): _(u"Primary"),
+		(u'secondary_buttons_headline'   , 'text'    ): _(u"Secondary"),
+		(u'okButton'                     , 'helptext'): _(u"Exit to main menu"),
+		(u'reset_to_default'             , 'helptext'): _(u"Reset to default"),
+		(u'lbl_BUILD_TOOL'               , 'helptext'): _(u"Show build menu"),
+		(u'lbl_CHAT'                     , 'helptext'): _(u"Chat"),
+		(u'lbl_CONSOLE'                  , 'helptext'): _(u"Toggle showing FPS on/off"),
+		(u'lbl_COORD_TOOLTIP'            , 'helptext'): _(u"Show coordinate values (Debug)"),
+		(u'lbl_DESTROY_TOOL'             , 'helptext'): _(u"Enable destruct mode"),
+		(u'lbl_DOWN'                     , 'helptext'): _(u"Scroll down"),
+		(u'lbl_GRID'                     , 'helptext'): _(u"Toggle grid on/off"),
+		(u'lbl_HEALTH_BAR'               , 'helptext'): _(u"Toggle health bars"),
+		(u'lbl_HELP'                     , 'helptext'): _(u"Display help"),
+		(u'lbl_LEFT'                     , 'helptext'): _(u"Scroll left"),
+		(u'lbl_LOGBOOK'                  , 'helptext'): _(u"Toggle Captain's log"),
+		(u'lbl_PAUSE'                    , 'helptext'): _(u"Pause game"),
+		(u'lbl_PIPETTE'                  , 'helptext'): _(u"Enable pipette mode (clone buildings)"),
+		(u'lbl_PLAYERS_OVERVIEW'         , 'helptext'): _(u"Show player scores"),
+		(u'lbl_QUICKLOAD'                , 'helptext'): _(u"Quickload"),
+		(u'lbl_QUICKSAVE'                , 'helptext'): _(u"Quicksave"),
+		(u'lbl_REMOVE_SELECTED'          , 'helptext'): _(u"Remove selected units / buildings"),
+		(u'lbl_RIGHT'                    , 'helptext'): _(u"Scroll right"),
+		(u'lbl_ROAD_TOOL'                , 'helptext'): _(u"Enable road building mode"),
+		(u'lbl_ROTATE_LEFT'              , 'helptext'): _(u"Rotate building or map counterclockwise"),
+		(u'lbl_ROTATE_RIGHT'             , 'helptext'): _(u"Rotate building or map clockwise"),
+		(u'lbl_SCREENSHOT'               , 'helptext'): _(u"Screenshot"),
+		(u'lbl_SETTLEMENTS_OVERVIEW'     , 'helptext'): _(u"Show settlement list"),
+		(u'lbl_SHIPS_OVERVIEW'           , 'helptext'): _(u"Show ship list"),
+		(u'lbl_SHOW_SELECTED'            , 'helptext'): _(u"Focus camera on selection"),
+		(u'lbl_SPEED_DOWN'               , 'helptext'): _(u"Decrease game speed"),
+		(u'lbl_SPEED_UP'                 , 'helptext'): _(u"Increase game speed"),
+		(u'lbl_TILE_OWNER_HIGHLIGHT'     , 'helptext'): _(u"Highlight tile ownership"),
+		(u'lbl_TRANSLUCENCY'             , 'helptext'): _(u"Toggle translucency of ambient buildings"),
+		(u'lbl_UP'                       , 'helptext'): _(u"Scroll up"),
+		},
+
+	'ingamemenu.xml' : {
+		(u'help'                         , 'text'    ): _(u"Help"),
+		(u'loadgame'                     , 'text'    ): _(u"Load game"),
+		(u'quit'                         , 'text'    ): _(u"Cancel game"),
+		(u'savegame'                     , 'text'    ): _(u"Save game"),
+		(u'settings'                     , 'text'    ): _(u"Settings"),
+		(u'start'                        , 'text'    ): _(u"Return to game"),
+		},
+
+	'loadingscreen.xml' : {
+		(u'loading_label'                , 'text'    ): _(u"Loading…"),
+		},
+
+	'mainmenu.xml' : {
+		(u'credits_label'                , 'text'    ): _(u"Credits"),
+		(u'editor_label'                 , 'text'    ): _(u"Editor"),
+		(u'help_label'                   , 'text'    ): _(u"Help"),
+		(u'load_label'                   , 'text'    ): _(u"Load game"),
+		(u'multi_label'                  , 'text'    ): _(u"Multiplayer"),
+		(u'quit_label'                   , 'text'    ): _(u"Quit"),
+		(u'settings_label'               , 'text'    ): _(u"Settings"),
+		(u'single_label'                 , 'text'    ): _(u"Singleplayer"),
+		(u'version_label'                , 'text'    ): VERSION.string(),
+		},
+
+	'multiplayer_creategame.xml' : {
+		(u'create_game_lbl'              , 'text'    ): _(u"Create game:"),
+		(u'exit_to_mp_menu_lbl'          , 'text'    ): _(u"Back:"),
+		(u'gamename_lbl'                 , 'text'    ): _(u"Name of the game:"),
+		(u'headline'                     , 'text'    ): _(u"Choose a map:"),
+		(u'headline'                     , 'text'    ): _(u"Create game - Multiplayer"),
+		(u'mp_player_limit_lbl'          , 'text'    ): _(u"Player limit:"),
+		(u'password_lbl'                 , 'text'    ): _(u"Password of the game:"),
+		(u'cancel'                       , 'helptext'): _(u"Exit to multiplayer menu"),
+		(u'create'                       , 'helptext'): _(u"Create this new game"),
+		(u'gamename_lbl'                 , 'helptext'): _(u"This will be displayed to other players so they recognize the game."),
+		(u'password_lbl'                 , 'helptext'): _(u"This game's password. Required to join this game."),
+		},
+
+	'multiplayer_gamelobby.xml' : {
+		(u'exit_to_mp_menu_lbl'          , 'text'    ): _(u"Leave:"),
+		(u'game_player_color'            , 'text'    ): _(u"Color"),
+		(u'game_player_status'           , 'text'    ): _(u"Status"),
+		(u'game_start_notice'            , 'text'    ): _(u"The game will start as soon as all players are ready."),
+		(u'headline'                     , 'text'    ): _(u"Chat:"),
+		(u'headline'                     , 'text'    ): _(u"Gamelobby"),
+		(u'ready_lbl'                    , 'text'    ): _(u"Ready:"),
+		(u'startmessage'                 , 'text'    ): _(u"Game details:"),
+		(u'cancel'                       , 'helptext'): _(u"Exit gamelobby"),
+		(u'ready_btn'                    , 'helptext'): _(u"Sets your state to ready (necessary for the game to start)"),
+		},
+
+	'multiplayermenu.xml' : {
+		(u'create_game_lbl'              , 'text'    ): _(u"Create game:"),
+		(u'exit_to_main_menu_lbl'        , 'text'    ): _(u"Main menu:"),
+		(u'headline_active_games_lbl'    , 'text'    ): _(u"Active games:"),
+		(u'headline_left'                , 'text'    ): _(u"New game - Multiplayer"),
+		(u'join_game_lbl'                , 'text'    ): _(u"Join game"),
+		(u'load_game_lbl'                , 'text'    ): _(u"Load game:"),
+		(u'refr_gamelist_lbl'            , 'text'    ): _(u"Refresh list:"),
+		(u'cancel'                       , 'helptext'): _(u"Exit to main menu"),
+		(u'create'                       , 'helptext'): _(u"Create a new game"),
+		(u'join'                         , 'helptext'): _(u"Join the selected game"),
+		(u'load'                         , 'helptext'): _(u"Load a saved game"),
+		(u'refresh'                      , 'helptext'): _(u"Refresh list of active games"),
+		},
+
+	'set_player_details.xml' : {
+		(u'headline_set_player_details'  , 'text'    ): _(u"Change player details"),
+		},
+
+	'settings.xml' : {
+		(u'reset_mouse_sensitivity'      , 'text'    ): _(u"Reset to default"),
+		(u'auto_unload_label'            , 'text'    ): _(u"Auto-unload ship:"),
+		(u'autosave_interval_label'      , 'text'    ): _(u"Autosave interval in minutes:"),
+		(u'color_depth_label'            , 'text'    ): _(u"Color depth:"),
+		(u'cursor_centered_zoom_label'   , 'text'    ): _(u"Cursor centered zoom:"),
+		(u'debug_log_lbl'                , 'text'    ): _(u"Enable logging:"),
+		(u'edge_scrolling_label'         , 'text'    ): _(u"Scroll at map edge:"),
+		(u'effect_volume_label'          , 'text'    ): _(u"Effects volume:"),
+		(u'fps_label'                    , 'text'    ): _(u"Frame rate limit:"),
+		(u'headline_graphics'            , 'text'    ): _(u"Graphics"),
+		(u'headline_language'            , 'text'    ): _(u"Language"),
+		(u'headline_misc'                , 'text'    ): _(u"General"),
+		(u'headline_mouse'               , 'text'    ): _(u"Mouse"),
+		(u'headline_network'             , 'text'    ): _(u"Network"),
+		(u'headline_saving'              , 'text'    ): _(u"Saving"),
+		(u'headline_sound'               , 'text'    ): _(u"Sound"),
+		(u'middle_mouse_pan_lbl'         , 'text'    ): _(u"Middle mouse button pan:"),
+		(u'minimap_rotation_label'       , 'text'    ): _(u"Rotate minimap with map:"),
+		(u'mouse_sensitivity_label'      , 'text'    ): _(u"Mouse sensitivity:"),
+		(u'music_volume_label'           , 'text'    ): _(u"Music volume:"),
+		(u'network_port_lbl'             , 'text'    ): _(u"Network port:"),
+		(u'number_of_autosaves_label'    , 'text'    ): _(u"Number of autosaves:"),
+		(u'number_of_quicksaves_label'   , 'text'    ): _(u"Number of quicksaves:"),
+		(u'quote_type_label'             , 'text'    ): _(u"Choose a quote type:"),
+		(u'screen_fullscreen_text'       , 'text'    ): _(u"Full screen:"),
+		(u'screen_resolution_label'      , 'text'    ): _(u"Screen resolution:"),
+		(u'scroll_speed_label'           , 'text'    ): _(u"Scroll delay:"),
+		(u'show_resource_icons_lbl'      , 'text'    ): _(u"Production indicators:"),
+		(u'sound_enable_opt_text'        , 'text'    ): _(u"Enable sound:"),
+		(u'uninterrupted_building_label' , 'text'    ): _(u"Uninterrupted building:"),
+		(u'use_renderer_label'           , 'text'    ): _(u"Used renderer:"),
+		(u'cancelButton'                 , 'helptext'): _(u"Discard current changes"),
+		(u'defaultButton'                , 'helptext'): _(u"Reset to default settings"),
+		(u'okButton'                     , 'helptext'): _(u"Apply"),
+		(u'auto_unload_label'            , 'helptext'): _(u"Whether to unload the ship after founding a settlement"),
+		(u'color_depth_label'            , 'helptext'): _(u"If set to 0, use the driver default"),
+		(u'cursor_centered_zoom_label'   , 'helptext'): _(u"When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center."),
+		(u'debug_log_lbl'                , 'helptext'): _(u"Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."),
+		(u'edge_scrolling_label'         , 'helptext'): _(u"Whether to move the viewport when the mouse pointer is close to map edges"),
+		(u'fps_label'                    , 'helptext'): _(u"Set the maximum frame rate used. Default: 60 fps."),
+		(u'middle_mouse_pan_lbl'         , 'helptext'): _(u"When enabled, dragging the middle mouse button will pan the camera"),
+		(u'minimap_rotation_label'       , 'helptext'): _(u"Whether to also rotate the minimap whenever the regular map is rotated"),
+		(u'mouse_sensitivity_label'      , 'helptext'): _(u"0 is default system settings"),
+		(u'network_port_lbl'             , 'helptext'): _(u"If set to 0, use the router default"),
+		(u'quote_type_label'             , 'helptext'): _(u"What kind of quote to display while loading a game"),
+		(u'scroll_speed_label'           , 'helptext'): _(u"Higher values slow down scrolling."),
+		(u'show_resource_icons_lbl'      , 'helptext'): _(u"Whether to show resource icons over buildings whenever they finish production"),
+		(u'uninterrupted_building_label' , 'helptext'): _(u"When enabled, do not exit the build mode after successful construction"),
+		(u'use_renderer_label'           , 'helptext'): _(u"SDL is only meant as unsupported fallback and might cause problems!"),
+		},
+
+	'select_savegame.xml' : {
+		(u'enter_filename_label'         , 'text'    ): _(u"Enter filename:"),
+		(u'gamename_lbl'                 , 'text'    ): _(u"Name of the game:"),
+		(u'gamepassword_lbl'             , 'text'    ): _(u"Password of the game:"),
+		(u'headline_details_label'       , 'text'    ): _(u"Details:"),
+		(u'headline_saved_games_label'   , 'text'    ): _(u"Your saved games:"),
+		(u'cancelButton'                 , 'helptext'): _(u"Cancel"),
+		(u'deleteButton'                 , 'helptext'): _(u"Delete selected savegame"),
+		(u'gamename_lbl'                 , 'helptext'): _(u"This will be displayed to other players so they recognize the game."),
+		(u'gamepassword_lbl'             , 'helptext'): _(u"Password of the game. Required to join this game"),
+		},
+
+	'singleplayermenu.xml' : {
+		(u'headline'                     , 'text'    ): _(u"New game - Singleplayer"),
+		(u'main_menu_label'              , 'text'    ): _(u"Main menu:"),
+		(u'start_game_label'             , 'text'    ): _(u"Start game:"),
+		(u'free_maps'                    , 'text'    ): _(u"Free play"),
+		(u'random'                       , 'text'    ): _(u"Random map"),
+		(u'scenario'                     , 'text'    ): _(u"Scenario"),
+		(u'cancel'                       , 'helptext'): _(u"Exit to main menu"),
+		(u'okay'                         , 'helptext'): _(u"Start game"),
+		},
+
+	'sp_free_maps.xml' : {
+		(u'headline_choose_map_lbl'      , 'text'    ): _(u"Choose a map to play:"),
+		},
+
+	'sp_random.xml' : {
+		(u'headline_map_settings_lbl'    , 'text'    ): _(u"Map settings:"),
+		(u'seed_string_lbl'              , 'text'    ): _(u"Seed:"),
+		},
+
+	'sp_scenario.xml' : {
+		(u'choose_map_lbl'               , 'text'    ): _(u"Choose a map to play:"),
+		(u'select_lang_lbl'              , 'text'    ): _(u"Select a language:"),
+		},
+
+	'aidataselection.xml' : {
+		(u'ai_players_label'             , 'text'    ): _(u"AI players:"),
+		},
+
+	'game_settings.xml' : {
+		(u'headline_game_settings_lbl'   , 'text'    ): _(u"Game settings:"),
+		(u'lbl_disasters'                , 'text'    ): _(u"Disasters"),
+		(u'lbl_free_trader'              , 'text'    ): _(u"Free Trader"),
+		(u'lbl_pirates'                  , 'text'    ): _(u"Pirates"),
+		},
+
+	'playerdataselection.xml' : {
+		(u'color_label'                  , 'text'    ): _(u"Color:"),
+		(u'player_label'                 , 'text'    ): _(u"Player name:"),
+		},
+
+	'popup_230.xml' : {
+		},
+
+	'popup_290.xml' : {
+		},
+
+	'popup_350.xml' : {
+		},
+
+	'startup_error_popup.xml' : {
+		},
+
 	}

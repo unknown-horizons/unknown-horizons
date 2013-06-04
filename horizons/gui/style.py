@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.fife import Color
+try:
+	#TODO fifechan / FIFE 0.3.5+ compat
+	from fife.fifechan import Color
+except ImportError:
+	# this is the old (0.3.4 and earlier) API
+	from fife.fife import Color
 
 BROWN = { 64: Color(80, 80, 40,  64),
           96: Color(80, 80, 40,  96),
@@ -46,7 +51,8 @@ STYLES = {
 			'selection_color': BROWN[192],
 			'border_size': 0,
 			'margins': (0, 0),
-			'font': '14_black',
+			'font': 'default',
+			'vertical_scrollbar': 1,
 			'horizontal_scrollbar': 0,
 		},
 		'Button': {
@@ -55,7 +61,7 @@ STYLES = {
 			'margins': (10, 5),
 		},
 		#TODO combine the following two after the tuple notation bug is fixed:
-		# http://fife.trac.cvsdude.com/engine/ticket/656
+		# http://fife.trac.cloudforge.com/engine/ticket/656
 		'CheckBox': {
 			'background_color': WHITE[96],
 		},
@@ -95,25 +101,13 @@ STYLES = {
 
 'resource_bar': {
 		'default': {
-			'font': 'small_black',
-		},
-},
-
-'city_info': { # style for city info
-		'default': {
-			'font': '18',
+			'font': 'resourcebar',
 		},
 },
 
 'headline': { # style for headlines
 		'default': {
 			'font': 'headline',
-		},
-},
-
-'tooltip': { # style for tooltips
-		'default': {
-			'font': 'tooltip',
 		},
 },
 

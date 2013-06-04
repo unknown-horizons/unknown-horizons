@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,7 +30,7 @@ LANGCACHE = {}
 def find_available_languages(domain='unknown-horizons', update=False):
 	"""Returns a dict( lang_key -> locale_dir )"""
 	global LANGCACHE
-	if len(LANGCACHE) and not update:
+	if LANGCACHE and not update:
 		return LANGCACHE
 
 	alternatives = ('content/lang',
@@ -58,4 +58,4 @@ def find_available_languages(domain='unknown-horizons', update=False):
 def get_fontdef_for_locale(locale):
 	"""Returns path to the fontdef file for a locale. Unifont is default."""
 	fontdef_file = FONTDEFS.get(locale, 'unifont')
-	return u'content/fonts/{filename}.fontdef'.format(filename=fontdef_file)
+	return os.path.join('content', 'fonts', u'{0}.fontdef'.format(fontdef_file))

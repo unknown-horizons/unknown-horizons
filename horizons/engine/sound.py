@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -33,7 +33,7 @@ class Sound(object):
 
 	def __init__(self, engine):
 		"""
-		@param engine: fife from horizons.engine.py
+		@param engine: Fife from horizons.engine.engine
 		"""
 		self.engine = engine
 		self.emitter = {}
@@ -44,13 +44,18 @@ class Sound(object):
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
 		self.ingame_music = glob.glob('content/audio/music/*.ogg')
 		self.menu_music = glob.glob('content/audio/music/menu/*.ogg')
+
 		# store the three most recently played files to avoid repetition
-		self.last_tracks = deque(maxlen=3)
+		# If we don't have three files available, reduce accordingly:
+		# At least one track not in last_tracks always needs to exist
+		available = max(0, len(self.ingame_music) - 1)
+		sample_size = min(3, available)
+		self.last_tracks = deque(maxlen=sample_size)
 		if len(self.menu_music) <= 1:
 			# sad stuff: we only have few menu tracks
 			# => also play some ingame_tracks after the menu
 			# music finished, but start with the menu tracks
-			ingame_tracks = random.sample(self.ingame_music, 3)
+			ingame_tracks = random.sample(self.ingame_music, sample_size)
 			self.menu_music.extend(ingame_tracks)
 			self.last_tracks.extend(ingame_tracks)
 
@@ -104,7 +109,6 @@ class Sound(object):
 			self.emitter['speech'].reset()
 		ExtScheduler().rem_call(self, self.check_music)
 
-
 	def check_music(self, refresh_playlist=False, play_menu_tracks=False):
 		"""Used as callback to check if music is still running or if we have
 		to load the next song.
@@ -114,13 +118,20 @@ class Sound(object):
 		@param play_menu_tracks: Whether to start the playlist with menu music. Only works with refresh_playlist=True.
 		"""
 		if refresh_playlist:
-			self.music = self.menu_music if play_menu_tracks else self.ingame_music
+			if play_menu_tracks and self.menu_music:
+				self.music = self.menu_music
+			elif self.ingame_music:
+				self.music = self.ingame_music
+			else:
+				self.music = None  # Cannot play any tracks if there are none
+
 		self._new_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
 		self._new_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 		#TODO find cleaner way to check for this:
 		# check whether last track has finished:
-		if self._new_byte_pos == self._old_byte_pos and \
-		   self._new_smpl_pos == self._old_smpl_pos:
+		if (self.music is not None
+		    and self._new_byte_pos == self._old_byte_pos
+		    and self._new_smpl_pos == self._old_smpl_pos):
 			# choose random new track, but not one we played very recently
 			track = random.choice([m for m in self.music if m not in self.last_tracks])
 			self.play_sound('bgsound', track)
@@ -128,7 +139,6 @@ class Sound(object):
 
 		self._old_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
 		self._old_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
-
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
@@ -140,7 +150,6 @@ class Sound(object):
 			assert emitter is not None, "You need to supply an initialized emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
-			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
+			#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/449
 			emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 			emitter.play()
-

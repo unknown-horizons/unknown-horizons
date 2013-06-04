@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,7 @@ from horizons.component.namedcomponent import NamedComponent
 class OverviewTab(TabInterface):
 	has_stance = False
 	def __init__(self, instance, widget='overviewtab.xml',
-	             icon_path='content/gui/icons/tabwidget/common/building_overview_%s.png'):
+	             icon_path='icons/tabwidget/common/building_overview'):
 		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.instance = instance
 		self.init_values()

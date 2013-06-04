@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,7 @@ from horizons.gui.widgets.container import AutoResizeContainer
 
 class FPSDisplay(AutoResizeContainer):
 	"""Display the frames per second.
-	
+
 	Updates once a second if visible.
 	"""
 
@@ -38,7 +38,7 @@ class FPSDisplay(AutoResizeContainer):
 		self._label = Label(text=u"- - -")
 		self.addChild(self._label)
 		self.stylize('menu')
-		self.position_technique = "left+0:bottom+0"
+		self.position_technique = "left:bottom"
 
 		self._timemanager = horizons.globals.fife.engine.getTimeManager()
 

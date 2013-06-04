@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,7 +25,7 @@ from tests.gui import gui_test
 @gui_test(use_dev_map=True, timeout=60)
 def test_settings_dialog_crash(gui):
 	"""Opening&closing the settings dialog in two different games crashes."""
-	
+
 	# open pause menu
 	gui.trigger('mainhud', 'gameMenuButton')
 
@@ -36,10 +36,10 @@ def test_settings_dialog_crash(gui):
 	# open pause menu, quit session
 	def func1():
 		gui.trigger('popup_window', 'okButton')
-		
+
 	with gui.handler(func1):
 		gui.trigger('menu', 'closeButton')
-	
+
 	# start a new game (development map)
 	gui.trigger('menu', 'single_button')
 	gui.trigger('singleplayermenu', 'free_maps')
@@ -52,3 +52,20 @@ def test_settings_dialog_crash(gui):
 	# open & close settings
 	gui.trigger('menu', 'settingsLink')
 	gui.trigger('settings_window', 'okButton')  # this crashes
+
+
+@gui_test(timeout=60)
+def test_settings_dialog_crash2(gui):
+	# open settings in main menu
+	gui.trigger('menu', 'settings_button')
+	gui.trigger('settings_window', 'cancelButton')
+
+	# start game
+	gui.trigger('menu', 'single_button')
+	gui.trigger('singleplayermenu', 'free_maps')
+	gui.trigger('singleplayermenu', 'okay')
+
+	gui.press_key(gui.Key.ESCAPE)
+	# open & close settings
+	gui.trigger('menu', 'settingsLink')
+	gui.press_key(gui.Key.ESCAPE)

@@ -3,8 +3,143 @@ Unknown Horizons
 
 -----------------------------------------------------
 
-2012-??-??: Milestone 2012.2
-changelog date: OCT 03
+2013-07-01: Milestone 2013.3
+changelog date: MAY 18
+
+Gameplay and Balancing
+* New features
+  + 
+* Modifications and changes
+  # 
+* Fixed bugs and problems
+  ~ 9d4a7e1: crash when clicking on messagewidget messages in scenarios
+  ~ #2039: introduce memory leak to fix `RuntimeError: _[NotFound]_ ,
+    Something was searched, but not found :: action move_as_[corrupted]`
+  ~ #2078: crash when joining password-protected multiplayer game
+
+Media Content
+* New files and features
+  + 
+* Brush-ups and modification
+  # 
+
+User Interface
+* Additions and new features
+  + d413693: improved loading screen messages about current stage
+  + #2070: interface to change hotkeys in settings
+  + #2094: return key confirms singleplayer, multiplayer and editor menu
+  + 8d0d248: PAUSE as secondary key for pausing game (primary: P)
+* Repositioning and modifications
+  # #1310: right clicks in trade route resource selection are now
+    special-cased to abort selection (not empty slot) sometimes
+  # 420e17d: LOGBOOK_DEFAULT_DELAY reduced to 1-4 seconds (was: 4-7)
+
+* Fixed bugs and usability problems
+  ~ #2081: explanatory labels for map editor
+  ~ #1789: show message text next to corresponding icon
+  ~ #1587: show correct logbook section when scenario goal is reached
+  ~ #1577: messages of accomplished scenario tasks disappear
+
+Codebase
+* New functionalities
+  + #2077: lazy translation (`speaklater` library)
+  + 3195744: script to update existing translations against new template
+  + #2100: scenario condition game_started
+* Modified structures
+  # #2053: default hashbang now is `/usr/bin/env python2`
+  # #2058: allow running with FIFE newer than 0.3.4
+  # 0a1d6db: migrate script to translate a scenario to python
+  # 58a192d: correct location comment for translations extracted from xml
+  # #2088: copyright headers now `2008-2013` instead of just `2013`
+  # 771b65e: SimpleMessageBus allows same callback only once per message
+  # #2090: 'metadata' container for scenarios, rewrite scenario menu
+  # 47c50a2: remove reference to main gui in session
+* Fixed crashes and inconsistencies
+  ~ 3c363f4: handle unknown actions in hotkey settings
+
+User-Contributed Content
+* Translations
+  # Now hosted on http://hosted.weblate.org/projects/uh/
+
+* Campaigns, scenarios and maps
+
+* New team members with this release, Annotations
+  + Push access was granted to:
+  + We accepted pull requests or patches by: alluk, Daenor
+  + Translators that joined our teams and contributed several strings:
+    Please refer to the credits!
+
+
+-----------------------------------------------------
+
+2013-04-06: Milestone 2013.2
+changelog date: APR 06
+
+Gameplay and Balancing
+* New features
+* Modifications and changes
+  # reduce boards upgrade cost of all residential buildings by 1
+  # rename 'increment' to 'tier
+* Fixed bugs and problems
+  ~ boatbuilder eating the player's money - #2046
+  ~ re-enable almost all ambient sounds
+  ~ residences being affected by disasters shouldn't upgrade - #1835
+  ~ undefined boat builder behavior when pausing construction and ordering new ship - #1830
+  ~ crash on special unloading and loading combinations - #1999
+
+Media Content
+* New files and features
+  + warehouse graphics for tier 3 (Daniel)
+  + Use player-colored settlement icon in cityinfo and account tab
+  + music track: Ireland's Coast by Matthew Pablo
+  + music track: Peer Gynt Suite No. 1, Op. 46 - I. Morning
+* Brush-ups and modification
+
+User Interface
+* Additions and new features
+  + allow multiselect combinations of units and buildings
+  + start savegames with doubleclick - #2036 (ThePawnBreak)
+  + support for different buy and sell prices (ThePawnBreak)
+  + information about price in tooltip in Select Resources widget (ThePawnBreak)
+  + necessary resources tooltip to build menu - #1886 (ThePawnBreak)
+* Repositioning and modifications
+  # update distillery and charcoal burning build menu icons
+  # Buildingtool: tweak color highlights
+* Fixed bugs and usability problems
+  ~ multiselect tab crashes after hiding it when pressing delete
+  ~ clicking on multiplayer menu crashes when there's no internet connection
+  ~ certain ToggleImageButtons segfault on hover - #2000
+  ~ cityinfo widget position with large resource overview bar - #1866
+  ~ crate icon in overview of resource deposits - #2001
+	~ Remove same version only checkbox in multiplayer menu - #2068
+
+Codebase
+* New functionalities
+  + quicksave and autosave for editor - #1935 (ThePawnBreak)
+  + progressbar on loading screen
+  + font change on runtime - #1740
+  + script to create a linux tarball
+  + TilingProgressBar that tiles its fill image instead of stretching
+* Modified structures
+  # multiplayer sever only returns games running the same protocol version
+  # remove unused and outdated install script
+  # make the AI try to react to disaster and mine depletion events only when they are about that player
+  # leave the MP game when the game lobby is cancelled
+* Fixed crashes and inconsistencies
+  ~ hitting Esc while loading screen is active crashes - #2018
+  ~ multiplayer backward compatibility for 2012.1
+	~ Remove double extensions (.sqlite.sqlite) from savegames - #2065
+
+* New team members with this release, Annotations
+  + Push access was granted to: ThePawnBreak
+  + Add gryffus to AUTHORS, packaging for Fedora and openSUSE Linux distribution.
+  + Translators that joined our teams and contributed several strings:
+    Please refer to the credits!
+
+-----------------------------------------------------
+
+2013-01-27: Milestone 2013.1
+changelog date: JAN 27
 
 Gameplay and Balancing
 * New features
@@ -19,12 +154,20 @@ Gameplay and Balancing
   # fire station: 4 bricks (was: 5), tavern: 4 bricks (was: 2)
   # trees take 120s to grow (was: 60) and cost 50 gold coins (was: 10)
   # producing boards requires 2 trees (was: 1)
+  # charcoal production consumes 3 boards (was: 5)
+  # increase storage size for coal in the charcoalburning to 4 (was: 2)
+  # Messages now only displayed once in scenarios - #1897
+  # don't allow empty names for ships/settlements
+  # allow frigates to trade - #1989
+  # require buildings other than warehouses to be entirely within settlements - #1970, #969
 * Fixed bugs and problems
   ~ fixed wrong graphics of tree growth sequence - #924
   ~ burnt down residential buildings replaced by ruin
+  ~ save freetrader, pirate and disaster settings - #1372
 
 Media Content
 * New files and features
+  + new tileset graphics (Daniel)
   + docs: contribution guidelines
   + font: GNU Unifont as general font fallback
   + sound: error sound, refresh sound, click sound (Kinshuk)
@@ -37,6 +180,7 @@ Media Content
 * Brush-ups and modifications
   # resource icons are now 32px everywhere
   # buildings retain their rotation when upgraded
+  # remove alpha palette from fish images - #1906
 
 User Interface
 * Additions and new features
@@ -52,6 +196,8 @@ User Interface
   + error sounds for invalid and impossible actions
   + click sound for all gui actions
   + second build menu layout (toggle with icon)
+  + new ingame map editor, replaces the old external one
+  + new widget to show FPS via F10
 * Repositioning and modifications
   # BuildRelated tabs now use one line per tier
   # cleaned up and polished production overview, inventory tabs, boat
@@ -60,6 +206,9 @@ User Interface
   # highlight fish deposits in range of fishers, improve fish highlight
   # dynamic cityinfo placement, depends on resource overview bar size
   # popups now modal by default
+  # reworked layout of Game-Settings page - #1751
+  # use 'abcd' image for roads as buildpreview if it exists
+  # restyle city info
 * Fixed bugs and usability problems
   ~ only display status icons when and where they make sense
   ~ multiplayer: check required building costs early - #1486
@@ -68,6 +217,9 @@ User Interface
   ~ clicks on scenario messages open corresponding logbook page
   ~ warehouse selection unintuitive - #1246
   ~ select most recent savegame in "Load game" dialog
+  ~ make the coordinates tooltip show integer coordinates again
+  ~ save max tier notification per player
+  ~ update building preview on player or settlementinventory change - #1680
 
 Codebase
 * New functionalities
@@ -78,6 +230,14 @@ Codebase
   + scenario actions:
       highlight_position, change_increment, alter_inventory
   + scenario tests
+  + store hotkey key values in settings file - #1302
+  + add enet.so library for x64 Mac users with system python 2.7
+  + new atlases generator, enable/disable via settings.xml or commandline
+  + add the --no-freeze-protection flag to disable freeze protection
+  + show a warning of unsupported fife revision
+  + silently upgrade savegames our savegame upgrader can upgrade
+  + add the --edit-game-map option to edit the maps of saved games
+  + GCI Scroll Settings - #720
 * Modified structures
   # own implementation of yaml cache, replacing shelve
   # less verbose api for horizons.messaging
@@ -86,28 +246,34 @@ Codebase
   # --nature-seed flag is gone, --sp-seed provides its functionality
   # rewrote mp client/server methods, support older client protocols
   # globals in horizons.main now live in horizons.globals
+  # remove support for preview action sets, allow weighting action sets
+  # use yyyy-mm-dd.nn format for profiling data files.
+  # change --load-map to --load-game
+  # remove the entire campaign system
 * Fixed crashes and inconsistencies
   ~ use unicode everywhere, only convert it when talking to fife
   ~ storages provide itercontents() and iterslots() instead of __iter__
   ~ invalid LC_TIME, LANG, LOCALE environment variables no longer crash
+  ~ add workaround for FIFE's inconsistent instance rotation round
+  ~ Fix animal location saving
 
 User-Contributed Content
 * Translations
-   + new translation project: multiplayer error messages
-   + new translations:
-   + new terminology translations:
-   + new tutorial translations:
-   + new translations of 'The Unknown': de, es
+  + new translation project: multiplayer error messages
+  + new translations: ml, uk
+  + new terminology translations: uk
+  + new tutorial translations: ml, uk
+  + new translations of 'The Unknown': de, es, fr, nl, pt_BR
 
 * Campaigns, scenarios and maps
 
 * New team members with this release, Annotations
-   + Push access was granted to: mesutcank, Kiryx,
-   + We accepted pull requests or patches by:
-     Foaly, Srijan Mishra, Vivek Sagar, MasterofJOKers, Magnus Knutas,
-     desophos,
-   + Translators that joined our teams and contributed several strings:
-     Please refer to the credits!
+  + Push access was granted to: mesutcank, Kiryx,
+  + We accepted pull requests or patches by:
+    Foaly, Srijan Mishra, Vivek Sagar, MasterofJOKers, Magnus Knutas,
+    desophos,
+  + Translators that joined our teams and contributed several strings:
+    Please refer to the credits!
 
 -----------------------------------------------------
 

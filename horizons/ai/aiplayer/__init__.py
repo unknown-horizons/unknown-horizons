@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -106,8 +106,7 @@ class AIPlayer(GenericAI):
 		""" Start the AI tick process. Try to space out their ticks evenly. """
 		ai_players = 0
 		position = None
-		for i in xrange(len(self.world.players)):
-			player = self.world.players[i]
+		for player in self.world.players:
 			if isinstance(player, AIPlayer):
 				if player is self:
 					position = ai_players
@@ -398,10 +397,14 @@ class AIPlayer(GenericAI):
 
 	def notify_mine_empty(self, message):
 		"""The Mine calls this function to let the player know that the mine is empty."""
-		self._settlement_manager_by_settlement_id[message.mine.settlement.worldid].production_builder.handle_mine_empty(message.mine)
+		settlement = message.mine.settlement
+		if settlement.owner is self:
+			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.handle_mine_empty(message.mine)
 
 	def notify_new_disaster(self, message):
-		Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[message.building.settlement.worldid].handle_disaster, message), self, run_in=0)
+		settlement = message.building.settlement
+		if settlement.owner is self:
+			Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[settlement.worldid].handle_disaster, message), self, run_in=0)
 
 	def _on_settlement_range_changed(self, message):
 		"""Stores the ownership changes in a list for later processing."""

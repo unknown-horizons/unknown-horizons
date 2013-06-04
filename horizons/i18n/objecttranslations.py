@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,7 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -439,32 +439,30 @@ def set_translations():
 		"tooltip_text"                : _("Defends your settlement."),
 		},
 
-	"content/objects/gui_buildmenu/build_menu_per_increment.yaml" : {
-		# headline of gui_buildmenu:build_menu_per_increment
+	"content/objects/gui_buildmenu/build_menu_per_tier.yaml" : {
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Companies"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
-		# headline of gui_buildmenu:build_menu_per_increment
-		"headline"                    : _("Military"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Mining"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Residents and infrastructure"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Services"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Services"),
-		# headline of gui_buildmenu:build_menu_per_increment
+		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Services"),
 		},
 
@@ -513,7 +511,5 @@ def set_translations():
 		"tab4_headline"               : _("Companies"),
 		# tab5_headline of gui_buildmenu:build_menu_per_type
 		"tab5_headline"               : _("Military"),
-		# tab6_headline of gui_buildmenu:build_menu_per_type
-		"tab6_headline"               : _("Aesthetics"),
 		},
 	})

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -149,7 +149,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		# save remaining ticks when in waiting state
 		if self.state == self.states.no_job_waiting:
 			calls = Scheduler().get_classinst_calls(self, self.handle_no_possible_job)
-			assert(len(calls) == 1), 'calls: %s' % calls
+			assert len(calls) == 1, 'calls: %s' % calls
 			remaining_ticks = max(calls.values()[0], 1) # we have to save a number > 0
 			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?",
 				 remaining_ticks, self.worldid)
@@ -228,12 +228,6 @@ class WildAnimal(CollectorAnimal, Collector):
 			return False
 		return super(WildAnimal, self).check_possible_job_target(provider)
 
-	""" unused for now
-	def reroute(self):
-		# when target is gone, search another one
-		self.search_job()
-	"""
-
 	def end_job(self):
 		super(WildAnimal, self).end_job()
 		# check if we can reproduce
@@ -277,7 +271,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 	def __str__(self):
 		return "%s(health=%s)" % (super(WildAnimal, self).__str__(),
-															self.health if hasattr(self, 'health') else None)
+		                          getattr(self, 'health', None))
 
 
 class FarmAnimal(CollectorAnimal, BuildingCollector):
@@ -286,11 +280,10 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 	the farm grows, and collectors from the farm can collect their produced resources.
 	"""
 	job_ordering = JobList.order_by.random
-	grazingTime = 2
 
 	def __init__(self, home_building, start_hidden=False, **kwargs):
-		super(FarmAnimal, self).__init__(home_building = home_building,
-																 start_hidden = start_hidden, **kwargs)
+		super(FarmAnimal, self).__init__(home_building=home_building,
+		                                 start_hidden=start_hidden, **kwargs)
 
 	def register_at_home_building(self, unregister=False):
 		if unregister:

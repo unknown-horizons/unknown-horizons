@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -35,6 +35,9 @@ if not enet:
 
 MAX_PEERS = 4095
 CONNECTION_TIMEOUT = 500
+# protocols used by uh versions:
+# 0 ... 2012.1
+# 1 ... >2012.1
 PROTOCOLS = [0, 1]
 
 logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
@@ -357,6 +360,8 @@ class Server(object):
 		logging.debug("[LIST]")
 		gameslist = packets.server.data_gameslist()
 		for _game in self.games:
+			if _game.creator.protocol != player.protocol:
+				continue
 			if not _game.is_open():
 				continue
 			if _game.is_full():
@@ -474,8 +479,10 @@ class Server(object):
 		else:
 			for _player in game.players:
 				if _player.peer.state == enet.PEER_STATE_CONNECTED:
-					self.fatalerror(_player, __("I feel like a bad bunny but one player has terminated the game"
-						" which currently for technical reasons means that the game cannot continue. Sorry :*("))
+					self.fatalerror(_player,
+						__("One player has terminated their game. "
+						"For technical reasons, this currently means the game cannot continue. "
+						"We are very sorry about that."))
 		self.call_callbacks('deletegame', game)
 
 

@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,7 @@
 import os
 import glob
 
-if os.getcwd().rpartition('\\')[2] != 'development':
+if os.path.basename(os.getcwd()) != 'development':
 	print 'Please run the script from the "development" directory!'
 	quit()
 

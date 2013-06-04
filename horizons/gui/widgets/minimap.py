@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -59,6 +59,7 @@ class Minimap(object):
 	WAREHOUSE_IMAGE = "content/gui/icons/minimap/warehouse.png"
 	SHIP_NEUTRAL = "content/gui/icons/minimap/ship_neutral.png"
 	SHIP_PIRATE = "content/gui/icons/minimap/pirate.png"
+	GROUND_UNIT_IMAGE = "content/gui/icons/minimap/groundunit.png"
 
 	SHIP_DOT_UPDATE_INTERVAL = 0.5 # seconds
 
@@ -413,8 +414,8 @@ class Minimap(object):
 		# the path always contains the full path, the unit might be somewhere in it
 		position_of_unit_in_path = 0
 		unit_pos = unit.position.to_tuple()
-		for i in xrange(len(path)):
-			if path[i] == unit_pos:
+		for i, pos in enumerate(path):
+			if pos == unit_pos:
 				position_of_unit_in_path = i
 				break
 
@@ -565,7 +566,7 @@ class Minimap(object):
 			ship_icon = self.imagemanager.load(ship_icon_path)
 			dummy_point1.set(coord[0], coord[1])
 			self.minimap_image.rendertarget.addImage(render_name, dummy_point1, ship_icon)
-			if ship.owner.regular_player is True:
+			if ship.owner.regular_player:
 				# add the 'flag' over the ship icon, with the color of the owner
 				dummy_point0.set(coord[0] - 5, coord[1] - 5)
 				dummy_point1.set(coord[0], coord[1] - 5)
@@ -595,10 +596,10 @@ class Minimap(object):
 			if ship in self.session.selected_instances:
 				self.minimap_image.rendertarget.addPoint(render_name, dummy_point0, *Minimap.COLORS["water"])
 				for x_off, y_off in ((-2,  0),
-					                   (+2,  0),
-					                   ( 0, -2),
-					                   ( 0, +2)):
-					dummy_point1.set(coord[0]+x_off, coord[1] + y_off)
+				                     (+2,  0),
+				                     ( 0, -2),
+				                     ( 0, +2)):
+					dummy_point1.set(coord[0] + x_off, coord[1] + y_off)
 					self.minimap_image.rendertarget.addPoint(render_name, dummy_point1, *color)
 
 		# draw settlement warehouses if something has changed

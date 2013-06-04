@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# usage: 
+# usage:
 # copy the full content/ folder into src/Contents/Resources/
 # moreover copy the fife dir into the current dir
 # details can be found at http://wiki.unknown-horizons.org/w/MacOS_build_notes

@@ -209,19 +209,7 @@ class Enum(object):
 		"""Get an enum value for a string
 		@throws KeyError on key not found"""
 		try:
-			try:
-				index = self._keys.index(key)
-			except AttributeError:
-				# WORKAROUND: python 2.5 doesn't have tuple.index
-				index = 0
-				for i in self._keys:
-					if i == key:
-						break
-					index += 1
-				if index == len(self._keys): # not found
-					raise ValueError
-				# </WORKAROUND>
-
+			index = self._keys.index(key)
 		except ValueError:
 			raise KeyError # keyerror is more natural here, since the value is a key
 		return self[index]

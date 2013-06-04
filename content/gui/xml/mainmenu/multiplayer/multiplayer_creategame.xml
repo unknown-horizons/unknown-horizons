@@ -4,7 +4,7 @@
 
 	<Container size="320,500"  position="55,32"  name="left_side">
 		<Label text="Create game - Multiplayer"  position="70,10" name="headline" />
-		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
+		<hr position="52,30" />
 		<Icon name="map_preview_minimap" size="128,128" max_size="128,128" position="50, 100" is_focusable="0" />
 
 		<VBox position="50,250">
@@ -17,7 +17,7 @@
 		</VBox>
 
 		<Label name="exit_to_mp_menu_lbl"  text="Back:"  position="60,470" />
-		<CancelButton position="100,460"  name="cancel" 
+		<CancelButton position="100,460"  name="cancel"
 			helptext="Exit to multiplayer menu" />
 	</Container>
 
@@ -34,7 +34,7 @@
 		<ScrollArea  name="map_list_area"  min_size="290,250">
 			<ListBox name="maplist"  min_size="290,330" is_focusable="0" />
 		</ScrollArea>
-		<Label name="recommended_number_of_players_lbl" text="" />
+		<Label name="recommended_number_of_players_lbl" />
 		<Spacer fixed_size="30" />
 		<HBox> <!-- keep sync with equivalent entry in select_savegame.xml -->
 			<Label text="Name of the game:" name="gamename_lbl"
@@ -45,7 +45,7 @@
 		<HBox>
 			<Label text="Password of the game:" name="password_lbl"
 				helptext="This game's password. Required to join this game." />
-			<TextField name="password" text="" max_size="250,20" min_size="150,20" />
+			<TextField name="password" max_size="250,20" min_size="150,20" />
 		</HBox>
 	</VBox>
 

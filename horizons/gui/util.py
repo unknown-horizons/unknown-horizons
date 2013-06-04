@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -81,7 +81,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 		if w.name.startswith("headline") or w.name == "name":
 			w.stylize('headline')
 		elif w.name.startswith("uni_") or w.comment.startswith("uni_"):
-			w.font = '16_black_unifont'
+			w.font = 'unifont'
 	if center_widget:
 		widget.position_technique = "center:center"
 
@@ -166,7 +166,7 @@ def create_resource_selection_dialog(on_click, inventory, db,
 			filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
 			button = ImageFillStatusButton.init_for_res(db, res_id,
 			                                            amount=amount, filled=filled, uncached=True,
-			                                            use_inactive_icon=False)
+			                                            use_inactive_icon=False, showprice=True)
 		# on click: add this res
 		cb = Callback(on_click, res_id)
 		if hasattr(button, "button"): # for imagefillstatusbuttons

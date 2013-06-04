@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -62,32 +62,6 @@ class Field(NatureBuildingResourceHandler):
 			self.session.ingame_gui.message_widget.add(point=pos, string_id="FIELD_NEEDS_FARM",
 			                                           check_duplicate=True)
 
-class AnimalField(Field):
-	walkable = False
-	def create_collector(self):
-		self.animals = []
-		for (animal, number) in self.session.db("SELECT unit_id, count FROM animals \
-		                                         WHERE building_id = ?", self.id):
-			for i in xrange(0, number):
-				unit = Entities.units[animal](self, session=self.session)
-				unit.initialize()
-		super(AnimalField, self).create_collector()
-
-	def remove(self):
-		while self.animals:
-			self.animals[0].cancel(continue_action=lambda : 42) # don't continue
-			self.animals[0].remove()
-		super(AnimalField, self).remove()
-
-	def save(self, db):
-		super(AnimalField, self).save(db)
-		for animal in self.animals:
-			animal.save(db)
-
-	def load(self, db, worldid):
-		super(AnimalField, self).load(db, worldid)
-		self.animals = []
-		# units are loaded separatly
 
 class Tree(NatureBuildingResourceHandler):
 	buildable_upon = True

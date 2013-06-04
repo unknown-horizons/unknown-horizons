@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -165,8 +165,8 @@ class _build_i18n(distutils.cmd.Command):
 				if mo_files:
 					mo_files_generated = True
 				data_files.extend(mo_files)
-			except (RuntimeError) as e:
-				print e.message
+			except RuntimeError as e:
+				print(e.message)
 				return
 
 		# merge .in with translation
@@ -216,10 +216,10 @@ class _build_man(build):
 			self.warn("Can't build manpage, needs xsltproc")
 			return
 
-		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, \
-								   (['xsltproc',
-								     'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
-								     'doc/manpage.xml'],))
+		data = (['xsltproc',
+		        'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
+		        'doc/manpage.xml'], )
+		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, data)
 		self.distribution.data_files.append(('share/man/man6', ('unknown-horizons.6',)))
 
 build.sub_commands.append(('build_man', None))

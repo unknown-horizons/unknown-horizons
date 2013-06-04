@@ -4,13 +4,13 @@
 
 	<Container size="340,510"  position="60,32">
 		<Label text="New game - Singleplayer" position="70,10"  name="headline" />
-		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
+		<hr position="52,30" />
 
 		<RadioButton position="22,50"  size="32,32"  name="scenario"  group="gametype" text="Scenario"   />
 		<RadioButton position="22,80"  size="32,32"  name="random"    group="gametype" text="Random map" />
 		<RadioButton position="22,110" size="32,32"  name="free_maps" group="gametype" text="Free play"  />
 
-		<Icon image="content/gui/images/background/hr.png"  position="52,170" />
+		<hr position="52,170" />
 
 		<HBox position="42,470"  min_size="0,40">
 			<Label name="main_menu_label" text="Main menu:" />

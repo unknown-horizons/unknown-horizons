@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,7 @@ from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
-from horizons.gui.modules import PauseMenu, HelpDialog
+from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -58,11 +58,10 @@ class IngameGui(LivingObject):
 	minimap = livingProperty()
 	keylistener = livingProperty()
 
-	def __init__(self, session, gui):
+	def __init__(self, session):
 		super(IngameGui, self).__init__()
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
-		self.main_gui = gui
 		self.settlement = None
 		self._old_menu = None
 
@@ -78,6 +77,8 @@ class IngameGui(LivingObject):
 
 		# Windows
 		self.windows = WindowManager()
+		self.show_popup = self.windows.show_popup
+		self.show_error_popup = self.windows.show_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
 		self.players_overview = PlayersOverview(self.session)
@@ -102,7 +103,7 @@ class IngameGui(LivingObject):
 		# 'minimap' is the guichan gui around the actual minimap, which is saved
 		# in self.minimap
 		self.mainhud = load_uh_widget('minimap.xml')
-		self.mainhud.position_technique = "right+0:top+0"
+		self.mainhud.position_technique = "right:top"
 
 		icon = self.mainhud.findChild(name="minimap")
 		self.minimap = Minimap(icon,
@@ -145,6 +146,14 @@ class IngameGui(LivingObject):
 		self._display_speed(self.session.timer.ticks_per_second)
 
 	def end(self):
+		# unsubscribe early, to avoid messages coming in while we're shutting down
+		SpeedChanged.unsubscribe(self._on_speed_changed)
+		NewDisaster.unsubscribe(self._on_new_disaster)
+		NewSettlement.unsubscribe(self._on_new_settlement)
+		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
+		MineEmpty.unsubscribe(self._on_mine_empty)
+		self.session.view.remove_change_listener(self._update_zoom)
+
 		self.mainhud.mapEvents({
 			'zoomIn' : None,
 			'zoomOut' : None,
@@ -156,6 +165,8 @@ class IngameGui(LivingObject):
 			'diplomacyButton' : None,
 			'gameMenuButton' : None
 		})
+		self.mainhud.hide()
+		self.mainhud = None
 
 		self.windows.close_all()
 		self.message_widget = None
@@ -166,12 +177,6 @@ class IngameGui(LivingObject):
 		self.cityinfo.end()
 		self.cityinfo = None
 		self.hide_menu()
-		SpeedChanged.unsubscribe(self._on_speed_changed)
-		NewDisaster.unsubscribe(self._on_new_disaster)
-		NewSettlement.unsubscribe(self._on_new_settlement)
-		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
-		MineEmpty.unsubscribe(self._on_mine_empty)
-		self.session.view.remove_change_listener(self._update_zoom)
 
 		if self.cursor:
 			self.cursor.remove()
@@ -187,6 +192,10 @@ class IngameGui(LivingObject):
 		self.status_icon_manager = None
 
 		super(IngameGui, self).end()
+
+	def show_select_savegame(self, mode):
+		window = SelectSavegameDialog(mode, self.windows)
+		return self.windows.show(window)
 
 	def toggle_pause(self):
 		self.windows.toggle(self.pausemenu)
@@ -206,20 +215,20 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.main_gui.show_popup(_("No diplomacy possible"),
-			                         _("Cannot do diplomacy as there are no other players."))
+			self.windows.show_popup(_("No diplomacy possible"),
+			                        _("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
 		self.show_menu(tab)
 
-	def show_multi_select_tab(self):
-		tab = TabWidget(self, tabs=[SelectMultiTab(self.session)], name='select_multi')
+	def show_multi_select_tab(self, instances):
+		tab = TabWidget(self, tabs=[SelectMultiTab(instances)], name='select_multi')
 		self.show_menu(tab)
 
 	def show_build_menu(self, update=False):
 		"""
-		@param update: set when build possiblities change (e.g. after settler upgrade)
+		@param update: set when build possibilities change (e.g. after inhabitant tier upgrade)
 		"""
 		# check if build menu is already shown
 		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
@@ -314,7 +323,7 @@ class IngameGui(LivingObject):
 
 		if not self.session.is_game_loaded():
 			# Fire a message for new world creation
-			self.session.ingame_gui.message_widget.add(point=None, string_id='NEW_WORLD')
+			self.session.ingame_gui.message_widget.add('NEW_WORLD')
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
@@ -336,10 +345,16 @@ class IngameGui(LivingObject):
 	def on_escape(self):
 		if self.windows.visible:
 			self.windows.on_escape()
-		elif not isinstance(self.cursor, mousetools.SelectionTool):
+		elif hasattr(self.cursor, 'on_escape'):
 			self.cursor.on_escape()
 		else:
 			self.toggle_pause()
+
+		return True
+
+	def on_return(self):
+		if self.windows.visible:
+			self.windows.on_return()
 
 		return True
 
@@ -383,6 +398,8 @@ class IngameGui(LivingObject):
 
 		if action == _Actions.ESCAPE:
 			return self.on_escape()
+		elif keyval == fife.Key.ENTER:
+			return self.on_return()
 
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import traceback
+
 from fife import fife
 
-import horizons.globals
 from horizons.command.unit import Act
 from horizons.util.worldobject import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
@@ -144,26 +145,25 @@ class SelectionTool(NavigationTool):
 		if self.session.world.health_visible_for_all_health_instances:
 			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
-		if len(selected) > 1 and all( i.is_unit for i in selected ):
-			self.session.ingame_gui.show_multi_select_tab()
-		elif len(selected) == 1:
+		if len(selected) == 0:
+			return
+		if len(selected) == 1:
 			iter(selected).next().get_component(SelectableComponent).show_menu()
+		else:
+			self.session.ingame_gui.show_multi_select_tab(selected)
 
-		#change session cursor to attacking tool if selected instances can attack
 		# local import to prevent cycle
 		from horizons.gui.mousetools.attackingtool import AttackingTool
-		attacking_unit_found = False
-		for i in selected:
-			if hasattr(i, 'attack') and i.owner.is_local_player:
-				attacking_unit_found = True
-				self.deselect_at_end = False # Handover to AttackingTool without deselecting
-				break
+		# change session cursor to attacking tool if selected instances can attack
+		found_military = any(hasattr(i, 'attack') and i.owner.is_local_player
+		                     for i in selected)
+		# Handover to AttackingTool without deselecting
+		self.deselect_at_end = not found_military
 
-		if attacking_unit_found and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
+		if found_military and not isinstance(self.session.ingame_gui.cursor, AttackingTool):
 			self.session.ingame_gui.set_cursor('attacking')
-		if not attacking_unit_found and isinstance(self.session.ingame_gui.cursor, AttackingTool):
-			self.session.ingame_gui.set_cursor()
-			horizons.globals.fife.set_cursor_image('default')
+		if not found_military and isinstance(self.session.ingame_gui.cursor, AttackingTool):
+			self.session.ingame_gui.set_cursor('default')
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():
@@ -174,7 +174,6 @@ class SelectionTool(NavigationTool):
 				# this is a very odd corner case, it should only happen after the session has been ended
 				# we can't allow to just let it crash however
 				print 'WARNING: selected_instance is None. Please report this!'
-				import traceback
 				traceback.print_stack()
 				print 'WARNING: selected_instance is None. Please report this!'
 				return
@@ -221,9 +220,6 @@ class SelectionTool(NavigationTool):
 			instances = self.select_old.symmetric_difference(instances)
 
 		# sanity:
-		# - if at least one unit, then only units
-		if any( not instance.is_building for instance in instances ):
-			instances = [ instance for instance in instances if not instance.is_building ]
 		# - no multiple entities from enemy selected
 		if len(instances) > 1:
 			user_instances = self.filter_owner(instances)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,7 +27,7 @@ from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.util.python.weaklist import WeakList
 from horizons.util.worldobject import WorldObject
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.constants import LAYERS
+from horizons.constants import LAYERS, VIEW
 from horizons.messaging import HoverInstancesChanged
 from horizons.extscheduler import ExtScheduler
 
@@ -157,14 +157,14 @@ class NavigationTool(CursorTool):
 
 		# Mouse scrolling
 		x, y = 0, 0
-		if mousepoint.x < 5:
-			x -= 5 - mousepoint.x
-		elif mousepoint.x >= (self.session.view.cam.getViewPort().right()-5):
-			x += 6 + mousepoint.x - self.session.view.cam.getViewPort().right()
-		if mousepoint.y < 5:
-			y -= 5 - mousepoint.y
-		elif mousepoint.y >= (self.session.view.cam.getViewPort().bottom()-5):
-			y += 6 + mousepoint.y - self.session.view.cam.getViewPort().bottom()
+		if mousepoint.x < VIEW.AUTOSCROLL_WIDTH:
+			x -= VIEW.AUTOSCROLL_WIDTH - mousepoint.x
+		elif mousepoint.x > (self.session.view.cam.getViewPort().right()-VIEW.AUTOSCROLL_WIDTH):
+			x += VIEW.AUTOSCROLL_WIDTH + mousepoint.x - self.session.view.cam.getViewPort().right()
+		if mousepoint.y < VIEW.AUTOSCROLL_WIDTH:
+			y -= VIEW.AUTOSCROLL_WIDTH - mousepoint.y
+		elif mousepoint.y > (self.session.view.cam.getViewPort().bottom()-VIEW.AUTOSCROLL_WIDTH):
+			y += VIEW.AUTOSCROLL_WIDTH + mousepoint.y - self.session.view.cam.getViewPort().bottom()
 		x *= 10
 		y *= 10
 		self.session.view.autoscroll(x, y)

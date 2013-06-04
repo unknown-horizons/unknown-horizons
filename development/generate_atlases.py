@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -109,6 +109,10 @@ class AtlasBook(object):
 
 	def save(self):
 		"""Write the entire image to a file with the given path."""
+		if not os.path.exists(PATHS.ATLAS_FILES_DIR):
+			# Make sure atlas directory is available
+			os.mkdir(PATHS.ATLAS_FILES_DIR)
+
 		im = Image.new('RGBA', (self.max_size, self.max_size), (255, 0, 255, 255))
 
 		# place the sub-images in the right places
@@ -386,7 +390,7 @@ class AtlasGenerator(object):
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1:
-		print 'Usage: python generate_atlases.py max_size'
+		print 'Usage: python2 generate_atlases.py max_size'
 		exit(1)
 
 	max_size = int(math.pow(2, int(math.log(int(args[0]), 2))))

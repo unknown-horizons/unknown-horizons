@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -50,7 +50,7 @@ class Speech:
 	DIPLOMACY_STATUS_ENEMY_NEUTRAL = None
 	DIPLOMACY_STATUS_NEUTRAL_ALLY = None
 	DIPLOMACY_STATUS_NEUTRAL_ENEMY = None
-	MAX_INCR_REACHED = None
+	MAX_TIER_REACHED = None
 	YOU_HAVE_WON = None
 	FIELD_NEEDS_FARM = None
 	WAREHOUSE_NOT_TEARABLE = None

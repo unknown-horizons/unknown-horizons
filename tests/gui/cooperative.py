@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -83,10 +83,5 @@ def schedule():
 		g, args, kwargs = _scheduled.popleft()
 
 		_current = g
-		try:
-			g.switch(*args, **kwargs)
-		except:
-			# Exit on the first unhandled exception
-			traceback.print_exc()
-			sys.exit(1)
+		g.switch(*args, **kwargs)
 		break

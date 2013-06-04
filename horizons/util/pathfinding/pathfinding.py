@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -53,11 +53,11 @@ class FindPath(object):
 		"""
 		# assure correct call
 		# commented out checks since BasicBuilding can't be imported here
-		#assert(isinstance(source, (Rect, Point, BasicBuilding)))
-		#assert(isinstance(destination, (Rect, Point, BasicBuilding)))
+		#assert isinstance(source, (Rect, Point, BasicBuilding))
+		#assert isinstance(destination, (Rect, Point, BasicBuilding))
 		blocked_coords = blocked_coords or []
-		assert(isinstance(path_nodes, (dict, list, set)))
-		assert(isinstance(blocked_coords, (dict, list, set)))
+		assert isinstance(path_nodes, (dict, list, set))
+		assert isinstance(blocked_coords, (dict, list, set))
 
 		# save args
 		self.source = source

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -223,7 +223,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
-		# see http://wiki.unknown-horizons.org/index.php/DD/Economy/Settler_taxing
+		# see http://wiki.unknown-horizons.org/w/Settler_taxing
 
 		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		happiness_tax_modifier = 0.5 + (float(self.happiness)/70.0)
@@ -267,16 +267,21 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			SettlerInhabitantsChanged.broadcast(self, change)
 			self._changed()
 
+	def can_level_up(self):
+		return self.happiness > self.__get_data("happiness_level_up_requirement") and \
+		   self.inhabitants >= self.inhabitants_min and not self._has_disaster()
+
 	def level_check(self):
-		"""Checks whether we should level up or down."""
-		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
-		   self.inhabitants >= self.inhabitants_min:
+		"""Checks whether we should level up or down.
+
+		Ignores buildings with a active disaster. """
+		if self.can_level_up():
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
 				if self.owner.max_tier_notification < self.level_max:
 					if self.owner.is_local_player:
 						self.session.ingame_gui.message_widget.add(
-							point=self.position.center, string_id='MAX_INCR_REACHED')
+							point=self.position.center, string_id='MAX_TIER_REACHED')
 					self.owner.max_tier_notification = self.level_max
 				return
 			if self._upgrade_production:
@@ -343,6 +348,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# Remove the building and then place the Ruin
 		Scheduler().add_new_object(Callback.ChainedCallbacks(
 			self.remove, Callback(command, self.owner)), self, run_in=0)
+
+	def _has_disaster(self):
+		return hasattr(self, "disaster") and self.disaster
 
 	def _check_main_square_in_range(self):
 		"""Notifies the user via a message in case there is no main square in range"""

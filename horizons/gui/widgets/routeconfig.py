@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -34,7 +34,8 @@ from horizons.gui.windows import Window
 from horizons.command.uioptions import RouteConfigCommand
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.gui.util import create_resource_selection_dialog
+from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
+
 from horizons.gui.widgets.imagebutton import OkButton
 
 import horizons.globals
@@ -81,7 +82,7 @@ class RouteConfig(Window):
 
 		# make sure user knows that it's not enabled (if it appears to be complete)
 		if not self.instance.route.enabled and self.instance.route.can_enable():
-			self.session.ingame_gui.message_widget.add(point=None, string_id="ROUTE_DISABLED")
+			self.session.ingame_gui.message_widget.add('ROUTE_DISABLED')
 
 	def on_instance_removed(self):
 		self._windows.close()
@@ -104,8 +105,8 @@ class RouteConfig(Window):
 
 	def start_route(self):
 		if not self.instance.route.can_enable():
-			self.instance.session.gui.show_popup(_("Need at least two settlements"),
-			                                     _("You need at least two different settlements in your route."))
+			self.instance.session.ingame_gui.show_popup(_("Need at least two settlements"),
+			                                            _("You need at least two different settlements in your route."))
 		else:
 			self._route_cmd("enable")
 
@@ -256,8 +257,12 @@ class RouteConfig(Window):
 		if event.getButton() == fife.MouseEvent.LEFT:
 			self.show_resource_menu(widget.parent, widget.parent.parent)
 		elif event.getButton() == fife.MouseEvent.RIGHT:
-			# remove the load/unload order
-			self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
+			if self.resource_menu_shown:
+				# abort resource selection (#1310)
+				self.hide_resource_menu()
+			else:
+				# remove the load/unload order
+				self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
 
 	def show_resource_menu(self, slot, entry):
 		position = self.widgets.index(entry)
@@ -363,7 +368,7 @@ class RouteConfig(Window):
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if not self.session.world.diplomacy.can_trade(self.session.world.player, warehouse.owner):
-			self.session.ingame_gui.message_widget.add_custom(point=None, messagetext=_("You are not allowed to trade with this player"))
+			self.session.ingame_gui.message_widget.add_custom(_("You are not allowed to trade with this player"))
 			return
 
 		if len(self.widgets) >= self.MAX_ENTRIES:
@@ -413,12 +418,13 @@ class RouteConfig(Window):
 		                       use_rotation=False,
 		                       on_click=self.on_map_click)
 
-		resources = self.session.db.get_res_id_and_icon(only_tradeable=True)
+		resources = self.session.db.get_res(only_tradeable=True)
 		# map an icon for a resource
 		# map a resource for an icon
-		self.resource_for_icon = {}
-		self.icon_for_resource = {}
-		for res_id, icon in list(resources) + [(0, self.dummy_icon_path)]:
+		self.resource_for_icon = {self.dummy_icon_path: 0}
+		self.icon_for_resource = {0: self.dummy_icon_path}
+		for res_id in resources:
+			icon = get_res_icon_path(res_id)
 			self.resource_for_icon[icon] = res_id
 			self.icon_for_resource[res_id] = icon
 

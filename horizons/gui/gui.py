@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,7 @@ import glob
 import logging
 import random
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Icon
 
 import horizons.globals
 import horizons.main
@@ -34,7 +34,7 @@ from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
-from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu, HelpDialog,
+from horizons.gui.modules import (HelpDialog, SingleplayerMenu, MultiplayerMenu,
                                   SelectSavegameDialog, LoadingScreen, SettingsDialog)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager, Window
@@ -89,15 +89,12 @@ class Gui(object):
 
 		self.windows = WindowManager()
 		# temporary aliases for compatibility with rest of the code
-		self.show_dialog = self.windows.show_dialog
 		self.show_popup = self.windows.show_popup
 		self.show_error_popup = self.windows.show_error_popup
 
-		self._background = pychan.Icon(image=self._get_random_background(),
-		                               position_technique='center:center')
+		self._background = Icon(image=self._get_random_background(),
+		                        position_technique='center:center')
 		self._background.show()
-
-		self.subscribe()
 
 		self.singleplayermenu = SingleplayerMenu(self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
@@ -107,15 +104,10 @@ class Gui(object):
 		self.mainmenu = MainMenu(self, self.windows)
 		self.fps_display = FPSDisplay()
 
-	def subscribe(self):
-		"""Subscribe to the necessary messages."""
-		GuiAction.subscribe(self._on_gui_action)
-
-	def unsubscribe(self):
-		GuiAction.unsubscribe(self._on_gui_action)
-
 	def show_main(self):
 		"""Shows the main menu """
+		GuiAction.subscribe(self._on_gui_action)
+
 		if not self._background.isVisible():
 			self._background.show()
 
@@ -145,7 +137,11 @@ class Gui(object):
 	def on_escape(self):
 		self.windows.on_escape()
 
+	def on_return(self):
+		self.windows.on_return()
+
 	def close_all(self):
+		GuiAction.discard(self._on_gui_action)
 		self.windows.close_all()
 		self._background.hide()
 

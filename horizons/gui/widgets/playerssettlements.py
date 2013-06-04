@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -115,7 +115,7 @@ class PlayersSettlements(StatsWidget):
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
 		name = widgets.Label(name='name_total')
-		name.text = _(u'Total')
+		name.text = _('Total')
 		name.min_size = name.max_size = (200, 20)
 
 		self._add_generic_line_to_gui(0, [sequence_number_label, name], people, tax, costs)

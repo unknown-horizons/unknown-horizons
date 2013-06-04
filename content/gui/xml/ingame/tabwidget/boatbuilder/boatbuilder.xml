@@ -6,13 +6,13 @@
 	<Container position="0,70" size="260,80">
 		<HBox position="22,7"  min_size="170,20"  size="230,20">
 		<Spacer min_size="0"  max_size="50" />
-			<Label name='name' position="25,40" text="" />
+			<Label name='name' position="25,40" />
 		</HBox>
 
-		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<hr position="20,30" />
 		<Icon name="running_costs_label"	position="180,40" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
-		<Label name="running_costs" position="200,40" text="" />
+		<Label name="running_costs" position="200,40" />
 	</Container>
 
 	<!--	ONLY ACTIVE WHEN NOT BUILDING -->
@@ -25,10 +25,10 @@
 
 	<Container position="25,110" size="260,210" name="container_active">
 		<!-- Current order, pause -->
-		<Label name="BB_current_order" position="0,0" text="Currently building:"
+		<Label name="BB_current_order" text="Currently building:"
 			comment="Information about the ship currently under construction at the boat builder" />
 		<HBox name="queue_container" position="0,18" />
-		<Label name="headline_BB_builtship_label" position="0,63" text="" />
+		<Label name="headline_BB_builtship_label" position="0,63" />
 		<Icon image="content/gui/images/background/square_120.png" position="0,85"
 			name="BB_cur_ship_bg" />
 		<Icon name="BB_cur_ship_icon" position="2,87" />
@@ -36,19 +36,20 @@
 
 		<!-- one of those button gets removed at runtime -->
 		<ImageButton path="icons/templates/production/toggle_active" helptext="Pause"
-			position="140,150"  border_size="0"  name="toggle_active_active"
+			position="140,150" name="toggle_active_active"
 			comment="Pauses the current ship production, can be resumed later" />
 		<ImageButton path="icons/templates/production/toggle_inactive" helptext="Resume"
-			position="140,150"  border_size="0"  name="toggle_active_inactive"
+			position="140,150" name="toggle_active_inactive"
 			comment="Resumes the currently paused ship production" />
 	</Container>
 
 	<Container position="25,325" size="260,110" name="BB_progress_container">
 		<!-- Progress display -->
-		<ProgressBar position="0,5" name="progress" />
+		<ProgressBar name="progress" max_size="100,12" position="9,3"
+			background="content/gui/images/background/bar_bg.png" />
 		<Label position="0,20" name="BB_progress_label" text="Construction progress:"
 			comment="Refers to the resources still missing to complete the current boat builder task" />
-		<Label position="165,20" name="BB_progress_perc" text="" />
+		<Label position="165,20" name="BB_progress_perc" />
 
 		<!-- Resources -->
 		<Label position="0,55" name="BB_needed_res_label" text="Resources still needed:" />

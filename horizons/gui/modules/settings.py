@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,22 +20,23 @@
 # ###################################################
 
 import horizons.globals
+from horizons.gui.windows import Window
 
 
-class SettingsDialog(object):
+class SettingsDialog(Window):
 	"""Wrapper around fife's settings dialog to make it work with the WindowManager."""
-
-	def __init__(self, windows):
-		self._windows = windows
-
-	def on_escape(self):
-		self._windows.close()
 
 	def show(self):
 		horizons.globals.fife.show_settings()
 
+		fife_setting = horizons.globals.fife._setting
+		if not hasattr(fife_setting, '_optionsDialog'):
+			#TODO fifechan / FIFE 0.3.5+ compat
+			# this is the old API
+			widget = fife_setting.OptionsDlg
+		else:
+			widget = fife_setting._optionsDialog
 		# Patch original dialog
-		widget = horizons.globals.fife._setting.OptionsDlg
 		if not hasattr(widget, '__patched__'):
 			# replace hide method so we take control over how the dialog
 			# is hidden
@@ -50,6 +51,3 @@ class SettingsDialog(object):
 
 	def hide(self):
 		self._original_hide()
-
-	def close(self):
-		self.hide()

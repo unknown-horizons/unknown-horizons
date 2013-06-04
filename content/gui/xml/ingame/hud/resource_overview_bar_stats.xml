@@ -5,7 +5,7 @@
 
 <AutoResizeContainer name="resbar_stats_container">
 	<!-- background -->
-	<VBox padding="0" position="0,0">
+	<VBox padding="0">
 		<Icon name="resbar_stats_bg" image="content/gui/images/background/widgets/resbar_stats_background.png" />
 		<Icon name="resbar_stats_bottom_bg" image="content/gui/images/background/widgets/resbar_stats_bottom.png" />
 	</VBox>
@@ -18,7 +18,7 @@
 			<Icon />
 			<Spacer />
 			<Label />
-			<Label />  workaround for fife font bug, probably http://fife.trac.cvsdude.com/engine/ticket/666 
+			<Label />  workaround for fife font bug, probably http://fife.trac.cloudforge.com/engine/ticket/666
 		</HBox>
 		-->
 	</VBox>

@@ -5,9 +5,9 @@
 	<ImageButton path="images/background/inv_bg" name="button" position="0,10" />
 
 	<!-- Label that displays the amount that is being sold or bought -->
-	<Label name="amount" text="" position="0,42" />
+	<Label name="amount" position="0,42" />
 
 	<!-- icon to show how much is in the inventory. size and position are set at runtime -->
-	<Icon name="fillbar" image="content/gui/images/tabwidget/green_line.png" position="0,0" size="0,0" />
+	<Icon name="fillbar" image="content/gui/images/tabwidget/green_line.png" size="0,0" />
 	<Slider name="slider" orientation="1" size="10,50" position="45,10" scale_start="1" is_focusable="0" />
 </Container>

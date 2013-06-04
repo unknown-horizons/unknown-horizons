@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,6 +18,8 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+import traceback
 
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethodlist import WeakMethodList
@@ -69,7 +71,6 @@ class ChangeListener(object):
 				except ReferenceError as e:
 					# listener object is dead, don't crash since it doesn't need updates now anyway
 					print 'Warning: the dead are listening to', self, ': ', e
-					import traceback
 					traceback.print_stack()
 
 		self.__event_call_number -= 1

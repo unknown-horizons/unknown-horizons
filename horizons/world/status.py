@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,8 @@
 # ###################################################
 
 import operator
+
+from horizons.i18n import _lazy
 
 """Classes used for StatusIcon.
 
@@ -42,7 +44,8 @@ class StatusIcon(object):
 	# fife identifier for animations or icons. Must be supported by either the animationloader
 	# or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
 	icon = None
-	_helptext = ""
+	# use _lazy
+	helptext = ""
 
 	def __init__(self, instance):
 		"""
@@ -59,10 +62,6 @@ class StatusIcon(object):
 		"""
 		return operator.attrgetter("priority")
 
-	@property
-	def helptext(self):
-		return _(self._helptext)
-
 	def __cmp__(self, other):
 		return cmp(self.__class__, other.__class__)
 
@@ -74,20 +73,20 @@ class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
 	priority = 3000
 	icon = 'as_on_fire+idle+45'
-	_helptext = _(u"This building is on fire!")
+	helptext = _lazy("This building is on fire!")
 
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
-	_helptext = _(u"These residents are unhappy.")
+	helptext = _lazy("These residents are unhappy.")
 
 
 class InventoryFullStatus(StatusIcon):
 	priority = 1200
 	icon = 'as_inventory_full+idle+45'
-	_helptext = _(u"The inventory of this building is full.")
+	helptext = _lazy("The inventory of this building is full.")
 
 	def __init__(self, instance, reslist):
 		"""
@@ -102,17 +101,17 @@ class ProductivityLowStatus(StatusIcon):
 	threshold = 0.25 # display when productivity lower than this
 	priority = 400
 	icon = 'as_attention_please+idle+45'
-	_helptext = _(u"This building has a very low productivity.")
+	helptext = _lazy("This building has a very low productivity.")
 
 
 class DecommissionedStatus(StatusIcon):
 	priority = 800
 	icon = 'as_decommissioned+idle+45'
-	_helptext = _(u"This building is decomissioned.")
+	helptext = _lazy("This building is decomissioned.")
 
 
 class PestilenceStatus(StatusIcon):
 	priority = 2000
 	icon = 'as_pestilence+idle+45'
-	_helptext = _(u"The inhabitants of this building have the plague.")
+	helptext = _lazy("The inhabitants of this building have the plague.")
 

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -49,7 +49,7 @@ class BuySellTab(TabInterface):
 	dummy_icon_path = "icons/resources/none_gray"
 
 	def __init__(self, instance, widget='buysellmenu.xml',
-	             icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png'):
+	             icon_path='icons/tabwidget/warehouse/buysell'):
 		"""Set up the GUI and game logic for the buyselltab."""
 		super(BuySellTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.inited = False # prevents execution of commands during init
@@ -129,14 +129,13 @@ class BuySellTab(TabInterface):
 		if not self.trade_post.buy_list and not self.trade_post.sell_list:
 			self._set_hint(_("Click on one of the resource slots to add a trade offer."))
 
-	def add_slots(self, num):
+	def add_slots(self, amount):
 		"""
-		Add num slot widgets to the buysellmenu.
-		@param num: number of slot widgets that are to be added.
+		Add `amount` slot widgets to the buysellmenu.
+		@param amount: number of slot widgets that are to be added.
 		"""
 		content = self.widget.findChild(name="content")
-		assert(content is not None)
-		for i in xrange(num):
+		for i in xrange(amount):
 			slot = load_uh_widget('trade_single_slot.xml')
 			self.slot_widgets[i] = slot
 			slot.id = i
@@ -193,8 +192,6 @@ class BuySellTab(TabInterface):
 				self.clear_slot(slot_id)
 			if resource_id != 0:
 				self.set_slot_info(slot.id, resource_id, False, value)
-		else:
-			assert False
 
 		button = slot.findChild(name="button")
 		fillbar = slot.findChild(name="fillbar")
@@ -242,16 +239,14 @@ class BuySellTab(TabInterface):
 			# setting to sell
 			self._show_sell(slot_widget)
 			slot_widget.action = "sell"
-			if slot_widget.res is not None:
-				self.set_slot_info(slot_widget.id, slot_widget.res, True, limit)
 		elif slot_widget.action is "sell":
 			# setting to buy
 			self._show_buy(slot_widget)
 			slot_widget.action = "buy"
-			if slot_widget.res is not None:
-				self.set_slot_info(slot_widget.id, slot_widget.res, False, limit)
-		else:
-			assert False
+
+		if slot_widget.res is not None:
+			selling = slot_widget.action == "sell"
+			self.set_slot_info(slot_widget.id, slot_widget.res, selling, limit)
 
 		if not keep_hint:
 			self._update_hint(slot_id)

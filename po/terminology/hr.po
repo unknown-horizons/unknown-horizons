@@ -2,20 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2011-12-23 10:50+0200\n"
-"Last-Translator: shile <sisko@fakat.ba>\n"
+"POT-Creation-Date: 2012-12-04 23:52+0200\n"
+"PO-Revision-Date: 2013-05-05 12:49+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
-
-msgid "build"
-msgstr ""
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.5.0-rc1\n"
+"X-POOTLE-MTIME: 1367758162.0\n"
 
 msgid "game"
 msgstr "igra"
@@ -23,11 +21,14 @@ msgstr "igra"
 msgid "building"
 msgstr "zgrada"
 
+msgid "build"
+msgstr "Izgradi"
+
+msgid "player"
+msgstr ""
+
 msgid "settlement"
 msgstr "naselje"
-
-msgid "farm"
-msgstr "farma"
 
 msgid "ship"
 msgstr "brod"
@@ -35,116 +36,182 @@ msgstr "brod"
 msgid "tent"
 msgstr "šator"
 
-msgid "warehouse"
-msgstr ""
-
-msgid "resource"
-msgstr ""
-
-msgid "produce"
-msgstr ""
-
-msgid "field"
-msgstr "polje"
+msgid "farm"
+msgstr "farma"
 
 msgid "map"
 msgstr "mapa"
 
-msgid "trade"
-msgstr ""
+msgid "resource"
+msgstr "resurs"
+
+msgid "warehouse"
+msgstr "Skladište"
 
 msgid "inhabitants"
 msgstr "naseljenici"
 
+msgid "change"
+msgstr "Promijeni"
+
+msgid "unknown"
+msgstr "nepoznato"
+
+msgid "produce"
+msgstr "proizvedeno"
+
+msgid "no"
+msgstr "ne"
+
+msgid "trade"
+msgstr ""
+
+msgid "check"
+msgstr "Provjeri"
+
+msgid "field"
+msgstr "polje"
+
+msgid "main"
+msgstr ""
+
 msgid "buy"
 msgstr "kupi"
 
-msgid "overview"
-msgstr ""
-
 msgid "click"
+msgstr "kliknite"
+
+msgid "left"
+msgstr "lijevo"
+
+msgid "overview"
+msgstr "pregled"
+
+msgid "running"
+msgstr "trčati"
+
+msgid "square"
 msgstr ""
 
 msgid "lumberjack"
 msgstr "drvosječa"
 
-msgid "resident"
+msgid "unable"
 msgstr ""
+
+msgid "continue"
+msgstr "nastavi"
 
 msgid "main square"
 msgstr "glavni trg"
 
-msgid "sailors"
-msgstr ""
-
-msgid "food"
-msgstr "hrana"
-
-msgid "increment"
-msgstr ""
-
 msgid "production"
-msgstr ""
+msgstr "proizvodnja"
 
-msgid "select"
-msgstr "odaberi"
+msgid "sailors"
+msgstr "mornari"
 
 msgid "sell"
 msgstr "prodaj"
 
-msgid "setting"
-msgstr ""
-
 msgid "storage"
 msgstr "skladište"
 
-msgid "tab"
-msgstr ""
+msgid "contact"
+msgstr "kontakt"
 
-msgid "upgrade"
-msgstr ""
-
-msgid "your inhabitants"
-msgstr ""
-
-msgid "close"
-msgstr ""
-
-msgid "companies"
-msgstr ""
-
-msgid "island"
-msgstr ""
-
-msgid "time"
-msgstr "vrijeme"
-
-msgid "unit"
-msgstr ""
-
-msgid "balance"
-msgstr ""
-
-msgid "coast"
-msgstr "obala"
+msgid "house"
+msgstr "kuća"
 
 msgid "menu"
 msgstr "izbornik"
 
-msgid "slot"
-msgstr ""
+msgid "tab"
+msgstr "tab"
+
+msgid "close"
+msgstr "zatvori"
+
+msgid "food"
+msgstr "hrana"
+
+msgid "free"
+msgstr "slobodno"
+
+msgid "ready"
+msgstr "crvena"
+
+msgid "setting"
+msgstr "Postavka"
 
 msgid "start"
+msgstr "Započni"
+
+msgid "time"
+msgstr "vrijeme"
+
+msgid "trader"
 msgstr ""
+
+msgid "unit"
+msgstr "jedinica"
+
+msgid "version"
+msgstr "verzija"
+
+msgid "fire"
+msgstr "vatra"
+
+msgid "island"
+msgstr "Otok"
+
+msgid "select"
+msgstr "odaberi"
+
+msgid "slot"
+msgstr "Utor"
 
 msgid "stock"
 msgstr ""
 
-msgid "trail"
-msgstr "trag"
+msgid "upgrade"
+msgstr "nadogradnja"
 
-msgid "Unknown Horizons"
+msgid "coast"
+msgstr "obala"
+
+msgid "color"
 msgstr ""
+
+msgid "companies"
+msgstr "kompanije"
+
+msgid "file"
+msgstr "vatra"
+
+msgid "tier"
+msgstr ""
+
+msgid "key"
+msgstr "Ključ"
+
+msgid "taxes"
+msgstr "Porezi"
+
+msgid "collector"
+msgstr "sakupljač"
+
+msgid "connection"
+msgstr "veza"
+
+msgid "log"
+msgstr ""
+
+msgid "multiplayer"
+msgstr ""
+
+msgid "resident"
+msgstr "stanovnik"
 
 msgid "wool"
 msgstr "vuna"
@@ -152,17 +219,14 @@ msgstr "vuna"
 msgid "boards"
 msgstr "granice"
 
-msgid "collector"
-msgstr ""
+msgid "built"
+msgstr "izgradi"
 
-msgid "connection"
-msgstr ""
+msgid "button"
+msgstr "Gumb"
 
-msgid "fire"
-msgstr "vatra"
-
-msgid "change"
-msgstr ""
+msgid "choose"
+msgstr "odaberi"
 
 msgid "connect"
 msgstr "spoji"
@@ -170,115 +234,97 @@ msgstr "spoji"
 msgid "cost"
 msgstr "cijena"
 
-msgid "house"
-msgstr "kuća"
-
-msgid "log"
-msgstr ""
+msgid "happiness"
+msgstr "sreča"
 
 msgid "road"
-msgstr ""
+msgstr "cesta"
 
 msgid "save"
 msgstr "sačuvaj"
 
-msgid "built"
-msgstr ""
-
-msgid "pasture"
-msgstr ""
-
-msgid "reach"
-msgstr ""
-
 msgid "tree"
 msgstr "drvo"
 
-msgid "your"
-msgstr "tvoje"
+msgid "amount"
+msgstr "Iznos"
 
-msgid "your settlement"
+msgid "reach"
+msgstr "dosegni"
+
+msgid "size"
 msgstr ""
 
 msgid "add"
 msgstr "dodaj"
 
-msgid "check"
-msgstr ""
-
-msgid "choose"
-msgstr "odaberi"
-
-msgid "confectionery"
-msgstr ""
-
 msgid "fisher"
 msgstr ""
 
 msgid "free trader"
-msgstr ""
-
-msgid "happiness"
-msgstr ""
+msgstr "slobodna trgovina"
 
 msgid "in stock"
 msgstr ""
 
-msgid "money"
+msgid "increase"
+msgstr "Povećaj"
+
+msgid "mode"
+msgstr "način"
+
+msgid "password"
 msgstr ""
 
-msgid "pavilion"
+msgid "pasture"
 msgstr ""
 
-msgid "running costs"
-msgstr ""
+msgid "range"
+msgstr "raspon"
+
+msgid "signal"
+msgstr "signal"
+
+msgid "speed"
+msgstr "Brzina"
 
 msgid "sugar"
 msgstr "šećer"
 
-msgid "taxes"
+msgid "access"
+msgstr "pristup"
+
+msgid "build menu"
+msgstr "izbornik za izgradnju"
+
+msgid "confectionery"
 msgstr ""
 
-msgid "tax"
+msgid "enabled"
+msgstr "omogućeno"
+
+msgid "fetch"
 msgstr ""
-
-msgid "tools"
-msgstr "alati"
-
-msgid "button"
-msgstr ""
-
-msgid "continue"
-msgstr "nastavi"
-
-msgid "faith"
-msgstr "vjera"
 
 msgid "help"
 msgstr "pomoć"
 
-msgid "left"
-msgstr "lijevo"
+msgid "income"
+msgstr "prihod"
+
+msgid "join"
+msgstr ""
 
 msgid "level"
 msgstr "level"
 
-msgid "mode"
-msgstr ""
-
 msgid "move"
+msgstr "Pomakni"
+
+msgid "multiple"
 msgstr ""
 
-msgid "pioneers"
-msgstr ""
-
-msgid "citizens"
-msgstr ""
-
-msgid "merchants"
-msgstr ""
-
-msgid "aristocrats"
+msgid "please check"
 msgstr ""
 
 msgid "potato"
@@ -287,68 +333,38 @@ msgstr "krumpir"
 msgid "settler"
 msgstr ""
 
-msgid "speed"
-msgstr ""
-
-msgid "stop"
-msgstr ""
-
-msgid "storage tent"
-msgstr ""
-
-msgid "wait"
-msgstr ""
-
-msgid "access"
-msgstr ""
-
-msgid "account"
-msgstr "račun"
-
-msgid "amount"
-msgstr ""
-
-msgid "build menu"
-msgstr ""
-
-msgid "cloth"
-msgstr ""
+msgid "total"
+msgstr "ukupno"
 
 msgid "construction"
+msgstr "Konstrukcija"
+
+msgid "creator"
 msgstr ""
 
-msgid "decrease"
-msgstr ""
+msgid "faith"
+msgstr "vjera"
 
-msgid "description"
-msgstr "opis"
+msgid "hold"
+msgstr "Drži"
 
-msgid "fish"
-msgstr "riba"
-
-msgid "increase"
-msgstr ""
+msgid "icon"
+msgstr "željezo"
 
 msgid "lamb"
 msgstr ""
 
 msgid "leave"
-msgstr ""
-
-msgid "liquor"
-msgstr ""
+msgstr "Ostavi"
 
 msgid "location"
+msgstr "Lokacija"
+
+msgid "multiple buildings"
 msgstr ""
 
-msgid "offer"
-msgstr ""
-
-msgid "potatoes"
-msgstr ""
-
-msgid "range"
-msgstr "raspon"
+msgid "pioneers"
+msgstr "Pioniri"
 
 msgid "reached"
 msgstr "dostignuto"
@@ -356,26 +372,32 @@ msgstr "dostignuto"
 msgid "run"
 msgstr "trči"
 
+msgid "session"
+msgstr ""
+
+msgid "SHIFT"
+msgstr ""
+
 msgid "slider"
 msgstr ""
 
-msgid "solution"
-msgstr ""
-
 msgid "space"
+msgstr "razmak"
+
+msgid "storage tent"
 msgstr ""
 
 msgid "target"
+msgstr "Meta"
+
+msgid "terminated"
 msgstr ""
 
-msgid "team"
-msgstr "tim"
+msgid "tools"
+msgstr "alati"
 
-msgid "total"
-msgstr ""
-
-msgid "unable"
-msgstr ""
+msgid "account"
+msgstr "račun"
 
 msgid "active"
 msgstr "aktivno"
@@ -384,126 +406,135 @@ msgid "afford"
 msgstr ""
 
 msgid "animals"
-msgstr ""
+msgstr "Životinje"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "kapetanov dnevnik"
+
+msgid "cloth"
+msgstr "odječa"
 
 msgid "construct"
+msgstr "izgradi"
+
+msgid "cursor"
 msgstr ""
 
-msgid "consume"
-msgstr ""
-
-msgid "enabled"
-msgstr ""
+msgid "description"
+msgstr "opis"
 
 msgid "entries"
 msgstr ""
 
 msgid "feature"
-msgstr ""
+msgstr "Osobine"
+
+msgid "fish"
+msgstr "riba"
 
 msgid "forest"
 msgstr "šuma"
 
-msgid "grows"
+msgid "from time to time"
+msgstr "s vremena na vrijeme"
+
+msgid "global"
 msgstr ""
 
-msgid "hold"
+msgid "grow"
 msgstr ""
 
-msgid "idle"
+msgid "happy"
 msgstr ""
-
-msgid "income"
-msgstr "prihod"
 
 msgid "information"
 msgstr "informacija"
 
-msgid "key"
-msgstr ""
+msgid "liquor"
+msgstr "Alkohol"
 
-msgid "lamb wool"
-msgstr ""
+msgid "minimap"
+msgstr "mini mapa"
+
+msgid "offer"
+msgstr "ponuda"
 
 msgid "overview tab"
 msgstr ""
 
-msgid "minimap"
-msgstr ""
-
-msgid "issues"
-msgstr ""
-
 msgid "plant"
-msgstr ""
+msgstr "biljka"
 
 msgid "play"
 msgstr "igraj"
 
-msgid "playing"
+msgid "please check your"
 msgstr ""
+
+msgid "potatoes"
+msgstr "krumpir"
 
 msgid "price"
-msgstr ""
+msgstr "Cijena"
 
 msgid "read"
-msgstr ""
-
-msgid "return"
-msgstr ""
-
-msgid "sale"
-msgstr ""
+msgstr "čitaj"
 
 msgid "screen"
+msgstr "Zaslon"
+
+msgid "service"
 msgstr ""
+
+msgid "short"
+msgstr ""
+
+msgid "solution"
+msgstr "Rješenje"
 
 msgid "sound"
 msgstr "zvuk"
 
 msgid "special"
+msgstr "Posebno"
+
+msgid "spot"
+msgstr ""
+
+msgid "statistics"
 msgstr ""
 
 msgid "store"
-msgstr ""
+msgstr "Pohrani"
+
+msgid "team"
+msgstr "tim"
 
 msgid "tear"
-msgstr ""
+msgstr "tim"
 
-msgid "from time to time"
-msgstr "s vremena na vrijeme"
+msgid "time to time"
+msgstr ""
 
 msgid "trading"
-msgstr ""
+msgstr "Razmjena"
 
-msgid "village"
-msgstr "naselje"
+msgid "unsupported"
+msgstr ""
 
 msgid "visit"
-msgstr ""
+msgstr "Posijeti"
 
 msgid "world"
+msgstr "Svijet"
+
+msgid "wrong"
 msgstr ""
 
-msgid "yield"
+msgid "bar"
 msgstr ""
 
-msgid "your ship"
-msgstr ""
-
-msgid "back"
-msgstr "nazad"
-
-msgid "build settlement"
-msgstr "izgradi nastambu"
-
-msgid "load"
-msgstr ""
-
-msgid "unload"
+msgid "bug"
 msgstr ""
 
 msgid "command"
@@ -512,16 +543,148 @@ msgstr ""
 msgid "completed"
 msgstr ""
 
-msgid "condition"
+msgid "forum"
+msgstr "forum"
+
+msgid "happen"
 msgstr ""
 
-msgid "contact"
-msgstr "kontakt"
+msgid "harvest"
+msgstr ""
+
+msgid "in range"
+msgstr ""
+
+msgid "lamb wool"
+msgstr ""
+
+msgid "left the game"
+msgstr ""
+
+msgid "lot of boards"
+msgstr ""
+
+msgid "marketplace"
+msgstr ""
+
+msgid "moment"
+msgstr ""
+
+msgid "playing"
+msgstr "Pokrećem"
+
+msgid "produced"
+msgstr "proizvedeno"
+
+msgid "report"
+msgstr ""
+
+msgid "sale"
+msgstr "prodaja"
+
+msgid "school"
+msgstr "škola"
+
+msgid "started"
+msgstr ""
+
+msgid "temporarily"
+msgstr ""
+
+msgid "trade with"
+msgstr ""
+
+msgid "values"
+msgstr ""
+
+msgid "wheel"
+msgstr ""
+
+msgid "satisfied"
+msgstr ""
+
+msgid "balance"
+msgstr "Ravnoteža"
+
+msgid "load"
+msgstr "Učitaj"
+
+msgid "trail"
+msgstr "trag"
+
+msgid "default"
+msgstr ""
+
+msgid "iron"
+msgstr "željezo"
+
+msgid "tobacco"
+msgstr ""
+
+msgid "clay"
+msgstr "glina"
+
+msgid "money"
+msgstr "Novac"
+
+msgid "pavilion"
+msgstr ""
+
+msgid "tax"
+msgstr "porez"
+
+msgid "residential"
+msgstr ""
+
+msgid "stop"
+msgstr "stani"
+
+msgid "wait"
+msgstr "Pričekaj"
+
+msgid "decrease"
+msgstr "Smanji"
+
+msgid "ore"
+msgstr "ruda"
+
+msgid "return"
+msgstr "vrati"
+
+msgid "savegame"
+msgstr ""
+
+msgid "consume"
+msgstr "Konzumiraj"
+
+msgid "idle"
+msgstr ""
+
+msgid "lower"
+msgstr ""
+
+msgid "saved"
+msgstr "sačuvaj"
+
+msgid "village"
+msgstr "naselje"
+
+msgid "yields"
+msgstr "prinosi"
+
+msgid "back"
+msgstr "nazad"
+
+msgid "build settlement"
+msgstr "izgradi nastambu"
+
+msgid "charcoal"
+msgstr "drveni ugljen"
 
 msgid "empty"
 msgstr ""
 
-msgid "ensure"
+msgid "existing"
 msgstr ""
 
 msgid "fulfill"
@@ -530,25 +693,22 @@ msgstr ""
 msgid "graphics"
 msgstr "grafika"
 
-msgid "harvest"
+msgid "hunt"
 msgstr ""
 
-msgid "hunts"
+msgid "lumberjack tent"
 msgstr ""
 
-msgid "multiple"
+msgid "please contact"
 msgstr ""
 
 msgid "potato field"
 msgstr ""
 
-msgid "school"
-msgstr "škola"
-
 msgid "seed"
 msgstr ""
 
-msgid "service"
+msgid "send"
 msgstr ""
 
 msgid "sheep"
@@ -557,116 +717,425 @@ msgstr "ovca"
 msgid "signal fire"
 msgstr "signalna vatra"
 
-msgid "statistics"
-msgstr ""
-
-msgid "clay"
-msgstr "glina"
-
-msgid "iron"
-msgstr "željezo"
-
-msgid "ore"
-msgstr "ruda"
-
-msgid "tobacco"
-msgstr ""
-
-msgid "charcoal"
-msgstr "drveni ugljen"
-
 msgid "sugar field"
 msgstr ""
 
-msgid "temporarily"
+msgid "error"
 msgstr ""
 
-msgid "values"
+msgid "deposit"
 msgstr ""
 
-#~ msgid "unknown"
-#~ msgstr "nepoznato"
+msgid "invalid"
+msgstr ""
 
-#~ msgid "free"
-#~ msgstr "slobodno"
+msgid "network"
+msgstr ""
 
-#~ msgid "version"
-#~ msgstr "verzija"
+msgid "route"
+msgstr ""
 
-#~ msgid "signal"
-#~ msgstr "signal"
+msgid "selected"
+msgstr "odaberi"
 
-#~ msgid "running"
-#~ msgstr "trčati"
+msgid "boat"
+msgstr ""
 
-#~ msgid "inventory"
-#~ msgstr "inventar"
+msgid "create"
+msgstr ""
 
-#~ msgid "produced"
-#~ msgstr "proizvedeno"
+msgid "filename"
+msgstr ""
 
-#~ msgid "hunter"
-#~ msgstr "lovac"
+msgid "mouse"
+msgstr "kuća"
 
-#~ msgid "market"
-#~ msgstr "tržište"
+msgid "partner"
+msgstr "partner"
 
-#~ msgid "partner"
-#~ msgstr "partner"
+msgid "reset"
+msgstr ""
 
-#~ msgid "sailor"
-#~ msgstr "mornar"
+msgid "configuration"
+msgstr ""
 
-#~ msgid "pioneer"
-#~ msgstr "pionir"
+msgid "delete"
+msgstr ""
 
-#~ msgid "citizen"
-#~ msgstr "građanin"
+msgid "enter"
+msgstr ""
 
-#~ msgid "merchant"
-#~ msgstr "trgovac"
+msgid "quicksave"
+msgstr ""
 
-#~ msgid "refresh"
-#~ msgstr "osvježi"
+msgid "stone"
+msgstr ""
 
-#~ msgid "residents"
-#~ msgstr "stanovnika"
+msgid "weapon"
+msgstr ""
 
-#~ msgid "animal"
-#~ msgstr "životinja"
+msgid "cattle"
+msgstr "stoka"
 
-#~ msgid "fisherman"
-#~ msgstr "ribar"
+msgid "message"
+msgstr ""
 
-#~ msgid "forum"
-#~ msgstr "forum"
+msgid "port"
+msgstr ""
 
-#~ msgid "yields"
-#~ msgstr "prinosi"
+msgid "scenario"
+msgstr ""
 
-#~ msgid "green"
-#~ msgstr "zelana"
+msgid "spice"
+msgstr ""
 
-#~ msgid "red"
-#~ msgstr "crvena"
+msgid "cocoa"
+msgstr ""
 
-#~ msgid "no"
-#~ msgstr "ne"
+msgid "corn"
+msgstr ""
 
-#~ msgid "cattle"
-#~ msgstr "stoka"
+msgid "details"
+msgstr ""
 
-#~ msgid "pig"
-#~ msgstr "prase"
+msgid "found"
+msgstr "zvuk"
 
-#~ msgid "herbs"
-#~ msgstr "bilje"
+msgid "herbs"
+msgstr "bilje"
 
-#~ msgid "butchery"
-#~ msgstr "klaonica"
+msgid "pause"
+msgstr ""
 
-#~ msgid "doctor"
-#~ msgstr "doktor"
+msgid "pigs"
+msgstr ""
 
-#~ msgid "education"
-#~ msgstr "obrazovanje"
+msgid "press"
+msgstr ""
+
+msgid "quit"
+msgstr ""
+
+msgid "savegame file"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "war"
+msgstr ""
+
+msgid "all settlements"
+msgstr ""
+
+msgid "apply"
+msgstr ""
+
+msgid "bricks"
+msgstr ""
+
+msgid "chat"
+msgstr ""
+
+msgid "confirm"
+msgstr ""
+
+msgid "default settings"
+msgstr ""
+
+msgid "diplomacy"
+msgstr ""
+
+msgid "displayed"
+msgstr ""
+
+msgid "flour"
+msgstr ""
+
+msgid "grapes"
+msgstr ""
+
+msgid "ground"
+msgstr ""
+
+msgid "health"
+msgstr ""
+
+msgid "land"
+msgstr ""
+
+msgid "library"
+msgstr ""
+
+msgid "limit"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "logging"
+msgstr ""
+
+msgid "mine"
+msgstr ""
+
+msgid "mouse button"
+msgstr ""
+
+msgid "not ready"
+msgstr ""
+
+msgid "player name"
+msgstr ""
+
+msgid "quote"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "salt"
+msgstr "sačuvaj"
+
+msgid "saved games"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "trade partner"
+msgstr ""
+
+msgid "user"
+msgstr ""
+
+msgid "alliance"
+msgstr ""
+
+msgid "allied"
+msgstr ""
+
+msgid "alvearies"
+msgstr ""
+
+msgid "beans"
+msgstr ""
+
+msgid "boat builder"
+msgstr ""
+
+msgid "builder"
+msgstr ""
+
+msgid "capacity"
+msgstr ""
+
+msgid "citizens"
+msgstr "Građani"
+
+msgid "clay deposit"
+msgstr ""
+
+msgid "cocoa beans"
+msgstr ""
+
+msgid "community"
+msgstr ""
+
+msgid "condiments"
+msgstr ""
+
+msgid "configure"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "crops"
+msgstr ""
+
+msgid "deer"
+msgstr ""
+
+msgid "directory"
+msgstr ""
+
+msgid "disease"
+msgstr ""
+
+msgid "doctor"
+msgstr "doktor"
+
+msgid "drag"
+msgstr ""
+
+msgid "education"
+msgstr "obrazovanje"
+
+msgid "ensure"
+msgstr ""
+
+msgid "entered"
+msgstr ""
+
+msgid "expenses"
+msgstr ""
+
+msgid "fallback"
+msgstr ""
+
+msgid "fixed"
+msgstr ""
+
+msgid "future"
+msgstr ""
+
+msgid "game menu"
+msgstr ""
+
+msgid "get-together"
+msgstr ""
+
+msgid "going to location"
+msgstr ""
+
+msgid "honeycombs"
+msgstr ""
+
+msgid "inventory"
+msgstr "inventar"
+
+msgid "iron ore"
+msgstr ""
+
+msgid "letters"
+msgstr ""
+
+msgid "linux users"
+msgstr ""
+
+msgid "load game"
+msgstr ""
+
+msgid "manager"
+msgstr ""
+
+msgid "map size"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "meant"
+msgstr ""
+
+msgid "meant as"
+msgstr ""
+
+msgid "missing"
+msgstr ""
+
+msgid "network port"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "package manager"
+msgstr ""
+
+msgid "place multiple buildings"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "production overview"
+msgstr ""
+
+msgid "quickload"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "random map"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "related buildings"
+msgstr ""
+
+msgid "remove"
+msgstr ""
+
+msgid "renderer"
+msgstr ""
+
+msgid "run out"
+msgstr ""
+
+msgid "running costs"
+msgstr ""
+
+msgid "screenshot"
+msgstr ""
+
+msgid "selected units"
+msgstr ""
+
+msgid "settled"
+msgstr ""
+
+msgid "ship overview"
+msgstr ""
+
+msgid "station"
+msgstr ""
+
+msgid "suitable"
+msgstr ""
+
+msgid "system"
+msgstr ""
+
+msgid "tile"
+msgstr "vrijeme"
+
+msgid "tops"
+msgstr ""
+
+msgid "tower"
+msgstr ""
+
+msgid "unable to find"
+msgstr ""
+
+msgid "want to continue"
+msgstr ""
+
+msgid "won"
+msgstr ""
+
+msgid "written"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

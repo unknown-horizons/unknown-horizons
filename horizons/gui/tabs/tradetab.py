@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -55,7 +55,7 @@ class TradeTab(TabInterface):
 		@param instance: ship instance used for trading
 		"""
 		super(TradeTab, self).__init__(widget='tradetab.xml',
-		                               icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png')
+		                               icon_path='icons/tabwidget/warehouse/buysell')
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():
 			events[v] = Callback(self.set_exchange, k)
@@ -125,26 +125,32 @@ class TradeTab(TabInterface):
 
 	def __remove_changelisteners(self):
 		# never redraw on clicks immediately because of
-		# http://fife.trac.cvsdude.com/engine/ticket/387
+		# http://fife.trac.cloudforge.com/engine/ticket/387
 		# This way, there is a chance of clicks being noticed by pychan.
 		# The cost is to delay all updates, which in this case is 0.3 sec, therefore deemed bearable.
 
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
 			self.instance.discard_change_listener(self._schedule_refresh)
-			self.instance.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
+			inv = self.instance.get_component(StorageComponent).inventory
+			inv.discard_change_listener(self._schedule_refresh)
 		if self.partner:
-			self.partner.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
-			self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self._schedule_refresh)
+			inv = self.partner.get_component(StorageComponent).inventory
+			inv.discard_change_listener(self._schedule_refresh)
+			tradepost = self.partner.settlement.get_component(TradePostComponent)
+			tradepost.discard_change_listener(self._schedule_refresh)
 
 	def __add_changelisteners(self):
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
 			self.instance.add_change_listener(self._schedule_refresh, no_duplicates=True)
-			self.instance.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
+			inv = self.instance.get_component(StorageComponent).inventory
+			inv.add_change_listener(self._schedule_refresh, no_duplicates=True)
 		if self.partner:
-			self.partner.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
-			self.partner.settlement.get_component(TradePostComponent).add_change_listener(self._schedule_refresh, no_duplicates=True)
+			inv = self.partner.get_component(StorageComponent).inventory
+			inv.add_change_listener(self._schedule_refresh, no_duplicates=True)
+			tradepost = self.partner.settlement.get_component(TradePostComponent)
+			tradepost.add_change_listener(self._schedule_refresh, no_duplicates=True)
 
 	def hide(self):
 		self.widget.hide()
@@ -222,7 +228,7 @@ class TradeTab(TabInterface):
 		nearest_dist = None
 		for partner in partners:
 			dist = partner.position.distance(self.instance.position)
-			if dist < nearest_dist or nearest_dist is None:
+			if nearest_dist is None or dist < nearest_dist:
 				nearest_dist = dist
 				nearest = partners.index(partner)
 		return nearest

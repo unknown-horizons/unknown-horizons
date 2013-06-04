@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -39,7 +39,7 @@ class BuildRelatedTab(OverviewTab):
 	template_gui_xml = 'related_buildings_container.xml'
 
 	def  __init__(self, instance, widget='related_buildings.xml',
-	              icon_path='content/gui/icons/tabwidget/production/related_%s.png'):
+	              icon_path='icons/tabwidget/production/related'):
 		super(BuildRelatedTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.helptext = _("Build related buildings")
 
@@ -60,7 +60,7 @@ class BuildRelatedTab(OverviewTab):
 		for building_id, level in sorted_ids:
 			if level <= self.instance.owner.settler_level: # available in build menu?
 				button = self._create_build_buttons(building_id, container)
-				# check whether to start new line (for new increment row)
+				# check whether to start new line (for new tier row)
 				if level > self.current_row:
 					self.current_row = level
 					parent_container.addChild(container)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -99,13 +99,21 @@ class Collector(Unit):
 		self.log.debug("%s: remove called", self)
 		self.cancel(continue_action=lambda : 42)
 		# remove from target collector list
-		if self.job is not None and self.state != self.states.moving_home:
-			# in the move_home state, there still is a job, but the collector is already deregistered
-			self.job.object.remove_incoming_collector(self)
+		self._abort_collector_job()
 		self.hide()
 		self.job = None
 		super(Collector, self).remove()
 
+	def _abort_collector_job(self):
+		if self.job is None or self.state == self.states.moving_home:
+			# in the move_home state, there still is a job, but the collector is
+			# already deregistered
+			return
+		if not hasattr(self.job.object, 'remove_incoming_collector'):
+			# when loading a game fails and the world is destructed again, the
+			# worldid may not yet have been resolved to an actual in-game object
+			return
+		self.job.object.remove_incoming_collector(self)
 
 	# SAVE/LOAD
 
@@ -414,18 +422,15 @@ class Collector(Unit):
 	def cancel(self, continue_action):
 		"""Aborts the current job.
 		@param continue_action: Callback, gets called after cancel. Specifies what collector
-			                      is supposed to now.
+		                        is supposed to do now.
 		NOTE: Subclasses set this to a proper action that makes the collector continue to work.
 		      If the collector is supposed to be remove, use a noop.
 		"""
 		self.stop()
-		self.log.debug("%s was canceled, continue action is %s", self, continue_action)
+		self.log.debug("%s was cancelled, continue action is %s", self, continue_action)
+		# remove us as incoming collector at target
+		self._abort_collector_job()
 		if self.job is not None:
-			# remove us as incoming collector at target
-			if self.state != self.states.moving_home:
-				# in the moving_home state, the job object still exists,
-				# but the collector is already deregistered
-				self.job.object.remove_incoming_collector(self)
 			# clean up depending on state
 			if self.state == self.states.working:
 				removed_calls = Scheduler().rem_call(self, self.finish_working)
@@ -433,10 +438,11 @@ class Collector(Unit):
 			self.job = None
 			self.state = self.states.idle
 		# NOTE:
-		# Some blocked movement callbacks use this callback. All blocked movement callbacks have to
-		# be canceled here, else the unit will try to continue the movement later when its state has already changed.
-		# This line should fix it sufficiently for now and the problem could be deprecated when the
-		# switch to a component-based system is accomplished.
+		# Some blocked movement callbacks use this callback. All blocked
+		# movement callbacks have to be cancelled here, else the unit will try
+		# to continue the movement later when its state has already changed.
+		# This line should fix it sufficiently for now and the problem could be
+		# deprecated when the switch to a component-based system is accomplished.
 		Scheduler().rem_call(self, self.resume_movement)
 		continue_action()
 

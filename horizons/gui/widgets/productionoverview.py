@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -37,7 +37,7 @@ class ProductionOverview(StatsWidget, Window):
 	"""
 	Widget that shows every produced resource in this game.
 
-	Implementation based on http://trac.unknown-horizons.org/t/ticket/749 .
+	Implementation based on https://github.com/unknown-horizons/unknown-horizons/issues/749 .
 	"""
 
 	widget_file_name = 'island_production.xml'

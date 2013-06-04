@@ -1,5 +1,5 @@
 tab1:
-- icon: content/gui/icons/tabwidget/buildmenu/class/residential_%s.png
+- icon: icons/tabwidget/buildmenu/class/residential
 - headline: _ Settlement
 - helptext: _ Residents and infrastructure
 -
@@ -23,7 +23,7 @@ tab1:
 #  - BUILDINGS.DOCTOR
 
 tab2:
-- icon: content/gui/icons/tabwidget/buildmenu/class/fields_%s.png
+- icon: icons/tabwidget/buildmenu/class/fields
 - headline: _ Fields
 -
   - _ Pioneers
@@ -45,7 +45,7 @@ tab2:
 #  - BUILDINGS.ALVEARIES
 
 tab3:
-- icon: content/gui/icons/tabwidget/buildmenu/class/agricultural_companies_%s.png
+- icon: icons/tabwidget/buildmenu/class/agricultural_companies
 - headline: _ Agriculture #TODO better name?
 -
   - _ Sea
@@ -71,7 +71,7 @@ tab3:
 
 
 tab4:
-- icon: content/gui/icons/tabwidget/buildmenu/class/companies_%s.png
+- icon: icons/tabwidget/buildmenu/class/companies
 - headline: _ Companies
 -
   - _ Wood
@@ -89,7 +89,7 @@ tab4:
   - BUILDINGS.TOOLMAKER
 
 tab5:
-- icon: content/gui/icons/tabwidget/buildmenu/class/military_%s.png
+- icon: icons/tabwidget/buildmenu/class/military
 - headline: _ Military
 -
   - _ Fortifications
@@ -101,11 +101,11 @@ tab5:
 #  - BUILDINGS.BARRACKS
 
 #tab6:
-#- icon: content/gui/icons/tabwidget/buildmenu/class/aesthetics_%s.png
+#- icon: icons/tabwidget/buildmenu/class/aesthetics
 #- headline: _ Aesthetics
 #-
 #  -
 
 
 meta:
-  unlocking_strategy: single_per_increment
+  unlocking_strategy: single_per_tier

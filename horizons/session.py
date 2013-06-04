@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -51,7 +51,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED
-from horizons.messaging import SettingChanged, MessageBus, SpeedChanged
+from horizons.messaging import SettingChanged, MessageBus, SpeedChanged, LoadingProgress
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -88,11 +88,10 @@ class Session(LivingObject):
 
 	log = logging.getLogger('session')
 
-	def __init__(self, gui, db, rng_seed=None, ingame_gui_class=IngameGui):
+	def __init__(self, db, rng_seed=None, ingame_gui_class=IngameGui):
 		super(Session, self).__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
-		self.gui = gui # main gui, not ingame gui
 		self.db = db # main db for game data (game.sql)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
@@ -121,6 +120,7 @@ class Session(LivingObject):
 	def start(self):
 		"""Actually starts the game."""
 		self.timer.activate()
+		self.scenario_eventhandler.start()
 		self.reset_autosave()
 		SettingChanged.subscribe(self._on_setting_changed)
 
@@ -172,7 +172,9 @@ class Session(LivingObject):
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
 
-		self.world.end() # must be called before the world ref is gone
+		if hasattr(self, 'world'):
+			# must be called before the world ref is gone, but may not exist yet while loading
+			self.world.end()
 		self.world = None
 		self.view = None
 		self.manager = None
@@ -185,18 +187,15 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
-		horizons.main._modules.session = None
 		self._clear_caches()
 
-		# subscriptions shouldn't survive listeners (except the main Gui)
-		self.gui.unsubscribe()
-		SettingChanged.unsubscribe(self._on_setting_changed)
+		# discard() in case loading failed and we did not yet subscribe
+		SettingChanged.discard(self._on_setting_changed)
 		MessageBus().reset()
-		self.gui.subscribe()
 
 	def quit(self):
 		self.end()
-		self.gui.show_main()
+		horizons.main.quit_session()
 
 	def autosave(self):
 		raise NotImplementedError
@@ -244,6 +243,7 @@ class Session(LivingObject):
 			# changing the rng is safe for mp, as all players have to have the same map
 			self.random.setstate(rng_state_tuple)
 
+		LoadingProgress.broadcast(self, 'session_create_world')
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(savegame_db, options.force_player_id, disasters_enabled=options.disasters_enabled)
 		self.view.load(savegame_db, self.world) # load view
@@ -252,12 +252,14 @@ class Session(LivingObject):
 		else:
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)
-		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
+		self.manager.load(savegame_db) # load the manager (there might be old scheduled ticks).
+		LoadingProgress.broadcast(self, "session_index_fish")
 		self.world.init_fish_indexer() # now the fish should exist
 
 		# load the old gui positions and stuff
 		# Do this before loading selections, they need the minimap setup
-		self.ingame_gui = self._ingame_gui_class(self, self.gui)
+		LoadingProgress.broadcast(self, "session_load_gui")
+		self.ingame_gui = self._ingame_gui_class(self)
 		self.ingame_gui.load(savegame_db)
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
@@ -272,6 +274,7 @@ class Session(LivingObject):
 		savegame_db.close()
 
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
+		LoadingProgress.broadcast(self, "session_finish")
 		"""
 		TUTORIAL:
 		That's it. After that, we call start() to activate the timer, and we're live.
@@ -401,13 +404,13 @@ class Session(LivingObject):
 			headline = _("Failed to create savegame file")
 			descr = _("There has been an error while creating your savegame file.")
 			advice = _("This usually means that the savegame name contains unsupported special characters.")
-			self.gui.show_error_popup(headline, descr, advice, unicode(e))
+			self.ingame_gui.show_error_popup(headline, descr, advice, unicode(e))
 			return self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
 		except OSError as e:
 			if e.errno == errno.EACCES:
-				self.gui.show_error_popup(_("Access is denied"),
-				                          _("The savegame file could be read-only or locked by another process."))
+				self.ingame_gui.show_error_popup(_("Access is denied"),
+				                                 _("The savegame file could be read-only or locked by another process."))
 				return self.save()
 			raise
 

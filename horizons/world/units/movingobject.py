@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -220,8 +220,11 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# TODO/HACK the *5 provides slightly less flickery behavior of the moving
 		# objects. This should be fixed properly by using the fife pathfinder for
 		# the entire route and task
-		self._route.setPath(fife.LocationList([self._fife_location2]*5))
-		self._route.setRouteStatus(3)  #fife.RouteStatus.ROUTE_SOLVED)
+		location_list = fife.LocationList([self._fife_location2]*5)
+		#TODO Remove thisown, it exists for FIFE 0.3.4 compat. See #1993.
+		location_list.thisown = 0
+		self._route.thisown = 0
+		self._route.setPath(location_list)
 
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
 		action = self._move_action+"_"+str(self._action_set_id)

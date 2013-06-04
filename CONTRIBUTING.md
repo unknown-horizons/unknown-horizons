@@ -18,6 +18,7 @@ File a bug report
     3. **Logs**, **Savegames**, **screenshots** and/or **videos** help a lot for understanding what is going on.
        Use the [awesome uploader] (http://up.unknown-horizons.org/) (login via github account)
        and link the additional files in your ticket.
+    4. Tell us which version of Unknown Horizons and operating system do you use.
 
 Checklist for contributing code
 -------------------------------
@@ -63,7 +64,7 @@ or via [webchat](http://www.unknown-horizons.org/support/irc/).
 In-code tutorial
 ----------------
 We wrote an **in-code tutorial** to give you a code architecture overview before you start coding on Unknown Horizons.
-You find the first tutorial in [`run_uh.py`] (https://github.com/unknown-horizons/unknown-horizons/blob/master/run_uh.py).
+You find the first tutorial in [`run_uh.py`] (run_uh.py).
 Starting there, just follow the instruction comments (and ask us if something is unclear or outdated!).
 
 Epydoc
@@ -76,8 +77,8 @@ A better example is [FIFE epydoc] (http://www.fifengine.net/epydoc) which helps 
 
 Tests
 -----
-* [Wiki overview page] (http://wiki.unknown-horizons.org/w/Tests)
-* [Writing GUI tests] (http://wiki.unknown-horizons.org/w/Writing_GUI_tests)
+* [Wiki overview page] (http://github.com/unknown-horizons/unknown-horizons/wiki/Tests)
+* [Writing GUI tests] (http://github.com/unknown-horizons/unknown-horizons/wiki/Writing-gui-tests)
 
 Github help
 -----------

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -90,7 +90,7 @@ class SPTestSession(SPSession):
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
 		ExtScheduler.create_instance(Dummy)
-		super(SPTestSession, self).__init__(Dummy, horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
+		super(SPTestSession, self).__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
 		self.reset_autosave = mock.Mock()
 
 	def save(self, *args, **kwargs):

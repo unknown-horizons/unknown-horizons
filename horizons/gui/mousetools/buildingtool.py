@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -50,7 +50,7 @@ class BuildingTool(NavigationTool):
 	of random artifacts that used to have a purpose once.
 
 	Terminology:
-	- Related buildings: Buildings lower in the hiearchy, needed by current building to operate (tree when building lumberjack)
+	- Related buildings: Buildings lower in the hierarchy, needed by current building to operate (tree when building lumberjack)
 	- Inversely related building: lumberjack for tree. Need to show its range to place building, it must be in range.
 	- Building instances/fife instances: the image of a building, that is dragged around.
 
@@ -83,9 +83,9 @@ class BuildingTool(NavigationTool):
 	log = logging.getLogger("gui.buildingtool")
 
 	buildable_color = (255, 255, 255)
-	not_buildable_color = (255, 0, 0)
-	related_building_color = (0, 192, 0)
-	related_building_outline = (16, 228, 16, 2)
+	not_buildable_color = (255, 0, 0, 160)
+	related_building_color = (0, 192, 0, 160)
+	related_building_outline = (32, 192, 32, 3)
 	nearby_objects_radius = 4
 
 	# archive the last roads built, for possible user notification
@@ -106,7 +106,7 @@ class BuildingTool(NavigationTool):
 		self.buildings_action_set_ids = [] # list action set ids of list above
 		self.buildings_fife_instances = {} # fife instances of possible builds
 		self.buildings_missing_resources = {} # missing resources for possible builds
-		self.rotation = 45 + random.randint(0, 3)*90
+		self.rotation = 45 + random.randint(0, 3) * 90
 		self.start_point, self.end_point = None, None
 		self.last_change_listener = None
 		self._transparencified_instances = set() # fife instances modified for transparency
@@ -223,12 +223,11 @@ class BuildingTool(NavigationTool):
 	def load_gui(self):
 		if self.__class__.gui is None:
 			self.__class__.gui = load_uh_widget("place_building.xml")
-			top_bar = self.__class__.gui.findChild(name='top_bar')
-			top_bar.position = ((self.__class__.gui.size[0] // 2) - (top_bar.size[0] // 2) - 16, 50)
 			self.__class__.gui.position_technique = "right-1:top+157"
 		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
 		                                "rotate_right": self.rotate_right } )
 		# set translated building name in gui
+		#xgettext:python-format
 		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
@@ -421,7 +420,7 @@ class BuildingTool(NavigationTool):
 			self._transparencified_instances.add(weakref.ref(inst))
 
 	def _highlight_inversely_related_buildings(self, building, settlement):
-		"""Point out buildings that are inversly relevant (e.g. lumberjacks when building trees)
+		"""Point out buildings that are inversely related (e.g. lumberjacks when building trees)
 		This is triggered on each preview change and highlights only those in range"""
 		# tuple for fast lookup with few elements
 		ids = tuple(self.session.db.get_inverse_related_building_ids(self._class.id))
@@ -529,7 +528,7 @@ class BuildingTool(NavigationTool):
 				BuildingTool._last_road_built.append(now)
 				if len(BuildingTool._last_road_built) > 2:
 					if (now - BuildingTool._last_road_built[-3]) < 1.2:
-						self.session.ingame_gui.message_widget.add(point=None, string_id="DRAG_ROADS_HINT")
+						self.session.ingame_gui.message_widget.add('DRAG_ROADS_HINT')
 						# don't display hint multiple times at the same build situation
 						BuildingTool._last_road_built = []
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]

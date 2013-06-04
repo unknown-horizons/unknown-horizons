@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,7 +32,7 @@ class PlayerDiplomacyTab(TabInterface):
 	It displays the menu for selecting the status between the local player and the tab's player
 	"""
 	def __init__(self, player, widget='diplomacy.xml',
-	             icon_path='content/gui/images/tabwidget/emblems/emblem_%s.png'):
+	             icon_path='images/tabwidget/emblems/emblem_%s'):
 		super(PlayerDiplomacyTab, self).__init__(widget)
 
 		self.local_player = player.session.world.player
@@ -51,11 +51,9 @@ class PlayerDiplomacyTab(TabInterface):
 
 		self.check_diplomacy_state()
 
-		color = player.color.name
-		self.button_up_image = icon_path % color
-		self.button_active_image = icon_path % color
-		self.button_down_image = icon_path % color
-		self.button_hover_image = icon_path % color
+		#TODO what the heck
+		self.path = self.active_path = icon_path % player.color.name
+
 		self.helptext = player.name
 
 	def show(self):
@@ -95,8 +93,7 @@ class PlayerDiplomacyTab(TabInterface):
 		"""
 		Checks the box with the diplomacy status between local player and selected player
 		"""
-
-		#set all boxes true
+		# uncheck all boxes
 		self.widget.distributeData({
 			'ally_check_box' : False,
 			'neutral_check_box' : False,

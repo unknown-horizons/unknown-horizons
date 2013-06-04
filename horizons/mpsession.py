@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,7 +31,7 @@ from horizons.command.game import SaveCommand
 class MPSession(Session):
 	"""Session class fo multiplayer games."""
 
-	def __init__(self, gui, db, network_interface, **kwargs):
+	def __init__(self, db, network_interface, **kwargs):
 		"""
 		@param network_interface: instance of NetworkInterface to use for this game
 		@param rng_seed: seed for random number generator
@@ -39,7 +39,7 @@ class MPSession(Session):
 		self.__network_interface = network_interface
 		self.__network_interface.subscribe("game_starts", self._start_game)
 		self.__network_interface.subscribe("error", self._on_error)
-		super(MPSession, self).__init__(gui, db, **kwargs)
+		super(MPSession, self).__init__(db, **kwargs)
 
 	def _start_game(self, game):
 		horizons.main.start_multiplayer(game)
@@ -53,7 +53,7 @@ class MPSession(Session):
 		                                       unicode(exception) )
 			self.quit()
 		else:
-			self.gui.show_popup(_("Error"), unicode(exception))
+			self.ingame_gui.show_popup(_("Error"), unicode(exception))
 
 	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""
@@ -82,7 +82,7 @@ class MPSession(Session):
 		SaveCommand( SavegameManager.create_multiplayer_quicksave_name() ).execute(self)
 
 	def quickload(self):
-		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+		self.ingame_gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
 
 	def save(self, savegamename=None):
 		if savegamename is None:
@@ -93,9 +93,12 @@ class MPSession(Session):
 					return False
 				else:
 					return True
-			sanity_criteria = _("The filename must consist only of letters, numbers, spaces and _.-")
-			savegamename = self.gui.show_select_savegame(mode='mp_save', sanity_checker=sanity_checker,
-			                                             sanity_criteria=sanity_criteria)
+			sanity_criteria = _(
+				"The filename must consist only of letters, numbers, spaces "
+				"and these characters: _ . -"
+			)
+			savegamename = self.ingame_gui.show_select_savegame(mode='mp_save', sanity_checker=sanity_checker,
+			                                                    sanity_criteria=sanity_criteria)
 			if savegamename is None:
 				return True # user aborted dialog
 

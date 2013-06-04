@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -136,7 +136,7 @@ class ProductionFinishedIconManager(object):
 
 		bg_image = horizons.globals.fife.imagemanager.load(self.background)
 		res_icon = horizons.globals.fife.imagemanager.load(get_res_icon_path(res))
-		font = horizons.globals.fife.pychanmanager.getFont('mainmenu')
+		font = horizons.globals.fife.pychan.manager.getFont('mainmenu')
 
 		self.renderer.addImage(group, bg_node, bg_image)
 		self.renderer.resizeImage(group, node, res_icon, 24, 24)

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,19 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-from fife import fife
-from fife.extensions.pychan.widgets import HBox, Icon, Label, Spacer
 import json
 import weakref
 import itertools
 import functools
+
+from fife import fife
+from fife.extensions.pychan.widgets import HBox, Icon, Label, Spacer
 
 import horizons.globals
 
 from horizons.constants import TIER, RES
 from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.mousetools.buildingtool import BuildingTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
@@ -406,17 +407,17 @@ class ResourceOverviewBar(object):
 			return None
 
 	def get_size(self):
-		"""
-		Returns (x,y) size tuple.
+		"""Returns (x,y) size tuple.
+
 		Used by the cityinfo to determine how to change its position if the widgets
 		overlap using default positioning (resource bar can get arbitrarily long).
 		Note that the money icon has the same offset effect as all entry icons have
 		(height 73 + padding 10 == height 66 + padding 17), thus the calculation only
-		needs ENTRY_Y_OFFSET to determine the maximum widget height.
+		needs of regular items (ENTRY_Y_*) to determine the maximum widget height.
 		"""
 		item_amount = len(self._get_current_resources())
 		width = self.INITIAL_X_OFFSET + self.ENTRY_X_OFFSET * item_amount
-		height = self.ENTRY_Y_OFFSET + self.CONSTRUCTION_LABEL_HEIGHT * self.construction_mode
+		height = self.ENTRY_Y_OFFSET + self.ENTRY_Y_HEIGHT
 		return (width, height)
 
 
@@ -594,7 +595,7 @@ class ResourceOverviewBar(object):
 				box.addChild(Icon(image=image))
 				box.addSpacer(Spacer())
 				box.addChild(Label(name="resbar_stats_entry_%s"%num))
-				# workaround for fife font bug, probably http://fife.trac.cvsdude.com/engine/ticket/666
+				# workaround for fife font bug, probably http://fife.trac.cloudforge.com/engine/ticket/666
 				box.addChild(Label(text=u" "))
 
 				if num < len(images)-1: # regular one
@@ -657,7 +658,6 @@ class ResourceOverviewBar(object):
 		return icon.position
 
 
-from horizons.gui.mousetools import NavigationTool
 class ResBarMouseTool(NavigationTool):
 	"""Temporary mousetool for resource selection.
 	Terminates self on mousePressed and restores old tool"""

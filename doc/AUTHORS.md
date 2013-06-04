@@ -1,10 +1,10 @@
 ## UH-Team ##
 
-### Project Coordination
+#### Project Coordination
 * Nightraven (Tobias Schroefel)
 * Nihathrael (Thomas Kinnen)
 
-### Programming
+#### Programming
 * ChrisOelmueller (Christopher Oelmueller)
 * Court-Jus (Ghislain Lévêque)
 * GreyGhost (Tushar Sawant)
@@ -17,23 +17,25 @@
 * RainCT (Siegfried Gevatter)
 * spq (Kristoffer Janke)
 * squiddy (Reiner Gerecke)
+* ThePawnBreak (Mocanu Cristian-Alexandru)
 * totycro (Bernhard Mallinger)
 * tuempl (Harald Demel)
 * yonibear (Jonathan Sieber)
 
 - - - - -
 
-### Game-Play Design
+#### Game-Play Design
 * Andre (Andre Reichelt)
 * dauerflucher (Andreas Lis)
 * Kilian] (Kilian Köppchen)
 
-### Sound and Music Artists
+#### Sound and Music Artists
 * draikon (Sebastian Ahlen)
+* Matthew Pablo
 * novatlan (Tobias Escher)
 * ThomasD (Thomas Davey)
 
-### Graphics Artists
+#### Graphics Artists
 * Daniel Stephens
 * dauerflucher (Andreas Lis)
 * egore (Christoph Brill)
@@ -49,14 +51,14 @@
 
 ## Patchers ##
 
-### 2009
+#### 2009
 * abeaumont (Building bugfix)
 * janus (Resource icons)
 * MadMonk (Focus bugfix)
 * MSSSSM (Several improvements)
 * soeb (Translation enhancements)
 
-### 2010 
+#### 2010
 * Afrit (Resource tree)
 * cubathy (Language bugfix)
 * dario (Savegame versioning)
@@ -68,7 +70,7 @@
 
 - - - - -
 
-### 2011
+#### 2011
 * abeaumont (Two renitent segfaults)
 * Grickit (Random maps)
 * hoffi (GUI improvements)
@@ -78,7 +80,7 @@
 * sids.aquarius (Several improvements)
 * sient (Minimap rectangle)
 
-### 2012
+#### 2012
 * enno4uh (Mac build support)
 * Foaly (Resource icons)
 * perher (tests for timer and scheduler)
@@ -88,14 +90,17 @@
 
 ## Translators
 
-### Bulgarian
+#### Hosting Weblate
+* Michal Čihař (nijel)
+
+#### Bulgarian
 * balward
 
-### Catalan
+#### Catalan
 * CatRoky
 * Siegfried Gevatter (RainCT)
 
-### Czech
+#### Czech
 * Kristian Hynek (Kris_CZ)
 * naked.in.rain
 * Petr Palička (peca)
@@ -103,15 +108,15 @@
 * Vilem Soulak (Turmaleus)
 * VMa
 
-### Danish
+#### Danish
 * Jacob Hellwing (hellwing)
 
-### German
+#### German
 * djot
 * Kikody
 * Michael Skiba
 
-### Spanish
+#### Spanish
 * Andrés José Fernandez (ariktaurendil)
 * Fabio Fernández (Catharsius)
 * MicMic
@@ -121,11 +126,14 @@
 * William Cabrera (willicab)
 * Álex Plaza
 
-### Estonian
+#### Estonian
 * Mihkel Rämmel (RM87)
 * Üllar Lainväe (ussikene)
 
-### French
+#### Finnish
+* Aleksi Kinnunen
+
+#### French
 * Antoine Pernot (mumuxe)
 * Hugues Fafard (Antagonym)
 * Marc Moussa (deathmaster9)
@@ -135,37 +143,37 @@
 * tintou
 * Vincent Herilier (LiveWire)
 
-### Croatian
+#### Croatian
 * shile
 
-### Hindi
+#### Hindi
 * Kinshuk Sunil (kinshuksunil)
 
-### Hungarian
+#### Hungarian
 * matyi
 * Szontágh Ferenc (ghostarthour)
 
-### Italian
+#### Italian
 * Fabio Pedretti
 * rayot
 * sioux83
 * tagarista
 
-### Japanese
+#### Japanese
 * naraba
 * Yuki Shira (shirayuki)
 
-### Lithuanian
+#### Lithuanian
 * Mantas Kondrotas (Anielus)
 
 - - - - -
 
-### Norwegian
+#### Norwegian
 * Audun Pers
 * Frode Woldsund (frodus)
 * Jared Isaksen (JeThro)
 
-### Dutch
+#### Dutch
 * angellus
 * Jasper Tepper (Shadow23)
 * Luth
@@ -174,7 +182,7 @@
 * SanderOnline
 * VinWij
 
-### Polish
+#### Polish
 * Adrian Marcinkowski (Amfidiusz)
 * Mateusz Bartkowski (Eugen)
 * mtfk
@@ -183,69 +191,74 @@
 * Robert Matusewicz (matekm)
 * Stanislaw Gackowski (soeb)
 
-### Portuguese
+#### Portuguese
 * bdias
 * Nelson Marques (nmarques)
 * Nuno Alves (MadMonk)
 * Sérgio Lopes (Knitter)
 
-### Brazilian Portuguese
+#### Brazilian Portuguese
 * claudinei
 * hpoyatos (Henrique Poyatos)
 * luisdknob
 * paulodealmeida
 
-### Romanian
+#### Romanian
 * trendy
 
-### Russian
+#### Russian
 * Alexander Olkhovskiy (fcxSanya)
 * Sergei Chistyakov (devcode)
 * Sergey Stepanov
 
-### Slovenian
+#### Slovenian
 * Andrej Žnidaršič (andrejz)
 
-### Swedish
-* Aleksi Kinnunen (alluk.)
+#### Swedish
 * Nagrim
 * pilen
 
-### Chinese
+#### Chinese
 * nifabric
 
 
 
 ## Packagers ##
 
-### Debian
+#### Debian
 * christoph_debian (Christoph Egger)
 
-### Fedora
+#### Fedora & openSUSE
 * nmarques (Nelson Marques)
+* gryffus (Lukáš Krejza)
 
-- - - - -
-
-### openSUSE
-* nmarques (Nelson Marques)
-
-### OS X
+#### OS X
 * hoffi (Stefan Hoffmann)
 
 
 ## Special Thanks ##
 
-### Thanks, all of you are awesome!
-* Alexia and Widelands team (http://widelands.org)
+#### Thanks, all of you are awesome!
+* Alexia and the Widelands team
+  * (http://widelands.org)
 * BartK and www.OpenGameArt.org
 * Dreimer (Daniel Reimer)
 * hoehrer (Werner Hoehrer)
 * Ivanovic (Nils Kneuper)
+* nijel (Michal Čihař)
 * Lamoot (Matjaz Lamut)
 * LinuxDonald (Thomas Kowaliczek)
 * mattn (Martin Gerhardry)
 * mvBarracuda (Martin Vohland)
-* Reiner Prokein (http://reinerstileset.4players.de)
-* The Battle for Wesnoth team (http://wesnoth.org)
+* OpenClipArt (http://openclipart.org)
+* Reiner Prokein
+  * (http://reinerstileset.4players.de)
+* The Battle for Wesnoth team
+  * (http://wesnoth.org)
 * The whole FIFE team (http://fifengine.net)
-* www.OpenClipArt.org
+
+- - - - -
+
+#### Portfolio Sites
+* Matthew Pablo: http://matthewpablo.com/
+* novatlan: http://novatlan-sound.de/

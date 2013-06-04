@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -60,7 +60,10 @@ class AnimalCollector(BuildingCollector):
 	def cancel(self, continue_action=None):
 		if self.job is not None:
 			if self.state == self.states.waiting_for_animal_to_stop:
-				self.job.object.remove_stop_after_job()
+				if hasattr(self.job.object, 'remove_stop_after_job'):
+					# when loading a game fails and the world is destructed again, the
+					# worldid may not yet have been resolved to an actual in-game object
+					self.job.object.remove_stop_after_job()
 		super(AnimalCollector, self).cancel(continue_action=continue_action)
 
 	def begin_current_job(self):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import sqlite3
-import tempfile
+import glob
 import logging
 import os
 import os.path
-import glob
-import time
 import re
-import itertools
+import sqlite3
+import tempfile
+import time
+from collections import defaultdict
 
 from horizons.constants import PATHS, VERSION
 from horizons.util.dbreader import DbReader
 from horizons.util.yamlcache import YamlCache
-from horizons.i18n import find_available_languages
 
 import horizons.globals
 import horizons.main
@@ -73,9 +72,9 @@ class SavegameManager(object):
 
 	# Use {{}} because this string is formatted twice and
 	# {timestamp} is replaced in the second format() call.
-	save_filename_timeformat = u"{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M.{ext}"
-	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename, ext=savegame_extension)
-	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename, ext=savegame_extension)
+	save_filename_timeformat = u"{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M"
+	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename)
+	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename)
 
 	filename = u"{{directory}}{sep}{{name}}.{ext}".format(sep=os.path.sep, ext=savegame_extension)
 
@@ -330,63 +329,38 @@ class SavegameManager(object):
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames=True, locales=False, hide_test_scenarios=False):
+	def get_available_scenarios(cls, include_displaynames=True, locales=False):
 		"""Returns available scenarios."""
-		afiles = []
-		anames = []
-		sfiles, snames = cls.get_scenarios(include_displaynames=True)
-		for i, sname in enumerate(snames):
-			if hide_test_scenarios and cls.get_scenario_info(name=sname).get('test_scenario'):
+		translated_scenarios = defaultdict(list)
+		scenarios = zip(*cls.get_scenarios(include_displaynames=True))
+		for filename, scenario in scenarios:
+			_locale = cls.get_scenario_metadata(scenario=scenario).get('locale', u'en')
+			# sort into dictionary by english filename (without language suffix)
+			english_name = scenario.split('_' + _locale)[0]
+			if not os.path.exists(filename):
 				continue
-
-			#get file's locale
-			cur_locale = '_' + cls.get_scenario_info(name=sname).get('locale')
-
-			#don't add language postfix
-			sname = sname.split(cur_locale)[0]
-			if not sname in anames:
-				anames.append(sname)
-				afiles.append(sfiles[i][:sfiles[i].rfind(cur_locale)])
-
-		def _list_maps_with_language(prefixlist, language):
-			maplist = []
-			for (listitem, language) in itertools.product(prefixlist, languages):
-				maplist.append(listitem + '_' + language + '.' + SavegameManager.scenario_extension)
-
-			return maplist
-
-		#we use scenario map name + language extension
-		languages = find_available_languages().keys()
-		#we use full map paths (with language extensions)
-		scenario_map_paths = _list_maps_with_language(afiles, languages)
-		#we use full map names (with language extensions)
-		scenario_map_names = _list_maps_with_language(anames, languages)
-
-		#if needed we should return with language extensions
-		if locales:
-			afiles = scenario_map_paths
-			anames = scenario_map_names
-
-		if not include_displaynames:
-			return (afiles,)
-		return (afiles, anames)
+			translated_scenarios[english_name].append((_locale, filename))
+		return translated_scenarios
 
 	@classmethod
-	def get_scenario_info(cls, name="", filename=""):
-		"""Return this scenario data"""
+	def get_scenario_metadata(cls, scenario="", filename=""):
+		"""Return the `metadata` dict for a scenario.
+
+		Pass either the scenario name (*scenario*) or a .yaml *filename*.
+		"""
 		sfiles, snames = cls.get_scenarios(include_displaynames=True)
-		if name:
-			if not name in snames:
-				cls.log.error("Error: Cannot find scenario '{name}'.".format(name=name))
+		if scenario:
+			if scenario not in snames:
+				cls.log.error("Error: Cannot find scenario '{name}'.".format(name=scenario))
 				return {}
-			index = snames.index(name)
+			index = snames.index(scenario)
 		elif filename:
-			if not filename in sfiles:
+			if filename not in sfiles:
 				cls.log.error("Error: Cannot find scenario '{name}'.".format(name=filename))
 				return {}
 			index = sfiles.index(filename)
 		data = YamlCache.get_file(sfiles[index], game_data=True)
-		return data
+		return data.get('metadata', {})
 
 	@classmethod
 	def get_savegamename_from_filename(cls, savegamefile):

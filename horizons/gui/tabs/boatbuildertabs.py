@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -43,7 +43,7 @@ class _BoatbuilderOverviewTab(OverviewTab):
 
 class BoatbuilderTab(_BoatbuilderOverviewTab):
 
-	SHIP_THUMBNAIL = "content/gui/icons/units/thumbnails/{type_id}.png"
+	SHIP_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
 	SHIP_PREVIEW_IMG = "content/gui/images/objects/ships/116/{type_id}.png"
 
 	def __init__(self, instance):
@@ -92,7 +92,8 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			queue_container.removeAllChildren()
 			for place_in_queue, unit_type in enumerate(queue):
 				image = self.__class__.SHIP_THUMBNAIL.format(type_id=unit_type)
-				helptext = _(u"{ship} (place in queue: {place})") #xgettext:python-format
+				#xgettext:python-format
+				helptext = _("{ship} (place in queue: {place})")
 				helptext.format(ship=self.instance.session.db.get_unit_type_name(unit_type),
 				                place=place_in_queue+1)
 				# people don't count properly, always starting at 1..
@@ -175,7 +176,7 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		super(BoatbuilderSelectTab, self).__init__(
 				instance=instance,
 		          widget='boatbuilder_showcase.xml',
-		          icon_path='content/gui/icons/tabwidget/boatbuilder/{name}_%s.png'.format(name=iconname))
+		          icon_path='icons/tabwidget/boatbuilder/{name}'.format(name=iconname))
 		self.add_showcases(ships)
 		self.helptext = helptext
 		self.widget.findChild(name='headline').text = helptext
@@ -194,9 +195,9 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
 		widget.addChild(bg_icon)
 
-		icon_path = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
+		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
 		helptext = self.instance.session.db.get_ship_tooltip(ship)
-		unit_icon = Icon(image=icon_path, name='icon_%s'%index, position=(2, 2),
+		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
@@ -212,12 +213,10 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 
 		widget.addChild(button)
 
-		#TODO since this code uses the boat builder as producer, the
-		# gold cost of ships is in consumed res is always 0 since it
-		# is paid from player inventory, not from the boat builder one.
-		production = self.producer.create_production(prodline)
+		# Get production line info
+		production = self.producer.create_production_line(prodline)
 		# consumed == negative, reverse to sort in *ascending* order:
-		costs = sorted(production.get_consumed_resources().iteritems(), key=itemgetter(1))
+		costs = sorted(production.consumed_res.iteritems(), key=itemgetter(1))
 		for i, (res, amount) in enumerate(costs):
 			xoffset = 103 + (i  % 2) * 55
 			yoffset =  20 + (i // 2) * 20

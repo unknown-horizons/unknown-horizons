@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,7 +30,7 @@ from functools import wraps
 
 from horizons.gui import mousetools
 from horizons.gui.keylisteners.ingamekeylistener import IngameKeyListener
-from horizons.gui.windows import WindowManager
+from horizons.gui.windows import Dialog
 
 from fife import fife
 from fife.extensions.pychan import tools, widgets
@@ -187,7 +187,7 @@ class GuiHooks(object):
 				return result
 			return wrapper
 
-		WindowManager.show_dialog = deco4(WindowManager.show_dialog)
+		Dialog._execute = deco4(Dialog._execute)
 
 
 class TestCodeGenerator(object):

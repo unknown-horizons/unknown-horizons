@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -66,7 +66,7 @@ class Player(object):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
 		self.peer     = peer
-		assert(isinstance(self.peer, enet.Peer))
+		assert isinstance(self.peer, enet.Peer)
 		self.address  = Address(self.peer.address)
 		self.sid      = sid
 		# there's a difference between player.protocol and player.version:
@@ -121,8 +121,8 @@ class Player(object):
 
 	def join(self, game, packet):
 		""" assigns player data sent by create/join-command to the player """
-		assert(isinstance(packet, packets.client.cmd_creategame)
-				or isinstance(packet, packets.client.cmd_joingame))
+		assert (isinstance(packet, packets.client.cmd_creategame)
+		        or isinstance(packet, packets.client.cmd_joingame))
 		self.game     = game
 		self.version  = packet.clientversion
 		self.name     = packet.playername
@@ -156,7 +156,7 @@ class Game(object):
 	def __init__(self, packet, creator):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
-		assert(isinstance(packet, packets.client.cmd_creategame))
+		assert isinstance(packet, packets.client.cmd_creategame)
 		self.uuid          = uuid.uuid1().hex
 		self.mapname       = packet.mapname
 		self.maphash       = packet.maphash
@@ -172,9 +172,9 @@ class Game(object):
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):
 		# NOTE: don't return _ANY_ private data here as these object
-		# gets sent in onlistgames too. if really necessary remove that
-		# data in data_gameslist.addgame
-		# NOTE: this classes get used on the client too, so beware of
+		# will be used to build the public game list. if really necessary remove
+		# the private data in packets.data_gameslist.addgame
+		# NOTE: this classes are used on the client too, so beware of
 		# datatype changes
 		state = self.__dict__.copy()
 
@@ -184,6 +184,9 @@ class Game(object):
 		# make data backwards compatible
 		state['creator'] = self.creator.name
 		state['clientversion'] = self.creator.version
+		if self.creator.protocol == 0:
+			state['load'] = self.maphash if self.maphash else None
+			del state['maphash']
 
 		return state
 

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constants import PLAYER, GAME_SPEED
+from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-from horizons.extscheduler import ExtScheduler
-from horizons.constants import PLAYER, GAME_SPEED
+
 
 class StatsWidget(object):
 	"""A widget that creates a large table with statistics."""

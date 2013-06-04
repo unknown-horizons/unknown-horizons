@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -78,9 +78,6 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		super(Island, self).__init__(worldid=island_id)
 
-		if False:
-			from horizons.session import Session
-			assert isinstance(session, Session)
 		self.session = session
 
 		self.terrain_cache = None
@@ -312,7 +309,7 @@ class Island(BuildingOwner, WorldObject):
 				del self.deposits[building.id][coords]
 		if building.settlement is not None:
 			building.settlement.remove_building(building)
-			assert(building not in building.settlement.buildings)
+			assert building not in building.settlement.buildings
 
 		super(Island, self).remove_building(building)
 		if building.id in self.building_indexers:

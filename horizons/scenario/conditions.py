@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,8 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import RES
-from horizons.constants import BUILDINGS
+from horizons.constants import RES, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.util.python.registry import Registry
@@ -70,7 +69,7 @@ def settlements_num_greater(session, limit):
 
 @register()
 def settler_level_greater(session, limit):
-	"""Returns whether the highest increment reached in any player settlement is greater than *limit*."""
+	"""Returns whether the highest tier reached in any player settlement is greater than *limit*."""
 	return (session.world.player.settler_level > limit)
 
 @register(periodically=True)
@@ -188,6 +187,11 @@ def building_in_range(session, building_class1, building_class2):
 def time_passed(session, seconds):
 	"""Returns whether at least *seconds* seconds have passed since the game started."""
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(seconds))
+
+@register()
+def game_started(session):
+	"""Always return True. Used for one-off events"""
+	return True
 
 @register()
 def var_eq(session, variable, value):

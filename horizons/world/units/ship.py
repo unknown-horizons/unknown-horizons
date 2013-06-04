@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -222,6 +222,7 @@ class Ship(Unit):
 			#xgettext:python-format
 			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
+
 class TradeShip(Ship):
 	"""Represents a trade ship."""
 	health_bar_y = -220
@@ -230,7 +231,8 @@ class TradeShip(Ship):
 		super(TradeShip, self).__init__(x, y, **kwargs)
 
 	def _possible_names(self):
-		return [_(u'Trader')]
+		return [_('Trader')]
+
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""

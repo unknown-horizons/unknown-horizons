@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -47,18 +47,20 @@ def parse_token(token, token_klass):
 	"""
 	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
 
-	if isinstance(token, unicode):
-		if token.startswith(token_klass):
-			try:
-				return getattr( classes[token_klass], token.split(".", 2)[1])
-			except AttributeError as e: # token not defined here
-				err = "This means that you either have to add an entry in horizons/constants.py in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
-				raise Exception( str(e) + "\n\n" + err +"\n" )
+	if not isinstance(token, basestring):
+		# Probably numeric already
+		return token
+	if not token.startswith(token_klass):
+		# No need to parse anything
+		return token
+	try:
+		return getattr( classes[token_klass], token.split(".", 2)[1])
+	except AttributeError as e: # token not defined here
+		err = ("This means that you either have to add an entry in horizons/constants.py "
+		       "in the class %s for %s,\nor %s is actually a typo."
+		       % (token_klass, token, token))
+		raise Exception( str(e) + "\n\n" + err +"\n" )
 
-		else:
-			return token
-	else:
-		return token # probably numeric already
 
 def convert_game_data(data):
 	"""Translates convenience symbols into actual game data usable by machines"""
@@ -99,7 +101,7 @@ class YamlCache(object):
 	def get_file(cls, filename, game_data=False):
 		"""Get contents of a yaml file
 		@param filename: path to the file
-		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACk to resolve
+		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACK to resolve
 		"""
 
 		# calc the hash

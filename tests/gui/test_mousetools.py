@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -60,7 +60,7 @@ def test_pipette(gui):
 	gui.press_key(gui.Key.O)
 	gui.cursor_click(7, 7, 'left')
 	gui.cursor_click(6, 7, 'left')
-	
+
 	# select signal fire, check if it's actually there
 	gui.cursor_click(6, 7, 'left')
 	assert gui.find('overview_signalfire')

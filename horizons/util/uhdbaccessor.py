@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,7 +24,6 @@ import random
 from horizons.constants import PATHS
 from horizons.util.python import decorators
 from horizons.util.dbreader import DbReader
-from horizons.gui.util import get_res_icon_path
 from horizons.entities import Entities
 
 ########################################################################
@@ -78,20 +77,6 @@ class UhDbAccessor(DbReader):
 		db_data = self.cached_query(sql)
 		return map(lambda x: x[0], db_data)
 
-	def get_res_id_and_icon(self, only_tradeable=False, only_inventory=False):
-		"""Returns a list of all resources and the matching icon paths.
-		@param only_tradeable: return only those you can trade.
-		@param only_inventory: return only those displayed in inventories.
-		@return: list of tuples: (resource ids, resource icon)"""
-		sql = "SELECT id FROM resource WHERE id "
-		if only_tradeable:
-			sql += " AND tradeable = 1 "
-		if only_inventory:
-			sql += " AND shown_in_inventory = 1 "
-		query = self.cached_query(sql)
-		format_data = lambda res: (res, get_res_icon_path(res))
-		return [format_data(row[0]) for row in query]
-
 	# Sound table
 
 	def get_sound_file(self, soundname):
@@ -115,6 +100,7 @@ class UhDbAccessor(DbReader):
 		"""
 		buildingtype = Entities.buildings[building_class_id]
 		#xgettext:python-format
+		# You usually do not need to change anything here when translating
 		tooltip = _("{building}: {description}")
 		return tooltip.format(building=_(buildingtype._name),
 		                      description=_(buildingtype.tooltip_text))
@@ -200,7 +186,7 @@ class UhDbAccessor(DbReader):
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_house_name(self, level):
-		"""Returns name of the residential building for a specific increment
+		"""Returns name of the residential building for a specific tier
 		@param level: int settler's level
 		@return: string settler's housing name"""
 		sql = "SELECT residential_name FROM settler_level WHERE level = ?"
@@ -284,8 +270,9 @@ class UhDbAccessor(DbReader):
 		try:
 			comp = ship.get_component_template('StorageComponent')
 			storage = comp['PositiveTotalNumSlotsStorage']
-			#i18n Ship storage properties
-			helptext = _('{slotnum} slots, {limit}t') #xgettext:python-format
+			#xgettext:python-format
+			# Ship storage properties
+			helptext = _('{slotnum} slots, {limit}t')
 			helptext = helptext.format(slotnum=storage['slotnum'],
 			                           limit=storage['limit'])
 			helptexts.append(helptext)
@@ -293,7 +280,8 @@ class UhDbAccessor(DbReader):
 			pass
 		try:
 			comp = ship.get_component_template('HealthComponent')
-			helptext = _('Health: {health}') #xgettext:python-format
+			#xgettext:python-format
+			helptext = _('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)
 		except KeyError: # Component not found, ignore this part

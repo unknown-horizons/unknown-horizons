@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -72,7 +72,7 @@ class MessageWidget(LivingObject):
 		self.widget.position = (5, (screenheight // 2) - (self.widget.size[1] // 2))
 
 		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
-		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
+		self.reference_text_widget_position = (self.widget.x + self.widget.width, self.widget.y)
 
 		self.widget.show()
 		self.item = 0 # number of current message
@@ -86,7 +86,7 @@ class MessageWidget(LivingObject):
 		"""Adds a message to the MessageWidget.
 		@param point: point where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
-		@param type: message type; determines what happens on click
+		@param msg_type: message type; determines what happens on click
 		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 		@param play_sound: whether to play the default message speech for string_id
 		@param check_duplicate: check for pseudo-duplicates (similar messages recently nearby)
@@ -105,6 +105,16 @@ class MessageWidget(LivingObject):
 		                                        created=self.msgcount.next(), message_dict=message_dict),
 		                         sound=sound)
 
+	def remove(self, messagetext):
+		"""Remove a message containing the text *messagetext*"""
+		index = -1
+		for i, message in enumerate(self.active_messages):
+			if messagetext == message.message:
+				index = i
+				break
+		if index > -1:
+			del self.active_messages[index]
+
 	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
 		Uses no predefined message template from content database like add() does.
@@ -119,7 +129,7 @@ class MessageWidget(LivingObject):
 		""" See docstring for add().
 		"""
 		message_dict = {'player': player, 'message': messagetext}
-		self.add(point=None, string_id='CHAT', msg_type=None, message_dict=message_dict)
+		self.add('CHAT', msg_type=None, message_dict=message_dict)
 		self.chat.append(self.active_messages[0])
 
 	def _add_message(self, message, sound=None):
@@ -175,11 +185,11 @@ class MessageWidget(LivingObject):
 					   Callback(self.session.view.center, message.x, message.y),
 					   Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
 				   )
-			if message.type == "logbook":
+			if message.msg_type == "logbook":
 				# open logbook to relevant page
 				callback = Callback.ChainedCallbacks(
 					   callback, # this makes it so the order of callback assignment doesn't matter
-					   Callback(self.session.ingame_gui.logbook.show, message.created)
+					   Callback(self.session.ingame_gui.windows.toggle, self.session.ingame_gui.logbook, msg_id=message.created)
 				)
 			if callback:
 				events[button.name] = callback
@@ -207,6 +217,13 @@ class MessageWidget(LivingObject):
 		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
 			middle_icon = Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
+
+		button = self.widget.findChild(name=str(index))
+		# y position relative to parent
+		button_y = button.position[1]
+		# Show text next to corresponding icon
+		x, y = self.reference_text_widget_position
+		self.text_widget.position = (x, y + button_y)
 
 		message_container = self.text_widget.findChild(name='message')
 		message_container.size = (300, 21 + self.IMG_HEIGHT * line_count + 21)
@@ -291,8 +308,9 @@ class _IngameMessage(object):
 	@param x, y: int position on the map where the action took place.
 	@param id: message id string, needed to retrieve the message from the database.
 	@param created: tickid when the message was created. Keeps message order after load.
-	@param count: a unique message id number
+	@param msg_type: messages coupled with logbook entries use this to link to pages
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
+	@param icon_id: which icon to display. Loads preset for `id` if None.
 	"""
 	def __init__(self, point, id, created,
 	             msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
@@ -300,11 +318,11 @@ class _IngameMessage(object):
 		if point is not None:
 			self.x, self.y = point.x, point.y
 		self.id = id
-		self.type = msg_type
+		self.msg_type = msg_type
 		self.read = read
 		self.created = created
 		self.display = display if display is not None else horizons.globals.db.get_msg_visibility(id)
-		icon = icon_id if icon_id else horizons.globals.db.get_msg_icon_id(id)
+		icon = icon_id if icon_id is not None else horizons.globals.db.get_msg_icon_id(id)
 		self.path = horizons.globals.db.get_msg_icon_path(icon)
 		if message is not None:
 			assert isinstance(message, unicode), "Message is not unicode: %s" % message

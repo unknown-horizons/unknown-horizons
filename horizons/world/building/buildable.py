@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -175,8 +175,8 @@ class Buildable(object):
 			# at least one location that has this tile must be actually buildable
 			# area of the buildings is (x, y) + width/height, therefore all build positions that
 			# include (x, y) are (x, y) - ( [0..width], [0..height] )
-			return any( cls.check_build(session, Point(tile.x - x_off, tile.y - y_off), ship=ship) for
-				          x_off, y_off in itertools.product(xrange(cls.size[0]), xrange(cls.size[1])) )
+			return any(cls.check_build(session, Point(tile.x - x_off, tile.y - y_off), ship=ship)
+			           for x_off, y_off in itertools.product(xrange(cls.size[0]), xrange(cls.size[1])) )
 		else:
 			return True
 
@@ -194,18 +194,18 @@ class Buildable(object):
 			"""
 			checked = set()
 			for elem in itertools.ifilterfalse(lambda e : transform(e) in checked, gen):
-				checked.add( transform(elem) )
+				checked.add(transform(elem))
 				yield elem
 
 		# generate coords near point, search coords of small circles to larger ones
 		def get_positions():
-			iters = (iter(Circle(point, radius)) for radius in xrange(cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE) )
-			return itertools.chain.from_iterable( iters )
+			iters = (iter(Circle(point, radius)) for radius in xrange(cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE))
+			return itertools.chain.from_iterable(iters)
 
 		# generate positions and check for matches
 		check_pos = lambda pos : cls.check_build(session, pos, *args, **kwargs)
 		checked = itertools.imap(check_pos,
-		                         filter_duplicates( get_positions(), transform=lambda p : p.to_tuple() ) )
+		                         filter_duplicates(get_positions(), transform=lambda p : p.to_tuple()))
 
 		# filter positive solutions
 		result_generator = itertools.ifilter(lambda buildpos: buildpos.buildable, checked)
@@ -231,7 +231,7 @@ class Buildable(object):
 				at = position.left, position.top
 			else:
 				at = position.center.to_tuple()
-			island = session.world.get_island_tuple( at )
+			island = session.world.get_island_tuple(at)
 			if island is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
 		for tup in position.tuple_iter():
@@ -253,13 +253,21 @@ class Buildable(object):
 
 	@classmethod
 	def _check_settlement(cls, session, position, ship=None, issuer=None):
-		"""Check if there is a settlement and if it belongs to the human player"""
-		settlement = session.world.get_settlement(position.center)
+		"""Check that there is a settlement that belongs to the player."""
 		player = issuer if issuer is not None else session.world.player
-		if settlement is None:
-			raise _NotBuildableError(BuildableErrorTypes.NO_SETTLEMENT)
-		if player != settlement.owner:
-			raise _NotBuildableError(BuildableErrorTypes.OTHER_PLAYERS_SETTLEMENT)
+		first_legal_settlement = None
+		for coords in position.tuple_iter():
+			if coords not in session.world.full_map:
+				raise _NotBuildableError(BuildableErrorTypes.NO_SETTLEMENT)
+			settlement = session.world.full_map[coords].settlement
+			if settlement is None:
+				raise _NotBuildableError(BuildableErrorTypes.NO_SETTLEMENT)
+			if player != settlement.owner:
+				raise _NotBuildableError(BuildableErrorTypes.OTHER_PLAYERS_SETTLEMENT)
+			# there should be exactly one legal settlement under the position
+			assert first_legal_settlement is None or first_legal_settlement is settlement
+			first_legal_settlement = settlement
+		assert first_legal_settlement
 
 	@classmethod
 	def _check_buildings(cls, session, position, island=None):
@@ -269,7 +277,7 @@ class Buildable(object):
 			island = session.world.get_island(position.center)
 			# _check_island already confirmed that there must be an island here, so no check for None again
 		tearset = set()
-		for tile in island.get_tiles_tuple( position.tuple_iter() ):
+		for tile in island.get_tiles_tuple(position.tuple_iter()):
 			obj = tile.object
 			if obj is not None: # tile contains an object
 				if obj.buildable_upon:
@@ -536,7 +544,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 		if island is None:
 			island = session.world.get_island(position.center)
 		deposit = None
-		for tile in island.get_tiles_tuple( position.tuple_iter() ):
+		for tile in island.get_tiles_tuple(position.tuple_iter()):
 			if tile.object is None or \
 			   tile.object.id != cls.buildable_on_deposit_type or \
 			   (deposit is not None and tile.object != deposit): # only build on 1 deposit
@@ -549,7 +557,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 		"""The rotation should be the same as the one of the underlying mountain"""
 		tearset = cls._check_buildings(session, position) # will raise on problems
 		# rotation fix code is only reached when building is buildable
-		mountain = WorldObject.get_object_by_id( iter(tearset).next() )
+		mountain = WorldObject.get_object_by_id(iter(tearset).next())
 		return mountain.rotation
 
 

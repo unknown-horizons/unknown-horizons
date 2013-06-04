@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
-from horizons.util.python.callback import Callback
+from horizons.gui.style import NOTHING
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
-
+from horizons.i18n import _lazy
+from horizons.util.python.callback import Callback
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
@@ -50,7 +49,7 @@ class PickBeltWidget(object):
 				pickbelt = ImageButton(text=text)
 				pickbelt.name = name + '_' + side
 				pickbelt.path = 'images/background/pickbelt_%s' % side
-				pickbelt.font = "small_tooltip"
+				pickbelt.font = "pickbelt"
 
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
 
@@ -85,18 +84,17 @@ class OptionsPickbeltWidget(PickBeltWidget):
 	"""Widget for Options dialog with pickbelt style pages"""
 	widget_xml = 'settings.xml'
 
-	def __init__(self, *args, **kwargs):
-		# can't set this as class attribute directly since it's evaluated before gettext is set up
-		self.__class__.sections = (('graphics_settings', _('Graphics')),
-		                           ('game_settings', _('Game')))
+	sections = (('graphics_settings', _lazy('Graphics')),
+	            ('hotkeys_settings', _lazy('Hotkeys')),
+	            ('game_settings', _lazy('Game')))
 
-		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
+	def update_view(self, number=0):
+		super(OptionsPickbeltWidget, self).update_view(number=number)
 
 
 class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'
-	# Can set as class attribute directly since no gettext calls
 	sections = (
 		('credits_team', u'UH-Team'),
 		('credits_patchers', u'Patchers'),
@@ -114,7 +112,7 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 			box.margins = (30, 0) # to get some indentation
 			box.padding = 3
 		for listbox in self.widget.findChildren(name='translators'):
-			listbox.background_color = fife.Color(255, 255, 255, 0)
+			listbox.background_color = NOTHING
 
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 

@@ -3,12 +3,12 @@
 	background_image="content/gui/images/background/book.png">
 
 	<Container size="320,510"  position="75,32"  name="left_side">
-		<Label text="New game - Multiplayer"  position="70,10"  name="headline_left" 
+		<Label text="New game - Multiplayer"  position="70,10"  name="headline_left"
 			font="headline" />
-		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
+		<hr position="52,30" />
 		<VBox name="playerdataselectioncontainer"  position="0,60" />
-		<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="104,103" />
-		<Icon image="content/gui/images/background/hr.png"  position="52,230" />
+		<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="102,103" />
+		<hr position="52,230" />
 
 		<VBox position="42,370"  max_size="290,125"  min_size="290,125">
 
@@ -41,7 +41,7 @@
 				hover_image="content/gui/icons/widgets/minimap/rotate_left.png" />
 		</HBox>
 
-		<ScrollArea max_size="290,250"  min_size="290,200"  horizontal_scrollbar="0"  name="game_list_area">
+		<ScrollArea max_size="290,250" min_size="290,200" name="game_list_area">
 			<ListBox name="gamelist"  min_size="290,330" is_focusable="0" />
 		</ScrollArea>
 
@@ -51,13 +51,8 @@
 			<Label name="game_creator"     wrap_text="1"  max_size="300,40" />
 			<Label name="game_playersnum"  wrap_text="1"  max_size="300,100" />
 			<Label name="game_isloaded"    wrap_text="1"  max_size="300,100" />
-
-			<HBox name="game_info_last">
-				<Label name="game_showonlyownversion"  text="Only show games with the same version:" />
-				<CheckBox min_size="32,32"  name="showonlyownversion" marked="1" />
-			</HBox>
 		</VBox>
-		
+
 		<Spacer />
 
 		<HBox min_size="0,40"><Spacer />

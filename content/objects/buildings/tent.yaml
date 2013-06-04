@@ -138,18 +138,18 @@ components:
         - [RES.COMMUNITY, -1]
     settler_upgrade_lines:
       TIER.PIONEERS:
-        - [RES.BOARDS, -4]
-      TIER.SETTLERS:
         - [RES.BOARDS, -3]
+      TIER.SETTLERS:
+        - [RES.BOARDS, -2]
         - [RES.BRICKS, -2]
       TIER.CITIZENS:
-        - [RES.BOARDS, -3]
+        - [RES.BOARDS, -2]
         - [RES.BRICKS, -2]
       TIER.MERCHANTS:
-        - [RES.BOARDS, -3]
+        - [RES.BOARDS, -1]
         - [RES.BRICKS, -2]
       TIER.ARISTOCRATS:
-        - [RES.BOARDS, -3]
+        - [RES.BOARDS, -1]
         - [RES.BRICKS, -2]
 - StorageComponent:
       SlotsStorage:

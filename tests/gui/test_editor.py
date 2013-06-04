@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2013 The Unknown Horizons Team
+# Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -49,12 +49,17 @@ def test_place_tiles(gui):
 @editor_test
 def test_save_map(gui):
 	"""Save a map in the editor."""
-	gui.trigger('mainhud', 'gameMenuButton')
-	gui.trigger('menu', 'savegameButton')
 
-	name = gui.find("map_name")
-	name.text = u"test_map"
-	gui.trigger('map_save_dialog_window', 'okButton')
+	# FIXME escape doesn't work
+	#gui.press_key(gui.Key.ESCAPE)
+	gui.trigger('mainhud', 'gameMenuButton')
+
+	def func1():
+		gui.find('savegamefile').write('test_map')
+		gui.trigger('load_game_window', 'okButton')
+
+	with gui.handler(func1):
+		gui.trigger('menu', 'savegameButton')
 
 	assert os.path.exists(os.path.join(PATHS.USER_MAPS_DIR, u"test_map.sqlite"))
 
