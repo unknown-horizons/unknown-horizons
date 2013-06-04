@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2013-05-11 11:01+0200\n"
+"PO-Revision-Date: 2013-06-04 11:57+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh-server/nl/>\n"
 "Language: nl\n"
@@ -100,14 +100,12 @@ msgstr "Het spel is beëindigd. De maker heeft het spel verlaten."
 
 # "I feel like a bad bunny" = idiom
 #: horizons/network/server.py:483
-#, fuzzy
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
 "Één speler heeft het spel beëindigd, wat momenteel betekend dat om "
-"technische redenen het spel niet verder kan gaan. Excuses voor het ongemak :"
-"*("
+"technische redenen het spel niet verder kan gaan. Excuses voor het ongemak."
 
 #: horizons/network/server.py:535
 msgid "Unable to change your name."
