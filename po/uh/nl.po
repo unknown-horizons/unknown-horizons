@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-05-15 18:37+0200\n"
+"PO-Revision-Date: 2013-06-04 11:37+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -1072,9 +1072,8 @@ msgid "Cancel game"
 msgstr "Verlaat spel"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Laden ..."
+msgstr "Laden…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
