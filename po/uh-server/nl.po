@@ -98,7 +98,6 @@ msgstr "Jij zit niet in een spel"
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Het spel is beëindigd. De maker heeft het spel verlaten."
 
-# "I feel like a bad bunny" = idiom
 #: horizons/network/server.py:483
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "

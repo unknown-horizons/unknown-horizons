@@ -18,13 +18,11 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 "X-Generator: Pootle 2.5.0-rc1\n"
 
-# 86%
 #: run_uh.py:220
 #, fuzzy
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons se je sesul."
 
-# 83%
 #: run_uh.py:222
 #, fuzzy
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -154,13 +152,11 @@ msgstr ""
 msgid "Inhabitants"
 msgstr "Inwoners"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, fuzzy
 msgid "Increase game speed (+)"
 msgstr "Poveča hitrost igre"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, fuzzy
 msgid "Decrease game speed (-)"
@@ -382,7 +378,6 @@ msgid "Taxes:"
 msgstr "Belastingen:"
 
 # alt. marginalskatt beroende på översättning.
-# 87%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
@@ -442,7 +437,6 @@ msgstr "Overzicht"
 msgid "houses"
 msgstr "huizen"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 #, fuzzy
 msgid "residents"
@@ -495,7 +489,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "Het bevat de volgende grondstoffen:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -549,7 +542,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr "Gebruikspercentage"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -604,7 +596,6 @@ msgstr "Koop of verkoop grondstof"
 msgid "Trade history"
 msgstr "Handelshistorik"
 
-# 76%
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 #, fuzzy
 msgid "Select resources:"
@@ -654,8 +645,6 @@ msgstr "Pauzeer productie"
 msgid "Start production"
 msgstr "Start productie"
 
-# 76%
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -702,8 +691,6 @@ msgstr "Item verwijderen"
 msgid "Move down"
 msgstr "Naar beneden verplaatsen"
 
-# 76%
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy
 msgid "Select a resource:"
@@ -814,7 +801,6 @@ msgstr "Sluiten"
 msgid "Player scores"
 msgstr "Score van speler"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -871,7 +857,6 @@ msgstr "Gebouwen"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Waarde van alle gebouwen in de nederzetting(en) van de speler"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -909,7 +894,6 @@ msgstr ""
 msgid "Total"
 msgstr "Totaal"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 #, fuzzy
@@ -1392,7 +1376,6 @@ msgstr "Nieuw spel - Multiplayer"
 msgid "Create a new game"
 msgstr "Maak een nieuw spel"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 #, fuzzy
 msgid "Load game:"
@@ -1539,7 +1522,6 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "Obnovi privzete nastavitve"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 #, fuzzy
 msgid "Mouse sensitivity:"
@@ -1660,7 +1642,6 @@ msgstr "Indien 0, wordt de standaardinstelling gebruikt"
 msgid "Network port:"
 msgstr "Netwerkpoort:"
 
-# 84%
 #: content/gui/xml/mainmenu/settings.xml:243
 #, fuzzy
 msgid "Reset to default settings"
@@ -1670,7 +1651,6 @@ msgstr "Herstel standaardinstellingen"
 msgid "Discard current changes"
 msgstr ""
 
-# 83%
 #: content/gui/xml/mainmenu/settings.xml:246
 #, fuzzy
 msgid "Apply"
@@ -1731,8 +1711,6 @@ msgstr "Vrij spel"
 msgid "Start game:"
 msgstr "Start spel:"
 
-# 90%
-# 100%
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 #, fuzzy
 msgid "Start game"
@@ -1814,7 +1792,6 @@ msgstr "Mottog ett felaktigt filnamn vid försök att spara."
 msgid "Error"
 msgstr "Fout"
 
-# 75%
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
 #, fuzzy
 msgid "Failed to save."
@@ -1865,7 +1842,6 @@ msgstr "Handelspartnern har inte råd att köpa detta."
 msgid "The trade partner does not buy more of this."
 msgstr "Handelspartnern köper inte mer av detta."
 
-# 75%
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 #, fuzzy
 msgid "Failed to quicksave."
@@ -1875,7 +1851,6 @@ msgstr "Snelopslaan mislukt."
 msgid "An error happened during quicksave."
 msgstr ""
 
-# 86%
 #: horizons/editor/session.py:70
 #, fuzzy
 msgid "Your map has not been saved."
@@ -2206,7 +2181,6 @@ msgstr ""
 "Controleer je internetverbinding. Als die in orde is, betekend dat dat onze "
 "masterserver tijdelijk niet beschikbaar is."
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 #, fuzzy
 msgid "Something went wrong with the network:"
@@ -2390,7 +2364,6 @@ msgstr "Een opgeslagen spel me de naam '{name}' bestaat al."
 msgid "Overwrite it?"
 msgstr "Vill du spara ändå?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 #, fuzzy
 msgid "Unknown savedate"
@@ -2466,7 +2439,6 @@ msgstr "Ongeldige spelersnaam"
 msgid "You entered an invalid playername."
 msgstr "Du angav ett ogiltigt spelarnamn."
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:148
 #, fuzzy
 msgid "Resource density:"
@@ -2517,7 +2489,6 @@ msgstr "Het geselecteerde bestand is geen geldig scenario-bestand."
 msgid "Error message:"
 msgstr "Foutmelding:"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:507
 #, fuzzy
 msgid "Please report this to the author."
@@ -2563,8 +2534,6 @@ msgstr "{ship} (plaats in wachtrij: {place})"
 msgid "Build this ship!"
 msgstr "Bouw dit schip!"
 
-# 76%
-# 100%
 #: horizons/gui/tabs/boatbuildertabs.py:250
 #, fuzzy
 msgid "Fisher boats"
@@ -2591,7 +2560,6 @@ msgid "Confirm order"
 msgstr "Opdracht bevestigen"
 
 # Mellanslag, bindesstreck eller utan genitiv?
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 #, fuzzy
@@ -2676,7 +2644,6 @@ msgstr "Verbeteringen niet toestaan"
 msgid "Allow upgrades"
 msgstr "Verbeteringen toestaan"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 #, fuzzy
 msgid "Unit overview"
@@ -3050,7 +3017,6 @@ msgstr ""
 msgid "Corn Field"
 msgstr "Maisveld"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 #, fuzzy
@@ -3350,7 +3316,6 @@ msgstr "Haalt rots van de berg."
 msgid "Storage Tent"
 msgstr "Opslagtent"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 #, fuzzy
@@ -3400,7 +3365,6 @@ msgstr "Tent"
 msgid "Hut"
 msgstr "Hydda"
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 #, fuzzy
@@ -3542,7 +3506,6 @@ msgid "Warehouse"
 msgstr "hiše"
 
 # Eg. Vävaretält. jämför weaver description. Byggnaden är inte ens ett tält, snarare en hydda.
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 #, fuzzy
@@ -3625,7 +3588,6 @@ msgstr "Huizen en infrastructuur"
 msgid "Services"
 msgstr "Diensten"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3656,7 +3618,6 @@ msgstr "Infrastruktur"
 msgid "Military Service"
 msgstr "Militärtjänstgöring"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3798,7 +3759,6 @@ msgstr "U heeft gewonnen!"
 msgid "You have completed this scenario."
 msgstr "Du har avklarat det här scenariot."
 
-# 75%
 #: horizons/scenario/actions.py:97
 #, fuzzy
 msgid "Do you want to continue playing?"
@@ -3838,13 +3798,11 @@ msgstr "Åtkomst nekad"
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 
-# 86%
 #: horizons/spsession.py:65
 #, fuzzy
 msgid "Your game has not been saved."
 msgstr "Vaša igra je bila samodejno shranjena."
 
-# 92%
 #: horizons/util/checkupdates.py:81
 #, fuzzy
 msgid "New version of Unknown Horizons"
@@ -4002,7 +3960,6 @@ msgstr "Inaktiv vid {location}"
 msgid "Idle at {x}, {y}"
 msgstr "Inaktiv vid {x}, {y}"
 
-# 83%
 #: horizons/world/units/ship.py:234
 #, fuzzy
 msgid "Trader"
@@ -4033,7 +3990,6 @@ msgstr "Din byggnad har börjat brinna!"
 msgid "medical herbs"
 msgstr "medische kruiden"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 #, fuzzy
 msgid "Aristocrats"
@@ -4095,7 +4051,6 @@ msgstr "varkens voor de slacht"
 msgid "trees"
 msgstr "träd"
 
-# 83%
 #. This is a database entry: the name of a resource.
 #, fuzzy
 msgid "clay deposit"
@@ -4127,7 +4082,6 @@ msgid "clay"
 msgstr "klei"
 
 # merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att skilja dem åt.
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 #, fuzzy
 msgid "Merchants"
@@ -4143,7 +4097,6 @@ msgstr "drank"
 msgid "iron ingots"
 msgstr "ijzeren staven"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy, python-format
 msgid "Screenshot has been saved to {file}."
@@ -4269,7 +4222,6 @@ msgstr "kryddväxter"
 msgid "cattle for slaughter"
 msgstr "slachtvee"
 
-# 87%
 #. This is a database entry: the name of a resource.
 #, fuzzy
 msgid "tobaccos"
@@ -4310,7 +4262,6 @@ msgstr "vis"
 msgid "charcoal"
 msgstr "houtskool"
 
-# 76%
 #. This is a database entry: the name of a resource.
 #, fuzzy
 msgid "stone deposit"
@@ -4336,7 +4287,6 @@ msgstr "eikels"
 msgid "tobacco plants"
 msgstr "tabaksplanten"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy, python-format
 msgid "You need more {resource} to build this building."
@@ -4363,7 +4313,6 @@ msgstr "gras"
 msgid "alvearies"
 msgstr "biodling"
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy
 msgid "Your game has been autosaved."
@@ -4478,7 +4427,6 @@ msgstr "{player} heeft een nieuwe nederzetting gesticht."
 msgid "vines"
 msgstr "vinrankor"
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy
 msgid "Your game has been saved."
@@ -4550,7 +4498,6 @@ msgstr "zout"
 #~ msgid "Only show games with the same version:"
 #~ msgstr "Visa endast spel med samma version:"
 
-# 82%
 #, fuzzy
 #~ msgid "A new ship has been created."
 #~ msgstr "Ett nytt skepp har skapats."
@@ -4636,48 +4583,29 @@ msgstr "zout"
 #~ msgid "Build fields"
 #~ msgstr "Bygg fält"
 
-# 88%
-# 81%
 #~ msgid "1 resident"
 #~ msgstr "1 invånare"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
 #~ msgid "3 residents"
 #~ msgstr "3 invånare"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 invånare"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "6 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "7 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "8 residents"
 #~ msgstr "2 invånare"
@@ -4855,14 +4783,12 @@ msgstr "zout"
 #~ msgid "yellow"
 #~ msgstr "gul"
 
-# 83%
 #~ msgid "Apply:"
 #~ msgstr "Ändra:"
 
 #~ msgid "Branch Office"
 #~ msgstr "Handelskontor"
 
-# 83%
 #~ msgid "Cattle"
 #~ msgstr "Nötkreatur"
 
@@ -4880,7 +4806,6 @@ msgstr "zout"
 #~ msgid "Settler buildings"
 #~ msgstr "Nybyggarbyggnader"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "Bränner brädor till träkol."
 
@@ -4924,7 +4849,6 @@ msgstr "zout"
 #~ msgid "A new settlement has been created by ${player}."
 #~ msgstr "En ny bosättning har skapats av ${player}."
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "En av dina nybyggare har ingen torg inom sin räckvidd."
 
@@ -5121,7 +5045,6 @@ msgstr "zout"
 #~ msgid "You have completed this scenario. "
 #~ msgstr "Du har klarat det här scenariot."
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Sparad den %s"
 
@@ -5249,7 +5172,6 @@ msgstr "zout"
 #~ msgstr ""
 #~ "Het snelopslaan bestand in momenteel in gebruik door een ander programma."
 
-# 83%
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Onze excuses hiervoor. Wij willen deze fout graag oplossen."
 
@@ -5364,7 +5286,6 @@ msgstr "zout"
 #~ msgid "We are very sorry for this, and want to fix this error."
 #~ msgstr "Wij verontschuldigen ons hiervoor, en willen deze fout oplossen."
 
-# 77%
 #~ msgid "Tent Ruin"
 #~ msgstr "Tent ruïne"
 
@@ -5557,7 +5478,6 @@ msgstr "zout"
 #~ msgid "Error: Found multiple matches: "
 #~ msgstr "Fout: Meerdere resultaten gevonden: "
 
-# 81%
 #~ msgid "Error: Cannot find campaign \"%s\"."
 #~ msgstr "Fout: Kan de campagne \"%s\" niet vinden."
 
@@ -5623,7 +5543,6 @@ msgstr "zout"
 #~ "Als deze fout zich blijft voordoen, neem dan contact op met het "
 #~ "ontwikkelingsteam: unknown-horizons.org/support/"
 
-# 80%
 #~ msgid "Failed to load FIFE:"
 #~ msgstr "FIFE laden mislukt:"
 

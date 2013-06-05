@@ -134,13 +134,11 @@ msgstr ""
 msgid "Inhabitants"
 msgstr "Gyventojai"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, fuzzy
 msgid "Increase game speed (+)"
 msgstr "Padidinti žaidimo greitį"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, fuzzy
 msgid "Decrease game speed (-)"
@@ -378,7 +376,6 @@ msgstr ""
 msgid "houses"
 msgstr ""
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "Gyventojai"
@@ -420,7 +417,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr ""
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -463,7 +459,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr ""
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -549,7 +544,6 @@ msgstr "Pristabdyti gamybą"
 msgid "Start production"
 msgstr "Pradėti gamybą"
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -588,7 +582,6 @@ msgstr "Pašalinti įrašą"
 msgid "Move down"
 msgstr "Nuleisti"
 
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy
 msgid "Select a resource:"
@@ -683,7 +676,6 @@ msgstr ""
 msgid "Player scores"
 msgstr ""
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -729,7 +721,6 @@ msgstr ""
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -762,7 +753,6 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -1178,7 +1168,6 @@ msgstr "Naujas žaidimas - Kelių žaidėjų"
 msgid "Create a new game"
 msgstr "Sukurti naują žaidimą"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 #, fuzzy
 msgid "Load game:"
@@ -1306,7 +1295,6 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "Atkurti numatytąsias nuostatas"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 #, fuzzy
 msgid "Mouse sensitivity:"
@@ -1419,7 +1407,6 @@ msgstr ""
 msgid "Apply"
 msgstr "Taikyti"
 
-# 76%
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
 msgstr "Jūsų išsaugoti žaidimai:"
@@ -1572,7 +1559,6 @@ msgstr ""
 msgid "The trade partner does not buy more of this."
 msgstr ""
 
-# 75%
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
 msgstr "Nepavyko greitai įrašyti."
@@ -1874,7 +1860,6 @@ msgid ""
 "server is temporarily down."
 msgstr ""
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Kažkas negerai su tinklu:"
@@ -2042,7 +2027,6 @@ msgstr ""
 msgid "Overwrite it?"
 msgstr ""
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Nežinomi įrašo duomenys"
@@ -2109,7 +2093,6 @@ msgstr "Netinkamas žaidėjo vardas"
 msgid "You entered an invalid playername."
 msgstr ""
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:148
 #, fuzzy
 msgid "Resource density:"
@@ -2151,7 +2134,6 @@ msgstr ""
 msgid "Error message:"
 msgstr ""
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Prašome apie tai pranešti žaidimo autoriui."
@@ -2214,7 +2196,6 @@ msgstr "Karo laivai"
 msgid "Confirm order"
 msgstr "Patvirtinti tvarką"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 #, fuzzy
@@ -2286,7 +2267,6 @@ msgstr ""
 msgid "Allow upgrades"
 msgstr ""
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 #, fuzzy
 msgid "Unit overview"
@@ -2614,7 +2594,6 @@ msgstr ""
 msgid "Corn Field"
 msgstr ""
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 #, fuzzy
@@ -2888,7 +2867,6 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Saugojimo palapinė"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 #, fuzzy
@@ -3059,7 +3037,6 @@ msgstr ""
 msgid "Warehouse"
 msgstr ""
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 #, fuzzy
@@ -3135,7 +3112,6 @@ msgstr "Gyventojai ir infrastruktūra"
 msgid "Services"
 msgstr "Paslaugos"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3163,7 +3139,6 @@ msgstr ""
 msgid "Military Service"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3284,7 +3259,6 @@ msgstr "Jūs laimėjote!"
 msgid "You have completed this scenario."
 msgstr ""
 
-# 75%
 #: horizons/scenario/actions.py:97
 #, fuzzy
 msgid "Do you want to continue playing?"
@@ -3460,7 +3434,6 @@ msgstr ""
 msgid "Idle at {x}, {y}"
 msgstr ""
 
-# 83%
 #: horizons/world/units/ship.py:234
 msgid "Trader"
 msgstr "Pirklys"
@@ -3488,7 +3461,6 @@ msgstr ""
 msgid "medical herbs"
 msgstr ""
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 #, fuzzy
 msgid "Aristocrats"
@@ -3563,7 +3535,6 @@ msgstr "geležies rūda"
 msgid "clay"
 msgstr "molis"
 
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 #, fuzzy
 msgid "Merchants"
@@ -3882,7 +3853,6 @@ msgstr "druska"
 #~ msgid "Select a savegame"
 #~ msgstr "Pasirinkite įrašyti žaidimą"
 
-# 83%
 #~ msgid "Error:"
 #~ msgstr "Klaida:"
 
@@ -3898,49 +3868,30 @@ msgstr "druska"
 #~ msgid "Build fields"
 #~ msgstr "Kurti laukus"
 
-# 88%
-# 81%
 #~ msgid "1 resident"
 #~ msgstr "1 gyventojai"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 gyventojai"
 
-# 88%
-# 81%
 #, fuzzy
 #~ msgid "3 residents"
 #~ msgstr "3 gyventojai"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 gyventojai"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 gyventojai"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "6 residents"
 #~ msgstr "2 gyventojai"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "7 residents"
 #~ msgstr "2 gyventojai"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "8 residents"
 #~ msgstr "2 gyventojai"
@@ -4073,7 +4024,6 @@ msgstr "druska"
 #~ msgid "Apply:"
 #~ msgstr "Taikyti:"
 
-# 83%
 #~ msgid "Cattle"
 #~ msgstr "Galvijai"
 
@@ -4089,7 +4039,6 @@ msgstr "druska"
 #~ msgid "Settler buildings"
 #~ msgstr "Naujakurių pastatai"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "Sudegina daug lentų. Gamina lentos."
 
@@ -4248,7 +4197,6 @@ msgstr "druska"
 #~ msgid "Error: Cannot find campaign \"%s\"."
 #~ msgstr "Klaida: Negalima surasti žygio \"%s\"."
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Įrašyta į %s"
 
@@ -4268,12 +4216,9 @@ msgstr "druska"
 #~ "\n"
 #~ "Prašome apie tai pranešti žaidimo autoriui."
 
-# 76%
-# 92%
 #~ msgid "Fishing boat"
 #~ msgstr "Žvejybos valtis"
 
-# 76%
 #~ msgid "Fishing boats"
 #~ msgstr "Žvejų valtys"
 

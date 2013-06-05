@@ -672,7 +672,6 @@ msgstr ""
 "zullen verder gaan met de uitleg, zodra een aantal voorbereidingen zijn "
 "gedaan."
 
-# 89%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
@@ -1434,7 +1433,6 @@ msgstr ""
 msgid "Thanks!"
 msgstr "Dank u wel!"
 
-# 96%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"

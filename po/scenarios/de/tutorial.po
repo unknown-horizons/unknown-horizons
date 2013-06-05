@@ -674,7 +674,6 @@ msgstr ""
 "weiter betrachten, sobald Ihr alle Voraussetzungen erfüllt, um Handel zu "
 "treiben."
 
-# 89%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
@@ -1442,7 +1441,6 @@ msgstr "Vielen Dank!"
 # "Danke, dass Ihr Euch Zeit und Mühe genommen habt, diese Einführung zu spielen!"
 # Mühe kann man sich nicht nehmen ... reicht nicht =>
 # Vielen Dank für das (Durch-)Spielen der Einführung.
-# 96%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"

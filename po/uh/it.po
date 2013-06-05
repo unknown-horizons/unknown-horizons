@@ -17,12 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-# 86%
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons si è bloccato."
 
-# 83%
 #: run_uh.py:222
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "Ci spiace di questo e desideriamo risolvere questo errore."
@@ -143,12 +141,10 @@ msgstr "Edifici correlati"
 msgid "Inhabitants"
 msgstr "Abitanti"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr "Aumenta la velocità di gioco (+)"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Diminuire la velocità di gioco (-)"
@@ -385,7 +381,6 @@ msgstr "Sommario"
 msgid "houses"
 msgstr "case"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "Residenti"
@@ -429,7 +424,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "Contiene queste risorse:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -476,7 +470,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr "Collezionista di utilizzo:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -563,7 +556,6 @@ msgstr "Sospendi la produzione"
 msgid "Start production"
 msgstr "Avvia la produzione"
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -602,7 +594,6 @@ msgstr "Cancella voce"
 msgid "Move down"
 msgstr "spostare verso il basso"
 
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
 msgstr "Seleziona risorsa:"
@@ -700,7 +691,6 @@ msgstr "chiudi"
 msgid "Player scores"
 msgstr "Punteggi Giocatore"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -747,7 +737,6 @@ msgstr "edifici"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -779,7 +768,6 @@ msgstr ""
 msgid "Total"
 msgstr "Totale"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -980,7 +968,6 @@ msgstr "Tenere premuto per posizionare edifici multipli"
 msgid "Close dialogs"
 msgstr "Chiudi dialogo"
 
-# 92%
 #: content/gui/xml/mainmenu/help.xml:55
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -1199,7 +1186,6 @@ msgstr "Nuova partita - Multigiocatore"
 msgid "Create a new game"
 msgstr "Crea una nuova partita"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 #, fuzzy
 msgid "Load game:"
@@ -1332,7 +1318,6 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "0 è l'impostazione predefinita di sistema"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Sensibilità del puntatore:"
@@ -1440,7 +1425,6 @@ msgstr "Ripristina i settaggi predefiniti"
 msgid "Discard current changes"
 msgstr ""
 
-# 83%
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
 msgstr "Applica"
@@ -1490,7 +1474,6 @@ msgstr "Gioco libero"
 msgid "Start game:"
 msgstr "Inizia partita:"
 
-# 90%
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
 msgstr "Inizia gioco"
@@ -1559,7 +1542,6 @@ msgstr "Nome del file non valido per il salvataggio."
 msgid "Error"
 msgstr "Errore"
 
-# 75%
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
 msgid "Failed to save."
 msgstr "Salvataggio fallito."
@@ -1609,7 +1591,6 @@ msgid "An error happened during quicksave."
 msgstr "Si è verificato un errore durante il salvataggio rapido."
 
 # Messages
-# 86%
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
 msgstr "La vostra mappa non è stata salvata."
@@ -1918,7 +1899,6 @@ msgid ""
 "server is temporarily down."
 msgstr ""
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Qualcosa non è andata a buon fine con la connessione di rete:"
@@ -2090,7 +2070,6 @@ msgstr " Esiste già una partita salvata con nome '{name}'."
 msgid "Overwrite it?"
 msgstr "Si deve sovrascrivere?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Data di salvataggio sconosciuta"
@@ -2158,7 +2137,6 @@ msgstr "Nome giocatore non valido"
 msgid "You entered an invalid playername."
 msgstr "È stato inserito un nome giocatore non valido"
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Deposito risorse:"
@@ -2199,7 +2177,6 @@ msgstr "Il file selezionato non è un file di scenario valido."
 msgid "Error message:"
 msgstr "Errore messaggio:"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Prego segnalarlo all'autore."
@@ -2262,7 +2239,6 @@ msgstr "Navi da guerra"
 msgid "Confirm order"
 msgstr "Confermare l'ordine"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 msgid "Warehouse overview"
@@ -2334,7 +2310,6 @@ msgstr "Non permettere l'aggiornamento"
 msgid "Allow upgrades"
 msgstr "permetti aggiornamenti"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 msgid "Unit overview"
 msgstr "Panoramica unità"
@@ -2665,7 +2640,6 @@ msgstr ""
 msgid "Corn Field"
 msgstr "Campo di grano"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 msgid "Yields corn. Needs a farm."
@@ -2923,7 +2897,6 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Tenda d'immagazzinazione"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 #, fuzzy
@@ -2966,7 +2939,6 @@ msgstr "Tenda"
 msgid "Hut"
 msgstr ""
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 #, fuzzy
@@ -3089,7 +3061,6 @@ msgstr "Produce vino dai grappoli."
 msgid "Warehouse"
 msgstr "Magazzino"
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 #, fuzzy
@@ -3163,7 +3134,6 @@ msgstr "Residenze ed infrastrutture"
 msgid "Services"
 msgstr "Servizi"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3190,7 +3160,6 @@ msgstr "Infrastruttura"
 msgid "Military Service"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3321,7 +3290,6 @@ msgstr "Hai vinto!"
 msgid "You have completed this scenario."
 msgstr "Scenario completato."
 
-# 75%
 #: horizons/scenario/actions.py:97
 #, fuzzy
 msgid "Do you want to continue playing?"
@@ -3357,13 +3325,11 @@ msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 
 # Messages
-# 86%
 #: horizons/spsession.py:65
 #, fuzzy
 msgid "Your game has not been saved."
 msgstr "Il tuo gioco è stato salvato."
 
-# 92%
 #: horizons/util/checkupdates.py:81
 msgid "New version of Unknown Horizons"
 msgstr "Nuova versione di Unknown Horizons"
@@ -3531,7 +3497,6 @@ msgstr "Il tuo edificio è in fiamme!"
 msgid "medical herbs"
 msgstr "erbe mediche"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Aristocrats"
 msgstr "Aristocratici"
@@ -3583,7 +3548,6 @@ msgstr "maiali da macello"
 msgid "trees"
 msgstr "alberi"
 
-# 83%
 #. This is a database entry: the name of a resource.
 msgid "clay deposit"
 msgstr "Deposito d'argilla"
@@ -3610,7 +3574,6 @@ msgstr "minerale di ferro"
 msgid "clay"
 msgstr "argilla"
 
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Merchants"
 msgstr "Mercanti"
@@ -3624,7 +3587,6 @@ msgid "iron ingots"
 msgstr "lingotti di ferro"
 
 # Messages
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "Screenshot has been saved to {file}."
@@ -3784,7 +3746,6 @@ msgstr "ghiande"
 msgid "tobacco plants"
 msgstr "piante di tabacco"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "You need more {resource} to build this building."
@@ -3808,7 +3769,6 @@ msgid "alvearies"
 msgstr "alveari"
 
 # Messages
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been autosaved."
 msgstr "La tua partita è stata salvata automaticamente."
@@ -3910,7 +3870,6 @@ msgid "vines"
 msgstr "tralci"
 
 # Messages
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been saved."
 msgstr "Il tuo gioco è stato salvato."
@@ -4021,7 +3980,6 @@ msgstr "sale"
 #~ msgid "Collector utilisation"
 #~ msgstr "Collezionista di utilizzo:"
 
-# 82%
 #, fuzzy
 #~ msgid "A new ship has been created."
 #~ msgstr "Una nuova nave è stata costruita."
@@ -4035,7 +3993,6 @@ msgstr "sale"
 #~ msgid "Select a savegame"
 #~ msgstr "seleziona salvataggio"
 
-# 83%
 #~ msgid "Error:"
 #~ msgstr "Errore:"
 
@@ -4086,17 +4043,14 @@ msgstr "sale"
 #~ msgid "5 residents"
 #~ msgstr "5 residenti"
 
-# 90%
 #, fuzzy
 #~ msgid "6 residents"
 #~ msgstr "2 residenti"
 
-# 90%
 #, fuzzy
 #~ msgid "7 residents"
 #~ msgstr "2 residenti"
 
-# 90%
 #, fuzzy
 #~ msgid "8 residents"
 #~ msgstr "2 residenti"
@@ -4159,7 +4113,6 @@ msgstr "sale"
 #~ msgid "The savegame file is currently used by another program."
 #~ msgstr "Il file del salvataggio è attualmente usato da un altro programma."
 
-# 83%
 #, fuzzy
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Ci spiace di questo e desideriamo risolvere questo errore."
@@ -4233,7 +4186,6 @@ msgstr "sale"
 #~ "Per cortesia fornitecelo tramite IRC od il nostro forum, per entrami "
 #~ "accedere a unknown-horizons.org ."
 
-# 93%
 #~ msgid "{player1} and {player2} are now {status}"
 #~ msgstr "{player1} e {player2} sono ora {status}"
 
@@ -4273,7 +4225,6 @@ msgstr "sale"
 #~ msgid "Sell resources"
 #~ msgstr "Vendi risorse"
 
-# 77%
 #~ msgid "Tent Ruin"
 #~ msgstr "tenda Ruin"
 
@@ -4328,7 +4279,6 @@ msgstr "sale"
 #~ msgid "Branch Office"
 #~ msgstr "Filiale"
 
-# 83%
 #~ msgid "Cattle"
 #~ msgstr "bestiame"
 
@@ -4347,8 +4297,6 @@ msgstr "sale"
 #~ msgid "Branch office overview"
 #~ msgstr "Panoramica filiale"
 
-# 76%
-# 100%
 #~ msgid "Sailor buildings"
 #~ msgstr "Edifici dei marinai"
 
@@ -4358,7 +4306,6 @@ msgstr "sale"
 #~ msgid "Settler buildings"
 #~ msgstr "Edifici dei Coloni"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "brucia un sacco di tavole a carbone."
 
@@ -4513,7 +4460,6 @@ msgstr "sale"
 #~ msgid "A new settlement has been created by ${player}."
 #~ msgstr "Un nuovo insediamento è stato creato da ${player}."
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "Un colone non ha una piazza del mercato nelle vicinanze."
 
@@ -4696,7 +4642,6 @@ msgstr "sale"
 #~ msgid "capacity utilization"
 #~ msgstr "Utilizzo della produzione"
 
-# 94%
 #~ msgid "Build settlement:"
 #~ msgstr "Costruisci insediamento:"
 
@@ -4732,7 +4677,6 @@ msgstr "sale"
 #~ "Per vedere le modifiche, iniziare sempre UH con gli argomenti attuali o "
 #~ "modificare il file %s."
 
-# 81%
 #~ msgid "Error: Cannot find campaign \"%s\"."
 #~ msgstr "Errore: Impossibile trovare la mappa \"%s\"."
 
@@ -4742,20 +4686,12 @@ msgstr "sale"
 #~ msgid "Error: don't know how to handle %(type)s condition type"
 #~ msgstr "Errore: non sanno come gestire %(type)s di condizione"
 
-# 81%
-# 76%
-# 100%
 #~ msgid "Error: Cannot find campaign with file \"%s\"."
 #~ msgstr "Errore: Impossibile trovare la campagna \"%s\"."
 
-# 81%
 #~ msgid "Error: Cannot find scenario \"%s\"."
 #~ msgstr "Errore: Impossibile trovare la partita \"%s\"."
 
-# 81%
-# 76%
-# 100%
-# 83%
 #~ msgid "Error: Cannot find scenario with file \"%s\"."
 #~ msgstr "Errore: Impossibile trovare la mappa con il nome \"%s\"."
 
@@ -4790,7 +4726,6 @@ msgstr "sale"
 #~ "Utilizza <ai_players> giocatori AI (esclude il possibile uomo-AI ibridi; "
 #~ "default 1)."
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Salvato il %s"
 
@@ -4906,7 +4841,6 @@ msgstr "sale"
 #~ msgid "Unknown Horizons Version %s"
 #~ msgstr "Unknown Horizons Versione %s"
 
-# 80%
 #~ msgid "Failed to load FIFE:"
 #~ msgstr "Impossibile caricare FIFE:"
 

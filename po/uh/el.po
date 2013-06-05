@@ -135,22 +135,18 @@ msgstr ""
 msgid "Inhabitants"
 msgstr ""
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr ""
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr ""
 
-# 87%
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
 msgstr ""
 
-# 83%
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
 msgstr ""
@@ -167,7 +163,6 @@ msgstr ""
 msgid "Destroy (X)"
 msgstr ""
 
-# 76%
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
 msgstr ""
@@ -395,8 +390,6 @@ msgstr ""
 msgid "Buying"
 msgstr ""
 
-# 75%
-# 80%
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
@@ -407,7 +400,6 @@ msgstr ""
 msgid "Weapons:"
 msgstr ""
 
-# 76%
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
 msgstr ""
@@ -422,7 +414,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr ""
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -431,7 +422,6 @@ msgstr ""
 msgid "Click to change the name of your settlement"
 msgstr ""
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
@@ -471,7 +461,6 @@ msgstr ""
 msgid "Click to change the name of this ship"
 msgstr ""
 
-# 83%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
@@ -550,7 +539,6 @@ msgstr ""
 msgid "Start production"
 msgstr ""
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -680,7 +668,6 @@ msgstr "Zavřít"
 msgid "Player scores"
 msgstr "Skóre"
 
-# 75%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -726,7 +713,6 @@ msgstr "Stavby"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -768,7 +754,6 @@ msgstr "Bilance"
 msgid "Type"
 msgstr "Typ"
 
-# 87%
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
 msgstr "Zbraně"
@@ -1025,7 +1010,6 @@ msgstr ""
 msgid "Reset to default"
 msgstr ""
 
-# 84%
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default keys"
 msgstr ""
@@ -1132,7 +1116,6 @@ msgstr "Vytvořit novou hru"
 msgid "Gamelobby"
 msgstr ""
 
-# 80%
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
 msgstr "Chat:"
@@ -1173,7 +1156,6 @@ msgstr "Nová hra více hráčů"
 msgid "Create a new game"
 msgstr "Vytvořit novou hru"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Nahrát hru:"
@@ -1398,7 +1380,6 @@ msgstr "Pokud je nastavena 0, použít výchozí nastavení routeru"
 msgid "Network port:"
 msgstr "Síťový port:"
 
-# 84%
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Reset to default settings"
 msgstr "Obnovit původní nastavení"
@@ -1411,7 +1392,6 @@ msgstr ""
 msgid "Apply"
 msgstr "Přijmout"
 
-# 76%
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
 msgstr "Vaše uložené hry:"
@@ -1565,7 +1545,6 @@ msgstr "Obchodní partner nemůže toto zboží koupit."
 msgid "The trade partner does not buy more of this."
 msgstr "Obchodní partner nemůže koupit další kusy tohoto zboží."
 
-# 75%
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
 msgstr "Nepodařilo se uložit."
@@ -1652,19 +1631,16 @@ msgstr ""
 "Zkontrolujte prosím port, který jste zadali, a ujistěte se, že je v určeném "
 "rozsahu."
 
-# 81%
 #: horizons/engine/settingshandler.py:236
 msgid "Failed to apply new network settings."
 msgstr "Nepodařilo se načíst nové síťové nastavení."
 
-# 78%
 #: horizons/engine/settingshandler.py:237
 #: horizons/gui/modules/multiplayermenu.py:131
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr "Síť nemůže být inicializována s aktuálním nastavením."
 
-# 75%
 #: horizons/engine/settingshandler.py:238
 #: horizons/gui/modules/multiplayermenu.py:132
 msgid "Check the settings you specified in the network section."
@@ -1927,7 +1903,6 @@ msgstr ""
 msgid "Enter password:"
 msgstr ""
 
-# 79%
 #: horizons/gui/modules/multiplayermenu.py:351
 #: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
@@ -2016,7 +1991,6 @@ msgstr "Ukončit relaci"
 msgid "No saved games"
 msgstr "Žádné uložené hry"
 
-# 96%
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
 msgstr "Nejsou žádné uložené hry k nahrání."
@@ -2043,7 +2017,6 @@ msgstr ""
 msgid "Overwrite it?"
 msgstr "Přepsat?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Neznámé datum uložení"
@@ -2081,12 +2054,10 @@ msgstr "Nekompatibilní verze"
 msgid "No file selected"
 msgstr "Nebyl vybrán žádný soubor"
 
-# 97%
 #: horizons/gui/modules/select_savegame.py:257
 msgid "You need to select a savegame to delete."
 msgstr "Vyberte hru ke smazání."
 
-# 84%
 #: horizons/gui/modules/select_savegame.py:261
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
@@ -2108,7 +2079,6 @@ msgstr "Chyba při smazání uloženého souboru!"
 msgid "Invalid player name"
 msgstr "Neplatné jméno hráče"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Zadal jste neplatné jméno hráče."
@@ -2215,7 +2185,6 @@ msgstr "Válečné lodě"
 msgid "Confirm order"
 msgstr "Potvrdit"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 msgid "Warehouse overview"
@@ -2314,12 +2283,10 @@ msgstr "Pro založení osady musí být loď blíže k ostrovu."
 msgid "You already have a settlement on this island."
 msgstr "Na tomto ostrově již osadu máte."
 
-# 91%
 #: horizons/gui/tabs/shiptabs.py:87
 msgid "Load/Unload"
 msgstr "Naložit/Vyložit"
 
-# 88%
 #: horizons/gui/tabs/shiptabs.py:89
 msgid "Buy/Sell"
 msgstr "Koupit/Prodat"
@@ -2328,12 +2295,10 @@ msgstr "Koupit/Prodat"
 msgid "Too far from the nearest tradeable warehouse"
 msgstr ""
 
-# 94%
 #: horizons/gui/tabs/shiptabs.py:104
 msgid "Cannot equip trade ship with weapons"
 msgstr "Obchodní lodě nelze vyzbrojit"
 
-# 98%
 #: horizons/gui/tabs/shiptabs.py:105
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr "Není možné vybavit obchodní lodě zbraněmi."
@@ -2477,7 +2442,6 @@ msgstr ""
 msgid "{weapon}: {amount}"
 msgstr ""
 
-# 75%
 #: horizons/gui/widgets/unitoverview.py:124
 msgid "none"
 msgstr "žádné"
@@ -2612,7 +2576,6 @@ msgstr "Vyrábí kakaové boby. Potřebuje farmu."
 msgid "Corn Field"
 msgstr "Kukuřičné pole"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 msgid "Yields corn. Needs a farm."
@@ -2868,7 +2831,6 @@ msgstr "Ze skály těží kámen."
 msgid "Storage Tent"
 msgstr "Skladovací stan"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 msgid "Storage Hut"
@@ -2909,7 +2871,6 @@ msgstr "Stan"
 msgid "Hut"
 msgstr ""
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 #, fuzzy
@@ -3033,7 +2994,6 @@ msgstr "Hrozny zpracovává na víno."
 msgid "Warehouse"
 msgstr "Sklad"
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 msgid "Weaver's Hut"
@@ -3106,7 +3066,6 @@ msgstr "Obyvatelé a infrastruktura"
 msgid "Services"
 msgstr "Služby"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3134,7 +3093,6 @@ msgstr ""
 msgid "Military Service"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3255,7 +3213,6 @@ msgstr "Vyhrál jste!"
 msgid "You have completed this scenario."
 msgstr "Dokončili jste scénář."
 
-# 75%
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
 msgstr "Chcete pokračovat?"
@@ -3458,7 +3415,6 @@ msgstr "Το κτήριο σου έπιασε φωτιά"
 msgid "medical herbs"
 msgstr "bylinky"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Aristocrats"
 msgstr "Αριστοκράτες"
@@ -3467,7 +3423,6 @@ msgstr "Αριστοκράτες"
 msgid "happiness"
 msgstr "štěstí"
 
-# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy
 msgid "Some of your inhabitants just moved out."
@@ -3534,7 +3489,6 @@ msgstr "železný důl"
 msgid "clay"
 msgstr "jíl"
 
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Merchants"
 msgstr "Έμποροι"
@@ -3547,13 +3501,11 @@ msgstr "pálenka"
 msgid "iron ingots"
 msgstr "železné ingoty"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr ""
 
-# 83%
 #. This is a database entry: the name of a resource.
 msgid "cattle"
 msgstr "dobytek"
@@ -3687,7 +3639,6 @@ msgstr "ryby"
 msgid "charcoal"
 msgstr "dřevěné uhlí"
 
-# 76%
 #. This is a database entry: the name of a resource.
 msgid "stone deposit"
 msgstr "naleziště kamenů"
@@ -3708,7 +3659,6 @@ msgstr "žaludy"
 msgid "tobacco plants"
 msgstr "tabákové rostliny"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "You need more {resource} to build this building."
@@ -3747,8 +3697,6 @@ msgstr "Ένα από τα χωράφια σου χρειάζεται μία φ�
 msgid "Your mine has run out of resources."
 msgstr ""
 
-# 77%
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "Your inhabitants reached level {level}."
@@ -3824,8 +3772,6 @@ msgstr "koření"
 msgid "candles"
 msgstr "svíce"
 
-# 78%
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "A new settlement was founded by {player}."
@@ -3836,7 +3782,6 @@ msgid "vines"
 msgstr "víno"
 
 # automatic save
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy
 msgid "Your game has been saved."
@@ -3911,7 +3856,6 @@ msgstr "sůl"
 #~ msgid "If this error happens again, please contact the development team:"
 #~ msgstr "Pokud se tato chyba objeví znovu, kontaktujte vývojářský tým:"
 
-# 82%
 #~ msgid "A new ship has been created."
 #~ msgstr "Postavena nová loď."
 
@@ -3973,7 +3917,6 @@ msgstr "sůl"
 #~ msgid "Cloth"
 #~ msgstr "Oděvy"
 
-# 83%
 #~ msgid "Boards"
 #~ msgstr "Prkna"
 
@@ -4098,7 +4041,6 @@ msgstr "sůl"
 #~ msgid "The savegame file is currently used by another program."
 #~ msgstr "Soubor hry je zrovna používán jiným programem."
 
-# 83%
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Velice se omlouváme a snažíme se tuto chybu vyřešit."
 
@@ -4124,8 +4066,6 @@ msgstr "sůl"
 #~ msgid "FIFE was not found."
 #~ msgstr "FIFE nebylo nalezeno."
 
-# 86%
-# 80%
 # oprava závorek
 #~ msgid "Configured language {lang} could not be loaded"
 #~ msgstr "Jazyk {lang} nelze načíst"
@@ -4240,7 +4180,6 @@ msgstr "sůl"
 #~ "Prosím, dejte nám vědět přes IRC nebo na našem fóru. Oboje hledejte na "
 #~ "unknown-horizons.org"
 
-# 93%
 #~ msgid "{player1} and {player2} are now {status}"
 #~ msgstr "{player1} a {player2} jsou teď {status}"
 
@@ -4334,7 +4273,6 @@ msgstr "sůl"
 #~ msgid "Sailor buildings"
 #~ msgstr "Namořní budovy"
 
-# 89%
 #~ msgid "Trail (R): Needed for collecting goods."
 #~ msgstr "Stezka (R): Potřebná pro sběr zboží."
 
@@ -4347,7 +4285,6 @@ msgstr "sůl"
 #~ msgid "${player1} and ${player2} are now ${status}"
 #~ msgstr "${player1} a ${player2} jsou teď ${status}"
 
-# 78%
 #~ msgid "A new settlement was founded by ${player}."
 #~ msgstr "Byla vytvořena nová osada od ${player}."
 
@@ -4360,7 +4297,6 @@ msgstr "sůl"
 #~ msgid "System default"
 #~ msgstr "Výchozí nastavení"
 
-# 86%
 #~ msgid "Configured language {lang} at {place} could not be loaded"
 #~ msgstr "Nastavený jazyk {lang} na {place} neleze načíst"
 
@@ -4518,11 +4454,9 @@ msgstr "sůl"
 #~ msgid "Rotate map clockwise"
 #~ msgstr "Otočit mapu po směru hodinových ručiček"
 
-# 94%
 #~ msgid "Build settlement:"
 #~ msgstr "Postavit osadu:"
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Uloženo v %s"
 

@@ -646,7 +646,6 @@ msgstr ""
 "Klikněte do slotu a vyberte zboží, se kterým chcete obchodovat. Více tuto "
 "část vysvětlíme později, až budete připraveni obchodovat."
 
-# 89%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
@@ -1392,7 +1391,6 @@ msgstr ""
 msgid "Thanks!"
 msgstr "Díky!"
 
-# 96%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"

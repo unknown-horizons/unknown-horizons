@@ -658,7 +658,6 @@ msgstr ""
 "Klikk a helyre, hogy kiválaszd azt a terméket, amellyel kereskedni "
 "szeretnél. Ezt még jobban bemutatjuk, hogyha készen állsz a kereskedésre."
 
-# 89%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
@@ -1257,7 +1256,6 @@ msgstr ""
 msgid "Thanks!"
 msgstr "Köszönöm!"
 
-# 96%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"

@@ -476,7 +476,6 @@ msgstr "Iskorištenost skupljača"
 msgid "Click to change the name of this ship"
 msgstr "Kliknite kako bi promijenili ime ovog broda"
 
-# 83%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
@@ -692,7 +691,6 @@ msgstr "Bodovi igrača"
 msgid "Name"
 msgstr "Ime"
 
-# 83%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
 msgstr "Ime igrača"
@@ -1134,7 +1132,6 @@ msgstr "Ovo je lozinka igre. Neophodna je za pristup igri."
 msgid "Create game:"
 msgstr "Kreiraj igru:"
 
-# 80%
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:55
 msgid "Create this new game"
 msgstr "Kreiraj ovu novu igru"
@@ -2256,7 +2253,6 @@ msgstr "Brodovi za rat"
 msgid "Confirm order"
 msgstr "Potvrdi naredbu"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 msgid "Warehouse overview"
@@ -2424,7 +2420,6 @@ msgstr "Praznina"
 msgid "There is nothing written in your logbook yet!"
 msgstr "Još ništa nije napisano u tvoju knjigu zapisa!"
 
-# 75%
 #: horizons/gui/widgets/pickbeltwidget.py:89
 msgid "Game"
 msgstr "Igra"
@@ -3145,7 +3140,6 @@ msgstr "Stanovništvo i infrastruktura"
 msgid "Services"
 msgstr "Službe"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3505,7 +3499,6 @@ msgstr "Vašu zgradu je zahvatio požar!"
 msgid "medical herbs"
 msgstr "medicinsko bilje"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Aristocrats"
 msgstr "Aristokrati"
@@ -4018,7 +4011,6 @@ msgstr "sol"
 #~ msgid "Save the map"
 #~ msgstr "Sačuvaj mapu"
 
-# 82%
 #, fuzzy
 #~ msgid "A new ship has been created."
 #~ msgstr "Novi svijet je kreiran."

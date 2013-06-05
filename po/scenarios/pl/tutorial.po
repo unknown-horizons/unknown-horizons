@@ -675,7 +675,6 @@ msgstr ""
 "Kliknij na kwadracie, by wybrać towar, którym chcesz handlować. Później to "
 "wyjaśnimy, gdy będziesz gotów do handlu."
 
-# 89%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"

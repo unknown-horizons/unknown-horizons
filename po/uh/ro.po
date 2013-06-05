@@ -18,7 +18,6 @@ msgstr ""
 "20)) ? 1 : 2);;\n"
 "X-Generator: Pootle 2.1.5\n"
 
-# 86%
 #: run_uh.py:220
 #, fuzzy
 msgid "Unknown Horizons has crashed."
@@ -136,22 +135,18 @@ msgstr ""
 msgid "Inhabitants"
 msgstr "locuitori"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr "Sporiți viteza jocului (+)"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Diminuați viteza jocului (-)"
 
-# 87%
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
 msgstr "Rotiți harta în sens anti-orar (,)"
 
-# 83%
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
 msgstr "Rotiți harta în sens orar (.)"
@@ -424,7 +419,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "conține aceste resurse:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -470,7 +464,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr ""
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -490,7 +483,6 @@ msgstr "comerț"
 msgid "Build settlement"
 msgstr "stabilește o colonie"
 
-# 95%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
@@ -556,7 +548,6 @@ msgstr "suspendare producție"
 msgid "Start production"
 msgstr "reluare producție"
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -595,20 +586,17 @@ msgstr "ștergere intrare"
 msgid "Move down"
 msgstr "coborâre"
 
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy
 msgid "Select a resource:"
 msgstr "selecționați resursele:"
 
-# 80%
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 #, fuzzy
 msgid "Read previous entries"
 msgstr "citire intrări precedente"
 
-# 77%
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 #, fuzzy
@@ -1198,7 +1186,6 @@ msgstr "Nouă partidă - Joc de rețea"
 msgid "Create a new game"
 msgstr "Creează o nouă partidă"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "încarcă joc:"
@@ -1689,13 +1676,11 @@ msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr "Verificați ca portul să fie în intervalul specificat."
 
-# 81%
 #: horizons/engine/settingshandler.py:236
 #, fuzzy
 msgid "Failed to apply new network settings."
 msgstr "Eșec în aplicarea noilor date de rețea."
 
-# 78%
 #: horizons/engine/settingshandler.py:237
 #: horizons/gui/modules/multiplayermenu.py:131
 #, fuzzy
@@ -1703,7 +1688,6 @@ msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr "Rețeaua nu a putut fi inițializată cu configurările actuale."
 
-# 75%
 #: horizons/engine/settingshandler.py:238
 #: horizons/gui/modules/multiplayermenu.py:132
 #, fuzzy
@@ -1969,7 +1953,6 @@ msgstr ""
 msgid "Enter password:"
 msgstr ""
 
-# 79%
 #: horizons/gui/modules/multiplayermenu.py:351
 #: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
@@ -2058,7 +2041,6 @@ msgstr "ieșire sesiune"
 msgid "No saved games"
 msgstr "niciun joc salvat"
 
-# 96%
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
 msgstr "Nu există salvări de joc pentru încărcare."
@@ -2089,7 +2071,6 @@ msgstr "Înlocuiți?"
 msgid "Unknown savedate"
 msgstr "data salvării necunoscută"
 
-# 76%
 #: horizons/gui/modules/select_savegame.py:223
 #, python-format
 msgid "Saved at {time}"
@@ -2123,12 +2104,10 @@ msgstr "Versiune incompatibilă"
 msgid "No file selected"
 msgstr "niciun fișier selectat"
 
-# 97%
 #: horizons/gui/modules/select_savegame.py:257
 msgid "You need to select a savegame to delete."
 msgstr "Trebuie să selectați o salvare de joc pentru ștergere."
 
-# 84%
 #: horizons/gui/modules/select_savegame.py:261
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
@@ -2150,7 +2129,6 @@ msgstr "Eșec la ștergerea salvării de joc!"
 msgid "Invalid player name"
 msgstr "nume de jucător invalid"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Ați introdus un nume de jucător invalid."
@@ -2258,7 +2236,6 @@ msgstr "nave de război"
 msgid "Confirm order"
 msgstr "confirmare ordin"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 #, fuzzy
@@ -2357,12 +2334,10 @@ msgstr ""
 msgid "You already have a settlement on this island."
 msgstr "Aveți deja o colonie pe această insulă."
 
-# 91%
 #: horizons/gui/tabs/shiptabs.py:87
 msgid "Load/Unload"
 msgstr "Încarcă/Descarcă"
 
-# 88%
 #: horizons/gui/tabs/shiptabs.py:89
 msgid "Buy/Sell"
 msgstr "Cumpără/Vinde"
@@ -2371,12 +2346,10 @@ msgstr "Cumpără/Vinde"
 msgid "Too far from the nearest tradeable warehouse"
 msgstr ""
 
-# 94%
 #: horizons/gui/tabs/shiptabs.py:104
 msgid "Cannot equip trade ship with weapons"
 msgstr "Ambarcațiunile de comerț nu pot fi echipate cu arme"
 
-# 98%
 #: horizons/gui/tabs/shiptabs.py:105
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr "Nu este posibilă echiparea unei ambarcațiuni de comerț cu arme."
@@ -2662,7 +2635,6 @@ msgstr ""
 msgid "Corn Field"
 msgstr ""
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 #, fuzzy
@@ -2935,7 +2907,6 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "cort pentru depozitare"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 #, fuzzy
@@ -2982,7 +2953,6 @@ msgstr "cort"
 msgid "Hut"
 msgstr ""
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 #, fuzzy
@@ -3111,7 +3081,6 @@ msgstr ""
 msgid "Warehouse"
 msgstr "case"
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 #, fuzzy
@@ -3187,7 +3156,6 @@ msgstr "locuitori și infrastructură"
 msgid "Services"
 msgstr "servicii"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3541,7 +3509,6 @@ msgstr ""
 msgid "medical herbs"
 msgstr "ierburi medicinale"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 #, fuzzy
 msgid "Aristocrats"
@@ -3551,7 +3518,6 @@ msgstr "aristocrat"
 msgid "happiness"
 msgstr "fericire"
 
-# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
 msgstr "Unii dintre coloniștii tăi tocmai s-au mutat."
@@ -3617,7 +3583,6 @@ msgstr "minereu de fier"
 msgid "clay"
 msgstr "argilă"
 
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 #, fuzzy
 msgid "Merchants"
@@ -3631,7 +3596,6 @@ msgstr "băutură"
 msgid "iron ingots"
 msgstr "lingouri de fier"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy, python-format
 msgid "Screenshot has been saved to {file}."
@@ -3767,7 +3731,6 @@ msgstr "peşte"
 msgid "charcoal"
 msgstr "mangal"
 
-# 76%
 #. This is a database entry: the name of a resource.
 #, fuzzy
 msgid "stone deposit"
@@ -3789,7 +3752,6 @@ msgstr "ghinde"
 msgid "tobacco plants"
 msgstr "plante de tutun"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy, python-format
 msgid "You need more {resource} to build this building."
@@ -3825,8 +3787,6 @@ msgstr ""
 msgid "Your mine has run out of resources."
 msgstr "O mină a fost epuizată."
 
-# 77%
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy, python-format
 msgid "Your inhabitants reached level {level}."
@@ -3901,7 +3861,6 @@ msgstr ""
 msgid "candles"
 msgstr ""
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy, python-format
 msgid "A new settlement was founded by {player}."
@@ -3911,7 +3870,6 @@ msgstr "O nouă colonie a fost fondată de ${player}."
 msgid "vines"
 msgstr ""
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy
 msgid "Your game has been saved."
@@ -3976,7 +3934,6 @@ msgstr "sare"
 #~ msgid "Collector utilisation"
 #~ msgstr "utilizarea colectorilor"
 
-# 82%
 #, fuzzy
 #~ msgid "A new ship has been created."
 #~ msgstr "O nouă lume a fost creată."
@@ -4046,17 +4003,14 @@ msgstr "sare"
 #~ msgid "5 residents"
 #~ msgstr "5 locuitori"
 
-# 90%
 #, fuzzy
 #~ msgid "6 residents"
 #~ msgstr "2 locuitori"
 
-# 90%
 #, fuzzy
 #~ msgid "7 residents"
 #~ msgstr "2 locuitori"
 
-# 90%
 #, fuzzy
 #~ msgid "8 residents"
 #~ msgstr "2 locuitori"
@@ -4135,7 +4089,6 @@ msgstr "sare"
 #~ msgid "The savegame file is currently used by another program."
 #~ msgstr "Fișierul salvării de joc este utilizat de alt program."
 
-# 83%
 #, fuzzy
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Ne cerem scuze și dorim să remediem problema."
@@ -4346,7 +4299,6 @@ msgstr "sare"
 #~ msgid "System default"
 #~ msgstr "configurare inițială"
 
-# 83%
 #~ msgid "{player}'s settlements"
 #~ msgstr "coloniile lui {player}"
 

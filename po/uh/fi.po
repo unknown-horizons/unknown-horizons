@@ -17,12 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-# 86%
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons kaatui."
 
-# 83%
 #: run_uh.py:222
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "Olemme tästä pahoillamme, ja haluamme korjata tämän virheen."
@@ -148,17 +146,14 @@ msgstr "Asukkaat"
 msgid "Increase game speed (+)"
 msgstr "Nopeuta peliä (+)"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Hidasta peliä (-)"
 
-# 87%
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
 msgstr "Käännä karttaa vastapäivään (,)"
 
-# 83%
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
 msgstr "Käännä karttaa myötäpäivään (.)"
@@ -175,7 +170,6 @@ msgstr "Loitonna kuvaa"
 msgid "Destroy (X)"
 msgstr "Tuhoa (X)"
 
-# 76%
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
 msgstr "Kapteenin päiväkirja (L)"
@@ -335,7 +329,6 @@ msgstr "Maksetut verot"
 msgid "Taxes:"
 msgstr "Verot:"
 
-# 87%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
@@ -390,7 +383,6 @@ msgstr "Yhteenveto"
 msgid "houses"
 msgstr "taloja"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "asukkaita"
@@ -434,7 +426,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "Sisältää näitä luonnonvaroja:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -481,7 +472,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr "Kerääjien työmäärä"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -501,7 +491,6 @@ msgstr "Kaupankäynti"
 msgid "Build settlement"
 msgstr "Rakenna asutuskeskus"
 
-# 95%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
@@ -567,7 +556,6 @@ msgstr "Pysäytä tuotanto"
 msgid "Start production"
 msgstr "Käynnistä tuotanto"
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -612,7 +600,6 @@ msgstr "Siirrä alas"
 msgid "Select a resource:"
 msgstr "Valitse resurssi:"
 
-# 80%
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
@@ -702,7 +689,6 @@ msgstr "Sulje"
 msgid "Player scores"
 msgstr "Pelitulokset"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -749,7 +735,6 @@ msgstr "Rakennukset"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Pelaajan kaikkien siirtokuntien rakennusten lukumäärä"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -781,7 +766,6 @@ msgstr ""
 msgid "Total"
 msgstr "Yhteensä"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -791,7 +775,6 @@ msgstr "Tasapaino"
 msgid "Type"
 msgstr "Tyyppi"
 
-# 87%
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
 msgstr "Aseistus"
@@ -1200,7 +1183,6 @@ msgstr "Uusi peli - Moninpeli"
 msgid "Create a new game"
 msgstr "Luo uusi peli"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Lataa peli:"
@@ -1331,7 +1313,6 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "Palauta oletusasetukset"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Hiiren herkkyys:"
@@ -1447,7 +1428,6 @@ msgstr "Palauta oletusasetukset"
 msgid "Discard current changes"
 msgstr "Poistu tallentamatta muutoksia"
 
-# 83%
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
 msgstr "Hyväksy"
@@ -1580,12 +1560,10 @@ msgstr "Varastot ovat täynnä."
 msgid "You can not afford to buy this."
 msgstr "Sinulla ei ole varaa ostaa tätä."
 
-# 82%
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
 msgstr "Kauppakumppanisi ei myy lisää tätä."
 
-# 89%
 #: horizons/component/tradepostcomponent.py:232
 msgid "The trade partner does not buy this."
 msgstr "Kauppakumppanisi ei osta tätä."
@@ -1594,18 +1572,14 @@ msgstr "Kauppakumppanisi ei osta tätä."
 msgid "You do not possess this."
 msgstr "Sinulla ei ole tätä."
 
-# 82%
 #: horizons/component/tradepostcomponent.py:244
 msgid "The trade partner can not store more of this."
 msgstr "Kauppakumppanin varastot ovat täynnä."
 
-# 82%
-# 77%
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not afford to buy this."
 msgstr "Kauppakumppanillasi ei ole varaa ostaa tätä."
 
-# 77%
 #: horizons/component/tradepostcomponent.py:253
 msgid "The trade partner does not buy more of this."
 msgstr "Kauppakumppanisi ei osta lisää tätä."
@@ -1702,19 +1676,16 @@ msgid ""
 msgstr ""
 "Tarkista kirjoittamasi portin numero, ja varmista sen olevan tällä alueella."
 
-# 81%
 #: horizons/engine/settingshandler.py:236
 msgid "Failed to apply new network settings."
 msgstr "Verkkoasetusten käyttöönotto epäonnistui."
 
-# 78%
 #: horizons/engine/settingshandler.py:237
 #: horizons/gui/modules/multiplayermenu.py:131
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr "Verkkoa ei voitu ottaa käyttöön näillä asetuksilla."
 
-# 75%
 #: horizons/engine/settingshandler.py:238
 #: horizons/gui/modules/multiplayermenu.py:132
 msgid "Check the settings you specified in the network section."
@@ -1925,7 +1896,6 @@ msgstr ""
 "Tarkista Internet-yhteys. Jos se toimii, isäntäpalvelimellamme on "
 "väliaikainen ongelma."
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Verkon kanssa ilmeni ongelma:"
@@ -1983,7 +1953,6 @@ msgstr "Pelin salasana"
 msgid "Enter password:"
 msgstr "Kirjoita salasana:"
 
-# 79%
 #: horizons/gui/modules/multiplayermenu.py:351
 #: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
@@ -2072,7 +2041,6 @@ msgstr "Lopeta peli"
 msgid "No saved games"
 msgstr "Ei tallennettuja pelejä"
 
-# 96%
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
 msgstr ""
@@ -2101,18 +2069,15 @@ msgstr ""
 msgid "Overwrite it?"
 msgstr "Korvataanko se?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Tuntematon tallennuspäivä"
 
-# 76%
 #: horizons/gui/modules/select_savegame.py:223
 #, python-format
 msgid "Saved at {time}"
 msgstr "Tallennettu viimeksi {time}"
 
-# 80%
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:228
 #, python-format
@@ -2140,14 +2105,12 @@ msgstr "Yhteensopimaton versio"
 msgid "No file selected"
 msgstr "Tiedostoa ei ole valittu"
 
-# 97%
 #: horizons/gui/modules/select_savegame.py:257
 msgid "You need to select a savegame to delete."
 msgstr ""
 "Valitse ensin poistettava pelitallennus napsauttamalla sitä ja yritä "
 "uudelleen."
 
-# 84%
 #: horizons/gui/modules/select_savegame.py:261
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
@@ -2169,12 +2132,10 @@ msgstr "Tallennuksen poistaminen epäonnistui!"
 msgid "Invalid player name"
 msgstr "Virheellinen pelaajanimi"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Antamasi pelaajanimi on virheellinen."
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Luonnonvarat:"
@@ -2215,7 +2176,6 @@ msgstr "Tämä tiedosto ei ole käyttökelpoinen juonipelitiedosto."
 msgid "Error message:"
 msgstr "Virheilmoitus:"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Ole hyvä ja ilmoita tästä tekijälle."
@@ -2249,7 +2209,6 @@ msgstr "Piilota tämä tietoikkuna painamalla H"
 msgid "Boat builder overview"
 msgstr "Veneenveistämön yleiskatsaus"
 
-# 78%
 #: horizons/gui/tabs/boatbuildertabs.py:96
 #, python-format
 msgid "{ship} (place in queue: {place})"
@@ -2279,7 +2238,6 @@ msgstr "Sota-alukset"
 msgid "Confirm order"
 msgstr "Vahvista järjestys"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 msgid "Warehouse overview"
@@ -2356,7 +2314,6 @@ msgstr "Älä salli päivityksiä"
 msgid "Allow upgrades"
 msgstr "Salli päivitykset"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 msgid "Unit overview"
 msgstr "Aluksen yleiskatsaus"
@@ -2384,12 +2341,10 @@ msgstr ""
 msgid "You already have a settlement on this island."
 msgstr "Tällä saarella on jo yksi siirtokunnistasi."
 
-# 91%
 #: horizons/gui/tabs/shiptabs.py:87
 msgid "Load/Unload"
 msgstr "Lastaa/Pura"
 
-# 88%
 #: horizons/gui/tabs/shiptabs.py:89
 msgid "Buy/Sell"
 msgstr "Osta/Myy"
@@ -2455,19 +2410,16 @@ msgstr "Päiväkirjaan ei ole kirjoitettu vielä mitään!"
 msgid "Game"
 msgstr "Peli"
 
-# 95%
 #: horizons/gui/widgets/playerssettlements.py:40
 #, python-format
 msgid "Settlements of {player}"
 msgstr "Pelaajan {player} siirtokunnat"
 
-# 94%
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "Ships of {player}"
 msgstr "Pelaajan {player} alukset"
 
-# 75%
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:95
 msgid "None"
@@ -2477,7 +2429,6 @@ msgstr "ei mitään"
 msgid "N/A"
 msgstr "Ei"
 
-# 89%
 #: horizons/gui/widgets/productionoverview.py:61
 #, python-format
 msgid "Production overview of {settlement}"
@@ -2686,7 +2637,6 @@ msgstr ""
 msgid "Corn Field"
 msgstr "Maissipelto"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 msgid "Yields corn. Needs a farm."
@@ -2943,7 +2893,6 @@ msgstr "Kaivaa vuoresta kiveä."
 msgid "Storage Tent"
 msgstr "Varastoteltta"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 msgid "Storage Hut"
@@ -2984,7 +2933,6 @@ msgstr "Teltta"
 msgid "Hut"
 msgstr "Mökki"
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 msgid "House"
@@ -3107,7 +3055,6 @@ msgstr "Tuottaa viiniä viinirypäleistä."
 msgid "Warehouse"
 msgstr "Sivutoimisto"
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 msgid "Weaver's Hut"
@@ -3206,7 +3153,6 @@ msgstr "Yhteiskunta"
 msgid "Military Service"
 msgstr "Asepalvelus"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3328,12 +3274,10 @@ msgstr "Valmiina"
 msgid "You have won!"
 msgstr "Voitit pelin!"
 
-# 97%
 #: horizons/scenario/actions.py:96
 msgid "You have completed this scenario."
 msgstr "Olet suorittanut tämän juonipelin läpi."
 
-# 75%
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
 msgstr "Haluatko jatkaa pelaamista?"
@@ -3546,7 +3490,6 @@ msgstr "Aristokraatit"
 msgid "happiness"
 msgstr "onnellisuutta"
 
-# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
 msgstr "Jotkut uudisasukkaat muuttivat juuri pois."
@@ -3631,7 +3574,6 @@ msgstr "rautaharkkoja"
 msgid "Screenshot has been saved to {file}."
 msgstr "Kuvakaappaus tallennettu tiedostoon {file}."
 
-# 83%
 #. This is a database entry: the name of a resource.
 msgid "cattle"
 msgstr "karjaa"
@@ -3764,7 +3706,6 @@ msgstr "kalaa"
 msgid "charcoal"
 msgstr "puuhiiltä"
 
-# 76%
 #. This is a database entry: the name of a resource.
 #, fuzzy
 msgid "stone deposit"
@@ -3809,7 +3750,6 @@ msgstr "ruohoa"
 msgid "alvearies"
 msgstr "Mehiläispesä"
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been autosaved."
 msgstr "Peli tallennettiin automaattisesti."
@@ -3907,7 +3847,6 @@ msgstr "{player} loi uuden siirtokunnan."
 msgid "vines"
 msgstr "viiniköynnöksiä"
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been saved."
 msgstr "Pelisi on tallennettu."
@@ -3965,7 +3904,6 @@ msgstr "suolaa"
 #~ msgid "Toggle console on/off"
 #~ msgstr "Konsoli näkyviin/pois"
 
-# 78%
 #~ msgid "Only show games with the same version:"
 #~ msgstr "Näytä vain saman version pelit:"
 
@@ -4062,7 +4000,6 @@ msgstr "suolaa"
 #~ msgid "Load from map archive"
 #~ msgstr "Näytä karttahistoria"
 
-# 82%
 #~ msgid "A new ship has been created."
 #~ msgstr "Uusi alus luotu."
 
@@ -4122,46 +4059,27 @@ msgstr "suolaa"
 #~ msgid "Build fields"
 #~ msgstr "Pystytä tuotantoa"
 
-# 88%
-# 81%
 #~ msgid "1 resident"
 #~ msgstr "1 asukas"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 asukasta"
 
-# 88%
-# 81%
 #~ msgid "3 residents"
 #~ msgstr "3 asukasta"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 asukasta"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 asukasta"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "6 residents"
 #~ msgstr "6 asukasta"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "7 residents"
 #~ msgstr "7 asukasta"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "8 residents"
 #~ msgstr "8 asukasta"
 
@@ -4231,7 +4149,6 @@ msgstr "suolaa"
 #~ msgid "The savegame file is currently used by another program."
 #~ msgstr "Tallennustiedosto on tällä hetkellä toisen ohjelman käytössä."
 
-# 83%
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Olemme tästä pahoillamme, ja haluamme korjata tämän virheen."
 
@@ -4284,12 +4201,9 @@ msgstr "suolaa"
 #~ msgid "The game you selected couldn't be started."
 #~ msgstr "Valitsemaasi peliä ei pystytty aloittamaan."
 
-# 78%
 #~ msgid "Error: Cannot find campaign '{name}'."
 #~ msgstr "Ei löydy kampanjaa \"{name}\"."
 
-# 81%
-# 78%
 #~ msgid "Error: Cannot find scenario '{name}'."
 #~ msgstr "Tallennusta \"{name}\" ei löytynyt."
 
@@ -4372,7 +4286,6 @@ msgstr "suolaa"
 #~ msgid "Sell resources"
 #~ msgstr "Myy resursseja"
 
-# 77%
 #~ msgid "Tent Ruin"
 #~ msgstr "Teltan rauniot"
 
@@ -4448,7 +4361,6 @@ msgstr "suolaa"
 #~ msgid "Sailor buildings"
 #~ msgstr "Merenkävijät"
 
-# 89%
 #~ msgid "Trail (R): Needed for collecting goods."
 #~ msgstr "Polku (R): Vaaditaan tavaroiden keräämiselle."
 
@@ -4458,7 +4370,6 @@ msgstr "suolaa"
 #~ msgid "Settler buildings"
 #~ msgstr "Uudisasukkaat"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "Polttaa lautoja puuhiileksi."
 
@@ -4482,15 +4393,12 @@ msgstr "suolaa"
 #~ "Virhe: Kielioppivirhe --mp-bind -komentoriviasetuksella. Portin tulee "
 #~ "olla luku välillä 1 ja 65535."
 
-# 75%
 #~ msgid "Error: Cannot find map '{name}'."
 #~ msgstr "Kenttää \"{name}\" ei löytynyt."
 
-# 96%
 #~ msgid "Error: Found multiple matches:"
 #~ msgstr "Löydettiin useita:"
 
-# 78%
 #~ msgid "Error: Cannot find savegame '{name}'."
 #~ msgstr "Ei löydetty tallennusta \"{name}\"."
 
@@ -4506,15 +4414,12 @@ msgstr "suolaa"
 #~ msgid "System default"
 #~ msgstr "Järjestelmän oletus"
 
-# 86%
 #~ msgid "Configured language {lang} at {place} could not be loaded"
 #~ msgstr "Asetettu kieltä {lang}, sijainnissa {place} ei pystytä lataamaan"
 
-# 83%
 #~ msgid "{player}'s settlements"
 #~ msgstr "Pelaajan {player} siirtokunnat"
 
-# 77%
 #~ msgid "{player}'s ships"
 #~ msgstr "Pelaajan {player} alukset"
 
@@ -4616,7 +4521,6 @@ msgstr "suolaa"
 #~ msgid "A new settlement has been created by ${player}."
 #~ msgstr "Pelaaja ${player} loi uuden siirtokunnan."
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "Joku uudisasukkaasi ei ole tarpeeksi lähellä keskustoria."
 
@@ -4842,7 +4746,6 @@ msgstr "suolaa"
 #~ msgid "Error: Cannot find campaign with file \"%s\"."
 #~ msgstr "Virhe: Ei löydy kampanjaa tiedostolla \"%s\"."
 
-# 81%
 #~ msgid "Error: Cannot find scenario \"%s\"."
 #~ msgstr "Virhe: Tallennusta \"%s\" ei löytynyt."
 
@@ -4852,7 +4755,6 @@ msgstr "suolaa"
 #~ msgid "Trade route: going to %s"
 #~ msgstr "Kauppareitti: menossa kohteeseen %s"
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Tallennettu %s"
 

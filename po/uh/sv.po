@@ -140,12 +140,10 @@ msgstr "Nybyggarbyggnader"
 msgid "Inhabitants"
 msgstr "Invånare"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr "Öka spelhastigheten (+)"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Minska spelhastigheten (-)"
@@ -386,7 +384,6 @@ msgstr "Sammanfattning"
 msgid "houses"
 msgstr "hus"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "invånare"
@@ -431,7 +428,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "Innehåller dessa resurser:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -479,7 +475,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr "Insamlar användning:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -525,7 +520,6 @@ msgstr "Köp eller sälj varor"
 msgid "Trade history"
 msgstr "Handelshistorik"
 
-# 76%
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
 msgstr "Välj varor:"
@@ -566,8 +560,6 @@ msgstr "Pausa produktion"
 msgid "Start production"
 msgstr "Återuppta produktion"
 
-# 76%
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -607,8 +599,6 @@ msgstr "Ta bort inmatning"
 msgid "Move down"
 msgstr "Flytta ner"
 
-# 76%
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy
 msgid "Select a resource:"
@@ -703,7 +693,6 @@ msgstr "Stäng"
 msgid "Player scores"
 msgstr "Spelarpoäng"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -749,7 +738,6 @@ msgstr "Byggnader"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -781,7 +769,6 @@ msgstr ""
 msgid "Total"
 msgstr "Totalt"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -847,8 +834,6 @@ msgstr "Välj en bana:"
 msgid "Choose a saved game's map:"
 msgstr "Välj en bana:"
 
-# 76%
-# 83%
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 #, fuzzy
 msgid "Select map source"
@@ -1207,7 +1192,6 @@ msgstr "Nytt spel - Flera spelare"
 msgid "Create a new game"
 msgstr "Skapa nytt spel"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Ladda spel:"
@@ -1335,7 +1319,6 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "0 är systemets standardinställning"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Muskänslighet:"
@@ -1606,7 +1589,6 @@ msgstr "Handelspartnern har inte råd att köpa detta."
 msgid "The trade partner does not buy more of this."
 msgstr "Handelspartnern köper inte mer av detta."
 
-# 75%
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
 msgstr "Misslyckades med att snabbspara."
@@ -1980,7 +1962,6 @@ msgstr "Ange prefix:"
 msgid "Recommended number of players: {number}"
 msgstr "Rekommenderat antal spelare: {number}"
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:467
 #: horizons/gui/modules/multiplayermenu.py:475
 msgid "Click here to change your name and/or color"
@@ -2090,7 +2071,6 @@ msgstr "Det finns redan ett sparat spel med namnet '{name}'."
 msgid "Overwrite it?"
 msgstr "Vill du spara ändå?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Okänt spardatum"
@@ -2157,7 +2137,6 @@ msgstr "Ogiltigt spelarnamn"
 msgid "You entered an invalid playername."
 msgstr "Du angav ett ogiltigt spelarnamn."
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Råvarutäthet:"
@@ -2240,7 +2219,6 @@ msgstr ""
 msgid "Build this ship!"
 msgstr "Bygg fartyget!"
 
-# 76%
 #: horizons/gui/tabs/boatbuildertabs.py:250
 msgid "Fisher boats"
 msgstr "Fiskebåtar"
@@ -2262,7 +2240,6 @@ msgid "Confirm order"
 msgstr "Verkställ order"
 
 # Mellanslag, bindesstreck eller utan genitiv?
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 msgid "Warehouse overview"
@@ -2336,7 +2313,6 @@ msgstr "Tillåt inte uppgraderingar"
 msgid "Allow upgrades"
 msgstr "Tillåt uppgraderingar"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 msgid "Unit overview"
 msgstr "Enhetsöversikt"
@@ -2666,7 +2642,6 @@ msgstr "Producerar kakaobönor som används för konfektyr."
 msgid "Corn Field"
 msgstr "Majsodling"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 #, fuzzy
@@ -2930,7 +2905,6 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Förvaringstält"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 msgid "Storage Hut"
@@ -2971,7 +2945,6 @@ msgstr "Tält"
 msgid "Hut"
 msgstr "Hydda"
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 msgid "House"
@@ -3094,7 +3067,6 @@ msgid "Warehouse"
 msgstr "Packhus"
 
 # Eg. Vävaretält. jämför weaver description. Byggnaden är inte ens ett tält, snarare en hydda.
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 #, fuzzy
@@ -3170,7 +3142,6 @@ msgstr "Bostäder och infrastruktur"
 msgid "Services"
 msgstr "Tjänster"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3197,7 +3168,6 @@ msgstr "Infrastruktur"
 msgid "Military Service"
 msgstr "Militärtjänstgöring"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3322,7 +3292,6 @@ msgstr "Du har vunnit!"
 msgid "You have completed this scenario."
 msgstr "Du har avklarat det här scenariot."
 
-# 75%
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
 msgstr "Vill du fortsätta spela?"
@@ -3500,7 +3469,6 @@ msgstr "Inaktiv vid {location}"
 msgid "Idle at {x}, {y}"
 msgstr "Inaktiv vid {x}, {y}"
 
-# 83%
 #: horizons/world/units/ship.py:234
 msgid "Trader"
 msgstr "Köpman"
@@ -3528,7 +3496,6 @@ msgstr "Din byggnad har börjat brinna!"
 msgid "medical herbs"
 msgstr "medicinska örter"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Aristocrats"
 msgstr "Aristokrater"
@@ -3577,7 +3544,6 @@ msgstr "grisar för slakt"
 msgid "trees"
 msgstr "träd"
 
-# 83%
 #. This is a database entry: the name of a resource.
 msgid "clay deposit"
 msgstr "lerfyndighet"
@@ -3604,7 +3570,6 @@ msgid "clay"
 msgstr "lera"
 
 # merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att skilja dem åt.
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Merchants"
 msgstr "Borgare"
@@ -3725,7 +3690,6 @@ msgstr "kryddväxter"
 msgid "cattle for slaughter"
 msgstr "nötkreatur för slakt"
 
-# 87%
 #. This is a database entry: the name of a resource.
 msgid "tobaccos"
 msgstr "tobak"
@@ -3845,7 +3809,6 @@ msgstr "{player}: {message}"
 msgid "cannon"
 msgstr "kanon"
 
-# 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "A new ship by the name of {name} has been created."
@@ -4005,48 +3968,29 @@ msgstr "salt"
 #~ msgid "Build fields"
 #~ msgstr "Bygg fält"
 
-# 88%
-# 81%
 #~ msgid "1 resident"
 #~ msgstr "1 invånare"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
 #~ msgid "3 residents"
 #~ msgstr "3 invånare"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 invånare"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "6 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "7 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "8 residents"
 #~ msgstr "2 invånare"
@@ -4203,14 +4147,12 @@ msgstr "salt"
 #~ msgid "yellow"
 #~ msgstr "gul"
 
-# 83%
 #~ msgid "Apply:"
 #~ msgstr "Ändra:"
 
 #~ msgid "Branch Office"
 #~ msgstr "Handelskontor"
 
-# 83%
 #~ msgid "Cattle"
 #~ msgstr "Nötkreatur"
 
@@ -4224,7 +4166,6 @@ msgstr "salt"
 #~ msgid "Pioneer buildings"
 #~ msgstr "Pionjärsbyggnader"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "Bränner brädor till träkol."
 
@@ -4268,7 +4209,6 @@ msgstr "salt"
 #~ msgid "A new settlement has been created by ${player}."
 #~ msgstr "En ny bosättning har skapats av ${player}."
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "En av dina nybyggare har ingen torg inom sin räckvidd."
 
@@ -4462,7 +4402,6 @@ msgstr "salt"
 #~ msgid "You have completed this scenario. "
 #~ msgstr "Du har klarat det här scenariot."
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Sparad den %s"
 

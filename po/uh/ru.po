@@ -18,12 +18,10 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-# 86%
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
 msgstr "Сбой Unknown Horizons."
 
-# 83%
 #: run_uh.py:222
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "Мы очень сожалеем и хотим исправить ошибку, ставшую причиной этого."
@@ -328,7 +326,6 @@ msgstr "Уплаченных налогов"
 msgid "Taxes:"
 msgstr "Налог:"
 
-# 87%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
@@ -383,7 +380,6 @@ msgstr "Резюме"
 msgid "houses"
 msgstr "дома"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "жители"
@@ -425,7 +421,6 @@ msgstr "Это месторождение ресурсов, постройте �
 msgid "It contains these resources:"
 msgstr "Содержание ресурсов:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -472,7 +467,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr "Использование сборщиков"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -557,7 +551,6 @@ msgstr "Остановить производство"
 msgid "Start production"
 msgstr "Возобновить производство"
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -598,7 +591,6 @@ msgstr "Удалить запись"
 msgid "Move down"
 msgstr "Опустить"
 
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
 msgstr "Выберите ресурсы:"
@@ -692,7 +684,6 @@ msgstr "Закрыть"
 msgid "Player scores"
 msgstr "Статистика игрока"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -743,7 +734,6 @@ msgstr "Здания"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Стоимость всех построек в поселении(ях) игрока"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -778,7 +768,6 @@ msgstr ""
 msgid "Total"
 msgstr "Всего"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -977,7 +966,6 @@ msgstr "Удерживайте для возведения нескольких 
 msgid "Close dialogs"
 msgstr ""
 
-# 92%
 #: content/gui/xml/mainmenu/help.xml:55
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -1195,7 +1183,6 @@ msgstr "Новая многопользовательская игра"
 msgid "Create a new game"
 msgstr "Создать новую игру"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Загрузить игру:"
@@ -1325,7 +1312,6 @@ msgstr "Разрешает панорамирование мышью с зажа
 msgid "0 is default system settings"
 msgstr "0 - значение по умолчанию"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Чувствительность мыши:"
@@ -1420,7 +1406,6 @@ msgstr "Тип цитат, отображаемый в процессе загр
 msgid "Network"
 msgstr "Сеть"
 
-# 88%
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "If set to 0, use the router default"
 msgstr "Если установлен 0, то используется маршрутизатор по умолчанию"
@@ -1437,7 +1422,6 @@ msgstr "Восстановить настройки по умолчанию"
 msgid "Discard current changes"
 msgstr "Отменить сделанные изменения"
 
-# 83%
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
 msgstr "Применить"
@@ -1487,7 +1471,6 @@ msgstr "Свободная игра"
 msgid "Start game:"
 msgstr "Начать игру:"
 
-# 90%
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
 msgstr "Начать игру"
@@ -1604,7 +1587,6 @@ msgstr "Быстрое сохранение не удалось."
 msgid "An error happened during quicksave."
 msgstr "Ошибка быстрого сохранения."
 
-# 86%
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
 msgstr "Ваша карта НЕ сохранена."
@@ -1915,7 +1897,6 @@ msgstr ""
 "Если Ваше соединение с Интернетом в порядке (проверьте!), возможно наш "
 "master сервер временно не доступен."
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Проблемы с сетью:"
@@ -2085,7 +2066,6 @@ msgstr "Сохраненная игра под именем '{name}' уже су
 msgid "Overwrite it?"
 msgstr "Перезаписать?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Неизвестная дата сохранения"
@@ -2152,7 +2132,6 @@ msgstr "Недопустимое имя игрока"
 msgid "You entered an invalid playername."
 msgstr "Вы ввели недопустимое имя игрока."
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Плотность месторождений:"
@@ -2193,7 +2172,6 @@ msgstr "Выбранный файл не является файлом сцен�
 msgid "Error message:"
 msgstr "Сообщение об ошибке:"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Пожалуйста, сообщите это разработчикам."
@@ -2236,7 +2214,6 @@ msgstr "{ship} (место в очереди: {place})"
 msgid "Build this ship!"
 msgstr "Построить корабль!"
 
-# 76%
 #: horizons/gui/tabs/boatbuildertabs.py:250
 msgid "Fisher boats"
 msgstr "Рыбацкие суда"
@@ -2257,7 +2234,6 @@ msgstr "Военные корабли"
 msgid "Confirm order"
 msgstr "Подтвердить приказ"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 msgid "Warehouse overview"
@@ -2333,7 +2309,6 @@ msgstr "Запретить развитие"
 msgid "Allow upgrades"
 msgstr "Разрешить развитие"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 msgid "Unit overview"
 msgstr "Обзор юнита"
@@ -2429,13 +2404,11 @@ msgstr "В вашем логи ещё нет записей!"
 msgid "Game"
 msgstr "Игра"
 
-# 95%
 #: horizons/gui/widgets/playerssettlements.py:40
 #, python-format
 msgid "Settlements of {player}"
 msgstr "Поселение игрока {player}"
 
-# 94%
 #: horizons/gui/widgets/playersships.py:45
 #, python-format
 msgid "Ships of {player}"
@@ -2541,7 +2514,6 @@ msgstr "Подробно: {error_details}"
 msgid "Error: {error_message}"
 msgstr "Ошибка: {error_message}"
 
-# 88%
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:56
 msgid "Alvearies"
@@ -2665,7 +2637,6 @@ msgstr ""
 msgid "Corn Field"
 msgstr "Кукурузное поле"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 msgid "Yields corn. Needs a farm."
@@ -2923,7 +2894,6 @@ msgid "Storage Tent"
 msgstr "Хранилище"
 
 # Can we drop the 'Tent' part ? Or we need something like 'Палатка-хранилище', 'Склад-палатка' etc.
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 msgid "Storage Hut"
@@ -2965,7 +2935,6 @@ msgstr "Палатка"
 msgid "Hut"
 msgstr "Хижина"
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 msgid "House"
@@ -3086,7 +3055,6 @@ msgstr "Производит вино из винограда."
 msgid "Warehouse"
 msgstr "Склад"
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 msgid "Weaver's Hut"
@@ -3159,7 +3127,6 @@ msgstr "Жители и инфраструктура"
 msgid "Services"
 msgstr "Услуги"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3186,7 +3153,6 @@ msgstr "инфраструктура"
 msgid "Military Service"
 msgstr "Военная служба"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3239,8 +3205,6 @@ msgstr "Военные"
 msgid "Failed to start/load the game"
 msgstr "Не удалось запустить/загрузить игру"
 
-# 95%
-# 100%
 #: horizons/main.py:350
 msgid "The game you selected could not be started."
 msgstr "Выбранная вами игра не может быть запущена."
@@ -3349,12 +3313,10 @@ msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 "Файл сохранения доступен только для чтения или заблокирован другим процессом."
 
-# 86%
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
 msgstr "Ваша игра НЕ была сохранена."
 
-# 92%
 #: horizons/util/checkupdates.py:81
 msgid "New version of Unknown Horizons"
 msgstr "Новая версия Unknown Horizons"
@@ -3397,8 +3359,6 @@ msgstr "Здоровье: {health}"
 msgid "This building must be built on an island."
 msgstr "Это здание должно быть построено на острове."
 
-# 95%
-# 100%
 #: horizons/world/building/buildable.py:41
 msgid "This ground is not suitable for this building."
 msgstr "Земля не подходит для этой постройки."
@@ -3407,13 +3367,10 @@ msgstr "Земля не подходит для этой постройки."
 msgid "This building has to be built within your settlement."
 msgstr "Эта постройка должна быть построена в границах вашего поселения."
 
-# 75%
 #: horizons/world/building/buildable.py:43
 msgid "This area is already occupied by another player."
 msgstr "Эта территория уже занята другим играком."
 
-# 75%
-# 76%
 #: horizons/world/building/buildable.py:44
 msgid "This area is already occupied by another building."
 msgstr "Эта территория уже занята другой постройкой."
@@ -3426,8 +3383,6 @@ msgstr "Это территория уже занята."
 msgid "This building must be built on the coastline."
 msgstr "Это здание должно строиться на побережье."
 
-# 80%
-# 100%
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
 msgstr "Эта постройка должно быть размещена рядом с океаном."
@@ -3530,7 +3485,6 @@ msgstr "Ваша постройка горит!"
 msgid "medical herbs"
 msgstr "лечебные травы"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Aristocrats"
 msgstr "Аристократы"
@@ -3580,7 +3534,6 @@ msgstr "свиньи для бойни"
 msgid "trees"
 msgstr "деревья"
 
-# 83%
 #. This is a database entry: the name of a resource.
 msgid "clay deposit"
 msgstr "Месторождение глины"
@@ -3606,7 +3559,6 @@ msgstr "железная руда"
 msgid "clay"
 msgstr "глина"
 
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Merchants"
 msgstr "Торговцы"
@@ -3619,7 +3571,6 @@ msgstr "алкоголь"
 msgid "iron ingots"
 msgstr "железные слитки"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "Screenshot has been saved to {file}."
@@ -3761,7 +3712,6 @@ msgstr "рыба"
 msgid "charcoal"
 msgstr "древесный уголь"
 
-# 76%
 #. This is a database entry: the name of a resource.
 msgid "stone deposit"
 msgstr "месторождение камня"
@@ -3782,7 +3732,6 @@ msgstr "жёлуди"
 msgid "tobacco plants"
 msgstr "табачные растения"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "You need more {resource} to build this building."
@@ -3817,7 +3766,6 @@ msgstr "Одному из полей требуется ферма для сбо
 msgid "Your mine has run out of resources."
 msgstr "Ваш рудник иссяк."
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "Your inhabitants reached level {level}."
@@ -3893,7 +3841,6 @@ msgstr "приправы"
 msgid "candles"
 msgstr "свечи"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "A new settlement was founded by {player}."
@@ -3903,7 +3850,6 @@ msgstr "Игроком {player} было найдено новое поселе�
 msgid "vines"
 msgstr "виноградные лозы"
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been saved."
 msgstr "Игра сохранена."
@@ -4014,7 +3960,6 @@ msgstr "соль"
 #~ msgid "This will be displayed to other players so they recognise the game."
 #~ msgstr "Это будет показано другим игрокам, чтобы они подтвердили игру."
 
-# 82%
 #~ msgid "A new ship has been created."
 #~ msgstr "Корабль построен."
 
@@ -4027,7 +3972,6 @@ msgstr "соль"
 #~ msgid "Select a savegame"
 #~ msgstr "Выберите сохранение"
 
-# 83%
 #~ msgid "Error:"
 #~ msgstr "Ошибка:"
 
@@ -4115,41 +4059,24 @@ msgstr "соль"
 #~ msgid "1 resident"
 #~ msgstr "1 житель"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 жителя"
 
-# 88%
-# 81%
 #~ msgid "3 residents"
 #~ msgstr "3 жителя"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 жителя"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 жителей"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "6 residents"
 #~ msgstr "6 жителей"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "7 residents"
 #~ msgstr "7 жителей"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "8 residents"
 #~ msgstr "8 жителей"
 
@@ -4246,7 +4173,6 @@ msgstr "соль"
 #~ msgid "The savegame file is currently used by another program."
 #~ msgstr "Файл сохранения используется другой программой."
 
-# 83%
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Мы очень сожалеем и хотим исправить эту ошибку."
 
@@ -4272,7 +4198,6 @@ msgstr "соль"
 #~ msgid "FIFE was not found."
 #~ msgstr "FIFE не найден."
 
-# 80%
 #~ msgid "Configured language {lang} could not be loaded"
 #~ msgstr "Настроенный язык {lang} не может быть загружен"
 
@@ -4373,7 +4298,6 @@ msgstr "соль"
 #~ "Пожалуйста предоставьте её нам через IRC или наш форум, оба указаны на "
 #~ "сайте unknown-horizons.org ."
 
-# 93%
 #~ msgid "{player1} and {player2} are now {status}"
 #~ msgstr "{player1} и {player2} теперь {status}"
 
@@ -4416,7 +4340,6 @@ msgstr "соль"
 #~ msgid "Sell resources"
 #~ msgstr "Продать ресурсы"
 
-# 77%
 #~ msgid "Tent Ruin"
 #~ msgstr "Разрушенный шатёр"
 
@@ -4477,7 +4400,6 @@ msgstr "соль"
 #~ msgid "Branch Office"
 #~ msgstr "Контора"
 
-# 83%
 #~ msgid "Cattle"
 #~ msgstr "Скот"
 
@@ -4496,7 +4418,6 @@ msgstr "соль"
 #~ msgid "Branch office overview"
 #~ msgstr "Обзор конторы"
 
-# 76%
 #~ msgid "Sailor buildings"
 #~ msgstr "Здания моряков"
 
@@ -4509,7 +4430,6 @@ msgstr "соль"
 #~ msgid "Settler buildings"
 #~ msgstr "Здания поселенцев"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "Костёр для углежжения: здесь угольщик получает уголь из досок."
 
@@ -4705,7 +4625,6 @@ msgstr "соль"
 #~ msgid "A new settlement has been created by ${player}."
 #~ msgstr "${player} основал новое поселение."
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "Один из ваших поселенцев не имеет доступа к рынку."
 
@@ -4923,7 +4842,6 @@ msgstr "соль"
 #~ "Чтобы видеть изменения, либо всегда запускайте UH с текущими аргументами, "
 #~ "либо редактируйте файл %s."
 
-# 81%
 #~ msgid "Error: Cannot find campaign \"%s\"."
 #~ msgstr "Ошибка: Не найдена кампания \"%s\"."
 
@@ -4936,11 +4854,9 @@ msgstr "соль"
 #~ msgid "Error: Cannot find campaign with file \"%s\"."
 #~ msgstr "Ошибка: Не найдена кампания с файлом \"%s\"."
 
-# 81%
 #~ msgid "Error: Cannot find scenario \"%s\"."
 #~ msgstr "Ошибка: Не найден сценарий \"%s\"."
 
-# 83%
 #~ msgid "Error: Cannot find scenario with file \"%s\"."
 #~ msgstr "Ошибка: Не найден сценарий с файлом \"%s\"."
 
@@ -4975,7 +4891,6 @@ msgstr "соль"
 #~ "Использовать <ai_players> ИИ игроков (исключая возможный человек-ИИ "
 #~ "гибрид; по-умолчанию 1)."
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Сохранено в %s"
 

@@ -17,12 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-# 86%
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons jooksis kokku."
 
-# 83%
 #: run_uh.py:222
 #, fuzzy
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -164,7 +162,6 @@ msgstr "Vähenda"
 msgid "Destroy (X)"
 msgstr "Lammuta (X)"
 
-# 76%
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
 msgstr "Kapteni logiraamat (L)"
@@ -377,7 +374,6 @@ msgstr "Kokkuvõte"
 msgid "houses"
 msgstr "majad"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "elanikke"
@@ -421,7 +417,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "See sisaldab neid ressursse:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -469,7 +464,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr "Kollektori kasutamine"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -555,7 +549,6 @@ msgstr "Peata tootmine"
 msgid "Start production"
 msgstr "Jätka tootmist"
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -598,7 +591,6 @@ msgstr "Liiguta alla"
 msgid "Select a resource:"
 msgstr "Vali ressurss:"
 
-# 80%
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
@@ -692,7 +684,6 @@ msgstr "Sulge"
 msgid "Player scores"
 msgstr "Mängija punktid"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -738,7 +729,6 @@ msgstr "Ehitised"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Ehitiste väärtus mängija asula(te)s"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -770,7 +760,6 @@ msgstr ""
 msgid "Total"
 msgstr "Kokku"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -902,7 +891,6 @@ msgstr "Keera kaarti või ehitist päripäeva"
 msgid "Show build menu"
 msgstr "Näita ehitamise menüüd"
 
-# 75%
 #: content/gui/xml/mainmenu/help.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 #, fuzzy
@@ -1193,7 +1181,6 @@ msgstr "Loo mäng - Mitmemäng"
 msgid "Create a new game"
 msgstr "Loo uus mäng"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Laadi mäng:"
@@ -1244,7 +1231,6 @@ msgstr "Ekraani resolutsioon:"
 msgid "Color depth:"
 msgstr "Värvisügavus:"
 
-# 88%
 #: content/gui/xml/mainmenu/settings.xml:28
 #, fuzzy
 msgid "If set to 0, use the driver default"
@@ -1321,7 +1307,6 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "0 on süsteemi vaikeseaded"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Hiire tundlikkus:"
@@ -1421,7 +1406,6 @@ msgstr "Kui väärtuseks on 0, kasutatakse marsruuteri vaikeseadeid"
 msgid "Network port:"
 msgstr "Võrgu port:"
 
-# 84%
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Reset to default settings"
 msgstr "Taasta algseaded"
@@ -1430,7 +1414,6 @@ msgstr "Taasta algseaded"
 msgid "Discard current changes"
 msgstr ""
 
-# 83%
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
 msgstr "Rakenda"
@@ -1480,8 +1463,6 @@ msgstr "Vaba mängimine"
 msgid "Start game:"
 msgstr "Alusta mängu:"
 
-# 90%
-# 100%
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
 msgstr "Alusta mängu"
@@ -1549,7 +1530,6 @@ msgstr ""
 msgid "Error"
 msgstr "Viga"
 
-# 75%
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
 msgid "Failed to save."
 msgstr "Salvestamine ebaõnnestus."
@@ -1584,7 +1564,6 @@ msgstr ""
 msgid "The trade partner can not store more of this."
 msgstr "Kaubanduspartner ei saa seda rohkem talletada."
 
-# 77%
 #: horizons/component/tradepostcomponent.py:248
 #, fuzzy
 msgid "The trade partner can not afford to buy this."
@@ -1904,7 +1883,6 @@ msgstr ""
 "Palun kontrolli Interneti ühendust. Kui ühendus töötab siis on peaserver "
 "ajutiselt maas."
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Midagi läks valesti võrguga:"
@@ -2051,7 +2029,6 @@ msgstr "Välju seansist"
 msgid "No saved games"
 msgstr "Salvestatud mänge pole"
 
-# 96%
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
 msgstr "Laadimiseks pole salvestatud mänge."
@@ -2114,12 +2091,10 @@ msgstr "Mitte sobiv versioon"
 msgid "No file selected"
 msgstr "Faili pole valitud"
 
-# 97%
 #: horizons/gui/modules/select_savegame.py:257
 msgid "You need to select a savegame to delete."
 msgstr "Kustutamiseks pead valima salvestatud mängu."
 
-# 84%
 #: horizons/gui/modules/select_savegame.py:261
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
@@ -2141,12 +2116,10 @@ msgstr "Salvestatud mängu kustutamine ebaõnnestus!"
 msgid "Invalid player name"
 msgstr "Vigane mängija nimi"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Sa sisestasid vigase mängijanime."
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Ressursi rohkus:"
@@ -2187,7 +2160,6 @@ msgstr "Valitud fail ei ole kehtiv stsenaariumi fail."
 msgid "Error message:"
 msgstr "Veateade:"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Palun teavita sellest autorit."
@@ -2221,7 +2193,6 @@ msgstr "Vihje eemaldamiseks vajuta H"
 msgid "Boat builder overview"
 msgstr "Paadiehitaja ülevaade"
 
-# 78%
 #: horizons/gui/tabs/boatbuildertabs.py:96
 #, python-format
 msgid "{ship} (place in queue: {place})"
@@ -2231,8 +2202,6 @@ msgstr "{ship}(koht järjekorras: {place})"
 msgid "Build this ship!"
 msgstr "Ehita see laev!"
 
-# 76%
-# 100%
 #: horizons/gui/tabs/boatbuildertabs.py:250
 msgid "Fisher boats"
 msgstr "Kalapaadid"
@@ -2324,7 +2293,6 @@ msgstr "Keela uuendused"
 msgid "Allow upgrades"
 msgstr "Luba uuendused"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 msgid "Unit overview"
 msgstr "Üksuse ülevaade"
@@ -2351,7 +2319,6 @@ msgstr "Koloonia asutamiseks peab laev saare lähedal asuma."
 msgid "You already have a settlement on this island."
 msgstr "Sul juba on koloonia sellel saarel."
 
-# 91%
 #: horizons/gui/tabs/shiptabs.py:87
 msgid "Load/Unload"
 msgstr "Peale- / Mahalaadimine"
@@ -2645,7 +2612,6 @@ msgstr ""
 msgid "Corn Field"
 msgstr "Maisipõld"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 #, fuzzy
@@ -2903,7 +2869,6 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Laotelk"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 #, fuzzy
@@ -2945,7 +2910,6 @@ msgstr "Telk"
 msgid "Hut"
 msgstr ""
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 msgid "House"
@@ -3066,7 +3030,6 @@ msgstr "Toodab veini viinamarjadest."
 msgid "Warehouse"
 msgstr "Ladu"
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 #, fuzzy
@@ -3140,7 +3103,6 @@ msgstr "Elanikud ja infrastruktuur"
 msgid "Services"
 msgstr "Teenused"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3167,7 +3129,6 @@ msgstr "Infrastruktuur"
 msgid "Military Service"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3285,12 +3246,10 @@ msgstr "Valmis:"
 msgid "You have won!"
 msgstr "Sa oled võitnud!"
 
-# 97%
 #: horizons/scenario/actions.py:96
 msgid "You have completed this scenario."
 msgstr "Sa läbisid selle stsenaariumi."
 
-# 75%
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
 msgstr "Kas soovid mängimist jätkata?"
@@ -3330,7 +3289,6 @@ msgstr ""
 msgid "Your game has not been saved."
 msgstr "Sinu mäng on salvestatud."
 
-# 92%
 #: horizons/util/checkupdates.py:81
 msgid "New version of Unknown Horizons"
 msgstr "Unknown Horizons'i uus versioon"
@@ -3500,7 +3458,6 @@ msgstr "Teie ehitis põleb!"
 msgid "medical herbs"
 msgstr "ravimtaimed"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Aristocrats"
 msgstr "Aristokraadid"
@@ -3509,7 +3466,6 @@ msgstr "Aristokraadid"
 msgid "happiness"
 msgstr "heaolu"
 
-# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
 msgstr "Mõned sinu elanikud kolisid just välja."
@@ -3550,7 +3506,6 @@ msgstr "tapasead"
 msgid "trees"
 msgstr "puud"
 
-# 83%
 #. This is a database entry: the name of a resource.
 msgid "clay deposit"
 msgstr "savi lasund"
@@ -3576,7 +3531,6 @@ msgstr "rauamaak"
 msgid "clay"
 msgstr "savi"
 
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Merchants"
 msgstr "Kaupmehed"
@@ -3726,7 +3680,6 @@ msgstr "kala"
 msgid "charcoal"
 msgstr "süsi"
 
-# 76%
 #. This is a database entry: the name of a resource.
 #, fuzzy
 msgid "stone deposit"
@@ -3770,7 +3723,6 @@ msgstr "rohi"
 msgid "alvearies"
 msgstr ""
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been autosaved."
 msgstr "Sinu mäng on automaatselt salvestatud."
@@ -3954,7 +3906,6 @@ msgstr "sool"
 #~ msgid "If this error happens again, please contact the development team:"
 #~ msgstr "Kui see viga kordub siis palun kontakteeru arendus meeskonnaga:"
 
-# 82%
 #~ msgid "A new ship has been created."
 #~ msgstr "Uus laev on valminud."
 
@@ -3967,7 +3918,6 @@ msgstr "sool"
 #~ msgid "Select a savegame"
 #~ msgstr "Vali salvestatud mäng"
 
-# 83%
 #~ msgid "Error:"
 #~ msgstr "Viga:"
 
@@ -4008,48 +3958,29 @@ msgstr "sool"
 #~ msgid "Build fields"
 #~ msgstr "Ehita põld"
 
-# 88%
-# 81%
 #~ msgid "1 resident"
 #~ msgstr "1 elanik"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 elanikku"
 
-# 88%
-# 81%
 #~ msgid "3 residents"
 #~ msgstr "3 elanikku"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 elanikku"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 elanikku"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "6 residents"
 #~ msgstr "2 elanikku"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "7 residents"
 #~ msgstr "2 elanikku"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "8 residents"
 #~ msgstr "2 elanikku"
@@ -4106,7 +4037,6 @@ msgstr "sool"
 #~ msgid "The savegame file is currently used by another program."
 #~ msgstr "Salvestatud mängu faili kasutab parasjagu teine programm."
 
-# 83%
 #, fuzzy
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Meil on sellest väga kahju ning me soovime seda viga parandada."
@@ -4161,13 +4091,9 @@ msgstr "sool"
 #~ msgid "Protects your settlement."
 #~ msgstr "Kaitseb sinu kolooniat."
 
-# 81%
-# 78%
 #~ msgid "Error: Cannot find campaign '{name}'."
 #~ msgstr "Ei leita kaarti \"{name}\"."
 
-# 81%
-# 78%
 #~ msgid "Error: Cannot find scenario '{name}'."
 #~ msgstr "ei leita salvestatud mängu \"{name}\"."
 
@@ -4242,7 +4168,6 @@ msgstr "sool"
 #~ msgid "Sell resources"
 #~ msgstr "Müü resursse"
 
-# 77%
 #~ msgid "Tent Ruin"
 #~ msgstr "Telgi varemed"
 
@@ -4330,7 +4255,6 @@ msgstr "sool"
 #~ msgid "Sailor buildings"
 #~ msgstr "Meremehe ehitised"
 
-# 89%
 #~ msgid "Trail (R): Needed for collecting goods."
 #~ msgstr "Rada (R): Vajalik kaupade kogumiseks."
 
@@ -4346,22 +4270,18 @@ msgstr "sool"
 #~ msgid "Show pause menu"
 #~ msgstr "Näita peatamise menüüd"
 
-# 75%
 #~ msgid "Error: Cannot find map '{name}'."
 #~ msgstr "Viga: Ei leita kaarti '{name}'."
 
-# 96%
 #~ msgid "Error: Found multiple matches:"
 #~ msgstr "Leiti mitu vastet:"
 
-# 78%
 #~ msgid "Error: Cannot find savegame '{name}'."
 #~ msgstr "ei leita salvestatud mängu \"{name}\"."
 
 #~ msgid "Error: No quicksave found."
 #~ msgstr "Kiirsalvestust ei leitud."
 
-# 78%
 #~ msgid "A new settlement was founded by ${player}."
 #~ msgstr "Uus koloonia rajati ${player} poolt."
 
@@ -4371,14 +4291,12 @@ msgstr "sool"
 #~ msgid "You need more ${resource} to build this building."
 #~ msgstr "Sa vajad rohkem ${resource} selle ehitise ehitamiseks."
 
-# 77%
 #~ msgid "Your inhabitants reached level ${level}."
 #~ msgstr "Sinu elanikud saavutasid ${level}-nda taseme."
 
 #~ msgid "System default"
 #~ msgstr "Süsteemi vaikeväärtus"
 
-# 86%
 #~ msgid "Configured language {lang} at {place} could not be loaded"
 #~ msgstr "Seadistatud keelt {lang} ei õnnestunud laadida asukohast {place}"
 
@@ -4472,7 +4390,6 @@ msgstr "sool"
 #~ msgid "LumberjackCollector"
 #~ msgstr "LumberjackCollector"
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "Ühel sinu asunikul ei ole turuplatsi läheduses."
 
@@ -4563,7 +4480,6 @@ msgstr "sool"
 #~ msgid "Captain's log"
 #~ msgstr "Kapteni logi"
 
-# 94%
 #~ msgid "Build settlement:"
 #~ msgstr "Ehita koloonia:"
 
@@ -4650,7 +4566,6 @@ msgstr "sool"
 #~ msgid "Unknown Horizons Version %s"
 #~ msgstr "Unknown Horizons Versioon %s"
 
-# 80%
 #~ msgid "Failed to load FIFE:"
 #~ msgstr "FIFE laadimine ebaõnnestus:"
 

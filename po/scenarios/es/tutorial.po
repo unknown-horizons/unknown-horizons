@@ -679,7 +679,6 @@ msgstr ""
 "comerciar. Lo explicaremos más detenidamente una vez que estés listo para "
 "ello.."
 
-# 89%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
@@ -1449,7 +1448,6 @@ msgstr ""
 msgid "Thanks!"
 msgstr "¡Gracias!"
 
-# 96%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"

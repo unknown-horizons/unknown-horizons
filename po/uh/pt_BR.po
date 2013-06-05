@@ -18,12 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-# 86%
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons travou."
 
-# 83%
 #: run_uh.py:222
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "Desculpe por isso, iremos resolver este problema."
@@ -144,22 +142,18 @@ msgstr "Construções relacionadas"
 msgid "Inhabitants"
 msgstr "habitantes"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr "Aumentar a velocidade do jogo (+)"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Diminuir a velocidade do jogo (-)"
 
-# 87%
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
 msgstr "Rotacionar o mapa em sentido anti-horário (,)"
 
-# 83%
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
 msgstr "Rotacionar o mapa em sentido horário (.)"
@@ -176,7 +170,6 @@ msgstr "Menos zoom"
 msgid "Destroy (X)"
 msgstr "Destruir (X)"
 
-# 76%
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
 msgstr "Diário do Capitão (L)"
@@ -310,7 +303,6 @@ msgstr "Inimigo"
 msgid "Building overview"
 msgstr "Visão geral das construções"
 
-# 95%
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
@@ -340,7 +332,6 @@ msgstr "Impostos pagos"
 msgid "Taxes:"
 msgstr "Impostos:"
 
-# 87%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
@@ -395,7 +386,6 @@ msgstr "Sumário"
 msgid "houses"
 msgstr "casas"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "residentes"
@@ -439,7 +429,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "Ele contem estes recursos:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -478,7 +467,6 @@ msgstr ""
 "Este é um navio livro de troca. Ele ira visitar você de tempo em tempo para "
 "comprar ou vender bens."
 
-# 95%
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:27
@@ -486,7 +474,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr "Utilização dos coletores"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -506,7 +493,6 @@ msgstr "Comércio"
 msgid "Build settlement"
 msgstr "Construir colônia"
 
-# 95%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
@@ -572,7 +558,6 @@ msgstr "Pausar produção"
 msgid "Start production"
 msgstr "Começar produção"
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -613,12 +598,10 @@ msgstr "Apagar registro"
 msgid "Move down"
 msgstr "Ir para baixo"
 
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
 msgstr "Selecionar um recurso:"
 
-# 80%
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
@@ -708,7 +691,6 @@ msgstr "Fechar"
 msgid "Player scores"
 msgstr "Pontuação do jogador"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -758,7 +740,6 @@ msgstr "Edifícios"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Quantidade de edifícios na(s) colônia(s) do jogador"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
@@ -794,7 +775,6 @@ msgstr ""
 msgid "Total"
 msgstr "Total"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -926,7 +906,6 @@ msgstr "Rotacionar edifícios ou mapa no sentido horário"
 msgid "Show build menu"
 msgstr "Mostrar menu do edifício"
 
-# 75%
 #: content/gui/xml/mainmenu/help.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
@@ -1114,7 +1093,6 @@ msgstr "Editor"
 msgid "Credits"
 msgstr "Créditos"
 
-# 80%
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
 msgstr "Criar jogo - Multiplayer"
@@ -1208,7 +1186,6 @@ msgstr "Novo jogo - Multiplayer"
 msgid "Create a new game"
 msgstr "Criar um novo jogo"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Carregar jogo:"
@@ -1337,7 +1314,6 @@ msgstr "Quando ativado, arrastar o ponteiro do mouse irá mover a câmera"
 msgid "0 is default system settings"
 msgstr "0 = é as configurações padrões"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Sensibilidade do mouse:"
@@ -1443,7 +1419,6 @@ msgstr "Se definido 0, usa a rota padrão"
 msgid "Network port:"
 msgstr "Porta de rede:"
 
-# 84%
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Reset to default settings"
 msgstr "Define para configurações padrões"
@@ -1452,7 +1427,6 @@ msgstr "Define para configurações padrões"
 msgid "Discard current changes"
 msgstr "Descartar mudanças feitas"
 
-# 83%
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
 msgstr "Aplicar"
@@ -1502,8 +1476,6 @@ msgstr "Modo livre"
 msgid "Start game:"
 msgstr "Começar jogo:"
 
-# 90%
-# 100%
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
 msgstr "Começar jogo"
@@ -1571,7 +1543,6 @@ msgstr "Nome de arquivo inválido recebido."
 msgid "Error"
 msgstr "Erro"
 
-# 75%
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
 msgid "Failed to save."
 msgstr "Falha ao salvar."
@@ -1620,7 +1591,6 @@ msgstr "Falha a carregar rapidamente."
 msgid "An error happened during quicksave."
 msgstr "Um erro ocorreu durante ao salvar rapidamente."
 
-# 86%
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
 msgstr "Seu mapa não foi salvo."
@@ -1707,12 +1677,10 @@ msgstr ""
 "Por favor check a porta que você colocou e tenha certeza que especificou um "
 "range."
 
-# 81%
 #: horizons/engine/settingshandler.py:236
 msgid "Failed to apply new network settings."
 msgstr "Falha ao aplicar as novas configurações de rede."
 
-# 78%
 #: horizons/engine/settingshandler.py:237
 #: horizons/gui/modules/multiplayermenu.py:131
 msgid ""
@@ -1721,7 +1689,6 @@ msgstr ""
 "Especificações de rede não puderam ser inicializadas com a configuração "
 "atual."
 
-# 75%
 #: horizons/engine/settingshandler.py:238
 #: horizons/gui/modules/multiplayermenu.py:132
 msgid "Check the settings you specified in the network section."
@@ -1937,7 +1904,6 @@ msgstr ""
 "Por favor verifique sua conexão com a internet. Se estiver tudo certo, isso "
 "significa que nosso servidor master está temporariamente desligado."
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Ocorreu algo errado com a rede:"
@@ -1995,7 +1961,6 @@ msgstr "Senha do jogo"
 msgid "Enter password:"
 msgstr "Digite a senha:"
 
-# 79%
 #: horizons/gui/modules/multiplayermenu.py:351
 #: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
@@ -2085,7 +2050,6 @@ msgstr "Fechar sessão"
 msgid "No saved games"
 msgstr "Nenhum jogo salvo"
 
-# 96%
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
 msgstr "Não existe jogos salvos para carregar."
@@ -2112,7 +2076,6 @@ msgstr "Um mapa salvo com nome {name} já existe."
 msgid "Overwrite it?"
 msgstr "Deseja sobrescrever?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Savedate desconhecido"
@@ -2150,12 +2113,10 @@ msgstr "Versão incompatível"
 msgid "No file selected"
 msgstr "Nenhum arquivo selecionado"
 
-# 97%
 #: horizons/gui/modules/select_savegame.py:257
 msgid "You need to select a savegame to delete."
 msgstr "Você tem que selecionar um jogo salvo para pode apagar."
 
-# 84%
 #: horizons/gui/modules/select_savegame.py:261
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
@@ -2177,12 +2138,10 @@ msgstr "Falha ao apagar o jogo salvo!"
 msgid "Invalid player name"
 msgstr "Nome de jogador inválido"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Você inseriu um nome de jogador inválido."
 
-# 76%
 #: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Densidade de recursos:"
@@ -2223,7 +2182,6 @@ msgstr "O arquivo selecionado não é um cenário valido."
 msgid "Error message:"
 msgstr "Mensagem de erro:"
 
-# 97%
 #: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Por favor reporte isso ao autor."
@@ -2266,8 +2224,6 @@ msgstr "{ship} (posição na fila: {place})"
 msgid "Build this ship!"
 msgstr "Construir este navio!"
 
-# 76%
-# 100%
 #: horizons/gui/tabs/boatbuildertabs.py:250
 msgid "Fisher boats"
 msgstr "Barco pesqueiro"
@@ -2288,7 +2244,6 @@ msgstr "Navios de guerra"
 msgid "Confirm order"
 msgstr "Confirmar ordem"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 msgid "Warehouse overview"
@@ -2368,7 +2323,6 @@ msgstr "Não permitir melhorias"
 msgid "Allow upgrades"
 msgstr "Permitir melhorias"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 msgid "Unit overview"
 msgstr "Visão geral da unidade"
@@ -2395,12 +2349,10 @@ msgstr "O navio precisa estar próximo a uma ilha para fundar uma colônia."
 msgid "You already have a settlement on this island."
 msgstr "Você já tem uma colônia nesta ilha."
 
-# 91%
 #: horizons/gui/tabs/shiptabs.py:87
 msgid "Load/Unload"
 msgstr "Carregar/Descarregar"
 
-# 88%
 #: horizons/gui/tabs/shiptabs.py:89
 msgid "Buy/Sell"
 msgstr "Comprar/Vender"
@@ -2413,7 +2365,6 @@ msgstr "Muito distante de um armazém próprio ou aliado"
 msgid "Cannot equip trade ship with weapons"
 msgstr "Não pode equipar navios de comércio com armas"
 
-# 98%
 #: horizons/gui/tabs/shiptabs.py:105
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr "Não é possível equipar navios de comércio com armas."
@@ -2699,7 +2650,6 @@ msgstr "Produz Cacau usado na confeitaria. Precisa de uma fazenda."
 msgid "Corn Field"
 msgstr "Campo de milho"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 msgid "Yields corn. Needs a farm."
@@ -2955,7 +2905,6 @@ msgstr "Consegue pedras de uma montanha."
 msgid "Storage Tent"
 msgstr "Tenda de armazenamento"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 msgid "Storage Hut"
@@ -2996,7 +2945,6 @@ msgstr "Tenda"
 msgid "Hut"
 msgstr "Cabana"
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 msgid "House"
@@ -3118,7 +3066,6 @@ msgstr "Produz vinho com uvas."
 msgid "Warehouse"
 msgstr "Armazém"
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 msgid "Weaver's Hut"
@@ -3191,7 +3138,6 @@ msgstr "Moradores e infra-estrutura"
 msgid "Services"
 msgstr "Serviços"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:471
@@ -3218,7 +3164,6 @@ msgstr "Infra-estrutura"
 msgid "Military Service"
 msgstr "Serviço militar"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
@@ -3342,12 +3287,10 @@ msgstr "Pronto"
 msgid "You have won!"
 msgstr "Você ganhou!"
 
-# 97%
 #: horizons/scenario/actions.py:96
 msgid "You have completed this scenario."
 msgstr "Você completou este cenário."
 
-# 75%
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
 msgstr "Você quer continuar jogando?"
@@ -3380,12 +3323,10 @@ msgstr "Acesso negado"
 msgid "The savegame file could be read-only or locked by another process."
 msgstr "O arquivo de jogo só pode ser lido ou fechado por outro processo."
 
-# 86%
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
 msgstr "Seu jogo não foi salvo."
 
-# 92%
 #: horizons/util/checkupdates.py:81
 msgid "New version of Unknown Horizons"
 msgstr "Nova versão do unknown Horizons"
@@ -3553,7 +3494,6 @@ msgstr "Seu edifício pegou fogo!"
 msgid "medical herbs"
 msgstr "Ervas medicinais"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Aristocrats"
 msgstr "Aristocratas"
@@ -3562,7 +3502,6 @@ msgstr "Aristocratas"
 msgid "happiness"
 msgstr "felicidade"
 
-# 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
 msgstr "Alguns dos seu habitantes seus saíram."
@@ -3604,7 +3543,6 @@ msgstr "Suínos para abate"
 msgid "trees"
 msgstr "Arvores"
 
-# 83%
 #. This is a database entry: the name of a resource.
 msgid "clay deposit"
 msgstr "Deposito de argila"
@@ -3630,7 +3568,6 @@ msgstr "Minério de ferro"
 msgid "clay"
 msgstr "Argila"
 
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Merchants"
 msgstr "Comerciantes"
@@ -3643,7 +3580,6 @@ msgstr "Licor"
 msgid "iron ingots"
 msgstr "Lingotes de ferro"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "Screenshot has been saved to {file}."
@@ -3781,7 +3717,6 @@ msgstr "peixe"
 msgid "charcoal"
 msgstr "carvão vegetal"
 
-# 76%
 #. This is a database entry: the name of a resource.
 msgid "stone deposit"
 msgstr "deposito de pedra"
@@ -3802,7 +3737,6 @@ msgstr "bolotas"
 msgid "tobacco plants"
 msgstr "planta de tabaco"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "You need more {resource} to build this building."
@@ -3826,7 +3760,6 @@ msgstr "grama"
 msgid "alvearies"
 msgstr "aviários"
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been autosaved."
 msgstr "Seu jogo foi salvo."
@@ -3839,8 +3772,6 @@ msgstr "Um de seus campos requer uma fazenda para colher suas lavouras."
 msgid "Your mine has run out of resources."
 msgstr "Sua mina está sem recursos."
 
-# 77%
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "Your inhabitants reached level {level}."
@@ -3918,8 +3849,6 @@ msgstr "condimentos"
 msgid "candles"
 msgstr "doces"
 
-# 78%
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "A new settlement was founded by {player}."
@@ -3930,7 +3859,6 @@ msgstr "Uma nova colônia foi fundada por {player}."
 msgid "vines"
 msgstr "veideiras"
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been saved."
 msgstr "Seu jogo foi salvo."
@@ -4090,12 +4018,10 @@ msgstr "sal"
 #~ msgid "Toggle console on/off"
 #~ msgstr "Console aan/uit"
 
-# 78%
 #, fuzzy
 #~ msgid "Only show games with the same version:"
 #~ msgstr "Toon alleen spellen met gelijke versie:"
 
-# 82%
 #~ msgid "A new ship has been created."
 #~ msgstr "Er is een nieuw schip gebouwd."
 
@@ -4121,7 +4047,6 @@ msgstr "sal"
 #~ msgid "Select a savegame"
 #~ msgstr "Selecteer een opgeslagen spel"
 
-# 83%
 #~ msgid "Error:"
 #~ msgstr "Fout:"
 
@@ -4217,46 +4142,27 @@ msgstr "sal"
 #~ msgid "Build fields"
 #~ msgstr "Bouw velden"
 
-# 88%
-# 81%
 #~ msgid "1 resident"
 #~ msgstr "1 bewoner"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 bewoners"
 
-# 88%
-# 81%
 #~ msgid "3 residents"
 #~ msgstr "3 bewoners"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 bewoners"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 bewoners"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "6 residents"
 #~ msgstr "6 bewoners"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "7 residents"
 #~ msgstr "7 bewoners"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "8 residents"
 #~ msgstr "8 bewoners"
 
@@ -4373,7 +4279,6 @@ msgstr "sal"
 #~ "Wanneer de fout nogmaals toont, neem a.u.b. contact op met het "
 #~ "ontwikkelingsteam:"
 
-# 83%
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Onze excuses hiervoor. Wij willen deze fout graag oplossen."
 
@@ -4554,7 +4459,6 @@ msgstr "sal"
 #~ msgid "Sell resources"
 #~ msgstr "Verkoop grondstoffen"
 
-# 77%
 #~ msgid "Tent Ruin"
 #~ msgstr "Tent ruïne"
 
@@ -4636,7 +4540,6 @@ msgstr "sal"
 #~ msgid "Settler buildings"
 #~ msgstr "Kolonisten gebouwen"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "Verbrand een boel planken naar houtskool."
 
@@ -4793,7 +4696,6 @@ msgstr "sal"
 #~ msgid "LumberjackCollector"
 #~ msgstr "Houthakker Verzamelaar"
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "Een van uw kolonisten heeft geen marktplaats binnen bereik."
 
@@ -4994,7 +4896,6 @@ msgstr "sal"
 #~ msgid "capacity utilization"
 #~ msgstr "bezettingsgraad"
 
-# 94%
 #~ msgid "Build settlement:"
 #~ msgstr "Plaats nederzetting:"
 
@@ -5016,7 +4917,6 @@ msgstr "sal"
 #~ msgid "Error: Found multiple matches: "
 #~ msgstr "Fout: Meerdere resultaten gevonden: "
 
-# 81%
 #~ msgid "Error: Cannot find campaign \"%s\"."
 #~ msgstr "Fout: Kan de campagne \"%s\" niet vinden."
 
@@ -5032,7 +4932,6 @@ msgstr "sal"
 #~ msgid "You have completed this scenario. "
 #~ msgstr "U heeft het scenario voltooid. "
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Opgeslagen op %s"
 
@@ -5128,7 +5027,6 @@ msgstr "sal"
 #~ "Als deze fout zich blijft voordoen, neem dan contact op met het "
 #~ "ontwikkelingsteam: unknown-horizons.org/support/"
 
-# 80%
 #~ msgid "Failed to load FIFE:"
 #~ msgstr "FIFE laden mislukt:"
 
@@ -5302,19 +5200,15 @@ msgstr "sal"
 #~ msgid "Click on slot icon to toggle mode:"
 #~ msgstr "Clique no ícone de compartimento para ativar/desativar o modo:"
 
-# 75%
 #~ msgid "Error: Cannot find map '{name}'."
 #~ msgstr "Impossível localizar mapa \"{name}\"."
 
-# 96%
 #~ msgid "Error: Found multiple matches:"
 #~ msgstr "Foram encontradas múltiplas ocorrências:"
 
-# 78%
 #~ msgid "Error: Cannot find savegame '{name}'."
 #~ msgstr "Impossível localizar o jogo salvo \"{name}\"."
 
-# 86%
 #~ msgid "Configured language {lang} at {place} could not be loaded"
 #~ msgstr "A configuração da linguagem {lang} em {place} não pode ser aberta"
 
@@ -5334,11 +5228,9 @@ msgstr "sal"
 #~ "Mostra os planos de inteligência artificial de forma destacada (apenas "
 #~ "para efeitos de desenvolvimento)."
 
-# 81%
 #~ msgid "Error: Cannot find scenario \"%s\"."
 #~ msgstr "Erro: Não foi possível encontrar o cenário \"%s\"."
 
-# 83%
 #~ msgid "Error: Cannot find scenario with file \"%s\"."
 #~ msgstr "Erro: Não foi possível encontrar o cenário para o arquivo \"%s\"."
 
