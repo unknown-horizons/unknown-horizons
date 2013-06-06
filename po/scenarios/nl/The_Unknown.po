@@ -7,10 +7,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2013-05-10 12:07+0200\n"
+"PO-Revision-Date: 2013-06-06 14:59+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
-"Language-Team: Dutch <http://hosted.weblate.org/projects/uh/the-unknown/nl/"
-">\n"
+"Language-Team: Dutch <http://hosted.weblate.org/projects/uh/the-unknown/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,15 +22,15 @@ msgid "easy"
 msgstr "makkelijk"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
-"U bent de kapitein van een schip onder de Engelse vlag in het jaar 1740. U "
-"en uw bemanning waren op weg naar een Engelse kolonie in de grote oceaan.\n"
-"Alles liep volgens plan, tot u allen in een storm terecht kwamen..."
+"Jij bent de kapitein van een schip onder de Engelse vlag in het jaar 1740. "
+"Jij en je bemanning waren op weg naar een Engelse kolonie in de grote "
+"oceaan.\n"
+"Alles liep volgens plan, tot jullie allen in een storm terecht kwamen…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -71,14 +70,13 @@ msgid "22nd November 1740"
 msgstr "22 november 1740"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
 "De haven is gebouwd en daar putten we nieuwe hoop uit. Ik maak me echter nog "
-"steeds zorgen over de komende dagen... het voedsel raakt op en we hebben een "
-"tekort aan bouwmaterialen."
+"steeds zorgen over de komende dagen... het voedsel raakt op en we hebben "
+"een tekort aan bouwmaterialen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -151,7 +149,6 @@ msgstr ""
 "nachts een dak boven het hoofd heb."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
@@ -163,7 +160,7 @@ msgstr ""
 "dat we hier nog wel een tijdje zullen zitten, dus we moeten er maar het "
 "beste van maken.\n"
 "We kunnen alleen maar proberen hier een samenleving op te bouwen en een weg "
-"terug naar huis te vinden..."
+"terug naar huis te vinden…"
 
 #. This is the text body of a logbook page.
 msgid ""
