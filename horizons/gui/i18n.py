@@ -71,6 +71,11 @@ def update_translations(message):
 		all_widgets = translations.text_translations.get(filename, {})
 		for (element_name, attribute), translation in all_widgets.iteritems():
 			element = widget.findChild(name=element_name)
+			if element is None:
+				# something hidden by pychan currently, we cannot find it
+				log.debug('Could not find element `%s` in widget `%s` - '
+				          'assuming it is hidden', element_name, widget)
+				continue
 			replace_attribute(element, attribute, translation)
 			#NOTE pychan + reloading font = ???
 			element.font = element.font
