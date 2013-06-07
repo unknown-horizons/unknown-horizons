@@ -24,7 +24,7 @@ import os
 from fife.extensions.pychan import loadXML
 from fife.extensions.pychan.widgets import Container, HBox, Icon
 
-from horizons.i18n import translate_widget
+from horizons.gui.i18n import translate_widget
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback

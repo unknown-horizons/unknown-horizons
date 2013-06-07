@@ -62,7 +62,7 @@ print "%s" % VERSION.RELEASE_VERSION')
 
 RESULT_FILE=po/uh/unknown-horizons.pot
 RESULT_FILE_SERVER=po/uh-server/unknown-horizons-server.pot
-XML_PY_FILE=horizons/i18n/guitranslations.py
+XML_PY_FILE=horizons/gui/translations.py
 YAML_PY_FILE=horizons/i18n/objecttranslations.py
 SQL_POT_FILE=po/sqltranslations.pot
 
@@ -104,7 +104,7 @@ echo "=> Creating UH gettext pot template file at $RESULT_FILE."
 # Python files
 (
   find . -mindepth 1 -maxdepth 1 -name \*.py && \
-  find horizons \( -name \*.py ! -name "guitranslations.py" \) \
+  find horizons \( -name \*.py ! -name "translations.py" \) \
 ) | xgettext --files-from=- --output="$RESULT_FILE" \
              --join-existing \
              --from-code=UTF-8 --add-comments \

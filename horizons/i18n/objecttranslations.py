@@ -40,16 +40,16 @@
 #
 ###############################################################################
 
-object_translations = {}
 
-def set_translations():
-	"""Instead of overwriting object_translations, operates on the same
-	object (i.e. deleting dict keys, then updating) so that everything
-	importing object_translations once keeps getting updates. #1905, #1909
-	"""
-	global object_translations
-	object_translations.clear()
-	object_translations.update({
+
+
+
+
+
+
+
+
+object_translations = {
 
 	"content/objects/buildings/alvearies.yaml" : {
 		# name of buildings:alvearies
@@ -512,4 +512,4 @@ def set_translations():
 		# tab5_headline of gui_buildmenu:build_menu_per_type
 		"tab5_headline"               : _("Military"),
 		},
-	})
+}

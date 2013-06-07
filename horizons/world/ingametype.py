@@ -22,6 +22,7 @@
 import hashlib
 
 from horizons.constants import TIER
+from horizons.i18n import _lazy
 
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
@@ -60,8 +61,18 @@ class IngameType(type):
 			{'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
 
 	def _strip_translation_marks(self, string):
+		"""Converts object translation `string` to translated object for in-game display.
+
+		Object properties supposed to be translated are recognized by the
+		(subsequently stripped) leading `_ `.
+		If `string` is supposed to be translated, returns lazy translation object of `string`.
+		If `string` is not supposed to be translated, returns `string` unchanged.
+		If `string` is None (not defined or empty in yaml), returns empty unicode.
+		"""
+		if not string:
+			return u''
 		if string.startswith("_ "):
-			return string[2:]
+			return _lazy(string[2:])
 		else:
 			return string
 
@@ -84,11 +95,11 @@ class IngameType(type):
 					"Found:\n%s" % (name_data, start_tier)
 					self._level_specific_names[lvl] = name
 				else:
-					self._level_specific_names[lvl] = _(self._strip_translation_marks(name))
+					self._level_specific_names[lvl] = self._strip_translation_marks(name)
 
 			self._name = self._level_specific_names[start_tier] # default name: lowest available
 		else: # assume just one string
-			self._name = _( self._strip_translation_marks( name_data ) )
+			self._name = self._strip_translation_marks( name_data )
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']
