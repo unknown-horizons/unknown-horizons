@@ -86,9 +86,6 @@ def update_all_translations():
 		all_widgets = guitranslations.text_translations.get(filename, {})
 		for (element_name, attribute), translation in all_widgets.iteritems():
 			element = widget.findChild(name=element_name)
-			if element is None:
-				# something hidden by pychan currently, we cannot find it
-				continue
 			replace_attribute(element, attribute, translation)
 			#NOTE pychan + reloading font = ???
 			element.font = element.font
