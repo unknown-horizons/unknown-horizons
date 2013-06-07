@@ -49,12 +49,7 @@ class BuildingClass(IngameType):
 		super(BuildingClass, self).__init__(id, yaml_data)
 
 		self.settler_level = yaml_data['settler_level']
-		try:
-			# NOTE: tooltip texts are always untranslated here, use db.get_building_tooltip()
-			self.tooltip_text = self._strip_translation_marks(yaml_data['yaml_file']['tooltip_text'])
-		except KeyError: # not found => use value defined in yaml unless it is null
-			tooltip_text = yaml_data['tooltip_text']
-			self.tooltip_text = tooltip_text or u''
+		self.tooltip_text = self._strip_translation_marks(yaml_data['tooltip_text'])
 		self.size = (int(yaml_data['size_x']), int(yaml_data['size_y']))
 		self.width = self.size[0]
 		self.height = self.size[1]

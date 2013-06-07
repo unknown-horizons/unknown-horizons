@@ -61,6 +61,16 @@ class IngameType(type):
 			{'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
 
 	def _strip_translation_marks(self, string):
+		"""Converts object translation `string` to translated object for in-game display.
+
+		Object properties supposed to be translated are recognized by the
+		(subsequently stripped) leading `_ `.
+		If `string` is supposed to be translated, returns lazy translation object of `string`.
+		If `string` is not supposed to be translated, returns `string` unchanged.
+		If `string` is None (not defined or empty in yaml), returns empty unicode.
+		"""
+		if not string:
+			return u''
 		if string.startswith("_ "):
 			return _lazy(string[2:])
 		else:
