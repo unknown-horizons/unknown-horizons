@@ -24,7 +24,7 @@ import logging
 import uuid
 
 from horizons import network
-from horizons.i18n.utils import find_available_languages
+from horizons.i18n import find_available_languages
 from horizons.network import packets, enet
 from horizons.network.common import Player, Game, ErrorType
 

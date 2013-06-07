@@ -33,7 +33,7 @@
 #          You need to update it to see changes to strings in-game.
 #          DO NOT MANUALLY UPDATE THIS FILE (by editing strings).
 #          The script to generate .pot templates calls the following:
-# ./development/extract_strings_from_xml.py  horizons/i18n/guitranslations.py
+# ./development/extract_strings_from_xml.py  horizons/gui/translations.py
 #
 # NOTE: In string-freeze mode (shortly before releases, usually
 #       announced in a meeting), updates to this file must not happen

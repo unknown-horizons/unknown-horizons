@@ -91,20 +91,6 @@ class UhDbAccessor(DbReader):
 
 	# Building table
 
-	def get_building_tooltip(self, building_class_id):
-		"""Returns tooltip text of a building class.
-		ATTENTION: This text is automatically translated when loaded
-		already. DO NOT wrap the return value of this method in _()!
-		@param building_class_id: class of building, int
-		@return: string tooltip_text
-		"""
-		buildingtype = Entities.buildings[building_class_id]
-		#xgettext:python-format
-		# You usually do not need to change anything here when translating
-		tooltip = _("{building}: {description}")
-		return tooltip.format(building=_(buildingtype._name),
-		                      description=_(buildingtype.tooltip_text))
-
 	@decorators.cachedmethod
 	def get_related_building_ids(self, building_class_id):
 		"""Returns list of building ids related to building_class_id.

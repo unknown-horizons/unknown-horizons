@@ -137,7 +137,7 @@ class BuildTab(TabInterface):
 				return
 
 			building = Entities.buildings[building_id]
-			button.helptext = self.session.db.get_building_tooltip(building_id)
+			button.helptext = building.get_tooltip()
 
 			# Add necessary resources to tooltip
 			# [br] means newline
