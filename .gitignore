@@ -18,7 +18,7 @@ content/lang/
 # Compiled translation files (scenarios, temporary)
 po/mo/
 # Temporary file for generating translation templates
-po/sqltranslations.py
+po/sqltranslations.pot
 
 # Data collected by coverage
 .coverage*
