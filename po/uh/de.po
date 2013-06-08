@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-06-03 22:13+0200\n"
+"PO-Revision-Date: 2013-06-08 17:16+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -1343,7 +1343,7 @@ msgstr "Intervall für autom. Sicherung (Minuten):"
 
 #: content/gui/xml/mainmenu/settings.xml:145
 msgid "Number of autosaves:"
-msgstr "Anzahl der automatisch gespeicherten Spielstände:"
+msgstr "Anzahl automatisch gespeicherte Spielstände:"
 
 #: content/gui/xml/mainmenu/settings.xml:153
 msgid "Number of quicksaves:"
