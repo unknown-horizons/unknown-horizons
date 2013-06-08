@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-06-08 17:16+0200\n"
+"PO-Revision-Date: 2013-06-08 17:19+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -1415,7 +1415,7 @@ msgstr "Scrollverzögerung:"
 
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "Choose a quote type:"
-msgstr "Wähle ein Zitat-Typ:"
+msgstr "Zitat-Typ:"
 
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "What kind of quote to display while loading a game"
