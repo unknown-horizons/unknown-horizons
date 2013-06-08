@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-06-08 20:33+0200\n"
+"PO-Revision-Date: 2013-06-08 20:44+0200\n"
 "Last-Translator: Fede Muller <fedem8@live.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -27,7 +27,7 @@ msgstr "Lamentamos mucho lo sucedido y queremos reparar el problema subyacente."
 
 #: run_uh.py:223
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Para hacer esto, necesitamos la información de este registro:"
+msgstr "Para lograr esto, necesitamos la información del registro:"
 
 #: run_uh.py:225
 msgid ""
@@ -39,11 +39,11 @@ msgstr ""
 
 #: run_uh.py:273
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "No se pueden encontrar la librería \"PyYAML\"."
+msgstr "No se puede encontrar la librería requerida \"PyYAML\"."
 
 #: run_uh.py:274
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr "PyYAML (Librería requirida) no se encuentra y necesita ser instalada."
+msgstr "PyYAML (Librería requerida) no se encuentra y necesita ser instalada."
 
 #: run_uh.py:275
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
@@ -60,7 +60,7 @@ msgstr ""
 
 #: run_uh.py:310
 msgid "Thank you for using Unknown Horizons!"
-msgstr "¡Gracias por usar Unknown Horizons!"
+msgstr "¡Gracias por utilizar Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -1116,9 +1116,8 @@ msgstr "Nombre de la partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
-#, fuzzy
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "Se mostrará a los demás jugadores para que reconozcan la partida."
+msgstr "Esto se mostrará a los otros jugadores para que reconozcan la partida."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
@@ -1831,24 +1830,20 @@ msgstr "Presiona 'T' para hacer los árboles transparentes."
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:101
-#, fuzzy
 msgid "Starting engine…"
-msgstr "Iniciando motor..."
+msgstr "Iniciando motor…"
 
 #: horizons/gui/modules/loadingscreen.py:102
-#, fuzzy
 msgid "Catching fish…"
-msgstr "Capturando pescado..."
+msgstr "Capturando pescado…"
 
 #: horizons/gui/modules/loadingscreen.py:103
-#, fuzzy
 msgid "Drawing user interface…"
-msgstr "Dibujando interfaz de usuario..."
+msgstr "Dibujando interfaz de usuario…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-#, fuzzy
 msgid "Activating timer…"
-msgstr "Activando temporizador..."
+msgstr "Activando temporizador…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 #, fuzzy
@@ -1856,24 +1851,20 @@ msgid "Chomping game data…"
 msgstr "Convidando datos del juego..."
 
 #: horizons/gui/modules/loadingscreen.py:106
-#, fuzzy
 msgid "Shaping islands…"
-msgstr "Conformando islas..."
+msgstr "Conformando islas…"
 
 #: horizons/gui/modules/loadingscreen.py:107
-#, fuzzy
 msgid "Preparing blueprints…"
-msgstr "Preparando planos..."
+msgstr "Preparando planos…"
 
 #: horizons/gui/modules/loadingscreen.py:108
-#, fuzzy
 msgid "Filling world with water…"
-msgstr "Llenando el mundo de agua..."
+msgstr "Llenando el mundo de agua…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Raising animals…"
-msgstr "Criando animales..."
+msgstr "Criando animales…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 #, fuzzy
@@ -1881,9 +1872,8 @@ msgid "Convincing AI…"
 msgstr "Convenciendo IA..."
 
 #: horizons/gui/modules/loadingscreen.py:111
-#, fuzzy
 msgid "Burying treasures…"
-msgstr "Enterrando tesoros..."
+msgstr "Enterrando tesoros…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
