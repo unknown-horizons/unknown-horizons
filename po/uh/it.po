@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-06-03 23:08+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"PO-Revision-Date: 2013-06-08 20:50+0200\n"
+"Last-Translator: Fede Muller <fedem8@live.com>\n"
 "Language-Team: Italian <http://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -94,15 +94,15 @@ msgstr ""
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Selezionare dimensione penello:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Selezionare terreno:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(clic destro per fermare)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -167,7 +167,7 @@ msgstr "Ridurre"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Distruggere (X)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
@@ -183,7 +183,7 @@ msgstr "diplomazia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Menu del gioco (Esc)"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
