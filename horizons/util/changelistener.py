@@ -84,7 +84,7 @@ class ChangeListener(object):
 		assert callable(listener)
 		if not no_duplicates or listener not in self.__listeners:
 			self.__listeners.append(listener)
-		if call_listener_now: # also call if duplicate is adde
+		if call_listener_now: # also call if duplicate is added
 			listener()
 
 	def remove_change_listener(self, listener):

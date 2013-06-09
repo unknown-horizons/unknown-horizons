@@ -86,7 +86,7 @@ class Minimap(object):
 		@param world: World object or fake thereof
 		@param view: View object for cam control. Can be None to disable this
 		@param renderer: renderer to be used if position isn't an icon
-		@param targetrenderer: fife target rendererfor drawing on icons
+		@param targetrenderer: fife target renderer for drawing on icons
 		@param imagemanager: fife imagemanager for drawing on icons
 		@param cam_border: boolean, whether to draw the cam border
 		@param use_rotation: boolean, whether to use rotation (it must also be enabled in the settings)
@@ -286,14 +286,15 @@ class Minimap(object):
 		"""
 		if self.preview:
 			return # we don't do anything in this mode
+		button = event.getButton()
 		map_coords = event.map_coords
-		moveable_selecteds = [ i for i in self.session.selected_instances if i.movable ]
-		if moveable_selecteds and event.getButton() == fife.MouseEvent.RIGHT:
+		if button == fife.MouseEvent.RIGHT:
 			if drag:
 				return
-			for i in moveable_selecteds:
-				Act(i, *map_coords).execute(self.session)
-		elif event.getButton() == fife.MouseEvent.LEFT:
+			for i in self.session.selected_instances:
+				if i.movable:
+					Act(i, *map_coords).execute(self.session)
+		elif button == fife.MouseEvent.LEFT:
 			if self.view is None:
 				print "Warning: Can't handle minimap clicks since we have no view object"
 			else:
@@ -342,32 +343,34 @@ class Minimap(object):
 			self.icon.hide_tooltip()
 
 	def _show_tooltip(self, event):
-		if hasattr(self, "icon"): # only supported for icon mode atm
-			if self.fixed_tooltip is not None:
-				self.icon.helptext = self.fixed_tooltip
-				self.icon.position_tooltip(event)
-				#self.icon.show_tooltip()
-			else:
-				coords = self._get_event_coords(event)
-				if not coords: # no valid/relevant event location
-					self.icon.hide_tooltip()
-					return
+		if not hasattr(self, "icon"):
+			# only supported for icon mode atm
+			return
+		if self.fixed_tooltip is not None:
+			self.icon.helptext = self.fixed_tooltip
+			self.icon.position_tooltip(event)
+			#self.icon.show_tooltip()
+		else:
+			coords = self._get_event_coords(event)
+			if not coords: # no valid/relevant event location
+				self.icon.hide_tooltip()
+				return
 
-				tile = self.world.get_tile( Point(*coords) )
-				if tile is not None and tile.settlement is not None:
-					new_helptext = tile.settlement.get_component(NamedComponent).name
-					if self.icon.helptext != new_helptext:
-						self.icon.helptext = new_helptext
-						self.icon.show_tooltip()
-					else:
-						self.icon.position_tooltip(event)
+			tile = self.world.get_tile( Point(*coords) )
+			if tile is not None and tile.settlement is not None:
+				new_helptext = tile.settlement.get_component(NamedComponent).name
+				if self.icon.helptext != new_helptext:
+					self.icon.helptext = new_helptext
+					self.icon.show_tooltip()
 				else:
-					# mouse not over relevant part of the minimap
-					self.icon.hide_tooltip()
+					self.icon.position_tooltip(event)
+			else:
+				# mouse not over relevant part of the minimap
+				self.icon.hide_tooltip()
 
 	def highlight(self, tup, factor=1.0, speed=1.0, finish_callback=None, color=(0, 0, 0)):
 		"""Try to get the users attention on a certain point of the minimap.
-		@param tuple: world coords
+		@param tup: world coords
 		@param factor: float indicating importance of event
 		@param speed: animation speed as factor
 		@param finish_callback: executed when animation finishes
@@ -397,8 +400,9 @@ class Minimap(object):
 
 			radius = MIN_RAD + int(( float(part) / (STEPS // 2) ) * (MAX_RAD - MIN_RAD) )
 
+			draw_point = self.minimap_image.rendertarget.addPoint
 			for x, y in Circle( Point(*tup), radius=radius ).get_border_coordinates():
-				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), *color)
+				draw_point(render_name, fife.Point(x, y), *color)
 
 			ExtScheduler().add_new_object(lambda : high(i), self, INTERVAL, loops=1)
 
@@ -438,6 +442,7 @@ class Minimap(object):
 		render_name = self._get_render_name("ship_route") + str(self.__class__.__ship_route_counter.next())
 		color = unit.owner.color.to_tuple()
 		last_coord = None
+		draw_point = self.minimap_image.rendertarget.addPoint
 		for i in relevant_coords:
 			coord = self._world_to_minimap(i, use_rotation)
 			if last_coord is not None and \
@@ -446,14 +451,14 @@ class Minimap(object):
 			last_coord = coord
 			p.x = coord[0]
 			p.y = coord[1]
-			self.minimap_image.rendertarget.addPoint(render_name,
-			                                         p, *color)
+			draw_point(render_name, p, *color)
 
 		def cleanup():
 			self.minimap_image.set_drawing_enabled()
 			self.minimap_image.rendertarget.removeAll(render_name)
 
-		self.highlight(path[ -1 ], factor=0.4, speed= ( (1.0+math.sqrt(5) / 2) ), finish_callback=cleanup, color=color)
+		speed = 1.0 + math.sqrt(5) / 2
+		self.highlight(path[-1], factor=0.4, speed=speed, finish_callback=cleanup, color=color)
 
 		return True
 
@@ -502,8 +507,8 @@ class Minimap(object):
 				This code should be here, but since python can't do inlining, we have to inline
 				ourselves for performance reasons
 				covered_area = Rect.init_from_topleft_and_size(
-				  int(x * pixel_per_coord_x)+world_min_x, \
-				  int(y * pixel_per_coord_y)+world_min_y), \
+				  int(x * pixel_per_coord_x)+world_min_x,
+				  int(y * pixel_per_coord_y)+world_min_y),
 				  int(pixel_per_coord_x), int(pixel_per_coord_y))
 				real_map_point = covered_area.center
 				"""
@@ -593,14 +598,15 @@ class Minimap(object):
 
 			# TODO: nicer selected view
 			dummy_point0.set(coord[0], coord[1])
+			draw_point = self.minimap_image.rendertarget.addPoint
 			if ship in self.session.selected_instances:
-				self.minimap_image.rendertarget.addPoint(render_name, dummy_point0, *Minimap.COLORS["water"])
+				draw_point(render_name, dummy_point0, *Minimap.COLORS["water"])
 				for x_off, y_off in ((-2,  0),
 				                     (+2,  0),
 				                     ( 0, -2),
 				                     ( 0, +2)):
 					dummy_point1.set(coord[0] + x_off, coord[1] + y_off)
-					self.minimap_image.rendertarget.addPoint(render_name, dummy_point1, *color)
+					draw_point(render_name, dummy_point1, *color)
 
 		# draw settlement warehouses if something has changed
 		settlements = self.world.settlements
