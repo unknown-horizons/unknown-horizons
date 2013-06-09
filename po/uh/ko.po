@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2013-06-09 05:34+0200\n"
+"PO-Revision-Date: 2013-06-09 06:14+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -72,45 +72,50 @@ msgstr "지도 저장"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr ""
+msgstr "지도 불러오기"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
+#, fuzzy
 msgid "Settings"
-msgstr ""
+msgstr "설정"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
+#, fuzzy
 msgid "Help"
-msgstr ""
+msgstr "도움말"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "편집기 종료"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "붓의 크기를 선택:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "지형 선택:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
+#, fuzzy
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(중지 하려면 마우스 오른쪽 클릭)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
+#, fuzzy
 msgid "Game start"
-msgstr ""
+msgstr "게임 시작"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
+#, fuzzy
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "건물을 건설 하기 전에 거주지를 발견 해야 합니다!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
