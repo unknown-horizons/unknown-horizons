@@ -7,64 +7,68 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:01+0200\n"
-"PO-Revision-Date: 2011-11-28 01:13+0200\n"
-"Last-Translator: Anonymous Pootle User\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-06-09 05:34+0200\n"
+"Last-Translator: k ks <kmshts@naver.com>\n"
+"Language-Team: Korean <http://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #: run_uh.py:220
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Unknown Horizons이 깨졌습니다."
 
 #: run_uh.py:222
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr ""
+msgstr "이 문제에 대해 매우 죄송합니다. 저희는 근본적인 오류를 해결하고 싶습니다."
 
 #: run_uh.py:223
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "이것을 해결 하기 위해서는, 기록 파일안에 있는 정보가 필요합니다."
 
 #: run_uh.py:225
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"그것을 IRC나 홈페이지 포럼 게시판을 통해 우리에게 주세요, 자세한 방법은 http://unknown-horizons.org 를 "
+"참조하세요."
 
 #: run_uh.py:273
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr ""
+msgstr "오류: 필요한 라이브러리 \"PyYAML\"을 찾을 수 없습니다."
 
 #: run_uh.py:274
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr ""
+msgstr "누락된 PyYAML(필요한 라이브러리)를 설치 해야 합니다."
 
 #: run_uh.py:275
+#, fuzzy
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr ""
+msgstr "Windows installer는 http://pyyaml.org/wiki/PyYAML에서 사용할 수 있습니다."
 
 #: run_uh.py:276
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
-msgstr ""
+msgstr "리눅스 사용자는 \"pyyaml\" 또는 \"python-yaml\" 라는 이름으로 패키지 관리자를 사용하여 그것을 찾아내야 합니다."
 
 #: run_uh.py:310
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Unknown Horizons 를 사용해 주셔서 감사합니다!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "편집기로 돌아가기"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
+#, fuzzy
 msgid "Save map"
-msgstr ""
+msgstr "지도 저장"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
