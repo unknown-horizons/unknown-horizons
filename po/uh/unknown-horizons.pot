@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons db576ca\n"
+"Project-Id-Version: Unknown Horizons 83f8488\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-05 22:21+0200\n"
+"POT-Creation-Date: 2013-06-09 17:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2185,11 +2185,19 @@ msgstr ""
 msgid "Main square overview"
 msgstr ""
 
-#: horizons/gui/tabs/mainsquaretabs.py:167
+#: horizons/gui/tabs/mainsquaretabs.py:127
+msgid "Upgrade not possible:"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py:130
+msgid "This is the highest playable tier for now!"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
 msgstr ""
 
-#: horizons/gui/tabs/mainsquaretabs.py:170
+#: horizons/gui/tabs/mainsquaretabs.py:178
 msgid "Allow upgrades"
 msgstr ""
 
@@ -3198,21 +3206,21 @@ msgstr ""
 msgid "A page has been opened in your browser."
 msgstr ""
 
-#. You usually do not need to change anything here when translating
-#: horizons/util/uhdbaccessor.py:104
-#, python-format
-msgid "{building}: {description}"
-msgstr ""
-
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:275
+#: horizons/util/uhdbaccessor.py:261
 #, python-format
 msgid "{slotnum} slots, {limit}t"
 msgstr ""
 
-#: horizons/util/uhdbaccessor.py:284
+#: horizons/util/uhdbaccessor.py:270
 #, python-format
 msgid "Health: {health}"
+msgstr ""
+
+#. You usually do not need to change anything here when translating
+#: horizons/world/building/__init__.py:125
+#, python-format
+msgid "{building}: {description}"
 msgstr ""
 
 #: horizons/world/building/buildable.py:40
