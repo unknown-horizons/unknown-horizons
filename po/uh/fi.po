@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-03 22:01+0200\n"
+"POT-Creation-Date: 2013-06-09 17:46+0200\n"
 "PO-Revision-Date: 2013-06-03 22:40+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Finnish <http://hosted.weblate.org/projects/uh/uh/fi/>\n"
@@ -204,7 +204,6 @@ msgstr "Ota uusi nimi käyttöön"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
-#: content/gui/xml/mainmenu/help.xml:49
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
 msgstr "Keskustelu"
@@ -849,162 +848,7 @@ msgstr "Lataa tallennettu pelikartta"
 msgid "Start editor"
 msgstr "Käynnistä kartanmuokkaus"
 
-#: content/gui/xml/mainmenu/help.xml:6
-msgid "Key bindings"
-msgstr "Pikanäppäimet"
-
-#: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
-msgid "Scroll left"
-msgstr "Vieritä vasemmalle"
-
-#: content/gui/xml/mainmenu/help.xml:10
-#: content/gui/xml/mainmenu/hotkeys.xml:11
-msgid "Scroll right"
-msgstr "Vieritä oikealle"
-
-#: content/gui/xml/mainmenu/help.xml:11
-#: content/gui/xml/mainmenu/hotkeys.xml:12
-msgid "Scroll up"
-msgstr "Vieritä ylös"
-
-#: content/gui/xml/mainmenu/help.xml:12
-#: content/gui/xml/mainmenu/hotkeys.xml:13
-msgid "Scroll down"
-msgstr "Vieritä alas"
-
-#: content/gui/xml/mainmenu/help.xml:15
-#: content/gui/xml/mainmenu/hotkeys.xml:16
-msgid "Increase game speed"
-msgstr "Kiihdytä pelin nopeutta"
-
-#: content/gui/xml/mainmenu/help.xml:16
-#: content/gui/xml/mainmenu/hotkeys.xml:17
-msgid "Decrease game speed"
-msgstr "Hidasta pelin nopeutta"
-
-#: content/gui/xml/mainmenu/help.xml:18
-#: content/gui/xml/mainmenu/hotkeys.xml:15
-msgid "Rotate building or map counterclockwise"
-msgstr "Käännä rakennusta tai karttaa vastapäivään"
-
-#: content/gui/xml/mainmenu/help.xml:20
-#: content/gui/xml/mainmenu/hotkeys.xml:14
-msgid "Rotate building or map clockwise"
-msgstr "Käännä rakennusta tai karttaa myötäpäivään"
-
-#: content/gui/xml/mainmenu/help.xml:23
-#: content/gui/xml/mainmenu/hotkeys.xml:19
-msgid "Show build menu"
-msgstr "Näytä rakennusvalikko"
-
-#: content/gui/xml/mainmenu/help.xml:24
-#: content/gui/xml/mainmenu/hotkeys.xml:26
-msgid "Toggle Captain's log"
-msgstr "Avaa/sulje Kapteenin päiväkirja"
-
-#: content/gui/xml/mainmenu/help.xml:25
-#: content/gui/xml/mainmenu/hotkeys.xml:18
-msgid "Pause game"
-msgstr "Pysäytä peli"
-
-#: content/gui/xml/mainmenu/help.xml:28
-#: content/gui/xml/mainmenu/hotkeys.xml:35
-msgid "Display help"
-msgstr "Tuo esiin tämän ohjeen"
-
-#: content/gui/xml/mainmenu/help.xml:29
-#: content/gui/xml/mainmenu/hotkeys.xml:28
-msgid "Quicksave"
-msgstr "Pikatallennus"
-
-#: content/gui/xml/mainmenu/help.xml:30
-#: content/gui/xml/mainmenu/hotkeys.xml:29
-msgid "Quickload"
-msgstr "Pikalataus"
-
-#: content/gui/xml/mainmenu/help.xml:31
-msgid "Display FPS counter"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:40
-#: content/gui/xml/mainmenu/hotkeys.xml:30
-msgid "Toggle translucency of ambient buildings"
-msgstr "Muuta ympäristön läpikuultavuutta"
-
-#: content/gui/xml/mainmenu/help.xml:41
-#: content/gui/xml/mainmenu/hotkeys.xml:21
-msgid "Enable road building mode"
-msgstr "Tienrakennustyökalu"
-
-#: content/gui/xml/mainmenu/help.xml:42
-#: content/gui/xml/mainmenu/hotkeys.xml:20
-msgid "Enable destruct mode"
-msgstr "Tuhoamistyökalu"
-
-#: content/gui/xml/mainmenu/help.xml:44
-#: content/gui/xml/mainmenu/hotkeys.xml:22
-msgid "Enable pipette mode (clone buildings)"
-msgstr "Rakennusten kopiointityökalu"
-
-#: content/gui/xml/mainmenu/help.xml:45
-#: content/gui/xml/mainmenu/hotkeys.xml:32
-msgid "Toggle health bars"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:48
-#: content/gui/xml/mainmenu/hotkeys.xml:36
-msgid "Screenshot"
-msgstr "Ota kuvakaappaus"
-
-#: content/gui/xml/mainmenu/help.xml:51
-msgid "Hold to place multiple buildings"
-msgstr "Sijoita useita rakennuksia kerralla pitämällä pohjassa"
-
-#: content/gui/xml/mainmenu/help.xml:52
-msgid "Close dialogs"
-msgstr "Sulje dialogi"
-
-#: content/gui/xml/mainmenu/help.xml:55
-#: content/gui/xml/mainmenu/hotkeys.xml:23
-msgid "Show player scores"
-msgstr "Näytä pelitulokset"
-
-#: content/gui/xml/mainmenu/help.xml:56
-#: content/gui/xml/mainmenu/hotkeys.xml:25
-msgid "Show ship list"
-msgstr "Näytä lista aluksista"
-
-#: content/gui/xml/mainmenu/help.xml:57
-#: content/gui/xml/mainmenu/hotkeys.xml:24
-msgid "Show settlement list"
-msgstr "Näytä asukaslista"
-
-#: content/gui/xml/mainmenu/help.xml:58
-#: content/gui/xml/mainmenu/hotkeys.xml:31
-msgid "Highlight tile ownership"
-msgstr "Korosta maa-alueen omistajat"
-
-#: content/gui/xml/mainmenu/help.xml:62
-#: content/gui/xml/mainmenu/hotkeys.xml:34
-msgid "Remove selected units / buildings"
-msgstr "Poista valitut yksiköt/rakennukset"
-
-#: content/gui/xml/mainmenu/help.xml:63
-#: content/gui/xml/mainmenu/hotkeys.xml:33
-msgid "Focus camera on selection"
-msgstr "Kohdista kamera valintaan"
-
-#: content/gui/xml/mainmenu/help.xml:64
-#: content/gui/xml/mainmenu/hotkeys.xml:38
-msgid "Toggle grid on/off"
-msgstr "Ruudukko päälle/pois"
-
-#: content/gui/xml/mainmenu/help.xml:65
-#: content/gui/xml/mainmenu/hotkeys.xml:39
-msgid "Show coordinate values (Debug)"
-msgstr "Näytä koordinaatit (Debug)"
-
-#: content/gui/xml/mainmenu/help.xml:70
+#: content/gui/xml/mainmenu/help.xml:5
 msgid "Return"
 msgstr "Poistu"
 
@@ -1013,10 +857,122 @@ msgstr "Poistu"
 msgid "Actions"
 msgstr "sivistystä"
 
+#: content/gui/xml/mainmenu/hotkeys.xml:10
+msgid "Scroll left"
+msgstr "Vieritä vasemmalle"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:11
+msgid "Scroll right"
+msgstr "Vieritä oikealle"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:12
+msgid "Scroll up"
+msgstr "Vieritä ylös"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:13
+msgid "Scroll down"
+msgstr "Vieritä alas"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:14
+msgid "Rotate building or map clockwise"
+msgstr "Käännä rakennusta tai karttaa myötäpäivään"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:15
+msgid "Rotate building or map counterclockwise"
+msgstr "Käännä rakennusta tai karttaa vastapäivään"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:16
+msgid "Increase game speed"
+msgstr "Kiihdytä pelin nopeutta"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:17
+msgid "Decrease game speed"
+msgstr "Hidasta pelin nopeutta"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:18
+msgid "Pause game"
+msgstr "Pysäytä peli"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:19
+msgid "Show build menu"
+msgstr "Näytä rakennusvalikko"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:20
+msgid "Enable destruct mode"
+msgstr "Tuhoamistyökalu"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:21
+msgid "Enable road building mode"
+msgstr "Tienrakennustyökalu"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:22
+msgid "Enable pipette mode (clone buildings)"
+msgstr "Rakennusten kopiointityökalu"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:23
+msgid "Show player scores"
+msgstr "Näytä pelitulokset"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:24
+msgid "Show settlement list"
+msgstr "Näytä asukaslista"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:25
+msgid "Show ship list"
+msgstr "Näytä lista aluksista"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:26
+msgid "Toggle Captain's log"
+msgstr "Avaa/sulje Kapteenin päiväkirja"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:28
+msgid "Quicksave"
+msgstr "Pikatallennus"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:29
+msgid "Quickload"
+msgstr "Pikalataus"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:30
+msgid "Toggle translucency of ambient buildings"
+msgstr "Muuta ympäristön läpikuultavuutta"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:31
+msgid "Highlight tile ownership"
+msgstr "Korosta maa-alueen omistajat"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:32
+msgid "Toggle health bars"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:33
+msgid "Focus camera on selection"
+msgstr "Kohdista kamera valintaan"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:34
+msgid "Remove selected units / buildings"
+msgstr "Poista valitut yksiköt/rakennukset"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:35
+msgid "Display help"
+msgstr "Tuo esiin tämän ohjeen"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:36
+msgid "Screenshot"
+msgstr "Ota kuvakaappaus"
+
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 #, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Ruudukko päälle/pois"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:38
+msgid "Toggle grid on/off"
+msgstr "Ruudukko päälle/pois"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:39
+msgid "Show coordinate values (Debug)"
+msgstr "Näytä koordinaatit (Debug)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
@@ -1366,8 +1322,7 @@ msgstr "Pura laivan lasti automaattisesti:"
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
-"Laivan lasti puretaan automaattisesti uuden siirtokunnan perustamisen "
-"jälkeen"
+"Laivan lasti puretaan automaattisesti uuden siirtokunnan perustamisen jälkeen"
 
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid ""
@@ -1730,11 +1685,6 @@ msgstr "Muita pelaajia ei ole, joten diplomatia on tarpeetonta."
 #, python-format
 msgid "{size}x{size} tiles"
 msgstr ""
-
-#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/modules/help.py:54
-msgid "[{key}] = {text}"
-msgstr "[{key}] = {text}"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
@@ -2306,11 +2256,19 @@ msgstr "Budjetti"
 msgid "Main square overview"
 msgstr "Keskustorin yleiskatsaus"
 
-#: horizons/gui/tabs/mainsquaretabs.py:167
+#: horizons/gui/tabs/mainsquaretabs.py:127
+msgid "Upgrade not possible:"
+msgstr "Päivittäminen ei onnistu:"
+
+#: horizons/gui/tabs/mainsquaretabs.py:130
+msgid "This is the highest playable tier for now!"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
 msgstr "Älä salli päivityksiä"
 
-#: horizons/gui/tabs/mainsquaretabs.py:170
+#: horizons/gui/tabs/mainsquaretabs.py:178
 msgid "Allow upgrades"
 msgstr "Salli päivitykset"
 
@@ -3336,22 +3294,22 @@ msgstr "Lataa"
 msgid "A page has been opened in your browser."
 msgstr "Lataussivu avataan verkkoselaimeen."
 
-#. You usually do not need to change anything here when translating
-#: horizons/util/uhdbaccessor.py:104
-#, python-format
-msgid "{building}: {description}"
-msgstr "{building}: {description}"
-
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:275
+#: horizons/util/uhdbaccessor.py:261
 #, python-format
 msgid "{slotnum} slots, {limit}t"
 msgstr ""
 
-#: horizons/util/uhdbaccessor.py:284
+#: horizons/util/uhdbaccessor.py:270
 #, python-format
 msgid "Health: {health}"
 msgstr "Kunto: {health}"
+
+#. You usually do not need to change anything here when translating
+#: horizons/world/building/__init__.py:125
+#, python-format
+msgid "{building}: {description}"
+msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
@@ -3855,6 +3813,18 @@ msgstr "Pelisi on tallennettu."
 msgid "salt"
 msgstr "suolaa"
 
+#~ msgid "Key bindings"
+#~ msgstr "Pikanäppäimet"
+
+#~ msgid "Hold to place multiple buildings"
+#~ msgstr "Sijoita useita rakennuksia kerralla pitämällä pohjassa"
+
+#~ msgid "Close dialogs"
+#~ msgstr "Sulje dialogi"
+
+#~ msgid "[{key}] = {text}"
+#~ msgstr "[{key}] = {text}"
+
 #, fuzzy
 #~ msgid "Project Coordination"
 #~ msgstr "Turvallisuus"
@@ -4082,9 +4052,6 @@ msgstr "suolaa"
 
 #~ msgid "8 residents"
 #~ msgstr "8 asukasta"
-
-#~ msgid "Upgrade not possible:"
-#~ msgstr "Päivittäminen ei onnistu:"
 
 #~ msgid "This is the current maximum increment!"
 #~ msgstr "Tämä on jo korkein saavuttamasi taso!"

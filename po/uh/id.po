@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-03 22:01+0200\n"
+"POT-Creation-Date: 2013-06-09 17:46+0200\n"
 "PO-Revision-Date: 2013-06-03 22:39+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Indonesian <http://hosted.weblate.org/projects/uh/uh/id/>\n"
@@ -199,7 +199,6 @@ msgstr ""
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
-#: content/gui/xml/mainmenu/help.xml:49
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
 msgstr ""
@@ -829,162 +828,7 @@ msgstr ""
 msgid "Start editor"
 msgstr ""
 
-#: content/gui/xml/mainmenu/help.xml:6
-msgid "Key bindings"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
-msgid "Scroll left"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:10
-#: content/gui/xml/mainmenu/hotkeys.xml:11
-msgid "Scroll right"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:11
-#: content/gui/xml/mainmenu/hotkeys.xml:12
-msgid "Scroll up"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:12
-#: content/gui/xml/mainmenu/hotkeys.xml:13
-msgid "Scroll down"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:15
-#: content/gui/xml/mainmenu/hotkeys.xml:16
-msgid "Increase game speed"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:16
-#: content/gui/xml/mainmenu/hotkeys.xml:17
-msgid "Decrease game speed"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:18
-#: content/gui/xml/mainmenu/hotkeys.xml:15
-msgid "Rotate building or map counterclockwise"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:20
-#: content/gui/xml/mainmenu/hotkeys.xml:14
-msgid "Rotate building or map clockwise"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:23
-#: content/gui/xml/mainmenu/hotkeys.xml:19
-msgid "Show build menu"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:24
-#: content/gui/xml/mainmenu/hotkeys.xml:26
-msgid "Toggle Captain's log"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:25
-#: content/gui/xml/mainmenu/hotkeys.xml:18
-msgid "Pause game"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:28
-#: content/gui/xml/mainmenu/hotkeys.xml:35
-msgid "Display help"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:29
-#: content/gui/xml/mainmenu/hotkeys.xml:28
-msgid "Quicksave"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:30
-#: content/gui/xml/mainmenu/hotkeys.xml:29
-msgid "Quickload"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:31
-msgid "Display FPS counter"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:40
-#: content/gui/xml/mainmenu/hotkeys.xml:30
-msgid "Toggle translucency of ambient buildings"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:41
-#: content/gui/xml/mainmenu/hotkeys.xml:21
-msgid "Enable road building mode"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:42
-#: content/gui/xml/mainmenu/hotkeys.xml:20
-msgid "Enable destruct mode"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:44
-#: content/gui/xml/mainmenu/hotkeys.xml:22
-msgid "Enable pipette mode (clone buildings)"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:45
-#: content/gui/xml/mainmenu/hotkeys.xml:32
-msgid "Toggle health bars"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:48
-#: content/gui/xml/mainmenu/hotkeys.xml:36
-msgid "Screenshot"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:51
-msgid "Hold to place multiple buildings"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:52
-msgid "Close dialogs"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:55
-#: content/gui/xml/mainmenu/hotkeys.xml:23
-msgid "Show player scores"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:56
-#: content/gui/xml/mainmenu/hotkeys.xml:25
-msgid "Show ship list"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:57
-#: content/gui/xml/mainmenu/hotkeys.xml:24
-msgid "Show settlement list"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:58
-#: content/gui/xml/mainmenu/hotkeys.xml:31
-msgid "Highlight tile ownership"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:62
-#: content/gui/xml/mainmenu/hotkeys.xml:34
-msgid "Remove selected units / buildings"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:63
-#: content/gui/xml/mainmenu/hotkeys.xml:33
-msgid "Focus camera on selection"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:64
-#: content/gui/xml/mainmenu/hotkeys.xml:38
-msgid "Toggle grid on/off"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:65
-#: content/gui/xml/mainmenu/hotkeys.xml:39
-msgid "Show coordinate values (Debug)"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:70
+#: content/gui/xml/mainmenu/help.xml:5
 msgid "Return"
 msgstr ""
 
@@ -992,8 +836,120 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: content/gui/xml/mainmenu/hotkeys.xml:10
+msgid "Scroll left"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:11
+msgid "Scroll right"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:12
+msgid "Scroll up"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:13
+msgid "Scroll down"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:14
+msgid "Rotate building or map clockwise"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:15
+msgid "Rotate building or map counterclockwise"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:16
+msgid "Increase game speed"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:17
+msgid "Decrease game speed"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:18
+msgid "Pause game"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:19
+msgid "Show build menu"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:20
+msgid "Enable destruct mode"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:21
+msgid "Enable road building mode"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:22
+msgid "Enable pipette mode (clone buildings)"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:23
+msgid "Show player scores"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:24
+msgid "Show settlement list"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:25
+msgid "Show ship list"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:26
+msgid "Toggle Captain's log"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:28
+msgid "Quicksave"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:29
+msgid "Quickload"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:30
+msgid "Toggle translucency of ambient buildings"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:31
+msgid "Highlight tile ownership"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:32
+msgid "Toggle health bars"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:33
+msgid "Focus camera on selection"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:34
+msgid "Remove selected units / buildings"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:35
+msgid "Display help"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:36
+msgid "Screenshot"
+msgstr ""
+
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Toggle showing FPS on/off"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:38
+msgid "Toggle grid on/off"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:39
+msgid "Show coordinate values (Debug)"
 msgstr ""
 
 #. First hotkey assigned to this action
@@ -1687,11 +1643,6 @@ msgstr ""
 msgid "{size}x{size} tiles"
 msgstr ""
 
-#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/modules/help.py:54
-msgid "[{key}] = {text}"
-msgstr ""
-
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
 msgstr ""
@@ -2241,11 +2192,19 @@ msgstr ""
 msgid "Main square overview"
 msgstr ""
 
-#: horizons/gui/tabs/mainsquaretabs.py:167
+#: horizons/gui/tabs/mainsquaretabs.py:127
+msgid "Upgrade not possible:"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py:130
+msgid "This is the highest playable tier for now!"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
 msgstr ""
 
-#: horizons/gui/tabs/mainsquaretabs.py:170
+#: horizons/gui/tabs/mainsquaretabs.py:178
 msgid "Allow upgrades"
 msgstr ""
 
@@ -3254,21 +3213,21 @@ msgstr ""
 msgid "A page has been opened in your browser."
 msgstr ""
 
-#. You usually do not need to change anything here when translating
-#: horizons/util/uhdbaccessor.py:104
-#, python-format
-msgid "{building}: {description}"
-msgstr ""
-
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:275
+#: horizons/util/uhdbaccessor.py:261
 #, python-format
 msgid "{slotnum} slots, {limit}t"
 msgstr ""
 
-#: horizons/util/uhdbaccessor.py:284
+#: horizons/util/uhdbaccessor.py:270
 #, python-format
 msgid "Health: {health}"
+msgstr ""
+
+#. You usually do not need to change anything here when translating
+#: horizons/world/building/__init__.py:125
+#, python-format
+msgid "{building}: {description}"
 msgstr ""
 
 #: horizons/world/building/buildable.py:40

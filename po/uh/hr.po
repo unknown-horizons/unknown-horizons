@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-03 22:01+0200\n"
+"POT-Creation-Date: 2013-06-09 17:46+0200\n"
 "PO-Revision-Date: 2013-05-20 12:13+0200\n"
 "Last-Translator: Daniel Tominac <tominaccell@gmail.com>\n"
 "Language-Team: Croatian <http://hosted.weblate.org/projects/uh/uh/hr/>\n"
@@ -205,7 +205,6 @@ msgstr "Prihvati novo ime"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
-#: content/gui/xml/mainmenu/help.xml:49
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
 msgstr "Pričati"
@@ -850,162 +849,7 @@ msgstr "Učitaj spremljene mape igre"
 msgid "Start editor"
 msgstr "Pokreni uređivač"
 
-#: content/gui/xml/mainmenu/help.xml:6
-msgid "Key bindings"
-msgstr "Raspored kontrolnih tipki"
-
-#: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
-msgid "Scroll left"
-msgstr "Pomakni ljevo"
-
-#: content/gui/xml/mainmenu/help.xml:10
-#: content/gui/xml/mainmenu/hotkeys.xml:11
-msgid "Scroll right"
-msgstr "Pomakni desno"
-
-#: content/gui/xml/mainmenu/help.xml:11
-#: content/gui/xml/mainmenu/hotkeys.xml:12
-msgid "Scroll up"
-msgstr "Pomakni gore"
-
-#: content/gui/xml/mainmenu/help.xml:12
-#: content/gui/xml/mainmenu/hotkeys.xml:13
-msgid "Scroll down"
-msgstr "Pomakni dolje"
-
-#: content/gui/xml/mainmenu/help.xml:15
-#: content/gui/xml/mainmenu/hotkeys.xml:16
-msgid "Increase game speed"
-msgstr "Povećaj brzinu igre"
-
-#: content/gui/xml/mainmenu/help.xml:16
-#: content/gui/xml/mainmenu/hotkeys.xml:17
-msgid "Decrease game speed"
-msgstr "Smanji brzinu igre"
-
-#: content/gui/xml/mainmenu/help.xml:18
-#: content/gui/xml/mainmenu/hotkeys.xml:15
-msgid "Rotate building or map counterclockwise"
-msgstr "Zakreni građevinu ili mapu u lijevo"
-
-#: content/gui/xml/mainmenu/help.xml:20
-#: content/gui/xml/mainmenu/hotkeys.xml:14
-msgid "Rotate building or map clockwise"
-msgstr "Zakreni građevinu ili mapu u desno"
-
-#: content/gui/xml/mainmenu/help.xml:23
-#: content/gui/xml/mainmenu/hotkeys.xml:19
-msgid "Show build menu"
-msgstr "Prikaži izbornik za izgradnju"
-
-#: content/gui/xml/mainmenu/help.xml:24
-#: content/gui/xml/mainmenu/hotkeys.xml:26
-msgid "Toggle Captain's log"
-msgstr "Uključi ili isključi Kapetanov zapisnik"
-
-#: content/gui/xml/mainmenu/help.xml:25
-#: content/gui/xml/mainmenu/hotkeys.xml:18
-msgid "Pause game"
-msgstr "Pauziraj igru"
-
-#: content/gui/xml/mainmenu/help.xml:28
-#: content/gui/xml/mainmenu/hotkeys.xml:35
-msgid "Display help"
-msgstr "Prikaži pomoć"
-
-#: content/gui/xml/mainmenu/help.xml:29
-#: content/gui/xml/mainmenu/hotkeys.xml:28
-msgid "Quicksave"
-msgstr "Brzo spremanje"
-
-#: content/gui/xml/mainmenu/help.xml:30
-#: content/gui/xml/mainmenu/hotkeys.xml:29
-msgid "Quickload"
-msgstr "Brzo učitavanje"
-
-#: content/gui/xml/mainmenu/help.xml:31
-msgid "Display FPS counter"
-msgstr "Prikaži brojač slika u sekundi"
-
-#: content/gui/xml/mainmenu/help.xml:40
-#: content/gui/xml/mainmenu/hotkeys.xml:30
-msgid "Toggle translucency of ambient buildings"
-msgstr "Uključi ili isključi prozirnost okolnih građevina"
-
-#: content/gui/xml/mainmenu/help.xml:41
-#: content/gui/xml/mainmenu/hotkeys.xml:21
-msgid "Enable road building mode"
-msgstr "Uključi način rada za izgradnju cesta"
-
-#: content/gui/xml/mainmenu/help.xml:42
-#: content/gui/xml/mainmenu/hotkeys.xml:20
-msgid "Enable destruct mode"
-msgstr "Uključi način rada za uništavanje"
-
-#: content/gui/xml/mainmenu/help.xml:44
-#: content/gui/xml/mainmenu/hotkeys.xml:22
-msgid "Enable pipette mode (clone buildings)"
-msgstr "Uključi način rada na kapaljku (kloniranje građevina)"
-
-#: content/gui/xml/mainmenu/help.xml:45
-#: content/gui/xml/mainmenu/hotkeys.xml:32
-msgid "Toggle health bars"
-msgstr "Uključi ili isključi indikatore zdravlja"
-
-#: content/gui/xml/mainmenu/help.xml:48
-#: content/gui/xml/mainmenu/hotkeys.xml:36
-msgid "Screenshot"
-msgstr "Uslikaj ekran"
-
-#: content/gui/xml/mainmenu/help.xml:51
-msgid "Hold to place multiple buildings"
-msgstr "Drži kako bi postavio više zgrada odjednom"
-
-#: content/gui/xml/mainmenu/help.xml:52
-msgid "Close dialogs"
-msgstr "Zatvori dijaloške okvire"
-
-#: content/gui/xml/mainmenu/help.xml:55
-#: content/gui/xml/mainmenu/hotkeys.xml:23
-msgid "Show player scores"
-msgstr "Prikaži bodove igrača"
-
-#: content/gui/xml/mainmenu/help.xml:56
-#: content/gui/xml/mainmenu/hotkeys.xml:25
-msgid "Show ship list"
-msgstr "Pokaži popis brodova"
-
-#: content/gui/xml/mainmenu/help.xml:57
-#: content/gui/xml/mainmenu/hotkeys.xml:24
-msgid "Show settlement list"
-msgstr "Pokaži popis naseobina"
-
-#: content/gui/xml/mainmenu/help.xml:58
-#: content/gui/xml/mainmenu/hotkeys.xml:31
-msgid "Highlight tile ownership"
-msgstr "Istakni granice posjeda"
-
-#: content/gui/xml/mainmenu/help.xml:62
-#: content/gui/xml/mainmenu/hotkeys.xml:34
-msgid "Remove selected units / buildings"
-msgstr "Ukloni odabrane jedinice / građevine"
-
-#: content/gui/xml/mainmenu/help.xml:63
-#: content/gui/xml/mainmenu/hotkeys.xml:33
-msgid "Focus camera on selection"
-msgstr "Fokusiraj kameru na označeni dio"
-
-#: content/gui/xml/mainmenu/help.xml:64
-#: content/gui/xml/mainmenu/hotkeys.xml:38
-msgid "Toggle grid on/off"
-msgstr "Uključi ili isključi mrežu na mapi"
-
-#: content/gui/xml/mainmenu/help.xml:65
-#: content/gui/xml/mainmenu/hotkeys.xml:39
-msgid "Show coordinate values (Debug)"
-msgstr "Prikaži vrijednosti koordinata (ispravljanje greški)"
-
-#: content/gui/xml/mainmenu/help.xml:70
+#: content/gui/xml/mainmenu/help.xml:5
 msgid "Return"
 msgstr "Povratak"
 
@@ -1013,9 +857,121 @@ msgstr "Povratak"
 msgid "Actions"
 msgstr "Akcije"
 
+#: content/gui/xml/mainmenu/hotkeys.xml:10
+msgid "Scroll left"
+msgstr "Pomakni ljevo"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:11
+msgid "Scroll right"
+msgstr "Pomakni desno"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:12
+msgid "Scroll up"
+msgstr "Pomakni gore"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:13
+msgid "Scroll down"
+msgstr "Pomakni dolje"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:14
+msgid "Rotate building or map clockwise"
+msgstr "Zakreni građevinu ili mapu u desno"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:15
+msgid "Rotate building or map counterclockwise"
+msgstr "Zakreni građevinu ili mapu u lijevo"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:16
+msgid "Increase game speed"
+msgstr "Povećaj brzinu igre"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:17
+msgid "Decrease game speed"
+msgstr "Smanji brzinu igre"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:18
+msgid "Pause game"
+msgstr "Pauziraj igru"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:19
+msgid "Show build menu"
+msgstr "Prikaži izbornik za izgradnju"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:20
+msgid "Enable destruct mode"
+msgstr "Uključi način rada za uništavanje"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:21
+msgid "Enable road building mode"
+msgstr "Uključi način rada za izgradnju cesta"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:22
+msgid "Enable pipette mode (clone buildings)"
+msgstr "Uključi način rada na kapaljku (kloniranje građevina)"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:23
+msgid "Show player scores"
+msgstr "Prikaži bodove igrača"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:24
+msgid "Show settlement list"
+msgstr "Pokaži popis naseobina"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:25
+msgid "Show ship list"
+msgstr "Pokaži popis brodova"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:26
+msgid "Toggle Captain's log"
+msgstr "Uključi ili isključi Kapetanov zapisnik"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:28
+msgid "Quicksave"
+msgstr "Brzo spremanje"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:29
+msgid "Quickload"
+msgstr "Brzo učitavanje"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:30
+msgid "Toggle translucency of ambient buildings"
+msgstr "Uključi ili isključi prozirnost okolnih građevina"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:31
+msgid "Highlight tile ownership"
+msgstr "Istakni granice posjeda"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:32
+msgid "Toggle health bars"
+msgstr "Uključi ili isključi indikatore zdravlja"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:33
+msgid "Focus camera on selection"
+msgstr "Fokusiraj kameru na označeni dio"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:34
+msgid "Remove selected units / buildings"
+msgstr "Ukloni odabrane jedinice / građevine"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:35
+msgid "Display help"
+msgstr "Prikaži pomoć"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:36
+msgid "Screenshot"
+msgstr "Uslikaj ekran"
+
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Toggle showing FPS on/off"
 msgstr "Uključi ili isključi prikazivanje broja sličica po sekundi"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:38
+msgid "Toggle grid on/off"
+msgstr "Uključi ili isključi mrežu na mapi"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:39
+msgid "Show coordinate values (Debug)"
+msgstr "Prikaži vrijednosti koordinata (ispravljanje greški)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
@@ -1737,11 +1693,6 @@ msgstr "Nemogu započeti diplomaciju jer nema drugih igrača."
 msgid "{size}x{size} tiles"
 msgstr "{size}x{size} granica"
 
-#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/modules/help.py:54
-msgid "[{key}] = {text}"
-msgstr ""
-
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
 msgstr "Odaberi željeni ključ"
@@ -2321,11 +2272,20 @@ msgstr "Račun"
 msgid "Main square overview"
 msgstr "Pregled glavnog trga"
 
-#: horizons/gui/tabs/mainsquaretabs.py:167
+#: horizons/gui/tabs/mainsquaretabs.py:127
+#, fuzzy
+msgid "Upgrade not possible:"
+msgstr "Nije moguće"
+
+#: horizons/gui/tabs/mainsquaretabs.py:130
+msgid "This is the highest playable tier for now!"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
 msgstr "Nemoj dopustiti nadogradnje"
 
-#: horizons/gui/tabs/mainsquaretabs.py:170
+#: horizons/gui/tabs/mainsquaretabs.py:178
 msgid "Allow upgrades"
 msgstr "Dopusti nadogradnje"
 
@@ -3353,22 +3313,22 @@ msgstr "Kliknite sa preuzimanje"
 msgid "A page has been opened in your browser."
 msgstr "Stranica je trenutno otvara u vašem pretraživaču."
 
-#. You usually do not need to change anything here when translating
-#: horizons/util/uhdbaccessor.py:104
-#, python-format
-msgid "{building}: {description}"
-msgstr ""
-
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:275
+#: horizons/util/uhdbaccessor.py:261
 #, python-format
 msgid "{slotnum} slots, {limit}t"
 msgstr "{slotnum} utora, {limit}t"
 
-#: horizons/util/uhdbaccessor.py:284
+#: horizons/util/uhdbaccessor.py:270
 #, python-format
 msgid "Health: {health}"
 msgstr "Zdravlje: {health}"
+
+#. You usually do not need to change anything here when translating
+#: horizons/world/building/__init__.py:125
+#, python-format
+msgid "{building}: {description}"
+msgstr ""
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
@@ -3868,6 +3828,18 @@ msgstr "Vaša igra je spremljena."
 #. This is a database entry: the name of a resource.
 msgid "salt"
 msgstr "sol"
+
+#~ msgid "Key bindings"
+#~ msgstr "Raspored kontrolnih tipki"
+
+#~ msgid "Display FPS counter"
+#~ msgstr "Prikaži brojač slika u sekundi"
+
+#~ msgid "Hold to place multiple buildings"
+#~ msgstr "Drži kako bi postavio više zgrada odjednom"
+
+#~ msgid "Close dialogs"
+#~ msgstr "Zatvori dijaloške okvire"
 
 #~ msgid "UH-Team"
 #~ msgstr "UH-Ekipa"
