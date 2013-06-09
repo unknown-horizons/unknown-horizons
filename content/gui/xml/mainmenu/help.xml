@@ -2,6 +2,12 @@
 <Container name="help_window" size="800,580" position_technique="center:center"
 	background_image="content/gui/images/background/book.png">
 
+<VBox position="72,40">
+	<Label name="headline" />
+	<hr />
+	<VBox name="tip_box" padding="10" />
+</VBox>
+
 <OkButton position="695,500"  helptext="Return" />
 
 </Container>
