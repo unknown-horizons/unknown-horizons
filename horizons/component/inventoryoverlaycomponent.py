@@ -28,6 +28,7 @@ import horizons.globals
 
 from horizons.component import Component
 from horizons.messaging import InstanceInventoryUpdated
+from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 
 
@@ -161,7 +162,7 @@ class InventoryOverlayComponent(Component):
 
 	def load(self, db, worldid):
 		super(InventoryOverlayComponent, self).load(db, worldid)
-		self.initialize()
+		Scheduler().add_new_object(self.initialize, self, run_in=0)
 
 
 	def remove(self):
