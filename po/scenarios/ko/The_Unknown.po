@@ -8,18 +8,20 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons d0fc091\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2013-05-21 12:45+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: Korean <http://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
+"PO-Revision-Date: 2013-06-11 12:14+0200\n"
+"Last-Translator: k ks <kmshts@naver.com>\n"
+"Language-Team: Korean <http://hosted.weblate.org/projects/uh/the-"
+"unknown/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #. scenario difficulty
 msgid "easy"
-msgstr ""
+msgstr "쉬움"
 
 #. scenario description
 msgid ""
@@ -27,10 +29,12 @@ msgid ""
 "your crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
+"당신은 1740년 영국령 함선의 선장입니다. 당신과 당신의 승무원은 태평양의 영국 식민지로 가는 길에 있습니다.\n"
+"폭풍으로 가기전까지 모든게 좋았습니다.…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr ""
+msgstr "1740년 11월 20일"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -38,6 +42,8 @@ msgid ""
 "have little food left and our ship is in a bad shape. The navigational "
 "instruments and sea charts are lost."
 msgstr ""
+"4일후 폭풍은결국 사라졌고 우리는 휴식을 취할수있었습니다. 하지만 우리에겐 약간의 남은 음식과 상태가 안좋아진 우리의 배뿐 이었습니다. "
+"바다를 항해할 수 있는 장비도 지도도 잃어버렸습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -45,22 +51,28 @@ msgid ""
 "fish, so land can't be far. Fortunately we always have some tools and boards "
 "onboard, so we can build some basic shelter."
 msgstr ""
+"우리는 곧 해변으로 올 수 있습니다. 내 잭?? 중 하나가 물고기를 사냥하고있는 몇마리의 새를 보았고, 육지가 멀지 않았다는것을 알 수 "
+"있었습니다. 다행히 우리는 항상 몇가지의 도구와 판자들을 가지고있었습니다. 그래서 우리는 대략 기본적인 대피소를 구축 할 수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
 "Find land and build a port."
 msgstr ""
+"임무:\n"
+"육지를 찾고 항구를 건설하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr ""
+msgstr "1740년 11월 22일"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
+"항구는 건설되었고 새로운 희망이 시작합니다. 나는 여전히 내일을 걱정하고있습니다... 우리는 바닥난 음식과 부족한 기초 건축 자재로 "
+"운영중입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -68,6 +80,8 @@ msgid ""
 "people gathering food and lumber so that we can survive and build some "
 "shelter."
 msgstr ""
+"우리는 우리가 생존할수있도록 기본적인 요구 사항을 확보해야합니다. 우리가 생존할수있고 거처를 건설하기위해 사람들이 채집한 음식과 목재를 "
+"보내야할 때입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -78,10 +92,16 @@ msgid ""
 "* Hunter\n"
 "Collect 5 food and 5 boards."
 msgstr ""
+"임무:\n"
+"아래의 것중 최소 하나를 건설해야함:\n"
+"* 나무꾼의집\n"
+"* 낚시꾼의집\n"
+"* 사냥꾼의집\n"
+"5개의 음식과 5개의 판자를 수집하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr ""
+msgstr "1740년 11월 25일"
 
 #. This is the text body of a logbook page.
 msgid ""
