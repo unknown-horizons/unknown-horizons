@@ -8,46 +8,49 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-05-10 11:05+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2013-06-11 09:50+0200\n"
+"Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
-msgstr ""
+msgstr "자습서"
 
 #. scenario description
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
+"자습서:\n"
+"정착지를 건설하고 게임플레이 방법을 배우세요!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
-msgstr ""
+msgstr "자유 교역선 등의 다른 배가 접근하기 쉽게 해안에 창고를 건설하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Unknown Horizons 에 오신것을 환영합니다!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is your Captain's log where all important information is stored. A "
 "short notification of each task will be provided on the left of the screen."
-msgstr ""
+msgstr "이것은 모든 중요한 정보가 저장되어있는 선장의 항해일지 입니다. 각 임무에 대한 간단한 알림이 화면의 왼쪽에 제공될 것입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you are interested in longer descriptions, your log will hopefully "
 "provide all the help you need."
-msgstr ""
+msgstr "이 설명에 더 관심이 있다면, 필요로하는 모든 도움을 항해일지가 원하는데로 제공할것입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -55,6 +58,7 @@ msgid ""
 "icon in the top-right corner (below the mini-map, with a sealed document and "
 "a feather)."
 msgstr ""
+"이 기록을 닫은 후, 오른쪽 상단 모서리에있는 \"선장의 항해일지\" 아이콘을 다시 열 수 있습니다. (미니 맵 아래 밀봉 문서와 깃털펜)"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -62,6 +66,8 @@ msgid ""
 "To see your first task, click on the button \"Read next entries\" in the "
 "navigation panel! It looks like this:"
 msgstr ""
+"\n"
+"첫 번째 임무를 확인하려면, 탐색 패널에서 \"다음 항목을 읽기\"버튼을 클릭하세요! 그것은 다음과 같습니다:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -70,32 +76,36 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to "
 "improve the tutorial!"
 msgstr ""
+"\n"
+"더 나은 표현에 대한 제안, 설명하고 싶거나 오류 조건에 대한 주제를 저희에게 알려주세요. 그러면 우리는 이 자습서를 개선할것입니다!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
+"\n"
+"팀에 문의하는 방법에 대한 도움을 얻으려면 www.unknown-horizons.org에 방문하십시오!"
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the actual game."
-msgstr ""
+msgstr "그러면 이제, 진짜 게임을 시작합니다."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr ""
+msgstr "새로운 임무: 섬에 정착하기"
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
-msgstr ""
+msgstr "배를 이동하려면, 왼쪽 클릭으로 선택하고, 가고싶은 위치에서 오른쪽 클릭합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you are near the coast, the anchor-like button you see in the overview "
 "tab will become active."
-msgstr ""
+msgstr "일단 해안 근처에 있으면, 개요 탭에서 볼 수 있는 닻 모양의 버튼이 활성화됩니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -119,14 +129,16 @@ msgid ""
 "\n"
 "TASK: Build a warehouse at the coast."
 msgstr ""
+"\n"
+"임무: 해안선 근처에서 창고를 건설."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
-msgstr ""
+msgstr "벌목꾼의 집을 건설하고, 도로를 이용하여 창고를 연결하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr ""
+msgstr "새로운 임무 : 벌목꾼의 집을 건설"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -209,21 +221,21 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
-msgstr ""
+msgstr "사냥꾼과 낚시꾼의 집을 건설하고, 창고와 이들을 연결하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "새로운 임무: 음식 조달"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
-msgstr ""
+msgstr "몇몇 음식을 생산하는 동료들이 매우 필요할것입니다. 왜냐면 일반적인 사람들(특히 선원)은 매우 배가 고프기 때문입니다."
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
-msgstr ""
+msgstr "첫번째 계층에서 사용할수있는 동료는 사냥꾼과 낚시꾼입니다."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
@@ -272,6 +284,8 @@ msgid ""
 "\n"
 "TASK: Build a hunter and a fisher."
 msgstr ""
+"\n"
+"할일: 사냥꾼의 집과 낚시꾼의 집을 건설."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
@@ -279,11 +293,11 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
-msgstr ""
+msgstr "주요 광장을 건설합니다. 생산적인 건물의 많지 않은 장소를 선택하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "새로운 임무: 주요 광장"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -319,7 +333,7 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build a main square."
-msgstr ""
+msgstr "\n임무: 주요 광장을 건설."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -352,11 +366,11 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "천막을 건설하고 주요광장과 연결하세요"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "새로운 임무: 주택 건설"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -393,12 +407,12 @@ msgid ""
 "\n"
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
-msgstr ""
+msgstr "\n천막을 건설하고 주요 광장에 연결하세요. 천막은 어떠한 동료와도 연결이 필요로 하지않습니다."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build at least three additional tents and connect them to the main square."
-msgstr ""
+msgstr "추가로 최소 세 개의 천막을 만들고, 주요광장과 연결한다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -435,6 +449,8 @@ msgid ""
 "\n"
 "TASK: Build at least three additional tents."
 msgstr ""
+"\n"
+"최소한 3개의 천막을 추가적으로 건설."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -445,11 +461,11 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a signal fire at the coast close to your warehouse."
-msgstr ""
+msgstr "창고 근처 해안에 봉화를 건설한다."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "새로운 임무: 봉화를 건설"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -519,6 +535,8 @@ msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your warehouse."
 msgstr ""
+"\n"
+"임무: 창고 근처 해안에 봉화를 건설."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -528,7 +546,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "새로운 임무: 교역 배우기"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -601,11 +619,11 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a pavilion with connection to the tents."
-msgstr ""
+msgstr "공연장 건설하고 천막과 연결한다."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "새로운 임무 : 공연장 건설"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
@@ -653,12 +671,13 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
+#, fuzzy
 msgid ""
 "Important:\n"
 "It is NOT enough that the building is merely within a certain range of the "
 "tents.\n"
 "The road connection is required as well."
-msgstr ""
+msgstr "중요:\n"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -670,7 +689,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
-msgstr ""
+msgstr "세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다리세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: NEXT TIER"
@@ -739,14 +758,16 @@ msgid ""
 "\n"
 "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
+"\n"
+"임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다리세요."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "농장을 건설하고, 주변에 약간의 빈공터를 확보해두세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "새로운 임무: 농장 건설"
 
 #. This is the text body of a logbook page.
 msgid "Congratulations! Some of your inhabitants have reached tier II!"
@@ -814,15 +835,15 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build a farm."
-msgstr ""
+msgstr "\n임무: 농장을 건설"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build at least one pasture and add potato fields if you like."
-msgstr ""
+msgstr "최소 하나이상의 목초지를 건설하고, 좋아 하신다면 감자밭도 추가하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "새로운 임무: 농지 건설"
 
 #. This is the text body of a logbook page.
 msgid "The farm itself is not going to produce anything without some fields."
@@ -893,7 +914,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "새로운 임무: 저장소 건설"
 
 #. This is the text body of a logbook page.
 msgid "Did you watch your lumberjack recently?"
@@ -963,14 +984,16 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
+"\n"
+"임무: 가급적이면 수집자를 필요로 하는곳에 장소 천막을 건설하세요."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr ""
+msgstr "어떻게든 농장의 양털을 생산할 수 있도록 방직소를 건설하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "새로운 임무: 방직소를 건설"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -999,16 +1022,18 @@ msgid ""
 "\n"
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
+"\n"
+"임무: 양털을 얻을수있는 위치에 방직소를 건설"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
-msgstr ""
+msgstr "자습서을 완료하기 위해서는 도시에서 총 50명 이상의 주민이 되어야 합니다. 흑자가 되도록 하세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "새로운 임무: 자습서 완료"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1034,16 +1059,19 @@ msgid ""
 "TASK: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"\n"
+"임무: Reach a total number of 50 inhabitants and a positive balance to "
+"complete this tutorial."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
-msgstr ""
+msgstr "축하합니다! 자습서을 완료했습니다. 이젠 새로운 것에 도전해 봅시다!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "남아있는 임무가 없음"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1051,40 +1079,44 @@ msgid ""
 "is now at your command, waiting for your free aspirations and brave "
 "explorations!"
 msgstr ""
+"전달된 모든 임무를 성공적으로 완료하였습니다.세계는 지금 자유로운 열망과 용감한 탐험을 위해여러분의 명령을 기다리고 있고 있습니다!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
-msgstr ""
+msgstr "우리가 할수있거나 개선, 추가, 삭제해야 하는 제안 사항이 있다면:"
 
 #. This is the text body of a logbook page.
 msgid "www.unknown-horizons.org"
-msgstr ""
+msgstr "www.unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 msgid "#unknown-horizons @ irc.freenode.net"
-msgstr ""
+msgstr "#unknown-horizons @ irc.freenode.net"
 
 #. This is the text body of a logbook page.
 msgid "team@unknown-horizons.org"
-msgstr ""
+msgstr "team@unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 msgid "Our forums are open to you as well!"
-msgstr ""
+msgstr "우리 포럼은 당신에게도 열려있습니다!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"지금까지 가장 좋은 결과들은 우리의 IRC 채널에 접속을 통해서 이뤄졌습니다,그렇기 때문에 여러분도 IRC에서 좋은결과를 위해 "
+"시도해보세요 (-;"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Thanks!"
-msgstr ""
+msgstr "고맙습니다!"
 
 #. This is the text body of a logbook page.
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1095,3 +1127,12 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"자습서를 플레이 해주셔서 고맙습니다!\n"
+"\n"
+"여러분의 UH 팀 입니다.\n"
+"\n"
