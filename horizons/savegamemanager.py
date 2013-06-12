@@ -334,11 +334,11 @@ class SavegameManager(object):
 		translated_scenarios = defaultdict(list)
 		scenarios = zip(*cls.get_scenarios(include_displaynames=True))
 		for filename, scenario in scenarios:
+			if not os.path.exists(filename):
+				continue
 			_locale = cls.get_scenario_metadata(scenario=scenario).get('locale', u'en')
 			# sort into dictionary by english filename (without language suffix)
 			english_name = scenario.split('_' + _locale)[0]
-			if not os.path.exists(filename):
-				continue
 			translated_scenarios[english_name].append((_locale, filename))
 		return translated_scenarios
 
