@@ -188,8 +188,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def update_action_set_level(self, level=0):
 		"""Updates this buildings action_set to a random actionset from the specified level
 		(if an action set exists in that level).
-		It's different to get_random_action_set is, that it just checks one lvl, and doesn't
-		search for an action set everywhere, which makes it alot more effective, if you're
+		Its difference to get_random_action_set is that it just checks one level, and doesn't
+		search for an action set everywhere, which makes it a lot more effective if you're
 		just updating.
 		@param level: int level number"""
 		action_set = self.__class__.get_random_action_set(level, exact_level=True)
