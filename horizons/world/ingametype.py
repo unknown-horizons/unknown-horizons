@@ -45,8 +45,7 @@ class IngameType(type):
 	classstring = 'Type[{id}]'
 
 	def __new__(self, id, yaml_data):
-		class_package = yaml_data['baseclass'].split('.')[0]
-		class_name = yaml_data['baseclass'].split('.')[1]
+		class_package, class_name = yaml_data['baseclass'].split('.', 1)
 
 		@classmethod
 		def load(cls, session, db, worldid):
