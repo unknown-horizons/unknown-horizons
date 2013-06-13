@@ -42,12 +42,36 @@ components:
 - InventoryOverlayComponent:
     properties: null
     overlays:
+      as_lumberjack0:
+        RES.BOARDS:
+          - [0, null]
+        RES.TREES:
+          - [0, null]
+          - [1, logs_1]
+          - [3, logs_2]
+          - [5, logs_3]
+          - [7, logs_4]
+          - [9, logs_5]
       as_lumberjack_barrack0:
         RES.BOARDS:
           - [0, null]
-          - [2, anim_idle]
-#         - [2, boards_2]
-          - [5, boards_5]
+          - [1, planks_01]
+          - [2, planks_02]
+          - [3, planks_03]
+          - [4, planks_04]
+          - [5, planks_05]
+          - [6, planks_06]
+          - [7, planks_07]
+          - [8, planks_08]
+          - [9, planks_10]
+          - [10, planks_12]
+        RES.TREES:
+          - [0, null]
+          - [1, logs_01]
+          - [3, logs_02]
+          - [5, logs_03]
+          - [7, logs_04]
+          - [9, logs_05]
 actionsets:
   TIER.SAILORS:
     as_lumberjack0:
