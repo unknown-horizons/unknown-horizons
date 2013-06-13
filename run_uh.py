@@ -181,7 +181,6 @@ def get_option_parser():
 def get_content_dir_parent_path():
 	"""
 	Return the path to the parent of the content dir.
-	
 	This is usually just the dir the run_uh.py is in but on some Linux installation
 	scenarios the horizons dir, the content dir, and run_uh.py are all in different
 	locations.
