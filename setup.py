@@ -102,7 +102,7 @@ class _build_i18n(distutils.cmd.Command):
 				"Try installing the package 'gettext' or 'msgfmt'.")
 
 		# If there is a po/LINGUAS file, or the LINGUAS environment variable
-		# is set, only compile the languages listed there.
+		# is set, only compile the languages listed there
 		selected_languages = None
 		linguas_file = os.path.join(po_dir, "LINGUAS")
 		if os.path.isfile(linguas_file):
