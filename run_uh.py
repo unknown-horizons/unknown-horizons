@@ -257,7 +257,7 @@ def main():
 	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
 		pass
 
-	# Change the working directory to the parent of the content directory.
+	# Change the working directory to the parent of the content directory
 	os.chdir(get_content_dir_parent_path())
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 	create_user_dirs()
