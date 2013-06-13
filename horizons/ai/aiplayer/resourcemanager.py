@@ -66,7 +66,7 @@ class ResourceManager(WorldObject):
 		self._chain = {} # {resource_id: SimpleProductionChainSubtreeChoice, ...} (cache that doesn't have to be saved)
 		self._low_priority_requests = {} # {(quota_holder, resource_id): amount, ...} (only used during 1 tick, doesn't have to be saved)
 		self._settlement_manager_id = {} # {quota_holder: settlement_manager_id, ...} (cache that doesn't have to be saved)
-		self.trade_storage = defaultdict(lambda: defaultdict(lambda: 0)) # {settlement_manager_id: {resource_id: float(amount)}, ...} shows how much of a resource is reserved for a particular settlement
+		self.trade_storage = defaultdict(lambda: defaultdict(int)) # {settlement_manager_id: {resource_id: float(amount)}, ...} shows how much of a resource is reserved for a particular settlement
 		self.resource_requirements = {} # {resource_id: int(amount), ...} the amount of resource the settlement would like to have in inventory (used to make buy/sell decisions)
 		self.personality = self.settlement_manager.owner.personality_manager.get('ResourceManager')
 

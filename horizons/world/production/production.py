@@ -254,7 +254,7 @@ class Production(ChangeListener):
 		Returns the part of time 0 <= x <= 1 the production has been in a state during the last history_length ticks.
 		"""
 		self._clean_state_history()
-		result = defaultdict(lambda: 0)
+		result = defaultdict(int)
 		current_tick = Scheduler().cur_tick
 		pause_state = PRODUCTION.STATES.paused.index
 		first_relevant_tick = self._get_first_relevant_tick(ignore_pause)

@@ -73,7 +73,7 @@ class TradeManager(WorldObject):
 		self.settlement_manager = settlement_manager
 		self.owner = settlement_manager.owner
 		self.data = {} # resource_id: SingleResourceTradeManager
-		self.ships_sent = defaultdict(lambda: 0) # {settlement_manager_id: num_sent, ...}
+		self.ships_sent = defaultdict(int) # {settlement_manager_id: num_sent, ...}
 
 	def save(self, db):
 		super(TradeManager, self).save(db)
@@ -133,7 +133,7 @@ class TradeManager(WorldObject):
 		destination_settlement_manager = mission.destination_settlement_manager
 		ship = mission.ship
 
-		total_amount = defaultdict(lambda: 0)
+		total_amount = defaultdict(int)
 		resource_manager = self.settlement_manager.resource_manager
 		for resource_id, amount in resource_manager.trade_storage[destination_settlement_manager.worldid].iteritems():
 			available_amount = int(min(math.floor(amount), self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]))
