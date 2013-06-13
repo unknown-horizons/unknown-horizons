@@ -250,7 +250,7 @@ def main():
 	# avoid crashing when writing to unavailable standard streams
 	setup_streams()
 
-	# use locale-specific time.strftime handling.
+	# use locale-specific time.strftime handling
 	try:
 		locale.setlocale(locale.LC_TIME, '')
 	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
