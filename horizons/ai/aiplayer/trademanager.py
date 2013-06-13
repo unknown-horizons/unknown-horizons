@@ -295,7 +295,7 @@ class SingleResourceTradeManager(WorldObject):
 				options.append((amount, resource_manager.worldid, resource_manager, settlement_manager))
 		options.sort(reverse = True)
 
-		self.partners = defaultdict(lambda: 0.0)
+		self.partners = defaultdict(float)
 		needed_amount = self.total - self.available
 		for amount, _, resource_manager, settlement_manager in options:
 			if needed_amount < 1e-9:
