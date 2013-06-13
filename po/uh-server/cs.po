@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2013-05-12 16:40+0200\n"
-"Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
+"PO-Revision-Date: 2013-06-13 15:22+0200\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
 "Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh-server/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -97,13 +97,12 @@ msgid "The game has been terminated. The creator has left the game."
 msgstr "Hra byla ukončena. Zakládající hráč ji opustil."
 
 #: horizons/network/server.py:483
-#, fuzzy
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
-"Citím se velmi zle, ale jeden hráč ukončil hru, která z technických důvodů "
-"nebude moci pokračovat. Je mi líto :*("
+"Jeden z hráčů ukončil hru. Z technických důvodů tato hra nemůže pokračovat, "
+"za což se velice omlouváme."
 
 #: horizons/network/server.py:535
 msgid "Unable to change your name."
