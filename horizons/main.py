@@ -525,7 +525,7 @@ def edit_game_map(saved_game_name):
 
 def _create_main_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
-	NOTE: This data is read_only, so there are no concurrency issues"""
+	NOTE: This data is read_only, so there are no concurrency issues."""
 	_db = UhDbAccessor(':memory:')
 	for i in PATHS.DB_FILES:
 		f = open(i, "r")
