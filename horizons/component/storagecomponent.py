@@ -20,7 +20,10 @@
 # ###################################################
 
 from horizons.component import Component
-from horizons.world.storage import PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage, SettlementStorage, PositiveTotalNumSlotsStorage
+from horizons.world.storage import (
+	PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage,
+	SettlementStorage, PositiveTotalNumSlotsStorage,
+)
 
 
 class StorageComponent(Component):

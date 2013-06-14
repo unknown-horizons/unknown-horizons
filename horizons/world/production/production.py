@@ -436,8 +436,8 @@ class Production(ChangeListener):
 		if hasattr(self, "_state"):
 			return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
 		else:
-
 			return "UninitializedProduction()"
+
 
 class ChangingProduction(Production):
 	"""Same as Production, but can changes properties of the production line"""
@@ -463,6 +463,7 @@ class SettlerProduction(ChangingProduction):
 		super(SettlerProduction, self)._remove_res_to_expend()
 		# give the resources when taking away the consumed goods at prod start
 		super(SettlerProduction, self)._give_produced_res()
+
 
 class SingleUseProduction(Production):
 	"""This Production just produces one time, and then finishes.
