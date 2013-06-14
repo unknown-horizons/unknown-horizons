@@ -138,7 +138,7 @@ class SettlerInhabitantsChanged(Message):
 	arguments = ('change', )
 
 class ResourceBarResize(Message):
-	"""Signals a change in resource bar size (not slot changes, but number of slot changes)"""
+	"""Signals a change in resource bar size (not slot changes, but number of slot changes)."""
 	pass
 
 class UpgradePermissionsChanged(Message):
@@ -147,14 +147,16 @@ class UpgradePermissionsChanged(Message):
 
 class SettlementRangeChanged(Message):
 	"""Called on grow and perhaps shrink once that's implemented. Used by buildingtool.
-	Send by a Settlement."""
+	Sent by a Settlement."""
 	arguments = (
 		'changed_tiles', # Actual tile objects
 	)
 
 class WorldObjectDeleted(Message):
 	"""Called when a world object is being deleted.
-	Currently emitted in the process of destruction, i.e. you aren't guaranteed to be able to access any attributes. (Feel free to change the implementation if you need this).
+	Currently emitted in the process of destruction, i.e. you aren't guaranteed
+	to be able to access any attributes.
+	(Feel free to change the implementation if you need this).
 	"""
 	arguments = ('worldobject', 'worldid', )
 
@@ -172,7 +174,7 @@ class HoverSettlementChanged(Message):
 	arguments = ('settlement', )
 
 class NewSettlement(Message):
-	"""Sent when a new settlement is created"""
+	"""Sent when a new settlement is created."""
 	arguments = ('settlement', 'warehouse_position', )
 
 class HoverInstancesChanged(Message):
@@ -191,19 +193,19 @@ class TabWidgetChanged(Message):
 	pass
 
 class GuiAction(Message):
-	"""Sent on events pychan classifies as "action" """
+	"""Sent on events pychan classifies as "action"."""
 	pass
 
 class ResourceProduced(Message):
-	"""Sent when a production building finished the production of a resource """
+	"""Sent when a production building finished the production of a resource."""
 	arguments = ('caller', 'produced_resources', )
 
 class SettlementInventoryUpdated(Message):
-	"""Message sent whenever a settlement's inventory is updated"""
+	"""Message sent whenever a settlement's inventory is updated."""
 	pass
 
 class PlayerInventoryUpdated(Message):
-	"""Message sent whenever a player's inventory is updated"""
+	"""Message sent whenever a player's inventory is updated."""
 	pass
 
 class LanguageChanged(Message):
@@ -223,4 +225,5 @@ class MineEmpty(Message):
 	arguments = ('mine', )
 
 class LoadingProgress(Message):
+	"""Sent when loading screen is updated with a new progress hint."""
 	arguments = ('stage', )
