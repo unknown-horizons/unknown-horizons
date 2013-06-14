@@ -22,16 +22,12 @@
 from horizons.component import Component
 from horizons.world.storage import PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage, SettlementStorage, PositiveTotalNumSlotsStorage
 
-class StorageComponent(Component):
-	"""The StorageComponent class is used as as a parent class for everything that
-	has an inventory. Examples for these classes are ships, settlements,
-	buildings, etc. Basically it just adds an inventory, nothing more, nothing
-	less.
-	If you want something different than a PositiveSizedSlotStorage, you'll have to
-	overwrite that in the subclass.
 
-	TUTORIAL:
-	Continue to horizons/world/provider.py for further digging.
+class StorageComponent(Component):
+	"""The StorageComponent class is used for everything that has an inventory.
+	
+	Examples for these classes are ships, settlements, buildings, etc.
+	Basically it just adds an inventory, nothing more, nothing less.
 	"""
 
 	NAME = 'storagecomponent'
