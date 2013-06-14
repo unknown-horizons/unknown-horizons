@@ -1,0 +1,91 @@
+#Founding settlement
+##Player found settlement"
+msgid "Strive so that this settlement shall evolve stately."
+msgstr ""
+
+msgid "Your inhabitants will certainly feel comfortable on this island."
+msgstr ""
+
+msgid "Call this patch of ground yours from now on."
+msgstr ""
+
+msgid "This region now belongs to our colors."
+msgstr ""
+
+msgid "This piece of ground is now ours."
+msgstr ""
+
+##Somebody not player found settlement
+msgid "Another player has settled on an island."
+msgstr ""
+
+msgid "A player develops a new settlement."
+msgstr ""
+
+msgid "One of your fellow players founded a settlement."
+msgstr ""
+
+##Rival found settlement
+msgid "A rival of ours seems to have founded a settlement."
+msgstr ""
+
+msgid "We've been informed that one of our rivals snared new land."
+msgstr ""
+
+msgid "One of our opponents is said to have expanded."
+msgstr ""
+
+##Ally found settlement
+msgid "Our ally settles on another island."
+msgstr ""
+
+msgid "One of our allies cultivates an islnd."
+msgstr ""
+
+msgid "Our ally passes news about successfully founding a settlement."
+msgstr ""
+
+##Somebody found settlement on your island
+msgid "This island no longer is all ours."
+msgstr ""
+
+msgid "Scouts found out that guests settled on one of our islands."
+msgstr ""
+
+msgid "We got new neighbors on this island!"
+msgstr ""
+
+##Rival found settlement on your island
+msgid "Scouts report that uninvited guests beleaguer our island!"
+msgstr ""
+
+msgid "Should we really accept our rival as new neighbor?"
+msgstr ""
+
+msgid "One of our enemies settles on our ground!"
+msgstr ""
+
+##Ally found settlement on your island
+msgid "One of our allies seems in desperate need of your ground."
+msgstr ""
+
+msgid "We share this ground with our ally for now."
+msgstr ""
+
+msgid "Our ally settles on one of our islands."
+msgstr ""
+
+#Resources
+##Construction material missing
+msgid "You need more $RES to build this."
+msgstr ""
+
+msgid "This construction project needs more $RES."
+msgstr ""
+
+msgid "Construction is impossible without sufficient amounts of $RES."
+msgstr ""
+
+msgid "The amount of $RES in your inventory is not sufficient to build this."
+msgstr ""
+
