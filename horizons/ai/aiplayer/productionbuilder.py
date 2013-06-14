@@ -128,7 +128,7 @@ class ProductionBuilder(AreaBuilder):
 		self._refresh_unused_fields()
 
 	def have_deposit(self, resource_id):
-		"""Returns true if there is a resource deposit of the relevant type inside the settlement."""
+		"""Returns True if there is a resource deposit of the relevant type inside the settlement."""
 		for tile in self.land_manager.resource_deposits[resource_id]:
 			if tile.object.settlement is None:
 				continue

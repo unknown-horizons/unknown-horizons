@@ -74,7 +74,7 @@ class AbstractPather(object):
 	def _check_for_obstacles(self, point):
 		"""Check if the path is unexpectedly blocked by e.g. a unit
 		@param point: tuple: (x, y)
-		@return: bool, true if path is blocked"""
+		@return: bool, True if path is blocked"""
 		return (point in self._get_blocked_coords())
 
 	def _get_position(self):

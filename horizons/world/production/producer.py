@@ -115,7 +115,7 @@ class Producer(Component):
 		if self.__auto_init:
 			for prod_line, attributes in self.production_lines.iteritems():
 				if 'enabled_by_default' in attributes and not attributes['enabled_by_default']:
-					continue  # It's set to false, don't add
+					continue  # It's set to False, don't add
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
 		# For newly built producers we set the utilization to full for the first

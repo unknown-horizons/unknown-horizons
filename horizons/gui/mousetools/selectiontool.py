@@ -210,7 +210,7 @@ class SelectionTool(NavigationTool):
 		"""
 		self.select_old are old instances still relevant now (esp. on ctrl)
 		@param instances: uh instances
-		@param do_multi: true if selection rectangle on drag is used
+		@param do_multi: True if selection rectangle on drag is used
 		"""
 		self.log.debug("update selection %s", [unicode(i) for i in instances])
 

@@ -32,7 +32,7 @@ class DepositCoverageGoal(SettlementGoal):
 	_deposit_resource_id = None # the resource that has to be in the resource deposit
 
 	def _have_reachable_deposit(self, resource_id):
-		"""Returns true if there is a resource deposit outside the settlement that is not owned by another player."""
+		"""Returns True if there is a resource deposit outside the settlement that is not owned by another player."""
 		for tile in self.land_manager.resource_deposits[resource_id]:
 			if tile.object.settlement is None:
 				return True

@@ -181,7 +181,7 @@ class SavegameManager(object):
 	@classmethod
 	def delete_dispensable_savegames(cls, autosaves=False, quicksaves=False):
 		"""Delete savegames that are no longer needed
-		@param autosaves, quicksaves: Bool, set to true if this kind of saves should be cleaned
+		@param autosaves, quicksaves: Bool, set to True if this kind of saves should be cleaned
 		"""
 		def tmp_del(pattern, limit): # get_uh_setting below returns floats like
 			limit = int(limit)      # 4.0 and 42.0 since the slider stepping is 1.0.

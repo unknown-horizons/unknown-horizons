@@ -234,10 +234,10 @@ class WeaponHolder(object):
 		Returns True if the holder can attack position at call time
 		@param position: position of desired attack
 		"""
-		# if no fireable weapon return false
+		# if no fireable weapon return False
 		if not self._fireable:
 			return False
-		# if position not in range return false
+		# if position not in range return False
 		return self._min_range <= self.position.distance(position.center) <= self._max_range
 
 	def try_attack_target(self):
