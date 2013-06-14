@@ -27,6 +27,7 @@ from fife import fife
 import horizons.globals
 
 from horizons.component import Component
+from horizons.messaging import InstanceInventoryUpdated
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 
 
@@ -62,15 +63,7 @@ class InventoryOverlayComponent(Component):
 
 	def initialize(self):
 		super(InventoryOverlayComponent, self).initialize()
-
-		#TODO add code to sync overlays from inventory here
-		pass
-
-		# Some test code, should be removed before a merge
-		import random
-		i = random.randint(0, 11)   ;  print i
-		self.update_overlay(4, i)  # 4 = RES.BOARDS
-		self.update_overlay(8, 10-i)  # 8 = RES.TREES
+		InstanceInventoryUpdated.subscribe(self.inventory_changed, sender=self.instance)
 
 
 	def add_overlay(self, overlay_set, z_order=10):
@@ -106,6 +99,16 @@ class InventoryOverlayComponent(Component):
 		#TODO remove hardcoded rotations, use action set keys (of which set?)
 		for rotation in range(45, 360, 90):
 			self.fife_instance.removeAnimationOverlay(self.identifier, rotation, res_id)
+
+
+	def inventory_changed(self, message):
+		"""A changelistener notified the StorageComponent of this instance.
+
+		Because it did not tell us which resources were added or removed, we
+		need to check everything in the inventory for possible updates.
+		"""
+		for res_id, new_amount in message.inventory.iteritems():
+			self.update_overlay(res_id, new_amount)
 
 
 	def update_overlay(self, res_id, new_amount):
@@ -167,6 +170,8 @@ class InventoryOverlayComponent(Component):
 		Also converts the animation overlay on drawing order 0 (i.e. the old base image)
 		back to a plain "action set" in UH terminology.
 		"""
+		InstanceInventoryUpdated.unsubscribe(self.inventory_changed, sender=self.instance)
+
 		for (res_id, overlay) in self.current_overlays.iteritems():
 			if overlay is not None:
 				self.remove_overlay(res_id)
