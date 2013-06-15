@@ -41,7 +41,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
-	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
+	walkable = False # whether we can walk on this building (True for e.g. streets, trees..)
 	buildable_upon = False # whether we can build upon this building
 	is_building = True
 	tearable = True

@@ -39,7 +39,7 @@ class DisasterManager(object):
 
 	def __init__(self, session, disabled=False):
 		"""
-		@param disabled: Don't do anything at all if true (but be responsive to normal calls)"""
+		@param disabled: Don't do anything at all if True (but be responsive to normal calls)"""
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
