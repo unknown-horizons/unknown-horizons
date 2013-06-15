@@ -64,7 +64,7 @@ class Production(ChangeListener):
 		@param prod_id: int id of the production line
 		@param prod_data: ?
 		@param start_finished: Whether to start at the final state of a production
-		@param load: set to true if this production is supposed to load a saved production
+		@param load: set to True if this production is supposed to load a saved production
 		"""
 		super(Production, self).__init__(**kwargs)
 		# this has grown to be a bit weird compared to other init/loads
@@ -390,7 +390,7 @@ class Production(ChangeListener):
 
 	def _add_listeners(self, check_now=False):
 		"""Listen for changes in the inventory from now on."""
-		# don't set call_listener_now to true here, adding/removing changelisteners wouldn't be atomic any more
+		# don't set call_listener_now to True here, adding/removing changelisteners wouldn't be atomic any more
 		self.inventory.add_change_listener(self._check_inventory)
 		if self.__class__.uses_gold:
 			self.owner_inventory.add_change_listener(self._check_inventory)
@@ -411,7 +411,7 @@ class Production(ChangeListener):
 
 	def _check_available_res(self):
 		"""Checks if all required resources are there.
-		@return: bool, true if we can start production
+		@return: bool, True if we can start production
 		"""
 		for res, amount in self._prod_line.consumed_res.iteritems():
 			if self.inventory[res] < (-amount): # consumed res have negative sign
@@ -426,7 +426,7 @@ class Production(ChangeListener):
 
 	def _check_for_space_for_produced_res(self):
 		"""Checks if there is enough space in the inventory for the res, we want to produce.
-		@return bool, true if everything can fit."""
+		@return bool, True if everything can fit."""
 		for res, amount in self._prod_line.produced_res.iteritems():
 			if self.inventory.get_free_space_for(res) < amount:
 				return False
