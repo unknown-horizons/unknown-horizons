@@ -119,8 +119,17 @@ class InventoryOverlayComponent(Component):
 		If that overlay is different from the currently displayed one, removes the old overlay for
 		that resource and adds a new one based on what fits *new_amount* best.
 		"""
+		try:
+			overlay_order = self.overlays[self.action_set][res_id]
+		except KeyError:
+			self.log.warning(
+				'No overlays defined for resource `%s` and action set `%s`. '
+				'Consider using `null` overlays for amount 0 in this action set.',
+				res_id, self.action_set)
+			self.current_overlays[res_id] = None
+			return
+
 		all_action_sets = ActionSetLoader.get_sets()
-		overlay_order = self.overlays[self.action_set][res_id]
 
 		# We use max(0, new_amount) restricted to what exists in overlay_order.
 		# E.g. for
