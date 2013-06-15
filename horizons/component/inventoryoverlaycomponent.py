@@ -121,12 +121,12 @@ class InventoryOverlayComponent(Component):
 		that resource and adds a new one based on what fits *new_amount* best.
 		"""
 		try:
-			overlay_order = self.overlays[self.action_set][res_id]
+			overlay_order = self.overlays[self.action_set][self.instance._action][res_id]
 		except KeyError:
 			self.log.warning(
-				'No overlays defined for resource `%s` and action set `%s`. '
+				'No overlays defined for resource `%s`, action `%s` and action set `%s`. '
 				'Consider using `null` overlays for amount 0 in this action set.',
-				res_id, self.action_set)
+				res_id, self.instance._action, self.action_set)
 			self.current_overlays[res_id] = None
 			return
 
