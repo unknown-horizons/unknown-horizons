@@ -425,7 +425,7 @@ class AIPlayer(GenericAI):
 		if not self.settlement_expansions:
 			return  # no changes in land ownership
 
-		change_lists = defaultdict(lambda: [])
+		change_lists = defaultdict(list)
 		for coords, settlement in self.settlement_expansions:
 			if settlement.island.worldid not in self.islands:
 				continue  # we don't have a settlement there and have no current plans to create one

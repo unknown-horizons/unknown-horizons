@@ -185,7 +185,7 @@ class SavegameAccessor(DbReader):
 
 			self._production_lines_by_owner[owner].append
 
-		self._production_state_history = defaultdict(lambda: deque())
+		self._production_state_history = defaultdict(deque)
 		for object_id, production_id, tick, state in self("SELECT object_id, production, tick, state FROM production_state_history ORDER BY object_id, production, tick"):
 			self._production_state_history[int(object_id), int(production_id)].append((tick, state))
 
@@ -243,7 +243,7 @@ class SavegameAccessor(DbReader):
 		for row in self("SELECT rowid, home_building, creation_tick FROM building_collector"):
 			self._building_collector[int(row[0])] = (int(row[1]) if row[1] is not None else None, row[2])
 
-		self._building_collector_job_history = defaultdict(lambda: deque())
+		self._building_collector_job_history = defaultdict(deque)
 		for collector_id, tick, utilization in self("SELECT collector, tick, utilisation FROM building_collector_job_history ORDER BY collector, tick"):
 			self._building_collector_job_history[int(collector_id)].append((tick, utilization))
 

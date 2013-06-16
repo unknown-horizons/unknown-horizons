@@ -53,7 +53,7 @@ class GenericStorage(ChangeListener):
 	"""
 	def __init__(self):
 		super(GenericStorage, self).__init__()
-		self._storage = defaultdict(lambda : 0)
+		self._storage = defaultdict(int)
 
 	def save(self, db, ownerid):
 		for slot in self._storage.iteritems():

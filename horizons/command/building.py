@@ -175,7 +175,7 @@ class Build(Command):
 		for resource in costs:
 			needed_res[resource] = needed_res.get(resource, 0) + costs[resource]
 
-		reserved_res = defaultdict(lambda : 0) # res needed for sth else but still present
+		reserved_res = defaultdict(int) # res needed for sth else but still present
 		if hasattr(issuer.session.manager, "get_builds_in_construction"):
 			# mp game, consider res still to be subtracted
 			builds = issuer.session.manager.get_builds_in_construction()

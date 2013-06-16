@@ -359,8 +359,8 @@ class FarmEvaluator(BuildingEvaluator):
 		if not self.builder.have_resources(self.area_builder.land_manager):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
-		changes = defaultdict(lambda: [])
-		reverse_changes = defaultdict(lambda: [])
+		changes = defaultdict(list)
+		reverse_changes = defaultdict(list)
 		for coords, purpose in self.farm_plan.iteritems():
 			# completely ignore the road in the plan for now
 			if purpose == BUILDING_PURPOSE.ROAD:

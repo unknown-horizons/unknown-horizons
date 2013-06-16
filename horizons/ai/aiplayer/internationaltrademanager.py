@@ -69,7 +69,7 @@ class InternationalTradeManager(object):
 			return
 
 		# find all possible legal trade route options
-		options = defaultdict(lambda: []) # {(settlement, settlement_manager): (total value, amount, resource id, bool(selling)), ...}
+		options = defaultdict(list) # {(settlement, settlement_manager): (total value, amount, resource id, bool(selling)), ...}
 		for settlement in self.world.settlements:
 			if settlement.owner is self.owner:
 				continue # don't allow routes of this type between the player's own settlements

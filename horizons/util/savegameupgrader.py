@@ -307,7 +307,7 @@ class SavegameUpgrader(object):
 					db("UPDATE building SET location = ? WHERE rowid = ?", settlement_id, worldid)
 
 		# save the new settlement tiles data
-		ground_map = defaultdict(lambda: [])
+		ground_map = defaultdict(list)
 		for (coords, settlement_id) in settlement_map.iteritems():
 			ground_map[settlement_id].append(coords)
 

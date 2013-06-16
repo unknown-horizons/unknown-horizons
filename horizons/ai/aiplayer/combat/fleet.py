@@ -157,7 +157,7 @@ class Fleet(WorldObject):
 		"""
 		Returns Counter about how many ships are in state idle, moving, reached.
 		"""
-		counter = defaultdict(lambda: 0)
+		counter = defaultdict(int)
 		for value in self._ships.values():
 			counter[value] += 1
 		return counter
