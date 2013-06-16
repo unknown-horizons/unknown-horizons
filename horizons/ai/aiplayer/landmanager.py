@@ -115,7 +115,7 @@ class LandManager(WorldObject):
 		return result
 
 	def refresh_resource_deposits(self):
-		self.resource_deposits = defaultdict(lambda: []) # {resource_id: [tile, ...]} all resource deposits of a type on the island
+		self.resource_deposits = defaultdict(list) # {resource_id: [tile, ...]} all resource deposits of a type on the island
 		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.IRON_MINE]}.iteritems():
 			for building in self.island.buildings:
 				if building.id in building_ids:
