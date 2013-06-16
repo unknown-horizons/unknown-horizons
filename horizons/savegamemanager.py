@@ -336,6 +336,9 @@ class SavegameManager(object):
 		for filename, scenario in scenarios:
 			if not os.path.exists(filename):
 				continue
+			if not os.stat(filename).st_size:
+				# file seems empty
+				continue
 			_locale = cls.get_scenario_metadata(scenario=scenario).get('locale', u'en')
 			# sort into dictionary by english filename (without language suffix)
 			english_name = scenario.split('_' + _locale)[0]
