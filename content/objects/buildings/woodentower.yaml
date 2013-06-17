@@ -21,7 +21,9 @@ components:
     overlays:
       as_woodentower0:
         idle:
-          color_idle: [[255, 0, 255], owner.color]
+        - [0, color_idle, [0, 255, 0], [owner.color, 128]]
+        - [0, color_idle, [255, 0, 0], [0, 0, 255, 128]]
+        # [0, color_idle, [0, 0, 255], [0, 0, 0, 0]]
 actionsets:
   TIER.PIONEERS:
     as_woodentower0:
