@@ -507,7 +507,7 @@ class JobList(list):
 		"""
 		super(JobList, self).__init__()
 		self.collector = collector
-		# choose acctual function by name of enum value
+		# choose actual function by name of enum value
 		sort_fun_name = '_sort_jobs_' + str(job_order)
 		if not hasattr(self, sort_fun_name):
 			self.sort_jobs = self._sort_jobs_amount
