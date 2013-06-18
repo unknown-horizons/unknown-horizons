@@ -122,10 +122,8 @@ class ColorOverlayComponent(Component):
 			except (TypeError, NotImplementedError):
 				color_attribute, alpha = to_color
 				color = attrgetter(color_attribute)(self.instance)
-				if isinstance(color, UtilColor):
+				if isinstance(color, UtilColor) or isinstance(color, fife.Color):
 					fife_to = fife.Color(color.r, color.g, color.b, alpha)
-				elif isinstance(color, fife.Color):
-					fife_to = color
 				else:
 					raise TypeError('Unknown color `%s` as attribute `%s`: '
 						'Expected either fife.Color or horizons.util.Color.'
