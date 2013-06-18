@@ -178,7 +178,7 @@ class BUILDINGS:
 	class ACTION:
 		# data for calculating gfx for paths.
 		# think: animation contains key, if there is a path at offset value
-		# you need to sort this before iterating via sorted, since order is important here
+		# you need to sort this before iterating via sorted, since order is important here.
 		action_offset_dict = {
 		# Direct connections
 		  'a' : ( 0, -1),
