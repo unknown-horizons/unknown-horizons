@@ -239,6 +239,7 @@ class ProductionBuilder(AreaBuilder):
 			BUILDING_PURPOSE.PASTURE: deque(),
 			BUILDING_PURPOSE.SUGARCANE_FIELD: deque(),
 			BUILDING_PURPOSE.TOBACCO_FIELD: deque(),
+			BUILDING_PURPOSE.HERBARY: deque(),
 		}
 
 		for coords, (purpose, _) in sorted(self.plan.iteritems()):
@@ -274,6 +275,7 @@ class ProductionBuilder(AreaBuilder):
 		sugarcane_field_color = (192, 192, 0)
 		distillery_color = (255, 128, 40)
 		tobacco_field_color = (64, 64, 0)
+		herbary_field_color = (64, 200, 0)
 		tobacconist_color = (128, 64, 40)
 		clay_pit_color = (0, 64, 0)
 		brickyard_color = (0, 32, 0)
@@ -316,6 +318,8 @@ class ProductionBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *boatbuilder_color)
 			elif purpose == BUILDING_PURPOSE.SALT_PONDS:
 				renderer.addColored(tile._instance, *salt_ponds_color)
+			elif purpose == BUILDING_PURPOSE.HERBARY:
+				renderer.addColored(tile._instance, *herbary_field_color)
 			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_color)
 			elif purpose != BUILDING_PURPOSE.NONE:
@@ -368,7 +372,7 @@ class ProductionBuilder(AreaBuilder):
 		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD].size
 		removed_list = []
 		for coords, (purpose, _) in self.plan.iteritems():
-			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD]:
+			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD, BUILDING_PURPOSE.HERBARY]:
 				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 				for field_coords in rect.tuple_iter():
 					if field_coords not in self.land_manager.production:

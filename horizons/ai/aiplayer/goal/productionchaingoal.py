@@ -138,6 +138,13 @@ class TobaccoProductsGoal(ProductionChainGoal):
 	def get_personality_name(self):
 		return 'TobaccoProductsGoal'
 
+class MedicalHerbsProductsGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(MedicalHerbsProductsGoal, self).__init__(settlement_manager, RES.MEDICAL_HERBS, 'medical herbs products producer')
+
+	def get_personality_name(self):
+		return 'MedicalHerbsProductsGoal'
+
 class SaltGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):
 		super(SaltGoal, self).__init__(settlement_manager, RES.SALT, 'salt producer')

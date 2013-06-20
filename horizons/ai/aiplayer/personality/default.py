@@ -379,6 +379,18 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = TIER.SETTLERS
 
+	class MedicalHerbsProductsGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 13
+		min_settler_level = TIER.SETTLERS
+
+	class FeederMedicalProductsGoal:
+		enabled = True
+		default_priority = 230
+		residences_required = 0
+		min_settler_level = TIER.SETTLERS
+
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
 
@@ -457,10 +469,12 @@ class DefaultPersonality:
 		add_pasture_value = 2.5 # the value of adding a pasture
 		add_sugarcane_field_value = 3.5 # the value of adding a sugarcane field
 		add_tobacco_field_value = 3.5 # the value of adding a tobacco field
+		add_herbary_field_value = 3.5 # the value of adding a herbary
 		remove_unused_potato_field_penalty = 0 # the penalty for removing an unused potato field
 		remove_unused_pasture_penalty = 1 # the penalty for removing an unused pasture
 		remove_unused_sugarcane_field_penalty = 1.5 # the penalty for removing an unused sugarcane field
 		remove_unused_tobacco_field_penalty = 1.5 # the penalty for removing an unused tobacco field
+		remove_unused_herbary_field_penalty = 1.5 # the penalty for removing an unused herbary
 
 	class FireStationGoal:
 		enabled = True
