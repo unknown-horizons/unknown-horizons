@@ -98,7 +98,7 @@ class DefaultPersonality:
 		normal_fire_station_capacity = 30 # the initial plan calls for this number of residences per fire station
 
 		max_doctor_capacity = 40 # maximum number of residences a doctor can service
-		normal__doctor_capacity = 30 # the initial plan calls for this number of residences per doctor
+		normal_doctor_capacity = 30 # the initial plan calls for this number of residences per doctor
 
 		min_coverage_building_options = 10 # consider at least this many coverage building options
 		coverage_building_option_ratio = 0.4 # consider this * 100% of the possible options
@@ -466,12 +466,19 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 690
 		residences_required = 5
-		min_settler_level = TIER.SAILORS
+		min_settler_level = TIER.PIONEERS
+
+	class DoctorGoal:
+		enabled = True
+		default_priority = 650
+		residences_required = 5
+		min_settler_level = TIER.SETTLERS
 
 	class AbstractFireStation:
 		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built
 
 	class AbstractDoctor:
 		fraction_of_assigned_residences_built = 0.4 # build a doctor if at least this amount of       the assigned residences have been built
+
 	class AbstractFisher:
 		max_options = 30 # maximum number of farm options to consider

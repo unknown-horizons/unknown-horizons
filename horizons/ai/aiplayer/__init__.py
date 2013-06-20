@@ -56,6 +56,7 @@ from building.distillery import AbstractDistillery
 from building.villagebuilding import AbstractVillageBuilding
 from building.claydeposit import AbstractClayDeposit
 from building.claypit import AbstractClayPit
+from building.doctor import AbstractDoctor
 from building.brickyard import AbstractBrickyard
 from building.firestation import AbstractFireStation
 from building.fishdeposit import AbstractFishDeposit

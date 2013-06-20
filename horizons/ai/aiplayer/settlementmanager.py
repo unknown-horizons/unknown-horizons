@@ -147,6 +147,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(TradingShipGoal(self))
 			self._goals.append(CombatShipGoal(self))
 			self._goals.append(FireStationGoal(self))
+			self._goals.append(DoctorGoal(self))
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
