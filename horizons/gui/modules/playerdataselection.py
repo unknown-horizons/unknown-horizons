@@ -72,9 +72,16 @@ class PlayerDataSelection(object):
 		see their currently chosen color. Stores result in settings.
 		@param color_id: int. Gets converted to FIFE Color object.
 		"""
-		self.selected_color = Color[color_id]
+		try:
+			self.selected_color = Color[color_id]
+		except KeyError:
+			# For some reason, color_id can be 0 apparently:
+			# http://forum.unknown-horizons.org/viewtopic.php?t=6927
+			# Reset that setting to 1 if the problem occurs.
+			color_id = 1
+			self.selected_color = Color[color_id]
 		horizons.globals.fife.set_uh_setting("ColorID", color_id)
-		self.gui.findChild(name='selectedcolor').background_color = Color[color_id]
+		self.gui.findChild(name='selectedcolor').background_color = self.selected_color
 
 	def set_player_name(self, playername):
 		horizons.globals.fife.set_uh_setting("Nickname", playername)
