@@ -70,7 +70,7 @@ class PlayerDataSelection(object):
 	def set_color(self, color_id):
 		"""Updates the background color of large label where players
 		see their currently chosen color. Stores result in settings.
-		@param color_id: int. Gets converted to FIFE Color object.
+		@param color_id: int. Gets converted to util.Color object.
 		"""
 		try:
 			self.selected_color = Color[color_id]
