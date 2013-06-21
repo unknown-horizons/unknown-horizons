@@ -81,10 +81,12 @@ class PlayerDataSelection(object):
 			color_id = 1
 			self.selected_color = Color[color_id]
 		horizons.globals.fife.set_uh_setting("ColorID", color_id)
+		horizons.globals.fife.save_settings()
 		self.gui.findChild(name='selectedcolor').background_color = self.selected_color
 
 	def set_player_name(self, playername):
 		horizons.globals.fife.set_uh_setting("Nickname", playername)
+		horizons.globals.fife.save_settings()
 		self.gui.distributeData({
 			'playername': unicode(playername),
 			})
