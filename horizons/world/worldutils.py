@@ -176,8 +176,7 @@ def add_resource_deposits(world, resource_multiplier):
 
 		# calculate the manhattan distance to the sea
 		while queue:
-			x, y, dist = queue[0]
-			queue.popleft()
+			x, y, dist = queue.popleft()
 			for dx, dy in moves:
 				coords = (x + dx, y + dy)
 				if coords in distance:

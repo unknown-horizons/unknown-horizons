@@ -78,8 +78,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 			queue = deque([coords])
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in area_label and area_label[coords2] is None:

@@ -182,8 +182,7 @@ class ProductionBuilder(AreaBuilder):
 				queue.append(coords)
 
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
 					if coords not in reachable and coords in coverage_area:

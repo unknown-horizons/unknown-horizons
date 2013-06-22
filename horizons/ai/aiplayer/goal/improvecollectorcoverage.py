@@ -142,8 +142,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 					queue.append(coords)
 
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in distance and distance[coords2] is None:
