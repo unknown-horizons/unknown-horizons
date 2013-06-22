@@ -120,17 +120,13 @@ class StatusIconManager(object):
 		# pixel-offset on screen (will be constant across zoom-levels)
 		rel = fife.Point(0, -30)
 
-
 		pos = instance.position
 
 		# trial and error has brought me to this (it's supposed to hit the center)
+		x = pos.origin.x + (pos.width / 4.0)
+		y = pos.origin.y + (pos.height / 4.0)
 		loc = fife.Location(self.layer)
-		loc.setExactLayerCoordinates(
-		  fife.ExactModelCoordinate(
-		    pos.origin.x + float(pos.width) / 4,
-		    pos.origin.y + float(pos.height) / 4,
-		  )
-		)
+		loc.setExactLayerCoordinates(fife.ExactModelCoordinate(x, y))
 
 		node = fife.RendererNode(loc, rel)
 
