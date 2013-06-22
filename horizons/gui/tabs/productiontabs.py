@@ -145,7 +145,7 @@ class ProductionOverviewTab(OverviewTab):
 		for res in xrange(input_amount // 2):
 			# --\                      <= placed for res = 1
 			# --\| <= place connector  <= placed for res = 0
-			# ---O-->                  <= placed above
+			# ---O-->                  <= placed above (mid_arrow)
 			# --/| <= place connector  <= placed for res = 0
 			# --/                      <= placed for res = 1
 			offset = -17 + (icon_height // 2) * (2 * res + (input_amount % 2) + 1)
