@@ -114,7 +114,7 @@ class StatusIconManager(object):
 	def __render_status(self, instance, status):
 		status_string = self.get_status_string(instance)
 
-		# Clean icons
+		# Clear icons
 		self.renderer.removeAll(status_string)
 
 		# pixel-offset on screen (will be constant across zoom-levels)
