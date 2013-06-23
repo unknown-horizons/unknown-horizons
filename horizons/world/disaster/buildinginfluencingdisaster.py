@@ -103,15 +103,15 @@ class BuildingInfluencingDisaster(Disaster):
 	def infect(self, building, load=None):
 		"""@load: (db, disaster_worldid), set on restoring infected state of savegame"""
 		super(BuildingInfluencingDisaster, self).infect(building, load=load)
-		# keep in sync with load()
-		AddStatusIcon.broadcast(building, self.STATUS_ICON(building))
-		NewDisaster.broadcast(building.owner, building, self.__class__)
 		self._affected_buildings.append(building)
 		havoc_time = self.TIME_BEFORE_HAVOC
+		# keep in sync with load()
 		if load:
 			db, worldid = load
 			havoc_time = db("SELECT remaining_ticks_havoc FROM building_influcing_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
+		AddStatusIcon.broadcast(building, self.STATUS_ICON(building))
+		NewDisaster.broadcast(building.owner, building, self.__class__, self)
 
 	def recover(self, building):
 		super(BuildingInfluencingDisaster, self).recover(building)

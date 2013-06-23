@@ -545,7 +545,7 @@ class IngameGui(LivingObject):
 
 	def _on_new_disaster(self, message):
 		"""Called when a building is 'infected' with a disaster."""
-		if message.building.owner.is_local_player:
+		if message.building.owner.is_local_player and len(message.disaster._affected_buildings) == 1:
 			pos = message.building.position.center
 			self.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
 
