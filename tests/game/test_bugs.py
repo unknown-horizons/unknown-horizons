@@ -26,7 +26,7 @@ from horizons.command.building import Build, Tear
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer
-from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
+from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes import Point
 from horizons.world.production.utilization import FieldUtilization
@@ -216,32 +216,6 @@ def test_ticket_1427():
 	# if you don't let the session run for a bit then collectors won't be fully initialized and can't be killed => another test will fail in session.end()
 	session.run(seconds=1)
 	session.end()
-
-
-@game_test()
-def test_settler_level(s, p):
-	"""
-	Verify that settler level up works.
-	"""
-	settlement, island = settle(s)
-
-	settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
-
-	# make it happy
-	inv = settler.get_component(StorageComponent).inventory
-	to_give = inv.get_free_space_for(RES.HAPPINESS)
-	inv.alter(RES.HAPPINESS, to_give)
-	level = settler.level
-
-	s.run(seconds=GAME.INGAME_TICK_INTERVAL)
-
-	# give upgrade res
-	inv.alter(RES.BOARDS, 100)
-
-	s.run(seconds=GAME.INGAME_TICK_INTERVAL)
-
-	# should have leveled up
-	assert settler.level == level + 1
 
 
 @game_test()

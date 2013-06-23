@@ -199,6 +199,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 				# all lines, that were added here but are not used due to the current level
 				# NOTE: this contains the upgrade material production line
 				prod_comp.remove_production_by_id(line)
+				# Make sure to set _upgrade_production to None in case we are removing it
+				if self._upgrade_production is not None and line == self._upgrade_production.get_production_line_id():
+					self._upgrade_production = None
 
 		if not initial:
 			# update instance graphics
