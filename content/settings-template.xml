@@ -7,7 +7,7 @@
 		<Setting name="ScreenResolution" type="str">1024x768</Setting>
 		<Setting name="BitsPerPixel" type="int"> 0 </Setting>
 		<Setting name="InitialVolume" type="float"> 5.0 </Setting>
-		<Setting name="SDLRemoveFakeAlpha" type="int"> 1 </Setting>
+		<Setting name="SDLRemoveFakeAlpha" type="bool"> True </Setting>
 		<Setting name="GLCompressImages" type="bool"> False </Setting>
 		<Setting name="WindowTitle" type="str">Unknown Horizons</Setting>
 		<Setting name="WindowIcon" type="str">content/gui/images/logos/uh_32.png</Setting>
@@ -95,6 +95,6 @@
 		<Setting name="DEBUG" type="list"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 34 </Setting>
+		<Setting name="SettingsVersion" type="int"> 35 </Setting>
 	</Module>
 </Settings>
