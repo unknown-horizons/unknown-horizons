@@ -33,7 +33,7 @@ DEFAULT_SETTINGS = {
 		'FullScreen': False,
 		'PychanDebug': False,
 		'ProfilingOn': False,
-		'SDLRemoveFakeAlpha': 0,
+		'SDLRemoveFakeAlpha': False,
 		'ScreenResolution': '1024x768',
 		'BitsPerPixel':0,
 		'FrameLimitEnabled': False,
