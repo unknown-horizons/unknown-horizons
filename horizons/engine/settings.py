@@ -35,7 +35,7 @@ DEFAULT_SETTINGS = {
 		'ProfilingOn': False,
 		'SDLRemoveFakeAlpha': False,
 		'ScreenResolution': '1024x768',
-		'BitsPerPixel':0,
+		'BitsPerPixel': 0,
 		'FrameLimitEnabled': False,
 		'FrameLimit': 60,
 
@@ -54,10 +54,10 @@ DEFAULT_SETTINGS = {
 
 		'Lighting': 0,
 		'ColorKeyEnabled': False,
-		'ColorKey': [255,0,255],
+		'ColorKey': [255, 0, 255],
 
-		'LogToFile': 0,
-		'LogToPrompt': 0,
+		'LogToFile': False,
+		'LogToPrompt': False,
 		'LogLevelFilter': [0],
 		'LogModules': ['controller','script'],
 
