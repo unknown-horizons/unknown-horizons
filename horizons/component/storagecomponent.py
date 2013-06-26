@@ -20,6 +20,8 @@
 # ###################################################
 
 from horizons.component import Component
+from horizons.messaging import InstanceInventoryUpdated
+from horizons.scheduler import Scheduler
 from horizons.world.storage import (
 	PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage,
 	SettlementStorage, PositiveTotalNumSlotsStorage,
@@ -54,6 +56,7 @@ class StorageComponent(Component):
 		# NOTE: also called on load (initialize usually isn't)
 		if not self.has_own_inventory:
 			self.inventory = self.instance.settlement.get_component(StorageComponent).inventory
+		self.inventory.add_change_listener(self.something_changed)
 
 	def remove(self):
 		super(StorageComponent, self).remove()
@@ -73,6 +76,16 @@ class StorageComponent(Component):
 		self.initialize()
 		if self.has_own_inventory:
 			self.inventory.load(db, worldid)
+		# This allows other components to instantly update on load
+		Scheduler().add_new_object(self.something_changed, self, run_in=0)
+
+	def something_changed(self):
+		"""Used as proxy to send messages when a changelistener notifies us.
+
+		Masks the message sender to be `self.instance` rather than self because
+		that is what we are interested in, usually.
+		"""
+		InstanceInventoryUpdated.broadcast(self.instance, self.inventory._storage)
 
 	@classmethod
 	def get_instance(cls, arguments):
