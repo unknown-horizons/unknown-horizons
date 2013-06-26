@@ -200,6 +200,13 @@ class ResourceProduced(Message):
 	"""Sent when a production building finished the production of a resource."""
 	arguments = ('caller', 'produced_resources', )
 
+class InstanceInventoryUpdated(Message):
+	"""Message sent whenever an inventory of any instance is updated.
+
+	This message is sent by StorageComponent but sender is the instance!
+	"""
+	arguments = ('inventory', )
+
 class SettlementInventoryUpdated(Message):
 	"""Message sent whenever a settlement's inventory is updated."""
 	pass
