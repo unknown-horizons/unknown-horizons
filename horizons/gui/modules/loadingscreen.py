@@ -50,7 +50,8 @@ FUN_QUOTES = {
 		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails",
 		"Travel beyond the horizon and discover unknown worlds!",
 		u"War… war never changes",
-		"Support Unknown Horizons with Cookies!"
+		"Support Unknown Horizons with Cookies!",
+		"wow, looks nearly completed \n(Neomex)"
     ]
 }
 
