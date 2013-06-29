@@ -130,9 +130,6 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 			upgrades_box = container_active.findChild(name="BB_upgrades_box")
 			upgrades_box.removeAllChildren()
-#			upgrades_box.addChild(Label(text=u"+ love"))
-#			upgrades_box.addChild(Label(text=u"+ affection"))
-# no upgrades in 2010.1 release ---^
 
 			# Update needed resources
 			production = self.producer.get_productions()[0]
