@@ -531,7 +531,7 @@ class QueueProducer(Producer):
 
 	def cancel_current_production(self):
 		"""Cancels the current production and proceeds to the next one, if there is one"""
-		# Remove current productions, loose all progress and resources
+		# Remove current productions, lose all progress and resources
 		for production in self._productions.copy().itervalues():
 			self.remove_production(production)
 		for production in self._inactive_productions.copy().itervalues():
