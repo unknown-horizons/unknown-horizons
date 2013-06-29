@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-09 17:46+0200\n"
+"POT-Creation-Date: 2013-06-29 21:04+0200\n"
 "PO-Revision-Date: 2013-06-03 22:52+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Ukrainian <http://hosted.weblate.org/projects/uh/uh/uk/>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-#: run_uh.py:220
+#: run_uh.py:219
 msgid "Unknown Horizons has crashed."
 msgstr "Крах Unknown Horizons."
 
-#: run_uh.py:222
+#: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "Нам дуже шкода через це і хочемо виправити основні помилки."
 
-#: run_uh.py:223
+#: run_uh.py:222
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "Для цього нам потрібна інформація з журналу:"
 
-#: run_uh.py:225
+#: run_uh.py:224
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
@@ -38,19 +38,19 @@ msgstr ""
 "Будь ласка, подайте її нам через IRC або на форумі, а також відвідайте "
 "http://unknown-horizons.org ."
 
-#: run_uh.py:273
+#: run_uh.py:272
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "Помилка: не вдалося знайти необхідну бібліотеку \"PyYAML\"."
 
-#: run_uh.py:274
+#: run_uh.py:273
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr "PyYAML (необхідна бібліотека) відсутня і повинна бути встановлена."
 
-#: run_uh.py:275
+#: run_uh.py:274
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr "Інсталятор під Windows доступний на http://pyyaml.org/wiki/PyYAML."
 
-#: run_uh.py:276
+#: run_uh.py:275
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
@@ -58,7 +58,7 @@ msgstr ""
 "Linux користувачі повинні знайти його за допомогою свого менеджера пакетів "
 "під назвою  \"pyyaml\" або \"python-yaml\"."
 
-#: run_uh.py:310
+#: run_uh.py:309
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Дякуємо за використання Unknown Horizons!"
 
@@ -848,7 +848,7 @@ msgstr "Завантажити карту збереженої гри"
 msgid "Start editor"
 msgstr "Запустити редактор"
 
-#: content/gui/xml/mainmenu/help.xml:5
+#: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
 msgstr "Повернення"
 
@@ -1711,102 +1711,102 @@ msgstr "Підтвердження перезапису"
 msgid "Quotes"
 msgstr "Лапки"
 
-#: horizons/gui/modules/loadingscreen.py:59
+#: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
 msgstr "Поради щодо гри"
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
 msgstr "Натисніть \"ESC\" для доступу до меню гри."
 
-#: horizons/gui/modules/loadingscreen.py:62
+#: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Використовуйте \"SHIFT\", щоб розмістити кілька будівель."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:65
+#: horizons/gui/modules/loadingscreen.py:66
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "В даний час тільки перші {tier} рівні можуть відтворюватися."
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can pause the game with 'P'."
 msgstr "Ви можете призупинити гру з 'P'."
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can drag roads by holding the left mouse button."
 msgstr "Ви можете перетягнути дороги, утримуючи ліву кнопку миші."
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:70
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr "Ви можете побудувати декілька будівель, утримуючи клавішу 'Shift'."
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr "Ви можете збільшити щастя ваших жителів за рахунок зниження податків."
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:72
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
 "Будуйте пожежну станцію та лікарів, щоб захистити жителів від пожеж і хвороб."
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Build storage tents to increase your storage capacity."
 msgstr "Будуйте намети для зберігання, щоби збільшити ємність."
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Make sure every house is in range of a marketplace."
 msgstr "Переконайтеся, що кожен будинок знаходиться в області дії ринку."
 
-#: horizons/gui/modules/loadingscreen.py:74
+#: horizons/gui/modules/loadingscreen.py:75
 msgid "Press 'T' to make trees transparent."
 msgstr "Натисніть 'T', щоби зробити дерева прозорими."
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:101
+#: horizons/gui/modules/loadingscreen.py:102
 msgid "Starting engine…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:102
+#: horizons/gui/modules/loadingscreen.py:103
 msgid "Catching fish…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:103
+#: horizons/gui/modules/loadingscreen.py:104
 msgid "Drawing user interface…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:104
+#: horizons/gui/modules/loadingscreen.py:105
 msgid "Activating timer…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:105
+#: horizons/gui/modules/loadingscreen.py:106
 msgid "Chomping game data…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:106
+#: horizons/gui/modules/loadingscreen.py:107
 msgid "Shaping islands…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:107
+#: horizons/gui/modules/loadingscreen.py:108
 msgid "Preparing blueprints…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:108
+#: horizons/gui/modules/loadingscreen.py:109
 msgid "Filling world with water…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:109
+#: horizons/gui/modules/loadingscreen.py:110
 msgid "Raising animals…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:110
+#: horizons/gui/modules/loadingscreen.py:111
 msgid "Convincing AI…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:111
+#: horizons/gui/modules/loadingscreen.py:112
 msgid "Burying treasures…"
 msgstr ""
 
@@ -2163,27 +2163,27 @@ msgstr "Огляд суднобудівника"
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (місце в черзі: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:208
+#: horizons/gui/tabs/boatbuildertabs.py:205
 msgid "Build this ship!"
 msgstr "Побудувати корабель!"
 
-#: horizons/gui/tabs/boatbuildertabs.py:250
+#: horizons/gui/tabs/boatbuildertabs.py:247
 msgid "Fisher boats"
 msgstr "Рибальські судна"
 
-#: horizons/gui/tabs/boatbuildertabs.py:262
+#: horizons/gui/tabs/boatbuildertabs.py:259
 msgid "Trade boats"
 msgstr "Торгові судна"
 
-#: horizons/gui/tabs/boatbuildertabs.py:273
+#: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War boats"
 msgstr "Військові судна"
 
-#: horizons/gui/tabs/boatbuildertabs.py:284
+#: horizons/gui/tabs/boatbuildertabs.py:281
 msgid "War ships"
 msgstr "Військові кораблі"
 
-#: horizons/gui/tabs/boatbuildertabs.py:302
+#: horizons/gui/tabs/boatbuildertabs.py:299
 msgid "Confirm order"
 msgstr "Підтвердити наказ"
 
@@ -3379,7 +3379,8 @@ msgid "This building has a very low productivity."
 msgstr "Ця будівля має дуже низьку продуктивність."
 
 #: horizons/world/status.py:110
-msgid "This building is decomissioned."
+#, fuzzy
+msgid "This building is decommissioned."
 msgstr "Ця будівля виведена з експлуатації."
 
 #: horizons/world/status.py:116

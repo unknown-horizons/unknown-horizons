@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-09 17:46+0200\n"
+"POT-Creation-Date: 2013-06-29 21:04+0200\n"
 "PO-Revision-Date: 2013-06-03 23:00+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-#: run_uh.py:220
+#: run_uh.py:219
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons çöktü."
 
-#: run_uh.py:222
+#: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr ""
 "Bu sorun için çok üzgünüz ve altında yatan nedeni en kısa zamanda çözeceğiz."
 
-#: run_uh.py:223
+#: run_uh.py:222
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "Bunu yapabilmek için kayıt dosyasındaki bilgilere ihtiyacımız var:"
 
-#: run_uh.py:225
+#: run_uh.py:224
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
@@ -38,20 +38,20 @@ msgstr ""
 "Lütfen bu dosyayı bize IRC yoluyla ya da forumumuz üzerinden gönderiniz. "
 "Detaylı bilgi için bakınız http://unknown-horizons.org ."
 
-#: run_uh.py:273
+#: run_uh.py:272
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "Hata: Gerekli \"PyYAML\" kütüphanesi bulunamadı."
 
-#: run_uh.py:274
+#: run_uh.py:273
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr "PyYAML (gerekli bir kütüphane) yok ve yüklenmesi gerekiyor."
 
-#: run_uh.py:275
+#: run_uh.py:274
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
 "Windows yükleyicisini http://pyyaml.org/wiki/PyYAML adresinde bulabilirsiniz."
 
-#: run_uh.py:276
+#: run_uh.py:275
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
@@ -59,7 +59,7 @@ msgstr ""
 "Linux kullanıcıları ise bunu paket yöneticilerini kullanarak \"pyyaml\" veya "
 "\"python-yaml\" adıyla bulabilirler."
 
-#: run_uh.py:310
+#: run_uh.py:309
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Unkown Horizons'u kullandığınız için teşekkürler!"
 
@@ -847,7 +847,7 @@ msgstr "Kayıtlı haritayı yükle"
 msgid "Start editor"
 msgstr "Düzenleyiciyi başlat"
 
-#: content/gui/xml/mainmenu/help.xml:5
+#: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
 msgstr "Geri dön"
 
@@ -1702,42 +1702,42 @@ msgstr "Üstüne yazma onayı"
 msgid "Quotes"
 msgstr "Alıntılar"
 
-#: horizons/gui/modules/loadingscreen.py:59
+#: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
 msgstr "Oyun tüyoları"
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
 msgstr "Ana menüye dönmek için 'ESC' tuşuna basınız."
 
-#: horizons/gui/modules/loadingscreen.py:62
+#: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Birden fazla bina yerleştirmek için 'SHIFT' tuşuna basınız."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:65
+#: horizons/gui/modules/loadingscreen.py:66
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "Şimdilik yalnızca ilk {tier} aşama oynanabilir."
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can pause the game with 'P'."
 msgstr "Oyunu 'P' tuşu ile durdurabilirsiniz."
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can drag roads by holding the left mouse button."
 msgstr "Farenin sol tuşuna basarak yolları sürükleyebilirsiniz."
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:70
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr "'SHIFT' tuşunu basılı tutarak birden fazla bina kurabilirsiniz."
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr "Halkınızın refahını vergileri düşürerek arttırabilirsiniz."
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:72
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
@@ -1745,61 +1745,61 @@ msgstr ""
 "Halkınızı yangından ve hastalıklardan korumak için itfaiye ve doktor binası "
 "kurunuz."
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Build storage tents to increase your storage capacity."
 msgstr "Depo kapasitesini arttırmak için ambar çadırları kurunuz."
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Make sure every house is in range of a marketplace."
 msgstr ""
 "Tüm evlerin pazar yerinin yayılma alanı içerisinde olduğundan emin olunuz."
 
-#: horizons/gui/modules/loadingscreen.py:74
+#: horizons/gui/modules/loadingscreen.py:75
 msgid "Press 'T' to make trees transparent."
 msgstr "Ağaçları saydamlaştırmak için 'T' ye basınız."
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:101
+#: horizons/gui/modules/loadingscreen.py:102
 msgid "Starting engine…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:102
+#: horizons/gui/modules/loadingscreen.py:103
 msgid "Catching fish…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:103
+#: horizons/gui/modules/loadingscreen.py:104
 msgid "Drawing user interface…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:104
+#: horizons/gui/modules/loadingscreen.py:105
 msgid "Activating timer…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:105
+#: horizons/gui/modules/loadingscreen.py:106
 msgid "Chomping game data…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:106
+#: horizons/gui/modules/loadingscreen.py:107
 msgid "Shaping islands…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:107
+#: horizons/gui/modules/loadingscreen.py:108
 msgid "Preparing blueprints…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:108
+#: horizons/gui/modules/loadingscreen.py:109
 msgid "Filling world with water…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:109
+#: horizons/gui/modules/loadingscreen.py:110
 msgid "Raising animals…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:110
+#: horizons/gui/modules/loadingscreen.py:111
 msgid "Convincing AI…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:111
+#: horizons/gui/modules/loadingscreen.py:112
 msgid "Burying treasures…"
 msgstr ""
 
@@ -2154,27 +2154,27 @@ msgstr "Tekne yapıcısı genel görünümü"
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (Sıradaki yeri: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:208
+#: horizons/gui/tabs/boatbuildertabs.py:205
 msgid "Build this ship!"
 msgstr "Bu gemiyi inşa et!"
 
-#: horizons/gui/tabs/boatbuildertabs.py:250
+#: horizons/gui/tabs/boatbuildertabs.py:247
 msgid "Fisher boats"
 msgstr "Balıkçı tekneleri"
 
-#: horizons/gui/tabs/boatbuildertabs.py:262
+#: horizons/gui/tabs/boatbuildertabs.py:259
 msgid "Trade boats"
 msgstr "Ticaret tekneleri"
 
-#: horizons/gui/tabs/boatbuildertabs.py:273
+#: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War boats"
 msgstr "Savaş tekneleri"
 
-#: horizons/gui/tabs/boatbuildertabs.py:284
+#: horizons/gui/tabs/boatbuildertabs.py:281
 msgid "War ships"
 msgstr "Savaş gemileri"
 
-#: horizons/gui/tabs/boatbuildertabs.py:302
+#: horizons/gui/tabs/boatbuildertabs.py:299
 msgid "Confirm order"
 msgstr "Siparişi doğrula"
 
@@ -3364,7 +3364,8 @@ msgid "This building has a very low productivity."
 msgstr "Bu binanın üretkenliği düşük."
 
 #: horizons/world/status.py:110
-msgid "This building is decomissioned."
+#, fuzzy
+msgid "This building is decommissioned."
 msgstr "Bu bina devreden çıkarıldı."
 
 #: horizons/world/status.py:116

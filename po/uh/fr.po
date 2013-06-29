@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-09 17:46+0200\n"
+"POT-Creation-Date: 2013-06-29 21:04+0200\n"
 "PO-Revision-Date: 2013-05-20 17:12+0200\n"
 "Last-Translator: Clement Coste <clement.coste2@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh/fr/>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-#: run_uh.py:220
+#: run_uh.py:219
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons est tombé en panne."
 
-#: run_uh.py:222
+#: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr ""
 "Nous sommes désolé de cette erreur, nous allons faire notre possible afin de "
 "la corriger."
 
-#: run_uh.py:223
+#: run_uh.py:222
 msgid "In order to do this, we need the information from the logfile:"
 msgstr ""
 "Pour cela, nous avons besoin des informations provenant du fichier journal:"
 
-#: run_uh.py:225
+#: run_uh.py:224
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
@@ -40,20 +40,20 @@ msgstr ""
 "Veuillez nous tenir informé via IRC ou via notre forum que vous trouverez "
 "sur http://unknown-horizons.org ."
 
-#: run_uh.py:273
+#: run_uh.py:272
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "Impossible de trouver la bibliothèques requise «PyYAML»."
 
-#: run_uh.py:274
+#: run_uh.py:273
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr "La bibliothèque PyYAML est manquante et doit être installée."
 
-#: run_uh.py:275
+#: run_uh.py:274
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
 "L’installateur pour Windows est disponible sur http://pyyaml.org/wiki/PyYAML."
 
-#: run_uh.py:276
+#: run_uh.py:275
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
@@ -61,7 +61,7 @@ msgstr ""
 "Les utilisateurs de Linux devraient la trouver sous le nom «pyyaml» ou "
 "«python-yaml» en utilisant leur gestionnaire de paquets."
 
-#: run_uh.py:310
+#: run_uh.py:309
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Merci d'utiliser Unknown Horizons !"
 
@@ -858,7 +858,7 @@ msgstr "Charger la carte d'une partie sauvegardée"
 msgid "Start editor"
 msgstr "Démarrer l'éditeur"
 
-#: content/gui/xml/mainmenu/help.xml:5
+#: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
 msgstr "Retourner"
 
@@ -1733,46 +1733,46 @@ msgstr "Confirmation du remplacement"
 msgid "Quotes"
 msgstr "Citations"
 
-#: horizons/gui/modules/loadingscreen.py:59
+#: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
 msgstr "Conception de la jouabilité"
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
 msgstr "Appuyez «ESC» afin d'accéder au menu."
 
-#: horizons/gui/modules/loadingscreen.py:62
+#: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Maintenir «SHIFT» afin de placer plusieurs bâtiments."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:65
+#: horizons/gui/modules/loadingscreen.py:66
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "Pour l'instant seulement les premiers {tier} niveaux sont jouables."
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can pause the game with 'P'."
 msgstr "Vous pouvez interrompre la partie avec «P»."
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can drag roads by holding the left mouse button."
 msgstr "Vous pouvez tirer des rues en maintenant la souris gauche enfoncé."
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:70
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
 "Vous pouvez construire plusieurs bâtiments en maintenant la touche «SHIFT» "
 "enfoncé."
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
 "Vous pouvez augmenter la satisfaction de vos habitants en réduisant les "
 "taxes."
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:72
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
@@ -1780,71 +1780,71 @@ msgstr ""
 "Érigez des casernes de pompiers et des docteurs afin de protéger vos "
 "habitants de feux et de maladies."
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Build storage tents to increase your storage capacity."
 msgstr "Érigez des dépôts afin d'augmenter votre capacité de stockage."
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Make sure every house is in range of a marketplace."
 msgstr ""
 "Assurez-vous que chaque habitation est dans le rayon d'action d'un marché."
 
-#: horizons/gui/modules/loadingscreen.py:74
+#: horizons/gui/modules/loadingscreen.py:75
 msgid "Press 'T' to make trees transparent."
 msgstr "Appuyez «T» afin de rendre les arbres transparents."
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:101
+#: horizons/gui/modules/loadingscreen.py:102
 #, fuzzy
 msgid "Starting engine…"
 msgstr "Lance le moteur ..."
 
-#: horizons/gui/modules/loadingscreen.py:102
+#: horizons/gui/modules/loadingscreen.py:103
 #, fuzzy
 msgid "Catching fish…"
 msgstr "Attraper du poisson..."
 
-#: horizons/gui/modules/loadingscreen.py:103
+#: horizons/gui/modules/loadingscreen.py:104
 #, fuzzy
 msgid "Drawing user interface…"
 msgstr "Dessiner l'interface usager..."
 
-#: horizons/gui/modules/loadingscreen.py:104
+#: horizons/gui/modules/loadingscreen.py:105
 #, fuzzy
 msgid "Activating timer…"
 msgstr "Activer le compte-minutes..."
 
-#: horizons/gui/modules/loadingscreen.py:105
+#: horizons/gui/modules/loadingscreen.py:106
 #, fuzzy
 msgid "Chomping game data…"
 msgstr "Processer les données du jeu..."
 
-#: horizons/gui/modules/loadingscreen.py:106
+#: horizons/gui/modules/loadingscreen.py:107
 #, fuzzy
 msgid "Shaping islands…"
 msgstr "Former les îles..."
 
-#: horizons/gui/modules/loadingscreen.py:107
+#: horizons/gui/modules/loadingscreen.py:108
 #, fuzzy
 msgid "Preparing blueprints…"
 msgstr "Préparer les plans de construction..."
 
-#: horizons/gui/modules/loadingscreen.py:108
+#: horizons/gui/modules/loadingscreen.py:109
 #, fuzzy
 msgid "Filling world with water…"
 msgstr "Inonder le monde..."
 
-#: horizons/gui/modules/loadingscreen.py:109
+#: horizons/gui/modules/loadingscreen.py:110
 #, fuzzy
 msgid "Raising animals…"
 msgstr "Élever des animaux..."
 
-#: horizons/gui/modules/loadingscreen.py:110
+#: horizons/gui/modules/loadingscreen.py:111
 #, fuzzy
 msgid "Convincing AI…"
 msgstr "Persuader l'IA..."
 
-#: horizons/gui/modules/loadingscreen.py:111
+#: horizons/gui/modules/loadingscreen.py:112
 #, fuzzy
 msgid "Burying treasures…"
 msgstr "Enterrer les trésors..."
@@ -2203,28 +2203,28 @@ msgstr "Sommaire du constructeur de bateaux"
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (place dans la file d'attente : {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:208
+#: horizons/gui/tabs/boatbuildertabs.py:205
 msgid "Build this ship!"
 msgstr "Construire ce navire !"
 
 # Je propose une "Bateaux de pêcheurs" pour éviter d'avoir la chaîne en doublon.
-#: horizons/gui/tabs/boatbuildertabs.py:250
+#: horizons/gui/tabs/boatbuildertabs.py:247
 msgid "Fisher boats"
 msgstr "Bateaux de pêche"
 
-#: horizons/gui/tabs/boatbuildertabs.py:262
+#: horizons/gui/tabs/boatbuildertabs.py:259
 msgid "Trade boats"
 msgstr "Bateaux de commerce"
 
-#: horizons/gui/tabs/boatbuildertabs.py:273
+#: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War boats"
 msgstr "Bateaux de guerre"
 
-#: horizons/gui/tabs/boatbuildertabs.py:284
+#: horizons/gui/tabs/boatbuildertabs.py:281
 msgid "War ships"
 msgstr "Navires de guerre"
 
-#: horizons/gui/tabs/boatbuildertabs.py:302
+#: horizons/gui/tabs/boatbuildertabs.py:299
 msgid "Confirm order"
 msgstr "Valider la commande"
 
@@ -3437,7 +3437,8 @@ msgid "This building has a very low productivity."
 msgstr "Ce bâtiment a une très faible productivité."
 
 #: horizons/world/status.py:110
-msgid "This building is decomissioned."
+#, fuzzy
+msgid "This building is decommissioned."
 msgstr "Ce bâtiment est déclassé."
 
 #: horizons/world/status.py:116
