@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2013-06-13 15:22+0200\n"
+"PO-Revision-Date: 2013-06-30 13:50+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -3395,7 +3395,6 @@ msgid "This building has a very low productivity."
 msgstr "Dit gebouw heeft een hele lage productiviteit."
 
 #: horizons/world/status.py:110
-#, fuzzy
 msgid "This building is decommissioned."
 msgstr "Dit gebouw is stilgelegd."
 
