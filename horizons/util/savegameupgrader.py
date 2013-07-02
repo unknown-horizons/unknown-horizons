@@ -326,6 +326,13 @@ class SavegameUpgrader(object):
 		db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
 		db("UPDATE message_widget_archive SET id = ? WHERE id = ?", new, old)
 
+ 	def _upgrade_to_rev72(self, db):
+		# add Black Death slot to settlers. Use direct numbers since only these work and they must never change.
+		for (settler_id, ) in db("SELECT rowid FROM building WHERE type = ?", 3):
+			db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)", settler_id, 98, 1)
+		# rename fire_disaster to building_influcing_disaster
+		db("ALTER TABLE fire_disaster RENAME TO building_influcing_disaster")
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager

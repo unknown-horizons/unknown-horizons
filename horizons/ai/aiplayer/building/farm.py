@@ -163,6 +163,8 @@ class AbstractFarm(AbstractBuilding):
 			return BUILDING_PURPOSE.SUGARCANE_FIELD
 		elif resource_id == RES.TOBACCO_LEAVES:
 			return BUILDING_PURPOSE.TOBACCO_FIELD
+		elif resource_id == RES.HERBS:
+			return BUILDING_PURPOSE.HERBS_FIELD
 		return None
 
 	def get_evaluators(self, settlement_manager, resource_id):
@@ -415,6 +417,8 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			building_id = BUILDINGS.SUGARCANE_FIELD
 		elif new_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
 			building_id = BUILDINGS.TOBACCO_FIELD
+		elif new_field_purpose == BUILDING_PURPOSE.HERBARY:
+			building_id = BUILDINGS.HERBARY
 
 		value = 0
 		personality = area_builder.owner.personality_manager.get('ModifiedFieldEvaluator')
@@ -426,6 +430,8 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			value += personality.add_sugarcane_field_value
 		elif new_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
 			value += personality.add_tobacco_field_value
+		elif new_field_purpose == BUILDING_PURPOSE.HERBARY:
+			value += personality.add_herbary_field_value
 
 		old_field_purpose = area_builder.plan[(x, y)][0]
 		if old_field_purpose == BUILDING_PURPOSE.POTATO_FIELD:
@@ -436,6 +442,8 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			value -= personality.remove_unused_sugarcane_field_penalty
 		elif old_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
 			value -= personality.remove_unused_tobacco_field_penalty
+		elif old_field_purpose == BUILDING_PURPOSE.HERBARY:
+			value -= personality.remove_unused_herbary_field_penalty
 
 		builder = BasicBuilder.create(building_id, (x, y), 0)
 		return ModifiedFieldEvaluator(area_builder, builder, value, old_field_purpose)
