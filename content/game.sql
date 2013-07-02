@@ -154,7 +154,7 @@ INSERT INTO "message_icon" VALUES(2, 'icons/widgets/messages/msg_system');
 INSERT INTO "message_icon" VALUES(3, 'icons/widgets/messages/msg_save');
 INSERT INTO "message_icon" VALUES(4, 'icons/widgets/messages/msg_anchor');
 INSERT INTO "message_icon" VALUES(5, 'icons/widgets/messages/msg_money');
-INSERT INTO "message_icon" VALUES(6, 'icons/widgets/messages/msg_diaster_fire');
+INSERT INTO "message_icon" VALUES(6, 'icons/widgets/messages/msg_disaster_fire');
 INSERT INTO "message_icon" VALUES(7, 'icons/widgets/messages/msg_disaster_plague');
 
 CREATE TABLE "ai" (
