@@ -255,6 +255,7 @@ class RES:
 	ALVEARIES        = 59
 	HONEYCOMBS       = 60
 	FIRE             = 99
+	BLACKDEATH			 = 98
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
