@@ -80,7 +80,7 @@ CREATE TABLE "message" (
 	"speech_group_id" INT
 ); -- When you add new message groups, remember to update  horizons/i18n/voice.py !
 INSERT INTO "message" VALUES('AUTOSAVE',         3, 15.0, NULL);
-INSERT INTO "message" VALUES('BUILDING_ON_FIRE', 1, 30.0, NULL);
+INSERT INTO "message" VALUES('BUILDING_ON_FIRE', 6, 30.0, NULL);
 INSERT INTO "message" VALUES('CHAT',             1, 30.0, NULL);
 INSERT INTO "message" VALUES('DIPLOMACY_STATUS_ALLY_ENEMY',    1, 10.0, NULL);
 INSERT INTO "message" VALUES('DIPLOMACY_STATUS_ALLY_NEUTRAL',  1, 10.0, NULL);
@@ -108,7 +108,7 @@ INSERT INTO "message" VALUES('SETTLERS_MOVED_OUT', 1, 40.0, NULL);
 INSERT INTO "message" VALUES('WAREHOUSE_NOT_TEARABLE', 1, 30.0, NULL);
 INSERT INTO "message" VALUES('YOU_HAVE_WON',     1, 60.0, NULL);
 INSERT INTO "message" VALUES('YOU_LOST',         1, 60.0, NULL);
-INSERT INTO "message" VALUES('BUILDING_INFECTED_BY_BLACK_DEATH', 1, 30.0, NULL);
+INSERT INTO "message" VALUES('BUILDING_INFECTED_BY_BLACK_DEATH', 7, 30.0, NULL);
 
 CREATE TABLE "message_text" (
 	"id_string" TEXT NOT NULL,
@@ -154,6 +154,8 @@ INSERT INTO "message_icon" VALUES(2, 'icons/widgets/messages/msg_system');
 INSERT INTO "message_icon" VALUES(3, 'icons/widgets/messages/msg_save');
 INSERT INTO "message_icon" VALUES(4, 'icons/widgets/messages/msg_anchor');
 INSERT INTO "message_icon" VALUES(5, 'icons/widgets/messages/msg_money');
+INSERT INTO "message_icon" VALUES(6, 'icons/widgets/messages/msg_diaster_fire');
+INSERT INTO "message_icon" VALUES(7, 'icons/widgets/messages/msg_disaster_plague');
 
 CREATE TABLE "ai" (
 	"client_id" TEXT NOT NULL,
