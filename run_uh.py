@@ -163,8 +163,6 @@ def get_option_parser():
 	             default=False, help="Log gui interactions")
 	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int",
 	             help="Use this seed for singleplayer sessions.")
-	dev_group.add_option("--generate-minimap", dest="generate_minimap",
-	             metavar="<parameters>", help=optparse.SUPPRESS_HELP)
 	dev_group.add_option("--create-mp-game", action="store_true", dest="create_mp_game",
 	             help="Create an multiplayer game with default settings.")
 	dev_group.add_option("--join-mp-game", action="store_true", dest="join_mp_game",

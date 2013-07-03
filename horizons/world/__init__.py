@@ -50,7 +50,6 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
-from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.messaging import LoadingProgress
 
 class World(BuildingOwner, WorldObject):
@@ -267,12 +266,12 @@ class World(BuildingOwner, WorldObject):
 		if self.session.is_game_loaded():
 			self.disaster_manager.load(savegame_db)
 
-	def load_raw_map(self, savegame_db, preview=False):
+	def load_raw_map(self, savegame_db):
 		self.map_name = savegame_db.map_name
 
 		# load islands
 		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
-			island = Island(savegame_db, islandid, self.session, preview=preview)
+			island = Island(savegame_db, islandid, self.session)
 			self.islands.append(island)
 
 		#calculate map dimensions
@@ -294,8 +293,7 @@ class World(BuildingOwner, WorldObject):
 		self.ground_map = {}
 
 		# big sea water tile class
-		if not preview:
-			default_grounds = Entities.grounds[self.properties.get('default_ground', '%d-straight' % GROUND.WATER[0])]
+		default_grounds = Entities.grounds[self.properties.get('default_ground', '%d-straight' % GROUND.WATER[0])]
 
 		fake_tile_class = Entities.grounds['-1-special']
 		fake_tile_size = 10
@@ -303,9 +301,8 @@ class World(BuildingOwner, WorldObject):
 			for y in xrange(self.min_y-MAP.BORDER, self.max_y+MAP.BORDER, fake_tile_size):
 				fake_tile_x = x - 1
 				fake_tile_y = y + fake_tile_size - 1
-				if not preview:
-					# we don't need no references, we don't need no mem control
-					default_grounds(self.session, fake_tile_x, fake_tile_y)
+				# we don't need no references, we don't need no mem control
+				default_grounds(self.session, fake_tile_x, fake_tile_y)
 				for x_offset in xrange(fake_tile_size):
 					if self.min_x <= x + x_offset < self.max_x:
 						for y_offset in xrange(fake_tile_size):
@@ -733,14 +730,6 @@ class World(BuildingOwner, WorldObject):
 def load_building(session, db, typeid, worldid):
 	"""Loads a saved building. Don't load buildings yourself in the game code."""
 	return Entities.buildings[typeid].load(session, db, worldid)
-
-
-def load_raw_world(map_file):
-	WorldObject.reset()
-	world = World(session=None)
-	world.inited = True
-	world.load_raw_map(SavegameAccessor(map_file, True), preview=True)
-	return world
 
 
 decorators.bind_all(World)

@@ -38,7 +38,6 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.world.buildability.freeislandcache import FreeIslandBuildabilityCache
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache, TerrainRequirement
 from horizons.gui.widgets.minimap import Minimap
-from horizons.world.ground import MapPreviewTile
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an island. It contains a list of all things on the map
@@ -71,12 +70,11 @@ class Island(BuildingOwner, WorldObject):
 	"""
 	log = logging.getLogger("world.island")
 
-	def __init__(self, db, island_id, session, preview=False):
+	def __init__(self, db, island_id, session):
 		"""
 		@param db: db instance with island table
 		@param island_id: id of island in that table
 		@param session: reference to Session instance
-		@param preview: flag, map preview mode
 		"""
 		super(Island, self).__init__(worldid=island_id)
 
@@ -84,54 +82,48 @@ class Island(BuildingOwner, WorldObject):
 
 		self.terrain_cache = None
 		self.available_land_cache = None
-		self.__init(db, island_id, preview)
+		self.__init(db, island_id)
 
-		if not preview:
-			# create building indexers
-			from horizons.world.units.animal import WildAnimal
-			self.building_indexers = {}
-			self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
+		# create building indexers
+		from horizons.world.units.animal import WildAnimal
+		self.building_indexers = {}
+		self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
 		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
-		if not preview:
-			self.terrain_cache = TerrainBuildabilityCache(self)
-			flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
-			self.available_flat_land = len(flat_land_set)
-			available_coords_set = set(self.terrain_cache.land_or_coast)
+		self.terrain_cache = TerrainBuildabilityCache(self)
+		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+		self.available_flat_land = len(flat_land_set)
+		available_coords_set = set(self.terrain_cache.land_or_coast)
 
-			for settlement in self.settlements:
-				settlement.init_buildability_cache(self.terrain_cache)
-				for coords in settlement.ground_map:
-					available_coords_set.discard(coords)
-					if coords in flat_land_set:
-						self.available_flat_land -= 1
+		for settlement in self.settlements:
+			settlement.init_buildability_cache(self.terrain_cache)
+			for coords in settlement.ground_map:
+				available_coords_set.discard(coords)
+				if coords in flat_land_set:
+					self.available_flat_land -= 1
 
-			self.available_land_cache = FreeIslandBuildabilityCache(self)
+		self.available_land_cache = FreeIslandBuildabilityCache(self)
 
-			# load buildings
-			from horizons.world import load_building
-			for (building_worldid, building_typeid) in \
-				  db("SELECT rowid, type FROM building WHERE location = ?", island_id):
-				load_building(self.session, db, building_typeid, building_worldid)
+		# load buildings
+		from horizons.world import load_building
+		for (building_worldid, building_typeid) in \
+			  db("SELECT rowid, type FROM building WHERE location = ?", island_id):
+			load_building(self.session, db, building_typeid, building_worldid)
 
-	def __init(self, db, island_id, preview):
+	def __init(self, db, island_id):
 		"""
 		Load the actual island from a file
-		@param preview: flag, map preview mode
 		"""
 		p_x, p_y, width, height = db("SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?", island_id - 1001)[0]
 
 		self.ground_map = {}
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
-			if not preview: # actual game, need actual tiles
-				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
-				ground.act(rotation)
-			else:
-				ground = MapPreviewTile(x, y, ground_id)
+			ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
+			ground.act(rotation)
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.ground_map[(ground.x, ground.y)] = ground
@@ -152,11 +144,10 @@ class Island(BuildingOwner, WorldObject):
 		max_y = max(zip(*self.ground_map.keys())[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
-		if not preview: # this isn't needed for previews, but it is in actual games
-			self.path_nodes = IslandPathNodes(self)
+		self.path_nodes = IslandPathNodes(self)
 
-			# repopulate wild animals every 2 mins if they die out.
-			Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
+		# repopulate wild animals every 2 mins if they die out.
+		Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
 
 		"""TUTORIAL:
 		The next step will be an overview of the component system, which you will need

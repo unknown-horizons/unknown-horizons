@@ -170,14 +170,3 @@ class GroundClass(type):
 
 			# Save the object
 			cls._fife_objects[tile_set_id] = fife_object
-
-class MapPreviewTile(object):
-	"""This class provides the minimal tile implementation for map preview."""
-
-	def __init__(self, x, y, id):
-		super(MapPreviewTile, self).__init__()
-		self.x = x
-		self.y = y
-		self.id = id
-		self.classes = ()
-		self.settlement = None
