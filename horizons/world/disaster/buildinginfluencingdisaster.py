@@ -59,12 +59,12 @@ class BuildingInfluencingDisaster(Disaster):
 		super( BuildingInfluencingDisaster, self).save(db)
 		for building in self._affected_buildings:
 			ticks = Scheduler().get_remaining_ticks(self, Callback(self.wreak_havoc, building), True)
-			db("INSERT INTO building_influcing_disaster(disaster, building, remaining_ticks_havoc) VALUES(?, ?, ?)",
+			db("INSERT INTO building_influencing_disaster(disaster, building, remaining_ticks_havoc) VALUES(?, ?, ?)",
 			   self.worldid, building.worldid, ticks)
 
 	def load(self, db, worldid):
 		super(BuildingInfluencingDisaster, self).load(db, worldid)
-		for building_id, ticks in db("SELECT building, remaining_ticks_havoc FROM building_influcing_disaster WHERE disaster = ?", worldid):
+		for building_id, ticks in db("SELECT building, remaining_ticks_havoc FROM building_influencing_disaster WHERE disaster = ?", worldid):
 			# do half of infect()
 			building = WorldObject.get_object_by_id(building_id)
 			self.log.debug("%s loading disaster %s", self, building)
@@ -108,7 +108,7 @@ class BuildingInfluencingDisaster(Disaster):
 		# keep in sync with load()
 		if load:
 			db, worldid = load
-			havoc_time = db("SELECT remaining_ticks_havoc FROM building_influcing_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
+			havoc_time = db("SELECT remaining_ticks_havoc FROM building_influencing_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
 		AddStatusIcon.broadcast(building, self.STATUS_ICON(building))
 		NewDisaster.broadcast(building.owner, building, self.__class__, self)
