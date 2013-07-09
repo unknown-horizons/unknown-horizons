@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2013-05-17 15:56+0200\n"
-"Last-Translator: Pedro Henrique <system.pedrohenrique@gmail.com>\n"
+"PO-Revision-Date: 2013-07-09 21:48+0200\n"
+"Last-Translator: luis coehlo <luisldc@sapo.pt>\n"
 "Language-Team: Portuguese <http://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -302,7 +302,7 @@ msgstr "Relatório da construção"
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr ""
+msgstr "Utilizaçao da capacidade"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
@@ -339,7 +339,7 @@ msgstr "Melhorar as permissões:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "Felicidade por casa"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
@@ -545,7 +545,7 @@ msgstr "Mostrar os recursos produzidos nesta povoação"
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
 msgid "Pause production"
-msgstr "Pausar a produção"
+msgstr "Parar a produção"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
