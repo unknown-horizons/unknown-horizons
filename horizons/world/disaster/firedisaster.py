@@ -53,5 +53,4 @@ class FireDisaster(BuildingInfluencingDisaster):
 
 	def wreak_havoc(self, building):
 		super(FireDisaster, self).wreak_havoc(building)
-		self._affected_buildings.remove(building)
 		building.make_ruin()
