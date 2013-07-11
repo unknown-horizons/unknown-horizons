@@ -280,7 +280,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jetzt habt Ihr Zugriff auf neue Gebäude. Werft dazu einen Blick auf das Baumenü.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - Ein neuer Tab ist aufgetaucht!
+  - Ein hübscher neuer Tab ist aufgetaucht.
   - Pioniere benötigen Kleidung, deshalb müsst Ihr eine neue Produktionslinie planen. Sie beginnt mit Schafswolle (die, wie einige andere Rohstoffe, in der Farm produziert wird).
   - Die Farm ist eine sehr spezielle Produktionsstätte, denn sie stellt nicht nur einen, sondern auch mehrere unterschiedliche Rohstoffe her, wenn Ihr dies wünscht.
   - Die Erzeugnisse der Farm sind davon abhängig, welche Felder in ihrer Umgebung errichtet werden.
@@ -392,7 +392,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
   - Unsere Foren stehen Euch ebenfalls offen!
-  - 'Meist sind wir am besten in unserem IRC-Kanal zu erreichen, das solltet Ihr also zuerst probieren (-:'
+  - Meist sind wir am besten in unserem IRC-Kanal zu erreichen, das solltet Ihr also zuerst probieren (-;
   - [Pagebreak]
   - [Headline, Vielen Dank!]
   - [Image, content/gui/images/background/hr.png]
