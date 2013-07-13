@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-06-11 09:50+0200\n"
+"PO-Revision-Date: 2013-07-13 16:58+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
@@ -111,18 +111,20 @@ msgstr "일단 해안 근처에 있으면, 개요 탭에서 볼 수 있는 닻 �
 msgid ""
 "This indicates that you are able to build a warehouse there by pressing that "
 "button (called 'Build Settlement')."
-msgstr ""
+msgstr "이것은 '정착지 건설'이라는 버튼을 누르면 거기에 창고를 만들 수 있다는것을 나타냅니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Now a preview of your building is dragged around when you move the cursor."
-msgstr ""
+msgstr "이제 커서를 움직일때 건물의 미리 보기가 주변으로 끌어집니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building."
 msgstr ""
+"이 미리보기가 빨간 그림자가 아닌 아무곳이나 건설할 수 있습니다.\n"
+"첫 번째 건물을 배치 하려면 클릭 하십시오."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -144,17 +146,17 @@ msgstr "새로운 임무 : 벌목꾼의 집을 건설"
 msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
-msgstr ""
+msgstr "배에 있는 건축 자재는 자동으로 내려집니다. 이제 몇 가지 기본적인 건물을 만들 수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "우리는 나무꾼 오두막 건설을 시작 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is essential because, at this stage, boards are the only poles your "
 "sailors can afford to hang their tents over."
-msgstr ""
+msgstr "이 단계에서는, 판자가 선원들이 천막을 설치하기위해 걸수있는 유일한 기둥이기 때문에 필요합니다."
 
 #. This is the text body of a logbook page.
 msgid "The fisherman needs some boards to build his vessel as well."
