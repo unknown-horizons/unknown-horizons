@@ -20,7 +20,7 @@ msgstr ""
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr "오래 되었거나 지원 되지 않는 다중플레이어 프로토콜입니다. 게임 버전을 확인 하시기 바랍니다"
+msgstr "오래 되었거나 지원 되지 않는 다중 플레이어 프로토콜입니다. 게임 버전을 확인 하시기 바랍니다"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
@@ -64,7 +64,7 @@ msgstr "비밀번호가 틀렸습니다."
 
 #: horizons/network/server.py:424 horizons/network/server.py:534
 msgid "There's already a player with your name inside this game."
-msgstr "이판에  같은 이름의 플레이어가 이미 있습니다."
+msgstr "이판에 같은 이름의 플레이어가 이미 있습니다."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
@@ -108,4 +108,4 @@ msgstr "색상을 바꿀수 없습니다."
 
 #: horizons/network/server.py:650
 msgid "You can't fetch a game while in another game"
-msgstr "다른게임중에는 게임을 가져올수 없습니다."
+msgstr "다른 게임중에는 게임을 가져올수 없습니다."
