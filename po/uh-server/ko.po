@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2013-06-09 05:50+0200\n"
+"PO-Revision-Date: 2013-07-13 17:34+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/uh-server/ko/>\n"
 "Language: ko\n"
@@ -23,9 +23,8 @@ msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr "오래 되었거나 지원 되지 않는 다중플레이어 프로토콜입니다. 게임 버전을 확인 하시기 바랍니다"
 
 #: horizons/network/server.py:284
-#, fuzzy
 msgid "You've exceeded the global packet size."
-msgstr "글로벌 패킷 크기를 초과 했습니다."
+msgstr "전체 패킷 크기를 초과 했습니다."
 
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
