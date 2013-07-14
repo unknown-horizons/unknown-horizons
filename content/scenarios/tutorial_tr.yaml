@@ -145,8 +145,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
   - Çadırlar temel yerleşim binalarıdır. Halkınız daha ileri seviyelere ulaştığınızda yükseltmenizi isteyecek.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
+  - Her binanın yükseltme işleminin, ilk yükseltmedeki odun gibi inşa maddelerine ihtiyaç duyduğunu göz önünde bulundurun.
+  - Eğer bu maddeler stoğunuzda az bulunuyorsa, yükseltmeyi devre dışı bırakmayı düşünün.
   - Göçmenler, ürettiğiniz tüm malları yok etmeye çalıştıklarından yararlı görünmeyebilirler, ancak en azından vergi veriyorlar ve şimdilik para kazanmanızın tek yolu bu!
   - '
 
@@ -258,7 +258,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &NEXTTIER
   - [Message, Vergi seviyesini Düşük (en sol) yapın ve denizcilerin yükseltilmesini bekleyin.]
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Headline, 'YENİ GÖREV: SONRAKİ SEVİYE']
   - [Image, content/gui/images/background/hr.png]
   - Halkınız düzenli olarak ana meydanı ve ibadet çadırını düzenli ziyaret ettikleri ve yiyecek miktarının yeterli olduğu sürece tüm talepler yerine getirilmiş olacak.
   - Eğer denizciler yeterince mutluysa, Öncüler olarak adlandırılan sonraki seviyeye ilerlemek isteyeceklerdir.
@@ -677,4 +677,4 @@ metadata:
   locale: tr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 188 translated messages, 1 fuzzy translation, 2 untranslated messages.
+  translation_status: 191 translated messages.

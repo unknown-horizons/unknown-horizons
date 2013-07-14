@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-07-14 19:36+0200\n"
+"PO-Revision-Date: 2013-07-14 19:38+0200\n"
 "Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/tutorial/tr/>\n"
 "Language: tr\n"
@@ -470,11 +470,15 @@ msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
 msgstr ""
+"Her binanın yükseltme işleminin, ilk yükseltmedeki odun gibi inşa "
+"maddelerine ihtiyaç duyduğunu göz önünde bulundurun."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"Eğer bu maddeler stoğunuzda az bulunuyorsa, yükseltmeyi devre dışı bırakmayı "
+"düşünün."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -852,7 +856,6 @@ msgstr ""
 "bekleyin."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 msgid "NEW TASK: NEXT TIER"
 msgstr "YENİ GÖREV: SONRAKİ SEVİYE"
 
