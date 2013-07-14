@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2013-07-13 15:15+0200\n"
+"PO-Revision-Date: 2013-07-14 04:35+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: run_uh.py:222
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "이를 해결 하기 위해서는, 기록(로그) 파일안에 있는 정보가 필요합니다."
+msgstr "이를 해결 하기 위해서는, 기록(로그) 파일안에 있는 정보가 필요합니다:"
 
 #: run_uh.py:224
 msgid ""
@@ -47,10 +47,8 @@ msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr "누락된 PyYAML(필요한 라이브러리)를 설치 해야 합니다."
 
 #: run_uh.py:274
-#, fuzzy
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr ""
-"Windows installer는 http://pyyaml.org/wiki/PyYAML에서 사용할 수 있습니다."
+msgstr "Windows installer는 http://pyyaml.org/wiki/PyYAML 에서 사용할 수 있습니다."
 
 #: run_uh.py:275
 msgid ""
@@ -123,98 +121,98 @@ msgstr "건물을 건설 하기 전에 거주지를 발견 해야 합니다!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "오른쪽 클릭을 배를 선택하고 통해 해안에 접근하세요."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "이후에, 선박 개요 텝의 큰 단추를 누르세요."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr ""
+msgstr "건설"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr ""
+msgstr "운영 비용:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "관련된 건물"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
-msgstr ""
+msgstr "주민"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "게임 속도 상승 (+)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "게임 속도 감소 (-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "지도를 시계 반대방향으로 회전 (,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "지도를 시계 방향으로 회전 (.)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
-msgstr ""
+msgstr "확대"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
-msgstr ""
+msgstr "축소"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 msgid "Destroy (X)"
-msgstr ""
+msgstr "파괴 (X)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "선장의 항해일지 (L)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 msgid "Build menu (B)"
-msgstr ""
+msgstr "건설 메뉴 (B)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
-msgstr ""
+msgstr "외교"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "게임 메뉴 (Esc)"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
-msgstr ""
+msgstr "이름 변경"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
-msgstr ""
+msgstr "이전 이름:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr ""
+msgstr "새 이름을 입력:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr ""
+msgstr "새 이름을 적용"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
-msgstr ""
+msgstr "채팅"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr ""
+msgstr "메시지를 입력하세요:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -231,19 +229,19 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Running costs"
-msgstr ""
+msgstr "운영 비용"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
-msgstr ""
+msgstr "선박을 건설하기 위해서, 클래스 텝중 하나를 클릭하고 원하는 배를 선택하고 주문을 확인하세요."
 
 #. Information about the ship currently under construction at the boat
 #. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr ""
+msgstr "현재 건물:"
 
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
