@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2013-07-14 19:32+0200\n"
+"PO-Revision-Date: 2013-07-14 19:36+0200\n"
 "Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh-server/tr/>\n"
 "Language: tr\n"
@@ -26,15 +26,16 @@ msgstr ""
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Evrensel paket boyutunu doldurdunuz."
 
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Bu olmamalıydı. Lütfen bizimle ileitşime geçin veya bir hata kaydı yollayın."
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Paket başına boyutu doldurdunuz."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
@@ -70,7 +71,7 @@ msgstr "Bu oyunda sizin adınızda başka bir oyuncu var."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
-msgstr ""
+msgstr "Lütfen adınızı değiştirin."
 
 #: horizons/network/server.py:428 horizons/network/server.py:562
 msgid "There's already a player with your color inside this game."
@@ -78,7 +79,7 @@ msgstr "Bu oyunda sizin adınızda başka bir oyuncu var."
 
 #: horizons/network/server.py:429
 msgid "Please change your color."
-msgstr ""
+msgstr "Lütfen renginizi değiştirin."
 
 #: horizons/network/server.py:432
 msgid ""
@@ -105,11 +106,11 @@ msgstr ""
 
 #: horizons/network/server.py:535
 msgid "Unable to change your name."
-msgstr ""
+msgstr "İsminiz değiştirilemedi."
 
 #: horizons/network/server.py:563
 msgid "Unable to change your color."
-msgstr ""
+msgstr "Renginiz değiştirilemedi."
 
 #: horizons/network/server.py:650
 msgid "You can't fetch a game while in another game"
