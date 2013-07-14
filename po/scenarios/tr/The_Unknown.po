@@ -8,22 +8,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2013-02-14 17:04+0000\n"
-"Last-Translator: vgezer <volkangezer@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-07-14 19:32+0200\n"
+"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
+"Language-Team: Turkish <http://hosted.weblate.org/projects/uh/the-"
+"unknown/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #. scenario difficulty
 msgid "easy"
 msgstr "kolay"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "1740'daki İngiliz bayrağı altındaki bir geminin kaptanısınız. Siz ve "
 "tayfanız pasifik okyanusundaki İngiliz kolonisi yolundaydınız.\n"
-"Her şey, bir fırtına ile karşılaşıncaya kadar güzel gidiyordu...\n"
+"Her şey, bir fırtına ile karşılaşıncaya kadar güzel gidiyordu…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -70,7 +70,6 @@ msgid "22nd November 1740"
 msgstr "22 Kasım 1740"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
@@ -149,7 +148,6 @@ msgstr ""
 "varmış hissini veriyor."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
@@ -159,7 +157,7 @@ msgstr ""
 "Gece yıldızları araştırıyordum, ancak deniz haritalarım ve aletlerim olmadan "
 "anlamları bilinmez kalıyor. Burada bir süre burada takılı kalacağız gibi "
 "görünüyor. Bu yüzden bu durumda yapabileceğimizin en iyisini yapmalıyız.\n"
-"Sadece bir medeniyet kurmayı ve eve bir yol bulmayı deneyebiliriz..."
+"Sadece bir medeniyet kurmayı ve eve bir yol bulmayı deneyebiliriz…"
 
 #. This is the text body of a logbook page.
 msgid ""
