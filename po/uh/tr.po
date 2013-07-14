@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2013-06-03 23:00+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"PO-Revision-Date: 2013-07-14 19:17+0200\n"
+"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -96,15 +96,15 @@ msgstr "Düzenleyiciden çık"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Fırça boyutunu seç:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Zemini seç:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(durdurmak için sağ tıklayın)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -638,9 +638,8 @@ msgstr "Sohbet mesajlarını tüm oyunculara gönder."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Mesajınızı girin:"
+msgstr "Mesajınızı buraya girin"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -702,7 +701,6 @@ msgid "Land"
 msgstr "Kara"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-#, fuzzy
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
@@ -852,9 +850,8 @@ msgid "Return"
 msgstr "Geri dön"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "eğitim"
+msgstr "Eylemler"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -961,9 +958,8 @@ msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Izgarayı aç/kapat"
+msgstr "FPS gösterimini aç/kapat"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
@@ -976,12 +972,12 @@ msgstr "Koordinat değerlerini göster (Hata ayıklama)"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Birincil"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "İkincil"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
@@ -989,9 +985,8 @@ msgid "Reset to default"
 msgstr "Öntanımlı ayarlara dön"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Öntanımlı ayarlara dön"
+msgstr "Öntanımlı tuşlara dön"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1010,13 +1005,12 @@ msgid "Cancel game"
 msgstr "Oyunu iptal et"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Yükleniyor ..."
+msgstr "Yükleniyor…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Arkaplanı Değiştir"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1072,7 +1066,7 @@ msgstr "Bu, diğer oyuncuların oyunu tanıyabilmesi için gösterilecek."
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "İsimsiz Oyun"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1539,22 +1533,24 @@ msgstr "Hızlı kaydet başarısız."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Hızlı kaydetme sırasında bir hata oluştu."
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "Haritanız kaydedilmedi."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:67
 #, python-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"Eğer bu hata tekrarlanırsa, lütfen geliştirici takımı ile iletişime geçin: "
+"{website}"
 
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Kısayollar"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
@@ -1681,16 +1677,16 @@ msgstr "{size}x{size} karo"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "İstenen tuşa basın"
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 #, python-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} tuşu zaten {action} eylemine atanmış."
 
 #: horizons/gui/modules/hotkeys_settings.py:142
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Üzerine yazmak ister misiniz?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:143
@@ -1761,47 +1757,47 @@ msgstr "Ağaçları saydamlaştırmak için 'T' ye basınız."
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Starting engine…"
-msgstr ""
+msgstr "Motor başlatılıyor…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Catching fish…"
-msgstr ""
+msgstr "Balık yakalıyor…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Kullanıcı arayüzü çiziliyor…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Activating timer…"
-msgstr ""
+msgstr "Zamanlayıcı etkinleştiriliyor…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Oyun verisi hazırlanıyor…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Adalar şekillendiriliyor…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Planlar hazırlanıyor…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Dünya suyla dolduruluyor…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Raising animals…"
-msgstr ""
+msgstr "Hayvanlar büyütülüyor…"
 
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Yapay Zeka ikna ediliyor…"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Hazineler gömülüyor…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -2001,12 +1997,12 @@ msgstr "Lütfen geçerli bir dosya adı girin."
 #: horizons/gui/modules/select_savegame.py:150
 #, python-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "{name} isminde başka bir kayıtlı oyun zaten mevcut."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-format
 msgid "A map with the name {name} already exists."
-msgstr ""
+msgstr "{name} adındaki başka bir harita zaten mevcut."
 
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
@@ -2199,13 +2195,13 @@ msgstr "İlgili binaları inşa et"
 #. [br] means newline
 #: horizons/gui/tabs/buildtabs.py:144
 msgid "Resources needed:"
-msgstr ""
+msgstr "Gereken kaynaklar:"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/tabs/buildtabs.py:150
 #, python-format
 msgid "{resource}: {amount}"
-msgstr ""
+msgstr "{resource}: {amount}"
 
 #: horizons/gui/tabs/buyselltab.py:130
 msgid "Click on one of the resource slots to add a trade offer."
@@ -2247,13 +2243,12 @@ msgid "Main square overview"
 msgstr "Ana meydan genel görünümü"
 
 #: horizons/gui/tabs/mainsquaretabs.py:127
-#, fuzzy
 msgid "Upgrade not possible:"
-msgstr "Mümkün değil"
+msgstr "Yükseltme mümkün değil:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:130
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Bu şimdilik en yüksek oynanabilecek aşama!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
@@ -2321,17 +2316,17 @@ msgstr "Silahı bırak"
 #: horizons/gui/widgets/imagefillstatusbutton.py:71
 #, python-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} altın"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "{buyprice} altına al"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:80
 #, python-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "{sellprice} altına sat"
 
 #: horizons/gui/widgets/inventory.py:168
 #, python-format
@@ -2451,7 +2446,7 @@ msgstr "Bu oyuncu ile ticaret yapamazsınız"
 #: horizons/gui/widgets/unitoverview.py:119
 #, python-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:124
 msgid "none"
@@ -3193,19 +3188,18 @@ msgid "Save/load for multiplayer games is not possible yet"
 msgstr "Çoklu oyunlar için kaydetme/yükleme henüz mümkün değil"
 
 #: horizons/mpsession.py:97
-#, fuzzy
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
-msgstr "Dosya adı sadece harf, sayı, boşluk ve _.- içermeli"
+msgstr "Dosya adı sadece harf, sayı, boşluk ve _.- karakterlerini içermeli"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Sunucuya bağlanılamıyor."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Geçersiz veya çözülemeyen bir sunucu adresi olabilir."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
@@ -3259,7 +3253,7 @@ msgstr ""
 
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
-msgstr ""
+msgstr "Oyununuz kaydedilmedi."
 
 #: horizons/util/checkupdates.py:81
 msgid "New version of Unknown Horizons"
@@ -3364,9 +3358,8 @@ msgid "This building has a very low productivity."
 msgstr "Bu binanın üretkenliği düşük."
 
 #: horizons/world/status.py:110
-#, fuzzy
 msgid "This building is decommissioned."
-msgstr "Bu bina devreden çıkarıldı."
+msgstr "Bu bina hizmetten çıkarıldı."
 
 #: horizons/world/status.py:116
 msgid "The inhabitants of this building have the plague."
@@ -3535,7 +3528,7 @@ msgstr "kuzu yünü"
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "Geçerli en yüksek seviyeye ulaştınız. Halkınız artık yükseltilemeyecek."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid ""
