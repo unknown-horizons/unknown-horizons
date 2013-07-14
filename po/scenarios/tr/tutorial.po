@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-07-14 19:32+0200\n"
+"PO-Revision-Date: 2013-07-14 19:36+0200\n"
 "Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/tutorial/tr/>\n"
 "Language: tr\n"
@@ -280,7 +280,6 @@ msgstr ""
 "(ve özellikle denizciler) çok aç."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Available companies in the first tier are the Hunter and Fisher."
 msgstr "İlk seviyedeki kullanılabilir binalar Avcı ve Balıkçı."
 
@@ -867,7 +866,6 @@ msgstr ""
 "getirilmiş olacak."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "If the sailors are happy enough, they want to advance to the next tier "
 "called Pioneers."
@@ -956,7 +954,6 @@ msgid "NEW TASK: BUILD A FARM"
 msgstr "YENİ GÖREV: BİR ÇİFTLİK İNŞA EDİN"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Congratulations! Some of your inhabitants have reached tier II!"
 msgstr "Tebrikler! Halkınızın bir bölümü seviye II'ye ulaştı!"
 
@@ -1140,7 +1137,6 @@ msgstr ""
 "patates ekim alanı ekleyin."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid "Build a storage tent (tier I tab) where it makes sense."
 msgstr "Mantıklı bir yere bir depo çadırı (seviye I sekmesi) inşa edin."
 
@@ -1206,7 +1202,6 @@ msgstr ""
 "şirketten para kurtarmanızı sağlar."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the storage tent."

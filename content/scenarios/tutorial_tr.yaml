@@ -91,7 +91,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'YENİ GÖREV: YEMEK TEDARİĞİ']
   - [Image, content/gui/images/background/hr.png]
   - Yiyecek üreten birkaç binaya da ihtiyacınız var çünkü genellikle insanlar (ve özellikle denizciler) çok aç.
-  - Available companies in the first tier are the Hunter and Fisher.
+  - İlk seviyedeki kullanılabilir binalar Avcı ve Balıkçı.
   - Avcı, ormandaki hayvanları avladığından ağaçların yakınında olmalıdır.
   - Avcıyı oduncunun ormanına yakın yerleştirebileceğinizi unutmayın.
   - Hayvanların yeterince hızlı çoğalmadığı veya iyi gizlendiği anlar olabilir.
@@ -261,7 +261,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NEW TASK: NEXT TIER']
   - [Image, content/gui/images/background/hr.png]
   - Halkınız düzenli olarak ana meydanı ve ibadet çadırını düzenli ziyaret ettikleri ve yiyecek miktarının yeterli olduğu sürece tüm talepler yerine getirilmiş olacak.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
+  - Eğer denizciler yeterince mutluysa, Öncüler olarak adlandırılan sonraki seviyeye ilerlemek isteyeceklerdir.
   - Onları mutlu etmek için, tüm halkınızın isteklerini yerine getirdiğinizden, artık vergi seviyesini düşürmek dışında başka bir şey kalmadı.
   - Er geç iflas etmenize yol açabilecek düşük vergileri her zaman uygulamaktan kaçınmalısınız. Bir süre için ve ne yaptığınızı bildiğiniz sürece sorun olmayacak.
   - Bir süre sonra, ilk birlik ana meydana yürüyüp, kütük evi yapmak için yeni yapı malzemesi arayacaktır. Bu ev eski çadırın yerini alacak.
@@ -282,7 +282,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Bir çiftlik inşa edin ve çevresinde biraz boş alan bırakın.]
   - [Headline, 'YENİ GÖREV: BİR ÇİFTLİK İNŞA EDİN']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
+  - Tebrikler! Halkınızın bir bölümü seviye II'ye ulaştı!
   - Artık yeni binalara erişiminiz var, tekrar İnşa menüsüne bakın.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
@@ -333,7 +333,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
+  - [Message, Mantıklı bir yere bir depo çadırı (seviye I sekmesi) inşa edin.]
   - [Headline, 'YENİ GÖREV: DEPO İNŞA EDİN']
   - [Image, content/gui/images/background/hr.png]
   - Yakın zamanda oduncunuzu izlediniz mi?
@@ -350,7 +350,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Bu, geçici olarak yıkmak istemediğiniz ancak ihtiyacınız da olmayan bir şirketten para kurtarmanızı sağlar.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.'
+  - 'Diğer çözüm de burada şimdiye kadar bahsedilmeyen bir son seviye-I binası inşa etmektir: depo çadırı.'
   - 'Bu binanın iki amacı var. Bina:
 
     * Mallarınız için daha fazla depo alanı sunar ve
@@ -677,4 +677,4 @@ metadata:
   locale: tr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 183 translated messages, 6 fuzzy translations, 2 untranslated messages.
+  translation_status: 188 translated messages, 1 fuzzy translation, 2 untranslated messages.
