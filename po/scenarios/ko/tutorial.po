@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-07-13 16:58+0200\n"
+"PO-Revision-Date: 2013-07-19 16:41+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
@@ -160,59 +160,63 @@ msgstr "이 단계에서는, 판자가 선원들이 천막을 설치하기위해
 
 #. This is the text body of a logbook page.
 msgid "The fisherman needs some boards to build his vessel as well."
-msgstr ""
+msgstr "어부는 자신의 배를 잘 만들기 위해서 약간의 판자를 필요로 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In order to construct lumberjacks; open the build menu by either clicking "
 "the big icon below the mini map or pressing B key."
-msgstr ""
+msgstr "벌목소를 짓기 위해; 작은지도 아래 큰 아이콘을 클릭 하나 B 키를 눌러서 건설 메뉴를 여세요."
 
 #. This is the text body of a logbook page.
 msgid "The build menu is sorted by tiers."
-msgstr ""
+msgstr "건설메뉴는 계층별로 정렬되어 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You are currently in the first tier (the Sailors level) so are offered only "
 "the basic buildings."
-msgstr ""
+msgstr "현재는 기본적인 건물만을 제공하는 첫번째 계층에 있습니다(선원 수준)."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
+"\n"
+"문명의 발전으로, 더복잡한 건물과 더많은것을 얻었습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area "
 "with some trees around."
-msgstr ""
+msgstr "이제, '조직원컴퍼니???' 아래에 있는 벌목소를 선택하고, 나무들이있는 주변의 지역에 건설하세요."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
-msgstr ""
+msgstr "나중에 나무도 심을수 있습니다. - 하지만 비용이 듭니다. 자연적으로 제공된것을 최대한 활용하세요!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "A company always needs a trail connection to a storage or warehouse, "
 "otherwise goods will remain at the company and not be collected."
-msgstr ""
+msgstr "조직원??은 항상 저장소와 창고로 연결된 길을 필요로 합니다. 그러지않으면 물건은 조직원??에게 남아있고 수집되지않습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that you have to build a trail connecting your warehouse (or "
 "storage) and lumberjack."
-msgstr ""
+msgstr "창고(또는 저장소)와 벌목소를 반드시 연결해야한다는 뜻입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
+"\n"
+"임무: 벌목소를 숲속지역에 건설하고 그곳에 길을 연결하세요."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -220,6 +224,7 @@ msgid ""
 "worry about recruiting workers for the lumberjack. That happens "
 "automatically."
 msgstr ""
+"수집꾼들이 첫번째 자체 생산된 판자들을 가져오는 방법을 보십세요. 나무꾼에대한 노동자의 모집은 걱정하지마세요. 자동적으로 나타납니다."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
@@ -241,22 +246,22 @@ msgstr "첫번째 계층에서 사용할수있는 동료는 사냥꾼과 낚시�
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
-msgstr ""
+msgstr "사냥꾼은 숲속에서 동물들을 사냥하므로 근처에 나무가 필요합니다."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr ""
+msgstr "나무꾼의 숲 근처에 사냥꾼을 배치할수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
-msgstr ""
+msgstr "?? 동물들이 재생속도가 빠르지 않거나 단순하게 잘 숨지 않을 수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
-msgstr ""
+msgstr "결론: 고기의 지속적인 공급을 필요로 한다면, 사냥꾼도 신뢰해서는 안됩니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -264,22 +269,24 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"어부는 창고와 물고기 떼 범위 내와 같은 해안 건축 부지를 필요로 합니다."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "그가 작은 노가 달린 배를 만들고 고기를 잡을것 입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
-msgstr ""
+msgstr "음식 단위당 약간 긴 생산시간의 비용으로 매우 안정적인 공급입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
-msgstr ""
+msgstr "당신것 같은 작은 정착지는 같은 조직원을 사용할 수 있고 더나은 장단점을 조정할수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -287,11 +294,11 @@ msgid ""
 "TASK: Build a hunter and a fisher."
 msgstr ""
 "\n"
-"할일: 사냥꾼의 집과 낚시꾼의 집을 건설."
+"임무: 사냥꾼의 집과 낚시꾼의 집을 건설."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "길로 창고와 그것들을 연결하는것을 잊지마세요!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
@@ -304,19 +311,19 @@ msgstr "새로운 임무: 주요 광장"
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
-msgstr ""
+msgstr "주민들은 그들의 상품을 가져올 수 있는 주요 광장을 필요로 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
-msgstr ""
+msgstr "즉, 그들의 집에서 주요광장까지 연결된 길을 필요로한다는 뜻입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
-msgstr ""
+msgstr "창고 에있는 모든 상품들은 '시장'에서 이용할수있습니다., 주민들은 어부나 창고로 걸을 필요가 없습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -324,12 +331,13 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"건설 천막은 벌목소가 판자를 만드는데 필요한 나무들을 제거해버리기 때문에 주요 정착 천막에 벌목소가 너무 가까운걸 피해야 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
-msgstr ""
+msgstr "조직원들은 천막와 연결되지않고 일을 하므로 주요 광장과 벌목소 천막 사이의 도로를 건설할 필요가 없습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -344,22 +352,24 @@ msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"이제, 주요 광장을 자세히 살펴 봅시다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
-msgstr ""
+msgstr "\"회계\" 텝에서, 이 섬의 지불한 모든 비용과 획득한 모든 세금같은 대차 대조표를 얻으세요."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
-msgstr ""
+msgstr "항목의 '판매'와 '구매'는 무역 수지를 참조하고 나중에 설명될 것입니다."
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "흑자라면, 대체로 이익을 만듭니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -367,6 +377,8 @@ msgid ""
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
+"다른 계층의 개요 탭에서 주민에 대한 통계를 볼 수 있습니다. 또한 여기에서 계층별 전체 세금을 설정하고, 이계층의 주민을 다음의 더 "
+"높은 단계로 상향하는데 허용 하거나 거부할 수 있습니다."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a tent and connect it to the main square."
@@ -380,24 +392,24 @@ msgstr "새로운 임무: 주택 건설"
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
-msgstr ""
+msgstr "정착민들은 자신들의 머리를 덮어줄 지붕을 원합니다. 그들은 당신의 도시에 살고 싶은생각이 없습니다! 천막을  제공해야 합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
-msgstr ""
+msgstr "천막은 기본적인 거주 건물입니다. 주민들은 부유해질때 천막이 더 향상되길 바랍니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
-msgstr ""
+msgstr "각 건물의 향상은 최초 향상때는 목재와 같은 건축자재가 필요합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
-msgstr ""
+msgstr "만약 이러한 재료의 재고가 부족한경우, 향상을 하지않는것이 좋습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -405,6 +417,8 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"정착민들은 생산하는 모든 상품을 소비하려하기 때문에 정착민들은 매우 유용해 보이지 않을수 있습니다. -하지만 그들은 최소한의 세금을 "
+"지불하므로 지금 돈을 벌 수있는 유일한 방법입니다!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -425,6 +439,8 @@ msgid ""
 "\n"
 "Let's have a look at the tent overview tab."
 msgstr ""
+"\n"
+"천막 개요 텝을 봅시다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -433,22 +449,26 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"아래의것들을 볼수있습니다.\n"
+"* 주민들의 행복도,\n"
+"* 주민들이 지불한 세금과\n"
+"* 그들이 요구하는 자원."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
-msgstr ""
+msgstr "그들의 요구가 만족된다면, 행복도에 따라 세금도 증가 될것입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If not, happiness and income decrease. At some time your residents may get "
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
-msgstr ""
+msgstr "그렇지 않는경우 행복도와 수입이 감소합니다. 언젠가 주민들이 정말로 뽀로통해지고, 마을을 두고 가버리고, 부폐 퇴락될것입니다."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "여기서 전체 세금 설정도 바꿀 수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -464,6 +484,8 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"팁: Shift 키를 누르고 있으면 같은 종류의 여러 건물을 건설하는데 쉽습니다."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a signal fire at the coast close to your warehouse."
@@ -477,7 +499,7 @@ msgstr "새로운 임무: 봉화를 건설"
 msgid ""
 "Can you see the ship passing your island from time to time? That ship "
 "belongs to the Free Trader, one of the first settlers in this archipelago."
-msgstr ""
+msgstr "이따금 섬을 통과하는 배를 볼수있나요? 그배는 자유 무역상이며, 이 열도의 첫정착민중 하나입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
