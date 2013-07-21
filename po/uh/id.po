@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2013-06-03 22:39+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"PO-Revision-Date: 2013-07-21 02:41+0200\n"
+"Last-Translator: ichwan elhamdani <boootx@gmail.com>\n"
 "Language-Team: Indonesian <http://hosted.weblate.org/projects/uh/uh/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons mengalami crash."
+msgstr "Unknown Horizons mengalami kerusakan."
 
 #: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -63,149 +63,149 @@ msgstr "Terima kasih telah menggunakan Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Kembali ke editor"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 msgid "Save map"
-msgstr ""
+msgstr "Simpan peta"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr ""
+msgstr "Memuat peta"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr ""
+msgstr "Pengaturan"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
-msgstr ""
+msgstr "Bantuan"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "Keluar dari editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Pilih ukuran kuas:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Pilih medan:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(klik kanan untuk berhenti)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr ""
+msgstr "Mulai bermain"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
+msgstr "Anda perlu menemukan pemukiman sebelum anda dapat membangun bangunan!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr ""
+msgstr "Pilih kapal anda dan dekatkan ke pantai dengan klik kanan."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr ""
+msgstr "Setelah itu, tekan tombol besar di atas kapal."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr ""
+msgstr "Membangun"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr ""
+msgstr "Biaya operasional:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "Bangunan yang berhubungan"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
-msgstr ""
+msgstr "Penduduk"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
-msgstr ""
+msgstr "Meningkatkan kecepatan permainan (+)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
-msgstr ""
+msgstr "Menurunkan kecepatan permainan (-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Memutar peta ke kiri(,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Memutar peta ke kanan(.)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
-msgstr ""
+msgstr "Memperbesar"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
-msgstr ""
+msgstr "Memperkecil"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Menghancurkan(X)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "Catatan kapten(L)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Menu bangunan(B)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomasi"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Menu permainan (Esc)"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
-msgstr ""
+msgstr "Ganti nama"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
-msgstr ""
+msgstr "Nama lama:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr ""
+msgstr "Masukkan nama baru:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr ""
+msgstr "Menerapkan nama baru"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
-msgstr ""
+msgstr "Obrolan"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr ""
+msgstr "Masukkan pesan Anda:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -222,180 +222,184 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Running costs"
-msgstr ""
+msgstr "Biaya operasional"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
+"Untuk membangun sebuah perahu, klik pada salah satu tab, pilih kapal yang "
+"diinginkan dan konfirmasi pesanan."
 
 #. Information about the ship currently under construction at the boat
 #. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr ""
+msgstr "Sedang dikerjakan:"
 
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
-msgstr ""
+msgstr "Jeda"
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr ""
+msgstr "Lanjutkan"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr ""
+msgstr "Perkembangan pengerjaan:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
-msgstr ""
+msgstr "Sumber daya yang masih dibutuhkan:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr ""
+msgstr "Batalkan Pengerjaan:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
-msgstr ""
+msgstr "(kehilangan semua sumber daya)"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr ""
+msgstr "Batalkan semua proses pengerjaan"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
-msgstr ""
+msgstr "kawan"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
-msgstr ""
+msgstr "netral"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr ""
+msgstr "lawan"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
 msgid "Building overview"
-msgstr ""
+msgstr "Gambaran bangunan"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr ""
+msgstr "Kapasitas yang digunakan"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
 msgid "Settlement inventory"
-msgstr ""
+msgstr "Persediaan pemukiman"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:39
+#, fuzzy
 msgid "Settler overview"
-msgstr ""
+msgstr "Keterangan pemukiman"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr ""
+msgstr "Pajak yang dibayarkan"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr ""
+msgstr "Pajak:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr ""
+msgstr "Tarif pajak"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Tingkatkan ijin:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "Kebahagiaan per rumah"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
-msgstr ""
+msgstr "sedih"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
 msgid "satisfied"
-msgstr ""
+msgstr "puas"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:60
 msgid "happy"
-msgstr ""
+msgstr "bahagia"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "Jumlah rumah dengan kebahagiaan ini"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr ""
+msgstr "Penduduk per rumah"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr ""
+msgstr "Jumlah penduduk per rumah"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
+#, fuzzy
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "Rumah dengan penduduk sejumlah ini"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr ""
+msgstr "Ringkasan"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
-msgstr ""
+msgstr "rumah"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr ""
+msgstr "penduduk"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:348
 msgid "Selling"
-msgstr ""
+msgstr "Menjual"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: horizons/gui/tabs/buyselltab.py:341
 msgid "Buying"
-msgstr ""
+msgstr "Membeli"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
 msgid "Name:"
-msgstr ""
+msgstr "Nama:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
@@ -1559,7 +1563,7 @@ msgstr "32 bit"
 
 #: horizons/engine/settingshandler.py:70
 msgid "Default"
-msgstr "Default"
+msgstr "Standar"
 
 #: horizons/engine/settingshandler.py:141
 msgid "Warning"
