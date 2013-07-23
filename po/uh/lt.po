@@ -7,20 +7,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2012-01-07 07:49+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-07-23 17:33+0200\n"
+"Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
+"Language-Team: Lithuanian <http://hosted.weblate.org/projects/uh/uh/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.1.5\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Unknown Horizons išsijungė."
 
 #: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -135,14 +135,12 @@ msgid "Inhabitants"
 msgstr "Gyventojai"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Padidinti žaidimo greitį"
+msgstr "Padidinti žaidimo greitį (+)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Sumažinti žaidimo greitį"
+msgstr "Sumažinti žaidimo greitį (-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 msgid "Rotate map counterclockwise (,)"
@@ -421,9 +419,8 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
 #: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:67
 #: horizons/gui/widgets/playerssettlements.py:97
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Spragtelėkite, kad pakeistumėte jūsų gyvenvietės pavadinimą."
+msgstr "Spustelėję galėsite pakeisti jūsų gyvenvietės pavadinimą"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -461,9 +458,8 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Spragtelėkite, kad pakeistumėte šio laivo pavadinimą."
+msgstr "Spustelėję galėsite pakeisti šio laivo pavadinimą"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
@@ -584,7 +580,7 @@ msgstr "Nuleisti"
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy
 msgid "Select a resource:"
-msgstr "Pasirinkti išteklius:"
+msgstr "Pasirinkite išteklių:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
@@ -634,9 +630,8 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Įveskite Jūsų žinutę:"
+msgstr "Įrašykite čia savo žinutę"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -724,9 +719,8 @@ msgstr ""
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:493
-#, fuzzy
 msgid "Settlers"
-msgstr "naujakurys"
+msgstr "Naujakuriai"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
@@ -840,9 +834,8 @@ msgid "Return"
 msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "išsilavinimas"
+msgstr "Veiksmai"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -977,9 +970,8 @@ msgid "Reset to default"
 msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Atkurti numatytąsias nuostatas"
+msgstr "Atkurti numatytuosius klavišų susiejimus"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -998,9 +990,8 @@ msgid "Cancel game"
 msgstr "Atšaukti žaidimą"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Įkeliama ..."
+msgstr "Įkeliama…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1125,9 +1116,8 @@ msgid "Create a new game"
 msgstr "Sukurti naują žaidimą"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
-#, fuzzy
 msgid "Load game:"
-msgstr "Įkelti žaidimą"
+msgstr "Įkelti žaidimą:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 msgid "Load a saved game"
@@ -1247,14 +1237,12 @@ msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:115
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "Atkurti numatytąsias nuostatas"
+msgstr "0 - numatytieji sistemos nustatymai"
 
 #: content/gui/xml/mainmenu/settings.xml:115
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Indėlių resursai:"
+msgstr "Pelės jautrumas:"
 
 #: content/gui/xml/mainmenu/settings.xml:132
 msgid "Saving"
@@ -2149,9 +2137,8 @@ msgstr "Patvirtinti tvarką"
 
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Rinkos apžvalga"
+msgstr "Sandėlio apžvalga"
 
 #: horizons/gui/tabs/buildingtabs.py:76
 msgid "Tower overview"
@@ -2227,9 +2214,8 @@ msgid "Allow upgrades"
 msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:105
-#, fuzzy
 msgid "Unit overview"
-msgstr "Laivo apžvalga"
+msgstr "Dalinio apžvalga"
 
 #: horizons/gui/tabs/productiontabs.py:53
 #: horizons/gui/tabs/productiontabs.py:241
@@ -2319,9 +2305,8 @@ msgid "There is nothing written in your logbook yet!"
 msgstr "Dar nieko nėra įrašyta į jūsų žurnalą!"
 
 #: horizons/gui/widgets/pickbeltwidget.py:89
-#, fuzzy
 msgid "Game"
-msgstr "Išeiti iš žaidimo"
+msgstr "Žaidimas"
 
 #: horizons/gui/widgets/playerssettlements.py:40
 #, python-format
@@ -2497,9 +2482,8 @@ msgstr ""
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:100
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Reikalingos kiaulės ar galvijai. Gamina maistą."
+msgstr "Reikalauja kiaulių ar galvijų. Teikia maistą."
 
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:105
@@ -2557,7 +2541,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:140
 #, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Teikia maistą. Reikalingas ūkis."
+msgstr "Teikia kukurūzus. Reikalauja fermos."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:145
@@ -2576,9 +2560,8 @@ msgstr "Gydytojas"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:154
-#, fuzzy
 msgid "Treats diseases. Consumes herbs."
-msgstr "Gydytojas: Gydo ligas. Naudoja vaistažoles."
+msgstr "Gydo ligas. Naudoja vaistažoles."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:159
@@ -2613,9 +2596,8 @@ msgstr ""
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:180
-#, fuzzy
 msgid "Fishes the sea, produces food."
-msgstr "Žvejys: Gaudo jūros žuvis, teikia maistą."
+msgstr "Renka jūros gėrybes, teikia maistą."
 
 #. name of buildings:herbary
 #: horizons/i18n/objecttranslations.py:185
@@ -2624,9 +2606,8 @@ msgstr "Herbariumas"
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:187
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
-msgstr "Herbariumas: Augina vaistažoles. Reikalingas ūkis."
+msgstr "Užaugina vaistažoles. Reikalauja fermos."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:192
@@ -2637,7 +2618,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:194
 #, fuzzy
 msgid "Hunts wild forest animals, produces food."
-msgstr "Medžiotojas: Medžioja laukinio miško gyvūnus, teikia maistą."
+msgstr "Medžioja laukinius miško gyvūnus, teikia maistą."
 
 #. name of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:199
@@ -2646,9 +2627,8 @@ msgstr ""
 
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:201
-#, fuzzy
 msgid "Gets iron ore from deposit."
-msgstr "Geležies kasykla: Paima geležies rūdą iš telkinio."
+msgstr "Gauna geležies rūdą iš telkinio."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:206
@@ -2672,9 +2652,8 @@ msgstr ""
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:217
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
-msgstr "Kerta medžius ir paverčia juos lentomis."
+msgstr "Kerta medžius ir pjauna iš jų lentas."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:222
@@ -2708,9 +2687,8 @@ msgstr "Ganykla"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:243
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Augina avis. Teikia vilną. Reikalingas ūkis."
+msgstr "Augina avis. Teikia vilną. Reikalauja fermos."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:248
@@ -2770,10 +2748,8 @@ msgstr "Ugnies signalas"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:283
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
-msgstr ""
-"Gaisro signalas: Leidžia žaidėjui prekiauti su nepriklausomu prekybininku."
+msgstr "Leidžia žaidėjui prekiauti su nepriklausomu prekybininku."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:288
@@ -2836,7 +2812,7 @@ msgstr "Saugojimo palapinė"
 #: horizons/i18n/objecttranslations.py:322
 #, fuzzy
 msgid "Extends stock and provides collectors."
-msgstr "Išplečia sandėlį ir teikia mokesčių rinkėjus."
+msgstr "Išplečia sandėlį ir teikia rinkėjus."
 
 #. name of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:327
@@ -2845,9 +2821,8 @@ msgstr "Cukraus laukas"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:329
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr "Naudojama alkoholio gamybai. Reikalingas ūkis."
+msgstr "Naudojama alkoholio gamybai. Reikalauja fermos."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:334
@@ -2856,9 +2831,8 @@ msgstr "Smuklė"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:336
-#, fuzzy
 msgid "Provides get-together."
-msgstr "Suteikia vietą susitikimui."
+msgstr "Teikia vietą susitikimui."
 
 #. name_0 of buildings:tent
 #: horizons/i18n/objecttranslations.py:341
@@ -2925,9 +2899,8 @@ msgstr "Įrankininkas"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:374
-#, fuzzy
 msgid "Produces tools out of iron."
-msgstr "Teikia įrankius iš geležies."
+msgstr "Gamina įrankius iš geležies."
 
 #. name_0 of buildings:trail
 #: horizons/i18n/objecttranslations.py:379
@@ -2946,9 +2919,8 @@ msgstr ""
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:385
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Takas: Reikalingas surinkti prekėms."
+msgstr "Reikalingas prekėms surinkti."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:390
@@ -3004,9 +2976,8 @@ msgstr "Audėjo palapinė"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
-#, fuzzy
 msgid "Turns lamb wool into cloth."
-msgstr "Ėriukų vilną paverčia į audinį."
+msgstr "Iš vilnos pagamina audinius ir medžiagą."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
@@ -3025,9 +2996,8 @@ msgstr ""
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "Statyti nausėdiją"
+msgstr "Gina jūsų gyvenvietę."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3101,9 +3071,8 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: horizons/i18n/objecttranslations.py:483
-#, fuzzy
 msgid "Pioneers"
-msgstr "pionierius"
+msgstr "Pradininkai"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
@@ -3219,9 +3188,8 @@ msgid "You have completed this scenario."
 msgstr ""
 
 #: horizons/scenario/actions.py:97
-#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr "Ar norite tęsti?"
+msgstr "Ar norite tęsti žaidimą?"
 
 #: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
