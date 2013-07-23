@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2013-07-23 17:33+0200\n"
+"PO-Revision-Date: 2013-07-23 18:20+0200\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <http://hosted.weblate.org/projects/uh/uh/lt/>\n"
 "Language: lt\n"
@@ -3223,9 +3223,8 @@ msgid "Your game has not been saved."
 msgstr ""
 
 #: horizons/util/checkupdates.py:81
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Ar tikrai norite išeiti iš žaidimo Nežinomi Horizonti?"
+msgstr "Nauja žaidimo \"Nežinomi Horizontai\" laida"
 
 #: horizons/util/checkupdates.py:83
 #, python-format
@@ -3389,9 +3388,8 @@ msgid "medical herbs"
 msgstr ""
 
 #. This is a database entry: the name of an inhabitant tier (level).
-#, fuzzy
 msgid "Aristocrats"
-msgstr "aristokratas"
+msgstr "Aristokratai"
 
 #. This is a database entry: the name of a resource.
 msgid "happiness"
