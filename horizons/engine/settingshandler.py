@@ -173,7 +173,7 @@ class SettingsHandler(object):
 		"""
 		if not value:
 			#value=None means function called not for saving(and changing)
-			#sensitivity, just for slider update in this version value=None everytime
+			#sensitivity, just for slider update in this version value=None every time
 			value = self.settings_dialog.findChild(name="mousesensitivity").value
 		#else:
 		#    self.engine_settings.setMouseSensitivity(value)
@@ -282,7 +282,7 @@ class SettingsHandler(object):
 		else: #disable logging
 			logging.getLogger().setLevel(logging.WARNING)
 			# keep debug flag in options so to not reenable it fully twice
-			# on reenable, onyl the level will be reset
+			# on reenable, only the level will be reset
 
 # misc utility
 

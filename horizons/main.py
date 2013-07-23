@@ -396,7 +396,7 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
                pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
-	@return: bool, whether loading succeded"""
+	@return: bool, whether loading succeeded"""
 	if is_scenario:
 		savegames = SavegameManager.get_available_scenarios(locales=True)
 	else:
@@ -418,7 +418,7 @@ def _start_random_map(ai_players, seed=None, force_player_id=None):
 def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	"""Load a map specified by user.
 	@param savegame: either the displayname of a savegame or a path to a savegame
-	@return: bool, whether loading succeded"""
+	@return: bool, whether loading succeeded"""
 	# first check for partial or exact matches in the normal savegame list
 	savegames = SavegameManager.get_saves()
 	map_file = _find_matching_map(savegame, savegames)
@@ -463,7 +463,7 @@ def _find_matching_map(name_or_path, savegames):
 def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
 	@param session: value of session
-	@return: bool, whether loading succeded"""
+	@return: bool, whether loading succeeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
 	if _modules.session is not None:
 		if not save_files:
@@ -555,7 +555,7 @@ def preload_game_data(lock):
 			lock.release()
 		log.debug("Preloading done.")
 	except Exception as e:
-		log.warning("Exception occured in preloading thread: %s", e)
+		log.warning("Exception occurred in preloading thread: %s", e)
 	finally:
 		if lock.locked():
 			lock.release()

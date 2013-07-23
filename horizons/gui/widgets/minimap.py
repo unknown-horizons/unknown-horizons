@@ -499,7 +499,7 @@ class Minimap(object):
 		full_map = self.world.full_map
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
-		# this faciliates calculating the real world coords
+		# this facilitates calculating the real world coords
 		for x in xrange(where.left-self.location.left, where.left+where.width-self.location.left):
 			for y in xrange(where.top-self.location.top, where.top+where.height-self.location.top):
 

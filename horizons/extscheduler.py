@@ -98,7 +98,7 @@ class ExtScheduler(object):
 		@return: number of removed callbacks"""
 		for tup in self.schedule:
 			if tup[1].class_instance is class_instance:
-				# don't destory heap
+				# don't destroy heap
 				tup[1] = self.__class__.NOOP
 
 	def rem_call(self, instance, callback):

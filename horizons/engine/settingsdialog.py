@@ -84,7 +84,7 @@ class SettingsDialog(FifePychanSettings):
 				super(SettingsDialog, self).setDefaults()
 				self.hotkeyInterface.reset_to_default()
 			except AttributeError as err: #weird stuff happens in settings module reset
-				print "A problem occured while updating: %s" % err + "\n" + \
+				print "A problem occurred while updating: %s" % err + "\n" + \
 					  "Please contact the developers if this happens more than once."
 
 	def get(self, module, name, defaultValue=None):

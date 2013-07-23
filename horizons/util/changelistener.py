@@ -27,7 +27,7 @@ from horizons.util.python.weakmethodlist import WeakMethodList
 class ChangeListener(object):
 	"""Trivial ChangeListener.
 	The object that changes and the object that listens have to inherit from this class.
-	An object calls _changed everytime something has changed, obviously.
+	An object calls _changed every time something has changed, obviously.
 	This function calls every Callback, that has been registered to listen for a change.
 	NOTE: ChangeListeners aren't saved, they have to be reregistered on load
 	NOTE: RemoveListeners must not access the object, as it is in progress of being destroyed.
@@ -146,7 +146,7 @@ These methods get added automatically (eventname is the name you pass to the dec
 - has_eventname_listener(listener)
     Checks if a certain listener has been added.
 - on_eventname
-    This is used to call the callbacks when the event occured.
+    This is used to call the callbacks when the event occurred.
     Additional parameters may be provided, which are passed to the callback.
 
 The goal is to simplify adding special listeners, as for example used in the

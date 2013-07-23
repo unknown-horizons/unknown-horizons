@@ -34,7 +34,7 @@ def test_save_trivial(session, _):
 	Let 2 AI players play for a while, then attempt to save the game.
 
 	Be aware, this is a pretty simple test and it doesn't actually check what is
-	beeing saved.
+	being saved.
 	"""
 	session.run(seconds=4*60)
 

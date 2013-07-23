@@ -92,7 +92,7 @@ class WeaponHolder(object):
 
 	def _increase_fired_weapons_number(self, caller=None):
 		"""
-		Callback that helps keeping tack of succesful weapon fire number
+		Callback that helps keeping tack of successful weapon fire number
 		"""
 		self._fired_weapons_number += 1
 
@@ -310,7 +310,7 @@ class WeaponHolder(object):
 
 	def remove_target(self):
 		"""
-		Removes refference from target,
+		Removes reference from target,
 		this happens when the attack is stopped or the target is dead
 		either way the refs are checked using gc module
 		this is used because after unit death it's possbile that it still has refs

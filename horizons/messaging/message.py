@@ -101,7 +101,7 @@ class Message(object):
 		"""Send a message that is initialized with `args`.
 
 		The first argument is always a sender, the number of arguments has to be
-		N + 1, with N beeing the number of arguments defined on the message class.
+		N + 1, with N being the number of arguments defined on the message class.
 
 		Example:
 

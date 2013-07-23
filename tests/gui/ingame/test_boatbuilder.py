@@ -276,7 +276,7 @@ def test_ticket_1514(gui):
 	# Select boat builder
 	gui.cursor_click(64, 10, 'left')
 
-	# nothing beeing build, no cancel button visible
+	# nothing being built, no cancel button visible
 	assert not gui.find('BB_cancel_button')
 
 	# Select trade ships tab

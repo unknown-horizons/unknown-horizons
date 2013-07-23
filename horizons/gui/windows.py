@@ -43,7 +43,7 @@ class Window(object):
 		"""Show the window.
 
 		After this call, the window should be visible. If you decide to not show
-		the window here (e.g. an error occured), you'll need to call
+		the window here (e.g. an error occurred), you'll need to call
 		`self._windows.close()` to remove the window from the manager.
 		"""
 		raise NotImplementedError

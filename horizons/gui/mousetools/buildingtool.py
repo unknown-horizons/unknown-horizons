@@ -706,7 +706,7 @@ class BuildingTool(NavigationTool):
 
 
 class ShipBuildingToolLogic(object):
-	"""Helper class to seperate the logic needed when building from a ship from
+	"""Helper class to separate the logic needed when building from a ship from
 	the main building tool."""
 
 	def __init__(self, ship):
@@ -761,7 +761,7 @@ class ShipBuildingToolLogic(object):
 	def continue_build(self): pass
 
 class SettlementBuildingToolLogic(object):
-	"""Helper class to seperate the logic needen when building from a settlement
+	"""Helper class to separate the logic needen when building from a settlement
 	from the main building tool"""
 
 	def __init__(self, building_tool):

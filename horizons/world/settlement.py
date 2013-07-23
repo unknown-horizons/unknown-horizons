@@ -111,7 +111,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	@property
 	def cumulative_taxes(self):
-		"""Return sum of all taxes payed in this settlement in 1 tax round"""
+		"""Return sum of all taxes paid in this settlement in 1 tax round"""
 		return sum([building.last_tax_payed for building in self.buildings if
 								hasattr(building, 'last_tax_payed')])
 
