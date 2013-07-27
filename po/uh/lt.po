@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2013-07-23 18:20+0200\n"
+"PO-Revision-Date: 2013-07-27 12:00+0200\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <http://hosted.weblate.org/projects/uh/uh/lt/>\n"
 "Language: lt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.6\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -56,11 +56,11 @@ msgstr ""
 
 #: run_uh.py:309
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Dėkojame žaidžiantiems „Nežinomi Horizontai“!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Grįžti į žemėlapių redaktorių"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
@@ -76,7 +76,7 @@ msgstr ""
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr "Nuostatos"
+msgstr "Nustatymai"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
@@ -87,7 +87,7 @@ msgstr "Pagalba"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "Išeiti iš žemėlapių redaktoriaus"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
@@ -826,8 +826,9 @@ msgid "Load saved game's map"
 msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
+#, fuzzy
 msgid "Start editor"
-msgstr ""
+msgstr "Leisti žemėlapių redaktorių"
 
 #: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
@@ -1001,7 +1002,7 @@ msgstr ""
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
-msgstr "Vieno žaidėjo žaidimas"
+msgstr "Žaisti vienam"
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
@@ -1016,11 +1017,11 @@ msgstr "Baigti"
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "Žemėlapių kūrimas"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr "Titrai"
+msgstr "Kūrėjai (padėkos)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
@@ -1341,7 +1342,7 @@ msgstr "Tinklo jungtis:"
 
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Reset to default settings"
-msgstr "Atkurti numatytąsias nuostatas"
+msgstr "Atkurti numatytuosius nustatymus"
 
 #: content/gui/xml/mainmenu/settings.xml:244
 msgid "Discard current changes"
@@ -1378,7 +1379,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr "Naujas žaidimas - Vieno žaidėjo"
+msgstr "Naujas žaidimas - vieno žaidėjo"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
@@ -1407,7 +1408,7 @@ msgstr "Pasirinkite žaidimui žemėlapį:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr ""
+msgstr "Žemėlapio nustatymai:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
@@ -1416,7 +1417,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "Pasirinkite kalbą:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
@@ -1424,7 +1425,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr ""
+msgstr "Žaidimo nustatymai:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
@@ -1528,16 +1529,17 @@ msgstr ""
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
-msgstr "Privaloma perkrauti"
+msgstr "Reikia paleisti iš naujo"
 
 #: horizons/engine/settingsdialog.py:70
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
-"Kai kurie jūsų pakeitimai reikalauja žaidimo Nežinomi Horizontai perkrovimo."
+"Dėl kai kurių pakeitimų žaidimą „Nežinomi Horizontai“ reikia paleisti iš "
+"naujo."
 
 #: horizons/engine/settingsdialog.py:74
 msgid "Restore default settings"
-msgstr "Atkurti numatytąsias nuostatas"
+msgstr "Atkurti numatytuosius nustatymus"
 
 #: horizons/engine/settingsdialog.py:75
 msgid ""
@@ -1625,7 +1627,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Ar tikrai norite išeiti iš žaidimo Nežinomi Horizonti?"
+msgstr "Ar tikrai norite išeiti iš žaidimo „Nežinomi Horizontai“?"
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
@@ -3232,6 +3234,8 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
+"Jau išleista naujesnė žaidimo „Nežinomi Horizontai“ laida ({new_version}), o "
+"jūs dabar naudojate senesnę ({old_version})."
 
 #: horizons/util/checkupdates.py:93
 msgid "Click to download"
