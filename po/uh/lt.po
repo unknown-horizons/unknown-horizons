@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-29 21:04+0200\n"
-"PO-Revision-Date: 2013-07-27 12:00+0200\n"
+"PO-Revision-Date: 2013-07-27 18:55+0200\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <http://hosted.weblate.org/projects/uh/uh/lt/>\n"
 "Language: lt\n"
@@ -65,7 +65,7 @@ msgstr "Grįžti į žemėlapių redaktorių"
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 msgid "Save map"
-msgstr ""
+msgstr "Įrašyti žemėlapį"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
@@ -103,31 +103,37 @@ msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr ""
+msgstr "Žaidimo pradžia"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr ""
+"Pradžioje jums reikia įkurti gyvenvietę, tuomet jūs galėsite statyti kitus "
+"pastatus!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
+"Pasirinkite savo laivą ir priplaukite prie kranto paspausdami dešinį pelės "
+"mygtuką."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr ""
+"Tada paspauskite didelį „inkaro“ mygtuką „laivo apžvalgos“ informacinėje "
+"kortelėje."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr "Sudėjimas"
+msgstr "Statyti"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "Einamosioms išlaidoms padengti:"
+msgstr "Išlaikymo kaštai:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "Susiję statiniai"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
@@ -168,7 +174,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Statybos meniu (B)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
@@ -219,14 +225,14 @@ msgstr "Įveskite Jūsų žinutę:"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Running costs"
-msgstr "Einamosios išlaidos"
+msgstr "Eksploatavimo išlaidos"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Kad pastatytumėte valtį, spragtelėkite ant vienos iš klasės lentelių, "
+"Valtį pastatysite spustelėdami ant vienos iš klasės lentelių, tada "
 "pasirinkite laivo tipą ir patvirtinkite užsakymą."
 
 #. Information about the ship currently under construction at the boat
@@ -283,7 +289,7 @@ msgstr ""
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr ""
+msgstr "priešas"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
@@ -472,7 +478,7 @@ msgstr "Prekyba"
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:64
 msgid "Build settlement"
-msgstr "Statyti nausėdiją"
+msgstr "Statyti gyvenvietę"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
@@ -766,7 +772,7 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:39
 msgid "Status"
-msgstr ""
+msgstr "Būsena"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
@@ -807,7 +813,7 @@ msgstr "Pasirinkite žemėlapį:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Pasirinkite įrašytą žaidimo žemėlapį:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
@@ -823,7 +829,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Įkelti įrašytą žaidimo žemėlapį"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 #, fuzzy
@@ -876,11 +882,11 @@ msgstr "Žaidimo pauzė"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Show build menu"
-msgstr "Rodyti statymo meniu"
+msgstr "Rodyti statybos meniu"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Enable destruct mode"
-msgstr "Įgalinti naikinimo būseną"
+msgstr "Įjungti naikinimo režimą"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
@@ -968,7 +974,7 @@ msgstr ""
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
 msgid "Reset to default"
-msgstr ""
+msgstr "Sugrąžinti numatytąjį"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default keys"
@@ -977,7 +983,7 @@ msgstr "Atkurti numatytuosius klavišų susiejimus"
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
 msgid "Save game"
-msgstr "Išsaugoti žaidimą"
+msgstr "Įrašyti žaidimą"
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
@@ -988,7 +994,7 @@ msgstr "Įkelti žaidimą"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
-msgstr "Atšaukti žaidimą"
+msgstr "Nutraukti žaidimą"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
@@ -996,7 +1002,7 @@ msgstr "Įkeliama…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Pakeisti foną"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1021,7 +1027,7 @@ msgstr "Žemėlapių kūrimas"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr "Kūrėjai (padėkos)"
+msgstr "Kūrėjai (padėka)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
@@ -1122,7 +1128,7 @@ msgstr "Įkelti žaidimą:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 msgid "Load a saved game"
-msgstr ""
+msgstr "Įkelti įrašytą žaidimą"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:26
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:16
@@ -1160,7 +1166,7 @@ msgstr "Grafika"
 
 #: content/gui/xml/mainmenu/settings.xml:18
 msgid "Screen resolution:"
-msgstr "Ekrano skiriamoji geba:"
+msgstr "Ekrano raiška:"
 
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "Color depth:"
@@ -1196,19 +1202,19 @@ msgstr "Garsas"
 
 #: content/gui/xml/mainmenu/settings.xml:67
 msgid "Music volume:"
-msgstr "Muzikos garsis:"
+msgstr "Muzikos garsumas:"
 
 #: content/gui/xml/mainmenu/settings.xml:76
 msgid "Effects volume:"
-msgstr "Efektų garsis:"
+msgstr "Efektų garsumas:"
 
 #: content/gui/xml/mainmenu/settings.xml:84
 msgid "Enable sound:"
-msgstr "Įgalinti garsą:"
+msgstr "Įjungti garsą:"
 
 #: content/gui/xml/mainmenu/settings.xml:90
 msgid "Mouse"
-msgstr ""
+msgstr "Pelė"
 
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid "Scroll at map edge:"
@@ -1247,7 +1253,7 @@ msgstr "Pelės jautrumas:"
 
 #: content/gui/xml/mainmenu/settings.xml:132
 msgid "Saving"
-msgstr "Išsaugojimas"
+msgstr "Įrašymas"
 
 #: content/gui/xml/mainmenu/settings.xml:137
 msgid "Autosave interval in minutes:"
@@ -1255,11 +1261,11 @@ msgstr "Automatinio įrašymo intervalas minutėmis:"
 
 #: content/gui/xml/mainmenu/settings.xml:145
 msgid "Number of autosaves:"
-msgstr "Automatinių įrašų skaičius:"
+msgstr "Laikomų automatinių įrašų skaičius:"
 
 #: content/gui/xml/mainmenu/settings.xml:153
 msgid "Number of quicksaves:"
-msgstr "Greitų įrašų skaičius:"
+msgstr "Laikomų greitų žaidimo įrašymų skaičius:"
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Language"
@@ -1354,7 +1360,7 @@ msgstr "Taikyti"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
-msgstr "Jūsų išsaugoti žaidimai:"
+msgstr "Įrašyti žaidimai:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
@@ -1362,7 +1368,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Delete selected savegame"
-msgstr "Pašalinti pasirinktą išsaugotą žaidimą"
+msgstr "Pašalinti pasirinktą įrašytą žaidimą"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
@@ -1375,7 +1381,7 @@ msgstr "Išsamiau:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
 msgid "Cancel"
-msgstr ""
+msgstr "Atsisakyti"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
@@ -1404,7 +1410,7 @@ msgstr "Pradėti žaidimą"
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr "Pasirinkite žaidimui žemėlapį:"
+msgstr "Pasirinkite žemėlapį:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
@@ -1514,7 +1520,7 @@ msgstr ""
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "Jūsų žemėlapis nebuvo įrašytas."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:67
 #, python-format
@@ -1546,6 +1552,8 @@ msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
 msgstr ""
+"Grąžinus numatytuosius nustatymus bus panaikinti visi jūsų atlikti nustatymų "
+"pakeitimai."
 
 #: horizons/engine/settingsdialog.py:76
 msgid "Do you want to continue?"
@@ -1596,7 +1604,7 @@ msgstr ""
 
 #: horizons/engine/settingshandler.py:236
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "Nepavyko pritaikyti naujų tinklo nustatymų."
 
 #: horizons/engine/settingshandler.py:237
 #: horizons/gui/modules/multiplayermenu.py:131
@@ -1607,7 +1615,7 @@ msgstr ""
 #: horizons/engine/settingshandler.py:238
 #: horizons/gui/modules/multiplayermenu.py:132
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Patikrinkite ar teisingai nurodėte tinklo nustatymus."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:242
@@ -1627,7 +1635,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Ar tikrai norite išeiti iš žaidimo „Nežinomi Horizontai“?"
+msgstr "Ar tikrai norite baigti žaisti „Nežinomus Horizontus“?"
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
@@ -1694,11 +1702,11 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "Kelius tiesti galite laikydami nuspaustą kairįjį pelės mygtuką."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "Galite pastatyti keletą statinių laikydami „Shift“ (Lyg2) klavišą."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
@@ -1940,7 +1948,7 @@ msgstr "Išeiti iš seanso"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "No saved games"
-msgstr "Nėra išsaugotų žaidimų"
+msgstr "Nėra įrašytų žaidimų"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
@@ -1957,7 +1965,7 @@ msgstr ""
 #: horizons/gui/modules/select_savegame.py:150
 #, python-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "Jau yra įrašytas žaidimas pavadintas {name}."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-format
@@ -1969,6 +1977,7 @@ msgid "Overwrite it?"
 msgstr ""
 
 #: horizons/gui/modules/select_savegame.py:219
+#, fuzzy
 msgid "Unknown savedate"
 msgstr "Nežinomi įrašo duomenys"
 
@@ -1989,7 +1998,7 @@ msgstr[2] ""
 #: horizons/gui/modules/select_savegame.py:236
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Įrašyto žaidimo versija {version}"
 
 #: horizons/gui/modules/select_savegame.py:240
 msgid "(probably incompatible)"
@@ -2007,12 +2016,12 @@ msgstr "Failas nepasirinktas"
 
 #: horizons/gui/modules/select_savegame.py:257
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Norėdami ištrinti turite pasirinkti įrašytą žaidimą."
 
 #: horizons/gui/modules/select_savegame.py:261
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Ar tikrai norite ištrinti įrašytą žaidimą „{name}“?"
 
 #: horizons/gui/modules/select_savegame.py:263
 msgid "Confirm deletion"
@@ -2098,7 +2107,7 @@ msgstr ""
 #: horizons/gui/mousetools/buildingtool.py:231
 #, python-format
 msgid "Build {building}"
-msgstr ""
+msgstr "Statyti {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
@@ -2152,7 +2161,7 @@ msgstr "Apžvalga"
 
 #: horizons/gui/tabs/buildrelatedtab.py:44
 msgid "Build related buildings"
-msgstr ""
+msgstr "Statyti susijusius pastatus"
 
 #. Add necessary resources to tooltip
 #. [br] means newline
@@ -3129,10 +3138,13 @@ msgstr ""
 #: horizons/main.py:351
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
+"Įrašyto žaidimo failas gali būti sugadintas arba jis buvo įrašytas senos "
+"„Nežinomi Horizontai“ laidos."
 
 #: horizons/main.py:470
+#, fuzzy
 msgid "No quicksaves found"
-msgstr "Nerasta greito įrašymo"
+msgstr "Nerasta greitų įrašymų"
 
 #: horizons/main.py:471
 msgid "You need to quicksave before you can quickload."
@@ -3200,7 +3212,7 @@ msgstr "nežinomas"
 #. usually invalid filename
 #: horizons/session.py:404
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Nepavyko sukurti žaidimo įrašo failo"
 
 #: horizons/session.py:405
 msgid "There has been an error while creating your savegame file."
@@ -3222,11 +3234,11 @@ msgstr ""
 
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
-msgstr ""
+msgstr "Jūsų žaidimas nebuvo įrašytas."
 
 #: horizons/util/checkupdates.py:81
 msgid "New version of Unknown Horizons"
-msgstr "Nauja žaidimo \"Nežinomi Horizontai\" laida"
+msgstr "Nauja žaidimo Nežinomi Horizontai laida"
 
 #: horizons/util/checkupdates.py:83
 #, python-format
@@ -3480,7 +3492,7 @@ msgstr "geležies luitai"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Ekrano nuotrauka buvo įrašyta į {file}."
 
 #. This is a database entry: the name of a resource.
 msgid "cattle"
@@ -3602,7 +3614,7 @@ msgstr "monetos"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You won!"
-msgstr ""
+msgstr "Jūs laimėjote!"
 
 #. This is a database entry: the name of a resource.
 msgid "fish"
@@ -3656,7 +3668,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Jūsų žaidimas buvo įrašytas automatiškai."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3751,7 +3763,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been saved."
-msgstr ""
+msgstr "Jūsų žaidimas buvo įrašytas."
 
 #. This is a database entry: the name of a resource.
 msgid "salt"
