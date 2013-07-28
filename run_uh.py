@@ -437,16 +437,15 @@ def setup_fife():
 		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
 
 	from fife import fife
-	revision = fife.getRevision() if hasattr(fife, 'getRevision') else 0
-	version = fife.getVersion() if hasattr(fife, 'getVersion') else 'unknown'
+	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
+	fife_version_minor = fife.getMinor() if hasattr(fife, 'getMinor') else 'unknown'
+	fife_version_patch = fife.getPatch() if hasattr(fife, 'getPatch') else 'unknown'
 
 	from horizons.constants import VERSION
-	if VERSION.MIN_FIFE_REVISION > revision:
-		log().warning('Unsupported fife revision %d (version %s); at least %d required',
-		              revision, version, VERSION.MIN_FIFE_REVISION)
+	if VERSION.REQUIRED_FIFE_MAJOR_VERSION > fife_version_major or VERSION.REQUIRED_FIFE_MINOR_VERSION > fife_version_minor or VERSION.REQUIRED_FIFE_PATCH_VERSION > fife_version_patch:
+		log().warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
-		log().debug('Using fife revision %d (version %s); at least %d required', revision,
-		            version, VERSION.MIN_FIFE_REVISION)
+		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.           REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 
 def init_environment(use_fife):
 	"""Sets up everything.
