@@ -595,7 +595,6 @@ msgid ""
 "explain this once you are ready to trade."
 msgstr ""
 
-# 89%
 #. This is the text body of a logbook page.
 #, fuzzy
 msgid ""
@@ -1183,7 +1182,6 @@ msgstr ""
 msgid "Thanks!"
 msgstr "Grazie!"
 
-# 96%
 #. This is the text body of a logbook page.
 #, fuzzy
 msgid ""

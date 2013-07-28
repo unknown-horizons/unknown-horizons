@@ -115,7 +115,7 @@ class Producer(Component):
 		if self.__auto_init:
 			for prod_line, attributes in self.production_lines.iteritems():
 				if 'enabled_by_default' in attributes and not attributes['enabled_by_default']:
-					continue  # It's set to false, don't add
+					continue  # It's set to False, don't add
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
 		# For newly built producers we set the utilization to full for the first
@@ -531,7 +531,7 @@ class QueueProducer(Producer):
 
 	def cancel_current_production(self):
 		"""Cancels the current production and proceeds to the next one, if there is one"""
-		# Remove current productions, loose all progress and resources
+		# Remove current productions, lose all progress and resources
 		for production in self._productions.copy().itervalues():
 			self.remove_production(production)
 		for production in self._inactive_productions.copy().itervalues():

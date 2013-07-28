@@ -382,8 +382,7 @@ class World(BuildingOwner, WorldObject):
 			map_dict[coords] = n
 			queue = deque([coords])
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in map_dict and map_dict[coords2] is None:

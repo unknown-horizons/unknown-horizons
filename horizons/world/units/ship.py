@@ -177,7 +177,7 @@ class Ship(Unit):
 			)
 
 	def find_nearby_ships(self, radius=15):
-		# TODO: Replace 15 with a distance dependant on the ship type and any
+		# TODO: Replace 15 with a distance dependent on the ship type and any
 		# other conditions.
 		ships = self.session.world.get_ships(self.position, radius)
 		if self in ships:

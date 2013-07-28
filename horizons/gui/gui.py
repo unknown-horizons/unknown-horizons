@@ -34,7 +34,7 @@ from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
-from horizons.gui.modules import (SingleplayerMenu, MultiplayerMenu,
+from horizons.gui.modules import (HelpDialog, SingleplayerMenu, MultiplayerMenu,
                                   SelectSavegameDialog, LoadingScreen, SettingsDialog)
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
 from horizons.gui.windows import WindowManager, Window
@@ -96,25 +96,18 @@ class Gui(object):
 		                        position_technique='center:center')
 		self._background.show()
 
-		self.subscribe()
-
 		self.singleplayermenu = SingleplayerMenu(self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
-		self.help_dialog = None
+		self.help_dialog = HelpDialog(self.windows)
 		self.loadingscreen = LoadingScreen()
 		self.settings_dialog = SettingsDialog(self.windows)
 		self.mainmenu = MainMenu(self, self.windows)
 		self.fps_display = FPSDisplay()
 
-	def subscribe(self):
-		"""Subscribe to the necessary messages."""
-		GuiAction.subscribe(self._on_gui_action)
-
-	def unsubscribe(self):
-		GuiAction.unsubscribe(self._on_gui_action)
-
 	def show_main(self):
 		"""Shows the main menu """
+		GuiAction.subscribe(self._on_gui_action)
+
 		if not self._background.isVisible():
 			self._background.show()
 
@@ -148,6 +141,7 @@ class Gui(object):
 		self.windows.on_return()
 
 	def close_all(self):
+		GuiAction.discard(self._on_gui_action)
 		self.windows.close_all()
 		self._background.hide()
 

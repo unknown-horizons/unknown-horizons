@@ -41,6 +41,8 @@ for s in ALL_SCENARIOS:
 	SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/%s.po' % s)
 	SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/%s.pot' % s
 
+VOICES_TRANSLATIONS =  glob('po/voices/*.po')
+VOICES_TEMPLATE = 'po/voices/unknown-horizons-voices.pot'
 
 def update_from_template(input_po, input_template):
 	"""
@@ -79,6 +81,9 @@ def main():
 		for f in translations:
 			update_from_template(f, SCENARIO_TEMPLATE[scenario])
 
+	# Voices translation
+	for f in VOICES_TRANSLATIONS:
+		update_from_template(f, VOICES_TEMPLATE)
 
 if __name__ == '__main__':
 	main()

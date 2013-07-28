@@ -114,7 +114,7 @@ class Buildable(object):
 		"""Check if a building is buildable here.
 		All tiles, that the building occupies are checked.
 		@param point: Point instance, coords
-		@param rotation: prefered rotation of building
+		@param rotation: preferred rotation of building
 		@param check_settlement: whether to check for a settlement (for settlementless buildings)
 		@param ship: ship instance if building from ship
 		@return instance of _BuildPosition"""
@@ -247,7 +247,7 @@ class Buildable(object):
 	def _check_rotation(cls, session, position, rotation):
 		"""Returns a possible rotation for this building.
 		@param position: Rect or Point instance, position and size
-		@param rotation: The prefered rotation
+		@param rotation: The preferred rotation
 		@return: integer, an available rotation in degrees"""
 		return rotation
 

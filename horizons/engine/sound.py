@@ -77,27 +77,29 @@ class Sound(object):
 
 	def enable_sound(self):
 		"""Enable all sound and start playing music."""
-		if self.engine.get_fife_setting("PlaySounds"): # Set up sound if it is enabled
-			self.soundmanager = self.engine.engine.getSoundManager()
-			self.soundmanager.init()
+		if not self.engine.get_fife_setting("PlaySounds"):
+			return
+		# Set up sound if it is enabled
+		self.soundmanager = self.engine.engine.getSoundManager()
+		self.soundmanager.init()
 
-			self.soundclipmanager = self.engine.engine.getSoundClipManager()
-			self.emitter['bgsound'] = self.soundmanager.createEmitter()
-			self.emitter['bgsound'].setGain(self.engine.get_uh_setting("VolumeMusic"))
-			self.emitter['bgsound'].setLooping(False)
-			self.emitter['effects'] = self.soundmanager.createEmitter()
-			self.emitter['effects'].setGain(self.engine.get_uh_setting("VolumeEffects"))
-			self.emitter['effects'].setLooping(False)
-			self.emitter['speech'] = self.soundmanager.createEmitter()
-			self.emitter['speech'].setGain(self.engine.get_uh_setting("VolumeEffects"))
-			self.emitter['speech'].setLooping(False)
-			self.emitter['ambient'] = []
+		self.soundclipmanager = self.engine.engine.getSoundClipManager()
+		self.emitter['bgsound'] = self.soundmanager.createEmitter()
+		self.emitter['bgsound'].setGain(self.engine.get_uh_setting("VolumeMusic"))
+		self.emitter['bgsound'].setLooping(False)
+		self.emitter['effects'] = self.soundmanager.createEmitter()
+		self.emitter['effects'].setGain(self.engine.get_uh_setting("VolumeEffects"))
+		self.emitter['effects'].setLooping(False)
+		self.emitter['speech'] = self.soundmanager.createEmitter()
+		self.emitter['speech'].setGain(self.engine.get_uh_setting("VolumeEffects"))
+		self.emitter['speech'].setLooping(False)
+		self.emitter['ambient'] = []
 
-			# Start background music:
-			self._old_byte_pos = 0.0
-			self._old_smpl_pos = 0.0
-			self.check_music(refresh_playlist=True, play_menu_tracks=True)
-			ExtScheduler().add_new_object(self.check_music, self, loops=-1)
+		# Start background music:
+		self._old_byte_pos = 0.0
+		self._old_smpl_pos = 0.0
+		self.check_music(refresh_playlist=True, play_menu_tracks=True)
+		ExtScheduler().add_new_object(self.check_music, self, loops=-1)
 
 	def disable_sound(self):
 		"""Disable all sound outputs."""
@@ -145,11 +147,13 @@ class Sound(object):
 		@param emitter: string: name of emitter that is to play the sound
 		@param soundfile: string: path to the sound file we want to play
 		"""
-		if self.engine.get_fife_setting("PlaySounds"):
-			emitter = self.emitter[emitter]
-			assert emitter is not None, "You need to supply an initialized emitter"
-			assert soundfile is not None, "You need to supply a soundfile"
-			emitter.reset()
-			#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/449
-			emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
-			emitter.play()
+		if not self.engine.get_fife_setting("PlaySounds"):
+			return
+		emitter = self.emitter[emitter]
+		#TODO what do we need those two asserts for...
+		assert emitter is not None, "You need to supply an initialized emitter"
+		assert soundfile is not None, "You need to supply a soundfile"
+		emitter.reset()
+		#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/449
+		emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
+		emitter.play()

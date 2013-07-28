@@ -105,6 +105,16 @@ class MessageWidget(LivingObject):
 		                                        created=self.msgcount.next(), message_dict=message_dict),
 		                         sound=sound)
 
+	def remove(self, messagetext):
+		"""Remove a message containing the text *messagetext*"""
+		index = -1
+		for i, message in enumerate(self.active_messages):
+			if messagetext == message.message:
+				index = i
+				break
+		if index > -1:
+			del self.active_messages[index]
+
 	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
 		Uses no predefined message template from content database like add() does.
@@ -295,10 +305,14 @@ class _IngameMessage(object):
 	like the following: {player}, {gold}. The *message_dict* needed to fill in
 	these placeholders needs to be provided when creating _IngameMessages.
 
-	@param x, y: int position on the map where the action took place.
+	@param point: Point position on the map where the action took place, or None.
 	@param id: message id string, needed to retrieve the message from the database.
 	@param created: tickid when the message was created. Keeps message order after load.
+
 	@param msg_type: messages coupled with logbook entries use this to link to pages
+	@param read: #TODO
+	@param display: #TODO
+	@param message: message text to display. Loads preset for `id` if None.
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	@param icon_id: which icon to display. Loads preset for `id` if None.
 	"""
@@ -319,6 +333,7 @@ class _IngameMessage(object):
 			self.message = message
 		else:
 			msg = _(horizons.globals.db.get_msg_text(id))
+			#TODO why can message_dict not be used with custom messages (`if` branch above)
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:

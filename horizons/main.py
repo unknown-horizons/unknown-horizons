@@ -295,6 +295,11 @@ def quit():
 	preload_game_join(preloading)
 	horizons.globals.fife.quit()
 
+def quit_session():
+	"""Quits the current game."""
+	_modules.session = None
+	_modules.gui.show_main()
+
 def start_singleplayer(options):
 	"""Starts a singleplayer game."""
 	_modules.gui.show_loading_screen()
@@ -318,7 +323,7 @@ def start_singleplayer(options):
 		from horizons.spsession import SPSession as session_class
 
 	# start new session
-	_modules.session = session_class(_modules.gui, horizons.globals.db)
+	_modules.session = session_class(horizons.globals.db)
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
@@ -370,7 +375,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	# get random seed for game
 	uuid = game.uuid
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
-	_modules.session = MPSession(_modules.gui, horizons.globals.db, NetworkInterface(), rng_seed=random)
+	_modules.session = MPSession(horizons.globals.db, NetworkInterface(), rng_seed=random)
 
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
 	if game.is_savegame:
@@ -391,7 +396,7 @@ def _start_map(map_name, ai_players=0, is_scenario=False,
                pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
-	@return: bool, whether loading succeded"""
+	@return: bool, whether loading succeeded"""
 	if is_scenario:
 		savegames = SavegameManager.get_available_scenarios(locales=True)
 	else:
@@ -413,7 +418,7 @@ def _start_random_map(ai_players, seed=None, force_player_id=None):
 def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	"""Load a map specified by user.
 	@param savegame: either the displayname of a savegame or a path to a savegame
-	@return: bool, whether loading succeded"""
+	@return: bool, whether loading succeeded"""
 	# first check for partial or exact matches in the normal savegame list
 	savegames = SavegameManager.get_saves()
 	map_file = _find_matching_map(savegame, savegames)
@@ -458,12 +463,12 @@ def _find_matching_map(name_or_path, savegames):
 def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
 	@param session: value of session
-	@return: bool, whether loading succeded"""
+	@return: bool, whether loading succeeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
 	if _modules.session is not None:
 		if not save_files:
-			_modules.session.gui.show_popup(_("No quicksaves found"),
-			                                _("You need to quicksave before you can quickload."))
+			_modules.session.ingame_gui.show_popup(_("No quicksaves found"),
+			                                       _("You need to quicksave before you can quickload."))
 			return False
 	else:
 		if not save_files:
@@ -520,7 +525,7 @@ def edit_game_map(saved_game_name):
 
 def _create_main_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
-	NOTE: This data is read_only, so there are no concurrency issues"""
+	NOTE: This data is read_only, so there are no concurrency issues."""
 	_db = UhDbAccessor(':memory:')
 	for i in PATHS.DB_FILES:
 		f = open(i, "r")
@@ -550,7 +555,7 @@ def preload_game_data(lock):
 			lock.release()
 		log.debug("Preloading done.")
 	except Exception as e:
-		log.warning("Exception occured in preloading thread: %s", e)
+		log.warning("Exception occurred in preloading thread: %s", e)
 	finally:
 		if lock.locked():
 			lock.release()

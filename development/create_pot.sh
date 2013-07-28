@@ -62,9 +62,9 @@ print "%s" % VERSION.RELEASE_VERSION')
 
 RESULT_FILE=po/uh/unknown-horizons.pot
 RESULT_FILE_SERVER=po/uh-server/unknown-horizons-server.pot
-XML_PY_FILE=horizons/i18n/guitranslations.py
+XML_PY_FILE=horizons/gui/translations.py
 YAML_PY_FILE=horizons/i18n/objecttranslations.py
-SQL_POT_FILE=horizons/i18n/sqlite_strings.pot
+SQL_POT_FILE=po/sqltranslations.pot
 
 function strip_itstool()
 {
@@ -72,6 +72,7 @@ function strip_itstool()
   #. (itstool) path: Container/Label@text
   #. (itstool) comment: Container/Label@text
   sed -i '/^#\. (itstool) /d' $1
+  sed -i '/^#\. noi18n_\(help\)\?text$/d' $1
 }
 
 function reset_if_empty()
@@ -85,26 +86,25 @@ function reset_if_empty()
   fi
 }
 
+# XML files
 PYTHONPATH="." python2 development/extract_strings_from_xml.py "$XML_PY_FILE"
 echo "   * Regenerated xml translation file at $XML_PY_FILE."
-PYTHONPATH="." python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
-echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
-PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
-echo "   * Regenerated sql translation file at $SQL_POT_FILE."
-
-
-echo "=> Creating UH gettext pot template file at $RESULT_FILE."
-# XML files
 find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
   itstool -i development/its-rule-pychan.xml \
           -i development/its-rule-uh.xml \
           -o "$RESULT_FILE"
+echo "   * Wrote xml translation template to $RESULT_FILE."
 
-# Get all files to translate.
+# YAML files
+PYTHONPATH="." python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
+echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
+
+echo "=> Creating UH gettext pot template file at $RESULT_FILE."
+
+# Python files
 (
   find . -mindepth 1 -maxdepth 1 -name \*.py && \
-  find horizons \( -name \*.py ! -name "guitranslations.py" \) && \
-  echo "$SQL_POT_FILE"
+  find horizons \( -name \*.py ! -name "translations.py" \) \
 ) | xgettext --files-from=- --output="$RESULT_FILE" \
              --join-existing \
              --from-code=UTF-8 --add-comments \
@@ -116,6 +116,17 @@ find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
              --keyword=N_:1,2 \
              --keyword=_lazy
 # --keyword=N_ also catches N_() plural-aware ngettext calls
+
+# SQL files
+PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
+echo "   * Regenerated sql translation file at $SQL_POT_FILE."
+# Merge with python+xml file RESULT_FILE, do not update header
+xgettext --output="$RESULT_FILE" \
+         --join-existing \
+         --omit-header \
+         "$SQL_POT_FILE"
+
+# Some make-up
 strip_itstool "$RESULT_FILE"
 reset_if_empty "$RESULT_FILE"
 

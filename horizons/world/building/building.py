@@ -41,7 +41,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
-	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
+	walkable = False # whether we can walk on this building (True for e.g. streets, trees..)
 	buildable_upon = False # whether we can build upon this building
 	is_building = True
 	tearable = True
@@ -188,8 +188,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def update_action_set_level(self, level=0):
 		"""Updates this buildings action_set to a random actionset from the specified level
 		(if an action set exists in that level).
-		It's different to get_random_action_set is, that it just checks one lvl, and doesn't
-		search for an action set everywhere, which makes it alot more effective, if you're
+		Its difference to get_random_action_set is that it just checks one level, and doesn't
+		search for an action set everywhere, which makes it a lot more effective if you're
 		just updating.
 		@param level: int level number"""
 		action_set = self.__class__.get_random_action_set(level, exact_level=True)
@@ -312,8 +312,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		to start production for example."""
 		pass
 
-	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
+	def __unicode__(self): # debug
+		return u'%s(id=%s;worldid=%s)' % (self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
 class DefaultBuilding(BasicBuilding, BuildableSingle):

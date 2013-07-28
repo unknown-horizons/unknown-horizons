@@ -31,7 +31,7 @@ class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 
 	def __init__(self, *args, **kwargs):
 		super(Tower, self).__init__(*args, **kwargs)
-		# apply cannons already payed for
+		# apply cannons already paid for
 		for weapon_type in self.__class__.POSSIBLE_WEAPONS:
 			for i in xrange(self.costs.get(weapon_type, 0)):
 				self.add_weapon_to_storage(weapon_type)

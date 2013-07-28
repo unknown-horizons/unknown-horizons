@@ -78,8 +78,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 			queue = deque([coords])
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in area_label and area_label[coords2] is None:
@@ -87,7 +86,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 						queue.append(coords2)
 			areas += 1
 
-		coords_set_by_area = defaultdict(lambda: set())
+		coords_set_by_area = defaultdict(set)
 		for coords, area_number in area_label.iteritems():
 			if coords in self.production_builder.plan and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
 				coords_set_by_area[area_number].add(coords)

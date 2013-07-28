@@ -29,7 +29,7 @@ logbook-data:
 - &FOOD_BOARDS
     - [Headline, "22nd November 1740"]
     - [Image, "content/gui/images/background/hr.png"]
-    - The port is built and a new hope arises. I am still worried about the next days... we are running out of food and lack basic building material.
+    - The port is built and a new hope arises. I am still worried about the next days… we are running out of food and lack basic building material.
     - We need to secure our basic needs to keep us alive. It is time to send people gathering food and lumber so that we can survive and build some shelter.
     - |
       Task:
@@ -58,7 +58,7 @@ logbook-data:
     - Finally we have enough to eat and a place to live again. My tent is not very comfortable but it keeps me dry and I have the feeling of having a roof over my head at night.
     - |
       I have been researching the stars at night, but without my sea charts and instruments their meaning remains unknown. I have the feeling we will be stuck here for a while, so we'll have to make the best of situation.
-      We can only try to to build up a civilisation and find a way home...
+      We can only try to to build up a civilisation and find a way home…
     - |
       Task:
       Grow the village until you have at least 250 inhabitants and a positive balance.
@@ -137,5 +137,5 @@ metadata:
   author: Kikody, UH-Team
   description: |
     You are the captain of a ship under the flag of England in 1740. You and your crew were on the way to a colony of England in the pacific ocean.
-    Everything went fine until you came into a storm...
+    Everything went fine until you came into a storm…
   locale: en

@@ -6,62 +6,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2012-05-10 18:41+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2013-06-29 21:04+0200\n"
+"PO-Revision-Date: 2013-07-09 21:48+0200\n"
+"Last-Translator: luis coehlo <luisldc@sapo.pt>\n"
+"Language-Team: Portuguese <http://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.6-dev\n"
 
-# 86%
-#: run_uh.py:220
+#: run_uh.py:219
 #, fuzzy
 msgid "Unknown Horizons has crashed."
 msgstr "A execução do Unknown Horizons foi interrompida com erro."
 
-#: run_uh.py:222
+#: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr ""
+msgstr "Nos sentimos muito e queremos corrigir este erro básico."
 
-#: run_uh.py:223
+#: run_uh.py:222
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "Para o fazer necessitamos da informação no ficheiro de log:"
 
-#: run_uh.py:225
+#: run_uh.py:224
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"Por favor entre em contato via IRC ou nosso forum, para os dois veja http://"
+"unknown-horizons.org ."
+
+#: run_uh.py:272
+msgid "Error: Unable to find required library \"PyYAML\"."
+msgstr "Erro: Não foi possível localizar a biblioteca requerida \"PyYAML\"."
 
 #: run_uh.py:273
-msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr ""
-
-#: run_uh.py:274
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr ""
+"PyYAML (uma biblioteca requerida) está faltando e precisa ser instalada."
 
-#: run_uh.py:275
+#: run_uh.py:274
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
+"O instalador para o Windows está disponível em http://pyyaml.org/wiki/PyYAML."
 
-#: run_uh.py:276
+#: run_uh.py:275
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Usuários de Linux devem corrigir isto usando o gerenciador de pacotes "
+"procurando pelo nome \"pyyaml\" ou \"python-yaml\"."
 
-#: run_uh.py:310
+#: run_uh.py:309
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Obrigado por utilizar o Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Retorne ao editor"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
@@ -70,7 +75,7 @@ msgstr "Mapa guardado"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr ""
+msgstr "Carregar mapa"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
@@ -88,19 +93,19 @@ msgstr "Ajuda"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "Sair do editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Selecione o tamanho do pincel:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Selecione o terreno:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(clique direito para parar)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -129,19 +134,17 @@ msgstr "Custos de manutenção:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "Edifícios relacionados"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
 msgstr "Habitantes"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr "Aumentar a velocidade de jogo (+)"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Diminuir a velocidade de jogo (-)"
@@ -198,10 +201,8 @@ msgstr "Introduza um nome novo:"
 msgid "Apply the new name"
 msgstr "Aplicar o jogo novo"
 
-#. noi18n_text
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
-#: content/gui/xml/mainmenu/help.xml:49
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
 msgstr "Conversa"
@@ -301,7 +302,7 @@ msgstr "Relatório da construção"
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr ""
+msgstr "Utilizaçao da capacidade"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
@@ -325,7 +326,6 @@ msgstr "Impostos pagos"
 msgid "Taxes:"
 msgstr "Impostos:"
 
-# 87%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
@@ -339,26 +339,26 @@ msgstr "Melhorar as permissões:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "Felicidade por casa"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
-msgstr ""
+msgstr "triste"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
 msgid "satisfied"
-msgstr ""
+msgstr "satisfeito"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:60
 msgid "happy"
-msgstr ""
+msgstr "feliz"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "Quantidade de casas com esta felicidade"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -366,11 +366,11 @@ msgstr "Residentes por casa"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr ""
+msgstr "Número de habitantes por casa"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "Casas com este número de habitantes"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -380,7 +380,6 @@ msgstr "Sumário"
 msgid "houses"
 msgstr "casas"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "residentes"
@@ -424,7 +423,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "Contém estes recursos:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -470,7 +468,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr ""
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -548,14 +545,13 @@ msgstr "Mostrar os recursos produzidos nesta povoação"
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
 msgid "Pause production"
-msgstr "Pausar a produção"
+msgstr "Parar a produção"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
 msgid "Start production"
 msgstr "Iniciar a produção"
 
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -594,7 +590,6 @@ msgstr "Apagar entrada"
 msgid "Move down"
 msgstr "Mover para baixo"
 
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy
 msgid "Select a resource:"
@@ -689,7 +684,6 @@ msgstr "Fechar"
 msgid "Player scores"
 msgstr "Pontuação"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -735,11 +729,10 @@ msgstr "Edifícios"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493 sql-database-files
+#: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
 msgstr "Povoadores"
 
@@ -767,7 +760,6 @@ msgstr ""
 msgid "Total"
 msgstr "Total"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -810,191 +802,6 @@ msgstr "Inactivo"
 msgid "Flee"
 msgstr "Fugir"
 
-#: content/gui/xml/mainmenu/credits.xml:15
-msgid "UH-Team"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:17
-msgid "Project Coordination"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:23
-msgid "Programming"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:45
-msgid "Game-Play Design"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:52
-msgid "Sound and Music Artists"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:60
-#, fuzzy
-msgid "Graphics Artists"
-msgstr "Gráficos"
-
-#: content/gui/xml/mainmenu/credits.xml:80
-#, fuzzy
-msgid "Patchers"
-msgstr "Matadouro"
-
-#: content/gui/xml/mainmenu/credits.xml:82
-msgid "2009"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:91
-msgid "2010"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:105
-msgid "2011"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:117
-msgid "2012"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:132
-msgid "Translators"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:134
-msgid "Hosting Weblate"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:139
-msgid "Bulgarian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:144
-msgid "Catalan"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:150
-msgid "Czech"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:160
-msgid "Danish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:165
-msgid "German"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:172
-#, fuzzy
-msgid "Spanish"
-msgstr "Companhias"
-
-#: content/gui/xml/mainmenu/credits.xml:184
-msgid "Estonian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:190
-msgid "Finnish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:195
-msgid "French"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:207
-msgid "Croatian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:212
-msgid "Hindi"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:217
-msgid "Hungarian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:223
-msgid "Italian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:231
-msgid "Japanese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:237
-msgid "Lithuanian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:246
-msgid "Norwegian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:253
-#, fuzzy
-msgid "Dutch"
-msgstr "Matadouro"
-
-#: content/gui/xml/mainmenu/credits.xml:264
-msgid "Polish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:275
-msgid "Portuguese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:283
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:291
-msgid "Romanian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:296
-msgid "Russian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:303
-msgid "Slovenian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:308
-msgid "Swedish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:314
-#, fuzzy
-msgid "Chinese"
-msgstr "videiras"
-
-#: content/gui/xml/mainmenu/credits.xml:325
-msgid "Packagers"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:327
-msgid "Debian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:332
-msgid "Fedora &amp; openSUSE"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:338
-msgid "OS X"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:348
-msgid "Special Thanks"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:350
-msgid "Thanks, all of you are awesome!"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:373
-msgid "Portfolio Sites"
-msgstr ""
-
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
@@ -1036,190 +843,7 @@ msgstr ""
 msgid "Start editor"
 msgstr ""
 
-#: content/gui/xml/mainmenu/help.xml:6
-msgid "Key bindings"
-msgstr "Definições das teclas"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
-msgid "Scroll left"
-msgstr "Ir para a esquerda"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:10
-#: content/gui/xml/mainmenu/hotkeys.xml:11
-msgid "Scroll right"
-msgstr "Ir para a direita"
-
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:11
-#: content/gui/xml/mainmenu/hotkeys.xml:12
-msgid "Scroll up"
-msgstr "Ir para cima"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:12
-#: content/gui/xml/mainmenu/hotkeys.xml:13
-msgid "Scroll down"
-msgstr "Ir para baixo"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:15
-#: content/gui/xml/mainmenu/hotkeys.xml:16
-msgid "Increase game speed"
-msgstr "Aumentar a velocidade de jogo"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:16
-#: content/gui/xml/mainmenu/hotkeys.xml:17
-msgid "Decrease game speed"
-msgstr "Diminuir a velocidade de jogo"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:18
-#: content/gui/xml/mainmenu/hotkeys.xml:15
-msgid "Rotate building or map counterclockwise"
-msgstr "Rodar construção ou mapa no sentido inverso dos ponteiros de relógio"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:20
-#: content/gui/xml/mainmenu/hotkeys.xml:14
-msgid "Rotate building or map clockwise"
-msgstr "Rodar construção ou mapa no sentido dos ponteiros de relógio"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:23
-#: content/gui/xml/mainmenu/hotkeys.xml:19
-msgid "Show build menu"
-msgstr "Mostar o menu de construção"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:24
-#: content/gui/xml/mainmenu/hotkeys.xml:26
-msgid "Toggle Captain's log"
-msgstr "Ligar/desligar Diário de bordo"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:25
-#: content/gui/xml/mainmenu/hotkeys.xml:18
-msgid "Pause game"
-msgstr "Pausa"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:28
-#: content/gui/xml/mainmenu/hotkeys.xml:35
-msgid "Display help"
-msgstr "Mostrar a ajuda"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:29
-#: content/gui/xml/mainmenu/hotkeys.xml:28
-msgid "Quicksave"
-msgstr "Gravar jogo imediatamente"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:30
-#: content/gui/xml/mainmenu/hotkeys.xml:29
-msgid "Quickload"
-msgstr "Carregar último jogo gravado"
-
-#: content/gui/xml/mainmenu/help.xml:31
-msgid "Display FPS counter"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:40
-#: content/gui/xml/mainmenu/hotkeys.xml:30
-msgid "Toggle translucency of ambient buildings"
-msgstr "Ligar/desligar a transparência dos edifícios"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:41
-#: content/gui/xml/mainmenu/hotkeys.xml:21
-msgid "Enable road building mode"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:42
-#: content/gui/xml/mainmenu/hotkeys.xml:20
-msgid "Enable destruct mode"
-msgstr "Ligar modo de destruição"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:44
-#: content/gui/xml/mainmenu/hotkeys.xml:22
-msgid "Enable pipette mode (clone buildings)"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:45
-#: content/gui/xml/mainmenu/hotkeys.xml:32
-msgid "Toggle health bars"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:48
-#: content/gui/xml/mainmenu/hotkeys.xml:36
-msgid "Screenshot"
-msgstr "Imagem de ecrã"
-
-#: content/gui/xml/mainmenu/help.xml:51
-msgid "Hold to place multiple buildings"
-msgstr "Manter pressionado para colocar vários edificios"
-
-#: content/gui/xml/mainmenu/help.xml:52
-msgid "Close dialogs"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:55
-#: content/gui/xml/mainmenu/hotkeys.xml:23
-msgid "Show player scores"
-msgstr "Mostrar pontuação"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:56
-#: content/gui/xml/mainmenu/hotkeys.xml:25
-msgid "Show ship list"
-msgstr "Mostrar lista de navios"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:57
-#: content/gui/xml/mainmenu/hotkeys.xml:24
-msgid "Show settlement list"
-msgstr "Mostrar lista de povoações"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:58
-#: content/gui/xml/mainmenu/hotkeys.xml:31
-msgid "Highlight tile ownership"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:62
-#: content/gui/xml/mainmenu/hotkeys.xml:34
-msgid "Remove selected units / buildings"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:63
-#: content/gui/xml/mainmenu/hotkeys.xml:33
-msgid "Focus camera on selection"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:64
-#: content/gui/xml/mainmenu/hotkeys.xml:38
-msgid "Toggle grid on/off"
-msgstr "Ligar/desligar grelha"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:65
-#: content/gui/xml/mainmenu/hotkeys.xml:39
-msgid "Show coordinate values (Debug)"
-msgstr "Mostrar valores das coordenadas (Depuração)"
-
-#: content/gui/xml/mainmenu/help.xml:70
 msgid "Return"
 msgstr "Voltar"
 
@@ -1228,11 +852,122 @@ msgstr "Voltar"
 msgid "Actions"
 msgstr "Opções de IA"
 
-#. noi18n_text
+#: content/gui/xml/mainmenu/hotkeys.xml:10
+msgid "Scroll left"
+msgstr "Ir para a esquerda"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:11
+msgid "Scroll right"
+msgstr "Ir para a direita"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:12
+msgid "Scroll up"
+msgstr "Ir para cima"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:13
+msgid "Scroll down"
+msgstr "Ir para baixo"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:14
+msgid "Rotate building or map clockwise"
+msgstr "Rodar construção ou mapa no sentido dos ponteiros de relógio"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:15
+msgid "Rotate building or map counterclockwise"
+msgstr "Rodar construção ou mapa no sentido inverso dos ponteiros de relógio"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:16
+msgid "Increase game speed"
+msgstr "Aumentar a velocidade de jogo"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:17
+msgid "Decrease game speed"
+msgstr "Diminuir a velocidade de jogo"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:18
+msgid "Pause game"
+msgstr "Pausa"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:19
+msgid "Show build menu"
+msgstr "Mostar o menu de construção"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:20
+msgid "Enable destruct mode"
+msgstr "Ligar modo de destruição"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:21
+msgid "Enable road building mode"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:22
+msgid "Enable pipette mode (clone buildings)"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:23
+msgid "Show player scores"
+msgstr "Mostrar pontuação"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:24
+msgid "Show settlement list"
+msgstr "Mostrar lista de povoações"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:25
+msgid "Show ship list"
+msgstr "Mostrar lista de navios"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:26
+msgid "Toggle Captain's log"
+msgstr "Ligar/desligar Diário de bordo"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:28
+msgid "Quicksave"
+msgstr "Gravar jogo imediatamente"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:29
+msgid "Quickload"
+msgstr "Carregar último jogo gravado"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:30
+msgid "Toggle translucency of ambient buildings"
+msgstr "Ligar/desligar a transparência dos edifícios"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:31
+msgid "Highlight tile ownership"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:32
+msgid "Toggle health bars"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:33
+msgid "Focus camera on selection"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:34
+msgid "Remove selected units / buildings"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:35
+msgid "Display help"
+msgstr "Mostrar a ajuda"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:36
+msgid "Screenshot"
+msgstr "Imagem de ecrã"
+
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 #, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Ligar/desligar grelha"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:38
+msgid "Toggle grid on/off"
+msgstr "Ligar/desligar grelha"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:39
+msgid "Show coordinate values (Debug)"
+msgstr "Mostrar valores das coordenadas (Depuração)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
@@ -1271,7 +1006,8 @@ msgid "Cancel game"
 msgstr "Cancelar o jogo"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-msgid "Loading ..."
+#, fuzzy
+msgid "Loading…"
 msgstr "A carregar ..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
@@ -1397,7 +1133,6 @@ msgstr "Novo jogo - Jogo em rede"
 msgid "Create a new game"
 msgstr "Criar um jogo novo"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Carregar jogo:"
@@ -1525,7 +1260,6 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "Repor as definições por omissão"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 #, fuzzy
 msgid "Mouse sensitivity:"
@@ -1634,7 +1368,6 @@ msgstr "Repor definições por omissão"
 msgid "Discard current changes"
 msgstr ""
 
-# 83%
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
 msgstr "Aplicar"
@@ -1684,8 +1417,6 @@ msgstr "Jogo livre"
 msgid "Start game:"
 msgstr "Iniciar o jogo:"
 
-# 90%
-# 100%
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
 msgstr "Começar o jogo"
@@ -1699,6 +1430,7 @@ msgstr "Selecione um mapa para jogar:"
 msgid "Map settings:"
 msgstr "Definições do mapa:"
 
+#. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr ""
@@ -1927,11 +1659,11 @@ msgstr "Tem a certeza que deseja sair de Unknown Horizons?"
 msgid "Quit Game"
 msgstr "Sair do Jogo"
 
-#: horizons/gui/ingamegui.py:214
+#: horizons/gui/ingamegui.py:218
 msgid "No diplomacy possible"
 msgstr "Diplomacia inviável"
 
-#: horizons/gui/ingamegui.py:215
+#: horizons/gui/ingamegui.py:219
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Não existem outros jogadores para exercer diplomacia."
 
@@ -1939,11 +1671,6 @@ msgstr "Não existem outros jogadores para exercer diplomacia."
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-format
 msgid "{size}x{size} tiles"
-msgstr ""
-
-#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/modules/help.py:54
-msgid "[{key}] = {text}"
 msgstr ""
 
 #: horizons/gui/modules/hotkeys_settings.py:96
@@ -1965,106 +1692,106 @@ msgstr ""
 msgid "Confirmation for overwriting"
 msgstr "Confirmação para substituir"
 
-#: horizons/gui/modules/loadingscreen.py:36
+#: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:58
+#: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:60
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr ""
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:64
+#: horizons/gui/modules/loadingscreen.py:66
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:66
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can pause the game with 'P'."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can drag roads by holding the left mouse button."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:70
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:72
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Build storage tents to increase your storage capacity."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Make sure every house is in range of a marketplace."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:75
 msgid "Press 'T' to make trees transparent."
 msgstr ""
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:100
-msgid "Starting engine..."
-msgstr ""
-
-#: horizons/gui/modules/loadingscreen.py:101
-msgid "Catching fish..."
-msgstr ""
-
 #: horizons/gui/modules/loadingscreen.py:102
-msgid "Drawing user interface..."
+msgid "Starting engine…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:103
-msgid "Activating timer..."
+msgid "Catching fish…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:104
-msgid "Chomping game data..."
+msgid "Drawing user interface…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:105
-msgid "Shaping islands..."
+msgid "Activating timer…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:106
-msgid "Preparing blueprints..."
+msgid "Chomping game data…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:107
-msgid "Filling world with water..."
+msgid "Shaping islands…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:108
-msgid "Raising animals..."
+msgid "Preparing blueprints…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:109
-msgid "Convincing AI..."
+msgid "Filling world with water…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:110
-msgid "Burying treasures..."
+msgid "Raising animals…"
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:111
+msgid "Convincing AI…"
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:112
+msgid "Burying treasures…"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:118
@@ -2104,44 +1831,43 @@ msgstr ""
 "Por favor verifique a sua conexão à internet. Se esta estiver óptima, "
 "significa que o nosso servidor principal está temporariamente em baixo."
 
-# 97%
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
 msgstr "Ocorreu uma falha na rede:"
 
-#: horizons/gui/modules/multiplayermenu.py:174
+#: horizons/gui/modules/multiplayermenu.py:176
 msgid "Version differs!"
 msgstr "Versão diferente!"
 
-#: horizons/gui/modules/multiplayermenu.py:204
-#: horizons/gui/modules/multiplayermenu.py:441
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Mapa: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:205
-#: horizons/gui/modules/multiplayermenu.py:443
+#: horizons/gui/modules/multiplayermenu.py:207
+#: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Name: {game_name}"
 msgstr "Nome: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:445
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:447
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:447
+#: horizons/gui/modules/multiplayermenu.py:210
+#: horizons/gui/modules/multiplayermenu.py:449
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Jogadores: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:228
+#: horizons/gui/modules/multiplayermenu.py:230
 msgid "Wrong version"
 msgstr "Versão errada"
 
-#: horizons/gui/modules/multiplayermenu.py:230
+#: horizons/gui/modules/multiplayermenu.py:232
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2154,86 +1880,86 @@ msgstr ""
 "através da actualização da versão mais recente. Versão deste jogo: "
 "{game_version} A tua versão: {own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:268
+#: horizons/gui/modules/multiplayermenu.py:270
 msgid "Password of the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:269
+#: horizons/gui/modules/multiplayermenu.py:271
 msgid "Enter password:"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:349
-#: horizons/gui/modules/singleplayermenu.py:407
+#: horizons/gui/modules/multiplayermenu.py:351
+#: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Número de jogadores recomendado: {number}"
 
-#: horizons/gui/modules/multiplayermenu.py:465
-#: horizons/gui/modules/multiplayermenu.py:473
+#: horizons/gui/modules/multiplayermenu.py:467
+#: horizons/gui/modules/multiplayermenu.py:475
 msgid "Click here to change your name and/or color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:492
+#: horizons/gui/modules/multiplayermenu.py:494
 #, python-format
 msgid "Kick {player}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:560
+#: horizons/gui/modules/multiplayermenu.py:562
 #, python-format
 msgid "{player} has joined the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:564
+#: horizons/gui/modules/multiplayermenu.py:566
 #, python-format
 msgid "{player} has left the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:570
+#: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:574
 msgid "You are not ready anymore"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:576
+#: horizons/gui/modules/multiplayermenu.py:578
 #, python-format
 msgid "{player} is now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:581
 #, python-format
 msgid "{player} not ready anymore"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:584
+#: horizons/gui/modules/multiplayermenu.py:586
 #, python-format
 msgid "You are now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:587
+#: horizons/gui/modules/multiplayermenu.py:589
 #, python-format
 msgid "{player} is now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:591
+#: horizons/gui/modules/multiplayermenu.py:593
 msgid "You changed your color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:594
+#: horizons/gui/modules/multiplayermenu.py:596
 #, python-format
 msgid "{player} changed their color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "Kicked"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "You have been kicked from the game by creator"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:602
+#: horizons/gui/modules/multiplayermenu.py:604
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr ""
@@ -2276,7 +2002,6 @@ msgstr ""
 msgid "Overwrite it?"
 msgstr "Substituir?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Data de gravação desconhecida"
@@ -2317,7 +2042,6 @@ msgstr "Nenhum ficheiro seleccionado"
 msgid "You need to select a savegame to delete."
 msgstr "É necessário seleccionar um jogo guardado para apagar."
 
-# 84%
 #: horizons/gui/modules/select_savegame.py:261
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
@@ -2335,71 +2059,69 @@ msgstr "Erro!"
 msgid "Failed to delete savefile!"
 msgstr "Não foi possível apagar o ficheiro de jogo guardado!"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "Invalid player name"
 msgstr "Nome de jogador inválido"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Introduziu um nome de jogador inválido."
 
-# 76%
-#: horizons/gui/modules/singleplayermenu.py:149
+#: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Quantidade de recursos:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Map size:"
 msgstr "Dimensão do mapa:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Water:"
 msgstr "Água:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Max island size:"
 msgstr "Dimensão máxima das ilhas:"
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Preferred island size:"
 msgstr "Dimensão preferida das ilhas:"
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:230
 msgid "Island size deviation:"
 msgstr "Desvio na dimensão das ilhas:"
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:343
 msgid "Click to generate a different random map"
 msgstr "Pressione para gerar um mapa qualquer diferente"
 
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "Invalid scenario file"
 msgstr "Ficheiro de cenário inválido"
 
-#: horizons/gui/modules/singleplayermenu.py:501
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "The selected file is not a valid scenario file."
 msgstr "O ficheiro seleccionado não é um ficheiro de cenário válido."
 
-#: horizons/gui/modules/singleplayermenu.py:502
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Error message:"
 msgstr "Mensagem de erro:"
 
-# 97%
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Por favor, informe o autor desta situação."
 
-#: horizons/gui/modules/singleplayermenu.py:545
+#: horizons/gui/modules/singleplayermenu.py:570
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Dificuldade: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:549
+#: horizons/gui/modules/singleplayermenu.py:574
 #, python-format
 msgid "Author: {author}"
 msgstr "Autor: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:553
+#: horizons/gui/modules/singleplayermenu.py:578
 #, python-format
 msgid "Description: {desc}"
 msgstr "Descrição: {desc}"
@@ -2423,31 +2145,30 @@ msgstr "Relatório da construção de barcos"
 msgid "{ship} (place in queue: {place})"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:208
+#: horizons/gui/tabs/boatbuildertabs.py:205
 msgid "Build this ship!"
 msgstr "Construir este navio!"
 
-#: horizons/gui/tabs/boatbuildertabs.py:250
+#: horizons/gui/tabs/boatbuildertabs.py:247
 msgid "Fisher boats"
 msgstr "Barcos de pesca"
 
-#: horizons/gui/tabs/boatbuildertabs.py:262
+#: horizons/gui/tabs/boatbuildertabs.py:259
 msgid "Trade boats"
 msgstr "Barcos de comércio"
 
-#: horizons/gui/tabs/boatbuildertabs.py:273
+#: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War boats"
 msgstr "Barcos de guerra"
 
-#: horizons/gui/tabs/boatbuildertabs.py:284
+#: horizons/gui/tabs/boatbuildertabs.py:281
 msgid "War ships"
 msgstr "Navios de guerra"
 
-#: horizons/gui/tabs/boatbuildertabs.py:302
+#: horizons/gui/tabs/boatbuildertabs.py:299
 msgid "Confirm order"
 msgstr "Confirme a ordem"
 
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 #, fuzzy
@@ -2511,15 +2232,22 @@ msgstr "Conta"
 msgid "Main square overview"
 msgstr "Relatório da praça principal"
 
-#: horizons/gui/tabs/mainsquaretabs.py:167
+#: horizons/gui/tabs/mainsquaretabs.py:127
+msgid "Upgrade not possible:"
+msgstr "Não foi possível melhorar:"
+
+#: horizons/gui/tabs/mainsquaretabs.py:130
+msgid "This is the highest playable tier for now!"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
 msgstr "Não permitir melhorias"
 
-#: horizons/gui/tabs/mainsquaretabs.py:170
+#: horizons/gui/tabs/mainsquaretabs.py:178
 msgid "Allow upgrades"
 msgstr "Permitir melhorias"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 msgid "Unit overview"
 msgstr "Relatório de unidades"
@@ -2636,7 +2364,6 @@ msgstr "Nenhum"
 msgid "N/A"
 msgstr "Não aplicável"
 
-# 89%
 #: horizons/gui/widgets/productionoverview.py:61
 #, python-format
 msgid "Production overview of {settlement}"
@@ -2722,7 +2449,6 @@ msgstr ""
 msgid "Error: {error_message}"
 msgstr ""
 
-# 88%
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:56
 #, fuzzy
@@ -2851,7 +2577,6 @@ msgstr "Produz folhas de cacau usadas para doçaria. Requer uma quinta."
 msgid "Corn Field"
 msgstr "Plantação de milho"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 msgid "Yields corn. Needs a farm."
@@ -3122,7 +2847,6 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Armazém"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 #, fuzzy
@@ -3172,7 +2896,6 @@ msgstr "Tenda"
 msgid "Hut"
 msgstr ""
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 #, fuzzy
@@ -3301,7 +3024,6 @@ msgstr "Produz vinho a partir de uvas."
 msgid "Warehouse"
 msgstr "casas"
 
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 #, fuzzy
@@ -3377,10 +3099,9 @@ msgstr "Residentes e infra-estruturas"
 msgid "Services"
 msgstr "Serviços"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471 sql-database-files
+#: horizons/i18n/objecttranslations.py:471
 #, fuzzy
 msgid "Citizens"
 msgstr "cidadão"
@@ -3405,10 +3126,9 @@ msgstr ""
 msgid "Military Service"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483 sql-database-files
+#: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "Pioneiros"
 
@@ -3454,26 +3174,25 @@ msgstr ""
 msgid "Military"
 msgstr "Militar"
 
-#: horizons/main.py:344
+#: horizons/main.py:349
 msgid "Failed to start/load the game"
 msgstr "Não foi possível iniciar/carregar o jogo"
 
-# 95%
-#: horizons/main.py:345
+#: horizons/main.py:350
 #, fuzzy
 msgid "The game you selected could not be started."
 msgstr "O jogo seleccionado não pôde ser iniciado."
 
-#: horizons/main.py:346
+#: horizons/main.py:351
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 "O ficheiro pode estar corrompido ou ter sido gravado com uma versão anterior."
 
-#: horizons/main.py:465
+#: horizons/main.py:470
 msgid "No quicksaves found"
 msgstr "Não foram encontrados jogos gravados recentemente"
 
-#: horizons/main.py:466
+#: horizons/main.py:471
 msgid "You need to quicksave before you can quickload."
 msgstr "É necessário um jogo gravado recentemente antes de poder carregar."
 
@@ -3530,25 +3249,24 @@ msgstr "Vitória!"
 msgid "You have completed this scenario."
 msgstr "Completou este cenário."
 
-# 75%
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
 msgstr "Deseja continuar a jogar?"
 
-#: horizons/scenario/scenarioeventhandler.py:158
+#: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
 msgstr "desconhecido"
 
 #. usually invalid filename
-#: horizons/session.py:409
+#: horizons/session.py:404
 msgid "Failed to create savegame file"
 msgstr "Não foi possível criar o ficheiro para guardar o jogo"
 
-#: horizons/session.py:410
+#: horizons/session.py:405
 msgid "There has been an error while creating your savegame file."
 msgstr "Ocorreu um erro ao criar o ficheiro para gravar o jogo."
 
-#: horizons/session.py:411
+#: horizons/session.py:406
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
@@ -3556,11 +3274,11 @@ msgstr ""
 "A causa mais comum é a utilização de caracteres especiais, não suportados, "
 "no nome do ficheiro."
 
-#: horizons/session.py:417
+#: horizons/session.py:412
 msgid "Access is denied"
 msgstr "Acesso negado"
 
-#: horizons/session.py:418
+#: horizons/session.py:413
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 
@@ -3568,7 +3286,6 @@ msgstr ""
 msgid "Your game has not been saved."
 msgstr ""
 
-# 92%
 #: horizons/util/checkupdates.py:81
 #, fuzzy
 msgid "New version of Unknown Horizons"
@@ -3589,30 +3306,28 @@ msgstr "Pressione para transferir"
 msgid "A page has been opened in your browser."
 msgstr "Foi aberta uma página no seu navegador de internet."
 
-#. You usually do not need to change anything here when translating
-#: horizons/util/uhdbaccessor.py:104
-#, python-format
-msgid "{building}: {description}"
-msgstr ""
-
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:275
+#: horizons/util/uhdbaccessor.py:261
 #, python-format
 msgid "{slotnum} slots, {limit}t"
 msgstr ""
 
-#: horizons/util/uhdbaccessor.py:284
+#: horizons/util/uhdbaccessor.py:270
 #, python-format
 msgid "Health: {health}"
 msgstr ""
 
-# 80%
+#. You usually do not need to change anything here when translating
+#: horizons/world/building/__init__.py:125
+#, python-format
+msgid "{building}: {description}"
+msgstr ""
+
 #: horizons/world/building/buildable.py:40
 #, fuzzy
 msgid "This building must be built on an island."
 msgstr "Este edifício deve ser construído no litoral."
 
-# 95%
 #: horizons/world/building/buildable.py:41
 #, fuzzy
 msgid "This ground is not suitable for this building."
@@ -3630,7 +3345,6 @@ msgstr ""
 msgid "This area is already occupied by another building."
 msgstr ""
 
-# 75%
 #: horizons/world/building/buildable.py:45
 #, fuzzy
 msgid "This area is already occupied by a unit."
@@ -3640,7 +3354,6 @@ msgstr "Esta área já está ocupada."
 msgid "This building must be built on the coastline."
 msgstr "Este edifício deve ser construído no litoral."
 
-# 80%
 #: horizons/world/building/buildable.py:47
 #, fuzzy
 msgid "This building has to be placed at the ocean."
@@ -3679,8 +3392,9 @@ msgid "This building has a very low productivity."
 msgstr ""
 
 #: horizons/world/status.py:110
-msgid "This building is decomissioned."
-msgstr ""
+#, fuzzy
+msgid "This building is decommissioned."
+msgstr "Este edifício deve ser construído no litoral."
 
 #: horizons/world/status.py:116
 msgid "The inhabitants of this building have the plague."
@@ -3731,70 +3445,129 @@ msgid "Attacking {owner}"
 msgstr "Atacante {owner}"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "A new settlement was founded by {player}."
-msgstr "Uma nova povoação foi fundada por {player}."
+msgid "{player1} and {player2} have allied their forces."
+msgstr "{player1} e o {player2} aliaram forças."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new ship by the name of {name} has been created."
+msgid "Your building has caught fire!"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "A new world has been created."
-msgstr "Um novo mundo foi criado."
+#. This is a database entry: the name of a resource.
+msgid "medical herbs"
+msgstr "ervas medicinais"
 
-# 81%
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 #, fuzzy
 msgid "Aristocrats"
 msgstr "aristocrata ou fidalgo"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Cannot go here."
-msgstr "Não é possível chegar ao destino."
+#. This is a database entry: the name of a resource.
+msgid "happiness"
+msgstr "felicidade"
 
-# 77%
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Some of your inhabitants just moved out."
+msgstr "Alguns dos seus habitantes mudaram-se."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "açúcar"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco leaves"
+msgstr "folhas de tabaco"
+
+#. This is a database entry: the name of a resource.
+msgid "stone tops"
+msgstr "tampos de pedra"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "lã"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "sementes de cacau"
+
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "comida"
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "farinha"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs for slaughter"
+msgstr "porcos para abate"
+
+#. This is a database entry: the name of a resource.
+msgid "trees"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "clay deposit"
+msgstr "depósito de barro"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
+msgstr "{player1} e o {player2} romperam com a guerra e agora são aliados."
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "cacau"
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "batatas"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "minério de ferro"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "barro"
+
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 #, fuzzy
 msgid "Merchants"
 msgstr "mercador"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Uma das suas plantações requer uma quinta para a colheita."
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "bebida alcoólica"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Sailors"
-msgstr "Marinheiros"
+#. This is a database entry: the name of a resource.
+msgid "iron ingots"
+msgstr "lingotes de ferro"
 
-# 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr "Imagem de ecrã guardada em ${file}."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "Alguns habitantes não conseguem chegar à praça principal."
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "gado bovino"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants just moved out."
-msgstr "Alguns dos seus habitantes mudaram-se."
+msgid "You can also drag roads."
+msgstr "Também pode arrastar estradas."
+
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "lã de ovelha"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid ""
+"You have reached the current maximum tier. Your inhabitants will not upgrade "
+"further."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
@@ -3803,386 +3576,180 @@ msgstr ""
 "menu \"configurar rota\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You can also drag roads."
-msgstr "Também pode arrastar estradas."
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr "{player1} e o {player2} terminaram a sua aliança."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
-"Não podes anular o depósito de mercadorias, já que os teus contratos estão "
-"dependentes dele."
+msgid "Cannot go here."
+msgstr "Não é possível chegar ao destino."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar cane"
+msgstr "cana de açúcar"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "milho"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "uvas"
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "favos de mel"
+
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "fé"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "tábuas"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "Alguns habitantes não conseguem chegar à praça principal."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} e {player2} lutarão até à morte."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Sailors"
+msgstr "Marinheiros"
+
+#. This is a database entry: the name of a resource.
+msgid "grain"
+msgstr "cereais"
+
+#. This is a database entry: the name of a resource.
+msgid "spices"
+msgstr "especiarias"
+
+#. This is a database entry: the name of a resource.
+msgid "dagger"
+msgstr "punhal"
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "tijolos"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "comunidade"
+
+#. This is a database entry: the name of a resource.
+msgid "spice plants"
+msgstr "plantas de especiarias"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle for slaughter"
+msgstr "gado para abate"
+
+# We have nothing for "tabaccos"...
+#. This is a database entry: the name of a resource.
+msgid "tobaccos"
+msgstr "produtos de tabaco"
+
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "ferramentas"
+
+#. This is a database entry: the name of a resource.
+msgid "deer meat"
+msgstr "carne de veado"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "doçaria"
+
+#. This is a database entry: the name of a resource.
+msgid "coins"
+msgstr "moedas"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You won!"
+msgstr "Ganhaste!"
+
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "peixe"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "carvão vegetal"
+
+#. This is a database entry: the name of a resource.
+msgid "stone deposit"
+msgstr "depósito de ferro"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You failed the scenario."
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid ""
-"You have reached the current maximum tier. Your inhabitants will not upgrade "
-"further."
-msgstr ""
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "fogo"
 
-# 97%
+#. This is a database entry: the name of a resource.
+msgid "acorns"
+msgstr "bolotas"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco plants"
+msgstr "planta de tabaco"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr "Precisas de mais {resource} para construir este edifício."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You won!"
-msgstr "Ganhaste!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your building has caught fire!"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "Your crew refuses to leave this map."
 msgstr "A tua tripulação recusa-se a abandonar este mapa."
 
-# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been autosaved."
-msgstr "O seu jogo foi gravado/guardado automaticamente."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been quicksaved."
-msgstr "O teu jogo foi guardado."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been saved."
-msgstr "O teu jogo foi guardado como."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "Os teus habitantes atingiram o nível {level}."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your mine has run out of resources."
-msgstr "A tua mina ficou sem recursos."
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1} e {player2} resolveram as suas divergências."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "acorns"
-msgstr "bolotas"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "alvearies"
-msgstr "aviários"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "boards"
-msgstr "tábuas"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "bricks"
-msgstr "tijolos"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "candles"
-msgstr "velas"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cannon"
-msgstr "canhão"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle"
-msgstr "gado bovino"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle for slaughter"
-msgstr "gado para abate"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "charcoal"
-msgstr "carvão vegetal"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay"
-msgstr "barro"
-
-# 83%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay deposit"
-msgstr "depósito de barro"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa"
-msgstr "cacau"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa beans"
-msgstr "sementes de cacau"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "coins"
-msgstr "moedas"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "community"
-msgstr "comunidade"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "condiments"
-msgstr "condimentos"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "confectionery"
-msgstr "doçaria"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "corn"
-msgstr "milho"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "dagger"
-msgstr "punhal"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer food A"
-msgstr "comida de veado A"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer meat"
-msgstr "carne de veado"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "education"
-msgstr "educação"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "faith"
-msgstr "fé"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fire"
-msgstr "fogo"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fish"
-msgstr "peixe"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "flour"
-msgstr "farinha"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "food"
-msgstr "comida"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "get-together"
-msgstr "reunião"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grain"
-msgstr "cereais"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grapes"
-msgstr "uvas"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "grass"
 msgstr "relva"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "happiness"
-msgstr "felicidade"
+msgid "alvearies"
+msgstr "aviários"
 
-# Herbs? As in grass or cooking herbs? Needs context.
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "herbs"
-msgstr "especiarias"
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been autosaved."
+msgstr "O seu jogo foi gravado/guardado automaticamente."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "Uma das suas plantações requer uma quinta para a colheita."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your mine has run out of resources."
+msgstr "A tua mina ficou sem recursos."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr "Os teus habitantes atingiram o nível {level}."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "honeycombs"
-msgstr "favos de mel"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "iron deposit"
 msgstr "depósito de ferro"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ingots"
-msgstr "lingotes de ferro"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ore"
-msgstr "minério de ferro"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "lamb wool"
-msgstr "lã de ovelha"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "liquor"
-msgstr "bebida alcoólica"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "medical herbs"
-msgstr "ervas medicinais"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs"
-msgstr "porcos"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs for slaughter"
-msgstr "porcos para abate"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "potatoes"
-msgstr "batatas"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "salt"
-msgstr "sal"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spice plants"
-msgstr "plantas de especiarias"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spices"
-msgstr "especiarias"
-
-# 76%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone deposit"
-msgstr "depósito de ferro"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone tops"
-msgstr "tampos de pedra"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar"
-msgstr "açúcar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar cane"
-msgstr "cana de açúcar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "textile"
-msgstr "têxtil"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco leaves"
-msgstr "folhas de tabaco"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco plants"
-msgstr "planta de tabaco"
-
-# We have nothing for "tabaccos"...
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobaccos"
-msgstr "produtos de tabaco"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tools"
-msgstr "ferramentas"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "trees"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "vines"
-msgstr "videiras"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "wool"
-msgstr "lã"
+msgid "education"
+msgstr "educação"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} e o {player2} aliaram forças."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} e o {player2} romperam com a guerra e agora são aliados."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
@@ -4190,29 +3757,105 @@ msgid ""
 msgstr ""
 "{player1} e o {player2} romperam tréguas e agora estão em estado de guerra."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} e {player2} resolveram as suas divergências."
+#. This is a database entry: the name of a resource.
+msgid "textile"
+msgstr "têxtil"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} e o {player2} terminaram a sua aliança."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} e {player2} lutarão até à morte."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#. This is a database entry: the name of a resource.
+msgid "cannon"
+msgstr "canhão"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr "reunião"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "A new world has been created."
+msgstr "Um novo mundo foi criado."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been quicksaved."
+msgstr "O teu jogo foi guardado."
+
+#. This is a database entry: the name of a resource.
+msgid "deer food A"
+msgstr "comida de veado A"
+
+# Herbs? As in grass or cooking herbs? Needs context.
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "especiarias"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "porcos"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr ""
+"Não podes anular o depósito de mercadorias, já que os teus contratos estão "
+"dependentes dele."
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "condimentos"
+
+#. This is a database entry: the name of a resource.
+msgid "candles"
+msgstr "velas"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr "Uma nova povoação foi fundada por {player}."
+
+#. This is a database entry: the name of a resource.
+msgid "vines"
+msgstr "videiras"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been saved."
+msgstr "O teu jogo foi guardado como."
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "sal"
+
+#~ msgid "Key bindings"
+#~ msgstr "Definições das teclas"
+
+#~ msgid "Hold to place multiple buildings"
+#~ msgstr "Manter pressionado para colocar vários edificios"
+
+#, fuzzy
+#~ msgid "Graphics Artists"
+#~ msgstr "Gráficos"
+
+#, fuzzy
+#~ msgid "Patchers"
+#~ msgstr "Matadouro"
+
+#, fuzzy
+#~ msgid "Spanish"
+#~ msgstr "Companhias"
+
+#, fuzzy
+#~ msgid "Dutch"
+#~ msgstr "Matadouro"
+
+#, fuzzy
+#~ msgid "Chinese"
+#~ msgstr "videiras"
 
 #, fuzzy
 #~ msgid "Unknown Horizons"
@@ -4254,7 +3897,6 @@ msgstr "{player}: {message}"
 #~ msgid "Collector utilisation"
 #~ msgstr "Transportadores utilizados"
 
-# 82%
 #~ msgid "A new ship has been created."
 #~ msgstr "Foi criado um novo navio."
 
@@ -4267,7 +3909,6 @@ msgstr "{player}: {message}"
 #~ msgid "Select a savegame"
 #~ msgstr "Escolha um jogo gravado"
 
-# 83%
 #~ msgid "Error:"
 #~ msgstr "Erro:"
 
@@ -4313,51 +3954,29 @@ msgstr "{player}: {message}"
 #~ msgid "Build fields"
 #~ msgstr "Construir plantações"
 
-# 88%
-# 81%
 #~ msgid "1 resident"
 #~ msgstr "1 residente"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 residentes"
 
-# 88%
-# 81%
 #~ msgid "3 residents"
 #~ msgstr "3 residentes"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 residentes"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 residentes"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "6 residents"
 #~ msgstr "6 residentes"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "7 residents"
 #~ msgstr "7 residentes"
 
-# 88%
-# 81%
-# 90%
 #~ msgid "8 residents"
 #~ msgstr "8 residentes"
-
-#~ msgid "Upgrade not possible:"
-#~ msgstr "Não foi possível melhorar:"
 
 #~ msgid "This is the current maximum increment!"
 #~ msgstr "Este é o nível máximo possível!"
@@ -4419,7 +4038,6 @@ msgstr "{player}: {message}"
 #~ msgstr ""
 #~ "O ficheiro de progresso de jogo está ser utilizado por outro programa."
 
-# 83%
 #, fuzzy
 #~ msgid "We are very sorry for this and want to fix underlying error."
 #~ msgstr "Lamentamos o incómodo e queremos resolver este erro."
@@ -4447,7 +4065,6 @@ msgstr "{player}: {message}"
 #~ msgid "FIFE was not found."
 #~ msgstr "O motor FIFE não foi encontrado."
 
-# 80%
 #~ msgid "Configured language {lang} could not be loaded"
 #~ msgstr "A língua configurada, {lang}, não pode ser carregada"
 
@@ -4475,13 +4092,9 @@ msgstr "{player}: {message}"
 #~ msgid "The game you selected couldn't be started."
 #~ msgstr "O jogo seleccionado não pôde ser iniciado."
 
-# 81%
-# 78%
 #~ msgid "Error: Cannot find campaign '{name}'."
 #~ msgstr "Não foi possível encontrar o campanha \"{name}\"."
 
-# 81%
-# 78%
 #~ msgid "Error: Cannot find scenario '{name}'."
 #~ msgstr "Não foi possível encontrar o cenário \"{name}\"."
 
@@ -4576,7 +4189,6 @@ msgstr "{player}: {message}"
 #~ msgid "Sell resources"
 #~ msgstr "Vender recursos"
 
-# 77%
 #~ msgid "Tent Ruin"
 #~ msgstr "Ruínas"
 
@@ -4650,7 +4262,6 @@ msgstr "{player}: {message}"
 #~ msgid "Branch office overview"
 #~ msgstr "Relatório da feitoria"
 
-# 76%
 #~ msgid "Sailor buildings"
 #~ msgstr "Edificios de marinheiros"
 
@@ -4660,7 +4271,6 @@ msgstr "{player}: {message}"
 #~ msgid "Settler buildings"
 #~ msgstr "Edifícios de povoadores"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "Queima molhos de tábuas para fazer carvão."
 
@@ -4684,14 +4294,12 @@ msgstr "{player}: {message}"
 #~ "Erro: Sintaxe inválida na opção de linha de comandos --mp-bind. O número "
 #~ "do porto tem de estar entre 1 e 65535."
 
-# 75%
 #~ msgid "Error: Cannot find map '{name}'."
 #~ msgstr "Não foi possível encontrar o mapa \"{name}\"."
 
 #~ msgid "Error: campaign filenames have to end in \".yaml\"."
 #~ msgstr "os nomes dos ficheiros de campanhas têm de terminar com \".yaml\"."
 
-# 78%
 #~ msgid "Error: Cannot find savegame '{name}'."
 #~ msgstr "Não foi possível encontrar o jogo gravado \"{name}\"."
 
@@ -4713,11 +4321,9 @@ msgstr "{player}: {message}"
 #~ msgid "Configured language {lang} at {place} could not be loaded"
 #~ msgstr "A língua configurada {lang} em {place} não pode ser carregada"
 
-# 83%
 #~ msgid "{player}'s settlements"
 #~ msgstr "povoações de {player}"
 
-# 77%
 #~ msgid "{player}'s ships"
 #~ msgstr "navios de {player}"
 
@@ -4841,7 +4447,6 @@ msgstr "{player}: {message}"
 #~ msgid "A new settlement has been created by ${player}."
 #~ msgstr "Uma nova povoação foi criada por ${player}."
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "Falta uma praça principal numa das suas povoações."
 
@@ -5023,7 +4628,6 @@ msgstr "{player}: {message}"
 #~ msgid "capacity utilization"
 #~ msgstr "capacidade de utilização"
 
-# 94%
 #~ msgid "Build settlement:"
 #~ msgstr "Construir povoação:"
 
@@ -5059,7 +4663,6 @@ msgstr "{player}: {message}"
 #~ "Para ver as alterações será necessário começar o UH sempre com os "
 #~ "argumentos actuais ou editar o ficheiro %s."
 
-# 81%
 #~ msgid "Error: Cannot find campaign \"%s\"."
 #~ msgstr "Erro: Não foi possível encontrar o campanha \"%s\"."
 
@@ -5069,16 +4672,12 @@ msgstr "{player}: {message}"
 #~ msgid "Error: don't know how to handle %(type)s condition type"
 #~ msgstr "Erro: não sei como lidar com condições do tipo %(type)s"
 
-# 81%
-# 76%
 #~ msgid "Error: Cannot find campaign with file \"%s\"."
 #~ msgstr "Erro: Não foi possível encontrar o campanha para o ficheiro \"%s\"."
 
-# 81%
 #~ msgid "Error: Cannot find scenario \"%s\"."
 #~ msgstr "Erro: Não foi possível encontrar o cenário \"%s\"."
 
-# 83%
 #~ msgid "Error: Cannot find scenario with file \"%s\"."
 #~ msgstr "Erro: Não foi possível encontrar o cenário para o ficheiro \"%s\"."
 
@@ -5197,7 +4796,6 @@ msgstr "{player}: {message}"
 #~ msgid "Tax Rate"
 #~ msgstr "taxa de contribuição"
 
-# 80%
 #~ msgid "Failed to load FIFE:"
 #~ msgstr "Falha a carregar o FIFE:"
 

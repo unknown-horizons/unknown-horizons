@@ -214,8 +214,13 @@ class LogBook(PickBeltWidget, Window):
 			for image in parameter[1]:
 				add.addChild(Icon(image=str(image)))
 		elif parameter_type == u'Headline':
-			add = Label(text=unicode(parameter[1]), wrap_text=True,
-			            min_size=(335, 0), max_size=(335, 508), font='headline')
+			add = HBox()
+			is_not_last_headline = self._parameters and self._cur_entry < (len(self._parameters) - 2)
+			if is_not_last_headline:
+				add.addChild(Icon(image="content/gui/images/tabwidget/done.png"))
+
+			add.addChild(Label(text=unicode(parameter[1]), wrap_text=True,
+			            min_size=(335, 0), max_size=(335, 508), font='headline'))
 		elif parameter_type == u'BoldLabel':
 			add = Label(text=unicode(parameter[1]), wrap_text=True,
 			            min_size=(335, 0), max_size=(335, 508), font='14_bold')
@@ -225,7 +230,10 @@ class LogBook(PickBeltWidget, Window):
 			# duplicate_message stops messages from
 			# being duplicated on page reload.
 			message = parameter[1]
-			duplicate_message = message in self._messages_to_display # message is already going to be displayed
+			# message is already going to be displayed or has been displayed
+			# before (e.g. re-opening older logbook pages)
+			duplicate_message = (message in self._messages_to_display or  
+								message in self._message_log)
 
 			if not duplicate_message:
 				self._messages_to_display.append(message) # the new message has not been displayed
@@ -268,6 +276,10 @@ class LogBook(PickBeltWidget, Window):
 			#TODO n successive pagebreaks should insert (n-1) blank pages (currently 0 are inserted)
 			"""
 			return [list(l[1]) for l in groupby(parameters, lambda x: x != ['Pagebreak']) if l[0]]
+
+		# If a scenario goal has been completed, remove the corresponding message
+		for message in self._displayed_messages:
+			self.session.ingame_gui.message_widget.remove(message)
 
 		self._displayed_messages = [] # Reset displayed messages
 		for parameter_list in _split_on_pagebreaks(parameters):

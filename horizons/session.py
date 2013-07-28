@@ -88,11 +88,10 @@ class Session(LivingObject):
 
 	log = logging.getLogger('session')
 
-	def __init__(self, gui, db, rng_seed=None, ingame_gui_class=IngameGui):
+	def __init__(self, db, rng_seed=None, ingame_gui_class=IngameGui):
 		super(Session, self).__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
-		self.gui = gui # main gui, not ingame gui
 		self.db = db # main db for game data (game.sql)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
@@ -188,19 +187,15 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
-		horizons.main._modules.session = None
 		self._clear_caches()
 
-		# subscriptions shouldn't survive listeners (except the main Gui)
-		self.gui.unsubscribe()
 		# discard() in case loading failed and we did not yet subscribe
 		SettingChanged.discard(self._on_setting_changed)
 		MessageBus().reset()
-		self.gui.subscribe()
 
 	def quit(self):
 		self.end()
-		self.gui.show_main()
+		horizons.main.quit_session()
 
 	def autosave(self):
 		raise NotImplementedError
@@ -409,13 +404,13 @@ class Session(LivingObject):
 			headline = _("Failed to create savegame file")
 			descr = _("There has been an error while creating your savegame file.")
 			advice = _("This usually means that the savegame name contains unsupported special characters.")
-			self.gui.show_error_popup(headline, descr, advice, unicode(e))
+			self.ingame_gui.show_error_popup(headline, descr, advice, unicode(e))
 			return self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
 		except OSError as e:
 			if e.errno == errno.EACCES:
-				self.gui.show_error_popup(_("Access is denied"),
-				                          _("The savegame file could be read-only or locked by another process."))
+				self.ingame_gui.show_error_popup(_("Access is denied"),
+				                                 _("The savegame file could be read-only or locked by another process."))
 				return self.save()
 			raise
 

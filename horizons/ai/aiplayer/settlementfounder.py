@@ -45,7 +45,7 @@ class SettlementFounder(object):
 
 	def _evaluate_island(self, island):
 		"""Return (flat land, utility value) of the given island."""
-		resources = defaultdict(lambda: 0)
+		resources = defaultdict(int)
 		for deposit_dict in island.deposits.itervalues():
 			for deposit in deposit_dict.itervalues():
 				if deposit.settlement is None:

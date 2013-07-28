@@ -24,7 +24,7 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -60,7 +60,7 @@ HEADER = '''\
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -77,20 +77,20 @@ HEADER = '''\
 #
 ###############################################################################
 
-object_translations = {}
 
-def set_translations():
-	"""Instead of overwriting object_translations, operates on the same
-	object (i.e. deleting dict keys, then updating) so that everything
-	importing object_translations once keeps getting updates. #1905, #1909
-	"""
-	global object_translations
-	object_translations.clear()
-	object_translations.update({
+
+
+
+
+
+
+
+
+object_translations = {
 '''
 
 FOOTER = '''
-	})
+}
 '''
 ROWINDENT = '''
 		'''

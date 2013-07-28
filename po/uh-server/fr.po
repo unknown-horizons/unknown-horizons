@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-05 15:40+0200\n"
-"PO-Revision-Date: 2013-05-08 17:30+0200\n"
-"Last-Translator: Jérôme Beaugendre <jej27andre@gmail.com>\n"
+"POT-Creation-Date: 2013-06-03 22:09+0200\n"
+"PO-Revision-Date: 2013-05-20 17:16+0200\n"
+"Last-Translator: Clement Coste <clement.coste2@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh-server/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,8 @@ msgstr ""
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Cela n'aurait jamais du se produire. Contactez nous ou faites un rapport de "
+"bug."
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
@@ -66,27 +68,21 @@ msgstr "La partie est plaine"
 msgid "Wrong password"
 msgstr "Mot de passe incorrect"
 
-#: horizons/network/server.py:424 horizons/network/server.py:532
-#, fuzzy
+#: horizons/network/server.py:424 horizons/network/server.py:534
 msgid "There's already a player with your name inside this game."
-msgstr ""
-"Il y a déjà un joueur avec votre nom dans cette partie. Veuillez changer "
-"votre nom"
+msgstr "Il y a déjà un joueur avec votre nom dans cette partie."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
-msgstr ""
+msgstr "S'il vous plaît, changez le nom."
 
-#: horizons/network/server.py:428 horizons/network/server.py:560
-#, fuzzy
+#: horizons/network/server.py:428 horizons/network/server.py:562
 msgid "There's already a player with your color inside this game."
-msgstr ""
-"Il y a déjà un joueur avec votre couleur dans cette parie. Veuillez changer "
-"votre couleur"
+msgstr "Il y a déjà un joueur avec votre couleur dans cette partie."
 
 #: horizons/network/server.py:429
 msgid "Please change your color."
-msgstr ""
+msgstr "S'il vous plaît, changez de couleur."
 
 #: horizons/network/server.py:432
 msgid ""
@@ -104,24 +100,24 @@ msgstr "Vous n'êtes pas dans une partie"
 msgid "The game has been terminated. The creator has left the game."
 msgstr "La jeu a été terminé. Le créateur de la partie l'a quitté."
 
-#: horizons/network/server.py:482
+#: horizons/network/server.py:483
+#, fuzzy
 msgid ""
-"I feel like a bad bunny but one player has terminated the game which "
-"currently for technical reasons means that the game cannot continue. Sorry :"
-"*("
+"One player has terminated their game. For technical reasons, this currently "
+"means the game cannot continue. We are very sorry about that."
 msgstr ""
 "Un joueur a quitté la partie et elle ne peut donc pas être continué en ce "
 "moment due à des raisons techniques. Désolé :*("
 
-#: horizons/network/server.py:533
+#: horizons/network/server.py:535
 msgid "Unable to change your name."
-msgstr ""
+msgstr "Impossible de changer le nom."
 
-#: horizons/network/server.py:561
+#: horizons/network/server.py:563
 msgid "Unable to change your color."
-msgstr ""
+msgstr "Impossible de changer la couleur."
 
-#: horizons/network/server.py:648
+#: horizons/network/server.py:650
 msgid "You can't fetch a game while in another game"
 msgstr ""
 "Vous ne pouvez vous informer sur d'autres parties lorsque vous êtes déjà "

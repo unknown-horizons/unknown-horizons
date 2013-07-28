@@ -181,7 +181,7 @@ class SavegameManager(object):
 	@classmethod
 	def delete_dispensable_savegames(cls, autosaves=False, quicksaves=False):
 		"""Delete savegames that are no longer needed
-		@param autosaves, quicksaves: Bool, set to true if this kind of saves should be cleaned
+		@param autosaves, quicksaves: Bool, set to True if this kind of saves should be cleaned
 		"""
 		def tmp_del(pattern, limit): # get_uh_setting below returns floats like
 			limit = int(limit)      # 4.0 and 42.0 since the slider stepping is 1.0.
@@ -334,11 +334,14 @@ class SavegameManager(object):
 		translated_scenarios = defaultdict(list)
 		scenarios = zip(*cls.get_scenarios(include_displaynames=True))
 		for filename, scenario in scenarios:
+			if not os.path.exists(filename):
+				continue
+			if not os.stat(filename).st_size:
+				# file seems empty
+				continue
 			_locale = cls.get_scenario_metadata(scenario=scenario).get('locale', u'en')
 			# sort into dictionary by english filename (without language suffix)
 			english_name = scenario.split('_' + _locale)[0]
-			if not os.path.exists(filename):
-				continue
 			translated_scenarios[english_name].append((_locale, filename))
 		return translated_scenarios
 

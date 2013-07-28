@@ -64,7 +64,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.owner = owner
 		self.buildings = []
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
-		self.produced_res = defaultdict(lambda : 0) # dictionary of all resources, produced at this settlement
+		self.produced_res = defaultdict(int) # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = defaultdict(list)
 		self.warehouse = None # this is set later in the same tick by the warehouse itself or load() here
 		self.upgrade_permissions = upgrade_permissions
@@ -111,7 +111,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	@property
 	def cumulative_taxes(self):
-		"""Return sum of all taxes payed in this settlement in 1 tax round"""
+		"""Return sum of all taxes paid in this settlement in 1 tax round"""
 		return sum([building.last_tax_payed for building in self.buildings if
 								hasattr(building, 'last_tax_payed')])
 

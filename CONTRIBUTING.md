@@ -18,6 +18,7 @@ File a bug report
     3. **Logs**, **Savegames**, **screenshots** and/or **videos** help a lot for understanding what is going on.
        Use the [awesome uploader] (http://up.unknown-horizons.org/) (login via github account)
        and link the additional files in your ticket.
+    4. Tell us which version of Unknown Horizons and operating system do you use.
 
 Checklist for contributing code
 -------------------------------

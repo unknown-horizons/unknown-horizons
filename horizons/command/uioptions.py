@@ -71,7 +71,7 @@ class BuyResource(GenericComponentCommand):
 GenericComponentCommand.allow_network(BuyResource)
 
 class RenameObject(GenericComponentCommand):
-	"""Rename a NamedComponant"""
+	"""Rename a NamedComponent"""
 	def __init__(self, namedcomponent, new_name):
 		super(RenameObject, self).__init__(namedcomponent, "set_name", new_name)
 

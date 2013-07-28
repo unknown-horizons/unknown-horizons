@@ -74,7 +74,7 @@ class SpecialDomesticTradeManager(object):
 			#self.log.info('%s no available ships', self)
 			return
 
-		options = defaultdict(lambda: [])
+		options = defaultdict(list)
 		# try to set up a new route where the first settlement gets an extra shipment of a resource from the second settlement
 		for source_settlement_manager in self.owner.settlement_managers:
 			for destination_settlement_manager in self.owner.settlement_managers:

@@ -680,7 +680,6 @@ msgstr ""
 "voulez vendre ou acheter. Nous expliquerons ce procédé plus précisément "
 "lorsque vous serez prêt à faire affaire."
 
-# 89%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
@@ -1459,7 +1458,6 @@ msgstr ""
 msgid "Thanks!"
 msgstr "Merci !"
 
-# 96%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"

@@ -662,7 +662,6 @@ msgstr ""
 "Valitse kaupattava tuote napsauttamalla kauppapaikkaa. Kerromme tästä "
 "ominaisuudesta myöhemmin, kun olet valmis kaupankäyntiin."
 
-# 89%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
@@ -1419,7 +1418,6 @@ msgstr ""
 msgid "Thanks!"
 msgstr "Suuret kiitokset!"
 
-# 96%
 #. This is the text body of a logbook page.
 msgid ""
 "\n"

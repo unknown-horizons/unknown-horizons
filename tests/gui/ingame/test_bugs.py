@@ -333,3 +333,20 @@ def test_ticket_1948(gui):
 	gui.trigger('tab', 'button_11')
 	# Build storage at the border of the settlement
 	gui.cursor_click(37, 20, 'left')
+
+
+@gui_test(use_fixture='fife_exception_not_found', timeout=60)
+def test_ticket_2117(gui):
+	"""Changing language with active production overview tab crashes game"""
+
+	# Select lumberjack to open production tab
+	gui.cursor_click(23, 63, 'left')
+
+	# Open settings
+	gui.trigger('mainhud', 'gameMenuButton')
+	gui.trigger('menu', 'settingsLink')
+
+	# Change language (to anything not system default)
+	gui.trigger('settings_window', 'game_settings_right')
+	gui.find('uni_language').select(u'English')
+	gui.trigger('settings_window', 'okButton')

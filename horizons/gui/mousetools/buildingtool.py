@@ -144,7 +144,7 @@ class BuildingTool(NavigationTool):
 	def highlight_buildable(self, tiles_to_check=None, new_buildings=True):
 		"""Highlights all buildable tiles and select buildings that are inversely related in order to show their range.
 		@param tiles_to_check: list of tiles to check for coloring.
-		@param new_buildings: Set to true if you have set tiles_to_check and there are new buildings. An internal structure for optimization will be amended."""
+		@param new_buildings: Set to True if you have set tiles_to_check and there are new buildings. An internal structure for optimization will be amended."""
 		self._build_logic.highlight_buildable(self, tiles_to_check)
 
 		# Also distinguish inversely related buildings (lumberjack for tree).
@@ -240,9 +240,10 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
-			level = self.session.world.player.settler_level if \
-				not hasattr(self._class, "default_level_on_build") else \
-				self._class.default_level_on_build
+			try:
+				level = self._class.default_level_on_build
+			except AttributeError:
+				level = self.session.world.player.settler_level
 			action_set = self._class.get_random_action_set(level=level)
 		action_sets = ActionSetLoader.get_sets()
 		for action_option in ['idle', 'idle_full', 'abcd']:
@@ -705,7 +706,7 @@ class BuildingTool(NavigationTool):
 
 
 class ShipBuildingToolLogic(object):
-	"""Helper class to seperate the logic needed when building from a ship from
+	"""Helper class to separate the logic needed when building from a ship from
 	the main building tool."""
 
 	def __init__(self, ship):
@@ -760,7 +761,7 @@ class ShipBuildingToolLogic(object):
 	def continue_build(self): pass
 
 class SettlementBuildingToolLogic(object):
-	"""Helper class to seperate the logic needen when building from a settlement
+	"""Helper class to separate the logic needen when building from a settlement
 	from the main building tool"""
 
 	def __init__(self, building_tool):

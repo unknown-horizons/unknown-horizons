@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-09 15:14+0200\n"
-"PO-Revision-Date: 2013-05-07 09:09+0200\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"POT-Creation-Date: 2013-06-29 21:04+0200\n"
+"PO-Revision-Date: 2013-06-03 23:07+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Swedish <http://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.6-dev\n"
 
-#: run_uh.py:220
+#: run_uh.py:219
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons har kraschat."
 
-#: run_uh.py:222
+#: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "Vi är ledsna för detta och vi vill fixa det orsakande problemet."
 
-#: run_uh.py:223
+#: run_uh.py:222
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "För att göra det behöver vi information från loggfilen:"
 
-#: run_uh.py:225
+#: run_uh.py:224
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
@@ -37,26 +37,26 @@ msgstr ""
 "Var vänlig skicka den till oss via IRC eller vårt forum, för båda se http://"
 "unknown-horizons.org ."
 
-#: run_uh.py:273
+#: run_uh.py:272
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "Fel: Kunde inte hitta det nödvändiga paketet \"PyYAML\"."
 
-#: run_uh.py:274
+#: run_uh.py:273
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr "PyYAML (ett nödvändigt paket) saknas och måste installeras."
 
-#: run_uh.py:275
+#: run_uh.py:274
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
 "Windows-installeraren finns tillgänglig på http://pyyaml.org/wiki/PyYAML."
 
-#: run_uh.py:276
+#: run_uh.py:275
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
 
-#: run_uh.py:310
+#: run_uh.py:309
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Tack för att du använder Unknown Horizons!"
 
@@ -140,12 +140,10 @@ msgstr "Nybyggarbyggnader"
 msgid "Inhabitants"
 msgstr "Invånare"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:14
 msgid "Increase game speed (+)"
 msgstr "Öka spelhastigheten (+)"
 
-# 82%
 #: content/gui/xml/ingame/hud/minimap.xml:16
 msgid "Decrease game speed (-)"
 msgstr "Minska spelhastigheten (-)"
@@ -202,10 +200,8 @@ msgstr "Skriv nytt namn:"
 msgid "Apply the new name"
 msgstr "Tryck för att ändra namnet"
 
-#. noi18n_text
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
-#: content/gui/xml/mainmenu/help.xml:49
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
 msgstr "Chatt"
@@ -373,11 +369,11 @@ msgstr "Invånare per hus"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr "Några av dina invånare har precis flyttat ut."
+msgstr "Några av dina invånare har precis flyttat ut"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "Bostad för dina invånare."
+msgstr "Bostad för dina invånare"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -387,7 +383,6 @@ msgstr "Sammanfattning"
 msgid "houses"
 msgstr "hus"
 
-# 88%
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
 msgstr "invånare"
@@ -432,7 +427,6 @@ msgstr ""
 msgid "It contains these resources:"
 msgstr "Innehåller dessa resurser:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
@@ -480,7 +474,6 @@ msgstr ""
 msgid "Collector utilization"
 msgstr "Insamlar användning:"
 
-# 97%
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
@@ -526,7 +519,6 @@ msgstr "Köp eller sälj varor"
 msgid "Trade history"
 msgstr "Handelshistorik"
 
-# 76%
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
 msgstr "Välj varor:"
@@ -567,8 +559,6 @@ msgstr "Pausa produktion"
 msgid "Start production"
 msgstr "Återuppta produktion"
 
-# 76%
-# 94%
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
@@ -608,8 +598,6 @@ msgstr "Ta bort inmatning"
 msgid "Move down"
 msgstr "Flytta ner"
 
-# 76%
-# 83%
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy
 msgid "Select a resource:"
@@ -704,7 +692,6 @@ msgstr "Stäng"
 msgid "Player scores"
 msgstr "Spelarpoäng"
 
-# 80%
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
@@ -750,11 +737,10 @@ msgstr "Byggnader"
 msgid "Value of all the buildings in the player's settlement(s)"
 msgstr ""
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
-#: horizons/i18n/objecttranslations.py:493 sql-database-files
+#: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
 msgstr "Nybyggare"
 
@@ -782,7 +768,6 @@ msgstr ""
 msgid "Total"
 msgstr "Totalt"
 
-# 87%
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:630
 msgid "Balance"
@@ -825,194 +810,6 @@ msgstr "Passiv"
 msgid "Flee"
 msgstr "Fly"
 
-#: content/gui/xml/mainmenu/credits.xml:15
-msgid "UH-Team"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:17
-#, fuzzy
-msgid "Project Coordination"
-msgstr "utbildning"
-
-#: content/gui/xml/mainmenu/credits.xml:23
-msgid "Programming"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:45
-msgid "Game-Play Design"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:52
-msgid "Sound and Music Artists"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:60
-#, fuzzy
-msgid "Graphics Artists"
-msgstr "Grafik"
-
-#: content/gui/xml/mainmenu/credits.xml:80
-#, fuzzy
-msgid "Patchers"
-msgstr "Slakteri"
-
-#: content/gui/xml/mainmenu/credits.xml:82
-msgid "2009"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:91
-msgid "2010"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:105
-msgid "2011"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:117
-msgid "2012"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:132
-#, fuzzy
-msgid "Translators"
-msgstr "Översättningsstatus:"
-
-#: content/gui/xml/mainmenu/credits.xml:134
-#, fuzzy
-msgid "Hosting Weblate"
-msgstr "Loggning aktiverad"
-
-#: content/gui/xml/mainmenu/credits.xml:139
-msgid "Bulgarian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:144
-msgid "Catalan"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:150
-msgid "Czech"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:160
-msgid "Danish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:165
-msgid "German"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:172
-#, fuzzy
-msgid "Spanish"
-msgstr "Företag"
-
-#: content/gui/xml/mainmenu/credits.xml:184
-msgid "Estonian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:190
-msgid "Finnish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:195
-msgid "French"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:207
-msgid "Croatian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:212
-msgid "Hindi"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:217
-msgid "Hungarian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:223
-msgid "Italian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:231
-msgid "Japanese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:237
-msgid "Lithuanian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:246
-msgid "Norwegian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:253
-#, fuzzy
-msgid "Dutch"
-msgstr "Slakteri"
-
-#: content/gui/xml/mainmenu/credits.xml:264
-msgid "Polish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:275
-msgid "Portuguese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:283
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:291
-msgid "Romanian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:296
-msgid "Russian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:303
-msgid "Slovenian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:308
-msgid "Swedish"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:314
-#, fuzzy
-msgid "Chinese"
-msgstr "vinrankor"
-
-#: content/gui/xml/mainmenu/credits.xml:325
-msgid "Packagers"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:327
-msgid "Debian"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:332
-msgid "Fedora &amp; openSUSE"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:338
-msgid "OS X"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:348
-msgid "Special Thanks"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:350
-msgid "Thanks, all of you are awesome!"
-msgstr ""
-
-#: content/gui/xml/mainmenu/credits.xml:373
-msgid "Portfolio Sites"
-msgstr ""
-
 #: content/gui/xml/mainmenu/credits.xml:382
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
@@ -1036,8 +833,6 @@ msgstr "Välj en bana:"
 msgid "Choose a saved game's map:"
 msgstr "Välj en bana:"
 
-# 76%
-# 83%
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 #, fuzzy
 msgid "Select map source"
@@ -1062,190 +857,7 @@ msgstr "Ladda ett sparat spel"
 msgid "Start editor"
 msgstr "Återuppta produktion"
 
-#: content/gui/xml/mainmenu/help.xml:6
-msgid "Key bindings"
-msgstr "Kortkommandon"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:9 content/gui/xml/mainmenu/hotkeys.xml:10
-msgid "Scroll left"
-msgstr "Flytta vyn åt vänster"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:10
-#: content/gui/xml/mainmenu/hotkeys.xml:11
-msgid "Scroll right"
-msgstr "Flytta vyn åt höger"
-
-#. noi18n_text
 #: content/gui/xml/mainmenu/help.xml:11
-#: content/gui/xml/mainmenu/hotkeys.xml:12
-msgid "Scroll up"
-msgstr "Flytta vyn uppåt"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:12
-#: content/gui/xml/mainmenu/hotkeys.xml:13
-msgid "Scroll down"
-msgstr "Flytta vyn nedåt"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:15
-#: content/gui/xml/mainmenu/hotkeys.xml:16
-msgid "Increase game speed"
-msgstr "Öka spelhastigheten"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:16
-#: content/gui/xml/mainmenu/hotkeys.xml:17
-msgid "Decrease game speed"
-msgstr "Minska spelhastigheten"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:18
-#: content/gui/xml/mainmenu/hotkeys.xml:15
-msgid "Rotate building or map counterclockwise"
-msgstr "Rotera byggnad eller karta moturs"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:20
-#: content/gui/xml/mainmenu/hotkeys.xml:14
-msgid "Rotate building or map clockwise"
-msgstr "Rotera byggnad eller karta medurs"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:23
-#: content/gui/xml/mainmenu/hotkeys.xml:19
-msgid "Show build menu"
-msgstr "Visa byggmenyn"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:24
-#: content/gui/xml/mainmenu/hotkeys.xml:26
-msgid "Toggle Captain's log"
-msgstr "Visa Kaptenens loggbok"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:25
-#: content/gui/xml/mainmenu/hotkeys.xml:18
-msgid "Pause game"
-msgstr "Pausa spel"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:28
-#: content/gui/xml/mainmenu/hotkeys.xml:35
-msgid "Display help"
-msgstr "Visa hjälp"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:29
-#: content/gui/xml/mainmenu/hotkeys.xml:28
-msgid "Quicksave"
-msgstr "Snabbspara"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:30
-#: content/gui/xml/mainmenu/hotkeys.xml:29
-msgid "Quickload"
-msgstr "Snabbladda"
-
-#: content/gui/xml/mainmenu/help.xml:31
-msgid "Display FPS counter"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:40
-#: content/gui/xml/mainmenu/hotkeys.xml:30
-msgid "Toggle translucency of ambient buildings"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:41
-#: content/gui/xml/mainmenu/hotkeys.xml:21
-msgid "Enable road building mode"
-msgstr "Aktivera vägbyggarläge"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:42
-#: content/gui/xml/mainmenu/hotkeys.xml:20
-msgid "Enable destruct mode"
-msgstr "Aktivera rivläge"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:44
-#: content/gui/xml/mainmenu/hotkeys.xml:22
-msgid "Enable pipette mode (clone buildings)"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:45
-#: content/gui/xml/mainmenu/hotkeys.xml:32
-msgid "Toggle health bars"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:48
-#: content/gui/xml/mainmenu/hotkeys.xml:36
-msgid "Screenshot"
-msgstr "Skärmdump"
-
-#: content/gui/xml/mainmenu/help.xml:51
-msgid "Hold to place multiple buildings"
-msgstr "Håll ner för att placera flera byggnader"
-
-#: content/gui/xml/mainmenu/help.xml:52
-msgid "Close dialogs"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:55
-#: content/gui/xml/mainmenu/hotkeys.xml:23
-msgid "Show player scores"
-msgstr "Visa spelarpoäng"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:56
-#: content/gui/xml/mainmenu/hotkeys.xml:25
-msgid "Show ship list"
-msgstr "Visa fartygslista"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:57
-#: content/gui/xml/mainmenu/hotkeys.xml:24
-msgid "Show settlement list"
-msgstr "Visa bosättningslista"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:58
-#: content/gui/xml/mainmenu/hotkeys.xml:31
-msgid "Highlight tile ownership"
-msgstr "Färglägg rutornas ägare"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:62
-#: content/gui/xml/mainmenu/hotkeys.xml:34
-msgid "Remove selected units / buildings"
-msgstr "Ta bort markerade enheter / byggnader"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:63
-#: content/gui/xml/mainmenu/hotkeys.xml:33
-msgid "Focus camera on selection"
-msgstr ""
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:64
-#: content/gui/xml/mainmenu/hotkeys.xml:38
-msgid "Toggle grid on/off"
-msgstr "Visa rutnät på/av"
-
-#. noi18n_text
-#: content/gui/xml/mainmenu/help.xml:65
-#: content/gui/xml/mainmenu/hotkeys.xml:39
-msgid "Show coordinate values (Debug)"
-msgstr ""
-
-#: content/gui/xml/mainmenu/help.xml:70
 msgid "Return"
 msgstr "Återgå"
 
@@ -1254,11 +866,122 @@ msgstr "Återgå"
 msgid "Actions"
 msgstr "utbildning"
 
-#. noi18n_text
+#: content/gui/xml/mainmenu/hotkeys.xml:10
+msgid "Scroll left"
+msgstr "Flytta vyn åt vänster"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:11
+msgid "Scroll right"
+msgstr "Flytta vyn åt höger"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:12
+msgid "Scroll up"
+msgstr "Flytta vyn uppåt"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:13
+msgid "Scroll down"
+msgstr "Flytta vyn nedåt"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:14
+msgid "Rotate building or map clockwise"
+msgstr "Rotera byggnad eller karta medurs"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:15
+msgid "Rotate building or map counterclockwise"
+msgstr "Rotera byggnad eller karta moturs"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:16
+msgid "Increase game speed"
+msgstr "Öka spelhastigheten"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:17
+msgid "Decrease game speed"
+msgstr "Minska spelhastigheten"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:18
+msgid "Pause game"
+msgstr "Pausa spel"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:19
+msgid "Show build menu"
+msgstr "Visa byggmenyn"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:20
+msgid "Enable destruct mode"
+msgstr "Aktivera rivläge"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:21
+msgid "Enable road building mode"
+msgstr "Aktivera vägbyggarläge"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:22
+msgid "Enable pipette mode (clone buildings)"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:23
+msgid "Show player scores"
+msgstr "Visa spelarpoäng"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:24
+msgid "Show settlement list"
+msgstr "Visa bosättningslista"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:25
+msgid "Show ship list"
+msgstr "Visa fartygslista"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:26
+msgid "Toggle Captain's log"
+msgstr "Visa Kaptenens loggbok"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:28
+msgid "Quicksave"
+msgstr "Snabbspara"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:29
+msgid "Quickload"
+msgstr "Snabbladda"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:30
+msgid "Toggle translucency of ambient buildings"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:31
+msgid "Highlight tile ownership"
+msgstr "Färglägg rutornas ägare"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:32
+msgid "Toggle health bars"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:33
+msgid "Focus camera on selection"
+msgstr ""
+
+#: content/gui/xml/mainmenu/hotkeys.xml:34
+msgid "Remove selected units / buildings"
+msgstr "Ta bort markerade enheter / byggnader"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:35
+msgid "Display help"
+msgstr "Visa hjälp"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:36
+msgid "Screenshot"
+msgstr "Skärmdump"
+
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 #, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Visa rutnät på/av"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:38
+msgid "Toggle grid on/off"
+msgstr "Visa rutnät på/av"
+
+#: content/gui/xml/mainmenu/hotkeys.xml:39
+msgid "Show coordinate values (Debug)"
+msgstr ""
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
@@ -1298,7 +1021,8 @@ msgid "Cancel game"
 msgstr "Avbryt spel"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-msgid "Loading ..."
+#, fuzzy
+msgid "Loading…"
 msgstr "Laddar ..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
@@ -1414,7 +1138,7 @@ msgstr "Speldetaljer:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
 msgid "Color"
-msgstr "Färg:"
+msgstr "Färg"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1424,7 +1148,6 @@ msgstr "Nytt spel - Flera spelare"
 msgid "Create a new game"
 msgstr "Skapa nytt spel"
 
-# 90%
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Ladda spel:"
@@ -1552,7 +1275,6 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "0 är systemets standardinställning"
 
-# 76%
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
 msgstr "Muskänslighet:"
@@ -1622,7 +1344,7 @@ msgstr "Aktivera ljud:"
 # Mellanslag, bindesstreck eller utan genitiv?
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
-msgstr "Produktionsöversikt"
+msgstr "Produktionsöversikt:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid ""
@@ -1729,6 +1451,7 @@ msgstr "Välj en karta att spela:"
 msgid "Map settings:"
 msgstr "Inställningar för karta:"
 
+#. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
 msgstr "Frö:"
@@ -1822,7 +1545,6 @@ msgstr "Handelspartnern har inte råd att köpa detta."
 msgid "The trade partner does not buy more of this."
 msgstr "Handelspartnern köper inte mer av detta."
 
-# 75%
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
 msgstr "Misslyckades med att snabbspara."
@@ -1956,11 +1678,11 @@ msgstr "Är du säker att du vill avsluta Unknown Horizons?"
 msgid "Quit Game"
 msgstr "Avsluta spel"
 
-#: horizons/gui/ingamegui.py:214
+#: horizons/gui/ingamegui.py:218
 msgid "No diplomacy possible"
 msgstr "Diplomati är inte möjlig"
 
-#: horizons/gui/ingamegui.py:215
+#: horizons/gui/ingamegui.py:219
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Kan inte göra diplomati eftersom det inte finns några andra spelare."
 
@@ -1969,11 +1691,6 @@ msgstr "Kan inte göra diplomati eftersom det inte finns några andra spelare."
 #, python-format
 msgid "{size}x{size} tiles"
 msgstr "{size}x{size} rutor"
-
-#. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/modules/help.py:54
-msgid "[{key}] = {text}"
-msgstr "[{key}] = {text}"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
@@ -1994,106 +1711,106 @@ msgstr ""
 msgid "Confirmation for overwriting"
 msgstr "Bekräftelse för att skriva över"
 
-#: horizons/gui/modules/loadingscreen.py:36
+#: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:58
+#: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:60
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Håll ner för att placera flera byggnader"
+msgstr "Håll ner för att placera flera byggnader."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:64
+#: horizons/gui/modules/loadingscreen.py:66
 #, python-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:66
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can pause the game with 'P'."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:67
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can drag roads by holding the left mouse button."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:70
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:72
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Build storage tents to increase your storage capacity."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Make sure every house is in range of a marketplace."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:75
 msgid "Press 'T' to make trees transparent."
 msgstr "Tryck 'T' för att göra träd transparenta."
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:100
-msgid "Starting engine..."
-msgstr ""
-
-#: horizons/gui/modules/loadingscreen.py:101
-msgid "Catching fish..."
-msgstr ""
-
 #: horizons/gui/modules/loadingscreen.py:102
-msgid "Drawing user interface..."
+msgid "Starting engine…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:103
-msgid "Activating timer..."
+msgid "Catching fish…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:104
-msgid "Chomping game data..."
+msgid "Drawing user interface…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:105
-msgid "Shaping islands..."
+msgid "Activating timer…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:106
-msgid "Preparing blueprints..."
+msgid "Chomping game data…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:107
-msgid "Filling world with water..."
+msgid "Shaping islands…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:108
-msgid "Raising animals..."
+msgid "Preparing blueprints…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:109
-msgid "Convincing AI..."
+msgid "Filling world with water…"
 msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:110
-msgid "Burying treasures..."
+msgid "Raising animals…"
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:111
+msgid "Convincing AI…"
+msgstr ""
+
+#: horizons/gui/modules/loadingscreen.py:112
+msgid "Burying treasures…"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:118
@@ -2137,39 +1854,39 @@ msgstr ""
 msgid "Something went wrong with the network:"
 msgstr "Något gick fel med nätverket:"
 
-#: horizons/gui/modules/multiplayermenu.py:174
+#: horizons/gui/modules/multiplayermenu.py:176
 msgid "Version differs!"
 msgstr "Versionerna skiljer sig!"
 
-#: horizons/gui/modules/multiplayermenu.py:204
-#: horizons/gui/modules/multiplayermenu.py:441
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:443
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Karta: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:205
-#: horizons/gui/modules/multiplayermenu.py:443
+#: horizons/gui/modules/multiplayermenu.py:207
+#: horizons/gui/modules/multiplayermenu.py:445
 #, python-format
 msgid "Name: {game_name}"
 msgstr "Namn: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:445
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:447
 #, python-format
 msgid "Creator: {game_creator}"
 msgstr "Skapare: {player}"
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:447
+#: horizons/gui/modules/multiplayermenu.py:210
+#: horizons/gui/modules/multiplayermenu.py:449
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Spelare: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:228
+#: horizons/gui/modules/multiplayermenu.py:230
 msgid "Wrong version"
 msgstr "Fel version"
 
-#: horizons/gui/modules/multiplayermenu.py:230
+#: horizons/gui/modules/multiplayermenu.py:232
 #, python-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
@@ -2182,87 +1899,86 @@ msgstr ""
 "spelare uppdaterar till den senaste versionen. Senaste versionen: "
 "{game_version} Din version: {own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:268
+#: horizons/gui/modules/multiplayermenu.py:270
 msgid "Password of the game"
-msgstr "Spelets namn:"
+msgstr "Spelets namn"
 
-#: horizons/gui/modules/multiplayermenu.py:269
+#: horizons/gui/modules/multiplayermenu.py:271
 msgid "Enter password:"
 msgstr "Ange prefix:"
 
-#: horizons/gui/modules/multiplayermenu.py:349
-#: horizons/gui/modules/singleplayermenu.py:407
+#: horizons/gui/modules/multiplayermenu.py:351
+#: horizons/gui/modules/singleplayermenu.py:406
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Rekommenderat antal spelare: {number}"
 
-# 97%
-#: horizons/gui/modules/multiplayermenu.py:465
-#: horizons/gui/modules/multiplayermenu.py:473
+#: horizons/gui/modules/multiplayermenu.py:467
+#: horizons/gui/modules/multiplayermenu.py:475
 msgid "Click here to change your name and/or color"
 msgstr "Klicka för att ändra namnet på din bosättning"
 
-#: horizons/gui/modules/multiplayermenu.py:492
+#: horizons/gui/modules/multiplayermenu.py:494
 #, python-format
 msgid "Kick {player}"
 msgstr "Fartyg av {player}"
 
-#: horizons/gui/modules/multiplayermenu.py:560
+#: horizons/gui/modules/multiplayermenu.py:562
 #, python-format
 msgid "{player} has joined the game"
 msgstr "{player} har gått med i spelet"
 
-#: horizons/gui/modules/multiplayermenu.py:564
+#: horizons/gui/modules/multiplayermenu.py:566
 #, python-format
 msgid "{player} has left the game"
 msgstr "{spelare} har lämnat spelet"
 
-#: horizons/gui/modules/multiplayermenu.py:570
+#: horizons/gui/modules/multiplayermenu.py:572
 msgid "You are now ready"
 msgstr "Du är nu redo"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:574
 msgid "You are not ready anymore"
 msgstr "Du är inte längre redo"
 
-#: horizons/gui/modules/multiplayermenu.py:576
+#: horizons/gui/modules/multiplayermenu.py:578
 #, python-format
 msgid "{player} is now ready"
 msgstr "{player} är nu redo"
 
-#: horizons/gui/modules/multiplayermenu.py:579
+#: horizons/gui/modules/multiplayermenu.py:581
 #, python-format
 msgid "{player} not ready anymore"
 msgstr "{player} är inte längre redo"
 
-#: horizons/gui/modules/multiplayermenu.py:584
+#: horizons/gui/modules/multiplayermenu.py:586
 #, python-format
 msgid "You are now known as {new_name}"
 msgstr "Du är nu känd som {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:587
+#: horizons/gui/modules/multiplayermenu.py:589
 #, python-format
 msgid "{player} is now known as {new_name}"
 msgstr "{player} är nu känd som {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:591
+#: horizons/gui/modules/multiplayermenu.py:593
 msgid "You changed your color"
 msgstr "Du har ändrat din färg"
 
-#: horizons/gui/modules/multiplayermenu.py:594
+#: horizons/gui/modules/multiplayermenu.py:596
 #, python-format
 msgid "{player} changed their color"
 msgstr "{player} har ändrat sin färg"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "Kicked"
 msgstr "Sparkad"
 
-#: horizons/gui/modules/multiplayermenu.py:598
+#: horizons/gui/modules/multiplayermenu.py:600
 msgid "You have been kicked from the game by creator"
 msgstr "Du har sparkats från spelet av skaparen"
 
-#: horizons/gui/modules/multiplayermenu.py:602
+#: horizons/gui/modules/multiplayermenu.py:604
 #, python-format
 msgid "{player} got kicked by creator"
 msgstr "{player} har sparkats av skaparen"
@@ -2306,7 +2022,6 @@ msgstr "Det finns redan ett sparat spel med namnet '{name}'."
 msgid "Overwrite it?"
 msgstr "Vill du spara ändå?"
 
-# 94%
 #: horizons/gui/modules/select_savegame.py:219
 msgid "Unknown savedate"
 msgstr "Okänt spardatum"
@@ -2365,70 +2080,69 @@ msgstr "Fel!"
 msgid "Failed to delete savefile!"
 msgstr "Misslyckades att radera sparat spel!"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "Invalid player name"
 msgstr "Ogiltigt spelarnamn"
 
-#: horizons/gui/modules/singleplayermenu.py:106
+#: horizons/gui/modules/singleplayermenu.py:105
 msgid "You entered an invalid playername."
 msgstr "Du angav ett ogiltigt spelarnamn."
 
-# 76%
-#: horizons/gui/modules/singleplayermenu.py:149
+#: horizons/gui/modules/singleplayermenu.py:148
 msgid "Resource density:"
 msgstr "Råvarutäthet:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:226
 msgid "Map size:"
 msgstr "Kartans storlek:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Water:"
 msgstr "Vatten:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Max island size:"
 msgstr "Maximal storlek på öar:"
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Preferred island size:"
 msgstr "Föredragen storlek på öar:"
 
-#: horizons/gui/modules/singleplayermenu.py:231
+#: horizons/gui/modules/singleplayermenu.py:230
 msgid "Island size deviation:"
 msgstr "Avvikelse på östorlek:"
 
-#: horizons/gui/modules/singleplayermenu.py:344
+#: horizons/gui/modules/singleplayermenu.py:343
 msgid "Click to generate a different random map"
 msgstr "Klicka för att skapa en ny slumpmässig karta"
 
-#: horizons/gui/modules/singleplayermenu.py:500
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "Invalid scenario file"
 msgstr "Ogiltig scenariofil"
 
-#: horizons/gui/modules/singleplayermenu.py:501
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "The selected file is not a valid scenario file."
 msgstr "Den valda filen är inte en giltig scenariofil."
 
-#: horizons/gui/modules/singleplayermenu.py:502
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Error message:"
 msgstr "Felmeddelande:"
 
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr "Vänligen rapportera detta till upphovsmannen."
 
-#: horizons/gui/modules/singleplayermenu.py:545
+#: horizons/gui/modules/singleplayermenu.py:570
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Svårighetsgrad: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:549
+#: horizons/gui/modules/singleplayermenu.py:574
 #, python-format
 msgid "Author: {author}"
 msgstr "Upphovsman: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:553
+#: horizons/gui/modules/singleplayermenu.py:578
 #, python-format
 msgid "Description: {desc}"
 msgstr "Beskrivning: {desc}"
@@ -2452,33 +2166,31 @@ msgstr "Båtbyggnadsöversikt"
 msgid "{ship} (place in queue: {place})"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:208
+#: horizons/gui/tabs/boatbuildertabs.py:205
 msgid "Build this ship!"
 msgstr "Bygg fartyget!"
 
-# 76%
-#: horizons/gui/tabs/boatbuildertabs.py:250
+#: horizons/gui/tabs/boatbuildertabs.py:247
 msgid "Fisher boats"
 msgstr "Fiskebåtar"
 
-#: horizons/gui/tabs/boatbuildertabs.py:262
+#: horizons/gui/tabs/boatbuildertabs.py:259
 msgid "Trade boats"
 msgstr "Handelsbåtar"
 
-#: horizons/gui/tabs/boatbuildertabs.py:273
+#: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War boats"
 msgstr "Krigsbåtar"
 
-#: horizons/gui/tabs/boatbuildertabs.py:284
+#: horizons/gui/tabs/boatbuildertabs.py:281
 msgid "War ships"
 msgstr "Krigsfartyg"
 
-#: horizons/gui/tabs/boatbuildertabs.py:302
+#: horizons/gui/tabs/boatbuildertabs.py:299
 msgid "Confirm order"
 msgstr "Verkställ order"
 
 # Mellanslag, bindesstreck eller utan genitiv?
-# 94%
 #: horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/enemybuildingtabs.py:44
 msgid "Warehouse overview"
@@ -2544,15 +2256,22 @@ msgstr "Konto"
 msgid "Main square overview"
 msgstr "Torgöversikt"
 
-#: horizons/gui/tabs/mainsquaretabs.py:167
+#: horizons/gui/tabs/mainsquaretabs.py:127
+msgid "Upgrade not possible:"
+msgstr "Uppgradering inte möjlig:"
+
+#: horizons/gui/tabs/mainsquaretabs.py:130
+msgid "This is the highest playable tier for now!"
+msgstr ""
+
+#: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
 msgstr "Tillåt inte uppgraderingar"
 
-#: horizons/gui/tabs/mainsquaretabs.py:170
+#: horizons/gui/tabs/mainsquaretabs.py:178
 msgid "Allow upgrades"
 msgstr "Tillåt uppgraderingar"
 
-# 76%
 #: horizons/gui/tabs/overviewtab.py:105
 msgid "Unit overview"
 msgstr "Enhetsöversikt"
@@ -2702,7 +2421,7 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:623
 msgid "Buy expenses"
-msgstr "Utgifter:"
+msgstr "Utgifter"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:626
 msgid "Sell income"
@@ -2765,7 +2484,7 @@ msgstr "Biodling"
 #: horizons/i18n/objecttranslations.py:58
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
-"Har bin. Producerar vaxkakor som används för konfektyr. Behöver en bondgård,"
+"Har bin. Producerar vaxkakor som används för konfektyr. Behöver en bondgård."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:63
@@ -2780,12 +2499,12 @@ msgstr "Konsumerar mjöl. Producerar mat."
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:70
 msgid "Barracks"
-msgstr "Baracker "
+msgstr "Baracker"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:72
 msgid "Recruits units suitable for ground combat."
-msgstr "Rekryterar artillerienheter. "
+msgstr "Rekryterar artillerienheter."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:77
@@ -2882,7 +2601,6 @@ msgstr "Producerar kakaobönor som används för konfektyr."
 msgid "Corn Field"
 msgstr "Majsodling"
 
-# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:140
 #, fuzzy
@@ -3146,7 +2864,6 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Förvaringstält"
 
-# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:320
 msgid "Storage Hut"
@@ -3187,7 +2904,6 @@ msgstr "Tält"
 msgid "Hut"
 msgstr "Hydda"
 
-# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 msgid "House"
@@ -3310,7 +3026,6 @@ msgid "Warehouse"
 msgstr "Packhus"
 
 # Eg. Vävaretält. jämför weaver description. Byggnaden är inte ens ett tält, snarare en hydda.
-# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 #, fuzzy
@@ -3386,10 +3101,9 @@ msgstr "Bostäder och infrastruktur"
 msgid "Services"
 msgstr "Tjänster"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:471 sql-database-files
+#: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "Medborgare"
 
@@ -3413,10 +3127,9 @@ msgstr "Infrastruktur"
 msgid "Military Service"
 msgstr "Militärtjänstgöring"
 
-# 75%
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level).
-#: horizons/i18n/objecttranslations.py:483 sql-database-files
+#: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "Pionjärer"
 
@@ -3463,25 +3176,25 @@ msgstr ""
 msgid "Military"
 msgstr "Militära"
 
-#: horizons/main.py:344
+#: horizons/main.py:349
 msgid "Failed to start/load the game"
 msgstr "Misslyckades med att starta/ladda spelet"
 
-#: horizons/main.py:345
+#: horizons/main.py:350
 msgid "The game you selected could not be started."
 msgstr "Spelet som du valde kunde inte startas."
 
-#: horizons/main.py:346
+#: horizons/main.py:351
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 "Det sparade spelet kan vara trasigt eller blivit sparat av en tidigare "
 "version."
 
-#: horizons/main.py:465
+#: horizons/main.py:470
 msgid "No quicksaves found"
 msgstr "Inga snabbsparade spel hittade"
 
-#: horizons/main.py:466
+#: horizons/main.py:471
 msgid "You need to quicksave before you can quickload."
 msgstr "Du behöver snabbspara innan du kan snabbladda."
 
@@ -3538,35 +3251,34 @@ msgstr "Du har vunnit!"
 msgid "You have completed this scenario."
 msgstr "Du har avklarat det här scenariot."
 
-# 75%
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
 msgstr "Vill du fortsätta spela?"
 
-#: horizons/scenario/scenarioeventhandler.py:158
+#: horizons/scenario/scenarioeventhandler.py:169
 msgid "unknown"
 msgstr "okänd"
 
 #. usually invalid filename
-#: horizons/session.py:409
+#: horizons/session.py:404
 msgid "Failed to create savegame file"
 msgstr "Misslyckades med att skapa en fil att spara på"
 
-#: horizons/session.py:410
+#: horizons/session.py:405
 msgid "There has been an error while creating your savegame file."
 msgstr "Det uppstod ett fel när du försökte skapa en fil att spara på."
 
-#: horizons/session.py:411
+#: horizons/session.py:406
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr "Detta kan bero på att filnamnet innehåller tecken som inte stöds."
 
-#: horizons/session.py:417
+#: horizons/session.py:412
 msgid "Access is denied"
 msgstr "Åtkomst nekad"
 
-#: horizons/session.py:418
+#: horizons/session.py:413
 msgid "The savegame file could be read-only or locked by another process."
 msgstr "Det här området är redan upptaget av en annan spelare."
 
@@ -3596,22 +3308,22 @@ msgstr "Klicka för att ladda ner"
 msgid "A page has been opened in your browser."
 msgstr "En sida har öppnats i din webbläsare."
 
-#. You usually do not need to change anything here when translating
-#: horizons/util/uhdbaccessor.py:104
-#, python-format
-msgid "{building}: {description}"
-msgstr "{building}: {description}"
-
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:275
+#: horizons/util/uhdbaccessor.py:261
 #, python-format
 msgid "{slotnum} slots, {limit}t"
 msgstr ""
 
-#: horizons/util/uhdbaccessor.py:284
+#: horizons/util/uhdbaccessor.py:270
 #, python-format
 msgid "Health: {health}"
 msgstr ""
+
+#. You usually do not need to change anything here when translating
+#: horizons/world/building/__init__.py:125
+#, python-format
+msgid "{building}: {description}"
+msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
@@ -3679,8 +3391,9 @@ msgid "This building has a very low productivity."
 msgstr "Den här byggnaden har en väldigt låg produktivitet."
 
 #: horizons/world/status.py:110
-msgid "This building is decomissioned."
-msgstr ""
+#, fuzzy
+msgid "This building is decommissioned."
+msgstr "Den här byggnaden brinner!"
 
 #: horizons/world/status.py:116
 msgid "The inhabitants of this building have the plague."
@@ -3716,7 +3429,6 @@ msgstr "Inaktiv vid {location}"
 msgid "Idle at {x}, {y}"
 msgstr "Inaktiv vid {x}, {y}"
 
-# 83%
 #: horizons/world/units/ship.py:234
 msgid "Trader"
 msgstr "Köpman"
@@ -3732,93 +3444,122 @@ msgid "Attacking {owner}"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "A new settlement was founded by {player}."
-msgstr "En ny bosättning har grundats av {player}."
-
-# 82%
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "A new ship by the name of {name} has been created."
-msgstr "Ett nytt skepp har skapats."
+msgid "{player1} and {player2} have allied their forces."
+msgstr "{player1} och {player2} är nu allierade."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "A new world has been created."
-msgstr "En ny värld har skapats."
+msgid "Your building has caught fire!"
+msgstr "Din byggnad har börjat brinna!"
 
-# 81%
+#. This is a database entry: the name of a resource.
+msgid "medical herbs"
+msgstr "medicinska örter"
+
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Aristocrats"
 msgstr "Aristokrater"
 
+#. This is a database entry: the name of a resource.
+msgid "happiness"
+msgstr "lycka"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Cannot go here."
-msgstr "Kan inte gå hit."
+msgid "Some of your inhabitants just moved out."
+msgstr "Några av dina invånare har precis flyttat ut."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar"
+msgstr "socker"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco leaves"
+msgstr "tobaksblad"
+
+#. This is a database entry: the name of a resource.
+msgid "stone tops"
+msgstr "sten toppar"
+
+#. This is a database entry: the name of a resource.
+msgid "wool"
+msgstr "ull"
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa beans"
+msgstr "kakaobönor"
+
+#. This is a database entry: the name of a resource.
+msgid "food"
+msgstr "föda"
+
+#. This is a database entry: the name of a resource.
+msgid "flour"
+msgstr "mjöl"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs for slaughter"
+msgstr "grisar för slakt"
+
+#. This is a database entry: the name of a resource.
+msgid "trees"
+msgstr "träd"
+
+#. This is a database entry: the name of a resource.
+msgid "clay deposit"
+msgstr "lerfyndighet"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have ended the war and are now allied."
+msgstr "{player1} och {player2} har slutit fred och är nu allierade."
+
+#. This is a database entry: the name of a resource.
+msgid "cocoa"
+msgstr "kakao"
+
+#. This is a database entry: the name of a resource.
+msgid "potatoes"
+msgstr "potatis"
+
+#. This is a database entry: the name of a resource.
+msgid "iron ore"
+msgstr "järnmalm"
+
+#. This is a database entry: the name of a resource.
+msgid "clay"
+msgstr "lera"
 
 # merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att skilja dem åt.
-# 77%
 #. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
 msgid "Merchants"
 msgstr "Borgare"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Ett av dina fält kräver en farm för att kunna skörda."
+#. This is a database entry: the name of a resource.
+msgid "liquor"
+msgstr "sprit"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-#: sql-database-files
-msgid "Sailors"
-msgstr "Sjömän"
+#. This is a database entry: the name of a resource.
+msgid "iron ingots"
+msgstr "järntackor"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "Screenshot has been saved to {file}."
 msgstr "Skärmdump har sparats till {file}."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "Några av dina invånare har kan inte ta sig till torget."
+#. This is a database entry: the name of a resource.
+msgid "cattle"
+msgstr "nötkreatur"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Some of your inhabitants just moved out."
-msgstr "Några av dina invånare har precis flyttat ut."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid ""
-"The route is now configured. Start it via the \"start route\" button in the "
-"\"configure route\" menu."
-msgstr ""
-"Rutten är nu klar. Starta den via \"starta rutt\"-knappen i \"konfigurera "
-"rutt\"-menyn."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "You can also drag roads."
 msgstr "Du kan också dra vägar."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Du kan inte rasera ditt lager, din bosättning behöver den."
+#. This is a database entry: the name of a resource.
+msgid "lamb wool"
+msgstr "lammull"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You failed the scenario."
-msgstr "Du misslyckades med scenariot."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, fuzzy
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
@@ -3828,387 +3569,304 @@ msgstr ""
 "kommer inte uppgradera vidare."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
+msgid ""
+"The route is now configured. Start it via the \"start route\" button in the "
+"\"configure route\" menu."
+msgstr ""
+"Rutten är nu klar. Starta den via \"starta rutt\"-knappen i \"konfigurera "
+"rutt\"-menyn."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr "{player1} och {player2} har avslutat sin allians."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Cannot go here."
+msgstr "Kan inte gå hit."
+
+#. This is a database entry: the name of a resource.
+msgid "sugar cane"
+msgstr "sockerrör"
+
+#. This is a database entry: the name of a resource.
+msgid "corn"
+msgstr "majs"
+
+#. This is a database entry: the name of a resource.
+msgid "grapes"
+msgstr "druvor"
+
+#. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "vaxkakor"
+
+#. This is a database entry: the name of a resource.
+msgid "faith"
+msgstr "tro"
+
+#. This is a database entry: the name of a resource.
+msgid "boards"
+msgstr "trä"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "Några av dina invånare har kan inte ta sig till torget."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} och {player2} kommer att slåss till döden."
+
+#. This is a database entry: the name of an inhabitant tier (level).
+msgid "Sailors"
+msgstr "Sjömän"
+
+#. This is a database entry: the name of a resource.
+msgid "grain"
+msgstr "korn"
+
+#. This is a database entry: the name of a resource.
+msgid "spices"
+msgstr "kryddor"
+
+#. This is a database entry: the name of a resource.
+msgid "dagger"
+msgstr "kniv"
+
+#. This is a database entry: the name of a resource.
+msgid "bricks"
+msgstr "tegel"
+
+#. This is a database entry: the name of a resource.
+msgid "community"
+msgstr "gemenskap"
+
+#. This is a database entry: the name of a resource.
+msgid "spice plants"
+msgstr "kryddväxter"
+
+#. This is a database entry: the name of a resource.
+msgid "cattle for slaughter"
+msgstr "nötkreatur för slakt"
+
+#. This is a database entry: the name of a resource.
+msgid "tobaccos"
+msgstr "tobak"
+
+#. This is a database entry: the name of a resource.
+msgid "tools"
+msgstr "verktyg"
+
+#. This is a database entry: the name of a resource.
+msgid "deer meat"
+msgstr "rådjurskött"
+
+#. This is a database entry: the name of a resource.
+msgid "confectionery"
+msgstr "konfektyr"
+
+#. This is a database entry: the name of a resource.
+msgid "coins"
+msgstr "mynt"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You won!"
+msgstr "Du vann!"
+
+#. This is a database entry: the name of a resource.
+msgid "fish"
+msgstr "fisk"
+
+#. This is a database entry: the name of a resource.
+msgid "charcoal"
+msgstr "träkol"
+
+#. This is a database entry: the name of a resource.
+msgid "stone deposit"
+msgstr "stenfyndighet"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You failed the scenario."
+msgstr "Du misslyckades med scenariot."
+
+#. This is a database entry: the name of a resource.
+msgid "fire"
+msgstr "eld"
+
+#. This is a database entry: the name of a resource.
+msgid "acorns"
+msgstr "ekollon"
+
+#. This is a database entry: the name of a resource.
+msgid "tobacco plants"
+msgstr "tobaksplantor"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr "Du behöver mer {resource} för att kunna bygga denna byggnad."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "You won!"
-msgstr "Du vann!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your building has caught fire!"
-msgstr "Din byggnad har börjat brinna!"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 msgid "Your crew refuses to leave this map."
 msgstr "Din besättning vägrar lämna denna karta."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been autosaved."
-msgstr "Ditt spel har autosparats."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been quicksaved."
-msgstr "Ditt spel har snabbsparats."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your game has been saved."
-msgstr "Ditt spel har sparats."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "Dina invånare har nått level {level}."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-msgid "Your mine has run out of resources."
-msgstr "Din gruva har sinat."
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1} och {player2} har avslutat deras fientlighet."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "acorns"
-msgstr "ekollon"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "alvearies"
-msgstr "biodling"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "boards"
-msgstr "trä"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "bricks"
-msgstr "tegel"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "candles"
-msgstr "ljus"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cannon"
-msgstr "kanon"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle"
-msgstr "nötkreatur"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cattle for slaughter"
-msgstr "nötkreatur för slakt"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "charcoal"
-msgstr "träkol"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay"
-msgstr "lera"
-
-# 83%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "clay deposit"
-msgstr "lerfyndighet"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa"
-msgstr "kakao"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "cocoa beans"
-msgstr "kakaobönor"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "coins"
-msgstr "mynt"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "community"
-msgstr "gemenskap"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "condiments"
-msgstr "kryddor"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "confectionery"
-msgstr "konfektyr"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "corn"
-msgstr "majs"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "dagger"
-msgstr "kniv"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer food A"
-msgstr "rådjursmat A"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "deer meat"
-msgstr "rådjurskött"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "education"
-msgstr "utbildning"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "faith"
-msgstr "tro"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fire"
-msgstr "eld"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "fish"
-msgstr "fisk"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "flour"
-msgstr "mjöl"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "food"
-msgstr "föda"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "get-together"
-msgstr "sammankomst"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grain"
-msgstr "korn"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "grapes"
-msgstr "druvor"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "grass"
 msgstr "gräs"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "happiness"
-msgstr "lycka"
+msgid "alvearies"
+msgstr "biodling"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been autosaved."
+msgstr "Ditt spel har autosparats."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "Ett av dina fält kräver en farm för att kunna skörda."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your mine has run out of resources."
+msgstr "Din gruva har sinat."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "Your inhabitants reached level {level}."
+msgstr "Dina invånare har nått level {level}."
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "herbs"
-msgstr "örter"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "honeycombs"
-msgstr "vaxkakor"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
 msgid "iron deposit"
 msgstr "järnfyndighet"
 
 #. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ingots"
-msgstr "järntackor"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "iron ore"
-msgstr "järnmalm"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "lamb wool"
-msgstr "lammull"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "liquor"
-msgstr "sprit"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "medical herbs"
-msgstr "medicinska örter"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs"
-msgstr "grisar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "pigs for slaughter"
-msgstr "grisar för slakt"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "potatoes"
-msgstr "potatis"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "salt"
-msgstr "salt"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spice plants"
-msgstr "kryddväxter"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "spices"
-msgstr "kryddor"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone deposit"
-msgstr "stenfyndighet"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "stone tops"
-msgstr "sten toppar"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar"
-msgstr "socker"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "sugar cane"
-msgstr "sockerrör"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "textile"
-msgstr "tyg"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco leaves"
-msgstr "tobaksblad"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobacco plants"
-msgstr "tobaksplantor"
-
-# 87%
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tobaccos"
-msgstr "tobak"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "tools"
-msgstr "verktyg"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "trees"
-msgstr "träd"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "vines"
-msgstr "vinrankor"
-
-#. This is a database entry: the name of a resource.
-#: sql-database-files
-msgid "wool"
-msgstr "ull"
+msgid "education"
+msgstr "utbildning"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} och {player2} är nu allierade."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} och {player2} har slutit fred och är nu allierade."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr "{player1} och {player2} har förklarat krig mot varandra."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} och {player2} har avslutat deras fientlighet."
+#. This is a database entry: the name of a resource.
+msgid "textile"
+msgstr "tyg"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} och {player2} har avslutat sin allians."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} och {player2} kommer att slåss till döden."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql-database-files
 #, python-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
+
+#. This is a database entry: the name of a resource.
+msgid "cannon"
+msgstr "kanon"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr "Ett nytt skepp har skapats."
+
+#. This is a database entry: the name of a resource.
+msgid "get-together"
+msgstr "sammankomst"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "A new world has been created."
+msgstr "En ny värld har skapats."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been quicksaved."
+msgstr "Ditt spel har snabbsparats."
+
+#. This is a database entry: the name of a resource.
+msgid "deer food A"
+msgstr "rådjursmat A"
+
+#. This is a database entry: the name of a resource.
+msgid "herbs"
+msgstr "örter"
+
+#. This is a database entry: the name of a resource.
+msgid "pigs"
+msgstr "grisar"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr "Du kan inte rasera ditt lager, din bosättning behöver den."
+
+#. This is a database entry: the name of a resource.
+msgid "condiments"
+msgstr "kryddor"
+
+#. This is a database entry: the name of a resource.
+msgid "candles"
+msgstr "ljus"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr "En ny bosättning har grundats av {player}."
+
+#. This is a database entry: the name of a resource.
+msgid "vines"
+msgstr "vinrankor"
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+msgid "Your game has been saved."
+msgstr "Ditt spel har sparats."
+
+#. This is a database entry: the name of a resource.
+msgid "salt"
+msgstr "salt"
+
+#~ msgid "Key bindings"
+#~ msgstr "Kortkommandon"
+
+#~ msgid "Hold to place multiple buildings"
+#~ msgstr "Håll ner för att placera flera byggnader"
+
+#~ msgid "[{key}] = {text}"
+#~ msgstr "[{key}] = {text}"
+
+#, fuzzy
+#~ msgid "Project Coordination"
+#~ msgstr "utbildning"
+
+#, fuzzy
+#~ msgid "Graphics Artists"
+#~ msgstr "Grafik"
+
+#, fuzzy
+#~ msgid "Patchers"
+#~ msgstr "Slakteri"
+
+#, fuzzy
+#~ msgid "Translators"
+#~ msgstr "Översättningsstatus:"
+
+#, fuzzy
+#~ msgid "Hosting Weblate"
+#~ msgstr "Loggning aktiverad"
+
+#, fuzzy
+#~ msgid "Spanish"
+#~ msgstr "Företag"
+
+#, fuzzy
+#~ msgid "Dutch"
+#~ msgstr "Slakteri"
+
+#, fuzzy
+#~ msgid "Chinese"
+#~ msgstr "vinrankor"
 
 #, fuzzy
 #~ msgid "Unknown Horizons"
@@ -4279,54 +3937,32 @@ msgstr "{player}: {message}"
 #~ msgid "Build fields"
 #~ msgstr "Bygg fält"
 
-# 88%
-# 81%
 #~ msgid "1 resident"
 #~ msgstr "1 invånare"
 
-# 88%
-# 81%
 #~ msgid "2 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
 #~ msgid "3 residents"
 #~ msgstr "3 invånare"
 
-# 88%
-# 81%
 #~ msgid "4 residents"
 #~ msgstr "4 invånare"
 
-# 88%
-# 81%
 #~ msgid "5 residents"
 #~ msgstr "5 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "6 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "7 residents"
 #~ msgstr "2 invånare"
 
-# 88%
-# 81%
-# 90%
 #, fuzzy
 #~ msgid "8 residents"
 #~ msgstr "2 invånare"
-
-#~ msgid "Upgrade not possible:"
-#~ msgstr "Uppgradering inte möjlig:"
 
 #~ msgid "This is the current maximum increment!"
 #~ msgstr "Detta är det för tillfället högsta tillväxtsteget!"
@@ -4477,14 +4113,12 @@ msgstr "{player}: {message}"
 #~ msgid "yellow"
 #~ msgstr "gul"
 
-# 83%
 #~ msgid "Apply:"
 #~ msgstr "Ändra:"
 
 #~ msgid "Branch Office"
 #~ msgstr "Handelskontor"
 
-# 83%
 #~ msgid "Cattle"
 #~ msgstr "Nötkreatur"
 
@@ -4498,7 +4132,6 @@ msgstr "{player}: {message}"
 #~ msgid "Pioneer buildings"
 #~ msgstr "Pionjärsbyggnader"
 
-# 76%
 #~ msgid "Charcoal burning: Burns a lot of boards to charcoal."
 #~ msgstr "Bränner brädor till träkol."
 
@@ -4542,7 +4175,6 @@ msgstr "{player}: {message}"
 #~ msgid "A new settlement has been created by ${player}."
 #~ msgstr "En ny bosättning har skapats av ${player}."
 
-# 85%
 #~ msgid "One of your settler has no main square in it's range."
 #~ msgstr "En av dina nybyggare har ingen torg inom sin räckvidd."
 
@@ -4736,7 +4368,6 @@ msgstr "{player}: {message}"
 #~ msgid "You have completed this scenario. "
 #~ msgstr "Du har klarat det här scenariot."
 
-# 91%
 #~ msgid "Saved at %s"
 #~ msgstr "Sparad den %s"
 

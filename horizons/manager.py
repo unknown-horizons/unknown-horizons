@@ -174,10 +174,7 @@ class MPManager(LivingObject):
 				# but we don't know what. Stop the game.
 				msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
 				  _("We are very sorry and hope to have this bug fixed in a future version.")
-				self.session.gui._on_error(msg, fatal=True)
-			else:
-				#self.log.debug("MPManager: Hash values are equal")
-				pass
+				self.session.ingame_gui.show_error_popup('Out of sync', msg)
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):
 		"""Called when a divergence has been detected"""

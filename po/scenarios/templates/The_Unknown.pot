@@ -6,15 +6,15 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 7feeaa1\n"
+"Project-Id-Version: Unknown Horizons d0fc091\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-10 11:12+0200\n"
+"POT-Creation-Date: 2013-05-21 12:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. scenario difficulty
@@ -25,7 +25,7 @@ msgstr ""
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and your "
 "crew were on the way to a colony of England in the pacific ocean.\n"
-"Everything went fine until you came into a storm..."
+"Everything went fine until you came into a storm…"
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -59,7 +59,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
-"days... we are running out of food and lack basic building material."
+"days… we are running out of food and lack basic building material."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -117,7 +117,7 @@ msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
 "stuck here for a while, so we'll have to make the best of situation.\n"
-"We can only try to to build up a civilisation and find a way home..."
+"We can only try to to build up a civilisation and find a way home…"
 msgstr ""
 
 #. This is the text body of a logbook page.

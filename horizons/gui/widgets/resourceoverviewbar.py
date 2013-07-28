@@ -610,7 +610,7 @@ class ResourceOverviewBar(object):
 		ExtScheduler().add_new_object(self._update_stats, self, run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
 
 	def _update_stats(self):
-		# fill in valies of stats, must correspond to images in _show_stats
+		# fill in values of stats, must correspond to images in _show_stats
 		format_display = lambda x : (u"+" if x >= 0 else u"") + unicode(x)
 		data = self.session.world.player.get_statistics()
 

@@ -307,7 +307,7 @@ class SavegameUpgrader(object):
 					db("UPDATE building SET location = ? WHERE rowid = ?", settlement_id, worldid)
 
 		# save the new settlement tiles data
-		ground_map = defaultdict(lambda: [])
+		ground_map = defaultdict(list)
 		for (coords, settlement_id) in settlement_map.iteritems():
 			ground_map[settlement_id].append(coords)
 
@@ -325,6 +325,13 @@ class SavegameUpgrader(object):
 		new = 'MAX_TIER_REACHED'
 		db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
 		db("UPDATE message_widget_archive SET id = ? WHERE id = ?", new, old)
+
+ 	def _upgrade_to_rev72(self, db):
+		# add Black Death slot to settlers. Use direct numbers since only these work and they must never change.
+		for (settler_id, ) in db("SELECT rowid FROM building WHERE type = ?", 3):
+			db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)", settler_id, 98, 1)
+		# rename fire_disaster to building_influencing_disaster
+		db("ALTER TABLE fire_disaster RENAME TO building_influencing_disaster")
 
 	def _upgrade(self):
 		# fix import loop

@@ -24,7 +24,7 @@
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -33,7 +33,6 @@
 #
 ###############################################################################
 
-import re
 import os
 import sys
 from xml.dom import minidom
@@ -42,7 +41,9 @@ if len(sys.argv) != 2:
 	print 'Error: Provide a file to write strings to as argument. Exiting.'
 	sys.exit(1)
 
-header = '''# ###################################################
+header = u'''\
+# Encoding: utf-8
+# ###################################################
 # Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -67,7 +68,7 @@ header = '''# ###################################################
 #
 # == I18N DEV USE CASES: CHEATSHEET ==
 #
-# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+# ** Refer to  development/create_pot.sh  for help with building or updating
 #    the translation files for Unknown Horizons.
 #
 ###############################################################################
@@ -76,7 +77,7 @@ header = '''# ###################################################
 #          You need to update it to see changes to strings in-game.
 #          DO NOT MANUALLY UPDATE THIS FILE (by editing strings).
 #          The script to generate .pot templates calls the following:
-# ./development/extract_strings_from_xml.py  horizons/i18n/guitranslations.py
+# ./development/extract_strings_from_xml.py  horizons/gui/translations.py
 #
 # NOTE: In string-freeze mode (shortly before releases, usually
 #       announced in a meeting), updates to this file must not happen
@@ -93,16 +94,16 @@ def set_translations():
 	text_translations = {
 '''
 
-FOOTER = '''
+FOOTER = u'''
 	}
 '''
 
-FILE = '''
+FILE = u'''
 	{filename!r} : {{
 {entries}		}},
 '''
 
-ENTRY = '''\
+ENTRY = u'''\
 		({widget!r:<32}, {attribute!r:<10}): {text},
 '''
 
@@ -112,7 +113,6 @@ files_to_skip = [
 	'startup_error_popup.xml',
 	]
 
-KEEP_STUFF_RE = re.compile(r'noi18n_\w+')
 
 def print_n_no_name(n, text):
 	print '\tWarning: ',
@@ -150,7 +150,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			# comment='noi18n' in widgets where translation is not desired
 			continue
 
-		if 'noi18n_%s' % attribute in i18n:
+		if i18n == 'noi18n_%s' % attribute:
 			# comment='noi18n_tooltip' in widgets where tooltip translation is not
 			# desired, but text should be translated.
 			continue
@@ -165,7 +165,7 @@ def content_from_element(element_name, parse_tree, attribute):
 			if name == 'version_label':
 				text = 'VERSION.string()'
 			else:
-				text = '_("%s")' % text
+				text = '_(u"%s")' % text
 			newline = ENTRY.format(attribute=attribute, widget=name, text=text)
 			element_strings.append(newline)
 
@@ -203,4 +203,4 @@ filesnippets = ''.join(content for content in filesnippets if content)
 
 output = '%s%s%s' % (header, filesnippets, FOOTER)
 
-file(sys.argv[1], 'w').write(output)
+file(sys.argv[1], 'w').write(output.encode('utf-8'))

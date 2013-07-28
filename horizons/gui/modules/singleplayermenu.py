@@ -1,3 +1,4 @@
+# Encoding: utf-8
 # ###################################################
 # Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -299,7 +300,7 @@ class RandomMapWidget(object):
 		handle, self._preview_output = tempfile.mkstemp()
 		os.close(handle)
 		self._preview_process = subprocess.Popen(args=args, stdout=open(self._preview_output, "w"))
-		self._set_map_preview_status(u"Generating preview...")
+		self._set_map_preview_status(u"Generating preview…")
 
 		ExtScheduler().add_new_object(self._poll_preview_process, self, 0.5)
 
@@ -318,7 +319,7 @@ class RandomMapWidget(object):
 			ExtScheduler().add_new_object(self._poll_preview_process, self, 0.1)
 			return
 		elif self._preview_process.returncode != 0:
-			self._set_map_preview_status(u"An unknown error occured while generating the map preview")
+			self._set_map_preview_status(u"An unknown error occurred while generating the map preview")
 			return
 
 		with open(self._preview_output, 'r') as f:

@@ -911,8 +911,6 @@ msgstr ""
 msgid "Build a storage tent (tier I tab) where it makes sense."
 msgstr ""
 
-# 79%
-# 75%
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #, fuzzy
 msgid "NEW TASK: BUILD STORAGE"
@@ -991,7 +989,6 @@ msgstr ""
 msgid "Build a weaver that can somehow reach the wool of your farm."
 msgstr ""
 
-# 79%
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #, fuzzy
 msgid "NEW TASK: BUILD A WEAVER"

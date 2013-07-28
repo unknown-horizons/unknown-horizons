@@ -58,7 +58,7 @@ class BuildTab(TabInterface):
 
 	cur_build_menu_config = default_build_menu_config
 
-	# NOTE: check for occurences of this when adding one, you might want to
+	# NOTE: check for occurrences of this when adding one, you might want to
 	#       add respective code there as well
 	unlocking_strategies = Enum("tab_per_tier", # 1 tab per tier
 	                            "single_per_tier" # each single building unlocked if tier is unlocked
@@ -137,7 +137,7 @@ class BuildTab(TabInterface):
 				return
 
 			building = Entities.buildings[building_id]
-			button.helptext = self.session.db.get_building_tooltip(building_id)
+			button.helptext = building.get_tooltip()
 
 			# Add necessary resources to tooltip
 			# [br] means newline

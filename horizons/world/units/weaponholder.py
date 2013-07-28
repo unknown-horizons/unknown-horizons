@@ -92,7 +92,7 @@ class WeaponHolder(object):
 
 	def _increase_fired_weapons_number(self, caller=None):
 		"""
-		Callback that helps keeping tack of succesful weapon fire number
+		Callback that helps keeping tack of successful weapon fire number
 		"""
 		self._fired_weapons_number += 1
 
@@ -234,10 +234,10 @@ class WeaponHolder(object):
 		Returns True if the holder can attack position at call time
 		@param position: position of desired attack
 		"""
-		# if no fireable weapon return false
+		# if no fireable weapon return False
 		if not self._fireable:
 			return False
-		# if position not in range return false
+		# if position not in range return False
 		return self._min_range <= self.position.distance(position.center) <= self._max_range
 
 	def try_attack_target(self):
@@ -310,7 +310,7 @@ class WeaponHolder(object):
 
 	def remove_target(self):
 		"""
-		Removes refference from target,
+		Removes reference from target,
 		this happens when the attack is stopped or the target is dead
 		either way the refs are checked using gc module
 		this is used because after unit death it's possbile that it still has refs
@@ -389,7 +389,7 @@ class WeaponHolder(object):
 
 	def act_attack(self, dest):
 		"""
-		Overridde in subclasses for action code
+		Override in subclasses for action code
 		"""
 		pass
 

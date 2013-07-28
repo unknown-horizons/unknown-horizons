@@ -181,7 +181,6 @@ def get_option_parser():
 def get_content_dir_parent_path():
 	"""
 	Return the path to the parent of the content dir.
-	
 	This is usually just the dir the run_uh.py is in but on some Linux installation
 	scenarios the horizons dir, the content dir, and run_uh.py are all in different
 	locations.
@@ -251,13 +250,13 @@ def main():
 	# avoid crashing when writing to unavailable standard streams
 	setup_streams()
 
-	# use locale-specific time.strftime handling.
+	# use locale-specific time.strftime handling
 	try:
 		locale.setlocale(locale.LC_TIME, '')
 	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
 		pass
 
-	# Change the working directory to the parent of the content directory.
+	# Change the working directory to the parent of the content directory
 	os.chdir(get_content_dir_parent_path())
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 	create_user_dirs()

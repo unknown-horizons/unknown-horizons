@@ -81,8 +81,8 @@ class BuildRelatedTab(OverviewTab):
 
 	def _create_build_buttons(self, building_id, container):
 		# {{mode}} in double braces because it is replaced as a second step
-		helptext = self.instance.session.db.get_building_tooltip(building_id)
-		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=helptext)
+		building_type = Entities.buildings[building_id]
+		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=building_type.get_tooltip())
 		build_button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
 		build_button.capture(Callback(self.build_related, building_id))
 		return build_button

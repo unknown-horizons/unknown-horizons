@@ -102,7 +102,7 @@ class _build_i18n(distutils.cmd.Command):
 				"Try installing the package 'gettext' or 'msgfmt'.")
 
 		# If there is a po/LINGUAS file, or the LINGUAS environment variable
-		# is set, only compile the languages listed there.
+		# is set, only compile the languages listed there
 		selected_languages = None
 		linguas_file = os.path.join(po_dir, "LINGUAS")
 		if os.path.isfile(linguas_file):
@@ -197,7 +197,7 @@ class _build_i18n(distutils.cmd.Command):
 				data_files.append((target, files_merged))
 
 		# Since specifying a .mofile dir is not supported, we manually move build/mo/
-		# to a place more appropriate in our opinion, currently content/lang/.
+		# to a place more appropriate in our opinion, currently content/lang/
 		if os.path.exists(os.path.join("build", "mo")):
 			# it appears build/mo should always magically appear, but does not on some gentoo machines.
 			# there, everything is placed in content/lang, so it's fine

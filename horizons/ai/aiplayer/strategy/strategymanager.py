@@ -285,7 +285,7 @@ class StrategyManager(object):
 
 		for player in other_players:
 			# Prepare environment
-			self.log.debug("Conditions occuring against player %s", player.name)
+			self.log.debug("Conditions occurring against player %s", player.name)
 			environment['player'] = player
 
 			for condition in self.conditions.keys():

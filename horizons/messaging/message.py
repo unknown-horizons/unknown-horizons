@@ -101,7 +101,7 @@ class Message(object):
 		"""Send a message that is initialized with `args`.
 
 		The first argument is always a sender, the number of arguments has to be
-		N + 1, with N beeing the number of arguments defined on the message class.
+		N + 1, with N being the number of arguments defined on the message class.
 
 		Example:
 
@@ -138,7 +138,7 @@ class SettlerInhabitantsChanged(Message):
 	arguments = ('change', )
 
 class ResourceBarResize(Message):
-	"""Signals a change in resource bar size (not slot changes, but number of slot changes)"""
+	"""Signals a change in resource bar size (not slot changes, but number of slot changes)."""
 	pass
 
 class UpgradePermissionsChanged(Message):
@@ -147,14 +147,16 @@ class UpgradePermissionsChanged(Message):
 
 class SettlementRangeChanged(Message):
 	"""Called on grow and perhaps shrink once that's implemented. Used by buildingtool.
-	Send by a Settlement."""
+	Sent by a Settlement."""
 	arguments = (
 		'changed_tiles', # Actual tile objects
 	)
 
 class WorldObjectDeleted(Message):
 	"""Called when a world object is being deleted.
-	Currently emitted in the process of destruction, i.e. you aren't guaranteed to be able to access any attributes. (Feel free to change the implementation if you need this).
+	Currently emitted in the process of destruction, i.e. you aren't guaranteed
+	to be able to access any attributes.
+	(Feel free to change the implementation if you need this).
 	"""
 	arguments = ('worldobject', 'worldid', )
 
@@ -172,7 +174,7 @@ class HoverSettlementChanged(Message):
 	arguments = ('settlement', )
 
 class NewSettlement(Message):
-	"""Sent when a new settlement is created"""
+	"""Sent when a new settlement is created."""
 	arguments = ('settlement', 'warehouse_position', )
 
 class HoverInstancesChanged(Message):
@@ -183,7 +185,7 @@ class HoverInstancesChanged(Message):
 
 class NewDisaster(Message):
 	"""Sent when a building is affected by a disaster."""
-	arguments = ('building', 'disaster_class', )
+	arguments = ('building', 'disaster_class', 'disaster')
 
 class TabWidgetChanged(Message):
 	"""Sent when the ingamegui displays a different set of tabs, i.e. the tabwidget is exchanged.
@@ -191,19 +193,26 @@ class TabWidgetChanged(Message):
 	pass
 
 class GuiAction(Message):
-	"""Sent on events pychan classifies as "action" """
+	"""Sent on events pychan classifies as "action"."""
 	pass
 
 class ResourceProduced(Message):
-	"""Sent when a production building finished the production of a resource """
+	"""Sent when a production building finished the production of a resource."""
 	arguments = ('caller', 'produced_resources', )
 
+class InstanceInventoryUpdated(Message):
+	"""Message sent whenever an inventory of any instance is updated.
+
+	This message is sent by StorageComponent but sender is the instance!
+	"""
+	arguments = ('inventory', )
+
 class SettlementInventoryUpdated(Message):
-	"""Message sent whenever a settlement's inventory is updated"""
+	"""Message sent whenever a settlement's inventory is updated."""
 	pass
 
 class PlayerInventoryUpdated(Message):
-	"""Message sent whenever a player's inventory is updated"""
+	"""Message sent whenever a player's inventory is updated."""
 	pass
 
 class LanguageChanged(Message):
@@ -223,4 +232,5 @@ class MineEmpty(Message):
 	arguments = ('mine', )
 
 class LoadingProgress(Message):
+	"""Sent when loading screen is updated with a new progress hint."""
 	arguments = ('stage', )

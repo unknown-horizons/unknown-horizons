@@ -121,6 +121,14 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
 		self.widget.child_finder('headline').text = _(instance.session.db.get_settler_name(self.__class__.LEVEL))
 
+		if self.__class__.LEVEL == TIER.CURRENT_MAX:
+			# highest currently playable tier => upgrades not possible
+			upgrades_label = self.widget.child_finder('upgrades_lbl')
+			upgrades_label.text = _("Upgrade not possible:")
+			upgrades_button = self.widget.child_finder('allow_upgrades')
+			upgrades_button.set_inactive()
+			upgrades_button.helptext = _("This is the highest playable tier for now!")
+
 	@classmethod
 	def shown_for(cls, instance):
 		return instance.owner.settler_level >= cls.LEVEL
