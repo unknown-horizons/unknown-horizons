@@ -223,10 +223,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 'Unknown Horizons의 특징은 스마트가격입니다, 때문에 한개의 값은 다양할 수 있습니다.
 
     값은 수동적으로 변할수 없습니다!'
-  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
+  - '''구매''와 ''판매''''회계''텝에서 무역수지를 볼수있습니다.'
   - '
 
-    TASK: Buy as many tools as you need to have 30 tools in stock!'
+    임무: 재고에서 30개의 도구를 가지고하는 데 필요한만큼 도구로 구입하세요(???)!'
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -234,9 +234,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, 공연장 건설하고 천막과 연결한다.]
   - [Headline, '새로운 임무 : 공연장 건설']
   - [Image, content/gui/images/background/hr.png]
-  - Those tools will be enough for the moment. Well done!
-  - You now provide housing, a main square and food to your inhabitants.
-  - Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.
+  - 이러한 도구는 바로 충분할것입니다. 잘 하셨습니다!
+  - 지금 주민들에게 집과 주요광장과 음식을 제공하세요.
+  - 여전히 우리가 만족하지않는 한가지가 있습니다. 이는 시장 또는 천막 탭에서 확인 할 수 있습니다 - 선원은 기도할 수 있는 기본 건물을 원합니다.
   - The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
   - Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
@@ -677,4 +677,4 @@ metadata:
   locale: ko
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 133 translated messages, 58 untranslated messages.
+  translation_status: 138 translated messages, 53 untranslated messages.

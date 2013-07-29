@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-07-28 14:20+0200\n"
+"PO-Revision-Date: 2013-07-29 04:06+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
@@ -649,13 +649,15 @@ msgstr ""
 msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
-msgstr ""
+msgstr "'구매'와 '판매''회계'텝에서 무역수지를 볼수있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"\n"
+"임무: 재고에서 30개의 도구를 가지고하는 데 필요한만큼 도구로 구입하세요(???)!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a pavilion with connection to the tents."
@@ -667,11 +669,11 @@ msgstr "새로운 임무 : 공연장 건설"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "이러한 도구는 바로 충분할것입니다. 잘 하셨습니다!"
 
 #. This is the text body of a logbook page.
 msgid "You now provide housing, a main square and food to your inhabitants."
-msgstr ""
+msgstr "지금 주민들에게 집과 주요광장과 음식을 제공하세요."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -679,6 +681,8 @@ msgid ""
 "that in the marketplace or tent tab - your sailors want a basic building "
 "where they can pray."
 msgstr ""
+"여전히 우리가 만족하지않는 한가지가 있습니다. 이는 시장 또는 천막 탭에서 확인 할 수 있습니다 - 선원은 기도할 수 있는 기본 건물을 "
+"원합니다."
 
 #. This is the text body of a logbook page.
 msgid ""
