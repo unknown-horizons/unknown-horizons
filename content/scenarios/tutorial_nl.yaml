@@ -24,8 +24,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Dit is je kapiteinslogboek, waar alle belangrijke informatie bewaardt word. Een korte vermelding van elke taak zal aan de linkerzijde van het scherm te zien zijn.
-  - Als je geïnteresseerd bent in langere uitleg, geeft het logboek deze hulp.
+  - Dit is jouw kapiteinslogboek, waar alle belangrijke informatie bewaard word. Een korte vermelding van elke taak zal aan de linkerzijde van het scherm te zien zijn.
+  - Als jij geïnteresseerd bent in langere uitleg, geeft het logboek deze hulp.
   - Nadat je dit logboek gesloten hebt, kan het heropend worden met het "Logboek"-icoon in de rechterbovenhoek van het scherm (onder de mini-kaart, het icoon met een verzegelde brief en veer).
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
