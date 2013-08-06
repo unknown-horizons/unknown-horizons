@@ -137,7 +137,6 @@ class HotkeyConfiguration(object):
 		elif self.key_is_set(key):
 			oldaction = self.get_action_name(key)
 
-			#xgettext:python-format
 			message = _("{key} is already set to {action}.").format(key=key_name, action=oldaction)
 			message += u" " + _("Would you like to overwrite it?")
 			confirmed = horizons.main._modules.gui.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True)

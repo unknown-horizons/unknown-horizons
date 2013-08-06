@@ -164,10 +164,8 @@ class Inventory(Container):
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
 				sum_stored = self._inventory.get_sum_of_stored_resources()
-				#xgettext:python-format
 				self.legend.text = _('{stored}/{limit}').format(stored=sum_stored, limit=limit)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				#xgettext:python-format
 				self.legend.text = _('Limit: {amount}t per slot').format(amount=limit)
 
 	def apply_to_buttons(self, action, filt=None):

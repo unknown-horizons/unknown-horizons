@@ -275,7 +275,6 @@ class SettingsHandler(object):
 
 			if not startup:
 				headline = _("Logging enabled")
-				#xgettext:python-format
 				msg = _("Logs are written to {directory}.").format(directory=PATHS.LOG_DIR)
 				horizons.main._modules.gui.show_popup(headline, msg)
 

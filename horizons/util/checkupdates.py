@@ -79,7 +79,6 @@ class VersionHint(Popup):
 		self.info = info
 
 		title = _("New version of Unknown Horizons")
-		#xgettext:python-format
 		text = _("There is a more recent release of Unknown Horizons ({new_version}) "
 				 "than the one you are currently using ({old_version}).").format(
 				new_version=info.version,

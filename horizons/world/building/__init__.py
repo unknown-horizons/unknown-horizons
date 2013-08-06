@@ -120,7 +120,6 @@ class BuildingClass(IngameType):
 		already. DO NOT wrap the return value of this method in _()!
 		@return: string tooltip_text
 		"""
-		#xgettext:python-format
 		# You usually do not need to change anything here when translating
 		tooltip = _("{building}: {description}")
 		return tooltip.format(building=self._name,

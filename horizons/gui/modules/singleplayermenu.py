@@ -402,7 +402,6 @@ class FreeMapsWidget(object):
 
 		number_of_players = SavegameManager.get_recommended_number_of_players(map_file)
 		lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
-		#xgettext:python-format
 		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
 
 		self._update_map_preview(map_file)
@@ -566,15 +565,12 @@ class ScenarioMapWidget(object):
 		lbl.text = translation_status
 
 		lbl = self._gui.findChild(name="uni_map_difficulty")
-		#xgettext:python-format
 		lbl.text = _("Difficulty: {difficulty}").format(difficulty=metadata['difficulty'])
 
 		lbl = self._gui.findChild(name="uni_map_author")
-		#xgettext:python-format
 		lbl.text = _("Author: {author}").format(author=metadata['author'])
 
 		lbl = self._gui.findChild(name="uni_map_desc")
-		#xgettext:python-format
 		lbl.text = _("Description: {desc}").format(desc=metadata['description'])
 
 	def _find_map_filename(self, scenario_name, target_locale):
