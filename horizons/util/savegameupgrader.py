@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 import os
 import os.path
 import json
@@ -36,6 +37,8 @@ from horizons.util.shapes import Rect
 
 class SavegameUpgrader(object):
 	"""The class that prepares saved games to be loaded by the current version."""
+
+	log = logging.getLogger("util.savegameupgrader")
 
 	def __init__(self, path):
 		super(SavegameUpgrader, self).__init__()
@@ -343,8 +346,8 @@ class SavegameUpgrader(object):
 		elif rev == VERSION.SAVEGAMEREVISION: # the current version
 			self.final_path = self.original_path
 		else: # upgrade
-			print 'Discovered old savegame file, auto-upgrading: %s -> %s' % \
-					(rev, VERSION.SAVEGAMEREVISION)
+			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
+					(rev, VERSION.SAVEGAMEREVISION))
 			self.using_temp = True
 			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
 			os.close(handle)
