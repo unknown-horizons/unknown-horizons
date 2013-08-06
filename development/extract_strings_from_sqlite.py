@@ -105,7 +105,7 @@ class MSGID_collect:
 		for text, locations in self.msgids.items():
 			comment = '#. This is a database entry: %s.\n' % ','.join(locations)
 			if "{" in text and "}" in text:
-				comment += '#, python-format\n'
+				comment += '#, python-brace-format\n'
 			s += [comment + build_msgid(text)]
 		return '\n'.join(s).strip()
 
