@@ -396,6 +396,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev70(db)
 			if rev < 71:
 				self._upgrade_to_rev71(db)
+			if rev < 72:
+				self._upgrade_to_rev72(db)
 
 			db('COMMIT')
 			db.close()
