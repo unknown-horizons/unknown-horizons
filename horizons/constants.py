@@ -70,7 +70,7 @@ class VERSION:
 	REQUIRED_FIFE_PATCH_VERSION = 4
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 71
+	SAVEGAMEREVISION = 72
 
 	@staticmethod
 	def string():
