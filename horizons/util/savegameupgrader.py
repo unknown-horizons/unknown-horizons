@@ -343,6 +343,8 @@ class SavegameUpgrader(object):
 		elif rev == VERSION.SAVEGAMEREVISION: # the current version
 			self.final_path = self.original_path
 		else: # upgrade
+			print 'Discovered old savegame file, auto-upgrading: %s -> %s' % \
+					(rev, VERSION.SAVEGAMEREVISION)
 			self.using_temp = True
 			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
 			os.close(handle)
