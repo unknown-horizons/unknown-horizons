@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-06-30 13:50+0200\n"
+"PO-Revision-Date: 2013-08-07 16:32+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -1879,10 +1879,10 @@ msgstr "Naam: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:207
 #: horizons/gui/modules/multiplayermenu.py:440
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Creator: {game_creator}"
 msgid "Creator: {game_creator}"
-msgstr "Maker: {player}"
+msgstr "Maker: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 #: horizons/gui/modules/multiplayermenu.py:441
@@ -3381,7 +3381,7 @@ msgstr "Dit gebouw moet op een eiland gebouwd worden."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "De inwoners zijn besmet met de Zwarte Dood!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3782,10 +3782,9 @@ msgid "cannon"
 msgstr "kanon"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Het inventaris van dit gebouw is vol."
+msgstr "De inwoners van dit gebouw zijn besmet met de Zwarte Dood!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3829,7 +3828,7 @@ msgstr "toevoegingen"
 #, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "zwart"
+msgstr "zwarte dood"
 
 #. This is a database entry: the name of a resource.
 msgid "candles"
