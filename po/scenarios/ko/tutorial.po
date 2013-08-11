@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-07-29 04:06+0200\n"
+"PO-Revision-Date: 2013-08-11 16:47+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.6\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -635,7 +635,7 @@ msgstr "판매도 유사하게 진행합니다.. 재고에있는 18톤의 칸 '�
 msgid ""
 "If the free trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
-msgstr "어쨌거나 자유무역상인이 설정한 값보다 구입이나 판매를 적게 요구한다면, 그와 살고 있다가 돌아올때까지 기다리세요. "
+msgstr "어쨌거나 자유무역상인이 설정한 값보다 구입이나 판매를 적게 요구한다면, 그와 살고 있다가 돌아올때까지 기다리세요."
 
 #. This is the text body of a logbook page.
 msgid ""
