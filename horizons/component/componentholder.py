@@ -137,6 +137,8 @@ class ComponentHolder(object):
 		@param component: a component instance that is to be added
 			all components will have the init only with instance attribute
 		"""
+		if not isinstance(component, Component):
+			print component, type(component), component.__class__
 		assert isinstance(component, Component)
 		component.instance = self
 		self.components[component.NAME] = component
