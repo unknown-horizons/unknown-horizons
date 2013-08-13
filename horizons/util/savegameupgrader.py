@@ -193,7 +193,7 @@ class SavegameUpgrader(object):
 		   '"starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL, "state" INTEGER NOT NULL )')
 		# SurpriseAttack
 		db('CREATE TABLE "ai_mission_surprise_attack" ("enemy_player_id" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL,'
-			'"target_point_radius" INTEGER NOT NULL, "return_point_x" INTEGER NOT NULL, "return_point_y" INTEGER NOT NULL )')
+		   '"target_point_radius" INTEGER NOT NULL, "return_point_x" INTEGER NOT NULL, "return_point_y" INTEGER NOT NULL )')
 		# ChaseShipsAndAttack
 		db('CREATE TABLE "ai_mission_chase_ships_and_attack" ("target_ship_id" INTEGER NOT NULL )')
 
@@ -288,7 +288,7 @@ class SavegameUpgrader(object):
 		db("DELETE FROM settlement_tiles")
 
 		for (worldid, building_id, x, y, location_id) in db("SELECT rowid, type, x, y, location FROM building WHERE type = ? OR type = ?",
-			    BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+				                                            BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
 			worldid = int(worldid)
 			building_id = int(building_id)
 			origin_coords = (int(x), int(y))
@@ -329,10 +329,7 @@ class SavegameUpgrader(object):
 		db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
 		db("UPDATE message_widget_archive SET id = ? WHERE id = ?", new, old)
 
- 	def _upgrade_to_rev72(self, db):
-		# add Black Death slot to settlers. Use direct numbers since only these work and they must never change.
-		for (settler_id, ) in db("SELECT rowid FROM building WHERE type = ?", 3):
-			db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)", settler_id, 98, 1)
+	def _upgrade_to_rev72(self, db):
 		# rename fire_disaster to building_influencing_disaster
 		db("ALTER TABLE fire_disaster RENAME TO building_influencing_disaster")
 
@@ -347,7 +344,7 @@ class SavegameUpgrader(object):
 			self.final_path = self.original_path
 		else: # upgrade
 			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
-					(rev, VERSION.SAVEGAMEREVISION))
+						     (rev, VERSION.SAVEGAMEREVISION))
 			self.using_temp = True
 			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
 			os.close(handle)
