@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-07 16:32+0200\n"
+"PO-Revision-Date: 2013-08-14 15:19+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -3825,7 +3825,6 @@ msgid "condiments"
 msgstr "toevoegingen"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
 msgstr "zwarte dood"
