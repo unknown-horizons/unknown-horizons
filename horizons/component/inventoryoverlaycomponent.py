@@ -27,7 +27,6 @@ from fife import fife
 import horizons.globals
 
 from horizons.component import Component
-from horizons.ext.dummy import Dummy
 from horizons.messaging import InstanceInventoryUpdated
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -198,5 +197,5 @@ class InventoryOverlayComponent(Component):
 
 # If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
 if not hasattr(fife, 'AnimationOverlayMap'):
-	class InventoryOverlayComponent(Dummy):
+	class InventoryOverlayComponent(Component):
 		pass
