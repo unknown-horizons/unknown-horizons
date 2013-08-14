@@ -210,16 +210,12 @@ class Ship(Unit):
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
-				#xgettext:python-format
 				return (_('Going to {location}').format(location=location_based_status), target)
-			#xgettext:python-format
 			return (_('Going to {x}, {y}').format(x=target.x, y=target.y), target)
 		else:
 			location_based_status = self.get_location_based_status(self.position)
 			if location_based_status is not None:
-				#xgettext:python-format
 				return (_('Idle at {location}').format(location=location_based_status), self.position)
-			#xgettext:python-format
 			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
 

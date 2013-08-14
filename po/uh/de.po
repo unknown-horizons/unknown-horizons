@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-29 21:04+0200\n"
+"POT-Creation-Date: 2013-08-06 17:21+0200\n"
 "PO-Revision-Date: 2013-06-29 21:19+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
@@ -393,14 +393,14 @@ msgstr "Bewohner"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
-#: horizons/gui/tabs/buyselltab.py:348
+#: horizons/gui/tabs/buyselltab.py:346
 msgid "Selling"
 msgstr "Verkauf"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
-#: horizons/gui/tabs/buyselltab.py:341
+#: horizons/gui/tabs/buyselltab.py:339
 msgid "Buying"
 msgstr "Einkauf"
 
@@ -434,7 +434,7 @@ msgstr "Folgende Rohstoffe sind vorhanden:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
 #: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:67
-#: horizons/gui/widgets/playerssettlements.py:97
+#: horizons/gui/widgets/playerssettlements.py:96
 msgid "Click to change the name of your settlement"
 msgstr "Hier klicken, um den Namen Eurer Siedlung zu ändern"
 
@@ -479,7 +479,7 @@ msgstr "Auslastung der Träger"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
-#: horizons/gui/widgets/playersships.py:79
+#: horizons/gui/widgets/playersships.py:78
 msgid "Click to change the name of this ship"
 msgstr "Klickt hier, um dieses Schiff umzutaufen"
 
@@ -772,7 +772,7 @@ msgid ""
 msgstr "Der Gesamtwert aller einzelnen Einheiten oder kurz: Total Player Score"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
-#: horizons/gui/widgets/playerssettlements.py:118
+#: horizons/gui/widgets/playerssettlements.py:117
 msgid "Total"
 msgstr "Gesamt"
 
@@ -1567,8 +1567,8 @@ msgstr "Beim Schnellspeichern ist ein Fehler aufgetreten."
 msgid "Your map has not been saved."
 msgstr "Karte wurde nicht gespeichert."
 
-#: horizons/editor/session.py:72 horizons/spsession.py:67
-#, python-format
+#: horizons/editor/session.py:71 horizons/spsession.py:66
+#, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
@@ -1681,8 +1681,8 @@ msgstr ""
 msgid "Logging enabled"
 msgstr "Spielverlaufsprotokolle aktiviert"
 
-#: horizons/engine/settingshandler.py:279
-#, python-format
+#: horizons/engine/settingshandler.py:278
+#, python-brace-format
 msgid "Logs are written to {directory}."
 msgstr "Dateien werden nach {directory} geschrieben."
 
@@ -1704,8 +1704,8 @@ msgstr "Ohne Mitspieler benötigt Ihr keine Diplomatie."
 
 # anybody great ideas about translating 'tile' and not making it sound awful?
 #. size of empty map in map editor
-#: horizons/gui/modules/editorstartmenu.py:92
-#, python-format
+#: horizons/gui/modules/editorstartmenu.py:91
+#, python-brace-format
 msgid "{size}x{size} tiles"
 msgstr "{size}x{size} Kacheln"
 
@@ -1713,18 +1713,18 @@ msgstr "{size}x{size} Kacheln"
 msgid "Press desired key"
 msgstr "Taste drücken"
 
-#: horizons/gui/modules/hotkeys_settings.py:141
-#, python-format
+#: horizons/gui/modules/hotkeys_settings.py:140
+#, python-brace-format
 msgid "{key} is already set to {action}."
 msgstr "{key} ist bereits {action} zugewiesen."
 
-#: horizons/gui/modules/hotkeys_settings.py:142
+#: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
 msgstr "Wollt Ihr dies überschreiben?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
-#: horizons/gui/modules/hotkeys_settings.py:143
-#: horizons/gui/modules/select_savegame.py:157
+#: horizons/gui/modules/hotkeys_settings.py:142
+#: horizons/gui/modules/select_savegame.py:155
 msgid "Confirmation for overwriting"
 msgstr "Überschreiben bestätigen"
 
@@ -1745,31 +1745,31 @@ msgid "Use 'SHIFT' to place multiple buildings."
 msgstr "Halte 'SHIFT' um mehrere Gebäude zu errichten."
 
 #. TODO: This tip should be removed when all tiers are playable!!
-#: horizons/gui/modules/loadingscreen.py:66
-#, python-format
+#: horizons/gui/modules/loadingscreen.py:65
+#, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr "Aktuell sind nur die ersten {tier} Stufen spielbar."
 
-#: horizons/gui/modules/loadingscreen.py:68
+#: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
 msgstr "Ihr könnt das Spiel mit 'P' pausieren."
 
-#: horizons/gui/modules/loadingscreen.py:69
+#: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
 msgstr ""
 "Ihr könnt Straßen ziehen, indem Ihr die linke Maustaste gedrückt haltet."
 
-#: horizons/gui/modules/loadingscreen.py:70
+#: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
 "Ihr könnt mehrere Gebäude bauen, indem Ihr die 'SHIFT' Taste gedrückt haltet."
 
-#: horizons/gui/modules/loadingscreen.py:71
+#: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr "Erhöht die Zufriedenheit Eurer Einwohner durch niedrige Steuersätze."
 
-#: horizons/gui/modules/loadingscreen.py:72
+#: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
@@ -1777,60 +1777,60 @@ msgstr ""
 "Errichtet Feuerwehren und Ärzte, um Eure Einwohner vor Brandkatastrophen und "
 "Seuchen zu schützen."
 
-#: horizons/gui/modules/loadingscreen.py:73
+#: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
 msgstr "Errichtet Lagerzelte, um Eure Lagerkapazität zu erhöhen."
 
-#: horizons/gui/modules/loadingscreen.py:74
+#: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
 msgstr "Stellt sicher, dass jedes Haus Zugang zu einem Marktplatzes besitzt."
 
-#: horizons/gui/modules/loadingscreen.py:75
+#: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
 msgstr "Drückt 'T', um durch Bäume zu sehen."
 
 #. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:102
+#: horizons/gui/modules/loadingscreen.py:101
 msgid "Starting engine…"
 msgstr "Motor anwerfen…"
 
-#: horizons/gui/modules/loadingscreen.py:103
+#: horizons/gui/modules/loadingscreen.py:102
 msgid "Catching fish…"
 msgstr "Fische fangen…"
 
-#: horizons/gui/modules/loadingscreen.py:104
+#: horizons/gui/modules/loadingscreen.py:103
 msgid "Drawing user interface…"
 msgstr "Bedienoberfläche zeichnen…"
 
-#: horizons/gui/modules/loadingscreen.py:105
+#: horizons/gui/modules/loadingscreen.py:104
 msgid "Activating timer…"
 msgstr "Wecker stellen…"
 
-#: horizons/gui/modules/loadingscreen.py:106
+#: horizons/gui/modules/loadingscreen.py:105
 msgid "Chomping game data…"
 msgstr "Spieldaten verarbeiten…"
 
-#: horizons/gui/modules/loadingscreen.py:107
+#: horizons/gui/modules/loadingscreen.py:106
 msgid "Shaping islands…"
 msgstr "Inseln formen…"
 
-#: horizons/gui/modules/loadingscreen.py:108
+#: horizons/gui/modules/loadingscreen.py:107
 msgid "Preparing blueprints…"
 msgstr "Blaupausen vorbereiten…"
 
-#: horizons/gui/modules/loadingscreen.py:109
+#: horizons/gui/modules/loadingscreen.py:108
 msgid "Filling world with water…"
 msgstr "Spielwelt fluten…"
 
-#: horizons/gui/modules/loadingscreen.py:110
+#: horizons/gui/modules/loadingscreen.py:109
 msgid "Raising animals…"
 msgstr "Tiere aufziehen…"
 
-#: horizons/gui/modules/loadingscreen.py:111
+#: horizons/gui/modules/loadingscreen.py:110
 msgid "Convincing AI…"
 msgstr "KI überreden…"
 
-#: horizons/gui/modules/loadingscreen.py:112
+#: horizons/gui/modules/loadingscreen.py:111
 msgid "Burying treasures…"
 msgstr "Schätze vergraben…"
 
@@ -1879,36 +1879,36 @@ msgstr "Es ist ein Netzwerkfehler aufgetreten:"
 msgid "Version differs!"
 msgstr "Die Version ist nicht gleich!"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:443
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:205
+#: horizons/gui/modules/multiplayermenu.py:438
+#, python-brace-format
 msgid "Map: {map_name}"
 msgstr "Karte: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:207
-#: horizons/gui/modules/multiplayermenu.py:445
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:439
+#, python-brace-format
 msgid "Name: {game_name}"
 msgstr "Name: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:447
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:207
+#: horizons/gui/modules/multiplayermenu.py:440
+#, python-brace-format
 msgid "Creator: {game_creator}"
 msgstr "Ersteller: {game_creator}"
 
-#: horizons/gui/modules/multiplayermenu.py:210
-#: horizons/gui/modules/multiplayermenu.py:449
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:441
+#, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Spieler: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:230
+#: horizons/gui/modules/multiplayermenu.py:228
 msgid "Wrong version"
 msgstr "Falsche Version"
 
-#: horizons/gui/modules/multiplayermenu.py:232
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:229
+#, python-brace-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
 "game must use the same version. This can be fixed by every player updating "
@@ -1919,87 +1919,87 @@ msgstr ""
 "gleiche Version benutzen. Dies kann durch ein Update auf die neueste Version "
 "behoben werden. Spiel-Version: {game_version} Eure Version: {own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:270
+#: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
 msgstr "Kennwort des Spiels"
 
-#: horizons/gui/modules/multiplayermenu.py:271
+#: horizons/gui/modules/multiplayermenu.py:268
 msgid "Enter password:"
 msgstr "Kennwort eingeben:"
 
-#: horizons/gui/modules/multiplayermenu.py:351
-#: horizons/gui/modules/singleplayermenu.py:406
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:347
+#: horizons/gui/modules/singleplayermenu.py:405
+#, python-brace-format
 msgid "Recommended number of players: {number}"
 msgstr "Empfohlene Spieleranzahl: {number}"
 
+#: horizons/gui/modules/multiplayermenu.py:459
 #: horizons/gui/modules/multiplayermenu.py:467
-#: horizons/gui/modules/multiplayermenu.py:475
 msgid "Click here to change your name and/or color"
 msgstr "Klicke hier um Euren Namen oder Eure Farbe zu ändern"
 
-#: horizons/gui/modules/multiplayermenu.py:494
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:485
+#, python-brace-format
 msgid "Kick {player}"
 msgstr "{player} hinauswerfen"
 
-#: horizons/gui/modules/multiplayermenu.py:562
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:552
+#, python-brace-format
 msgid "{player} has joined the game"
 msgstr "{player} ist dem Spiel beigetreten"
 
-#: horizons/gui/modules/multiplayermenu.py:566
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:555
+#, python-brace-format
 msgid "{player} has left the game"
 msgstr "{player} hat das Spiel verlassen"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:561
 msgid "You are now ready"
 msgstr "Sie sind nun bereit"
 
-#: horizons/gui/modules/multiplayermenu.py:574
+#: horizons/gui/modules/multiplayermenu.py:563
 msgid "You are not ready anymore"
 msgstr "Sie sind nun nicht mehr bereit"
 
-#: horizons/gui/modules/multiplayermenu.py:578
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:566
+#, python-brace-format
 msgid "{player} is now ready"
 msgstr "{player} ist nun bereit"
 
-#: horizons/gui/modules/multiplayermenu.py:581
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:568
+#, python-brace-format
 msgid "{player} not ready anymore"
 msgstr "{player} ist nun nicht mehr bereit"
 
-#: horizons/gui/modules/multiplayermenu.py:586
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:572
+#, python-brace-format
 msgid "You are now known as {new_name}"
 msgstr "Ihr seid nun bekannt als {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:589
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:574
+#, python-brace-format
 msgid "{player} is now known as {new_name}"
 msgstr "{player} ist nun bekannt als {new_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:593
+#: horizons/gui/modules/multiplayermenu.py:578
 msgid "You changed your color"
 msgstr "Ihr habt Eure Farbe geändert"
 
-#: horizons/gui/modules/multiplayermenu.py:596
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:580
+#, python-brace-format
 msgid "{player} changed their color"
 msgstr "{player} hat die Farbe geändert"
 
-#: horizons/gui/modules/multiplayermenu.py:600
+#: horizons/gui/modules/multiplayermenu.py:584
 msgid "Kicked"
 msgstr "Hinausgeworfen"
 
-#: horizons/gui/modules/multiplayermenu.py:600
+#: horizons/gui/modules/multiplayermenu.py:584
 msgid "You have been kicked from the game by creator"
 msgstr "Ihr wurdet vom Spielleiter aus dem Spiel geworfen"
 
-#: horizons/gui/modules/multiplayermenu.py:604
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:587
+#, python-brace-format
 msgid "{player} got kicked by creator"
 msgstr "{player} wurde vom Spielleiter hinausgeworfen"
 
@@ -2027,74 +2027,74 @@ msgstr "Kein Dateiname angegeben"
 msgid "Please enter a valid filename."
 msgstr "Bitte gebt einen Dateinamen ein."
 
-#: horizons/gui/modules/select_savegame.py:150
-#, python-format
+#: horizons/gui/modules/select_savegame.py:149
+#, python-brace-format
 msgid "A savegame with the name {name} already exists."
 msgstr "Ein Spielstand mit Namen {name} existiert bereits."
 
-#: horizons/gui/modules/select_savegame.py:153
-#, python-format
+#: horizons/gui/modules/select_savegame.py:151
+#, python-brace-format
 msgid "A map with the name {name} already exists."
 msgstr "Eine Karte mit Namen {name} existiert bereits."
 
-#: horizons/gui/modules/select_savegame.py:155
+#: horizons/gui/modules/select_savegame.py:153
 msgid "Overwrite it?"
 msgstr "Überschreiben?"
 
-#: horizons/gui/modules/select_savegame.py:219
+#: horizons/gui/modules/select_savegame.py:217
 msgid "Unknown savedate"
 msgstr "Unbekanntes Speicherdatum"
 
-#: horizons/gui/modules/select_savegame.py:223
-#, python-format
+#: horizons/gui/modules/select_savegame.py:220
+#, python-brace-format
 msgid "Saved at {time}"
 msgstr "Gespeichert um {time}"
 
 #. N_ takes care of plural forms for different languages
-#: horizons/gui/modules/select_savegame.py:228
-#, python-format
+#: horizons/gui/modules/select_savegame.py:224
+#, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] "{amount}-mal gespeichert"
 msgstr[1] "{amount}-mal gespeichert"
 
-#: horizons/gui/modules/select_savegame.py:236
-#, python-format
+#: horizons/gui/modules/select_savegame.py:231
+#, python-brace-format
 msgid "Savegame version {version}"
 msgstr "Spielstand-Version {version}"
 
-#: horizons/gui/modules/select_savegame.py:240
+#: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
 msgstr "(vermutlich inkompatibel)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
-#: horizons/gui/modules/select_savegame.py:244
+#: horizons/gui/modules/select_savegame.py:239
 msgid "Incompatible version"
 msgstr "Inkompatible Version"
 
-#: horizons/gui/modules/select_savegame.py:257
+#: horizons/gui/modules/select_savegame.py:252
 msgid "No file selected"
 msgstr "Keine Datei ausgewählt"
 
-#: horizons/gui/modules/select_savegame.py:257
+#: horizons/gui/modules/select_savegame.py:252
 msgid "You need to select a savegame to delete."
 msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu entfernen."
 
-#: horizons/gui/modules/select_savegame.py:261
-#, python-format
+#: horizons/gui/modules/select_savegame.py:255
+#, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
 msgstr "Wollt Ihr den Spielstand '{name}' wirklich entfernen?"
 
-#: horizons/gui/modules/select_savegame.py:263
+#: horizons/gui/modules/select_savegame.py:257
 msgid "Confirm deletion"
 msgstr "Wirklich entfernen?"
 
-#: horizons/gui/modules/select_savegame.py:268
+#: horizons/gui/modules/select_savegame.py:262
 msgid "Error!"
 msgstr "Fehler!"
 
-#: horizons/gui/modules/select_savegame.py:268
+#: horizons/gui/modules/select_savegame.py:262
 msgid "Failed to delete savefile!"
 msgstr "Entfernen fehlgeschlagen!"
 
@@ -2134,40 +2134,40 @@ msgstr "Inselgrößenabweichung:"
 msgid "Click to generate a different random map"
 msgstr "Klick generiert eine andere Zufallskarte"
 
-#: horizons/gui/modules/singleplayermenu.py:504
+#: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
 msgstr "Ungültige Szenariodatei"
 
-#: horizons/gui/modules/singleplayermenu.py:505
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
 msgstr "Die ausgewählte Datei ist kein gültiges Szenario."
 
-#: horizons/gui/modules/singleplayermenu.py:506
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
 msgstr "Fehlermitteilung:"
 
-#: horizons/gui/modules/singleplayermenu.py:507
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
 msgstr "Bitte meldet dies dem Autor."
 
-#: horizons/gui/modules/singleplayermenu.py:570
-#, python-format
+#: horizons/gui/modules/singleplayermenu.py:568
+#, python-brace-format
 msgid "Difficulty: {difficulty}"
 msgstr "Schwierigkeit: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:574
-#, python-format
+#: horizons/gui/modules/singleplayermenu.py:571
+#, python-brace-format
 msgid "Author: {author}"
 msgstr "Autor: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:578
-#, python-format
+#: horizons/gui/modules/singleplayermenu.py:574
+#, python-brace-format
 msgid "Description: {desc}"
 msgstr "Beschreibung: {desc}"
 
 #. set translated building name in gui
-#: horizons/gui/mousetools/buildingtool.py:231
-#, python-format
+#: horizons/gui/mousetools/buildingtool.py:230
+#, python-brace-format
 msgid "Build {building}"
 msgstr "{building} bauen"
 
@@ -2180,32 +2180,32 @@ msgstr "Drücke H, um diesen Hinweis zu entfernen"
 msgid "Boat builder overview"
 msgstr "Bootsbau-Übersicht"
 
-#: horizons/gui/tabs/boatbuildertabs.py:96
-#, python-format
+#: horizons/gui/tabs/boatbuildertabs.py:95
+#, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (Platz in Warteschlange: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:205
+#: horizons/gui/tabs/boatbuildertabs.py:204
 msgid "Build this ship!"
 msgstr "In Auftrag geben!"
 
-#: horizons/gui/tabs/boatbuildertabs.py:247
+#: horizons/gui/tabs/boatbuildertabs.py:246
 msgid "Fisher boats"
 msgstr "Fischerboote"
 
-#: horizons/gui/tabs/boatbuildertabs.py:259
+#: horizons/gui/tabs/boatbuildertabs.py:258
 msgid "Trade boats"
 msgstr "Handelsschiffe"
 
-#: horizons/gui/tabs/boatbuildertabs.py:270
+#: horizons/gui/tabs/boatbuildertabs.py:269
 msgid "War boats"
 msgstr "Kriegsboote"
 
-#: horizons/gui/tabs/boatbuildertabs.py:281
+#: horizons/gui/tabs/boatbuildertabs.py:280
 msgid "War ships"
 msgstr "Kriegsschiffe"
 
-#: horizons/gui/tabs/boatbuildertabs.py:299
+#: horizons/gui/tabs/boatbuildertabs.py:298
 msgid "Confirm order"
 msgstr "Auftrag bestätigen"
 
@@ -2233,8 +2233,8 @@ msgid "Resources needed:"
 msgstr "Benötigte Rohstoffe:"
 
 #. You usually do not need to change anything here when translating
-#: horizons/gui/tabs/buildtabs.py:150
-#, python-format
+#: horizons/gui/tabs/buildtabs.py:149
+#, python-brace-format
 msgid "{resource}: {amount}"
 msgstr "{resource}: {amount}"
 
@@ -2252,8 +2252,8 @@ msgstr ""
 "danach legt die Menge mit dem Schieberegler rechts fest."
 
 # Keep this short!
-#: horizons/gui/tabs/buyselltab.py:318
-#, python-format
+#: horizons/gui/tabs/buyselltab.py:317
+#, python-brace-format
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
@@ -2262,8 +2262,8 @@ msgstr ""
 "Lager sind."
 
 # Keep this short!
-#: horizons/gui/tabs/buyselltab.py:322
-#, python-format
+#: horizons/gui/tabs/buyselltab.py:320
+#, python-brace-format
 msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
@@ -2351,29 +2351,29 @@ msgstr "Waffe ausrüsten"
 msgid "Unequip weapon"
 msgstr "Waffe abrüsten"
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:71
-#, python-format
+#: horizons/gui/widgets/imagefillstatusbutton.py:70
+#, python-brace-format
 msgid "{resource_name}: {price} gold"
 msgstr "{resource_name}: {price} Gold"
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:77
-#, python-format
+#: horizons/gui/widgets/imagefillstatusbutton.py:75
+#, python-brace-format
 msgid "buy for {buyprice} gold"
 msgstr "für {buyprice} Gold kaufen"
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:80
-#, python-format
+#: horizons/gui/widgets/imagefillstatusbutton.py:77
+#, python-brace-format
 msgid "sell for {sellprice} gold"
 msgstr "für {sellprice} Gold verkaufen"
 
-#: horizons/gui/widgets/inventory.py:168
-#, python-format
+#: horizons/gui/widgets/inventory.py:167
+#, python-brace-format
 msgid "{stored}/{limit}"
 msgstr "{stored}/{limit}"
 
 # Einheiten kommen direkt an die Zahl/Ziffer, also 3kg, 5MB ... hier {amount}t
-#: horizons/gui/widgets/inventory.py:171
-#, python-format
+#: horizons/gui/widgets/inventory.py:169
+#, python-brace-format
 msgid "Limit: {amount}t per slot"
 msgstr "Limit: {amount} t pro Slot"
 
@@ -2393,28 +2393,28 @@ msgstr "Es gibt noch keine Einträge in Eurem Logbuch!"
 msgid "Game"
 msgstr "Spiel"
 
-#: horizons/gui/widgets/playerssettlements.py:40
-#, python-format
+#: horizons/gui/widgets/playerssettlements.py:39
+#, python-brace-format
 msgid "Settlements of {player}"
 msgstr "Siedlungen von {player}"
 
-#: horizons/gui/widgets/playersships.py:45
-#, python-format
+#: horizons/gui/widgets/playersships.py:44
+#, python-brace-format
 msgid "Ships of {player}"
 msgstr "Flotte von {player}"
 
 #. i18n There are no weapons equipped at the moment.
-#: horizons/gui/widgets/playersships.py:95
+#: horizons/gui/widgets/playersships.py:94
 msgid "None"
 msgstr "Keine Waffen"
 
 # N/A is enough because a longer string is not shown correctly
-#: horizons/gui/widgets/playersships.py:97
+#: horizons/gui/widgets/playersships.py:96
 msgid "N/A"
 msgstr "N/A"
 
-#: horizons/gui/widgets/productionoverview.py:61
-#, python-format
+#: horizons/gui/widgets/productionoverview.py:60
+#, python-brace-format
 msgid "Production overview of {settlement}"
 msgstr "Produktionsübersicht von {settlement}"
 
@@ -2483,22 +2483,22 @@ msgid "You are not allowed to trade with this player"
 msgstr "Handel mit diesem Spieler ist Euch nicht erlaubt"
 
 #. You usually do not need to change anything here when translating
-#: horizons/gui/widgets/unitoverview.py:119
-#, python-format
+#: horizons/gui/widgets/unitoverview.py:118
+#, python-brace-format
 msgid "{weapon}: {amount}"
 msgstr "{weapon}: {amount}"
 
-#: horizons/gui/widgets/unitoverview.py:124
+#: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
 msgstr "keine"
 
-#: horizons/gui/windows.py:392
-#, python-format
+#: horizons/gui/windows.py:391
+#, python-brace-format
 msgid "Details: {error_details}"
 msgstr "Details: {error_details}"
 
-#: horizons/gui/windows.py:395
-#, python-format
+#: horizons/gui/windows.py:393
+#, python-brace-format
 msgid "Error: {error_message}"
 msgstr "Fehler: {error_message}"
 
@@ -3324,8 +3324,8 @@ msgstr "Spielstand wurde nicht gespeichert."
 msgid "New version of Unknown Horizons"
 msgstr "Neue Version von Unknown Horizons"
 
-#: horizons/util/checkupdates.py:83
-#, python-format
+#: horizons/util/checkupdates.py:82
+#, python-brace-format
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
@@ -3333,28 +3333,28 @@ msgstr ""
 "Es ist eine aktuellere Version ({new_version}) von Unknown Horizons "
 "verfügbar als die momentan verwendete ({old_version})."
 
-#: horizons/util/checkupdates.py:93
+#: horizons/util/checkupdates.py:92
 msgid "Click to download"
 msgstr "Hier herunterladen"
 
-#: horizons/util/checkupdates.py:97
+#: horizons/util/checkupdates.py:96
 msgid "A page has been opened in your browser."
 msgstr "Eine Seite wurde in Eurem Browser geöffnet."
 
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:261
-#, python-format
+#: horizons/util/uhdbaccessor.py:260
+#, python-brace-format
 msgid "{slotnum} slots, {limit}t"
 msgstr "{slotnum} Slots, {limit}t"
 
-#: horizons/util/uhdbaccessor.py:270
-#, python-format
+#: horizons/util/uhdbaccessor.py:268
+#, python-brace-format
 msgid "Health: {health}"
 msgstr "Gesundheit: {health}"
 
 #. You usually do not need to change anything here when translating
-#: horizons/world/building/__init__.py:125
-#, python-format
+#: horizons/world/building/__init__.py:124
+#, python-brace-format
 msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
@@ -3406,76 +3406,80 @@ msgstr "Sie haben bereits diese Insel besiedelt."
 msgid "This building must be partly on flat land."
 msgstr "Dieses Gebäude muss auf der Insel errichtet werden."
 
-#: horizons/world/status.py:76
+#: horizons/world/status.py:75
+msgid "The inhabitants are infected by the Black Death!"
+msgstr ""
+
+#: horizons/world/status.py:81
 msgid "This building is on fire!"
 msgstr "Dieses Gebäude steht in Flammen!"
 
-#: horizons/world/status.py:83
+#: horizons/world/status.py:88
 msgid "These residents are unhappy."
 msgstr "Diese Bewohner sind unzufrieden."
 
-#: horizons/world/status.py:89
+#: horizons/world/status.py:94
 msgid "The inventory of this building is full."
 msgstr "Das Inventar dieser Gebäude ist voll."
 
-#: horizons/world/status.py:104
+#: horizons/world/status.py:109
 msgid "This building has a very low productivity."
 msgstr "Dieses Gebäude hat eine sehr niedrige Produktivität."
 
-#: horizons/world/status.py:110
+#: horizons/world/status.py:115
 msgid "This building is decommissioned."
 msgstr "Dieses Gebäude wurde stillgelegt."
 
-#: horizons/world/status.py:116
+#: horizons/world/status.py:121
 msgid "The inhabitants of this building have the plague."
 msgstr "Die Einwohner dieses Gebäude haben die Pest."
 
-#: horizons/world/traderoute.py:320
-#, python-format
+#: horizons/world/traderoute.py:319
+#, python-brace-format
 msgid "Trade route: going to {location}"
 msgstr "Handelsroute: Auf dem Weg zu {location}"
 
-#: horizons/world/traderoute.py:325
-#, python-format
+#: horizons/world/traderoute.py:323
+#, python-brace-format
 msgid "Trade route: waiting at {position}"
 msgstr "Handelsroute: Warte bei {position}"
 
-#: horizons/world/units/ship.py:214
-#, python-format
+#: horizons/world/units/ship.py:213
+#, python-brace-format
 msgid "Going to {location}"
 msgstr "Auf dem Weg zu {location}"
 
-#: horizons/world/units/ship.py:216
-#, python-format
+#: horizons/world/units/ship.py:214
+#, python-brace-format
 msgid "Going to {x}, {y}"
 msgstr "Auf dem Weg zu {x}, {y}"
 
-#: horizons/world/units/ship.py:221
-#, python-format
+#: horizons/world/units/ship.py:218
+#, python-brace-format
 msgid "Idle at {location}"
 msgstr "Untätig bei {location}"
 
-#: horizons/world/units/ship.py:223
-#, python-format
+#: horizons/world/units/ship.py:219
+#, python-brace-format
 msgid "Idle at {x}, {y}"
 msgstr "Untätig bei {x}, {y}"
 
-#: horizons/world/units/ship.py:234
+#: horizons/world/units/ship.py:230
 msgid "Trader"
 msgstr "Händler"
 
-#: horizons/world/units/weaponholder.py:455
-#, python-format
+#: horizons/world/units/weaponholder.py:454
+#, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
 msgstr "Angriff auf {target} '{name}' ({owner})"
 
-#: horizons/world/units/weaponholder.py:460
-#, python-format
+#: horizons/world/units/weaponholder.py:458
+#, python-brace-format
 msgid "Attacking {owner}"
 msgstr "Angriff auf {owner}"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
 msgstr "{player1} und {player2} sind nun Verbündete."
 
@@ -3541,7 +3545,7 @@ msgid "clay deposit"
 msgstr "Lehmvorkommen"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
 "{player1} und {player2} haben den Krieg beendet und sind nun Verbündete."
@@ -3576,7 +3580,7 @@ msgid "iron ingots"
 msgstr "Eisenbarren"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "Screenshot has been saved to {file}."
 msgstr "Bildschirmfoto wurde unter {file} gespeichert."
 
@@ -3612,7 +3616,7 @@ msgstr ""
 "\"Handelsroute starten\" im Menü \"Handelsroute konfigurieren\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
 msgstr "{player1} und {player2} haben Ihr Bündnis beendet."
 
@@ -3632,9 +3636,10 @@ msgstr "Getreide"
 msgid "grapes"
 msgstr "Trauben"
 
-#. This is a database entry: the name of a resource.
-msgid "honeycombs"
-msgstr "Honigwaben"
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-brace-format
+msgid "Your inhabitants reached level {level}."
+msgstr "Eure Einwohner haben die Stufe {level} erreicht."
 
 #. This is a database entry: the name of a resource.
 msgid "faith"
@@ -3649,7 +3654,7 @@ msgid "Some of your inhabitants have no access to a main square."
 msgstr "Einige Eurer Einwohner haben keinen Zugang zu einem Marktplatz."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} und {player2} werden bis zum Tod kämpfen."
 
@@ -3736,11 +3741,15 @@ msgid "acorns"
 msgstr "Eicheln"
 
 #. This is a database entry: the name of a resource.
+msgid "honeycombs"
+msgstr "Honigwaben"
+
+#. This is a database entry: the name of a resource.
 msgid "tobacco plants"
 msgstr "Tabakpflanzen"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "You need more {resource} to build this building."
 msgstr "Ihr benötigt mehr {resource}, um dieses Gebäude errichten zu können."
 
@@ -3749,7 +3758,7 @@ msgid "Your crew refuses to leave this map."
 msgstr "Eure Besatzung möchte diese Karte nicht verlassen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
 msgstr "{player1} und {player2} haben ihre Feindschaft niedergelegt."
 
@@ -3774,11 +3783,6 @@ msgstr "Eines Eurer Felder benötigt eine Farm für die Ernte."
 msgid "Your mine has run out of resources."
 msgstr "Ein Erzvorkommen ist versiegt."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "Eure Einwohner haben die Stufe {level} erreicht."
-
 #. This is a database entry: the name of a resource.
 msgid "iron deposit"
 msgstr "Eisenvorkommen"
@@ -3788,7 +3792,7 @@ msgid "education"
 msgstr "Bildung"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
@@ -3800,7 +3804,7 @@ msgid "textile"
 msgstr "Stoffe"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
 
@@ -3810,7 +3814,13 @@ msgid "cannon"
 msgstr "Kanonen"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, fuzzy
+#| msgid "The inhabitants of this building have the plague."
+msgid "The inhabitants of this building are infected by the Black Death!"
+msgstr "Die Einwohner dieses Gebäude haben die Pest."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#, python-brace-format
 msgid "A new ship by the name of {name} has been created."
 msgstr "Ein neues Schiff mit dem Namen {name} wurde fertiggestellt."
 
@@ -3848,11 +3858,17 @@ msgid "condiments"
 msgstr "Gewürze"
 
 #. This is a database entry: the name of a resource.
+#, fuzzy
+#| msgid "black"
+msgid "blackdeath"
+msgstr "schwarz"
+
+#. This is a database entry: the name of a resource.
 msgid "candles"
 msgstr "Kerzen"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#, python-brace-format
 msgid "A new settlement was founded by {player}."
 msgstr "Eine neue Siedlung wurde von {player} gegründet."
 
@@ -4557,9 +4573,6 @@ msgstr "Salz"
 
 #~ msgid "(place in queue: {place})"
 #~ msgstr "(Platz in Warteschlange: {place})"
-
-#~ msgid "black"
-#~ msgstr "schwarz"
 
 #~ msgid "blue"
 #~ msgstr "blau"

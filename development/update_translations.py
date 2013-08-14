@@ -53,6 +53,7 @@ def update_from_template(input_po, input_template):
 	try:
 		subprocess.call([
 			'msgmerge',
+			'--previous',
 			'--update',
 			input_po,
 			input_template,

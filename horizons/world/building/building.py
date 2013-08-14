@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+import operator
 
 from fife import fife
 
@@ -27,6 +28,7 @@ from horizons.command.building import Build
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.componentholder import ComponentHolder
 from horizons.constants import RES, LAYERS, GAME
+from horizons.engine import Fife
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
@@ -294,7 +296,10 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				# set first action
 				action = action_sets[action_set_id].keys()[0]
 
-		instance.act(action+"_"+str(action_set_id), facing_loc, True)
+		if Fife.compareFifeVersion((0, 3, 6), operator.ge):
+			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
+		else:
+			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 		return (instance, action_set_id)
 
 	@classmethod

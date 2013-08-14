@@ -202,11 +202,9 @@ class MultiplayerMenu(Window):
 		except IndexError:
 			return
 
-		#xgettext:python-format
 		self._gui.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.map_name)
 		self._gui.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.name)
 		self._gui.findChild(name="game_creator").text = _("Creator: {game_creator}").format(game_creator=game.creator)
-		#xgettext:python-format
 		self._gui.findChild(name="game_playersnum").text = _("Players: {player_amount}/{player_limit}").format(
 		                           player_amount=game.player_count,
 		                           player_limit=game.player_limit)
@@ -228,7 +226,6 @@ class MultiplayerMenu(Window):
 
 		if game.version != NetworkInterface().get_clientversion():
 			self._windows.show_popup(_("Wrong version"),
-			                          #xgettext:python-format
 			                          _("The game's version differs from your version. "
 			                            "Every player in a multiplayer game must use the same version. "
 			                            "This can be fixed by every player updating to the latest version. "
@@ -347,7 +344,6 @@ class CreateGame(Window):
 		number_of_players = SavegameManager.get_recommended_number_of_players(mapfile)
 
 		lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
-		#xgettext:python-format
 		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
 
 		self._update_map_preview(mapfile)
@@ -439,13 +435,9 @@ class GameLobby(Window):
 		"""Set map name and other misc data"""
 		game = NetworkInterface().get_game()
 
-		#xgettext:python-format
 		self._gui.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.map_name)
-		#xgettext:python-format
 		self._gui.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.name)
-		#xgettext:python-format
 		self._gui.findChild(name="game_creator").text = _("Creator: {game_creator}").format(game_creator=game.creator)
-		#xgettext:python-format
 		self._gui.findChild(name="game_playersnum").text = _("Players: {player_amount}/{player_limit}").format(
 		                           player_amount=game.player_count,
 		                           player_limit=game.player_limit)
@@ -490,7 +482,6 @@ class GameLobby(Window):
 
 			if NetworkInterface().get_client_name() == game.creator and name != game.creator:
 				pkick = CancelButton(name="pkick_%s" % name)
-				#xgettext:python-format
 				pkick.helptext = _("Kick {player}").format(player=name)
 				pkick.capture(Callback(NetworkInterface().kick, player['sid']))
 				pkick.path = "images/buttons/delete_small"
@@ -558,11 +549,9 @@ class GameLobby(Window):
 		self._print_event(player + ": " + msg, wrap="")
 
 	def _on_player_joined(self, game, player):
-		#xgettext:python-format
 		self._print_event(_("{player} has joined the game").format(player=player.name))
 
 	def _on_player_left(self, game, player):
-		#xgettext:python-format
 		self._print_event(_("{player} has left the game").format(player=player.name))
 
 	def _on_player_toggled_ready(self, game, plold, plnew, myself):
@@ -574,25 +563,20 @@ class GameLobby(Window):
 				self._print_event(_("You are not ready anymore"))
 		else:
 			if plnew.ready:
-				#xgettext:python-format
 				self._print_event(_("{player} is now ready").format(player=plnew.name))
 			else:
-				#xgettext:python-format
 				self._print_event(_("{player} not ready anymore").format(player=plnew.name))
 
 	def _on_player_changed_name(self, game, plold, plnew, myself):
 		if myself:
-			#xgettext:python-format
 			self._print_event(_("You are now known as {new_name}").format(new_name=plnew.name))
 		else:
-			#xgettext:python-format
 			self._print_event(_("{player} is now known as {new_name}").format(player=plold.name, new_name=plnew.name))
 
 	def _on_player_changed_color(self, game, plold, plnew, myself):
 		if myself:
 			self._print_event(_("You changed your color"))
 		else:
-			#xgettext:python-format
 			self._print_event(_("{player} changed their color").format(player=plnew.name))
 
 	def _on_player_kicked(self, game, player, myself):
@@ -600,5 +584,4 @@ class GameLobby(Window):
 			self._windows.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
 			self._windows.close()
 		else:
-			#xgettext:python-format
 			self._print_event(_("{player} got kicked by creator").format(player=player.name))

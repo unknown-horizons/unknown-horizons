@@ -57,7 +57,6 @@ class ProductionOverview(StatsWidget, Window):
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
 		name = self.settlement.get_component(NamedComponent).name
-		#xgettext:python-format
 		text = _('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 

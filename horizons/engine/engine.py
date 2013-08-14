@@ -296,3 +296,16 @@ class Fife(object):
 		""" Quits the engine.
 		"""
 		self.quit_requested = True
+
+	@classmethod
+	def compareFifeVersion(cls, fifeVersion, operator):
+		""" Checks the given version with the currently used version of Fife.
+		Example: fifeVersion operator currentVersion
+		@param fifeVersion is tuple of (FIFE_MAJOR_VERSION, FIFE_MINOR_VERSION, FIFE_PATCH_VERSION)
+		@param operator to compare given version with the current running one
+		"""
+		if (hasattr(fife, 'getMajor') and hasattr(fife, 'getMinor') and hasattr(fife, 'getPatch')):
+			return operator(fifeVersion, (fife.getMajor(), fife.getMinor(), fife.getPatch()))
+		else:
+			return False
+

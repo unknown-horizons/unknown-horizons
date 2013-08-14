@@ -21,11 +21,7 @@
 #
 # ** The string uses a formatting placeholder like 'num: {amount}' or 'num: %s'
 # => Only *ever* use the named  _('num: {amount}')  syntax. Translators have no
-#    idea what '%s' means, especially with multiple substitutions. BIG FAT NOTE
-#    You will need to add the following line right before your string in python
-#      #xgettext:python-format
-#    for the string to be properly recognized in Weblate.         /BIG FAT NOTE
-#    This comment can also go inline after the format string, but prefer above.
+#    idea what '%s' means, especially with multiple substitutions.
 #
 # ** I changed or added strings in the tutorial yaml file
 # => Run  development/create_scenario_pot.sh tutorial

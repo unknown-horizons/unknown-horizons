@@ -314,11 +314,9 @@ class BuySellTab(TabInterface):
 		action = slot_widget.action
 		price = self.session.db.get_res_value(slot_widget.res)
 		if action == "buy":
-			#xgettext:python-format
 			hint = _("Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock.")
 			price *= TRADER.PRICE_MODIFIER_SELL
 		elif action == "sell":
-			#xgettext:python-format
 			hint = _("Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available.")
 			price *= TRADER.PRICE_MODIFIER_BUY
 

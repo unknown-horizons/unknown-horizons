@@ -146,10 +146,8 @@ class SelectSavegameDialog(Dialog):
 				return self._windows.show(self)
 			elif selected_savegame in self._map_file_display: # savegamename already exists
 				if self._mode == 'save':
-				#xgettext:python-format
 					message = _("A savegame with the name {name} already exists.")
 				elif self._mode == 'editor-save':
-				#xgettext:python-format
 					message = _("A map with the name {name} already exists.")
 				message = message.format(name=selected_savegame)
 				message += u"\n" + _('Overwrite it?')
@@ -219,12 +217,10 @@ class SelectSavegameDialog(Dialog):
 				details_label.text += _("Unknown savedate")
 			else:
 				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
-				#xgettext:python-format
 				details_label.text += _("Saved at {time}").format(time=savetime.decode('utf-8'))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
 			# N_ takes care of plural forms for different languages
-			#xgettext:python-format
 			details_label.text += N_("Saved {amount} time",
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
@@ -232,7 +228,6 @@ class SelectSavegameDialog(Dialog):
 
 			from horizons.constants import VERSION
 			try:
-				#xgettext:python-format
 				details_label.text += _("Savegame version {version}").format(
 				                         version=savegame_info['savegamerev'])
 				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
@@ -257,7 +252,6 @@ class SelectSavegameDialog(Dialog):
 			self._windows.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
-		#xgettext:python-format
 		message = _("Do you really want to delete the savegame '{name}'?").format(
 		             name=SavegameManager.get_savegamename_from_filename(selected_file))
 		if self._windows.show_popup(_("Confirm deletion"), message, show_cancel_button=True):

@@ -256,7 +256,6 @@ class UhDbAccessor(DbReader):
 		try:
 			comp = ship.get_component_template('StorageComponent')
 			storage = comp['PositiveTotalNumSlotsStorage']
-			#xgettext:python-format
 			# Ship storage properties
 			helptext = _('{slotnum} slots, {limit}t')
 			helptext = helptext.format(slotnum=storage['slotnum'],
@@ -266,7 +265,6 @@ class UhDbAccessor(DbReader):
 			pass
 		try:
 			comp = ship.get_component_template('HealthComponent')
-			#xgettext:python-format
 			helptext = _('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)

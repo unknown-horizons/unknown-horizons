@@ -19,9 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import operator
 import random
 
 from horizons.constants import ACTION_SETS
+from horizons.engine import Fife
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
@@ -103,7 +105,13 @@ class ConcreteObject(WorldObject):
 			if facing_loc is None:
 				facing_loc = self._instance.getFacingLocation()
 			UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
-			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
+			if Fife.compareFifeVersion((0, 3, 6), operator.ge):
+				if repeating:
+					self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
+				else:
+					self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+			else:
+				self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
 		self._action = action
 
 	def has_action(self, action):

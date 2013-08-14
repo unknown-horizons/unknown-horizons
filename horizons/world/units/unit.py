@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import math
 import logging
+import math
 from fife import fife
 
 from horizons.world.units.movingobject import MovingObject
@@ -53,6 +53,8 @@ class Unit(MovingObject, ResourceTransferHandler):
 		self.InstanceActionListener = Tmp()
 		self.InstanceActionListener.onInstanceActionFinished = \
 				WeakMethod(self.onInstanceActionFinished)
+		self.InstanceActionListener.onInstanceActionCancelled = \
+				WeakMethod(self.onInstanceActionCancelled)
 		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
 
@@ -93,6 +95,9 @@ class Unit(MovingObject, ResourceTransferHandler):
 			self.act(self._action, self._instance.getFacingLocation(), True)
 		else:
 			self.act(self._action, location, True)
+
+	def onInstanceActionCancelled(self, instance, action):
+		pass
 
 	def _on_damage(self, caller=None):
 		"""Called when health has changed"""
