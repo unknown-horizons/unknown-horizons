@@ -40,10 +40,9 @@ class InventoryOverlayComponent(Component):
 	DEPENDENCIES = ['StorageComponent']
 	log = logging.getLogger('component.overlays')
 
-	def __init__(self, overlays=None, properties=None):
+	def __init__(self, overlays=None):
 		super(InventoryOverlayComponent, self).__init__()
 		self.overlays = overlays or {}
-		self.properties = properties
 
 		# Stores {resource_id: amount that is currently used as overlay, or None if no overlay}
 		self.current_overlays = defaultdict(lambda: None)
@@ -199,5 +198,5 @@ class InventoryOverlayComponent(Component):
 if not hasattr(fife, 'AnimationOverlayMap'):
 	class InventoryOverlayComponent(Component):
 
-		def __init__(self, overlays=None, properties=None):
+		def __init__(self, overlays=None):
 			super(InventoryOverlayComponent, self).__init__()

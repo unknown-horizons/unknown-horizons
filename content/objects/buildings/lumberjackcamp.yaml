@@ -40,7 +40,6 @@ components:
     collectors:
       UNITS.LUMBERJACK_COLLECTOR: 1
 - InventoryOverlayComponent:
-    properties: null
     overlays:
       as_lumberjack0:
         idle:
