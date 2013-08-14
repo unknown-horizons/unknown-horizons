@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import operator
 import random
 
 from horizons.constants import ACTION_SETS
@@ -105,7 +104,7 @@ class ConcreteObject(WorldObject):
 			if facing_loc is None:
 				facing_loc = self._instance.getFacingLocation()
 			UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
-			if Fife.compareFifeVersion((0, 3, 6), operator.ge):
+			if (Fife.getVersion() >= (0, 3, 6)):
 				if repeating:
 					self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
 				else:
