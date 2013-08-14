@@ -26,62 +26,23 @@ from horizons.constants import LANGUAGENAMES
 from horizons.engine import UH_MODULE
 from horizons.i18n import change_language
 
-
-DEFAULT_SETTINGS = {
-	'FIFE': {
-		'VideoDriver': '',
-		'FullScreen': False,
-		'PychanDebug': False,
-		'ProfilingOn': False,
-		'SDLRemoveFakeAlpha': False,
-		'ScreenResolution': '1024x768',
-		'BitsPerPixel': 0,
-		'FrameLimitEnabled': False,
-		'FrameLimit': 60,
-
-		'RenderBackend': 'OpenGL',
-		'GLCompressImages': False,
-		'GLUseFramebuffer': True,
-		'GLUseNPOT': True,
-
-		'InitialVolume': 5.0,
-		'PlaySounds': True,
-
-		'WindowTitle': '',
-		'WindowIcon': '',
-
-		'Font': '',
-
-		'Lighting': 0,
-		'ColorKeyEnabled': False,
-		'ColorKey': [255, 0, 255],
-
-		'LogToFile': False,
-		'LogToPrompt': False,
-		'LogLevelFilter': [0],
-		'LogModules': ['controller','script'],
-
-		'MouseSensitivity': 0.0,
-		'MouseAcceleration': False,
-
-		'UsePsyco': False,
-	}
-}
-
-
 class Settings(object):
 
-	def __init__(self, settings_file):
+	def __init__(self, settings_file, settings_template_file):
 		self._module_settings = {}
+		self._module_settings_template = {}
 		self._settings_file = settings_file
-		self._serializer = SimpleXMLSerializer()
-		self._serializer.load(settings_file)
+		self._settings_template_file = settings_template_file
+		self._settings_serializer = SimpleXMLSerializer()
+		self._settings_serializer.load(settings_file)
+		self._settings_template_serializer = SimpleXMLSerializer()
+		self._settings_template_serializer.load(settings_template_file)
 
 	def get(self, module, name, default=None):
 		if default is None:
-			default = DEFAULT_SETTINGS.get(module, {}).get(name)
+			default = self._settings_template_serializer.get(module, name)
 
-		v = self._serializer.get(module, name, default)
+		v = self._settings_serializer.get(module, name, default)
 		getter = getattr(self, 'get_' + module + '_' + name, None)
 		if getter:
 			return getter(v)
@@ -96,19 +57,19 @@ class Settings(object):
 		if module in self._module_settings:
 			self._module_settings[module][name] = value
 
-		self._serializer.set(module, name, value, {})
+		self._settings_serializer.set(module, name, value, {})
 
 	def get_module_settings(self, module):
-		self._module_settings[module] = self._serializer.getAllSettings(module)
-
-		for name, value in DEFAULT_SETTINGS.get(module, {}).iteritems():
+		self._module_settings[module] = self._settings_serializer.getAllSettings(module)
+		self._module_settings_template[module] = self._settings_template_serializer.getAllSettings(module)
+		for name, value in self._module_settings_template[module].iteritems():
 			if name not in self._module_settings[module]:
 				self._module_settings[module][name] = value
 
 		return self._module_settings[module]
 
 	def save(self):
-		self._serializer.save(self._settings_file)
+		self._settings_serializer.save(self._settings_file)
 
 	def apply(self):
 		data = self.get(UH_MODULE, "Language")

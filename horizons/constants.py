@@ -489,7 +489,7 @@ class PATHS:
 	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 	TILE_SETS_JSON_FILE = os.path.join("content", "tilesets.json")
 
-	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
+	SETTINGS_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))

@@ -42,7 +42,7 @@ class Fife(object):
 	def __init__(self):
 		self.pump = []
 
-		self._setting = Settings(PATHS.USER_CONFIG_FILE)
+		self._setting = Settings(PATHS.USER_CONFIG_FILE, PATHS.SETTINGS_TEMPLATE_FILE)
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
 
@@ -62,12 +62,12 @@ class Fife(object):
 		Called in the ApplicationBase constructor.
 		"""
 
-		
+
 		# get finalSetting (from the xml file, or if absent the default value)
 		self._finalSetting = self._setting.get_module_settings("FIFE")
-		
+
 		engineSetting = self.engine.getSettings()
-		
+
 		engineSetting.setDefaultFontPath(self._finalSetting['Font'])
 		engineSetting.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
 		engineSetting.setInitialVolume(self._finalSetting['InitialVolume'])
@@ -80,7 +80,6 @@ class Fife(object):
 		engineSetting.setScreenHeight(int(height))
 		engineSetting.setRenderBackend(self._finalSetting['RenderBackend'])
 		engineSetting.setFullScreen(self._finalSetting['FullScreen'])
-		engineSetting.setVideoDriver(self._finalSetting['VideoDriver'])
 		engineSetting.setLightingModel(self._finalSetting['Lighting'])
 
 		try:
@@ -98,7 +97,7 @@ class Fife(object):
 			engineSetting.setWindowIcon(self._finalSetting['WindowIcon'])
 		except:
 			pass
-			
+
 		try:
 			engineSetting.setFrameLimitEnabled(self._finalSetting['FrameLimitEnabled'])
 			engineSetting.setFrameLimit(self._finalSetting['FrameLimit'])
