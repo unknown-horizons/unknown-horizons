@@ -198,4 +198,6 @@ class InventoryOverlayComponent(Component):
 # If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
 if not hasattr(fife, 'AnimationOverlayMap'):
 	class InventoryOverlayComponent(Component):
-		pass
+
+		def __init__(self, overlays=None, properties=None):
+			super(InventoryOverlayComponent, self).__init__()
