@@ -189,8 +189,9 @@ class WildAnimal(Animal, Unit):
 			return
 
 		# if can't find a job, we walk to a random location near us and search there
+		random = self.session.random.random()
 		(target, path) = self.get_random_location(self.walking_range)
-		if target is not None:
+		if target is not None and random < 0.5:
 			self.log.debug('%s: walking to %s', self, str(target))
 			self.move(target, callback=self.move_randomly, path=path)
 		else:
