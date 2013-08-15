@@ -154,7 +154,7 @@ class WildAnimal(Animal, Unit):
 		super(WildAnimal, self).save(db)
 		# save members
 		db("INSERT INTO wildanimal(rowid) VALUES(?)",
-			 self.worldid, self.health, int(self.can_reproduce))
+			 self.worldid)
 		# set island as owner
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_island.worldid, self.worldid)
 
