@@ -144,6 +144,7 @@ class WildAnimal(Animal, Unit):
 		after stop_after_job"""
 		assert self.collector is not None
 		self.collector = None
+		self.move_randomly()
 
 	def has_collectors(self):
 		"""Whether this unit is just now or about to be collected"""
@@ -191,14 +192,16 @@ class WildAnimal(Animal, Unit):
 		# if can't find a job, we walk to a random location near us and search there
 		random = self.session.random.random()
 		(target, path) = self.get_random_location(self.walking_range)
-		if target is not None and random < 0.5:
-			self.log.debug('%s: walking to %s', self, str(target))
-			self.move(target, callback=self.move_randomly, path=path)
-		else:
-			# we couldn't find a target, just try again 3 secs later
-			self.log.debug('%s: no possible new loc', self)
-			Scheduler().add_new_object(self.move_randomly, self, GAME_SPEED.TICKS_PER_SECOND*3)
-			self.waiting_for_job = True
+		if random < 0.5:
+			(target, path) = self.get_random_location(self.walking_range)
+			if target is not None:
+				self.log.debug('%s: walking to %s', self, str(target))
+				self.move(target, callback=self.move_randomly, path=path)
+				return
+		# we couldn't find a target, just chill for a moment
+		self.log.debug('%s: no possible new loc', self)
+		Scheduler().add_new_object(self.move_randomly, self, GAME_SPEED.TICKS_PER_SECOND*3)
+		self.waiting_for_job = True
 
 	def get_home_inventory(self):
 		return self.get_component(StorageComponent).inventory
