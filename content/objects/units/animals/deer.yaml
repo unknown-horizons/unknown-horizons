@@ -7,15 +7,13 @@ components:
 - AmbientSoundComponent
 - StorageComponent:
       PositiveSizedSlotStorage:
-         limit: 8
+         limit: 1
 - ProducerComponent:
     productionlines:
       16:
         produces:
         - [RES.DEER_MEAT, 1]
-        consumes:
-        - [RES.WILDANIMALFOOD, -1]
-        time: 45
+        time: 10
 
 actionsets:
  TIER.NATURE:

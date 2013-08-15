@@ -26,12 +26,12 @@ from horizons.scheduler import Scheduler
 from horizons.util.pathfinding.pather import SoldierPather
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
-from horizons.command.unit import CreateUnit
-from horizons.world.units.collectors import Collector, BuildingCollector, JobList, Job
-from horizons.constants import RES, WILD_ANIMAL
+from horizons.world.units.collectors import Collector, BuildingCollector, JobList
+from horizons.constants import GAME_SPEED
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.resourcehandler import ResourceHandler
+from horizons.world.units.unit import Unit
 
 class Animal(ResourceHandler):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
@@ -97,7 +97,7 @@ class CollectorAnimal(Animal):
 	def get_collectable_res(self):
 		return self.get_needed_resources()
 
-class WildAnimal(CollectorAnimal, Collector):
+class WildAnimal(Animal, Unit):
 	"""Animals, that live in the nature and feed on natural resources.
 	These animals can be hunted.
 
@@ -111,43 +111,54 @@ class WildAnimal(CollectorAnimal, Collector):
 	work_duration = 96
 	pather_class = SoldierPather
 
-	def __init__(self, owner, start_hidden=False, can_reproduce=True, **kwargs):
+	def __init__(self, owner, start_hidden=False, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, owner=owner, **kwargs)
-		self.__init(owner, can_reproduce)
+		self.__init(owner)
 		self.log.debug("Wild animal %s created at " + str(self.position) +
-		               "; can_reproduce: %s; population now: %s",
-				self.worldid, can_reproduce, len(self.home_island.wild_animals))
+		               "; population now: %s",
+				self.worldid, len(self.home_island.wild_animals))
 
-	def __init(self, island, can_reproduce, health=None):
+	def __init(self, island):
 		"""
 		@param island: Hard reference to island
-		@param can_reproduce: bool
-		@param health: int or None
 		"""
-		assert isinstance(can_reproduce, bool)
-		# good health is the main target of an animal. it increases when they eat and
-		# decreases, when they have no food. if it reaches 0, they die, and
-		# if it reaches HEALTH_LEVEL_TO_REPRODUCE, they reproduce
-		self.health = health if health is not None else WILD_ANIMAL.HEALTH_INIT_VALUE
-		self.can_reproduce = can_reproduce
 		self.home_island = island
 		self.home_island.wild_animals.append(self)
+		self.collector = None
+		self.waiting_for_job = False
 
-		resources = self.get_needed_resources()
-		assert resources == [RES.WILDANIMALFOOD] or resources == []
-		self._required_resource_id = RES.WILDANIMALFOOD
-		self._building_index = self.home_island.get_building_index(self._required_resource_id)
+		self.move_randomly()
+
+	def die(self):
+		"""Makes animal die, e.g. because of starvation or getting killed by herder"""
+		self.log.debug("%s dying", self)
+		self.home_island.wild_animals.remove(self)
+		self.remove()
+
+	def stop_after_job(self, collector):
+		"""Tells the unit to stop after the current job and call the collector to pick it up"""
+		self.collector = collector
+
+	def remove_stop_after_job(self):
+		"""Let the animal continue as usual after the job. Can only be called
+		after stop_after_job"""
+		assert self.collector is not None
+		self.collector = None
+
+	def has_collectors(self):
+		"""Whether this unit is just now or about to be collected"""
+		return self.collector is not None
 
 	def save(self, db):
 		super(WildAnimal, self).save(db)
 		# save members
-		db("INSERT INTO wildanimal(rowid, health, can_reproduce) VALUES(?, ?, ?)",
+		db("INSERT INTO wildanimal(rowid) VALUES(?)",
 			 self.worldid, self.health, int(self.can_reproduce))
 		# set island as owner
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_island.worldid, self.worldid)
 
 		# save remaining ticks when in waiting state
-		if self.state == self.states.no_job_waiting:
+		if self.waiting_for_job:
 			calls = Scheduler().get_classinst_calls(self, self.handle_no_possible_job)
 			assert len(calls) == 1, 'calls: %s' % calls
 			remaining_ticks = max(calls.values()[0], 1) # we have to save a number > 0
@@ -156,118 +167,40 @@ class WildAnimal(CollectorAnimal, Collector):
 
 	def load(self, db, worldid):
 		super(WildAnimal, self).load(db, worldid)
-		# get own properties
-		health, can_reproduce = db.get_wildanimal_row(worldid)
 		# get home island
 		island = WorldObject.get_object_by_id(db.get_unit_owner(worldid))
-		self.__init(island, bool(can_reproduce), health)
-
-	def get_collectable_res(self):
-		return [self._required_resource_id]
+		self.__init(island)
 
 	def apply_state(self, state, remaining_ticks=None):
 		super(WildAnimal, self).apply_state(state, remaining_ticks)
 		if self.state == self.states.no_job_waiting:
 			Scheduler().add_new_object(self.handle_no_possible_job, self, remaining_ticks)
 
-	def handle_no_possible_job(self):
+	def move_randomly(self):
 		"""Just walk to a random location nearby and search there for food, when we arrive"""
-		self.log.debug('%s: no possible job; health: %s', self, self.health)
-		# decrease health because of lack of food
-		self.health -= WILD_ANIMAL.HEALTH_DECREASE_ON_NO_JOB
-		if self.health <= 0:
-			self.die()
+		self.log.debug('%s: searching for random move position', self)
+		self.waiting_for_job = False
+
+		if self.collector is not None:
+			# tell the animalcollector to pick me up
+			collector = self.collector
+			self.collector = None
+			collector.pickup_animal()
 			return
 
 		# if can't find a job, we walk to a random location near us and search there
 		(target, path) = self.get_random_location(self.walking_range)
 		if target is not None:
-			self.log.debug('%s: no possible job, walking to %s', self, str(target))
-			self.move(target, callback=self.search_job, path=path)
-			self.state = self.states.no_job_walking_randomly
+			self.log.debug('%s: walking to %s', self, str(target))
+			self.move(target, callback=self.move_randomly, path=path)
 		else:
 			# we couldn't find a target, just try again 3 secs later
-			self.log.debug('%s: no possible job, no possible new loc', self)
-			Scheduler().add_new_object(self.handle_no_possible_job, self, 48)
-			self.state = self.states.no_job_waiting
+			self.log.debug('%s: no possible new loc', self)
+			Scheduler().add_new_object(self.move_randomly, self, GAME_SPEED.TICKS_PER_SECOND*3)
+			self.waiting_for_job = True
 
-	def get_job(self):
-		pos = self.position.to_tuple()
-
-		# try to get away with a random job (with normal forest density this works > 99% of the time)
-		for i in xrange(min(5, self._building_index.get_num_buildings_in_range(pos))):
-			provider = self._building_index.get_random_building_in_range(pos)
-			if provider is not None and self.check_possible_job_target(provider):
-				# animals only collect one resource
-				entry = self.check_possible_job_target_for(provider, self._required_resource_id)
-				if entry:
-					path = self.check_move(provider.loading_area)
-					if path:
-						job = Job(provider, [entry])
-						job.path = path
-						return job
-
-		# NOTE: only use random job for now, see how it's working it
-		# it speeds up animal.search_job by a third (0.00321 -> 0.00231)
-		# and animal.get_job by 3/4 (0.00231 -> 0.00061)
-		return None
-
-		jobs = JobList(self, JobList.order_by.random)
-		# try all possible jobs
-		for provider in self.home_island.get_building_index(self._required_resource_id).get_buildings_in_range(pos):
-			if self.check_possible_job_target(provider):
-				job = self.check_possible_job_target_for(provider, self._required_resource_id)
-				if job is not None:
-					jobs.append(job)
-
-		return self.get_best_possible_job(jobs)
-
-	def check_possible_job_target(self, provider):
-		if provider.position.contains(self.position):
-			# force animal to choose a tree where it currently not stands
-			return False
-		return super(WildAnimal, self).check_possible_job_target(provider)
-
-	def end_job(self):
-		super(WildAnimal, self).end_job()
-		# check if we can reproduce
-		self.log.debug("%s end_job; health: %s", self, self.health)
-		self.health += WILD_ANIMAL.HEALTH_INCREASE_ON_FEEDING
-		if self.can_reproduce and self.health >= WILD_ANIMAL.HEALTH_LEVEL_TO_REPRODUCE and \
-			len(self.home_island.wild_animals) < (self.home_island.num_trees // WILD_ANIMAL.POPULATION_LIMIT):
-			self.reproduce()
-			# reproduction costs health
-			self.health = WILD_ANIMAL.HEALTH_INIT_VALUE
-
-	def reproduce(self):
-		"""Create another animal of our type on the place where we stand"""
-		if not self.can_reproduce:
-			return
-
-		self.log.debug("%s REPRODUCING", self)
-		# create offspring
-		CreateUnit(self.owner.worldid, self.id, self.position.x, self.position.y,
-		           can_reproduce = self.next_clone_can_reproduce())(issuer=None)
-		# reset own resources
-		for res in self.get_consumed_resources():
-			self.get_component(StorageComponent).inventory.reset(res)
-
-	def next_clone_can_reproduce(self):
-		"""Returns, whether the next child will be able to reproduce himself.
-		Some animal can't reproduce, which makes population growth easier to control.
-		@return: bool"""
-		return (self.session.random.randint(0, 2) > 0) # 2/3 chance for True
-
-	def die(self):
-		"""Makes animal die, e.g. because of starvation or getting killed by herder"""
-		self.log.debug("%s dying", self)
-		self.home_island.wild_animals.remove(self)
-		self.remove()
-
-	def cancel(self, continue_action=None):
-		if continue_action is None:
-			continue_action = self.search_job
-		super(WildAnimal, self).cancel(continue_action=continue_action)
+	def get_home_inventory(self):
+		return self.get_component(StorageComponent).inventory
 
 	def __str__(self):
 		return "%s(health=%s)" % (super(WildAnimal, self).__str__(),

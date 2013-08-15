@@ -224,11 +224,6 @@ class SavegameAccessor(DbReader):
 		for row in self("SELECT rowid, health, can_reproduce FROM wildanimal"):
 			self._wildanimal[int(row[0])] = row[1:]
 
-	def get_wildanimal_row(self, worldid):
-		"""Returns (health, can_reproduce)"""
-		return self._wildanimal[int(worldid)]
-
-
 	def _load_unit(self):
 		self._unit = {}
 		for row in self("SELECT rowid, owner FROM unit"):
