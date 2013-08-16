@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-16 23:57+0200\n"
+"PO-Revision-Date: 2013-08-16 23:58+0200\n"
 "Last-Translator: Jordan Liese <jordan@softsurf.de>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -3816,7 +3816,7 @@ msgstr "Kanonen"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Die Einwohner dieses Gebäude sind mit der Pest infiziert."
+msgstr "Die Einwohner dieses Gebäude sind mit der Pest infiziert!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
