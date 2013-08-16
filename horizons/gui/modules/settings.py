@@ -78,6 +78,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen', restart=True),
 			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True),
 			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', [30, 45, 60, 90, 120], restart=True),
+			Setting(FIFE_MODULE, 'FrameLimitEnabled', 'enable_fps_limiter', restart=True),
 
 			Setting(UH_MODULE, 'VolumeMusic', 'volume_music'),
 			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects'),

@@ -46,15 +46,23 @@
 			</ScrollArea>
 		</VBox>
 
-		<VBox>
-			<Label name="fps_label" text="Frame rate limit:"
-				wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
-			<ScrollArea min_size="80,90">
-				<ListBox name="fps_rate" is_focusable="0" />
-			</ScrollArea>
-		</VBox>
-	</VBox>
+		<HBox>
+			<VBox>
+				<Label name="fps_label" text="Frame rate limit:"
+					wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
+				<ScrollArea min_size="80,90">
+					<ListBox name="fps_rate" is_focusable="0" />
+				</ScrollArea>
+			</VBox>
+			
+			<Spacer min_size="20" />
 
+			<VBox>
+				<Label name="enable_fps_limiter_name" text="Enable FPS limit:" />
+				<CheckBox min_size="24,24" name="enable_fps_limiter" />
+			</VBox>
+		</HBox>
+	</VBox>
 	<!-- Right pane -->
 	<VBox name="graphics_right" max_size="320,500" min_size="320,0" padding="25">
 		<VBox name="sound_settings" position="185,45">
