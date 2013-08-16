@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-07-27 13:00+0200\n"
-"PO-Revision-Date: 2013-07-29 16:44+0200\n"
-"Last-Translator: Kilian K. <kiliankoeppchen@googlemail.com>\n"
+"PO-Revision-Date: 2013-08-17 00:03+0200\n"
+"Last-Translator: Jordan Liese <jordan@softsurf.de>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/voices/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #. Founding settlement - Player found settlement"
 #, fuzzy
@@ -26,15 +26,15 @@ msgstr "Bemühe dich, da sich diese Siedlung stattlich entwickeln soll."
 
 #. Founding settlement - Player found settlement"
 msgid "Your inhabitants will certainly feel comfortable on this island."
-msgstr "Eure Einwohner werden sich mit Sicherheit wohl auf dieser Insel fühlen."
+msgstr "Deine Einwohner werden sich auf dieser Insel wohlfühlen."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr "Nenn diesen Flecken Erde von nun an deinen."
+msgstr "Nenne dieses Stück Erde von nun an dein Eigen."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
-msgstr "Diese Gegend gehört nun zu unserer Fahne."
+msgstr "Diese Region gehört jetzt zu unserer Fahne."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
@@ -54,7 +54,7 @@ msgstr "Einer unserer Mitspieler hat eine Siedlung gegründet."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr "Es scheint als hätte ein Rivale von uns eine Siedlung gegründet."
+msgstr "Es scheint als hätte ein Rivale eine unserer Siedlung gefunden."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
@@ -138,7 +138,5 @@ msgid "Construction is impossible without sufficient amounts of $RES."
 msgstr "Der Bau ist unmöglich ohne angemessene Mengen von $Ressource."
 
 #. Resources - Construction material missing
-#, fuzzy
 msgid "The amount of $RES in your inventory is not sufficient to build this."
-msgstr ""
-"Die Menge von $Ressource in deinem Inventar reicht nicht um es zu bauen."
+msgstr "Die Menge von $RES in deinem Inventar reicht nicht um es zu bauen."
