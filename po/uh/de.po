@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-13 22:16+0200\n"
-"Last-Translator: Kilian K. <kiliankoeppchen@googlemail.com>\n"
+"PO-Revision-Date: 2013-08-16 23:57+0200\n"
+"Last-Translator: Jordan Liese <jordan@softsurf.de>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -3408,7 +3408,7 @@ msgstr "Dieses Gebäude muss auf der Insel errichtet werden."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Die Einwohner sind mit der Pest infiziert!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3857,10 +3857,9 @@ msgid "condiments"
 msgstr "Gewürze"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "schwarz"
+msgstr "Pest"
 
 #. This is a database entry: the name of a resource.
 msgid "candles"
