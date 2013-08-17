@@ -3814,7 +3814,6 @@ msgid "cannon"
 msgstr "Kanonen"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
 msgstr "Die Einwohner dieses Gebäude sind mit der Pest infiziert!"
 
@@ -3857,7 +3856,6 @@ msgid "condiments"
 msgstr "Gewürze"
 
 #. This is a database entry: the name of a resource.
-#| msgid "black"
 msgid "blackdeath"
 msgstr "Pest"
 
