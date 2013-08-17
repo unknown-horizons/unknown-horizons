@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-07-27 13:00+0200\n"
-"PO-Revision-Date: 2013-08-18 00:52+0200\n"
+"PO-Revision-Date: 2013-08-18 00:55+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/voices/de/>\n"
 "Language: de\n"
@@ -74,11 +74,10 @@ msgid "One of our allies cultivates an islnd."
 msgstr "Einer unserer Verbündeten bebaut eine Insel."
 
 #. Founding settlement - Ally found settlement
-#, fuzzy
 msgid "Our ally passes news about successfully founding a settlement."
 msgstr ""
-"Unser Verbündeter benachrichtigt uns über das erfolgreiche Gründen einer "
-"Siedlung."
+"Unser Verbündeter lässt mitteilen, erfolgreich eine Siedlung gegründet zu "
+"haben."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "This island no longer is all ours."
@@ -118,19 +117,16 @@ msgid "Our ally settles on one of our islands."
 msgstr "Unser Verbündeter siedelt auf einer von unseren Inseln."
 
 #. Resources - Construction material missing
-#, fuzzy
 msgid "You need more $RES to build this."
-msgstr "Du brauchst mehr $Ressource um es zu bauen."
+msgstr "Ihr benötigt mehr Ressourcen, um dies zu bauen."
 
 #. Resources - Construction material missing
-#, fuzzy
 msgid "This construction project needs more $RES."
-msgstr "Dieses Bauvorhaben benötigt mehr $Ressource."
+msgstr "Dieses Bauvorhaben benötigt mehr Ressourcen."
 
 #. Resources - Construction material missing
-#, fuzzy
 msgid "Construction is impossible without sufficient amounts of $RES."
-msgstr "Der Bau ist unmöglich ohne angemessene Mengen von $Ressource."
+msgstr "Der Bau ist unmöglich ohne ausreichend Material."
 
 #. Resources - Construction material missing
 msgid "The amount of $RES in your inventory is not sufficient to build this."
