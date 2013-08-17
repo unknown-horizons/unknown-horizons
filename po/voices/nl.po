@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-07-27 13:00+0200\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
 "PO-Revision-Date: 2013-08-02 13:34+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/voices/nl/>\n"
@@ -112,7 +112,8 @@ msgstr "Eén van onze vijanden heeft zicht gevestigd op ons grondgebied!"
 #. Founding settlement -  Ally found settlement on your island
 #, fuzzy
 msgid "One of our allies seems in desperate need of your ground."
-msgstr "Eén van onze bondgenoten lijkt dringend jouw grondgebied nodig te zijn."
+msgstr ""
+"Eén van onze bondgenoten lijkt dringend jouw grondgebied nodig te zijn."
 
 #. Founding settlement -  Ally found settlement on your island
 #, fuzzy
@@ -124,18 +125,26 @@ msgid "Our ally settles on one of our islands."
 msgstr "Onze bondgenoot vestigt zich op één van onze eilanden."
 
 #. Resources - Construction material missing
-msgid "You need more $RES to build this."
+#, fuzzy
+#| msgid "You need more $RES to build this."
+msgid "You need more resources to build this."
 msgstr "Je bent meer $RES nodig om dit te bouwen."
 
 #. Resources - Construction material missing
-msgid "This construction project needs more $RES."
+#, fuzzy
+#| msgid "This construction project needs more $RES."
+msgid "This construction project needs more resources."
 msgstr "Dit bouwproject heeft meer $RES nodig."
 
 #. Resources - Construction material missing
 #, fuzzy
-msgid "Construction is impossible without sufficient amounts of $RES."
+msgid "Construction is impossible without sufficient material."
 msgstr "Bouw is onmogelijk zonder voldoen hoeveelheid $RES."
 
 #. Resources - Construction material missing
-msgid "The amount of $RES in your inventory is not sufficient to build this."
-msgstr "De hoeveelheid $RES in jouw inventaris is onvoldoende om dit te bouwen."
+#, fuzzy
+#| msgid ""
+#| "The amount of $RES in your inventory is not sufficient to build this."
+msgid "The resources in your inventory are not sufficient to build this."
+msgstr ""
+"De hoeveelheid $RES in jouw inventaris is onvoldoende om dit te bouwen."

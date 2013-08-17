@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-07-27 13:00+0200\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
 "PO-Revision-Date: 2013-07-27 13:00+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -109,17 +109,17 @@ msgid "Our ally settles on one of our islands."
 msgstr ""
 
 #. Resources - Construction material missing
-msgid "You need more $RES to build this."
+msgid "You need more resources to build this."
 msgstr ""
 
 #. Resources - Construction material missing
-msgid "This construction project needs more $RES."
+msgid "This construction project needs more resources."
 msgstr ""
 
 #. Resources - Construction material missing
-msgid "Construction is impossible without sufficient amounts of $RES."
+msgid "Construction is impossible without sufficient material."
 msgstr ""
 
 #. Resources - Construction material missing
-msgid "The amount of $RES in your inventory is not sufficient to build this."
+msgid "The resources in your inventory are not sufficient to build this."
 msgstr ""

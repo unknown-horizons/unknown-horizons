@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-07-27 13:00+0200\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
 "PO-Revision-Date: 2013-08-11 16:45+0200\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/voices/ko/>\n"
@@ -111,17 +111,26 @@ msgid "Our ally settles on one of our islands."
 msgstr "우리의 동맹이 우리의 섬중 하나에 정착합니다."
 
 #. Resources - Construction material missing
-msgid "You need more $RES to build this."
+#, fuzzy
+#| msgid "You need more $RES to build this."
+msgid "You need more resources to build this."
 msgstr "이것을 건설하기위해 더 많은 $RES 가 필요합니다."
 
 #. Resources - Construction material missing
-msgid "This construction project needs more $RES."
+#, fuzzy
+#| msgid "This construction project needs more $RES."
+msgid "This construction project needs more resources."
 msgstr "이 공사 작업에는 더 많은 $RES 가 필요 합니다."
 
 #. Resources - Construction material missing
-msgid "Construction is impossible without sufficient amounts of $RES."
+#, fuzzy
+#| msgid "Construction is impossible without sufficient amounts of $RES."
+msgid "Construction is impossible without sufficient material."
 msgstr "공사는 충분한 양의 $RES 가 없이는 불가능 합니다."
 
 #. Resources - Construction material missing
-msgid "The amount of $RES in your inventory is not sufficient to build this."
+#, fuzzy
+#| msgid ""
+#| "The amount of $RES in your inventory is not sufficient to build this."
+msgid "The resources in your inventory are not sufficient to build this."
 msgstr "이것을 건설하기 위해 물품 목록중에 $RES 의 양이 충분하지 않습니다."
