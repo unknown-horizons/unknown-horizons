@@ -66,51 +66,51 @@ class Fife(object):
 		# get finalSetting (from the xml file, or if absent the default value)
 		self._finalSetting = self._setting.get_module_settings("FIFE")
 
-		engineSetting = self.engine.getSettings()
+		self.engine_settings = self.engine.getSettings()
 
-		engineSetting.setDefaultFontPath(self._finalSetting['Font'])
-		engineSetting.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
-		engineSetting.setInitialVolume(self._finalSetting['InitialVolume'])
-		engineSetting.setSDLRemoveFakeAlpha(self._finalSetting['SDLRemoveFakeAlpha'])
-		engineSetting.setGLCompressImages(self._finalSetting['GLCompressImages'])
-		engineSetting.setGLUseFramebuffer(self._finalSetting['GLUseFramebuffer'])
-		engineSetting.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
+		self.engine_settings.setDefaultFontPath(self._finalSetting['Font'])
+		self.engine_settings.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
+		self.engine_settings.setInitialVolume(self._finalSetting['InitialVolume'])
+		self.engine_settings.setSDLRemoveFakeAlpha(self._finalSetting['SDLRemoveFakeAlpha'])
+		self.engine_settings.setGLCompressImages(self._finalSetting['GLCompressImages'])
+		self.engine_settings.setGLUseFramebuffer(self._finalSetting['GLUseFramebuffer'])
+		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
 		(width, height) = self._finalSetting['ScreenResolution'].split('x')
-		engineSetting.setScreenWidth(int(width))
-		engineSetting.setScreenHeight(int(height))
-		engineSetting.setRenderBackend(self._finalSetting['RenderBackend'])
-		engineSetting.setFullScreen(self._finalSetting['FullScreen'])
-		engineSetting.setLightingModel(self._finalSetting['Lighting'])
+		self.engine_settings.setScreenWidth(int(width))
+		self.engine_settings.setScreenHeight(int(height))
+		self.engine_settings.setRenderBackend(self._finalSetting['RenderBackend'])
+		self.engine_settings.setFullScreen(self._finalSetting['FullScreen'])
+		self.engine_settings.setLightingModel(self._finalSetting['Lighting'])
 
 		try:
-			engineSetting.setColorKeyEnabled(self._finalSetting['ColorKeyEnabled'])
+			self.engine_settings.setColorKeyEnabled(self._finalSetting['ColorKeyEnabled'])
 		except:
 			pass
 
 		try:
-			engineSetting.setColorKey(self._finalSetting['ColorKey'][0],self._finalSetting['ColorKey'][1],self._finalSetting['ColorKey'][2])
+			self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],self._finalSetting['ColorKey'][1],self._finalSetting['ColorKey'][2])
 		except:
 			pass
 
 		try:
-			engineSetting.setWindowTitle(self._finalSetting['WindowTitle'])
-			engineSetting.setWindowIcon(self._finalSetting['WindowIcon'])
+			self.engine_settings.setWindowTitle(self._finalSetting['WindowTitle'])
+			self.engine_settings.setWindowIcon(self._finalSetting['WindowIcon'])
 		except:
 			pass
 
 		try:
-			engineSetting.setFrameLimitEnabled(self._finalSetting['FrameLimitEnabled'])
-			engineSetting.setFrameLimit(self._finalSetting['FrameLimit'])
+			self.engine_settings.setFrameLimitEnabled(self._finalSetting['FrameLimitEnabled'])
+			self.engine_settings.setFrameLimit(self._finalSetting['FrameLimit'])
 		except:
 			pass
 
 		try:
-			engineSetting.setMouseSensitivity(self._finalSetting['MouseSensitivity'])
+			self.engine_settings.setMouseSensitivity(self._finalSetting['MouseSensitivity'])
 		except:
 			pass
 
 		try:
-			engineSetting.setMouseAccelerationEnabled(self._finalSetting['MouseAcceleration'])
+			self.engine_settings.setMouseAccelerationEnabled(self._finalSetting['MouseAcceleration'])
 		except:
 			pass
 
