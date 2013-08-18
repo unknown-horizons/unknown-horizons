@@ -24,13 +24,12 @@ msgid "Tutorial"
 msgstr "Aprendizaxe"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
 "Aprendizaxe:\n"
-"Constrúe o teu primeiro asentamento e aprende a xogar!\n"
+"Constrúe o teu primeiro asentamento e aprende a xogar!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -201,12 +200,10 @@ msgstr ""
 "grande baixo o minimapa, ou premendo a tecla B."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "The build menu is sorted by tiers."
 msgstr "O menú de construción está organizado por niveis."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "You are currently in the first tier (the Sailors level) so are offered only "
 "the basic buildings."
@@ -290,10 +287,10 @@ msgstr ""
 "(e en especial os mariñeiros) come e moito."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Available companies in the first tier are the Hunter and Fisher."
 msgstr ""
-"Os negocios de alimentación do primeiro nivel son o cazador e mailo pescador."
+"Os negocios de alimentación do primeiro nivel son o cazador e mailo "
+"pescador."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
@@ -449,7 +446,6 @@ msgid "If your balance is positive, you all-in-all make a profit."
 msgstr "Se o saldo é positivo, estás a xerar beneficios."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "In the different tier overview tabs you can see statistics about your "
 "inhabitants. You also set the tier-specific global tax here and allow or "
@@ -477,7 +473,6 @@ msgstr ""
 "cabeza a idea de vivir na túa cidade! Tes que fornecerlles tendas."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
@@ -490,11 +485,15 @@ msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
 msgstr ""
+"Ten en conta que para que os edificios avancen de nivel necesítanse "
+"materiais de construción. Por exemplo, para o primeiro avance necesítase "
+"madeira."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"Se anda falto dos materiais necesarios, sempre pode desactivar o avance."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -503,8 +502,8 @@ msgid ""
 "make money for now!"
 msgstr ""
 "Pode que os colonos non parezan moi útiles, dado que simplemente se adican a "
-"consumir os bens que produces. Pero polo menos pagan impostos, que é o único "
-"xeito que tes de conseguir cartos de momento."
+"consumir os bens que produces. Pero polo menos pagan impostos, que é o "
+"único xeito que tes de conseguir cartos de momento."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -653,7 +652,6 @@ msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
 msgstr "Podes propoñer intercambios desde a lapela de «Comercio» do almacén."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "At the 'sailors' tier, you are equipped with three trading slots."
 msgstr "No «nivel dos mariñeiros» podes usar ata tres celas de comercio."
 
@@ -814,7 +812,8 @@ msgid ""
 "where they can pray."
 msgstr ""
 "Porén, aínda hai unha necesitade por satisfacer, algo que podes comprobar na "
-"lapela da praza ou dunha tenda: os mariñeiros queren un edificio onde rezar."
+"lapela da praza ou dunha tenda: os mariñeiros queren un edificio onde "
+"rezar."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -830,7 +829,8 @@ msgid ""
 "trail, else your inhabitants feel unable to reach them."
 msgstr ""
 "Os edificios de servizos coma este tamén teñen que estar conectados ás "
-"tendas cun sendeiro, ou os habitantes sentiranse incapaces de acceder a eles."
+"tendas cun sendeiro, ou os habitantes sentiranse incapaces de acceder a "
+"eles."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -885,7 +885,6 @@ msgstr ""
 "mariñeiros avancen de nivel."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 msgid "NEW TASK: NEXT TIER"
 msgstr "Novo obxectivo — Avanzar"
 
@@ -899,7 +898,6 @@ msgstr ""
 "cubertas."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "If the sailors are happy enough, they want to advance to the next tier "
 "called Pioneers."
@@ -991,7 +989,6 @@ msgid "NEW TASK: BUILD A FARM"
 msgstr "Novo obxectivo — Granxa"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Congratulations! Some of your inhabitants have reached tier II!"
 msgstr "Parabéns, algúns habitantes chegaron ao segundo nivel!"
 
@@ -1187,7 +1184,6 @@ msgstr ""
 "granxa e engade hortas de patacas se queres."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid "Build a storage tent (tier I tab) where it makes sense."
 msgstr ""
 "Constrúe unha tenda de depósito (na lapela do primeiro nivel) onde faga "
@@ -1258,7 +1254,6 @@ msgstr ""
 "un tempo, pero tampouco queres destruílo."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the storage tent."
