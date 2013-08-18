@@ -1,24 +1,9 @@
 #!/bin/bash
 
-arg1_help="First commandline argument for this script has to be crontab, check, stop, start, restart or gitupdate."
-arg2_help="Second commandline argument has to be the main folder of Unknonwn Horizons."
-
-# 2 commandline arguments are necessary
-if [[ $# -ne 2 ]] ; then
-		echo $arg1_help
-		echo $arg2_help
-    exit 1
-fi
-
-# validate location
-check_path=$2"/content"
-if [ ! -d $check_path ]; then
-	echo $arg2_help
-	exit 1
-fi
+arg_help="Usage: $0 [ quiet ] < crontab | check | start | stop | restart | gitupdate >"
 
 self="$(readlink -f $0)"
-uh_path="$2"
+uh_path="$(dirname $0)/.."
 uh_exec="run_server.py"
 uh_pidfile="server.pid"
 set -o noglob
@@ -157,7 +142,7 @@ case "$1" in
     do_git_update
     start
     ;;
-	*)
-		echo $arg1_help
-		;;
+  *)
+    echo $arg_help
+    ;;
 esac
