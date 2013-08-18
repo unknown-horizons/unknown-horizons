@@ -654,9 +654,8 @@ msgstr "Envía as mensaxes da conversa a todos os xogadores."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Escribe a túa mensaxe:"
+msgstr "Escribe a túa mensaxe."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -718,7 +717,6 @@ msgid "Land"
 msgstr "Terra"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-#, fuzzy
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
@@ -868,9 +866,8 @@ msgid "Return"
 msgstr "Volver"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "Educación"
+msgstr "Accións"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -978,9 +975,8 @@ msgid "Screenshot"
 msgstr "Captura de pantalla"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Activar ou desactivar a grade"
+msgstr "Activar ou desactivar mostrar os FPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
@@ -993,12 +989,12 @@ msgstr "Amosar valores coordinados (depuración)"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Primario"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Secundario"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
@@ -1006,9 +1002,8 @@ msgid "Reset to default"
 msgstr "Valores predeterminados"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Valores predeterminados"
+msgstr "Restablecer os valores predeterminados"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1027,13 +1022,12 @@ msgid "Cancel game"
 msgstr "Cancelar a partida"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
 msgstr "Cargando…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Cambiar o fondo"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1089,7 +1083,7 @@ msgstr "Os outros xogadores poderán ver isto para recoñecer a partida."
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "Partida sen nome"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1579,7 +1573,7 @@ msgstr ""
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Atallos"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
@@ -1710,16 +1704,16 @@ msgstr "teselas de {size}×{size}"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Prema a tecla que queira"
 
 #: horizons/gui/modules/hotkeys_settings.py:140
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} xa está asociada a «{action}»."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Quere substituílo?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
@@ -1792,57 +1786,46 @@ msgstr "Preme a tecla T para facer transparentes as árbores."
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:101
-#, fuzzy
 msgid "Starting engine…"
 msgstr "Iniciando o motor…"
 
 #: horizons/gui/modules/loadingscreen.py:102
-#, fuzzy
 msgid "Catching fish…"
 msgstr "Pescando…"
 
 #: horizons/gui/modules/loadingscreen.py:103
-#, fuzzy
 msgid "Drawing user interface…"
 msgstr "Debuxando a interface…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-#, fuzzy
 msgid "Activating timer…"
 msgstr "Activando o reloxo…"
 
 #: horizons/gui/modules/loadingscreen.py:105
-#, fuzzy
 msgid "Chomping game data…"
 msgstr "Analizando os datos da partida…"
 
 #: horizons/gui/modules/loadingscreen.py:106
-#, fuzzy
 msgid "Shaping islands…"
 msgstr "Dándolle forma ás illas…"
 
 #: horizons/gui/modules/loadingscreen.py:107
-#, fuzzy
 msgid "Preparing blueprints…"
 msgstr "Preparando os planos…"
 
 #: horizons/gui/modules/loadingscreen.py:108
-#, fuzzy
 msgid "Filling world with water…"
 msgstr "Enchendo o mundo de auga…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Raising animals…"
 msgstr "Criando animais…"
 
 #: horizons/gui/modules/loadingscreen.py:110
-#, fuzzy
 msgid "Convincing AI…"
 msgstr "Convencendo á intelixencia artificial…"
 
 #: horizons/gui/modules/loadingscreen.py:111
-#, fuzzy
 msgid "Burying treasures…"
 msgstr "Sepultando tesouros…"
 
@@ -2297,7 +2280,7 @@ msgstr "Non é posíbel avanzar:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:130
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Este é o nivel máis alto no que se pode xogar de momento!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
@@ -3405,7 +3388,7 @@ msgstr "Este edificio debe estar parcialmente en terra firme."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Os habitantes están afectados pola peste negra."
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3424,7 +3407,6 @@ msgid "This building has a very low productivity."
 msgstr "A produtividade do edificio é moi baixa."
 
 #: horizons/world/status.py:115
-#, fuzzy
 msgid "This building is decommissioned."
 msgstr "O edificio está paralizado."
 
@@ -3799,10 +3781,9 @@ msgid "cannon"
 msgstr "canón"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Os habitantes deste edificio están afectados por unha praga."
+msgstr "Os habitantes deste edificio están afectados pola peste negra."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3843,7 +3824,7 @@ msgstr "condimentos"
 
 #. This is a database entry: the name of a resource.
 msgid "blackdeath"
-msgstr ""
+msgstr "peste negra"
 
 #. This is a database entry: the name of a resource.
 msgid "candles"
