@@ -153,13 +153,13 @@ class SettingsDialog(PickBeltWidget, Window):
 					cb(self._settings.get(entry.module, entry.name), data)
 
 			# handling value 0 for framelimit to disable limiter
-			if (entry.name is 'FrameLimit' and data is 0):
-				# reassign old value
-				data = self._settings.get(entry.module, entry.name)
-				self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', False)
-			elif (entry.name is 'FrameLimit'and \
-					self._settings.get(FIFE_MODULE, 'FrameLimitEnabled') is False):
-				self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', True)
+			if entry.name == 'FrameLimit':
+				if data == 0:
+					# reassign old value
+					data = self._settings.get(entry.module, entry.name)
+					self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', False)
+				else:
+					self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', True)
 
 			self._settings.set(entry.module, entry.name, data)
 
