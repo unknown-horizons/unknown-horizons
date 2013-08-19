@@ -67,6 +67,7 @@ class SettingsDialog(PickBeltWidget, Window):
 		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
 
 		bpp = {0: _lazy("Default"), 16: _lazy("16 bit"), 32: _lazy("32 bit")}
+		fps = {0: _lazy("Disabled"), 30: 30, 45: 45, 60: 60, 90: 90, 120: 120}
 
 		def get_resolutions():
 			return get_screen_resolutions(self._settings.get(FIFE_MODULE, 'ScreenResolution'))
@@ -77,8 +78,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(FIFE_MODULE, 'BitsPerPixel', 'screen_bpp', bpp, restart=True),
 			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen', restart=True),
 			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True),
-			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', [30, 45, 60, 90, 120], restart=True),
-			Setting(FIFE_MODULE, 'FrameLimitEnabled', 'enable_fps_limiter', restart=True),
+			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', fps, restart=True),
 
 			Setting(UH_MODULE, 'VolumeMusic', 'volume_music'),
 			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects'),
@@ -151,6 +151,15 @@ class SettingsDialog(PickBeltWidget, Window):
 				cb = getattr(self, '_on_%s_changed' % entry.name, None)
 				if cb:
 					cb(self._settings.get(entry.module, entry.name), data)
+
+			# handling value 0 for framelimit to disable limiter
+			if (entry.name is 'FrameLimit' and data is 0):
+				# reassign old value
+				data = self._settings.get(entry.module, entry.name)
+				self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', False)
+			elif (entry.name is 'FrameLimit'and \
+					self._settings.get(FIFE_MODULE, 'FrameLimitEnabled') is False):
+				self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', True)
 
 			self._settings.set(entry.module, entry.name, data)
 
