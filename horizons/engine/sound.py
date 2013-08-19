@@ -77,8 +77,6 @@ class Sound(object):
 
 	def enable_sound(self):
 		"""Enable all sound and start playing music."""
-		if not self.engine.get_fife_setting("PlaySounds"):
-			return
 		# Set up sound if it is enabled
 		self.soundmanager = self.engine.engine.getSoundManager()
 		self.soundmanager.init()

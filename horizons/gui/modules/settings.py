@@ -205,6 +205,9 @@ class SettingsDialog(PickBeltWidget, Window):
 			            "and has serious graphical glitches. \n\nUse at own risk!")
 			self._windows.show_popup(headline, message)
 
+	def _on_PlaySounds_changed(seld, old, new):
+		if new == True:
+			horizons.globals.fife.sound.enable_sound()
 
 def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
