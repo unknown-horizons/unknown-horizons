@@ -155,3 +155,29 @@ class Sound(object):
 		#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/449
 		emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 		emitter.play()
+
+	def set_volume_emitter(self, emitter, volume):
+		"""Sets the volume on the emitter specified by emitter_name.
+		@param emitter: string with the emitters name, used as key for the self.emitter dict
+		@param volume: double which volume the emitter is to be set to range[0, 1]
+		"""
+		if self.engine.get_fife_setting("PlaySounds"):
+			self.emitter[emitter].setGain(volume)
+
+	def set_volume_bgmusic(self, volume):
+		"""Sets the volume for the backgroundmusic.
+		@param volume: double which volume the emitter is to be set to range[0, 1]
+		"""
+		self.set_volume_emitter('bgsound', volume)
+
+	def set_volume_effects(self, volume):
+		"""Sets the volume for the effects, speech and ambient sounds.
+		@param volume: double which volume the emitter is to be set to range[0, 1]
+		"""
+		self.set_volume_emitter('effects', volume)
+		self.set_volume_emitter('speech', volume)
+		for emitter in self.emitter['ambient']:
+				emitter.setGain(new*2)
+
+
+
