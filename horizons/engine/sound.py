@@ -177,7 +177,7 @@ class Sound(object):
 		self.set_volume_emitter('effects', volume)
 		self.set_volume_emitter('speech', volume)
 		for emitter in self.emitter['ambient']:
-				emitter.setGain(new*2)
+				emitter.setGain(volume*2)
 
 
 

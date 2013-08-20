@@ -211,7 +211,7 @@ class SettingsDialog(PickBeltWidget, Window):
 		else:
 			horizons.globals.fife.sound.disable_sound()
 
-	def _on_VolumeMuisc_changed(self, old, new):
+	def _on_VolumeMusic_changed(self, old, new):
 		horizons.globals.fife.sound.set_volume_bgmusic(new)
 
 	def _on_VolumeEffects_changed(self, old, new):
