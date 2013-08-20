@@ -212,17 +212,15 @@ class SettingsDialog(PickBeltWidget, Window):
 			horizons.globals.fife.sound.disable_sound()
 
 	def _on_VolumeMuisc_changed(self, old, new):
-		if new != old:
-			if self._settings.get(UH_MODULE, 'PlaySounds') == True:
-				horizons.globals.fife.sound.emitter['bgsound'].setGain(new)
+		if self._settings.get(UH_MODULE, 'PlaySounds') == True:
+			horizons.globals.fife.sound.emitter['bgsound'].setGain(new)
 
 	def _on_VolumeEffects_changed(self, old, new):
-		if new != old:
-			if self._settings.get(UH_MODULE, 'PlaySounds') == True:
-				horizons.globals.fife.sound.emitter['effects'].setGain(new)
-				horizons.globals.fife.sound.emitter['speech'].setGain(new)
-				for emitter in horizons.globals.fife.sound.emitter['ambient']:
-					emitter.setGain(value*2)
+		if self._settings.get(UH_MODULE, 'PlaySounds') == True:
+			horizons.globals.fife.sound.emitter['effects'].setGain(new)
+			horizons.globals.fife.sound.emitter['speech'].setGain(new)
+			for emitter in horizons.globals.fife.sound.emitter['ambient']:
+				emitter.setGain(value*2)
 
 def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
