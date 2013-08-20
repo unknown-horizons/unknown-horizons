@@ -29,7 +29,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.command.game import SaveCommand
 
 class MPSession(Session):
-	"""Session class fo multiplayer games."""
+	"""Session class for multiplayer games."""
 
 	def __init__(self, db, network_interface, **kwargs):
 		"""
@@ -76,15 +76,21 @@ class MPSession(Session):
 		super(MPSession, self).end()
 
 	def autosave(self):
+		self.ingame_gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+		return  #TODO disabled for now, see #2151 for details
 		SaveCommand( SavegameManager.create_multiplayer_autosave_name() ).execute(self)
 
 	def quicksave(self):
+		self.ingame_gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+		return  #TODO disabled for now, see #2151 for details
 		SaveCommand( SavegameManager.create_multiplayer_quicksave_name() ).execute(self)
 
 	def quickload(self):
 		self.ingame_gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
 
 	def save(self, savegamename=None):
+		self.ingame_gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+		return  #TODO disabled for now, see #2151 for details
 		if savegamename is None:
 			def sanity_checker(string):
 				try:
