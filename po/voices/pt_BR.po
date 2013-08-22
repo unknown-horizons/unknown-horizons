@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2013-08-22 20:21+0200\n"
+"PO-Revision-Date: 2013-08-22 22:45+0200\n"
 "Last-Translator: Guilherme Nogueira <Gui350@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://hosted.weblate.org/projects/uh/voices/pt_BR/>\n"
@@ -30,31 +30,31 @@ msgstr "Seus habitantes certamente vão se sentir confortáveis nesta ilha."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr ""
+msgstr "A partir de agora, chame este pedaço de terra de seu."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
-msgstr ""
+msgstr "Agora esta região nos pertence."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr ""
+msgstr "A partir de agora, este pedaço de terra é nosso."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
-msgstr ""
+msgstr "Está ilha já foi colonizada por outro jogador."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "A player develops a new settlement."
-msgstr ""
+msgstr "Um jogador desenvolveu uma nova colônia."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
-msgstr ""
+msgstr "Um de seus companheiros fundou uma colônia."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr ""
+msgstr "Um de nossos rivais parece ter fundado uma colônia."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
@@ -62,7 +62,7 @@ msgstr ""
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr ""
+msgstr "Um de nossos oponentes parece ter se expandido."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
