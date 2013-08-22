@@ -23,7 +23,6 @@ msgid "easy"
 msgstr "fácil"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
@@ -31,7 +30,7 @@ msgid ""
 msgstr ""
 "Es o capitán dun barco de bandeira inglesa. Corre o ano 1740. Xunto coa túa "
 "tripulación viaxas cara unha colonia inglesa do océano pacífico.\n"
-"Todo ía segundo o previsto ata que vos colleu unha tormenta…\n"
+"Todo ía segundo o previsto ata que vos colleu unha tormenta…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -71,7 +70,6 @@ msgid "22nd November 1740"
 msgstr "22 de novembro de 1740"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
@@ -151,7 +149,6 @@ msgstr ""
 "de estar cuberto."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
@@ -160,8 +157,7 @@ msgid ""
 msgstr ""
 "Estiven a investigar as estrelas pola noite, pero sen as cartas náuticas e "
 "mailos instrumentos de medición, non podo entendelas. Teño a sensación de "
-"que imos pasar un tempo aquí, así que teremos que aproveitar a nosa "
-"estadía.\n"
+"que imos pasar un tempo aquí, así que teremos que aproveitar a nosa estadía.\n"
 "Só nos queda intentar construír unha civilización e atopar a forma de volver "
 "a casa…"
 

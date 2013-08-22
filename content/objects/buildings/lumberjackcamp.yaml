@@ -5,6 +5,7 @@
 # and a ProducerComponent to produce boards out of the raw trees the lumberjack unit collects.
 # The storage component has space for both raw trees and boards.
 # Finally, actionsets define how the building looks like in different tiers.
+# Inventory overlays then are small animations added to these base images depending on currently stored things.
 id: 8
 name:
   TIER.SAILORS: _ Lumberjack Tent
@@ -40,7 +41,6 @@ components:
     collectors:
       UNITS.LUMBERJACK_COLLECTOR: 1
 - InventoryOverlayComponent:
-    properties: null
     overlays:
       as_lumberjack0:
         idle:

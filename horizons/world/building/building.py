@@ -20,7 +20,6 @@
 # ###################################################
 
 import logging
-import operator
 
 from fife import fife
 
@@ -296,7 +295,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				# set first action
 				action = action_sets[action_set_id].keys()[0]
 
-		if Fife.compareFifeVersion((0, 3, 6), operator.ge):
+		if (Fife.getVersion() >= (0, 3, 6)):
 			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
 		else:
 			instance.act(action+"_"+str(action_set_id), facing_loc, True)

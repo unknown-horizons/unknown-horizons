@@ -27,7 +27,6 @@ from fife import fife
 import horizons.globals
 
 from horizons.component import Component
-from horizons.ext.dummy import Dummy
 from horizons.messaging import InstanceInventoryUpdated
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -41,10 +40,9 @@ class InventoryOverlayComponent(Component):
 	DEPENDENCIES = ['StorageComponent']
 	log = logging.getLogger('component.overlays')
 
-	def __init__(self, overlays=None, properties=None):
+	def __init__(self, overlays=None):
 		super(InventoryOverlayComponent, self).__init__()
 		self.overlays = overlays or {}
-		self.properties = properties
 
 		# Stores {resource_id: amount that is currently used as overlay, or None if no overlay}
 		self.current_overlays = defaultdict(lambda: None)
@@ -198,5 +196,7 @@ class InventoryOverlayComponent(Component):
 
 # If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
 if not hasattr(fife, 'AnimationOverlayMap'):
-	class InventoryOverlayComponent(Dummy):
-		pass
+	class InventoryOverlayComponent(Component):
+
+		def __init__(self, overlays=None):
+			super(InventoryOverlayComponent, self).__init__()

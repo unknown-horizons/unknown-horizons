@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-07 16:32+0200\n"
+"PO-Revision-Date: 2013-08-14 15:19+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -1880,7 +1880,6 @@ msgstr "Naam: {game_name}"
 #: horizons/gui/modules/multiplayermenu.py:207
 #: horizons/gui/modules/multiplayermenu.py:440
 #, python-brace-format
-#| msgid "Creator: {game_creator}"
 msgid "Creator: {game_creator}"
 msgstr "Maker: {game_creator}"
 
@@ -3782,7 +3781,6 @@ msgid "cannon"
 msgstr "kanon"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
 msgstr "De inwoners van dit gebouw zijn besmet met de Zwarte Dood!"
 
@@ -3825,8 +3823,6 @@ msgid "condiments"
 msgstr "toevoegingen"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
-#| msgid "black"
 msgid "blackdeath"
 msgstr "zwarte dood"
 

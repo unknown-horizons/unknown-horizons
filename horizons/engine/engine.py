@@ -21,6 +21,7 @@
 # ###################################################
 
 import locale
+import logging
 
 from fife import fife
 from fife.extensions import pychan, fifelog
@@ -39,6 +40,8 @@ class Fife(object):
 	"""
 	Basic initiation of engine. Followed later by init().
 	"""
+	log = logging.getLogger('engine.engine')
+
 	def __init__(self):
 		self.pump = []
 
@@ -297,14 +300,12 @@ class Fife(object):
 		self.quit_requested = True
 
 	@classmethod
-	def compareFifeVersion(cls, fifeVersion, operator):
-		""" Checks the given version with the currently used version of Fife.
-		Example: fifeVersion operator currentVersion
-		@param fifeVersion is tuple of (FIFE_MAJOR_VERSION, FIFE_MINOR_VERSION, FIFE_PATCH_VERSION)
-		@param operator to compare given version with the current running one
+	def getVersion(cls):
+		""" Returns a tuple including the Major, Minor and Patch version of the current running Fife.
 		"""
 		if (hasattr(fife, 'getMajor') and hasattr(fife, 'getMinor') and hasattr(fife, 'getPatch')):
-			return operator(fifeVersion, (fife.getMajor(), fife.getMinor(), fife.getPatch()))
+			return (fife.getMajor(), fife.getMinor(), fife.getPatch())
 		else:
-			return False
+			cls.log.warning('Can not determine the version of the running Fife')
+			return (0,0,0)
 

@@ -43,7 +43,6 @@ echo "Cleaning up"
 rm setup*
 rm unknown-horizons
 rm unknown-horizons.wpr
-rm server.py
 rm stage_build_mac.py
 rm *_tests*
 rm -r tests/
