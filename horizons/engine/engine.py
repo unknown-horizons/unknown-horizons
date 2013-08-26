@@ -305,7 +305,5 @@ class Fife(object):
 		"""
 		if (hasattr(fife, 'getMajor') and hasattr(fife, 'getMinor') and hasattr(fife, 'getPatch')):
 			return (fife.getMajor(), fife.getMinor(), fife.getPatch())
-		else:
-			cls.log.warning('Can not determine the version of the running Fife')
-			return (0,0,0)
+		return (0,0,0)
 
