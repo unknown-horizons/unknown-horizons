@@ -35,7 +35,7 @@ logbook-data:
 - &FOOD_BOARDS
   - [Headline, 22 de Novembro de 1740]
   - [Image, content/gui/images/background/hr.png]
-  - O porto foi construído e uma nova esperança surge. Os próximos dias ainda me preocupam... estamos ficando sem comida e sem material de construção.
+  - O porto foi construído e uma nova esperança surge. Os próximos dias ainda me preocupam... estamos ficando sem comida e sem material básico de construção.
   - Precisamos proteger nossas necessidades básicas para nos mantermos vivos. É hora de enviar algumas pessoas para coletar alimento e madeira.
   - 'Tarefa:
 
@@ -68,7 +68,7 @@ logbook-data:
   - Finalmente temos algo para comer e um local para se abrigar. Minha tenda não é muito confortável mas me manterá seco e durante a noite me dá uma sensação de ter um teto sobre a cabeça.
   - 'Estive observando as estrelas à noite, mas sem minhas cartas de navegação e instrumentos a interpretação fica impossível. Tenho a sensação de que ficaremos presos aqui por algum tempo, então é melhor nos esforçarmos para melhorar nossas condições.
 
-    Tudo que podemos fazer por hora é construir uma civilização e buscar o caminho de casa...'
+    Tudo que podemos fazer por hora é construir uma civilização e buscar o caminho de casa…'
   - 'Tarefa:
 
     Desenvolva a aldeia até possuir pelo menos 250 habitantes e um balanço positivo.'
@@ -142,9 +142,9 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Você é o capitão de um navio sob a bandeira da Inglaterra em 1740. Junto de sua equipe, estava a caminho de uma colônia Inglesa no oceano Pacífico.
+  description: 'Você é o capitão de um navio sob a bandeira da Inglaterra em 1740. Junto de sua tripulação, estava a caminho de uma colônia Inglesa no oceano Pacífico.
 
-    Tudo correu bem até que chegou uma tempestade...'
+    Tudo correu bem até que chegou uma tempestade…'
   difficulty: fácil
   locale: pt_BR
   mapfile: development.sqlite

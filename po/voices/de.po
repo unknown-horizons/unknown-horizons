@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2013-08-18 00:55+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"PO-Revision-Date: 2013-08-21 17:05+0200\n"
+"Last-Translator: Stefan Schoenweiss <nxxs@inbox.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/voices/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr ""
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr "Man sagt einer unserer Gegner hat sich ausgedehnt."
+msgstr "Man sagt einer unser Gegner hat sich ausgebreitet."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
@@ -86,7 +86,7 @@ msgstr "Diese Insel gehört nun nicht mehr nur uns alleine."
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
 msgstr ""
-"Späher haben herrausgefunden, dass Gäste auf einer unserer Inseln siedeln."
+"Späher haben herausgefunden, dass Gäste auf einer unserer Inseln siedeln."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
@@ -114,7 +114,7 @@ msgstr "Wir teilen dieses Land nun mit unserem Verbündetem."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "Our ally settles on one of our islands."
-msgstr "Unser Verbündeter siedelt auf einer von unseren Inseln."
+msgstr "Unser Verbündeter siedelt auf einer unserer Inseln."
 
 #. Resources - Construction material missing
 #, fuzzy
@@ -129,10 +129,9 @@ msgid "This construction project needs more resources."
 msgstr "Dieses Bauvorhaben benötigt mehr Ressourcen."
 
 #. Resources - Construction material missing
-#, fuzzy
 #| msgid "Construction is impossible without sufficient amounts of $RES."
 msgid "Construction is impossible without sufficient material."
-msgstr "Der Bau ist unmöglich ohne ausreichend Material."
+msgstr "Dieser Bau ist unmöglich ohne ausreichend Material."
 
 #. Resources - Construction material missing
 #, fuzzy

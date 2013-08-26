@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-14 15:19+0200\n"
-"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
+"PO-Revision-Date: 2013-08-22 13:21+0200\n"
+"Last-Translator: sietze Greydanus <haselnut116601@gmail.com>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -3033,7 +3033,7 @@ msgstr "Pakhuis"
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 msgid "Weaver's Hut"
-msgstr "Kleermakershut"
+msgstr "Weverij"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
@@ -3392,7 +3392,7 @@ msgstr "Deze bewoners zijn ontevreden."
 
 #: horizons/world/status.py:94
 msgid "The inventory of this building is full."
-msgstr "Het inventaris van dit gebouw is vol."
+msgstr "De inventaris van dit gebouw is vol."
 
 #: horizons/world/status.py:109
 msgid "This building has a very low productivity."
@@ -3404,7 +3404,7 @@ msgstr "Dit gebouw is stilgelegd."
 
 #: horizons/world/status.py:121
 msgid "The inhabitants of this building have the plague."
-msgstr "Het inventaris van dit gebouw is vol."
+msgstr "De bewoners van dit gebouw hebben de pest."
 
 #: horizons/world/traderoute.py:319
 #, python-brace-format

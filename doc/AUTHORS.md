@@ -1,6 +1,7 @@
 ## UH-Team ##
 
 #### Project Coordination
+* Kilian] (Kilian Köppchen)
 * Nightraven (Tobias Schroefel)
 * Nihathrael (Thomas Kinnen)
 
@@ -9,8 +10,10 @@
 * Court-Jus (Ghislain Lévêque)
 * GreyGhost (Tushar Sawant)
 * gscai (Ott Tinn)
+* Kiryx (Krzysztof Nowak)
 * lynxis (Alexander Couzens)
 * manuel (Manuel Mausz)
+* mesutcan (Mesutcan Kurt)
 * mihaibivol (Mihai Bivol)
 * Nihathrael (Thomas Kinnen)
 * phiker (Philipp Kerling)
@@ -27,7 +30,6 @@
 #### Game-Play Design
 * Andre (Andre Reichelt)
 * dauerflucher (Andreas Lis)
-* Kilian] (Kilian Köppchen)
 
 #### Sound and Music Artists
 * draikon (Sebastian Ahlen)
@@ -94,7 +96,7 @@
 * Michal Čihař (nijel)
 
 #### Bulgarian
-* balward
+* balward (Nikolay Kotrabakov)
 
 #### Catalan
 * CatRoky
@@ -104,7 +106,7 @@
 * Kristian Hynek (Kris_CZ)
 * naked.in.rain
 * Petr Palička (peca)
-* Spek
+* Pavel Plecháč (Spek)
 * Vilem Soulak (Turmaleus)
 * VMa
 
@@ -131,7 +133,7 @@
 * Üllar Lainväe (ussikene)
 
 #### Finnish
-* Aleksi Kinnunen
+* Aleksi Kinnunen (alluk)
 
 #### French
 * Antoine Pernot (mumuxe)
@@ -169,17 +171,17 @@
 - - - - -
 
 #### Norwegian
-* Audun Pers
+* Audun Pers (pers)
 * Frode Woldsund (frodus)
 * Jared Isaksen (JeThro)
 
 #### Dutch
-* angellus
+* Nick Z. (angellus)
 * Jasper Tepper (Shadow23)
 * Luth
 * mightykai
 * MrRuudJ
-* SanderOnline
+* Sander Hasenpflug (SanderOnline)
 * VinWij
 
 #### Polish
