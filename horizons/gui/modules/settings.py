@@ -32,6 +32,8 @@ from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
+from horizons.network.networkinterface import NetworkInterface
+from horizons.util.python import parse_port
 
 
 class Setting(object):
@@ -79,7 +81,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(FIFE_MODULE, 'BitsPerPixel', 'screen_bpp', bpp, restart=True),
 			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen', restart=True),
 			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True, callback=self._on_RenderBackend_changed),
-			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', fps, restart=True),
+			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
 
 			Setting(UH_MODULE, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
 			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects', callback=self._on_VolumeEffects_changed),
@@ -102,7 +104,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH_MODULE, 'ShowResourceIcons', 'show_resource_icons'),
 			Setting(UH_MODULE, 'ScrollSpeed', 'scrollspeed'),
 			Setting(UH_MODULE, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
-			Setting(UH_MODULE, 'NetworkPort', 'network_port'),
+			Setting(UH_MODULE, 'NetworkPort', 'network_port', callback=self._on_NetworkPort_changed),
 		]
 
 		self._fill_widgets()
@@ -133,7 +135,7 @@ class SettingsDialog(PickBeltWidget, Window):
 
 		for entry in self._options:
 			widget = self.widget.findChild(name=entry.widget_name)
-			data = widget.getData()
+			new_value = widget.getData()
 
 			if isinstance(entry.initial_data, collections.Callable):
 				initial_data = entry.initial_data()
@@ -141,27 +143,22 @@ class SettingsDialog(PickBeltWidget, Window):
 				initial_data = entry.initial_data
 
 			if isinstance(initial_data, list):
-				data = initial_data[data]
+				new_value = initial_data[new_value]
 			elif isinstance(initial_data, dict):
-				data = initial_data.keys()[data]
+				new_value = initial_data.keys()[new_value]
 
-			if data != self._settings.get(entry.module, entry.name):
+			old_value = self._settings.get(entry.module, entry.name)
+
+			# Store new setting
+			self._settings.set(entry.module, entry.name, new_value)
+
+			# If setting changed, allow applying of new value and sanity checks
+			if new_value != old_value:
 				if entry.restart:
 					restart_required = True
 
 				if entry.callback:
-					entry.callback(self._settings.get(entry.module, entry.name), data)
-
-			# handling value 0 for framelimit to disable limiter
-			if entry.name == 'FrameLimit':
-				if data == 0:
-					# reassign old value
-					data = self._settings.get(entry.module, entry.name)
-					self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', False)
-				else:
-					self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', True)
-
-			self._settings.set(entry.module, entry.name, data)
+					entry.callback(old_value, new_value)
 
 		if restart_required:
 			headline = _("Restart required")
@@ -206,16 +203,50 @@ class SettingsDialog(PickBeltWidget, Window):
 			self._windows.show_popup(headline, message)
 
 	def _on_PlaySounds_changed(self, old, new):
-		if new == True:
-			horizons.globals.fife.sound.enable_sound()
-		else:
-			horizons.globals.fife.sound.disable_sound()
+		horizons.globals.fife.sound.setup_sound()
 
 	def _on_VolumeMusic_changed(self, old, new):
 		horizons.globals.fife.sound.set_volume_bgmusic(new)
 
 	def _on_VolumeEffects_changed(self, old, new):
 		horizons.globals.fife.sound.set_volume_effects(new)
+
+	def _on_FrameLimit_changed(self, old, new):
+		# handling value 0 for framelimit to disable limiter
+		if new == 0:
+			self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', False)
+		else:
+			self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', True)
+
+	def _on_NetworkPort_changed(self, old, new):
+		"""Sets a new value for client network port"""
+		# port is saved as string due to pychan limitations
+		try:
+			# 0 is not a valid port, but a valid value here (used for default)
+			parse_port(new)
+		except ValueError:
+			headline = _("Invalid network port")
+			descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
+			advice = _("Please check the port you entered and make sure it is in the specified range.")
+			self._windows.show_error_popup(headline, descr, advice)
+			# reset value and reshow settings dlg
+			self._settings.set(UH_MODULE, 'NetworkPort', u"0")
+		else:
+			# port is valid
+			try:
+				if NetworkInterface() is None:
+					NetworkInterface.create_instance()
+				NetworkInterface().network_data_changed()
+			except Exception as e:
+				headline = _("Failed to apply new network settings.")
+				descr = _("Network features could not be initialized with the current configuration.")
+				advice = _("Check the settings you specified in the network section.")
+				if 0 < parse_port(new) < 1024:
+					#i18n This is advice for players seeing a network error with the current config
+					advice += u" " + \
+						_("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
+				details = unicode(e)
+				self._windows.show_error_popup(headline, descr, advice, details)
 
 def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
