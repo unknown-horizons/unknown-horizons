@@ -1,6 +1,7 @@
 ## UH-Team ##
 
 #### Project Coordination
+* Kilian] (Kilian Köppchen)
 * Nightraven (Tobias Schroefel)
 * Nihathrael (Thomas Kinnen)
 
@@ -9,8 +10,10 @@
 * Court-Jus (Ghislain Lévêque)
 * GreyGhost (Tushar Sawant)
 * gscai (Ott Tinn)
+* Kiryx (Krzysztof Nowak)
 * lynxis (Alexander Couzens)
 * manuel (Manuel Mausz)
+* mesutcan (Mesutcan Kurt)
 * mihaibivol (Mihai Bivol)
 * Nihathrael (Thomas Kinnen)
 * phiker (Philipp Kerling)
@@ -27,7 +30,6 @@
 #### Game-Play Design
 * Andre (Andre Reichelt)
 * dauerflucher (Andreas Lis)
-* Kilian] (Kilian Köppchen)
 
 #### Sound and Music Artists
 * draikon (Sebastian Ahlen)
@@ -169,7 +171,7 @@
 - - - - -
 
 #### Norwegian
-* Audun Persi (pers)
+* Audun Pers (pers)
 * Frode Woldsund (frodus)
 * Jared Isaksen (JeThro)
 
