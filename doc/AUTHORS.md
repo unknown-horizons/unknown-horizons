@@ -94,7 +94,7 @@
 * Michal Čihař (nijel)
 
 #### Bulgarian
-* balward
+* balward (Nikolay Kotrabakov)
 
 #### Catalan
 * CatRoky
@@ -104,7 +104,7 @@
 * Kristian Hynek (Kris_CZ)
 * naked.in.rain
 * Petr Palička (peca)
-* Spek
+* Pavel Plecháč (Spek)
 * Vilem Soulak (Turmaleus)
 * VMa
 
@@ -131,7 +131,7 @@
 * Üllar Lainväe (ussikene)
 
 #### Finnish
-* Aleksi Kinnunen
+* Aleksi Kinnunen (alluk)
 
 #### French
 * Antoine Pernot (mumuxe)
@@ -169,17 +169,17 @@
 - - - - -
 
 #### Norwegian
-* Audun Pers
+* Audun Persi (pers)
 * Frode Woldsund (frodus)
 * Jared Isaksen (JeThro)
 
 #### Dutch
-* angellus
+* Nick Z. (angellus)
 * Jasper Tepper (Shadow23)
 * Luth
 * mightykai
 * MrRuudJ
-* SanderOnline
+* Sander Hasenpflug (SanderOnline)
 * VinWij
 
 #### Polish
