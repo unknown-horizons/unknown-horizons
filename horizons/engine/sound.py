@@ -40,6 +40,7 @@ class Sound(object):
 		self.emitter['bgsound'] = None
 		self.emitter['effects'] = None
 		self.emitter['speech'] = None
+		self.emitter['ambient'] = []
 
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
 		self.ingame_music = glob.glob('content/audio/music/*.ogg')
