@@ -27,7 +27,7 @@ import horizons.globals
 
 from horizons.constants import LANGUAGENAMES
 from horizons.engine import UH_MODULE, FIFE_MODULE
-from horizons.i18n import _lazy, find_available_languages
+from horizons.i18n import change_language, _lazy, find_available_languages
 from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
@@ -95,7 +95,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH_MODULE, 'AutosaveInterval', 'autosaveinterval'),
 			Setting(UH_MODULE, 'AutosaveMaxCount', 'autosavemaxcount'),
 			Setting(UH_MODULE, 'QuicksaveMaxCount', 'quicksavemaxcount'),
-			Setting(UH_MODULE, 'Language', 'uni_language', language_names),
+			Setting(UH_MODULE, 'Language', 'uni_language', language_names, callback=self._on_Language_changed),
 
 			Setting(UH_MODULE, 'MinimapRotation', 'minimaprotation'),
 			Setting(UH_MODULE, 'UninterruptedBuilding', 'uninterrupted_building'),
@@ -247,6 +247,10 @@ class SettingsDialog(PickBeltWidget, Window):
 						_("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
 				details = unicode(e)
 				self._windows.show_error_popup(headline, descr, advice, details)
+
+	def _on_Language_changed(self, old, new):
+		language = LANGUAGENAMES.get_by_value(new)
+		change_language(language)
 
 def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
