@@ -35,12 +35,13 @@ from horizons.gui.windows import Window
 
 
 class Setting(object):
-	def __init__(self, module, name, widget_name, initial_data=None, restart=False):
+	def __init__(self, module, name, widget_name, initial_data=None, restart=False, callback=None):
 		self.module = module
 		self.name = name
 		self.widget_name = widget_name
 		self.initial_data = initial_data
 		self.restart = restart
+		self.callback = callback
 
 
 class SettingsDialog(PickBeltWidget, Window):
@@ -77,12 +78,12 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(FIFE_MODULE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
 			Setting(FIFE_MODULE, 'BitsPerPixel', 'screen_bpp', bpp, restart=True),
 			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen', restart=True),
-			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True),
+			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True, callback=self._on_RenderBackend_changed),
 			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', fps, restart=True),
 
-			Setting(UH_MODULE, 'VolumeMusic', 'volume_music'),
-			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects'),
-			Setting(FIFE_MODULE, 'PlaySounds', 'enable_sound'),
+			Setting(UH_MODULE, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
+			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects', callback=self._on_VolumeEffects_changed),
+			Setting(FIFE_MODULE, 'PlaySounds', 'enable_sound', callback=self._on_PlaySounds_changed),
 			Setting(UH_MODULE, 'EdgeScrolling', 'edgescrolling'),
 			Setting(UH_MODULE, 'CursorCenteredZoom', 'cursor_centered_zoom'),
 			Setting(UH_MODULE, 'MiddleMousePan', 'middle_mouse_pan'),
@@ -148,9 +149,8 @@ class SettingsDialog(PickBeltWidget, Window):
 				if entry.restart:
 					restart_required = True
 
-				cb = getattr(self, '_on_%s_changed' % entry.name, None)
-				if cb:
-					cb(self._settings.get(entry.module, entry.name), data)
+				if entry.callback:
+					entry.callback(self._settings.get(entry.module, entry.name), data)
 
 			# handling value 0 for framelimit to disable limiter
 			if entry.name == 'FrameLimit':
