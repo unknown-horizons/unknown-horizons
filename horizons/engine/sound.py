@@ -92,7 +92,6 @@ class Sound(object):
 		self.emitter['speech'] = self.soundmanager.createEmitter()
 		self.emitter['speech'].setGain(self.engine.get_uh_setting("VolumeEffects"))
 		self.emitter['speech'].setLooping(False)
-		self.emitter['ambient'] = []
 
 		# Start background music:
 		self._old_byte_pos = 0.0
