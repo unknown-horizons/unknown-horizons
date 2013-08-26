@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-26 16:15+0200\n"
+"PO-Revision-Date: 2013-08-26 16:16+0200\n"
 "Last-Translator: goku sayajin <goku3@dbzmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
@@ -943,7 +943,7 @@ msgstr "Carregar rápido"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
-msgstr "Alternar opacidade dos edifícios"
+msgstr "Alternar visibilidade dos edifícios"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
