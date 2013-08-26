@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-22 20:13+0200\n"
-"Last-Translator: Guilherme Nogueira <Gui350@gmail.com>\n"
+"PO-Revision-Date: 2013-08-26 16:15+0200\n"
+"Last-Translator: goku sayajin <goku3@dbzmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -2271,9 +2271,8 @@ msgid "Upgrade not possible:"
 msgstr "Aprimoramento impossível:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:130
-#, fuzzy
 msgid "This is the highest playable tier for now!"
-msgstr "Este é o maior tier jogável atualmente!"
+msgstr "Este é o mais alto nível que poderá alcançar atualmente!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
@@ -3831,7 +3830,7 @@ msgstr "Uma nova colônia foi fundada por {player}."
 # Is this vines as in plants, or vines as in ore-vines? I assumed plants here, otherwise change this to "aders".
 #. This is a database entry: the name of a resource.
 msgid "vines"
-msgstr "veideiras"
+msgstr "videiras"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Your game has been saved."
