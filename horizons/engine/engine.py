@@ -244,10 +244,10 @@ class Fife(object):
 		self.sound.play_sound(emitter, soundfile)
 
 	def get_locale(self):
-		for locale_code, langname in LANGUAGENAMES.items():
-			if langname == self.get_uh_setting('Language'):
-				if not langname == 'System default':
-					return locale_code
+		langname = self.get_uh_setting('Language')
+		locale_code = LANGUAGENAMES.get_by_value(langname)
+		if not langname == 'System default':
+				return locale_code
 		try:
 			default_locale, default_encoding = locale.getdefaultlocale()
 			return default_locale.split('_')[0]
