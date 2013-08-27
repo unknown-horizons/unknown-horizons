@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-07-14 19:25+0200\n"
+"PO-Revision-Date: 2013-08-27 02:44+0200\n"
 "Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -3343,7 +3343,7 @@ msgstr "Bu bina, kısmen düz bir zeminde olmalı."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Halk Kara Ölüme yakalandı!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3565,10 +3565,10 @@ msgid "grapes"
 msgstr "üzüm"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Your inhabitants reached level {level}."
 msgid "Your inhabitants reached level {level}."
-msgstr "Yerliler {}. seviyeye ulaştı."
+msgstr "Halkınız {level} seviyesine ulaştı."
 
 #. This is a database entry: the name of a resource.
 msgid "faith"
@@ -3738,10 +3738,9 @@ msgid "cannon"
 msgstr "top"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Bu binanın sakinlerinin bulaşıcı hastalığı var."
+msgstr "Bu binanın sakinleri Kara Ölüm hastalığına yakalandı!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3782,7 +3781,7 @@ msgstr "çeşni"
 
 #. This is a database entry: the name of a resource.
 msgid "blackdeath"
-msgstr ""
+msgstr "karaölüm"
 
 #. This is a database entry: the name of a resource.
 msgid "candles"
