@@ -100,7 +100,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH_MODULE, 'MinimapRotation', 'minimaprotation'),
 			Setting(UH_MODULE, 'UninterruptedBuilding', 'uninterrupted_building'),
 			Setting(UH_MODULE, 'AutoUnload', 'auto_unload'),
-			Setting(UH_MODULE, 'DebugLog', 'debug_log'),
+			Setting(UH_MODULE, 'DebugLog', 'debug_log', callback=self._on_DebugLog_changed),
 			Setting(UH_MODULE, 'ShowResourceIcons', 'show_resource_icons'),
 			Setting(UH_MODULE, 'ScrollSpeed', 'scrollspeed'),
 			Setting(UH_MODULE, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
@@ -251,6 +251,9 @@ class SettingsDialog(PickBeltWidget, Window):
 	def _on_Language_changed(self, old, new):
 		language = LANGUAGENAMES.get_by_value(new)
 		change_language(language)
+
+	def _on_DebugLog_changed(self, old, new):
+		horizons.main.set_debug_log(new)
 
 def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.

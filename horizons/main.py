@@ -36,6 +36,7 @@ import traceback
 import threading
 from thread import error as ThreadError  # raised by threading.Lock.release
 import subprocess
+import logging
 
 from fife import fife as fife_module
 
@@ -119,6 +120,9 @@ def start(_command_line_arguments):
 			# in the current directory. See #1782 for background information.
 			horizons.globals.fife._log.logToPrompt = False
 			horizons.globals.fife._log.logToFile = True
+
+	if horizons.globals.fife.get_uh_setting("DebugLog"):
+		set_debug_log(True, startup=True)
 
 	if command_line_arguments.mp_bind:
 		try:
@@ -537,7 +541,6 @@ def preload_game_data(lock):
 	"""Preloads game data.
 	Keeps releasing and acquiring lock, runs until lock can't be acquired."""
 	try:
-		import logging
 		from horizons.entities import Entities
 		log = logging.getLogger("preload")
 		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
@@ -575,3 +578,35 @@ def preload_game_join(preloading):
 			lock.release()
 		except ThreadError:
 			pass # due to timing issues, the lock might be released already
+
+def set_debug_log(enabled, startup=False):
+	"""
+	@param enabled: boolean if logging should be enabled
+	@param startup: True if on startup to apply settings. Won't show popup
+	"""
+	options = command_line_arguments
+
+	if enabled: # enable logging
+		if options.debug:
+			# log file is already set up, just make sure everything is logged
+			logging.getLogger().setLevel(logging.DEBUG)
+		else: # set up all anew
+			class Data(object):
+				debug = False
+				debug_log_only = True
+				logfile = None
+				debug_module = []
+			# use setup call reference, see run_uh.py
+			options.setup_debugging(Data)
+			options.debug = True
+
+		if not startup:
+			headline = _("Logging enabled")
+			msg = _("Logs are written to {directory}.").format(directory=PATHS.LOG_DIR)
+			# Let the ext scheduler show the popup, so that all other settings can be saved and validated
+			ExtScheduler().add_new_object(Callback(_modules.gui.show_popup, headline, msg), None)
+
+	else: #disable logging
+		logging.getLogger().setLevel(logging.WARNING)
+		# keep debug flag in options so to not reenable it fully twice
+		# on reenable, only the level will be reset
