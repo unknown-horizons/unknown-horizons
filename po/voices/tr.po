@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2013-08-02 02:57+0200\n"
+"PO-Revision-Date: 2013-08-27 02:45+0200\n"
 "Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/voices/tr/>\n"
 "Language: tr\n"
@@ -113,26 +113,22 @@ msgid "Our ally settles on one of our islands."
 msgstr "İttifakımız adalarımızdan birine yerleşiyor."
 
 #. Resources - Construction material missing
-#, fuzzy
 #| msgid "You need more $RES to build this."
 msgid "You need more resources to build this."
-msgstr "Bunu yapmanız için daha çok $RES kaynağına ihtiyacınız var."
+msgstr "Bunu yapmanız için daha çok kaynağa ihtiyacınız var."
 
 #. Resources - Construction material missing
-#, fuzzy
 #| msgid "This construction project needs more $RES."
 msgid "This construction project needs more resources."
-msgstr "Bu inşaat projesi daha fazla $RES gerektiriyor."
+msgstr "Bu inşaat projesi daha fazla kaynak gerektiriyor."
 
 #. Resources - Construction material missing
-#, fuzzy
 #| msgid "Construction is impossible without sufficient amounts of $RES."
 msgid "Construction is impossible without sufficient material."
-msgstr "İnşaatın $RES miktarı yeterli oluncaya kadar yapılması imkansız."
+msgstr "İnşaatın kaynak miktarı yeterli oluncaya kadar yapılması imkansız."
 
 #. Resources - Construction material missing
-#, fuzzy
 #| msgid ""
 #| "The amount of $RES in your inventory is not sufficient to build this."
 msgid "The resources in your inventory are not sufficient to build this."
-msgstr "Stoğunuzdaki $RES miktarı, bunu yapacak kadar yeterli değil."
+msgstr "Stoğunuzdaki kaynak miktarı, bunu yapacak kadar yeterli değil."
