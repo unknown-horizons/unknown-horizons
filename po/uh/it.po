@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-29 16:39+0200\n"
+"PO-Revision-Date: 2013-08-29 18:04+0200\n"
 "Last-Translator: Davide Nanni <ds.aureli@gmail.com>\n"
 "Language-Team: Italian <http://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
@@ -1811,7 +1811,6 @@ msgid "Shaping islands…"
 msgstr "Sagomando le isole…"
 
 #: horizons/gui/modules/loadingscreen.py:107
-#, fuzzy
 msgid "Preparing blueprints…"
 msgstr "Preparando i progetti…"
 
@@ -2853,7 +2852,7 @@ msgstr "Cresce spezie. Necessita di una fattoria."
 #. name_2 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:302
 msgid "Stonemason"
-msgstr ""
+msgstr "Scalpellino"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:304
