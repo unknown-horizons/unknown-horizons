@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-08-28 17:52+0200\n"
+"PO-Revision-Date: 2013-08-29 08:58+0200\n"
 "Last-Translator: Daniel Andre <zegenie@gmail.com>\n"
 "Language-Team: Norwegian Bokmål "
 "<http://hosted.weblate.org/projects/uh/uh/nb/>\n"
@@ -391,7 +391,7 @@ msgstr "Selger"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: horizons/gui/tabs/buyselltab.py:339
 msgid "Buying"
-msgstr "Kjøper"
+msgstr "Handel"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
@@ -1032,7 +1032,7 @@ msgstr "Kartredigering"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr "Takk til"
+msgstr "Laget av"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
@@ -1972,11 +1972,11 @@ msgstr "{player} ble fjernet fra spillet av den som startet det"
 
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
-msgstr "Er du sikker på du vil avbryte denne omgangen?"
+msgstr "Er du sikker på du vil avslutte denne spilløkten?"
 
 #: horizons/gui/modules/pausemenu.py:83
 msgid "Quit Session"
-msgstr "Avslutt omgang"
+msgstr "Avslutt spilløkt"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "No saved games"
@@ -2196,7 +2196,7 @@ msgstr "Bygg relaterte bygninger"
 #. [br] means newline
 #: horizons/gui/tabs/buildtabs.py:144
 msgid "Resources needed:"
-msgstr "Manglende ressurser:"
+msgstr "Nødvendige ressurser:"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/tabs/buildtabs.py:149
@@ -2672,7 +2672,7 @@ msgstr "Jernmine"
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:201
 msgid "Gets iron ore from deposit."
-msgstr "Henter jern fra en jernforekomst."
+msgstr "Henter jern fra en jernmalmforekomst."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:206
