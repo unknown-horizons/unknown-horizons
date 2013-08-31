@@ -65,8 +65,10 @@ class Settings(object):
 		for name, value in self._module_settings_template[module].iteritems():
 			if name not in self._module_settings[module]:
 				self._module_settings[module][name] = value
-
 		return self._module_settings[module]
+
+	def get_module_template_settings(self, module):
+		return self._settings_template_serializer.getAllSettings(module)
 
 	def save(self):
 		self._settings_serializer.save(self._settings_file)
