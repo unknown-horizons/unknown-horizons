@@ -392,7 +392,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
   - Наші форуми відкриті для вас!
-  - Найкращі результати досі були досягнуті, приєднанням до нашого IRC-каналу, так що ви могли б спробувати його в першу чергу.
+  - Найкращі результати досі досягнуті через приєднання до нашого IRC-каналу, тому ви могли б спробувати спершу його.
   - [Pagebreak]
   - [Headline, Дякуємо!]
   - [Image, content/gui/images/background/hr.png]
