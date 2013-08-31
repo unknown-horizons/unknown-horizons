@@ -199,11 +199,7 @@ class Fife(object):
 
 	def get_keys_for_action(self, action, default=False):
 		"""Returns list of current hotkeys for *action* or its default hotkeys."""
-		if default:
-			keys = self._default_hotkeys.get(action)
-		else:
-			keys = self._setting.get(KEY_MODULE, action)
-		return keys
+		return self._setting.get(KEY_MODULE, action, default)
 
 	def set_key_for_action(self, action, newkey):
 		"""Replaces all existing hotkeys for *action* with *newkey*."""
