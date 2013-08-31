@@ -71,6 +71,7 @@ class Settings(object):
 		return self._settings_template_serializer.getAllSettings(module)
 
 	def save(self):
+
 		self._settings_serializer.save(self._settings_file)
 
 	def apply(self):
@@ -79,7 +80,11 @@ class Settings(object):
 		change_language(language)
 
 	def set_defaults(self):
-		pass
+		for module in self._settings_template_serializer.getModuleName():
+			for setting_name in self._settings_template_serializer.getAllSettings(module):
+				value = self._settings_template_serializer.get(module, setting_name)
+				self.set(module, setting_name, value)
+		self.save()
 
 	# settings
 

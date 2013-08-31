@@ -121,6 +121,11 @@ class SettingsDialog(PickBeltWidget, Window):
 	def hide(self):
 		self.widget.hide()
 
+	def show_restart_popup(self):
+		headline = _("Restart required")
+		message = _("Some of your changes require a restart of Unknown Horizons.")
+		self._windows.show_popup(headline, message)
+
 	def set_defaults(self):
 		title = _("Restore default settings")
 		msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
@@ -129,6 +134,8 @@ class SettingsDialog(PickBeltWidget, Window):
 		if self._windows.show_popup(title, msg, show_cancel_button=True):
 			self.hotkey_interface.reset_to_default()
 			self._settings.set_defaults()
+			self.show_restart_popup()
+			self._windows.close()
 
 	def apply_settings(self):
 		restart_required = False
@@ -161,9 +168,7 @@ class SettingsDialog(PickBeltWidget, Window):
 					entry.callback(old_value, new_value)
 
 		if restart_required:
-			headline = _("Restart required")
-			message = _("Some of your changes require a restart of Unknown Horizons.")
-			self._windows.show_popup(headline, message)
+			self.show_restart_popup()
 
 		self.hotkey_interface.save_settings()
 		self._settings.apply()
