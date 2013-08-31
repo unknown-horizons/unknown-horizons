@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-06-03 22:52+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"PO-Revision-Date: 2013-08-31 19:07+0200\n"
+"Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
 "Language-Team: Ukrainian <http://hosted.weblate.org/projects/uh/uh/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -95,15 +95,15 @@ msgstr "Вийти з редактора"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Виберіть розмір щітки:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Виберіть рельєф:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(правий клік для зупинки)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -640,9 +640,8 @@ msgstr "Відправити повідомлення в чаті всім гр�
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Введіть ваше повідомлення:"
+msgstr "Введіть ваше повідомлення тут"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -704,7 +703,6 @@ msgid "Land"
 msgstr "Суходіл"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-#, fuzzy
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
@@ -853,9 +851,8 @@ msgid "Return"
 msgstr "Повернення"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "освіта"
+msgstr "Дії"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -962,9 +959,8 @@ msgid "Screenshot"
 msgstr "Знімок екрану"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Вкл / вимк сітку"
+msgstr "Увімкн./вимкн. показ FPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
@@ -977,12 +973,12 @@ msgstr "Показати значення координат (відлагодж
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Основний"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Другорядний"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #: content/gui/xml/mainmenu/settings.xml:121
@@ -990,9 +986,8 @@ msgid "Reset to default"
 msgstr "Відновити типові значення"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Відновити типові значення"
+msgstr "Відновити типові ключі"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1011,13 +1006,12 @@ msgid "Cancel game"
 msgstr "Скасувати гру"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
 msgstr "Завантаження…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Змінити тло"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1073,7 +1067,7 @@ msgstr "Це буде відображено іншим гравцям, щоб �
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "Гра без назви"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1548,22 +1542,21 @@ msgid "An error happened during quicksave."
 msgstr "Трапилася помилка під час швидкого збереження."
 
 #: horizons/editor/session.py:70
-#, fuzzy
 msgid "Your map has not been saved."
-msgstr "Ваша гра збережена."
+msgstr "Ваша карта вже збережена."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:66
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
 "Якщо ця помилка трапиться знову, то будь ласка зв'яжіться з командою "
-"розробників:"
+"розробників:{website}"
 
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Гарячі клавіші"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
@@ -1690,16 +1683,16 @@ msgstr "{size}x{size} плиток"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Натисніть бажану клавішу"
 
 #: horizons/gui/modules/hotkeys_settings.py:140
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} уже призначена для {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Хочете переписати це?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
@@ -1768,47 +1761,47 @@ msgstr "Натисніть 'T', щоби зробити дерева прозо�
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Starting engine…"
-msgstr ""
+msgstr "Запуск оболонки…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Catching fish…"
-msgstr ""
+msgstr "Вилов риби…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Візуалізація інтерфейсу користувача…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Activating timer…"
-msgstr ""
+msgstr "Активація таймера…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Аналіз ігрових даних…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Побудова островів…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Підготовка креслень…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Заповнення світу водою…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Raising animals…"
-msgstr ""
+msgstr "Вирощування тварин…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Підготовка ШІ…"
 
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Заховання скарбів…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -2006,14 +1999,14 @@ msgid "Please enter a valid filename."
 msgstr "Введіть правильну назву файлу."
 
 #: horizons/gui/modules/select_savegame.py:149
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Збережена гра з таким іменем '{name}' вже існує."
+msgstr "Збережена гра з таким іменем {name} вже існує."
 
 #: horizons/gui/modules/select_savegame.py:151
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "Збережена гра з таким іменем '{name}' вже існує."
+msgstr "Збережена гра з таким іменем {name} вже існує."
 
 #: horizons/gui/modules/select_savegame.py:153
 msgid "Overwrite it?"
@@ -2255,13 +2248,12 @@ msgid "Main square overview"
 msgstr "Огляд головної площі"
 
 #: horizons/gui/tabs/mainsquaretabs.py:127
-#, fuzzy
 msgid "Upgrade not possible:"
-msgstr "Неможливо"
+msgstr "Оновити неможливо:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:130
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Це найвищий рівень гри на даний момент!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
@@ -2372,10 +2364,10 @@ msgid "Settlements of {player}"
 msgstr "Поселення {player}"
 
 #: horizons/gui/widgets/playersships.py:44
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Ships of {player}"
 msgid "Ships of {player}"
-msgstr "Кораблі {palyer}"
+msgstr "Кораблі {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:94
@@ -3207,11 +3199,12 @@ msgstr ""
 "Збереження / завантаження для багатокористувацької гри поки що неможливе"
 
 #: horizons/mpsession.py:97
-#, fuzzy
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
-msgstr "Назва файлу повинна складатися лише з літер, цифр, пропусків та _. -"
+msgstr ""
+"Назва файлу повинна складатися лише з літер, цифр, пропусків та символів:  _ "
+". -"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
@@ -3273,9 +3266,8 @@ msgstr ""
 "Файл збереження може бути лише для читання або заблокований іншим процесом."
 
 #: horizons/spsession.py:65
-#, fuzzy
 msgid "Your game has not been saved."
-msgstr "Ваша гра збережена."
+msgstr "Ваша гра ще не збережена."
 
 #: horizons/util/checkupdates.py:81
 msgid "New version of Unknown Horizons"
@@ -3365,7 +3357,7 @@ msgstr "Ця будівля має бути частково на рівнині
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Жителі вражені чумою!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3384,7 +3376,6 @@ msgid "This building has a very low productivity."
 msgstr "Ця будівля має дуже низьку продуктивність."
 
 #: horizons/world/status.py:115
-#, fuzzy
 msgid "This building is decommissioned."
 msgstr "Ця будівля виведена з експлуатації."
 
@@ -3761,10 +3752,9 @@ msgid "cannon"
 msgstr "Гармата"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Жителі цього будинку мають чуму."
+msgstr "Жителі цього будинку мають чуму!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3805,7 +3795,7 @@ msgstr "приправи"
 
 #. This is a database entry: the name of a resource.
 msgid "blackdeath"
-msgstr ""
+msgstr "чума"
 
 #. This is a database entry: the name of a resource.
 msgid "candles"
