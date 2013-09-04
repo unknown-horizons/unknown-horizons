@@ -69,7 +69,6 @@ class SettingsDialog(PickBeltWidget, Window):
 		languages = find_available_languages().keys()
 		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
 
-		bpp = {0: _lazy("Default"), 16: _lazy("16 bit"), 32: _lazy("32 bit")}
 		fps = {0: _lazy("Disabled"), 30: 30, 45: 45, 60: 60, 90: 90, 120: 120}
 
 		def get_resolutions():
@@ -78,7 +77,6 @@ class SettingsDialog(PickBeltWidget, Window):
 		self._options = [
 			# Graphics/Sound/Input
 			Setting(FIFE_MODULE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
-			Setting(FIFE_MODULE, 'BitsPerPixel', 'screen_bpp', bpp, restart=True),
 			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen', restart=True),
 			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True, callback=self._on_RenderBackend_changed),
 			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),

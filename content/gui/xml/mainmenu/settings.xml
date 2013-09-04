@@ -24,14 +24,6 @@
 			<Spacer fixed_size="35" />
 
 				<VBox>
-					<Label name="color_depth_label" text="Color depth:" max_size="140,20"
-						wrap_text="1" helptext="If set to 0, use the driver default" />
-					<ScrollArea min_size="80,55">
-						<ListBox name="screen_bpp" is_focusable="0" />
-					</ScrollArea>
-
-				<Spacer min_size="20" />
-
 					<Label name="screen_fullscreen_text" text="Full screen:" />
 					<CheckBox min_size="24,24" name="enable_fullscreen" />
 				</VBox>
