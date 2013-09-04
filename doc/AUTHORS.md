@@ -105,10 +105,10 @@
 #### Czech
 * Kristian Hynek (Kris_CZ)
 * naked.in.rain
-* Petr Palička (peca)
 * Pavel Plecháč (Spek)
+* Petr Palička (peca)
+* Václav Macůrek (VMa)
 * Vilem Soulak (Turmaleus)
-* VMa
 
 #### Danish
 * Jacob Hellwing (hellwing)
@@ -119,6 +119,7 @@
 * Michael Skiba
 
 #### Spanish
+* Álex Plaza
 * Andrés José Fernandez (ariktaurendil)
 * Fabio Fernández (Catharsius)
 * MicMic
@@ -126,7 +127,6 @@
 * Sergio Lorenzo (Juarrox)
 * stefania_m
 * William Cabrera (willicab)
-* Álex Plaza
 
 #### Estonian
 * Mihkel Rämmel (RM87)
@@ -166,7 +166,7 @@
 * Yuki Shira (shirayuki)
 
 #### Lithuanian
-* Mantas Kondrotas (Anielus)
+* Mantas Kondrotas (Anielius)
 
 - - - - -
 
@@ -176,21 +176,21 @@
 * Jared Isaksen (JeThro)
 
 #### Dutch
-* Nick Z. (angellus)
 * Jasper Tepper (Shadow23)
 * Luth
 * mightykai
-* MrRuudJ
+* Nick Z. (angellus)
+* Ruud Jacobs (MrRuudJ)
 * Sander Hasenpflug (SanderOnline)
 * VinWij
 
 #### Polish
 * Adrian Marcinkowski (Amfidiusz)
 * Mateusz Bartkowski (Eugen)
-* mtfk
 * Natrius
 * Premislaus
 * Robert Matusewicz (matekm)
+* Robert Mitwicki (mtfk)
 * Stanislaw Gackowski (soeb)
 
 #### Portuguese
@@ -201,7 +201,7 @@
 
 #### Brazilian Portuguese
 * claudinei
-* hpoyatos (Henrique Poyatos)
+* Henrique Poyatos (hpoyatos)
 * luisdknob
 * paulodealmeida
 
