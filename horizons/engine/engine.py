@@ -64,8 +64,6 @@ class Fife(object):
 		Load the settings from a python file and load them into the engine.
 		Called in the ApplicationBase constructor.
 		"""
-
-
 		# get finalSetting (from the xml file, or if absent the default value)
 		self._finalSetting = self._setting.get_module_settings("FIFE")
 
@@ -118,9 +116,7 @@ class Fife(object):
 			pass
 
 	def init_logging(self):
-		"""
-		Initialize the LogManager.
-		"""
+		"""Initialize the LogManager."""
 
 		logmodules = self._setting.get("FIFE", "LogModules", ["controller"])
 
@@ -135,8 +131,7 @@ class Fife(object):
 			self._log.setVisibleModules(*logmodules)
 
 	def init(self):
-		"""Second initialization stage of engine
-		"""
+		"""Second initialization stage of engine"""
 		self.engine.init()
 
 		#init stuff
@@ -258,8 +253,6 @@ class Fife(object):
 			return "en"
 
 	def run(self):
-		"""
-		"""
 		assert self._got_inited
 
 		self.engine.initializePumping()
@@ -268,8 +261,6 @@ class Fife(object):
 		self.__kill_engine()
 
 	def loop(self):
-		"""
-		"""
 		while not self.quit_requested:
 			try:
 				self.engine.pump()
@@ -288,22 +279,17 @@ class Fife(object):
 		self.engine.destroy()
 
 	def breakLoop(self, returnValue=None):
-		"""
-		@param returnValue:
-		"""
 		self.return_values = returnValue
 		self.break_requested = True
 
 	def quit(self):
-		""" Quits the engine.
-		"""
+		"""Quits the engine."""
 		self.quit_requested = True
 
 	@classmethod
 	def getVersion(cls):
-		""" Returns a tuple including the Major, Minor and Patch version of the current running Fife.
-		"""
-		if (hasattr(fife, 'getMajor') and hasattr(fife, 'getMinor') and hasattr(fife, 'getPatch')):
+		"""Returns a tuple (Major, Minor, Patch) version of the current running Fife."""
+		try:
 			return (fife.getMajor(), fife.getMinor(), fife.getPatch())
-		return (0,0,0)
-
+		except AttributeError:
+			return (0, 0, 0)
