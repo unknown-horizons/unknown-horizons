@@ -7,58 +7,60 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2012-01-10 02:38+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-09-04 14:44+0200\n"
+"Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
+"Language-Team: Catalan "
+"<http://hosted.weblate.org/projects/uh/uh/ca@valencia/>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #: run_uh.py:219
-#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons ha caigut."
+msgstr "Unknown Horizons s'ha tancat inesperadament."
 
 #: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr ""
+msgstr "Ho lamentem. Intentarem arreglar el problema que l'ha produït."
 
 #: run_uh.py:222
-#, fuzzy
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Per a fer açò, necessitem la informació d'aquest registre:"
+msgstr "Per poder-ho fer, necessitem la informació d'aquest registre:"
 
 #: run_uh.py:224
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"Ens la podeu enviar per IRC o al nostre forum. Els trobareu tots dos a http"
+"://unknown-horizons.org."
 
 #: run_uh.py:272
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr ""
+msgstr "Error: No s'ha pogut trobar la llibreria «PyYAML»."
 
 #: run_uh.py:273
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr ""
+msgstr "Falta la llibreria PyYAML i s'ha d'instal·lar."
 
 #: run_uh.py:274
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr ""
+msgstr "Trobareu l'instal·lador per Windows a http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:275
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Els usuaris de Linux l'hauríeu de poder instal·lar des del vostre gestor de "
+"paquets com a «pyyaml» o «python-yaml»."
 
 #: run_uh.py:309
-#, fuzzy
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Děkujeme Vám za hraní Unknown Horizons!"
+msgstr "Gràcies per jugar a l'Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
