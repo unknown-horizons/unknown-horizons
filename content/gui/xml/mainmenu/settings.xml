@@ -13,37 +13,39 @@
 		<VBox name="graphics" padding="2">
 			<Label text="Graphics" name="headline_graphics" font="headline" />
 			<hr />
-			<HBox  max_size="320,245">
+			<HBox max_size="320,445">
 				<VBox>
 					<Label text="Screen resolution:" name="screen_resolution_label" wrap_text="1" />
-					<ScrollArea min_size="100,115">
+					<ScrollArea min_size="100,175">
 						<ListBox name="screen_resolution" is_focusable="0" />
 					</ScrollArea>
+
+				<Spacer fixed_size="15" />
+
+					<Label name="screen_fullscreen_text" text="Full screen:" />
+					<CheckBox min_size="24,24" name="enable_fullscreen" />
 				</VBox>
 
 			<Spacer fixed_size="35" />
 
 				<VBox>
-					<Label name="screen_fullscreen_text" text="Full screen:" />
-					<CheckBox min_size="24,24" name="enable_fullscreen" />
+					<Label name="use_renderer_label" text="Used renderer:"
+						wrap_text="1" helptext="SDL is only meant as unsupported fallback and might cause problems!" />
+					<ScrollArea max_size="100,55">
+						<ListBox name="render_backend" is_focusable="0" />
+					</ScrollArea>
+
+				<Spacer fixed_size="15" />
+
+					<Label name="fps_label" text="Frame rate limit:"
+						wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
+					<ScrollArea max_size="100,115">
+						<ListBox name="fps_rate" is_focusable="0" />
+					</ScrollArea>
+
 				</VBox>
 			</HBox>
-		</VBox>
 
-		<VBox>
-			<Label name="use_renderer_label" text="Used renderer:"
-				wrap_text="1" helptext="SDL is only meant as unsupported fallback and might cause problems!" />
-			<ScrollArea min_size="82,55">
-				<ListBox name="render_backend" is_focusable="0" />
-			</ScrollArea>
-		</VBox>
-
-		<VBox>
-			<Label name="fps_label" text="Frame rate limit:"
-				wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
-			<ScrollArea min_size="80,90">
-				<ListBox name="fps_rate" is_focusable="0" />
-			</ScrollArea>
 		</VBox>
 	</VBox>
 	<!-- Right pane -->
@@ -94,7 +96,7 @@
 
 			<Spacer fixed_size="5" />
 			<Label name="mouse_sensitivity_label" text="Mouse sensitivity:"
-				wrap_text="1" max_size="250,40"  min_size="250,20"
+				wrap_text="1" max_size="250,40" min_size="250,20"
 				helptext="0 is default system settings" />
 
 			<Slider size="300,20" name="mousesensitivity" is_focusable="0"
