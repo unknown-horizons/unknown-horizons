@@ -96,7 +96,7 @@
 * Michal Čihař (nijel)
 
 #### Bulgarian
-* balward (Nikolay Kotrabakov)
+* Nikolay Kotrabakov (balward)
 
 #### Catalan
 * CatRoky
