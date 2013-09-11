@@ -7,19 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-07-29 18:37+0200\n"
-"Last-Translator: k ks <kmshts@naver.com>\n"
+"PO-Revision-Date: 2013-09-11 10:19+0200\n"
+"Last-Translator: sebastian sohn <chaosbreaker@email.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.6\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons이 충돌났습니다."
+msgstr "언노운 호라이즌 크래시."
 
 #: run_uh.py:221
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -28,7 +28,7 @@ msgstr ""
 
 #: run_uh.py:222
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "이를 해결 하기 위해서는, 기록(로그) 파일안에 있는 정보가 필요합니다:"
+msgstr "이를 해결 하기 위해서는, 로그파일안에 있는 정보가 필요합니다:"
 
 #: run_uh.py:224
 msgid ""
@@ -40,7 +40,7 @@ msgstr ""
 
 #: run_uh.py:272
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "오류: 필요한 라이브러리 \"PyYAML\"을 찾을 수 없습니다."
+msgstr "오류: 필요한 \"PyYAML\" 라이브러리 을 찾을 수 없습니다."
 
 #: run_uh.py:273
 msgid "PyYAML (a required library) is missing and needs to be installed."
@@ -61,11 +61,11 @@ msgstr ""
 
 #: run_uh.py:309
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Unknown Horizons 를 사용해 주셔서 감사합니다!"
+msgstr "언노운 호라이즌를 사용해 주셔서 감사합니다!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr "편집기로 돌아가기"
+msgstr "에디터로 돌아가기"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
@@ -94,7 +94,7 @@ msgstr "도움말"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr "편집기 종료"
+msgstr "에디터 퇴장"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
@@ -115,9 +115,8 @@ msgid "Game start"
 msgstr "게임 시작"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
-#, fuzzy
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "건물을 건설 하기 전에 거주지를 발견 해야 합니다!"
+msgstr "건물을 빌드 하기 전에 세틀먼트를 설립 해야 합니다!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
@@ -129,7 +128,7 @@ msgstr "이후에, 선박 개요 텝의 큰 단추를 누르세요."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr "건설"
+msgstr "빌드"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
@@ -174,11 +173,11 @@ msgstr "파괴 (X)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 msgid "Captain's log (L)"
-msgstr "선장의 항해일지 (L)"
+msgstr "캡틴의 항해일지 (L)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 msgid "Build menu (B)"
-msgstr "건설 메뉴 (B)"
+msgstr "빌드 메뉴 (B)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
@@ -235,9 +234,7 @@ msgstr "운영 비용"
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
-msgstr ""
-"선박을 건설하기 위해서, 클래스 텝중 하나를 클릭하고 원하는 배를 선택하고 주문"
-"을 확인하세요."
+msgstr "보트을 건설하기 위해서, 클래스 텝중 하나를 클릭하고 원하는 보트를 선택하고 주문을 확인하세요."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -248,181 +245,187 @@ msgstr "현재 건물:"
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
-msgstr ""
+msgstr "포즈"
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr ""
+msgstr "리줌"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr ""
+msgstr "건설 진행"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
-msgstr ""
+msgstr "아직도 필요한 리소시즈:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr ""
+msgstr "건설 캔슬:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
-msgstr ""
+msgstr "(리소시즈 다 잊어버리다)"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
+#, fuzzy
 msgid "Cancel all building progress"
-msgstr ""
+msgstr "건설 진행 다 캔슬:"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
 msgid "ally"
-msgstr ""
+msgstr "동맹"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
 msgid "neutral"
-msgstr ""
+msgstr "중립"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr ""
+msgstr "적"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
 msgid "Building overview"
-msgstr ""
+msgstr "빌딩 개요"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr ""
+msgstr "가동률"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:34
 msgid "Settlement inventory"
-msgstr ""
+msgstr "세틀먼트 인벤토리"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:39
 msgid "Settler overview"
-msgstr ""
+msgstr "세틀먼트 개요"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr ""
+msgstr "지불한 세금"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr ""
+msgstr "세금"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr ""
+msgstr "세율"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "업그레이드 퍼미션:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "집 당 행복"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:54
 msgid "sad"
-msgstr ""
+msgstr "슬픔"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:57
 msgid "satisfied"
-msgstr ""
+msgstr "만족"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:60
 msgid "happy"
-msgstr ""
+msgstr "행복"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "이런 행복한 주택의 액수"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
+#, fuzzy
 msgid "Residents per house"
-msgstr ""
+msgstr "주택 당 주민"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
+#, fuzzy
 msgid "Number of inhabitants per house"
-msgstr ""
+msgstr "주택 당 거주민"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
+#, fuzzy
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "이 많은 거주민 있는 주택"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr ""
+msgstr "개요"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
-msgstr ""
+msgstr "주택들"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr ""
+msgstr "주민"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:346
 msgid "Selling"
-msgstr ""
+msgstr "판매"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: horizons/gui/tabs/buyselltab.py:339
 msgid "Buying"
-msgstr ""
+msgstr "구매"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
+#, fuzzy
 msgid "Name:"
-msgstr ""
+msgstr "이름:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
+#, fuzzy
 msgid "Weapons:"
-msgstr ""
+msgstr "무기:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr ""
+msgstr "리소시즈 퇴적물"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr ""
+msgstr "이 리소스 퇴적물에, 리소스 광산을 구축할 수 있다."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr ""
+msgstr "이러한 리소스가 담고 있습니다."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -430,102 +433,107 @@ msgstr ""
 #: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:67
 #: horizons/gui/widgets/playerssettlements.py:96
 msgid "Click to change the name of your settlement"
-msgstr ""
+msgstr "세틀먼트 이름을 변경 하려면 클릭 하십시오."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
+#, fuzzy
 msgid "Happiness"
-msgstr ""
+msgstr "행복"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
+#, fuzzy
 msgid "Residents"
-msgstr ""
+msgstr "주민"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
-msgstr ""
+msgstr "필요한 리소스:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
-msgstr ""
+msgstr "신호 불은 트레이더을 세틀먼트에 도달하는 방법  보여줍니다. 트레이더는 상품을 구매 또는 판매합니다."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
+#, fuzzy
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
-msgstr ""
+msgstr "이것은 트레이더의 배 이다. 그배는 당신이 구매 또는 판매 상품을 수시로 방문 한다."
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:27
 #: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:29
+#, fuzzy
 msgid "Collector utilization"
-msgstr ""
+msgstr "수집 이용"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:78
 msgid "Click to change the name of this ship"
-msgstr ""
+msgstr "이 배의 이름을 변경 하려면 클릭 하십시오"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:84
 msgid "Trade"
-msgstr ""
+msgstr "무역"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:64
 msgid "Build settlement"
-msgstr ""
+msgstr "세틀먼트 빌드"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr ""
+msgstr "통상로 설정"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
-msgstr ""
+msgstr "배"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
-msgstr ""
+msgstr "교환:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
-msgstr ""
+msgstr "무역 파트너:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "리소스 구매 또는 판매"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
-msgstr ""
+msgstr "무역 기록"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
-msgstr ""
+msgstr "선택한 리소스"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 msgid "Income:"
-msgstr ""
+msgstr "수입"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:620
+#, fuzzy
 msgid "Taxes"
-msgstr ""
+msgstr "세금"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 msgid "Sale"
-msgstr ""
+msgstr "세일"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Expenses:"
