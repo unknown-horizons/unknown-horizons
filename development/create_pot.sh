@@ -1,43 +1,19 @@
 #!/bin/sh
 
-###############################################################################
+# == I18N CHEATSHEET ==
 #
-# == I18N DEV USE CASES: CHEATSHEET ==
+# * To translate a string 'New string' in python, use _('New string').
 #
-# ** I changed or added a string in an xml file
-# => Run  development/create_pot.sh
+# * Formatting placeholders: use 'num: {amount}' instead of 'num: %s'.
 #
-# ** I changed or added a string in an sql file
-# => Run  development/create_pot.sh
+# * To test the current translations from Weblate in-game, follow this guide:
+# http://github.com/unknown-horizons/unknown-horizons/wiki/Interface-translation
 #
-# ** I changed or added a string in an object yaml file
-# => Run  development/create_pot.sh
+# * Hints about translation maintenance:
+# https://github.com/unknown-horizons/unknown-horizons/wiki/Translations
 #
-# ** I changed a string in a py file
-# => Do nothing, everything is fine
-#
-# ** I added a string 'New string' to a py file and it should be translated
-# => Use _('New string') instead of 'New string'.
-#
-# ** The string uses a formatting placeholder like 'num: {amount}' or 'num: %s'
-# => Only *ever* use the named  _('num: {amount}')  syntax. Translators have no
-#    idea what '%s' means, especially with multiple substitutions.
-#
-# ** I changed or added strings in the tutorial yaml file
-# => Run  development/create_scenario_pot.sh tutorial
-#
-# ** I changed or added strings in the yaml file of a translated scenario named
-#    "foobar_en.yaml"
-# => Run  development/create_scenario_pot.sh foobar
-#
-# ** I want to see the current translations from Weblate in-game
-# => Run  ./setup.py build_i18n
-# => You can instead follow this guide:
-#    http://github.com/unknown-horizons/unknown-horizons/wiki/Interface-translation
-#
-# ** I have no idea what 'i18n' means
-# => Short for 'internationalization': i + 18 letters + n.
-#    Also see  http://en.wikipedia.org/wiki/i18n  for more info.
+# * 'i18n' is short for 'internationalization': i + 18 letters + n.
+#   See  http://en.wikipedia.org/wiki/i18n  for more info.
 #
 ###############################################################################
 #
