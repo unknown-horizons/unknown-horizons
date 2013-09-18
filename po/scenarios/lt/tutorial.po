@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-05-10 11:05+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2013-09-18 10:03+0200\n"
+"Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
+"Language-Team: Lithuanian "
+"<http://hosted.weblate.org/projects/uh/tutorial/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -27,6 +29,8 @@ msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
+"Mokomasis scenarijus:\n"
+"Įkurkite savo pirmąją gyvenvietę bei išmokite žaisti!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -36,13 +40,15 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Sveikiname pradėjus žaisti „Nežinomus Horizontus“!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is your Captain's log where all important information is stored. A "
 "short notification of each task will be provided on the left of the screen."
 msgstr ""
+"Čia yra jūsų „kapitono žurnalas“, jame yra visa svarbi informacija. Trumpa "
+"žinutė apie kiekvieną užduotį bus pateikiama kairėje ekrano pusėje."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -80,17 +86,19 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the actual game."
-msgstr ""
+msgstr "O dabar pradėkime tikrą žaidimą."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr ""
+msgstr "NAUJA UŽDUOTIS: Įsikurkite saloje"
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
 msgstr ""
+"Norėdami nuplukdyti laivą į kitą vietą paspauskite ant jo kairį pelės "
+"mygtuką, o tada paspauskite ant norimos vietos dešinį mygtuką."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -127,7 +135,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr ""
+msgstr "NAUJA UŽDUOTIS: Pastatyti Lentpjūvę"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -137,7 +145,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "Pradėsime pastatydami lentpjūvę."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -200,6 +208,8 @@ msgid ""
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
+"\n"
+"UŽDUOTIS: Miškingoje vietoje pastatykite lentpjūvę ir sujunkite ją su keliu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -213,8 +223,9 @@ msgid "Build a hunter and a fisher. Connect them to the warehouse."
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#, fuzzy
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "NAUJA UŽDUOTIS: Maisto gavimas"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -229,6 +240,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"Medžiotojas žudo gyvūnus miške, todėl reikia, kad netoliese būtų medžių."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
@@ -1083,7 +1095,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Thanks!"
-msgstr ""
+msgstr "Ačiū!"
 
 #. This is the text body of a logbook page.
 msgid ""
