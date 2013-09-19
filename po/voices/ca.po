@@ -124,4 +124,3 @@ msgstr ""
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
 msgstr ""
-
