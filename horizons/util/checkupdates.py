@@ -23,6 +23,7 @@ import platform
 import webbrowser
 import urllib
 import urllib2
+import socket
 
 from fife.extensions.pychan.widgets import Button
 
@@ -60,6 +61,11 @@ def check_for_updates(info):
 			# if no console is available
 			info.status = UpdateInfo.INVALID
 			return
+		except socket.timeout as e:
+			#  same as above
+			info.status = UpdateInfo.INVALID
+			return
+
 
 		version = u.readline()
 		link = u.readline()
