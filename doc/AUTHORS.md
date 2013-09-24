@@ -96,7 +96,7 @@
 * Michal Čihař (nijel)
 
 #### Bulgarian
-* balward (Nikolay Kotrabakov)
+* Nikolay Kotrabakov (balward)
 
 #### Catalan
 * CatRoky
@@ -105,28 +105,40 @@
 #### Czech
 * Kristian Hynek (Kris_CZ)
 * naked.in.rain
-* Petr Palička (peca)
 * Pavel Plecháč (Spek)
+* Petr Palička (peca)
+* Václav Macůrek (VMa)
 * Vilem Soulak (Turmaleus)
-* VMa
 
 #### Danish
+* aundal
 * Jacob Hellwing (hellwing)
 
 #### German
 * djot
 * Kikody
+* Linkal
 * Michael Skiba
+* Raymond Vetter
+* schnurlos
+
+#### Greek
+* Dimitra Karamperi (dimitrak)
+* karavolosmike
 
 #### Spanish
+* Álex Plaza
+* Anatema
 * Andrés José Fernandez (ariktaurendil)
+* CatRoky
+* Cur5
 * Fabio Fernández (Catharsius)
 * MicMic
 * Nikolai Woutlan
+* saiffe
 * Sergio Lorenzo (Juarrox)
 * stefania_m
 * William Cabrera (willicab)
-* Álex Plaza
 
 #### Estonian
 * Mihkel Rämmel (RM87)
@@ -134,39 +146,62 @@
 
 #### Finnish
 * Aleksi Kinnunen (alluk)
+* heze0
+* Pihpe
 
 #### French
 * Antoine Pernot (mumuxe)
+* erdnaxeli
 * Hugues Fafard (Antagonym)
 * Marc Moussa (deathmaster9)
 * Quentin (LawNasK)
 * Samuel Dorsaz (ajira)
 * Sebastien Charpentier (seblabel)
 * tintou
+* Traveler
 * Vincent Herilier (LiveWire)
+
+#### Galician
+* Adrián Chaves Fernández (Gallaecio)
 
 #### Croatian
 * shile
 
 #### Hindi
 * Kinshuk Sunil (kinshuksunil)
+* supercracker111
 
 #### Hungarian
 * matyi
 * Szontágh Ferenc (ghostarthour)
+* probert
+
+#### Indonesian
+* alamswijaya
+* davezh
 
 #### Italian
 * Fabio Pedretti
+* Gioele Cerri (joel)
+* Giorgio Saragnese (supermario)
+* Mathias Hofmann
 * rayot
 * sioux83
 * tagarista
+* Valerio Giuso
 
 #### Japanese
 * naraba
 * Yuki Shira (shirayuki)
 
+#### Korean
+* k ks
+
 #### Lithuanian
-* Mantas Kondrotas (Anielus)
+* Mantas Kondrotas (Anielius)
+
+#### Malayalam
+* Cebin
 
 - - - - -
 
@@ -176,21 +211,26 @@
 * Jared Isaksen (JeThro)
 
 #### Dutch
-* Nick Z. (angellus)
 * Jasper Tepper (Shadow23)
+* Joenit S. (joenit)
 * Luth
 * mightykai
-* MrRuudJ
+* Nick Z. (angellus)
+* Ruud Jacobs (MrRuudJ)
 * Sander Hasenpflug (SanderOnline)
+* Tim F. (TiFo)
 * VinWij
 
 #### Polish
 * Adrian Marcinkowski (Amfidiusz)
 * Mateusz Bartkowski (Eugen)
-* mtfk
+* Jan Krzysztof Zawadzki (kzawadzki)
+* janczarny
 * Natrius
+* Pic
 * Premislaus
 * Robert Matusewicz (matekm)
+* Robert Mitwicki (mtfk)
 * Stanislaw Gackowski (soeb)
 
 #### Portuguese
@@ -200,28 +240,54 @@
 * Sérgio Lopes (Knitter)
 
 #### Brazilian Portuguese
+* abner.silva
 * claudinei
-* hpoyatos (Henrique Poyatos)
+* GabrielSantiago
+* Henrique Poyatos (hpoyatos)
+* israelsantanna
+* Lindo (IvoJr)
 * luisdknob
 * paulodealmeida
 
 #### Romanian
+* FlowerOS
+* Raymond Vetter
+* tbmale
 * trendy
 
 #### Russian
 * Alexander Olkhovskiy (fcxSanya)
+* burlachenko
+* cooland
+* Fedor Andreev (pro100fed)
+* Michael Tsukanov (ZukinZIn)
 * Sergei Chistyakov (devcode)
 * Sergey Stepanov
+* Torv
+* Вячеслав Гостюхин (scazy)
 
 #### Slovenian
 * Andrej Žnidaršič (andrejz)
 
 #### Swedish
+* Fringillus
+* knutas
 * Nagrim
 * pilen
 
+#### Turkish
+* Ceren Kocaman (CerenK)
+* cuil
+* mezdap
+* Volkan Gezer (vgezer)
+
+#### Ukrainian
+* Андрій Бандура (pasichna)
+
 #### Chinese
+* mkhael_foo
 * nifabric
+* Zhang June (avalon3515)
 
 
 

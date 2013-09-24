@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Realizza un deposito presso la costa, in modo che sia facilmente accessibile per le altre navi, come il Trader libero.']
+  - [Message, 'Build a warehouse at the coast, so it is easily accessible for other ships like the Free Trader.']
   - '
 
 
@@ -18,153 +18,155 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gfx/uh.png]
   - [Pagebreak]
-  - [Headline, Benvenuti a Unknown Horizons!]
+  - [Headline, Sveikiname pradėjus žaisti „Nežinomus Horizontus“!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
 
     '
-  - Questo è il diario di bordo del Capitano, che contiene tutte le informazioni più importanti. A sinistra nello schermo compariranno brevi notifiche con gli obiettivi.
-  - Se cercate una descrizione più lunga, il diario vi potrà essere d'aiuto.
-  - Dopo la chiusura il diario può essere riaperto con l'icona "Diario del Capitano" nell'angolo in alto a destra (sotto la mini-mappa, con documento sigillato e una piuma).
+  - Čia yra jūsų „kapitono žurnalas“, jame yra visa svarbi informacija. Trumpa žinutė apie kiekvieną užduotį bus pateikiama kairėje ekrano pusėje.
+  - If you are interested in longer descriptions, your log will hopefully provide all the help you need.
+  - After you close this log, it can be re-opened with the "Captain's Log" icon in the top-right corner (below the mini-map, with a sealed document and a feather).
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Per visualizzare il vostro primo obiettivo cliccare su "Leggi altre voci" nel pannello di navigazione! È fatto così:'
+    To see your first task, click on the button "Read next entries" in the navigation panel! It looks like this:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Per qualsiasi suggerimento su una migliore formulazione, argomenti che si vorrebbero avere spiegati o anche condizioni di bug: per favore ci dica e cercheremo di migliorare il tutorial!'
+    For any suggestions on better wording, topics you would like to have explained or even buggy conditions: Please tell us and we will try to improve the tutorial!'
   - '
 
-    Visita www.unknown-horizons.org per aiuto e per contattare il team!'
-  - E adesso iniziamo il gioco serio.
+    Visit www.unknown-horizons.org for help on how to contact the team!'
+  - O dabar pradėkime tikrą žaidimą.
   - [Pagebreak]
-  - [Headline, 'OBIETTIVO: INSEDIARSI SU UN''ISOLA']
+  - [Headline, 'NAUJA UŽDUOTIS: Įsikurkite saloje']
   - [Image, content/gui/images/background/hr.png]
-  - Per muovere la tua nave, selezionala con il tasto sinistro e clicca con il destro nella posizione in cui vuoi farla andare.
-  - Quando sarai vicino alla costa, la icona a forma di ancora nella scheda della panoramica si attiverà.
+  - Norėdami nuplukdyti laivą į kitą vietą paspauskite ant jo kairį pelės mygtuką, o tada paspauskite ant norimos vietos dešinį mygtuką.
+  - Once you are near the coast, the anchor-like button you see in the overview tab will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Questo indica che puoi costruire un magazzino premendo il pulsante (chiamato 'costruire insediamenti').
-  - Ora un'anteprima della costruzione viene trascinata in giro quando muovi il cursore.
-  - 'Puoi costruire in qualsiasi posto dove l''anteprima non sia in rosso.
+  - This indicates that you are able to build a warehouse there by pressing that button (called 'Build Settlement').
+  - Now a preview of your building is dragged around when you move the cursor.
+  - 'You can build on any spot where this preview is not shaded red.
 
-    Clicca dove vuoi mettere la tua prima costruzione.'
+    Click where you want to place your first building.'
   - '
 
-    OBIETTIVO: Costruisci un magazzino vicino alla costa.'
+    TASK: Build a warehouse at the coast.'
 
 - &LUMBERJACK
-  - [Message, Costruisci un tagliaboschi e collegalo alla filiale con un sentiero.]
-  - [Headline, 'OBIETTIVO: IL TAGLIABOSCHI']
+  - [Message, Build a lumberjack and connect it to the warehouse using a trail.]
+  - [Headline, 'NAUJA UŽDUOTIS: Pastatyti Lentpjūvę']
   - [Image, content/gui/images/background/hr.png]
-  - Il materiale da costruzione sulla tua nave è stato scaricato automaticamente. Ora puoi costruire alcune unità di base.
-  - Cominceremo con il costruire un capanno del taglialegna.
+  - The construction material on your ship got unloaded automatically. You can now construct some basic buildings.
+  - Pradėsime pastatydami lentpjūvę.
   - This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.
-  - Anche i pescatori necessitano di tavole di legna per costruire le loro barche.
-  - Per costruire dei capanni dei taglialegna aprire il menù Costruisci cliccando l'icona grande sotto la mini-mappa oppure premendo il tasto B.
+  - The fisherman needs some boards to build his vessel as well.
+  - In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Il menu delle costruzioni è ordinato per livelli.
-  - Attualmente sei nel primo livello (il livello Marinai) così vengono offerti solo gli edifici di base.
+  - The build menu is sorted by tiers.
+  - You are currently in the first tier (the Sailors level) so are offered only the basic buildings.
   - [Pagebreak]
   - '
 
-    Come le civiltà progredisce, guadagni più e sempre più complessi edifici.'
-  - Per ora, seleziona il boscaiolo in "Compagnie" e costruiscilo in una zona con alcuni alberi intorno.
-  - Sarà anche possibile piantare alberi più tardi - ma ciò costerà denaro. Usa ciò che la natura ti ha fornito!
-  - Una struttura produttiva necessita sempre di un percorso che la colleghi ad un magazzino, altrimenti i beni rimarranno al suo interno e non verranno raccolti.
-  - Perciò devi costruire un sentiero che connetta il magazzino alla capanna del boscaiolo.
+    As your civilization advances, you also gain more and more complex buildings.'
+  - For now, select the lumberjack under 'Companies' and build it in an area with some trees around.
+  - You can also plant trees later - but that costs money. Use what nature provided you with!
+  - A company always needs a trail connection to a storage or warehouse, otherwise goods will remain at the company and not be collected.
+  - This means that you have to build a trail connecting your warehouse (or storage) and lumberjack.
   - '
 
-    OBIETTIVO: Costruisci una capanna del boscaiolo in una zona boschiva e connettila ad una strada.'
-  - Osserva come un esattore raccoglierà le tue prime travi di legno prodotte. Non preoccuparti del reclutamento di uomini per la falegnameria. Avviene automaticamente.
+    UŽDUOTIS: Miškingoje vietoje pastatykite lentpjūvę ir sujunkite ją su keliu.'
+  - Watch how a collector will fetch your first self-produced boards. Don't worry about recruiting workers for the lumberjack. That happens automatically.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Costruisci un cacciatore ed un pescatore. Connettili alla filiale.]
-  - [Headline, 'OBIETTIVO: RIFORNIMENTI DI CIBO']
+  - [Message, Build a hunter and a fisher. Connect them to the warehouse.]
+  - [Headline, 'NEW TASK: FOOD SUPPLY']
   - [Image, content/gui/images/background/hr.png]
-  - Ti serviranno alcune strutture per produrre cibo poichè la popolazione (e specialmente i marinai) è molto affamata.
-  - Nel primo livello le strutture disponibili sono Cacciatore e Pescatore.
-  - Il Cacciatore caccia gli animali selvatici nei boschi, perciò deve essere posizionato in una foresta.
-  - Per esempio puoi mettere la falegnameria e la capanna del Cacciatore vicine.
-  - Può succedere che gli animali non si riproducano in fretta o che si nascondano.
-  - 'Conclusione: il cacciatore non è troppo affidabile se avete bisogno di alimentazione continua.'
+  - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
+  - Available companies in the first tier are the Hunter and Fisher.
+  - Medžiotojas žudo gyvūnus miške, todėl reikia, kad netoliese būtų medžių.
+  - Note that you can place your Hunter close to the lumberjack's forest.
+  - It can happen that the animals don't reproduce fast enough or simply hide well.
+  - 'Conclusion: the hunter is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
 
-    Il Pescatore ha bisogno di un cantiere costiero come il magazzino e un branco di pesci vicino.'
-  - Egli costruirà una piccola imbarcazione a remi per catturare qualche pesce.
-  - Questa è una fornitura molto costante al costo di un tempo di produzione leggermente più lungo per unità di cibo.
-  - Un piccolo insediamento come il tuo può utilizzare entrambe le compagnie, e si può meglio bilanciare i pro e i contro, se si vede il confronto diretto.
+    The Fisher needs a coastal building site like the warehouse and a fish school in range.'
+  - He will build a small rowing vessel and catch some fish.
+  - This is a very constant supply at the cost of a slightly longer production time per unit of food.
+  - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
   - '
 
-    OBIETTIVO: Costruisci un cacciatore e un pescatore.'
-  - Non dimenticare di collegarli al magazzino con dei percorsi!
+    TASK: Build a hunter and a fisher.'
+  - Don't forget to connect them to your warehouse with trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Costruisci una piazza principale. Scegli un'area senza troppi edifici commerciali.]
-  - [Headline, 'OBIETTIVO: PIAZZA PRINCIPALE']
+  - [Message, Build a main square. Choose an area without many economy buildings.]
+  - [Headline, 'NEW TASK: MAIN SQUARE']
   - [Image, content/gui/images/background/hr.png]
-  - Gli abitanti hanno bisogno di una piazza principale da cui possano approvvigionarsi di beni.
-  - Perciò serve un collegamento con un sentiero tra le case e la piazza principale.
-  - Tutti i beni raccolti sono disponibili nella piazza del mercato, così i cittadini non saranno costretti ad andare dal pescatore o al magazzino.
+  - Your residents need a main square where they can fetch their goods from.
+  - This means that they need a trail connection from their home to the main square.
+  - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - Evita di mettere le costruzioni principali vicino alla falegnameria poichè rimuoveranno gli alberi che il boscaiolo utilizza per produrre beni.
-  - Le industrie lavorano anche senza essere collegate alle tende, quindi non serve costruire un percorso tra la piazza principale e (per esempio) la capanna del falegname.
+  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
+  - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
   - '
 
-    OBIETTIVO: Costruisci una piazza principale.'
+    TASK: Build a main square.'
   - [Pagebreak]
-  - "\n Ora osserviamo con attenzione la piazza principale."
+  - '
+
+    Now let''s have a closer look at the main square.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - Nella scheda 'Conto' puoi vedere un foglio riassuntivo del bilancio dell'isola con tutti i costi e i guadagni dalle tasse.
-  - Gli oggetti 'Vendita' e 'Acquisto' si riferiscono al bilancio commerciale che verrà spiegato più avanti.
-  - Se il bilancio è positivo, stai avendo un profitto in tutto per tutto.
+  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
+  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
+  - If your balance is positive, you all-in-all make a profit.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - Nelle diverse schede panoramica del livello si possono vedere le statistiche sui tuoi abitanti. È inoltre possibile impostare la tassa globale del livello specifico e concedere o negare abitanti di questo livello per passare a quello successivo.
+  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Costruisci una tenda e collegala alla piazza principale.]
-  - [Headline, 'OBIETTIVO: EDIFICI RESIDENZIALI']
+  - [Message, Build a tent and connect it to the main square.]
+  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
   - [Image, content/gui/images/background/hr.png]
-  - I coloni vogliono avere un tetto sopra la testa, altrimenti non vorranno vivere nella tua città! È necessario fornire delle tende.
+  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Le tende sono gli edifici residenziali di base. I tuoi abitanti vorranno aggiornarle quando raggiungeranno livelli più elevati.
-  - Nota che l'aggiornamento di ogni edificio necessita di materiale da costruzione, come il legno per il loro primo aggiornamento.
-  - Considera di disabilitare l'aggiornamento se il tuo magazzino è carente di questi materiali.
-  - I coloni possono non sembrare molto utili in quanto si cercheranno di consumare tutti i beni che produci - ma almeno pagano le tasse, e questo è l'unico modo in cui puoi fare soldi per ora!
+  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
+  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
+  - Consider to disable the upgrade if your stock of these materials is low.
+  - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - '
 
-    OBIETTIVO: Costruisci una tenda e collegala alla piazza principale. Le tende non hanno bisogno di essere collegate a nessuna compagnia.'
+    TASK: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.'
 
 - &MORETENTS
-  - [Message, Costruisci almeno tre tende aggiuntive e collegale alla piazza principale.]
+  - [Message, Build at least three additional tents and connect them to the main square.]
   - '
 
-    Diamo un''occhiata alla scheda panoramica della tenda.'
-  - 'Puoi vedere ↵
+    Let''s have a look at the tent overview tab.'
+  - 'You can see
 
-    * La felicità di questi residenti, ↵
+    * the happiness of these residents,
 
-    * Le tasse che pagano e ↵
+    * the taxes they pay and
 
-    * Le risorse che richiedono.'
-  - Se sono soddisfatte le loro richieste, aumenta la felicità e di conseguenza il reddito fiscale.
-  - In caso contrario, felicità e reddito diminuiscono. Ad un certo momento i vostri residenti possono arrabbiarsi e semplicemente andarsene dal tuo villaggio, lasciando un rudere decadente.
-  - Nota che è possibile modificare le impostazioni fiscali globali anche qui.
+    * the resources they demand.'
+  - If their demands are fulfilled, happiness and thus your tax income increase.
+  - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
+  - Note that you can also change the global tax settings here, too.
   - '
 
     TASK: Build at least three additional tents.'
@@ -173,8 +175,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
 
 - &SIGNALFIRE
-  - [Message, Costruisci un segnale di fuoco sulla costa vicino alla tua filiale.]
-  - [Headline, 'OBIETTIVO: IL SEGNALE DI FUOCO']
+  - [Message, Build a signal fire at the coast close to your warehouse.]
+  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
   - [Image, content/gui/images/background/hr.png]
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
   - The trader will supply your settlement with necessary goods which you can't produce yet.
@@ -196,11 +198,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
   - '
 
-    OBIETTIVO : Costruisci un segnale di fuoco sulla costa vicino al tuo magazzino.'
+    TASK: Build a signal fire at the coast close to your warehouse.'
 
 - &TRADING
-  - [Message, Raggiungi una scorta per l'isola di almeno 30 attrezzi. Nota che potrebbe volerci non poco tempo.]
-  - [Headline, 'OBIETTIVO: IL COMMERCIO']
+  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Headline, 'NEW TASK: LEARN TO TRADE']
   - [Image, content/gui/images/background/hr.png]
   - 'Excellent! The Free Trader will now stop by at your warehouse from time to time.
 
@@ -229,8 +231,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Costruisci un padiglione con connessioni alle tende.]
-  - [Headline, 'OBIETTIVO: IL PADIGLIONE']
+  - [Message, Build a pavilion with connection to the tents.]
+  - [Headline, 'NEW TASK: BUILD A PAVILION']
   - [Image, content/gui/images/background/hr.png]
   - Those tools will be enough for the moment. Well done!
   - You now provide housing, a main square and food to your inhabitants.
@@ -255,8 +257,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
-  - [Message, Imposta il livello delle tasse su Basso (a sinistra) ed attendi l'aggiornamento dei marinai.]
-  - [Headline, 'OBIETTIVO: LIVELLO SUCCESSIVO']
+  - [Message, Set the tax level to Low (left end) and wait for your sailors to upgrade.]
+  - [Headline, 'NEW TASK: NEXT TIER']
   - [Image, content/gui/images/background/hr.png]
   - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
   - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
@@ -277,8 +279,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Costruisci una fattoria mantenendo dello spazio disponibile intorno.]
-  - [Headline, 'OBIETTIVO: LA FATTORIA']
+  - [Message, Build a farm and keep some empty space around it.]
+  - [Headline, 'NEW TASK: BUILD A FARM']
   - [Image, content/gui/images/background/hr.png]
   - Congratulations! Some of your inhabitants have reached tier II!
   - Now you have access to new buildings, take a look at the Build menu again.
@@ -303,8 +305,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Costruisci almeno un pascolo ed aggiungi campi di patate se lo desideri.]
-  - [Headline, 'OBIETTIVO: I CAMPI']
+  - [Message, Build at least one pasture and add potato fields if you like.]
+  - [Headline, 'NEW TASK: BUILD FIELDS']
   - [Image, content/gui/images/background/hr.png]
   - The farm itself is not going to produce anything without some fields.
   - You currently have the choice between pastures, potato and sugar fields.
@@ -331,8 +333,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Costruisci una tenda magazzino (livello I) dove può essere utile.]
-  - [Headline, 'OBIETTIVO: I MAGAZZINI']
+  - [Message, Build a storage tent (tier I tab) where it makes sense.]
+  - [Headline, 'NEW TASK: BUILD STORAGE']
   - [Image, content/gui/images/background/hr.png]
   - Did you watch your lumberjack recently?
   - Since your warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
@@ -362,8 +364,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Costruisci un tessitore che possa raggiungere la lana della fattoria.]
-  - [Headline, 'OBIETTIVO: IL TESSITORE']
+  - [Message, Build a weaver that can somehow reach the wool of your farm.]
+  - [Headline, 'NEW TASK: BUILD A WEAVER']
   - [Image, content/gui/images/background/hr.png]
   - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
   - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
@@ -376,31 +378,31 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, Alloggia almeno 50 abitanti nella tua città per completare il tutorial. Hai bisogno di un bilancio positivo.]
-  - [Headline, 'OBIETTIVO: FINISCI IL TUTORIAL']
+  - [Message, House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance.]
+  - [Headline, 'NEW TASK: COMPLETE TUTORIAL']
   - [Image, content/gui/images/background/hr.png]
   - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
   - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
   - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
   - '
 
-    OBIETTIVO: Raggiungi una popolazione di 50 abitanti e un bilancio in attivo per completare il tutorial.'
+    TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.'
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, Congratulazioni! Hai completato il tutorial e sei pronto per nuove sfide!]
-  - [Headline, COMPITI FINITI]
+  - [Message, Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!]
+  - [Headline, NO TASKS LEFT]
   - [Image, content/gui/images/background/hr.png]
   - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
-  - 'Se avete suggerimenti su che cosa potremmo o dovremmo migliorare, aggiungere o eliminare:'
+  - 'If you have any suggestions on what we could or should improve, add or leave out:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - I nostri forum sono aperti anche a te!
+  - Our forums are open to you as well!
   - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
   - [Pagebreak]
-  - [Headline, Grazie!]
+  - [Headline, Ačiū!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -408,10 +410,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Grazie per aver giocato il tutorial!
+    Thanks for playing the tutorial!
 
 
-    Il team di UH'
+    Your UH-Team'
   - - Gallery
     - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
@@ -668,11 +670,11 @@ events:
 
 metadata:
   author: The UH team
-  description: 'Tutorial:
+  description: 'Mokomasis scenarijus:
 
-    Costruisci il tuo primo insediamento ed impara a giocare!'
+    Įkurkite savo pirmąją gyvenvietę bei išmokite žaisti!'
   difficulty: Tutorial
-  locale: it
+  locale: lt
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 101 translated messages, 90 untranslated messages.
+  translation_status: 11 translated messages, 1 fuzzy translation, 179 untranslated messages.

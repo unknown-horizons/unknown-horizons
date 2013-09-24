@@ -8,23 +8,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2013-05-14 16:25+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: Italian <http://hosted.weblate.org/projects/uh/the-unknown/it/"
-">\n"
+"PO-Revision-Date: 2013-08-29 16:49+0200\n"
+"Last-Translator: Davide Nanni <ds.aureli@gmail.com>\n"
+"Language-Team: Italian <http://hosted.weblate.org/projects/uh/the-"
+"unknown/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #. scenario difficulty
 msgid "easy"
 msgstr "facile"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
@@ -33,7 +32,7 @@ msgstr ""
 "Sei il capitano di un vascello della bandiera Britannica nel 1740. Tu e i "
 "tuoi marinai eravate in viaggio verso una colonia Inglese nell'Oceano "
 "Pacifico.\n"
-"Tutto sembrava normale, quando finiste in una violenta tempesta..."
+"Tutto stava andando bene, quando finiste in una violenta tempesta…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -73,14 +72,13 @@ msgid "22nd November 1740"
 msgstr "22 Novembre 1740"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
 "Il porto è stato costruito e le speranze dei miei uomini si sono "
-"risollevate. Sono preoccupato per i giorni a venire... il nostro cibo è "
-"quasi terminato e ci servono materiali da costruzione."
+"risollevate. Sono ancora preoccupato per i giorni a venire... il nostro cibo "
+"è quasi terminato e ci servono materiali da costruzione."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -153,7 +151,6 @@ msgstr ""
 "tetto sopra la testa la notte."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
@@ -161,11 +158,11 @@ msgid ""
 "We can only try to to build up a civilisation and find a way home…"
 msgstr ""
 "Ho iniziato a studiare le stelle durante la notte, ma senza gli strumenti di "
-"navigazione e e mappe non ci capisco nulla. Credo che rimarremo bloccati qui "
-"per un pò di tempo, quindi sarà meglio darsi da fare e migliorare le nostre "
-"condizioni.\n"
+"navigazione e le mappe il loro significato rimane sconosciuto. Credo che "
+"rimarremo bloccati qui per un pò di tempo, quindi sarà meglio darsi da fare "
+"e migliorare le nostre condizioni.\n"
 "Dobbiamo provare a formare una piccola società organizzata e tornare a casa "
-"quando saremo pronti..."
+"quando saremo pronti…"
 
 #. This is the text body of a logbook page.
 msgid ""
