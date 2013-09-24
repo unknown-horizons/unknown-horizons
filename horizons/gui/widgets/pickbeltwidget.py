@@ -80,18 +80,6 @@ class PickBeltWidget(object):
 			belt.hide()
 
 
-class OptionsPickbeltWidget(PickBeltWidget):
-	"""Widget for Options dialog with pickbelt style pages"""
-	widget_xml = 'settings.xml'
-
-	sections = (('graphics_settings', _lazy('Graphics')),
-	            ('hotkeys_settings', _lazy('Hotkeys')),
-	            ('game_settings', _lazy('Game')))
-
-	def update_view(self, number=0):
-		super(OptionsPickbeltWidget, self).update_view(number=number)
-
-
 class CreditsPickbeltWidget(PickBeltWidget, Window):
 	"""Widget for credits dialog with pickbelt style pages"""
 	widget_xml = 'credits.xml'

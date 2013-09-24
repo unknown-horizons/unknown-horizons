@@ -40,6 +40,7 @@ class Sound(object):
 		self.emitter['bgsound'] = None
 		self.emitter['effects'] = None
 		self.emitter['speech'] = None
+		self.emitter['ambient'] = []
 
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
 		self.ingame_music = glob.glob('content/audio/music/*.ogg')
@@ -77,8 +78,6 @@ class Sound(object):
 
 	def enable_sound(self):
 		"""Enable all sound and start playing music."""
-		if not self.engine.get_fife_setting("PlaySounds"):
-			return
 		# Set up sound if it is enabled
 		self.soundmanager = self.engine.engine.getSoundManager()
 		self.soundmanager.init()
@@ -93,7 +92,6 @@ class Sound(object):
 		self.emitter['speech'] = self.soundmanager.createEmitter()
 		self.emitter['speech'].setGain(self.engine.get_uh_setting("VolumeEffects"))
 		self.emitter['speech'].setLooping(False)
-		self.emitter['ambient'] = []
 
 		# Start background music:
 		self._old_byte_pos = 0.0
@@ -157,3 +155,29 @@ class Sound(object):
 		#TODO remove str() -- http://fife.trac.cloudforge.com/engine/ticket/449
 		emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 		emitter.play()
+
+	def set_volume_emitter(self, emitter, volume):
+		"""Sets the volume on the emitter specified by emitter_name.
+		@param emitter: string with the emitters name, used as key for the self.emitter dict
+		@param volume: double which volume the emitter is to be set to range[0, 1]
+		"""
+		if self.engine.get_fife_setting("PlaySounds"):
+			self.emitter[emitter].setGain(volume)
+
+	def set_volume_bgmusic(self, volume):
+		"""Sets the volume for the backgroundmusic.
+		@param volume: double which volume the emitter is to be set to range[0, 1]
+		"""
+		self.set_volume_emitter('bgsound', volume)
+
+	def set_volume_effects(self, volume):
+		"""Sets the volume for the effects, speech and ambient sounds.
+		@param volume: double which volume the emitter is to be set to range[0, 1]
+		"""
+		self.set_volume_emitter('effects', volume)
+		self.set_volume_emitter('speech', volume)
+		for emitter in self.emitter['ambient']:
+				emitter.setGain(volume*2)
+
+
+
