@@ -22,11 +22,13 @@
 
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 
-from horizons.constants import LANGUAGENAMES
-from horizons.engine import UH_MODULE
+from horizons.constants import LANGUAGENAMES, SETTINGS
 from horizons.i18n import change_language
 
 class Settings(object):
+
+	# Settings key storing the SettingsVersion used to upgrade settings
+	SETTINGS_VERSION = "SettingsVersion"
 
 	def __init__(self, settings_file, settings_template_file):
 		self._module_settings = {}
@@ -37,6 +39,7 @@ class Settings(object):
 		self._settings_serializer.load(settings_file)
 		self._settings_template_serializer = SimpleXMLSerializer()
 		self._settings_template_serializer.load(settings_template_file)
+		self.upgrade_settings()
 
 	def get(self, module, name, default=None):
 		if default is None:
@@ -71,11 +74,10 @@ class Settings(object):
 		return self._settings_template_serializer.getAllSettings(module)
 
 	def save(self):
-
 		self._settings_serializer.save(self._settings_file)
 
 	def apply(self):
-		data = self.get(UH_MODULE, "Language")
+		data = self.get(SETTINGS.UH_MODULE, "Language")
 		language = LANGUAGENAMES.get_by_value(data)
 		change_language(language)
 
@@ -85,6 +87,21 @@ class Settings(object):
 				value = self._settings_template_serializer.get(module, setting_name)
 				self.set(module, setting_name, value)
 		self.save()
+
+	def upgrade_settings(self):
+		"""Upgrades the settings to a newer version necessary."""
+		current_version = self.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION)
+		template_version = self._settings_template_serializer.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION)
+		if current_version != template_version:
+			print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
+		          (current_version, template_version)
+			for module in self._settings_template_serializer.getModuleName():
+				for setting_name in self._settings_template_serializer.getAllSettings(module):
+					default_value = self._settings_template_serializer.get(module, setting_name)
+					if self.get(module, setting_name, default=default_value) is default_value:
+						self.set(module, setting_name, default_value)
+			self.set(SETTINGS.META_MODULE, self.SETTINGS_VERSION, template_version)
+			self.save()
 
 	# settings
 

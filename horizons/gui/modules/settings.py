@@ -25,8 +25,7 @@ from fife import fife
 
 import horizons.globals
 
-from horizons.constants import LANGUAGENAMES
-from horizons.engine import UH_MODULE, FIFE_MODULE
+from horizons.constants import LANGUAGENAMES, SETTINGS
 from horizons.i18n import change_language, _lazy, find_available_languages
 from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
@@ -70,6 +69,9 @@ class SettingsDialog(PickBeltWidget, Window):
 		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
 
 		fps = {0: _lazy("Disabled"), 30: 30, 45: 45, 60: 60, 90: 90, 120: 120}
+
+		FIFE_MODULE = SETTINGS.FIFE_MODULE
+		UH_MODULE = SETTINGS.UH_MODULE
 
 		def get_resolutions():
 			return get_screen_resolutions(self._settings.get(FIFE_MODULE, 'ScreenResolution'))
@@ -217,9 +219,9 @@ class SettingsDialog(PickBeltWidget, Window):
 	def _on_FrameLimit_changed(self, old, new):
 		# handling value 0 for framelimit to disable limiter
 		if new == 0:
-			self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', False)
+			self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', False)
 		else:
-			self._settings.set(FIFE_MODULE, 'FrameLimitEnabled', True)
+			self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', True)
 
 	def _on_NetworkPort_changed(self, old, new):
 		"""Sets a new value for client network port"""
@@ -233,7 +235,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			advice = _("Please check the port you entered and make sure it is in the specified range.")
 			self._windows.show_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
-			self._settings.set(UH_MODULE, 'NetworkPort', u"0")
+			self._settings.set(SETTINGS.UH_MODULE, 'NetworkPort', u"0")
 		else:
 			# port is valid
 			try:

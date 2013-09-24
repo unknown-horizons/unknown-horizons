@@ -20,8 +20,4 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-UH_MODULE = "unknownhorizons"
-FIFE_MODULE = "FIFE"
-KEY_MODULE = "keys"
-
 from engine import Fife

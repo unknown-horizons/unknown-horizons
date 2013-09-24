@@ -25,10 +25,8 @@ import logging
 
 from fife import fife
 from fife.extensions import pychan, fifelog
-from fife.extensions.fife_settings import FIFE_MODULE
 
-from horizons.constants import LANGUAGENAMES, PATHS
-from horizons.engine import UH_MODULE, KEY_MODULE
+from horizons.constants import LANGUAGENAMES, PATHS, SETTINGS
 from horizons.engine.pychan_util import init_pychan
 from horizons.engine.settings import Settings
 from horizons.engine.sound import Sound
@@ -118,14 +116,14 @@ class Fife(object):
 	def init_logging(self):
 		"""Initialize the LogManager."""
 
-		logmodules = self._setting.get("FIFE", "LogModules", ["controller"])
+		logmodules = self._setting.get(SETTINGS.FIFE_MODULE, "LogModules", ["controller"])
 
 		#log to both the console and log file
 		self._log = fifelog.LogManager(self.engine,
-									   self._setting.get("FIFE", "LogToPrompt", "0"),
-									   self._setting.get("FIFE", "LogToFile", "0"))
+									   self._setting.get(SETTINGS.FIFE_MODULE, "LogToPrompt", "0"),
+									   self._setting.get(SETTINGS.FIFE_MODULE, "LogToFile", "0"))
 
-		self._log.setLevelFilter(self._setting.get("FIFE", "LogLevelFilter", fife.LogManager.LEVEL_DEBUG))
+		self._log.setLevelFilter(self._setting.get(SETTINGS.FIFE_MODULE, "LogLevelFilter", fife.LogManager.LEVEL_DEBUG))
 
 		if logmodules:
 			self._log.setVisibleModules(*logmodules)
@@ -176,43 +174,43 @@ class Fife(object):
 		self.cursor.set(self.cursor_images[which])
 
 	def get_fife_setting(self, settingname):
-		return self._setting.get(FIFE_MODULE, settingname)
+		return self._setting.get(SETTINGS.FIFE_MODULE, settingname)
 
 	def set_fife_setting(self, settingname, value):
 		"""Probably saves setting in memory. Call save_settings() later"""
-		return self._setting.set(FIFE_MODULE, settingname, value)
+		return self._setting.set(SETTINGS.FIFE_MODULE, settingname, value)
 
 	def get_uh_setting(self, settingname):
-		return self._setting.get(UH_MODULE, settingname)
+		return self._setting.get(SETTINGS.UH_MODULE, settingname)
 
 	def set_uh_setting(self, settingname, value):
 		"""Probably saves setting in memory. Call save_settings() later"""
-		self._setting.set(UH_MODULE, settingname, value)
+		self._setting.set(SETTINGS.UH_MODULE, settingname, value)
 
 	def get_hotkey_settings(self):
-		return self._setting.get_module_settings(KEY_MODULE)
+		return self._setting.get_module_settings(SETTINGS.KEY_MODULE)
 
 	def get_keys_for_action(self, action, default=False):
 		"""Returns list of current hotkeys for *action* or its default hotkeys."""
 		if default:
-			keys = self._setting.get_module_template_settings(KEY_MODULE).get(action)
+			keys = self._setting.get_module_template_settings(SETTINGS.KEY_MODULE).get(action)
 		else:
-			keys = self._setting.get(KEY_MODULE, action)
+			keys = self._setting.get(SETTINGS.KEY_MODULE, action)
 		return keys
 
 	def set_key_for_action(self, action, newkey):
 		"""Replaces all existing hotkeys for *action* with *newkey*."""
-		self._setting.set(KEY_MODULE, action, newkey)
+		self._setting.set(SETTINGS.KEY_MODULE, action, newkey)
 
 	def add_key_for_action(self, action, addkey):
 		"""Adds hotkey *addkey* to list of hotkeys for action *action*."""
-		old_keys = self._setting.get(KEY_MODULE, action, [])
+		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
 		new_keys = set(old_keys + [addkey])
 		self.set_key_for_action(action, list(new_keys))
 
 	def remove_key_for_action(self, action, remkey):
 		"""Removes hotkey *remkey* from list of hotkeys for action *action*."""
-		old_keys = self._setting.get(KEY_MODULE, action, [])
+		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
 		if remkey in old_keys:
 				old_keys.remove(remkey)
 		if len(old_keys) == 0:
@@ -222,7 +220,7 @@ class Fife(object):
 
 	def replace_key_for_action(self, action, oldkey, newkey):
 		"""Replaces key *oldkey* with key *newkey* for action *action*"""
-		old_keys = self._setting.get(KEY_MODULE, action, [])
+		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
 		if not oldkey in old_keys:
 			return
 		index = old_keys.index(oldkey)
