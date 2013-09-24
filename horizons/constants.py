@@ -489,7 +489,9 @@ class PATHS:
 	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 	TILE_SETS_JSON_FILE = os.path.join("content", "tilesets.json")
 
+	SETTINGS_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
+
 
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
@@ -505,6 +507,12 @@ class PATHS:
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
+
+class SETTINGS:
+	UH_MODULE = "unknownhorizons"
+	FIFE_MODULE = "FIFE"
+	KEY_MODULE = "keys"
+	META_MODULE = "meta"
 
 class PLAYER:
 	STATS_UPDATE_FREQUENCY = GAME_SPEED.TICKS_PER_SECOND
@@ -524,6 +532,7 @@ class NETWORK:
 	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
 	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
+
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):

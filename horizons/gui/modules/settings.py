@@ -19,35 +19,267 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import collections
+
+from fife import fife
+
 import horizons.globals
+
+from horizons.constants import LANGUAGENAMES, SETTINGS
+from horizons.i18n import change_language, _lazy, find_available_languages
+from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
+from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
+from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
+from horizons.network.networkinterface import NetworkInterface
+from horizons.util.python import parse_port
 
 
-class SettingsDialog(Window):
-	"""Wrapper around fife's settings dialog to make it work with the WindowManager."""
+class Setting(object):
+	def __init__(self, module, name, widget_name, initial_data=None, restart=False, callback=None):
+		self.module = module
+		self.name = name
+		self.widget_name = widget_name
+		self.initial_data = initial_data
+		self.restart = restart
+		self.callback = callback
+
+
+class SettingsDialog(PickBeltWidget, Window):
+	"""Widget for Options dialog with pickbelt style pages"""
+
+	widget_xml = 'settings.xml'
+	sections = (('graphics_settings', _lazy('Graphics')),
+	            ('hotkeys_settings', _lazy('Hotkeys')),
+			    ('game_settings', _lazy('Game')))
+
+	def __init__(self, windows):
+		Window.__init__(self, windows)
+		PickBeltWidget.__init__(self)
+
+		self._settings = horizons.globals.fife._setting
+
+		self.widget.mapEvents({
+			'okButton': self.apply_settings,
+			'defaultButton': self.set_defaults,
+			'cancelButton': self._windows.close,
+		})
+
+		languages = find_available_languages().keys()
+		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
+
+		fps = {0: _lazy("Disabled"), 30: 30, 45: 45, 60: 60, 90: 90, 120: 120}
+
+		FIFE_MODULE = SETTINGS.FIFE_MODULE
+		UH_MODULE = SETTINGS.UH_MODULE
+
+		def get_resolutions():
+			return get_screen_resolutions(self._settings.get(FIFE_MODULE, 'ScreenResolution'))
+
+		self._options = [
+			# Graphics/Sound/Input
+			Setting(FIFE_MODULE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
+			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen', restart=True),
+			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True, callback=self._on_RenderBackend_changed),
+			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
+
+			Setting(UH_MODULE, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
+			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects', callback=self._on_VolumeEffects_changed),
+			Setting(FIFE_MODULE, 'PlaySounds', 'enable_sound', callback=self._on_PlaySounds_changed),
+			Setting(UH_MODULE, 'EdgeScrolling', 'edgescrolling'),
+			Setting(UH_MODULE, 'CursorCenteredZoom', 'cursor_centered_zoom'),
+			Setting(UH_MODULE, 'MiddleMousePan', 'middle_mouse_pan'),
+			Setting(FIFE_MODULE, 'MouseSensitivity', 'mousesensitivity', restart=True),
+
+			# Game
+			Setting(UH_MODULE, 'AutosaveInterval', 'autosaveinterval'),
+			Setting(UH_MODULE, 'AutosaveMaxCount', 'autosavemaxcount'),
+			Setting(UH_MODULE, 'QuicksaveMaxCount', 'quicksavemaxcount'),
+			Setting(UH_MODULE, 'Language', 'uni_language', language_names, callback=self._on_Language_changed),
+
+			Setting(UH_MODULE, 'MinimapRotation', 'minimaprotation'),
+			Setting(UH_MODULE, 'UninterruptedBuilding', 'uninterrupted_building'),
+			Setting(UH_MODULE, 'AutoUnload', 'auto_unload'),
+			Setting(UH_MODULE, 'DebugLog', 'debug_log', callback=self._on_DebugLog_changed),
+			Setting(UH_MODULE, 'ShowResourceIcons', 'show_resource_icons'),
+			Setting(UH_MODULE, 'ScrollSpeed', 'scrollspeed'),
+			Setting(UH_MODULE, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
+			Setting(UH_MODULE, 'NetworkPort', 'network_port', callback=self._on_NetworkPort_changed),
+		]
+
+		self._fill_widgets()
+
+		# key configuration
+		hk = HotkeyConfiguration()
+		number = self.sections.index(('hotkeys_settings', _('Hotkeys')))
+		self.page_widgets[number].addChild(hk.widget)
+		self.hotkey_interface = hk
 
 	def show(self):
-		horizons.globals.fife.show_settings()
-
-		fife_setting = horizons.globals.fife._setting
-		if not hasattr(fife_setting, '_optionsDialog'):
-			#TODO fifechan / FIFE 0.3.5+ compat
-			# this is the old API
-			widget = fife_setting.OptionsDlg
-		else:
-			widget = fife_setting._optionsDialog
-		# Patch original dialog
-		if not hasattr(widget, '__patched__'):
-			# replace hide method so we take control over how the dialog
-			# is hidden
-			self._original_hide = widget.hide
-			widget.hide = self._windows.close
-
-			widget.mapEvents({
-				'cancelButton': widget.hide
-			})
-
-			widget.__patched__ = True
+		self.widget.show()
 
 	def hide(self):
-		self._original_hide()
+		self.widget.hide()
+
+	def show_restart_popup(self):
+		headline = _("Restart required")
+		message = _("Some of your changes require a restart of Unknown Horizons.")
+		self._windows.show_popup(headline, message)
+
+	def set_defaults(self):
+		title = _("Restore default settings")
+		msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
+				u" " + _("Do you want to continue?")
+
+		if self._windows.show_popup(title, msg, show_cancel_button=True):
+			self.hotkey_interface.reset_to_default()
+			self._settings.set_defaults()
+			self.show_restart_popup()
+			self._windows.close()
+
+	def apply_settings(self):
+		restart_required = False
+
+		for entry in self._options:
+			widget = self.widget.findChild(name=entry.widget_name)
+			new_value = widget.getData()
+
+			if isinstance(entry.initial_data, collections.Callable):
+				initial_data = entry.initial_data()
+			else:
+				initial_data = entry.initial_data
+
+			if isinstance(initial_data, list):
+				new_value = initial_data[new_value]
+			elif isinstance(initial_data, dict):
+				new_value = initial_data.keys()[new_value]
+
+			old_value = self._settings.get(entry.module, entry.name)
+
+			# Store new setting
+			self._settings.set(entry.module, entry.name, new_value)
+
+			# If setting changed, allow applying of new value and sanity checks
+			if new_value != old_value:
+				if entry.restart:
+					restart_required = True
+
+				if entry.callback:
+					entry.callback(old_value, new_value)
+
+		if restart_required:
+			self.show_restart_popup()
+
+		self.hotkey_interface.save_settings()
+		self._settings.apply()
+		self._settings.save()
+		self._windows.close()
+
+	def _fill_widgets(self):
+		for entry in self._options:
+			value = self._settings.get(entry.module, entry.name)
+			widget = self.widget.findChild(name=entry.widget_name)
+
+			if entry.initial_data:
+				if isinstance(entry.initial_data, collections.Callable):
+					initial_data = entry.initial_data()
+				else:
+					initial_data = entry.initial_data
+
+				if isinstance(initial_data, dict):
+					widget.setInitialData(initial_data.values())
+					value = initial_data.keys().index(value)
+				elif isinstance(initial_data, list):
+					widget.setInitialData(initial_data)
+					value = initial_data.index(value)
+				else:
+					widget.setInitialData(initial_data)
+
+			widget.setData(value)
+
+	# callbacks for changes of settings
+
+	def _on_RenderBackend_changed(self, old, new):
+		if new == 'SDL':
+			headline = _("Warning")
+			#i18n Warning popup shown in settings when SDL is selected as renderer.
+			message = _("The SDL renderer is meant as a fallback solution only "
+			            "and has serious graphical glitches. \n\nUse at own risk!")
+			self._windows.show_popup(headline, message)
+
+	def _on_PlaySounds_changed(self, old, new):
+		horizons.globals.fife.sound.setup_sound()
+
+	def _on_VolumeMusic_changed(self, old, new):
+		horizons.globals.fife.sound.set_volume_bgmusic(new)
+
+	def _on_VolumeEffects_changed(self, old, new):
+		horizons.globals.fife.sound.set_volume_effects(new)
+
+	def _on_FrameLimit_changed(self, old, new):
+		# handling value 0 for framelimit to disable limiter
+		if new == 0:
+			self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', False)
+		else:
+			self._settings.set(SETTINGS.FIFE_MODULE, 'FrameLimitEnabled', True)
+
+	def _on_NetworkPort_changed(self, old, new):
+		"""Sets a new value for client network port"""
+		# port is saved as string due to pychan limitations
+		try:
+			# 0 is not a valid port, but a valid value here (used for default)
+			parse_port(new)
+		except ValueError:
+			headline = _("Invalid network port")
+			descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
+			advice = _("Please check the port you entered and make sure it is in the specified range.")
+			self._windows.show_error_popup(headline, descr, advice)
+			# reset value and reshow settings dlg
+			self._settings.set(SETTINGS.UH_MODULE, 'NetworkPort', u"0")
+		else:
+			# port is valid
+			try:
+				if NetworkInterface() is None:
+					NetworkInterface.create_instance()
+				NetworkInterface().network_data_changed()
+			except Exception as e:
+				headline = _("Failed to apply new network settings.")
+				descr = _("Network features could not be initialized with the current configuration.")
+				advice = _("Check the settings you specified in the network section.")
+				if 0 < parse_port(new) < 1024:
+					#i18n This is advice for players seeing a network error with the current config
+					advice += u" " + \
+						_("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
+				details = unicode(e)
+				self._windows.show_error_popup(headline, descr, advice, details)
+
+	def _on_Language_changed(self, old, new):
+		language = LANGUAGENAMES.get_by_value(new)
+		change_language(language)
+
+	def _on_DebugLog_changed(self, old, new):
+		horizons.main.set_debug_log(new)
+
+def get_screen_resolutions(selected_default):
+	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
+
+	NOTE: This call only works if the engine is inited.
+	"""
+	possible_resolutions = set([selected_default])
+
+	MIN_X = 800
+	MIN_Y = 600
+
+	devicecaps = fife.DeviceCaps()
+	devicecaps.fillDeviceCaps()
+
+	for screenmode in devicecaps.getSupportedScreenModes():
+		x = screenmode.getWidth()
+		y = screenmode.getHeight()
+		if x < MIN_X or y < MIN_Y:
+			continue
+		res = str(x) + 'x' + str(y)
+		possible_resolutions.add(res)
+
+	by_width = lambda res: int(res.split('x')[0])
+	return sorted(possible_resolutions, key=by_width)
