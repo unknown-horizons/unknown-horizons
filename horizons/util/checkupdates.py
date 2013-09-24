@@ -56,16 +56,11 @@ def check_for_updates(info):
 		url = NETWORK.UPDATE_FILE_URL
 		try:
 			u = urllib2.urlopen( url + "?" + data, timeout=TIMEOUT )
-		except urllib2.URLError as e:
+		except (urllib2.URLError, socket.timeout):
 			# Silently ignore the failed update, printing stuff might crash the game
 			# if no console is available
 			info.status = UpdateInfo.INVALID
 			return
-		except socket.timeout as e:
-			#  same as above
-			info.status = UpdateInfo.INVALID
-			return
-
 
 		version = u.readline()
 		link = u.readline()
