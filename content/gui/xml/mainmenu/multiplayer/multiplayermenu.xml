@@ -22,12 +22,9 @@
 				<OkButton name="load"  helptext="Load a saved game" />
 			</HBox>
 
-			<HBox>
-				<Label name="exit_to_main_menu_lbl"  text="Main menu:" />
-				<CancelButton name="cancel"  helptext="Exit to main menu" />
-			</HBox>
-
 		</VBox>
+		<CancelButton name="cancel"  helptext="Exit to main menu" position="00,460" />
+		<Label name="exit_to_main_menu_lbl"  text="Main menu"  position="40,470" />
 	</Container>
 
 	<VBox max_size="320,480"  min_size="320,480"  position="420,50"  name="right_side">
@@ -55,11 +52,10 @@
 
 		<Spacer />
 
-		<HBox min_size="0,40"><Spacer />
-			<Label name="join_game_lbl" text="Join game" />
-			<OkButton name="join"  helptext="Join the selected game" />
-		</HBox>
 
 	</VBox>
+
+	<Label name="join_game_lbl" text="Join game:" position="610, 500"/>
+	<OkButton name="join"  helptext="Join the selected game" position="680, 490"/>
 
 </Container>
