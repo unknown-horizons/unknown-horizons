@@ -87,6 +87,11 @@ class ImageButton(FifeImageButton):
 		self.up_image = self.down_image = self.hover_image = self.inactive_image
 		self.state = self.INACTIVE
 
+	def is_active(self):
+		if self.state is self.ACTIVE:
+			return True
+		return False
+
 	def _get_path(self):
 		return self.__path
 

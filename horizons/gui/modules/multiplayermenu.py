@@ -377,16 +377,24 @@ class GameLobby(Window):
 
 		self._gui = load_uh_widget('multiplayer_gamelobby.xml')
 
-		def ready_cb():
-			NetworkInterface().toggle_ready()
-			self._gui.findChild(name="ready_btn").toggle()
 
 		self._gui.mapEvents({
 			'cancel': self._cancel,
-			'ready_btn': ready_cb,
+			'ready_btn': self._on_ready_button_pressed,
 		})
 
 		NetworkInterface().subscribe("game_prepare", self._prepare_game)
+
+	def _on_ready_button_pressed(self):
+		ready_button = self._gui.findChild(name="ready_btn")
+		ready_button.toggle()
+		ready_label = self._gui.findChild(name="ready_lbl")
+		if ready_button.is_active():
+			ready_label.text = _("Ready") + ":"
+		else:
+			ready_label.text = _("Not ready") + ":"
+		ready_label.adaptLayout()
+		NetworkInterface().toggle_ready()
 
 	def hide(self):
 		self._gui.hide()
@@ -562,14 +570,10 @@ class GameLobby(Window):
 	def _on_player_toggled_ready(self, game, plold, plnew, myself):
 		self._update_players_box(NetworkInterface().get_game())
 		if myself:
-			ready_label = self._gui.findChild(name="ready_lbl")
 			if plnew.ready:
 				self._print_event(_("You are now ready"))
-				ready_label.text = _("Not ready") + ":"
 			else:
 				self._print_event(_("You are not ready anymore"))
-				ready_label.text = _("Ready") + ":"
-			ready_label.adaptLayout()
 		else:
 			if plnew.ready:
 				self._print_event(_("{player} is now ready").format(player=plnew.name))
