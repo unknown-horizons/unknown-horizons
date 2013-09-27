@@ -12,15 +12,18 @@
 
 		<hr position="52,170" />
 
-		<CancelButton name="cancel"  helptext="Exit to main menu" position="10,470" />
 		<!--
 		this should actually be a Container, that contains subcontainers, but with Container,
 		the content doesn't show up. Pychan wasn't designed for Containers within Containers,
 		which might be the source of this bug
 		-->
 		<VBox name="playerdataselectioncontainer"  position="10,185" />
-		<VBox name="aidataselectioncontainer"  position="10,365" />
 		<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="112,228" />
+
+		<hr position="52,300" />
+		<VBox name="aidataselectioncontainer"  position="10,310" />
+
+		<CancelButton name="cancel"  helptext="Exit to main menu" position="10,470" />
 	</Container>
 
 	<!-- load the proper xml submenu template (scenario, random maps, free play, ..) -->
