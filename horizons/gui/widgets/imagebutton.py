@@ -62,7 +62,7 @@ class ImageButton(FifeImageButton):
 		self.state = self.ACTIVE
 
 	def toggle(self):
-		if self.state == self.ACTIVE:
+		if self.is_active:
 			self.set_inactive()
 		else:
 			self.set_active()
@@ -70,7 +70,7 @@ class ImageButton(FifeImageButton):
 	def set_active(self):
 		"""Sets the button active. Restores up, down and hover image to
 		previous state."""
-		if self.state == self.ACTIVE:
+		if self.is_active:
 			return
 		self.up_image, self.down_image, self.hover_image = self.old_images
 		self.state = self.ACTIVE
@@ -78,7 +78,7 @@ class ImageButton(FifeImageButton):
 	def set_inactive(self):
 		"""Sets the button inactive. Overrides up, down and hover image with
 		inactive image."""
-		if self.state == self.INACTIVE:
+		if not self.is_active:
 			# running this with inactive state would overwrite all elements
 			# of old_images with inactive_image
 			return
@@ -87,10 +87,9 @@ class ImageButton(FifeImageButton):
 		self.up_image = self.down_image = self.hover_image = self.inactive_image
 		self.state = self.INACTIVE
 
+	@property
 	def is_active(self):
-		if self.state is self.ACTIVE:
-			return True
-		return False
+		return (self.state == self.ACTIVE)
 
 	def _get_path(self):
 		return self.__path

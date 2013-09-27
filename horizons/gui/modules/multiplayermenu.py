@@ -389,7 +389,7 @@ class GameLobby(Window):
 		ready_button = self._gui.findChild(name="ready_btn")
 		ready_button.toggle()
 		ready_label = self._gui.findChild(name="ready_lbl")
-		if ready_button.is_active():
+		if ready_button.is_active:
 			ready_label.text = _("Ready") + ":"
 		else:
 			ready_label.text = _("Not ready") + ":"
