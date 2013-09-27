@@ -57,6 +57,11 @@ class Settings(object):
 		if setter:
 			value = setter(value)
 
+		# This is necessary, as empty fields return None, but saving
+		# None will result in the String 'None' being stored
+		if value is None:
+			value = ''
+
 		if module in self._module_settings:
 			self._module_settings[module][name] = value
 
