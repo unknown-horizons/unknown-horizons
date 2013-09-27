@@ -557,10 +557,14 @@ class GameLobby(Window):
 	def _on_player_toggled_ready(self, game, plold, plnew, myself):
 		self._update_players_box(NetworkInterface().get_game())
 		if myself:
+			ready_label = self._gui.findChild(name="ready_lbl")
 			if plnew.ready:
 				self._print_event(_("You are now ready"))
+				ready_label.text = _("Not ready") + ":"
 			else:
 				self._print_event(_("You are not ready anymore"))
+				ready_label.text = _("Ready") + ":"
+			ready_label.adaptLayout()
 		else:
 			if plnew.ready:
 				self._print_event(_("{player} is now ready").format(player=plnew.name))

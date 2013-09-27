@@ -17,7 +17,7 @@
 		<CancelButton position="120,460"
 			name="cancel"  helptext="Exit gamelobby" />
         <Label name="ready_lbl"  text="Ready:"  position="165,470" />
-        <OkButton position="210,460" name="ready_btn" helptext="Sets your state to ready (necessary for the game to start)" />
+        <OkButton position="235,460" name="ready_btn" helptext="Sets your state to ready (necessary for the game to start)" />
 	</Container>
 
 
