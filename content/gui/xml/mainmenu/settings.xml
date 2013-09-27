@@ -217,21 +217,22 @@
 		</VBox>
 	</HBox>
 
-<!-- Hotkeys section -->
-<HBox name="hotkeys_settings" position="185,45" padding="25" />
+	<!-- Hotkeys section -->
+	<HBox name="hotkeys_settings" position="185,45" padding="25" />
 
-<!-- General section -->
+	<!-- General section -->
 	<HBox position="180,500" padding="245">
-		<DeleteButton name="defaultButton" helptext="Reset to default settings" />
-		<CancelButton helptext="Discard current changes" />
 		<Spacer fixed_size="60" />
-		<OkButton helptext="Apply" />
 	</HBox>
 
-<!-- This dropdown is invisible, but required by fife to be here -->
+	<!-- This dropdown is invisible, but required by fife to be here -->
 	<DropDown name="lighting_model" min_size="20,0" position="10000,0" />
 
-<!-- Pickbelts to the right -->
+	<!-- Pickbelts to the right -->
 	<Container name="right_pickbelts" position="835,0" size="170,580" />
+
+	<CancelButton helptext="Discard current changes"  position="170,500"/>
+	<DeleteButton name="defaultButton" helptext="Reset to default settings" position="520,500"/>
+	<OkButton position="790, 500" helptext="Save changes"/>
 
 </Container>

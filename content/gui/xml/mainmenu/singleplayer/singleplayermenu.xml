@@ -12,8 +12,8 @@
 
 		<hr position="52,170" />
 
-		<CancelButton name="cancel"  helptext="Exit to main menu" position="20,460" />
-		<Label name="main_menu_label"  text="Main menu"  position="60,470" />
+		<CancelButton name="cancel"  helptext="Exit to main menu" position="10,470" />
+		<Label name="main_menu_label"  text="Main menu"  position="60,480" />
 		<!--
 		this should actually be a Container, that contains subcontainers, but with Container,
 		the content doesn't show up. Pychan wasn't designed for Containers within Containers,
@@ -27,6 +27,6 @@
 	<!-- load the proper xml submenu template (scenario, random maps, free play, ..) -->
 	<VBox max_size="320,480"  min_size="320,480"  position="415,52"  name="right_side_box" />
 
-	<Label name="start_game_label"  text="Start game:" position="590, 500"/>
-	<OkButton name="okay"  helptext="Start game" position="680, 490"/>
+	<Label name="start_game_label"  text="Start game:" position="590, 510"/>
+	<OkButton name="okay"  helptext="Start game" position="695, 500"/>
 </Container>
