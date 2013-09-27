@@ -427,11 +427,11 @@ class GameLobby(Window):
 	def show(self):
 		textfield = self._gui.findChild(name="chatTextField")
 		textfield.capture(self._send_chat_message)
-		welcome_string = "Enter your message here"
+		welcome_string = _("Enter your message")
 		def chatfield_clicked():
-			if textfield.text == _(welcome_string):
+			if textfield.text == welcome_string:
 				textfield.text = ""
-		textfield.text = _(welcome_string)
+		textfield.text = welcome_string
 		textfield.capture(chatfield_clicked, event_name="mouseClicked")
 
 		self._update_game_details()
