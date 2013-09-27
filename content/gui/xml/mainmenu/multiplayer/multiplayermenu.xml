@@ -20,7 +20,6 @@
 
 		</VBox>
 		<CancelButton name="cancel"  helptext="Exit to main menu" position="00,460" />
-		<Label name="exit_to_main_menu_lbl"  text="Main menu"  position="40,470" />
 	</Container>
 
 	<VBox max_size="320,480"  min_size="320,480"  position="420,50"  name="right_side">
