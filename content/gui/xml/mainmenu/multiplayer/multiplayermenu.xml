@@ -12,10 +12,6 @@
 
 		<VBox position="42,370"  max_size="290,125"  min_size="290,125">
 
-			<HBox>
-				<Label name="create_game_lbl" text="Create game:" />
-				<OkButton name="create"  helptext="Create a new game" />
-			</HBox>
 
 			<HBox>
 				<Label name="load_game_lbl" text="Load game:" />
@@ -55,7 +51,9 @@
 
 	</VBox>
 
-	<Label name="join_game_lbl" text="Join game:" position="610, 500"/>
+	<Label name="create_game_lbl" text="Create game:"  position="450, 500"/>
+	<OkButton name="create"  helptext="Create a new game"  position="540, 490"/>
+	<Label name="join_game_lbl" text="Join game:" position="590, 500"/>
 	<OkButton name="join"  helptext="Join the selected game" position="680, 490"/>
 
 </Container>
