@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-09-18 13:02+0200\n"
+"PO-Revision-Date: 2013-09-30 16:45+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -638,7 +638,7 @@ msgstr "A tothom"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "Envia els missatges de xat a tots els jugadors"
+msgstr "Envia els missatges de xat a tots els jugadors."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -1009,7 +1009,7 @@ msgstr "Cancel·la la partida"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
-msgstr "S'està carregant..."
+msgstr "S'està carregant…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1092,141 +1092,142 @@ msgstr "Crea aquesta nova partida"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
-msgstr ""
+msgstr "Punt de trobada"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
-msgstr ""
+msgstr "Xat:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Leave:"
-msgstr ""
+msgstr "Sortir:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:18
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "Sortir del punt de trobada"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:19
 msgid "Ready:"
-msgstr ""
+msgstr "A punt:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:20
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
+msgstr "Indica que ja estàs preparat (necessari per començar la partida)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
 msgid "The game will start as soon as all players are ready."
-msgstr ""
+msgstr "La partida començarà tant bon punt tots els jugadors estiguin a punt."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
 msgid "Game details:"
-msgstr ""
+msgstr "Detalls de la partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
 msgid "Color"
-msgstr ""
+msgstr "Color"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "Partida nova - Múltiples jugadors"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Create a new game"
-msgstr ""
+msgstr "Crea una partida nova"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
-msgstr ""
+msgstr "Carrega una partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 msgid "Load a saved game"
-msgstr ""
+msgstr "Carrega una partida desada"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:26
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:16
 msgid "Main menu:"
-msgstr ""
+msgstr "Menú principal:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:36
 msgid "Active games:"
-msgstr ""
+msgstr "Partides actives:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:38
 msgid "Refresh list:"
-msgstr ""
+msgstr "Refresca la llista:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:41
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "Refresca la llista de partides actives"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:59
 msgid "Join game"
-msgstr ""
+msgstr "Uneix-te a la partida"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:60
 msgid "Join the selected game"
-msgstr ""
+msgstr "S'apunta a la partide seleccionada"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr ""
+msgstr "Canvia els detalls del jugador"
 
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/widgets/pickbeltwidget.py:87
 msgid "Graphics"
-msgstr ""
+msgstr "Gràfics"
 
 #: content/gui/xml/mainmenu/settings.xml:18
 msgid "Screen resolution:"
-msgstr ""
+msgstr "Resolució de la pantalla:"
 
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "Color depth:"
-msgstr ""
+msgstr "Profunditat de color:"
 
 #: content/gui/xml/mainmenu/settings.xml:28
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Si es posa a 0, fa servir la configuració per defecte del controlador"
 
 #: content/gui/xml/mainmenu/settings.xml:35
 msgid "Full screen:"
-msgstr ""
+msgstr "Pantalla completa:"
 
 #: content/gui/xml/mainmenu/settings.xml:43
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+"L'SDL només es fa servir en casos de incompatibilitat. Pot causar problemes!"
 
 #: content/gui/xml/mainmenu/settings.xml:43
 msgid "Used renderer:"
-msgstr ""
+msgstr "Renderitzador utilitzat:"
 
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Límit d'imatges per segon:"
 
 #: content/gui/xml/mainmenu/settings.xml:51
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Estableix un màxim d'imatges per segon. Per defecte 60fps."
 
 #: content/gui/xml/mainmenu/settings.xml:62
 msgid "Sound"
-msgstr ""
+msgstr "So"
 
 #: content/gui/xml/mainmenu/settings.xml:67
 msgid "Music volume:"
-msgstr ""
+msgstr "Volum de la música:"
 
 #: content/gui/xml/mainmenu/settings.xml:76
 msgid "Effects volume:"
-msgstr ""
+msgstr "Volum dels efectes:"
 
 #: content/gui/xml/mainmenu/settings.xml:84
 msgid "Enable sound:"
-msgstr ""
+msgstr "Habilita el so:"
 
 #: content/gui/xml/mainmenu/settings.xml:90
 msgid "Mouse"
-msgstr ""
+msgstr "Ratolí"
 
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid "Scroll at map edge:"
