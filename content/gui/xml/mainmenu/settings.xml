@@ -55,14 +55,20 @@
 			<hr />
 
 			<VBox>
-				<Label name="music_volume_label" text="Music volume:" wrap_text="1"
-					min_size="250,20" max_size="250,40" />
+				<HBox>
+					<Label name="music_volume_label" text="Music volume:" wrap_text="1"
+						min_size="250,20" max_size="250,40" />
+					<Label name="volume_music_value" text="" />
+				</HBox>
 				<Slider size="300,20" name="volume_music" is_focusable="0"
 					orientation="0" scale_start="0.0" scale_end="0.20" />
 			</VBox>
 			<VBox>
-				<Label text="Effects volume:" name="effect_volume_label"
-					wrap_text="1" min_size="250,20" max_size="250,40" />
+				<HBox>
+					<Label text="Effects volume:" name="effect_volume_label"
+						wrap_text="1" min_size="250,20" max_size="250,40" />
+					<Label name="volume_effects_value" text="" />
+				</HBox>
 				<Slider size="300,20" name="volume_effects" is_focusable="0"
 					orientation="0" scale_start="0.0" scale_end="0.5" />
 			</VBox>
@@ -95,9 +101,12 @@
 			</HBox>
 
 			<Spacer fixed_size="5" />
-			<Label name="mouse_sensitivity_label" text="Mouse sensitivity:"
-				wrap_text="1" max_size="250,40" min_size="250,20"
-				helptext="0 is default system settings" />
+			<HBox>
+				<Label name="mouse_sensitivity_label" text="Mouse sensitivity:"
+					wrap_text="1" max_size="250,40" min_size="250,20"
+					helptext="0 is default system settings" />
+				<Label name="mousesensitivity_value" text="" />
+			</HBox>
 
 			<Slider size="300,20" name="mousesensitivity" is_focusable="0"
 				orientation="0" scale_start="-0.1" scale_end="0.5" step_length="1.0" />
@@ -117,7 +126,7 @@
 				<HBox>
 					<Label name="autosave_interval_label" text="Autosave interval in minutes:"
 						wrap_text="1" max_size="275,40" min_size="275,20" />
-					<Label name="autosaveinterval_value" />
+					<Label name="autosaveinterval_value" text="" />
 				</HBox>
 				<Slider size="300,20" name="autosaveinterval" is_focusable="0"
 					orientation="0" scale_start="0.0" scale_end="60.0" step_length="2.0" />
@@ -125,7 +134,7 @@
 				<HBox>
 					<Label name="number_of_autosaves_label" text="Number of autosaves:"
 						wrap_text="1" max_size="275,40" min_size="275,20" />
-					<Label name="autosavemaxcount_value" />
+					<Label name="autosavemaxcount_value" text="" />
 				</HBox>
 				<Slider size="300,20" name="autosavemaxcount" is_focusable="0"
 					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
@@ -133,7 +142,7 @@
 				<HBox>
 					<Label name="number_of_quicksaves_label" text="Number of quicksaves:"
 						wrap_text="1" max_size="275,40" min_size="275,20" />
-					<Label name="quicksavemaxcount_value" />
+					<Label name="quicksavemaxcount_value" text="" />
 				</HBox>
 				<Slider size="300,20" name="quicksavemaxcount" is_focusable="0"
 					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
@@ -190,7 +199,7 @@
 					<Label name="scroll_speed_label" text="Scroll delay:"
 						wrap_text="1" max_size="250,40" min_size="250,20"
 						helptext="Higher values slow down scrolling." />
-					<Label name="scrollspeed_value" />
+					<Label name="scrollspeed_value" text="" />
 				</HBox>
 				<Slider size="300,20" name="scrollspeed" is_focusable="0"
 					orientation="0" scale_start="0.1" scale_end="2.0" step_length="0.05" />

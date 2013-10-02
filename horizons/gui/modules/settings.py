@@ -33,6 +33,7 @@ from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.python import parse_port
+from horizons.util.python.callback import Callback
 
 
 class Setting(object):
@@ -196,6 +197,25 @@ class SettingsDialog(PickBeltWidget, Window):
 					widget.setInitialData(initial_data)
 
 			widget.setData(value)
+
+			# For sliders, there also is a label showing the current value
+			if isinstance(widget, horizons.globals.fife.pychan.widgets.Slider):
+				cb = Callback(self.slider_change, widget)
+				cb()
+				widget.capture(cb)
+
+	def slider_change(self, widget):
+		value_label = self.widget.findChild(name=widget.name + '_value')
+		value = {
+			'volume_music':      lambda x: u'%s%%' % int(500 * x),
+			'volume_effects':    lambda x: u'%s%%' % int(200 * x),
+			'mousesensitivity':  lambda x: u'%+.1f%%' % (200 * x),
+			'autosaveinterval':  lambda x: u'%d' % x,
+			'autosavemaxcount':  lambda x: u'%d' % x,
+			'quicksavemaxcount': lambda x: u'%d' % x,
+			'scrollspeed':       lambda x: u'%.1f' % x,
+		}[widget.name](widget.value)
+		value_label.text = value
 
 	# callbacks for changes of settings
 
