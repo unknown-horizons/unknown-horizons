@@ -205,6 +205,12 @@ class SettingsDialog(PickBeltWidget, Window):
 				widget.capture(cb)
 
 	def slider_change(self, widget):
+		"""Callback for updating value label of a slider after dragging it.
+
+		As the numeric values under the hood often do not represent mental
+		models of what the setting achieves very well, depending on the
+		setting in question we display a modified value, sometimes with
+		a '%' suffix."""
 		value_label = self.widget.findChild(name=widget.name + '_value')
 		value = {
 			'volume_music':      lambda x: u'%s%%' % int(500 * x),
