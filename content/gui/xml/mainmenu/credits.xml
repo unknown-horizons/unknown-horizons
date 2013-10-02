@@ -120,9 +120,14 @@ afterwards run ./development/generate_credits.py to refresh this file.
 			<VBox name="box">
 				<Label text="enno4uh (Mac build support)" />
 				<Label text="Foaly (Resource icons)" />
-				<Label text="perher (tests for timer and scheduler)" />
-				<Label text="Vivek-sagar (tutorial modifications)" />
+				<Label text="perher (Tests for timer and scheduler)" />
+				<Label text="Vivek-sagar (Tutorial modifications)" />
 				<Label text="volpino (Selection group fix)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="2013" name="headline" />
+			<VBox name="box">
+				<Label text="sabbott1877 (Logbook notification fix)" />
 			</VBox>
 		</VBox>
 	</VBox>

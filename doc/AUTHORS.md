@@ -85,9 +85,12 @@
 #### 2012
 * enno4uh (Mac build support)
 * Foaly (Resource icons)
-* perher (tests for timer and scheduler)
-* Vivek-sagar (tutorial modifications)
+* perher (Tests for timer and scheduler)
+* Vivek-sagar (Tutorial modifications)
 * volpino (Selection group fix)
+
+#### 2013
+* sabbott1877 (Logbook notification fix)
 
 
 ## Translators
