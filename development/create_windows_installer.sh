@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RELEASE_VERSION=2013.1
+RELEASE_VERSION=2013.3
 
 PYTHON_DIR="C:/Python27"
 PYTHON_DLL="C:/windows/system32/python27.dll"
