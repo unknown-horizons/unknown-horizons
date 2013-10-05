@@ -34,7 +34,7 @@ cd ..
 echo "Running Setup..."
 cd development
 python compile_translation_win.py
-python generate_atlases.py 1024
+python ../horizons/engine/generate_atlases.py 1024
 cd ..
 
 echo "Cleaning up"
