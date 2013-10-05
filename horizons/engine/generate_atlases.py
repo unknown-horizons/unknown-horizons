@@ -37,9 +37,9 @@ except:
 	import pickle
 
 try:
-	import Image
+	from PIL import Image
 except ImportError:
-	print 'The Python Imaging Library (PIL) package is needed to run the atlas generator.'
+	print 'The Python Imaging Library (PIL / Pillow) package is needed to run the atlas generator.'
 	sys.exit(1)
 
 # make sure os.path.getmtime returns ints
