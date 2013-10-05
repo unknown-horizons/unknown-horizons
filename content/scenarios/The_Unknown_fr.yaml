@@ -142,9 +142,9 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Vous êtes le capitaine d''un navire sous le drapeau de l''Angleterre en 1740. Vous et votre équipage étiez en chemin vers une colonie d''Angleterre dans l''océan pacifique.
+  description: 'Vous êtes le capitaine d''un navire sous pavillon Anglais en 1740. Votre équipage et vous étiez en chemin vers une colonie d''Angleterre dans l''océan Pacifique.
 
-    Tout se passait bien jusqu’à ce que vous entriez dans une tempête.…'
+    Tout se passait bien jusqu’à ce que vous subissiez une tempête…'
   difficulty: facile
   locale: fr
   mapfile: development.sqlite
