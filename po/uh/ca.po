@@ -1231,265 +1231,273 @@ msgstr "Ratolí"
 
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "Desplaçament a la vora del mapa:"
 
 #: content/gui/xml/mainmenu/settings.xml:95
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Desplaçar la finestra quan el ratolí està aprop de les vores"
 
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "Zoom centrat al cursor:"
 
 #: content/gui/xml/mainmenu/settings.xml:101
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"Quan s'habilita, la roda del ratolí farà zoom a la posició del cursor i es "
+"convertirà en el centre de la finestra. Quan es deshabilita, sempre fa zoom "
+"al centre de la finestra."
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Gir amb el botó del mig del ratolí"
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
+"Quan s'habilita, arrossegar el botó del mig del ratolí farà girar la càmera"
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "0 is default system settings"
-msgstr ""
+msgstr "La configuració per defecte és 0"
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Mouse sensitivity:"
-msgstr ""
+msgstr "Sensibilitat del ratolí:"
 
 #: content/gui/xml/mainmenu/settings.xml:132
 msgid "Saving"
-msgstr ""
+msgstr "S'està desant"
 
 #: content/gui/xml/mainmenu/settings.xml:137
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Interval en minuts del desat automàtic:"
 
 #: content/gui/xml/mainmenu/settings.xml:145
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "Nombre de desades automàtiques:"
 
 #: content/gui/xml/mainmenu/settings.xml:153
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "Nombre de desades ràpides:"
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Gira el minimapa amb el mapa:"
 
 #: content/gui/xml/mainmenu/settings.xml:178
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Gira el minimapa quan es girà el mapa"
 
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Construcció ininterrompuda:"
 
 #: content/gui/xml/mainmenu/settings.xml:184
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Quan s'habilita, no surt del mode de construcció quan s'ha acabat un edifici"
 
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Descarrega el vaixell automàticament:"
 
 #: content/gui/xml/mainmenu/settings.xml:190
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Descarrega el vaixell quan arriba a l'assentament"
 
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"No el feu servir en una partida normal. Desa informació de depuració en una "
+"carpeta del directori de l'usuari. Fa anar el joc més apoc apoc."
 
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid "Enable logging:"
-msgstr ""
+msgstr "Habilita el registre:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
-msgstr ""
+msgstr "Indicadors de producció:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"Mostra els icones de recursos sobre els edificis quan n'acaben la producció"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "Els valors alts fan alentir el desplaçament."
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Scroll delay:"
-msgstr ""
+msgstr "Retard de desplaçament:"
 
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "Escolliu el tipus de cita:"
 
 #: content/gui/xml/mainmenu/settings.xml:219
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Quina mena de cita voleu mostrar mentre carrega la partida"
 
 #: content/gui/xml/mainmenu/settings.xml:227
 msgid "Network"
-msgstr ""
+msgstr "Xarxa"
 
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Si es posa a 0, fa servir encaminador per defecte"
 
 #: content/gui/xml/mainmenu/settings.xml:231
 msgid "Network port:"
-msgstr ""
+msgstr "Port de la xarxa:"
 
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Torna als paràmetres per defecte"
 
 #: content/gui/xml/mainmenu/settings.xml:244
 msgid "Discard current changes"
-msgstr ""
+msgstr "Descarta els canvis"
 
 #: content/gui/xml/mainmenu/settings.xml:246
 msgid "Apply"
-msgstr ""
+msgstr "Aplica"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
-msgstr ""
+msgstr "Les vostres partides desades:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "Contrasenya. És necessària per unir-se a la partida"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Esborra la partida desada seleccionada"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
-msgstr ""
+msgstr "Introduïu un nom de fitxer:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
 msgid "Details:"
-msgstr ""
+msgstr "Detalls:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel·la"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Partida nova - Un jugador"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr ""
+msgstr "Escenari"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr ""
+msgstr "Mapa aleatòri"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
-msgstr ""
+msgstr "Partida lliure"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:36
 msgid "Start game:"
-msgstr ""
+msgstr "Comença la partida:"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
 msgid "Start game"
-msgstr ""
+msgstr "Comença a jugar"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Escolliu a quin mapa voleu jugar:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr ""
+msgstr "Configuració del mapa:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr ""
+msgstr "Llavor:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "Trieu un idioma:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr ""
+msgstr "Jugadors IA:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr ""
+msgstr "Configuració de la partida:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr ""
+msgstr "Comerciant lliure"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
-msgstr ""
+msgstr "Pirates"
 
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr ""
+msgstr "Desastres"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
-msgstr ""
+msgstr "Nom del jugador:"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
-msgstr ""
+msgstr "Color:"
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
-msgstr ""
+msgstr "El nom del fitxer no és vàlid"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "S'ha indicat un nom de fitxer no vàlid per desar la partida."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
 #: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
 msgid "Failed to save."
-msgstr ""
+msgstr "No s'ha pogut desar."
 
 #: horizons/component/tradepostcomponent.py:190
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "El comerciant no ven aquest article."
 
 #: horizons/component/tradepostcomponent.py:198
 msgid "You can not store this."
