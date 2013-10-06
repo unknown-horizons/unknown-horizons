@@ -319,6 +319,7 @@ class RandomMapWidget(object):
 			ExtScheduler().add_new_object(self._poll_preview_process, self, 0.1)
 			return
 		elif self._preview_process.returncode != 0:
+			self._preview_process = None
 			self._set_map_preview_status(u"An unknown error occurred while generating the map preview")
 			return
 
