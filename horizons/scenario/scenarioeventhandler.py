@@ -37,6 +37,7 @@ class InvalidScenarioFileFormat(Exception):
 			msg = "Invalid scenario file."
 		super(InvalidScenarioFileFormat, self).__init__(msg)
 
+
 class ScenarioEventHandler(LivingObject):
 	"""Handles event, that make up a scenario. See wiki.
 	An instance of this class is bound to a set of events. On a new scenario, you need a new instance.
