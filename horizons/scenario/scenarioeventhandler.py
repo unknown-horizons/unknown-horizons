@@ -222,7 +222,8 @@ class ScenarioEventHandler(LivingObject):
 		data = copy.deepcopy(self._data)
 		del data['events']
 		yaml_code = dump_dict_to_yaml(data)
-		yaml_code = yaml_code.rstrip(u'}\n') # remove last } so we can add stuff
+		# remove last } so we can add stuff
+		yaml_code = yaml_code.rsplit(u'}\n', 1)[0]
 		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
 		return yaml_code
 
