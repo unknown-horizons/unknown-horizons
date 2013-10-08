@@ -28,12 +28,15 @@ import tempfile
 
 from collections import defaultdict
 from sqlite3 import OperationalError
+from yaml.parser import ParserError
 
 from horizons.constants import BUILDINGS, VERSION, UNITS
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
+from horizons.util.yamlcache import YamlCache
+
 
 class SavegameUpgrader(object):
 	"""The class that prepares saved games to be loaded by the current version."""
@@ -333,6 +336,21 @@ class SavegameUpgrader(object):
 		# rename fire_disaster to building_influencing_disaster
 		db("ALTER TABLE fire_disaster RENAME TO building_influencing_disaster")
 
+	def _upgrade_to_rev73(self, db):
+		# Attempt to fix up corrupt yaml dumped into scenario savegames (#2164)
+		key = 'scenario_events'
+		try:
+			yaml_data = db("SELECT name, value FROM metadata WHERE name = ?", key)[0][1]
+		except IndexError:
+			# Not a scenario, nothing to repair
+			return
+		try:
+			YamlCache.load_yaml_data(yaml_data)
+		except ParserError:
+			messed_up = 'events: [ { actions: [ {'
+			yaml_data = yaml_data.replace(messed_up, '}, ' + messed_up)
+			db("UPDATE metadata SET value = ? WHERE name = ?", yaml_data, key)
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -400,6 +418,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev71(db)
 			if rev < 72:
 				self._upgrade_to_rev72(db)
+			if 70 < rev < 73:
+				self._upgrade_to_rev73(db)
 
 			db('COMMIT')
 			db.close()
