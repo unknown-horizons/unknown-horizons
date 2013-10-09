@@ -267,6 +267,8 @@ class Session(LivingObject):
 			obj = WorldObject.get_object_by_id(instance_id)
 			self.selected_instances.add(obj)
 			obj.get_component(SelectableComponent).select()
+			#TODO jump_to correct tab number
+			obj.get_component(SelectableComponent).show_menu()
 
 		# Load user defined unit selection groups (Ctrl+number)
 		for (num, group) in enumerate(self.selection_groups):
