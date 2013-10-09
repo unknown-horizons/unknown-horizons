@@ -262,8 +262,9 @@ class Session(LivingObject):
 		self.ingame_gui = self._ingame_gui_class(self)
 		self.ingame_gui.load(savegame_db)
 
-		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
-			obj = WorldObject.get_object_by_id(instance_id[0])
+		# Re-select old selected instance
+		for (instance_id, ) in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"):
+			obj = WorldObject.get_object_by_id(instance_id)
 			self.selected_instances.add(obj)
 			obj.get_component(SelectableComponent).select()
 		for group in xrange(len(self.selection_groups)): # load user defined unit groups
