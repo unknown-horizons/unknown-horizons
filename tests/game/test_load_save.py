@@ -35,7 +35,10 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.world.units.collectors import Collector
 from horizons.scheduler import Scheduler
 
-from tests.game import game_test, new_session, settle, load_session, TEST_FIXTURES_DIR
+from tests.game import (
+	game_test, new_session, settle, load_session,
+	TEST_FIXTURES_DIR,
+)
 
 
 # utility

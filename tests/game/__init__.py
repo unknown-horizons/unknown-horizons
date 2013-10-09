@@ -170,10 +170,25 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 
 	players = []
 	if human_player:
-		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'ai': False, 'difficulty': human_difficulty})
+		players.append({
+			'id': 1,
+			'name': 'foobar',
+			'color': Color[1],
+			'local': True,
+			'ai': False,
+			'difficulty': human_difficulty,
+		})
+
 	for i in xrange(ai_players):
 		id = i + human_player + 1
-		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'ai': True, 'difficulty': ai_difficulty})
+		players.append({
+			'id': id,
+			'name': ('AI' + str(i)),
+			'color': Color[id],
+			'local': (id == 1),
+			'ai': True,
+			'difficulty': ai_difficulty,
+		})
 
 	session.load(mapgen(), players, ai_players > 0, True)
 	return session, session.world.player
