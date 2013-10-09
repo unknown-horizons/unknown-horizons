@@ -21,6 +21,7 @@
 
 import contextlib
 import os
+import tempfile
 from functools import wraps
 
 import mock
@@ -202,6 +203,21 @@ def load_session(savegame, rng_seed=RANDOM_SEED, is_map=False):
 	session.load(savegame, [], False, is_map)
 
 	return session
+
+
+def saveload(session):
+	"""Save and load the game (game test version). Use like this:
+
+	# For game tests
+	session = saveload(session)
+	"""
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	session.end(keep_map=True)
+	game_session = load_session(filename)
+	Scheduler().before_ticking() # late init finish (not ticking already)
+	return game_session
 
 
 def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
