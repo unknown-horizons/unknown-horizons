@@ -231,7 +231,7 @@ def test_savegame_upgrade():
 
 	path = os.path.join(TEST_FIXTURES_DIR, 'large.sqlite.bz2')
 	compressed_data = open(path, "rb").read()
-	data = bz2.decompress( compressed_data )
+	data = bz2.decompress(compressed_data)
 	f = open(filename, "wb")
 	f.write(data)
 	f.close()
