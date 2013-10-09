@@ -19,15 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import tempfile
-import os
-
-import horizons.main
 from horizons.constants import BUILDINGS, PRODUCTION, UNITS
-from horizons.util.startgameoptions import StartGameOptions
 from horizons.world.production.producer import Producer
 
 from tests.gui import gui_test
+from tests.gui.helper import saveload
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -213,13 +209,8 @@ def test_save_load_ticket_1421(gui):
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-
-	assert gui.session.save(savegamename=filename)
-
-	options = StartGameOptions.create_load_game(filename, None)
-	horizons.main.start_singleplayer(options)
+	# Save and reload game
+	saveload(gui.session)
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
