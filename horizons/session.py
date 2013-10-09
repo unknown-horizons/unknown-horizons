@@ -267,9 +267,12 @@ class Session(LivingObject):
 			obj = WorldObject.get_object_by_id(instance_id)
 			self.selected_instances.add(obj)
 			obj.get_component(SelectableComponent).select()
-		for group in xrange(len(self.selection_groups)): # load user defined unit groups
-			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
-				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
+
+		# Load user defined unit selection groups (Ctrl+number)
+		for (num, group) in enumerate(self.selection_groups):
+			for (instance_id, ) in savegame_db("SELECT id FROM selected WHERE `group` = ?", num):
+				obj = WorldObject.get_object_by_id(instance_id)
+				group.add(obj)
 
 		Scheduler().before_ticking()
 		savegame_db.close()
@@ -429,10 +432,10 @@ class Session(LivingObject):
 			self.scenario_eventhandler.save(db)
 
 			for instance in self.selected_instances:
-				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
-			for group in xrange(len(self.selection_groups)):
-				for instance in self.selection_groups[group]:
-					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
+				db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
+			for (number, group) in enumerate(self.selection_groups):
+				for instance in group:
+					db("INSERT INTO selected (`group`, id) VALUES (?, ?)", number, instance.worldid)
 
 			rng_state = json.dumps(self.random.getstate())
 			SavegameManager.write_metadata(db, self.savecounter, rng_state)
