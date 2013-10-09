@@ -24,6 +24,8 @@ Cleaner interface to various game/gui functions to make tests easier.
 """
 
 import contextlib
+import os
+import tempfile
 import types
 from collections import deque
 
@@ -39,6 +41,7 @@ from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
+from horizons.util.startgameoptions import StartGameOptions
 
 from tests.gui import cooperative
 
@@ -70,6 +73,19 @@ def found_settlement(gui, ship_pos, (x, y)):
 	assert isinstance(gui.cursor, BuildingTool)
 	gui.cursor_click(x, y, 'left')
 	assert isinstance(gui.cursor, CursorTool)
+
+
+def saveload(session):
+	"""Save and load the game (gui test version). Use like this:
+
+	# For gui tests
+	saveload(gui.session)
+	"""
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	options = StartGameOptions.create_load_game(filename, None)
+	horizons.main.start_singleplayer(options)
 
 
 class CursorToolsPatch(object):
