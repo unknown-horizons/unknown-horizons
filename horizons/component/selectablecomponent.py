@@ -70,7 +70,9 @@ class SelectableComponent(Component):
 		self._selected = False
 
 	def show_menu(self, jump_to_tabclass=None):
-		"""Shows tabs from self.__class__.tabs, if there are any.
+		"""Shows tabwidget tabs of this instance.
+
+		Opens the first such tab unless jump_to_tabclass specifies otherwise.
 		@param jump_to_tabclass: open the first tab that is a subclass to this parameter
 		"""
 		from horizons.gui.tabs import TabWidget
