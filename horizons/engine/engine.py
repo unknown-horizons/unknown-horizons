@@ -115,9 +115,10 @@ class Fife(object):
 
 	def init_logging(self):
 		"""Initialize the LogManager."""
+
 		# If desired, log to the console and/or the log file.
-		log_to_prompt = self._setting.get(SETTINGS.FIFE_MODULE, "LogToPrompt", "0")
-		log_to_file = self._setting.get(SETTINGS.FIFE_MODULE, "LogToFile", "0")
+		log_to_prompt = self._setting.get(SETTINGS.FIFE_MODULE, "LogToPrompt", False)
+		log_to_file = self._setting.get(SETTINGS.FIFE_MODULE, "LogToFile", False)
 		self._log = fifelog.LogManager(self.engine, log_to_prompt, log_to_file)
 
 		log_level = self._setting.get(SETTINGS.FIFE_MODULE, "LogLevelFilter",
