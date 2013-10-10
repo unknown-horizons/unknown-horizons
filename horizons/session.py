@@ -431,15 +431,20 @@ class Session(LivingObject):
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
 
+			# Store instances that are selected right now.
 			for instance in self.selected_instances:
 				db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
+
+			# Store user defined unit selection groups (Ctrl+number)
 			for (number, group) in enumerate(self.selection_groups):
 				for instance in group:
 					db("INSERT INTO selected (`group`, id) VALUES (?, ?)", number, instance.worldid)
 
+			# Store RNG state
 			rng_state = json.dumps(self.random.getstate())
 			SavegameManager.write_metadata(db, self.savecounter, rng_state)
-			# make sure everything gets written now
+
+			# Make sure everything gets written now
 			db("COMMIT")
 			db.close()
 			return True
