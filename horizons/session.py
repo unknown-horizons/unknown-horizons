@@ -405,8 +405,9 @@ class Session(LivingObject):
 			descr = _("There has been an error while creating your savegame file.")
 			advice = _("This usually means that the savegame name contains unsupported special characters.")
 			self.ingame_gui.show_error_popup(headline, descr, advice, unicode(e))
-			return self.save() # retry with new savegamename entered by the user
-			# this must not happen with quicksave/autosave
+			# retry with new savegamename entered by the user
+			# (this must not happen with quicksave/autosave)
+			return self.save()
 		except OSError as e:
 			if e.errno != errno.EACCES:
 				raise
