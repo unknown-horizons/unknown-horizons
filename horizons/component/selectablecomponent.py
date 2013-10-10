@@ -80,22 +80,23 @@ class SelectableComponent(Component):
 		else: # this is an enemy instance with respect to the local player
 			tablist = self.enemy_tabs
 
-		if tablist:
-			tabclasses = [tabclass for tabclass in tablist if tabclass.shown_for(self.instance)]
-			try:
-				active_tab_index = tabclasses.index(self.active_tab)
-			except ValueError:
-				active_tab_index = None
-			tabs = [tabclass(self.instance) for tabclass in tabclasses]
-			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs, active_tab=active_tab_index)
+		if not tablist:
+			return
 
-			if jump_to_tabclass:
-				for i, tab in enumerate(tabs):
-					if isinstance(tab, jump_to_tabclass):
-						tabwidget._show_tab(i)
-						break
+		tabclasses = [tabclass for tabclass in tablist if tabclass.shown_for(self.instance)]
+		try:
+			active_tab_index = tabclasses.index(self.active_tab)
+		except ValueError:
+			active_tab_index = None
+		tabs = [tabclass(self.instance) for tabclass in tabclasses]
+		tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs, active_tab=active_tab_index)
 
-			self.session.ingame_gui.show_menu( tabwidget )
+		if jump_to_tabclass:
+			for i, tab in enumerate(tabs):
+				if isinstance(tab, jump_to_tabclass):
+					tabwidget._show_tab(i)
+					break
+		self.session.ingame_gui.show_menu(tabwidget)
 
 	def select(self, reset_cam=False):
 		self._selected = True
