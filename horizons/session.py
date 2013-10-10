@@ -33,6 +33,7 @@ import horizons.main
 
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
+from horizons.gui.tabs import resolve_tab
 from horizons.command.building import Tear
 from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
@@ -268,6 +269,16 @@ class Session(LivingObject):
 			self.selected_instances.add(obj)
 			obj.get_component(SelectableComponent).select()
 
+		# Re-show old tab (if there was one) or multiselection
+		if len(self.selected_instances) == 1:
+			tabname = savegame_db("SELECT value FROM metadata WHERE name = ?",
+			                      'selected_tab')[0][0]
+			# This can still be None due to old savegames not storing the information
+			tabclass = None if tabname is None else resolve_tab(tabname)
+			obj.get_component(SelectableComponent).show_menu(jump_to_tabclass=tabclass)
+		elif self.selected_instances:
+			self.ingame_gui.show_multi_select_tab(self.selected_instances)
+
 		# Load user defined unit selection groups (Ctrl+number)
 		for (num, group) in enumerate(self.selection_groups):
 			for (instance_id, ) in savegame_db("SELECT id FROM selected WHERE `group` = ?", num):
@@ -433,6 +444,14 @@ class Session(LivingObject):
 			# Store instances that are selected right now.
 			for instance in self.selected_instances:
 				db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
+
+			# If a single instance is selected, also store the currently displayed tab.
+			# (Else, upon restoring, we display a multi-selection tab.)
+			tabname = None
+			if len(self.selected_instances) == 1:
+				tabclass = self.ingame_gui.get_cur_menu().current_tab
+				tabname = tabclass.__class__.__name__
+			db("INSERT INTO metadata (name, value) VALUES (?, ?)", 'selected_tab', tabname)
 
 			# Store user defined unit selection groups (Ctrl+number)
 			for (number, group) in enumerate(self.selection_groups):
