@@ -70,7 +70,9 @@ class SelectableComponent(Component):
 		self._selected = False
 
 	def show_menu(self, jump_to_tabclass=None):
-		"""Shows tabs from self.__class__.tabs, if there are any.
+		"""Shows tabwidget tabs of this instance.
+
+		Opens the first such tab unless jump_to_tabclass specifies otherwise.
 		@param jump_to_tabclass: open the first tab that is a subclass to this parameter
 		"""
 		from horizons.gui.tabs import TabWidget
@@ -80,22 +82,23 @@ class SelectableComponent(Component):
 		else: # this is an enemy instance with respect to the local player
 			tablist = self.enemy_tabs
 
-		if tablist:
-			tabclasses = [tabclass for tabclass in tablist if tabclass.shown_for(self.instance)]
-			try:
-				active_tab_index = tabclasses.index(self.active_tab)
-			except ValueError:
-				active_tab_index = None
-			tabs = [tabclass(self.instance) for tabclass in tabclasses]
-			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs, active_tab=active_tab_index)
+		if not tablist:
+			return
 
-			if jump_to_tabclass:
-				for i, tab in enumerate(tabs):
-					if isinstance(tab, jump_to_tabclass):
-						tabwidget._show_tab(i)
-						break
+		tabclasses = [tabclass for tabclass in tablist if tabclass.shown_for(self.instance)]
+		try:
+			active_tab_index = tabclasses.index(self.active_tab)
+		except ValueError:
+			active_tab_index = None
+		tabs = [tabclass(self.instance) for tabclass in tabclasses]
+		tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs, active_tab=active_tab_index)
 
-			self.session.ingame_gui.show_menu( tabwidget )
+		if jump_to_tabclass:
+			for i, tab in enumerate(tabs):
+				if isinstance(tab, jump_to_tabclass):
+					tabwidget._show_tab(i)
+					break
+		self.session.ingame_gui.show_menu(tabwidget)
 
 	def select(self, reset_cam=False):
 		self._selected = True
