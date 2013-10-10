@@ -426,7 +426,6 @@ class Session(LivingObject):
 
 			db("BEGIN")
 			self.world.save(db)
-			#self.manager.save(db)
 			self.view.save(db)
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
