@@ -156,8 +156,8 @@ class SelectMultiTab(TabInterface):
 		stance_widget = load_uh_widget('stancewidget.xml')
 		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
-		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
-		self.widget.mapEvents( events )
+		events = dict((i.NAME, Callback(self.set_stance, i)) for i in DEFAULT_STANCES)
+		self.widget.mapEvents(events)
 
 	def hide_stance_widget(self):
 		Scheduler().rem_all_classinst_calls(self)
@@ -171,7 +171,7 @@ class SelectMultiTab(TabInterface):
 
 	def toggle_stance(self):
 		"""
-		Toggles the stance, Assumes at least one stance unit is selected
+		Toggles the stance. Assumes at least one stance unit is selected.
 		"""
 		for stance in DEFAULT_STANCES:
 			self.widget.findChild(name=stance.NAME).set_inactive()
@@ -183,6 +183,7 @@ class SelectMultiTab(TabInterface):
 				# not all have the same stance, toggle none
 				return
 		self.widget.findChild(name=stance.NAME).set_active()
+
 
 class UnitEntry(object):
 	def __init__(self, instances, show_number=True):
