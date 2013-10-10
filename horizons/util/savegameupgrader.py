@@ -75,7 +75,7 @@ class SavegameUpgrader(object):
 		# convert old logbook (heading, message) tuples to new syntax, modify logbook table layout
 		old_entries = db("SELECT heading, message FROM logbook")
 		db('DROP TABLE logbook')
-		db('CREATE TABLE logbook ( widgets string )')
+		db('CREATE TABLE logbook ( widgets STRING )')
 		widgets = []
 		for heading, message in old_entries:
 			add = []

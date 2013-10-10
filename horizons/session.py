@@ -262,13 +262,17 @@ class Session(LivingObject):
 		self.ingame_gui = self._ingame_gui_class(self)
 		self.ingame_gui.load(savegame_db)
 
-		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
-			obj = WorldObject.get_object_by_id(instance_id[0])
+		# Re-select old selected instance
+		for (instance_id, ) in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"):
+			obj = WorldObject.get_object_by_id(instance_id)
 			self.selected_instances.add(obj)
 			obj.get_component(SelectableComponent).select()
-		for group in xrange(len(self.selection_groups)): # load user defined unit groups
-			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
-				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
+
+		# Load user defined unit selection groups (Ctrl+number)
+		for (num, group) in enumerate(self.selection_groups):
+			for (instance_id, ) in savegame_db("SELECT id FROM selected WHERE `group` = ?", num):
+				obj = WorldObject.get_object_by_id(instance_id)
+				group.add(obj)
 
 		Scheduler().before_ticking()
 		savegame_db.close()
@@ -405,14 +409,17 @@ class Session(LivingObject):
 			descr = _("There has been an error while creating your savegame file.")
 			advice = _("This usually means that the savegame name contains unsupported special characters.")
 			self.ingame_gui.show_error_popup(headline, descr, advice, unicode(e))
-			return self.save() # retry with new savegamename entered by the user
-			# this must not happen with quicksave/autosave
+			# retry with new savegamename entered by the user
+			# (this must not happen with quicksave/autosave)
+			return self.save()
 		except OSError as e:
-			if e.errno == errno.EACCES:
-				self.ingame_gui.show_error_popup(_("Access is denied"),
-				                                 _("The savegame file could be read-only or locked by another process."))
-				return self.save()
-			raise
+			if e.errno != errno.EACCES:
+				raise
+			self.ingame_gui.show_error_popup(
+				_("Access is denied"),
+				_("The savegame file could be read-only or locked by another process.")
+			)
+			return self.save()
 
 		try:
 			read_savegame_template(db)
@@ -424,21 +431,27 @@ class Session(LivingObject):
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
 
+			# Store instances that are selected right now.
 			for instance in self.selected_instances:
-				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
-			for group in xrange(len(self.selection_groups)):
-				for instance in self.selection_groups[group]:
-					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
+				db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
 
+			# Store user defined unit selection groups (Ctrl+number)
+			for (number, group) in enumerate(self.selection_groups):
+				for instance in group:
+					db("INSERT INTO selected (`group`, id) VALUES (?, ?)", number, instance.worldid)
+
+			# Store RNG state
 			rng_state = json.dumps(self.random.getstate())
 			SavegameManager.write_metadata(db, self.savecounter, rng_state)
-			# make sure everything gets written now
+
+			# Make sure everything gets written now
 			db("COMMIT")
 			db.close()
 			return True
-		except:
-			print "Save Exception"
+		except Exception:
+			self.log.error("Save Exception:")
 			traceback.print_exc()
-			db.close() # close db before delete
-			os.unlink(savegame) # remove invalid savegamefile
+			# remove invalid savegamefile (but close db connection before deleting)
+			db.close()
+			os.unlink(savegame)
 			return False
