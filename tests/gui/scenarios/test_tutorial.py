@@ -111,6 +111,10 @@ def test_tutorial(gui):
 	# Save and reload scenario (2/3)
 	saveload(gui.session)
 
+	# Open build menu again (it is not reloaded, unlike selected instances)
+	gui.trigger('mainhud', 'build')
+	gui.trigger('tab_base', '0')
+
 	# wait until we have enough boards
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 5):
 		gui.run()
@@ -174,6 +178,10 @@ def test_tutorial(gui):
 
 	# Save and reload scenario (3/3)
 	saveload(gui.session)
+
+	# Open build menu again
+	gui.trigger('mainhud', 'build')
+	gui.trigger('tab_base', '1')
 
 	# pasture
 	gui.trigger('tab', 'button_22')
