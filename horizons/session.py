@@ -442,6 +442,7 @@ class Session(LivingObject):
 		except Exception:
 			self.log.error("Save Exception:")
 			traceback.print_exc()
-			db.close() # close db before delete
-			os.unlink(savegame) # remove invalid savegamefile
+			# remove invalid savegamefile (but close db connection before deleting)
+			db.close()
+			os.unlink(savegame)
 			return False
