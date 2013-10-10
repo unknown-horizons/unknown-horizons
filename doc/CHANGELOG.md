@@ -3,6 +3,70 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+2013-??-??: Milestone 2013.4
+----------------------------
+changelog date: OCT 11
+
+### Gameplay and Balancing
+
+New features
+ - 
+
+Modifications and changes
+ - 
+
+Fixed bugs and problems
+ - 
+
+
+### Media Content
+
+New files and features
+ - 
+
+Brush-ups and modification
+ - 
+
+### User Interface
+
+Additions and new features
+ - 
+
+Repositioning and modifications
+ - 
+
+Fixed bugs and usability problems
+ - 
+
+
+### Codebase
+
+New functionalities
+ - 
+
+Modified structures
+ - 
+
+Fixed crashes and inconsistencies
+ - 
+
+
+### User-Contributed Content
+
+Translations
+ - 
+
+Campaigns, scenarios and maps
+ - 
+
+New team members with this release, Annotations
+ - Push access was granted to:
+ - We accepted pull requests or patches by:
+ - Translators that joined our teams and contributed several strings:
+   Please refer to the credits!
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 2013-10-04: Milestone 2013.3
 ----------------------------
 changelog date: OCT 02
@@ -24,6 +88,7 @@ Fixed bugs and problems
    Something was searched, but not found :: action move_as_[corrupted]`
  - #2078: crash when joining password-protected multiplayer game
  - #2143: crash on update check timeout when master server unavailable
+ - #2164: Allow scenario savegames to load again
 
 
 ### Media Content
@@ -92,6 +157,7 @@ Fixed crashes and inconsistencies
  - #2121: detect and skip empty scenario files
  - b36f5ca: work around an error occurring when ColorID setting was 0
  - 971553d: rare crash when denying upgrades to inhabitants
+ - #2162: Forget about failed minimap-generating subprocesses
 
 
 ### User-Contributed Content
@@ -109,7 +175,6 @@ New team members with this release, Annotations
  - We accepted pull requests or patches by: alluk, Daenor
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
-
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
