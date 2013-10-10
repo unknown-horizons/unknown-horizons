@@ -436,7 +436,7 @@ class Session(LivingObject):
 			db("COMMIT")
 			db.close()
 			return True
-		except:
+		except Exception:
 			print "Save Exception"
 			traceback.print_exc()
 			db.close() # close db before delete
