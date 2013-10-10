@@ -408,11 +408,13 @@ class Session(LivingObject):
 			return self.save() # retry with new savegamename entered by the user
 			# this must not happen with quicksave/autosave
 		except OSError as e:
-			if e.errno == errno.EACCES:
-				self.ingame_gui.show_error_popup(_("Access is denied"),
-				                                 _("The savegame file could be read-only or locked by another process."))
-				return self.save()
-			raise
+			if e.errno != errno.EACCES:
+				raise
+			self.ingame_gui.show_error_popup(
+				_("Access is denied"),
+				_("The savegame file could be read-only or locked by another process.")
+			)
+			return self.save()
 
 		try:
 			read_savegame_template(db)
