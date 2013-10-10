@@ -268,10 +268,16 @@ class Session(LivingObject):
 			obj = WorldObject.get_object_by_id(instance_id)
 			self.selected_instances.add(obj)
 			obj.get_component(SelectableComponent).select()
+
+		# Re-show old tab (if there was one) or multiselection
+		if len(self.selected_instances) == 1:
 			tabname = savegame_db("SELECT value FROM metadata WHERE name = ?",
 			                      'selected_tab')[0][0]
+			# This can still be None due to old savegames not storing the information
 			tabclass = None if tabname is None else resolve_tab(tabname)
 			obj.get_component(SelectableComponent).show_menu(jump_to_tabclass=tabclass)
+		elif self.selected_instances:
+			self.ingame_gui.show_multi_select_tab(self.selected_instances)
 
 		# Load user defined unit selection groups (Ctrl+number)
 		for (num, group) in enumerate(self.selection_groups):
