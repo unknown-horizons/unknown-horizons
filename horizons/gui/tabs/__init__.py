@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import sys
+
 from inventorytab import InventoryTab
 from tradetab import TradeTab
 from overviewtab import OverviewTab, GroundUnitOverviewTab, FireStationOverviewTab
@@ -42,3 +44,6 @@ from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab
 from selectmultitab import SelectMultiTab
+
+def resolve_tab(tabclass_name):
+	return getattr(sys.modules[__name__], tabclass_name)

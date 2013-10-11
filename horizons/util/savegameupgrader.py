@@ -351,6 +351,10 @@ class SavegameUpgrader(object):
 			yaml_data = yaml_data.replace(messed_up, '}, ' + messed_up)
 			db("UPDATE metadata SET value = ? WHERE name = ?", yaml_data, key)
 
+	def _upgrade_to_rev74(self, db):
+		db("INSERT INTO metadata VALUES (?, ?)", "selected_tab", None)
+
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -420,6 +424,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev72(db)
 			if 70 < rev < 73:
 				self._upgrade_to_rev73(db)
+			if rev < 74:
+				self._upgrade_to_rev74(db)
 
 			db('COMMIT')
 			db.close()
