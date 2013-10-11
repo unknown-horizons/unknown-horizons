@@ -20,7 +20,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import datetime
 import optparse
+import re
 
 
 def get_option_parser():
@@ -116,3 +118,120 @@ def get_option_parser():
 	p.add_option_group(dev_group)
 
 	return p
+
+
+class ManPageFormatter(optparse.HelpFormatter):
+	"""Formatter that extracts our huge option list into manpage format.
+
+	Inspired by and mostly copied from this blog post:
+	http://andialbrecht.wordpress.com/2009/03/17/creating-a-man-page-with-distutils-and-optparse/
+	"""
+	def __init__(self, indent_increment=2, max_help_position=24,
+			width=72, short_first=1):
+		optparse.HelpFormatter.__init__(self,
+			indent_increment, max_help_position, width, short_first)
+
+	def _markup(self, text):
+		return text.replace('-', r'\-')
+
+	def optmarkup(self, text):
+		"""Highlight flags only"""
+		replace_with = r'\\fB\1\\fR'
+		pattern = r'(--\w*)(?:, )?'
+		text = re.sub(pattern, replace_with, text)
+		pattern = r'(-\w*)'
+		text = re.sub(pattern, replace_with, text)
+		return self._markup(text)
+
+	def format_text(self, text):
+		return self._markup(text)
+
+	def format_usage(self, usage):
+		"""Overridden, else it would print 'options.py usage'."""
+		return r'''\
+." some portability stuff
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+." disable hyphenation and justification (adjust text to left margin only)
+.nh
+.ad l
+.SH "NAME"
+unknown-horizons \- real-time strategy/simulation game
+.SH "SYNOPSIS"
+.HP \w'\fBunknown\-horizons\fR\ 'u
+\fBunknown\-horizons\fR [{\fB\-h\fR\ |\ \fB\-\-help\fR}]
+.SH "DESCRIPTION"
+.PP
+\fBUnknown Horizons\fR: isometric 2D real-time strategy/simulation fun.
+.br
+It puts emphasis on the economy and city building aspects.
+.br
+Expand your small settlement to a strong and wealthy colony, collect
+taxes and supply your inhabitants with valuable goods.
+.br
+Increase your power with a well balanced economy, with strategic
+trade and diplomacy.
+.SH "OPTIONS"'''
+
+	def format_heading(self, text):
+		"""Format an option group.."""
+		if self.level == 0:
+			return u''
+		return r'''.TP
+\fB%s\fR
+''' % self._markup(text.upper())
+
+	def format_option(self, option, *args, **kwargs):
+		"""Format a single option.
+
+		The base class takes care to replace custom optparse values."""
+		result = []
+		opts = self.option_strings[option]
+		help_text = self.expand_default(option)
+		result.append(r'''\
+.TP
+.B
+%s
+%s
+''' % (self.optmarkup(opts), self._markup(help_text)))
+
+		return ''.join(result)
+
+
+if __name__ == '__main__':
+	formatter = ManPageFormatter()
+
+	p = get_option_parser()
+	p.formatter = formatter
+
+	today = datetime.date.today()
+	print r'''\
+'\" t
+.\"     Title: unknown-horizons
+.\"    Author: The Unknown Horizons Team <team@unknown-horizons.org>
+.\"      Date: {0}
+.\"  Language: English
+.\"
+.TH "UNKNOWN\-HORIZONS" "6" "{0}" "unknown-horizons" "Unknown Horizons User Commands"
+'''.format(datetime.date.today())
+	p.print_help()
+
+	print r'''\
+.SH "BUGS"
+.PP
+The bugtracker can be found at \fBhttp://bugs.unknown-horizons.org\fR\&.
+.SH "AUTHOR"
+.PP
+\fBThe Unknown Horizons Team\fR <\&team@unknown-horizons\&.org\&>
+.RS 4
+.RE
+.SH "COPYRIGHT"
+.br
+Copyright \(co 2008-2013 The Unknown Horizons Team
+.br
+.PP
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU General Public License, Version 3 or (at your option) any later
+version published by the Free Software Foundation\&.
+.sp
+'''

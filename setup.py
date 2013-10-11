@@ -54,7 +54,8 @@ if os.path.exists('.git'):
 data = [
   (executable_path, ('unknown-horizons', )),
   ('share/pixmaps', ('content/unknown-horizons.xpm', )),
-  ('share/unknown-horizons', ('content/settings-template.xml', ))
+  ('share/unknown-horizons', ('content/settings-template.xml', )),
+  ('share/man/man6', ('unknown-horizons.6', )),
 ]
 
 for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
