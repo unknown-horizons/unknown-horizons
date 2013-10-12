@@ -114,7 +114,8 @@ class Session(LivingObject):
 		self._ingame_gui_class = ingame_gui_class
 
 		self.selected_instances = set()
-		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
+		# List of sets that holds the player assigned unit groups.
+		self.selection_groups = [set()] * 10
 
 		self._old_autosave_interval = None
 
