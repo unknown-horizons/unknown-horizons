@@ -21,7 +21,7 @@
 
 import sqlite3
 import re
-import osa.path
+import os.path
 
 from horizons.util.python import decorators
 
@@ -78,5 +78,5 @@ class DbReader(object):
 		"""Checks if the database exists.
 		@param db_path: path to sqlite db."""
 		if db_path == ":memory:":
-				return True
-			return os.path.isfile(db_path)
+			return True
+		return os.path.isfile(db_path)
