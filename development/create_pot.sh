@@ -59,7 +59,7 @@ function reset_if_empty()
 }
 
 # XML files
-PYTHONPATH="." python2 development/extract_strings_from_xml.py "$XML_PY_FILE"
+python2 development/extract_strings_from_xml.py "$XML_PY_FILE"
 echo "   * Regenerated xml translation file at $XML_PY_FILE."
 find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
   itstool -i development/its-rule-pychan.xml \
@@ -68,7 +68,7 @@ find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
 echo "   * Wrote xml translation template to $RESULT_FILE."
 
 # YAML files
-PYTHONPATH="." python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
+python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
 echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
 
 echo "=> Creating UH gettext pot template file at $RESULT_FILE."
@@ -90,7 +90,7 @@ echo "=> Creating UH gettext pot template file at $RESULT_FILE."
 # --keyword=N_ also catches N_() plural-aware ngettext calls
 
 # SQL files
-PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
+python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
 echo "   * Regenerated sql translation file at $SQL_POT_FILE."
 # Merge with python+xml file RESULT_FILE, do not update header
 xgettext --output="$RESULT_FILE" \
