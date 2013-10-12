@@ -53,7 +53,7 @@ class VERSION:
 		#if there is no .git directory then check for gitversion.txt
 		except ImportError:
 			try:
-				return unicode(open(os.path.join("content", "gitversion.txt")).read())
+				return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
 			except IOError:
 				return u"<unknown>"
 

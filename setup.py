@@ -47,7 +47,7 @@ else:
 
 #this trick is for setting RELEASE_VERSION if the code is cloned from git repository
 if os.path.exists('.git'):
-	f = open('content/gitversion.txt', 'w')
+	f = open('content/packages/gitversion.txt', 'w')
 	f.write(VERSION.RELEASE_VERSION)
 	f.close()
 
@@ -227,4 +227,4 @@ setup(
 
 #after installation remove gitversion.txt
 if os.path.exists('.git'):
-	os.unlink('content/gitversion.txt')
+	os.unlink('content/packages/gitversion.txt')
