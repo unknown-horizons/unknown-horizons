@@ -511,8 +511,6 @@ def set_translations():
 		},
 
 	'multiplayer_creategame.xml' : {
-		(u'create_game_lbl'              , 'text'    ): _(u"Create game:"),
-		(u'exit_to_mp_menu_lbl'          , 'text'    ): _(u"Back:"),
 		(u'gamename_lbl'                 , 'text'    ): _(u"Name of the game:"),
 		(u'headline'                     , 'text'    ): _(u"Choose a map:"),
 		(u'headline'                     , 'text'    ): _(u"Create game - Multiplayer"),
@@ -525,7 +523,6 @@ def set_translations():
 		},
 
 	'multiplayer_gamelobby.xml' : {
-		(u'exit_to_mp_menu_lbl'          , 'text'    ): _(u"Leave:"),
 		(u'game_player_color'            , 'text'    ): _(u"Color"),
 		(u'game_player_status'           , 'text'    ): _(u"Status"),
 		(u'game_start_notice'            , 'text'    ): _(u"The game will start as soon as all players are ready."),
@@ -539,10 +536,9 @@ def set_translations():
 
 	'multiplayermenu.xml' : {
 		(u'create_game_lbl'              , 'text'    ): _(u"Create game:"),
-		(u'exit_to_main_menu_lbl'        , 'text'    ): _(u"Main menu:"),
 		(u'headline_active_games_lbl'    , 'text'    ): _(u"Active games:"),
 		(u'headline_left'                , 'text'    ): _(u"New game - Multiplayer"),
-		(u'join_game_lbl'                , 'text'    ): _(u"Join game"),
+		(u'join_game_lbl'                , 'text'    ): _(u"Join game:"),
 		(u'load_game_lbl'                , 'text'    ): _(u"Load game:"),
 		(u'refr_gamelist_lbl'            , 'text'    ): _(u"Refresh list:"),
 		(u'cancel'                       , 'helptext'): _(u"Exit to main menu"),
@@ -557,10 +553,8 @@ def set_translations():
 		},
 
 	'settings.xml' : {
-		(u'reset_mouse_sensitivity'      , 'text'    ): _(u"Reset to default"),
 		(u'auto_unload_label'            , 'text'    ): _(u"Auto-unload ship:"),
 		(u'autosave_interval_label'      , 'text'    ): _(u"Autosave interval in minutes:"),
-		(u'color_depth_label'            , 'text'    ): _(u"Color depth:"),
 		(u'cursor_centered_zoom_label'   , 'text'    ): _(u"Cursor centered zoom:"),
 		(u'debug_log_lbl'                , 'text'    ): _(u"Enable logging:"),
 		(u'edge_scrolling_label'         , 'text'    ): _(u"Scroll at map edge:"),
@@ -590,9 +584,8 @@ def set_translations():
 		(u'use_renderer_label'           , 'text'    ): _(u"Used renderer:"),
 		(u'cancelButton'                 , 'helptext'): _(u"Discard current changes"),
 		(u'defaultButton'                , 'helptext'): _(u"Reset to default settings"),
-		(u'okButton'                     , 'helptext'): _(u"Apply"),
+		(u'okButton'                     , 'helptext'): _(u"Save changes"),
 		(u'auto_unload_label'            , 'helptext'): _(u"Whether to unload the ship after founding a settlement"),
-		(u'color_depth_label'            , 'helptext'): _(u"If set to 0, use the driver default"),
 		(u'cursor_centered_zoom_label'   , 'helptext'): _(u"When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center."),
 		(u'debug_log_lbl'                , 'helptext'): _(u"Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."),
 		(u'edge_scrolling_label'         , 'helptext'): _(u"Whether to move the viewport when the mouse pointer is close to map edges"),
@@ -622,8 +615,6 @@ def set_translations():
 
 	'singleplayermenu.xml' : {
 		(u'headline'                     , 'text'    ): _(u"New game - Singleplayer"),
-		(u'main_menu_label'              , 'text'    ): _(u"Main menu:"),
-		(u'start_game_label'             , 'text'    ): _(u"Start game:"),
 		(u'free_maps'                    , 'text'    ): _(u"Free play"),
 		(u'random'                       , 'text'    ): _(u"Random map"),
 		(u'scenario'                     , 'text'    ): _(u"Scenario"),

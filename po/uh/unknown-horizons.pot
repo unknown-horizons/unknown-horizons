@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 3c32538\n"
+"Project-Id-Version: Unknown Horizons 421d3c2\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-08-06 17:21+0200\n"
+"POT-Creation-Date: 2013-10-12 22:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -760,7 +760,7 @@ msgid "Health"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:39
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
 msgid "Status"
 msgstr ""
 
@@ -784,11 +784,11 @@ msgstr ""
 msgid "Flee"
 msgstr ""
 
-#: content/gui/xml/mainmenu/credits.xml:382
+#: content/gui/xml/mainmenu/credits.xml:469
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:27
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:18
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
+#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
 msgstr ""
 
@@ -797,7 +797,7 @@ msgid "Choose a map size:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:33
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
 msgstr ""
 
@@ -960,7 +960,6 @@ msgid "Secondary"
 msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#: content/gui/xml/mainmenu/settings.xml:121
 msgid "Reset to default"
 msgstr ""
 
@@ -1026,43 +1025,34 @@ msgid "Player limit:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
-msgid "Back:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:21
 msgid "Exit to multiplayer menu"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:54
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
-msgid "Create game:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:55
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
 msgstr ""
 
@@ -1075,31 +1065,27 @@ msgid "Chat:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
-msgid "Leave:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:18
 msgid "Exit gamelobby"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:19
-msgid "Ready:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:20
-msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
+msgstr ""
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
+msgid "Ready:"
+msgstr ""
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
+msgid "Sets your state to ready (necessary for the game to start)"
 msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
@@ -1107,39 +1093,38 @@ msgid "New game - Multiplayer"
 msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
-msgid "Create a new game"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:26
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:16
-msgid "Main menu:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:36
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:38
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
 msgid "Refresh list:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
 msgid "Refresh list of active games"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:59
-msgid "Join game"
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
+msgid "Create game:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:60
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
+msgid "Create a new game"
+msgstr ""
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
+msgid "Join game:"
+msgstr ""
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
 msgstr ""
 
@@ -1148,7 +1133,7 @@ msgid "Change player details"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:14
-#: horizons/gui/widgets/pickbeltwidget.py:87
+#: horizons/gui/modules/settings.py:53
 msgid "Graphics"
 msgstr ""
 
@@ -1156,194 +1141,186 @@ msgstr ""
 msgid "Screen resolution:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:28
-msgid "Color depth:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:28
-msgid "If set to 0, use the driver default"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:35
+#: content/gui/xml/mainmenu/settings.xml:25
 msgid "Full screen:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:43
+#: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:43
+#: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:51
+#: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:51
+#: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:62
+#: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:67
+#: content/gui/xml/mainmenu/settings.xml:60
 msgid "Music volume:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:76
+#: content/gui/xml/mainmenu/settings.xml:69
 msgid "Effects volume:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:84
+#: content/gui/xml/mainmenu/settings.xml:76
 msgid "Enable sound:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:90
+#: content/gui/xml/mainmenu/settings.xml:82
 msgid "Mouse"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:95
+#: content/gui/xml/mainmenu/settings.xml:87
 msgid "Scroll at map edge:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:95
+#: content/gui/xml/mainmenu/settings.xml:87
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:101
+#: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:101
+#: content/gui/xml/mainmenu/settings.xml:93
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:107
+#: content/gui/xml/mainmenu/settings.xml:99
 msgid "Middle mouse button pan:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:107
+#: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:115
+#: content/gui/xml/mainmenu/settings.xml:107
 msgid "0 is default system settings"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:115
+#: content/gui/xml/mainmenu/settings.xml:107
 msgid "Mouse sensitivity:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:132
+#: content/gui/xml/mainmenu/settings.xml:123
 msgid "Saving"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:137
+#: content/gui/xml/mainmenu/settings.xml:128
 msgid "Autosave interval in minutes:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:145
+#: content/gui/xml/mainmenu/settings.xml:136
 msgid "Number of autosaves:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:153
+#: content/gui/xml/mainmenu/settings.xml:144
 msgid "Number of quicksaves:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:161
+#: content/gui/xml/mainmenu/settings.xml:152
 msgid "Language"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:173
+#: content/gui/xml/mainmenu/settings.xml:164
 msgid "General"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:178
+#: content/gui/xml/mainmenu/settings.xml:169
 msgid "Rotate minimap with map:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:178
+#: content/gui/xml/mainmenu/settings.xml:169
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:184
+#: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:184
+#: content/gui/xml/mainmenu/settings.xml:175
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:190
+#: content/gui/xml/mainmenu/settings.xml:181
 msgid "Auto-unload ship:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:190
+#: content/gui/xml/mainmenu/settings.xml:181
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:196
+#: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:196
+#: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:202
+#: content/gui/xml/mainmenu/settings.xml:193
 msgid "Production indicators:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:202
+#: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:210
+#: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:210
+#: content/gui/xml/mainmenu/settings.xml:201
 msgid "Scroll delay:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:219
+#: content/gui/xml/mainmenu/settings.xml:210
 msgid "Choose a quote type:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:219
+#: content/gui/xml/mainmenu/settings.xml:210
 msgid "What kind of quote to display while loading a game"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:227
+#: content/gui/xml/mainmenu/settings.xml:218
 msgid "Network"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:231
+#: content/gui/xml/mainmenu/settings.xml:222
 msgid "If set to 0, use the router default"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:231
+#: content/gui/xml/mainmenu/settings.xml:222
 msgid "Network port:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:243
-msgid "Reset to default settings"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:244
 msgid "Discard current changes"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:246
-msgid "Apply"
+#: content/gui/xml/mainmenu/settings.xml:244
+msgid "Reset to default settings"
+msgstr ""
+
+#: content/gui/xml/mainmenu/settings.xml:245
+msgid "Save changes"
 msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
@@ -1355,7 +1332,7 @@ msgid "Password of the game. Required to join this game"
 msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
-msgid "Delete selected savegame"
+msgid "Cancel"
 msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
@@ -1368,7 +1345,7 @@ msgid "Details:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
-msgid "Cancel"
+msgid "Delete selected savegame"
 msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
@@ -1387,11 +1364,7 @@ msgstr ""
 msgid "Free play"
 msgstr ""
 
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:36
-msgid "Start game:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
+#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
 msgstr ""
 
@@ -1514,103 +1487,6 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:52
-#: horizons/gui/widgets/pickbeltwidget.py:88
-msgid "Hotkeys"
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:69
-msgid "Restart required"
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:70
-msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:74
-msgid "Restore default settings"
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:75
-msgid ""
-"Restoring the default settings will delete all changes to the settings you "
-"made so far."
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:76
-msgid "Do you want to continue?"
-msgstr ""
-
-#: horizons/engine/settingshandler.py:70
-msgid "16 bit"
-msgstr ""
-
-#: horizons/engine/settingshandler.py:70
-msgid "32 bit"
-msgstr ""
-
-#: horizons/engine/settingshandler.py:70
-msgid "Default"
-msgstr ""
-
-#: horizons/engine/settingshandler.py:141
-msgid "Warning"
-msgstr ""
-
-#. i18n Warning popup shown in settings when SDL is selected as renderer.
-#: horizons/engine/settingshandler.py:143
-msgid ""
-"The SDL renderer is meant as a fallback solution only and has serious "
-"graphical glitches. \n"
-"\n"
-"Use at own risk!"
-msgstr ""
-
-#: horizons/engine/settingshandler.py:222
-msgid "Invalid network port"
-msgstr ""
-
-#: horizons/engine/settingshandler.py:223
-msgid ""
-"The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr ""
-
-#: horizons/engine/settingshandler.py:224
-msgid ""
-"Please check the port you entered and make sure it is in the specified range."
-msgstr ""
-
-#: horizons/engine/settingshandler.py:236
-msgid "Failed to apply new network settings."
-msgstr ""
-
-#: horizons/engine/settingshandler.py:237
-#: horizons/gui/modules/multiplayermenu.py:131
-msgid ""
-"Network features could not be initialized with the current configuration."
-msgstr ""
-
-#: horizons/engine/settingshandler.py:238
-#: horizons/gui/modules/multiplayermenu.py:132
-msgid "Check the settings you specified in the network section."
-msgstr ""
-
-#. i18n This is advice for players seeing a network error with the current config
-#: horizons/engine/settingshandler.py:242
-msgid ""
-"Low port numbers sometimes require special access privileges, try 0 or a "
-"number greater than 1024."
-msgstr ""
-
-#: horizons/engine/settingshandler.py:277
-msgid "Logging enabled"
-msgstr ""
-
-#: horizons/engine/settingshandler.py:278
-#, python-brace-format
-msgid "Logs are written to {directory}."
 msgstr ""
 
 #: horizons/gui/gui.py:77
@@ -1774,6 +1650,17 @@ msgstr ""
 msgid "Failed to initialize networking."
 msgstr ""
 
+#: horizons/gui/modules/multiplayermenu.py:131
+#: horizons/gui/modules/settings.py:273
+msgid ""
+"Network features could not be initialized with the current configuration."
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:132
+#: horizons/gui/modules/settings.py:274
+msgid "Check the settings you specified in the network section."
+msgstr ""
+
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
 msgid "Fatal Network Error"
@@ -1798,25 +1685,25 @@ msgid "Version differs!"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:205
-#: horizons/gui/modules/multiplayermenu.py:438
+#: horizons/gui/modules/multiplayermenu.py:457
 #, python-brace-format
 msgid "Map: {map_name}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:439
+#: horizons/gui/modules/multiplayermenu.py:458
 #, python-brace-format
 msgid "Name: {game_name}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:207
-#: horizons/gui/modules/multiplayermenu.py:440
+#: horizons/gui/modules/multiplayermenu.py:459
 #, python-brace-format
 msgid "Creator: {game_creator}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:441
+#: horizons/gui/modules/multiplayermenu.py:460
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr ""
@@ -1843,77 +1730,91 @@ msgid "Enter password:"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:347
-#: horizons/gui/modules/singleplayermenu.py:405
+#: horizons/gui/modules/singleplayermenu.py:406
 #, python-brace-format
 msgid "Recommended number of players: {number}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:459
-#: horizons/gui/modules/multiplayermenu.py:467
+#. TODO: add support for selecting difficulty levels to the GUI
+#: horizons/gui/modules/multiplayermenu.py:393
+#: horizons/network/networkinterface.py:526
+msgid "Ready"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:395
+msgid "Not ready"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:430
+msgid "Enter your message"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:478
+#: horizons/gui/modules/multiplayermenu.py:486
 msgid "Click here to change your name and/or color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:485
+#: horizons/gui/modules/multiplayermenu.py:504
 #, python-brace-format
 msgid "Kick {player}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:552
+#: horizons/gui/modules/multiplayermenu.py:571
 #, python-brace-format
 msgid "{player} has joined the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:555
+#: horizons/gui/modules/multiplayermenu.py:574
 #, python-brace-format
 msgid "{player} has left the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:561
+#: horizons/gui/modules/multiplayermenu.py:580
 msgid "You are now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:563
+#: horizons/gui/modules/multiplayermenu.py:582
 msgid "You are not ready anymore"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:566
+#: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
 msgid "{player} is now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:568
+#: horizons/gui/modules/multiplayermenu.py:587
 #, python-brace-format
 msgid "{player} not ready anymore"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:591
 #, python-brace-format
 msgid "You are now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:574
+#: horizons/gui/modules/multiplayermenu.py:593
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:578
+#: horizons/gui/modules/multiplayermenu.py:597
 msgid "You changed your color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:580
+#: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} changed their color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:584
+#: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:584
+#: horizons/gui/modules/multiplayermenu.py:603
 msgid "You have been kicked from the game by creator"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:587
+#: horizons/gui/modules/multiplayermenu.py:606
 #, python-brace-format
 msgid "{player} got kicked by creator"
 msgstr ""
@@ -2013,6 +1914,78 @@ msgstr ""
 msgid "Failed to delete savefile!"
 msgstr ""
 
+#: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
+msgid "Hotkeys"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:55
+msgid "Game"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:72
+msgid "Disabled"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:126
+msgid "Restart required"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:127
+msgid "Some of your changes require a restart of Unknown Horizons."
+msgstr ""
+
+#: horizons/gui/modules/settings.py:131
+msgid "Restore default settings"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:132
+msgid ""
+"Restoring the default settings will delete all changes to the settings you "
+"made so far."
+msgstr ""
+
+#: horizons/gui/modules/settings.py:133
+msgid "Do you want to continue?"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:230
+msgid "Warning"
+msgstr ""
+
+#. i18n Warning popup shown in settings when SDL is selected as renderer.
+#: horizons/gui/modules/settings.py:232
+msgid ""
+"The SDL renderer is meant as a fallback solution only and has serious "
+"graphical glitches. \n"
+"\n"
+"Use at own risk!"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:259
+msgid "Invalid network port"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:260
+msgid ""
+"The port you specified is not valid. It must be a number between 1 and 65535."
+msgstr ""
+
+#: horizons/gui/modules/settings.py:261
+msgid ""
+"Please check the port you entered and make sure it is in the specified range."
+msgstr ""
+
+#: horizons/gui/modules/settings.py:272
+msgid "Failed to apply new network settings."
+msgstr ""
+
+#. i18n This is advice for players seeing a network error with the current config
+#: horizons/gui/modules/settings.py:278
+msgid ""
+"Low port numbers sometimes require special access privileges, try 0 or a "
+"number greater than 1024."
+msgstr ""
+
 #: horizons/gui/modules/singleplayermenu.py:105
 msgid "Invalid player name"
 msgstr ""
@@ -2045,37 +2018,37 @@ msgstr ""
 msgid "Island size deviation:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:343
+#: horizons/gui/modules/singleplayermenu.py:344
 msgid "Click to generate a different random map"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:503
+#: horizons/gui/modules/singleplayermenu.py:504
 msgid "Invalid scenario file"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:504
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "The selected file is not a valid scenario file."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:505
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "Error message:"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:506
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Please report this to the author."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:568
+#: horizons/gui/modules/singleplayermenu.py:569
 #, python-brace-format
 msgid "Difficulty: {difficulty}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:571
+#: horizons/gui/modules/singleplayermenu.py:572
 #, python-brace-format
 msgid "Author: {author}"
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:574
+#: horizons/gui/modules/singleplayermenu.py:575
 #, python-brace-format
 msgid "Description: {desc}"
 msgstr ""
@@ -2290,10 +2263,6 @@ msgstr ""
 
 #: horizons/gui/widgets/logbook.py:186
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
-
-#: horizons/gui/widgets/pickbeltwidget.py:89
-msgid "Game"
 msgstr ""
 
 #: horizons/gui/widgets/playerssettlements.py:39
@@ -3081,24 +3050,33 @@ msgstr ""
 msgid "Military"
 msgstr ""
 
-#: horizons/main.py:349
+#: horizons/main.py:353
 msgid "Failed to start/load the game"
 msgstr ""
 
-#: horizons/main.py:350
+#: horizons/main.py:354
 msgid "The game you selected could not be started."
 msgstr ""
 
-#: horizons/main.py:351
+#: horizons/main.py:355
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 
-#: horizons/main.py:470
+#: horizons/main.py:474
 msgid "No quicksaves found"
 msgstr ""
 
-#: horizons/main.py:471
+#: horizons/main.py:475
 msgid "You need to quicksave before you can quickload."
+msgstr ""
+
+#: horizons/main.py:604
+msgid "Logging enabled"
+msgstr ""
+
+#: horizons/main.py:605
+#, python-brace-format
+msgid "Logs are written to {directory}."
 msgstr ""
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
@@ -3113,15 +3091,17 @@ msgstr ""
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
 
-#: horizons/mpsession.py:85
+#: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
+#: horizons/mpsession.py:92
 msgid "Not possible"
 msgstr ""
 
-#: horizons/mpsession.py:85
+#: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
+#: horizons/mpsession.py:92
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
 
-#: horizons/mpsession.py:97
+#: horizons/mpsession.py:103
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
@@ -3139,11 +3119,6 @@ msgstr ""
 msgid "Not Ready"
 msgstr ""
 
-#. TODO: add support for selecting difficulty levels to the GUI
-#: horizons/network/networkinterface.py:526
-msgid "Ready"
-msgstr ""
-
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
 msgstr ""
@@ -3156,30 +3131,30 @@ msgstr ""
 msgid "Do you want to continue playing?"
 msgstr ""
 
-#: horizons/scenario/scenarioeventhandler.py:169
+#: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
 msgstr ""
 
 #. usually invalid filename
-#: horizons/session.py:404
+#: horizons/session.py:420
 msgid "Failed to create savegame file"
 msgstr ""
 
-#: horizons/session.py:405
+#: horizons/session.py:421
 msgid "There has been an error while creating your savegame file."
 msgstr ""
 
-#: horizons/session.py:406
+#: horizons/session.py:422
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr ""
 
-#: horizons/session.py:412
+#: horizons/session.py:431
 msgid "Access is denied"
 msgstr ""
 
-#: horizons/session.py:413
+#: horizons/session.py:432
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 
@@ -3187,22 +3162,22 @@ msgstr ""
 msgid "Your game has not been saved."
 msgstr ""
 
-#: horizons/util/checkupdates.py:81
+#: horizons/util/checkupdates.py:87
 msgid "New version of Unknown Horizons"
 msgstr ""
 
-#: horizons/util/checkupdates.py:82
+#: horizons/util/checkupdates.py:88
 #, python-brace-format
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
 
-#: horizons/util/checkupdates.py:92
+#: horizons/util/checkupdates.py:98
 msgid "Click to download"
 msgstr ""
 
-#: horizons/util/checkupdates.py:96
+#: horizons/util/checkupdates.py:102
 msgid "A page has been opened in your browser."
 msgstr ""
 
