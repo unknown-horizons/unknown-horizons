@@ -3,7 +3,7 @@
 ;Defines
 !define PRODUCT_NAME "Unknown Horizons"
 !define PRODUCT_VERSION "%s"
-!define UH_ICON "$INSTDIR\content\gfx\uh.ico"
+!define UH_ICON "$INSTDIR\content\packages\uh.ico"
 !define PRODUCT_ROOT_KEY "HKLM"
 !define PRODUCT_SUBKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
@@ -14,7 +14,7 @@
 ;MUI2
 !include "MUI2.nsh"
 
-!define MUI_ICON "content\gfx\uh.ico"
+!define MUI_ICON "content\packages\uh.ico"
 !define MUI_ABORTWARNING
 !define MUI_ABORTWARNING_CANCEL_DEFAULT
 !define MUI_HEADERIMAGE
