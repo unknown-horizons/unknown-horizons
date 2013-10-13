@@ -19,19 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import re
 import textwrap
+
 from fife import fife
-from fife.extensions.pychan.widgets import Label
+from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 import horizons.globals
 
 from horizons.extscheduler import ExtScheduler
+from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TooltipBG
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
-	CHARS_PER_LINE = 19 # character count after which we start new line. no wrap
+
+	# Character count after which we start new line.
+	CHARS_PER_LINE = 19
+	# Find and replace horribly complicated elements that allow simple icons.
+	icon_regexp = re.compile(r'\[\[Buildmenu((?: \d+\:\d+)+)\]\]')
 
 	def init_tooltip(self):
 		self.gui = None
@@ -102,16 +109,37 @@ class _Tooltip(object):
 		if self.gui is None:
 			self.__init_gui()
 
-		translated_tooltip = _(self.helptext)
-		#HACK this looks better than splitting into several lines & joining
-		# them. works because replace_whitespace in fill defaults to True:
-		replaced = translated_tooltip.replace(r'\n', self.CHARS_PER_LINE * ' ')
+		#HACK: support icons in build menu
+		# Code below exists for the sole purpose of build menu tooltips showing
+		# resource icons. Even supporting that is a pain (as you will see),
+		# so if you think you need icons in other tooltips, maybe reconsider.
+		# [These unicode() calls brought to you by status icon tooltip code.]
+		buildmenu_icons = self.icon_regexp.findall(unicode(self.helptext))
+		# Remove the weird stuff before displaying text.
+		replaced = self.icon_regexp.sub('', unicode(self.helptext))
+		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
+		if buildmenu_icons:
+			hbox = HBox(position=(7, 5), padding=0)
+			for spec in buildmenu_icons[0].split():
+				(res_id, amount) = spec.split(':')
+				label = Label(text=amount+'  ')
+				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
+				hbox.addChildren(icon, label)
+			hbox.adaptLayout()
+			# Now display the 16x16px "required resources" icons in the last line.
+			self.gui.addChild(hbox)
+
+		#HACK: wrap tooltip text
+		# This looks better than splitting into several lines and joining them.
+		# It works because replace_whitespace in `fill` defaults to True.
+		replaced = replaced.replace(r'\n', self.CHARS_PER_LINE * ' ')
 		replaced = replaced.replace('[br]', self.CHARS_PER_LINE * ' ')
 		tooltip = textwrap.fill(replaced, self.CHARS_PER_LINE)
 
-		self.bg.amount = len(tooltip.splitlines()) - 1
-
-		self.label.text = tooltip
+		# Finish up the actual tooltip (text, background panel amount, layout).
+		# To display build menu icons, we need another empty (first) line.
+		self.bg.amount = len(tooltip.splitlines()) - 1 + bool(buildmenu_icons)
+		self.label.text = bool(buildmenu_icons) * '\n' + tooltip
 		self.gui.adaptLayout()
 		self.gui.show()
 

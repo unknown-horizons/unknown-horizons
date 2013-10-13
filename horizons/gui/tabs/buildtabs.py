@@ -136,14 +136,13 @@ class BuildTab(TabInterface):
 			building = Entities.buildings[building_id]
 			button.helptext = building.get_tooltip()
 
-			# Add necessary resources to tooltip
-			# [br] means newline
-			button.helptext += u'[br]' + _('Resources needed:') + u'[br]'
+			# Add necessary resources to tooltip text.
+			# tooltip.py will then place icons from this information.
+			required_resources = ''
 			for resource_id, amount_needed in sorted(building.costs.items()):
-				resource_name = self.session.db.get_res_name(resource_id)
-				button.helptext += u'[br]'
-				# You usually do not need to change anything here when translating
-				button.helptext += _('{resource}: {amount}').format(resource=resource_name, amount=amount_needed)
+				required_resources += ' %s:%s' % (resource_id, amount_needed)
+			required_text = '[[Buildmenu%s]]' % (required_resources)
+			button.helptext = required_text + button.helptext
 
 			enough_res = False # don't show building by default
 			if settlement is not None: # settlement is None when the mouse has left the settlement
