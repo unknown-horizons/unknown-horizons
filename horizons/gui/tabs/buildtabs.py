@@ -292,7 +292,7 @@ class BuildTab(TabInterface):
 	@decorators.cachedfunction
 	def get_building_tiers(cls):
 		"""Returns a dictionary mapping building type ids to their tiers
-		@return cached dictionary (don't modifiy)"""
+		@return cached dictionary (don't modify)"""
 		building_tiers = {}
 		data = YamlCache.get_file( cls.build_menu_config_per_tier, game_data=True )
 		tier = -1
