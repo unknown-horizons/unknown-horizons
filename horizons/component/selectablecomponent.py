@@ -95,7 +95,7 @@ class SelectableComponent(Component):
 		if jump_to_tabclass:
 			for i, tab in enumerate(tabs):
 				if isinstance(tab, jump_to_tabclass):
-					tabwidget._show_tab(i)
+					tabwidget.show_tab(i)
 					break
 		self.session.ingame_gui.show_menu(tabwidget)
 

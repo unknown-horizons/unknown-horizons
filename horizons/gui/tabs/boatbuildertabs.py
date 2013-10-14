@@ -226,7 +226,7 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 	def start_production(self, prod_line_id):
 		AddProduction(self.producer, prod_line_id).execute(self.instance.session)
 		# show overview tab
-		self.instance.session.ingame_gui.get_cur_menu()._show_tab(0)
+		self.instance.session.ingame_gui.get_cur_menu().show_tab(0)
 
 
 class BoatbuilderFisherTab(BoatbuilderSelectTab):

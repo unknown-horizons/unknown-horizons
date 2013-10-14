@@ -52,12 +52,12 @@ class TabWidget(object):
 		self.widget = load_uh_widget("tab_base.xml")
 		self.widget.position_technique = 'right-239:top+209'
 		self.content = self.widget.findChild(name='content')
-		self._init_tabs()
+		self._init_tab_buttons()
 		# select a tab to show (first one is default)
 		if active_tab is not None:
-			self._show_tab(active_tab)
+			self.show_tab(active_tab)
 
-	def _init_tabs(self):
+	def _init_tab_buttons(self):
 		"""Add enough tabbuttons for all widgets."""
 		def on_tab_removal(tabwidget):
 			# called when a tab is being removed (via weakref since tabs shouldn't have references to the parent tabwidget)
@@ -79,7 +79,7 @@ class TabWidget(object):
 			else:
 				background.image = tab.button_background_image
 				button.path = tab.path
-			button.capture(Callback(self._show_tab, index))
+			button.capture(Callback(self.show_tab, index))
 			if hasattr(tab, 'helptext') and tab.helptext:
 				button.helptext = tab.helptext
 			container.size = background.size
@@ -91,7 +91,7 @@ class TabWidget(object):
 
 		self._apply_layout_hack()
 
-	def _show_tab(self, number):
+	def show_tab(self, number):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
