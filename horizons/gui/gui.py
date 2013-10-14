@@ -92,8 +92,8 @@ class Gui(object):
 		self.show_popup = self.windows.show_popup
 		self.show_error_popup = self.windows.show_error_popup
 
-		self._background = Icon(image=self._get_random_background(),
-		                        position_technique='center:center')
+		self._background = Icon(position_technique='center:center')
+		self.randomize_background()
 		self._background.show()
 
 		self.singleplayermenu = SingleplayerMenu(self.windows)
