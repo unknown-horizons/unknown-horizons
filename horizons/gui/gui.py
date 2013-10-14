@@ -153,7 +153,10 @@ class Gui(object):
 	def randomize_background(self):
 		"""Randomly select a background image to use. This function is triggered by
 		change background button from main menu."""
+		w = horizons.globals.fife.engine_settings.getScreenWidth()
+		h = horizons.globals.fife.engine_settings.getScreenHeight()
 		self._background.image = self._get_random_background()
+		self._background.size = (w, h)
 
 	def _get_random_background(self):
 		"""Randomly select a background image to use through out the game menu."""
