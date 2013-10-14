@@ -150,30 +150,3 @@ class TabWidget(object):
 		"""Hide the current widget"""
 		self.current_tab.hide()
 		self.widget.hide()
-
-	def _get_x(self):
-		"""Returs the widget's x position"""
-		return self.widget.position[0]
-
-	def _set_x(self, value):
-		"""Sets the widget's x position"""
-		self.widget.position = (value, self.widget.position[1])
-
-	# Shortcut to set and retrieve the widget's current x position.
-	x = property(_get_x, _set_x)
-
-	def _get_y(self):
-		"""Returns the widget's y position"""
-		return self.widget.position[1]
-
-	def _set_y(self, value):
-		"""Sets the widget's y position"""
-		self.widget.position = (self.widget.position[0], value)
-
-	# Shortcut to set and retrieve the widget's current y position.
-	y = property(_get_y, _set_y)
-
-
-
-
-
