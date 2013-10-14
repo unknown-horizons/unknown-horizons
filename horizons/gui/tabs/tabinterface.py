@@ -82,7 +82,7 @@ class TabInterface(object):
 
 	def init_values(self):
 		"""Call this method after the widget has been initialized."""
-		self.x_pos, self.y_pos = self.widget.position
+		pass
 
 	def show(self):
 		"""Shows the current widget"""
@@ -140,37 +140,14 @@ class TabInterface(object):
 		widget.child_finder = PychanChildFinder(widget)
 		return widget
 
-	def _get_x(self):
-		"""Returs the widget's x position"""
-		return self.widget.position[0]
-
-	def __set_x(self, value):
-		"""Sets the widget's x position"""
-		self.widget.position = (value, self.widget.position[1])
-
-	# Shortcut to set and retrieve the widget's current x position.
-	x_pos = property(_get_x, __set_x)
-
-	def _get_y(self):
-		"""Returns the widget's y position"""
-		return self.widget.position[1]
-
-	def _set_y(self, value):
-		"""Sets the widget's y position"""
-		self.widget.position = (self.widget.position[0], value)
-
-	# Shortcut to set and retrieve the widget's current y position.
-	y_pos = property(_get_y, _set_y)
-
 	def _get_position(self):
-		"""Returns the widget's position"""
 		return self.widget.position
 
 	def _set_position(self, value):
 		"""Sets the widgets position to tuple *value*"""
 		self.widget.position = value
 
-	# Shortcut to set and retrieve the widget's current y position.
+	# Shortcut to set and retrieve the widget's current position.
 	position = property(_get_position, _set_position)
 
 	def __del__(self):
