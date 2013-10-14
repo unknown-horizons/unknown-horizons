@@ -31,10 +31,8 @@ from horizons.component.depositcomponent import DepositComponent
 class TowerOverviewTab(OverviewTab): # defensive tower
 	widget = 'overview_tower.xml'
 	helptext = _lazy("Tower overview")
+	show_emblem = True
 
-	def init_widget(self):
-		super(TowerOverviewTab, self).init_widget()
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 
 class SignalFireOverviewTab(OverviewTab):
 	widget = 'overview_signalfire.xml'

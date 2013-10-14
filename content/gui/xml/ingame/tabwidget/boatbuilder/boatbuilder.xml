@@ -1,29 +1,20 @@
 <?xml version="1.0"?>
-<!-- Overview tab -->
-<Container  size="260,550" name="BB_main_tab">
-<TabBG amount="8" />
+<TabContainer name="BB_main_tab">
 
-	<Container position="0,70" size="260,80">
-		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
-			<Label name='name' position="25,40" />
-		</HBox>
-
-		<hr position="20,30" />
-		<Icon name="running_costs_label"	position="180,40" helptext="Running costs"
+	<AutoResizeContainer position="0,5">
+		<Icon name="running_costs_label" position="160,0" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
-		<Label name="running_costs" position="200,40" />
-	</Container>
+		<Label name="running_costs" position="180,0" />
+	</AutoResizeContainer>
 
 	<!--	ONLY ACTIVE WHEN NOT BUILDING -->
-	<Container position="25,150" size="260,150" name="container_inactive">
+	<Container position="5,50" size="260,150" name="container_inactive">
 		<Label position="0,15" name="BB_howto_build_lbl" wrap_text="1" max_size="200,150" min_size="200,150"
 		       text="To build a boat, click on one of the class tabs, select the desired ship and confirm the order." />
 	</Container>
 
 	<!--	ONLY ACTIVE WHEN BUILDING -->
-
-	<Container position="25,110" size="260,210" name="container_active">
+	<Container position="5,10" size="260,210" name="container_active">
 		<!-- Current order, pause -->
 		<Label name="BB_current_order" text="Currently building:"
 			comment="Information about the ship currently under construction at the boat builder" />
@@ -43,7 +34,7 @@
 			comment="Resumes the currently paused ship production" />
 	</Container>
 
-	<Container position="25,325" size="260,110" name="BB_progress_container">
+	<Container position="5,225" size="260,110" name="BB_progress_container">
 		<!-- Progress display -->
 		<ProgressBar name="progress" max_size="100,12" position="9,3"
 			background="content/gui/images/background/bar_bg.png" />
@@ -59,14 +50,14 @@
 		</HBox>
 	</Container>
 
-	<Container position="25,410" size="260,100" name="BB_cancel_container">
-	<!-- Cancel task -->
+	<Container position="5,310" size="260,100" name="BB_cancel_container">
 		<Label position="10,30" name="BB_cancel_build_label" text="Cancel building:"
 			comment="abort construction of a ship, lose invested resources" />
 		<Label position="10,45" name="BB_cancel_warning_label" text="(lose all resources)"
-			comment="abort construction of a ship, lose invested resources" /> <!-- smaller font than the above one -->
+			comment="abort construction of a ship, lose invested resources" />
 		<CancelButton name="BB_cancel_button"  position="160,22"  size="64,64"
 			comment="abort construction of a ship, lose invested resources"
 			helptext="Cancel all building progress" /> <!-- needs a confirmation popup -->
 	</Container>
-</Container>
+
+</TabContainer>

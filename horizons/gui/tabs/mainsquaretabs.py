@@ -36,6 +36,7 @@ from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.namedcomponent import NamedComponent
 
+
 class MainSquareTab(OverviewTab):
 	"""Tab for main square. Refreshes when one building on the settlement changes"""
 	@property
@@ -55,11 +56,13 @@ class MainSquareTab(OverviewTab):
 			if building.has_change_listener(self._schedule_refresh):
 				building.remove_change_listener(self._schedule_refresh)
 
+
 class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
 	widget = 'tab_account.xml'
 	icon_path = 'icons/tabwidget/warehouse/account'
 	helptext = _lazy("Account")
+	show_emblem = True
 
 	def init_widget(self):
 		super(AccountTab, self).init_widget()
@@ -70,9 +73,6 @@ class AccountTab(MainSquareTab):
 		# FIXME having to access the WindowManager this way is pretty ugly
 		self._windows = self.instance.session.ingame_gui.windows
 		self.prod_overview = ProductionOverview(self._windows, self.settlement)
-
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
 		path = 'icons/widgets/cityinfo/settlement_%s' % self.settlement.owner.color.name
 		self.widget.child_finder('show_production_overview').path = path
@@ -94,9 +94,6 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('buying').text = unicode(buy_expenses)
 		self.widget.child_finder('sale').text = unicode(sell_income)
 		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
-		self.widget.mapEvents({'headline': rename})
 
 	def refresh_collector_utilization(self):
 		if self.instance.has_component(CollectingComponent):
@@ -109,11 +106,17 @@ class AccountTab(MainSquareTab):
 
 class MainSquareOverviewTab(AccountTab):
 	helptext = _lazy('Main square overview')
+	show_emblem = True
 
 	def init_widget(self):
 		super(MainSquareOverviewTab, self).init_widget()
-		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
-		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
+		# TODO get this rename callback working
+		#rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog,
+		#                  self.instance.settlement)
+		#self.widget.mapEvents({'headline': rename})
+
+		#self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
+
 
 
 class MainSquareSettlerLevelTab(MainSquareTab):
@@ -134,7 +137,10 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		val_label = self.widget.child_finder('tax_val_label')
 		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
 		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
-		self.widget.child_finder('headline').text = _(self.instance.session.db.get_settler_name(self.__class__.LEVEL))
+
+	@property
+	def inhabitant_name(self):
+		return _(self.instance.session.db.get_settler_name(self.__class__.LEVEL))
 
 		if self.__class__.LEVEL == TIER.CURRENT_MAX:
 			# highest currently playable tier => upgrades not possible

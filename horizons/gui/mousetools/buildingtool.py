@@ -35,7 +35,8 @@ from horizons.command.building import Build
 from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.sounds import PlaySound
-from horizons.gui.util import load_uh_widget
+from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.tabs.tabwidget import TabWidget
 from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
@@ -123,8 +124,6 @@ class BuildingTool(NavigationTool):
 			self._build_logic = SettlementBuildingToolLogic(self)
 
 		self.load_gui()
-		self.__class__.gui.show()
-		self.session.ingame_gui.minimap_to_front()
 
 		self.highlight_buildable()
 		WorldObjectDeleted.subscribe(self._on_worldobject_deleted)
@@ -222,20 +221,10 @@ class BuildingTool(NavigationTool):
 
 	def load_gui(self):
 		if self.__class__.gui is None:
-			self.__class__.gui = load_uh_widget("place_building.xml")
-			self.__class__.gui.position_technique = "right-1:top+157"
-		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
-		                                "rotate_right": self.rotate_right } )
-		# set translated building name in gui
-		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
-		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
-		head_box = self.__class__.gui.findChild(name='head_box')
-		head_box.adaptLayout() # recalculates size of new content
-		# calculate and set new center
-		new_x = max(25, (self.__class__.gui.size[0] // 2) - (head_box.size[0] // 2))
-		head_box.position = (new_x, head_box.position[1])
-		head_box.adaptLayout()
+			self.__class__.gui = BuildPreview(self, self.session.ingame_gui)
 		self.draw_gui()
+		self.__class__.gui.show()
+		self.session.ingame_gui.minimap_to_front()
 
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
@@ -256,22 +245,22 @@ class BuildingTool(NavigationTool):
 		if GFX.USE_ATLASES:
 			# Make sure the preview is loaded
 			horizons.globals.fife.animationloader.load_image(image, action_set, action, rotation)
-		building_icon = self.gui.findChild(name='building')
+		building_icon = self.__class__.gui.widget.findChild(name='building')
 		loaded_image = horizons.globals.fife.imagemanager.load(image)
 		building_icon.image = fife.GuiImage(loaded_image)
 		width = loaded_image.getWidth()
-		# TODO: Remove hardcoded 220
-		max_width = 220
+		# TODO: Remove hardcoded 225
+		max_width = 225
 		if width > max_width:
 			height = loaded_image.getHeight()
 			size = (max_width, (height * max_width) // width)
 			building_icon.max_size = building_icon.min_size = building_icon.size = size
-		# TODO: Remove hardcoded 70
-		gui_x, gui_y = self.__class__.gui.size
+		# TODO: Remove hardcoded 20 and 70
+		gui_x, gui_y = self.__class__.gui.widget.size
 		icon_x, icon_y = building_icon.size
-		building_icon.position = (gui_x // 2 - icon_x // 2,
+		building_icon.position = (gui_x // 2 - icon_x // 2 - 20,
 		                          gui_y // 2 - icon_y // 2 - 70)
-		self.__class__.gui.adaptLayout()
+		self.__class__.gui.widget.adaptLayout()
 
 	def preview_build(self, point1, point2, force=False):
 		"""Display buildings as preview if build requirements are met"""
@@ -838,3 +827,31 @@ decorators.bind_all(BuildingTool)
 decorators.bind_all(SettlementBuildingToolLogic)
 decorators.bind_all(ShipBuildingToolLogic)
 decorators.bind_all(BuildRelatedBuildingToolLogic)
+
+
+class BuildPreview(TabWidget):
+	""" TODO fix this for the hell of it """
+	def __init__(self, building_tool, ingame_gui):
+		tabs = [BuildPreviewTab(building_tool)]
+		super(BuildPreview, self).__init__(ingame_gui, tabs=tabs, name="place_building")
+
+
+class BuildPreviewTab(TabInterface):
+	""" TODO fix this for the hell of it """
+	widget = "place_building.xml"
+	icon_path = "icons/tabwidget/common/building_overview"
+
+	def __init__(self, building_tool):
+		self.building_tool = building_tool
+		super(BuildPreviewTab, self).__init__()
+
+	def init_widget(self):
+		self.widget.mapEvents({
+			"rotate_left" : self.building_tool.rotate_left,
+			"rotate_right": self.building_tool.rotate_right,
+		})
+		self.widget.findChild(name='running_costs').text = unicode(self.building_tool._class.running_costs)
+
+	@property
+	def tab_headline(self):
+		return _('Build {building}').format(building=_(self.building_tool._class.name))

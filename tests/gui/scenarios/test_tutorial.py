@@ -46,7 +46,7 @@ def test_tutorial(gui):
 	gui.select([ship])
 	move_ship(gui, ship, (11, 1))
 
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('content', 'found_settlement')
 	gui.cursor_click(11, 6, 'left')
 
 	# Goal: Build a lumberjack
@@ -54,52 +54,52 @@ def test_tutorial(gui):
 
 	# lumberjack (2)
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_03')
+	gui.trigger('content', 'button_03')
 	gui.cursor_click(8, 10, 'left', shift=True)
 	gui.cursor_click(13, 10, 'left')
 	gui.cursor_click(13, 10, 'right')
 
 	# plant some extra trees around the lumberjacks
-	gui.trigger('tab', 'button_13')
+	gui.trigger('content', 'button_13')
 	gui.cursor_drag((6, 13), (15, 8), 'left')
 
 	# roads (no dragging to trigger the 'you can drag roads' hint)
-	gui.trigger('tab', 'button_21')
+	gui.trigger('content', 'button_21')
 	gui.cursor_multi_click((10, 8), (10, 9), (10, 10), (11, 10))
 
 	# Goal: Build hunter and fisher
 	assert_progress(22)
 
 	# fisher
-	gui.trigger('tab', 'button_33')
+	gui.trigger('content', 'button_33')
 	gui.cursor_click(13, 6, 'left')
 
 	# hunter
-	gui.trigger('tab', 'button_23')
+	gui.trigger('content', 'button_23')
 	gui.cursor_click(8, 8, 'left')
 
 	# Goal: Mainsquare
 	assert_progress(25)
 
-	gui.trigger('tab', 'button_02')
+	gui.trigger('content', 'button_02')
 	gui.cursor_click(15, 18, 'left')
 
 	# Goal: first tent
 	assert_progress(28)
 
 	# roads
-	gui.trigger('tab', 'button_21')
+	gui.trigger('content', 'button_21')
 	gui.cursor_drag((13, 15), (20, 15), 'left')
 	gui.cursor_click(20, 15, 'right')
 
 	# tent
-	gui.trigger('tab', 'button_01')
+	gui.trigger('content', 'button_01')
 	gui.cursor_click(13, 13, 'left')
 
 	# Goal: 4 tents
 	assert_progress(31)
 
-	gui.trigger('tab', 'button_01')
+	gui.trigger('content', 'button_01')
 	gui.cursor_multi_click((15, 13), (17, 13), (19, 13))
 
 	# Goal: Build a signal fire
@@ -109,7 +109,7 @@ def test_tutorial(gui):
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 5):
 		gui.run()
 
-	gui.trigger('tab', 'button_22')
+	gui.trigger('content', 'button_22')
 	gui.cursor_click(9, 5, 'left')
 
 	# Goal: Trading
@@ -117,7 +117,7 @@ def test_tutorial(gui):
 
 	# Buy tools from the trader (put the resource on the buy list)
 	gui.cursor_click(11, 6, 'left')
-	gui.trigger('tab_base', '2')
+	gui.trigger('buttons', '2')
 	gui.trigger('buysellmenu/slot_0', 'button', mouse='left')
 	gui.trigger('select_trade_resource', 'resource_%d' % RES.TOOLS)
 	gui.find('buysellmenu/slot_0/slider').slide(30)
@@ -130,7 +130,7 @@ def test_tutorial(gui):
 		gui.run()
 
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab', 'button_12')
+	gui.trigger('content', 'button_12')
 	gui.cursor_click(19, 16, 'left')
 
 	# Goal: Next tier
@@ -138,7 +138,7 @@ def test_tutorial(gui):
 
 	# Adjust settler taxes (using mainsquare)
 	gui.cursor_click(16, 18, 'left')
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 	gui.find('tax_slider').slide(0)
 	gui.trigger('mainhud', 'build')
 
@@ -153,21 +153,21 @@ def test_tutorial(gui):
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 10):
 		gui.run()
 
-	gui.trigger('tab_base', '1') # FIXME this sometimes fails
-	gui.trigger('tab', 'button_02')
+	gui.trigger('buttons', '1') # FIXME this sometimes fails
+	gui.trigger('content', 'button_02')
 	gui.cursor_click(25, 12, 'left')
 
 	# Goal: Fields
 	assert_progress(49)
 
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 
 	# potato
-	gui.trigger('tab', 'button_12')
+	gui.trigger('content', 'button_12')
 	gui.cursor_click(23, 11, 'left')
 
 	# pasture
-	gui.trigger('tab', 'button_22')
+	gui.trigger('content', 'button_22')
 	gui.cursor_click(21, 10, 'left')
 
 	# Goal: Storage
@@ -179,13 +179,13 @@ def test_tutorial(gui):
 
 	# roads
 	gui.trigger('mainhud', 'build')
-	gui.trigger('tab_base', '0')
-	gui.trigger('tab', 'button_21')
+	gui.trigger('buttons', '0')
+	gui.trigger('content', 'button_21')
 	gui.cursor_drag((21, 15), (24, 14), 'left')
 	gui.cursor_click(24, 14, 'right')
 
 	# storage tent
-	gui.trigger('tab', 'button_11')
+	gui.trigger('content', 'button_11')
 	gui.cursor_click(21, 16, 'left')
 
 	# Goal: Weaver
@@ -195,21 +195,21 @@ def test_tutorial(gui):
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 10):
 		gui.run()
 
-	gui.trigger('tab_base', '1')
-	gui.trigger('tab', 'button_21')
+	gui.trigger('buttons', '1')
+	gui.trigger('content', 'button_21')
 	gui.cursor_click(25, 14, 'left')
 
 	# Goal: 50 inhabitants, positive balance
 	assert_progress(58)
 
 	# more potato fields
-	gui.trigger('tab_base', '1')
-	gui.trigger('tab', 'button_12')
+	gui.trigger('buttons', '1')
+	gui.trigger('content', 'button_12')
 	gui.cursor_multi_click((24, 9), (27, 8), (27, 11))
 
 	# lumberjack (more wood for upgrades)
-	gui.trigger('tab_base', '0')
-	gui.trigger('tab', 'button_03')
+	gui.trigger('buttons', '0')
+	gui.trigger('content', 'button_03')
 	gui.cursor_click(19, 18, 'left')
 
 	# wait until we have enough boards
@@ -217,7 +217,7 @@ def test_tutorial(gui):
 		gui.run()
 
 	# tents
-	gui.trigger('tab', 'button_01')
+	gui.trigger('content', 'button_01')
 	gui.cursor_multi_click(
 		(11, 14), (11, 15), (12, 17), (11, 20),
 		(12, 22), (14, 22), (16, 22), (18, 22),

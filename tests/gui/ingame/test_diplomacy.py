@@ -47,7 +47,7 @@ def test_diplomacy(gui):
 	assert diplomacy.are_allies(human, ai)
 
 	# Be enemy with second player
-	gui.trigger('tab_base', '1')
+	gui.trigger('buttons', '1')
 	gui.trigger('tab0', 'enemy_check_box')
 
 	assert diplomacy.are_enemies(human, pirate)

@@ -32,13 +32,13 @@ def test_select_ship(gui):
 	Select a ship.
 	"""
 
-	assert gui.find('tab_base') is None
+	assert gui.find('buttons') is None
 
 	# Find player's ship
 	player_ship = get_player_ship(gui.session)
 
 	gui.select([player_ship])
-	assert gui.find('overview_trade_ship')
+	assert gui.find('content')
 
 
 @gui_test(use_dev_map=True, timeout=60)
@@ -47,7 +47,7 @@ def test_selectmultitab(gui):
 	Select two frigates and delete them.
 	"""
 
-	assert gui.find('tab_base') is None
+	assert gui.find('buttons') is None
 
 	player = gui.session.world.player
 	def create_ship(type):
@@ -59,7 +59,7 @@ def test_selectmultitab(gui):
 	gui.run(seconds=0.1)
 
 	gui.press_key(gui.Key.DELETE)
-	assert gui.find('tab_base') is None
+	assert gui.find('buttons') is None
 	gui.run(seconds=0.1)
 
 
@@ -84,7 +84,7 @@ def test_selection_groups(gui):
 		gui.run()
 
 	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
+	gui.trigger('content', 'found_settlement')
 
 	gui.cursor_click(56, 3, 'left')
 

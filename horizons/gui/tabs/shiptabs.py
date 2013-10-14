@@ -34,12 +34,25 @@ from horizons.component.selectablecomponent import SelectableComponent
 
 
 class ShipOverviewTab(OverviewTab):
-	widget = 'overview_trade_ship.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
 	helptext = _lazy("Ship overview")
 
+
+class TraderShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_tradership.xml'
+
+
+class EnemyShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_enemybuilding.xml'
+	show_emblem = True
+
+
+class PlayerShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_trade_ship.xml'
+	show_emblem = True
+
 	def init_widget(self):
-		super(ShipOverviewTab, self).init_widget()
+		super(PlayerShipOverviewTab, self).init_widget()
 		ship_inv = self.instance.get_component(StorageComponent).inventory
 		self.widget.child_finder('inventory').init(self.instance.session.db, ship_inv)
 
@@ -113,7 +126,7 @@ class ShipOverviewTab(OverviewTab):
 	def refresh(self):
 		# show rename when you click on name
 		events = {
-			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
+		#	'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
 			'configure_route/mouseClicked': Callback(self._configure_route)
 		}
 
@@ -123,13 +136,11 @@ class ShipOverviewTab(OverviewTab):
 
 		self.widget.child_finder('inventory').update()
 		self._refresh_combat()
-		super(ShipOverviewTab, self).refresh()
+		super(PlayerShipOverviewTab, self).refresh()
 
 
-class FightingShipOverviewTab(ShipOverviewTab):
+class FightingShipOverviewTab(PlayerShipOverviewTab):
 	widget = 'overview_war_ship.xml'
-	# TODO why is this here:
-	icon_path = 'icons/tabwidget/ship/ship_inv'
 
 	has_stance = True
 
@@ -173,10 +184,6 @@ class TraderShipOverviewTab(OverviewTab):
 	helptext = _lazy("Ship overview")
 
 class EnemyShipOverviewTab(OverviewTab):
-	widget = 'overview_enemyunit.xml'
+	widget = 'overview_enemybuilding.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
 	helptext = _lazy("Ship overview")
-
-	def init_widget(self):
-		super(ShipOverviewTab, self).init_widget()
-		self.widget.findChild(name="headline").text = self.instance.owner.name

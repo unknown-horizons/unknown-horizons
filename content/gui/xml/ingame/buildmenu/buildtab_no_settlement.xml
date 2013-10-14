@@ -1,16 +1,7 @@
 <?xml version="1.0"?>
-<Container name="tab0" size="250,500" padding="2">
-<TabBG amount="7" />
+<TabContainer name="tab0" padding="2" headline="Game start">
 
-<Container position="0,70" size="250,380">
-	<HBox position="22,7"  min_size="170,20"  size="230,20">
-	<Spacer min_size="0"  max_size="50" />
-		<Label name="headline"  text="Game start" />
-	</HBox>
-
-	<hr position="20,30" />
-
-	<VBox position="30,45" size="220,280" padding="10">
+	<VBox position="5,20" size="220,280" padding="10">
 		<Label name="howto_1_need_warehouse"  wrap_text="1"
 			min_size="210,60"  max_size="210,60"
 			text="You need to found a settlement before you can construct buildings!" />
@@ -28,5 +19,5 @@
 			<Icon image="content/gui/icons/ship/anchor.png" position="6,5" />
 		</Container>
 	</VBox>
-</Container>
-</Container>
+
+</TabContainer>

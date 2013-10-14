@@ -1,22 +1,15 @@
 <?xml version="1.0"?>
-<Container size="264,600" name="buysellmenu">
-	<TabBG amount="9" />
-	<Container position="0,70" size="245,500">
-		<HBox position="22,7"  min_size="170,20"  size="230,20">
-		<Spacer min_size="0"  max_size="50" />
-			<Label name="headline"  text="Buy or sell resources" />
-		</HBox>
+<TabContainer name="buysellmenu" headline="Buy or sell resources">
 
-		<hr position="20,30" />
-		<!-- Replaced with the buy/sell boxes. -->
-		<HBox size="250, 100"  position="23,47"  name="content"  padding="10" />
-		<hr position="20,105" />
-		<Label name="hint_label" position="17,120" wrap_text="1"
-			max_size="225,80" min_size="225,80" size="225,80" />
+	<!-- Replaced with the buy/sell boxes. -->
+	<HBox size="250, 100"  position="3,47"  name="content"  padding="10" />
+	<hr position="0,105" />
+	<Label name="hint_label" position="0,120" wrap_text="1"
+		max_size="225,80" min_size="225,80" size="225,80" />
 
-		<hr position="20,180" />
+	<hr position="0,180" />
 
-		<Label name="headline_trade_history" position="22,200" text="Trade history" />
-		<VBox position="22,225" size="244,280" name="trade_history" />
-	</Container>
-</Container>
+	<Label name="headline_trade_history" position="0,200" text="Trade history" />
+	<VBox position="0,225" size="244,280" name="trade_history" />
+
+</TabContainer>

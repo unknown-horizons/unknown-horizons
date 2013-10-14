@@ -30,6 +30,7 @@ class OverviewTab(TabInterface):
 	icon_path = 'icons/tabwidget/common/building_overview'
 	helptext = _lazy("Overview")
 
+	show_emblem = False
 	has_stance = False
 
 	def __init__(self, instance, widget=None, icon_path=None):
@@ -37,13 +38,13 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
 
 	def init_widget(self):
-		# set player emblem
-		if self.widget.child_finder('player_emblem'):
+		if self.__class__.show_emblem:
+			# set player emblem
 			emblem = 'content/gui/images/tabwidget/emblems/emblem_%s.png'
 			if self.instance.owner is not None:
-				self.widget.child_finder('player_emblem').image = emblem % self.instance.owner.color.name
+				self.widget.left_icon = emblem % self.instance.owner.color.name
 			else:
-				self.widget.child_finder('player_emblem').image = emblem % 'no_player'
+				self.widget.left_icon = emblem % 'no_player'
 
 		if self.__class__.has_stance:
 			self.init_stance_widget()
@@ -102,6 +103,7 @@ class GroundUnitOverviewTab(OverviewTab):
 	widget = 'overview_groundunit.xml'
 	helptext = _lazy("Unit overview")
 
+	show_emblem = True
 	has_stance = True
 	
 	def init_widget(self):
@@ -112,6 +114,7 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
+
 
 class FireStationOverviewTab(OverviewTab):
 	widget = 'overview_firestation.xml'

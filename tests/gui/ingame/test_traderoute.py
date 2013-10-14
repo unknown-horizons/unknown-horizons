@@ -41,7 +41,7 @@ def test_traderoute(gui):
 
 	# Give the resources back to the ship
 	# Click the trade button
-	gui.trigger('overview_trade_ship', 'trade')
+	gui.trigger('content', 'trade')
 
 	# Get the default amount (50 t, which is more than all available) of everything
 	gui.trigger('buy_sell_goods', 'inventory_entry_0')
@@ -53,7 +53,7 @@ def test_traderoute(gui):
 	found_settlement(gui, (27, 28), (28, 22))
 
 	# Open the configure trade route widget
-	gui.trigger('overview_trade_ship', 'configure_route')
+	gui.trigger('content', 'configure_route')
 
 	# The trade route widget is visible
 	assert gui.find(name='configure_route')

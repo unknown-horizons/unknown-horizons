@@ -29,7 +29,7 @@ from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
 from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
 from productiontabs import ProductionOverviewTab, SmallProductionOverviewTab
 from residentialtabs import SettlerOverviewTab
-from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
+from shiptabs import ShipOverviewTab, PlayerShipOverviewTab, FightingShipOverviewTab, \
 						TraderShipOverviewTab, EnemyShipOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab

@@ -29,6 +29,7 @@ from horizons.messaging import UpgradePermissionsChanged, SettlementInventoryUpd
 from horizons.util.changelistener import ChangeListener
 from horizons.util.inventorychecker import InventoryChecker
 from horizons.component.componentholder import ComponentHolder
+from horizons.component.namedcomponent import NamedComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.buildability.settlementcache import SettlementBuildabilityCache
@@ -98,6 +99,10 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			self.upgrade_permissions[level] = allowed
 
 			UpgradePermissionsChanged.broadcast(self)
+
+	@property
+	def name(self):
+		return self.get_component(NamedComponent).name
 
 	@property
 	def inhabitants(self):

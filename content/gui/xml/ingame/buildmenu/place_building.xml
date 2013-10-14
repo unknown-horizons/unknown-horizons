@@ -1,21 +1,13 @@
 <?xml version="1.0"?>
-<Container size="250,450" name="place_building">
-<TabBG amount="6" />
+<TabContainer name="place_building" headline="{tab_headline}">
 
-	<Container position="0,70" size="250,400">
-		<HBox name="head_box" position="0,7" size="250,100">
-			<Label name="headline" text="Build" />
-		</HBox>
-		<hr position="20,30" />
-		<Icon name="building" position="0,70" />
+	<Container position="0,5" size="245,150" name="top_bar">
+		<ImageButton name="rotate_left" position="0,0" path="icons/widgets/minimap/rotate_left" />
+		<ImageButton name="rotate_right" position="180,0" path="icons/widgets/minimap/rotate_right" />
+
+		<Label position="30,5" name="running_costs_label" text="Running costs:" />
+		<Label position="155,5" name="running_costs" />
 	</Container>
 
-	<Container position="0,110" size="245,150" name="top_bar">
-		<ImageButton name="rotate_left" position="18,0" path="icons/widgets/minimap/rotate_left" />
-		<ImageButton name="rotate_right" position="198,0" path="icons/widgets/minimap/rotate_right" />
-
-		<Label position="53,5" name="running_costs_label" text="Running costs:" />
-		<Label position="178,5" name="running_costs" />
-
-	</Container>
-</Container>
+	<Icon name="building" position="0,10" />
+</TabContainer>

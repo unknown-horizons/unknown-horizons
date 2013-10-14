@@ -6,7 +6,7 @@ velocity: 12.0
 components:
 - SelectableComponent:
     type: ship
-    tabs: [ShipOverviewTab, TradeTab]
+    tabs: [PlayerShipOverviewTab, TradeTab]
     enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:

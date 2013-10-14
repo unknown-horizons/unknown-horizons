@@ -1,13 +1,6 @@
 <?xml version="1.0"?>
-<!-- Trade boats tab -->
-<Container  size="260,550" name="boatbuilder_showcase">
-<TabBG amount="8" />
+<TabContainer name="boatbuilder_showcase" headline="{helptext}">
 
-	<Container position="0,70" size="260,80">
-		<!-- Headline -->
-		<Label name="headline" position="75,7" /> <!-- text filled at runtime -->
-		<hr position="20,30" />
-	</Container>
+	<AutoResizeContainer name="showcases" />
 
-	<Container position="20,95" size="260,450" name="showcases" />
-</Container>
+</TabContainer>
