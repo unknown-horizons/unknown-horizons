@@ -20,7 +20,7 @@ tab1:
 -
   - _ Precaution #TODO better name?
   - BUILDINGS.FIRE_STATION
-#  - BUILDINGS.DOCTOR
+  - BUILDINGS.DOCTOR
 
 tab2:
 - icon: icons/tabwidget/buildmenu/class/fields
