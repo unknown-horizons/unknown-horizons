@@ -1,9 +1,13 @@
 <?xml version="1.0"?>
 <AutoResizeContainer name="menu" position_technique="center:center">
-	<Icon image="content/gui/images/logos/fife.png" position="775,20" />
 
-	<Label name="version_label" text="Unknown Horizons" position="735,735" />
-	<ImageButton name="changeBackground" text="Change Background" position="755,685" />
+<AutoResizeContainer position_technique="right:top">
+	<Icon image="content/gui/images/logos/fife.png" />
+
+	<Label name="version_label" text="Unknown Horizons" />
+	<ImageButton name="changeBackground" text="Change Background" />
+</AutoResizeContainer>
+
 <Container name="wheel" size="800,600" position_technique="center:center">
 	<Icon image="content/gui/images/background/mainmenu/wheel.png" position="100,0" />
 
