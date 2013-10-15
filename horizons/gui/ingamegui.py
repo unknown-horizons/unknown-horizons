@@ -31,6 +31,7 @@ from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
+from horizons.gui.tabs import resolve_tab
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.logbook import LogBook
@@ -46,6 +47,7 @@ from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, Min
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
 from horizons.world.managers.statusiconmanager import StatusIconManager
 
@@ -320,6 +322,28 @@ class IngameGui(LivingObject):
 		# Set cursor correctly, menus might need to be opened.
 		# Open menus later; they may need unit data not yet inited
 		self.cursor.apply_select()
+
+		# Re-select old selected instance
+		for (instance_id, ) in db("SELECT id FROM selected WHERE `group` IS NULL"):
+			obj = WorldObject.get_object_by_id(instance_id)
+			self.session.selected_instances.add(obj)
+			obj.get_component(SelectableComponent).select()
+
+		# Re-show old tab (if there was one) or multiselection
+		if len(self.session.selected_instances) == 1:
+			tabname = db("SELECT value FROM metadata WHERE name = ?",
+			             'selected_tab')[0][0]
+			# This can still be None due to old savegames not storing the information
+			tabclass = None if tabname is None else resolve_tab(tabname)
+			obj.get_component(SelectableComponent).show_menu(jump_to_tabclass=tabclass)
+		elif self.session.selected_instances:
+			self.ingame_gui.show_multi_select_tab(self.session.selected_instances)
+
+		# Load user defined unit selection groups (Ctrl+number)
+		for (num, group) in enumerate(self.session.selection_groups):
+			for (instance_id, ) in db("SELECT id FROM selected WHERE `group` = ?", num):
+				obj = WorldObject.get_object_by_id(instance_id)
+				group.add(obj)
 
 		if not self.session.is_game_loaded():
 			# Fire a message for new world creation

@@ -33,7 +33,6 @@ import horizons.main
 
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
-from horizons.gui.tabs import resolve_tab
 from horizons.command.building import Tear
 from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
@@ -47,7 +46,7 @@ from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.worldobject import WorldObject
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.component.namedcomponent import NamedComponent
-from horizons.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
+from horizons.component.selectablecomponent import SelectableBuildingComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -263,28 +262,6 @@ class Session(LivingObject):
 		LoadingProgress.broadcast(self, "session_load_gui")
 		self.ingame_gui = self._ingame_gui_class(self)
 		self.ingame_gui.load(savegame_db)
-
-		# Re-select old selected instance
-		for (instance_id, ) in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"):
-			obj = WorldObject.get_object_by_id(instance_id)
-			self.selected_instances.add(obj)
-			obj.get_component(SelectableComponent).select()
-
-		# Re-show old tab (if there was one) or multiselection
-		if len(self.selected_instances) == 1:
-			tabname = savegame_db("SELECT value FROM metadata WHERE name = ?",
-			                      'selected_tab')[0][0]
-			# This can still be None due to old savegames not storing the information
-			tabclass = None if tabname is None else resolve_tab(tabname)
-			obj.get_component(SelectableComponent).show_menu(jump_to_tabclass=tabclass)
-		elif self.selected_instances:
-			self.ingame_gui.show_multi_select_tab(self.selected_instances)
-
-		# Load user defined unit selection groups (Ctrl+number)
-		for (num, group) in enumerate(self.selection_groups):
-			for (instance_id, ) in savegame_db("SELECT id FROM selected WHERE `group` = ?", num):
-				obj = WorldObject.get_object_by_id(instance_id)
-				group.add(obj)
 
 		Scheduler().before_ticking()
 		savegame_db.close()
