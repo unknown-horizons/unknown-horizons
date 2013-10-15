@@ -85,7 +85,15 @@ def saveload(session):
 	os.close(fd)
 	assert session.save(savegamename=filename)
 	options = StartGameOptions.create_load_game(filename, None)
+	# This hands out a new session.
 	horizons.main.start_singleplayer(options)
+	# Restore some properties that were changed for tests:
+	# Set game speed to maximum, and disable autoscroll.
+	session = horizons.main._modules.session
+	session.speed_set(GAME_SPEED.TICK_RATES[-1])
+	if hasattr(session, 'view'):
+		# Try to disable only if we're ingame already.
+		session.view.autoscroll = mock.Mock()
 
 
 class CursorToolsPatch(object):
