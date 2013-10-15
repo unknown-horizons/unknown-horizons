@@ -337,7 +337,7 @@ class IngameGui(LivingObject):
 			tabclass = None if tabname is None else resolve_tab(tabname)
 			obj.get_component(SelectableComponent).show_menu(jump_to_tabclass=tabclass)
 		elif self.session.selected_instances:
-			self.ingame_gui.show_multi_select_tab(self.session.selected_instances)
+			self.show_multi_select_tab(self.session.selected_instances)
 
 		# Load user defined unit selection groups (Ctrl+number)
 		for (num, group) in enumerate(self.session.selection_groups):
@@ -347,7 +347,7 @@ class IngameGui(LivingObject):
 
 		if not self.session.is_game_loaded():
 			# Fire a message for new world creation
-			self.session.ingame_gui.message_widget.add('NEW_WORLD')
+			self.message_widget.add('NEW_WORLD')
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
