@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-10-01 04:35+0200\n"
-"Last-Translator: Xavier Muntada Samà <arandurmdn@gmail.com>\n"
+"PO-Revision-Date: 2013-10-15 21:50+0200\n"
+"Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.7-dev\n"
+"X-Generator: Weblate 1.7\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -1253,7 +1253,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "Middle mouse button pan:"
-msgstr "Gir amb el botó del mig del ratolí"
+msgstr "Gir amb el botó del mig del ratolí:"
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "When enabled, dragging the middle mouse button will pan the camera"
@@ -1501,96 +1501,100 @@ msgstr "El comerciant no ven aquest article."
 
 #: horizons/component/tradepostcomponent.py:198
 msgid "You can not store this."
-msgstr ""
+msgstr "No ho podeu emmagatzemar."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "No us ho podeu permetre."
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Aquest producte ja no està en venta."
 
 #: horizons/component/tradepostcomponent.py:232
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "No compra aquest producte."
 
 #: horizons/component/tradepostcomponent.py:240
 msgid "You do not possess this."
-msgstr ""
+msgstr "No disposeu d'aquest producte."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "El comprador ja no en pot emmagatzemar més."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "El comprador no es pot permetre comprar-ho."
 
 #: horizons/component/tradepostcomponent.py:253
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "EL comprador no està interessat a tenir-ne més."
 
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "No s'ha pogut desar ràpidament."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "S'ha produït un error mentre es desava ràpidament."
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "No s'ha desat el mapa."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:66
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"Si torna a succeir aquest error, contacteu amb els desenvolupadors: "
+"{website}"
 
 #: horizons/engine/settingsdialog.py:52
 #: horizons/gui/widgets/pickbeltwidget.py:88
 msgid "Hotkeys"
-msgstr ""
+msgstr "Dreceres de teclat"
 
 #: horizons/engine/settingsdialog.py:69
 msgid "Restart required"
-msgstr ""
+msgstr "Cal reiniciar"
 
 #: horizons/engine/settingsdialog.py:70
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "Alguns canvis necessiten tornar a engegar l'Unknown Horizons."
 
 #: horizons/engine/settingsdialog.py:74
 msgid "Restore default settings"
-msgstr ""
+msgstr "Recupera la configuració per defecte"
 
 #: horizons/engine/settingsdialog.py:75
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
 msgstr ""
+"Si recupereu la configuració per defecte, s'eliminaran els canvis que hagueu "
+"fet."
 
 #: horizons/engine/settingsdialog.py:76
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Voleu continuar?"
 
 #: horizons/engine/settingshandler.py:70
 msgid "16 bit"
-msgstr ""
+msgstr "16 bits"
 
 #: horizons/engine/settingshandler.py:70
 msgid "32 bit"
-msgstr ""
+msgstr "32 bits"
 
 #: horizons/engine/settingshandler.py:70
 msgid "Default"
-msgstr ""
+msgstr "Per defecte"
 
 #: horizons/engine/settingshandler.py:141
 msgid "Warning"
-msgstr ""
+msgstr "Avís"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py:143
@@ -1600,35 +1604,43 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"La renderització amb SDL està pensada com a solució d'emergència i té "
+"seriosos problemes gràfics.\n"
+"\n"
+"Empreu-la sota la vostra responsabilitat!"
 
 #: horizons/engine/settingshandler.py:222
 msgid "Invalid network port"
-msgstr ""
+msgstr "El port de la xarxa no és vàlid"
 
 #: horizons/engine/settingshandler.py:223
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"Heu especificat un port que no és vàlid. Ha de ser un número entre 1 i "
+"65535."
 
 #: horizons/engine/settingshandler.py:224
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Comproveu el port que heu introduït i assegureu-vos que és dins el rang "
+"especificat."
 
 #: horizons/engine/settingshandler.py:236
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "No s'ha pogut aplicar la nova configuració de la xarxa."
 
 #: horizons/engine/settingshandler.py:237
 #: horizons/gui/modules/multiplayermenu.py:131
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "No es pot inicialitzar la xarxa amb la configuració actual."
 
 #: horizons/engine/settingshandler.py:238
 #: horizons/gui/modules/multiplayermenu.py:132
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Comproveu-ne la configuració a la secció de xarxa."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:242
@@ -1636,15 +1648,17 @@ msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
 msgstr ""
+"Els números de port baixos a vegades necessiten permisos especials. Proveu "
+"de posar un 0 o un número més gran de 1024."
 
 #: horizons/engine/settingshandler.py:277
 msgid "Logging enabled"
-msgstr ""
+msgstr "El registre està activat"
 
 #: horizons/engine/settingshandler.py:278
 #, python-brace-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "Els fitxers es desen a {directory}."
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
