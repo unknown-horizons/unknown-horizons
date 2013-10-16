@@ -21,7 +21,7 @@
 
 import glob
 import logging
-import random
+from collections import deque
 
 from fife.extensions.pychan.widgets import Icon
 
@@ -63,7 +63,7 @@ class MainMenu(Window):
 			'credits_label' : gui.show_credits,
 			'load_button': gui.load_game,
 			'load_label' : gui.load_game,
-			'changeBackground' : gui.randomize_background
+			'changeBackground' : gui.rotate_background,
 		})
 
 	def show(self):
@@ -92,8 +92,20 @@ class Gui(object):
 		self.show_popup = self.windows.show_popup
 		self.show_error_popup = self.windows.show_error_popup
 
+		# Main menu background image setup.
+		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
+		self.bg_images = deque(available_images)
+
+		latest_bg = horizons.globals.fife.get_uh_setting("LatestBackground")
+		try:
+			# If we know the current background from an earlier session,
+			# show all other available ones before picking that one again.
+			self.bg_images.remove(latest_bg)
+			self.bg_images.append(latest_bg)
+		except ValueError:
+			pass
 		self._background = Icon(position_technique='center:center')
-		self.randomize_background()
+		self.rotate_background()
 		self._background.show()
 
 		self.singleplayermenu = SingleplayerMenu(self.windows)
@@ -150,24 +162,18 @@ class Gui(object):
 			self._background.show()
 		self.windows.show(self.loadingscreen)
 
-	def randomize_background(self):
-		"""Randomly select a background image to use. This function is triggered by
-		change background button from main menu."""
-		self._background.image = self._get_random_background()
+	def rotate_background(self):
+		"""Select next background image to use in the game menu.
 
-	def _get_random_background(self):
-		"""Randomly select a background image to use through out the game menu."""
-		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
-		#get latest background
-		latest_background = horizons.globals.fife.get_uh_setting("LatestBackground")
-		#if there is a latest background then remove it from available list
-		if latest_background is not None:
-			available_images.remove(latest_background)
-		background_choice = random.choice(available_images)
-		#save current background choice
-		horizons.globals.fife.set_uh_setting("LatestBackground", background_choice)
+		Triggered by the "Change background" main menu button.
+		"""
+		# Note: bg_images is a deque.
+		self.bg_images.rotate()
+		self._background.image = self.bg_images[0]
+		# Save current background choice to settings.
+		# This keeps the background image consistent between sessions.
+		horizons.globals.fife.set_uh_setting("LatestBackground", self.bg_images[0])
 		horizons.globals.fife.save_settings()
-		return background_choice
 
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
