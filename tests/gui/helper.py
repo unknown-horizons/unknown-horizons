@@ -75,25 +75,21 @@ def found_settlement(gui, ship_pos, (x, y)):
 	assert isinstance(gui.cursor, CursorTool)
 
 
-def saveload(session):
+def saveload(gui):
 	"""Save and load the game (gui test version). Use like this:
 
 	# For gui tests
-	saveload(gui.session)
+	saveload(gui)
 	"""
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)
-	assert session.save(savegamename=filename)
+	assert gui.session.save(savegamename=filename)
 	options = StartGameOptions.create_load_game(filename, None)
-	# This hands out a new session.
+	# This hands out a new session, but `gui.session` is a property.
 	horizons.main.start_singleplayer(options)
 	# Restore some properties that were changed for tests:
 	# Set game speed to maximum, and disable autoscroll.
-	session = horizons.main._modules.session
-	session.speed_set(GAME_SPEED.TICK_RATES[-1])
-	if hasattr(session, 'view'):
-		# Try to disable only if we're ingame already.
-		session.view.autoscroll = mock.Mock()
+	gui.setup()
 
 
 class CursorToolsPatch(object):

@@ -210,7 +210,7 @@ def test_save_load_ticket_1421(gui):
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Save and reload game
-	saveload(gui.session)
+	saveload(gui)
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)

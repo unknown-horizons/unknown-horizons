@@ -47,7 +47,7 @@ def test_tutorial(gui):
 	move_ship(gui, ship, (11, 1))
 
 	# Save and reload scenario (1/3)
-	saveload(gui.session)
+	saveload(gui)
 
 	gui.trigger('overview_trade_ship', 'found_settlement')
 	gui.cursor_click(11, 6, 'left')
@@ -109,7 +109,7 @@ def test_tutorial(gui):
 	assert_progress(34)
 
 	# Save and reload scenario (2/3)
-	saveload(gui.session)
+	saveload(gui)
 
 	# Open build menu again (it is not reloaded, unlike selected instances)
 	gui.trigger('mainhud', 'build')
@@ -177,7 +177,7 @@ def test_tutorial(gui):
 	gui.cursor_click(23, 11, 'left')
 
 	# Save and reload scenario (3/3)
-	saveload(gui.session)
+	saveload(gui)
 
 	# Open build menu again
 	gui.trigger('mainhud', 'build')
