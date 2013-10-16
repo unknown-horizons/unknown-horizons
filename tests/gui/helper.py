@@ -168,7 +168,9 @@ class GuiHelper(object):
 		# patch for using map coords with CursorTools is enabled by default
 		self.cursor_map_coords = CursorToolsPatch()
 		self.cursor_map_coords.enable()
+		self.setup()
 
+	def setup(self):
 		self.disable_autoscroll()
 		self.speed_up()
 
