@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-06-03 22:33+0200\n"
+"PO-Revision-Date: 2013-10-16 05:47+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Hindi <http://hosted.weblate.org/projects/uh/uh/hi/>\n"
 "Language: hi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.7\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -2449,11 +2449,11 @@ msgstr "Preme un asentamento para engadir un punto de recalada!"
 
 #: horizons/gui/widgets/routeconfig.py:179
 msgid "Loading into ship"
-msgstr "Cargando no barco…"
+msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:186
 msgid "Unloading from ship"
-msgstr "Descargando do barco…"
+msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:371
 msgid "You are not allowed to trade with this player"
