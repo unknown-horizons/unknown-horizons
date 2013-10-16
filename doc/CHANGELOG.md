@@ -25,12 +25,13 @@ New files and features
  - 
 
 Brush-ups and modification
- - 
+ - #2168 Fix "known incorrect sRGB profile" libpng warnings
 
 ### User Interface
 
 Additions and new features
- - 
+ - #2176 Store (and reload) currently selected tab in savegames
+ - e6d5239 Rotate mainmenu background images instead of randomizing
 
 Repositioning and modifications
  - 
@@ -45,7 +46,7 @@ New functionalities
  - 
 
 Modified structures
- - 
+ - #2175 Tabwidget code refactoring
 
 Fixed crashes and inconsistencies
  - 
