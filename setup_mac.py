@@ -30,11 +30,11 @@ import os
 
 # Sets what directory to crawl for files to include
 # Relative to location of setup.py; leave off trailing slash
-includes_dir = 'src'
+includes_dir = 'content'
 
 # Set the root directory for included files
 # Relative to the bundle's Resources folder, so '../../' targets bundle root
-includes_target = '../../'
+includes_target = 'content/'
 
 # Initialize an empty list so we can use list.append()
 data_includes = []
