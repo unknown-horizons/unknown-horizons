@@ -108,6 +108,7 @@ class Gui(object):
 		self.rotate_background()
 		self._background.show()
 
+		# Initialize menu dialogs and widgets that are accessed from `gui`.
 		self.singleplayermenu = SingleplayerMenu(self.windows)
 		self.multiplayermenu = MultiplayerMenu(self, self.windows)
 		self.help_dialog = HelpDialog(self.windows)
