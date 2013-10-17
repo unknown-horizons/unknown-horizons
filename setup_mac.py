@@ -60,7 +60,7 @@ packages.append('fife')
 
 #Info.plist keys for the app
 #Icon.icns must be inside src/Contents/Resources/
-plist = {"CFBundleIconFile": "Icon.icns",
+plist = {"CFBundleIconFile": "content/gui/icons/Icon.icns",
 		 "CFBundleDisplayName": "Unknown Horizons",
 		 "CFBundleExecutable": "Unknown Horizons",
 		 "CFBundleIdentifier": "org.unknown-horizons",
