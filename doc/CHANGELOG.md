@@ -22,7 +22,7 @@ Fixed bugs and problems
 ### Media Content
 
 New files and features
- - 
+ - ddf6129 Restore warehouse ambient sound
 
 Brush-ups and modification
  - #2168 Fix "known incorrect sRGB profile" libpng warnings
@@ -37,7 +37,7 @@ Repositioning and modifications
  - 
 
 Fixed bugs and usability problems
- - 
+ - #2176 Doctor and Herbary not available in "per type" build menu
 
 
 ### Codebase
