@@ -66,7 +66,7 @@ plist = {"CFBundleIconFile": "content/gui/icons/Icon.icns",
 		 "CFBundleIdentifier": "org.unknown-horizons",
 		 "CFBundleName": "Unknown Horizons",
 		 "CFBundleShortVersionString": "0.0.0",
-		 "LSArchitecturePriority": "i386",
+		 "LSArchitecturePriority": ["x86_64", "i386"],
 		 "CFBundleVersion": "0.0.0"
 		}
 
