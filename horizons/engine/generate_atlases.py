@@ -72,6 +72,7 @@ from horizons.util.dbreader import DbReader
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
+
 class AtlasEntry(object):
 	def __init__(self, x, y, width, height, last_modified):
 		self.x = x
@@ -133,8 +134,10 @@ class AtlasBook(object):
 		with open(self.path, 'wb') as out_file:
 			im.save(out_file, 'png')
 
+
 def save_atlas_book(book):
 	book.save()
+
 
 class ImageSetManager(object):
 	def __init__(self, initial_data, path):
@@ -177,6 +180,7 @@ class ImageSetManager(object):
 
 		with open(self._path, 'wb') as json_file:
 			json.dump(self._data, json_file, indent=1)
+
 
 class AtlasGenerator(object):
 	log = logging.getLogger("generate_atlases")
@@ -277,7 +281,8 @@ class AtlasGenerator(object):
 		recreate_all = False
 		if len(set(paths)) != len(self.atlas_book_lookup):
 			recreate_all = True
-			self.log.info('The old number of images (%d) doesn\'t match the new (%d)', len(self.atlas_book_lookup), len(set(paths)))
+			self.log.info("The old number of images (%d) doesn't match the new (%d)",
+			              len(self.atlas_book_lookup), len(set(paths)))
 
 		recreate_books = set()
 		if not recreate_all:
@@ -395,6 +400,7 @@ class AtlasGenerator(object):
 			cls.log.info('Deleting %s', path)
 			os.unlink(path)
 
+
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1:
@@ -408,7 +414,7 @@ if __name__ == '__main__':
 		generator = AtlasGenerator.load(max_size)
 		if generator is not None:
 			updated = generator.update()
-	except:
+	except Exception:
 		traceback.print_exc()
 
 	if not updated:
