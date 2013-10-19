@@ -33,26 +33,12 @@ from horizons.world.production.producer import Producer
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.units.collectors import Collector
-from horizons.scheduler import Scheduler
 
 from tests.game import (
-	game_test, new_session, settle, load_session,
+	game_test, new_session, settle, load_session, saveload,
 	TEST_FIXTURES_DIR,
 )
 
-
-# utility
-def saveload(session):
-	"""Use like this:
-	session = saveload(session)
-	"""
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-	assert session.save(savegamename=filename)
-	session.end(keep_map=True)
-	session = load_session(filename)
-	Scheduler().before_ticking() # late init finish (not ticking already)
-	return session
 
 @game_test(manual_session=True)
 def test_load_inactive_production():
