@@ -2,4 +2,3 @@ include unknown-horizons
 include run_uh.py
 recursive-include content *
 recursive-include po/uh *.po *.pot
-include doc/manpage.xml

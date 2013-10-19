@@ -23,7 +23,7 @@
 
 from distutils.core import setup
 from distutils.command.build import build
-from distutils.spawn import spawn, find_executable
+from distutils.spawn import find_executable
 import distutils.cmd
 import os
 import glob
@@ -54,7 +54,8 @@ if os.path.exists('.git'):
 data = [
   (executable_path, ('unknown-horizons', )),
   ('share/pixmaps', ('content/unknown-horizons.xpm', )),
-  ('share/unknown-horizons', ('content/settings-template.xml', ))
+  ('share/unknown-horizons', ('content/settings-template.xml', )),
+  ('share/man/man6', ('content/packages/unknown-horizons.6', )),
 ]
 
 for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
@@ -208,24 +209,7 @@ class _build_i18n(distutils.cmd.Command):
 
 build.sub_commands.append(('build_i18n', None))
 
-class _build_man(build):
-	description = "build the Manpage"
-
-	def run(self):
-		if not find_executable('xsltproc'):
-			self.warn("Can't build manpage, needs xsltproc")
-			return
-
-		data = (['xsltproc',
-		        'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
-		        'doc/manpage.xml'], )
-		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, data)
-		self.distribution.data_files.append(('share/man/man6', ('unknown-horizons.6',)))
-
-build.sub_commands.append(('build_man', None))
-
 cmdclass = {
-  'build_man': _build_man,
   'build_i18n': _build_i18n,
 }
 
