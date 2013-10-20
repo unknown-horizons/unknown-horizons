@@ -36,6 +36,14 @@ try:
 except:
 	import pickle
 
+# add paths for Mac Os X app container (Unknown Horizons.app)
+app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python2.7')
+if os.path.exists(app_python_lib_path):
+	# horizons path: Unknown Horizons.app/Contents/Resources/lib/python2.7/horizons
+	sys.path.append(app_python_lib_path)
+	# PIL path: Unknown Horizons.app/Contents/Resources/lib/python2.7/lib-dynload/PIL
+	sys.path.append(os.path.join(app_python_lib_path, 'lib-dynload'))
+
 try:
 	from PIL import Image
 except ImportError:

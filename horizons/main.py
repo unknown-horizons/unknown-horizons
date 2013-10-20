@@ -145,11 +145,12 @@ def start(_command_line_arguments):
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
 	atlas_generator = None
+	horizons_path = os.path.dirname(horizons.__file__)
 	if VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled') \
 	                          and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled') \
 	                          and command_line_arguments.atlas_generation \
 	                          and not command_line_arguments.gui_test:
-		args = [sys.executable, os.path.join('horizons', 'engine', 'generate_atlases.py'),
+		args = [sys.executable, os.path.join(horizons_path, 'engine', 'generate_atlases.py'),
 		        str(horizons.globals.fife.get_uh_setting('MaxAtlasSize'))]
 		atlas_generator = subprocess.Popen(args, stdout=None, stderr=subprocess.STDOUT)
 
