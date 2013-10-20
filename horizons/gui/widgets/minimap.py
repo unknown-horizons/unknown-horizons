@@ -27,7 +27,7 @@ import horizons.globals
 from fife import fife
 
 from horizons.extscheduler import ExtScheduler
-from horizons.util.python.decorators import bind_all
+from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
@@ -785,4 +785,4 @@ class _MinimapImage(object):
 		self.targetrenderer.setRenderTarget( self.rendertarget.getTarget().getName(),
 		                                     False, 0 )
 
-bind_all(Minimap)
+decorators.bind_all(Minimap)
