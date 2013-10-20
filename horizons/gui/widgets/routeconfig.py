@@ -51,6 +51,8 @@ class RouteConfig(Window):
 	hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	MAX_ENTRIES = 7
 	MIN_ENTRIES = 2
+	SLOTS_PER_ENTRY = 3
+
 	def __init__(self, windows, instance):
 		super(RouteConfig, self).__init__(windows)
 
@@ -301,7 +303,7 @@ class RouteConfig(Window):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="traderoute_resources").removeAllChildren()
 
-	def add_trade_slots(self, entry, slot_amount):
+	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
 		x_position = 105
 		# Initialize slots with empty dict.
 		self.slots[entry] = {}
@@ -345,12 +347,12 @@ class RouteConfig(Window):
 		player_name_label = entry.findChild(name="player_name")
 		player_name_label.text = warehouse.owner.name
 
-		self.add_trade_slots(entry, self.slots_per_entry)
+		self.add_trade_slots(entry)
 
 		index = 1
 		resource_list = resource_list or {}
 		for res_id in resource_list:
-			if index > self.slots_per_entry:
+			if index > self.SLOTS_PER_ENTRY:
 				break
 			self.add_resource(slot=self.slots[entry][index - 1],
 			                  res_id=res_id,
@@ -407,7 +409,6 @@ class RouteConfig(Window):
 
 		self.widgets = []
 		self.slots = {}
-		self.slots_per_entry = 3
 
 		icon = self._gui.findChild(name="minimap")
 
