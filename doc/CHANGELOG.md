@@ -31,10 +31,10 @@ Brush-ups and modification
 
 Additions and new features
  - #2176 Store (and reload) currently selected tab in savegames
- - e6d5239 Rotate mainmenu background images instead of randomizing
+ - #2171 Show resource icons in build menu toolips
 
 Repositioning and modifications
- - 
+ - e6d5239 Rotate mainmenu background images instead of randomizing
 
 Fixed bugs and usability problems
  - #2176 Doctor and Herbary not available in "per type" build menu
@@ -43,13 +43,14 @@ Fixed bugs and usability problems
 ### Codebase
 
 New functionalities
- - 
+ - #2173 Manpage generation with custom optparse formatter
 
 Modified structures
  - #2175 Tabwidget code refactoring
+ - #2174 Save/load helpers for game tests and gui tests
 
 Fixed crashes and inconsistencies
- - 
+ - #2177 Several fixes for OS X app container
 
 
 ### User-Contributed Content
@@ -62,7 +63,7 @@ Campaigns, scenarios and maps
 
 New team members with this release, Annotations
  - Push access was granted to:
- - We accepted pull requests or patches by:
+ - We accepted pull requests or patches by: phaidon
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
 
