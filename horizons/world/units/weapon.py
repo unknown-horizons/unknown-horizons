@@ -160,7 +160,8 @@ class Weapon(object):
 		Loads ongoing attacks from savegame database
 		Creates scheduled calls for on_impact
 		"""
-		for (ticks, weapon_id, damage, dx, dy) in db("SELECT remaining_ticks, weapon_id, damage, dest_x, dest_y FROM attacks"):
+		attacks = db("SELECT remaining_ticks, weapon_id, damage, dest_x, dest_y FROM attacks")
+		for (ticks, weapon_id, damage, dx, dy) in attacks:
 			Scheduler().add_new_object(Callback(Weapon.on_impact,
 				session, weapon_id, damage, Point(dx, dy)), Weapon, ticks)
 

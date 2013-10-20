@@ -167,8 +167,8 @@ class World(BuildingOwner, WorldObject):
 
 		# load world buildings (e.g. fish)
 		LoadingProgress.broadcast(self, 'world_load_buildings')
-		for (building_worldid, building_typeid) in \
-		    savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid):
+		buildings = savegame_db("SELECT rowid, type FROM building WHERE location = ?", self.worldid)
+		for (building_worldid, building_typeid) in buildings:
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
 		# use a dict because it's directly supported by the pathfinding algo
