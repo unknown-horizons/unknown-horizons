@@ -194,7 +194,7 @@ class Island(BuildingOwner, WorldObject):
 	def get_tiles_tuple(self, tuples):
 		"""Same as get_tile, but takes a list of tuples.
 		@param tuples: iterable of tuples
-		@return: list of tiles"""
+		@return: iterable of map tiles"""
 		for tup in tuples:
 			if tup in self.ground_map:
 				yield self.ground_map[tup]
@@ -346,7 +346,7 @@ class Island(BuildingOwner, WorldObject):
 
 	def get_surrounding_tiles(self, where, radius=1, include_corners=True):
 		"""Returns tiles around point with specified radius.
-		@param point: instance of Point, or object with get_surrounding()"""
+		@param where: instance of Point, or object with get_surrounding()"""
 		if hasattr(where, "get_surrounding"):
 			coords = where.get_surrounding(include_corners=include_corners)
 		else: # assume Point

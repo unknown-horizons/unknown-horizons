@@ -133,14 +133,14 @@ class Fife(object):
 		"""Second initialization stage of engine"""
 		self.engine.init()
 
-		#init stuff
+		# Init stuff.
 		self.eventmanager = self.engine.getEventManager()
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
 		self.animationloader = None
 
-		#Set game cursor
+		# Set game cursor.
 		self.cursor = self.engine.getCursor()
 		cursor_images = {
 			'default':   'content/gui/images/cursors/cursor.png',
@@ -152,9 +152,11 @@ class Fife(object):
 		self.cursor_images = dict( (k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems() )
 		self.cursor.set(self.cursor_images['default'])
 
-		#init pychan
-		debug_pychan = self.get_fife_setting('PychanDebug') # default is False
-		self.pychan.init(self.engine, debug_pychan) # pychan debug mode may have performance impacts
+		# Init pychan.
+		# Enabling pychan's debug mode may have performance impacts.
+		# Because of this, the default PychanDebug value is False.
+		debug_pychan = self.get_fife_setting('PychanDebug')
+		self.pychan.init(self.engine, debug_pychan)
 
 		init_pychan()
 		self._setting.apply()
@@ -274,7 +276,8 @@ class Fife(object):
 
 	def __kill_engine(self):
 		"""Called when the engine is quit"""
-		self.cursor.set(fife.CURSOR_NATIVE) #hack to get system cursor back
+		# A hack to get the system cursor back:
+		self.cursor.set(fife.CURSOR_NATIVE)
 		self.engine.destroy()
 
 	def breakLoop(self, returnValue=None):

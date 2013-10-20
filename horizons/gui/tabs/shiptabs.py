@@ -135,7 +135,7 @@ class FightingShipOverviewTab(ShipOverviewTab):
 
 	def init_widget(self):
 		super(FightingShipOverviewTab, self).init_widget()
-		#create weapon inventory, needed only in gui for inventory widget
+		# Create weapon inventory, needed only in gui for inventory widget.
 		self.weapon_inventory = self.instance.get_weapon_storage()
 		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, self.weapon_inventory)
 

@@ -42,20 +42,21 @@ class Sound(object):
 		self.emitter['speech'] = None
 		self.emitter['ambient'] = []
 
-		#temporarily select a random music file to play. TODO: Replace with proper playlist
+		# Temporarily select a random music file to play.
+		# TODO: Replace with proper playlist.
 		self.ingame_music = glob.glob('content/audio/music/*.ogg')
 		self.menu_music = glob.glob('content/audio/music/menu/*.ogg')
 
-		# store the three most recently played files to avoid repetition
+		# Store the three most recently played files to avoid repetition.
 		# If we don't have three files available, reduce accordingly:
-		# At least one track not in last_tracks always needs to exist
+		# At least one track not in last_tracks always needs to exist.
 		available = max(0, len(self.ingame_music) - 1)
 		sample_size = min(3, available)
 		self.last_tracks = deque(maxlen=sample_size)
 		if len(self.menu_music) <= 1:
-			# sad stuff: we only have few menu tracks
-			# => also play some ingame_tracks after the menu
-			# music finished, but start with the menu tracks
+			# Sad stuff: we only have few menu tracks available right now.
+			# Also play some ingame_tracks after the dedicated menu music
+			# is exhausted, but make sure to start with these menu tracks.
 			ingame_tracks = random.sample(self.ingame_music, sample_size)
 			self.menu_music.extend(ingame_tracks)
 			self.last_tracks.extend(ingame_tracks)
