@@ -124,6 +124,8 @@ class _Tooltip(object):
 				(res_id, amount) = spec.split(':')
 				label = Label(text=amount+'  ')
 				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
+				# For compatibility with FIFE 0.3.5 and older, also set min/max.
+				icon.max_size = icon.min_size = (16, 16)
 				hbox.addChildren(icon, label)
 			hbox.adaptLayout()
 			# Now display the 16x16px "required resources" icons in the last line.
