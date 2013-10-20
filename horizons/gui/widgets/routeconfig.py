@@ -148,6 +148,7 @@ class RouteConfig(Window):
 		"""
 		moves an entry up or down
 		"""
+		# Abort (with error sound) if moving this entry is not possible.
 		position = self.widgets.index(entry)
 		if position == len(self.widgets) and direction is 'down' or \
 		   position == 0 and direction is 'up':
@@ -213,7 +214,7 @@ class RouteConfig(Window):
 	def add_resource(self, res_id, slot=None, entry=None, has_value=False, value=0):
 		button = slot.findChild(name="button")
 		position = self.widgets.index(entry)
-		#remove old resource from waypoints
+		# Remove old resource from waypoints.
 		res = self.resource_for_icon[button.up_image.source]
 		if res != 0:
 			self._route_cmd("remove_from_resource_list", position, res)
@@ -222,9 +223,10 @@ class RouteConfig(Window):
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
 		button.max_size = button.min_size = button.size = (32, 32)
 
-		#hide the resource menu
+		# Hide the resource menu.
 		self.hide_resource_menu()
 
+		# Show widget elements for new resource.
 		slider = slot.findChild(name="slider")
 
 		if not has_value:
@@ -241,7 +243,7 @@ class RouteConfig(Window):
 			slider.value = float(value)
 			amount = value
 		else:
-			#if the slider value is 0 keep the load/unload persistent
+			# Keep the load/unload persistent if the slider value is 0.
 			slider.value = 0.
 			amount = value
 
@@ -300,7 +302,7 @@ class RouteConfig(Window):
 
 	def add_trade_slots(self, entry, slot_amount):
 		x_position = 105
-		#initialize slots with empty dict
+		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):
 			slot = load_uh_widget('trade_single_slot.xml')

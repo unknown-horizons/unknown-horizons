@@ -181,7 +181,7 @@ def main():
 		    _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
 		exit_with_error(headline, msg)
 
-	#start UH
+	# Start UH.
 	import horizons.main
 	ret = True
 	if not options.profile:

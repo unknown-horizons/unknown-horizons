@@ -96,13 +96,13 @@ class PlayerDiplomacyTab(TabInterface):
 		"""
 		Checks the box with the diplomacy status between local player and selected player
 		"""
-		# uncheck all boxes
+		# Uncheck all boxes.
 		self.widget.distributeData({
 			'ally_check_box' : False,
 			'neutral_check_box' : False,
 			'enemy_check_box' : False})
 
-		#get the name of the selected box
+		# Get the name of the selected box.
 		if self.diplomacy.are_allies(self.local_player, self.player):
 			state = 'ally'
 		elif self.diplomacy.are_neutral(self.local_player, self.player):
@@ -110,7 +110,7 @@ class PlayerDiplomacyTab(TabInterface):
 		else:
 			state = 'enemy'
 
-		#check the selected box
+		# Check the selected box.
 		self.widget.distributeData({'%s_check_box' % state : True})
 
 
@@ -130,5 +130,7 @@ class DiplomacyTab(TabWidget):
 
 	@classmethod
 	def is_useable(self, world):
-		"""Only useful if there is another player."""
+		"""Diplomacy only makes sense if there is another player.
+		Pirates do not qualify as players: right now they're not interested in diplomacy.
+		"""
 		return not (len(world.players) == 1 and not world.pirate)

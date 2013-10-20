@@ -84,7 +84,7 @@ class AttackingTool(SelectionTool):
 			if instance.owner is local_player:
 				continue
 
-			#check diplomacy state between local player and instance owner
+			# Check diplomacy state between local player and instance owner.
 			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner) \
 				and not evt.isShiftPressed():
 				continue

@@ -704,7 +704,7 @@ class Minimap(object):
 		x = tup[0]
 		y = tup[1]
 
-		# rotate around center of minimap
+		# Rotate around center of minimap.
 		x -= self.location_center.x
 		y -= self.location_center.y
 
@@ -717,7 +717,7 @@ class Minimap(object):
 		new_x = int(round(new_x))
 		new_y = int(round(new_y))
 
-		#some points may get out of range
+		# Some points may get out of range.
 		new_x = max (self.location.left, new_x)
 		new_x = min (self.location.right, new_x)
 		new_y = max (self.location.top, new_y)

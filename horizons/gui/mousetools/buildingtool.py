@@ -760,7 +760,7 @@ class ShipBuildingToolLogic(object):
 	def continue_build(self): pass
 
 class SettlementBuildingToolLogic(object):
-	"""Helper class to separate the logic needen when building from a settlement
+	"""Helper class to separate the logic needed when building from a settlement
 	from the main building tool"""
 
 	def __init__(self, building_tool):
@@ -780,12 +780,14 @@ class SettlementBuildingToolLogic(object):
 			self.subscribed = True
 			SettlementRangeChanged.subscribe(self._on_update)
 
-		if tiles_to_check is not None: # only check these tiles
+		if tiles_to_check is not None:
+			# Only check these tiles.
 			for tile in tiles_to_check:
 				if is_tile_buildable(session, tile, None):
 					building_tool._color_buildable_tile(tile)
 
-		else: #default build on island
+		else:
+			# Default build on island.
 			for settlement in session.world.settlements:
 				if settlement.owner == player:
 					island = session.world.get_island(Point(*settlement.ground_map.iterkeys().next()))
@@ -799,7 +801,7 @@ class SettlementBuildingToolLogic(object):
 			self.building_tool().highlight_buildable(message.changed_tiles, new_buildings=True)
 
 	def on_escape(self, session):
-		session.ingame_gui.show_build_menu() # will call remove()
+		session.ingame_gui.show_build_menu()  # This will call remove().
 		if self.subscribed:
 			self.subscribed = False
 			SettlementRangeChanged.unsubscribe(self._on_update)

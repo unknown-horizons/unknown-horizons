@@ -155,7 +155,7 @@ class BuildTab(TabInterface):
 				  })
 
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
-			#check whether to disable build menu icon (not enough res available)
+			# Check whether to disable build menu icon (not enough res available).
 			if enough_res:
 				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
 				button.path = "icons/buildmenu/{id:03d}".format(id=building_id)

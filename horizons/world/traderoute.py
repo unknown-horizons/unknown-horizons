@@ -92,10 +92,12 @@ class TradeRoute(ChangeListener):
 		try:
 			self.waypoints.pop(position)
 		except IndexError:
-			pass # usually multiple clicks in short succession with mp delay
+			# Usually caused by multiple clicks in short succession with mp delay.
+			pass
 
 		if was_enabled:
-			self.enable() # might fail if too few waypoints now
+			# This might fail if there are too few waypoints now.
+			self.enable()
 
 		self._changed()
 
@@ -157,16 +159,18 @@ class TradeRoute(ChangeListener):
 			ship_inv = self.ship.get_component(StorageComponent).inventory
 			settlement_inv = settlement.get_component(StorageComponent).inventory
 			if amount > 0:
-				# load from settlement onto ship
+				# Case A: Load from settlement onto ship.
 				if settlement.owner is self.ship.owner:
-					if settlement_inv[res] < amount: # not enough res
+					# Check whether route asks for more of a resource than the settlement
+					# can offer currently. If so, only load that remainder instead.
+					if settlement_inv[res] < amount:
 						amount = settlement_inv[res]
-
-					# the ship should never pick up more than the number defined in the route config
+					# If due to previous trading there is a certain amount of this resource
+					# still left on the ship, don't overload: The ship only picks up enough
+					# to reach the amount defined in the route config in that case.
 					if ship_inv[res] + amount > self.get_location()['resource_list'][res]:
 						amount = self.get_location()['resource_list'][res] - ship_inv[res]
-
-					# check if ship has enough space is handled implicitly below
+					# The check if our ship has enough space is handled implicitly below.
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
 					amount_transferred, error = settlement.get_component(TradePostComponent).sell_resource(
@@ -181,13 +185,16 @@ class TradeRoute(ChangeListener):
 					status.settlement_provides_enough_res = False
 				status.remaining_transfers[res] -= amount_transferred
 			else:
-				# load from ship onto settlement
+				# Case B: Load from ship into settlement.
 				amount = -amount # use positive below
 				if settlement.owner is self.ship.owner:
-					if ship_inv[res] < amount: # check if ship has as much as planned
+					# Check if route asks for more of a resource than there is on the ship.
+					# If not, only move the remainder that we have loaded instead.
+					if ship_inv[res] < amount:
 						amount = ship_inv[res]
-
-					if settlement_inv.get_free_space_for(res) < amount: # too little space
+					# Check if we can store everything we want to unload from ship.
+					# If not, only move the amount that can still be stored in settlement.
+					if settlement_inv.get_free_space_for(res) < amount:
 						amount = settlement_inv.get_free_space_for(res)
 
 					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
