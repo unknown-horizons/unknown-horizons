@@ -162,7 +162,8 @@ class Island(BuildingOwner, WorldObject):
 			self.path_nodes = IslandPathNodes(self)
 
 			# Repopulate wild animals every 2 mins if they die out.
-			Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
+			Scheduler().add_new_object(self.check_wild_animal_population, self,
+			                           run_in=Scheduler().get_ticks(120), loops=-1)
 
 		"""TUTORIAL:
 		The next step will be an overview of the component system, which you will need
