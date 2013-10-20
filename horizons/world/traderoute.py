@@ -30,6 +30,7 @@ from horizons.scheduler import Scheduler
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent, TRADE_ERROR_TYPE
 
+
 class TradeRoute(ChangeListener):
 	"""
 	waypoints: list of dicts with the keys
@@ -40,6 +41,7 @@ class TradeRoute(ChangeListener):
 
 	Change notifications mainly notify about changes of enable.
 	"""
+
 	def __init__(self, ship):
 		super(TradeRoute, self).__init__()
 		self.ship = ship
@@ -55,8 +57,8 @@ class TradeRoute(ChangeListener):
 	def append(self, warehouse_worldid):
 		warehouse = WorldObject.get_object_by_id(warehouse_worldid)
 		self.waypoints.append({
-			'warehouse' : warehouse,
-			'resource_list' : {}
+			'warehouse': warehouse,
+			'resource_list': {},
 		})
 
 	def set_wait_at_load(self, flag):
@@ -64,7 +66,6 @@ class TradeRoute(ChangeListener):
 
 	def set_wait_at_unload(self, flag):
 		self.wait_at_unload = flag # as methods for commands
-
 
 	def move_waypoint(self, position, direction):
 		was_enabled = self.enabled
@@ -80,6 +81,7 @@ class TradeRoute(ChangeListener):
 			new_pos = position + 1
 		else:
 			return
+
 		self.waypoints.insert(new_pos, self.waypoints.pop(position))
 
 		if was_enabled:
@@ -207,6 +209,7 @@ class TradeRoute(ChangeListener):
 				if amount_transferred < -status.remaining_transfers[res] and ship_inv[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False
 				status.remaining_transfers[res] += amount_transferred
+
 		return status
 
 	def on_ship_blocked(self):

@@ -718,10 +718,10 @@ class Minimap(object):
 		new_y = int(round(new_y))
 
 		# Some points may get out of range.
-		new_x = max (self.location.left, new_x)
-		new_x = min (self.location.right, new_x)
-		new_y = max (self.location.top, new_y)
-		new_y = min (self.location.bottom, new_y)
+		new_x = max(self.location.left, new_x)
+		new_x = min(self.location.right, new_x)
+		new_y = max(self.location.top, new_y)
+		new_y = min(self.location.bottom, new_y)
 
 		return (new_x, new_y)
 

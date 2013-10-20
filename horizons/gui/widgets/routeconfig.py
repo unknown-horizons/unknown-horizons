@@ -40,6 +40,7 @@ from horizons.gui.widgets.imagebutton import OkButton
 
 import horizons.globals
 
+
 class RouteConfig(Window):
 	"""
 	Widget that allows configurating a ship's trading route
@@ -138,11 +139,11 @@ class RouteConfig(Window):
 		name = "no_entries_hint"
 		if not self.instance.route.waypoints:
 			lbl = widgets.Label(name=name, text=_("Click on a settlement to add a waypoint!"))
-			self._gui.findChild(name="left_vbox").addChild( lbl )
+			self._gui.findChild(name="left_vbox").addChild(lbl)
 		else:
 			lbl = self._gui.findChild(name=name)
 			if lbl:
-				self._gui.findChild(name="left_vbox").removeChild( lbl )
+				self._gui.findChild(name="left_vbox").removeChild(lbl)
 
 	def move_entry(self, entry, direction):
 		"""
@@ -168,7 +169,6 @@ class RouteConfig(Window):
 		self.widgets.insert(new_pos, self.widgets.pop(position))
 		self._route_cmd("move_waypoint", position, direction)
 		vbox.addChildren(self.widgets)
-
 
 		self._gui.adaptLayout()
 		self._resource_selection_area_layout_hack_fix()
@@ -336,7 +336,7 @@ class RouteConfig(Window):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
 		entry.name = 'container_%s' % len(self.widgets)
-		entry.settlement = weakref.ref( warehouse.settlement )
+		entry.settlement = weakref.ref(warehouse.settlement)
 		self.widgets.append(entry)
 
 		settlement_name_label = entry.findChild(name="warehouse_name")
@@ -359,9 +359,9 @@ class RouteConfig(Window):
 			index += 1
 
 		entry.mapEvents({
-		  'delete_warehouse/mouseClicked' : Callback(self.remove_entry, entry),
-		  'move_up/mouseClicked' : Callback(self.move_entry, entry, 'up'),
-		  'move_down/mouseClicked' : Callback(self.move_entry, entry, 'down')
+		  'delete_warehouse/mouseClicked': Callback(self.remove_entry, entry),
+		  'move_up/mouseClicked': Callback(self.move_entry, entry, 'up'),
+		  'move_down/mouseClicked': Callback(self.move_entry, entry, 'down')
 		  })
 		vbox.addChild(entry)
 
@@ -394,7 +394,7 @@ class RouteConfig(Window):
 			map_coords = event.map_coords
 			tile = self.session.world.get_tile(Point(*map_coords))
 			if tile is not None and tile.settlement is not None:
-				self.append_warehouse( tile.settlement.warehouse )
+				self.append_warehouse(tile.settlement.warehouse)
 
 	def _init_gui(self):
 		"""
@@ -409,7 +409,6 @@ class RouteConfig(Window):
 		self.slots_per_entry = 3
 
 		icon = self._gui.findChild(name="minimap")
-
 
 		self.minimap = Minimap(icon, session=self.session,
 		                       world=self.session.world,
@@ -450,9 +449,9 @@ class RouteConfig(Window):
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
-		  OkButton.DEFAULT_NAME : self._windows.close,
-		  'start_route/mouseClicked' : self.toggle_route
-		  })
+			OkButton.DEFAULT_NAME: self._windows.close,
+			'start_route/mouseClicked': self.toggle_route,
+		})
 
 	def _route_cmd(self, method, *args, **kwargs):
 		"""Convenience method for calling a method on instance.route via command (mp-safe)"""

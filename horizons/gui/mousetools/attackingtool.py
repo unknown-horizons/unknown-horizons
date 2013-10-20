@@ -91,4 +91,3 @@ class AttackingTool(SelectionTool):
 			if instance.has_component(HealthComponent):
 				target = instance
 		return target
-
