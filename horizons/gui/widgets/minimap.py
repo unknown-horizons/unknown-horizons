@@ -782,7 +782,7 @@ class _MinimapImage(object):
 
 	def set_drawing_enabled(self):
 		"""Always call this."""
-		self.targetrenderer.setRenderTarget( self.rendertarget.getTarget().getName(),
-		                                     False, 0 )
+		targetname = self.rendertarget.getTarget().getName()
+		self.targetrenderer.setRenderTarget(targetname, False, 0)
 
 decorators.bind_all(Minimap)

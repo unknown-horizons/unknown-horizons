@@ -105,11 +105,12 @@ class RouteConfig(Window):
 		self._gui.findChild(name='start_route').helptext = _('Stop route')
 
 	def start_route(self):
-		if not self.instance.route.can_enable():
-			self.instance.session.ingame_gui.show_popup(_("Need at least two settlements"),
-			                                            _("You need at least two different settlements in your route."))
-		else:
+		if self.instance.route.can_enable():
 			self._route_cmd("enable")
+		else:
+			self.instance.session.ingame_gui.show_popup(
+				_("Need at least two settlements"),
+				_("You need at least two different settlements in your route."))
 
 	def stop_route(self):
 		self._route_cmd("disable")
