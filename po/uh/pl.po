@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-07-21 01:42+0200\n"
-"Last-Translator: Piotr Gredka <pgredka@gmail.com>\n"
+"PO-Revision-Date: 2013-10-20 16:02+0200\n"
+"Last-Translator: Piotr B <piotr@liberalne.pl>\n"
 "Language-Team: Polish <http://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.8-dev\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -117,9 +117,8 @@ msgid "You need to found a settlement before you can construct buildings!"
 msgstr "Musisz stworzyć osadę, zanim będzie można zbudować budynki!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
-#, fuzzy
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Selecteer je schip en benader de kust met de rechtermuisknop."
+msgstr "Wybierz swój statek i dopłyń do brzegu klikając prawy przycisk myszy."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 #, fuzzy
