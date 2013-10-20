@@ -375,16 +375,20 @@ class Island(BuildingOwner, WorldObject):
 	def check_wild_animal_population(self):
 		"""Creates a wild animal if they died out."""
 		self.log.debug("Checking wild animal population: %s", len(self.wild_animals))
-		if not self.wild_animals:
-			# find a tree where we can place it
-			for building in self.buildings:
-				if building.id == BUILDINGS.TREE:
-					point = building.position.origin
-					animal = Entities.units[UNITS.WILD_ANIMAL](self, x=point.x, y=point.y, session=self.session)
-					animal.initialize()
-					return
-		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
-		# so do nothing in this case.
+		if self.wild_animals:
+			# Some animals still alive, nothing to revive.
+			return
+
+		# Find a tree where we can place a new animal.
+		# We might not find a tree at all, but if that's the case,
+		# wild animals would die out again anyway, so we do nothing.
+		for building in self.buildings:
+			if building.id == BUILDINGS.TREE:
+				point = building.position.origin
+				entity = Entities.units[UNITS.WILD_ANIMAL]
+				animal = entity(self, x=point.x, y=point.y, session=self.session)
+				animal.initialize()
+				return
 
 	def _init_cache(self):
 		""" initializes the cache that knows when the last time the buildability of a rectangle may have changed on this island """
