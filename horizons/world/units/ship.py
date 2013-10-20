@@ -130,7 +130,7 @@ class Ship(Unit):
 		super(Ship, self)._movement_finished()
 
 	def go(self, x, y):
-		#disable the trading route
+		# Disable trade route, direct commands overwrite automated ones.
 		if hasattr(self, 'route'):
 			self.route.disable()
 		if self.get_component(CommandableComponent).go(x, y) is None:

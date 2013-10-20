@@ -270,12 +270,12 @@ class World(BuildingOwner, WorldObject):
 	def load_raw_map(self, savegame_db, preview=False):
 		self.map_name = savegame_db.map_name
 
-		# load islands
+		# Load islands.
 		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
 			island = Island(savegame_db, islandid, self.session, preview=preview)
 			self.islands.append(island)
 
-		#calculate map dimensions
+		# Calculate map dimensions.
 		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
 		for island in self.islands:
 			self.min_x = min(island.position.left, self.min_x)
@@ -289,7 +289,7 @@ class World(BuildingOwner, WorldObject):
 
 		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
 
-		#add water
+		# Add water.
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
 
@@ -313,7 +313,7 @@ class World(BuildingOwner, WorldObject):
 								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 
-		# remove parts that are occupied by islands, create the island map and the full map
+		# Remove parts that are occupied by islands, create the island map and the full map.
 		self.island_map = {}
 		self.full_map = copy.copy(self.ground_map)
 		for island in self.islands:
@@ -710,6 +710,7 @@ class World(BuildingOwner, WorldObject):
 
 	def toggle_owner_highlight(self):
 		renderer = self.session.view.renderer['InstanceRenderer']
+		# Toggle flag that tracks highlight status.
 		self.owner_highlight_active = not self.owner_highlight_active
 		if self.owner_highlight_active: #show
 			for player in self.players:
@@ -719,7 +720,8 @@ class World(BuildingOwner, WorldObject):
 				for settlement in player.settlements:
 					for tile in settlement.ground_map.itervalues():
 						renderer.addColored(tile._instance, red, green, blue)
-		else: # 'hide' functionality
+		else:
+			# "Hide": Do nothing after removing color highlights.
 			renderer.removeAllColored()
 
 	def toggle_translucency(self):

@@ -118,14 +118,14 @@ class Weapon(object):
 			self.log.debug("%s target not in range", self)
 			return
 
-		#calculate the ticks until impact
+		# Calculate the ticks until impact.
 		impact_ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
-		#deal damage when attack reaches target
+		# Deal damage when attack reaches target.
 		Scheduler().add_new_object(Callback(Weapon.on_impact,
 			self.session, self.weapon_id, self.get_damage_modifier(), destination),
 			Weapon, impact_ticks)
 
-		#calculate the ticks until attack is ready again
+		# Calculate the ticks until attack is ready again.
 		ready_ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
 		Scheduler().add_new_object(self.make_attack_ready, self, ready_ticks)
 

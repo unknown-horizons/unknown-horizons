@@ -102,14 +102,14 @@ class WeaponHolder(object):
 		@param weapon_id : id of the weapon to be added
 		"""
 		self.log.debug("%s add weapon %s", self, weapon_id)
-		#if weapon is stackable, try to stack
+		# If weapon is stackable, try to stack.
 		weapon = None
 		if self.equipped_weapon_number == self.total_number_of_weapons:
 			self.log.debug("%s weapon storage full", self)
 			return False
 		if self.session.db.get_weapon_stackable(weapon_id):
 			stackable = [w for w in self._weapon_storage if weapon_id == w.weapon_id]
-			#try to increase the number of weapons for one stackable weapon
+			# Try to increase the number of weapons for one stackable weapon.
 			increased = False
 			for weapon in stackable:
 				try:
@@ -130,7 +130,7 @@ class WeaponHolder(object):
 			weapon.add_weapon_fired_listener(self._increase_fired_weapons_number)
 			self._fireable.append(weapon)
 			self.equipped_weapon_number += 1
-		self.on_storage_modified() # will update the range
+		self.on_storage_modified()  # This will update the range.
 		return True
 
 	def remove_weapon_from_storage(self, weapon_id):
@@ -143,11 +143,11 @@ class WeaponHolder(object):
 		if not weapons:
 			self.log.debug("%s can't remove, no weapons there", self)
 			return False
-		#remove last weapon added
+		# Remove the weapon last added.
 		weapon = weapons[-1]
 		#
 		remove_from_storage = False
-		#if stackable weapon needs to be removed try decrease number
+		# If the weapon to be removed was stackable, try to decrease number.
 		if self.session.db.get_weapon_stackable(weapon_id):
 			try:
 				weapon.decrease_number_of_weapons(1)
@@ -174,7 +174,7 @@ class WeaponHolder(object):
 		"""Equips weapon if present in inventory
 		@param weapon_id: weapon id to be equipped
 		@param number: number of weapons to be equipped
-		returns the number of weapons that were not equipped
+		@return: number of weapons that were not equipped
 		"""
 		while number:
 			if self.get_component(StorageComponent).inventory.alter(weapon_id, -1) == 0:
@@ -192,7 +192,7 @@ class WeaponHolder(object):
 		"""Unequips weapon and adds it to inventory
 		@param weapon_id: weapon id to be unequipped
 		@param number: number of weapons to be unequipped
-		returns the number of weapons that were not added to storage
+		@return: number of weapons that were not added to storage
 		"""
 		while number:
 			if self.remove_weapon_from_storage(weapon_id):
@@ -276,7 +276,7 @@ class WeaponHolder(object):
 	def attack(self, target):
 		"""
 		Triggers attack on target
-		@param target : target to be attacked
+		@param target: target to be attacked
 		"""
 		self.log.debug("%s attack %s", self, target)
 		if self._target is not None:
@@ -335,7 +335,7 @@ class WeaponHolder(object):
 		self._target = None
 
 	def stop_attack(self):
-		#when the ship is told to move, the target is None and the listeners in target removed
+		# When the ship is told to move, the target is None and the listeners in target removed
 		#TODO make another listener for target_changed
 		self.log.debug("%s stop attack", self)
 		if self._target is not None:
