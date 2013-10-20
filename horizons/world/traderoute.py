@@ -71,12 +71,12 @@ class TradeRoute(ChangeListener):
 		if was_enabled:
 			self.disable()
 
-		if position == len(self.waypoints) and direction is 'down' or \
-		   position == 0 and direction is 'up':
+		if position == len(self.waypoints) and direction == 'down' or \
+		   position == 0 and direction == 'up':
 			return
-		if direction is 'up':
+		if direction == 'up':
 			new_pos = position - 1
-		elif direction is 'down':
+		elif direction == 'down':
 			new_pos = position + 1
 		else:
 			return

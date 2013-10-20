@@ -186,12 +186,12 @@ class BuySellTab(TabInterface):
 		else: # set slider to value entered by the player
 			slider.value = float(value)
 
-		if slot.action is "sell":
+		if slot.action == "sell":
 			if slot.res is not None: # slot has been in use before, delete old value
 				self.clear_slot(slot_id)
 			if resource_id != 0:
 				self.set_slot_info(slot.id, resource_id, True, value)
-		elif slot.action is "buy":
+		elif slot.action == "buy":
 			if slot.res is not None: # slot has been in use before, delete old value
 				self.clear_slot(slot_id)
 			if resource_id != 0:
@@ -231,7 +231,7 @@ class BuySellTab(TabInterface):
 			fillbar.position = (icon.width - fillbar.width - 1,
 			                    icon.height - int(icon.height*filled))
 			# reuse code from toggle to finish setup (must switch state before, it will reset it)
-			slot.action = "sell" if slot.action is "buy" else "buy"
+			slot.action = "sell" if slot.action == "buy" else "buy"
 			self.toggle_buysell(slot_id, keep_hint=keep_hint)
 		slot.adaptLayout()
 
@@ -239,11 +239,11 @@ class BuySellTab(TabInterface):
 		"""Switches modes of individual resource slots between 'buy' and 'sell'."""
 		slot_widget = self.slot_widgets[slot_id]
 		limit = int(slot_widget.findChild(name="slider").value)
-		if slot_widget.action is "buy":
+		if slot_widget.action == "buy":
 			# setting to sell
 			self._show_sell(slot_widget)
 			slot_widget.action = "sell"
-		elif slot_widget.action is "sell":
+		elif slot_widget.action == "sell":
 			# setting to buy
 			self._show_buy(slot_widget)
 			slot_widget.action = "buy"

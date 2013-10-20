@@ -150,14 +150,14 @@ class RouteConfig(Window):
 		"""
 		# Abort (with error sound) if moving this entry is not possible.
 		position = self.widgets.index(entry)
-		if position == len(self.widgets) and direction is 'down' or \
-		   position == 0 and direction is 'up':
+		if position == len(self.widgets) and direction == 'down' or \
+		   position == 0 and direction == 'up':
 			AmbientSoundComponent.play_special('error')
 			return
 
-		if direction is 'up':
+		if direction == 'up':
 			new_pos = position - 1
-		elif direction is 'down':
+		elif direction == 'down':
 			new_pos = position + 1
 		else:
 			return
@@ -195,7 +195,7 @@ class RouteConfig(Window):
 		if res != 0:
 			self._route_cmd("toggle_load_unload", position, res)
 
-		if slot.action is "unload":
+		if slot.action == "unload":
 			self.show_load_icon(slot)
 		else:
 			self.show_unload_icon(slot)
@@ -206,7 +206,7 @@ class RouteConfig(Window):
 		amount_lbl = slot.findChild(name="amount")
 		amount = int(slider.value)
 		amount_lbl.text = u'{amount}t'.format(amount=amount)
-		if slot.action is "unload":
+		if slot.action == "unload":
 			amount = -amount
 		self._route_cmd("add_to_resource_list", position, res_id, amount)
 		slot.adaptLayout()
@@ -231,7 +231,7 @@ class RouteConfig(Window):
 
 		if not has_value:
 			value = int(slider.value)
-			if slot.action is "unload":
+			if slot.action == "unload":
 				value = -value
 
 		if value < 0:
