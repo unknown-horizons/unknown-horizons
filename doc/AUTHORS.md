@@ -91,6 +91,7 @@
 
 #### 2013
 * sabbott1877 (Logbook notification fix)
+* phaidon (OS X app container fixes)
 
 
 ## Translators
