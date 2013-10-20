@@ -280,18 +280,16 @@ class WeaponHolder(object):
 		"""
 		self.log.debug("%s attack %s", self, target)
 		if self._target is not None:
-			if self._target is not target:
-				#if target is changed remove the listener
-				if self._target.has_remove_listener(self.remove_target):
-					self._target.remove_remove_listener(self.remove_target)
-			else:
-				#else do not update the target
+			if self._target == target:
+				# If our target is unchanged: we already attack it.
 				self.log.debug("%s already targeting this one", self)
 				return
-		if not target.has_remove_listener(self.remove_target):
+			# Update target: discard the old listener, add a new one.
+			if self._target.has_remove_listener(self.remove_target):
+				self._target.remove_remove_listener(self.remove_target)
 			target.add_remove_listener(self.remove_target)
-		self._target = target
 
+		self._target = target
 		self.try_attack_target()
 
 	def user_attack(self, targetid):

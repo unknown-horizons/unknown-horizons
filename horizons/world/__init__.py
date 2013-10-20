@@ -712,17 +712,15 @@ class World(BuildingOwner, WorldObject):
 		renderer = self.session.view.renderer['InstanceRenderer']
 		# Toggle flag that tracks highlight status.
 		self.owner_highlight_active = not self.owner_highlight_active
-		if self.owner_highlight_active: #show
-			for player in self.players:
-				red = player.color.r
-				green = player.color.g
-				blue = player.color.b
-				for settlement in player.settlements:
-					for tile in settlement.ground_map.itervalues():
-						renderer.addColored(tile._instance, red, green, blue)
-		else:
+		if not self.owner_highlight_active:
 			# "Hide": Do nothing after removing color highlights.
 			renderer.removeAllColored()
+			return
+		for player in self.players:
+			r, g, b = player.color.r, player.color.g, player.color.b
+			for settlement in player.settlements:
+				for tile in settlement.ground_map.itervalues():
+					renderer.addColored(tile._instance, r, g, b)
 
 	def toggle_translucency(self):
 		"""Make certain building types translucent"""
