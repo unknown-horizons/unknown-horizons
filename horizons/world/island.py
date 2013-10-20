@@ -87,36 +87,39 @@ class Island(BuildingOwner, WorldObject):
 		self.__init(db, island_id, preview)
 
 		if not preview:
-			# create building indexers
+			# Create building indexers.
 			from horizons.world.units.animal import WildAnimal
 			self.building_indexers = {}
 			self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
-		# load settlements
+		# Load settlements.
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
-		if not preview:
-			self.terrain_cache = TerrainBuildabilityCache(self)
-			flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
-			self.available_flat_land = len(flat_land_set)
-			available_coords_set = set(self.terrain_cache.land_or_coast)
+		if preview:
+			# Caches and buildings are not required for map preview.
+			return
 
-			for settlement in self.settlements:
-				settlement.init_buildability_cache(self.terrain_cache)
-				for coords in settlement.ground_map:
-					available_coords_set.discard(coords)
-					if coords in flat_land_set:
-						self.available_flat_land -= 1
+		self.terrain_cache = TerrainBuildabilityCache(self)
+		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+		self.available_flat_land = len(flat_land_set)
+		available_coords_set = set(self.terrain_cache.land_or_coast)
 
-			self.available_land_cache = FreeIslandBuildabilityCache(self)
+		for settlement in self.settlements:
+			settlement.init_buildability_cache(self.terrain_cache)
+			for coords in settlement.ground_map:
+				available_coords_set.discard(coords)
+				if coords in flat_land_set:
+					self.available_flat_land -= 1
 
-			# load buildings
-			from horizons.world import load_building
-			for (building_worldid, building_typeid) in \
-				  db("SELECT rowid, type FROM building WHERE location = ?", island_id):
-				load_building(self.session, db, building_typeid, building_worldid)
+		self.available_land_cache = FreeIslandBuildabilityCache(self)
+
+		# Load buildings.
+		from horizons.world import load_building
+		buildings = db("SELECT rowid, type FROM building WHERE location = ?", island_id)
+		for (building_worldid, building_typeid) in buildings:
+			load_building(self.session, db, building_typeid, building_worldid)
 
 	def __init(self, db, island_id, preview):
 		"""
@@ -138,8 +141,10 @@ class Island(BuildingOwner, WorldObject):
 
 		self._init_cache()
 
-		# Contains references to all resource deposits (but not mines) on the island regardless of the owner.
-		self.deposits = defaultdict(dict) # {building_id: {(x, y): building_instance, ...}, ...}
+		# Contains references to all resource deposits (but not mines)
+		# on the island, regardless of the owner:
+		# {building_id: {(x, y): building_instance, ...}, ...}
+		self.deposits = defaultdict(dict)
 
 		self.settlements = []
 		self.wild_animals = []
@@ -152,10 +157,11 @@ class Island(BuildingOwner, WorldObject):
 		max_y = max(zip(*self.ground_map.keys())[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
-		if not preview: # this isn't needed for previews, but it is in actual games
+		if not preview:
+			# This isn't needed for map previews, but it is in actual games.
 			self.path_nodes = IslandPathNodes(self)
 
-			# repopulate wild animals every 2 mins if they die out.
+			# Repopulate wild animals every 2 mins if they die out.
 			Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
 
 		"""TUTORIAL:
