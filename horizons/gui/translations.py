@@ -248,14 +248,6 @@ def set_translations():
 		(u'trader_description_lbl'       , 'text'    ): _(u"This is the free trader's ship. It will visit you from time to time to buy or sell goods."),
 		},
 
-	'overview_warehouse.xml' : {
-		(u'name_label'                   , 'text'    ): _(u"Name:"),
-		(u'collector_utilization_label'  , 'helptext'): _(u"Collector utilization"),
-		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
-		(u'collector_utilization'        , 'helptext'): _(u"Collector utilization"),
-		(u'running_costs'                , 'helptext'): _(u"Running costs"),
-		},
-
 	'overviewtab.xml' : {
 		},
 
@@ -306,7 +298,9 @@ def set_translations():
 		(u'running_costs_label'          , 'text'    ): _(u"Running costs"),
 		(u'sell_income_label'            , 'text'    ): _(u"Sale"),
 		(u'taxes_label'                  , 'text'    ): _(u"Taxes"),
+		(u'collector_utilization_label'  , 'helptext'): _(u"Collector utilization"),
 		(u'show_production_overview'     , 'helptext'): _(u"Show resources produced in this settlement"),
+		(u'collector_utilization'        , 'helptext'): _(u"Collector utilization"),
 		},
 
 	'trade_single_slot.xml' : {
