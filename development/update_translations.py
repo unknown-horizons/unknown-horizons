@@ -41,15 +41,16 @@ for s in ALL_SCENARIOS:
 	SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/%s.po' % s)
 	SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/%s.pot' % s
 
-VOICES_TRANSLATIONS =  glob('po/voices/*.po')
+VOICES_TRANSLATIONS = glob('po/voices/*.po')
 VOICES_TEMPLATE = 'po/voices/unknown-horizons-voices.pot'
+
 
 def update_from_template(input_po, input_template):
 	"""
 	@param input_po: the translation to be updated against new template
 	@param input_template: the reference .pot template catalog
 	"""
-	print 'Updating %s:' % input_po
+	print('Updating %s:' % input_po)
 	try:
 		subprocess.call([
 			'msgmerge',
@@ -78,7 +79,7 @@ def main():
 	#	update_from_template(f, GLOSSARY_TEMPLATE)
 
 	# Scenario translation (old 'scenarios' project in pootle)
-	for scenario, translations in SCENARIO_TRANSLATIONS.iteritems():
+	for scenario, translations in SCENARIO_TRANSLATIONS.items():
 		for f in translations:
 			update_from_template(f, SCENARIO_TEMPLATE[scenario])
 
