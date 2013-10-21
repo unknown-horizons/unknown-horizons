@@ -53,7 +53,7 @@ if os.path.exists('.git'):
 
 data = [
   (executable_path, ('unknown-horizons', )),
-  ('share/pixmaps', ('content/unknown-horizons.xpm', )),
+  ('share/pixmaps', ('content/packages/unknown-horizons.xpm', )),
   ('share/unknown-horizons', ('content/settings-template.xml', )),
   ('share/man/man6', ('content/packages/unknown-horizons.6', )),
 ]

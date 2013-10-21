@@ -397,7 +397,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Thanks for playing the tutorial!
 
     Your UH-Team
-  - [Gallery, ["content/unknown-horizons.xpm",
+  - [Gallery, ["content/packages/unknown-horizons.xpm",
                "content/gfx/misc/status_icons/as_book_flip/idle/45/003.png"]]
 
 
