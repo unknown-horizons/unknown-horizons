@@ -99,10 +99,13 @@ class BuildingInfluencingDisaster(Disaster):
 		self.log.debug("%s still active, expanding..", self)
 		for building in self._affected_buildings:
 			for tile in self._settlement.get_tiles_in_radius(building.position, self.EXPANSION_RADIUS, False):
-				if tile.object is not None and tile.object.id == self.BUILDING_TYPE and tile.object not in self._affected_buildings:
-					if self._settlement.session.random.random() <= self.SEED_CHANCE:
-						self.infect(tile.object)
-						return
+				if tile.object is None or tile.object.id != self.BUILDING_TYPE:
+					continue
+				if tile.object in self._affected_buildings:
+					continue
+				if self._settlement.session.random.random() <= self.SEED_CHANCE:
+					self.infect(tile.object)
+					return
 
 	def end(self):
 		Scheduler().rem_all_classinst_calls(self)
