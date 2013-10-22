@@ -89,7 +89,7 @@ class ProductionOverviewTab(OverviewTab):
 			self._set_resource_amounts(container, production)
 
 			centered_container = container.findChild(name='centered_production_icons')
-			self._connect_multiple_input_res_for_production(centered_container, container, production)
+			self._connect_input_res(centered_container, container, production)
 
 			if production.is_paused():
 				centered_container.removeChild( centered_container.findChild(name="toggle_active_active") )
@@ -126,7 +126,7 @@ class ProductionOverviewTab(OverviewTab):
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
 
-	def _connect_multiple_input_res_for_production(self, centered_container, container, production):
+	def _connect_input_res(self, centered_container, container, production):
 		"""Draws incoming arrows for production line container."""
 		input_amount = len(production.get_consumed_resources())
 		if input_amount == 0:
