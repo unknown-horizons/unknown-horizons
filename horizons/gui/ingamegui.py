@@ -501,31 +501,40 @@ class IngameGui(LivingObject):
 		return True
 
 	def handle_selection_group(self, num, ctrl_pressed):
-		if ctrl_pressed:
-			# create new group (only consider units owned by the player)
-			self.session.selection_groups[num] = \
-			    set(filter(lambda unit : unit.owner.is_local_player,
-						self.session.selected_instances))
-			# drop units of the new group from all other groups
-			for group in self.session.selection_groups:
-				if group is not self.session.selection_groups[num]:
-					group -= self.session.selection_groups[num]
-		else:
-			# deselect
-			# we need to make sure to have a cursor capable of selection (for apply_select())
-			# this handles deselection implicitly in the destructor
-			self.set_cursor('selection')
+		"""Select existing or assign new unit selection group.
 
-			# apply new selection
+		Ctrl+number creates or overwrites the group of number `num`
+		with the currently selected units.
+		Pressing the associated key selects a group and centers the
+		camera around these units.
+		"""
+		if ctrl_pressed:
+			# Only consider units owned by the player.
+			units = set(u for u in self.session.selected_instances
+			            if u.owner.is_local_player)
+			self.session.selection_groups[num] = units
+			# Drop units of the new group from all other groups.
+			for group in self.session.selection_groups:
+				current_group = self.session.selection_groups[num]
+				if group != current_group:
+					group -= current_group
+		else:
+			# We need to make sure to have a cursor capable of selection
+			# for apply_select() to work.
+			# This handles deselection implicitly in the destructor.
+			self.set_cursor('selection')
+			# Apply new selection.
 			for instance in self.session.selection_groups[num]:
 				instance.get_component(SelectableComponent).select(reset_cam=True)
-			# assign copy since it will be randomly changed, the unit should only be changed on ctrl-events
+			# Assign copy since it will be randomly changed in selection code.
+			# The unit group itself should only be changed on Ctrl events.
 			self.session.selected_instances = self.session.selection_groups[num].copy()
-			# show menu depending on the entities selected
+			# Show correct tabs depending on what's selected.
 			if self.session.selected_instances:
 				self.cursor.apply_select()
 			else:
-				# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
+				# Nothing is selected here. Hide the menu since apply_select
+				# doesn't handle that case.
 				self.show_menu(None)
 
 	def toggle_cursor(self, which, *args, **kwargs):
