@@ -22,7 +22,7 @@
 
 from horizons.world.disaster import Disaster
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
-from horizons.constants import BUILDINGS, TIER
+from horizons.constants import BUILDINGS, GAME_SPEED, TIER
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
@@ -49,6 +49,13 @@ class BuildingInfluencingDisaster(Disaster):
 
 	# Defines building type that consumes resources of type DISASTER_RES
 	RESCUE_BUILDING_TYPE = None
+
+	# In a range of how many tiles can the disaster spread?
+	EXPANSION_RADIUS = 0
+
+	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
+	# By default, try twice before disasterying
+	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1
 
 
 	def __init__(self, settlement, manager):

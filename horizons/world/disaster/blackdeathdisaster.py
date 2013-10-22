@@ -20,7 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
+from horizons.constants import BUILDINGS, RES, TIER
 from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
@@ -37,9 +37,6 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 	SEED_CHANCE = 0.015
 
 	EXPANSION_RADIUS = 4
-
-	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
-	EXPANSION_TIME = TIME_BEFORE_HAVOC // 2 - 1 # try twice before dying
 
 	DISASTER_RES = RES.BLACKDEATH
 

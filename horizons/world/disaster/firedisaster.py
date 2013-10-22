@@ -22,7 +22,7 @@
 
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.status import FireStatusIcon
-from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
+from horizons.constants import BUILDINGS, RES, TIER
 
 class FireDisaster(BuildingInfluencingDisaster):
 	"""Simulates a fire.
@@ -35,9 +35,6 @@ class FireDisaster(BuildingInfluencingDisaster):
 	SEED_CHANCE = 0.005
 
 	EXPANSION_RADIUS = 3
-
-	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
-	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1 # try twice before dying
 
 	DISASTER_RES = RES.FIRE
 
