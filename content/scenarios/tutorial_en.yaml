@@ -39,7 +39,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Click where you want to place your first building.
   - |
 
-    TASK: Build a warehouse at the coast.
+  - [BoldLabel, "Task: Build a warehouse at the coast."]
 
 
 - &LUMBERJACK
@@ -64,7 +64,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - This means that you have to build a trail connecting your warehouse (or storage) and lumberjack.
   - |
 
-    TASK: Build a lumberjack in a wooded area and connect it to a road.
+  - [BoldLabel, "Task: Build a lumberjack in a wooded area and connect it to a road."]
   - Watch how a collector will fetch your first self-produced boards. Don't worry about recruiting workers for the lumberjack. That happens automatically.
   - [Gallery, [
        "content/gui/icons/buildmenu/008.png",
@@ -93,7 +93,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
   - |
 
-    TASK: Build a hunter and a fisher.
+  - [BoldLabel, "Task: Build a hunter and a fisher."]
   - Don't forget to connect them to your warehouse with trails!
   - [Gallery, [
        "content/gui/icons/buildmenu/011_h.png",
@@ -114,7 +114,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
   - |
 
-    TASK: Build a main square.
+  - [BoldLabel, "Task: Build a main square."]
   - [Pagebreak]
   - |
 
@@ -139,7 +139,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - |
 
-    TASK: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.
+  - [BoldLabel, "Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies."]
 
 
 - &MORETENTS
@@ -157,7 +157,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Note that you can also change the global tax settings here, too.
   - |
 
-    TASK: Build at least three additional tents.
+  - [BoldLabel, "Task: Build at least three additional tents."]
   - |
 
     TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.
@@ -185,7 +185,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
   - |
 
-    TASK: Build a signal fire at the coast close to your warehouse.
+  - [BoldLabel, "Task: Build a signal fire at the coast close to your warehouse."]
 
 
 - &TRADING
@@ -213,7 +213,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
   - |
 
-    TASK: Buy as many tools as you need to have 30 tools in stock!
+  - [BoldLabel, "Task: Buy as many tools as you need to have 30 tools in stock!"]
   - [Gallery, ["content/gui/icons/resources/32/006.png"]]
 
 
@@ -238,7 +238,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     The road connection is required as well.
   - |
 
-    TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith.
+  - [BoldLabel, "Task: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith."]
   - [Gallery, ["content/gui/icons/buildmenu/005.png"]]
 
 
@@ -260,7 +260,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
   - |
 
-    TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.
+  - [BoldLabel, "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."]
   - [Gallery, ["content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png"]]
 
 
@@ -285,7 +285,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - |
 
-    TASK: Build a farm.
+  - [BoldLabel, "Task: Build a farm."]
   - [Gallery, ["content/gui/icons/buildmenu/020.png"]]
 
 
@@ -311,7 +311,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
   - |
 
-    TASK: Build at least one pasture in the farm's range and add potato fields if you like.
+  - [BoldLabel, "Task: Build at least one pasture in the farm's range and add potato fields if you like."]
   - [Gallery, ["content/gui/icons/buildmenu/018.png",
                "content/gui/icons/buildmenu/019.png"]]
 
@@ -342,7 +342,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
   - |
 
-    TASK: Build a storage tent, preferably where you need collectors.
+  - [BoldLabel, "Task: Build a storage tent, preferably where you need collectors."]
   - [Gallery, ["content/gui/icons/buildmenu/002.png"]]
 
 
@@ -356,7 +356,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
   - |
 
-    TASK: Build a weaver positioned so it can get wool.
+  - [BoldLabel, "Task: Build a weaver positioned so it can get wool."]
   - [Gallery, ["content/gui/icons/buildmenu/007.png"]]
 
 
@@ -369,7 +369,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
   - |
 
-    TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.
+  - [BoldLabel, "Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial."]
   - [Gallery, ["content/gui/icons/widgets/cityinfo/inhabitants.png"]]
 
 
