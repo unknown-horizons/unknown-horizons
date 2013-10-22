@@ -304,6 +304,25 @@ class IngameGui(LivingObject):
 		self.logbook.save(db)
 		self.resource_overview.save(db)
 		LastActivePlayerSettlementManager().save(db)
+		self.save_selection(db)
+
+	def save_selection(self, db):
+		# Store instances that are selected right now.
+		for instance in self.selected_instances:
+			db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
+
+		# If a single instance is selected, also store the currently displayed tab.
+		# (Else, upon restoring, we display a multi-selection tab.)
+		tabname = None
+		if len(self.selected_instances) == 1:
+			tabclass = self.ingame_gui.get_cur_menu().current_tab
+			tabname = tabclass.__class__.__name__
+		db("INSERT INTO metadata (name, value) VALUES (?, ?)", 'selected_tab', tabname)
+
+		# Store user defined unit selection groups (Ctrl+number)
+		for (number, group) in enumerate(self.selection_groups):
+			for instance in group:
+				db("INSERT INTO selected (`group`, id) VALUES (?, ?)", number, instance.worldid)
 
 	def load(self, db):
 		self.message_widget.load(db)
@@ -323,6 +342,26 @@ class IngameGui(LivingObject):
 		# Open menus later; they may need unit data not yet inited
 		self.cursor.apply_select()
 
+		self.load_selection(db)
+
+		if not self.session.is_game_loaded():
+			# Fire a message for new world creation
+			self.message_widget.add('NEW_WORLD')
+
+		# Show message when the relationship between players changed
+		def notify_change(caller, old_state, new_state, a, b):
+			player1 = u"%s" % a.name
+			player2 = u"%s" % b.name
+
+			data = {'player1' : player1, 'player2' : player2}
+
+			string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
+			                                                  new=new_state.upper())
+			self.message_widget.add(string_id=string_id, message_dict=data)
+
+		self.session.world.diplomacy.add_diplomacy_status_changed_listener(notify_change)
+
+	def load_selection(self, db):
 		# Re-select old selected instance
 		for (instance_id, ) in db("SELECT id FROM selected WHERE `group` IS NULL"):
 			obj = WorldObject.get_object_by_id(instance_id)
@@ -344,23 +383,6 @@ class IngameGui(LivingObject):
 			for (instance_id, ) in db("SELECT id FROM selected WHERE `group` = ?", num):
 				obj = WorldObject.get_object_by_id(instance_id)
 				group.add(obj)
-
-		if not self.session.is_game_loaded():
-			# Fire a message for new world creation
-			self.message_widget.add('NEW_WORLD')
-
-		# Show message when the relationship between players changed
-		def notify_change(caller, old_state, new_state, a, b):
-			player1 = u"%s" % a.name
-			player2 = u"%s" % b.name
-
-			data = {'player1' : player1, 'player2' : player2}
-
-			string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
-			                                                  new=new_state.upper())
-			self.message_widget.add(string_id=string_id, message_dict=data)
-
-		self.session.world.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""

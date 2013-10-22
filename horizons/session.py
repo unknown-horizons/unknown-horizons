@@ -419,23 +419,6 @@ class Session(LivingObject):
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
 
-			# Store instances that are selected right now.
-			for instance in self.selected_instances:
-				db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
-
-			# If a single instance is selected, also store the currently displayed tab.
-			# (Else, upon restoring, we display a multi-selection tab.)
-			tabname = None
-			if len(self.selected_instances) == 1:
-				tabclass = self.ingame_gui.get_cur_menu().current_tab
-				tabname = tabclass.__class__.__name__
-			db("INSERT INTO metadata (name, value) VALUES (?, ?)", 'selected_tab', tabname)
-
-			# Store user defined unit selection groups (Ctrl+number)
-			for (number, group) in enumerate(self.selection_groups):
-				for instance in group:
-					db("INSERT INTO selected (`group`, id) VALUES (?, ?)", number, instance.worldid)
-
 			# Store RNG state
 			rng_state = json.dumps(self.random.getstate())
 			SavegameManager.write_metadata(db, self.savecounter, rng_state)
