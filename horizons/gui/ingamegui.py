@@ -476,32 +476,7 @@ class IngameGui(LivingObject):
 		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4,
 		                fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
 			num = int(keyval - fife.Key.NUM_0)
-			if evt.isControlPressed():
-				# create new group (only consider units owned by the player)
-				self.session.selection_groups[num] = \
-				    set(filter(lambda unit : unit.owner.is_local_player,
-				               self.session.selected_instances))
-				# drop units of the new group from all other groups
-				for group in self.session.selection_groups:
-					if group is not self.session.selection_groups[num]:
-						group -= self.session.selection_groups[num]
-			else:
-				# deselect
-				# we need to make sure to have a cursor capable of selection (for apply_select())
-				# this handles deselection implicitly in the destructor
-				self.set_cursor('selection')
-
-				# apply new selection
-				for instance in self.session.selection_groups[num]:
-					instance.get_component(SelectableComponent).select(reset_cam=True)
-				# assign copy since it will be randomly changed, the unit should only be changed on ctrl-events
-				self.session.selected_instances = self.session.selection_groups[num].copy()
-				# show menu depending on the entities selected
-				if self.session.selected_instances:
-					self.cursor.apply_select()
-				else:
-					# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
-					self.show_menu(None)
+			self.handle_selection_group(num, evt.isControlPressed())
 		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave() # load is only handled by the MainListener
 		elif action == _Actions.PIPETTE:
@@ -524,6 +499,34 @@ class IngameGui(LivingObject):
 			return False
 
 		return True
+
+	def handle_selection_group(self, num, ctrl_pressed):
+		if ctrl_pressed:
+			# create new group (only consider units owned by the player)
+			self.session.selection_groups[num] = \
+			    set(filter(lambda unit : unit.owner.is_local_player,
+						self.session.selected_instances))
+			# drop units of the new group from all other groups
+			for group in self.session.selection_groups:
+				if group is not self.session.selection_groups[num]:
+					group -= self.session.selection_groups[num]
+		else:
+			# deselect
+			# we need to make sure to have a cursor capable of selection (for apply_select())
+			# this handles deselection implicitly in the destructor
+			self.set_cursor('selection')
+
+			# apply new selection
+			for instance in self.session.selection_groups[num]:
+				instance.get_component(SelectableComponent).select(reset_cam=True)
+			# assign copy since it will be randomly changed, the unit should only be changed on ctrl-events
+			self.session.selected_instances = self.session.selection_groups[num].copy()
+			# show menu depending on the entities selected
+			if self.session.selected_instances:
+				self.cursor.apply_select()
+			else:
+				# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
+				self.show_menu(None)
 
 	def toggle_cursor(self, which, *args, **kwargs):
 		"""Alternate between the cursor which and default.
