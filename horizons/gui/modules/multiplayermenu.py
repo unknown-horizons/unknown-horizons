@@ -256,7 +256,7 @@ class MultiplayerMenu(Window):
 	def _create_game(self):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
-		self._windows.show(CreateGame(self._windows)),
+		self._windows.show(CreateGame(self._windows))
 
 
 class PasswordInput(Popup):

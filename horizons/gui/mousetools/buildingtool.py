@@ -756,8 +756,10 @@ class ShipBuildingToolLogic(object):
 		if instance.has_change_listener(building_tool.force_update):
 			instance.remove_change_listener(building_tool.force_update)
 
+	# Using messages now.
+	def continue_build(self):
+		pass
 
-	def continue_build(self): pass
 
 class SettlementBuildingToolLogic(object):
 	"""Helper class to separate the logic needed when building from a settlement
@@ -811,9 +813,13 @@ class SettlementBuildingToolLogic(object):
 			self.subscribed = False
 			SettlementRangeChanged.unsubscribe(self._on_update)
 
-	def add_change_listener(self, instance, building_tool): pass # using messages now
-	def remove_change_listener(self, instance, building_tool): pass
-	def continue_build(self): pass
+	# Using messages now.
+	def add_change_listener(self, instance, building_tool):
+		pass
+	def remove_change_listener(self, instance, building_tool):
+		pass
+	def continue_build(self):
+		pass
 
 
 class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):

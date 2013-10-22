@@ -26,6 +26,7 @@ from horizons.gui.windows import Window
 from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
 
+
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
 	sections = () # Tuple with widget name and Label

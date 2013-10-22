@@ -641,7 +641,6 @@ class Minimap(object):
 		# resizeImage also means draw
 		self.minimap_image.rendertarget.resizeImage(name, p, img, new_width, new_height)
 
-
 	def rotate_right(self):
 		# keep track of rotation at any time, but only apply
 		# if it's actually used
@@ -696,7 +695,7 @@ class Minimap(object):
 				              3 : 3 * math.pi / 2
 				              }
 	def _get_from_rotated_coords(self, tup):
-		return self._rotate (tup, self._from_rotations)
+		return self._rotate(tup, self._from_rotations)
 
 	def _rotate(self, tup, rotations):
 		rotation = rotations[ self.rotation ]

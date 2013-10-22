@@ -103,7 +103,7 @@ class GroundUnitOverviewTab(OverviewTab):
 	helptext = _lazy("Unit overview")
 
 	has_stance = True
-	
+
 	def init_widget(self):
 		super(GroundUnitOverviewTab, self).init_widget()
 		health_widget = self.widget.findChild(name='health')
@@ -112,6 +112,7 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
+
 
 class FireStationOverviewTab(OverviewTab):
 	widget = 'overview_firestation.xml'

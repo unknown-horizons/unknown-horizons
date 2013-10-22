@@ -58,7 +58,7 @@ class TradeTab(TabInterface):
 		@param instance: ship instance used for trading
 		"""
 		self.instance = instance
-		super(TradeTab,self).__init__()
+		super(TradeTab, self).__init__()
 
 	def init_widget(self):
 		events = {}

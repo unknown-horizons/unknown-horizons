@@ -232,7 +232,7 @@ class LogBook(PickBeltWidget, Window):
 			message = parameter[1]
 			# message is already going to be displayed or has been displayed
 			# before (e.g. re-opening older logbook pages)
-			duplicate_message = (message in self._messages_to_display or  
+			duplicate_message = (message in self._messages_to_display or
 								message in self._message_log)
 
 			if not duplicate_message:
