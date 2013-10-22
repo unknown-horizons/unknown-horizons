@@ -478,16 +478,17 @@ class IngameGui(LivingObject):
 			num = int(keyval - fife.Key.NUM_0)
 			self.handle_selection_group(num, evt.isControlPressed())
 		elif action == _Actions.QUICKSAVE:
-			self.session.quicksave() # load is only handled by the MainListener
+			self.session.quicksave()
+		# Quickload is only handled by the MainListener.
 		elif action == _Actions.PIPETTE:
-			# copy mode: pipette tool
+			# Mode that allows copying buildings.
 			self.toggle_cursor('pipette')
 		elif action == _Actions.HEALTH_BAR:
-			# shows health bar of every instance with an health component
+			# Show health bar of every instance with a health component.
 			self.session.world.toggle_health_for_all_health_instances()
 		elif action == _Actions.SHOW_SELECTED:
 			if self.session.selected_instances:
-				# scroll to first one, we can never guarantee to display all selected units
+				# Scroll to first one, we can never guarantee to display all selected units.
 				instance = iter(self.session.selected_instances).next()
 				self.session.view.center( * instance.position.center.to_tuple())
 				for instance in self.session.selected_instances:
