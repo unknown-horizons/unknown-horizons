@@ -473,8 +473,7 @@ class IngameGui(LivingObject):
 			self.session.world.toggle_translucency()
 		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
 			self.session.world.toggle_owner_highlight()
-		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4,
-		                fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
+		elif fife.Key.NUM_0 <= keyval <= fife.Key.NUM_9:
 			num = int(keyval - fife.Key.NUM_0)
 			self.handle_selection_group(num, evt.isControlPressed())
 		elif action == _Actions.QUICKSAVE:
