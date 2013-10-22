@@ -178,5 +178,5 @@ class EnemyShipOverviewTab(OverviewTab):
 	helptext = _lazy("Ship overview")
 
 	def init_widget(self):
-		super(ShipOverviewTab, self).init_widget()
+		super(EnemyShipOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.owner.name
