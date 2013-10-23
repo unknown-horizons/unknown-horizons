@@ -5,7 +5,7 @@ CHANGELOG Unknown Horizons
 
 2013-??-??: Milestone 2013.4
 ----------------------------
-changelog date: OCT 11
+changelog date: OCT 23
 
 ### Gameplay and Balancing
 
@@ -32,6 +32,7 @@ Brush-ups and modification
 Additions and new features
  - #2176 Store (and reload) currently selected tab in savegames
  - #2171 Show resource icons in build menu toolips
+ - #2185 Ship pre-selected and in hotkeygroup 1 when starting new game
 
 Repositioning and modifications
  - e6d5239 Rotate mainmenu background images instead of randomizing
@@ -48,6 +49,7 @@ New functionalities
 Modified structures
  - #2175 Tabwidget code refactoring
  - #2174 Save/load helpers for game tests and gui tests
+ - #2184 Introduce content/packages/ for files related to packaging
 
 Fixed crashes and inconsistencies
  - #2177 Several fixes for OS X app container
