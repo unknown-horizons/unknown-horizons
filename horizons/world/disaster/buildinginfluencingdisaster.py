@@ -120,7 +120,7 @@ class BuildingInfluencingDisaster(Disaster):
 			db, worldid = load
 			havoc_time = db("SELECT remaining_ticks_havoc FROM building_influencing_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
-		AddStatusIcon.broadcast(building, self.STATUS_ICON)
+		AddStatusIcon.broadcast(building, self.STATUS_ICON(building))
 		NewDisaster.broadcast(building.owner, building, self.__class__, self)
 
 	def recover(self, building):
