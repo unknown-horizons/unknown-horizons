@@ -46,7 +46,7 @@ class InventoryChecker(object):
 
 	def remove(self):
 		"""Clean up"""
-		Scheduler.rem_all_classinst_calls(self)
+		Scheduler().rem_all_classinst_calls(self)
 		self.__inventory_copy = None
 		self.__storage_component = None
 		self.__message_class = None
