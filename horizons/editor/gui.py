@@ -115,6 +115,11 @@ class IngameGui(LivingObject):
 
 		super(IngameGui, self).end()
 
+	def handle_selection_group(self, num, ctrl_pressed):
+		# Someday, maybe cool stuff will be possible here.
+		# That day is not today, I'm afraid.
+		pass
+
 	def toggle_pause(self):
 		self.windows.toggle(self.pausemenu)
 
