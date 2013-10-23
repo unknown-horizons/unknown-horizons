@@ -308,19 +308,19 @@ class IngameGui(LivingObject):
 
 	def save_selection(self, db):
 		# Store instances that are selected right now.
-		for instance in self.selected_instances:
+		for instance in self.session.selected_instances:
 			db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
 
 		# If a single instance is selected, also store the currently displayed tab.
 		# (Else, upon restoring, we display a multi-selection tab.)
 		tabname = None
-		if len(self.selected_instances) == 1:
-			tabclass = self.ingame_gui.get_cur_menu().current_tab
+		if len(self.session.selected_instances) == 1:
+			tabclass = self.get_cur_menu().current_tab
 			tabname = tabclass.__class__.__name__
 		db("INSERT INTO metadata (name, value) VALUES (?, ?)", 'selected_tab', tabname)
 
 		# Store user defined unit selection groups (Ctrl+number)
-		for (number, group) in enumerate(self.selection_groups):
+		for (number, group) in enumerate(self.session.selection_groups):
 			for instance in group:
 				db("INSERT INTO selected (`group`, id) VALUES (?, ?)", number, instance.worldid)
 
