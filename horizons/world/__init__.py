@@ -31,6 +31,7 @@ from collections import deque
 import horizons.globals
 from horizons.world.island import Island
 from horizons.world.player import HumanPlayer
+from horizons.scheduler import Scheduler
 from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.color import Color
 from horizons.util.python import decorators
@@ -47,6 +48,7 @@ from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
@@ -453,6 +455,14 @@ class World(BuildingOwner, WorldObject):
 				ship.get_component(StorageComponent).inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = point.to_tuple()
+				# HACK: Store starting ship as first unit group, and select it
+				def _preselect_player_ship(ship):
+					sel_comp = ship.get_component(SelectableComponent)
+					sel_comp.select(reset_cam=True)
+					self.session.selected_instances = [ship]
+					self.session.ingame_gui.handle_selection_group(1, True)
+					sel_comp.show_menu()
+				Scheduler().add_new_object(lambda: _preselect_player_ship(ship), ship, run_in=0)
 
 		# load the AI stuff only when we have AI players
 		if any(isinstance(player, AIPlayer) for player in self.players):
