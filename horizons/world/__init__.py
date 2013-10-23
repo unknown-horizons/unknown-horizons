@@ -459,7 +459,7 @@ class World(BuildingOwner, WorldObject):
 				def _preselect_player_ship(ship):
 					sel_comp = ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)
-					self.session.selected_instances = [ship]
+					self.session.selected_instances = set([ship])
 					self.session.ingame_gui.handle_selection_group(1, True)
 					sel_comp.show_menu()
 				Scheduler().add_new_object(lambda: _preselect_player_ship(ship), ship, run_in=0)
