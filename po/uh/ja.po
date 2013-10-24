@@ -2984,7 +2984,7 @@ msgstr "Zvětšuje hráčovo zorné pole."
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:213
 msgid "Lumberjack Tent"
-msgstr "Dřevorubcův stan"
+msgstr "伐採所"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:215
@@ -2993,9 +2993,8 @@ msgstr "Dřevorubcova bouda"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:217
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
-msgstr "伐採所：　木を切って板材を作ります。"
+msgstr "木を切って板材を作ります。"
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:222
@@ -3654,7 +3653,7 @@ msgstr ""
 #: horizons/world/building/__init__.py:124
 #, python-brace-format
 msgid "{building}: {description}"
-msgstr "{building}: {description}"
+msgstr "{building}：　{description}"
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
