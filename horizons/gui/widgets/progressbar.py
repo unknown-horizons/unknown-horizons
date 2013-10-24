@@ -120,14 +120,14 @@ class TilingProgressBar(ProgressBar):
 	def _set_fill_image(self, image):
 		self.__fill = image
 		self.tiles_width = Icon(image=image).size[0]
-		self.tiles.tiles_img = image
+		self.tiles.tile_img = image
 
 	def _get_right_image(self):
 		return self.__right
 	def _set_right_image(self, image):
 		self.__right = image
 		self.right_width = Icon(image=image).size[0]
-		self.tiles.final_img = image
+		self.tiles.end_img = image
 
 	progress = property(_get_progress, _set_progress)
 	left = property(_get_left_image, _set_left_image)

@@ -28,14 +28,14 @@ class TilingBackground(object):
 	but the layout also requires some kind of border around those tiling panels.
 	Default attributes are set in the widgets inheriting from TilingBackground.
 	"""
-	def __init__(self, amount, base_path, start_img, tiles_img, final_img, **kwargs):
+	def __init__(self, amount, base_path, start_img, tile_img, end_img, **kwargs):
 		super(TilingBackground, self).__init__()
 		# Note: Don't set the tile amount in the constructor,
 		# as it will not layout correctly, blame pychan for it :-)
 		self.__tile_amount = amount
 		self.start_img = base_path + start_img
-		self.tiles_img = base_path + tiles_img
-		self.final_img = base_path + final_img
+		self.tile_img = base_path + tile_img
+		self.end_img = base_path + end_img
 
 	def _get_tile_amount(self):
 		return self.__tile_amount
@@ -49,9 +49,9 @@ class TilingBackground(object):
 		start_img = Icon(image=self.start_img, name=self.name + '0')
 		self.addChild(start_img)
 		for i in xrange(self.amount):
-			mid = Icon(image=self.tiles_img, name=self.name + str(i+1))
+			mid = Icon(image=self.tile_img, name=self.name + str(i+1))
 			self.addChild(mid)
-		self.addChild(Icon(image=self.final_img, name=self.name + str(self.amount+1)))
+		self.addChild(Icon(image=self.end_img, name=self.name + str(self.amount+1)))
 
 	amount = property(_get_tile_amount, _set_tile_amount)
 
@@ -62,7 +62,7 @@ class TooltipBG(VBox, TilingBackground):
 		TilingBackground.__init__(self,
 			amount=0,
 			base_path="content/gui/images/background/widgets/tooltip_bg_",
-			start_img="top.png", tiles_img="middle.png", final_img="bottom.png",
+			start_img="top.png", tile_img="middle.png", end_img="bottom.png",
 			**kwargs)
 
 class TabBG(VBox, TilingBackground):
@@ -76,7 +76,7 @@ class TabBG(VBox, TilingBackground):
 		TilingBackground.__init__(self,
 			amount=0,
 			base_path="content/gui/images/tabwidget/main_bg_",
-			start_img="top.png", tiles_img="fill.png", final_img="bottom.png",
+			start_img="top.png", tile_img="fill.png", end_img="bottom.png",
 			**kwargs)
 
 class TilingHBox(HBox, TilingBackground):
@@ -91,7 +91,7 @@ class TilingHBox(HBox, TilingBackground):
 		TilingBackground.__init__(self,
 			amount=0,
 			base_path="content/gui/images/background/widgets/cityinfo_",
-			start_img="left.png", tiles_img="fill.png", final_img="right.png",
+			start_img="left.png", tile_img="fill.png", end_img="right.png",
 			**kwargs)
 
 
