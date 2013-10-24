@@ -19,8 +19,8 @@
 !define MUI_ABORTWARNING_CANCEL_DEFAULT
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "content\packages\win_winstaller_header.bmp"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "content\packages\win_winstaller_banner.bmp"
+!define MUI_HEADERIMAGE_BITMAP "content\packages\win_installer_header.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "content\packages\win_installer_banner.bmp"
 
 ;Install pages
 !insertmacro MUI_PAGE_WELCOME
