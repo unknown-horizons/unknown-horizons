@@ -22,6 +22,7 @@
 
 import json
 import locale
+import logging
 import os
 import subprocess
 import sys
@@ -499,7 +500,7 @@ class ScenarioMapWidget(object):
 
 		@param exception: Something that str() will convert to an error message
 		"""
-		print "Error: ", unicode(str(exception))
+		logging.getLogger('gui.windows').error(u"Error: %s", exception)
 		self._windows.show_error_popup(
 			_("Invalid scenario file"),
 			description=_("The selected file is not a valid scenario file."),

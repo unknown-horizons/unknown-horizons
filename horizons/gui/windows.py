@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 import traceback
 
 from fife import fife
@@ -399,7 +400,8 @@ class WindowManager(object):
 			# else the game would be gone without the user being able to read the message.
 			if _first:
 				traceback.print_exc()
-				print 'Exception while showing error, retrying once more'
+				log = logging.getLogger('gui.windows')
+				log.error('Exception while showing error, retrying once more.')
 				return self.show_error_popup(windowtitle, description, advice, details, _first=False)
 			else:
 				raise # it persists, we have to die.

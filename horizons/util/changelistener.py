@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 import traceback
 
 from horizons.util.python.callback import Callback
@@ -32,6 +33,9 @@ class ChangeListener(object):
 	NOTE: ChangeListeners aren't saved, they have to be reregistered on load
 	NOTE: RemoveListeners must not access the object, as it is in progress of being destroyed.
 	"""
+
+	log = logging.getLogger('changelistener')
+
 	def __init__(self, *args, **kwargs):
 		super(ChangeListener, self).__init__()
 		self.__init()
@@ -70,7 +74,7 @@ class ChangeListener(object):
 					listener()
 				except ReferenceError as e:
 					# listener object is dead, don't crash since it doesn't need updates now anyway
-					print 'Warning: the dead are listening to', self, ': ', e
+					self.log.warning('The dead are listening to %s: %s', self, e)
 					traceback.print_stack()
 
 		self.__event_call_number -= 1

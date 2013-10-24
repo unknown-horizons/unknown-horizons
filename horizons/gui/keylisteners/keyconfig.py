@@ -62,7 +62,7 @@ class KeyConfig(object):
 		for action in custom_key_actions:
 			action_id = getattr(self._Actions, action, None)
 			if action_id is None:
-				self.log.warn('Unknown hotkey in settings: %s', action)
+				self.log.warning('Unknown hotkey in settings: %s', action)
 				continue
 
 			keys_for_action = horizons.globals.fife.get_keys_for_action(action)
