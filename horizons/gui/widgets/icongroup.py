@@ -55,15 +55,62 @@ class TilingBackground(object):
 
 	amount = property(_get_tile_amount, _set_tile_amount)
 
-class TooltipBG(VBox, TilingBackground):
-	"""Not usable from xml!"""
-	def __init__(self, **kwargs):
-		VBox.__init__(self, name='tooltip_background', padding=0)
-		TilingBackground.__init__(self,
-			amount=0,
-			base_path="content/gui/images/background/widgets/tooltip_bg_",
-			start_img="top.png", tile_img="middle.png", end_img="bottom.png",
-			**kwargs)
+
+class TooltipBG(VBox):
+	""" Don't look at me like this... """
+	def __init__(self):
+		super(TooltipBG, self).__init__(name='tooltip_background', padding=0)
+		path = 'content/gui/images/background/tooltip/%s_%s.png'
+		self.tiles = {
+			'top': {
+				'start_img': path % ('top', 'left'),
+				'tile_img': path % ('top', 'mid'),
+				'end_img': path % ('top', 'right'),
+			},
+			'mid': {
+				'start_img': path % ('mid', 'left'),
+				'tile_img': path % ('mid', 'mid'),
+				'end_img': path % ('mid', 'right'),
+			},
+			'bot': {
+				'start_img': path % ('bot', 'left'),
+				'tile_img': path % ('bot', 'mid'),
+				'end_img': path % ('bot', 'right'),
+			},
+		}
+		# Remember that we inherit from VBox, so these
+		# can not be called "width" and "height".
+		self.height_tiles = 0
+		# For compat: this is 40px steps, old width was 125.
+		self.width_tiles = 3
+
+	def _add_tiles(self, widget, how_many_tiles, start_img, tile_img, end_img):
+		first = Icon(image=start_img)
+		widget.addChild(first)
+		for i in xrange(how_many_tiles):
+			mid = Icon(image=tile_img)
+			widget.addChild(mid)
+		last = Icon(image=end_img)
+		widget.addChild(last)
+
+	def relayout(self):
+		self.removeAllChildren()
+		# Top row
+		box = HBox(padding=0)
+		self._add_tiles(box, self.width_tiles, **self.tiles['top'])
+		self.addChild(box)
+
+		# Middle rows (tiling)
+		for i in xrange(self.height_tiles):
+			box = HBox(padding=0)
+			self._add_tiles(box, self.width_tiles, **self.tiles['mid'])
+			self.addChild(box)
+
+		# Bottom row
+		box = HBox(padding=0)
+		self._add_tiles(box, self.width_tiles, **self.tiles['bot'])
+		self.addChild(box)
+
 
 class TabBG(VBox, TilingBackground):
 	"""Intended to be used for any tab we display.

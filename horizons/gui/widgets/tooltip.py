@@ -20,10 +20,9 @@
 # ###################################################
 
 import re
-import textwrap
 
 from fife import fife
-from fife.extensions.pychan.widgets import HBox, Icon, Label
+from fife.extensions.pychan.widgets import HBox, Icon, Label, Widget
 
 import horizons.globals
 
@@ -56,7 +55,7 @@ class _Tooltip(object):
 
 	def __init_gui(self):
 		self.gui = AutoResizeContainer()
-		self.label = Label(position=(10, 5))
+		self.label = Label(position=(10, 5), wrap_text=True)
 		self.bg = TooltipBG()
 		self.gui.addChildren(self.bg, self.label)
 
@@ -104,6 +103,8 @@ class _Tooltip(object):
 			self.tooltip_shown = True
 
 	def show_tooltip(self):
+		"""
+		"""
 		if not self.helptext:
 			return
 		if self.gui is None:
@@ -117,6 +118,8 @@ class _Tooltip(object):
 		buildmenu_icons = self.icon_regexp.findall(unicode(self.helptext))
 		# Remove the weird stuff before displaying text.
 		replaced = self.icon_regexp.sub('', unicode(self.helptext))
+		# Empty line to make space for icons, if present.
+		tooltip = bool(buildmenu_icons) * '\n' + replaced.replace('[br]', r'\n')
 		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
 		if buildmenu_icons:
 			hbox = HBox(position=(7, 5), padding=0)
@@ -127,21 +130,41 @@ class _Tooltip(object):
 				# For compatibility with FIFE 0.3.5 and older, also set min/max.
 				icon.max_size = icon.min_size = (16, 16)
 				hbox.addChildren(icon, label)
-			hbox.adaptLayout()
 			# Now display the 16x16px "required resources" icons in the last line.
 			self.gui.addChild(hbox)
+			self.gui.adaptLayout()
 
-		#HACK: wrap tooltip text
-		# This looks better than splitting into several lines and joining them.
-		# It works because replace_whitespace in `fill` defaults to True.
-		replaced = replaced.replace(r'\n', self.CHARS_PER_LINE * ' ')
-		replaced = replaced.replace('[br]', self.CHARS_PER_LINE * ' ')
-		tooltip = textwrap.fill(replaced, self.CHARS_PER_LINE)
+		try_widths = range(40, 280, 40)
+		best_area = None
+		for try_x in try_widths:
+			# Build menu tooltip icons are directly added to gui, so this
+			# is the easiest way of checking how much (non-wrapping) space
+			# we get anyways - no need to consider smaller sizes than that.
+			if buildmenu_icons and (try_x + 15) < self.gui.width:
+				# The magic 15: border and padding between gui and actual text.
+				continue
+			try_size = (try_x, Widget.DEFAULT_MAX_SIZE[1])
+			lbl = Label(text=tooltip, max_size=try_size, wrap_text=True)
+			# Toss through layout engine: Wrap text, update size.
+			lbl.adaptLayout()
+			# Minimize the screen space we occupy for that width.
+			# Prefer a 3:1 ratio, approximately.
+			area = lbl.width + (3 * lbl.height)
+			if best_area is None or area < best_area:
+				best_area = area
+				best_size = try_size
 
 		# Finish up the actual tooltip (text, background panel amount, layout).
-		# To display build menu icons, we need another empty (first) line.
-		self.bg.amount = len(tooltip.splitlines()) - 1 + bool(buildmenu_icons)
-		self.label.text = bool(buildmenu_icons) * '\n' + tooltip
+		self.label.max_size = best_size
+		self.label.text = tooltip
+		self.label.adaptLayout()
+		# One tile is 40px wide.
+		self.bg.width_tiles = best_size[0] // 40
+		# One line (Libertine font) is 18px tall.
+		# Top & bottom part combined (with no middle tile) fit one line in.
+		self.bg.height_tiles = (self.label.height // 18) - 1
+		self.bg.relayout()
+		# For status icons:
 		self.gui.adaptLayout()
 		self.gui.show()
 
