@@ -22,9 +22,23 @@
 
 
 class ClimateZone(object):
+	
+	yaml_data = None
 
-	def __init__(self, name):
-		self.name = name
+	def __init__(self, zone_type):
+		self.__init_to_type(zone_type)
+
+	def __init_to_type(self, zone_type): 
+		self.zone_type = zone_type
+		data = self.yaml_data[zone_type]
+		self.name = _(data['name'])
+		self.default_resources = data['default_resources']
+		self.possible_resources = data['possible_resources']
+		
 
 	def __str__(self):
-		return self.name
+		return self.name + "\n\tDefault Res: " + \
+			str(self.default_resources) + "\n\tPossible Res: " + \
+			str(self.possible_resources)
+	
+	

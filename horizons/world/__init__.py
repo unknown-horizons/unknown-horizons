@@ -407,11 +407,11 @@ class World(BuildingOwner, WorldObject):
 			border_sub_polar = self.min_y+(width/extreme_ratio)
 			border_desert = self.min_y+((width/extreme_ratio)*(extreme_ratio-1))
 			if island_center.y <= border_sub_polar:
-				island.climate_zone = ClimateZone('Sub Polar Zone')
+				island.climate_zone = ClimateZone('subpolar')
 			elif island_center.y >= border_desert:
-				island.climate_zone = ClimateZone('Desert')
+				island.climate_zone = ClimateZone('desert')
 			else:
-				island.climate_zone = ClimateZone('Temperate')
+				island.climate_zone = ClimateZone('temperate')
 			print island.climate_zone
 
 	def _init_water_bodies(self):
