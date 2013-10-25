@@ -263,10 +263,11 @@ class LogBook(PickBeltWidget, Window):
 		[Label, "Awesome text to be displayed as a label"]
 		"Shortcut notation for a Label"
 		[Headline, "Label to be styled as headline (in small caps)"]
+		[BoldLabel, "Like Label but with bold font, use to highlight lines"]
 		[Image, "content/gui/images/path/to/the/file.png"]
 		[Gallery, ["/path/1.png", "/path/file.png", "/file/3.png"]]
 		[Message, "Text to display as a notification on logbook close"]
-		[Pagebreak]  <==  not implemented yet
+		[Pagebreak]
 		"""
 		#TODO last line of message text sometimes get eaten. Ticket #535
 		def _split_on_pagebreaks(parameters):
