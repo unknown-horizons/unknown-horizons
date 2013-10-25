@@ -440,6 +440,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="Alexia and the Widelands team" />
 				<Label text="(http://widelands.org)" />
 				<Label text="BartK and www.OpenGameArt.org" />
+				<Label text="Clint Bellanger" />
 				<Label text="Dreimer (Daniel Reimer)" />
 				<Label text="hoehrer (Werner Hoehrer)" />
 				<Label text="Ivanovic (Nils Kneuper)" />

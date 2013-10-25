@@ -314,6 +314,7 @@
 * Alexia and the Widelands team
   * (http://widelands.org)
 * BartK and www.OpenGameArt.org
+* Clint Bellanger
 * Dreimer (Daniel Reimer)
 * hoehrer (Werner Hoehrer)
 * Ivanovic (Nils Kneuper)
