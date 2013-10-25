@@ -22,38 +22,40 @@
 
 __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
-import logging
-import json
-import copy
-
 from collections import deque
+import copy
+import json
+import logging
 
 import horizons.globals
-from horizons.world.island import Island
-from horizons.world.player import HumanPlayer
-from horizons.scheduler import Scheduler
-from horizons.util.buildingindexer import BuildingIndexer
-from horizons.util.color import Color
-from horizons.util.python import decorators
-from horizons.util.shapes import Circle, Point, Rect
-from horizons.util.worldobject import WorldObject
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS
-from horizons.ai.trader import Trader
-from horizons.ai.pirate import Pirate
+
 from horizons.ai.aiplayer import AIPlayer
-from horizons.entities import Entities
-from horizons.world.buildingowner import BuildingOwner
-from horizons.world.diplomacy import Diplomacy
-from horizons.world.units.bullet import Bullet
-from horizons.world.units.weapon import Weapon
+from horizons.ai.pirate import Pirate
+from horizons.ai.trader import Trader
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.world.disaster.disastermanager import DisasterManager
-from horizons.world import worldutils
-from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS
+from horizons.entities import Entities
 from horizons.messaging import LoadingProgress
+from horizons.scheduler import Scheduler
+from horizons.util.buildingindexer import BuildingIndexer
+from horizons.util.color import Color
+from horizons.util.python import decorators
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.shapes import Circle, Point, Rect
+from horizons.util.worldobject import WorldObject
+from horizons.world import worldutils
+from horizons.world.buildingowner import BuildingOwner
+from horizons.world.climate.climatezone import ClimateZone
+from horizons.world.diplomacy import Diplomacy
+from horizons.world.disaster.disastermanager import DisasterManager
+from horizons.world.island import Island
+from horizons.world.player import HumanPlayer
+from horizons.world.units.bullet import Bullet
+from horizons.world.units.weapon import Weapon
+
 
 class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -240,6 +242,8 @@ class World(BuildingOwner, WorldObject):
 		self._load_combat(savegame_db)
 		self._load_diplomacy(savegame_db)
 		self._load_disasters(savegame_db)
+		
+		self._init_climate_zones()
 
 		self.inited = True
 		"""TUTORIAL:
@@ -392,6 +396,23 @@ class World(BuildingOwner, WorldObject):
 						map_dict[coords2] = n
 						queue.append(coords2)
 			n += 1
+			
+	def _init_climate_zones(self):
+		"""Creates a new climate zone for each island"""
+		for island in self.islands:
+			island_center = island.position.center
+			width = self.map_dimensions.width
+			# 1/extreme_ratio will be sub_polar and 1/extreme_ratio will be desert
+			extreme_ratio = 5 
+			border_sub_polar = self.min_y+(width/extreme_ratio)
+			border_desert = self.min_y+((width/extreme_ratio)*(extreme_ratio-1))
+			if island_center.y <= border_sub_polar:
+				island.climate_zone = ClimateZone('Sub Polar Zone')
+			elif island_center.y >= border_desert:
+				island.climate_zone = ClimateZone('Desert')
+			else:
+				island.climate_zone = ClimateZone('Temperate')
+			print island.climate_zone
 
 	def _init_water_bodies(self):
 		"""This function runs the flood fill algorithm on the water to make it easy
