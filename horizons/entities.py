@@ -26,6 +26,7 @@ import os
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
+from horizons.world.climate.climatezone import ClimateZone
 
 class _EntitiesLazyDict(dict):
 	def __init__(self):
@@ -60,6 +61,7 @@ class Entities(object):
 		cls.load_grounds(db, load_now)
 		cls.load_buildings(db, load_now)
 		cls.load_units(load_now)
+		cls.load_climate_zones()
 		cls.loaded = True
 
 	@classmethod
@@ -124,3 +126,16 @@ class Entities(object):
 				cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, yaml_data=result))
 				if load_now:
 					cls.units[unit_id]
+					
+	@classmethod
+	def load_climate_zones(cls):
+		cls.log.debug("Entities: loading climate zones")
+		if ClimateZone.yaml_data is not None:
+			cls.log.debug("Entities: climate zones already loaded")
+			return
+		ClimateZone.yaml_data = {}
+		for root, dirnames, filenames in os.walk('content/objects/climate'):
+			for filename in fnmatch.filter(filenames, '*.yaml'):
+				full_file = os.path.join(root, filename)
+				result = YamlCache.get_file(full_file, game_data=True)
+				ClimateZone.yaml_data[result['type']] = result

@@ -1,0 +1,6 @@
+type: temperate
+name: Temperate
+default_resources:
+    - RES.TREES
+possible_resources:
+    RES.POTATOES: 0.5
