@@ -125,7 +125,7 @@ class _Tooltip(object):
 			hbox = HBox(position=(7, 5), padding=0)
 			for spec in buildmenu_icons[0].split():
 				(res_id, amount) = spec.split(':')
-				label = Label(text=amount+'  ')
+				label = Label(text=amount+'  ', font='default_bold')
 				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
 				# For compatibility with FIFE 0.3.5 and older, also set min/max.
 				icon.max_size = icon.min_size = (16, 16)
