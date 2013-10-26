@@ -136,6 +136,7 @@ class _Tooltip(object):
 
 		try_widths = range(40, 280, 40)
 		best_area = None
+		best_size = (0, 0)
 		for try_x in try_widths:
 			# Build menu tooltip icons are directly added to gui, so this
 			# is the easiest way of checking how much (non-wrapping) space
