@@ -23,10 +23,12 @@
 import logging
 
 from fife import fife
+
 import horizons.globals
 
 from horizons.constants import LAYERS, GROUND
 from horizons.util.loaders.tilesetloader import TileSetLoader
+
 
 class SurfaceTile(object):
 	is_water = False
@@ -68,13 +70,14 @@ class SurfaceTile(object):
 		layer_coords = list((x, y, 0))
 
 		if rotation == 45:
-			layer_coords[0] = x+3
+			layer_coords[0] = x + 3
 		elif rotation == 135:
-			layer_coords[1] = y-3
+			layer_coords[1] = y - 3
 		elif rotation == 225:
-			layer_coords[0] = x-3
+			layer_coords[0] = x - 3
 		elif rotation == 315:
-			layer_coords[1] = y+3
+			layer_coords[1] = y + 3
+
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 		self._instance.setFacingLocation(facing_loc)
 
@@ -83,14 +86,17 @@ class SurfaceTile(object):
 		# workaround for FIFE's inconsistent rotation rounding
 		return int(round(self._instance.getRotation() / 45.0)) * 45
 
+
 class Ground(SurfaceTile):
 	"""Default land surface"""
 	pass
+
 
 class Water(SurfaceTile):
 	"""Default water surface"""
 	is_water = True
 	layer = LAYERS.WATER
+
 
 class WaterDummy(Water):
 	def __init__(self, session, x, y):
@@ -101,6 +107,7 @@ class WaterDummy(Water):
 		self.settlement = None
 		self.blocked = False
 		self.object = None
+
 
 class GroundClass(type):
 	"""
@@ -170,6 +177,7 @@ class GroundClass(type):
 
 			# Save the object
 			cls._fife_objects[tile_set_id] = fife_object
+
 
 class MapPreviewTile(object):
 	"""This class provides the minimal tile implementation for map preview."""
