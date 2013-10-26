@@ -79,9 +79,16 @@ class BuildRelatedTab(OverviewTab):
 		return gui.findChild(name="buildings_container")
 
 	def _create_build_buttons(self, building_id, container):
-		# {{mode}} in double braces because it is replaced as a second step
 		building_type = Entities.buildings[building_id]
-		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=building_type.get_tooltip())
+		# Add necessary resources to tooltip text.
+		# tooltip.py will then place icons from this information.
+		required_resources = ''
+		for resource_id, amount_needed in sorted(building_type.costs.items()):
+			required_resources += ' %s:%s' % (resource_id, amount_needed)
+		required_text = '[[Buildmenu%s]]' % (required_resources)
+
+		build_button = ImageButton(name="build{id}".format(id=building_id))
+		build_button.helptext = required_text + building_type.get_tooltip()
 		build_button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
 		build_button.capture(Callback(self.build_related, building_id))
 		return build_button
