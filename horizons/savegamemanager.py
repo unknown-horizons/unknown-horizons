@@ -70,12 +70,12 @@ class SavegameManager(object):
 
 	multiplayersave_name_regex = r"^[0-9a-zA-Z _.-]+$" # don't just blindly allow everything
 
-	# Use {{}} because this string is formatted twice and
-	# {timestamp} is replaced in the second format() call.
 	save_filename_timeformat = u"{prefix}%Y-%m-%d--%H-%M-%S"
 	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename)
 	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename)
 
+	# Use {{}} because this string is formatted twice and
+	# {} is replaced in the second format() call.
 	filename = u"{{directory}}{sep}{{name}}.{ext}".format(sep=os.path.sep, ext=savegame_extension)
 
 	savegame_screenshot_width = 290
@@ -141,8 +141,7 @@ class SavegameManager(object):
 	@classmethod
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
-		timestamp = cls.autosave_filenamepattern.format(timestamp=time.time())
-		prepared_filename = time.strftime(timestamp)
+		prepared_filename = time.strftime(cls.autosave_filenamepattern)
 		name = cls.filename.format(directory=cls.autosave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
@@ -150,8 +149,7 @@ class SavegameManager(object):
 	@classmethod
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
-		timestamp = cls.quicksave_filenamepattern.format(timestamp=time.time())
-		prepared_filename = time.strftime(timestamp)
+		prepared_filename = time.strftime(cls.quicksave_filenamepattern)
 		name = cls.filename.format(directory=cls.quicksave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
