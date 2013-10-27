@@ -311,8 +311,9 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_multiplayersaves(cls, include_displaynames=True):
-		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.multiplayersave_dir)
-		return cls.__get_saves_from_dirs([cls.multiplayersave_dir], include_displaynames, None, True)
+		where = [cls.multiplayersave_dir]
+		cls.log.debug("Savegamemanager: get saves from %s", where)
+		return cls.__get_saves_from_dirs(where, include_displaynames, None, True)
 
 	@classmethod
 	def get_quicksaves(cls, include_displaynames=True):
