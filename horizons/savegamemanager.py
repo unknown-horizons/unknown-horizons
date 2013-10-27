@@ -95,8 +95,11 @@ class SavegameManager(object):
 
 	@classmethod
 	def __get_displaynames(cls, files):
-		"""Returns list of names files, that should be displayed to the user.
-		@param files: iterable object containing strings"""
+		"""Returns player-facing names for the savegames *files*.
+
+		@param files: iterable object containing strings.
+		@return: list of names to be displayed for each file.
+		"""
 		displaynames = []
 		def get_timestamp_string(savegameinfo):
 			if savegameinfo['timestamp'] == -1:
@@ -119,7 +122,10 @@ class SavegameManager(object):
 
 	@classmethod
 	def __get_saves_from_dirs(cls, dirs, include_displaynames, filename_extension, order_by_date):
-		"""Internal function, that returns the saves of a dir"""
+		"""Returns the savegame files in each directory in *dirs*. Internal method.
+
+		@param include_displaynames: Whether to add player-readable names displayed in gui.
+		"""
 		if not filename_extension:
 			filename_extension = cls.savegame_extension
 		files = sorted((-os.path.getmtime(f) if order_by_date else 0, f)
@@ -133,14 +139,14 @@ class SavegameManager(object):
 
 	@classmethod
 	def create_filename(cls, savegamename):
-		"""Returns the full path for a regular save of the name savegamename"""
+		"""Returns the full path for a regular save of the name *savegamename*."""
 		name = cls.filename.format(directory=cls.savegame_dir, name=savegamename)
 		cls.log.debug("Savegamemanager: creating save-filename: %s", name)
 		return name
 
 	@classmethod
 	def create_autosave_filename(cls):
-		"""Returns the filename for an autosave"""
+		"""Builds filename for a new autosave."""
 		prepared_filename = time.strftime(cls.autosave_filenamepattern)
 		name = cls.filename.format(directory=cls.autosave_dir, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
@@ -166,7 +172,7 @@ class SavegameManager(object):
 
 	@classmethod
 	def create_multiplayersave_filename(cls, name):
-		"""Returns the filename for a multiplayer save"""
+		"""Builds filename for a multiplayer savegame *name*."""
 		if not re.match(cls.multiplayersave_name_regex, name):
 			err = "Smelly multiplayer filename detected: " + name
 			cls.log.error(err)
@@ -178,11 +184,18 @@ class SavegameManager(object):
 
 	@classmethod
 	def delete_dispensable_savegames(cls, autosaves=False, quicksaves=False):
-		"""Delete savegames that are no longer needed
-		@param autosaves, quicksaves: Bool, set to True if this kind of saves should be cleaned
+		"""Delete oldest savegames that are no longer needed.
+
+		This is usually called to make space for new savegames when the limit
+		(defined in settings) for that kind of saves is reached.
+
+		@param autosaves: set to True if autosaves should be cleaned.
+		@param quicksaves: set to True if quicksaves should be cleaned.
 		"""
-		def tmp_del(pattern, limit): # get_uh_setting below returns floats like
-			limit = int(limit)      # 4.0 and 42.0 since the slider stepping is 1.0.
+		def tmp_del(pattern, limit):
+			# Casting to int because get_uh_setting below returns floats like
+			# 4.0 (the slider stepping is 1.0) but we use this value as index.
+			limit = int(limit)
 			files = sorted(glob.glob(pattern))
 			for filename in files[:-limit]:
 				os.unlink(filename)
@@ -195,9 +208,10 @@ class SavegameManager(object):
 			        horizons.globals.fife.get_uh_setting("QuicksaveMaxCount"))
 
 	@classmethod
-	def get_recommended_number_of_players(cls, savegamefile):
-		dbdata = DbReader(savegamefile)\
-		        ("SELECT value FROM properties WHERE name = ?", "players_recommended")
+	def get_recommended_number_of_players(cls, mapfile):
+		"""Returns amount of players recommended for a map *mapfile*."""
+		dbdata = DbReader(mapfile) \
+			("SELECT value FROM properties WHERE name = ?", "players_recommended")
 		if dbdata:
 			return dbdata[0][0]
 		else:
@@ -268,9 +282,11 @@ class SavegameManager(object):
 
 	@classmethod
 	def write_metadata(cls, db, savecounter, rng_state):
-		"""Writes metadata to db.
-		@param db: DbReader
-		@param savecounter: int"""
+		"""Writes metadata into database *db*.
+
+		@param db: DbReader instance.
+		@param savecounter: int, how many times this file has been saved.
+		"""
 		metadata = cls.savegame_metadata.copy()
 		metadata['timestamp'] = time.time()
 		metadata['savecounter'] = savecounter
