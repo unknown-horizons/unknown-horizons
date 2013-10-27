@@ -82,7 +82,6 @@ class Island(BuildingOwner, WorldObject):
 
 		self.session = session
 		self.fertility = []
-		self.climate_zone = None
 
 		self.terrain_cache = None
 		self.available_land_cache = None
@@ -130,9 +129,13 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		
 		self.ground_map = {}
+		if not preview:
+			min_y, max_y = db("SELECT min(y), max(y) FROM ground WHERE island_id = ?", island_id - 1001)[0]
+			self.climate_zone = self.session.world.get_climate_zone(min_y+(max_y-min_y))
+		
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
-				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
+				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y, self.climate_zone.zone_type)
 				ground.act(rotation)
 			else:
 				ground = MapPreviewTile(x, y, ground_id)
@@ -162,8 +165,6 @@ class Island(BuildingOwner, WorldObject):
 		min_y = min(zip(*self.ground_map.keys())[1])
 		max_y = max(zip(*self.ground_map.keys())[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
-		
-
 
 		if not preview:
 			# This isn't needed for map previews, but it is in actual games.

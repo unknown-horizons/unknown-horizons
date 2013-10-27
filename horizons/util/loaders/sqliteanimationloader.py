@@ -102,9 +102,6 @@ class SQLiteAnimationLoader(object):
 			return loader
 
 	def load_image(self, file, actionset, action, rotation):
-		loader = self._get_loader(actionset)
-		entry = loader.get_sets()[actionset][action][int(rotation)][file]
-
 		if horizons.globals.fife.imagemanager.exists(file):
 			img = horizons.globals.fife.imagemanager.get(file)
 		else:
