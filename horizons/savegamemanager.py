@@ -72,7 +72,7 @@ class SavegameManager(object):
 
 	# Use {{}} because this string is formatted twice and
 	# {timestamp} is replaced in the second format() call.
-	save_filename_timeformat = u"{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M"
+	save_filename_timeformat = u"{prefix}%Y-%m-%d--%H-%M-%S"
 	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename)
 	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename)
 
