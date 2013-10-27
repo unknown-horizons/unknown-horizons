@@ -284,14 +284,23 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_regular_saves(cls, include_displaynames=True):
-		"""Returns all savegames, that were saved via the ingame save dialog"""
-		cls.log.debug("Savegamemanager: regular saves from: %s", cls.savegame_dir)
-		return cls.__get_saves_from_dirs([cls.savegame_dir], include_displaynames, None, True)
+		"""Returns all savegames that were saved via the ingame save dialog.
+
+		@param include_displaynames: Whether to add player-readable names displayed in gui.
+		"""
+		where = [cls.savegame_dir]
+		cls.log.debug("Savegamemanager: regular saves from: %s", where)
+		return cls.__get_saves_from_dirs(where, include_displaynames, None, True)
 
 	@classmethod
 	def get_maps(cls, include_displaynames=True):
-		cls.log.debug("Savegamemanager: get maps from %s", cls.maps_dir)
-		return cls.__get_saves_from_dirs([cls.maps_dir, PATHS.USER_MAPS_DIR], include_displaynames, None, False)
+		"""Returns all maps in content/maps/ and ~/.unknown-horizons/maps/.
+
+		@param include_displaynames: Whether to add player-readable names displayed in gui.
+		"""
+		where = [cls.maps_dir, PATHS.USER_MAPS_DIR]
+		cls.log.debug("Savegamemanager: get maps from %s", where)
+		return cls.__get_saves_from_dirs(where, include_displaynames, None, False)
 
 	@classmethod
 	def get_map(cls, map_name):
@@ -303,11 +312,13 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_saves(cls, include_displaynames=True):
-		"""Returns all savegames"""
-		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.savegame_dir,
-		              cls.autosave_dir, cls.quicksave_dir)
-		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir],
-		                                 include_displaynames, None, True)
+		"""Returns all savegames: regular, auto- and quicksaves.
+
+		@param include_displaynames: Whether to add player-readable names displayed in gui.
+		"""
+		where = [cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir]
+		cls.log.debug("Savegamemanager: get saves from %s", where)
+		return cls.__get_saves_from_dirs(where, include_displaynames, None, True)
 
 	@classmethod
 	def get_multiplayersaves(cls, include_displaynames=True):
@@ -317,15 +328,17 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_quicksaves(cls, include_displaynames=True):
-		"""Returns all savegames, that were saved via quicksave"""
-		cls.log.debug("Savegamemanager: quicksaves from: %s", cls.quicksave_dir)
-		return cls.__get_saves_from_dirs([cls.quicksave_dir], include_displaynames, None, True)
+		"""Returns all quicksave savegames."""
+		where = [cls.quicksave_dir]
+		cls.log.debug("Savegamemanager: quicksaves from: %s", where)
+		return cls.__get_saves_from_dirs(where, include_displaynames, None, True)
 
 	@classmethod
 	def get_scenarios(cls, include_displaynames=True):
 		"""Returns all scenarios"""
-		cls.log.debug("Savegamemanager: scenarios from: %s", cls.scenarios_dir)
-		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
+		where = [cls.scenarios_dir]
+		cls.log.debug("Savegamemanager: scenarios from: %s", where)
+		return cls.__get_saves_from_dirs(where, include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
 	def get_available_scenarios(cls, include_displaynames=True, locales=False):
