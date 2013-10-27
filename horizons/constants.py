@@ -306,6 +306,9 @@ class WEAPONS:
 
 	DEFAULT_FIGHTING_SHIP_WEAPONS_NUM = 7
 
+class CLIMATE:
+	# 1/extreme_ratio will be sub_polar and 1/extreme_ratio will be desert
+	EXTREME_RATIO = 5
 
 class FERTILITY:
 	MAPPING = {

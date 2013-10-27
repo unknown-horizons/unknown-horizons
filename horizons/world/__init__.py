@@ -36,7 +36,7 @@ from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP, PATHS, CLIMATE
 from horizons.entities import Entities
 from horizons.messaging import LoadingProgress
 from horizons.scheduler import Scheduler
@@ -278,10 +278,11 @@ class World(BuildingOwner, WorldObject):
 
 		# Calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = savegame_db("SELECT min(x), min(y), max(x), max(y) from GROUND")[0]
-		self.min_x -= savegame_db.map_padding
-		self.min_y -= savegame_db.map_padding
-		self.max_x += savegame_db.map_padding
-		self.max_y += savegame_db.map_padding
+		self.map_padding = savegame_db.map_padding
+		self.min_x -= self.map_padding
+		self.min_y -= self.map_padding
+		self.max_x += self.map_padding
+		self.max_y += self.map_padding
 		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
 		
 		# Load islands.
@@ -391,11 +392,11 @@ class World(BuildingOwner, WorldObject):
 			n += 1
 			
 	def get_climate_zone(self, y_coord):
-			width = self.map_dimensions.width
-			# 1/extreme_ratio will be sub_polar and 1/extreme_ratio will be desert
-			extreme_ratio = 5 
-			border_sub_polar = self.min_y+(width/extreme_ratio)
-			border_desert = self.min_y+((width/extreme_ratio)*(extreme_ratio-1))
+			map_height = self.map_dimensions.height-self.map_padding*2
+			min_y = self.min_y+self.map_padding
+			# 1/extreme_ratio will be sub_polar and 1/extreme_ratio will be desert 
+			border_sub_polar = min_y+(map_height/CLIMATE.EXTREME_RATIO)
+			border_desert = min_y+((map_height/CLIMATE.EXTREME_RATIO)*(CLIMATE.EXTREME_RATIO-1))
 			if y_coord <= border_sub_polar:
 				return ClimateZone('subpolar')
 			elif y_coord >= border_desert:
