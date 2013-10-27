@@ -244,8 +244,6 @@ class World(BuildingOwner, WorldObject):
 		self._load_diplomacy(savegame_db)
 		self._load_disasters(savegame_db)
 		
-		self._init_climate_zones()
-
 		self.inited = True
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
@@ -278,24 +276,18 @@ class World(BuildingOwner, WorldObject):
 	def load_raw_map(self, savegame_db, preview=False):
 		self.map_name = savegame_db.map_name
 
-		# Load islands.
-		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
-			island = Island(savegame_db, islandid, self.session, preview=preview)
-			self.islands.append(island)
-
-		# Calculate map dimensions.
-		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
-		for island in self.islands:
-			self.min_x = min(island.position.left, self.min_x)
-			self.min_y = min(island.position.top, self.min_y)
-			self.max_x = max(island.position.right, self.max_x)
-			self.max_y = max(island.position.bottom, self.max_y)
+		# Calculate map dimensions
+		self.min_x, self.min_y, self.max_x, self.max_y = savegame_db("SELECT min(x), min(y), max(x), max(y) from GROUND")[0]
 		self.min_x -= savegame_db.map_padding
 		self.min_y -= savegame_db.map_padding
 		self.max_x += savegame_db.map_padding
 		self.max_y += savegame_db.map_padding
-
 		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
+		
+		# Load islands.
+		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
+			island = Island(savegame_db, islandid, self.session, preview=preview)
+			self.islands.append(island)
 
 		# Add water.
 		self.log.debug("Filling world with water...")
@@ -398,22 +390,18 @@ class World(BuildingOwner, WorldObject):
 						queue.append(coords2)
 			n += 1
 			
-	def _init_climate_zones(self):
-		"""Creates a new climate zone for each island"""
-		for island in self.islands:
-			island_center = island.position.center
+	def get_climate_zone(self, y_coord):
 			width = self.map_dimensions.width
 			# 1/extreme_ratio will be sub_polar and 1/extreme_ratio will be desert
 			extreme_ratio = 5 
 			border_sub_polar = self.min_y+(width/extreme_ratio)
 			border_desert = self.min_y+((width/extreme_ratio)*(extreme_ratio-1))
-			if island_center.y <= border_sub_polar:
-				island.climate_zone = ClimateZone('subpolar')
-			elif island_center.y >= border_desert:
-				island.climate_zone = ClimateZone('desert')
+			if y_coord <= border_sub_polar:
+				return ClimateZone('subpolar')
+			elif y_coord >= border_desert:
+				return ClimateZone('desert')
 			else:
-				island.climate_zone = ClimateZone('temperate')
-			print island.climate_zone
+				return ClimateZone('temperate')
 
 	def _init_water_bodies(self):
 		"""This function runs the flood fill algorithm on the water to make it easy
