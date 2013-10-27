@@ -34,7 +34,7 @@ class SurfaceTile(object):
 	is_water = False
 	layer = LAYERS.GROUND
 
-	__slots__ = ('x', 'y', 'settlement', 'blocked', 'object', 'session', '_instance', '_tile_set_id')
+	__slots__ = ('x', 'y', 'settlement', 'blocked', 'object', 'session', '_instance', '_tile_set_id', 'climate_zone')
 
 	def __init__(self, session, x, y, climate_zone='temperate'):
 		"""

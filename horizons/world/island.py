@@ -32,7 +32,7 @@ from horizons.util.shapes import Circle, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from horizons.world.settlement import Settlement
-from horizons.constants import BUILDINGS, FERTILITY, RES, UNITS
+from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.buildability.freeislandcache import FreeIslandBuildabilityCache
@@ -129,9 +129,10 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		
 		self.ground_map = {}
+		min_y, max_y, min_x, max_x = db("SELECT min(y), max(y), min(x), max(x) FROM ground WHERE island_id = ?", island_id - 1001)[0]
 		if not preview:
-			min_y, max_y = db("SELECT min(y), max(y) FROM ground WHERE island_id = ?", island_id - 1001)[0]
-			self.climate_zone = self.session.world.get_climate_zone(min_y+(max_y-min_y))
+			self.climate_zone = self.session.world.get_climate_zone(min_y+((max_y-min_y)/2))
+			self.fertility = self.session.random.sample(self.climate_zone.possible_resources, self.session.random.randint(1, 4))
 		
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
@@ -155,15 +156,9 @@ class Island(BuildingOwner, WorldObject):
 		self.num_trees = 0
 
 		#TODO all of this is temporary, display some icons eligible for fertility restrictions
-		resources = zip(*FERTILITY.MAPPING.iteritems())[0]
-		self.fertility = self.session.random.sample(resources, self.session.random.randint(1, 4))
 		#//TODO
 
 		# define the rectangle with the smallest area that contains every island tile its position
-		min_x = min(zip(*self.ground_map.keys())[0])
-		max_x = max(zip(*self.ground_map.keys())[0])
-		min_y = min(zip(*self.ground_map.keys())[1])
-		max_y = max(zip(*self.ground_map.keys())[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		if not preview:
