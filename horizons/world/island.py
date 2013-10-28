@@ -128,12 +128,15 @@ class Island(BuildingOwner, WorldObject):
 		@param preview: flag, map preview mode
 		"""
 		
-		self.ground_map = {}
 		min_y, max_y, min_x, max_x = db("SELECT min(y), max(y), min(x), max(x) FROM ground WHERE island_id = ?", island_id - 1001)[0]
+		# define the rectangle with the smallest area that contains every island tile its position
+		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
+		
 		if not preview:
 			self.climate_zone = self.session.world.get_climate_zone(min_y+((max_y-min_y)/2))
-			self.fertility = self.session.random.sample(self.climate_zone.possible_resources, self.session.random.randint(1, 4))
+			self.fertility = self.session.random.sample(self.climate_zone.possible_resources, self.session.random.randint(1, min(4, len(self.climate_zone.possible_resources))))
 		
+		self.ground_map = {}
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
 				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y, self.climate_zone.zone_type)
@@ -154,12 +157,6 @@ class Island(BuildingOwner, WorldObject):
 		self.settlements = []
 		self.wild_animals = []
 		self.num_trees = 0
-
-		#TODO all of this is temporary, display some icons eligible for fertility restrictions
-		#//TODO
-
-		# define the rectangle with the smallest area that contains every island tile its position
-		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		if not preview:
 			# This isn't needed for map previews, but it is in actual games.
