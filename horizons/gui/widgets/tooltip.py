@@ -34,8 +34,6 @@ from horizons.gui.widgets.icongroup import TooltipBG
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 
-	# Character count after which we start new line.
-	CHARS_PER_LINE = 19
 	# Find and replace horribly complicated elements that allow simple icons.
 	icon_regexp = re.compile(r'\[\[Buildmenu((?: \d+\:\d+)+)\]\]')
 
