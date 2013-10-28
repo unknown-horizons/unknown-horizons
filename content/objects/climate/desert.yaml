@@ -2,5 +2,7 @@ type: desert
 name: Desert
 default_resources:
     - RES.TREES
+    - RES.POTATOES
 possible_resources:
-    RES.POTATOES: 0.5
+    RES.TOBACCO_PLANTS: 0.5
+    RES.SPICES: 0.5
