@@ -330,7 +330,7 @@ class FERTILITY:
 		RES.VINES:          BUILDINGS.VINEYARD,
 		RES.ALVEARIES:      BUILDINGS.ALVEARIES,
 	}
-
+	INVERSE_MAPPING = dict((v,k) for k, v in MAPPING.iteritems())
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)

@@ -136,6 +136,7 @@ class Island(BuildingOwner, WorldObject):
 		if not preview:
 			self.climate_zone = self.session.world.get_climate_zone(min_y+((max_y-min_y)/2))
 			self.fertility = self.session.random.sample(self.climate_zone.possible_resources, self.session.random.randint(1, min(4, len(self.climate_zone.possible_resources))))
+			self.fertility.extend(self.climate_zone.default_resources)
 		
 		self.ground_map = {}
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
