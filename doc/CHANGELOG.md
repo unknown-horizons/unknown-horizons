@@ -5,7 +5,7 @@ CHANGELOG Unknown Horizons
 
 2013-??-??: Milestone 2013.4
 ----------------------------
-changelog date: OCT 23
+changelog date: OCT 28
 
 ### Gameplay and Balancing
 
@@ -50,6 +50,7 @@ Modified structures
  - #2175 Tabwidget code refactoring
  - #2174 Save/load helpers for game tests and gui tests
  - #2184 Introduce content/packages/ for files related to packaging
+ - #2181 More readable filenames for auto- and quicksaves
 
 Fixed crashes and inconsistencies
  - #2177 Several fixes for OS X app container
