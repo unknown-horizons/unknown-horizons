@@ -41,6 +41,7 @@ class _Tooltip(object):
 		self.gui = None
 		self.bg = None
 		self.label = None
+		self.iconbox = None
 		self.mapEvents({
 			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
 			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
@@ -54,8 +55,9 @@ class _Tooltip(object):
 	def __init_gui(self):
 		self.gui = AutoResizeContainer()
 		self.label = Label(position=(10, 5), wrap_text=True)
+		self.iconbox = HBox(position=(7, 5), padding=0)
 		self.bg = TooltipBG()
-		self.gui.addChildren(self.bg, self.label)
+		self.gui.addChildren(self.bg, self.iconbox, self.label)
 
 	def position_tooltip(self, event):
 		"""Calculates a nice position for the tooltip.
@@ -108,6 +110,10 @@ class _Tooltip(object):
 		if self.gui is None:
 			self.__init_gui()
 
+		self.iconbox.removeAllChildren()
+		# We use iconbox.width below in calculations, thus relayout here.
+		self.iconbox.adaptLayout()
+
 		#HACK: support icons in build menu
 		# Code below exists for the sole purpose of build menu tooltips showing
 		# resource icons. Even supporting that is a pain (as you will see),
@@ -120,16 +126,14 @@ class _Tooltip(object):
 		tooltip = bool(buildmenu_icons) * '\n' + replaced.replace('[br]', r'\n')
 		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
 		if buildmenu_icons:
-			hbox = HBox(position=(7, 5), padding=0)
 			for spec in buildmenu_icons[0].split():
 				(res_id, amount) = spec.split(':')
 				label = Label(text=amount+'  ', font='default_bold')
 				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
 				# For compatibility with FIFE 0.3.5 and older, also set min/max.
 				icon.max_size = icon.min_size = (16, 16)
-				hbox.addChildren(icon, label)
-			# Now display the 16x16px "required resources" icons in the last line.
-			self.gui.addChild(hbox)
+				self.iconbox.addChildren(icon, label)
+			# Now display the 16x16px "required resources" icons
 			self.gui.adaptLayout()
 
 		try_widths = range(40, 280, 40)
@@ -139,8 +143,8 @@ class _Tooltip(object):
 			# Build menu tooltip icons are directly added to gui, so this
 			# is the easiest way of checking how much (non-wrapping) space
 			# we get anyways - no need to consider smaller sizes than that.
-			if buildmenu_icons and (try_x + 15) < self.gui.width:
-				# The magic 15: border and padding between gui and actual text.
+			if buildmenu_icons and (try_x + 7) < self.iconbox.width:
+				# The magic 7: border and padding between gui and actual text.
 				continue
 			try_size = (try_x, Widget.DEFAULT_MAX_SIZE[1])
 			lbl = Label(text=tooltip, max_size=try_size, wrap_text=True)
