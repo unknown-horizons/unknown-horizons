@@ -93,6 +93,7 @@ def test_create_game(gui):
 	gui.trigger('set_player_details_dialog_window', 'cyan')
 	gui.trigger('set_player_details_dialog_window', 'okButton')
 
+	gui.run(1)
 	# change player name (click on name)
 	gui.trigger('multiplayer_gamelobby', 'pname_' + NetworkInterface().get_client_name())
 	gui.find('playername').write(u'Darkwing')
