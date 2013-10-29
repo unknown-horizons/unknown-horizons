@@ -133,7 +133,7 @@ INSERT INTO "shipnames" VALUES('Essex',0,0,1,0,'en');
 INSERT INTO "shipnames" VALUES('Cibus',0,0,1,0,'en');
 INSERT INTO "shipnames" VALUES('Artis',0,0,0,1,'en');
 INSERT INTO "shipnames" VALUES('Adventure',1,0,0,0,'en');
-INSERT INTO "shipnames" VALUES('INTerceptor',1,0,0,0,'en');
+INSERT INTO "shipnames" VALUES('Interceptor',1,0,0,0,'en');
 INSERT INTO "shipnames" VALUES('Enterprise',1,0,0,0,'en');
 INSERT INTO "shipnames" VALUES('Mayflower',1,0,0,0,'en');
 INSERT INTO "shipnames" VALUES('Beagle',1,0,0,0,'en');
