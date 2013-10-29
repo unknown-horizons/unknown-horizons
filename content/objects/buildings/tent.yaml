@@ -14,7 +14,7 @@ size_x: 2
 size_y: 2
 inhabitants: 1
 tooltip_text: _ Houses your inhabitants.
-settler_level: TIER.SAILORS
+tier: TIER.SAILORS
 buildingcosts: {RES.GOLD: 100, RES.BOARDS: 2}
 # NOTE: this should be in the producer component, which currently doesn't support attributes like that
 additional_provided_resources: [RES.FIRE, RES.BLACKDEATH]

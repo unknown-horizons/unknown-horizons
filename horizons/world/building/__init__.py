@@ -48,7 +48,7 @@ class BuildingClass(IngameType):
 		"""
 		super(BuildingClass, self).__init__(id, yaml_data)
 
-		self.settler_level = yaml_data['settler_level']
+		self.settler_level = yaml_data['tier']
 		self.tooltip_text = self._strip_translation_marks(yaml_data['tooltip_text'])
 		self.size = (int(yaml_data['size_x']), int(yaml_data['size_y']))
 		self.width = self.size[0]

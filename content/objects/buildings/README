@@ -28,7 +28,7 @@ size_y: 2 # building height (should match its graphics)
 inhabitants: 1 # inhabitants of the building. Doesn't do anything, but counts as inhabitants number in the overview.
 # brief description to be displayed as tooltip (don't forget the "_ ")
 tooltip_text: _ My building does fancy thing and is great in general
-settler_level: TIER.PIONEERS # building will be available from this level on.
+tier: TIER.PIONEERS # building will be available from this level on.
 # There are currently fluctuations with the build menu generation, so please talk to a dev to get your building in the build menu
 
 # Now, we define what the building should look like, i.e. where the images are located.

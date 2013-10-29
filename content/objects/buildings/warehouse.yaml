@@ -8,7 +8,7 @@ size_x: 3
 size_y: 3
 inhabitants: 2
 tooltip_text: null
-settler_level: TIER.SAILORS
+tier: TIER.SAILORS
 buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 12}
 show_status_icons: false
 components:
