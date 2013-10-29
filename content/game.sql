@@ -292,16 +292,16 @@ CREATE TABLE "weapon" (
 INSERT INTO "weapon" VALUES(40, 'ranged', 7, 5, 15, 3, 4, 2, 1, 'content/gfx/misc/cannonballs/cannonball.png');
 INSERT INTO "weapon" VALUES(41, 'melee',  3, 1,  1, 3, 2, 1, 0, '');
 
-CREATE TABLE "settler_level" (
+CREATE TABLE "tier" (
 	"level" INT NOT NULL,
 	"name" TEXT NOT NULL,
 	"tax_income" INT NOT NULL,
 	"inhabitants_max" INT NOT NULL
 );
--------------------------------   tier    name    taxes  max_inhabitants
-INSERT INTO "settler_level" VALUES(0, 'Sailors',      3,  2);
-INSERT INTO "settler_level" VALUES(1, 'Pioneers',     6,  3);
-INSERT INTO "settler_level" VALUES(2, 'Settlers',    10,  5);
-INSERT INTO "settler_level" VALUES(3, 'Citizens',    15,  8);
-INSERT INTO "settler_level" VALUES(4, 'Merchants',   21, 13);
-INSERT INTO "settler_level" VALUES(5, 'Aristocrats', 28, 21);
+----------------------   tier    name    taxes  max_inhabitants
+INSERT INTO "tier" VALUES(0, 'Sailors',      3,  2);
+INSERT INTO "tier" VALUES(1, 'Pioneers',     6,  3);
+INSERT INTO "tier" VALUES(2, 'Settlers',    10,  5);
+INSERT INTO "tier" VALUES(3, 'Citizens',    15,  8);
+INSERT INTO "tier" VALUES(4, 'Merchants',   21, 13);
+INSERT INTO "tier" VALUES(5, 'Aristocrats', 28, 21);

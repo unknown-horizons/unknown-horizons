@@ -165,25 +165,25 @@ class UhDbAccessor(DbReader):
 	#
 
 	def get_settler_name(self, level):
-		"""Returns the name for a specific settler level
-		@param level: int settler's level
-		@return: string settler's level name"""
-		sql = "SELECT name FROM settler_level WHERE level = ?"
+		"""Returns the name of inhabitants for a specific tier.
+		@param level: int - which tier
+		@return: string - inhabitant name"""
+		sql = "SELECT name FROM tier WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_house_name(self, level):
 		"""Returns name of the residential building for a specific tier
-		@param level: int settler's level
-		@return: string settler's housing name"""
-		sql = "SELECT residential_name FROM settler_level WHERE level = ?"
+		@param level: int - which tier
+		@return: string - housing name"""
+		sql = "SELECT residential_name FROM tier WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_tax_income(self, level):
-		sql = "SELECT tax_income FROM settler_level WHERE level=?"
+		sql = "SELECT tax_income FROM tier WHERE level=?"
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_inhabitants_max(self, level):
-		sql = "SELECT inhabitants_max FROM settler_level WHERE level=?"
+		sql = "SELECT inhabitants_max FROM tier WHERE level=?"
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_inhabitants_min(self, level):
@@ -192,7 +192,7 @@ class UhDbAccessor(DbReader):
 		if level == 0:
 			return 0
 		else:
-			sql = "SELECT inhabitants_max FROM settler_level WHERE level=?"
+			sql = "SELECT inhabitants_max FROM tier WHERE level=?"
 			return self.cached_query(sql, level-1)[0][0]
 
 	def get_settler_happiness_increase_requirement(self):
