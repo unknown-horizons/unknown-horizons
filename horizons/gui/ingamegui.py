@@ -135,6 +135,23 @@ class IngameGui(LivingObject):
 		})
 		self.mainhud.show()
 
+		hotkey_replacements = {
+			'rotateRight': 'ROTATE_RIGHT',
+			'rotateLeft': 'ROTATE_LEFT',
+			'speedUp': 'SPEED_UP',
+			'speedDown': 'SPEED_DOWN',
+			'destroy_tool': 'DESTROY_TOOL',
+			'build': 'BUILD_TOOL',
+			'gameMenuButton': 'ESCAPE',
+			'logbook': 'LOGBOOK',
+		}
+		for (widgetname, action) in hotkey_replacements.iteritems():
+			widget = self.mainhud.findChild(name=widgetname)
+			keys = horizons.globals.fife.get_keys_for_action(action)
+			# No `.upper()` here: "Escape" looks better than "ESCAPE".
+			keyname = keys[0].capitalize()
+			widget.helptext = widget.helptext.format(key=keyname)
+
 		self.resource_overview = ResourceOverviewBar(self.session)
 
 		# Register for messages
