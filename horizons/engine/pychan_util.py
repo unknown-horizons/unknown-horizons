@@ -54,7 +54,7 @@ def init_pychan():
 
 	# quick hack to allow up_image/down_image values to be unicode
 	# TODO solve this problem in a better way (e.g. passing str explicitly)
-	# or waiting for a fix of http://fife.trac.cloudforge.com/engine/ticket/701
+	# or waiting for a fix of http://github.com/fifengine/fifengine/issues/701
 	from fife.extensions.pychan.properties import ImageProperty
 
 	def patch_imageproperty(func):

@@ -61,7 +61,7 @@ STYLES = {
 			'margins': (10, 5),
 		},
 		#TODO combine the following two after the tuple notation bug is fixed:
-		# http://fife.trac.cloudforge.com/engine/ticket/656
+		# http://github.com/fifengine/fifengine/issues/656
 		'CheckBox': {
 			'background_color': WHITE[96],
 		},
