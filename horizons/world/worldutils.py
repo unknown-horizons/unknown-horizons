@@ -234,12 +234,23 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
-
 	# add trees, wild animals, and fish
 	for island in world.islands:
 		for (x, y), tile in sorted(island.ground_map.iteritems()):
+			# add trees based on adjacent trees
+			for (dx, dy) in fish_directions:
+				position = Point(x+dx, y+dy)
+				newTile = world.get_tile(position)
+				if newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
+					building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
+					if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0:
+						CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
+					if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
+						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
+				
+				
 			# add tree to every nth tile and an animal to one in every M trees
-			if world.session.random.randint(0, 2) == 0 and \
+			if world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
@@ -247,7 +258,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-
+			
 			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
 				# try to place fish: from the current position go to a random directions twice
 				for (x_dir, y_dir) in world.session.random.sample(fish_directions, 2):
