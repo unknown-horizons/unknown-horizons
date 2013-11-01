@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-05-20 17:12+0200\n"
-"Last-Translator: Clement Coste <clement.coste2@gmail.com>\n"
+"PO-Revision-Date: 2013-11-02 00:37+0200\n"
+"Last-Translator: Lothaire Hengst <lothairehengst@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.8-dev\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -106,7 +106,7 @@ msgstr "Sélectionner le terrain :"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(clic-droit pour arrêter)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -971,9 +971,8 @@ msgid "Screenshot"
 msgstr "Capture d'écran"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Activer/Désactiver l'affichage des FPS"
+msgstr "Activer/Désactiver l'affichage des IPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
@@ -999,9 +998,8 @@ msgid "Reset to default"
 msgstr "Réinitialiser"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Réinitialiser les clés"
+msgstr "Réinitialiser les raccourcis clavier"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1020,9 +1018,8 @@ msgid "Cancel game"
 msgstr "Abandonner la partie"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Chargement ..."
+msgstr "Chargement en cours…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1795,59 +1792,48 @@ msgstr "Appuyez «T» afin de rendre les arbres transparents."
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:101
-#, fuzzy
 msgid "Starting engine…"
-msgstr "Lance le moteur ..."
+msgstr "Lancement du moteur…"
 
 #: horizons/gui/modules/loadingscreen.py:102
-#, fuzzy
 msgid "Catching fish…"
-msgstr "Attraper du poisson..."
+msgstr "Pêcher du poisson…"
 
 #: horizons/gui/modules/loadingscreen.py:103
-#, fuzzy
 msgid "Drawing user interface…"
-msgstr "Dessiner l'interface usager..."
+msgstr "Dessin de l'interface utilisateur…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-#, fuzzy
 msgid "Activating timer…"
-msgstr "Activer le compte-minutes..."
+msgstr "Activation de l'horloge…"
 
 #: horizons/gui/modules/loadingscreen.py:105
-#, fuzzy
 msgid "Chomping game data…"
-msgstr "Processer les données du jeu..."
+msgstr "Compilation des données du jeu…"
 
 #: horizons/gui/modules/loadingscreen.py:106
-#, fuzzy
 msgid "Shaping islands…"
-msgstr "Former les îles..."
+msgstr "Formation des îles…"
 
 #: horizons/gui/modules/loadingscreen.py:107
-#, fuzzy
 msgid "Preparing blueprints…"
-msgstr "Préparer les plans de construction..."
+msgstr "Préparation des plans de construction…"
 
 #: horizons/gui/modules/loadingscreen.py:108
-#, fuzzy
 msgid "Filling world with water…"
-msgstr "Inonder le monde..."
+msgstr "Remplissage des océans…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Raising animals…"
-msgstr "Élever des animaux..."
+msgstr "Élevage des animaux…"
 
 #: horizons/gui/modules/loadingscreen.py:110
-#, fuzzy
 msgid "Convincing AI…"
-msgstr "Persuader l'IA..."
+msgstr "Développement de l'IA…"
 
 #: horizons/gui/modules/loadingscreen.py:111
-#, fuzzy
 msgid "Burying treasures…"
-msgstr "Enterrer les trésors..."
+msgstr "Enfouissement des trésors…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -1910,10 +1896,10 @@ msgstr "Nom : {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:207
 #: horizons/gui/modules/multiplayermenu.py:440
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Creator: {game_creator}"
 msgid "Creator: {game_creator}"
-msgstr "Créateur : {player}"
+msgstr "Créateur : {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 #: horizons/gui/modules/multiplayermenu.py:441
@@ -2258,7 +2244,7 @@ msgstr "Ressources nécessaire:"
 #: horizons/gui/tabs/buildtabs.py:149
 #, python-brace-format
 msgid "{resource}: {amount}"
-msgstr ""
+msgstr "{resource}: {amount}"
 
 #: horizons/gui/tabs/buyselltab.py:130
 msgid "Click on one of the resource slots to add a trade offer."
@@ -2305,7 +2291,7 @@ msgstr "Mise à jour impossible :"
 
 #: horizons/gui/tabs/mainsquaretabs.py:130
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Niveau de jeu maximal pour l'instant !"
 
 #: horizons/gui/tabs/mainsquaretabs.py:175
 msgid "Don't allow upgrades"
@@ -2375,17 +2361,17 @@ msgstr "Désarmer"
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} or"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "acheter pour {buyprice} pièces d'or"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "vendre pour {sellprice} pièces d'or"
 
 #: horizons/gui/widgets/inventory.py:167
 #, python-brace-format
@@ -2505,7 +2491,7 @@ msgstr "Vous n'avez pas la permission de commercer avec ce joueur"
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
@@ -3274,11 +3260,11 @@ msgstr ""
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Impossible de se connecter au serveur"
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Adresse du serveur invalide."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
@@ -3363,10 +3349,10 @@ msgid "{slotnum} slots, {limit}t"
 msgstr "{slotnum} emplacements, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:268
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Health: {health}"
 msgid "Health: {health}"
-msgstr "Santé:"
+msgstr "Santé: {health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:124
@@ -3424,7 +3410,7 @@ msgstr "Ce bâtiment doit être construit sur une île."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Les habitants sont touchés par la Peste Noire!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3443,9 +3429,8 @@ msgid "This building has a very low productivity."
 msgstr "Ce bâtiment a une très faible productivité."
 
 #: horizons/world/status.py:115
-#, fuzzy
 msgid "This building is decommissioned."
-msgstr "Ce bâtiment est déclassé."
+msgstr "Ce bâtiment est hors service."
 
 #: horizons/world/status.py:121
 msgid "The inhabitants of this building have the plague."
@@ -3829,10 +3814,9 @@ msgid "cannon"
 msgstr "canons"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "L'inventaire de ce bâtiment est plein."
+msgstr "Les habitants de ce bâtiment sont touchés par la Peste Noire !"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3872,10 +3856,9 @@ msgid "condiments"
 msgstr "épices"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "noir"
+msgstr "Peste Noire"
 
 #. This is a database entry: the name of a resource.
 msgid "candles"
