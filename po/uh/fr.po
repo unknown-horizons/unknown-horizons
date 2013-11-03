@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-11-02 00:37+0200\n"
+"PO-Revision-Date: 2013-11-03 20:30+0200\n"
 "Last-Translator: Lothaire Hengst <lothairehengst@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
@@ -30,19 +30,19 @@ msgstr ""
 #: run_uh.py:222
 msgid "In order to do this, we need the information from the logfile:"
 msgstr ""
-"Pour cela, nous avons besoin des informations provenant du fichier journal:"
+"Pour cela, nous avons besoin des informations provenant du fichier journal :"
 
 #: run_uh.py:224
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Veuillez nous tenir informé via IRC ou via notre forum que vous trouverez "
+"Veuillez nous tenir informés via IRC ou via notre forum que vous trouverez "
 "sur http://unknown-horizons.org ."
 
 #: run_uh.py:272
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "Impossible de trouver la bibliothèques requise «PyYAML»."
+msgstr "Erreur : impossible de trouver la bibliothèques requise «PyYAML»."
 
 #: run_uh.py:273
 msgid "PyYAML (a required library) is missing and needs to be installed."
@@ -98,7 +98,7 @@ msgstr "Quitter l'éditeur"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "Choisir la taille de la brosse:"
+msgstr "Choisir la taille de la brosse :"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
@@ -120,7 +120,7 @@ msgstr ""
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Sélectionnez votre navire et approchez de la côte grâce à un clic droit."
+"Sélectionnez votre navire et approchez de la côte grâce à un clic-droit."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -128,11 +128,11 @@ msgstr "Ensuite, cliquez sur le grand bouton dans la fenêtre du navire."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr "Construction"
+msgstr "Construire"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "Fonctionnement"
+msgstr "Coûts de fonctionnement :"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -972,7 +972,7 @@ msgstr "Capture d'écran"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Toggle showing FPS on/off"
-msgstr "Activer/Désactiver l'affichage des IPS"
+msgstr "Activer/Désactiver l'affichage des IPS (images par seconde)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
@@ -1085,7 +1085,7 @@ msgstr "Partie innomé"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr "Mot de passe du jeu"
+msgstr "Mot de passe du jeu :"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
 msgid "This game's password. Required to join this game."
@@ -1345,12 +1345,12 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:196
 msgid "Enable logging:"
-msgstr "Activer la journalisation"
+msgstr "Activer la journalisation :"
 
 # An "apercu" is more a preview than an overview.
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Production indicators:"
-msgstr "Sommaire de la production"
+msgstr "Sommaire de la production :"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid ""
@@ -1797,7 +1797,7 @@ msgstr "Lancement du moteur…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Catching fish…"
-msgstr "Pêcher du poisson…"
+msgstr "Pêche…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Drawing user interface…"
@@ -2238,7 +2238,7 @@ msgstr "Construire des bâtiments apparentés"
 #. [br] means newline
 #: horizons/gui/tabs/buildtabs.py:144
 msgid "Resources needed:"
-msgstr "Ressources nécessaire:"
+msgstr "Ressources nécessaires :"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/tabs/buildtabs.py:149
@@ -2361,7 +2361,7 @@ msgstr "Désarmer"
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr "{resource_name}: {price} or"
+msgstr "{resource_name}: {price} pièces d'or"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
@@ -3260,7 +3260,7 @@ msgstr ""
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr "Impossible de se connecter au serveur"
+msgstr "Connexion au serveur impossible."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
@@ -3410,7 +3410,7 @@ msgstr "Ce bâtiment doit être construit sur une île."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr "Les habitants sont touchés par la Peste Noire!"
+msgstr "Les habitants sont touchés par la Peste Noire !"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3816,7 +3816,7 @@ msgstr "canons"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Les habitants de ce bâtiment sont touchés par la Peste Noire !"
+msgstr "Les habitants de ce bâtiment sont contaminés par la Peste Noire !"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
