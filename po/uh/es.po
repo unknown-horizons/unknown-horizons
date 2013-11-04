@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-11-05 00:40+0200\n"
+"PO-Revision-Date: 2013-11-05 00:54+0200\n"
 "Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -1017,7 +1017,6 @@ msgid "Cancel game"
 msgstr "Abandonar la partida"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
 msgstr "Cargando…"
 
