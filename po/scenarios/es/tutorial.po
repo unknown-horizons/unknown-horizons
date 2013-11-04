@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-11-05 00:52+0200\n"
+"PO-Revision-Date: 2013-11-05 00:53+0200\n"
 "Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/tutorial/es/>\n"
 "Language: es\n"
@@ -804,7 +804,7 @@ msgstr "EL PABELLÓN"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr "¡Bien hecho! Esas herramientas serán suficientes de momento."
+msgstr "Esas herramientas serán suficientes de momento. ¡Bien hecho!"
 
 #. This is the text body of a logbook page.
 msgid "You now provide housing, a main square and food to your inhabitants."

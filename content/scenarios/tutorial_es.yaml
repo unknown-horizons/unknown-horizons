@@ -232,7 +232,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Construye un convento conectado a las tiendas.]
   - [Headline, EL PABELLÓN]
   - [Image, content/gui/images/background/hr.png]
-  - ¡Bien hecho! Esas herramientas serán suficientes de momento.
+  - Esas herramientas serán suficientes de momento. ¡Bien hecho!
   - Ahora proporciona casas, una plaza principal y alimento a tus habitantes.
   - Aún hay una demanda insatisfecha. Puedes comprobar que en la plaza del mercado o en la pestaña de tiendas - tus marineros quieren un edificio básico donde poder rezar.
   - La solución es un pabellón donde refugiar del sol al párroco del pueblo.
