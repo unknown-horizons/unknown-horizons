@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-06-08 20:44+0200\n"
-"Last-Translator: Fede Muller <fedem8@live.com>\n"
+"PO-Revision-Date: 2013-11-05 00:40+0200\n"
+"Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.8-dev\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -1473,7 +1473,7 @@ msgstr "Configuración del juego:"
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr "Libre comercio"
+msgstr "Comerciante libre"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
