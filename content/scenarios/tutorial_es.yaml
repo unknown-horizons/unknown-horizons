@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Build a warehouse at the coast, so it is easily accessible for other ships like the Free Trader.']
+  - [Message, 'Construye una almacén en la costa, así será fácilmente accesible para otros barcos como el ''Mercader Libre''.']
   - '
 
 
@@ -67,8 +67,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Para construir aserraderos; abre el menú de construcción haciendo clic sobre el icono grande que hay debajo del mini-mapa o pulsando la tecla B.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The build menu is sorted by tiers.
-  - You are currently in the first tier (the Sailors level) so are offered only the basic buildings.
+  - El menú de construcción se ordena por niveles.
+  - Ahora estás en el primer nivel (nivel de los Marineros) por lo que sólo tendrás a tu disposición los edificios básicos.
   - [Pagebreak]
   - '
 
@@ -89,7 +89,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, SUMINISTRO DE ALIMENTOS]
   - [Image, content/gui/images/background/hr.png]
   - Necesitarás tener algunos negocios que produzcan alimentos, también, porque la gente en general (y especialmente los marineros) están muy hambrientos.
-  - Available companies in the first tier are the Hunter and Fisher.
+  - Los negocios disponibles en el primer nivel son el Cazador y el Pescador.
   - El Cazador caza animales en el bosque, por lo que necesita que haya árboles cerca.
   - Ten en cuenta que puedes colocar el Cazador cerca del bosque del leñador.
   - Puede ocurrir que los animales no se reproduzcan lo suficientemente rápido o simplemente que se escondan bien.
@@ -133,7 +133,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Si tu saldo es positivo, estarás produciendo beneficios.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - En las diferentes pestañas de información de niveles de construcción, puedes ver estadísticas de tus habitantes. También puedes fijar aquí el impuesto global de un nivel específico y permitir o denegar a los habitantes de ese nivel que realicen mejoras para alcanzar el siguiente nivel.
 
 - &FIRSTTENT
   - [Message, Construya una tienda de campaña y conéctela a la plaza principal.]
@@ -142,9 +142,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - ¡Los colonos quieren tener un techo sobre sus cabezas, de lo contrario no se quedarán a vivir en tu ciudad! Proporciónales tiendas de campaña.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
+  - Las tiendas son edificios residenciales básicos. Tus habitantes querrán mejorarlas cuando alcancen niveles superiores.
+  - Tenga en cuenta que la mejora de cada edificio requiere material de construcción, como madera para la primera mejora.
+  - Considere desactivar las mejoras si sus reservas de estos materiales son bajos.
   - Los colonos pueden parecerte poco útiles porque intentarán consumir todos los bienes que produzcas - al menos pagan impuestos, y esa es la única forma de hacer dinero por ahora!
   - '
 
@@ -191,7 +191,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Puedes proponer intercambios a través de la lonja en la pestaña "Comprar/Vender".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - At the 'sailors' tier, you are equipped with three trading slots.
+  - En el nivel de "marineros", estás equipado con tres casillas de compraventa.
   - Haz clic en el icono pequeño para cambiar el modo casilla de "Comprar" a "Vender" y viceversa.
   - Mediante clic en una casilla puedes elegir el producto que quieres comerciar. Lo explicaremos más detenidamente una vez que estés listo para ello..
   - '
@@ -199,7 +199,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Construye una señal de humo en la costa cerca de tu lonja.'
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Message, Llegar a unas reservas de isla de al menos 30 herramientas. Tenga en cuenta que esto puede llevar un tiempo.]
   - [Headline, EL COMERCIO]
   - [Image, content/gui/images/background/hr.png]
   - '¡Excelente! El comerciante libre ahora se detendrá frente a tu lonja de vez en cuando.
@@ -256,10 +256,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &NEXTTIER
   - [Message, Fija los impuestos a un nivel 'Bajo' (izquierda de todo) y espera a la actualización de tus marineros.]
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Headline, 'NUEVA TAREA: SIGUIENTE NIVEL']
   - [Image, content/gui/images/background/hr.png]
   - Tus habitantes verán satisfechas sus demandas si pueden visitar regularmente la plaza principal y el convento y tu suministro de alimentos es adecuada.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
+  - Si los marineros son lo suficientemente felices querrán avanzar al siguiente nivel denominado Pioneros.
   - Para mantenerlos felices no puedes hacer nada más que eso, salvo mantener los impuestos en el nivel más bajo hasta que satisfagas todas sus demandas.
   - No mantengas los impuestos bajos ya que probablemente te llevará tarde o temprano a la quiebra. Sin embargo durante un breve período de tiempo, si sabes lo que haces, está bien.
   - Después de algún tiempo, la primera unidad saldrá caminando hacia la plaza principal donde buscará materiales de construcción para construirse una cabaña que sustituya su vieja tienda de campaña.
@@ -280,7 +280,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Construya una granja manteniendo disponible algún espacio alrededor de ella.]
   - [Headline, LAS GRANJAS]
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
+  - ¡Felicidades! ¡Algunos de tus habitantes han alcanzado el nivel 2!
   - Ahora accede a los nuevos edificios, vamos a echar un vistazo otra vez al menú de construcción.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
@@ -331,7 +331,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
+  - [Message, Construye una tienda de almacén (en la pestaña de 'Nivel 1') donde pueda ser útil.]
   - [Headline, EL ALMACÉN]
   - [Image, content/gui/images/background/hr.png]
   - ¿Te fijaste en el leñador?
@@ -348,7 +348,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Esto significa que puedes ahorrar dinero cuando temporalmente no necesites un negocio y no quieras demolerlo.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.'
+  - 'Otra solución es construir el último edificio del nivel 1 que no habíamos mencionado antes: la tienda de almacenamiento.'
   - 'Este edificio tiene dos propósitos:
 
     * Ofrece más almacenamiento de bienes, y
@@ -413,7 +413,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Tu equipo de UH'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)
@@ -675,4 +675,4 @@ metadata:
   locale: es
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 176 translated messages, 13 fuzzy translations, 2 untranslated messages.
+  translation_status: 191 translated messages.
