@@ -39,11 +39,12 @@ class OverviewTab(TabInterface):
 	def init_widget(self):
 		# set player emblem
 		if self.widget.child_finder('player_emblem'):
-			emblem = 'content/gui/images/tabwidget/emblems/emblem_%s.png'
 			if self.instance.owner is not None:
-				self.widget.child_finder('player_emblem').image = emblem % self.instance.owner.color.name
+				player_color = self.instance.owner.color.name
 			else:
-				self.widget.child_finder('player_emblem').image = emblem % 'no_player'
+				player_color = 'no_player'
+			emblem = 'content/gui/images/tabwidget/emblems/emblem_%s.png'
+			self.widget.child_finder('player_emblem').image = emblem % player_color
 
 		if self.__class__.has_stance:
 			self.init_stance_widget()
