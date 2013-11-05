@@ -184,7 +184,7 @@ class GroundClass(type):
 						raise ValueError('Currently only static tiles are supported. '
 							'Found this data for tile set `%s` in rotation `%s`: '
 							'%s' % (tile_set_id, rotation, data))
-					img = load_image(data.keys()[0], tile_set_id, cls.shape, str(rotation))
+					img = load_image(data.keys()[0], climate_zone, tile_set_id, cls.shape, str(rotation))
 					visual.addStaticImage(rotation, img.getHandle())
 	
 				# Save the object

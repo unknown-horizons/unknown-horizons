@@ -101,7 +101,7 @@ class SQLiteAnimationLoader(object):
 				assert False, "Invalid set being loaded: " + actionset
 			return loader
 
-	def load_image(self, file, actionset, action, rotation):
+	def load_image(self, file, climate_zone, actionset, action, rotation):
 		if horizons.globals.fife.imagemanager.exists(file):
 			img = horizons.globals.fife.imagemanager.get(file)
 		else:
