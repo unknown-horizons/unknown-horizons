@@ -61,7 +61,7 @@ class OverviewTab(TabInterface):
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):
 			self.widget.child_finder('running_costs').text = \
-			    unicode( self.instance.running_costs )
+			    unicode(self.instance.running_costs)
 
 		self.widget.adaptLayout()
 
@@ -93,7 +93,8 @@ class OverviewTab(TabInterface):
 		self.on_remove()
 		self.instance = None
 
-	def init_stance_widget(self): # call for tabs with stances
+	def init_stance_widget(self):
+		"""Call this for tabs with stances."""
 		stance_widget = self.widget.findChild(name='stance')
 		stance_widget.init(self.instance)
 		self.add_remove_listener(stance_widget.remove)
