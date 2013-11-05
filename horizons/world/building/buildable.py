@@ -501,8 +501,8 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 		posis = position.get_coordinates()
 		for tile in posis:
 			for rad in Circle(Point(*tile), 3):
-				if island.get_tile(rad) is None:
-					# Tile not on island -> deep water
+				if rad in session.world.water_body and session.world.water_body[rad] == session.world.sea_number:
+					# Found legit see tile
 					return island
 		raise _NotBuildableError(BuildableErrorTypes.NO_OCEAN_NEARBY)
 
