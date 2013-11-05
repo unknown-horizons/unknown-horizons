@@ -622,10 +622,8 @@ class BuildingTool(NavigationTool):
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
 		if self.last_change_listener is not None:
-			if self.last_change_listener.has_change_listener(self.force_update):
-				self.last_change_listener.remove_change_listener(self.force_update)
-			if self.last_change_listener.has_change_listener(self.highlight_buildable):
-				self.last_change_listener.remove_change_listener(self.highlight_buildable)
+			self.last_change_listener.discard_change_listener(self.force_update)
+			self.last_change_listener.discard_change_listener(self.highlight_buildable)
 			self._build_logic.remove_change_listener(self.last_change_listener, self)
 
 		self.last_change_listener = None
@@ -751,15 +749,12 @@ class ShipBuildingToolLogic(object):
 
 	def remove_change_listener(self, instance, building_tool):
 		# be idempotent
-		if instance.has_change_listener(building_tool.highlight_buildable):
-			instance.remove_change_listener(building_tool.highlight_buildable)
-		if instance.has_change_listener(building_tool.force_update):
-			instance.remove_change_listener(building_tool.force_update)
+		instance.discard_change_listener(building_tool.highlight_buildable)
+		instance.discard_change_listener(building_tool.force_update)
 
 	# Using messages now.
 	def continue_build(self):
 		pass
-
 
 
 class SettlementBuildingToolLogic(object):

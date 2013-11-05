@@ -76,8 +76,7 @@ class Ship(Unit):
 
 	def remove(self):
 		self.session.world.ships.remove(self)
-		if self.session.view.has_change_listener(self.draw_health):
-			self.session.view.remove_change_listener(self.draw_health)
+		self.session.view.discard_change_listener(self.draw_health)
 		if self.in_ship_map:
 			if self.position.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self.position.to_tuple()]

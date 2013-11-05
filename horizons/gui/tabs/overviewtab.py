@@ -80,13 +80,10 @@ class OverviewTab(TabInterface):
 	def hide(self):
 		super(OverviewTab, self).hide()
 		if self.instance is not None:
-			if self.instance.has_change_listener(self.refresh):
-				self.instance.remove_change_listener(self.refresh)
+			self.instance.discard_change_listener(self.refresh)
 			self.instance.discard_remove_listener(self.on_instance_removed)
-		if hasattr(self.instance, 'settlement') and \
-		   self.instance.settlement is not None and \
-		   self.instance.settlement.has_change_listener(self._schedule_refresh):
-			self.instance.settlement.remove_change_listener(self._schedule_refresh)
+		if hasattr(self.instance, 'settlement') and self.instance.settlement is not None:
+			self.instance.settlement.discard_change_listener(self._schedule_refresh)
 
 	def on_instance_removed(self):
 		self.on_remove()

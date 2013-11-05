@@ -53,8 +53,7 @@ class MainSquareTab(OverviewTab):
 	def hide(self):
 		super(MainSquareTab, self).hide()
 		for building in self.settlement.buildings:
-			if building.has_change_listener(self._schedule_refresh):
-				building.remove_change_listener(self._schedule_refresh)
+			building.discard_change_listener(self._schedule_refresh)
 
 
 class AccountTab(MainSquareTab):

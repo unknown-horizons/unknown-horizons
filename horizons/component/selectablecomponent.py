@@ -337,8 +337,7 @@ class SelectableUnitComponent(SelectableComponent):
 			self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
 			self.instance.draw_health(remove_only=True)
 			# this is necessary to make deselect idempotent
-			if self.session.view.has_change_listener(self.instance.draw_health):
-				self.session.view.remove_change_listener(self.instance.draw_health)
+			self.session.view.discard_change_listener(self.instance.draw_health)
 
 
 class SelectableShipComponent(SelectableUnitComponent):

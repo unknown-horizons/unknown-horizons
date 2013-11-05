@@ -143,8 +143,8 @@ class Minimap(object):
 		but you can disable it with this and enable again with draw().
 		Stops all updates."""
 		ExtScheduler().rem_all_classinst_calls(self)
-		if self.view is not None and self.view.has_change_listener(self.update_cam):
-			self.view.remove_change_listener(self.update_cam)
+		if self.view is not None:
+			self.view.discard_change_listener(self.update_cam)
 
 		if self in self.__class__._instances:
 			self.__class__._instances.remove(self)
