@@ -47,7 +47,9 @@ if os.path.exists(app_python_lib_path):
 try:
 	from PIL import Image
 except ImportError:
-	print 'The Python Imaging Library (PIL / Pillow) package is needed to run the atlas generator.'
+	# Logging is not set up at this point.
+	print('The Python Imaging Library (PIL / Pillow) package'
+	      ' is needed to run the atlas generator.')
 	sys.exit(1)
 
 # make sure os.path.getmtime returns ints
