@@ -146,12 +146,15 @@ class ImageSetManager(object):
 		self._data = {}
 		self._path = path
 		self._initial_data = initial_data
-
 		self.files = []
-		for set_id in initial_data:
-			for action_id in initial_data[set_id]:
-				for rotation in sorted(initial_data[set_id][action_id]):
-					for path in sorted(initial_data[set_id][action_id][rotation]):
+
+		self._collect_paths()
+
+	def _collect_paths(self):
+		for set_id in self._initial_data:
+			for action_id in self._initial_data[set_id]:
+				for rotation in sorted(self._initial_data[set_id][action_id]):
+					for path in sorted(self._initial_data[set_id][action_id][rotation]):
 						self.files.append(path)
 
 	def _add_entry(self, set_id, action_id, rotation, path, row):
@@ -163,26 +166,64 @@ class ImageSetManager(object):
 			self._data[set_id][action_id][rotation] = {}
 		self._data[set_id][action_id][rotation][path.replace(os.sep, '/')] = row
 
-	def save(self, generator):
+	def _create_row(self, path, animation_end):
+		book = generator.atlas_book_lookup[path]
+		book_entry = book.location[path]
+
+		row = []
+		row.append(animation_end)
+		row.append(book.id)
+		row.append(book_entry.x)
+		row.append(book_entry.y)
+		row.append(book_entry.width)
+		row.append(book_entry.height)
+		return row
+
+	def _fill_data(self, generator):
 		for set_id in self._initial_data:
 			for action_id in self._initial_data[set_id]:
 				for rotation in sorted(self._initial_data[set_id][action_id]):
 					for path in sorted(self._initial_data[set_id][action_id][rotation]):
-						book = generator.atlas_book_lookup[path]
-						book_entry = book.location[path]
-
-						row = []
-						row.append(self._initial_data[set_id][action_id][rotation][path])
-						row.append(book.id)
-						row.append(book_entry.x)
-						row.append(book_entry.y)
-						row.append(book_entry.width)
-						row.append(book_entry.height)
+						animation_end = self._initial_data[set_id][action_id][rotation][path]
+						row = self._create_row(path, animation_end)
 						self._add_entry(set_id, action_id, rotation, path, row)
 
+	def save(self, generator):
+		self._fill_data(generator)
 		with open(self._path, 'wb') as json_file:
 			json.dump(self._data, json_file, indent=1)
 
+class TileImageSetManager(ImageSetManager):
+	""" This subclass deals with the tileset specific climate zones"""
+
+	def _collect_paths(self):
+		for climate in self._initial_data:
+			for set_id in self._initial_data[climate]:
+				for action_id in self._initial_data[climate][set_id]:
+					for rotation in sorted(self._initial_data[climate][set_id][action_id]):
+						for path in sorted(self._initial_data[climate][set_id][action_id][rotation]):
+							self.files.append(path)
+
+	def _add_entry(self, climate_zone, set_id, action_id, rotation, path, row):
+		if climate_zone not in self._data:
+			self._data[climate_zone] = {}
+		if set_id not in self._data[climate_zone]:
+			self._data[climate_zone][set_id] = {}
+		if action_id not in self._data[climate_zone][set_id]:
+			self._data[climate_zone][set_id][action_id] = {}
+		if rotation not in self._data[climate_zone][set_id][action_id]:
+			self._data[climate_zone][set_id][action_id][rotation] = {}
+		self._data[climate_zone][set_id][action_id][rotation][path.replace(os.sep, '/')] = row
+
+	def _fill_data(self, generator):
+		for climate_zone in self._initial_data:
+			for set_id in self._initial_data[climate_zone]:
+				for action_id in self._initial_data[climate_zone][set_id]:
+					for rotation in sorted(self._initial_data[climate_zone][set_id][action_id]):
+						for path in sorted(self._initial_data[climate_zone][set_id][action_id][rotation]):
+							animation_end = self._initial_data[climate_zone][set_id][action_id][rotation][path]
+							row = self._create_row(path, animation_end)
+							self._add_entry(climate_zone, set_id, action_id, rotation, path, row)
 
 class AtlasGenerator(object):
 	log = logging.getLogger("generate_atlases")
@@ -198,7 +239,7 @@ class AtlasGenerator(object):
 
 	def _init_sets(self):
 		self.sets = []
-		self.sets.append(ImageSetManager(TileSetLoader.get_sets(), PATHS.TILE_SETS_JSON_FILE))
+		self.sets.append(TileImageSetManager(TileSetLoader.get_sets(), PATHS.TILE_SETS_JSON_FILE))
 		self.sets.append(ImageSetManager(ActionSetLoader.get_sets(), PATHS.ACTION_SETS_JSON_FILE))
 
 	def _save_sets(self):
