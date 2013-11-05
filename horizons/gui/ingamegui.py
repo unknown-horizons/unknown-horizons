@@ -43,7 +43,7 @@ from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
-                                NewSettlement, PlayerLevelUpgrade)
+                                NewSettlement, PlayerLevelUpgrade, ZoomChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
@@ -143,7 +143,7 @@ class IngameGui(LivingObject):
 		NewSettlement.subscribe(self._on_new_settlement)
 		PlayerLevelUpgrade.subscribe(self._on_player_level_upgrade)
 		MineEmpty.subscribe(self._on_mine_empty)
-		self.session.view.add_change_listener(self._update_zoom)
+		ZoomChanged.subscribe(self._update_zoom)
 
 		self._display_speed(self.session.timer.ticks_per_second)
 
@@ -154,7 +154,7 @@ class IngameGui(LivingObject):
 		NewSettlement.unsubscribe(self._on_new_settlement)
 		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
 		MineEmpty.unsubscribe(self._on_mine_empty)
-		self.session.view.remove_change_listener(self._update_zoom)
+		ZoomChanged.unsubscribe(self._update_zoom)
 
 		self.mainhud.mapEvents({
 			'zoomIn' : None,
@@ -586,16 +586,15 @@ class IngameGui(LivingObject):
 		"""Initiate the destroy tool"""
 		self.toggle_cursor('tearing')
 
-	def _update_zoom(self):
+	def _update_zoom(self, message):
 		"""Enable/disable zoom buttons"""
-		zoom = self.session.view.get_zoom()
 		in_icon = self.mainhud.findChild(name='zoomIn')
 		out_icon = self.mainhud.findChild(name='zoomOut')
-		if zoom == VIEW.ZOOM_MIN:
+		if message.zoom == VIEW.ZOOM_MIN:
 			out_icon.set_inactive()
 		else:
 			out_icon.set_active()
-		if zoom == VIEW.ZOOM_MAX:
+		if message.zoom == VIEW.ZOOM_MAX:
 			in_icon.set_inactive()
 		else:
 			in_icon.set_active()

@@ -133,7 +133,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		health_component = self.get_component(HealthComponent)
 		health = health_component.health
 		max_health = health_component.max_health
-		zoom = self.session.view.get_zoom()
+		zoom = self.session.view.zoom
 		height = int(5 * zoom)
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)

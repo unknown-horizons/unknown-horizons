@@ -185,7 +185,7 @@ class IngameGui(LivingObject):
 
 	def _update_zoom(self):
 		"""Enable/disable zoom buttons"""
-		zoom = self.session.view.get_zoom()
+		zoom = self.session.view.zoom
 		in_icon = self.mainhud.findChild(name='zoomIn')
 		out_icon = self.mainhud.findChild(name='zoomOut')
 		if zoom == VIEW.ZOOM_MIN:

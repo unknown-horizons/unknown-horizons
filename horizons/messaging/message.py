@@ -234,3 +234,7 @@ class MineEmpty(Message):
 class LoadingProgress(Message):
 	"""Sent when loading screen is updated with a new progress hint."""
 	arguments = ('stage', )
+
+class ZoomChanged(Message):
+	"""Sent when map zoom has changed."""
+	arguments = ('zoom', )
