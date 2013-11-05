@@ -339,8 +339,7 @@ class WeaponHolder(object):
 		#TODO make another listener for target_changed
 		self.log.debug("%s stop attack", self)
 		if self._target is not None:
-			if self._target.has_remove_listener(self.remove_target):
-				self._target.remove_remove_listener(self.remove_target)
+			self._target.discard_remove_listener(self.remove_target)
 		self.remove_target()
 
 	def fire_all_weapons(self, dest, rotated=False, bullet_delay=0):

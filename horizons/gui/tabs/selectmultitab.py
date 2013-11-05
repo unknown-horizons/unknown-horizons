@@ -133,8 +133,7 @@ class SelectMultiTab(TabInterface):
 			self.stance_unit_number -= 1
 
 		self.instances.remove(instance)
-		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+		instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 
 		if self.widget.isVisible():
 			if len(self.instances) < 2:
@@ -231,8 +230,7 @@ class UnitEntry(object):
 
 	def on_instance_removed(self, instance):
 		self.instances.remove(instance)
-		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+		instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 		health_component = instance.get_component(HealthComponent)
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
@@ -257,8 +255,7 @@ class UnitEntry(object):
 		Clears all the listeners in instances
 		"""
 		for instance in self.instances:
-			if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-				instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+			instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 			health_component = instance.get_component(HealthComponent)
 			if health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.remove_damage_dealt_listener(self.draw_health)

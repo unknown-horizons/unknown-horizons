@@ -82,8 +82,7 @@ class OverviewTab(TabInterface):
 		if self.instance is not None:
 			if self.instance.has_change_listener(self.refresh):
 				self.instance.remove_change_listener(self.refresh)
-			if self.instance.has_remove_listener(self.on_instance_removed):
-				self.instance.remove_remove_listener(self.on_instance_removed)
+			self.instance.discard_remove_listener(self.on_instance_removed)
 		if hasattr(self.instance, 'settlement') and \
 		   self.instance.settlement is not None and \
 		   self.instance.settlement.has_change_listener(self._schedule_refresh):
