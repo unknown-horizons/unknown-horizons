@@ -66,8 +66,8 @@ class AccountTab(MainSquareTab):
 	def init_widget(self):
 		super(AccountTab, self).init_widget()
 		self.widget.mapEvents({
-		  'show_production_overview/mouseClicked' : self.show_production_overview
-		  })
+		  'show_production_overview/mouseClicked': self.show_production_overview,
+		})
 
 		# FIXME having to access the WindowManager this way is pretty ugly
 		self._windows = self.instance.session.ingame_gui.windows

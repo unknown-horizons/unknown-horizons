@@ -29,13 +29,12 @@ from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class GroundUnit(Unit):
 	"""Class representing ground unit
 	@param x: int x position
 	@param y: int y position
 	"""
-
-
 	# TODO:
 	# set these tabs in yaml as soon as there are ground units
 	# tabs = (GroundUnitOverviewTab,)
@@ -77,6 +76,7 @@ class GroundUnit(Unit):
 		self.session.world.ground_units.append(self)
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 
+
 class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 	"""Weapon Holder Ground Unit"""
 	def __init__(self, x, y, **kwargs):
@@ -111,4 +111,3 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 
 		self.act('attack_%s' % action, facing_location, repeating = False)
 		self._action = 'idle'
-

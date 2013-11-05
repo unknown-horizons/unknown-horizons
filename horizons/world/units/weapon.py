@@ -29,6 +29,7 @@ from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.units.bullet import Bullet
 from horizons.component.healthcomponent import HealthComponent
 
+
 @metaChangeListenerDecorator("attack_ready")
 @metaChangeListenerDecorator("weapon_fired")
 class Weapon(object):
@@ -153,7 +154,6 @@ class Weapon(object):
 		"""
 		return 0 if self.attack_ready else Scheduler().get_remaining_ticks(self, self.make_attack_ready)
 
-
 	@classmethod
 	def load_attacks(cls, session, db):
 		"""
@@ -184,11 +184,13 @@ class Weapon(object):
 	def __str__(self):
 		return "Weapon(id:%s;type:%s;rang:%s)" % (self.weapon_id, self.weapon_type, self.weapon_range)
 
+
 class SetStackableWeaponNumberError(Exception):
 	"""
 	Raised when setting the number of weapons for a stackable weapon fails
 	"""
 	pass
+
 
 class StackableWeapon(Weapon):
 	"""
@@ -238,4 +240,3 @@ class StackableWeapon(Weapon):
 
 	def get_damage_modifier(self):
 		return self.number_of_weapons * super(StackableWeapon, self).get_damage_modifier()
-

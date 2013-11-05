@@ -78,6 +78,7 @@ class World(BuildingOwner, WorldObject):
 	   TUTORIAL: You should now check out the _init() function.
 	"""
 	log = logging.getLogger("world")
+
 	def __init__(self, session):
 		"""
 		@param session: instance of session the world belongs to.

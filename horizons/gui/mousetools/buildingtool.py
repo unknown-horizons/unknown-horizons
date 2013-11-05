@@ -761,6 +761,7 @@ class ShipBuildingToolLogic(object):
 		pass
 
 
+
 class SettlementBuildingToolLogic(object):
 	"""Helper class to separate the logic needed when building from a settlement
 	from the main building tool"""
@@ -787,7 +788,6 @@ class SettlementBuildingToolLogic(object):
 			for tile in tiles_to_check:
 				if is_tile_buildable(session, tile, None):
 					building_tool._color_buildable_tile(tile)
-
 		else:
 			# Default build on island.
 			for settlement in session.world.settlements:

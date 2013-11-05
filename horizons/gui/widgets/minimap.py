@@ -754,6 +754,7 @@ class Minimap(object):
 	def get_size(self):
 		return (self.location.height, self.location.width)
 
+
 class _MinimapImage(object):
 	"""Encapsulates handling of fife Image.
 	Provides:
@@ -783,5 +784,6 @@ class _MinimapImage(object):
 		"""Always call this."""
 		targetname = self.rendertarget.getTarget().getName()
 		self.targetrenderer.setRenderTarget(targetname, False, 0)
+
 
 decorators.bind_all(Minimap)

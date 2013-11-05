@@ -343,7 +343,6 @@ class WeaponHolder(object):
 				self._target.remove_remove_listener(self.remove_target)
 		self.remove_target()
 
-
 	def fire_all_weapons(self, dest, rotated=False, bullet_delay=0):
 		"""
 		Fires all weapons in storage at a given position
@@ -458,6 +457,7 @@ class WeaponHolder(object):
 			return (_('Attacking {owner}').format(owner=target.owner.name),
 			        target.position)
 		return super(WeaponHolder, self).get_status()
+
 
 @metaChangeListenerDecorator("user_move_issued")
 class MovingWeaponHolder(WeaponHolder):
@@ -585,6 +585,7 @@ class MovingWeaponHolder(WeaponHolder):
 		if self.owner.is_local_player:
 			self.session.ingame_gui.minimap.show_unit_path(self)
 
+
 class StationaryWeaponHolder(WeaponHolder):
 	"""Towers and stuff"""
 	# TODO: stances (shoot on sight, don't do anything)
@@ -600,4 +601,3 @@ class StationaryWeaponHolder(WeaponHolder):
 	def load(self, db, worldid):
 		super(StationaryWeaponHolder, self).load(db, worldid)
 		self.__init()
-
