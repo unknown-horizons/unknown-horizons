@@ -62,7 +62,7 @@ class UhDbAccessor(DbReader):
 		"""Returns the resource's value
 		@param id: resource id
 		@return: float value"""
-		return self.cached_query("SELECT value FROM resource WHERE id=?", id)[0][0]
+		return self.cached_query("SELECT value FROM resource WHERE id = ?", id)[0][0]
 
 	def get_res(self, only_tradeable=False, only_inventory=False):
 		"""Returns a list of all resources.
@@ -179,7 +179,7 @@ class UhDbAccessor(DbReader):
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_tax_income(self, level):
-		sql = "SELECT tax_income FROM tier WHERE level=?"
+		sql = "SELECT tax_income FROM tier WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
 	def get_tier_inhabitants_max(self, level):
