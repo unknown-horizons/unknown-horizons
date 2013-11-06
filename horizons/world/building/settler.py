@@ -324,7 +324,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		Scheduler().add_new_object(_do_level_up, self, run_in=0)
 
 	def level_down(self):
-		if self.level == 0: # can't level down any more
+		if self.level == TIER.LOWEST:
+			# Can't level down any more.
 			self.make_ruin()
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner.is_local_player:

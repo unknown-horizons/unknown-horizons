@@ -26,7 +26,7 @@ import tempfile
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, PRODUCTION, UNITS, RES, GAME
+from horizons.constants import BUILDINGS, GAME, PRODUCTION, RES, TIER, UNITS
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
@@ -225,7 +225,8 @@ def test_settler_level_save_load(s, p):
 	"""
 	Verify that settler level up with save/load works
 	"""
-	for test_level in xrange(3): # test upgrade 0->1, 1->2 and 2->3
+	# test all available upgrades: 0->1, 1->2, 2->3...
+	for test_level in xrange(TIER.CURRENT_MAX):
 		session, player = new_session()
 		settlement, island = settle(s)
 
