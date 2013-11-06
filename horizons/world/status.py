@@ -113,10 +113,3 @@ class DecommissionedStatus(StatusIcon):
 	priority = 800
 	icon = 'as_decommissioned+idle+45'
 	helptext = _lazy("This building is decommissioned.")
-
-
-class PestilenceStatus(StatusIcon):
-	priority = 2000
-	icon = 'as_pestilence+idle+45'
-	helptext = _lazy("The inhabitants of this building have the plague.")
-
