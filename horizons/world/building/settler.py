@@ -178,9 +178,10 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		"""
 		# taxes, inhabitants
 		self.tax_base = self.session.db.get_settler_tax_income(self.level)
-		self.inhabitants_max = self.session.db.get_settler_inhabitants_max(self.level)
-		self.inhabitants_min = self.session.db.get_settler_inhabitants_min(self.level)
-		if self.inhabitants > self.inhabitants_max: # crop settlers at level down
+		self.inhabitants_max = self.session.db.get_tier_inhabitants_max(self.level)
+		self.inhabitants_min = self.session.db.get_tier_inhabitants_min(self.level)
+		#TODO This crops inhabitants at level down, but when can they exceed the limit?
+		if self.inhabitants > self.inhabitants_max:
 			self.inhabitants = self.inhabitants_max
 
 		# consumption:

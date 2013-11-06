@@ -182,18 +182,25 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT tax_income FROM tier WHERE level=?"
 		return self.cached_query(sql, level)[0][0]
 
-	def get_settler_inhabitants_max(self, level):
-		sql = "SELECT inhabitants_max FROM tier WHERE level=?"
+	def get_tier_inhabitants_max(self, level):
+		"""Returns the upper limit of inhabitants per house for a specific tier.
+		Inhabitants will try to increase their tier upon exceeding this value.
+		@param level: int - which tier
+		"""
+		sql = "SELECT inhabitants_max FROM tier WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
-	def get_settler_inhabitants_min(self, level):
-		"""The minimum inhabitants before a setter levels down
-		is the maximum inhabitants of the previous level."""
+	def get_tier_inhabitants_min(self, level):
+		"""Returns the lower limit of inhabitants per house for a specific tier.
+		This limit coincides with the max. amount of the previous tier.
+		Inhabitants will decrease their tier after falling below.
+		@param level: int - which tier
+		"""
 		if level == 0:
 			return 0
 		else:
-			sql = "SELECT inhabitants_max FROM tier WHERE level=?"
-			return self.cached_query(sql, level-1)[0][0]
+			sql = "SELECT inhabitants_max FROM tier WHERE level = ?"
+			return self.cached_query(sql, level - 1)[0][0]
 
 	def get_settler_happiness_increase_requirement(self):
 		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_increase_requirement'"
