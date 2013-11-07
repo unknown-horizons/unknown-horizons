@@ -266,7 +266,10 @@ INSERT INTO "resource" VALUES(44, 'flour',           2.5,   1,    1);
 INSERT INTO "resource" VALUES(45, 'spice plants',    2,     0,    0); -- unused
 INSERT INTO "resource" VALUES(46, 'spices',          2.5,   0,    0); -- unused
 INSERT INTO "resource" VALUES(47, 'condiments',     10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(48, 'marble deposit',  0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(49, 'marble tops',     7.5,   0,    0); -- unused
 --                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(50, 'brine',           0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(51, 'stone deposit',   0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(52, 'stone tops',      7.5,   0,    0); -- unused
 INSERT INTO "resource" VALUES(53, 'cocoa beans',     2,     0,    0); -- unused
@@ -294,6 +297,10 @@ INSERT INTO "resource" VALUES(72, 'coffee',         10,     0,    0); -- unused
 INSERT INTO "resource" VALUES(73, 'tea plants',      2,     0,    0); -- unused
 INSERT INTO "resource" VALUES(74, 'tea leaves',      2.5,   0,    0); -- unused
 INSERT INTO "resource" VALUES(75, 'tea',            10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(76, 'flower meadows',  2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(77, 'blossoms',        5,     0,    0); -- unused
+INSERT INTO "resource" VALUES(78, 'perfume',        20,     0,    0); -- unused
+INSERT INTO "resource" VALUES(79, 'coal deposit',    0,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(92, 'representation', NULL,   0,    0); -- (lighthouse)
 INSERT INTO "resource" VALUES(93, 'society',        NULL,   0,    0); -- (tea garden)
