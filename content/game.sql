@@ -214,68 +214,74 @@ CREATE TABLE "resource" (
 	"tradeable" BOOL NOT NULL DEFAULT (0),
 	"shown_in_inventory" BOOL NOT NULL DEFAULT (1)
 );
-INSERT INTO "resource" VALUES( 1, 'coins', 0, 0, 0);
-INSERT INTO "resource" VALUES( 2, 'lamb wool', 2, 0, 1);
-INSERT INTO "resource" VALUES( 3, 'textile', 6.5, 1, 1);
-INSERT INTO "resource" VALUES( 4, 'boards', 2, 1, 1);
-INSERT INTO "resource" VALUES( 5, 'food', 2, 1, 1);
-INSERT INTO "resource" VALUES( 6, 'tools', 21, 1, 1);
-INSERT INTO "resource" VALUES( 7, 'bricks', 15, 1, 1);
-INSERT INTO "resource" VALUES( 8, 'trees', 1, 0, 1);
-INSERT INTO "resource" VALUES( 9, 'grass', 0, 0, 0);
--- tradeable   name   value   id   show_inv
-INSERT INTO "resource" VALUES(10, 'wool', 2.5, 1, 1);
-INSERT INTO "resource" VALUES(11, 'faith', NULL, 0, 1);
-INSERT INTO "resource" VALUES(12, 'deer food A', 0, 0, 0);
-INSERT INTO "resource" VALUES(13, 'deer meat', 2, 0, 0);
-INSERT INTO "resource" VALUES(14, 'happiness', NULL, 0, 0);
-INSERT INTO "resource" VALUES(15, 'potatoes', 2, 0, 1);
-INSERT INTO "resource" VALUES(16, 'education', NULL, 0, 0);
-INSERT INTO "resource" VALUES(17, 'sugar cane', 2, 0, 1);
-INSERT INTO "resource" VALUES(18, 'sugar', 2.5, 1, 1);
-INSERT INTO "resource" VALUES(19, 'community', NULL, 0, 0);
-INSERT INTO "resource" VALUES(20, 'clay deposit', 0, 0, 1);
-INSERT INTO "resource" VALUES(21, 'clay', 7.5, 1, 1);
-INSERT INTO "resource" VALUES(22, 'liquor', 6.5, 1, 1);
-INSERT INTO "resource" VALUES(23, 'charcoal', 8, 1, 1);
-INSERT INTO "resource" VALUES(24, 'iron deposit', 0, 0, 1);
-INSERT INTO "resource" VALUES(25, 'iron ore', 7.5, 1, 1);
-INSERT INTO "resource" VALUES(26, 'iron ingots', 25, 1, 1);
-INSERT INTO "resource" VALUES(27, 'get-together', NULL, 0, 0);
-INSERT INTO "resource" VALUES(28, 'fish', 0, 0, 0);
-INSERT INTO "resource" VALUES(29, 'salt', 15, 1, 1);
-INSERT INTO "resource" VALUES(30, 'tobacco plants', 2, 0, 1);
-INSERT INTO "resource" VALUES(31, 'tobacco leaves', 2.5, 1, 1);
-INSERT INTO "resource" VALUES(32, 'tobaccos', 10, 1, 1);
--- tradeable   name   value   id   show_inv
-INSERT INTO "resource" VALUES(33, 'cattle', 0, 0, 1);
-INSERT INTO "resource" VALUES(34, 'pigs', 0, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(35, 'cattle for slaughter', 2, 0, 1);
-INSERT INTO "resource" VALUES(36, 'pigs for slaughter', 2, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(37, 'herbs', 0, 0, 1);
-INSERT INTO "resource" VALUES(38, 'medical herbs', 2.5, 1, 1);
-INSERT INTO "resource" VALUES(39, 'acorns', 0, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(40, 'cannon', 100, 1, 1);
-INSERT INTO "resource" VALUES(41, 'dagger', 10, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(42, 'grain', 0, 0, 1); -- corn ears
-INSERT INTO "resource" VALUES(43, 'corn', 2, 0, 1);
-INSERT INTO "resource" VALUES(44, 'flour', 2.5, 1, 1);
-INSERT INTO "resource" VALUES(45, 'spice plants', 2, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(46, 'spices', 2.5, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(47, 'condiments', 10, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(51, 'stone deposit', 0, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(52, 'stone tops', 7.5, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(53, 'cocoa beans', 2, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(54, 'cocoa', 2.5, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(55, 'confectionery', 10, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(56, 'candles', 10, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(57, 'vines', 2, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(58, 'grapes', 2.5, 0, 0); -- unused and thus made untradable and hidden from inventories
--- tradeable   name   value   id   show_inv
-INSERT INTO "resource" VALUES(59, 'alvearies', 2, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(60, 'honeycombs', 2.5, 0, 0); -- unused and thus made untradable and hidden from inventories
-INSERT INTO "resource" VALUES(99, 'fire', NULL, 0, 0);
-INSERT INTO "resource" VALUES(98, 'blackdeath', NULL, 0, 0);
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES( 1, 'coins',           0,     0,    0);
+INSERT INTO "resource" VALUES( 2, 'lamb wool',       2,     0,    1);
+INSERT INTO "resource" VALUES( 3, 'textile',         6.5,   1,    1);
+INSERT INTO "resource" VALUES( 4, 'boards',          2,     1,    1);
+INSERT INTO "resource" VALUES( 5, 'food',            2,     1,    1);
+INSERT INTO "resource" VALUES( 6, 'tools',          21,     1,    1);
+INSERT INTO "resource" VALUES( 7, 'bricks',         15,     1,    1);
+INSERT INTO "resource" VALUES( 8, 'trees',           1,     0,    1);
+INSERT INTO "resource" VALUES( 9, 'grass',           0,     0,    0);
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(10, 'wool',            2.5,   1,    1);
+INSERT INTO "resource" VALUES(11, 'faith',          NULL,   0,    1);
+INSERT INTO "resource" VALUES(12, 'deer food A',     0,     0,    0);
+INSERT INTO "resource" VALUES(13, 'deer meat',       2,     0,    0);
+INSERT INTO "resource" VALUES(14, 'happiness',      NULL,   0,    0);
+INSERT INTO "resource" VALUES(15, 'potatoes',        2,     0,    1);
+INSERT INTO "resource" VALUES(16, 'education',      NULL,   0,    0);
+INSERT INTO "resource" VALUES(17, 'sugar cane',      2,     0,    1);
+INSERT INTO "resource" VALUES(18, 'sugar',           2.5,   1,    1);
+INSERT INTO "resource" VALUES(19, 'community',      NULL,   0,    0);
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(20, 'clay deposit',    0,     0,    1);
+INSERT INTO "resource" VALUES(21, 'clay',            7.5,   1,    1);
+INSERT INTO "resource" VALUES(22, 'liquor',          6.5,   1,    1);
+INSERT INTO "resource" VALUES(23, 'charcoal',        8,     1,    1);
+INSERT INTO "resource" VALUES(24, 'iron deposit',    0,     0,    1);
+INSERT INTO "resource" VALUES(25, 'iron ore',        7.5,   1,    1);
+INSERT INTO "resource" VALUES(26, 'iron ingots',    25,     1,    1);
+INSERT INTO "resource" VALUES(27, 'get-together',   NULL,   0,    0);
+INSERT INTO "resource" VALUES(28, 'fish',            0,     0,    0);
+INSERT INTO "resource" VALUES(29, 'salt',           15,     1,    1);
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(30, 'tobacco plants',  2,     0,    1);
+INSERT INTO "resource" VALUES(31, 'tobacco leaves',  2.5,   1,    1);
+INSERT INTO "resource" VALUES(32, 'tobaccos',       10,     1,    1);
+INSERT INTO "resource" VALUES(33, 'cattle',          0,     0,    1);
+INSERT INTO "resource" VALUES(34, 'pigs',            0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(35, 'cattle for slaughter',2, 0,    1);
+INSERT INTO "resource" VALUES(36, 'pigs for slaughter',2,   0,    0); -- unused
+INSERT INTO "resource" VALUES(37, 'herbs',           0,     0,    1);
+INSERT INTO "resource" VALUES(38, 'medical herbs',   2.5,   1,    1);
+INSERT INTO "resource" VALUES(39, 'acorns',          0,     0,    0); -- unused
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(40, 'cannon',        100,     1,    1);
+INSERT INTO "resource" VALUES(41, 'dagger',         10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(42, 'grain',           0,     0,    1); -- (corn ears)
+INSERT INTO "resource" VALUES(43, 'corn',            2,     0,    1);
+INSERT INTO "resource" VALUES(44, 'flour',           2.5,   1,    1);
+INSERT INTO "resource" VALUES(45, 'spice plants',    2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(46, 'spices',          2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(47, 'condiments',     10,     0,    0); -- unused
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(51, 'stone deposit',   0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(52, 'stone tops',      7.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(53, 'cocoa beans',     2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(54, 'cocoa',           2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(55, 'confectionery',  10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(56, 'candles',        10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(57, 'vines',           2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(58, 'grapes',          2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(59, 'alvearies',       2,     0,    0); -- unused
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(60, 'honeycombs',      2.5,   0,    0); -- unused
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(98, 'blackdeath',     NULL,   0,    0);
+INSERT INTO "resource" VALUES(99, 'fire',           NULL,   0,    0);
+-- "unused": not used by game code currently, thus made untradable and hidden from inventories
 
 CREATE TABLE "weapon" (
 	"id" INT,
