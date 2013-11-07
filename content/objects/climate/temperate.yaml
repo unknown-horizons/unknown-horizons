@@ -1,5 +1,5 @@
 type: temperate
-name: Temperate
+name: _ Temperate
 default_resources:
     - RES.TREES
 possible_resources:

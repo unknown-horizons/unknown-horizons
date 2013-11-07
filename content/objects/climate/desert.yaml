@@ -1,5 +1,5 @@
 type: desert
-name: Desert
+name: _ Desert
 default_resources:
     - RES.TREES
     - RES.POTATOES

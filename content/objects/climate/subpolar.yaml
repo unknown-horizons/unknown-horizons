@@ -1,5 +1,5 @@
 type: subpolar
-name: Sub Polar
+name: _ Subpolar
 default_resources:
     - RES.TREES
 possible_resources:
