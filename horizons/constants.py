@@ -106,12 +106,6 @@ class UNITS:
 
 	DIFFERENCE_BUILDING_UNIT_ID = 1000000
 
-class WEAPONS:
-	CANNON = 40
-	DAGGER = 41
-
-	DEFAULT_FIGHTING_SHIP_WEAPONS_NUM = 7
-
 class BUILDINGS:
 	# ./development/print_db_data.py building
 	WAREHOUSE        =  1
@@ -240,8 +234,8 @@ class RES:
 	HERBS            = 37
 	MEDICAL_HERBS    = 38
 	ACORNS           = 39
-	CANNON           = WEAPONS.CANNON
-	DAGGER           = WEAPONS.DAGGER
+	CANNON           = 40
+	DAGGER           = 41
 	GRAIN            = 42
 	CORN             = 43
 	FLOUR            = 44
@@ -258,8 +252,14 @@ class RES:
 	GRAPES           = 58
 	ALVEARIES        = 59
 	HONEYCOMBS       = 60
+	BLACKDEATH       = 98
 	FIRE             = 99
-	BLACKDEATH			 = 98
+
+class WEAPONS:
+	CANNON = RES.CANNON
+	DAGGER = RES.DAGGER
+
+	DEFAULT_FIGHTING_SHIP_WEAPONS_NUM = 7
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
