@@ -146,8 +146,8 @@ class Buildable(object):
 
 	@classmethod
 	def _check_fertility(cls, island):
-		if cls.id in FERTILITY.INVERSE_MAPPING:
-			if FERTILITY.INVERSE_MAPPING[cls.id] not in island.fertility:
+		if cls.id in FERTILITY.BUILDING_TO_RES:
+			if FERTILITY.BUILDING_TO_RES[cls.id] not in island.fertility:
 				raise _NotBuildableError(BuildableErrorTypes.NO_FERTILITY)
 
 	@classmethod

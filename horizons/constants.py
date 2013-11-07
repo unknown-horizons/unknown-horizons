@@ -307,7 +307,7 @@ class CLIMATE:
 	EXTREME_RATIO = 5
 
 class FERTILITY:
-	MAPPING = {
+	RES_TO_BUILDING = {
 #?		do we want to restrict livestock too?
 	##	needs different codepath (resource deposits)
 
@@ -326,7 +326,7 @@ class FERTILITY:
 		RES.VINES:          BUILDINGS.VINEYARD,
 		RES.ALVEARIES:      BUILDINGS.ALVEARIES,
 	}
-	INVERSE_MAPPING = dict((v,k) for k, v in MAPPING.iteritems())
+	BUILDING_TO_RES = dict((v,k) for k, v in RES_TO_BUILDING.iteritems())
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
