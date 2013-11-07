@@ -195,6 +195,7 @@ class BUILDINGS:
 
 class RES:
 	# ./development/print_db_data.py res
+	BUGGY            =  0
 	GOLD             =  1
 	LAMB_WOOL        =  2
 	TEXTILE          =  3
@@ -242,6 +243,9 @@ class RES:
 	SPICE_PLANTS     = 45
 	SPICES           = 46
 	CONDIMENTS       = 47
+	MARBLE_DEPOSIT   = BUGGY # 48
+	MARBLE_TOPS      = BUGGY # 49
+	BRINE            = BUGGY # 50
 	STONE_DEPOSIT    = 51
 	STONE_TOPS       = 52
 	COCOA_BEANS      = 53
@@ -252,6 +256,41 @@ class RES:
 	GRAPES           = 58
 	ALVEARIES        = 59
 	HONEYCOMBS       = 60
+	GOLD_DEPOSIT     = BUGGY # 61
+	GOLD_ORE         = BUGGY # 62
+	GOLD_INGOTS      = BUGGY # 63
+	GEM_DEPOSIT      = BUGGY # 64
+	ROUGH_GEMS       = BUGGY # 65
+	GEMS             = BUGGY # 66
+	SILVER_DEPOSIT   = BUGGY # 67
+	SILVER_ORE       = BUGGY # 68
+	SILVER_INGOTS    = BUGGY # 69
+	COFFEE_PLANTS    = BUGGY # 70
+	COFFEE_BEANS     = BUGGY # 71
+	COFFEE           = BUGGY # 72
+	TEA_PLANTS       = BUGGY # 73
+	TEA_LEAVES       = BUGGY # 74
+	TEA              = BUGGY # 75
+	FLOWER_MEADOWS   = BUGGY # 76
+	BLOSSOMS         = BUGGY # 77
+	PERFUME          = BUGGY # 78
+	COAL_DEPOSIT     = BUGGY # 79
+	WHALES           = BUGGY # 80
+	AMBERGRIS        = BUGGY # 81
+	LAMP_OIL         = BUGGY # 82
+	COTTON_PLANTS    = BUGGY # 83
+	COTTON           = BUGGY # 84
+	INDIGO_PLANTS    = BUGGY # 85
+	INDIGO           = BUGGY # 86
+	GARMENTS         = BUGGY # 87
+	HOP_PLANTS       = BUGGY # 88
+	HOPS             = BUGGY # 89
+	REPRESENTATION   = BUGGY # 92
+	SOCIETY          = BUGGY # 93
+	FAITH            = BUGGY # 94
+	EDUCATION        = BUGGY # 95
+	HYGIENE          = BUGGY # 96
+	RECREATION       = BUGGY # 97
 	BLACKDEATH       = 98
 	FIRE             = 99
 
