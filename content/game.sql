@@ -278,6 +278,22 @@ INSERT INTO "resource" VALUES(58, 'grapes',          2.5,   0,    0); -- unused
 INSERT INTO "resource" VALUES(59, 'alvearies',       2,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(60, 'honeycombs',      2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(61, 'gold deposit',    0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(62, 'gold ore',       15,     0,    0); -- unused
+INSERT INTO "resource" VALUES(63, 'gold ingots',    50,     0,    0); -- unused
+INSERT INTO "resource" VALUES(64, 'gem deposit',     0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(65, 'rough gems',     15,     0,    0); -- unused
+INSERT INTO "resource" VALUES(66, 'gems',           50,     0,    0); -- unused
+INSERT INTO "resource" VALUES(67, 'silver deposit',  0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(68, 'silver ore',     15,     0,    0); -- unused
+INSERT INTO "resource" VALUES(69, 'silver ingots',  50,     0,    0); -- unused
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(70, 'coffee plants',   2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(71, 'coffee beans',    2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(72, 'coffee',         10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(73, 'tea plants',      2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(74, 'tea leaves',      2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(75, 'tea',            10,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(92, 'representation', NULL,   0,    0); -- (lighthouse)
 INSERT INTO "resource" VALUES(93, 'society',        NULL,   0,    0); -- (tea garden)
