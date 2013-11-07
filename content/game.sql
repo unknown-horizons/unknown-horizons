@@ -279,8 +279,14 @@ INSERT INTO "resource" VALUES(59, 'alvearies',       2,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(60, 'honeycombs',      2.5,   0,    0); -- unused
 --                            id   name            value  trade  show_inv
-INSERT INTO "resource" VALUES(98, 'blackdeath',     NULL,   0,    0);
-INSERT INTO "resource" VALUES(99, 'fire',           NULL,   0,    0);
+INSERT INTO "resource" VALUES(92, 'representation', NULL,   0,    0); -- (lighthouse)
+INSERT INTO "resource" VALUES(93, 'society',        NULL,   0,    0); -- (tea garden)
+INSERT INTO "resource" VALUES(94, 'faith 2',        NULL,   0,    0); -- (cathedral)
+INSERT INTO "resource" VALUES(95, 'education 2',    NULL,   0,    0); -- (academy/university)
+INSERT INTO "resource" VALUES(96, 'hygiene',        NULL,   0,    0); -- (public bath)
+INSERT INTO "resource" VALUES(97, 'recreation',     NULL,   0,    0); -- (for aesthetics)
+INSERT INTO "resource" VALUES(98, 'blackdeath',     NULL,   0,    0); -- (doctor)
+INSERT INTO "resource" VALUES(99, 'fire',           NULL,   0,    0); -- (fire service)
 -- "unused": not used by game code currently, thus made untradable and hidden from inventories
 
 CREATE TABLE "weapon" (
