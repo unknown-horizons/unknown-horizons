@@ -226,7 +226,7 @@ INSERT INTO "resource" VALUES( 8, 'trees',           1,     0,    1);
 INSERT INTO "resource" VALUES( 9, 'grass',           0,     0,    0);
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(10, 'wool',            2.5,   1,    1);
-INSERT INTO "resource" VALUES(11, 'faith',          NULL,   0,    1);
+INSERT INTO "resource" VALUES(11, 'faith',          NULL,   0,    0);
 INSERT INTO "resource" VALUES(12, 'deer food A',     0,     0,    0);
 INSERT INTO "resource" VALUES(13, 'deer meat',       2,     0,    0);
 INSERT INTO "resource" VALUES(14, 'happiness',      NULL,   0,    0);
