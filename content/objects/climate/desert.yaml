@@ -6,3 +6,5 @@ default_resources:
 possible_resources:
     RES.TOBACCO_PLANTS: 0.5
     RES.SPICES: 0.5
+    RES.RAW_SUGAR:
+    RES.COCOA_BEANS:
