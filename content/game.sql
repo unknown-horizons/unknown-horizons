@@ -302,6 +302,23 @@ INSERT INTO "resource" VALUES(77, 'blossoms',        5,     0,    0); -- unused
 INSERT INTO "resource" VALUES(78, 'perfume',        20,     0,    0); -- unused
 INSERT INTO "resource" VALUES(79, 'coal deposit',    0,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(80, 'whales',         10,     0,    0); -- unused -- (blubber meat cetaceum baleen)
+INSERT INTO "resource" VALUES(81, 'ambergris',      10,     0,    0); -- unused -- (solid, waxy, flammable, dull grey)
+INSERT INTO "resource" VALUES(82, 'lamp oil',       10,     0,    0); -- unused -- (via blubber)
+INSERT INTO "resource" VALUES(83, 'cotton plants',   2,     0,    0); -- unused -- (called gossypium)
+INSERT INTO "resource" VALUES(84, 'cotton',          2.5,   0,    0); -- unused -- (fibers)
+INSERT INTO "resource" VALUES(85, 'indigo plants' ,  2,     0,    0); -- unused -- (called indigofera)
+INSERT INTO "resource" VALUES(86, 'indigo',          5,     0,    0); -- unused
+INSERT INTO "resource" VALUES(87, 'garments',       20,     0,    0); -- unused
+INSERT INTO "resource" VALUES(88, 'hop plants',      2,     0,    0); -- unused -- (bines)
+INSERT INTO "resource" VALUES(89, 'hops',            2.5,   0,    0); -- unused -- (dried cones)
+--                            id   name            value  trade  show_inv
+-- hop, vegetables, fruit, hemp, ropes
+-- almonds, almond milk
+-- hides, leather, shoes, saddles
+-- tin ore, copper ore, tin, copper, bronze
+-- mortars, [swords maces muskets spears arbalests]
+--                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(92, 'representation', NULL,   0,    0); -- (lighthouse)
 INSERT INTO "resource" VALUES(93, 'society',        NULL,   0,    0); -- (tea garden)
 INSERT INTO "resource" VALUES(94, 'faith 2',        NULL,   0,    0); -- (cathedral)
