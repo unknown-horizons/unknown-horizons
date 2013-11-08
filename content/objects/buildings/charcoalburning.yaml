@@ -1,4 +1,4 @@
-id: 31
+id: BUILDINGS.CHARCOAL_BURNER
 name: _ Charcoal Burning
 baseclass: production.ProductionBuilding
 radius: 6

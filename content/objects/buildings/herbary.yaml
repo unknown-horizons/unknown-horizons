@@ -1,4 +1,4 @@
-id: 40
+id: BUILDINGS.HERBARY
 name: _ Herbary
 baseclass: nature.Field
 radius: 0

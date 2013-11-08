@@ -1,4 +1,4 @@
-id: 45
+id: BUILDINGS.FIRE_STATION
 name: _ Fire Station
 baseclass: production.ProductionBuilding
 radius: 13

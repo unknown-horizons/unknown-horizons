@@ -1,4 +1,4 @@
-id: 28
+id: BUILDINGS.IRON_MINE
 name: _ Iron Mine
 baseclass: production.Mine
 radius: 0

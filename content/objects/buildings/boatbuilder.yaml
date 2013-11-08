@@ -1,4 +1,4 @@
-id: 12
+id: BUILDINGS.BOAT_BUILDER
 name: _ Boat Builder
 baseclass: boatbuilder.BoatBuilder
 radius: 10

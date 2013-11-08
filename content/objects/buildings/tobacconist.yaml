@@ -1,4 +1,4 @@
-id: 37
+id: BUILDINGS.TOBACCONIST
 name: _ Tobacconist
 baseclass: production.ProductionBuilding
 radius: 8

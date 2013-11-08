@@ -1,4 +1,4 @@
-id: 50
+id: BUILDINGS.BLENDER
 #name: _ Blender's Cottage
 name: _ Blender
 baseclass: production.ProductionBuilding

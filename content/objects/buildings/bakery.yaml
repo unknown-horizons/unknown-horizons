@@ -1,4 +1,4 @@
-id: 48
+id: BUILDINGS.BAKERY
 name: _ Bakery
 baseclass: production.ProductionBuilding
 radius: 8

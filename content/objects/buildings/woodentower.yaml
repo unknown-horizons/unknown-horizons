@@ -1,4 +1,4 @@
-id: 44
+id: BUILDINGS.WOODEN_TOWER
 name: _ Wooden Tower
 baseclass: war.Tower
 radius: 9

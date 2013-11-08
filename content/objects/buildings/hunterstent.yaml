@@ -1,4 +1,4 @@
-id: 9
+id: BUILDINGS.HUNTER
 name: _ Hunter's Tent
 baseclass: production.ProductionBuilding
 radius: 10

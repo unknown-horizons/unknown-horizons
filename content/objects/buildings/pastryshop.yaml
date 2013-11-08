@@ -1,4 +1,4 @@
-id: 63
+id: BUILDINGS.PASTRY_SHOP
 name: _ Pastry Shop
 baseclass: production.PastryShop
 radius: 8

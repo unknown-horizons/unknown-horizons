@@ -1,4 +1,4 @@
-id: 41
+id: BUILDINGS.BUTCHERY
 name: _ Butchery
 baseclass: production.ProductionBuilding
 radius: 8

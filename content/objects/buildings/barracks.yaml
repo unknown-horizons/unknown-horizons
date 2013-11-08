@@ -1,4 +1,4 @@
-id: 53
+id: BUILDINGS.BARRACKS
 name: _ Barracks
 baseclass: production.ProductionBuilding
 radius: 6

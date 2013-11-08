@@ -1,4 +1,4 @@
-id: 7
+id: BUILDINGS.WEAVER
 name: _ Weaver's Hut
 baseclass: production.ProductionBuilding
 radius: 8

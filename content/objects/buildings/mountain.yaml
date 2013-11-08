@@ -1,4 +1,4 @@
-id: 34
+id: BUILDINGS.MOUNTAIN
 name: _ Mountain
 baseclass: nature.ResourceDeposit
 radius: 0

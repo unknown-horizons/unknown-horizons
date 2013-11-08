@@ -1,4 +1,4 @@
-id: 32
+id: BUILDINGS.TAVERN
 name: _ Tavern
 baseclass: production.ProductionBuilding
 radius: 6

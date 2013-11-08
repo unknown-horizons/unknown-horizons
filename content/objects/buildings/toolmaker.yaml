@@ -1,4 +1,4 @@
-id: 30
+id: BUILDINGS.TOOLMAKER
 name: _ Toolmaker
 baseclass: production.ProductionBuilding
 radius: 8

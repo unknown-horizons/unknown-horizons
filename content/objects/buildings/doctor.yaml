@@ -1,4 +1,4 @@
-id: 42
+id: BUILDINGS.DOCTOR
 name: _ Doctor
 baseclass: production.ProductionBuilding
 radius: 10

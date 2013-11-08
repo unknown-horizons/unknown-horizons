@@ -1,4 +1,4 @@
-id: 11
+id: BUILDINGS.FISHER
 name: _ Fisherman's Tent
 baseclass: production.Fisher
 radius: 16

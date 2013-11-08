@@ -1,4 +1,4 @@
-id: 65
+id: BUILDINGS.VINTNER
 name: _ Vintner
 baseclass: production.ProductionBuilding
 radius: 8

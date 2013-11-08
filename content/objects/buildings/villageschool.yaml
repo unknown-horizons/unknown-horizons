@@ -1,4 +1,4 @@
-id: 21
+id: BUILDINGS.VILLAGE_SCHOOL
 name: _ Village school
 baseclass: production.ProductionBuilding
 radius: 0

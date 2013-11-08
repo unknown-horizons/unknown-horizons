@@ -1,4 +1,4 @@
-id: 5
+id: BUILDINGS.PAVILION
 name: _ Pavilion
 baseclass: production.ProductionBuilding
 radius: 0

@@ -1,4 +1,4 @@
-id: 20
+id: BUILDINGS.FARM
 name: _ Farm
 baseclass: production.Farm
 radius: 3

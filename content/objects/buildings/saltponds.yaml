@@ -1,4 +1,4 @@
-id: 35
+id: BUILDINGS.SALT_PONDS
 name: _ Salt Ponds
 baseclass: production.CoastalProducer
 radius: 0

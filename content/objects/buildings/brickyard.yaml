@@ -1,4 +1,4 @@
-id: 24
+id: BUILDINGS.BRICKYARD
 name: _ Brickyard
 baseclass: production.ProductionBuilding
 radius: 8

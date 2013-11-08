@@ -1,4 +1,4 @@
-id: 6
+id: BUILDINGS.SIGNAL_FIRE
 name: _ Signal Fire
 baseclass: building.DefaultBuilding
 radius: 13

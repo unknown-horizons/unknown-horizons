@@ -1,4 +1,4 @@
-id: 26
+id: BUILDINGS.DISTILLERY
 name: _ Distillery
 baseclass: production.ProductionBuilding
 radius: 8

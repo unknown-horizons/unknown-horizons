@@ -1,4 +1,4 @@
-id: 47
+id: BUILDINGS.WINDMILL
 name: _ Windmill
 baseclass: production.ProductionBuilding
 radius: 8

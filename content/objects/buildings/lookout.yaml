@@ -1,4 +1,4 @@
-id: 13
+id: BUILDINGS.LOOKOUT
 name: _ Lookout
 baseclass: building.DefaultBuilding
 radius: 24

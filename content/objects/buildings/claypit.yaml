@@ -1,4 +1,4 @@
-id: 25
+id: BUILDINGS.CLAY_PIT
 name: _ Clay Pit
 baseclass: production.Mine
 radius: 0

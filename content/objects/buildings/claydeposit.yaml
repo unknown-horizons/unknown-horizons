@@ -1,4 +1,4 @@
-id: 23
+id: BUILDINGS.CLAY_DEPOSIT
 name: _ Clay Deposit
 baseclass: nature.ResourceDeposit
 radius: 0

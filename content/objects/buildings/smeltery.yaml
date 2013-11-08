@@ -1,4 +1,4 @@
-id: 29
+id: BUILDINGS.SMELTERY
 name: _ Smeltery
 baseclass: production.ProductionBuilding
 radius: 10

@@ -1,4 +1,4 @@
-id: 54
+id: BUILDINGS.STONE_PIT
 name: _ Stone Pit
 baseclass: production.Mine
 radius: 0
