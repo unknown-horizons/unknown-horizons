@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-11-02 00:34+0200\n"
+"PO-Revision-Date: 2013-11-08 23:15+0200\n"
 "Last-Translator: Lothaire Hengst <lothairehengst@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/tutorial/fr/>\n"
 "Language: fr\n"
@@ -15,23 +15,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.8-dev\n"
+"X-Generator: Weblate 1.8\n"
 
 #. scenario difficulty
 msgid "Tutorial"
 msgstr "Didacticiel"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
 "Didacticiel:\n"
-"Établissez votre première colonie et apprenez à jouer !\n"
+"Établissez votre première colonie et apprenez à jouer !"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
@@ -197,7 +195,6 @@ msgstr ""
 "sur le grand icône sous la mini-carte, ou en appuyant sur la touche B."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "The build menu is sorted by tiers."
 msgstr "Le menu construction est classé par niveaux."
 
@@ -287,9 +284,10 @@ msgstr ""
 "car, en générale les gens (et surtout les marins) ont toujours faim."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Available companies in the first tier are the Hunter and Fisher."
-msgstr "Au premier niveau vous disposez du chasseur et du pêcheur."
+msgstr ""
+"Au premier niveau les bâtiments disponibles sont les huttes du chasseur et "
+"du pêcheur."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
@@ -998,7 +996,6 @@ msgid "NEW TASK: BUILD A FARM"
 msgstr "MISSION : CONSTRUIRE UNE FERME"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Congratulations! Some of your inhabitants have reached tier II!"
 msgstr ""
 "Félicitations ! Certains de vos habitants ont atteint le deuxième niveau de "
@@ -1263,7 +1260,6 @@ msgstr ""
 "pour l'instant."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the storage tent."

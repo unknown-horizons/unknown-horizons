@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Build a warehouse at the coast, so it is easily accessible for other ships like the Free Trader.']
+  - [Message, 'Construisez un comptoir sur la côte, ainsi il sera facilement accessible aux autres navires comme ceux du Marchand Indépendant.']
   - '
 
 
@@ -69,7 +69,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Pour construire un camp de bûcheron, ouvrez le menu construction en cliquant sur le grand icône sous la mini-carte, ou en appuyant sur la touche B.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The build menu is sorted by tiers.
+  - Le menu construction est classé par niveaux.
   - Vous êtes actuellement au premier niveau (le niveau des Marins) et donc, seuls les bâtiments de base sont accessibles.
   - [Pagebreak]
   - '
@@ -91,7 +91,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'MISSION : LA NOURRITURE']
   - [Image, content/gui/images/background/hr.png]
   - Vous allez également avoir besoin d'entreprises productrices de nourriture car, en générale les gens (et surtout les marins) ont toujours faim.
-  - Available companies in the first tier are the Hunter and Fisher.
+  - Au premier niveau les bâtiments disponibles sont les huttes du chasseur et du pêcheur.
   - Le chasseur chasse le gibier dans la forêt et a donc besoin de bois autour de lui.
   - Notez que vous pouvez le placer à coté de la forêt du bûcheron.
   - Il peut arriver que le gibier ne se reproduise pas assez rapidement ou qu'il soit bien caché.
@@ -282,7 +282,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Construisez une ferme et laissez de l'espace libre autour d'elle.]
   - [Headline, 'MISSION : CONSTRUIRE UNE FERME']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
+  - Félicitations ! Certains de vos habitants ont atteint le deuxième niveau de développement !
   - Vous avez maintenant accès à de nouveaux bâtiments, regardez de nouveau le menu de construction.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
@@ -350,7 +350,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Cela veut dire que vous pouvez économiser de l''argent en désactivant des bâtiments que vous ne voulez pas détruire mais dont vous n''avez pas besoin pour l''instant.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.'
+  - 'Une autre solution est de construire le dernier bâtiment de niveau 1 qui n''a pas encore été mentionné : le dépôt.'
   - 'Ce bâtiment a deux fonctions. Il :
 
     * Offre plus d''espace de stockage pour vos biens et
@@ -670,11 +670,11 @@ events:
 
 metadata:
   author: The UH team
-  description: 'The tutorial:
+  description: 'Didacticiel:
 
-    Build your first settlement and learn how to play!'
+    Établissez votre première colonie et apprenez à jouer !'
   difficulty: Didacticiel
   locale: fr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 185 translated messages, 6 fuzzy translations.
+  translation_status: 191 translated messages.
