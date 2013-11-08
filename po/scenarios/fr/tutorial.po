@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2013-11-27 12:17+0200\n"
+"PO-Revision-Date: 2013-11-27 12:18+0200\n"
 "Last-Translator: Hugues Fafard <fafardh@hotmail.de>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/tutorial/fr/>\n"
 "Language: fr\n"
@@ -405,14 +405,11 @@ msgstr ""
 "exemple la tente du bûcheron."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a main square."
 msgid "Task: Build a main square."
-msgstr ""
-"\n"
-"MISSION : Construire une place principale."
+msgstr "Mission : Construire une place principale."
 
 #. This is the text body of a logbook page.
 msgid ""
