@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-06 17:21+0200\n"
-"PO-Revision-Date: 2013-11-03 20:30+0200\n"
+"PO-Revision-Date: 2013-11-08 23:04+0200\n"
 "Last-Translator: Lothaire Hengst <lothairehengst@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.8-dev\n"
+"X-Generator: Weblate 1.8\n"
 
 #: run_uh.py:219
 msgid "Unknown Horizons has crashed."
@@ -38,11 +38,11 @@ msgid ""
 "horizons.org ."
 msgstr ""
 "Veuillez nous tenir informés via IRC ou via notre forum que vous trouverez "
-"sur http://unknown-horizons.org ."
+"sur http://unknown-horizons.org."
 
 #: run_uh.py:272
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "Erreur : impossible de trouver la bibliothèques requise «PyYAML»."
+msgstr "Erreur : impossible de trouver la bibliothèque requise «PyYAML»."
 
 #: run_uh.py:273
 msgid "PyYAML (a required library) is missing and needs to be installed."
@@ -1793,7 +1793,7 @@ msgstr "Appuyez «T» afin de rendre les arbres transparents."
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Starting engine…"
-msgstr "Lancement du moteur…"
+msgstr "Lancement du moteur …"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Catching fish…"
