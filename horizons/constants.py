@@ -244,7 +244,7 @@ class RES:
 	CONDIMENTS       = 47
 	MARBLE_DEPOSIT   = GOLD # 48
 	MARBLE_TOPS      = GOLD # 49
-	BRINE            = GOLD # 50
+	COAL_DEPOSIT     = GOLD # 50
 	STONE_DEPOSIT    = 51
 	STONE_TOPS       = 52
 	COCOA_BEANS      = 53
@@ -272,8 +272,8 @@ class RES:
 	TEA              = GOLD # 75
 	FLOWER_MEADOWS   = GOLD # 76
 	BLOSSOMS         = GOLD # 77
-	PERFUME          = GOLD # 78
-	COAL_DEPOSIT     = GOLD # 79
+	BRINE            = GOLD # 78
+	BRINE_DEPOSIT    = GOLD # 79
 	WHALES           = GOLD # 80
 	AMBERGRIS        = GOLD # 81
 	LAMP_OIL         = GOLD # 82
@@ -282,8 +282,10 @@ class RES:
 	INDIGO_PLANTS    = GOLD # 85
 	INDIGO           = GOLD # 86
 	GARMENTS         = GOLD # 87
-	HOP_PLANTS       = GOLD # 88
-	HOPS             = GOLD # 89
+	PERFUME          = GOLD # 88
+	HOP_PLANTS       = GOLD # 89
+	HOPS             = GOLD # 90
+	# 91-99 reserved for services
 	REPRESENTATION   = GOLD # 92
 	SOCIETY          = GOLD # 93
 	FAITH            = GOLD # 94
@@ -292,6 +294,7 @@ class RES:
 	RECREATION       = GOLD # 97
 	BLACKDEATH       = 98
 	FIRE             = 99
+	# 91-99 reserved for services
 
 class WEAPONS:
 	CANNON = RES.CANNON
