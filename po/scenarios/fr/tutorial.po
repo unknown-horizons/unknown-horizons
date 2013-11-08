@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2013-11-27 12:18+0200\n"
+"PO-Revision-Date: 2013-11-27 12:19+0200\n"
 "Last-Translator: Hugues Fafard <fafardh@hotmail.de>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/tutorial/fr/>\n"
 "Language: fr\n"
@@ -502,7 +502,6 @@ msgstr ""
 "le moment !"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a tent and connect it to the main square. Tents dont need to "
@@ -511,8 +510,7 @@ msgid ""
 "Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
-"\n"
-"MISSION : Construisez une tente et connectez-la à la place principale. Les "
+"Mission : Construisez une tente et connectez-la à la place principale. Les "
 "tentes n'ont pas besoin d'être connectées aux entreprises."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
