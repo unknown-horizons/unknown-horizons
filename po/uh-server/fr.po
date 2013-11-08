@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2013-11-02 19:54+0200\n"
+"PO-Revision-Date: 2013-11-08 23:11+0200\n"
 "Last-Translator: Lothaire Hengst <lothairehengst@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh-server/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.8-dev\n"
+"X-Generator: Weblate 1.8\n"
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -62,7 +62,7 @@ msgstr "La partie a déjà débuté. Impossible de s'y joindre"
 
 #: horizons/network/server.py:404
 msgid "Game is full"
-msgstr "La partie est plaine"
+msgstr "Nombre de joueur maximal atteint"
 
 #: horizons/network/server.py:407
 msgid "Wrong password"
