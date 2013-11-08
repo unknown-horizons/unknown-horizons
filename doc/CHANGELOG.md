@@ -5,7 +5,7 @@ CHANGELOG Unknown Horizons
 
 2013-??-??: Milestone 2013.4
 ----------------------------
-changelog date: OCT 28
+changelog date: NOV 8
 
 ### Gameplay and Balancing
 
@@ -13,10 +13,10 @@ New features
  - 
 
 Modifications and changes
- - 
+ - #2187 Change random tree distribution file to clump trees together
 
 Fixed bugs and problems
- - 
+ - #1824 Salt ponds could be created at fresh water lakes
 
 
 ### Media Content
