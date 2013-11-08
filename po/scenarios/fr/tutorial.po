@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2013-11-08 23:15+0200\n"
-"Last-Translator: Lothaire Hengst <lothairehengst@gmail.com>\n"
+"PO-Revision-Date: 2013-11-27 12:16+0200\n"
+"Last-Translator: Hugues Fafard <fafardh@hotmail.de>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/tutorial/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.8\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -144,10 +144,9 @@ msgstr ""
 
 # I propose to translate "warehouse" as comptoir instead of "succursale" as "succursale" is more an affiliate.
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Build a warehouse at the coast."
 msgid "Task: Build a warehouse at the coast."
-msgstr "Établissez un comptoir sur la côte."
+msgstr "Mission: Établissez un comptoir sur la côte."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
