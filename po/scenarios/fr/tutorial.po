@@ -246,15 +246,11 @@ msgstr ""
 "et votre bûcheron."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
-msgstr ""
-"\n"
-"MISSION: Établissez un bûcheron dans une zone boisée et connectez-le à une "
-"route."
+msgstr "Mission: Établissez un comptoir sur la côte."
 
 #. This is the text body of a logbook page.
 msgid ""

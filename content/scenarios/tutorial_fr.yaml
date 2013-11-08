@@ -662,4 +662,4 @@ metadata:
   locale: fr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 177 translated messages, 14 fuzzy translations.
+  translation_status: 178 translated messages, 13 fuzzy translations.
