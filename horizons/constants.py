@@ -292,40 +292,40 @@ class RES:
 	GEM_DEPOSIT      = GOLD # 64
 	ROUGH_GEMS       = GOLD # 65
 	GEMS             = GOLD # 66
-	SILVER_DEPOSIT   = GOLD # 67
-	SILVER_ORE       = GOLD # 68
-	SILVER_INGOTS    = GOLD # 69
-	COFFEE_PLANTS    = GOLD # 70
-	COFFEE_BEANS     = GOLD # 71
-	COFFEE           = GOLD # 72
-	TEA_PLANTS       = GOLD # 73
-	TEA_LEAVES       = GOLD # 74
-	TEA              = GOLD # 75
-	FLOWER_MEADOWS   = GOLD # 76
-	BLOSSOMS         = GOLD # 77
-	BRINE            = GOLD # 78
-	BRINE_DEPOSIT    = GOLD # 79
-	WHALES           = GOLD # 80
-	AMBERGRIS        = GOLD # 81
-	LAMP_OIL         = GOLD # 82
-	COTTON_PLANTS    = GOLD # 83
-	COTTON           = GOLD # 84
-	INDIGO_PLANTS    = GOLD # 85
-	INDIGO           = GOLD # 86
-	GARMENTS         = GOLD # 87
-	PERFUME          = GOLD # 88
-	HOP_PLANTS       = GOLD # 89
-	HOPS             = GOLD # 90
-	# 91-99 reserved for services
-	REPRESENTATION   = GOLD # 92
-	SOCIETY          = GOLD # 93
-	FAITH_2          = GOLD # 94
-	EDUCATION_2      = GOLD # 95
+	COFFEE_PLANTS    = GOLD # 67
+	COFFEE_BEANS     = GOLD # 68
+	COFFEE           = GOLD # 69
+	TEA_PLANTS       = GOLD # 70
+	TEA_LEAVES       = GOLD # 71
+	TEA              = GOLD # 72
+	FLOWER_MEADOWS   = GOLD # 73
+	BLOSSOMS         = GOLD # 74
+	BRINE            = GOLD # 75
+	BRINE_DEPOSIT    = GOLD # 76
+	WHALES           = GOLD # 77
+	AMBERGRIS        = GOLD # 78
+	LAMP_OIL         = GOLD # 79
+	COTTON_PLANTS    = GOLD # 80
+	COTTON           = GOLD # 81
+	INDIGO_PLANTS    = GOLD # 82
+	INDIGO           = GOLD # 83
+	GARMENTS         = GOLD # 84
+	PERFUME          = GOLD # 85
+	JEWELRY          = GOLD # 86
+	HOP_PLANTS       = GOLD # 87
+	HOPS             = GOLD # 88
+	# 89
+	# 90
+	# 91
+	# 92-99 reserved for services
+	FAITH_2          = GOLD # 92
+	EDUCATION_2      = GOLD # 93
+	REPRESENTATION   = GOLD # 94
+	SOCIETY          = GOLD # 95
 	HYGIENE          = GOLD # 96
 	RECREATION       = GOLD # 97
 	BLACKDEATH       = 98
 	FIRE             = 99
-	# 91-99 reserved for services
 
 class WEAPONS:
 	CANNON = RES.CANNON
