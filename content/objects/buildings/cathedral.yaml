@@ -17,11 +17,26 @@ components:
     tabs: [ProductionOverviewTab,]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      LAMP_OIL:
+        produces:
+        - [RES.FAITH, 8]
+        consumes:
+        - [RES.LAMP_OIL, -1]
+        time: 16
+      CANDLES:
+        produces:
+        - [RES.FAITH, 8]
+        consumes:
+        - [RES.CANDLES, -1]
+        time: 16
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {}
-- AmbientSoundComponent:
-    soundfiles: []
+        slot_sizes: {RES.FAITH: 48, RES.LAMP_OIL: 6, RES.CANDLES: 6}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.MERCHANTS:
     #as_cathedral:
