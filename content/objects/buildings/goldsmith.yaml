@@ -6,8 +6,8 @@ cost: 0
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants: 0
-tooltip_text:
+inhabitants: 4
+tooltip_text: Gold + Gems = Jewelry
 tier: TIER.MERCHANTS
 buildingcosts: {}
 components:
@@ -18,9 +18,19 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
+      GOLD_GEMS:
+        produces:
+        - [RES.JEWELRY, 3]
+        consumes:
+        - [RES.GOLD_INGOTS, -1]
+        - [RES.GEMS, -1]
+        time: 30
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {}
+        slot_sizes: {RES.GOLD_INGOTS: 6, RES.GEMS: 6, RES.JEWELRY: 12}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.MERCHANTS:
     #as_goldsmith:

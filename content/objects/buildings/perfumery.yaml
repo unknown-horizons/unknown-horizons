@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 2
 size_y: 2
 inhabitants: 0
-tooltip_text:
+tooltip_text: Blossoms + Ambergris = Perfume #TODO
 tier: TIER.ARISTOCRATS
 buildingcosts: {}
 components:
@@ -18,11 +18,19 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
+      PERFUME:
+        produces:
+        - [RES.PERFUME, 1]
+        consumes:
+        - [RES.BLOSSOMS, -1]
+        - [RES.AMBERGRIS, -1]
+        time: 30
 - StorageComponent:
-    SlotsStorage:
-      slot_sizes: {}
+      SlotsStorage:
+        slot_sizes: {RES.BLOSSOMS: 6, RES.AMBERGRIS: 6, RES.PERFUME: 6}
 - CollectingComponent:
     collectors:
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.ARISTOCRATS:
     #as_perfumery:

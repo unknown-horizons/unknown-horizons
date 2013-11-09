@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 0
 size_y: 0
 inhabitants: 0
-tooltip_text:
+tooltip_text: Brine + Charcoal = Salt
 tier: TIER.CITIZENS
 buildingcosts: {}
 components:
@@ -16,12 +16,21 @@ components:
     tabs: [ProductionOverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      SALT:
+        produces:
+        - [RES.SALT, 2]
+        consumes:
+        - [RES.BRINE, -2]
+        - [RES.CHARCOAL, -1]
+        time: 15
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {}
+        slot_sizes: {RES.BRINE: 6, RES.CHARCOAL: 6, RES.SALT: 6}
 - CollectingComponent:
     collectors:
-      UNITS.BUILDING_COLLECTOR: 0
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.CITIZENS:
     as_2x2:
