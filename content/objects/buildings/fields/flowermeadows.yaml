@@ -1,0 +1,28 @@
+id: BUILDINGS.FLOWER_MEADOWS
+name: _ Flower Meadows
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text:
+tier: TIER.ARISTOCRATS
+buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.FLOWER_MEADOWS, 1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.FLOWER_MEADOWS: 1}
+actionsets:
+  TIER.ARISTOCRATS:
+    #as_flower_meadows:
+    as_3x3:
