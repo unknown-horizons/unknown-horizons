@@ -156,6 +156,7 @@ class BUILDINGS:
 	BOAT_BUILDER     = 12
 	LOOKOUT          = 13
 
+	BRIDGE           = 14
 	TRAIL            = 15
 
 	TREE             = 17
