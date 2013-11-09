@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 0
 size_y: 0
 inhabitants: 0
-tooltip_text:
+tooltip_text: Whales = Meat + Ambergris + Lamp Oil
 tier: TIER.MERCHANTS
 buildingcosts: {}
 components:
@@ -16,9 +16,32 @@ components:
     tabs: [SmallProductionOverviewTab,]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      WHALES:
+        produces:
+        - [RES.FOOD, 2]
+        - [RES.AMBERGRIS, 1]
+#       - [RES.BLUBBER, 2]
+        - [RES.LAMP_OIL, 1]
+        consumes:
+        - [RES.WHALES, -1]
+        time: 60
+#     BLUBBER:
+#       produces:
+#       - [RES.LAMP_OIL, 1]
+#       consumes:
+#       - [RES.BLUBBER, -2]
+#       time: 30
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {}
+        slot_sizes: {RES.WHALES: 4, RES.FOOD: 6, RES.AMBERGRIS: 6, RES.LAMP_OIL: 6,
+#                    RES.BLUBBER: 6,
+                    }
+# Do we need an own collector here?
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.MERCHANTS:
     as_2x2:

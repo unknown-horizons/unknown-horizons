@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 0
 size_y: 0
 inhabitants: 0
-tooltip_text:
+tooltip_text: One of (Tea, Coffee) = Society
 tier: TIER.MERCHANTS
 buildingcosts: {}
 show_status_icons: false
@@ -17,12 +17,26 @@ components:
     tabs: [ProductionOverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      TEA:
+        produces:
+        - [RES.SOCIETY, 4]
+        consumes:
+        - [RES.TEA, -1]
+        time: 16
+      COFFEE:
+        produces:
+        - [RES.SOCIETY, 4]
+        consumes:
+        - [RES.COFFEE, -1]
+        time: 16
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {}
+        slot_sizes: {RES.SOCIETY: 24, RES.TEA: 6, RES.COFFEE: 6}
 - CollectingComponent:
     collectors:
-      UNITS.BUILDING_COLLECTOR: 0
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.MERCHANTS:
     as_2x2:

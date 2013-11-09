@@ -17,9 +17,15 @@ components:
     tabs: [ProductionOverviewTab,]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      FAITH:
+        produces:
+        - [RES.FAITH, 1]
+        time: 2
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {}
+        slot_sizes: {RES.FAITH: 25}
 - AmbientSoundComponent:
     soundfiles: []
 actionsets:
