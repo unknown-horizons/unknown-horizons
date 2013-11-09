@@ -1,0 +1,27 @@
+id: BUILDINGS.SALINE
+name: _ Saline
+baseclass: production.ProductionBuilding
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 0
+size_y: 0
+inhabitants: 0
+tooltip_text:
+tier: TIER.CITIZENS
+buildingcosts: {}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 0
+actionsets:
+  TIER.CITIZENS:
+    as_2x2:
