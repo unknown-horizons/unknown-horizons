@@ -44,7 +44,7 @@ tab3:
 - icon: icons/tabwidget/buildmenu/tier/tier3
 -
   - _ Mining
-  - BUILDINGS.IRON_MINE
+  - BUILDINGS.MINE
   - BUILDINGS.SMELTERY
   - BUILDINGS.TOOLMAKER
   - BUILDINGS.CHARCOAL_BURNER

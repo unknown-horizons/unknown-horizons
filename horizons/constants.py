@@ -135,7 +135,7 @@ class BUILDINGS:
 	CLAY_PIT         = 25
 	DISTILLERY       = 26
 
-	IRON_MINE        = 28
+	MINE             = 28
 	SMELTERY         = 29
 	TOOLMAKER        = 30
 	CHARCOAL_BURNER  = 31

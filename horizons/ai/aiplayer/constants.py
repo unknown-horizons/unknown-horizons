@@ -59,7 +59,7 @@ class BUILDING_PURPOSE:
 	PAVILION = 19
 	VILLAGE_SCHOOL = 20
 	TAVERN = 21
-	IRON_MINE = 22
+	MINE = 22
 	SMELTERY = 23
 	TOOLMAKER = 24
 	CHARCOAL_BURNER = 25
@@ -96,7 +96,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.PAVILION] = BUILDINGS.PAVILION
 		cls.purpose_to_building[cls.VILLAGE_SCHOOL] = BUILDINGS.VILLAGE_SCHOOL
 		cls.purpose_to_building[cls.TAVERN] = BUILDINGS.TAVERN
-		cls.purpose_to_building[cls.IRON_MINE] = BUILDINGS.IRON_MINE
+		cls.purpose_to_building[cls.MINE] = BUILDINGS.MINE
 		cls.purpose_to_building[cls.SMELTERY] = BUILDINGS.SMELTERY
 		cls.purpose_to_building[cls.TOOLMAKER] = BUILDINGS.TOOLMAKER
 		cls.purpose_to_building[cls.CHARCOAL_BURNER] = BUILDINGS.CHARCOAL_BURNER
