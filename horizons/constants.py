@@ -207,7 +207,7 @@ class BUILDINGS:
 	HOP_FIELD        = 69
 
 	STONE_DEPOSIT    = 70
-
+	
 	BARRIER	         = 71
 
 	COTTON_FIELD     = 72
@@ -218,6 +218,14 @@ class BUILDINGS:
 
 	PERFUMERY        = 77
 	LIGHTHOUSE       = 78
+
+	ROASTERY         = 79
+	WHALE_PROCESSING = 80
+	GOLDSMITH        = 81
+	TAILOR           = 82
+	UNIVERSITY       = 83
+	CATHEDRAL        = 84
+	TEA_GARDEN       = 85
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
