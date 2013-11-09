@@ -1,0 +1,28 @@
+id: BUILDINGS.INDIGO_FIELD
+name: _ Indigo Field
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text:
+tier: TIER.ARISTOCRATS
+buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.INDIGO, 1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.INDIGO: 1}
+actionsets:
+  TIER.ARISTOCRATS:
+    #as_indigofield:
+    as_3x3:

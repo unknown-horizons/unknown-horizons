@@ -1,0 +1,28 @@
+id: BUILDINGS.COTTON_FIELD
+name: _ Cotton Field
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text:
+tier: TIER.MERCHANTS
+buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.COTTON_PLANTS, 1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.COTTON_PLANTS: 1}
+actionsets:
+  TIER.MERCHANTS:
+    #as_cottonfield:
+    as_3x3:
