@@ -4,13 +4,13 @@ baseclass: production.Mine
 radius: 0
 cost: 15
 cost_inactive: 5
-size_x: 5
-size_y: 5
+size_x: 1
+size_y: 1
 inhabitants: 0
 #TODO reword tooltip once there are more kinds of ore:
 tooltip_text: _ Gets iron ore from deposit.
 tier: TIER.SETTLERS
-buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}
+buildingcosts: {RES.GOLD: 0, RES.BOARDS: 0, RES.TOOLS: 0}
 translucent: true
 components:
 - SelectableComponent:
@@ -32,4 +32,4 @@ components:
         slot_sizes: {RES.RAW_IRON: 1000000, RES.IRON_ORE: 10}
 actionsets:
   TIER.SETTLERS:
-    as_mine5x5:
+    as_mine:

@@ -75,6 +75,11 @@ class ResourceDeposit(NatureBuilding):
 	tearable = False
 	layer = LAYERS.OBJECTS
 	walkable = False
+	
+class MineDeposit(BuildableSingleEverywhere, BasicBuilding):
+	tearable = False
+	layer = LAYERS.OBJECTS
+	walkable = False
 
 
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):

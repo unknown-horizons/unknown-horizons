@@ -30,7 +30,8 @@ INSERT INTO "ground_class" VALUES(3, 'constructible');
 INSERT INTO "ground_class" VALUES(4, 'constructible');
 INSERT INTO "ground_class" VALUES(6, 'constructible');
 INSERT INTO "ground_class" VALUES(5, 'coastline');
-INSERT INTO "ground_class" VALUES(7, 'constructible');
+INSERT INTO "ground_class" VALUES(7, 'mountainside');
+INSERT INTO "ground_class" VALUES(8, 'mountain');
 
 CREATE TABLE "speech" (
 	"group_id" INT NOT NULL DEFAULT 0,
@@ -217,6 +218,8 @@ INSERT INTO "tile_set" VALUES(3, 'ts_grass5');
 INSERT INTO "tile_set" VALUES(4, 'ts_grass-beach0');
 INSERT INTO "tile_set" VALUES(5, 'ts_beach-shallow0');
 INSERT INTO "tile_set" VALUES(6, 'ts_beach0');
+INSERT INTO "tile_set" VALUES(7, 'ts_mountain-grass0');
+INSERT INTO "tile_set" VALUES(8, 'ts_mountain0');
 
 CREATE TABLE "resource" (
 	"id" INT NOT NULL,

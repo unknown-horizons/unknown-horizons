@@ -361,6 +361,7 @@ class WEAPONS:
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
 	SAND = (6, "straight", 45)
+	MOUNTAIN = (8, "straight", 45)
 	SHALLOW_WATER = (1, "straight", 45)
 	WATER = (0, "straight", 45)
 
@@ -405,6 +406,25 @@ class GROUND:
 	DEEP_WATER_SOUTHEAST1 = (2, "curve_out", 135)
 	DEEP_WATER_SOUTHWEST1 = (2, "curve_out", 45)
 	DEEP_WATER_NORTHWEST1 = (2, "curve_out", 315)
+	
+	# grass to mountain tiles
+	MOUNTAIN_SOUTH = (7, "straight", 45)
+	MOUNTAIN_EAST =  (7, "straight", 135)
+	MOUNTAIN_NORTH = (7, "straight", 225)
+	MOUNTAIN_WEST =  (7, "straight", 315)
+	MOUNTAIN_SOUTHWEST3 = (7, "curve_in", 135)
+	MOUNTAIN_NORTHWEST3 = (7, "curve_in", 225)
+	MOUNTAIN_NORTHEAST3 = (7, "curve_in", 315)
+	MOUNTAIN_SOUTHEAST3 = (7, "curve_in", 45)
+	MOUNTAIN_NORTHEAST1 = (7, "curve_out", 225)
+	MOUNTAIN_SOUTHEAST1 = (7, "curve_out", 135)
+	MOUNTAIN_SOUTHWEST1 = (7, "curve_out", 45)
+	MOUNTAIN_NORTHWEST1 = (7, "curve_out", 315)
+	
+	MOUNTAIN_NORTHEAST_SOUTHWEST = (7, "curve_sides", 45)
+	MOUNTAIN_NORTHWEST_SOUTHEAST = (7, "curve_sides", 135)
+	MOUNTAIN_NORTHEAST_SOUTHWEST = (7, "curve_sides", 225)
+	MOUNTAIN_NORTHWEST_SOUTHEAST = (7, "curve_sides", 315)
 
 
 class ACTION_SETS:

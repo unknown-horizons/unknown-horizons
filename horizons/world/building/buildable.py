@@ -418,7 +418,6 @@ class BuildableLine(Buildable):
 
 		return possible_builds
 
-
 class BuildableSingleOnCoast(BuildableSingle):
 	"""Buildings one can only build on coast, such as the fisher."""
 	irregular_conditions = True

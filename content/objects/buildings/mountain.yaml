@@ -1,16 +1,16 @@
 id: BUILDINGS.MOUNTAIN
 name: _ Mountain
-baseclass: nature.ResourceDeposit
+baseclass: nature.MineDeposit
 radius: 0
 cost: 0
 cost_inactive: 0
-size_x: 5
-size_y: 5
+size_x: 1
+size_y: 1
 inhabitants: 0
 tooltip_text: null
 tier: TIER.NATURE
 buildingcosts: {}
-translucent: true
+translucent: false
 components:
 - SelectableComponent:
     type: building
@@ -27,4 +27,4 @@ components:
         slot_sizes: {RES.RAW_IRON: 1000000}
 actionsets:
   TIER.NATURE:
-    as_mountain5x5:
+    as_mine1x1:

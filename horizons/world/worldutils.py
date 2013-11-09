@@ -103,7 +103,21 @@ def save_map(world, path, prefix):
 	db.close()
 
 
-def add_resource_deposits(world, resource_multiplier):
+def add_mountains(world, resource_multiplier):
+	Mountain = Entities.buildings[BUILDINGS.MOUNTAIN]
+	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+
+	for island in world.islands:
+		tiles = sorted(island.ground_map.iteritems())
+		for (x, y), tile in tiles:
+			if tile.id == 7:
+				for (dx, dy) in moves:
+					position = Point(x+dx, y+dy)
+					newTile = world.get_tile(position)
+					if 'constructible' in newTile.classes and newTile.id != 7 and newTile.id != 8:
+						building = Build(Mountain, x, y, island, 45 + tile.rotation, ownerless=True)(issuer=None)
+
+def add_clay_deposits(world, resource_multiplier):
 	"""
 	Place clay deposits and mountains.
 
@@ -120,7 +134,6 @@ def add_resource_deposits(world, resource_multiplier):
 
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	ClayDeposit = Entities.buildings[BUILDINGS.CLAY_DEPOSIT]
-	Mountain = Entities.buildings[BUILDINGS.MOUNTAIN]
 	StoneDeposit = Entities.buildings[BUILDINGS.STONE_DEPOSIT]
 	clay_deposit_locations = []
 	mountain_locations = []
@@ -204,13 +217,6 @@ def add_resource_deposits(world, resource_multiplier):
 		num_local_clay_deposits = int(max(0, resource_multiplier * min(3, local_clay_deposits_base + abs(world.session.random.gauss(0, 0.7)))))
 		place_objects(local_clay_deposit_locations, num_local_clay_deposits, ClayDeposit)
 
-		# place the local mountains
-		local_mountain_locations = get_valid_locations(usable_part, island, *Mountain.size)
-		mountain_locations.extend(local_mountain_locations)
-		local_mountains_base = 0.1 + len(local_mountain_locations) ** 0.5 / 120.0
-		num_local_mountains = int(max(0, resource_multiplier * min(2, local_mountains_base + abs(world.session.random.gauss(0, 0.8)))))
-		place_objects(local_mountain_locations, num_local_mountains, Mountain)
-
 		# place the local stone deposits
 		local_stone_deposit_locations = get_valid_locations(usable_part, island, *StoneDeposit.size)
 		stone_deposit_locations.extend(local_stone_deposit_locations)
@@ -233,7 +239,6 @@ def add_resource_deposits(world, resource_multiplier):
 	num_extra_mountains = int(round(max(1, resource_multiplier * min(4, len(world.islands) * 0.5 + 2, extra_mountains_base + abs(world.session.random.gauss(0, 0.7))))))
 	place_objects(mountain_locations, num_extra_mountains, Mountain)
 
-
 def add_nature_objects(world, natural_resource_multiplier):
 	"""
 	Place trees, wild animals, fish deposits, clay deposits, and mountains.
@@ -244,7 +249,8 @@ def add_nature_objects(world, natural_resource_multiplier):
 	if not int(world.properties.get('RandomTrees', 1)):
 		return
 
-	add_resource_deposits(world, natural_resource_multiplier)
+	add_mountains(world, natural_resource_multiplier)
+	add_clay_deposits(world, natural_resource_multiplier)
 	Tree = Entities.buildings[BUILDINGS.TREE]
 	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT]
 	fish_directions = [(i, j) for i in range(-1, 2) for j in range(-1, 2)]
