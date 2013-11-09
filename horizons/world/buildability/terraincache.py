@@ -25,6 +25,7 @@ class TerrainRequirement:
 	LAND = 1 # buildings that must be entirely on flat land
 	LAND_AND_COAST = 2 # buildings that have to be partially on the coast
 	LAND_AND_COAST_NEAR_SEA = 3 # coastal buildings that have to be near the sea
+	MOUNTAINSIDE = 4
 
 class TerrainBuildabilityCache(object):
 	"""
@@ -48,6 +49,7 @@ class TerrainBuildabilityCache(object):
 		self._island = island
 		self._land = None
 		self._coast = None
+		self._mountainside = None
 		self.land_or_coast = None # set((x, y), ...)
 		self.cache = None # {terrain type: {(width, height): set((x, y), ...), ...}, ...}
 		self.create_cache()
@@ -55,15 +57,19 @@ class TerrainBuildabilityCache(object):
 	def _init_land_and_coast(self):
 		land = set()
 		coast = set()
+		mountainside = set()
 
 		for coords, tile in self._island.ground_map.iteritems():
 			if 'constructible' in tile.classes:
 				land.add(coords)
 			elif 'coastline' in tile.classes:
 				coast.add(coords)
+			elif 'mountainside' in tile.classes:
+				mountainside.add(coords)
 
 		self._land = land
 		self._coast = coast
+		self._mountainside = mountainside
 		self.land_or_coast = land.union(coast)
 
 	def _init_rows(self):
