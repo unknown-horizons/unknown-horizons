@@ -1,0 +1,31 @@
+id: BUILDINGS.PUBLIC_BATH
+name: _ Public Bath
+baseclass: production.ProductionBuilding
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 0
+size_y: 0
+inhabitants: 0
+tooltip_text:
+tier: TIER.CITIZENS
+buildingcosts: {}
+show_status_icons: false
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      HYGIENE:
+        produces:
+        - [RES.HYGIENE, 1]
+        time: 4
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.HYGIENE: 10}
+actionsets:
+  TIER.CITIZENS:
+    as_2x2:
