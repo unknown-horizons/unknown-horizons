@@ -1,0 +1,25 @@
+id: BUILDINGS.STORE
+name:
+  TIER.PIONEERS: _ Chandler
+  TIER.CITIZENS: _ Store
+  TIER.ARISTOCRATS: _ Mall
+baseclass: building.DefaultBuilding
+radius: 12
+cost: 0
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants: 2
+tooltip_text: _ Distributes goods from main squares in range.
+tier: TIER.PIONEERS
+buildingcosts: {}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [OverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+actionsets:
+  TIER.PIONEERS:
+    #as_store:
+    as_2x2:
