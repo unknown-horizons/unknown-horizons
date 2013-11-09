@@ -211,6 +211,7 @@ class BUILDINGS:
 	
 	BARRIER	         = 71
 
+<<<<<<< HEAD
 	COTTON_FIELD     = 72
 	COFFEE_FIELD     = 73
 	TEA_PLANTATION   = 74
@@ -230,6 +231,8 @@ class BUILDINGS:
 
 	SALINE           = 86
 	PUBLIC_BATH      = 87
+
+	STORE            = 88
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
