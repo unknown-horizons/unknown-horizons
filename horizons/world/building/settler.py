@@ -35,7 +35,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.component.storagecomponent import StorageComponent
-from horizons.world.status import SettlerUnhappyStatus
+from horizons.world.status import SettlerUnhappyStatus, SettlerNotConnectedStatus
 from horizons.world.production.producer import Producer
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
 
@@ -81,7 +81,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner.is_local_player:
-			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
+			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month(), loops=-1)
 		self.__init()
 		self.run()
 
@@ -364,7 +364,13 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			if building.id == BUILDINGS.MAIN_SQUARE:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:
 					# a main square is in range
+					if hasattr(self, "_settler_market_place_status_icon"):
+						RemoveStatusIcon.broadcast(self, self, SettlerNotConnectedStatus)
+						del self._settler_market_place_status_icon
 					return
+		if not hasattr(self, "_settler_market_place_status_icon"):
+			self._settler_market_place_status_icon = SettlerNotConnectedStatus(self) # save ref for removal later
+			AddStatusIcon.broadcast(self, self._settler_market_place_status_icon)
 		# no main square found
 		# check_duplicate: only trigger once for different settlers of a neighborhood
 		self.session.ingame_gui.message_widget.add(point=self.position.origin,
