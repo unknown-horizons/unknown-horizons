@@ -1,0 +1,37 @@
+id: BUILDINGS.CANNON_FOUNDRY
+name: _ Cannon Foundry
+baseclass: production.ProductionBuilding
+radius: 8
+cost: 0
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants: 0
+tooltip_text: Iron + Wood + Charcoal = Cannon
+tier: TIER.CITIZENS
+buildingcosts: {}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      CANNON:
+        produces:
+        - [RES.CANNON, 2]
+        consumes:
+        - [RES.BOARDS, -1]
+        - [RES.CHARCOAL, -1]
+        - [RES.IRON_INGOTS, -1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.IRON_INGOTS: 4, RES.BOARDS: 4, RES.CHARCOAL: 4, RES.CANNON: 8}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
+actionsets:
+  TIER.CITIZENS:
+    as_2x2:
