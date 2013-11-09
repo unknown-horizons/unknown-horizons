@@ -1,0 +1,22 @@
+id: BUILDINGS.BRIDGE
+name:
+  TIER.SAILORS: _ Tree Log
+  TIER.CITIZENS: _ Stone Bridge
+  TIER.ARISTOCRATS: _ Prestige Bridge
+baseclass: path.Road
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 1
+size_y: 1
+inhabitants: 0
+tooltip_text:
+tier: TIER.SAILORS
+buildingcosts: {}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+actionsets:
+  TIER.SAILORS:
+    #as_bridge:
+    null:
