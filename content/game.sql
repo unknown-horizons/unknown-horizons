@@ -298,27 +298,28 @@ INSERT INTO "resource" VALUES(63, 'gold ingots',    50,     0,    0); -- unused
 INSERT INTO "resource" VALUES(64, 'gem deposit',     0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(65, 'rough gems',     15,     0,    0); -- unused
 INSERT INTO "resource" VALUES(66, 'gems',           50,     0,    0); -- unused
+INSERT INTO "resource" VALUES(67, 'coffee plants',   2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(68, 'coffee beans',    2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(69, 'coffee',         10,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
-INSERT INTO "resource" VALUES(70, 'coffee plants',   2,     0,    0); -- unused
-INSERT INTO "resource" VALUES(71, 'coffee beans',    2.5,   0,    0); -- unused
-INSERT INTO "resource" VALUES(72, 'coffee',         10,     0,    0); -- unused
-INSERT INTO "resource" VALUES(73, 'tea plants',      2,     0,    0); -- unused
-INSERT INTO "resource" VALUES(74, 'tea leaves',      2.5,   0,    0); -- unused
-INSERT INTO "resource" VALUES(75, 'tea',            10,     0,    0); -- unused
-INSERT INTO "resource" VALUES(76, 'flower meadows',  2,     0,    0); -- unused
-INSERT INTO "resource" VALUES(77, 'blossoms',        5,     0,    0); -- unused
-INSERT INTO "resource" VALUES(78, 'brine deposit',   0,     0,    0); -- unused
-INSERT INTO "resource" VALUES(79, 'brine',           5,     0,    0); -- unused
+INSERT INTO "resource" VALUES(70, 'tea plants',      2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(71, 'tea leaves',      2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(72, 'tea',            10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(73, 'flower meadows',  2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(74, 'blossoms',        5,     0,    0); -- unused
+INSERT INTO "resource" VALUES(75, 'brine deposit',   0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(76, 'brine',           5,     0,    0); -- unused
+INSERT INTO "resource" VALUES(77, 'whales',         10,     0,    0); -- unused -- (blubber meat cetaceum baleen)
+INSERT INTO "resource" VALUES(78, 'ambergris',      10,     0,    0); -- unused -- (solid, waxy, flammable, dull grey)
+INSERT INTO "resource" VALUES(79, 'lamp oil',       10,     0,    0); -- unused -- (via blubber)
 --                            id   name            value  trade  show_inv
-INSERT INTO "resource" VALUES(80, 'whales',         10,     0,    0); -- unused -- (blubber meat cetaceum baleen)
-INSERT INTO "resource" VALUES(81, 'ambergris',      10,     0,    0); -- unused -- (solid, waxy, flammable, dull grey)
-INSERT INTO "resource" VALUES(82, 'lamp oil',       10,     0,    0); -- unused -- (via blubber)
-INSERT INTO "resource" VALUES(83, 'cotton plants',   2,     0,    0); -- unused -- (called gossypium)
-INSERT INTO "resource" VALUES(84, 'cotton',          2.5,   0,    0); -- unused -- (fibers)
-INSERT INTO "resource" VALUES(85, 'indigo plants' ,  2,     0,    0); -- unused -- (called indigofera)
-INSERT INTO "resource" VALUES(86, 'indigo',          5,     0,    0); -- unused
-INSERT INTO "resource" VALUES(87, 'garments',       20,     0,    0); -- unused
-INSERT INTO "resource" VALUES(88, 'perfume',        20,     0,    0); -- unused
+INSERT INTO "resource" VALUES(80, 'cotton plants',   2,     0,    0); -- unused -- (called gossypium)
+INSERT INTO "resource" VALUES(81, 'cotton',          2.5,   0,    0); -- unused -- (fibers)
+INSERT INTO "resource" VALUES(82, 'indigo plants' ,  2,     0,    0); -- unused -- (called indigofera)
+INSERT INTO "resource" VALUES(83, 'indigo',          5,     0,    0); -- unused
+INSERT INTO "resource" VALUES(84, 'garments',       20,     0,    0); -- unused
+INSERT INTO "resource" VALUES(85, 'perfume',        20,     0,    0); -- unused
+INSERT INTO "resource" VALUES(86, 'jewelry',        20,     0,    0); -- unused
 INSERT INTO "resource" VALUES(89, 'hop plants',      2,     0,    0);
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(90, 'hops',            2.5,   0,    1);
@@ -326,9 +327,12 @@ INSERT INTO "resource" VALUES(91, 'beer',            6.5,   1,    1);
 -- vegetables, fruit, hemp, ropes
 -- almonds, almond milk
 -- hides, leather, shoes, saddles
--- tin ore, copper ore, tin, copper, bronze
--- mortars, [swords maces muskets spears arbalests]
+-- [swords maces muskets spears arbalests] = weapons
 --                            id   name            value  trade  show_inv
+--INSERT INTO "resource" VALUES(92, 'faith 2',        NULL,   0,    0); -- (cathedral)
+--INSERT INTO "resource" VALUES(93, 'education 2',    NULL,   0,    0); -- (academy/university)
+INSERT INTO "resource" VALUES(94, 'representation', NULL,   0,    0); -- (lighthouse)
+INSERT INTO "resource" VALUES(95, 'society',        NULL,   0,    0); -- (tea garden)
 INSERT INTO "resource" VALUES(96, 'hygiene',        NULL,   0,    0); -- (public bath)
 INSERT INTO "resource" VALUES(97, 'recreation',     NULL,   0,    0); -- (for aesthetics)
 INSERT INTO "resource" VALUES(98, 'blackdeath',     NULL,   0,    0); -- (doctor)
