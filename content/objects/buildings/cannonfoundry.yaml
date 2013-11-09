@@ -1,4 +1,4 @@
-id: BUILDINGS.CANNONFOUNDRY
+id: BUILDINGS.CANNON_FOUNDRY
 name: _ Cannon Foundry
 baseclass: production.ProductionBuilding
 radius: 8
@@ -20,14 +20,15 @@ components:
     productionlines:
       CANNON:
         produces:
-        - [RES.CANNON, 1]
+        - [RES.CANNON, 2]
         consumes:
-        - [RES.BOARDS, -2]
-        - [RES.IRON_INGOTS, -2]
+        - [RES.BOARDS, -1]
+        - [RES.CHARCOAL, -1]
+        - [RES.IRON_INGOTS, -1]
         time: 30
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {RES.IRON_INGOTS: 6, RES.CANNON: 8, RES.BOARDS: 6}
+        slot_sizes: {RES.IRON_INGOTS: 4, RES.BOARDS: 4, RES.CHARCOAL: 4, RES.CANNON: 8}
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
