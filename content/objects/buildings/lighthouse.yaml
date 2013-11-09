@@ -1,0 +1,43 @@
+id: BUILDINGS.LIGHTHOUSE
+name: _ Lighthouse
+baseclass: building.DefaultBuilding
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 4
+size_y: 4
+inhabitants: 0
+tooltip_text:
+tier: TIER.ARISTOCRATS
+buildingcosts: {}
+components:
+- SelectableComponent:
+    type: building
+    range_applies_only_on_island: False
+    tabs: [SignalFireOverviewTab,]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      LAMP_OIL:
+        produces:
+        - [RES.REPRESENTATION, 4]
+        consumes:
+        - [RES.LAMP_OIL, -1]
+        time: 16
+      CANDLES:
+        produces:
+        - [RES.REPRESENTATION, 4]
+        consumes:
+        - [RES.CANDLES, -1]
+        time: 16
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.REPRESENTATION: 24, RES.LAMP_OIL: 6, RES.CANDLES: 6}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
+actionsets:
+  TIER.ARISTOCRATS:
+    #as_lighthouse:
+    as_2x2:
