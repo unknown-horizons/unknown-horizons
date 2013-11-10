@@ -90,8 +90,8 @@ tab4:
 #  - _ Services
 #  - BUILDINGS.PUBLIC_BATH
 #  - # empty slot
-#  - _ Military
-#  - BUILDINGS.CANNON_FOUNDRY
+  - _ Military
+  - BUILDINGS.CANNON_FOUNDRY
 #  - BUILDINGS.GUNSMITH
 
 tab5:
