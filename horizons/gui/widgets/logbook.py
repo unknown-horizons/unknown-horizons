@@ -199,31 +199,47 @@ class LogBook(PickBeltWidget, Window):
 ########
 
 	def parse_logbook_item(self, parameter):
-		# json.loads() returns unicode, thus convert strings and compare to unicode
-		# Image works with str() since pychan can only use str objects as file path
+		# Some error checking for widgets that are to be loaded.
+		# This happens, for example, with outdated YAML stored in old
+		# scenario savegames. Instead of crashing, display nothing.
+		def _icon(image):
+			try:
+				# Pychan can only use str objects as file path.
+				# json.loads() however returns unicode.
+				return Icon(image=str(image))
+			except RuntimeError:
+				return None
+
+		def _label(text, font='default'):
+			try:
+				return Label(text=unicode(text), wrap_text=True,
+				             min_size=(335, 0), max_size=(335, 508),
+				             font=font)
+			except RuntimeError:
+				return None
+
 		if parameter and parameter[0]: # allow empty Labels
 			parameter_type = parameter[0]
 		if isinstance(parameter, basestring):
-			add = Label(text=unicode(parameter), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
+			add = _label(parameter)
 		elif parameter_type == u'Label':
-			add = Label(text=unicode(parameter[1]), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
+			add = _label(parameter[1])
 		elif parameter_type == u'Image':
-			add = Icon(image=str(parameter[1]))
+			add = _icon(parameter[1])
 		elif parameter_type == u'Gallery':
 			add = HBox()
 			for image in parameter[1]:
-				add.addChild(Icon(image=str(image)))
+				new_icon = _icon(image)
+				if new_icon is not None:
+					add.addChild(new_icon)
 		elif parameter_type == u'Headline':
 			add = HBox()
 			is_not_last_headline = self._parameters and self._cur_entry < (len(self._parameters) - 2)
 			if is_not_last_headline:
-				add.addChild(Icon(image="content/gui/images/tabwidget/done.png"))
-
-			add.addChild(Label(text=unicode(parameter[1]), wrap_text=True,
-			            min_size=(335, 0), max_size=(335, 508), font='headline'))
+				add.addChild(_icon("content/gui/images/tabwidget/done.png"))
+			add.addChild(_label(parameter[1], font='headline'))
 		elif parameter_type == u'BoldLabel':
-			add = Label(text=unicode(parameter[1]), wrap_text=True,
-			            min_size=(335, 0), max_size=(335, 508), font='14_bold')
+			add = _label(parameter[1], font='default_bold')
 		elif parameter_type == u'Message':
 			add = None
 			# parameters are re-read on page reload.
