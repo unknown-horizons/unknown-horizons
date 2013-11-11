@@ -55,7 +55,7 @@ class Goal(object):
 	@property
 	def can_be_activated(self):
 		"""Return True if and only if it is ok to update this goal."""
-		return self.personality.enabled and self.owner.settler_level >= self.personality.min_settler_level
+		return self.personality.enabled and self.owner.settler_level >= self.personality.min_tier
 
 	def execute(self):
 		"""Do whatever is best to get closer to fulfilling the goal (usually involves building a building)."""
