@@ -105,6 +105,7 @@ class CityInfo(object):
 	def __init__(self, ingame_gui):
 		self._ingame_gui = ingame_gui
 		self._widget = load_uh_widget('city_info.xml', 'resource_bar')
+		self._widget.adaptLayout()
 		self._child_finder = PychanChildFinder(self._widget)
 
 		self._settlement = None
