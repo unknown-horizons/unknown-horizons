@@ -132,6 +132,7 @@ class SQLiteAtlasLoader(object):
 			return loader
 
 	def load_image(self, file, climate_zone, actionset, action, rotation):
+		"""@param climate_zone: None for action sets. Climate zone for tile sets"""
 		if not self.inited:
 			self.init()
 		loader = self._get_loader(actionset)
