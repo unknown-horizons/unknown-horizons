@@ -4,13 +4,12 @@ baseclass: nature.MineDeposit
 radius: 0
 cost: 0
 cost_inactive: 0
-size_x: 1
-size_y: 1
+size_x: 2
+size_y: 2
 inhabitants: 0
 tooltip_text: null
 tier: TIER.NATURE
 buildingcosts: {}
-translucent: false
 components:
 - SelectableComponent:
     type: building
@@ -26,5 +25,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.RAW_IRON: 1000000}
 actionsets:
-  TIER.NATURE:
-    as_mine1x1:
+  TIER.SAILORS:
+    as_2x2:

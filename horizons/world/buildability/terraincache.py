@@ -27,6 +27,7 @@ class TerrainRequirement:
 	LAND_AND_COAST = 2 # buildings that have to be partially on the coast
 	LAND_AND_COAST_NEAR_SEA = 3 # coastal buildings that have to be near the sea
 	MOUNTAINSIDE = 4
+	LAND_AND_MOUNTAINSIDE = 5
 
 
 class TerrainBuildabilityCache:
@@ -59,21 +60,31 @@ class TerrainBuildabilityCache:
 	def _init_land_and_coast(self):
 		land = set()
 		coast = set()
-		mountainside = set()
 
 		for coords, tile in self._island.ground_map.items():
 			if 'constructible' in tile.classes:
 				land.add(coords)
 			elif 'coastline' in tile.classes:
 				coast.add(coords)
+
+		self._land = land
+		self._coast = coast
+		self.land_or_coast = land.union(coast)
+	
+	def _init_land_and_mountainside(self):
+		land = set()
+		mountainside = set()
+
+		for coords, tile in self._island.ground_map.iteritems():
+			if 'constructible' in tile.classes:
+				land.add(coords)
 			elif 'mountainside' in tile.classes:
 				mountainside.add(coords)
 
 		self._land = land
-		self._coast = coast
 		self._mountainside = mountainside
-		self.land_or_coast = land.union(coast)
-
+		self.land_or_mountainside = land.union(mountainside)
+		
 	def _init_rows(self):
 		# these dicts show whether there is a constructible and/or coastline tile in a row
 		# of 2 or 3 tiles starting from the coords and going right
@@ -84,6 +95,7 @@ class TerrainBuildabilityCache:
 		land = self._land
 		coast = self._coast
 		land_or_coast = self.land_or_coast
+		
 
 		for (x, y) in self.land_or_coast:
 			if (x + 1, y) not in land_or_coast:
@@ -101,11 +113,42 @@ class TerrainBuildabilityCache:
 
 		self.row2 = row2
 		self.row3 = row3
+		
+	def _init_mountain_rows(self):
+		# these dicts show whether there is a constructible and/or coastline tile in a row
+		# of 2 or 3 tiles starting from the coords and going right
+		# both are in the format {(x, y): (has land, has coast), ...}
+		row2mount = {}
+		row3mount = {}
+
+		land = self._land
+		mountainside = self._mountainside
+		land_or_mountainside = self.land_or_mountainside
+		
+
+		for (x, y) in self.land_or_mountainside:
+			if (x + 1, y) not in land_or_mountainside:
+				continue
+
+			has_land = (x, y) in land or (x + 1, y) in land
+			has_mountainside = (x, y) in mountainside or (x + 1, y) in mountainside
+			row2mount[(x, y)] = (has_land, has_mountainside)
+			if (x + 2, y) not in land_or_mountainside:
+				continue
+
+			has_land = has_land or (x + 2, y) in land
+			has_mountainside = has_mountainside or (x + 2, y) in mountainside
+			row3mount[(x, y)] = (has_land, has_mountainside)
+
+		self.row2mount = row2mount
+		self.row3mount = row3mount
 
 	def _init_squares(self):
 		self._init_rows()
 		row2 = self.row2
 		row3 = self.row3
+		self._init_mountain_rows()
+		row2mount = self.row2mount
 
 		sq2 = {}
 		for coords in row2:
@@ -114,6 +157,14 @@ class TerrainBuildabilityCache:
 				has_land = row2[coords][0] or row2[coords2][0]
 				has_coast = row2[coords][1] or row2[coords2][1]
 				sq2[coords] = (has_land, has_coast)
+				
+		sq2mount = {}
+		for coords in row2mount:
+			coords2 = (coords[0], coords[1] + 1)
+			if coords2 in row2mount:
+				has_land = row2mount[coords][0] or row2mount[coords2][0]
+				has_mountainside = row2mount[coords][1] or row2mount[coords2][1]
+				sq2[coords] = (has_land, has_mountainside)
 
 		sq3 = {}
 		for coords in row3:
@@ -125,13 +176,16 @@ class TerrainBuildabilityCache:
 				sq3[coords] = (has_land, has_coast)
 
 		self.sq2 = sq2
+		self.sq2mount = sq2mount
 		self.sq3 = sq3
 
 	def create_cache(self):
 		self._init_land_and_coast()
+		self._init_land_and_mountainside()
 
 		land = {}
 		land_and_coast = {}
+		land_and_mountainside = {}
 
 		land[(1, 1)] = self._land
 		for size in self.sizes:
@@ -142,6 +196,9 @@ class TerrainBuildabilityCache:
 
 		for size in [(2, 2), (3, 3)]:
 			land_and_coast[size] = set()
+			
+		for size in [(2, 2), (3, 3)]:
+			land_and_mountainside[size] = set()
 
 		self._init_squares()
 
@@ -166,6 +223,28 @@ class TerrainBuildabilityCache:
 					land[(2, 4)].add(coords)
 				elif (x, y + 1) in sq2 and not sq2[(x, y + 1)][1]:
 					land[(2, 3)].add(coords)
+					
+		sq2mount = self.sq2mount
+		for coords, (has_land, has_mountainside) in sq2.iteritems():
+			x, y = coords
+			if has_land and has_mountainside:
+				# handle 2x2 coastal buildings
+				land_and_mountainside[(2, 2)].add(coords)
+			elif has_land and not has_mountainside:
+				# handle 2x2, 2x3, and 2x4 land buildings
+				land[(2, 2)].add(coords)
+
+				if (x + 2, y) in sq2mount and not sq2mount[(x + 2, y)][1]:
+					land[(3, 2)].add(coords)
+					land[(4, 2)].add(coords)
+				elif (x + 1, y) in sq2mount and not sq2mount[(x + 1, y)][1]:
+					land[(3, 2)].add(coords)
+
+				if (x, y + 2) in sq2mount and not sq2mount[(x, y + 2)][1]:
+					land[(2, 3)].add(coords)
+					land[(2, 4)].add(coords)
+				elif (x, y + 1) in sq2mount and not sq2mount[(x, y + 1)][1]:
+					land[(2, 3)].add(coords)
 
 		sq3 = self.sq3
 		for coords, (has_land, has_coast) in sq3.items():
@@ -188,6 +267,7 @@ class TerrainBuildabilityCache:
 		self.cache = {}
 		self.cache[TerrainRequirement.LAND] = land
 		self.cache[TerrainRequirement.LAND_AND_COAST] = land_and_coast
+		self.cache[TerrainRequirement.LAND_AND_MOUNTAINSIDE] = land_and_mountainside
 
 	def create_sea_cache(self):
 		# currently only 3x3 buildings can require nearby sea

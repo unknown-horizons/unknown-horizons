@@ -243,8 +243,12 @@ class Buildable:
 			tile = island.get_tile_tuple(tup)
 			if tile is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
-			if 'constructible' not in tile.classes:
-				raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
+			if cls.name != 'Mine':
+				if 'constructible' not in tile.classes:
+					raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
+			else:
+				if 'mountainside' not in tile.classes and 'constructible' not in tile.classes:
+					raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
 		return island
 
 	@classmethod
@@ -542,7 +546,7 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 				raise _NotBuildableError(BuildableErrorTypes.ISLAND_ALREADY_SETTLED)
 
 
-class BuildableSingleOnDeposit(BuildableSingle):
+class BuildableSingleOnClayDeposit(BuildableSingle):
 	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
 	For now, mines can only be built on a single type of deposit.
 	This is specified in object files, and saved in cls.buildable_on_deposit in
@@ -572,3 +576,41 @@ class BuildableSingleOnDeposit(BuildableSingle):
 		# rotation fix code is only reached when building is buildable
 		mountain = WorldObject.get_object_by_id(next(iter(tearset)))
 		return mountain.rotation
+
+class BuildableSingleOnMountain(BuildableSingle):
+	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
+	For now, mines can only be built on a single type of deposit.
+	This is specified in game.sqlite in the table "mine", and saved in cls.buildable_on_deposit in
+	the buildingclass.
+	"""
+
+	@classmethod
+	def _check_buildings(cls, session, position, island=None):
+		"""Check if there are buildings blocking the build"""
+		if island is None:
+			island = session.world.get_island(position.center)
+		deposit = None
+		for tile in island.get_tiles_tuple(position.tuple_iter()):
+			if tile.object is None or \
+			   tile.object.id != cls.buildable_on_deposit_type or \
+			   (deposit is not None and tile.object != deposit):
+				raise _NotBuildableError(BuildableErrorTypes.NEED_RES_SOURCE)
+			deposit = tile.object
+		return set([deposit.worldid])
+
+	@classmethod
+	def _check_rotation(cls, session, position, rotation):
+		"""The rotation should be the same as the one of the underlying mountain"""
+		tearset = cls._check_buildings(session, position) # will raise on problems
+		# rotation fix code is only reached when building is buildable
+		mountain = WorldObject.get_object_by_id(iter(tearset).next())
+		return mountain.rotation
+
+
+decorators.bind_all(Buildable)
+decorators.bind_all(BuildableSingle)
+decorators.bind_all(BuildableRect)
+decorators.bind_all(BuildableSingleFromShip)
+decorators.bind_all(BuildableSingleOnCoast)
+decorators.bind_all(BuildableSingleOnClayDeposit)
+decorators.bind_all(BuildableSingleOnMountain)

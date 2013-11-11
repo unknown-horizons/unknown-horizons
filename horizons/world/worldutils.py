@@ -102,19 +102,32 @@ def save_map(world, path, prefix):
 	db('COMMIT')
 	db.close()
 
-
 def add_mountains(world, resource_multiplier):
 	Mountain = Entities.buildings[BUILDINGS.MOUNTAIN]
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+	deposit_locations = []
 
 	for island in world.islands:
 		tiles = sorted(island.ground_map.iteritems())
 		for (x, y), tile in tiles:
-			if tile.id == 7:
+			near_deposits = False
+			if tile.id == 7 and tile.shape == 'straight':
 				for (dx, dy) in moves:
 					position = Point(x+dx, y+dy)
 					newTile = world.get_tile(position)
-					if 'constructible' in newTile.classes and newTile.id != 7 and newTile.id != 8:
+					if (newTile.x, newTile.y) in deposit_locations:
+						near_deposits = True
+				if near_deposits == False:
+					deposit_locations.append((x, y))
+
+	for island in world.islands:
+		tiles = sorted(island.ground_map.iteritems())
+		for (x, y), tile in tiles:
+			if (x, y) in deposit_locations:
+				for (dx, dy) in moves:
+					position = Point(x+dx, y+dy)
+					newTile = world.get_tile(position)
+					if 'constructible' in newTile.classes:
 						building = Build(Mountain, x, y, island, 45 + tile.rotation, ownerless=True)(issuer=None)
 
 def add_clay_deposits(world, resource_multiplier):
@@ -136,7 +149,6 @@ def add_clay_deposits(world, resource_multiplier):
 	ClayDeposit = Entities.buildings[BUILDINGS.CLAY_DEPOSIT]
 	StoneDeposit = Entities.buildings[BUILDINGS.STONE_DEPOSIT]
 	clay_deposit_locations = []
-	mountain_locations = []
 	stone_deposit_locations = []
 
 	def get_valid_locations(usable_part, island, width, height):
