@@ -47,8 +47,6 @@ import signal
 import traceback
 import platform
 
-from options import get_option_parser
-
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
@@ -170,6 +168,7 @@ def main():
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 	create_user_dirs()
 
+	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
 	setup_debugging(options)
 	init_environment(True)
@@ -301,6 +300,7 @@ def import_fife(paths):
 
 def find_fife():
 	# Use the path the user provided.
+	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
 	if options.fife_path:
 		fife_path = os.path.abspath(options.fife_path)
