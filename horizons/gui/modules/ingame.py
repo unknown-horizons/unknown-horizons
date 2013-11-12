@@ -164,14 +164,6 @@ class CityInfo(object):
 			helptext = u""
 			city_name_label.disable_cursor_change_on_hover()
 
-		fertility_box = self._child_finder('fertility_icons')
-		fertility_box.removeAllChildren()
-		fertility_box.padding = 3
-		for res_id in sorted(self._settlement.fertility):
-			icon = create_resource_icon(res_id, self._ingame_gui.session.db)
-			icon.max_size = icon.min_size = icon.size = (20, 20)
-			fertility_box.addChild(icon)
-
 		self._widget.mapEvents({
 			'city_name': cb
 		})
