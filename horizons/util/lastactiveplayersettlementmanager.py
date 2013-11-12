@@ -105,7 +105,7 @@ class LastActivePlayerSettlementManager(object):
 		need_msg = False
 		# check if actual last player settlement is a new one
 		if new_player_settlement is not None and \
-		   resolve_weakref(self._last_player_settlement) is not resolve_weakref( new_player_settlement):
+		   resolve_weakref(self._last_player_settlement) is not resolve_weakref(new_player_settlement):
 			self._last_player_settlement = new_player_settlement
 			need_msg = True
 
