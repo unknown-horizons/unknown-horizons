@@ -51,12 +51,7 @@ class SQLiteAnimationLoader(object):
 
 		# Set the correct loader based on the actionset
 		loader = None
-		if actionset.startswith("ts_"):
-			loader = TileSetLoader
-		elif actionset.startswith("as_"):
-			loader = ActionSetLoader
-		else:
-			assert False, "Invalid set being loaded: " + actionset
+		loader = self._get_loader(actionset)
 
 		ani = fife.Animation.createAnimation()
 		frame_start, frame_end = 0.0, 0.0
