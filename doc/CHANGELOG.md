@@ -5,7 +5,7 @@ CHANGELOG Unknown Horizons
 
 2013-??-??: Milestone 2013.4
 ----------------------------
-changelog date: NOV 8
+changelog date: NOV 13
 
 ### Gameplay and Balancing
 
@@ -33,12 +33,16 @@ Additions and new features
  - #2176 Store (and reload) currently selected tab in savegames
  - #2171 Show resource icons in build menu toolips
  - #2185 Ship pre-selected and in hotkeygroup 1 when starting new game
+ - #1387 Status icon for inhabitants without main square connection
 
 Repositioning and modifications
  - e6d5239 Rotate mainmenu background images instead of randomizing
+ - 3fd3c85 "Iron Mine" is now simply called "Mine"
+ - #2182 Tutorial task summary now printed in bold
 
 Fixed bugs and usability problems
  - #2176 Doctor and Herbary not available in "per type" build menu
+ - 88d051d Consistent cityinfo hide delay for all settlements
 
 
 ### Codebase
