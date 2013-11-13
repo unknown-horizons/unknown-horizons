@@ -289,8 +289,8 @@ class World(BuildingOwner, WorldObject):
 		# Min with 0, to make sure the map starts at 0,0
 		self.min_x = min(self.min_x, 0) - self.map_padding
 		self.min_y = min(self.min_y, 0) - self.map_padding
-		self.max_x = min(self.max_x, 0) + self.map_padding
-		self.max_y = min(self.max_y, 0) + self.map_padding
+		self.max_x = max(self.max_x, 0) + self.map_padding
+		self.max_y = max(self.max_y, 0) + self.map_padding
 		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
 
 		# Load islands.
