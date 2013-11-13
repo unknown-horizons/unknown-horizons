@@ -97,6 +97,9 @@ class Island(BuildingOwner, WorldObject):
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
+						
+		for (resource, ) in db("SELECT resource FROM island_fertility WHERE island = ?", island_id):
+			self.fertility.append(resource)
 
 		if preview:
 			# Caches and buildings are not required for map preview.
@@ -134,7 +137,6 @@ class Island(BuildingOwner, WorldObject):
 		
 		if not preview:
 			self.climate_zone = self.session.world.get_climate_zone(min_y+((max_y-min_y)/2))
-			self.fertility.extend(self.climate_zone.default_resources)
 		
 		self.ground_map = {}
 		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
@@ -178,6 +180,8 @@ class Island(BuildingOwner, WorldObject):
 			settlement.save(db, self.worldid)
 		for animal in self.wild_animals:
 			animal.save(db)
+		for resource in self.fertility:
+			db("INSERT INTO island_fertility (island, resource) VALUES(?, ?)", self.worldid, resource)
 
 	def get_coordinates(self):
 		"""Returns list of coordinates, that are on the island."""

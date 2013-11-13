@@ -420,6 +420,7 @@ class World(BuildingOwner, WorldObject):
 			if island.climate_zone not in islands_by_climate_zone:
 				islands_by_climate_zone[island.climate_zone] = []
 			islands_by_climate_zone[island.climate_zone].append(island)
+			island.fertility.extend(island.climate_zone.default_resources)
 		for climate_zone, islands in islands_by_climate_zone.iteritems():
 			for resource, probability in climate_zone.possible_resources.iteritems():
 				# Number of islands to put resources on at least
