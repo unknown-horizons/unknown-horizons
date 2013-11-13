@@ -92,9 +92,9 @@ class World(BuildingOwner, WorldObject):
 		self.session = session
 
 		# Need to be here, so that zone data is already loaded
-		self.zones = {'subpolar': ClimateZone('subpolar'), \
-				'desert': ClimateZone('desert'), \
-				'temperate': ClimateZone('temperate')}
+		self.zones = { CLIMATE.SUBPOLAR_ZONE: ClimateZone(CLIMATE.SUBPOLAR_ZONE), \
+				CLIMATE.DESERT_ZONE: ClimateZone(CLIMATE.DESERT_ZONE), \
+				CLIMATE.TEMPERATE_ZONE: ClimateZone(CLIMATE.TEMPERATE_ZONE)}
 
 		# create playerlist
 		self.players = []
@@ -407,11 +407,11 @@ class World(BuildingOwner, WorldObject):
 		border_desert = min_y + ((map_height / CLIMATE.EXTREME_RATIO) * (CLIMATE.EXTREME_RATIO - 1))
 
 		if y_coord <= border_sub_polar:
-			return self.zones['subpolar']
+			return self.zones[CLIMATE.SUBPOLAR_ZONE]
 		elif y_coord >= border_desert:
-			return self.zones['desert']
+			return self.zones[CLIMATE.DESERT_ZONE]
 		else:
-			return self.zones['temperate']
+			return self.zones[CLIMATE.DEFAULT_ZONE]
 
 	def _distribute_resources(self):
 		"""Distributes resources among islands according to their probability in 
