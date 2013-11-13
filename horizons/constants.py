@@ -305,6 +305,10 @@ class WEAPONS:
 class CLIMATE:
 	# 1/extreme_ratio will be sub_polar and 1/extreme_ratio will be desert
 	EXTREME_RATIO = 5
+	TEMPERATE_ZONE = 'temperate'
+	DESERT_ZONE = 'desert'
+	SUBPOLAR_ZONE = 'subpolar'
+	DEFAULT_ZONE = TEMPERATE_ZONE
 
 class FERTILITY:
 	RES_TO_BUILDING = {
