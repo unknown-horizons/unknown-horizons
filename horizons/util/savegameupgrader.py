@@ -30,12 +30,14 @@ from collections import defaultdict
 from sqlite3 import OperationalError
 from yaml.parser import ParserError
 
-from horizons.constants import BUILDINGS, VERSION, UNITS
+from horizons.constants import BUILDINGS, VERSION, UNITS, CLIMATE
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.util.yamlcache import YamlCache
+from horizons.world.climate.climatezone import ClimateZone
+from horizons.savegamemanager import SavegameManager
 
 
 class SavegameUpgrader(object):
@@ -389,6 +391,25 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev74(self, db):
 		db("INSERT INTO metadata VALUES (?, ?)", "selected_tab", None)
 
+	def _upgrade_to_rev75(self, db):
+		db('CREATE TABLE "island_fertility" ("island" INT NOT NULL, "resource" INT NOT NULL)')
+		temperate = ClimateZone(CLIMATE.TEMPERATE_ZONE)
+		desert = ClimateZone(CLIMATE.DESERT_ZONE)
+		subpolar = ClimateZone(CLIMATE.SUBPOLAR_ZONE)
+		resources = []
+		resources.extend(temperate.default_resources)
+		resources.extend(temperate.possible_resources)
+		resources.extend(desert.default_resources)
+		resources.extend(desert.possible_resources)
+		resources.extend(subpolar.default_resources)
+		resources.extend(subpolar.possible_resources)
+		resources = set(resources)
+		map_name = SavegameManager.get_mappath_from_savegame(db)
+		map = DbReader(map_name)
+		for (island, ) in map("SELECT DISTINCT island_id + 1001 FROM ground"):
+			for resource in resources:
+				db("INSERT INTO island_fertility (island, resource) VALUES(?, ?)", island, resource)
+
 
 	def _upgrade(self):
 		# fix import loop
@@ -461,6 +482,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev73(db)
 			if rev < 74:
 				self._upgrade_to_rev74(db)
+			if rev < 75:
+				self._upgrade_to_rev75(db)
 
 			db('COMMIT')
 			db.close()
