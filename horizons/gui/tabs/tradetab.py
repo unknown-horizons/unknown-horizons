@@ -21,6 +21,7 @@
 
 import logging
 
+from horizons.constants import GUI
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.uioptions import SellResource, BuyResource, TransferResource
@@ -66,7 +67,7 @@ class TradeTab(TabInterface):
 			events[v] = Callback(self.set_exchange, k)
 		self.widget.mapEvents(events)
 		self.partner = None
-		self.set_exchange(50, initial=True)
+		self.set_exchange(GUI.DEFAULT_EXCHANGE_AMOUNT, initial=True)
 
 	def refresh(self):
 		super(TradeTab, self).refresh()

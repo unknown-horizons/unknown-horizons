@@ -404,6 +404,7 @@ class MAP:
 
 class GUI:
 	CITYINFO_UPDATE_DELAY = 2 # seconds
+	DEFAULT_EXCHANGE_AMOUNT = 50  # tons
 
 # Messagewidget and Logbook
 class MESSAGES:
