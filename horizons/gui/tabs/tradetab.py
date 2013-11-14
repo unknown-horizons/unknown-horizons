@@ -172,15 +172,17 @@ class TradeTab(TabInterface):
 		Highlight radio button with selected amount and deselect old highlighted.
 		@param initial: bool, use it to set exchange size when initing the widget
 		"""
+		self.log.debug("Tradewidget: exchange size now: %s", size)
 		if not initial:
-			old_box = self.widget.findChild(name= self.exchange_size_buttons[self.exchange])
+			old_name = self.exchange_size_buttons[self.exchange]
+			old_box = self.widget.findChild(name=old_name)
 			old_box.up_image = self.images['box']
 
-		box_h = self.widget.findChild(name= self.exchange_size_buttons[size])
-		box_h.up_image = self.images['box_highlighted']
-
 		self.exchange = size
-		self.log.debug("Tradewidget: exchange size now: %s", size)
+
+		new_name = self.exchange_size_buttons[self.exchange]
+		box_h = self.widget.findChild(name=new_name)
+		box_h.up_image = self.images['box_highlighted']
 		if not initial:
 			self.draw_widget()
 
