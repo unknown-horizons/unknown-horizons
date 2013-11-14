@@ -104,31 +104,52 @@ def save_map(world, path, prefix):
 
 def add_mountains(world, resource_multiplier):
 	Mountain = Entities.buildings[BUILDINGS.MOUNTAIN]
-	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+	moves = [(0, 0), (1, 0), (1, 1), (0, 1)]
+	all_moves = [(-1, 0), (0, -1), (0, 1), (1, 0), (-1, 1), (1, 1), (1, -1), (-1, -1)]
 	deposit_locations = []
 
 	for island in world.islands:
 		tiles = sorted(island.ground_map.iteritems())
 		for (x, y), tile in tiles:
-			near_deposits = False
-			if tile.id == 7 and tile.shape == 'straight':
-				for (dx, dy) in moves:
+			top_left_constructible = (1, 1)
+			top_left_corner = (0, 0)
+			contructible_tiles = []
+			if tile.id == 7 and tile.shape == 'straight' and tile.object is None:
+				for dx, dy in all_moves:
 					position = Point(x+dx, y+dy)
-					newTile = world.get_tile(position)
-					if (newTile.x, newTile.y) in deposit_locations:
-						near_deposits = True
-				if near_deposits == False:
-					deposit_locations.append((x, y))
+					new_tile = world.get_tile(position)
+					if 'constructible' in new_tile.classes:
+						contructible_tiles.append((dx, dy))
+						if dx < top_left_constructible[0] or dy < top_left_constructible[1]:
+							top_left_constructible = (dx, dy)
 
-	for island in world.islands:
-		tiles = sorted(island.ground_map.iteritems())
-		for (x, y), tile in tiles:
-			if (x, y) in deposit_locations:
-				for (dx, dy) in moves:
-					position = Point(x+dx, y+dy)
-					newTile = world.get_tile(position)
-					if 'constructible' in newTile.classes:
-						building = Build(Mountain, x, y, island, 45 + tile.rotation, ownerless=True)(issuer=None)
+				if len(contructible_tiles) >= 2:
+					top_left_corner = (top_left_constructible[0]+x, top_left_constructible[1]+y)
+					if (top_left_constructible[0]+1, top_left_constructible[1]) in contructible_tiles:
+						if top_left_constructible[1] > 0:
+							top_left_corner = (top_left_constructible[0]+x, y)
+					elif (top_left_constructible[0], top_left_constructible[1]+1) in contructible_tiles:
+						if top_left_constructible[0] > 0:
+							top_left_corner = (x, top_left_constructible[1]+y)
+
+					#print '================='
+					"""
+					tile_x = top_left_corner[0]
+					tile_y = top_left_corner[1]
+					building = Build(Mountain, tile_x, tile_y, island, 45 + tile.rotation, ownerless=True)(issuer=None)
+					"""
+					straight_tiles = 0
+					for dx, dy in moves:
+						position = Point(top_left_corner[0]+dx, top_left_corner[1]+dy)
+						new_tile = world.get_tile(position)
+						if new_tile.id == 7 and new_tile.shape == 'straight':
+							straight_tiles += 1
+
+					if straight_tiles == 2:
+						tile_x = top_left_corner[0]
+						tile_y = top_left_corner[1]
+						building = Build(Mountain, tile_x, tile_y, island, 45 + tile.rotation, ownerless=True)(issuer=None)
+
 
 def add_clay_deposits(world, resource_multiplier):
 	"""

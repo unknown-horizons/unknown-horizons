@@ -26,6 +26,13 @@ from horizons.world.production.producer import Producer
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere, BuildableMountain
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
+from horizons.entities import Entities
+from horizons.scheduler import Scheduler
+from horizons.constants import LAYERS, BUILDINGS
+from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
 	"""Class for objects that are part of the environment, the nature"""
@@ -75,8 +82,8 @@ class ResourceDeposit(NatureBuilding):
 	tearable = False
 	layer = LAYERS.OBJECTS
 	walkable = False
-	
-class MineDeposit(BuildableSingleEverywhere, BasicBuilding):
+
+class MineDeposit(BuildableMountain, BasicBuilding):
 	tearable = False
 	layer = LAYERS.OBJECTS
 	walkable = False

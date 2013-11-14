@@ -341,7 +341,29 @@ class BuildableSingleEverywhere(BuildableSingle):
 		tearset = []
 		return _BuildPosition(position, rotation, tearset, buildable)
 
+class BuildableMountain(BuildableSingle):
+	"""Used for building mountain deposits on mountain tiles"""
+	terrain_type = None
 
+	@classmethod
+	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
+		# for non-quadratic buildings, we have to switch width and height depending on the rotation
+		if rotation == 45 or rotation == 225:
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
+		else:
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])
+			
+		island = session.world.get_island(position.center)
+		buildable = True
+		for tile in island.get_tiles_tuple(position.tuple_iter()):
+			obj = tile.object
+			if obj is not None:
+				buildable = False
+				break
+
+		tearset = []
+		return _BuildPosition(position, rotation, tearset, buildable)
+	
 class BuildableRect(Buildable):
 	"""Buildings one can build as a Rectangle, such as Trees"""
 	@classmethod
