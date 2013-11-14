@@ -214,7 +214,7 @@ class Buildable(object):
 			# return first match
 			return result_generator.next()
 		except StopIteration:
-			# found none, fail with specified paramters
+			# No match found, fail with specified parameters.
 			return check_pos(point)
 
 
