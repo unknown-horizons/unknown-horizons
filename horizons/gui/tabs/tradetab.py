@@ -67,6 +67,7 @@ class TradeTab(TabInterface):
 			events[v] = Callback(self.set_exchange, k)
 		self.widget.mapEvents(events)
 		self.partner = None
+		self.exchange = None
 		self.set_exchange(GUI.DEFAULT_EXCHANGE_AMOUNT, initial=True)
 
 	def refresh(self):
