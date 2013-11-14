@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:18+0100\n"
-"PO-Revision-Date: 2013-11-14 23:17+0200\n"
+"PO-Revision-Date: 2013-11-14 23:20+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -3383,7 +3383,6 @@ msgid "These residents are unhappy."
 msgstr "Diese Bewohner sind unzufrieden."
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "These residents don't have access to a market place."
 msgid "These residents don't have access to a main square."
 msgstr "Diese Einwohner haben keinen Zugang zu einem Marktplatz."
@@ -3478,7 +3477,6 @@ msgid "gems"
 msgstr "Edelsteine"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "brine_deposit"
 msgid "brine deposit"
 msgstr "Solevorkommen"
