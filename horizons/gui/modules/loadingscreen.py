@@ -77,8 +77,7 @@ GAMEPLAY_TIPS = {
 
 # This are the options you can select in the Settings what type of quotes should be
 # displayed during load
-# TODO Unfortunately these are not translated
-QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], "Mixed")
+QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _lazy("Mixed"))
 
 
 def get_random_quote():
