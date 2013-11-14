@@ -89,7 +89,7 @@ for event in scenario['events']:
 						continue
 					comment = COMMENT_TEXT
 					widget = prep(content)
-				elif widget_def[0] == 'Label' and widget_def[1]:
+				elif widget_def[0] in ('Label', 'BoldLabel') and widget_def[1]:
 					content = widget_def[1].rstrip('\n')
 					# ignore strings that only consist of newlines
 					if not content:
