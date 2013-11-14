@@ -21,6 +21,7 @@
 import itertools
 import json
 import math
+import re
 from math import sin, cos
 
 import horizons.globals
@@ -202,7 +203,13 @@ class Minimap(object):
 		render_name = self._get_render_name("base")
 		draw_point = rt.addPoint
 		point = fife.Point()
-		for x, y, r, g, b in json.loads(data):
+
+		# XXX There have been reports about `data` containing Fife debug
+		# output (e.g. #2193). As temporary workaround, we try to only
+		# parse what looks like valid json in there and ignore the rest.
+		found_json = re.findall(r'\[\[.*\]\]', data)[0]
+
+		for x, y, r, g, b in json.loads(found_json):
 			point.set(x, y)
 			draw_point(render_name, point, r, g, b)
 
