@@ -27,6 +27,7 @@ import json
 import copy
 
 from collections import deque
+from functools import partial
 
 import horizons.globals
 from horizons.world.island import Island
@@ -463,7 +464,8 @@ class World(BuildingOwner, WorldObject):
 					self.session.selected_instances = set([player_ship])
 					self.session.ingame_gui.handle_selection_group(1, True)
 					sel_comp.show_menu()
-				Scheduler().add_new_object(lambda: _preselect_player_ship(ship), ship, run_in=0)
+				select_ship = partial(_preselect_player_ship, ship)
+				Scheduler().add_new_object(select_ship, ship, run_in=0)
 
 		# load the AI stuff only when we have AI players
 		if any(isinstance(player, AIPlayer) for player in self.players):
