@@ -206,7 +206,7 @@ class TestRunner(object):
 		"""
 		try:
 			cooperative.schedule()
-		except:
+		except Exception:
 			import traceback
 			traceback.print_exc()
 			sys.exit(1)

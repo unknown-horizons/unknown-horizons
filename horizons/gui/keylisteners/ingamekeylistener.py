@@ -74,7 +74,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		action = KeyConfig().translate(evt)
 		try:
 			self.keys_pressed.remove(keyval)
-		except:
+		except Exception:
 			return
 		stop_horizontal = action in (_Actions.LEFT, _Actions.RIGHT)
 		stop_vertical = action in (_Actions.UP, _Actions.DOWN)
