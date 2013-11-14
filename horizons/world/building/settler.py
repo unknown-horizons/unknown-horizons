@@ -364,13 +364,13 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			if building.id == BUILDINGS.MAIN_SQUARE:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:
 					# a main square is in range
-					if hasattr(self, "_settler_market_place_status_icon"):
+					if hasattr(self, "_main_square_status_icon"):
 						RemoveStatusIcon.broadcast(self, self, SettlerNotConnectedStatus)
-						del self._settler_market_place_status_icon
+						del self._main_square_status_icon
 					return
-		if not hasattr(self, "_settler_market_place_status_icon"):
-			self._settler_market_place_status_icon = SettlerNotConnectedStatus(self) # save ref for removal later
-			AddStatusIcon.broadcast(self, self._settler_market_place_status_icon)
+		if not hasattr(self, "_main_square_status_icon"):
+			self._main_square_status_icon = SettlerNotConnectedStatus(self) # save ref for removal later
+			AddStatusIcon.broadcast(self, self._main_square_status_icon)
 		# no main square found
 		# check_duplicate: only trigger once for different settlers of a neighborhood
 		self.session.ingame_gui.message_widget.add(point=self.position.origin,
