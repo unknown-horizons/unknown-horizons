@@ -675,3 +675,42 @@ FONTDEFS = {
 	# "zh_CN"
 	"zu"    : 'libertine',
 }
+
+class HOTKEYS:
+	DISPLAY_KEY = {
+		'MINUS': '-',
+		'PLUS': '+',
+		'COMMA': ',',
+		'PERIOD': '.',
+		'EXCLAIM': '!',
+		'AT': '@',
+		'HASH': '#',
+		'DOLLAR': '$',
+	# XXX Fife does not recognize percent key?
+	#	'PERCENT': '%',
+		'CARET': '^',
+		'AMPERSAND': '&',
+		'ASTERISK': '*',
+		'LEFTPAREN': '(',
+		'RIGHTPAREN': ')',
+		'UNDERSCORE': '_',
+		'LEFTBRACKET': '[',
+		'RIGHTBRACKET': ']',
+		'SLASH': '/',
+		'COLON': ':',
+		'SEMICOLON': ';',
+		'LESS': '<',
+		'EQUALS': '=',
+		'GREATER': '>',
+		'QUESTION': '?',
+		'BACKSLASH': '\\',
+		'BACKQUOTE': '`',
+		'QUOTE': "'",
+		'QUOTEDBL': '"',
+		'ESCAPE': 'Esc',
+		'DELETE': 'Del',
+		'INSERT': 'Ins',
+		'PAGE_UP': 'PgUp',
+		'PAGE_DOWN': 'PgDn',
+		'PRINT_SCREEN': 'PrtSc',
+	}

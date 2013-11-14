@@ -24,7 +24,7 @@ from fife import fife
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
+from horizons.constants import BUILDINGS, GAME_SPEED, HOTKEYS, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
@@ -134,6 +134,23 @@ class IngameGui(LivingObject):
 			'logbook' : lambda: self.windows.toggle(self.logbook)
 		})
 		self.mainhud.show()
+
+		hotkey_replacements = {
+			'rotateRight': 'ROTATE_RIGHT',
+			'rotateLeft': 'ROTATE_LEFT',
+			'speedUp': 'SPEED_UP',
+			'speedDown': 'SPEED_DOWN',
+			'destroy_tool': 'DESTROY_TOOL',
+			'build': 'BUILD_TOOL',
+			'gameMenuButton': 'ESCAPE',
+			'logbook': 'LOGBOOK',
+		}
+		for (widgetname, action) in hotkey_replacements.iteritems():
+			widget = self.mainhud.findChild(name=widgetname)
+			keys = horizons.globals.fife.get_keys_for_action(action)
+			# No `.upper()` here: "Pause" looks better than "PAUSE".
+			keyname = HOTKEYS.DISPLAY_KEY.get(keys[0], keys[0].capitalize())
+			widget.helptext = widget.helptext.format(key=keyname)
 
 		self.resource_overview = ResourceOverviewBar(self.session)
 
