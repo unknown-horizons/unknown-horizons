@@ -754,10 +754,9 @@ class Minimap(object):
 	def _minimap_coords_to_world_coords(self, tup):
 		"""Inverse to _world_coords_to_minimap_coords"""
 		pixel_per_coord_x, pixel_per_coord_y = self._world_to_minimap_ratio
-		return (
-			int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x,
-			int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y
-		)
+		world_x = round(pixel_per_coord_x * (tup[0] - self.location.left))
+		world_y = round(pixel_per_coord_y * (tup[1] - self.location.top))
+		return (int(world_x) + self.world.min_x, int(world_y) + self.world.min_y)
 
 	def get_size(self):
 		return (self.location.height, self.location.width)
