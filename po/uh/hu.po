@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 22:54+0100\n"
+"POT-Creation-Date: 2013-11-14 23:18+0100\n"
 "PO-Revision-Date: 2013-05-05 12:51+0000\n"
 "Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3794,8 +3794,9 @@ msgid "These residents are unhappy."
 msgstr "Ezek a lakosok boldogtalanok."
 
 #: horizons/world/status.py:94
-msgid "These residents don't have access to a market place."
-msgstr ""
+#, fuzzy
+msgid "These residents don't have access to a main square."
+msgstr "Někteří Vaši obyvatelé nemají přístup k hlavnímu náměstí."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3890,6 +3891,11 @@ msgstr "štěstí"
 msgid "gems"
 msgstr ""
 
+#. This is a database entry: the name of a resource.
+#, fuzzy
+msgid "brine deposit"
+msgstr "ložisko železa"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, fuzzy
 msgid "Some of your inhabitants just moved out."
@@ -3953,11 +3959,6 @@ msgstr "mouka"
 #, fuzzy
 msgid "pigs for slaughter"
 msgstr "prasata na porážku"
-
-#. This is a database entry: the name of a resource.
-#, fuzzy
-msgid "brine_deposit"
-msgstr "ložisko železa"
 
 #. This is a database entry: the name of a resource.
 #, fuzzy

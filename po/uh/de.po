@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 22:54+0100\n"
+"POT-Creation-Date: 2013-11-14 23:18+0100\n"
 "PO-Revision-Date: 2013-11-14 23:17+0200\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
@@ -143,26 +143,22 @@ msgid "Inhabitants"
 msgstr "Einwohner"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
 msgstr ""
 "Spielgeschwindigkeit\n"
 "erhöhen ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
 msgstr ""
 "Spielgeschwindigkeit \n"
 "verringern ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
 msgstr "Karte gegen den Uhrzeigersinn drehen ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
 msgstr "Karte im Uhrzeigersinn drehen ({key})"
 
@@ -175,17 +171,14 @@ msgid "Zoom out"
 msgstr "Herauszoomen"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#| msgid "Destroy (X)"
 msgid "Destroy ({key})"
 msgstr "Abrissmodus ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
 msgstr "Logbuch ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#| msgid "Build menu (B)"
 msgid "Build menu ({key})"
 msgstr "Baumenü ({key})"
 
@@ -194,7 +187,6 @@ msgid "Diplomacy"
 msgstr "Diplomatie"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
 msgstr "Spielmenü ({key})"
 
@@ -1166,7 +1158,6 @@ msgid "Create a new game"
 msgstr "Neues Spiel erstellen"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#| msgid "Join game"
 msgid "Join game:"
 msgstr "Spiel beitreten:"
 
@@ -1381,7 +1372,6 @@ msgid "Reset to default settings"
 msgstr "Werkseinstellungen verwenden"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#| msgid "Save game"
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
@@ -1827,12 +1817,10 @@ msgid "Ready"
 msgstr "Bereit"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#| msgid "Not Ready"
 msgid "Not ready"
 msgstr "Nicht bereit"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#| msgid "Enter your message:"
 msgid "Enter your message"
 msgstr "Nachricht eingeben"
 
@@ -2790,7 +2778,6 @@ msgstr "Versorgt Einwohner mit Gütern. Bietet eine Gemeinschaft."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#| msgid "Iron Mine"
 msgid "Mine"
 msgstr "Bergwerk"
 
@@ -3396,7 +3383,9 @@ msgid "These residents are unhappy."
 msgstr "Diese Bewohner sind unzufrieden."
 
 #: horizons/world/status.py:94
-msgid "These residents don't have access to a market place."
+#, fuzzy
+#| msgid "These residents don't have access to a market place."
+msgid "These residents don't have access to a main square."
 msgstr "Diese Einwohner haben keinen Zugang zu einem Marktplatz."
 
 #: horizons/world/status.py:100
@@ -3456,7 +3445,6 @@ msgid "Attacking {owner}"
 msgstr "Angriff auf {owner}"
 
 #. This is a database entry: the name of a resource.
-#| msgid "Hindi"
 msgid "indigo"
 msgstr "Indigo"
 
@@ -3489,12 +3477,17 @@ msgstr "Zufriedenheit"
 msgid "gems"
 msgstr "Edelsteine"
 
+#. This is a database entry: the name of a resource.
+#, fuzzy
+#| msgid "brine_deposit"
+msgid "brine deposit"
+msgstr "Solevorkommen"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
 msgstr "Einige Eurer Siedler haben soeben Eure Siedlung verlassen."
 
 #. This is a database entry: the name of a resource.
-#| msgid "stone deposit"
 msgid "gem deposit"
 msgstr "Edelsteinvorkommen"
 
@@ -3511,7 +3504,6 @@ msgid "stone tops"
 msgstr "Steinplatten"
 
 #. This is a database entry: the name of a resource.
-#| msgid "cocoa beans"
 msgid "coffee beans"
 msgstr "Kaffeebohnen"
 
@@ -3520,7 +3512,6 @@ msgid "wool"
 msgstr "Wolle"
 
 #. This is a database entry: the name of a resource.
-#| msgid "tobacco leaves"
 msgid "tea leaves"
 msgstr "Teeblätter"
 
@@ -3546,12 +3537,6 @@ msgid "pigs for slaughter"
 msgstr "Mastschweine"
 
 #. This is a database entry: the name of a resource.
-#| msgid "iron deposit"
-msgid "brine_deposit"
-msgstr "Solevorkommen"
-
-#. This is a database entry: the name of a resource.
-#| msgid "Precaution"
 msgid "recreation"
 msgstr "Erholung"
 
@@ -3560,7 +3545,6 @@ msgid "trees"
 msgstr "Bäume"
 
 #. This is a database entry: the name of a resource.
-#| msgid "clay deposit"
 msgid "marble deposit"
 msgstr "Marmorvorkommen"
 
@@ -3599,7 +3583,6 @@ msgid "perfume"
 msgstr "Parfüm"
 
 #. This is a database entry: the name of a resource.
-#| msgid "tobacco plants"
 msgid "cotton plants"
 msgstr "Baumwollpflanzen"
 
@@ -3613,13 +3596,11 @@ msgid "Merchants"
 msgstr "Kaufleute"
 
 #. This is a database entry: the name of a resource.
-#| msgid "spice plants"
 msgid "hop plants"
 msgstr "Hopfenstauden"
 
 # teal ist auch blaugrün, wie "cyan", kann auch seegrün oder grünblau heißen
 #. This is a database entry: the name of a resource.
-#| msgid "teal"
 msgid "tea"
 msgstr "Tee"
 
@@ -3632,7 +3613,6 @@ msgid "iron ingots"
 msgstr "Eisenbarren"
 
 #. This is a database entry: the name of a resource.
-#| msgid "clay deposit"
 msgid "coal deposit"
 msgstr "Kohlevorkommen"
 
@@ -3720,7 +3700,6 @@ msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} und {player2} werden bis zum Tod kämpfen."
 
 #. This is a database entry: the name of a resource.
-#| msgid "Workshops"
 msgid "hops"
 msgstr "Hopfen"
 
@@ -3738,7 +3717,6 @@ msgid "dagger"
 msgstr "Dolch"
 
 #. This is a database entry: the name of a resource.
-#| msgid "spice plants"
 msgid "coffee plants"
 msgstr "Kaffeesträucher"
 
@@ -3747,7 +3725,6 @@ msgid "bricks"
 msgstr "Ziegel"
 
 #. This is a database entry: the name of a resource.
-#| msgid "iron ore"
 msgid "gold ore"
 msgstr "Golderz"
 
@@ -3784,7 +3761,6 @@ msgid "confectionery"
 msgstr "Konfekt"
 
 #. This is a database entry: the name of a resource.
-#| msgid "Whaler"
 msgid "whales"
 msgstr "Wale"
 
@@ -3802,7 +3778,6 @@ msgid "blossoms"
 msgstr "Blüten"
 
 #. This is a database entry: the name of a resource.
-#| msgid "spice plants"
 msgid "indigo plants"
 msgstr "Indigopflanzen"
 
@@ -3870,7 +3845,6 @@ msgid "Your game has been autosaved."
 msgstr "Automatischer Speichervorgang abgeschlossen."
 
 #. This is a database entry: the name of a resource.
-#| msgid "clay deposit"
 msgid "gold deposit"
 msgstr "Goldvorkommen"
 
@@ -3934,7 +3908,6 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Ein neues Schiff mit dem Namen {name} wurde fertiggestellt."
 
 #. This is a database entry: the name of a resource.
-#| msgid "tobacco plants"
 msgid "tea plants"
 msgstr "Teesträucher"
 
@@ -4002,7 +3975,6 @@ msgid "salt"
 msgstr "Salz"
 
 #. This is a database entry: the name of a resource.
-#| msgid "iron ingots"
 msgid "gold ingots"
 msgstr "Goldbarren"
 

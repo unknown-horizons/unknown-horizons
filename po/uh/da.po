@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 22:54+0100\n"
+"POT-Creation-Date: 2013-11-14 23:18+0100\n"
 "PO-Revision-Date: 2013-08-27 18:51+0200\n"
 "Last-Translator: Jan Arni Jacobsen <janjacobsen1988@gmail.com>\n"
 "Language-Team: Danish <http://hosted.weblate.org/projects/uh/uh/da/>\n"
@@ -3428,8 +3428,10 @@ msgid "These residents are unhappy."
 msgstr ""
 
 #: horizons/world/status.py:94
-msgid "These residents don't have access to a market place."
-msgstr ""
+#, fuzzy
+#| msgid "Some of your inhabitants have no access to a main square."
+msgid "These residents don't have access to a main square."
+msgstr "Nogle af dine indbyggere har ikke adgang til et hovedtorv."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3524,6 +3526,12 @@ msgstr "glæde"
 msgid "gems"
 msgstr ""
 
+#. This is a database entry: the name of a resource.
+#, fuzzy
+#| msgid "iron deposit"
+msgid "brine deposit"
+msgstr "jernforekomst"
+
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
 msgstr "Nogle af dine indbyggere er netop flyttet ud."
@@ -3582,12 +3590,6 @@ msgstr "mel"
 #. This is a database entry: the name of a resource.
 msgid "pigs for slaughter"
 msgstr "grise til slagtning"
-
-#. This is a database entry: the name of a resource.
-#, fuzzy
-#| msgid "iron deposit"
-msgid "brine_deposit"
-msgstr "jernforekomst"
 
 #. This is a database entry: the name of a resource.
 #, fuzzy
