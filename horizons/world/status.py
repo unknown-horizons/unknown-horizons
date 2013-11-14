@@ -91,7 +91,7 @@ class SettlerNotConnectedStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_mainsquare_access+idle+45'
-	helptext = _lazy("These residents don't have access to a market place.")
+	helptext = _lazy("These residents don't have access to a main square.")
 
 
 class InventoryFullStatus(StatusIcon):
