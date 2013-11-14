@@ -177,7 +177,7 @@ class Minimap(object):
 		else:
 			# attach image to pychan icon (recommended)
 			self.minimap_image.reset()
-			self.icon.image = fife.GuiImage( self.minimap_image.image )
+			self.icon.image = fife.GuiImage(self.minimap_image.image)
 
 		self.update_cam()
 		self._recalculate()
@@ -195,7 +195,7 @@ class Minimap(object):
 		"""Display data from dump_data"""
 		# only icon mode for now
 		self.minimap_image.reset()
-		self.icon.image = fife.GuiImage( self.minimap_image.image )
+		self.icon.image = fife.GuiImage(self.minimap_image.image)
 
 		self.minimap_image.set_drawing_enabled()
 		rt = self.minimap_image.rendertarget
