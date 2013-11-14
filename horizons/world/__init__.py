@@ -457,10 +457,10 @@ class World(BuildingOwner, WorldObject):
 			if player is self.player:
 				ret_coords = point.to_tuple()
 				# HACK: Store starting ship as first unit group, and select it
-				def _preselect_player_ship(ship):
-					sel_comp = ship.get_component(SelectableComponent)
+				def _preselect_player_ship(player_ship):
+					sel_comp = player_ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)
-					self.session.selected_instances = set([ship])
+					self.session.selected_instances = set([player_ship])
 					self.session.ingame_gui.handle_selection_group(1, True)
 					sel_comp.show_menu()
 				Scheduler().add_new_object(lambda: _preselect_player_ship(ship), ship, run_in=0)
