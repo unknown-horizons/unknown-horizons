@@ -67,7 +67,7 @@ class Timer(object):
 		signal.alarm(timeout)
 
 	@classmethod
-	def stop(self):
+	def stop(cls):
 		"""Stop the timer. This can be called on both the instance and class (when you
 		have no access to the instance for example).
 		"""

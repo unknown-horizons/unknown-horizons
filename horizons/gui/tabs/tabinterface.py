@@ -146,7 +146,7 @@ class TabInterface(object):
 			                              self, run_in=self.__class__.scheduled_update_delay)
 
 	@classmethod
-	def shown_for(self, instance):
+	def shown_for(cls, instance):
 		"""Method for fine-grained control of which tabs to show.
 		@return: whether this tab should really be shown for this instance"""
 		return True
