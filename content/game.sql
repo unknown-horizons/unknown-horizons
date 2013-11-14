@@ -296,7 +296,7 @@ INSERT INTO "resource" VALUES(71, 'tea leaves',      2.5,   0,    0); -- unused
 INSERT INTO "resource" VALUES(72, 'tea',            10,     0,    0); -- unused
 INSERT INTO "resource" VALUES(73, 'flower meadows',  2,     0,    0); -- unused
 INSERT INTO "resource" VALUES(74, 'blossoms',        5,     0,    0); -- unused
-INSERT INTO "resource" VALUES(75, 'brine_deposit',   0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(75, 'brine deposit',   0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(76, 'brine',           5,     0,    0); -- unused
 INSERT INTO "resource" VALUES(77, 'whales',         10,     0,    0); -- unused -- (blubber meat cetaceum baleen)
 INSERT INTO "resource" VALUES(78, 'ambergris',      10,     0,    0); -- unused -- (solid, waxy, flammable, dull grey)
