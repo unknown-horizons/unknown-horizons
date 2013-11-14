@@ -53,7 +53,8 @@ from tests.utils import Timer
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
 
-class TestFailed(Exception): pass
+class TestFailed(Exception):
+	pass
 
 
 TEST_USER_DIR = None
