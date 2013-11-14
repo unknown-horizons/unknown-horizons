@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 22:54+0100\n"
-"PO-Revision-Date: 2013-11-14 23:13+0200\n"
-"Last-Translator: Chris Oelmueller Oelmueller <chris.oelmueller@gmail.com>\n"
+"PO-Revision-Date: 2013-11-14 23:17+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -3397,7 +3397,7 @@ msgstr "Diese Bewohner sind unzufrieden."
 
 #: horizons/world/status.py:94
 msgid "These residents don't have access to a market place."
-msgstr ""
+msgstr "Diese Einwohner haben keinen Zugang zu einem Marktplatz."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3526,7 +3526,7 @@ msgstr "Teeblätter"
 
 #. This is a database entry: the name of a resource.
 msgid "coffee"
-msgstr ""
+msgstr "Kaffee"
 
 #. This is a database entry: the name of a resource.
 msgid "cocoa beans"
@@ -3584,7 +3584,7 @@ msgstr "Kakao"
 
 #. This is a database entry: the name of a resource.
 msgid "marble tops"
-msgstr ""
+msgstr "Marmorblöcke"
 
 #. This is a database entry: the name of a resource.
 msgid "potatoes"
@@ -3596,7 +3596,7 @@ msgstr "Eisenerz"
 
 #. This is a database entry: the name of a resource.
 msgid "perfume"
-msgstr ""
+msgstr "Parfüm"
 
 #. This is a database entry: the name of a resource.
 #| msgid "tobacco plants"
@@ -3687,7 +3687,7 @@ msgstr "Getreide"
 
 #. This is a database entry: the name of a resource.
 msgid "flower meadows"
-msgstr ""
+msgstr "Blütenblätter"
 
 #. This is a database entry: the name of a resource.
 msgid "grapes"
@@ -3700,7 +3700,7 @@ msgstr "Eure Einwohner haben die Stufe {level} erreicht."
 
 #. This is a database entry: the name of a resource.
 msgid "ambergris"
-msgstr ""
+msgstr "Ambra"
 
 #. This is a database entry: the name of a resource.
 msgid "faith"
@@ -3761,7 +3761,7 @@ msgstr "Gewürzpflanzen"
 
 #. This is a database entry: the name of a resource.
 msgid "hygiene"
-msgstr ""
+msgstr "Hygiene"
 
 #. This is a database entry: the name of a resource.
 msgid "cattle for slaughter"
@@ -3799,7 +3799,7 @@ msgstr "Ihr habt gewonnen!"
 
 #. This is a database entry: the name of a resource.
 msgid "blossoms"
-msgstr ""
+msgstr "Blüten"
 
 #. This is a database entry: the name of a resource.
 #| msgid "spice plants"
@@ -3832,7 +3832,7 @@ msgstr "Eicheln"
 
 #. This is a database entry: the name of a resource.
 msgid "garments"
-msgstr ""
+msgstr "Gewänder"
 
 #. This is a database entry: the name of a resource.
 msgid "honeycombs"
@@ -3880,7 +3880,7 @@ msgstr "Eines Eurer Felder benötigt eine Farm für die Ernte."
 
 #. This is a database entry: the name of a resource.
 msgid "rough gems"
-msgstr ""
+msgstr "Ungeschliffene Edelsteine"
 
 #. This is a database entry: the name of a resource.
 msgid "alvearies"
@@ -3900,7 +3900,7 @@ msgstr "Bildung"
 
 #. This is a database entry: the name of a resource.
 msgid "cotton"
-msgstr ""
+msgstr "Baumwolle"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3961,7 +3961,7 @@ msgstr "Heilkräuter"
 
 #. This is a database entry: the name of a resource.
 msgid "lamp oil"
-msgstr ""
+msgstr "Lampenöl"
 
 #. This is a database entry: the name of a resource.
 msgid "pigs"
