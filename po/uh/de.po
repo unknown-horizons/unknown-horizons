@@ -3487,7 +3487,7 @@ msgstr "Zufriedenheit"
 
 #. This is a database entry: the name of a resource.
 msgid "gems"
-msgstr ""
+msgstr "Edelsteine"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
