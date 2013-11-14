@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
+from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere, BuildableMountain
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
@@ -73,7 +73,7 @@ class ResourceDeposit(NatureBuilding):
 	layer = LAYERS.OBJECTS
 	walkable = False
 	
-class MineDeposit(BuildableSingleEverywhere, BasicBuilding):
+class MineDeposit(BuildableMountain, BasicBuilding):
 	tearable = False
 	layer = LAYERS.OBJECTS
 	walkable = False
