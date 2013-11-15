@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:18+0100\n"
-"PO-Revision-Date: 2013-11-15 19:26+0200\n"
+"PO-Revision-Date: 2013-11-15 21:00+0200\n"
 "Last-Translator: Rilen T. L. <rilen.lima@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://hosted.weblate.org/projects/uh/uh/pt_BR/>\n"
@@ -71,11 +71,11 @@ msgstr "Retornar ao editor"
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 msgid "Save map"
-msgstr "Salvar o mapa"
+msgstr "Salvar mapa"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr "Carregando o mapa"
+msgstr "Carregar mapa"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
@@ -101,11 +101,11 @@ msgstr "Selecione o tamanho do pincel:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr "Selecione o terreno:"
+msgstr "Selecionar terreno:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr "(clique botão direito para parar)"
+msgstr "(clique botão direito do mouse para parar)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -118,7 +118,8 @@ msgstr "Você precisa encontrar um jeito de pagar antes de construir!"
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Selecione seu navio e aborde da costa através do botão direito do mouse."
+"Selecione seu navio e abordar na costa através do clique do botão direito do "
+"mouse."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -182,7 +183,7 @@ msgstr "Diário do capitão ({key})"
 #: content/gui/xml/ingame/hud/minimap.xml:43
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Menu construir ({key})"
+msgstr "Menu de construção ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
@@ -191,7 +192,7 @@ msgstr "Diplomacia"
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Menu jogo ({key})"
+msgstr "Menu do jogo ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -232,7 +233,7 @@ msgstr "Digite sua mensagem:"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
-msgstr "Custos de funcionamento"
+msgstr "Despesas correntes"
 
 # #############
 # #  no need to translate the following (until next comment)
@@ -359,7 +360,7 @@ msgstr "triste"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
 msgid "satisfied"
-msgstr "Satisfeito"
+msgstr "satisfeito"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:61
@@ -418,19 +419,19 @@ msgstr "Armas:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr "Depósito de recursos"
+msgstr "Depósito de recurso"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Este é um depósito de recursos onde você pode construir a mina para coletar "
+"Este é um depósito de recurso onde você pode construir uma mina para coletar "
 "recursos."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr "Ele contem estes recursos:"
+msgstr "Possuem recursos:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -459,15 +460,15 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"O sinal de fogo mostra ao livre comércio como chegar a sua colônia em caso "
-"de você desejar comprar ou vender bens."
+"O sinal de fogo mostra o livre comércio como chegar até a sua liquidação no "
+"caso de você querer comprar ou vender bens."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Este é um navio livro de troca. Ele ira visitar você de tempo em tempo para "
+"Este é o navio do comerciante livre. Ele vai visitá-lo de vez em quando para "
 "comprar ou vender bens."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
@@ -492,7 +493,7 @@ msgstr "Construir colônia"
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr "Configurar rota de comércio"
+msgstr "Configurar rota comercial"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -512,7 +513,7 @@ msgstr "Comprar ou vender recursos"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
-msgstr "História do comércio"
+msgstr "Hostórico comercial"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
@@ -523,7 +524,7 @@ msgstr "Selecionar recursos:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr "Utilização dos coletores"
+msgstr "Utilização do coletor"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
@@ -574,32 +575,31 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
-"O recurso que você selecionou sera mostrado em vez do atual. Esvazie "
-"clicando no X."
+"O recurso que você selecionou é mostrado em vez do atual. Esvazie clicando "
+"no X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
-"Salvar a configuração do recurso atual como padrão para toda a colônia."
+msgstr "Salvar a configuração atual do recurso como padrão para toda a colônia."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Voltar ao padrão a configuração de recursos para todas colônias."
+msgstr "Redefinir configuração de recurso padrão para toda colônia."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 msgid "Move up"
-msgstr "Ir para cima"
+msgstr "Mover para cima"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
-msgstr "Apagar registro"
+msgstr "Apagar entrada"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 msgid "Move down"
-msgstr "Ir para baixo"
+msgstr "Mover para baixo"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
@@ -650,7 +650,7 @@ msgstr "Todo mundo"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "Envia a mensagem para todos os jogadores."
+msgstr "Envia mensagem para todos jogadores."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -665,7 +665,7 @@ msgstr "Retornar ao jogo"
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
 msgid "Wait at load:"
-msgstr "Esperar carregar:"
+msgstr "Esperar carregamento:"
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
@@ -680,7 +680,7 @@ msgstr "Atividades da rota:"
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:103
 msgid "Start route"
-msgstr "Começar rota"
+msgstr "Iniciar rota"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
 msgid "Exit"
@@ -710,7 +710,7 @@ msgstr "Dinheiro"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Tesouro corrente + rendimento do jogador esperado no futuro"
+msgstr "Tesouro atual do jogador + rendimento esperado no futuro próximo"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -1086,7 +1086,7 @@ msgstr "Senha do jogo:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr "Uma senha é requerida para entrar neste jogo."
+msgstr "Uma senha de jogo. Obrigatório para aderir a este jogo."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
@@ -3829,7 +3829,7 @@ msgstr "Seu jogo foi salvo."
 #. This is a database entry: the name of a resource.
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "depósito de dinheiro"
+msgstr "depósito de ouro"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "One of your fields requires a farm to harvest its crops."
