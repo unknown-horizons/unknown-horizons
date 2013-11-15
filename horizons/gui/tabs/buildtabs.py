@@ -47,6 +47,9 @@ class BuildTab(TabInterface):
 	lazy_loading = True
 	widget = 'buildtab.xml'
 
+	MAX_ROWS = 4
+	MAX_COLS = 4
+
 	build_menus = [
 	  "content/objects/gui_buildmenu/build_menu_per_tier.yaml",
 	  "content/objects/gui_buildmenu/build_menu_per_type.yaml"
@@ -164,8 +167,6 @@ class BuildTab(TabInterface):
 
 			button.capture(Callback(self.build_callback, building_id))
 
-		MAX_ROWS = 4
-		MAX_COLS = 4
 		for row_num, row in enumerate(self.row_definitions):
 			# we have integers for building types, strings for headlines above slots and None as empty slots
 			column = -1 # can't use enumerate, not always incremented
@@ -174,13 +175,15 @@ class BuildTab(TabInterface):
 				position = (10*column) + (row_num+1) # legacy code, first row is 1, 11, 21
 				if entry is None:
 					continue
-				elif (column + 1) > MAX_COLS: # out of 4x4 bounds
+				elif (column + 1) > self.MAX_COLS:
+					# out of 4x4 bounds
 					err = "Invalid entry '%s': column %s does not exist." % (entry, column + 1)
-					err += " Max. column amount in current layout is %s." % MAX_COLS
+					err += " Max. column amount in current layout is %s." % self.MAX_COLS
 					raise InvalidBuildMenuFileFormat(err)
-				elif row_num > MAX_ROWS: # out of 4x4 bounds
+				elif row_num > self.MAX_ROWS:
+					# out of 4x4 bounds
 					err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
-					err += " Max. row amount in current layout is %s." % MAX_ROWS
+					err += " Max. row amount in current layout is %s." % self.MAX_ROWS
 					raise InvalidBuildMenuFileFormat(err)
 				elif isinstance(entry, basestring):
 					column -= 1 # a headline does not take away a slot
