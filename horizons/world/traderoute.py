@@ -271,7 +271,7 @@ class TradeRoute(ChangeListener):
 		self.current_waypoint = -1
 
 	@classmethod
-	def has_route(self, db, worldid):
+	def has_route(cls, db, worldid):
 		"""Check if a savegame contains route information for a certain ship"""
 		return len(db("SELECT * FROM ship_route WHERE ship_id = ?", worldid)) != 0
 
