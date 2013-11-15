@@ -50,12 +50,9 @@ class TabInterface(object):
 
 	"""
 	Whether to load the tab only when it's shown.
-<<<<<<< HEAD
 	If True, self.widget will only be valid after _lazy_loading_init, which
 	is guaranteed to be executed before show(), refresh() and the like.
 	Usually, you will want to overwrite _lazy_loading_init and call the super impl as first step.
-=======
->>>>>>> c13e15a... Unify interface for normal and lazy loading of tab widgets
 	"""
 	lazy_loading = False
 
