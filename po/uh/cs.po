@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:18+0100\n"
-"PO-Revision-Date: 2013-09-25 17:16+0200\n"
+"PO-Revision-Date: 2013-11-15 16:26+0200\n"
 "Last-Translator: Michal Čihař <michal@cihar.com>\n"
 "Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh/cs/>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 1.7-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:126
 msgid "Unknown Horizons has crashed."
@@ -138,28 +138,24 @@ msgid "Inhabitants"
 msgstr "Obyvatelé"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Zrychlit herní rychlost (+)"
+msgstr "Zrychlit herní rychlost ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Zpomalit herní rychlost (-)"
+msgstr "Zpomalit herní rychlost ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Otočit mapu proti směru hodinových ručiček (,)"
+msgstr "Otočit mapu proti směru hodinových ručiček ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Otočit mapu po směru hodinových ručiček (.)"
+msgstr "Otočit mapu po směru hodinových ručiček ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -170,32 +166,28 @@ msgid "Zoom out"
 msgstr "Oddálit"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Zbourat (X)"
+msgstr "Zbourat ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Lodní deník (L)"
+msgstr "Lodní deník ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Stavební menu (B)"
+msgstr "Stavební menu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomacie"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Herní menu (Esc)"
+msgstr "Herní menu ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -418,7 +410,7 @@ msgstr "Zbraně:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr "Naleziště surovin"
+msgstr "Ložisko surovin"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
@@ -1151,10 +1143,9 @@ msgid "Create a new game"
 msgstr "Vytvořit novou hru"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Připojit ke hře"
+msgstr "Připojit ke hře:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1358,10 +1349,9 @@ msgid "Reset to default settings"
 msgstr "Obnovit původní nastavení"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Uložit hru"
+msgstr "Uložit změny"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1633,7 +1623,7 @@ msgstr "Zmáčknutím klávesy 'T' zprůhledníte stromy."
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Různé"
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:100
@@ -1797,16 +1787,14 @@ msgid "Ready"
 msgstr "Připraveno"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#, fuzzy
 #| msgid "Not Ready"
 msgid "Not ready"
 msgstr "Nepřipraveno"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Vaše zpráva:"
+msgstr "Vaše zpráva"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -1984,7 +1972,7 @@ msgstr "Ukončit hru"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Vypnuté"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2742,10 +2730,9 @@ msgstr "Zásobuje obyvatele zbožím a podporuje společenství."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Železný důl"
+msgstr "Důl"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
@@ -3334,10 +3321,9 @@ msgid "These residents are unhappy."
 msgstr "Tito obyvatelé jsou nešťastní."
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Někteří vaši obyvatelé nemají přístup k tržnici."
+msgstr "Tito vaši obyvatelé nemají přístup k tržnici."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3396,10 +3382,9 @@ msgid "Attacking {owner}"
 msgstr "Útočí na {owner}"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "Hindi"
 msgid "indigo"
-msgstr "Hindština"
+msgstr "indigo"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3412,7 +3397,7 @@ msgstr "Vaše budova hoří!"
 
 #. This is a database entry: the name of a resource.
 msgid "brine"
-msgstr ""
+msgstr "solanka"
 
 #. This is a database entry: the name of a resource.
 msgid "medical herbs"
@@ -3428,23 +3413,21 @@ msgstr "štěstí"
 
 #. This is a database entry: the name of a resource.
 msgid "gems"
-msgstr ""
+msgstr "drahokamy"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "ložisko železa"
+msgstr "ložisko solanky"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
 msgstr "Někteří z vašich osadníků se odstěhovali."
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "stone deposit"
 msgid "gem deposit"
-msgstr "naleziště kamenů"
+msgstr "ložisko drahokamů"
 
 #. This is a database entry: the name of a resource.
 msgid "sugar"
@@ -3459,24 +3442,22 @@ msgid "stone tops"
 msgstr "balvany"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "kakaové boby"
+msgstr "kávové boby"
 
 #. This is a database entry: the name of a resource.
 msgid "wool"
 msgstr "vlna"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "tabákové listy"
+msgstr "čajové listy"
 
 #. This is a database entry: the name of a resource.
 msgid "coffee"
-msgstr ""
+msgstr "káva"
 
 #. This is a database entry: the name of a resource.
 msgid "cocoa beans"
@@ -3495,20 +3476,18 @@ msgid "pigs for slaughter"
 msgstr "prasata na porážku"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "Precaution"
 msgid "recreation"
-msgstr "Opatření"
+msgstr "rekreace"
 
 #. This is a database entry: the name of a resource.
 msgid "trees"
 msgstr "stromy"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "ložisko jílu"
+msgstr "ložisko mramoru"
 
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Sailors"
@@ -3529,7 +3508,7 @@ msgstr "kakao"
 
 #. This is a database entry: the name of a resource.
 msgid "marble tops"
-msgstr ""
+msgstr "mramorové desky"
 
 #. This is a database entry: the name of a resource.
 msgid "potatoes"
@@ -3541,13 +3520,12 @@ msgstr "železný důl"
 
 #. This is a database entry: the name of a resource.
 msgid "perfume"
-msgstr ""
+msgstr "parfém"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
-msgstr "tabákové rostliny"
+msgstr "bavlníky"
 
 #. This is a database entry: the name of a resource.
 msgid "clay"
@@ -3558,16 +3536,14 @@ msgid "Merchants"
 msgstr "Obchodníci"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "spice plants"
 msgid "hop plants"
-msgstr "bylinky"
+msgstr "rostliny chmelu"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
-msgstr "mordozelený"
+msgstr "čaj"
 
 #. This is a database entry: the name of a resource.
 msgid "liquor"
@@ -3578,10 +3554,9 @@ msgid "iron ingots"
 msgstr "železné ingoty"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
-msgstr "ložisko jílu"
+msgstr "ložisko uhlí"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3631,7 +3606,7 @@ msgstr "kukuřice"
 
 #. This is a database entry: the name of a resource.
 msgid "flower meadows"
-msgstr ""
+msgstr "kvetoucí louky"
 
 #. This is a database entry: the name of a resource.
 msgid "grapes"
@@ -3644,7 +3619,7 @@ msgstr "Vaši obyvatelé dosáhli úrovně {level}."
 
 #. This is a database entry: the name of a resource.
 msgid "ambergris"
-msgstr ""
+msgstr "ambra"
 
 #. This is a database entry: the name of a resource.
 msgid "faith"
@@ -3664,10 +3639,9 @@ msgid "{player1} and {player2} will fight each other to the death."
 msgstr "Hráči {player1} a {player2} začali válku na život a na smrt."
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "Workshops"
 msgid "hops"
-msgstr "Dílny"
+msgstr "chmel"
 
 #. This is a database entry: the name of a resource.
 msgid "grain"
@@ -3682,20 +3656,18 @@ msgid "dagger"
 msgstr "dýka"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
-msgstr "bylinky"
+msgstr "kávovníky"
 
 #. This is a database entry: the name of a resource.
 msgid "bricks"
 msgstr "cihly"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "železný důl"
+msgstr "zlatý důl"
 
 #. This is a database entry: the name of a resource.
 msgid "community"
@@ -3707,7 +3679,7 @@ msgstr "bylinky"
 
 #. This is a database entry: the name of a resource.
 msgid "hygiene"
-msgstr ""
+msgstr "hygiena"
 
 #. This is a database entry: the name of a resource.
 msgid "cattle for slaughter"
@@ -3731,7 +3703,7 @@ msgstr "cukrovinky"
 
 #. This is a database entry: the name of a resource.
 msgid "whales"
-msgstr ""
+msgstr "velryby"
 
 #. This is a database entry: the name of a resource.
 msgid "coins"
@@ -3743,13 +3715,12 @@ msgstr "Vyhráli jste!"
 
 #. This is a database entry: the name of a resource.
 msgid "blossoms"
-msgstr ""
+msgstr "květy"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
-msgstr "bylinky"
+msgstr "rostliny indiga"
 
 #. This is a database entry: the name of a resource.
 msgid "fish"
@@ -3761,7 +3732,7 @@ msgstr "dřevěné uhlí"
 
 #. This is a database entry: the name of a resource.
 msgid "stone deposit"
-msgstr "naleziště kamenů"
+msgstr "ložisko kamenů"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "You failed the scenario."
@@ -3777,7 +3748,7 @@ msgstr "žaludy"
 
 #. This is a database entry: the name of a resource.
 msgid "garments"
-msgstr ""
+msgstr "šaty"
 
 #. This is a database entry: the name of a resource.
 msgid "honeycombs"
@@ -3815,10 +3786,9 @@ msgid "Your game has been autosaved."
 msgstr "Hra byla automaticky uložena."
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "ložisko jílu"
+msgstr "ložisko zlata"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3826,7 +3796,7 @@ msgstr "Jedno z vašich polí není v dosahu farmy."
 
 #. This is a database entry: the name of a resource.
 msgid "rough gems"
-msgstr ""
+msgstr "neupravené drahokamy"
 
 #. This is a database entry: the name of a resource.
 msgid "alvearies"
@@ -3846,7 +3816,7 @@ msgstr "vzdělání"
 
 #. This is a database entry: the name of a resource.
 msgid "cotton"
-msgstr ""
+msgstr "bavlna"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3879,10 +3849,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Byla vyrobena nová loď pojmenovaná {name}."
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "tabákové rostliny"
+msgstr "čajovníky"
 
 #. This is a database entry: the name of a resource.
 msgid "get-together"
@@ -3906,7 +3875,7 @@ msgstr "bylinky"
 
 #. This is a database entry: the name of a resource.
 msgid "lamp oil"
-msgstr ""
+msgstr "lampový olej"
 
 #. This is a database entry: the name of a resource.
 msgid "pigs"
@@ -3947,10 +3916,9 @@ msgid "salt"
 msgstr "sůl"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "železné ingoty"
+msgstr "zlaté ingoty"
 
 #~ msgid "Back:"
 #~ msgstr "Zpět:"
