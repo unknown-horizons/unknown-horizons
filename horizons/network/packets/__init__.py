@@ -31,10 +31,6 @@ except ImportError:
 from horizons.network import NetworkException, PacketTooLarge
 
 __version__ = '0.1'
-__all__ = [
-	'SafeUnpickler',
-	'packet',
-]
 
 PICKLE_PROTOCOL = 2
 PICKLE_RECIEVE_FROM = 'server'

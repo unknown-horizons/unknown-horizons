@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['collector', 'buildingcollector', 'animalcollector']
-
 from buildingcollector import BuildingCollector, FieldCollector, StorageCollector, FisherShipCollector, DisasterRecoveryCollector, SettlerCollector
 from animalcollector import AnimalCollector, HunterCollector, FarmAnimalCollector
 from collector import Collector, Job, JobList
