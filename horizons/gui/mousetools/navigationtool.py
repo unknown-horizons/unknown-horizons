@@ -189,10 +189,10 @@ class NavigationTool(CursorTool):
 		in fife.
 		It's usually about mouse/keyboard focus or window being iconified/restored.
 		"""
-		STOP_SCROLLING_ON = (fife.CMD_APP_ICONIFIED,
+		stop_scrolling_on = (fife.CMD_APP_ICONIFIED,
 		                     fife.CMD_MOUSE_FOCUS_LOST,
 		                     fife.CMD_INPUT_FOCUS_LOST)
-		if command.getCommandType() in STOP_SCROLLING_ON:
+		if command.getCommandType() in stop_scrolling_on:
 			# it has been randomly observed twice that this code is reached with session being None or
 			# partly deinitialized. Since it is unknown how fife handles this and why
 			# removeCommandListener in remove() doesn't prevent further calls, we have to catch and ignore the error
