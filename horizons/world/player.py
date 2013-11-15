@@ -104,9 +104,9 @@ class Player(ComponentHolder, WorldObject):
 
 	def save(self, db):
 		super(Player, self).save(db)
-		client_id = None if self is not self.session.world.player and \
-		                    self.clientid is None else self.clientid
-
+		client_id = None
+		if self.clientid is not None or self is self.session.world.player:
+			client_id = self.clientid
 		db("INSERT INTO player"
 			" (rowid, name, color, client_id, settler_level,"
 			" difficulty_level, max_tier_notification)"
