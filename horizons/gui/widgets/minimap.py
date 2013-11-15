@@ -557,13 +557,15 @@ class Minimap(object):
 
 	def _timed_update(self, force=False):
 		"""Regular updates for domains we can't or don't want to keep track of."""
-		# OPTIMISATION NOTE: there can be pretty many ships, don't rely on the loop being rarely executed
+		# OPTIMIZATION NOTE: There can be pretty many ships.
+		# Don't rely on the loop being rarely executed!
 		# update ship icons
 		self.minimap_image.set_drawing_enabled()
 		render_name = self._get_render_name("ship")
 		self.minimap_image.rendertarget.removeAll(render_name)
 		use_rotation = self._get_rotation_setting()
-		# make use of this dummy points instead of creating a fife.point instances which are consuming a lot of resources
+		# Make use of these dummy points instead of creating fife.Point instances
+		# (which are consuming a lot of resources).
 		dummy_point0 = fife.Point(0, 0)
 		dummy_point1 = fife.Point(0, 0)
 		for ship in self.world.ships:
