@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:18+0100\n"
-"PO-Revision-Date: 2013-09-29 11:51+0200\n"
-"Last-Translator: li yong <liyonghelpme@gmail.com>\n"
-"Language-Team: Simplified Chinese <http://hosted.weblate.org/projects/uh/uh/"
-"zh_CN/>\n"
+"PO-Revision-Date: 2013-11-15 11:34+0200\n"
+"Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
+"Language-Team: Simplified Chinese "
+"<http://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.7-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:126
 msgid "Unknown Horizons has crashed."
@@ -139,25 +139,21 @@ msgid "Inhabitants"
 msgstr "居民"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
 msgstr "加快游戏速度(+)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
 msgstr "降低游戏速度(-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
 msgstr "逆时针旋转地图(,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
 msgstr "顺时针旋转地图 (.)"
@@ -174,16 +170,14 @@ msgstr "缩小"
 #, fuzzy
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "破坏（X）"
+msgstr "毁坏（X）"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
 msgstr "航海日志（L）"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
 msgstr "建造菜单 (B)"
@@ -193,7 +187,6 @@ msgid "Diplomacy"
 msgstr "外交"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
 msgstr "游戏菜单（Esc）"
@@ -511,9 +504,8 @@ msgid "Trade history"
 msgstr "贸易历史"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
-#, fuzzy
 msgid "Select resources:"
-msgstr "选择一个资源："
+msgstr "选择资源："
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
@@ -649,7 +641,6 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
 msgstr "输入你的信息："
 
@@ -695,7 +686,7 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 #, fuzzy
 msgid "Name"
-msgstr "游戏"
+msgstr "姓名"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
@@ -843,7 +834,7 @@ msgstr "保存地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "加载已有地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 #, fuzzy
@@ -857,7 +848,7 @@ msgstr "启航"
 
 #: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
-msgstr ""
+msgstr "返回"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 #, fuzzy
