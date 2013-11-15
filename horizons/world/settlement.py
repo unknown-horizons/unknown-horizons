@@ -40,15 +40,17 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 
-	component_templates = ({
-	    					'StorageComponent':
-	                             {'PositiveSizedSlotStorage':
-	                              { 'limit': 0 }
-	                            }
-	                        }
-	                        ,
-	                        'TradePostComponent',
-	                        'SettlementNameComponent')
+	component_templates = (
+		{
+			'StorageComponent':
+				{'PositiveSizedSlotStorage':
+					{'limit': 0}
+				}
+		}
+		,
+		'TradePostComponent',
+		'SettlementNameComponent',
+	)
 
 	def __init__(self, session, owner):
 		"""
