@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:18+0100\n"
-"PO-Revision-Date: 2013-11-08 23:04+0200\n"
-"Last-Translator: Lothaire Hengst <lothairehengst@gmail.com>\n"
+"PO-Revision-Date: 2013-11-16 19:44+0200\n"
+"Last-Translator: clément arondel <clement.arondel@gmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.8\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:126
 msgid "Unknown Horizons has crashed."
@@ -29,8 +29,7 @@ msgstr ""
 
 #: run_uh.py:129
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
-"Pour cela, nous avons besoin des informations provenant du fichier journal :"
+msgstr "Pour cela, nous avons besoin des informations provenant du journal :"
 
 #: run_uh.py:131
 msgid ""
@@ -144,28 +143,24 @@ msgid "Inhabitants"
 msgstr "Habitants"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Augmenter la vitesse du jeu (+)"
+msgstr "Augmenter la vitesse du jeu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Réduire la vitesse du jeu (-)"
+msgstr "Réduire la vitesse du jeu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Tourner la carte dans le sens anti-horaire (,)"
+msgstr "Tourner la carte dans le sens anti-horaire ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Tourner la carte dans le sens horaire (.)"
+msgstr "Tourner la carte dans le sens horaire ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -176,32 +171,28 @@ msgid "Zoom out"
 msgstr "Zoom arrière"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Détruire (X)"
+msgstr "Détruire ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Journal de bord (L)"
+msgstr "Journal de bord du capitaine ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Menu de construction (B)"
+msgstr "Menu de construction ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomatie"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Menu du jeu (Esc)"
+msgstr "Menu du jeu ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -1093,7 +1084,7 @@ msgstr "Partie innomé"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr "Mot de passe du jeu :"
+msgstr "Mot de passe de la partie :"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
@@ -1169,10 +1160,9 @@ msgid "Create a new game"
 msgstr "Créer une nouvelle partie"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Se joindre à la partie"
+msgstr "Rejoindre la partie :"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1342,7 +1332,7 @@ msgstr "Activer la journalisation :"
 # An "apercu" is more a preview than an overview.
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Production indicators:"
-msgstr "Sommaire de la production :"
+msgstr "Indicateurs de production :"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
@@ -1389,10 +1379,9 @@ msgid "Reset to default settings"
 msgstr "Restaurer les paramètres par défaut"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Sauvegarder la partie"
+msgstr "Sauvegarder les changements"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1677,7 +1666,7 @@ msgstr "Mélangé"
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr "Lancement du moteur …"
+msgstr "Lancement du moteur…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
@@ -1697,7 +1686,7 @@ msgstr "Compilation des données du jeu…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr "Formation des îles…"
+msgstr "Création des îles…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
@@ -1841,16 +1830,14 @@ msgid "Ready"
 msgstr "Prêt"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#, fuzzy
 #| msgid "Not Ready"
 msgid "Not ready"
-msgstr "Par prêt"
+msgstr "Pas prêt"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Entrez votre message :"
+msgstr "Entrez votre message"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -2028,7 +2015,7 @@ msgstr "Jeu"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Désactivé"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2473,7 +2460,7 @@ msgstr "Vous n'avez pas la permission de commercer avec ce joueur"
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr "{weapon}: {amount}"
+msgstr "{weapon} : {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
@@ -2802,10 +2789,9 @@ msgstr "Fournit les biens aux citoyens."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Mine de fer"
+msgstr "Mine"
 
 # I think it's good like that
 #. tooltip_text of buildings:mine
@@ -3399,7 +3385,7 @@ msgstr "Ce bâtiment doit être construit sur une île."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr "Les habitants sont touchés par la Peste Noire !"
+msgstr "Les habitants sont atteints de la Peste Noire !"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3410,10 +3396,9 @@ msgid "These residents are unhappy."
 msgstr "Ces habitants sont mécontents."
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Certains de vos habitants n'ont pas accès à la place principale."
+msgstr "Ces habitants n'ont pas accès à la place principale."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3472,10 +3457,9 @@ msgid "Attacking {owner}"
 msgstr "Attaque {owner}"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "Hindi"
 msgid "indigo"
-msgstr "Hindi"
+msgstr "Colorant indigo"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3488,7 +3472,7 @@ msgstr "Votre bâtiment a pris feu !"
 
 #. This is a database entry: the name of a resource.
 msgid "brine"
-msgstr ""
+msgstr "Saumure"
 
 #. This is a database entry: the name of a resource.
 msgid "medical herbs"
@@ -3505,23 +3489,21 @@ msgstr "satisfaction"
 
 #. This is a database entry: the name of a resource.
 msgid "gems"
-msgstr ""
+msgstr "pierres précieuses"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "gisement de fer"
+msgstr "lac salé"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "Some of your inhabitants just moved out."
 msgstr "Certains de vos colons viennent juste de déménager."
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "stone deposit"
 msgid "gem deposit"
-msgstr "gisement de pierre"
+msgstr "gisement de cristaux"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -3537,24 +3519,22 @@ msgid "stone tops"
 msgstr "pierre"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "graines de cacao"
+msgstr "grains de café"
 
 #. This is a database entry: the name of a resource.
 msgid "wool"
 msgstr "laine"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "feuilles de tabac"
+msgstr "feuilles de thé"
 
 #. This is a database entry: the name of a resource.
 msgid "coffee"
-msgstr ""
+msgstr "café"
 
 #. This is a database entry: the name of a resource.
 msgid "cocoa beans"
@@ -3573,20 +3553,18 @@ msgid "pigs for slaughter"
 msgstr "porcs pour l'abattoir"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "Precaution"
 msgid "recreation"
-msgstr "éducation"
+msgstr "temps de détente"
 
 #. This is a database entry: the name of a resource.
 msgid "trees"
 msgstr "arbres"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "gisement d'argile"
+msgstr "gisement de marbre"
 
 #. This is a database entry: the name of an inhabitant tier (level).
 msgid "Sailors"
@@ -3608,7 +3586,7 @@ msgstr "cacao"
 
 #. This is a database entry: the name of a resource.
 msgid "marble tops"
-msgstr ""
+msgstr "sommets de marbre"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -3621,13 +3599,12 @@ msgstr "minerai de fer"
 
 #. This is a database entry: the name of a resource.
 msgid "perfume"
-msgstr ""
+msgstr "parfum"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
-msgstr "plants de tabac"
+msgstr "plantation de coton"
 
 #. This is a database entry: the name of a resource.
 msgid "clay"
@@ -3638,16 +3615,14 @@ msgid "Merchants"
 msgstr "Marchands"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "spice plants"
 msgid "hop plants"
-msgstr "plantes à épices"
+msgstr "houblon"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
-msgstr "turquoise"
+msgstr "thé"
 
 #. This is a database entry: the name of a resource.
 msgid "liquor"
@@ -3658,7 +3633,6 @@ msgid "iron ingots"
 msgstr "lingots de fer"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
 msgstr "gisement d'argile"
@@ -3712,7 +3686,7 @@ msgstr "maïs"
 
 #. This is a database entry: the name of a resource.
 msgid "flower meadows"
-msgstr ""
+msgstr "prairie fleurie"
 
 #. This is a database entry: the name of a resource.
 msgid "grapes"
@@ -3725,7 +3699,7 @@ msgstr "Vos habitants ont atteint le niveau {level}."
 
 #. This is a database entry: the name of a resource.
 msgid "ambergris"
-msgstr ""
+msgstr "ambre gris"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -3764,20 +3738,18 @@ msgid "dagger"
 msgstr "dague"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
-msgstr "plantes à épices"
+msgstr "plantation de café"
 
 #. This is a database entry: the name of a resource.
 msgid "bricks"
 msgstr "briques"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "minerai de fer"
+msgstr "minerai d'or"
 
 #. This is a database entry: the name of a resource.
 msgid "community"
@@ -3789,7 +3761,7 @@ msgstr "plantes à épices"
 
 #. This is a database entry: the name of a resource.
 msgid "hygiene"
-msgstr ""
+msgstr "hygiène"
 
 #. This is a database entry: the name of a resource.
 msgid "cattle for slaughter"
@@ -3812,10 +3784,9 @@ msgid "confectionery"
 msgstr "confiseries"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Baleinier"
+msgstr "Baleines"
 
 #. This is a database entry: the name of a resource.
 msgid "coins"
@@ -3827,13 +3798,12 @@ msgstr "Vous avez gagné !"
 
 #. This is a database entry: the name of a resource.
 msgid "blossoms"
-msgstr ""
+msgstr "fleurs"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
-msgstr "plantes à épices"
+msgstr "plantes à teintures"
 
 #. This is a database entry: the name of a resource.
 msgid "fish"
@@ -3861,7 +3831,7 @@ msgstr "glands"
 
 #. This is a database entry: the name of a resource.
 msgid "garments"
-msgstr ""
+msgstr "vêtements"
 
 #. This is a database entry: the name of a resource.
 msgid "honeycombs"
@@ -3899,10 +3869,9 @@ msgid "Your game has been autosaved."
 msgstr "Une sauvegarde automatique de votre partie a été effectuée."
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "gisement d'argile"
+msgstr "gisement d'or"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3910,7 +3879,7 @@ msgstr "Un de vos champs à besoin d'une ferme pour être récolté."
 
 #. This is a database entry: the name of a resource.
 msgid "rough gems"
-msgstr ""
+msgstr "pierres non taillées"
 
 #. This is a database entry: the name of a resource.
 msgid "alvearies"
@@ -3930,7 +3899,7 @@ msgstr "éducation"
 
 #. This is a database entry: the name of a resource.
 msgid "cotton"
-msgstr ""
+msgstr "coton"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #, python-brace-format
@@ -3964,10 +3933,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Un nouveau navire nommé {name} a été construit."
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "plants de tabac"
+msgstr "théiers"
 
 #. This is a database entry: the name of a resource.
 msgid "get-together"
@@ -3991,7 +3959,7 @@ msgstr "herbes"
 
 #. This is a database entry: the name of a resource.
 msgid "lamp oil"
-msgstr ""
+msgstr "huile pour lampe"
 
 #. This is a database entry: the name of a resource.
 msgid "pigs"
@@ -4007,7 +3975,7 @@ msgstr "épices"
 
 #. This is a database entry: the name of a resource.
 msgid "blackdeath"
-msgstr "Peste Noire"
+msgstr "peste noire"
 
 #. This is a database entry: the name of a resource.
 msgid "candles"
@@ -4031,10 +3999,9 @@ msgid "salt"
 msgstr "sel"
 
 #. This is a database entry: the name of a resource.
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "lingots de fer"
+msgstr "lingots d'or"
 
 #~ msgid "Back:"
 #~ msgstr "Retour :"
