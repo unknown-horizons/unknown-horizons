@@ -20,8 +20,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
-
 import logging
 import json
 import copy
@@ -55,6 +53,7 @@ from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.messaging import LoadingProgress
+
 
 class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
