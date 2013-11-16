@@ -139,21 +139,25 @@ msgid "Inhabitants"
 msgstr "居民"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
+#, fuzzy
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
 msgstr "加快游戏速度(+)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
+#, fuzzy
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
 msgstr "降低游戏速度(-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
+#, fuzzy
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
 msgstr "逆时针旋转地图(,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
+#, fuzzy
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
 msgstr "顺时针旋转地图 (.)"
@@ -173,11 +177,13 @@ msgid "Destroy ({key})"
 msgstr "毁坏（X）"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
+#, fuzzy
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
 msgstr "航海日志（L）"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
+#, fuzzy
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
 msgstr "建造菜单 (B)"
@@ -187,6 +193,7 @@ msgid "Diplomacy"
 msgstr "外交"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
+#, fuzzy
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
 msgstr "游戏菜单（Esc）"
@@ -641,6 +648,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
+#, fuzzy
 msgid "Enter your message here"
 msgstr "输入你的信息："
 
