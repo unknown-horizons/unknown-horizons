@@ -630,7 +630,8 @@ LANGUAGENAMES = _LanguageNameDict({
 	"tr"    : (u'Türkçe', u'Turkish'),
 	"uk"    : (u'Українська', u'Ukrainian'),
 	"vi"    : (u'Tiếng Việt', u'Vietnamese'),
-	"zh_CN" : (u'普通話', u'Chinese'),
+	"zh_CN" : (u'简化字', u'Simplified Chinese'),
+	"zh_TW" : (u'繁體字', u'Traditional Chinese'),
 	"zu"    : (u'IsiZulu', u'Zulu'),
 })
 
