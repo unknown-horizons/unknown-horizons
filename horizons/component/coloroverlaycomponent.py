@@ -28,7 +28,6 @@ from fife import fife
 import horizons.globals
 
 from horizons.component import Component
-from horizons.ext.dummy import Dummy
 from horizons.scheduler import Scheduler
 from horizons.util.color import Color as UtilColor
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -194,5 +193,7 @@ class ColorOverlayComponent(Component):
 
 # If "old" FIFE version is detected (i.e. one without overlay support), silently disable.
 if not hasattr(fife, 'OverlayColors'):
-	class ColorOverlayComponent(Dummy):
-		pass
+	class ColorOverlayComponent(Component):
+
+		def __init__(self, overlays=None):
+			super(ColorOverlayComponent, self).__init__()
