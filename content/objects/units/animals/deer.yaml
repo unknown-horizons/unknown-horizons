@@ -1,5 +1,5 @@
 baseclass: animal.WildAnimal
-id: 1000013
+id: UNITS.WILD_ANIMAL
 name: Deer
 radius: 5
 velocity: 12.0

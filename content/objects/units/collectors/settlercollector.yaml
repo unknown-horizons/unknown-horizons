@@ -1,5 +1,5 @@
 baseclass: collectors.SettlerCollector
-id: 1000011
+id: UNITS.SETTLER_COLLECTOR
 name: SettlerCollector
 radius: 5
 velocity: 12.0

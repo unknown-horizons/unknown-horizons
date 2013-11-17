@@ -1,5 +1,5 @@
 baseclass: collectors.DisasterRecoveryCollector
-id: 1000022
+id: UNITS.DISASTER_RECOVERY_COLLECTOR
 name: DisasterRecoveryCollector
 radius: 5
 velocity: 12.0

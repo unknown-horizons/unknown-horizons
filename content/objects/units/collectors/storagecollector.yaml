@@ -1,5 +1,5 @@
 baseclass: collectors.StorageCollector
-id: 1000008
+id: UNITS.STORAGE_COLLECTOR
 name: StorageCollector
 radius: 5
 velocity: 12.0

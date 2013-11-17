@@ -1,5 +1,5 @@
 baseclass: fightingship.FightingShip
-id: 1000020
+id: UNITS.FRIGATE
 name: Frigate
 radius: 5
 velocity: 12.0
