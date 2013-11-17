@@ -197,24 +197,26 @@ def create_random_island(map_db, island_id, id_string):
 	while True:
 		still_corrections = False
 		for x, y in mountain_tiles:
+			#print '=======================\n======================='
 			tile_neighbors = False
 			for neighbor_set in consecutive_neighbor_corners:
-				free_space = 0
 				consecutive_neighbors = True
 				for dx, dy in neighbor_set:
 					if (x+dx, y+dy) not in mountain_tiles:
 						consecutive_neighbors = False
 				if consecutive_neighbors:
-					breaks = 0
-					for a in range (0, 8):
-						coord = (x+all_neighbors[a][0], y+all_neighbors[a][1])
-						next_coord = (x+all_neighbors[(a+1)%8][0], y+all_neighbors[(a+1)%8][1])
-						if coord in mountain_tiles and next_coord not in mountain_tiles:
-								breaks += 1
-						if coord not in mountain_tiles and next_coord in mountain_tiles:
-								breaks += 1
-					if breaks < 4:
-						tile_neighbors = True
+					break
+			if consecutive_neighbors:
+				breaks = 0
+				for a in range (0, 8):
+					coord = (x+all_neighbors[a][0], y+all_neighbors[a][1])
+					next_coord = (x+all_neighbors[(a+1)%8][0], y+all_neighbors[(a+1)%8][1])
+					if coord in mountain_tiles and next_coord not in mountain_tiles:
+						breaks += 1
+					if coord not in mountain_tiles and next_coord in mountain_tiles:
+						breaks += 1
+				if breaks < 3:
+					tile_neighbors = True
 			if not tile_neighbors:
 				still_corrections = True
 				del mountain_tiles[mountain_tiles.index((x, y))]
@@ -223,10 +225,8 @@ def create_random_island(map_db, island_id, id_string):
 			break
 	
 	# add grass tiles around mountain locations
-	grass_tiles = []
 	for x, y in map_set:
 		if (x, y) not in mountain_tiles:
-			grass_tiles.append((x, y))
 			map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *GROUND.DEFAULT_LAND)
 			
 	all_moves = {
@@ -247,8 +247,8 @@ def create_random_island(map_db, island_id, id_string):
 		"""
 		result = set()
 		for x, y in mountain_tiles:
-			for offset_x, offset_y in all_moves.itervalues():
-				coords = (x + offset_x, y + offset_y)
+			for dx, dy in all_neighbors:
+				coords = (x + dx, y + dy)
 				if coords not in mountain_tiles:
 					result.add((x, y))
 		return result
@@ -268,70 +268,202 @@ def create_random_island(map_db, island_id, id_string):
 	for x, y in mountain_edge:
 		filled = []
 		for dir in sorted(all_moves):
-			coords = (x + all_moves[dir][1], y + all_moves[dir][0])
-			if coords in grass_tiles:
+			coords = (x + all_moves[dir][0], y + all_moves[dir][1])
+			if coords not in mountain_tiles:
 				filled.append(dir)
 		
 		tile = None
 		mountain_set = set(filled)
-		# straight coast or 1 tile U-shaped gulfs
-		if filled == ['s', 'se', 'sw'] or filled == ['s']:
-			tile = GROUND.MOUNTAIN_NORTH
-		elif filled == ['e', 'ne', 'se'] or filled == ['e']:
-			tile = GROUND.MOUNTAIN_WEST
-		elif filled == ['n', 'ne', 'nw'] or filled == ['n']:
+		if len(filled) == 0:
+			tile = GROUND.MOUNTAIN
+		# straight
+		elif 's' in mountain_set and 'w' not in mountain_set and 'nw' not in mountain_set and \
+		 'n' not in mountain_set and 'ne' not in mountain_set and 'e' not in mountain_set:
 			tile = GROUND.MOUNTAIN_SOUTH
-		elif filled == ['nw', 'sw', 'w'] or filled == ['w']:
+		elif 'e' in mountain_set and 's' not in mountain_set and 'sw' not in mountain_set and \
+		 'w' not in mountain_set and 'nw' not in mountain_set and 'n' not in mountain_set:
 			tile = GROUND.MOUNTAIN_EAST
-		# slight turn (looks best with straight coast)
-		elif filled == ['e', 'se'] or filled == ['e', 'ne']:
-			tile = GROUND.MOUNTAIN_WEST
-		elif filled == ['n', 'ne'] or filled == ['n', 'nw']:
-			tile = GROUND.MOUNTAIN_SOUTH
-		elif filled == ['nw', 'w'] or filled == ['sw', 'w']:
-			tile = GROUND.MOUNTAIN_EAST
-		elif filled == ['s', 'sw'] or filled == ['s', 'se']:
+		elif 'n' in mountain_set and 'e' not in mountain_set and 'se' not in mountain_set and \
+		 's' not in mountain_set and 'sw' not in mountain_set and 'w' not in mountain_set:
 			tile = GROUND.MOUNTAIN_NORTH
-		# sandy corner
+		elif 'w' in mountain_set and 'n' not in mountain_set and 'ne' not in mountain_set and \
+		 'e' not in mountain_set and 'se' not in mountain_set and 's' not in mountain_set:
+			tile = GROUND.MOUNTAIN_WEST
+		# inner corner
 		elif filled == ['se']:
-			tile = GROUND.MOUNTAIN_NORTHWEST1
-		elif filled == ['ne']:
-			tile = GROUND.MOUNTAIN_SOUTHWEST1
-		elif filled == ['nw']:
 			tile = GROUND.MOUNTAIN_SOUTHEAST1
-		elif filled == ['sw']:
+		elif filled == ['ne']:
 			tile = GROUND.MOUNTAIN_NORTHEAST1
-		# narrow mountain join
-		elif filled == ['ne', 'sw'] or filled == ['sw', 'ne']:
-			tile = GROUND.MOUNTAIN_NORTHEAST_SOUTHWEST
-		elif filled == ['se', 'nw'] or filled == ['nw', 'se']:
-			tile = GROUND.MOUNTAIN_NORTHWEST_SOUTHEAST
-		elif 3 <= len(filled) <= 5:
-			if ('e' in mountain_set and 'se' in mountain_set and 's' in mountain_set) or \
-			 ('e' in mountain_set and 's' in mountain_set):
-				tile = GROUND.MOUNTAIN_NORTHEAST3
-			elif ('s' in mountain_set and 'sw' in mountain_set and 'w' in mountain_set) or \
-			 ('s' in mountain_set and 'w' in mountain_set):
-				tile = GROUND.MOUNTAIN_NORTHWEST3
-			elif ('w' in mountain_set and 'nw' in mountain_set and 'n' in mountain_set) or \
-			 ('w' in mountain_set and 'n' in mountain_set):
-				tile = GROUND.MOUNTAIN_SOUTHWEST3
-			elif ('n' in mountain_set and 'ne' in mountain_set and 'e' in mountain_set) or \
-			 ('n' in mountain_set and 'e' in mountain_set):
-				tile = GROUND.MOUNTAIN_SOUTHEAST3
-			else:
-				print filled
-				tile = GROUND.SAND
+		elif filled == ['nw']:
+			tile = GROUND.MOUNTAIN_NORTHWEST1
+		elif filled == ['sw']:
+			tile = GROUND.MOUNTAIN_SOUTHWEST1
+		# outer corner
+		elif 'e' in mountain_set and 'se' in mountain_set and 's' in mountain_set and \
+		 'n' not in mountain_set and 'nw' not in mountain_set and 'w' not in mountain_set:
+			tile = GROUND.MOUNTAIN_SOUTHEAST3
+		elif 'n' in mountain_set and 'ne' in mountain_set and 'e' in mountain_set and \
+		 'w' not in mountain_set and 'sw' not in mountain_set and 's' not in mountain_set:
+			tile = GROUND.MOUNTAIN_NORTHEAST3
+		elif 'w' in mountain_set and 'nw' in mountain_set and 'n' in mountain_set and \
+		 's' not in mountain_set and 'se' not in mountain_set and 'e' not in mountain_set:
+			tile = GROUND.MOUNTAIN_NORTHWEST3
+		elif 's' in mountain_set and 'sw' in mountain_set and 'w' in mountain_set and \
+		 'e' not in mountain_set and 'ne' not in mountain_set and 'n' not in mountain_set:
+			tile = GROUND.MOUNTAIN_SOUTHWEST3
 		else:
+			print 'pew'
 			print filled
 			tile = GROUND.SAND
 
 		assert tile
 		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
-	map_set = map_set.union(mountain_tiles)
+	map_set = map_set.union(mountain_edge)
 	
+	# add mountain tops
 	for x, y in inner_mountain:
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *GROUND.MOUNTAIN)
+		filled = []
+		for dir in sorted(all_moves):
+			coords = (x + all_moves[dir][0], y + all_moves[dir][1])
+			if coords in mountain_edge:
+				filled.append(dir)
+		
+		tile = None
+		mountain_set = set(filled)
+		if len(filled) == 0:
+			tile = GROUND.MOUNTAIN_TOP
+		# mountain sides
+		elif filled == ['s', 'se', 'sw'] or filled == ['s'] or filled == ['s', 'sw'] or filled == ['s', 'se']:
+			tile = GROUND.MOUNTAIN_TOP_NORTH
+		elif filled == ['e', 'ne', 'se'] or filled == ['e'] or filled == ['e', 'se'] or filled == ['e', 'ne']:
+			tile = GROUND.MOUNTAIN_TOP_WEST
+		elif filled == ['n', 'ne', 'nw'] or filled == ['n'] or filled == ['n', 'ne'] or filled == ['n', 'nw']:
+			tile = GROUND.MOUNTAIN_TOP_SOUTH
+		elif filled == ['nw', 'sw', 'w'] or filled == ['w'] or filled == ['nw', 'w'] or filled == ['sw', 'w']:
+			tile = GROUND.MOUNTAIN_TOP_EAST
+		
+		# inner corner
+		elif filled == ['se']:
+			tile = GROUND.MOUNTAIN_TOP_NORTHWEST1
+		elif filled == ['ne']:
+			tile = GROUND.MOUNTAIN_TOP_SOUTHWEST1
+		elif filled == ['nw']:
+			tile = GROUND.MOUNTAIN_TOP_SOUTHEAST1
+		elif filled == ['sw']:
+			tile = GROUND.MOUNTAIN_TOP_NORTHEAST1
+			
+		# outer corner
+		elif 'n' in mountain_set and 'e' in mountain_set and 's' not in mountain_set and 'w' not in mountain_set and 'sw' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_SOUTHEAST3
+		elif 'e' in mountain_set and 's' in mountain_set and 'w' not in mountain_set and 'n' not in mountain_set and 'nw' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_NORTHEAST3
+		elif 's' in mountain_set and 'w' in mountain_set and 'n' not in mountain_set and 'e' not in mountain_set and 'ne' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_NORTHWEST3
+		elif 'w' in mountain_set and 'n' in mountain_set and 'e' not in mountain_set and 's' not in mountain_set and 'se' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_SOUTHWEST3
+			
+		# T into peak
+		elif filled == ['ne', 'nw']:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_T_NORTH
+		elif filled == ['nw', 'sw']:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_T_WEST
+		elif filled == ['se', 'sw']:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_T_SOUTH
+		elif filled == ['ne', 'se']:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_T_EAST
+		
+		# diagonal
+		elif filled == ['ne', 'sw']:
+			tile = GROUND.MOUNTAIN_TOP_NORTHEAST_SOUTHWEST
+		elif filled == ['nw', 'se']:
+			tile = GROUND.MOUNTAIN_TOP_NORTHWEST_SOUTHEAST
+		
+		# peak straights
+		elif 'e' in mountain_set and 'w' in mountain_set and 'n' not in mountain_set and 's' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_STRAIGHT_EAST
+		elif 'n' in mountain_set and 's' in mountain_set and 'e' not in mountain_set and 'w' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_STRAIGHT_NORTH
+			
+		# peak ends
+		elif 'n' in mountain_set and 'e' in mountain_set and 's' in mountain_set and 'w' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_END_SOUTH
+		elif 'e' in mountain_set and 's' in mountain_set and 'w' in mountain_set and 'n' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_END_WEST
+		elif 's' in mountain_set and 'w' in mountain_set and 'n' in mountain_set and 'e' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_END_NORTH
+		elif 'w' in mountain_set and 'n' in mountain_set and 'e' in mountain_set and 's' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_END_EAST
+		
+		# peak corners
+		elif 'nw' in mountain_set and 'e' in mountain_set and 's' in mountain_set and 'n' not in mountain_set and 'w' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_CORNER_NORTH
+		elif 'ne' in mountain_set and 's' in mountain_set and 'w' in mountain_set and 'e' not in mountain_set and 'n' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_CORNER_EAST
+		elif 'se' in mountain_set and 'w' in mountain_set and 'n' in mountain_set and 's' not in mountain_set and 'e' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_CORNER_SOUTH
+		elif 'sw' in mountain_set and 'n' in mountain_set and 'e' in mountain_set and 'w' not in mountain_set and 's' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_CORNER_WEST
+			
+		# L into peak (right)
+		elif 'ne' in mountain_set and 'w' in mountain_set and 'n' not in mountain_set and 'e' not in mountain_set and 's' not in mountain_set and 'se' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_L_RIGHT_NORTH
+		elif 'se' in mountain_set and 'n' in mountain_set and 'e' not in mountain_set and 's' not in mountain_set and 'w' not in mountain_set and 'sw' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_L_RIGHT_EAST
+		elif 'sw' in mountain_set and 'e' in mountain_set and 's' not in mountain_set and 'w' not in mountain_set and 'n' not in mountain_set and 'nw' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_L_RIGHT_SOUTH
+		elif 'nw' in mountain_set and 's' in mountain_set and 'w' not in mountain_set and 'n' not in mountain_set and 'e' not in mountain_set and 'ne' not in mountain_set:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_L_RIGHT_WEST
+		
+		# (left) and T_straight
+		elif 'nw' in mountain_set and 'e' in mountain_set and 'n' not in mountain_set and 'w' not in mountain_set and 's' not in mountain_set:
+			if 'sw' in mountain_set:
+				tile = GROUND.MOUNTAIN_TOP_PEAK_T_STRAIGHT_NORTH
+			else:
+				tile = GROUND.MOUNTAIN_TOP_PEAK_L_LEFT_NORTH
+		elif 'ne' in mountain_set and 's' in mountain_set and 'e' not in mountain_set and 'n' not in mountain_set and 'w' not in mountain_set:
+			if 'nw' in mountain_set:
+				tile = GROUND.MOUNTAIN_TOP_PEAK_T_STRAIGHT_EAST
+			else:
+				tile = GROUND.MOUNTAIN_TOP_PEAK_L_LEFT_EAST
+		elif 'se' in mountain_set and 'w' in mountain_set and 's' not in mountain_set and 'e' not in mountain_set and 'n' not in mountain_set:
+			if 'ne' in mountain_set:
+				tile = GROUND.MOUNTAIN_TOP_PEAK_T_STRAIGHT_SOUTH
+			else:
+				tile = GROUND.MOUNTAIN_TOP_PEAK_L_LEFT_SOUTH
+		elif 'sw' in mountain_set and 'n' in mountain_set and 'w' not in mountain_set and 's' not in mountain_set and 'e' not in mountain_set:
+			if 'se' in mountain_set:
+				tile = GROUND.MOUNTAIN_TOP_PEAK_T_STRAIGHT_WEST
+			else:
+				tile = GROUND.MOUNTAIN_TOP_PEAK_L_LEFT_WEST
+				
+		# single peak
+		elif 'n' in mountain_set and 'e' in mountain_set and 's' in mountain_set and 'w' in mountain_set:
+				tile = GROUND.MOUNTAIN_TOP_PEAK
+		
+		# into 2 peaks
+		elif filled == ['ne', 'se', 'sw']:
+			tile = GROUND.MOUNTAIN_TOP_NORTHEAST_SOUTHEAST_SOUTHWEST
+		elif filled == ['ne', 'nw', 'se']:
+			tile = GROUND.MOUNTAIN_TOP_NORTHWEST_NORTHEAST_SOUTHEAST
+		elif filled == ['ne', 'nw', 'sw']:
+			tile = GROUND.MOUNTAIN_TOP_SOUTHWEST_NORTHWEST_NORTHEAST
+		elif filled == ['nw', 'se', 'sw']:
+			tile = GROUND.MOUNTAIN_TOP_SOUTHEAST_SOUTHWEST_NORTHWEST
+		
+		elif filled == ['ne', 'nw', 'se', 'sw']:
+			tile = GROUND.MOUNTAIN_TOP_PEAK_ALL
+		
+		
+		else:
+			print 'dewd'
+			print filled
+			tile = GROUND.SAND
+				
+		
+		assert tile
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
+	map_set = map_set.union(inner_mountain)
+				
 
 	def fill_tiny_spaces(tile):
 		"""Fills 1 tile gulfs and straits with the specified tile

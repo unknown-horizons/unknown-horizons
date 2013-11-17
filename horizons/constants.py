@@ -361,7 +361,8 @@ class WEAPONS:
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
 	SAND = (6, "straight", 45)
-	MOUNTAIN = (8, "straight", 45)
+	MOUNTAIN_TOP = (8, "flat", 45)
+	MOUNTAIN = (7, "flat", 45)
 	SHALLOW_WATER = (1, "straight", 45)
 	WATER = (0, "straight", 45)
 
@@ -408,23 +409,81 @@ class GROUND:
 	DEEP_WATER_NORTHWEST1 = (2, "curve_out", 315)
 	
 	# grass to mountain tiles
-	MOUNTAIN_SOUTH = (7, "straight", 45)
-	MOUNTAIN_EAST =  (7, "straight", 135)
-	MOUNTAIN_NORTH = (7, "straight", 225)
-	MOUNTAIN_WEST =  (7, "straight", 315)
-	MOUNTAIN_SOUTHWEST3 = (7, "curve_in", 135)
-	MOUNTAIN_NORTHWEST3 = (7, "curve_in", 225)
-	MOUNTAIN_NORTHEAST3 = (7, "curve_in", 315)
-	MOUNTAIN_SOUTHEAST3 = (7, "curve_in", 45)
-	MOUNTAIN_NORTHEAST1 = (7, "curve_out", 225)
-	MOUNTAIN_SOUTHEAST1 = (7, "curve_out", 135)
-	MOUNTAIN_SOUTHWEST1 = (7, "curve_out", 45)
-	MOUNTAIN_NORTHWEST1 = (7, "curve_out", 315)
+	MOUNTAIN_EAST = (7, "straight", 45)
+	MOUNTAIN_NORTH =  (7, "straight", 315)
+	MOUNTAIN_WEST = (7, "straight", 225)
+	MOUNTAIN_SOUTH =  (7, "straight", 135)
 	
-	MOUNTAIN_NORTHEAST_SOUTHWEST = (7, "curve_sides", 45)
-	MOUNTAIN_NORTHWEST_SOUTHEAST = (7, "curve_sides", 135)
-	MOUNTAIN_NORTHEAST_SOUTHWEST = (7, "curve_sides", 225)
-	MOUNTAIN_NORTHWEST_SOUTHEAST = (7, "curve_sides", 315)
+	MOUNTAIN_SOUTHEAST3 = (7, "curve_in", 135)
+	MOUNTAIN_NORTHEAST3 = (7, "curve_in", 45)
+	MOUNTAIN_NORTHWEST3 = (7, "curve_in", 315)
+	MOUNTAIN_SOUTHWEST3 = (7, "curve_in", 225)
+	
+	MOUNTAIN_SOUTHEAST1 = (7, "curve_out", 135)
+	MOUNTAIN_NORTHEAST1 = (7, "curve_out", 45)
+	MOUNTAIN_NORTHWEST1 = (7, "curve_out", 315)
+	MOUNTAIN_SOUTHWEST1 = (7, "curve_out", 225)
+	
+	# mountain top to mountain tiles
+	MOUNTAIN_TOP_EAST = (8, "straight", 225)
+	MOUNTAIN_TOP_NORTH =  (8, "straight", 135)
+	MOUNTAIN_TOP_WEST = (8, "straight", 45)
+	MOUNTAIN_TOP_SOUTH =  (8, "straight", 315)
+	
+	MOUNTAIN_TOP_SOUTHEAST3 = (8, "curve_in", 45)
+	MOUNTAIN_TOP_NORTHEAST3 = (8, "curve_in", 135)
+	MOUNTAIN_TOP_NORTHWEST3 = (8, "curve_in", 225)
+	MOUNTAIN_TOP_SOUTHWEST3 = (8, "curve_in", 315)
+	
+	MOUNTAIN_TOP_SOUTHEAST1 = (8, "curve_out", 315)
+	MOUNTAIN_TOP_NORTHEAST1 = (8, "curve_out", 225)
+	MOUNTAIN_TOP_NORTHWEST1 = (8, "curve_out", 135)
+	MOUNTAIN_TOP_SOUTHWEST1 = (8, "curve_out", 45)
+	
+	MOUNTAIN_TOP_PEAK = (8, "peak", 45)
+	
+	MOUNTAIN_TOP_PEAK_STRAIGHT_NORTH = (8, "peak_straight", 45)
+	MOUNTAIN_TOP_PEAK_STRAIGHT_EAST = (8, "peak_straight", 135)
+	
+	MOUNTAIN_TOP_PEAK_END_EAST = (8, "peak_end", 315)
+	MOUNTAIN_TOP_PEAK_END_NORTH = (8, "peak_end", 225)
+	MOUNTAIN_TOP_PEAK_END_WEST = (8, "peak_end", 135)
+	MOUNTAIN_TOP_PEAK_END_SOUTH = (8, "peak_end", 45)
+	
+	MOUNTAIN_TOP_PEAK_CORNER_EAST = (8, "peak_corner", 225)
+	MOUNTAIN_TOP_PEAK_CORNER_NORTH = (8, "peak_corner", 135)
+	MOUNTAIN_TOP_PEAK_CORNER_WEST = (8, "peak_corner", 45)
+	MOUNTAIN_TOP_PEAK_CORNER_SOUTH = (8, "peak_corner", 315)
+	
+	MOUNTAIN_TOP_PEAK_L_LEFT_EAST = (8, "L_peak_left", 45)
+	MOUNTAIN_TOP_PEAK_L_LEFT_NORTH = (8, "L_peak_left", 315)
+	MOUNTAIN_TOP_PEAK_L_LEFT_WEST = (8, "L_peak_left", 225)
+	MOUNTAIN_TOP_PEAK_L_LEFT_SOUTH = (8, "L_peak_left", 135)
+	
+	MOUNTAIN_TOP_PEAK_L_RIGHT_EAST = (8, "L_peak_right", 45)
+	MOUNTAIN_TOP_PEAK_L_RIGHT_NORTH = (8, "L_peak_right", 315)
+	MOUNTAIN_TOP_PEAK_L_RIGHT_WEST = (8, "L_peak_right", 225)
+	MOUNTAIN_TOP_PEAK_L_RIGHT_SOUTH = (8, "L_peak_right", 135)
+	
+	MOUNTAIN_TOP_PEAK_T_STRAIGHT_EAST = (8, "T_peak_straight", 45)
+	MOUNTAIN_TOP_PEAK_T_STRAIGHT_NORTH = (8, "T_peak_straight", 135)
+	MOUNTAIN_TOP_PEAK_T_STRAIGHT_WEST = (8, "T_peak_straight", 225)
+	MOUNTAIN_TOP_PEAK_T_STRAIGHT_SOUTH = (8, "T_peak_straight", 315)
+	
+	MOUNTAIN_TOP_PEAK_T_EAST = (8, "T_peak", 45)
+	MOUNTAIN_TOP_PEAK_T_NORTH = (8, "T_peak", 315)
+	MOUNTAIN_TOP_PEAK_T_WEST = (8, "T_peak", 225)
+	MOUNTAIN_TOP_PEAK_T_SOUTH = (8, "T_peak", 135)
+	
+	MOUNTAIN_TOP_NORTHEAST_SOUTHWEST = (8, "curve_sides", 135)
+	MOUNTAIN_TOP_NORTHWEST_SOUTHEAST = (8, "curve_sides", 45)
+	
+	MOUNTAIN_TOP_NORTHEAST_SOUTHEAST_SOUTHWEST = (8, "curve_3", 135)
+	MOUNTAIN_TOP_NORTHWEST_NORTHEAST_SOUTHEAST = (8, "curve_3", 225)
+	MOUNTAIN_TOP_SOUTHWEST_NORTHWEST_NORTHEAST = (8, "curve_3", 315)
+	MOUNTAIN_TOP_SOUTHEAST_SOUTHWEST_NORTHWEST = (8, "curve_3", 45)
+	
+	MOUNTAIN_TOP_PEAK_ALL = (8, "curve_4", 45)
 
 
 class ACTION_SETS:
