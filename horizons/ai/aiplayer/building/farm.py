@@ -29,6 +29,7 @@ from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
 from horizons.world.buildability.terraincache import TerrainRequirement
 
+
 class FarmOptionCache(object):
 	def __init__(self, settlement_manager):
 		self.settlement_manager = settlement_manager
@@ -139,6 +140,7 @@ class FarmOptionCache(object):
 			self._positive_alignment = positive_alignment
 		return self._positive_alignment
 
+
 class AbstractFarm(AbstractBuilding):
 	@property
 	def directly_buildable(self):
@@ -240,6 +242,7 @@ class AbstractFarm(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.FARM] = cls
+
 
 class FarmEvaluator(BuildingEvaluator):
 	__field_pos_offsets = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
@@ -396,6 +399,7 @@ class FarmEvaluator(BuildingEvaluator):
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		self._register_changes(changes, True)
 		return (BUILD_RESULT.OK, building)
+
 
 class ModifiedFieldEvaluator(BuildingEvaluator):
 	"""This evaluator evaluates the cost of changing the type of an unused field."""
