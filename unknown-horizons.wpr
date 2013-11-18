@@ -1,5 +1,5 @@
 #!wing
-#!version=4.0
+#!version=5.0
 ##################################################################
 # Wing IDE project file                                          #
 ##################################################################
@@ -44,5 +44,6 @@ proj.directory-list = [{'dirloc': loc('development'),
                         'watch_for_changes': True}]
 proj.file-type = 'shared'
 proj.main-file = loc('run_uh.py')
-testing.auto-test-file-specs = ('test_',)
+testing.auto-test-file-specs = [('glob',
+                                 'test_')]
 testing.test-framework = {None: 'nose'}
