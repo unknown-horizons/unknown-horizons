@@ -93,34 +93,58 @@ def create_random_island(map_db, island_id, id_string):
 	map_db("BEGIN TRANSACTION")
 
 	# set mountain tiles
+	mountain_range = []
+	neighbors = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+	all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1)]
+	
+	# checks for edge of map
 	def dist_to_edge((x, y)):
-		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 		dist = 1
 		real_dist = 1
 		dist_found = False
-		
 		while not dist_found:
+			# check tiles in diamond
 			for dx in range(-dist, dist+1):
 				absDx = abs(dx)
 				dy = dist - absDx
-				
 				coords = (x+dx, y+dy)
 				if coords not in map_set:
 					real_dist = absDx+dy
 					dist_found = True
-				
 				coords = (x+dx, y-dy)
 				if coords not in map_set:
 					real_dist = absDx+dy
 					dist_found = True
 			dist += 1
 		return real_dist
-		
 	
+	# checks for edge of map and mountain
+	def dist_to_not_grass((x, y)):
+		dist = 1
+		real_dist = 1
+		dist_found = False
+		while not dist_found:
+			# check tiles in diamond
+			for dx in range(-dist, dist+1):
+				absDx = abs(dx)
+				dy = dist - absDx
+				coords = (x+dx, y+dy)
+				if coords not in map_set or coords in mountain_range:
+					real_dist = absDx+dy
+					dist_found = True
+					break
+				coords = (x+dx, y-dy)
+				if coords not in map_set or coords in mountain_range:
+					real_dist = absDx+dy
+					dist_found = True
+					break
+			dist += 1
+		return real_dist
+	
+	# find the tile with the largest distance to the edge of the map
 	def largest_dist_to_edge(set):
 		largest_dist = 0
 		largest_dist_tile = (0, 0)
-		
 		for x, y in set:
 			edge_dist = dist_to_edge((x, y))
 			if edge_dist > largest_dist:
@@ -128,6 +152,18 @@ def create_random_island(map_db, island_id, id_string):
 				largest_dist_tile = (x, y)
 		return largest_dist_tile
 		
+	# find the tile with the largest distance to the edge of the map or a mountain tile
+	def largest_dist_to_not_grass(set):
+		largest_dist = 0
+		largest_dist_tile = (0, 0)
+		for x, y in set:
+			edge_dist = dist_to_not_grass((x, y))
+			if edge_dist > largest_dist:
+				largest_dist = edge_dist
+				largest_dist_tile = (x, y)
+		return largest_dist_tile
+	
+	# for a direction ('n') find the 2 adjacent directions ('nw', 'ne')
 	def directions(centre_dir):
 		new_dir = []
 		new_dir.append(centre_dir)
@@ -142,38 +178,36 @@ def create_random_island(map_db, island_id, id_string):
 			new_dir.append((centre_dir[0], 0))
 		return new_dir
 	
-	mountain_range = []
-	neighbors = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-	all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1)]
+	mountain_ratio = 0.1
+	min_dist = 6
+	while True:
+		# set initial mountain tile
+		start_tile = largest_dist_to_not_grass(map_set)
+		if dist_to_not_grass(start_tile) > min_dist:
+			mountain_range.append(start_tile)
+		else:
+			break
 	
-	# set initial mountain tile
-	start_tile = largest_dist_to_edge(map_set)
-	mountain_range.append(start_tile)
-	
-	# grow mountain ranges
-	min_dist = 7
-	for tile_dir in all_neighbors:
-		previous_tile = mountain_range[0]
+		# grow mountain ranges
+		for tile_dir in all_neighbors:
+			previous_tile = mountain_range[0]
+			# create list of possible movement directions
+			dirs = directions(tile_dir)
+			# initiate movement direction
+			mountain_range.append((start_tile[0]+tile_dir[0], start_tile[1]+tile_dir[1]))
 		
-		# create list of possible movement directions
-		dirs = directions(tile_dir)
-		
-		# initiate movement direction
-		mountain_range.append((start_tile[0]+tile_dir[0], start_tile[1]+tile_dir[1]))
-		
-		while dist_to_edge(mountain_range[len(mountain_range)-1]) > min_dist:
-			positions = []
-			
-			if rand.randint(0, 1) == 0:
-				direction = [tile_dir]
-			else:
-				direction = dirs
-			
-			for dx, dy in direction:
-				positions.append((previous_tile[0] + dx, previous_tile[1] + dy))
-			next_tile = largest_dist_to_edge(positions)
-			mountain_range.append(next_tile)
-			previous_tile = next_tile
+			while dist_to_edge(mountain_range[len(mountain_range)-1]) > min_dist and \
+			 len(mountain_range) < (mountain_ratio*all_neighbors.index(tile_dir)*len(map_set))/8:
+				positions = []
+				if rand.randint(0, 1) == 0:
+					direction = [tile_dir]
+				else:
+					direction = dirs
+				for dx, dy in direction:
+					positions.append((previous_tile[0] + dx, previous_tile[1] + dy))
+				next_tile = largest_dist_to_edge(positions)
+				mountain_range.append(next_tile)
+				previous_tile = next_tile
 	
 	mountain_outline = []
 	for x, y in mountain_range:
@@ -197,7 +231,6 @@ def create_random_island(map_db, island_id, id_string):
 	while True:
 		still_corrections = False
 		for x, y in mountain_tiles:
-			#print '=======================\n======================='
 			tile_neighbors = False
 			for neighbor_set in consecutive_neighbor_corners:
 				consecutive_neighbors = True
