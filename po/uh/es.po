@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:18+0100\n"
-"PO-Revision-Date: 2013-11-05 00:54+0200\n"
+"PO-Revision-Date: 2013-11-19 12:27+0200\n"
 "Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
 "Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.8-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:126
 msgid "Unknown Horizons has crashed."
@@ -142,28 +142,24 @@ msgid "Inhabitants"
 msgstr "Habitantes"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Incrementar la velocidad de juego (+)"
+msgstr "Incrementar la velocidad de juego ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Reducir la velocidad de juego (-)"
+msgstr "Reducir la velocidad de juego ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Rotar mapa a la izquierda (.)"
+msgstr "Rotar mapa a la izquierda ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Rotar mapa a la derecha (.)"
+msgstr "Rotar mapa a la derecha ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -174,32 +170,28 @@ msgid "Zoom out"
 msgstr "Alejar zoom"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Destruir (X)"
+msgstr "Destruir ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Bitácora del capitán (L)"
+msgstr "Bitácora del capitán ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Menú de construcción (B)"
+msgstr "Menú de construcción ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomacia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Menú del juego (Esc)"
+msgstr "Menú del juego ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
