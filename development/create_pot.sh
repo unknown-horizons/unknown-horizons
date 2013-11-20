@@ -53,7 +53,7 @@ try:
   import polib
 except ImportError:
   from horizons.ext import polib
-po = polib.pofile('$1', wrapwith=80)
+po = polib.pofile('$1', wrapwidth=80)
 for entry in [e for e in po if not e.obsolete]:
   if FORMAT.search(entry.msgid) and 'python-brace-format' not in entry.flags:
     entry.flags.append(u'python-brace-format')
