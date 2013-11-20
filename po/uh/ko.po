@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-09-11 10:19+0200\n"
-"Last-Translator: sebastian sohn <chaosbreaker@email.com>\n"
+"PO-Revision-Date: 2013-11-20 23:08+0200\n"
+"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: Korean <http://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.7-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -541,7 +541,7 @@ msgstr "수집 이용"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
-msgstr "수입"
+msgstr "수입:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
