@@ -287,9 +287,6 @@ INSERT INTO "resource" VALUES(63, 'gold ingots',    50,     0,    0); -- unused
 INSERT INTO "resource" VALUES(64, 'gem deposit',     0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(65, 'rough gems',     15,     0,    0); -- unused
 INSERT INTO "resource" VALUES(66, 'gems',           50,     0,    0); -- unused
-INSERT INTO "resource" VALUES(67, 'silver deposit',  0,     0,    0); -- unused
-INSERT INTO "resource" VALUES(68, 'silver ore',     15,     0,    0); -- unused
-INSERT INTO "resource" VALUES(69, 'silver ingots',  50,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(70, 'coffee plants',   2,     0,    0); -- unused
 INSERT INTO "resource" VALUES(71, 'coffee beans',    2.5,   0,    0); -- unused
@@ -299,7 +296,7 @@ INSERT INTO "resource" VALUES(74, 'tea leaves',      2.5,   0,    0); -- unused
 INSERT INTO "resource" VALUES(75, 'tea',            10,     0,    0); -- unused
 INSERT INTO "resource" VALUES(76, 'flower meadows',  2,     0,    0); -- unused
 INSERT INTO "resource" VALUES(77, 'blossoms',        5,     0,    0); -- unused
-INSERT INTO "resource" VALUES(78, 'brine_deposit',   0,     0,    0); -- unused
+INSERT INTO "resource" VALUES(78, 'brine deposit',   0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(79, 'brine',           5,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(80, 'whales',         10,     0,    0); -- unused -- (blubber meat cetaceum baleen)
@@ -320,10 +317,6 @@ INSERT INTO "resource" VALUES(90, 'hops',            2.5,   0,    0); -- unused 
 -- tin ore, copper ore, tin, copper, bronze
 -- mortars, [swords maces muskets spears arbalests]
 --                            id   name            value  trade  show_inv
-INSERT INTO "resource" VALUES(92, 'representation', NULL,   0,    0); -- (lighthouse)
-INSERT INTO "resource" VALUES(93, 'society',        NULL,   0,    0); -- (tea garden)
-INSERT INTO "resource" VALUES(94, 'faith 2',        NULL,   0,    0); -- (cathedral)
-INSERT INTO "resource" VALUES(95, 'education 2',    NULL,   0,    0); -- (academy/university)
 INSERT INTO "resource" VALUES(96, 'hygiene',        NULL,   0,    0); -- (public bath)
 INSERT INTO "resource" VALUES(97, 'recreation',     NULL,   0,    0); -- (for aesthetics)
 INSERT INTO "resource" VALUES(98, 'blackdeath',     NULL,   0,    0); -- (doctor)
