@@ -49,7 +49,11 @@ function strip_itstool()
   # Fixup extracted python {format} strings from xml files (add right flag)
   python2 << END
 import re; FORMAT = re.compile(r'{.*}')
-import polib as p; po = p.pofile('$1', wrapwith=80)
+try:
+  import polib
+except ImportError:
+  from horizons.ext import polib
+po = polib.pofile('$1', wrapwith=80)
 for entry in [e for e in po if not e.obsolete]:
   if FORMAT.search(entry.msgid) and 'python-brace-format' not in entry.flags:
     entry.flags.append(u'python-brace-format')
