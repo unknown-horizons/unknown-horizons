@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 23:18+0100\n"
+"POT-Creation-Date: 2013-11-20 22:53+0100\n"
 "PO-Revision-Date: 2013-11-15 11:34+0200\n"
 "Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
-"Language-Team: Simplified Chinese "
-"<http://hosted.weblate.org/projects/uh/uh/zh_CN/>\n"
+"Language-Team: Simplified Chinese <http://hosted.weblate.org/projects/uh/uh/"
+"zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 1.9-dev\n"
 
-#: run_uh.py:126
+#: run_uh.py:124
 msgid "Unknown Horizons has crashed."
 msgstr "游戏程序已经崩溃。"
 
-#: run_uh.py:128
+#: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "对此我们感到非常抱歉, 我们将尽快解决以上问题。"
 
-#: run_uh.py:129
+#: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "为此，我们需要从日志文件中获取相关信息："
 
-#: run_uh.py:131
+#: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
@@ -38,27 +38,27 @@ msgstr ""
 "请将这些信息通过IRC或者论坛传递给我们，也可以查看我们的官网http://unknown-"
 "horizons.org 。"
 
-#: run_uh.py:180
+#: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "错误: 无法找到程序所需要的\"PyYAML\"库。"
 
-#: run_uh.py:181
+#: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr "PyYAML(一个必需的library)无法找到 , 请先对此进行安装。"
 
-#: run_uh.py:182
+#: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
 "您可以在http://pyyaml.org/wiki/PyYAML 找到Windows系统下所用的安装文件。"
 
-#: run_uh.py:183
+#: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
 "Linux用户可以通过在程序包管理器下搜索\"pyyaml\"或者\"python-yaml\"来找到它。"
 
-#: run_uh.py:217
+#: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
 msgstr "感谢您使用Unknown Horizons!"
 
@@ -97,11 +97,11 @@ msgstr "退出编辑器"
 msgid "Select brush size:"
 msgstr "选择画笔的大小："
 
-#: content/gui/xml/editor/editor_settings.xml:20
+#: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
 msgstr "选择地形："
 
-#: content/gui/xml/editor/editor_settings.xml:27
+#: content/gui/xml/editor/editor_settings.xml:35
 msgid "(right click to stop)"
 msgstr "（右键单击停止)"
 
@@ -139,25 +139,25 @@ msgid "Inhabitants"
 msgstr "居民"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy
+#, fuzzy, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
 msgstr "加快游戏速度(+)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy
+#, fuzzy, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
 msgstr "降低游戏速度(-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy
+#, fuzzy, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
 msgstr "逆时针旋转地图(,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy
+#, fuzzy, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
 msgstr "顺时针旋转地图 (.)"
@@ -171,19 +171,19 @@ msgid "Zoom out"
 msgstr "缩小"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy
+#, fuzzy, python-brace-format
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
 msgstr "毁坏（X）"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy
+#, fuzzy, python-brace-format
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
 msgstr "航海日志（L）"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy
+#, fuzzy, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
 msgstr "建造菜单 (B)"
@@ -193,7 +193,7 @@ msgid "Diplomacy"
 msgstr "外交"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy
+#, fuzzy, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
 msgstr "游戏菜单（Esc）"
@@ -736,7 +736,7 @@ msgid "Value of all the buildings in the player's settlement(s)"
 msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
@@ -1631,13 +1631,15 @@ msgstr ""
 msgid "Press 'T' to make trees transparent."
 msgstr ""
 
-#. This are the options you can select in the Settings what type of quotes should be
+#. This are the options you can select in the Settings what type of quotes
+#. should be
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
 msgstr ""
 
-#. translators: these are descriptions of the current task while loading a game
+#. translators: these are descriptions of the current task while loading a
+#. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
 msgstr ""
@@ -2039,7 +2041,8 @@ msgstr "请检查你输入的端口值并确认它在指定范围。"
 msgid "Failed to apply new network settings."
 msgstr "应用网络设置失败。"
 
-#. i18n This is advice for players seeing a network error with the current config
+#. i18n This is advice for players seeing a network error with the current
+#. config
 #: horizons/gui/modules/settings.py:278
 msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
@@ -3029,7 +3032,7 @@ msgid "Services"
 msgstr "服务"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "市民"
@@ -3056,7 +3059,7 @@ msgid "Military Service"
 msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "拓荒者"
@@ -3252,7 +3255,7 @@ msgid "Health: {health}"
 msgstr ""
 
 #. You usually do not need to change anything here when translating
-#: horizons/world/building/__init__.py:124
+#: horizons/world/building/__init__.py:123
 #, python-brace-format
 msgid "{building}: {description}"
 msgstr ""
@@ -3380,547 +3383,547 @@ msgstr ""
 msgid "Attacking {owner}"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "indigo"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
 msgstr "{player1} 和 {player2} 组成联盟了。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
 msgstr "您的建筑物着火了！"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "brine"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "medical herbs"
 msgstr "草药"
 
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
 msgstr "贵族"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "happiness"
 msgstr "幸福"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "gems"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
 msgstr "铁库存"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr "你的一些居民刚刚搬走了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "stone deposit"
 msgid "gem deposit"
 msgstr "石料库存"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "sugar"
 msgstr "糖"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobacco leaves"
 msgstr "烟叶"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "stone tops"
 msgstr "石顶"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
 msgstr "可可豆"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "羊毛"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
 msgstr "烟叶"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "coffee"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cocoa beans"
 msgstr "可可豆"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "food"
 msgstr "食物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "flour"
 msgstr "面粉"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
 msgstr "屠宰用猪"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 msgid "recreation"
 msgstr "教育"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "trees"
 msgstr "树"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
 msgstr "粘土存量"
 
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
 msgstr "水手"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "clay deposit"
 msgstr "粘土存量"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr "{player1} 和{player2} 已经结束了战争，现在结盟了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cocoa"
 msgstr "可可"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "marble tops"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "potatoes"
 msgstr "土豆"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "iron ore"
 msgstr "铁矿"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "perfume"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
 msgstr "烟草作物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "clay"
 msgstr "粘土"
 
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
 msgstr "商人"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "spice plants"
 msgid "hop plants"
 msgstr "香料植物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tea"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "liquor"
 msgstr "白酒"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "iron ingots"
 msgstr "铁锭"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
 msgstr "粘土存量"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
 msgstr "截图已保存至文件{file}。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cattle"
 msgstr "家畜"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
 msgstr "你也可以拖拽道路。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "lamb wool"
 msgstr "羔羊毛"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, fuzzy
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr "你已经达成最大增长。你的居民不会再继续升级了。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr "路径已配置。请通过“配置路径”菜单上的“开启路径”按钮启用。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
 msgstr "{player1} 和 {player2} 终止了结盟。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
 msgstr "不能到达那里。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "corn"
 msgstr "玉米"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "flower meadows"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "grapes"
 msgstr "葡萄"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Your inhabitants reached level {level}."
 msgstr "你的居民升至{level}级。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "ambergris"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "faith"
 msgstr "信仰"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "boards"
 msgstr "木板"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
 msgstr "有些居民不能进入广场。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} 和 {player2} 将斗争到底。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "hops"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "grain"
 msgstr "粮食"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "spices"
 msgstr "香料"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "dagger"
 msgstr "匕首"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
 msgstr "香料植物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "bricks"
 msgstr "砖"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
 msgstr "铁矿"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "community"
 msgstr "社区"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "spice plants"
 msgstr "香料植物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "hygiene"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
 msgstr "宰杀的家畜"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobaccos"
 msgstr "烟草"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tools"
 msgstr "工具"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "deer meat"
 msgstr "鹿肉"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "confectionery"
 msgstr "糖果"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "whales"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "coins"
 msgstr "硬币"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
 msgstr "你赢了！"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "blossoms"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
 msgstr "香料植物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "fish"
 msgstr "鱼"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "charcoal"
 msgstr "木炭"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "stone deposit"
 msgstr "石料库存"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
 msgstr "本次剧情您失败了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "fire"
 msgstr "火"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "acorns"
 msgstr "橡树果实"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "garments"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "honeycombs"
 msgstr "蜂窝"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobacco plants"
 msgstr "烟草作物"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "You need more {resource} to build this building."
 msgstr "你需要更多的{resource}来建造此建筑物。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
 msgstr "你的船员拒绝离开此地图。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
 msgstr "{player1} 和{player2} 正在敌对状态。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "grass"
 msgstr "草坪"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "sugar cane"
 msgstr "糖料甘蔗"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
 msgstr "你的游戏已经自动存档了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
 msgstr "粘土存量"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
 msgstr "你的一块田地需要农场收割作物。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "rough gems"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 msgid "alvearies"
 msgstr "洞窑"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
 msgstr "你的矿厂资源已经开采尽了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "iron deposit"
 msgstr "铁库存"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "education"
 msgstr "教育"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cotton"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr "{player1} 和{player2} 已经结束了联盟，现在处于战争状态。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "textile"
 msgstr "纺织品"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player}: {message}"
 msgstr "{player}：{message}"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cannon"
 msgstr "加农炮"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, fuzzy, python-brace-format
 #| msgid "A new ship by the name of {name} has been created."
 msgid "A new ship by the name of {name} has been created."
 msgstr "制造了一艘新船。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
 msgstr "烟草作物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "get-together"
 msgstr "聚会"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
 msgstr "创建了新世界。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
 msgstr "你的游戏已经快速存档了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "deer food A"
 msgstr "鹿食物A"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "herbs"
 msgstr "药草"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "lamp oil"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "pigs"
 msgstr "猪"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr "你不能分割仓库，你的殖民地需要它。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "condiments"
 msgstr "佐料"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "blackdeath"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "candles"
 msgstr "蜡烛"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
 msgstr "一个新殖民地由{player}建立了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "vines"
 msgstr "葡萄"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
 msgstr "你的游戏已经存档了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "salt"
 msgstr "盐"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 #, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
