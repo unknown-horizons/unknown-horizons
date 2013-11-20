@@ -45,6 +45,16 @@ function strip_itstool()
   #. (itstool) comment: Container/Label@text
   sed -i '/^#\. (itstool) /d' $1
   sed -i '/^#\. noi18n_\(help\)\?text$/d' $1
+  # Now do more complicated magic that we need python's polib for:
+  # Fixup extracted python {format} strings from xml files (add right flag)
+  python2 << END
+import re; FORMAT = re.compile(r'{.*}')
+import polib as p; po = p.pofile('$1', wrapwith=80)
+for entry in [e for e in po if not e.obsolete]:
+  if FORMAT.search(entry.msgid) and 'python-brace-format' not in entry.flags:
+    entry.flags.append(u'python-brace-format')
+po.save('$1')
+END
 }
 
 function reset_if_empty()
