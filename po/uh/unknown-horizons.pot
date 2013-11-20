@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons e5a565b\n"
+"Project-Id-Version: Unknown Horizons 579c5a1\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-20 22:50+0100\n"
+"POT-Creation-Date: 2013-11-20 22:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3483,10 +3483,6 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "iron ingots"
-msgstr ""
-
-#. This is a database entry: the name of a resource
-msgid "society"
 msgstr ""
 
 #. This is a database entry: the name of a resource
