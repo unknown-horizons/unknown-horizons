@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 579c5a1\n"
+"Project-Id-Version: Unknown Horizons dd5147a\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-20 22:53+0100\n"
+"POT-Creation-Date: 2013-11-20 23:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -229,8 +229,8 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
-"To build a boat, click on one of the class tabs, select the desired ship and"
-" confirm the order."
+"To build a boat, click on one of the class tabs, select the desired ship and "
+"confirm the order."
 msgstr ""
 
 #. Information about the ship currently under construction at the boat
@@ -441,14 +441,14 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
-"The signal fire shows the free trader how to reach your settlement in case "
-"you want to buy or sell goods."
+"The signal fire shows the free trader how to reach your settlement in case you"
+" want to buy or sell goods."
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
-"This is the free trader's ship. It will visit you from time to time to buy "
-"or sell goods."
+"This is the free trader's ship. It will visit you from time to time to buy or "
+"sell goods."
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
@@ -739,8 +739,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
-"The total value from all individual entities or in short : Total Player "
-"Score"
+"The total value from all individual entities or in short : Total Player Score"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
@@ -1138,8 +1137,7 @@ msgstr ""
 msgid "Change player details"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:14
-#: horizons/gui/modules/settings.py:53
+#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:53
 msgid "Graphics"
 msgstr ""
 
@@ -1272,8 +1270,8 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
-"Don't use in normal game session. Decides whether to write debug information"
-" in the logging directory of your user directory. Slows the game down."
+"Don't use in normal game session. Decides whether to write debug information "
+"in the logging directory of your user directory. Slows the game down."
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:187
@@ -1286,8 +1284,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
-"Whether to show resource icons over buildings whenever they finish "
-"production"
+"Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:201
@@ -1601,8 +1598,7 @@ msgstr ""
 msgid "Mixed"
 msgstr ""
 
-#. translators: these are descriptions of the current task while loading a
-#. game
+#. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
 msgstr ""
@@ -1731,9 +1727,8 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
-"game must use the same version. This can be fixed by every player updating "
-"to the latest version. Game version: {game_version} Your version: "
-"{own_version}"
+"game must use the same version. This can be fixed by every player updating to "
+"the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:267
@@ -1981,14 +1976,12 @@ msgstr ""
 
 #: horizons/gui/modules/settings.py:260
 msgid ""
-"The port you specified is not valid. It must be a number between 1 and "
-"65535."
+"The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 
 #: horizons/gui/modules/settings.py:261
 msgid ""
-"Please check the port you entered and make sure it is in the specified "
-"range."
+"Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 
 #: horizons/gui/modules/settings.py:272
@@ -2132,22 +2125,22 @@ msgstr ""
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
 msgid ""
-"Set to buy or sell by clicking on that label, then adjust the amount via the"
-" slider to the right."
+"Set to buy or sell by clicking on that label, then adjust the amount via the "
+"slider to the right."
 msgstr ""
 
 #: horizons/gui/tabs/buyselltab.py:321
 #, python-brace-format
 msgid ""
-"Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
-"in stock."
+"Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in"
+" stock."
 msgstr ""
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
 msgid ""
-"Will sell {resource_name} for {price} gold/t whenever more than {limit}t are"
-" available."
+"Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
+"available."
 msgstr ""
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
@@ -2307,8 +2300,8 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
-"Reset this settlement's displayed resources to the default configuration you"
-" have saved."
+"Reset this settlement's displayed resources to the default configuration you "
+"have saved."
 msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
@@ -3063,8 +3056,7 @@ msgid "The game you selected could not be started."
 msgstr ""
 
 #: horizons/main.py:356
-msgid ""
-"The savegame might be broken or has been saved with an earlier version."
+msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 
 #: horizons/main.py:475
@@ -3088,8 +3080,8 @@ msgstr ""
 #. but we don't know what. Stop the game.
 #: horizons/manager.py:175
 msgid ""
-"The games have run out of sync. This indicates an unknown internal error, "
-"the game cannot continue."
+"The games have run out of sync. This indicates an unknown internal error, the "
+"game cannot continue."
 msgstr ""
 
 #: horizons/manager.py:176
@@ -3508,8 +3500,8 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
-"You have reached the current maximum tier. Your inhabitants will not upgrade"
-" further."
+"You have reached the current maximum tier. Your inhabitants will not upgrade "
+"further."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
