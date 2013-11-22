@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-11-16 19:44+0200\n"
-"Last-Translator: clément arondel <clement.arondel@gmail.com>\n"
+"PO-Revision-Date: 2013-11-22 22:27+0200\n"
+"Last-Translator: Maxime Gaumond <maxx420@hotmail.com>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -3706,7 +3706,6 @@ msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} et {player2} vont se battre jusqu'à la mort."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Workshops"
 msgid "hops"
 msgstr "Ateliers"
