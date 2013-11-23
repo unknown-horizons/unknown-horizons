@@ -52,8 +52,10 @@ class ConcreteObject(WorldObject):
 		self.__init(action_set_id)
 
 	def __init(self, action_set_id=None):
-		self._instance = None # overwrite in subclass __init[__]
-		self._action = 'idle' # Default action is idle
+		# overwrite in subclass __init[__]
+		self._instance = None
+		# Default action is 'idle'
+		self._action = 'idle'
 		# NOTE: this can't be level-aware since not all ConcreteObjects have levels
 		self._action_set_id = action_set_id if action_set_id else self.__class__.get_random_action_set()
 
