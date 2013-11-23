@@ -91,10 +91,13 @@ class Unit(MovingObject, ResourceTransferHandler):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate(
 			self.position.x + self.position.x - self.last_position.x,
 			self.position.y + self.position.y - self.last_position.y, 0))
-		if action.getId() != ('move_' + self._action_set_id):
-			self.act(self._action, self._instance.getFacingLocation(), True)
-		else:
-			self.act(self._action, location, True)
+
+		facing_loc = self._instance.getFacingLocation()
+		if action.getId().startswith('move_'):
+			# Remember: this means we *ended* a "move" action just now!
+			facing_loc = location
+
+		self.act(self._action, facing_loc=facing_loc, repeating=True)
 
 	def onInstanceActionCancelled(self, instance, action):
 		pass
