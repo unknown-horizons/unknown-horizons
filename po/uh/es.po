@@ -2493,7 +2493,6 @@ msgstr "Cuartel"
 msgid "Recruits units suitable for ground combat."
 msgstr "Recluta unidades adecuadas para el combate terrestre."
 
-# Creo que se refiere al programa de diseño 3D, y no a una licuadora.
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
