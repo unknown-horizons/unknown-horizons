@@ -239,8 +239,12 @@ class Buildable(object):
 			tile = island.get_tile_tuple(tup)
 			if tile is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
-			if 'constructible' not in tile.classes:
-				raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
+			if cls.name != 'Mine':
+				if 'constructible' not in tile.classes:
+					raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
+			else:
+				if 'mountainside' not in tile.classes and 'constructible' not in tile.classes:
+					raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
 		return island
 
 	@classmethod
@@ -331,7 +335,29 @@ class BuildableSingleEverywhere(BuildableSingle):
 		tearset = []
 		return _BuildPosition(position, rotation, tearset, buildable)
 
+class BuildableMountain(BuildableSingle):
+	"""Used for building mountain deposits on mountain tiles"""
+	terrain_type = None
 
+	@classmethod
+	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
+		# for non-quadratic buildings, we have to switch width and height depending on the rotation
+		if rotation == 45 or rotation == 225:
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
+		else:
+			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])
+			
+		island = session.world.get_island(position.center)
+		buildable = True
+		for tile in island.get_tiles_tuple(position.tuple_iter()):
+			obj = tile.object
+			if obj is not None:
+				buildable = False
+				break
+
+		tearset = []
+		return _BuildPosition(position, rotation, tearset, buildable)
+	
 class BuildableRect(Buildable):
 	"""Buildings one can build as a Rectangle, such as Trees"""
 	@classmethod
@@ -403,7 +429,6 @@ class BuildableLine(Buildable):
 			possible_builds.append(build)
 
 		return possible_builds
-
 
 class BuildableSingleOnCoast(BuildableSingle):
 	"""Buildings one can only build on coast, such as the fisher."""
@@ -529,7 +554,7 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 				raise _NotBuildableError(BuildableErrorTypes.ISLAND_ALREADY_SETTLED)
 
 
-class BuildableSingleOnDeposit(BuildableSingle):
+class BuildableSingleOnClayDeposit(BuildableSingle):
 	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
 	For now, mines can only be built on a single type of deposit.
 	This is specified in game.sqlite in the table "mine", and saved in cls.buildable_on_deposit in
@@ -559,6 +584,35 @@ class BuildableSingleOnDeposit(BuildableSingle):
 		# rotation fix code is only reached when building is buildable
 		mountain = WorldObject.get_object_by_id(iter(tearset).next())
 		return mountain.rotation
+		
+class BuildableSingleOnMountain(BuildableSingle):
+	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
+	For now, mines can only be built on a single type of deposit.
+	This is specified in game.sqlite in the table "mine", and saved in cls.buildable_on_deposit in
+	the buildingclass.
+	"""
+	
+	@classmethod
+	def _check_buildings(cls, session, position, island=None):
+		"""Check if there are buildings blocking the build"""
+		if island is None:
+			island = session.world.get_island(position.center)
+		deposit = None
+		for tile in island.get_tiles_tuple(position.tuple_iter()):
+			if tile.object is None or \
+			   tile.object.id != cls.buildable_on_deposit_type or \
+			   (deposit is not None and tile.object != deposit):
+				raise _NotBuildableError(BuildableErrorTypes.NEED_RES_SOURCE)
+			deposit = tile.object
+		return set([deposit.worldid])
+
+	@classmethod
+	def _check_rotation(cls, session, position, rotation):
+		"""The rotation should be the same as the one of the underlying mountain"""
+		tearset = cls._check_buildings(session, position) # will raise on problems
+		# rotation fix code is only reached when building is buildable
+		mountain = WorldObject.get_object_by_id(iter(tearset).next())
+		return mountain.rotation
 
 
 decorators.bind_all(Buildable)
@@ -566,4 +620,5 @@ decorators.bind_all(BuildableSingle)
 decorators.bind_all(BuildableRect)
 decorators.bind_all(BuildableSingleFromShip)
 decorators.bind_all(BuildableSingleOnCoast)
-decorators.bind_all(BuildableSingleOnDeposit)
+decorators.bind_all(BuildableSingleOnClayDeposit)
+decorators.bind_all(BuildableSingleOnMountain)
