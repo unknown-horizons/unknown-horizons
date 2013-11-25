@@ -23,6 +23,7 @@ import random
 
 from horizons.constants import ACTION_SETS
 from horizons.engine import Fife
+from horizons.messaging import ActionChanged
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
@@ -115,7 +116,9 @@ class ConcreteObject(WorldObject):
 				self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
 			else:
 				self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+		else:
 			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
+		ActionChanged.broadcast(self, action)
 
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.

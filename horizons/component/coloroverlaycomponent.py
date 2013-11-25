@@ -28,6 +28,7 @@ from fife import fife
 import horizons.globals
 
 from horizons.component import Component
+from horizons.messaging import ActionChanged
 from horizons.scheduler import Scheduler
 from horizons.util.color import Color as UtilColor
 from horizons.util.loaders.actionsetloader import ActionSetLoader
