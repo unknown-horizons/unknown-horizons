@@ -99,8 +99,8 @@ class SingleplayerMenu(Window):
 
 	def act(self):
 		"""Start the game. Called when OK button is pressed."""
-		player_color = self._playerdata.get_player_color()
-		player_name = self._playerdata.get_player_name()
+		player_color = self._playerdata.player_color
+		player_name = self._playerdata.player_name
 
 		if not player_name:
 			self._windows.show_popup(_("Invalid player name"), _("You entered an invalid playername."))

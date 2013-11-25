@@ -98,8 +98,8 @@ class MultiplayerMenu(Window):
 		if NetworkInterface().is_connected and not NetworkInterface().is_joined:
 			NetworkInterface().disconnect()
 
-		NetworkInterface().change_name(self._playerdata.get_player_name())
-		NetworkInterface().change_color(self._playerdata.get_player_color().id)
+		NetworkInterface().change_name(self._playerdata.player_name)
+		NetworkInterface().change_color(self._playerdata.player_color.id)
 
 	def on_return(self):
 		self._join_game()
@@ -234,8 +234,8 @@ class MultiplayerMenu(Window):
 			                            own_version=NetworkInterface().get_clientversion()))
 			return
 
-		NetworkInterface().change_name(self._playerdata.get_player_name())
-		NetworkInterface().change_color(self._playerdata.get_player_color().id)
+		NetworkInterface().change_name(self._playerdata.player_name)
+		NetworkInterface().change_color(self._playerdata.player_color.id)
 
 		if game.password:
 			# ask the player for the password
@@ -254,8 +254,8 @@ class MultiplayerMenu(Window):
 		self._windows.show(window)
 
 	def _create_game(self):
-		NetworkInterface().change_name(self._playerdata.get_player_name())
-		NetworkInterface().change_color(self._playerdata.get_player_color().id)
+		NetworkInterface().change_name(self._playerdata.player_name)
+		NetworkInterface().change_color(self._playerdata.player_color.id)
 		self._windows.show(CreateGame(self._windows))
 
 
@@ -522,15 +522,15 @@ class GameLobby(Window):
 		unused_colors = set(Color) - set(assigned)
 
 		playerdata = PlayerDataSelection(color_palette=unused_colors)
-		playerdata.set_player_name(NetworkInterface().get_client_name())
-		playerdata.set_color(NetworkInterface().get_client_color())
+		playerdata.player_name = NetworkInterface().get_client_name()
+		playerdata.player_color = NetworkInterface().get_client_color()
 
 		dialog = load_uh_widget('set_player_details.xml')
 		dialog.findChild(name="playerdataselectioncontainer").addChild(playerdata.get_widget())
 
 		def _change_playerdata():
-			NetworkInterface().change_name(playerdata.get_player_name())
-			NetworkInterface().change_color(playerdata.get_player_color().id)
+			NetworkInterface().change_name(playerdata.player_name)
+			NetworkInterface().change_color(playerdata.player_color.id)
 			dialog.hide()
 			self._update_game_details()
 

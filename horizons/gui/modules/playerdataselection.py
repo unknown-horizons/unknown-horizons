@@ -39,7 +39,7 @@ class PlayerDataSelection(object):
 
 		self.colors = self.gui.findChild(name='playercolor')
 		self.selected_color = horizons.globals.fife.get_uh_setting("ColorID") # starts at 1!
-		self.set_color(self.selected_color)
+		self.player_color = self.selected_color
 
 		colorlabels = []
 		events = {}
@@ -51,8 +51,8 @@ class PlayerDataSelection(object):
 			              max_size = (20, 20),
 			              min_size = (20, 20),
 			              background_color = color)
-			events['{label}/mouseClicked'.format(label=color.name)] = \
-			                             Callback(self.set_color, color.id)
+			set_color = Callback(setattr, self, 'player_color', color.id)
+			events['{label}/mouseClicked'.format(label=color.name)] = set_color
 			colorlabels.append(label)
 
 		# split into three rows with at max 5 entries in each row
@@ -67,7 +67,13 @@ class PlayerDataSelection(object):
 		})
 		self.gui.mapEvents(events)
 
-	def set_color(self, color_id):
+	@property
+	def player_color(self):
+		"""Returns the color that the player selected as Color obj"""
+		return self.selected_color
+
+	@player_color.setter
+	def player_color(self, color_id):
 		"""Updates the background color of large label where players
 		see their currently chosen color. Stores result in settings.
 		@param color_id: int. Gets converted to util.Color object.
@@ -84,20 +90,18 @@ class PlayerDataSelection(object):
 		horizons.globals.fife.save_settings()
 		self.gui.findChild(name='selectedcolor').background_color = self.selected_color
 
-	def set_player_name(self, playername):
-		horizons.globals.fife.set_uh_setting("Nickname", playername)
-		horizons.globals.fife.save_settings()
-		self.gui.distributeData({
-			'playername': unicode(playername),
-			})
-
-	def get_player_name(self):
+	@property
+	def player_name(self):
 		"""Returns the name that was entered by the user"""
 		return self.gui.collectData('playername')
 
-	def get_player_color(self):
-		"""Returns the color that the player selected as Color obj"""
-		return self.selected_color
+	@player_name.setter
+	def player_name(self, value):
+		horizons.globals.fife.set_uh_setting("Nickname", value)
+		horizons.globals.fife.save_settings()
+		self.gui.distributeData({
+			'playername': unicode(value),
+		})
 
 	def get_widget(self):
 		return self.gui
