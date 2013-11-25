@@ -47,7 +47,7 @@ class View(ChangeListener):
 		cellgrid.setXShift(0)
 		cellgrid.setYShift(0)
 
-                using_opengl = horizons.globals.fife.engine.getRenderBackend().getName() == "OpenGL"
+		using_opengl = horizons.globals.fife.engine.getRenderBackend().getName() == "OpenGL"
 
 		self.layers = []
 		for layer_id in xrange(LAYERS.NUM):

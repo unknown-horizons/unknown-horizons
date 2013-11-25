@@ -154,7 +154,6 @@ class Minimap(object):
 	def draw(self):
 		"""Recalculates and draws the whole minimap of self.session.world or world.
 		The world you specified is reused for every operation until the next draw().
-		@param recalculate: do a full recalculation
 		"""
 		if self.world is None and self.session.world is not None:
 			self.world = self.session.world # in case minimap has been constructed before the world

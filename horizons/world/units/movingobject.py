@@ -89,7 +89,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		@param destination: destination supported by pathfinding
 		@return: object that can be used in boolean expressions (the path in case there is one)
 		"""
-		return self.path.calc_path(destination, check_only = True)
+		return self.path.calc_path(destination, check_only=True)
 
 	def is_moving(self):
 		"""Returns whether unit is currently moving"""

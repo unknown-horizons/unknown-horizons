@@ -27,9 +27,10 @@ import operator
 import horizons.globals
 
 from horizons.component import Component
+from horizons.constants import GFX, LAYERS, RES
 from horizons.util.python import decorators
 from horizons.util.shapes import RadiusRect
-from horizons.constants import GFX, LAYERS, RES
+
 
 class SelectableComponent(Component):
 	"""Stuff you can select.
