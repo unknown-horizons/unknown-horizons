@@ -130,7 +130,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			upgrades_box.removeAllChildren()
 
 			# Update needed resources
-			production = self.producer.get_productions()[0]
+			production = self.producer.productions[0]
 			needed_res = production.get_consumed_resources()
 			# Now sort! -amount is the positive value, drop unnecessary res (amount 0)
 			needed_res = dict((res, -amount) for res, amount in needed_res.iteritems() if amount < 0)

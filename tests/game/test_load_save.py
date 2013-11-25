@@ -77,7 +77,7 @@ def create_lumberjack_production_session():
 	for x in [29, 30, 31, 32]:
 		Build(BUILDINGS.TREE, x, 29, island, settlement=settlement,)(player)
 	building = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
-	production = building.get_component(Producer).get_productions()[0]
+	production = building.get_component(Producer).productions[0]
 
 	# wait for the lumberjack to start producing
 	while True:

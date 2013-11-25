@@ -199,7 +199,7 @@ class Producer(Component):
 
 	def save(self, db):
 		super(Producer, self).save(db)
-		for production in self.get_productions():
+		for production in self.productions:
 			production.save(db, self.instance.worldid)
 
 	# INTERFACE
@@ -266,19 +266,19 @@ class Producer(Component):
 		@param modifier: a numeric value
 		@param prod_line_id: id of production line to alter. None means every production line"""
 		if prod_line_id is None:
-			for production in self.get_productions():
+			for production in self.productions:
 				production.alter_production_time(modifier)
 		else:
 			self._get_production(prod_line_id).alter_production_time(modifier)
 
 	def remove(self):
 		Scheduler().rem_all_classinst_calls(self)
-		for production in self.get_productions():
+		for production in self.productions:
 			self.remove_production(production)
 		# call super() after removing all productions since it removes the instance (make it invalid)
 		# which can be needed by changelisteners' actions (e.g. in remove_production method)
 		super(Producer, self).remove()
-		assert not self.get_productions(), 'Failed to remove %s ' % self.get_productions()
+		assert not self.productions, 'Failed to remove %s ' % self.productions
 
 
 	# PROTECTED METHODS
@@ -287,17 +287,19 @@ class Producer(Component):
 		state of all productions combined. Check the PRODUCTION.STATES constant
 		for list of states and their importance."""
 		current_state = PRODUCTION.STATES.none
-		for production in self.get_productions():
+		for production in self.productions:
 			state = production.get_animating_state()
 			if state is not None and current_state < state:
 				current_state = state
 		return current_state
 
-	def get_productions(self):
+	@property
+	def productions(self):
 		"""Returns all productions, inactive and active ones, as list"""
 		return self._productions.values() + self._inactive_productions.values()
 
-	def get_production_lines(self):
+	@property
+	def production_lines(self):
 		"""Returns all production lines that have been added.
 		@return: a list of prodline ids"""
 		return self._productions.keys() + self._inactive_productions.keys()
@@ -315,7 +317,7 @@ class Producer(Component):
 	def is_active(self, production=None):
 		"""Checks if a production, or the at least one production if production is None, is active"""
 		if production is None:
-			for production in self.get_productions():
+			for production in self.productions:
 				if not production.is_paused():
 					return True
 			return False
@@ -331,7 +333,7 @@ class Producer(Component):
 		@param active: whether to set it active or inactive"""
 		if production is None:
 			# set all
-			for production in self.get_productions():
+			for production in self.productions:
 				self.set_active(production, active)
 		else:
 			line_id = production.get_production_line_id()
@@ -367,7 +369,7 @@ class Producer(Component):
 
 	def toggle_active(self, production=None):
 		if production is None:
-			for production in self.get_productions():
+			for production in self.productions:
 				self.toggle_active(production)
 		else:
 			active = self.is_active(production)
@@ -390,7 +392,7 @@ class Producer(Component):
 			full = state is PRODUCTION.STATES.inventory_full
 			if full and not hasattr(self, "_producer_status_icon"):
 				affected_res = set() # find them:
-				for prod in self.get_productions():
+				for prod in self.productions:
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
 				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
 				AddStatusIcon.broadcast(self, self._producer_status_icon)

@@ -26,7 +26,7 @@ class Utilization(object):
 	"""Basic utilization class used in producers"""
 
 	def capacity_utilization(self, instance):
-		productions = instance.get_productions()
+		productions = instance.productions
 		total = 0
 		if not productions:
 			return 0 # catch the border case, else there'll be a div by 0

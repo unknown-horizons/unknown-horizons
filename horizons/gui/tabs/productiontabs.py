@@ -61,7 +61,7 @@ class ProductionOverviewTab(OverviewTab):
 		"""List all possible productions of a buildings sorted by production line id.
 		Overwritten in some child classes (e.g. farm tab).
 		"""
-		productions = self.instance.get_component(Producer).get_productions()
+		productions = self.instance.get_component(Producer).productions
 		return sorted(productions, key=operator.methodcaller('get_production_line_id'))
 
 	def refresh(self):
@@ -244,7 +244,7 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	def displayed_productions(self):
 		possible_res = set(res for field in self.instance.get_providers()
 		                       for res in field.provided_resources)
-		all_farm_productions = self.instance.get_component(Producer).get_productions()
+		all_farm_productions = self.instance.get_component(Producer).productions
 		productions = set([p for p in all_farm_productions
 		                     for res in p.get_consumed_resources().keys()
 		                   if res in possible_res])

@@ -62,7 +62,7 @@ class PlayerStats(WorldObject):
 				if building.id == BUILDINGS.RESIDENTIAL:
 					settlers[building.level] += building.inhabitants
 					settler_buildings[building.level] += 1
-					for production in building.get_component(Producer).get_productions():
+					for production in building.get_component(Producer).productions:
 						if production.get_state() is PRODUCTION.STATES.producing:
 							produced_resources = production.get_produced_resources()
 							if RES.HAPPINESS in produced_resources:

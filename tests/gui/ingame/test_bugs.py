@@ -312,7 +312,7 @@ def test_ticket_1848(gui):
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
-	while producer.get_productions():
+	while producer.productions:
 		gui.run()
 
 	gui.cursor_click(51, 13, 'left')

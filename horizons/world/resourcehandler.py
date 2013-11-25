@@ -198,7 +198,7 @@ class ResourceHandler(ResourceTransferHandler):
 		overwriting it.
 		Do not alter the returned list; if you need to do so, then copy it."""
 		produced_resources = set()
-		for prod in self.get_component(Producer).get_productions():
+		for prod in self.get_component(Producer).productions:
 			for res in prod.get_produced_resources():
 				produced_resources.add(res)
 

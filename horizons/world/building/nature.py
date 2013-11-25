@@ -46,7 +46,7 @@ class Field(NatureBuildingResourceHandler):
 		if self.owner.is_local_player:
 			# make sure to have a farm nearby when we can reasonably assume that the crops are fully grown
 			prod_comp = self.get_component(Producer)
-			productions = prod_comp.get_productions()
+			productions = prod_comp.productions
 			if not productions:
 				print "Warning: Field is assumed to always produce, but doesn't.", self
 			else:

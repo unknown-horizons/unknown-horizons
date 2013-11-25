@@ -44,7 +44,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 	def _get_problematic_collector_coverage_buildings(self):
 		problematic_buildings = {}
 		for building in self.production_builder.production_buildings:
-			for production in building.get_component(Producer).get_productions():
+			for production in building.get_component(Producer).productions:
 				if production.get_age() < 1.5 * PRODUCTION.STATISTICAL_WINDOW:
 					continue
 				history = production.get_state_history_times(False)

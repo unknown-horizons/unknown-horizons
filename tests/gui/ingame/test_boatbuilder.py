@@ -89,13 +89,13 @@ def test_ticket_1294(gui):
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
-	while len(producer.get_productions()) > 1:
+	while len(producer.productions) > 1:
 		gui.run()
 
 	# Unpause huker construction
 	gui.trigger('BB_main_tab', 'toggle_active_inactive')
 
-	while producer.get_productions():
+	while producer.productions:
 		gui.run()
 
 
@@ -128,9 +128,9 @@ def test_ticket_1830(gui):
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Check if Main-Production is still just Huker and is paused.
-	assert len(producer.get_productions()) == 1
-	assert producer.get_productions()[0].get_produced_units()[UNITS.HUKER_SHIP] == 1
-	assert producer.get_productions()[0]._state == PRODUCTION.STATES.paused
+	assert len(producer.productions) == 1
+	assert producer.productions[0].get_produced_units()[UNITS.HUKER_SHIP] == 1
+	assert producer.productions[0]._state == PRODUCTION.STATES.paused
 
 	# One entry (Frigate) in queue
 	assert len(producer.production_queue) == 1

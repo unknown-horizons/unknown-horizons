@@ -270,7 +270,7 @@ class SettlementManager(WorldObject):
 				total = self.production_chain[RES.GET_TOGETHER].get_ratio(RES.LIQUOR) * self.get_resource_production_requirement(RES.GET_TOGETHER)
 			else:
 				for residence in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
-					for production in residence.get_component(Producer).get_productions():
+					for production in residence.get_component(Producer).productions:
 						production_line = production._prod_line
 						if resource_id in production_line.consumed_res:
 							# subtract because the amount will be negative

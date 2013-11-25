@@ -64,7 +64,7 @@ class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 
 	def get_non_paused_utilization(self):
 		total = 0
-		productions = self.get_component(Producer).get_productions()
+		productions = self.get_component(Producer).productions
 		for production in productions:
 			if production.get_age() < PRODUCTION.STATISTICAL_WINDOW * 1.5:
 				return 1
