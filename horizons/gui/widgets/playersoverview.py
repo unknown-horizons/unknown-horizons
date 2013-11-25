@@ -35,12 +35,12 @@ class PlayersOverview(StatsWidget):
 
 	def refresh(self):
 		super(PlayersOverview, self).refresh()
-		for player in sorted(self.session.world.players, key = lambda player: (-player.get_latest_stats().total_score, player.worldid)):
+		for player in sorted(self.session.world.players, key = lambda player: (-player.latest_stats.total_score, player.worldid)):
 			self._add_line_to_gui(player)
 		self._content_vbox.adaptLayout()
 
 	def _add_line_to_gui(self, player):
-		stats = player.get_latest_stats()
+		stats = player.latest_stats
 
 		emblem = widgets.Label(name = 'emblem_%d' % player.worldid, text=u"   ")
 		emblem.background_color = player.color

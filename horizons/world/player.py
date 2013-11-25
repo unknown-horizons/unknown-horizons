@@ -91,7 +91,8 @@ class Player(ComponentHolder, WorldObject):
 	def is_local_player(self):
 		return self is self.session.world.player
 
-	def get_latest_stats(self):
+	@property
+	def latest_stats(self):
 		if self._stats is None or self._stats.collection_tick + PLAYER.STATS_UPDATE_FREQUENCY < Scheduler().cur_tick:
 			self._stats = PlayerStats(self)
 		return self._stats
