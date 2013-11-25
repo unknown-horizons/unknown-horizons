@@ -333,12 +333,13 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
-		if self._selected:
-			super(SelectableUnitComponent, self).deselect()
-			self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
-			self.instance.draw_health(remove_only=True)
-			# this is necessary to make deselect idempotent
-			self.session.view.discard_change_listener(self.instance.draw_health)
+		if not self._selected:
+			return
+		super(SelectableUnitComponent, self).deselect()
+		self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
+		self.instance.draw_health(remove_only=True)
+		# this is necessary to make deselect idempotent
+		self.session.view.discard_change_listener(self.instance.draw_health)
 
 
 class SelectableShipComponent(SelectableUnitComponent):
