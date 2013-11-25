@@ -238,3 +238,7 @@ class LoadingProgress(Message):
 class ZoomChanged(Message):
 	"""Sent when map zoom has changed."""
 	arguments = ('zoom', )
+
+class ActionChanged(Message):
+	"""Sent when a ConcreteObject changed its action"""
+	arguments = ('action', )
