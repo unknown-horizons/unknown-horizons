@@ -58,7 +58,7 @@ class CommandableComponent(Component):
 					surrounding.radius += 1
 					continue
 				# update actual target coord
-				move_target = self.instance.get_move_target()
+				move_target = self.instance.move_target
 				break
 		if self.instance.owner.is_local_player:
 			self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)

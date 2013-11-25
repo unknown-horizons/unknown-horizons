@@ -148,7 +148,7 @@ class Ship(Unit):
 		"""Draw a buoy at the move target if the ship is moving."""
 		if self.owner is None or not self.owner.is_local_player:
 			return
-		move_target = self.get_move_target()
+		move_target = self.move_target
 
 		ship_id = self.worldid
 		session = self.session # this has to happen here,
@@ -206,7 +206,7 @@ class Ship(Unit):
 		if hasattr(self, 'route') and self.route.enabled:
 			return self.route.get_ship_status()
 		elif self.is_moving:
-			target = self.get_move_target()
+			target = self.move_target
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
 				return (_('Going to {location}').format(location=location_based_status), target)

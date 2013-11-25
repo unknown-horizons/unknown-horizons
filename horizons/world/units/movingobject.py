@@ -280,7 +280,8 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		else:
 			return (12, 17) # standard values
 
-	def get_move_target(self):
+	@property
+	def move_target(self):
 		return self.path.get_move_target()
 
 	def save(self, db):
