@@ -230,7 +230,7 @@ class ProductionOverviewTab(OverviewTab):
 
 class SmallProductionOverviewTab(ProductionOverviewTab):
 	"""Only display productions for which we have a related 'field' in range.
-	Requires the building class using this tab to implement get_providers().
+	Requires the building class using this tab to implement a `providers` property.
 	"""
 	widget = 'overview_farm.xml'
 	helptext = _lazy("Production overview")
@@ -242,7 +242,7 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 
 	@property
 	def displayed_productions(self):
-		possible_res = set(res for field in self.instance.get_providers()
+		possible_res = set(res for field in self.instance.providers
 		                       for res in field.provided_resources)
 		all_farm_productions = self.instance.get_component(Producer).productions
 		productions = set([p for p in all_farm_productions

@@ -37,7 +37,8 @@ class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding
 
 
 class PastryShop(ProductionBuilding):
-	def get_providers(self):
+	@property
+	def providers(self):
 		reach = RadiusRect(self.position, self.radius)
 		resources = self.get_consumed_resources(include_inactive=True)
 		providers = self.island.get_providers_in_range(reach, reslist=resources)
@@ -45,7 +46,8 @@ class PastryShop(ProductionBuilding):
 
 
 class Farm(ProductionBuilding):
-	def get_providers(self):
+	@property
+	def providers(self):
 		reach = RadiusRect(self.position, self.radius)
 		resources = self.get_consumed_resources(include_inactive=True)
 		providers = self.island.get_providers_in_range(reach, reslist=resources)
