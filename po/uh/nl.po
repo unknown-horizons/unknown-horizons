@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-08-22 13:21+0200\n"
-"Last-Translator: sietze Greydanus <haselnut116601@gmail.com>\n"
+"PO-Revision-Date: 2013-11-25 18:02+0200\n"
+"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.7-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -145,28 +145,28 @@ msgid "Inhabitants"
 msgstr "Inwoners"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Speelsnelheid verhogen (+)"
+msgstr "Speelsnelheid verhogen ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Speelsnelheid verlagen (-)"
+msgstr "Speelsnelheid verlagen ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Draai de kaart tegen de klok in (,)"
+msgstr "Draai de kaart tegen de klok in ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Draai de kaart met de klok mee (.)"
+msgstr "Draai de kaart met de klok mee ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -177,32 +177,32 @@ msgid "Zoom out"
 msgstr "Zoom uit"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Vernietigen (X)"
+msgstr "Vernietigen ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Logboek van de Kapitein (L)"
+msgstr "Logboek van de Kapitein ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Bouwmenu (B)"
+msgstr "Bouwmenu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomatie"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Spelmenu (Esc)"
+msgstr "Spelmenu ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -1164,10 +1164,9 @@ msgid "Create a new game"
 msgstr "Maak een nieuw spel"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Meespelen"
+msgstr "Meespelen:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1374,10 +1373,9 @@ msgid "Reset to default settings"
 msgstr "Herstel standaardinstellingen"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Spel opslaan"
+msgstr "Wijzigingen opslaan"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1655,7 +1653,7 @@ msgstr "Druk 'T' om bomen transparant te maken."
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Gemengd"
 
 #. translators: these are descriptions of the current task while loading a
 #. game
@@ -1826,16 +1824,14 @@ msgid "Ready"
 msgstr "Gereed"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#, fuzzy
 #| msgid "Not Ready"
 msgid "Not ready"
 msgstr "Niet gereed"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Voer uw bericht in:"
+msgstr "Bericht invoeren"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -2014,7 +2010,7 @@ msgstr "Spel"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Uitgeschakeld"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2786,10 +2782,9 @@ msgstr "Levert goederen aan inwoners."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "IJzermijn"
+msgstr "Mijn"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
@@ -3385,10 +3380,9 @@ msgid "These residents are unhappy."
 msgstr "Deze bewoners zijn ontevreden."
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Sommige inwoners hebben geen toegang tot een marktplaats."
+msgstr "Deze inwoners hebben geen toegang tot een marktplaats."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3447,10 +3441,9 @@ msgid "Attacking {owner}"
 msgstr "Valt {owner} aan"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Hindi"
 msgid "indigo"
-msgstr "Hindi"
+msgstr "indigo"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3463,7 +3456,7 @@ msgstr "Uw gebouw heeft vlam gevat!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "pekel"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
@@ -3479,23 +3472,21 @@ msgstr "blijdschap"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "edelstenen"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "ijzerafzetting"
+msgstr "pekelafzetting"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr "Sommige inwoners zijn zojuist weggetrokken."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "stone deposit"
 msgid "gem deposit"
-msgstr "steenafzetting"
+msgstr "edelsteenafzetting"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3511,24 +3502,22 @@ msgid "stone tops"
 msgstr "stenen platen"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "cacaobonen"
+msgstr "koffiebonen"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "wol"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "tabaksbladeren"
+msgstr "theebladeren"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "koffie"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
@@ -3547,20 +3536,18 @@ msgid "pigs for slaughter"
 msgstr "varkens voor de slacht"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Precaution"
 msgid "recreation"
-msgstr "Voorzorgsmaatregel"
+msgstr "recreatie"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
 msgstr "bomen"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "kleiafzetting"
+msgstr "marmerafzetting"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3583,7 +3570,7 @@ msgstr "cacao"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "marmerblokken"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
@@ -3595,13 +3582,12 @@ msgstr "ijzererts"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "parfum"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
-msgstr "tabaksplanten"
+msgstr "katoenplanten"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
@@ -3612,16 +3598,14 @@ msgid "Merchants"
 msgstr "Kooplieden"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "hop plants"
-msgstr "specerijplanten"
+msgstr "hopplanten"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
-msgstr "taling blauw"
+msgstr "thee"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
@@ -3632,10 +3616,9 @@ msgid "iron ingots"
 msgstr "ijzeren staven"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
-msgstr "kleiafzetting"
+msgstr "steenkoolafzetting"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3685,7 +3668,7 @@ msgstr "mais"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "bloemenweides"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
@@ -3698,7 +3681,7 @@ msgstr "Uw inwoners hebben beschavingsniveau {level} bereikt."
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "ambergris"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
@@ -3718,10 +3701,9 @@ msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} en {player2} zullen vechten op leven en dood."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Workshops"
 msgid "hops"
-msgstr "Werkplaats"
+msgstr "hop"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -3736,20 +3718,18 @@ msgid "dagger"
 msgstr "dolk"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
-msgstr "specerijplanten"
+msgstr "koffieplanten"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
 msgstr "bakstenen"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "ijzererts"
+msgstr "gouderts"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -3761,7 +3741,7 @@ msgstr "specerijplanten"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "hygiëne"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
@@ -3784,10 +3764,9 @@ msgid "confectionery"
 msgstr "suikergoed"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Walvisvaarder"
+msgstr "walvissen"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3799,13 +3778,12 @@ msgstr "U heeft gewonnen!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "bloesem"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
-msgstr "specerijplanten"
+msgstr "indigoplant"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
@@ -3833,7 +3811,7 @@ msgstr "eikels"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "kleding"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
@@ -3871,10 +3849,9 @@ msgid "Your game has been autosaved."
 msgstr "Uw spel is automatisch opgeslagen."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "kleiafzetting"
+msgstr "goudafzetting"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3882,7 +3859,7 @@ msgstr "Een van je velden vereist een boerderij om te kunnen oogsten."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "ruwe edelstenen"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
@@ -3902,7 +3879,7 @@ msgstr "onderwijs"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "katoen"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3936,10 +3913,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Er is een nieuw schip gebouwd met de naam {name}."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "tabaksplanten"
+msgstr "theeplanten"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -3963,7 +3939,7 @@ msgstr "kruiden"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "lampolie"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
@@ -4005,10 +3981,9 @@ msgid "salt"
 msgstr "zout"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "ijzeren staven"
+msgstr "goudstaven"
 
 #~ msgid "Back:"
 #~ msgstr "Terug:"
