@@ -70,7 +70,7 @@ class Trader(GenericAI):
 
 	def _on_new_settlement(self, msg):
 		# make sure there's a trader ship for 2 settlements
-		if len(self.session.world.settlements) > self.get_ship_count() * 2:
+		if len(self.session.world.settlements) > self.ship_count * 2:
 			self.create_ship()
 
 	def save(self, db):
@@ -126,7 +126,8 @@ class Trader(GenericAI):
 				Scheduler().add_new_object(
 					Callback(self.ship_idle, ship), self, remaining_ticks)
 
-	def get_ship_count(self):
+	@property
+	def ship_count(self):
 		"""Returns number of ships"""
 		return len(self.ships)
 

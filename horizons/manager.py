@@ -207,7 +207,8 @@ class MPManager(LivingObject):
 		else:
 			self.gamecommands.append(command)
 
-	def get_player_count(self):
+	@property
+	def player_count(self):
 		return len(self.session.world.players)
 
 	def get_builds_in_construction(self):
@@ -238,7 +239,7 @@ class MPPacketmanager(object):
 
 	def is_tick_ready(self, tick):
 		"""Check if packets from all players have arrived (necessary for tick to begin)"""
-		ready = len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
+		ready = len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.player_count
 		if not ready:
 			self.log.debug("tick not ready, packets: " + str(list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))))
 		return ready
