@@ -107,14 +107,9 @@ class ColorOverlayComponent(Component):
 		ActionChanged.broadcast(self.instance, self.instance._action)
 
 	def update_overlay(self, message):
-		try:
-			del self.current_overlays[0]
-		except KeyError:
-			#TODO poke around with a stick
-			pass
-		else:
-			self.remove_overlay()
-
+		#TODO Tracking is broken: remove all data stored for old action
+		# Ultimately it would be great to have current_overlays working...
+		self.current_overlays.clear()
 		try:
 			overlays = self.overlays[self.action_set][message.action]
 		except KeyError:
