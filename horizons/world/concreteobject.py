@@ -99,21 +99,23 @@ class ConcreteObject(WorldObject):
 		if not force_restart and self._action == action:
 			return
 
+		self._action = action
+
 		# TODO This should not happen, this is a fix for the component introduction
 		# Should be fixed as soon as we move concrete object to a component as well
 		# which ensures proper initialization order for loading and initing
-		if self._instance is not None:
-			if facing_loc is None:
-				facing_loc = self._instance.getFacingLocation()
-			UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
-			if (Fife.getVersion() >= (0, 3, 6)):
-				if repeating:
-					self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
-				else:
-					self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+		if self._instance is None:
+			return
+
+		if facing_loc is None:
+			facing_loc = self._instance.getFacingLocation()
+		UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
+		if (Fife.getVersion() >= (0, 3, 6)):
+			if repeating:
+				self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
 			else:
-				self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
-		self._action = action
+				self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
 
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.
