@@ -103,14 +103,25 @@ class ColorOverlayComponent(Component):
 
 	def initialize(self):
 		super(ColorOverlayComponent, self).initialize()
+		ActionChanged.subscribe(self.update_overlay, self.instance)
+		ActionChanged.broadcast(self.instance, self.instance._action)
+
+	def update_overlay(self, message):
+		try:
+			del self.current_overlays[0]
+		except KeyError:
+			#TODO poke around with a stick
+			pass
+		else:
+			self.remove_overlay()
 
 		try:
-			overlays = self.overlays[self.action_set][self.instance._action]
+			overlays = self.overlays[self.action_set][message.action]
 		except KeyError:
 			self.log.warning(
 				'No color overlay defined for action set `%s` and action `%s`. '
 				'Consider using `null` overlays for this action.',
-				self.action_set, self.instance._action)
+				self.action_set, message.action)
 			return
 
 		for (z_order, overlay_name, from_color, to_color) in overlays:
