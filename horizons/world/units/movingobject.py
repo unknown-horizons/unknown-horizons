@@ -209,7 +209,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			self.__is_moving = True
 
 		#setup movement
-		move_time = self.get_unit_velocity()
+		move_time = self.unit_velocity
 		UnitClass.ensure_action_loaded(self._action_set_id, self._move_action) # lazy load move action
 
 		self._exact_model_coords1.set(self.position.x, self.position.y, 0)
@@ -267,7 +267,8 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		assert callable(callback)
 		self._conditional_callbacks[condition] = callback
 
-	def get_unit_velocity(self):
+	@property
+	def unit_velocity(self):
 		"""Returns the number of ticks that it takes to do a straight (i.e. vertical or horizontal)
 		or diagonal movement as a tuple in this order.
 		@return: (int, int)
