@@ -185,43 +185,31 @@ class IntermediateMap(object):
 			data[i] -= mi
 
 		if max(data) == 0:
-			if mi == 0:
-				self.session.world_editor.set_tile(coords, GROUND.WATER)
-			elif mi == 1:
-				self.session.world_editor.set_tile(coords, GROUND.SHALLOW_WATER)
-			elif mi == 2:
-				self.session.world_editor.set_tile(coords, GROUND.SAND)
-			elif mi == 3:
-				self.session.world_editor.set_tile(coords, GROUND.DEFAULT_LAND)
+			ground_class = {
+				0: GROUND.WATER,
+				1: GROUND.SHALLOW_WATER,
+				2: GROUND.SAND,
+				3: GROUND.DEFAULT_LAND,
+			}[mi]
+			self.session.world_editor.set_tile(coords, ground_class)
 		else:
 			assert max(data) == 1, 'This should never happen'
-			type = 2 if mi == 0 else (5 if mi == 1 else 4)
-			if data == [0, 1, 0, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'straight', 45))
-			elif data == [1, 1, 0, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'straight', 135))
-			elif data == [1, 0, 1, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'straight', 225))
-			elif data == [0, 0, 1, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'straight', 315))
-			elif data == [0, 1, 1, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_in', 45))
-			elif data == [1, 1, 0, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_in', 135))
-			elif data == [1, 1, 1, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_in', 225))
-			elif data == [1, 0, 1, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_in', 315))
-			elif data == [0, 0, 0, 1]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_out', 45))
-			elif data == [0, 1, 0, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_out', 135))
-			elif data == [1, 0, 0, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_out', 225))
-			elif data == [0, 0, 1, 0]:
-				self.session.world_editor.set_tile(coords, (type, 'curve_out', 315))
-			else:
-				assert False, 'This should never happen'
+			tile_type = 2 if mi == 0 else (5 if mi == 1 else 4)
+			tile_def = {
+				(0, 1, 0, 1): (tile_type, 'straight', 45),
+				(1, 1, 0, 0): (tile_type, 'straight', 135),
+				(1, 0, 1, 0): (tile_type, 'straight', 225),
+				(0, 0, 1, 1): (tile_type, 'straight', 315),
+				(0, 1, 1, 1): (tile_type, 'curve_in', 45),
+				(1, 1, 0, 1): (tile_type, 'curve_in', 135),
+				(1, 1, 1, 0): (tile_type, 'curve_in', 225),
+				(1, 0, 1, 1): (tile_type, 'curve_in', 315),
+				(0, 0, 0, 1): (tile_type, 'curve_out', 45),
+				(0, 1, 0, 0): (tile_type, 'curve_out', 135),
+				(1, 0, 0, 0): (tile_type, 'curve_out', 225),
+				(0, 0, 1, 0): (tile_type, 'curve_out', 315),
+			}[tuple(data)]
+			self.session.world_editor.set_tile(coords, tile_def)
 
 	def __str__(self):
 		res = ''
