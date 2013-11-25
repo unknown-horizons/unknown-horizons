@@ -250,7 +250,7 @@ class WeaponHolder(object):
 
 		if self.attack_in_range():
 			dest = self._target.position.center
-			if self._target.movable and self._target.is_moving():
+			if self._target.movable and self._target.is_moving:
 				dest = self._target._next_target
 
 			self.fire_all_weapons(dest)
@@ -522,7 +522,7 @@ class MovingWeaponHolder(WeaponHolder):
 			# if executes attack action try to move in 1 second
 			self._move_and_attack(destination, not_possible_action, in_range_callback)
 		else:
-			if self.is_moving() and self._fireable:
+			if self.is_moving and self._fireable:
 				# stop to shoot
 				self.stop()
 				# finish the move before removing the move tick
@@ -532,7 +532,7 @@ class MovingWeaponHolder(WeaponHolder):
 
 			distance = self.position.distance(self._target.position.center)
 			dest = self._target.position.center
-			if self._target.movable and self._target.is_moving():
+			if self._target.movable and self._target.is_moving:
 				dest = self._target._next_target
 
 			fireable_number = len(self._fireable)

@@ -326,7 +326,7 @@ class TradeRoute(ChangeListener):
 
 	def get_ship_status(self):
 		"""Return the current status of the ship."""
-		if self.ship.is_moving():
+		if self.ship.is_moving:
 			location = self.ship.get_location_based_status(self.ship.get_move_target())
 			status_msg = _('Trade route: going to {location}').format(location=location)
 			return (status_msg, self.ship.get_move_target())

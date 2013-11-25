@@ -91,6 +91,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		"""
 		return self.path.calc_path(destination, check_only=True)
 
+	@property
 	def is_moving(self):
 		"""Returns whether unit is currently moving"""
 		return self.__is_moving
@@ -100,7 +101,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		The unit actually stops moving when current move (to the next coord) is finished.
 		@param callback: a parameter supported by WeakMethodList. is executed immediately if unit isn't moving
 		"""
-		if not self.is_moving():
+		if not self.is_moving:
 			WeakMethodList(callback).execute()
 			return
 		self.move_callbacks = WeakMethodList(callback)
@@ -130,7 +131,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			move_possible = self.path.calc_path(destination, destination_in_building)
 
 			self.log.debug("%s: move to %s; possible: %s; is_moving: %s", self,
-			               destination, move_possible, self.is_moving())
+			               destination, move_possible, self.is_moving)
 
 			if not move_possible:
 				raise MoveNotPossible
@@ -143,7 +144,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self._setup_move(action)
 
 		# start moving by regular ticking (only if next tick isn't scheduled)
-		if not self.is_moving():
+		if not self.is_moving:
 			self.__is_moving = True
 			# start moving in 1 tick
 			# this assures that a movement takes at least 1 tick, which is sometimes subtly
@@ -253,7 +254,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 	def add_move_callback(self, callback):
 		"""Registers callback to be executed when movement of unit finishes.
 		This has no effect if the unit isn't moving."""
-		if self.is_moving():
+		if self.is_moving:
 			self.move_callbacks.append(callback)
 
 	def add_blocked_callback(self, blocked_callback):

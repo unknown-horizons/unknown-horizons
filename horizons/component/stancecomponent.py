@@ -100,7 +100,7 @@ class StanceComponent(Component):
 		"""
 		Method executed when the instance is moving to a location selected by the user
 		"""
-		if not self.instance.is_moving():
+		if not self.instance.is_moving:
 			self.state = 'idle'
 
 	def act_move_back(self):
@@ -160,7 +160,7 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		At the end of user move change the returning position
 		"""
-		if not self.instance.is_moving():
+		if not self.instance.is_moving:
 			self.state = 'idle'
 			self.return_position = self.instance.position.center.copy()
 
@@ -281,7 +281,7 @@ class FleeStance(StanceComponent):
 		"""
 		If movemen stops, switch to idle
 		"""
-		if not self.instance.is_moving():
+		if not self.instance.is_moving:
 			self.state = 'idle'
 			# check again for target and move
 			self.act_idle()

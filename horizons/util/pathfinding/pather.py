@@ -80,7 +80,7 @@ class AbstractPather(object):
 	def _get_position(self):
 		"""Returns current position considering movement status and being in a building"""
 		source = self.unit.position
-		if self.unit.is_moving() and self.path:
+		if self.unit.is_moving and self.path:
 			# we are moving, use next step as source
 			source = Point(*self.path[self.cur])
 		else:
@@ -127,7 +127,7 @@ class AbstractPather(object):
 		if source is None:
 			source = self._get_position()
 		self.path = path
-		if self.unit.is_moving():
+		if self.unit.is_moving:
 			self.cur = 0
 			self.unit.show() # make sure unit is displayed
 		else:

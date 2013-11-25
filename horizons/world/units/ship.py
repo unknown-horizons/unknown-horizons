@@ -205,7 +205,7 @@ class Ship(Unit):
 		"""Return the current status of the ship."""
 		if hasattr(self, 'route') and self.route.enabled:
 			return self.route.get_ship_status()
-		elif self.is_moving():
+		elif self.is_moving:
 			target = self.get_move_target()
 			location_based_status = self.get_location_based_status(target)
 			if location_based_status is not None:
