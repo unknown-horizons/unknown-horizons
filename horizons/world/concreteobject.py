@@ -86,7 +86,7 @@ class ConcreteObject(WorldObject):
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet
 			self._instance.setActionRuntime(runtime)
-		Scheduler().add_new_object( Callback(set_action_runtime, self, runtime), self, run_in=0)
+		Scheduler().add_new_object(Callback(set_action_runtime, self, runtime), self, run_in=0)
 
 	def act(self, action, facing_loc=None, repeating=False, force_restart=True):
 		"""
