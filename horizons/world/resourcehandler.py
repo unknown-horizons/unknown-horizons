@@ -149,7 +149,8 @@ class ResourceHandler(ResourceTransferHandler):
 	def remove_incoming_collector(self, collector):
 		self.__incoming_collectors.remove(collector)
 
-	def _get_owner_inventory(self):
+	@property
+	def owner_inventory(self):
 		"""Returns the inventory of the owner to be able to retrieve special resources such as gold.
 		The production system should be as decoupled as possible from actual world objects, so only use
 		when there are no other possibilities"""

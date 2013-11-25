@@ -139,7 +139,7 @@ class Producer(Component):
 		"""
 		data = self.production_lines[id]
 		production_class = self.production_class
-		owner_inventory = self.instance._get_owner_inventory()
+		owner_inventory = self.instance.owner_inventory
 
 		# not really fancy way of selecting special production class
 		if self.settler_upgrade_lines:
