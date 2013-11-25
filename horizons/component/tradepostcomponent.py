@@ -117,10 +117,12 @@ class TradePostComponent(ChangeListener, Component):
 		for row in db("SELECT tick, player, resource_id, amount, gold FROM trade_history WHERE settlement = ? ORDER BY tick, player", worldid):
 			self.trade_history.append(row)
 
-	def get_owner_inventory(self):
+	@property
+	def owner_inventory(self):
 		return self.instance.owner.get_component(StorageComponent).inventory
 
-	def get_inventory(self):
+	@property
+	def inventory(self):
 		return self.instance.get_component(StorageComponent).inventory
 
 	def buy(self, res, amount, price, player_id):
@@ -132,16 +134,16 @@ class TradePostComponent(ChangeListener, Component):
 		@return bool, whether we did buy it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.buy_list or \
-				self.get_owner_inventory()[RES.GOLD] < price or \
-				self.get_inventory().get_free_space_for(res) < amount or \
-				amount + self.get_inventory()[res] > self.slots[self.buy_list[res]].limit:
+				self.owner_inventory[RES.GOLD] < price or \
+				self.inventory.get_free_space_for(res) < amount or \
+				amount + self.inventory[res] > self.slots[self.buy_list[res]].limit:
 			self._changed()
 			return False
 
 		else:
-			remnant = self.get_owner_inventory().alter(RES.GOLD, -price)
+			remnant = self.owner_inventory.alter(RES.GOLD, -price)
 			assert remnant == 0
-			remnant = self.get_inventory().alter(res, amount)
+			remnant = self.inventory.alter(res, amount)
 			assert remnant == 0
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, amount, -price))
 			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
@@ -159,15 +161,15 @@ class TradePostComponent(ChangeListener, Component):
 		@return bool, whether we did sell it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.sell_list or \
-				self.get_inventory()[res] < amount or \
-				self.get_inventory()[res] - amount < self.slots[self.sell_list[res]].limit:
+				self.inventory[res] < amount or \
+				self.inventory[res] - amount < self.slots[self.sell_list[res]].limit:
 			self._changed()
 			return False
 
 		else:
-			remnant = self.get_owner_inventory().alter(RES.GOLD, price)
+			remnant = self.owner_inventory.alter(RES.GOLD, price)
 			assert remnant == 0
-			remnant = self.get_inventory().alter(res, -amount)
+			remnant = self.inventory.alter(res, -amount)
 			assert remnant == 0
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, -amount, price))
 			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
@@ -201,16 +203,16 @@ class TradePostComponent(ChangeListener, Component):
 		if amount <= 0:
 			return err(_("You can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 		# can't sell more than what we have
-		amount = min(amount, self.get_inventory()[resource_id])
+		amount = min(amount, self.inventory[resource_id])
 		# can't sell more than we are trying to sell according to the settings
-		amount = min(amount, self.get_inventory()[resource_id] - self.slots[self.sell_list[resource_id]].limit)
+		amount = min(amount, self.inventory[resource_id] - self.slots[self.sell_list[resource_id]].limit)
 		if amount <= 0:
 			return err(_("The trade partner does not sell more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		total_price = price * amount
-		assert self.get_owner_inventory().alter(RES.GOLD, total_price) == 0
+		assert self.owner_inventory.alter(RES.GOLD, total_price) == 0
 		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, -total_price) == 0
-		assert self.get_inventory().alter(resource_id, -amount) == 0
+		assert self.inventory.alter(resource_id, -amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, amount) == 0
 		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, -amount, total_price))
 		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
@@ -239,23 +241,23 @@ class TradePostComponent(ChangeListener, Component):
 		if amount <= 0:
 			return err(_("You do not possess this."), TRADE_ERROR_TYPE.PERMANENT)
 		# can't buy more than we can fit in the inventory
-		amount = min(amount, self.get_inventory().get_free_space_for(resource_id))
+		amount = min(amount, self.inventory.get_free_space_for(resource_id))
 		if amount <= 0:
 			return err(_("The trade partner can not store more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 		# can't buy more than we can afford
-		amount = min(amount, self.get_owner_inventory()[RES.GOLD] // price)
+		amount = min(amount, self.owner_inventory[RES.GOLD] // price)
 		if amount <= 0:
 			return err(_("The trade partner can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		# can't buy more than we are trying to buy according to the settings
-		amount = min(amount, self.slots[self.buy_list[resource_id]].limit - self.get_inventory()[resource_id])
+		amount = min(amount, self.slots[self.buy_list[resource_id]].limit - self.inventory[resource_id])
 		if amount <= 0:
 			return err(_("The trade partner does not buy more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		total_price = price * amount
-		assert self.get_owner_inventory().alter(RES.GOLD, -total_price) == 0
+		assert self.owner_inventory.alter(RES.GOLD, -total_price) == 0
 		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, total_price) == 0
-		assert self.get_inventory().alter(resource_id, amount) == 0
+		assert self.inventory.alter(resource_id, amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, -amount) == 0
 		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, amount, -total_price))
 		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
