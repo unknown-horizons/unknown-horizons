@@ -56,7 +56,8 @@ class ProductionOverviewTab(OverviewTab):
 		self._animations = []
 		super(ProductionOverviewTab, self).__init__(instance=instance)
 
-	def get_displayed_productions(self):
+	@property
+	def displayed_productions(self):
 		"""List all possible productions of a buildings sorted by production line id.
 		Overwritten in some child classes (e.g. farm tab).
 		"""
@@ -78,7 +79,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
-		for production in self.get_displayed_productions():
+		for production in self.displayed_productions:
 			# we need to be notified of small production changes
 			# that aren't passed through the instance
 			production.add_change_listener(self._schedule_refresh, no_duplicates=True)
@@ -219,7 +220,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def _cleanup(self):
 		Scheduler().rem_all_classinst_calls(self)
-		for production in self.get_displayed_productions():
+		for production in self.displayed_productions:
 			production.discard_change_listener(self._schedule_refresh)
 		for anim in self._animations:
 			if anim():
@@ -239,7 +240,8 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/small"
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
 
-	def get_displayed_productions(self):
+	@property
+	def displayed_productions(self):
 		possible_res = set(res for field in self.instance.get_providers()
 		                       for res in field.provided_resources)
 		all_farm_productions = self.instance.get_component(Producer).get_productions()
