@@ -103,11 +103,18 @@
 * Nikolay Kotrabakov (balward)
 
 #### Catalan
+* Àngel Mompó Llovet
+* Xavier Muntada Samà
+
+#### Catalan (Valencia)
+* Àngel Mompó Llovet
 * CatRoky
 * Siegfried Gevatter (RainCT)
 
 #### Czech
 * Kristian Hynek (Kris_CZ)
+* Lukáš Krejza
+* Michal Čihař
 * naked.in.rain
 * Pavel Plecháč (Spek)
 * Petr Palička (peca)
@@ -117,17 +124,22 @@
 #### Danish
 * aundal
 * Jacob Hellwing (hellwing)
+* Jan Arni Jacobsen
 
 #### German
 * djot
+* Jordan Liese
 * Kikody
 * Linkal
+* Marcel H
 * Michael Skiba
 * Raymond Vetter
 * schnurlos
+* Stefan S
 
 #### Greek
 * Dimitra Karamperi (dimitrak)
+* Efstathios Iosifidis
 * karavolosmike
 
 #### Spanish
@@ -137,8 +149,10 @@
 * CatRoky
 * Cur5
 * Fabio Fernández (Catharsius)
+* Fede Muller
 * MicMic
 * Nikolai Woutlan
+* Rubén Viguera
 * saiffe
 * Sergio Lorenzo (Juarrox)
 * stefania_m
@@ -154,10 +168,17 @@
 * Pihpe
 
 #### French
+* Antoine Beaupré
 * Antoine Pernot (mumuxe)
+* Clément Arondel
+* Clement Coste
 * erdnaxeli
 * Hugues Fafard (Antagonym)
+* Jérôme Beaugendre
+* Lau Nat
+* Lothaire Hengst
 * Marc Moussa (deathmaster9)
+* Maxime Gaumond
 * Quentin (LawNasK)
 * Samuel Dorsaz (ajira)
 * Sebastien Charpentier (seblabel)
@@ -169,6 +190,7 @@
 * Adrián Chaves Fernández (Gallaecio)
 
 #### Croatian
+* Daniel Tominac
 * shile
 
 #### Hindi
@@ -183,9 +205,12 @@
 #### Indonesian
 * alamswijaya
 * davezh
+* Ichwan Elhamdani
 
 #### Italian
+* Davide Nanni
 * Fabio Pedretti
+* Fede Muller
 * Gioele Cerri (joel)
 * Giorgio Saragnese (supermario)
 * Mathias Hofmann
@@ -200,9 +225,11 @@
 
 #### Korean
 * k ks
+* Sebastian Sohn
 
 #### Lithuanian
 * Mantas Kondrotas (Anielius)
+* Mantas Kriaučiūnas
 
 #### Malayalam
 * Cebin
@@ -211,6 +238,7 @@
 
 #### Norwegian
 * Audun Pers (pers)
+* Daniel Andre
 * Frode Woldsund (frodus)
 * Jared Isaksen (JeThro)
 
@@ -222,6 +250,7 @@
 * Nick Z. (angellus)
 * Ruud Jacobs (MrRuudJ)
 * Sander Hasenpflug (SanderOnline)
+* Sietze Greydanus
 * Tim F. (TiFo)
 * VinWij
 
@@ -232,6 +261,8 @@
 * janczarny
 * Natrius
 * Pic
+* Piotr B
+* Piotr Gredka
 * Premislaus
 * Robert Matusewicz (matekm)
 * Robert Mitwicki (mtfk)
@@ -239,19 +270,27 @@
 
 #### Portuguese
 * bdias
+* Guilherme Nogueira
+* Luis Coehlo
 * Nelson Marques (nmarques)
 * Nuno Alves (MadMonk)
+* Pedro Henrique
 * Sérgio Lopes (Knitter)
 
 #### Brazilian Portuguese
 * abner.silva
 * claudinei
 * GabrielSantiago
+* Goku Sayajin
+* Guilherme Nogueira
 * Henrique Poyatos (hpoyatos)
 * israelsantanna
+* Jovito Santos
 * Lindo (IvoJr)
 * luisdknob
 * paulodealmeida
+* Pedro Henrique
+* Rilen T. L
 
 #### Romanian
 * FlowerOS
@@ -261,6 +300,7 @@
 
 #### Russian
 * Alexander Olkhovskiy (fcxSanya)
+* Anatoliy Nikolaev
 * burlachenko
 * cooland
 * Fedor Andreev (pro100fed)
@@ -275,6 +315,7 @@
 
 #### Swedish
 * Fringillus
+* Karar Al-remahy
 * knutas
 * Nagrim
 * pilen
@@ -288,11 +329,15 @@
 #### Ukrainian
 * Андрій Бандура (pasichna)
 
-#### Chinese
+#### Simplified Chinese
+* Li Yong
 * mkhael_foo
+* Marco Leong
 * nifabric
 * Zhang June (avalon3515)
 
+#### Traditional Chinese
+* Marco Leong
 
 
 ## Packagers ##
