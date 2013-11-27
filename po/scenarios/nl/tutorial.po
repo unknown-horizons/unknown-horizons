@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-10 11:05+0200\n"
+"POT-Creation-Date: 2013-11-14 23:41+0100\n"
 "PO-Revision-Date: 2013-11-26 14:51+0200\n"
 "Last-Translator: Michal Čihař <michal@cihar.com>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/tutorial/nl/>\n"
@@ -63,9 +63,9 @@ msgid ""
 "icon in the top-right corner (below the mini-map, with a sealed document and "
 "a feather)."
 msgstr ""
-"Nadat je dit logboek gesloten hebt, kan het heropend worden met het "
-"\"Logboek\"-icoon in de rechterbovenhoek van het scherm (onder de mini-kaart, "
-"het icoon met een verzegelde brief en veer)."
+"Nadat je dit logboek gesloten hebt, kan het heropend worden met het \"Logboek"
+"\"-icoon in de rechterbovenhoek van het scherm (onder de mini-kaart, het "
+"icoon met een verzegelde brief en veer)."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -146,12 +146,10 @@ msgstr ""
 "Klik op de plaats waar je het gebouw wilt plaatsen."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a warehouse at the coast."
-msgstr ""
-"\n"
-"OPDRACHT: Bouw een pakhuis bij de kust."
+#, fuzzy
+#| msgid "Build a warehouse at the coast."
+msgid "Task: Build a warehouse at the coast."
+msgstr "Plaats een kantoor aan de kust."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
@@ -249,9 +247,11 @@ msgstr ""
 "en een houthakkershut."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a lumberjack in a wooded area and connect it to a road."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a lumberjack in a wooded area and connect it to a road."
+msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
 "\n"
 "OPDRACHT: Bouw een houthakkershut in een gebied met bomen en verbindt het "
@@ -285,8 +285,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
 msgstr ""
-"Beschikbare bedrijven in het eerste beschavingsniveau zijn jagers en "
-"vissers."
+"Beschikbare bedrijven in het eerste beschavingsniveau zijn jagers en vissers."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
@@ -348,9 +347,11 @@ msgstr ""
 "nadelen."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a hunter and a fisher."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a hunter and a fisher."
+msgid "Task: Build a hunter and a fisher."
 msgstr ""
 "\n"
 "OPDRACHT: Bouw een jager en een visser."
@@ -408,9 +409,11 @@ msgstr ""
 "dus je hoeft geen pad te bouwen naar het plein of naar de houthakkershut."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a main square."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a main square."
+msgid "Task: Build a main square."
 msgstr ""
 "\n"
 "OPDRACHT: Bouw een marktplein."
@@ -505,9 +508,13 @@ msgstr ""
 "belasting, wat momenteel de enige manier is om aan geld te komen!"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a tent and connect it to the main square. Tents dont need to "
+#| "be connected to any of the companies."
 msgid ""
-"\n"
-"TASK: Build a tent and connect it to the main square. Tents dont need to be "
+"Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
 "\n"
@@ -562,9 +569,11 @@ msgid "Note that you can also change the global tax settings here, too."
 msgstr "Merk op dat u ook hier het algemene belastingniveau veranderen kunt."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build at least three additional tents."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build at least three additional tents."
+msgid "Task: Build at least three additional tents."
 msgstr ""
 "\n"
 "OPDRACHT: Bouw op zijn minst drie extra tenten."
@@ -673,12 +682,10 @@ msgstr ""
 "gedaan."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a signal fire at the coast close to your warehouse."
-msgstr ""
-"\n"
-"OPDRACHT: Plaats een signaalvuur bij de kust nabij het pakhuis."
+#, fuzzy
+#| msgid "Build a signal fire at the coast close to your warehouse."
+msgid "Task: Build a signal fire at the coast close to your warehouse."
+msgstr "Plaats een signaalvuur bij de kust nabij het pakhuis."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -783,9 +790,11 @@ msgstr ""
 "van 'Verkocht' en 'Gekocht' te vergelijken."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Buy as many tools as you need to have 30 tools in stock!"
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Buy as many tools as you need to have 30 tools in stock!"
+msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
 "\n"
 "OPDRACHT: Koop zo veel mogelijk gereedschap, zodat je er minimaal 30 op "
@@ -872,9 +881,13 @@ msgstr ""
 "Een wegverbinding is noodzakelijk."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
+#| "sailors' demand for faith."
 msgid ""
-"\n"
-"TASK: Build a pavilion with a trail to the tents in order to fulfill your "
+"Task: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
 "\n"
@@ -974,9 +987,12 @@ msgstr ""
 "uitgeven om deze mensen tevreden te houden."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgid ""
-"\n"
-"TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
+"Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
 "\n"
 "OPDRACHT: Zet het belastingniveau op laag (linkerzijde) en wacht tot de "
@@ -1075,9 +1091,11 @@ msgstr ""
 "bouwen, omdat je eromheen werkruimte nodig bent."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a farm."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a farm."
+msgid "Task: Build a farm."
 msgstr ""
 "\n"
 "OPDRACHT: Bouw een boerderij."
@@ -1169,9 +1187,13 @@ msgstr ""
 "velden gebouwd hebt. Laten we daar verandering in brengen!"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build at least one pasture in the farm's range and add potato "
+#| "fields if you like."
 msgid ""
-"\n"
-"TASK: Build at least one pasture in the farm's range and add potato fields "
+"Task: Build at least one pasture in the farm's range and add potato fields "
 "if you like."
 msgstr ""
 "\n"
@@ -1274,9 +1296,11 @@ msgstr ""
 "bieden."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a storage tent, preferably where you need collectors."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a storage tent, preferably where you need collectors."
+msgid "Task: Build a storage tent, preferably where you need collectors."
 msgstr ""
 "\n"
 "OPDRACHT: Bouw een opslag tent, op een plek waar je verzamelaars nodig hebt."
@@ -1323,9 +1347,11 @@ msgstr ""
 "wordt geproduceerd."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a weaver positioned so it can get wool."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a weaver positioned so it can get wool."
+msgid "Task: Build a weaver positioned so it can get wool."
 msgstr ""
 "\n"
 "OPDRACHT: Bouw een kleermaker die bij het wol kan komen."
@@ -1368,9 +1394,13 @@ msgstr ""
 "aanbevolen."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Reach a total number of 50 inhabitants and a positive balance to "
+#| "complete this tutorial."
 msgid ""
-"\n"
-"TASK: Reach a total number of 50 inhabitants and a positive balance to "
+"Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
 "\n"
@@ -1452,6 +1482,20 @@ msgstr ""
 "Bedankt voor het spelen van de Tutorial!\n"
 "\n"
 "Het UH-Team"
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a warehouse at the coast."
+#~ msgstr ""
+#~ "\n"
+#~ "OPDRACHT: Bouw een pakhuis bij de kust."
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a signal fire at the coast close to your warehouse."
+#~ msgstr ""
+#~ "\n"
+#~ "OPDRACHT: Plaats een signaalvuur bij de kust nabij het pakhuis."
 
 #~ msgid "The UH team"
 #~ msgstr "Het UH team"
@@ -2086,9 +2130,6 @@ msgstr ""
 #~ "Bedankt voor het spelen van de Tutorial!\n"
 #~ "\n"
 #~ "Het UH-Team"
-
-#~ msgid "Build a warehouse at the coast."
-#~ msgstr "Plaats een kantoor aan de kust."
 
 #~ msgid ""
 #~ "Can you see the ship passing your island from time to time?\n"
