@@ -582,6 +582,9 @@ class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, [key])[0]
 
+	def get_english(self, key):
+		return self.get(key, [key])[1]
+
 	def get_by_value(self, value, english=False):
 		for code, (own, eng) in self.iteritems():
 			if english and eng == value:
