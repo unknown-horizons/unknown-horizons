@@ -24,6 +24,7 @@ import ctypes
 import os
 import os.path
 import platform
+import subprocess
 
 from horizons.ext.enum import Enum
 from horizons.ext.typing import Optional
@@ -41,6 +42,24 @@ def get_git_version():
 	try:
 		from run_uh import get_content_dir_parent_path
 		uh_path = get_content_dir_parent_path()
+	except ImportError:
+		return u"<unknown>"
+
+	# Try git describe
+	try:
+		git = "git"
+		if platform.system() == "Windows":
+			git = "git.exe"
+
+		# Note that this uses glob patterns, not regular expressions.
+		TAG_STRUCTURE = "20[0-9][0-9].[0-9]*"
+		describe = [git, "describe", "--tags", "--match", TAG_STRUCTURE]
+		return subprocess.check_output(describe, cwd=uh_path)
+	except (subprocess.CalledProcessError, RuntimeError):
+		pass
+
+	# Read current HEAD out of .git manually
+	try:
 		git_head_path = os.path.join(uh_path, '.git', 'HEAD')
 		if os.path.exists(git_head_path):
 			head = open(git_head_path).readline().strip().partition(' ')
@@ -50,14 +69,17 @@ def get_git_version():
 				head_file = git_head_path
 			if os.path.exists(head_file):
 				return unicode(open(head_file).readline().strip()[0:7])
-	#if there is no .git directory then check for gitversion.txt
 	except ImportError:
-		try:
-			return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
-		except IOError:
-			return u"<unknown>"
+		pass
+
+	# Try gitversion.txt
+	try:
+		return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
+	except IOError:
+		pass
 
 	return u"<unknown>"
+
 
 ##Versioning
 class VERSION:
