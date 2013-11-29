@@ -68,6 +68,8 @@ class TradeRoute(ChangeListener):
 		self.wait_at_unload = flag # as methods for commands
 
 	def move_waypoint(self, position, direction):
+		# Error sounds for invalid move actions are triggered in
+		# gui.widgets.routeconfig, not here.
 		was_enabled = self.enabled
 		if was_enabled:
 			self.disable()

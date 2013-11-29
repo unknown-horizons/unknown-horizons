@@ -51,7 +51,9 @@ def toggle_health_for_all_health_instances(world):
 				world.session.view.add_change_listener(instance.draw_health)
 	else:
 		for instance in world.get_health_instances():
-			if world.session.view.has_change_listener(instance.draw_health) and not instance.get_component(SelectableComponent).selected:
+			if not world.session.view.has_change_listener(instance.draw_health):
+				continue
+			if not instance.get_component(SelectableComponent).selected:
 				instance.draw_health(remove_only=True)
 				world.session.view.remove_change_listener(instance.draw_health)
 
@@ -140,7 +142,7 @@ def add_resource_deposits(world, resource_multiplier):
 		return locations
 
 	def place_objects(locations, max_objects, object_class):
-		"""Place at most max_objects objects of the given class."""
+		"""Place at most *max_objects* objects of the given class."""
 		if not locations:
 			return
 

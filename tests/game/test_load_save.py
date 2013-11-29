@@ -89,6 +89,7 @@ def create_lumberjack_production_session():
 	session = saveload(session)
 	return session
 
+
 @game_test(manual_session=True)
 def test_load_producing_production_fast():
 	"""Create a saved game with a producing production, load it, and try to save again very fast."""
@@ -101,6 +102,7 @@ def test_load_producing_production_fast():
 	assert session.save(savegamename=filename2)
 	session.end()
 
+
 @game_test(manual_session=True)
 def test_load_producing_production_slow():
 	"""Create a saved game with a producing production, load it, and try to save again in a few seconds."""
@@ -112,6 +114,7 @@ def test_load_producing_production_slow():
 	os.close(fd2)
 	assert session.save(savegamename=filename2)
 	session.end()
+
 
 @game_test(manual_session=True)
 def test_hunter_save_load():
