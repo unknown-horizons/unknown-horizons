@@ -160,7 +160,7 @@ def write_translated_yaml(fileish, where, metadata, generator):
 				widget = event[0]
 				if widget in ('Gallery', 'Image', 'Pagebreak'):
 					pass
-				if widget in ('Headline', 'Label', 'Message'):
+				if widget in ('Headline', 'Label', 'BoldLabel', 'Message'):
 					event = [widget] + map(translate, event[1:])
 
 			all_events.append(event)
