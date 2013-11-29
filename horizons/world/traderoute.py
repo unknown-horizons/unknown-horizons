@@ -80,7 +80,7 @@ class TradeRoute(ChangeListener):
 		elif direction == 'down':
 			new_pos = position + 1
 		else:
-			return
+			assert False, 'Direction is neither "up" nor "down".'
 
 		self.waypoints.insert(new_pos, self.waypoints.pop(position))
 
