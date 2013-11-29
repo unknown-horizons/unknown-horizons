@@ -45,12 +45,12 @@ def toggle_health_for_all_health_instances(world):
 	"""Show health bar of every instance with an health component, which isnt selected already"""
 	world.health_visible_for_all_health_instances = not world.health_visible_for_all_health_instances
 	if world.health_visible_for_all_health_instances:
-		for instance in world.session.world.get_health_instances():
+		for instance in world.get_health_instances():
 			if not instance.get_component(SelectableComponent).selected:
 				instance.draw_health()
 				world.session.view.add_change_listener(instance.draw_health)
 	else:
-		for instance in world.session.world.get_health_instances():
+		for instance in world.get_health_instances():
 			if world.session.view.has_change_listener(instance.draw_health) and not instance.get_component(SelectableComponent).selected:
 				instance.draw_health(remove_only=True)
 				world.session.view.remove_change_listener(instance.draw_health)
