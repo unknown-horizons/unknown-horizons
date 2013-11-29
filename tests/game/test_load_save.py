@@ -55,15 +55,9 @@ def test_load_inactive_production():
 
 	session.run(seconds=1)
 
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
+	# Save and reload game
+	session = saveload(session)
 
-	assert session.save(savegamename=filename)
-
-	session.end(keep_map=True)
-
-	# Load game
-	session = load_session(filename)
 	loadedlj = WorldObject.get_object_by_id(worldid)
 
 	# Make sure it really is not active
@@ -91,13 +85,8 @@ def create_lumberjack_production_session():
 			break
 		session.run(ticks=1)
 
-	fd1, filename1 = tempfile.mkstemp()
-	os.close(fd1)
-	assert session.save(savegamename=filename1)
-	session.end(keep_map=True)
-
-	# load the game
-	session = load_session(filename1)
+	# Save and reload game
+	session = saveload(session)
 	return session
 
 @game_test(manual_session=True)

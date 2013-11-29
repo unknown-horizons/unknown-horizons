@@ -19,9 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import tempfile
-import os
-
 from nose.plugins.skip import SkipTest
 
 from horizons.util.color import Color
@@ -34,7 +31,7 @@ from horizons.world.player import Player
 from horizons.constants import UNITS, WEAPONS
 from horizons.component.healthcomponent import HealthComponent
 
-from tests.game import game_test, new_session, load_session
+from tests.game import game_test, new_session, saveload
 
 
 def setup_combat(s, ship):
@@ -252,11 +249,7 @@ def test_combat_save_load():
 	session.run(seconds=1)
 
 	# saveload
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-	assert session.save(savegamename=filename)
-	session.end(keep_map=True)
-	session = load_session(filename)
+	session = saveload(session)
 
 	s0 = WorldObject.get_object_by_id(s0_worldid)
 	s1 = WorldObject.get_object_by_id(s1_worldid)
@@ -271,11 +264,7 @@ def test_combat_save_load():
 	session.run(seconds=20)
 
 	# saveload
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-	assert session.save(savegamename=filename)
-	session.end(keep_map=True)
-	session = load_session(filename)
+	session = saveload(session)
 
 	assert one_dead(s0_worldid, s1_worldid)
 
