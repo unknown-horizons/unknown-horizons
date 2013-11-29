@@ -23,6 +23,7 @@ from horizons.component import Component
 from horizons.util.shapes import Annulus, Circle
 from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
+from horizons.world.units.movingobject import MoveNotPossible
 
 class StanceComponent(Component):
 	"""
@@ -188,7 +189,6 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		if not Circle(self.return_position, self.move_range).contains(self.instance.position.center) or \
 			not self.instance.is_attacking():
-			from horizons.world.units.movingobject import MoveNotPossible
 			try:
 				self.instance.move(self.return_position)
 			except MoveNotPossible:
@@ -270,7 +270,6 @@ class FleeStance(StanceComponent):
 		"""
 		unit = self.get_approaching_unit()
 		if unit:
-			from horizons.world.units.movingobject import MoveNotPossible
 			try:
 				distance = unit._max_range + self.lookout_distance
 				self.instance.move(Annulus(unit.position.center, distance, distance + 2))
