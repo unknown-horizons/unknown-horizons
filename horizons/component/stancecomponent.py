@@ -296,7 +296,8 @@ class FleeStance(StanceComponent):
 		if not enemies:
 			return None
 
-		return min(enemies, key = lambda e: self.instance.position.distance(e.position) + e._max_range)
+		sort_order = lambda e: self.instance.position.distance(e.position) + e._max_range
+		return min(enemies, key=sort_order)
 
 
 DEFAULT_STANCES = [ HoldGroundStance, AggressiveStance, NoneStance, FleeStance ]
