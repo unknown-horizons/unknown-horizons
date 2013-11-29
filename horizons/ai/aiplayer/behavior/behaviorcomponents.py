@@ -18,8 +18,9 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from collections import defaultdict
+
 import logging
+from collections import defaultdict
 
 from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
