@@ -4,14 +4,14 @@ name:
   TIER.PIONEERS: _ Storage Hut
 baseclass: storages.StorageTent
 radius: 17
-cost: 0
+cost: 10
 cost_inactive: 0
 size_x: 2
 size_y: 2
 inhabitants: 1
 tooltip_text: _ Extends stock, expands settlement range and provides collectors.
 tier: TIER.SAILORS
-buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4}
+buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4, RES.TOOLS: 1}
 components:
 - SelectableComponent:
     type: building
