@@ -1,7 +1,7 @@
 id: BUILDINGS.STORAGE
 name:
-  0: _ Storage Tent
-  1: _ Storage Hut
+  TIER.SAILORS: _ Storage Tent
+  TIER.PIONEERS: _ Storage Hut
 baseclass: storages.StorageTent
 radius: 17
 cost: 0
