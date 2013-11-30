@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-11-25 18:02+0200\n"
+"PO-Revision-Date: 2013-11-30 11:49+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -861,7 +861,7 @@ msgstr "Laad een betaande map"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "Laad opgeslagen kaart"
+msgstr "Opgeslagen kaart laden"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -909,7 +909,7 @@ msgstr "Speelsnelheid verlagen"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
-msgstr "Pauseer spel"
+msgstr "Spel pauzeren"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Show build menu"
@@ -1023,7 +1023,7 @@ msgstr "Spel laden"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
-msgstr "Verlaat spel"
+msgstr "Spel verlaten"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
@@ -1037,7 +1037,7 @@ msgstr "Achtergrond veranderen"
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
-msgstr "Enkelspel"
+msgstr "Singleplayer"
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
@@ -1068,7 +1068,7 @@ msgstr "Spelerslimiet:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr "Verlaten naar multiplayer menu"
+msgstr "Terugkeren naar multiplayer menu"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
@@ -1084,7 +1084,7 @@ msgstr ""
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr "Onbenoemd spel"
+msgstr "Naamloos spel"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1097,7 +1097,7 @@ msgstr "Wachtwoord van dit spel, nodig om dit spel te kunnen spelen."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
-msgstr "Maak dit nieuwe spel"
+msgstr "Nieuw spel starten"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
@@ -1161,7 +1161,7 @@ msgstr "Maak spel:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Create a new game"
-msgstr "Maak een nieuw spel"
+msgstr "Nieuw spel starten"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
 #| msgid "Join game"
@@ -1203,7 +1203,7 @@ msgstr "Maximum aantal beelden per seconden:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr "Stel het maximaal behaalde beelden in. Standaard: 60 fps."
+msgstr "Maximaal aantal beelden per seconde. Standaard: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
@@ -1298,7 +1298,7 @@ msgstr "Mini-kaart meedraaien met de kaart"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
-msgstr "Onverstoord gebouw:"
+msgstr "Blijven bouwen:"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "When enabled, do not exit the build mode after successful construction"
@@ -1307,7 +1307,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Auto-unload ship:"
-msgstr "Schip automatisch uitladen:"
+msgstr "Schip automatisch lossen:"
 
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Whether to unload the ship after founding a settlement"
@@ -1333,8 +1333,8 @@ msgstr "Productieoverzicht:"
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
-"Icoon van de geproduceerd waren na productie boven het desbetreffende gebouw "
-"laten zien"
+"Instellen of het icoon van de geproduceerde waren na productie boven het "
+"desbetreffende gebouw zichtbaar wordt"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
@@ -1383,7 +1383,7 @@ msgstr "Uw opgeslagen spellen:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr "Wachtwoord van het spel. Verijst om mee te spelen aan het spel"
+msgstr "Wachtwoord van het spel. Verplicht om mee te kunnen spelen"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Cancel"
@@ -1400,7 +1400,7 @@ msgstr "Details:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
 msgid "Delete selected savegame"
-msgstr "Verwijder geselecteerde opgeslagen spel"
+msgstr "Verwijder geselecteerde opgeslagen spel(len)"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
@@ -1542,7 +1542,7 @@ msgstr "Uw spel is niet opgeslagen."
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
-"Wanneer de fout nogmaals toont, neem a.u.b. contact op met het "
+"Wanneer de fout nogmaals voorkomt, neem a.u.b. contact op met het "
 "ontwikkelingsteam: {website}"
 
 # geen hoofdletters bij u tenzij u god aanspreekt.
@@ -2236,8 +2236,8 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
-"Zal {resource_name} verkopen voor {price} goudstukken/t zolang er meer zijn "
-"dan {limit}t op voorraad."
+"Er wordt {resource_name} verkocht voor {price} goudstukken/t zolang er meer "
+"dan {limit}t op voorraad zijn."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
@@ -2292,7 +2292,7 @@ msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
-msgstr "U heeft reeds een nederzetting op dit eiland."
+msgstr "U heeft al een nederzetting op dit eiland."
 
 #: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
@@ -2417,7 +2417,7 @@ msgstr "Uitgaven"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr "Verkopen"
+msgstr "Inkomsten"
 
 #: horizons/gui/widgets/routeconfig.py:107
 msgid "Stop route"
@@ -2446,7 +2446,7 @@ msgstr "Lading lossen"
 
 #: horizons/gui/widgets/routeconfig.py:376
 msgid "You are not allowed to trade with this player"
-msgstr "Je bent niet bevoegd om handel te drijven met deze speler"
+msgstr "U bent niet bevoegd om handel te drijven met deze speler"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:118
@@ -2486,7 +2486,7 @@ msgstr "Barakken"
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:65
 msgid "Recruits units suitable for ground combat."
-msgstr "Rekruteerd eenheden geschikt voor grondgevechten."
+msgstr "Recruteerd eenheden geschikt voor grondgevechten."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
@@ -2526,7 +2526,7 @@ msgstr "Slagerij"
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Varkens of vee benodigd. Produceert voedsel."
+msgstr "Heeft varkens of vee nodig. Produceert voedsel."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:98
@@ -2594,18 +2594,18 @@ msgstr "Bijenkorven"
 #: horizons/i18n/objecttranslations.py:140
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
-"Houd bijen. Produceert honing voor een confectiebakkerij. Maakt gebruik van "
-"een boerderij."
+"Houd bijen. Produceert honing voor een banketbakkerij. Maakt gebruik van een "
+"boerderij."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
 msgid "Cattle Run"
-msgstr "Weiland voor rundvee"
+msgstr "Weiland voor runderen"
 
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:147
 msgid "Raises cattle. Needs a farm."
-msgstr "Brengt rundvee groot. Vereist een boerderij."
+msgstr "Brengt runderen groot. Vereist een boerderij."
 
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:152
@@ -2615,8 +2615,7 @@ msgstr "Cacaoveld"
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:154
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
-"Produceert cacao bonen voor de confectiebakkerij. Vereist een boerderij."
+msgstr "Produceert cacao bonen voor de banketbakkerij. Vereist een boerderij."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:159
@@ -2753,7 +2752,7 @@ msgstr "Uitkijkpost"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
 msgid "Increases the player's sight."
-msgstr "Vergroot de speler zijn zicht."
+msgstr "Vergroot het zicht van de speler."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -3041,7 +3040,7 @@ msgstr "Houten toren"
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:439
 msgid "Defends your settlement."
-msgstr "Verdedigd je nederzetting."
+msgstr "Verdedigt je nederzetting."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3183,7 +3182,7 @@ msgstr "U dient snel op te slaan voor u kunt snelladen."
 
 #: horizons/main.py:605
 msgid "Logging enabled"
-msgstr "Logging ingeschakeld"
+msgstr "Loggen ingeschakeld"
 
 #: horizons/main.py:606
 #, python-brace-format
@@ -3245,7 +3244,7 @@ msgstr "U heeft het scenario voltooid."
 
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
-msgstr "Wil je doorspelen?"
+msgstr "Wilt u doorspelen?"
 
 #: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
@@ -3291,8 +3290,8 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
-"Er is een nieuwere versie ({new_version}) van Unknown Horizons dan diegene "
-"die je nu gebruikt ({old_version})."
+"Er is een nieuwere versie ({new_version}) van Unknown Horizons beschikbaar "
+"dan degene die je nu gebruikt ({old_version})."
 
 #: horizons/util/checkupdates.py:98
 msgid "Click to download"
@@ -3349,7 +3348,7 @@ msgstr "Dit gebouw dient op de kustlijn geplaatst te worden."
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr "Dit gebouw dient op de kustlijn geplaatst te worden."
+msgstr "Dit gebouw dient aan de kust geplaatst te worden."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
@@ -3887,8 +3886,8 @@ msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr ""
-"{player1} en {player2} vormen geen alliantie meer en zijn nu in staat van "
-"oorlog."
+"{player1} en {player2} hebben hun bondgenootschap beëindigd en zijn nu in "
+"staat van oorlog."
 
 #. This is a database entry: the name of a resource
 msgid "textile"
