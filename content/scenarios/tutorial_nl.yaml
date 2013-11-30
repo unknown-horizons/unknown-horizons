@@ -55,7 +55,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Klik op de plaats waar je het gebouw wilt plaatsen.'
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Opdracht: Plaats een kantoor aan de kust.']
 
 - &LUMBERJACK
   - [Message, Plaats een houthakkershut en verbind deze met het pakhuis door middel van een pad.]
@@ -79,7 +79,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Een bedrijf moet altijd verbonden worden door middel van een pad naar een pakhuis of opslagtent, anders worden de materialen niet verzameld.
   - Dit betekend dat je een pad moet aanleggen tussen pakhuis (of opslaggebouw) en een houthakkershut.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
+  - [BoldLabel, 'Opdracht: Bouw een houthakkershut in een gebied met bomen en verbindt het met een pad.']
   - Kijk hoe een verzamelaar jouw eerste zelf geproduceerde planken verzameld. Maak je geen zorgen over het zoeken van arbeiders, dit gebeurt automatisch.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -102,7 +102,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dit is een zeer stabiele aanvoer voor voedsel, maar met een wat langere productietijd.
   - Een zeer kleine nederzetting zoals die van jouw kan gebruik maken van beide bedrijven, zo kun je een betere vergelijking maken tussen de voor- en nadelen.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
+  - [BoldLabel, 'Opdracht: Bouw een jager en een visser.']
   - Vergeet niet om deze te verbinden met het pakhuis door middel van een pad!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -119,7 +119,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Probeer te vermeiden om je woontenten te dicht bij een houthakker te plaatsen, omdat je dan bomen moet kappen die een houthakker nodig heeft.
   - Bedrijven werken ook zonder deze te verbinden met een pad naar de tenten, dus je hoeft geen pad te bouwen naar het plein of naar de houthakkershut.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Opdracht: Bouw een marktplein.']
   - [Pagebreak]
   - '
 
@@ -145,7 +145,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Overweeg om deze verbetering te verbieden als je te weinig van dit materiaal op voorraad hebt.
   - Bewoners lijken op het eerste oog niet erg nuttig, omdat ze alle goederen die u produceert proberen te consumeren. Maar ze betalen in ieder geval belasting, wat momenteel de enige manier is om aan geld te komen!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Opdracht: Bouw een tent en verbindt deze met het marktplein. Tenten hoeven niet verbonden te worden naar een bedrijf.']
 
 - &MORETENTS
   - [Message, Plaats tenminste drie extra tenten en verbindt deze met het marktplein.]
@@ -163,7 +163,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Zo niet, dan zullen de tevredenheid en de belastinginkomen dalen. Op een gegeven moment zullen jouw inwoners het zat zijn en hun koffers pakken, waarbij ze een onbewoonbare ruïne achterlaten.
   - Merk op dat u ook hier het algemene belastingniveau veranderen kunt.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Opdracht: Bouw op zijn minst drie extra tenten.']
   - '
 
     TIP: Met een ingedrukte SHIFT-toets wordt het makkelijker om meerdere gebouwen van het zelfde soort te bouwen.'
@@ -191,7 +191,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Klik op het icoontje in het handelsvak om van de modus 'Koop' naar 'Verkoop' en omgekeerd te wisselen.
   - Klik op het vak om het handelswaar te kiezen dat je wilt verhandelen. We zullen verder gaan met de uitleg, zodra een aantal voorbereidingen zijn gedaan.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Opdracht: Plaats een signaalvuur bij de kust nabij het pakhuis.']
 
 - &TRADING
   - [Message, 'Bereik op dit eiland een voorraad van tenminste 30 stuks gereedschap. Let op, dit kan een tijdje duren.']
@@ -218,7 +218,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Het is NIET mogelijk om deze prijzen handmatig te veranderen!'
   - U kunt de handelsbalans opmaken door in het 'Financiën' tabblad de waarden van 'Verkocht' en 'Gekocht' te vergelijken.
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Opdracht: Koop zo veel mogelijk gereedschap, zodat je er minimaal 30 op voorraad hebt!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -243,7 +243,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Een wegverbinding is noodzakelijk.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Opdracht: Bouw een paviljoen met een pad naar de tenten om aan de vraag van de zeelieden te voldoen.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -264,7 +264,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Verbeterde woningen bieden plaats aan meer inwoners, daarnaast betalen pioniers meer belasting als zeelui.
   - Zoals je misschien al hebt ondervonden, het nadeel is dat pioniers meer goederen eisen, die de zeelui niet nodig waren. Hierdoor moet je meer geld uitgeven om deze mensen tevreden te houden.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Opdracht: Zet het belastingniveau op laag (linkerzijde) en wacht tot de zeelui hun woningen verbeteren.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -289,7 +289,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Echter, als je de verwerking wil laten plaatsnemen op andere delen van het eiland (wat zinvol kan zijn) of zelfs op een ander eiland, dan moeten de verzamelaars bij de boerderij kunnen komen, waarvoor een wegverbinding noodzakelijk is.
   - Probeer een boerderij niet te dicht bij de kust of bestaande gebouwen te bouwen, omdat je eromheen werkruimte nodig bent.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Opdracht: Bouw een boerderij.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -316,7 +316,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - De hoeveelheid tijd die het bewerken van een veld benodigd (voor zaaien, oogsten, vee hoeden, enzovoort) verschilt per soort veld, waardoor het zo kan zijn dat de boerderij niet alle velden die je er om heen hebt gebouwd ook kan verzorgen.
   - Momenteel hoef jij je daar geen zorgen over te maken, omdat je nog niet veel velden gebouwd hebt. Laten we daar verandering in brengen!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Opdracht: Bouw op zijn minst één weiland binnen het bereik van de boerderij en voeg als je dat wilt ook een aardappelveld toe.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -346,7 +346,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * stuurt verzamelaars op pad om goederen te collecteren, net als het pakhuis.'
   - Merk op dat bedrijven ook met een opslaggebouw verbonden kunnen worden om hun goederen te laten afhalen. Wanneer het pakhuis de aanvoer van goederen niet meer kan bijbenen, dan kan het bijplaatsen van een opslagtent uitkomst bieden.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Opdracht: Bouw een opslag tent, op een plek waar je verzamelaars nodig hebt.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -359,7 +359,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In deze twee gevallen moet je er zeker van zijn dat er een verbinding is.
   - Als je een weverij dicht bij een boerderij bouwt en alle paden er na toe afbreekt, dan zul je zien dat er nog steeds wol wordt afgehaald en stof wordt geproduceerd.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Opdracht: Bouw een kleermaker die bij het wol kan komen.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -371,7 +371,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Zodra je in staat bent de economie draaiende te houden met dit aantal verbruikers, ben je klaar om nieuwe onbekende horizonnen te ontdekken!
   - Je hebt ook genoeg geld nodig om de economie draaiende te houden, een positief balans (controleer in het pakhuis het tabblad 'Financiën') is aanbevolen.
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Opdracht: Bereik een totaal aantal inwoners van 50 en een positief balans om deze opdracht te voltooien.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
