@@ -13,7 +13,7 @@ buildingcosts: {RES.GOLD: 50, RES.BOARDS: 2}
 components:
 - SelectableComponent:
     type: building
-    tabs: [OverviewTab]
+    tabs: [GenericOverviewTab, ]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 actionsets:
