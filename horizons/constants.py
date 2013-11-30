@@ -289,8 +289,8 @@ class RES:
 	# 91-99 reserved for services
 	REPRESENTATION   = GOLD # 92
 	SOCIETY          = GOLD # 93
-	FAITH            = GOLD # 94
-	EDUCATION        = GOLD # 95
+	FAITH_2          = GOLD # 94
+	EDUCATION_2      = GOLD # 95
 	HYGIENE          = GOLD # 96
 	RECREATION       = GOLD # 97
 	BLACKDEATH       = 98
