@@ -9,7 +9,7 @@ cost_inactive: 0
 size_x: 2
 size_y: 2
 inhabitants: 1
-tooltip_text: _ Extends stock and provides collectors.
+tooltip_text: _ Extends stock, expands settlement range and provides collectors.
 tier: TIER.SAILORS
 buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4}
 components:

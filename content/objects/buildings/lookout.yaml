@@ -1,13 +1,13 @@
 id: BUILDINGS.LOOKOUT
 name: _ Lookout
 baseclass: building.DefaultBuilding
-radius: 24
+radius: 12
 cost: 0
 cost_inactive: 0
 size_x: 1
 size_y: 1
 inhabitants: 1
-tooltip_text: _ Increases the player's sight.
+tooltip_text: _ Expands settlement range.
 tier: TIER.SAILORS
 buildingcosts: {RES.GOLD: 50, RES.BOARDS: 2}
 components:

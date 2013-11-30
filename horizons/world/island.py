@@ -297,7 +297,12 @@ class Island(BuildingOwner, WorldObject):
 			self.available_land_cache.remove_area(list(building.position.tuple_iter()))
 		super(Island, self).add_building(building, player, load=load)
 		if not load and building.settlement is not None:
-			self.assign_settlement(building.position, building.radius, building.settlement)
+			# Note: (In case we do not require all building tiles to lay inside settlement
+			# range at some point.) `include_self` is True in get_radius_coordinates()
+			# called from here, so the building area itself *is* expanded by even with
+			# radius=0! Right now this has no effect (above buildability requirements).
+			radius = 0 if building.id not in BUILDINGS.EXPAND_RANGE else building.radius
+			self.assign_settlement(building.position, radius, building.settlement)
 
 		if building.settlement is not None:
 			building.settlement.add_building(building, load)
