@@ -23,7 +23,7 @@ import sys
 
 from inventorytab import InventoryTab
 from tradetab import TradeTab
-from overviewtab import OverviewTab, GroundUnitOverviewTab, FireStationOverviewTab
+from overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
 						TowerOverviewTab
 from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
