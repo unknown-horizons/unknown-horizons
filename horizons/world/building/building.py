@@ -65,12 +65,12 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.island = island
 
 		settlements = self.island.get_settlements(self.position, owner)
+		self.settlement = None
 		if settlements:
 			self.settlement = settlements[0]
-		else:
+		elif owner:
 			# create one if we have an owner
-			self.settlement = self.island.add_settlement(self.position, self.radius, owner) if \
-			    owner is not None else None
+			self.settlement = self.island.add_settlement(self.position, self.radius, owner)
 
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
