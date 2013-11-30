@@ -200,7 +200,7 @@ class Island(BuildingOwner, WorldObject):
 			if tup in self.ground_map:
 				yield self.ground_map[tup]
 
-	def add_settlement(self, position, radius, player, load=False):
+	def add_settlement(self, position, radius, player):
 		"""Adds a settlement to the island at the position x, y with radius as area of influence.
 		@param position: Rect describing the position of the new warehouse
 		@param radius: int radius of the area of influence.
@@ -208,12 +208,12 @@ class Island(BuildingOwner, WorldObject):
 		settlement = Settlement(self.session, player)
 		settlement.initialize()
 		settlement.init_buildability_cache(self.terrain_cache)
-		self.add_existing_settlement(position, radius, settlement, load)
+		self.add_existing_settlement(position, radius, settlement)
 		NewSettlement.broadcast(self, settlement, position.center)
 
 		return settlement
 
-	def add_existing_settlement(self, position, radius, settlement, load=False):
+	def add_existing_settlement(self, position, radius, settlement):
 		"""Same as add_settlement, but uses settlement from parameter.
 		May also be called for extension of an existing settlement by a new building (this
 		is useful for loading, where every loaded building extends the radius of its settlement).
@@ -221,8 +221,7 @@ class Island(BuildingOwner, WorldObject):
 		@param load: whether it has been called during load"""
 		if settlement not in self.settlements:
 			self.settlements.append(settlement)
-		if not load:
-			self.assign_settlement(position, radius, settlement)
+		self.assign_settlement(position, radius, settlement)
 		self.session.scenario_eventhandler.check_events(CONDITIONS.settlements_num_greater)
 		return settlement
 
