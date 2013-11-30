@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-11-30 11:49+0200\n"
+"PO-Revision-Date: 2013-11-30 11:55+0200\n"
 "Last-Translator: Joenit S <joenit@hotmail.nl>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -35,8 +35,8 @@ msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Stuur het ons via IRC of via ons forum, voor meer informatie zie http://"
-"unknown-horizons.org ."
+"Stuur het ons via IRC of via ons forum, voor meer informatie zie http"
+"://unknown-horizons.org."
 
 # libraries behouden maakt het zoeken naar een oplossing via google makkelijker ;)
 # Anders veranderen naar '(code-)bibliotheken'
@@ -101,7 +101,7 @@ msgstr "Verlaat editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "Selecteer kwastgrote:"
+msgstr "Selecteer kwastgrootte:"
 
 #: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
@@ -206,7 +206,7 @@ msgstr "Spelmenu ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
-msgstr "Verander naam"
+msgstr "Naam veranderen"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
@@ -267,7 +267,7 @@ msgstr "Pauseer"
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr "Hervat"
+msgstr "Hervatten"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
@@ -356,12 +356,12 @@ msgstr "Toegestane verbeteringen:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr "Bewoners per huis"
+msgstr "Tevredenheid per huis"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
 msgid "sad"
-msgstr "triest"
+msgstr "ontevreden"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
@@ -657,7 +657,7 @@ msgstr "Iedereen"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "Zend het chatbericht naar alle spelers."
+msgstr "Stuur het bericht naar alle spelers."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -717,8 +717,7 @@ msgstr "Geld"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
-"Huidige schatkist van de speler + verwacht inkomen in de nabije toekomst"
+msgstr "Huidige reserve van de speler + binnenkort verwachte inkomsten"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -832,11 +831,11 @@ msgstr "Vluchten"
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
-msgstr "Verlaat naar hoofdmenu"
+msgstr "Terugkeren naar het hoofdmenu"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr "Kies de grote van de kaart:"
+msgstr "Kies de grootte van de kaart:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
@@ -853,11 +852,11 @@ msgstr "Kaartbron selecteren"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr "Nieuwe kaart creëren"
+msgstr "Nieuwe kaart maken"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr "Laad een betaande map"
+msgstr "Bestaande map laden"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
