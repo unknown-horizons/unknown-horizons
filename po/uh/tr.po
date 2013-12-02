@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-08-27 02:55+0200\n"
-"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
+"PO-Revision-Date: 2013-12-02 15:56+0200\n"
+"Last-Translator: Ersan Doru Doru <ersandoru@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.7-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -140,25 +140,25 @@ msgid "Inhabitants"
 msgstr "Halk"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
 msgstr "Oyun hızını arttır (+)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
 msgstr "Oyun hızını azalt (-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
 msgstr "Haritayı saat yönünün tersine döndür (,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
 msgstr "Haritayı saat yönünde döndür (.)"
@@ -172,19 +172,19 @@ msgid "Zoom out"
 msgstr "Uzaklaştır"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
 msgstr "İmha et (X)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
 msgstr "Kaptanın günlüğü (L)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
 msgstr "İnşa menüsü (B)"
@@ -194,7 +194,7 @@ msgid "Diplomacy"
 msgstr "Diplomasi"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
 msgstr "Oyun menüsü (Esc)"
@@ -1154,10 +1154,9 @@ msgid "Create a new game"
 msgstr "Yeni bir oyun oluştur"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Oyuna katıl"
+msgstr "Oyuna katıl:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1364,10 +1363,9 @@ msgid "Reset to default settings"
 msgstr "Öntanımlı ayarlara geri dön"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Oyunu kaydet"
+msgstr "Değişikleri kaydet"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1810,16 +1808,14 @@ msgid "Ready"
 msgstr "Hazır"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#, fuzzy
 #| msgid "Not Ready"
 msgid "Not ready"
-msgstr "Hazır Değil"
+msgstr "Hazır değil"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Mesajınızı girin:"
+msgstr "Mesajınızı girin"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -1995,7 +1991,7 @@ msgstr "Oyun"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Pasif"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2757,10 +2753,9 @@ msgstr "Ürünleri halka ulaştırır. \"Topluluk\" sağlar."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Demir Madeni"
+msgstr "Maden"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
@@ -3348,10 +3343,9 @@ msgid "These residents are unhappy."
 msgstr "Bu sakinler mutsuz."
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Yerlilerden bazılarının ana meydana ulaşamıyor."
+msgstr "Bu yerlilerden ana meydana ulaşamıyor."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3411,7 +3405,7 @@ msgstr "{owner} saldırıyor"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "çivit"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3424,7 +3418,7 @@ msgstr "Binanda yangın çıktı!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "tuzlu su"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
@@ -3432,7 +3426,7 @@ msgstr "tıbbi otlar"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
-msgstr "Ariktokratlar"
+msgstr "Aristokratlar"
 
 #. This is a database entry: the name of a resource
 msgid "happiness"
@@ -3440,23 +3434,21 @@ msgstr "mutluluk"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "mücevherler"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "demir yatağı"
+msgstr "brine yatağı"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr "Bazı yerliler şehirden ayrıldı."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "stone deposit"
 msgid "gem deposit"
-msgstr "taş yatağı"
+msgstr "değerli taş yatağı"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3471,24 +3463,22 @@ msgid "stone tops"
 msgstr "taş kapaklar"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "kakao taneleri"
+msgstr "kahve taneleri"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "yün"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "tütün yaprağı"
+msgstr "çay yaprağı"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "kahve"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
@@ -3507,20 +3497,18 @@ msgid "pigs for slaughter"
 msgstr "kasaplık domuz"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Precaution"
 msgid "recreation"
-msgstr "Önlem"
+msgstr "rekreasyon"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
 msgstr "ağaçlar"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "kil yatağı"
+msgstr "mermer yatağı"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3541,7 +3529,7 @@ msgstr "kakao"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "mermer üstleri"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
@@ -3553,13 +3541,12 @@ msgstr "demir cevheri"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "parfüm"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
-msgstr "tütün bitkisi"
+msgstr "pamuk bitkisi"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
@@ -3570,16 +3557,14 @@ msgid "Merchants"
 msgstr "Tüccarlar"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "hop plants"
-msgstr "baharatlık bitkiler"
+msgstr "şerbetçiotu bitkileri"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Sea"
 msgid "tea"
-msgstr "Deniz"
+msgstr "çay"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
@@ -3590,10 +3575,9 @@ msgid "iron ingots"
 msgstr "demir külçesi"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
-msgstr "kil yatağı"
+msgstr "kömür yatağı"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3642,7 +3626,7 @@ msgstr "mısır"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "çiçek bahçesi"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
@@ -3655,7 +3639,7 @@ msgstr "Halkınız {level} seviyesine ulaştı."
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "esmeramber"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
@@ -3675,10 +3659,9 @@ msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} ve {player2} ölümüne savaşa başladılar."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Workshops"
 msgid "hops"
-msgstr "Çalışma alanları"
+msgstr "şerbetçiotu"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -3693,20 +3676,18 @@ msgid "dagger"
 msgstr "kama"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
-msgstr "baharatlık bitkiler"
+msgstr "kahve bitkisi"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
 msgstr "tuğlalar"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "demir cevheri"
+msgstr "altın cevheri"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -3718,7 +3699,7 @@ msgstr "baharatlık bitkiler"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "hijyen"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
@@ -3742,7 +3723,7 @@ msgstr "şekerleme fabrikası"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "balinalar"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3754,13 +3735,12 @@ msgstr "Kazandın!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "bahar çiçeği"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
-msgstr "baharatlık bitkiler"
+msgstr "çivit bitkisi"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
@@ -3788,7 +3768,7 @@ msgstr "palamut"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "örtü"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
@@ -3825,10 +3805,9 @@ msgid "Your game has been autosaved."
 msgstr "Oyunun otomatik olarak kaydedildi."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "kil yatağı"
+msgstr "altın yatağı"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3836,7 +3815,7 @@ msgstr "Tarım alanlarınızdan birinde hasat yapılması için çiftlik lazım.
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "işlenmemiş taşlar"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
@@ -3856,7 +3835,7 @@ msgstr "eğitim"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "pamuk"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3888,10 +3867,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "{name} adında yeni bir gemi yaratıldı."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "tütün bitkisi"
+msgstr "çay bitkisi"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -3915,7 +3893,7 @@ msgstr "şifalı otlar"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "gaz yağı"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
@@ -3955,10 +3933,9 @@ msgid "salt"
 msgstr "tuz"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "demir külçesi"
+msgstr "altın külçesi"
 
 #~ msgid "Back:"
 #~ msgstr "Geri:"
