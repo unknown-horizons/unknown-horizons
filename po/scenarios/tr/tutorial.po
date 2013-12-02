@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2013-07-14 19:38+0200\n"
-"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
+"PO-Revision-Date: 2013-12-02 15:59+0200\n"
+"Last-Translator: Ersan Doru Doru <ersandoru@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/tutorial/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -144,14 +144,11 @@ msgstr ""
 "Binanızı kurmak istediğiniz yere tıklayın."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a warehouse at the coast."
 msgid "Task: Build a warehouse at the coast."
-msgstr ""
-"\n"
-"GÖREV: Sahilde bir depo inşa et."
+msgstr "Görev: Sahilde bir depo inşa et."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
@@ -247,14 +244,12 @@ msgstr ""
 
 # Böyle daha açıklayıcı olduğunu düşündüm.
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
-"\n"
-"GÖREV: Ağaçlı bir alana bir oduncu kurun; sonra da yol yaparak oduncunuzu "
+"Görev: Ağaçlı bir alana bir oduncu kurun; sonra da yol yaparak oduncunuzu "
 "depoya bağlayın."
 
 #. This is the text body of a logbook page.
@@ -339,14 +334,11 @@ msgstr ""
 "dengeleyebilirsiniz."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a hunter and a fisher."
 msgid "Task: Build a hunter and a fisher."
-msgstr ""
-"\n"
-"GÖREV: Bir avcı kulübesi ve bir balıkçı inşa edin."
+msgstr "Görev: Bir avcı kulübesi ve bir balıkçı inşa edin."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
@@ -401,14 +393,11 @@ msgstr ""
 "oduncu çadırı arası gibi yerlere yol yapmanıza gerek yok."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a main square."
 msgid "Task: Build a main square."
-msgstr ""
-"\n"
-"GÖREV: Ana meydan inşa et."
+msgstr "Görev: Ana meydan inşa et."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -499,7 +488,6 @@ msgstr ""
 "kazanmanızın tek yolu bu!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a tent and connect it to the main square. Tents dont need to "
@@ -508,8 +496,7 @@ msgid ""
 "Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
-"\n"
-"GÖREV: Bir çadır kurun ve ana meydana bağlayın. Çadırların şirketlere "
+"Görev: Bir çadır kurun ve ana meydana bağlayın. Çadırların şirketlere "
 "bağlanmaları gerekmez."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -559,14 +546,11 @@ msgstr ""
 "Ayrıca evrensel vergi ayarlarını buradan da değiştirebileceğinizi unutmayın."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build at least three additional tents."
 msgid "Task: Build at least three additional tents."
-msgstr ""
-"\n"
-"GÖREV: En az üç adet daha çadır yap."
+msgstr "Görev: En az üç adet daha çadır yap."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -665,10 +649,9 @@ msgstr ""
 "olduğunuzda bunu daha ayrıntılı açıklayacağız."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Build a signal fire at the coast close to your warehouse."
 msgid "Task: Build a signal fire at the coast close to your warehouse."
-msgstr "Deponuza yakın sahilde bir işaret ateşi yakın."
+msgstr "Görev: Deponuza yakın sahilde bir işaret ateşi yakın."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -767,14 +750,11 @@ msgstr ""
 "karşılaştırarak görebilirsiniz."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
-msgstr ""
-"\n"
-"GÖREV: Stoğunuzda 30 alete sahip oluncaya kadar alet satın al!"
+msgstr "Görev: Stoğunuzda 30 alete sahip oluncaya kadar alet satın al!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a pavilion with connection to the tents."
@@ -853,7 +833,6 @@ msgstr ""
 "Yol bağlantısı da gereklidir."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
@@ -862,8 +841,7 @@ msgid ""
 "Task: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
-"\n"
-"GÖREV: Denizcilerinizin inanç talebini yerine getirmek için çadırlarla "
+"Görev: Denizcilerinizin inanç talebini yerine getirmek için çadırlarla "
 "patika ile bağlı bir ibadet çadırı inşa edin."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -958,15 +936,13 @@ msgstr ""
 "için bu ek parayı harcamanız gerekiyor."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgid ""
 "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
-"\n"
-"GÖREV: Vergi seviyesini Düşük (en sol) yapın ve denizcilerin yükseltilmesini "
+"Görev: Vergi seviyesini Düşük (en sol) yapın ve denizcilerin yükseltilmesini "
 "bekleyin."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1057,14 +1033,11 @@ msgstr ""
 "mevcut binalarınızın yakınına yapmamaya çalışın."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a farm."
 msgid "Task: Build a farm."
-msgstr ""
-"\n"
-"GÖREV: Bir çiftlik inşa edin."
+msgstr "Görev: Bir çiftlik inşa edin."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build at least one pasture and add potato fields if you like."
@@ -1153,7 +1126,6 @@ msgstr ""
 "Bunu değiştirelim!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build at least one pasture in the farm's range and add potato "
@@ -1162,8 +1134,7 @@ msgid ""
 "Task: Build at least one pasture in the farm's range and add potato fields "
 "if you like."
 msgstr ""
-"\n"
-"GÖREV: Çifliğin menzili içerisinde en az bir otlak inşa edin ve isterseniz "
+"Görev: Çifliğin menzili içerisinde en az bir otlak inşa edin ve isterseniz "
 "patates ekim alanı ekleyin."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1260,14 +1231,12 @@ msgstr ""
 "yoğunsa, yardım etmesi için bir depo çadırı yerleştirebilirsiniz."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a storage tent, preferably where you need collectors."
 msgid "Task: Build a storage tent, preferably where you need collectors."
 msgstr ""
-"\n"
-"GÖREV: Tercihen toplayıcılara ihtiyacınız olacak yere bir depo çadırı yapın."
+"Görev: Tercihen toplayıcılara ihtiyacınız olacak yere bir depo çadırı yapın."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a weaver that can somehow reach the wool of your farm."
@@ -1306,14 +1275,11 @@ msgstr ""
 "görmek için tüm patikaları yok edebilirsiniz."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a weaver positioned so it can get wool."
 msgid "Task: Build a weaver positioned so it can get wool."
-msgstr ""
-"\n"
-"GÖREV: Yün alabilmesi için konumlandırılmış bir dokumacı inşa edin."
+msgstr "Görev: Yün alabilmesi için konumlandırılmış bir dokumacı inşa edin."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -1352,7 +1318,6 @@ msgstr ""
 "için de bir pozitif bakiye ('Hesap' sekmesinde depoyu kontrol edin) gerekli."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Reach a total number of 50 inhabitants and a positive balance to "
@@ -1361,8 +1326,7 @@ msgid ""
 "Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
-"\n"
-"GÖREV: Bu öğreticiyi tamamlayabilmek için 50 nüfusa ve pozitif bakiyeye "
+"Görev: Bu öğreticiyi tamamlayabilmek için 50 nüfusa ve pozitif bakiyeye "
 "ulaşın."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!

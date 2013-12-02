@@ -54,9 +54,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 'Bu ön izlemenin soluk kırmızı olmadığı her noktaya binanızı kurabilirsiniz.
 
     Binanızı kurmak istediğiniz yere tıklayın.'
-  - '
-
-    GÖREV: Sahilde bir depo inşa et.'
+  - ''
+  - [BoldLabel, 'Görev: Sahilde bir depo inşa et.']
 
 - &LUMBERJACK
   - [Message, Bir oduncu yapın ve yol ile deponuza bağlayın.]
@@ -79,9 +78,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Daha sonra yeni ağaçlar da dikebilirsiniz, fakat bu masraflıdır. Doğanın size sağladıklarını kullanın!
   - Bir şirketin her zaman bir depo ya da ambara yollarla bağlanması gerekir, aksi takdirde ürünler şirkette kalacak ve toplanmayacaktır.
   - Yani oduncunuz ile herhangi bir deponuz (ya da ambarınız) arasında bir yol inşa etmeniz gerekiyor.
-  - '
-
-    GÖREV: Ağaçlı bir alana bir oduncu kurun; sonra da yol yaparak oduncunuzu depoya bağlayın.'
+  - ''
+  - [BoldLabel, 'Görev: Ağaçlı bir alana bir oduncu kurun; sonra da yol yaparak oduncunuzu depoya bağlayın.']
   - Toplayıcının gelip sizin ürettiğiniz tahta panelleri oduncunuzdan alışını izleyin. Oduncunuz için işçi istihdam etmenize gerek yok. Bu otomatik olarak yapılıyor.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -103,9 +101,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Küçük, kürekli bir tekne yapacak ve balık yakalayacaktır.
   - Bu, az zamanda daha uzun süren yiyecek üretimi için oldukça sabit bir kaynaktır.
   - Sizinki gibi bir yeni yerleşim birimi, her iki şirketi de kullanabilir, ve doğrudan karşılaştırma görürseniz olumlu ve olumsuz yanları daha iyi dengeleyebilirsiniz.
-  - '
-
-    GÖREV: Bir avcı kulübesi ve bir balıkçı inşa edin.'
+  - ''
+  - [BoldLabel, 'Görev: Bir avcı kulübesi ve bir balıkçı inşa edin.']
   - Bunları yollarla deponuza bağlamayı unutmayın!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -121,9 +118,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/004_h.png]
   - Ana köy çadırlarınızı oduncunuza yakın tutmaktan kaçınmalısınız çünkü çadırları bu alanlara yapmak, oduncunuzun tahta üretimi için ihtiyacı olan ağaçları yok edecektir.
   - Şirketler çadırlara bağlanmadan çalışır, bu yüzden, örneğin; ana merkez ve oduncu çadırı arası gibi yerlere yol yapmanıza gerek yok.
-  - '
-
-    GÖREV: Ana meydan inşa et.'
+  - ''
+  - [BoldLabel, 'Görev: Ana meydan inşa et.']
   - [Pagebreak]
   - '
 
@@ -148,9 +144,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Her binanın yükseltme işleminin, ilk yükseltmedeki odun gibi inşa maddelerine ihtiyaç duyduğunu göz önünde bulundurun.
   - Eğer bu maddeler stoğunuzda az bulunuyorsa, yükseltmeyi devre dışı bırakmayı düşünün.
   - Göçmenler, ürettiğiniz tüm malları yok etmeye çalıştıklarından yararlı görünmeyebilirler, ancak en azından vergi veriyorlar ve şimdilik para kazanmanızın tek yolu bu!
-  - '
-
-    GÖREV: Bir çadır kurun ve ana meydana bağlayın. Çadırların şirketlere bağlanmaları gerekmez.'
+  - ''
+  - [BoldLabel, 'Görev: Bir çadır kurun ve ana meydana bağlayın. Çadırların şirketlere bağlanmaları gerekmez.']
 
 - &MORETENTS
   - [Message, En az üç tane daha çadır yapın ve ana merkeze bağlayın.]
@@ -167,9 +162,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Eğer talepleri yerine getirilirse, mutlulukları ve dolayısıyla vergi geliriniz yükselir.
   - Getirilmezse, mutluluk ve gelir düşer. Bir süre sonra halkınız sizden soğur ve köyünüze sırtlarını dönerler. Arkalarında çökük yıkıntıları bırakırlar.
   - Ayrıca evrensel vergi ayarlarını buradan da değiştirebileceğinizi unutmayın.
-  - '
-
-    GÖREV: En az üç adet daha çadır yap.'
+  - ''
+  - [BoldLabel, 'Görev: En az üç adet daha çadır yap.']
   - '
 
     İPUCU: SHIFT tuşunu basılı tutmak, aynı türdeki binaların inşasını kolaylaştırır.'
@@ -196,9 +190,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '''Denizci'' seviyesinde, üç ticaret ayracı ile donatılırsınız.'
   - Ayraç kipini 'Al' ile 'Sat' arasında değiştirmek için küçük simgeye tıklayın.
   - Ticaret yapmak istediğiniz malı seçmek için alanda tıklayın. Ticarete hazır olduğunuzda bunu daha ayrıntılı açıklayacağız.
-  - '
-
-    GÖREV: Deponuza yakın yerdeki sahilde bir işaret ateşi yakın.'
+  - ''
+  - [BoldLabel, 'Görev: Deponuza yakın sahilde bir işaret ateşi yakın.']
 
 - &TRADING
   - [Message, En az 30 aletlik bir ada stoğuna ulaş. Bu biraz zaman alabilir.]
@@ -224,9 +217,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Fiyatları el ile değiştirmek mümkün DEĞİLDİR!'
   - Ticaret bakiyenizi 'Hesap' sekmesindeki 'Sat' ve 'Al' değerlerini karşılaştırarak görebilirsiniz.
-  - '
-
-    GÖREV: Stoğunuzda 30 alete sahip oluncaya kadar alet satın al!'
+  - ''
+  - [BoldLabel, 'Görev: Stoğunuzda 30 alete sahip oluncaya kadar alet satın al!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -250,9 +242,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Binanın çadırların menzili içinde olması yeterli DEĞİLDİR!
 
     Yol bağlantısı da gereklidir.'
-  - '
-
-    GÖREV: Denizcilerinizin inanç talebini yerine getirmek için çadırlarla patika ile bağlı bir ibadet çadırı inşa edin.'
+  - ''
+  - [BoldLabel, 'Görev: Denizcilerinizin inanç talebini yerine getirmek için çadırlarla patika ile bağlı bir ibadet çadırı inşa edin.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -272,9 +263,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ayrıca, oduncu'da da görebileceğiniz, masrafsız yükseltilebilen binalar da mevcut. Bu durumda, sadece grafik değişecektir.
   - Yükseltilmiş konaklama daha fazla halk barındırabilir ve öncüler denizcilerden daha fazla vergi verir.
   - Daha önce de farketmiş olabileceğiniz gibi öncüler denizcilerin gerektirmediği ek ihtiyaçlar ister. Bu yüzden onları da mutlu edebilmeniz için bu ek parayı harcamanız gerekiyor.
-  - '
-
-    GÖREV: Vergi seviyesini Düşük (en sol) yapın ve denizcilerin yükseltilmesini bekleyin.'
+  - ''
+  - [BoldLabel, 'Görev: Vergi seviyesini Düşük (en sol) yapın ve denizcilerin yükseltilmesini bekleyin.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -298,9 +288,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Son üretim şirketinin birimleri çiftliğe ve depodan toplayıcılar veya depo çadırı son şirkete ulaştığı sürece her şey normal.
   - Eğer adanın diğer bölümlerinde (faydalı bir şey olabilir) veya diğer adalarda işlem yapmayı planlıyorsanız, toplayıcılara bir bağlantı gerekecek.
   - Çiftlik, düzgün çalışabilmesi için ek alan gerektirdiğinden sahile veya mevcut binalarınızın yakınına yapmamaya çalışın.
-  - '
-
-    GÖREV: Bir çiftlik inşa edin.'
+  - ''
+  - [BoldLabel, 'Görev: Bir çiftlik inşa edin.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -326,9 +315,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Artık birleşik bir üretiminiz var - bir otlak çiftliğin yüzde 100 verimli olmasını sağlamayacak ve bir çiftliğin sunabileceği alan sayısını kontrol etmeniz gerek.
   - Alanların farklı sınıfları, çiftlik birimlerinin daha fazla veya az zaman harcamasına ihtiyaç duyacak (beslemek, hasat etmek, üretmek vb… için). Bu yüzden bir çiftlik için inşa edilen alanların tümüne zamanında hizmet edemeyebilir.
   - Şimdilik hiç alan inşa etmediğiniz için bu durumları önemsemeniz gerekmiyor. Bunu değiştirelim!
-  - '
-
-    GÖREV: Çifliğin menzili içerisinde en az bir otlak inşa edin ve isterseniz patates ekim alanı ekleyin.'
+  - ''
+  - [BoldLabel, 'Görev: Çifliğin menzili içerisinde en az bir otlak inşa edin ve isterseniz patates ekim alanı ekleyin.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -357,9 +345,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * kendi toplayıcılarını depoda olduğu gibi mal getirmesi için gönderir.'
   - Şirketlerin de ürünlerinin toplanabilmesi için bir depoya bağlı olmaları gerektiğine dikkat edin ve eğer bir merkez depo toplayıcı görevleri ile çok yoğunsa, yardım etmesi için bir depo çadırı yerleştirebilirsiniz.
-  - '
-
-    GÖREV: Tercihen toplayıcılara ihtiyacınız olacak yere bir depo çadırı yapın.'
+  - ''
+  - [BoldLabel, 'Görev: Tercihen toplayıcılara ihtiyacınız olacak yere bir depo çadırı yapın.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -371,9 +358,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - İnşa edebileceğiniz iki yer var - çiftliğe veya Depo Çadırına (veya merkez depoya) yakın olabilir.
   - İki durumda da patikaya bağlantılarından emin olmalısınız.
   - Dokumacıyı çiftliğe yakın yerleştirebilir ve hala yün alıp üretebileceğini görmek için tüm patikaları yok edebilirsiniz.
-  - '
-
-    GÖREV: Yün alabilmesi için konumlandırılmış bir dokumacı inşa edin.'
+  - ''
+  - [BoldLabel, 'Görev: Yün alabilmesi için konumlandırılmış bir dokumacı inşa edin.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -384,9 +370,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Daha fazla yerleşim binası sağlayarak şehrinizde 50 veya daha fazla nüfus elde edin.
   - Ekonomiyi tüketicilerin miktarını karşılayacak şekilde dengelediğinizde, Unknown Horizons'u keşfetmeye hazırsınız demektir!
   - Ayrıca bu ekonomiyi dengede tutmak için paraya ihtiyacınız olacak. Bunun için de bir pozitif bakiye ('Hesap' sekmesinde depoyu kontrol edin) gerekli.
-  - '
-
-    GÖREV: Bu öğreticiyi tamamlayabilmek için 50 nüfusa ve pozitif bakiyeye ulaşın.'
+  - ''
+  - [BoldLabel, 'Görev: Bu öğreticiyi tamamlayabilmek için 50 nüfusa ve pozitif bakiyeye ulaşın.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -415,7 +400,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     UH-Takımınız'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)
