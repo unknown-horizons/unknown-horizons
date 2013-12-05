@@ -55,7 +55,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Cliquez à l''endroit où vous voulez placer votre première construction.'
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Mission: Établissez un comptoir sur la côte.']
 
 - &LUMBERJACK
   - [Message, Construisez un campement de bûcheron et connectez le à votre entrepôt grâce à une route.]
@@ -79,7 +79,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Une entreprise nécessite une route menant à un dépôt ou un entrepôt, autrement les biens produits y resteront et ne seront pas collectés.
   - Vous devez donc construire un sentier entre votre entrepôt (ou votre dépôt) et votre bûcheron.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
+  - [BoldLabel, 'Mission: Établissez un comptoir sur la côte.']
   - Observez comme un collecteur va chercher vos premières planches. Ne vous préoccupez pas de recruter des employés pour le bûcheron. Cela se fait automatiquement.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -102,7 +102,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - C'est une source de nourriture très constante mais d'un temps de production par unité de nourriture légèrement plus long.
   - Une petite colonie comme la votre peut utiliser ces deux types d'entreprises, et vous pourrez mieux en évaluer les avantages et les inconvénients en les comparant directement.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
+  - [BoldLabel, 'Mission : Établir un chasseur et un pêcheur.']
   - Et n'oubliez pas les sentiers les reliant à votre entrepôt !
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -119,7 +119,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Vous devriez éviter de fonder votre campement trop prés des bûcherons car les tentes prennent la place du bois dont les bûcherons ont besoin afin de produire des planches.
   - Les entreprises fonctionnent sans être connectées aux tentes, donc vous n'avez pas besoin de construire une route entre la place principale et par exemple la tente du bûcheron.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Mission : Construire une place principale.']
   - [Pagebreak]
   - '
 
@@ -145,7 +145,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Envisagez d'interdire les améliorations si vos stocks de matériaux sont faibles.
   - Les colons peuvent sembler peu ou pas très utiles dans la mesure où ils essaieront de consommer tout les biens que vous produirez mais, au moins, ils paient les taxes et c'est votre seule façon de gagner de l'argent pour le moment !
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Mission : Construisez une tente et connectez-la à la place principale. Les tentes n''ont pas besoin d''être connectées aux entreprises.']
 
 - &MORETENTS
   - [Message, Construisez 3 tentes supplémentaires et reliez-les à la place principale.]
@@ -163,7 +163,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sinon, la satisfaction et les revenus diminuent. Parfois, les habitants peuvent en avoir vraiment marre, ils tournent alors le dos à votre village.
   - Notez que vous pouvez régler les taxes ici aussi.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Mission : Construisez au moins trois tentes supplémentaires.']
   - '
 
     ASTUCE : Il est plus simple de construire plusieurs bâtiments du même type en gardant la touche SHIFT enfoncée.'
@@ -191,7 +191,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Cliquez sur le petit symbole afin de changer le mode de « Achat » à « Vente » et vice versa.
   - Cliquez sur l'emplacement de commerce pour choisir la marchandise que vous voulez vendre ou acheter. Nous expliquerons ce procédé plus précisément lorsque vous serez prêt à faire affaire.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Mission : Construisez un feu de signalisation sur la côte proche de l''entrepôt.']
 
 - &TRADING
   - [Message, Atteignez un stock d'au moins 30 outils. Ceci pourra vous prendre du temps.]
@@ -218,7 +218,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Il n''est PAS possible de changer les prix manuellement !'
   - Vous pouvez voir votre bilan commercial dans l'onglet « Finances » mettant en relief « Vente » et « Achat ».
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Mission : Achetez autant d''outils que nécessaire pour en avoir 30 en stock !']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -243,7 +243,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     La connexion routière est également requise.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Mission : Édifiez un pavillon avec un sentier vers les tentes pour qu''il puisse combler la demande en foi des marins.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -264,7 +264,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Les logements améliorés peuvent héberger plus d'habitants et, de plus, les pionniers paient plus de taxes que les marins.
   - Comme vous l'avez peut-être constaté, le désavantage est que les pionniers demandent des biens supplémentaires dont les marins n'ont pas besoin - vous devrez donc dépenser cet argent supplémentaire pour les satisfaire également.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Mission : Baissez les taxes (côté gauche du régleur) et attendez que les marins se développent.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -289,7 +289,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Cependant si vous pensez affiner ces biens brut sur une autre partie de l'île ou même sur une autre île, vous devrez les connecter à un dépôt ou à un entrepôt.
   - Essayez de construire une ferme, mais pas trop près de la côte ou d'autres bâtiments puisqu'elle aura besoin d'espace autour d'elle pour bien fonctionner.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Mission: Construire une ferme.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -316,7 +316,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Les différents types de champs nécessitent plus ou moins de temps pour être cultivés (planter, récolter, etc…) et à cause de cela une ferme peut ne pas être en mesure de s'occuper de tous les champs à temps.
   - Mais pour l'instant vous n'avez pas besoin de penser à ce genre de problème vu que vous n'avez pas encore construit de champs. Nous devons changer cela !
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Mission : Construisez au moins un pré dans le rayon d''action de la ferme et ajoutez des champs de pommes de terre si vous le souhaitez.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -346,7 +346,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * Envoie ses propres collecteurs pour aller chercher des biens tout comme le entrepôt le fait.'
   - Notez que les entreprises peuvent également être connectées à un dépôt à la place d'un entrepôt et si l'entrepôt est surchargé vous pouvez l'aider à tout collecter en construisant un dépôt.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Mission : Construisez un dépôt, de préférence quelque part où vous avez besoin de collecteurs.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -359,7 +359,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dans les deux cas vous devriez également assurer la connexion à un sentier.
   - Vous pouvez placer le tisserand près de la ferme at détruire tous les sentiers vers la ferme afin de voir qu'il ira quand-même chercher la laine pour en faire du tissu.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Mission: Installer un tisserand à proximité de la laine.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -371,7 +371,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dès que votre économie pourra satisfaire ce nombre de consommateurs vous serez prêt à découvrir d'autres territoires !
   - Vous avez aussi besoin de suffisamment d'argent pour maintenir l'économie, une balance positive est nécessaire (voir l'onglet « Finances »).
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Mission : Atteindre un nombre total de 50 habitants et un bilan positif afin de terminer ce didacticiel.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -662,4 +662,4 @@ metadata:
   locale: fr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 181 translated messages, 10 fuzzy translations.
+  translation_status: 191 translated messages.
