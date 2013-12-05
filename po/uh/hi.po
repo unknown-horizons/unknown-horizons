@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-12-01 18:28+0200\n"
+"PO-Revision-Date: 2013-12-05 04:37+0200\n"
 "Last-Translator: Saurabh Patil <patilsaurabhr@gmail.com>\n"
 "Language-Team: Hindi <http://hosted.weblate.org/projects/uh/uh/hi/>\n"
 "Language: hi\n"
@@ -788,7 +788,7 @@ msgstr "आक्रामक"
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr ""
+msgstr "डटे रहो"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
