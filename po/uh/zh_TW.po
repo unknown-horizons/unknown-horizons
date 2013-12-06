@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 1e6d689\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-11-19 10:58+0200\n"
-"Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
-"Language-Team: Traditional Chinese <http://hosted.weblate.org/projects/uh/uh/"
-"zh_TW/>\n"
+"PO-Revision-Date: 2013-12-06 18:19+0200\n"
+"Last-Translator: Yes Stone <s2327259@hotmail.com>\n"
+"Language-Team: Traditional Chinese "
+"<http://hosted.weblate.org/projects/uh/uh/zh_TW/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -158,10 +158,10 @@ msgid "Rotate map counterclockwise ({key})"
 msgstr "逆時針旋轉地圖 ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise ({key})"
 msgid "Rotate map clockwise ({key})"
-msgstr "順時針旋轉地圖"
+msgstr "順時針旋轉地圖({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
