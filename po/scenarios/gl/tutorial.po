@@ -151,14 +151,11 @@ msgstr ""
 "primeiro edificio."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a warehouse at the coast."
 msgid "Task: Build a warehouse at the coast."
-msgstr ""
-"\n"
-"Obxectivo: Construír un almacén na costa."
+msgstr "Obxectivo: Construír un almacén na costa."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
@@ -255,13 +252,11 @@ msgstr ""
 "depósito) co leñador."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
-"\n"
 "Obxectivo: contrata un leñador nunha zona de bosque e conéctao cun sendeiro."
 
 #. This is the text body of a logbook page.
@@ -350,14 +345,11 @@ msgstr ""
 "os dous poderás considerar mellor os pros e mailos contras de cada un."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a hunter and a fisher."
 msgid "Task: Build a hunter and a fisher."
-msgstr ""
-"\n"
-"Obxectivo: contrata un cazador e un pescador."
+msgstr "Obxectivo: contrata un cazador e un pescador."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
@@ -415,14 +407,11 @@ msgstr ""
 "tenda do leñador."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a main square."
 msgid "Task: Build a main square."
-msgstr ""
-"\n"
-"Obxectivo: constrúe unha praza principal."
+msgstr "Obxectivo: constrúe unha praza principal."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -513,7 +502,6 @@ msgstr ""
 "xeito que tes de conseguir cartos de momento."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a tent and connect it to the main square. Tents dont need to "
@@ -522,7 +510,6 @@ msgid ""
 "Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
-"\n"
 "Obxectivo: constrúe unha tenda e conéctaa coa praza principal. As tendas non "
 "necesitan estar conectadas a ningún negocio."
 
@@ -575,14 +562,11 @@ msgstr ""
 "aquí."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build at least three additional tents."
 msgid "Task: Build at least three additional tents."
-msgstr ""
-"\n"
-"Obxectivo: constrúe polo menos outras tres tendas."
+msgstr "Obxectivo: constrúe polo menos outras tres tendas."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -686,10 +670,9 @@ msgstr ""
 "funciona isto."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Build a signal fire at the coast close to your warehouse."
 msgid "Task: Build a signal fire at the coast close to your warehouse."
-msgstr "Constrúe un sinal de lume na costa, preto do almacén."
+msgstr "Obxectivo: constrúe un sinal de lume na costa, preto do almacén."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -792,14 +775,11 @@ msgstr ""
 "«Vender» e «Mercar»."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
-msgstr ""
-"\n"
-"Obxectivo: consigue reunir no almacén 30 toneladas de ferramentas."
+msgstr "Obxectivo: consigue reunir no almacén 30 toneladas de ferramentas."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a pavilion with connection to the tents."
@@ -879,7 +859,6 @@ msgstr ""
 "Tamén ten que haber un camiño das tendas ao pavillón."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
@@ -888,7 +867,6 @@ msgid ""
 "Task: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
-"\n"
 "Obxectivo: constrúe un pavillón cun camiño ata as tendas para satisfacer as "
 "necesidades de fe dos mariñeiros."
 
@@ -987,14 +965,12 @@ msgstr ""
 "aos colonos tamén."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgid ""
 "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
-"\n"
 "Obxectivo: baixa o nivel de impostos (extremo esquerdo) e agarda a que os "
 "mariñeiros avancen de nivel."
 
@@ -1091,14 +1067,11 @@ msgstr ""
 "que para que funcione necesitarás espazo ao seu redor."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a farm."
 msgid "Task: Build a farm."
-msgstr ""
-"\n"
-"Obxectivo: constrúe unha granxa."
+msgstr "Obxectivo: constrúe unha granxa."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build at least one pasture and add potato fields if you like."
@@ -1194,7 +1167,6 @@ msgstr ""
 "construíches ningún campo. Pero iso vai cambiar."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build at least one pasture in the farm's range and add potato "
@@ -1203,7 +1175,6 @@ msgid ""
 "Task: Build at least one pasture in the farm's range and add potato fields "
 "if you like."
 msgstr ""
-"\n"
 "Obxectivo: constrúe como mínimo un campo de ovellas na zona de acción da "
 "granxa e engade hortas de patacas se queres."
 
@@ -1307,13 +1278,11 @@ msgstr ""
 "de recolección, podes engadir un depósito para botar unha man."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a storage tent, preferably where you need collectors."
 msgid "Task: Build a storage tent, preferably where you need collectors."
 msgstr ""
-"\n"
 "Obxectivo: constrúe unha tenda de depósito, preferiblemente nun lugar no que "
 "necesites transportistas."
 
@@ -1357,14 +1326,11 @@ msgstr ""
 "transformala de todos xeitos."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a weaver positioned so it can get wool."
 msgid "Task: Build a weaver positioned so it can get wool."
-msgstr ""
-"\n"
-"Obxectivo: contrata un tecelán e sitúao de xeito que teña acceso á la."
+msgstr "Obxectivo: contrata un tecelán e sitúao de xeito que teña acceso á la."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -1404,7 +1370,6 @@ msgstr ""
 "de «Conta» do almacén."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Reach a total number of 50 inhabitants and a positive balance to "
@@ -1413,7 +1378,6 @@ msgid ""
 "Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
-"\n"
 "Obxectivo: consigue un total de 50 habitantes e un saldo positivo para "
 "completar a aprendizaxe."
 
