@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 1c4eb21\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2013-12-06 19:47+0200\n"
+"PO-Revision-Date: 2013-12-06 21:58+0200\n"
 "Last-Translator: Yes Stone <s2327259@hotmail.com>\n"
 "Language-Team: Traditional Chinese "
 "<http://hosted.weblate.org/projects/uh/tutorial/zh_TW/>\n"
@@ -244,15 +244,16 @@ msgid "Note that you can place your Hunter close to the lumberjack's forest."
 msgstr "注意，你可以將獵場放在伐木場森林得附近。"
 
 #. This is the text body of a logbook page.
+#, fuzzy
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
-msgstr ""
+msgstr "這樣可以讓動物繁殖夠快且不能完全隱藏。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
-msgstr ""
+msgstr "結論:如果你需要持續的食物供應，獵人並不可靠。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -260,132 +261,137 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"如同貨棧一樣，漁場必須建築在沿岸處且一定的範圍內要有魚群。"
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "漁夫將會建造小型划船並去捕魚。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
-msgstr ""
+msgstr "這是一個非常穩定的食物來源，但每單位的食物需要花費較長的時間生產。"
 
 #. This is the text body of a logbook page.
+#, fuzzy
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
-msgstr ""
+msgstr "小型殖民地(如你的)可以同時建造這兩種公司，而如果你有看到直接的比較，最好是在它們的優缺點之間取得平衡。"
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a hunter and a fisher."
-msgstr ""
+msgstr "任務: 建造一個獵場和一個漁場。"
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "不要忘記用道路將它們連接到貨棧!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
-msgstr ""
+msgstr "建造一個中央廣場。 選擇一個沒有太多經濟建築的區域。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "新任務: 中央廣場"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
-msgstr ""
+msgstr "你的居民需要一個中央廣場來取得他們的貨物。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
-msgstr ""
+msgstr "這意謂著他們需要道路從他們家裡連接到中央廣場。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
-msgstr ""
+msgstr "所以存放在貨棧的貨品同樣也可以在這個「市井」取用，所以你的居民便不需要再走到漁場甚至於貨棧。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You should avoid placing your main settlement tents too close to your "
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
-msgstr ""
+msgstr "你應該要避免將居住帳篷放置太過靠近於伐木場，因為建築帳棚將會清除掉附近的樹，而這些樹卻也是我們要拿來生產木板用的。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
-msgstr ""
+msgstr "公司的運作並不需要與帳篷連接，所以你不需要在中央廣場與你的伐木場(之類的)之間用道路連接。"
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a main square."
-msgstr ""
+msgstr "任務: 建造一座中央廣場。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"現在讓我們更深入了解中央廣場。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
-msgstr ""
+msgstr "在「帳目」的標籤頁，你可以看到這座島的收支情況，如你付出的所有花費和你得到的所有稅金。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
-msgstr ""
+msgstr "「賣出」和「買入」這兩項來自交易收支，而這會在之後再解釋。"
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "如果你的收支為正，這代表你完完全全的在賺錢。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the different tier overview tabs you can see statistics about your "
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
-msgstr ""
+msgstr "在不同階級的總覽標籤，你可以看到關於居民的一些統計。而你也可以依據階級去調整各等級住戶的稅率，或是禁止某一階級的居民升級到更高階。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "建造一個帳篷並將它與中央廣場連接。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "新任務: 居住建築"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
-msgstr ""
+msgstr "居民們都希望居住的地方至少要有個屋頂，否則他們根本不會想去住在你得城市! 所以你必須要提供這些帳棚作為住所。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
-msgstr ""
+msgstr "帳棚為最基礎的居住建築，你的居民希望能在他們升到更高階時去升級住所。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
-msgstr ""
+msgstr "注意，每個建築物升級都需要建材，像是最初階的帳棚需要木頭。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
-msgstr ""
+msgstr "如果你的材料或原料的存量很低，那可以試著考慮禁止升級。"
 
 #. This is the text body of a logbook page.
 msgid ""

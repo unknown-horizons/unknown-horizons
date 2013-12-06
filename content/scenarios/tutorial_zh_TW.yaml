@@ -93,56 +93,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 獵人會在森林裡狩獵動物，因此附近需要有樹林。
   - 注意，你可以將獵場放在伐木場森林得附近。
   - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the hunter is not too reliable if you need continuous supply.'
+  - 結論:如果你需要持續的食物供應，獵人並不可靠。
   - [Pagebreak]
   - '
 
-    The Fisher needs a coastal building site like the warehouse and a fish school in range.'
-  - He will build a small rowing vessel and catch some fish.
-  - This is a very constant supply at the cost of a slightly longer production time per unit of food.
+    如同貨棧一樣，漁場必須建築在沿岸處且一定的範圍內要有魚群。'
+  - 漁夫將會建造小型划船並去捕魚。
+  - 這是一個非常穩定的食物來源，但每單位的食物需要花費較長的時間生產。
   - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Don't forget to connect them to your warehouse with trails!
+  - [BoldLabel, '任務: 建造一個獵場和一個漁場。']
+  - 不要忘記用道路將它們連接到貨棧!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a main square. Choose an area without many economy buildings.]
-  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - [Message, 建造一個中央廣場。 選擇一個沒有太多經濟建築的區域。]
+  - [Headline, '新任務: 中央廣場']
   - [Image, content/gui/images/background/hr.png]
-  - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the main square.
-  - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
+  - 你的居民需要一個中央廣場來取得他們的貨物。
+  - 這意謂著他們需要道路從他們家裡連接到中央廣場。
+  - 所以存放在貨棧的貨品同樣也可以在這個「市井」取用，所以你的居民便不需要再走到漁場甚至於貨棧。
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
+  - 你應該要避免將居住帳篷放置太過靠近於伐木場，因為建築帳棚將會清除掉附近的樹，而這些樹卻也是我們要拿來生產木板用的。
+  - 公司的運作並不需要與帳篷連接，所以你不需要在中央廣場與你的伐木場(之類的)之間用道路連接。
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, '任務: 建造一座中央廣場。']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the main square.'
+    現在讓我們更深入了解中央廣場。'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - 在「帳目」的標籤頁，你可以看到這座島的收支情況，如你付出的所有花費和你得到的所有稅金。
+  - 「賣出」和「買入」這兩項來自交易收支，而這會在之後再解釋。
+  - 如果你的收支為正，這代表你完完全全的在賺錢。
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - 在不同階級的總覽標籤，你可以看到關於居民的一些統計。而你也可以依據階級去調整各等級住戶的稅率，或是禁止某一階級的居民升級到更高階。
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Message, 建造一個帳篷並將它與中央廣場連接。]
+  - [Headline, '新任務: 居住建築']
   - [Image, content/gui/images/background/hr.png]
-  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
+  - 居民們都希望居住的地方至少要有個屋頂，否則他們根本不會想去住在你得城市! 所以你必須要提供這些帳棚作為住所。
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
+  - 帳棚為最基礎的居住建築，你的居民希望能在他們升到更高階時去升級住所。
+  - 注意，每個建築物升級都需要建材，像是最初階的帳棚需要木頭。
+  - 如果你的材料或原料的存量很低，那可以試著考慮禁止升級。
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - ''
   - [BoldLabel, 'Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.']
@@ -662,4 +662,4 @@ metadata:
   locale: zh_TW
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 40 translated messages, 151 untranslated messages.
+  translation_status: 65 translated messages, 2 fuzzy translations, 124 untranslated messages.
