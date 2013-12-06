@@ -71,7 +71,6 @@ class BUILDING_PURPOSE:
 	FIRE_STATION = 31
 	DOCTOR = 32
 	HERBARY = 33
-	HERBS_FIELD = 34
 
 	purpose_to_building = {}
 	building_to_purpose = {}

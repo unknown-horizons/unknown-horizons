@@ -162,7 +162,7 @@ class AbstractFarm(AbstractBuilding):
 			RES.WOOL:           BUILDING_PURPOSE.PASTURE,
 			RES.SUGAR:          BUILDING_PURPOSE.SUGARCANE_FIELD,
 			RES.TOBACCO_LEAVES: BUILDING_PURPOSE.TOBACCO_FIELD,
-			RES.HERBS:          BUILDING_PURPOSE.HERBS_FIELD,
+			RES.HERBS:          BUILDING_PURPOSE.HERBARY,
 		}.get(resource_id)
 
 	def get_evaluators(self, settlement_manager, resource_id):
@@ -413,7 +413,7 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			BUILDING_PURPOSE.PASTURE:         BUILDINGS.PASTURE,
 			BUILDING_PURPOSE.SUGARCANE_FIELD: BUILDINGS.SUGARCANE_FIELD,
 			BUILDING_PURPOSE.TOBACCO_FIELD:   BUILDINGS.TOBACCO_FIELD,
-			BUILDING_PURPOSE.HERBS_FIELD:     BUILDINGS.HERBARY,
+			BUILDING_PURPOSE.HERBARY:         BUILDINGS.HERBARY,
 		}.get(new_field_purpose)
 
 		personality = area_builder.owner.personality_manager.get('ModifiedFieldEvaluator')
@@ -422,7 +422,7 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			BUILDING_PURPOSE.PASTURE:         personality.add_pasture_value,
 			BUILDING_PURPOSE.SUGARCANE_FIELD: personality.add_sugarcane_field_value,
 			BUILDING_PURPOSE.TOBACCO_FIELD:   personality.add_tobacco_field_value,
-			BUILDING_PURPOSE.HERBS_FIELD:     personality.add_herbary_field_value,
+			BUILDING_PURPOSE.HERBARY:         personality.add_herbary_field_value,
 		}.get(new_field_purpose, 0)
 
 		old_field_purpose = area_builder.plan[(x, y)][0]
@@ -431,7 +431,7 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			BUILDING_PURPOSE.PASTURE:         personality.remove_unused_pasture_penalty,
 			BUILDING_PURPOSE.SUGARCANE_FIELD: personality.remove_unused_sugarcane_field_penalty,
 			BUILDING_PURPOSE.TOBACCO_FIELD:   personality.remove_unused_tobacco_field_penalty,
-			BUILDING_PURPOSE.HERBS_FIELD:     personality.remove_unused_herbary_field_penalty,
+			BUILDING_PURPOSE.HERBARY:         personality.remove_unused_herbary_field_penalty,
 		}.get(old_field_purpose, 0)
 
 		builder = BasicBuilder.create(building_id, (x, y), 0)
