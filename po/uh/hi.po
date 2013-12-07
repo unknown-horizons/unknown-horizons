@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-12-05 04:37+0200\n"
+"PO-Revision-Date: 2013-12-07 11:53+0200\n"
 "Last-Translator: Saurabh Patil <patilsaurabhr@gmail.com>\n"
 "Language-Team: Hindi <http://hosted.weblate.org/projects/uh/uh/hi/>\n"
 "Language: hi\n"
@@ -2059,35 +2059,35 @@ msgstr "संसाधन घनता:"
 
 #: horizons/gui/modules/singleplayermenu.py:227
 msgid "Map size:"
-msgstr ""
+msgstr "नक्शे का आकार:"
 
 #: horizons/gui/modules/singleplayermenu.py:228
 msgid "Water:"
-msgstr ""
+msgstr "पानी:"
 
 #: horizons/gui/modules/singleplayermenu.py:229
 msgid "Max island size:"
-msgstr ""
+msgstr "द्वीप का अधिकतम आकार:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Preferred island size:"
-msgstr ""
+msgstr "द्वीप का पसंदीदा आकार:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Island size deviation:"
-msgstr ""
+msgstr "द्वीप के आकर में विचलन:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "अलग यादृच्छिक नक्शा तैयार करने के लिये क्लिक करे"
 
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "अवैध परदृश्य फाइल"
 
 #: horizons/gui/modules/singleplayermenu.py:506
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "चुनी हुई फाइल वैध कथानक फाइल नहीं है।"
 
 #: horizons/gui/modules/singleplayermenu.py:507
 #| msgid "Error: {error_message}"
@@ -2096,81 +2096,81 @@ msgstr "त्रुटि संदेश:"
 
 #: horizons/gui/modules/singleplayermenu.py:508
 msgid "Please report this to the author."
-msgstr ""
+msgstr "कृपया इसे रचयिता से प्रतिवेदित करे"
 
 #: horizons/gui/modules/singleplayermenu.py:570
 #, python-brace-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "कठिनाई: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:573
 #, python-brace-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "रचयिता: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:576
 #, python-brace-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "विवरण: {desc}"
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:230
 #, python-brace-format
 msgid "Build {building}"
-msgstr ""
+msgstr "{building} निर्माण करे"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "इस एशारे को हटाने के लिये H दबाये"
 
 #: horizons/gui/tabs/boatbuildertabs.py:47
 msgid "Boat builder overview"
-msgstr ""
+msgstr "नाव बनानेवाले का अवलोकन"
 
 #: horizons/gui/tabs/boatbuildertabs.py:94
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (पंक्ति मे #{place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:198
 msgid "Build this ship!"
-msgstr ""
+msgstr "इस जहाज को बनाये!"
 
 #: horizons/gui/tabs/boatbuildertabs.py:234
 msgid "Fisher boats"
-msgstr ""
+msgstr "मछियारी नौकाएं"
 
 #: horizons/gui/tabs/boatbuildertabs.py:246
 msgid "Trade boats"
-msgstr ""
+msgstr "व्यापारी नौकाएं"
 
 #: horizons/gui/tabs/boatbuildertabs.py:258
 msgid "War boats"
-msgstr ""
+msgstr "युद्ध नौकाएं"
 
 #: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War ships"
-msgstr ""
+msgstr "युद्ध नौकाएं"
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Confirm order"
-msgstr ""
+msgstr "हुक्म की पुष्टि करे"
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
-msgstr ""
+msgstr "बुर्ज का अवलोकन"
 
 #: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
 msgid "Overview"
-msgstr ""
+msgstr "अवलोकन"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr ""
+msgstr "सम्बंधित इमारतें बांधे"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "व्यापार प्रस्ताव सुझाने के लिये किसी एक संसाधन खांचे को क्लिक कीजिये।"
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
@@ -2178,6 +2178,8 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
+"खरीदने या बेचने के लिये उसके नाम पे क्लिक करे, फिर दाहिनेवाले माप से मात्रा "
+"स्थापित करे।"
 
 #: horizons/gui/tabs/buyselltab.py:321
 #, python-brace-format
@@ -2185,6 +2187,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
+"भंडार मे {limit} टन से कम {resource_name} होने पर उसे {price} सोना/टन के दाम "
+"से खरीदा जायेगा।"
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2192,34 +2196,36 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"भंडार मे {limit} टन से जादा {resource_name} होने पर उसे {price} सोना/टन के "
+"दाम से बेचा जायेगा।"
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
-msgstr ""
+msgstr "भांडागार अवलोकन"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
 msgid "Account"
-msgstr ""
+msgstr "हिसाब"
 
 #: horizons/gui/tabs/mainsquaretabs.py:112
 msgid "Main square overview"
-msgstr ""
+msgstr "प्रधान चौक का अवलोकन"
 
 #: horizons/gui/tabs/mainsquaretabs.py:143
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "उन्नति असंभव:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "अब के लिये यह सबसे उच्च खेलनेयोग्य स्तर है!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "उन्नयन की अनुमती ना दे"
 
 #: horizons/gui/tabs/mainsquaretabs.py:195
 msgid "Allow upgrades"
-msgstr ""
+msgstr "उन्नयन की अनुमती दे"
 
 #: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
@@ -2228,7 +2234,7 @@ msgstr ""
 #: horizons/gui/tabs/productiontabs.py:44
 #: horizons/gui/tabs/productiontabs.py:235
 msgid "Production overview"
-msgstr ""
+msgstr "उत्पादन का अवलोकन"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2237,58 +2243,58 @@ msgstr ""
 #: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
 #: horizons/gui/tabs/shiptabs.py:178
 msgid "Ship overview"
-msgstr ""
+msgstr "जहाज का अवलोकन"
 
 #: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "उपनिवेश स्थापित करने के लिये जहाज द्वीप के करीब होना जरूरी है।"
 
 #: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "आपका इस द्वीप पर पहले से उपनिवेश है।"
 
 #: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
-msgstr ""
+msgstr "लादिये/उतारिए"
 
 #: horizons/gui/tabs/shiptabs.py:93
 msgid "Buy/Sell"
-msgstr ""
+msgstr "बेचिए/खरीदिए"
 
 #: horizons/gui/tabs/shiptabs.py:102
 msgid "Too far from the nearest tradeable warehouse"
-msgstr ""
+msgstr "सबसे नजदीक व्यापार योग्य गोदाम से बहुत दूर"
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "व्यापारी जहाज को शस्त्रों से लैस नहीं कर सकते"
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "व्यापारी जहाज को शस्त्रों से लैस करना असंभव है।"
 
 #: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
-msgstr ""
+msgstr "शस्त्र लैस करें"
 
 #: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
-msgstr ""
+msgstr "शस्त्र लैस ना करें"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} सोना"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "{buyprice} सोने के लिये खरीदे"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "{sellprice} सोने के लिये बेंचे"
 
 #: horizons/gui/widgets/inventory.py:166
 #, python-brace-format
@@ -2949,7 +2955,7 @@ msgstr ""
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:418
 msgid "Warehouse"
-msgstr ""
+msgstr "गोदाम"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3848,7 +3854,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "आप गोदाम को हटा नहीं सकते, आपके उपनिवेश को उसकी आवश्यकता है।"
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
