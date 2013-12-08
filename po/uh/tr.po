@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-12-02 15:56+0200\n"
-"Last-Translator: Ersan Doru Doru <ersandoru@gmail.com>\n"
+"PO-Revision-Date: 2013-12-08 20:19+0200\n"
+"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Bunu yapabilmek için kayıt dosyasındaki bilgilere ihtiyacımız var:"
+msgstr "Bunu yapabilmek için günlük dosyasındaki bilgilere ihtiyacımız var:"
 
 #: run_uh.py:129
 msgid ""
@@ -36,7 +36,7 @@ msgid ""
 "horizons.org ."
 msgstr ""
 "Lütfen bu dosyayı bize IRC yoluyla ya da forumumuz üzerinden gönderiniz. "
-"Detaylı bilgi için bakınız http://unknown-horizons.org ."
+"Detaylı bilgi için bakınız: http://unknown-horizons.org ."
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
@@ -120,7 +120,7 @@ msgstr "Geminizi seçin ve farenin sağ tuşuna tıklayarak sahile yanaşın."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Sonra, gemi genel görünüm sekmesindeki geniş ikona basın."
+msgstr "Sonra, gemi genel görünüm sekmesindeki geniş düğmeye basın."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -407,7 +407,7 @@ msgstr "Satılıyor"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
 msgid "Buying"
-msgstr "Alınıyor"
+msgstr "Alınan"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
@@ -490,7 +490,7 @@ msgstr "Yerleşim yeri kur"
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr "Ticaret rotasını ayarlıyor"
+msgstr "Ticaret rotasını yapılandır"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1010,7 +1010,7 @@ msgstr "Oyunu kaydet"
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:50
 msgid "Load game"
-msgstr "Oyunu yükle"
+msgstr "Oyun yükle"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
@@ -1047,7 +1047,7 @@ msgstr "Düzenleyici"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr "Emeği Geçenler"
+msgstr "Emeği geçenler"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
@@ -1127,11 +1127,11 @@ msgstr "Yeni Oyun - Çoklu oyuncu"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Load game:"
-msgstr "Oyunu yükle:"
+msgstr "Oyun yükle:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
-msgstr "Kaydedilmiş bir oyunu yükle"
+msgstr "Kaydedilmiş bir oyun yükle"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
@@ -1313,7 +1313,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
-msgstr "Kayıtlamayı aç:"
+msgstr "Günlük kaydını aç:"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Production indicators:"
@@ -1402,7 +1402,7 @@ msgstr "Senaryo"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr "Rasgele harita"
+msgstr "Rastgele harita"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
@@ -1762,7 +1762,7 @@ msgstr "Oyun adı: {game_name}"
 #: horizons/gui/modules/multiplayermenu.py:459
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr "Yaratan: {game_creator}"
+msgstr "Oluşturan: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 #: horizons/gui/modules/multiplayermenu.py:460
@@ -1782,10 +1782,10 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"Oyunun sürümü sizin sürümüzünden farklı. Çokoyunculu bir oyunda tüm "
-"oyuncuların kullandığı sürüm aynı olmalıdır. Tüm oyuncular son versiyona "
-"yüksektilse bu sorun çözülebilir. Oyunun sürümü: {game_version} Sizin "
-"sürümünüz: {own_version}"
+"Oyunun sürümü sizin sürümünüzden farklı. Çok oyunculu bir oyunda tüm "
+"oyuncuların kullandığı sürüm aynı olmalıdır. Tüm oyuncular son sürüme "
+"yükseltilirse bu sorun çözülebilir. Oyunun sürümü: {game_version} Sizdeki "
+"sürüm: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
@@ -1939,12 +1939,12 @@ msgstr "Kaydedilme zamanı {time}"
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "{amount} kez kaydedildi{amount} kez kaydedildi"
+msgstr[0] "{amount} kez kaydedildi"
 
 #: horizons/gui/modules/select_savegame.py:231
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr "Kayıtlı oyunun sürümü {version}"
+msgstr "Kayıtlı oyun sürümü {version}"
 
 #: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
@@ -2097,7 +2097,7 @@ msgstr "Ada boyutu sapması:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
-msgstr "Rasgele harita yaratmak için buraya tıklayınız"
+msgstr "Rastgele harita oluşturmak için buraya tıklayın"
 
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Invalid scenario file"
@@ -2390,11 +2390,11 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
-msgstr "Giderleri satın al"
+msgstr "Satın alma harcamaları"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr "Gelirleri sat"
+msgstr "Satış gelirleri"
 
 #: horizons/gui/widgets/routeconfig.py:107
 msgid "Stop route"
@@ -2739,7 +2739,7 @@ msgstr "Oduncu Kulübesi"
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:259
 msgid "Chops down trees and turns them into boards."
-msgstr "Ağaçları keser, odun paneller üretir."
+msgstr "Ağaçları keser, tahtalara dönüştürür."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:264
@@ -2780,7 +2780,7 @@ msgstr "Her çeşit pasta türü üretir."
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
 msgid "Pavilion"
-msgstr "Çardak"
+msgstr "İbadet Çadırı"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
@@ -2805,7 +2805,7 @@ msgstr "Tuz kurutur. Deniz kıyısına kurulur."
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:309
 msgid "Signal Fire"
-msgstr "Yangın Sinyali"
+msgstr "İşaret Ateşi"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:311
@@ -3362,7 +3362,7 @@ msgstr "Bu bina hizmetten çıkarıldı."
 #: horizons/world/traderoute.py:329
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr "ticaret rotası: {location} şehrine gidiyor"
+msgstr "Ticaret rotası: {location} şehrine gidiyor"
 
 #: horizons/world/traderoute.py:333
 #, python-brace-format
@@ -3647,11 +3647,11 @@ msgstr "inanç"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
-msgstr "paneller"
+msgstr "tahtalar"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Yerlilerden bazılarının ana meydana ulaşamıyor."
+msgstr "Yerlilerden bazıları ana meydana ulaşamıyor."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3727,7 +3727,7 @@ msgstr "balinalar"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
-msgstr "bozunluklar"
+msgstr "bozukluklar"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
@@ -3781,7 +3781,7 @@ msgstr "tütün bitkisi"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr "Bu bina için daha fazla {resource}'a gereksiniminiz var."
+msgstr "Bu bina için daha fazla {resource} gerekiyor."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
@@ -3864,7 +3864,7 @@ msgstr "Bu binanın sakinleri Kara Ölüm hastalığına yakalandı!"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr "{name} adında yeni bir gemi yaratıldı."
+msgstr "{name} adında yeni bir gemi oluşturuldu."
 
 #. This is a database entry: the name of a resource
 #| msgid "tobacco plants"
@@ -3877,7 +3877,7 @@ msgstr "birliktelik"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr "Yeni bir dünya yaratıldı."
+msgstr "Yeni bir dünya oluşturuldu."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
