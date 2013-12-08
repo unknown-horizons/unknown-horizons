@@ -26,12 +26,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     '
   - Bu, sizin Kaptan Günlüğü'nüz. Tüm bilgiler burada kayıtlı. Size verilen her görevin kısa bir bildirimi ekranın sol tarafında gösterilecektir.
   - Daha detaylı bilgi almak isterseniz günlüğünüz size yardımcı olacaktır.
-  - Bu günlüğü kapattıktan sonra, ekranın sağ üst köşesindeki haritanın hemen altında bulunan "Kaptanın Günlüğü" ikonuna (üzerinde mühürlü belge ve bir tüy kalem bulunan ikona) tıklayarak yeniden açabilirsiniz.
+  - Bu günlüğü kapattıktan sonra, ekranın sağ üst köşesindeki haritanın hemen altında bulunan "Kaptanın Günlüğü" simgesine (üzerinde mühürlü belge ve bir tüy kalem bulunan simgeye) tıklayarak yeniden açabilirsiniz.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    İlk görevinizi görmek için gezinti panelindeki "Sonraki girdileri oku" düğmesine basınız! Düğme buna benziyor:'
+    İlk görevinizi görmek için gezinti panelindeki "Sonraki girdileri oku" düğmesine basınız! Düğme şuna benzemektedir:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -80,7 +80,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Yani oduncunuz ile herhangi bir deponuz (ya da ambarınız) arasında bir yol inşa etmeniz gerekiyor.
   - ''
   - [BoldLabel, 'Görev: Ağaçlı bir alana bir oduncu kurun; sonra da yol yaparak oduncunuzu depoya bağlayın.']
-  - Toplayıcının gelip sizin ürettiğiniz tahta panelleri oduncunuzdan alışını izleyin. Oduncunuz için işçi istihdam etmenize gerek yok. Bu otomatik olarak yapılıyor.
+  - Toplayıcının gelip sizin ürettiğiniz tahtaları oduncunuzdan alışını izleyin. Oduncunuz için işçi istihdam etmenize gerek yok. Bu otomatik olarak yapılıyor.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -108,7 +108,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Bir ana meydan kurun. Bunun için ticari binalarda uzak bir alan tercih edin.]
+  - [Message, Bir ana meydan kurun. Bunun için ticari binalardan uzak bir alan tercih edin.]
   - [Headline, 'YENİ GÖREV: ANA MEYDAN']
   - [Image, content/gui/images/background/hr.png]
   - Halkınız, ürünleri alıp evlerine götürmek için bir ana meydana gereksinim duyarlar.
@@ -227,7 +227,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'YENİ GÖREV: BİR İBADET ÇADIRI YAP']
   - [Image, content/gui/images/background/hr.png]
   - Bu aletler şimdilik yeterli olacak. Tebrikler!
-  - Şimdi halkınıza, barınma, ana meydan ve yiyecek sağlayın.
+  - Artık halkınıza; barınma, ana meydan ve yiyecek sağlıyorsunuz.
   - 'Hala karşılamadığınız bir istek daha var. Bunu pazaryeri veya çadır sekmesinde görebilirsiniz: denizcileriniz ibadet edebilecekleri temel bir bina istiyor.'
   - Çözüm güneşten bir korunak sağlayıp rahibi barındıracak bir ibadet çadırıdır.
   - Buna benzer hizmet binaları da çadırlara bir patika ile bağlanmalıdır, aksi takdirde halkınız onlara ulaşamaz.
@@ -276,7 +276,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Artık yeni binalara erişiminiz var, tekrar İnşa menüsüne bakın.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - Orada yeni parlak bir sekme göründü.
+  - Yeni parlak bir sekme göründü.
   - Öncüler kıyafet isteyecekler, bu yüzden koyun yünü (çiftlikte üretilebilen ürünlerden biri) ile başlamak üzere kıyafet için bir üretim hattı ayarlamanız gerek.
   - Çiftlik, seçtiğiniz sürece bir taneden fazla (ve farklı) mal üretebilen özel bir üretim binasıdır.
   - Çiftliğin üretim çıktısı, çevresine inşa ettiğiniz alanların türüne göre değişir.
@@ -285,7 +285,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Buna daha sonra yakından bakacağız.'
   - Çiftliklerin, ham madde üreten diğer tüm şirketler gibi, depoya veya depolama merkezine bağlı olması gerekmez.
-  - Son üretim şirketinin birimleri çiftliğe ve depodan toplayıcılar veya depo çadırı son şirkete ulaştığı sürece her şey normal.
+  - Son üretim şirketinin birimleri, çiftliğe ve depodan toplayıcılar veya ambar çadırı son şirkete ulaştığı sürece her şey normal.
   - Eğer adanın diğer bölümlerinde (faydalı bir şey olabilir) veya diğer adalarda işlem yapmayı planlıyorsanız, toplayıcılara bir bağlantı gerekecek.
   - Çiftlik, düzgün çalışabilmesi için ek alan gerektirdiğinden sahile veya mevcut binalarınızın yakınına yapmamaya çalışın.
   - ''
@@ -316,12 +316,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Alanların farklı sınıfları, çiftlik birimlerinin daha fazla veya az zaman harcamasına ihtiyaç duyacak (beslemek, hasat etmek, üretmek vb… için). Bu yüzden bir çiftlik için inşa edilen alanların tümüne zamanında hizmet edemeyebilir.
   - Şimdilik hiç alan inşa etmediğiniz için bu durumları önemsemeniz gerekmiyor. Bunu değiştirelim!
   - ''
-  - [BoldLabel, 'Görev: Çifliğin menzili içerisinde en az bir otlak inşa edin ve isterseniz patates ekim alanı ekleyin.']
+  - [BoldLabel, 'Görev: Çiftliğin menzili içerisinde en az bir otlak inşa edin ve isterseniz patates ekim alanı ekleyin.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Mantıklı bir yere bir depo çadırı (seviye I sekmesi) inşa edin.]
+  - [Message, Mantıklı bir yere bir ambar çadırı (seviye I sekmesi) inşa edin.]
   - [Headline, 'YENİ GÖREV: DEPO İNŞA EDİN']
   - [Image, content/gui/images/background/hr.png]
   - Yakın zamanda oduncunuzu izlediniz mi?
@@ -338,15 +338,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Bu, geçici olarak yıkmak istemediğiniz ancak ihtiyacınız da olmayan bir şirketten para kurtarmanızı sağlar.'
-  - 'Diğer çözüm de burada şimdiye kadar bahsedilmeyen bir son seviye-I binası inşa etmektir: depo çadırı.'
+  - 'Diğer çözüm de burada şimdiye kadar bahsedilmeyen bir son seviye-I binası inşa etmektir: ambar çadırı.'
   - 'Bu binanın iki amacı var. Bina:
 
     * Mallarınız için daha fazla depo alanı sunar ve
 
     * kendi toplayıcılarını depoda olduğu gibi mal getirmesi için gönderir.'
-  - Şirketlerin de ürünlerinin toplanabilmesi için bir depoya bağlı olmaları gerektiğine dikkat edin ve eğer bir merkez depo toplayıcı görevleri ile çok yoğunsa, yardım etmesi için bir depo çadırı yerleştirebilirsiniz.
+  - Şirketlerin de ürünlerinin toplanabilmesi için bir depoya bağlı olmaları gerektiğine dikkat edin ve eğer bir merkez depo toplayıcı görevleri ile çok yoğunsa, yardım etmesi için bir ambar çadırı yerleştirebilirsiniz.
   - ''
-  - [BoldLabel, 'Görev: Tercihen toplayıcılara ihtiyacınız olacak yere bir depo çadırı yapın.']
+  - [BoldLabel, 'Görev: Tercihen toplayıcılara ihtiyacınız olacak yere bir ambar çadırı yapın.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -355,7 +355,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'YENİ GÖREV: BİR DOKUMACI İNŞA ET']
   - [Image, content/gui/images/background/hr.png]
   - Artık yün üretimi hazır ancak hala bu yünden kıyafet üretmek için bir dokumacıya ihtiyacınız var.
-  - İnşa edebileceğiniz iki yer var - çiftliğe veya Depo Çadırına (veya merkez depoya) yakın olabilir.
+  - İnşa edebileceğiniz iki yer var - çiftliğe veya Ambar Çadırı'na (veya merkez depoya) yakın olabilir.
   - İki durumda da patikaya bağlantılarından emin olmalısınız.
   - Dokumacıyı çiftliğe yakın yerleştirebilir ve hala yün alıp üretebileceğini görmek için tüm patikaları yok edebilirsiniz.
   - ''
@@ -380,12 +380,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, BEKLEYEN GÖREV YOK]
   - [Image, content/gui/images/background/hr.png]
   - Size verilen tüm görevleri başarıyla yerine getirdiniz. Artık dünya sizin özgür isteklerinizi ve cesur keşiflerinizi beklemek üzere emirlerinizi bekliyor!
-  - 'Eğer yapabileceğimiz veya yapmamız gereken bir öneriniz varsa, buraya ekleyin veya bırakın:'
+  - 'Eğer yapabileceğimiz veya yapmamız gereken bir öneriniz varsa, buraya ekleyin:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
   - Forumlarımız da size açık!
-  - Şimdiye kadar en başarılı sonuç IRC kanalımıza katılarak edinildi. İlk olarak bunu deneyebilirsiniz (-;
+  - Şimdiye kadar en başarılı sonuç IRC kanalı aracılığıyla edinildi. İlk olarak bunu deneyebilirsiniz (-;
   - [Pagebreak]
   - [Headline, Teşekkürler!]
   - [Image, content/gui/images/background/hr.png]
