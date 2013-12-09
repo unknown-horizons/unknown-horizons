@@ -156,6 +156,8 @@ class Inventory(Container):
 			if not self._inventory.get_free_space_for(0):
 				for i in xrange(index, self.items_per_line):
 					button = Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
+					# set min & max_size to prevent pychan to expand this dynamic widget (icon)
+					button.min_size = button.max_size = ImageFillStatusButton.ICON_SIZE
 					current_hbox.addChild(button)
 
 		if self.display_legend:
