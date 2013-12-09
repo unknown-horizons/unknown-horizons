@@ -73,6 +73,8 @@ class CollectingComponent(Component):
 				collector.remove()
 			else:
 				collector.decouple_from_home_building()
+				#TODO remove the remove call() #2123
+				collector.remove()
 		assert not [c for c in self.__collectors]
 		super(CollectingComponent, self).remove()
 		self.__collectors = None
