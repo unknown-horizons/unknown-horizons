@@ -17,13 +17,6 @@ components:
     tabs: [TowerOverviewTab,]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
-- ColorOverlayComponent:
-    overlays:
-      as_woodentower0:
-        idle:
-        - [0, color_idle, [0, 255, 0], [owner.color, 128]]
-        - [0, color_idle, [255, 0, 0], [0, 0, 255, 128]]
-        # [0, color_idle, [0, 0, 255], [0, 0, 0, 0]]
 actionsets:
   TIER.PIONEERS:
     as_woodentower0:
