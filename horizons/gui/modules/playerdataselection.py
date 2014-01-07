@@ -61,7 +61,13 @@ class PlayerDataSelection(object):
 			hbox = HBox(name='line_{index}'.format(index=i))
 			hbox.addChildren(colorlabels[i:i+5])
 			self.colors.addChild(hbox)
-
+		
+		playertextfield = self.gui.findChild(name='playername')
+		def playertextfield_clicked():
+			if playertextfield.text == 'Unnamed Traveler':
+				playertextfield.text = "";
+		playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
+		
 		self.gui.distributeData({
 			'playername': unicode(horizons.globals.fife.get_uh_setting("Nickname")),
 		})
