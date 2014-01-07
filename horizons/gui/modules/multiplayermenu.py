@@ -317,6 +317,12 @@ class CreateGame(Window):
 		self._gui.findChild(name="maplist").mapEvents({
 			'maplist/action': self._update_infos
 		})
+		
+		gamenametextfield = self._gui.findChild(name='gamename')
+		def gamename_clicked():
+			if gamenametextfield.text == 'Unnamed Game':
+				gamenametextfield.text = ""
+		gamenametextfield.capture(gamename_clicked, event_name='mouseClicked')
 		self._gui.show()
 
 	def act(self):
