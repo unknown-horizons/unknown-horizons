@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-12-08 20:19+0200\n"
+"PO-Revision-Date: 2014-01-09 14:04+0200\n"
 "Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <http://hosted.weblate.org/projects/uh/uh/tr/>\n"
 "Language: tr\n"
@@ -2264,8 +2264,7 @@ msgstr "Gemi genel görünümü"
 
 #: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
-"Yeni bir yerleşim yeri kurmak için gemiyi adaya yakın bir yere görütünüz."
+msgstr "Yeni bir yerleşim yeri kurmak için gemiyi adaya yakın bir yere götürün."
 
 #: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
