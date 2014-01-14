@@ -98,6 +98,7 @@ class MultiplayerMenu(Window):
 		if NetworkInterface().is_connected and not NetworkInterface().is_joined:
 			NetworkInterface().disconnect()
 
+        # player name and color gets updated and saved on-menu-close
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 

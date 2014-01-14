@@ -51,8 +51,24 @@ class SingleplayerMenu(Window):
 	def __init__(self, windows):
 		super(SingleplayerMenu, self).__init__(windows)
 
-		self._mode = None
+	def hide(self):
+		self._gui.hide()
 
+	def close(self):
+		self.hide()
+		# player name gets updated on-menu-close (only name, cause color is already
+		# saved and updated on color selection in PlayerDataSelection)
+		# TODO: may add text saving in typing in PlayerDataSelection, but tricky!
+		horizons.globals.fife.set_uh_setting("Nickname", self._playerdata.get_player_name())
+		horizons.globals.fife.save_settings()
+		
+	def show(self):
+		# TODO: this parallels with MultiplayerMenu's show() to init _gui and _playerdata
+		# every time this menu is shown (which is not so memory efficient), but the
+		# _playerdata gets updated between MultiplayerMenu and SingleplayerMenu
+		 
+		# on start show, _mode must be set to None, otherwise later _select_mode will break
+		self._mode = None
 		self._gui = load_uh_widget('singleplayermenu.xml')
 		self._gui.mapEvents({
 			'cancel'   : self._windows.close,
@@ -66,11 +82,7 @@ class SingleplayerMenu(Window):
 		self._aidata = AIDataSelection()
 		self._gui.findChild(name="playerdataselectioncontainer").addChild(self._playerdata.get_widget())
 		self._gui.findChild(name="aidataselectioncontainer").addChild(self._aidata.get_widget())
-
-	def hide(self):
-		self._gui.hide()
-
-	def show(self):
+		
 		self._gui.findChild(name='scenario').marked = True
 		self._select_mode('scenario')
 
