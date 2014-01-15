@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.globals
+
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
@@ -115,9 +117,17 @@ class BuildTab(TabInterface):
 		self.row_definitions = rows
 		self.headline = _(headline) if headline else headline # don't translate None
 		self.helptext = _(helptext) if helptext else self.headline
-		self.build_menu_config = build_menu_config
 
+		self._settings = horizons.globals.fife._setting
+		saved_build_style = self._settings.get("unknownhorizons", "buildstyle")
+		self.cur_build_menu_config = self.__class__.build_menus[ saved_build_style ]
 		super(BuildTab, self).__init__(icon_path=icon_path)
+
+	@classmethod
+	def get_saved_buildstyle(cls):
+		cls._settings = horizons.globals.fife._setting
+		saved_build_style = cls._settings.get("unknownhorizons", "buildstyle")
+		return cls.build_menus[ saved_build_style ]
 
 	def init_widget(self):
 		self.__current_settlement = None
@@ -250,14 +260,18 @@ class BuildTab(TabInterface):
 		self.__class__.last_active_build_tab = 0
 		self.session.ingame_gui.show_build_menu(update=True)
 
+		# Store new setting
+		self._settings.set("unknownhorizons", "buildstyle", new_index)
+		self._settings.apply()
+		self._settings.save()
+
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
 		"""Create according to current build menu config
 		@param build_callback: function to call to enable build mode, has to take building type parameter
 		"""
-		source = cls.cur_build_menu_config
-
+		source = cls.get_saved_buildstyle()
 		# parse
 		data = YamlCache.get_file( source, game_data=True )
 		if 'meta' not in data:
