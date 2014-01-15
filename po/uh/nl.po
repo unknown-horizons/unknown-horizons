@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-11-30 11:55+0200\n"
-"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
+"PO-Revision-Date: 2014-01-15 14:07+0200\n"
+"Last-Translator: Dieter Adriaenssens <ruleant@users.sourceforge.net>\n"
 "Language-Team: Dutch <http://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1578,7 +1578,7 @@ msgstr "{key} is al toegewezen aan {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr "Wilt je deze overschrijven?"
+msgstr "Wilt u deze overschrijven?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
@@ -1743,15 +1743,15 @@ msgstr "Fatale Netwerkfout"
 
 #: horizons/gui/modules/multiplayermenu.py:142
 msgid "Could not connect to master server."
-msgstr "Kan niet verbinden met de masterserver."
+msgstr "Kan geen verbinding maken met de hoofdserver."
 
 #: horizons/gui/modules/multiplayermenu.py:143
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Controleer uw internetverbinding. Als die in orde is, betekend dit dat onze "
-"masterserver tijdelijk niet beschikbaar is."
+"Controleer uw internetverbinding. Als die in orde is, betekent dit dat onze "
+"hoofdserver tijdelijk niet beschikbaar is."
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
@@ -1808,7 +1808,7 @@ msgstr "Wachtwoord van het spel"
 
 #: horizons/gui/modules/multiplayermenu.py:268
 msgid "Enter password:"
-msgstr "Voer voorvoegsel in:"
+msgstr "Wachtwoord invoeren:"
 
 #: horizons/gui/modules/multiplayermenu.py:347
 #: horizons/gui/modules/singleplayermenu.py:407
@@ -1840,7 +1840,7 @@ msgstr "Klik om de naam van uw nederzetting te wijzigen"
 #: horizons/gui/modules/multiplayermenu.py:504
 #, python-brace-format
 msgid "Kick {player}"
-msgstr "Schepen van {player}"
+msgstr "{player} verbannen"
 
 #: horizons/gui/modules/multiplayermenu.py:571
 #, python-brace-format
@@ -1921,7 +1921,7 @@ msgstr "Er zijn geen opgeslagen spellen om te laden."
 
 #: horizons/gui/modules/select_savegame.py:144
 msgid "No filename given"
-msgstr "U heeft geen bestandsnaam ingevuld"
+msgstr "Geen bestandsnaam opgegeven"
 
 #: horizons/gui/modules/select_savegame.py:145
 msgid "Please enter a valid filename."
@@ -1939,7 +1939,7 @@ msgstr "Een opgeslagen spel me de naam {name} bestaat al."
 
 #: horizons/gui/modules/select_savegame.py:153
 msgid "Overwrite it?"
-msgstr "Wilt u het overschrijven?"
+msgstr "Wilt u deze overschrijven?"
 
 #: horizons/gui/modules/select_savegame.py:217
 msgid "Unknown savedate"
@@ -1962,7 +1962,7 @@ msgstr[1] "{amount} keer opgeslagen"
 #: horizons/gui/modules/select_savegame.py:231
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr "Savegame versie {version}"
+msgstr "Opgeslagen spel versie {version}"
 
 #: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
@@ -1989,7 +1989,7 @@ msgstr "Weet u zeker dat u de savegame '{name}' wilt verwijderen?"
 
 #: horizons/gui/modules/select_savegame.py:257
 msgid "Confirm deletion"
-msgstr "Bevestig verwijderen"
+msgstr "Verwijderen bevestigen"
 
 #: horizons/gui/modules/select_savegame.py:262
 msgid "Error!"
@@ -2034,7 +2034,7 @@ msgstr ""
 
 #: horizons/gui/modules/settings.py:133
 msgid "Do you want to continue?"
-msgstr "Wil u verdergaan?"
+msgstr "Wilt u verdergaan?"
 
 #: horizons/gui/modules/settings.py:230
 msgid "Warning"
@@ -2067,9 +2067,7 @@ msgstr ""
 #: horizons/gui/modules/settings.py:261
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
-"Controleer het ingevoerde poortnummer en check of die in de aangegaven range "
-"ligt."
+msgstr "Kijk het ingevoerde poortnummer na zodat deze binnen de grenzen valt."
 
 #: horizons/gui/modules/settings.py:272
 msgid "Failed to apply new network settings."
@@ -2205,7 +2203,7 @@ msgstr "Overzicht"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr "Bouw gerelateerde gebouwen"
+msgstr "Bouw soortgelijke gebouwen"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
@@ -2226,8 +2224,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
-"Zal {resource_name} kopen voor {price} goudstukken/t zolang er minder zijn "
-"dan {limit}t op voorraad zijn."
+"Zal {resource_name} kopen voor {price} goudstukken/t zodra er minder dan "
+"{limit}t op voorraad zijn."
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2495,7 +2493,7 @@ msgstr "Menger"
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
 msgid "Produces condiments out of spices."
-msgstr "Produceert voedseltoevoegingen uit kruiden."
+msgstr "Produceert specerijen uit kruiden."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:77
