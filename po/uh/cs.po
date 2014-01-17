@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-11-15 16:26+0200\n"
+"PO-Revision-Date: 2014-01-17 10:17+0200\n"
 "Last-Translator: Michal Čihař <michal@cihar.com>\n"
 "Language-Team: Czech <http://hosted.weblate.org/projects/uh/uh/cs/>\n"
 "Language: cs\n"
@@ -337,7 +337,7 @@ msgstr "Daňové zatížení"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr "Povýšit povolení:"
+msgstr "Povolení k povýšení:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
@@ -3506,7 +3506,7 @@ msgstr "brambory"
 
 #. This is a database entry: the name of a resource
 msgid "iron ore"
-msgstr "železný důl"
+msgstr "železná ruda"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
@@ -3650,7 +3650,7 @@ msgstr "cihly"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr "zlatý důl"
+msgstr "zlatá ruda"
 
 #. This is a database entry: the name of a resource
 msgid "community"
