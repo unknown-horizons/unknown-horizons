@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-10-15 21:50+0200\n"
+"PO-Revision-Date: 2014-01-18 17:48+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.7\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -140,28 +140,28 @@ msgid "Inhabitants"
 msgstr "Habitants"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Augmenta la velocitat del joc (+)"
+msgstr "Augmenta la velocitat del joc ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Disminueix la velocitat del joc (-)"
+msgstr "Disminueix la velocitat del joc ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Gira el mapa cap a l'esquerra (,)"
+msgstr "Gira el mapa cap a l'esquerra ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Gira el mapa cap a a dreta (.)"
+msgstr "Gira el mapa cap a a dreta ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -172,32 +172,32 @@ msgid "Zoom out"
 msgstr "Allunya el zoom"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Destrueix (X)"
+msgstr "Destrueix ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Quadern de bitàcola del capità"
+msgstr "Quadern de bitàcola del capità({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Menú de construcció (B)"
+msgstr "Menú de construcció ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomàcia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Menú del joc (Esc)"
+msgstr "Menú del joc ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -1158,10 +1158,9 @@ msgid "Create a new game"
 msgstr "Crea una partida nova"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Uneix-te a la partida"
+msgstr "Uneix-te a la partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1368,10 +1367,9 @@ msgid "Reset to default settings"
 msgstr "Torna als paràmetres per defecte"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Desa la partida"
+msgstr "Desa els canvis"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1542,34 +1540,34 @@ msgstr ""
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Esteu segur que voleu sortir de Unknown Horizons?"
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
-msgstr ""
+msgstr "Surt de la partida"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "No es pot fer servir la diplomàcia"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "No podeu fer servir la diplomàcia per que no hi ha cap més jugador."
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} caselles"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Premeu la tecla que voleu fer servir"
 
 #: horizons/gui/modules/hotkeys_settings.py:140
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} ja es fa servir per {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
@@ -1805,10 +1803,9 @@ msgid "Not ready"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Introduïu el vostre missatge:"
+msgstr "Introduïu el vostre missatge"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -3412,20 +3409,18 @@ msgid "gems"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "brine deposit"
-msgstr "Depòsit de recursos"
+msgstr "Jaciment de sal"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "gem deposit"
-msgstr "Depòsit de recursos"
+msgstr "Jaciment de gemmes"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3480,10 +3475,9 @@ msgid "trees"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "marble deposit"
-msgstr "Depòsit de recursos"
+msgstr "Jaciment de marbre"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3547,10 +3541,9 @@ msgid "iron ingots"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "coal deposit"
-msgstr "Depòsit de recursos"
+msgstr "Jaciment de carbó"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3771,10 +3764,9 @@ msgid "Your game has been autosaved."
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Resource deposit"
 msgid "gold deposit"
-msgstr "Depòsit de recursos"
+msgstr "Jaciment d'or"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
