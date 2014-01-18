@@ -46,14 +46,6 @@ class MultiplayerMenu(Window):
 	def __init__(self, mainmenu, windows):
 		super(MultiplayerMenu, self).__init__(windows)
 		self._mainmenu = mainmenu
-
-	def hide(self):
-		self._gui.hide()
-
-	def show(self):
-		if not self._check_connection():
-			return
-
 		self._gui = load_uh_widget('multiplayermenu.xml')
 		self._gui.mapEvents({
 			'cancel' : self._windows.close,
@@ -66,40 +58,49 @@ class MultiplayerMenu(Window):
 		self._playerdata = PlayerDataSelection()
 		self._gui.findChild(name="playerdataselectioncontainer").addChild(self._playerdata.get_widget())
 
-		refresh_worked = self._refresh()
-		if not refresh_worked:
+		# to track if the menu window is opened or not.
+		self._is_open = False
+
+	def hide(self):
+		# Save the player-data on hide so that other menus gets updated data
+		self._playerdata.save_settings()
+		self._gui.hide()
+
+	def show(self):		
+		if not self._check_connection():
+			return
+
+		if not self._refresh():
 			self._windows.close()
 			return
 
-		# FIXME workaround for multiple callback registrations
-		# this happens because subscription is done when the window is showed, unsubscription
-		# only when it is closed. if new windows appear and disappear, show is called multiple
-		# times. the error handler is used throughout the entire mp menu, that's why we can't
-		# unsubscribe in hide. need to find a better solution.
-		NetworkInterface().discard("error", self._on_error)
-		NetworkInterface().subscribe("error", self._on_error)
-
+		if not self._is_open:
+			self._is_open = True
+			# subscribe "error" when this menu window is firstly opened
+			# only unsubscribe if this menu window is closed
+			NetworkInterface().subscribe("error", self._on_error)
+		
+		# get updated player data
+		self._playerdata.update_data()
+		
 		self._gui.show()
 
-		# TODO Remove once loading a game is implemented again
+		# TODO: Remove once loading a game is implemented again
 		self._gui.findChild(name='load').parent.hide()
 
 	def close(self):
-		# when the connection to the master server fails, the window will be closed before
-		# anything has been setup
-		if not hasattr(self, '_gui'):
+		# if the window is not open (due to connection errors), just do nothing
+		if(not self._is_open):
 			return
-
+		
 		self.hide()
 
 		NetworkInterface().unsubscribe("error", self._on_error)
+		self._is_open = False
 
 		# the window is also closed when a game starts, don't disconnect in that case
 		if NetworkInterface().is_connected and not NetworkInterface().is_joined:
 			NetworkInterface().disconnect()
-
-		NetworkInterface().change_name(self._playerdata.get_player_name())
-		NetworkInterface().change_color(self._playerdata.get_player_color().id)
 
 	def on_return(self):
 		self._join_game()
@@ -160,7 +161,7 @@ class MultiplayerMenu(Window):
 			self._windows.show_popup(_("Fatal Network Error"),
 		                             _("Something went wrong with the network:") + u'\n' +
 		                             unicode(exception) )
-			# FIXME this shouldn't be necessary, the main menu window is still somewhere
+			# FIXME: this shouldn't be necessary, the main menu window is still somewhere
 			# in the stack and we just need to get rid of all MP related windows
 			self._mainmenu.show_main()
 

@@ -68,9 +68,12 @@ class SingleplayerMenu(Window):
 		self._gui.findChild(name="aidataselectioncontainer").addChild(self._aidata.get_widget())
 
 	def hide(self):
+		# Save the player-data on hide so that other menus gets updated data
+		self._playerdata.save_settings()
 		self._gui.hide()
 
 	def show(self):
+		self._playerdata.update_data()
 		self._gui.findChild(name='scenario').marked = True
 		self._select_mode('scenario')
 
