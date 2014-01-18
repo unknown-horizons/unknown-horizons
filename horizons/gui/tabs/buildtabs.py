@@ -118,15 +118,15 @@ class BuildTab(TabInterface):
 		self.headline = _(headline) if headline else headline # don't translate None
 		self.helptext = _(helptext) if helptext else self.headline
 
-		self._settings = horizons.globals.fife._setting
-		saved_build_style = self._settings.get("unknownhorizons", "buildstyle")
+		#get build style
+		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
 		self.cur_build_menu_config = self.__class__.build_menus[ saved_build_style ]
+
 		super(BuildTab, self).__init__(icon_path=icon_path)
 
 	@classmethod
 	def get_saved_buildstyle(cls):
-		cls._settings = horizons.globals.fife._setting
-		saved_build_style = cls._settings.get("unknownhorizons", "buildstyle")
+		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
 		return cls.build_menus[ saved_build_style ]
 
 	def init_widget(self):
@@ -260,11 +260,9 @@ class BuildTab(TabInterface):
 		self.__class__.last_active_build_tab = 0
 		self.session.ingame_gui.show_build_menu(update=True)
 
-		# Store new setting
-		self._settings.set("unknownhorizons", "buildstyle", new_index)
-		self._settings.apply()
-		self._settings.save()
-
+		#save build style
+		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
+		horizons.globals.fife.save_settings();
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):

@@ -59,6 +59,7 @@
 		<Setting name="AtlasesEnabled" type="bool">True</Setting>
 		<Setting name="AtlasGenerationEnabled" type="bool">True</Setting>
 		<Setting name="MaxAtlasSize" type="int">2048</Setting>
+		<Setting name="Buildstyle" type="int">0</Setting>
 	</Module>
 	<Module name="keys">
 		<Setting name="TILE_OWNER_HIGHLIGHT" type="list"> A </Setting>
