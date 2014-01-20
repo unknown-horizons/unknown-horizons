@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-01-18 17:48+0200\n"
+"PO-Revision-Date: 2014-01-20 14:40+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -1571,141 +1571,149 @@ msgstr "{key} ja es fa servir per {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Voleu sobreescriure'l?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Confirmació de la sobreescriptura"
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr ""
+msgstr "Cites"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "Consells per jugar"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "Premeu «ESC« per accedir al menú del joc."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "Feu servir «MAJÚSCULES» per posar diversos edificis."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Actualment només es pot jugar als primers {tier} nivells."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Feu servir «P» per posar el joc en pausa."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "Podeu fer carreteres arrossegant amb el botó esquerre premut."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "Podeu posar diversos edificis mantenint premuda la tecla «MAJÚSCULES»."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
+"Podeu incrementar la felicitat dels vostres habitants abaixant-los els "
+"impostos."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Construïu hospitals i estacions de bombers per protegir als vostres "
+"habitants les malalties i el foc."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Construïu tendes de magatzem per incrementar la capacitat d'estocatge."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "Assegureu-vos que totes les cases són al voltant d'un mercat."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
-msgstr ""
+msgstr "Premeu «T» per fer els arbres transparents."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Barrejat"
 
 #. translators: these are descriptions of the current task while loading a
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr ""
+msgstr "S'està engegant el motor…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr ""
+msgstr "S'està pescant peix…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "S'està dibuixat la interfície d'usuari…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr ""
+msgstr "S'està activant el rellotge…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr ""
+msgstr "S'estan mastegant les dades de la partida…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr ""
+msgstr "S'estant formant les illes…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "S'estan preparant els plànols del pre-projecte…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr ""
+msgstr "S'està omplint el món d'aigua…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr ""
+msgstr "S'està fent créixer els animals…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr ""
+msgstr "S'està convencent l'IA…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr ""
+msgstr "S'està enterrant els tresors…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "No es pot trobar pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"El mode multijugador necessita la llibreria «pyenet» i no la teniu "
+"instal·lada."
 
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"Usuaris de Linux: Proveu d'instal·lar pyenet amb el vostre gestor de "
+"paquets."
 
 #: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "No es pot inicialitzar la xarxa."
 
 #: horizons/gui/modules/multiplayermenu.py:131
 #: horizons/gui/modules/settings.py:273
@@ -1721,53 +1729,55 @@ msgstr "Comproveu-ne la configuració a la secció de xarxa."
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "S'ha produït un error de xarxa fatal"
 
 #: horizons/gui/modules/multiplayermenu.py:142
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "No s'ha pogut connectar al servidor principal."
 
 #: horizons/gui/modules/multiplayermenu.py:143
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
+"Si la vostra connexió a Internet és correcta, vol dir que el nostre servidor "
+"principal està temporalment fora de servei."
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "S'ha produït un problema a la xarxa:"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Version differs!"
-msgstr ""
+msgstr "No és la mateixa versió!"
 
 #: horizons/gui/modules/multiplayermenu.py:205
 #: horizons/gui/modules/multiplayermenu.py:457
 #, python-brace-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Mapa: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:206
 #: horizons/gui/modules/multiplayermenu.py:458
 #, python-brace-format
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Nom: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:207
 #: horizons/gui/modules/multiplayermenu.py:459
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr ""
+msgstr "Creador: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 #: horizons/gui/modules/multiplayermenu.py:460
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Jugadors: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:228
 msgid "Wrong version"
-msgstr ""
+msgstr "La versió no és correcta"
 
 #: horizons/gui/modules/multiplayermenu.py:229
 #, python-brace-format
@@ -1777,30 +1787,33 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
+"La versió de la partida no és igual que la vostra. Tots els jugadors han de "
+"tenir la mateixa. Es pot sol·lucionar si tots els jugadors s'actualitzen a "
+"la darrera. Versió de la partida: {game_version} La vostra: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
-msgstr ""
+msgstr "Contrasenya de la partida"
 
 #: horizons/gui/modules/multiplayermenu.py:268
 msgid "Enter password:"
-msgstr ""
+msgstr "Introduïu la contrasenya:"
 
 #: horizons/gui/modules/multiplayermenu.py:347
 #: horizons/gui/modules/singleplayermenu.py:407
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Nombre de jugadors recomanat: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:393
 #: horizons/network/networkinterface.py:526
 msgid "Ready"
-msgstr ""
+msgstr "A punt"
 
 #: horizons/gui/modules/multiplayermenu.py:395
 msgid "Not ready"
-msgstr ""
+msgstr "Encara no està a punt"
 
 #: horizons/gui/modules/multiplayermenu.py:430
 #| msgid "Enter your message:"
@@ -1810,72 +1823,72 @@ msgstr "Introduïu el vostre missatge"
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
 msgid "Click here to change your name and/or color"
-msgstr ""
+msgstr "Feu clic aquí per canviar el vostre nom o color"
 
 #: horizons/gui/modules/multiplayermenu.py:504
 #, python-brace-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "S'ha expulsat a {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:571
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{player} s'ha unit a la partida"
 
 #: horizons/gui/modules/multiplayermenu.py:574
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{player} ha deixat la partida"
 
 #: horizons/gui/modules/multiplayermenu.py:580
 msgid "You are now ready"
-msgstr ""
+msgstr "Esteu preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:582
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "Ja no esteu preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} està preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:587
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} ja no està preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr ""
+msgstr "Ara us dieu {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:593
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "{player} ara es diu {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:597
 msgid "You changed your color"
-msgstr ""
+msgstr "Heu canviat el vostre color"
 
 #: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player} ha canviat de color"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
-msgstr ""
+msgstr "Expulsat"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "Heu estat expulsat pel creador de la partida"
 
 #: horizons/gui/modules/multiplayermenu.py:606
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player} ha estat expulsat pel creador de la partida"
 
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
