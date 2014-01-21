@@ -141,5 +141,5 @@ class WorldEditor(object):
 			self.world.full_map[coords] = self.world.fake_tile_map[coords]
 		Minimap.update(coords)
 
-		# update cam, that's necessary because of the static layer WATER and GROUND
+		# update cam, that's necessary because of the static layer WATER
 		self.session.view.cam.refresh()
