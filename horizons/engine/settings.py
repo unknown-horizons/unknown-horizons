@@ -99,7 +99,9 @@ class Settings(object):
 
 	def upgrade_settings(self):
 		"""Upgrades the settings to a newer version necessary."""
-		current_version = self.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION)
+		# if the settings file doesn't exist, force an update with
+		# settings version 1 as default value
+		current_version = self.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION, 1)
 		template_version = self._settings_template_serializer.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION)
 		if current_version != template_version:
 			print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
