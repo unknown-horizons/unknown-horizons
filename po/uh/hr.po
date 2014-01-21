@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-05-20 12:13+0200\n"
-"Last-Translator: Daniel Tominac <tominaccell@gmail.com>\n"
+"PO-Revision-Date: 2014-01-21 22:26+0200\n"
+"Last-Translator: T S <tstritof@gmail.com>\n"
 "Language-Team: Croatian <http://hosted.weblate.org/projects/uh/uh/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -144,28 +144,28 @@ msgid "Inhabitants"
 msgstr "Stanovnci"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Povećaj brzinu igre (+)"
+msgstr "Povećaj brzinu igre ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Smanji brzinu igre (-)"
+msgstr "Smanji brzinu igre ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Zakreni mapu suprotno od kazaljke na satu (,)"
+msgstr "Zakreni mapu suprotno od kazaljke na satu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Zakreni mapu u smjeru kazaljke na satu (.)"
+msgstr "Zakreni mapu u smjeru kazaljke na satu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -176,32 +176,32 @@ msgid "Zoom out"
 msgstr "Udalji"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Uništi (X)"
+msgstr "Uništi ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Kapetanov zapisnik rada (L)"
+msgstr "Kapetanov dnevnik ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Izbornik gradnje (B)"
+msgstr "Izbornik gradnje ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomacija"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Glavni izbornik (Esc)"
+msgstr "Glavni izbornik ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -1021,9 +1021,8 @@ msgid "Cancel game"
 msgstr "Otkaži igru"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Učitavanje ..."
+msgstr "Učitavanje…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1160,10 +1159,9 @@ msgid "Create a new game"
 msgstr "Kreiraj novu igru"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Pridruži se u igru"
+msgstr "Pridruži se u igru:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1379,10 +1377,9 @@ msgid "Reset to default settings"
 msgstr "Resetiraj na početne vrijednosti"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Spremi igru"
+msgstr "Spremi promijene"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1657,64 +1654,53 @@ msgstr "Pritisnite 'T' kako bi stabla postala prozirna."
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Miješano"
 
 #. translators: these are descriptions of the current task while loading a
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
-#, fuzzy
 msgid "Starting engine…"
-msgstr "Pokrećem mehanizam..."
+msgstr "Pokrećem mehanizam…"
 
 #: horizons/gui/modules/loadingscreen.py:101
-#, fuzzy
 msgid "Catching fish…"
-msgstr "Hvatam ribu..."
+msgstr "Pecam ribe…"
 
 #: horizons/gui/modules/loadingscreen.py:102
-#, fuzzy
 msgid "Drawing user interface…"
-msgstr "Crtam korisničko sučelje..."
+msgstr "Crtam korisničko sučelje…"
 
 #: horizons/gui/modules/loadingscreen.py:103
-#, fuzzy
 msgid "Activating timer…"
-msgstr "Aktiviram štopericu..."
+msgstr "Aktiviram mjerač vremena…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-#, fuzzy
 msgid "Chomping game data…"
-msgstr "Cjepam podatke igre..."
+msgstr "Pripremam podatke…"
 
 #: horizons/gui/modules/loadingscreen.py:105
-#, fuzzy
 msgid "Shaping islands…"
-msgstr "Oblikujem otoke..."
+msgstr "Oblikujem otoke…"
 
 #: horizons/gui/modules/loadingscreen.py:106
-#, fuzzy
 msgid "Preparing blueprints…"
-msgstr "Pripremam nacrte..."
+msgstr "Pripremam nacrte…"
 
 #: horizons/gui/modules/loadingscreen.py:107
-#, fuzzy
 msgid "Filling world with water…"
-msgstr "Punim svijet vodom..."
+msgstr "Punim svijet vodom…"
 
 #: horizons/gui/modules/loadingscreen.py:108
-#, fuzzy
 msgid "Raising animals…"
-msgstr "Uzgajam životinje..."
+msgstr "Uzgajam životinje…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Convincing AI…"
-msgstr "Uvjeravam umjetnu inteligenciju..."
+msgstr "Uvjeravam umjetnu inteligenciju…"
 
 #: horizons/gui/modules/loadingscreen.py:110
-#, fuzzy
 msgid "Burying treasures…"
-msgstr "Kupujem blaga..."
+msgstr "Zakapam blago…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -1834,16 +1820,14 @@ msgid "Ready"
 msgstr "Spremno"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#, fuzzy
 #| msgid "Not Ready"
 msgid "Not ready"
 msgstr "Nije spremno"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Napiši svoju poruku:"
+msgstr "Napiši svoju poruku"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -2021,7 +2005,7 @@ msgstr "Igra"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Isključeno"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2263,13 +2247,12 @@ msgid "Main square overview"
 msgstr "Pregled glavnog trga"
 
 #: horizons/gui/tabs/mainsquaretabs.py:143
-#, fuzzy
 msgid "Upgrade not possible:"
-msgstr "Nije moguće"
+msgstr "Nadogradnja nije moguća:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Ovo je najviši igrivi rang za sada!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
@@ -2351,7 +2334,7 @@ msgstr "prodaj za {sellprice} zlatnika"
 #: horizons/gui/widgets/inventory.py:166
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:168
 #, python-brace-format
@@ -2462,7 +2445,7 @@ msgstr "Nije vam dozvoljeno trgovanje s ovim igračem"
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
@@ -2786,10 +2769,9 @@ msgstr "Snabdjeva stanovnike ss potrepštinama. Održava zajednicu."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Rudnik željeza"
+msgstr "Rudnik"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
@@ -3322,7 +3304,7 @@ msgstr "Zdravlje: {health}"
 #: horizons/world/building/__init__.py:123
 #, python-brace-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
@@ -3374,7 +3356,7 @@ msgstr "Ova građevina mora biti na djelomično ravnom tlu."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Stanovnici su zaraženi kugom!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3385,10 +3367,9 @@ msgid "These residents are unhappy."
 msgstr "Ovi stanovnici su nesretni."
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Neki od tvojih stanovnika nemaju pristup glavnom trgu."
+msgstr "Ovi stanovnici nemaju pristup glavnom trgu."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3399,9 +3380,8 @@ msgid "This building has a very low productivity."
 msgstr "Ova građevina ima veoma lošu produktvnost."
 
 #: horizons/world/status.py:121
-#, fuzzy
 msgid "This building is decommissioned."
-msgstr "Ova građevina je raspuštena."
+msgstr "Ova građevina je uništena."
 
 #: horizons/world/traderoute.py:329
 #, python-brace-format
@@ -3448,10 +3428,9 @@ msgid "Attacking {owner}"
 msgstr "Napadam {owner}"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Hindi"
 msgid "indigo"
-msgstr "Indijski"
+msgstr "indigo"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3464,7 +3443,7 @@ msgstr "Vašu zgradu je zahvatio požar!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "slana voda"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
@@ -3480,23 +3459,21 @@ msgstr "sreća"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "dragulji"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "nalazište željeza"
+msgstr "slani izvor"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr "Neki stanovnici su se upravo odselili."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "stone deposit"
 msgid "gem deposit"
-msgstr "nalazište kamena"
+msgstr "nalazište dragulja"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3511,28 +3488,26 @@ msgid "stone tops"
 msgstr "kameni komadi"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "kakao zrnje"
+msgstr "zrna kave"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "vuna"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "listovi duhana"
+msgstr "listovi čaja"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "kava"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
-msgstr "kakao zrnje"
+msgstr "kakao zrna"
 
 #. This is a database entry: the name of a resource
 msgid "food"
@@ -3547,20 +3522,18 @@ msgid "pigs for slaughter"
 msgstr "svinje za klanje"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Precaution"
 msgid "recreation"
-msgstr "Opreznost"
+msgstr "rekreacija"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
 msgstr "stabla"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "nalazište gline"
+msgstr "nalazište mramora"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3573,7 +3546,7 @@ msgstr "nalazište gline"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} i {player2} su završili s ratom i sada su udruženi."
+msgstr "{player1} i {player2} su završili s ratom i sada su saveznici."
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
@@ -3581,7 +3554,7 @@ msgstr "kakao"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "mramorne ploče"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
@@ -3593,13 +3566,12 @@ msgstr "željezna ruda"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "parfem"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
-msgstr "biljke duhana"
+msgstr "pamuk"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
@@ -3610,16 +3582,14 @@ msgid "Merchants"
 msgstr "Trgovci"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "hop plants"
-msgstr "začinsko bilje"
+msgstr "hmelj"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Sea"
 msgid "tea"
-msgstr "More"
+msgstr "čaj"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
@@ -3630,10 +3600,9 @@ msgid "iron ingots"
 msgstr "željezne poluge"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
-msgstr "nalazište gline"
+msgstr "nalazište ugljena"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3657,21 +3626,20 @@ msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr ""
-"Došli ste do trenutno najvišljeg sloja. Vaši stanovnici se više neće "
-"unaprijeđivati."
+"Došli ste do trenutno najviše razine. Vaši stanovnici više neće napredovati."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
-"Ruta je sada podešena. Pokrenite ju preko \"pokreni rutu\" dugmeta u "
-"\"podesi rutu\" izborniku."
+"Ruta je podešena. Pokrenite ju pomoću gumba \"pokreni rutu\" u izborniku "
+"\"podesi rutu\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} i {player2} su prekinuli svoje udruživanje."
+msgstr "{player1} i {player2} su prekinuli svoje savezništvo."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
@@ -3683,7 +3651,7 @@ msgstr "kukuruz"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "cvjetne livade"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
@@ -3692,11 +3660,11 @@ msgstr "grožđe"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Your inhabitants reached level {level}."
-msgstr "Vaši stanovnici su stigli do nivoa {level}."
+msgstr "Vaši su stanovnici stigli do razine {level}."
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "sivi amber"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
@@ -3716,10 +3684,9 @@ msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} i {player2} će se boriti do smrti."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Workshops"
 msgid "hops"
-msgstr "Radionice"
+msgstr "hmelj"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -3734,20 +3701,18 @@ msgid "dagger"
 msgstr "bodež"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
-msgstr "začinsko bilje"
+msgstr "biljke kave"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
 msgstr "cigle"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "željezna ruda"
+msgstr "rude zlata"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -3759,7 +3724,7 @@ msgstr "začinsko bilje"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "higijena"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
@@ -3783,7 +3748,7 @@ msgstr "slastice"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "kitovi"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3795,10 +3760,9 @@ msgstr "Pobijedio si!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "cvijeće"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
 msgstr "začinsko bilje"
@@ -3829,7 +3793,7 @@ msgstr "žirevi"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "odjeća"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
@@ -3866,19 +3830,17 @@ msgid "Your game has been autosaved."
 msgstr "Vaša igra je spremljena automatski."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "nalazište gline"
+msgstr "nalazište zlata"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
-"Jedno od vaših polja zahtijeva farmu kako bi se pokupili njezini usjevi."
+msgstr "Vaše polje zahtijeva farmu kako bi se pokupili usjevi."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "neobrađeni dragulji"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
@@ -3898,14 +3860,14 @@ msgstr "obrazovanje"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "pamuk"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr "{player1} i {player2} su prekinuli svoj savez i sada su u stanju rata."
+msgstr "{player1} i {player2} su raskinuli savezništvo i proglasili rat."
 
 #. This is a database entry: the name of a resource
 msgid "textile"
@@ -3914,17 +3876,16 @@ msgstr "tekstil"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
 msgstr "top"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Stanovnici ove građevine imaju kugu."
+msgstr "Stanovnici ove građevine imaju kugu!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3932,14 +3893,13 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Novi brod po imenu {name} je izgrađen."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "biljke duhana"
+msgstr "biljke čaja"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
-msgstr "sastajalište"
+msgstr "okupljanje"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
@@ -3959,7 +3919,7 @@ msgstr "bilje"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "petrolej"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
@@ -3974,10 +3934,9 @@ msgid "condiments"
 msgstr "začini"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "crno"
+msgstr "kuga"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
@@ -3986,11 +3945,11 @@ msgstr "svijeće"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr "Nova naseobina je osnovana od strane igrača {player}."
+msgstr "Igrač {player} je osnovao novo naselje."
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr "vinograd"
+msgstr "vinova loza"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
@@ -4001,10 +3960,9 @@ msgid "salt"
 msgstr "sol"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "željezne poluge"
+msgstr "zlatne poluge"
 
 #~ msgid "Back:"
 #~ msgstr "Nazad:"
