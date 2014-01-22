@@ -66,6 +66,6 @@ class FreeIslandBuildabilityCache(object):
 		"""Add a list of coordinates to the area."""
 		clean_list = []
 		for coords in coords_list:
-			if coords in self._binary_cache.coords_set:
+			if coords not in self._binary_cache.coords_set:
 				clean_list.append(coords)
 		self._binary_cache.add_area(clean_list)
