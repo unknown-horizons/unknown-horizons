@@ -33,6 +33,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from horizons.world.settlement import Settlement
 from horizons.constants import BUILDINGS, RES, UNITS
+from horizons.command.building import Tear
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.buildability.freeislandcache import FreeIslandBuildabilityCache
@@ -328,6 +329,16 @@ class Island(BuildingOwner, WorldObject):
 				settlement.ground_map[coords] = tile
 				settlement_coords_changed.append(coords)
 				continue
+				
+			if building.id == BUILDINGS.TREE:
+				tile.settlement = None
+				settlement.ground_map[coords] = tile
+				settlement_coords_changed.append(coords)
+				building.settlement.remove_building(building)
+				building.owner = None
+				building.settlement = None
+				continue
+				
 			
 			building_overlap = False
 			for building_coords in building.position.tuple_iter():
@@ -345,7 +356,8 @@ class Island(BuildingOwner, WorldObject):
 		if buildings_to_destroy:
 			# ask for confirmation to destroy buildings that would be outside of new settlement range
 			for building in buildings_to_destroy:
-				super(Island, self).remove_building(building)
+				#super(Island, self).remove_building(building)
+				Tear(building)(building.owner)
 		
 		if not settlement_coords_changed:
 			return
