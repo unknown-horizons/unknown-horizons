@@ -286,7 +286,7 @@ class Island(BuildingOwner, WorldObject):
 
 		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
 	
-	def abandon_buildings(self, buildings_list, coords_list, settlement):
+	def abandon_buildings(self, buildings_list, coords_list):
 		"""Abandon all buildings in a list of coords
 		@param buildings_list: List
 		@param coords_list: List
@@ -294,6 +294,7 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		for coords in coords_list:
 			tile = self.ground_map[coords]
+			settlement = tile.settlement
 			building = tile.object
 
 			if building not in buildings_list:
@@ -376,9 +377,10 @@ class Island(BuildingOwner, WorldObject):
 						settlement_coords_to_change.append(building_coords)
 				buildings_to_abandon.append(building)
 
+		popup_confirmed = True
 		if buildings_to_abandon:
 			#TODO ask for confirmation to destroy buildings that would be outside of new settlement range.
-			self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change, settlement)
+			self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change)
 
 		if not settlement_coords_to_change:
 			return
