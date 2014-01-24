@@ -285,6 +285,40 @@ class Island(BuildingOwner, WorldObject):
 			settlement.buildability_cache.modify_area(settlement_coords_changed)
 
 		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
+	
+	def abandon_buildings(self, buildings_list, coords_list, settlement):
+		"""Abandon all buildings in a list of coords
+		@param buildings_list: List
+		@param coords_list: List
+		@param settlement:
+		"""
+		for coords in coords_list:
+			tile = self.ground_map[coords]
+			building = tile.object
+
+			if building not in buildings_list:
+				tile.settlement = None
+				settlement.ground_map[coords] = tile
+				continue
+
+			if building.id == BUILDINGS.TREE:
+				tile.settlement = None
+				settlement.ground_map[coords] = tile
+				settlement.remove_building(building)
+				building.owner = None
+				building.settlement = None
+				continue
+
+			if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+				tile.settlement = None
+				settlement.ground_map[coords] = tile
+				building.owner = None
+				building.settlement = None
+				continue
+
+			tile.settlement = None
+			settlement.ground_map[coords] = tile
+			Tear(building)(building.owner)
 
 	def remove_settlement(self, position, radius, settlement):
 		"""Removes the settlement property from tiles within the circle defined by \
@@ -293,7 +327,7 @@ class Island(BuildingOwner, WorldObject):
 		@param radius:
 		@param settlement:
 		"""
-		
+		# Find all range affecting buildings.
 		range_buildings = []
 		for coords in self.ground_map:
 			tile = self.ground_map[coords]
@@ -305,8 +339,8 @@ class Island(BuildingOwner, WorldObject):
 			if building.position == position:
 				continue
 			range_buildings.append(building)
-			
-			
+
+		# Find the coordinates of the new settlement after the range-affecting building has been deleted.
 		new_settlement_coords = []
 		for building in range_buildings:
 			for coords in building.position.get_radius_coordinates(building.radius, include_self=True):
@@ -315,58 +349,46 @@ class Island(BuildingOwner, WorldObject):
 				if coords in new_settlement_coords:
 					continue
 				new_settlement_coords.append(coords)
-		
-		settlement_coords_changed = []
-		buildings_to_destroy = []
+
+		# Find the buildings and tiles that will be affected.
+		settlement_coords_to_change = []
+		buildings_to_abandon = []
 		for coords in position.get_radius_coordinates(radius, include_self=True):
 			if coords not in self.ground_map or coords in new_settlement_coords:
 				continue
 			tile = self.ground_map[coords]
-			
+
 			building = tile.object
 			if building is None or building.position == position or building.id == BUILDINGS.FISH_DEPOSIT:
-				tile.settlement = None
-				settlement.ground_map[coords] = tile
-				settlement_coords_changed.append(coords)
+				settlement_coords_to_change.append(coords)
 				continue
-				
-			if building.id == BUILDINGS.TREE:
-				tile.settlement = None
-				settlement.ground_map[coords] = tile
-				settlement_coords_changed.append(coords)
-				building.settlement.remove_building(building)
-				building.owner = None
-				building.settlement = None
-				continue
-				
-			
+
+			# Check if part of a building would still be in settlement, if true then don't destroy this building.
 			building_overlap = False
 			for building_coords in building.position.tuple_iter():
 				if building_coords in new_settlement_coords:
 					building_overlap = True
 					break
-			
+
 			if not building_overlap:
 				for building_coords in building.position.tuple_iter():
-					tile.settlement = None
-					settlement.ground_map[coords] = tile
-					settlement_coords_changed.append(building_coords)
-				buildings_to_destroy.append(building)
-		
-		if buildings_to_destroy:
-			# ask for confirmation to destroy buildings that would be outside of new settlement range
-			for building in buildings_to_destroy:
-				#super(Island, self).remove_building(building)
-				Tear(building)(building.owner)
-		
-		if not settlement_coords_changed:
+					if building_coords not in	settlement_coords_to_change:
+						settlement_coords_to_change.append(building_coords)
+				buildings_to_abandon.append(building)
+
+		if buildings_to_abandon:
+			#TODO ask for confirmation to destroy buildings that would be outside of new settlement range.
+			self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change, settlement)
+
+		if not settlement_coords_to_change:
 			return
 
 		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
+		land_or_coast = self.terrain_cache.land_or_coast
 		settlement_tiles_changed = []
 		clean_coords = []
-		for coords in settlement_coords_changed:
-			if coords not in clean_coords and coords in flat_land_set:
+		for coords in settlement_coords_to_change:
+			if coords not in clean_coords and coords in land_or_coast:
 				clean_coords.append(coords)
 			settlement_tiles_changed.append(self.ground_map[coords])
 			Minimap.update(coords)
@@ -379,22 +401,7 @@ class Island(BuildingOwner, WorldObject):
 			settlement.buildability_cache.modify_area(clean_coords)
 
 		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
-		
-		for coords in self.ground_map:
-			if coords == position.origin:
-				continue
-			
-			tile = self.ground_map[coords]
-			if tile.settlement is not settlement and tile.settlement is not None:
-				continue
-			
-			building = tile.object
-			if building is None or building.id not in BUILDINGS.EXPAND_RANGE:
-				continue
-			
-			radius = building.radius
-			self.assign_settlement(building.position, radius, settlement)
-	
+
 	def add_building(self, building, player, load=False):
 		"""Adds a building to the island at the position x, y with player as the owner.
 		@param building: Building class instance of the building that is to be added.
