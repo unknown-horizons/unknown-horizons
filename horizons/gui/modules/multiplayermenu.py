@@ -79,10 +79,10 @@ class MultiplayerMenu(Window):
 			# subscribe "error" when this menu window is firstly opened
 			# only unsubscribe if this menu window is closed
 			NetworkInterface().subscribe("error", self._on_error)
-		
+
 		# get updated player data
 		self._playerdata.update_data()
-		
+
 		self._gui.show()
 
 		# TODO: Remove once loading a game is implemented again
@@ -90,9 +90,9 @@ class MultiplayerMenu(Window):
 
 	def close(self):
 		# if the window is not open (due to connection errors), just do nothing
-		if(not self._is_open):
+		if not self._is_open:
 			return
-		
+
 		self.hide()
 
 		NetworkInterface().unsubscribe("error", self._on_error)

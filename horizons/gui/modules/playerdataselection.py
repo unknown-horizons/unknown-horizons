@@ -38,7 +38,7 @@ class PlayerDataSelection(object):
 		self.gui = load_uh_widget('playerdataselection.xml')
 
 		self.colors = self.gui.findChild(name='playercolor')
-		
+
 		colorlabels = []
 		events = {}
 
