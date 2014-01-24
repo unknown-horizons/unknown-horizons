@@ -38,8 +38,6 @@ class PlayerDataSelection(object):
 		self.gui = load_uh_widget('playerdataselection.xml')
 
 		self.colors = self.gui.findChild(name='playercolor')
-		self.selected_color = horizons.globals.fife.get_uh_setting("ColorID") # starts at 1!
-		self.set_color(self.selected_color)
 
 		colorlabels = []
 		events = {}
@@ -68,14 +66,12 @@ class PlayerDataSelection(object):
 				playertextfield.text = "";
 		playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
 		
-		self.gui.distributeData({
-			'playername': unicode(horizons.globals.fife.get_uh_setting("Nickname")),
-		})
 		self.gui.mapEvents(events)
+		self.update_data()
 
 	def set_color(self, color_id):
 		"""Updates the background color of large label where players
-		see their currently chosen color. Stores result in settings.
+		see their currently chosen color.
 		@param color_id: int. Gets converted to util.Color object.
 		"""
 		try:
@@ -84,15 +80,11 @@ class PlayerDataSelection(object):
 			# For some reason, color_id can be 0 apparently:
 			# http://forum.unknown-horizons.org/viewtopic.php?t=6927
 			# Reset that setting to 1 if the problem occurs.
-			color_id = 1
-			self.selected_color = Color[color_id]
-		horizons.globals.fife.set_uh_setting("ColorID", color_id)
-		horizons.globals.fife.save_settings()
+			self.selected_color = Color[1]
 		self.gui.findChild(name='selectedcolor').background_color = self.selected_color
 
 	def set_player_name(self, playername):
-		horizons.globals.fife.set_uh_setting("Nickname", playername)
-		horizons.globals.fife.save_settings()
+		"""Updates the player name"""
 		self.gui.distributeData({
 			'playername': unicode(playername),
 			})
@@ -107,3 +99,16 @@ class PlayerDataSelection(object):
 
 	def get_widget(self):
 		return self.gui
+	
+	def update_data(self):
+		"""Update the player's name and color from the settings"""
+		self.set_color(horizons.globals.fife.get_uh_setting("ColorID"))
+		self.set_player_name(horizons.globals.fife.get_uh_setting("Nickname"))
+		
+	def save_settings(self):
+		"""Stores the current player_name and color into settings"""
+		horizons.globals.fife.set_uh_setting("Nickname", self.get_player_name())
+		horizons.globals.fife.set_uh_setting("ColorID", self.get_player_color().id)
+		horizons.globals.fife.save_settings()
+		
+		
