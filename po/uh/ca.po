@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-01-20 14:40+0200\n"
+"PO-Revision-Date: 2014-01-25 18:15+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -287,7 +287,7 @@ msgstr "(es perden tots els recursos)"
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "Cancel·la totes les construccions"
+msgstr "Cancel·la totes les construccions en progés"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
@@ -314,12 +314,12 @@ msgstr "Vista general de l'edifici"
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr "Capacitat d'us"
+msgstr "Capacitat d'ús"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
 msgid "Settlement inventory"
-msgstr "Inventar de l'assentament"
+msgstr "Inventari de l'assentament"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
@@ -331,7 +331,7 @@ msgstr "Visió general dels colons"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr "Impostos que paguen"
+msgstr "Impostos pagats"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
@@ -343,7 +343,7 @@ msgstr "Impostos:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "Nivell d'impost"
+msgstr "Taxa de l'impost"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
@@ -420,7 +420,7 @@ msgstr "Armes:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr "Depòsit de recursos"
+msgstr "Dipòsit de recursos"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
@@ -733,7 +733,7 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
-"Valor dels recursos generats de totes les fons possibles als assentaments "
+"Valor dels recursos generats de totes les fonts possibles als assentaments "
 "del jugador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
@@ -935,7 +935,7 @@ msgstr "Mostra la llista de vaixells"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
-msgstr "Commuta la bitàcola del capità"
+msgstr "Mostra/amaga la bitàcola del capità"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
@@ -947,7 +947,7 @@ msgstr "Càrrega ràpid"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
-msgstr "Commuta la transparència dels edificis de decoració"
+msgstr "Edificis de decoració opacs/transparents"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
@@ -955,7 +955,7 @@ msgstr "Realça la propietat de les rajoles"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr "Commuta les barres de salut"
+msgstr "Mostra/amaga les barres de salut"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
@@ -975,11 +975,11 @@ msgstr "Captura de pantalla"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Toggle showing FPS on/off"
-msgstr "Commuta la visualització dels FPS"
+msgstr "Mostra/amaga els FPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
-msgstr "Commuta la graella"
+msgstr "Mostra/amaga la graella"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Show coordinate values (Debug)"
@@ -1164,7 +1164,7 @@ msgstr "Uneix-te a la partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
-msgstr "S'apunta a la partide seleccionada"
+msgstr "Apunta't a la partida seleccionada"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
@@ -1314,7 +1314,7 @@ msgid ""
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
 "No el feu servir en una partida normal. Desa informació de depuració en una "
-"carpeta del directori de l'usuari. Fa anar el joc més apoc apoc."
+"carpeta del directori de l'usuari. Fa anar el joc més lent."
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
@@ -1892,98 +1892,98 @@ msgstr "{player} ha estat expulsat pel creador de la partida"
 
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Esteu segur que voleu tancar la sessió actual?"
 
 #: horizons/gui/modules/pausemenu.py:83
 msgid "Quit Session"
-msgstr ""
+msgstr "Tanca la sessió"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "No saved games"
-msgstr ""
+msgstr "No hi ha cap partida desada"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "No es pot carregar cap partida."
 
 #: horizons/gui/modules/select_savegame.py:144
 msgid "No filename given"
-msgstr ""
+msgstr "No heu especificat cap nom de fitxer"
 
 #: horizons/gui/modules/select_savegame.py:145
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Entreu un nom de fitxer vàlid."
 
 #: horizons/gui/modules/select_savegame.py:149
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "Ja hi ha una partida desada anomenada {name}."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr ""
+msgstr "Ja hi ha un mapa anomenat {name}."
 
 #: horizons/gui/modules/select_savegame.py:153
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Voleu sobreescriure'l?"
 
 #: horizons/gui/modules/select_savegame.py:217
 msgid "Unknown savedate"
-msgstr ""
+msgstr "La data de desat és desconeguda"
 
 #: horizons/gui/modules/select_savegame.py:220
 #, python-brace-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Desat a les {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:224
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "S'ha desat {amount} vegada"
+msgstr[1] "S'ha desat {amount} vegades"
 
 #: horizons/gui/modules/select_savegame.py:231
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Versió {version} del desat"
 
 #: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "(probablement no sigui compatible)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
 #: horizons/gui/modules/select_savegame.py:239
 msgid "Incompatible version"
-msgstr ""
+msgstr "La versió no és compatible"
 
 #: horizons/gui/modules/select_savegame.py:252
 msgid "No file selected"
-msgstr ""
+msgstr "No heu seleccionat cap fitxer"
 
 #: horizons/gui/modules/select_savegame.py:252
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Heu de seleccionar la partida desada que voleu esborrar."
 
 #: horizons/gui/modules/select_savegame.py:255
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Esteu segur que voleu esborrar la partida «{name}»?"
 
 #: horizons/gui/modules/select_savegame.py:257
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Confirmeu l'eliminació"
 
 #: horizons/gui/modules/select_savegame.py:262
 msgid "Error!"
-msgstr ""
+msgstr "S'ha produït un error!"
 
 #: horizons/gui/modules/select_savegame.py:262
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "No s'ha pogut esborrar la partida desada!"
 
 #: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
 msgid "Hotkeys"
@@ -1991,11 +1991,11 @@ msgstr "Dreceres de teclat"
 
 #: horizons/gui/modules/settings.py:55
 msgid "Game"
-msgstr ""
+msgstr "Partida"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Desactivat"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2071,129 +2071,130 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:106
 msgid "Invalid player name"
-msgstr ""
+msgstr "El nom del jugador no és vàlid"
 
 #: horizons/gui/modules/singleplayermenu.py:106
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Heu introduït un nom de jugador no vàlid."
 
 #: horizons/gui/modules/singleplayermenu.py:149
 msgid "Resource density:"
-msgstr ""
+msgstr "Densitat de recursos:"
 
 #: horizons/gui/modules/singleplayermenu.py:227
 msgid "Map size:"
-msgstr ""
+msgstr "Mida del mapa:"
 
 #: horizons/gui/modules/singleplayermenu.py:228
 msgid "Water:"
-msgstr ""
+msgstr "Aigua:"
 
 #: horizons/gui/modules/singleplayermenu.py:229
 msgid "Max island size:"
-msgstr ""
+msgstr "Mida màxima de l'illa:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Mida preferida de l'illa:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Desviació de la mida de l'illa:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Feu clic per crear un mapa aleatori diferent"
 
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "El fitxer d'escenari no és vàlid"
 
 #: horizons/gui/modules/singleplayermenu.py:506
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "El fitxer seleccionat no és un fitxer d'escenari vàlid."
 
 #: horizons/gui/modules/singleplayermenu.py:507
 msgid "Error message:"
-msgstr ""
+msgstr "Missatge d'error:"
 
 #: horizons/gui/modules/singleplayermenu.py:508
 msgid "Please report this to the author."
-msgstr ""
+msgstr "Informeu-ne a l'autor."
 
 #: horizons/gui/modules/singleplayermenu.py:570
 #, python-brace-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Dificultat: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:573
 #, python-brace-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Autor: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:576
 #, python-brace-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Descripció: {desc}"
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:230
 #, python-brace-format
 msgid "Build {building}"
-msgstr ""
+msgstr "Construeix {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Premeu H per tancar aquest consell"
 
 #: horizons/gui/tabs/boatbuildertabs.py:47
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Vista del constructor de barques"
 
 #: horizons/gui/tabs/boatbuildertabs.py:94
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (lloc a la cua: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:198
 msgid "Build this ship!"
-msgstr ""
+msgstr "Construeix aquest vaixell!"
 
 #: horizons/gui/tabs/boatbuildertabs.py:234
 msgid "Fisher boats"
-msgstr ""
+msgstr "Barques de pesca"
 
 #: horizons/gui/tabs/boatbuildertabs.py:246
 msgid "Trade boats"
-msgstr ""
+msgstr "Vaixells mercants"
 
 #: horizons/gui/tabs/boatbuildertabs.py:258
 msgid "War boats"
-msgstr ""
+msgstr "Vaixells de guerra"
 
 #: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War ships"
-msgstr ""
+msgstr "Bucs de guerra"
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Confirm order"
-msgstr ""
+msgstr "Confirmeu l'ordre"
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
-msgstr ""
+msgstr "Vista de la torre"
 
 #: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
 msgid "Overview"
-msgstr ""
+msgstr "Vista"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr ""
+msgstr "Construeix els edificis relacionats"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
 msgstr ""
+"Feu clic a una de les caselles del recurs per afegir una oferta comercial."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
@@ -2201,6 +2202,8 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
+"Seleccioneu comprar o vendre fent clic al nom, després ajusteu-ne la "
+"quantitat amb la barra de desplaçament de la dreta."
 
 #: horizons/gui/tabs/buyselltab.py:321
 #, python-brace-format
@@ -2208,6 +2211,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
+"Comprareu {resource_name} a {price} monedes/t quan en tingueu menys de "
+"{limit}t en estoc."
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2215,6 +2220,8 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"Vendreu {resource_name} a {price} monedes/t quan en tingueu més de {limit}t "
+"disponibles."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
