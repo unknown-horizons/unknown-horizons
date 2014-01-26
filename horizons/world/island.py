@@ -354,6 +354,7 @@ class Island(BuildingOwner, WorldObject):
 		# Find the buildings and tiles that will be affected.
 		settlement_coords_to_change = []
 		buildings_to_abandon = []
+		buildings_to_destroy = []
 		for coords in position.get_radius_coordinates(radius, include_self=True):
 			if coords not in self.ground_map or coords in new_settlement_coords:
 				continue
@@ -363,6 +364,8 @@ class Island(BuildingOwner, WorldObject):
 			if building is None or building.position == position or building.id == BUILDINGS.FISH_DEPOSIT:
 				settlement_coords_to_change.append(coords)
 				continue
+			
+			if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE):
 
 			# Check if part of a building would still be in settlement, if true then don't destroy this building.
 			building_overlap = False
@@ -373,14 +376,23 @@ class Island(BuildingOwner, WorldObject):
 
 			if not building_overlap:
 				for building_coords in building.position.tuple_iter():
-					if building_coords not in	settlement_coords_to_change:
+					if building_coords not in settlement_coords_to_change:
 						settlement_coords_to_change.append(building_coords)
-				buildings_to_abandon.append(building)
+				if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE):
+					buildings_to_abandon.append(building)
+				else:
+					buildings_to_destroy.append(building)
 
-		popup_confirmed = True
-		if buildings_to_abandon:
-			#TODO ask for confirmation to destroy buildings that would be outside of new settlement range.
-			self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change)
+		if buildings_to_destroy:
+			# pop-up confirmation box here to change the variable 'should_abandon'
+			should_abandon = True
+			if should_abandon:
+				self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change)
+				self.abandon_buildings(buildings_to_destroy, settlement_coords_to_change)
+			else:
+				return
+
+		self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change)
 
 		if not settlement_coords_to_change:
 			return
