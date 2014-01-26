@@ -286,7 +286,7 @@ class Island(BuildingOwner, WorldObject):
 
 		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
 	
-	def abandon_buildings(self, buildings_list, coords_list):
+	def abandon_buildings(self, buildings_list, coords_list, settlement):
 		"""Abandon all buildings in a list of coords
 		@param buildings_list: List
 		@param coords_list: List
@@ -294,7 +294,6 @@ class Island(BuildingOwner, WorldObject):
 		"""
 		for coords in coords_list:
 			tile = self.ground_map[coords]
-			settlement = tile.settlement
 			building = tile.object
 
 			if building not in buildings_list:
@@ -364,10 +363,8 @@ class Island(BuildingOwner, WorldObject):
 			if building is None or building.position == position or building.id == BUILDINGS.FISH_DEPOSIT:
 				settlement_coords_to_change.append(coords)
 				continue
-			
-			if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE):
 
-			# Check if part of a building would still be in settlement, if true then don't destroy this building.
+			# Check if part of a building would still be partially in settlement, if true then don't abandon this building.
 			building_overlap = False
 			for building_coords in building.position.tuple_iter():
 				if building_coords in new_settlement_coords:
@@ -387,12 +384,12 @@ class Island(BuildingOwner, WorldObject):
 			# pop-up confirmation box here to change the variable 'should_abandon'
 			should_abandon = True
 			if should_abandon:
-				self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change)
-				self.abandon_buildings(buildings_to_destroy, settlement_coords_to_change)
+				self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change, settlement)
+				self.abandon_buildings(buildings_to_destroy, settlement_coords_to_change, settlement)
 			else:
 				return
-
-		self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change)
+		else:
+			self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change, settlement)
 
 		if not settlement_coords_to_change:
 			return
