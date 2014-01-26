@@ -55,7 +55,7 @@ class View(ChangeListener):
 			if layer_id == LAYERS.OBJECTS:
 				layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
 				layer.setWalkable(True)
-			elif using_opengl and layer_id in (LAYERS.WATER):
+			elif using_opengl and layer_id == LAYERS.WATER:
 				layer.setStatic(True)
 			self.layers.append(layer)
 
