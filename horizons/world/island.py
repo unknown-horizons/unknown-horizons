@@ -380,9 +380,13 @@ class Island(BuildingOwner, WorldObject):
 				else:
 					buildings_to_destroy.append(building)
 
+		# Ask for confirmation in a pop-up if buildings would be abandoned.
 		if buildings_to_destroy:
-			# pop-up confirmation box here to change the variable 'should_abandon'
-			should_abandon = True
+			title = _("Hi")
+			message = _("Abandon?")
+			popup = self.session.ingame_gui.show_popup
+			should_abandon = popup(title, message, show_cancel_button=True)
+
 			if should_abandon:
 				self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change, settlement)
 				self.abandon_buildings(buildings_to_destroy, settlement_coords_to_change, settlement)
