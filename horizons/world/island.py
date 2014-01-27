@@ -375,8 +375,9 @@ class Island(BuildingOwner, WorldObject):
 				for building_coords in building.position.tuple_iter():
 					if building_coords not in settlement_coords_to_change:
 						settlement_coords_to_change.append(building_coords)
-				if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE) and building not in buildings_to_abandon:
-					buildings_to_abandon.append(building)
+				if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE):
+					if building not in buildings_to_abandon:
+						buildings_to_abandon.append(building)
 				elif building not in buildings_to_destroy:
 					buildings_to_destroy.append(building)
 
