@@ -375,14 +375,20 @@ class Island(BuildingOwner, WorldObject):
 				for building_coords in building.position.tuple_iter():
 					if building_coords not in settlement_coords_to_change:
 						settlement_coords_to_change.append(building_coords)
-				if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE):
+				if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE) and building not in buildings_to_abandon:
 					buildings_to_abandon.append(building)
-				else:
+				elif building not in buildings_to_destroy:
 					buildings_to_destroy.append(building)
 
 		if buildings_to_destroy:
 			# pop-up confirmation box here to change the variable 'should_abandon'
-			should_abandon = True
+			title = _("Destroy all buildings")
+			msg = ""
+			if len(buildings_to_destroy) == 1:
+				msg = _("This will destroy all the buildings that fall outside of the settlement range.\n\n1 additional building will be destroyed")
+			else:
+				msg = _("This will destroy all the buildings that fall outside of the settlement range.\n\n%s additional buildings will be destroyed" %len(buildings_to_destroy))
+			should_abandon = self.session.ingame_gui.show_popup(title, msg, show_cancel_button=True)
 			if should_abandon:
 				self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change, settlement)
 				self.abandon_buildings(buildings_to_destroy, settlement_coords_to_change, settlement)
@@ -390,6 +396,10 @@ class Island(BuildingOwner, WorldObject):
 				return
 		else:
 			self.abandon_buildings(buildings_to_abandon, settlement_coords_to_change, settlement)
+
+		building = (self.ground_map[position.origin]).object
+		settlement.remove_building(building)
+		assert building not in settlement.buildings
 
 		if not settlement_coords_to_change:
 			return
@@ -459,8 +469,11 @@ class Island(BuildingOwner, WorldObject):
 			if building.id in BUILDINGS.EXPAND_RANGE:
 				radius = building.radius
 				self.remove_settlement(building.position, radius, building.settlement)
-			building.settlement.remove_building(building)
-			assert building not in building.settlement.buildings
+				if building in building.settlement.buildings:
+					return False
+			else:
+				building.settlement.remove_building(building)
+				assert building not in building.settlement.buildings
 
 		super(Island, self).remove_building(building)
 		if building.id in self.building_indexers:
@@ -474,6 +487,8 @@ class Island(BuildingOwner, WorldObject):
 		# keep track of the number of trees for animal population control
 		if building.id == BUILDINGS.TREE:
 			self.num_trees -= 1
+
+		return True
 
 	def get_building_index(self, resource_id):
 		if resource_id == RES.WILDANIMALFOOD:
