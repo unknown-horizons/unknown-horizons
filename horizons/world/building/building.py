@@ -118,9 +118,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.log.debug("building: remove %s", self.worldid)
 		if hasattr(self, "disaster"):
 			self.disaster.recover(self)
-		if self.island.remove_building(self):
-			super(BasicBuilding, self).remove()
-			# NOTE: removing layers from the renderer here will affect others players too!
+		self.island.remove_building(self)
+		super(BasicBuilding, self).remove()
+		# NOTE: removing layers from the renderer here will affect others players too!
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)
