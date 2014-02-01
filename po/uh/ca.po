@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-01-25 18:15+0200\n"
+"PO-Revision-Date: 2014-02-01 19:59+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -2225,85 +2225,85 @@ msgstr ""
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
-msgstr ""
+msgstr "Vista del magatzem"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
 msgid "Account"
-msgstr ""
+msgstr "Finances"
 
 #: horizons/gui/tabs/mainsquaretabs.py:112
 msgid "Main square overview"
-msgstr ""
+msgstr "Vista de la plaça principal"
 
 #: horizons/gui/tabs/mainsquaretabs.py:143
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "No s'ha pogut actualitzar:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "De moment només es pot jugar fins aquest nivell!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "No permetis actualitzacions"
 
 #: horizons/gui/tabs/mainsquaretabs.py:195
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Permet les actualitzacions"
 
 #: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
-msgstr ""
+msgstr "Vista de les unitats"
 
 #: horizons/gui/tabs/productiontabs.py:44
 #: horizons/gui/tabs/productiontabs.py:235
 msgid "Production overview"
-msgstr ""
+msgstr "Vista de la producció"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
-msgstr ""
+msgstr "Unitats seleccionades"
 
 #: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
 #: horizons/gui/tabs/shiptabs.py:178
 msgid "Ship overview"
-msgstr ""
+msgstr "Vista del vaixell"
 
 #: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "El vaixell ha de ser prop d'una illa per establir un assentament."
 
 #: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "Ja teniu un assentament en aquesta illa."
 
 #: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
-msgstr ""
+msgstr "Càrrega/Descàrrega"
 
 #: horizons/gui/tabs/shiptabs.py:93
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Compra/Venta"
 
 #: horizons/gui/tabs/shiptabs.py:102
 msgid "Too far from the nearest tradeable warehouse"
-msgstr ""
+msgstr "Esteu massa lluny del magatzem més proper"
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "No podeu equipar armes als vaixells de comerç"
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "No és possible equipar un vaixell comerciant amb armes."
 
 #: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
-msgstr ""
+msgstr "Equipa una arma"
 
 #: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Desmunta una arma"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
