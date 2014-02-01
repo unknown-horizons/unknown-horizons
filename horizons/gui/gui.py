@@ -169,7 +169,7 @@ class Gui(object):
 		Triggered by the "Change background" main menu button.
 		"""
 		# Note: bg_images is a deque.
-		self.bg_images.rotate()
+		self.bg_images.rotate(1)
 		self._background.image = self.bg_images[0]
 		# Save current background choice to settings.
 		# This keeps the background image consistent between sessions.

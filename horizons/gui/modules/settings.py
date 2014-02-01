@@ -71,41 +71,41 @@ class SettingsDialog(PickBeltWidget, Window):
 
 		fps = {0: _lazy("Disabled"), 30: 30, 45: 45, 60: 60, 90: 90, 120: 120}
 
-		FIFE_MODULE = SETTINGS.FIFE_MODULE
-		UH_MODULE = SETTINGS.UH_MODULE
+		FIFE = SETTINGS.FIFE_MODULE
+		UH = SETTINGS.UH_MODULE
 
 		def get_resolutions():
-			return get_screen_resolutions(self._settings.get(FIFE_MODULE, 'ScreenResolution'))
+			return get_screen_resolutions(self._settings.get(FIFE, 'ScreenResolution'))
 
 		self._options = [
 			# Graphics/Sound/Input
-			Setting(FIFE_MODULE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
-			Setting(FIFE_MODULE, 'FullScreen', 'enable_fullscreen', restart=True),
-			Setting(FIFE_MODULE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True, callback=self._on_RenderBackend_changed),
-			Setting(FIFE_MODULE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
+			Setting(FIFE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
+			Setting(FIFE, 'FullScreen', 'enable_fullscreen', restart=True),
+			Setting(FIFE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True, callback=self._on_RenderBackend_changed),
+			Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
 
-			Setting(UH_MODULE, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
-			Setting(UH_MODULE, 'VolumeEffects', 'volume_effects', callback=self._on_VolumeEffects_changed),
-			Setting(FIFE_MODULE, 'PlaySounds', 'enable_sound', callback=self._on_PlaySounds_changed),
-			Setting(UH_MODULE, 'EdgeScrolling', 'edgescrolling'),
-			Setting(UH_MODULE, 'CursorCenteredZoom', 'cursor_centered_zoom'),
-			Setting(UH_MODULE, 'MiddleMousePan', 'middle_mouse_pan'),
-			Setting(FIFE_MODULE, 'MouseSensitivity', 'mousesensitivity', restart=True),
+			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
+			Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._on_VolumeEffects_changed),
+			Setting(FIFE, 'PlaySounds', 'enable_sound', callback=self._on_PlaySounds_changed),
+			Setting(UH, 'EdgeScrolling', 'edgescrolling'),
+			Setting(UH, 'CursorCenteredZoom', 'cursor_centered_zoom'),
+			Setting(UH, 'MiddleMousePan', 'middle_mouse_pan'),
+			Setting(FIFE, 'MouseSensitivity', 'mousesensitivity', restart=True),
 
 			# Game
-			Setting(UH_MODULE, 'AutosaveInterval', 'autosaveinterval'),
-			Setting(UH_MODULE, 'AutosaveMaxCount', 'autosavemaxcount'),
-			Setting(UH_MODULE, 'QuicksaveMaxCount', 'quicksavemaxcount'),
-			Setting(UH_MODULE, 'Language', 'uni_language', language_names, callback=self._on_Language_changed),
+			Setting(UH, 'AutosaveInterval', 'autosaveinterval'),
+			Setting(UH, 'AutosaveMaxCount', 'autosavemaxcount'),
+			Setting(UH, 'QuicksaveMaxCount', 'quicksavemaxcount'),
+			Setting(UH, 'Language', 'uni_language', language_names, callback=self._on_Language_changed),
 
-			Setting(UH_MODULE, 'MinimapRotation', 'minimaprotation'),
-			Setting(UH_MODULE, 'UninterruptedBuilding', 'uninterrupted_building'),
-			Setting(UH_MODULE, 'AutoUnload', 'auto_unload'),
-			Setting(UH_MODULE, 'DebugLog', 'debug_log', callback=self._on_DebugLog_changed),
-			Setting(UH_MODULE, 'ShowResourceIcons', 'show_resource_icons'),
-			Setting(UH_MODULE, 'ScrollSpeed', 'scrollspeed'),
-			Setting(UH_MODULE, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
-			Setting(UH_MODULE, 'NetworkPort', 'network_port', callback=self._on_NetworkPort_changed),
+			Setting(UH, 'MinimapRotation', 'minimaprotation'),
+			Setting(UH, 'UninterruptedBuilding', 'uninterrupted_building'),
+			Setting(UH, 'AutoUnload', 'auto_unload'),
+			Setting(UH, 'DebugLog', 'debug_log', callback=self._on_DebugLog_changed),
+			Setting(UH, 'ShowResourceIcons', 'show_resource_icons'),
+			Setting(UH, 'ScrollSpeed', 'scrollspeed'),
+			Setting(UH, 'QuotesType', 'quotestype', QUOTES_SETTINGS),
+			Setting(UH, 'NetworkPort', 'network_port', callback=self._on_NetworkPort_changed),
 		]
 
 		self._fill_widgets()

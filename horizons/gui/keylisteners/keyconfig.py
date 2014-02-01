@@ -91,22 +91,22 @@ class KeyConfig(object):
 		return self.all_keys.get(keyname)
 
 	def get_keys_by_name(self):
-		def is_available(key, value):
+		def is_available(key):
 			special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
 			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
 			        not key.startswith(special_keys))
-		return dict( (k, v) for k, v in fife.Key.__dict__.iteritems()
-		                    if is_available(k, v))
+		return dict((k, v) for k, v in fife.Key.__dict__.iteritems()
+		                   if is_available(k))
 
 	def get_keys_by_value(self):
-		def is_available(key, value):
+		def is_available(key):
 			special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
 			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
 			        not key.startswith(special_keys))
-		return dict( (v, k) for k, v in fife.Key.__dict__.iteritems()
-		                    if is_available(k, v))
+		return dict((v, k) for k, v in fife.Key.__dict__.iteritems()
+		                   if is_available(k))
 
 	def get_keyval_to_actionid_map(self):
 		return self.keyval_action_mappings

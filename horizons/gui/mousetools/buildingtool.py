@@ -334,12 +334,12 @@ class BuildingTool(NavigationTool):
 			(enough_res, missing_res) = Build.check_resources(needed_resources, self._class.costs,
 			                                                  self.session.world.player, [settlement, self.ship])
 			if building.buildable and not enough_res:
-					# make building red
-					self.renderer.addColored(self.buildings_fife_instances[building],
-					                         *self.not_buildable_color)
-					building.buildable = False
-					# set missing info for gui
-					self.buildings_missing_resources[building] = missing_res
+				# make building red
+				self.renderer.addColored(self.buildings_fife_instances[building],
+				                         *self.not_buildable_color)
+				building.buildable = False
+				# set missing info for gui
+				self.buildings_missing_resources[building] = missing_res
 
 			# color this instance with fancy stuff according to buildability
 

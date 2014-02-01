@@ -20,7 +20,6 @@
 # ###################################################
 
 import sys
-import traceback
 from collections import deque
 
 try:

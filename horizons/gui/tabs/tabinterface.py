@@ -48,22 +48,15 @@ class TabInterface(object):
 	@param icon_path: Where to look for ImageButton icons. Note: this is a `path` attribute!
 	"""
 
-	"""
-	Whether to load the tab only when it's shown.
-<<<<<<< HEAD
-	If True, self.widget will only be valid after _lazy_loading_init, which
-	is guaranteed to be executed before show(), refresh() and the like.
-	Usually, you will want to overwrite _lazy_loading_init and call the super impl as first step.
-=======
->>>>>>> c13e15a... Unify interface for normal and lazy loading of tab widgets
-	"""
+	# Whether to load the tab only when it's shown.
+	# If True, self.widget will only be valid after _lazy_loading_init, which
+	# is guaranteed to be executed before show(), refresh() and the like.
+	# Usually, you will want to overwrite _lazy_loading_init and call the super impl as first step.
 	lazy_loading = False
 
-	"""
-	Override this in your subclass either as class attribute, or by passing it
-	to the constructor. The value of the constructor has preference over the
-	class attribute.
-	"""
+	# Override these in your subclass either as class attribute, or by passing it
+	# to the constructor. The value of the constructor has preference over the
+	# class attribute.
 	widget = None
 	icon_path = 'images/tabwidget/tab'
 
@@ -153,7 +146,7 @@ class TabInterface(object):
 			                              self, run_in=self.__class__.scheduled_update_delay)
 
 	@classmethod
-	def shown_for(self, instance):
+	def shown_for(cls, instance):
 		"""Method for fine-grained control of which tabs to show.
 		@return: whether this tab should really be shown for this instance"""
 		return True

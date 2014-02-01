@@ -41,8 +41,8 @@ tab2:
   - _ Citizens
   - BUILDINGS.CORN_FIELD
 #  - BUILDINGS.COCOA_FIELD
-#  - BUILDINGS.VINEYARD
-#  - BUILDINGS.ALVEARIES
+  - BUILDINGS.VINEYARD
+  - BUILDINGS.ALVEARIES
 
 tab3:
 - icon: icons/tabwidget/buildmenu/class/agricultural_companies

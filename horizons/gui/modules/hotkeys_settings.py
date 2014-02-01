@@ -1,3 +1,4 @@
+# Encoding: utf-8
 # ###################################################
 # Copyright (C) 2008-2013 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -93,7 +94,8 @@ class HotkeyConfiguration(object):
 		self.current_column = column
 		self.listener.activate()
 		self.update_buttons_text()
-		button.text = _("Press desired key")
+		button.font = 'default'
+		button.text = _(u"Press key…")
 
 	def _detect_keypress(self, event):
 		if not self.detecting:
@@ -109,17 +111,19 @@ class HotkeyConfiguration(object):
 
 	def update_buttons_text(self):
 		for i, button in enumerate(self.buttons):
+			button.font = 'default_bold'
 			action = self.actions[i]
 			bindings = self.keyconf.get_current_keys(action)
 			for j in range(len(bindings)):
 				if bindings[j] == 'UNASSIGNED':
-					bindings[j] = '-'
+					bindings[j] = ''
 			secondary_button = self.secondary_buttons[i]
 			button.text = unicode(bindings[0])
 			if len(bindings) > 1:
+				secondary_button.font = 'default_bold'
 				secondary_button.text = unicode(bindings[1])
 			else:
-				secondary_button.text = u"-"
+				secondary_button.text = u''
 
 	def apply_change(self):
 		"""Binds the last keypress to the corresponding action and resets the interface to the state where it is listening for clicks on buttons"""

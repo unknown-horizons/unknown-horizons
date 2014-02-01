@@ -215,8 +215,8 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 				container.findChild(name="resident_"+str(column)).text = unicode(number)
 				container.findChild(name="resident_count_"+str(column)).text = unicode(house_count)
 
-		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
-		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
+		sad = self.instance.session.db.get_lower_happiness_limit()
+		happy = self.instance.session.db.get_upper_happiness_limit()
 		inhabitants = partial(self.settlement.get_residentials_of_lvl_for_happiness,
 		                      self.__class__.LEVEL)
 		self.widget.child_finder('sad_amount').text = unicode(inhabitants(max_happiness=sad))

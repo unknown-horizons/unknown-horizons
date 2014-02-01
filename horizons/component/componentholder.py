@@ -23,6 +23,7 @@ from horizons.component import Component
 
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.coloroverlaycomponent import ColorOverlayComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.depositcomponent import DepositComponent
 from horizons.component.healthcomponent import HealthComponent
@@ -65,6 +66,7 @@ class ComponentHolder(object):
 	    'AmbientSoundComponent': AmbientSoundComponent,
 	    'CommandableComponent': CommandableComponent,
 	    'CollectingComponent': CollectingComponent,
+	    'ColorOverlayComponent': ColorOverlayComponent,
 	    'DepositComponent': DepositComponent,
 	    'HealthComponent': HealthComponent,
 	    'InventoryOverlayComponent': InventoryOverlayComponent,

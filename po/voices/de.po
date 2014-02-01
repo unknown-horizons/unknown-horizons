@@ -117,22 +117,17 @@ msgid "Our ally settles on one of our islands."
 msgstr "Unser Verbündeter siedelt auf einer unserer Inseln."
 
 #. Resources - Construction material missing
-#| msgid "You need more $RES to build this."
 msgid "You need more resources to build this."
 msgstr "Ihr benötigt mehr Ressourcen, um dies zu bauen."
 
 #. Resources - Construction material missing
-#| msgid "This construction project needs more $RES."
 msgid "This construction project needs more resources."
 msgstr "Dieses Bauvorhaben benötigt mehr Ressourcen."
 
 #. Resources - Construction material missing
-#| msgid "Construction is impossible without sufficient amounts of $RES."
 msgid "Construction is impossible without sufficient material."
 msgstr "Dieser Bau ist unmöglich ohne ausreichend Material."
 
 #. Resources - Construction material missing
-#| msgid ""
-#| "The amount of $RES in your inventory is not sufficient to build this."
 msgid "The resources in your inventory are not sufficient to build this."
 msgstr "Eure Vorräte reichen für dieses Bauvorhaben nicht aus."

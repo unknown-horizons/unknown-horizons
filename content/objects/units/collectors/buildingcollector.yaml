@@ -1,5 +1,5 @@
 baseclass: collectors.BuildingCollector
-id: 1000002
+id: UNITS.BUILDING_COLLECTOR
 name: BuildingCollector
 radius: 5
 velocity: 12.0

@@ -83,26 +83,27 @@ class UNITS:
 	# ./development/print_db_data.py unit
 	HUKER_SHIP           = 1000001
 	BUILDING_COLLECTOR   = 1000002
+
 	FISHER_BOAT          = 1000004
 	PIRATE_SHIP          = 1000005
 	TRADER_SHIP          = 1000006
+	ANIMAL_COLLECTOR     = 1000007
+	STORAGE_COLLECTOR    = 1000008
+	FIELD_COLLECTOR      = 1000009
+	LUMBERJACK_COLLECTOR = 1000010
+	SETTLER_COLLECTOR    = 1000011
+
 	WILD_ANIMAL          = 1000013
+	HUNTER_COLLECTOR     = 1000014
+	FARM_ANIMAL_COLLECTOR= 1000015
 	USABLE_FISHER_BOAT   = 1000016
+
 	FRIGATE              = 1000020
+
+	DISASTER_RECOVERY_COLLECTOR = 1000022
 
 	# players will be spawned with an instance of this
 	PLAYER_SHIP          = HUKER_SHIP
-
-	# collectors
-	BUILDING_COLLECTOR          = 1000002
-	ANIMAL_COLLECTOR            = 1000007
-	STORAGE_COLLECTOR           = 1000008
-	FIELD_COLLECTOR             = 1000009
-	LUMBERJACK_COLLECTOR        = 1000010
-	SETTLER_COLLECTOR           = 1000011
-	HUNTER_COLLECTOR            = 1000014
-	FARM_ANIMAL_COLLECTOR       = 1000015
-	DISASTER_RECOVERY_COLLECTOR = 1000022
 
 	DIFFERENCE_BUILDING_UNIT_ID = 1000000
 
@@ -170,6 +171,7 @@ class BUILDINGS:
 
 	VINTNER          = 65
 
+	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
 	TRANSPARENCY_VALUE = 180
 
@@ -288,8 +290,8 @@ class RES:
 	# 91-99 reserved for services
 	REPRESENTATION   = GOLD # 92
 	SOCIETY          = GOLD # 93
-	FAITH            = GOLD # 94
-	EDUCATION        = GOLD # 95
+	FAITH_2          = GOLD # 94
+	EDUCATION_2      = GOLD # 95
 	HYGIENE          = GOLD # 96
 	RECREATION       = GOLD # 97
 	BLACKDEATH       = 98
@@ -434,6 +436,7 @@ class MAP:
 
 class GUI:
 	CITYINFO_UPDATE_DELAY = 2 # seconds
+	DEFAULT_EXCHANGE_AMOUNT = 50  # tons
 
 # Messagewidget and Logbook
 class MESSAGES:
@@ -468,6 +471,9 @@ class TIER:
 	CITIZENS = 3
 	MERCHANTS = 4
 	ARISTOCRATS = 5
+
+	LOWEST = SAILORS
+	HIGHEST = ARISTOCRATS
 	CURRENT_MAX = CITIZENS
 
 class SETTLER:
@@ -610,6 +616,9 @@ class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, [key])[0]
 
+	def get_english(self, key):
+		return self.get(key, [key])[1]
+
 	def get_by_value(self, value, english=False):
 		for code, (own, eng) in self.iteritems():
 			if english and eng == value:
@@ -659,7 +668,8 @@ LANGUAGENAMES = _LanguageNameDict({
 	"tr"    : (u'Türkçe', u'Turkish'),
 	"uk"    : (u'Українська', u'Ukrainian'),
 	"vi"    : (u'Tiếng Việt', u'Vietnamese'),
-	"zh_CN" : (u'普通話', u'Chinese'),
+	"zh_CN" : (u'简化字', u'Simplified Chinese'),
+	"zh_TW" : (u'繁體字', u'Traditional Chinese'),
 	"zu"    : (u'IsiZulu', u'Zulu'),
 })
 

@@ -14,7 +14,7 @@ show_status_icons: false
 components:
 - SelectableComponent:
     type: building
-    tabs: [FireStationOverviewTab,]
+    tabs: [GenericOverviewTab, ]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:

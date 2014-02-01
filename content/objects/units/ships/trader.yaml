@@ -1,5 +1,5 @@
 baseclass: ship.TradeShip
-id: 1000006
+id: UNITS.TRADER_SHIP
 name: Trader
 radius: 8
 velocity: 12.0

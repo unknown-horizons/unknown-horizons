@@ -261,70 +261,37 @@ class ProductionBuilder(AreaBuilder):
 		if not AI.HIGHLIGHT_PLANS:
 			return
 
-		road_color = (30, 30, 30)
-		fisher_color = (128, 128, 128)
-		lumberjack_color = (30, 255, 30)
-		tree_color = (0, 255, 0)
-		reserved_color = (0, 0, 128)
-		unknown_color = (128, 0, 0)
-		farm_color = (128, 0, 255)
-		potato_field_color = (255, 0, 128)
-		pasture_color = (0, 192, 0)
-		weaver_color = (0, 64, 64)
-		sugarcane_field_color = (192, 192, 0)
-		distillery_color = (255, 128, 40)
-		tobacco_field_color = (64, 64, 0)
-		herbary_field_color = (64, 200, 0)
-		tobacconist_color = (128, 64, 40)
-		clay_pit_color = (0, 64, 0)
-		brickyard_color = (0, 32, 0)
-		boatbuilder_color = (163, 73, 164)
-		salt_ponds_color = (153, 217, 234)
+		tile_colors = {
+			BUILDING_PURPOSE.ROAD:            ( 30,  30,  30),
+			BUILDING_PURPOSE.FISHER:          (128, 128, 128),
+			BUILDING_PURPOSE.LUMBERJACK:      ( 30, 255,  30),
+			BUILDING_PURPOSE.TREE:            (  0, 255,   0),
+			BUILDING_PURPOSE.FARM:            (128,   0, 255),
+			BUILDING_PURPOSE.POTATO_FIELD:    (255,   0, 128),
+			BUILDING_PURPOSE.PASTURE:         (  0, 192,   0),
+			BUILDING_PURPOSE.WEAVER:          (  0,  64,  64),
+			BUILDING_PURPOSE.SUGARCANE_FIELD: (192, 192,   0),
+			BUILDING_PURPOSE.DISTILLERY:      (255, 128,  40),
+			BUILDING_PURPOSE.TOBACCO_FIELD:   ( 64,  64,   0),
+			BUILDING_PURPOSE.TOBACCONIST:     (128,  64,  40),
+			BUILDING_PURPOSE.CLAY_PIT:        (  0,  64,   0),
+			BUILDING_PURPOSE.BRICKYARD:       (  0,  32,   0),
+			BUILDING_PURPOSE.BOAT_BUILDER:    (163,  73, 164),
+			BUILDING_PURPOSE.SALT_PONDS:      (153, 217, 234),
+			BUILDING_PURPOSE.HERBARY:         ( 64, 200,   0),
+			BUILDING_PURPOSE.RESERVED:        (  0,   0, 128),
+		}
+
 		misc_color = (0, 255, 255)
+		unknown_color = (128, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
-			if purpose == BUILDING_PURPOSE.ROAD:
-				renderer.addColored(tile._instance, *road_color)
-			elif purpose == BUILDING_PURPOSE.FISHER:
-				renderer.addColored(tile._instance, *fisher_color)
-			elif purpose == BUILDING_PURPOSE.LUMBERJACK:
-				renderer.addColored(tile._instance, *lumberjack_color)
-			elif purpose == BUILDING_PURPOSE.TREE:
-				renderer.addColored(tile._instance, *tree_color)
-			elif purpose == BUILDING_PURPOSE.FARM:
-				renderer.addColored(tile._instance, *farm_color)
-			elif purpose == BUILDING_PURPOSE.POTATO_FIELD:
-				renderer.addColored(tile._instance, *potato_field_color)
-			elif purpose == BUILDING_PURPOSE.PASTURE:
-				renderer.addColored(tile._instance, *pasture_color)
-			elif purpose == BUILDING_PURPOSE.WEAVER:
-				renderer.addColored(tile._instance, *weaver_color)
-			elif purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
-				renderer.addColored(tile._instance, *sugarcane_field_color)
-			elif purpose == BUILDING_PURPOSE.DISTILLERY:
-				renderer.addColored(tile._instance, *distillery_color)
-			elif purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
-				renderer.addColored(tile._instance, *tobacco_field_color)
-			elif purpose == BUILDING_PURPOSE.TOBACCONIST:
-				renderer.addColored(tile._instance, *tobacconist_color)
-			elif purpose == BUILDING_PURPOSE.CLAY_PIT:
-				renderer.addColored(tile._instance, *clay_pit_color)
-			elif purpose == BUILDING_PURPOSE.BRICKYARD:
-				renderer.addColored(tile._instance, *brickyard_color)
-			elif purpose == BUILDING_PURPOSE.BOAT_BUILDER:
-				renderer.addColored(tile._instance, *boatbuilder_color)
-			elif purpose == BUILDING_PURPOSE.SALT_PONDS:
-				renderer.addColored(tile._instance, *salt_ponds_color)
-			elif purpose == BUILDING_PURPOSE.HERBARY:
-				renderer.addColored(tile._instance, *herbary_field_color)
-			elif purpose == BUILDING_PURPOSE.RESERVED:
-				renderer.addColored(tile._instance, *reserved_color)
-			elif purpose != BUILDING_PURPOSE.NONE:
-				renderer.addColored(tile._instance, *misc_color)
-			else:
-				renderer.addColored(tile._instance, *unknown_color)
+			color = tile_colors.get(purpose, misc_color)
+			if purpose == BUILDING_PURPOSE.NONE:
+				color = unknown_color
+			renderer.addColored(tile._instance, *color)
 
 	def _init_cache(self):
 		"""Initialize the cache that knows the last time the buildability of a rectangle may have changed in this area."""

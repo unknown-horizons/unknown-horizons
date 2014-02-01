@@ -48,8 +48,8 @@ def get_gui_files_map():
 
 def get_happiness_icon_and_helptext(value, session):
 	happiness_icon_path = "content/gui/icons/templates/happiness/"
-	sad = session.db.get_settler_happiness_decrease_limit()
-	happy = session.db.get_settler_happiness_increase_requirement()
+	sad = session.db.get_lower_happiness_limit()
+	happy = session.db.get_upper_happiness_limit()
 	if value <= sad:
 		happiness_icon_path += "sad.png"
 		happiness_helptext = _("sad")

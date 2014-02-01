@@ -24,5 +24,4 @@ components:
         slot_sizes: {RES.VINES: 1}
 actionsets:
   TIER.CITIZENS:
-    #as_vineyard0:
-    as_3x3:
+    as_vineyard0:

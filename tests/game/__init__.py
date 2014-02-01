@@ -262,7 +262,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
 						s.end(remove_savegame=False, keep_map=True)
 					elif not manual_session:
 						s.end()
-				except:
+				except Exception:
 					pass
 					# An error happened after cleanup after an error.
 					# This is ok since cleanup is only defined to work when invariants are in place,

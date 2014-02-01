@@ -112,5 +112,6 @@ class GroundUnitOverviewTab(OverviewTab):
 		self.add_remove_listener(weapon_storage_widget.remove)
 
 
-class FireStationOverviewTab(OverviewTab):
-	widget = 'overview_firestation.xml'
+class GenericOverviewTab(OverviewTab):
+	"""Name and running costs."""
+	widget = 'overview_generic.xml'

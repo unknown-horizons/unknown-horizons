@@ -19,9 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import tempfile
-import os
-
 from nose.plugins.skip import SkipTest
 
 from horizons.util.color import Color
@@ -34,7 +31,7 @@ from horizons.world.player import Player
 from horizons.constants import UNITS, WEAPONS
 from horizons.component.healthcomponent import HealthComponent
 
-from tests.game import game_test, new_session, load_session
+from tests.game import game_test, new_session, saveload
 
 
 def setup_combat(s, ship):
@@ -95,7 +92,9 @@ def test_noncombat_units(s, p):
 def test_equip(s, p):
 	raise SkipTest()
 
-	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, "This test only makes sense with default cannons. Adapt this if you don't want default cannons."
+	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, (
+	        "This test only makes sense with default cannons."
+	        " Adapt this if you don't want default cannons.")
 
 	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
@@ -140,6 +139,7 @@ def test_equip(s, p):
 	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 2 + WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 	assert s0.get_weapon_storage()[WEAPONS.CANNON] == 0
 
+
 @game_test()
 def test_diplo0(s, p):
 
@@ -164,6 +164,7 @@ def test_diplo0(s, p):
 	# it's not specified which one should lose
 	assert health(s0) == 0 or health(s1) == 0
 
+
 @game_test()
 def test_dying(s, p):
 	"""
@@ -181,6 +182,7 @@ def test_dying(s, p):
 
 	# it's not specified which one should lose
 	assert one_dead(s0.worldid, s1.worldid)
+
 
 @game_test()
 def test_diplo1(s, p):
@@ -217,6 +219,7 @@ def test_diplo1(s, p):
 	assert health(s0) != max_health(s0)
 	assert health(s1) != max_health(s1)
 
+
 @game_test()
 def test_unfair(s, p):
 	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
@@ -252,11 +255,7 @@ def test_combat_save_load():
 	session.run(seconds=1)
 
 	# saveload
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-	assert session.save(savegamename=filename)
-	session.end(keep_map=True)
-	session = load_session(filename)
+	session = saveload(session)
 
 	s0 = WorldObject.get_object_by_id(s0_worldid)
 	s1 = WorldObject.get_object_by_id(s1_worldid)
@@ -271,11 +270,7 @@ def test_combat_save_load():
 	session.run(seconds=20)
 
 	# saveload
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-	assert session.save(savegamename=filename)
-	session.end(keep_map=True)
-	session = load_session(filename)
+	session = saveload(session)
 
 	assert one_dead(s0_worldid, s1_worldid)
 

@@ -23,7 +23,7 @@ import sys
 
 from inventorytab import InventoryTab
 from tradetab import TradeTab
-from overviewtab import OverviewTab, GroundUnitOverviewTab, FireStationOverviewTab
+from overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
 						TowerOverviewTab
 from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
@@ -46,4 +46,5 @@ from diplomacytab import DiplomacyTab
 from selectmultitab import SelectMultiTab
 
 def resolve_tab(tabclass_name):
+	"""Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""
 	return getattr(sys.modules[__name__], tabclass_name)

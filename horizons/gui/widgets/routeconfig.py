@@ -164,7 +164,7 @@ class RouteConfig(Window):
 		elif direction == 'down':
 			new_pos = position + 1
 		else:
-			return
+			assert False, 'Direction for `move_entry` is neither "up" nor "down".'
 
 		vbox = self._gui.findChild(name="left_vbox")
 

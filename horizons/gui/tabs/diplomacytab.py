@@ -129,7 +129,7 @@ class DiplomacyTab(TabWidget):
 		super(DiplomacyTab, self).__init__(ingame_gui, tabs=tabs, name="diplomacy_widget")
 
 	@classmethod
-	def is_useable(self, world):
+	def is_useable(cls, world):
 		"""Diplomacy only makes sense if there is another player.
 		Pirates do not qualify as players: right now they're not interested in diplomacy.
 		"""

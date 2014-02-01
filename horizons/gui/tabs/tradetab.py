@@ -21,6 +21,7 @@
 
 import logging
 
+from horizons.constants import GUI
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.uioptions import SellResource, BuyResource, TransferResource
@@ -66,7 +67,8 @@ class TradeTab(TabInterface):
 			events[v] = Callback(self.set_exchange, k)
 		self.widget.mapEvents(events)
 		self.partner = None
-		self.set_exchange(50, initial=True)
+		self.exchange = None
+		self.set_exchange(GUI.DEFAULT_EXCHANGE_AMOUNT, initial=True)
 
 	def refresh(self):
 		super(TradeTab, self).refresh()
@@ -170,15 +172,17 @@ class TradeTab(TabInterface):
 		Highlight radio button with selected amount and deselect old highlighted.
 		@param initial: bool, use it to set exchange size when initing the widget
 		"""
+		self.log.debug("Tradewidget: exchange size now: %s", size)
 		if not initial:
-			old_box = self.widget.findChild(name= self.exchange_size_buttons[self.exchange])
+			old_name = self.exchange_size_buttons[self.exchange]
+			old_box = self.widget.findChild(name=old_name)
 			old_box.up_image = self.images['box']
 
-		box_h = self.widget.findChild(name= self.exchange_size_buttons[size])
-		box_h.up_image = self.images['box_highlighted']
-
 		self.exchange = size
-		self.log.debug("Tradewidget: exchange size now: %s", size)
+
+		new_name = self.exchange_size_buttons[self.exchange]
+		box_h = self.widget.findChild(name=new_name)
+		box_h.up_image = self.images['box_highlighted']
 		if not initial:
 			self.draw_widget()
 

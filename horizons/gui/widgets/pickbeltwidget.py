@@ -23,7 +23,6 @@ from horizons.gui.style import NOTHING
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton, OkButton
 from horizons.gui.windows import Window
-from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
 
 

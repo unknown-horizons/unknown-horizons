@@ -325,6 +325,7 @@ class LandManager(WorldObject):
 			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_color)
 
 	def __str__(self):
-		return '%s LandManager(%s)' % (self.owner if hasattr(self, 'owner') else 'unknown player', self.worldid if hasattr(self, 'worldid') else 'none')
+		return '%s LandManager(%s)' % (getattr(self, 'owner', 'unknown player'),
+		                               getattr(self, 'worldid', 'none'))
 
 decorators.bind_all(LandManager)

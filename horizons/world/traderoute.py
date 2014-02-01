@@ -68,6 +68,8 @@ class TradeRoute(ChangeListener):
 		self.wait_at_unload = flag # as methods for commands
 
 	def move_waypoint(self, position, direction):
+		# Error sounds for invalid move actions are triggered in
+		# gui.widgets.routeconfig, not here.
 		was_enabled = self.enabled
 		if was_enabled:
 			self.disable()
@@ -80,7 +82,7 @@ class TradeRoute(ChangeListener):
 		elif direction == 'down':
 			new_pos = position + 1
 		else:
-			return
+			assert False, 'Direction is neither "up" nor "down".'
 
 		self.waypoints.insert(new_pos, self.waypoints.pop(position))
 
@@ -271,7 +273,7 @@ class TradeRoute(ChangeListener):
 		self.current_waypoint = -1
 
 	@classmethod
-	def has_route(self, db, worldid):
+	def has_route(cls, db, worldid):
 		"""Check if a savegame contains route information for a certain ship"""
 		return len(db("SELECT * FROM ship_route WHERE ship_id = ?", worldid)) != 0
 

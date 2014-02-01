@@ -24,12 +24,6 @@ from gettext import NullTranslations
 
 from horizons.network import packets, enet
 
-__all__ = [
-  'Address',
-  'Player',
-  'Game',
-  'ErrorType',
-]
 
 class Address(object):
 	def __init__(self, address, port=None):

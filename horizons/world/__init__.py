@@ -20,12 +20,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
+import json
+import copy
 
 from collections import deque
-import copy
-import json
-import logging
+from functools import partial
 
 import horizons.globals
 
@@ -55,6 +54,7 @@ from horizons.world.island import Island
 from horizons.world.player import HumanPlayer
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
+
 
 
 class World(BuildingOwner, WorldObject):
@@ -496,13 +496,14 @@ class World(BuildingOwner, WorldObject):
 			if player is self.player:
 				ret_coords = point.to_tuple()
 				# HACK: Store starting ship as first unit group, and select it
-				def _preselect_player_ship(ship):
-					sel_comp = ship.get_component(SelectableComponent)
+				def _preselect_player_ship(player_ship):
+					sel_comp = player_ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)
-					self.session.selected_instances = set([ship])
+					self.session.selected_instances = set([player_ship])
 					self.session.ingame_gui.handle_selection_group(1, True)
 					sel_comp.show_menu()
-				Scheduler().add_new_object(lambda: _preselect_player_ship(ship), ship, run_in=0)
+				select_ship = partial(_preselect_player_ship, ship)
+				Scheduler().add_new_object(select_ship, ship, run_in=0)
 
 		# load the AI stuff only when we have AI players
 		if any(isinstance(player, AIPlayer) for player in self.players):

@@ -21,7 +21,7 @@
 
 import random
 
-from horizons.constants import PATHS
+from horizons.constants import PATHS, TIER
 from horizons.util.python import decorators
 from horizons.util.dbreader import DbReader
 from horizons.entities import Entities
@@ -196,17 +196,17 @@ class UhDbAccessor(DbReader):
 		Inhabitants will decrease their tier after falling below.
 		@param level: int - which tier
 		"""
-		if level == 0:
+		if level == TIER.LOWEST:
 			return 0
 		else:
 			sql = "SELECT inhabitants_max FROM tier WHERE level = ?"
 			return self.cached_query(sql, level - 1)[0][0]
 
-	def get_settler_happiness_increase_requirement(self):
+	def get_upper_happiness_limit(self):
 		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_increase_requirement'"
 		return self.cached_query(sql)[0][0]
 
-	def get_settler_happiness_decrease_limit(self):
+	def get_lower_happiness_limit(self):
 		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_decrease_limit'"
 		return self.cached_query(sql)[0][0]
 
@@ -279,6 +279,7 @@ class UhDbAccessor(DbReader):
 			pass
 		return u'\\n'.join(helptexts)
 
+
 def read_savegame_template(db):
 	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
-	db.execute_script( savegame_template.read() )
+	db.execute_script(savegame_template.read())

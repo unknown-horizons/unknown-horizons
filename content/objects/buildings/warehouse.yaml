@@ -2,7 +2,7 @@ id: BUILDINGS.WAREHOUSE
 name: _ Warehouse
 baseclass: storages.Warehouse
 radius: 24
-cost: 0
+cost: 5
 cost_inactive: 0
 size_x: 3
 size_y: 3

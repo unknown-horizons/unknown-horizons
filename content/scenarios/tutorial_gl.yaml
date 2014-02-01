@@ -54,9 +54,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 'Podes construír o edificio en calquera punto no que o edificio non apareza en vermello.
 
     Preme co botón principal do rato no punto no que queiras construír o primeiro edificio.'
-  - '
-
-    Obxectivo: Construír un almacén na costa.'
+  - ''
+  - [BoldLabel, 'Obxectivo: Construír un almacén na costa.']
 
 - &LUMBERJACK
   - [Message, Contrata un leñador e conéctao co almacén mediante un sendeiro.]
@@ -79,9 +78,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Máis adiante poderás plantar árbores, pero iso custa cartos. Aproveita o que che regala a natureza!
   - Os negocios necesitan estar conectados a un depósito ou almacén por sendeiros. Senón, os recursos quedaranse no negocio e non se recollerán.
   - Iso significa que tes que construír un sendeiro que conecte o almacén (ou un depósito) co leñador.
-  - '
-
-    Obxectivo: contrata un leñador nunha zona de bosque e conéctao cun sendeiro.'
+  - ''
+  - [BoldLabel, 'Obxectivo: contrata un leñador nunha zona de bosque e conéctao cun sendeiro.']
   - Observa como o transportista vai a polas primeiras táboas producidas. Non te preocupes da parte de contratar máis leñadores para a zona, iso xestiónase automaticamente.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -103,9 +101,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Construirá unha pequena embarcación e comezará a pescar.
   - O pescador fornece alimentos de maneira constante e regular, se ben a taxa de produción é menor que a do cazador.
   - A un asentamento pequeno coma o teu venlle ben os dous negocios, e probando os dous poderás considerar mellor os pros e mailos contras de cada un.
-  - '
-
-    Obxectivo: contrata un cazador e un pescador.'
+  - ''
+  - [BoldLabel, 'Obxectivo: contrata un cazador e un pescador.']
   - Non esquezas conectalos ao almacén mediante sendeiros.
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -121,9 +118,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/004_h.png]
   - Intenta non construír os teus asentamentos moi preto dos leñadores, xa que as tendas que constrúas para os novos habitantes comeranlle terreo ao bosque que o leñador necesita para producir táboas.
   - Os negocios funcionan sen necesitade de estar conectados ás tendas, así que non necesitas construír camiños entre a praza principal e, por exemplo, a tenda do leñador.
-  - '
-
-    Obxectivo: constrúe unha praza principal.'
+  - ''
+  - [BoldLabel, 'Obxectivo: constrúe unha praza principal.']
   - [Pagebreak]
   - '
 
@@ -148,9 +144,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ten en conta que para que os edificios avancen de nivel necesítanse materiais de construción. Por exemplo, para o primeiro avance necesítase madeira.
   - Se anda falto dos materiais necesarios, sempre pode desactivar o avance.
   - Pode que os colonos non parezan moi útiles, dado que simplemente se adican a consumir os bens que produces. Pero polo menos pagan impostos, que é o único xeito que tes de conseguir cartos de momento.
-  - '
-
-    Obxectivo: constrúe unha tenda e conéctaa coa praza principal. As tendas non necesitan estar conectadas a ningún negocio.'
+  - ''
+  - [BoldLabel, 'Obxectivo: constrúe unha tenda e conéctaa coa praza principal. As tendas non necesitan estar conectadas a ningún negocio.']
 
 - &MORETENTS
   - [Message, Constrúe polo menos tres tendas máis e conéctaas coa praza principal.]
@@ -167,9 +162,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Se cumpres coas súas esixencias, serán máis felices, e aumentarán os ingresos por impostos.
   - En caso contrario, serán menos felices, e reduciranse os ingresos por impostos. Pode chegar un punto no que os residentes estean fartos e decidan marchar do asentamento, non deixando atrás máis que ruínas.
   - Ten en conta que tamén podes cambiar as opcións globais de impostos desde aquí.
-  - '
-
-    Obxectivo: constrúe polo menos outras tres tendas.'
+  - ''
+  - [BoldLabel, 'Obxectivo: constrúe polo menos outras tres tendas.']
   - '
 
     Consello: deixa premida a tecla Maiús para construír facilmente varios edificios do mesmo tipo.'
@@ -196,9 +190,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - No «nivel dos mariñeiros» podes usar ata tres celas de comercio.
   - Preme a icona pequena para cambiar o modo da cela. Podes alternar entre «Mercar» e «Vender».
   - Preme a cela en si para escoller o ben co que queres comerciar. Xa máis adiante, cando esteas listo para comerciar, se che explicará en detalle como funciona isto.
-  - '
-
-    Obxectivo: constrúe un sinal de lume na costa, preto do almacén.'
+  - ''
+  - [BoldLabel, 'Obxectivo: constrúe un sinal de lume na costa, preto do almacén.']
 
 - &TRADING
   - [Message, Almacena 30 toneladas de ferramentas no asentamento. Pode levarche un anaco.]
@@ -224,9 +217,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Non é posíbel cambiar os prezos manualmente.'
   - Pode ver os seus gastos e ingresos por comercio na lapela de «Conta», como «Vender» e «Mercar».
-  - '
-
-    Obxectivo: consigue reunir no almacén 30 toneladas de ferramentas.'
+  - ''
+  - [BoldLabel, 'Obxectivo: consigue reunir no almacén 30 toneladas de ferramentas.']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -250,9 +242,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Non abonda con que o edificio teña as tendas dentro do seu raio de efecto.
 
     Tamén ten que haber un camiño das tendas ao pavillón.'
-  - '
-
-    Obxectivo: constrúe un pavillón cun camiño ata as tendas para satisfacer as necesidades de fe dos mariñeiros.'
+  - ''
+  - [BoldLabel, 'Obxectivo: constrúe un pavillón cun camiño ata as tendas para satisfacer as necesidades de fe dos mariñeiros.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -272,9 +263,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Tamén hai avances de edificios que non supoñen custos adicionais, como poderás observar co leñador. En casos coma este, o cambio é simplemente gráfico, só cambia o aspecto do edificio, máis nada.
   - A medida que avanzan de nivel, as vivendas poden aloxar máis habitantes, e ademais, os colonos que habitan as novas casas pagan máis impostos que os mariñeiros.
   - Como xa imaxinarás, o malo é que os colonos esixen bens adicionais que os mariñeiros non necesitan. Así que terás que gastar cartos en facer felices aos colonos tamén.
-  - '
-
-    Obxectivo: baixa o nivel de impostos (extremo esquerdo) e agarda a que os mariñeiros avancen de nivel.'
+  - ''
+  - [BoldLabel, 'Obxectivo: baixa o nivel de impostos (extremo esquerdo) e agarda a que os mariñeiros avancen de nivel.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -298,9 +288,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sempre e cando as unidades dos negocios de transformación desas materias primas teñan a granxa ao seu alcance, e os transportistas dos almacéns e depósitos poidan chegar ata o negocio de transformación desas materias primas, non haberá problema.
   - Porén, se contas con transformar esas materias primas en distintas partes da illa (algo que ten bastante sentido) ou mesmo en illas distintas, necesitarás conectar a granxa con transportistas.
   - Intenta construír a granxa lonxe da costa ou dos edificios existentes, dado que para que funcione necesitarás espazo ao seu redor.
-  - '
-
-    Obxectivo: constrúe unha granxa.'
+  - ''
+  - [BoldLabel, 'Obxectivo: constrúe unha granxa.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -326,9 +315,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Podes combinar a produción de distintas materias primas, xa que un simple campo de ovellas non aproveitará completamente as capacidades produtivas da granxa, pero tes que determinar a cantidade de campos que pode ter a granxa.
   - Os distintos tipos de campos requiren unha cantidade distinta de tempo que as unidades da granxa deberán empregar no campo (sementando, recollendo, etc.), e por iso, pode que unha granxa non sexa capaz de dar abasto con todos os campos construídos para ela.
   - De momento non tes que preocuparte destas cousas moito, xa que aínda non construíches ningún campo. Pero iso vai cambiar.
-  - '
-
-    Obxectivo: constrúe como mínimo un campo de ovellas na zona de acción da granxa e engade hortas de patacas se queres.'
+  - ''
+  - [BoldLabel, 'Obxectivo: constrúe como mínimo un campo de ovellas na zona de acción da granxa e engade hortas de patacas se queres.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -357,9 +345,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     • enviar os seus propios transportistas para recoller os bens, tal e como fai o almacén.'
   - Ten en conta que os negocios tamén poden conectarse a un depósito para recoller a súa produción, e se o almacén está que non dá abasto coas tarefas de recolección, podes engadir un depósito para botar unha man.
-  - '
-
-    Obxectivo: constrúe unha tenda de depósito, preferiblemente nun lugar no que necesites transportistas.'
+  - ''
+  - [BoldLabel, 'Obxectivo: constrúe unha tenda de depósito, preferiblemente nun lugar no que necesites transportistas.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -371,9 +358,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 'Hai dous lugares onde podes situar o tecelán: ou ben preto da granxa, ou preto dunha tenda de depósito (ou do almacén).'
   - En calquera dos dous casos, asegúrate de que quede conectado tamén a un sendeiro.
   - Podes situar o tecelán preto da granxa e destruír calquera sendeiro que vaia ata esta última, para ver como, efectivamente, o negocio pode obter a la e transformala de todos xeitos.
-  - '
-
-    Obxectivo: contrata un tecelán e sitúao de xeito que teña acceso á la.'
+  - ''
+  - [BoldLabel, 'Obxectivo: contrata un tecelán e sitúao de xeito que teña acceso á la.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -384,9 +370,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Intenta aloxar a un total de 50 ou máis habitantes na túa cidade. Para facelo, necesitarás construír máis vivendas.
   - En canto consigas desenvolver unha economía capaz de satisfacer ese número de consumidores, estarás listo para explorar novos horizontes!
   - Tamén necesitarás cartos de abondo para manter a economía en marcha, así que debes conseguir un saldo positivo. Podes comprobar o saldo actual na lapela de «Conta» do almacén.
-  - '
-
-    Obxectivo: consigue un total de 50 habitantes e un saldo positivo para completar a aprendizaxe.'
+  - ''
+  - [BoldLabel, 'Obxectivo: consigue un total de 50 habitantes e un saldo positivo para completar a aprendizaxe.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -415,7 +400,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Equipo de desenvolvemento de Unknown Horizons'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)

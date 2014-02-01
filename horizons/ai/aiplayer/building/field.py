@@ -53,31 +53,23 @@ class AbstractField(AbstractBuilding):
 
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.POTATOES:
-			return BUILDING_PURPOSE.POTATO_FIELD
-		elif resource_id == RES.LAMB_WOOL:
-			return BUILDING_PURPOSE.PASTURE
-		elif resource_id == RES.RAW_SUGAR:
-			return BUILDING_PURPOSE.SUGARCANE_FIELD
-		elif resource_id == RES.TOBACCO_PLANTS:
-			return BUILDING_PURPOSE.TOBACCO_FIELD
-		elif resource_id == RES.HERBS:
-			return BUILDING_PURPOSE.HERBARY
-		return None
+		return {
+			RES.POTATOES:       BUILDING_PURPOSE.POTATO_FIELD,
+			RES.LAMB_WOOL:      BUILDING_PURPOSE.PASTURE,
+			RES.RAW_SUGAR:      BUILDING_PURPOSE.SUGARCANE_FIELD,
+			RES.TOBACCO_PLANTS: BUILDING_PURPOSE.TOBACCO_FIELD,
+			RES.HERBS:          BUILDING_PURPOSE.HERBARY,
+		}.get(resource_id)
 
 	@classmethod
 	def get_higher_level_resource(cls, resource_id):
-		if resource_id == RES.POTATOES:
-			return RES.FOOD
-		elif resource_id == RES.LAMB_WOOL:
-			return RES.WOOL
-		elif resource_id == RES.RAW_SUGAR:
-			return RES.SUGAR
-		elif resource_id == RES.TOBACCO_PLANTS:
-			return RES.TOBACCO_LEAVES
-		elif resource_id == RES.HERBS:
-			return RES.MEDICAL_HERBS
-		return None
+		return {
+			RES.POTATOES:       RES.FOOD,
+			RES.LAMB_WOOL:      RES.WOOL,
+			RES.RAW_SUGAR:      RES.SUGAR,
+			RES.TOBACCO_PLANTS: RES.TOBACCO_LEAVES,
+			RES.HERBS:          RES.MEDICAL_HERBS,
+		}.get(resource_id)
 
 	def build(self, settlement_manager, resource_id):
 		production_builder = settlement_manager.production_builder

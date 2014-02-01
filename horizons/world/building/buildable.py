@@ -223,7 +223,7 @@ class Buildable(object):
 			# return first match
 			return result_generator.next()
 		except StopIteration:
-			# found none, fail with specified paramters
+			# No match found, fail with specified parameters.
 			return check_pos(point)
 
 
@@ -541,7 +541,7 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 class BuildableSingleOnDeposit(BuildableSingle):
 	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
 	For now, mines can only be built on a single type of deposit.
-	This is specified in game.sqlite in the table "mine", and saved in cls.buildable_on_deposit in
+	This is specified in object files, and saved in cls.buildable_on_deposit in
 	the buildingclass.
 	"""
 	irregular_conditions = True

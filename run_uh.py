@@ -30,8 +30,6 @@ This is the Unknown Horizons launcher; it looks for FIFE and tries
 to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
 
-__all__ = ['init_environment']
-
 import sys
 import os
 import os.path

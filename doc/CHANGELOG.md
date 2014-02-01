@@ -5,12 +5,12 @@ CHANGELOG Unknown Horizons
 
 2013-??-??: Milestone 2013.4
 ----------------------------
-changelog date: NOV 13
+changelog date: NOV 28
 
 ### Gameplay and Balancing
 
 New features
- - 
+ - #2201 Color overlays (if running with FIFE 0.3.6 or newer)
 
 Modifications and changes
  - #2187 Change random tree distribution file to clump trees together
@@ -39,6 +39,8 @@ Repositioning and modifications
  - e6d5239 Rotate mainmenu background images instead of randomizing
  - 3fd3c85 "Iron Mine" is now simply called "Mine"
  - #2182 Tutorial task summary now printed in bold
+ - #2189 Dynamic hotkeys in tooltips for certain actions
+ - #2200 Larger editor brush sizes
 
 Fixed bugs and usability problems
  - #2176 Doctor and Herbary not available in "per type" build menu
@@ -55,15 +57,18 @@ Modified structures
  - #2174 Save/load helpers for game tests and gui tests
  - #2184 Introduce content/packages/ for files related to packaging
  - #2181 More readable filenames for auto- and quicksaves
+ - 3847de7 Make LAYERS.WATER, LAYERS.GROUND static (zoom performance)
 
 Fixed crashes and inconsistencies
  - #2177 Several fixes for OS X app container
+ - #2193 Survive invalid minimap preview data
+ - #2197 Settings now upgrade properly again
 
 
 ### User-Contributed Content
 
 Translations
- - 
+ - New: Traditional Chinese
 
 Campaigns, scenarios and maps
  - 

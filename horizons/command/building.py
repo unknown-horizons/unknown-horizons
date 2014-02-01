@@ -210,6 +210,61 @@ class Tear(Command):
 		"""
 		self.building = building.worldid
 
+	def destroy_buildings(self, building):
+		"""Removes the settlement property from tiles within the circle defined by \
+		position and radius.
+		@param position: Rect
+		@param radius:
+		@param settlement:
+		"""
+		position = building.position
+		radius = building.radius
+		settlement = building.settlement
+		# Find all range affecting buildings.
+		range_buildings = []
+		for coords in settlement.ground_map:
+			tile = settlement.ground_map[coords]
+			if tile.settlement is not settlement:
+				continue
+			obj = tile.object
+			if obj is None or obj.id not in BUILDINGS.EXPAND_RANGE or obj in range_buildings:
+				continue
+			if obj.position == position:
+				continue
+			range_buildings.append(obj)
+		# Find the coordinates of the new settlement after the range-affecting building has been deleted.
+		new_settlement_coords = []
+		for obj in range_buildings:
+			for coords in obj.position.get_radius_coordinates(obj.radius, include_self=True):
+				if coords not in settlement.ground_map:
+					continue
+				if coords in new_settlement_coords:
+					continue
+				new_settlement_coords.append(coords)
+
+		# Find the buildings and tiles that will be affected.
+		buildings_to_destroy = []
+		for coords in position.get_radius_coordinates(radius, include_self=True):
+			if coords not in settlement.ground_map or coords in new_settlement_coords:
+				continue
+			tile = settlement.ground_map[coords]
+
+			obj = tile.object
+			if obj is None or obj.position == position or obj.id == BUILDINGS.FISH_DEPOSIT:
+				continue
+
+			# Check if part of a building would still be partially in settlement, if true then don't abandon this building.
+			building_overlap = False
+			for building_coords in obj.position.tuple_iter():
+				if building_coords in new_settlement_coords:
+					building_overlap = True
+					break
+
+			if not building_overlap:
+				if obj.id not in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE) and obj not in buildings_to_destroy:
+					buildings_to_destroy.append(obj)
+		return len(buildings_to_destroy)
+
 	def __call__(self, issuer):
 		"""Execute the command
 		@param issuer: the issuer of the command
@@ -221,6 +276,25 @@ class Tear(Command):
 			return # invalid command, possibly caused by mp delay
 		if building is None or building.fife_instance is None:
 			self.log.error("Tear: attempting to tear down a building that shouldn't exist %s", building)
+		elif building.id in BUILDINGS.EXPAND_RANGE:
+			building_to_destroy = self.destroy_buildings(building)
+			if building_to_destroy == 0:
+				self.log.debug("Tear: tearing down %s", building)
+				building.remove()
+			elif building_to_destroy == 1:
+				title = _("Destroy all buildings")
+				msg = _("This will destroy all the buildings that fall outside of the settlement range.\n\n1 additional building will be destroyed")
+				should_abandon = building.session.ingame_gui.show_popup(title, msg, show_cancel_button=True)
+				if should_abandon:
+					self.log.debug("Tear: tearing down %s", building)
+					building.remove()
+			else:
+				title = _("Destroy all buildings")
+				msg = _("This will destroy all the buildings that fall outside of the settlement range.\n\n%s additional buildings will be destroyed" %building_to_destroy)
+				should_abandon = building.session.ingame_gui.show_popup(title, msg, show_cancel_button=True)
+				if should_abandon:
+					self.log.debug("Tear: tearing down %s", building)
+					building.remove()
 		else:
 			self.log.debug("Tear: tearing down %s", building)
 			building.remove()

@@ -37,6 +37,9 @@ import os
 import sys
 from xml.dom import minidom
 
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
+
+
 if len(sys.argv) != 2:
 	print 'Error: Provide a file to write strings to as argument. Exiting.'
 	sys.exit(1)
@@ -111,7 +114,7 @@ files_to_skip = [
 	'credits.xml',
 	'stringpreviewwidget.xml',
 	'startup_error_popup.xml',
-	]
+]
 
 
 def print_n_no_name(n, text):
@@ -135,9 +138,9 @@ def content_from_element(element_name, parse_tree, attribute):
 	attribute: usually 'text' or 'helptext'
 	"""
 	default_names = {
-		'OkButton' : u'okButton',
-		'CancelButton' : u'cancelButton',
-		'DeleteButton' : u'deleteButton',
+		'OkButton': OkButton.DEFAULT_NAME,
+		'CancelButton': CancelButton.DEFAULT_NAME,
+		'DeleteButton': DeleteButton.DEFAULT_NAME,
 	}
 	element_strings = []
 	element_list = parse_tree.getElementsByTagName(element_name)

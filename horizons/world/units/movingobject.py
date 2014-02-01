@@ -89,7 +89,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		@param destination: destination supported by pathfinding
 		@return: object that can be used in boolean expressions (the path in case there is one)
 		"""
-		return self.path.calc_path(destination, check_only = True)
+		return self.path.calc_path(destination, check_only=True)
 
 	def is_moving(self):
 		"""Returns whether unit is currently moving"""
@@ -226,9 +226,10 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self._route.thisown = 0
 		self._route.setPath(location_list)
 
+		self.act(self._move_action)
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
-		action = self._move_action+"_"+str(self._action_set_id)
 		speed = float(self.session.timer.get_ticks(1)) / move_time[0]
+		action = self._instance.getCurrentAction().getId()
 		self._instance.follow(action, self._route, speed)
 
 		#self.log.debug("%s registering move tick in %s ticks", self, move_time[int(diagonal)])

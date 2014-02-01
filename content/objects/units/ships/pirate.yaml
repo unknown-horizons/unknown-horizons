@@ -1,5 +1,5 @@
 baseclass: pirateship.PirateShip
-id: 1000005
+id: UNITS.PIRATE_SHIP
 name: Pirate
 radius: 5
 velocity: 12.0

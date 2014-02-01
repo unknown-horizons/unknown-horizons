@@ -20,13 +20,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import random
 import glob
+import random
 from collections import deque
 
 from fife import fife
 
 from horizons.extscheduler import ExtScheduler
+
 
 class Sound(object):
 	"""Stuff related to engine & sound"""
@@ -178,7 +179,4 @@ class Sound(object):
 		self.set_volume_emitter('effects', volume)
 		self.set_volume_emitter('speech', volume)
 		for emitter in self.emitter['ambient']:
-				emitter.setGain(volume*2)
-
-
-
+			emitter.setGain(volume * 2)

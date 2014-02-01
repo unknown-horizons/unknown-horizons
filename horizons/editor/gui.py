@@ -32,6 +32,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import WindowManager
+from horizons.messaging import ZoomChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -77,7 +78,7 @@ class IngameGui(LivingObject):
 		})
 
 		self.mainhud.show()
-		self.session.view.add_change_listener(self._update_zoom)
+		ZoomChanged.subscribe(self._update_zoom)
 
 		# Hide unnecessary buttons in hud
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
@@ -106,7 +107,7 @@ class IngameGui(LivingObject):
 		self.keylistener = None
 		LastActivePlayerSettlementManager().remove()
 		LastActivePlayerSettlementManager.destroy_instance()
-		self.session.view.remove_change_listener(self._update_zoom)
+		ZoomChanged.unsubscribe(self._update_zoom)
 
 		if self.cursor:
 			self.cursor.remove()
@@ -183,16 +184,15 @@ class IngameGui(LivingObject):
 		}[which]
 		self.cursor = klass(self.session, *args, **kwargs)
 
-	def _update_zoom(self):
+	def _update_zoom(self, message):
 		"""Enable/disable zoom buttons"""
-		zoom = self.session.view.zoom
 		in_icon = self.mainhud.findChild(name='zoomIn')
 		out_icon = self.mainhud.findChild(name='zoomOut')
-		if zoom == VIEW.ZOOM_MIN:
+		if message.zoom == VIEW.ZOOM_MIN:
 			out_icon.set_inactive()
 		else:
 			out_icon.set_active()
-		if zoom == VIEW.ZOOM_MAX:
+		if message.zoom == VIEW.ZOOM_MAX:
 			in_icon.set_inactive()
 		else:
 			in_icon.set_active()
@@ -207,7 +207,7 @@ class SettingsTab(TabInterface):
 		self._world_editor = world_editor
 
 		# Brush size
-		for i in range(1, 4):
+		for i in range(1, 6):
 			b = self.widget.findChild(name='size_%d' % i)
 			b.capture(Callback(self._change_brush_size, i))
 

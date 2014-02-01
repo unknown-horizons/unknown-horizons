@@ -65,12 +65,12 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.island = island
 
 		settlements = self.island.get_settlements(self.position, owner)
+		self.settlement = None
 		if settlements:
 			self.settlement = settlements[0]
-		else:
+		elif owner:
 			# create one if we have an owner
-			self.settlement = self.island.add_settlement(self.position, self.radius, owner) if \
-			    owner is not None else None
+			self.settlement = self.island.add_settlement(self.position, self.radius, owner)
 
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
@@ -149,9 +149,10 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			db_data = db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)
 			if not db_data:
 				# this can happen when running costs are set when there were no before
-				# we shouldn't crash because of changes in yaml code, still it's suspicous
-				print 'WARNING: object %s of type %s does not know when to pay its rent.'
-				print 'Disregard this when loading old savegames or on running cost changes.'
+				# we shouldn't crash because of changes in yaml code, still it's suspicious
+				self.log.warning('Object %s of type %s does not know when to pay its rent.\n'
+					'Disregard this when loading old savegames or on running cost changes.',
+					self.worldid, self.id)
 				remaining_ticks_of_month = 1
 			else:
 				remaining_ticks_of_month = db_data[0][0]

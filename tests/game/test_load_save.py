@@ -26,7 +26,7 @@ import tempfile
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, PRODUCTION, UNITS, RES, GAME
+from horizons.constants import BUILDINGS, GAME, PRODUCTION, RES, TIER, UNITS
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
@@ -55,15 +55,9 @@ def test_load_inactive_production():
 
 	session.run(seconds=1)
 
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
+	# Save and reload game
+	session = saveload(session)
 
-	assert session.save(savegamename=filename)
-
-	session.end(keep_map=True)
-
-	# Load game
-	session = load_session(filename)
 	loadedlj = WorldObject.get_object_by_id(worldid)
 
 	# Make sure it really is not active
@@ -91,14 +85,10 @@ def create_lumberjack_production_session():
 			break
 		session.run(ticks=1)
 
-	fd1, filename1 = tempfile.mkstemp()
-	os.close(fd1)
-	assert session.save(savegamename=filename1)
-	session.end(keep_map=True)
-
-	# load the game
-	session = load_session(filename1)
+	# Save and reload game
+	session = saveload(session)
 	return session
+
 
 @game_test(manual_session=True)
 def test_load_producing_production_fast():
@@ -112,6 +102,7 @@ def test_load_producing_production_fast():
 	assert session.save(savegamename=filename2)
 	session.end()
 
+
 @game_test(manual_session=True)
 def test_load_producing_production_slow():
 	"""Create a saved game with a producing production, load it, and try to save again in a few seconds."""
@@ -123,6 +114,7 @@ def test_load_producing_production_slow():
 	os.close(fd2)
 	assert session.save(savegamename=filename2)
 	session.end()
+
 
 @game_test(manual_session=True)
 def test_hunter_save_load():
@@ -233,7 +225,8 @@ def test_settler_level_save_load(s, p):
 	"""
 	Verify that settler level up with save/load works
 	"""
-	for test_level in xrange(3): # test upgrade 0->1, 1->2 and 2->3
+	# test all available upgrades: 0->1, 1->2, 2->3...
+	for test_level in xrange(TIER.CURRENT_MAX):
 		session, player = new_session()
 		settlement, island = settle(s)
 

@@ -39,6 +39,10 @@ class Settings(object):
 		self._settings_serializer.load(settings_file)
 		self._settings_template_serializer = SimpleXMLSerializer()
 		self._settings_template_serializer.load(settings_template_file)
+		if not hasattr (self._settings_template_serializer, 'getModuleName'):
+			# Renamed after 0.3.5: https://github.com/fifengine/fifengine/issues/819.
+			new_api = self._settings_template_serializer.getModuleNameList
+			self._settings_template_serializer.getModuleName = new_api
 		self.upgrade_settings()
 
 	def get(self, module, name, default=None):
@@ -95,7 +99,9 @@ class Settings(object):
 
 	def upgrade_settings(self):
 		"""Upgrades the settings to a newer version necessary."""
-		current_version = self.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION)
+		# if the settings file doesn't exist, force an update with
+		# settings version 1 as default value
+		current_version = self.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION, 1)
 		template_version = self._settings_template_serializer.get(SETTINGS.META_MODULE, self.SETTINGS_VERSION)
 		if current_version != template_version:
 			print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
