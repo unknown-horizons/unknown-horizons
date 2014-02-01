@@ -211,58 +211,34 @@ class Tear(Command):
 		self.building = building.worldid
 
 	def destroy_buildings(self, building):
-		"""Removes the settlement property from tiles within the circle defined by \
-		position and radius.
-		@param position: Rect
-		@param radius:
-		@param settlement:
-		"""
-		position = building.position
-		radius = building.radius
+		"""Calculate how many buildings will be removed when removing the given building."""
 		settlement = building.settlement
 		# Find all range affecting buildings.
 		range_buildings = []
-		for coords in settlement.ground_map:
-			tile = settlement.ground_map[coords]
-			if tile.settlement is not settlement:
-				continue
-			obj = tile.object
-			if obj is None or obj.id not in BUILDINGS.EXPAND_RANGE or obj in range_buildings:
-				continue
-			if obj.position == position:
-				continue
-			range_buildings.append(obj)
+		for building_in_settlement in settlement.buildings:
+			if building_in_settlement.id in BUILDINGS.EXPAND_RANGE and building_in_settlement is not building:
+				range_buildings.append(building_in_settlement)
+				
 		# Find the coordinates of the new settlement after the range-affecting building has been deleted.
-		new_settlement_coords = []
-		for obj in range_buildings:
-			for coords in obj.position.get_radius_coordinates(obj.radius, include_self=True):
-				if coords not in settlement.ground_map:
-					continue
-				if coords in new_settlement_coords:
-					continue
-				new_settlement_coords.append(coords)
+		new_settlement_coords = set()
+		for building_in_range in range_buildings:
+			coords = list(building_in_range.position.get_radius_coordinates(building_in_range.radius, include_self=True))
+			new_settlement_coords.update(coords)
+		new_settlement_coords = new_settlement_coords.intersection(settlement.ground_map.keys())
 
 		# Find the buildings and tiles that will be affected.
 		buildings_to_destroy = []
-		for coords in position.get_radius_coordinates(radius, include_self=True):
-			if coords not in settlement.ground_map or coords in new_settlement_coords:
+		for settlement_building in settlement.buildings:
+			if settlement_building.id in (BUILDINGS.FISH_DEPOSIT,BUILDINGS.CLAY_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
 				continue
-			tile = settlement.ground_map[coords]
-
-			obj = tile.object
-			if obj is None or obj.position == position or obj.id == BUILDINGS.FISH_DEPOSIT:
-				continue
-
-			# Check if part of a building would still be partially in settlement, if true then don't abandon this building.
-			building_overlap = False
-			for building_coords in obj.position.tuple_iter():
-				if building_coords in new_settlement_coords:
-					building_overlap = True
+			building_in_new_settlement = False
+			for coord in settlement_building.position:
+				if coord in new_settlement_coords:
+					building_in_new_settlement = True
 					break
-
-			if not building_overlap:
-				if obj.id not in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN, BUILDINGS.TREE) and obj not in buildings_to_destroy:
-					buildings_to_destroy.append(obj)
+			if not building_in_new_settlement:
+				buildings_to_destroy.append(settlement_building)
+				
 		return len(buildings_to_destroy)
 
 	def __call__(self, issuer):
