@@ -301,11 +301,8 @@ class Island(BuildingOwner, WorldObject):
 		@param settlement:
 		"""
 		buildings_to_abandon, settlement_coords_to_change = Tear.destroyable_buildings(position, settlement)
-
-		if len(buildings_to_abandon) == 0:
-			return
-
 		self.abandon_buildings(buildings_to_abandon)
+		
 		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
 		land_or_coast = self.terrain_cache.land_or_coast
 		settlement_tiles_changed = []
