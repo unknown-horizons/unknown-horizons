@@ -210,36 +210,39 @@ class Tear(Command):
 		"""
 		self.building = building.worldid
 
-	def destroy_buildings(self, building):
-		"""Calculate how many buildings will be removed when removing the given building."""
-		settlement = building.settlement
+	@classmethod
+	def destroyable_buildings(cls, position, settlement):
+		"""
+		Calculate which buildings will be removed when removing the building at the given position and the coordinates at which the settlement has to be removed
+		@return tupel(buildings_to_remove, obsolete_settlement_coords)
+		"""
 		# Find all range affecting buildings.
 		range_buildings = []
-		for building_in_settlement in settlement.buildings:
-			if building_in_settlement.id in BUILDINGS.EXPAND_RANGE and building_in_settlement is not building:
-				range_buildings.append(building_in_settlement)
+		for building in settlement.buildings:
+			if building.id in BUILDINGS.EXPAND_RANGE and building.position != position:
+				range_buildings.append(building)
 				
-		# Find the coordinates of the new settlement after the range-affecting building has been deleted.
-		new_settlement_coords = set()
+		# Coordinates that are no longer in the settlement		
+		obsolete_settlement_coords = set()
 		for building_in_range in range_buildings:
-			coords = list(building_in_range.position.get_radius_coordinates(building_in_range.radius, include_self=True))
-			new_settlement_coords.update(coords)
-		new_settlement_coords = new_settlement_coords.intersection(settlement.ground_map.keys())
+			building_range_coords = list(building_in_range.position.get_radius_coordinates(building_in_range.radius, include_self=True))
+			obsolete_settlement_coords.update(building_range_coords)
+		obsolete_settlement_coords = set(settlement.ground_map.keys()).difference(obsolete_settlement_coords)
 
-		# Find the buildings and tiles that will be affected.
+		# Find the buildings and tiles that will be affected
 		buildings_to_destroy = []
 		for settlement_building in settlement.buildings:
 			if settlement_building.id in (BUILDINGS.FISH_DEPOSIT,BUILDINGS.CLAY_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
 				continue
 			building_in_new_settlement = False
 			for coord in settlement_building.position:
-				if coord in new_settlement_coords:
+				if coord not in obsolete_settlement_coords:
 					building_in_new_settlement = True
 					break
 			if not building_in_new_settlement:
 				buildings_to_destroy.append(settlement_building)
 				
-		return len(buildings_to_destroy)
+		return (buildings_to_destroy, obsolete_settlement_coords)
 
 	def __call__(self, issuer):
 		"""Execute the command
@@ -253,7 +256,7 @@ class Tear(Command):
 		if building is None or building.fife_instance is None:
 			self.log.error("Tear: attempting to tear down a building that shouldn't exist %s", building)
 		elif building.id in BUILDINGS.EXPAND_RANGE:
-			building_to_destroy = self.destroy_buildings(building)
+			building_to_destroy = len(self.destroyable_buildings(building.position, building.settlement)[0])
 			if building_to_destroy == 0:
 				self.log.debug("Tear: tearing down %s", building)
 				building.remove()
