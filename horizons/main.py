@@ -103,6 +103,8 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
 		from horizons.gui.modules.singleplayermenu import generate_random_minimap
+		from horizons.entities import Entities
+		Entities.load_climate_zones()
 		generate_random_minimap( * json.loads(
 		  command_line_arguments.generate_minimap
 		  ) )
