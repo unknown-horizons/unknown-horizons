@@ -309,7 +309,7 @@ class Island(BuildingOwner, WorldObject):
 		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
 		land_or_coast = self.terrain_cache.land_or_coast
 		settlement_tiles_changed = []
-		clean_coords = []
+		clean_coords = set()
 		for coords in settlement_coords_to_change:
 			tile = self.ground_map[coords]
 			tile.settlement = None
@@ -318,9 +318,10 @@ class Island(BuildingOwner, WorldObject):
 				settlement.remove_building(building)
 				building.owner = None
 				building.settlement = None
-			if coords not in clean_coords and coords in land_or_coast:
-				clean_coords.append(coords)
+			if coords in land_or_coast:
+				clean_coords.add(coords)
 			settlement_tiles_changed.append(self.ground_map[coords])
+			del settlement.ground_map[coords]
 			Minimap.update(coords)
 			if coords in flat_land_set:
 				self.available_flat_land += 1
