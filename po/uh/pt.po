@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-07-09 21:48+0200\n"
-"Last-Translator: luis coehlo <luisldc@sapo.pt>\n"
+"PO-Revision-Date: 2014-02-08 18:42+0200\n"
+"Last-Translator: João Sena Cardoso <traptos@hotmail.com>\n"
 "Language-Team: Portuguese <http://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:124
 #, fuzzy
@@ -215,13 +215,13 @@ msgstr "Introduza um nome novo:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr "Aplicar o jogo novo"
+msgstr "Aplicar o novo nome"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
 msgid "Chat"
-msgstr "Conversa"
+msgstr "Chat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
@@ -527,7 +527,7 @@ msgstr "Seleccione os recursos:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr ""
+msgstr "Utilização do colector"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
@@ -568,9 +568,8 @@ msgstr "Iniciar a produção"
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Selecione os recursos:"
+msgstr "Seleccione os recursos:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -579,14 +578,18 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
+"O recurso seleccionado é apresentado ao invés do actual. Esvazie "
+"pressionando X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
+"Salvar a configuração actual de recurso e defini-la como padrão para todos "
+"as colónias."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "Restabelecer a configuração padrão para todas as colónias."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -604,9 +607,8 @@ msgid "Move down"
 msgstr "Mover para baixo"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
-#, fuzzy
 msgid "Select a resource:"
-msgstr "Selecione os recursos:"
+msgstr "Seleccione os recursos:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
@@ -633,11 +635,11 @@ msgstr "Os meus navios"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 msgid "My settlements"
-msgstr ""
+msgstr "As minhas colónias"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
-msgstr ""
+msgstr "Mensagens de jogo"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
@@ -652,7 +654,7 @@ msgstr "Todos"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr ""
+msgstr "Enviar as mensagens para todos os jogadores."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -677,7 +679,7 @@ msgstr "Aguardar pela descarga:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr ""
+msgstr "Actividade da Rota:"
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
@@ -713,7 +715,7 @@ msgstr "Dinheiro"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Saldo do jogador + receitas previstas num futuro próximo"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -723,6 +725,8 @@ msgstr "Terra"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
+"Valor do terreno utilizado p.e. Quantidade de terreno que pode ser usado "
+"para a construção de edifícios"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -733,6 +737,8 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
+"Valor dos recursos gerado a partir de todas as fontes disponíveis na(s) "
+"colónia(s) do jogador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
@@ -740,7 +746,7 @@ msgstr "Edifícios"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Valor de todos os edifícios na(s) colónia(s) do jogador"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -754,6 +760,8 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
+"Valor que demonstra o progresso da(s) colónia(s) em termos de habitantes, "
+"edifícios e felicidade geral"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -761,12 +769,14 @@ msgstr "Unidades"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Valor de todas as unidades que pertencem ao jogador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
+"O valor total de todas as entidades ou resumidamente: Pontuação Total do "
+"Jogador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
@@ -825,7 +835,7 @@ msgstr "Sair para o menu principal"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr ""
+msgstr "Escolha o tamanho do mapa:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
@@ -834,27 +844,27 @@ msgstr "Escolha um mapa:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Escolha o mapa de um jogo salvo:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "Escolha a origem do mapa"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr ""
+msgstr "Criar um novo mapa"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "Carregar um mapa existente"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Carregar um mapa de um jogo salvo"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr ""
+msgstr "Iniciar o editor"
 
 #: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
@@ -911,11 +921,11 @@ msgstr "Ligar modo de destruição"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
-msgstr ""
+msgstr "Permitir modo construção de estradas"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "Permitir modo de clonar edifícios"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -947,19 +957,19 @@ msgstr "Ligar/desligar a transparência dos edifícios"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Destacar propriedade por telha"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Activar/Desactivar barras de vida"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "Focar camêra na selecção"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Remover as unidades/edifícios seleccionados"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
@@ -985,16 +995,16 @@ msgstr "Mostrar valores das coordenadas (Depuração)"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Primário"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Secundário"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
-msgstr ""
+msgstr "Restaurar definições predefinidas"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #, fuzzy
@@ -1020,11 +1030,11 @@ msgstr "Cancelar o jogo"
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 #, fuzzy
 msgid "Loading…"
-msgstr "A carregar ..."
+msgstr "A carregar …"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Mudar a tela de fundo"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1045,7 +1055,7 @@ msgstr "Sair"
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "Editor"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
@@ -1072,21 +1082,22 @@ msgstr "Nome do jogo:"
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
 msgstr ""
+"Isto vai ser mostrado aos outros jogadores para que eles possam reconhecer o "
+"jogo."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
-#, fuzzy
 msgid "Unnamed Game"
-msgstr " Carregar Jogo"
+msgstr "Jogo sem nome"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr ""
+msgstr "Palavra-Chave do jogo:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr ""
+msgstr "A palavra-chave do jogo. Necessário para participar no jogo."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
@@ -1106,7 +1117,7 @@ msgstr "Sair da sala de espera"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr ""
+msgstr "O jogo vai começar assim que todos os jogadores estejam prontos."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
@@ -1114,15 +1125,15 @@ msgstr "Detalhes do jogo:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
-msgstr ""
+msgstr "Cor"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
-msgstr ""
+msgstr "Pronto:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
+msgstr "Muda o teu estado para pronto (necessário para o jogo começar)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1157,10 +1168,9 @@ msgid "Create a new game"
 msgstr "Criar um jogo novo"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Junte-se ao jogo"
+msgstr "Junte-se ao jogo:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1168,7 +1178,7 @@ msgstr "Junte-se ao jogo selecionado"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr ""
+msgstr "Mudar detalhes de jogador"
 
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/modules/settings.py:53
@@ -1185,7 +1195,7 @@ msgstr "Ecrã total:"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr ""
+msgstr "SDL serve apenas como fallback sem suporte e pode causar problemas!"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
@@ -1193,11 +1203,11 @@ msgstr "Renderizador utilizado:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Limite de taxa de quadros:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Definir o a taxa máxima de quadros usada. Padrão: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
@@ -1216,9 +1226,8 @@ msgid "Enable sound:"
 msgstr "Ligar som:"
 
 #: content/gui/xml/mainmenu/settings.xml:82
-#, fuzzy
 msgid "Mouse"
-msgstr "casas"
+msgstr "Rato"
 
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid "Scroll at map edge:"
