@@ -349,10 +349,10 @@ def setup_fife():
 	fife_version_patch = fife.getPatch() if hasattr(fife, 'getPatch') else 'unknown'
 
 	from horizons.constants import VERSION
-	if VERSION.REQUIRED_FIFE_MAJOR_VERSION > fife_version_major or VERSION.REQUIRED_FIFE_MINOR_VERSION > fife_version_minor or VERSION.REQUIRED_FIFE_PATCH_VERSION > fife_version_patch:
+	if (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
 		log().warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
-		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.           REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 
 def init_environment(use_fife):
 	"""Sets up everything.
