@@ -260,16 +260,14 @@ class Tear(Command):
 			if building_to_destroy == 0:
 				self.log.debug("Tear: tearing down %s", building)
 				building.remove()
-			elif building_to_destroy == 1:
-				title = _("Destroy all buildings")
-				msg = _("This will destroy all the buildings that fall outside of the settlement range.\n\n1 additional building will be destroyed")
-				should_abandon = building.session.ingame_gui.show_popup(title, msg, show_cancel_button=True)
-				if should_abandon:
-					self.log.debug("Tear: tearing down %s", building)
-					building.remove()
 			else:
 				title = _("Destroy all buildings")
-				msg = _("This will destroy all the buildings that fall outside of the settlement range.\n\n%s additional buildings will be destroyed" %building_to_destroy)
+				msg = _("This will destroy all the buildings that fall outside of"
+				        " the settlement range.")
+				msg += u"\n\n"
+				msg += N_("%s additional building will be destroyed.",
+				          "%s additional buildings will be destroyed",
+				          building_to_destroy) % building_to_destroy
 				should_abandon = building.session.ingame_gui.show_popup(title, msg, show_cancel_button=True)
 				if should_abandon:
 					self.log.debug("Tear: tearing down %s", building)
