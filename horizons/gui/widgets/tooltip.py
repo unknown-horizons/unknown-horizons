@@ -41,16 +41,25 @@ class _Tooltip(object):
 	icon_regexp = re.compile(r'\[\[Buildmenu((?: \d+\:\d+)+)\]\]')
 
 	def init_tooltip(self):
+		# the widget's parent's parent's ..... until the topmost
+		self.topmost_widget = None
 		self.gui = None
 		self.bg = None
 		self.label = None
 		self.mapEvents({
 			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
 			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
-			self.name + '/mousePressed/tooltip' : self.hide_tooltip,
 			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
-			#self.name + '/mouseReleased/tooltip' : self.position_tooltip,
-			self.name + '/mouseDragged/tooltip' : self.hide_tooltip
+
+			# TIP: the mousePressed event is especially useful when such as click
+			# will trigger this tooltip's parent widget to be hidden (or destroyed), 
+			# which hides this tooltip first before hides the parent widget. 
+			# Otherwise the tooltip will show forever.
+			self.name + '/mousePressed/tooltip' : self.hide_tooltip,
+
+			# TODO: not sure if below are useful or not
+			# self.name + '/mouseReleased/tooltip' : self.position_tooltip,
+			# self.name + '/mouseDragged/tooltip' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
 
@@ -61,6 +70,8 @@ class _Tooltip(object):
 		self.gui.addChildren(self.bg, self.label)
 
 	def position_tooltip(self, event):
+		if not self.helptext:
+			return
 		"""Calculates a nice position for the tooltip.
 		@param event: mouse event from fife or tuple screenpoint
 		"""
@@ -100,7 +111,8 @@ class _Tooltip(object):
 			offset = x - self.gui.size[0] - 5
 		self.gui.x = widget_position[0] + offset
 		if not self.tooltip_shown:
-			ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
+			self.show_tooltip()
+			#ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
 			self.tooltip_shown = True
 
 	def show_tooltip(self):
@@ -145,8 +157,43 @@ class _Tooltip(object):
 		self.gui.adaptLayout()
 		self.gui.show()
 
+		# NOTE: the below code in this method is a hack to resolve #2227
+		# cannot find a better way to fix it, cause in fife.pychan, it seems
+		# if a widget gets hidden or removed, the children of that widget are not
+		# hidden or removed properly (at least in Python code)
+
+		# update topmost_widget every time the tooltip is shown
+		# this is to dismiss the tooltip later, see _check_hover_alive
+		target_widget = self
+		while target_widget:
+			self.topmost_widget = target_widget
+			target_widget = target_widget.parent
+
+		# add an event to constantly check whether the hovered widget is still there
+		# if this is no longer there, dismiss the tooltip widget
+		ExtScheduler().add_new_object(self._check_hover_alive, self, run_in=0.5, loops=-1)
+
+	def _check_hover_alive(self):
+		target_widget = self
+		# traverse the widget chain again
+		while target_widget:
+			# none of ancestors of this widget gets removed, 
+			# just do nothing and let the tooltip shown
+			if target_widget == self.topmost_widget:
+				return
+			# one ancestor of this widget is hidden
+			if not target_widget.isVisible():
+				self.hide_tooltip()
+				return
+			target_widget = target_widget.parent
+
+		# if it comes to here, meaning one ancestor of this widget is removed
+		self.hide_tooltip()
+
 	def hide_tooltip(self, event=None):
 		if self.gui is not None:
 			self.gui.hide()
-		ExtScheduler().rem_call(self, self.show_tooltip)
+		# tooltip is hidden, no need to check any more
+		ExtScheduler().rem_call(self, self._check_hover_alive)
+		self.topmost_widget = None
 		self.tooltip_shown = False

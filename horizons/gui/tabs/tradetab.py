@@ -29,6 +29,7 @@ from horizons.util.python.callback import Callback
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.i18n import _lazy
 
 
 class TradeTab(TabInterface):
@@ -37,6 +38,7 @@ class TradeTab(TabInterface):
 
 	widget = 'tradetab.xml'
 	icon_path = 'icons/tabwidget/warehouse/buysell'
+	helptext = _lazy('Trade')
 
 	scheduled_update_delay = 0.3
 

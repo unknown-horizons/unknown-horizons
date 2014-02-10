@@ -110,28 +110,32 @@ def init_pychan():
 			return wrapper
 
 		widget.hide = catch_gcn_exception_decorator(widget.hide)
+	
+	from fife.extensions.pychan import Label, Icon, VBox, HBox
+	# this is white list of widgets with tooltip.
+	widgets_with_tooltip = [Label, Icon, HBox, VBox,
+							ImageButton, AutoResizeContainer]
 
-		# support for tooltips via helptext attribute
-		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
-			# Copy everything we need from the tooltip class (manual mixin).
-			# TODO Figure out if it is safe to use this instead:
-			#widget.__bases__ += (_Tooltip, )
-			for key, value in _Tooltip.__dict__.iteritems():
-				if not key.startswith("__"):
-					setattr(widget, key, value)
+	for widget in widgets_with_tooltip:
+		# Copy everything we need from the tooltip class (manual mixin).
+		# TODO: Figure out if it is safe to use this instead:
+		# widget.__bases__ += (_Tooltip, )
+		for key, value in _Tooltip.__dict__.iteritems():
+			if not key.startswith("__"):
+				setattr(widget, key, value)
 
-			def add_tooltip_init(func):
-				@functools.wraps(func)
-				def wrapper(self, *args, **kwargs):
-					func(self, *args, **kwargs)
-					self.init_tooltip()
-				return wrapper
+		def add_tooltip_init(func):
+			@functools.wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+				self.init_tooltip()
+			return wrapper
 
-			widget.__init__ = add_tooltip_init(widget.__init__)
+		widget.__init__ = add_tooltip_init(widget.__init__)
 
-			# these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
-			# see #1597 and #1647
-			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
+		# these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
+		# see #1597 and #1647
+		widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
 
 	# FIXME hack pychan's text2gui function, it does an isinstance check that breaks
 	# the lazy string from horizons.i18n. we should be passing unicode to

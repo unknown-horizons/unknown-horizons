@@ -9,9 +9,10 @@
 	If there are n res in one column, the container will have the size n * height.
 -->
 <AutoResizeContainer position="25,110" name="production_line_container">
-	<VBox name="input_res" position="2,0" />
-
 	<Container name="centered_production_icons" size="200,55">
+		<VBox name="input_res" position="2,0" />
+
+		<VBox name="input_box" position="61,16" />
 		<Icon image="content/gui/icons/templates/production/production_arrow_head.png" position="107,17" />
 		<VBox name="output_box" position="136,17" />
 
@@ -24,7 +25,5 @@
 
 		<VBox name="output_res" position="158,4" />
 	</Container>
-
-	<VBox name="input_box" position="61,16" />
 
 </AutoResizeContainer>
