@@ -20,6 +20,7 @@
 # ###################################################
 
 import json
+import logging
 
 from collections import defaultdict
 
@@ -39,6 +40,8 @@ from horizons.scheduler import Scheduler
 class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
+
+	log = logging.getLogger("world.settlement")
 
 	component_templates = (
 		{
@@ -224,6 +227,9 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def remove_building(self, building):
 		"""Properly removes a building from the settlement"""
+		if not building in self.buildings:
+			self.log.warn("Building %s can not be removed from settlement", building.id)
+			return
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)
 		if building.has_component(Producer) and not building.has_component(UnitProducer):
