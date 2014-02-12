@@ -93,6 +93,8 @@
 * sabbott1877 (Logbook notification fix)
 * phaidon (OS X app container fixes)
 
+#### 2014
+* Zappaman (deletion surrounding transparent)
 
 ## Translators
 
