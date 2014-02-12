@@ -40,7 +40,7 @@ class TearingTool(NavigationTool):
 
 	def __init__(self, session):
 		super(TearingTool, self).__init__(session)
-		self._transparencified_instances = set() # fife instances modified for transparency
+		self._transparent_instances = set() # fife instances modified for transparency
 		self.coords = None
 		self.selected = WeakList()
 		self.oldedges = None
@@ -115,7 +115,7 @@ class TearingTool(NavigationTool):
 
 	def _mark(self, *edges):
 		"""Highights building instances and keeps self.selected up to date."""
-		self._restore_transparencified_instances()
+		self._restore_transparent_instances()
 		self.log.debug("TearingTool: mark")
 		if len(edges) == 1:
 			edges = (edges[0], edges[0])
@@ -152,8 +152,7 @@ class TearingTool(NavigationTool):
 	def _remove_object_transparency(self, coords):
 		"""helper function, used to remove transparency from object hovered upon,
 		identified through its coordinates"""
-		get_tile = self.session.world.get_tile
-		tile = get_tile(coords)
+		tile = self.session.world.get_tile(coords)
 		if tile.object is not None and tile.object.buildable_upon:
 			inst = tile.object.fife_instance
 			inst.get2dGfxVisual().setTransparency(0)
@@ -161,20 +160,19 @@ class TearingTool(NavigationTool):
 	def _make_surrounding_transparent(self, building):
 		"""Makes the surrounding of building_position transparent"""
 		world_contains = self.session.world.map_dimensions.contains_without_border
-		get_tile = self.session.world.get_tile
 		for coord in building.position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
 			p = Point(*coord)
 			if not world_contains(p):
 				continue
-			tile = get_tile(p)
+			tile = self.session.world.get_tile(p)
 			if tile.object is not None and tile.object.buildable_upon:
 				inst = tile.object.fife_instance
 				inst.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
-				self._transparencified_instances.add(weakref.ref(inst))
+				self._transparent_instances.add(weakref.ref(inst))
 
-	def _restore_transparencified_instances(self):
+	def _restore_transparent_instances(self):
 		"""Removes transparency"""
-		for inst_weakref in self._transparencified_instances:
+		for inst_weakref in self._transparent_instances:
 			fife_instance = inst_weakref()
 			if fife_instance:
 				# remove transparency only if trees aren't supposed to be transparent as default
@@ -183,7 +181,7 @@ class TearingTool(NavigationTool):
 				else:
 					# restore regular translucency value, can also be different
 					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
-		self._transparencified_instances.clear()
+		self._transparent_instances.clear()
 
 	def _on_object_deleted(self, message):
 		self.log.debug("TearingTool: on deletion notification %s", message.worldid)
