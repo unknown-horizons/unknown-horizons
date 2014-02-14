@@ -26,6 +26,7 @@ from fife import fife
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES, SETTINGS
+from horizons.engine import Fife
 from horizons.i18n import change_language, _lazy, find_available_languages
 from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
@@ -77,11 +78,17 @@ class SettingsDialog(PickBeltWidget, Window):
 		def get_resolutions():
 			return get_screen_resolutions(self._settings.get(FIFE, 'ScreenResolution'))
 
+		# the OpenGLe renderbackend was merged into the OpenGL backend
+		# fifengine commit 65cd369429618d3471f0f5cf5579e41b0707644f
+		renderbackends = ['OpenGL', 'SDL']
+		if Fife.getVersion <= (0,3,6):
+			renderbackends.append('OpenGLe')
+
 		self._options = [
 			# Graphics/Sound/Input
 			Setting(FIFE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
 			Setting(FIFE, 'FullScreen', 'enable_fullscreen', restart=True),
-			Setting(FIFE, 'RenderBackend', 'render_backend', ['OpenGL', 'SDL', 'OpenGLe'], restart=True, callback=self._on_RenderBackend_changed),
+			Setting(FIFE, 'RenderBackend', 'render_backend', renderbackends, restart=True, callback=self._on_RenderBackend_changed),
 			Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
 
 			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
