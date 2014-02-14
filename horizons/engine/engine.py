@@ -26,7 +26,7 @@ import logging
 from fife import fife
 from fife.extensions import pychan, fifelog
 
-from horizons.constants import LANGUAGENAMES, PATHS, SETTINGS
+from horizons.constants import LANGUAGENAMES, PATHS, SETTINGS, VERSION
 from horizons.engine.pychan_util import init_pychan
 from horizons.engine.settings import Settings
 from horizons.engine.sound import Sound
@@ -74,6 +74,22 @@ class Fife(object):
 		self.engine_settings.setGLCompressImages(self._finalSetting['GLCompressImages'])
 		self.engine_settings.setGLUseFramebuffer(self._finalSetting['GLUseFramebuffer'])
 		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
+
+		# introduced in fife 0.4.0
+		if VERSION.REQUIRED_FIFE_VERSION >= (0,4,0):
+			self.engine_settings.setGLUseMonochrome(self._finalSetting['GLUseMonochrome'])
+			self.engine_settings.setGLUseMipmapping(self._finalSetting['GLUseMipmapping'])
+			if self._finalSetting['GLTextureFiltering'] == 'None':
+				self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_NONE)
+			elif self._finalSetting['GLTextureFiltering'] == 'Bilinear':
+				self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_BILINEAR)
+			elif self._finalSetting['GLTextureFiltering'] == 'Trilinear':
+				self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_TRILINEAR)
+			elif self._finalSetting['GLTextureFiltering'] == 'Anisotropic':
+				self.engine_settings.setGLTextureFiltering(fife.TEXTURE_FILTER_ANISOTROPIC)
+			self.engine_settings.setGLUseDepthBuffer(self._finalSetting['GLUseDepthBuffer'])
+			self.engine_settings.setGLAlphaTestValue(self._finalSetting['GLAlphaTestValue'])
+
 		(width, height) = self._finalSetting['ScreenResolution'].split('x')
 		self.engine_settings.setScreenWidth(int(width))
 		self.engine_settings.setScreenHeight(int(height))
