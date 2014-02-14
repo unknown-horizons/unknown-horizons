@@ -26,7 +26,7 @@ import logging
 from fife import fife
 from fife.extensions import pychan, fifelog
 
-from horizons.constants import LANGUAGENAMES, PATHS, SETTINGS, VERSION
+from horizons.constants import LANGUAGENAMES, PATHS, SETTINGS
 from horizons.engine.pychan_util import init_pychan
 from horizons.engine.settings import Settings
 from horizons.engine.sound import Sound
@@ -76,7 +76,7 @@ class Fife(object):
 		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
 
 		# introduced in fife 0.4.0
-		if VERSION.REQUIRED_FIFE_VERSION >= (0,4,0):
+		if self.getVersion >= (0,4,0):
 			self.engine_settings.setGLUseMonochrome(self._finalSetting['GLUseMonochrome'])
 			self.engine_settings.setGLUseMipmapping(self._finalSetting['GLUseMipmapping'])
 			if self._finalSetting['GLTextureFiltering'] == 'None':
