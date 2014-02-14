@@ -29,14 +29,6 @@
 			<Spacer fixed_size="35" />
 
 				<VBox>
-					<Label name="use_renderer_label" text="Used renderer:"
-						wrap_text="1" helptext="SDL is only meant as unsupported fallback and might cause problems!" />
-					<ScrollArea max_size="100,55">
-						<ListBox name="render_backend" is_focusable="0" />
-					</ScrollArea>
-
-				<Spacer fixed_size="15" />
-
 					<Label name="fps_label" text="Frame rate limit:"
 						wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
 					<ScrollArea max_size="100,115">

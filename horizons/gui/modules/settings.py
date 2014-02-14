@@ -26,7 +26,6 @@ from fife import fife
 import horizons.globals
 
 from horizons.constants import LANGUAGENAMES, SETTINGS
-from horizons.engine import Fife
 from horizons.i18n import change_language, _lazy, find_available_languages
 from horizons.gui.modules.hotkeys_settings import HotkeyConfiguration
 from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
@@ -78,17 +77,10 @@ class SettingsDialog(PickBeltWidget, Window):
 		def get_resolutions():
 			return get_screen_resolutions(self._settings.get(FIFE, 'ScreenResolution'))
 
-		# the OpenGLe renderbackend was merged into the OpenGL backend
-		# fifengine commit 65cd369429618d3471f0f5cf5579e41b0707644f
-		renderbackends = ['OpenGL', 'SDL']
-		if Fife.getVersion <= (0,3,6):
-			renderbackends.append('OpenGLe')
-
 		self._options = [
 			# Graphics/Sound/Input
 			Setting(FIFE, 'ScreenResolution', 'screen_resolution', get_resolutions, restart=True),
 			Setting(FIFE, 'FullScreen', 'enable_fullscreen', restart=True),
-			Setting(FIFE, 'RenderBackend', 'render_backend', renderbackends, restart=True, callback=self._on_RenderBackend_changed),
 			Setting(FIFE, 'FrameLimit', 'fps_rate', fps, restart=True, callback=self._on_FrameLimit_changed),
 
 			Setting(UH, 'VolumeMusic', 'volume_music', callback=self._on_VolumeMusic_changed),
@@ -231,14 +223,6 @@ class SettingsDialog(PickBeltWidget, Window):
 		value_label.text = value
 
 	# callbacks for changes of settings
-
-	def _on_RenderBackend_changed(self, old, new):
-		if new == 'SDL':
-			headline = _("Warning")
-			#i18n Warning popup shown in settings when SDL is selected as renderer.
-			message = _("The SDL renderer is meant as a fallback solution only "
-			            "and has serious graphical glitches. \n\nUse at own risk!")
-			self._windows.show_popup(headline, message)
 
 	def _on_PlaySounds_changed(self, old, new):
 		horizons.globals.fife.sound.setup_sound()
