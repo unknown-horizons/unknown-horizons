@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-02-15 11:47+0200\n"
+"PO-Revision-Date: 2014-02-15 11:54+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -2368,51 +2368,55 @@ msgstr "Vista general de la producció de {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr ""
+msgstr "Feu clic per veure les estadístiques"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "Feu clic per afegir una ranura"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "Tornar a la configuració per defecte."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
+"Torna la monitorització dels recursos d'aquest assentament a la configuració "
+"per defecte que heu desat."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
+"Posa aquesta configuració per defecte com a configuració per defecte de tots "
+"els assentaments."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
-msgstr ""
+msgstr "Despeses de compra"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr ""
+msgstr "Ingressos per venda"
 
 #: horizons/gui/widgets/routeconfig.py:107
 msgid "Stop route"
-msgstr ""
+msgstr "Atura la ruta"
 
 #: horizons/gui/widgets/routeconfig.py:114
 msgid "Need at least two settlements"
-msgstr ""
+msgstr "Necessiteu com a mínim dos assentaments"
 
 #: horizons/gui/widgets/routeconfig.py:115
 msgid "You need at least two different settlements in your route."
-msgstr ""
+msgstr "Necessiteu tenir com a mínim dos assentaments per establir una ruta."
 
 #: horizons/gui/widgets/routeconfig.py:144
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "Feu clic a l'assentament per establir un punt de pas!"
 
 #: horizons/gui/widgets/routeconfig.py:183
 msgid "Loading into ship"
