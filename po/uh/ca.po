@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-02-15 11:54+0200\n"
+"PO-Revision-Date: 2014-02-15 11:56+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -2420,35 +2420,35 @@ msgstr "Feu clic a l'assentament per establir un punt de pas!"
 
 #: horizons/gui/widgets/routeconfig.py:183
 msgid "Loading into ship"
-msgstr ""
+msgstr "S'està carregant al vaixell"
 
 #: horizons/gui/widgets/routeconfig.py:190
 msgid "Unloading from ship"
-msgstr ""
+msgstr "S'està descarregant el vaixell"
 
 #: horizons/gui/widgets/routeconfig.py:376
 msgid "You are not allowed to trade with this player"
-msgstr ""
+msgstr "No podeu comerciar amb aquest jugador"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
-msgstr ""
+msgstr "cap"
 
 #: horizons/gui/windows.py:392
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "Detalls: {error_details}"
 
 #: horizons/gui/windows.py:394
 #, python-brace-format
 msgid "Error: {error_message}"
-msgstr ""
+msgstr "Error: {error_message}"
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:56
