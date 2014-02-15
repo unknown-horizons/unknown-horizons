@@ -91,9 +91,9 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			queue_container.removeAllChildren()
 			for place_in_queue, unit_type in enumerate(queue):
 				image = self.__class__.SHIP_THUMBNAIL.format(type_id=unit_type)
-				helptext = _("{ship} (place in queue: {place})")
-				helptext.format(ship=self.instance.session.db.get_unit_type_name(unit_type),
-				                place=place_in_queue+1)
+				helptext = _("{ship} (place in queue: {place})").format(
+				        ship=self.instance.session.db.get_unit_type_name(unit_type),
+				        place=place_in_queue+1)
 				# people don't count properly, always starting at 1..
 				icon_name = "queue_elem_"+str(place_in_queue)
 				icon = Icon(name=icon_name, image=image, helptext=helptext)
