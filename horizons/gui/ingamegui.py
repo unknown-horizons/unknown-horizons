@@ -472,7 +472,7 @@ class IngameGui(LivingObject):
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			message = u"Are you sure you want to delete this object?"
+			message = u"Are you sure you want to delete these objects?"
 			if self.windows.show_popup(u"Delete", message, show_cancel_button=True):
 				self.session.remove_selected()
 			else:
