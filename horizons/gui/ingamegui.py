@@ -62,7 +62,6 @@ class IngameGui(LivingObject):
 
 	def __init__(self, session):
 		super(IngameGui, self).__init__()
-		self.confirm_remove = False  #for removal confirmation
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
 		self.settlement = None
@@ -464,14 +463,6 @@ class IngameGui(LivingObject):
 			return self.on_escape()		
 		elif keyval == fife.Key.ENTER:
 			return self.on_return()
-		elif keyval == fife.Key.Y and self.confirm_remove == True:
-			self.message_widget.hide_text()
-			self.confirm_remove = False
-			self.session.remove_selected()
-		elif keyval == fife.Key.N and self.confirm_remove == True:
-			self.message_widget.hide_text()
-			self.confirm_remove = False
-			self.deselect_all()
 
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
@@ -481,9 +472,11 @@ class IngameGui(LivingObject):
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			self.confirm_remove = True
-			self.message_widget.add_custom(u"Are you sure you want to delete selected? Y: Yes/ N: No", visible_for=3)
-			self.message_widget.show_text(0)
+			message = u"Are you sure you want to delete this object?"
+			if self.windows.show_popup(u"Delete", message, show_cancel_button=True):
+				self.session.remove_selected()
+			else:
+				self.deselect_all()
 		elif action == _Actions.ROAD_TOOL:
 			self.toggle_road_tool()
 		elif action == _Actions.SPEED_UP:
