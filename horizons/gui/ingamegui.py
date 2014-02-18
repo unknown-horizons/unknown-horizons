@@ -460,7 +460,7 @@ class IngameGui(LivingObject):
 		keyval = evt.getKey().getValue()
 
 		if action == _Actions.ESCAPE:
-			return self.on_escape()
+			return self.on_escape()		
 		elif keyval == fife.Key.ENTER:
 			return self.on_return()
 
@@ -472,7 +472,11 @@ class IngameGui(LivingObject):
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			self.session.remove_selected()
+			message = _(u"Are you sure you want to delete these objects?")
+			if self.windows.show_popup(_(u"Delete"), message, show_cancel_button=True):
+				self.session.remove_selected()
+			else:
+				self.deselect_all()
 		elif action == _Actions.ROAD_TOOL:
 			self.toggle_road_tool()
 		elif action == _Actions.SPEED_UP:
