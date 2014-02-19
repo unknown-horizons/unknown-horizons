@@ -452,9 +452,9 @@ class Island(BuildingOwner, WorldObject):
 		# keep searching for new trees every time a tree is torn down.
 		for wild_animal in (wild_animal for wild_animal in self.wild_animals):
 			wild_animal.remove()
+		super(Island, self).end()
 		for settlement in self.settlements:
 			settlement.buildability_cache = None
-		super(Island, self).end()
 		for settlement in self.settlements:
 			settlement.end()
 		self.wild_animals = None
