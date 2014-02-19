@@ -76,6 +76,9 @@ def setup_horizons():
 	from run_uh import create_user_dirs
 	create_user_dirs()
 
+	import horizons.i18n
+        horizons.i18n.change_language()
+
 
 if __name__ == '__main__':
 	gettext.install('', unicode=True) # no translations here
