@@ -3,17 +3,21 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2013-??-??: Milestone 2013.4
+2014-??-??: Milestone 2014.1
 ----------------------------
-changelog date: NOV 28
+changelog date: FEB 19
 
 ### Gameplay and Balancing
 
 New features
+ - #2207 Only expand settlement range for certain buildings
  - #2201 Color overlays (if running with FIFE 0.3.6 or newer)
+ - #2129 Armory producing weapons, and barracks recruiting soldiers
 
 Modifications and changes
  - #2187 Change random tree distribution file to clump trees together
+ - #2217 Fisher ships now removed together with fisherman building
+ - 9411220 Add running costs for warehouse, storage tent, lookout
 
 Fixed bugs and problems
  - #1824 Salt ponds could be created at fresh water lakes
@@ -22,10 +26,16 @@ Fixed bugs and problems
 ### Media Content
 
 New files and features
+ - #630 Clinker pavilion (tier Settlers)
+ - #631 Clinker lighthouse (tier Settlers)
+ - #1450 Alvearies for producing honeycombs
+ - #1448 Vineyard
  - ddf6129 Restore warehouse ambient sound
+ - #2219 Modified "load from ship", "unload from ship" icons
 
 Brush-ups and modification
  - #2168 Fix "known incorrect sRGB profile" libpng warnings
+ - ee375da Pirate ship flag graphics now consistent with wind direction
 
 ### User Interface
 
@@ -34,6 +44,7 @@ Additions and new features
  - #2171 Show resource icons in build menu toolips
  - #2185 Ship pre-selected and in hotkeygroup 1 when starting new game
  - #1387 Status icon for inhabitants without main square connection
+ - #2153 Confirmation for pressing Del with unit/building selected (Zappaman)
 
 Repositioning and modifications
  - e6d5239 Rotate mainmenu background images instead of randomizing
@@ -41,29 +52,38 @@ Repositioning and modifications
  - #2182 Tutorial task summary now printed in bold
  - #2189 Dynamic hotkeys in tooltips for certain actions
  - #2200 Larger editor brush sizes
+ - #2225 Clear default text for player name and game name (RSouthee)
+ - 54a1b59 No longer display Renderer setting in our gui (xml-only now)
 
 Fixed bugs and usability problems
  - #2176 Doctor and Herbary not available in "per type" build menu
  - 88d051d Consistent cityinfo hide delay for all settlements
+ - #2218 Empty inventory slots incorrectly stretch their icon
+ - d064f37 Only show "warehouse not tearable" message for own warehouses
+ - #2136 No more color confusion between SP and MP menu (pinkfloyda)
+ - #1966 Transparent nature buildings around destroy tool (Zappaman)
 
 
 ### Codebase
 
 New functionalities
  - #2173 Manpage generation with custom optparse formatter
+ - #2229 Add the ability to set a default build menu style (Zappaman)
 
 Modified structures
  - #2175 Tabwidget code refactoring
  - #2174 Save/load helpers for game tests and gui tests
  - #2184 Introduce content/packages/ for files related to packaging
  - #2181 More readable filenames for auto- and quicksaves
- - 3847de7 Make LAYERS.WATER, LAYERS.GROUND static (zoom performance)
+ - 3847de7 Make LAYERS.WATER static (zoom performance)
 
 Fixed crashes and inconsistencies
  - #2177 Several fixes for OS X app container
  - #2193 Survive invalid minimap preview data
  - #2197 Settings now upgrade properly again
-
+ - #2221 time.strftime crash on loading savegame with non-utf8 locale
+ - #2231 Prevent a crash when losing network connection
+ - #2244 Some Fife OpenGL settings were not applied
 
 ### User-Contributed Content
 
@@ -75,7 +95,8 @@ Campaigns, scenarios and maps
 
 New team members with this release, Annotations
  - Push access was granted to:
- - We accepted pull requests or patches by: phaidon
+ - We accepted pull requests or patches by:
+     phaidon, RSouthee, Zappaman, pinkfloyda
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
 
