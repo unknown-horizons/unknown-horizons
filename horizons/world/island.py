@@ -293,14 +293,11 @@ class Island(BuildingOwner, WorldObject):
 		for building in buildings_list:
 			Tear(building)(building.owner)
 
-	def remove_settlement(self, position, radius, settlement):
-		"""Removes the settlement property from tiles within the circle defined by \
-		position and radius.
-		@param position: Rect
-		@param radius:
-		@param settlement:
-		"""
-		buildings_to_abandon, settlement_coords_to_change = Tear.destroyable_buildings(position, settlement)
+	def remove_settlement(self, building):
+		"""Removes the settlement property from tiles within the radius of the given building"""
+		settlement = building.settlement
+		buildings_to_abandon, settlement_coords_to_change = Tear.additional_removals_after_tear(building)
+		assert building not in buildings_to_abandon
 		self.abandon_buildings(buildings_to_abandon)
 		
 		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
@@ -374,9 +371,10 @@ class Island(BuildingOwner, WorldObject):
 				del self.deposits[building.id][coords]
 		if building.settlement is not None:
 			if building.id in BUILDINGS.EXPAND_RANGE:
-				self.remove_settlement(building.position, building.radius, building.settlement)
-			building.settlement.remove_building(building)
-			assert building not in building.settlement.buildings
+				self.remove_settlement(building)
+			else:
+				building.settlement.remove_building(building)
+				assert building not in building.settlement.buildings
 
 		super(Island, self).remove_building(building)
 		if building.id in self.building_indexers:

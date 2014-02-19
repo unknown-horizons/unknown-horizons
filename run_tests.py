@@ -77,7 +77,7 @@ def setup_horizons():
 	create_user_dirs()
 
 	import horizons.i18n
-        horizons.i18n.change_language()
+	horizons.i18n.change_language()
 
 
 if __name__ == '__main__':

@@ -75,10 +75,10 @@ class Build(Command):
 		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]
 		build_position = buildable_class.check_build(session, Point(self.x, self.y),
-			rotation=self.rotation,
-			check_settlement=issuer is not None,
-			ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
-			issuer=issuer)
+		                                             rotation=self.rotation,
+		                                             check_settlement=issuer is not None,
+		                                             ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
+		                                             issuer=issuer)
 
 		# it's possible that the build check requires different actions now,
 		# so update our data
@@ -92,7 +92,7 @@ class Build(Command):
 			               None if self.settlement is None else WorldObject.get_object_by_id(self.settlement)]
 
 			build_position.buildable, missing_res = self.check_resources(
-				{}, buildable_class.costs, issuer, res_sources)
+			    {}, buildable_class.costs, issuer, res_sources)
 		if not build_position.buildable:
 			self.log.debug("Build aborted. Seems like circumstances changed during EXECUTIONDELAY.")
 			# TODO: maybe show message to user
@@ -112,10 +112,10 @@ class Build(Command):
 				pass
 
 		building = Entities.buildings[self.building_class](
-			session=session, x=self.x, y=self.y, rotation=self.rotation,
-			island=island, action_set_id=self.action_set_id, instance=None,
-			owner=issuer if not self.ownerless else None,
-			**self.data
+		    session=session, x=self.x, y=self.y, rotation=self.rotation,
+		    island=island, action_set_id=self.action_set_id, instance=None,
+		    owner=issuer if not self.ownerless else None,
+		    **self.data
 		)
 		building.initialize(**self.data)
 		# initialize must be called immediately after the construction
@@ -148,8 +148,8 @@ class Build(Command):
 		# unload the remaining resources on the human player ship if we just founded a new settlement
 		from horizons.world.player import HumanPlayer
 		if (building.id == BUILDINGS.WAREHOUSE
-		and isinstance(building.owner, HumanPlayer)
-		and horizons.globals.fife.get_uh_setting("AutoUnload")):
+		    and isinstance(building.owner, HumanPlayer)
+		    and horizons.globals.fife.get_uh_setting("AutoUnload")):
 			ship = WorldObject.get_object_by_id(self.ship)
 			ship_inv = ship.get_component(StorageComponent).inventory
 			settlement_inv = building.settlement.get_component(StorageComponent).inventory
@@ -211,37 +211,39 @@ class Tear(Command):
 		self.building = building.worldid
 
 	@classmethod
-	def destroyable_buildings(cls, position, settlement):
+	def additional_removals_after_tear(cls, building_to_remove):
 		"""
-		Calculate which buildings will be removed when removing the building at the given position and the coordinates at which the settlement has to be removed
+		Calculate which buildings need to be removed when removing the building from its settlement
 		@return tupel(buildings_to_remove, obsolete_settlement_coords)
 		"""
+		settlement = building_to_remove.settlement
+		position = building_to_remove.position
 		# Find all range affecting buildings.
-		range_buildings = []
+		other_range_buildings = []
 		for building in settlement.buildings:
-			if building.id in BUILDINGS.EXPAND_RANGE and building.position != position:
-				range_buildings.append(building)
-				
-		# Coordinates that are no longer in the settlement		
-		obsolete_settlement_coords = set()
-		for building_in_range in range_buildings:
-			building_range_coords = list(building_in_range.position.get_radius_coordinates(building_in_range.radius, include_self=True))
-			obsolete_settlement_coords.update(building_range_coords)
-		obsolete_settlement_coords = set(settlement.ground_map.keys()).difference(obsolete_settlement_coords)
+			if building.id in BUILDINGS.EXPAND_RANGE:
+				other_range_buildings.append(building)
+		other_range_buildings.remove(building_to_remove)
 
-		# Find the buildings and tiles that will be affected
+		# Calculate which coordinates are in the new settlement and which are not
+		new_settlement_coords = set()
+		for building in other_range_buildings:
+			range_coords = list(building.position.get_radius_coordinates(building.radius, include_self=True))
+			new_settlement_coords.update(range_coords)
+		obsolete_settlement_coords = set(settlement.ground_map.keys()).difference(new_settlement_coords)
+
+		# Find the buildings that need to be destroyed 
 		buildings_to_destroy = []
-		for settlement_building in settlement.buildings:
-			if settlement_building.id in (BUILDINGS.FISH_DEPOSIT,BUILDINGS.CLAY_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
+		for building in settlement.buildings:
+			if building.id in (BUILDINGS.FISH_DEPOSIT, BUILDINGS.CLAY_DEPOSIT, BUILDINGS.TREE, BUILDINGS.MOUNTAIN):
 				continue
-			building_in_new_settlement = False
-			for coord in settlement_building.position:
-				if coord not in obsolete_settlement_coords:
-					building_in_new_settlement = True
+			if building.position == position:
+				continue
+			for coord in building.position:
+				if coord in obsolete_settlement_coords:
+					buildings_to_destroy.append(building)
 					break
-			if not building_in_new_settlement:
-				buildings_to_destroy.append(settlement_building)
-				
+
 		return (buildings_to_destroy, obsolete_settlement_coords)
 
 	def __call__(self, issuer):
@@ -255,23 +257,6 @@ class Tear(Command):
 			return # invalid command, possibly caused by mp delay
 		if building is None or building.fife_instance is None:
 			self.log.error("Tear: attempting to tear down a building that shouldn't exist %s", building)
-		elif building.id in BUILDINGS.EXPAND_RANGE:
-			building_to_destroy = len(self.destroyable_buildings(building.position, building.settlement)[0])
-			if building_to_destroy == 0:
-				self.log.debug("Tear: tearing down %s", building)
-				building.remove()
-			else:
-				title = _("Destroy all buildings")
-				msg = _("This will destroy all the buildings that fall outside of"
-				        " the settlement range.")
-				msg += u"\n\n"
-				msg += N_("%s additional building will be destroyed.",
-				          "%s additional buildings will be destroyed",
-				          building_to_destroy) % building_to_destroy
-				should_abandon = building.session.ingame_gui.show_popup(title, msg, show_cancel_button=True)
-				if should_abandon:
-					self.log.debug("Tear: tearing down %s", building)
-					building.remove()
 		else:
 			self.log.debug("Tear: tearing down %s", building)
 			building.remove()

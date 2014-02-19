@@ -82,9 +82,11 @@ class TearingTool(NavigationTool):
 			if self.coords is None:
 				self.coords = coords
 			self._mark(self.coords, coords)
-			for i in [i for i in self.selected]:
-				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
-				Tear(i).execute(self.session)
+			selection_list_copy = [building for building in self.selected]
+			for building in selection_list_copy:
+				self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
+				if (not building.id in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
+					Tear(building).execute(self.session)
 			else:
 				if self._hovering_over:
 					# we're hovering over a building, but none is selected, so this tear action isn't allowed
@@ -101,6 +103,20 @@ class TearingTool(NavigationTool):
 				self.tear_tool_active = False
 				self.on_escape()
 			evt.consume()
+			
+	def confirm_ranged_delete(self, building):
+			buildings_to_destroy = len(Tear.additional_removals_after_tear(building)[0])
+			if buildings_to_destroy == 0:
+				return True
+			
+			title = _("Destroy all buildings")
+			msg = _("This will destroy all the buildings that fall outside of"
+		            " the settlement range.")
+			msg += u"\n\n"
+			msg += N_("%s additional building will be destroyed.",
+		              "%s additional buildings will be destroyed",
+		              buildings_to_destroy) % buildings_to_destroy
+			return building.session.ingame_gui.show_popup(title, msg, show_cancel_button=True)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:
