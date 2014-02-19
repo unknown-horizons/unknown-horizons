@@ -454,8 +454,6 @@ class Island(BuildingOwner, WorldObject):
 			wild_animal.remove()
 		super(Island, self).end()
 		for settlement in self.settlements:
-			settlement.buildability_cache = None
-		for settlement in self.settlements:
 			settlement.end()
 		self.wild_animals = None
 		self.ground_map = None

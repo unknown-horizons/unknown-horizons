@@ -256,7 +256,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.__inventory_checker = InventoryChecker(SettlementInventoryUpdated, storage, 4)
 
 	def end(self):
-		assert self.buildability_cache is None
+		self.buildability_cache = None
 		self.session = None
 		self.owner = None
 		self.buildings = None
