@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-02-15 11:56+0200\n"
+"PO-Revision-Date: 2014-02-22 16:56+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
-"Language-Team: Catalan <http://hosted.weblate.org/projects/uh/uh/ca/>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2453,127 +2453,128 @@ msgstr "Error: {error_message}"
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:56
 msgid "Bakery"
-msgstr ""
+msgstr "Forn de pa"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:58
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Necessita farina. Produeix menjar."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:63
 msgid "Barracks"
-msgstr ""
+msgstr "Caserna"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:65
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Recluta unitats útils pel combat terrestre."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
-msgstr ""
+msgstr "Mesclador"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Fa condiments a partir d'espècies."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:77
 msgid "Boat Builder"
-msgstr ""
+msgstr "Mestre d'aixa"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:79
 msgid "Builds boats and small ships. Built on coast."
-msgstr ""
+msgstr "Fa barques i vaixells petits. Es construeix a la costa."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:84
 msgid "Brickyard"
-msgstr ""
+msgstr "Forn d'argila"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:86
 msgid "Turns clay into bricks."
-msgstr ""
+msgstr "Converteix l'argila en maons."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:91
 msgid "Butchery"
-msgstr ""
+msgstr "Carnisseria"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Necessita porcs o vedelles. Produeix aliment."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:98
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Carbonera"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:100
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "Fa cremar molta fusta."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:105
 msgid "Clay Deposit"
-msgstr ""
+msgstr "Jaciment d'argila"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:110
 msgid "Clay Pit"
-msgstr ""
+msgstr "Pou d'argila"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:112
 msgid "Gets clay from deposit."
-msgstr ""
+msgstr "Treu argila del jaciment."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:117
 msgid "Distillery"
-msgstr ""
+msgstr "Destil·leria"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
 msgid "Turns sugar into liquor."
-msgstr ""
+msgstr "Converteix el sucre en licor."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:124
 msgid "Doctor"
-msgstr ""
+msgstr "Metge"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:126
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Tracta les malalties. Fa servir herbes."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:131
 msgid "Farm"
-msgstr ""
+msgstr "Granja"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:133
 msgid "Grows field crops and raises livestock."
-msgstr ""
+msgstr "Fa créixer els camps i el bestiar."
 
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:138
 msgid "Alvearies"
-msgstr ""
+msgstr "Arna d'abelles"
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:140
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Cuida les abelles. Fa bresques de mel per fer dolços. Necessita una granja."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
