@@ -176,7 +176,7 @@ def create_resource_selection_dialog(on_click, inventory, db,
 			button.button.capture( cb )
 			button.button.name = "resource_%d" % res_id
 		else:
-			button.capture( cb )
+			button.children[0].capture( cb )
 			button.name = "resource_%d" % res_id
 
 		current_hbox.addChild(button)
