@@ -158,27 +158,30 @@ def create_resource_selection_dialog(on_click, inventory, db,
 		# don't show resources that are already in the list
 		if res_filter is not None and not res_filter(res_id):
 			continue
+		
+		# on click: add this res
+		cb = Callback(on_click, res_id)
+		
 		# create button (dummy one or real one)
 		if res_id == 0 or inventory is None:
+			# create the ImageButton and capture the mouse click
+			# (capturing a click on the Container doesn't work)
 			reset_button = ImageButton(max_size=icon_size, name="resource_icon_00")
 			reset_button.path = dummy_icon_path
+			reset_button.capture( cb )
+			
 			button = Container(size=cell_size)
 			button.addChild(reset_button)
+			button.name = "resource_%d" % res_id
 		else:
 			amount = inventory[res_id]
 			filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
 			button = ImageFillStatusButton.init_for_res(db, res_id,
 			                                            amount=amount, filled=filled, uncached=True,
 			                                            use_inactive_icon=False, showprice=True)
-		# on click: add this res
-		cb = Callback(on_click, res_id)
-		if hasattr(button, "button"): # for imagefillstatusbuttons
 			button.button.capture( cb )
 			button.button.name = "resource_%d" % res_id
-		else:
-			button.children[0].capture( cb )
-			button.name = "resource_%d" % res_id
-
+		
 		current_hbox.addChild(button)
 		if index % amount_per_line == 0:
 			vbox.addChild(current_hbox)
