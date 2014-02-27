@@ -94,7 +94,11 @@
 * phaidon (OS X app container fixes)
 
 #### 2014
-* Zappaman (deletion surrounding transparent)
+* RSouthee (Clear player name on click)
+* Zappaman (Several improvements)
+* pinkfloyda (Tooltip refactoring)
+* myrdd (BuySellTab fix)
+
 
 ## Translators
 

@@ -96,7 +96,7 @@ Campaigns, scenarios and maps
 New team members with this release, Annotations
  - Push access was granted to:
  - We accepted pull requests or patches by:
-     phaidon, RSouthee, Zappaman, pinkfloyda
+     phaidon, RSouthee, Zappaman, pinkfloyda, myrdd
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
 
