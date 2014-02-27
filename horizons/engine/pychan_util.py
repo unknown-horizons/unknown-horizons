@@ -110,11 +110,11 @@ def init_pychan():
 			return wrapper
 
 		widget.hide = catch_gcn_exception_decorator(widget.hide)
-	
+
 	from fife.extensions.pychan import Label, Icon, VBox, HBox
 	# this is white list of widgets with tooltip.
 	widgets_with_tooltip = [Label, Icon, HBox, VBox,
-							ImageButton, AutoResizeContainer]
+	                        ImageButton, AutoResizeContainer]
 
 	for widget in widgets_with_tooltip:
 		# Copy everything we need from the tooltip class (manual mixin).
