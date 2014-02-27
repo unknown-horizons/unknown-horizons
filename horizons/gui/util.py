@@ -164,14 +164,15 @@ def create_resource_selection_dialog(on_click, inventory, db,
 		
 		# create button (dummy one or real one)
 		if res_id == 0 or inventory is None:
-			# create the ImageButton and capture the mouse click
-			# (capturing a click on the Container doesn't work)
 			reset_button = ImageButton(max_size=icon_size, name="resource_icon_00")
 			reset_button.path = dummy_icon_path
-			reset_button.capture( cb )
 			
 			button = Container(size=cell_size)
+			# add the "No Resource" image to the container, positioned in the top left
 			button.addChild(reset_button)
+			# capture a mouse click on the container. It's possible to click on the
+			# image itself or into the empty area (below or to the right of the image)
+			button.capture( cb, event_name="mouseClicked" )
 			button.name = "resource_%d" % res_id
 		else:
 			amount = inventory[res_id]
