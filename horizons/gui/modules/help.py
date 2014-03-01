@@ -21,7 +21,6 @@
 
 from fife.extensions.pychan.widgets import Label
 
-from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.modules.loadingscreen import GAMEPLAY_TIPS
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
@@ -30,10 +29,9 @@ from horizons.gui.windows import Window
 
 class HelpDialog(Window):
 
-	def __init__(self, windows, session=None):
+	def __init__(self, windows):
 		super(HelpDialog, self).__init__(windows)
 
-		self._session = session
 		self.widget = load_uh_widget('help.xml')
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self._windows.close)
 		self.widget.findChild(name='headline').text = GAMEPLAY_TIPS['name']
@@ -45,10 +43,6 @@ class HelpDialog(Window):
 
 	def show(self):
 		self.widget.show()
-		if self._session:
-			PauseCommand().execute(self._session)
 
 	def hide(self):
-		if self._session:
-			UnPauseCommand().execute(self._session)
 		self.widget.hide()
