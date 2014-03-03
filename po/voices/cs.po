@@ -8,120 +8,121 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2013-09-25 17:22+0200\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
-"Language-Team: Czech <http://hosted.weblate.org/projects/uh/voices/cs/>\n"
+"PO-Revision-Date: 2014-03-03 13:11+0200\n"
+"Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/uh/voices/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 1.7-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
-msgstr ""
+msgstr "Snažte se, aby se tato osada vyvíjela mohutně."
 
 #. Founding settlement - Player found settlement"
 msgid "Your inhabitants will certainly feel comfortable on this island."
-msgstr ""
+msgstr "Vaši obyvatelé se budou na tomto ostrově určitě cítit pohodlně."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr ""
+msgstr "Odteď oslovujte tuto zem jako vaši."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
-msgstr ""
+msgstr "Tato oblast teď patří našim barvám."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr ""
+msgstr "Tento kus země je teď náš."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
-msgstr ""
+msgstr "Jiný hráč se usadil na ostrově."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "A player develops a new settlement."
-msgstr ""
+msgstr "Hráč zakládá novou osadu."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
-msgstr ""
+msgstr "Jeden z vašich spoluhráčů založil osadu."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr ""
+msgstr "Zdá se, že náš soupeř založil osadu."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
-msgstr ""
+msgstr "Byli jsme informováni, že jeden z našich soupeřů zabral novou zemi."
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr ""
+msgstr "Proslýchá se, že jeden z našich soupeřů expandoval."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
-msgstr ""
+msgstr "Náš spojenec se usadil na dalším ostrově."
 
 #. Founding settlement - Ally found settlement
 msgid "One of our allies cultivates an islnd."
-msgstr ""
+msgstr "Jeden z našich spojenců kultivuje ostrov."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
-msgstr ""
+msgstr "Náš spojenec posílá zprávy o úspěšném založení osady."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "This island no longer is all ours."
-msgstr "Tento ostrov již není náš."
+msgstr "Tento ostrov již není pouze náš."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
-msgstr ""
+msgstr "Průzkumníci zjistili, že na jednom z našich ostrovů se usadili hosté."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
-msgstr ""
+msgstr "Máme nové sousedy na tomto ostrově!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Scouts report that uninvited guests beleaguer our island!"
-msgstr ""
+msgstr "Průzkumníci hlásí, že nezvaní hosté obléhají náš ostrov!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Should we really accept our rival as new neighbor?"
 msgstr ""
+"Opravdu bychom měli přijmout našeho protivníka jako svého nového souseda?"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "One of our enemies settles on our ground!"
-msgstr ""
+msgstr "Jeden z našich nepřátel se usadil na naší půdě!"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
-msgstr ""
+msgstr "Vypadá to, že jeden z našich spojenců zoufale potřebuje vaši půdu."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
-msgstr ""
+msgstr "Právě sdílíme tuto půdu s našim spojencem."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "Our ally settles on one of our islands."
-msgstr ""
+msgstr "Náš spojenec se usazuje na jednom z našich ostrovů."
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr "Pro stavbu potřebujete více zdrojů."
+msgstr "Pro stavbu potřebujete více surovin."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
-msgstr ""
+msgstr "Tento stavební projekt potřebuje více surovin."
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
-msgstr ""
+msgstr "Bez dostatku materiálu je stavba nemožná."
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
-msgstr ""
+msgstr "V inventáři nemáte dostatek surovin k postavení."
