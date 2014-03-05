@@ -107,7 +107,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, "NEW TASK: MAIN SQUARE"]
   - [Image, "content/gui/images/background/hr.png"]
   - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the main square.
+  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
   - [Gallery, ["content/gui/icons/buildmenu/004_h.png"]]
   - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
@@ -128,7 +128,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 - &FIRSTTENT
-  - [Message, "Build a tent and connect it to the main square."]
+  - [Message, "Build a tent and connect it to the main square if necessary."]
   - [Headline, "NEW TASK: RESIDENTIAL BUILDINGS"]
   - [Image, "content/gui/images/background/hr.png"]
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
@@ -139,7 +139,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - |
 
-  - [BoldLabel, "Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies."]
+  - [BoldLabel, "Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies."]
 
 
 - &MORETENTS
