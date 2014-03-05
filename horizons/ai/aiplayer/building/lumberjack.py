@@ -107,13 +107,10 @@ class LumberjackEvaluator(BuildingEvaluator):
 		island_ground_map = production_builder.island.ground_map
 		forest_coords_list = []
 		for coords in building.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
-			if island_ground_map[coords].settlement is None:
-				# Don't try to plant trees outside the settlement's range
-				continue
 			if coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in coastline:
 				if island_ground_map[coords].object is not None and island_ground_map[coords].object.id == BUILDINGS.TREE:
 					forest_coords_list.append(coords)
-				else:
+				elif island_ground_map[coords].settlement is not None and island_ground_map[coords].settlement.owner is self.area_builder.owner:
 					builder = BasicBuilder(BUILDINGS.TREE, coords, 0)
 					if not builder.have_resources(production_builder.land_manager):
 						break
