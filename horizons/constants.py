@@ -239,7 +239,7 @@ class RES:
 	MEDICAL_HERBS    = 38
 	ACORNS           = 39
 	CANNON           = 40
-	DAGGER           = 41
+	SWORD            = 41
 	GRAIN            = 42
 	CORN             = 43
 	FLOUR            = 44
@@ -302,7 +302,7 @@ class RES:
 
 class WEAPONS:
 	CANNON = RES.CANNON
-	DAGGER = RES.DAGGER
+	SWORD  = RES.SWORD
 
 	DEFAULT_FIGHTING_SHIP_WEAPONS_NUM = 7
 

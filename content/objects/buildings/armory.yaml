@@ -18,16 +18,16 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      DAGGER:
+      SWORD:
         produces:
-        - [RES.DAGGER, 1]
+        - [RES.SWORD, 1]
         consumes:
         - [RES.CHARCOAL, -2]
         - [RES.IRON_INGOTS, -2]
         time: 30
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {RES.IRON_INGOTS: 6, RES.DAGGER: 8, RES.CHARCOAL: 6}
+        slot_sizes: {RES.IRON_INGOTS: 6, RES.SWORD: 8, RES.CHARCOAL: 6}
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1

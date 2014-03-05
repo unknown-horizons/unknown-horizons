@@ -22,11 +22,11 @@ components:
       SCOUT:
         consumes:
         - [RES.GOLD, -500]
-        - [RES.DAGGER, -1]
+        - [RES.SWORD, -1]
         time: 60
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {RES.DAGGER: 5}
+        slot_sizes: {RES.SWORD: 5}
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1

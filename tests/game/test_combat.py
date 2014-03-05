@@ -101,11 +101,11 @@ def test_equip(s, p):
 	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 0
 	assert s0.get_weapon_storage()[ WEAPONS.CANNON ] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 
-	# we don't have daggers
-	not_equip = EquipWeaponFromInventory(s0, WEAPONS.DAGGER, 1).execute(s)
+	# we don't have swords
+	not_equip = EquipWeaponFromInventory(s0, WEAPONS.SWORD, 1).execute(s)
 	assert not_equip == 1
-	assert s0.get_component(StorageComponent).inventory[ WEAPONS.DAGGER ] == 0
-	assert s0.get_weapon_storage()[ WEAPONS.DAGGER ] == 0
+	assert s0.get_component(StorageComponent).inventory[ WEAPONS.SWORD ] == 0
+	assert s0.get_weapon_storage()[ WEAPONS.SWORD ] == 0
 
 	# test equip
 	s0.get_component(StorageComponent).inventory.alter( WEAPONS.CANNON, 2 )
@@ -124,8 +124,8 @@ def test_equip(s, p):
 	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 0
 	assert s0.get_weapon_storage()[WEAPONS.CANNON] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM + 2
 
-	# no daggers
-	not_equip = UnequipWeaponToInventory(s0, WEAPONS.DAGGER, 2).execute(s)
+	# no swords
+	not_equip = UnequipWeaponToInventory(s0, WEAPONS.SWORD, 2).execute(s)
 	assert not_equip == 2
 
 	not_equip = UnequipWeaponToInventory(s0, WEAPONS.CANNON, 2).execute(s)

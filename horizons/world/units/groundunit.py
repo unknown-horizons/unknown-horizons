@@ -80,7 +80,7 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 	def __init__(self, x, y, **kwargs):
 		super(FightingGroundUnit, self).__init__(x=x, y=y, **kwargs)
 		#NOTE weapons
-		self.add_weapon_to_storage(WEAPONS.DAGGER)
+		self.add_weapon_to_storage(WEAPONS.SWORD)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		names = self.session.db("SELECT name FROM groundunitnames")
 		# We need unicode strings as the name is displayed on screen.
