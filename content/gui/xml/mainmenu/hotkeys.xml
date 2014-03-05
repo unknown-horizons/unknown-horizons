@@ -16,6 +16,8 @@
 				<Label name="lbl_SPEED_UP" text="SPEED_UP" comment="noi18n_text" helptext="Increase game speed" />
 				<Label name="lbl_SPEED_DOWN" text="SPEED_DOWN" comment="noi18n_text" helptext="Decrease game speed" />
 				<Label name="lbl_PAUSE" text="PAUSE" comment="noi18n_text" helptext="Pause game" />
+				<Label name="lbl_ZOOM_IN" text="ZOOM_IN" comment="noi18n_text" helptext="Zoom in" />
+				<Label name="lbl_ZOOM_OUT" text="ZOOM_OUT" comment="noi18n_text" helptext="Zoom out" />
 				<Label name="lbl_BUILD_TOOL" text="BUILD_TOOL" comment="noi18n_text" helptext="Show build menu" />
 				<Label name="lbl_DESTROY_TOOL" text="DESTROY_TOOL" comment="noi18n_text" helptext="Enable destruct mode" />
 				<Label name="lbl_ROAD_TOOL" text="ROAD_TOOL" comment="noi18n_text" helptext="Enable road building mode" />

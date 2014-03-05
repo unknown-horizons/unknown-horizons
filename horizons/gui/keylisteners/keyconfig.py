@@ -36,6 +36,7 @@ class KeyConfig(object):
 
 	_Actions = Enum('LEFT', 'RIGHT', 'UP', 'DOWN',
 	                'ROTATE_LEFT', 'ROTATE_RIGHT', 'SPEED_UP', 'SPEED_DOWN', 'PAUSE',
+	                'ZOOM_IN', 'ZOOM_OUT',
 	                'BUILD_TOOL', 'DESTROY_TOOL', 'ROAD_TOOL', 'PIPETTE',
 	                'PLAYERS_OVERVIEW', 'SETTLEMENTS_OVERVIEW', 'SHIPS_OVERVIEW',
 	                'LOGBOOK', 'CHAT',

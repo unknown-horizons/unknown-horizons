@@ -85,6 +85,8 @@
 		<Setting name="ROTATE_LEFT" type="list"> COMMA </Setting>
 		<Setting name="SPEED_UP" type="list"> PLUS ; EQUALS </Setting>
 		<Setting name="SPEED_DOWN" type="list"> MINUS </Setting>
+		<Setting name="ZOOM_IN" type="list"> PAGE_DOWN </Setting>
+		<Setting name="ZOOM_OUT" type="list"> PAGE_UP </Setting>
 		<Setting name="REMOVE_SELECTED" type="list"> DELETE </Setting>
 		<Setting name="ESCAPE" type="list"> ESCAPE </Setting>
 		<Setting name="LEFT" type="list"> LEFT </Setting>
@@ -101,6 +103,6 @@
 		<Setting name="DEBUG" type="list"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 37 </Setting>
+		<Setting name="SettingsVersion" type="int"> 38 </Setting>
 	</Module>
 </Settings>

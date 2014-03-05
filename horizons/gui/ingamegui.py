@@ -483,6 +483,10 @@ class IngameGui(LivingObject):
 			SpeedUpCommand().execute(self.session)
 		elif action == _Actions.SPEED_DOWN:
 			SpeedDownCommand().execute(self.session)
+		elif action == _Actions.ZOOM_IN:
+			self.session.view.zoom_in()
+		elif action == _Actions.ZOOM_OUT:
+			self.session.view.zoom_out()
 		elif action == _Actions.PAUSE:
 			TogglePauseCommand().execute(self.session)
 		elif action == _Actions.PLAYERS_OVERVIEW:
