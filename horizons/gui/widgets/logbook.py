@@ -313,7 +313,7 @@ class LogBook(PickBeltWidget, Window):
 			self._cur_entry = len_old
 		if show_logbook and hasattr(self, "_gui"):
 			self._redraw_captainslog()
-			self._windows.show(self)
+			self._windows.open(self)
 			self.show_logbookwidget()
 
 	def clear(self):
@@ -382,7 +382,7 @@ class LogBook(PickBeltWidget, Window):
 			if self.stats_visible:
 				self._windows.close()
 
-			self._windows.show(self)
+			self._windows.open(self)
 			self.show_statswidget(widget=widget)
 		else:
 			self._windows.close()

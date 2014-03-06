@@ -72,7 +72,7 @@ class SelectSavegameDialog(Dialog):
 		if self._mode == 'load':
 			self._map_files, self._map_file_display = SavegameManager.get_saves()
 			if not self._map_files:
-				self._windows.show_popup(_("No saved games"), _("There are no saved games to load."))
+				self._windows.open_popup(_("No saved games"), _("There are no saved games to load."))
 				return False
 		elif self._mode == 'save':
 			self._map_files, self._map_file_display = SavegameManager.get_regular_saves()
@@ -135,15 +135,15 @@ class SelectSavegameDialog(Dialog):
 			if delete_retval:
 				self._gui.distributeData({'savegamelist' : -1})
 				self._cb()
-			return self._windows.show(self)
+			return self._windows.open(self)
 
 		selected_savegame = None
 		if self._mode in ('save', 'editor-save'):  # return from textfield
 			selected_savegame = self._gui.collectData('savegamefile')
 			if selected_savegame == "":
-				self._windows.show_error_popup(windowtitle=_("No filename given"),
+				self._windows.open_error_popup(windowtitle=_("No filename given"),
 				                               description=_("Please enter a valid filename."))
-				return self._windows.show(self)
+				return self._windows.open(self)
 			elif selected_savegame in self._map_file_display: # savegamename already exists
 				if self._mode == 'save':
 					message = _("A savegame with the name {name} already exists.")
@@ -152,8 +152,8 @@ class SelectSavegameDialog(Dialog):
 				message = message.format(name=selected_savegame)
 				message += u"\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
-				if not self._windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True):
-					return self._windows.show(self)
+				if not self._windows.open_popup(_("Confirmation for overwriting"), message, show_cancel_button=True):
+					return self._windows.open(self)
 
 		elif self._mode == 'load':  # return selected item from list
 			selected_savegame = self._gui.collectData('savegamelist')
@@ -249,17 +249,17 @@ class SelectSavegameDialog(Dialog):
 		"""
 		selected_item = self._gui.collectData("savegamelist")
 		if selected_item == -1 or selected_item >= len(map_files):
-			self._windows.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
+			self._windows.open_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
 		message = _("Do you really want to delete the savegame '{name}'?").format(
 		             name=SavegameManager.get_savegamename_from_filename(selected_file))
-		if self._windows.show_popup(_("Confirm deletion"), message, show_cancel_button=True):
+		if self._windows.open_popup(_("Confirm deletion"), message, show_cancel_button=True):
 			try:
 				os.unlink(selected_file)
 				return True
 			except:
-				self._windows.show_popup(_("Error!"), _("Failed to delete savefile!"))
+				self._windows.open_popup(_("Error!"), _("Failed to delete savefile!"))
 				return False
 		else: # player cancelled deletion
 			return False

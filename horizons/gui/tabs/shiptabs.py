@@ -104,7 +104,7 @@ class ShipOverviewTab(OverviewTab):
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
 			button.button.capture(Callback(
-			  self.instance.session.ingame_gui.show_popup,
+			  self.instance.session.ingame_gui.open_popup,
 			  _("Cannot equip trade ship with weapons"),
 			  _("It is not possible to equip a trade ship with weapons.")
 			))
