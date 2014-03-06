@@ -120,7 +120,7 @@ class MultiplayerMenu(Window):
 			descr = _('The multiplayer feature requires the library "pyenet", '
 			          "which could not be found on your system.")
 			advice = _("Linux users: Try to install pyenet through your package manager.")
-			self._windows.show_error_popup(headline, descr, advice)
+			self._windows.open_error_popup(headline, descr, advice)
 			return False
 
 		if NetworkInterface() is None:
@@ -131,7 +131,7 @@ class MultiplayerMenu(Window):
 				headline = _("Failed to initialize networking.")
 				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _("Check the settings you specified in the network section.")
-				self._windows.show_error_popup(headline, descr, advice, unicode(e))
+				self._windows.open_error_popup(headline, descr, advice, unicode(e))
 				return False
 
 		if not NetworkInterface().is_connected:
@@ -143,7 +143,7 @@ class MultiplayerMenu(Window):
 				descr = _("Could not connect to master server.")
 				advice = _("Please check your Internet connection. If it is fine, "
 				           "it means our master server is temporarily down.")
-				self._windows.show_error_popup(headline, descr, advice, unicode(err))
+				self._windows.open_error_popup(headline, descr, advice, unicode(err))
 				return False
 
 		if NetworkInterface().is_joined:
@@ -156,9 +156,9 @@ class MultiplayerMenu(Window):
 	def _on_error(self, exception, fatal=True):
 		"""Error callback"""
 		if not fatal:
-			self._windows.show_popup(_("Error"), unicode(exception))
+			self._windows.open_popup(_("Error"), unicode(exception))
 		else:
-			self._windows.show_popup(_("Fatal Network Error"),
+			self._windows.open_popup(_("Fatal Network Error"),
 		                             _("Something went wrong with the network:") + u'\n' +
 		                             unicode(exception) )
 			# FIXME: this shouldn't be necessary, the main menu window is still somewhere
@@ -226,7 +226,7 @@ class MultiplayerMenu(Window):
 			return
 
 		if game.version != NetworkInterface().get_clientversion():
-			self._windows.show_popup(_("Wrong version"),
+			self._windows.open_popup(_("Wrong version"),
 			                          _("The game's version differs from your version. "
 			                            "Every player in a multiplayer game must use the same version. "
 			                            "This can be fixed by every player updating to the latest version. "
@@ -241,7 +241,7 @@ class MultiplayerMenu(Window):
 		if game.password:
 			# ask the player for the password
 			popup = PasswordInput(self._windows)
-			password = self._windows.show(popup)
+			password = self._windows.open(popup)
 			if password is None:
 				return
 			password = hashlib.sha1(password).hexdigest()
@@ -252,12 +252,12 @@ class MultiplayerMenu(Window):
 			return
 
 		window = GameLobby(self._windows)
-		self._windows.show(window)
+		self._windows.open(window)
 
 	def _create_game(self):
 		NetworkInterface().change_name(self._playerdata.get_player_name())
 		NetworkInterface().change_color(self._playerdata.get_player_color().id)
-		self._windows.show(CreateGame(self._windows))
+		self._windows.open(CreateGame(self._windows))
 
 
 class PasswordInput(Popup):
@@ -343,7 +343,7 @@ class CreateGame(Window):
 			# `MultiplayerMenu._check_connection`
 			#self._windows.close()
 			window = GameLobby(self._windows)
-			self._windows.show(window)
+			self._windows.open(window)
 
 	def _update_infos(self):
 		index = self._gui.collectData('maplist')
@@ -607,7 +607,7 @@ class GameLobby(Window):
 
 	def _on_player_kicked(self, game, player, myself):
 		if myself:
-			self._windows.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
+			self._windows.open_popup(_("Kicked"), _("You have been kicked from the game by creator"))
 			self._windows.close()
 		else:
 			self._print_event(_("{player} got kicked by creator").format(player=player.name))

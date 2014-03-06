@@ -92,7 +92,7 @@ def do_win(session):
 	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.globals.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
-	continue_playing = session.ingame_gui.show_popup(_("You have won!"),
+	continue_playing = session.ingame_gui.open_popup(_("You have won!"),
 	                                                 _("You have completed this scenario.") + u" " +
 	                                                 _("Do you want to continue playing?"),
 	                                                 show_cancel_button=True)

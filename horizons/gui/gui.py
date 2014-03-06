@@ -47,12 +47,12 @@ class MainMenu(Window):
 
 		self._gui = load_uh_widget('mainmenu.xml', 'menu')
 		self._gui.mapEvents({
-			'single_button': lambda: self._windows.show(gui.singleplayermenu),
-			'single_label' : lambda: self._windows.show(gui.singleplayermenu),
-			'multi_button': lambda: self._windows.show(gui.multiplayermenu),
-			'multi_label' : lambda: self._windows.show(gui.multiplayermenu),
-			'settings_button': lambda: self._windows.show(gui.settings_dialog),
-			'settings_label' : lambda: self._windows.show(gui.settings_dialog),
+			'single_button': lambda: self._windows.open(gui.singleplayermenu),
+			'single_label' : lambda: self._windows.open(gui.singleplayermenu),
+			'multi_button': lambda: self._windows.open(gui.multiplayermenu),
+			'multi_label' : lambda: self._windows.open(gui.multiplayermenu),
+			'settings_button': lambda: self._windows.open(gui.settings_dialog),
+			'settings_label' : lambda: self._windows.open(gui.settings_dialog),
 			'help_button': gui.on_help,
 			'help_label' : gui.on_help,
 			'quit_button': self.on_escape,
@@ -75,7 +75,7 @@ class MainMenu(Window):
 	def on_escape(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
 		message = _("Are you sure you want to quit Unknown Horizons?")
-		if self._windows.show_popup(_("Quit Game"), message, show_cancel_button=True):
+		if self._windows.open_popup(_("Quit Game"), message, show_cancel_button=True):
 			horizons.main.quit()
 
 
@@ -89,8 +89,8 @@ class Gui(object):
 
 		self.windows = WindowManager()
 		# temporary aliases for compatibility with rest of the code
-		self.show_popup = self.windows.show_popup
-		self.show_error_popup = self.windows.show_error_popup
+		self.open_popup = self.windows.open_popup
+		self.open_error_popup = self.windows.open_error_popup
 
 		# Main menu background image setup.
 		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
@@ -124,11 +124,11 @@ class Gui(object):
 		if not self._background.isVisible():
 			self._background.show()
 
-		self.windows.show(self.mainmenu)
+		self.windows.open(self.mainmenu)
 
 	def show_select_savegame(self, mode):
 		window = SelectSavegameDialog(mode, self.windows)
-		return self.windows.show(window)
+		return self.windows.open(window)
 
 	def load_game(self):
 		saved_game = self.show_select_savegame(mode='load')
@@ -145,7 +145,7 @@ class Gui(object):
 	def show_credits(self):
 		"""Shows the credits dialog. """
 		window = CreditsPickbeltWidget(self.windows)
-		self.windows.show(window)
+		self.windows.open(window)
 
 	def on_escape(self):
 		self.windows.on_escape()
@@ -161,7 +161,7 @@ class Gui(object):
 	def show_loading_screen(self):
 		if not self._background.isVisible():
 			self._background.show()
-		self.windows.show(self.loadingscreen)
+		self.windows.open(self.loadingscreen)
 
 	def rotate_background(self):
 		"""Select next background image to use in the game menu.
@@ -181,4 +181,4 @@ class Gui(object):
 
 	def show_editor_start_menu(self):
 		editor_start_menu = EditorStartMenu(self.windows)
-		self.windows.show(editor_start_menu)
+		self.windows.open(editor_start_menu)

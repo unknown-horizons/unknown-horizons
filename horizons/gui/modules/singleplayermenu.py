@@ -106,7 +106,7 @@ class SingleplayerMenu(Window):
 		player_name = self._playerdata.get_player_name()
 
 		if not player_name:
-			self._windows.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
+			self._windows.open_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
 
 		horizons.globals.fife.set_uh_setting("Nickname", player_name)
@@ -504,7 +504,7 @@ class ScenarioMapWidget(object):
 		@param exception: Something that str() will convert to an error message
 		"""
 		logging.getLogger('gui.windows').error(u"Error: %s", exception)
-		self._windows.show_error_popup(
+		self._windows.open_error_popup(
 			_("Invalid scenario file"),
 			description=_("The selected file is not a valid scenario file."),
 			details=_("Error message:") + u' ' + unicode(str(exception)),
