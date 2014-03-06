@@ -112,4 +112,4 @@ def show_new_version_hint(gui, info):
 	@param info: UpdateInfo instance
 	"""
 	window = VersionHint(gui.windows, info)
-	gui.windows.show(window)
+	gui.windows.open(window)

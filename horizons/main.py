@@ -248,12 +248,12 @@ def start(_command_line_arguments):
 		__string_previewer.show()
 	elif command_line_arguments.create_mp_game:
 		_modules.gui.show_main()
-		_modules.gui.windows.show(_modules.gui.multiplayermenu)
+		_modules.gui.windows.open(_modules.gui.multiplayermenu)
 		_modules.gui.multiplayermenu._create_game()
 		_modules.gui.windows._windows[-1].act()
 	elif command_line_arguments.join_mp_game:
 		_modules.gui.show_main()
-		_modules.gui.windows.show(_modules.gui.multiplayermenu)
+		_modules.gui.windows.open(_modules.gui.multiplayermenu)
 		_modules.gui.multiplayermenu._join_game()
 	else: # no commandline parameter, show main screen
 
@@ -354,7 +354,7 @@ def start_singleplayer(options):
 		headline = _("Failed to start/load the game")
 		descr = _("The game you selected could not be started.") + u" " + \
 		        _("The savegame might be broken or has been saved with an earlier version.")
-		_modules.gui.show_error_popup(headline, descr)
+		_modules.gui.open_error_popup(headline, descr)
 		_modules.gui.load_game()
 	return _modules.session
 
@@ -472,7 +472,7 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	save_files = SavegameManager.get_quicksaves()[0]
 	if _modules.session is not None:
 		if not save_files:
-			_modules.session.ingame_gui.show_popup(_("No quicksaves found"),
+			_modules.session.ingame_gui.open_popup(_("No quicksaves found"),
 			                                       _("You need to quicksave before you can quickload."))
 			return False
 	else:
@@ -605,7 +605,7 @@ def set_debug_log(enabled, startup=False):
 			headline = _("Logging enabled")
 			msg = _("Logs are written to {directory}.").format(directory=PATHS.LOG_DIR)
 			# Let the ext scheduler show the popup, so that all other settings can be saved and validated
-			ExtScheduler().add_new_object(Callback(_modules.gui.show_popup, headline, msg), None)
+			ExtScheduler().add_new_object(Callback(_modules.gui.open_popup, headline, msg), None)
 
 	else: #disable logging
 		logging.getLogger().setLevel(logging.WARNING)

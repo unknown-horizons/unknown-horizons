@@ -116,7 +116,7 @@ class TearingTool(NavigationTool):
 			msg += N_("%s additional building will be destroyed.",
 		              "%s additional buildings will be destroyed",
 		              buildings_to_destroy) % buildings_to_destroy
-			return building.session.ingame_gui.show_popup(title, msg, show_cancel_button=True)
+			return building.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:

@@ -79,8 +79,8 @@ class IngameGui(LivingObject):
 
 		# Windows
 		self.windows = WindowManager()
-		self.show_popup = self.windows.show_popup
-		self.show_error_popup = self.windows.show_error_popup
+		self.open_popup = self.windows.open_popup
+		self.open_error_popup = self.windows.open_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
 		self.players_overview = PlayersOverview(self.session)
@@ -214,7 +214,7 @@ class IngameGui(LivingObject):
 
 	def show_select_savegame(self, mode):
 		window = SelectSavegameDialog(mode, self.windows)
-		return self.windows.show(window)
+		return self.windows.open(window)
 
 	def toggle_pause(self):
 		self.windows.toggle(self.pausemenu)
@@ -234,7 +234,7 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.windows.show_popup(_("No diplomacy possible"),
+			self.windows.open_popup(_("No diplomacy possible"),
 			                        _("Cannot do diplomacy as there are no other players."))
 			return
 
@@ -403,7 +403,7 @@ class IngameGui(LivingObject):
 
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""
-		self.windows.show(self.change_name_dialog, instance=instance)
+		self.windows.open(self.change_name_dialog, instance=instance)
 
 	def on_escape(self):
 		if self.windows.visible:
@@ -473,7 +473,7 @@ class IngameGui(LivingObject):
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
 			message = _(u"Are you sure you want to delete these objects?")
-			if self.windows.show_popup(_(u"Delete"), message, show_cancel_button=True):
+			if self.windows.open_popup(_(u"Delete"), message, show_cancel_button=True):
 				self.session.remove_selected()
 			else:
 				self.deselect_all()
@@ -515,7 +515,7 @@ class IngameGui(LivingObject):
 				self.session.view.rotate_left()
 				self.minimap.rotate_left()
 		elif action == _Actions.CHAT:
-			self.windows.show(self.chat_dialog)
+			self.windows.open(self.chat_dialog)
 		elif action == _Actions.TRANSLUCENCY:
 			self.session.world.toggle_translucency()
 		elif action == _Actions.TILE_OWNER_HIGHLIGHT:

@@ -124,14 +124,14 @@ class SettingsDialog(PickBeltWidget, Window):
 	def show_restart_popup(self):
 		headline = _("Restart required")
 		message = _("Some of your changes require a restart of Unknown Horizons.")
-		self._windows.show_popup(headline, message)
+		self._windows.open_popup(headline, message)
 
 	def set_defaults(self):
 		title = _("Restore default settings")
 		msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
 				u" " + _("Do you want to continue?")
 
-		if self._windows.show_popup(title, msg, show_cancel_button=True):
+		if self._windows.open_popup(title, msg, show_cancel_button=True):
 			self.hotkey_interface.reset_to_default()
 			self._settings.set_defaults()
 			self.show_restart_popup()
@@ -250,7 +250,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			headline = _("Invalid network port")
 			descr = _("The port you specified is not valid. It must be a number between 1 and 65535.")
 			advice = _("Please check the port you entered and make sure it is in the specified range.")
-			self._windows.show_error_popup(headline, descr, advice)
+			self._windows.open_error_popup(headline, descr, advice)
 			# reset value and reshow settings dlg
 			self._settings.set(SETTINGS.UH_MODULE, 'NetworkPort', u"0")
 		else:
@@ -268,7 +268,7 @@ class SettingsDialog(PickBeltWidget, Window):
 					advice += u" " + \
 						_("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
 				details = unicode(e)
-				self._windows.show_error_popup(headline, descr, advice, details)
+				self._windows.open_error_popup(headline, descr, advice, details)
 
 	def _on_Language_changed(self, old, new):
 		language = LANGUAGENAMES.get_by_value(new)

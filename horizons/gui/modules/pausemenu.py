@@ -47,7 +47,7 @@ class PauseMenu(Window):
 		events = {
 			'load' : self._load_game,
 			'save' : self._save_game,
-			'sett' : lambda: self._windows.show(self.settings_dialog),
+			'sett' : lambda: self._windows.open(self.settings_dialog),
 			'help' : ingame_gui.toggle_help,
 			'start': self._windows.close,
 			'quit' : self._do_quit,
@@ -80,7 +80,7 @@ class PauseMenu(Window):
 
 	def _do_quit(self):
 		message = _("Are you sure you want to abort the running session?")
-		if self._windows.show_popup(_("Quit Session"), message, show_cancel_button=True):
+		if self._windows.open_popup(_("Quit Session"), message, show_cancel_button=True):
 			self._session.quit()
 
 	def _save_game(self):
@@ -90,15 +90,15 @@ class PauseMenu(Window):
 			success = self._session.save()
 			if not success:
 				# There was a problem during the 'save game' procedure.
-				self._windows.show_popup(_('Error'), _('Failed to save.'))
+				self._windows.open_popup(_('Error'), _('Failed to save.'))
 
 	def _load_game(self):
 		if self._in_editor_mode:
 			editor_start_menu = EditorStartMenu(self._windows)
-			self._windows.show(editor_start_menu)
+			self._windows.open(editor_start_menu)
 		else:
 			window = SelectSavegameDialog('load', self._windows)
-			saved_game = self._windows.show(window)
+			saved_game = self._windows.open(window)
 			if saved_game is None:
 				return
 
