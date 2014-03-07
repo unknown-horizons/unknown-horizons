@@ -40,6 +40,11 @@ class Window(object):
 
 		self._modal_background = None
 
+	def open(self, **kwargs):
+		"""Opens the window.
+		"""
+		self.show()
+
 	def show(self, **kwargs):
 		"""Show the window.
 
@@ -287,7 +292,7 @@ class WindowManager(object):
 	def __init__(self):
 		self._windows = []
 
-	def show(self, window, **kwargs):
+	def show(self, window, _open=False, **kwargs):
 		"""Show a new window on top.
 
 		Hide the current one and show the new one.
@@ -297,7 +302,10 @@ class WindowManager(object):
 			self._windows[-1].hide()
 
 		self._windows.append(window)
-		return window.show(**kwargs)
+		if _open:
+			return window.open(**kwargs)
+		else:
+			return window.show(**kwargs)
 
 	def close(self):
 		"""Close the top window.
@@ -314,9 +322,11 @@ class WindowManager(object):
 		if self._windows and self._windows[-1] == window:
 			self.close()
 		else:
+			_open = True
 			if window in self._windows:
 				self._windows.remove(window)
-			self.show(window, **kwargs)
+				_open = False
+			self.show(window, _open=_open, **kwargs)
 
 	def on_escape(self):
 		"""Let the topmost window handle an escape key event."""
