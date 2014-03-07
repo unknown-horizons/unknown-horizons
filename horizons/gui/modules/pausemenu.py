@@ -70,12 +70,18 @@ class PauseMenu(Window):
 			'quit'    : events['quit'],
 		})
 
-	def show(self):
+	def open(self):
+		super(PauseMenu, self).open()
 		PauseCommand(suggestion=True).execute(self._session)
+
+	def show(self):
 		self._gui.show()
 
 	def hide(self):
 		self._gui.hide()
+
+	def close(self):
+		super(PauseMenu, self).close()
 		UnPauseCommand(suggestion=True).execute(self._session)
 
 	def _do_quit(self):

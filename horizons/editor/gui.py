@@ -87,7 +87,7 @@ class IngameGui(LivingObject):
 		self.windows = WindowManager()
 		self.message_widget = MessageWidget(self.session)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=True)
-		self.help_dialog = HelpDialog(self.windows, session=self.session)
+		self.help_dialog = HelpDialog(self.windows)
 
 	def end(self):
 		self.mainhud.mapEvents({
