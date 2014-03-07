@@ -18,13 +18,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gfx/uh.png]
   - [Pagebreak]
-  - [Headline, Unknown Horizons 에 오신것을 환영합니다!]
+  - [Headline, 미지의 지평선에 오신것을 환영합니다!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
 
     '
-  - 이것은 모든 중요한 정보가 저장되어있는 선장의 항해일지 입니다. 각 임무에 대한 간단한 알림이 화면의 왼쪽에 제공될 것입니다.
+  - 여기는 모든 중요한 정보가 저장되어있는 선장의 항해일지 입니다. 각 임무에 대한 간단한 알림이 화면의 왼쪽에 제공될 것입니다.
   - 이 설명에 더 관심이 있다면, 필요로하는 모든 도움을 항해일지가 원하는데로 제공할것입니다.
   - 이 기록을 닫은 후, 오른쪽 상단 모서리에있는 "선장의 항해일지" 아이콘을 다시 열 수 있습니다. (미니 맵 아래 밀봉 문서와 깃털펜).
   - - Gallery
@@ -50,13 +50,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
   - 이것은 '정착지 건설'이라는 버튼을 누르면 거기에 창고를 만들 수 있다는것을 나타냅니다.
-  - 이제 커서를 움직일때 건물의 미리 보기가 주변으로 끌어집니다.
+  - 이제 커서를 움직이면 건물의 미리보기가 움직입니다.
   - '이 미리보기가 빨간 그림자가 아닌 아무곳이나 건설할 수 있습니다.
 
     첫 번째 건물을 배치 하려면 클릭 하십시오.'
-  - '
-
-    임무: 해안선 근처에서 창고를 건설.'
+  - ''
+  - [BoldLabel, 'Task: Build a warehouse at the coast.']
 
 - &LUMBERJACK
   - [Message, '벌목꾼의 집을 건설하고, 도로를 이용하여 창고를 연결하세요.']
@@ -74,14 +73,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    문명의 발전으로, 더복잡한 건물과 더많은것을 얻었습니다.'
+    문명의 발전으로 더 복잡한 건물과 더 많은 것을 얻었습니다.'
   - 이제, '조직원컴퍼니???' 아래에 있는 벌목소를 선택하고, 나무들이있는 주변의 지역에 건설하세요.
   - 나중에 나무도 심을수 있습니다. - 하지만 비용이 듭니다. 자연적으로 제공된것을 최대한 활용하세요!
   - 조직원??은 항상 저장소와 창고로 연결된 길을 필요로 합니다. 그러지않으면 물건은 조직원??에게 남아있고 수집되지않습니다.
   - 창고(또는 저장소)와 벌목소를 반드시 연결해야한다는 뜻입니다.
-  - '
-
-    임무: 벌목소를 숲속지역에 건설하고 그곳에 길을 연결하세요.'
+  - ''
+  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
   - 수집꾼들이 첫번째 자체 생산된 판자들을 가져오는 방법을 보십세요. 나무꾼에대한 노동자의 모집은 걱정하지마세요. 자동적으로 나타납니다.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -90,8 +88,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, '사냥꾼과 낚시꾼의 집을 건설하고, 창고와 이들을 연결하세요.']
   - [Headline, '새로운 임무: 음식 조달']
   - [Image, content/gui/images/background/hr.png]
-  - 몇몇 음식을 생산하는 동료들이 매우 필요할것입니다. 왜냐면 일반적인 사람들(특히 선원)은 매우 배가 고프기 때문입니다.
-  - 첫번째 계층에서 사용할수있는 동료는 사냥꾼과 낚시꾼입니다.
+  - 몇몇 음식을 생산하는 생산업이 매우 필요할것입니다. 왜냐면 일반적인 사람들(특히 선원)은 매우 배가 고프기 때문입니다.
+  - 첫번째 단계에서 사용할수있는 생산업은 사냥꾼과 낚시꾼입니다.
   - 사냥꾼은 숲속에서 동물들을 사냥하므로 근처에 나무가 필요합니다.
   - 나무꾼의 숲 근처에 사냥꾼을 배치할수 있습니다.
   - ?? 동물들이 재생속도가 빠르지 않거나 단순하게 잘 숨지 않을 수 있습니다.
@@ -103,9 +101,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 그가 작은 노가 달린 배를 만들고 고기를 잡을것 입니다.
   - 음식 단위당 약간 긴 생산시간의 비용으로 매우 안정적인 공급입니다.
   - 당신것 같은 작은 정착지는 같은 조직원을 사용할 수 있고 더나은 장단점을 조정할수 있습니다.
-  - '
-
-    임무: 사냥꾼의 집과 낚시꾼의 집을 건설.'
+  - ''
+  - [BoldLabel, 'Task: Build a hunter and a fisher.']
   - 길로 창고와 그것들을 연결하는것을 잊지마세요!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -115,15 +112,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, '새로운 임무: 주요 광장']
   - [Image, content/gui/images/background/hr.png]
   - 주민들은 그들의 상품을 가져올 수 있는 주요 광장을 필요로 합니다.
-  - 즉, 그들의 집에서 주요광장까지 연결된 길을 필요로한다는 뜻입니다.
+  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - 창고 에있는 모든 상품들은 '시장'에서 이용할수있습니다., 주민들은 어부나 창고로 걸을 필요가 없습니다.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - 건설 천막은 벌목소가 판자를 만드는데 필요한 나무들을 제거해버리기 때문에 주요 정착 천막에 벌목소가 너무 가까운걸 피해야 합니다.
   - 조직원들은 천막와 연결되지않고 일을 하므로 주요 광장과 벌목소 천막 사이의 도로를 건설할 필요가 없습니다.
-  - '
-
-    임무: 주요 광장을 건설.'
+  - ''
+  - [BoldLabel, 'Task: Build a main square.']
   - [Pagebreak]
   - '
 
@@ -138,7 +134,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 다른 계층의 개요 탭에서 주민에 대한 통계를 볼 수 있습니다. 또한 여기에서 계층별 전체 세금을 설정하고, 이계층의 주민을 다음의 더 높은 단계로 상향하는데 허용 하거나 거부할 수 있습니다.
 
 - &FIRSTTENT
-  - [Message, 천막을 건설하고 주요광장과 연결하세요.]
+  - [Message, Build a tent and connect it to the main square if necessary.]
   - [Headline, '새로운 임무: 주택 건설']
   - [Image, content/gui/images/background/hr.png]
   - 정착민들은 자신들의 머리를 덮어줄 지붕을 원합니다. 그들은 당신의 도시에 살고 싶은생각이 없습니다! 천막을  제공해야 합니다.
@@ -148,9 +144,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 각 건물의 향상은 최초 향상때는 목재와 같은 건축자재가 필요합니다.
   - 만약 이러한 재료의 재고가 부족한경우, 향상을 하지않는것이 좋습니다.
   - 정착민들은 생산하는 모든 상품을 소비하려하기 때문에 정착민들은 매우 유용해 보이지 않을수 있습니다. -하지만 그들은 최소한의 세금을 지불하므로 지금 돈을 벌 수있는 유일한 방법입니다!
-  - '
-
-    천막을 건설하고 주요 광장에 연결하세요. 천막은 어떠한 동료와도 연결이 필요로 하지않습니다.'
+  - ''
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, '추가로 최소 세 개의 천막을 만들고, 주요광장과 연결한다.']
@@ -167,9 +162,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 그들의 요구가 만족된다면, 행복도에 따라 세금도 증가 될것입니다.
   - 그렇지 않는경우 행복도와 수입이 감소합니다. 언젠가 주민들이 정말로 뽀로통해지고, 마을을 두고 가버리고, 부폐 퇴락될것입니다.
   - 여기서 전체 세금 설정도 바꿀 수 있습니다.
-  - '
-
-    최소한 3개의 천막을 추가적으로 건설.'
+  - ''
+  - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
     팁: Shift 키를 누르고 있으면 같은 종류의 여러 건물을 건설하는데 쉽습니다.'
@@ -196,9 +190,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '''선원'' 계층에서 3개의 거래 칸을 갖고있습니다.'
   - '''구매''에서 ''판매''로 또는 반대의 경우에도 칸모드를 바꾸기 위해 작은 아이콘을 클릭하세요.'
   - 당신이 거래하고자하는 칸의 물품을 선택하세요. 거래 준비가 되면 더 설명하겠습니다.
-  - '
-
-    임무: 창고 근처 해안에 봉화를 건설.'
+  - ''
+  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
   - [Message, 최소 도구30개의 섬 비축품을 확보하세요. 약간의 시간이 걸릴수있다는것을 알고계세요.]
@@ -224,9 +217,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     값은 수동적으로 변할수 없습니다!'
   - '''구매''와 ''판매''''회계''텝에서 무역수지를 볼수있습니다.'
-  - '
-
-    임무: 재고에서 30개의 도구를 가지고하는 데 필요한만큼 도구로 구입하세요(???)!'
+  - ''
+  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -237,22 +229,21 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 이러한 도구는 바로 충분할것입니다. 잘 하셨습니다!
   - 지금 주민들에게 집과 주요광장과 음식을 제공하세요.
   - 여전히 우리가 만족하지않는 한가지가 있습니다. 이는 시장 또는 천막 탭에서 확인 할 수 있습니다 - 선원은 기도할 수 있는 기본 건물을 원합니다.
-  - The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
+  - 이 해결책은 마을 목사를 태양으로부터 주거지로 빨리 이동시키기는 공연장입니다.
+  - 이 같은 서비스 건물도 길을 천막과 연결해야합니다. 그렇지 않으면 주민들은 그 건물들에 도달할수 없을것입니다.
   - [Pagebreak]
   - '
 
-    Note that faith is treated like a physical resource!'
-  - This means that your inhabitants need a road connection to the producer (pavilion) to pick up faith there.
-  - After some time, they will have consumed it and then again look for a producer to collect more faith.
+    신앙은 물리적 자원과 같이 취급됩니다!'
+  - 즉, 주민의 신앙을 끌어올리기 위해서는 생산자(공연장)와 연결된 길이 필요하다는 말입니다.
+  - 잠시후면, 그들은 그것을 소비하는 것하고 다시 신앙을 더 수집하는 생산자를 찾을것입니다.
   - '중요:
 
     건물은 천막의 단지 특정 영역에 있는게 충분하지 않습니다.???
 
     뿐만 아니라 도로 연결도 필요합니다.'
-  - '
-
-    TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.'
+  - ''
+  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -260,9 +251,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다리세요.]
   - [Headline, '새로운 임무 : 다음 시대']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
+  - 주민이 정기적으로 주요 광장 및 공연장을 방문 할 수 있고 식량 공급이 충분하다면, 이제 모든 요구는 성취됩니다.
+  - 선원들이 충분히 행복하면 '개척자'라고 불리는 단계로 진급할 수 있습니다.
+  - 당신은 주민들의 모든 요구를 충족시켰으므로 주민들을 더욱 행복하게 하려면 세금을 낮추는 방법 밖에 없습니다.
   - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
   - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
@@ -272,9 +263,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
   - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
-  - '
-
-    임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다리세요.'
+  - ''
+  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -298,9 +288,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
-  - '
-
-    임무: 농장을 건설.'
+  - ''
+  - [BoldLabel, 'Task: Build a farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -326,9 +315,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.
   - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
   - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
-  - '
-
-    TASK: Build at least one pasture in the farm''s range and add potato fields if you like.'
+  - ''
+  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -357,9 +345,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * sends its own collectors to fetch goods, just like the warehouse does.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
-  - '
-
-    임무: 가급적이면 수집자를 필요로 하는곳에 장소 천막을 건설하세요.'
+  - ''
+  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -371,9 +358,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
   - In both cases you should ensure the connection to a trail as well.
   - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
-  - '
-
-    임무: 양털을 얻을수있는 위치에 방직소를 건설.'
+  - ''
+  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -384,9 +370,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
   - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
   - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
-  - '
-
-    임무: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.'
+  - ''
+  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -415,7 +400,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     여러분의 UH 팀 입니다'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)
@@ -677,4 +662,4 @@ metadata:
   locale: ko
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 138 translated messages, 53 untranslated messages.
+  translation_status: 148 translated messages, 43 untranslated messages.

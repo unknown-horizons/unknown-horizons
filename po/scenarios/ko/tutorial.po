@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2013-12-24 06:14+0200\n"
-"Last-Translator: k ks <kmshts@naver.com>\n"
-"Language-Team: Korean <http://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
+"PO-Revision-Date: 2014-03-07 09:14+0200\n"
+"Last-Translator: Wooyoung Cho <newhero@gmail.com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/uh/tutorial/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,15 +38,13 @@ msgstr "자유 교역선 등의 다른 배가 접근하기 쉽게 해안에 창�
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
-msgstr "Unknown Horizons 에 오신것을 환영합니다!"
+msgstr "미지의 지평선에 오신것을 환영합니다!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is your Captain's log where all important information is stored. A "
 "short notification of each task will be provided on the left of the screen."
-msgstr ""
-"이것은 모든 중요한 정보가 저장되어있는 선장의 항해일지 입니다. 각 임무에 대"
-"한 간단한 알림이 화면의 왼쪽에 제공될 것입니다."
+msgstr "여기는 모든 중요한 정보가 저장되어있는 선장의 항해일지 입니다. 각 임무에 대한 간단한 알림이 화면의 왼쪽에 제공될 것입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -129,7 +127,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "Now a preview of your building is dragged around when you move the cursor."
-msgstr "이제 커서를 움직일때 건물의 미리 보기가 주변으로 끌어집니다."
+msgstr "이제 커서를 움직이면 건물의 미리보기가 움직입니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -202,7 +200,7 @@ msgid ""
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
 "\n"
-"문명의 발전으로, 더복잡한 건물과 더많은것을 얻었습니다."
+"문명의 발전으로 더 복잡한 건물과 더 많은 것을 얻었습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -262,13 +260,11 @@ msgstr "새로운 임무: 음식 조달"
 msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
-msgstr ""
-"몇몇 음식을 생산하는 동료들이 매우 필요할것입니다. 왜냐면 일반적인 사람들(특"
-"히 선원)은 매우 배가 고프기 때문입니다."
+msgstr "몇몇 음식을 생산하는 생산업이 매우 필요할것입니다. 왜냐면 일반적인 사람들(특히 선원)은 매우 배가 고프기 때문입니다."
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
-msgstr "첫번째 계층에서 사용할수있는 동료는 사냥꾼과 낚시꾼입니다."
+msgstr "첫번째 단계에서 사용할수있는 생산업은 사냥꾼과 낚시꾼입니다."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
@@ -818,13 +814,13 @@ msgstr "주민이 정기적으로 주요 광장 및 공연장을 방문 할 수 
 msgid ""
 "If the sailors are happy enough, they want to advance to the next tier "
 "called Pioneers."
-msgstr ""
+msgstr "선원들이 충분히 행복하면 '개척자'라고 불리는 단계로 진급할 수 있습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To make them happy, there is nothing else for you to do but setting taxes to "
 "a lower level since you have fulfilled all the demands of your inhabitants."
-msgstr ""
+msgstr "당신은 주민들의 모든 요구를 충족시켰으므로 주민들을 더욱 행복하게 하려면 세금을 낮추는 방법 밖에 없습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
