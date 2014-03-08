@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-03-02 16:45+0200\n"
+"PO-Revision-Date: 2014-03-08 11:52+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -2914,107 +2914,107 @@ msgstr "Cases pels vostres habitants."
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:372
 msgid "Tobacconist"
-msgstr ""
+msgstr "Tabaquer"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:374
 msgid "Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Fa cigarrets de tabac."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:379
 msgid "Toolmaker"
-msgstr ""
+msgstr "Ferrer"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:381
 msgid "Produces tools out of iron."
-msgstr ""
+msgstr "Fa eines de ferro."
 
 #. name_0 of buildings:trail
 #: horizons/i18n/objecttranslations.py:386
 msgid "Trail"
-msgstr ""
+msgstr "Camí"
 
 #. name_1 of buildings:trail
 #: horizons/i18n/objecttranslations.py:388
 msgid "Gravel Path"
-msgstr ""
+msgstr "Camí de grava"
 
 #. name_3 of buildings:trail
 #: horizons/i18n/objecttranslations.py:390
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "Carrer de llambordes"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:392
 msgid "Needed for collecting goods."
-msgstr ""
+msgstr "Es fa servir per recollir mercaderies."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:397
 msgid "Tree"
-msgstr ""
+msgstr "Arbre"
 
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:399
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Fa fusta. Els tallen els llenyataires."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:404
 msgid "Village school"
-msgstr ""
+msgstr "Escola del poble"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:406
 msgid "Provides education."
-msgstr ""
+msgstr "Dona educació."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
 msgid "Vintner"
-msgstr ""
+msgstr "Viticultor"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:413
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Del raïm en fa vi."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:418
 msgid "Warehouse"
-msgstr ""
+msgstr "Magatzem"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Cabana de teixidor"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
 msgid "Turns lamb wool into cloth."
-msgstr ""
+msgstr "Fa roba de la llana d'ovella."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
 msgid "Windmill"
-msgstr ""
+msgstr "Molí de vent"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:432
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Molt el blat per fer farina."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:437
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Torre de fusta"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:439
 msgid "Defends your settlement."
-msgstr ""
+msgstr "Defensa l'assentament."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3024,7 +3024,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:450
 #: horizons/i18n/objecttranslations.py:511
 msgid "Companies"
-msgstr ""
+msgstr "Companyies"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
@@ -3033,21 +3033,21 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:456
 #: horizons/i18n/objecttranslations.py:507
 msgid "Fields"
-msgstr ""
+msgstr "Camps"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:458
 #: horizons/i18n/objecttranslations.py:481
 msgid "Mining"
-msgstr ""
+msgstr "Mines"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:460
 #: horizons/i18n/objecttranslations.py:505
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "Habitatge i infraestructures"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
@@ -3056,101 +3056,103 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:466
 #: horizons/i18n/objecttranslations.py:491
 msgid "Services"
-msgstr ""
+msgstr "Serveis"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
-msgstr ""
+msgstr "Ciutadans"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:473
 msgid "Food"
-msgstr ""
+msgstr "Menjar"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:475
 msgid "Fortifications"
-msgstr ""
+msgstr "Fortificacions"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
 msgid "Infrastructure"
-msgstr ""
+msgstr "Infraestructura"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
 msgid "Military Service"
-msgstr ""
+msgstr "Servei militar"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
-msgstr ""
+msgstr "Colons"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
 msgid "Precaution"
-msgstr ""
+msgstr "Precaució"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
 msgid "Residential"
-msgstr ""
+msgstr "Residencial"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:489
 msgid "Sea"
-msgstr ""
+msgstr "Mar"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:495
 msgid "Wood"
-msgstr ""
+msgstr "Fusta"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:497
 #: horizons/i18n/objecttranslations.py:499
 #: horizons/i18n/objecttranslations.py:501
 msgid "Workshops"
-msgstr ""
+msgstr "Tallers"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:503
 msgid "Settlement"
-msgstr ""
+msgstr "Assentaments"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:509
 msgid "Agriculture"
-msgstr ""
+msgstr "Agricultura"
 
 #. tab5_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:513
 msgid "Military"
-msgstr ""
+msgstr "Militar"
 
 #: horizons/main.py:354
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "No s'ha pogut iniciar/carregar la partida"
 
 #: horizons/main.py:355
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "No s'ha pogut iniciar la partida que heu seleccionat."
 
 #: horizons/main.py:356
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
+"La partida desada pot estar corrupta o s'ha desat amb una versió anterior."
 
 #: horizons/main.py:475
 msgid "No quicksaves found"
-msgstr ""
+msgstr "No s'han trobat partides desades ràpid"
 
 #: horizons/main.py:476
 msgid "You need to quicksave before you can quickload."
 msgstr ""
+"Has de tenir una partida desada ràpid abans de poder fer una càrrega ràpida."
 
 #: horizons/main.py:605
 msgid "Logging enabled"
@@ -3159,7 +3161,7 @@ msgstr "El registre està activat"
 #: horizons/main.py:606
 #, python-brace-format
 msgid "Logs are written to {directory}."
-msgstr "Els fitxers es desen a {directory}."
+msgstr "Els registres es desen a {directory}."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
@@ -3168,15 +3170,17 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
+"Les partides s'han desincronitzat. Es tracta d'un error intern no previst, "
+"la partida no pot continuar."
 
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr ""
+msgstr "Ho lamentem i esperem poder-ho solucionar en la propera versió."
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
 msgid "Not possible"
-msgstr ""
+msgstr "No es pot fer"
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
