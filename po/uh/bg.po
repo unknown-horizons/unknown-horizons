@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-03-09 23:12+0200\n"
+"PO-Revision-Date: 2014-03-09 23:26+0200\n"
 "Last-Translator: Nikolai Nikolov <niki.nins@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/uh/uh/bg/>\n"
 "Language: bg\n"
@@ -24,16 +24,19 @@ msgstr "Unknown Horizons прекъсна работа."
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr ""
+"Съжаляваме за прекъсването, ще се постараем да отстраним скритата грешка."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "За да извършим това се нуждаем от информация в logfile:"
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"Моля изпратете ни го чрез IRC или нашият форум, за двете вижте в http"
+"://unknown-horizons.org ."
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
@@ -197,7 +200,7 @@ msgstr "Смени име"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
-msgstr ""
+msgstr "Старо име:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
@@ -344,26 +347,26 @@ msgstr "Позволения за надграждане:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "Щастие на къща"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
 msgid "sad"
-msgstr ""
+msgstr "тъга"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
 msgid "satisfied"
-msgstr ""
+msgstr "удовлетворен"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:61
 msgid "happy"
-msgstr ""
+msgstr "щастлив"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "Количество къщи с такова щастие"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -371,7 +374,7 @@ msgstr "Жители на къща"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr ""
+msgstr "Брои жители на къща"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
@@ -379,7 +382,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr ""
+msgstr "Сумарно"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
@@ -487,7 +490,7 @@ msgstr "Построй колония"
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr ""
+msgstr "Конфигуриране на търговски маршрут"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -507,7 +510,7 @@ msgstr "Купи или продай ресурси"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
-msgstr ""
+msgstr "Търговска хроника"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
@@ -518,7 +521,7 @@ msgstr "Продай ресурси:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr ""
+msgstr "Ползване на събирача"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
