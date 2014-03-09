@@ -171,7 +171,7 @@ class BUILDINGS:
 
 	VINTNER          = 65
 
-	ARMORY           = 66
+	WEAPONSMITH      = 66
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 

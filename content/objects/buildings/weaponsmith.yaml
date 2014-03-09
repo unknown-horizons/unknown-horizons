@@ -1,5 +1,5 @@
-id: BUILDINGS.ARMORY
-name: _ Armory
+id: BUILDINGS.WEAPONSMITH
+name: _ Weaponsmith
 baseclass: production.ProductionBuilding
 radius: 8
 cost: 10
@@ -33,4 +33,4 @@ components:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.SETTLERS:
-    as_2x2:
+    as_weaponsmith0:
