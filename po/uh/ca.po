@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-03-08 11:52+0200\n"
+"PO-Revision-Date: 2014-03-15 11:56+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -3004,7 +3004,7 @@ msgstr "Molí de vent"
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:432
 msgid "Grinds corn into flour."
-msgstr "Molt el blat per fer farina."
+msgstr "Mol el blat per fer farina."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:437
@@ -3185,72 +3185,80 @@ msgstr "No es pot fer"
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "Encara no es poden desar/carregar partides multijugador"
 
 #: horizons/mpsession.py:103
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
+"El nom del fitxer només pot contenir lletres, números, espais i els "
+"caràcters _ . -"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "No es pot connectar amb el servidor."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
 msgstr ""
+"És possible que l'adreça del servidor no sigui vàlida o no es pugui "
+"resoldre."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
-msgstr ""
+msgstr "No està preparat"
 
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
-msgstr ""
+msgstr "Heu guanyat!"
 
 #: horizons/scenario/actions.py:96
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Heu completat aquest escenari."
 
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Voleu continuar jugant?"
 
 #: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
-msgstr ""
+msgstr "desconegut"
 
 #. usually invalid filename
 #: horizons/session.py:397
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "No s'ha pogut crear el fitxer per desar la partida"
 
 #: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "S'ha produït un error quan es creava el fitxer per desar la partida."
 
 #: horizons/session.py:399
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr ""
+"Normalment vol dir que el nom del fitxer conté caràcters especials que no es "
+"poden fer servir."
 
 #: horizons/session.py:408
 msgid "Access is denied"
-msgstr ""
+msgstr "S'ha denegat l'accés"
 
 #: horizons/session.py:409
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"El fitxer de la partida desada podria ser de només lectura o estar bloquejat "
+"per un altre procés."
 
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
-msgstr ""
+msgstr "No s'ha desat la partida."
 
 #: horizons/util/checkupdates.py:87
 msgid "New version of Unknown Horizons"
-msgstr ""
+msgstr "Hi ha una nova versió de l'Unknown Horizons"
 
 #: horizons/util/checkupdates.py:88
 #, python-brace-format
@@ -3258,141 +3266,143 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
+"Hi ha una versió de l'Unknown Horizons ({new_version}) més nova que la que "
+"feu servir ({old_version})."
 
 #: horizons/util/checkupdates.py:98
 msgid "Click to download"
-msgstr ""
+msgstr "Feu clic per descarregar-la"
 
 #: horizons/util/checkupdates.py:102
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "S'ha obert una pàgina al vostre navegador."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:267
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} espais, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "Salut: {health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:123
 #, python-brace-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Aquest edifici s'ha de construir en una illa."
 
 #: horizons/world/building/buildable.py:41
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "El terreny no és adequat per aquest edifici."
 
 #: horizons/world/building/buildable.py:42
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Heu de construir aquest edifici dins del vostre assentament."
 
 #: horizons/world/building/buildable.py:43
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "Aquesta àrea està ocupada per un altre jugador."
 
 #: horizons/world/building/buildable.py:44
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "Aquesta àrea està ocupada per un altre edifici."
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "Aquesta àrea està ocupada per una unitat."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "Heu de construir aquest edifici a la costa."
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "He de construir aquest edifici al mar."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Aquest lloc és massa lluny del vostre vaixell."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Només podeu construir aquest edifici en un jaciment de recursos."
 
 #: horizons/world/building/buildable.py:50
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Ja teniu un assentament en aquesta illa."
 
 #: horizons/world/building/buildable.py:51
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "Heu de construir aquest edifici parcialment en terra ferma."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Els habitants estan infectats per la Pesta Negra!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
-msgstr ""
+msgstr "S'està cremant l'edifici!"
 
 #: horizons/world/status.py:88
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Els habitants estan insatisfets."
 
 #: horizons/world/status.py:94
 msgid "These residents don't have access to a main square."
-msgstr ""
+msgstr "Aquests habitants no poden accedir a la plaça major."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Aquest edifici és ple."
 
 #: horizons/world/status.py:115
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Aquest edifici te una baixa productivitat."
 
 #: horizons/world/status.py:121
 msgid "This building is decommissioned."
-msgstr ""
+msgstr "Aquest edifici està fora de servei."
 
 #: horizons/world/traderoute.py:329
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Ruta comercial: destinació a {location}"
 
 #: horizons/world/traderoute.py:333
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Ruta comercial: s'està esperant a {position}"
 
 #: horizons/world/units/ship.py:212
 #, python-brace-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Destinació a {location}"
 
 #: horizons/world/units/ship.py:213
 #, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Destinació a {x}, {y}"
 
 #: horizons/world/units/ship.py:217
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Aturat a {location}"
 
 #: horizons/world/units/ship.py:218
 #, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Aturat a {x}, {y}"
 
 #: horizons/world/units/ship.py:229
 msgid "Trader"
-msgstr ""
+msgstr "Comerciant"
 
 #: horizons/world/units/weaponholder.py:452
 #, python-brace-format
