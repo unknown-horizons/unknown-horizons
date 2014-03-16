@@ -21,7 +21,7 @@ components:
     productionlines:
       40:
         produces:
-        - [RES.GET_TOGETHER, 4]
+        - [RES.GET_TOGETHER, 2]
         consumes:
         - [RES.LIQUOR, -1]
         time: 16
