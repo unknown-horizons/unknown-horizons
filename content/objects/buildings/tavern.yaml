@@ -24,7 +24,7 @@ components:
         - [RES.GET_TOGETHER, 2]
         consumes:
         - [RES.LIQUOR, -1]
-        time: 16
+        time: 8
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.GET_TOGETHER: 12, RES.LIQUOR: 4}
