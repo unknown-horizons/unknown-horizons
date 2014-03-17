@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-10-20 16:02+0200\n"
-"Last-Translator: Piotr B <piotr@liberalne.pl>\n"
-"Language-Team: Polish <http://hosted.weblate.org/projects/uh/uh/pl/>\n"
+"PO-Revision-Date: 2014-03-17 23:47+0200\n"
+"Last-Translator: gilead <max.gilead@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.8-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -108,9 +108,8 @@ msgid "(right click to stop)"
 msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
-#, fuzzy
 msgid "Game start"
-msgstr "Spel start"
+msgstr "Początek gry"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
@@ -130,9 +129,8 @@ msgid "Build"
 msgstr "Zbuduj"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
-#, fuzzy
 msgid "Running costs:"
-msgstr "Operationele kosten:"
+msgstr "Koszty bieżące:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -155,24 +153,22 @@ msgid "Decrease game speed ({key})"
 msgstr "Speelsnelheid verlagen (-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Draai de kaart tegen de klok in (,)"
+msgstr "Obróć mapę w lewo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Rotate map clockwise ({key})"
-msgstr "Draai de kaart met de klok mee (.)"
+msgstr "Obróć mapę w prawo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
-#, fuzzy
 msgid "Zoom in"
-msgstr "Zoom in"
+msgstr "Przybliż"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
-#, fuzzy
 msgid "Zoom out"
-msgstr "Zoom uit"
+msgstr "Oddal"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, fuzzy, python-brace-format
@@ -191,46 +187,41 @@ msgid "Build menu ({key})"
 msgstr "Menu budowy (B)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
-#, fuzzy
 msgid "Diplomacy"
-msgstr "Diplomatie"
+msgstr "Dyplomacja"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Game menu ({key})"
-msgstr "Spel menu (Esc)"
+msgstr "Menu gry ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 #, fuzzy
 msgid "Change name"
-msgstr "Verander naam"
+msgstr "Zmień nazwę"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 #, fuzzy
 msgid "Old name:"
-msgstr "Oude naam:"
+msgstr "Poprzednia nazwa:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
-#, fuzzy
 msgid "Enter new name:"
-msgstr "Voer nieuwe naam in:"
+msgstr "Nowa nazwa:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
-#, fuzzy
 msgid "Apply the new name"
-msgstr "Pas de nieuwe naam toe"
+msgstr "Zatwierdź nazwę"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
-#, fuzzy
 msgid "Chat"
-msgstr "Chat"
+msgstr "Czat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
-#, fuzzy
 msgid "Enter your message:"
-msgstr "Voer uw bericht in:"
+msgstr "Twoja wiadomość:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -244,12 +235,10 @@ msgstr "Voer uw bericht in:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
-#, fuzzy
 msgid "Running costs"
-msgstr "Operationele kosten"
+msgstr "Koszty bieżące"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
-#, fuzzy
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
@@ -260,70 +249,59 @@ msgstr ""
 #. Information about the ship currently under construction at the boat
 #. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
-#, fuzzy
 msgid "Currently building:"
-msgstr "Momenteel onder constructie:"
+msgstr "Obecnie w budowie:"
 
 # Building
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
-#, fuzzy
 msgid "Pause"
-msgstr "Pauseer"
+msgstr "Pauza"
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
-#, fuzzy
 msgid "Resume"
-msgstr "Hervat"
+msgstr "Wznów"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
-#, fuzzy
 msgid "Construction progress:"
-msgstr "Voortgang constructie:"
+msgstr "Postęp budowy:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
-#, fuzzy
 msgid "Resources still needed:"
-msgstr "Grondstoffen vereist:"
+msgstr "Potrzebne surowce:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
-#, fuzzy
 msgid "Cancel building:"
-msgstr "Annuleer constructie:"
+msgstr "Anuluj budowę:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
-#, fuzzy
 msgid "(lose all resources)"
-msgstr "(U verliest alle grondstoffen)"
+msgstr "(utrata wszystkich surowców)"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
-#, fuzzy
 msgid "Cancel all building progress"
-msgstr "Annuleer alle constructie vooruitgang"
+msgstr "Anuluj wszystkie budowy"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
-#, fuzzy
 msgid "ally"
-msgstr "bondgenoot"
+msgstr "sojusznik"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
-#, fuzzy
 msgid "neutral"
-msgstr "neutraal"
+msgstr "neutralny"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
-#, fuzzy
 msgid "enemy"
-msgstr "vijand"
+msgstr "wróg"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
