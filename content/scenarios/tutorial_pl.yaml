@@ -54,9 +54,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 'Możesz wybrać dowolne miejsce, na którym podgląd budynku nie jest podświetlony na czerwono.
 
     Kliknij w miejscu, gdzie chcesz wybudować pierwszy budynek.'
-  - '
-
-    Zadanie: Wybuduj port na wybrzeżu.'
+  - ''
+  - [BoldLabel, 'Task: Build a warehouse at the coast.']
 
 - &LUMBERJACK
   - [Message, Wybuduj chatę drwala i poprowadź drogę od chaty do portu.]
@@ -69,8 +68,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Aby zbudować chatę drwala, otwórz menu budowy klikając wielką ikonę poniżej mini mapy lub naciskając klawisz 'B'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The build menu is sorted by tiers.
-  - You are currently in the first tier (the Sailors level) so are offered only the basic buildings.
+  - Menu budowy jest posortowane według rozwoju.
+  - Jesteś na pierwszym etapie (poziom Żeglarzy), dlatego masz dostęp tylko do podstawowych budynków.
   - [Pagebreak]
   - '
 
@@ -79,9 +78,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Możesz także sadzić drzewa - jednak to kosztuje. Na razie skorzystaj z tego, co oferuje natura!
   - Aby wykorzystać wszystkie dobra, które zostały zebrane bądź wyprodukowane w danym miejscu musisz połączyć je drogą z reszta infrastruktury w twojej osadzie. Inaczej nie zostaną zabrane z miejsca produkcji.
   - Oznacza to, że musisz postawić drogę pomiędzy portem (lub magazynem) a chatą drwala.
-  - '
-
-    ZADANIE: Wybuduj chatę drwala w zalesionym obszarze a następnie doprowadź do niej drogę.'
+  - ''
+  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
   - Obserwuj jak tragarz odbiera od drwala pierwsze wyprodukowane deski. Nie martw się rekrutacją pracowników do chaty drwala. Przebiega ona automatycznie.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -91,7 +89,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOWE ZADANIE: Zaopatrzenie w żywność']
   - [Image, content/gui/images/background/hr.png]
   - Przyszła kolej na produkcję żywność, aby ludzie (a wszczególności żeglarze) nie chodzili głodni.
-  - Available companies in the first tier are the Hunter and Fisher.
+  - 'Na pierwszym etapie rozwoju dostępne są dwa zawody: Rybak oraz Myśliwy.'
   - Myśliwy poluje na leśne zwierzęta, dlatego najlepiej zlokalizować go w pobliżu lasu.
   - Zauważ, że myśliwego możesz zlokalizować w pobliżu lasu, który odwiedza drwal.
   - Może się zdażyć, że zwierzęta nie będą rozmnażać się zbyt szybko albo będą bardzo dobrze się ukrywały.
@@ -103,9 +101,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Po usytuowaniu chatki rybaka na wybrzeżu, wybuduje on sobie łódź rybacką i zacznie łowić ryby.
   - To bardzo pewne źródło żywności, ceną jest jednak nieznacznie dłuższa produkcja.
   - Taka mała osada jak twoja może wykorzystać oba sposoby pozyskiwania żywności, powinieneś je jednaki zbalansować jzgodnie z ich zaletami i wadami.
-  - '
-
-    Zadanie: Wybuduj chatę myśliwego i rybaka.'
+  - ''
+  - [BoldLabel, 'Task: Build a hunter and a fisher.']
   - Nie zapomnij o tym, aby doprowadzić do nich drogę!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -115,15 +112,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOWE ZADANIE: Rynek główny']
   - [Image, content/gui/images/background/hr.png]
   - Osadnicy potrzebują rynku głównego, na którym będą mogli nabyć niezbędne towary.
-  - Oznacza to, że potrzebują bezpośredniego połączenia z domu do rynku.
+  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - Wszystkie dobra, które magazynujesz będą dostępne na rynku, dzięki temu osadnicy nie są zmuszeni chodzić bezpośrednio do rybaka czy do portu.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Nie powinieneś rozstawiać namiotów w pobliżu chaty drwala, gdyż niszczysz w ten sposób drzewa, które potrzebne są drwalowi do produkcji desek.
   - Firmy działają także, jeżeli nie są połączone z namiotami, nie musisz więc prowadzić drogi pomiędzy rynkiem a, przykładowo, namiotem drwala.
-  - '
-
-    Zadanie: Wybuduj rynek główny.'
+  - ''
+  - [BoldLabel, 'Task: Build a main square.']
   - [Pagebreak]
   - '
 
@@ -138,19 +134,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Zbuduj namiot i połącz je drogą z rynkiem głównym.]
+  - [Message, Build a tent and connect it to the main square if necessary.]
   - [Headline, 'NOWE ZADANIE: Budynki mieszkalne']
   - [Image, content/gui/images/background/hr.png]
   - Osadnicy muszą mieć dach nad głowami, inaczej nie będą nawet myśleć o zamieszkaniu w wiosce. Powinienś wybudować namioty.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
+  - Namioty są podstawowymi budynkami mieszkalnymi. Mieszkańcy będą chcieli je ulepszać wraz ze zwiększaniem stadium rozwoju.
+  - Należy pamiętać, że modernizacja każdego budynku wymaga materiałów budowlanych, takich jak drewno do ich pierwszej modernizacji.
   - Consider to disable the upgrade if your stock of these materials is low.
   - Ponieważ osadnicy konsumują wszystkie dobra, które produkujesz, mogą nie wydawać się zbyt przydatni - pamiętaj, że płacone przez nich podatnki to obecnie jedyny sposób zdobywania pieniędzy!
-  - '
-
-    Zadanie: zbuduj namiot i połącz go drogą z rynkiem głównym. Namioty nie muszą być połączone drogą z żadną firmą.'
+  - ''
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Postaw conajmniej trzy dodatkowe namioty i połącz je drogą z rynkiem głównyn.]
@@ -167,9 +162,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jeżeli ich żądania zostaną spełnione, zwiększy się ich szczęście a przez to wpływy z podatków.
   - W przeciwnym przypadku szczęście oraz wpływy zmniejszą się. Po pewnym czasie rezydenci mogą poważnie się zawieść i opuścić wioskę, zostawiając za sobą rozpadające się ruiny.
   - Pamiętaj, że możesz tutaj zmienić globalną wysokość podatku.
-  - '
-
-    Zadanie: Dobuduj przynajmniej trzy namioty.'
+  - ''
+  - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
     Wskazówka: przytrzymanie klawisza ''SHIFT'' ułatwia budowanie wielu budynków tego samego typu.'
@@ -193,15 +187,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Możesz tworzyć oferty przez zakładkę "Kup/Sprzedaj" w magazynie.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - At the 'sailors' tier, you are equipped with three trading slots.
+  - Na poziomie rozwoju "żeglarze", możesz handlować trzema różnymi towarami.
   - Kliknij na małej ikonie, by zmienić tryb z "Kup" na "Sprzedaj" i na odwrót.
   - Kliknij na kwadracie, by wybrać towar, którym chcesz handlować. Później to wyjaśnimy, gdy będziesz gotów do handlu.
-  - '
-
-    Zadanie: Wybuduj latarnie na wybrzeżu w pobliżu swojego portu.'
+  - ''
+  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Message, Zdobądź co najmniej 30 sztuk narzędzi.]
   - [Headline, 'NOWE ZADANIE: Naucz się handlować']
   - [Image, content/gui/images/background/hr.png]
   - 'Świetnie! Kupiec będzie się od czasu do czasu zatrzymywał przy Twoim magazynie.
@@ -224,9 +217,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Nie ma możliwości samodzielnego ustalania cen!'
   - Możesz zobaczyć swój bilans handlowy w zakładce "Konto", gdzie porównano wartości "Kupna" i "Sprzedaży".
-  - '
-
-    ZADANIE: Kup tyle narzędzi, by mieć 30 ton w magazynie.'
+  - ''
+  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -250,18 +242,17 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Nie wystarczy, żeby budynek był w zasięgu namiotów.
 
     Musi on być również połączony drogą.'
-  - '
-
-    ZADANIE: Wybuduj pawilon oraz ścieżkę do namiotów, żeby zaspokoić potrzebę wiary twoich marynarzy.'
+  - ''
+  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
   - [Message, Ustaw poziom podatków na niski i poczekaj aż twoi marynarze przejdą na następny poziom.]
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Headline, 'NOWE ZADANIE: Następny poziom']
   - [Image, content/gui/images/background/hr.png]
   - Wszystkie żądania są spełnione jeśli twoi mieszkańcy mogą regularnie odwiedzać rynek oraz pawilon i mają jednocześnie dostęp do odpowiedniej ilości jedzenia.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
+  - Jeśli marynarze są szczęśliwi, to będą chcieli przejść do kolejnego stadium rozwoju "Pionierzy".
   - Nie możesz już ich uszczęśliwić bardziej niż poprzez obniżenie podatków, gdyż wszystkie ich żądania zostały spełnione.
   - Ustanowienie niskich podatków na dłuższy okres czasu prędzej czy później doprowadzi do bankructwa i nie powinno się tego robić. Jeśli jednak obniżone zostaną tylko na chwile i z określonych powodów to może to mieć pewne korzyści.
   - Po pewnym czasie, pierwszy mieszkaniec przejdzie się na rynek w poszukiwaniu materiałów budowlanych by móc postawić pierwszy domek drewniany. Zastąpi on namiot w którym ten mieszkaniec mieszkał.
@@ -272,17 +263,16 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Niektóre ulepszenia mogą się jednak odbyć bez dodatkowych kosztów, zmienia się wtedy tylko ich grafika. Przykładem może być chata drwala.
   - Nowe mieszkanie może pomieścić większą ilość mieszkańców. Dodatkowo pionierzy płacą większe podatki niż marynarze.
   - Jak możesz się zapewne domyślić, pionierzy mają również więcej wymagań - potrzebujesz zatem więcej pieniędzy żeby ich uszczęśliwić.
-  - '
-
-    ZADANIE: Ustaw poziom podatków na niski (lewy koniec suwaka) i poczekaj aż marynarze przejdą na wyższy poziom.'
+  - ''
+  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
   - [Message, 'Wybuduj farmę i upewnij się, że jest wokół niej trochę wolnego miejsca.']
-  - [Headline, 'NOWE ZADANIE: Zbuduj farmę.']
+  - [Headline, 'NOWE ZADANIE: Zbuduj farmę']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
+  - Gratulacje! Niektórzy z twoich mieszkańców przeszli na drugi poziom rozwoju!
   - Masz teraz dostęp do nowych budynków. Zajrzyj teraz do menu budowania.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
@@ -298,9 +288,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Wszystko będzie w największym porządku, jeżeli pracownicy z końca linii produkcyjnej mają dostęp do farmy, a pracownicy magazynu lub portu mogą dotrzeć do końca linii produkcyjnej.
   - Jeśli jednak planujesz przetwarzać i produkować na różnych częściach wyspy (co może mieć sens), a nawet na różnych wyspach, potrzebne będzie połączenie między zbieraczami.
   - Nie buduj farmy zbyt blisko wybrzeża ani innych budynków, ponieważ będzie ona potrzebowała trochę miejsca wokół siebie by poprawnie funkcjonować.
-  - '
-
-    ZADANIE: Wybuduj farmę.'
+  - ''
+  - [BoldLabel, 'Task: Build a farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -310,13 +299,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Potrzebne są pola, by farma mogła cokolwiek wyprodukować.
   - Obecnie możesz wybrać pomiędzy pastwiskiem, polem ziemniaków lub polem cukrowym.
-  - 'Let''s have a short overview:
+  - 'Przyjrzyjmy się:
 
-    * Pasture: Sheep live here, producing lamb wool.
+    * Pastwisko: Żyją tu owce, produkując wełnę.
 
-    * Potato field: Grows potatoes which are currently treated as food.
+    * Pole ziemniaków: Rosną tu ziemniaki, które obecnie są traktowane jako jedzenie.
 
-    * Sugar field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
+    * Pole cukrowe: Rośnie tu cukier, który jest używany do destylacji alkoholu i (później) produkcji wyrobów cukierniczych.'
   - Teraz potrzeba tylko pastwisk, ale w przypadku, gdy łańcuch dostaw żywności jest zbyt mały (zbyt wiele budynków mieszkalnych) można również produkować niektóre ziemniaki.
   - Note that for potatoes you will need a road connection to the farm (not to the field!) as it will be the only company to work on the goods.
   - [Pagebreak]
@@ -326,7 +315,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Możesz łączyć produkcję - jedno pastwisko nie doprowadzi do stuprocentowej wydajności gospodarstwa - ale należy sprawdzić, z iloma polami może działać jedno gospodarstwo.
   - Różne rodzaje pól wymagają od gospodarstw więcej lub mniej czasu na siew, żniwa, wypas stada, itp ...i dlatego gospodarstwo może być niezdolne do działania na wszystkicz zbudowanych w jego zasięgu polach.
   - Na razie nie musisz się martwić tymi sprawami, ponieważ nie zbudowalłeś żadnych pól. Zmieńmy to!
-  - "\n Zadanie: Zbuduj przynajmniej jedno pastwiska w zasięgu gospodarstwa i dodaj pola ziemniaków, jeśli chcesz."
+  - ''
+  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -355,23 +345,21 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * sends its own collectors to fetch goods, just like the warehouse does.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
-  - '
-
-    TASK: Build a storage tent, preferably where you need collectors.'
+  - ''
+  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
   - [Message, 'Zbuduj warsztat tkacki, który ma dostęp do wełny z farmy.']
-  - [Headline, 'NEW TASK: BUILD A WEAVER']
+  - [Headline, 'NOWE ZADANIE: Zbuduj tkalnie']
   - [Image, content/gui/images/background/hr.png]
   - Produkcja wełny ruszyła, potrzeba jeszcze warsztatu tkackiego do produkcji tkaniny.
   - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
   - W obu przypadkach należy zapewnić połączenie ze szlakiem.
   - Możesz umieścić warsztat tkacki blisko gospodarstwa i zburzyć wszelkie szlaki do farmy, aby zobaczyć, że nadal będzie pobierał wełnę i produkował tkaninę.
-  - '
-
-    Zadanie: Zbuduj warsztat tkacki umieszczony tak, by mógł pobierać wełnę.'
+  - ''
+  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -382,9 +370,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Spróbuj mieć 50 lub więcej mieszkańców w twoim mieście budując domy mieszkalne.
   - Gdy jesteś w stanie utrzymać gospodarkę, by mogła zaspokoić potrzeby takiej ilości konsumentów, jesteś gotowy, aby odkrywać nowe nieznane noryzonty!
   - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
-  - '
-
-    Zadanie: Osiągnij liczbę 50 mieszkańców i dodatnie saldo, aby ukończyć ten tutorial.'
+  - ''
+  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -413,7 +400,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Zespół UH'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)
@@ -668,11 +655,11 @@ events:
 
 metadata:
   author: The UH team
-  description: 'The tutorial:
+  description: 'Samouczek:
 
-    Build your first settlement and learn how to play!'
+    Zbuduj swoją pierwszą osadę i naucz się grać!'
   difficulty: Samouczek
   locale: pl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 167 translated messages, 14 fuzzy translations, 10 untranslated messages.
+  translation_status: 180 translated messages, 5 fuzzy translations, 6 untranslated messages.
