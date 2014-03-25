@@ -189,9 +189,12 @@ class SelectSavegameDialog(Dialog):
 			savegame_details_box = gui.findChild(name="savegame_details")
 			savegame_details_parent = savegame_details_box.parent
 			if map_file_index == -1:
-				#if savegame_details_box not in savegame_details_parent.hidden_children:
-				if savegame_details_box.isVisible():
-					savegame_details_parent.hideChild(savegame_details_box)
+				if (Fife.getVersion() >= (0, 4, 0)):
+					if savegame_details_box.isVisible():
+						savegame_details_parent.hideChild(savegame_details_box)
+				else:
+					if savegame_details_box not in savegame_details_parent.hidden_children:
+						savegame_details_parent.hideChild(savegame_details_box)
 				return
 			else:
 				savegame_details_parent.showChild(savegame_details_box)
