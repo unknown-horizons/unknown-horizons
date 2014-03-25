@@ -84,8 +84,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 			container_active.parent.showChild(container_active)
 			if (Fife.getVersion() >= (0, 4, 0)):
-				if container_inactive.isVisible():
-					container_inactive.parent.hideChild(container_inactive)
+				container_inactive.parent.hideChild(container_inactive)
 			else:
 				if not container_inactive in container_inactive.parent.hidden_children:
 					container_inactive.parent.hideChild(container_inactive)
@@ -125,8 +124,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			if not to_active: # swap what we want to show and hide
 				button_active, button_inactive = button_inactive, button_active
 			if (Fife.getVersion() >= (0, 4, 0)):
-				if button_active.isVisible():
-					button_active.parent.hideChild(button_active)
+				button_active.parent.hideChild(button_active)
 			else:
 				if not button_active in button_active.parent.hidden_children:
 					button_active.parent.hideChild(button_active)
@@ -162,8 +160,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			container_inactive.parent.showChild(container_inactive)
 			for w in (container_active, progress_container, cancel_container):
 				if (Fife.getVersion() >= (0, 4, 0)):
-					if w.isVisible():
-						w.parent.hideChild(w)
+					w.parent.hideChild(w)
 				else:
 					if not w in w.parent.hidden_children:
 						w.parent.hideChild(w)
