@@ -25,6 +25,7 @@ from operator import itemgetter
 from fife.extensions.pychan.widgets import Icon, HBox, Label, Container
 
 from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
+from horizons.engine import Fife
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
@@ -82,8 +83,12 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			progress_perc.text = u'{progress}%'.format(progress=progress)
 
 			container_active.parent.showChild(container_active)
-			if not container_inactive in container_inactive.parent.hidden_children:
-				container_inactive.parent.hideChild(container_inactive)
+			if (Fife.getVersion() >= (0, 4, 0)):
+				if container_inactive.isVisible():
+					container_inactive.parent.hideChild(container_inactive)
+			else:
+				if not container_inactive in container_inactive.parent.hidden_children:
+					container_inactive.parent.hideChild(container_inactive)
 
 			# Update boatbuilder queue
 			queue = self.producer.get_unit_production_queue()
@@ -119,8 +124,12 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 			if not to_active: # swap what we want to show and hide
 				button_active, button_inactive = button_inactive, button_active
-			if not button_active in button_active.parent.hidden_children:
-				button_active.parent.hideChild(button_active)
+			if (Fife.getVersion() >= (0, 4, 0)):
+				if button_active.isVisible():
+					button_active.parent.hideChild(button_active)
+			else:
+				if not button_active in button_active.parent.hidden_children:
+					button_active.parent.hideChild(button_active)
 			button_inactive.parent.showChild(button_inactive)
 
 			set_active_cb = Callback(self.producer.set_active, active=to_active)
@@ -152,8 +161,12 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		else: # display sth when nothing is produced
 			container_inactive.parent.showChild(container_inactive)
 			for w in (container_active, progress_container, cancel_container):
-				if not w in w.parent.hidden_children:
-					w.parent.hideChild(w)
+				if (Fife.getVersion() >= (0, 4, 0)):
+					if w.isVisible():
+						w.parent.hideChild(w)
+				else:
+					if not w in w.parent.hidden_children:
+						w.parent.hideChild(w)
 
 		self.widget.adaptLayout()
 
