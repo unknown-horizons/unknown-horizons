@@ -112,9 +112,9 @@ class ProductionOverviewTab(OverviewTab):
 					self._animations.append( weakref.ref( anim ) )
 
 			# fill it with input and output resources
-			in_res_container = centered_container.findChild(name="input_res")
+			in_res_container = container.findChild(name="input_res")
 			self._add_resource_icons(in_res_container, production.get_consumed_resources(), marker=True)
-			out_res_container = centered_container.findChild(name="output_res")
+			out_res_container = container.findChild(name="output_res")
 			self._add_resource_icons(out_res_container, production.get_produced_resources())
 
 			# active toggle_active button
