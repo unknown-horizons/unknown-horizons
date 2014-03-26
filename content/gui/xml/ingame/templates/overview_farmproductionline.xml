@@ -15,15 +15,15 @@
 		<Icon image="content/gui/icons/templates/production/production_arrow_head.png" position="107,17" />
 		<VBox name="output_box" position="136,17" />
 
-	<!-- one of those button gets removed at runtime -->
-	<ImageButton path="icons/templates/production/toggle_small_active"
-		position="82,-2" name="toggle_active_active" helptext="Pause production" />
+		<!-- one of those button gets removed at runtime -->
+		<ImageButton path="icons/templates/production/toggle_small_active"
+			position="82,-2" name="toggle_active_active" helptext="Pause production" />
 
-	<ImageButton path="icons/templates/production/toggle_small_inactive"
-		position="82,-2" name="toggle_active_inactive" helptext="Start production" />
+		<ImageButton path="icons/templates/production/toggle_small_inactive"
+			position="82,-2" name="toggle_active_inactive" helptext="Start production" />
 
-	<VBox name="output_res" position="157,0" />
-</Container>
+		<VBox name="output_res" position="157,0" />
+	</Container>
 
 	<VBox name="input_box" position="61,17" />
 
