@@ -75,7 +75,6 @@ class MessageWidget(LivingObject):
 		self.reference_text_widget_position = (self.widget.x + self.widget.width, self.widget.y)
 
 		self.widget.show()
-		self.item = 0 # number of current message
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
@@ -165,7 +164,7 @@ class MessageWidget(LivingObject):
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
-			if (self.item + index) >= len(self.active_messages):
+			if index >= len(self.active_messages):
 				# Only display most recent notifications
 				continue
 			button = ImageButton()
@@ -205,7 +204,7 @@ class MessageWidget(LivingObject):
 		assert isinstance(index, int)
 		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
 		label = self.text_widget.findChild(name='text')
-		text = self.active_messages[self.item + index].message
+		text = self.active_messages[index].message
 		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
 		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
