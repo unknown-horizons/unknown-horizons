@@ -202,8 +202,9 @@ class MessageWidget(LivingObject):
 		"""Shows the text for a button.
 		@param index: index of button"""
 		assert isinstance(index, int)
-		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
-		label = self.text_widget.findChild(name='text')
+		# stop hiding if a new text has been shown
+		ExtScheduler().rem_call(self, self.hide_text)
+
 		text = self.active_messages[index].message
 		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
 		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
@@ -228,6 +229,7 @@ class MessageWidget(LivingObject):
 		message_container.size = (300, 21 + self.IMG_HEIGHT * line_count + 21)
 
 		self.bg_middle.adaptLayout()
+		label = self.text_widget.findChild(name='text')
 		label.text = text
 		label.adaptLayout()
 		self.text_widget.show()
