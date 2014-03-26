@@ -21,6 +21,11 @@
 
 import logging
 import os
+# Find the best implementation available on this platform
+try:
+    from cStringIO import StringIO
+except:
+    from StringIO import StringIO
 
 from fife.extensions.pychan import loadXML
 from fife.extensions.pychan.widgets import Container, HBox, Icon
@@ -62,12 +67,21 @@ def get_happiness_icon_and_helptext(value, session):
 
 	return happiness_icon_path, happiness_helptext
 
+@decorators.cachedfunction
+def get_widget_xml(filename):
+	"""
+	This function reads the given widget file's content and returns the XML. 
+	It is cached to avoid useless IO.
+	"""
+	with open(get_gui_files_map()[filename]) as open_file:
+		return open_file.read()
+
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications
 	"""
 	# load widget
 	try:
-		widget = loadXML(get_gui_files_map()[filename])
+		widget = loadXML(StringIO(get_widget_xml(filename)))
 	except (IOError, ValueError) as error:
 		log = logging.getLogger('gui')
 		log.error(u'PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
