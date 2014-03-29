@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-03-23 13:08+0200\n"
+"PO-Revision-Date: 2014-03-29 11:43+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -3688,121 +3688,121 @@ msgstr "maons"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr ""
+msgstr "mineral d'or"
 
 #. This is a database entry: the name of a resource
 msgid "community"
-msgstr ""
+msgstr "comunitat"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr ""
+msgstr "plantes d'espècies"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "higiene"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "bestiar per l'escorxador"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr ""
+msgstr "tabacs"
 
 #. This is a database entry: the name of a resource
 msgid "tools"
-msgstr ""
+msgstr "eines"
 
 #. This is a database entry: the name of a resource
 msgid "deer meat"
-msgstr ""
+msgstr "carn de cérvol"
 
 #. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr ""
+msgstr "pastisseria"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "balenes"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
-msgstr ""
+msgstr "monedes"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
-msgstr ""
+msgstr "Heu guanyat!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "flors"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr ""
+msgstr "plantes d'indi"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
-msgstr ""
+msgstr "peix"
 
 #. This is a database entry: the name of a resource
 msgid "charcoal"
-msgstr ""
+msgstr "carbó vegetal"
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
-msgstr ""
+msgstr "jaciment de pedra"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Heu fracassat en aquest escenari."
 
 #. This is a database entry: the name of a resource
 msgid "fire"
-msgstr ""
+msgstr "foc"
 
 #. This is a database entry: the name of a resource
 msgid "acorns"
-msgstr ""
+msgstr "aglans"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "roba"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
-msgstr ""
+msgstr "bresques de mel"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco plants"
-msgstr ""
+msgstr "plantes de tabac"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Necessiteu més {resource} per poder construir aquest edifici."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "La vostra tripulació no vol sortir d'aquest mapa."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} i {player2} han cessat les seves hostilitats."
 
 #. This is a database entry: the name of a resource
 msgid "grass"
-msgstr ""
+msgstr "herba"
 
 #. This is a database entry: the name of a resource
 msgid "sugar cane"
-msgstr ""
+msgstr "canya de sucre"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "La partida s'ha desat automàticament."
 
 #. This is a database entry: the name of a resource
 #| msgid "Resource deposit"
@@ -3811,129 +3811,129 @@ msgstr "Jaciment d'or"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "Un dels camps necessita una granja per poder recollir la collita."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "Pedres precioses en brut"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr ""
+msgstr "ruscs"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "La vostra mina s'ha esgotat."
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
-msgstr ""
+msgstr "jaciment de ferro"
 
 #. This is a database entry: the name of a resource
 msgid "education"
-msgstr ""
+msgstr "educació"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "cotó"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr ""
+msgstr "{player1} i {player2} ja no son aliats i ara estan en guerra."
 
 #. This is a database entry: the name of a resource
 msgid "textile"
-msgstr ""
+msgstr "teixit"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
-msgstr ""
+msgstr "canó"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "Els habitants d'aquest edifici tenen la Pesta Negra!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "S'ha creat un nou vaixell anomenat {name}."
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr ""
+msgstr "plantes de te"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
-msgstr ""
+msgstr "reunió"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr ""
+msgstr "S'ha creat un món nou."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "S'ha desat ràpidament la partida."
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr ""
+msgstr "carn de cérvol A"
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
-msgstr ""
+msgstr "herbes"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "oli per làmpada"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
-msgstr ""
+msgstr "porcs"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "No podeu ensorrar el magatzem, el vostre assentament el necessita."
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr ""
+msgstr "espècies"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr ""
+msgstr "Pesta Negra"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "espelmes"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "{player} ha fundat un nou assentament."
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "vinyes"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr ""
+msgstr "S'ha desat la partida."
 
 #. This is a database entry: the name of a resource
 msgid "salt"
-msgstr ""
+msgstr "sal"
 
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
-msgstr ""
+msgstr "lingots d'or"
 
 #~ msgid "Back:"
 #~ msgstr "Enrere:"
