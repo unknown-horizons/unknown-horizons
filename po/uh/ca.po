@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-03-29 11:43+0200\n"
+"PO-Revision-Date: 2014-04-26 11:52+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -1497,11 +1497,11 @@ msgstr "No us ho podeu permetre."
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
-msgstr "Aquest producte ja no està en venta."
+msgstr "Aquest comerciant ha esgotat aquest producte."
 
 #: horizons/component/tradepostcomponent.py:232
 msgid "The trade partner does not buy this."
-msgstr "No compra aquest producte."
+msgstr "El comerciant no compra aquest producte."
 
 #: horizons/component/tradepostcomponent.py:240
 msgid "You do not possess this."
@@ -1552,7 +1552,7 @@ msgstr "No es pot fer servir la diplomàcia"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "No podeu fer servir la diplomàcia per que no hi ha cap més jugador."
+msgstr "No podeu fer servir la diplomàcia perquè no hi ha cap més jugador."
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1589,7 +1589,7 @@ msgstr "Consells per jugar"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Premeu «ESC« per accedir al menú del joc."
+msgstr "Premeu «ESC» per accedir al menú del joc."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
@@ -1634,7 +1634,7 @@ msgstr "Construïu tendes de magatzem per incrementar la capacitat d'estocatge."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
-msgstr "Assegureu-vos que totes les cases són al voltant d'un mercat."
+msgstr "Assegureu-vos que totes les cases són a prop d'un mercat."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
@@ -1846,7 +1846,7 @@ msgstr "Esteu preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:582
 msgid "You are not ready anymore"
-msgstr "Ja no esteu preparat"
+msgstr "Heu deixat d'estar preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
@@ -1856,7 +1856,7 @@ msgstr "{player} està preparat"
 #: horizons/gui/modules/multiplayermenu.py:587
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr "{player} ja no està preparat"
+msgstr "{player} Ha deixat d'estar preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 #, python-brace-format
