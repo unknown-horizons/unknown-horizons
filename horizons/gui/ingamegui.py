@@ -30,7 +30,7 @@ from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
-from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
+from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
 from horizons.gui.tabs import resolve_tab
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
@@ -655,12 +655,6 @@ class IngameGui(LivingObject):
 		menu = self.get_cur_menu()
 		if hasattr(menu, "name") and menu.name == "build_menu_tab_widget":
 			self.show_build_menu(update=True)
-
-		# TODO: Use a better measure then first tab
-		# Quite fragile, makes sure the tablist in the mainsquare menu is updated
-		if hasattr(menu, '_tabs') and isinstance(menu._tabs[0], MainSquareOverviewTab):
-			instance = list(self.session.selected_instances)[0]
-			instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
 
 	def _on_mine_empty(self, message):
 		self.message_widget.add(point=message.mine.position.center, string_id='MINE_EMPTY')

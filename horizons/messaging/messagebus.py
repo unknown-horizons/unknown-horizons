@@ -63,6 +63,11 @@ class MessageBus(object):
 		if callback in self.global_receivers[messagetype]:
 			self.unsubscribe_globally(messagetype, callback)
 
+	def discard_locally(self, messagetype, instance, callback):
+		pair = (messagetype, instance)
+		if pair in self.local_receivers and callback in self.local_receivers[pair]:
+			self.unsubscribe_locally(messagetype, instance, callback)
+
 	def broadcast(self, message):
 		"""Send a message to the bus and broadcast it to all recipients"""
 		messagetype = message.__class__

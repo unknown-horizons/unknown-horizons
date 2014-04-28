@@ -90,11 +90,14 @@ class Message(object):
 			MessageBus().unsubscribe_globally(cls, callback)
 
 	@classmethod
-	def discard(cls, callback):
+	def discard(cls, callback, sender=None):
 		"""Similar to `Message.unsubscribe`, but does not raise an error if the
 		callback has not been registered before.
 		"""
-		MessageBus().discard_globally(cls, callback)
+		if sender:
+			MessageBus().discard_locally(cls, sender, callback)
+		else:
+			MessageBus().discard_globally(cls, callback)
 
 	@classmethod
 	def broadcast(cls, *args):
