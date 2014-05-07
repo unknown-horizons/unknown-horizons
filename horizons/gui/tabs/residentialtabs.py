@@ -67,7 +67,7 @@ class SettlerOverviewTab(OverviewTab):
 		SettlerUpdate.subscribe(self.on_settler_level_change, sender=self.instance)
 
 	def hide(self):
-		SettlerUpdate.unsubscribe(self.on_settler_level_change, sender=self.instance)
+		SettlerUpdate.discard(self.on_settler_level_change, sender=self.instance)
 		super(SettlerOverviewTab, self).hide()
 
 	def refresh(self):
