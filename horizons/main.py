@@ -55,6 +55,7 @@ from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
 from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.atlasloadingthread import AtlasLoadingThread
 
 
 # private module pointers of this module
@@ -109,17 +110,7 @@ def start(_command_line_arguments):
 		sys.exit(0)
 
 	if debug: # also True if a specific module is logged (but not 'fife')
-		if not (command_line_arguments.debug_module
-		        and 'fife' not in command_line_arguments.debug_module):
-			horizons.globals.fife._log.logToPrompt = True
-
-		if command_line_arguments.debug_log_only:
-			# This is a workaround to not show fife logs in the shell even if
-			# (due to the way the fife logger works) these logs will not be
-			# redirected to the UH logfile and instead written to a file fife.log
-			# in the current directory. See #1782 for background information.
-			horizons.globals.fife._log.logToPrompt = False
-			horizons.globals.fife._log.logToFile = True
+		setup_debug_mode(command_line_arguments)
 
 	if horizons.globals.fife.get_uh_setting("DebugLog"):
 		set_debug_log(True, startup=True)
@@ -133,42 +124,22 @@ def start(_command_line_arguments):
 			print "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 			return False
 
-	if command_line_arguments.ai_highlights:
-		AI.HIGHLIGHT_PLANS = True
-	if command_line_arguments.ai_combat_highlights:
-		AI.HIGHLIGHT_COMBAT = True
-	if command_line_arguments.human_ai:
-		AI.HUMAN_AI = True
+	setup_AI_settings(command_line_arguments)
 
 	# set MAX_TICKS
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
-	atlas_generator = None
-	horizons_path = os.path.dirname(horizons.__file__)
-	if VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled') \
-	                          and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled') \
-	                          and command_line_arguments.atlas_generation \
-	                          and not command_line_arguments.gui_test:
-		args = [sys.executable, os.path.join(horizons_path, 'engine', 'generate_atlases.py'),
-		        str(horizons.globals.fife.get_uh_setting('MaxAtlasSize'))]
-		atlas_generator = subprocess.Popen(args, stdout=None, stderr=subprocess.STDOUT)
+	preload_lock = threading.Lock()
+	atlas_loading_thread = None
+	atlas_loading_thread = AtlasLoadingThread(preload_lock, command_line_arguments)
+	atlas_loading_thread.start()
+	atlas_loading_thread.join()
 
 	# init game parts
 
-	# Install gui logger, needs to be done before instantiating Gui, otherwise we miss
-	# the events of the main menu buttons
-	if command_line_arguments.log_gui:
-		if command_line_arguments.gui_test:
-			raise Exception("Logging gui interactions doesn't work when running tests.")
-		try:
-			from tests.gui.logger import setup_gui_logger
-			setup_gui_logger()
-		except ImportError:
-			traceback.print_exc()
-			print
-			print "Gui logging requires code that is only present in the repository and is not being installed."
-			return False
+	if not setup_gui_logger(command_line_arguments):
+		return False
 
 	# GUI tests always run with sound disabled and SDL (so they can run under xvfb).
 	# Needs to be done before engine is initialized.
@@ -179,32 +150,19 @@ def start(_command_line_arguments):
 	ExtScheduler.create_instance(horizons.globals.fife.pump)
 	horizons.globals.fife.init()
 
-	if atlas_generator is not None:
-		atlas_generator.wait()
-		assert atlas_generator.returncode is not None
-		if atlas_generator.returncode != 0:
-			print 'Atlas generation failed. Continuing without atlas support.'
-			print 'This just means that the game will run a bit slower.'
-			print 'It will still run fine unless there are other problems.'
-			print
-			GFX.USE_ATLASES = False
-		else:
-			GFX.USE_ATLASES = True
-			PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
-	elif not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
+	if not VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
 		GFX.USE_ATLASES = True
 		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
 	horizons.globals.db = _create_main_db()
-	horizons.globals.fife.init_animation_loader(GFX.USE_ATLASES)
 	_modules.gui = Gui()
 	SavegameManager.init()
-
+	horizons.globals.fife.init_animation_loader(GFX.USE_ATLASES)
+	
 	from horizons.entities import Entities
 	Entities.load(horizons.globals.db, load_now=False) # create all references
 
 	# for preloading game data while in main screen
-	preload_lock = threading.Lock()
 	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
 	preloading = (preload_thread, preload_lock)
 
@@ -259,20 +217,7 @@ def start(_command_line_arguments):
 
 		# initialize update checker
 		if not command_line_arguments.gui_test:
-			from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
-			update_info = UpdateInfo()
-			update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
-			update_check_thread.start()
-
-			def update_info_handler(info):
-				if info.status == UpdateInfo.UNINITIALIZED:
-					ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
-				elif info.status == UpdateInfo.READY:
-					show_new_version_hint(_modules.gui, info)
-				elif info.status == UpdateInfo.INVALID:
-					pass # couldn't retrieve file or nothing relevant in there
-
-			update_info_handler(update_info) # schedules checks by itself
+			setup_update_check()
 
 		_modules.gui.show_main()
 		if not command_line_arguments.nopreload:
@@ -293,6 +238,61 @@ def start(_command_line_arguments):
 		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
 	horizons.globals.fife.run()
+
+def setup_update_check():
+	from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
+	update_info = UpdateInfo()
+	update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
+	update_check_thread.start()
+
+	def update_info_handler(info):
+		if info.status == UpdateInfo.UNINITIALIZED:
+			ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
+		elif info.status == UpdateInfo.READY:
+			show_new_version_hint(_modules.gui, info)
+		elif info.status == UpdateInfo.INVALID:
+			pass # couldn't retrieve file or nothing relevant in there
+
+	update_info_handler(update_info) # schedules checks by itself
+
+def setup_AI_settings(command_line_arguments):
+	if command_line_arguments.ai_highlights:
+		AI.HIGHLIGHT_PLANS = True
+	if command_line_arguments.ai_combat_highlights:
+		AI.HIGHLIGHT_COMBAT = True
+	if command_line_arguments.human_ai:
+		AI.HUMAN_AI = True
+
+def setup_debug_mode(command_line_arguments):
+	if not (command_line_arguments.debug_module
+	        and 'fife' not in command_line_arguments.debug_module):
+		horizons.globals.fife._log.logToPrompt = True
+
+	if command_line_arguments.debug_log_only:
+		# This is a workaround to not show fife logs in the shell even if
+		# (due to the way the fife logger works) these logs will not be
+		# redirected to the UH logfile and instead written to a file fife.log
+		# in the current directory. See #1782 for background information.
+		horizons.globals.fife._log.logToPrompt = False
+		horizons.globals.fife._log.logToFile = True
+
+def setup_gui_logger(command_line_arguments):
+	"""
+	Install gui logger, needs to be done before instantiating Gui, otherwise we miss
+	the events of the main menu buttons
+	"""
+	if command_line_arguments.log_gui:
+		if command_line_arguments.gui_test:
+			raise Exception("Logging gui interactions doesn't work when running tests.")
+		try:
+			import tests.gui.logger
+			logger.setup_gui_logger()
+		except ImportError:
+			traceback.print_exc()
+			print
+			print "Gui logging requires code that is only present in the repository and is not being installed."
+			return False
+	return True
 
 def quit():
 	"""Quits the game"""
@@ -541,10 +541,11 @@ def _create_main_db():
 def preload_game_data(lock):
 	"""Preloads game data.
 	Keeps releasing and acquiring lock, runs until lock can't be acquired."""
+	log = logging.getLogger("preload")
 	try:
-		from horizons.entities import Entities
-		log = logging.getLogger("preload")
+		lock.acquire()
 		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
+		from horizons.entities import Entities
 		preload_functions = [ ActionSetLoader.load,
 		                      TileSetLoader.load,
 		                      Callback(Entities.load_grounds, mydb, load_now=True),
