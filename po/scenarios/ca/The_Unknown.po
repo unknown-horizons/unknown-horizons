@@ -113,7 +113,7 @@ msgid ""
 "exchange goods for their everyday needs."
 msgstr ""
 "Hem assegurat les necessitats bàsiques de menjar i recollit fusta per "
-"continuar ampliant en nostre assentament. LA gent demana un lloc on viure i "
+"continuar ampliant en nostre assentament. La gent demana un lloc on viure i "
 "intercanviar mercaderies per les necessitats del dia a dia."
 
 #. This is the text body of a logbook page.
@@ -142,7 +142,7 @@ msgid ""
 "comfortable but it keeps me dry and I have the feeling of having a roof over "
 "my head at night."
 msgstr ""
-"Per fi tenim prou menjar i un lloc on refer la nostra vida. LA meva tenda no "
+"Per fi tenim prou menjar i un lloc on refer la nostra vida. La meva tenda no "
 "és gaire confortable, però em manté eixut i em dona el consol de tenir un "
 "sostre on passar la nit."
 
@@ -178,7 +178,7 @@ msgid ""
 "here forever."
 msgstr ""
 "El nostre poble va força bé. Ja som 250 habitants. Ens estem començant a "
-"acostumar a la nostra nova llar, però la illa és massa petita per quedar-nos "
+"acostumar a la nostra nova llar, però l'illa és massa petita per quedar-nos "
 "per sempre."
 
 #. This is the text body of a logbook page.

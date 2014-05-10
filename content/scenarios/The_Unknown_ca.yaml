@@ -54,7 +54,7 @@ logbook-data:
 - &TENTS
   - [Headline, 25 de Novembre de 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Hem assegurat les necessitats bàsiques de menjar i recollit fusta per continuar ampliant en nostre assentament. LA gent demana un lloc on viure i intercanviar mercaderies per les necessitats del dia a dia.
+  - Hem assegurat les necessitats bàsiques de menjar i recollit fusta per continuar ampliant en nostre assentament. La gent demana un lloc on viure i intercanviar mercaderies per les necessitats del dia a dia.
   - És hora de construir algunes tendes per viure-hi i una petita plaça per l'aprovisionament dels ciutadans.
   - 'Missió:
 
@@ -65,7 +65,7 @@ logbook-data:
 - &GROW_SETTLEMENT
   - [Headline, 1 de Desembre de 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Per fi tenim prou menjar i un lloc on refer la nostra vida. LA meva tenda no és gaire confortable, però em manté eixut i em dona el consol de tenir un sostre on passar la nit.
+  - Per fi tenim prou menjar i un lloc on refer la nostra vida. La meva tenda no és gaire confortable, però em manté eixut i em dona el consol de tenir un sostre on passar la nit.
   - 'A les nits miro els estels, però sense les cartes de navegació i els instruments no puc entendre el que diuen. Tinc la sensació que ens haurem de quedar durant un temps, així que haurem de millorar la nostra situació.
 
     Només podem mirar de construir una civilització i trobar el camí cap a casa…'
@@ -78,7 +78,7 @@ logbook-data:
 - &WON
   - [Headline, 27 d'agost de 1745]
   - [Image, content/gui/images/background/hr.png]
-  - El nostre poble va força bé. Ja som 250 habitants. Ens estem començant a acostumar a la nostra nova llar, però la illa és massa petita per quedar-nos per sempre.
+  - El nostre poble va força bé. Ja som 250 habitants. Ens estem començant a acostumar a la nostra nova llar, però l'illa és massa petita per quedar-nos per sempre.
   - Haurem de carregar el vaixell i anar a una illa més gran que disposi de més recursos i espai per la meva gent. He creat un mapa de navegació bàsic, fent servir les estrelles que es veuen a la nit. No és perfecte, però espero que sigui suficient per poder tornar aquí.
   - 'Missió:
 
