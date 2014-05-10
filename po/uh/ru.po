@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-10 12:26+0200\n"
-"Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
+"PO-Revision-Date: 2014-05-10 13:11+0200\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -132,7 +132,7 @@ msgstr "Эксплуатационные расходы:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "Связанные здания"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
@@ -1024,7 +1024,7 @@ msgstr "Закончить игру"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
-msgstr "Загрузка ..."
+msgstr "Загрузка…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
