@@ -31,7 +31,7 @@ msgstr "Heu superat la mida màxima del paquet global."
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Aixo no hauria de passar. Contacteu amb nosaltres o envieu un informe de "
+"Això no hauria de passar. Contacteu amb nosaltres o envieu un informe de "
 "fallada."
 
 #: horizons/network/server.py:302
@@ -70,7 +70,7 @@ msgstr "La contrasenya no és correcta"
 
 #: horizons/network/server.py:424 horizons/network/server.py:534
 msgid "There's already a player with your name inside this game."
-msgstr "Ja hi ha un jugador que te aquest nom a la partida."
+msgstr "Ja hi ha un jugador que té aquest nom a la partida."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
@@ -105,11 +105,11 @@ msgstr ""
 
 #: horizons/network/server.py:535
 msgid "Unable to change your name."
-msgstr "No podeu canviar el vostre nom."
+msgstr "No s'ha pogut canviar el vostre nom."
 
 #: horizons/network/server.py:563
 msgid "Unable to change your color."
-msgstr "No podeu canviar el color."
+msgstr "No s'ha pogut  canviar el vostre color."
 
 #: horizons/network/server.py:650
 msgid "You can't fetch a game while in another game"
