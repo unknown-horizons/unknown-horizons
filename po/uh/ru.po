@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-10 11:53+0200\n"
-"Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
+"PO-Revision-Date: 2014-05-10 12:01+0200\n"
+"Last-Translator: Владимир Хоменко <vlkhomenko@yandex.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -857,7 +857,7 @@ msgstr "Загрузка существующей карты"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Загрузка сохраненной игровой карты"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
