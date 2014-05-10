@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-10 12:02+0200\n"
-"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"PO-Revision-Date: 2014-05-10 12:26+0200\n"
+"Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -1332,6 +1332,8 @@ msgstr ""
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"Показывать ли значки ресурсов над зданиями когда бы они не закончили "
+"производство"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
@@ -1627,6 +1629,8 @@ msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Стройте пожарные посты и палатки докторов чтобы уберечь ваших поселенцев от "
+"пожара и болезней."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
@@ -2764,7 +2768,7 @@ msgstr "Центральная площадь"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:266
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "Снабжает жителей товарами, служит местом сборов и посиделок."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
@@ -3294,7 +3298,7 @@ msgstr "Страница была открыта в вашем браузере.
 #: horizons/util/uhdbaccessor.py:267
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} отсеков, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
