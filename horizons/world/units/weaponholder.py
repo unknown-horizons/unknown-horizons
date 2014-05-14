@@ -324,7 +324,7 @@ class WeaponHolder(object):
 			self._target.discard_remove_listener(self.remove_target)
 		self.remove_target()
 
-	def fire_all_weapons(self, dest, rotated=False, bullet_delay=0):
+	def fire_all_weapons(self, dest, rotated=False):
 		"""
 		Fires all weapons in storage at a given position
 		@param dest: Point with the given position
@@ -339,7 +339,7 @@ class WeaponHolder(object):
 
 		if not rotated:
 			for weapon in self._fireable:
-				weapon.fire(dest, self.position.center, bullet_delay)
+				weapon.fire(dest, self.position.center)
 		else:
 			angle = (math.pi / 60) * (-len(self._fireable) / 2)
 			cos = math.cos(angle)
@@ -360,7 +360,7 @@ class WeaponHolder(object):
 
 			for weapon in self._fireable:
 				destination = Point(dest_x, dest_y)
-				weapon.fire(destination, self.position.center, bullet_delay)
+				weapon.fire(destination, self.position.center)
 				dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 				dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 

@@ -43,7 +43,6 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
-from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
@@ -143,7 +142,6 @@ class World(BuildingOwner, WorldObject):
 
 		self.islands = None
 		self.diplomacy = None
-		self.bullets = None
 
 	def _init(self, savegame_db, force_player_id=None, disasters_enabled=True):
 		"""
@@ -198,9 +196,6 @@ class World(BuildingOwner, WorldObject):
 		self.ship_map = {}
 		self.ground_unit_map = {}
 
-		# create bullets list, used for saving bullets in ongoing attacks
-		self.bullets = []
-
 		if self.session.is_game_loaded():
 			# there are 0 or 1 trader AIs so this is safe
 			trader_data = savegame_db("SELECT rowid FROM player WHERE is_trader = 1")
@@ -249,11 +244,6 @@ class World(BuildingOwner, WorldObject):
 
 
 	def _load_combat(self, savegame_db):
-		# load bullets
-		if self.session.is_game_loaded():
-			for (worldid, sx, sy, dx, dy, speed, img) in savegame_db("SELECT worldid, startx, starty, destx, desty, speed, image FROM bullet"):
-				Bullet(img, Point(sx, sy), Point(dx, dy), speed, self.session, False, worldid)
-
 		# load ongoing attacks
 		if self.session.is_game_loaded():
 			Weapon.load_attacks(self.session, savegame_db)
@@ -681,8 +671,6 @@ class World(BuildingOwner, WorldObject):
 			self.pirate.save(db)
 		for unit in self.ships + self.ground_units:
 			unit.save(db)
-		for bullet in self.bullets:
-			bullet.save(db)
 		self.diplomacy.save(db)
 		Weapon.save_attacks(db)
 		self.disaster_manager.save(db)
