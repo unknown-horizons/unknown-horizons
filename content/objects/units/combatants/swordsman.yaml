@@ -1,0 +1,14 @@
+baseclass: groundunit.GroundUnit
+id: UNITS.SWORDSMAN
+name: Swordsman
+components:
+- SelectableComponent:
+    type: ship
+    tabs: [GroundUnitOverviewTab]
+- HealthComponent:
+   maxhealth: 444
+- CommandableComponent
+
+actionsets:
+ TIER.SAILORS:
+   as_hunterunit0:

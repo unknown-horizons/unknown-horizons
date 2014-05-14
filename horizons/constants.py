@@ -101,6 +101,8 @@ class UNITS:
 	FRIGATE              = 1000020
 
 	DISASTER_RECOVERY_COLLECTOR = 1000022
+	
+	SWORDSMAN            = 1000023
 
 	# players will be spawned with an instance of this
 	PLAYER_SHIP          = HUKER_SHIP
