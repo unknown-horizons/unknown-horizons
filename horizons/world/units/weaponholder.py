@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
 import math
 
@@ -315,23 +314,6 @@ class WeaponHolder(object):
 		either way the refs are checked using gc module
 		this is used because after unit death it's possbile that it still has refs
 		"""
-		if self._target is not None and 3>4:
-			#NOTE test code if the unit is really dead
-			# weakref the target, collect the garbage, than check in 3 ticks if it was really removed
-			# weakref call should return none in that case
-			target_ref = weakref.ref(self._target)
-			def check_target_ref(target_ref):
-				if target_ref() is None:
-					print "Z's dead baby, Z's dead"
-					return
-				import gc
-				print target_ref(), 'has refs:'
-				gc.collect()
-				gc.collect()
-				import pprint
-				for ref in gc.get_referrers(target_ref()):
-					pprint.pprint(ref)
-			Scheduler().add_new_object(Callback(check_target_ref, target_ref), self, 3)
 		self._target = None
 
 	def stop_attack(self):
