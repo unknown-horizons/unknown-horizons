@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Build a warehouse at the coast, so it is easily accessible for other ships like the Free Trader.']
+  - [Message, 'Постройте на побережье склад, так чтобы он был доступен для других кораблей, например, Свободного Торговца.']
   - '
 
 
@@ -18,20 +18,20 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gfx/uh.png]
   - [Pagebreak]
-  - [Headline, Добро пожаловать в Неизведанные Горизонты!]
+  - [Headline, Добро пожаловать к Неизведанным Горизонтам!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
 
     '
-  - Это Ваш Капитанский журнал, где будет хранится вся важная информация. Краткое описание каждой задачи будет предоставлено в левой части экрана.
-  - Если Вы заинтересованы в более подробном описании, ваш журнал предоставит необходимую помощь.
-  - После закрытия этого журнала, он может быть вновь открыт иконкой "Журнал Капитана"  в правом верхнем углу (под мини-картой, в виде запечатаного документа и пера).
+  - Это Ваш капитанский журнал, где записывается вся важная информация. Краткое описание каждой задачи будет представлено в левой части экрана.
+  - Журнал наверняка поможет Вам, если потребуется более подробная информация.
+  - Закрытый журнал может быть вновь открыт с помощью значка "Капитанский журнал" в правом верхнем углу (под мини-картой, в виде бумаги с печатью и пера).
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Чтобы увидеть Вашу первую задачу, нажмите на кнопку "Read next entries" на навигационной панели! Это выглядит примерно так:'
+    Нажмите кнопку "Читать следующую запись" на навигационной панели, чтобы увидеть Ваше первое задание! Она выглядит так:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -41,53 +41,51 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Посетите www.unknown-horizons.org для помощи в связи с командой!'
-  - А теперь давайте начнём игру.
+  - А теперь начнём саму игру.
   - [Pagebreak]
-  - [Headline, КОЛОНИЗИРОВАТЬ ОСТРОВ]
+  - [Headline, ОБОСНОВАТЬСЯ НА ОСТРОВЕ]
   - [Image, content/gui/images/background/hr.png]
-  - Для передвижения корабля, выберите его левой кнопкой мыши и правой укажите куда ему направиться.
-  - Когда вы у побережья, кнопка-якорь в информационной вкладке станет активна.
+  - Чтобы переместить корабль, выберите его левой кнопкой мыши, а затем правой кнопкой укажите, куда ему направиться.
+  - Когда Вы достигнете побережья, кнопка в виде якоря на информационной вкладке станет активна.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Этот индикатор показывает возможность создать здесь склад, нажав эту кнопку ('Построить колонию').
-  - Теперь выберете место для здания, двигая курсором по окрестностям.
-  - 'Можно построить здание в любом месте кроме тех, где картинка затеняется красным.
+  - Это указывает на возможность построить здесь склад, нажав данную кнопку ("Построить колонию").
+  - Теперь Вы сможете определить место для постройки, перемещая курсор.
+  - 'Строить можно на любом участке, где изображение не становится красным.
 
-    Щёлкни там, где нужно расположить твою первую постройку.'
-  - '
-
-    Задача: Постройте контору на побережье.'
+    Щёлкните мышью там, где хотите расположить первую постройку.'
+  - ''
+  - [BoldLabel, 'Task: Build a warehouse at the coast.']
 
 - &LUMBERJACK
-  - [Message, Постройте лесопилку и соедините её с конторой при помощи тропы.]
-  - [Headline, СТРОИТЕЛЬСТВО ЛЕСОПИЛКИ]
+  - [Message, Разбейте палатку лесоруба и соедините её со складом тропой.]
+  - [Headline, РАЗБИТЬ ПАЛАТКУ ЛЕСОРУБА]
   - [Image, content/gui/images/background/hr.png]
   - Стройматериалы были выгружены из твоего корабля. Можно построить основные здания.
-  - Начнём со строительства лесопилки.
-  - Это очень важно, потому что на данном этапе, лес является единственным материалом который ваши моряки могут позволить себе, чтобы установить опоры для палаток и тентов.
-  - The fisherman needs some boards to build his vessel as well.
-  - In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.
+  - Начнём с палатки лесоруба.
+  - Это очень важно, поскольку на текущем этапе доски - единственная доступная Вашим морякам опора для установки палаток.
+  - Рыбаку также потребуются доски, чтобы построить лодку.
+  - Чтобы разбить палатки лесорубов, откройте меню строительства, нажав на большой значок под мини-картой или используя клавишу B (латинское).
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The build menu is sorted by tiers.
-  - You are currently in the first tier (the Sailors level) so are offered only the basic buildings.
+  - Меню строительства разбито на уровни.
+  - Сейчас Вы находитесь на первом уровне развития (уровень Моряков), так что Вам доступны лишь простейшие постройки.
   - [Pagebreak]
   - '
 
-    As your civilization advances, you also gain more and more complex buildings.'
-  - For now, select the lumberjack under 'Companies' and build it in an area with some trees around.
-  - You can also plant trees later - but that costs money. Use what nature provided you with!
-  - A company always needs a trail connection to a storage or warehouse, otherwise goods will remain at the company and not be collected.
-  - This means that you have to build a trail connecting your warehouse (or storage) and lumberjack.
-  - '
-
-    TASK: Build a lumberjack in a wooded area and connect it to a road.'
-  - Watch how a collector will fetch your first self-produced boards. Don't worry about recruiting workers for the lumberjack. That happens automatically.
+    По мере развития Вашей цивилизации станут доступны всё более сложные постройки.'
+  - А теперь выберите палатку лесоруба в разделе "Предприятия" и расположите её в лесистой местности.
+  - Позже Вы также сможете сажать деревья - но это будет стоить денег. Пользуйтесь тем, что дала нам природа!
+  - Любое предприятие следует соединять тропой со складом или сараем, иначе произведённые товары нельзя будет забрать, и они останутся на месте.
+  - Это значит, что Вам нужно проложить тропу от склада (или сарая) до палатки лесоруба.
+  - ''
+  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
+  - Посмотрите, как носильщик забирает первые произведённые Вашими лесорубами доски. Не беспокойтесь о найме лесорубов - они отправятся в палатку автоматически.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Построить здания охотника и рыбака. Соединить их тропами с конторой.]
+  - [Message, Постройте палатки для охотника и рыбака. Соедините их со складом тропами.]
   - [Headline, ОБЕСПЕЧЕНИЕ ПРОДОВОЛЬСТВИЕМ]
   - [Image, content/gui/images/background/hr.png]
   - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
@@ -103,9 +101,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - He will build a small rowing vessel and catch some fish.
   - This is a very constant supply at the cost of a slightly longer production time per unit of food.
   - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
-  - '
-
-    TASK: Build a hunter and a fisher.'
+  - ''
+  - [BoldLabel, 'Task: Build a hunter and a fisher.']
   - Don't forget to connect them to your warehouse with trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -115,15 +112,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, ГЛАВНАЯ ПЛОЩАДЬ]
   - [Image, content/gui/images/background/hr.png]
   - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the main square.
+  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
   - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
-  - '
-
-    TASK: Build a main square.'
+  - ''
+  - [BoldLabel, 'Task: Build a main square.']
   - [Pagebreak]
   - '
 
@@ -138,7 +134,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
 
 - &FIRSTTENT
-  - [Message, Построить палатку и соединить её тропой с главной площадью.]
+  - [Message, Build a tent and connect it to the main square if necessary.]
   - [Headline, ЖИЛЫЕ ПОСТРОЙКИ]
   - [Image, content/gui/images/background/hr.png]
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
@@ -148,9 +144,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
   - Consider to disable the upgrade if your stock of these materials is low.
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
-  - '
-
-    TASK: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.'
+  - ''
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Постройте по крайней мере три дополнительных палатки и соедините их тропами с главной площадью.]
@@ -167,9 +162,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - If their demands are fulfilled, happiness and thus your tax income increase.
   - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
   - Note that you can also change the global tax settings here, too.
-  - '
-
-    TASK: Build at least three additional tents.'
+  - ''
+  - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
     TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
@@ -196,9 +190,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - At the 'sailors' tier, you are equipped with three trading slots.
   - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
   - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
-  - '
-
-    Постройте сигнальный огонь на побережье, рядом с вашей конторой.'
+  - ''
+  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
   - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
@@ -224,9 +217,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     It is NOT possible to change prices manually!'
   - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
-  - '
-
-    TASK: Buy as many tools as you need to have 30 tools in stock!'
+  - ''
+  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -250,9 +242,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     It is NOT enough that the building is merely within a certain range of the tents.
 
     The road connection is required as well.'
-  - '
-
-    TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.'
+  - ''
+  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -272,9 +263,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
   - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
-  - '
-
-    TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.'
+  - ''
+  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -298,9 +288,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
-  - '
-
-    TASK: Build a farm.'
+  - ''
+  - [BoldLabel, 'Task: Build a farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -326,9 +315,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.
   - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
   - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
-  - '
-
-    TASK: Build at least one pasture in the farm''s range and add potato fields if you like.'
+  - ''
+  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -357,9 +345,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * sends its own collectors to fetch goods, just like the warehouse does.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
-  - '
-
-    TASK: Build a storage tent, preferably where you need collectors.'
+  - ''
+  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -371,9 +358,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
   - In both cases you should ensure the connection to a trail as well.
   - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
-  - '
-
-    TASK: Build a weaver positioned so it can get wool.'
+  - ''
+  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -384,9 +370,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
   - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
   - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
-  - '
-
-    TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.'
+  - ''
+  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -415,7 +400,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     UH-Team'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)
@@ -673,8 +658,8 @@ metadata:
   description: 'The tutorial:
 
     Build your first settlement and learn how to play!'
-  difficulty: Руководство
+  difficulty: Обучение
   locale: ru
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 48 translated messages, 5 fuzzy translations, 138 untranslated messages.
+  translation_status: 59 translated messages, 10 fuzzy translations, 122 untranslated messages.
