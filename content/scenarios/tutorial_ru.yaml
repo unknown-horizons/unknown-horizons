@@ -88,22 +88,22 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Постройте палатки для охотника и рыбака. Соедините их со складом тропами.]
   - [Headline, ОБЕСПЕЧЕНИЕ ПРОДОВОЛЬСТВИЕМ]
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter and Fisher.
+  - Также Вам нужны некоторые пищевые производства, так как люди вообще (и особенно моряки) очень прожорливы.
+  - Производства, доступные на первом уровне развития - Охотник и Рыболов.
   - The Hunter hunts animals in the forest, thus needs trees nearby.
   - Note that you can place your Hunter close to the lumberjack's forest.
   - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the hunter is not too reliable if you need continuous supply.'
+  - 'Вывод: охота - не надёжный источник пищи, если нужно бесперебойное снабжение продуктами питания.'
   - [Pagebreak]
   - '
 
     The Fisher needs a coastal building site like the warehouse and a fish school in range.'
-  - He will build a small rowing vessel and catch some fish.
+  - Он построит небольшой гребное судно, и наловит рыбы.
   - This is a very constant supply at the cost of a slightly longer production time per unit of food.
   - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
   - ''
   - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Don't forget to connect them to your warehouse with trails!
+  - Не забудьте соединить их тропинками с конторой!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -123,7 +123,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the main square.'
+    Давайте теперь внимательнее посмотрим на главную площадь.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
@@ -249,7 +249,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &NEXTTIER
   - [Message, 'Установите низкий уровень налогов (крайнее левое положение) и ждите, пока моряки продвинутся на следующую ступень развития.']
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Headline, 'НОВОЕ ЗАДАНИЕ: СЛЕДУЮЩИЙ УРОВЕНЬ РАЗВИТИЯ']
   - [Image, content/gui/images/background/hr.png]
   - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
   - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
@@ -662,4 +662,4 @@ metadata:
   locale: ru
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 59 translated messages, 10 fuzzy translations, 122 untranslated messages.
+  translation_status: 73 translated messages, 21 fuzzy translations, 97 untranslated messages.
