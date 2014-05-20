@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-20 18:23+0200\n"
-"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
+"PO-Revision-Date: 2014-05-20 18:26+0200\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -3847,7 +3847,7 @@ msgstr "Одному из полей требуется ферма для сбо
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "грубые камни"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
@@ -3867,7 +3867,7 @@ msgstr "образование"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "хлопок"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3890,10 +3890,9 @@ msgid "cannon"
 msgstr "пушки"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Жители этого здания заболели чумой."
+msgstr "Жители этого здания заболели черной смертью."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
