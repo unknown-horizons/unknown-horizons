@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-10 13:11+0200\n"
+"PO-Revision-Date: 2014-05-20 17:37+0200\n"
 "Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -140,28 +140,28 @@ msgid "Inhabitants"
 msgstr "Жители"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Увеличить скорость игры (+)"
+msgstr "Увеличить скорость игры ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Уменьшить скорость игры (-)"
+msgstr "Уменьшить скорость игры ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Повернуть карту против часовой (,)"
+msgstr "Повернуть карту против часовой ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Повернуть карту по часовой (.)"
+msgstr "Повернуть карту по часовой ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -344,7 +344,7 @@ msgstr "Налог:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "Налог"
+msgstr "Ставка налога"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
