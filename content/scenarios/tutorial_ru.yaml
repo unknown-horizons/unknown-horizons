@@ -142,8 +142,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/003_h.png]
   - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
   - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
-  - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
+  - Рассмотрите вариант отключения повышения уровня, если на складах недостаточно материалов.
+  - Поселенцы могут выглядеть не очень полезными, так как они будут пытаться употребить все товары, которые Вы производите, но они по крайней мере платят налоги, и это возможно единственный способ заработать деньги сейчас!
   - ''
   - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
 
@@ -151,14 +151,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Постройте по крайней мере три дополнительных палатки и соедините их тропами с главной площадью.]
   - '
 
-    Let''s have a look at the tent overview tab.'
-  - 'You can see
+    Давайте посмотрим на вкладку жилья.'
+  - 'Вы можете увидеть
 
-    * the happiness of these residents,
+    * Счастье этих жителей,
 
-    * the taxes they pay and
+    * Сборы, которые они платят и
 
-    * the resources they demand.'
+    * Ресурсы, которые они требуют.'
   - If their demands are fulfilled, happiness and thus your tax income increase.
   - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
   - Note that you can also change the global tax settings here, too.
@@ -655,11 +655,11 @@ events:
 
 metadata:
   author: The UH team
-  description: 'The tutorial:
+  description: 'Руководство:
 
-    Build your first settlement and learn how to play!'
+    Постройте своё первое поселение и научитесь играть!'
   difficulty: Обучение
   locale: ru
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 73 translated messages, 21 fuzzy translations, 97 untranslated messages.
+  translation_status: 79 translated messages, 20 fuzzy translations, 92 untranslated messages.

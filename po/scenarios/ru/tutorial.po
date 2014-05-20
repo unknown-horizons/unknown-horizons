@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-05-18 18:50+0200\n"
+"PO-Revision-Date: 2014-05-20 17:24+0200\n"
 "Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/tutorial/ru/>"
 "\n"
@@ -24,7 +24,6 @@ msgid "Tutorial"
 msgstr "Обучение"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
@@ -485,6 +484,8 @@ msgstr ""
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"Рассмотрите вариант отключения повышения уровня, если на складах "
+"недостаточно материалов."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -492,12 +493,17 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Поселенцы могут выглядеть не очень полезными, так как они будут пытаться "
+"употребить все товары, которые Вы производите, но они по крайней мере платят "
+"налоги, и это возможно единственный способ заработать деньги сейчас!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
+"Задание: Постройте палатку и подключите её к главной площади. Палатки не "
+"обязательно подключать к производствам."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -511,6 +517,8 @@ msgid ""
 "\n"
 "Let's have a look at the tent overview tab."
 msgstr ""
+"\n"
+"Давайте посмотрим на вкладку жилья."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -519,6 +527,10 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Вы можете увидеть\n"
+"* Счастье этих жителей,\n"
+"* Сборы, которые они платят и\n"
+"* Ресурсы, которые они требуют."
 
 #. This is the text body of a logbook page.
 msgid ""
