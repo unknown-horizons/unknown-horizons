@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-20 17:41+0200\n"
-"Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
+"PO-Revision-Date: 2014-05-20 17:43+0200\n"
+"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -424,9 +424,11 @@ msgid "Resource deposit"
 msgstr "Месторождение ресурсов"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
+#, fuzzy
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr "Это месторождение ресурсов, постройте шахту для добычи ресурсов."
+msgstr ""
+"Это месторождение ресурсов, где Вы можете построить шахту для их добычи."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
