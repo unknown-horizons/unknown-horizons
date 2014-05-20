@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-20 17:37+0200\n"
-"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"PO-Revision-Date: 2014-05-20 17:41+0200\n"
+"Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -371,7 +371,7 @@ msgstr "испытывает счастье"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "Количество домов с этим видом счастья"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -379,7 +379,7 @@ msgstr "Жителей на дом"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr ""
+msgstr "Среднее количество жильцов в доме"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
@@ -387,7 +387,7 @@ msgstr "Дома с таким же количеством жильцов"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr "Резюме"
+msgstr "Сводка"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
