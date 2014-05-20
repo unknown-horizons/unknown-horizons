@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-20 18:29+0200\n"
-"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"PO-Revision-Date: 2014-05-20 18:32+0200\n"
+"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -723,7 +723,7 @@ msgstr "Территория"
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
-msgstr "Количество пригодной для застройки земли."
+msgstr "Количество пригодной для застройки земли"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -1162,7 +1162,7 @@ msgstr "Создать новую игру"
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Присоединиться к игре"
+msgstr "Присоединиться к игре:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1796,7 +1796,7 @@ msgid ""
 "{own_version}"
 msgstr ""
 "Версия игры на хосте ({game_version}) отличается от вашей ({own_version}). "
-"Все игроки в сетевой игре должны использовать одинаковые версии."
+"Все игроки в сетевой игре должны использовать одинаковые версии"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
