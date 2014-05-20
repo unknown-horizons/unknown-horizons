@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
 "PO-Revision-Date: 2014-05-20 18:13+0200\n"
-"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -3536,7 +3536,7 @@ msgstr "деревья"
 #. This is a database entry: the name of a resource
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "Месторождение мрамора"
+msgstr "месторождение мрамора"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
