@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-20 18:04+0200\n"
-"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"PO-Revision-Date: 2014-05-20 18:05+0200\n"
+"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -2247,7 +2247,7 @@ msgstr "Улучшения невозможны:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr "Это самый высокий уровень на сегодня"
+msgstr "Это самый высокий уровень на сегодня!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
@@ -2768,10 +2768,9 @@ msgstr "Снабжает жителей товарами, служит мест�
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Железный рудник"
+msgstr "Рудник"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
