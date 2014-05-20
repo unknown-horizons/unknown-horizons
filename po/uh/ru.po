@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-20 17:59+0200\n"
-"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
+"PO-Revision-Date: 2014-05-20 18:04+0200\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -1672,7 +1672,7 @@ msgstr "Активация таймера..."
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Загружаем данные игры…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 #, fuzzy
@@ -1686,7 +1686,7 @@ msgstr "Подготовка чертежей..."
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Заполняем мир водой…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 #, fuzzy
@@ -1695,11 +1695,11 @@ msgstr "Выращивание животных..."
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Создание ИИ…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Закапывание сокровищ…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -1825,10 +1825,9 @@ msgid "Not ready"
 msgstr "Не готов"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Введите ваше сообщение:"
+msgstr "Введите ваше сообщение"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -1930,9 +1929,9 @@ msgid "A savegame with the name {name} already exists."
 msgstr "Сохраненная игра под именем '{name}' уже существует."
 
 #: horizons/gui/modules/select_savegame.py:151
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "Сохраненная игра под именем '{name}' уже существует."
+msgstr "Карта под именем '{name}' уже существует."
 
 #: horizons/gui/modules/select_savegame.py:153
 msgid "Overwrite it?"
@@ -2248,7 +2247,7 @@ msgstr "Улучшения невозможны:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Это самый высокий уровень на сегодня"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
