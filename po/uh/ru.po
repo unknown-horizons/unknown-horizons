@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-20 17:55+0200\n"
-"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"PO-Revision-Date: 2014-05-20 17:56+0200\n"
+"Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -1631,7 +1631,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Постройте складские палатки, чтобы увеличить емкость основного склада."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
