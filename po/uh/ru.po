@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-20 18:32+0200\n"
-"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
+"PO-Revision-Date: 2014-05-21 23:54+0200\n"
+"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -104,7 +104,7 @@ msgstr "Выберите тип местности:"
 
 #: content/gui/xml/editor/editor_settings.xml:35
 msgid "(right click to stop)"
-msgstr "(Правый клик чтобы остановить)"
+msgstr "(Правый клик, чтобы остановить)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -112,15 +112,15 @@ msgstr "Начать игру"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Вы дожны основать поселение, чтобы строить здания!"
+msgstr "Вы должны основать поселение, чтобы строить здания!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Выберите ваш корабль и нажмите правой кнопкой мыши у берега."
+msgstr "Выберите ваш корабль и щёлкните правой кнопкой мыши у берега."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Затем нажмти большую кнопку на вкладке обзора корабля."
+msgstr "Затем нажмите большую кнопку в разделе обзора корабля."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -128,11 +128,11 @@ msgstr "Строить"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "Эксплуатационные расходы:"
+msgstr "Текущие расходы:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr "Связанные здания"
+msgstr "Связанные постройки"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
@@ -172,22 +172,22 @@ msgid "Zoom out"
 msgstr "Отдалить"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Разрушить (X)"
+msgstr "Уничтожить ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Журнал капитана (L)"
+msgstr "Судовой журнал ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Стройка (B)"
+msgstr "Строительство ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
@@ -205,7 +205,7 @@ msgstr "Сменить имя"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
 msgid "Old name:"
-msgstr "Старое название:"
+msgstr "Старое имя:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
@@ -245,7 +245,7 @@ msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Для строительства судна, выберите нужный тип корабля и подтвердите "
+"Чтобы построить судно, выберите нужный тип корабля и подтвердите "
 "строительство."
 
 #. Information about the ship currently under construction at the boat
@@ -315,7 +315,7 @@ msgstr "Обзор строения"
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr "Использование производственных мощностей"
+msgstr "Использование мощностей"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -337,7 +337,7 @@ msgstr "Уплаченных налогов"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
 msgid "Taxes:"
-msgstr "Налог:"
+msgstr "Налоги:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
@@ -495,7 +495,7 @@ msgstr "Основать поселение"
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr "Настроить торговый путь"
+msgstr "Проложить торговый путь"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -537,7 +537,7 @@ msgstr "Доходы:"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:615
 msgid "Taxes"
-msgstr "Налог"
+msgstr "Налоги"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Sale"
@@ -583,12 +583,11 @@ msgstr ""
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
-"Сохранить текущую конфигурацию ресурсов по умолчанию для всех населенных "
-"пунктов."
+"Сохранить текущую конфигурацию ресурсов по умолчанию для всех поселений."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Сброс конфигурации ресурсов по умолчанию для всех населенных пунктов."
+msgstr "Сброс конфигурации ресурсов по умолчанию для всех поселений."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -612,12 +611,12 @@ msgstr "Выберите ресурсы:"
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
-msgstr "Предыдущие записи"
+msgstr "Предыдущая запись"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
-msgstr "Читать следующую запись"
+msgstr "Следующая запись"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
@@ -653,7 +652,7 @@ msgstr "Все"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "Послать сообщение всем игрокам."
+msgstr "Отправить сообщение всем игрокам."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -757,8 +756,8 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
-"Значение обозначающие прогресс заселения(ний) с точки зрения жителей, здания "
-"и общего эмоционального состояния"
+"Величина, обозначающая развитие поселения(-ний) с точки зрения жителей, "
+"зданий и общего настроения"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -766,7 +765,7 @@ msgstr "Юниты"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "Стоимость всех единиц принадлежащих игроку"
+msgstr "Стоимость всех юнитов, принадлежащих игроку"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
@@ -840,7 +839,7 @@ msgstr "Выберите карту:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr "Выберите сохраненную карту:"
+msgstr "Выберите сохранённую карту:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
@@ -912,7 +911,7 @@ msgstr "Вызвать меню строительства"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Enable destruct mode"
-msgstr "Уничтожение объекта"
+msgstr "Включить режим уничтожения"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
@@ -920,7 +919,7 @@ msgstr "Вкл. режим строительства дорог"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr "Разрешить режим пипетки(клонирование зданий)"
+msgstr "Включить режим пипетки(клонирование зданий)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -964,7 +963,7 @@ msgstr "Фокус камеры на выделенном объекте"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
-msgstr "Удалить выделенные единицы/сооружения"
+msgstr "Удалить выделенные юниты/сооружения"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
@@ -1287,11 +1286,11 @@ msgstr "Основные"
 
 #: content/gui/xml/mainmenu/settings.xml:169
 msgid "Rotate minimap with map:"
-msgstr "Вращать миникарту вместе с картой:"
+msgstr "Вращать мини-карту вместе с картой:"
 
 #: content/gui/xml/mainmenu/settings.xml:169
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Вращать миникарту, если вращается основная"
+msgstr "Вращать мини-карту, если вращается основная"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
@@ -1543,7 +1542,7 @@ msgstr "Если ошибка повторится, сообщите разра�
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Вы уверены, что хотите покинуть Неизведанные Горизонты?"
+msgstr "Вы действительно хотите покинуть Неизведанные Горизонты?"
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
@@ -1551,11 +1550,11 @@ msgstr "Выйти из игры"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
-msgstr "Дипломатия не возможна"
+msgstr "Дипломатия невозможна"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "Дипломатия не возможна, т.к. нет здесь других игроков."
+msgstr "Дипломатия невозможна, т.к. других игроков нет."
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1592,54 +1591,56 @@ msgstr "Советы по игре"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Нажмите 'ESC' чтобы выйти в меню."
+msgstr "Нажмите \"ESC\", чтобы выйти в меню."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Используйте 'SHIFT' чтобы разместить несколько зданий."
+msgstr "Используйте \"SHIFT\", чтобы построить несколько зданий."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "На данный момент максимальный уровень развития: {tier}."
+msgstr "Пока максимальный уровень развития - {tier}."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr "Вы можете поставить на паузу нажав 'P'."
+msgstr "Вы можете приостановить игру, нажав 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr "Вы можете перетаскивать дороги удерживая левую кнопку мыши."
+msgstr "Вы можете прокладывать дороги, удерживая левую кнопку мыши."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr "Вы можете построить несколько зданий подряд нажав 'SHIFT'."
+msgstr "Вы можете построить несколько зданий подряд, удерживая \"SHIFT\"."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr "Вы можете осчастливить своих поселенцев снизив налоги."
+msgstr "Снижение налогов сделает Ваших жителей счастливее."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
-"Стройте пожарные посты и палатки докторов чтобы уберечь ваших поселенцев от "
-"пожара и болезней."
+"Стройте пожарные посты и больницы, чтобы уберечь жителей от пожаров и "
+"болезней."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Постройте складские палатки, чтобы увеличить емкость основного склада."
+msgstr "Стройте хранилища, чтобы складировать больше товаров."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
-msgstr "Убедитесь что каждый дом находится в области действия рынка."
+msgstr ""
+"Убедитесь, что все дома находятся в пределах досягаемости центральной "
+"площади."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
-msgstr "Нажмите 'T' чтобы сделать деревья прозрачными."
+msgstr "Нажмите \"T\", чтобы деревья стали прозрачными."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -1672,12 +1673,11 @@ msgstr "Активация таймера..."
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr "Загружаем данные игры…"
+msgstr "Загрузка игровых данных…"
 
 #: horizons/gui/modules/loadingscreen.py:105
-#, fuzzy
 msgid "Shaping islands…"
-msgstr "Формирование островов..."
+msgstr "Формирование островов…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 #, fuzzy
@@ -1686,7 +1686,7 @@ msgstr "Подготовка чертежей..."
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr "Заполняем мир водой…"
+msgstr "Заполнение мира водой…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 #, fuzzy
@@ -1748,8 +1748,8 @@ msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Если Ваше соединение с Интернетом в порядке (проверьте!), возможно наш "
-"master сервер временно не доступен."
+"Если Ваше интернет-соединение в порядке (проверьте!), возможно наш master "
+"сервер временно не доступен."
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
@@ -1832,7 +1832,7 @@ msgstr "Введите ваше сообщение"
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
 msgid "Click here to change your name and/or color"
-msgstr "Нажмите чтобы изменить имя и/или цвет"
+msgstr "Щёлкните, чтобы изменить имя и/или цвет"
 
 #: horizons/gui/modules/multiplayermenu.py:504
 #, python-brace-format
