@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
 "PO-Revision-Date: 2014-05-22 17:36+0200\n"
-"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh-server/ru/>"
 "\n"
 "Language: ru\n"
@@ -82,7 +82,7 @@ msgstr "В игре уже есть игрок с Вашим цветом."
 
 #: horizons/network/server.py:429
 msgid "Please change your color."
-msgstr "Пожалуйста, смените ваш цвет."
+msgstr "Пожалуйста, смените Ваш цвет."
 
 #: horizons/network/server.py:432
 msgid ""
