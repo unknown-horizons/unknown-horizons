@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2014-05-10 13:05+0200\n"
+"PO-Revision-Date: 2014-05-22 17:34+0200\n"
 "Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh-server/ru/>"
 "\n"
@@ -27,15 +27,17 @@ msgstr ""
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Вы превысили общий размер пакета."
 
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Этого не должно было случиться. Пожалуйста свяжитесь с нами или отправьте "
+"баг-репорт."
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Вы превысили размер пакета."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
@@ -68,7 +70,7 @@ msgstr "Неправильный пароль"
 
 #: horizons/network/server.py:424 horizons/network/server.py:534
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "В игре уже есть игрок с этим именем."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
