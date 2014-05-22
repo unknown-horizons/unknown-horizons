@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-21 23:54+0200\n"
+"PO-Revision-Date: 2014-05-22 15:41+0200\n"
 "Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -194,10 +194,10 @@ msgid "Diplomacy"
 msgstr "Дипломатия"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Меню (Esc)"
+msgstr "Главное меню ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
