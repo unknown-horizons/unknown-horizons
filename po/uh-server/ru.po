@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2014-05-22 17:34+0200\n"
-"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
+"PO-Revision-Date: 2014-05-22 17:35+0200\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh-server/ru/>"
 "\n"
 "Language: ru\n"
@@ -74,7 +74,7 @@ msgstr "В игре уже есть игрок с таким именем."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
-msgstr ""
+msgstr "Пожалуйста, сменить ваше имя."
 
 #: horizons/network/server.py:428 horizons/network/server.py:562
 msgid "There's already a player with your color inside this game."
