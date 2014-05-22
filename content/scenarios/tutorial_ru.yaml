@@ -657,7 +657,7 @@ metadata:
   author: The UH team
   description: 'Обучение:
 
-    Заложите своё первое поселение и освойте правила игры.'
+    Заложите своё первое поселение и освойте правила игры!'
   difficulty: Обучение
   locale: ru
   mapfile: development.sqlite
