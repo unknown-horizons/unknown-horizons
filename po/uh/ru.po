@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-22 15:52+0200\n"
-"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
+"PO-Revision-Date: 2014-05-22 16:44+0200\n"
+"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -194,7 +194,7 @@ msgid "Diplomacy"
 msgstr "Дипломатия"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
 msgstr "Главное меню ({key})"
@@ -424,7 +424,6 @@ msgid "Resource deposit"
 msgstr "Месторождение ресурсов"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
-#, fuzzy
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
@@ -656,9 +655,8 @@ msgstr "Отправить сообщение всем игрокам."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Введите ваше сообщение:"
+msgstr "Введите Ваше сообщение здесь"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -1071,9 +1069,8 @@ msgstr "Название игры:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
-#, fuzzy
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "Это будет показано другим игрокам, чтобы они подтвердили игру."
+msgstr "Это будет показано другим игрокам, чтобы они опознали игру."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
@@ -1082,9 +1079,8 @@ msgstr "Безымянная игра"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
-#, fuzzy
 msgid "Password of the game:"
-msgstr "Пароль"
+msgstr "Пароль игры:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
@@ -1433,7 +1429,6 @@ msgid "Seed:"
 msgstr "Источник:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
-#, fuzzy
 msgid "Select a language:"
 msgstr "Выберите язык:"
 
@@ -1630,7 +1625,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Стройте хранилища, чтобы складировать больше товаров."
+msgstr "Постройте складские палатки, чтобы увеличить общую емкость хранения."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
@@ -1652,24 +1647,20 @@ msgstr "Вперемешку"
 #. translators: these are descriptions of the current task while loading a
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
-#, fuzzy
 msgid "Starting engine…"
-msgstr "Запуск движка..."
+msgstr "Запуск движка…"
 
 #: horizons/gui/modules/loadingscreen.py:101
-#, fuzzy
 msgid "Catching fish…"
-msgstr "Ловля рыбы..."
+msgstr "Ловля рыбы…"
 
 #: horizons/gui/modules/loadingscreen.py:102
-#, fuzzy
 msgid "Drawing user interface…"
-msgstr "Обрисовка интерфейса..."
+msgstr "Отрисовка интерфейса…"
 
 #: horizons/gui/modules/loadingscreen.py:103
-#, fuzzy
 msgid "Activating timer…"
-msgstr "Активация таймера..."
+msgstr "Активация таймера…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
@@ -1680,18 +1671,16 @@ msgid "Shaping islands…"
 msgstr "Формирование островов…"
 
 #: horizons/gui/modules/loadingscreen.py:106
-#, fuzzy
 msgid "Preparing blueprints…"
-msgstr "Подготовка чертежей..."
+msgstr "Подготовка чертежей…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
 msgstr "Заполнение мира водой…"
 
 #: horizons/gui/modules/loadingscreen.py:108
-#, fuzzy
 msgid "Raising animals…"
-msgstr "Выращивание животных..."
+msgstr "Выращивание животных…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
@@ -1819,7 +1808,6 @@ msgid "Ready"
 msgstr "Готов"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#, fuzzy
 #| msgid "Not Ready"
 msgid "Not ready"
 msgstr "Не готов"
@@ -1924,9 +1912,9 @@ msgid "Please enter a valid filename."
 msgstr "Введите правильное имя файла."
 
 #: horizons/gui/modules/select_savegame.py:149
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Сохраненная игра под именем '{name}' уже существует."
+msgstr "Сохраненная игра с именем '{name}' уже существует."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
@@ -2005,7 +1993,7 @@ msgstr "Игра"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Отключено"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -3203,12 +3191,12 @@ msgstr ""
 "возможным"
 
 #: horizons/mpsession.py:103
-#, fuzzy
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
-"Имя файла должно состоять только из латинских букв, цифр, пробелов и _.-"
+"В имени файла можно использовать только латинские буквы, цифры, пробелы и "
+"знаки: _.-"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
@@ -3356,7 +3344,7 @@ msgstr "Это здание должно быть частично постро�
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Жители заражены Чёрной Смерью!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3462,10 +3450,9 @@ msgid "gems"
 msgstr "драгоценные камни"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "месторождение железа"
+msgstr "месторождение соли"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
@@ -3489,20 +3476,18 @@ msgid "stone tops"
 msgstr "каменные плиты"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "какао-бобы"
+msgstr "кофейные зёрна"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "шерсть"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "листья табака"
+msgstr "чайные листья"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
