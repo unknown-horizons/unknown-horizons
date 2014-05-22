@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-22 16:45+0200\n"
+"PO-Revision-Date: 2014-05-22 16:50+0200\n"
 "Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -70,7 +70,7 @@ msgstr "Вернуться к редактору"
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 msgid "Save map"
-msgstr "Сохранение карты"
+msgstr "Сохранить карту"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
@@ -357,7 +357,7 @@ msgstr "Счастья на дом"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
 msgid "sad"
-msgstr "унылый"
+msgstr "уныл"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
@@ -408,7 +408,7 @@ msgstr "Продажа"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
 msgid "Buying"
-msgstr "Покупка"
+msgstr "Закупки"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
@@ -461,8 +461,8 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Сигнальный огонь - показывает свободному торговцу как добраться до вашего "
-"поселения если вы хотите торговать."
+"Сигнальный огонь - показывает вольному торговцу путь до Вашего поселения "
+"если Вы хотите торговать."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
@@ -575,8 +575,7 @@ msgstr "Выбрать ресурс:"
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr ""
-"Выбранный ресурс отображается вместо текущего. Опустошите нажатием на X."
+msgstr "Выбранный ресурс отображается вместо текущего. Очистить - клавиша X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
