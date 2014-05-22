@@ -395,7 +395,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Спасибо за прохождение обучения!
+    Спасибо, что прошли наше обучение!
 
 
     UH-Team'
@@ -655,9 +655,9 @@ events:
 
 metadata:
   author: The UH team
-  description: 'Руководство:
+  description: 'Обучение:
 
-    Постройте своё первое поселение и научитесь играть!'
+    Заложите своё первое поселение и освойте правила игры.'
   difficulty: Обучение
   locale: ru
   mapfile: development.sqlite
