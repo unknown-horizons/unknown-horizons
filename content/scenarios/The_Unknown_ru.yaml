@@ -22,67 +22,67 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20 Ноября 1740]
+  - [Headline, 20 ноября 1740]
   - [Image, content/gui/images/background/hr.png]
-  - После четырех дней, буря наконец утихает, и мы можем отдохнуть. Но у нас мало еды в запасе, и наш корабль в плачевном состоянии - навигационные приборы и морские карты потеряны.
-  - We have to come ashore soon. One of my jacks saw some birds hunting for fish, so land can't be far. Fortunately we always have some tools and boards onboard, so we can build some basic shelter.
-  - 'Task:
+  - На пятый день шторм, наконец, унялся, и мы можем передохнуть. Но наши запасы еды скудны, а корабль в плачевном состоянии. Навигационные приборы и карты были утеряны.
+  - Вскоре мы должны пристать к берегу. Один из матросов заметил птиц, ловящих рыбу, так что земля наверняка близко. К счастью, на борту остались инструменты и доски, и мы сможем соорудить простейшее пристанище.
+  - 'Задача:
 
-    Find land and build a port.'
+    Найти землю и обустроить гавань.'
   - [Pagebreak]
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 22nd November 1740]
+  - [Headline, 22 ноября 1740]
   - [Image, content/gui/images/background/hr.png]
-  - The port is built and a new hope arises. I am still worried about the next days… we are running out of food and lack basic building material.
-  - We need to secure our basic needs to keep us alive. It is time to send people gathering food and lumber so that we can survive and build some shelter.
-  - 'Task:
+  - Гавань построена, и вместе с ней появилась новая надежда. Но я всё же беспокоюсь за наше будущее… запасы еды подходят к концу, не хватает основных стройматериалов.
+  - Для выживания нам необходимо обеспечить свои первичные нужды. Пора отправлять людей за провизией и древесиной, чтобы прокормиться и обзавестись кровом.
+  - 'Задача:
 
-    Build at least one of each:
+    Разбить хотя бы по одной палатке для:
 
-    * Lumberjack
+    * Лесоруба
 
-    * Fisher
+    * Рыбака
 
-    * Hunter
+    * Охотника
 
-    Collect 5 food and 5 boards.'
+    Добыть 5 единиц провизии и 5 досок.'
   - [Pagebreak]
   - ''
 
 - &TENTS
-  - [Headline, 25th November 1740]
+  - [Headline, 25 ноября 1740]
   - [Image, content/gui/images/background/hr.png]
-  - We have secured our basic needs of food and gathered some wood to continue the growth of our new settlement. Our people demand a place to live and exchange goods for their everyday needs.
-  - It is time to build some tents to live in and a small main square to supply our citizens with goods.
-  - 'Task:
+  - Нам удалось добыть достаточно пищи и древесины, чтобы новое поселение продолжало расти. Людям нужно жилище и место для обмена необходимыми вещами.
+  - Пора разбить палатки для жилья и небольшую площадь для снабжения жителей товарами.
+  - 'Задача:
 
-    Build a main square and at least 10 tents.'
+    Заложить центральную площадь и разбить хотя бы 10 палаток.'
   - [Pagebreak]
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1st December 1740]
+  - [Headline, 1 декабря 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Finally we have enough to eat and a place to live again. My tent is not very comfortable but it keeps me dry and I have the feeling of having a roof over my head at night.
-  - 'I have been researching the stars at night, but without my sea charts and instruments their meaning remains unknown. I have the feeling we will be stuck here for a while, so we''ll have to make the best of situation.
+  - Наконец у нас достаточно еды и жилого места. Моя палатка не слишком удобна, но в ней хотя бы сухо и есть крыша над головой на время ночлега.
+  - 'Ночью я пробовал сориентироваться по звёздам, но без навигационных приборов и карт их положение ничего не дало мне. Чувствую, мы застряли тут на неопределённое время, так что придётся действовать по ситуации.
 
-    We can only try to to build up a civilisation and find a way home…'
-  - 'Task:
+    Нам остаётся лишь развивать свою цивилизацию и попытаться вернуться домой…'
+  - 'Задача:
 
-    Grow the village until you have at least 250 inhabitants and a positive balance.'
+    Развивать поселение, пока в нём не будет 250 жителей и положительного баланса.'
   - [Pagebreak]
   - ''
 
 - &WON
-  - [Headline, 27th August 1745]
+  - [Headline, 27 августа 1745]
   - [Image, content/gui/images/background/hr.png]
-  - Our village is doing well, the city has grown to over 250 inhabitants. I have started getting used to my new home, but this island is too small to stay here forever.
-  - We should load our ship and move out to find a bigger island offering room and resources for my people. I have created a basic navigational map again, using the stars I see at night. It is not perfect, but I hope it will suffice to return here.
-  - 'Task:
+  - Поселение процветает, в нашем городке уже более 250 жителей. Я начал привыкать к новому дому, но наш остров слишком мал, чтобы оставаться здесь навечно.
+  - Пришла пора снарядить наш корабль и отправиться на поиски большего острова, где найдётся место и ресурсы для моих людей. Ориентируясь по ночным звёздам, я составил простейшую навигационную карту. Она не безупречна, но надеюсь, с её помощью можно будет вернуться сюда.
+  - 'Задача:
 
-    Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how you can contribute to making this scenario longer and better!'
+    Свяжитесь с командой Неизведанных Горизонтов (www.unknown-horizons.org) и узнайте, как Вы можете помочь сделать игру лучше и длиннее!'
   - [Pagebreak]
   - ''
 
@@ -142,11 +142,11 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: '1740-й год. Вы капитан корабля под Английским флагом. Вместе с вашей командой Вы были на пути к Английской колонии в Тихом океане.
+  description: '1740 год. Вы - капитан корабля под флагом Англии, направлявшегося к одной из английских колоний в Тихом океане.
 
-    Всё шло хорошо, пока не начался шторм …'
+    Всё шло хорошо, пока корабль не попал в шторм…'
   difficulty: лёгкий
   locale: ru
   mapfile: development.sqlite
   original: content/scenarios/The_Unknown_en.yaml
-  translation_status: 4 translated messages, 18 untranslated messages.
+  translation_status: 22 translated messages.
