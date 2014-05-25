@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
 "PO-Revision-Date: 2014-05-25 21:18+0200\n"
-"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/voices/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +61,7 @@ msgstr "Нам сообщили, что один из противников о�
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr ""
+msgstr "Говорят, один из наших соперников расширяется."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
