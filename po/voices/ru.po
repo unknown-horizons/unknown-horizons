@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-05-25 21:08+0200\n"
-"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
+"PO-Revision-Date: 2014-05-25 21:09+0200\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/voices/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Этот клочок земли теперь наш."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
-msgstr ""
+msgstr "Другой игрок поселился на острове."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "A player develops a new settlement."
