@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-05-25 21:31+0200\n"
-"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
+"PO-Revision-Date: 2014-05-25 21:32+0200\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/voices/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -121,8 +121,8 @@ msgstr "Для этого строительства нужно больше р�
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
-msgstr ""
+msgstr "Строительство невозможно без необходимых материалов."
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
-msgstr ""
+msgstr "Ресурсов на вашем складе недостаточно, чтобы построить это."
