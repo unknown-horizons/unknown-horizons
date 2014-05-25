@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-05-22 12:54+0200\n"
-"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
+"PO-Revision-Date: 2014-05-25 22:13+0200\n"
+"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/tutorial/ru/>"
 "\n"
 "Language: ru\n"
@@ -214,8 +214,8 @@ msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area "
 "with some trees around."
 msgstr ""
-"А сейчас выберите палатку лесоруба в разделе 'Компании' и расположите её в "
-"лесистой местности."
+"А сейчас выберите палатку лесоруба в разделе \"Предприятия\" и расположите "
+"её в лесистой местности."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -509,9 +509,9 @@ msgid ""
 "* the resources they demand."
 msgstr ""
 "Вам доступны:\n"
-"*настроение её жителей,\n"
-"*уплачиваемые ими налоги\n"
-"*нужные им ресурсы."
+"* настроение её жителей,\n"
+"* уплачиваемые ими налоги,\n"
+"* нужные им ресурсы."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -754,7 +754,7 @@ msgstr "Установите шатёр с дорогой к палаткам."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "ВОЗВЕДЕНИЕ ШАТРА"
+msgstr "ВОЗВЕДЕНИЕ СВЯТИЛИЩА"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
@@ -803,8 +803,8 @@ msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(pavilion) to pick up faith there."
 msgstr ""
-"Это значит, жителям нужен прямой доступ к месту его производства (шатру), "
-"чтобы получить веру себе."
+"Это значит, жителям нужен прямой доступ к месту его производства (святилищу)"
+", чтобы получить веру себе."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -830,7 +830,7 @@ msgid ""
 "Task: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
-"Задача: Возведите шатёр и соедините его тропой с палатками, чтобы "
+"Задача: Возведите святилище и соедините его тропой с палатками, чтобы "
 "удовлетворить потребность моряков в вере."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -849,8 +849,9 @@ msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "main square & pavilion and your food supply is adequate."
 msgstr ""
-"Сейчас, если жители могут постоянно посещать центральную площадь и шатёр, а "
-"поступающей провизии достаточно, все их потребности удовлетворяются."
+"Сейчас, если жители могут постоянно посещать центральную площадь и "
+"святилище, а поступающей провизии достаточно, все их потребности "
+"удовлетворяются."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1069,8 +1070,7 @@ msgid ""
 "the field!) as it will be the only company to work on the goods."
 msgstr ""
 "Помните, что картофель является конечным продуктом, и для его распределения "
-"понадобится тропа, ведущая от склада или хранилища к ферме (а не к самому "
-"полю)."
+"понадобится дорога от склада или хранилища к ферме (а не к самому полю)."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1241,7 +1241,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "In both cases you should ensure the connection to a trail as well."
-msgstr "В обоих случаях следует также позаботиться о сообщении с тропой."
+msgstr "В обоих случаях следует также позаботиться о путевом сообщении."
 
 #. This is the text body of a logbook page.
 msgid ""
