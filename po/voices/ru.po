@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
 "PO-Revision-Date: 2014-05-25 21:29+0200\n"
-"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/voices/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,7 @@ msgstr "Наш союзник обживает один из наших остр
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr ""
+msgstr "Вам нужно больше ресурсов, для постройки этого."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
