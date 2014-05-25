@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2014-05-22 18:07+0200\n"
-"Last-Translator: Igor Afonkin <jdigreze@mail.ru>\n"
+"PO-Revision-Date: 2014-05-25 21:38+0200\n"
+"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh-server/ru/>"
 "\n"
 "Language: ru\n"
@@ -22,8 +22,8 @@ msgstr ""
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Старый или неподдерживаемый сетевой протокол. Пожалуйста, проверьте версию "
-"вашей игры"
+"Старый или неподдерживаемый сетевой протокол. Пожалуйста, проверьте Вашу "
+"версию игры"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
@@ -32,8 +32,8 @@ msgstr "Вы превысили общий размер пакета."
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Этого не должно было случиться. Пожалуйста свяжитесь с нами или отправьте "
-"баг-репорт."
+"Этого не должно было случиться. Пожалуйста, свяжитесь с нами или отправьте "
+"отчёт об ошибке."
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
@@ -42,7 +42,7 @@ msgstr "Вы превысили размер пакета."
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
-"Неизвестный или испорченый пакет. Пожалуйста, проверьте версию вашей игры"
+"Неизвестный или испорченный пакет. Пожалуйста, проверьте Вашу версию игры"
 
 #: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
@@ -58,7 +58,7 @@ msgstr "Неизвестная модификация или версия игр
 
 #: horizons/network/server.py:401
 msgid "Game has already started. No more joining"
-msgstr "Игра уже запущена. Больше подключиться нельзя"
+msgstr "Игра уже началась. Присоединиться больше нельзя"
 
 #: horizons/network/server.py:404
 msgid "Game is full"
@@ -74,7 +74,7 @@ msgstr "В игре уже есть игрок с таким именем."
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
-msgstr "Пожалуйста, сменить Ваше имя."
+msgstr "Пожалуйста, смените Ваше имя."
 
 #: horizons/network/server.py:428 horizons/network/server.py:562
 msgid "There's already a player with your color inside this game."
