@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-05-25 21:28+0200\n"
-"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"PO-Revision-Date: 2014-05-25 21:29+0200\n"
+"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/voices/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -109,7 +109,7 @@ msgstr "Теперь мы делим эту землю с нашим союзн�
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "Our ally settles on one of our islands."
-msgstr "Наш союзник поселяется на одном из наших островов."
+msgstr "Наш союзник обживает один из наших островов."
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
