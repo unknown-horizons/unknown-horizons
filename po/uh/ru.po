@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-22 17:17+0200\n"
-"Last-Translator: Anatoliy Nikolaev <nparadox@gmail.com>\n"
+"PO-Revision-Date: 2014-05-25 20:46+0200\n"
+"Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -20,23 +20,23 @@ msgstr ""
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "Сбой Unknown Horizons."
+msgstr "Сбой Неизведанных Горизонтов."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Мы очень сожалеем и хотим исправить ошибку, ставшую причиной этого."
+msgstr "Мы очень сожалеем и хотим исправить причину ошибки."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Для этого нам нужна информация из лог-файла:"
+msgstr "Для этого нам нужны записи системного журнала:"
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Просьба представить это нам с помощью IRC или на форуме, а также посетите "
-"http://unknown-horizons.org ."
+"Пожалуйста, предоставьте их нам через IRC или форум, они доступны на http"
+"://unknown-horizons.org."
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
@@ -56,12 +56,12 @@ msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"Пользователи Linux используя свои менеджеры пакетов могут найти пакеты с "
-"названиями \"pyyaml\" или \"python-yaml\"."
+"Пользователи Linux могут найти его по названиям \"pyyaml\" или \"python-"
+"yaml\" с помощью своей системы управления пакетами."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Спасибо за использование Неизведанных Горизонтов!"
+msgstr "Спасибо за пользование Неизведанными Горизонтами!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -116,7 +116,7 @@ msgstr "Вы должны основать поселение, чтобы стр
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Выберите ваш корабль и щёлкните правой кнопкой мыши у берега."
+msgstr "Выберите Ваш корабль и щёлкните правой кнопкой мыши у берега."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -155,13 +155,13 @@ msgstr "Уменьшить скорость игры ({key})"
 #, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Повернуть карту против часовой ({key})"
+msgstr "Поворот против часовой стрелки ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Повернуть карту по часовой ({key})"
+msgstr "Поворот по часовой стрелке ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -244,9 +244,7 @@ msgstr "Текущие расходы"
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
-msgstr ""
-"Чтобы построить судно, выберите нужный тип корабля и подтвердите "
-"строительство."
+msgstr "Чтобы построить судно, выберите нужный тип и подтвердите строительство."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -401,7 +399,7 @@ msgstr "жители"
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:350
 msgid "Selling"
-msgstr "Продажа"
+msgstr "Продажи"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
@@ -426,8 +424,7 @@ msgstr "Месторождение ресурсов"
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr ""
-"Это месторождение ресурсов, где Вы можете построить шахту для их добычи."
+msgstr "Это месторождение, где Вы можете построить шахту для добычи ресурсов."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
@@ -461,15 +458,15 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Сигнальный огонь - показывает вольному торговцу путь до Вашего поселения "
-"если Вы хотите торговать."
+"Сигнальный огонь показывает торговцу путь до Вашего поселения, если Вы "
+"хотите торговать."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Это вольный торговец. Он будет приплывать к Вам время от времени для "
+"Это корабль вольного торговца. Он будет заходить к Вам время от времени для "
 "торговли."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
@@ -603,7 +600,7 @@ msgstr "Опустить"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
-msgstr "Выберите ресурсы:"
+msgstr "Выберите ресурс:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
@@ -709,7 +706,7 @@ msgstr "Деньги"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Текущая казна игрока + доход ожидаемый в ближайшем будущем"
+msgstr "Текущая казна игрока + доход, ожидаемый в ближайшем будущем"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -719,8 +716,8 @@ msgstr "Территория"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
-"Количество полезной земли т.е. Количество Земли, которое можно использовать "
-"для застройки"
+"Полезная земля т.е. количество земли, которое можно использовать для "
+"застройки"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -731,8 +728,8 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
-"Количество ресурсов, получаемых из всех возможных источников в поселке(ках) "
-"игрока"
+"Количество ресурсов, получаемых из всех возможных источников в поселении(-ях)"
+" игрока"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
@@ -740,22 +737,22 @@ msgstr "Здания"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Стоимость всех построек в поселении(ях) игрока"
+msgstr "Общее количество построек в поселении(-ях) игрока"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
-msgstr "Первопроходцы"
+msgstr "Поселенцы"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
-"Величина, обозначающая развитие поселения(-ний) с точки зрения жителей, "
-"зданий и общего настроения"
+"Величина, обозначающая развитие поселения(-ний) в исчислении жителей, зданий "
+"и общего настроения"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -768,8 +765,7 @@ msgstr "Стоимость всех юнитов, принадлежащих и�
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr ""
-"Общая оценка всех отдельных лиц или коротко: Общее количество очков игрока"
+msgstr "Общая оценка всех отдельных единиц или коротко: Общий счёт игрока"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
@@ -921,7 +917,7 @@ msgstr "Включить режим пипетки(клонирование зд
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
-msgstr "Показать статистику игрока"
+msgstr "Показать счёт игрока"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Show settlement list"
@@ -933,7 +929,7 @@ msgstr "Показать список кораблей"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
-msgstr "Судовой журнал"
+msgstr "Показать судовой журнал"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
@@ -965,7 +961,7 @@ msgstr "Удалить выделенные юниты/сооружения"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
-msgstr "Помощь"
+msgstr "Вызвать помощь"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Screenshot"
@@ -1104,7 +1100,7 @@ msgstr "Покинуть лобби"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr "Игра начнется, как только все игроки будут готовы."
+msgstr "Игра начнётся, как только все игроки будут готовы."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
@@ -1705,7 +1701,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
-"Пользователи Linux: попробуйте установить pyenet через вашу систему "
+"Пользователи Linux: попробуйте установить pyenet через Вашу систему "
 "управления пакетами."
 
 #: horizons/gui/modules/multiplayermenu.py:130
@@ -1716,7 +1712,7 @@ msgstr "Не удалось установить сетевое соединен
 #: horizons/gui/modules/settings.py:273
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr "Сетевые функции не могут быть инициализированы в текущей конфигурации."
+msgstr "Сетевые функции не могут быть инициализированы при данной конфигурации."
 
 #: horizons/gui/modules/multiplayermenu.py:132
 #: horizons/gui/modules/settings.py:274
@@ -1730,15 +1726,15 @@ msgstr "Сетевая ошибка"
 
 #: horizons/gui/modules/multiplayermenu.py:142
 msgid "Could not connect to master server."
-msgstr "Не могу соединиться с master сервером."
+msgstr "Невозможно соединиться с мастер-сервером."
 
 #: horizons/gui/modules/multiplayermenu.py:143
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Если Ваше интернет-соединение в порядке (проверьте!), возможно наш master "
-"сервер временно не доступен."
+"Проверьте Ваше интернет-соединение. Если оно в порядке, возможно, наш мастер-"
+"сервер временно недоступен."
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
@@ -1784,8 +1780,8 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"Версия игры на хосте ({game_version}) отличается от вашей ({own_version}). "
-"Все игроки в сетевой игре должны использовать одинаковые версии"
+"Версия игры на хосте ({game_version}) отличается от Вашей ({own_version}). "
+"Все игроки в сетевой игре должны использовать одну версию"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
@@ -1799,7 +1795,7 @@ msgstr "Введите пароль:"
 #: horizons/gui/modules/singleplayermenu.py:407
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr "Рекомендованное число игроков: {number}"
+msgstr "Рекомендуемое число игроков: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:393
@@ -1815,7 +1811,7 @@ msgstr "Не готов"
 #: horizons/gui/modules/multiplayermenu.py:430
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Введите ваше сообщение"
+msgstr "Введите Ваше сообщение"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -1858,7 +1854,7 @@ msgstr "{player} не готов"
 #: horizons/gui/modules/multiplayermenu.py:591
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr "Теперь вы {new_name}"
+msgstr "Теперь Ваше имя {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:593
 #, python-brace-format
@@ -1876,7 +1872,7 @@ msgstr "{player} изменил цвет"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
-msgstr "Удален"
+msgstr "Удалён"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "You have been kicked from the game by creator"
@@ -1885,23 +1881,23 @@ msgstr "Вы были удалены из игры"
 #: horizons/gui/modules/multiplayermenu.py:606
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr "{player} был удален"
+msgstr "{player} был удалён"
 
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
-msgstr "Вы уверены, что хотите прервать текущую сессию?"
+msgstr "Вы уверены, что хотите прервать эту партию?"
 
 #: horizons/gui/modules/pausemenu.py:83
 msgid "Quit Session"
-msgstr "Покинуть сессию"
+msgstr "Закончить партию"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "No saved games"
-msgstr "Нет сохраненных игр"
+msgstr "Нет сохранённых игр"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
-msgstr "Нет сохраненных игр."
+msgstr "Нет сохранённых игр."
 
 #: horizons/gui/modules/select_savegame.py:144
 msgid "No filename given"
@@ -1914,7 +1910,7 @@ msgstr "Введите правильное имя файла."
 #: horizons/gui/modules/select_savegame.py:149
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Сохраненная игра с именем '{name}' уже существует."
+msgstr "Сохранённая игра с именем '{name}' уже существует."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
@@ -1946,11 +1942,11 @@ msgstr[2] "Сохранено {amount} раза"
 #: horizons/gui/modules/select_savegame.py:231
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr "Сохранено под версией {version}"
+msgstr "Версия сохранения - {version}"
 
 #: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
-msgstr "(вероятно несовместимо)"
+msgstr "(вероятно, несовместимо)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -1964,12 +1960,12 @@ msgstr "Файл не выбран"
 
 #: horizons/gui/modules/select_savegame.py:252
 msgid "You need to select a savegame to delete."
-msgstr "Необходимо выбрать сохраненную игру для удаления."
+msgstr "Выберите сохранённую игру для удаления."
 
 #: horizons/gui/modules/select_savegame.py:255
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Действительно удалить '{name}'?"
+msgstr "Вы действительно хотите удалить '{name}'?"
 
 #: horizons/gui/modules/select_savegame.py:257
 msgid "Confirm deletion"
@@ -1981,7 +1977,7 @@ msgstr "Ошибка!"
 
 #: horizons/gui/modules/select_savegame.py:262
 msgid "Failed to delete savefile!"
-msgstr "Не удалось уничтожить файл сохранения!"
+msgstr "Не удалось удалить файл сохранения!"
 
 #: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
 msgid "Hotkeys"
@@ -2002,7 +1998,7 @@ msgstr "Необходим перезапуск"
 #: horizons/gui/modules/settings.py:127
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
-"Некоторые из ваших изменений требуют перезапуска Неизведанных Горизонтов."
+"Некоторые внесённые изменения требуют перезапуска Неизведанных Горизонтов."
 
 #: horizons/gui/modules/settings.py:131
 msgid "Restore default settings"
@@ -2013,8 +2009,7 @@ msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
 msgstr ""
-"Восстановление настроек по умолчанию, сбросит все сделаные вами когда-либо "
-"изменения."
+"Восстановление настроек по умолчанию сбросит все ранее внесённые изменения."
 
 #: horizons/gui/modules/settings.py:133
 msgid "Do you want to continue?"
@@ -2032,8 +2027,8 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"SDL-рендерер используется как запасной вариант и имеет серьёзные графические "
-"проблемы. \n"
+"SDL-рендерер используется как запасной вариант, возможны серьёзные "
+"графические искажения. \n"
 "\n"
 "Используйте на свой страх и риск!"
 
@@ -2049,7 +2044,7 @@ msgstr "Заданный порт некорректен. Должно быть 
 #: horizons/gui/modules/settings.py:261
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
-msgstr "Проверьте введенный порт. Должно быть число между 1 и 65535."
+msgstr "Проверьте введённый порт. Должно быть число между 1 и 65535."
 
 #: horizons/gui/modules/settings.py:272
 msgid "Failed to apply new network settings."
@@ -2095,7 +2090,7 @@ msgstr "Предпочтительный размер острова:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Island size deviation:"
-msgstr "Отклонение размера острова:"
+msgstr "Допустимая разница размеров:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
@@ -2115,7 +2110,7 @@ msgstr "Сообщение об ошибке:"
 
 #: horizons/gui/modules/singleplayermenu.py:508
 msgid "Please report this to the author."
-msgstr "Пожалуйста, сообщите это разработчикам."
+msgstr "Пожалуйста, сообщите об этом разработчикам."
 
 #: horizons/gui/modules/singleplayermenu.py:570
 #, python-brace-format
@@ -2140,11 +2135,11 @@ msgstr "Строить {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr "Нажми H, чтобы убрать подсказку"
+msgstr "Нажмите H, чтобы убрать подсказку"
 
 #: horizons/gui/tabs/boatbuildertabs.py:47
 msgid "Boat builder overview"
-msgstr "Обзор судостроителя"
+msgstr "Обзор верфи"
 
 #: horizons/gui/tabs/boatbuildertabs.py:94
 #, python-brace-format
@@ -2181,15 +2176,15 @@ msgstr "Обзор башни"
 
 #: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
 msgid "Overview"
-msgstr "Просмотр"
+msgstr "Обзор"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr "Строить связанные построыки"
+msgstr "Добавить связанные постройки"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr "Щелкните на одном из слотов для добавления торгового предложения."
+msgstr "Щёлкните на одной из ячеек, чтобы назначить торговое предложение."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
@@ -2197,8 +2192,8 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
-"Установите на покупку или продажу, нажимая на эту метку, а затем "
-"скорректируйте сумму через ползунок справа."
+"Этот значок устанавливает покупку или продажу, а бегунок справа определяет "
+"количество товара."
 
 #: horizons/gui/tabs/buyselltab.py:321
 #, python-brace-format
@@ -2223,11 +2218,11 @@ msgstr "Обзор склада"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
 msgid "Account"
-msgstr "Счет"
+msgstr "Отчётность"
 
 #: horizons/gui/tabs/mainsquaretabs.py:112
 msgid "Main square overview"
-msgstr "Обзор главной площади"
+msgstr "Обзор центральной площади"
 
 #: horizons/gui/tabs/mainsquaretabs.py:143
 msgid "Upgrade not possible:"
@@ -2235,15 +2230,15 @@ msgstr "Улучшения невозможны:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr "Это самый высокий уровень на сегодня!"
+msgstr "Пока это самый высокий уровень!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
-msgstr "Запретить развитие"
+msgstr "Запретить улучшения"
 
 #: horizons/gui/tabs/mainsquaretabs.py:195
 msgid "Allow upgrades"
-msgstr "Разрешить развитие"
+msgstr "Разрешить улучшения"
 
 #: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
@@ -2265,15 +2260,15 @@ msgstr "Обзор корабля"
 
 #: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr "Корабль должен быть вблизи острова, чтобы основать поселение."
+msgstr "Чтобы основать поселение, корабль должен пристать к острову."
 
 #: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
-msgstr "У вас уже есть поселение на этом острове."
+msgstr "На этом острове уже есть Ваше поселение."
 
 #: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
-msgstr "Погрузка/Разгрузка"
+msgstr "Загрузка/Разгрузка"
 
 #: horizons/gui/tabs/shiptabs.py:93
 msgid "Buy/Sell"
@@ -2293,7 +2288,7 @@ msgstr "Невозможно вооружить торговый корабль.
 
 #: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
-msgstr "Экипировать оружие"
+msgstr "Установить оружие"
 
 #: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
@@ -2322,11 +2317,11 @@ msgstr "{stored}/{limit}"
 #: horizons/gui/widgets/inventory.py:168
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr "Лимит: {amount}т на слот"
+msgstr "Предел: {amount}т на ячейку"
 
 #: horizons/gui/widgets/logbook.py:49
 msgid "Logbook"
-msgstr "Бортовой журнал"
+msgstr "Судовой журнал"
 
 #: horizons/gui/widgets/logbook.py:183
 msgid "Emptiness"
@@ -2334,12 +2329,12 @@ msgstr "Пустота"
 
 #: horizons/gui/widgets/logbook.py:186
 msgid "There is nothing written in your logbook yet!"
-msgstr "В вашем логи ещё нет записей!"
+msgstr "В Вашем журнале ещё нет записей!"
 
 #: horizons/gui/widgets/playerssettlements.py:39
 #, python-brace-format
 msgid "Settlements of {player}"
-msgstr "Поселение игрока {player}"
+msgstr "Поселения игрока {player}"
 
 #: horizons/gui/widgets/playersships.py:44
 #, python-brace-format
@@ -2366,7 +2361,7 @@ msgstr "Показать статистику"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr "Щёлкните, чтобы добавить новый слот"
+msgstr "Щёлкните, чтобы добавить новую ячейку"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
@@ -2377,16 +2372,16 @@ msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
-"Сбросить отображение ресурсов этого поселения к настройкам по умолчанию "
-"сохраненных вами."
+"Сбросить отображение ресурсов этого поселения к сохранённым Вами настройкам "
+"по умолчанию."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
-"Сброс настроек по умолчанию (которые вы видите здесь) к заводским по "
-"умолчанию для всех населенных пунктов."
+"Сброс настроек по умолчанию (которые Вы видите здесь) к заводским по "
+"умолчанию для всех поселений."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
@@ -2402,17 +2397,15 @@ msgstr "Остановить маршрут"
 
 #: horizons/gui/widgets/routeconfig.py:114
 msgid "Need at least two settlements"
-msgstr "Вам нужно, по крайней мере, два населенных пункта"
+msgstr "Нужны хотя бы два поселения"
 
 #: horizons/gui/widgets/routeconfig.py:115
 msgid "You need at least two different settlements in your route."
-msgstr ""
-"Вам нужно, по крайней мере, два различных населенных пунктах на вашем "
-"маршруте."
+msgstr "Вам нужны хотя бы два различных поселения на маршруте."
 
 #: horizons/gui/widgets/routeconfig.py:144
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Нажмите на поселении чтобы добавить точку остановки!"
+msgstr "Щёлкните на поселении, чтобы добавить пункт остановки!"
 
 #: horizons/gui/widgets/routeconfig.py:183
 msgid "Loading into ship"
@@ -2424,7 +2417,7 @@ msgstr "Разгрузка корабля"
 
 #: horizons/gui/widgets/routeconfig.py:376
 msgid "You are not allowed to trade with this player"
-msgstr "Вам нельзя торговать с этим игроком"
+msgstr "Вы не можете торговать с этим игроком"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:118
@@ -2454,7 +2447,7 @@ msgstr "Пекарня"
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:58
 msgid "Consumes flour. Produces food."
-msgstr "Потребляет муку. Производит пищу."
+msgstr "Расходует муку. Производит пищу."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:63
@@ -2464,7 +2457,7 @@ msgstr "Казармы"
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:65
 msgid "Recruits units suitable for ground combat."
-msgstr "Рекруты пригодные для наземных боевых действий."
+msgstr "Набирает боевые единицы для сухопутных сражений."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
@@ -2484,7 +2477,7 @@ msgstr "Верфь"
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:79
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Верфь: Строит корабли и небольшие судна. Возводится на побережье."
+msgstr "Строит лодки и небольшие суда. Возводится на побережье."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:84
@@ -2494,7 +2487,7 @@ msgstr "Кирпичный завод"
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:86
 msgid "Turns clay into bricks."
-msgstr "Кирпичный завод: Производит кирпич из глины."
+msgstr "Производит кирпичи из глины."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:91
@@ -2504,7 +2497,7 @@ msgstr "Бойня"
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Бойня: для работы требует свиней или скот. Производит пищу."
+msgstr "Требует свиней или крупный скот. Производит пищу."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:98
@@ -2514,7 +2507,7 @@ msgstr "Костёр для углежжения"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:100
 msgid "Burns a lot of boards."
-msgstr "Углежог изготовляет здесь древесный уголь."
+msgstr "Сжигает множество досок."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:105
@@ -2534,17 +2527,17 @@ msgstr "Добывает глину из залежей."
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:117
 msgid "Distillery"
-msgstr "Винокуренный завод"
+msgstr "Винокурня"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
 msgid "Turns sugar into liquor."
-msgstr "Винокуренный завод: Производит алкоголь из сахара."
+msgstr "Производит алкоголь из сахара."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:124
 msgid "Doctor"
-msgstr "Врач"
+msgstr "Лечебница"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:126
@@ -2564,35 +2557,33 @@ msgstr "Ухаживает за полями и скотом."
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:138
 msgid "Alvearies"
-msgstr "Ульи"
+msgstr "Пасека"
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:140
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
-"Сохраняет пчел. Производит соты для кондитерских изделий. Нуждается в ферме."
+msgstr "Разводит пчел. Производит соты для кондитерских изделий. Требует фермы."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
 msgid "Cattle Run"
-msgstr "Выгон скота"
+msgstr "Загон для скота"
 
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:147
 msgid "Raises cattle. Needs a farm."
-msgstr "Выгон скота: разводит скот. Для работы требуется ферма."
+msgstr "Разводит скот. Требует фермы."
 
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:152
 msgid "Cocoa Field"
-msgstr "Поле Какао"
+msgstr "Плантация какао"
 
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:154
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
-"Производит какао-бобы, используемые для кондитерских изделий. Нуждается в "
-"ферме."
+"Производит какао-бобы, используемые для кондитерских изделий. Требует фермы."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:159
@@ -2602,7 +2593,7 @@ msgstr "Кукурузное поле"
 #. tooltip_text of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:161
 msgid "Yields corn. Needs a farm."
-msgstr "Производит кукурузу. Необходима ферма."
+msgstr "Производит кукурузу. Требует фермы."
 
 #. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:166
@@ -2612,7 +2603,7 @@ msgstr "Сад трав"
 #. tooltip_text of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:168
 msgid "Produces herbs. Needs a farm."
-msgstr "Производит травы. Нуждается в ферме."
+msgstr "Производит травы. Требует фермы."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:173
@@ -2622,7 +2613,7 @@ msgstr "Пастбище"
 #. tooltip_text of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:175
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Выращивает овец. Производит шерсть. Нуждается в ферме."
+msgstr "Выращивает овец. Производит шерсть. Требует фермы."
 
 #. name of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:180
@@ -2632,7 +2623,7 @@ msgstr "Свинарник"
 #. tooltip_text of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:182
 msgid "Raises pigs. Needs a farm."
-msgstr "Разводит свиней. Нуждается в ферме."
+msgstr "Разводит свиней. Требует фермы."
 
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:187
@@ -2642,17 +2633,17 @@ msgstr "Картофельное поле"
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:189
 msgid "Yields food. Needs a farm."
-msgstr "Производит еду. Необходима ферма."
+msgstr "Производит еду. Требует фермы."
 
 #. name of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:194
 msgid "Spice Field"
-msgstr "Поле специй"
+msgstr "Поле пряностей"
 
 #. tooltip_text of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:196
 msgid "Grows spices. Needs a farm."
-msgstr "Производит специи. Нуждается в ферме."
+msgstr "Производит специи. Требует фермы."
 
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:201
@@ -2662,7 +2653,7 @@ msgstr "Сахарная плантация"
 #. tooltip_text of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:203
 msgid "Used in liquor production. Needs a farm."
-msgstr "Используется в производстве алкоголя. Нуждается в ферме."
+msgstr "Используется в производстве алкоголя. Требует фермы."
 
 #. name of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:208
@@ -2672,7 +2663,7 @@ msgstr "Табачное поле"
 #. tooltip_text of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:210
 msgid "Produces tobacco. Needs a farm."
-msgstr "Производит сырьё для табака. Нуждается в ферме."
+msgstr "Производит листья табака. Требует фермы."
 
 #. name of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:215
@@ -2682,7 +2673,7 @@ msgstr "Виноградник"
 #. tooltip_text of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:217
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr "Производит виноград для вина и кондитерских изделий. Необходима ферма."
+msgstr "Производит виноград для вина и кондитерских изделий. Требует фермы."
 
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:222
@@ -2717,12 +2708,12 @@ msgstr "Палатка охотника"
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:243
 msgid "Hunts wild forest animals, produces food."
-msgstr "Охотится на диких животных в лесу, производит еду."
+msgstr "Промышляет лесного зверя, производит еду."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:248
 msgid "Lookout"
-msgstr "Наблюдательный пост"
+msgstr "Дозорная башня"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
@@ -2732,12 +2723,12 @@ msgstr "Расширяет поле зрения игрока."
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
 msgid "Lumberjack Tent"
-msgstr "Палатка дровосека"
+msgstr "Палатка лесоруба"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:257
 msgid "Lumberjack Hut"
-msgstr "Хижина дровосека"
+msgstr "Хижина лесоруба"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:259
@@ -2752,7 +2743,7 @@ msgstr "Центральная площадь"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:266
 msgid "Supplies citizens with goods. Provides community."
-msgstr "Снабжает жителей товарами, служит местом сборов и посиделок."
+msgstr "Обеспечивает жителей товарами. Создаёт общение."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
@@ -2788,7 +2779,7 @@ msgstr "Святилище"
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
 msgid "Fulfills religious needs of sailors."
-msgstr "Предоставляет морякам доступ к религии."
+msgstr "Даёт морякам доступ к религии."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:297
@@ -2798,12 +2789,12 @@ msgstr "Разрушенная палатка"
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:302
 msgid "Salt Ponds"
-msgstr "Солёные озёра"
+msgstr "Соляной бассейн"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:304
 msgid "Evaporates salt. Built on sea coast."
-msgstr "Выпаривают соль. Должны быть расположены на морском берегу."
+msgstr "Выпаривает соль. Располагается на морском берегу."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:309
@@ -2833,40 +2824,40 @@ msgstr "Каменщик"
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:325
 msgid "Carver"
-msgstr "Ре́зчик"
+msgstr "Каменотёс"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
 msgid "Carves stone tops into bricks."
-msgstr "Режет камень на кирпичи."
+msgstr "Высекает из камня кирпичи."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:332
 msgid "Stone Pit"
-msgstr "Каменный карьер"
+msgstr "Каменоломня"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:334
 msgid "Gets stone from a mountain."
-msgstr "Получает камень с горы."
+msgstr "Добывает камень из горных пород."
 
 # Can we drop the 'Tent' part ? Or we need something like 'Палатка-хранилище', 'Склад-палатка' etc.
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:339
 msgid "Storage Tent"
-msgstr "Хранилище"
+msgstr "Палатка-хранилище"
 
 # Can we drop the 'Tent' part ? Or we need something like 'Палатка-хранилище', 'Склад-палатка' etc.
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:341
 msgid "Storage Hut"
-msgstr "Хижина-хранилище"
+msgstr "Хранилище"
 
 # Very bad translate
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
 msgid "Extends stock and provides collectors."
-msgstr "Добавляет место для хранения ресурсов и предоставляет сборщиков."
+msgstr "Позволяет хранить больше товаров и предоставляет носильщиков."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -2876,7 +2867,7 @@ msgstr "Таверна"
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:350
 msgid "Provides get-together."
-msgstr "Таверна: место, где жители собираются пообщаться."
+msgstr "Обеспечивает развлечение."
 
 #. name_0 of buildings:tent
 #: horizons/i18n/objecttranslations.py:355
@@ -2911,7 +2902,7 @@ msgstr "Поместье"
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
 msgid "Houses your inhabitants."
-msgstr "Предоставляет кров для ваших жителей."
+msgstr "Даёт жителям кров."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:372
@@ -2921,7 +2912,7 @@ msgstr "Табачная лавка"
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:374
 msgid "Produces tobaccos out of tobacco."
-msgstr "Производит табак из табачного сырья."
+msgstr "Производит табачные изделия из табачных листьев."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:379
@@ -2931,7 +2922,7 @@ msgstr "Изготовитель инструментов"
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:381
 msgid "Produces tools out of iron."
-msgstr "Изготавливает инструменты из железа."
+msgstr "Изготовляет инструменты из железа."
 
 #. name_0 of buildings:trail
 #: horizons/i18n/objecttranslations.py:386
@@ -2961,17 +2952,17 @@ msgstr "Дерево"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:399
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr "Пилорама: производит пиломатериалы из срубленных деревьев."
+msgstr "Восстанавливает срубленный лес."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:404
 msgid "Village school"
-msgstr "Деревенская школа"
+msgstr "Сельская школа"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:406
 msgid "Provides education."
-msgstr "Деревенская школа: Обеспечивает образование населения."
+msgstr "Даёт образование."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
@@ -2996,7 +2987,7 @@ msgstr "Хижина ткача"
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
 msgid "Turns lamb wool into cloth."
-msgstr "Ткач: Производит ткань из бараньей шерсти."
+msgstr "Производит ткань из овечьей шерсти."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
@@ -3016,7 +3007,7 @@ msgstr "Деревянная башня"
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:439
 msgid "Defends your settlement."
-msgstr "Деревянная баншя: обеспечивает защиту поселения."
+msgstr "Обеспечивает защиту поселения."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3026,7 +3017,7 @@ msgstr "Деревянная баншя: обеспечивает защиту �
 #: horizons/i18n/objecttranslations.py:450
 #: horizons/i18n/objecttranslations.py:511
 msgid "Companies"
-msgstr "Компании"
+msgstr "Предприятия"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
@@ -3079,7 +3070,7 @@ msgstr "Укрепления"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
 msgid "Infrastructure"
-msgstr "инфраструктура"
+msgstr "Инфраструктура"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
@@ -3090,7 +3081,7 @@ msgstr "Военная служба"
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
-msgstr "Пионеры"
+msgstr "Первопроходцы"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
@@ -3140,11 +3131,11 @@ msgstr "Не удалось запустить/загрузить игру"
 
 #: horizons/main.py:355
 msgid "The game you selected could not be started."
-msgstr "Выбранная вами игра не может быть запущена."
+msgstr "Выбранная Вами игра не может быть запущена."
 
 #: horizons/main.py:356
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr "Сохранение может быть повреждено или сохранено в предыдущей версии."
+msgstr "Сохранение может быть повреждено или создано в устаревшей версии."
 
 #: horizons/main.py:475
 msgid "No quicksaves found"
@@ -3176,7 +3167,7 @@ msgstr ""
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
-"Мы сожалеем, и надеемся, что эта ошибка будет исправлена в будущих версиях."
+"Мы сожалеем и надеемся, что эта ошибка будет исправлена в следующих версиях."
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
@@ -3204,7 +3195,7 @@ msgstr "Невозможно подключиться к серверу."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr "Возможно неверный или несуществующий адрес сервера."
+msgstr "Возможно, неверный или несуществующий адрес сервера."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
@@ -3258,7 +3249,7 @@ msgstr "Ваша игра НЕ была сохранена."
 
 #: horizons/util/checkupdates.py:87
 msgid "New version of Unknown Horizons"
-msgstr "Новая версия Unknown Horizons"
+msgstr "Новая версия Неизведанных Горизонтов"
 
 #: horizons/util/checkupdates.py:88
 #, python-brace-format
@@ -3266,8 +3257,8 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
-"Существует более поздняя версия Unknown Horizons ({new_version}) , чем та, "
-"которую вы используете ({old_version})."
+"Существует более поздняя версия Неизведанных Горизонтов ({new_version}), чем "
+"используемая Вами ({old_version})."
 
 #: horizons/util/checkupdates.py:98
 msgid "Click to download"
@@ -3300,7 +3291,7 @@ msgstr "Это здание должно быть построено на ост
 
 #: horizons/world/building/buildable.py:41
 msgid "This ground is not suitable for this building."
-msgstr "Земля не подходит для этой постройки."
+msgstr "Здешний рельеф не подходит для этой постройки."
 
 #: horizons/world/building/buildable.py:42
 msgid "This building has to be built within your settlement."
@@ -3308,7 +3299,7 @@ msgstr "Эта постройка должна быть построена в г
 
 #: horizons/world/building/buildable.py:43
 msgid "This area is already occupied by another player."
-msgstr "Эта территория уже занята другим играком."
+msgstr "Эта территория уже занята другим игроком."
 
 #: horizons/world/building/buildable.py:44
 msgid "This area is already occupied by another building."
@@ -3324,7 +3315,7 @@ msgstr "Это здание должно строиться на побереж�
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr "Эта постройка должно быть размещена рядом с океаном."
+msgstr "Эта постройка должна размещаться рядом с океаном."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
@@ -3348,7 +3339,7 @@ msgstr "Жители заражены Чёрной Смерью!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
-msgstr "Постройка горит!"
+msgstr "Эта постройка горит!"
 
 #: horizons/world/status.py:88
 msgid "These residents are unhappy."
@@ -3357,11 +3348,11 @@ msgstr "Эти жители недовольны."
 #: horizons/world/status.py:94
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Эти жители не могут попасть на главную площадь."
+msgstr "Эти жители не могут попасть на центральную площадь."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
-msgstr "Инвентарь этого здания полон."
+msgstr "В этом здании не осталось места для продукции."
 
 #: horizons/world/status.py:115
 msgid "This building has a very low productivity."
@@ -3430,11 +3421,11 @@ msgstr "Ваша постройка горит!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr "морская вода"
+msgstr "рассол"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
-msgstr "лечебные травы"
+msgstr "лекарственные травы"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
@@ -3456,7 +3447,7 @@ msgstr "месторождение соли"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
-msgstr "Некоторые ваши жители только что уехали."
+msgstr "Несколько жителей только что сбежали."
 
 #. This is a database entry: the name of a resource
 #| msgid "stone deposit"
@@ -3603,7 +3594,7 @@ msgstr "скот"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
-msgstr "Вы также можете двигать дороги, удерживая кнопку мыши."
+msgstr "Вы можете прокладывать дороги, удерживая кнопку мыши."
 
 #. This is a database entry: the name of a resource
 msgid "lamb wool"
@@ -3614,8 +3605,8 @@ msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr ""
-"Вы достигли максимально-доступного на текущий момент уровня развития. Ваши "
-"поселенцы более не будут развиваться."
+"Вы достигли максимального на текущий момент уровня развития. Ваши жители "
+"более не будут развиваться."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
@@ -3671,7 +3662,7 @@ msgstr "Некоторые жители не могут попасть на гл
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} и {player2} будут бороться друг с другом до самой смерти."
+msgstr "{player1} и {player2} будут биться насмерть."
 
 #. This is a database entry: the name of a resource
 #| msgid "Workshops"
@@ -3807,7 +3798,7 @@ msgstr "Ваша команда отказывается покинуть эту
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1}и {player2} продолжают устойчиво враждовать."
+msgstr "{player1} и {player2} прекратили вражду."
 
 #. This is a database entry: the name of a resource
 msgid "grass"
@@ -3819,7 +3810,7 @@ msgstr "сахарный тростник"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr "Автосохранение прошло успешно."
+msgstr "Игра автоматически сохранена."
 
 #. This is a database entry: the name of a resource
 #| msgid "clay deposit"
@@ -3832,7 +3823,7 @@ msgstr "Одному из полей требуется ферма для сбо
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr "грубые камни"
+msgstr "необработанные камни"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
@@ -3882,12 +3873,12 @@ msgstr "Жители этого здания заболели Чёрной См�
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr "Создан новый корабль по имени {name}."
+msgstr "Создан новый корабль под именем {name}."
 
 #. This is a database entry: the name of a resource
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "чайные деревья"
+msgstr "чайные кусты"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -3895,11 +3886,11 @@ msgstr "общение"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr "Новый мир был создан."
+msgstr "Создан новый мир."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr "Быстрое сохранение успешно выполнено."
+msgstr "Выполнено быстрое сохранение."
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
@@ -3919,17 +3910,17 @@ msgstr "свиньи"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Вы не можете снести склад, он требуется вашему поселению."
+msgstr "Вы не можете снести склад, он нужен Вашему поселению."
 
 # варианты: специи, пряности
 #. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr "приправы"
+msgstr "специи"
 
 #. This is a database entry: the name of a resource
 #| msgid "black"
 msgid "blackdeath"
-msgstr "черная смерть"
+msgstr "чёрная смерть"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
@@ -3938,7 +3929,7 @@ msgstr "свечи"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr "Игроком {player} было найдено новое поселение."
+msgstr "Игрок {player} основал новое поселение."
 
 #. This is a database entry: the name of a resource
 msgid "vines"
