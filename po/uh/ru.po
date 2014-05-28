@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-26 22:09+0200\n"
+"PO-Revision-Date: 2014-05-28 11:54+0200\n"
 "Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -280,7 +280,7 @@ msgstr "Отменить:"
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
-msgstr "(потеря всех ресурсов)"
+msgstr "(с потерей ресурсов)"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
@@ -305,7 +305,7 @@ msgstr "враг"
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
 msgid "Building overview"
-msgstr "Обзор строения"
+msgstr "Обзор постройки"
 
 # needs to be shorter!
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
@@ -323,14 +323,14 @@ msgstr "Запасы поселения"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
-msgstr "Просмотр поселенца"
+msgstr "Обзор жителей"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
 msgid "Paid taxes"
-msgstr "Уплаченных налогов"
+msgstr "Платимые налоги"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
@@ -342,15 +342,15 @@ msgstr "Налоги:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "Ставка налога"
+msgstr "Налоговая ставка"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr "Разрешённые улучшения:"
+msgstr "Доступность улучшений:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr "Счастья на дом"
+msgstr "Настроение по домам"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
@@ -369,31 +369,31 @@ msgstr "счастлив"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr "Число домов с таким настроением"
+msgstr "Количество домов с таким настроением"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr "Жителей на дом"
+msgstr "Жители по домам"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr "Среднее количество жильцов в доме"
+msgstr "Количество жильцов в доме"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "Дома с таким же количеством жильцов"
+msgstr "Количество домов со столькими жильцами"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr "Сводка"
+msgstr "Итого"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
-msgstr "дома"
+msgstr "домов"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr "жители"
+msgstr "жителей"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -411,7 +411,7 @@ msgstr "Закупки"
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
 msgid "Name:"
-msgstr "Название:"
+msgstr "Имя:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
@@ -419,17 +419,17 @@ msgstr "Оружие:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
-msgstr "Месторождение ресурсов"
+msgstr "Месторождение"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr "Это месторождение, где Вы можете построить шахту для добычи ресурсов."
+msgstr "Здесь Вы можете основать прииск для добычи полезных ископаемых."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr "Содержание ресурсов:"
+msgstr "Содержимые ресурсы:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -437,17 +437,17 @@ msgstr "Содержание ресурсов:"
 #: horizons/gui/tabs/mainsquaretabs.py:117
 #: horizons/gui/widgets/playerssettlements.py:96
 msgid "Click to change the name of your settlement"
-msgstr "Щёлкните, чтобы переименовать Ваше поселение"
+msgstr "Щёлкните, чтобы переименовать поселение"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
 msgid "Happiness"
-msgstr "Счастье"
+msgstr "Настроение"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr "Жители"
+msgstr "Жильцы"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
@@ -458,8 +458,8 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Сигнальный огонь показывает торговцу путь до Вашего поселения, если Вы "
-"хотите торговать."
+"Если Вы хотите торговать, сигнальный огонь указывает вольному торговцу путь "
+"к Вашему поселению."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
@@ -486,7 +486,7 @@ msgstr "Торговля"
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
 msgid "Build settlement"
-msgstr "Основать поселение"
+msgstr "Создать поселение"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
@@ -507,7 +507,7 @@ msgstr "Торговый партнёр:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr "Купить или продать ресурсы"
+msgstr "Покупка и продажа"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
@@ -515,14 +515,14 @@ msgstr "История торговли"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
-msgstr "Выбрать ресурсы:"
+msgstr "Выберите товар:"
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr "Использование носильщиков"
+msgstr "Занятость носильщиков"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
@@ -548,7 +548,7 @@ msgstr "Баланс:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr "Показать ресурсы, произведённые в данном поселении"
+msgstr "Показать ресурсы, произведённые в этом поселении"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
@@ -564,7 +564,7 @@ msgstr "Возобновить производство"
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr "Выбрать ресурс:"
+msgstr "Выберите ресурс:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -572,16 +572,17 @@ msgstr "Выбрать ресурс:"
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr "Выбранный ресурс отображается вместо текущего. Очистить - щёлкните 'X'."
+msgstr ""
+"Отображаемый ресурс будет заменён выбранным. Щёлкните на X, чтобы очистить "
+"ячейку."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
-"Сохранить текущую конфигурацию ресурсов по умолчанию для всех поселений."
+msgstr "Сохранить такой перечень ресурсов для всех поселений по умолчанию."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Сброс конфигурации ресурсов по умолчанию для всех поселений."
+msgstr "Вернуть перечень по умолчанию для всех поселений."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -591,7 +592,7 @@ msgstr "Поднять"
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
-msgstr "Удалить запись"
+msgstr "Убрать пункт"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
@@ -600,7 +601,7 @@ msgstr "Опустить"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
-msgstr "Выберите ресурс:"
+msgstr "Выберите товар:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
@@ -646,17 +647,17 @@ msgstr "Все"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "Отправить сообщение всем игрокам."
+msgstr "Сообщения в чате отправятся всем игрокам."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Введите Ваше сообщение здесь"
+msgstr "Введите Ваше сообщение"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
-msgstr "Вернуться в игру"
+msgstr "Вернуться к игре"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
@@ -670,13 +671,13 @@ msgstr "Ждать выгрузки:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr "Активность маршрута:"
+msgstr "Активность пути:"
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:103
 msgid "Start route"
-msgstr "Открыть торговый маршрут"
+msgstr "Запустить путь"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
 msgid "Exit"
@@ -688,13 +689,13 @@ msgstr "Закрыть"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
 msgid "Player scores"
-msgstr "Статистика игрока"
+msgstr "Счёт игрока"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 msgid "Name"
-msgstr "Название"
+msgstr "Имя"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
@@ -706,18 +707,16 @@ msgstr "Деньги"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Текущая казна игрока + доход, ожидаемый в ближайшем будущем"
+msgstr "Нынешняя казна игрока + доход, ожидаемый в ближайшее время"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
-msgstr "Территория"
+msgstr "Земли"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
-msgstr ""
-"Полезная земля т.е. количество земли, которое можно использовать для "
-"застройки"
+msgstr "Полезная площадь, т.е. земля, которую можно использовать для застройки"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -727,32 +726,30 @@ msgstr "Ресурсы"
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
-msgstr ""
-"Количество ресурсов, получаемых из всех возможных источников в поселении(-ях)"
-" игрока"
+msgstr "Стоимость ресурсов, производимых всеми источниками в поселениях игрока"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
-msgstr "Здания"
+msgstr "Постройки"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Общее количество построек в поселении(-ях) игрока"
+msgstr "Стоимость всех построек в поселениях игрока"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
-msgstr "Поселенцы"
+msgstr "Жители"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
-"Величина, обозначающая развитие поселения(-ний) в исчислении жителей, зданий "
-"и общего настроения"
+"Степень развития поселений, зависит от числа жителей, зданий и общего "
+"настроения"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -760,17 +757,17 @@ msgstr "Юниты"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "Стоимость всех юнитов, принадлежащих игроку"
+msgstr "Стоимость всех полезных единиц игрока"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr "Общая оценка всех отдельных единиц или коротко: Общий счёт игрока"
+msgstr "Общая оценка всех составляющих, или Общий счёт игрока"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
 msgid "Total"
-msgstr "Всего"
+msgstr "Итого"
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:618
@@ -957,7 +954,7 @@ msgstr "Фокус камеры на выделенном объекте"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
-msgstr "Удалить выделенные юниты/сооружения"
+msgstr "Удалить выделенные единицы/сооружения"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
@@ -2201,8 +2198,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
-"Купить {resource_name} за {price} золота/t когда меньше {limit}t "
-"находящегося в наличии."
+"Покупать {resource_name} за {price} золота/t, когда в наличии меньше "
+"{limit}t."
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2210,7 +2207,8 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
-"Продать {resource_name} за {price} золота/t когда больше {limit}t имеющегося."
+"Продавать {resource_name} за {price} золота/t, когда в наличии больше "
+"{limit}t."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
