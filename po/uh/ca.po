@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-04-26 11:52+0200\n"
+"PO-Revision-Date: 2014-05-29 22:51+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.9\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -2508,7 +2508,7 @@ msgstr "Carnisseria"
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Necessita porcs o vedelles. Produeix aliment."
+msgstr "Necessita bestiar porcí o boví. Produeix aliment."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:98
@@ -2528,7 +2528,7 @@ msgstr "Jaciment d'argila"
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:110
 msgid "Clay Pit"
-msgstr "Pou d'argila"
+msgstr "Mina d'argila"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:112
@@ -2579,12 +2579,12 @@ msgstr ""
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
 msgid "Cattle Run"
-msgstr "Clos de bestiar"
+msgstr "Clos de bestiar boví"
 
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:147
 msgid "Raises cattle. Needs a farm."
-msgstr "Cria bestiar. Necessita una granja."
+msgstr "Cria bestiar boví. Necessita una granja."
 
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:152
@@ -2654,7 +2654,7 @@ msgstr "Camp d'espècies"
 #. tooltip_text of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:196
 msgid "Grows spices. Needs a farm."
-msgstr "Fa especies. Necessita una granja."
+msgstr "Fa espècies. Necessita una granja."
 
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:201
@@ -2789,7 +2789,7 @@ msgstr "Pavelló"
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
 msgid "Fulfills religious needs of sailors."
-msgstr "Dona serveis religiosos als mariners."
+msgstr "Satisfà les necessitats religioses dels mariners."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:297
@@ -3591,7 +3591,7 @@ msgstr "la captura de pantalla s'ha desat a {file}."
 
 #. This is a database entry: the name of a resource
 msgid "cattle"
-msgstr "bestiar"
+msgstr "bestiar boví"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
@@ -3704,7 +3704,7 @@ msgstr "higiene"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr "bestiar per l'escorxador"
+msgstr "bestiar boví per l'escorxador"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
