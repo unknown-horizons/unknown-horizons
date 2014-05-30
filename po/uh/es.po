@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-30 13:03+0200\n"
-"Last-Translator: Fede Muller <fedem8@live.com>\n"
+"PO-Revision-Date: 2014-05-30 13:11+0200\n"
+"Last-Translator: Rubén Viguera <vyproyects@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -3351,9 +3351,8 @@ msgid "This building must be built on the coastline."
 msgstr "Este edificio debe ser construido a orillas de la costa."
 
 #: horizons/world/building/buildable.py:47
-#, fuzzy
 msgid "This building has to be placed at the ocean."
-msgstr "Este edificio debe ubicarse cerca del océano."
+msgstr "Este edificio debe ubicarse en el océano."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
@@ -3368,9 +3367,8 @@ msgid "You have already settled this island."
 msgstr "ya estás establecido en esta isla."
 
 #: horizons/world/building/buildable.py:51
-#, fuzzy
 msgid "This building must be partly on flat land."
-msgstr "Este edificio debe ser construido a orillas de la costa."
+msgstr "Este edificio debe estar parcialmente a orillas de la costa."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
