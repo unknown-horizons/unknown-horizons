@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-04-19 12:26+0200\n"
+"PO-Revision-Date: 2014-05-30 13:48+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/tutorial/ca/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -103,122 +103,154 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the actual game."
-msgstr ""
+msgstr "I ara, comencem la partida."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr ""
+msgstr "NOVA TASCA: ESTABLIU-VOS EN UNA ILLA"
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
 msgstr ""
+"Per moure el vostre vaixell, seleccioneu-lo amb el botó esquerre del ratolí "
+"i feu clic amb el dret al lloc on voleu anar."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you are near the coast, the anchor-like button you see in the overview "
 "tab will become active."
 msgstr ""
+"Quan sigueu prop de la costa, s'habilitarà a la pestanya de vista el botó en "
+"forma d'àncora."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This indicates that you are able to build a warehouse there by pressing that "
 "button (called 'Build Settlement')."
 msgstr ""
+"Això vol dir que podeu construir-hi un magatzem prement aquest botó ("
+"anomenat «Construir un assentament»)."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Now a preview of your building is dragged around when you move the cursor."
-msgstr ""
+msgstr "Ara podeu arrossegar amb el ratolí una vista prèvia del vostre edifici."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building."
 msgstr ""
+"Podeu construir-lo a qualsevol lloc on l'ombra de la vista prèvia no es "
+"torni vermella.\n"
+"Feu clic on vulgueu construir el vostre primer edifici."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a warehouse at the coast."
-msgstr ""
+msgstr "Tasca: Construïu un magatzem a la costa."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
-msgstr ""
+msgstr "Construïu un llenyataire i connecteu-lo al magatzem amb un camí."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr ""
+msgstr "NOVA TASCA: CONSTRUÏU UN LLENYATAIRE"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
 msgstr ""
+"S'ha descarregat automàticament el material de construcció del vostre "
+"vaixell. Ara podeu construir alguns edificis bàsics."
 
 #. This is the text body of a logbook page.
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "Començarem construint un llenyataire."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is essential because, at this stage, boards are the only poles your "
 "sailors can afford to hang their tents over."
 msgstr ""
+"Això és molt important en aquesta fase, per que els pals de fusta és la "
+"única cosa que es poden permetre els vostres mariners per aguantar les "
+"tendes."
 
 #. This is the text body of a logbook page.
 msgid "The fisherman needs some boards to build his vessel as well."
 msgstr ""
+"Els pescador també necessita planxes de fusta per construir-se una barca."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In order to construct lumberjacks; open the build menu by either clicking "
 "the big icon below the mini map or pressing B key."
 msgstr ""
+"Per construir llenyataires, obre el menú de construcció ja sigui fent clic a "
+"la icona grossa de sota el mini mapa o prement la tecla B."
 
 #. This is the text body of a logbook page.
 msgid "The build menu is sorted by tiers."
-msgstr ""
+msgstr "El menú de construcció està ordenat per nivells."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You are currently in the first tier (the Sailors level) so are offered only "
 "the basic buildings."
 msgstr ""
+"Ara sou al primer nivell (el nivell Mariners) i només disposes des edificis "
+"bàsics."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
+"\n"
+"A mida que avanci la vostra civilització, disposareu de més edificis i de "
+"més complexos."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area "
 "with some trees around."
 msgstr ""
+"De moment, seleccioneu el fuster a «companyies» i construïu-lo en un àrea on "
+"hi hagi arbres al voltant."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
 msgstr ""
+"Més tard també podreu plantar arbres - però et costarà diners. Feu servir el "
+"que us proveeix la natura!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "A company always needs a trail connection to a storage or warehouse, "
 "otherwise goods will remain at the company and not be collected."
 msgstr ""
+"Una companyia sempre necessita un camí que connecti amb el magatzem, si no "
+"es quedaran a la companyia i no podran ser recollides."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that you have to build a trail connecting your warehouse (or "
 "storage) and lumberjack."
 msgstr ""
+"Això vol dir que heu de construir un camí que connecti el vostre magatzem "
+"amb el llenyataire."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
+"Tasca: Construïu un llenyataire en una àrea boscosa i connecteu-lo a una "
+"carretera."
 
 #. This is the text body of a logbook page.
 msgid ""

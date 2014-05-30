@@ -41,43 +41,43 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Aneu a www.unknown-horizons.org si necessiteu ajuda o voleu posar-vos en contacte amb l''equip!'
-  - And now, let's start the actual game.
+  - I ara, comencem la partida.
   - [Pagebreak]
-  - [Headline, 'NEW TASK: SETTLE ON AN ISLAND']
+  - [Headline, 'NOVA TASCA: ESTABLIU-VOS EN UNA ILLA']
   - [Image, content/gui/images/background/hr.png]
-  - To move your ship, select it with a left click and right click on the location you want it to go to.
-  - Once you are near the coast, the anchor-like button you see in the overview tab will become active.
+  - Per moure el vostre vaixell, seleccioneu-lo amb el botó esquerre del ratolí i feu clic amb el dret al lloc on voleu anar.
+  - Quan sigueu prop de la costa, s'habilitarà a la pestanya de vista el botó en forma d'àncora.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - This indicates that you are able to build a warehouse there by pressing that button (called 'Build Settlement').
-  - Now a preview of your building is dragged around when you move the cursor.
-  - 'You can build on any spot where this preview is not shaded red.
+  - Això vol dir que podeu construir-hi un magatzem prement aquest botó (anomenat «Construir un assentament»).
+  - Ara podeu arrossegar amb el ratolí una vista prèvia del vostre edifici.
+  - 'Podeu construir-lo a qualsevol lloc on l''ombra de la vista prèvia no es torni vermella.
 
-    Click where you want to place your first building.'
+    Feu clic on vulgueu construir el vostre primer edifici.'
   - ''
   - [BoldLabel, 'Task: Build a warehouse at the coast.']
 
 - &LUMBERJACK
-  - [Message, Build a lumberjack and connect it to the warehouse using a trail.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACK']
+  - [Message, Construïu un llenyataire i connecteu-lo al magatzem amb un camí.]
+  - [Headline, 'NOVA TASCA: CONSTRUÏU UN LLENYATAIRE']
   - [Image, content/gui/images/background/hr.png]
-  - The construction material on your ship got unloaded automatically. You can now construct some basic buildings.
-  - We will start with building a lumberjack.
-  - This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.
-  - The fisherman needs some boards to build his vessel as well.
-  - In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.
+  - S'ha descarregat automàticament el material de construcció del vostre vaixell. Ara podeu construir alguns edificis bàsics.
+  - Començarem construint un llenyataire.
+  - Això és molt important en aquesta fase, per que els pals de fusta és la única cosa que es poden permetre els vostres mariners per aguantar les tendes.
+  - Els pescador també necessita planxes de fusta per construir-se una barca.
+  - Per construir llenyataires, obre el menú de construcció ja sigui fent clic a la icona grossa de sota el mini mapa o prement la tecla B.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The build menu is sorted by tiers.
-  - You are currently in the first tier (the Sailors level) so are offered only the basic buildings.
+  - El menú de construcció està ordenat per nivells.
+  - Ara sou al primer nivell (el nivell Mariners) i només disposes des edificis bàsics.
   - [Pagebreak]
   - '
 
-    As your civilization advances, you also gain more and more complex buildings.'
-  - For now, select the lumberjack under 'Companies' and build it in an area with some trees around.
-  - You can also plant trees later - but that costs money. Use what nature provided you with!
-  - A company always needs a trail connection to a storage or warehouse, otherwise goods will remain at the company and not be collected.
-  - This means that you have to build a trail connecting your warehouse (or storage) and lumberjack.
+    A mida que avanci la vostra civilització, disposareu de més edificis i de més complexos.'
+  - De moment, seleccioneu el fuster a «companyies» i construïu-lo en un àrea on hi hagi arbres al voltant.
+  - Més tard també podreu plantar arbres - però et costarà diners. Feu servir el que us proveeix la natura!
+  - Una companyia sempre necessita un camí que connecti amb el magatzem, si no es quedaran a la companyia i no podran ser recollides.
+  - Això vol dir que heu de construir un camí que connecti el vostre magatzem amb el llenyataire.
   - ''
   - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
   - Watch how a collector will fetch your first self-produced boards. Don't worry about recruiting workers for the lumberjack. That happens automatically.
@@ -662,4 +662,4 @@ metadata:
   locale: ca
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 10 translated messages, 181 untranslated messages.
+  translation_status: 33 translated messages, 158 untranslated messages.
