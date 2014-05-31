@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-28 11:54+0200\n"
+"PO-Revision-Date: 2014-05-31 16:11+0200\n"
 "Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.9\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -780,7 +780,7 @@ msgstr "Тип"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
-msgstr "Вооружение"
+msgstr "Оружие"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 msgid "Health"
@@ -794,22 +794,22 @@ msgstr "Статус"
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
 msgid "Aggressive"
-msgstr "Агрессивный"
+msgstr "Атаковать"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr "Удерживать позицию"
+msgstr "Держать позицию"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
-msgstr "Пассивно"
+msgstr "Защищаться"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
-msgstr "Бежать"
+msgstr "Отступать"
 
 #: content/gui/xml/mainmenu/credits.xml:471
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
@@ -854,7 +854,7 @@ msgstr "Запуск редактора"
 
 #: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
-msgstr "Возврат"
+msgstr "Вернуться"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 msgid "Actions"
@@ -862,19 +862,19 @@ msgstr "Действия"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
-msgstr "Прокрутить влево"
+msgstr "Прокрутка влево"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
-msgstr "Прокрутить вправо"
+msgstr "Прокрутка вправо"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:12
 msgid "Scroll up"
-msgstr "Прокрутить вверх"
+msgstr "Прокрутка вверх"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:13
 msgid "Scroll down"
-msgstr "Прокрутить вниз"
+msgstr "Прокрутка вниз"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
@@ -886,11 +886,11 @@ msgstr "Повернуть здание или карту против часо�
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr "Увеличить скорость игры"
+msgstr "Ускорить ход игры"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
-msgstr "Уменьшить скорость игры"
+msgstr "Замедлить ход игры"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
@@ -906,11 +906,11 @@ msgstr "Включить режим уничтожения"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
-msgstr "Вкл. режим строительства дорог"
+msgstr "Включить режим прокладки дорог"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr "Включить режим пипетки(клонирование зданий)"
+msgstr "Включить режим копирования построек"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -926,7 +926,7 @@ msgstr "Показать список кораблей"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
-msgstr "Показать судовой журнал"
+msgstr "Судовой журнал"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
@@ -938,23 +938,23 @@ msgstr "Быстрая загрузка"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
-msgstr "Переключить полупрозрачность элементов окружения"
+msgstr "Вкл./выкл. полупрозрачность окружения"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
-msgstr "Выделить область владения"
+msgstr "Показать область владений"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr "Отобразить полоски здоровья"
+msgstr "Вкл./выкл. шкалы здоровья"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
-msgstr "Фокус камеры на выделенном объекте"
+msgstr "Фокус камеры на выбранном объекте"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
-msgstr "Удалить выделенные единицы/сооружения"
+msgstr "Уничтожение выбранных объектов"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
@@ -966,29 +966,29 @@ msgstr "Снимок экрана"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Toggle showing FPS on/off"
-msgstr "Вкл/выкл отображение FPS"
+msgstr "Вкл./выкл. отображение FPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
-msgstr "Вкл/выкл сетку"
+msgstr "Вкл./выкл. сетку"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Show coordinate values (Debug)"
-msgstr "Показать значения координат (отладка)"
+msgstr "Показать значения координат"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr "Основной"
+msgstr "Основная"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr "Вторичный"
+msgstr "Вторичная"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
-msgstr "Восстановить значения по умолчанию"
+msgstr "Восстановить настройки по умолчанию"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default keys"
@@ -1045,7 +1045,7 @@ msgstr "Титры"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
-msgstr "Создать многопользовательскую игру"
+msgstr "Создать сетевую игру"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
@@ -1053,7 +1053,7 @@ msgstr "Лимит игроков:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr "Выйти в меню многопользовательской игры"
+msgstr "Выйти в меню сетевой игры"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
@@ -1063,7 +1063,7 @@ msgstr "Название игры:"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "Это будет показано другим игрокам, чтобы они опознали игру."
+msgstr "Будет показано другим игрокам, чтобы они опознали игру."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
@@ -1073,19 +1073,19 @@ msgstr "Безымянная игра"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr "Пароль игры:"
+msgstr "Пароль к игре:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr "Этот пароль требуется для присоединения к игре."
+msgstr "Этот пароль потребуется для присоединения к игре."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
-msgstr "Создать новую игру"
+msgstr "Создать игру"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
-msgstr "Лобби"
+msgstr "Холл игры"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
@@ -1093,7 +1093,7 @@ msgstr "Чат:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Exit gamelobby"
-msgstr "Покинуть лобби"
+msgstr "Покинуть холл"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
@@ -1113,11 +1113,11 @@ msgstr "Готов:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr "Установить \"Готов\" (необходимо для запуска игры)"
+msgstr "Чтобы начать игру, необходимо объявить о готовности"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr "Новая многопользовательская игра"
+msgstr "Новая сетевая игра"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Load game:"
@@ -1141,16 +1141,16 @@ msgstr "Обновить список активных игр"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
 msgid "Create game:"
-msgstr "Создать игру:"
+msgstr "Создать:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Create a new game"
-msgstr "Создать новую игру"
+msgstr "Создать игру"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Присоединиться к игре:"
+msgstr "Вступить:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1176,22 +1176,20 @@ msgstr "Во весь экран:"
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
-"Используйте SDL только в качестве запасного варианта. Может работать "
+"Используйте SDL исключительно как запасной вариант. Может работать "
 "нестабильно!"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
-msgstr "Пользовательская визуализация:"
+msgstr "Рендерер:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
-msgstr "Предел частоты кадров:"
+msgstr "Макс. частота кадров:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
-"Установите максимальную используемую частоту кадров. По умолчанию: 60 кадров "
-"в секунду."
+msgstr "Установите максимальную частоту кадров. Умолчание: 60 кадров в секунду."
 
 #: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
@@ -1215,7 +1213,7 @@ msgstr "Мышь"
 
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid "Scroll at map edge:"
-msgstr "Прокрутить к краю карты:"
+msgstr "Прокрутка у края карты:"
 
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid ""
@@ -1224,14 +1222,15 @@ msgstr "Прокрутка экрана при приближении курсо
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
-msgstr "Увеличение с фокусом на курсор:"
+msgstr "Приближение по курсору:"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
-"Фокус увеличения при скроллинге: Вкл. - курсор мыши, Выкл. - центр экрана."
+"Включено - при приближении колесом мыши центр экрана ориентируется на "
+"положение курсора. Выключено - центр экрана сохраняется."
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Middle mouse button pan:"
