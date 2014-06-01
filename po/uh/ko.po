@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-03-07 10:40+0200\n"
-"Last-Translator: Wooyoung Cho <newhero@gmail.com>\n"
+"PO-Revision-Date: 2014-06-01 18:44+0200\n"
+"Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -565,11 +565,10 @@ msgstr "자원 선택:"
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr "현재 자원 대신 당신이 선택한 자원이 표시됩니다. X를 눌러 비울(제거할) 수 있습니다."
+msgstr "현재 자원 대신 당신이 선택한 자원이 표시됩니다. X를 눌러 비울 수 있습니다."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
@@ -1046,43 +1045,43 @@ msgstr "플레이어 제한:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "다중 사용자 메뉴 나가기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
-msgstr ""
+msgstr "게임 이름:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
-msgstr ""
+msgstr "다른 플레이어들이 게임을 인식 할 수 있도록 표시됩니다."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "이름없는 게임"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr ""
+msgstr "게임의 암호:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr ""
+msgstr "이 게임의 암호를 입력합니다. 이 게임에 참여하는 데 필요합니다."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
-msgstr ""
+msgstr "이 새로운 게임을 만들기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
-msgstr ""
+msgstr "대기방"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
-msgstr ""
+msgstr "대화:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Exit gamelobby"
