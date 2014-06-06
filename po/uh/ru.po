@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-06-06 22:33+0200\n"
+"PO-Revision-Date: 2014-06-06 22:36+0200\n"
 "Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -753,7 +753,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
-msgstr "Юниты"
+msgstr "Силы"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
@@ -1041,7 +1041,7 @@ msgstr "Редактор"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr "Титры"
+msgstr "Авторы"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
@@ -1339,7 +1339,9 @@ msgstr "Сеть"
 
 #: content/gui/xml/mainmenu/settings.xml:222
 msgid "If set to 0, use the router default"
-msgstr "Если установлен 0, то используется маршрутизатор по умолчанию"
+msgstr ""
+"Если установлен 0, то используется маршрутизатор\n"
+"по умолчанию"
 
 #: content/gui/xml/mainmenu/settings.xml:222
 msgid "Network port:"
@@ -1609,8 +1611,8 @@ msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
-"Стройте пожарные депо и лечебницы, чтобы уберечь жителей от пожаров и "
-"болезней."
+"Чтобы уберечь жителей от пожаров и болезней, стройте пожарные депо и "
+"лечебницы."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
