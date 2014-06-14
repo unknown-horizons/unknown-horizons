@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-06-06 22:36+0200\n"
+"PO-Revision-Date: 2014-06-14 03:05+0200\n"
 "Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -902,7 +902,7 @@ msgstr "Вызвать меню строительства"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Enable destruct mode"
-msgstr "Включить режим уничтожения"
+msgstr "Включить режим ликвидации"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
@@ -1616,7 +1616,7 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Стройте хранилища, чтобы увеличить место для хранения."
+msgstr "Чтобы увеличить место для хранения товаров, стройте хранилища."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
@@ -1639,47 +1639,47 @@ msgstr "Вперемешку"
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr "Запуск движка…"
+msgstr "Запускаю движок…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr "Ловля рыбы…"
+msgstr "Ищу рыб…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr "Создание интерфейса…"
+msgstr "Рисую интерфейс…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr "Установка времени…"
+msgstr "Завожу часы…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr "Загрузка игровых данных…"
+msgstr "Перевариваю игровые данные…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr "Формирование островов…"
+msgstr "Леплю острова…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr "Подготовка шаблонов…"
+msgstr "Готовлю чертежи…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr "Заполнение мира водой…"
+msgstr "Заливаю мир водой…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr "Разведение животных…"
+msgstr "Выращиваю животных…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr "Подготовка ИИ…"
+msgstr "Уговариваю ИИ…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr "Зарывание кладов…"
+msgstr "Зарываю клады…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
