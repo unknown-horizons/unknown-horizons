@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-06-14 03:05+0200\n"
+"PO-Revision-Date: 2014-06-19 03:19+0200\n"
 "Last-Translator: Grigory Vershinin <dr.pepper.mox@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
@@ -1983,7 +1983,7 @@ msgstr "Игра"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr "Отключён"
+msgstr "Отключена"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
