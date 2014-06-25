@@ -106,6 +106,7 @@
 * Michal Čihař (nijel)
 
 #### Bulgarian
+* Nikolai Nikolov
 * Nikolay Kotrabakov (balward)
 
 #### Catalan
@@ -156,6 +157,7 @@
 * Cur5
 * Fabio Fernández (Catharsius)
 * Fede Muller
+* Gauekoizar
 * MicMic
 * Nikolai Woutlan
 * Rubén Viguera
@@ -171,7 +173,9 @@
 #### Finnish
 * Aleksi Kinnunen (alluk)
 * heze0
+* Olli Paasonen
 * Pihpe
+* Pyry Karapalo
 
 #### French
 * Antoine Beaupré
@@ -196,14 +200,18 @@
 * Adrián Chaves Fernández (Gallaecio)
 
 #### Croatian
+* Adis Zukanovic
 * Daniel Tominac
 * shile
+* T S
 
 #### Hindi
 * Kinshuk Sunil (kinshuksunil)
+* Saurabh Patil
 * supercracker111
 
 #### Hungarian
+* Lipták Krisztián
 * matyi
 * Szontágh Ferenc (ghostarthour)
 * probert
@@ -230,15 +238,16 @@
 * Yuki Shira (shirayuki)
 
 #### Korean
-* k ks
+* K Ks
 * Sebastian Sohn
+* Wooyoung Cho
 
 #### Lithuanian
 * Mantas Kondrotas (Anielius)
 * Mantas Kriaučiūnas
 
 #### Malayalam
-* Cebin
+* Cebin Joseph Benny
 
 - - - - -
 
@@ -249,6 +258,7 @@
 * Jared Isaksen (JeThro)
 
 #### Dutch
+* Dieter Adriaenssens
 * Jasper Tepper (Shadow23)
 * Joenit S. (joenit)
 * Luth
@@ -262,9 +272,11 @@
 
 #### Polish
 * Adrian Marcinkowski (Amfidiusz)
-* Mateusz Bartkowski (Eugen)
+* Eerozeteen
+* Gilead
 * Jan Krzysztof Zawadzki (kzawadzki)
 * janczarny
+* Mateusz Bartkowski (Eugen)
 * Natrius
 * Pic
 * Piotr B
@@ -277,11 +289,13 @@
 #### Portuguese
 * bdias
 * Guilherme Nogueira
+* João Sena Cardoso
 * Luis Coehlo
 * Nelson Marques (nmarques)
 * Nuno Alves (MadMonk)
 * Pedro Henrique
 * Sérgio Lopes (Knitter)
+* Zoé Junior
 
 #### Brazilian Portuguese
 * abner.silva
@@ -310,16 +324,20 @@
 * burlachenko
 * cooland
 * Fedor Andreev (pro100fed)
+* Grigory Vershinin
+* Igor Afonkin
 * Michael Tsukanov (ZukinZIn)
 * Sergei Chistyakov (devcode)
 * Sergey Stepanov
 * Torv
+* Владимир Хоменко
 * Вячеслав Гостюхин (scazy)
 
 #### Slovenian
 * Andrej Žnidaršič (andrejz)
 
 #### Swedish
+* Chris Browne
 * Fringillus
 * Karar Al-remahy
 * knutas
@@ -329,6 +347,7 @@
 #### Turkish
 * Ceren Kocaman (CerenK)
 * cuil
+* Ersan Doru Doru
 * mezdap
 * Volkan Gezer (vgezer)
 
@@ -344,6 +363,8 @@
 
 #### Traditional Chinese
 * Marco Leong
+* Yes Stone
+* Ezjerry Liao
 
 
 ## Packagers ##
