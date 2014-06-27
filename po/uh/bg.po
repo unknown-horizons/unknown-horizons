@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-04-03 18:35+0200\n"
-"Last-Translator: Nikolay Kotrabakov <balward@mail.com>\n"
+"PO-Revision-Date: 2014-06-27 17:07+0200\n"
+"Last-Translator: Bojana <bojana.vitanova@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/uh/uh/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -714,6 +714,8 @@ msgstr "Земя"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
+"Количество използваема земп, т.е. количество земя, която може да бъде "
+"използвана за създаване на сгради"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -949,7 +951,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Премахни избраните единици/сгради"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
@@ -984,7 +986,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
-msgstr ""
+msgstr "Върни първоначалните настройки"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #, fuzzy
@@ -1014,7 +1016,7 @@ msgstr "Зареждане ..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Промени фона"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1035,7 +1037,7 @@ msgstr "Напускане"
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "Редактор"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
@@ -1056,7 +1058,7 @@ msgstr "Изход към мултиплейър меню"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
-msgstr ""
+msgstr "Заглавие на играта:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
@@ -1071,7 +1073,7 @@ msgstr ""
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr ""
+msgstr "Парола на играта:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
@@ -1095,7 +1097,7 @@ msgstr "Излизане от геймлоби"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr ""
+msgstr "Играта ще започне веднага щом всички играчи са готови."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
@@ -1103,7 +1105,7 @@ msgstr "Детайли на играта:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
-msgstr ""
+msgstr "Цвят"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
@@ -1123,7 +1125,7 @@ msgstr "Зареждане на игра:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
-msgstr ""
+msgstr "Зареди запазена игра"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
@@ -1417,7 +1419,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "Изберете език:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
@@ -1440,7 +1442,7 @@ msgstr "Пирати"
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr ""
+msgstr "Бедствия"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
@@ -1478,7 +1480,7 @@ msgstr ""
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Не можете да си позволите да купите това"
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
