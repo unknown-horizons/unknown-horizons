@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-05-30 13:48+0200\n"
+"PO-Revision-Date: 2014-06-30 14:45+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/tutorial/ca/>"
 "\n"
@@ -258,43 +258,52 @@ msgid ""
 "worry about recruiting workers for the lumberjack. That happens "
 "automatically."
 msgstr ""
+"Observeu com un recol·lector recull la vostra primera producció de taulons. "
+"No cal que patiu a reclutar treballadors per al llenyataire. Es fa "
+"automàticament."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
-msgstr ""
+msgstr "Construïu un caçador i un pescador. Connecteu-los amb el magatzem."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "NOVA TASCA: SUBMINISTRE D'ALIMENTS"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"També haureu de disposar d'algunes empreses que produeixin menjar, per que "
+"la gent, en general (i sobretot els mariners) tenen molta gana."
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
-msgstr ""
+msgstr "Les empreses disponibles al primer nivell són el Caçador i el Pescador."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
-msgstr ""
+msgstr "El caçador caça animals al bosc, així que necessita tenir arbres aprop."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr ""
+msgstr "Observeu que podeu situar el caçador aprop del llenyataire."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Pot passar que els animals no es reprodueixin prou ràpid o simplement que "
+"s'amaguin bé."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Conclusió: no pots confiar en el caçador si necessites un subministrament "
+"continu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -302,55 +311,69 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"El pescador necessita un edifici coster com el magatzem i un banc de peixos "
+"aprop."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Construirà una petita barca de rems i pescarà peixos."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"És una font molt constant al cost d'un temps una mica més llarg per unitat "
+"d'aliment."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Un petit assentament com el vostre pot fer servir les dues empreses, i pots "
+"valorar millor els pros i contres veient la comparativa."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a hunter and a fisher."
-msgstr ""
+msgstr "Tasca: Construïu un caçador i un pescador."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "No us oblideu de connectar-los amb camins amb el magatzem!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
+"Construïu una plaça principal. Trieu una àrea amb pocs edificis econòmics."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "NOVA TASCA: LA PLAÇA PRINCIPAL"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"Els vostres residents necessiten una plaça principal on poder obtenir "
+"productes."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
 msgstr ""
+"Això vol dir que necessiten un camí que connecti casa seva amb la plaça."
 
 #. This is the text body of a logbook page.
 msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
+"Tots els productes del magatzem estan disponibles a aquesta «plaça del "
+"mercat», de manera que els residents no han d'anar fins al pescador o fins "
+"al magatzem."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -358,38 +381,50 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Heu d'evitar posar les tendes de l'assentament massa aprop del llenyataire "
+"per que construir tendes traurà els arbres que el llenyataire necessita per "
+"produir taulons."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
 msgstr ""
+"Les empreses funcionen sense haver d'estar connectades a les tendes, així "
+"que no us cal fer carreteres entre la plaça principal i el llenyataire, per "
+"exemple."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a main square."
-msgstr ""
+msgstr "Tasca: Construïu una plaça principal."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"Ara mirem d'a prop la plaça principal."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"A la pestanya «Finances» pots veure un full de comptes d'aquesta illa, que "
+"conté les despeses que pague i els impostos que ingresseu."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Els elements «vendes» i «compra» fan referència al balanç dels vostres "
+"negocis i els explicarem més endavant."
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Si el vostre balanç és positiu, esteu tenint beneficis."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -397,37 +432,47 @@ msgid ""
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
+"En les diferents pestanyes podeu veure estadístiques sobre els vostres "
+"habitants. Aquí també podeu establir l'impost global o permetre o denegar "
+"als vostres habitants avançar al següent nivell."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "Construïu una tenda i connecteu-la a la plaça principal."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NOVA TASCA: EDIFICIS RESIDENCIALS"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Els colons volen dormir sota taulat, si no no voldran viure a la vostra "
+"ciutat! Heu de proveir-los de tendes."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
 msgstr ""
+"Les tendes són els edificis residencials bàsics. Els vostres habitants "
+"voldran millorar-les quan arribin a nivells superiors."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
 msgstr ""
+"Tingueu present que la millora de cada edifici requerirà materials de "
+"construcció, com ara fusta per la primera millora."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"Considereu a deshabilitar la millora si teniu poc estoc d'aquests materials."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -435,23 +480,31 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Els habitants no seran gaire útils fins que no consumeixin els productes que "
+"produïu - però com a mínim pagaran impostos i de moment és la única manera "
+"que teniu de fer diners!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
+"Tasca: Construïu una tenda i connecteu-la a la plaça principal. Les tendes "
+"no cal que estiguin connectades a cap empresa."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build at least three additional tents and connect them to the main square."
 msgstr ""
+"Construïu com a mínim 3 tendes més i connecteu-les a la plaça principal."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Let's have a look at the tent overview tab."
 msgstr ""
+"\n"
+"Donem un cop d'ull a la pestanya d'informació de la tenda."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -460,11 +513,16 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Podeu veure\n"
+"* la felicitat dels qui hi viuen,\n"
+"* els impostos que paguen i\n"
+"* els recursos que demanen."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Si es satisfan les demandes, tant la felicitat com els impostos pujaran."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -472,14 +530,17 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"Si no, la felicitat i els ingressos baixaran. Podria ser que els habitants "
+"estiguin tant enfadats que senzillament marxin del poble, deixant darrere "
+"unes runes decadents."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Fixeu-vos que també podeu canviar l'impost global aquí."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build at least three additional tents."
-msgstr ""
+msgstr "Tasca: Construïu com a mínim tres tendes més."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -487,6 +548,9 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"TRUC: Prement la tecla de MAJÚSCULES podeu construir múltiples edificis del "
+"mateix tipus."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a signal fire at the coast close to your warehouse."

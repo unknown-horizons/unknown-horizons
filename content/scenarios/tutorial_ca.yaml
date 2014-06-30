@@ -80,93 +80,93 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Això vol dir que heu de construir un camí que connecti el vostre magatzem amb el llenyataire.
   - ''
   - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Watch how a collector will fetch your first self-produced boards. Don't worry about recruiting workers for the lumberjack. That happens automatically.
+  - Observeu com un recol·lector recull la vostra primera producció de taulons. No cal que patiu a reclutar treballadors per al llenyataire. Es fa automàticament.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a hunter and a fisher. Connect them to the warehouse.]
-  - [Headline, 'NEW TASK: FOOD SUPPLY']
+  - [Message, Construïu un caçador i un pescador. Connecteu-los amb el magatzem.]
+  - [Headline, 'NOVA TASCA: SUBMINISTRE D''ALIMENTS']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter and Fisher.
-  - The Hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter close to the lumberjack's forest.
-  - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the hunter is not too reliable if you need continuous supply.'
+  - També haureu de disposar d'algunes empreses que produeixin menjar, per que la gent, en general (i sobretot els mariners) tenen molta gana.
+  - Les empreses disponibles al primer nivell són el Caçador i el Pescador.
+  - El caçador caça animals al bosc, així que necessita tenir arbres aprop.
+  - Observeu que podeu situar el caçador aprop del llenyataire.
+  - Pot passar que els animals no es reprodueixin prou ràpid o simplement que s'amaguin bé.
+  - 'Conclusió: no pots confiar en el caçador si necessites un subministrament continu.'
   - [Pagebreak]
   - '
 
-    The Fisher needs a coastal building site like the warehouse and a fish school in range.'
-  - He will build a small rowing vessel and catch some fish.
-  - This is a very constant supply at the cost of a slightly longer production time per unit of food.
-  - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
+    El pescador necessita un edifici coster com el magatzem i un banc de peixos aprop.'
+  - Construirà una petita barca de rems i pescarà peixos.
+  - És una font molt constant al cost d'un temps una mica més llarg per unitat d'aliment.
+  - Un petit assentament com el vostre pot fer servir les dues empreses, i pots valorar millor els pros i contres veient la comparativa.
   - ''
   - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Don't forget to connect them to your warehouse with trails!
+  - No us oblideu de connectar-los amb camins amb el magatzem!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a main square. Choose an area without many economy buildings.]
-  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - [Message, Construïu una plaça principal. Trieu una àrea amb pocs edificis econòmics.]
+  - [Headline, 'NOVA TASCA: LA PLAÇA PRINCIPAL']
   - [Image, content/gui/images/background/hr.png]
-  - Your residents need a main square where they can fetch their goods from.
+  - Els vostres residents necessiten una plaça principal on poder obtenir productes.
   - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
+  - Tots els productes del magatzem estan disponibles a aquesta «plaça del mercat», de manera que els residents no han d'anar fins al pescador o fins al magatzem.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
+  - Heu d'evitar posar les tendes de l'assentament massa aprop del llenyataire per que construir tendes traurà els arbres que el llenyataire necessita per produir taulons.
+  - Les empreses funcionen sense haver d'estar connectades a les tendes, així que no us cal fer carreteres entre la plaça principal i el llenyataire, per exemple.
   - ''
   - [BoldLabel, 'Task: Build a main square.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the main square.'
+    Ara mirem d''a prop la plaça principal.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - A la pestanya «Finances» pots veure un full de comptes d'aquesta illa, que conté les despeses que pague i els impostos que ingresseu.
+  - Els elements «vendes» i «compra» fan referència al balanç dels vostres negocis i els explicarem més endavant.
+  - Si el vostre balanç és positiu, esteu tenint beneficis.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - En les diferents pestanyes podeu veure estadístiques sobre els vostres habitants. Aquí també podeu establir l'impost global o permetre o denegar als vostres habitants avançar al següent nivell.
 
 - &FIRSTTENT
   - [Message, Build a tent and connect it to the main square if necessary.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Headline, 'NOVA TASCA: EDIFICIS RESIDENCIALS']
   - [Image, content/gui/images/background/hr.png]
-  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
+  - Els colons volen dormir sota taulat, si no no voldran viure a la vostra ciutat! Heu de proveir-los de tendes.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
-  - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
+  - Les tendes són els edificis residencials bàsics. Els vostres habitants voldran millorar-les quan arribin a nivells superiors.
+  - Tingueu present que la millora de cada edifici requerirà materials de construcció, com ara fusta per la primera millora.
+  - Considereu a deshabilitar la millora si teniu poc estoc d'aquests materials.
+  - Els habitants no seran gaire útils fins que no consumeixin els productes que produïu - però com a mínim pagaran impostos i de moment és la única manera que teniu de fer diners!
   - ''
   - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
 
 - &MORETENTS
-  - [Message, Build at least three additional tents and connect them to the main square.]
+  - [Message, Construïu com a mínim 3 tendes més i connecteu-les a la plaça principal.]
   - '
 
-    Let''s have a look at the tent overview tab.'
-  - 'You can see
+    Donem un cop d''ull a la pestanya d''informació de la tenda.'
+  - 'Podeu veure
 
-    * the happiness of these residents,
+    * la felicitat dels qui hi viuen,
 
-    * the taxes they pay and
+    * els impostos que paguen i
 
-    * the resources they demand.'
-  - If their demands are fulfilled, happiness and thus your tax income increase.
-  - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
-  - Note that you can also change the global tax settings here, too.
+    * els recursos que demanen.'
+  - Si es satisfan les demandes, tant la felicitat com els impostos pujaran.
+  - Si no, la felicitat i els ingressos baixaran. Podria ser que els habitants estiguin tant enfadats que senzillament marxin del poble, deixant darrere unes runes decadents.
+  - Fixeu-vos que també podeu canviar l'impost global aquí.
   - ''
   - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
-    TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
+    TRUC: Prement la tecla de MAJÚSCULES podeu construir múltiples edificis del mateix tipus.'
 
 - &SIGNALFIRE
   - [Message, Build a signal fire at the coast close to your warehouse.]
@@ -662,4 +662,4 @@ metadata:
   locale: ca
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 33 translated messages, 158 untranslated messages.
+  translation_status: 77 translated messages, 114 untranslated messages.
