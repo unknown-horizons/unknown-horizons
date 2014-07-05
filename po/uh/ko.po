@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-06-07 01:08+0200\n"
-"Last-Translator: k ks <kmshts@naver.com>\n"
+"PO-Revision-Date: 2014-07-05 07:43+0200\n"
+"Last-Translator: cho bkwon <chobkwon@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -1104,9 +1104,8 @@ msgid "Ready:"
 msgstr "준비:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
-#, fuzzy
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr "??준비하기 위해 상태를 설정해주십시요-준비상태로 설정해주십시요(게임 시작에 필요함)"
+msgstr "준비 상태를 설정 합니다(게임 시작을 위해 필요한)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1121,9 +1120,8 @@ msgid "Load a saved game"
 msgstr "저장된 게임을 불러오기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
-#, fuzzy
 msgid "Active games:"
-msgstr "??활성화 게임:"
+msgstr "활성 게임:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
 msgid "Refresh list:"
@@ -1131,15 +1129,15 @@ msgstr "??새로고친 목록:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "활성 게임의 목록 새로 고침"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
 msgid "Create game:"
-msgstr ""
+msgstr "게임 생성:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Create a new game"
-msgstr ""
+msgstr "이 새로운 게임을 만들기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
 msgid "Join game:"
