@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons fe13011\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-06-30 14:45+0200\n"
+"PO-Revision-Date: 2014-07-06 21:01+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/tutorial/ca/>"
 "\n"
@@ -554,47 +554,59 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a signal fire at the coast close to your warehouse."
-msgstr ""
+msgstr "Construïu un senyal de foc a la costa, prop del magatzem."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "NOVA TASCA: CONSTRUÏU UN SENYAL DE FOC"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Can you see the ship passing your island from time to time? That ship "
 "belongs to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Heu vist el vaixell que passar prop de la vostra illa de tant en tant? És el "
+"vaixell de comerciant lliure, un dels primers colonitzadors de l'arxipèlag."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"El comerciant proveirà al vostre assentament amb els materials necessaris i "
+"que encara no podeu produir."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can also sell surpluses of your production, but in general consuming "
 "them (by building more tents) instead of selling them yields more profit."
 msgstr ""
+"També podeu vendre els vostres excedents però, en general, consumir-los ("
+"construint més tendes) en comptes de vendre'ls us donarà més benefici."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Normally the trader ships just sail around and look for deals, but you can "
 "speed things up a bit."
 msgstr ""
+"Els vaixells del comerciant simplement van navegant buscant negoci, però "
+"podeu fer que la cosa vagi una mica més ràpid."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For this purpose, build a signal fire at the coast near your warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"Per fer-ho, construïu una senyal de foc a la costa, prop del vostre "
+"magatzem. Mostrarà als vaixells el camí cap al vostre assentament."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The signal fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"El senyal de foc han d'abastar l'àrea per on passen els vaixells per "
+"atreure'ls."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -602,40 +614,47 @@ msgid ""
 "After this little advertisment, the trader will also stop by and look into "
 "your warehouse if it planned to sail past it."
 msgstr ""
+"\n"
+"Un cop enllestit aquest petit anunci, el comerciant s'aturarà a veure que "
+"teniu al magatzem cada cop que hi passi aprop."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
-msgstr ""
+msgstr "Podeu proposar-li negocis amb la pestanya «Compra/Venta»."
 
 #. This is the text body of a logbook page.
 msgid "At the 'sailors' tier, you are equipped with three trading slots."
-msgstr ""
+msgstr "Al nivell «Mariners», disposeu de 3 caselles de comerç."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
 "vice versa."
 msgstr ""
+"Feu clic a la icona petita per canviar el mode de la casella de «Comprar» a "
+"«Vendre» i a la inversa."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"Feu clic a la casella per escollir el producte que voleu negociar. Més "
+"endavant ho explicarem millor, un cop estigueu apunt de fer negocis."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a signal fire at the coast close to your warehouse."
-msgstr ""
+msgstr "Tasca: Construïu un senyal de foc a la costa, prop del magatzem."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Reach an island stock of at least 30 tools. Note that this might take a "
 "while."
-msgstr ""
+msgstr "Aconseguiu un estoc mínim de 30 eines. Tardareu una miqueta."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "NOVA TASCA: APRENEU A NEGOCIAR"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -644,29 +663,42 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
+"Molt bé! El comerciant lliure ara s'aturarà añ vostre magatzem de tant en "
+"tant.\n"
+"\n"
+"Continuem el nostre tutorial de com fer negocis."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After selecting a particular type of good, the green bar across the bottom "
 "of the slot (if visible) shows you how much you have in stock of this good."
 msgstr ""
+"Després d'escollir un tipus particular de producte, la barra verda de sota "
+"la casella (si està visible) us mostra quina quantitat del producte que "
+"teniu en estoc."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Dragging the slider on the right of each slot determines your 'target value' "
 "which has a different meaning on 'Buy' and 'Sell'."
 msgstr ""
+"Movent la barra de desplaçament cap a la dreta de cada casella determina el «"
+"valor objectiu» que no vol dir «Comprar» o «Vendre»."
 
 #. This is the text body of a logbook page.
 msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock."
 msgstr ""
+"Quan compreu, comprareu suficient producte per assolir el «valor objectiu» "
+"de l'estoc."
 
 #. This is the text body of a logbook page.
 msgid ""
 "When selling, the 'target value' is the stock amount at which you will "
 "always stop selling until you get more of that resource again."
 msgstr ""
+"Quan vengueu, el «valor objectiu» de l'estoc és la quantitat de producte a "
+"la qual deixareu de vendre fins que en torneu a tenir més un altre cop."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -675,50 +707,67 @@ msgid ""
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most."
 msgstr ""
+"\n"
+"Per exemple:\n"
+"Si teniu una casella «compar» i teniu 5 tones en estoc, la barra de "
+"desplaçament posada a 9 tones farà que en compreu 4 tones més com a màxim."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
+"La venda funciona d'una forma similar. Una casella «Venda» amb 18 tones en "
+"estoc i la barra de desplaçament posada a 13 vendrà fins a 5 tones."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If the free trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
+"De tota manera, si el comerciant lliure només li interessa comprar o vendre "
+"una quantitat inferior de la que teniu configurada, us haureu de conformar i "
+"esperar que torni."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
 "It is NOT possible to change prices manually!"
 msgstr ""
+"Unknown Horizons disposa d'un càlcul de preus intel·ligent, de manera que el "
+"valor d'una unitat pot variar.\n"
+"NO podeu canviar els preus manualment!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
+"Podeu veure el vostre balanç de comerç a la pestanya «Finances» comparant-hi "
+"els valors de «Vendes» i «compres»."
 
 #. This is the text body of a logbook page.
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"TASCA: Compreu tantes eines com us facin falta per arribar a tenir 30 eines "
+"en estoc!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a pavilion with connection to the tents."
-msgstr ""
+msgstr "Construïu un pavelló connectat amb les tendes."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "NOVA TASCA: CONSTRUÏU UN PAVELLÓ"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "En tindrem prou amb aquestes eines de moment. Bona feina!"
 
 #. This is the text body of a logbook page.
 msgid "You now provide housing, a main square and food to your inhabitants."
 msgstr ""
+"Ara ja proporcioneu casa, una plaça principal i menjar als vostres habitants."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -726,36 +775,47 @@ msgid ""
 "that in the marketplace or tent tab - your sailors want a basic building "
 "where they can pray."
 msgstr ""
+"Però encara queda una demanda que no satisfeu. Podeu comprovar-ho a la "
+"pestanya del mercat o de les tendes: els vostres mariners volen un edifici "
+"bàsic on puguin pregar."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The solution is a pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
+"La solució és un pavelló on el mossèn del poble pugui protegir-se del sol "
+"fàcilment."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Service buildings like this also need to be connected to the tents with a "
 "trail, else your inhabitants feel unable to reach them."
 msgstr ""
+"Els edificis de serveis com aquest també han d'estar connectat amb les "
+"tendes amb un camí, si no els vostres habitants no hi podran anar."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Note that faith is treated like a physical resource!"
 msgstr ""
+"\n"
+"Penseu que la fe es tracta com un recurs físic!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(pavilion) to pick up faith there."
 msgstr ""
+"Això vol dir que els vostres habitants necessiten un camí que els connecti "
+"amb el productor (pavelló) per recollir-hi fe."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After some time, they will have consumed it and then again look for a "
 "producer to collect more faith."
-msgstr ""
+msgstr "Passat un temps, l'hauran consumit i hi hauran d'anar a buscar-ne més."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -764,12 +824,18 @@ msgid ""
 "tents.\n"
 "The road connection is required as well."
 msgstr ""
+"Important:\n"
+"NO N'HI HA PROU que l'edifici siguin a una determinada distancia de les "
+"tendes.\n"
+"També hi ha de connectar un camí."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"Tasca: Construïu un pavelló amb un camí fins a les tendes per satisfer la "
+"demanda de fer dels vostres mariners."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""

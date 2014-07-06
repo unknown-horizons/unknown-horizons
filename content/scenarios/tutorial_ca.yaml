@@ -169,79 +169,79 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     TRUC: Prement la tecla de MAJÚSCULES podeu construir múltiples edificis del mateix tipus.'
 
 - &SIGNALFIRE
-  - [Message, Build a signal fire at the coast close to your warehouse.]
-  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
+  - [Message, 'Construïu un senyal de foc a la costa, prop del magatzem.']
+  - [Headline, 'NOVA TASCA: CONSTRUÏU UN SENYAL DE FOC']
   - [Image, content/gui/images/background/hr.png]
-  - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
-  - The trader will supply your settlement with necessary goods which you can't produce yet.
-  - You can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling them yields more profit.
-  - Normally the trader ships just sail around and look for deals, but you can speed things up a bit.
+  - Heu vist el vaixell que passar prop de la vostra illa de tant en tant? És el vaixell de comerciant lliure, un dels primers colonitzadors de l'arxipèlag.
+  - El comerciant proveirà al vostre assentament amb els materials necessaris i que encara no podeu produir.
+  - També podeu vendre els vostres excedents però, en general, consumir-los (construint més tendes) en comptes de vendre'ls us donarà més benefici.
+  - Els vaixells del comerciant simplement van navegant buscant negoci, però podeu fer que la cosa vagi una mica més ràpid.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a signal fire at the coast near your warehouse. It will show ships the way to your settlement.
-  - The signal fire has to cover the area which the ships pass through to catch them.
+  - Per fer-ho, construïu una senyal de foc a la costa, prop del vostre magatzem. Mostrarà als vaixells el camí cap al vostre assentament.
+  - El senyal de foc han d'abastar l'àrea per on passen els vaixells per atreure'ls.
   - [Pagebreak]
   - '
 
-    After this little advertisment, the trader will also stop by and look into your warehouse if it planned to sail past it.'
-  - You can propose deals via the warehouse tab "Buy/Sell".
+    Un cop enllestit aquest petit anunci, el comerciant s''aturarà a veure que teniu al magatzem cada cop que hi passi aprop.'
+  - Podeu proposar-li negocis amb la pestanya «Compra/Venta».
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - At the 'sailors' tier, you are equipped with three trading slots.
-  - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
-  - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
+  - Al nivell «Mariners», disposeu de 3 caselles de comerç.
+  - Feu clic a la icona petita per canviar el mode de la casella de «Comprar» a «Vendre» i a la inversa.
+  - Feu clic a la casella per escollir el producte que voleu negociar. Més endavant ho explicarem millor, un cop estigueu apunt de fer negocis.
   - ''
   - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
-  - [Headline, 'NEW TASK: LEARN TO TRADE']
+  - [Message, Aconseguiu un estoc mínim de 30 eines. Tardareu una miqueta.]
+  - [Headline, 'NOVA TASCA: APRENEU A NEGOCIAR']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your warehouse from time to time.
+  - 'Molt bé! El comerciant lliure ara s''aturarà añ vostre magatzem de tant en tant.
 
 
-    Let''s continue our tutorial on how to trade.'
-  - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
-  - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
-  - When buying, you will buy sufficient to hold your 'target value' in stock.
-  - When selling, the 'target value' is the stock amount at which you will always stop selling until you get more of that resource again.
+    Continuem el nostre tutorial de com fer negocis.'
+  - Després d'escollir un tipus particular de producte, la barra verda de sota la casella (si està visible) us mostra quina quantitat del producte que teniu en estoc.
+  - Movent la barra de desplaçament cap a la dreta de cada casella determina el «valor objectiu» que no vol dir «Comprar» o «Vendre».
+  - Quan compreu, comprareu suficient producte per assolir el «valor objectiu» de l'estoc.
+  - Quan vengueu, el «valor objectiu» de l'estoc és la quantitat de producte a la qual deixareu de vendre fins que en torneu a tenir més un altre cop.
   - [Pagebreak]
   - '
 
-    For example:
+    Per exemple:
 
-    Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.'
-  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
-  - If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
-  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
+    Si teniu una casella «compar» i teniu 5 tones en estoc, la barra de desplaçament posada a 9 tones farà que en compreu 4 tones més com a màxim.'
+  - La venda funciona d'una forma similar. Una casella «Venda» amb 18 tones en estoc i la barra de desplaçament posada a 13 vendrà fins a 5 tones.
+  - De tota manera, si el comerciant lliure només li interessa comprar o vendre una quantitat inferior de la que teniu configurada, us haureu de conformar i esperar que torni.
+  - 'Unknown Horizons disposa d''un càlcul de preus intel·ligent, de manera que el valor d''una unitat pot variar.
 
-    It is NOT possible to change prices manually!'
-  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
+    NO podeu canviar els preus manualment!'
+  - Podeu veure el vostre balanç de comerç a la pestanya «Finances» comparant-hi els valors de «Vendes» i «compres».
   - ''
   - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a pavilion with connection to the tents.]
-  - [Headline, 'NEW TASK: BUILD A PAVILION']
+  - [Message, Construïu un pavelló connectat amb les tendes.]
+  - [Headline, 'NOVA TASCA: CONSTRUÏU UN PAVELLÓ']
   - [Image, content/gui/images/background/hr.png]
-  - Those tools will be enough for the moment. Well done!
-  - You now provide housing, a main square and food to your inhabitants.
-  - Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.
-  - The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
+  - En tindrem prou amb aquestes eines de moment. Bona feina!
+  - Ara ja proporcioneu casa, una plaça principal i menjar als vostres habitants.
+  - 'Però encara queda una demanda que no satisfeu. Podeu comprovar-ho a la pestanya del mercat o de les tendes: els vostres mariners volen un edifici bàsic on puguin pregar.'
+  - La solució és un pavelló on el mossèn del poble pugui protegir-se del sol fàcilment.
+  - Els edificis de serveis com aquest també han d'estar connectat amb les tendes amb un camí, si no els vostres habitants no hi podran anar.
   - [Pagebreak]
   - '
 
-    Note that faith is treated like a physical resource!'
-  - This means that your inhabitants need a road connection to the producer (pavilion) to pick up faith there.
-  - After some time, they will have consumed it and then again look for a producer to collect more faith.
+    Penseu que la fe es tracta com un recurs físic!'
+  - Això vol dir que els vostres habitants necessiten un camí que els connecti amb el productor (pavelló) per recollir-hi fe.
+  - Passat un temps, l'hauran consumit i hi hauran d'anar a buscar-ne més.
   - 'Important:
 
-    It is NOT enough that the building is merely within a certain range of the tents.
+    NO N''HI HA PROU que l''edifici siguin a una determinada distancia de les tendes.
 
-    The road connection is required as well.'
+    També hi ha de connectar un camí.'
   - ''
   - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
@@ -662,4 +662,4 @@ metadata:
   locale: ca
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 77 translated messages, 114 untranslated messages.
+  translation_status: 116 translated messages, 75 untranslated messages.
