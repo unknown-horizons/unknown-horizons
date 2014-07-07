@@ -254,14 +254,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 주민이 정기적으로 주요 광장 및 공연장을 방문 할 수 있고 식량 공급이 충분하다면, 이제 모든 요구는 성취됩니다.
   - 선원들이 충분히 행복하면 '개척자'라고 불리는 단계로 진급할 수 있습니다.
   - 당신은 주민들의 모든 요구를 충족시켰으므로 주민들을 더욱 행복하게 하려면 세금을 낮추는 방법 밖에 없습니다.
-  - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
+  - 아마 조만간 파산으로 이어질 것 때문에, 항상 낮은 세금으로 지속하지 마십시오. 당분간은 무엇을하는지 아는 경우는 그래도 괜찮습니다.
   - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the main square.'
+    이러한 주거 개선은 자원이 필요하므로 주요 광장에서 제한될 수 있습니다.'
   - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
-  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
+  - 업그레이드 된 주택은 더 많은 주민을 수용합니다, 그리고 개척자도 선원보다 더 많은 세금을 지불합니다.
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
   - ''
   - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
@@ -272,13 +272,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, '농장을 건설하고, 주변에 약간의 빈공터를 확보해두세요.']
   - [Headline, '새로운 임무: 농장 건설']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
-  - Now you have access to new buildings, take a look at the Build menu again.
+  - 축하합니다! 주민의 일부가 계층II에 도달했습니다!
+  - 이젠 지금 새로운 건물에 접근할수 있습니다, 건설 메뉴를 다시 봐보세요.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - A shiny new tab appeared there.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the farm).
-  - The farm is a very special production building since it can produce not only one, but very many (and different) goods if you choose.
+  - 그곳에 빛나는 새로운 탭이 나타났습니다.
+  - 개척자가 천을 요구할 것입니다. 양털실(농장에서 생산되는 제품중의 하나)로 만든 천의 생산라인을 설정 해야합니다.
+  - 농장은 매우 특별한 생산 건물입니다. 왜냐면 하나만 생산하지 않고  귀하가 원하는 매우 많은 제품을 생산하기 때문입니다.
   - The output of farms depends on what kind of fields you build around it.
   - [Pagebreak]
   - '
@@ -662,4 +662,4 @@ metadata:
   locale: ko
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 148 translated messages, 43 untranslated messages.
+  translation_status: 156 translated messages, 3 fuzzy translations, 32 untranslated messages.
