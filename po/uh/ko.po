@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-15 18:24+0200\n"
+"PO-Revision-Date: 2014-07-15 18:53+0200\n"
 "Last-Translator: ks k <kmshts@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -1406,7 +1406,7 @@ msgstr "언어 선택:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr "인공지능 플레이어"
+msgstr "인공지능 플레이어:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
@@ -1451,7 +1451,7 @@ msgstr "오류"
 
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
 msgid "Failed to save."
-msgstr "저장하기 실패"
+msgstr "저장하기 실패."
 
 #: horizons/component/tradepostcomponent.py:190
 msgid "The trade partner does not sell this."
@@ -1491,7 +1491,7 @@ msgstr ""
 
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
-msgstr "빠른 저장 실패"
+msgstr "빠른 저장 실패."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
@@ -2027,7 +2027,7 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:227
 msgid "Map size:"
-msgstr "지도 크기"
+msgstr "지도 크기:"
 
 #: horizons/gui/modules/singleplayermenu.py:228
 msgid "Water:"
@@ -2088,7 +2088,7 @@ msgstr ""
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr "이 힌트를 삭제하려면 H를 누르세요."
+msgstr "이 힌트를 삭제하려면 H를 누르세요"
 
 #: horizons/gui/tabs/boatbuildertabs.py:47
 msgid "Boat builder overview"
