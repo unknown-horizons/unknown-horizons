@@ -1263,31 +1263,31 @@ msgstr "지도의 미니맵 회전:"
 
 #: content/gui/xml/mainmenu/settings.xml:169
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "정기적으로 지도 회전 때마다 미니맵 회전 여부"
+msgstr "일반 지도가 회전할때마다 미니맵도 같이 회전할지 여부"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
-msgstr "중단된 건물:"
+msgstr "중단되지 않은 건물:"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr "활성화 될때, 성공적인 건설 이후 빌드 모드를 종료 하지 마십시오"
+msgstr "활성화 되면, 성공적인 건설 이후 빌드 모드를 종료 하지 마십시오"
 
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Auto-unload ship:"
-msgstr "자동 언로드 배:"
+msgstr "자동 하역 배:"
 
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Whether to unload the ship after founding a settlement"
-msgstr "정착 이후 배를 언로드할 것인지"
+msgstr "정착 이후 배에서 하역할 것인지 여부"
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
-"정상적인 게임 세션에서 사용 하지 마십시오. 당신의 사용자 디렉토리의 로깅 디렉터리에 디버그 정보를 쓸지 여부를 결정 합니다. 게임 "
-"속도가 느려집니다."
+"정상적인 게임 세션에서 사용 하지 마십시오. 사용자 디렉토리의 로그 디렉토리에 디버그 정보를 기록할건지 여부를 결정합니다. 게임 속도가 "
+"느려집니다."
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
@@ -1300,7 +1300,7 @@ msgstr "생산 지표:"
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
-msgstr "그들은 생산을 끝낼 때마다 건물 자원 아이콘을 표시할지 여부"
+msgstr "그들이 생산을 끝낼 때마다 건물에 자원 아이콘을 표시할지 여부"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
@@ -1312,11 +1312,11 @@ msgstr "스크롤 지연:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Choose a quote type:"
-msgstr "견적 유형을 선택 합니다:"
+msgstr "견적 유형을 선택:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "What kind of quote to display while loading a game"
-msgstr "어떤 게임을 로드하는 동안 표시할 견적의 종류"
+msgstr "게임을 로드하는 동안 표시할 견적의 종류"
 
 #: content/gui/xml/mainmenu/settings.xml:218
 msgid "Network"
@@ -1457,7 +1457,7 @@ msgstr "저장하기 실패."
 
 #: horizons/component/tradepostcomponent.py:190
 msgid "The trade partner does not sell this."
-msgstr "무역 협동자는 이것을 판매 하지 않습니다."
+msgstr "무역 대상자는 이것을 판매 하지 않습니다."
 
 #: horizons/component/tradepostcomponent.py:198
 msgid "You can not store this."
@@ -1465,31 +1465,31 @@ msgstr "이것을 저장할 수 없습니다."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
-msgstr "이것을 살 여유가 없다."
+msgstr "이것을 살 여유가 없습니다."
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
-msgstr "무역 협동자는 이것을 더 많이 판매하지 않습니다."
+msgstr "무역 대상자는 이것을 더 많이 판매하지 않습니다."
 
 #: horizons/component/tradepostcomponent.py:232
 msgid "The trade partner does not buy this."
-msgstr "무역 협동자는 이것을 구입하지 않습니다."
+msgstr "무역 대상자는 이것을 구입하지 않습니다."
 
 #: horizons/component/tradepostcomponent.py:240
 msgid "You do not possess this."
-msgstr "당신이 이것을 소유하지 않습니다."
+msgstr "이것을 소유하고 있지 않습니다."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "The trade partner can not store more of this."
-msgstr "무역 파트너는 이 것을 더 많이 저장할 수 없습니다."
+msgstr "무역 대상자는 이것을 더 많이 저장할 수 없습니다."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "무역 대상자는 이것을 구입할 여유가 없습니다."
 
 #: horizons/component/tradepostcomponent.py:253
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "무역 대상자는 이것을 더 이상 구입할 수 없습니다."
 
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
@@ -1497,7 +1497,7 @@ msgstr "빠른 저장 실패."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "빠른 저장중에 오류가 발생했습니다."
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
@@ -1507,7 +1507,7 @@ msgstr "지도가 저장되지 않았습니다."
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
-msgstr ""
+msgstr "이 오류가 또 다시 발생하면, 개발모임에게 연락주십시오: {website}"
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1519,40 +1519,40 @@ msgstr "게임 종료"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "가능한 외교가 없습니다."
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "다른 플레이어가 없기 때문에 외교를 할 수 없습니다."
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} 타일"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "원하는 키를 누르십시오."
 
 #: horizons/gui/modules/hotkeys_settings.py:140
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key}는 이미 {action}으로 설정되었습니다."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "덮어 씌우시겠습니까?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "덮어쓰기 확인"
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr ""
+msgstr "견적"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
@@ -1560,25 +1560,25 @@ msgstr "게임 플레이 팁"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "게임 메뉴를 접근하려면 'ESC'를 누르세요."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "여러 건물을 배치하려면 'SHIFT'를 사용하세요."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "현재 처음 {tier} 계층만 사용할수 있습니다."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "'P'를 눌러서 게임을 일시 정지 할 수 있습니다."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "마우스 왼쪽버튼을 누른상태에서 길을 드래그 할 수 있습니다."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
