@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-18 12:54+0200\n"
+"PO-Revision-Date: 2014-07-19 09:48+0200\n"
 "Last-Translator: ks k <kmshts@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -2938,7 +2938,7 @@ msgstr "풍차"
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:432
 msgid "Grinds corn into flour."
-msgstr "곡물을 밀가루로 빻기"
+msgstr "곡물을 밀가루로 빻기."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:437
@@ -2948,7 +2948,7 @@ msgstr "목조 탑"
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:439
 msgid "Defends your settlement."
-msgstr "정착지를 방어"
+msgstr "정착지를 방어."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -2957,8 +2957,9 @@ msgstr "정착지를 방어"
 #: horizons/i18n/objecttranslations.py:448
 #: horizons/i18n/objecttranslations.py:450
 #: horizons/i18n/objecttranslations.py:511
+#, fuzzy
 msgid "Companies"
-msgstr "단체??"
+msgstr "단체"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
@@ -3080,7 +3081,7 @@ msgstr "저장된 게임은 깨졌거나 이전 버전으로 저장되었습니�
 
 #: horizons/main.py:475
 msgid "No quicksaves found"
-msgstr "빠른 저장을 찾을 수 없습니다."
+msgstr "빠른 저장을 찾을 수 없습니다"
 
 #: horizons/main.py:476
 msgid "You need to quicksave before you can quickload."
@@ -3154,7 +3155,7 @@ msgstr "알수 없음"
 #. usually invalid filename
 #: horizons/session.py:397
 msgid "Failed to create savegame file"
-msgstr "저장게임 파일 생성 실패 "
+msgstr "저장게임 파일 생성 실패"
 
 #: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
@@ -3206,7 +3207,7 @@ msgstr "{slotnum} 슬롯, {limit}t"
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
 msgid "Health: {health}"
-msgstr "체력: {health}\""
+msgstr "체력: {health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:123
@@ -3293,7 +3294,7 @@ msgstr ""
 #: horizons/world/traderoute.py:329
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr "무역 경로: {location}로 가는중\""
+msgstr "무역 경로: {location}로 가는중"
 
 #: horizons/world/traderoute.py:333
 #, python-brace-format
@@ -3335,8 +3336,9 @@ msgid "Attacking {owner}"
 msgstr "{owner}를 공격중"
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "indigo"
-msgstr "인디고,남색,쪽빛??"
+msgstr "인디고,남색,쪽빛"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3461,7 +3463,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
-msgstr ""
+msgstr "감자"
 
 #. This is a database entry: the name of a resource
 msgid "iron ore"
@@ -3777,12 +3779,12 @@ msgstr "캐논"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "이 건물의 주민들이 흑사병에 감염되었습니다!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "{name}의 이름으로 새로운 배 생성 되었습니다."
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
@@ -3817,8 +3819,9 @@ msgid "pigs"
 msgstr "돼지"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
+#, fuzzy
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "창고를 찟을수 업습니다, 정착지는 그것이 필요합니다.??"
+msgstr "창고를 찟을 수 없습니다, 정착지는 그것이 필요합니다."
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
