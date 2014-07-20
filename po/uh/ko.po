@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-20 08:48+0200\n"
+"PO-Revision-Date: 2014-07-20 11:44+0200\n"
 "Last-Translator: ks k <kmshts@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -1848,7 +1848,7 @@ msgid "You have been kicked from the game by creator"
 msgstr "방장에 의해 게임에서 강퇴되었습니다"
 
 #: horizons/gui/modules/multiplayermenu.py:606
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{player} got kicked by creator"
 msgstr "{player}님이 방장에 의해 강퇴 되었습니다"
 
@@ -1901,10 +1901,10 @@ msgstr "{time}에 저장됨"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:224
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
+msgstr[0] "{amount} 시간 저장되었습니다.- 확인요망"
 
 #: horizons/gui/modules/select_savegame.py:231
 #, python-brace-format
@@ -2153,14 +2153,14 @@ msgstr "거래 제안을 추가 할 자원 슬롯 중 하나를 클릭합니다.
 msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
-msgstr ""
+msgstr "라벨을 클릭함으로서 구매와 판매를 설정하고, 오른쪽 슬라이더를 통해 양을 조정하세요."
 
 #: horizons/gui/tabs/buyselltab.py:321
 #, python-brace-format
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
-msgstr ""
+msgstr "{resource_name}을 {price} 골드/t 에 구매합니다. 언제든지 {limit}보다 적은양이 비축되어있습니다."
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2325,7 +2325,7 @@ msgstr "클릭하여 새로운 슬롯에 추가"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "이설정을 공장 기본값으로 다시 설정 합니다."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
@@ -2684,7 +2684,7 @@ msgstr ""
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:257
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "나무꾼 오두막"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:259
@@ -2704,27 +2704,27 @@ msgstr ""
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
 msgid "Mine"
-msgstr ""
+msgstr "광산"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
 msgid "Gets iron ore from deposit."
-msgstr ""
+msgstr "매장층에서 철광석을 가져옵니다."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:278
 msgid "Mountain"
-msgstr ""
+msgstr "산"
 
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:283
 msgid "Pastry Shop"
-msgstr ""
+msgstr "제과점"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:285
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "모든 과자 종류를 생산합니다."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
@@ -2739,12 +2739,12 @@ msgstr ""
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:297
 msgid "Ruined Tent"
-msgstr ""
+msgstr "폐허 천막"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:302
 msgid "Salt Ponds"
-msgstr ""
+msgstr "염전"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:304
@@ -2754,7 +2754,7 @@ msgstr ""
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:309
 msgid "Signal Fire"
-msgstr ""
+msgstr "봉화"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:311
@@ -2764,7 +2764,7 @@ msgstr ""
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:316
 msgid "Smeltery"
-msgstr ""
+msgstr "용광로"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:318
@@ -2774,12 +2774,12 @@ msgstr ""
 #. name_2 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:323
 msgid "Stonemason"
-msgstr ""
+msgstr "석수"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:325
 msgid "Carver"
-msgstr ""
+msgstr "조각가"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
@@ -2789,7 +2789,7 @@ msgstr ""
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:332
 msgid "Stone Pit"
-msgstr ""
+msgstr "채석장"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:334
@@ -2799,12 +2799,12 @@ msgstr ""
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:339
 msgid "Storage Tent"
-msgstr ""
+msgstr "저장 천막"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:341
 msgid "Storage Hut"
-msgstr ""
+msgstr "저장 오두막"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
@@ -2814,7 +2814,7 @@ msgstr ""
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
 msgid "Tavern"
-msgstr ""
+msgstr "여관"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:350
@@ -3157,7 +3157,7 @@ msgstr ""
 
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "게임을 계속 하시겠습니까?"
 
 #: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
@@ -3170,7 +3170,7 @@ msgstr "저장게임 파일 생성 실패"
 
 #: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "저장게임 파일을 만드는 동안 오류가 발생했습니다."
 
 #: horizons/session.py:399
 msgid ""
@@ -3815,7 +3815,7 @@ msgstr "게임이 빠른 저장이 되었습니다."
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr "사슴 식품 A"
+msgstr "사슴 음식 A"
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
