@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-19 09:48+0200\n"
+"PO-Revision-Date: 2014-07-20 08:48+0200\n"
 "Last-Translator: ks k <kmshts@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -610,19 +610,19 @@ msgstr "통계"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 msgid "Players"
-msgstr "플레이어들"
+msgstr "플레이어"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 msgid "My ships"
-msgstr "내 배들"
+msgstr "내 배"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 msgid "My settlements"
-msgstr "내 정착지들"
+msgstr "내 정착지"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
-msgstr "게임 메시지들"
+msgstr "게임 메시지"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
@@ -637,7 +637,7 @@ msgstr "모든 사람"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr "모든 플레이어에게 메시지를 보낸다."
+msgstr "모든 플레이어에게 메시지를 보냅니다."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -1646,15 +1646,16 @@ msgstr "청사진 준비중…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr "세상을 물로 체우는중…\""
+msgstr "세상을 물로 체우는중…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
 msgstr "동물을 기르는중…"
 
 #: horizons/gui/modules/loadingscreen.py:109
+#, fuzzy
 msgid "Convincing AI…"
-msgstr "인공지능을 설득하는중…???"
+msgstr "인공지능을 설득하는중…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
@@ -1668,7 +1669,7 @@ msgstr "pyenet을 찾을 수 없습니다"
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
-msgstr "다중 사용자 기능은 시스템에서 발견되지 않은 \"pyenet\" 라이브러리를 요구합니다. "
+msgstr "다중 사용자 기능은 시스템에서 발견되지 않은 \"pyenet\" 라이브러리를 요구합니다."
 
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -1686,8 +1687,9 @@ msgstr "네트워크 기능은 현재의 환경설정을 초기화 할 수 없�
 
 #: horizons/gui/modules/multiplayermenu.py:132
 #: horizons/gui/modules/settings.py:274
+#, fuzzy
 msgid "Check the settings you specified in the network section."
-msgstr "네트워크 섹션에서 명시한 설정을 확인하십시오.명시???"
+msgstr "네트워크 섹션에서 명시한 설정을 확인하십시오."
 
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
@@ -1749,7 +1751,7 @@ msgid ""
 "{own_version}"
 msgstr ""
 "게임 버전이 당신이 가지고 있는것과 다릅니다. 다중 사용자 게임의 모든 플레이어가 동일한 버전을 사용해야 합니다. 이 최신 버전으로 "
-"업데이트하는 모든 플레이어에 의해 고쳐질 수 있습니다. 게임 버전 : {game_version} 당신의 버전 {own_version}"
+"업데이트하는 모든 플레이어에 의해 고쳐질 수 있습니다. 게임 버전: {game_version} 당신의 버전 {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
@@ -1846,9 +1848,9 @@ msgid "You have been kicked from the game by creator"
 msgstr "방장에 의해 게임에서 강퇴되었습니다"
 
 #: horizons/gui/modules/multiplayermenu.py:606
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr "{player}님이 방장에 의해 강퇴 되었습니다."
+msgstr "{player}님이 방장에 의해 강퇴 되었습니다"
 
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
@@ -2010,7 +2012,7 @@ msgstr "입력한 포트를 확인하고 반드시 지정된 범위에 있는지
 
 #: horizons/gui/modules/settings.py:272
 msgid "Failed to apply new network settings."
-msgstr "새로운 네트워크 설정을 적용하기 실패"
+msgstr "새로운 네트워크 설정을 적용하기 실패."
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
@@ -2172,8 +2174,9 @@ msgid "Warehouse overview"
 msgstr "창고 개요"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
+#, fuzzy
 msgid "Account"
-msgstr "계좌??"
+msgstr "회계"
 
 #: horizons/gui/tabs/mainsquaretabs.py:112
 msgid "Main square overview"
@@ -2275,16 +2278,18 @@ msgid "Limit: {amount}t per slot"
 msgstr "제한: 슬롯당 {amount}t"
 
 #: horizons/gui/widgets/logbook.py:49
+#, fuzzy
 msgid "Logbook"
-msgstr "일지??"
+msgstr "일지"
 
 #: horizons/gui/widgets/logbook.py:183
 msgid "Emptiness"
 msgstr "텅비어있음"
 
 #: horizons/gui/widgets/logbook.py:186
+#, fuzzy
 msgid "There is nothing written in your logbook yet!"
-msgstr "아직 작성된 일지가 없습니다!???"
+msgstr "아직 작성된 일지가 없습니다!"
 
 #: horizons/gui/widgets/playerssettlements.py:39
 #, python-brace-format
@@ -2462,8 +2467,9 @@ msgstr "많은 판을 굽습니다."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:105
+#, fuzzy
 msgid "Clay Deposit"
-msgstr "점토광??"
+msgstr "점토광"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:110
