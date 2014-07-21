@@ -2160,7 +2160,9 @@ msgstr "라벨을 클릭함으로서 구매와 판매를 설정하고, 오른쪽
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
-msgstr "{resource_name}을 {price} 골드/t 에 구매합니다. 언제든지 {limit}보다 적은양이 비축되어있습니다."
+msgstr ""
+"{resource_name}을 {price} 골드/t 에 구매합니다. 언제든지 {limit}t 보다 적은 양이 "
+"비축되어있습니다.-적절한지확인??"
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2168,6 +2170,8 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"{resource_name} 을 {price} 골드/t 에 판매합니다. 언제든지 {limite}t 보다 많은 양이 사용가능합니다. -"
+"적절한지 확인"
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
@@ -2184,11 +2188,11 @@ msgstr "주요 광장 개요"
 
 #: horizons/gui/tabs/mainsquaretabs.py:143
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "업그레이드가 불가능:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "현재 가장 높은 플레이 가능한 계층입니다!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
@@ -2341,15 +2345,15 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
-msgstr ""
+msgstr "비용을 구매"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr ""
+msgstr "수입을 판매"
 
 #: horizons/gui/widgets/routeconfig.py:107
 msgid "Stop route"
-msgstr ""
+msgstr "경로 중지"
 
 #: horizons/gui/widgets/routeconfig.py:114
 msgid "Need at least two settlements"
@@ -2379,16 +2383,16 @@ msgstr ""
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
-msgstr ""
+msgstr "없음"
 
 #: horizons/gui/windows.py:392
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "상세정보: {error_details}"
 
 #: horizons/gui/windows.py:394
 #, python-brace-format
@@ -2644,12 +2648,12 @@ msgstr "화재를 진화합니다."
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:229
 msgid "Fish Deposit"
-msgstr ""
+msgstr "어장"
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:234
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "어부의 천막"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:236
