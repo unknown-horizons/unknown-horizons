@@ -2230,7 +2230,7 @@ msgstr "이 섬에 이미 정착하였습니다."
 
 #: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
-msgstr "하역"
+msgstr "선적/하역"
 
 #: horizons/gui/tabs/shiptabs.py:93
 msgid "Buy/Sell"
@@ -2329,7 +2329,7 @@ msgstr "클릭하여 새로운 슬롯에 추가"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr "이설정을 공장 기본값으로 다시 설정 합니다."
+msgstr "이 설정을 공장 기본값으로 다시 설정 합니다."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
@@ -3204,7 +3204,7 @@ msgstr "알수없는 지평선의 새로운 버전"
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
-msgstr ""
+msgstr "미지의 지평선의 버전이 현재의 ({old_version}) 보다 최신 버전인 ({new_version})이 있습니다."
 
 #: horizons/util/checkupdates.py:98
 msgid "Click to download"
@@ -3212,7 +3212,7 @@ msgstr "클릭하여 다운로드"
 
 #: horizons/util/checkupdates.py:102
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "페이지가 브라우저에서 열렸습니다."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:267
@@ -3245,35 +3245,35 @@ msgstr "이 건물은 정착지 내에 건설해야 합니다."
 
 #: horizons/world/building/buildable.py:43
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "이 지역은 다른 플레이어가 점령중입니다."
 
 #: horizons/world/building/buildable.py:44
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "이 지역은 다른 건물이 있습니다."
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "이 지역은 다른 부대가 있습니다."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "이 건물은 해안선에 건설되어야 합니다."
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "이 건물은 바다에 배치되어야 합니다."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "이 지점은 배에서 너무 멀리 떨어져 있습니다."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "이 건물은 자원에을 기반으로 건설할 수 있습니다."
 
 #: horizons/world/building/buildable.py:50
 msgid "You have already settled this island."
-msgstr ""
+msgstr "이미 이섬에 정착했습니다."
 
 #: horizons/world/building/buildable.py:51
 msgid "This building must be partly on flat land."
@@ -3289,7 +3289,7 @@ msgstr ""
 
 #: horizons/world/status.py:88
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "이 주민들은 행복하지 않습니다."
 
 #: horizons/world/status.py:94
 msgid "These residents don't have access to a main square."
