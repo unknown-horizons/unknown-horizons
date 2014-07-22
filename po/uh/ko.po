@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-22 03:27+0200\n"
+"PO-Revision-Date: 2014-07-22 03:51+0200\n"
 "Last-Translator: ks k <kmshts@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -3277,7 +3277,7 @@ msgstr "이미 이섬에 정착했습니다."
 
 #: horizons/world/building/buildable.py:51
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "이 건물은 부분적이라도 평지에 있어야 합니다."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
