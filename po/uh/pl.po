@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-03-19 13:26+0200\n"
-"Last-Translator: eerozeteen <eerozeteen@gmail.com>\n"
+"PO-Revision-Date: 2014-07-23 13:57+0200\n"
+"Last-Translator: Adam Jordanek <dotevo@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -138,19 +138,18 @@ msgstr "Powiązane budynki"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
-#, fuzzy
 msgid "Inhabitants"
-msgstr "Inwoners"
+msgstr "Mieszkańcy"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Speelsnelheid verhogen (+)"
+msgstr "Przyspiesz przebieg gry ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Speelsnelheid verlagen (-)"
+msgstr "Spowolnij przebieg gry ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
