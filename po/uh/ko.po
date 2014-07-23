@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-22 03:51+0200\n"
+"PO-Revision-Date: 2014-07-23 03:42+0200\n"
 "Last-Translator: ks k <kmshts@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -3281,11 +3281,11 @@ msgstr "이 건물은 부분적이라도 평지에 있어야 합니다."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "주민들이 흑사병에 감염되었습니다!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
-msgstr ""
+msgstr "이 건물에 불이 났습니다!"
 
 #: horizons/world/status.py:88
 msgid "These residents are unhappy."
@@ -3293,19 +3293,19 @@ msgstr "이 주민들은 행복하지 않습니다."
 
 #: horizons/world/status.py:94
 msgid "These residents don't have access to a main square."
-msgstr ""
+msgstr "이 주민들은 주요 광장에 접근할 수 없습니다."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "이 건물의 재고가 가득 찼습니다."
 
 #: horizons/world/status.py:115
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "이 건물은 생산성이 매우 낮습니다."
 
 #: horizons/world/status.py:121
 msgid "This building is decommissioned."
-msgstr ""
+msgstr "이 건물은 해체 됩니다."
 
 #: horizons/world/traderoute.py:329
 #, python-brace-format
@@ -3339,7 +3339,7 @@ msgstr "{x}, {y}에서 대기중"
 
 #: horizons/world/units/ship.py:229
 msgid "Trader"
-msgstr "상인"
+msgstr "무역상인"
 
 #: horizons/world/units/weaponholder.py:452
 #, python-brace-format
@@ -3359,11 +3359,11 @@ msgstr "인디고,남색,쪽빛"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1}님 과 {player2}님이 동맹을 맺었습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "건물에 불이 붙었습니다!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
@@ -3371,11 +3371,11 @@ msgstr "소금물"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
-msgstr ""
+msgstr "한약"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
-msgstr ""
+msgstr "귀족"
 
 #. This is a database entry: the name of a resource
 msgid "happiness"
@@ -3392,7 +3392,7 @@ msgstr "소금 예탁"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "주민의 일부가 그냥 이사 갔습니다."
 
 #. This is a database entry: the name of a resource
 #| msgid "Resource deposit"
@@ -3401,35 +3401,36 @@ msgstr "보석 예탁"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
-msgstr ""
+msgstr "설탕"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco leaves"
-msgstr ""
+msgstr "담배잎"
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "stone tops"
-msgstr ""
+msgstr "돌 꼭대기"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
-msgstr ""
+msgstr "커피 콩"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
-msgstr ""
+msgstr "양모"
 
 #. This is a database entry: the name of a resource
 msgid "tea leaves"
-msgstr ""
+msgstr "찻 잎"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "커피"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
-msgstr ""
+msgstr "카카오 열매"
 
 #. This is a database entry: the name of a resource
 msgid "food"
@@ -3437,32 +3438,32 @@ msgstr "음식"
 
 #. This is a database entry: the name of a resource
 msgid "flour"
-msgstr ""
+msgstr "밀가루"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "도축용 돼지"
 
 #. This is a database entry: the name of a resource
 msgid "recreation"
-msgstr ""
+msgstr "오락"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr ""
+msgstr "나무"
 
 #. This is a database entry: the name of a resource
 #| msgid "Resource deposit"
 msgid "marble deposit"
-msgstr "대리석 예탁"
+msgstr "대리석매장층"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
-msgstr ""
+msgstr "선원"
 
 #. This is a database entry: the name of a resource
 msgid "clay deposit"
-msgstr ""
+msgstr "점토광"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
