@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-23 03:42+0200\n"
+"PO-Revision-Date: 2014-07-24 06:14+0200\n"
 "Last-Translator: ks k <kmshts@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -2543,7 +2543,7 @@ msgstr "코코아 밭"
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:154
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr "과자에 사용되는 카카오 열매를 생산합니다. 농장이 필요합니다."
+msgstr "과자에 사용되는 코코아 열매를 생산합니다. 농장이 필요합니다."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:159
@@ -3410,7 +3410,7 @@ msgstr "담배잎"
 #. This is a database entry: the name of a resource
 #, fuzzy
 msgid "stone tops"
-msgstr "돌 꼭대기"
+msgstr "돌 꼭대기-- 꼭대기"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
@@ -3468,15 +3468,15 @@ msgstr "점토광"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1}님과 {player2}님의 전쟁을 끝내고 지금 동맹을 맺었습니다."
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
-msgstr ""
+msgstr "코코아"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "대리석 상판-- 상판"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
@@ -3544,18 +3544,18 @@ msgstr "양모"
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "현재 최대 계층에 도달 했습니다. 주민들은 더이상 업그레이드할 필요가 없습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
-msgstr ""
+msgstr "이제 경로가 구성 되었습니다. \"경로 구성\" 메뉴에서 \"경로 시작\" 버튼을 통해 시작합니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} 님과 {player2} 님의 동맹관계를 끝냅니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
@@ -3584,84 +3584,84 @@ msgstr "용연향"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
-msgstr ""
+msgstr "신앙"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
-msgstr ""
+msgstr "판자"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "주민중 일부가 주요 광장에 접근할 수 없습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} 님과 {player2} 님이 서로 죽을때까지 싸울것입니다."
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr ""
+msgstr "홉"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
-msgstr ""
+msgstr "곡물"
 
 #. This is a database entry: the name of a resource
 msgid "spices"
-msgstr ""
+msgstr "향신료"
 
 #. This is a database entry: the name of a resource
 msgid "dagger"
-msgstr ""
+msgstr "단검"
 
 #. This is a database entry: the name of a resource
 msgid "coffee plants"
-msgstr ""
+msgstr "커피 식물"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
-msgstr ""
+msgstr "벽돌"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr ""
+msgstr "금광석"
 
 #. This is a database entry: the name of a resource
 msgid "community"
-msgstr ""
+msgstr "공동체"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr ""
+msgstr "향신료 식물"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "위생"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "도축용 소"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr ""
+msgstr "담배"
 
 #. This is a database entry: the name of a resource
 msgid "tools"
-msgstr ""
+msgstr "도구"
 
 #. This is a database entry: the name of a resource
 msgid "deer meat"
-msgstr ""
+msgstr "사슴 고기"
 
 #. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr ""
+msgstr "과자"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "고래"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3673,11 +3673,11 @@ msgstr "승리하셨습니다!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "유실수 꽃"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr ""
+msgstr "쪽 식물"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
@@ -3685,15 +3685,15 @@ msgstr "물고기"
 
 #. This is a database entry: the name of a resource
 msgid "charcoal"
-msgstr ""
+msgstr "숯"
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
-msgstr ""
+msgstr "석재 매장층"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "시나리오 실패."
 
 #. This is a database entry: the name of a resource
 msgid "fire"
@@ -3701,15 +3701,15 @@ msgstr "불"
 
 #. This is a database entry: the name of a resource
 msgid "acorns"
-msgstr ""
+msgstr "도토리"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "의류"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
-msgstr ""
+msgstr "벌집"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco plants"
@@ -3718,16 +3718,16 @@ msgstr "담배 식물"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "이 건물을 건설하기 위해서는 더 많은 {resource}가 필요합니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "승무원들이 이 지도 떠나기를 거부 합니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} 님과 {player2} 님이 적대관계가 되었습니다."
 
 #. This is a database entry: the name of a resource
 msgid "grass"
@@ -3748,7 +3748,7 @@ msgstr "금광산"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "밭들중 하나가 작물을 수확하기위해 농장이 필요합니다."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
@@ -3779,7 +3779,7 @@ msgstr "목화"
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr ""
+msgstr "{player1} 님과 {player2} 님이 동맹관계를 끝내고 이제부터 전쟁상태로 들어갑니다."
 
 #. This is a database entry: the name of a resource
 msgid "textile"
@@ -3838,7 +3838,7 @@ msgstr "돼지"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, fuzzy
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "창고를 찟을 수 없습니다, 정착지는 그것이 필요합니다."
+msgstr "창고를 찟을 수 없습니다, 정착지는 그것이 필요합니다. --찟다"
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
