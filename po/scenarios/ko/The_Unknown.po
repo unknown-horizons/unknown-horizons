@@ -157,7 +157,7 @@ msgid ""
 "balance."
 msgstr ""
 "임무:\n"
-"최소 250명의 거주민과 긍정적인 성장이 될때까지 마을을 성장시키세요."
+"최소 250명의 주민들과 긍정적인 성장이 될때까지 마을을 성장시키세요."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
@@ -169,8 +169,8 @@ msgid ""
 "have started getting used to my new home, but this island is too small to "
 "stay here forever."
 msgstr ""
-"우리 마을은 잘 운영되고 있고, 도시는 주민이 250명 이상으로 성장 했습니다. 내 새 집에 익숙해 시작하지만, 이 섬은 영원히 머물기엔 "
-"너무 작습니다."
+"우리 마을은 잘 운영되고 있고, 도시는 주민들이 250명 이상으로 성장 했습니다. 내 새 집에 익숙해 시작하지만, 이 섬은 영원히 "
+"머물기엔 너무 작습니다."
 
 #. This is the text body of a logbook page.
 msgid ""
