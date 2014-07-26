@@ -255,14 +255,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 선원들이 충분히 행복하면 '개척자'라고 불리는 단계로 진급할 수 있습니다.
   - 당신은 주민들의 모든 요구를 충족시켰으므로 주민들을 더욱 행복하게 하려면 세금을 낮추는 방법 밖에 없습니다.
   - 아마 조만간 파산으로 이어질 것 때문에, 항상 낮은 세금으로 지속하지 마십시오. 당분간은 무엇을하는지 아는 경우는 그래도 괜찮습니다.
-  - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - 몇 시간 후, 첫 번째 유닛이 주 광장으로 걸어가서 통나무 집을 짓기위해 건축자재가 있는 곳을 찾을것입니다. 이 집은 오래된 천막을 대체 할 것입니다.
   - [Pagebreak]
   - '
 
     이러한 주거 개선은 자원이 필요하므로 주요 광장에서 제한될 수 있습니다.'
-  - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
+  - 또한 벌목꾼을 보게 되므로 비용이 안드는 건물의 업그레이드가 있습니다. 이 경우, 그래픽만 바뀝니다.
   - 업그레이드 된 주택은 더 많은 주민들을 수용합니다, 그리고 개척자도 선원보다 더 많은 세금을 지불합니다.
-  - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
+  - 이미 눈치 챘는지 모르겠지만, 단점은 개척자가 선원을 필요로 하지 않은 추가 상품을 요구하는 것입니다. - 그래서 그들을 행복하게 만들게 할뿐만아니라 이 여분의 돈을 소비해야합니다.
   - ''
   - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
@@ -279,11 +279,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 그곳에 빛나는 새로운 탭이 나타났습니다.
   - 개척자가 천을 요구할 것입니다. 양털실(농장에서 생산되는 제품중의 하나)로 만든 천의 생산라인을 설정 해야합니다.
   - 농장은 매우 특별한 생산 건물입니다. 왜냐면 하나만 생산하지 않고  귀하가 원하는 매우 많은 제품을 생산하기 때문입니다.
-  - The output of farms depends on what kind of fields you build around it.
+  - 농장의 수확물은 주위에 만든 농작물에 종류에 의존합니다.
   - [Pagebreak]
   - '
 
-    We will have a closer look at this later.'
+    이제, 이 것을 자세히 살펴 봅시다.'
   - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a warehouse.
   - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
@@ -662,4 +662,4 @@ metadata:
   locale: ko
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 156 translated messages, 3 fuzzy translations, 32 untranslated messages.
+  translation_status: 161 translated messages, 30 untranslated messages.
