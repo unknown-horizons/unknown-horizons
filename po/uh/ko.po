@@ -425,7 +425,7 @@ msgstr "이 자원 매장층에, 자원 광산을 건설할 수 있습니다."
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr "자원 매장층은 이런 자원이 들어 있습니다:"
+msgstr "매장된 자원:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -483,7 +483,7 @@ msgstr "정착지 건설"
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr "통상로 설정"
+msgstr "무역 경로 구성"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -661,7 +661,7 @@ msgstr "짐 내릴 때 기다리기:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr "경로 작업:"
+msgstr "경로 활성화:"
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
@@ -838,7 +838,7 @@ msgstr "저장된 게임의 지도 로드"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr "에디터 시작"
+msgstr "편집기 시작"
 
 #: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
@@ -1025,7 +1025,7 @@ msgstr "끝내기"
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr "에디터"
+msgstr "편집기"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
@@ -1587,7 +1587,7 @@ msgstr "'SHIFT'키를 누른 상태로 여러 건물을 지을 수 있습니다.
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr "세금을 낮춤으로서 주민들의 행복도를 올릴 수 있습니다."
+msgstr "세금을 낮춰 주민들의 행복도를 올릴 수 있습니다."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
@@ -2156,7 +2156,7 @@ msgid ""
 msgstr "라벨을 클릭함으로서 구매와 판매를 설정하고, 오른쪽 슬라이더를 통해 양을 조정하세요."
 
 #: horizons/gui/tabs/buyselltab.py:321
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
@@ -2165,20 +2165,18 @@ msgstr ""
 "비축되어있습니다.-적절한지확인??"
 
 #: horizons/gui/tabs/buyselltab.py:324
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
-"{resource_name} 을 {price} 골드/t 에 판매합니다. 언제든지 {limite}t 보다 많은 양이 사용가능합니다. -"
-"적절한지 확인"
+"{resource_name} 을 {price} 골드/t 에 판매합니다. 언제든지 {limite}t 보다 많은 양이 사용가능합니다."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
 msgstr "창고 개요"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
-#, fuzzy
 msgid "Account"
 msgstr "회계"
 
@@ -2288,7 +2286,7 @@ msgstr "일지"
 
 #: horizons/gui/widgets/logbook.py:183
 msgid "Emptiness"
-msgstr "텅비어있음"
+msgstr "텅 비어있음"
 
 #: horizons/gui/widgets/logbook.py:186
 #, fuzzy
@@ -2345,11 +2343,11 @@ msgstr "기본 환경 설정(보고 있는 여기)을 모든 정착지에 대해
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
-msgstr "비용을 구매"
+msgstr "구매 비용"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr "수입을 판매"
+msgstr "판매 수입"
 
 #: horizons/gui/widgets/routeconfig.py:107
 msgid "Stop route"
@@ -2733,7 +2731,7 @@ msgstr "모든 종류의 과자를 생산합니다."
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
 msgid "Pavilion"
-msgstr "교회"
+msgstr "종교건물"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
@@ -2864,7 +2862,7 @@ msgstr "주민들 주택."
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:372
 msgid "Tobacconist"
-msgstr "담배 가게 주인"
+msgstr "연초장"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:374
@@ -2973,9 +2971,8 @@ msgstr "정착지를 방어."
 #: horizons/i18n/objecttranslations.py:448
 #: horizons/i18n/objecttranslations.py:450
 #: horizons/i18n/objecttranslations.py:511
-#, fuzzy
 msgid "Companies"
-msgstr "단체"
+msgstr "상회"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
@@ -3007,7 +3004,7 @@ msgstr "주민들과 기반시설"
 #: horizons/i18n/objecttranslations.py:466
 #: horizons/i18n/objecttranslations.py:491
 msgid "Services"
-msgstr "봉사(서비스)"
+msgstr "봉사"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -3855,7 +3852,7 @@ msgstr "양초"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr "{player} 님이 새로운 정착지가 설립되었습니다."
+msgstr "{player} 님이 새로운 정착지를 설립하였습니다."
 
 #. This is a database entry: the name of a resource
 msgid "vines"
