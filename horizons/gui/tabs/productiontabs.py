@@ -27,9 +27,12 @@ from fife.extensions.pychan.widgets import Icon, Label
 
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
+from horizons.component.fieldbuilder import FieldBuilder
 from horizons.constants import GAME_SPEED, PRODUCTION
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.container import AutoResizeContainer
+from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
@@ -226,6 +229,44 @@ class ProductionOverviewTab(OverviewTab):
 				anim().stop()
 		self._animations = []
 
+class LumberjackOverviewTab(ProductionOverviewTab):
+	"""Same as ProductionOverviewTab but add a button to fill range with trees.
+	"""
+	def init_widget(self):
+		super(LumberjackOverviewTab, self).init_widget()
+		field_comp = self.instance.get_component(FieldBuilder)
+		container = AutoResizeContainer(position=(20, 200))
+
+		icon = Icon(name='build_all_bg')
+		button = ImageButton(name='build_all_button')
+
+		(enough_res, missing_res) = field_comp.check_resources()
+		# Check whether to disable build menu icon (not enough res available).
+		if enough_res:
+			icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
+			button.path = 'icons/buildmenu/006'
+		else:
+			icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
+			button.path = 'icons/buildmenu/greyscale/006'
+
+		button.capture(field_comp.fill_range)
+		button.helptext = _('Fill range with {how_many} trees').format(
+			how_many=field_comp.how_many)
+
+		container.addChild(icon)
+		container.addChild(button)
+		self.widget.addChild(container)
+
+		res_bar = self.instance.session.ingame_gui.resource_overview
+		enter_cb = Callback(res_bar.set_construction_mode, self.instance, field_comp.total_cost)
+		cb1 = Callback(res_bar.close_construction_mode)
+		cb2 = Callback(button.hide_tooltip)
+		#TODO the tooltip should actually hide on its own. Ticket #1096
+		exit_cb = Callback.ChainedCallbacks(cb1, cb2)
+		self.widget.mapEvents({
+			button.name + '/mouseEntered': enter_cb,
+			button.name + '/mouseExited': exit_cb,
+		})
 
 class SmallProductionOverviewTab(ProductionOverviewTab):
 	"""Only display productions for which we have a related 'field' in range.
