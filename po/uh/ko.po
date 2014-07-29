@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-24 06:14+0200\n"
+"PO-Revision-Date: 2014-07-27 15:51+0200\n"
 "Last-Translator: ks k <kmshts@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -2160,17 +2160,14 @@ msgstr "라벨을 클릭함으로서 구매와 판매를 설정하고, 오른쪽
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
-msgstr ""
-"{resource_name}을 {price} 골드/t 에 구매합니다. 언제든지 {limit}t 보다 적은 양이 "
-"비축되어있습니다.-적절한지확인??"
+msgstr "{resource_name}을 {price} 골드/t 에 구매합니다. 언제든지 {limit}t 보다 적은 양이 비축되어있습니다."
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
 msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
-msgstr ""
-"{resource_name} 을 {price} 골드/t 에 판매합니다. 언제든지 {limite}t 보다 많은 양이 사용가능합니다."
+msgstr "{resource_name} 을 {price} 골드/t 에 판매합니다. 언제든지 {limit}t 보다 많은 양이 사용가능합니다."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
@@ -2802,12 +2799,12 @@ msgstr "산에서 돌을 채취합니다."
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:339
 msgid "Storage Tent"
-msgstr "저장 천막"
+msgstr "저장소 천막"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:341
 msgid "Storage Hut"
-msgstr "저장 오두막"
+msgstr "저장소 오두막"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
