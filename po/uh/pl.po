@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-30 18:24+0200\n"
+"PO-Revision-Date: 2014-07-30 18:57+0200\n"
 "Last-Translator: lemoid <k.starzyk02@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
@@ -105,7 +105,7 @@ msgstr "Wybierz teren:"
 
 #: content/gui/xml/editor/editor_settings.xml:35
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(aby zatrzymać, kliknij prawym przyciskiem myszy)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -117,7 +117,8 @@ msgstr "Musisz stworzyć osadę, zanim będzie można zbudować budynki!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Wybierz swój statek i dopłyń do brzegu klikając prawy przycisk myszy."
+msgstr ""
+"Wybierz swój statek i naciśnij prawy przycisk myszy by dopłynąć do brzegu."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -204,11 +205,11 @@ msgstr "Dawna nazwa:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
 msgid "Enter new name:"
-msgstr "Nowa nazwa:"
+msgstr "Wprowadź nową nazwę:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr "Zatwierdź nazwę"
+msgstr "Zatwierdź nową nazwę"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
@@ -218,7 +219,7 @@ msgstr "Czat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "Twoja wiadomość:"
+msgstr "Napisz wiadomość:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -326,9 +327,8 @@ msgstr "Przegląd osadników"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
-#, fuzzy
 msgid "Paid taxes"
-msgstr "Betaalde belastingen"
+msgstr "Zapłacone podatki"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
@@ -409,14 +409,12 @@ msgstr "Zakup"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
-#, fuzzy
 msgid "Name:"
-msgstr "Naam:"
+msgstr "Nazwa:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
-#, fuzzy
 msgid "Weapons:"
-msgstr "Wapens:"
+msgstr "Broń:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 #, fuzzy
