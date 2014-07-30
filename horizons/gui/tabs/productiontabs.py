@@ -234,11 +234,18 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 	"""
 	def init_widget(self):
 		super(LumberjackOverviewTab, self).init_widget()
-		field_comp = self.instance.get_component(FieldBuilder)
 		container = AutoResizeContainer(position=(20, 200))
-
 		icon = Icon(name='build_all_bg')
 		button = ImageButton(name='build_all_button')
+		container.addChild(icon)
+		container.addChild(button)
+		self.widget.addChild(container)
+		self.update_data()
+
+	def update_data(self):
+		field_comp = self.instance.get_component(FieldBuilder)
+		icon = self.widget.child_finder('build_all_bg')
+		button = self.widget.child_finder('build_all_button')
 
 		(enough_res, missing_res) = field_comp.check_resources()
 		# Check whether to disable build menu icon (not enough res available).
@@ -248,22 +255,17 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 		else:
 			icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
 			button.path = 'icons/buildmenu/greyscale/006'
-
-		button.capture(field_comp.fill_range)
 		button.helptext = _('Fill range with {how_many} trees').format(
 			how_many=field_comp.how_many)
 
-		container.addChild(icon)
-		container.addChild(button)
-		self.widget.addChild(container)
-
 		res_bar = self.instance.session.ingame_gui.resource_overview
+
+		click_cb = Callback.ChainedCallbacks(field_comp.fill_range, self.update_data)
 		enter_cb = Callback(res_bar.set_construction_mode, self.instance, field_comp.total_cost)
-		cb1 = Callback(res_bar.close_construction_mode)
-		cb2 = Callback(button.hide_tooltip)
 		#TODO the tooltip should actually hide on its own. Ticket #1096
-		exit_cb = Callback.ChainedCallbacks(cb1, cb2)
+		exit_cb = Callback.ChainedCallbacks(res_bar.close_construction_mode, button.hide_tooltip)
 		self.widget.mapEvents({
+			button.name: click_cb,
 			button.name + '/mouseEntered': enter_cb,
 			button.name + '/mouseExited': exit_cb,
 		})
