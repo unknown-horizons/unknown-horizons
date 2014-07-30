@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-09-18 09:53+0200\n"
-"Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
-"Language-Team: Lithuanian <http://hosted.weblate.org/projects/uh/uh/lt/>\n"
+"PO-Revision-Date: 2014-07-30 15:53+0200\n"
+"Last-Translator: Jur Kis <atvejis@gmail.com>\n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/uh/uh/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.7-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -38,7 +38,7 @@ msgstr ""
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr ""
+msgstr "Klaida: nepavyko rasti būtinos bibliotekos \"PyYAML\"."
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
@@ -141,28 +141,28 @@ msgid "Inhabitants"
 msgstr "Gyventojai"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Padidinti žaidimo greitį (+)"
+msgstr "Padidinti žaidimo greitį ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Sumažinti žaidimo greitį (-)"
+msgstr "Sumažinti žaidimo greitį ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map counterclockwise"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Pasukti žemėlapį prieš laikrodžio rodyklę"
+msgstr "Pasukti žemėlapį prieš laikrodžio rodyklę ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise"
 msgid "Rotate map clockwise ({key})"
-msgstr "Pasukti žemėlapį pagal laikrodžio rodyklę"
+msgstr "Pasukti žemėlapį pagal laikrodžio rodyklę ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -173,32 +173,32 @@ msgid "Zoom out"
 msgstr "Mažinti"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy"
 msgid "Destroy ({key})"
-msgstr "Sugriauti"
+msgstr "Sugriauti ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
 #, fuzzy, python-brace-format
 #| msgid "Captain's log"
 msgid "Captain's log ({key})"
-msgstr "Kapitono žurnalas"
+msgstr "Kapitono žurnalas ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Statybos meniu (B)"
+msgstr "Statybos meniu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu"
 msgid "Game menu ({key})"
-msgstr "Žaidimo meniu"
+msgstr "Žaidimo meniu ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -1146,10 +1146,9 @@ msgid "Create a new game"
 msgstr "Sukurti naują žaidimą"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Dalyvauti žaidime"
+msgstr "Dalyvauti žaidime:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -2596,9 +2595,8 @@ msgstr "Kiaulidė"
 
 #. tooltip_text of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:182
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
-msgstr "Didina kiaulių skaičių. Reikalingas ūkis."
+msgstr "Augina kiaules. Reikalingas ūkis."
 
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:187
@@ -2794,9 +2792,8 @@ msgstr "Lydykla"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:318
-#, fuzzy
 msgid "Refines all kind of ores."
-msgstr "Valo visų rūšių rūdis."
+msgstr "Valo visų rūšių rūdą."
 
 #. name_2 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:323
@@ -3039,9 +3036,8 @@ msgstr "Paslaugos"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:471
-#, fuzzy
 msgid "Citizens"
-msgstr "miestiečiai"
+msgstr "Miestiečiai"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:473
@@ -3478,14 +3474,13 @@ msgid "pigs for slaughter"
 msgstr "skerdimui skirtos kiaulės"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "education"
 msgid "recreation"
-msgstr "išsilavinimas"
+msgstr "poilsis"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr ""
+msgstr "medžiai"
 
 #. This is a database entry: the name of a resource
 #, fuzzy
@@ -3527,19 +3522,17 @@ msgid "perfume"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Attention please!"
 msgid "cotton plants"
-msgstr "Prašome dėmesio!"
+msgstr "medvilnė"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
 msgstr "molis"
 
 #. This is a database entry: the name of an inhabitant tier (level)
-#, fuzzy
 msgid "Merchants"
-msgstr "pirklys"
+msgstr "Pirkliai"
 
 #. This is a database entry: the name of a resource
 msgid "hop plants"
@@ -3664,10 +3657,9 @@ msgid "bricks"
 msgstr "plytos"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "geležies rūda"
+msgstr "aukso rūda"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -3702,10 +3694,9 @@ msgid "confectionery"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Laivas banginiams"
+msgstr "banginiai"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3889,10 +3880,9 @@ msgid "condiments"
 msgstr ""
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "juoda"
+msgstr "juoda mirtis"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
@@ -3916,10 +3906,9 @@ msgid "salt"
 msgstr "druska"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "geležies luitai"
+msgstr "aukso luitai"
 
 #~ msgid "Back:"
 #~ msgstr "Grįžti:"
