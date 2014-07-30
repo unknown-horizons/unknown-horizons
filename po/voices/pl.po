@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-07-30 18:29+0200\n"
+"PO-Revision-Date: 2014-07-30 18:47+0200\n"
 "Last-Translator: lemoid <k.starzyk02@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/voices/pl/>\n"
 "Language: pl\n"
@@ -37,19 +37,20 @@ msgstr "Nad tą ziemią będą powiewać nasze flagi."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr ""
+msgstr "Ten kawałek ziemi należy teraz do nas."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
 msgstr "Kolejny gracz osiedlił się na wyspie."
 
 #. Founding settlement - Somebody not player found settlement
+#, fuzzy
 msgid "A player develops a new settlement."
-msgstr ""
+msgstr "Gracz zakłada nową osadę."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
-msgstr ""
+msgstr "Jeden z twoich sojuszników założył osadę."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
@@ -57,11 +58,11 @@ msgstr ""
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
-msgstr ""
+msgstr "Zostaliśmy poinformowani, że jeden z naszych rywali opanował nowy ląd."
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr ""
+msgstr "Chodzą słuchy o rosnącej potędze jednego z naszych wrogów."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
@@ -73,11 +74,11 @@ msgstr ""
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
-msgstr ""
+msgstr "Nasz sojusznik informuje nas o pomyślnym założeniu nowej osady."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "This island no longer is all ours."
-msgstr ""
+msgstr "Od teraz nie jesteśmy sami na tej wyspie."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
@@ -85,19 +86,19 @@ msgstr ""
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
-msgstr ""
+msgstr "Mamy nowych sąsiadów na tej wyspie!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Scouts report that uninvited guests beleaguer our island!"
-msgstr ""
+msgstr "Zwiadowcy donoszą o nieproszonych gościach plądrujących naszą wyspę!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Should we really accept our rival as new neighbor?"
-msgstr ""
+msgstr "Czy powinniśmy zaakceptować naszego wroga jako nowego sąsiada?"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "One of our enemies settles on our ground!"
-msgstr ""
+msgstr "Jeden z naszych wrogów osiedla się na naszej ziemi!"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
@@ -105,19 +106,19 @@ msgstr ""
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
-msgstr ""
+msgstr "Od teraz dzielimy ziemię z naszym sojusznikiem."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "Our ally settles on one of our islands."
-msgstr ""
+msgstr "Nasz sojusznik osiedlił się na jednej z naszych wysp."
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr ""
+msgstr "Do budowy potrzebujesz więcej surowców."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
-msgstr ""
+msgstr "Budowa wymaga więcej surowców."
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
@@ -125,4 +126,4 @@ msgstr ""
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
-msgstr ""
+msgstr "Nie masz wystarczającej ilości zapasów."
