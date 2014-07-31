@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Rakenna varasto rannikolle, jotta laivat pääsevät sinne helposti.']
+  - [Message, 'Rakenna sivutoimisto rannikolle, hyvien kulkuyhteyksien äärelle.']
   - '
 
 
@@ -24,14 +24,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Tämä on Kapteenin päiväkirja, johon kirjataan kaikki pelin kannalta olennaiset tiedot. Jokaisesta tehtävästä näkyy lyhyt ilmoitus peli-ikkunan vasemmalla reunalla.
-  - Jos olet kiinnostunut pidemmistä selosteista, niin löydät ne logistasi.
-  - Kun olet sulkenut tämän päiväkirjan, voit avata sen uudelleen klikkaamalla "Kapteenin päiväkirja" -kuvaketta, joka sijaitsee peliruudun oikeassa yläkulmassa(pienoiskartan alapuolella).
+  - Tämä on Kapteenin päiväkirja, johon kootaan paljon tärkeitä peliin liittyviä tietoja. Pelin aikana tulee tehtäviä, joista ilmoitetaan peli-ikkunan vasemmassa reunassa.
+  - Tulevista tehtävistä löytyy lisätietoja tästä päiväkirjasta.
+  - Päiväkirjan voi avata uudelleen napsauttamalla Kapteenin päiväkirja -kuvaketta peliruudun oikeassa yläkulmassa (pienoiskartan alapuolella).
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Nähdäksesi ensimmäisen tehdäväsi, klikkaa "Seuraava merkintä" -kuvaketta navikointipaneelin alareunassa. Kuvake näyttää tältä:'
+    Tutustu ensimmäiseen tehtävään napsauttamalla Seuraava merkintä -kuvaketta päiväkirjan alalaidassa. Kuvake näyttää tältä:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -40,7 +40,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Jos keksit ehdotuksia paremmalle kieliopille, haluaisit kuulla jostain lisää tai törmäät vikatilanteeseen, kerrothan siitä meille, jotta voimme parantaa tätä harjoituspeliä!'
   - '
 
-    Kehitysryhmämme yhteystiedot ovat saatavilla verkkosivuiltamme osoitteesta www.unknown-horizons.org!'
+    Kehitysryhmämme yhteystiedot löytyvät verkkosivuiltamme osoitteesta www.unknown-horizons.org!'
   - Ja nyt viimeinkin, aloitetaanpas itse peli.
   - [Pagebreak]
   - [Headline, ASETU SAARELLE]
@@ -49,7 +49,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kun olet rannikon lähellä, ankkurin kuvake laivan yleiskatsauksessa muuttuu aktiiviseksi.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Tämä kertoo, että voit rakentaa sivutoimiston tähän napsauttamalla tätä painiketta (nimeltään "Rakenna siirtokunta").
+  - Tämä kertoo, että voit rakentaa sivutoimiston tähän napsauttamalla tätä painiketta (nimeltään Perusta siirtokunta).
   - Hiirtä liikutellessa pitäisi nyt sen yhteydessä olla sivutoimiston esikatselukuva.
   - Sivutoimiston voi rakentaa mihin tahansa, kunhan rakennuksen kuvalla ei ole punertavaa värisävyä. Sivutoimisto sijoitetaan rannikolle. Valitse sopiva paikka ja rakenna sivutoimisto napsauttamalla hiiren vasenta painiketta.
   - ''
@@ -59,26 +59,26 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Rakenna puunhakkaaja ja yhdistä se sivutoimistoon polulla.]
   - [Headline, RAKENNA PUUNHAKKAAJA]
   - [Image, content/gui/images/background/hr.png]
-  - Laivasi lastina olleet tavarat puretaan siirtokuntaasi automaattisesti. Voit nyt rakentaa joitain perusrakennuksia.
-  - Aloittakaamme puunhakkaajalla.
-  - Puunhakkaaja on tärkeä, koska sen tuottamia lautoja tarvitaan useimpiin rakennuksiin, kuten asukkaidesi telttoihin.
+  - Laivan lastina olleet tavarat puretaan siirtokuntaan automaattisesti. Voit nyt rakentaa joitain perusrakennuksia.
+  - Aloitetaan puunhakkaajalla.
+  - Puunhakkaaja on tärkeä, koska sen tuottamia lautoja tarvitaan useimpiin rakennuksiin, kuten asukkaiden telttoihin.
   - Myös kalastaja tarvitsee lautoja alustensa rakentamiseen.
   - 'Rakenna puunhakkaaja näin: avaa aluksi rakennusvalikko joko napsauttamalla pikkukartan alapuolella olevista napeista keskimmäistä tai painamalla pikanäppäintä B.'
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Rakennusvalikko on jaettu siirtokunnan tason mukaan välilehtiin (vasen reuna).
-  - Tällä hetkellä sinä olet ensimmäisellä tasolla (merimies -taso), joten voit rakentaa vai täensimmäisen tason rakennuksia.
+  - Rakennusvalikko on ryhmiteltu siirtokunnan tason mukaan välilehtiin (vasen reuna).
+  - Peli alkaa ensimmäisellä tasolla (Merimiehet-taso), joten voit rakentaa vain ensimmäisen tason rakennuksia.
   - [Pagebreak]
   - '
 
-    Siirtokuntasi kehittyessä saat käyttöösi uusia rakennuksia.'
-  - Nyt kuitenkin riittää, että valitset puunhakkaajan kohdasta "Yritykset" ja rakennat sen alueelle, jossa on riittävästi puita.
-  - Voit tarvittaessa istuttaa myöhemmin myös puita - mutta se maksaa rahaa. Käytä ensisijaisesti sitä, mitä luonto on sinulle tarjonnut.
+    Siirtokunnan kehittyessä tarjolle tulee lisää rakennuksia.'
+  - Nyt kuitenkin riittää, että valitset puunhakkaajan kohdasta Yritykset ja rakennat sen alueelle, jossa on riittävästi puita.
+  - Voit tarvittaessa myöhemmin myös istuttaa puita - mutta se maksaa rahaa. Käytä ensisijaisesti sitä, mitä luonto sinulle tarjoaa.
   - Yritys tarvitsee polkuyhteyden varastoon tai sivutoimistoon, muuten tavarat jäävät yritykselle eikä niitä saada kerättyä.
   - Rakenna siis polku puunhakkaajalta sivutoimistolle tai varastolle.
   - ''
   - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Katsele, kun kerääjä hakee ensimmäiset itsevalmistetut lautasi.Älä huolehdi lisätyövoiman palkkauksesta, sillä se tapahtuu automaattisesti.
+  - Katsele, kun kerääjä hakee ensimmäiset itsevalmistetut lautasi. Älä huolehdi lisätyövoiman palkkauksesta, sillä se tapahtuu automaattisesti.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -97,7 +97,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Kalastaja pitää rakentaa rannikolle kuten sivutoimistokin ja sen lähelle tulee myöhemmin rakentaa kalastuskoulu.'
   - Kalastaja rakentaa pienen soutuveneen ja alkaa pyydystämään kaloja.
-  - Kalastus on todella pitkäikäinen ruoanlähde, mutta hitaampaa kuin metsästäminen.
+  - Kalastus on todella varma ja pitkäikäinen ruoanlähde, mutta hitaampaa ja pienituottoisempaa kuin metsästäminen.
   - Pieni asutuskeskus - kuten omasi - voi käyttää molempia, jolloin pystyt paremmin tasapainottamaan hyvät ja huonot puolet.
   - ''
   - [BoldLabel, 'Task: Build a hunter and a fisher.']
@@ -110,7 +110,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, KESKUSTORI]
   - [Image, content/gui/images/background/hr.png]
   - Asukkaasi tarvitsevat keskustorin, jolta he voivat hankkia elintarvikkeensa.
-  - Keskustorille pitää siis olla kulkuyhteys asukkaiden asunnoilta.
+  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - Kaikki elintarvikkeet sivutoimistollasi ovat saatavilla tältä "kauppapaikalta", joten asukkaidesi ei tarvitse kävellä erikseen kalastajalle, metsästäjälle tai edes sivutoimistolle.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
@@ -126,24 +126,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - Yleiskatsauksessa näet siirtokuntasi taloudellisen tilan, kuten ansaitsemasi verot ja rakennuksien ylläpitoon kuluvat juoksevat kulut.
   - Tulot- ja Menot-kohtien perusteella määritellään siirtokuntasi taloudellinen tasapaino, josta puhumme myöhemmin lisää.
-  - Jos taloutesi on plussan puolella, siirtokuntasi tekee voittoa.
+  - Jos talous on plussan puolella, siirtokunta tekee voittoa.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - Eri tasojen mukaan jaetusta yleiskatsauksesta näet tietoja kansalaisistasi. Voit määritellä siirtokuntatasokohtaisen veroprosentin ja sallia tai kieltää asukkailtasi oikeudet asumustensa päivittämiseen.
+  - Eri tasojen mukaan ryhmitellystä yleiskatsauksesta näkee tietoja asukkaista. Voit määritellä siirtokuntatasokohtaisen veroprosentin ja sallia tai kieltää asukkailta oikeuden tasonsa päivittämiseen.
 
 - &FIRSTTENT
-  - [Message, Rakenna teltta ja yhdistä se polulla keskustoriin.]
+  - [Message, Build a tent and connect it to the main square if necessary.]
   - [Headline, ASUINRAKENNUKSET]
   - [Image, content/gui/images/background/hr.png]
   - Uudisasukkaat haluavat katon päänsä päälle, muuten he eivät tule lähellekään siirtokuntaasi! Sinun pitää siis pystyttää telttoja.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Teltat ovat perusasuinrakennuksia. Asukkaasi haluavat kehittää asumustaan, kun he saavuttavat isomman tason.
+  - Teltat ovat perusasuinrakennuksia. Asukkaat haluavat kehittää asumustaan, kun he saavuttavat isomman tason.
   - Huomaa, että rakennuksien päivittämiseen tarvitaan rakennusmateriaaleja. Esimerkiksi ensimmäiseen päivitykseen tarvitaan puuta.
-  - Harkitse päivitysten ottamista pois päältä, jos materiaalit ovat vähissä.
+  - Harkitse päivitysten kieltämistä, jos materiaalit ovat vähissä.
   - Uudisasukkaat eivät välttämättä vaikuta hyödyllisiltä, sillä he kuluttavat tuottamiasi elintarvikkeita. He kuitenkin maksavat veroja, ja se on tällä hetkellä ainoa tapa, jolla saat rahaa!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Rakenna vähintään kolme telttaa lisää ja yhdistä ne keskustoriin.]
@@ -164,7 +164,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
-    VIHJE: Shift-näppäimen pitäminen pohjassa helpottaa usean saman rakennuksen rakentamista.'
+    VINKKI: Shift-näppäimen pitäminen pohjassa helpottaa usean saman rakennuksen rakentamista.'
 
 - &SIGNALFIRE
   - [Message, Rakenna merkkituli rannikolle sivutoimistosi lähettyville.]
@@ -193,7 +193,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &TRADING
   - [Message, 'Varastoi saarellesi vähintään 30 työkalua. Huomaa, että tämä saattaa kestää kauan.']
-  - [Headline, OPI KÄYMÄÄN KAUPPAA]
+  - [Headline, KAUPANKÄYNNIN PERUSTEET]
   - [Image, content/gui/images/background/hr.png]
   - 'Loistavaa! Vapaakauppias pysähtyy nyt säännöllisesti sivutoimistollasi.
 
@@ -213,8 +213,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jos vapaakauppias ei kuitenkaan ole valmis myymään/ostamaan toivomaasi määrää, et voi sille mitään, vaan joudut odottamaan kauppiaan seuraavaa käyntiä.
   - 'Unknown Horisonzsissa on älykäs hinnoittelujärjestelmä, joten hinnat voivat olla muuttuneet kauppiaan seuraavalla käyntikerralla.
 
-    Huomaa, että sinä ET voi vaikuttaa hintoihin itse!'
-  - Budjetti-välilehdellä näet kaupankäynnin tasapainon kohdista "Ostot" ja "Myynti".
+    Hintoihin EI voi vaikuttaa itse!'
+  - Budjetti-välilehdellä näet kaupankäynnin tasapainon kohdista Ostot ja Myynti.
   - ''
   - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
@@ -227,8 +227,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Nuo työkalut riittävät hetkeksi. Hyvin tehty!
   - Tarjoat nyt asuintilat, keskustorin ja ruokaa asukkaillesi.
   - Yhä on yksi vaatimus, jota ei olla vielä täytetty, voit tarkistaa sen halutessasi toripaikasta tai teltan välilehdestä - merimiehesi haluavat yksinkertaisen rakennuksen, jossa voivat rukoilla.
-  - Siksipä sinun pitää rakentaa kylääsi kirkko, jonka kyläpappi nopeasti rakentaa auringonsuojaksi.
-  - Kirkon kaltaiset palvelurakennukset pitää yhdistää polulla telttoihin tai muuten asukkaasi kokevat mahdottomaksi päästä niihin.
+  - Siksi kylään pitää perustaa kirkko, jonka kyläpappi nopeasti rakentaa auringonsuojaksi.
+  - Kirkon kaltaiset palvelurakennukset pitää yhdistää polulla telttoihin tai muuten asukkaat eivät pääse käymään niissä.
   - [Pagebreak]
   - '
 
@@ -248,7 +248,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'UUSI TEHTÄVÄ: SEURAAVA TASO']
   - [Image, content/gui/images/background/hr.png]
   - Kaikki vaatimukset on nyt täytetty, kunhan asukkaasi voivat säännöllisesti vierailla keskustorilla ja kirkossa ja ruokavarantosi on riittävät.
-  - Jos merimiehesi ovat riittävän onnellisia, he haluavat kehittyä seuraavalle tasolle, pioneereiksi.
+  - Jos merimiehesi ovat riittävän onnellisia, he haluavat kehittyä seuraavalle tasolle, kansoittajiksi.
   - Voit tehdä asukkaistasi onnellisempia laskemalla veroprosenttia. Muuta sinun ei tarvitse tehdä, sillä olet jo täyttänyt asukkaidesi kaikki vaatimukset.
   - Veroprosenttia ei kannata kuitenkaan koko aikaa pitää alhaalla, sillä tästä todennäköisesti aiheutuu konkurssi ennemmin tai myöhemmin. Voit kuitenkin laskea prosenttia huoletta pieniksi ajoiksi.
   - Jonkin ajan jälkeen ensimmäisen yksikön pitäisi kävellä keskustorille ja etsiä sieltä uusia rakennustarvikkeita rakentaakseen hirsitalon. Tämä talo korvaa vanhan teltan.
@@ -269,7 +269,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, RAKENNA MAATILA]
   - [Image, content/gui/images/background/hr.png]
   - Onneksi olkoon! Osa asukkaistasi on saavuttanut tason II!
-  - Nyt kun sinulla on pääsy uusiin rakennuksiin, katsopas rakennusvalikkoa uudestaan.
+  - Tämä avaa uusia rakennusmahdollisuuksia, joten vilkasepa rakennusvalikkoa uudestaan.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Sinne on ilmestynyt uutukainen välilehti.
@@ -303,7 +303,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * Sokeripelto: Kasvattaa sokeria, jota käytetään alkoholijuomien tislaamisessa ja (myöhemmin) tuottamaan makeisia.'
   - Tarvitsemme nyt vain laitumia, mutta jos tarvitset lisää ruokaa (esimerkiksi jos sinulla on paljon asukkaita), voit rakentaa myös perunapellon.
-  - Huomaa, että perunoille tarvitset tien farmille (eikä pellolle), koska se on ainoa yritys, joka tuottaa perunoita.
+  - Huomaa, että perunapeltoa varten kerääjillä on oltava polku maatilalle, sillä se on perunoiden viimeinen käsittelypaikka.
   - [Pagebreak]
   - '
 
