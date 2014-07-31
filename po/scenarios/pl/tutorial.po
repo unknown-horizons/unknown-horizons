@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-03-19 13:23+0200\n"
-"Last-Translator: Lucas A. <eerozeteen@gmail.com>\n"
+"PO-Revision-Date: 2014-07-31 02:08+0200\n"
+"Last-Translator: lemoid <k.starzyk02@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/tutorial/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -31,13 +31,12 @@ msgstr ""
 "Zbuduj swoją pierwszą osadę i naucz się grać!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
 msgstr ""
-"Wybuduj port na wybrzeżu, tak by był dostępny dla innych statków, na "
-"przykład statków Wolnych Kupców."
+"Wybuduj port na wybrzeżu, tak aby był dostępny dla innych statków. Na "
+"przykład statków niezależnych kupców."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -482,10 +481,11 @@ msgstr ""
 "budowlanych, takich jak drewno do ich pierwszej modernizacji."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
-msgstr "Rozważ wyłączenie modernizacje jeśli poziom materiałów jest niski."
+msgstr ""
+"Uniemożliwienie modernizacji jest zazwyczaj dobrym pomysłem w sytuacji gdy "
+"nie posiadasz zbyt wielu materiałów."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1110,13 +1110,12 @@ msgstr ""
 "niektóre ziemniaki."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Note that for potatoes you will need a road connection to the farm (not to "
 "the field!) as it will be the only company to work on the goods."
 msgstr ""
 "Należy pamiętać, że w przypadku pola ziemniaków potrzebna jest droga do "
-"farmie (nie do pola!) jeżeli będzie to jedyna farma do pracy."
+"farmy (nie do pola!) jeżeli będzie to jedyna farma w okolicy."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1167,9 +1166,9 @@ msgstr ""
 "pola ziemniaków, jeśli chcesz."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid "Build a storage tent (tier I tab) where it makes sense."
-msgstr "Zbuduj namiot magazynowy (Zakładka poziomu I), gdzie ma to sens."
+msgstr ""
+"Zbuduj namiot magazynowy (Zakładka poziomu I) tam gdzie może się przydać."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD STORAGE"
@@ -1236,7 +1235,7 @@ msgstr ""
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the storage tent."
-msgstr ""
+msgstr "Innym rozwiązaniem jest zbudowanie namiotowych magazynów (zakładka I)."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1244,6 +1243,9 @@ msgid ""
 "* Offers more storage for your goods, and\n"
 "* sends its own collectors to fetch goods, just like the warehouse does."
 msgstr ""
+"Magazyn posiada dwie zalety:\n"
+"* oferuje większą ilość miejsca na surowce,\n"
+"* wysyła własnego pracownika do zbierania dóbr."
 
 #. This is the text body of a logbook page.
 msgid ""

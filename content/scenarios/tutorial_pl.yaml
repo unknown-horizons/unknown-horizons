@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Build a warehouse at the coast, so it is easily accessible for other ships like the Free Trader.']
+  - [Message, 'Wybuduj port na wybrzeżu, tak aby był dostępny dla innych statków. Na przykład statków niezależnych kupców.']
   - '
 
 
@@ -142,7 +142,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/003_h.png]
   - Namioty są podstawowymi budynkami mieszkalnymi. Mieszkańcy będą chcieli je ulepszać wraz ze zwiększaniem stadium rozwoju.
   - Należy pamiętać, że modernizacja każdego budynku wymaga materiałów budowlanych, takich jak drewno do ich pierwszej modernizacji.
-  - Consider to disable the upgrade if your stock of these materials is low.
+  - Uniemożliwienie modernizacji jest zazwyczaj dobrym pomysłem w sytuacji gdy nie posiadasz zbyt wielu materiałów.
   - Ponieważ osadnicy konsumują wszystkie dobra, które produkujesz, mogą nie wydawać się zbyt przydatni - pamiętaj, że płacone przez nich podatnki to obecnie jedyny sposób zdobywania pieniędzy!
   - ''
   - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
@@ -307,7 +307,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * Pole cukrowe: Rośnie tu cukier, który jest używany do destylacji alkoholu i (później) produkcji wyrobów cukierniczych.'
   - Teraz potrzeba tylko pastwisk, ale w przypadku, gdy łańcuch dostaw żywności jest zbyt mały (zbyt wiele budynków mieszkalnych) można również produkować niektóre ziemniaki.
-  - Note that for potatoes you will need a road connection to the farm (not to the field!) as it will be the only company to work on the goods.
+  - Należy pamiętać, że w przypadku pola ziemniaków potrzebna jest droga do farmy (nie do pola!) jeżeli będzie to jedyna farma w okolicy.
   - [Pagebreak]
   - '
 
@@ -321,7 +321,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
+  - [Message, Zbuduj namiot magazynowy (Zakładka poziomu I) tam gdzie może się przydać.]
   - [Headline, 'NOWE ZADANIE: Zbuduj magazyn']
   - [Image, content/gui/images/background/hr.png]
   - Czy odwiedziłeś ostatnio drwala?
@@ -338,12 +338,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Oznacza to że możesz oszczędzać, gdy chwilowo nie potrzebujesz danego budynku, ale nie chcesz go burzyć.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.'
-  - 'This building has two purposes. It:
+  - Innym rozwiązaniem jest zbudowanie namiotowych magazynów (zakładka I).
+  - 'Magazyn posiada dwie zalety:
 
-    * Offers more storage for your goods, and
+    * oferuje większą ilość miejsca na surowce,
 
-    * sends its own collectors to fetch goods, just like the warehouse does.'
+    * wysyła własnego pracownika do zbierania dóbr.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
   - ''
   - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
@@ -662,4 +662,4 @@ metadata:
   locale: pl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 180 translated messages, 5 fuzzy translations, 6 untranslated messages.
+  translation_status: 186 translated messages, 1 fuzzy translation, 4 untranslated messages.
