@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-31 11:37+0200\n"
+"PO-Revision-Date: 2014-07-31 13:28+0200\n"
 "Last-Translator: Aleksi Kinnunen <aleksi.kinnunen@outlook.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
@@ -359,7 +359,7 @@ msgstr "Talokohtainen tyytyväisyys"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
 msgid "sad"
-msgstr "Surullinen"
+msgstr "Onneton"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
@@ -492,7 +492,7 @@ msgstr "Kaupankäynti"
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
 msgid "Build settlement"
-msgstr "Rakenna asutuskeskus"
+msgstr "Perusta siirtokunta"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
@@ -659,7 +659,7 @@ msgstr "Pikaviesti lähetetään kaikille pelaajille."
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Kirjoita viestisi tähän"
+msgstr "Kirjoita viesti tähän"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -723,7 +723,7 @@ msgstr "Maa"
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
-msgstr "Käyttökelpoisen eli rakennusten rakentamiseen kelpaavan maan määrä"
+msgstr "Rakennuskelpoisen maa-alueen määrä"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -767,7 +767,7 @@ msgstr "Pelaajan omistamien yksiköiden kokonaismäärä"
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr ""
+msgstr "Kaikkien edellisten pisteiden yhteismäärä, eli pelipisteet"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
@@ -1704,7 +1704,8 @@ msgstr "Moninpeliin vaadittava kirjasto \"pyenet\" ei ole käytettävissä."
 
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr "Yritä asentaa \"pyenet\" paketinhallinnallasi."
+msgstr ""
+"Linuxin käyttäjä: Yritä asentaa \"pyenet\" paketinhallintaohjelmistolla."
 
 #: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
@@ -1815,7 +1816,7 @@ msgstr "Ei valmis"
 #: horizons/gui/modules/multiplayermenu.py:430
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Kirjoita viestisi tähän"
+msgstr "Kirjoita viesti"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -2308,17 +2309,17 @@ msgstr ""
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} kultaa"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "osta hintaan {buyprice} kultaa"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "myy hintaan {sellprice} kultaa"
 
 #: horizons/gui/widgets/inventory.py:166
 #, python-brace-format
