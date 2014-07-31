@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-02-03 15:06+0200\n"
-"Last-Translator: Olli Paasonen <betakeytome@gmail.com>\n"
-"Language-Team: Finnish <http://hosted.weblate.org/projects/uh/uh/fi/>\n"
+"PO-Revision-Date: 2014-07-31 11:37+0200\n"
+"Last-Translator: Aleksi Kinnunen <aleksi.kinnunen@outlook.com>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -984,12 +984,12 @@ msgstr "Näytä koordinaatit (Debug)"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Ensisijainen"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Toissijainen"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
@@ -1022,7 +1022,7 @@ msgstr "Ladataan…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Päivitä taustakuva"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1598,11 +1598,11 @@ msgstr "Sijoita useita rakennuksia pitämällä SHIFT pohjassa."
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Tällä hetkellä vain ensimmäiset {tier} tasoa ovat pelattavissa."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr "Pysäytä peli nopeammin painamalla P."
+msgstr "Pysäytä peli painamalla pikanäppäintä P."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
@@ -1650,47 +1650,47 @@ msgstr "Sekoitus"
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr ""
+msgstr "Pestään purjelaivoja…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr ""
+msgstr "Pyydystetään piraijoita…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Karkotetaan keripukkia…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr ""
+msgstr "Aktivoidaan aikavyöhykkeitä…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Luetaan lokikirjaa…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Piirretään pelisaaria…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Valmistellaan virheraportteja…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Kartoitetaan kareja…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr ""
+msgstr "Hoidetaan hirviä…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Tutkitaan tietokonepelaajia…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Avataan aarrearkkuja…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -1799,7 +1799,7 @@ msgstr "Kirjoita salasana:"
 #: horizons/gui/modules/singleplayermenu.py:407
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr "Pelaajien suositeltu määrä: {number}"
+msgstr "Suositeltu pelaajamäärä: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:393
@@ -1902,8 +1902,8 @@ msgstr "Ei tallennettuja pelejä"
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
 msgstr ""
-"Et ole tallentanut vielä yhtään peliä. Aloita uusi peli napsauttamalla "
-"\"Yksinpeli\" tai \"Moninpeli\"."
+"Et ole vielä tallentanut yhtään peliä. Aloita uusi peli napsauttamalla "
+"päävalikossa Yksinpeli tai Moninpeli."
 
 #: horizons/gui/modules/select_savegame.py:144
 msgid "No filename given"
@@ -1988,7 +1988,7 @@ msgstr "Tallennuksen poistaminen epäonnistui!"
 
 #: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
 msgid "Hotkeys"
-msgstr ""
+msgstr "Pikanäppäimet"
 
 #: horizons/gui/modules/settings.py:55
 msgid "Game"
