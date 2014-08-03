@@ -46,7 +46,7 @@ def test_place_tiles(gui):
 	gui.cursor_click(34, 27, 'left')
 
 	# Map edge and largest brush size
-	gui.trigger('editor_settings', 'size_5')
+	gui.trigger('editor_settings', 'size_3')
 	gui.cursor_click(-8, 78, 'left')
 
 

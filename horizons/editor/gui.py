@@ -207,7 +207,7 @@ class SettingsTab(TabInterface):
 		self._world_editor = world_editor
 
 		# Brush size
-		for i in range(1, 6):
+		for i in range(1, 4):
 			b = self.widget.findChild(name='size_%d' % i)
 			b.capture(Callback(self._change_brush_size, i))
 
