@@ -22,6 +22,7 @@
 from fife.extensions.pychan.widgets import Label
 
 import horizons.globals
+from horizons.engine import Fife
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.widgets.container import AutoResizeContainer
 
@@ -58,7 +59,13 @@ class FPSDisplay(AutoResizeContainer):
 		return super(FPSDisplay, self).hide()
 
 	def toggle(self):
-		if self.isSetVisible():
-			self.hide()
+		if (Fife.getVersion() <= (0, 3, 5)):
+			if self._visible:
+				self.hide()
+			else:
+				self.show()
 		else:
-			self.show()
+			if self.isSetVisible():
+				self.hide()
+			else:
+				self.show()
