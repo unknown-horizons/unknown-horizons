@@ -21,7 +21,7 @@
 
 import os
 
-from horizons.constants import PATHS, GROUND
+from horizons.constants import EDITOR, GROUND, PATHS
 from tests.gui import gui_test
 
 
@@ -46,7 +46,7 @@ def test_place_tiles(gui):
 	gui.cursor_click(34, 27, 'left')
 
 	# Map edge and largest brush size
-	gui.trigger('editor_settings', 'size_3')
+	gui.trigger('editor_settings', 'size_%s' % (EDITOR.MAX_BRUSH_SIZE + 1))
 	gui.cursor_click(-8, 78, 'left')
 
 

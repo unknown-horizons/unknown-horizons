@@ -21,7 +21,7 @@
 
 import horizons.globals
 
-from horizons.constants import GROUND, VIEW
+from horizons.constants import EDITOR, GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
@@ -207,7 +207,7 @@ class SettingsTab(TabInterface):
 		self._world_editor = world_editor
 
 		# Brush size
-		for i in range(1, 4):
+		for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
 			b = self.widget.findChild(name='size_%d' % i)
 			b.capture(Callback(self._change_brush_size, i))
 

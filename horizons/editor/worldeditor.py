@@ -27,6 +27,7 @@ import logging
 from collections import deque
 
 from horizons.command.unit import RemoveUnit
+from horizons.constants import EDITOR
 from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
 from horizons.gui.widgets.minimap import Minimap
@@ -43,7 +44,7 @@ class WorldEditor(object):
 		self._remove_unnecessary_objects()
 		self._center_view()
 
-		self.brush_size = 1
+		self.brush_size = EDITOR.DEFAULT_BRUSH_SIZE
 
 		self._tile_delete_set = set()
 

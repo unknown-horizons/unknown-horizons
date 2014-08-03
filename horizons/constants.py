@@ -412,6 +412,12 @@ class GUI:
 	CITYINFO_UPDATE_DELAY = 2 # seconds
 	DEFAULT_EXCHANGE_AMOUNT = 50  # tons
 
+# Editor
+class EDITOR:
+	MIN_BRUSH_SIZE = 1
+	MAX_BRUSH_SIZE = 3
+	DEFAULT_BRUSH_SIZE = 1
+
 # Messagewidget and Logbook
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
