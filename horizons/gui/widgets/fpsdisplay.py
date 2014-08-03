@@ -58,7 +58,7 @@ class FPSDisplay(AutoResizeContainer):
 		return super(FPSDisplay, self).hide()
 
 	def toggle(self):
-		if self._visible:
+		if self.isSetVisible():
 			self.hide()
 		else:
 			self.show()
