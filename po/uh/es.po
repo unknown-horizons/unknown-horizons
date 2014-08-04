@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-04 11:11+0200\n"
-"Last-Translator: Ivan Gonzalez Martin <cain1986@gmail.com>\n"
+"PO-Revision-Date: 2014-08-04 11:46+0200\n"
+"Last-Translator: Fede Muller <fedem8@live.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons se ha caído."
+msgstr "Unknown Horizons ha detenido su ejecución."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -74,7 +74,7 @@ msgstr "Guardar mapa"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr "Carga mapa"
+msgstr "Cargar mapa"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
