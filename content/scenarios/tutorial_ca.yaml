@@ -69,7 +69,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
   - El menú de construcció està ordenat per nivells.
-  - Ara sou al primer nivell (el nivell Mariners) i només disposes des edificis bàsics.
+  - Ara sou al primer nivell (el nivell Mariners) i només disposeu des edificis bàsics.
   - [Pagebreak]
   - '
 
@@ -116,7 +116,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Tots els productes del magatzem estan disponibles a aquesta «plaça del mercat», de manera que els residents no han d'anar fins al pescador o fins al magatzem.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - Heu d'evitar posar les tendes de l'assentament massa aprop del llenyataire per que construir tendes traurà els arbres que el llenyataire necessita per produir taulons.
+  - Heu d'evitar posar les tendes de l'assentament massa aprop del llenyataire perquè construir tendes traurà els arbres que el llenyataire necessita per produir taulons.
   - Les empreses funcionen sense haver d'estar connectades a les tendes, així que no us cal fer carreteres entre la plaça principal i el llenyataire, per exemple.
   - ''
   - [BoldLabel, 'Task: Build a main square.']
@@ -126,7 +126,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Ara mirem d''a prop la plaça principal.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - A la pestanya «Finances» pots veure un full de comptes d'aquesta illa, que conté les despeses que pague i els impostos que ingresseu.
+  - A la pestanya «Finances» pots veure un full de comptes d'aquesta illa, que conté les despeses que pagueu i els impostos que ingresseu.
   - Els elements «vendes» i «compra» fan referència al balanç dels vostres negocis i els explicarem més endavant.
   - Si el vostre balanç és positiu, esteu tenint beneficis.
   - - Gallery
@@ -172,7 +172,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, 'Construïu un senyal de foc a la costa, prop del magatzem.']
   - [Headline, 'NOVA TASCA: CONSTRUÏU UN SENYAL DE FOC']
   - [Image, content/gui/images/background/hr.png]
-  - Heu vist el vaixell que passar prop de la vostra illa de tant en tant? És el vaixell de comerciant lliure, un dels primers colonitzadors de l'arxipèlag.
+  - Heu vist el vaixell que passa prop de la vostra illa de tant en tant? És el vaixell de comerciant lliure, un dels primers colonitzadors de l'arxipèlag.
   - El comerciant proveirà al vostre assentament amb els materials necessaris i que encara no podeu produir.
   - També podeu vendre els vostres excedents però, en general, consumir-los (construint més tendes) en comptes de vendre'ls us donarà més benefici.
   - Els vaixells del comerciant simplement van navegant buscant negoci, però podeu fer que la cosa vagi una mica més ràpid.
@@ -183,7 +183,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Un cop enllestit aquest petit anunci, el comerciant s''aturarà a veure que teniu al magatzem cada cop que hi passi aprop.'
+    Un cop enllestit aquest petit anunci, el comerciant s''aturarà a veure què teniu al magatzem cada cop que hi passi aprop.'
   - Podeu proposar-li negocis amb la pestanya «Compra/Venta».
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
@@ -239,7 +239,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Passat un temps, l'hauran consumit i hi hauran d'anar a buscar-ne més.
   - 'Important:
 
-    NO N''HI HA PROU que l''edifici siguin a una determinada distancia de les tendes.
+    NO N''HI HA PROU que l''edifici siguin a una determinada distància de les tendes.
 
     També hi ha de connectar un camí.'
   - ''
@@ -254,7 +254,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - S'hauran satisfet totes les demandes si els vostres habitants poden visitar de tant en tant la plaça principal i el pavelló i el vostre subministre d'aliment és correcte.
   - Si els mariners estan prou contents, voldran avançar al següent nivell anomenat Colons.
   - Per fer-los feliços, no hi ha res millor que posar-los els impostos al mínim fins que els vostres habitants tinguin totes les demandes satisfetes.
-  - Hauríeu de mirar de no tenir sempre els impostos baixos, per que segurament acabareu en fallida. Per un quant temps i si sabeu el que feu, no està malament.
+  - Hauríeu de mirar de no tenir sempre els impostos baixos, per que segurament acabareu en fallida. Per un quant temps i si sabeu el que feu, pot estar bé.
   - Si espereu una mica, la primera unitat anirà a la plaça principal a buscar nous materials de construcció per construir una casa de troncs. Aquesta casa reemplaçarà la vella tenda.
   - [Pagebreak]
   - '
@@ -286,7 +286,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Ja hi tornarem a fer un cop d''ull després.'
   - Les granges, com totes les companyies que produeixen matèria prima, no cal que estiguin connectades a cap magatzem o dipòsit.
   - Mentre les unitats de la granja puguin arribar a la companyia del producte final, i els recol·lectors del magatzem o de la tenda de dipòsit puguin arribar a aquesta companyia, tot anirà bé.
-  - De tota manera, si preteneu fer part del procés a diferents parts de l'illa (la qual cosa pot tenir sentit) o fins i tot a illes diferents, necessiteu una connexió per als recol·lectors.
+  - De tota manera, si preteneu fer part del procés a diferents parts de l'illa (la qual cosa pot ser normal) o fins i tot a illes diferents, necessiteu una connexió per als recol·lectors.
   - Mireu de no construir la granja massa aprop de la costa o d'altres edificis per que necessitarà espai al voltant per poder treballar bé.
   - ''
   - [BoldLabel, 'Task: Build a farm.']
@@ -301,18 +301,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ara mateix podeu escollir entre camps de pastures, patates i sucre.
   - 'Fem-hi una ullada:
 
-    * Pastures: Hi viuen els corders i produeixen llana.
+    * Pastures: Hi viuen les ovelles i produeixen llana.
 
     * Camp de patates: Hi creixen patates que de moment es tracten com aliment.
 
     * Camp de sucre: Hi creix sucre per destil·lar licor i (més endavant) fer pastisseria.'
-  - Només necessitem pastures,però si la vostra cadena d'aliments és massa petita (potser teniu molts edificis residencials) també podeu produir patates.
-  - Recordeu que per fer patates necessiteu una carretera que connecti amb la granja (no amb el camp!) per que és la única companyia que es necessita per produir-les.
+  - Només necessitem pastures, però si la vostra cadena d'aliments és massa petita (potser teniu molts edificis residencials) també podeu produir patates.
+  - Recordeu que per fer patates necessiteu una carretera que connecti amb la granja (no amb el camp!) per que és l'única companyia que es necessita per produir-les.
   - [Pagebreak]
   - '
 
     Assegureu-vos que construïu tots els camps a l''àrea d''influència de la granja.'
-  - 'Podeu tenir una producció combinada: una pasturà no farà la granja eficient al 100%, si no que heu de veure quants camps pot portar una granja.'
+  - 'Podeu tenir una producció combinada: una pastura no farà la granja eficient al 100%, si no que heu de veure quants camps pot portar una granja.'
   - Diferents tipus de camps requereixen més o menys temps (per plantar, collir, pasturar, etc...) i per aquest motiu, la granja pot no poder cuidar tots els camps que hi heu construït.
   - De moment, no us n'heu de preocupar per que encara no heu construït cap camp. Canviem-ho!
   - ''
@@ -321,7 +321,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Construïu una tenda de dipòsit (pestanya de nivell 1) on pugui tenir sentit.]
+  - [Message, Construïu una tenda de dipòsit (pestanya de nivell 1) en un lloc adequat.]
   - [Headline, 'NOVA TASCA: CONSTRUÏU UN DIPÒSIT']
   - [Image, content/gui/images/background/hr.png]
   - Heu vist el llenyataire darrerament?
@@ -339,12 +339,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Això vol dir que podeu estalviar diners quan temporalment no necessiteu una empresa i no la voleu enderrocar.'
   - 'Una altra solució és construir el darrer edifici de nivell 1 que encara no hem esmentat: la tenda de dipòsit.'
-  - 'Aquest edifici te dos objectius:
+  - 'Aquest edifici té dos objectius:
 
     * Ofereix més espai per als vostres productes
 
     * Envia els seus propis recol·lectors a buscar productes, com fan els magatzems.'
-  - Les companyies també poden estar connectades a un dipòsit per recollir els seus productes, i si el magatzem està saturat amb les tasques de recol·lecció, podeu posar una tenda de dipòsit que li doni un cop de ma.
+  - Les companyies també poden estar connectades a un dipòsit per recollir els seus productes, i si el magatzem està saturat amb les tasques de recol·lecció, podeu posar una tenda de dipòsit que li doni un cop de mà.
   - ''
   - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
@@ -355,7 +355,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOVA TASCA: CONSTRUÏU UN TEIXIDOR']
   - [Image, content/gui/images/background/hr.png]
   - Ara que ja teniu establerta la producció de llanta, necessiteu un teixidor que la converteixi en teixit.
-  - 'Hi ha dos llocs in el podeu construir: prop de la granja o prop de la tenda de dipòsit (o del magatzem).'
+  - 'Hi ha dos llocs on el podeu construir: prop de la granja o prop de la tenda de dipòsit (o del magatzem).'
   - En ambdós casos us heu d'assegurar que està connectat a un camí.
   - Podeu posar el teixidor prop de la granja i no posar cap camí i veureu que la llana hi arriba igual i pot produir.
   - ''
@@ -376,15 +376,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, Felicitats! Heu arribat al final d'aquest tutorial i esteu apunt de enfrontar-vos a nous desafiaments!]
+  - [Message, Felicitats! Heu arribat al final d'aquest tutorial i esteu apunt d'enfrontar-vos a nous desafiaments!]
   - [Headline, NO QUEDEN TASQUES]
   - [Image, content/gui/images/background/hr.png]
-  - Heu completat totes les tasques que us hem posat. Ara el mon és sota el vostre comandament on us esperen les vostres aspiracions i valeroses exploracions!
+  - Heu completat totes les tasques que us hem posat. Ara el món és sota el vostre comandament on us esperen les vostres aspiracions i valeroses exploracions!
   - 'Si teniu suggeriments sobre coses que podem millorar, afegir o treure:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Els nostre fòrums estan a vostra disposició!
+  - Els nostres fòrums estan a vostra disposició!
   - Els millors resultats fins ara s'han assolit unint-se al nostre canal IRC, així que podeu començar per aquí (-;
   - [Pagebreak]
   - [Headline, Gràcies!]
