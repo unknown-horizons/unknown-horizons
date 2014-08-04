@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-07-14 21:54+0200\n"
+"PO-Revision-Date: 2014-08-04 13:42+0200\n"
 "Last-Translator: Àngel Mompó Llovet <mecatxis@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/voices/ca/>\n"
 "Language: ca\n"
@@ -79,7 +79,7 @@ msgstr "Aquesta illa ja no és completament nostra."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
-msgstr "Els nostres explorades han trobat hostes establerts a la nostra illa."
+msgstr "Els nostres exploradors han trobat hostes establerts a la nostra illa."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
