@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
 "PO-Revision-Date: 2014-08-04 10:53+0200\n"
-"Last-Translator: Ivan Gonzalez Martin <cain1986@gmail.com>\n"
+"Last-Translator: Gauekoizar <gauekoizar84@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -3597,10 +3597,9 @@ msgid "hop plants"
 msgstr "coníferas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
-msgstr "azul verdoso"
+msgstr "té"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
@@ -3611,10 +3610,9 @@ msgid "iron ingots"
 msgstr "lingotes de hierro"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
-msgstr "depósito de arcilla"
+msgstr "depósito de carbón"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3663,7 +3661,7 @@ msgstr "maíz"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "campos de flores"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
@@ -3676,7 +3674,7 @@ msgstr "Tus habitantes han alcanzado el nivel {level}."
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "ámbar gris"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
