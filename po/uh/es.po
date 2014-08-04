@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-04 10:54+0200\n"
-"Last-Translator: Ivan Gonzalez Martin <cain1986@gmail.com>\n"
+"PO-Revision-Date: 2014-08-04 11:09+0200\n"
+"Last-Translator: Gauekoizar <gauekoizar84@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -3712,20 +3712,18 @@ msgid "dagger"
 msgstr "daga"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
-msgstr "plantas de especias"
+msgstr "plantas de café"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
 msgstr "ladrillos"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "mineral de hierro"
+msgstr "mena de oro"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -3737,7 +3735,7 @@ msgstr "plantas de especias"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "higiene"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
@@ -3760,10 +3758,9 @@ msgid "confectionery"
 msgstr "repostería"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Ballenero"
+msgstr "ballenas"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3775,13 +3772,12 @@ msgstr "¡Has ganado!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "flores"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
-msgstr "plantas de especias"
+msgstr "plantas de índigo"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
@@ -3809,7 +3805,7 @@ msgstr "bellotas"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "prendas"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
@@ -3846,10 +3842,9 @@ msgid "Your game has been autosaved."
 msgstr "La partida ha sido guardada."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "depósito de arcilla"
+msgstr "depósito de oro"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3857,7 +3852,7 @@ msgstr "Uno de tus campos requiere una granja para cosechar los cultivos."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "gemas en bruto"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
@@ -3877,7 +3872,7 @@ msgstr "educación"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "algodón"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3902,10 +3897,9 @@ msgid "cannon"
 msgstr "cañón"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Los habitantes de este edificio tienen la peste."
+msgstr "¡Los habitantes de este edificio tienen la peste!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
