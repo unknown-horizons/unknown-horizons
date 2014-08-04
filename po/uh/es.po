@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
 "PO-Revision-Date: 2014-08-04 10:45+0200\n"
-"Last-Translator: Gauekoizar <gauekoizar84@gmail.com>\n"
+"Last-Translator: Ivan Gonzalez Martin <cain1986@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -3562,8 +3562,9 @@ msgid "cocoa"
 msgstr "cacao"
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "marble tops"
-msgstr ""
+msgstr "Encimeras de mármol"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
