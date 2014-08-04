@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-05-30 13:42+0200\n"
-"Last-Translator: Gauekoizar <gauekoizar84@gmail.com>\n"
+"PO-Revision-Date: 2014-08-04 10:43+0200\n"
+"Last-Translator: Ivan Gonzalez Martin <cain1986@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -865,9 +865,8 @@ msgid "Return"
 msgstr "Volver"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "Opciones IA"
+msgstr "Acciones"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -1158,10 +1157,9 @@ msgid "Create a new game"
 msgstr "Crear nueva partida"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Unirse"
+msgstr "Unirse a la partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1608,7 +1606,7 @@ msgstr "Usa 'SHIFT' para asentar múltiples edificios."
 #, python-brace-format
 #| msgid "Currently only the first {tier} tiers are playable."
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Actualmente sólo los primeros {nivel} niveles son jugables."
+msgstr "Actualmente sólo los primeros {tier} niveles son jugables."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
@@ -1678,9 +1676,8 @@ msgid "Activating timer…"
 msgstr "Activando temporizador…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-#, fuzzy
 msgid "Chomping game data…"
-msgstr "Convidando datos del juego..."
+msgstr "Mascando datos del juego…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
@@ -1699,9 +1696,8 @@ msgid "Raising animals…"
 msgstr "Criando animales…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Convincing AI…"
-msgstr "Convenciendo IA..."
+msgstr "Convenciendo a la IA…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
@@ -1834,7 +1830,7 @@ msgstr "No estoy listo"
 #: horizons/gui/modules/multiplayermenu.py:430
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Escribe tu mensaje:"
+msgstr "Escribe tu mensaje"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -2242,7 +2238,7 @@ msgstr ""
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
-msgstr "Visión general de la lonja"
+msgstr "Visión general del almacén"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
 msgid "Account"
@@ -2258,7 +2254,7 @@ msgstr "Actualización imposible:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "¡Este es por ahora el nivel jugable más alto!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
@@ -2462,7 +2458,7 @@ msgstr "ninguno"
 #, python-brace-format
 #| msgid "Details: {error_details}"
 msgid "Details: {error_details}"
-msgstr "Detalles: (error_details}"
+msgstr "Detalles: {error_details}"
 
 #: horizons/gui/windows.py:394
 #, python-brace-format
@@ -2491,8 +2487,9 @@ msgstr "Recluta unidades adecuadas para el combate terrestre."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
+#, fuzzy
 msgid "Blender"
-msgstr ""
+msgstr "Mezclador"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
@@ -3006,7 +3003,7 @@ msgstr "Produce vino de las uvas."
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:418
 msgid "Warehouse"
-msgstr "Lonja"
+msgstr "Almacén"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3302,9 +3299,9 @@ msgstr "Una página ha sido abierta en tu navegador."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:267
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} huecos, de {limit}"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
@@ -3454,7 +3451,7 @@ msgstr "¡Tu edificio esta ardiendo!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "salmuera"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
