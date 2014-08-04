@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-04 11:09+0200\n"
-"Last-Translator: Gauekoizar <gauekoizar84@gmail.com>\n"
+"PO-Revision-Date: 2014-08-04 11:11+0200\n"
+"Last-Translator: Ivan Gonzalez Martin <cain1986@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -3899,7 +3899,7 @@ msgstr "cañón"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "¡Los habitantes de este edificio tienen la peste!"
+msgstr "¡Los habitantes de este edificio tienen la Peste Negra!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3907,10 +3907,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "El nuevo barco con el nombre de {name} ha sido construido."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "plantas de tabaco"
+msgstr "plantas de té"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -3934,7 +3933,7 @@ msgstr "hierbas"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "lampara de aceite"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
@@ -3949,10 +3948,9 @@ msgid "condiments"
 msgstr "especias"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "negro"
+msgstr "peste negra"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
@@ -3976,10 +3974,9 @@ msgid "salt"
 msgstr "sal"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "lingotes de hierro"
+msgstr "lingotes de oro"
 
 #~ msgid "Back:"
 #~ msgstr "Atrás:"
