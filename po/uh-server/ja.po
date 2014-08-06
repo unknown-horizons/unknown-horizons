@@ -8,58 +8,60 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2014-08-06 17:01+0200\n"
+"Last-Translator: Koji Yamanoue <yokota33@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/uh/uh-"
+"server/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.1-pre\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
+msgstr "古いもしくはサポートされていない複数プレイヤープロトコルです。ゲームのバージョンを確認してください"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "グローバルパケットサイズを超過しました。"
 
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
+msgstr "これは起こるはずのないことです。私達にコンタクトを取るか、バグレポートを報告してください。"
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "単位パケットサイズを超過しました。"
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "不明もしくは誤ったパケットです。ゲームのバージョンを確認してください"
 
 #: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "無効または未知のセッション"
 
 #: horizons/network/server.py:393
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "ゲーム参加中に別のゲームに参加することはできません"
 
 #: horizons/network/server.py:398
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "未知のゲームか異なるバージョンで実行されているゲームです"
 
 #: horizons/network/server.py:401
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "ゲームは既に開始しています。もう参加できません"
 
 #: horizons/network/server.py:404
 msgid "Game is full"
-msgstr ""
+msgstr "ゲームは満杯です"
 
 #: horizons/network/server.py:407
 msgid "Wrong password"
-msgstr ""
+msgstr "パスワードが違います"
 
 #: horizons/network/server.py:424 horizons/network/server.py:534
 msgid "There's already a player with your name inside this game."
