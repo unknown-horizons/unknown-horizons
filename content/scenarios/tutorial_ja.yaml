@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 自由交易船などの他の船が近づきやすいように、海岸沿いに倉庫を建設しましょう。]
+  - [Message, 自由交易船など他船が近づきやすいように、海岸沿いに倉庫を建設しましょう。]
   - '
 
 
@@ -24,45 +24,45 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Captain's log where all important information is stored. A short notification of each task will be provided on the left of the screen.
-  - If you are interested in longer descriptions, your log will hopefully provide all the help you need.
-  - After you close this log, it can be re-opened with the "Captain's Log" icon in the top-right corner (below the mini-map, with a sealed document and a feather).
+  - これは、重要情報が全て記載されている、あなたの航海日誌です。各任務に関する簡単な告知は、画面左に表示されます。
+  - より長い説明が必要なときには、この航海日誌が必要な全情報を提供してくれるはずです。
+  - この日誌を閉じた後、再度開くには、右上隅の「船長の航海日誌」のアイコン（小地図下の印璽した書類と羽のアイコン）を使います。
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, click on the button "Read next entries" in the navigation panel! It looks like this:'
+    最初の任務を見るためには、移動パネルの「次の項目を読む」ボタンをクリックして下さい！このようなボタンです：'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    For any suggestions on better wording, topics you would like to have explained or even buggy conditions: Please tell us and we will try to improve the tutorial!'
+    より良い言い回しの提案や、説明を追加すべきトピックの提案がある場合、またはバグとも言える叙述を見出された場合には、私達にお知らせ下さい。チュートリアルの改善に努めます！'
   - '
 
-    Visit www.unknown-horizons.org for help on how to contact the team!'
-  - And now, let's start the actual game.
+    開発チームへの連絡方法については、www.unkown-horizons.orgをご覧ください！'
+  - それでは、実際にゲームを始めましょう。
   - [Pagebreak]
-  - [Headline, 新しい任務：　島に集落を作る]
+  - [Headline, 新任務：島に入植する]
   - [Image, content/gui/images/background/hr.png]
-  - To move your ship, select it with a left click and right click on the location you want it to go to.
-  - Once you are near the coast, the anchor-like button you see in the overview tab will become active.
+  - 船を移動させるには、左クリックで船を選択した後に、移動させたい場所を右クリックします。
+  - 海岸に近づくと、概要タブにある錨様のボタンが有効になります。
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - This indicates that you are able to build a warehouse there by pressing that button (called 'Build Settlement').
-  - Now a preview of your building is dragged around when you move the cursor.
-  - 'You can build on any spot where this preview is not shaded red.
+  - これは、（「入植地を造る」という）そのボタンを押せば、倉庫を建設できる状態になったことを示しています。
+  - ボタンを押すと、カーソルを動かすにしたがって、建築物のプレビューが動き回ります。
+  - 'このプレビューが赤く表示されていない場所であれば、どこでも建設することができます。
 
-    Click where you want to place your first building.'
+    この最初の建物を配置したい場所でクリックをして下さい。'
   - ''
   - [BoldLabel, 'Task: Build a warehouse at the coast.']
 
 - &LUMBERJACK
-  - [Message, 伐採所を作って、道で支部とつなぎましょう。]
-  - [Headline, 新しい任務：　伐採所を作る]
+  - [Message, 伐採所を造って、倉庫まで道でつなぎましょう。]
+  - [Headline, 新任務：伐採所を建設せよ]
   - [Image, content/gui/images/background/hr.png]
-  - The construction material on your ship got unloaded automatically. You can now construct some basic buildings.
-  - We will start with building a lumberjack.
+  - 船上の建築資材は自動的に荷揚げされます。いくつかの基本的な建築物を作ることができるようになりました。
+  - 伐採所を建設することからはじめましょう。
   - This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.
   - The fisherman needs some boards to build his vessel as well.
   - In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.
@@ -194,7 +194,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Message, 島の工具の貯蔵を30以上にせよ。これにはしばらく時間がかかるかもしれません。]
   - [Headline, 新しい任務：　交易]
   - [Image, content/gui/images/background/hr.png]
   - 'Excellent! The Free Trader will now stop by at your warehouse from time to time.
@@ -249,7 +249,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &NEXTTIER
   - [Message, 税率を最低（左端）に変えて、船乗りが進化するのを待つ。]
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Headline, 新任務：次の階級]
   - [Image, content/gui/images/background/hr.png]
   - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
   - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
@@ -321,7 +321,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
+  - [Message, （第一階層タブ中にある）貯蔵庫を有効な場所に作れ。]
   - [Headline, 新しい任務：　貯蔵庫を作る]
   - [Image, content/gui/images/background/hr.png]
   - Did you watch your lumberjack recently?
@@ -395,10 +395,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Thanks for playing the tutorial!
+    チュートリアルで遊んでくれてありがとうございました！
 
 
-    Your UH-Team'
+    あなたのＵＨチーム'
   - - Gallery
     - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
@@ -655,11 +655,11 @@ events:
 
 metadata:
   author: The UH team
-  description: 'チュートリアル:
+  description: 'チュートリアル：
 
-    最初の集落を作って、プレイ方法を学びましょう!'
+    最初の入植地を建設して、遊び方を学びましょう！'
   difficulty: チュートリアル
   locale: ja
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 32 translated messages, 11 fuzzy translations, 148 untranslated messages.
+  translation_status: 58 translated messages, 133 untranslated messages.
