@@ -18,7 +18,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gfx/uh.png]
   - [Pagebreak]
-  - [Headline, Unknown Horizons にようこそ!]
+  - [Headline, Unknown Horizonsにようこそ！]
   - [Image, content/gui/images/background/hr.png]
   - '
 

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-08-03 10:07+0200\n"
-"Last-Translator: genjin <naoto.kiribuchi@gmail.com>\n"
+"PO-Revision-Date: 2014-08-06 17:05+0200\n"
+"Last-Translator: Koji Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/tutorial/ja/>"
 "\n"
 "Language: ja\n"
@@ -38,7 +38,7 @@ msgstr "自由交易船などの他の船が近づきやすいように、海岸
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
-msgstr "Unknown Horizons にようこそ!"
+msgstr "Unknown Horizonsにようこそ！"
 
 #. This is the text body of a logbook page.
 msgid ""
