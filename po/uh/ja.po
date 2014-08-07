@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-06 16:54+0200\n"
-"Last-Translator: Koji Yamanoue <yokota33@gmail.com>\n"
+"PO-Revision-Date: 2014-08-07 03:34+0200\n"
+"Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/uh/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "たいへん申し訳ありませんが、これを引き起こしたエ
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "右記のログファイルから情報を得ることが必要があります:"
+msgstr "右記のログファイルから情報を得る必要があります:"
 
 #: run_uh.py:129
 msgid ""
@@ -943,288 +943,286 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "周囲の建造物の半透明化を入切"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
+#, fuzzy
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "コマの所有権を強調表示"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
+#, fuzzy
 msgid "Toggle health bars"
-msgstr ""
+msgstr "健康インジケーターを入切"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
+#, fuzzy
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "選択したものにカメラの焦点を当てる"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "選択したユニットや建造物を削除"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
-msgstr ""
+msgstr "ヘルプを表示"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Screenshot"
-msgstr ""
+msgstr "スクリーンショット"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Toggle showing FPS on/off"
-msgstr ""
+msgstr "FPS表示を入切"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Toggle grid on/off"
-msgstr ""
+msgstr "グリッド表示を入切"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "座標値を表示（デバッグ用）"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
+#, fuzzy
 msgid "Primary"
-msgstr ""
+msgstr "第一"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
+#, fuzzy
 msgid "Secondary"
-msgstr ""
+msgstr "第二"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
-msgstr ""
+msgstr "既定値に初期化"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default keys"
-msgstr ""
+msgstr "既定鍵に初期化"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
-#, fuzzy
 msgid "Save game"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを保存"
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:50
-#, fuzzy
 msgid "Load game"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを読み込む"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
-msgstr ""
+msgstr "ゲームを取り消す"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
-msgstr ""
+msgstr "読み込んでいます…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "背景を変更"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
-msgstr ""
+msgstr "単独プレイヤー"
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
 msgid "Multiplayer"
-msgstr ""
+msgstr "複数プレイヤー"
 
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
 msgid "Quit"
-msgstr ""
+msgstr "終了"
 
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "エディタ"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
-msgstr ""
+msgstr "製作者"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "ゲームを作成―複数プレイヤー"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
-msgstr ""
+msgstr "プレイヤー数上限："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "複数プレイヤーメニューに戻る"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
-msgstr ""
+msgstr "ゲームの名称："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
-msgstr ""
+msgstr "これはゲームを識別できるように他のプレイヤーに対して表示されます。"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "名のないゲーム"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr ""
+msgstr "ゲームのパスワード："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr ""
+msgstr "このゲームのパスワード。このゲームに参加するのに必要です。"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
-msgstr ""
+msgstr "この新規ゲームを作成する"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
-msgstr "ロビー"
+msgstr "ゲームロビー"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
-msgstr ""
+msgstr "チャット："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Exit gamelobby"
-msgstr "ロビーから出る"
+msgstr "ゲームロビーを出る"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr ""
+msgstr "全プレイヤーの準備が出来次第、ゲームを開始します。"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
-msgstr ""
+msgstr "ゲーム詳細："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
-msgstr ""
+msgstr "色"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
-msgstr ""
+msgstr "準備完了："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
+msgstr "あなたの状態を準備完了にする（ゲーム開始に必要）"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "新規ゲーム ― 複数プレイヤー"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
-#, fuzzy
 msgid "Load game:"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを読み込む："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
-#, fuzzy
 msgid "Load a saved game"
-msgstr "ゲームの読み込み"
+msgstr "保存済みゲームを読み込む"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
+#, fuzzy
 msgid "Active games:"
-msgstr ""
+msgstr "有効なゲーム："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
 msgid "Refresh list:"
-msgstr ""
+msgstr "一覧の更新："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "有効なゲームの一覧を更新します"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
-#, fuzzy
 msgid "Create game:"
-msgstr "ゲームの読み込み"
+msgstr "ゲームを作成："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Create a new game"
-msgstr ""
+msgstr "新規ゲームを作成します"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 msgid "Join game:"
-msgstr "ゲームの読み込み"
+msgstr "ゲームに参加："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
-msgstr ""
+msgstr "選択したゲームに参加します"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr ""
+msgstr "プレイヤー詳細を変更"
 
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/modules/settings.py:53
 msgid "Graphics"
-msgstr ""
+msgstr "グラフィックス"
 
 #: content/gui/xml/mainmenu/settings.xml:18
 msgid "Screen resolution:"
-msgstr ""
+msgstr "画面解像度："
 
 #: content/gui/xml/mainmenu/settings.xml:25
 msgid "Full screen:"
-msgstr ""
+msgstr "フルスクリーン："
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr ""
+msgstr "SDLはサポートのない最終手段であり、問題を引き起こす可能性があります！"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
-msgstr ""
+msgstr "使用するレンダラー："
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "フレームレート上限："
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "使用する最大フレームレートを設定します。既定値：60fps。"
 
 #: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
-msgstr ""
+msgstr "音声"
 
 #: content/gui/xml/mainmenu/settings.xml:60
 msgid "Music volume:"
-msgstr ""
+msgstr "音楽音量："
 
 #: content/gui/xml/mainmenu/settings.xml:69
 msgid "Effects volume:"
-msgstr ""
+msgstr "効果音音量："
 
 #: content/gui/xml/mainmenu/settings.xml:76
-#, fuzzy
 #| msgid "Enable edge scrolling:"
 msgid "Enable sound:"
-msgstr "ウィンドウの端でスクロールする："
+msgstr "音声を有効化："
 
 #: content/gui/xml/mainmenu/settings.xml:82
-#, fuzzy
 msgid "Mouse"
-msgstr "住宅"
+msgstr "マウス"
 
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "地図の縁でスクロール："
 
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid ""
@@ -1250,14 +1248,12 @@ msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "初期設定に戻す"
+msgstr "０は既定のシステム設定です"
 
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "資源の密度："
+msgstr "マウスの感度："
 
 #: content/gui/xml/mainmenu/settings.xml:123
 msgid "Saving"
