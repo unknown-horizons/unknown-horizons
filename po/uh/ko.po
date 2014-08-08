@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-08 12:43+0200\n"
+"PO-Revision-Date: 2014-08-08 12:44+0200\n"
 "Last-Translator: cho bkwon <chobkwon@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "알수없는 지평선이 비정상 종료되었습니다."
+msgstr "알수없는 지평선이 강제 종료되었습니다."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -58,7 +58,7 @@ msgstr ""
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr "알수 없는 지평선을 플레이해 주셔서 고맙습니다!"
+msgstr "알수 없는 지평선을 이용해 주셔서 고맙습니다!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
