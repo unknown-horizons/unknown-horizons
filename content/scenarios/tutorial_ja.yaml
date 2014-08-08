@@ -9,7 +9,11 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 自由交易船など他船が近づきやすいように、海岸沿いに倉庫を建設しましょう。]
+  - [Message, '自由交易船など他船が近づきやすい
+
+      ように、海岸沿いに倉庫を建設しま
+
+      しょう。']
   - '
 
 
@@ -655,10 +659,10 @@ events:
 
 metadata:
   author: The UH team
-  description: 'チュートリアル：
+  description: '教習課程：
 
     最初の入植地を建設して、遊び方を学びましょう！'
-  difficulty: チュートリアル
+  difficulty: 教習課程
   locale: ja
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml

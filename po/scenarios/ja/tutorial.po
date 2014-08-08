@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-08-06 20:01+0200\n"
+"PO-Revision-Date: 2014-08-08 11:27+0200\n"
 "Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/tutorial/ja/>"
 "\n"
@@ -20,21 +20,24 @@ msgstr ""
 
 #. scenario difficulty
 msgid "Tutorial"
-msgstr "チュートリアル"
+msgstr "教習課程"
 
 #. scenario description
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
-"チュートリアル：\n"
+"教習課程：\n"
 "最初の入植地を建設して、遊び方を学びましょう！"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
-msgstr "自由交易船など他船が近づきやすいように、海岸沿いに倉庫を建設しましょう。"
+msgstr ""
+"自由交易船など他船が近づきやすい\n"
+"ように、海岸沿いに倉庫を建設しま\n"
+"しょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
