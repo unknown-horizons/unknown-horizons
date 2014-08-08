@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-27 15:51+0200\n"
-"Last-Translator: ks k <kmshts@gmail.com>\n"
+"PO-Revision-Date: 2014-08-08 12:43+0200\n"
+"Last-Translator: cho bkwon <chobkwon@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -1653,7 +1653,6 @@ msgid "Raising animals…"
 msgstr "동물을 기르는중…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Convincing AI…"
 msgstr "인공지능을 설득하는중…"
 
@@ -1687,9 +1686,8 @@ msgstr "네트워크 기능은 현재의 환경설정을 초기화 할 수 없�
 
 #: horizons/gui/modules/multiplayermenu.py:132
 #: horizons/gui/modules/settings.py:274
-#, fuzzy
 msgid "Check the settings you specified in the network section."
-msgstr "네트워크 섹션에서 명시한 설정을 확인하십시오."
+msgstr "네트워크 섹션에서 지정한 설정을 재확인하십시오."
 
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
@@ -1901,7 +1899,7 @@ msgstr "{time}에 저장됨"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:224
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] "{amount} 시간 저장되었습니다.- 확인요망"
@@ -2277,7 +2275,6 @@ msgid "Limit: {amount}t per slot"
 msgstr "제한: 슬롯당 {amount}t"
 
 #: horizons/gui/widgets/logbook.py:49
-#, fuzzy
 msgid "Logbook"
 msgstr "일지"
 
@@ -2286,7 +2283,6 @@ msgid "Emptiness"
 msgstr "텅 비어있음"
 
 #: horizons/gui/widgets/logbook.py:186
-#, fuzzy
 msgid "There is nothing written in your logbook yet!"
 msgstr "아직 작성된 일지가 없습니다!"
 
@@ -2466,9 +2462,8 @@ msgstr "많은 판을 굽습니다."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:105
-#, fuzzy
 msgid "Clay Deposit"
-msgstr "점토광"
+msgstr "점토 매장층"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:110
@@ -2782,9 +2777,8 @@ msgstr "조각가"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
-#, fuzzy
 msgid "Carves stone tops into bricks."
-msgstr "돌 꼭대기를 깎아서 벽돌을 만듭니다.-- 꼭대기"
+msgstr "벽돌에 돌 탑을 새겨놓다."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:332
@@ -3346,9 +3340,8 @@ msgid "Attacking {owner}"
 msgstr "{owner}를 공격중"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "indigo"
-msgstr "인디고,남색,쪽빛"
+msgstr "남색,쪽빛"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3402,9 +3395,8 @@ msgid "tobacco leaves"
 msgstr "담배잎"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "stone tops"
-msgstr "돌 꼭대기-- 꼭대기"
+msgstr "돌 탑"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
@@ -3830,9 +3822,8 @@ msgid "pigs"
 msgstr "돼지"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "창고를 찟을 수 없습니다, 정착지는 그것이 필요합니다. --찟다"
+msgstr "창고를 찟을 수 없습니다, 정착지는 그것이 필요합니다."
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
