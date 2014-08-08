@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2014-08-06 17:01+0200\n"
-"Last-Translator: Koji Yamanoue <yokota33@gmail.com>\n"
+"PO-Revision-Date: 2014-08-08 18:58+0200\n"
+"Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/uh-"
 "server/ja/>\n"
 "Language: ja\n"
@@ -65,48 +65,50 @@ msgstr "パスワードが違います"
 
 #: horizons/network/server.py:424 horizons/network/server.py:534
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "このゲーム中に既にあなたの名前を使っているプレイヤーがいます。"
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
-msgstr ""
+msgstr "改名してください。"
 
 #: horizons/network/server.py:428 horizons/network/server.py:562
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "このゲーム中に既にあなたの色を使っているプレイヤーがいます。"
 
 #: horizons/network/server.py:429
 msgid "Please change your color."
-msgstr ""
+msgstr "あなたの色を変更してください。"
 
 #: horizons/network/server.py:432
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr ""
+msgstr "このゲーム中にあなたの専有プレイヤーIDを持つプレイヤーがいます。これはありえません。"
 
 #: horizons/network/server.py:448
 msgid "You are not inside a game"
-msgstr ""
+msgstr "あなたはゲーム中にはいません"
 
 #: horizons/network/server.py:478
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "ゲームは停止しました。ゲーム作成者がゲームを去りました。"
 
 #: horizons/network/server.py:483
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"一人のプレイヤーがゲームを終了させました。今のところ、技術的な理由から、これはゲームを続けることができないということを意味します。たいへん申しわけなく存じ"
+"ます。"
 
 #: horizons/network/server.py:535
 msgid "Unable to change your name."
-msgstr ""
+msgstr "あなたの名前を変更できません。"
 
 #: horizons/network/server.py:563
 msgid "Unable to change your color."
-msgstr ""
+msgstr "あなたの色を変更することができません。"
 
 #: horizons/network/server.py:650
 msgid "You can't fetch a game while in another game"
-msgstr ""
+msgstr "一つのゲームに参加中に別のゲームを取得することはできません"
