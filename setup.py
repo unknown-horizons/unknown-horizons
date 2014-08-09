@@ -203,17 +203,10 @@ class _build_i18n(distutils.cmd.Command):
 		# Since specifying a .mofile dir is not supported, we manually move build/mo/
 		# to a place more appropriate in our opinion, currently content/lang/
 		if os.path.exists(os.path.join("build", "mo")):
-<<<<<<< HEAD
 			# it appears build/mo should always magically appear,
 			# but does not on some gentoo machines.
 			# there, everything is placed in content/lang, so it's fine
 			# on other machines, we have to move stuff around like that:
-=======
-                        # it appears build/mo should always magically appear,
-                        # but does not on some gentoo machines.
-                        # there, everything is placed in content/lang, so it's fine
-                        # on other machines, we have to move stuff around like that:
->>>>>>> 56d29e422ae0afa0c03ff9a0d20a6380e4918604
 			if os.path.exists(os.path.join("content", "lang")):
 				rmtree(os.path.join("content", "lang"))
 			copytree(os.path.join("build", "mo"), os.path.join("content", "lang"))
