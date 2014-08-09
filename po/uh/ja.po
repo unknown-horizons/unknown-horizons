@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-08 18:51+0200\n"
+"PO-Revision-Date: 2014-08-09 18:30+0200\n"
 "Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/uh/ja/>\n"
 "Language: ja\n"
@@ -844,7 +844,7 @@ msgstr "既存の地図の読み込み"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "保存ずみゲームの地図を読み込む"
+msgstr "保存済みゲームの地図を読み込む"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -934,11 +934,11 @@ msgstr "船長の航海日誌を開閉"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
-msgstr "クイック保存"
+msgstr "簡易保存"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:29
 msgid "Quickload"
-msgstr "クイック読み込み"
+msgstr "簡易読込"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
@@ -1016,7 +1016,7 @@ msgstr "ゲームを取り消す"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
-msgstr "読み込んでいます…"
+msgstr "読み込み中…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1263,7 +1263,7 @@ msgstr "自動保存の数："
 #: content/gui/xml/mainmenu/settings.xml:144
 #| msgid "Error: No quicksave found."
 msgid "Number of quicksaves:"
-msgstr "クイック保存の数："
+msgstr "簡易保存の数："
 
 #: content/gui/xml/mainmenu/settings.xml:152
 msgid "Language"
@@ -1513,11 +1513,11 @@ msgstr "交易相手はこれをもう買うことができません。"
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 #| msgid "Loads the last quicksave."
 msgid "Failed to quicksave."
-msgstr "クイック保存に失敗しました。"
+msgstr "簡易保存に失敗しました。"
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr "クイック保存中にエラーが発生しました。"
+msgstr "簡易保存中にエラーが発生しました。"
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
@@ -2852,7 +2852,6 @@ msgstr "小屋"
 
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
-#, fuzzy
 msgid "House"
 msgstr "住宅"
 
@@ -2953,37 +2952,33 @@ msgstr "倉庫"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
-#, fuzzy
 msgid "Weaver's Hut"
-msgstr "織工のテント"
+msgstr "機織小屋"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
-#, fuzzy
 msgid "Turns lamb wool into cloth."
-msgstr "機織り：　羊毛から布を作ります。"
+msgstr "羊毛から布を作ります。"
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
 msgid "Windmill"
-msgstr ""
+msgstr "風車"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:432
-#, fuzzy
 msgid "Grinds corn into flour."
-msgstr "蒸留酒製造所：　砂糖から酒を造ります。"
+msgstr "とうもろこしを製粉します。"
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:437
 msgid "Wooden Tower"
-msgstr ""
+msgstr "木塔"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "木製の要塞：　集落を防衛します。"
+msgstr "入植地を防衛します。"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -2993,7 +2988,7 @@ msgstr "木製の要塞：　集落を防衛します。"
 #: horizons/i18n/objecttranslations.py:450
 #: horizons/i18n/objecttranslations.py:511
 msgid "Companies"
-msgstr ""
+msgstr "仕事場"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
@@ -3002,21 +2997,21 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:456
 #: horizons/i18n/objecttranslations.py:507
 msgid "Fields"
-msgstr ""
+msgstr "畑"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:458
 #: horizons/i18n/objecttranslations.py:481
 msgid "Mining"
-msgstr ""
+msgstr "鉱業"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:460
 #: horizons/i18n/objecttranslations.py:505
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "住民と社会基盤"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
@@ -3025,114 +3020,111 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:466
 #: horizons/i18n/objecttranslations.py:491
 msgid "Services"
-msgstr ""
+msgstr "サービス"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:471
-#, fuzzy
 msgid "Citizens"
 msgstr "市民"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:473
 msgid "Food"
-msgstr ""
+msgstr "食糧"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:475
 msgid "Fortifications"
-msgstr ""
+msgstr "防衛"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
 msgid "Infrastructure"
-msgstr ""
+msgstr "社会基盤"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
 msgid "Military Service"
-msgstr ""
+msgstr "軍務"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
-msgstr ""
+msgstr "開拓者"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
-#, fuzzy
 msgid "Precaution"
-msgstr "村の学校：　教育を提供します。"
+msgstr "警戒"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
 msgid "Residential"
-msgstr ""
+msgstr "住民"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:489
 msgid "Sea"
-msgstr ""
+msgstr "海"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:495
 msgid "Wood"
-msgstr ""
+msgstr "木"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:497
 #: horizons/i18n/objecttranslations.py:499
 #: horizons/i18n/objecttranslations.py:501
 msgid "Workshops"
-msgstr ""
+msgstr "作業場"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:503
 msgid "Settlement"
-msgstr ""
+msgstr "入植"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:509
 msgid "Agriculture"
-msgstr ""
+msgstr "農業"
 
 #. tab5_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:513
 msgid "Military"
-msgstr ""
+msgstr "軍隊"
 
 #: horizons/main.py:354
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "ゲームの開始/読込に失敗しました"
 
 #: horizons/main.py:355
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "選択したゲームを開始できませんでした。"
 
 #: horizons/main.py:356
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
+msgstr "保存ゲームが壊れているか古いバージョンで保存されています。"
 
 #: horizons/main.py:475
-#, fuzzy
 #| msgid "Error: No quicksave found."
 msgid "No quicksaves found"
-msgstr "エラー：　クイックセーブはありません。"
+msgstr "簡易保存はありません"
 
 #: horizons/main.py:476
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "簡易読込をするには前もって簡易保存が必要です。"
 
 #: horizons/main.py:605
 msgid "Logging enabled"
-msgstr ""
+msgstr "ログが有効です"
 
 #: horizons/main.py:606
 #, python-brace-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "ログは{directory}に書き込まれます。"
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
@@ -3140,115 +3132,113 @@ msgstr ""
 msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
-msgstr ""
+msgstr "ゲームの同調が取れません。これは未知の内部エラーがあったことを意味し、ゲームを続けることができません。"
 
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr ""
+msgstr "たいへん申しわけありませんが、将来のバージョンでこのバグを修正したいと思います。"
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
 msgid "Not possible"
-msgstr ""
+msgstr "不可能"
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "複数プレイヤーの保存/読込はまだできません"
 
 #: horizons/mpsession.py:103
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
-msgstr ""
+msgstr "ファイル名には半角英数字・スペース・「_ . -」の各記号のみが使えます"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "サーバーに接続することができません。"
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "無効あるいは解決できないサーバーアドレスである可能性があります。"
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
-msgstr ""
+msgstr "準備中"
 
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
-msgstr ""
+msgstr "あなたの勝ちです！"
 
 #: horizons/scenario/actions.py:96
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "あなたはこのシナリオを完遂しました。"
 
 #: horizons/scenario/actions.py:97
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "ゲームを続けますか？"
 
 #: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
-msgstr ""
+msgstr "不明"
 
 #. usually invalid filename
 #: horizons/session.py:397
-#, fuzzy
 #| msgid "Loads the last quicksave."
 msgid "Failed to create savegame file"
-msgstr "最新のクイックセーブのロード。"
+msgstr "保存ゲームファイルの生成に失敗しました"
 
 #: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "保存ゲームファイルの生成中にエラーが発生しました。"
 
 #: horizons/session.py:399
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
-msgstr ""
+msgstr "これは通常、保存ゲーム名にサポートされていない特殊文字が含まれている時に起こります。"
 
 #: horizons/session.py:408
 msgid "Access is denied"
-msgstr ""
+msgstr "アクセスが拒否されました"
 
 #: horizons/session.py:409
 msgid "The savegame file could be read-only or locked by another process."
-msgstr ""
+msgstr "保存ゲームファイルが、読み取り専用か、もしくは他のプロセスによってロックされた状態になっている可能性があります。"
 
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
-msgstr ""
+msgstr "このゲームは保存できませんでした。"
 
 #: horizons/util/checkupdates.py:87
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Unknown Horizonsを開始"
+msgstr "Unknown Horizonsの新しいバージョンがあります"
 
 #: horizons/util/checkupdates.py:88
 #, python-brace-format
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
-msgstr ""
+msgstr "現在ご利用のUnknown Horizons（{old_version}）よりも新しいリリース（{new_version}）があります。"
 
 #: horizons/util/checkupdates.py:98
 msgid "Click to download"
-msgstr ""
+msgstr "クリックするとダウンロードします"
 
 #: horizons/util/checkupdates.py:102
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "ページがブラウザ中に開かれました。"
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:267
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum}スロット、{limit}t"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "健康：{health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:123
@@ -3258,659 +3248,639 @@ msgstr "{building}：　{description}"
 
 #: horizons/world/building/buildable.py:40
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "この建造物は陸上に作らなければなりません。"
 
 #: horizons/world/building/buildable.py:41
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "この土地は、この建造物には適していません。"
 
 #: horizons/world/building/buildable.py:42
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "この建造物はあなたの入植地内に建てなければなりません。"
 
 #: horizons/world/building/buildable.py:43
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "この区画は、既に他のプレイヤーが占有しています。"
 
 #: horizons/world/building/buildable.py:44
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "この区画は、既に他の建造物が占有しています。"
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "この区画は、既にユニットによって占有されています。"
 
 #: horizons/world/building/buildable.py:46
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "この建造物は海岸線上に建てなければなりません。"
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "この建造物は海辺に建てなくてはなりません。"
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "この地点はあなたの船から遠すぎます。"
 
 #: horizons/world/building/buildable.py:49
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "この建造物は資源の上にのみ建てることができます。"
 
 #: horizons/world/building/buildable.py:50
 msgid "You have already settled this island."
-msgstr ""
+msgstr "あなたは既にこの島に入植しています。"
 
 #: horizons/world/building/buildable.py:51
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "この建造物は平らな土地にかかっている必要があります。"
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "住民たちが黒死病に感染しました！"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
-msgstr ""
+msgstr "この建造物は燃えています！"
 
 #: horizons/world/status.py:88
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "この住民たちは不幸です。"
 
 #: horizons/world/status.py:94
 msgid "These residents don't have access to a main square."
-msgstr ""
+msgstr "この住民たちには中央広場への経路がありません。"
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "この建造物の在庫が満杯です。"
 
 #: horizons/world/status.py:115
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "この建造物の生産性が非常に低くなっています。"
 
 #: horizons/world/status.py:121
 msgid "This building is decommissioned."
-msgstr ""
+msgstr "この建造物は閉鎖されました。"
 
 #: horizons/world/traderoute.py:329
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "交易路：{location}へ行く"
 
 #: horizons/world/traderoute.py:333
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "交易路：{position}で待機"
 
 #: horizons/world/units/ship.py:212
 #, python-brace-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "{location}へ行く"
 
 #: horizons/world/units/ship.py:213
 #, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "{x},{y}へ行く"
 
 #: horizons/world/units/ship.py:217
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "{location}で待機"
 
 #: horizons/world/units/ship.py:218
 #, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "{x},{y}で待機"
 
 #: horizons/world/units/ship.py:229
 msgid "Trader"
-msgstr ""
+msgstr "貿易船"
 
 #: horizons/world/units/weaponholder.py:452
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "{target}「{name}」（{owner}）を攻撃"
 
 #: horizons/world/units/weaponholder.py:456
 #, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "{owner}を攻撃"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "藍"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1}と{player2}は戦力を合わせることにしました。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "あなたの建造物が火事です！"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "塩水"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
-msgstr ""
+msgstr "薬草"
 
 #. This is a database entry: the name of an inhabitant tier (level)
-#, fuzzy
 msgid "Aristocrats"
 msgstr "貴族"
 
 #. This is a database entry: the name of a resource
 msgid "happiness"
-msgstr ""
+msgstr "幸福"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "宝石"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "brine deposit"
-msgstr "鉄の貯蔵"
+msgstr "塩田適地"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Some of your inhabitants just moved out."
-msgstr "テント：　住民の住宅です。"
+msgstr "一部の住民が出て行きました。"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gem deposit"
-msgstr "鉄の貯蔵"
+msgstr "宝石鉱床"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
-msgstr ""
+msgstr "砂糖"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco leaves"
-msgstr ""
+msgstr "たばこの葉"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "stone tops"
-msgstr "鉄の貯蔵"
+msgstr "石片"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
-msgstr ""
+msgstr "珈琲豆"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
-msgstr ""
+msgstr "羊毛"
 
 #. This is a database entry: the name of a resource
 msgid "tea leaves"
-msgstr ""
+msgstr "茶葉"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "珈琲"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
-msgstr ""
+msgstr "カカオ豆"
 
 #. This is a database entry: the name of a resource
 msgid "food"
-msgstr ""
+msgstr "食糧"
 
 #. This is a database entry: the name of a resource
 msgid "flour"
-msgstr ""
+msgstr "穀粉"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "食用豚"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "recreation"
-msgstr "村の学校：　教育を提供します。"
+msgstr "レクリエーション"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr ""
+msgstr "木"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "marble deposit"
-msgstr "粘土供給所：　貯蔵から粘土を取り出せます。"
+msgstr "大理石鉱床"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
-msgstr ""
+msgstr "船乗り"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "clay deposit"
-msgstr "粘土供給所：　貯蔵から粘土を取り出せます。"
+msgstr "粘土層"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1}と{player2}は戦争を終結して同盟を結びました。"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
-msgstr ""
+msgstr "カカオ"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "大理石片"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
-msgstr ""
+msgstr "じゃがいも"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "iron ore"
-msgstr "鉄の貯蔵"
+msgstr "鉄鉱石"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "香水"
 
 #. This is a database entry: the name of a resource
 msgid "cotton plants"
-msgstr ""
+msgstr "綿花農場"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
-msgstr ""
+msgstr "粘土"
 
 #. This is a database entry: the name of an inhabitant tier (level)
-#, fuzzy
 msgid "Merchants"
 msgstr "商人"
 
 #. This is a database entry: the name of a resource
 msgid "hop plants"
-msgstr ""
+msgstr "ホップ農場"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
-msgstr ""
+msgstr "茶"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
-msgstr ""
+msgstr "酒類"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "iron ingots"
-msgstr "鉄の貯蔵"
+msgstr "鉄塊"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "coal deposit"
-msgstr "粘土供給所：　貯蔵から粘土を取り出せます。"
+msgstr "石炭層"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "スクリーンショットを{file}に保存しました。"
 
 #. This is a database entry: the name of a resource
 msgid "cattle"
-msgstr ""
+msgstr "牛"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
-msgstr ""
+msgstr "道をドラッグすることもできます。"
 
 #. This is a database entry: the name of a resource
 msgid "lamb wool"
-msgstr ""
+msgstr "子羊の毛"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "現在の最上位の階層に到達しました。あなたの住民は、これ以上昇格することはありません。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
-msgstr ""
+msgstr "交易路が設定されました。「交易路の調整」メニュー中の「交易路を開始」ボタンを押して交易路を開始してください。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1}と{player2}は同盟を解消しました。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
-msgstr ""
+msgstr "ここには行けません。"
 
 #. This is a database entry: the name of a resource
 msgid "corn"
-msgstr ""
+msgstr "とうもろこし"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "花畑"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
-msgstr ""
+msgstr "葡萄"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Your inhabitants reached level ${level}."
 msgid "Your inhabitants reached level {level}."
-msgstr "住民はレベル ${level} に到達しました。"
+msgstr "あなたの住民はレベル${level}に到達しました。"
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "龍涎香"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
-msgstr ""
+msgstr "信仰"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
-msgstr ""
+msgstr "板材"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "中央広場への経路がない住民がいます。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1}と{player2}は決死戦に入ります。"
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr ""
+msgstr "ホップ"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
-msgstr ""
+msgstr "穀物"
 
 #. This is a database entry: the name of a resource
 msgid "spices"
-msgstr ""
+msgstr "スパイス"
 
 #. This is a database entry: the name of a resource
 msgid "dagger"
-msgstr ""
+msgstr "短剣"
 
 #. This is a database entry: the name of a resource
 msgid "coffee plants"
-msgstr ""
+msgstr "珈琲農場"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
-msgstr ""
+msgstr "煉瓦"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold ore"
-msgstr "鉄の貯蔵"
+msgstr "金鉱石"
 
 #. This is a database entry: the name of a resource
 msgid "community"
-msgstr ""
+msgstr "コミュニティ"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr ""
+msgstr "スパイス農場"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "衛生"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "食用牛"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr ""
+msgstr "たばこ"
 
 #. This is a database entry: the name of a resource
 msgid "tools"
-msgstr ""
+msgstr "工具"
 
 #. This is a database entry: the name of a resource
 msgid "deer meat"
-msgstr ""
+msgstr "鹿肉"
 
 #. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr ""
+msgstr "菓子屋"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "鯨"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
-msgstr ""
+msgstr "コイン"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
-msgstr ""
+msgstr "あなたの勝ちです！"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "花"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr ""
+msgstr "藍農場"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
-msgstr ""
+msgstr "魚"
 
 #. This is a database entry: the name of a resource
 msgid "charcoal"
-msgstr ""
+msgstr "木炭"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "stone deposit"
-msgstr "鉄の貯蔵"
+msgstr "岩石層"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "シナリオを完遂できませんでした。"
 
 #. This is a database entry: the name of a resource
 msgid "fire"
-msgstr ""
+msgstr "火事"
 
 #. This is a database entry: the name of a resource
 msgid "acorns"
-msgstr ""
+msgstr "どんぐり"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "衣類"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
-msgstr ""
+msgstr "蜂の巣"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco plants"
-msgstr ""
+msgstr "たばこ農場"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr "この建造物を作るにはあと ${resource} 必要です。"
+msgstr "この建造物を建てるには${resource}がもっと必要です。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "あなたの仲間がこの地図を去るのを拒んでいます。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1}と{player2}は互いに矛を収めました。"
 
 #. This is a database entry: the name of a resource
 msgid "grass"
-msgstr ""
+msgstr "牧草"
 
 #. This is a database entry: the name of a resource
 msgid "sugar cane"
-msgstr ""
+msgstr "さとうきび"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "このゲームは自動保存されました。"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold deposit"
-msgstr "粘土供給所：　貯蔵から粘土を取り出せます。"
+msgstr "金鉱床"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "あなたの畑の一つは、作物を収穫するのに農家を必要としています。"
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "原石"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr ""
+msgstr "蜂の巣"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "あなたの鉱山の資源が枯渇しました。"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "iron deposit"
-msgstr "鉄の貯蔵"
+msgstr "鉄鉱床"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "education"
-msgstr "村の学校：　教育を提供します。"
+msgstr "教育"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "綿花"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr ""
+msgstr "{player1}と{player2}は同盟関係を解消し交戦状態にあります。"
 
 #. This is a database entry: the name of a resource
 msgid "textile"
-msgstr ""
+msgstr "織物"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "{player}'s ships"
 msgid "{player}: {message}"
-msgstr "{player} の船"
+msgstr "{player}：{message}"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
-msgstr ""
+msgstr "キャノン砲"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "この建造物の住民たちは黒死病に感染しています！"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "{name}という名の新造船が造られました。"
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr ""
+msgstr "茶農場"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "get-together"
-msgstr "酒場：　住民の集いの場です。"
+msgstr "集いの場"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr ""
+msgstr "新しい世界が造られました。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "このゲームは簡易保存されました。"
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr ""
+msgstr "鹿の食糧A"
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
-msgstr ""
+msgstr "薬草"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "灯油"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
-msgstr ""
+msgstr "豚"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "クリックすると集落の名前が変更できます。"
+msgstr "倉庫を剥ぎ取ることはできません。入植地が必要としています。"
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr ""
+msgstr "調味料"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr ""
+msgstr "黒死病"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "ろうそく"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "{player}が新しい入植地を拓きました。"
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "葡萄"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr ""
+msgstr "このゲームは保存されました。"
 
 #. This is a database entry: the name of a resource
 msgid "salt"
-msgstr ""
+msgstr "塩"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold ingots"
-msgstr "鉄の貯蔵"
+msgstr "金塊"
 
 #~ msgid "You cannot change the speed of a multiplayer game"
 #~ msgstr "マルチプレイではゲームスピードは変更できません"
