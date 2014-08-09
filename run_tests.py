@@ -59,6 +59,7 @@ def mock_fife():
 
 	sys.meta_path = [Importer()]
 
+
 def setup_horizons():
 	"""
 	Get ready for testing.
@@ -81,7 +82,7 @@ def setup_horizons():
 
 
 if __name__ == '__main__':
-	gettext.install('', unicode=True) # no translations here
+	gettext.install('', unicode=True)  # no translations here
 
 	setup_horizons()
 
