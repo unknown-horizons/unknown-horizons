@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-08-08 11:27+0200\n"
+"PO-Revision-Date: 2014-08-09 18:43+0200\n"
 "Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/tutorial/ja/>"
 "\n"
@@ -28,7 +28,7 @@ msgid ""
 "Build your first settlement and learn how to play!"
 msgstr ""
 "教習課程：\n"
-"最初の入植地を建設して、遊び方を学びましょう！"
+"最初の入植地を建設して遊び方を学びましょう！"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -36,8 +36,7 @@ msgid ""
 "like the Free Trader."
 msgstr ""
 "自由交易船など他船が近づきやすい\n"
-"ように、海岸沿いに倉庫を建設しま\n"
-"しょう。"
+"ように海岸に倉庫を建設しましょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -47,7 +46,7 @@ msgstr "Unknown Horizonsにようこそ！"
 msgid ""
 "This is your Captain's log where all important information is stored. A "
 "short notification of each task will be provided on the left of the screen."
-msgstr "これは、重要情報が全て記載されている、あなたの航海日誌です。各任務に関する簡単な告知は、画面左に表示されます。"
+msgstr "これはあなたの航海日誌であり、全重要情報が記載されています。各任務に関する簡単な告知は、画面左に表示されます。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -155,11 +154,11 @@ msgstr "伐採所を建設することからはじめましょう。"
 msgid ""
 "This is essential because, at this stage, boards are the only poles your "
 "sailors can afford to hang their tents over."
-msgstr ""
+msgstr "この段階において、板材は船乗りたちがテントを掛けるのに買うことができる唯一のポールなので、これは極めて重要です。"
 
 #. This is the text body of a logbook page.
 msgid "The fisherman needs some boards to build his vessel as well."
-msgstr ""
+msgstr "漁師たちが船を建造するのにも板材が必要です。"
 
 #. This is the text body of a logbook page.
 msgid ""

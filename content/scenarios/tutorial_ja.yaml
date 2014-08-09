@@ -11,9 +11,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 - &WELCOME
   - [Message, '自由交易船など他船が近づきやすい
 
-      ように、海岸沿いに倉庫を建設しま
-
-      しょう。']
+      ように海岸に倉庫を建設しましょう。']
   - '
 
 
@@ -28,7 +26,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - これは、重要情報が全て記載されている、あなたの航海日誌です。各任務に関する簡単な告知は、画面左に表示されます。
+  - これはあなたの航海日誌であり、全重要情報が記載されています。各任務に関する簡単な告知は、画面左に表示されます。
   - より長い説明が必要なときには、この航海日誌が必要な全情報を提供してくれるはずです。
   - この日誌を閉じた後、再度開くには、右上隅の「船長の航海日誌」のアイコン（小地図下の印璽した書類と羽のアイコン）を使います。
   - - Gallery
@@ -67,8 +65,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - 船上の建築資材は自動的に荷揚げされます。いくつかの基本的な建築物を作ることができるようになりました。
   - 伐採所を建設することからはじめましょう。
-  - This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.
-  - The fisherman needs some boards to build his vessel as well.
+  - この段階において、板材は船乗りたちがテントを掛けるのに買うことができる唯一のポールなので、これは極めて重要です。
+  - 漁師たちが船を建造するのにも板材が必要です。
   - In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
@@ -661,9 +659,9 @@ metadata:
   author: The UH team
   description: '教習課程：
 
-    最初の入植地を建設して、遊び方を学びましょう！'
+    最初の入植地を建設して遊び方を学びましょう！'
   difficulty: 教習課程
   locale: ja
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 58 translated messages, 133 untranslated messages.
+  translation_status: 60 translated messages, 131 untranslated messages.
