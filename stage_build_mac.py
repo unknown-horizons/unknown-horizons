@@ -63,7 +63,7 @@ def setup(fife_dir):
             print "Cleaning dist path"
         shutil.rmtree('./dist')
 
-    #These should have cleaned out, else we remove them
+    # These should have cleaned out, else we remove them
     if os.path.exists('./src'):
         if verbose:
             print "Cleaning src path"
@@ -78,7 +78,7 @@ def setup(fife_dir):
     # The source files, for building app correctly
     os.makedirs('./src/Contents/Resources/')
 
-    #Copy fife and content
+    # Copy fife and content
     if verbose:
         print "Copying Icon.icns"
     shutil.copy('./content/gui/icons/Icon.icns', './src/Contents/Resources/')
@@ -100,7 +100,7 @@ def tearDown(run):
     shutil.rmtree('./src/')
     shutil.rmtree('./fife')
 
-    #Remove some other styff
+    # Remove some other styff
     files = glob.glob('*.egg')
     for f in files:
         if os.path.isfile(f):
@@ -108,7 +108,7 @@ def tearDown(run):
         else:
             shutil.rmtree(f)
 
-    #If the -r or --run arg is passed we start the app after build
+    # If the -r or --run arg is passed we start the app after build
     if run:
         os.popen("open ./dist/Unknown\ Horizons.app")
 
@@ -144,7 +144,7 @@ def main(argv=None):
             if option in ("-v", "--verbose",):
                 verbose = True
 
-        #We got to have the fife source!!!!!
+        # We got to have the fife source!!!!!
         if not fife_dir:
             raise Usage(help_message)
 
