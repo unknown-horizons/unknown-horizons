@@ -61,13 +61,13 @@ packages.append('fife')
 # Info.plist keys for the app
 # Icon.icns must be inside src/Contents/Resources/
 plist = {"CFBundleIconFile": "content/gui/icons/Icon.icns",
-		 "CFBundleDisplayName": "Unknown Horizons",
-		 "CFBundleExecutable": "Unknown Horizons",
-		 "CFBundleIdentifier": "org.unknown-horizons",
-		 "CFBundleName": "Unknown Horizons",
-		 "CFBundleShortVersionString": "0.0.0",
-		 "LSArchitecturePriority": ["x86_64", "i386"],
-		 "CFBundleVersion": "0.0.0"}
+         "CFBundleDisplayName": "Unknown Horizons",
+         "CFBundleExecutable": "Unknown Horizons",
+         "CFBundleIdentifier": "org.unknown-horizons",
+         "CFBundleName": "Unknown Horizons",
+         "CFBundleShortVersionString": "0.0.0",
+         "LSArchitecturePriority": ["x86_64", "i386"],
+         "CFBundleVersion": "0.0.0"}
 
 APP = ['run_uh.py']
 OPTIONS = {'argv_emulation': True, 'packages': packages, 'plist': plist}

@@ -28,6 +28,7 @@ import sys
 from horizons import network
 from horizons.network.server import Server
 
+
 def fork():
 	try:
 		pid = os.fork()
@@ -42,7 +43,7 @@ def fork():
 
 	# fork again to remove a possible session leadership gained after setsid()
 	try:
-		pid = os.fork( )
+		pid = os.fork()
 		if pid > 0:
 			sys.exit(0)
 	except OSError, e:
@@ -50,15 +51,17 @@ def fork():
 		sys.exit(1)
 	return os.getpid()
 
+
 def redirect(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
 	for f in sys.stdout, sys.stderr:
 		f.flush()
-	ifd = file(stdin,  'r')
+	ifd = file(stdin, 'r')
 	ofd = file(stdout, 'a+')
 	efd = ofd if (stdout == stderr) else file(stderr, 'a+')
 	os.dup2(ifd.fileno(), sys.stdin.fileno())
 	os.dup2(ofd.fileno(), sys.stdout.fileno())
 	os.dup2(efd.fileno(), sys.stderr.fileno())
+
 
 def usage(fd=sys.stdout):
 	fd.write("Usage: %s" % (sys.argv[0]))
@@ -104,7 +107,7 @@ try:
 except (ValueError, IndexError):
 	port = 0
 
-if host == None or port == None or port <= 0:
+if host is None or port is None or port <= 0:
 	usage()
 	sys.exit(1)
 
