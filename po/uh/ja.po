@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-09 18:30+0200\n"
+"PO-Revision-Date: 2014-08-15 17:51+0200\n"
 "Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/uh/ja/>\n"
 "Language: ja\n"
@@ -2667,7 +2667,7 @@ msgstr "漁場"
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:234
 msgid "Fisherman's Tent"
-msgstr "漁師小屋"
+msgstr "漁師のテント"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:236
@@ -2677,7 +2677,7 @@ msgstr "海で漁を行い、食糧を生産します。"
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:241
 msgid "Hunter's Tent"
-msgstr "マタギ小屋"
+msgstr "猟師のテント"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:243
@@ -2697,7 +2697,7 @@ msgstr "プレイヤーの視界を広げます。"
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
 msgid "Lumberjack Tent"
-msgstr "伐採小屋"
+msgstr "木こりのテント"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:257
@@ -2748,7 +2748,7 @@ msgstr "あらゆる種類の菓子を生産します。"
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
 msgid "Pavilion"
-msgstr "パビリオン"
+msgstr "大型テント"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
@@ -2758,7 +2758,7 @@ msgstr "船乗りの信仰心を満たします。"
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:297
 msgid "Ruined Tent"
-msgstr "住廃墟"
+msgstr "テントの残骸"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:302
@@ -2818,7 +2818,7 @@ msgstr "山から石を切り出します。"
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:339
 msgid "Storage Tent"
-msgstr "貯蔵小屋"
+msgstr "貯蔵テント"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:341
@@ -2958,7 +2958,7 @@ msgstr "機織小屋"
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
 msgid "Turns lamb wool into cloth."
-msgstr "羊毛から布を作ります。"
+msgstr "ラムウールから布を作ります。"
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
@@ -3547,7 +3547,7 @@ msgstr "道をドラッグすることもできます。"
 
 #. This is a database entry: the name of a resource
 msgid "lamb wool"
-msgstr "子羊の毛"
+msgstr "ラムウール"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
