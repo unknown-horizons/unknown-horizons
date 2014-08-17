@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-08-16 05:30+0200\n"
+"PO-Revision-Date: 2014-08-17 18:47+0200\n"
 "Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/tutorial/ja/>"
 "\n"
@@ -188,7 +188,7 @@ msgstr ""
 msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area "
 "with some trees around."
-msgstr "まずは「仕事場」の下にある伐採所を選択して、周囲に木が生えている場所に伐採所を建設して下さい。"
+msgstr "まずは「生産拠点」の下にある伐採所を選択して、周囲に木が生えている場所に伐採所を建設して下さい。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -200,7 +200,7 @@ msgstr "後で木を植えることもできますが、費用がかかります
 msgid ""
 "A company always needs a trail connection to a storage or warehouse, "
 "otherwise goods will remain at the company and not be collected."
-msgstr "仕事場は、常に貯蔵庫や倉庫に道でつながれていないと、財が仕事場に残ったままで回収されません。"
+msgstr "生産拠点は、常に貯蔵庫や倉庫に道でつながれていないと、財が生産拠点に残ったままで回収されません。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -232,11 +232,11 @@ msgstr "新しい任務：食糧調達"
 msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
-msgstr "人々（特に船乗り）の食欲はとても旺盛なので、食糧生産のための仕事場も必要です。"
+msgstr "人々（特に船乗り）の食欲はとても旺盛なので、食糧生産のための生産拠点も必要です。"
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
-msgstr "第一階層で造れる仕事場は、狩猟場と漁村です。"
+msgstr "第一階層で造れる生産拠点は、狩猟場と漁村です。"
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
@@ -280,7 +280,7 @@ msgstr "これは、食糧単位あたりの生産に少し時間がかかる代
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
-msgstr "今のような小さな入植地では、両方の仕事場を使って直接比較してみて、長所と短所のバランスを取るのがよいでしょう。"
+msgstr "今のような小さな入植地では、両方の生産拠点を使って直接比較してみて、長所と短所のバランスを取るのがよいでしょう。"
 
 #. This is the text body of a logbook page.
 #| msgid "Build a hunter and a fisher. Connect them to the warehouse."
@@ -327,7 +327,7 @@ msgstr "入植テントを伐採所のあまり近くに建ててしまうと、
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
-msgstr "仕事場は小屋につながっていなくても機能するので、中央市場と、例えば伐採小屋を道でつなぐ必要はありません。"
+msgstr "生産拠点はテントにつながっていなくても機能するので、中央市場と、例えば伐採所を道でつなぐ必要はありません。"
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a main square."
@@ -410,7 +410,7 @@ msgstr ""
 msgid ""
 "Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
-msgstr "任務：テントを建設し、それを中央広場へつなげてください。テントは、どの仕事場にもつながれている必要はありません。"
+msgstr "任務：テントを建設し、それを中央広場へつなげてください。テントは、どの生産拠点にもつながれている必要はありません。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -839,21 +839,21 @@ msgstr ""
 msgid ""
 "Farms, like all companies producing raw materials, do not necessarily need "
 "to be connected to storage or a warehouse."
-msgstr "農家は、原材料を生産する他の仕事場と同様、貯蔵庫や倉庫につながれている必要はありません。"
+msgstr "農家は、原材料を生産する他の生産拠点と同様、貯蔵庫や倉庫につながれている必要はありません。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "As long as units of the final production company can reach the farm, and "
 "collectors from the warehouse or storage tent can reach the final company "
 "everything's fine."
-msgstr "最終財生産所のユニットが農家にたどり着くことができ、倉庫や貯蔵テントからの収集者が最終財生産所にたどり着くことが出来る限りは、大丈夫です。"
+msgstr "最終財生産拠点のユニットが農家にたどり着くことができ、倉庫や貯蔵テントからの収集者が最終財生産拠点にたどり着くことが出来る限りは、大丈夫です。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you, however, plan to do some processing on different parts of the island "
 "(which can make sense) or even on different islands, you will need a "
 "connection to collectors."
-msgstr "しかしながら、生産過程の一部を島の別の場所や異なる島で行いたい場合（これは可能です）には、収集者につながっていることが必要です。"
+msgstr "しかしながら、生産過程の一部を島の別の場所や異なる島で行いたい場合（これは可能です）には、人夫につながっていることが必要です。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -955,25 +955,26 @@ msgstr "新しい任務：貯蔵庫を作りましょう"
 
 #. This is the text body of a logbook page.
 msgid "Did you watch your lumberjack recently?"
-msgstr ""
+msgstr "伐採所の具合を最近見ましたか？"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Since your warehouse does not have unlimited space to store goods, "
 "collectors will stop fetching goods from companies when stock is full."
-msgstr ""
+msgstr "倉庫は、財の保管場所が限られているので、在庫がいっぱいになると、人夫は財の回収を止めます。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "So if no sailors recently wanted to upgrade their tents, you probably have a "
 "lot of boards and in that case, the lumberjack may idle."
 msgstr ""
+"ですから、テントを改築したいという船乗りがしばらくいなければ、板材がおそらくたくさん溜まっていますので、その場合、製材所は無聊をかこっているはずです。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "We can improve this situation in two different ways, and we will have a look "
 "at both of them below."
-msgstr ""
+msgstr "この状況を改善するには二つの方法がありますので、以下に紹介することとしましょう。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -981,6 +982,8 @@ msgid ""
 "This may sound strange, but click on the gear wheel you see in a lumberjack "
 "hut's overview."
 msgstr ""
+"全生産拠点に、全く作業をさせないようにします。\n"
+"これは、おかしなことのように思われるかもしれませんが、とにかく伐採所の概観のところにある歯車をクリックしてみてください。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -988,6 +991,8 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
+"この「休憩」モード（「非番」と言います）が有効になると、この建造物のために支払う運営費用は減少します。これは零にはなりませんが、生産拠点を動かし続けるより"
+"も安価です。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -995,6 +1000,8 @@ msgid ""
 "This means that you can save money when you temporarily do not need a "
 "company and do not want to tear it down, either."
 msgstr ""
+"\n"
+"つまり、生産拠点を一時的に必要とせず、かといって取り壊しなくもない時に、費用を節約できるということです。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1018,15 +1025,15 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a storage tent, preferably where you need collectors."
-msgstr "任務：収集者を置きたいところに貯蔵テントを造れ。"
+msgstr "任務：人夫を置きたいところに貯蔵テントを造りましょう。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr "羊毛が得られる農場につながる場所に機織り場を作る。"
+msgstr "あなたの農家の羊毛を得られる所に機織り場を造りましょう。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr "新しい任務：　機織り場を作る"
+msgstr "新しい任務：機織り場を造りましょう"
 
 #. This is the text body of a logbook page.
 msgid ""
