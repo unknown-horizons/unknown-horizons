@@ -54,9 +54,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 'Puoi costruire in qualsiasi posto dove l''anteprima non sia in rosso.
 
     Clicca dove vuoi mettere la tua prima costruzione.'
-  - '
-
-    OBIETTIVO: Costruisci un magazzino vicino alla costa.'
+  - ''
+  - [BoldLabel, 'Task: Build a warehouse at the coast.']
 
 - &LUMBERJACK
   - [Message, Costruisci un tagliaboschi e collegalo alla filiale con un sentiero.]
@@ -79,9 +78,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sarà anche possibile piantare alberi più tardi - ma ciò costerà denaro. Usa ciò che la natura ti ha fornito!
   - Una struttura produttiva necessita sempre di un percorso che la colleghi ad un magazzino, altrimenti i beni rimarranno al suo interno e non verranno raccolti.
   - Perciò devi costruire un sentiero che connetta il magazzino alla capanna del boscaiolo.
-  - '
-
-    OBIETTIVO: Costruisci una capanna del boscaiolo in una zona boschiva e connettila ad una strada.'
+  - ''
+  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
   - Osserva come un esattore raccoglierà le tue prime travi di legno prodotte. Non preoccuparti del reclutamento di uomini per la falegnameria. Avviene automaticamente.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -103,9 +101,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Egli costruirà una piccola imbarcazione a remi per catturare qualche pesce.
   - Questa è una fornitura molto costante al costo di un tempo di produzione leggermente più lungo per unità di cibo.
   - Un piccolo insediamento come il tuo può utilizzare entrambe le compagnie, e si può meglio bilanciare i pro e i contro, se si vede il confronto diretto.
-  - '
-
-    OBIETTIVO: Costruisci un cacciatore e un pescatore.'
+  - ''
+  - [BoldLabel, 'Task: Build a hunter and a fisher.']
   - Non dimenticare di collegarli al magazzino con dei percorsi!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -115,17 +112,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'OBIETTIVO: PIAZZA PRINCIPALE']
   - [Image, content/gui/images/background/hr.png]
   - Gli abitanti hanno bisogno di una piazza principale da cui possano approvvigionarsi di beni.
-  - Perciò serve un collegamento con un sentiero tra le case e la piazza principale.
+  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - Tutti i beni raccolti sono disponibili nella piazza del mercato, così i cittadini non saranno costretti ad andare dal pescatore o al magazzino.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Evita di mettere le costruzioni principali vicino alla falegnameria poichè rimuoveranno gli alberi che il boscaiolo utilizza per produrre beni.
   - Le industrie lavorano anche senza essere collegate alle tende, quindi non serve costruire un percorso tra la piazza principale e (per esempio) la capanna del falegname.
+  - ''
+  - [BoldLabel, 'Task: Build a main square.']
+  - [Pagebreak]
   - '
 
-    OBIETTIVO: Costruisci una piazza principale.'
-  - [Pagebreak]
-  - "\n Ora osserviamo con attenzione la piazza principale."
+    Ora osserviamo con attenzione la piazza principale.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - Nella scheda 'Conto' puoi vedere un foglio riassuntivo del bilancio dell'isola con tutti i costi e i guadagni dalle tasse.
@@ -136,7 +134,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Nelle diverse schede panoramica del livello si possono vedere le statistiche sui tuoi abitanti. È inoltre possibile impostare la tassa globale del livello specifico e concedere o negare abitanti di questo livello per passare a quello successivo.
 
 - &FIRSTTENT
-  - [Message, Costruisci una tenda e collegala alla piazza principale.]
+  - [Message, Build a tent and connect it to the main square if necessary.]
   - [Headline, 'OBIETTIVO: EDIFICI RESIDENZIALI']
   - [Image, content/gui/images/background/hr.png]
   - I coloni vogliono avere un tetto sopra la testa, altrimenti non vorranno vivere nella tua città! È necessario fornire delle tende.
@@ -146,9 +144,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Nota che l'aggiornamento di ogni edificio necessita di materiale da costruzione, come il legno per il loro primo aggiornamento.
   - Considera di disabilitare l'aggiornamento se il tuo magazzino è carente di questi materiali.
   - I coloni possono non sembrare molto utili in quanto si cercheranno di consumare tutti i beni che produci - ma almeno pagano le tasse, e questo è l'unico modo in cui puoi fare soldi per ora!
-  - '
-
-    OBIETTIVO: Costruisci una tenda e collegala alla piazza principale. Le tende non hanno bisogno di essere collegate a nessuna compagnia.'
+  - ''
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Costruisci almeno tre tende aggiuntive e collegale alla piazza principale.]
@@ -165,24 +162,23 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Se sono soddisfatte le loro richieste, aumenta la felicità e di conseguenza il reddito fiscale.
   - In caso contrario, felicità e reddito diminuiscono. Ad un certo momento i vostri residenti possono arrabbiarsi e semplicemente andarsene dal tuo villaggio, lasciando un rudere decadente.
   - Nota che è possibile modificare le impostazioni fiscali globali anche qui.
+  - ''
+  - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
-    TASK: Build at least three additional tents.'
-  - '
-
-    TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
+    TIP: Premendo "SHIFT" facilita la costruzione di più edifici dello stesso tipo.'
 
 - &SIGNALFIRE
   - [Message, Costruisci un segnale di fuoco sulla costa vicino alla tua filiale.]
   - [Headline, 'OBIETTIVO: IL SEGNALE DI FUOCO']
   - [Image, content/gui/images/background/hr.png]
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
-  - The trader will supply your settlement with necessary goods which you can't produce yet.
+  - Il commerciante fornirà il vostro insediamento con beni di prima necessità che non si può ancora produrre.
   - You can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling them yields more profit.
   - Normally the trader ships just sail around and look for deals, but you can speed things up a bit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a signal fire at the coast near your warehouse. It will show ships the way to your settlement.
+  - A questo scopo, costruisci un fuoco segnale sulla costa vicino al vostro magazzino. Mostra alle navi la strada per il vostro insediamento.
   - The signal fire has to cover the area which the ships pass through to catch them.
   - [Pagebreak]
   - '
@@ -193,10 +189,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - At the 'sailors' tier, you are equipped with three trading slots.
   - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
-  - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
-  - '
-
-    OBIETTIVO : Costruisci un segnale di fuoco sulla costa vicino al tuo magazzino.'
+  - Fare clic sullo slot per scegliere il bene che si desidera commerciare. Ulteriori spiegazzioni seguiranno una volta che siete pronti per il commercio.
+  - ''
+  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
   - [Message, Raggiungi una scorta per l'isola di almeno 30 attrezzi. Nota che potrebbe volerci non poco tempo.]
@@ -217,14 +212,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.'
   - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
-  - If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
-  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
+  - Se il commerciante libero però vuole solo comprare o vendere meno che le impostazioni gli avrebbero permesso, è necessario vivere con quello e aspettare il suo ritorno.
+  - 'Unknown Horizons dispone di determinazione intelligente del prezzo, in modo che il valore di una unità può variare.
 
-    It is NOT possible to change prices manually!'
-  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
-  - '
-
-    TASK: Buy as many tools as you need to have 30 tools in stock!'
+    NON è possibile modificare i prezzi manualmente!'
+  - Puoi vedere il tuo saldo commerciale nella scheda 'Account' confrontando i valori 'Sale' e 'Buy'.
+  - ''
+  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -233,24 +227,23 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'OBIETTIVO: IL PADIGLIONE']
   - [Image, content/gui/images/background/hr.png]
   - Those tools will be enough for the moment. Well done!
-  - You now provide housing, a main square and food to your inhabitants.
-  - Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.
+  - È ora di fornire alloggi, una piazza principale e cibo per i tuoi abitanti.
+  - Eppure c'è una richiesta che non abbiamo soddisfatto finora, quale si può verificare che nella scheda mercato o tenda - i tuoi marinai vogliono una costruzione in cui possono pregare.
   - The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
+  - Edifici di servizio come questo hanno bisogno di essere collegato con un percorso alle tende, altrimenti i vostri abitanti non possono raggiungerli.
   - [Pagebreak]
   - '
 
-    Note that faith is treated like a physical resource!'
+    Si noti che la fede è trattata come una risorsa fisica!'
   - This means that your inhabitants need a road connection to the producer (pavilion) to pick up faith there.
   - After some time, they will have consumed it and then again look for a producer to collect more faith.
-  - 'Important:
+  - 'Importante:
 
-    It is NOT enough that the building is merely within a certain range of the tents.
+    NON è sufficiente che l''edificio è solo all''interno di una determinata gamma di tende.
 
-    The road connection is required as well.'
-  - '
-
-    TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.'
+    È anche necessario il collegamento stradale.'
+  - ''
+  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -259,8 +252,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'OBIETTIVO: LIVELLO SUCCESSIVO']
   - [Image, content/gui/images/background/hr.png]
   - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
+  - Se i marinai sono abbastanza felici, vogliono avanzare al prossimo livello chiamato Pionieri.
+  - Per renderli felici, non c'è altro da fare per voi, inpostate le imposte ad un livello più basso da quando hai soddisfatto tutte le richieste dei vostri abitanti.
   - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
   - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
@@ -270,9 +263,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
   - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
-  - '
-
-    TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.'
+  - ''
+  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -296,9 +288,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
-  - '
-
-    TASK: Build a farm.'
+  - ''
+  - [BoldLabel, 'Task: Build a farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -324,9 +315,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.
   - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
   - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
-  - '
-
-    TASK: Build at least one pasture in the farm''s range and add potato fields if you like.'
+  - ''
+  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -355,9 +345,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * sends its own collectors to fetch goods, just like the warehouse does.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
-  - '
-
-    TASK: Build a storage tent, preferably where you need collectors.'
+  - ''
+  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -369,9 +358,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
   - In both cases you should ensure the connection to a trail as well.
   - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
-  - '
-
-    TASK: Build a weaver positioned so it can get wool.'
+  - ''
+  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -382,9 +370,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
   - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
   - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
-  - '
-
-    OBIETTIVO: Raggiungi una popolazione di 50 abitanti e un bilancio in attivo per completare il tutorial.'
+  - ''
+  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -413,7 +400,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Il team di UH'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)
@@ -675,4 +662,4 @@ metadata:
   locale: it
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 101 translated messages, 90 untranslated messages.
+  translation_status: 119 translated messages, 66 fuzzy translations, 6 untranslated messages.
