@@ -4,7 +4,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 13
 color: 255,255,255
-antialias: True
+antialias: 1
 
 
 [Font/default]
@@ -13,7 +13,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 15
 color: 68,42,2
-antialias: True
+antialias: 1
 
 
 [Font/default_bold]
@@ -22,7 +22,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 15
 color: 68,42,2
-antialias: True
+antialias: 1
 
 
 [Font/default_load]
@@ -31,7 +31,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 15
 color: 188,154,114
-antialias: True
+antialias: 1
 
 
 [Font/message]
@@ -40,7 +40,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 15
 color: 255,255,255
-antialias: True
+antialias: 1
 
 
 [Font/resourcebar]
@@ -49,7 +49,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 16
 color: 68,42,2
-antialias: True
+antialias: 1
 
 
 [Font/unifont]
@@ -58,7 +58,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 16
 color: 68,42,2
-antialias: True
+antialias: 1
 
 
 [Font/headline]
@@ -67,7 +67,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 18
 color: 68,42,2
-antialias: True
+antialias: 1
 
 
 [Font/headline_light]
@@ -76,7 +76,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 18
 color: 188,154,114
-antialias: True
+antialias: 1
 
 
 [Font/mainmenu]
@@ -85,7 +85,7 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 22
 color: 255,255,255
-antialias: True
+antialias: 1
 
 
 [Font/large_load]
@@ -94,4 +94,4 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 34
 color: 120,100,65
-antialias: True
+antialias: 1

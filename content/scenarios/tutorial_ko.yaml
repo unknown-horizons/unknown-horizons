@@ -285,7 +285,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     이제, 이 것을 자세히 살펴 봅시다.'
   - 농장, 원 재료를 생산 하는 모든 회사 처럼, 저장 또는 창고에 연결 되어야 할 필요는 없습니다.
-  - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
+  - 최종 생산 회사의 단위가 농장에 도달할 수 있는 한, 그리고 창고 수집가 또는 저장 텐트는 최종 회사에 도달할 수 있다.
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
@@ -662,4 +662,4 @@ metadata:
   locale: ko
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 162 translated messages, 29 untranslated messages.
+  translation_status: 163 translated messages, 28 untranslated messages.
