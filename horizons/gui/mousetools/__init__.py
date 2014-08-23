@@ -29,3 +29,4 @@ from pipettetool import PipetteTool
 
 # Editor tools
 from tilelayingtool import TileLayingTool
+from resourcetool import ResourceTool

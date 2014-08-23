@@ -27,13 +27,16 @@ import logging
 from collections import deque
 
 from horizons.command.unit import RemoveUnit
-from horizons.constants import EDITOR
+from horizons.constants import EDITOR, BUILDINGS
 from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
 from horizons.gui.widgets.minimap import Minimap
 from horizons.scheduler import Scheduler
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
+from horizons.command.building import Build
+from horizons.util.shapes import Circle, Point
+# from horizons.entities import Entities
 
 class WorldEditor(object):
 	def __init__(self, world):
@@ -141,6 +144,14 @@ class WorldEditor(object):
 		else:
 			self.world.full_map[coords] = self.world.fake_tile_map[coords]
 		Minimap.update(coords)
+
+		# update cam, that's necessary because of the static layer WATER
+		self.session.view.cam.refresh()
+
+
+	def set_building(self, coords, building_id):
+		Build(building_id, coords[0], coords[1], self.world,45,
+						      ownerless=True)(issuer=None)
 
 		# update cam, that's necessary because of the static layer WATER
 		self.session.view.cam.refresh()
