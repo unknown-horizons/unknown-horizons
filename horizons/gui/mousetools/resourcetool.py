@@ -1,18 +1,21 @@
 from navigationtool import NavigationTool
 from fife import fife
+import horizons.globals
 
 class ResourceTool(NavigationTool):
-	def __init__(self, session, building):
+	def __init__(self, session, building, resource_image):
 		super(ResourceTool, self).__init__(session)
 		self.renderer = session.view.renderer['InstanceRenderer']
 		self._building = building
+		horizons.globals.fife.set_cursor_image(resource_image)
 			
 	def remove(self):
 		super(ResourceTool, self).remove()
 
 	def on_escape(self):
+		horizons.globals.fife.set_cursor_image('default')
 		self.session.ingame_gui.set_cursor()
-
+		
 	def _place_building(self, coords):
 		self.session.world_editor.intermediate_map.set_building(coords, self._building)
 

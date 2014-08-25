@@ -164,6 +164,8 @@ class Fife(object):
 			'attacking': 'content/gui/images/cursors/cursor_attack.png',
 			'pipette':   'content/gui/images/cursors/cursor_pipette.png',
 			'rename':    'content/gui/images/cursors/cursor_rename.png',
+			'tree':		'content/gfx/terrain/trees/as_maple0/idle_full/45/0.png',
+			'fish_deposit': 'content/gfx/terrain/resources/as_fish0/idle/45/000.png'
 		}
 		self.cursor_images = dict( (k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems() )
 		self.cursor.set(self.cursor_images['default'])

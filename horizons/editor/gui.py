@@ -227,7 +227,7 @@ class SettingsTab(TabInterface):
 		for building_type in ('fish_deposit', 'tree'):
 			image = self.widget.findChild(name=building_type)
 			building = Entities.buildings[getattr(BUILDINGS, building_type.upper())]
-			image.capture(Callback(ingame_gui.set_cursor,'resource_tool',building))
+			image.capture(Callback(ingame_gui.set_cursor, 'resource_tool', building, building_type))
 
 	def _get_tile_image(self, tile):
 		# TODO TileLayingTool does almost the same thing, perhaps put this in a better place
