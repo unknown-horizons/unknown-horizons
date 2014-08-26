@@ -229,12 +229,13 @@ class ProductionOverviewTab(OverviewTab):
 				anim().stop()
 		self._animations = []
 
+
 class LumberjackOverviewTab(ProductionOverviewTab):
 	"""Same as ProductionOverviewTab but add a button to fill range with trees.
 	"""
 	def init_widget(self):
 		super(LumberjackOverviewTab, self).init_widget()
-		container = AutoResizeContainer(position=(20, 200))
+		container = AutoResizeContainer(position=(20, 210))
 		icon = Icon(name='build_all_bg')
 		button = ImageButton(name='build_all_button')
 		container.addChild(icon)
@@ -248,13 +249,15 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 		button = self.widget.child_finder('build_all_button')
 
 		(enough_res, missing_res) = field_comp.check_resources()
-		# Check whether to disable build menu icon (not enough res available).
-		if enough_res:
+		# Disable "build menu" button if nothing would be built or construction
+		# cannot be afforded by the player right now.
+		if enough_res and field_comp.how_many > 0:
 			icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
-			button.path = 'icons/buildmenu/006'
+			button.path = 'icons/tabwidget/lumberjackcamp/tree_area_build'
 		else:
 			icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
-			button.path = 'icons/buildmenu/greyscale/006'
+			button.path = 'icons/tabwidget/lumberjackcamp/no_area_build'
+		button.min_size = button.max_size = button.size = (46, 46)
 		button.helptext = _('Fill range with {how_many} trees').format(
 			how_many=field_comp.how_many)
 
@@ -269,6 +272,7 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 			button.name + '/mouseEntered': enter_cb,
 			button.name + '/mouseExited': exit_cb,
 		})
+
 
 class SmallProductionOverviewTab(ProductionOverviewTab):
 	"""Only display productions for which we have a related 'field' in range.
