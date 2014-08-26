@@ -53,6 +53,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED
 from horizons.messaging import SettingChanged, MessageBus, SpeedChanged, LoadingProgress
 
+
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
 	It is alive as long as a game is running.
@@ -92,14 +93,14 @@ class Session(LivingObject):
 		super(Session, self).__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
-		self.db = db # main db for game data (game.sql)
+		self.db = db  # main db for game data (game.sql)
 		# this saves how often the current game has been saved
 		self.savecounter = 0
 		self.is_alive = True
 
 		self._clear_caches()
 
-		#game
+		# game
 		self.random = self.create_rng(rng_seed)
 		assert isinstance(self.random, Random)
 		self.timer = self.create_timer()
@@ -107,9 +108,9 @@ class Session(LivingObject):
 		self.manager = self.create_manager()
 		self.view = View()
 		Entities.load(self.db)
-		self.scenario_eventhandler = ScenarioEventHandler(self) # dummy handler with no events
+		self.scenario_eventhandler = ScenarioEventHandler(self)  # dummy handler with no events
 
-		#GUI
+		# GUI
 		self._ingame_gui_class = ingame_gui_class
 
 		self.selected_instances = set()
@@ -132,7 +133,7 @@ class Session(LivingObject):
 		if interval != self._old_autosave_interval:
 			self._old_autosave_interval = interval
 			ExtScheduler().rem_call(self, self.autosave)
-			if interval != 0: #autosave
+			if interval != 0:  # autosave
 				self.log.debug("Initing autosave every %s minutes", interval)
 				ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
 
@@ -171,7 +172,7 @@ class Session(LivingObject):
 		horizons.globals.fife.sound.end()
 
 		# these will call end() if the attribute still exists by the LivingObject magic
-		self.ingame_gui = None # keep this before world
+		self.ingame_gui = None  # keep this before world
 
 		if hasattr(self, 'world'):
 			# must be called before the world ref is gone, but may not exist yet while loading
@@ -200,10 +201,13 @@ class Session(LivingObject):
 
 	def autosave(self):
 		raise NotImplementedError
+
 	def quicksave(self):
 		raise NotImplementedError
+
 	def quickload(self):
 		raise NotImplementedError
+
 	def save(self, savegame=None):
 		raise NotImplementedError
 
@@ -224,7 +228,8 @@ class Session(LivingObject):
 			options.is_map = True
 
 		self.log.debug("Session: Loading from %s", options.game_identifier)
-		savegame_db = SavegameAccessor(options.game_identifier, options.is_map, options) # Initialize new dbreader
+		savegame_db = SavegameAccessor(options.game_identifier, options.is_map, options)
+		# Initialize new dbreader
 		savegame_data = SavegameManager.get_metadata(savegame_db.db_path)
 		self.view.resize_layers(savegame_db)
 
@@ -235,6 +240,7 @@ class Session(LivingObject):
 		if savegame_data.get('rng_state', None):
 			rng_state_list = json.loads(savegame_data['rng_state'])
 			# json treats tuples as lists, but we need tuples here, so convert back
+
 			def rec_list_to_tuple(x):
 				if isinstance(x, list):
 					return tuple(rec_list_to_tuple(i) for i in x)
@@ -245,17 +251,18 @@ class Session(LivingObject):
 			self.random.setstate(rng_state_tuple)
 
 		LoadingProgress.broadcast(self, 'session_create_world')
-		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
-		self.world._init(savegame_db, options.force_player_id, disasters_enabled=options.disasters_enabled)
-		self.view.load(savegame_db, self.world) # load view
+		self.world = World(self)  # Load horizons.world module (check horizons/world/__init__.py)
+		self.world._init(savegame_db, options.force_player_id,
+			disasters_enabled=options.disasters_enabled)
+		self.view.load(savegame_db, self.world)  # load view
 		if not self.is_game_loaded():
 			options.init_new_world(self)
 		else:
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)
-		self.manager.load(savegame_db) # load the manager (there might be old scheduled ticks).
+		self.manager.load(savegame_db)  # load the manager (there might be old scheduled ticks).
 		LoadingProgress.broadcast(self, "session_index_fish")
-		self.world.init_fish_indexer() # now the fish should exist
+		self.world.init_fish_indexer()  # now the fish should exist
 
 		# load the old gui positions and stuff
 		# Do this before loading selections, they need the minimap setup
@@ -280,7 +287,7 @@ class Session(LivingObject):
 		old = self.timer.ticks_per_second
 		self.timer.ticks_per_second = ticks
 		self.view.map.setTimeMultiplier(float(ticks) / float(GAME_SPEED.TICKS_PER_SECOND))
-		if old == 0 and self.timer.tick_next_time is None: # back from paused state
+		if old == 0 and self.timer.tick_next_time is None:  # back from paused state
 			if self.paused_time_missing is None:
 				# happens if e.g. a dialog pauses the game during startup on hotkeypress
 				self.timer.tick_next_time = time.time()
@@ -330,9 +337,10 @@ class Session(LivingObject):
 		else:
 			self.speed_set(GAME_SPEED.TICK_RATES[0])
 
-	_pause_stack = 0 # this saves the level of pausing
+	_pause_stack = 0  # this saves the level of pausing
 	# e.g. if two dialogs are displayed, that pause the game,
 	# unpause needs to be called twice to unpause the game. cf. #876
+
 	def speed_pause(self, suggestion=False):
 		self.log.debug("Session: Pausing")
 		self._pause_stack += 1
@@ -393,7 +401,7 @@ class Session(LivingObject):
 			self.savecounter += 1
 
 			db = DbReader(savegame)
-		except IOError as e: # usually invalid filename
+		except IOError as e:  # usually invalid filename
 			headline = _("Failed to create savegame file")
 			descr = _("There has been an error while creating your savegame file.")
 			advice = _("This usually means that the savegame name contains unsupported special characters.")

@@ -68,7 +68,7 @@ class SavegameManager(object):
 	autosave_basename = "autosave-"
 	quicksave_basename = "quicksave-"
 
-	multiplayersave_name_regex = r"^[0-9a-zA-Z _.-]+$" # don't just blindly allow everything
+	multiplayersave_name_regex = r"^[0-9a-zA-Z _.-]+$"  # don't just blindly allow everything
 
 	save_filename_timeformat = u"{prefix}%Y-%m-%d--%H-%M-%S"
 	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename)
@@ -101,6 +101,7 @@ class SavegameManager(object):
 		@return: list of names to be displayed for each file.
 		"""
 		displaynames = []
+
 		def get_timestamp_string(savegameinfo):
 			if savegameinfo['timestamp'] == -1:
 				return u""
@@ -120,7 +121,7 @@ class SavegameManager(object):
 				name = os.path.splitext(os.path.basename(f))[0]
 
 			if not isinstance(name, unicode):
-				name = unicode(name, errors='replace') # only use unicode strings, guichan needs them
+				name = unicode(name, errors='replace')  # only use unicode strings, guichan needs them
 			displaynames.append(name)
 		return displaynames
 
@@ -401,7 +402,7 @@ class SavegameManager(object):
 	def get_savegamename_from_filename(cls, savegamefile):
 		"""Returns a displayable name, extracted from a filename"""
 		name = os.path.basename(savegamefile)
-		name = name.rsplit(".%s"%cls.savegame_extension, 1)[0]
+		name = name.rsplit(".%s" % cls.savegame_extension, 1)[0]
 		cls.log.debug("Savegamemanager: savegamename: %s", name)
 		return name
 

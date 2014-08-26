@@ -30,6 +30,7 @@ from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
 from horizons.constants import LAYERS, VIEW, GAME_SPEED
 
+
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
@@ -70,7 +71,7 @@ class View(ChangeListener):
 				layer.getCellCache().setStaticSize(True)
 
 		rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
-		                       horizons.globals.fife.engine_settings.getScreenHeight())
+			horizons.globals.fife.engine_settings.getScreenHeight())
 		self.cam = self.map.addCamera("main", self.layers[-1], rect)
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
@@ -80,16 +81,17 @@ class View(ChangeListener):
 		self.cam.resetRenderers()
 		self.renderer = {}
 		for r in ('InstanceRenderer', 'GridRenderer',
-		          'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer',
-		          'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
-			self.renderer[r] = getattr(fife, r).getInstance(self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
+				'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer',
+				'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
+			self.renderer[r] = getattr(fife, r).getInstance(
+				self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].setEnabled(r in ('InstanceRenderer', 'GenericRenderer'))
 		self.renderer['InstanceRenderer'].activateAllLayers(self.map)
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.GROUND])
 
-		#Setup autoscroll
+		# Setup autoscroll
 		horizons.globals.fife.pump.append(self.do_autoscroll)
 		self.time_last_autoscroll = time.time()
 		self._autoscroll = [0, 0]

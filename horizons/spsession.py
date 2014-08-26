@@ -27,6 +27,7 @@ from horizons.constants import SINGLEPLAYER
 from horizons.savegamemanager import SavegameManager
 from horizons.timer import Timer
 
+
 class SPSession(Session):
 	"""Session tailored for singleplayer games."""
 
@@ -55,7 +56,8 @@ class SPSession(Session):
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
 		self.log.debug("Session: quicksaving")
-		# call saving through horizons.main and not directly through session, so that save errors are handled
+		# call saving through horizons.main and not directly through session,
+		# so that save errors are handled
 		success = self._do_save(SavegameManager.create_quicksave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(quicksaves=True)
@@ -75,7 +77,7 @@ class SPSession(Session):
 		if savegamename is None:
 			savegamename = self.ingame_gui.show_select_savegame(mode='save')
 			if savegamename is None:
-				return True # user aborted dialog
+				return True  # user aborted dialog
 			savegamename = SavegameManager.create_filename(savegamename)
 
 		success = self._do_save(savegamename)
