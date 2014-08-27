@@ -27,7 +27,8 @@ from overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
 						TowerOverviewTab
 from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
-from productiontabs import ProductionOverviewTab, SmallProductionOverviewTab
+from productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
+						SmallProductionOverviewTab
 from residentialtabs import SettlerOverviewTab
 from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
 						TraderShipOverviewTab, EnemyShipOverviewTab
