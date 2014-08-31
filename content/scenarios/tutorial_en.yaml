@@ -139,7 +139,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - |
 
-  - [BoldLabel, "Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies."]
+  - [BoldLabel, "Task: Build a tent and connect it to the main square if necessary. Tents don't need to be connected to any of the companies."]
 
 
 - &MORETENTS

@@ -106,6 +106,7 @@
 * Michal Čihař (nijel)
 
 #### Bulgarian
+* Bojana
 * Nikolai Nikolov
 * Nikolay Kotrabakov (balward)
 
@@ -158,6 +159,7 @@
 * Fabio Fernández (Catharsius)
 * Fede Muller
 * Gauekoizar
+* Ivan Gonzalez Martin
 * MicMic
 * Nikolai Woutlan
 * Rubén Viguera
@@ -212,14 +214,16 @@
 
 #### Hungarian
 * Lipták Krisztián
+* Lorant Perger
 * matyi
-* Szontágh Ferenc (ghostarthour)
 * probert
+* Szontágh Ferenc (ghostarthour)
 
 #### Indonesian
 * alamswijaya
 * davezh
 * Ichwan Elhamdani
+* Samuel Christo
 
 #### Italian
 * Davide Nanni
@@ -228,6 +232,7 @@
 * Gioele Cerri (joel)
 * Giorgio Saragnese (supermario)
 * Mathias Hofmann
+* Pac Low
 * rayot
 * sioux83
 * tagarista
@@ -235,14 +240,17 @@
 
 #### Japanese
 * naraba
+* Tatsuhiko Yamanoue
 * Yuki Shira (shirayuki)
 
 #### Korean
+* Cho Bkwon
 * K Ks
 * Sebastian Sohn
 * Wooyoung Cho
 
 #### Lithuanian
+* Jur Kis
 * Mantas Kondrotas (Anielius)
 * Mantas Kriaučiūnas
 
@@ -271,11 +279,13 @@
 * VinWij
 
 #### Polish
+* Adam Jordanek
 * Adrian Marcinkowski (Amfidiusz)
 * Eerozeteen
 * Gilead
 * Jan Krzysztof Zawadzki (kzawadzki)
 * janczarny
+* Lemoid
 * Mateusz Bartkowski (Eugen)
 * Natrius
 * Pic

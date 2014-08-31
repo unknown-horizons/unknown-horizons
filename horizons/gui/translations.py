@@ -161,6 +161,9 @@ def set_translations():
 		(u'running_costs'                , 'helptext'): _(u"Running costs"),
 		},
 
+	'overview_war_groundunit.xml' : {
+		},
+
 	'island_inventory.xml' : {
 		(u'headline'                     , 'text'    ): _(u"Settlement inventory"),
 		},
@@ -197,7 +200,7 @@ def set_translations():
 		(u'selling_label'                , 'text'    ): _(u"Selling"),
 		},
 
-	'overview_firestation.xml' : {
+	'overview_generic.xml' : {
 		(u'headline'                     , 'text'    ): _(u"Building overview"),
 		(u'name_label'                   , 'text'    ): _(u"Name:"),
 		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
@@ -477,6 +480,8 @@ def set_translations():
 		(u'lbl_TILE_OWNER_HIGHLIGHT'     , 'helptext'): _(u"Highlight tile ownership"),
 		(u'lbl_TRANSLUCENCY'             , 'helptext'): _(u"Toggle translucency of ambient buildings"),
 		(u'lbl_UP'                       , 'helptext'): _(u"Scroll up"),
+		(u'lbl_ZOOM_IN'                  , 'helptext'): _(u"Zoom in"),
+		(u'lbl_ZOOM_OUT'                 , 'helptext'): _(u"Zoom out"),
 		},
 
 	'ingamemenu.xml' : {
@@ -575,7 +580,6 @@ def set_translations():
 		(u'show_resource_icons_lbl'      , 'text'    ): _(u"Production indicators:"),
 		(u'sound_enable_opt_text'        , 'text'    ): _(u"Enable sound:"),
 		(u'uninterrupted_building_label' , 'text'    ): _(u"Uninterrupted building:"),
-		(u'use_renderer_label'           , 'text'    ): _(u"Used renderer:"),
 		(u'cancelButton'                 , 'helptext'): _(u"Discard current changes"),
 		(u'defaultButton'                , 'helptext'): _(u"Reset to default settings"),
 		(u'okButton'                     , 'helptext'): _(u"Save changes"),
@@ -592,7 +596,6 @@ def set_translations():
 		(u'scroll_speed_label'           , 'helptext'): _(u"Higher values slow down scrolling."),
 		(u'show_resource_icons_lbl'      , 'helptext'): _(u"Whether to show resource icons over buildings whenever they finish production"),
 		(u'uninterrupted_building_label' , 'helptext'): _(u"When enabled, do not exit the build mode after successful construction"),
-		(u'use_renderer_label'           , 'helptext'): _(u"SDL is only meant as unsupported fallback and might cause problems!"),
 		},
 
 	'select_savegame.xml' : {
