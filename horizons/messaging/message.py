@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.messaging.messagebus import MessageBus
+from horizons.messaging.messagebus import MessageBus, QueuingMessageBus
 
 
 class Message(object):
@@ -32,6 +32,7 @@ class Message(object):
 	these will be stored on the instance.
 	"""
 	arguments = tuple()
+	bus = MessageBus
 
 	def __init__(self, sender, *args):
 		self.sender = sender
@@ -60,9 +61,9 @@ class Message(object):
 			>>> MessageClass.subscribe(cb, sender=foo) # Specific sender
 		"""
 		if sender:
-			MessageBus().subscribe_locally(cls, sender, callback)
+			cls.bus().subscribe_locally(cls, sender, callback)
 		else:
-			MessageBus().subscribe_globally(cls, callback)
+			cls.bus().subscribe_globally(cls, callback)
 
 	@classmethod
 	def unsubscribe(cls, callback, sender=None):
@@ -85,9 +86,9 @@ class Message(object):
 			>>> MessageClass.broadcast('sender')
 		"""
 		if sender:
-			MessageBus().unsubscribe_locally(cls, sender, callback)
+			cls.bus().unsubscribe_locally(cls, sender, callback)
 		else:
-			MessageBus().unsubscribe_globally(cls, callback)
+			cls.bus().unsubscribe_globally(cls, callback)
 
 	@classmethod
 	def discard(cls, callback, sender=None):
@@ -95,9 +96,9 @@ class Message(object):
 		callback has not been registered before.
 		"""
 		if sender:
-			MessageBus().discard_locally(cls, sender, callback)
+			cls.bus().discard_locally(cls, sender, callback)
 		else:
-			MessageBus().discard_globally(cls, callback)
+			cls.bus().discard_globally(cls, callback)
 
 	@classmethod
 	def broadcast(cls, *args):
@@ -113,11 +114,12 @@ class Message(object):
 
 			>>> Foo.broadcast('sender', 1, 2)
 		"""
-		MessageBus().broadcast(cls(*args))
+		cls.bus().broadcast(cls(*args))
 
 
 class AddStatusIcon(Message):
 	arguments = ('icon', )
+	bus = QueuingMessageBus
 
 class RemoveStatusIcon(Message):
 	arguments = (
