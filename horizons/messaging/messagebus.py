@@ -127,6 +127,12 @@ class QueuingMessageBus(MessageBus):
 		else:
 			MessageBus.broadcast(self, message)
 
+	def clear(self, messagetype):
+		self.message_queue[messagetype].clear()
+
+	def queue_len(self, messagetype):
+		return len(self.message_queue[messagetype])
+
 
 class SimpleMessageBus(object):
 	"""Manages registration and calling of callbacks when events (strings) occur.

@@ -116,6 +116,21 @@ class Message(object):
 		"""
 		cls.bus().broadcast(cls(*args))
 
+	@classmethod
+	def clear(cls, *args):
+		"""Empty the message queue, if cls.bus is a QueuingMessageBus
+		"""
+		if isinstance(cls.bus(),QueuingMessageBus):
+			cls.bus().clear(cls)
+
+	@classmethod
+	def queue_len(cls, *args):
+		"""Get the length the message queue, if cls.bus is a QueuingMessageBus
+		"""
+		if isinstance(cls.bus(),QueuingMessageBus):
+			return cls.bus().queue_len(cls)
+		else:
+			return 0
 
 class AddStatusIcon(Message):
 	arguments = ('icon', )
