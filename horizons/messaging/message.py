@@ -24,7 +24,7 @@ from horizons.messaging.messagebus import MessageBus, QueuingMessageBus
 
 class Message(object):
 	"""Message class for the MessageBus. Every Message that is supposed to be
-	send through the MessageBus has to subclass this base class, to ensure proper
+	sent through the MessageBus has to subclass this base class, to ensure proper
 	setting of base attributes and inheriting the interface.
 
 	The first argument in each message is always a reference to the sender,
@@ -116,25 +116,28 @@ class Message(object):
 		"""
 		cls.bus().broadcast(cls(*args))
 
+
+class QueuingMessage(Message):
+	"""QueuingMessage class for the QueuingMessageBus. Every Message that is supposed to be
+	sent through the QueuingMessageBus has to subclass this subclass.
+	"""
+	bus = QueuingMessageBus
+
 	@classmethod
 	def clear(cls, *args):
-		"""Empty the message queue, if cls.bus is a QueuingMessageBus
+		"""Empty the message queue for this Message class
 		"""
-		if isinstance(cls.bus(),QueuingMessageBus):
-			cls.bus().clear(cls)
+		cls.bus().clear(cls)
 
 	@classmethod
 	def queue_len(cls, *args):
-		"""Get the length the message queue, if cls.bus is a QueuingMessageBus
+		"""Get the length the message queue for this Message class
 		"""
-		if isinstance(cls.bus(),QueuingMessageBus):
-			return cls.bus().queue_len(cls)
-		else:
-			return 0
+		return cls.bus().queue_len(cls)
 
-class AddStatusIcon(Message):
+
+class AddStatusIcon(QueuingMessage):
 	arguments = ('icon', )
-	bus = QueuingMessageBus
 
 class RemoveStatusIcon(Message):
 	arguments = (
