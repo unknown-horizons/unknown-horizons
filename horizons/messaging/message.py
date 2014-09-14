@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.messaging.messagebus import MessageBus, QueuingMessageBus
+from horizons.messaging.messagebus import MessageBus
+from horizons.messaging.queuingmessagebus import QueuingMessageBus
 
 
 class Message(object):
