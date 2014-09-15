@@ -26,6 +26,7 @@ from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.coloroverlaycomponent import ColorOverlayComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.depositcomponent import DepositComponent
+from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.inventoryoverlaycomponent import InventoryOverlayComponent
 from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
@@ -68,6 +69,7 @@ class ComponentHolder(object):
 	    'CollectingComponent': CollectingComponent,
 	    'ColorOverlayComponent': ColorOverlayComponent,
 	    'DepositComponent': DepositComponent,
+	    'FieldBuilder': FieldBuilder,
 	    'HealthComponent': HealthComponent,
 	    'InventoryOverlayComponent': InventoryOverlayComponent,
 	    'NamedComponent': NamedComponent,

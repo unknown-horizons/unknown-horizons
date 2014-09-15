@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-06-12 18:36+0200\n"
-"Last-Translator: Lipták Krisztián <qekwaryi@uni-miskolc.hu>\n"
+"PO-Revision-Date: 2014-08-27 12:39+0200\n"
+"Last-Translator: Lorant Perger <pergerlori@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -543,9 +543,8 @@ msgid "Taxes"
 msgstr "Daně"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
-#, fuzzy
 msgid "Sale"
-msgstr "Prodej"
+msgstr "Eladás"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
 #, fuzzy
@@ -553,9 +552,8 @@ msgid "Expenses:"
 msgstr "Výdaje:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
-#, fuzzy
 msgid "Balance:"
-msgstr "Bilance:"
+msgstr "Egyenleg:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 #, fuzzy
@@ -564,22 +562,19 @@ msgstr "Ukázat zboží vyráběné v této osadě"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
-#, fuzzy
 msgid "Pause production"
-msgstr "Zastavit výrobu"
+msgstr "Gyártás szüneteltetése"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
-#, fuzzy
 msgid "Start production"
-msgstr "Začít výrobu"
+msgstr "Gyártás indítása"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Vyberte zboží:"
+msgstr "Nyersanyag kiválasztása:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -604,21 +599,18 @@ msgstr "Alapértelmezett beállítás visszaállítása az összes gyarmatra."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
-#, fuzzy
 msgid "Move up"
-msgstr "Posun nahoru"
+msgstr "Mozgatás felfelé"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
-#, fuzzy
 msgid "Delete entry"
-msgstr "Smazat položku"
+msgstr "Bejegyzés törlése"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
-#, fuzzy
 msgid "Move down"
-msgstr "Posun dolů"
+msgstr "Mozgás lefele"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 #, fuzzy

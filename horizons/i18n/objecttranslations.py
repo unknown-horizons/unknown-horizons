@@ -247,7 +247,7 @@ object_translations = {
 		# name of buildings:lookout
 		"name"                        : _("Lookout"),
 		# tooltip_text of buildings:lookout
-		"tooltip_text"                : _("Increases the player's sight."),
+		"tooltip_text"                : _("Expands settlement range."),
 		},
 
 	"content/objects/buildings/lumberjackcamp.yaml" : {
@@ -340,7 +340,7 @@ object_translations = {
 		# name_1 of buildings:storagetent
 		"name_1"                      : _("Storage Hut"),
 		# tooltip_text of buildings:storagetent
-		"tooltip_text"                : _("Extends stock and provides collectors."),
+		"tooltip_text"                : _("Extends stock, expands settlement range and provides collectors."),
 		},
 
 	"content/objects/buildings/tavern.yaml" : {
@@ -418,6 +418,13 @@ object_translations = {
 		"name"                        : _("Warehouse"),
 		},
 
+	"content/objects/buildings/weaponsmith.yaml" : {
+		# name of buildings:weaponsmith
+		"name"                        : _("Weaponsmith"),
+		# tooltip_text of buildings:weaponsmith
+		"tooltip_text"                : _("Produces weapons out of iron."),
+		},
+
 	"content/objects/buildings/weaverstent.yaml" : {
 		# name of buildings:weaverstent
 		"name"                        : _("Weaver's Hut"),
@@ -454,6 +461,8 @@ object_translations = {
 		"headline"                    : _("Fields"),
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_tier
+		"headline"                    : _("Military"),
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Mining"),
 		# headline of gui_buildmenu:build_menu_per_tier
@@ -493,6 +502,8 @@ object_translations = {
 		"headline"                    : _("Settlers"),
 		# headline of gui_buildmenu:build_menu_per_type
 		"headline"                    : _("Wood"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Workshops"),
 		# headline of gui_buildmenu:build_menu_per_type
 		"headline"                    : _("Workshops"),
 		# headline of gui_buildmenu:build_menu_per_type

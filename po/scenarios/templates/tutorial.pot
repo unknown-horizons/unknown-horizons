@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 1c4eb21\n"
+"Project-Id-Version: Unknown Horizons 747c5c5\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 23:41+0100\n"
+"POT-Creation-Date: 2014-08-31 20:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -285,7 +285,8 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "This means that they need a trail connection from their home to the main "
-"square."
+"square. Note that the main square acts as trail as well, therefore adjacent "
+"tents do not need a separate trail."
 msgstr ""
 
 #. This is the text body of a logbook page.
@@ -341,7 +342,7 @@ msgid ""
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a tent and connect it to the main square."
+msgid "Build a tent and connect it to the main square if necessary."
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -379,8 +380,8 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"Task: Build a tent and connect it to the main square. Tents dont need to be "
-"connected to any of the companies."
+"Task: Build a tent and connect it to the main square if necessary. Tents "
+"don't need to be connected to any of the companies."
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!

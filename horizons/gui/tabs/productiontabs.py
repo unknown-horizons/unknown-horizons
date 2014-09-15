@@ -27,9 +27,12 @@ from fife.extensions.pychan.widgets import Icon, Label
 
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
+from horizons.component.fieldbuilder import FieldBuilder
 from horizons.constants import GAME_SPEED, PRODUCTION
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
+from horizons.gui.widgets.container import AutoResizeContainer
+from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
@@ -225,6 +228,50 @@ class ProductionOverviewTab(OverviewTab):
 			if anim():
 				anim().stop()
 		self._animations = []
+
+
+class LumberjackOverviewTab(ProductionOverviewTab):
+	"""Same as ProductionOverviewTab but add a button to fill range with trees.
+	"""
+	def init_widget(self):
+		super(LumberjackOverviewTab, self).init_widget()
+		container = AutoResizeContainer(position=(20, 210))
+		icon = Icon(name='build_all_bg')
+		button = ImageButton(name='build_all_button')
+		container.addChild(icon)
+		container.addChild(button)
+		self.widget.addChild(container)
+		self.update_data()
+
+	def update_data(self):
+		field_comp = self.instance.get_component(FieldBuilder)
+		icon = self.widget.child_finder('build_all_bg')
+		button = self.widget.child_finder('build_all_button')
+
+		(enough_res, missing_res) = field_comp.check_resources()
+		# Disable "build menu" button if nothing would be built or construction
+		# cannot be afforded by the player right now.
+		if enough_res and field_comp.how_many > 0:
+			icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
+			button.path = 'icons/tabwidget/lumberjackcamp/tree_area_build'
+		else:
+			icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
+			button.path = 'icons/tabwidget/lumberjackcamp/no_area_build'
+		button.min_size = button.max_size = button.size = (46, 46)
+		button.helptext = _('Fill range with {how_many} trees').format(
+			how_many=field_comp.how_many)
+
+		res_bar = self.instance.session.ingame_gui.resource_overview
+
+		click_cb = Callback.ChainedCallbacks(field_comp.fill_range, self.update_data)
+		enter_cb = Callback(res_bar.set_construction_mode, self.instance, field_comp.total_cost)
+		#TODO the tooltip should actually hide on its own. Ticket #1096
+		exit_cb = Callback.ChainedCallbacks(res_bar.close_construction_mode, button.hide_tooltip)
+		self.widget.mapEvents({
+			button.name: click_cb,
+			button.name + '/mouseEntered': enter_cb,
+			button.name + '/mouseExited': exit_cb,
+		})
 
 
 class SmallProductionOverviewTab(ProductionOverviewTab):
