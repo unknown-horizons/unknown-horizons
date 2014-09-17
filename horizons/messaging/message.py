@@ -20,11 +20,12 @@
 # ###################################################
 
 from horizons.messaging.messagebus import MessageBus
+from horizons.messaging.queuingmessagebus import QueuingMessageBus
 
 
 class Message(object):
 	"""Message class for the MessageBus. Every Message that is supposed to be
-	send through the MessageBus has to subclass this base class, to ensure proper
+	sent through the MessageBus has to subclass this base class, to ensure proper
 	setting of base attributes and inheriting the interface.
 
 	The first argument in each message is always a reference to the sender,
@@ -32,6 +33,7 @@ class Message(object):
 	these will be stored on the instance.
 	"""
 	arguments = tuple()
+	bus = MessageBus
 
 	def __init__(self, sender, *args):
 		self.sender = sender
@@ -60,9 +62,9 @@ class Message(object):
 			>>> MessageClass.subscribe(cb, sender=foo) # Specific sender
 		"""
 		if sender:
-			MessageBus().subscribe_locally(cls, sender, callback)
+			cls.bus().subscribe_locally(cls, sender, callback)
 		else:
-			MessageBus().subscribe_globally(cls, callback)
+			cls.bus().subscribe_globally(cls, callback)
 
 	@classmethod
 	def unsubscribe(cls, callback, sender=None):
@@ -85,9 +87,9 @@ class Message(object):
 			>>> MessageClass.broadcast('sender')
 		"""
 		if sender:
-			MessageBus().unsubscribe_locally(cls, sender, callback)
+			cls.bus().unsubscribe_locally(cls, sender, callback)
 		else:
-			MessageBus().unsubscribe_globally(cls, callback)
+			cls.bus().unsubscribe_globally(cls, callback)
 
 	@classmethod
 	def discard(cls, callback, sender=None):
@@ -95,9 +97,9 @@ class Message(object):
 		callback has not been registered before.
 		"""
 		if sender:
-			MessageBus().discard_locally(cls, sender, callback)
+			cls.bus().discard_locally(cls, sender, callback)
 		else:
-			MessageBus().discard_globally(cls, callback)
+			cls.bus().discard_globally(cls, callback)
 
 	@classmethod
 	def broadcast(cls, *args):
@@ -113,10 +115,29 @@ class Message(object):
 
 			>>> Foo.broadcast('sender', 1, 2)
 		"""
-		MessageBus().broadcast(cls(*args))
+		cls.bus().broadcast(cls(*args))
 
 
-class AddStatusIcon(Message):
+class QueuingMessage(Message):
+	"""QueuingMessage class for the QueuingMessageBus. Every Message that is supposed to be
+	sent through the QueuingMessageBus has to subclass this subclass.
+	"""
+	bus = QueuingMessageBus
+
+	@classmethod
+	def clear(cls, *args):
+		"""Empty the message queue for this Message class
+		"""
+		cls.bus().clear(cls)
+
+	@classmethod
+	def queue_len(cls, *args):
+		"""Get the length the message queue for this Message class
+		"""
+		return cls.bus().queue_len(cls)
+
+
+class AddStatusIcon(QueuingMessage):
 	arguments = ('icon', )
 
 class RemoveStatusIcon(Message):
