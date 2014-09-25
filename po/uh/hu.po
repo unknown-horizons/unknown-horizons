@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-09-25 22:18+0200\n"
+"PO-Revision-Date: 2014-09-25 22:20+0200\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
@@ -1312,9 +1312,8 @@ msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
-"Ne használd normál játékkor. Eldöntheted, hogy írjon-e hibakeresési "
-"információkat a naplózó könyvtárba a felhasználói könyvtáradba. Lelassítja a "
-"játékot."
+"Ne használd normál játékmenetben! Eldöntheted, hogy kerüljön-e hibakeresési "
+"információ a felhasználói könyvtárad naplózó könyvtárába. Lassítja a játékot."
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
@@ -2138,7 +2137,7 @@ msgstr "Leírás: {desc}"
 #: horizons/gui/mousetools/buildingtool.py:230
 #, python-brace-format
 msgid "Build {building}"
-msgstr "Épít {building}"
+msgstr "{building} építése"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
@@ -2320,7 +2319,7 @@ msgstr "Megvétel {buyprice} aranyért"
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr "Eladás {buyprice} aranyért"
+msgstr "Eladás {sellprice} aranyért"
 
 #: horizons/gui/widgets/inventory.py:166
 #, python-brace-format
