@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-09-25 15:17+0200\n"
+"PO-Revision-Date: 2014-09-25 15:18+0200\n"
 "Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
@@ -1403,7 +1403,7 @@ msgstr "Új játék - Egyjátékos mód"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr "Történet"
+msgstr "Küldetés"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
@@ -2105,12 +2105,12 @@ msgstr "Kattints egy új generált térkép elkészítéséhez"
 # szkenárió?? - gondolom egy játék menetet tartalmazó beállítást tároló fájl... na ezt fordítsd le:P
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Invalid scenario file"
-msgstr "Érvénytelen történet fájl"
+msgstr "Érvénytelen küldetés fájl"
 
 # szcenárió can be "forgatókönyv" - not the best word for it
 #: horizons/gui/modules/singleplayermenu.py:506
 msgid "The selected file is not a valid scenario file."
-msgstr "A kiválasztott fájl nem érvényes történet fájl."
+msgstr "A kiválasztott fájl nem érvényes küldetés fájl."
 
 #: horizons/gui/modules/singleplayermenu.py:507
 msgid "Error message:"
