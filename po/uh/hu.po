@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-27 12:39+0200\n"
-"Last-Translator: Lorant Perger <pergerlori@gmail.com>\n"
+"PO-Revision-Date: 2014-09-25 13:42+0200\n"
+"Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -508,25 +508,21 @@ msgid "Trade partner:"
 msgstr "Kereskedőpartner:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
-#, fuzzy
 msgid "Buy or sell resources"
-msgstr "Koupě či prodej surovin"
+msgstr "Nyersanyagok vétele vagy eladása"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
-#, fuzzy
 msgid "Trade history"
-msgstr "Historie obchodu"
+msgstr "Kereskedelmi előzmények"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
-#, fuzzy
 msgid "Select resources:"
-msgstr "Vyberte zboží:"
+msgstr "Nyersanyagok kiválasztása:"
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
-#, fuzzy
 msgid "Collector utilization"
 msgstr "Árubegyűjtő kihasználtság"
 
@@ -547,18 +543,16 @@ msgid "Sale"
 msgstr "Eladás"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
-#, fuzzy
 msgid "Expenses:"
-msgstr "Výdaje:"
+msgstr "Költségek:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
 msgid "Balance:"
 msgstr "Egyenleg:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
-#, fuzzy
 msgid "Show resources produced in this settlement"
-msgstr "Ukázat zboží vyráběné v této osadě"
+msgstr "A településen előállított nyersanyagok mutatása"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
@@ -613,88 +607,74 @@ msgid "Move down"
 msgstr "Mozgás lefele"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
-#, fuzzy
 msgid "Select a resource:"
-msgstr "Vyberte zdroj:"
+msgstr "Nyersanyag kiválasztása:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
-#, fuzzy
 msgid "Read previous entries"
-msgstr "Přečíst předchozí záznamy"
+msgstr "Korábbi bejegyzések megtekintése"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
-#, fuzzy
 msgid "Read next entries"
-msgstr "Přečíst další záznamy"
+msgstr "Következő bejegyzés megtekintése"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
-#, fuzzy
 msgid "Statistics"
-msgstr "Statistiky"
+msgstr "Statisztika"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#, fuzzy
 msgid "Players"
-msgstr "Hráči"
+msgstr "Játékosok"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
-#, fuzzy
 msgid "My ships"
-msgstr "Mé lodě"
+msgstr "Hajóim"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
-#, fuzzy
 msgid "My settlements"
-msgstr "Mé osady"
+msgstr "Településeim"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
-#, fuzzy
 msgid "Game messages"
-msgstr "Herní zprávy"
+msgstr "Játéküzenetek"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
-#, fuzzy
 msgid "Whole world"
-msgstr "Celý svět"
+msgstr "Teljes világ"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
-#, fuzzy
 msgid "Everybody"
-msgstr "Všichni"
+msgstr "Mindenki"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr ""
+msgstr "Chat üzenetek küldése minden játékosnak."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Vaše zpráva:"
+msgstr "Írd ide az üzeneted"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
-#, fuzzy
 msgid "Return to game"
-msgstr "Návrat do hry"
+msgstr "Vissza a játékba"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
-#, fuzzy
 msgid "Wait at load:"
-msgstr "Čekat na naložení:"
+msgstr "Várakozás a berakodásnál:"
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
-#, fuzzy
 msgid "Wait at unload:"
-msgstr "Čekat na vyložení:"
+msgstr "Várakozás a kirakodásnál:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
@@ -703,31 +683,26 @@ msgstr "Útvonal aktivitás:"
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:103
-#, fuzzy
 msgid "Start route"
-msgstr "Začít obchodní cestu"
+msgstr "Útvonal indítása"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
-#, fuzzy
 msgid "Exit"
-msgstr "Konec"
+msgstr "Kilépés"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:24
-#, fuzzy
 msgid "Close"
-msgstr "Zavřít"
+msgstr "Bezár"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
-#, fuzzy
 msgid "Player scores"
-msgstr "Skóre"
+msgstr "Játékos pontszáma"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
-#, fuzzy
 msgid "Name"
-msgstr "Jméno"
+msgstr "Név"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #, fuzzy
@@ -735,9 +710,8 @@ msgid "Player Name"
 msgstr "Játékos neve:"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
-#, fuzzy
 msgid "Money"
-msgstr "Peníze"
+msgstr "Pénz"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
@@ -752,22 +726,21 @@ msgstr "Země"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
+"Felhasználható terület értéke, például a terület hány százaléka beépíthető"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
-#, fuzzy
 msgid "Resources"
-msgstr "Zboží"
+msgstr "Nyersanyagok"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
-msgstr ""
+msgstr "A játékos települése(i) által előállított összes nyersanyag értéke"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
-#, fuzzy
 msgid "Buildings"
-msgstr "Stavby"
+msgstr "Épületek"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
@@ -777,9 +750,8 @@ msgstr "Az összes épület, játékos, település(ek) ár aránya"
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:493
-#, fuzzy
 msgid "Settlers"
-msgstr "Osadníci"
+msgstr "Telepesek"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
@@ -788,13 +760,12 @@ msgid ""
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
-#, fuzzy
 msgid "Units"
-msgstr "Jednotky"
+msgstr "Egységek"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "A játékos által birtokolt egységek értéke"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
@@ -803,9 +774,8 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
-#, fuzzy
 msgid "Total"
-msgstr "Celkem"
+msgstr "Összesen"
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:618
@@ -814,69 +784,59 @@ msgid "Balance"
 msgstr "Bilance"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
-#, fuzzy
 msgid "Type"
-msgstr "Typ"
+msgstr "Típus"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
-#, fuzzy
 msgid "Weapons"
-msgstr "Zbraně"
+msgstr "Fegyverek"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
-#, fuzzy
 msgid "Health"
-msgstr "Zdraví"
+msgstr "Egészség"
 
 # "Beosztás"?
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
-#, fuzzy
 msgid "Status"
-msgstr "Status"
+msgstr "Állapot"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
-#, fuzzy
 msgid "Aggressive"
-msgstr "Agresivní"
+msgstr "Agresszív"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
-#, fuzzy
 msgid "Hold ground"
-msgstr "Držet území"
+msgstr "Pozíció tartása"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
-#, fuzzy
 msgid "Passive"
-msgstr "Pasivní"
+msgstr "Passzív"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
-#, fuzzy
 msgid "Flee"
-msgstr "Utéct"
+msgstr "Hátráló"
 
 #: content/gui/xml/mainmenu/credits.xml:471
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
-#, fuzzy
 msgid "Exit to main menu"
-msgstr "Odejít do hlavního menu"
+msgstr "Kilépés a főmenübe"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr ""
+msgstr "Térkép méretének kiválasztása:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
-#, fuzzy
 msgid "Choose a map:"
-msgstr "Vybrat mapu:"
+msgstr "Térkép kiválasztása:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
@@ -884,28 +844,27 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "Térkép forrása"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr ""
+msgstr "Új térkép létrehozása"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "Létező térkép betöltése"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Mentett játék térképének betöltése"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr ""
+msgstr "Szerkesztő indítása"
 
 #: content/gui/xml/mainmenu/help.xml:11
-#, fuzzy
 msgid "Return"
-msgstr "Návrat"
+msgstr "Vissza"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 #, fuzzy
@@ -913,83 +872,68 @@ msgid "Actions"
 msgstr "AI beállítások"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
-#, fuzzy
 msgid "Scroll left"
-msgstr "Posunout doleva"
+msgstr "Görgetés balra"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
-#, fuzzy
 msgid "Scroll right"
-msgstr "Posunout doprava"
+msgstr "Görgetés jobbra"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:12
-#, fuzzy
 msgid "Scroll up"
-msgstr "Posunout nahoru"
+msgstr "Görgetés fel"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:13
-#, fuzzy
 msgid "Scroll down"
-msgstr "Posunout dolů"
+msgstr "Görgetés le"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
-#, fuzzy
 msgid "Rotate building or map clockwise"
-msgstr "Otočit stavbu či mapu ve směru hodinových ručiček"
+msgstr "Épület vagy térkép forgatása óramutató járásával megegyező irányban"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
-#, fuzzy
 msgid "Rotate building or map counterclockwise"
-msgstr "Otočit stavbu či mapu proti směru hodinových ručiček"
+msgstr "Épület vagy térkép forgatása óramutató járásával ellentétes irányban"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
-#, fuzzy
 msgid "Increase game speed"
-msgstr "Zrychlit rychlost hry"
+msgstr "Játéksebesség növelése"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
-#, fuzzy
 msgid "Decrease game speed"
-msgstr "Zpomalit rychlost hry"
+msgstr "Játéksebesség csökkentése"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
-#, fuzzy
 msgid "Pause game"
-msgstr "Pozastavit hru"
+msgstr "Szünet"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:19
-#, fuzzy
 msgid "Show build menu"
-msgstr "Ukázat menu staveb"
+msgstr "Építés menü mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:20
-#, fuzzy
 msgid "Enable destruct mode"
-msgstr "Povolit destrukční režim"
+msgstr "Romboló mód bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
-#, fuzzy
 msgid "Enable road building mode"
-msgstr "Povolit mód stavby cest"
+msgstr "Útépítő mód bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "Pipetta mód bekapcsolása (épületek klónozása)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
-#, fuzzy
 msgid "Show player scores"
-msgstr "Ukázat skóre"
+msgstr "Játékos pontjának mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
-#, fuzzy
 msgid "Show settlement list"
-msgstr "Ukázat seznam osad"
+msgstr "Tepelülések listájának mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
-#, fuzzy
 msgid "Show ship list"
-msgstr "Ukázat seznam lodí"
+msgstr "Hajók listájának mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 #, fuzzy
@@ -997,20 +941,17 @@ msgid "Toggle Captain's log"
 msgstr "Ukázat Kapitánův deník"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
-#, fuzzy
 msgid "Quicksave"
-msgstr "Rychlé uložení"
+msgstr "Gyorsmentés"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:29
-#, fuzzy
 msgid "Quickload"
-msgstr "Rychlé načtení"
+msgstr "Gyors betöltés"
 
 # fogalmam nincs, mi az a "Transzlucuncia"
 #: content/gui/xml/mainmenu/hotkeys.xml:30
-#, fuzzy
 msgid "Toggle translucency of ambient buildings"
-msgstr "Zapnout průsvitnost okolních budov"
+msgstr "Környező épületek áttetszőségének ki/bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 #, fuzzy
@@ -1019,51 +960,45 @@ msgstr "Tulajdonos kiemelése"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Életcsík mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "Kamera fókusz kiválasztáskor"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
-#, fuzzy
 msgid "Remove selected units / buildings"
-msgstr "Odstranit vybrané jednotky či budovy"
+msgstr "Kiválasztott egység/épület eltávolítása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
-#, fuzzy
 msgid "Display help"
-msgstr "Ukázat nápovědu"
+msgstr "Súgó megnyitása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
-#, fuzzy
 msgid "Screenshot"
-msgstr "Obrázek ze hry"
+msgstr "Pillanatkép"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Zobrazit/skrýt mřížku"
+msgstr "FPS mutató ki/bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
-#, fuzzy
 msgid "Toggle grid on/off"
-msgstr "Zobrazit/skrýt mřížku"
+msgstr "Rács ki/bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
-#, fuzzy
 msgid "Show coordinate values (Debug)"
-msgstr "Ukázat souřadnice"
+msgstr "Koordináta értékek mutatása (debug)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Elsődleges"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Másodlagos"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
@@ -1076,81 +1011,69 @@ msgstr "Visszaállítás az eredetire"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
-#, fuzzy
 msgid "Save game"
-msgstr "Uložit hru"
+msgstr "Játék elmentése"
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:50
-#, fuzzy
 msgid "Load game"
-msgstr "Nahrát hru"
+msgstr "Játék betöltése"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
-#, fuzzy
 msgid "Cancel game"
-msgstr "Zrušit hru"
+msgstr "Kilépés a játékból"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Načítám ..."
+msgstr "Betöltés…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Háttér módosítása"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
-#, fuzzy
 msgid "Singleplayer"
-msgstr "Jeden hráč"
+msgstr "Egyjátékos mód"
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Více hráčů"
+msgstr "Többjátékos mód"
 
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
-#, fuzzy
 msgid "Quit"
-msgstr "Konec"
+msgstr "Kilépés"
 
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "Szerkesztő"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
-#, fuzzy
 msgid "Credits"
-msgstr "Autoři"
+msgstr "Stáblista"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
-#, fuzzy
 msgid "Create game - Multiplayer"
-msgstr "Vytvořit hru pro více hráčů"
+msgstr "Játék létrehozása - Többjátékos mód"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
-#, fuzzy
 msgid "Player limit:"
-msgstr "Maximální počet hráčů:"
+msgstr "Játékosok száma:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
-#, fuzzy
 msgid "Exit to multiplayer menu"
-msgstr "Odejít do menu hry více hráčů"
+msgstr "Kilépés a többjátékos mód menüjébe"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
-#, fuzzy
 msgid "Name of the game:"
-msgstr "Název hry:"
+msgstr "Játék neve:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
@@ -1161,28 +1084,26 @@ msgstr "Ez fog megjelenni más játékosoknak a játék beazonosításához."
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "Névtelen játék"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr ""
+msgstr "Jelszó a játékhoz:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr ""
+msgstr "A játékhoz tartozó jelszó. Szükséges a csatlakozáshoz."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
-#, fuzzy
 msgid "Create this new game"
-msgstr "Vytvořit novou hru"
+msgstr "Jelen játék létrehozása"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
 msgstr "Előszoba"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
-#, fuzzy
 msgid "Chat:"
 msgstr "Chat:"
 
@@ -1196,76 +1117,64 @@ msgid "The game will start as soon as all players are ready."
 msgstr "A játék azonnal elindul, amint elég játékos csatlakozott."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
-#, fuzzy
 msgid "Game details:"
-msgstr "Podrobnosti hry:"
+msgstr "Játék részletei:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
-#, fuzzy
 msgid "Color"
-msgstr "Szín:"
+msgstr "Szín"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
-msgstr ""
+msgstr "Kész:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
+msgstr "Állítsd be az állapotod készre (a játék indításához elengedhetetlen)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
-#, fuzzy
 msgid "New game - Multiplayer"
-msgstr "Nová hra více hráčů"
+msgstr "Új játék - Többjátékos mód"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
-#, fuzzy
 msgid "Load game:"
-msgstr "Nahrát hru:"
+msgstr "Játék betöltése:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Načíst uloženou hru"
+msgstr "Mentett játék betöltése"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
-#, fuzzy
 msgid "Active games:"
-msgstr "Aktivní hry:"
+msgstr "Aktív játékok:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
-#, fuzzy
 msgid "Refresh list:"
-msgstr "Obnovit seznam:"
+msgstr "Lista frissítése:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
-#, fuzzy
 msgid "Refresh list of active games"
-msgstr "Znovu načíst seznam aktivních her"
+msgstr "Aktív játékok listájának frissítése"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
-#, fuzzy
 msgid "Create game:"
-msgstr "Vytvořit hru:"
+msgstr "Játék létrehozása:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
-#, fuzzy
 msgid "Create a new game"
-msgstr "Vytvořit novou hru"
+msgstr "Új játék létrehozása"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 msgid "Join game:"
-msgstr "Připojit ke hře"
+msgstr "Csatlakozás játékhoz:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
-#, fuzzy
 msgid "Join the selected game"
-msgstr "Připojit k vybrané hře"
+msgstr "Csatlakozás a kiválasztott játékhoz"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr ""
+msgstr "Játékos adatainak módosítása"
 
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/modules/settings.py:53
@@ -1273,24 +1182,21 @@ msgid "Graphics"
 msgstr "Grafika"
 
 #: content/gui/xml/mainmenu/settings.xml:18
-#, fuzzy
 msgid "Screen resolution:"
-msgstr "Velikost obrazu:"
+msgstr "Képrenyő felbontása:"
 
 #: content/gui/xml/mainmenu/settings.xml:25
-#, fuzzy
 msgid "Full screen:"
-msgstr "Celá obrazovka:"
+msgstr "Teljes képernyős mód:"
 
 #: content/gui/xml/mainmenu/settings.xml:33
-#, fuzzy
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr "SDL není podporovaný a může způsobit potíže!"
+msgstr ""
+"Az SDL nem támogatott tartalék megoldásnak számít és problmákat okozhat!"
 
 #: content/gui/xml/mainmenu/settings.xml:33
-#, fuzzy
 msgid "Used renderer:"
-msgstr "Použité vykreslování:"
+msgstr "Használt leképező:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
@@ -1302,127 +1208,113 @@ msgstr ""
 "Beállítja a maximum használt képkocka sebességet. Alapértelmezett: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:54
-#, fuzzy
 msgid "Sound"
-msgstr "Zvuk"
+msgstr "Hang"
 
 #: content/gui/xml/mainmenu/settings.xml:60
-#, fuzzy
 msgid "Music volume:"
-msgstr "Hlasitost hudby:"
+msgstr "Zene hangereje:"
 
 #: content/gui/xml/mainmenu/settings.xml:69
-#, fuzzy
 msgid "Effects volume:"
-msgstr "Hlasitost efektů:"
+msgstr "Effektek hangereje:"
 
 #: content/gui/xml/mainmenu/settings.xml:76
-#, fuzzy
 msgid "Enable sound:"
-msgstr "Povolit zvuk:"
+msgstr "Hang engedélyezése:"
 
 #: content/gui/xml/mainmenu/settings.xml:82
-#, fuzzy
 msgid "Mouse"
-msgstr "Myš"
+msgstr "Egér"
 
 #: content/gui/xml/mainmenu/settings.xml:87
-#, fuzzy
 msgid "Scroll at map edge:"
-msgstr "Posunovat okraj mapy:"
+msgstr "Görgetés a térkép szélén:"
 
 #: content/gui/xml/mainmenu/settings.xml:87
-#, fuzzy
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "Posunout náhled, pokud je myš blízko okraje mapy"
+msgstr "A térkép görgetése, ha az egérkurzor a térkép szélén van"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "Nagyítás a kurzor pozíciójára:"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"Amennyiben ez az opció engedélyezett, az egér görgőjével való nagyítás a "
+"kurzor jelenlegi pocíziójára történik. Ellenkező esetben a nagyítás a "
+"jelenlegi pozícióra történik."
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Görgetés a középső egérgombbal:"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
+"Engedélyezés esetég a középső gomb lenyomásával állítható a kamera pozíciója"
 
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "0 je výchozí nastavení"
+msgstr "Alapértelmezett érték a 0"
 
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Hustota zdrojů:"
+msgstr "Egér érzékenysége:"
 
 #: content/gui/xml/mainmenu/settings.xml:123
-#, fuzzy
 msgid "Saving"
-msgstr "Ukládám..."
+msgstr "Mentés"
 
 #: content/gui/xml/mainmenu/settings.xml:128
-#, fuzzy
 msgid "Autosave interval in minutes:"
-msgstr "Automatické ukládání každých minut:"
+msgstr "Automatikus mentési intervallum (percben):"
 
 #: content/gui/xml/mainmenu/settings.xml:136
-#, fuzzy
 msgid "Number of autosaves:"
-msgstr "Počet automaticky uložených her:"
+msgstr "Automatikus mentések száma:"
 
 #: content/gui/xml/mainmenu/settings.xml:144
-#, fuzzy
 msgid "Number of quicksaves:"
-msgstr "Počet rychle uložených her:"
+msgstr "Gyors mentések száma:"
 
 #: content/gui/xml/mainmenu/settings.xml:152
-#, fuzzy
 msgid "Language"
-msgstr "Jazyk"
+msgstr "Nyelv"
 
 #: content/gui/xml/mainmenu/settings.xml:164
 msgid "General"
-msgstr ""
+msgstr "Általános"
 
 #: content/gui/xml/mainmenu/settings.xml:169
-#, fuzzy
 msgid "Rotate minimap with map:"
-msgstr "Otočit minimapu zároveň s mapou:"
+msgstr "Minitérkép forgatása a térképpel:"
 
 #: content/gui/xml/mainmenu/settings.xml:169
-#, fuzzy
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Otočit minimapu, pokud je otočena mapa"
+msgstr "Ha a normál térkép elforgatásra kerül, a minitérkép is követi azt"
 
 #: content/gui/xml/mainmenu/settings.xml:175
-#, fuzzy
 msgid "Uninterrupted building:"
-msgstr "Nepřerušené stavění:"
+msgstr "Zavartalan építés:"
 
 #: content/gui/xml/mainmenu/settings.xml:175
-#, fuzzy
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr "Pokud je povoleno, po úspěšném postavní se neukončí stavební režim"
+msgstr ""
+"Engedélyezés esetén egy sikeres építést követően nem lép ki a játék az "
+"építés módból"
 
 #: content/gui/xml/mainmenu/settings.xml:181
-#, fuzzy
 msgid "Auto-unload ship:"
-msgstr "Automaticky vyložit loď:"
+msgstr "Hajó automatikus kipakolása:"
 
 #: content/gui/xml/mainmenu/settings.xml:181
-#, fuzzy
 msgid "Whether to unload the ship after founding a settlement"
-msgstr "Vyložit loď po nalezení osady"
+msgstr "Település megalapítása után a hajó kipakolásra kerüljön-e"
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
@@ -1434,912 +1326,822 @@ msgstr ""
 "játékot."
 
 #: content/gui/xml/mainmenu/settings.xml:187
-#, fuzzy
 msgid "Enable logging:"
-msgstr "Naplózás bekapcsolása"
+msgstr "Naplózás bekapcsolása:"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Production indicators:"
-msgstr ""
+msgstr "Gyártás mutatók:"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"Bekapcsolás esetén mutatja a nyersanyag ikonokat az épület felett, "
+"függetlenül az előállítás állapotától"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "Magasabb érték lassabb görgetést eredményez."
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Scroll delay:"
-msgstr ""
+msgstr "Görgetés lassítása:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "Idézetek típusa:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Milyen típusú idézetek jelenjenek meg a játék betöltésekor"
 
 #: content/gui/xml/mainmenu/settings.xml:218
-#, fuzzy
 msgid "Network"
-msgstr "Síť"
+msgstr "Hálózat"
 
 #: content/gui/xml/mainmenu/settings.xml:222
-#, fuzzy
 msgid "If set to 0, use the router default"
-msgstr "Pokud je nastavena 0, použít výchozí nastavení routeru"
+msgstr "0 esetén az átjáró alapértelmezett beállításai élnek"
 
 #: content/gui/xml/mainmenu/settings.xml:222
-#, fuzzy
 msgid "Network port:"
-msgstr "Síťový port:"
+msgstr "Hálózati port:"
 
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Discard current changes"
-msgstr ""
+msgstr "Jelenlegi módosítások elvetése"
 
 #: content/gui/xml/mainmenu/settings.xml:244
-#, fuzzy
 msgid "Reset to default settings"
-msgstr "Obnovit původní nastavení"
+msgstr "Alapértelmezett beállítások alkalmazása"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 msgid "Save changes"
-msgstr "Uložit hru"
+msgstr "Módosítások alkalmazása"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
-#, fuzzy
 msgid "Your saved games:"
-msgstr "Vaše uložené hry:"
+msgstr "Mentett játékaid:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "A játékhoz tartozó jelszó. Szükséges a csatlakozáshoz"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
-#, fuzzy
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr "Mégsem"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
-#, fuzzy
 msgid "Enter filename:"
-msgstr "Zadejte název souboru:"
+msgstr "Fájlnév megadása:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
-#, fuzzy
 msgid "Details:"
-msgstr "Podbrobnosti:"
+msgstr "Részletek:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
-#, fuzzy
 msgid "Delete selected savegame"
-msgstr "Smazat vybranou hru"
+msgstr "Kiválasztott játék törlése"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
-#, fuzzy
 msgid "New game - Singleplayer"
-msgstr "Nová hra jednoho hráče"
+msgstr "Új játék - Egyjátékos mód"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
-#, fuzzy
 msgid "Scenario"
-msgstr "Scénář"
+msgstr "Történet"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
-#, fuzzy
 msgid "Random map"
-msgstr "Náhodná mapa"
+msgstr "Generált térkép"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
-#, fuzzy
 msgid "Free play"
-msgstr "Nekonečná hra"
+msgstr "Szabad játék"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
-#, fuzzy
 msgid "Start game"
-msgstr "Začít hru"
+msgstr "Játék indítása"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
-#, fuzzy
 msgid "Choose a map to play:"
-msgstr "Vyberte mapu k hře:"
+msgstr "Válassz térképet a játékhoz:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
-#, fuzzy
 msgid "Map settings:"
-msgstr "Nastavení mapy:"
+msgstr "Térkép beállításai:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
-#, fuzzy
 msgid "Seed:"
-msgstr "Osivo:"
+msgstr "Indulópont:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
-#, fuzzy
 msgid "Select a language:"
 msgstr "Nyelv kiválasztása:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
-#, fuzzy
 msgid "AI players:"
-msgstr "Hráči ovládaní počítačem:"
+msgstr "AI játékosok:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
-#, fuzzy
 msgid "Game settings:"
-msgstr "Nastavení hry:"
+msgstr "Játék beállításai:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
-#, fuzzy
 msgid "Free Trader"
-msgstr "Svobodný obchodník"
+msgstr "Szabad kereskedő"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
-#, fuzzy
 msgid "Pirates"
-msgstr "Piráti"
+msgstr "Kalózok"
 
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
-#, fuzzy
 msgid "Disasters"
-msgstr "Pohromy"
+msgstr "Katasztrófák"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
-#, fuzzy
 msgid "Player name:"
-msgstr "Jméno hráče:"
+msgstr "Játékos neve:"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
-#, fuzzy
 msgid "Color:"
-msgstr "Barva:"
+msgstr "Szín:"
 
 #: horizons/command/game.py:36
-#, fuzzy
 msgid "Invalid filename"
-msgstr "Chybné jméno souboru"
+msgstr "Érvénytelen fájlnév"
 
 #: horizons/command/game.py:37
-#, fuzzy
 msgid "Received an invalid filename for a save command."
-msgstr "Chybné jméno souboru pro uložení."
+msgstr "Érvénytelen fájlnév a mentés parancs végrehajtásakor."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
 #: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
-#, fuzzy
 msgid "Error"
-msgstr "Chyba"
+msgstr "Hiba"
 
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
-#, fuzzy
 msgid "Failed to save."
-msgstr "Uložení se nezdařilo."
+msgstr "A mentés sikertelen."
 
 #: horizons/component/tradepostcomponent.py:190
-#, fuzzy
 msgid "The trade partner does not sell this."
-msgstr "Obchodní partner toto zboží neprodává."
+msgstr "A kereskedő partner nem árulja ezt."
 
 #: horizons/component/tradepostcomponent.py:198
-#, fuzzy
 msgid "You can not store this."
-msgstr "Toto zboží není možné skladovat."
+msgstr "Nem tudod ezt elraktározni."
 
 #: horizons/component/tradepostcomponent.py:202
-#, fuzzy
 msgid "You can not afford to buy this."
-msgstr "Toto zboží není možné koupit."
+msgstr "Nem engedheted ezt meg magadnak."
 
 #: horizons/component/tradepostcomponent.py:208
-#, fuzzy
 msgid "The trade partner does not sell more of this."
-msgstr "Obchodní partner větší množství tohoto zboží neprodá."
+msgstr "A kereskedő partner nem tud több ilyet eladni."
 
 #: horizons/component/tradepostcomponent.py:232
-#, fuzzy
 msgid "The trade partner does not buy this."
-msgstr "Obchodní partner toto zboží nekupuje."
+msgstr "A kereskedő partner nem veszi ezt meg."
 
 #: horizons/component/tradepostcomponent.py:240
-#, fuzzy
 msgid "You do not possess this."
-msgstr "Toto zboží nemáte."
+msgstr "Nincs ilyen a birtokodban."
 
 #: horizons/component/tradepostcomponent.py:244
-#, fuzzy
 msgid "The trade partner can not store more of this."
-msgstr "Obchodní partner nemůže skladovat větší množství tohoto množství."
+msgstr "A kereskedő partner nem képes több ilyet tárolni."
 
 #: horizons/component/tradepostcomponent.py:248
-#, fuzzy
 msgid "The trade partner can not afford to buy this."
-msgstr "Obchodní partner nemůže toto zboží koupit."
+msgstr "A kereskedő partner nem engedheti ezt meg magának."
 
 #: horizons/component/tradepostcomponent.py:253
-#, fuzzy
 msgid "The trade partner does not buy more of this."
-msgstr "Obchodní partner nemůže koupit další kusy tohoto zboží."
+msgstr "A kereskedő partner nem tud több ilyet vásárolni."
 
 #: horizons/editor/session.py:69 horizons/spsession.py:64
-#, fuzzy
 msgid "Failed to quicksave."
-msgstr "Nepodařilo se uložit."
+msgstr "A gyors mentés sikertelen."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Hiba történt a gyors mentés során."
 
 # automatic save
 #: horizons/editor/session.py:70
-#, fuzzy
 msgid "Your map has not been saved."
-msgstr "Hra byla automaticky uložena."
+msgstr "A térkép nem került elmentésre."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:66
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"Ha a probléma még egyszer előfordulna, lépj kapcsolatba a fejlesztő "
+"csapattal: {website}"
 
 #: horizons/gui/gui.py:77
-#, fuzzy
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Opravdu chcete ukončit Unknown Horizons?"
+msgstr "Biztosan ki szeretnél lépni az Unknown Horizonsból?"
 
 #: horizons/gui/gui.py:78
-#, fuzzy
 msgid "Quit Game"
-msgstr "Ukončit hru"
+msgstr "Kilépés"
 
 #: horizons/gui/ingamegui.py:237
-#, fuzzy
 msgid "No diplomacy possible"
-msgstr "Diplomacie není použitelná"
+msgstr "Nincs lehetőség diplomáciára"
 
 #: horizons/gui/ingamegui.py:238
-#, fuzzy
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "Diplomacie není možná. Neexistují další hráči."
+msgstr "Nem tudsz diplomáciát alkalmazni, hiszen nincs más játékos."
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} csempék"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Nyomd le a kívánt gombot"
 
 #: horizons/gui/modules/hotkeys_settings.py:140
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} már használatban van: {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Szeretnéd felülírni?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
 #: horizons/gui/modules/select_savegame.py:155
-#, fuzzy
 msgid "Confirmation for overwriting"
-msgstr "Potvrďte přepsání"
+msgstr "Felülírás jóváhagyása"
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr ""
+msgstr "Idézetek"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "Játékmenet ötletek"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "Nyomd meg az 'ESC' billentyűt a játék menüjének eléréséhez."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "Használd a 'SHIFT' gombot több épület elhelyezéséhez."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Jelenleg csak az első {tier} szakasz játszható."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Szüneteltetheted a játékot a 'P' gomb lenyomásával."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "A bal egérgomb nyomva tartásával egész útszakaszt építhetsz."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "A 'SHIFT' gomb nyomva tartásával egyszerre több épületet is építhetsz."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "A telepeseid elégedettségét növelheted az adók csökkentésével."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Legyenek tűzoltók és orvosok készenlétben, ezekkel elkerülheted a tűzvészt "
+"és a járványokat."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Építs tároló sátrakat a tárolókapacitásod növeléséhez."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "Bizonyosodj meg arról, hogy minden ház közelében van egy piactér."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
-msgstr ""
+msgstr "Használd a 'T' gombot a fák átlátszóvá tételéhez."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Vegyes"
 
 #. translators: these are descriptions of the current task while loading a
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr ""
+msgstr "Játékmotor indítása…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr ""
+msgstr "Kifogjuk a halakat…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Felhasználói felület előkészítése…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr ""
+msgstr "Időzítő aktiválása…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Játékadatok átfésülése…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Szigetek megformálása…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Vázlatok előkészítése…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr ""
+msgstr "A világ elárasztása vízzel…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr ""
+msgstr "Állatok nevelése…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Meggyőző AI…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Kincsek elásása…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
-#, fuzzy
 msgid "Unable to find pyenet"
-msgstr "Nelze najít pyenet"
+msgstr "Nem található a pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"A többjátékos módhoz szükséges a \"pyenet\" könyvtár, amely nem található a "
+"rendszeredben."
 
 #: horizons/gui/modules/multiplayermenu.py:121
-#, fuzzy
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr "Uživatelé linuxu: Zkus instalovat pyenet přes správce balíčků."
+msgstr "Linux felhasználók: telepítsétek a pyenet-et a csomagkezelőn keresztül."
 
 #: horizons/gui/modules/multiplayermenu.py:130
-#, fuzzy
 msgid "Failed to initialize networking."
-msgstr "Nezdařilo se inicializovat síť."
+msgstr "Nem sikerült a hálózat előkészítése."
 
 #: horizons/gui/modules/multiplayermenu.py:131
 #: horizons/gui/modules/settings.py:273
-#, fuzzy
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr "Síť nemůže být inicializována s aktuálním nastavením."
+msgstr "A jelenlegi konfiguráció mellett a hálózati lehetőségek nem érhetők el."
 
 #: horizons/gui/modules/multiplayermenu.py:132
 #: horizons/gui/modules/settings.py:274
-#, fuzzy
 msgid "Check the settings you specified in the network section."
-msgstr "Zkontrolujte nastavení sítě."
+msgstr "Ellenőrizd az általad megadott beállításokat a hálózat szekcióban."
 
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
-#, fuzzy
 msgid "Fatal Network Error"
-msgstr "Fatální chyba sítě"
+msgstr "Végzetes hálózati hiba"
 
 #: horizons/gui/modules/multiplayermenu.py:142
-#, fuzzy
 msgid "Could not connect to master server."
-msgstr "Spojení s hlavním serverem se nezdařilo."
+msgstr "A játék nem tud csatlakozni a mester szerverhez."
 
 #: horizons/gui/modules/multiplayermenu.py:143
-#, fuzzy
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Prosím, zkontrolujte Vaše připojení k internetu. Pokud je v pořádku, je "
-"možné, že hlavní server je dočasně mimo provoz."
+"Ellenőrizd az internetkapcsolatodat. Ha az rendben működik, akkor a mester "
+"szerverünk jelenleg nem elérhető."
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
-#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr "Něco se pokazilo se sítí:"
+msgstr "Hiba történt a hálózattal kapcsolatban:"
 
 #: horizons/gui/modules/multiplayermenu.py:176
-#, fuzzy
 msgid "Version differs!"
-msgstr "Verze se liší!"
+msgstr "Eltérő verzió!"
 
 #: horizons/gui/modules/multiplayermenu.py:205
 #: horizons/gui/modules/multiplayermenu.py:457
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Map: {map_name}"
-msgstr "Mapa: {map_name}"
+msgstr "Térkép: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:206
 #: horizons/gui/modules/multiplayermenu.py:458
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Name: {game_name}"
-msgstr "Jméno hry: {game_name}"
+msgstr "Név: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:207
 #: horizons/gui/modules/multiplayermenu.py:459
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr ""
+msgstr "Létrehozó: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 #: horizons/gui/modules/multiplayermenu.py:460
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr "Hráči: {player_amount}/{player_limit}"
+msgstr "Játékosok: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:228
-#, fuzzy
 msgid "Wrong version"
-msgstr "Špatná verze"
+msgstr "Téves verzió"
 
 #: horizons/gui/modules/multiplayermenu.py:229
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
 "game must use the same version. This can be fixed by every player updating "
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"Rozdílné verze hry! Hráči musí používat stejnou verzi hry, prosím "
-"aktualizujte na nejnovější verzi. Verze hry: {game_version} Vaše verze: "
-"{own_version}"
+"A játék verziója eltér a Tiédtől. A többjátékos módban mindenkinek "
+"ugyanazzal a verzióval kell rendelkeznie. Ez a probléma könnyen orvosolható "
+"a legújabb verzió telepítésével. A játék verziója: {game_version}. A Te "
+"verziód: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
-msgstr ""
+msgstr "A játékhoz tartozó jelszó"
 
 #: horizons/gui/modules/multiplayermenu.py:268
 msgid "Enter password:"
-msgstr ""
+msgstr "Add meg a jelszót:"
 
 #: horizons/gui/modules/multiplayermenu.py:347
 #: horizons/gui/modules/singleplayermenu.py:407
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr "Doporučený počet hráčů: {number}"
+msgstr "Ajánlott játékosok száma: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:393
 #: horizons/network/networkinterface.py:526
 msgid "Ready"
-msgstr ""
+msgstr "Kész"
 
 #: horizons/gui/modules/multiplayermenu.py:395
 msgid "Not ready"
-msgstr ""
+msgstr "Nincs kész"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 msgid "Enter your message"
-msgstr "Vaše zpráva:"
+msgstr "Ide írd az üzeneted"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
 msgid "Click here to change your name and/or color"
-msgstr ""
+msgstr "Kattints ide a neved és/vagy színed megváltoztatásához"
 
 #: horizons/gui/modules/multiplayermenu.py:504
 #, python-brace-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "{player} kirúgása"
 
 #: horizons/gui/modules/multiplayermenu.py:571
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{player} csatlakozott a játékhoz"
 
 #: horizons/gui/modules/multiplayermenu.py:574
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{player} kilépett a játékból"
 
 #: horizons/gui/modules/multiplayermenu.py:580
 msgid "You are now ready"
-msgstr ""
+msgstr "Készen állsz"
 
 #: horizons/gui/modules/multiplayermenu.py:582
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "Még nem állsz készen"
 
 #: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} készen áll"
 
 #: horizons/gui/modules/multiplayermenu.py:587
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} nem áll készen"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr ""
+msgstr "Mostantól {new_name} az új neved"
 
 #: horizons/gui/modules/multiplayermenu.py:593
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "{player} neve mostantól {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:597
 msgid "You changed your color"
-msgstr ""
+msgstr "Megváltoztattad a színed"
 
 #: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player} megváltoztatta a színét"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
-msgstr ""
+msgstr "Kirúgva"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "A játék összehívója kirúgott Téged"
 
 #: horizons/gui/modules/multiplayermenu.py:606
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player} kirúgva a játszma készítője által"
 
 #: horizons/gui/modules/pausemenu.py:82
-#, fuzzy
 msgid "Are you sure you want to abort the running session?"
-msgstr "Jste si jisti, že chcete přerušit aktuální hru?"
+msgstr "Biztosan meg szeretnéd szakítani a futó játszmát?"
 
 #: horizons/gui/modules/pausemenu.py:83
-#, fuzzy
 msgid "Quit Session"
-msgstr "Ukončit relaci"
+msgstr "Kilépés"
 
 #: horizons/gui/modules/select_savegame.py:75
-#, fuzzy
 msgid "No saved games"
-msgstr "Žádné uložené hry"
+msgstr "Nincs mentett játék"
 
 #: horizons/gui/modules/select_savegame.py:75
-#, fuzzy
 msgid "There are no saved games to load."
-msgstr "Nejsou žádné uložené hry k nahrání."
+msgstr "Nem található mentett játék a betöltéshez."
 
 #: horizons/gui/modules/select_savegame.py:144
-#, fuzzy
 msgid "No filename given"
-msgstr "Nebyl zadán název souboru"
+msgstr "Nincs megadva fájlnév"
 
 #: horizons/gui/modules/select_savegame.py:145
-#, fuzzy
 msgid "Please enter a valid filename."
-msgstr "Zadejte prosím platný název souboru."
+msgstr "Adj meg helyes fájlnevet."
 
 #: horizons/gui/modules/select_savegame.py:149
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Uložená hra názvem '{name}' již existuje."
+msgstr "Egy korábbi mentett játék már létezik {name} névvel."
 
 #: horizons/gui/modules/select_savegame.py:151
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "Uložená hra názvem '{name}' již existuje."
+msgstr "Már van {name} névvel ellátott térkép."
 
 #: horizons/gui/modules/select_savegame.py:153
-#, fuzzy
 msgid "Overwrite it?"
-msgstr "Přepsat?"
+msgstr "Felülírod?"
 
 #: horizons/gui/modules/select_savegame.py:217
-#, fuzzy
 msgid "Unknown savedate"
-msgstr "Neznámé datum uložení"
+msgstr "Ismeretlen mentési dátum"
 
 #: horizons/gui/modules/select_savegame.py:220
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Saved at {time}"
-msgstr "Uloženo {time}"
+msgstr "Mentve ekkor: {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:224
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Uloženo {amount}-krát"
-msgstr[1] "Uloženo {amount}-krát"
-msgstr[2] "Uloženo {amount}-krát"
+msgstr[0] "Mentve {amount} alkalommal"
+msgstr[1] "Mentve {amount} alkalommal"
 
 #: horizons/gui/modules/select_savegame.py:231
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Savegame version {version}"
-msgstr "Uložená verze hry {version}"
+msgstr "Mentett játék verziója {version}"
 
 #: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "(valószínűleg nem kompatibilis)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
 #: horizons/gui/modules/select_savegame.py:239
-#, fuzzy
 msgid "Incompatible version"
-msgstr "Nekompatibilní verze"
+msgstr "Nem kompatibilis verzió"
 
 #: horizons/gui/modules/select_savegame.py:252
-#, fuzzy
 msgid "No file selected"
-msgstr "Nebyl vybrán žádný soubor"
+msgstr "Nincs fájl kiválasztva"
 
 #: horizons/gui/modules/select_savegame.py:252
-#, fuzzy
 msgid "You need to select a savegame to delete."
-msgstr "Vyberte hru ke smazání."
+msgstr "A törléshez ki kell választanod egy mentett játékot."
 
 #: horizons/gui/modules/select_savegame.py:255
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Opravdu chcete smazat hru '{name}'?"
+msgstr "Valóban törölni szeretnéd a következőt: {name}?"
 
 #: horizons/gui/modules/select_savegame.py:257
-#, fuzzy
 msgid "Confirm deletion"
-msgstr "Potvrďte smazání"
+msgstr "Törlés jóváhagyása"
 
 #: horizons/gui/modules/select_savegame.py:262
-#, fuzzy
 msgid "Error!"
-msgstr "Chyba!"
+msgstr "Hiba!"
 
 #: horizons/gui/modules/select_savegame.py:262
-#, fuzzy
 msgid "Failed to delete savefile!"
-msgstr "Chyba při smazání uloženého souboru!"
+msgstr "A mentés törlése sikertelen!"
 
 #: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
 msgid "Hotkeys"
-msgstr ""
+msgstr "Irányítás"
 
 #: horizons/gui/modules/settings.py:55
-#, fuzzy
 msgid "Game"
-msgstr "Ukončit hru"
+msgstr "Játék"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Letiltva"
 
 #: horizons/gui/modules/settings.py:126
-#, fuzzy
 msgid "Restart required"
-msgstr "Vyžadován restart"
+msgstr "Újraindítás szükséges"
 
 #: horizons/gui/modules/settings.py:127
-#, fuzzy
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Některé změny vyžadují restartování hry."
+msgstr "Néhány módosítás érvénybe lépéséhez indítsd újra az Unknown Horizonst."
 
 #: horizons/gui/modules/settings.py:131
-#, fuzzy
 msgid "Restore default settings"
-msgstr "Obnovit původní nastavení"
+msgstr "Alapértelmezett beállítások visszaállítása"
 
 #: horizons/gui/modules/settings.py:132
-#, fuzzy
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
-msgstr "Obnovení původního nastavení zruší veškerá Vaše nastavení."
+msgstr ""
+"Az alapértelmezett beállítások visszaállítása törli az eddigi beállításaidat."
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
 msgid "Do you want to continue?"
-msgstr "Chcete pokračovat?"
+msgstr "Szeretnéd folytatni?"
 
 #: horizons/gui/modules/settings.py:230
-#, fuzzy
 msgid "Warning"
-msgstr "Varování"
+msgstr "Figyelmeztetés"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/gui/modules/settings.py:232
-#, fuzzy
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious "
 "graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
-"V SDL vykreslování jsou vážné chyby a je určeno pouze jako náhradní "
-"řešení. \n"
+"Az SDL leképező tartalék megoldásnak számít és komoly grafikai problmákat "
+"okozhat!\n"
 "\n"
-"Použití na vlastní nebezpečí!"
+"Csak saját felelősségre!"
 
 #: horizons/gui/modules/settings.py:259
-#, fuzzy
 msgid "Invalid network port"
-msgstr "Špatný síťový port"
+msgstr "Nem megfelelő hálózati port"
 
 #: horizons/gui/modules/settings.py:260
-#, fuzzy
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr "Vybraný port není platný. Musí být mezi číslem 1 a 65535."
+msgstr "Az általad megadott port nem helyes. 1 és 65535 közötti számot adj meg."
 
 #: horizons/gui/modules/settings.py:261
-#, fuzzy
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
-"Zkontrolujte prosím port, který jste zadali, a ujistěte se, že je v určeném "
-"rozsahu."
+"Ellenőrizd az általad megadott port számot, hogy a megadott intervallumba "
+"esik-e."
 
 #: horizons/gui/modules/settings.py:272
-#, fuzzy
 msgid "Failed to apply new network settings."
-msgstr "Nepodařilo se načíst nové síťové nastavení."
+msgstr "Nem sikerült az új hálózati beállításokat alkalmazni."
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
 #: horizons/gui/modules/settings.py:278
-#, fuzzy
 msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
 msgstr ""
-"Nízká čísla portů někdy vyžadují zvláštní přístup oprávnění, zkuste 0 nebo "
-"číslo větší než 1024."
+"Az alacsonyabb port számokhoz olykor különleges hozzáférés szükséges, "
+"próbáld a 0-át, vagy 1024-nél nagyobb számot."
 
 #: horizons/gui/modules/singleplayermenu.py:106
-#, fuzzy
 msgid "Invalid player name"
-msgstr "Neplatné jméno hráče"
+msgstr "Helytelen játékos név"
 
 #: horizons/gui/modules/singleplayermenu.py:106
-#, fuzzy
 msgid "You entered an invalid playername."
-msgstr "Zadal jste neplatné jméno hráče."
+msgstr "Helytelen nevet próbáltál adni magadnak."
 
 #: horizons/gui/modules/singleplayermenu.py:149
-#, fuzzy
 msgid "Resource density:"
-msgstr "Hustota zdrojů:"
+msgstr "Nyersanyag sűrűsége:"
 
 #: horizons/gui/modules/singleplayermenu.py:227
-#, fuzzy
 msgid "Map size:"
-msgstr "Velikost mapy:"
+msgstr "Térkép mérete:"
 
 #: horizons/gui/modules/singleplayermenu.py:228
-#, fuzzy
 msgid "Water:"
-msgstr "Voda:"
+msgstr "Víz:"
 
 #: horizons/gui/modules/singleplayermenu.py:229
-#, fuzzy
 msgid "Max island size:"
-msgstr "Maximální velikost ostrova:"
+msgstr "Maximális sziget méret:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
-#, fuzzy
 msgid "Preferred island size:"
-msgstr "Doporučená velikost ostrova:"
+msgstr "Előnyös sziget méret:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
-#, fuzzy
 msgid "Island size deviation:"
-msgstr "Odchylka velikosti ostrovu:"
+msgstr "Sziget méret eltérés:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
-#, fuzzy
 msgid "Click to generate a different random map"
-msgstr "Klikněte pro vytvoření jiné náhodné mapy"
+msgstr "Kattints egy új generált térkép elkészítéséhez"
 
 # szkenárió?? - gondolom egy játék menetet tartalmazó beállítást tároló fájl... na ezt fordítsd le:P
 #: horizons/gui/modules/singleplayermenu.py:505
-#, fuzzy
 msgid "Invalid scenario file"
-msgstr "Neplatný scénář"
+msgstr "Érvénytelen történet fájl"
 
 # szcenárió can be "forgatókönyv" - not the best word for it
 #: horizons/gui/modules/singleplayermenu.py:506
-#, fuzzy
 msgid "The selected file is not a valid scenario file."
-msgstr "Zvolený soubor není platný souborem scénáře."
+msgstr "A kiválasztott fájl nem érvényes történet fájl."
 
 #: horizons/gui/modules/singleplayermenu.py:507
-#, fuzzy
 msgid "Error message:"
-msgstr "Chybová zpráva:"
+msgstr "Hibaüzenet:"
 
 #: horizons/gui/modules/singleplayermenu.py:508
-#, fuzzy
 msgid "Please report this to the author."
-msgstr "Prosím, oznamte tuto věc autorovi."
+msgstr "Kérjük, jelentsd a készítőnek."
 
 #: horizons/gui/modules/singleplayermenu.py:570
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Difficulty: {difficulty}"
-msgstr "Obtížnost: {difficulty}"
+msgstr "Nehézség: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:573
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Author: {author}"
-msgstr "Autor: {author}"
+msgstr "Készítő: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:576
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Description: {desc}"
-msgstr "Popis: {desc}"
+msgstr "Leírás: {desc}"
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:230
@@ -2348,78 +2150,67 @@ msgid "Build {building}"
 msgstr "Épít {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
-#, fuzzy
 msgid "Press H to remove this hint"
-msgstr "Stiskněte klávesu H k odstranění tohoto tipu"
+msgstr "Nyomd meg a 'H' gombot az ötletek elrejtéséhez"
 
 #: horizons/gui/tabs/boatbuildertabs.py:47
-#, fuzzy
 msgid "Boat builder overview"
-msgstr "Přehled stavitele lodí"
+msgstr "Hajóépítő áttekintés"
 
 #: horizons/gui/tabs/boatbuildertabs.py:94
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr "{ship} (umístit do fronty: {place})"
+msgstr "{ship} (hányadik a sorban: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:198
-#, fuzzy
 msgid "Build this ship!"
-msgstr "Postavit loď!"
+msgstr "Építsd meg ezt a hajót!"
 
 #: horizons/gui/tabs/boatbuildertabs.py:234
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Rybářské lodě"
+msgstr "Halászhajók"
 
 #: horizons/gui/tabs/boatbuildertabs.py:246
-#, fuzzy
 msgid "Trade boats"
-msgstr "Obchodní lodě"
+msgstr "Kereskedő hajók"
 
 #: horizons/gui/tabs/boatbuildertabs.py:258
-#, fuzzy
 msgid "War boats"
-msgstr "Válečné čluny"
+msgstr "Csatahajók"
 
 #: horizons/gui/tabs/boatbuildertabs.py:270
-#, fuzzy
 msgid "War ships"
-msgstr "Válečné lodě"
+msgstr "Hadihajók"
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
-#, fuzzy
 msgid "Confirm order"
-msgstr "Potvrdit"
+msgstr "Rendelés jóváhagyása"
 
 #: horizons/gui/tabs/buildingtabs.py:33
-#, fuzzy
 msgid "Tower overview"
-msgstr "Přehled obranné věže"
+msgstr "Torony áttekintés"
 
 #: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
-#, fuzzy
 msgid "Overview"
-msgstr "Přehled"
+msgstr "Áttekintés"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr "Építs összefüggő épületeket"
+msgstr "Kapcsolódó épületek építése"
 
 #: horizons/gui/tabs/buyselltab.py:134
-#, fuzzy
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr "Obchodní nabídku přidejte kliknutím na využitý oddíl skladu."
+msgstr ""
+"Kattints az egyik nyersanyag rekeszre egy kereskedelmi ajánlat hozzáadásához."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
-#, fuzzy
 msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
-"Zadejte nákup či prodej kliknutím šipku - a potom posuvníkem nastavte cílové "
-"množství ve skladu."
+"Állítsd be a címkére kattintva, hogy eladás vagy vásárlás, majd add meg a "
+"mennyiséget a csúszka segítségével."
 
 # Na most pl búzával így néz ki:
 # "Vásárolni fog búza 20 aranyért tonnánként, hogyha kevesebb van, mint 30t a raktárban."
@@ -2443,9 +2234,8 @@ msgstr ""
 "raktárban, mint {limit} tonna."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Přehled skladiště"
+msgstr "Raktár áttekintés"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
 #, fuzzy
@@ -4329,14 +4119,12 @@ msgid "get-together"
 msgstr "setkání"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "A new world has been created."
-msgstr "Byl vytvořen nový svět."
+msgstr "Egy új világ létrehozva."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr "Hra byla rychle uložena."
+msgstr "A játékról gyorsmentés készült."
 
 #. This is a database entry: the name of a resource
 #, fuzzy
@@ -4358,9 +4146,8 @@ msgid "pigs"
 msgstr "prasata"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Sklad není možné zbourat. Vaši osádníci jej potřebují."
+msgstr "Nem bonthatod le a raktárat, a településednek szüksége van rá."
 
 #. This is a database entry: the name of a resource
 #, fuzzy
