@@ -137,6 +137,7 @@ afterwards run ./development/generate_credits.py to refresh this file.
 				<Label text="Zappaman (Several improvements)" />
 				<Label text="pinkfloyda (Tooltip refactoring)" />
 				<Label text="myrdd (BuySellTab fix)" />
+				<Label text="dulrich (Correct status-icon loading)" />
 			</VBox>
 		</VBox>
 	</VBox>

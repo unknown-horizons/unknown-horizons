@@ -27,7 +27,7 @@ import horizons.globals
 from horizons import network
 from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging.messagebus import SimpleMessageBus
+from horizons.messaging.simplemessagebus import SimpleMessageBus
 from horizons.network import CommandError, NetworkException, FatalError, packets
 from horizons.network.common import Game
 from horizons.network.connection import Connection

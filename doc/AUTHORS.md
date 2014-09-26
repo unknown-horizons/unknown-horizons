@@ -98,6 +98,7 @@
 * Zappaman (Several improvements)
 * pinkfloyda (Tooltip refactoring)
 * myrdd (BuySellTab fix)
+* dulrich (Correct status-icon loading)
 
 
 ## Translators
