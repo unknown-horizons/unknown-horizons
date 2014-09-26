@@ -245,9 +245,9 @@ class MPPacketmanager(object):
 
 	def get_packets_for_tick(self, tick, remove_returned_commands=True):
 		"""Returns packets that are to be executed at a certain tick"""
-		command_packets = filter(lambda x: x.tick==tick, self.command_packet_list)
+		command_packets = filter(lambda x: x.tick == tick, self.command_packet_list)
 		if remove_returned_commands:
-			self.command_packet_list = filter(lambda x: x.tick!=tick, self.command_packet_list)
+			self.command_packet_list = filter(lambda x: x.tick != tick, self.command_packet_list)
 		return command_packets
 
 	def get_packets_from_player(self, player_id):
@@ -255,14 +255,16 @@ class MPPacketmanager(object):
 		Returns all command this player has issued, that are not yet executed
 		@param player_id: worldid of player
 		"""
-		return filter(lambda x: x.player_id==player_id, self.command_packet_list)
+		return filter(lambda x: x.player_id == player_id, self.command_packet_list)
 
 	def add_packet(self, command_packet):
 		"""Receive a packet"""
 		self.command_packet_list.append(command_packet)
 
+
 class MPCommandsManager(MPPacketmanager):
 	pass
+
 
 class MPCheckupHashManager(MPPacketmanager):
 	def is_tick_ready(self, tick):
@@ -283,15 +285,16 @@ class MPCheckupHashManager(MPPacketmanager):
 			if pkges[0].checkup_hash != pkg.checkup_hash:
 				if cb_diff is not None:
 					localplayerid = self.mpmanager.session.world.player.worldid
-					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id),
+					cb_diff("local" if pkges[0].player_id == localplayerid else "pl#%02d" % (pkges[0].player_id),
 						pkges[0].checkup_hash,
-						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id),
+						"local" if pkg.player_id == localplayerid else "pl#%02d" % (pkg.player_id),
 						pkg.checkup_hash)
 				return False
 		return True
 
 # Packages transmitted over the network
 #######################################
+
 
 class MPPacket(object):
 	"""Packet to be sent from every player to every player"""
@@ -312,7 +315,9 @@ class MPPacket(object):
 		packets.SafeUnpickler.add('server', klass)
 
 	def __str__(self):
-		return "packet " + str(self.__class__)  + " from player " + str(WorldObject.get_object_by_id(self.player_id)) + " for tick " + str(self.tick)
+		return "packet {} from player {} for tick {}".format(self.__class__,
+            WorldObject.get_object_by_id(self.player_id), self.tick)
+
 
 class CommandPacket(MPPacket):
 	"""Packet to be sent from every player to every player every tick.
@@ -323,6 +328,7 @@ class CommandPacket(MPPacket):
 		self.commandlist = commandlist
 
 MPPacket.allow_network(CommandPacket)
+
 
 class CheckupHashPacket(MPPacket):
 	def __init__(self, tick, player_id, checkup_hash):
