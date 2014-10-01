@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-09-01 08:25+0200\n"
+"PO-Revision-Date: 2014-10-01 22:40+0200\n"
 "Last-Translator: josep constanti <jconstanti@ovi.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
@@ -871,7 +871,7 @@ msgstr "Accions"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
-msgstr "Desplaça a la dreta"
+msgstr "Desplaça a la esquerra"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
 msgid "Scroll right"
