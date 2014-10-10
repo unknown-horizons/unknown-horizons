@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-10-16 05:47+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: Galician <http://hosted.weblate.org/projects/uh/uh/gl/>\n"
+"PO-Revision-Date: 2014-10-10 23:58+0200\n"
+"Last-Translator: Xosé Calvo <xosecalvo@gmail.com>\n"
+"Language-Team: Galician <https://hosted.weblate.org/projects/uh/uh/gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.7\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -118,7 +118,7 @@ msgstr "Comezo da partida"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Debes fundar un asentamento para poder construír edificios."
+msgstr "Debes fundar un asentamento para poderes construír edificios!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
@@ -1168,7 +1168,7 @@ msgstr "Crear unha partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Create a new game"
-msgstr "Crear unha nova partida"
+msgstr "Crear unha partida nova"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
 #| msgid "Join game"
