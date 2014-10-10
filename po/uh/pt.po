@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-10-10 13:06+0200\n"
-"Last-Translator: Joel Santinho <joelsantinho@gmail.com>\n"
+"PO-Revision-Date: 2014-10-10 16:32+0200\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -144,13 +144,13 @@ msgstr "Habitantes"
 #, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Aumentar a velocidade de jogo (+)"
+msgstr "Aumentar a velocidade de jogo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Diminuir a velocidade de jogo(-)"
+msgstr "Diminuir a velocidade de jogo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, fuzzy, python-brace-format
