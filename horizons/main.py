@@ -134,7 +134,29 @@ def start(_command_line_arguments):
 	atlas_loading_thread = None
 	atlas_loading_thread = AtlasLoadingThread(preload_lock, command_line_arguments)
 	atlas_loading_thread.start()
-	atlas_loading_thread.join()
+
+	# show info label about atlas generation
+	try:
+		import Tkinter
+		import time
+		window = Tkinter.Tk()
+		window.wm_withdraw()
+		window.attributes("-topmost", 1)
+		window.title("Unknown Horizons")
+		window.maxsize(200, 75)
+		label = Tkinter.Label(window, text = "Generating atlases!")
+		label.pack()
+		# wait a second to give the thread time to check if a generation is necessary at all
+		time.sleep(1.0)
+		while atlas_loading_thread.is_alive():
+			window.update()
+			window.deiconify()
+			time.sleep(0.1)
+		label.destroy()
+		window.destroy()
+	except ImportError:
+		# tkinter may be missing
+		atlas_loading_thread.join()
 
 	# init game parts
 
