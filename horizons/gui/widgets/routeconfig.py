@@ -36,6 +36,7 @@ from horizons.command.unit import GenericUnitCommand
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
+from horizons.scheduler import Scheduler
 
 from horizons.gui.widgets.imagebutton import OkButton
 
@@ -62,7 +63,7 @@ class RouteConfig(Window):
 		if not hasattr(instance, 'route'):
 			GenericUnitCommand(instance,  "create_route").execute(self.session)
 
-		self._init_gui()
+		Scheduler().add_new_object(self._init_gui, self)
 
 	@property
 	def session(self):
