@@ -63,7 +63,7 @@ class RouteConfig(Window):
 		if not hasattr(instance, 'route'):
 			GenericUnitCommand(instance,  "create_route").execute(self.session)
 
-		Scheduler().add_new_object(self._init_gui, self)
+		Scheduler().add_new_object(self._init_gui, self, run_in=2)
 
 	@property
 	def session(self):
