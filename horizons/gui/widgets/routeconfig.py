@@ -64,7 +64,8 @@ class RouteConfig(Window):
 		if not hasattr(instance, 'route'):
 			CreateRoute(instance).execute(self.session)
 
-		Scheduler().add_new_object(self._init_gui, self, run_in=1+MPManager.EXECUTIONDELAY)
+		# We must make sure that the createRoute command has successfully finished, even in network games.
+		Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY+2)
 
 	@property
 	def session(self):
