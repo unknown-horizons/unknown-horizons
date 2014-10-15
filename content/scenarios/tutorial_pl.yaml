@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Wybuduj port na wybrzeżu, tak aby był dostępny dla innych statków. Na przykład statków niezależnych kupców.']
+  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
   - '
 
 
@@ -24,63 +24,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Oto dziennik pokładowy,w którym zapisywane są wszystkie ważne informacje. Krótki opis nowego zadania będzie pojawiać się po lewej stronie ekranu.
-  - Jeżeli interesuje cię dłuższy opis zadania, znajdziesz go w swoim dzienniku.
-  - Po zamknięciu dziennik może zostać ponownie otwarty poprzez kliknięcie w ikonę "Dziennik kapitański" w prawym górnym rogu (ikona z zapieczętowanym dokumentem i piórem poniżej mini mapy).
+  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Jeżeli chcesz zobaczyć pierwsze zadanie, kliknij przycisk "Przeczytaj kolejny wpis" znajdujący się w pasku nawigacji! Wygląda on tak:'
+    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Jeżeli masz jakieś sugestie na temat redakcji tekstu, tematów, które powinny być wyjaśnione badź znalezionych błędów: powiedz nam, a my postaramy się ulepszyć ten samouczek!'
+    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
   - '
 
-    Pomoc oraz informacje jak skontaktować się z zespołem znajdziesz na www.unknown-horizons.org!'
-  - A teraz rozpocznijmy zabawę.
+    Visit www.unknown-horizons.org to find out how to contact the team.'
+  - ''
+  - And now, let's start the game!
   - [Pagebreak]
-  - [Headline, 'NOWE ZADANIE: Osiedl się na wyspie']
+  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
   - [Image, content/gui/images/background/hr.png]
-  - Aby poruszyć statkiem, wybierz go klikając na nim lewym przyciskiem myszki a następnie kliknij prawym przyciskiem w miejscu do którego ma się udać.
-  - Jak tylko zbliżysz się do wybrzeża, przycisk 'Buduj port' zostanie odblokowany.
+  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
+  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Klikając w ten przycisk (nazwanego "Buduj osadę") możesz zbudować port.
-  - Po kliknięciu na ekranie pojawi się podgląd budynku, którym będziesz mógł przesuwać po mapie.
-  - 'Możesz wybrać dowolne miejsce, na którym podgląd budynku nie jest podświetlony na czerwono.
-
-    Kliknij w miejscu, gdzie chcesz wybudować pierwszy budynek.'
+  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
+  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
 - &LUMBERJACK
-  - [Message, Wybuduj chatę drwala i poprowadź drogę od chaty do portu.]
-  - [Headline, 'NOWE ZADANIE: Wybuduj chatę drwala']
+  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
+  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
   - [Image, content/gui/images/background/hr.png]
-  - Materiały budowlane, które znajdowały się na pokładzie statku, zostały automatycznie rozładowane. Możesz teraz wybudować podstawowe budynki.
-  - Zaczniemy od wybudowania chaty drwala.
-  - Na tym etapie jest to niezbędne, ponieważ drewniane maszty są jedynym materiałem utrzymującym namioty, na który żeglarze mogą sobie pozwolić.
-  - Rybacy także potrzebują desek, chociażby po to, aby zbudować statki.
-  - Aby zbudować chatę drwala, otwórz menu budowy klikając wielką ikonę poniżej mini mapy lub naciskając klawisz 'B'.
+  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
+  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Menu budowy jest posortowane według rozwoju.
-  - Jesteś na pierwszym etapie (poziom Żeglarzy), dlatego masz dostęp tylko do podstawowych budynków.
+  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
-  - '
-
-    Wraz z rozwojem cywilizacji, zdobędziesz dostęp do bardziej zaawansowanych budowli.'
-  - Na razie zaznacz chatę drwala z kategori 'Przemysł i rolnictwo' i wybuduj ją w zalesionym rejonie.
-  - Możesz także sadzić drzewa - jednak to kosztuje. Na razie skorzystaj z tego, co oferuje natura!
-  - Aby wykorzystać wszystkie dobra, które zostały zebrane bądź wyprodukowane w danym miejscu musisz połączyć je drogą z reszta infrastruktury w twojej osadzie. Inaczej nie zostaną zabrane z miejsca produkcji.
-  - Oznacza to, że musisz postawić drogę pomiędzy portem (lub magazynem) a chatą drwala.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Obserwuj jak tragarz odbiera od drwala pierwsze wyprodukowane deski. Nie martw się rekrutacją pracowników do chaty drwala. Przebiega ona automatycznie.
+  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - ''
+  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -131,7 +124,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jeżeli Twoje saldo jest dodatnie, odnosisz zyski.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - W różnych zakładkach rozwoju osadników możesz zobaczyć statystyki o twoich mieszkańcach. Możesz też ustalić podatki - osobno dla każdego stadium rozwoju - a także pozwolić lub zabronić swym podwładnym na przejście na wyższy poziom rozwoju.
 
 - &FIRSTTENT
   - [Message, Build a tent and connect it to the main square if necessary.]
@@ -145,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Uniemożliwienie modernizacji jest zazwyczaj dobrym pomysłem w sytuacji gdy nie posiadasz zbyt wielu materiałów.
   - Ponieważ osadnicy konsumują wszystkie dobra, które produkujesz, mogą nie wydawać się zbyt przydatni - pamiętaj, że płacone przez nich podatnki to obecnie jedyny sposób zdobywania pieniędzy!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Postaw conajmniej trzy dodatkowe namioty i połącz je drogą z rynkiem głównyn.]
@@ -299,7 +292,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Potrzebne są pola, by farma mogła cokolwiek wyprodukować.
   - Obecnie możesz wybrać pomiędzy pastwiskiem, polem ziemniaków lub polem cukrowym.
-  - 'Przyjrzyjmy się:
+  - 'Zróbmy krótki przegląd:
 
     * Pastwisko: Żyją tu owce, produkując wełnę.
 
@@ -344,7 +337,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * oferuje większą ilość miejsca na surowce,
 
     * wysyła własnego pracownika do zbierania dóbr.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
+  - Zauważ iż firmy mogą zostać połączone z magazynem aby składować tam zbierane produkty, jeżeli magazyn jest przeciążony przez zlecenia, możesz postawić magazyn w namiocie aby mu pomóc.
   - ''
   - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
@@ -369,7 +362,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Spróbuj mieć 50 lub więcej mieszkańców w twoim mieście budując domy mieszkalne.
   - Gdy jesteś w stanie utrzymać gospodarkę, by mogła zaspokoić potrzeby takiej ilości konsumentów, jesteś gotowy, aby odkrywać nowe nieznane noryzonty!
-  - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
+  - Potrzebujesz również wystarczającą ilość pieniędzy aby gospodarka mogła funkcjonować, więc jest konieczne dodatnie saldo (zobacz zakładkę "Konto" w magazynie).
   - ''
   - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
@@ -662,4 +655,4 @@ metadata:
   locale: pl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages, 1 fuzzy translation, 4 untranslated messages.
+  translation_status: 190 translated messages, 1 untranslated message.
