@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-30 18:57+0200\n"
-"Last-Translator: lemoid <k.starzyk02@gmail.com>\n"
+"PO-Revision-Date: 2014-10-15 22:57+0200\n"
+"Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -118,7 +118,8 @@ msgstr "Musisz stworzyć osadę, zanim będzie można zbudować budynki!"
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Wybierz swój statek i naciśnij prawy przycisk myszy by dopłynąć do brzegu."
+"Wybierz swój statek i zbliż się do wybrzeża poprzez kliknięcie prawym "
+"przyciskiem myszy."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -130,7 +131,7 @@ msgstr "Zbuduj"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "Koszty bieżące:"
+msgstr "Koszty eksploatacji:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -163,11 +164,11 @@ msgstr "Obróć mapę w prawo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
-msgstr "Przybliż"
+msgstr "Przybliż widok"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
-msgstr "Oddal"
+msgstr "Oddal widok"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, python-brace-format
@@ -180,10 +181,10 @@ msgid "Captain's log ({key})"
 msgstr "Logboek van de Kapitein (L)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Menu budowy (B)"
+msgstr "Menu budowy ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
@@ -234,7 +235,7 @@ msgstr "Napisz wiadomość:"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
-msgstr "Koszty bieżące"
+msgstr "Koszty eksploatacji"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -265,7 +266,7 @@ msgstr "Wznów"
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "Postęp budowy:"
+msgstr "Postęp prac budowlanych:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
@@ -417,9 +418,8 @@ msgid "Weapons:"
 msgstr "Broń:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
-#, fuzzy
 msgid "Resource deposit"
-msgstr "Grondstoffen afzetting"
+msgstr "Depozyt zasobów"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
@@ -429,9 +429,8 @@ msgstr ""
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
-#, fuzzy
 msgid "It contains these resources:"
-msgstr "Het bevat de volgende grondstoffen:"
+msgstr "Zawiera następujące zasoby:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -443,9 +442,8 @@ msgstr "Kliknij aby zmienić nazwę swojej osady"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
-#, fuzzy
 msgid "Happiness"
-msgstr "Vreugde"
+msgstr "Szczęście"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
@@ -453,9 +451,8 @@ msgid "Residents"
 msgstr "Mieszkańcy"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Vereiste grondstoffen:"
+msgstr "Niezbędne zasoby:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
