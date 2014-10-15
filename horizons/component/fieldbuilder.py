@@ -65,6 +65,5 @@ class FieldBuilder(Component):
 
 	def fill_range(self):
 		for (x, y) in self.coords_in_range():
-			rotation = 45 + self.instance.session.random.randint(0, 3) * 90
-			cmd = Build(self.field, x, y, self.instance.island, rotation)
+			cmd = Build(self.field, x, y, self.instance.island)
 			cmd.execute(self.instance.session)
