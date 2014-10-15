@@ -32,7 +32,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
 from horizons.command.uioptions import RouteConfigCommand
-from horizons.command.unit import GenericUnitCommand
+from horizons.command.unit import CreateRoute
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
@@ -62,7 +62,7 @@ class RouteConfig(Window):
 		self.instance = instance
 
 		if not hasattr(instance, 'route'):
-			GenericUnitCommand(instance,  "create_route").execute(self.session)
+			CreateRoute(instance).execute(self.session)
 
 		Scheduler().add_new_object(self._init_gui, self, run_in=1+MPManager.EXECUTIONDELAY)
 
