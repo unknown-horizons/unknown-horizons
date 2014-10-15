@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-10-15 23:08+0200\n"
+"PO-Revision-Date: 2014-10-15 23:11+0200\n"
 "Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
@@ -176,9 +176,9 @@ msgid "Destroy ({key})"
 msgstr "Zniszcz ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Captain's log ({key})"
-msgstr "Logboek van de Kapitein (L)"
+msgstr "Dziennik kapitański ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
 #, python-brace-format
@@ -196,7 +196,6 @@ msgid "Game menu ({key})"
 msgstr "Menu gry ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
-#, fuzzy
 msgid "Change name"
 msgstr "Zmień nazwę"
 
@@ -404,9 +403,8 @@ msgstr "Sprzedaż"
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
-#, fuzzy
 msgid "Buying"
-msgstr "Zakup"
+msgstr "Kupować"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
@@ -495,9 +493,8 @@ msgid "Configure trading route"
 msgstr "Skonfiguruj szlak handlowy"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
-#, fuzzy
 msgid "Ship:"
-msgstr "Schip:"
+msgstr "Statek:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
@@ -512,9 +509,8 @@ msgid "Buy or sell resources"
 msgstr "Kup lub sprzedaj zasoby"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
-#, fuzzy
 msgid "Trade history"
-msgstr "Historia transakcji handlowych"
+msgstr "Historia handlu"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
