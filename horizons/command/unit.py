@@ -36,6 +36,8 @@ class GenericUnitCommand(GenericCommand):
 			return # don't move enemy units
 		else:
 			return super(GenericUnitCommand, self).__call__(issuer)
+		
+GenericCommand.allow_network(GenericUnitCommand)
 
 class Act(GenericUnitCommand):
 	"""Command class that moves a unit.
