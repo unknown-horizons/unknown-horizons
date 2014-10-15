@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-10-15 23:18+0200\n"
+"PO-Revision-Date: 2014-10-15 23:20+0200\n"
 "Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/voices/pl/>\n"
 "Language: pl\n"
@@ -121,7 +121,7 @@ msgstr "Budowa wymaga więcej surowców."
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
-msgstr ""
+msgstr "Budowa jest niemożliwe bez odpowiedniego materiału."
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
