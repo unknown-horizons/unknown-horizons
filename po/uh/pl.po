@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-10-15 22:57+0200\n"
+"PO-Revision-Date: 2014-10-15 23:03+0200\n"
 "Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
@@ -491,9 +491,8 @@ msgstr "Zbuduj osadę"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
-#, fuzzy
 msgid "Configure trading route"
-msgstr "Stel handelsroute in"
+msgstr "Skonfiguruj trasę handlową"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 #, fuzzy
@@ -501,19 +500,16 @@ msgid "Ship:"
 msgstr "Schip:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
-#, fuzzy
 msgid "Exchange:"
-msgstr "Handel:"
+msgstr "Wymiana:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
-#, fuzzy
 msgid "Trade partner:"
-msgstr "Handelspartner:"
+msgstr "Partner handlowy:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
-#, fuzzy
 msgid "Buy or sell resources"
-msgstr "Koop of verkoop grondstof"
+msgstr "Kup lub sprzedaj zasoby"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 #, fuzzy
@@ -521,9 +517,8 @@ msgid "Trade history"
 msgstr "Historia transakcji handlowych"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
-#, fuzzy
 msgid "Select resources:"
-msgstr "Selecteer grondstoffen:"
+msgstr "Wybierz zasoby:"
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
@@ -534,31 +529,26 @@ msgid "Collector utilization"
 msgstr "Obciążenie kupca"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
-#, fuzzy
 msgid "Income:"
-msgstr "Inkomsten:"
+msgstr "Dochody:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:615
-#, fuzzy
 msgid "Taxes"
-msgstr "Belastingen"
+msgstr "Podatki"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
-#, fuzzy
 msgid "Sale"
-msgstr "Verkoop"
+msgstr "Sprzedaż"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
-#, fuzzy
 msgid "Expenses:"
-msgstr "Uitgaven:"
+msgstr "Wydatki:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
-#, fuzzy
 msgid "Balance:"
-msgstr "Balans:"
+msgstr "Bilans:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 #, fuzzy
@@ -3788,13 +3778,12 @@ msgid "wool"
 msgstr "wełna"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "tea leaves"
-msgstr "liście tytoniu"
+msgstr "liście herbaty"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "kawa"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
@@ -3885,10 +3874,9 @@ msgid "hop plants"
 msgstr "rośliny przyprawowe"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
-msgstr "taling blauw"
+msgstr "herbata"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
@@ -4021,10 +4009,9 @@ msgid "bricks"
 msgstr "cegły"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "grudka żelaza"
+msgstr "ruda złota"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -4059,10 +4046,9 @@ msgid "confectionery"
 msgstr "cukiernia"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Walvisvaarder"
+msgstr "wieloryby"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -4148,9 +4134,8 @@ msgstr "Wykonano automatyczny zapis."
 
 # Building
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold deposit"
-msgstr "depozyt gliny"
+msgstr "depozyt złota"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -4179,7 +4164,7 @@ msgstr "edukacja"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "bawełna"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
