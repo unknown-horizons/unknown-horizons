@@ -37,6 +37,7 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
 from horizons.scheduler import Scheduler
+from horizons.manager import MPManager
 
 from horizons.gui.widgets.imagebutton import OkButton
 
@@ -63,7 +64,7 @@ class RouteConfig(Window):
 		if not hasattr(instance, 'route'):
 			GenericUnitCommand(instance,  "create_route").execute(self.session)
 
-		Scheduler().add_new_object(self._init_gui, self, run_in=2)
+		Scheduler().add_new_object(self._init_gui, self, run_in=1+MPManager.EXECUTIONDELAY)
 
 	@property
 	def session(self):
