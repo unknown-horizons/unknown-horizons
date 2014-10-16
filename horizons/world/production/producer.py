@@ -411,7 +411,7 @@ class Producer(Component):
 		return l
 
 	def __str__(self):
-		return "Producer(owner: " + str(self.instance) + ")"
+		return u'Producer(owner: ' + unicode(self.instance) + u')'
 
 	def get_production_progress(self):
 		"""Returns the current progress of the active production."""
