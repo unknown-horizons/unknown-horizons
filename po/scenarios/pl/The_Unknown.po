@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2014-07-31 02:00+0200\n"
+"PO-Revision-Date: 2014-10-15 23:27+0200\n"
 "Last-Translator: lemoid <k.starzyk02@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/the-"
 "unknown/pl/>\n"
@@ -137,7 +137,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr "1 grudzień 1740"
+msgstr "1 grudnia 1740"
 
 #. This is the text body of a logbook page.
 msgid ""

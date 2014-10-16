@@ -564,6 +564,7 @@ class PATHS:
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
+	UH_LOGO_FILE = os.path.join("content", "gfx", "uh.png")
 
 class SETTINGS:
 	UH_MODULE = "unknownhorizons"

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-07-30 18:57+0200\n"
-"Last-Translator: lemoid <k.starzyk02@gmail.com>\n"
+"PO-Revision-Date: 2014-10-15 23:11+0200\n"
+"Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -118,7 +118,8 @@ msgstr "Musisz stworzyć osadę, zanim będzie można zbudować budynki!"
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Wybierz swój statek i naciśnij prawy przycisk myszy by dopłynąć do brzegu."
+"Wybierz swój statek i zbliż się do wybrzeża poprzez kliknięcie prawym "
+"przyciskiem myszy."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -130,7 +131,7 @@ msgstr "Zbuduj"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "Koszty bieżące:"
+msgstr "Koszty eksploatacji:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -163,11 +164,11 @@ msgstr "Obróć mapę w prawo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
-msgstr "Przybliż"
+msgstr "Przybliż widok"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
-msgstr "Oddal"
+msgstr "Oddal widok"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, python-brace-format
@@ -175,15 +176,15 @@ msgid "Destroy ({key})"
 msgstr "Zniszcz ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Captain's log ({key})"
-msgstr "Logboek van de Kapitein (L)"
+msgstr "Dziennik kapitański ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Menu budowy (B)"
+msgstr "Menu budowy ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
@@ -195,7 +196,6 @@ msgid "Game menu ({key})"
 msgstr "Menu gry ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
-#, fuzzy
 msgid "Change name"
 msgstr "Zmień nazwę"
 
@@ -234,7 +234,7 @@ msgstr "Napisz wiadomość:"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
-msgstr "Koszty bieżące"
+msgstr "Koszty eksploatacji"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -265,7 +265,7 @@ msgstr "Wznów"
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "Postęp budowy:"
+msgstr "Postęp prac budowlanych:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
@@ -403,9 +403,8 @@ msgstr "Sprzedaż"
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
-#, fuzzy
 msgid "Buying"
-msgstr "Zakup"
+msgstr "Kupować"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
@@ -417,9 +416,8 @@ msgid "Weapons:"
 msgstr "Broń:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
-#, fuzzy
 msgid "Resource deposit"
-msgstr "Grondstoffen afzetting"
+msgstr "Depozyt zasobów"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
@@ -429,9 +427,8 @@ msgstr ""
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
-#, fuzzy
 msgid "It contains these resources:"
-msgstr "Het bevat de volgende grondstoffen:"
+msgstr "Zawiera następujące zasoby:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -443,9 +440,8 @@ msgstr "Kliknij aby zmienić nazwę swojej osady"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
-#, fuzzy
 msgid "Happiness"
-msgstr "Vreugde"
+msgstr "Szczęście"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
@@ -453,9 +449,8 @@ msgid "Residents"
 msgstr "Mieszkańcy"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Vereiste grondstoffen:"
+msgstr "Niezbędne zasoby:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
@@ -494,39 +489,32 @@ msgstr "Zbuduj osadę"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
-#, fuzzy
 msgid "Configure trading route"
-msgstr "Stel handelsroute in"
+msgstr "Skonfiguruj szlak handlowy"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
-#, fuzzy
 msgid "Ship:"
-msgstr "Schip:"
+msgstr "Statek:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
-#, fuzzy
 msgid "Exchange:"
-msgstr "Handel:"
+msgstr "Wymiana:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
-#, fuzzy
 msgid "Trade partner:"
-msgstr "Handelspartner:"
+msgstr "Partner handlowy:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
-#, fuzzy
 msgid "Buy or sell resources"
-msgstr "Koop of verkoop grondstof"
+msgstr "Kup lub sprzedaj zasoby"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
-#, fuzzy
 msgid "Trade history"
-msgstr "Historia transakcji handlowych"
+msgstr "Historia handlu"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
-#, fuzzy
 msgid "Select resources:"
-msgstr "Selecteer grondstoffen:"
+msgstr "Wybierz zasoby:"
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
@@ -537,31 +525,26 @@ msgid "Collector utilization"
 msgstr "Obciążenie kupca"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
-#, fuzzy
 msgid "Income:"
-msgstr "Inkomsten:"
+msgstr "Dochody:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:615
-#, fuzzy
 msgid "Taxes"
-msgstr "Belastingen"
+msgstr "Podatki"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
-#, fuzzy
 msgid "Sale"
-msgstr "Verkoop"
+msgstr "Sprzedaż"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
-#, fuzzy
 msgid "Expenses:"
-msgstr "Uitgaven:"
+msgstr "Wydatki:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
-#, fuzzy
 msgid "Balance:"
-msgstr "Balans:"
+msgstr "Bilans:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 #, fuzzy
@@ -3791,13 +3774,12 @@ msgid "wool"
 msgstr "wełna"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "tea leaves"
-msgstr "liście tytoniu"
+msgstr "liście herbaty"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "kawa"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
@@ -3888,10 +3870,9 @@ msgid "hop plants"
 msgstr "rośliny przyprawowe"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
-msgstr "taling blauw"
+msgstr "herbata"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
@@ -4024,10 +4005,9 @@ msgid "bricks"
 msgstr "cegły"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "grudka żelaza"
+msgstr "ruda złota"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -4062,10 +4042,9 @@ msgid "confectionery"
 msgstr "cukiernia"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Walvisvaarder"
+msgstr "wieloryby"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -4151,9 +4130,8 @@ msgstr "Wykonano automatyczny zapis."
 
 # Building
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold deposit"
-msgstr "depozyt gliny"
+msgstr "depozyt złota"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -4182,7 +4160,7 @@ msgstr "edukacja"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "bawełna"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
