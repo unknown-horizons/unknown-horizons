@@ -49,10 +49,10 @@ class TradeRoute(ChangeListener):
 		self.current_waypoint = -1
 		self.enabled = False
 
-		self.wait_at_load = False # wait until every res has been loaded
-		self.wait_at_unload = False #  wait until every res could be unloaded
+		self.wait_at_load = False  # wait until every res has been loaded
+		self.wait_at_unload = False  # wait until every res could be unloaded
 
-		self.current_transfer = {} # used for partial unloading in combination with waiting
+		self.current_transfer = {}  # used for partial unloading in combination with waiting
 
 	def append(self, warehouse_worldid):
 		warehouse = WorldObject.get_object_by_id(warehouse_worldid)
@@ -120,11 +120,12 @@ class TradeRoute(ChangeListener):
 		"""Transfer resources, wait if necessary and move to next warehouse when possible"""
 		warehouse = self.get_location()['warehouse']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
-		suppress_messages = self.current_transfer is not None # no messages from second try on
+		suppress_messages = self.current_transfer is not None  # no messages from second try on
 
 		if self.current_transfer is not None:
 			for res in copy.copy(self.current_transfer):
-				# make sure we don't keep trying to (un)load something when the decision about that resource has changed
+				# make sure we don't keep trying to (un)load something
+				# when the decision about that resource has changed
 				if self.current_transfer[res] == 0 or res not in self.get_location()['resource_list'] or \
 				   cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
 					del self.current_transfer[res]
@@ -132,7 +133,7 @@ class TradeRoute(ChangeListener):
 		settlement = warehouse.settlement
 		status = self._transfer_resources(settlement, resource_list, suppress_messages)
 
-		if not self.enabled: # got disabled while retrying transfer
+		if not self.enabled:  # got disabled while retrying transfer
 			self.current_transfer = None
 			return
 
@@ -192,7 +193,7 @@ class TradeRoute(ChangeListener):
 				status.remaining_transfers[res] -= amount_transferred
 			else:
 				# Case B: Load from ship into settlement.
-				amount = -amount # use positive below
+				amount = -amount  # use positive below
 				if settlement.owner is self.ship.owner:
 					# Check if route asks for more of a resource than there is on the ship.
 					# If not, only move the remainder that we have loaded instead.
@@ -208,7 +209,7 @@ class TradeRoute(ChangeListener):
 					amount_transferred, error = settlement.get_component(TradePostComponent).buy_resource(
 					  self.ship.worldid, res, amount, add_error_type=True, suppress_messages=suppress_messages)
 					if error == TRADE_ERROR_TYPE.PERMANENT:
-						amount_transferred = amount # is negative
+						amount_transferred = amount  # is negative
 
 				if amount_transferred < -status.remaining_transfers[res] and ship_inv[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False
@@ -231,8 +232,9 @@ class TradeRoute(ChangeListener):
 			return
 
 		try:
-			self.ship.move(Circle(warehouse.position.center, self.ship.radius), self.on_route_warehouse_reached,
-			               blocked_callback = self.on_ship_blocked)
+			self.ship.move(Circle(warehouse.position.center, self.ship.radius),
+				self.on_route_warehouse_reached,
+				blocked_callback=self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds
 			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)
@@ -295,12 +297,13 @@ class TradeRoute(ChangeListener):
 			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
 
 			self.waypoints.append({
-				'warehouse' : warehouse,
-				'resource_list' : resource_list
+				'warehouse': warehouse,
+				'resource_list': resource_list
 			})
 
 		waiting = False
-		for res, amount in db("SELECT res, amount FROM ship_route_current_transfer WHERE ship_id = ?", self.ship.worldid):
+		for res, amount in db("SELECT res, amount FROM "
+				"ship_route_current_transfer WHERE ship_id = ?", self.ship.worldid):
 			waiting = True
 			self.current_transfer[res] = amount
 			Scheduler().add_new_object(self.on_route_warehouse_reached, self, GAME_SPEED.TICKS_PER_SECOND)
@@ -312,8 +315,9 @@ class TradeRoute(ChangeListener):
 	def save(self, db):
 		worldid = self.ship.worldid
 
-		db("INSERT INTO ship_route(ship_id, enabled, current_waypoint, wait_at_load, wait_at_unload) VALUES(?, ?, ?, ?, ?)",
-		   worldid, self.enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload)
+		db("INSERT INTO ship_route(ship_id, enabled, current_waypoint,"
+			" wait_at_load, wait_at_unload) VALUES(?, ?, ?, ?, ?)",
+			worldid, self.enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload)
 
 		if self.current_transfer:
 			for res, amount in self.current_transfer.iteritems():

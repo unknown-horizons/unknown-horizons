@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.scheduler import Scheduler
-
 from horizons.util.python import decorators
 from horizons.util.shapes import RadiusRect
 from horizons.world.units.movingobject import MoveNotPossible
@@ -39,7 +38,7 @@ class AnimalCollector(BuildingCollector):
 	 - stay at home building for a while
 	 - release animal
 	 """
-	kill_animal = False # whether we kill the animals
+	kill_animal = False  # whether we kill the animals
 
 	def __init__(self, *args, **kwargs):
 		super(AnimalCollector, self).__init__(*args, **kwargs)
@@ -55,7 +54,7 @@ class AnimalCollector(BuildingCollector):
 			self.stop_animal()
 		elif state == self.states.moving_home:
 			if not self.__class__.kill_animal:
-				self.setup_new_job() # register at target if it's still alive
+				self.setup_new_job()  # register at target if it's still alive
 
 	def cancel(self, continue_action=None):
 		if self.job is not None:
@@ -92,7 +91,7 @@ class AnimalCollector(BuildingCollector):
 			super(AnimalCollector, self).finish_working()
 		else:
 			self.move_home(callback=self.reached_home)
-		self.get_animal() # get or kill animal
+		self.get_animal()  # get or kill animal
 
 	def reached_home(self):
 		"""Transfer res to home building and such. Called when collector arrives at it's home"""
@@ -136,10 +135,10 @@ class AnimalCollector(BuildingCollector):
 		self.log.debug("%s getting animal %s", self, self.job.object)
 		if self.__class__.kill_animal:
 			self.job.object.die()
-			self.job.object = None # there is no target anymore now
+			self.job.object = None  # there is no target anymore now
 		else:
-			self.job.object.move(self.home_building.position, destination_in_building = True,
-			                     action='move_full')
+			self.job.object.move(self.home_building.position, destination_in_building=True,
+				action='move_full')
 
 	def release_animal(self):
 		"""Let animal free after shearing and schedules search for a new job for animal."""
@@ -167,8 +166,8 @@ class HunterCollector(AnimalCollector):
 	def get_animals_in_range(self, res=None):
 		dist = self.home_building.position.distance
 		radius = self.home_building.radius
-		return [ animal for animal in self.home_building.island.wild_animals if
-		         dist(animal.position) <= radius ]
+		return [animal for animal in self.home_building.island.wild_animals if
+			dist(animal.position) <= radius]
 
 
 decorators.bind_all(AnimalCollector)

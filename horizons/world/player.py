@@ -37,14 +37,14 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.messaging import SettlerUpdate, PlayerInventoryUpdated, PlayerLevelUpgrade
 from horizons.component.tradepostcomponent import TradePostComponent
 
+
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
 
-	STATS_UPDATE_INTERVAL = 3 # seconds
+	STATS_UPDATE_INTERVAL = 3  # seconds
 
-	regular_player = True # either a human player or a normal AI player (not trader or pirate)
+	regular_player = True  # either a human player or a normal AI player (not trader or pirate)
 	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
-
 
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
 		"""
@@ -92,15 +92,16 @@ class Player(ComponentHolder, WorldObject):
 		return self is self.session.world.player
 
 	def get_latest_stats(self):
-		if self._stats is None or self._stats.collection_tick + PLAYER.STATS_UPDATE_FREQUENCY < Scheduler().cur_tick:
+		if (self._stats is None
+				or self._stats.collection_tick + PLAYER.STATS_UPDATE_FREQUENCY < Scheduler().cur_tick):
 			self._stats = PlayerStats(self)
 		return self._stats
 
 	@property
 	def settlements(self):
 		"""Calculate settlements dynamically to save having a redundant list here"""
-		return [ settlement for settlement in self.session.world.settlements if
-		         settlement.owner == self ]
+		return [settlement for settlement in self.session.world.settlements if
+			settlement.owner == self]
 
 	def save(self, db):
 		super(Player, self).save(db)
@@ -130,7 +131,8 @@ class Player(ComponentHolder, WorldObject):
 		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
 			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification"
 			" FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color[color], client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
+		self.__init(name, Color[color], client_id, difficulty_level,
+			max_tier_notification, settlerlevel=settlerlevel)
 
 	def notify_settler_reached_level(self, message):
 		"""Settler calls this to notify the player."""
@@ -159,19 +161,20 @@ class Player(ComponentHolder, WorldObject):
 	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
 	def get_statistics(self):
 		"""Returns a namedtuple containing player-wide statistics"""
-		Data = collections.namedtuple('Data', ['running_costs', 'taxes', 'sell_income', 'buy_expenses', 'balance'])
+		Data = collections.namedtuple(
+			'Data', ['running_costs', 'taxes', 'sell_income', 'buy_expenses', 'balance'])
 		# balance is duplicated here and above such that the version above
 		# can be used independently and the one here is always perfectly in sync
 		# with the other values here
 
-		get_sum = lambda l, attr : sum ( getattr(obj, attr) for obj in l )
-		trade_posts = [ s.get_component(TradePostComponent) for s in self.settlements ]
+		get_sum = lambda l, attr: sum(getattr(obj, attr) for obj in l)
+		trade_posts = [s.get_component(TradePostComponent) for s in self.settlements]
 		return Data(
-		  running_costs = get_sum(self.settlements, 'cumulative_running_costs'),
-		  taxes = get_sum(self.settlements, 'cumulative_taxes'),
-		  sell_income = get_sum(trade_posts, 'sell_income'),
-		  buy_expenses = get_sum(trade_posts, 'buy_expenses'),
-		  balance = get_sum(self.settlements, 'balance'),
+			running_costs=get_sum(self.settlements, 'cumulative_running_costs'),
+			taxes=get_sum(self.settlements, 'cumulative_taxes'),
+			sell_income=get_sum(trade_posts, 'sell_income'),
+			buy_expenses=get_sum(trade_posts, 'buy_expenses'),
+			balance=get_sum(self.settlements, 'balance'),
 		)
 
 
@@ -180,7 +183,8 @@ class HumanPlayer(Player):
 
 	def __init(self, *args, **kwargs):
 		super(HumanPlayer, self).__init(*args, **kwargs)
-		self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated, self.get_component(StorageComponent), 4)
+		self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated,
+			self.get_component(StorageComponent), 4)
 
 	def end(self):
 		if hasattr(self, '__inventory_checker'):

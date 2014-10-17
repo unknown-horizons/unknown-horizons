@@ -144,12 +144,14 @@ class View(ChangeListener):
 
 		if x != 0:
 			new_angle = math.pi * self.cam.getRotation() / 180.0
-			zoom_factor = self.cam.getZoom() * cell_dim.x * horizons.globals.fife.get_uh_setting('ScrollSpeed')
+			zoom_factor = (self.cam.getZoom() * cell_dim.x *
+				horizons.globals.fife.get_uh_setting('ScrollSpeed'))
 			pos.x += x * math.cos(new_angle) / zoom_factor
 			pos.y += x * math.sin(new_angle) / zoom_factor
 		if y != 0:
 			new_angle = math.pi * self.cam.getRotation() / -180.0
-			zoom_factor = self.cam.getZoom() * cell_dim.y * horizons.globals.fife.get_uh_setting('ScrollSpeed')
+			zoom_factor = (self.cam.getZoom() * cell_dim.y *
+				horizons.globals.fife.get_uh_setting('ScrollSpeed'))
 			pos.x += y * math.sin(new_angle) / zoom_factor
 			pos.y += y * math.cos(new_angle) / zoom_factor
 
@@ -263,7 +265,8 @@ class View(ChangeListener):
 		for layer_id, layer in enumerate(self.layers):
 			if not layer.getCellCache():
 				continue
-			assert layer_id != LAYERS.WATER, 'Water layer would need special treatment (see previous version)'
+			assert layer_id != LAYERS.WATER, \
+				'Water layer would need special treatment (see previous version)'
 
 			rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
 			layer.getCellCache().setSize(rect)

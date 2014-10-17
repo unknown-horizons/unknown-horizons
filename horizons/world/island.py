@@ -20,7 +20,6 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict
 
 from horizons.entities import Entities
@@ -41,11 +40,13 @@ from horizons.world.buildability.terraincache import TerrainBuildabilityCache, T
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.ground import MapPreviewTile
 
+
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an island. It contains a list of all things on the map
 	that belong to the island. This comprises ground tiles as well as buildings,
 	nature objects (which are buildings), and units.
-	All those objects also have a reference to the island, making it easy to determine to which island the instance belongs.
+	All those objects also have a reference to the island,
+	making it easy to determine to which island the instance belongs.
 	An Island instance is created during map creation, when all tiles are added to the map.
 	@param origin: Point instance - Position of the (0, 0) ground tile.
 	@param filename: file from which the island is loaded.
@@ -91,7 +92,8 @@ class Island(BuildingOwner, WorldObject):
 			# Create building indexers.
 			from horizons.world.units.animal import WildAnimal
 			self.building_indexers = {}
-			self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
+			self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(
+				WildAnimal.walking_range, self, self.session.random)
 
 		# Load settlements.
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
@@ -127,11 +129,13 @@ class Island(BuildingOwner, WorldObject):
 		Load the actual island from a file
 		@param preview: flag, map preview mode
 		"""
-		p_x, p_y, width, height = db("SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?", island_id - 1001)[0]
+		p_x, p_y, width, height = db("SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)),"
+			" (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?", island_id - 1001)[0]
 
 		self.ground_map = {}
-		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
-			if not preview: # actual game, need actual tiles
+		for (x, y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id,"
+				" action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001):  # Load grounds
+			if not preview:  # actual game, need actual tiles
 				ground = Entities.grounds[str('%d-%s' % (ground_id, action_id))](self.session, x, y)
 				ground.act(rotation)
 			else:
@@ -285,7 +289,7 @@ class Island(BuildingOwner, WorldObject):
 			settlement.buildability_cache.modify_area(settlement_coords_changed)
 
 		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
-	
+
 	def abandon_buildings(self, buildings_list):
 		"""Abandon all buildings in the list
 		@param buildings_list: buildings to abandon
@@ -299,7 +303,7 @@ class Island(BuildingOwner, WorldObject):
 		buildings_to_abandon, settlement_coords_to_change = Tear.additional_removals_after_tear(building)
 		assert building not in buildings_to_abandon
 		self.abandon_buildings(buildings_to_abandon)
-		
+
 		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
 		land_or_coast = self.terrain_cache.land_or_coast
 		settlement_tiles_changed = []
@@ -332,9 +336,11 @@ class Island(BuildingOwner, WorldObject):
 		@param building: Building class instance of the building that is to be added.
 		@param player: int id of the player that owns the settlement
 		@param load: boolean, whether it has been called during loading"""
-		if building.id in (BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN) and self.available_land_cache is not None:
+		if building.id in (BUILDINGS.CLAY_DEPOSIT,
+				BUILDINGS.MOUNTAIN) and self.available_land_cache is not None:
 			# self.available_land_cache may be None when loading a settlement
-			# it is ok to skip in that case because the cache's constructor will take the deposits into account anyway
+			# it is ok to skip in that case because the cache's constructor
+			# will take the deposits into account anyway
 			self.deposits[building.id][building.position.origin.to_tuple()] = building
 			self.available_land_cache.remove_area(list(building.position.tuple_iter()))
 		super(Island, self).add_building(building, player, load=load)
@@ -399,7 +405,7 @@ class Island(BuildingOwner, WorldObject):
 		@param where: instance of Point, or object with get_surrounding()"""
 		if hasattr(where, "get_surrounding"):
 			coords = where.get_surrounding(include_corners=include_corners)
-		else: # assume Point
+		else:  # assume Point
 			coords = Circle(where, radius).tuple_iter()
 		for position in coords:
 			tile = self.get_tile_tuple(position)
@@ -440,7 +446,8 @@ class Island(BuildingOwner, WorldObject):
 				return
 
 	def _init_cache(self):
-		""" initializes the cache that knows when the last time the buildability of a rectangle may have changed on this island """
+		""" initializes the cache that knows when the last time
+		the buildability of a rectangle may have changed on this island """
 		self.last_change_id = -1
 
 	def _register_change(self):

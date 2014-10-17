@@ -38,6 +38,8 @@ Priority:
 [2000-3000[: high
 Keep the numbers unique to avoid confusion when sorting.
 """
+
+
 class StatusIcon(object):
 	# integer
 	priority = None
@@ -68,11 +70,13 @@ class StatusIcon(object):
 	def __str__(self):
 		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
 
+
 class BlackDeathStatusIcon(StatusIcon):
 	""" Black Death disaster """
 	priority = 3000
 	icon = 'as_pestilence+idle+45'
 	_helptext = _("The inhabitants are infected by the Black Death!")
+
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
@@ -86,6 +90,7 @@ class SettlerUnhappyStatus(StatusIcon):
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
 	helptext = _lazy("These residents are unhappy.")
+
 
 class SettlerNotConnectedStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
@@ -109,7 +114,7 @@ class InventoryFullStatus(StatusIcon):
 
 class ProductivityLowStatus(StatusIcon):
 	"""Terminology: productivity = capacity utilization"""
-	threshold = 0.25 # display when productivity lower than this
+	threshold = 0.25  # display when productivity lower than this
 	priority = 400
 	icon = 'as_attention_please+idle+45'
 	helptext = _lazy("This building has a very low productivity.")

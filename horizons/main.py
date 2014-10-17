@@ -97,13 +97,14 @@ def start(_command_line_arguments):
 				NETWORK.SERVER_PORT = parse_port(mpieces[2])
 		except ValueError:
 			print("Error: Invalid syntax in --mp-master commandline option."
-                                " Port must be a number between 1 and 65535.")
+				" Port must be a number between 1 and 65535.")
 			return False
 
 	# init fife before mp_bind is parsed, since it's needed there
 	horizons.globals.fife = Fife()
 
-	if command_line_arguments.generate_minimap:  # we've been called as subprocess to generate a map preview
+	if command_line_arguments.generate_minimap:
+		# we've been called as subprocess to generate a map preview
 		from horizons.gui.modules.singleplayermenu import generate_random_minimap
 		generate_random_minimap(* json.loads(
 		  command_line_arguments.generate_minimap))
@@ -122,7 +123,7 @@ def start(_command_line_arguments):
 			horizons.globals.fife.set_uh_setting("NetworkPort", parse_port(mpieces[2]))
 		except ValueError:
 			print("Error: Invalid syntax in --mp-bind commandline option."
-                            " Port must be a number between 1 and 65535.")
+				" Port must be a number between 1 and 65535.")
 			return False
 
 	setup_AI_settings(command_line_arguments)
@@ -152,7 +153,7 @@ def start(_command_line_arguments):
 		res_logo_image = ImageTk.PhotoImage(res_logo)
 		logo_label = Tkinter.Label(window, image=res_logo_image)
 		logo_label.pack(side="left")
-		label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
+		label = Tkinter.Label(window, padx=10, text="Generating atlases!")
 		label.pack(side="right")
 
 		# wait a second to give the thread time to check if a generation is necessary at all
@@ -220,7 +221,8 @@ def start(_command_line_arguments):
 		startup_worked = _start_map(command_line_arguments.start_scenario, 0, True,
             force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.load_game is not None:
-		startup_worked = _load_cmd_map(command_line_arguments.load_game, command_line_arguments.ai_players,
+		startup_worked = _load_cmd_map(command_line_arguments.load_game,
+			command_line_arguments.ai_players,
 			command_line_arguments.force_player_id)
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
@@ -263,7 +265,7 @@ def start(_command_line_arguments):
 	if command_line_arguments.gamespeed is not None:
 		if _modules.session is None:
 			print("You can only set the speed via command line in combination"
-                            " with a game start parameter such as --start-map, etc.")
+				" with a game start parameter such as --start-map, etc.")
 			return False
 		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND * command_line_arguments.gamespeed)
 
@@ -328,7 +330,8 @@ def setup_gui_logger(command_line_arguments):
 		except ImportError:
 			traceback.print_exc()
 			print
-			print "Gui logging requires code that is only present in the repository and is not being installed."
+			print ("Gui logging requires code that is only present in the "
+				"repository and is not being installed.")
 			return False
 	return True
 
@@ -400,7 +403,8 @@ def start_singleplayer(options):
 	return _modules.session
 
 
-def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_resource_multiplier=1):
+def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True,
+		natural_resource_multiplier=1):
 	"""Starts a multiplayer game server
 	TODO: actual game data parameter passing
 	"""
@@ -431,7 +435,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 		map_file = SavegameManager.get_map(game.map_name)
 
 	options = StartGameOptions.create_start_multiplayer(map_file, game.get_player_list(),
-                                                not game.is_savegame)
+							not game.is_savegame)
 	_modules.session.load(options)
 
 
@@ -523,7 +527,7 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	if _modules.session is not None:
 		if not save_files:
 			_modules.session.ingame_gui.open_popup(_("No quicksaves found"),
-			                                       _("You need to quicksave before you can quickload."))
+								_("You need to quicksave before you can quickload."))
 			return False
 	else:
 		if not save_files:
@@ -602,10 +606,10 @@ def preload_game_data(lock):
 		mydb = _create_main_db()  # create own db reader instance, since it's not thread-safe
 		from horizons.entities import Entities
 		preload_functions = [ActionSetLoader.load,
-                        TileSetLoader.load,
-                        Callback(Entities.load_grounds, mydb, load_now=True),
-                        Callback(Entities.load_buildings, mydb, load_now=True),
-                        Callback(Entities.load_units, load_now=True)]
+			TileSetLoader.load,
+			Callback(Entities.load_grounds, mydb, load_now=True),
+			Callback(Entities.load_buildings, mydb, load_now=True),
+			Callback(Entities.load_units, load_now=True)]
 		for f in preload_functions:
 			if not lock.acquire(False):
 				break

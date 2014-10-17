@@ -34,25 +34,28 @@ class ResourceTransferHandler(object):
 	def transfer_to_storageholder(self, amount, res_id, transfer_to, signal_errors=False):
 		"""Transfers amount of res_id to transfer_to.
 		@param transfer_to: worldid or object reference
-		@param signal_errors: whether to play an error sound in case the transfer completely failed (no res transferred)
+		@param signal_errors: whether to play an error sound in case the transfer completely failed
+		(no res transferred)
 		@return: amount that was actually transferred (NOTE: this is different from the
 						 return value of inventory.alter, since here are 2 storages involved)
 		"""
 		try:
 			transfer_to = WorldObject.get_object_by_id(int(transfer_to))
-		except TypeError: # transfer_to not an int, assume already obj
+		except TypeError:  # transfer_to not an int, assume already obj
 			pass
 		# take res from self
 		ret = self.get_component(StorageComponent).inventory.alter(res_id, -amount)
 		# check if we were able to get the planned amount
 		ret = amount if amount < abs(ret) else abs(ret)
 		# put res to transfer_to
-		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
-		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
-		actually_transfered = amount-ret
+		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount - ret)
+		self.get_component(StorageComponent).inventory.alter(res_id, ret)
+		# return resources that did not fit
+		actually_transfered = amount - ret
 		if signal_errors and actually_transfered == 0:
 			AmbientSoundComponent.play_special('error')
 		return actually_transfered
+
 
 class ResourceHandler(ResourceTransferHandler):
 	"""The ResourceHandler class acts as a basic class for describing objects
@@ -66,7 +69,7 @@ class ResourceHandler(ResourceTransferHandler):
 	"""
 	tabs = (ProductionOverviewTab, InventoryTab)
 
-	## INIT/DESTRUCT
+	# INIT/DESTRUCT
 	def __init__(self, **kwargs):
 		super(ResourceHandler, self).__init__(**kwargs)
 
@@ -88,10 +91,10 @@ class ResourceHandler(ResourceTransferHandler):
 
 	def remove(self):
 		super(ResourceHandler, self).remove()
-		while self.__incoming_collectors: # safe list remove here
+		while self.__incoming_collectors:  # safe list remove here
 			self.__incoming_collectors[0].cancel()
 
-	## INTERFACE
+	# INTERFACE
 	def get_consumed_resources(self, include_inactive=False):
 		"""Returns the needed resources that are used by the productions
 		currently active. *include_inactive* will also include resources
@@ -117,7 +120,8 @@ class ResourceHandler(ResourceTransferHandler):
 
 	def get_stocked_provided_resources(self):
 		"""Returns provided resources, where at least 1 ton is available"""
-		return [res for res in self.provided_resources if self.get_component(StorageComponent).inventory[res] > 0]
+		return [res for res in self.provided_resources
+			if self.get_component(StorageComponent).inventory[res] > 0]
 
 	def get_currently_consumed_resources(self):
 		"""Returns a list of resources, that are currently consumed in a production."""
@@ -140,7 +144,7 @@ class ResourceHandler(ResourceTransferHandler):
 	def get_needed_resources(self):
 		"""Returns list of resources, where free space in the inventory exists."""
 		return [res for res in self.get_consumed_resources()
-		            if self.get_component(StorageComponent).inventory.get_free_space_for(res) > 0]
+			if self.get_component(StorageComponent).inventory.get_free_space_for(res) > 0]
 
 	def add_incoming_collector(self, collector):
 		assert collector not in self.__incoming_collectors
@@ -155,7 +159,7 @@ class ResourceHandler(ResourceTransferHandler):
 		when there are no other possibilities"""
 		try:
 			return self.owner.get_component(StorageComponent).inventory
-		except AttributeError: # no owner or no inventory, either way, we don't care
+		except AttributeError:  # no owner or no inventory, either way, we don't care
 			return None
 
 	def pickup_resources(self, res, amount, collector):
@@ -177,8 +181,8 @@ class ResourceHandler(ResourceTransferHandler):
 	def get_available_pickup_amount(self, res, collector):
 		"""Returns how much of res a collector may pick up. It's the stored amount minus the amount
 		that other collectors are getting"""
-		if not res in self.provided_resources:
-			return 0 # we don't provide this, and give nothing away because we need it ourselves.
+		if res not in self.provided_resources:
+			return 0  # we don't provide this, and give nothing away because we need it ourselves.
 		else:
 			amount_from_collectors = sum((entry.amount
 			                              for c in self.__incoming_collectors
@@ -190,7 +194,7 @@ class ResourceHandler(ResourceTransferHandler):
 			# if this happens, a negative number would be returned. Use 0 instead.
 			return max(amount, 0)
 
-	## PROTECTED METHODS
+	# PROTECTED METHODS
 	def _load_provided_resources(self):
 		"""Returns a iterable obj containing all resources this building provides.
 		This is outsourced from initialization to a method for the possibility of
@@ -205,6 +209,7 @@ class ResourceHandler(ResourceTransferHandler):
 			produced_resources.add(res)
 
 		return produced_resources
+
 
 class StorageResourceHandler(ResourceHandler):
 	"""Same as ResourceHandler, but for storage buildings such as warehouses.

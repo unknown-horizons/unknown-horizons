@@ -33,6 +33,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 from horizons.world.production.producer import Producer
 from horizons.scheduler import Scheduler
 
+
 class PlayerStats(WorldObject):
 	def __init__(self, player):
 		super(PlayerStats, self).__init__()
@@ -71,7 +72,8 @@ class PlayerStats(WorldObject):
 									settler_resources_provided[resource_id] += happiness / production.get_production_time()
 
 				# resources held in buildings
-				if building.has_component(StorageComponent) and building.id not in [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE, BUILDINGS.MAIN_SQUARE]:
+				if building.has_component(StorageComponent) and building.id not in [
+					BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE, BUILDINGS.MAIN_SQUARE]:
 					for resource_id, amount in building.get_component(StorageComponent).inventory.itercontents():
 						total_resources[resource_id] += amount
 
@@ -110,21 +112,22 @@ class PlayerStats(WorldObject):
 		self._calculate_resource_score(available_resources, total_resources)
 		self._calculate_unit_score(ships)
 		self._calculate_land_score(usable_land, settlements)
-		self._calculate_money_score(running_costs, taxes, self.player.get_component(StorageComponent).inventory[RES.GOLD])
+		self._calculate_money_score(running_costs, taxes,
+			self.player.get_component(StorageComponent).inventory[RES.GOLD])
 		self._calculate_total_score()
 
 	settler_values = {
-			TIER.SAILORS: 2,
-			TIER.PIONEERS: 3,
-			TIER.SETTLERS: 7,
-			TIER.CITIZENS: 15,
-			}
+		TIER.SAILORS: 2,
+		TIER.PIONEERS: 3,
+		TIER.SETTLERS: 7,
+		TIER.CITIZENS: 15,
+	}
 	settler_building_values = {
-			TIER.SAILORS: 3,
-			TIER.PIONEERS: 5,
-			TIER.SETTLERS: 11,
-			TIER.CITIZENS: 19,
-			}
+		TIER.SAILORS: 3,
+		TIER.PIONEERS: 5,
+		TIER.SETTLERS: 11,
+		TIER.CITIZENS: 19,
+	}
 	settler_resource_provided_coefficient = 0.1
 	settler_score_coefficient = 0.3
 
@@ -148,35 +151,37 @@ class PlayerStats(WorldObject):
 				resources[resource_id] += amount * res_amount
 		for resource_id, amount in resources.iteritems():
 			if resource_id == RES.GOLD:
-				total += amount # for some reason the value of gold is 0 by default
+				total += amount  # for some reason the value of gold is 0 by default
 			else:
 				total += amount * self.db.get_res_value(resource_id)
 		self.building_score = int(total * self.building_score_coefficient)
 
-	unavailable_resource_coefficient = 0.3 # the resource exists but isn't usable so it is worth less
+	unavailable_resource_coefficient = 0.3  # the resource exists but isn't usable so it is worth less
 	overridden_resource_values = {RES.RAW_CLAY: 1, RES.RAW_IRON: 3}
 	resource_score_coefficient = 0.01
 
 	def _calculate_resource_score(self, available_resources, total_resources):
 		total = 0
 		for resource_id, amount in available_resources.iteritems():
-			if resource_id in self.overridden_resource_values: # natural resources have 0 value by default
+			if resource_id in self.overridden_resource_values:  # natural resources have 0 value by default
 				total += amount * self.overridden_resource_values[resource_id]
 			else:
 				value = self.db.get_res_value(resource_id)
-				if value is not None: # happiness and some coverage resources have no value
+				if value is not None:  # happiness and some coverage resources have no value
 					total += amount * value
 		for resource_id, amount in total_resources.iteritems():
 			extra_amount = (amount - available_resources[resource_id])
-			if resource_id in self.overridden_resource_values: # natural resources have 0 value by default
-				total += extra_amount * self.overridden_resource_values[resource_id] * self.unavailable_resource_coefficient
+			if resource_id in self.overridden_resource_values:  # natural resources have 0 value by default
+				total += extra_amount * self.overridden_resource_values[
+					resource_id] * self.unavailable_resource_coefficient
 			else:
 				value = self.db.get_res_value(resource_id)
-				if value is not None: # happiness and some coverage resources have no value
+				if value is not None:  # happiness and some coverage resources have no value
 					total += extra_amount * value * self.unavailable_resource_coefficient
 		self.resource_score = int(total * self.resource_score_coefficient)
 
-	unit_value = {UNITS.FRIGATE: 1.5, UNITS.PLAYER_SHIP: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT: 0.05}
+	unit_value = {UNITS.FRIGATE: 1.5, UNITS.PLAYER_SHIP: 1, UNITS.USABLE_FISHER_BOAT: 1,
+		UNITS.FISHER_BOAT: 0.05}
 	unit_score_coefficient = 10
 
 	def _calculate_unit_score(self, ships):
@@ -207,6 +212,7 @@ class PlayerStats(WorldObject):
 		self.money_score = int(total * self.money_score_coefficient)
 
 	def _calculate_total_score(self):
-		self.total_score = self.settler_score + self.building_score + self.resource_score + self.unit_score + self.land_score + self.money_score
+		self.total_score = (self.settler_score + self.building_score + self.resource_score
+			+ self.unit_score + self.land_score + self.money_score)
 
 decorators.bind_all(PlayerStats)

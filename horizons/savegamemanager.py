@@ -207,16 +207,16 @@ class SavegameManager(object):
 
 		if autosaves:
 			tmp_del("%s/*.%s" % (cls.autosave_dir, cls.savegame_extension),
-			        horizons.globals.fife.get_uh_setting("AutosaveMaxCount"))
+				horizons.globals.fife.get_uh_setting("AutosaveMaxCount"))
 		if quicksaves:
 			tmp_del("%s/*.%s" % (cls.quicksave_dir, cls.savegame_extension),
-			        horizons.globals.fife.get_uh_setting("QuicksaveMaxCount"))
+				horizons.globals.fife.get_uh_setting("QuicksaveMaxCount"))
 
 	@classmethod
 	def get_recommended_number_of_players(cls, mapfile):
 		"""Returns amount of players recommended for a map *mapfile*."""
-		dbdata = DbReader(mapfile) \
-			("SELECT value FROM properties WHERE name = ?", "players_recommended")
+		dbdata = (DbReader(mapfile)
+			("SELECT value FROM properties WHERE name = ?", "players_recommended"))
 		if dbdata:
 			return dbdata[0][0]
 		else:
@@ -238,7 +238,7 @@ class SavegameManager(object):
 					metadata[key] = cls.savegame_metadata_types[key](result[0][0])
 		except sqlite3.OperationalError as e:
 			cls.log.warning('Warning: Cannot read savegame {file}: {exception}'
-			                ''.format(file=savegamefile, exception=e))
+					''.format(file=savegamefile, exception=e))
 			return metadata
 
 		screenshot_data = None

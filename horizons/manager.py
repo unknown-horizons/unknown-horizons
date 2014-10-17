@@ -105,10 +105,12 @@ class MPManager(LivingObject):
 
 		for packet in packets_received:
 			if isinstance(packet, CommandPacket):
-				self.log.debug("Got command packet from {} for tick {}".format(packet.player_id, packet.tick))
+				self.log.debug("Got command packet from {} for tick {}"
+					.format(packet.player_id, packet.tick))
 				self.commandsmanager.add_packet(packet)
 			elif isinstance(packet, CheckupHashPacket):
-				self.log.debug("Got checkuphash packet from {} for tick {}".format(packet.player_id, packet.tick))
+				self.log.debug("Got checkuphash packet from {} for tick {}"
+					.format(packet.player_id, packet.tick))
 				self.checkuphashmanager.add_packet(packet)
 			else:
 				self.log.warning("invalid packet: " + str(packet))
@@ -134,7 +136,7 @@ class MPManager(LivingObject):
 				hash_value = self.session.world.get_checkup_hash()
 				# self.log.debug("MPManager: Checkup hash for tick %s is %s", tick, hash_value)
 				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick),
-			                              self.session.world.player.worldid, hash_value)
+							self.session.world.player.worldid, hash_value)
 				self.checkuphashmanager.add_packet(checkuphashpacket)
 				self.log.debug("sending checkuphash for tick %d" % (checkuphashpacket.tick))
 				self.networkinterface.send_packet(checkuphashpacket)
@@ -142,7 +144,7 @@ class MPManager(LivingObject):
 		# decide if tick can be calculated
 		# in the first few ticks, no data is available
 		if (self.commandsmanager.is_tick_ready(tick) or
-                        tick < (Scheduler.FIRST_TICK_ID + self.EXECUTIONDELAY)):
+			tick < (Scheduler.FIRST_TICK_ID + self.EXECUTIONDELAY)):
 			# self.log.debug("MPManager: check tick %s ready: yes", tick)
 			return Timer.TEST_PASS
 		else:
@@ -175,17 +177,17 @@ class MPManager(LivingObject):
 		if tick % self.HASH_EVAL_DISTANCE == 0:
 			if not self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff):
 				self.log.error("MPManager: Hash values generated in tick {} are not equal"
-                                    .format(tick - self.HASHDELAY))
+					.format(tick - self.HASHDELAY))
 				# if this is reached, we are screwed. Something went wrong in the simulation,
 				# but we don't know what. Stop the game.
 				msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
-				        _("We are very sorry and hope to have this bug fixed in a future version.")
+					_("We are very sorry and hope to have this bug fixed in a future version.")
 				self.session.ingame_gui.open_error_popup('Out of sync', msg)
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):
 		"""Called when a divergence has been detected"""
 		self.log.error("MPManager: Hash diff:\n{} hash1: {}\n{} hash2: {}"
-            .format(player1, hash1, player2, hash2))
+			.format(player1, hash1, player2, hash2))
 		self.log.error("------------------")
 		self.log.error("Differences:")
 		if len(hash1) != len(hash2):
@@ -209,7 +211,7 @@ class MPManager(LivingObject):
 		@param command: Command instance
 		@param local: commands that don't need to be sent over the wire"""
 		self.log.debug('MPManager: adding command (next tick: {}) {}'
-                    .format(self.session.timer.tick_next_id, command))
+			.format(self.session.timer.tick_next_id, command))
 		if local:
 			self.localcommands.append(command)
 		else:
@@ -252,8 +254,8 @@ class MPPacketmanager(object):
                     tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
 		if not ready:
 			self.log.debug("tick not ready, packets: {}".format(
-                           list(str(x) for x in self.get_packets_for_tick
-                           (tick, remove_returned_commands=False))))
+				list(str(x) for x in self.get_packets_for_tick
+				(tick, remove_returned_commands=False))))
 		return ready
 
 	def get_packets_for_tick(self, tick, remove_returned_commands=True):
@@ -329,7 +331,7 @@ class MPPacket(object):
 
 	def __str__(self):
 		return "packet {} from player {} for tick {}".format(self.__class__,
-            WorldObject.get_object_by_id(self.player_id), self.tick)
+			WorldObject.get_object_by_id(self.player_id), self.tick)
 
 
 class CommandPacket(MPPacket):

@@ -57,12 +57,13 @@ def toggle_health_for_all_health_instances(world):
 				instance.draw_health(remove_only=True)
 				world.session.view.remove_change_listener(instance.draw_health)
 
+
 def toggle_translucency(world):
 	"""Make certain building types translucent"""
 	if not hasattr(world, "_translucent_buildings"):
 		world._translucent_buildings = set()
 
-	if not world._translucent_buildings: # no translucent buildings saved => enable
+	if not world._translucent_buildings:  # no translucent buildings saved => enable
 		building_types = world.session.db.get_translucent_buildings()
 		add = world._translucent_buildings.add
 		from weakref import ref as create_weakref
@@ -70,17 +71,17 @@ def toggle_translucency(world):
 		for b in world.get_all_buildings():
 			if b.id in building_types:
 				fife_instance = b._instance
-				add( create_weakref(fife_instance) )
+				add(create_weakref(fife_instance))
 				fife_instance.keep_translucency = True
-				fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+				fife_instance.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
 
-	else: # undo translucency
+	else:  # undo translucency
 		for inst in world._translucent_buildings:
 			try:
-				inst().get2dGfxVisual().setTransparency( 0 )
+				inst().get2dGfxVisual().setTransparency(0)
 				inst().keep_translucency = False
 			except AttributeError:
-				pass # obj has been deleted, inst() returned None
+				pass  # obj has been deleted, inst() returned None
 		world._translucent_buildings.clear()
 
 
@@ -93,8 +94,10 @@ def save_map(world, path, prefix):
 		island_name = '%s_island_%d_%d.sqlite' % (prefix, island.origin.x, island.origin.y)
 		island_db_path = os.path.join(path, island_name)
 		if os.path.exists(island_db_path):
-			os.unlink(island_db_path) # the process relies on having an empty file
-		db('INSERT INTO island (x, y, file) VALUES(?, ?, ?)', island.origin.x, island.origin.y, 'content/islands/' + island_name)
+			os.unlink(island_db_path)  # the process relies on having an empty file
+		db('INSERT INTO island (x, y, file) VALUES(?, ?, ?)',
+			island.origin.x, island.origin.y,
+			'content/islands/' + island_name)
 		island_db = DbReader(island_db_path)
 		island.save_map(island_db)
 		island_db.close()
@@ -124,7 +127,8 @@ def add_resource_deposits(world, resource_multiplier):
 	mountain_locations = []
 
 	def get_valid_locations(usable_part, island, width, height):
-		"""Return a list of all valid locations for a width times height object in the format [(value, (x, y), island), ...]."""
+		"""Return a list of all valid locations for a width times height object
+		in the format [(value, (x, y), island), ...]."""
 		locations = []
 		offsets = list(itertools.product(xrange(width), xrange(height)))
 		for x, y in sorted(usable_part):
@@ -153,7 +157,7 @@ def add_resource_deposits(world, resource_multiplier):
 			total_sum.append(last_sum)
 
 		for _unused1 in xrange(max_objects):
-			for _unused2 in xrange(7): # try to place the object 7 times
+			for _unused2 in xrange(7):  # try to place the object 7 times
 				object_sum = world.session.random.random() * last_sum
 				pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
 				x, y = locations[pos][1]
@@ -168,7 +172,7 @@ def add_resource_deposits(world, resource_multiplier):
 		queue = deque()
 		distance = {}
 		for (x, y), tile in island.ground_map.iteritems():
-			if len(tile.classes) == 1: # could be a shallow to deep water tile
+			if len(tile.classes) == 1:  # could be a shallow to deep water tile
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
 					if coords in world.water_body and world.water_body[coords] == world.sea_number:
@@ -198,24 +202,29 @@ def add_resource_deposits(world, resource_multiplier):
 		local_clay_deposit_locations = get_valid_locations(usable_part, island, *ClayDeposit.size)
 		clay_deposit_locations.extend(local_clay_deposit_locations)
 		local_clay_deposits_base = 0.3 + len(local_clay_deposit_locations) ** 0.7 / 60.0
-		num_local_clay_deposits = int(max(0, resource_multiplier * min(3, local_clay_deposits_base + abs(world.session.random.gauss(0, 0.7)))))
+		num_local_clay_deposits = int(max(0, resource_multiplier * min(3,
+			local_clay_deposits_base + abs(world.session.random.gauss(0, 0.7)))))
 		place_objects(local_clay_deposit_locations, num_local_clay_deposits, ClayDeposit)
 
 		# place the local mountains
 		local_mountain_locations = get_valid_locations(usable_part, island, *Mountain.size)
 		mountain_locations.extend(local_mountain_locations)
 		local_mountains_base = 0.1 + len(local_mountain_locations) ** 0.5 / 120.0
-		num_local_mountains = int(max(0, resource_multiplier * min(2, local_mountains_base + abs(world.session.random.gauss(0, 0.8)))))
+		num_local_mountains = int(max(0, resource_multiplier * min(2,
+			local_mountains_base + abs(world.session.random.gauss(0, 0.8)))))
 		place_objects(local_mountain_locations, num_local_mountains, Mountain)
 
 	# place some extra clay deposits
 	extra_clay_base = len(clay_deposit_locations) ** 0.8 / 400.0
-	num_extra_clay_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_clay_base + abs(world.session.random.gauss(0, 1))))))
+	num_extra_clay_deposits = int(round(max(1, resource_multiplier * min(7,
+		len(world.islands) * 1.0 + 2,
+		extra_clay_base + abs(world.session.random.gauss(0, 1))))))
 	place_objects(clay_deposit_locations, num_extra_clay_deposits, ClayDeposit)
 
 	# place some extra mountains
 	extra_mountains_base = len(mountain_locations) ** 0.8 / 700.0
-	num_extra_mountains = int(round(max(1, resource_multiplier * min(4, len(world.islands) * 0.5 + 2, extra_mountains_base + abs(world.session.random.gauss(0, 0.7))))))
+	num_extra_mountains = int(round(max(1, resource_multiplier * min(4, len(world.islands) * 0.5 + 2,
+		extra_mountains_base + abs(world.session.random.gauss(0, 0.7))))))
 	place_objects(mountain_locations, num_extra_mountains, Mountain)
 
 
@@ -223,7 +232,8 @@ def add_nature_objects(world, natural_resource_multiplier):
 	"""
 	Place trees, wild animals, fish deposits, clay deposits, and mountains.
 
-	@param natural_resource_multiplier: multiply the amount of fish deposits, clay deposits, and mountains by this.
+	@param natural_resource_multiplier: multiply the amount of fish deposits,
+	clay deposits, and mountains by this.
 	"""
 
 	if not int(world.properties.get('RandomTrees', 1)):
@@ -241,27 +251,31 @@ def add_nature_objects(world, natural_resource_multiplier):
 		for (x, y), tile in sorted(island.ground_map.iteritems()):
 			# add trees based on adjacent trees
 			for (dx, dy) in fish_directions:
-				position = Point(x+dx, y+dy)
+				position = Point(x + dx, y + dy)
 				newTile = world.get_tile(position)
-				if newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
-					building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
+				if (newTile.object is not None and newTile.object.id == BUILDINGS.TREE and
+						world.session.random.randint(0, 2) == 0 and
+						Tree.check_build(world.session, tile, check_settlement=False)):
+					building = Build(Tree, x, y, island, 45 +
+						world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
 					if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0:
 						CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 					if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-				
-				
+
 			# add tree to every nth tile and an animal to one in every M trees
 			if world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
-				if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0: # add animal to every nth tree
+				if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0:
+					# add animal to every nth tree
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-			
-			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
+
+			if ('coastline' in tile.classes and
+					world.session.random.random() < natural_resource_multiplier / 4.0):
 				# try to place fish: from the current position go to a random directions twice
 				for (x_dir, y_dir) in world.session.random.sample(fish_directions, 2):
 					# move a random amount in both directions
@@ -291,6 +305,7 @@ def get_random_possible_ground_unit_position(world):
 			if (x, y) in island.path_nodes.nodes:
 				return Point(x, y)
 
+
 def get_random_possible_ship_position(world):
 	"""Returns a position in water, that is not at the border of the world"""
 	offset = 2
@@ -299,22 +314,23 @@ def get_random_possible_ship_position(world):
 		y = world.session.random.randint(world.min_y + offset, world.max_y - offset)
 
 		if (x, y) in world.ship_map:
-			continue # don't place ship where there is already a ship
+			continue  # don't place ship where there is already a ship
 
 		# check if there is an island nearby (check only important coords)
 		position_possible = True
 		for first_sign in (-1, 0, 1):
 			for second_sign in (-1, 0, 1):
-				point_to_check = Point( x + offset*first_sign, y + offset*second_sign )
+				point_to_check = Point(x + offset * first_sign, y + offset * second_sign)
 				if world.get_island(point_to_check) is not None:
 					position_possible = False
 					break
-		if not position_possible: # propagate break
-			continue # try another coord
+		if not position_possible:  # propagate break
+			continue  # try another coord
 
-		break # all checks successful
+		break  # all checks successful
 
 	return Point(x, y)
+
 
 def get_random_possible_coastal_ship_position(world):
 	"""Returns a position in water, that is not at the border of the world
@@ -328,16 +344,15 @@ def get_random_possible_coastal_ship_position(world):
 		y = world.session.random.randint(world.min_y + offset, world.max_y - offset)
 
 		if (x, y) in world.ship_map:
-			continue # don't place ship where there is already a ship
+			continue  # don't place ship where there is already a ship
 
 		result = Point(x, y)
 		if world.get_island(result) is not None:
-			continue # don't choose a point on an island
+			continue  # don't choose a point on an island
 
 		# check if there is an island nearby (check only important coords)
 		for first_sign in (-1, 0, 1):
 			for second_sign in (-1, 0, 1):
-				point_to_check = Point( x + first_sign, y + second_sign )
+				point_to_check = Point(x + first_sign, y + second_sign)
 				if world.get_island(point_to_check) is not None:
 					return result
-
