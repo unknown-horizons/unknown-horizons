@@ -26,6 +26,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluencingDisaster
 from horizons.world.status import BlackDeathStatusIcon
 
+
 class BlackDeathDisaster(BuildingInfluencingDisaster):
 	"""Simulates the Black Death.
 
@@ -51,12 +52,12 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 	RESCUE_BUILDING_TYPE = BUILDINGS.DOCTOR
 
 	def __init__(self, settlement, manager):
-		super (BlackDeathDisaster, self).__init__(settlement, manager)
+		super(BlackDeathDisaster, self).__init__(settlement, manager)
 		self.healed_buildings = []
 
 	def infect(self, building, load=None):
 		"""@load: (db, disaster_worldid), set on restoring infected state of savegame"""
-		if not building in self.healed_buildings:
+		if building not in self.healed_buildings:
 			super(BlackDeathDisaster, self).infect(building, load=load)
 
 	def wreak_havoc(self, building):
@@ -66,7 +67,8 @@ class BlackDeathDisaster(BuildingInfluencingDisaster):
 			inhabitants_that_will_die = self._manager.session.random.randint(1, building.inhabitants)
 			building.inhabitants -= inhabitants_that_will_die
 			self.log.debug("%s inhabitants dying", inhabitants_that_will_die)
-			Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=self.TIME_BEFORE_HAVOC)
+			Scheduler().add_new_object(Callback(self.wreak_havoc, building),
+				self, run_in=self.TIME_BEFORE_HAVOC)
 		else:
 			self.recover(building)
 

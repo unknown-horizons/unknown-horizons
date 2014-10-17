@@ -36,6 +36,7 @@ from horizons.world.units.ship import Ship
 from horizons.world.units.weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.component.storagecomponent import StorageComponent
 
+
 @metaChangeListenerDecorator("storage_modified")
 @metaChangeListenerDecorator("user_attack_issued")
 class WeaponHolder(object):
@@ -65,7 +66,7 @@ class WeaponHolder(object):
 	def create_weapon_storage(self):
 		self._weapon_storage = []
 		self._fireable = []
-		#TODO make a system for making it load from db
+		# TODO make a system for making it load from db
 		self.total_number_of_weapons = 30
 
 	def update_range(self, caller=None):
@@ -264,7 +265,7 @@ class WeaponHolder(object):
 		Static WeaponHolders are aggressive, attacking all enemies that are in range
 		"""
 		enemies = [u for u in self.session.world.get_health_instances(
-				self.position.center, self._max_range)
+			self.position.center, self._max_range)
 			if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
 
 		self.log.debug("%s stance tick, found enemies: %s", self, [str(i) for i in enemies])

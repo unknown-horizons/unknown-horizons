@@ -34,13 +34,14 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.extscheduler import ExtScheduler
 from horizons.world.resourcehandler import ResourceTransferHandler
 
+
 class Unit(MovingObject, ResourceTransferHandler):
 	log = logging.getLogger("world.units")
 	is_unit = True
 	is_ship = False
 	health_bar_y = -30
 
-	AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10 # show health for 10 sec after damage has been taken
+	AUTOMATIC_HEALTH_DISPLAY_TIMEOUT = 10  # show health for 10 sec after damage has been taken
 
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(x=x, y=y, **kwargs)
@@ -48,15 +49,16 @@ class Unit(MovingObject, ResourceTransferHandler):
 
 	def __init(self, x, y, owner):
 		self.owner = owner
+
 		class Tmp(fife.InstanceActionListener):
 			pass
 		self.InstanceActionListener = Tmp()
-		self.InstanceActionListener.onInstanceActionFinished = \
-				WeakMethod(self.onInstanceActionFinished)
-		self.InstanceActionListener.onInstanceActionCancelled = \
-				WeakMethod(self.onInstanceActionCancelled)
-		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
-		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
+		self.InstanceActionListener.onInstanceActionFinished = WeakMethod(
+			self.onInstanceActionFinished)
+		self.InstanceActionListener.onInstanceActionCancelled = WeakMethod(
+			self.onInstanceActionCancelled)
+		self.InstanceActionListener.onInstanceActionFrame = lambda *args: None
+		self.InstanceActionListener.thisown = 0  # fife will claim ownership of this
 
 		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance(
 			self.__class__._fife_object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
@@ -104,15 +106,16 @@ class Unit(MovingObject, ResourceTransferHandler):
 
 	def _on_damage(self, caller=None):
 		"""Called when health has changed"""
-		if not self._instance: # dead
+		if not self._instance:  # dead
 			# it is sometimes hard to avoid this being called after the unit has died,
-			# e.g. when it's part of a list of changelisteners, and one of the listeners executed before kills the unit
+			# e.g. when it's part of a list of changelisteners,
+			# and one of the listeners executed before kills the unit
 			return
 		health_was_displayed_before = self._health_displayed
 		# always update
 		self.draw_health()
 		if health_was_displayed_before:
-			return # don't schedule removal
+			return  # don't schedule removal
 		# remember that it has been drawn automatically
 		self._last_draw_health_call_on_damage = True
 		# remove later (but only in case there's no manual interference)
@@ -150,14 +153,14 @@ class Unit(MovingObject, ResourceTransferHandler):
 		left_lower = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos))
 		right_lower = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos))
 
-		if health > 0: # draw healthy part of health bar
+		if health > 0:  # draw healthy part of health bar
 			renderer.addQuad(render_name,
 			                 left_upper,
 			                 left_lower,
 			                 mid_node_btm,
 			                 mid_node_top,
 			                 0, 255, 0)
-		if health < max_health: # draw damaged part
+		if health < max_health:  # draw damaged part
 			renderer.addQuad(render_name,
 			                 mid_node_top,
 			                 mid_node_btm,
@@ -204,8 +207,8 @@ class Unit(MovingObject, ResourceTransferHandler):
 		tries = range_squared // 2
 		for i in xrange(tries):
 			# choose x-difference, then y-difference so that the distance is in the range.
-			x_diff = randint(1, in_range) # always go at least 1 field
-			y_max_diff = int( math.sqrt(range_squared - x_diff*x_diff) )
+			x_diff = randint(1, in_range)  # always go at least 1 field
+			y_max_diff = int(math.sqrt(range_squared - x_diff * x_diff))
 			y_diff = randint(0, y_max_diff)
 			# use randomness of x/y_diff below, randint calls are expensive
 			# this results in a higher chance for x > y than y < x, so equalize
@@ -227,8 +230,8 @@ class Unit(MovingObject, ResourceTransferHandler):
 	def classname(self):
 		return self.session.db.get_unit_type_name(self.id)
 
-	def __str__(self): # debug
-		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
-
+	def __str__(self):  # debug
+		return '%s(id=%s;worldid=%s)' % (self.name, self.id,
+			self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(Unit)

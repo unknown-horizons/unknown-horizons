@@ -79,7 +79,7 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 	"""Weapon Holder Ground Unit"""
 	def __init__(self, x, y, **kwargs):
 		super(FightingGroundUnit, self).__init__(x=x, y=y, **kwargs)
-		#NOTE weapons
+		# NOTE weapons
 		self.add_weapon_to_storage(WEAPONS.SWORD)
 		self.add_weapon_to_storage(WEAPONS.CANNON)
 		names = self.session.db("SELECT name FROM groundunitnames")
@@ -107,5 +107,5 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		else:
 			action = 'ranged'
 
-		self.act('attack_%s' % action, facing_location, repeating = False)
+		self.act('attack_%s' % action, facing_location, repeating=False)
 		self._action = 'idle'

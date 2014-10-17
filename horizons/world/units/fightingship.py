@@ -24,6 +24,7 @@ from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
 from horizons.component.commandablecomponent import CommandableComponent
 
+
 class FightingShip(MovingWeaponHolder, Ship):
 	"""Class representing a fighting ship ship
 	@param x: int x position
@@ -88,4 +89,3 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self._instance.setFacingLocation(facing_location)
 		self.act('fire_%s' % direction, facing_location, repeating=False)
 		self._action = 'idle'
-

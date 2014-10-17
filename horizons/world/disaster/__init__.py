@@ -28,11 +28,12 @@ from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.component.storagecomponent import StorageComponent
 
+
 class Disaster(WorldObject):
 	"""Prototype class for disasters."""
 	log = logging.getLogger("world.disaster")
 
-	TYPE = None # string to identify type
+	TYPE = None  # string to identify type
 
 	# Chance this disaster is seeded into a settlement in a tick of the
 	# disaster manager
@@ -42,7 +43,7 @@ class Disaster(WorldObject):
 	EXPANSION_TIME = GAME_SPEED.TICKS_PER_SECOND * 5
 
 	# Resource to distribute to infected buildings
-	#	This is how preventory units (doctors) spot affected buildings.
+	# This is how preventory units (doctors) spot affected buildings.
 	DISASTER_RES = None
 
 	def __init__(self, settlement, manager):
@@ -78,9 +79,9 @@ class Disaster(WorldObject):
 		@load: (db, disaster_worldid), set on restoring infected state of savegame"""
 		self.log.debug("%s infecting %s at %s", self, building, building.position)
 		building.disaster = self
-		if self.DISASTER_RES is not None and not load: # in load, storage save/load will kick in
+		if self.DISASTER_RES is not None and not load:  # in load, storage save/load will kick in
 			remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
-			assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
+			assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
 	def recover(self, building):
 		"""Inverse of infect(). Is also called when buildings are torn down by the user."""
@@ -91,7 +92,7 @@ class Disaster(WorldObject):
 			inv = building.get_component(StorageComponent).inventory
 			if inv[self.DISASTER_RES] > 0:
 				remnant = inv.alter(self.DISASTER_RES, -inv[self.DISASTER_RES])
-				assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
+				assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
 	def breakout(self):
 		"""Picks (a) object(s) to start a breakout."""

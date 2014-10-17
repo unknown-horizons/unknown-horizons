@@ -66,10 +66,10 @@ class SurfaceTile(object):
 
 		(x, y) = (self.x, self.y)
 		layer_coords = {
-			45:  (x + 3, y,     0),
-			135: (x,     y - 3, 0),
-			225: (x - 3, y,     0),
-			315: (x,     y + 3, 0),
+			45: (x + 3, y, 0),
+			135: (x, y - 3, 0),
+			225: (x - 3, y, 0),
+			315: (x, y + 3, 0),
 		}[rotation]
 
 		facing_loc = fife.Location(self.session.view.layers[self.layer])

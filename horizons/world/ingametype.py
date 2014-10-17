@@ -24,6 +24,7 @@ import hashlib
 from horizons.constants import TIER
 from horizons.i18n import _lazy
 
+
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
 	@param id: building or unit type id
@@ -54,7 +55,7 @@ class IngameType(type):
 			super(cls, self).load(db, worldid)
 			return self
 
-		module = __import__(str(self.basepackage+class_package), [], [], [str(class_name)])
+		module = __import__(str(self.basepackage + class_package), [], [], [str(class_name)])
 		return type.__new__(self, self.classstring.format(id=id),
 			(getattr(module, class_name),),
 			{'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
@@ -82,7 +83,7 @@ class IngameType(type):
 		# (with entries for all tiers in which it is active)
 		name_data = yaml_data['name']
 		start_tier = yaml_data.get('tier', TIER.NATURE)  # first tier where object is available
-		if isinstance(name_data, dict): # { level_id : name }
+		if isinstance(name_data, dict):  # { level_id : name }
 			# fill up dict (fall down to highest tier which has a name specified
 			self._level_specific_names = {}
 			for lvl in xrange(start_tier, TIER.CURRENT_MAX + 1):
@@ -97,14 +98,14 @@ class IngameType(type):
 				else:
 					self._level_specific_names[lvl] = self._strip_translation_marks(name)
 
-			self._name = self._level_specific_names[start_tier] # default name: lowest available
-		else: # assume just one string
-			self._name = self._strip_translation_marks( name_data )
+			self._name = self._level_specific_names[start_tier]  # default name: lowest available
+		else:  # assume just one string
+			self._name = self._strip_translation_marks(name_data)
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']
-		self.baseclass = yaml_data['baseclass'] # mostly only for debug
-		self._real_object = None # wrapped by _fife_object
+		self.baseclass = yaml_data['baseclass']  # mostly only for debug
+		self._real_object = None  # wrapped by _fife_object
 
 		self._parse_component_templates()
 
@@ -144,8 +145,8 @@ class IngameType(type):
 
 	def _parse_component_templates(self):
 		"""Prepares misc data in self.component_templates"""
-		producer = [ comp for comp in self.component_templates if
-		             isinstance(comp, dict) and comp.iterkeys().next() == 'ProducerComponent' ]
+		producer = [comp for comp in self.component_templates if
+			isinstance(comp, dict) and comp.iterkeys().next() == 'ProducerComponent']
 		if producer:
 			# we want to support string production line ids, the code should still only see integers
 			# therefore we do a deterministic string -> int conversion here
@@ -165,7 +166,7 @@ class IngameType(type):
 					# on this data type, so problems might occur, also with respect to performance.
 					# in principle, strings and longs should also be supported, but for the sake of
 					# safety, we use ints.
-					new_key = int( new_key % 2**31 ) # this ensures it's an integer on all reasonable platforms
+					new_key = int(new_key % 2 ** 31)  # this ensures it's an integer on all reasonable platforms
 				if new_key in new_data:
 					raise Exception('Error: production line id conflict.'
 					                ' Please change "%s" to anything else for "%s"'
@@ -173,7 +174,6 @@ class IngameType(type):
 				new_data[new_key] = v
 
 			producer_data['productionlines'] = new_data
-
 
 	@property
 	def _fife_object(self):

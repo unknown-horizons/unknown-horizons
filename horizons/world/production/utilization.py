@@ -22,6 +22,7 @@
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
 
+
 class Utilization(object):
 	"""Basic utilization class used in producers"""
 
@@ -29,7 +30,7 @@ class Utilization(object):
 		productions = instance.get_productions()
 		total = 0
 		if not productions:
-			return 0 # catch the border case, else there'll be a div by 0
+			return 0  # catch the border case, else there'll be a div by 0
 		for production in productions:
 			state_history = production.get_state_history_times(False)
 			total += state_history[PRODUCTION.STATES.producing.index]
@@ -48,9 +49,10 @@ class Utilization(object):
 			diff = abs(limit - capac)
 			# all those values are relative values, so we can just do this:
 			interval = diff * PRODUCTION.STATISTICAL_WINDOW
-			self._old_capacity_utilization = (cur_tick + interval, # expiration date
-						                      limit, capac < limit )
+			self._old_capacity_utilization = (cur_tick + interval,  # expiration date
+									limit, capac < limit)
 		return self._old_capacity_utilization[2]
+
 
 class FullUtilization(Utilization):
 	"""Used for producers where no utilization calculation is necessary"""
@@ -61,7 +63,7 @@ class FullUtilization(Utilization):
 
 class FieldUtilization(Utilization):
 
-	max_fields_possible = 8 # only for utilization calculation
+	max_fields_possible = 8  # only for utilization calculation
 
 	def capacity_utilization(self, instance):
 		"""

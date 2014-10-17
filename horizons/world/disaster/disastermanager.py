@@ -28,6 +28,7 @@ from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.worldobject import WorldObject
 
+
 class DisasterManager(object):
 	"""The disaster manager manages disasters. It seeds them into the
 	game world and makes all requirements for a disaster are met before
@@ -36,7 +37,7 @@ class DisasterManager(object):
 
 	# Number of ticks between calls to run()
 	CALL_EVERY = GAME_SPEED.TICKS_PER_SECOND * 60
-	#CALL_EVERY = 1 # to conjure the demons of armageddon
+	# CALL_EVERY = 1 # to conjure the demons of armageddon
 
 	def __init__(self, session, disabled=False):
 		"""
@@ -64,13 +65,14 @@ class DisasterManager(object):
 		db_data = db("SELECT remaining_ticks FROM disaster_manager")
 		if db_data:
 			Scheduler().rem_all_classinst_calls(self)
-			ticks = db_data[0][0] # only one row in table
+			ticks = db_data[0][0]  # only one row in table
 			Scheduler().add_new_object(self.run, self, run_in=ticks,
 			                           loop_interval=self.CALL_EVERY, loops=-1)
 
-		for disaster_id, disaster_type, settlement_id in db("SELECT rowid, type, settlement FROM disaster"):
+		for disaster_id, disaster_type, settlement_id in db(
+			"SELECT rowid, type, settlement FROM disaster"):
 			settlement = WorldObject.get_object_by_id(settlement_id)
-			klass = (i for i in  self.disasters if i.TYPE == disaster_type).next()
+			klass = (i for i in self.disasters if i.TYPE == disaster_type).next()
 			cata = klass(settlement, self)
 			self._active_disaster[settlement] = cata
 			cata.load(db, disaster_id)
@@ -80,7 +82,7 @@ class DisasterManager(object):
 			return
 		for settlement in self.session.world.settlements:
 			for disaster in self.disasters:
-				if not settlement in self._active_disaster:
+				if settlement not in self._active_disaster:
 					if self.session.random.random() <= disaster.SEED_CHANCE:
 						if disaster.can_breakout(settlement):
 							self.log.debug("Seeding disaster: %s", disaster)
@@ -107,5 +109,3 @@ class DisasterManager(object):
 		if self.is_affected(settlement):
 			return self._active_disaster[settlement]
 		return None
-
-
