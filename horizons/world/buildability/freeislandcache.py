@@ -21,6 +21,7 @@
 
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
 
+
 class FreeIslandBuildabilityCache(object):
 	"""
 	An instance of this class is used to keep track of the unclaimed area on an island.
@@ -37,7 +38,7 @@ class FreeIslandBuildabilityCache(object):
 
 	def __init__(self, island):
 		self._binary_cache = BinaryBuildabilityCache(island.terrain_cache)
-		self.cache = self._binary_cache.cache # {(width, height): set((x, y), ...), ...}
+		self.cache = self._binary_cache.cache  # {(width, height): set((x, y), ...), ...}
 		self.island = island
 		self._init()
 

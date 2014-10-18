@@ -29,6 +29,7 @@ from horizons.messaging import ResourceProduced, SettingChanged
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
+
 class ProductionFinishedIconManager(object):
 	"""Manager class that manages all production finished icons. It listens to
 	 ResourceProduced messages on the main message bus"""
@@ -41,8 +42,8 @@ class ProductionFinishedIconManager(object):
 		self.layer = layer
 		self.renderer = renderer
 		self.run = {}
-		self.animation_duration = 20 # The duration how long the image moves up
-		self.animation_steps = 1 # The steps that the image makes every run
+		self.animation_duration = 20  # The duration how long the image moves up
+		self.animation_steps = 1  # The steps that the image makes every run
 		self.background = "content/gui/images/background/produced_notification.png"
 
 		if bool(horizons.globals.fife.get_uh_setting("ShowResourceIcons")):
@@ -91,7 +92,7 @@ class ProductionFinishedIconManager(object):
 
 		display_latency = 1
 		for resource_item in message.produced_resources.items():
-			res = resource_item[0] # TODO multiple resources
+			res = resource_item[0]  # TODO multiple resources
 			amount = message.sender.get_component(StorageComponent).inventory[res]
 
 			# abort if amount is zero
@@ -137,7 +138,7 @@ class ProductionFinishedIconManager(object):
 
 		self.renderer.addImage(group, bg_node, bg_image)
 		self.renderer.resizeImage(group, node, res_icon, 24, 24)
-		self.renderer.addText(group, node, font, ' '*9 + '{amount:>2d}'.format(amount=amount))
+		self.renderer.addText(group, node, font, ' ' * 9 + '{amount:>2d}'.format(amount=amount))
 
 	def remove_icon(self, group):
 		""" Remove the icon after the animation finished

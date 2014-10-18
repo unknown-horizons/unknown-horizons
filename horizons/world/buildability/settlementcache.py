@@ -21,6 +21,7 @@
 
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
 
+
 class SettlementBuildabilityCache(BinaryBuildabilityCache):
 	"""A specialized BinaryBuildabilityCache for settlements."""
 

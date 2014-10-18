@@ -21,6 +21,7 @@
 
 from collections import deque
 
+
 class ConnectedAreaCache(object):
 	"""
 	Query whether (x1, y1) and (x2, y2) are connected.
@@ -38,8 +39,8 @@ class ConnectedAreaCache(object):
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 
 	def __init__(self):
-		self.area_numbers = {} # {(x, y): area id, ...}
-		self.areas = {} # {area id: set((x, y), ...), ...}
+		self.area_numbers = {}  # {(x, y): area id, ...}
+		self.areas = {}  # {area id: set((x, y), ...), ...}
 		self._next_area_id = 1
 
 	def _label_area(self, seed_coords):
