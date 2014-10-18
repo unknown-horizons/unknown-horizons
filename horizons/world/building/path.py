@@ -112,7 +112,7 @@ class Path(ComponentHolder):
 				# direction.
 				fill_left = chr(ord(action_part) - 4) in action
 				# 'h' has the parents 'd' and 'a' (not 'e'), so we need a slight hack here.
-				fill_right = chr(ord(action_part) - 3 - 4*(action_part=='h')) in action
+				fill_right = chr(ord(action_part) - 3 - 4 * (action_part == 'h')) in action
 				if fill_left and fill_right:
 					action += action_part
 		if action == '':
@@ -122,6 +122,7 @@ class Path(ComponentHolder):
 		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))
 		self.act(action, location, True)
+
 
 class Road(Path, BasicBuilding, BuildableLine):
 	"""Actual buildable road."""

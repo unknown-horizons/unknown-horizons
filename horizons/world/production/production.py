@@ -111,8 +111,8 @@ class Production(ChangeListener):
 		# use a number > 0 for ticks
 		if remaining_ticks < 1:
 			remaining_ticks = 1
-		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, "
-			" _pause_old_state, creation_tick, owner) VALUES(?, ?, ?, ?, ?, ?, ?)',
+		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks,'
+			' _pause_old_state, creation_tick, owner) VALUES(?, ?, ?, ?, ?, ?, ?)',
 			None, self._state.index, self._prod_line.id, remaining_ticks,
 			None if self._pause_old_state is None else self._pause_old_state.index,
 			translated_creation_tick, owner_id)

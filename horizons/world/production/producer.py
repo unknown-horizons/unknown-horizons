@@ -40,6 +40,7 @@ from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
 from horizons.messaging import MineEmpty
 
+
 @metaChangeListenerDecorator("production_finished")
 @metaChangeListenerDecorator("activity_changed")
 class Producer(Component):
@@ -53,20 +54,21 @@ class Producer(Component):
 	DEPENDENCIES = [StorageComponent]
 
 	utilization_mapping = {
-	    'FieldUtilization': FieldUtilization,
-	    'FullUtilization': FullUtilization
+		'FieldUtilization': FieldUtilization,
+		'FullUtilization': FullUtilization
 	}
 
 	production_class = Production
 
 	# INIT
 	def __init__(self, auto_init=True, start_finished=False, productionlines=None,
-	             utilization_calculator=None, is_mine_for=None, settler_upgrade_lines=None,
-	             **kwargs):
+			utilization_calculator=None, is_mine_for=None, settler_upgrade_lines=None,
+			**kwargs):
 		"""
 		@param productionline: yaml-dict for prod line data. Must not be changed since it is cached.
 		@param utilization_calculator: one of utilization_mapping
-		@param settler_upgrade_lines: data for settler upgrades. can one day be generalized to other upgrades
+		@param settler_upgrade_lines: data for settler upgrades.
+		Can one day be generalized to other upgrades
 		"""
 		if productionlines is None:
 			productionlines = {}
@@ -85,7 +87,6 @@ class Producer(Component):
 			self.production_lines.update(self.settler_upgrade_lines.get_production_lines())
 		else:
 			self.settler_upgrade_lines = None
-
 
 	def __init(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
@@ -106,7 +107,7 @@ class Producer(Component):
 		# TODO: think about whether this is enough gui-related so it belongs to the ExtScheduler
 		# also check its performance when moving
 		interval = Scheduler().get_ticks(3)
-		run_in = self.session.random.randint(1, interval) # don't update all at once
+		run_in = self.session.random.randint(1, interval)  # don't update all at once
 		if self.instance.has_status_icon:
 			Scheduler().add_new_object(self.update_capacity_utilization, self, run_in=run_in,
 			                           loops=-1, loop_interval=interval)
@@ -125,7 +126,8 @@ class Producer(Component):
 		# time a new producer is built
 		temp_util = self.__utilization
 		self.__utilization = FullUtilization()
-		Scheduler().add_new_object(Callback(self.__set_utilization, temp_util), self, Scheduler().get_ticks(15))
+		Scheduler().add_new_object(Callback(self.__set_utilization, temp_util),
+			self, Scheduler().get_ticks(15))
 
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
@@ -145,7 +147,7 @@ class Producer(Component):
 
 		# not really fancy way of selecting special production class
 		if self.settler_upgrade_lines:
-			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level+1):
+			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level + 1):
 				production_class = SingleUseProduction
 
 		return production_class(inventory=self.instance.get_component(StorageComponent).inventory,
@@ -154,7 +156,8 @@ class Producer(Component):
 
 	def create_production_line(self, id):
 		"""Creates a production line instance, this is meant only for data transfer and READONLY use!
-		If you want to use production lines for anything else, go the proper way of the production class."""
+		If you want to use production lines for anything else,
+		go the proper way of the production class."""
 		assert id in self.production_lines
 		data = self.production_lines[id]
 		return ProductionLine(id, data)
@@ -164,12 +167,13 @@ class Producer(Component):
 		@param production_line_id: Production line from db
 		"""
 		production = self.create_production(production_line_id)
-		self.add_production( production )
+		self.add_production(production)
 		return production
 
 	def update_capacity_utilization(self):
 		"""Called by the scheduler to update the utilization regularly"""
-		if not self.capacity_utilization_below(ProductivityLowStatus.threshold) is not self.__utilization_ok:
+		if (not self.capacity_utilization_below(ProductivityLowStatus.threshold)
+				is not self.__utilization_ok):
 			self.__utilization_ok = not self.__utilization_ok
 			if self.__utilization_ok:
 				RemoveStatusIcon.broadcast(self, self.instance, ProductivityLowStatus)
@@ -208,19 +212,22 @@ class Producer(Component):
 		assert isinstance(production, Production)
 		self.log.debug('%s: added production line %s', self, production.get_production_line_id())
 		if production.is_paused():
-			self.log.debug('%s: added production line %s is paused', self, production.get_production_line_id())
+			self.log.debug('%s: added production line %s is paused', self,
+				production.get_production_line_id())
 			self._inactive_productions[production.get_production_line_id()] = production
 		else:
-			self.log.debug('%s: added production line %s is active', self, production.get_production_line_id())
+			self.log.debug('%s: added production line %s is active', self,
+				production.get_production_line_id())
 			self._productions[production.get_production_line_id()] = production
 		production.add_production_finished_listener(self._production_finished)
 		# This would be called multiple times during init, just add it later this tick.
 		# It also ensures that the changelistener would stick, we used to readd
 		# the listener in load(), which was explained by this comment:
-			# Listener has been removed in the productions.load(), because the
-			# changelistener's load is called
+		# Listener has been removed in the productions.load(), because the
+		# changelistener's load is called
 		Scheduler().add_new_object(
-		  Callback(production.add_change_listener, self._on_production_change, call_listener_now=True), self, run_in=0
+			Callback(production.add_change_listener, self._on_production_change,
+			call_listener_now=True), self, run_in=0
 		)
 		self.instance._changed()
 
@@ -238,12 +245,12 @@ class Producer(Component):
 
 	def has_production_line(self, prod_line_id):
 		"""Checks if this instance has a production with a certain production line id"""
-		return bool( self._get_production(prod_line_id) )
+		return bool(self._get_production(prod_line_id))
 
 	def remove_production(self, production):
 		"""Removes a production instance.
 		@param production: Production instance"""
-		production.remove() # production "destructor"
+		production.remove()  # production "destructor"
 		if self.is_active(production):
 			del self._productions[production.get_production_line_id()]
 			# update decommissioned icon after removing production
@@ -260,7 +267,7 @@ class Producer(Component):
 		Convenience method. Assumes, that this production line id has been added to this instance.
 		@param prod_line_id: production line id to remove
 		"""
-		self.remove_production( self._get_production(prod_line_id) )
+		self.remove_production(self._get_production(prod_line_id))
 
 	def alter_production_time(self, modifier, prod_line_id=None):
 		"""Multiplies the original production time of all production lines by modifier
@@ -281,7 +288,6 @@ class Producer(Component):
 		# which can be needed by changelisteners' actions (e.g. in remove_production method)
 		super(Producer, self).remove()
 		assert not self.get_productions(), 'Failed to remove %s ' % self.get_productions()
-
 
 	# PROTECTED METHODS
 	def _get_current_state(self):
@@ -323,7 +329,7 @@ class Producer(Component):
 			return False
 		else:
 			assert production.get_production_line_id() in self._productions or \
-			       production.get_production_line_id() in self._inactive_productions
+				production.get_production_line_id() in self._inactive_productions
 			return not production.is_paused()
 
 	def set_active(self, production=None, active=True):
@@ -376,7 +382,7 @@ class Producer(Component):
 				self.toggle_active(production)
 		else:
 			active = self.is_active(production)
-			self.set_active(production, active = not active)
+			self.set_active(production, active=not active)
 
 	def _on_production_change(self):
 		"""Makes the instance act according to the producers
@@ -394,9 +400,9 @@ class Producer(Component):
 		if self.instance.has_status_icon:
 			full = state is PRODUCTION.STATES.inventory_full
 			if full and not hasattr(self, "_producer_status_icon"):
-				affected_res = set() # find them:
+				affected_res = set()  # find them:
 				for prod in self.get_productions():
-					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
+					affected_res = affected_res.union(prod.get_unstorable_produced_res())
 				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
 				self._add_status_icon(self._producer_status_icon)
 
@@ -407,7 +413,7 @@ class Producer(Component):
 	def get_status_icons(self):
 		l = super(Producer, self).get_status_icons()
 		if self.capacity_utilization_below(ProductivityLowStatus.threshold):
-			l.append( ProductivityLowStatus() )
+			l.append(ProductivityLowStatus())
 		return l
 
 	def __str__(self):
@@ -422,7 +428,7 @@ class Producer(Component):
 			# try inactive ones, if no active ones are found
 			# this makes e.g. the boatbuilder's progress bar constant when you pause it
 			return production.progress
-		return 0 # No production available
+		return 0  # No production available
 
 	def __set_utilization(self, utilization):
 		self.__utilization = utilization
@@ -476,7 +482,7 @@ class QueueProducer(Producer):
 		self.__init()
 
 	def __init(self):
-		self.production_queue = [] # queue of production line ids
+		self.production_queue = []  # queue of production line ids
 
 	def save(self, db):
 		super(QueueProducer, self).save(db)
@@ -488,7 +494,8 @@ class QueueProducer(Producer):
 	def load(self, db, worldid):
 		super(QueueProducer, self).load(db, worldid)
 		self.__init()
-		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE object = ? ORDER by position", worldid):
+		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue"
+				" WHERE object = ? ORDER by position", worldid):
 			self.production_queue.append(prod_line_id)
 
 	def add_production_by_id(self, production_line_id):
@@ -504,14 +511,13 @@ class QueueProducer(Producer):
 
 			self.start_next_production()
 
-
 	def check_next_production_startable(self):
 		# See if we can start the next production, this only works if the current
 		# production is done
 		state = self._get_current_state()
 		return len(self.production_queue) > 0 and \
-		       (state is PRODUCTION.STATES.done or
-		        state is PRODUCTION.STATES.none)
+			(state is PRODUCTION.STATES.done or
+			state is PRODUCTION.STATES.none)
 
 	def on_queue_element_finished(self, production):
 		"""Callback used for the SingleUseProduction"""
@@ -521,11 +527,11 @@ class QueueProducer(Producer):
 	def start_next_production(self):
 		"""Starts the next production that is in the queue, if there is one."""
 		if self.check_next_production_startable():
-			self._productions.clear() # Make sure we only have one production active
+			self._productions.clear()  # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
 			prod = self.create_production(production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
-			self.add_production( prod )
+			self.add_production(prod)
 			self.set_active(production=prod, active=True)
 		else:
 			self.set_active(active=False)
@@ -599,7 +605,7 @@ class UnitProducer(QueueProducer):
 					# Fire a message indicating that the ship has been created
 					name = u.get_component(NamedComponent).name
 					self.session.ingame_gui.message_widget.add(string_id='NEW_UNIT', point=point,
-					                                           message_dict={'name' : name})
+										message_dict={'name': name})
 					found_tile = True
 					break
 			radius += 1

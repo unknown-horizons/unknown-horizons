@@ -39,11 +39,12 @@ from horizons.world.settlement import Settlement
 
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
-	"""Class that represents a building. The building class is mainly a super class for other buildings."""
+	"""Class that represents a building.
+	The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
-	walkable = False # whether we can walk on this building (True for e.g. streets, trees..)
-	buildable_upon = False # whether we can build upon this building
+	walkable = False  # whether we can walk on this building (True for e.g. streets, trees..)
+	buildable_upon = False  # whether we can build upon this building
 	is_building = True
 	tearable = True
 	layer = LAYERS.OBJECTS
@@ -57,6 +58,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	@param level: start in this tier
 	@param action_set_id: use this action set id. None means choose one at random
 	"""
+
 	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner,
@@ -83,27 +85,27 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			level = 0 if self.owner is None else self.owner.settler_level
 		self.level = level
 		self.rotation = rotation
-		if self.rotation in (135, 315): # Rotate the rect correctly
-			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
+		if self.rotation in (135, 315):  # Rotate the rect correctly
+			self.position = ConstRect(origin, self.size[1] - 1, self.size[0] - 1)
 		else:
-			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
+			self.position = ConstRect(origin, self.size[0] - 1, self.size[1] - 1)
 
 	def __init(self, remaining_ticks_of_month=None):
-		self.loading_area = self.position # shape where collector get resources
+		self.loading_area = self.position  # shape where collector get resources
 
 		origin = self.position.origin
 		self._instance, action_name = self.getInstance(self.session, origin.x, origin.y,
 		    rotation=self.rotation, action_set_id=self._action_set_id, world_id=str(self.worldid))
 
-		if self.has_running_costs: # Get payout every 30 seconds
+		if self.has_running_costs:  # Get payout every 30 seconds
 			interval = self.session.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
 			run_in = remaining_ticks_of_month if remaining_ticks_of_month is not None else interval
 			Scheduler().add_new_object(self.get_payout, self,
-			                           run_in=run_in, loops=-1, loop_interval=interval)
+				run_in=run_in, loops=-1, loop_interval=interval)
 
 	def toggle_costs(self):
 		self.running_costs, self.running_costs_inactive = \
-				self.running_costs_inactive, self.running_costs
+			self.running_costs_inactive, self.running_costs
 
 	def running_costs_active(self):
 		"""Returns whether the building currently pays the running costs for status 'active'"""
@@ -124,14 +126,15 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 	def save(self, db):
 		super(BasicBuilding, self).save(db)
-		db("INSERT INTO building (rowid, type, x, y, rotation, location, level) \
-		   VALUES (?, ?, ?, ?, ?, ?, ?)",
-		                                self.worldid, self.__class__.id, self.position.origin.x,
-		                                self.position.origin.y, self.rotation,
-		                                (self.settlement or self.island).worldid, self.level)
+		db("INSERT INTO building (rowid, type, x, y, rotation, location, level)"
+			"VALUES (?, ?, ?, ?, ?, ?, ?)",
+			self.worldid, self.__class__.id, self.position.origin.x,
+			self.position.origin.y, self.rotation,
+			(self.settlement or self.island).worldid, self.level)
 		if self.has_running_costs:
 			remaining_ticks = Scheduler().get_remaining_ticks(self, self.get_payout)
-			db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES(?, ?)", self.worldid, remaining_ticks)
+			db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES(?, ?)",
+				self.worldid, remaining_ticks)
 
 	def load(self, db, worldid):
 		self.island, self.settlement = self.load_location(db, worldid)
@@ -159,7 +162,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 		self.__init(remaining_ticks_of_month=remaining_ticks_of_month)
 
-
 		# island.add_building handles registration of building for island and settlement
 		self.island.add_building(self, self.owner, load=True)
 
@@ -173,7 +175,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			# workaround: island can't be fetched from world, because it isn't fully constructed
 			island = WorldObject.get_object_by_id(db.get_settlement_island(location_obj.worldid))
 			settlement = location_obj
-		else: # loc is island
+		else:  # loc is island
 			island = location_obj
 			settlement = None
 		return (island, settlement)
@@ -211,18 +213,20 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		return player.settler_level
 
 	@classmethod
-	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, action_set_id=None, world_id=""):
+	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45,
+			action_set_id=None, world_id=""):
 		"""Get a Fife instance
 		@param x, y: The coordinates
 		@param action: The action, defaults to 'idle'
 		@param level: object level. Relevant for choosing an action set
-		@param rotation: rotation of the object. Any of [ 45 + 90*i for i in xrange(0, 4) ]
-		@param action_set_id: can be set if the action set is already known. If set, level isn't considered.
+		@param rotation: rotation of the object. Any of [45 + 90*i for i in xrange(0, 4)]
+		@param action_set_id: can be set if the action set is already known.
+		If set, level isn't considered.
 		@return: tuple (fife_instance, action_set_id)
 		"""
 		assert isinstance(x, int)
 		assert isinstance(y, int)
-		#rotation = cls.check_build_rotation(session, rotation, x, y)
+		# rotation = cls.check_build_rotation(session, rotation, x, y)
 		# TODO: replace this with new buildable api
 		# IDEA: save rotation in savegame
 		facing_loc = fife.Location(session.view.layers[cls.layer])
@@ -257,7 +261,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				instance_coords[1] -= 1
 
 		elif rotation == 225:
-			instance_coords = list(( x + width - 1, y + length - 1, 0))
+			instance_coords = list((x + width - 1, y + length - 1, 0))
 			layer_coords[0] = x - width - 3
 
 			if width == 2 and length == 4:
@@ -287,7 +291,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		fife.InstanceVisual.create(instance)
 
 		action_sets = ActionSetLoader.get_sets()
-		if not action in action_sets[action_set_id]:
+		if action not in action_sets[action_set_id]:
 			if 'idle' in action_sets[action_set_id]:
 				action = 'idle'
 			elif 'idle_full' in action_sets[action_set_id]:
@@ -297,9 +301,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				action = action_sets[action_set_id].keys()[0]
 
 		if (Fife.getVersion() >= (0, 3, 6)):
-			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
+			instance.actRepeat(action + "_" + str(action_set_id), facing_loc)
 		else:
-			instance.act(action+"_"+str(action_set_id), facing_loc, True)
+			instance.act(action + "_" + str(action_set_id), facing_loc, True)
 		return (instance, action_set_id)
 
 	@classmethod
@@ -317,7 +321,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		to start production for example."""
 		pass
 
-	def __unicode__(self): # debug
+	def __unicode__(self):  # debug
 		return u'%s(id=%s;worldid=%s)' % (self.name, self.id, getattr(self, 'worldid', 'none'))
 
 
