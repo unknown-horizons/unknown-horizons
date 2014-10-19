@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-10-15 23:11+0200\n"
+"PO-Revision-Date: 2014-10-19 14:49+0200\n"
 "Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
@@ -520,9 +520,8 @@ msgstr "Wybierz zasoby:"
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
-#, fuzzy
 msgid "Collector utilization"
-msgstr "Obciążenie kupca"
+msgstr "Obciążenie kolektora"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
@@ -547,26 +546,22 @@ msgid "Balance:"
 msgstr "Bilans:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
-#, fuzzy
 msgid "Show resources produced in this settlement"
-msgstr "Laat middelen geproduceerd in deze nederzetting zien"
+msgstr "Pokaż zasoby produkowane w tej osadzie"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
-#, fuzzy
 msgid "Pause production"
-msgstr "Pauzeer productie"
+msgstr "Wstrzymanie produkcji"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
-#, fuzzy
 msgid "Start production"
-msgstr "Start productie"
+msgstr "Rozpoczęcie produkcji"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
 msgstr "Wybierz zasoby:"
 
@@ -585,22 +580,18 @@ msgid "Save current resource configuration as default for all settlements."
 msgstr "Grondstof configuratie opslaan als standaard voor alle nederzettingen."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
-#, fuzzy
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
-"Standaardinstellingen herstellen voor grondstoffen voor alle nederzettingen."
+msgstr "Zresetuj konfigurację zasobów na domyślną dla wszystkich osiedli."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
-#, fuzzy
 msgid "Move up"
-msgstr "Naar boven verplaatsen"
+msgstr "Przesuń w górę"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
-#, fuzzy
 msgid "Delete entry"
-msgstr "Item verwijderen"
+msgstr "Usuń wpis"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
@@ -608,27 +599,23 @@ msgid "Move down"
 msgstr "Przesuń niżej"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
-#, fuzzy
 msgid "Select a resource:"
-msgstr "Selecteer grondstoffen:"
+msgstr "Wybierz zasób:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
-#, fuzzy
 msgid "Read previous entries"
 msgstr "Zobacz poprzednie wpisy"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
-#, fuzzy
 msgid "Read next entries"
-msgstr "Lees volgende berichten"
+msgstr "Przeczytaj kolejne wpisy"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
-#, fuzzy
 msgid "Statistics"
-msgstr "Statistieken"
+msgstr "Statystyki"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 msgid "Players"
@@ -664,91 +651,77 @@ msgstr "Wysyła wiadomość czatu do wszystkich graczy."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Voer uw bericht in:"
+msgstr "Wpisz tutaj swoją wiadomość"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
-#, fuzzy
 msgid "Return to game"
-msgstr "Keer terug naar spel"
+msgstr "Powrót do gry"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
-#, fuzzy
 msgid "Wait at load:"
-msgstr "Czekaj na załadowanie:"
+msgstr "Czekaj na załadunek:"
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
-#, fuzzy
 msgid "Wait at unload:"
-msgstr "Czekaj na rozładowanie:"
+msgstr "Czekaj na rozładunek:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
-#, fuzzy
 msgid "Route activity:"
-msgstr "Routegebruik:"
+msgstr "Aktywność trasy:"
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:103
-#, fuzzy
 msgid "Start route"
-msgstr "Handelsroute starten"
+msgstr "Rozpocznij trasę"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
-#, fuzzy
 msgid "Exit"
-msgstr "Einde"
+msgstr "Wyjdź"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:24
-#, fuzzy
 msgid "Close"
-msgstr "Sluiten"
+msgstr "Zamknij"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
-#, fuzzy
 msgid "Player scores"
-msgstr "Score van speler"
+msgstr "Wyniki gracza"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
-#, fuzzy
 msgid "Name"
-msgstr "Naam"
+msgstr "Nazwa"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
-msgstr "Spelersnaam"
+msgstr "Nazwa gracza"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
-#, fuzzy
 msgid "Money"
-msgstr "Geld"
+msgstr "Pieniądze"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
 msgstr "Obecny stan skarbu + spodziewane w najbliższym czasie przychody"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-#, fuzzy
 msgid "Land"
-msgstr "Land"
+msgstr "Grunt"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-#, fuzzy
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
 "Wartość użytecznej ziemi, tj. ilość ziemi, na której można stworzyć budynki"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
-#, fuzzy
 msgid "Resources"
-msgstr "Grondstoffen"
+msgstr "Zasoby"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
@@ -794,30 +767,25 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
-#, fuzzy
 msgid "Total"
-msgstr "Totaal"
+msgstr "Łącznie"
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:618
-#, fuzzy
 msgid "Balance"
-msgstr "Balans"
+msgstr "Saldo"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
-#, fuzzy
 msgid "Type"
-msgstr "Type"
+msgstr "Typ"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
-#, fuzzy
 msgid "Weapons"
-msgstr "Wapens"
+msgstr "Oręż"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
-#, fuzzy
 msgid "Health"
-msgstr "Gezondheid"
+msgstr "Zdrowie"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
@@ -826,25 +794,21 @@ msgstr "Status"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
-#, fuzzy
 msgid "Aggressive"
-msgstr "Agressief"
+msgstr "Agresja"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
-#, fuzzy
 msgid "Hold ground"
 msgstr "Utrzymaj pozycje"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
-#, fuzzy
 msgid "Passive"
-msgstr "Passief"
+msgstr "Obrona"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
-#, fuzzy
 msgid "Flee"
 msgstr "Ucieczka"
 
@@ -853,9 +817,8 @@ msgstr "Ucieczka"
 #: content/gui/xml/mainmenu/hotkeys.xml:53
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
-#, fuzzy
 msgid "Exit to main menu"
-msgstr "Verlaat naar hoofd menu"
+msgstr "Wyjdź do menu głównego"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
@@ -863,9 +826,8 @@ msgstr "Wybierz rozmiar mapy:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
-#, fuzzy
 msgid "Choose a map:"
-msgstr "Kies een kaart:"
+msgstr "Wybierz mapę:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
@@ -892,34 +854,28 @@ msgid "Start editor"
 msgstr "Uruchom edytor"
 
 #: content/gui/xml/mainmenu/help.xml:11
-#, fuzzy
 msgid "Return"
-msgstr "Terug"
+msgstr "Cofnij"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "AI instellingen"
+msgstr "Akcje"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
-#, fuzzy
 msgid "Scroll left"
-msgstr "Naar links scrollen"
+msgstr "Przesuń w lewo"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
-#, fuzzy
 msgid "Scroll right"
-msgstr "Naar rechts scrollen"
+msgstr "Przesuń w prawo"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:12
-#, fuzzy
 msgid "Scroll up"
-msgstr "Naar boven scrollen"
+msgstr "Przesuń w górę"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:13
-#, fuzzy
 msgid "Scroll down"
-msgstr "Naar onder scrollen"
+msgstr "Przesuń w dół"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
@@ -930,29 +886,24 @@ msgid "Rotate building or map counterclockwise"
 msgstr "Obróć budynek lub mapę w lewo"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
-#, fuzzy
 msgid "Increase game speed"
-msgstr "Speelsnelheid verhogen"
+msgstr "Zwiększ szybkość gry"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
-#, fuzzy
 msgid "Decrease game speed"
-msgstr "Speelsnelheid verlagen"
+msgstr "Zmniejsz szybkość gry"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
-#, fuzzy
 msgid "Pause game"
-msgstr "Pauseer spel"
+msgstr "Wstrzymaj grę"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:19
-#, fuzzy
 msgid "Show build menu"
-msgstr "Toon constructie menu"
+msgstr "Pokaż menu budowy"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:20
-#, fuzzy
 msgid "Enable destruct mode"
-msgstr "Schakel afbraakmodes in"
+msgstr "Włącz tryb destrukcji"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
@@ -963,29 +914,24 @@ msgid "Enable pipette mode (clone buildings)"
 msgstr "Włącz tryb pipety (klonuj budynki)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
-#, fuzzy
 msgid "Show player scores"
-msgstr "Toon scores"
+msgstr "Pokaż wyniki gracza"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
-#, fuzzy
 msgid "Show settlement list"
-msgstr "Toon lijst met nederzettingen"
+msgstr "Pokaż listę osad"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
-#, fuzzy
 msgid "Show ship list"
-msgstr "Toon lijst met schepen"
+msgstr "Pokaż listę okrętów"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
-#, fuzzy
 msgid "Toggle Captain's log"
-msgstr "Naar kapiteins log"
+msgstr "Przełącz na dziennik kapitański"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
-#, fuzzy
 msgid "Quicksave"
-msgstr "Snel opslaan"
+msgstr "Szybki zapis"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:29
 msgid "Quickload"
@@ -996,9 +942,8 @@ msgid "Toggle translucency of ambient buildings"
 msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
-#, fuzzy
 msgid "Highlight tile ownership"
-msgstr "Podświetl tereny zamieszkane"
+msgstr "Podświetl posiadane tereny"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
@@ -1013,29 +958,24 @@ msgid "Remove selected units / buildings"
 msgstr "Usuń zaznaczone jednostki / budynki"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
-#, fuzzy
 msgid "Display help"
-msgstr "Toon help"
+msgstr "Pokaż pomoc"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
-#, fuzzy
 msgid "Screenshot"
-msgstr "Schermafbeelding"
+msgstr "Zrzut ekranu"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Raster aan/uit"
+msgstr "Przełącz pokazywanie FPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
-#, fuzzy
 msgid "Toggle grid on/off"
-msgstr "Raster aan/uit"
+msgstr "Przełącz pokazywanie siatki"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
-#, fuzzy
 msgid "Show coordinate values (Debug)"
-msgstr "Toon coördinaten (Debug)"
+msgstr "Pokaż wartości współrzędnych (Debug)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
@@ -1048,14 +988,12 @@ msgid "Secondary"
 msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default"
-msgstr "Standaard herstellen"
+msgstr "Przywróć domyślne"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Standaard herstellen"
+msgstr "Przywróć domyślne klawisze"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1070,37 +1008,32 @@ msgid "Load game"
 msgstr "Wczytaj grę"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
-#, fuzzy
 msgid "Cancel game"
-msgstr "Verlaat spel"
+msgstr "Anuluj grę"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Wczytywanie..."
+msgstr "Wczytywanie…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Zmień tło"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
-#, fuzzy
 msgid "Singleplayer"
-msgstr "Enkelspel"
+msgstr "Tryb jednoosobowy"
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Multiplayer"
+msgstr "Tryb wieloosobowy"
 
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
-#, fuzzy
 msgid "Quit"
-msgstr "Stoppen"
+msgstr "Zamknij"
 
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
@@ -1108,24 +1041,20 @@ msgid "Editor"
 msgstr "Edytor"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
-#, fuzzy
 msgid "Credits"
-msgstr "Współtwórcy"
+msgstr "Podziękowania"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
-#, fuzzy
 msgid "Create game - Multiplayer"
-msgstr "Spel maken - Multiplayer"
+msgstr "Rozpocznij grę - tryb wieloosobowy"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
-#, fuzzy
 msgid "Player limit:"
-msgstr "Spelers limiet:"
+msgstr "Limit graczy:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
-#, fuzzy
 msgid "Exit to multiplayer menu"
-msgstr "Verlaten naar multiplayer menu"
+msgstr "Wyjdź do menu trybu wieloosobowego"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
@@ -1139,54 +1068,47 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
-#, fuzzy
 msgid "Unnamed Game"
-msgstr "Spel laden"
+msgstr "Nienazwana Gra"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
-#, fuzzy
 msgid "Password of the game:"
-msgstr "Hasło gry"
+msgstr "Hasło gry:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
 msgstr "Ta gra wymaga hasła aby można było do niej dołączyć."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
-#, fuzzy
 msgid "Create this new game"
-msgstr "Maak een nieuw spel"
+msgstr "Rozpocznij nową grę"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 #, fuzzy
 msgid "Gamelobby"
-msgstr "Spel lobby"
+msgstr "Gamelobby"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
-#, fuzzy
 msgid "Chat:"
-msgstr "Chat:"
+msgstr "Czat:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 #, fuzzy
 msgid "Exit gamelobby"
-msgstr "Verlaat spel lobby"
+msgstr "Wyjdź z gamelobby"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
-#, fuzzy
 msgid "The game will start as soon as all players are ready."
-msgstr "Gra rozpocznie się, gdy dołączy wymagana liczba graczy."
+msgstr "Gra rozpocznie się, gdy wszyscy gracze będą gotowi."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
-#, fuzzy
 msgid "Game details:"
-msgstr "Spel eigenschappen:"
+msgstr "Informacje o grze:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
-#, fuzzy
 msgid "Color"
-msgstr "Kolor:"
+msgstr "Kolor"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
@@ -1197,53 +1119,44 @@ msgid "Sets your state to ready (necessary for the game to start)"
 msgstr "Ustawia twój stan na 'gotowy' (wymagane aby można było rozpocząć grę)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
-#, fuzzy
 msgid "New game - Multiplayer"
-msgstr "Nieuw spel - Multiplayer"
+msgstr "Nowa gra - tryb wieloosobowy"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
-#, fuzzy
 msgid "Load game:"
-msgstr "Wczytaj grę"
+msgstr "Wczytaj grę:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
 msgstr "Wczytaj zapisaną grę"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
-#, fuzzy
 msgid "Active games:"
-msgstr "Actieve spellen:"
+msgstr "Aktywne gry:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
-#, fuzzy
 msgid "Refresh list:"
-msgstr "Vernieuw lijst:"
+msgstr "Odśwież listę:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
-#, fuzzy
 msgid "Refresh list of active games"
-msgstr "Vernieuw lijst van actieve spellen"
+msgstr "odśwież listę aktywnych gier"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
-#, fuzzy
 msgid "Create game:"
-msgstr "Maak spel:"
+msgstr "Stwórz grę:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
-#, fuzzy
 msgid "Create a new game"
-msgstr "Maak een nieuw spel"
+msgstr "Rozpocznij nowa grę"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 msgid "Join game:"
-msgstr "Meespelen"
+msgstr "Dołącz do gry:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
-#, fuzzy
 msgid "Join the selected game"
-msgstr "Speel mee met geselecteerd spel"
+msgstr "Dołącz do wybranej gry"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
@@ -1251,28 +1164,24 @@ msgstr "Zmień szczegóły gracza"
 
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/modules/settings.py:53
-#, fuzzy
 msgid "Graphics"
-msgstr "Beeld"
+msgstr "Grafika"
 
 #: content/gui/xml/mainmenu/settings.xml:18
-#, fuzzy
 msgid "Screen resolution:"
-msgstr "Schermresolutie:"
+msgstr "Rozdzielczość ekranu:"
 
 #: content/gui/xml/mainmenu/settings.xml:25
-#, fuzzy
 msgid "Full screen:"
-msgstr "Volledig scherm:"
+msgstr "Tryb pełnoekranowy:"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr "SDL wordt niet ondersteund en kan problemen geven!"
 
 #: content/gui/xml/mainmenu/settings.xml:33
-#, fuzzy
 msgid "Used renderer:"
-msgstr "Renderer:"
+msgstr "Uzyty mechanizm renderowania:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
@@ -1283,29 +1192,24 @@ msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr "Ustaw maksymalną liczbę klatek na sekundę (fps). Standardowa: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:54
-#, fuzzy
 msgid "Sound"
-msgstr "Geluid"
+msgstr "Dźwięk"
 
 #: content/gui/xml/mainmenu/settings.xml:60
-#, fuzzy
 msgid "Music volume:"
-msgstr "Muziek volume:"
+msgstr "Głośność muzyki:"
 
 #: content/gui/xml/mainmenu/settings.xml:69
-#, fuzzy
 msgid "Effects volume:"
-msgstr "Effecten volume:"
+msgstr "Głośność efektów:"
 
 #: content/gui/xml/mainmenu/settings.xml:76
-#, fuzzy
 msgid "Enable sound:"
-msgstr "Geluid inschakelen:"
+msgstr "Włącz dźwięk:"
 
 #: content/gui/xml/mainmenu/settings.xml:82
-#, fuzzy
 msgid "Mouse"
-msgstr "Muis"
+msgstr "Mysz"
 
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid "Scroll at map edge:"
@@ -1335,48 +1239,40 @@ msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "0 = standaard instellingen"
+msgstr "0 dla domyślnych ustawień systemowych"
 
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Wielkość zasobów:"
+msgstr "Czułość myszy:"
 
 #: content/gui/xml/mainmenu/settings.xml:123
-#, fuzzy
 msgid "Saving"
-msgstr "Opslaan"
+msgstr "Zapisywanie"
 
 #: content/gui/xml/mainmenu/settings.xml:128
-#, fuzzy
 msgid "Autosave interval in minutes:"
-msgstr "Automatisch opslaan interval in minuten:"
+msgstr "Interwał automatycznego zapisywania w minutach:"
 
 #: content/gui/xml/mainmenu/settings.xml:136
-#, fuzzy
 msgid "Number of autosaves:"
-msgstr "Aantal automatisch opgeslagen spelen:"
+msgstr "Ilość automatycznych zapisów:"
 
 #: content/gui/xml/mainmenu/settings.xml:144
-#, fuzzy
 msgid "Number of quicksaves:"
-msgstr "Aantal snel opgeslagen spelen:"
+msgstr "Ilość szybkich zapisów:"
 
 #: content/gui/xml/mainmenu/settings.xml:152
-#, fuzzy
 msgid "Language"
-msgstr "Taal"
+msgstr "Język"
 
 #: content/gui/xml/mainmenu/settings.xml:164
 msgid "General"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:169
-#, fuzzy
 msgid "Rotate minimap with map:"
-msgstr "Roteer de mini-kaart:"
+msgstr "Obróć minimapę razem z mapą:"
 
 #: content/gui/xml/mainmenu/settings.xml:169
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
@@ -1495,19 +1391,16 @@ msgid "Delete selected savegame"
 msgstr "Verwijder geselecteerde opgeslagen spel"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
-#, fuzzy
 msgid "New game - Singleplayer"
-msgstr "Nieuw spel - Singleplayer"
+msgstr "Nowa gra - tryb jednoosobowy"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
-#, fuzzy
 msgid "Scenario"
-msgstr "Scenario"
+msgstr "Scenariusz"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
-#, fuzzy
 msgid "Random map"
-msgstr "Willekeurige kaart"
+msgstr "Losowa mapa"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 #, fuzzy
@@ -1568,14 +1461,12 @@ msgid "Disasters"
 msgstr "Katastrofy"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
-#, fuzzy
 msgid "Player name:"
-msgstr "Spelersnaam:"
+msgstr "Nazwa gracza:"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
-#, fuzzy
 msgid "Color:"
-msgstr "Kleur:"
+msgstr "Kolor:"
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
@@ -1819,7 +1710,7 @@ msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
-"Multiplayer wymaga bibliotek \"pyenet\", aktualnie jej nie ma w Twoim "
+"Tryb wieloosobowy wymaga biblioteki \"pyenet\", której nie masz w Twoim "
 "systemie."
 
 #: horizons/gui/modules/multiplayermenu.py:121
@@ -2023,9 +1914,8 @@ msgid "Are you sure you want to abort the running session?"
 msgstr "Czy na pewno chcesz zakończyć bierzącą sesję?"
 
 #: horizons/gui/modules/pausemenu.py:83
-#, fuzzy
 msgid "Quit Session"
-msgstr "Wyjdź z Sesji"
+msgstr "Wyjdź z sesji"
 
 #: horizons/gui/modules/select_savegame.py:75
 msgid "No saved games"
