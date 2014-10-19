@@ -348,7 +348,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'NOWE ZADANIE: Zbuduj tkalnie']
   - [Image, content/gui/images/background/hr.png]
   - Produkcja wełny ruszyła, potrzeba jeszcze warsztatu tkackiego do produkcji tkaniny.
-  - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
+  - Są dwa miejsca, gdzie można je budować - w pobliżu gospodarstwa lub w pobliżu namiotu magazynowania (lub magazynów).
   - W obu przypadkach należy zapewnić połączenie ze szlakiem.
   - Możesz umieścić warsztat tkacki blisko gospodarstwa i zburzyć wszelkie szlaki do farmy, aby zobaczyć, że nadal będzie pobierał wełnę i produkował tkaninę.
   - ''
@@ -655,4 +655,4 @@ metadata:
   locale: pl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 190 translated messages, 1 untranslated message.
+  translation_status: 191 translated messages.
