@@ -21,6 +21,7 @@
 
 from horizons.util.shapes import Rect
 
+
 class RadiusShape(object):
 	"""Class for generic shapes with a radius.
 	The shape includes everything, that the center contains plus every point,
@@ -31,6 +32,7 @@ class RadiusShape(object):
 	def __init__(self, center, radius):
 		self.center = center
 		self.radius = radius
+
 
 class RadiusRect(RadiusShape):
 	"""Specialization of RadiusShape with a Rect as center"""

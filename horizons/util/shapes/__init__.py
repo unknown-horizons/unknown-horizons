@@ -21,6 +21,7 @@
 
 from horizons.util.shapes import distances
 
+
 class Shape(object):
 
 	def get_coordinates(self):

@@ -27,6 +27,8 @@ from horizons.util.dbreader import DbReader
 from horizons.entities import Entities
 
 ########################################################################
+
+
 class UhDbAccessor(DbReader):
 	"""UhDbAccessor is the class that contains the sql code. It is meant
 	to keep all the sql code in a central place, to make it reusable and
@@ -41,13 +43,11 @@ class UhDbAccessor(DbReader):
 	def __init__(self, dbfile):
 		super(UhDbAccessor, self).__init__(dbfile=dbfile)
 
-
 	# ------------------------------------------------------------------
 	# Db Access Functions start here
 	# ------------------------------------------------------------------
 
 	# Resource table
-
 	def get_res_name(self, id):
 		"""Returns the translated name for a specific resource id.
 		@param id: int resource's id, of which the name is returned """
@@ -78,7 +78,6 @@ class UhDbAccessor(DbReader):
 		return map(lambda x: x[0], db_data)
 
 	# Sound table
-
 	def get_sound_file(self, soundname):
 		"""
 		Returns the soundfile to the related sound name.
@@ -90,7 +89,6 @@ class UhDbAccessor(DbReader):
 		return self.cached_query(sql, soundname)[0][0]
 
 	# Building table
-
 	@decorators.cachedmethod
 	def get_related_building_ids(self, building_class_id):
 		"""Returns list of building ids related to building_class_id.
@@ -126,7 +124,6 @@ class UhDbAccessor(DbReader):
 		return map(lambda x: x[0], self.cached_query(sql))
 
 	# Messages
-
 	def get_msg_visibility(self, msg_id_string):
 		"""
 		@param msg_id_string: string id of the message
@@ -158,12 +155,7 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT path FROM message_icon WHERE icon_id = ?"
 		return self.cached_query(sql, msg_id_string)[0][0]
 
-	#
-	#
 	# Inhabitants
-	#
-	#
-
 	def get_settler_name(self, level):
 		"""Returns the name of inhabitants for a specific tier.
 		@param level: int - which tier
@@ -211,7 +203,6 @@ class UhDbAccessor(DbReader):
 		return self.cached_query(sql)[0][0]
 
 	# Misc
-
 	def get_player_start_res(self):
 		"""Returns resources, that players should get at startup as dict: { res : amount }"""
 		start_res = self.cached_query("SELECT resource, amount FROM player_start_res")
@@ -225,7 +216,6 @@ class UhDbAccessor(DbReader):
 		return self.cached_query(sql, storage_type)[0][0]
 
 	# Tile sets
-
 	def get_random_tile_set(self, ground_id):
 		"""Returns a tile set for a tile of type ground_id"""
 		sql = "SELECT set_id FROM tile_set WHERE ground_id = ?"
@@ -236,10 +226,9 @@ class UhDbAccessor(DbReader):
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
-		return frozenset( id for (id, b) in Entities.buildings.iteritems() if b.translucent )
+		return frozenset(id for (id, b) in Entities.buildings.iteritems() if b.translucent)
 
 	# Weapon table
-
 	def get_weapon_stackable(self, weapon_id):
 		"""Returns True if the weapon is stackable, False otherwise."""
 		return self.cached_query("SELECT stackable FROM weapon WHERE id = ?", weapon_id)[0][0]
@@ -248,17 +237,15 @@ class UhDbAccessor(DbReader):
 		"""Returns weapon's attack radius modifier."""
 		return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
 
-
 	# Units
-
 	def get_unit_type_name(self, type_id):
 		"""Returns the name of a unit type identified by its type"""
 		return Entities.units[type_id].name
 
 	def get_ship_tooltip(self, ship_id):
 		"""Tries to identify ship properties to display as tooltip.
-		#TODO Should be extended later to also include movement speed, etc."""
-		helptexts = [] # collects all information we will find
+		# TODO Should be extended later to also include movement speed, etc."""
+		helptexts = []  # collects all information we will find
 		ship = Entities.units[ship_id]
 		try:
 			comp = ship.get_component_template('StorageComponent')
@@ -266,16 +253,16 @@ class UhDbAccessor(DbReader):
 			# Ship storage properties
 			helptext = _('{slotnum} slots, {limit}t')
 			helptext = helptext.format(slotnum=storage['slotnum'],
-			                           limit=storage['limit'])
+				limit=storage['limit'])
 			helptexts.append(helptext)
-		except KeyError: # Component not found, ignore this part
+		except KeyError:  # Component not found, ignore this part
 			pass
 		try:
 			comp = ship.get_component_template('HealthComponent')
 			helptext = _('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)
-		except KeyError: # Component not found, ignore this part
+		except KeyError:  # Component not found, ignore this part
 			pass
 		return u'\\n'.join(helptexts)
 

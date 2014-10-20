@@ -22,6 +22,7 @@
 from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Point, Shape
 
+
 class Circle(Shape):
 	"""Class for the shape of a circle
 	You can access center and radius of the circle as public members."""
@@ -73,8 +74,8 @@ class Circle(Shape):
 
 	def get_border_coordinates(self, bordersize=1):
 		"""Returns only coordinates at the border. Very naive implementation"""
-		for x in xrange(self.center.x-self.radius, self.center.x+self.radius+1):
-			for y in xrange(self.center.y-self.radius, self.center.y+self.radius+1):
+		for x in xrange(self.center.x - self.radius, self.center.x + self.radius + 1):
+			for y in xrange(self.center.y - self.radius, self.center.y + self.radius + 1):
 				if (self.radius - bordersize) <= self.center.distance((x, y)) <= self.radius:
 					yield (x, y)
 

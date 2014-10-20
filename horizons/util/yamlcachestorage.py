@@ -27,6 +27,7 @@ try:
 except:
 	import pickle
 
+
 class YamlCacheStorage(object):
 	"""
 	Store the YamlCache data in a cache.
@@ -88,7 +89,8 @@ class YamlCacheStorage(object):
 		except Exception as e:
 			# Ignore all exceptions because loading the cache from disk is not critical.
 			e = unicode(str(e), errors='replace')
-			cls.log.warning("Warning: Failed to open %s as cache: %s\nThis warning is expected when upgrading from old versions.\n" % (filename, e))
+			cls.log.warning("Warning: Failed to open %s as cache: %s\nThis warning is expected when"
+				" upgrading from old versions.\n" % (filename, e))
 			obj._clear()
 		return obj
 

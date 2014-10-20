@@ -23,21 +23,27 @@ from horizons.util.python import Const
 from horizons.util.python.decorators import bind_all
 from horizons.util.shapes import Shape, Point
 
+
 class Rect(Shape):
 	__slots__ = ('top', 'left', 'right', 'bottom', 'origin')
 
 	def __init__(self, *args):
-		if len(args) == 2 and isinstance(args[0], Point) and isinstance(args[1], Point): #args: edge1, edge2
+		if len(args) == 2 and isinstance(args[0], Point) and isinstance(args[1],
+				Point):  # args: edge1, edge2
 			self.top = min(args[0].y, args[1].y)
 			self.left = min(args[0].x, args[1].x)
 			self.right = max(args[0].x, args[1].x)
 			self.bottom = max(args[0].y, args[1].y)
-		elif len(args) == 3 and isinstance(args[0], Point) and isinstance(args[1], int) and isinstance(args[2], int): #args: position, width, height
+		elif len(args) == 3 and isinstance(args[0], Point) and isinstance(args[1],
+				int) and isinstance(args[2], int):
+			# args: position, width, height
 			self.top = args[0].y
 			self.left = args[0].x
 			self.right = self.left + args[1]
 			self.bottom = self.top + args[2]
-		elif len(args) == 4 and isinstance(args[0], int) and isinstance(args[1], int) and isinstance(args[2], int) and isinstance(args[3], int):
+		elif len(args) == 4 and isinstance(args[0], int) and isinstance(args[1],
+				int) and isinstance(args[2],
+				int) and isinstance(args[3], int):
 			self.top = min(args[1], args[3])
 			self.left = min(args[0], args[2])
 			self.right = max(args[0], args[2])
@@ -85,11 +91,11 @@ class Rect(Shape):
 	def init_from_corners(cls, point1, point2):
 		"""Init rect with 2 points interpreted as 2 corner points"""
 		self = cls.__new__(cls)
-		x_coords = [ int(round(point1.x)), int(round(point2.x)) ]
+		x_coords = [int(round(point1.x)), int(round(point2.x))]
 		x_coords.sort()
 		self.left = x_coords[0]
 		self.right = x_coords[1]
-		y_coords = [ int(round(point1.y)), int(round(point2.y)) ]
+		y_coords = [int(round(point1.y)), int(round(point2.y))]
 		y_coords.sort()
 		self.top = y_coords[0]
 		self.bottom = y_coords[1]
@@ -130,21 +136,21 @@ class Rect(Shape):
 		# start with special case
 
 		# above, below
-		borders[self.top - radius] = ( self.left, self.right )
-		borders[self.bottom + radius] = ( self.left, self.right )
+		borders[self.top - radius] = (self.left, self.right)
+		borders[self.bottom + radius] = (self.left, self.right)
 
 		# left, right
-		for y in xrange( self.top, self.bottom+1 ):
-			borders[y] = ( self.left - radius, self.right + radius)
+		for y in xrange(self.top, self.bottom + 1):
+			borders[y] = (self.left - radius, self.right + radius)
 
 		x = radius
 		radius_squared = radius ** 2
 		# calculate border for line y (y = 0 and y = radius are special cases handled above)
-		for y in xrange( 1, radius ):
+		for y in xrange(1, radius):
 			test_val = radius_squared - y ** 2
 			# TODO: check if it's possible if x is decreased more than once here.
-			#       if not, change the while to an if
-			while (x ** 2) > test_val: # this is equivalent to  x^2 + y^2 > radius^2
+			# if not, change the while to an if
+			while (x ** 2) > test_val:  # this is equivalent to  x^2 + y^2 > radius^2
 				x -= 1
 
 			# both sides are symmetrical, since it's a rect
@@ -154,19 +160,18 @@ class Rect(Shape):
 		if not include_self:
 			self_coords = frozenset(self.get_coordinates())
 			for y, x_range in borders.iteritems():
-				if self.top <= y <= self.bottom: # we have to sort out the self_coords here
-					for x in xrange(x_range[0], x_range[1]+1):
+				if self.top <= y <= self.bottom:  # we have to sort out the self_coords here
+					for x in xrange(x_range[0], x_range[1] + 1):
 						t = (x, y)
 						if t not in self_coords:
 							yield t
-				else: # coords of this rect cannot appear here
-					for x in xrange(x_range[0], x_range[1]+1):
+				else:  # coords of this rect cannot appear here
+					for x in xrange(x_range[0], x_range[1] + 1):
 						yield (x, y)
 		else:
 			for y, x_range in borders.iteritems():
-				for x in xrange(x_range[0], x_range[1]+1):
+				for x in xrange(x_range[0], x_range[1] + 1):
 					yield (x, y)
-
 
 	@property
 	def center(self):
@@ -213,8 +218,8 @@ class Rect(Shape):
 	def get_corners(self):
 		"""Returns corners of rect in this order: topleft topright bottomright bottomleft
 		@return: tuple of coord-tuples"""
-		return ( (self.left, self.top), (self.right, self.top),
-		         (self.right, self.bottom), (self.left, self.bottom) )
+		return ((self.left, self.top), (self.right, self.top),
+			(self.right, self.bottom), (self.left, self.bottom))
 
 	def get_surrounding(self, include_corners=True):
 		"""Returns neighboring coords of the rect.
@@ -264,8 +269,8 @@ class Rect(Shape):
 
 	def tuple_iter(self):
 		"""Generates an iterator, that returns tuples"""
-		for x in xrange(self.left, self.right+1):
-			for y in xrange(self.top, self.bottom+1):
+		for x in xrange(self.left, self.right + 1):
+			for y in xrange(self.top, self.bottom + 1):
 				yield x, y
 
 	def iter_without_border(self):
@@ -283,6 +288,7 @@ class Rect(Shape):
 	def get_surrounding_offsets(cls, size):
 		rect = cls.init_from_topleft_and_size_tuples((0, 0), size)
 		return list(rect.get_surrounding())
+
 
 class ConstRect(Const, Rect):
 	"""An immutable Rect.

@@ -37,7 +37,8 @@ class Callback(object):
 		Use Callback objects to pass arguments to the callbacks.
 		It is guaranteed that the callbacks are executed in order.
 		@param args: callables"""
-		callbacks = [ Callback(i) for i in args ]
+		callbacks = [Callback(i) for i in args]
+
 		def tmp():
 			for i in callbacks:
 				i()
@@ -48,9 +49,9 @@ class Callback(object):
 
 	def __eq__(self, other):
 		try:
-			if other.callback == self.callback and \
-				 other.args == self.args and \
-				 other.kwargs == self.kwargs:
+			if (other.callback == self.callback and
+					other.args == self.args and
+					other.kwargs == self.kwargs):
 				return True
 			else:
 				return False
@@ -62,7 +63,7 @@ class Callback(object):
 
 	def __hash__(self):
 		return hash((self.callback, self.args,
-		             tuple(self.kwargs.iteritems()))) # to tuple, dict is unhashable
+		             tuple(self.kwargs.iteritems())))  # to tuple, dict is unhashable
 
 	def __str__(self):
 		return 'Callback(%s, %s, %s)' % (self.callback, self.args, self.kwargs)

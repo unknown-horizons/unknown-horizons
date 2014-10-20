@@ -397,13 +397,14 @@ class SavegameUpgrader(object):
 		rev = metadata['savegamerev']
 		if rev == 0: # not a regular savegame, usually a map
 			self.final_path = self.original_path
-		elif rev == VERSION.SAVEGAMEREVISION: # the current version
+		elif rev == VERSION.SAVEGAMEREVISION:  # the current version
 			self.final_path = self.original_path
-		else: # upgrade
-			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
-						     (rev, VERSION.SAVEGAMEREVISION))
+		else:  # upgrade
+			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' %
+					(rev, VERSION.SAVEGAMEREVISION))
 			self.using_temp = True
-			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
+			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename
+				(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
 			os.close(handle)
 			shutil.copyfile(self.original_path, self.final_path)
 			db = DbReader(self.final_path)
@@ -468,11 +469,10 @@ class SavegameUpgrader(object):
 	@classmethod
 	def can_upgrade(cls, from_savegame_version):
 		"""Calculates whether a savegame can be upgraded from the current version"""
-		for i in xrange(from_savegame_version+1, VERSION.SAVEGAMEREVISION+1, 1):
+		for i in xrange(from_savegame_version + 1, VERSION.SAVEGAMEREVISION + 1, 1):
 			if not hasattr(cls, "_upgrade_to_rev" + str(i)):
 				return False
 		return True
-
 
 	def get_path(self):
 		"""Return the path to the up-to-date version of the saved game."""

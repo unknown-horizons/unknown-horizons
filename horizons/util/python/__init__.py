@@ -26,6 +26,7 @@ but rather a generic enhancement of the programming language.
 
 import decorators
 
+
 class Const(object):
 	"""An immutable type. Think C++-like const"""
 	def __setattr__(self, name, value):
@@ -45,6 +46,7 @@ def parse_port(port, allow_zero=True):
 		raise ValueError('Requires a port between 1 and 65535.')
 	return port_int
 
+
 def get_all_subclasses(cls):
 	"""Recursivly find all subclasses of a given class."""
 	result = set()
@@ -54,9 +56,11 @@ def get_all_subclasses(cls):
 			result.update(get_all_subclasses(subclass))
 	return result
 
+
 def map_balance(value, n, m):
 	"""
-	Maps balance value defined in codomain of [1/n, n] for n >= 1, into linear balance (codomain of [-m, m]),
+	Maps balance value defined in codomain of [1/n, n] for n >= 1,
+	into linear balance (codomain of [-m, m]),
 	having 1.0 as equal point for n-based balance, and 0.0 as equal point for linear balance.
 
 	@param value: value to be mapped
@@ -71,9 +75,10 @@ def map_balance(value, n, m):
 	# normally we'd need to have special cases for value < 1.0 and value > 1.0
 	# but we turn cases of 1/n into n instead
 	if value < 1.0:
-		value = 1./value
+		value = 1. / value
 		m *= -1
 	return ((value - 1.0) / (n - 1.0)) * m
+
 
 def trim_value(value, min, max):
 	if value < min:

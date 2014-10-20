@@ -23,6 +23,7 @@ from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
 from horizons.util.shapes import Shape
 
+
 class Point(Shape):
 	def __init__(self, x, y):
 		self.x = x
@@ -62,7 +63,7 @@ class Point(Shape):
 			return False
 		elif isinstance(other, Point):
 			return self.x == other.x and self.y == other.y
-		else: # other is tuple
+		else:  # other is tuple
 			try:
 				return self.x == other[0] and self.y == other[1]
 			except TypeError:
@@ -70,11 +71,11 @@ class Point(Shape):
 
 	def __add__(self, other):
 		assert isinstance(other, Point)
-		return Point(self.x+other.x, self.y+other.y)
+		return Point(self.x + other.x, self.y + other.y)
 
 	def __sub__(self, other):
 		assert isinstance(other, Point)
-		return Point(self.x-other.x, self.y-other.y)
+		return Point(self.x - other.x, self.y - other.y)
 
 	def __hash__(self):
 		return hash((self.x, self.y))
@@ -85,10 +86,10 @@ class Point(Shape):
 	def iter_without_border(self):
 		yield self
 
+
 class ConstPoint(Const, Point):
 	"""An immutable Point"""
 	pass
-
 
 bind_all(Point)
 bind_all(ConstPoint)
