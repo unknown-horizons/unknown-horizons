@@ -28,6 +28,7 @@ instead of strong ref
 
 import weakref
 
+
 class _CopyDocFromParentClass(type):
 	"""
     metaclass that copy, for a given class,
@@ -41,6 +42,7 @@ class _CopyDocFromParentClass(type):
 					method.__doc__ = getattr(bases[0], name).__doc__
 			except AttributeError:
 				pass
+
 
 class WeakList(list):
 	"""
@@ -78,9 +80,7 @@ class WeakList(list):
 	# So even if the class look undocumented, it is ! (use pydoc)
 	__metaclass__ = _CopyDocFromParentClass
 
-
-	## Basic custom
-
+	# Basic custom
 	def __init__(self, items=None):
 		if items:
 			list.__init__(self, self.__iter_over_weakref(items))
@@ -93,9 +93,7 @@ class WeakList(list):
 	def __repr__(self):
 		return 'Weak_list((' + ', '.join((repr(i) for i in self)) + '))'
 
-
-	## Special method
-
+	# Special method
 	def __new_weakref(self, item):
 		"""Create a weakref with the good callback"""
 		return weakref.ref(item, self.__remove_ref)
@@ -109,12 +107,9 @@ class WeakList(list):
         When an object from the list is destroy, this
         method is call to remove it from list
         """
-
 		list.remove(self, ref)
 
-
-	## list method
-
+	# list method
 	def extend(self, iterable):
 		iterable = self.__iter_over_weakref(list(iterable))
 		list.extend(self, iterable)
@@ -143,9 +138,7 @@ class WeakList(list):
 	def insert(self, index, obj):
 		list.insert(self, index, self.__new_weakref(obj))
 
-
-	## Emulating container types
-
+	# Emulating container types
 	def __getitem__(self, index):
 		return list.__getitem__(self, index)()
 
@@ -171,9 +164,7 @@ class WeakList(list):
 	def __reversed__(self):
 		return iter([i() for i in list.__reversed__(self)])
 
-
-	## Emulating numeric types
-
+	# Emulating numeric types
 	def __iadd__(self, other):
 		self.extend(other)
 		return self
@@ -181,9 +172,7 @@ class WeakList(list):
 	def __add__(self, other):
 		return self.__class__(list(self) + list(other))
 
-
-	## Rich comparison
-
+	# Rich comparison
 	def __eq__(self, other):
 		if isinstance(other, WeakList):
 			other = list(other)
@@ -218,4 +207,4 @@ class WeakList(list):
 
 		return list.__lt__(list(self), other)
 
-### End of WeakList class
+# End of WeakList class

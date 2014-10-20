@@ -22,6 +22,7 @@
 import types
 import weakref
 
+
 class WeakMethod(object):
 	def __init__(self, function):
 		assert callable(function)
@@ -40,7 +41,7 @@ class WeakMethod(object):
 			return self.function(self.instance(), *args, **kwargs)
 		else:
 			raise ReferenceError("Instance: %s  Function: %s  Function from module: %s" %
-			                     (self.instance(), self.function, self.function.__module__))
+				(self.instance(), self.function, self.function.__module__))
 
 	def __eq__(self, other):
 		if isinstance(other, WeakMethod):

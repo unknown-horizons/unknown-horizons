@@ -28,6 +28,7 @@ from horizons.constants import PATHS
 from horizons.util.loaders.loader import GeneralLoader
 from horizons.util.loaders.jsondecoder import JsonDecoder
 
+
 class TileSetLoader(object):
 	"""The TileSetLoader loads tile sets from a directory tree. The directories loaded
 	begin with 'ts_' to tell tell the loader that they are an action set. directory
@@ -56,7 +57,7 @@ class TileSetLoader(object):
 
 	@classmethod
 	def load(cls):
-		#print "called"
+		# print "called"
 		if not cls._loaded:
 			cls.log.debug("Loading tile_sets...")
 			if not horizons.globals.fife.use_atlases:

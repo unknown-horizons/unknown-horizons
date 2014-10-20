@@ -27,6 +27,7 @@ import logging
 
 from horizons.constants import ACTION_SETS
 
+
 class GeneralLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
 	begin with 'as_' to tell tell the loader that they are an action set. directory
@@ -49,9 +50,9 @@ class GeneralLoader(object):
 		# Make sure entries are in the correct order: 'zz1.png' < '2.png' < '09.png'
 		files.sort(key=lambda f: int(re.search(r'\d+', os.path.basename(f)).group()))
 
-		anim_length = {} # dict containing 'file: anim_end' items
+		anim_length = {}  # dict containing 'file: anim_end' items
 		for i, filename in enumerate(files, start=1):
-			anim_length[filename] = i * (time/1000.0) / len(files)
+			anim_length[filename] = i * (time / 1000.0) / len(files)
 		return anim_length
 
 	@classmethod
@@ -141,4 +142,4 @@ class GeneralLoader(object):
 		"""
 		junk = set(('.DS_Store', ))
 		return [d for d in os.listdir(directory)
-		          if d not in junk]
+			if d not in junk]

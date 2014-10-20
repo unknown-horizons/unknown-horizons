@@ -22,9 +22,9 @@
 from fife import fife
 
 import horizons.globals
-
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
+
 
 class SQLiteAtlasLoader(object):
 	"""Loads atlases and appropriate action sets from a JSON file and a SQLite database.
@@ -35,13 +35,8 @@ class SQLiteAtlasLoader(object):
 		# TODO: There's something wrong with ground entities if atlas.sql
 		# is loaded only here, for now it's added to DB_FILES (empty file if no atlases are used)
 
-		#f = open('content/atlas.sql', "r")
-		#sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
-		#horizons.globals.db.execute_script(sql)
-
 		self.atlases = horizons.globals.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
 		self.inited = False
-
 
 	def init(self):
 		"""Used to lazy init the loader"""
@@ -51,7 +46,6 @@ class SQLiteAtlasLoader(object):
 			img = horizons.globals.fife.imagemanager.create(str(atlas))
 			self.atlaslib.append(img)
 		self.inited = True
-
 
 	def loadResource(self, location):
 		"""
@@ -63,7 +57,7 @@ class SQLiteAtlasLoader(object):
 		y-shifting with the params: top, bottom, center, middle.
 		A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
 		- cut:
-		#TODO: complete documentation
+		# TODO: complete documentation
 		"""
 		if not self.inited:
 			self.init()
@@ -76,7 +70,6 @@ class SQLiteAtlasLoader(object):
 
 		# Set the correct loader based on the actionset
 		loader = self._get_loader(actionset)
-
 
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
@@ -117,7 +110,7 @@ class SQLiteAtlasLoader(object):
 					img.setYShift(y)
 
 			frame_end = entry[0]
-			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
+			ani.addFrame(img, max(1, int((float(frame_end) - frame_start) * 1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
 		return ani
@@ -148,4 +141,3 @@ class SQLiteAtlasLoader(object):
 			img.useSharedImage(self.atlaslib[entry[1]], region)
 
 		return img
-

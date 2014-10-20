@@ -23,10 +23,10 @@ import os
 import logging
 
 import horizons.globals
-
 from horizons.constants import PATHS
 from horizons.util.loaders.loader import GeneralLoader
 from horizons.util.loaders.jsondecoder import JsonDecoder
+
 
 class ActionSetLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded

@@ -34,6 +34,7 @@ Usage:
 """
 from weakref import WeakKeyDictionary
 
+
 class DefaultWeakKeyDictionary(WeakKeyDictionary):
 	"""
 	WeakKeyDictionary with specified default value.
