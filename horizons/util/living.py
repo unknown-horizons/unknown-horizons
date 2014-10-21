@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+
 class livingProperty(object):
 	"""livingProperty's are used to assign properties to a class, similar to python properties.
 	The extra benefit with livingPropertys is, that they will call the previously assigned
@@ -68,6 +69,7 @@ class livingProperty(object):
 
 	def __del__(self):
 		self.__value = None
+
 
 class LivingObject(object):
 	"""This class is intended to be used with the livingProperty to ensure all variables

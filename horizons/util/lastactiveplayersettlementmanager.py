@@ -26,6 +26,7 @@ from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.messaging import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
 
+
 def resolve_weakref(ref):
 	"""Resolves a weakref to a hardref, where the ref itself can be None"""
 	if ref is None:
@@ -33,12 +34,14 @@ def resolve_weakref(ref):
 	else:
 		return ref()
 
+
 def create_weakref(obj):
 	"""Safe create weakref, that supports None"""
 	if obj is None:
 		return None
 	else:
 		return weakref.ref(obj)
+
 
 class LastActivePlayerSettlementManager(object):
 	"""Keeps track of the last active (hovered over) player's settlement.
@@ -68,15 +71,19 @@ class LastActivePlayerSettlementManager(object):
 
 	def save(self, db):
 		if self._last_player_settlement is not None:
-			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "PLAYER", self._last_player_settlement().worldid)
+			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "PLAYER",
+				self._last_player_settlement().worldid)
 		if self._cur_settlement is not None:
-			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "ANY", self._cur_settlement().worldid)
+			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "ANY",
+				self._cur_settlement().worldid)
 
-		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", self._last_player_settlement_hovered_was_none)
+		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG",
+			self._last_player_settlement_hovered_was_none)
 
 	def load(self, db):
 		data = db('SELECT value FROM last_active_settlement WHERE type = "PLAYER"')
-		self._last_player_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
+		self._last_player_settlement = weakref.ref(
+			WorldObject.get_object_by_id(data[0][0])) if data else None
 		data = db('SELECT value FROM last_active_settlement WHERE type = "ANY"')
 		self._cur_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
 		data = db('SELECT value FROM last_active_settlement WHERE type = "LAST_NONE_FLAG"')
@@ -91,7 +98,8 @@ class LastActivePlayerSettlementManager(object):
 	def update(self, current):
 		"""Update to new world position. Sets internal state to new settlement or no settlement
 		@param current: some kind of position coords with x- and y-values"""
-		settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
+		settlement = self.session.world.get_settlement(Point(int(round(current.x)),
+			int(round(current.y))))
 
 		# check if it's a new settlement independent of player
 		if resolve_weakref(self._cur_settlement) is not settlement:
@@ -100,7 +108,7 @@ class LastActivePlayerSettlementManager(object):
 
 		# player-sensitive code
 		new_player_settlement = weakref.ref(settlement) if \
-		  settlement and settlement.owner.is_local_player else None
+			settlement and settlement.owner.is_local_player else None
 
 		need_msg = False
 		# check if actual last player settlement is a new one
@@ -133,7 +141,7 @@ class LastActivePlayerSettlementManager(object):
 
 	def _on_scroll(self):
 		"""Called when view changes. Scrolling and zooming can change cursor position."""
-		if not hasattr(self.session, "cursor"): # not inited yet
+		if not hasattr(self.session, "cursor"):  # not inited yet
 			return
 		pos = self.session.cursor.__class__.last_event_pos
 		if pos is not None:
