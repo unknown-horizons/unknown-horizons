@@ -35,9 +35,10 @@ __version__ = '0.1'
 PICKLE_PROTOCOL = 2
 PICKLE_RECIEVE_FROM = 'server'
 PICKLE_SAFE = {
-	'client' : {},
-	'server' : {},
+	'client': {},
+	'server': {},
 }
+
 
 class SafeUnpickler(object):
 	"""
@@ -63,7 +64,7 @@ class SafeUnpickler(object):
 	def add(self, origin, klass):
 		global PICKLE_SAFE
 		module = klass.__module__
-		name  = klass.__name__
+		name = klass.__name__
 		if (module == self.__module__ and name == self.__name__):
 			raise RuntimeError("Adding SafeUnpickler to the pickle whitelist is not allowed")
 		types = ['client', 'server'] if origin == 'common' else [origin]
@@ -85,11 +86,13 @@ class SafeUnpickler(object):
 	def find_class(self, module, name):
 		global PICKLE_SAFE, PICKLE_RECIEVE_FROM
 		if module not in PICKLE_SAFE[PICKLE_RECIEVE_FROM]:
-			raise cPickle.UnpicklingError('Attempting to unpickle unsafe module "%s" (class="%s")' % (module, name))
+			raise cPickle.UnpicklingError('Attempting to unpickle unsafe module "%s" (class="%s")'
+				% (module, name))
 		__import__(module)
 		mod = sys.modules[module]
 		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
-			raise cPickle.UnpicklingError('Attempting to unpickle unsafe class "%s" (module="%s")' % (name, module))
+			raise cPickle.UnpicklingError('Attempting to unpickle unsafe class "%s" (module="%s")'
+				% (name, module))
 		klass = getattr(mod, name)
 		return klass
 
@@ -100,7 +103,6 @@ class SafeUnpickler(object):
 		obj.find_global = self.find_class
 		return obj.load()
 
-#-------------------------------------------------------------------------------
 
 class packet(object):
 	maxpacketsize = 0
@@ -115,14 +117,12 @@ class packet(object):
 	def serialize(self):
 		return cPickle.dumps(self, PICKLE_PROTOCOL)
 
-#-------------------------------------------------------------------------------
 
 class cmd_ok(packet):
 	"""simple ok message"""
 
 SafeUnpickler.add('common', cmd_ok)
 
-#-------------------------------------------------------------------------------
 
 class cmd_error(packet):
 	def __init__(self, errorstr, _type=0):
@@ -138,7 +138,6 @@ class cmd_error(packet):
 
 SafeUnpickler.add('common', cmd_error)
 
-#-------------------------------------------------------------------------------
 
 class cmd_fatalerror(packet):
 	def __init__(self, errorstr):
@@ -151,7 +150,6 @@ class cmd_fatalerror(packet):
 
 SafeUnpickler.add('common', cmd_fatalerror)
 
-#-------------------------------------------------------------------------------
 
 def unserialize(data, validate=False, protocol=0):
 	mypacket = SafeUnpickler.loads(data)
@@ -162,9 +160,3 @@ def unserialize(data, validate=False, protocol=0):
 			raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
 		mypacket.__class__.validate(mypacket, protocol)
 	return mypacket
-
-#-------------------------------------------------------------------------------
-
-import horizons.network.packets.server
-import horizons.network.packets.client
-

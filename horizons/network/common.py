@@ -52,43 +52,43 @@ class Address(object):
 			return not self.__eq__(other)
 		return NotImplemented
 
-#-----------------------------------------------------------------------------
-
 nulltranslation = NullTranslations()
+
+
 class Player(object):
 	def __init__(self, peer, sid, protocol=0):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
-		self.peer     = peer
+		self.peer = peer
 		assert isinstance(self.peer, enet.Peer)
-		self.address  = Address(self.peer.address)
-		self.sid      = sid
+		self.address = Address(self.peer.address)
+		self.sid = sid
 		# there's a difference between player.protocol and player.version:
 		# - player.protocol is the network protocol version used by the
 		#   client while talking to the server
 		# - player.version is the game version which all players in a game
 		#   must match. player.version gets set during oncreate/onjoin
 		self.protocol = protocol
-		self.version  = None
-		self.name     = None
-		self.color    = None
+		self.version = None
+		self.name = None
+		self.color = None
 		self.clientid = None
-		self.game     = None
-		self.ready    = False
+		self.game = None
+		self.ready = False
 		self.prepared = False
-		self.fetch    = False
-		self.gettext  = nulltranslation
+		self.fetch = False
+		self.gettext = nulltranslation
 
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):
 		return {
-				'sid':      self.sid,
-				'address':  None,
-				'name':     self.name,
-				'color':    self.color,
-				'ready':    self.ready,
-				'clientid': self.clientid
-			}
+			'sid': self.sid,
+			'address': None,
+			'name': self.name,
+			'color': self.color,
+			'ready': self.ready,
+			'clientid': self.clientid
+		}
 
 	def __hash__(self):
 		return hash((self.address))
@@ -117,12 +117,12 @@ class Player(object):
 		""" assigns player data sent by create/join-command to the player """
 		assert (isinstance(packet, packets.client.cmd_creategame)
 		        or isinstance(packet, packets.client.cmd_joingame))
-		self.game     = game
-		self.version  = packet.clientversion
-		self.name     = packet.playername
-		self.color    = packet.playercolor
+		self.game = game
+		self.version = packet.clientversion
+		self.name = packet.playername
+		self.color = packet.playercolor
 		self.clientid = packet.clientid
-		self.ready    = False
+		self.ready = False
 		if isinstance(packet, packets.client.cmd_joingame):
 			self.fetch = packet.fetch
 
@@ -132,35 +132,34 @@ class Player(object):
 
 packets.SafeUnpickler.add('server', Player)
 
-#-----------------------------------------------------------------------------
 
 class Game(object):
 	class State(object):
-		Open      = 0
-		Prepare   = 1
-		Running   = 2
+		Open = 0
+		Prepare = 1
+		Running = 2
 
 		def __init__(self, state=Open):
 			self.state = state
 
 		def __str__(self):
-			strvals = [ "Open", "Prepare", "Running" ]
+			strvals = ["Open", "Prepare", "Running"]
 			return "%s" % (strvals[self.state])
 
 	def __init__(self, packet, creator):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
 		assert isinstance(packet, packets.client.cmd_creategame)
-		self.uuid          = uuid.uuid1().hex
-		self.mapname       = packet.mapname
-		self.maphash       = packet.maphash
-		self.maxplayers    = packet.maxplayers
-		self.name          = packet.name
-		self.password      = packet.password
-		self.creator       = creator
-		self.players       = []
-		self.playercnt     = 0 # needed for privacy for gamelist-requests
-		self.state         = Game.State.Open
+		self.uuid = uuid.uuid1().hex
+		self.mapname = packet.mapname
+		self.maphash = packet.maphash
+		self.maxplayers = packet.maxplayers
+		self.name = packet.name
+		self.password = packet.password
+		self.creator = creator
+		self.players = []
+		self.playercnt = 0  # needed for privacy for gamelist-requests
+		self.state = Game.State.Open
 		self.add_player(self.creator, packet)
 
 	# for pickle: return only relevant data to the player
@@ -233,11 +232,11 @@ class Game(object):
 		self.playercnt = 0
 
 	def __str__(self):
-		return "Game(uuid=%s;maxpl=%d;plcnt=%d;pw=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
+		return "Game(uuid=%s;maxpl=%d;plcnt=%d;pw=%d;state=%s)" % (self.uuid,
+			self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
 
 packets.SafeUnpickler.add('server', Game)
 
-#-----------------------------------------------------------------------------
 
 # types of soft errors used by cmd_error
 # this way we don't have to create a new packet for every type of error
@@ -249,7 +248,7 @@ class ErrorType(object):
 		self.state = state
 
 	def __str__(self):
-		strvals = [ "NotSet", "TerminateGame" ]
+		strvals = ["NotSet", "TerminateGame"]
 		return "%s" % (strvals[self.state])
 
 packets.SafeUnpickler.add('common', ErrorType)

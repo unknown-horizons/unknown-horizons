@@ -21,6 +21,7 @@
 
 from horizons.network.packets import packet, SafeUnpickler
 
+
 class cmd_session(packet):
 	def __init__(self, sid, capabilities):
 		self.sid = sid
@@ -28,7 +29,6 @@ class cmd_session(packet):
 
 SafeUnpickler.add('server', cmd_session)
 
-#-------------------------------------------------------------------------------
 
 class data_gameslist(packet):
 	def __init__(self):
@@ -40,7 +40,6 @@ class data_gameslist(packet):
 
 SafeUnpickler.add('server', data_gameslist)
 
-#-------------------------------------------------------------------------------
 
 class data_gamestate(packet):
 	def __init__(self, game):
@@ -48,16 +47,14 @@ class data_gamestate(packet):
 
 SafeUnpickler.add('server', data_gamestate)
 
-#-------------------------------------------------------------------------------
 
 class cmd_chatmsg(packet):
 	def __init__(self, playername, msg):
 		self.playername = playername
-		self.chatmsg    = msg
+		self.chatmsg = msg
 
 SafeUnpickler.add('server', cmd_chatmsg)
 
-#-------------------------------------------------------------------------------
 
 class cmd_preparegame(packet):
 	def __init__(self):
@@ -65,7 +62,6 @@ class cmd_preparegame(packet):
 
 SafeUnpickler.add('server', cmd_preparegame)
 
-#-------------------------------------------------------------------------------
 
 class cmd_startgame(packet):
 	def __init__(self):
@@ -73,7 +69,6 @@ class cmd_startgame(packet):
 
 SafeUnpickler.add('server', cmd_startgame)
 
-#-------------------------------------------------------------------------------
 
 class cmd_kickplayer(packet):
 	def __init__(self, player):

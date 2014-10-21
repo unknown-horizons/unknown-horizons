@@ -88,33 +88,43 @@ if not hasattr(enet, 'PEER_STATE_DISCONNECTED') and hasattr(enet, 'PEER_STATE_DI
 class NetworkException(Exception):
 	pass
 
+
 class SoftNetworkException(NetworkException):
 	pass
 
+
 class PacketTooLarge(NetworkException):
 	pass
+
 
 class NotConnected(NetworkException):
 	def __str__(self):
 		return "Client is not connected"
 
+
 class ClientException(NetworkException):
 	pass
+
 
 class AlreadyConnected(ClientException):
 	pass
 
+
 class NotInGameLobby(ClientException):
 	pass
+
 
 class NotInServerMode(ClientException):
 	pass
 
+
 class UnableToConnect(ClientException):
 	pass
 
+
 class CommandError(ClientException):
 	pass
+
 
 class FatalError(ClientException):
 	pass

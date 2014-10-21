@@ -64,7 +64,7 @@ class NetworkInterface(object):
 
 	log = logging.getLogger("network")
 
-	PING_INTERVAL = 0.5 # ping interval in seconds
+	PING_INTERVAL = 0.5  # ping interval in seconds
 
 	def __init__(self):
 		self._mode = None
@@ -73,11 +73,11 @@ class NetworkInterface(object):
 		self._game = None
 
 		message_types = ('lobbygame_chat', 'lobbygame_join', 'lobbygame_leave',
-		                 'lobbygame_terminate', 'lobbygame_toggleready',
-		                 'lobbygame_changename', 'lobbygame_kick',
-		                 'lobbygame_changecolor', 'lobbygame_state',
-		                 'lobbygame_starts', 'game_starts',
-		                 'game_details_changed', 'game_prepare', 'error')
+			'lobbygame_terminate', 'lobbygame_toggleready',
+			'lobbygame_changename', 'lobbygame_kick',
+			'lobbygame_changecolor', 'lobbygame_state',
+			'lobbygame_starts', 'game_starts',
+			'game_details_changed', 'game_prepare', 'error')
 
 		self._messagebus = SimpleMessageBus(message_types)
 		self.subscribe = self._messagebus.subscribe
@@ -87,11 +87,11 @@ class NetworkInterface(object):
 
 		# create a game_details_changed callback
 		for t in ('lobbygame_join', 'lobbygame_leave', 'lobbygame_changename',
-		          'lobbygame_changecolor', 'lobbygame_toggleready'):
+				'lobbygame_changecolor', 'lobbygame_toggleready'):
 			self.subscribe(t, lambda *a, **b: self.broadcast("game_details_changed"))
 
 		self.subscribe("lobbygame_starts", self._on_lobbygame_starts)
-		self.subscribe('lobbygame_changename',  self._on_change_name)
+		self.subscribe('lobbygame_changename', self._on_change_name)
 		self.subscribe('lobbygame_changecolor', self._on_change_color)
 
 		self.received_packets = []
@@ -147,7 +147,7 @@ class NetworkInterface(object):
 		"""calls _connection.ping until all packets are received"""
 		if self.is_connected:
 			try:
-				while self._connection.ping(): # ping receives packets
+				while self._connection.ping():  # ping receives packets
 					pass
 			except NetworkException as e:
 				self._handle_exception(e)
@@ -228,14 +228,14 @@ class NetworkInterface(object):
 		"""Join a game with a certain uuid"""
 		i = 2
 		try:
-			while i < 10: # FIXME: try 10 different names and colors
+			while i < 10:  # FIXME: try 10 different names and colors
 				try:
 					self._joingame(uuid, password, fetch)
 					return True
 				except CommandError as e:
 					self.log.debug("NetworkInterface: failed to join")
 					if 'name' in e.message:
-						self.change_name(self._client_data.name + unicode(i), save=False )
+						self.change_name(self._client_data.name + unicode(i), save=False)
 					elif 'color' in e.message:
 						self.change_color(self._client_data.color + i, save=False)
 					else:
@@ -313,9 +313,7 @@ class NetworkInterface(object):
 		self.log.debug("[KICK]")
 		self.send_packet(packets.client.cmd_kickplayer(player_sid))
 
-
 	# Client
-
 	def get_client_name(self):
 		return self._client_data.name
 
@@ -377,10 +375,10 @@ class NetworkInterface(object):
 		@return: list of packets
 		"""
 		try:
-			while self._connection.ping(): # ping receives packets
+			while self._connection.ping():  # ping receives packets
 				pass
 		except NetworkException as e:
-			self.log.debug("ping in receive_all failed: "+unicode(e))
+			self.log.debug("ping in receive_all failed: " + unicode(e))
 			self._handle_exception(e)
 			raise CommandError(e)
 		ret_list = self.received_packets
@@ -499,17 +497,17 @@ class NetworkInterface(object):
 
 class MPGame(object):
 	def __init__(self, game, netif):
-		self.uuid       = game.uuid
-		self.creator    = game.creator
-		self.map_name    = game.mapname
-		self.map_hash    = game.maphash
+		self.uuid = game.uuid
+		self.creator = game.creator
+		self.map_name = game.mapname
+		self.map_hash = game.maphash
 		self.player_limit = game.maxplayers
 		self.player_count = game.playercnt
-		self.players    = game.players
-		self.version    = game.clientversion
-		self.name       = game.name
-		self.password   = game.password
-		self.netif      = netif
+		self.players = game.players
+		self.version = game.clientversion
+		self.name = game.name
+		self.password = game.password
+		self.netif = netif
 
 	@property
 	def is_savegame(self):
@@ -525,16 +523,16 @@ class MPGame(object):
 			# TODO: add support for selecting difficulty levels to the GUI
 			status = _('Ready') if player.ready else _('Not Ready')
 			ret_players.append({
-				'id':         index,
-				'sid':        player.sid,
-				'name':       player.name,
-				'color':      Color[player.color],
-				'clientid':   player.clientid,
-				'local':      self.netif.get_client_name() == player.name,
-				'ai':         False,
+				'id': index,
+				'sid': player.sid,
+				'name': player.name,
+				'color': Color[player.color],
+				'clientid': player.clientid,
+				'local': self.netif.get_client_name() == player.name,
+				'ai': False,
 				'difficulty': DifficultySettings.DEFAULT_LEVEL,
-				'status':     status
-				})
+				'status': status
+			})
 		return ret_players
 
 	def __str__(self):
