@@ -27,7 +27,6 @@ from horizons.scheduler import Scheduler
 from horizons.util.living import LivingObject
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
-
 from horizons.scenario import ACTIONS, CONDITIONS
 
 
@@ -56,7 +55,7 @@ class ScenarioEventHandler(LivingObject):
 	which is loaded just like normal scenarios are loaded.
 	"""
 
-	CHECK_CONDITIONS_INTERVAL = 3 # seconds
+	CHECK_CONDITIONS_INTERVAL = 3  # seconds
 
 	PICKLE_PROTOCOL = 2
 
@@ -72,14 +71,13 @@ class ScenarioEventHandler(LivingObject):
 		self._data = {}
 		# map: condition types -> events
 		self._event_conditions = {}
-		self._scenario_variables = {} # variables for set_var, var_eq ...
+		self._scenario_variables = {}  # variables for set_var, var_eq ...
 		for cond in CONDITIONS.registry.keys():
 			self._event_conditions[cond] = set()
 		if scenariofile:
-			self._apply_data( self._parse_yaml_file( scenariofile ) )
+			self._apply_data(self._parse_yaml_file(scenariofile))
 
 		self.sleep_ticks_remaining = 0
-
 
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
@@ -109,7 +107,7 @@ class ScenarioEventHandler(LivingObject):
 		self._data = None
 
 	def save(self, db):
-		if self.inited: # only save in case we have data applied
+		if self.inited:  # only save in case we have data applied
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "scenario_events", self.to_yaml())
 		for key, value in self._scenario_variables.iteritems():
 			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key,
@@ -120,25 +118,27 @@ class ScenarioEventHandler(LivingObject):
 			self._scenario_variables[key] = json.loads(value)
 		data = db("SELECT value FROM metadata WHERE name = ?", "scenario_events")
 		if not data:
-			return # nothing to load
-		self._apply_data( self._parse_yaml( data[0][0] ) )
+			return  # nothing to load
+		self._apply_data(self._parse_yaml(data[0][0]))
 
 	def schedule_check(self, condition):
 		"""Let check_events run in one tick for condition. Useful for lag prevetion if time is a
 		critical factor, e.g. when the user has to wait for a function to return.."""
-		if self.session.world.inited: # don't check while loading
-			Scheduler().add_new_object(Callback(self.check_events, condition), self, run_in=self.sleep_ticks_remaining)
+		if self.session.world.inited:  # don't check while loading
+			Scheduler().add_new_object(Callback(self.check_events, condition),
+				self, run_in=self.sleep_ticks_remaining)
 
 	def schedule_action(self, action):
 		if self.sleep_ticks_remaining > 0:
-			Scheduler().add_new_object(Callback(action, self.session), self, run_in=self.sleep_ticks_remaining)
+			Scheduler().add_new_object(Callback(action, self.session),
+				self, run_in=self.sleep_ticks_remaining)
 		else:
 			action(self.session)
 
 	def check_events(self, condition):
 		"""Checks whether an event happened.
 		@param condition: condition from enum conditions that changed"""
-		if not self.session.world.inited: # don't check while loading
+		if not self.session.world.inited:  # don't check while loading
 			return
 		events_to_remove = []
 		for event in self._event_conditions[condition]:
@@ -182,7 +182,7 @@ class ScenarioEventHandler(LivingObject):
 	def _parse_yaml(string_or_stream):
 		try:
 			return YamlCache.load_yaml_data(string_or_stream)
-		except Exception as e: # catch anything yaml or functions that yaml calls might throw
+		except Exception as e:  # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
 
 	@classmethod
@@ -196,9 +196,9 @@ class ScenarioEventHandler(LivingObject):
 		self._data = data
 		for event_dict in self._data['events']:
 			event = _Event(self.session, event_dict)
-			self._events.append( event )
+			self._events.append(event)
 			for cond in event.conditions:
-				self._event_conditions[ cond.cond_type ].add( event )
+				self._event_conditions[cond.cond_type].add(event)
 		self.inited = True
 
 	def _scheduled_check(self):
@@ -211,8 +211,8 @@ class ScenarioEventHandler(LivingObject):
 		for cond in event.conditions:
 			# we have to use discard here, since cond.cond_type might be the same
 			# for multiple conditions of event
-			self._event_conditions[ cond.cond_type ].discard( event )
-		self._events.remove( event )
+			self._event_conditions[cond.cond_type].discard(event)
+		self._events.remove(event)
 
 	def to_yaml(self):
 		"""Returns yaml representation of current state of self.
@@ -245,10 +245,10 @@ class _Event(object):
 		self.conditions = []
 		assert_type(event_dict['actions'], list, "actions")
 		for action_dict in event_dict['actions']:
-			self.actions.append( _Action(action_dict) )
+			self.actions.append(_Action(action_dict))
 		assert_type(event_dict['conditions'], list, "conditions")
 		for cond_dict in event_dict['conditions']:
-			self.conditions.append( _Condition(session, cond_dict) )
+			self.conditions.append(_Condition(session, cond_dict))
 
 	def check(self, scenarioeventhandler):
 		for cond in self.conditions:
@@ -261,8 +261,8 @@ class _Event(object):
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
 		return '{ actions: [ %s ] , conditions: [ %s ]  }' % \
-			   (', '.join(action.to_yaml() for action in self.actions),
-				', '.join(cond.to_yaml() for cond in self.conditions))
+			(', '.join(action.to_yaml() for action in self.actions),
+			', '.join(cond.to_yaml() for cond in self.conditions))
 
 
 class _Action(object):
@@ -273,7 +273,7 @@ class _Action(object):
 		try:
 			self.action_type = action_dict['type']
 		except KeyError:
-			raise InvalidScenarioFileFormat('Encountered action without type\n'+str(action_dict))
+			raise InvalidScenarioFileFormat('Encountered action without type\n' + str(action_dict))
 		try:
 			self.callback = ACTIONS.get(self.action_type)
 		except KeyError:
@@ -301,7 +301,7 @@ class _Condition(object):
 		try:
 			self.cond_type = cond_dict['type']
 		except KeyError:
-			raise InvalidScenarioFileFormat("Encountered condition without type\n"+str(cond_dict))
+			raise InvalidScenarioFileFormat("Encountered condition without type\n" + str(cond_dict))
 		try:
 			self.callback = CONDITIONS.get(self.cond_type)
 		except KeyError:
@@ -317,7 +317,7 @@ class _Condition(object):
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
 		arguments_yaml = dump_dict_to_yaml(self.arguments)
-		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type)
+		return '{arguments: %s, type: "%s"}' % (arguments_yaml, self.cond_type)
 
 
 def dump_dict_to_yaml(data):
@@ -327,4 +327,3 @@ def dump_dict_to_yaml(data):
 
 	# default_flow_style: makes use of short list notation without newlines (required here)
 	return yaml.safe_dump(data, line_break='\n', default_flow_style=True)
-
