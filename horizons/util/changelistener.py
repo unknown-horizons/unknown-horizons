@@ -25,6 +25,7 @@ import traceback
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethodlist import WeakMethodList
 
+
 class ChangeListener(object):
 	"""Trivial ChangeListener.
 	The object that changes and the object that listens have to inherit from this class.
@@ -57,10 +58,10 @@ class ChangeListener(object):
 				listener_list.remove(listener)
 			else:
 				listener_list[listener_list.index(listener)] = None
-		except ValueError as e: # nicer error:
-			raise ValueError(str(e)+
-			                 "\nTried to remove: "+str(listener)+"\nat "+str(self)+
-			                 "\nList: "+str([str(i) for i in listener_list]))
+		except ValueError as e:  # nicer error:
+			raise ValueError(str(e) +
+			                 "\nTried to remove: " + str(listener) + "\nat " + str(self) +
+			                 "\nList: " + str([str(i) for i in listener_list]))
 
 	def __call_listeners(self, listener_list):
 		# instead of removing from list, switch the listener in position to None
@@ -81,14 +82,14 @@ class ChangeListener(object):
 
 		if self.__event_call_number == 0:
 			self.__hard_remove = True
-			listener_list[:] = [ l for l in listener_list if l ]
+			listener_list[:] = [l for l in listener_list if l]
 
-	## Normal change listener
+	# Normal change listener
 	def add_change_listener(self, listener, call_listener_now=False, no_duplicates=False):
 		assert callable(listener)
 		if not no_duplicates or listener not in self.__listeners:
 			self.__listeners.append(listener)
-		if call_listener_now: # also call if duplicate is added
+		if call_listener_now:  # also call if duplicate is added
 			listener()
 
 	def remove_change_listener(self, listener):
@@ -110,12 +111,12 @@ class ChangeListener(object):
 		"""Calls every listener when an object changed"""
 		self.__call_listeners(self.__listeners)
 
-	## Removal change listener
+	# Removal change listener
 	def add_remove_listener(self, listener, no_duplicates=False):
 		"""A listener that listens for removal of the object"""
 		assert callable(listener)
 		if no_duplicates and listener in self.__remove_listeners:
-			return # don't allow duplicate entries
+			return  # don't allow duplicate entries
 		self.__remove_listeners.append(listener)
 
 	def remove_remove_listener(self, listener):
@@ -139,7 +140,6 @@ class ChangeListener(object):
 		self.__listeners = None
 		self.__remove_listeners = None
 
-
 """ Class decorator that adds methods for listening for certain events to a class.
 These methods get added automatically (eventname is the name you pass to the decorator):
 - add_eventname_listener(listener):
@@ -156,12 +156,15 @@ These methods get added automatically (eventname is the name you pass to the dec
 The goal is to simplify adding special listeners, as for example used in the
 production_finished listener.
 """
+
+
 def metaChangeListenerDecorator(event_name):
 	def decorator(clas):
-		list_name = "__"+event_name+"_listeners"
-		event_call_number = "__"+event_name+"call_number"
-		hard_remove_event = "__hard_remove"+event_name
+		list_name = "__" + event_name + "_listeners"
+		event_call_number = "__" + event_name + "call_number"
+		hard_remove_event = "__hard_remove" + event_name
 		# trivial changelistener operations
+
 		def add(self, listener):
 			assert callable(listener)
 			getattr(self, list_name).append(listener)
@@ -192,20 +195,21 @@ def metaChangeListenerDecorator(event_name):
 			setattr(self, event_call_number, call_number)
 			if getattr(self, event_call_number) == 0:
 				setattr(self, hard_remove_event, True)
-				setattr(self, list_name, [ l for l in getattr(self, list_name) if l ])
+				setattr(self, list_name, [l for l in getattr(self, list_name) if l])
 
 		# add methods to class
-		setattr(clas, "add_"+event_name+"_listener", add)
-		setattr(clas, "remove_"+event_name+"_listener", rem)
-		setattr(clas, "has_"+event_name+"_listener", has)
-		setattr(clas, "on_"+event_name, on)
+		setattr(clas, "add_" + event_name + "_listener", add)
+		setattr(clas, "remove_" + event_name + "_listener", rem)
+		setattr(clas, "has_" + event_name + "_listener", has)
+		setattr(clas, "on_" + event_name, on)
 
 		# use black __new__ magic to add the methods to the instances
 		# think of it as being executed in __init__
 		old_new = clas.__new__
+
 		def new(cls, *args, **kwargs):
 			# this is a proposed way of calling the "old" new:
-			#obj = super(cls, cls).__new__(cls)
+			# obj = super(cls, cls).__new__(cls)
 			# which results in endless recursion, if you construct an instance of a class,
 			# that inherits from a base class on which the decorator has been applied.
 			# therefore, this workaround is used:

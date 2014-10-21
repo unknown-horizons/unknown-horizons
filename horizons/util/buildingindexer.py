@@ -70,7 +70,7 @@ class BuildingIndexer(object):
 				try:
 					index = self._map[coords]
 				except KeyError:
-					continue # should be faster than contains check, since usually True
+					continue  # should be faster than contains check, since usually True
 				index._remove_set.add(building)
 				index._add_set.discard(building)
 				index._changed = True
@@ -82,7 +82,7 @@ class BuildingIndexer(object):
 				try:
 					index = self._map[coords]
 				except KeyError:
-					continue # should be faster than contains check, since usually True
+					continue  # should be faster than contains check, since usually True
 				if not initial:
 					index._remove_set.discard(building)
 				index._add_set.add(building)
@@ -124,7 +124,6 @@ class BuildingIndexer(object):
 			if self._changed:
 				self._update()
 			return self._map[coords].get_num_buildings_in_range()
-
 
 
 class BuildingIndex(object):
