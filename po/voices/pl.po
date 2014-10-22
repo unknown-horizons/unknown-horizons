@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-10-15 23:20+0200\n"
+"PO-Revision-Date: 2014-10-19 14:55+0200\n"
 "Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/voices/pl/>\n"
 "Language: pl\n"
@@ -29,7 +29,7 @@ msgstr "Twoje mieszkańcy z pewnością poczują się komfortowo na tej wyspie."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr ""
+msgstr "Wprowadź tę poprawkę na twoich gruntowych od teraz."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
@@ -65,11 +65,11 @@ msgstr "Chodzą słuchy o rosnącej potędze jednego z naszych wrogów."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
-msgstr ""
+msgstr "Nasze sojusznicze osady na innej wyspie."
 
 #. Founding settlement - Ally found settlement
 msgid "One of our allies cultivates an islnd."
-msgstr ""
+msgstr "Jeden z naszych sojuszników kultywuje wyspę."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
@@ -82,6 +82,7 @@ msgstr "Od teraz nie jesteśmy sami na tej wyspie."
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
 msgstr ""
+"Skauci dowiedzieli się, że goście są rozliczani na jednej z naszych wysp."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
@@ -102,6 +103,7 @@ msgstr "Jeden z naszych wrogów osiedla się na naszej ziemi!"
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
 msgstr ""
+"Wydaje się, że jeden z naszych sojuszników bardzo potrzebuje twojej ziemi."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
