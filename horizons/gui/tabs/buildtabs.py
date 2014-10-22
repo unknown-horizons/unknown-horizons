@@ -32,8 +32,10 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.messaging import NewPlayerSettlementHovered
 from horizons.ext.enum import Enum
 
+
 class InvalidBuildMenuFileFormat(Exception):
 	pass
+
 
 class BuildTab(TabInterface):
 	"""
@@ -55,7 +57,7 @@ class BuildTab(TabInterface):
 	build_menus = [
 	  "content/objects/gui_buildmenu/build_menu_per_tier.yaml",
 	  "content/objects/gui_buildmenu/build_menu_per_type.yaml"
-	  ]
+	]
 
 	build_menu_config_per_tier = build_menus[0]
 	build_menu_config_per_type = build_menus[1]
@@ -262,7 +264,7 @@ class BuildTab(TabInterface):
 
 		#save build style
 		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
-		horizons.globals.fife.save_settings();
+		horizons.globals.fife.save_settings()
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):

@@ -40,6 +40,7 @@ from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
 
+
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
 	Builder visualizes if and why a building can not be built under the cursor position.
@@ -93,7 +94,7 @@ class BuildingTool(NavigationTool):
 
 	send_hover_instances_update = False
 
-	gui = None # share gui between instances
+	gui = None  # share gui between instances
 
 	def __init__(self, session, building, ship=None, build_related=None):
 		super(BuildingTool, self).__init__(session)
@@ -307,13 +308,13 @@ class BuildingTool(NavigationTool):
 			level = self._class.get_initial_level(self.session.world.player)
 
 			if self._class.id == BUILDINGS.TREE and not building.buildable:
-				continue # Tree/ironmine that is not buildable, don't preview
+				continue  # Tree/ironmine that is not buildable, don't preview
 			else:
 				fife_instance, action_set_id = \
 					self._class.getInstance(self.session, building.position.origin.x,
-								            building.position.origin.y, rotation=building.rotation,
-								            action=building.action, level=level,
-								            action_set_id=self.buildings_action_set_ids[i])
+						building.position.origin.y, rotation=building.rotation,
+						action=building.action, level=level,
+						action_set_id=self.buildings_action_set_ids[i])
 				self.buildings_fife_instances[building] = fife_instance
 				# remember action sets per order of occurrence
 				# (this is far from good when building lines, but suffices for our purposes, which is mostly single build)
@@ -321,7 +322,7 @@ class BuildingTool(NavigationTool):
 
 			settlement = self.session.world.get_settlement(building.position.origin)
 			if settlement is not None and settlement.owner != self.session.world.player:
-				settlement = None # no fraternizing with the enemy, else there would be peace
+				settlement = None  # no fraternizing with the enemy, else there would be peace
 
 			if self._class.id != BUILDINGS.WAREHOUSE:
 				# Player shouldn't be allowed to build in this case, else it can trigger
@@ -354,7 +355,7 @@ class BuildingTool(NavigationTool):
 
 		self.session.ingame_gui.resource_overview.set_construction_mode(
 			self.ship if self.ship is not None else settlement,
-		  needed_resources
+			needed_resources
 		)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
@@ -366,11 +367,12 @@ class BuildingTool(NavigationTool):
 			# Tile might still have not buildable color -> remove it
 			self.renderer.removeColored(self.buildings_fife_instances[building])
 			self.renderer.addOutlined(self.buildings_fife_instances[building],
-			                          self.buildable_color[0], self.buildable_color[1],
-			                          self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
-			                          GFX.BUILDING_OUTLINE_THRESHOLD)
+				self.buildable_color[0], self.buildable_color[1],
+				self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
+				GFX.BUILDING_OUTLINE_THRESHOLD
+			)
 
-		else: # not buildable
+		else:  # not buildable
 			# must remove other highlight, fife does not support both
 			self.renderer.removeOutlined(self.buildings_fife_instances[building])
 			self.renderer.addColored(self.buildings_fife_instances[building],
@@ -397,7 +399,6 @@ class BuildingTool(NavigationTool):
 					inst = obj.fife_instance
 					self.renderer.addOutlined(inst, *self.related_building_outline)
 					self.renderer.addColored(inst, *self.related_building_color)
-
 
 	def _make_surrounding_transparent(self, building):
 		"""Makes the surrounding of building_position transparent and hide buildings
@@ -811,8 +812,10 @@ class SettlementBuildingToolLogic(object):
 	# Using messages now.
 	def add_change_listener(self, instance, building_tool):
 		pass
+
 	def remove_change_listener(self, instance, building_tool):
 		pass
+
 	def continue_build(self):
 		pass
 

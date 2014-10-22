@@ -55,7 +55,7 @@ class ProductionOverviewTab(OverviewTab):
 	ARROW_CONNECT_UP = "content/gui/icons/templates/production/production_arrow_connect_up.png"
 	ARROW_CONNECT_DOWN = "content/gui/icons/templates/production/production_arrow_connect_down.png"
 
-	def  __init__(self, instance):
+	def __init__(self, instance):
 		self._animations = []
 		super(ProductionOverviewTab, self).__init__(instance=instance)
 

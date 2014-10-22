@@ -159,13 +159,13 @@ class Fife(object):
 		# Set game cursor.
 		self.cursor = self.engine.getCursor()
 		cursor_images = {
-			'default':   'content/gui/images/cursors/cursor.png',
-			'tearing':   'content/gui/images/cursors/cursor_tear.png',
+			'default': 'content/gui/images/cursors/cursor.png',
+			'tearing': 'content/gui/images/cursors/cursor_tear.png',
 			'attacking': 'content/gui/images/cursors/cursor_attack.png',
-			'pipette':   'content/gui/images/cursors/cursor_pipette.png',
-			'rename':    'content/gui/images/cursors/cursor_rename.png',
+			'pipette': 'content/gui/images/cursors/cursor_pipette.png',
+			'rename': 'content/gui/images/cursors/cursor_rename.png',
 		}
-		self.cursor_images = dict( (k, self.imagemanager.load(v)) for k, v in  cursor_images.iteritems() )
+		self.cursor_images = dict((k, self.imagemanager.load(v)) for k, v in cursor_images.iteritems())
 		self.cursor.set(self.cursor_images['default'])
 
 		# Init pychan.

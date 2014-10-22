@@ -190,14 +190,14 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 
 	def build_ship_info(self, index, ship, prodline):
 		size = (260, 90)
-		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
+		widget = Container(name='showcase_%s' % index, position=(0, 20 + index * 90),
 		                   min_size=size, max_size=size, size=size)
-		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
+		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s' % index)
 		widget.addChild(bg_icon)
 
 		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
 		helptext = self.instance.session.db.get_ship_tooltip(ship)
-		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
+		unit_icon = Icon(image=image, name='icon_%s' % index, position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
@@ -205,10 +205,10 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		#ship_unbuildable = self.is_ship_unbuildable(ship)
 		ship_unbuildable = False
 		if not ship_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this ship!'))
+			button = OkButton(position=(60, 50), name='ok_%s' % index, helptext=_('Build this ship!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
-			button = CancelButton(position=(60, 50), name='ok_%s'%index,
+			button = CancelButton(position=(60, 50), name='ok_%s' % index,
 			helptext=ship_unbuildable)
 
 		widget.addChild(button)
@@ -219,7 +219,7 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		costs = sorted(production.consumed_res.iteritems(), key=itemgetter(1))
 		for i, (res, amount) in enumerate(costs):
 			xoffset = 103 + (i  % 2) * 55
-			yoffset =  20 + (i // 2) * 20
+			yoffset = 20 + (i // 2) * 20
 			icon = create_resource_icon(res, self.instance.session.db)
 			icon.max_size = icon.min_size = icon.size = (16, 16)
 			icon.position = (xoffset, yoffset)
