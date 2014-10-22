@@ -28,8 +28,8 @@ from horizons.util.python.callback import Callback
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
-	sections = () # Tuple with widget name and Label
-	widget_xml = '' # xml to load for the widget
+	sections = ()  # Tuple with widget name and Label
+	widget_xml = ''  # xml to load for the widget
 	pickbelt_start_pos = (5, 150)
 	page_pos = (185, 45)
 
@@ -54,15 +54,15 @@ class PickBeltWidget(object):
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
 
 				start_x, start_y = self.pickbelt_start_pos
-				pickbelt.position = (start_x + 5*i, start_y + 70*i)
+				pickbelt.position = (start_x + 5 * i, start_y + 70 * i)
 
 				container = self.widget.findChild(name="%s_pickbelts" % side)
 				container.addChild(pickbelt)
 				self.buttons[side].append(pickbelt)
 
-		self.widget.show() # Hack to initially setup the pickbelts properly
+		self.widget.show()  # Hack to initially setup the pickbelts properly
 		self.update_view()
-		self.widget.hide() # Hack to initially setup the pickbelts properly
+		self.widget.hide()  # Hack to initially setup the pickbelts properly
 
 	def get_widget(self):
 		return self.widget
@@ -97,7 +97,7 @@ class CreditsPickbeltWidget(PickBeltWidget, Window):
 
 		# Overwrite a few style pieces
 		for box in self.widget.findChildren(name='box'):
-			box.margins = (30, 0) # to get some indentation
+			box.margins = (30, 0)  # to get some indentation
 			box.padding = 3
 		for listbox in self.widget.findChildren(name='translators'):
 			listbox.background_color = NOTHING

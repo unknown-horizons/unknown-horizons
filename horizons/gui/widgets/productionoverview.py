@@ -33,6 +33,7 @@ from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets.imagebutton import OkButton
 
+
 class ProductionOverview(StatsWidget, Window):
 	"""
 	Widget that shows every produced resource in this game.
@@ -48,7 +49,8 @@ class ProductionOverview(StatsWidget, Window):
 
 		self.settlement = settlement
 		self.db = self.settlement.session.db
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
+		Scheduler().add_new_object(Callback(self._refresh_tick), self,
+			run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
@@ -75,11 +77,11 @@ class ProductionOverview(StatsWidget, Window):
 		icon.name = 'icon_%s' % resource_id
 		icon.max_size = icon.min_size = icon.size = (20, 20)
 
-		label = widgets.Label(name = 'resource_%s' % resource_id)
+		label = widgets.Label(name='resource_%s' % resource_id)
 		label.text = res_name
 		label.min_size = (100, 20)
 
-		amount_label = widgets.Label(name = 'produced_sum_%s' % resource_id)
+		amount_label = widgets.Label(name='produced_sum_%s' % resource_id)
 		amount_label.text = unicode(amount)
 
 		hbox = widgets.HBox()
