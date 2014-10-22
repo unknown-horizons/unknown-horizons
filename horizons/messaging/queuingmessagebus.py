@@ -25,25 +25,26 @@ from collections import defaultdict, deque
 from horizons.util.python.singleton import Singleton
 from horizons.messaging.messagebus import MessageBus
 
+
 class QueuingMessageBus(MessageBus):
 	"""The QueuingMessageBus class is used to send Message instances from a sender to
 	one or multiple recipients, with the additional property that messages will
 	be saved to a queue if no callback is subscribed at the time they are sent."""
-	
+
 	def __init__(self):
 		MessageBus.__init__(self)
 		# Queue up messages if there is no registered subscriber
 		self.message_queue = defaultdict(deque)
-	
+
 	def subscribe_globally(self, messagetype, callback):
 		MessageBus.subscribe_globally(self, messagetype, callback)
-		
+
 		while len(self.message_queue[messagetype]):
 			self.broadcast(self.message_queue[messagetype].popleft())
 
 	def subscribe_locally(self, messagetype, instance, callback):
 		MessageBus.subscribe_locally(self, messagetype, instance, callback)
-		
+
 		for message in self.message_queue[messagetype]:
 			if (message, message.sender) == (messagetype, instance):
 				self.broadcast(message)
@@ -52,7 +53,7 @@ class QueuingMessageBus(MessageBus):
 	def broadcast(self, message):
 		messagetype = message.__class__
 		pair = (messagetype, message.sender)
-		
+
 		# check if the message will go anywhere, if not, then queue it
 		if not len(self.global_receivers[messagetype]) and not len(self.local_receivers[pair]):
 			self.message_queue[messagetype].append(message)

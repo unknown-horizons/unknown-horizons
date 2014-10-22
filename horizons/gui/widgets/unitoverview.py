@@ -28,6 +28,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 
+
 class StanceWidget(Container):
 	"""Widget used for setting up the stance for one instance"""
 	def __init__(self, **kwargs):
@@ -39,8 +40,8 @@ class StanceWidget(Container):
 	def init(self, instance):
 		self.instance = instance
 		self.toggle_stance()
-		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
-		self.mapEvents( events )
+		events = dict((i.NAME, Callback(self.set_stance, i)) for i in DEFAULT_STANCES)
+		self.mapEvents(events)
 
 	def beforeShow(self):
 		super(StanceWidget, self).beforeShow()
@@ -69,6 +70,7 @@ class StanceWidget(Container):
 			self.findChild(name=stance.NAME).set_inactive()
 		self.findChild(name=self.instance.stance.NAME).set_active()
 
+
 class HealthWidget(Container):
 	"""Widget that shows a health bar for an unit"""
 	def __init__(self, **kwargs):
@@ -87,7 +89,8 @@ class HealthWidget(Container):
 		health_component = self.instance.get_component(HealthComponent)
 		max_health = int(health_component.max_health)
 		health = int(health_component.health)
-		self.findChild(name='health_label').text = "{health}/{max_health}".format(health=health, max_health=max_health)
+		self.findChild(name='health_label').text = "{health}/{max_health}".format(health=health,
+			max_health=max_health)
 		self.findChild(name='health_bar').progress = int(health * 100. / max_health)
 
 	def remove(self, caller=None):
@@ -95,6 +98,7 @@ class HealthWidget(Container):
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 		self.instance = None
+
 
 class WeaponStorageWidget(HBox):
 	"""Widget that shows a small overview for one instance weapons"""
@@ -122,4 +126,3 @@ class WeaponStorageWidget(HBox):
 			icon_image = "content/gui/icons/resources/none.png"
 			icon = Icon(image=icon_image, helptext=_("none"))
 			self.addChild(icon)
-

@@ -32,6 +32,7 @@ from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.container import AutoResizeContainer
 from horizons.gui.widgets.icongroup import TooltipBG
 
+
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 
@@ -47,20 +48,20 @@ class _Tooltip(object):
 		self.bg = None
 		self.label = None
 		self.mapEvents({
-			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
-			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
-			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
+			self.name + '/mouseEntered/tooltip': self.position_tooltip,
+			self.name + '/mouseExited/tooltip': self.hide_tooltip,
+			self.name + '/mouseMoved/tooltip': self.position_tooltip,
 
 			# TIP: the mousePressed event is especially useful when such as click
-			# will trigger this tooltip's parent widget to be hidden (or destroyed), 
-			# which hides this tooltip first before hides the parent widget. 
+			# will trigger this tooltip's parent widget to be hidden (or destroyed),
+			# which hides this tooltip first before hides the parent widget.
 			# Otherwise the tooltip will show forever.
-			self.name + '/mousePressed/tooltip' : self.hide_tooltip,
+			self.name + '/mousePressed/tooltip': self.hide_tooltip,
 
 			# TODO: not sure if below are useful or not
 			# self.name + '/mouseReleased/tooltip' : self.position_tooltip,
 			# self.name + '/mouseDragged/tooltip' : self.hide_tooltip
-			})
+		})
 		self.tooltip_shown = False
 
 	def __init_gui(self):
@@ -77,7 +78,7 @@ class _Tooltip(object):
 		"""
 		# TODO: think about nicer way of handling the polymorphism here,
 		# e.g. a position_tooltip_event and a position_tooltip_tuple
-		where = event # fife forces this to be called event, but here it can also be a tuple
+		where = event  # fife forces this to be called event, but here it can also be a tuple
 		if isinstance(where, tuple):
 			x, y = where
 		else:
@@ -112,7 +113,7 @@ class _Tooltip(object):
 		self.gui.x = widget_position[0] + offset
 		if not self.tooltip_shown:
 			self.show_tooltip()
-			#ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
+			# ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
 			self.tooltip_shown = True
 
 	def show_tooltip(self):
@@ -121,7 +122,7 @@ class _Tooltip(object):
 		if self.gui is None:
 			self.__init_gui()
 
-		#HACK: support icons in build menu
+		# HACK: support icons in build menu
 		# Code below exists for the sole purpose of build menu tooltips showing
 		# resource icons. Even supporting that is a pain (as you will see),
 		# so if you think you need icons in other tooltips, maybe reconsider.
@@ -134,7 +135,7 @@ class _Tooltip(object):
 			hbox = HBox(position=(7, 5), padding=0)
 			for spec in buildmenu_icons[0].split():
 				(res_id, amount) = spec.split(':')
-				label = Label(text=amount+'  ')
+				label = Label(text=amount + '  ')
 				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16))
 				# For compatibility with FIFE 0.3.5 and older, also set min/max.
 				icon.max_size = icon.min_size = (16, 16)
@@ -143,7 +144,7 @@ class _Tooltip(object):
 			# Now display the 16x16px "required resources" icons in the last line.
 			self.gui.addChild(hbox)
 
-		#HACK: wrap tooltip text
+		# HACK: wrap tooltip text
 		# This looks better than splitting into several lines and joining them.
 		# It works because replace_whitespace in `fill` defaults to True.
 		replaced = replaced.replace(r'\n', self.CHARS_PER_LINE * ' ')
@@ -177,7 +178,7 @@ class _Tooltip(object):
 		target_widget = self
 		# traverse the widget chain again
 		while target_widget:
-			# none of ancestors of this widget gets removed, 
+			# none of ancestors of this widget gets removed,
 			# just do nothing and let the tooltip shown
 			if target_widget == self.topmost_widget:
 				return

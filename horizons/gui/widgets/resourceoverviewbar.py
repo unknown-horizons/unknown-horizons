@@ -68,31 +68,33 @@ class ResourceOverviewBar(object):
 	"""
 
 	GOLD_ENTRY_GUI_FILE = "resource_overview_bar_gold.xml"
-	INITIAL_X_OFFSET = 100 # length of money icon (87px) + padding (10px left, 3px right)
+	INITIAL_X_OFFSET = 100  # length of money icon (87px) + padding (10px left, 3px right)
 
 	ENTRY_GUI_FILE = "resource_overview_bar_entry.xml"
-	ENTRY_X_OFFSET = 52 # length of entry icons (49px) + padding (3px right)
-	ENTRY_Y_OFFSET = 17 # only padding (17px top)!
-	ENTRY_Y_HEIGHT = 66 # only height of entry icons (66px)!
-	CONSTRUCTION_LABEL_HEIGHT = 22 # height of extra label shown in build preview mode
+	ENTRY_X_OFFSET = 52  # length of entry icons (49px) + padding (3px right)
+	ENTRY_Y_OFFSET = 17  # only padding (17px top)!
+	ENTRY_Y_HEIGHT = 66  # only height of entry icons (66px)!
+	CONSTRUCTION_LABEL_HEIGHT = 22  # height of extra label shown in build preview mode
 
 	STATS_GUI_FILE = "resource_overview_bar_stats.xml"
 
 	STYLE = "resource_bar"
 
-	DEFAULT_RESOURCES = [ RES.TOOLS,
-	                      RES.BOARDS,
-	                      RES.BRICKS,
-	                      RES.FOOD,
-	                      RES.TEXTILE,
-	                      RES.SALT]
+	DEFAULT_RESOURCES = [
+		RES.TOOLS,
+		RES.BOARDS,
+		RES.BRICKS,
+		RES.FOOD,
+		RES.TEXTILE,
+		RES.SALT
+	]
 
 	# order should match the above, else confuses players when in build mode
-	CONSTRUCTION_RESOURCES = { # per inhabitant tier
-	  TIER.SAILORS:  [ RES.TOOLS, RES.BOARDS ],
-	  TIER.PIONEERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.SETTLERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.CITIZENS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	CONSTRUCTION_RESOURCES = {  # per inhabitant tier
+		TIER.SAILORS: [RES.TOOLS, RES.BOARDS],
+		TIER.PIONEERS: [RES.TOOLS, RES.BOARDS, RES.BRICKS],
+		TIER.SETTLERS: [RES.TOOLS, RES.BOARDS, RES.BRICKS],
+		TIER.CITIZENS: [RES.TOOLS, RES.BOARDS, RES.BRICKS],
 	}
 
 	def __init__(self, session):
@@ -108,14 +110,14 @@ class ResourceOverviewBar(object):
 		gold_icon.image = get_res_icon_path(RES.GOLD)
 		gold_icon.max_size = gold_icon.min_size = gold_icon.size = (32, 32)
 		self.gold_gui.mapEvents({
-		  "resbar_gold_container/mouseClicked/stats" : self._toggle_stats,
-		  })
+			"resbar_gold_container/mouseClicked/stats": self._toggle_stats,
+		})
 		self.gold_gui.helptext = _("Click to show statistics")
 		self.stats_gui = None
 
-		self.gui = [] # list of slots
+		self.gui = []  # list of slots
 		self.resource_configurations = weakref.WeakKeyDictionary()
-		self.current_instance = weakref.ref(self) # can't weakref to None
+		self.current_instance = weakref.ref(self)  # can't weakref to None
 		self.construction_mode = False
 		self._last_build_costs = None
 		self._do_show_dummy = False
@@ -127,7 +129,8 @@ class ResourceOverviewBar(object):
 
 		# set now and then every few sec
 		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=0)
-		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
+		ExtScheduler().add_new_object(self._update_balance_display, self,
+			run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
 
 	def hide(self):
 		self.gold_gui.hide()
@@ -137,7 +140,7 @@ class ResourceOverviewBar(object):
 			self.stats_gui.hide()
 
 	def end(self):
-		self.set_inventory_instance( None, force_update=True )
+		self.set_inventory_instance(None, force_update=True)
 		self.current_instance = weakref.ref(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.resource_configurations.clear()
@@ -153,9 +156,9 @@ class ResourceOverviewBar(object):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
 		self._custom_default_resources = None
 		setting = horizons.globals.fife.get_uh_setting("ResourceOverviewBarConfiguration")
-		if setting: # parse it if there is something
+		if setting:  # parse it if there is something
 			config = json.loads(setting)
-			if config: # actually use it if it was parseable
+			if config:  # actually use it if it was parseable
 				self._custom_default_resources = config
 
 	def save(self, db):
@@ -170,16 +173,16 @@ class ResourceOverviewBar(object):
 			obj = obj[0]
 			l = []
 			for pos, res in db("SELECT position, resource FROM resource_overview_bar where object=?", obj):
-				l.append( (pos, res) )
+				l.append((pos, res))
 			obj = WorldObject.get_object_by_id(obj)
-			self.resource_configurations[obj] = [ i[1] for i in sorted(l) ]
+			self.resource_configurations[obj] = [i[1] for i in sorted(l)]
 
 		# called when any game (also new ones) start
 		# register at player inventory for gold updates
 		inv = self.session.world.player.get_component(StorageComponent).inventory
 		inv.add_change_listener(self._update_gold, call_listener_now=True)
 		self.gold_gui.show()
-		self._update_gold() # call once more to make pychan happy
+		self._update_gold()  # call once more to make pychan happy
 
 		self.set_inventory_instance(
 		  LastActivePlayerSettlementManager().get(get_current_pos=True))
@@ -193,7 +196,7 @@ class ResourceOverviewBar(object):
 	def set_inventory_instance(self, instance, keep_construction_mode=False, force_update=False):
 		"""Display different inventory. May change resources that are displayed"""
 		if self.current_instance() is instance and not self.construction_mode and not force_update:
-			return # caller is drunk yet again
+			return  # caller is drunk yet again
 		if self.construction_mode and not keep_construction_mode:
 			# stop construction mode, immediately update view, which will be a normal view
 			self.close_construction_mode(update_slots=False)
@@ -209,30 +212,32 @@ class ResourceOverviewBar(object):
 		if inv is not None:
 			inv.remove_change_listener(self._update_resources)
 
-		if instance in (None, self): # show nothing instead
-			self.current_instance = weakref.ref(self) # can't weakref to None
-			self._do_show_dummy = False # don't save dummy value
+		if instance in (None, self):  # show nothing instead
+			self.current_instance = weakref.ref(self)  # can't weakref to None
+			self._do_show_dummy = False  # don't save dummy value
 			return
 
 		self.current_instance = weakref.ref(instance)
 
 		# construct new slots (fill values later)
-		load_entry = lambda : load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
+		load_entry = lambda: load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 		resources = self._get_current_resources()
-		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
-		for i, res in enumerate( resources + addition ):
-			try: # get old slot
+		addition = [-1] if self._do_show_dummy or not resources else []
+		# add dummy at end for adding stuff
+		for i, res in enumerate(resources + addition):
+			try:  # get old slot
 				entry = self.gui[i]
-				if res == -1: # can't reuse dummy slot, need default data
+				if res == -1:  # can't reuse dummy slot, need default data
 					self.gui[i] = entry = load_entry()
-			except IndexError: # need new one
+			except IndexError:  # need new one
 				entry = load_entry()
 				self.gui.append(entry)
 
 			entry.findChild(name="entry").position = (self.INITIAL_X_OFFSET + i * self.ENTRY_X_OFFSET,
-			                                          self.ENTRY_Y_OFFSET)
+				self.ENTRY_Y_OFFSET)
 			background_icon = entry.findChild(name="entry")
-			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseEntered', 'resbar')
+			background_icon.capture(Callback(self._show_resource_selection_dialog, i),
+				'mouseEntered', 'resbar')
 
 			if res != -1:
 				helptext = self.session.db.get_res_name(res)
@@ -243,7 +248,7 @@ class ResourceOverviewBar(object):
 				icon.capture(self._on_res_slot_click, event_name='mouseClicked')
 			else:
 				helptext = _("Click to add a new slot")
-				entry.show() # this will not be filled as the other res
+				entry.show()  # this will not be filled as the other res
 			background_icon.helptext = helptext
 
 			# show it just when values are entered, this appeases pychan
@@ -265,7 +270,7 @@ class ResourceOverviewBar(object):
 		if self.construction_mode and \
 		   resource_source_instance == self.current_instance() and \
 		   build_costs == self._last_build_costs:
-			return # now that's not an update
+			return  # now that's not an update
 
 		self._last_build_costs = build_costs
 
@@ -284,27 +289,27 @@ class ResourceOverviewBar(object):
 		for res, amount in build_costs.iteritems():
 			assert res in res_list or res == RES.GOLD
 
-			cost_label = Label(text=u"-"+unicode(amount))
-			cost_label.stylize( self.__class__.STYLE )
+			cost_label = Label(text=u"-" + unicode(amount))
+			cost_label.stylize(self.__class__.STYLE)
 			# add icon below end of background icon
 			if res in res_list:
 				entry = res_list.index(res)
-				cur_gui = self.gui[ entry ]
+				cur_gui = self.gui[entry]
 				reference_icon = cur_gui.findChild(name="background_icon")
 				below = reference_icon.size[1]
 				cost_icon = Icon(image=cost_icon_res, position=(0, below))
-				cost_label.position = (15, below) # TODO: centering
+				cost_label.position = (15, below)  # TODO: centering
 
 				cur_gui.addChild(cost_icon)
 				cur_gui.addChild(cost_label)
 				cur_gui.cost_gui = [cost_label, cost_icon]
 
-				cur_gui.resizeToContent() # container needs to be bigger now
-			else: # must be gold
+				cur_gui.resizeToContent()  # container needs to be bigger now
+			else:  # must be gold
 				# there is an icon with scales there, use its positioning
 				reference_icon = self.gold_gui.child_finder("balance_background")
 				cost_icon = Icon(image=cost_icon_gold, position=(reference_icon.x, reference_icon.y))
-				cost_label.position = (23, 74) # TODO: centering
+				cost_label.position = (23, 74)  # TODO: centering
 
 				self.gold_gui.addChild(cost_icon)
 				self.gold_gui.addChild(cost_label)
@@ -315,20 +320,20 @@ class ResourceOverviewBar(object):
 	def close_construction_mode(self, update_slots=True):
 		"""Return to normal configuration"""
 		self.construction_mode = False
-		if update_slots: # cleanup
+		if update_slots:  # cleanup
 			self._drop_cost_labels()
 			self.set_inventory_instance(None)
-		#self._update_gold()
+		# self._update_gold()
 		self.gold_gui.show()
 		self._update_gold(force=True)
 
 		# reshow last settlement
-		self.set_inventory_instance( LastActivePlayerSettlementManager().get(get_current_pos=True) )
+		self.set_inventory_instance(LastActivePlayerSettlementManager().get(get_current_pos=True))
 
 	def _drop_cost_labels(self):
 		"""Removes all labels below the slots indicating building costs"""
 		for entry in itertools.chain(self.gui, [self.gold_gui]):
-			if hasattr(entry, "cost_gui"): # get rid of possible cost labels
+			if hasattr(entry, "cost_gui"):  # get rid of possible cost labels
 				for elem in entry.cost_gui:
 					entry.removeChild(elem)
 				del entry.cost_gui
@@ -343,7 +348,7 @@ class ResourceOverviewBar(object):
 			ExtScheduler().add_new_object(Callback(self._update_gold, force=True), self, run_in=0.3)
 			return
 		elif not force:
-			return # these calls we want to suppress, wait for scheduled call
+			return  # these calls we want to suppress, wait for scheduled call
 
 		delattr(self, scheduled_attr)
 
@@ -352,10 +357,10 @@ class ResourceOverviewBar(object):
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")
 		gold_available_lbl.text = unicode(gold)
 		# reposition according to magic formula passed down from the elders in order to support centering
-		gold_available_lbl.resizeToContent() # this sets new size values
+		gold_available_lbl.resizeToContent()  # this sets new size values
 		gold_available_lbl.position = (42 - (gold_available_lbl.size[0] // 2), 51)
 
-		self.gold_gui.resizeToContent() # update label size
+		self.gold_gui.resizeToContent()  # update label size
 
 	def _update_balance_display(self):
 		"""Updates balance info below gold icon"""
@@ -364,13 +369,13 @@ class ResourceOverviewBar(object):
 		balance_lbl.text = u"{balance:+}".format(balance=balance)
 		balance_lbl.resizeToContent()
 		# 38
-		balance_lbl.position = (70 - balance_lbl.size[0],  74) # see _update_gold
+		balance_lbl.position = (70 - balance_lbl.size[0], 74)  # see _update_gold
 
-		self.gold_gui.resizeToContent() # update label size
+		self.gold_gui.resizeToContent()  # update label size
 
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""
-		if self.current_instance() in (None, self): # instance died
+		if self.current_instance() in (None, self):  # instance died
 			self.set_inventory_instance(None)
 			return
 		inv = self._get_current_inventory()
@@ -379,10 +384,10 @@ class ResourceOverviewBar(object):
 
 			# set amount
 			label = cur_gui.findChild(name="res_available")
-			label.text = unicode( inv[res] )
+			label.text = unicode(inv[res])
 
 			# reposition according to magic formula passed down from the elders in order to support centering
-			cur_gui.adaptLayout() # update size values (e.g. if amount of digits changed)
+			cur_gui.adaptLayout()  # update size values (e.g. if amount of digits changed)
 			cur_gui.show()
 			label.position = (24 - (label.size[0] // 2), 44)
 
@@ -392,16 +397,17 @@ class ResourceOverviewBar(object):
 			tier = self.session.world.player.settler_level
 			res_list = self.__class__.CONSTRUCTION_RESOURCES[tier]
 			# also add additional res that might be needed
-			res_list += [ res for res in self._last_build_costs if
-			              res not in res_list and res != RES.GOLD ]
+			res_list += [res for res in self._last_build_costs if
+				res not in res_list and res != RES.GOLD]
 			return res_list
 		# prefer user defaults over general defaults
-		default = self._custom_default_resources if self._custom_default_resources else self.__class__.DEFAULT_RESOURCES
+		default = self._custom_default_resources if self._custom_default_resources \
+			else self.__class__.DEFAULT_RESOURCES
 		# prefer specific setting over any defaults
 		return self.resource_configurations.get(self.current_instance(), default)
 
 	def _get_current_inventory(self):
-		if not (self.current_instance() in (None, self)): # alive and set
+		if not (self.current_instance() in (None, self)):  # alive and set
 			return self.current_instance().get_component(StorageComponent).inventory
 		else:
 			return None
@@ -420,10 +426,7 @@ class ResourceOverviewBar(object):
 		height = self.ENTRY_Y_OFFSET + self.ENTRY_Y_HEIGHT
 		return (width, height)
 
-
-	###
 	# Resource slot selection
-
 	def _show_resource_selection_dialog(self, slot_num):
 		"""Shows gui for selecting a resource for slot slot_num"""
 		if isinstance(self.session.ingame_gui.cursor, BuildingTool):
@@ -439,21 +442,20 @@ class ResourceOverviewBar(object):
 		# set mousetool to get notified on clicks outside the resbar area
 		if not isinstance(self.session.ingame_gui.cursor, ResBarMouseTool):
 			self.session.ingame_gui.cursor = ResBarMouseTool(self.session, self.session.ingame_gui.cursor,
-			                                      self.close_resource_selection_mode)
-
+				self.close_resource_selection_mode)
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
-		res_filter = lambda res_id : res_id not in cur_res
+		res_filter = lambda res_id: res_id not in cur_res
 		dlg = create_resource_selection_dialog(on_click, inv, self.session.db,
-		                                       widget='resbar_resource_selection.xml',
-		                                       res_filter=res_filter)
+			widget='resbar_resource_selection.xml',
+			res_filter=res_filter)
 
 		# position dlg below slot
 		cur_gui = self.gui[slot_num]
 		background_icon = cur_gui.findChild(name="background_icon")
 		dlg.position = (cur_gui.position[0] + background_icon.position[0],
-		                cur_gui.position[1] + background_icon.position[1] + background_icon.size[1] )
+			cur_gui.position[1] + background_icon.position[1] + background_icon.size[1])
 		dlg.findChild(name="make_default_btn").capture(self._make_configuration_default)
 		reset_default_btn = dlg.findChild(name="reset_default_btn")
 		# this is a quadruple-use button.
@@ -468,16 +470,18 @@ class ResourceOverviewBar(object):
 			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
 
 		elif self._custom_default_resources != self._get_current_resources():
-			reset_default_btn.helptext = _("Reset this settlement's displayed resources to the default configuration you have saved.")
+			reset_default_btn.helptext = _("Reset this settlement's displayed"
+				" resources to the default configuration you have saved.")
 			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
 
 		else:
-			reset_default_btn.helptext = _("Reset the default configuration (which you see here) to the factory default for all settlements.")
+			reset_default_btn.helptext = _("Reset the default configuration"
+				" (which you see here) to the factory default for all settlements.")
 			cb = Callback.ChainedCallbacks(
-			  self._drop_settlement_resource_configuration, # remove specific config
-			  Callback(self._make_configuration_default, reset=True) # remove global config
+			  self._drop_settlement_resource_configuration,  # remove specific config
+			  Callback(self._make_configuration_default, reset=True)  # remove global config
 			)
-			reset_default_btn.capture( cb )
+			reset_default_btn.capture(cb)
 
 		dlg.show()
 		self._res_selection_dialog = dlg
@@ -485,14 +489,14 @@ class ResourceOverviewBar(object):
 	def _make_configuration_default(self, reset=False):
 		"""Saves current resources as default via game settings"""
 		if reset:
-			config = [] # meaning invalid
+			config = []  # meaning invalid
 		else:
 			config = json.dumps(self._get_current_resources())
 		horizons.globals.fife.set_uh_setting("ResourceOverviewBarConfiguration", config)
 		horizons.globals.fife.save_settings()
 		self._update_default_configuration()
 		AmbientSoundComponent.play_special("success")
-		if reset: # in the other case, it's already set
+		if reset:  # in the other case, it's already set
 			self.redraw()
 
 	def _drop_settlement_resource_configuration(self):
@@ -509,14 +513,14 @@ class ResourceOverviewBar(object):
 		self.close_construction_mode()
 		res_copy = self._get_current_resources()[:]
 		number_of_slots_changed = False
-		if slot_num < len(res_copy): # change existing slot
-			if res_id == 0: # remove it
+		if slot_num < len(res_copy):  # change existing slot
+			if res_id == 0:  # remove it
 				del res_copy[slot_num]
 				number_of_slots_changed = True
-			else: # actual slot change
+			else:  # actual slot change
 				res_copy[slot_num] = res_id
-		else: # addition
-			if res_id == 0: # that would mean adding an empty slot
+		else:  # addition
+			if res_id == 0:  # that would mean adding an empty slot
 				pass
 			else:
 				number_of_slots_changed = True
@@ -548,7 +552,7 @@ class ResourceOverviewBar(object):
 	def _show_dummy_slot(self):
 		"""Show the dummy button at the end to allow for addition of slots"""
 		if self._do_show_dummy:
-			return # already visible
+			return  # already visible
 		self._do_show_dummy = True
 		self.redraw()
 
@@ -558,7 +562,7 @@ class ResourceOverviewBar(object):
 
 	def _on_res_slot_click(self, widget, event):
 		"""Called when you click on a resource slot in the bar (not the selection dialog)"""
-		#TODO let KeyConfig handle this instead of hardcoding rmb
+		# TODO let KeyConfig handle this instead of hardcoding rmb
 		if event.getButton() == fife.MouseEvent.RIGHT:
 			self._set_resource_slot(widget.num, 0)
 
@@ -576,7 +580,8 @@ class ResourceOverviewBar(object):
 		self._update_stats()
 		self.stats_gui.show()
 
-		ExtScheduler().add_new_object(self._update_stats, self, run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
+		ExtScheduler().add_new_object(self._update_stats, self,
+			run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
 
 	def _update_stats(self):
 		"""Fills in (refreshes) numeric values in expanded stats area."""
@@ -604,17 +609,17 @@ class ResourceOverviewBar(object):
 		self.stats_gui = load_uh_widget(self.__class__.STATS_GUI_FILE)
 		self.stats_gui.child_finder = PychanChildFinder(self.stats_gui)
 		self.stats_gui.position = (reference_icon.x + self.gold_gui.x,
-		                           reference_icon.y + self.gold_gui.y)
+			reference_icon.y + self.gold_gui.y)
 		self.stats_gui.mapEvents({
 			'resbar_stats_container/mouseClicked/stats': self._toggle_stats,
 		})
 
 		# This list must correspond to `figures` in _update_stats
 		images = [
-			("content/gui/images/resbar_stats/expense.png",     _("Running costs")),
-			("content/gui/images/resbar_stats/income.png",      _("Taxes")),
-			("content/gui/images/resbar_stats/buy.png",         _("Buy expenses")),
-			("content/gui/images/resbar_stats/sell.png",        _("Sell income")),
+			("content/gui/images/resbar_stats/expense.png", _("Running costs")),
+			("content/gui/images/resbar_stats/income.png", _("Taxes")),
+			("content/gui/images/resbar_stats/buy.png", _("Buy expenses")),
+			("content/gui/images/resbar_stats/sell.png", _("Sell income")),
 			("content/gui/images/resbar_stats/scales_icon.png", _("Balance")),
 		]
 
@@ -624,36 +629,33 @@ class ResourceOverviewBar(object):
 			box = HBox(padding=0, min_size=(70, 0))
 			box.name = "resbar_stats_line_%s" % num
 			box.helptext = helptext
-			#TODO Fix icon size; looks like not 16x16 a surprising amount of times.
+			# TODO Fix icon size; looks like not 16x16 a surprising amount of times.
 			box.addChild(Icon(image=image))
 			box.addSpacer(Spacer())
-			box.addChild(Label(name="resbar_stats_entry_%s"%num))
-			#TODO This label is a workaround for some fife font bug,
+			box.addChild(Label(name="resbar_stats_entry_%s" % num))
+			# TODO This label is a workaround for some fife font bug,
 			# probably http://github.com/fifengine/fifengine/issues/666.
-			templabel = Label(name="resbar_stats_whatever_%s"%num)
+			templabel = Label(name="resbar_stats_whatever_%s" % num)
 			box.addChild(templabel)
 			if num == len(images) - 1:
 				# The balance line (last one) gets bold font.
 				box.stylize('resource_bar')
 			self.stats_gui.child_finder("entries_box").addChild(box)
 
-	##
 	# CODE FOR REFERENCE
-	##
-
 	@cachedmethod
 	def _get_res_background_icon_position(self):
 		# currently unused since always 0
 		# can be used for relative positioning of labels
 		# old formula: label.position = (icon.position[0] - label.size[0]/2 + xoffset, yoffset)
-		gui = load_uh_widget( self.__class__.ENTRY_GUI_FILE )
+		gui = load_uh_widget(self.__class__.ENTRY_GUI_FILE)
 		icon = gui.findChild(name="background_icon")
 		return icon.position
 
 	@cachedmethod
 	def _get_gold_background_icon_position(self):
 		# see above
-		gui = load_uh_widget( self.__class__.GOLD_ENTRY_GUI_FILE )
+		gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE)
 		icon = gui.findChild(name="background_icon")
 		return icon.position
 
@@ -663,7 +665,7 @@ class ResBarMouseTool(NavigationTool):
 	Terminates self on mousePressed and restores old tool"""
 	def __init__(self, session, old_tool, on_click):
 		super(ResBarMouseTool, self).__init__(session)
-		if old_tool: # can be None in corner cases
+		if old_tool:  # can be None in corner cases
 			old_tool.disable()
 		self.old_tool = old_tool
 		self.on_click = on_click

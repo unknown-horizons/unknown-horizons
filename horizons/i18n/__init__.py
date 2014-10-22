@@ -46,8 +46,8 @@ from horizons.messaging import LanguageChanged
 
 log = logging.getLogger("i18n")
 
-
 LANGCACHE = {}
+
 
 def find_available_languages(domain='unknown-horizons', update=False):
 	"""Returns a dict( lang_key -> locale_dir )"""
@@ -68,7 +68,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 		for j in glob.glob('%s/*/*/%s.mo' % (i, domain)):
 			splited = j.split(os.sep)
 			key = splited[-3]
-			if not key in languages:
+			if key not in languages:
 				languages[key] = os.sep.join(splited[:-3])
 
 	# there's always a default, which is english
@@ -90,7 +90,7 @@ def change_language(language=None):
 	Called on startup and when changing the language in the settings menu.
 	"""
 
-	if language: # non-default
+	if language:  # non-default
 		try:
 			# NOTE about gettext fallback mechanism:
 			# English is not shipped as .mo file, thus if English is
@@ -98,7 +98,7 @@ def change_language(language=None):
 			fallback = (language == 'en')
 			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
 			                            languages=[language], fallback=fallback)
-			trans.install(unicode=True, names=['ngettext',])
+			trans.install(unicode=True, names=['ngettext', ])
 		except (IOError, KeyError, ValueError) as err:
 			# KeyError can happen with a settings file written to by more than one UH
 			# installation (one that has compiled language files and one that hasn't)
@@ -108,12 +108,12 @@ def change_language(language=None):
 			log.warning("Error: %s", err)
 			log.warning("Continuing with English as fallback.")
 			horizons.globals.fife.set_uh_setting('Language', LANGUAGENAMES[''])
-			return change_language() # recurse
+			return change_language()  # recurse
 	else:
 		# default locale
-		if platform.system() == "Windows": # win doesn't set the language variable by default
+		if platform.system() == "Windows":  # win doesn't set the language variable by default
 			os.environ['LANGUAGE'] = locale.getdefaultlocale()[0]
-		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
+		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext', ])
 
 	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
 	import __builtin__
