@@ -24,6 +24,7 @@ from fife.extensions.pychan.widgets import HBox
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets.inventory import Inventory
 
+
 class BuySellInventory(Inventory):
 	"""The buy/sell inventory widget displays an inventory of goods
 	where the available resources are restricted. It makes use of the
@@ -53,7 +54,7 @@ class BuySellInventory(Inventory):
 
 	def init_needed(self, inventory, limits, selling):
 		return super(BuySellInventory, self).init_needed(inventory) or \
-		       self._limits != limits or self._selling != selling
+			self._limits != limits or self._selling != selling
 
 	def _draw(self, vbox, current_hbox, index=0):
 		"""Draws the inventory."""
@@ -66,7 +67,7 @@ class BuySellInventory(Inventory):
 			# check if this res should be displayed
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
 			                                            filled=0, uncached=self.uncached)
-			button.button.name = "buy_sell_inventory_%s_entry_%s" % (self._selling, index) # for tests
+			button.button.name = "buy_sell_inventory_%s_entry_%s" % (self._selling, index)  # for tests
 			current_hbox.addChild(button)
 
 			if index % self.items_per_line == self.items_per_line - 1:
