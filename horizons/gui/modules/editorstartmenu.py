@@ -27,6 +27,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions
 
+
 class EditorStartMenu(Window):
 	def __init__(self, windows):
 		super(EditorStartMenu, self).__init__(windows)
@@ -146,7 +147,8 @@ class EditorSelectSavedGameWidget(object):
 	def act(self):
 		if not self._saved_game_data[0]:
 			# there are no saved games: do nothing
-			# TODO: play a related sound effect and/or do something else to make the user understand what is wrong
+			# TODO: play a related sound effect and/or do something else
+			# to make the user understand what is wrong
 			return
 
 		selection_index = self._gui.collectData('saved_game_list')

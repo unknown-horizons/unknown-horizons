@@ -49,9 +49,9 @@ class MultiplayerMenu(Window):
 		self._mainmenu = mainmenu
 		self._gui = load_uh_widget('multiplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel' : self._windows.close,
-			'join'   : self._join_game,
-			'create' : self._create_game,
+			'cancel': self._windows.close,
+			'join': self._join_game,
+			'create': self._create_game,
 			'refresh': Callback(self._refresh, play_sound=True)
 		})
 
@@ -68,7 +68,7 @@ class MultiplayerMenu(Window):
 		self._gui.hide()
 		ExtScheduler().rem_all_classinst_calls(self)
 
-	def show(self):		
+	def show(self):
 		if not self._check_connection():
 			return
 
@@ -163,8 +163,8 @@ class MultiplayerMenu(Window):
 			self._windows.open_popup(_("Error"), unicode(exception))
 		else:
 			self._windows.open_popup(_("Fatal Network Error"),
-		                             _("Something went wrong with the network:") + u'\n' +
-		                             unicode(exception) )
+				_("Something went wrong with the network:") + u'\n' +
+				unicode(exception))
 			# FIXME: this shouldn't be necessary, the main menu window is still somewhere
 			# in the stack and we just need to get rid of all MP related windows
 			self._mainmenu.show_main()
@@ -209,10 +209,12 @@ class MultiplayerMenu(Window):
 
 		self._gui.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.map_name)
 		self._gui.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.name)
-		self._gui.findChild(name="game_creator").text = _("Creator: {game_creator}").format(game_creator=game.creator)
-		self._gui.findChild(name="game_playersnum").text = _("Players: {player_amount}/{player_limit}").format(
-		                           player_amount=game.player_count,
-		                           player_limit=game.player_limit)
+		self._gui.findChild(name="game_creator").text = _("Creator: {game_creator}").format(
+			game_creator=game.creator)
+		self._gui.findChild(name="game_playersnum").text = _(
+			"Players: {player_amount}/{player_limit}").format(
+			player_amount=game.player_count,
+			player_limit=game.player_limit)
 
 		vbox_inner = self._gui.findChild(name="game_info")
 		vbox_inner.adaptLayout()
@@ -225,18 +227,18 @@ class MultiplayerMenu(Window):
 		except IndexError:
 			return
 
-		if game.uuid == -1: # -1 signals no game
+		if game.uuid == -1:  # -1 signals no game
 			AmbientSoundComponent.play_special('error')
 			return
 
 		if game.version != NetworkInterface().get_clientversion():
 			self._windows.open_popup(_("Wrong version"),
-			                          _("The game's version differs from your version. "
-			                            "Every player in a multiplayer game must use the same version. "
-			                            "This can be fixed by every player updating to the latest version. "
-			                            "Game version: {game_version} Your version: {own_version}").format(
-			                            game_version=game.version,
-			                            own_version=NetworkInterface().get_clientversion()))
+				_("The game's version differs from your version. "
+				"Every player in a multiplayer game must use the same version. "
+				"This can be fixed by every player updating to the latest version. "
+				"Game version: {game_version} Your version: {own_version}").format(
+				game_version=game.version,
+				own_version=NetworkInterface().get_clientversion()))
 			return
 
 		NetworkInterface().change_name(self._playerdata.get_player_name())
@@ -312,7 +314,7 @@ class CreateGame(Window):
 			'playerlimit': range(2, MULTIPLAYER.MAX_PLAYER_COUNT)
 		})
 
-		if self._maps_display: # select first entry
+		if self._maps_display:  # select first entry
 			self._gui.distributeData({
 				'maplist': 0,
 				'playerlimit': 0
@@ -322,8 +324,9 @@ class CreateGame(Window):
 		self._gui.findChild(name="maplist").mapEvents({
 			'maplist/action': self._update_infos
 		})
-		
+
 		gamenametextfield = self._gui.findChild(name='gamename')
+
 		def gamename_clicked():
 			if gamenametextfield.text == 'Unnamed Game':
 				gamenametextfield.text = ""
@@ -333,7 +336,7 @@ class CreateGame(Window):
 	def act(self):
 		mapindex = self._gui.collectData('maplist')
 		mapname = self._maps_display[mapindex]
-		maxplayers = self._gui.collectData('playerlimit') + 2 # 1 is the first entry
+		maxplayers = self._gui.collectData('playerlimit') + 2  # 1 is the first entry
 		gamename = self._gui.collectData('gamename')
 		password = self._gui.collectData('password')
 		maphash = ""
@@ -345,7 +348,7 @@ class CreateGame(Window):
 			# menu, and not see the 'create game' again. We need to close this window, however,
 			# this will trigger the display of the main gui, which will part the game in
 			# `MultiplayerMenu._check_connection`
-			#self._windows.close()
+			# self._windows.close()
 			window = GameLobby(self._windows)
 			self._windows.open(window)
 
@@ -387,8 +390,6 @@ class GameLobby(Window):
 		super(GameLobby, self).__init__(windows)
 
 		self._gui = load_uh_widget('multiplayer_gamelobby.xml')
-
-
 		self._gui.mapEvents({
 			'cancel': self._cancel,
 			'ready_btn': self._on_ready_button_pressed,
@@ -439,6 +440,7 @@ class GameLobby(Window):
 		textfield = self._gui.findChild(name="chatTextField")
 		textfield.capture(self._send_chat_message)
 		welcome_string = _("Enter your message")
+
 		def chatfield_clicked():
 			if textfield.text == welcome_string:
 				textfield.text = ""
@@ -467,10 +469,12 @@ class GameLobby(Window):
 
 		self._gui.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.map_name)
 		self._gui.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.name)
-		self._gui.findChild(name="game_creator").text = _("Creator: {game_creator}").format(game_creator=game.creator)
-		self._gui.findChild(name="game_playersnum").text = _("Players: {player_amount}/{player_limit}").format(
-		                           player_amount=game.player_count,
-		                           player_limit=game.player_limit)
+		self._gui.findChild(name="game_creator").text = _("Creator: {game_creator}").format(
+			game_creator=game.creator)
+		self._gui.findChild(name="game_playersnum").text = _(
+			"Players: {player_amount}/{player_limit}").format(
+			player_amount=game.player_count,
+			player_limit=game.player_limit)
 
 		self._update_players_box(game)
 		self._gui.findChild(name="game_info").adaptLayout()
@@ -601,7 +605,8 @@ class GameLobby(Window):
 		if myself:
 			self._print_event(_("You are now known as {new_name}").format(new_name=plnew.name))
 		else:
-			self._print_event(_("{player} is now known as {new_name}").format(player=plold.name, new_name=plnew.name))
+			self._print_event(_("{player} is now known as {new_name}").format(player=plold.name,
+				new_name=plnew.name))
 
 	def _on_player_changed_color(self, game, plold, plnew, myself):
 		if myself:
