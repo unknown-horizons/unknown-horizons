@@ -27,10 +27,11 @@ from horizons.command.diplomacy import AddEnemyPair
 from horizons.component.healthcomponent import HealthComponent
 from horizons.gui.mousetools.selectiontool import SelectionTool
 
+
 class AttackingTool(SelectionTool):
 	"""
-		This will be used when attacking units are selected
-		it will have to respond on right click and change cursor image when hovering enemy units
+	This will be used when attacking units are selected
+	it will have to respond on right click and change cursor image when hovering enemy units
 	"""
 
 	send_hover_instances_update = False

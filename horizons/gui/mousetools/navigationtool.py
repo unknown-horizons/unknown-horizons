@@ -33,14 +33,14 @@ from horizons.extscheduler import ExtScheduler
 
 from fife.extensions.pychan.widgets import Icon
 
+
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
 
-
-	last_event_pos = fife.ScreenPoint(0, 0) # last received mouse event position, fife.ScreenPoint
+	last_event_pos = fife.ScreenPoint(0, 0)  # last received mouse event position, fife.ScreenPoint
 
 	send_hover_instances_update = True
-	HOVER_INSTANCES_UPDATE_DELAY = 1 # sec
+	HOVER_INSTANCES_UPDATE_DELAY = 1  # sec
 	last_hover_instances = WeakList()
 
 	def __init__(self, session):
@@ -82,7 +82,7 @@ class NavigationTool(CursorTool):
 				self.cursor_tool = cursor_tool
 				self.enabled = False
 
-				self.icon = Icon(position=(1, 1)) # 0, 0 is currently not supported by tooltips
+				self.icon = Icon(position=(1, 1))  # 0, 0 is currently not supported by tooltips
 
 			def toggle(self):
 				self.enabled = not self.enabled
@@ -119,9 +119,9 @@ class NavigationTool(CursorTool):
 		if evt.getButton() == fife.MouseEvent.MIDDLE:
 			if horizons.globals.fife.get_uh_setting("MiddleMousePan"):
 				if self.middle_scroll_active:
-					scroll_by = ( self._last_mmb_scroll_point[0] - evt.getX(),
-					              self._last_mmb_scroll_point[1] - evt.getY() )
-					self.session.view.scroll( *scroll_by )
+					scroll_by = (self._last_mmb_scroll_point[0] - evt.getX(),
+						self._last_mmb_scroll_point[1] - evt.getY())
+					self.session.view.scroll(*scroll_by)
 					self._last_mmb_scroll_point = (evt.getX(), evt.getY())
 		else:
 			# Else the event will mistakenly be delegated if the left mouse button is hit while
@@ -144,9 +144,10 @@ class NavigationTool(CursorTool):
 		# Status menu update
 		current = self.get_exact_world_location(evt)
 
-		distance_ge = lambda a, b, epsilon : abs((a.x-b.x)**2 + (a.y-b.y)**2) >= epsilon**2
+		distance_ge = lambda a, b, epsilon: abs((a.x - b.x) ** 2 + (a.y - b.y) ** 2) >= epsilon ** 2
 
-		if distance_ge(current, self.last_exact_world_location, 4): # update every 4 tiles for settlement info
+		if distance_ge(current, self.last_exact_world_location, 4):
+			# update every 4 tiles for settlement info
 			self.last_exact_world_location = current
 			# update res bar with settlement-related info
 			LastActivePlayerSettlementManager().update(current)
@@ -159,11 +160,11 @@ class NavigationTool(CursorTool):
 		x, y = 0, 0
 		if mousepoint.x < VIEW.AUTOSCROLL_WIDTH:
 			x -= VIEW.AUTOSCROLL_WIDTH - mousepoint.x
-		elif mousepoint.x > (self.session.view.cam.getViewPort().right()-VIEW.AUTOSCROLL_WIDTH):
+		elif mousepoint.x > (self.session.view.cam.getViewPort().right() - VIEW.AUTOSCROLL_WIDTH):
 			x += VIEW.AUTOSCROLL_WIDTH + mousepoint.x - self.session.view.cam.getViewPort().right()
 		if mousepoint.y < VIEW.AUTOSCROLL_WIDTH:
 			y -= VIEW.AUTOSCROLL_WIDTH - mousepoint.y
-		elif mousepoint.y > (self.session.view.cam.getViewPort().bottom()-VIEW.AUTOSCROLL_WIDTH):
+		elif mousepoint.y > (self.session.view.cam.getViewPort().bottom() - VIEW.AUTOSCROLL_WIDTH):
 			y += VIEW.AUTOSCROLL_WIDTH + mousepoint.y - self.session.view.cam.getViewPort().bottom()
 		x *= 10
 		y *= 10
@@ -195,9 +196,10 @@ class NavigationTool(CursorTool):
 		if command.getCommandType() in stop_scrolling_on:
 			# it has been randomly observed twice that this code is reached with session being None or
 			# partly deinitialized. Since it is unknown how fife handles this and why
-			# removeCommandListener in remove() doesn't prevent further calls, we have to catch and ignore the error
+			# removeCommandListener in remove() doesn't prevent further calls,
+			# we have to catch and ignore the error
 			try:
-				self.session.view.autoscroll(0, 0) # stop autoscroll
+				self.session.view.autoscroll(0, 0)  # stop autoscroll
 			except AttributeError:
 				pass
 
@@ -216,16 +218,16 @@ class NavigationTool(CursorTool):
 			y = where.getY()
 			instances = self.session.view.cam.getMatchingInstances(
 				fife.ScreenPoint(x, y),
-				self.session.view.layers[layer], False) # False for accurate
+				self.session.view.layers[layer], False)  # False for accurate
 
 			# if no instances found, try again and search within a 8px radius
 			if not instances:
 				selection_radius = 8
 				radius = fife.Rect(x - selection_radius, y - selection_radius,
-				                   selection_radius * 2, selection_radius * 2)
+					selection_radius * 2, selection_radius * 2)
 
 				instances = self.session.view.cam.getMatchingInstances(radius,
-									self.session.view.layers[layer])
+					self.session.view.layers[layer])
 
 			all_instances.extend(instances)
 
@@ -247,7 +249,8 @@ class NavigationTool(CursorTool):
 		self.helptext = None
 
 	def _schedule_hover_instance_update(self):
-		"""Hover instances have potentially changed, do an update in a timely fashion (but not right away)"""
+		"""Hover instances have potentially changed, do an update in a timely fashion
+		(but not right away)"""
 		if not self._hover_instances_update_scheduled:
 			self._hover_instances_update_scheduled = True
 			ExtScheduler().add_new_object(self._send_hover_instance_upate, self,
