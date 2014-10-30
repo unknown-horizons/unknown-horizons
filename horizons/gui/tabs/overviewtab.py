@@ -50,7 +50,8 @@ class OverviewTab(TabInterface):
 			self.init_stance_widget()
 
 	def refresh(self):
-		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
+		if (hasattr(self.instance, 'name') or self.instance.has_component(
+			NamedComponent)) and self.widget.child_finder('name'):
 			name_widget = self.widget.child_finder('name')
 			# Named objects can't be translated.
 			if self.instance.has_component(NamedComponent):

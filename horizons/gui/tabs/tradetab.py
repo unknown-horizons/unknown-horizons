@@ -44,11 +44,11 @@ class TradeTab(TabInterface):
 
 	# map the size buttons in the gui to an amount
 	exchange_size_buttons = {
-	  1 : 'size_1',
-	  5 : 'size_2',
-	  10: 'size_3',
-	  20: 'size_4',
-	  50: 'size_5',
+		1: 'size_1',
+		5: 'size_2',
+		10: 'size_3',
+		20: 'size_4',
+		50: 'size_5',
 	}
 
 	images = {
@@ -95,7 +95,7 @@ class TradeTab(TabInterface):
 				self.__add_changelisteners()
 
 			is_own = self.partner.owner is self.instance.owner
-			if not is_own: # foreign warehouse => disable exchange widget, enable trade interface
+			if not is_own:  # foreign warehouse => disable exchange widget, enable trade interface
 				self.widget.findChild(name='domestic').hide()
 				selling_inventory = self.widget.findChild(name='selling_inventory')
 				selling_inventory.init(self.instance.session.db,
@@ -113,13 +113,14 @@ class TradeTab(TabInterface):
 				for button in self.get_widgets_by_class(buying_inventory, ImageFillStatusButton):
 					button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
 				self.widget.findChild(name='international').show()
-			else: # own warehouse => enable exchange widget, disable trade interface
+			else:  # own warehouse => enable exchange widget, disable trade interface
 				self.widget.findChild(name='international').hide()
-				inv_partner = self.widget.findChild(name='inventory_partner') # This is no BuySellInventory!
+				inv_partner = self.widget.findChild(name='inventory_partner')  # This is no BuySellInventory!
 				inv_partner.init(self.instance.session.db,
 				                 self.partner.get_component(StorageComponent).inventory)
 				for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
-					button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, self.instance))
+					button.button.capture(Callback(self.transfer, button.res_id,
+						self.partner.settlement, self.instance))
 				self.widget.findChild(name='domestic').show()
 
 			inv = self.widget.findChild(name='inventory_ship')
@@ -192,7 +193,7 @@ class TradeTab(TabInterface):
 		"""Buy or sell the resources"""
 		if self.instance.position.distance(settlement.warehouse.position) <= self.instance.radius:
 			is_own = settlement.owner is self.instance.owner
-			if selling and not is_own: # ship sells resources to settlement
+			if selling and not is_own:  # ship sells resources to settlement
 				self.log.debug('InternationalTrade: %s/%s is selling %d of res %d to %s/%s',
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name,
 				               self.exchange, res_id,
@@ -200,7 +201,7 @@ class TradeTab(TabInterface):
 				# international trading has own error handling, no signal_error
 				SellResource(settlement.get_component(TradePostComponent), self.instance,
 				             res_id, self.exchange).execute(self.instance.session)
-			elif selling and is_own: # transfer from settlement to ship
+			elif selling and is_own:  # transfer from settlement to ship
 				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
 				               self.exchange, res_id,
 				               settlement.get_component(NamedComponent).name, settlement.owner.name,
@@ -208,14 +209,15 @@ class TradeTab(TabInterface):
 				TransferResource(self.exchange, res_id, settlement,
 				                 self.instance, signal_errors=True).execute(self.instance.session)
 
-			elif not selling and not is_own: # ship buys resources from settlement
+			elif not selling and not is_own:  # ship buys resources from settlement
 				self.log.debug('InternationalTrade: %s/%s is buying %d of res %d from %s/%s',
 				               self.instance.get_component(NamedComponent).name,
 				               self.instance.owner.name, self.exchange, res_id,
 				               settlement.get_component(NamedComponent).name, settlement.owner.name)
 				# international trading has own error handling, no signal_error
-				BuyResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
-			elif not selling and is_own: # transfer from ship to settlement
+				BuyResource(settlement.get_component(TradePostComponent),
+					self.instance, res_id, self.exchange).execute(self.instance.session)
+			elif not selling and is_own:  # transfer from ship to settlement
 				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
 				               self.exchange, res_id,
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name,
@@ -225,8 +227,10 @@ class TradeTab(TabInterface):
 			# let gui update be handled by changelisteners (mp-safe)
 
 	def get_widgets_by_class(self, parent_widget, widget_class):
-		"""Gets all widget of a certain widget class from the tab. (e.g. pychan.widgets.Label for all labels)"""
+		"""Gets all widget of a certain widget class from the tab.
+		(e.g. pychan.widgets.Label for all labels)"""
 		children = []
+
 		def _find_widget(widget):
 			if isinstance(widget, widget_class):
 				children.append(widget)

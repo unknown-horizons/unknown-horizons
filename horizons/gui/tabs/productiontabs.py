@@ -95,11 +95,11 @@ class ProductionOverviewTab(OverviewTab):
 			self._connect_input_res(centered_container, container, production)
 
 			if production.is_paused():
-				centered_container.removeChild( centered_container.findChild(name="toggle_active_active") )
+				centered_container.removeChild(centered_container.findChild(name="toggle_active_active"))
 				toggle_icon = centered_container.findChild(name="toggle_active_inactive")
 				toggle_icon.name = "toggle_active"
 			else:
-				centered_container.removeChild( centered_container.findChild(name="toggle_active_inactive") )
+				centered_container.removeChild(centered_container.findChild(name="toggle_active_inactive"))
 				toggle_icon = centered_container.findChild(name="toggle_active_active")
 				toggle_icon.name = "toggle_active"
 
@@ -107,12 +107,12 @@ class ProductionOverviewTab(OverviewTab):
 					bg = Icon(image=self.__class__.BUTTON_BACKGROUND)
 					bg.position = toggle_icon.position
 					centered_container.addChild(bg)
-					centered_container.removeChild(toggle_icon) # fix z-ordering
+					centered_container.removeChild(toggle_icon)  # fix z-ordering
 					centered_container.addChild(toggle_icon)
 					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
 					centered_container.anim = anim
-					anim.start(1.0/12, -1) # always start anew, people won't notice
-					self._animations.append( weakref.ref( anim ) )
+					anim.start(1.0 / 12, -1)  # always start anew, people won't notice
+					self._animations.append(weakref.ref(anim))
 
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
@@ -265,7 +265,7 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 
 		click_cb = Callback.ChainedCallbacks(field_comp.fill_range, self.update_data)
 		enter_cb = Callback(res_bar.set_construction_mode, self.instance, field_comp.total_cost)
-		#TODO the tooltip should actually hide on its own. Ticket #1096
+		# TODO the tooltip should actually hide on its own. Ticket #1096
 		exit_cb = Callback.ChainedCallbacks(res_bar.close_construction_mode, button.hide_tooltip)
 		self.widget.mapEvents({
 			button.name: click_cb,
@@ -288,9 +288,9 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 
 	def get_displayed_productions(self):
 		possible_res = set(res for field in self.instance.get_providers()
-		                       for res in field.provided_resources)
+			for res in field.provided_resources)
 		all_farm_productions = self.instance.get_component(Producer).get_productions()
 		productions = set([p for p in all_farm_productions
-		                     for res in p.get_consumed_resources().keys()
-		                   if res in possible_res])
+			for res in p.get_consumed_resources().keys()
+			if res in possible_res])
 		return sorted(productions, key=operator.methodcaller('get_production_line_id'))

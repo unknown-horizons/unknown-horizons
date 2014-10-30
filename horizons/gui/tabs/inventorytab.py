@@ -24,6 +24,7 @@ from horizons.i18n import _lazy
 from horizons.extscheduler import ExtScheduler
 from horizons.component.storagecomponent import StorageComponent
 
+
 class InventoryTab(TabInterface):
 	widget = 'island_inventory.xml'
 	icon_path = 'icons/tabwidget/common/inventory'
@@ -37,7 +38,7 @@ class InventoryTab(TabInterface):
 
 	def init_widget(self):
 		self.widget.child_finder('inventory').init(self.instance.session.db,
-		                                           self.instance.get_component(StorageComponent).inventory)
+			self.instance.get_component(StorageComponent).inventory)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""

@@ -25,6 +25,7 @@ from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 from horizons.extscheduler import ExtScheduler
 
+
 @metaChangeListenerDecorator('remove')
 class TabInterface(object):
 	"""
@@ -60,12 +61,12 @@ class TabInterface(object):
 	widget = None
 	icon_path = 'images/tabwidget/tab'
 
-	scheduled_update_delay = 0.4 # seconds, update after this time when an update is scheduled
+	scheduled_update_delay = 0.4  # seconds, update after this time when an update is scheduled
 
 	def __init__(self, widget=None, icon_path=None, **kwargs):
 		"""
 		@param widget: filename of a widget. Set this to None if you create your
-		               widget in `get_widget`.
+				widget in `get_widget`.
 		"""
 		super(TabInterface, self).__init__()
 		if widget or self.__class__.widget:
@@ -138,6 +139,7 @@ class TabInterface(object):
 		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
 		if not self._refresh_scheduled:
 			self._refresh_scheduled = True
+
 			def unset_flag():
 				# set the flag here and not in refresh() since we can't be sure whether
 				# refresh() of this class will be reached or a subclass will not call super()
