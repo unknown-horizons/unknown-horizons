@@ -33,6 +33,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import TRADER
 
+
 class BuySellTab(TabInterface):
 	"""
 	Allows players to tell settlements which resources to buy or sell by adding
@@ -53,7 +54,7 @@ class BuySellTab(TabInterface):
 
 	def __init__(self, instance):
 		"""Set up the GUI and game logic for the buyselltab."""
-		self.inited = False # prevents execution of commands during init
+		self.inited = False  # prevents execution of commands during init
 		# this makes sharing code easier
 		self.session = instance.session
 		self.trade_post = instance.settlement.get_component(TradePostComponent)
@@ -66,7 +67,7 @@ class BuySellTab(TabInterface):
 
 		# add the buy/sell slot widgets
 		self.slot_widgets = {}
-		self.resources = None # Placeholder for resource gui
+		self.resources = None  # Placeholder for resource gui
 		self.add_slots(len(self.trade_post.slots))
 
 		for slot_id in xrange(len(self.trade_post.slots)):
@@ -82,7 +83,8 @@ class BuySellTab(TabInterface):
 
 		# init the trade history
 		self.trade_history = self.widget.findChild(name='trade_history')
-		self.trade_history_widget_cache = {} # {(tick, player_id, resource_id, amount, gold): widget, ...}
+		self.trade_history_widget_cache = {}
+		# {(tick, player_id, resource_id, amount, gold): widget, ...}
 
 		self.hide()
 		self.helptext = _("Trade")
@@ -106,7 +108,7 @@ class BuySellTab(TabInterface):
 		# this tab sometimes is made up an extra widget, so it must also be considered
 		# when checking for visibility
 		return super(BuySellTab, self).is_visible() or \
-		       (self.resources is not None and self.resources.isVisible())
+			(self.resources is not None and self.resources.isVisible())
 
 	def _refresh_trade_history(self):
 		self.trade_history.removeAllChildren()
@@ -160,39 +162,40 @@ class BuySellTab(TabInterface):
 			content.addChild(slot)
 		self.widget.adaptLayout()
 
-
 	def add_resource(self, resource_id, slot_id, value=None):
 		"""
 		Adds a resource to the specified slot
 		@param resource_id: int - resource id
 		@param slot_id: int - slot number of the slot that is to be set
 		"""
-		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s", resource_id, slot_id, value)
+		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s",
+			resource_id, slot_id, value)
 
 		keep_hint = False
-		if self.resources is not None: # Hide resource menu
+		if self.resources is not None:  # Hide resource menu
 			self.resources.hide()
 			self.show()
-			if resource_id != 0: # new res
-				self._set_hint( _("Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right.") )
+			if resource_id != 0:  # new res
+				self._set_hint(_("Set to buy or sell by clicking on that label,"
+					" then adjust the amount via the slider to the right."))
 			else:
-				self._set_hint( u"" )
+				self._set_hint(u"")
 			keep_hint = True
 		slot = self.slot_widgets[slot_id]
 		slider = slot.findChild(name="slider")
 
-		if value is None: # use current slider value if player provided no input
+		if value is None:  # use current slider value if player provided no input
 			value = int(slider.value)
-		else: # set slider to value entered by the player
+		else:  # set slider to value entered by the player
 			slider.value = float(value)
 
 		if slot.action == "sell":
-			if slot.res is not None: # slot has been in use before, delete old value
+			if slot.res is not None:  # slot has been in use before, delete old value
 				self.clear_slot(slot_id)
 			if resource_id != 0:
 				self.set_slot_info(slot.id, resource_id, True, value)
 		elif slot.action == "buy":
-			if slot.res is not None: # slot has been in use before, delete old value
+			if slot.res is not None:  # slot has been in use before, delete old value
 				self.clear_slot(slot_id)
 			if resource_id != 0:
 				self.set_slot_info(slot.id, resource_id, False, value)
@@ -229,7 +232,7 @@ class BuySellTab(TabInterface):
 			inventory = self.trade_post.get_inventory()
 			filled = (100 * inventory[resource_id]) // inventory.get_limit(resource_id)
 			fillbar.position = (icon.width - fillbar.width - 1,
-			                    icon.height - int(icon.height*filled))
+				icon.height - int(icon.height * filled))
 			# reuse code from toggle to finish setup (must switch state before, it will reset it)
 			slot.action = "sell" if slot.action == "buy" else "buy"
 			self.toggle_buysell(slot_id, keep_hint=keep_hint)
@@ -257,7 +260,8 @@ class BuySellTab(TabInterface):
 
 	def set_slot_info(self, slot_id, resource_id, selling, limit):
 		assert resource_id is not None
-		self.log.debug("BuySellTab: setting slot %d to resource %d, selling=%s, limit %d", slot_id, resource_id, selling, limit)
+		self.log.debug("BuySellTab: setting slot %d to resource %d, selling=%s, limit %d",
+			slot_id, resource_id, selling, limit)
 		self.slot_widgets[slot_id].action = "sell" if selling else "buy"
 		if self.inited:
 			SetTradeSlot(self.trade_post, slot_id, resource_id, selling, limit).execute(self.session)
@@ -296,7 +300,7 @@ class BuySellTab(TabInterface):
 		buy_list = self.trade_post.buy_list
 		sell_list = self.trade_post.sell_list
 
-		res_filter = lambda res_id : res_id not in buy_list and res_id not in sell_list
+		res_filter = lambda res_id: res_id not in buy_list and res_id not in sell_list
 		on_click = functools.partial(self.add_resource, slot_id=slot_id)
 		inventory = self.trade_post.get_inventory()
 
@@ -305,11 +309,10 @@ class BuySellTab(TabInterface):
 		                                                  res_filter=res_filter)
 
 		self.resources.position = self.widget.position
-		self.hide() # hides tab that invoked the selection widget
+		self.hide()  # hides tab that invoked the selection widget
 		self.session.ingame_gui.minimap_to_front()
 
-		self.resources.show() # show selection widget, still display old tab icons
-
+		self.resources.show()  # show selection widget, still display old tab icons
 
 	def _update_hint(self, slot_id):
 		"""Sets default hint for last updated slot"""
@@ -321,7 +324,8 @@ class BuySellTab(TabInterface):
 			hint = _("Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock.")
 			price *= TRADER.PRICE_MODIFIER_SELL
 		elif action == "sell":
-			hint = _("Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available.")
+			hint = _("Will sell {resource_name} for {price} gold/t"
+				" whenever more than {limit}t are available.")
 			price *= TRADER.PRICE_MODIFIER_BUY
 
 		hint = hint.format(limit=unicode(limit),

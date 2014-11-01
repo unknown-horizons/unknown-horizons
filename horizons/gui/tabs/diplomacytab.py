@@ -49,12 +49,12 @@ class PlayerDiplomacyTab(TabInterface):
 	def init_widget(self):
 		self.widget.findChild(name='headline').text = self.player.name
 		self.widget.mapEvents({
-			'ally_label' : self.add_ally,
-			'ally_check_box' : self.add_ally,
-			'neutral_label' : self.add_neutral,
-			'neutral_check_box' : self.add_neutral,
-			'enemy_label' : self.add_enemy,
-			'enemy_check_box' : self.add_enemy})
+			'ally_label': self.add_ally,
+			'ally_check_box': self.add_ally,
+			'neutral_label': self.add_neutral,
+			'neutral_check_box': self.add_neutral,
+			'enemy_label': self.add_enemy,
+			'enemy_check_box': self.add_enemy})
 
 		self.check_diplomacy_state()
 		self.helptext = self.player.name
@@ -98,9 +98,9 @@ class PlayerDiplomacyTab(TabInterface):
 		"""
 		# Uncheck all boxes.
 		self.widget.distributeData({
-			'ally_check_box' : False,
-			'neutral_check_box' : False,
-			'enemy_check_box' : False})
+			'ally_check_box': False,
+			'neutral_check_box': False,
+			'enemy_check_box': False})
 
 		# Get the name of the selected box.
 		if self.diplomacy.are_allies(self.local_player, self.player):
@@ -111,7 +111,7 @@ class PlayerDiplomacyTab(TabInterface):
 			state = 'enemy'
 
 		# Check the selected box.
-		self.widget.distributeData({'%s_check_box' % state : True})
+		self.widget.distributeData({'%s_check_box' % state: True})
 
 
 class DiplomacyTab(TabWidget):
