@@ -24,6 +24,7 @@ import logging
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.component import Component
 
+
 @metaChangeListenerDecorator("damage_dealt")
 class HealthComponent(Component):
 	"""
@@ -74,4 +75,3 @@ class HealthComponent(Component):
 		if self.instance in self.session.selected_instances:
 			if hasattr(self.instance, 'draw_health'):
 				self.instance.draw_health()
-

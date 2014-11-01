@@ -24,6 +24,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.command import GenericCommand, Command
 from horizons.util.worldobject import WorldObjectNotFound
 
+
 class GenericUnitCommand(GenericCommand):
 	"""Same as GenericCommand, but checks if issuer == owner in __call__"""
 	def __call__(self, issuer):
@@ -36,7 +37,8 @@ class GenericUnitCommand(GenericCommand):
 			return # don't move enemy units
 		else:
 			return super(GenericUnitCommand, self).__call__(issuer)
-		
+
+
 class Act(GenericUnitCommand):
 	"""Command class that moves a unit.
 	@param unit: Instance of Unit
@@ -46,6 +48,7 @@ class Act(GenericUnitCommand):
 		super(Act, self).__init__(unit, "go", x, y)
 
 GenericCommand.allow_network(Act)
+
 
 class Attack(GenericUnitCommand):
 	"""Command class that triggers attack
@@ -57,6 +60,7 @@ class Attack(GenericUnitCommand):
 
 GenericCommand.allow_network(Attack)
 
+
 class RemoveUnit(GenericUnitCommand):
 	"""
 	Command class that removes the unit. Not to be used if .remove() is going to be called through an indirect command anyway.
@@ -67,6 +71,7 @@ class RemoveUnit(GenericUnitCommand):
 
 GenericCommand.allow_network(RemoveUnit)
 
+
 class CreateRoute(GenericUnitCommand):
 	"""Command class that moves a unit.
 	@param unit: Instance of Unit
@@ -76,6 +81,7 @@ class CreateRoute(GenericUnitCommand):
 		super(CreateRoute, self).__init__(unit, "create_route")
 
 GenericCommand.allow_network(CreateRoute)
+
 
 class CreateUnit(Command):
 	"""Command class that creates a unit.

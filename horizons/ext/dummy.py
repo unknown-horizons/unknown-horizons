@@ -38,18 +38,25 @@ class Dummy(object):
 				return self
 	def next(self):
 		raise StopIteration
+
 	def __repr__(self):
 		return 'Dummy()'
+
 	def __init__(self, *args, **kwargs):
 		pass
+
 	def __len__(self):
 		return 0
+
 	def __eq__(self, other):
 		return self is other
+
 	def __hash__(self):
 		return hash(None)
+
 	def __call__(self, *args, **kwargs):
 		return self
+
 	def __trunc__(self):
 		return 0
 	__sub__ = __div__ = __mul__ = __floordiv__ = __mod__ = __and__ = __or__ = \
@@ -60,5 +67,5 @@ class Dummy(object):
 	__invert__ = __setattr__ = __delattr__ = __delitem__ = __setitem__ = \
 	__iter__ = __call__
 
-Dummy = Dummy()
 
+Dummy = Dummy()
