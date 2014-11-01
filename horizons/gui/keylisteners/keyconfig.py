@@ -28,6 +28,7 @@ import horizons.globals
 from horizons.ext.enum import Enum
 from horizons.util.python.singleton import Singleton
 
+
 class KeyConfig(object):
 	"""Class for storing key bindings.
 	The central function is translate().
@@ -86,7 +87,7 @@ class KeyConfig(object):
 		if action in self.requires_shift and not evt.isShiftPressed():
 			return None
 		else:
-			return action # all checks passed
+			return action  # all checks passed
 
 	def get_key_by_name(self, keyname):
 		return self.all_keys.get(keyname)
@@ -94,20 +95,20 @@ class KeyConfig(object):
 	def get_keys_by_name(self):
 		def is_available(key):
 			special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
-			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
+				'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
-			        not key.startswith(special_keys))
+				not key.startswith(special_keys))
 		return dict((k, v) for k, v in fife.Key.__dict__.iteritems()
-		                   if is_available(k))
+			if is_available(k))
 
 	def get_keys_by_value(self):
 		def is_available(key):
 			special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
-			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
+				'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
-			        not key.startswith(special_keys))
+				not key.startswith(special_keys))
 		return dict((v, k) for k, v in fife.Key.__dict__.iteritems()
-		                   if is_available(k))
+			if is_available(k))
 
 	def get_keyval_to_actionid_map(self):
 		return self.keyval_action_mappings

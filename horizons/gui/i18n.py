@@ -30,6 +30,7 @@ log = logging.getLogger("i18n")
 # save translated widgets
 translated_widgets = {}
 
+
 def translate_widget(untranslated, filename):
 	"""
 	Load widget translations from guitranslations.py file.
@@ -65,7 +66,7 @@ def update_translations(message):
 	translations.set_translations()
 
 	for (filename, widget) in translated_widgets.iteritems():
-		widget = widget() # resolve weakref
+		widget = widget()  # resolve weakref
 		if not widget:
 			continue
 		all_widgets = translations.text_translations.get(filename, {})
@@ -77,7 +78,7 @@ def update_translations(message):
 				          'assuming it is hidden', element_name, widget)
 				continue
 			replace_attribute(element, attribute, translation)
-			#NOTE pychan + reloading font = ???
+			# NOTE pychan + reloading font = ???
 			element.font = element.font
 		widget.adaptLayout()
 

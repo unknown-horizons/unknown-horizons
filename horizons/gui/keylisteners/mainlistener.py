@@ -33,6 +33,7 @@ from horizons.gui.keylisteners import KeyConfig
 from horizons.util.living import LivingObject
 from horizons.constants import PATHS
 
+
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 	"""MainListener Class to process events of main window"""
 
@@ -86,10 +87,10 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 		elif action == _Actions.QUICKLOAD:
 			horizons.main._load_last_quicksave()
 		else:
-			key_event_handled = False # nope, nothing triggered
+			key_event_handled = False  # nope, nothing triggered
 
 		if key_event_handled:
-			evt.consume() # prevent other listeners from being called
+			evt.consume()  # prevent other listeners from being called
 
 	def keyReleased(self, evt):
 		pass
