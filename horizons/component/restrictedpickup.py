@@ -21,6 +21,7 @@
 
 from horizons.component import Component
 
+
 class RestrictedPickup(Component):
 	""" Handles pickup location restrictions per whitelist.
 	Treats something as allowed (not restricted) if contained

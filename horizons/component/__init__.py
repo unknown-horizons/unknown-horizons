@@ -34,7 +34,7 @@ class Component(object):
 	where you'll see how the actual things in Unknown Horizons are created.
 	"""
 
-	#  Store the name of this component. This has to be overwritten in subclasses
+	# Store the name of this component. This has to be overwritten in subclasses
 	NAME = None
 
 	# Store dependencies to other components here
@@ -45,7 +45,7 @@ class Component(object):
 		Used for initialization code that does not require any other components.
 		This is always called first, on construction and on load."""
 		super(Component, self).__init__()
-		self.instance = None # Has to be set by the componentholder
+		self.instance = None  # Has to be set by the componentholder
 
 	@property
 	def session(self):
@@ -92,7 +92,6 @@ class Component(object):
 		"""
 		arguments = arguments or {}
 		return cls(**arguments)
-
 
 	def __gt__(self, other):
 		return other.__class__ in self.DEPENDENCIES

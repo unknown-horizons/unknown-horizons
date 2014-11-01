@@ -26,17 +26,20 @@ from horizons.scheduler import Scheduler
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component import Component
 
+
 class TRADE_ERROR_TYPE(object):
 	"""Machine controlled entities need to know the difference. On this basis, they decide
 	whether to retry the trade in a few seconds.
 	"""
 	NO_ERROR, TEMPORARY, PERMANENT = range(3)
 
+
 class TradeSlotInfo(object):
 	def __init__(self, resource_id, selling, limit):
 		self.resource_id = resource_id
 		self.selling = selling
 		self.limit = limit
+
 
 class TradePostComponent(ChangeListener, Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
@@ -49,12 +52,13 @@ class TradePostComponent(ChangeListener, Component):
 		super(TradePostComponent, self).__init__()
 
 	def initialize(self):
-		self.slots = [None, None, None] # [TradeSlotInfo, ...]
-		self.buy_list = {} # dict of resources that are to be bought. {resource_id: slot_id, ...}
-		self.sell_list = {} # dict of resources that are to be sold.  {resource_id: slot_id, ...}
-		self.trade_history = [] # [(tick, player_id, resource_id, amount, gold), ...] ordered by tick, player_id
-		self.buy_history = {} # {tick_id: (res, amount, price), ...}
-		self.sell_history = {} # {tick_id: (res, amount, price), ...}
+		self.slots = [None, None, None]  # [TradeSlotInfo, ...]
+		self.buy_list = {}  # dict of resources that are to be bought. {resource_id: slot_id, ...}
+		self.sell_list = {}  # dict of resources that are to be sold.  {resource_id: slot_id, ...}
+		self.trade_history = []
+		# [(tick, player_id, resource_id, amount, gold), ...] ordered by tick, player_id
+		self.buy_history = {}  # {tick_id: (res, amount, price), ...}
+		self.sell_history = {}  # {tick_id: (res, amount, price), ...}
 		self.total_income = 0
 		self.total_expenses = 0
 
@@ -94,27 +98,33 @@ class TradePostComponent(ChangeListener, Component):
 
 		for slot_id in xrange(len(self.slots)):
 			if self.slots[slot_id] is not None:
-				db("INSERT INTO trade_slots(trade_post, slot_id, resource_id, selling, trade_limit) VALUES(?, ?, ?, ?, ?)",
-				   self.instance.worldid, slot_id, self.slots[slot_id].resource_id, self.slots[slot_id].selling, self.slots[slot_id].limit)
+				db("INSERT INTO trade_slots(trade_post, slot_id, resource_id,"
+					" selling, trade_limit) VALUES(?, ?, ?, ?, ?)",
+					self.instance.worldid, slot_id, self.slots[slot_id].resource_id,
+					self.slots[slot_id].selling, self.slots[slot_id].limit)
 
 		db("INSERT INTO trade_values(object, total_income, total_expenses) VALUES (?, ?, ?)",
 		   self.instance.worldid, self.total_income, self.total_expenses)
 
 		for row in self.trade_history:
-			translated_tick = row[0] - Scheduler().cur_tick # pre-translate for the loading process
-			db("INSERT INTO trade_history(settlement, tick, player, resource_id, amount, gold) VALUES(?, ?, ?, ?, ?, ?)",
+			translated_tick = row[0] - Scheduler().cur_tick  # pre-translate for the loading process
+			db("INSERT INTO trade_history(settlement, tick, player, resource_id,"
+					" amount, gold) VALUES(?, ?, ?, ?, ?, ?)",
 				self.instance.worldid, translated_tick, row[1], row[2], row[3], row[4])
 
 	def load(self, db, worldid):
 		super(TradePostComponent, self).load(db, worldid)
 		self.initialize()
 
-		for (slot_id, resource_id, selling, limit) in db("SELECT slot_id, resource_id, selling, trade_limit FROM trade_slots WHERE trade_post = ?", worldid):
+		for (slot_id, resource_id, selling, limit) in db("SELECT slot_id, resource_id,"
+				" selling, trade_limit FROM trade_slots WHERE trade_post = ?", worldid):
 			self.set_slot(slot_id, resource_id, selling, limit)
 
-		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses FROM trade_values WHERE object = ?", worldid)[0]
+		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses"
+			" FROM trade_values WHERE object = ?", worldid)[0]
 
-		for row in db("SELECT tick, player, resource_id, amount, gold FROM trade_history WHERE settlement = ? ORDER BY tick, player", worldid):
+		for row in db("SELECT tick, player, resource_id, amount, gold FROM trade_history"
+				" WHERE settlement = ? ORDER BY tick, player", worldid):
 			self.trade_history.append(row)
 
 	def get_owner_inventory(self):
@@ -131,10 +141,10 @@ class TradePostComponent(ChangeListener, Component):
 		@param player_id: the worldid of the trade partner
 		@return bool, whether we did buy it"""
 		assert price >= 0 and amount >= 0
-		if not res in self.buy_list or \
-				self.get_owner_inventory()[RES.GOLD] < price or \
-				self.get_inventory().get_free_space_for(res) < amount or \
-				amount + self.get_inventory()[res] > self.slots[self.buy_list[res]].limit:
+		if (res not in self.buy_list or
+				self.get_owner_inventory()[RES.GOLD] < price or
+				self.get_inventory().get_free_space_for(res) < amount or
+				amount + self.get_inventory()[res] > self.slots[self.buy_list[res]].limit):
 			self._changed()
 			return False
 
@@ -144,8 +154,8 @@ class TradePostComponent(ChangeListener, Component):
 			remnant = self.get_inventory().alter(res, amount)
 			assert remnant == 0
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, amount, -price))
-			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
-			self.total_expenses += amount*price
+			self.buy_history[Scheduler().cur_tick] = (res, amount, price)
+			self.total_expenses += amount * price
 			self._changed()
 			return True
 		assert False
@@ -158,9 +168,9 @@ class TradePostComponent(ChangeListener, Component):
 		@param player_id: the worldid of the trade partner
 		@return bool, whether we did sell it"""
 		assert price >= 0 and amount >= 0
-		if not res in self.sell_list or \
-				self.get_inventory()[res] < amount or \
-				self.get_inventory()[res] - amount < self.slots[self.sell_list[res]].limit:
+		if (res not in self.sell_list or
+				self.get_inventory()[res] < amount or
+				self.get_inventory()[res] - amount < self.slots[self.sell_list[res]].limit):
 			self._changed()
 			return False
 
@@ -170,13 +180,14 @@ class TradePostComponent(ChangeListener, Component):
 			remnant = self.get_inventory().alter(res, -amount)
 			assert remnant == 0
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, -amount, price))
-			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
-			self.total_income += amount*price
+			self.sell_history[Scheduler().cur_tick] = (res, amount, price)
+			self.total_income += amount * price
 			self._changed()
 			return True
 		assert False
 
-	def sell_resource(self, ship_worldid, resource_id, amount, add_error_type=False, suppress_messages=False):
+	def sell_resource(self, ship_worldid, resource_id, amount, add_error_type=False,
+			suppress_messages=False):
 		""" Attempt to sell the given amount of resource to the ship, returns the amount sold.
 		@param add_error_type: if True, return tuple where second item is ERROR_TYPE"""
 		ship = WorldObject.get_object_by_id(ship_worldid)
@@ -189,11 +200,13 @@ class TradePostComponent(ChangeListener, Component):
 		if resource_id not in self.sell_list:
 			return err(_("The trade partner does not sell this."), TRADE_ERROR_TYPE.PERMANENT)
 
-		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
+		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY)
+		# price per ton of resource
 		assert price > 0
 
 		# can't sell more than the ship can fit in its inventory
-		amount = min(amount, ship.get_component(StorageComponent).inventory.get_free_space_for(resource_id))
+		amount = min(amount, ship.get_component(StorageComponent).inventory.get_free_space_for(
+			resource_id))
 		if amount <= 0:
 			return err(_("You can not store this."), TRADE_ERROR_TYPE.PERMANENT)
 		# can't sell more than the ship's owner can afford
@@ -203,7 +216,8 @@ class TradePostComponent(ChangeListener, Component):
 		# can't sell more than what we have
 		amount = min(amount, self.get_inventory()[resource_id])
 		# can't sell more than we are trying to sell according to the settings
-		amount = min(amount, self.get_inventory()[resource_id] - self.slots[self.sell_list[resource_id]].limit)
+		amount = min(amount, self.get_inventory()[resource_id] - self.slots[
+			self.sell_list[resource_id]].limit)
 		if amount <= 0:
 			return err(_("The trade partner does not sell more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
@@ -212,13 +226,15 @@ class TradePostComponent(ChangeListener, Component):
 		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, -total_price) == 0
 		assert self.get_inventory().alter(resource_id, -amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, amount) == 0
-		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, -amount, total_price))
+		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id,
+			-amount, total_price))
 		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_income += total_price
 		self._changed()
 		return amount if not add_error_type else amount, TRADE_ERROR_TYPE.NO_ERROR
 
-	def buy_resource(self, ship_worldid, resource_id, amount, add_error_type=False, suppress_messages=False):
+	def buy_resource(self, ship_worldid, resource_id, amount, add_error_type=False,
+			suppress_messages=False):
 		""" Attempt to buy the given amount of resource from the ship, return the amount bought
 		@param add_error_type: if True, return tuple where second item is ERROR_TYPE"""
 		ship = WorldObject.get_object_by_id(ship_worldid)
@@ -231,7 +247,8 @@ class TradePostComponent(ChangeListener, Component):
 		if resource_id not in self.buy_list:
 			return err(_("The trade partner does not buy this."), TRADE_ERROR_TYPE.PERMANENT)
 
-		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
+		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL)
+		# price per ton of resource
 		assert price > 0
 
 		# can't buy more than the ship has
@@ -248,7 +265,8 @@ class TradePostComponent(ChangeListener, Component):
 			return err(_("The trade partner can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		# can't buy more than we are trying to buy according to the settings
-		amount = min(amount, self.slots[self.buy_list[resource_id]].limit - self.get_inventory()[resource_id])
+		amount = min(amount, self.slots[self.buy_list[resource_id]].limit - self.get_inventory()[
+			resource_id])
 		if amount <= 0:
 			return err(_("The trade partner does not buy more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
@@ -257,7 +275,8 @@ class TradePostComponent(ChangeListener, Component):
 		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, total_price) == 0
 		assert self.get_inventory().alter(resource_id, amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, -amount) == 0
-		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, amount, -total_price))
+		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id,
+			amount, -total_price))
 		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_expenses += total_price
 		self._changed()

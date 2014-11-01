@@ -23,6 +23,7 @@ from horizons.command.building import Build
 from horizons.component import Component
 from horizons.entities import Entities
 
+
 class FieldBuilder(Component):
 	"""
 	Component for production buildings. It adds a hook `fill_range` to fill the
