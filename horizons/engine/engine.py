@@ -76,7 +76,7 @@ class Fife(object):
 		self.engine_settings.setGLUseNPOT(self._finalSetting['GLUseNPOT'])
 
 		# introduced in fife 0.4.0
-		if self.getVersion >= (0,4,0):
+		if self.getVersion >= (0, 4, 0):
 			self.engine_settings.setGLUseMonochrome(self._finalSetting['GLUseMonochrome'])
 			self.engine_settings.setGLUseMipmapping(self._finalSetting['GLUseMipmapping'])
 			if self._finalSetting['GLTextureFiltering'] == 'None':
@@ -103,7 +103,8 @@ class Fife(object):
 			pass
 
 		try:
-			self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],self._finalSetting['ColorKey'][1],self._finalSetting['ColorKey'][2])
+			self.engine_settings.setColorKey(self._finalSetting['ColorKey'][0],
+				self._finalSetting['ColorKey'][1], self._finalSetting['ColorKey'][2])
 		except:
 			pass
 
@@ -180,7 +181,8 @@ class Fife(object):
 		self._got_inited = True
 
 	def init_animation_loader(self, use_atlases):
-		# this method should not be called from init to catch any bugs caused by the loader changing after it.
+		# this method should not be called from init to catch any bugs caused
+		# by the loader changing after it.
 		self.use_atlases = use_atlases
 		if self.use_atlases:
 			self.animationloader = SQLiteAtlasLoader()
@@ -240,7 +242,7 @@ class Fife(object):
 	def replace_key_for_action(self, action, oldkey, newkey):
 		"""Replaces key *oldkey* with key *newkey* for action *action*"""
 		old_keys = self._setting.get(SETTINGS.KEY_MODULE, action, [])
-		if not oldkey in old_keys:
+		if oldkey not in old_keys:
 			return
 		index = old_keys.index(oldkey)
 		old_keys[index] = newkey
@@ -251,7 +253,8 @@ class Fife(object):
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
-		@param emitter: string with the emitters name in horizons.globals.fife.sound.emitter that is to play the  sound
+		@param emitter: string with the emitters name in horizons.globals.fife.sound.emitter
+		that is to play the sound
 		@param soundfile: string containing the path to the soundfile"""
 		self.sound.play_sound(emitter, soundfile)
 

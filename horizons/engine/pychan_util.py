@@ -32,11 +32,16 @@ from horizons.gui.widgets.imagebutton import ImageButton
 
 import horizons.globals
 
+
 class RenameLabel(pychan.widgets.Label):
-	"""A regular label that signals that it will display a rename dialog when clicked upon (by changing the cursor)"""
-	pass # implementation added dynamically below
+	"""A regular label that signals that it will display a rename dialog
+	when clicked upon (by changing the cursor)"""
+	pass  # implementation added dynamically below
+
+
 class RenameImageButton(ImageButton):
-	pass # as above
+	pass  # as above
+
 
 def handle_gcn_exception(e, msg=None):
 	"""Called for RuntimeErrors after gcn::exceptions that smell like guichan bugs.
@@ -47,6 +52,7 @@ def handle_gcn_exception(e, msg=None):
 	print 'Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.'
 	if msg:
 		print msg
+
 
 def init_pychan():
 	"""General pychan initiation for uh"""
@@ -80,14 +86,13 @@ def init_pychan():
 	from horizons.gui.widgets.tooltip import _Tooltip
 
 	widgets = [OkButton, CancelButton, DeleteButton, MainmenuButton,
-	           Inventory, BuySellInventory, ImageFillStatusButton,
-	           ProgressBar, StepSlider, TabBG,
-	           HealthWidget, StanceWidget, WeaponStorageWidget,
-	           AutoResizeContainer, RenameLabel, RenameImageButton,
-	           TilingHBox, TilingProgressBar, hr,
-			 # This overwrites the ImageButton provided by FIFE!
-	           ImageButton,
-	           ]
+		Inventory, BuySellInventory, ImageFillStatusButton,
+		ProgressBar, StepSlider, TabBG,
+		HealthWidget, StanceWidget, WeaponStorageWidget,
+		AutoResizeContainer, RenameLabel, RenameImageButton,
+		TilingHBox, TilingProgressBar, hr,
+		# This overwrites the ImageButton provided by FIFE!
+		ImageButton, ]
 
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)
@@ -142,11 +147,10 @@ def init_pychan():
 	# widgets all the time, therefore we don't need the additional check.
 	def text2gui(text):
 		unicodePolicy = horizons.globals.fife.pychan.manager.unicodePolicy
-		return text.encode("utf8",*unicodePolicy).replace("\t"," "*4).replace("[br]","\n")
+		return text.encode("utf8", *unicodePolicy).replace("\t", " " * 4).replace("[br]", "\n")
 
 	pychan.widgets.textfield.text2gui = text2gui
 	pychan.widgets.basictextwidget.text2gui = text2gui
-
 
 	setup_cursor_change_on_hover()
 
@@ -158,6 +162,7 @@ def setup_cursor_change_on_hover():
 	# set cursor to rename on hover for certain widgets
 	def set_cursor():
 		horizons.globals.fife.set_cursor_image("rename")
+
 	def unset_cursor():
 		horizons.globals.fife.set_cursor_image("default")
 
@@ -165,15 +170,15 @@ def setup_cursor_change_on_hover():
 		# this can't be a regular class since vanilla TextFields should have it by default
 		def disable_cursor_change_on_hover(self):
 			self.mapEvents({
-				self.name+'/mouseEntered/cursor' : None,
-				self.name+'/mouseExited/cursor' : None,
-				})
+				self.name + '/mouseEntered/cursor': None,
+				self.name + '/mouseExited/cursor': None,
+			})
 
 		def enable_cursor_change_on_hover(self):
 			self.mapEvents({
-				self.name+'/mouseEntered/cursor' : set_cursor,
-				self.name+'/mouseExited/cursor' : unset_cursor,
-				})
+				self.name + '/mouseEntered/cursor': set_cursor,
+				self.name + '/mouseExited/cursor': unset_cursor,
+			})
 
 		def add_cursor_change_on_hover_init(func):
 			@functools.wraps(func)
@@ -186,10 +191,9 @@ def setup_cursor_change_on_hover():
 		cls.disable_cursor_change_on_hover = disable_cursor_change_on_hover
 		cls.enable_cursor_change_on_hover = enable_cursor_change_on_hover
 
-	make_cursor_change_on_hover_class( pychan.widgets.WIDGETS['TextField'] )
-	make_cursor_change_on_hover_class( RenameLabel )
-	make_cursor_change_on_hover_class( RenameImageButton )
-
+	make_cursor_change_on_hover_class(pychan.widgets.WIDGETS['TextField'])
+	make_cursor_change_on_hover_class(RenameLabel)
+	make_cursor_change_on_hover_class(RenameImageButton)
 
 	# TODO: if the widget is hidden while the cursor is above it,
 	# there is no exited event. A possible workaround would be to check
@@ -210,6 +214,6 @@ def setup_trigger_signals_on_action():
 				self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
 			return wrapper
 
-		cls.__init__ = add_action_triggers_a_signal( cls.__init__ )
+		cls.__init__ = add_action_triggers_a_signal(cls.__init__)
 
 	make_action_trigger_a_signal(pychan.widgets.Widget)
