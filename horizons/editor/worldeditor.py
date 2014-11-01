@@ -35,6 +35,7 @@ from horizons.scheduler import Scheduler
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
 
+
 class WorldEditor(object):
 	def __init__(self, world):
 		super(WorldEditor, self).__init__()
@@ -93,7 +94,7 @@ class WorldEditor(object):
 	def save_map(self, path, prefix):
 		map_file = os.path.join(path, prefix + '.sqlite')
 		if os.path.exists(map_file):
-			os.unlink(map_file) # the process relies on having an empty file
+			os.unlink(map_file)  # the process relies on having an empty file
 
 		db = DbReader(map_file)
 		with open('content/map-template.sql') as map_template:
@@ -105,7 +106,8 @@ class WorldEditor(object):
 			for island_id, coords_list in self._iter_islands():
 				for x, y in coords_list:
 					tile = self.world.full_map[(x, y)]
-					db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
+					db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)',
+						island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
 			db('COMMIT')
 		except sqlite3.Error as e:
 			self.log.debug('Error: {error}'.format(error=e.args[0]))
@@ -127,7 +129,8 @@ class WorldEditor(object):
 			return
 
 		old_tile = self.world.full_map[coords]
-		if old_tile and old_tile.id != -1 and old_tile._instance and old_tile not in self._tile_delete_set:
+		if (old_tile and old_tile.id != -1 and old_tile._instance
+				and old_tile not in self._tile_delete_set):
 			if (old_tile.id, old_tile.shape, old_tile.rotation + 45) == tile_details:
 				return
 			self._tile_delete_set.add(old_tile)
