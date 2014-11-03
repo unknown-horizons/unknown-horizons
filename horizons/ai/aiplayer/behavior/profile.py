@@ -38,7 +38,8 @@ class BehaviorProfile(object):
 	def __init__(self):
 		"""
 		Init actions and strategies with required types.
-		e.g. self.strategies is a dict of Enum => {}, each of such items is later filled by concrete BehaviorProfile.
+		e.g. self.strategies is a dict of Enum => {},
+		each of such items is later filled by concrete BehaviorProfile.
 		"""
 		super(BehaviorProfile, self).__init__()
 		self.actions = dict(((action_type, {}) for action_type in BehaviorManager.action_types))
@@ -91,6 +92,7 @@ class BehaviorProfileBalanced(BehaviorProfile):
 		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 0.9
 		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 0.05
 
+
 class BehaviorProfileCautious(BehaviorProfile):
 
 	def __init__(self, player):
@@ -98,7 +100,7 @@ class BehaviorProfileCautious(BehaviorProfile):
 
 		self.conditions = {
 			ConditionHostile(player): 0.9,
-			#ConditionSharingSettlement(player): 1.0,  # does not respond to enemy sharing a settlement
+			# ConditionSharingSettlement(player): 1.0,  # does not respond to enemy sharing a settlement
 			ConditionNeutral(player): 0.3,
 			ConditionAllied(player): 0.29,
 		}
@@ -129,7 +131,8 @@ class BehaviorProfilePirateRegular(BehaviorProfile):
 
 class BehaviorProfileManager(object):
 	"""
-	BehaviorProfileManager is an object that defines the dictionary with BehaviorComponents for AIPlayer.
+	BehaviorProfileManager is an object that defines the dictionary
+	with BehaviorComponents for AIPlayer.
 	If it proves to be useful it will handle loading AI profiles from YAML.
 	"""
 
@@ -152,7 +155,8 @@ class BehaviorProfileManager(object):
 
 		probabilities_sum = sum([item[1] for item in profiles])
 
-		assert probabilities_sum > 1e-7, "sum of BehaviorProfile probabilities is too low: %s" % probabilities_sum
+		assert probabilities_sum > 1e-7, "sum of BehaviorProfile probabilities is too low: %s" \
+			% probabilities_sum
 
 		random_value *= probabilities_sum
 
@@ -163,7 +167,8 @@ class BehaviorProfileManager(object):
 				break
 			total += probability
 
-		cls.log.debug("BehaviorProfileManager: Player %s was given %s", player.name, chosen_profile.__name__)
+		cls.log.debug("BehaviorProfileManager: Player %s was given %s", player.name,
+			chosen_profile.__name__)
 		return chosen_profile(player)
 
 
@@ -173,20 +178,20 @@ class BehaviorProfileDebug(BehaviorProfile):
 		super(BehaviorProfileDebug, self).__init__()
 
 		self.conditions = {
-			#ConditionHostile(player): 1.1,
-			#ConditionSharingSettlement(player): 1.0,
+			# ConditionHostile(player): 1.1,
+			# ConditionSharingSettlement(player): 1.0,
 			ConditionNeutral(player): 0.4,
-			#ConditionAllied(player): 0.3,
-			#ConditionDebug(player): 1.0,
+			# ConditionAllied(player): 0.3,
+			# ConditionDebug(player): 1.0,
 		}
 
 		self.actions[BehaviorManager.action_types.offensive][BehaviorSmart(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
-		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
-		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorDebug(player)] = 1.0
-		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorEvil(player)] = 1.0
-		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 1.0
+		# self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
+		# self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorDebug(player)] = 1.0
+		# self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorEvil(player)] = 1.0
+		# self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 1.0
 		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 1.0
 
 
@@ -197,8 +202,9 @@ def get_available_player_profiles():
 		(BehaviorProfileCautious, 0.3),
 		(BehaviorProfileAggressive, 0.1),
 		(BehaviorProfileBalanced, 0.6),
-		#(BehaviorProfileDebug, 1.0),
+		# (BehaviorProfileDebug, 1.0),
 	)
+
 
 def get_available_pirate_profiles():
 	return (

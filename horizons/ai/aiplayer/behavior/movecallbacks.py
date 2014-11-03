@@ -26,6 +26,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes import Annulus
 from horizons.world.units.movingobject import MoveNotPossible
 
+
 class BehaviorMoveCallback:
 	"""
 	Container class for general purpose ship moves and move callbacks.
@@ -40,7 +41,8 @@ class BehaviorMoveCallback:
 	def _arrived(cls, ship):
 		combat_manager = ship.owner.combat_manager
 		combat_manager.set_ship_state(ship, combat_manager.shipStates.idle)
-		cls.log.debug("%s: _arrived: Ship %s arrived at target", cls.__name__, ship.get_component(NamedComponent).name)
+		cls.log.debug("%s: _arrived: Ship %s arrived at target", cls.__name__,
+			ship.get_component(NamedComponent).name)
 
 	@classmethod
 	def maintain_distance_and_attack(cls, ship, enemy, range, range_delta=1):
@@ -50,11 +52,13 @@ class BehaviorMoveCallback:
 		combat_manager = ship.owner.combat_manager
 
 		distance = ship.position.distance(enemy.position)
-		cls.log.debug("maintain_distance_and_attack: Ship: %s, Enemy: %s, distance: %s, range: %s, range_delta: %s", ship.get_component(NamedComponent).name,
+		cls.log.debug("maintain_distance_and_attack: Ship: %s, Enemy: %s,"
+			" distance: %s, range: %s, range_delta: %s",
+			ship.get_component(NamedComponent).name,
 			enemy.get_component(NamedComponent).name, distance, range, range_delta)
 
 		if ship.can_attack_position(enemy.position):
-			ship.attack(enemy) # attack ship if close enough to fire
+			ship.attack(enemy)  # attack ship if close enough to fire
 			cls.log.debug("%s: maintain_distance_and_attack: Attack: %s -> %s", cls.__name__,
 				ship.get_component(NamedComponent).name, enemy.get_component(NamedComponent).name)
 

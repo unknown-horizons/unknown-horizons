@@ -26,13 +26,15 @@ from horizons.constants import BUILDINGS, RES
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
+
 class DepositCoverageGoal(SettlementGoal):
 	"""Build storage tents to get a resource deposit inside the settlement."""
 
-	_deposit_resource_id = None # the resource that has to be in the resource deposit
+	_deposit_resource_id = None  # the resource that has to be in the resource deposit
 
 	def _have_reachable_deposit(self, resource_id):
-		"""Returns True if there is a resource deposit outside the settlement that is not owned by another player."""
+		"""Returns True if there is a resource deposit outside the settlement
+		that is not owned by another player."""
 		for tile in self.land_manager.resource_deposits[resource_id]:
 			if tile.object.settlement is None:
 				return True
@@ -56,8 +58,9 @@ class DepositCoverageGoal(SettlementGoal):
 			return BUILD_RESULT.IMPOSSIBLE
 
 		storage_class = Entities.buildings[BUILDINGS.STORAGE]
-		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type, storage_class.size,
-		    self.settlement.buildability_cache, self.production_builder.buildability_cache)
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(
+			storage_class.terrain_type, storage_class.size,
+			self.settlement.buildability_cache, self.production_builder.buildability_cache)
 
 		options = []
 		for coords in sorted(storage_spots):
@@ -74,7 +77,8 @@ class DepositCoverageGoal(SettlementGoal):
 				if tile is None:
 					continue
 				coords = (tile.x, tile.y)
-				if coords not in self.production_builder.plan or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				if (coords not in self.production_builder.plan or self.production_builder.plan[coords][0]
+						!= BUILDING_PURPOSE.NONE):
 					alignment += 1
 
 			value = min_distance - alignment * self.personality.alignment_coefficient
@@ -87,11 +91,13 @@ class DepositCoverageGoal(SettlementGoal):
 		self._log_generic_build_result(result, 'deposit coverage storage')
 		return self._translate_build_result(result)
 
+
 class ClayDepositCoverageGoal(DepositCoverageGoal):
 	_deposit_resource_id = RES.RAW_CLAY
 
 	def get_personality_name(self):
 		return 'ClayDepositCoverageGoal'
+
 
 class MountainCoverageGoal(DepositCoverageGoal):
 	_deposit_resource_id = RES.RAW_IRON
