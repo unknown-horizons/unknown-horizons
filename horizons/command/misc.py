@@ -21,6 +21,7 @@
 
 from horizons.command import Command
 
+
 class Chat(Command):
 	def __init__(self, message):
 		self.message = unicode(message)

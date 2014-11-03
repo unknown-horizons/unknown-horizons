@@ -31,10 +31,11 @@ class GenericUnitCommand(GenericCommand):
 		try:
 			unit = self._get_object()
 		except WorldObjectNotFound as e:
-			self.log.warning("Tried to call a unit command on an inexistent unit. It could have been killed: %s", e)
+			self.log.warning("Tried to call a unit command on an inexistent unit."
+				" It could have been killed: %s", e)
 			return
 		if unit.owner.worldid != issuer.worldid:
-			return # don't move enemy units
+			return  # don't move enemy units
 		else:
 			return super(GenericUnitCommand, self).__call__(issuer)
 
@@ -63,7 +64,8 @@ GenericCommand.allow_network(Attack)
 
 class RemoveUnit(GenericUnitCommand):
 	"""
-	Command class that removes the unit. Not to be used if .remove() is going to be called through an indirect command anyway.
+	Command class that removes the unit. Not to be used if .remove() is going to be
+	called through an indirect command anyway.
 	@param unit: Instance of Unit
 	"""
 	def __init__(self, unit):
