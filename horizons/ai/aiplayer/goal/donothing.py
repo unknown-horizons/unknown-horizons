@@ -23,6 +23,7 @@ from horizons.ai.aiplayer.goal import Goal
 from horizons.ai.aiplayer.constants import GOAL_RESULT
 from horizons.util.python import decorators
 
+
 class DoNothingGoal(Goal):
 	"""This goal makes the AI not do anything during a tick."""
 
@@ -46,7 +47,8 @@ class DoNothingGoal(Goal):
 		else:
 			# be lazy
 			self._is_active = True
-			self._priority = self.owner.session.random.gauss(self.personality.default_priority, self.personality.priority_variance)
+			self._priority = self.owner.session.random.gauss(self.personality.default_priority,
+				self.personality.priority_variance)
 
 	def execute(self):
 		# do nothing

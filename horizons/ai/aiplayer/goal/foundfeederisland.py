@@ -23,17 +23,21 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import GOAL_RESULT
 from horizons.util.python import decorators
 
+
 class FoundFeederIslandGoal(SettlementGoal):
 	def get_personality_name(self):
 		return 'FoundFeederIslandGoal'
 
 	def _need_feeder_island(self):
-		return self.production_builder.count_available_squares(3, self.personality.feeder_island_requirement_cutoff)[1] < self.personality.feeder_island_requirement_cutoff
+		return self.production_builder.count_available_squares(3,
+			self.personality.feeder_island_requirement_cutoff)[1] < \
+			self.personality.feeder_island_requirement_cutoff
 
 	def _have_feeder_island(self):
 		for settlement_manager in self.owner.settlement_managers:
 			if settlement_manager.feeder_island:
-				available_squares = settlement_manager.production_builder.count_available_squares(3, self.personality.usable_feeder_island_cutoff)[1]
+				available_squares = settlement_manager.production_builder.count_available_squares(
+					3, self.personality.usable_feeder_island_cutoff)[1]
 				if available_squares >= self.personality.usable_feeder_island_cutoff:
 					return True
 		return False
