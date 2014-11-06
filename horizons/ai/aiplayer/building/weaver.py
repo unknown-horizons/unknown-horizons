@@ -27,6 +27,7 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
+
 class AbstractWeaver(AbstractBuilding):
 	@property
 	def evaluator_class(self):
@@ -35,6 +36,7 @@ class AbstractWeaver(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.WEAVER] = cls
+
 
 class WeaverEvaluator(BuildingEvaluator):
 	@classmethod
@@ -51,17 +53,20 @@ class WeaverEvaluator(BuildingEvaluator):
 						wool_producer = True
 						break
 				if wool_producer:
-					distance_to_farm = distance if distance_to_farm is None or distance < distance_to_farm else distance_to_farm
+					distance_to_farm = distance if distance_to_farm is None \
+						or distance < distance_to_farm else distance_to_farm
 
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		if distance_to_collector is None:
-			return None # require weavers to have a collector building in range
+			return None  # require weavers to have a collector building in range
 
 		personality = area_builder.owner.personality_manager.get('WeaverEvaluator')
 		distance_penalty = Entities.buildings[BUILDINGS.WEAVER].radius * personality.distance_penalty
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
-		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.WEAVER].radius) / distance + alignment * personality.alignment_importance
+		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance,
+			distance_to_farm)], distance_penalty)
+		value = float(Entities.buildings[BUILDINGS.WEAVER].radius) / distance \
+			+ alignment * personality.alignment_importance
 		return WeaverEvaluator(area_builder, builder, value)
 
 	@property
