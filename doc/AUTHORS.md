@@ -38,6 +38,7 @@
 * ThomasD (Thomas Davey)
 
 #### Graphics Artists
+* Clearskies (Anthony Nguyen)
 * Daniel Stephens
 * dauerflucher (Andreas Lis)
 * egore (Christoph Brill)
