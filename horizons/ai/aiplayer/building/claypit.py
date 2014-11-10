@@ -28,13 +28,15 @@ from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
 from horizons.entities import Entities
 
+
 class AbstractClayPit(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
 		building_class = Entities.buildings[BUILDINGS.CLAY_PIT]
 		for building in settlement_manager.settlement.buildings_by_id.get(BUILDINGS.CLAY_DEPOSIT, []):
 			if building.get_component(StorageComponent).inventory[RES.RAW_CLAY]:
 				coords = building.position.origin.to_tuple()
-				if coords in settlement_manager.production_builder.simple_collector_area_cache.cache[building_class.size]:
+				if (coords in settlement_manager.production_builder.simple_collector_area_cache
+						.cache[building_class.size]):
 					yield (coords[0], coords[1], 0)
 
 	@property
@@ -44,6 +46,7 @@ class AbstractClayPit(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.CLAY_PIT] = cls
+
 
 class ClayPitEvaluator(BuildingEvaluator):
 	@classmethod

@@ -30,6 +30,7 @@ from horizons.util.python import decorators
 from horizons.world.production.productionline import ProductionLine
 from horizons.world.production.producer import Producer
 
+
 class AbstractBuilding(object):
 	"""
 	An object of this class tells the AI how to build a specific type of building.
@@ -50,16 +51,17 @@ class AbstractBuilding(object):
 		self.size = (self.width, self.height)
 		self.radius = Entities.buildings[building_id].radius
 		self.terrain_type = Entities.buildings[building_id].terrain_type
-		self.lines = {} # output_resource_id: ProductionLine
+		self.lines = {}  # output_resource_id: ProductionLine
 		if self.producer_building:
 			self.__init_production_lines()
 
 	__loaded = False
-	buildings = {} # building_id: AbstractBuilding instance
-	_available_buildings = {} # building_id: subclass of AbstractBuilding
+	buildings = {}  # building_id: AbstractBuilding instance
+	_available_buildings = {}  # building_id: subclass of AbstractBuilding
 
 	def __init_production_lines(self):
-		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
+		production_lines = self._get_producer_building().get_component_template(
+			Producer)['productionlines']
 		for key, value in production_lines.iteritems():
 			production_line = ProductionLine(key, value)
 			assert len(production_line.produced_res) == 1
@@ -104,42 +106,54 @@ class AbstractBuilding(object):
 		return total
 
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
-		"""Return a value representing the utility cost of building enough buildings to produced the given amount of resource per tick."""
-		buildings_needed = math.ceil(max(0.0, production_needed / self.get_expected_production_level(resource_id)))
+		"""Return a value representing the utility cost of building enough buildings
+		to produced the given amount of resource per tick."""
+		buildings_needed = math.ceil(max(0.0, production_needed
+			/ self.get_expected_production_level(resource_id)))
 		return buildings_needed * self.get_expected_building_cost()
 
 	def get_expected_production_level(self, resource_id):
-		"""Return the expected production capacity of a single building of this type producing the given resource."""
+		"""Return the expected production capacity of a single building
+		of this type producing the given resource."""
 		if resource_id not in self.lines:
 			return None
 		line = self.lines[resource_id]
 		return line.produced_res[resource_id] / float(line.time) / GAME_SPEED.TICKS_PER_SECOND
 
 	def get_production_level(self, building, resource_id):
-		"""Return the actual production capacity of a single building of this type producing the given resource."""
+		"""Return the actual production capacity of a single building of this type
+		producing the given resource."""
 		# most buildings can get away with reporting the expected production level
 		return self.get_expected_production_level(resource_id)
 
 	def have_resources(self, settlement_manager):
-		"""Return a boolean showing whether the given settlement has enough resources to build a building of this type."""
-		return Entities.buildings[self.id].have_resources([settlement_manager.land_manager.settlement], settlement_manager.owner)
+		"""Return a boolean showing whether the given settlement has enough resources
+		to build a building of this type."""
+		return Entities.buildings[self.id].have_resources([settlement_manager.land_manager.settlement],
+			settlement_manager.owner)
 
 	@classmethod
-	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type, need_collector_connection):
+	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type,
+			need_collector_connection):
 		# Note that this is explicitly using the production_builder. This means that this
 		# code can never be used to construct anything outside the production area.
-		caches = (settlement_manager.production_builder.buildability_cache, settlement_manager.settlement.buildability_cache)
+		caches = (settlement_manager.production_builder.buildability_cache,
+			settlement_manager.settlement.buildability_cache)
 		if need_collector_connection:
 			caches += (settlement_manager.production_builder.simple_collector_area_cache, )
-		return settlement_manager.island.terrain_cache.get_buildability_intersection(terrain_type, size, *caches)
+		return settlement_manager.island.terrain_cache.get_buildability_intersection(terrain_type,
+			size, *caches)
 
 	def iter_potential_locations(self, settlement_manager):
-		"""Iterate over possible locations of the building in the given settlement in the form of (x, y, orientation)."""
+		"""Iterate over possible locations of the building in the given settlement
+		in the form of (x, y, orientation)."""
 		need_collector_connection = self.evaluator_class.need_collector_connection
-		for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, self.size, self.terrain_type, need_collector_connection)):
+		for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, self.size,
+				self.terrain_type, need_collector_connection)):
 			yield (x, y, 0)
 		if self.width != self.height:
-			for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, (self.height, self.width), self.terrain_type, need_collector_connection)):
+			for (x, y) in sorted(self._get_buildability_intersection(settlement_manager,
+					(self.height, self.width), self.terrain_type, need_collector_connection)):
 				yield (x, y, 1)
 
 	@property
@@ -149,17 +163,20 @@ class AbstractBuilding(object):
 
 	@property
 	def directly_buildable(self):
-		"""Return a boolean showing whether the build function of this subclass can be used to build a building of this type."""
+		"""Return a boolean showing whether the build function of this subclass
+		can be used to build a building of this type."""
 		return True
 
 	@property
 	def coverage_building(self):
-		"""Return a boolean showing whether buildings of this type may need to be built even when the production capacity has been reached."""
+		"""Return a boolean showing whether buildings of this type may need to be built
+		even when the production capacity has been reached."""
 		return False
 
 	@property
 	def ignore_production(self):
-		"""Return a boolean showing whether instances of this building can be used to calculate the production capacity."""
+		"""Return a boolean showing whether instances of this building
+		can be used to calculate the production capacity."""
 		return False
 
 	@property
@@ -169,7 +186,7 @@ class AbstractBuilding(object):
 
 	def get_evaluators(self, settlement_manager, resource_id):
 		"""Return a list of every BuildingEvaluator for this building type in the given settlement."""
-		options = [] # [BuildingEvaluator, ...]
+		options = []  # [BuildingEvaluator, ...]
 		for x, y, orientation in self.iter_potential_locations(settlement_manager):
 			evaluator = self.evaluator_class.create(settlement_manager.production_builder, x, y, orientation)
 			if evaluator is not None:
@@ -177,19 +194,23 @@ class AbstractBuilding(object):
 		return options
 
 	def build(self, settlement_manager, resource_id):
-		"""Try to build the best possible instance of this building in the given settlement. Returns (BUILD_RESULT constant, building instance)."""
+		"""Try to build the best possible instance of this building in the given settlement.
+		Returns (BUILD_RESULT constant, building instance)."""
 		if not self.have_resources(settlement_manager):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
-		for evaluator in sorted(self.get_evaluators(settlement_manager, resource_id), key=operator.attrgetter('value'), reverse=True):
+		for evaluator in sorted(self.get_evaluators(settlement_manager, resource_id),
+				key=operator.attrgetter('value'), reverse=True):
 			result = evaluator.execute()
 			if result[0] != BUILD_RESULT.IMPOSSIBLE:
 				return result
-		self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__, settlement_manager, resource_id if resource_id else -1)
+		self.log.debug('%s.build(%s, %d): no possible evaluators', self.__class__.__name__,
+			settlement_manager, resource_id if resource_id else -1)
 		return (BUILD_RESULT.IMPOSSIBLE, None)
 
 	def need_to_build_more_buildings(self, settlement_manager, resource_id):
-		"""Return a boolean showing whether another instance of the building should be built right now regardless of the production capacity."""
+		"""Return a boolean showing whether another instance of the building should be built right
+		now regardless of the production capacity."""
 		return False
 
 decorators.bind_all(AbstractBuilding)
