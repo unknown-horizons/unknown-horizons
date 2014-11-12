@@ -325,13 +325,11 @@ class CombatManager(object):
 		3. Handle combat for ships currently not used in any mission.
 		"""
 		# handle fleets that explicitly request to be in combat
-		for (mission in self.owner.strategy_manager.get_missions
-				(condition=lambda mission: mission.combat_phase)):
+		for mission in self.owner.strategy_manager.get_missions(condition=lambda mission: mission.combat_phase):
 			self.handle_mission_combat(mission)
 
 		# handle fleets that may way to be in combat, but request for it first
-		for (mission in self.owner.strategy_manager.get_missions
-				(condition=lambda mission: not mission.combat_phase)):
+		for mission in self.owner.strategy_manager.get_missions(condition=lambda mission: not mission.combat_phase):
 			self.handle_uncertain_combat(mission)
 
 		# handle idle ships that are wandering around the map
