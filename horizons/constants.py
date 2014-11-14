@@ -176,30 +176,28 @@ class BUILDINGS:
 
 	WEAPONSMITH      = 66
 
-# SAILORS
-	BRIDGE           = SETTLER_RUIN
-# PIONEERS
-	STORE            = SETTLER_RUIN
-# CITIZENS
-	SALINE           = SETTLER_RUIN
-	PUBLIC_BATH      = SETTLER_RUIN
 
-# MERCHANTS
-	COTTON_FIELD     = SETTLER_RUIN
-	COFFEE_FIELD     = SETTLER_RUIN
-	TEA_PLANTATION   = SETTLER_RUIN
-	ROASTERY         = SETTLER_RUIN
-	WHALE_PROCESSING = SETTLER_RUIN
-	GOLDSMITH        = SETTLER_RUIN
-	TAILOR           = SETTLER_RUIN
-	UNIVERSITY       = SETTLER_RUIN
-	CATHEDRAL        = SETTLER_RUIN
-	TEA_GARDEN       = SETTLER_RUIN
-# ARISTOCRATS
-	INDIGO_FIELD     = SETTLER_RUIN
-	FLOWER_MEADOWS   = SETTLER_RUIN
-	PERFUMERY        = SETTLER_RUIN
-	LIGHTHOUSE       = SETTLER_RUIN
+	COFFEE_FIELD     = 68
+	ROASTERY         = 69
+	BRIDGE           = 70 ##
+	TEA_PLANTATION   = 71
+	STORE            = 72 ##
+	FLOWER_MEADOWS   = 74
+	BRINE_DEPOSIT    = 75
+	SALINE           = 76
+	WHALE_PROCESSING = 77
+	GOLD_DEPOSIT     = 78
+	GEM_DEPOSIT      = 79
+	COTTON_FIELD     = 81
+	INDIGO_FIELD     = 83
+	TAILOR           = 84
+	PERFUMERY        = 85
+	GOLDSMITH        = 86
+	UNIVERSITY       = 92
+	CATHEDRAL        = 93
+	LIGHTHOUSE       = 94
+	TEA_GARDEN       = 95
+	PUBLIC_BATH      = 96
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
@@ -274,9 +272,9 @@ class RES:
 	SPICE_PLANTS     = 45
 	SPICES           = 46
 	CONDIMENTS       = 47
-	MARBLE_DEPOSIT   = GOLD # 48
-	MARBLE_TOPS      = GOLD # 49
-	COAL_DEPOSIT     = GOLD # 50
+	MARBLE_DEPOSIT   = 48
+	MARBLE_TOPS      = 49
+	COAL_DEPOSIT     = 50
 	STONE_DEPOSIT    = 51
 	STONE_TOPS       = 52
 	COCOA_BEANS      = 53
@@ -287,44 +285,44 @@ class RES:
 	GRAPES           = 58
 	ALVEARIES        = 59
 	HONEYCOMBS       = 60
-	GOLD_DEPOSIT     = GOLD # 61
-	GOLD_ORE         = GOLD # 62
-	GOLD_INGOTS      = GOLD # 63
-	GEM_DEPOSIT      = GOLD # 64
-	ROUGH_GEMS       = GOLD # 65
-	GEMS             = GOLD # 66
-	COFFEE_PLANTS    = GOLD # 67
-	COFFEE_BEANS     = GOLD # 68
-	COFFEE           = GOLD # 69
-	TEA_PLANTS       = GOLD # 70
-	TEA_LEAVES       = GOLD # 71
-	TEA              = GOLD # 72
-	FLOWER_MEADOWS   = GOLD # 73
-	BLOSSOMS         = GOLD # 74
-	BRINE            = GOLD # 75
-	BRINE_DEPOSIT    = GOLD # 76
-	WHALES           = GOLD # 77
-	AMBERGRIS        = GOLD # 78
-	LAMP_OIL         = GOLD # 79
-	COTTON_PLANTS    = GOLD # 80
-	COTTON           = GOLD # 81
-	INDIGO_PLANTS    = GOLD # 82
-	INDIGO           = GOLD # 83
-	GARMENTS         = GOLD # 84
-	PERFUME          = GOLD # 85
-	JEWELRY          = GOLD # 86
-	HOP_PLANTS       = GOLD # 87
-	HOPS             = GOLD # 88
+	GOLD_DEPOSIT     = 61
+	GOLD_ORE         = 62
+	GOLD_INGOTS      = 63
+	GEM_DEPOSIT      = 64
+	ROUGH_GEMS       = 65
+	GEMS             = 66
+	COFFEE_PLANTS    = 67
+	COFFEE_BEANS     = 68
+	COFFEE           = 69
+	TEA_PLANTS       = 70
+	TEA_LEAVES       = 71
+	TEA              = 72
+	FLOWER_MEADOWS   = 73
+	BLOSSOMS         = 74
+	BRINE            = 75
+	BRINE_DEPOSIT    = 76
+	WHALES           = 77
+	AMBERGRIS        = 78
+	LAMP_OIL         = 79
+	COTTON_PLANTS    = 80
+	COTTON           = 81
+	INDIGO_PLANTS    = 82
+	INDIGO           = 83
+	GARMENTS         = 84
+	PERFUME          = 85
+	JEWELRY          = 86
+	HOP_PLANTS       = 87
+	HOPS             = 88
 	# 89
 	# 90
 	# 91
 	# 92-99 reserved for services
-	FAITH_2          = GOLD # 92
-	EDUCATION_2      = GOLD # 93
-	REPRESENTATION   = GOLD # 94
-	SOCIETY          = GOLD # 95
-	HYGIENE          = GOLD # 96
-	RECREATION       = GOLD # 97
+#	FAITH_2          = 92
+#	EDUCATION_2      = 93
+	REPRESENTATION   = 94
+	SOCIETY          = 95
+	HYGIENE          = 96
+	RECREATION       = 97
 	BLACKDEATH       = 98
 	FIRE             = 99
 
@@ -480,7 +478,7 @@ class TIER:
 
 	LOWEST = SAILORS
 	HIGHEST = ARISTOCRATS
-	CURRENT_MAX = CITIZENS
+	CURRENT_MAX = ARISTOCRATS
 
 class SETTLER:
 	TAX_SETTINGS_MIN = 0.5

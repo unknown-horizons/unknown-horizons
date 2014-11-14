@@ -60,13 +60,13 @@ tab3:
 -
   - _ Workshops
   - BUILDINGS.WEAVER
-#  - BUILDINGS.BLENDER
+  - BUILDINGS.BLENDER
 -
   - _ Workshops
   - BUILDINGS.DISTILLERY
   - BUILDINGS.TOBACCONIST
   - BUILDINGS.WINERY
-#  - BUILDINGS.PASTRY_SHOP
+  - BUILDINGS.PASTRY_SHOP
 
 
 
@@ -100,7 +100,6 @@ tab5:
 -
   - _ Military Service
   - BUILDINGS.BOAT_BUILDER
-#  - # empty
   - BUILDINGS.BARRACKS
 
 #tab6:
