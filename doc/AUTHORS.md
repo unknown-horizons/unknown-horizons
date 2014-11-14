@@ -43,6 +43,7 @@
 * dauerflucher (Andreas Lis)
 * egore (Christoph Brill)
 * inken
+* janexx (Jana Weigel)
 * kaschte (Fabian Riedel)
 * lmg
 * Manthus (Matthias Dittrich)

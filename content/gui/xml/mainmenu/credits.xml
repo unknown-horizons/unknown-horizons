@@ -61,10 +61,12 @@ afterwards run ./development/generate_credits.py to refresh this file.
 		</VBox>
 		<VBox> <Label text="Graphics Artists" name="headline" />
 			<VBox name="box">
+				<Label text="Clearskies (Anthony Nguyen)" />
 				<Label text="Daniel Stephens" />
 				<Label text="dauerflucher (Andreas Lis)" />
 				<Label text="egore (Christoph Brill)" />
 				<Label text="inken" />
+				<Label text="janexx (Jana Weigel)" />
 				<Label text="kaschte (Fabian Riedel)" />
 				<Label text="lmg" />
 				<Label text="Manthus (Matthias Dittrich)" />
