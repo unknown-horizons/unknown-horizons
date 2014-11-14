@@ -7,37 +7,36 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2012-03-17 14:08+0200\n"
-"Last-Translator: Mihkel <RM87@hot.ee>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2014-11-14 15:28+0200\n"
+"Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/uh/tutorial/et/>"
+"\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
 msgstr "Õpetus"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
 "Õpetus:\n"
-"Ehita oma esimene koloonia ja õpi kuidas mängida!\n"
+"Ehita oma esimene koloonia ja õpi kuidas mängida!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
 msgstr ""
 "Ehita rannikule harukontor nii et see oleks lihtsalt ligipääsetav teistele "
-"laevadele ja vaba kauplejale."
+"laevadele nagu Vaba Kaupleja."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -199,14 +198,11 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
-msgstr ""
-"\n"
-"ÜLESANNE: Ehita puuraidur metsasele alale ja ühenda see teega."
+msgstr "Ülesanne: Ehita metsasele alale saeveski ja ühenda see teega."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -322,14 +318,11 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a main square."
 msgid "Task: Build a main square."
-msgstr ""
-"\n"
-"ÜLESANNE: Ehita peaväljak."
+msgstr "Ülesanne: Ehita peaväljak."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -399,7 +392,6 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a tent and connect it to the main square. Tents dont need to "
@@ -408,8 +400,7 @@ msgid ""
 "Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
-"\n"
-"ÜLESANNE: Ehita telk ja ühenda see peaväljakuga. Telgid ei pea olema "
+"Ülesanne: Ehita telk ja ühenda see peaväljakuga. Telgid ei pea olema "
 "ühendatud ühegi kompaniiga."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -438,12 +429,10 @@ msgstr ""
 "* ressursse mida nad nõuavad."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
-"Kui nende nõudmised on täidetud, heaolu ja seega ka sinu maksutulu "
-"suurenevad."
+"Kui nende nõudmised on täidetud, suurenevad nii heaolu kui ka maksutulu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -692,9 +681,8 @@ msgid ""
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 msgid "NEW TASK: NEXT TIER"
-msgstr "ÜLESANNE: ÕPI KAUPLEMA"
+msgstr "UUS ÜLESANNE: JÄRGMINE TASE"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -830,14 +818,11 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a main square."
 msgid "Task: Build a farm."
-msgstr ""
-"\n"
-"ÜLESANNE: Ehita peaväljak."
+msgstr "ÜLESANNE: Ehita farm."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build at least one pasture and add potato fields if you like."
@@ -914,9 +899,8 @@ msgid "Build a storage tent (tier I tab) where it makes sense."
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 msgid "NEW TASK: BUILD STORAGE"
-msgstr "ÜLESANNE: EHITA FARM"
+msgstr "UUS ÜLESANNE: EHITA LADU"
 
 #. This is the text body of a logbook page.
 msgid "Did you watch your lumberjack recently?"
@@ -990,9 +974,8 @@ msgid "Build a weaver that can somehow reach the wool of your farm."
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr "ÜLESANNE: EHITA FARM"
+msgstr "UUS ÜLESANNE: EHITA KETRUSVABRIK"
 
 #. This is the text body of a logbook page.
 msgid ""
