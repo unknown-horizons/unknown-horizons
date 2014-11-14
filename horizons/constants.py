@@ -171,7 +171,7 @@ class BUILDINGS:
 	ALVEARIES        = 62
 	PASTRY_SHOP      = 63
 
-	VINTNER          = 65
+	WINERY           = 65
 
 	WEAPONSMITH      = 66
 

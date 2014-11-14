@@ -1,5 +1,5 @@
-id: BUILDINGS.VINTNER
-name: _ Vintner
+id: BUILDINGS.WINERY
+name: _ Winery
 baseclass: production.ProductionBuilding
 radius: 8
 cost: 20
