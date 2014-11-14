@@ -50,7 +50,7 @@ class BuildingClass(IngameType):
 
 		self.settler_level = yaml_data['tier']
 		self.tooltip_text = self._strip_translation_marks(yaml_data['tooltip_text'])
-		self.size = (int(yaml_data['size_x']), int(yaml_data['size_y']))
+		self.size = (int(yaml_data['size_x']) or 2, int(yaml_data['size_y']) or 2)
 		self.width = self.size[0]
 		self.height = self.size[1]
 		self.inhabitants = int(yaml_data['inhabitants'])

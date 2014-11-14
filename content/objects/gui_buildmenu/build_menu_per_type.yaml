@@ -1,3 +1,4 @@
+#ToDo: this file must be synced with: build_menu_per_tier.yaml
 tab1:
 - icon: icons/tabwidget/buildmenu/class/residential
 - headline: _ Settlement

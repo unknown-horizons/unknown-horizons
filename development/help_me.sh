@@ -15,4 +15,4 @@ $q "SELECT rowid FROM settlement" | while read settlement_id; do
 	$q "INSERT INTO storage (object, resource, amount) VALUES(1, 1, 50000)"
 done
 
-$q "UPDATE player set settler_level = 3"
+$q "UPDATE player set settler_level = 5"

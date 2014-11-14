@@ -20,8 +20,10 @@
 # ###################################################
 
 import horizons.globals
+
 from horizons.command.building import Build
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES
 from horizons.entities import Entities
 from horizons.ext.enum import Enum
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -171,10 +173,16 @@ class BuildTab(TabInterface):
 			# Check whether to disable build menu icon (not enough res available).
 			if enough_res:
 				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
-				button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
+				try:
+					button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
+				except RuntimeError:
+					button.path = "icons/buildmenu/{id:03d}".format(id=2)
 			else:
 				icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
-				button.path = "icons/buildmenu/greyscale/{id:03d}".format(id=building_id)
+				try:
+					button.path = "icons/buildmenu/greyscale/{id:03d}".format(id=building_id)
+				except RuntimeError:
+					button.path = "icons/buildmenu/greyscale/{id:03d}".format(id=2)
 
 			button.capture(Callback(self.build_callback, building_id))
 

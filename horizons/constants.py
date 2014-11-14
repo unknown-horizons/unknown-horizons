@@ -233,6 +233,11 @@ class BUILDINGS:
 
 	STORE            = 88
 
+	TEA_PLANTATION   = 89
+	BRINE_DEPOSIT    = 90
+	GOLD_DEPOSIT     = 91
+	GEM_DEPOSIT      = 92
+
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
 	TRANSPARENCY_VALUE = 180
@@ -306,9 +311,9 @@ class RES:
 	SPICE_PLANTS     = 45
 	SPICES           = 46
 	CONDIMENTS       = 47
-	MARBLE_DEPOSIT   = GOLD # 48
-	MARBLE_TOPS      = GOLD # 49
-	COAL_DEPOSIT     = GOLD # 50
+	MARBLE_DEPOSIT   = 48
+	MARBLE_TOPS      = 49
+	COAL_DEPOSIT     = 50
 	STONE_DEPOSIT    = 51
 	STONE_TOPS       = 52
 	COCOA_BEANS      = 53
@@ -319,6 +324,7 @@ class RES:
 	GRAPES           = 58
 	ALVEARIES        = 59
 	HONEYCOMBS       = 60
+<<<<<<< HEAD
 	GOLD_DEPOSIT     = GOLD # 61
 	GOLD_ORE         = GOLD # 62
 	GOLD_INGOTS      = GOLD # 63
@@ -356,6 +362,46 @@ class RES:
 
 	HYGIENE          = GOLD # 96
 	RECREATION       = GOLD # 97
+=======
+	GOLD_DEPOSIT     = 61
+	GOLD_ORE         = 62
+	GOLD_INGOTS      = 63
+	GEM_DEPOSIT      = 64
+	ROUGH_GEMS       = 65
+	GEMS             = 66
+	COFFEE_PLANTS    = 67
+	COFFEE_BEANS     = 68
+	COFFEE           = 69
+	TEA_PLANTS       = 70
+	TEA_LEAVES       = 71
+	TEA              = 72
+	FLOWER_MEADOWS   = 73
+	BLOSSOMS         = 74
+	BRINE            = 75
+	BRINE_DEPOSIT    = 76
+	WHALES           = 77
+	AMBERGRIS        = 78
+	LAMP_OIL         = 79
+	COTTON_PLANTS    = 80
+	COTTON           = 81
+	INDIGO_PLANTS    = 82
+	INDIGO           = 83
+	GARMENTS         = 84
+	PERFUME          = 85
+	JEWELRY          = 86
+	HOP_PLANTS       = 87
+	HOPS             = 88
+	# 89
+	# 90
+	# 91
+	# 92-99 reserved for services
+#	FAITH_2          = 92
+#	EDUCATION_2      = 93
+	REPRESENTATION   = 94
+	SOCIETY          = 95
+	HYGIENE          = 96
+	RECREATION       = 97
+>>>>>>> b955f67... Unleash content to the world
 	BLACKDEATH       = 98
 	FIRE             = 99
 
@@ -517,7 +563,11 @@ class TIER:
 
 	LOWEST = SAILORS
 	HIGHEST = ARISTOCRATS
+<<<<<<< HEAD
 	CURRENT_MAX = MERCHANTS
+=======
+	CURRENT_MAX = ARISTOCRATS
+>>>>>>> b955f67... Unleash content to the world
 
 class SETTLER:
 	TAX_SETTINGS_MIN = 0.5
