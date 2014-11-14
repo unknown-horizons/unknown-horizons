@@ -406,13 +406,6 @@ object_translations = {
 		"tooltip_text"                : _("Provides education."),
 		},
 
-	"content/objects/buildings/vintner.yaml" : {
-		# name of buildings:vintner
-		"name"                        : _("Vintner"),
-		# tooltip_text of buildings:vintner
-		"tooltip_text"                : _("Produces wine out of grapes."),
-		},
-
 	"content/objects/buildings/warehouse.yaml" : {
 		# name of buildings:warehouse
 		"name"                        : _("Warehouse"),
@@ -437,6 +430,13 @@ object_translations = {
 		"name"                        : _("Windmill"),
 		# tooltip_text of buildings:windmill
 		"tooltip_text"                : _("Grinds corn into flour."),
+		},
+
+	"content/objects/buildings/winery.yaml" : {
+		# name of buildings:winery
+		"name"                        : _("Winery"),
+		# tooltip_text of buildings:winery
+		"tooltip_text"                : _("Produces wine out of grapes."),
 		},
 
 	"content/objects/buildings/woodentower.yaml" : {
