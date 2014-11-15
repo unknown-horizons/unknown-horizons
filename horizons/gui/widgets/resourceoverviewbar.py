@@ -392,7 +392,8 @@ class ResourceOverviewBar(object):
 		"""Return list of resources to display now"""
 		if self.construction_mode:
 			tier = self.session.world.player.settler_level
-			res_list = self.__class__.CONSTRUCTION_RESOURCES[tier]
+			res_list = self.__class__.CONSTRUCTION_RESOURCES.get(tier,
+						self.__class__.CONSTRUCTION_RESOURCES[TIER.SAILORS])
 			# also add additional res that might be needed
 			res_list += [ res for res in self._last_build_costs if
 			              res not in res_list and res != RES.GOLD ]
