@@ -194,11 +194,7 @@ class ProductionOverviewTab(OverviewTab):
 			# Place a connector image (the | in above sketch) that vertically connects
 			# the input resource arrows. We need those if the production line has more
 			# than three input resources. Connectors are placed in the inner loop parts.
-			#place_connectors = (2 * (res+1)) < (amount // 2)
-			#place_connectors = amount > 3 and res > 0 and res < 9
-			#place_connectors = (amount > 3 and res == 0) or (amount > 5 and res == 1)
 			place_connectors = amount > (3 + 2 * res)
-			amount - 2*(res+1) > 1
 			if place_connectors:
 				# the connector downwards connects top_arrows
 				if out:
