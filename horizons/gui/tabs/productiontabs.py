@@ -143,14 +143,19 @@ class ProductionOverviewTab(OverviewTab):
 		"""
 		input_amount = len(production.get_consumed_resources())
 		output_amount = len(production.get_produced_resources())
-		# Center input and output of the production line.
-		center_y_in = (self.ICON_HEIGHT // 2) * max(0, output_amount - 1)
-		center_y_out = (self.ICON_HEIGHT // 2) * max(0, input_amount - 1)
-		center_y = max(center_y_in, center_y_out)
-		input_container = parent_container.findChild(name='input_container')
-		output_container = parent_container.findChild(name='output_container')
-		input_container.position = (input_container.position[0], center_y_in)
-		output_container.position = (output_container.position[0], center_y_out)
+		# Center of production line arrows (where to place toggle icon).
+		height_diff_y = max(1, output_amount, input_amount) - 1
+		center_y = (self.ICON_HEIGHT // 2) * height_diff_y
+		# Center input and output boxes of the production line if necessary.
+		if input_amount != output_amount:
+			height_diff_in = max(0, output_amount - max(1, input_amount))
+			height_diff_out = max(0, input_amount - max(1, output_amount))
+			center_y_in = (self.ICON_HEIGHT // 2) * height_diff_in
+			center_y_out = (self.ICON_HEIGHT // 2) * height_diff_out
+			input_container = parent_container.findChild(name='input_container')
+			output_container = parent_container.findChild(name='output_container')
+			input_container.position = (input_container.position[0], center_y_in)
+			output_container.position = (output_container.position[0], center_y_out)
 		# Draw and combine arrows for input and output.
 		if input_amount > 0:
 			self._draw_pretty_arrows(parent_container, input_amount, x=58, y=center_y, out=False)
