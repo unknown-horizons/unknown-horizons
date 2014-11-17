@@ -288,8 +288,8 @@ class Collector(Unit):
 		inventory = self.get_home_inventory()
 
 		# check if there are resources left to pickup
-		home_inventory_free_space = inventory.get_limit(res) - \
-		                        (total_registered_amount_consumer + inventory[res])
+		home_inventory_free_space = inventory.get_free_space_for(res) \
+		                            - total_registered_amount_consumer
 		if home_inventory_free_space <= 0:
 			#self.log.debug("nojob: no home inventory space")
 			return None
