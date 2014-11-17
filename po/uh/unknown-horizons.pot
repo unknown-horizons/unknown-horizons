@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons a99d500\n"
+"Project-Id-Version: Unknown Horizons be6d4d2\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2014-08-31 20:48+0200\n"
+"POT-Creation-Date: 2014-11-14 01:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -661,7 +661,7 @@ msgstr ""
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
-#: horizons/gui/widgets/routeconfig.py:103
+#: horizons/gui/widgets/routeconfig.py:107
 msgid "Start route"
 msgstr ""
 
@@ -795,7 +795,7 @@ msgstr ""
 msgid "Flee"
 msgstr ""
 
-#: content/gui/xml/mainmenu/credits.xml:550
+#: content/gui/xml/mainmenu/credits.xml:561
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:55
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
@@ -2337,31 +2337,31 @@ msgstr ""
 msgid "Sell income"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:107
+#: horizons/gui/widgets/routeconfig.py:111
 msgid "Stop route"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:114
+#: horizons/gui/widgets/routeconfig.py:118
 msgid "Need at least two settlements"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:115
+#: horizons/gui/widgets/routeconfig.py:119
 msgid "You need at least two different settlements in your route."
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:144
+#: horizons/gui/widgets/routeconfig.py:148
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:183
+#: horizons/gui/widgets/routeconfig.py:187
 msgid "Loading into ship"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:190
+#: horizons/gui/widgets/routeconfig.py:194
 msgid "Unloading from ship"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:376
+#: horizons/gui/widgets/routeconfig.py:380
 msgid "You are not allowed to trade with this player"
 msgstr ""
 
@@ -2905,49 +2905,49 @@ msgstr ""
 msgid "Provides education."
 msgstr ""
 
-#. name of buildings:vintner
-#: horizons/i18n/objecttranslations.py:411
-msgid "Vintner"
-msgstr ""
-
-#. tooltip_text of buildings:vintner
-#: horizons/i18n/objecttranslations.py:413
-msgid "Produces wine out of grapes."
-msgstr ""
-
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:418
+#: horizons/i18n/objecttranslations.py:411
 msgid "Warehouse"
 msgstr ""
 
 #. name of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py:416
 msgid "Weaponsmith"
 msgstr ""
 
 #. tooltip_text of buildings:weaponsmith
-#: horizons/i18n/objecttranslations.py:425
+#: horizons/i18n/objecttranslations.py:418
 msgid "Produces weapons out of iron."
 msgstr ""
 
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:430
+#: horizons/i18n/objecttranslations.py:423
 msgid "Weaver's Hut"
 msgstr ""
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:432
+#: horizons/i18n/objecttranslations.py:425
 msgid "Turns lamb wool into cloth."
 msgstr ""
 
 #. name of buildings:windmill
-#: horizons/i18n/objecttranslations.py:437
+#: horizons/i18n/objecttranslations.py:430
 msgid "Windmill"
 msgstr ""
 
 #. tooltip_text of buildings:windmill
-#: horizons/i18n/objecttranslations.py:439
+#: horizons/i18n/objecttranslations.py:432
 msgid "Grinds corn into flour."
+msgstr ""
+
+#. name of buildings:winery
+#: horizons/i18n/objecttranslations.py:437
+msgid "Winery"
+msgstr ""
+
+#. tooltip_text of buildings:winery
+#: horizons/i18n/objecttranslations.py:439
+msgid "Produces wine out of grapes."
 msgstr ""
 
 #. name of buildings:woodentower
@@ -3079,31 +3079,31 @@ msgstr ""
 msgid "Agriculture"
 msgstr ""
 
-#: horizons/main.py:354
+#: horizons/main.py:382
 msgid "Failed to start/load the game"
 msgstr ""
 
-#: horizons/main.py:355
+#: horizons/main.py:383
 msgid "The game you selected could not be started."
 msgstr ""
 
-#: horizons/main.py:356
+#: horizons/main.py:384
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 
-#: horizons/main.py:475
+#: horizons/main.py:503
 msgid "No quicksaves found"
 msgstr ""
 
-#: horizons/main.py:476
+#: horizons/main.py:504
 msgid "You need to quicksave before you can quickload."
 msgstr ""
 
-#: horizons/main.py:606
+#: horizons/main.py:634
 msgid "Logging enabled"
 msgstr ""
 
-#: horizons/main.py:607
+#: horizons/main.py:635
 #, python-brace-format
 msgid "Logs are written to {directory}."
 msgstr ""
@@ -3148,15 +3148,15 @@ msgstr ""
 msgid "Not Ready"
 msgstr ""
 
-#: horizons/scenario/actions.py:95
+#: horizons/scenario/actions.py:93
 msgid "You have won!"
 msgstr ""
 
-#: horizons/scenario/actions.py:96
+#: horizons/scenario/actions.py:94
 msgid "You have completed this scenario."
 msgstr ""
 
-#: horizons/scenario/actions.py:97
+#: horizons/scenario/actions.py:95
 msgid "Do you want to continue playing?"
 msgstr ""
 

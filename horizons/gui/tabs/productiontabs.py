@@ -54,6 +54,12 @@ class ProductionOverviewTab(OverviewTab):
 	ARROW_BOTTOM = "content/gui/icons/templates/production/production_arrow_bottom.png"
 	ARROW_CONNECT_UP = "content/gui/icons/templates/production/production_arrow_connect_up.png"
 	ARROW_CONNECT_DOWN = "content/gui/icons/templates/production/production_arrow_connect_down.png"
+	ARROWHEAD_TOP = "content/gui/icons/templates/production/production_arrowhead_top.png"
+	ARROWHEAD_MID = "content/gui/icons/templates/production/production_arrow_head.png"
+	ARROWHEAD_BOTTOM = "content/gui/icons/templates/production/production_arrowhead_bottom.png"
+	ARROWHEAD_CONNECT_UP = "content/gui/icons/templates/production/production_arrowhead_connect_up.png"
+	ARROWHEAD_CONNECT_DOWN = "content/gui/icons/templates/production/production_arrowhead_connect_down.png"
+	ICON_HEIGHT = ImageFillStatusButton.CELL_SIZE[1] + ImageFillStatusButton.PADDING
 
 	def __init__(self, instance):
 		self._animations = []
@@ -89,10 +95,11 @@ class ProductionOverviewTab(OverviewTab):
 			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
 			container = gui.findChild(name="production_line_container")
-			self._set_resource_amounts(container, production)
 
 			centered_container = container.findChild(name='centered_production_icons')
-			self._connect_input_res(centered_container, container, production)
+			center_y = self._center_production_line(container, production)
+			centered_container.position = (centered_container.position[0], center_y)
+			self._set_resource_amounts(container, production)
 
 			if production.is_paused():
 				centered_container.removeChild(centered_container.findChild(name="toggle_active_active"))
@@ -129,62 +136,94 @@ class ProductionOverviewTab(OverviewTab):
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
 
-	def _connect_input_res(self, centered_container, container, production):
-		"""Draws incoming arrows for production line container."""
+	def _center_production_line(self, parent_container, production):
+		"""Centers in/out production line display for amount of resources each.
+
+		@return: y value to center other gui parts (toggle icon etc.) around vertically.
+		"""
 		input_amount = len(production.get_consumed_resources())
-		if input_amount == 0:
-			# Do not draw input arrows if there is no input
-			return
+		output_amount = len(production.get_produced_resources())
+		# Center of production line arrows (where to place toggle icon).
+		height_diff_y = max(1, output_amount, input_amount) - 1
+		center_y = (self.ICON_HEIGHT // 2) * height_diff_y
+		# Center input and output boxes of the production line if necessary.
+		if input_amount != output_amount:
+			height_diff_in = max(0, output_amount - max(1, input_amount))
+			height_diff_out = max(0, input_amount - max(1, output_amount))
+			center_y_in = (self.ICON_HEIGHT // 2) * height_diff_in
+			center_y_out = (self.ICON_HEIGHT // 2) * height_diff_out
+			input_container = parent_container.findChild(name='input_container')
+			output_container = parent_container.findChild(name='output_container')
+			input_container.position = (input_container.position[0], center_y_in)
+			output_container.position = (output_container.position[0], center_y_out)
+		# Draw and combine arrows for input and output.
+		if input_amount > 0:
+			self._draw_pretty_arrows(parent_container, input_amount, x=58, y=center_y, out=False)
+		if output_amount > 0:
+			self._draw_pretty_arrows(parent_container, output_amount, x=96, y=center_y, out=True)
+		return center_y
 
-		# center the production line
-		icon_height = ImageFillStatusButton.CELL_SIZE[1] + ImageFillStatusButton.PADDING
-		center_y = (icon_height // 2) * (input_amount - 1)
-		centered_container.position = (0, center_y)
-
-		if input_amount % 2:
+	def _draw_pretty_arrows(self, parent_container, amount, x=0, y=0, out=False):
+		"""Draws incoming or outgoing arrows for production line container."""
+		if amount % 2:
 			# Add center arrow for 1, 3, 5, ... but not 2, 4, ...
-			mid_arrow = Icon(image=self.__class__.ARROW_MID)
-			mid_arrow.position = (58, 17 + center_y)
-			container.insertChild(mid_arrow, 0)
+			if out:
+				mid_arrow = Icon(image=self.__class__.ARROWHEAD_MID)
+			else:
+				mid_arrow = Icon(image=self.__class__.ARROW_MID)
+			mid_arrow.position = (x, 17 + y)
+			parent_container.insertChild(mid_arrow, 0)
 
-		for res in xrange(input_amount // 2):
+		for res in xrange(amount // 2):
 			# --\                      <= placed for res = 1
 			# --\| <= place connector  <= placed for res = 0
 			# ---O-->                  <= placed above (mid_arrow)
 			# --/| <= place connector  <= placed for res = 0
 			# --/                      <= placed for res = 1
-			offset = -17 + (icon_height // 2) * (2 * res + (input_amount % 2) + 1)
+			offset = -17 + (self.ICON_HEIGHT // 2) * (2 * res + (amount % 2) + 1)
 
-			top_arrow = Icon(image=self.__class__.ARROW_TOP)
-			top_arrow.position = (58, center_y - offset)
-			container.insertChild(top_arrow, 0)
+			if out:
+				top_arrow = Icon(image=self.__class__.ARROWHEAD_TOP)
+			else:
+				top_arrow = Icon(image=self.__class__.ARROW_TOP)
+			top_arrow.position = (x, y - offset)
+			parent_container.insertChild(top_arrow, 0)
 
-			bottom_arrow = Icon(image=self.__class__.ARROW_BOTTOM)
-			bottom_arrow.position = (58, center_y + offset)
-			container.insertChild(bottom_arrow, 0)
+			if out:
+				bottom_arrow = Icon(image=self.__class__.ARROWHEAD_BOTTOM)
+			else:
+				bottom_arrow = Icon(image=self.__class__.ARROW_BOTTOM)
+			bottom_arrow.position = (x, y + offset)
+			parent_container.insertChild(bottom_arrow, 0)
 
 			# Place a connector image (the | in above sketch) that vertically connects
 			# the input resource arrows. We need those if the production line has more
 			# than three input resources. Connectors are placed in the inner loop parts.
-			place_connectors = (1 + 2 * res) < (input_amount // 2)
+			place_connectors = amount > (3 + 2 * res)
 			if place_connectors:
 				# the connector downwards connects top_arrows
-				down_connector = Icon(image=self.__class__.ARROW_CONNECT_DOWN)
-				down_connector.position = (98, center_y - offset)
-				container.insertChild(down_connector, 0)
+				if out:
+					down_connector = Icon(image=self.__class__.ARROWHEAD_CONNECT_DOWN)
+				else:
+					down_connector = Icon(image=self.__class__.ARROW_CONNECT_DOWN)
+				down_connector.position = (98, y - offset)
+				parent_container.insertChild(down_connector, 0)
 				# the connector upwards connects up_arrows
-				up_connector = Icon(image=self.__class__.ARROW_CONNECT_UP)
-				up_connector.position = (98, center_y + offset)
-				container.insertChild(up_connector, 0)
+				if out:
+					up_connector = Icon(image=self.__class__.ARROWHEAD_CONNECT_UP)
+				else:
+					up_connector = Icon(image=self.__class__.ARROW_CONNECT_UP)
+				up_connector.position = (98, y + offset)
+				parent_container.insertChild(up_connector, 0)
 
 	def _set_resource_amounts(self, container, production):
 		for res, amount in production.get_consumed_resources().iteritems():
 			# consumed resources are negative!
-			label = Label(text=unicode(-amount), margins=(0, 15))
+			label = Label(text=unicode(-amount), margins=(0, 16))
 			container.findChild(name='input_box').addChild(label)
 
 		for res, amount in production.get_produced_resources().iteritems():
-			label = Label(text=unicode(amount).rjust(2), margins=(0, 15))
+			label = Label(text=unicode(amount).rjust(2), margins=(0, 16))
 			container.findChild(name='output_box').addChild(label)
 
 	def destruct_building(self):

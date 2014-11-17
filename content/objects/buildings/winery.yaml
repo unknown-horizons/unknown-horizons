@@ -1,5 +1,5 @@
-id: BUILDINGS.VINTNER
-name: _ Vintner
+id: BUILDINGS.WINERY
+name: _ Winery
 baseclass: production.ProductionBuilding
 radius: 8
 cost: 20
@@ -29,5 +29,4 @@ components:
         slot_sizes: {RES.LIQUOR: 6, RES.GRAPES: 8}
 actionsets:
   TIER.CITIZENS:
-    #as_vintner0:
-    as_2x2:
+    as_winery:

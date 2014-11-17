@@ -7,24 +7,23 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-06-03 23:06+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: Estonian <http://hosted.weblate.org/projects/uh/uh/et/>\n"
+"PO-Revision-Date: 2014-11-14 16:31+0200\n"
+"Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons jooksis kokku."
 
 #: run_uh.py:126
-#, fuzzy
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Meil on sellest väga kahju ning me soovime seda viga parandada."
+msgstr "Meil on sellest väga kahju ning me soovime selle vea parandada."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
@@ -135,28 +134,28 @@ msgid "Inhabitants"
 msgstr "Elanikud"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Kiirenda mängu (+)"
+msgstr "Kiirenda mängu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Aeglusta mängu (-)"
+msgstr "Aeglusta mängu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Keera kaarti vastpäeva (,)"
+msgstr "Keera kaarti vastpäeva ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Keera kaarti päripäeva (.)"
+msgstr "Keera kaarti päripäeva ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -167,32 +166,32 @@ msgid "Zoom out"
 msgstr "Vähenda"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy (X)"
 msgid "Destroy ({key})"
-msgstr "Lammuta (X)"
+msgstr "Lammuta ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Captain's log (L)"
 msgid "Captain's log ({key})"
-msgstr "Kapteni logiraamat (L)"
+msgstr "Kapteni logiraamat ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu (B)"
 msgid "Build menu ({key})"
-msgstr "Ehitiste menüü (B)"
+msgstr "Ehitiste menüü ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomaatia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Mängu menüü (Esc)"
+msgstr "Mängu menüü ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -418,7 +417,6 @@ msgid "Resource deposit"
 msgstr "Ressursi lasund"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
-#, fuzzy
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
@@ -434,9 +432,8 @@ msgstr "See sisaldab neid ressursse:"
 #: horizons/gui/modules/ingame.py:160 horizons/gui/tabs/mainsquaretabs.py:76
 #: horizons/gui/tabs/mainsquaretabs.py:117
 #: horizons/gui/widgets/playerssettlements.py:96
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Vajuta oma koloonia nime muutmiseks."
+msgstr "Klõpsa koloonia nime muutmiseks"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -449,9 +446,8 @@ msgid "Residents"
 msgstr "Elanikke"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Vajatavad ressursid:"
+msgstr "Vajalikud ressursid:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
@@ -472,9 +468,8 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:78
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Klõpsa selle laeva nime muutmiseks."
+msgstr "Klõpsa selle laeva nime muutmiseks"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
@@ -564,9 +559,8 @@ msgstr "Jätka tootmist"
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Vali ressursid:"
+msgstr "Vali ressurss:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -619,7 +613,6 @@ msgid "Statistics"
 msgstr "Statistika"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#, fuzzy
 msgid "Players"
 msgstr "Mängijad"
 
@@ -652,25 +645,21 @@ msgstr ""
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Sisesta oma sõnum:"
+msgstr "Sisesta oma sõnum siia"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
-#, fuzzy
 msgid "Return to game"
 msgstr "Tagasi mängu"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
-#, fuzzy
 msgid "Wait at load:"
 msgstr "Oota:"
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
-#, fuzzy
 msgid "Wait at unload:"
 msgstr "Oota:"
 
@@ -860,9 +849,8 @@ msgid "Return"
 msgstr "Tagasi"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "haridus"
+msgstr "Tegevused"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -931,9 +919,8 @@ msgid "Show ship list"
 msgstr "Näita laevade nimekirja"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
-#, fuzzy
 msgid "Toggle Captain's log"
-msgstr "Lahku Kapteni Logist"
+msgstr "Lahku Kapteni logist"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
@@ -972,7 +959,6 @@ msgid "Screenshot"
 msgstr "Ekraanipilt"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Lülita alusvõrk sisse/välja"
 
@@ -999,9 +985,8 @@ msgid "Reset to default"
 msgstr "Taasta vaikeseaded"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Taasta vaikeseaded"
+msgstr "Taasta vaikeklahvid"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1020,9 +1005,8 @@ msgid "Cancel game"
 msgstr "Katkesta mäng"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Laadimine ..."
+msgstr "Laadimine…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1072,15 +1056,13 @@ msgstr "Mängu nimi:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
-#, fuzzy
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "Seda näidatakse teistele mängijatele, "
+msgstr "Seda näidatakse teistele mängijatele, et nad mängu ära tunneksid."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
-#, fuzzy
 msgid "Unnamed Game"
-msgstr " Laadi mäng "
+msgstr "Laadi mäng"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1128,9 +1110,8 @@ msgid "Sets your state to ready (necessary for the game to start)"
 msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
-#, fuzzy
 msgid "New game - Multiplayer"
-msgstr "Loo mäng - Mitmemäng"
+msgstr "Uus mitmekasutaja mäng"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Load game:"
@@ -1161,10 +1142,9 @@ msgid "Create a new game"
 msgstr "Loo uus mäng"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Liitu mänguga"
+msgstr "Liitu mänguga:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1362,10 +1342,9 @@ msgid "Reset to default settings"
 msgstr "Taasta algseaded"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
-msgstr "Salvesta mäng"
+msgstr "Salvesta muudatused"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1488,9 +1467,8 @@ msgid "You can not store this."
 msgstr ""
 
 #: horizons/component/tradepostcomponent.py:202
-#, fuzzy
 msgid "You can not afford to buy this."
-msgstr "Sa ei saa endale seda võimaldada."
+msgstr "Selle ostmiseks sul raha ei ole."
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
@@ -1505,14 +1483,12 @@ msgid "You do not possess this."
 msgstr ""
 
 #: horizons/component/tradepostcomponent.py:244
-#, fuzzy
 msgid "The trade partner can not store more of this."
 msgstr "Kaubanduspartner ei saa seda rohkem talletada."
 
 #: horizons/component/tradepostcomponent.py:248
-#, fuzzy
 msgid "The trade partner can not afford to buy this."
-msgstr "Kaubanduspartner ei saa seda rohkem talletada."
+msgstr "Kaubanduspartneril ei ole selle ostmiseks raha."
 
 #: horizons/component/tradepostcomponent.py:253
 msgid "The trade partner does not buy more of this."
@@ -1527,9 +1503,8 @@ msgid "An error happened during quicksave."
 msgstr ""
 
 #: horizons/editor/session.py:70
-#, fuzzy
 msgid "Your map has not been saved."
-msgstr "Sinu mäng on salvestatud."
+msgstr "Sinu kaarti ei salvestatud."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:66
 #, python-brace-format
@@ -1785,9 +1760,8 @@ msgstr ""
 "{own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:267
-#, fuzzy
 msgid "Password of the game"
-msgstr "Mängu parool:"
+msgstr "Mängu parool"
 
 #: horizons/gui/modules/multiplayermenu.py:268
 msgid "Enter password:"
@@ -1802,19 +1776,17 @@ msgstr "Soovitatav arv mängijaid: {number}"
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:393
 #: horizons/network/networkinterface.py:526
-#, fuzzy
 msgid "Ready"
-msgstr "Valmis:"
+msgstr "Valmis"
 
 #: horizons/gui/modules/multiplayermenu.py:395
 msgid "Not ready"
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Sisesta oma sõnum:"
+msgstr "Sisesta oma sõnum"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -1869,9 +1841,9 @@ msgid "You changed your color"
 msgstr "Sa muutsid oma värvust"
 
 #: horizons/gui/modules/multiplayermenu.py:599
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{player} changed their color"
-msgstr "{player} muutis oma värvust"
+msgstr "{player} vahetas värve"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
@@ -1911,14 +1883,14 @@ msgid "Please enter a valid filename."
 msgstr "Palun sisesta õige faili nimi."
 
 #: horizons/gui/modules/select_savegame.py:149
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Salvestatud mäng nimega '{name}' juba eksisteerib."
+msgstr "Salvestatud mäng nimega '{name}' on juba olemas."
 
 #: horizons/gui/modules/select_savegame.py:151
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "Salvestatud mäng nimega '{name}' juba eksisteerib."
+msgstr "Kaart nimega '{name}' on juba olemas."
 
 #: horizons/gui/modules/select_savegame.py:153
 msgid "Overwrite it?"
