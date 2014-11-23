@@ -140,6 +140,8 @@ def start(_command_line_arguments):
 		from PIL import Image, ImageTk
 		import time
 		window = Tkinter.Tk()
+		# iconify window instead of closing
+		window.protocol("WM_DELETE_WINDOW", window.iconify)
 		window.wm_withdraw()
 		window.attributes("-topmost", 1)
 		window.title("Unknown Horizons")
@@ -157,7 +159,8 @@ def start(_command_line_arguments):
 		time.sleep(1.0)
 		while atlas_loading_thread.is_alive():
 			window.update()
-			window.deiconify()
+			if not window.state() == "iconic":
+				window.deiconify()
 			time.sleep(0.1)
 		window.destroy()
 	except ImportError:
@@ -186,7 +189,7 @@ def start(_command_line_arguments):
 	_modules.gui = Gui()
 	SavegameManager.init()
 	horizons.globals.fife.init_animation_loader(GFX.USE_ATLASES)
-	
+
 	from horizons.entities import Entities
 	Entities.load(horizons.globals.db, load_now=False) # create all references
 
