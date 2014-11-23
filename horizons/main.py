@@ -157,11 +157,11 @@ def start(_command_line_arguments):
 
 		# wait a second to give the thread time to check if a generation is necessary at all
 		time.sleep(1.0)
+		window.deiconify()
 		while atlas_loading_thread.is_alive():
-			window.update()
 			if not window.state() == "iconic":
 				window.attributes("-topmost", 0)
-				window.deiconify()
+				window.update()
 			time.sleep(0.1)
 		window.destroy()
 	except ImportError:
