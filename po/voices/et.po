@@ -8,50 +8,51 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2013-07-27 13:00+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2014-11-23 13:13+0200\n"
+"Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/uh/voices/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
-msgstr ""
+msgstr "Pinguta, et see koloonia areneks järjekindlalt."
 
 #. Founding settlement - Player found settlement"
 msgid "Your inhabitants will certainly feel comfortable on this island."
-msgstr ""
+msgstr "Su elanikud tunnevad end sellel saarel kindlasti mugavalt."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr ""
+msgstr "Nüüdsest peale on see maalapp sinu oma."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
-msgstr ""
+msgstr "See regioon kuulub meie värvusele."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr ""
+msgstr "See maatükk on nüüd meie."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
-msgstr ""
+msgstr "Teine mängija on koloniseerinud saare."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "A player develops a new settlement."
-msgstr ""
+msgstr "Mängija arendab uut kolooniat."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
-msgstr ""
+msgstr "Keegi su kaasmängijatest asutas koloonia."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr ""
+msgstr "Me rivaal on kuuldavasti asutanud koloonia."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
