@@ -160,6 +160,7 @@ def start(_command_line_arguments):
 		while atlas_loading_thread.is_alive():
 			window.update()
 			if not window.state() == "iconic":
+				window.attributes("-topmost", 0)
 				window.deiconify()
 			time.sleep(0.1)
 		window.destroy()
