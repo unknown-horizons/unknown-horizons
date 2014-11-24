@@ -53,7 +53,8 @@ class ScoutingMission(FleetMission):
 		self._state_fleet_callbacks = {
 			self.missionStates.sailing_to_target: Callback(self.go_back),
 			self.missionStates.going_back: Callback(self.report_success, "Ships arrived at the target"),
-			self.missionStates.fleeing_home: Callback(self.report_failure, "Combat was lost, ships fled home successfully"),
+			self.missionStates.fleeing_home: Callback(self.report_failure,
+			"Combat was lost, ships fled home successfully"),
 		}
 
 	def start(self):
@@ -61,12 +62,15 @@ class ScoutingMission(FleetMission):
 
 	def save(self, db):
 		super(ScoutingMission, self).save(db)
-		db("INSERT INTO ai_scouting_mission (rowid, starting_point_x, starting_point_y, target_point_x, target_point_y) VALUES(?, ?, ?, ?, ?)",
-			self.worldid, self.starting_point.x, self.starting_point.y, self.target_point.x, self.target_point.y)
+		db("INSERT INTO ai_scouting_mission (rowid, starting_point_x, starting_point_y,"
+			" target_point_x, target_point_y) VALUES(?, ?, ?, ?, ?)",
+			self.worldid, self.starting_point.x, self.starting_point.y, self.target_point.x,
+			self.target_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
 		super(ScoutingMission, self)._load(db, worldid, success_callback, failure_callback, owner)
-		db_result = db("SELECT target_point_x, target_point_y, starting_point_x, starting_point_y FROM ai_scouting_mission WHERE rowid = ?", worldid)[0]
+		db_result = db("SELECT target_point_x, target_point_y, starting_point_x, starting_point_y"
+			" FROM ai_scouting_mission WHERE rowid = ?", worldid)[0]
 		self.__init(Point(*db_result[:2]), Point(*db_result[2:]))
 
 	def go_back(self):
@@ -85,7 +89,8 @@ class ScoutingMission(FleetMission):
 		"""
 		if self.fleet.size() > 0:
 			try:
-				self.fleet.move(self.starting_point, self._state_fleet_callbacks[self.missionStates.fleeing_home])
+				self.fleet.move(self.starting_point,
+					self._state_fleet_callbacks[self.missionStates.fleeing_home])
 				self.state = self.missionStates.fleeing_home
 			except MoveNotPossible:
 				self.report_failure("Combat was lost, ships couldn't flee home")
@@ -96,7 +101,8 @@ class ScoutingMission(FleetMission):
 		if not self.target_point:
 			self.target_point = self.owner.session.world.get_random_possible_ship_position()
 		try:
-			self.fleet.move(self.target_point, self._state_fleet_callbacks[self.missionStates.sailing_to_target])
+			self.fleet.move(self.target_point,
+				self._state_fleet_callbacks[self.missionStates.sailing_to_target])
 			self.state = self.missionStates.sailing_to_target
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when moving to target")

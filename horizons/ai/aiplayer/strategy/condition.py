@@ -26,8 +26,9 @@ from horizons.ai.aiplayer.behavior.profile import BehaviorManager
 class Condition(object):
 	"""
 	Condition's goal is to aid StrategyManager in figuring out what kind of strategy/mission
-	is applicable to given state of world, e.g. instead of having a really long method that decides what kind of reasoning
-	should be done at given point, we have a collection of Conditions (with priorities) that are easier to handle.
+	is applicable to given state of world, e.g. instead of having a really long method
+	that decides what kind of reasoning should be done at given point,
+	we have a collection of Conditions (with priorities) that are easier to handle.
 	"""
 
 	log = logging.getLogger("ai.aiplayer.combat.condition")
@@ -75,17 +76,20 @@ class ConditionSharingSettlement(Condition):
 
 		# checks whether player share the same island
 		if my_islands & enemy_islands:
-			return {'player': other_player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
+			return {'player': other_player, 'certainty': self.default_certainty,
+				'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
 		else:
 			return None
 
 	def get_identifier(self, **environment):
-		return super(ConditionSharingSettlement, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super(ConditionSharingSettlement, self).get_identifier(**environment) \
+			+ str(environment['player'].worldid)
 
 
 class ConditionHostile(Condition):
 	"""
-	States whether there is a hostile player that can be attacked (i.e. has ships that can be destroyed)
+	States whether there is a hostile player that can be attacked
+	(i.e. has ships that can be destroyed)
 	"""
 	def __init__(self, owner):
 		super(ConditionHostile, self).__init__(owner)
@@ -98,12 +102,14 @@ class ConditionHostile(Condition):
 
 		hostile_ships = self.unit_manager.get_player_ships(player)
 		if hostile_ships:
-			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'hostile_player', 'type': BehaviorManager.strategy_types.offensive}
+			return {'player': player, 'certainty': self.default_certainty,
+				'strategy_name': 'hostile_player', 'type': BehaviorManager.strategy_types.offensive}
 		else:
 			return None
 
 	def get_identifier(self, **environment):
-		return super(ConditionHostile, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super(ConditionHostile, self).get_identifier(**environment) \
+			+ str(environment['player'].worldid)
 
 
 class ConditionNeutral(Condition):
@@ -117,12 +123,14 @@ class ConditionNeutral(Condition):
 	def check(self, **environment):
 		player = environment['player']
 		if self.session.world.diplomacy.are_neutral(self.owner, player):
-			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'neutral_player', 'type': BehaviorManager.strategy_types.diplomatic}
+			return {'player': player, 'certainty': self.default_certainty,
+				'strategy_name': 'neutral_player', 'type': BehaviorManager.strategy_types.diplomatic}
 		else:
 			return None
 
 	def get_identifier(self, **environment):
-		return super(ConditionNeutral, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super(ConditionNeutral, self).get_identifier(**environment) \
+			+ str(environment['player'].worldid)
 
 
 class ConditionAllied(Condition):
@@ -133,13 +141,14 @@ class ConditionAllied(Condition):
 	def check(self, **environment):
 		player = environment['player']
 		if self.session.world.diplomacy.are_allies(self.owner, player):
-			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'allied_player', 'type': BehaviorManager.strategy_types.diplomatic}
+			return {'player': player, 'certainty': self.default_certainty,
+				'strategy_name': 'allied_player', 'type': BehaviorManager.strategy_types.diplomatic}
 		else:
 			return None
 
-
 	def get_identifier(self, **environment):
-		return super(ConditionAllied, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super(ConditionAllied, self).get_identifier(**environment) \
+			+ str(environment['player'].worldid)
 
 
 class ConditionDebug(Condition):
@@ -149,11 +158,12 @@ class ConditionDebug(Condition):
 
 	def check(self, **environment):
 		player = environment['player']
-		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'debug', 'type': BehaviorManager.strategy_types.diplomatic}
-		#return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
+		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'debug',
+			'type': BehaviorManager.strategy_types.diplomatic}
 
 	def get_identifier(self, **environment):
-		return super(ConditionDebug, self).get_identifier(**environment) + str(environment['player'].worldid)
+		return super(ConditionDebug, self).get_identifier(**environment) \
+			+ str(environment['player'].worldid)
 
 
 class ConditionPirateRoutinePossible(Condition):
@@ -165,7 +175,8 @@ class ConditionPirateRoutinePossible(Condition):
 		self.lockable = False
 
 	def check(self, **environment):
-		return {'certainty': self.default_certainty, 'strategy_name': 'pirate_routine', 'type': BehaviorManager.strategy_types.idle}
+		return {'certainty': self.default_certainty, 'strategy_name': 'pirate_routine',
+			'type': BehaviorManager.strategy_types.idle}
 
 	def get_identifier(self, **environment):
 		return super(ConditionPirateRoutinePossible, self).get_identifier(**environment)

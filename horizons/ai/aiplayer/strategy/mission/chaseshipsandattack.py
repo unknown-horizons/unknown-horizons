@@ -29,6 +29,7 @@ from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.movingobject import MoveNotPossible
 
+
 class ChaseShipsAndAttack(FleetMission):
 	"""
 	This is one of the basic attack missions.
@@ -57,18 +58,21 @@ class ChaseShipsAndAttack(FleetMission):
 
 		self._state_fleet_callbacks = {
 			self.missionStates.sailing_to_target: Callback(self.was_reached),
-			self.missionStates.fleeing_home: Callback(self.report_failure, "Combat was lost, ships fled home successfully"),
+			self.missionStates.fleeing_home: Callback(self.report_failure,
+			"Combat was lost, ships fled home successfully"),
 		}
 
 		ShipDestroyed.subscribe(self._on_ship_destroyed)
 
 	def save(self, db):
 		super(ChaseShipsAndAttack, self).save(db)
-		db("INSERT INTO ai_mission_chase_ships_and_attack (rowid, target_ship_id) VALUES(?, ?)", self.worldid, self.target_ship.worldid)
+		db("INSERT INTO ai_mission_chase_ships_and_attack (rowid, target_ship_id) VALUES(?, ?)",
+			self.worldid, self.target_ship.worldid)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
 		super(ChaseShipsAndAttack, self)._load(db, worldid, success_callback, failure_callback, owner)
-		(target_ship_id,) = db("SELECT target_ship_id FROM ai_mission_chase_ships_and_attack WHERE rowid = ?", worldid)[0]
+		(target_ship_id,) = db("SELECT target_ship_id FROM ai_mission_chase_ships_and_attack"
+			" WHERE rowid = ?", worldid)[0]
 
 		target_ship = WorldObject.get_object_by_id(target_ship_id)
 		self.__init(target_ship)
@@ -77,17 +81,20 @@ class ChaseShipsAndAttack(FleetMission):
 		self.sail_to_target()
 
 	def sail_to_target(self):
-		self.log.debug("Player %s, Mission %s, 1/2 set off to ship %s at %s", self.owner.name, self.__class__.__name__,
+		self.log.debug("Player %s, Mission %s, 1/2 set off to ship %s at %s",
+			self.owner.name, self.__class__.__name__,
 			self.target_ship.get_component(NamedComponent).name, self.target_ship.position)
 		try:
-			self.fleet.move(Circle(self.target_ship.position, self.target_range), self._state_fleet_callbacks[self.missionStates.sailing_to_target])
+			self.fleet.move(Circle(self.target_ship.position, self.target_range),
+				self._state_fleet_callbacks[self.missionStates.sailing_to_target])
 			self.state = self.missionStates.sailing_to_target
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when moving to target")
 
 	def was_reached(self):
 		if self.target_ship.in_ship_map:
-			if any((ship.position.distance(self.target_ship.position) <= self.target_range + 1 for ship in self.fleet.get_ships())):
+			if any((ship.position.distance(self.target_ship.
+					position) <= self.target_range + 1 for ship in self.fleet.get_ships())):
 				# target ship reached: execute combat
 				self.state = self.missionStates.in_combat
 				self.in_combat()

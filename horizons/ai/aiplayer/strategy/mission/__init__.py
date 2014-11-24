@@ -51,24 +51,30 @@ class FleetMission(Mission):
 
 	def _setup_state_callbacks(self):
 		"""This function can be overwritten to setup mission specific callbacks"""
-		# combatIntermissions states which function should be called after combat phase was finished (winning or losing).
-		# each combatIntermission entry should provide both, It is the CombatManager that decides which function to call
+		# combatIntermissions states which function should be called after combat phase
+		# was finished (winning or losing).
+		# each combatIntermission entry should provide both, It is the CombatManager that decides
+		# which function to call
 		# Dictionary of type: missionState => (won_function, lost_function)
 		self.combatIntermissions = {}
 
-		# _state_fleet_callbacks states which callback is supposed to be called by the fleet when it reaches the target point
-		# based on given mission state. Used when changing mission (initiating new mission phase) states and loading game (restarting mission from given state)
+		# _state_fleet_callbacks states which callback is supposed to be called by the fleet
+		# when it reaches the target point
+		# based on given mission state. Used when changing mission (initiating new mission phase)
+		# states and loading game (restarting mission from given state)
 		# Dictionary of type: missionState => Callback object
 		self._state_fleet_callbacks = {}
 
 	def _init_fleet(self, ships):
-		self.fleet = self.unit_manager.create_fleet(ships=ships, destroy_callback=Callback(self.cancel, "All ships were destroyed"))
+		self.fleet = self.unit_manager.create_fleet(ships=ships,
+			destroy_callback=Callback(self.cancel, "All ships were destroyed"))
 		for ship in self.fleet.get_ships():
 			self.owner.ships[ship] = self.owner.shipStates.on_a_mission
 
 	def save(self, db):
 		super(FleetMission, self).save(db)
-		db("INSERT INTO ai_fleet_mission (rowid, owner_id, fleet_id, state_id, combat_phase) VALUES(?, ?, ?, ?, ?)", self.worldid,
+		db("INSERT INTO ai_fleet_mission (rowid, owner_id, fleet_id, state_id, combat_phase)"
+			" VALUES(?, ?, ?, ?, ?)", self.worldid,
 			self.owner.worldid, self.fleet.worldid, self.state.index, self.combat_phase)
 
 	@classmethod
@@ -82,7 +88,8 @@ class FleetMission(Mission):
 		super(FleetMission, self).load(db, worldid, success_callback, failure_callback, owner)
 		self.__init()
 
-		fleet_id, state_id, combat_phase = db("SELECT fleet_id, state_id, combat_phase FROM ai_fleet_mission WHERE rowid = ?", worldid)[0]
+		fleet_id, state_id, combat_phase = db("SELECT fleet_id, state_id, combat_phase FROM"
+			" ai_fleet_mission WHERE rowid = ?", worldid)[0]
 
 		self.fleet = WorldObject.get_object_by_id(fleet_id)
 		self.state = self.missionStates[state_id]
@@ -119,24 +126,32 @@ class FleetMission(Mission):
 			self.cancel('Lost all of the ships')
 
 	def pause_mission(self):
-		self.log.debug("Player %s, Mission %s, pausing mission at state %s", self.owner.name, self.__class__.__name__, self.state)
+		self.log.debug("Player %s, Mission %s, pausing mission at state %s",
+			self.owner.name, self.__class__.__name__, self.state)
 		self.combat_phase = True
 		for ship in self.fleet.get_ships():
 			ship.stop()
 
 	# continue / abort methods are called by CombatManager after it handles combat.
-	# CombatManager decides whether the battle was successful (and if the mission should be continued) or unsuccessful (mission should be aborted)
+	# CombatManager decides whether the battle was successful (and if the mission should be continued)
+	# or unsuccessful (mission should be aborted)
 	def continue_mission(self):
-		assert self.combat_phase, "request to continue mission without it being in combat_phase in the first place"
-		assert self.state in self.combatIntermissions, "request to continue mission from not defined state: %s" % self.state
-		self.log.debug("Player %s, Mission %s, continuing mission at state %s", self.owner.name, self.__class__.__name__, self.state)
+		assert self.combat_phase, \
+			"request to continue mission without it being in combat_phase in the first place"
+		assert self.state in self.combatIntermissions, \
+			"request to continue mission from not defined state: %s" % self.state
+		self.log.debug("Player %s, Mission %s, continuing mission at state %s", self.owner.name,
+			self.__class__.__name__, self.state)
 		self.combat_phase = False
 		self.combatIntermissions[self.state][0]()
 
 	def abort_mission(self, msg):
-		assert self.combat_phase, "request to abort mission without it being in combat_phase in the first place"
-		assert self.state in self.combatIntermissions, "request to abort mission from not defined state: %s" % self.state
-		self.log.debug("Player %s, Mission %s, aborting mission at state %s", self.owner.name, self.__class__.__name__, self.state)
+		assert self.combat_phase, \
+			"request to abort mission without it being in combat_phase in the first place"
+		assert self.state in self.combatIntermissions, \
+			"request to abort mission from not defined state: %s" % self.state
+		self.log.debug("Player %s, Mission %s, aborting mission at state %s", self.owner.name,
+			self.__class__.__name__, self.state)
 		self.combat_phase = False
 		self.combatIntermissions[self.state][1]()
 
@@ -145,6 +160,6 @@ class FleetMission(Mission):
 
 	def __str__(self):
 		return super(FleetMission, self).__str__() + \
-		(' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + \
-		('(mission state:%s,' % (self.state if hasattr(self, 'state') else 'unknown state')) + \
-		('combat_phase:%s)' % (self.combat_phase if hasattr(self, 'combat_phase') else 'N/A'))
+			(' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + \
+			('(mission state:%s,' % (self.state if hasattr(self, 'state') else 'unknown state')) + \
+			('combat_phase:%s)' % (self.combat_phase if hasattr(self, 'combat_phase') else 'N/A'))

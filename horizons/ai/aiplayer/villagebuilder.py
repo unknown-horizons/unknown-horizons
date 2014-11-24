@@ -777,7 +777,8 @@ class VillageBuilder(AreaBuilder):
 					possible = False
 					break
 			if not possible:
-				# impossible to build the main square because a part of the area is owned by another player: remove the whole section
+				# impossible to build the main square because a part of the area is owned by
+				# another player: remove the whole section
 				removed_sections.add(section)
 
 		removed_coords_list = []
@@ -791,7 +792,7 @@ class VillageBuilder(AreaBuilder):
 				if purpose == BUILDING_PURPOSE.ROAD:
 					if building is None or building.id != BUILDINGS.TRAIL:
 						removed_coords_list.append(coords)
-					continue # leave existing roads behind
+					continue  # leave existing roads behind
 				elif building is not None and not building.buildable_upon:
 					# TODO: remove the actual building
 					pass
@@ -840,15 +841,15 @@ class VillageBuilder(AreaBuilder):
 		renderer = self.session.view.renderer['InstanceRenderer']
 
 		tile_colors = {
-			BUILDING_PURPOSE.MAIN_SQUARE:    (255,   0, 255),
-			BUILDING_PURPOSE.RESIDENCE:      (255, 255, 255),
-			BUILDING_PURPOSE.ROAD:           ( 30,  30,  30),
+			BUILDING_PURPOSE.MAIN_SQUARE: (255, 0, 255),
+			BUILDING_PURPOSE.RESIDENCE: (255, 255, 255),
+			BUILDING_PURPOSE.ROAD: (30, 30, 30),
 			BUILDING_PURPOSE.VILLAGE_SCHOOL: (128, 128, 255),
-			BUILDING_PURPOSE.PAVILION:       (255, 128, 128),
-			BUILDING_PURPOSE.TAVERN:         (255, 255,   0),
-			BUILDING_PURPOSE.FIRE_STATION:   (255,  64,  64),
-			BUILDING_PURPOSE.DOCTOR:         (255, 128,  64),
-			BUILDING_PURPOSE.RESERVED:       (  0,   0, 255),
+			BUILDING_PURPOSE.PAVILION: (255, 128, 128),
+			BUILDING_PURPOSE.TAVERN: (255, 255, 0),
+			BUILDING_PURPOSE.FIRE_STATION: (255, 64, 64),
+			BUILDING_PURPOSE.DOCTOR: (255, 128, 64),
+			BUILDING_PURPOSE.RESERVED: (0, 0, 255),
 		}
 		for coords, (purpose, _) in self.plan.iteritems():
 			tile = self.island.ground_map[coords]
@@ -856,6 +857,7 @@ class VillageBuilder(AreaBuilder):
 			renderer.addColored(tile._instance, *color)
 
 	def __str__(self):
-		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self, 'worldid') else 'none')
+		return '%s VillageBuilder(%s)' % (self.settlement_manager, self.worldid if hasattr(self,
+			'worldid') else 'none')
 
 decorators.bind_all(VillageBuilder)
