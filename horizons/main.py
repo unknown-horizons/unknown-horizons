@@ -143,6 +143,8 @@ def start(_command_line_arguments):
 		from PIL import Image, ImageTk
 		import time
 		window = Tkinter.Tk()
+		# iconify window instead of closing
+		window.protocol("WM_DELETE_WINDOW", window.iconify)
 		window.wm_withdraw()
 		window.attributes("-topmost", 1)
 		window.title("Unknown Horizons")
@@ -158,9 +160,11 @@ def start(_command_line_arguments):
 
 		# wait a second to give the thread time to check if a generation is necessary at all
 		time.sleep(1.0)
+		window.deiconify()
 		while atlas_loading_thread.is_alive():
-			window.update()
-			window.deiconify()
+			if not window.state() == "iconic":
+				window.attributes("-topmost", 0)
+				window.update()
 			time.sleep(0.1)
 		window.destroy()
 	except ImportError:
