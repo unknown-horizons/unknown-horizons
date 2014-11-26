@@ -23,6 +23,7 @@ import heapq
 
 from horizons.util.python import decorators
 
+
 class RoadPlanner(object):
 	"""
 	Finds the most reasonable road between two areas.
@@ -35,14 +36,16 @@ class RoadPlanner(object):
 	* not close to boundaries (coast, mountains, etc.)
 	"""
 
-	def __call__(self, personality, source, destination, destination_beacon, path_nodes, blocked_coords=None):
+	def __call__(self, personality, source, destination, destination_beacon, path_nodes,
+			blocked_coords=None):
 		"""
 		Return the path from the source to the destination or None if it is impossible.
 
 		@param personality: the personality class that contains the relevant personality bits
 		@param source: list of tuples [(x, y), ...]
 		@param destination: list of tuples [(x, y), ...]
-		@param destination_beacon: object with a defined distance_to_tuple function (must contain all of destination)
+		@param destination_beacon: object with a defined distance_to_tuple
+			function (must contain all of destination)
 		@param path_nodes: dict {(x, y): penalty}
 		@param blocked_coords: temporarily blocked coordinates set([(x, y), ...])
 		"""
@@ -60,7 +63,7 @@ class RoadPlanner(object):
 		heap = []
 		for coords in source:
 			if coords not in blocked_coords and coords in path_nodes:
-				for dir in xrange(2): # 0 -> changed x, 1 -> changed y
+				for dir in xrange(2):  # 0 -> changed x, 1 -> changed y
 					real_distance = path_nodes[coords]
 					expected_distance = beacon_tuple_distance_func(destination_beacon, coords)
 					key = (coords[0], coords[1], dir)
@@ -88,7 +91,8 @@ class RoadPlanner(object):
 					continue
 				reduced_dir = 0 if moves[dir][0] != 0 else 1
 				next_key = (coords[0], coords[1], reduced_dir)
-				real_distance = distance_so_far + path_nodes[coords] + (0 if reduced_dir == key[2] else personality.turn_penalty)
+				real_distance = distance_so_far + path_nodes[coords] + \
+					(0 if reduced_dir == key[2] else personality.turn_penalty)
 				expected_distance = real_distance + beacon_tuple_distance_func(destination_beacon, coords)
 				if next_key not in distance or distance[next_key][0] > real_distance:
 					distance[next_key] = (real_distance, key)

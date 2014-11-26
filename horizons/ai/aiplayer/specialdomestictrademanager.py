@@ -27,6 +27,7 @@ from mission.specialdomestictrade import SpecialDomesticTrade
 from horizons.util.python import decorators
 from horizons.component.storagecomponent import StorageComponent
 
+
 class SpecialDomesticTradeManager(object):
 	"""
 	An object of this class manages the special domestic trade routes of one AI player.
@@ -51,7 +52,8 @@ class SpecialDomesticTradeManager(object):
 		for mission in self.owner.missions:
 			if not isinstance(mission, SpecialDomesticTrade):
 				continue
-			if mission.source_settlement_manager is source_settlement_manager and mission.destination_settlement_manager is destination_settlement_manager:
+			if (mission.source_settlement_manager is source_settlement_manager
+					and mission.destination_settlement_manager is destination_settlement_manager):
 				return True
 		return False
 
@@ -71,48 +73,59 @@ class SpecialDomesticTradeManager(object):
 				ship = possible_ship
 				break
 		if not ship:
-			#self.log.info('%s no available ships', self)
+			# self.log.info('%s no available ships', self)
 			return
 
 		options = defaultdict(list)
-		# try to set up a new route where the first settlement gets an extra shipment of a resource from the second settlement
+		# try to set up a new route where the first settlement gets an extra shipment
+		# of a resource from the second settlement
 		for source_settlement_manager in self.owner.settlement_managers:
 			for destination_settlement_manager in self.owner.settlement_managers:
-				if destination_settlement_manager is source_settlement_manager or self._trade_mission_exists(source_settlement_manager, destination_settlement_manager):
+				if (destination_settlement_manager is source_settlement_manager
+						or self._trade_mission_exists(source_settlement_manager, destination_settlement_manager)):
 					continue
 
 				source_resource_manager = source_settlement_manager.resource_manager
-				source_inventory = source_settlement_manager.settlement.get_component(StorageComponent).inventory
+				source_inventory = source_settlement_manager.settlement.get_component(
+					StorageComponent).inventory
 				destination_resource_manager = destination_settlement_manager.resource_manager
-				destination_inventory = destination_settlement_manager.settlement.get_component(StorageComponent).inventory
+				destination_inventory = \
+					destination_settlement_manager.settlement.get_component(StorageComponent).inventory
 
 				for resource_id, limit in destination_resource_manager.resource_requirements.iteritems():
 					if destination_inventory[resource_id] >= limit:
-						continue # the destination settlement doesn't need the resource
+						continue  # the destination settlement doesn't need the resource
 					if source_inventory[resource_id] <= source_resource_manager.resource_requirements[resource_id]:
-						continue # the source settlement doesn't have a surplus of the resource
+						continue  # the source settlement doesn't have a surplus of the resource
 
 					price = self.session.db.get_res_value(resource_id)
-					tradable_amount = min(ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id],
+					tradable_amount = min(ship.get_component(StorageComponent).inventory.get_limit(resource_id),
+						limit - destination_inventory[resource_id],
 						source_inventory[resource_id] - source_resource_manager.resource_requirements[resource_id])
-					options[(source_settlement_manager, destination_settlement_manager)].append((tradable_amount * price, tradable_amount, price, resource_id))
+					options[(source_settlement_manager,
+						destination_settlement_manager)].append((tradable_amount * price,
+						tradable_amount, price, resource_id))
 
 		if not options:
-			#self.log.info('%s no interesting options', self)
+			# self.log.info('%s no interesting options', self)
 			return
 
 		final_options = []
-		for (source_settlement_manager, destination_settlement_manager), option in sorted(options.iteritems()):
+		for (source_settlement_manager,
+				destination_settlement_manager), option in sorted(options.iteritems()):
 			total_amount = 0
 			total_value = 0
 			for _, amount, price, resource_id in option:
-				amount = min(amount, ship.get_component(StorageComponent).inventory.get_limit(resource_id) - total_amount)
+				amount = min(amount, ship.get_component(StorageComponent).inventory.get_limit(resource_id)
+					- total_amount)
 				total_value += amount * price
 				total_amount += amount
 			final_options.append((total_value, source_settlement_manager, destination_settlement_manager))
 
 		source_settlement_manager, destination_settlement_manager = max(final_options)[1:]
-		self.owner.start_mission(SpecialDomesticTrade(source_settlement_manager, destination_settlement_manager, ship, self.owner.report_success, self.owner.report_failure))
+		self.owner.start_mission(SpecialDomesticTrade(source_settlement_manager,
+			destination_settlement_manager,
+			ship, self.owner.report_success, self.owner.report_failure))
 
 	def tick(self):
 		self._add_route()
