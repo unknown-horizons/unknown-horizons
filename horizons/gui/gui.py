@@ -47,7 +47,7 @@ class MainMenu(Window):
 
 		self._gui = load_uh_widget('mainmenu.xml', 'menu')
 		self._gui.mapEvents({
-			'single_button': lambda: self._windows.open(gui.singleplayermenu),
+		                    'single_button': lambda: self._windows.open(gui.singleplayermenu),
 			'single_label': lambda: self._windows.open(gui.singleplayermenu),
 			'multi_button': lambda: self._windows.open(gui.multiplayermenu),
 			'multi_label': lambda: self._windows.open(gui.multiplayermenu),
@@ -63,8 +63,7 @@ class MainMenu(Window):
 			'credits_label': gui.show_credits,
 			'load_button': gui.load_game,
 			'load_label': gui.load_game,
-			'changeBackground': gui.rotate_background,
-		})
+			'changeBackground': gui.rotate_background, })
 
 	def show(self):
 		self._gui.show()

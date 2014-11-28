@@ -58,7 +58,8 @@ class ProductionOverviewTab(OverviewTab):
 	ARROWHEAD_MID = "content/gui/icons/templates/production/production_arrow_head.png"
 	ARROWHEAD_BOTTOM = "content/gui/icons/templates/production/production_arrowhead_bottom.png"
 	ARROWHEAD_CONNECT_UP = "content/gui/icons/templates/production/production_arrowhead_connect_up.png"
-	ARROWHEAD_CONNECT_DOWN = "content/gui/icons/templates/production/production_arrowhead_connect_down.png"
+	ARROWHEAD_CONNECT_DOWN = \
+		"content/gui/icons/templates/production/production_arrowhead_connect_down.png"
 	ICON_HEIGHT = ImageFillStatusButton.CELL_SIZE[1] + ImageFillStatusButton.PADDING
 
 	def __init__(self, instance):

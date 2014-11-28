@@ -94,14 +94,10 @@ class IngameGui(LivingObject):
 		self.help_dialog = HelpDialog(self.windows)
 
 		# Icon manager
-		self.status_icon_manager = StatusIconManager(
-			renderer=self.session.view.renderer['GenericRenderer'],
-			layer=self.session.view.layers[LAYERS.OBJECTS]
-		)
-		self.production_finished_icon_manager = ProductionFinishedIconManager(
-			renderer=self.session.view.renderer['GenericRenderer'],
-			layer=self.session.view.layers[LAYERS.OBJECTS]
-		)
+		self.status_icon_manager = StatusIconManager(renderer=self.session.view.
+			renderer['GenericRenderer'], layer=self.session.view.layers[LAYERS.OBJECTS])
+		self.production_finished_icon_manager = ProductionFinishedIconManager(renderer=self
+			.session.view.renderer['GenericRenderer'], layer=self.session.view.layers[LAYERS.OBJECTS])
 
 		# 'minimap' is the guichan gui around the actual minimap, which is saved
 		# in self.minimap
@@ -121,11 +117,10 @@ class IngameGui(LivingObject):
 		def speed_down():
 			SpeedDownCommand().execute(self.session)
 
-		self.mainhud.mapEvents({
-			'zoomIn': self.session.view.zoom_in,
+		self.mainhud.mapEvents({'zoomIn': self.session.view.zoom_in,
 			'zoomOut': self.session.view.zoom_out,
-			'rotateRight': Callback.ChainedCallbacks(
-				self.session.view.rotate_right, self.minimap.rotate_right),
+			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right,
+				self.minimap.rotate_right),
 			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
 			'speedUp': speed_up,
 			'speedDown': speed_down,
@@ -133,20 +128,17 @@ class IngameGui(LivingObject):
 			'build': self.show_build_menu,
 			'diplomacyButton': self.show_diplomacy_menu,
 			'gameMenuButton': self.toggle_pause,
-			'logbook': lambda: self.windows.toggle(self.logbook)
-		})
+			'logbook': lambda: self.windows.toggle(self.logbook)})
 		self.mainhud.show()
 
-		hotkey_replacements = {
-			'rotateRight': 'ROTATE_RIGHT',
+		hotkey_replacements = {'rotateRight': 'ROTATE_RIGHT',
 			'rotateLeft': 'ROTATE_LEFT',
 			'speedUp': 'SPEED_UP',
 			'speedDown': 'SPEED_DOWN',
 			'destroy_tool': 'DESTROY_TOOL',
 			'build': 'BUILD_TOOL',
 			'gameMenuButton': 'ESCAPE',
-			'logbook': 'LOGBOOK',
-		}
+			'logbook': 'LOGBOOK', }
 		for (widgetname, action) in hotkey_replacements.iteritems():
 			widget = self.mainhud.findChild(name=widgetname)
 			keys = horizons.globals.fife.get_keys_for_action(action)
@@ -175,8 +167,7 @@ class IngameGui(LivingObject):
 		MineEmpty.unsubscribe(self._on_mine_empty)
 		ZoomChanged.unsubscribe(self._update_zoom)
 
-		self.mainhud.mapEvents({
-			'zoomIn': None,
+		self.mainhud.mapEvents({'zoomIn': None,
 			'zoomOut': None,
 			'rotateRight': None,
 			'rotateLeft': None,
@@ -184,8 +175,7 @@ class IngameGui(LivingObject):
 			'destroy_tool': None,
 			'build': None,
 			'diplomacyButton': None,
-			'gameMenuButton': None
-		})
+			'gameMenuButton': None})
 		self.mainhud.hide()
 		self.mainhud = None
 
@@ -600,14 +590,12 @@ class IngameGui(LivingObject):
 		Further arguments are passed to the mouse tool constructor."""
 		self.cursor.remove()
 		self.current_cursor = which
-		klass = {
-			'default': mousetools.SelectionTool,
+		klass = {'default': mousetools.SelectionTool,
 			'selection': mousetools.SelectionTool,
 			'tearing': mousetools.TearingTool,
 			'pipette': mousetools.PipetteTool,
 			'attacking': mousetools.AttackingTool,
-			'building': mousetools.BuildingTool,
-		}[which]
+			'building': mousetools.BuildingTool, }[which]
 		self.cursor = klass(self.session, *args, **kwargs)
 
 	def toggle_destroy_tool(self):
@@ -637,9 +625,7 @@ class IngameGui(LivingObject):
 		player = message.settlement.owner
 		self.message_widget.add(string_id='NEW_SETTLEMENT',
 			point=message.warehouse_position,
-			message_dict={'player': player.name},
-			play_sound=player.is_local_player
-		)
+			message_dict={'player': player.name}, play_sound=player.is_local_player)
 
 	def _on_player_level_upgrade(self, message):
 		"""Called when a player's population reaches a new level."""
@@ -647,8 +633,7 @@ class IngameGui(LivingObject):
 			return
 
 		# show notification
-		self.message_widget.add(
-			point=message.building.position.center,
+		self.message_widget.add(point=message.building.position.center,
 			string_id='SETTLER_LEVEL_UP',
 			message_dict={'level': message.level + 1}
 		)
