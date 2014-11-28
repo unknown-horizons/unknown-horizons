@@ -143,7 +143,8 @@ class TradeManager(WorldObject):
 
 		total_amount = defaultdict(int)
 		resource_manager = self.settlement_manager.resource_manager
-		for resource_id, amount in resource_manager.trade_storage[destination_settlement_manager.worldid].iteritems():
+		for resource_id, amount in \
+			resource_manager.trade_storage[destination_settlement_manager.worldid].iteritems():
 			available_amount = int(min(math.floor(amount),
 				self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]))
 			if available_amount > 0:
@@ -189,7 +190,8 @@ class TradeManager(WorldObject):
 			resource_manager = settlement_manager.resource_manager
 			num_resources = 0
 			total_amount = 0
-			for resource_id, amount in resource_manager.trade_storage[self.settlement_manager.worldid].iteritems():
+			for resource_id, amount \
+				in resource_manager.trade_storage[self.settlement_manager.worldid].iteritems():
 				available_amount = int(min(math.floor(amount),
 					settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]))
 				if available_amount > 0:
