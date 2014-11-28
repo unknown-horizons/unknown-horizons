@@ -76,16 +76,16 @@ class SettlerOverviewTab(OverviewTab):
 		self.widget.child_finder('happiness_label').helptext = helptext
 		self.widget.child_finder('happiness').progress = self.instance.happiness
 		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
-		                                               self.instance.inhabitants,
-		                                               self.instance.inhabitants_max)
+			self.instance.inhabitants,
+			self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		name = self.instance.settlement.get_component(NamedComponent).name
 		self.widget.findChild(name="headline").text = name
 		events = {
-				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog,
-				                     self.instance.settlement)
-		         }
+			'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog,
+			self.instance.settlement)
+		}
 		self.widget.mapEvents(events)
 		super(SettlerOverviewTab, self).refresh()
 
@@ -104,12 +104,14 @@ class SettlerOverviewTab(OverviewTab):
 
 		container.adaptLayout()
 
+
 def setup_tax_slider(slider, val_label, settlement, level):
 	"""Set up a slider to work as tax slider"""
 	slider.scale_start = SETTLER.TAX_SETTINGS_MIN
 	slider.scale_end = SETTLER.TAX_SETTINGS_MAX
 	slider.step_length = SETTLER.TAX_SETTINGS_STEP
 	slider.value = settlement.tax_settings[level]
+
 	def on_slider_change():
 		val_label.text = unicode(slider.value)
 		if settlement.tax_settings[level] != slider.value:

@@ -21,6 +21,7 @@
 
 from horizons.util.python import decorators
 
+
 class DifficultySettings(object):
 	EASY_LEVEL = 0
 	DEFAULT_LEVEL = 1
@@ -38,14 +39,17 @@ class DifficultySettings(object):
 		cls.levels[cls.EASY_LEVEL] = EasySettings
 		cls.levels[cls.DEFAULT_LEVEL] = DefaultSettings
 
+
 class DifficultyClass(object):
 	def __init__(self, level):
 		self.level = level
+
 
 class DefaultSettings(DifficultyClass):
 	extra_happiness_constant = 0
 	happiness_multiplier = 1
 	tax_multiplier = 1
+
 
 class EasySettings(DefaultSettings):
 	tax_multiplier = 1.5

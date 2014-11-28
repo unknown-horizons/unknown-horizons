@@ -37,6 +37,7 @@ from horizons.world.production.producer import Producer, UnitProducer
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.scheduler import Scheduler
 
+
 class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
@@ -48,9 +49,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			'StorageComponent':
 				{'PositiveSizedSlotStorage':
 					{'limit': 0}
-				}
-		}
-		,
+					}
+		},
 		'TradePostComponent',
 		'SettlementNameComponent',
 	)
@@ -60,7 +60,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		@param owner: Player object that owns the settlement
 		"""
 		super(Settlement, self).__init__()
-		self.__init(session, owner, self.make_default_upgrade_permissions(), self.make_default_tax_settings())
+		self.__init(session, owner, self.make_default_upgrade_permissions(),
+			self.make_default_tax_settings())
 
 	def __init(self, session, owner, upgrade_permissions, tax_settings):
 		from horizons.session import Session
@@ -68,10 +69,10 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.session = session
 		self.owner = owner
 		self.buildings = []
-		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
-		self.produced_res = defaultdict(int) # dictionary of all resources, produced at this settlement
+		self.ground_map = {}  # this is the same as in island.py. it uses hard references to the tiles too
+		self.produced_res = defaultdict(int)  # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = defaultdict(list)
-		self.warehouse = None # this is set later in the same tick by the warehouse itself or load() here
+		self.warehouse = None  # this is set later in the same tick by the warehouse itself or load() here
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
 		Scheduler().add_new_object(self.__init_inventory_checker, self)
@@ -130,7 +131,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	def balance(self):
 		"""Returns sum(income) - sum(expenses) for settlement"""
 		return self.cumulative_taxes + self.get_component(TradePostComponent).sell_income \
-					 - self.cumulative_running_costs - self.get_component(TradePostComponent).buy_expenses
+			- self.cumulative_running_costs - self.get_component(TradePostComponent).buy_expenses
 
 	@property
 	def island(self):
@@ -152,7 +153,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)",
 			   self.worldid, res, amount)
 		for level in xrange(TIER.CURRENT_MAX + 1):
-			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)",
+			db("INSERT INTO settlement_level_properties (settlement, level,"
+				" upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)",
 				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 
 		# dump ground data via json, it's orders of magnitude faster than sqlite
@@ -168,14 +170,16 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		upgrade_permissions = {}
 		tax_settings = {}
-		for level, allowed, tax in db("SELECT level, upgrading_allowed, tax_setting FROM settlement_level_properties WHERE settlement = ?", worldid):
+		for level, allowed, tax in db("SELECT level, upgrading_allowed, tax_setting"
+				" FROM settlement_level_properties WHERE settlement = ?", worldid):
 			upgrade_permissions[level] = allowed
 			tax_settings[level] = tax
 		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
 		# load the settlement tile map
 		tile_data = db("SELECT data FROM settlement_tiles WHERE rowid = ?", worldid)[0][0]
-		coords_list = [tuple(raw_coords) for raw_coords in json.loads(tile_data)] # json saves tuples as list
+		coords_list = [tuple(raw_coords) for raw_coords in json.loads(tile_data)]
+		# json saves tuples as list
 		for coords in coords_list:
 			tile = island.ground_map[coords]
 			self.ground_map[coords] = tile
@@ -183,13 +187,14 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 		# load all buildings in this settlement
 		from horizons.world import load_building
-		for building_id, building_type in \
-			  db("SELECT rowid, type FROM building WHERE location = ?", worldid):
+		for building_id, building_type in db("SELECT rowid, type FROM building WHERE location = ?",
+				worldid):
 			building = load_building(session, db, building_type, building_id)
 			if building_type == BUILDINGS.WAREHOUSE:
 				self.warehouse = building
 
-		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):
+		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?",
+				worldid):
 			self.produced_res[res] = amount
 
 		return self
@@ -227,7 +232,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def remove_building(self, building):
 		"""Properly removes a building from the settlement"""
-		if not building in self.buildings:
+		if building not in self.buildings:
 			self.log.warn("Building %s can not be removed from settlement", building.id)
 			return
 		self.buildings.remove(building)

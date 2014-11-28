@@ -52,13 +52,13 @@ class SelectableComponent(Component):
 	def get_instance(cls, arguments):
 		# this can't be class variable because the classes aren't defined when
 		# it would be parsed
-		TYPES = { 'building' : SelectableBuildingComponent,
-		          'unit'     : SelectableUnitComponent,
-		          'ship'     : SelectableShipComponent,
-		          'fisher' 	 : SelectableFisherComponent, }
+		TYPES = {'building': SelectableBuildingComponent,
+		         'unit': SelectableUnitComponent,
+		         'ship': SelectableShipComponent,
+		         'fisher': SelectableFisherComponent, }
 		arguments = copy.copy(arguments)
 		t = arguments.pop('type')
-		return TYPES[ t ]( **arguments )
+		return TYPES[t](**arguments)
 
 	def __init__(self, tabs, enemy_tabs, active_tab=None):
 		super(SelectableComponent, self).__init__()
@@ -79,7 +79,7 @@ class SelectableComponent(Component):
 		tablist = None
 		if self.instance.owner is not None and self.instance.owner.is_local_player:
 			tablist = self.tabs
-		else: # this is an enemy instance with respect to the local player
+		else:  # this is an enemy instance with respect to the local player
 			tablist = self.enemy_tabs
 
 		if not tablist:
@@ -133,8 +133,9 @@ class SelectableBuildingComponent(SelectableComponent):
 			self.l = []
 
 	# read/write on class variables is somewhat borked in python, so
-	_selected_tiles = ListHolder() # tiles that are selected. used for clean deselect.
-	_selected_fake_tiles = ListHolder() # fake tiles create over ocean to select (can't select ocean directly)
+	_selected_tiles = ListHolder()  # tiles that are selected. used for clean deselect.
+	_selected_fake_tiles = ListHolder()
+	# fake tiles create over ocean to select (can't select ocean directly)
 
 	@classmethod
 	def reset(cls):
@@ -161,7 +162,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		super(SelectableBuildingComponent, self).select(reset_cam)
 		self.set_selection_outline()
 		if self.instance.owner is None or not self.instance.owner.is_local_player:
-			return # don't show enemy ranges
+			return  # don't show enemy ranges
 		renderer = self.session.view.renderer['InstanceRenderer']
 		self._do_select(renderer, self.instance.position, self.session.world,
 		                self.instance.settlement, self.instance.radius, self.range_applies_only_on_island)
@@ -221,28 +222,29 @@ class SelectableBuildingComponent(SelectableComponent):
 		"""Same as calling select() on many instances, but way faster.
 		Limited functionality, only use on real buildings of a settlement."""
 		if not buildings:
-			return [] # that is not many
+			return []  # that is not many
 
 		selected_tiles = []
 
 		# group buildings per settlement and treat them separately
 		# they cannot share tiles, and we can then just access the settlements ground map
 		buildings_sorted = sorted(buildings, key=operator.attrgetter('settlement'))
-		for settlement, buildings in itertools.groupby( buildings_sorted, operator.attrgetter('settlement') ):
+		for settlement, buildings in itertools.groupby(buildings_sorted,
+				operator.attrgetter('settlement')):
 			# resolve operator
 			buildings = list(buildings)
 
 			for building in buildings:
 				building.get_component(SelectableComponent).set_selection_outline()
 
-			coords = set( coord for
-			              building in buildings for
-			              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
+			coords = set(coord for
+				building in buildings for
+				coord in building.position.get_radius_coordinates(building.radius, include_self=True))
 
 			for coord in coords:
 				tile = settlement.ground_map.get(coord)
 				if tile:
-					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+					if ('constructible' in tile.classes or 'coastline' in tile.classes):
 						cls._add_selected_tile(tile, renderer)
 						selected_tiles.append(tile)
 		return selected_tiles
@@ -252,10 +254,11 @@ class SelectableBuildingComponent(SelectableComponent):
 	               radius, range_applies_only_on_island):
 		island = world.get_island(position.origin)
 		if island is None:
-			return # preview isn't on island, and therefore invalid
+			return  # preview isn't on island, and therefore invalid
 
 		if range_applies_only_on_island:
-			ground_holder = None # use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
+			ground_holder = None
+			# use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
 			if settlement is None:
 				ground_holder = island
 			else:
@@ -278,7 +281,7 @@ class SelectableBuildingComponent(SelectableComponent):
 				tile = island.get_tile_tuple(tup)
 				if tile is not None:
 					cls._add_selected_tile(tile, renderer)
-				else: # need extra tile
+				else:  # need extra tile
 					cls._add_fake_tile(tup[0], tup[1], layer, renderer)
 
 	@classmethod
@@ -296,17 +299,17 @@ class SelectableBuildingComponent(SelectableComponent):
 			img_path = 'content/gfx/fake_water.png'
 			img = horizons.globals.fife.imagemanager.load(img_path)
 			for rotation in [45, 135, 225, 315]:
-				SelectableBuildingComponent._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
+				SelectableBuildingComponent._fake_tile_obj.get2dGfxVisual().addStaticImage(
+					rotation, img.getHandle())
 
 	@classmethod
 	def _add_fake_tile(cls, x, y, layer, renderer):
 		"""Adds a fake tile to the position. Requires 'cls._fake_tile_obj' to be set."""
 		inst = layer.createInstance(SelectableBuildingComponent._fake_tile_obj,
-	                                fife.ModelCoordinate(x, y, 0), "")
+			fife.ModelCoordinate(x, y, 0), "")
 		fife.InstanceVisual.create(inst)
 		cls._selected_fake_tiles.l.append(inst)
 		renderer.addColored(inst, *cls.selection_color)
-
 
 	@classmethod
 	def _add_selected_tile(cls, tile, renderer, remember=True):
@@ -327,7 +330,8 @@ class SelectableUnitComponent(SelectableComponent):
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
 		super(SelectableUnitComponent, self).select(reset_cam)
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance,
+			255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
 		self.instance.draw_health()
 		self.session.view.add_change_listener(self.instance.draw_health)
 
@@ -371,8 +375,8 @@ class SelectableFisherComponent(SelectableBuildingComponent):
 		cls._init_fake_tile()
 		layer = world.session.view.layers[LAYERS.FIELDS]
 		for fish_deposit in world.get_providers_in_range(RadiusRect(position, radius), res=RES.FISH):
-			#renderer.addColored(fish_deposit._instance, *cls.selection_color)
-			#cls._selected_tiles.l.append(fish_deposit)
+			# renderer.addColored(fish_deposit._instance, *cls.selection_color)
+			# cls._selected_tiles.l.append(fish_deposit)
 			for pos in fish_deposit.position:
 				cls._add_fake_tile(pos.x, pos.y, layer, renderer)
 

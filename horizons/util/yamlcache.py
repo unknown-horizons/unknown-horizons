@@ -32,6 +32,7 @@ try:
 except ImportError:
 	from yaml import SafeLoader
 
+
 # make SafeLoader allow unicode
 def construct_yaml_str(self, node):
 	return self.construct_scalar(node)
@@ -54,21 +55,21 @@ def parse_token(token, token_klass):
 		# No need to parse anything
 		return token
 	try:
-		return getattr( classes[token_klass], token.split(".", 2)[1])
-	except AttributeError as e: # token not defined here
+		return getattr(classes[token_klass], token.split(".", 2)[1])
+	except AttributeError as e:  # token not defined here
 		err = ("This means that you either have to add an entry in horizons/constants.py "
-		       "in the class %s for %s,\nor %s is actually a typo."
-		       % (token_klass, token, token))
-		raise Exception( str(e) + "\n\n" + err +"\n" )
+			"in the class %s for %s,\nor %s is actually a typo."
+			% (token_klass, token, token))
+		raise Exception(str(e) + "\n\n" + err + "\n")
 
 
 def convert_game_data(data):
 	"""Translates convenience symbols into actual game data usable by machines"""
 	if isinstance(data, dict):
-		return dict( [ convert_game_data(i) for i in data.iteritems() ] )
+		return dict([convert_game_data(i) for i in data.iteritems()])
 	elif isinstance(data, (tuple, list)):
-		return type(data)( ( convert_game_data(i) for i in data) )
-	else: # leaf
+		return type(data)((convert_game_data(i) for i in data))
+	else:  # leaf
 		data = parse_token(data, "TIER")
 		data = parse_token(data, "RES")
 		data = parse_token(data, "UNITS")
@@ -80,7 +81,8 @@ class YamlCache(object):
 	"""Loads and caches YAML files in a persistent cache.
 	Threadsafe.
 
-	Use get_file for files to cache (default case) or load_yaml_data for special use cases (behaves like yaml.load).
+	Use get_file for files to cache (default case) or load_yaml_data
+	for special use cases (behaves like yaml.load).
 	"""
 
 	cache = None
@@ -95,7 +97,7 @@ class YamlCache(object):
 	@classmethod
 	def load_yaml_data(self, string_or_stream):
 		"""Use this instead of yaml.load everywhere in uh in case get_file isn't useable"""
-		return yaml.load( string_or_stream, Loader=SafeLoader )
+		return yaml.load(string_or_stream, Loader=SafeLoader)
 
 	@classmethod
 	def get_file(cls, filename, game_data=False):
@@ -115,15 +117,15 @@ class YamlCache(object):
 
 		yaml_file_in_cache = (filename in cls.cache and cls.cache[filename][0] == h)
 		if not yaml_file_in_cache:
-			data = cls.load_yaml_data( f )
-			if game_data: # need to convert some values
+			data = cls.load_yaml_data(f)
+			if game_data:  # need to convert some values
 				try:
 					data = convert_game_data(data)
 				except Exception as e:
 					# add info about file
 					to_add = "\nThis error happened in %s ." % filename
-					e.args = ( e.args[0] + to_add, ) + e.args[1:]
-					e.message = ( e.message + to_add )
+					e.args = (e.args[0] + to_add,) + e.args[1:]
+					e.message = (e.message + to_add)
 					raise
 
 			cls.lock.acquire()
@@ -134,7 +136,7 @@ class YamlCache(object):
 				ExtScheduler().add_new_object(cls._do_sync, cls, run_in=1)
 			cls.lock.release()
 
-		return cls.cache[filename][1] # returns an object from the YAML
+		return cls.cache[filename][1]  # returns an object from the YAML
 
 	@classmethod
 	def _open_cache(cls):

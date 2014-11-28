@@ -29,7 +29,8 @@ from horizons.component.depositcomponent import DepositComponent
 from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.inventoryoverlaycomponent import InventoryOverlayComponent
-from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
+from horizons.component.namedcomponent import NamedComponent, \
+	SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
 from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent

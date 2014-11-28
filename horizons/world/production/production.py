@@ -21,13 +21,11 @@
 # ###################################################
 
 import logging
-
 from collections import defaultdict, deque
 
 from horizons.util.changelistener import metaChangeListenerDecorator, ChangeListener
 from horizons.constants import PRODUCTION
 from horizons.world.production.productionline import ProductionLine
-
 from horizons.scheduler import Scheduler
 
 
@@ -50,12 +48,13 @@ class Production(ChangeListener):
 	# optimization:
 	# the special resource gold is only stored in the player's inventory.
 	# If productions want to use it, they will observer every change of it, which results in
-	# a lot calls. Therefore, this is not done by default but only for few subclasses that actually need it.
+	# a lot calls. Therefore, this is not done by default
+	# but only for few subclasses that actually need it.
 	uses_gold = False
 
 	keep_original_prod_line = False
 
-	## INIT/DESTRUCT
+	# INIT/DESTRUCT
 	def __init__(self, inventory, owner_inventory, prod_id, prod_data,
 	             start_finished=False, load=False, **kwargs):
 		"""
@@ -76,15 +75,15 @@ class Production(ChangeListener):
 		self.inventory = inventory
 		self.owner_inventory = owner_inventory
 
-		self._pause_remaining_ticks = None # only used in pause()
-		self._pause_old_state = None # only used in pause()
+		self._pause_remaining_ticks = None  # only used in pause()
+		self._pause_old_state = None  # only used in pause()
 
 		self._creation_tick = Scheduler().cur_tick
 
 		assert isinstance(prod_id, int)
 		self._prod_line = ProductionLine(id=prod_id, data=prod_data)
 
-		if self.__class__.keep_original_prod_line: # used by unit productions
+		if self.__class__.keep_original_prod_line:  # used by unit productions
 			self.original_prod_line = self._prod_line.get_original_copy()
 
 		if not load:
@@ -101,7 +100,8 @@ class Production(ChangeListener):
 		"""owner_id: worldid of the owner of the producer object that owns this production"""
 		self._clean_state_history()
 		current_tick = Scheduler().cur_tick
-		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
+		translated_creation_tick = self._creation_tick - current_tick + 1
+		# pre-translate the tick number for the loading process
 
 		remaining_ticks = None
 		if self._state == PRODUCTION.STATES.paused:
@@ -111,11 +111,11 @@ class Production(ChangeListener):
 		# use a number > 0 for ticks
 		if remaining_ticks < 1:
 			remaining_ticks = 1
-		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
-		      _pause_old_state, creation_tick, owner) VALUES(?, ?, ?, ?, ?, ?, ?)',
-		         None, self._state.index, self._prod_line.id, remaining_ticks,
-		         None if self._pause_old_state is None else self._pause_old_state.index,
-			    translated_creation_tick, owner_id)
+		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks,'
+			' _pause_old_state, creation_tick, owner) VALUES(?, ?, ?, ?, ?, ?, ?)',
+			None, self._state.index, self._prod_line.id, remaining_ticks,
+			None if self._pause_old_state is None else self._pause_old_state.index,
+			translated_creation_tick, owner_id)
 
 		# save state history
 		for tick, state in self._state_history:
@@ -138,7 +138,7 @@ class Production(ChangeListener):
 		elif self._state == PRODUCTION.STATES.producing:
 			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[3])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
-		     self._state == PRODUCTION.STATES.inventory_full:
+			self._state == PRODUCTION.STATES.inventory_full:
 			# no need to call now, this just restores the state before
 			# saving, where it hasn't triggered yet, therefore it won't now
 			self._add_listeners()
@@ -150,7 +150,7 @@ class Production(ChangeListener):
 		Scheduler().rem_all_classinst_calls(self)
 		super(Production, self).remove()
 
-	## INTERFACE METHODS
+	# INTERFACE METHODS
 	def get_production_line_id(self):
 		"""Returns id of production line"""
 		return self._prod_line.id
@@ -197,7 +197,7 @@ class Production(ChangeListener):
 
 	def pause(self, pause=True):
 		self.log.debug("Production pause: %s", pause)
-		if not pause: # do unpause
+		if not pause:  # do unpause
 			# switch state
 			self._state = self._pause_old_state
 			self._pause_old_state = None
@@ -215,7 +215,7 @@ class Production(ChangeListener):
 				                           self._pause_remaining_ticks)
 			else:
 				assert False, 'Unhandled production state: %s' % self._pause_old_state
-		else: # do pause
+		else:  # do pause
 			# switch state
 			self._pause_old_state = self._state
 			self._state = PRODUCTION.STATES.paused
@@ -226,8 +226,8 @@ class Production(ChangeListener):
 				self._remove_listeners()
 			elif self._pause_old_state == PRODUCTION.STATES.producing:
 				# save when production finishes and remove that call
-				self._pause_remaining_ticks = \
-						Scheduler().get_remaining_ticks(self, self._get_producing_callback())
+				self._pause_remaining_ticks = Scheduler().get_remaining_ticks(
+					self, self._get_producing_callback())
 				Scheduler().rem_call(self, self._get_producing_callback())
 			else:
 				assert False, 'Unhandled production state: %s' % self._pause_old_state
@@ -245,13 +245,13 @@ class Production(ChangeListener):
 		"""@see ProductionLine.alter_production_time"""
 		try:
 			self._prod_line.alter_production_time(modifier)
-		except AttributeError: # production line doesn't have this alter method
+		except AttributeError:  # production line doesn't have this alter method
 			pass
-
 
 	def get_state_history_times(self, ignore_pause):
 		"""
-		Returns the part of time 0 <= x <= 1 the production has been in a state during the last history_length ticks.
+		Returns the part of time 0 <= x <= 1 the production has been
+		in a state during the last history_length ticks.
 		"""
 		self._clean_state_history()
 		result = defaultdict(int)
@@ -267,7 +267,8 @@ class Production(ChangeListener):
 			if tick >= current_tick:
 				break
 
-			next_tick = min(self._state_history[i + 1][0], current_tick) if i + 1 < num_entries else current_tick
+			next_tick = min(self._state_history[i + 1][0],
+				current_tick) if i + 1 < num_entries else current_tick
 			if next_tick <= first_relevant_tick:
 				continue
 			relevant_ticks = next_tick - tick
@@ -294,7 +295,7 @@ class Production(ChangeListener):
 				l.append(res)
 		return l
 
-	## PROTECTED METHODS
+	# PROTECTED METHODS
 	def _get_producing_callback(self):
 		"""Returns the callback used during the process of producing (state: producing)"""
 		return self._finished_producing
@@ -339,7 +340,7 @@ class Production(ChangeListener):
 		current_tick = Scheduler().cur_tick
 
 		if self._state_history and self._state_history[-1][0] == current_tick:
-			self._state_history.pop() # make sure no two events are on the same tick
+			self._state_history.pop()  # make sure no two events are on the same tick
 		if not self._state_history or self._state_history[-1][1] != state:
 			self._state_history.append((current_tick, state))
 
@@ -390,12 +391,13 @@ class Production(ChangeListener):
 
 	def _add_listeners(self, check_now=False):
 		"""Listen for changes in the inventory from now on."""
-		# don't set call_listener_now to True here, adding/removing changelisteners wouldn't be atomic any more
+		# don't set call_listener_now to True here,
+		# adding/removing changelisteners wouldn't be atomic any more
 		self.inventory.add_change_listener(self._check_inventory)
 		if self.__class__.uses_gold:
 			self.owner_inventory.add_change_listener(self._check_inventory)
 
-		if check_now: # only check now after adding everything
+		if check_now:  # only check now after adding everything
 			self._check_inventory()
 
 	def _remove_listeners(self):
@@ -414,7 +416,7 @@ class Production(ChangeListener):
 		@return: bool, True if we can start production
 		"""
 		for res, amount in self._prod_line.consumed_res.iteritems():
-			if self.inventory[res] < (-amount): # consumed res have negative sign
+			if self.inventory[res] < (-amount):  # consumed res have negative sign
 				return False
 		return True
 
@@ -432,7 +434,7 @@ class Production(ChangeListener):
 				return False
 		return True
 
-	def __str__(self): # debug
+	def __str__(self):  # debug
 		if hasattr(self, "_state"):
 			return 'Production(state=%s;prodline=%s)' % (self._state, self._prod_line)
 		else:
@@ -457,7 +459,7 @@ class SettlerProduction(ChangingProduction):
 	the resource (i.e. they produce at production start).
 	It needs to be a changing production since the time can be altered"""
 	def _give_produced_res(self):
-		pass # don't give any resources, when they actually should be given
+		pass  # don't give any resources, when they actually should be given
 
 	def _remove_res_to_expend(self):
 		super(SettlerProduction, self)._remove_res_to_expend()
@@ -470,7 +472,8 @@ class SingleUseProduction(Production):
 	Notification of the finishing is done via production_finished listeners.
 	Use case: Settler getting upgrade material"""
 
-	# TODO: it seems that these kinds of productions are never removed (for settlers and unit productions)
+	# TODO: it seems that these kinds of productions are never removed
+	# (for settlers and unit productions)
 
 	def __init__(self, inventory, owner_inventory, prod_id, prod_data, **kwargs):
 		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory,

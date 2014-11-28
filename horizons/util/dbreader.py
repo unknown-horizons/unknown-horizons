@@ -24,6 +24,7 @@ import re
 
 from horizons.util.python import decorators
 
+
 class DbReader(object):
 	"""Class that handles connections to sqlite databases
 	@param file: str containing the database file."""
@@ -31,6 +32,7 @@ class DbReader(object):
 		self.db_path = dbfile
 		self.connection = sqlite3.connect(dbfile)
 		self.connection.isolation_level = None
+
 		def regexp(expr, item):
 			r = re.compile(expr)
 			return r.match(item) is not None
@@ -40,7 +42,8 @@ class DbReader(object):
 	@decorators.make_constants()
 	def __call__(self, command, *args):
 		"""Executes a sql command.
-		@param command: str containing the raw sql command, with ? as placeholders for values (eg. SELECT ? FROM ?). command must not end with ';', it's added automatically here.
+		@param command: str containing the raw sql command, with ? as placeholders for values
+		(eg. SELECT ? FROM ?). command must not end with ';', it's added automatically here.
 		@param args: tuple containing the values to add into the command.
 		"""
 		assert not command.endswith(";")

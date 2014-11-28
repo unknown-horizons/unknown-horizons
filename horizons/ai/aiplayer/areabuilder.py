@@ -32,6 +32,7 @@ from horizons.util.shapes import Rect
 from horizons.util.worldobject import WorldObject
 from horizons.entities import Entities
 
+
 class AreaBuilder(WorldObject):
 	"""A class governing the use of a specific type of area of a settlement."""
 
@@ -48,7 +49,7 @@ class AreaBuilder(WorldObject):
 		self.session = self.island.session
 		self.owner = self.land_manager.owner
 		self.settlement = self.land_manager.settlement
-		self.plan = {} # {(x, y): (purpose, subclass specific data), ...}
+		self.plan = {}  # {(x, y): (purpose, subclass specific data), ...}
 
 	@classmethod
 	def load(cls, db, settlement_manager):
@@ -70,15 +71,18 @@ class AreaBuilder(WorldObject):
 					yield self.island.get_tile_tuple(coords)
 
 	def iter_possible_road_coords(self, rect, blocked_rect):
-		"""Iterate over the possible road tiles that share a side with the given Rect and are not in the blocked Rect."""
+		"""Iterate over the possible road tiles that share a side with the given Rect
+		and are not in the blocked Rect."""
 		blocked_coords_set = set(coords for coords in blocked_rect.tuple_iter())
 		for tile in self.iter_neighbor_tiles(rect):
 			if tile is None:
 				continue
 			coords = (tile.x, tile.y)
-			if coords in blocked_coords_set or coords in self.land_manager.coastline or coords not in self.settlement.ground_map:
+			if coords in blocked_coords_set or coords in self.land_manager.coastline \
+				or coords not in self.settlement.ground_map:
 				continue
-			if coords in self.land_manager.roads or (coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
+			if coords in self.land_manager.roads or (coords in self.plan
+					and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
 				yield coords
 
 	@classmethod
@@ -102,10 +106,11 @@ class AreaBuilder(WorldObject):
 					queue.append((coords2, dist + 1))
 
 	def get_path_nodes(self):
-		"""Return a dict {(x, y): penalty, ...} of current and possible future road tiles in the settlement."""
+		"""Return a dict {(x, y): penalty, ...}
+		of current and possible future road tiles in the settlement."""
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
-		nodes = {} # {(x, y): penalty, ...}
+		nodes = {}  # {(x, y): penalty, ...}
 		distance_to_road = {}
 		distance_to_boundary = {}
 		for coords in self.plan:
@@ -143,7 +148,8 @@ class AreaBuilder(WorldObject):
 					nodes[coords] += self.personality.path_distant_road_penalty
 				elif distance > 0:
 					nodes[coords] += self.personality.path_near_road_constant_penalty + \
-						(self.personality.path_road_penalty_threshold - distance + 1) * self.personality.path_near_road_linear_penalty
+						(self.personality.path_road_penalty_threshold - distance + 1) * \
+						self.personality.path_near_road_linear_penalty
 			else:
 				nodes[coords] += self.personality.path_unreachable_road_penalty
 
@@ -151,7 +157,8 @@ class AreaBuilder(WorldObject):
 				distance = distance_to_boundary[coords]
 				if 1 < distance <= self.personality.path_boundary_penalty_threshold:
 					nodes[coords] += self.personality.path_near_boundary_constant_penalty + \
-						(self.personality.path_boundary_penalty_threshold - distance + 1) * self.personality.path_near_boundary_linear_penalty
+						(self.personality.path_boundary_penalty_threshold - distance + 1) * \
+						self.personality.path_near_boundary_linear_penalty
 			else:
 				nodes[coords] += self.personality.path_unreachable_boundary_penalty
 
@@ -165,16 +172,18 @@ class AreaBuilder(WorldObject):
 			if loading_area.distance(building.position) == 1:
 				return []
 			if loading_area.distance(building.position) > building.radius:
-				continue # the collector building is too far to be useful
+				continue  # the collector building is too far to be useful
 			for coords in self.iter_possible_road_coords(building.position, building.position):
 				collector_coords.add(coords)
 
 		destination_coords = set(self.iter_possible_road_coords(loading_area, builder.position))
 		if self is self.settlement_manager.production_builder:
-			if not self.settlement_manager.production_builder.road_connectivity_cache.is_connection_possible(collector_coords, destination_coords):
+			if not self.settlement_manager.production_builder.road_connectivity_cache.is_connection_possible(
+				collector_coords, destination_coords):
 				return None
 
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()]).union(self.land_manager.coastline)
+		blocked_coords = set([coords for coords in builder.position.tuple_iter()]).union(
+			self.land_manager.coastline)
 		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1,
 		                                loading_area.right + 1, loading_area.bottom + 1)
 
@@ -182,7 +191,8 @@ class AreaBuilder(WorldObject):
 			destination_coords, beacon, self.get_path_nodes(), blocked_coords=blocked_coords)
 
 	def build_road(self, path):
-		"""Build the road given a valid path or None. Return True if it worked, False if the path was None."""
+		"""Build the road given a valid path or None.
+		Return True if it worked, False if the path was None."""
 		if path is not None:
 			for x, y in path:
 				self.register_change_list([(x, y)], BUILDING_PURPOSE.ROAD, None)
@@ -193,12 +203,14 @@ class AreaBuilder(WorldObject):
 		return path is not None
 
 	def build_road_connection(self, builder):
-		"""Build a road connecting the builder to a building with general collectors. Return True if it worked, False if the path was None."""
+		"""Build a road connecting the builder to a building with general collectors.
+		Return True if it worked, False if the path was None."""
 		path = self._get_road_to_builder(builder)
 		return self.build_road(path)
 
 	def get_road_cost(self, path):
-		"""Return the cost of building a road on the given path as {resource_id: amount, ...} or None if impossible."""
+		"""Return the cost of building a road on the given path as {resource_id: amount, ...}
+		or None if impossible."""
 		if path is None:
 			return None
 		length = 0
@@ -218,12 +230,14 @@ class AreaBuilder(WorldObject):
 		"""
 		Return the cost of building a road from the builder to a building with general collectors.
 
-		The returned format is {resource_id: amount, ...} if it is possible to build a road and None otherwise.
+		The returned format is {resource_id: amount, ...}
+		if it is possible to build a road and None otherwise.
 		"""
 		return self.get_road_cost(self._get_road_to_builder(builder))
 
 	def have_resources(self, building_id):
-		"""Return a boolean showing whether we currently have the resources to build a building of the given type."""
+		"""Return a boolean showing whether we currently have the resources to build
+		a building of the given type."""
 		return Entities.buildings[building_id].have_resources([self.settlement], self.owner)
 
 	def build_best_option(self, options, purpose):
@@ -252,7 +266,8 @@ class AreaBuilder(WorldObject):
 		return BUILD_RESULT.OK
 
 	def extend_settlement(self, position):
-		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
+		"""Build a storage to extend the settlement towards the given position.
+		Return a BUILD_RESULT constant."""
 		return self.settlement_manager.production_builder.extend_settlement_with_storage(position)
 
 	def handle_lost_area(self, coords_list):
@@ -263,7 +278,8 @@ class AreaBuilder(WorldObject):
 				del self.plan[coords]
 
 	def add_building(self, building):
-		"""Called when a new building is added in the area (the building already exists during the call)."""
+		"""Called when a new building is added in the area
+		(the building already exists during the call)."""
 		self.display()
 
 	def remove_building(self, building):
@@ -275,7 +291,8 @@ class AreaBuilder(WorldObject):
 		raise NotImplementedError('This function has to be overridden.')
 
 	def _init_cache(self):
-		"""Initialize the cache that knows the last time the buildability of a rectangle may have changed in this area."""
+		"""Initialize the cache that knows the last time the buildability of a rectangle may
+		have changed in this area."""
 		self.last_change_id = -1
 
 	def register_change(self, x, y, purpose, data):

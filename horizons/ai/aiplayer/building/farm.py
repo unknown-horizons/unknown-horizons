@@ -33,11 +33,15 @@ from horizons.world.buildability.terraincache import TerrainRequirement
 class FarmOptionCache(object):
 	def __init__(self, settlement_manager):
 		self.settlement_manager = settlement_manager
-		abstract_farm =  AbstractBuilding.buildings[BUILDINGS.FARM]
-		self.field_spots_set = abstract_farm._get_buildability_intersection(settlement_manager, (3, 3), TerrainRequirement.LAND, False)
-		self.farm_spots_set = self.field_spots_set.intersection(settlement_manager.production_builder.simple_collector_area_cache.cache[(3, 3)])
-		self.road_spots_set = abstract_farm._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND, False).union(settlement_manager.land_manager.roads)
-		self.raw_options = self._get_raw_options(self.farm_spots_set, self.field_spots_set, self.road_spots_set)
+		abstract_farm = AbstractBuilding.buildings[BUILDINGS.FARM]
+		self.field_spots_set = abstract_farm._get_buildability_intersection(settlement_manager,
+			(3, 3), TerrainRequirement.LAND, False)
+		self.farm_spots_set = self.field_spots_set.intersection(settlement_manager
+			.production_builder.simple_collector_area_cache.cache[(3, 3)])
+		self.road_spots_set = abstract_farm._get_buildability_intersection(settlement_manager,
+			(1, 1), TerrainRequirement.LAND, False).union(settlement_manager.land_manager.roads)
+		self.raw_options = self._get_raw_options(self.farm_spots_set, self.field_spots_set,
+			self.road_spots_set)
 		self.max_fields = self._get_max_fields()
 		self._positive_alignment = None
 
@@ -132,7 +136,8 @@ class FarmOptionCache(object):
 		if self._positive_alignment is None:
 			land_manager = self.settlement_manager.land_manager
 			village_builder = self.settlement_manager.village_builder
-			positive_alignment = land_manager.coastline.union(land_manager.roads, village_builder.plan.iterkeys())
+			positive_alignment = land_manager.coastline.union(land_manager.roads,
+				village_builder.plan.iterkeys())
 			production_builder_plan = self.settlement_manager.production_builder.plan
 			for (coords, purpose) in production_builder_plan:
 				if purpose != BUILDING_PURPOSE.NONE:
@@ -158,11 +163,11 @@ class AbstractFarm(AbstractBuilding):
 	@classmethod
 	def get_purpose(cls, resource_id):
 		return {
-			RES.FOOD:           BUILDING_PURPOSE.POTATO_FIELD,
-			RES.WOOL:           BUILDING_PURPOSE.PASTURE,
-			RES.SUGAR:          BUILDING_PURPOSE.SUGARCANE_FIELD,
+			RES.FOOD: BUILDING_PURPOSE.POTATO_FIELD,
+			RES.WOOL: BUILDING_PURPOSE.PASTURE,
+			RES.SUGAR: BUILDING_PURPOSE.SUGARCANE_FIELD,
 			RES.TOBACCO_LEAVES: BUILDING_PURPOSE.TOBACCO_FIELD,
-			RES.HERBS:          BUILDING_PURPOSE.HERBARY,
+			RES.HERBS: BUILDING_PURPOSE.HERBARY,
 		}.get(resource_id)
 
 	def get_evaluators(self, settlement_manager, resource_id):
@@ -183,7 +188,8 @@ class AbstractFarm(AbstractBuilding):
 		chosen_raw_options = []
 		for i in xrange(8, 0, -1):
 			if len(farm_field_buckets[i]) > options_left:
-				chosen_raw_options.extend(settlement_manager.session.random.sample(farm_field_buckets[i], options_left))
+				chosen_raw_options.extend(settlement_manager.session.random.sample(farm_field_buckets[i],
+					options_left))
 				options_left = 0
 			else:
 				chosen_raw_options.extend(farm_field_buckets[i])
@@ -203,7 +209,8 @@ class AbstractFarm(AbstractBuilding):
 		# create evaluators for completely new farms
 		for (_, (x, y), road_config) in chosen_raw_options:
 			road_dx, road_dy = road_configs[road_config]
-			evaluator = FarmEvaluator.create(production_builder, x, y, road_dx, road_dy, max_fields, field_purpose, field_spots_set, road_spots_set, positive_alignment)
+			evaluator = FarmEvaluator.create(production_builder, x, y, road_dx, road_dy, max_fields,
+				field_purpose, field_spots_set, road_spots_set, positive_alignment)
 			if evaluator is not None:
 				options.append(evaluator)
 
@@ -216,9 +223,11 @@ class AbstractFarm(AbstractBuilding):
 		return options
 
 	__cache = {}
+
 	def _get_option_cache(self, settlement_manager):
 		production_builder = settlement_manager.production_builder
-		current_cache_changes = (production_builder.island.last_change_id, production_builder.last_change_id)
+		current_cache_changes = (production_builder.island.last_change_id,
+			production_builder.last_change_id)
 
 		worldid = settlement_manager.worldid
 		if worldid in self.__cache and self.__cache[worldid][0] != current_cache_changes:
@@ -257,17 +266,20 @@ class FarmEvaluator(BuildingEvaluator):
 		# right next to the farm
 		first_class = [(-3, -3), (-3, 0), (-3, 3), (0, -3), (0, 3), (3, -3), (3, 0), (3, 3)]
 		# offset by a road right next to the farm
-		second_class = [(-4, -3), (-4, 0), (-4, 3), (-3, -4), (-3, 4), (0, -4), (0, 4), (3, -4), (3, 4), (4, -3), (4, 0), (4, 3)]
+		second_class = [(-4, -3), (-4, 0), (-4, 3), (-3, -4), (-3, 4), (0, -4), (0, 4),
+			(3, -4), (3, 4), (4, -3), (4, 0), (4, 3)]
 		# offset by crossing roads
 		third_class = [(-4, -4), (-4, 4), (4, -4), (4, 4)]
 		cls.__field_offsets = first_class + second_class + third_class
 
 	@classmethod
 	def _suitable_for_road(self, production_builder, coords):
-		return coords in production_builder.land_manager.roads or (coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
+		return coords in production_builder.land_manager.roads or (coords in production_builder.plan
+			and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
 
 	@classmethod
-	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set, positive_alignment):
+	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose,
+			field_spots_set, road_spots_set, positive_alignment):
 		farm_plan = {}
 
 		# place the farm area road
@@ -288,7 +300,7 @@ class FarmEvaluator(BuildingEvaluator):
 		fields = 0
 		for (dx, dy) in cls.__field_offsets:
 			if fields >= 8:
-				break # unable to place more anyway
+				break  # unable to place more anyway
 			coords = (farm_x + dx, farm_y + dy)
 			if coords not in field_spots_set:
 				continue
@@ -300,7 +312,7 @@ class FarmEvaluator(BuildingEvaluator):
 					field_fits = False
 					break
 			if not field_fits:
-				continue # some part of the area is reserved for something else
+				continue  # some part of the area is reserved for something else
 
 			fields += 1
 			for (fdx, fdy) in cls.__field_pos_offsets:
@@ -308,7 +320,7 @@ class FarmEvaluator(BuildingEvaluator):
 				farm_plan[coords2] = BUILDING_PURPOSE.RESERVED
 			farm_plan[coords] = field_purpose
 		if fields < min_fields:
-			return None # go for the most fields possible
+			return None  # go for the most fields possible
 
 		# add the farm itself to the plan
 		builder = BasicBuilder.create(BUILDINGS.FARM, (farm_x, farm_y), 0)
@@ -409,29 +421,29 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, new_field_purpose):
 		building_id = {
-			BUILDING_PURPOSE.POTATO_FIELD:    BUILDINGS.POTATO_FIELD,
-			BUILDING_PURPOSE.PASTURE:         BUILDINGS.PASTURE,
+			BUILDING_PURPOSE.POTATO_FIELD: BUILDINGS.POTATO_FIELD,
+			BUILDING_PURPOSE.PASTURE: BUILDINGS.PASTURE,
 			BUILDING_PURPOSE.SUGARCANE_FIELD: BUILDINGS.SUGARCANE_FIELD,
-			BUILDING_PURPOSE.TOBACCO_FIELD:   BUILDINGS.TOBACCO_FIELD,
-			BUILDING_PURPOSE.HERBARY:         BUILDINGS.HERBARY,
+			BUILDING_PURPOSE.TOBACCO_FIELD: BUILDINGS.TOBACCO_FIELD,
+			BUILDING_PURPOSE.HERBARY: BUILDINGS.HERBARY,
 		}.get(new_field_purpose)
 
 		personality = area_builder.owner.personality_manager.get('ModifiedFieldEvaluator')
 		value = {
-			BUILDING_PURPOSE.POTATO_FIELD:    personality.add_potato_field_value,
-			BUILDING_PURPOSE.PASTURE:         personality.add_pasture_value,
+			BUILDING_PURPOSE.POTATO_FIELD: personality.add_potato_field_value,
+			BUILDING_PURPOSE.PASTURE: personality.add_pasture_value,
 			BUILDING_PURPOSE.SUGARCANE_FIELD: personality.add_sugarcane_field_value,
-			BUILDING_PURPOSE.TOBACCO_FIELD:   personality.add_tobacco_field_value,
-			BUILDING_PURPOSE.HERBARY:         personality.add_herbary_field_value,
+			BUILDING_PURPOSE.TOBACCO_FIELD: personality.add_tobacco_field_value,
+			BUILDING_PURPOSE.HERBARY: personality.add_herbary_field_value,
 		}.get(new_field_purpose, 0)
 
 		old_field_purpose = area_builder.plan[(x, y)][0]
 		value -= {
-			BUILDING_PURPOSE.POTATO_FIELD:    personality.remove_unused_potato_field_penalty,
-			BUILDING_PURPOSE.PASTURE:         personality.remove_unused_pasture_penalty,
+			BUILDING_PURPOSE.POTATO_FIELD: personality.remove_unused_potato_field_penalty,
+			BUILDING_PURPOSE.PASTURE: personality.remove_unused_pasture_penalty,
 			BUILDING_PURPOSE.SUGARCANE_FIELD: personality.remove_unused_sugarcane_field_penalty,
-			BUILDING_PURPOSE.TOBACCO_FIELD:   personality.remove_unused_tobacco_field_penalty,
-			BUILDING_PURPOSE.HERBARY:         personality.remove_unused_herbary_field_penalty,
+			BUILDING_PURPOSE.TOBACCO_FIELD: personality.remove_unused_tobacco_field_penalty,
+			BUILDING_PURPOSE.HERBARY: personality.remove_unused_herbary_field_penalty,
 		}.get(old_field_purpose, 0)
 
 		builder = BasicBuilder.create(building_id, (x, y), 0)
@@ -447,7 +459,8 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
 
 		# remove the old designation
-		self.area_builder.unused_fields[self._old_field_purpose].remove(self.builder.position.origin.to_tuple())
+		self.area_builder.unused_fields[self._old_field_purpose].remove(self.builder
+			.position.origin.to_tuple())
 
 		return (BUILD_RESULT.OK, building)
 

@@ -31,6 +31,8 @@ this implementation can be viewed as the the common denominator of building hand
 required by World and Island.
 The instances need to provide a get_tile function.
 """
+
+
 class BuildingOwner(object):
 	def __init__(self, *args, **kwargs):
 		super(BuildingOwner, self).__init__(*args, **kwargs)
@@ -44,8 +46,8 @@ class BuildingOwner(object):
 		# Set all tiles in the buildings position(rect)
 		for point in building.position:
 			tile = self.get_tile(point)
-			tile.blocked = True # Set tile blocked
-			tile.object = building # Set tile's object to the building
+			tile.blocked = True  # Set tile blocked
+			tile.object = building  # Set tile's object to the building
 		self.buildings.append(building)
 		building.init()
 		return building
@@ -71,12 +73,12 @@ class BuildingOwner(object):
 		for point in rect:
 			try:
 				if player is None or self.get_tile(point).settlement.owner == player:
-					settlements.add( self.get_tile(point).settlement )
+					settlements.add(self.get_tile(point).settlement)
 			except AttributeError:
 				# some tiles don't have settlements, we don't explicitly check for them cause
 				# its faster this way.
 				pass
-		settlements.discard(None) # None values might have been added, we don't want them
+		settlements.discard(None)  # None values might have been added, we don't want them
 		return list(settlements)
 
 	def get_building(self, point):
@@ -130,9 +132,10 @@ class BuildingOwner(object):
 		for provider in provider_list:
 			if (player is None or player == provider.owner):
 				# inline of :
-				#provider.position.distance_to_rect(radiusrect.center) <= radiusrect.radius:
+				# provider.position.distance_to_rect(radiusrect.center) <= radiusrect.radius:
 				r1 = provider.position
-				if ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2) + (max(r1.top - r2.bottom, 0, r2.top - r1.bottom) ** 2)) <= radius_squared:
+				if ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2)
+						+ (max(r1.top - r2.bottom, 0, r2.top - r1.bottom) ** 2)) <= radius_squared:
 					yield provider
 
 	def save(self, db):

@@ -22,6 +22,7 @@
 
 from collections import defaultdict
 
+
 class ProviderHandler(list):
 	"""Class to keep track of providers of an area, especially an island.
 	It acts as a data structure for quick retrieval of special properties, that only resource
@@ -43,7 +44,3 @@ class ProviderHandler(list):
 		for res in provider.provided_resources:
 			self.provider_by_resources[res].remove(provider)
 		super(ProviderHandler, self).remove(provider)
-
-
-
-

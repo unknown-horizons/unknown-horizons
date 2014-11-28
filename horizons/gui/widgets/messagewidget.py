@@ -44,16 +44,16 @@ class MessageWidget(LivingObject):
 	"""
 
 	BG_IMAGE_MIDDLE = 'content/gui/images/background/widgets/message_bg_middle.png'
-	IMG_HEIGHT = 24 # distance of above segments in px.
+	IMG_HEIGHT = 24  # distance of above segments in px.
 	LINE_HEIGHT = 17
 	ICON_TEMPLATE = 'messagewidget_icon.xml'
 	MSG_TEMPLATE = 'messagewidget_message.xml'
-	CHARS_PER_LINE = 31 # character count after which we start new line. no wrap
-	SHOW_NEW_MESSAGE_TEXT = 7 # seconds
+	CHARS_PER_LINE = 31  # character count after which we start new line. no wrap
+	SHOW_NEW_MESSAGE_TEXT = 7  # seconds
 	MAX_MESSAGES = 5
 
-	_DUPLICATE_TIME_THRESHOLD = 10 # sec
-	_DUPLICATE_SPACE_THRESHOLD = 8 # distance
+	_DUPLICATE_TIME_THRESHOLD = 10  # sec
+	_DUPLICATE_SPACE_THRESHOLD = 8  # distance
 
 	OVERVIEW_WIDGET = 'messagewidget_overview.xml'
 
@@ -62,10 +62,10 @@ class MessageWidget(LivingObject):
 	def __init__(self, session):
 		super(MessageWidget, self).__init__()
 		self.session = session
-		self.active_messages = [] # for displayed messages
-		self.archive = [] # messages, that aren't displayed any more
-		self.chat = [] # chat messages sent by players
-		self.msgcount = itertools.count() # sort to preserve order after loading
+		self.active_messages = []  # for displayed messages
+		self.archive = []  # messages, that aren't displayed any more
+		self.chat = []  # chat messages sent by players
+		self.msgcount = itertools.count()  # sort to preserve order after loading
 
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
 		screenheight = horizons.globals.fife.engine_settings.getScreenHeight()
@@ -78,10 +78,11 @@ class MessageWidget(LivingObject):
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
-		self._last_message = {} # used to detect fast subsequent messages in add()
+		self._last_message = {}  # used to detect fast subsequent messages in add()
 		self.draw_widget()
 
-	def add(self, string_id, point=None, msg_type=None, message_dict=None, play_sound=True, check_duplicate=False):
+	def add(self, string_id, point=None, msg_type=None, message_dict=None, play_sound=True,
+		check_duplicate=False):
 		"""Adds a message to the MessageWidget.
 		@param point: point where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
@@ -121,8 +122,8 @@ class MessageWidget(LivingObject):
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
 		return self._add_message(_IngameMessage(point=point, id=None, msg_type=msg_type,
-		                                        display=visible_for, created=self.msgcount.next(),
-		                                        message=messagetext, icon_id=icon_id))
+			display=visible_for, created=self.msgcount.next(),
+			message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
 		""" See docstring for add().
@@ -146,13 +147,13 @@ class MessageWidget(LivingObject):
 			AmbientSoundComponent.play_special('message')
 
 		if message.x is not None and message.y is not None:
-			self.session.ingame_gui.minimap.highlight( (message.x, message.y) )
+			self.session.ingame_gui.minimap.highlight((message.x, message.y))
 
 		self.draw_widget()
 		self.show_text(0)
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
 
-		self.session.ingame_gui.logbook.display_message_history() # update message history on new message
+		self.session.ingame_gui.logbook.display_message_history()  # update message history on new message
 
 		return message.created
 
@@ -162,7 +163,7 @@ class MessageWidget(LivingObject):
 		Inactive messages need their icon hovered to display their text again
 		"""
 		button_space = self.widget.findChild(name="button_space")
-		button_space.removeAllChildren() # Remove old buttons
+		button_space.removeAllChildren()  # Remove old buttons
 		for index, message in enumerate(self.active_messages):
 			if index >= len(self.active_messages):
 				# Only display most recent notifications
@@ -180,15 +181,16 @@ class MessageWidget(LivingObject):
 			if message.x is not None and message.y is not None:
 				# move camera to source of event on click, if there is a source
 				callback = Callback.ChainedCallbacks(
-					   callback, # this makes it so the order of callback assignment doesn't matter
-					   Callback(self.session.view.center, message.x, message.y),
-					   Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
-				   )
+					callback,  # this makes it so the order of callback assignment doesn't matter
+					Callback(self.session.view.center, message.x, message.y),
+					Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y))
+				)
 			if message.msg_type == "logbook":
 				# open logbook to relevant page
 				callback = Callback.ChainedCallbacks(
-					   callback, # this makes it so the order of callback assignment doesn't matter
-					   Callback(self.session.ingame_gui.windows.toggle, self.session.ingame_gui.logbook, msg_id=message.created)
+					callback,  # this makes it so the order of callback assignment doesn't matter
+					Callback(self.session.ingame_gui.windows.toggle,
+					self.session.ingame_gui.logbook, msg_id=message.created)
 				)
 			if callback:
 				events[button.name] = callback
@@ -263,7 +265,7 @@ class MessageWidget(LivingObject):
 
 	def end(self):
 		self.hide_text()
-		self.widget.findChild(name="button_space").removeAllChildren() # Remove old buttons
+		self.widget.findChild(name="button_space").removeAllChildren()  # Remove old buttons
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.active_messages = []
 		self.archive = []
@@ -271,7 +273,7 @@ class MessageWidget(LivingObject):
 
 	def save(self, db):
 		for message in self.active_messages:
-			if message.id is not None and message.id != 'CHAT': # only save default messages (for now)
+			if message.id is not None and message.id != 'CHAT':  # only save default messages (for now)
 				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) "
 				   "VALUES (?, ?, ?, ?, ?, ?, ?)",
 				   message.id, message.x, message.y, int(message.read),
@@ -305,7 +307,7 @@ class MessageWidget(LivingObject):
 			else:
 				self.archive.append(msg)
 		count = max([-1] + [m.created for m in self.active_messages + self.archive + self.chat]) + 1
-		self.msgcount = itertools.count(count) # start keyword only works with 2.7+
+		self.msgcount = itertools.count(count)  # start keyword only works with 2.7+
 		self.draw_widget()
 
 
@@ -320,14 +322,14 @@ class _IngameMessage(object):
 	@param created: tickid when the message was created. Keeps message order after load.
 
 	@param msg_type: messages coupled with logbook entries use this to link to pages
-	@param read: #TODO
-	@param display: #TODO
+	@param read:  # TODO
+	@param display:  # TODO
 	@param message: message text to display. Loads preset for `id` if None.
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	@param icon_id: which icon to display. Loads preset for `id` if None.
 	"""
 	def __init__(self, point, id, created,
-	             msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
+			msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
 		self.x, self.y = None, None
 		if point is not None:
 			self.x, self.y = point.x, point.y
@@ -343,13 +345,13 @@ class _IngameMessage(object):
 			self.message = message
 		else:
 			msg = _(horizons.globals.db.get_msg_text(id))
-			#TODO why can message_dict not be used with custom messages (`if` branch above)
+			# TODO why can message_dict not be used with custom messages (`if` branch above)
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
 				self.message = msg
 				self.log.warning(u'Unsubstituted string %s in %s message "%s", dict %s',
-				                 err, msg, id, message_dict)
+					err, msg, id, message_dict)
 
 	def __repr__(self):
 		return "% 4d: %s %s %s%s" % (self.created, self.id,

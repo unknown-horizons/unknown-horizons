@@ -22,10 +22,12 @@
 from horizons.util.worldobject import WorldObject
 from horizons.command import Command
 
+
 class GenericDiplomacyCommand(Command):
 	def __init__(self, a, b):
 		self.player1_id = a.worldid
 		self.player2_id = b.worldid
+
 
 class AddAllyPair(GenericDiplomacyCommand):
 	def __call__(self, issuer):
@@ -35,6 +37,7 @@ class AddAllyPair(GenericDiplomacyCommand):
 
 Command.allow_network(AddAllyPair)
 
+
 class AddEnemyPair(GenericDiplomacyCommand):
 	def __call__(self, issuer):
 		player1 = WorldObject.get_object_by_id(self.player1_id)
@@ -43,6 +46,7 @@ class AddEnemyPair(GenericDiplomacyCommand):
 
 Command.allow_network(AddEnemyPair)
 
+
 class AddNeutralPair(GenericDiplomacyCommand):
 	def __call__(self, issuer):
 		player1 = WorldObject.get_object_by_id(self.player1_id)
@@ -50,4 +54,3 @@ class AddNeutralPair(GenericDiplomacyCommand):
 		player1.session.world.diplomacy.add_neutral_pair(player1, player2)
 
 Command.allow_network(AddNeutralPair)
-

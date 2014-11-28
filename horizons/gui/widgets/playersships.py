@@ -29,6 +29,7 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""
 
@@ -41,15 +42,17 @@ class PlayersShips(StatsWidget):
 		super(PlayersShips, self).refresh()
 		player = self.session.world.player
 		self._clear_entries()
-		self._gui.findChild(name='headline').text = _("Ships of {player}").format(player=self.session.world.player.name)
+		self._gui.findChild(name='headline').text = _("Ships of {player}").format(
+			player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}
-		for ship in sorted(self.session.world.ships, key = lambda ship: (ship.get_component(NamedComponent).name, ship.worldid)):
+		for ship in sorted(self.session.world.ships, key=lambda ship: (
+			ship.get_component(NamedComponent).name, ship.worldid)):
 			if ship.owner is player and ship.has_component(SelectableComponent):
 				sequence_number += 1
 				name_label, rename_icon, status_label, status_position = \
-				          self._add_line_to_gui(ship, sequence_number)
+					self._add_line_to_gui(ship, sequence_number)
 				events['%s/mouseClicked' % name_label.name] = Callback(self._go_to_ship, ship)
 				cb = Callback(self.session.ingame_gui.show_change_name_dialog, ship)
 				events['%s/mouseClicked' % rename_icon.name] = cb
@@ -76,7 +79,7 @@ class PlayersShips(StatsWidget):
 		rename_icon = RenameImageButton(name='rename_%d' % ship.worldid)
 		rename_icon.path = "images/background/rename_feather_20"
 		rename_icon.helptext = _("Click to change the name of this ship")
-		rename_icon.max_size = (20, 20) # (width, height)
+		rename_icon.max_size = (20, 20)  # (width, height)
 
 		ship_type = Label(name='ship_type_%d' % ship.worldid)
 		ship_type.text = ship.classname
@@ -90,7 +93,7 @@ class PlayersShips(StatsWidget):
 			if weapon_list:
 				weapons.text = u', '.join(weapon_list)
 			else:
-				#i18n There are no weapons equipped at the moment.
+				# i18n There are no weapons equipped at the moment.
 				weapons.text = _('None')
 		else:
 			weapons.text = _('N/A')

@@ -25,6 +25,7 @@ from horizons.constants import AI, COLORS
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 
+
 class StartGameOptions(object):
 	def __init__(self, game_identifier):
 		super(StartGameOptions, self).__init__()
@@ -53,9 +54,11 @@ class StartGameOptions(object):
 		# NOTE: this must be sorted before iteration, cause there is no defined order for
 		#       iterating a dict, and it must happen in the same order for mp games.
 		for i in sorted(self._get_player_list(), key=itemgetter('id')):
-			session.world.setup_player(i['id'], i['name'], i['color'], i['clientid'] if self.is_multiplayer else None, i['local'], i['ai'], i['difficulty'])
+			session.world.setup_player(i['id'], i['name'], i['color'],
+				i['clientid'] if self.is_multiplayer else None, i['local'], i['ai'], i['difficulty'])
 		session.world.set_forced_player(self.force_player_id)
-		center = session.world.init_new_world(self.trader_enabled, self.pirate_enabled, self.natural_resource_multiplier)
+		center = session.world.init_new_world(self.trader_enabled,
+			self.pirate_enabled, self.natural_resource_multiplier)
 		session.view.center(center[0], center[1])
 
 	def set_human_data(self, player_name, player_color):
@@ -81,22 +84,22 @@ class StartGameOptions(object):
 
 		# add AI players with a distinct color; if none can be found then use black
 		for num in xrange(self.ai_players):
-			color = Color[COLORS.BLACK] # if none can be found then be black
+			color = Color[COLORS.BLACK]  # if none can be found then be black
 			for possible_color in Color:
 				if possible_color == Color[COLORS.BLACK]:
-					continue # black is used by the trader and the pirate
+					continue  # black is used by the trader and the pirate
 				used = any(possible_color == player['color'] for player in players)
 				if not used:
 					color = possible_color
 					break
 
 			players.append({
-				'id' : num + 2,
-				'name' : 'AI' + str(num + 1),
-				'color' : color,
-				'local' : False,
-				'ai' : True,
-				'difficulty' : difficulty_level[True],
+				'id': num + 2,
+				'name': 'AI' + str(num + 1),
+				'color': color,
+				'local': False,
+				'ai': True,
+				'difficulty': difficulty_level[True],
 			})
 		return players
 
@@ -110,7 +113,7 @@ class StartGameOptions(object):
 
 	@classmethod
 	def create_start_singleplayer(cls, game_identifier, is_scenario, ai_players,
-		                          trader_enabled, pirate_enabled, force_player_id, is_map):
+			trader_enabled, pirate_enabled, force_player_id, is_map):
 		options = StartGameOptions(game_identifier)
 		options.is_scenario = is_scenario
 		options.ai_players = ai_players

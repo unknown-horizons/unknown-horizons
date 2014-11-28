@@ -29,28 +29,30 @@ from horizons.world.buildability.terraincache import TerrainRequirement
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
+
 class BuildableErrorTypes(object):
 	"""Killjoy class. Collection of reasons why you can't build."""
 	NO_ISLAND, UNFIT_TILE, NO_SETTLEMENT, OTHER_PLAYERS_SETTLEMENT, \
-	OTHER_PLAYERS_SETTLEMENT_ON_ISLAND, OTHER_BUILDING_THERE, UNIT_THERE, NO_COAST, \
-	NO_OCEAN_NEARBY, ONLY_NEAR_SHIP, NEED_RES_SOURCE, ISLAND_ALREADY_SETTLED, \
-	NO_FLAT_LAND = range(13)
+		OTHER_PLAYERS_SETTLEMENT_ON_ISLAND, OTHER_BUILDING_THERE, UNIT_THERE, NO_COAST, \
+		NO_OCEAN_NEARBY, ONLY_NEAR_SHIP, NEED_RES_SOURCE, ISLAND_ALREADY_SETTLED, \
+		NO_FLAT_LAND = range(13)
 
 	text = {
-	  NO_ISLAND : _("This building must be built on an island."),
-	  UNFIT_TILE : _("This ground is not suitable for this building."),
-	  NO_SETTLEMENT : _("This building has to be built within your settlement."),
-	  OTHER_PLAYERS_SETTLEMENT : _("This area is already occupied by another player."),
-	  OTHER_BUILDING_THERE : _("This area is already occupied by another building."),
-	  UNIT_THERE : _("This area is already occupied by a unit."),
-	  NO_COAST : _("This building must be built on the coastline."),
-	  NO_OCEAN_NEARBY : _("This building has to be placed at the ocean."),
-	  ONLY_NEAR_SHIP : _("This spot is too far away from your ship."),
-	  NEED_RES_SOURCE : _("This building can only be built on a resource source."),
-	  ISLAND_ALREADY_SETTLED : _("You have already settled this island."),
-	  NO_FLAT_LAND : _("This building must be partly on flat land.")
+	  NO_ISLAND: _("This building must be built on an island."),
+	  UNFIT_TILE: _("This ground is not suitable for this building."),
+	  NO_SETTLEMENT: _("This building has to be built within your settlement."),
+	  OTHER_PLAYERS_SETTLEMENT: _("This area is already occupied by another player."),
+	  OTHER_BUILDING_THERE: _("This area is already occupied by another building."),
+	  UNIT_THERE: _("This area is already occupied by a unit."),
+	  NO_COAST: _("This building must be built on the coastline."),
+	  NO_OCEAN_NEARBY: _("This building has to be placed at the ocean."),
+	  ONLY_NEAR_SHIP: _("This spot is too far away from your ship."),
+	  NEED_RES_SOURCE: _("This building can only be built on a resource source."),
+	  ISLAND_ALREADY_SETTLED: _("You have already settled this island."),
+	  NO_FLAT_LAND: _("This building must be partly on flat land.")
 	}
 	# TODO: say res source which one we need, maybe even highlight those
+
 
 class _BuildPosition(object):
 	"""A possible build position in form of a data structure.
@@ -90,18 +92,20 @@ class _BuildPosition(object):
 	def __hash__(self):
 		return hash((self.position, self.rotation, self.action))
 
+
 class _NotBuildableError(Exception):
 	"""Internal exception."""
 	def __init__(self, errortype):
 		super(_NotBuildableError, self).__init__()
 		self.errortype = errortype
 
+
 class Buildable(object):
 	"""Interface for every kind of buildable objects.
 	Contains methods to determine whether a building can be placed on a coordinate, regarding
 	island, settlement, ground requirements etc. Does not care about building costs."""
 
-	irregular_conditions = False # whether all ground tiles have to fulfill the same conditions
+	irregular_conditions = False  # whether all ground tiles have to fulfill the same conditions
 	terrain_type = TerrainRequirement.LAND
 
 	# check this far for fuzzy build
@@ -170,13 +174,14 @@ class Buildable(object):
 			return False
 
 		if cls.irregular_conditions:
-			# check in case not all ground tiles have to fulfill the same conditions (e.g. when 1 tile has to be coast)
+			# check in case not all ground tiles have to fulfill the same conditions
+			# (e.g. when 1 tile has to be coast)
 
 			# at least one location that has this tile must be actually buildable
 			# area of the buildings is (x, y) + width/height, therefore all build positions that
 			# include (x, y) are (x, y) - ( [0..width], [0..height] )
 			return any(cls.check_build(session, Point(tile.x - x_off, tile.y - y_off), ship=ship)
-			           for x_off, y_off in itertools.product(xrange(cls.size[0]), xrange(cls.size[1])) )
+			           for x_off, y_off in itertools.product(xrange(cls.size[0]), xrange(cls.size[1])))
 		else:
 			return True
 
@@ -184,28 +189,30 @@ class Buildable(object):
 	def check_build_fuzzy(cls, session, point, *args, **kwargs):
 		"""Same as check_build, but consider point to be a vague suggestions
 		and search nearby area for buildable position.
-		Returns one of the closest viable positions or the original position as not buildable if none can be found"""
+		Returns one of the closest viable positions or
+		the original position as not buildable if none can be found"""
 
 		# this is some kind of case study of applied functional programming
 
-		def filter_duplicates(gen, transform=lambda x : x):
+		def filter_duplicates(gen, transform=lambda x: x):
 			"""
 			@param transform: transforms elements to hashable equivalent
 			"""
 			checked = set()
-			for elem in itertools.ifilterfalse(lambda e : transform(e) in checked, gen):
+			for elem in itertools.ifilterfalse(lambda e: transform(e) in checked, gen):
 				checked.add(transform(elem))
 				yield elem
 
 		# generate coords near point, search coords of small circles to larger ones
 		def get_positions():
-			iters = (iter(Circle(point, radius)) for radius in xrange(cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE))
+			iters = (iter(Circle(point, radius)) for radius in xrange(
+				cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE))
 			return itertools.chain.from_iterable(iters)
 
 		# generate positions and check for matches
-		check_pos = lambda pos : cls.check_build(session, pos, *args, **kwargs)
+		check_pos = lambda pos: cls.check_build(session, pos, *args, **kwargs)
 		checked = itertools.imap(check_pos,
-		                         filter_duplicates(get_positions(), transform=lambda p : p.to_tuple()))
+		                         filter_duplicates(get_positions(), transform=lambda p: p.to_tuple()))
 
 		# filter positive solutions
 		result_generator = itertools.ifilter(lambda buildpos: buildpos.buildable, checked)
@@ -217,9 +224,7 @@ class Buildable(object):
 			# No match found, fail with specified parameters.
 			return check_pos(point)
 
-
 	# PRIVATE PARTS
-
 	@classmethod
 	def _check_island(cls, session, position, island=None):
 		"""Check if there is an island and enough tiles.
@@ -227,7 +232,7 @@ class Buildable(object):
 		@param position: coord Point to build at
 		@param island: Island instance if known before"""
 		if island is None:
-			if position.__class__ is Rect: # performance optimization
+			if position.__class__ is Rect:  # performance optimization
 				at = position.left, position.top
 			else:
 				at = position.center.to_tuple()
@@ -279,7 +284,7 @@ class Buildable(object):
 		tearset = set()
 		for tile in island.get_tiles_tuple(position.tuple_iter()):
 			obj = tile.object
-			if obj is not None: # tile contains an object
+			if obj is not None:  # tile contains an object
 				if obj.buildable_upon:
 					if obj.__class__ is cls:
 						# don't tear trees to build trees over them
@@ -294,7 +299,7 @@ class Buildable(object):
 			for build in builds_in_construction:
 				(sizex, sizey) = Entities.buildings[build.building_class].size
 				for (neededx, neededy) in position.tuple_iter():
-					if neededx in range(build.x, build.x+sizex) and neededy in range(build.y, build.y+sizey):
+					if neededx in range(build.x, build.x + sizex) and neededy in range(build.y, build.y + sizey):
 						raise _NotBuildableError(BuildableErrorTypes.OTHER_BUILDING_THERE)
 		return tearset
 
@@ -304,16 +309,18 @@ class Buildable(object):
 			if tup in session.world.ground_unit_map:
 				raise _NotBuildableError(BuildableErrorTypes.UNIT_THERE)
 
+
 class BuildableSingle(Buildable):
 	"""Buildings one can build single. """
 	@classmethod
 	def check_build_line(cls, session, point1, point2, rotation=45, ship=None):
 		# only build 1 building at endpoint
 		# correct placement for large buildings (mouse should be at center of building)
-		point2 = point2.copy() # only change copy
+		point2 = point2.copy()  # only change copy
 		point2.x -= (cls.size[0] - 1) / 2
 		point2.y -= (cls.size[1] - 1) / 2
-		return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
+		return [cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship)]
+
 
 class BuildableSingleEverywhere(BuildableSingle):
 	"""Buildings, that can be built everywhere. Usually not used for buildings placeable by humans."""
@@ -362,7 +369,7 @@ class BuildableRect(Buildable):
 		for x in xrange(xstart, xend, xstep):
 			for y in xrange(ystart, yend, ystep):
 				possible_builds.append(
-				  cls.check_build(session, Point(x, y), rotation=rotation, ship=ship)
+					cls.check_build(session, Point(x, y), rotation=rotation, ship=ship)
 				)
 		return possible_builds
 
@@ -374,7 +381,7 @@ class BuildableLine(Buildable):
 
 		# Pathfinding currently only supports buildingsize 1x1, so don't use it in this case
 		if cls.size != (1, 1):
-			return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
+			return [cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship)]
 
 		# use pathfinding to get a path, then try to build along it
 		island = session.world.get_island(point1)
@@ -382,21 +389,21 @@ class BuildableLine(Buildable):
 			return []
 
 		path = RoadPathFinder()(island.path_nodes.nodes, point1.to_tuple(),
-		                        point2.to_tuple(), rotation in (45, 225))
-		if path is None: # can't find a path between these points
-			return [] # TODO: maybe implement alternative strategy
+					  point2.to_tuple(), rotation in (45, 225))
+		if path is None:  # can't find a path between these points
+			return []  # TODO: maybe implement alternative strategy
 
 		possible_builds = []
 
-		#TODO duplicates recalculation code in world.building.path
+		# TODO duplicates recalculation code in world.building.path
 		for x, y in path:
 			action = ''
-			for action_char, (xoff, yoff) in \
-			    sorted(BUILDINGS.ACTION.action_offset_dict.iteritems()): # order is important here
+			for action_char, (xoff, yoff) in sorted(
+				BUILDINGS.ACTION.action_offset_dict.iteritems()):  # order is important here
 				if action_char in 'abcd' and (xoff + x, yoff + y) in path:
 					action += action_char
 			if action == '':
-				action = 'single' # single trail piece with no neighbors
+				action = 'single'  # single trail piece with no neighbors
 
 			build = cls.check_build(session, Point(x, y))
 			build.action = action
@@ -434,7 +441,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 				coastline_found = True
 			elif 'constructible' in tile.classes:
 				flat_land_found = True
-			elif 'constructible' not in tile.classes: # neither coastline, nor constructible
+			elif 'constructible' not in tile.classes:  # neither coastline, nor constructible
 				raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
 		if not coastline_found:
 			raise _NotBuildableError(BuildableErrorTypes.NO_COAST)
@@ -456,7 +463,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 				is_coastline = ('coastline' in session.world.get_tile(point).classes)
 			else:
 				is_coastline = False
-			coastline[point.x-x, point.y-y] = is_coastline
+			coastline[point.x - x, point.y - y] = is_coastline
 
 		""" coastline looks something like this:
 		111
@@ -470,10 +477,10 @@ class BuildableSingleOnCoast(BuildableSingle):
 		   225
 		"""
 		coast_line_points_per_side = {
-		   45: sum(coastline[(x, 0)] for x in xrange(0, cls.size[0]) ),
-		  135: sum(coastline[(0, y)] for y in xrange(0, cls.size[1]) ),
-		  225: sum(coastline[(x, cls.size[1] - 1)] for x in xrange(0, cls.size[0]) ),
-		  315: sum(coastline[(cls.size[0] - 1, y)] for y in xrange(0, cls.size[1]) ),
+			45: sum(coastline[(x, 0)] for x in xrange(0, cls.size[0])),
+			135: sum(coastline[(0, y)] for y in xrange(0, cls.size[1])),
+			225: sum(coastline[(x, cls.size[1] - 1)] for x in xrange(0, cls.size[0])),
+			315: sum(coastline[(cls.size[0] - 1, y)] for y in xrange(0, cls.size[1])),
 		}
 
 		# return rotation with biggest value
@@ -501,7 +508,8 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 		posis = position.get_coordinates()
 		for tile in posis:
 			for rad in Circle(Point(*tile), 3):
-				if rad in session.world.water_body and session.world.water_body[rad] == session.world.sea_number:
+				if (rad in session.world.water_body
+						and session.world.water_body[rad] == session.world.sea_number):
 					# Found legit see tile
 					return island
 		raise _NotBuildableError(BuildableErrorTypes.NO_OCEAN_NEARBY)
@@ -530,7 +538,8 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 
 
 class BuildableSingleOnDeposit(BuildableSingle):
-	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
+	"""For mines; those buildings are only buildable upon other buildings
+	(clay pit on clay deposit, e.g.)
 	For now, mines can only be built on a single type of deposit.
 	This is specified in object files, and saved in cls.buildable_on_deposit in
 	the buildingclass.
@@ -547,7 +556,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 		for tile in island.get_tiles_tuple(position.tuple_iter()):
 			if tile.object is None or \
 			   tile.object.id != cls.buildable_on_deposit_type or \
-			   (deposit is not None and tile.object != deposit): # only build on 1 deposit
+			   (deposit is not None and tile.object != deposit):  # only build on 1 deposit
 				raise _NotBuildableError(BuildableErrorTypes.NEED_RES_SOURCE)
 			deposit = tile.object
 		return set([deposit.worldid])
@@ -555,7 +564,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 	@classmethod
 	def _check_rotation(cls, session, position, rotation):
 		"""The rotation should be the same as the one of the underlying mountain"""
-		tearset = cls._check_buildings(session, position) # will raise on problems
+		tearset = cls._check_buildings(session, position)  # will raise on problems
 		# rotation fix code is only reached when building is buildable
 		mountain = WorldObject.get_object_by_id(iter(tearset).next())
 		return mountain.rotation

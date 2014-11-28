@@ -25,14 +25,16 @@ import re
 
 from horizons.extscheduler import ExtScheduler
 
+
 class PychanAnimation(object):
 	"""Displays images in short succession in a pychan icon."""
 
 	def __init__(self, icon, directory):
 		self.icon = icon
 		files = [os.path.join(directory, filename)
-		         for filename in os.listdir(directory)
-		         if filename.endswith('.png')]
+			for filename in os.listdir(directory)
+			if filename.endswith('.png')]
+
 		def find_int(f):
 			return int(re.search(r'\d+', os.path.basename(f)).group())
 		self.files = sorted(files, key=find_int)

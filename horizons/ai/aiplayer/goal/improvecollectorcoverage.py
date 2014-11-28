@@ -33,6 +33,7 @@ from horizons.entities import Entities
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
+
 class ImproveCollectorCoverageGoal(SettlementGoal):
 	def get_personality_name(self):
 		return 'ImproveCollectorCoverageGoal'
@@ -48,18 +49,22 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				if production.get_age() < 1.5 * PRODUCTION.STATISTICAL_WINDOW:
 					continue
 				history = production.get_state_history_times(False)
-				# take paused time into account because the AI pauses the production when the output storage is full
-				amount_paused = history[PRODUCTION.STATES.inventory_full.index] + history[PRODUCTION.STATES.paused.index]
+				# take paused time into account because the AI pauses the production
+				# when the output storage is full
+				amount_paused = history[PRODUCTION.STATES.inventory_full.index] \
+					+ history[PRODUCTION.STATES.paused.index]
 				if amount_paused < self.personality.min_bad_collector_coverage:
 					continue
 				for resource_id in production.get_produced_resources():
-					if self.settlement.get_component(StorageComponent).inventory.get_free_space_for(resource_id) > self.personality.min_free_space:
+					if self.settlement.get_component(StorageComponent).inventory.get_free_space_for(
+						resource_id) > self.personality.min_free_space:
 						# this is actually problematic
 						problematic_buildings[building.worldid] = building
 		return problematic_buildings.values()
 
 	def update(self):
-		if self.production_builder.last_collector_improvement_road + self.personality.collector_improvement_road_expires > Scheduler().cur_tick:
+		if (self.production_builder.last_collector_improvement_road +
+				self.personality.collector_improvement_road_expires > Scheduler().cur_tick):
 			# skip this goal leave time for the collectors to do their work
 			self._problematic_buildings = None
 			self._is_active = False
@@ -68,8 +73,10 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			self._is_active = bool(self._problematic_buildings)
 
 	def _build_extra_road_connection(self, building, collector_building):
-		collector_coords = set(coords for coords in self.production_builder.iter_possible_road_coords(collector_building.position, collector_building.position))
-		destination_coords = set(coords for coords in self.production_builder.iter_possible_road_coords(building.loading_area, building.position))
+		collector_coords = set(coords for coords in self.production_builder.iter_possible_road_coords(
+			collector_building.position, collector_building.position))
+		destination_coords = set(coords for coords in self.production_builder.iter_possible_road_coords(
+			building.loading_area, building.position))
 		pos = building.loading_area
 		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
 
@@ -94,7 +101,9 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		# which collectors could have actual unused capacity?
 		usable_collectors = []
 		for building in self.production_builder.collector_buildings:
-			if building.get_utilization_history_length() < 1000 or building.get_collector_utilization() < self.personality.max_good_collector_utilization:
+			if (building.get_utilization_history_length() < 1000
+					or building.get_collector_utilization()
+					< self.personality.max_good_collector_utilization):
 				usable_collectors.append(building)
 
 		# find possible problematic building to usable collector links
@@ -103,19 +112,23 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			for collector_building in usable_collectors:
 				distance = building.loading_area.distance(collector_building.position)
 				if distance > collector_building.radius:
-					continue # out of range anyway
+					continue  # out of range anyway
 				# TODO: check whether the link already exists
-				potential_road_connections.append((distance * collector_building.get_collector_utilization(), building, collector_building))
+				potential_road_connections.append((distance * collector_building.get_collector_utilization(),
+					building, collector_building))
 
 		# try the best link from the above list
 		for _, building, collector_building in sorted(potential_road_connections):
 			result = self._build_extra_road_connection(building, collector_building)
 			if result == BUILD_RESULT.OK:
 				self.production_builder.last_collector_improvement_road = current_tick
-				self.log.info('%s connected %s at %d, %d with %s at %d, %d', self, building.name, building.position.origin.x,
-					building.position.origin.y, collector_building.name, collector_building.position.origin.x, collector_building.position.origin.y)
+				self.log.info('%s connected %s at %d, %d with %s at %d, %d',
+					self, building.name, building.position.origin.x,
+					building.position.origin.y, collector_building.name,
+					collector_building.position.origin.x, collector_building.position.origin.y)
 			return result
-		self.log.info('%s found no good way to connect buildings that need more collectors to existing collector buildings', self)
+		self.log.info('%s found no good way to connect buildings that'
+			' need more collectors to existing collector buildings', self)
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def _build_extra_storage(self):
@@ -123,7 +136,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		if not self.production_builder.have_resources(BUILDINGS.STORAGE):
 			return BUILD_RESULT.NEED_RESOURCES
 
-		reachable = dict.fromkeys(self.land_manager.roads) # {(x, y): [(building worldid, distance), ...], ...}
+		reachable = dict.fromkeys(self.land_manager.roads)
+		# {(x, y): [(building worldid, distance), ...], ...}
 		for coords, (purpose, _) in self.production_builder.plan.iteritems():
 			if purpose == BUILDING_PURPOSE.NONE:
 				reachable[coords] = []
@@ -136,7 +150,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		for building in self._problematic_buildings:
 			distance = dict.fromkeys(reachable)
 			queue = deque()
-			for coords in self.production_builder.iter_possible_road_coords(building.loading_area, building.position):
+			for coords in self.production_builder.iter_possible_road_coords(
+				building.loading_area, building.position):
 				if coords in distance:
 					distance[coords] = 0
 					queue.append(coords)
@@ -156,8 +171,10 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 		options = []
 		storage_class = Entities.buildings[BUILDINGS.STORAGE]
-		storage_spots = self.island.terrain_cache.get_buildability_intersection(storage_class.terrain_type,
-		    storage_class.size, self.settlement.buildability_cache, self.production_builder.buildability_cache)
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(
+			storage_class.terrain_type,
+			storage_class.size, self.settlement.buildability_cache,
+			self.production_builder.buildability_cache)
 		for coords, building_distances in reachable.iteritems():
 			if coords not in storage_spots:
 				continue
@@ -178,7 +195,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			alignment = 1
 			for tile in self.production_builder.iter_neighbor_tiles(builder.position):
 				coords = (tile.x, tile.y)
-				if coords not in self.production_builder.plan or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				if (coords not in self.production_builder.plan or
+						self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE):
 					alignment += 1
 
 			value = usefulness + alignment * self.personality.alignment_coefficient
@@ -189,7 +207,8 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 	def execute(self):
 		result = self._build_extra_road()
 		if result == BUILD_RESULT.IMPOSSIBLE:
-			if self.production_builder.last_collector_improvement_storage + self.personality.collector_improvement_storage_expires <= Scheduler().cur_tick:
+			if (self.production_builder.last_collector_improvement_storage +
+					self.personality.collector_improvement_storage_expires <= Scheduler().cur_tick):
 				result = self._build_extra_storage()
 				if result == BUILD_RESULT.OK:
 					self.production_builder.last_collector_improvement_storage = Scheduler().cur_tick

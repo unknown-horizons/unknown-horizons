@@ -24,9 +24,9 @@ from horizons.world.disaster.buildinginfluencingdisaster import BuildingInfluenc
 from horizons.world.status import FireStatusIcon
 from horizons.constants import BUILDINGS, RES, TIER
 
+
 class FireDisaster(BuildingInfluencingDisaster):
 	"""Simulates a fire.
-
 	"""
 
 	TYPE = "The Flames Of The End"

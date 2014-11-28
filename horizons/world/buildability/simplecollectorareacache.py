@@ -21,6 +21,7 @@
 
 from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
 
+
 class SimpleCollectorAreaCache(object):
 	"""
 	A specialized PartialBinaryBuildabilityCache for keeping track of collector coverage.
@@ -34,7 +35,7 @@ class SimpleCollectorAreaCache(object):
 	def __init__(self, terrain_cache):
 		self.terrain_cache = terrain_cache
 		self._area_cache = PartialBinaryBuildabilityCache(terrain_cache)
-		self.cache = self._area_cache.cache # {(width, height): set((x, y), ...), ...}
+		self.cache = self._area_cache.cache  # {(width, height): set((x, y), ...), ...}
 		self._buildings = set()
 		self._area_coverage = {}
 

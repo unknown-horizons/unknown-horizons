@@ -21,6 +21,7 @@
 
 import json
 
+
 class JsonDecoder:
 	@classmethod
 	def load(cls, path):

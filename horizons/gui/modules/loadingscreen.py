@@ -45,14 +45,16 @@ FUN_QUOTES = {
 		"patience is a virtue \n(barra)",
 		"you must really, really love to test \n(portal 2)",
 		"here be bugs",
-		"strength is the capacity to break a chocolate bar into four pieces with your bare hands - and then eat just one of the pieces",
+		"strength is the capacity to break a chocolate bar into four pieces with your bare hands"
+		" - and then eat just one of the pieces",
 		"If one does not know to which port one is sailing, no wind is favorable",
-		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails",
+		"The pessimist complains about the wind; \nthe optimist expects it to change;"
+		" \nthe realist adjusts the sails",
 		"Travel beyond the horizon and discover unknown worlds!",
 		u"War… war never changes",
 		"Support Unknown Horizons with Cookies!",
 		"wow, looks nearly completed \n(Neomex)"
-    ]
+	]
 }
 
 
@@ -61,9 +63,9 @@ GAMEPLAY_TIPS = {
 	'items': [
 		_lazy("Press 'ESC' to access Game Menu."),
 		_lazy("Use 'SHIFT' to place multiple buildings."),
-		#TODO: This tip should be removed when all tiers are playable!!
+		# TODO: This tip should be removed when all tiers are playable!!
 		_lazy("Currently only the first {tier} tiers are playable.").format(
-				tier=TIER.CURRENT_MAX + 1),
+			tier=TIER.CURRENT_MAX + 1),
 		_lazy("You can pause the game with 'P'."),
 		_lazy("You can drag roads by holding the left mouse button."),
 		_lazy("You can build multiple buildings by holding the 'SHIFT' key."),
@@ -83,7 +85,7 @@ QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _lazy("Mixed"))
 def get_random_quote():
 	quote_type = int(horizons.globals.fife.get_uh_setting("QuotesType"))
 	if quote_type == 2:
-		quote_type = random.randint(0, 1) # choose a random type
+		quote_type = random.randint(0, 1)  # choose a random type
 
 	if quote_type == 0:
 		name = GAMEPLAY_TIPS["name"]
@@ -153,6 +155,7 @@ class LoadingScreen(Window):
 		label.text = stage_text.get(message.stage, message.stage)
 		label.adaptLayout()
 
-		self._widget.findChild(name='loading_progress').progress = (100 * self._current_step) // self.total_steps
+		self._widget.findChild(name='loading_progress').progress = (
+			100 * self._current_step) // self.total_steps
 
 		horizons.globals.fife.engine.pump()

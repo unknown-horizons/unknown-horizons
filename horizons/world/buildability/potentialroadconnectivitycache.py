@@ -22,6 +22,7 @@
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.world.buildability.connectedareacache import ConnectedAreaCache
 
+
 class PotentialRoadConnectivityCache(object):
 	"""
 	Query whether a toad connection between two sets of coordinates is possible.
@@ -37,7 +38,7 @@ class PotentialRoadConnectivityCache(object):
 		self._land_manager = area_builder.land_manager
 		self._settlement_ground_map = area_builder.settlement.ground_map
 		self._cache = ConnectedAreaCache()
-		self.area_numbers = self._cache.area_numbers # {(x, y): area id, ...}
+		self.area_numbers = self._cache.area_numbers  # {(x, y): area id, ...}
 
 	def modify_area(self, coords_list):
 		"""

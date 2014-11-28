@@ -47,24 +47,23 @@ class MainMenu(Window):
 
 		self._gui = load_uh_widget('mainmenu.xml', 'menu')
 		self._gui.mapEvents({
-			'single_button': lambda: self._windows.open(gui.singleplayermenu),
-			'single_label' : lambda: self._windows.open(gui.singleplayermenu),
+		                    'single_button': lambda: self._windows.open(gui.singleplayermenu),
+			'single_label': lambda: self._windows.open(gui.singleplayermenu),
 			'multi_button': lambda: self._windows.open(gui.multiplayermenu),
-			'multi_label' : lambda: self._windows.open(gui.multiplayermenu),
+			'multi_label': lambda: self._windows.open(gui.multiplayermenu),
 			'settings_button': lambda: self._windows.open(gui.settings_dialog),
-			'settings_label' : lambda: self._windows.open(gui.settings_dialog),
+			'settings_label': lambda: self._windows.open(gui.settings_dialog),
 			'help_button': gui.on_help,
-			'help_label' : gui.on_help,
+			'help_label': gui.on_help,
 			'quit_button': self.on_escape,
-			'quit_label' : self.on_escape,
+			'quit_label': self.on_escape,
 			'editor_button': gui.show_editor_start_menu,
-			'editor_label' : gui.show_editor_start_menu,
+			'editor_label': gui.show_editor_start_menu,
 			'credits_button': gui.show_credits,
-			'credits_label' : gui.show_credits,
+			'credits_label': gui.show_credits,
 			'load_button': gui.load_game,
-			'load_label' : gui.load_game,
-			'changeBackground' : gui.rotate_background,
-		})
+			'load_label': gui.load_game,
+			'changeBackground': gui.rotate_background, })
 
 	def show(self):
 		self._gui.show()
@@ -133,7 +132,7 @@ class Gui(object):
 	def load_game(self):
 		saved_game = self.show_select_savegame(mode='load')
 		if saved_game is None:
-			return False # user aborted dialog
+			return False  # user aborted dialog
 
 		options = StartGameOptions(saved_game)
 		horizons.main.start_singleplayer(options)

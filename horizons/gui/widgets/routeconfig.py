@@ -65,7 +65,7 @@ class RouteConfig(Window):
 			CreateRoute(instance).execute(self.session)
 
 		# We must make sure that the createRoute command has successfully finished, even in network games.
-		Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY+2)
+		Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY + 2)
 
 	@property
 	def session(self):
@@ -78,7 +78,8 @@ class RouteConfig(Window):
 		self._gui.show()
 
 		self.instance.add_remove_listener(self.on_instance_removed, no_duplicates=True)
-		self.instance.route.add_change_listener(self.on_route_change, no_duplicates=True, call_listener_now=True)
+		self.instance.route.add_change_listener(self.on_route_change, no_duplicates=True,
+			call_listener_now=True)
 
 	def hide(self):
 		self.minimap.disable()
@@ -366,10 +367,10 @@ class RouteConfig(Window):
 			index += 1
 
 		entry.mapEvents({
-		  'delete_warehouse/mouseClicked': Callback(self.remove_entry, entry),
-		  'move_up/mouseClicked': Callback(self.move_entry, entry, 'up'),
-		  'move_down/mouseClicked': Callback(self.move_entry, entry, 'down')
-		  })
+			'delete_warehouse/mouseClicked': Callback(self.remove_entry, entry),
+			'move_up/mouseClicked': Callback(self.move_entry, entry, 'up'),
+			'move_down/mouseClicked': Callback(self.move_entry, entry, 'down')
+		})
 		vbox.addChild(entry)
 
 	def append_warehouse(self, warehouse):
@@ -377,7 +378,8 @@ class RouteConfig(Window):
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if not self.session.world.diplomacy.can_trade(self.session.world.player, warehouse.owner):
-			self.session.ingame_gui.message_widget.add_custom(_("You are not allowed to trade with this player"))
+			self.session.ingame_gui.message_widget.add_custom(
+				_("You are not allowed to trade with this player"))
 			return
 
 		if len(self.widgets) >= self.MAX_ENTRIES:
@@ -444,12 +446,14 @@ class RouteConfig(Window):
 
 		wait_at_unload_box = self._gui.findChild(name="wait_at_unload")
 		wait_at_unload_box.marked = self.instance.route.wait_at_unload
+
 		def toggle_wait_at_unload():
 			self._route_cmd("set_wait_at_unload", not self.instance.route.wait_at_unload)
 		wait_at_unload_box.capture(toggle_wait_at_unload)
 
 		wait_at_load_box = self._gui.findChild(name="wait_at_load")
 		wait_at_load_box.marked = self.instance.route.wait_at_load
+
 		def toggle_wait_at_load():
 			self._route_cmd("set_wait_at_load", not self.instance.route.wait_at_load)
 		wait_at_load_box.capture(toggle_wait_at_load)

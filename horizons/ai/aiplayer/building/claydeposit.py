@@ -23,6 +23,7 @@ from fakeresourcedeposit import AbstractFakeResourceDeposit
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractClayDeposit(AbstractFakeResourceDeposit):
 	@classmethod
 	def get_higher_level_building_id(cls):

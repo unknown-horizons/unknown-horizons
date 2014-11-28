@@ -21,10 +21,12 @@
 
 from horizons.util.shapes.rect import Rect
 
+
 class TerrainRequirement:
-	LAND = 1 # buildings that must be entirely on flat land
-	LAND_AND_COAST = 2 # buildings that have to be partially on the coast
-	LAND_AND_COAST_NEAR_SEA = 3 # coastal buildings that have to be near the sea
+	LAND = 1  # buildings that must be entirely on flat land
+	LAND_AND_COAST = 2  # buildings that have to be partially on the coast
+	LAND_AND_COAST_NEAR_SEA = 3  # coastal buildings that have to be near the sea
+
 
 class TerrainBuildabilityCache(object):
 	"""
@@ -48,8 +50,8 @@ class TerrainBuildabilityCache(object):
 		self._island = island
 		self._land = None
 		self._coast = None
-		self.land_or_coast = None # set((x, y), ...)
-		self.cache = None # {terrain type: {(width, height): set((x, y), ...), ...}, ...}
+		self.land_or_coast = None  # set((x, y), ...)
+		self.cache = None  # {terrain type: {(width, height): set((x, y), ...), ...}, ...}
 		self.create_cache()
 
 	def _init_land_and_coast(self):
@@ -170,11 +172,11 @@ class TerrainBuildabilityCache(object):
 				land[(3, 3)].add(coords)
 
 				if (x, y + 3) in sq3 and not sq3[(x, y + 3)][1] and (x + 3, y) in sq3 \
-					    and not sq3[(x + 3, y)][1] and (x + 3, y + 3) in sq3 and not sq3[(x + 3, y + 3)][1]:
+					and not sq3[(x + 3, y)][1] and (x + 3, y + 3) in sq3 and not sq3[(x + 3, y + 3)][1]:
 					land[(4, 4)].add(coords)
 					land[(6, 6)].add(coords)
 				elif (x, y + 1) in sq3 and not sq3[(x, y + 1)][1] and (x + 1, y) in sq3 \
-					    and not sq3[(x + 1, y)][1] and (x + 1, y + 1) in sq3 and not sq3[(x + 1, y + 1)][1]:
+					and not sq3[(x + 1, y)][1] and (x + 1, y + 1) in sq3 and not sq3[(x + 1, y + 1)][1]:
 					land[(4, 4)].add(coords)
 
 		self.cache = {}

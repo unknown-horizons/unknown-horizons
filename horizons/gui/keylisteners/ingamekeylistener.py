@@ -25,6 +25,7 @@ import horizons.globals
 from horizons.util.living import LivingObject
 from horizons.gui.keylisteners import KeyConfig
 
+
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
 
@@ -66,7 +67,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.view.autoscroll_keys(*self.key_scroll)
 
 		if self.session.ingame_gui.on_key_press(action, evt):
-			evt.consume() # prevent other listeners from being called
+			evt.consume()  # prevent other listeners from being called
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()

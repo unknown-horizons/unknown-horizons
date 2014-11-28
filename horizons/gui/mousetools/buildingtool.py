@@ -38,7 +38,9 @@ from horizons.command.sounds import PlaySound
 from horizons.gui.util import load_uh_widget
 from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
+from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted, \
+	SettlementInventoryUpdated, PlayerInventoryUpdated
+
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -50,8 +52,10 @@ class BuildingTool(NavigationTool):
 	of random artifacts that used to have a purpose once.
 
 	Terminology:
-	- Related buildings: Buildings lower in the hierarchy, needed by current building to operate (tree when building lumberjack)
-	- Inversely related building: lumberjack for tree. Need to show its range to place building, it must be in range.
+	- Related buildings: Buildings lower in the hierarchy, needed by current building to operate
+	(tree when building lumberjack)
+	- Inversely related building: lumberjack for tree. Need to show its range to place building,
+	it must be in range.
 	- Building instances/fife instances: the image of a building, that is dragged around.
 
 	Main features:
@@ -64,7 +68,8 @@ class BuildingTool(NavigationTool):
 		- Check for resources missing for build
 		- Making surrounding of preview transparent, so you see where you are building in a forest
 		- Highlight related buildings, that are in range
-		- Draw building range and highlight related buildings that are in range in this position (_color_preview_building)
+		- Draw building range and highlight related buildings that are in range in this position
+		(_color_preview_building)
 	- Initiate actual build (do_build)
 		- Clean up coloring, possibly end build mode
 	- Several buildability logics, strategy pattern via self._build_logic.
@@ -93,7 +98,7 @@ class BuildingTool(NavigationTool):
 
 	send_hover_instances_update = False
 
-	gui = None # share gui between instances
+	gui = None  # share gui between instances
 
 	def __init__(self, session, building, ship=None, build_related=None):
 		super(BuildingTool, self).__init__(session)
@@ -102,23 +107,23 @@ class BuildingTool(NavigationTool):
 		self.ship = ship
 		self._class = building
 		self.__init_selectable_component()
-		self.buildings = [] # list of PossibleBuild objs
-		self.buildings_action_set_ids = [] # list action set ids of list above
-		self.buildings_fife_instances = {} # fife instances of possible builds
-		self.buildings_missing_resources = {} # missing resources for possible builds
+		self.buildings = []  # list of PossibleBuild objs
+		self.buildings_action_set_ids = []  # list action set ids of list above
+		self.buildings_fife_instances = {}  # fife instances of possible builds
+		self.buildings_missing_resources = {}  # missing resources for possible builds
 		self.rotation = 45 + random.randint(0, 3) * 90
 		self.start_point, self.end_point = None, None
 		self.last_change_listener = None
-		self._transparencified_instances = set() # fife instances modified for transparency
-		self._buildable_tiles = set() # tiles marked as buildable
-		self._related_buildings = set() # buildings highlighted as related
-		self._highlighted_buildings = set() # related buildings highlighted when preview is near it
+		self._transparencified_instances = set()  # fife instances modified for transparency
+		self._buildable_tiles = set()  # tiles marked as buildable
+		self._related_buildings = set()  # buildings highlighted as related
+		self._highlighted_buildings = set()  # related buildings highlighted when preview is near it
 		self._build_logic = None
-		self._related_buildings_selected_tiles = frozenset() # highlights w.r.t. related buildings
+		self._related_buildings_selected_tiles = frozenset()  # highlights w.r.t. related buildings
 		if self.ship is not None:
 			self._build_logic = ShipBuildingToolLogic(ship)
 		elif build_related is not None:
-			self._build_logic = BuildRelatedBuildingToolLogic(self, weakref.ref(build_related) )
+			self._build_logic = BuildRelatedBuildingToolLogic(self, weakref.ref(build_related))
 		else:
 			self._build_logic = SettlementBuildingToolLogic(self)
 
@@ -132,7 +137,6 @@ class BuildingTool(NavigationTool):
 		SettlementInventoryUpdated.subscribe(self.update_preview)
 		PlayerInventoryUpdated.subscribe(self.update_preview)
 
-
 	def __init_selectable_component(self):
 		self.selectable_comp = SelectableBuildingComponent
 		try:
@@ -142,9 +146,11 @@ class BuildingTool(NavigationTool):
 			pass
 
 	def highlight_buildable(self, tiles_to_check=None, new_buildings=True):
-		"""Highlights all buildable tiles and select buildings that are inversely related in order to show their range.
+		"""Highlights all buildable tiles and select buildings that are inversely related
+		in order to show their range.
 		@param tiles_to_check: list of tiles to check for coloring.
-		@param new_buildings: Set to True if you have set tiles_to_check and there are new buildings. An internal structure for optimization will be amended."""
+		@param new_buildings: Set to True if you have set tiles_to_check and there are new buildings.
+		An internal structure for optimization will be amended."""
 		self._build_logic.highlight_buildable(self, tiles_to_check)
 
 		# Also distinguish inversely related buildings (lumberjack for tree).
@@ -159,24 +165,24 @@ class BuildingTool(NavigationTool):
 		   self._class.id != BUILDINGS.RESIDENTIAL:
 			# TODO: generalize settler class exclusion, e.g. when refactoring it into components
 
-			related = related + [self._class.id] # don't += on retrieved data from db
+			related = related + [self._class.id]  # don't += on retrieved data from db
 
 		related = frozenset(related)
 
 		renderer = self.session.view.renderer['InstanceRenderer']
-		if tiles_to_check is None or new_buildings: # first run, check all
-			buildings_to_select = [ buildings_to_select
-			                        for settlement in self.session.world.settlements
-			                        if settlement.owner.is_local_player
-			                        for bid in related
-			                        for buildings_to_select in settlement.buildings_by_id[bid] ]
+		if tiles_to_check is None or new_buildings:  # first run, check all
+			buildings_to_select = [buildings_to_select
+				for settlement in self.session.world.settlements
+				if settlement.owner.is_local_player
+				for bid in related
+				for buildings_to_select in settlement.buildings_by_id[bid]]
 
 			tiles = self.selectable_comp.select_many(buildings_to_select, renderer)
 			self._related_buildings_selected_tiles = frozenset(tiles)
-		else: # we don't need to check all
+		else:  # we don't need to check all
 			# duplicates filtered later
-			buildings_to_select = [ tile.object for tile in tiles_to_check if
-			                        tile.object is not None and tile.object.id in related ]
+			buildings_to_select = [tile.object for tile in tiles_to_check if
+				tile.object is not None and tile.object.id in related]
 			for tile in tiles_to_check:
 				# check if we need to recolor the tiles
 				if tile in self._related_buildings_selected_tiles:
@@ -186,7 +192,7 @@ class BuildingTool(NavigationTool):
 			self._related_buildings.add(building)
 
 	def _color_buildable_tile(self, tile):
-		self._buildable_tiles.add(tile) # it's a set, so duplicates are handled
+		self._buildable_tiles.add(tile)  # it's a set, so duplicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 
 	def remove(self):
@@ -214,23 +220,25 @@ class BuildingTool(NavigationTool):
 		# remove references to this object
 		self._related_buildings.discard(message.sender)
 		self._transparencified_instances = \
-		  set( i for i in self._transparencified_instances if
-		       i() is not None and int(i().getId()) != message.worldid )
-		check_building = lambda b : b.worldid != message.worldid
-		self._highlighted_buildings = set( tup for tup in self._highlighted_buildings if check_building(tup[0]) )
-		self._related_buildings = set( filter(check_building, self._related_buildings) )
+			set(i for i in self._transparencified_instances if
+			i() is not None and int(i().getId()) != message.worldid)
+		check_building = lambda b: b.worldid != message.worldid
+		self._highlighted_buildings = set(
+			tup for tup in self._highlighted_buildings if check_building(tup[0]))
+		self._related_buildings = set(filter(check_building, self._related_buildings))
 
 	def load_gui(self):
 		if self.__class__.gui is None:
 			self.__class__.gui = load_uh_widget("place_building.xml")
 			self.__class__.gui.position_technique = "right-1:top+157"
-		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
-		                                "rotate_right": self.rotate_right } )
+		self.__class__.gui.mapEvents({"rotate_left": self.rotate_left,
+			"rotate_right": self.rotate_right})
 		# set translated building name in gui
-		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
+		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(
+			building=_(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
-		head_box.adaptLayout() # recalculates size of new content
+		head_box.adaptLayout()  # recalculates size of new content
 		# calculate and set new center
 		new_x = max(25, (self.__class__.gui.size[0] // 2) - (head_box.size[0] // 2))
 		head_box.position = (new_x, head_box.position[1])
@@ -249,7 +257,7 @@ class BuildingTool(NavigationTool):
 			if action_option in action_sets[action_set]:
 				action = action_option
 				break
-		else: # If no idle, idle_full or abcd animation found, use the first you find
+		else:  # If no idle, idle_full or abcd animation found, use the first you find
 			action = action_sets[action_set].keys()[0]
 		rotation = (self.rotation + int(self.session.view.cam.getRotation()) - 45) % 360
 		image = sorted(action_sets[action_set][action][rotation].keys())[0]
@@ -270,12 +278,12 @@ class BuildingTool(NavigationTool):
 		gui_x, gui_y = self.__class__.gui.size
 		icon_x, icon_y = building_icon.size
 		building_icon.position = (gui_x // 2 - icon_x // 2,
-		                          gui_y // 2 - icon_y // 2 - 70)
+			gui_y // 2 - icon_y // 2 - 70)
 		self.__class__.gui.adaptLayout()
 
 	def preview_build(self, point1, point2, force=False):
 		"""Display buildings as preview if build requirements are met"""
-		#self.session.view.renderer['InstanceRenderer'].removeAllColored()
+		# self.session.view.renderer['InstanceRenderer'].removeAllColored()
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
 		new_buildings = self._class.check_build_line(self.session, point1, point2,
 		                                             rotation=self.rotation, ship=self.ship)
@@ -283,7 +291,7 @@ class BuildingTool(NavigationTool):
 		# => don't preview. Otherwise the preview is redrawn on every mouse move
 		if not force and len(new_buildings) == len(self.buildings) == 1 and \
 		   new_buildings[0] == self.buildings[0]:
-			return # we don't want to redo the preview
+			return  # we don't want to redo the preview
 
 		# remove old fife instances and coloring
 		self._remove_building_instances()
@@ -291,13 +299,14 @@ class BuildingTool(NavigationTool):
 		# get new ones
 		self.buildings = new_buildings
 		# resize list of action set ids to new buildings
-		self.buildings_action_set_ids = self.buildings_action_set_ids + ([None] * (len(self.buildings) - len(self.buildings_action_set_ids)))
-		self.buildings_action_set_ids = self.buildings_action_set_ids[ : len(self.buildings) ]
+		self.buildings_action_set_ids = self.buildings_action_set_ids + ([None]
+			* (len(self.buildings) - len(self.buildings_action_set_ids)))
+		self.buildings_action_set_ids = self.buildings_action_set_ids[: len(self.buildings)]
 		# delete old infos
 		self.buildings_fife_instances.clear()
 		self.buildings_missing_resources.clear()
 
-		settlement = None # init here so we can access it below loop
+		settlement = None  # init here so we can access it below loop
 		needed_resources = {}
 		# check if the buildings are buildable and color them appropriately
 		for i, building in enumerate(self.buildings):
@@ -307,21 +316,22 @@ class BuildingTool(NavigationTool):
 			level = self._class.get_initial_level(self.session.world.player)
 
 			if self._class.id == BUILDINGS.TREE and not building.buildable:
-				continue # Tree/ironmine that is not buildable, don't preview
+				continue  # Tree/ironmine that is not buildable, don't preview
 			else:
 				fife_instance, action_set_id = \
 					self._class.getInstance(self.session, building.position.origin.x,
-								            building.position.origin.y, rotation=building.rotation,
-								            action=building.action, level=level,
-								            action_set_id=self.buildings_action_set_ids[i])
+						building.position.origin.y, rotation=building.rotation,
+						action=building.action, level=level,
+						action_set_id=self.buildings_action_set_ids[i])
 				self.buildings_fife_instances[building] = fife_instance
 				# remember action sets per order of occurrence
-				# (this is far from good when building lines, but suffices for our purposes, which is mostly single build)
+				# (this is far from good when building lines, but suffices for our purposes,
+				# which is mostly single build)
 				self.buildings_action_set_ids[i] = action_set_id
 
 			settlement = self.session.world.get_settlement(building.position.origin)
 			if settlement is not None and settlement.owner != self.session.world.player:
-				settlement = None # no fraternizing with the enemy, else there would be peace
+				settlement = None  # no fraternizing with the enemy, else there would be peace
 
 			if self._class.id != BUILDINGS.WAREHOUSE:
 				# Player shouldn't be allowed to build in this case, else it can trigger
@@ -329,10 +339,9 @@ class BuildingTool(NavigationTool):
 				if settlement is None:
 					building.buildable = False
 
-
 			# check required resources
 			(enough_res, missing_res) = Build.check_resources(needed_resources, self._class.costs,
-			                                                  self.session.world.player, [settlement, self.ship])
+				self.session.world.player, [settlement, self.ship])
 			if building.buildable and not enough_res:
 				# make building red
 				self.renderer.addColored(self.buildings_fife_instances[building],
@@ -354,7 +363,7 @@ class BuildingTool(NavigationTool):
 
 		self.session.ingame_gui.resource_overview.set_construction_mode(
 			self.ship if self.ship is not None else settlement,
-		  needed_resources
+			needed_resources
 		)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
@@ -366,11 +375,12 @@ class BuildingTool(NavigationTool):
 			# Tile might still have not buildable color -> remove it
 			self.renderer.removeColored(self.buildings_fife_instances[building])
 			self.renderer.addOutlined(self.buildings_fife_instances[building],
-			                          self.buildable_color[0], self.buildable_color[1],
-			                          self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
-			                          GFX.BUILDING_OUTLINE_THRESHOLD)
+				self.buildable_color[0], self.buildable_color[1],
+				self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
+				GFX.BUILDING_OUTLINE_THRESHOLD
+			)
 
-		else: # not buildable
+		else:  # not buildable
 			# must remove other highlight, fife does not support both
 			self.renderer.removeOutlined(self.buildings_fife_instances[building])
 			self.renderer.addColored(self.buildings_fife_instances[building],
@@ -386,25 +396,28 @@ class BuildingTool(NavigationTool):
 		                                     self._class.radius, radius_only_on_island)
 
 	def _highlight_related_buildings_in_range(self, building, settlement):
-		"""Highlight directly related buildings (tree for lumberjacks) that are in range of the build preview"""
+		"""Highlight directly related buildings (tree for lumberjacks)
+		that are in range of the build preview"""
 		if settlement is not None:
 			related = frozenset(self.session.db.get_related_building_ids(self._class.id))
-			for tile in settlement.get_tiles_in_radius(building.position, self._class.radius, include_self=True):
+			for tile in settlement.get_tiles_in_radius(building.position,
+			  self._class.radius, include_self=True):
 				obj = tile.object
 				if (obj is not None) and (obj.id in related) and (obj not in self._highlighted_buildings):
-					self._highlighted_buildings.add( (obj, False) ) # False: was_selected, see _restore_highlighted_buildings
+					self._highlighted_buildings.add((obj, False))
+					# False: was_selected, see _restore_highlighted_buildings
 					# currently same code as highlight_related_buildings
 					inst = obj.fife_instance
 					self.renderer.addOutlined(inst, *self.related_building_outline)
 					self.renderer.addColored(inst, *self.related_building_color)
-
 
 	def _make_surrounding_transparent(self, building):
 		"""Makes the surrounding of building_position transparent and hide buildings
 		that are built upon (tearset)"""
 		world_contains = self.session.world.map_dimensions.contains_without_border
 		get_tile = self.session.world.get_tile
-		for coord in building.position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
+		for coord in building.position.get_radius_coordinates(self.nearby_objects_radius,
+		  include_self=True):
 			p = Point(*coord)
 			if not world_contains(p):
 				continue
@@ -416,7 +429,7 @@ class BuildingTool(NavigationTool):
 
 		for to_tear_worldid in building.tearset:
 			inst = WorldObject.get_object_by_id(to_tear_worldid).fife_instance
-			inst.get2dGfxVisual().setTransparency(255) # full transparency = hidden
+			inst.get2dGfxVisual().setTransparency(255)  # full transparency = hidden
 			self._transparencified_instances.add(weakref.ref(inst))
 
 	def _highlight_inversely_related_buildings(self, building, settlement):
@@ -424,23 +437,24 @@ class BuildingTool(NavigationTool):
 		This is triggered on each preview change and highlights only those in range"""
 		# tuple for fast lookup with few elements
 		ids = tuple(self.session.db.get_inverse_related_building_ids(self._class.id))
-		if settlement is None or not ids: # nothing is related
+		if settlement is None or not ids:  # nothing is related
 			return
 
-		radii = dict( [ (bid, Entities.buildings[bid].radius) for bid in ids ] )
+		radii = dict([(bid, Entities.buildings[bid].radius) for bid in ids])
 		max_radius = max(radii.itervalues())
 
 		for tile in settlement.get_tiles_in_radius(building.position, max_radius, include_self=True):
 			if tile.object is not None and tile.object.id in ids:
 				related_building = tile.object
 				# check if it was actually this one's radius
-				if building.position.distance( (tile.x, tile.y) ) <= \
+				if building.position.distance((tile.x, tile.y)) <= \
 				   Entities.buildings[related_building.id].radius:
 					# found one
 					if related_building in self._highlighted_buildings:
 						continue
 
-					self._highlighted_buildings.add( (related_building, True) ) # True: was_selected, see _restore_highlighted_buildings
+					self._highlighted_buildings.add((related_building, True))
+					# True: was_selected, see _restore_highlighted_buildings
 					# currently same code as coloring normal related buildings (_color_preview_build())
 					inst = related_building.fife_instance
 					self.renderer.addOutlined(inst, *self.related_building_outline)
@@ -460,7 +474,7 @@ class BuildingTool(NavigationTool):
 				self.renderer.addColored(inst, *self.selectable_comp.selection_color)
 			self.renderer.removeOutlined(inst)
 			modified_tiles.extend(
-			  ( self.session.world.get_tile(point) for point in building.position )
+				(self.session.world.get_tile(point) for point in building.position)
 			)
 		self._highlighted_buildings.clear()
 		self.highlight_buildable(modified_tiles)
@@ -469,7 +483,7 @@ class BuildingTool(NavigationTool):
 		self._build_logic.on_escape(self.session)
 		if self.__class__.gui is not None:
 			self.__class__.gui.hide()
-		self.session.ingame_gui.set_cursor() # will call remove()
+		self.session.ingame_gui.set_cursor()  # will call remove()
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
@@ -536,8 +550,8 @@ class BuildingTool(NavigationTool):
 			# check how to continue: either build again or escape
 			shift = evt.isShiftPressed() or horizons.globals.fife.get_uh_setting('UninterruptedBuilding')
 			if ((shift and not self._class.id == BUILDINGS.WAREHOUSE)
-			    or not found_buildable
-			    or self._class.class_package == 'path'):
+			  or not found_buildable
+			  or self._class.class_package == 'path'):
 				# build once more
 				self._restore_transparencified_instances()
 				self.highlight_buildable(changed_tiles)
@@ -578,21 +592,22 @@ class BuildingTool(NavigationTool):
 						self._buildable_tiles.remove(tile)
 						self.renderer.removeColored(tile._instance)
 						changed_tiles.add(tile)
-				self._remove_listeners() # Remove changelisteners for update_preview
+				self._remove_listeners()  # Remove changelisteners for update_preview
 				# create the command and execute it
-				cmd = Build(building=self._class,
-							x=building.position.origin.x,
-							y=building.position.origin.y,
-							rotation=building.rotation,
-							island=island,
-							settlement=self.session.world.get_settlement(building.position.origin),
-							ship=self.ship,
-							tearset=building.tearset,
-							action_set_id=self.buildings_action_set_ids[i],
-							)
+				cmd = Build(
+					building=self._class,
+					x=building.position.origin.x,
+					y=building.position.origin.y,
+					rotation=building.rotation,
+					island=island,
+					settlement=self.session.world.get_settlement(building.position.origin),
+					ship=self.ship,
+					tearset=building.tearset,
+					action_set_id=self.buildings_action_set_ids[i],
+				)
 				cmd.execute(self.session)
 			else:
-				if len(self.buildings) == 1: # only give messages for single bulds
+				if len(self.buildings) == 1:  # only give messages for single bulds
 					# first, buildable reasons such as grounds
 					# second, resources
 
@@ -604,10 +619,10 @@ class BuildingTool(NavigationTool):
 					# check whether to issue a missing res notification
 					# we need the localized resource name here
 					elif building in self.buildings_missing_resources:
-						res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
+						res_name = self.session.db.get_res_name(self.buildings_missing_resources[building])
 						self.session.ingame_gui.message_widget.add(
 						  point=building.position.origin,
-						  string_id='NEED_MORE_RES', message_dict={'resource' : res_name})
+						  string_id='NEED_MORE_RES', message_dict={'resource': res_name})
 
 		self.buildings = []
 		self.buildings_action_set_ids = []
@@ -690,7 +705,7 @@ class BuildingTool(NavigationTool):
 					fife_instance.get2dGfxVisual().setTransparency(0)
 				else:
 					# restore regular translucency value, can also be different
-					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+					fife_instance.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
 		self._transparencified_instances.clear()
 
 	def _remove_coloring(self):
@@ -718,11 +733,11 @@ class ShipBuildingToolLogic(object):
 		player = session.world.player
 		buildable_tiles_add = building_tool._buildable_tiles.add
 
-		if tiles_to_check is not None: # only check these tiles (build from ship)
+		if tiles_to_check is not None:  # only check these tiles (build from ship)
 			for tile in tiles_to_check:
 				if is_tile_buildable(session, tile, self.ship):
 					building_tool._color_buildable_tile(tile)
-		else: # build from ship
+		else:  # build from ship
 			building_tool.renderer.removeAllColored()
 			for island in session.world.get_islands_in_radius(self.ship.position, self.ship.radius):
 				for tile in island.get_surrounding_tiles(self.ship.position, self.ship.radius):
@@ -811,8 +826,10 @@ class SettlementBuildingToolLogic(object):
 	# Using messages now.
 	def add_change_listener(self, instance, building_tool):
 		pass
+
 	def remove_change_listener(self, instance, building_tool):
 		pass
+
 	def continue_build(self):
 		pass
 

@@ -115,9 +115,11 @@ class Sound(object):
 		"""Used as callback to check if music is still running or if we have
 		to load the next song.
 		@param refresh_playlist: Whether to update the playlist type (menu, ingame).
-		refresh_playlist should e.g. be set when loading happens, after which we no longer want to play menu music.
+		refresh_playlist should e.g. be set when loading happens,
+		after which we no longer want to play menu music.
 		The current track, however, will still finish playing before choosing a new track.
-		@param play_menu_tracks: Whether to start the playlist with menu music. Only works with refresh_playlist=True.
+		@param play_menu_tracks: Whether to start the playlist with menu music.
+		Only works with refresh_playlist=True.
 		"""
 		if refresh_playlist:
 			if play_menu_tracks and self.menu_music:
@@ -129,11 +131,11 @@ class Sound(object):
 
 		self._new_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
 		self._new_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
-		#TODO find cleaner way to check for this:
+		# TODO find cleaner way to check for this:
 		# check whether last track has finished:
 		if (self.music is not None
-		    and self._new_byte_pos == self._old_byte_pos
-		    and self._new_smpl_pos == self._old_smpl_pos):
+			and self._new_byte_pos == self._old_byte_pos
+			and self._new_smpl_pos == self._old_smpl_pos):
 			# choose random new track, but not one we played very recently
 			track = random.choice([m for m in self.music if m not in self.last_tracks])
 			self.play_sound('bgsound', track)
@@ -150,11 +152,11 @@ class Sound(object):
 		if not self.engine.get_fife_setting("PlaySounds"):
 			return
 		emitter = self.emitter[emitter]
-		#TODO what do we need those two asserts for...
+		# TODO what do we need those two asserts for...
 		assert emitter is not None, "You need to supply an initialized emitter"
 		assert soundfile is not None, "You need to supply a soundfile"
 		emitter.reset()
-		#TODO remove str() -- http://github.com/fifengine/fifengine/issues/449
+		# TODO remove str() -- http://github.com/fifengine/fifengine/issues/449
 		emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 		emitter.play()
 

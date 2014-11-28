@@ -21,6 +21,7 @@
 
 from horizons.util.python.weakmethod import WeakMethod
 
+
 class WeakMethodList(list):
 	"""A class that handles zero to n callbacks."""
 

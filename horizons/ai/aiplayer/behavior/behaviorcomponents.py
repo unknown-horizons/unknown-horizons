@@ -54,12 +54,14 @@ class BehaviorComponent(object):
 		self.world = owner.world
 		self.session = owner.session
 
-		# Witchery below is a way to have certainty() always return the same certainty if it's not defined per behavior.
+		# Witchery below is a way to have certainty() always return the same certainty
+		# if it's not defined per behavior.
 		self._certainty = defaultdict(lambda: (lambda **env: self.default_certainty))
 
 	def certainty(self, action_name, **environment):
 		certainty = self._certainty[action_name](**environment)
-		assert certainty is not None, "Certainty function returned None instead of a float. Certainty in %s for %s" % (self.__class__.__name__, action_name)
+		assert certainty is not None, "Certainty function returned None instead of a float." \
+			" Certainty in %s for %s" % (self.__class__.__name__, action_name)
 		return certainty
 
 	# common certainties used by various behaviors
@@ -77,7 +79,8 @@ class BehaviorComponent(object):
 			return 0.0
 
 # Components below are roughly divided into "Aggressive, Normal, Cautious" etc.
-# (division below is not related to the way dictionaries in BehaviorManager are named (offensive, idle, defensive))
+# (division below is not related to the way dictionaries in BehaviorManager are named
+# (offensive, idle, defensive))
 
 
 class BehaviorDoNothing(BehaviorComponent):
@@ -94,7 +97,8 @@ class BehaviorDoNothing(BehaviorComponent):
 
 class BehaviorPirateRoutine(BehaviorComponent):
 	"""
-	Idle behavior for Pirate player. It has to be specialized for Pirate since general AI does not have home_point.
+	Idle behavior for Pirate player. It has to be specialized for Pirate
+	since general AI does not have home_point.
 	Responsible for pirate ships routine when no one is around. States change in a loop:
 	idle -> moving_random -> going_home -> idle
 	"""
@@ -119,13 +123,15 @@ class BehaviorPirateRoutine(BehaviorComponent):
 				else:
 					self._sail_random(ship)
 
-			self.log.debug('BehaviorPirateRoutine: Ship:%s no_one_in_sight' % ship.get_component(NamedComponent).name)
+			self.log.debug('BehaviorPirateRoutine: Ship:%s no_one_in_sight'
+				% ship.get_component(NamedComponent).name)
 
 	def trading_ships_in_sight(self, **environment):
 		ship_group = environment['ship_group']
 		for ship in ship_group:
 			self._chase_closest_ship(ship)
-			self.log.debug('BehaviorPirateRoutine: Ship:%s trading_ships_in_sight' % ship.get_component(NamedComponent).name)
+			self.log.debug('BehaviorPirateRoutine: Ship:%s trading_ships_in_sight'
+				% ship.get_component(NamedComponent).name)
 
 	def _arrived(self, ship):
 		"""
@@ -150,25 +156,31 @@ class BehaviorPirateRoutine(BehaviorComponent):
 				self._sail_home(pirate_ship)
 			else:
 				try:
-					pirate_ship.move(Circle(ship.position, self.pirate_caught_ship_radius - 1), Callback(self._sail_home, pirate_ship))
+					pirate_ship.move(Circle(ship.position, self.pirate_caught_ship_radius - 1),
+						Callback(self._sail_home, pirate_ship))
 					owner.ships[pirate_ship] = owner.shipStates.chasing_ship
 					self.log.debug('Pirate %s: Ship %s(%s) chasing %s' % (owner.worldid,
-						pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
+						pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship],
+						ship.get_component(NamedComponent).name))
 				except MoveNotPossible:
 					self.log.debug('Pirate %s: Ship %s(%s) unable to chase the closest ship %s' % (owner.worldid,
-						pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
+						pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship],
+						ship.get_component(NamedComponent).name))
 					owner.ships[pirate_ship] = owner.shipStates.idle
 
 	def _sail_home(self, pirate_ship):
 		owner = pirate_ship.owner
 		try:
-			pirate_ship.move(Circle(owner.home_point, self.pirate_home_radius), Callback(self._arrived, pirate_ship))
+			pirate_ship.move(Circle(owner.home_point, self.pirate_home_radius),
+				Callback(self._arrived, pirate_ship))
 			owner.ships[pirate_ship] = owner.shipStates.going_home
-			self.log.debug('Pirate %s: Ship %s(%s): sailing home at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name,
+			self.log.debug('Pirate %s: Ship %s(%s): sailing home at %s'
+				% (owner.worldid, pirate_ship.get_component(NamedComponent).name,
 				owner.ships[pirate_ship], owner.home_point))
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
-			self.log.debug('Pirate %s: Ship %s: unable to move home at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, owner.home_point))
+			self.log.debug('Pirate %s: Ship %s: unable to move home at %s' % (owner.worldid,
+				pirate_ship.get_component(NamedComponent).name, owner.home_point))
 
 	def _sail_random(self, pirate_ship):
 
@@ -178,11 +190,13 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		try:
 			pirate_ship.move(point, Callback(self._arrived, pirate_ship))
 			owner.ships[pirate_ship] = owner.shipStates.moving_random
-			self.log.debug('Pirate %s: Ship %s(%s): moving random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name,
+			self.log.debug('Pirate %s: Ship %s(%s): moving random at %s'
+				% (owner.worldid, pirate_ship.get_component(NamedComponent).name,
 				owner.ships[pirate_ship], point))
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
-			self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
+			self.log.debug('Pirate %s: Ship %s: unable to move random at %s'
+				% (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
 
 
 # Common certainty functions for offensive actions
@@ -340,7 +354,7 @@ class BehaviorRegular(BehaviorComponent):
 
 class BehaviorAggressive(BehaviorComponent):
 
-	power_balance_threshold = 0.8 # allow to attack targets that are slightly stronger
+	power_balance_threshold = 0.8  # allow to attack targets that are slightly stronger
 
 	def __init__(self, owner):
 		super(BehaviorAggressive, self).__init__(owner)
@@ -400,7 +414,8 @@ class BehaviorAggressive(BehaviorComponent):
 			target_point = self.unit_manager.get_warehouse_area(enemy_player.settlements[0])
 			return_point = self.unit_manager.get_warehouse_area(self.owner.settlements[0], 15)
 			mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,
-				self.owner.strategy_manager.report_failure, idle_ships, target_point, return_point, enemy_player)
+				self.owner.strategy_manager.report_failure, idle_ships, target_point,
+				return_point, enemy_player)
 			return mission
 		else:
 			AddEnemyPair(self.owner, enemy_player).execute(self.session)
@@ -451,7 +466,8 @@ class BehaviorSmart(BehaviorComponent):
 		ship_group = environment['ship_group']
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-			# working ships won't respond with fire, each ship should attack the closest one, and chase them if necessary.
+			# working ships won't respond with fire, each ship should attack the closest one,
+			# and chase them if necessary.
 			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, enemies)
 			for ship, enemy_ship in ship_pairs:
 				range_function = CombatManager.close_range
@@ -461,16 +477,19 @@ class BehaviorSmart(BehaviorComponent):
 			BehaviorComponent.log.info('%s: Enemy worker was not hostile', self.__class__.__name__)
 
 
-# Behaviors calculate single value against each of the players (you can think of it as of respect, or "relationship_score" values towards other player)
-# Each AI values different traits in others. Based on that value AI can break diplomacy with an ally, declare a war, or
-# act the other way around: form an alliance
+# Behaviors calculate single value against each of the players (you can think of it as of respect,
+# or "relationship_score" values towards other player)
+# Each AI values different traits in others. Based on that value AI can break diplomacy
+# with an ally, declare a war, or act the other way around: form an alliance
 class BehaviorDiplomatic(BehaviorComponent):
 	"""
 	Behaviors that handle diplomacy.
 	"""
 
-	# value to which each function is related, so even when relationship_score is at the peek somewhere (e.g. it's value is 1.0)
-	# probability to actually choose given action is peek/upper_boundary (0.2 in case of upper_boundary = 5.0)
+	# value to which each function is related, so even when relationship_score
+	# is at the peek somewhere (e.g. it's value is 1.0)
+	# probability to actually choose given action is peek/upper_boundary
+	# (0.2 in case of upper_boundary = 5.0)
 	upper_boundary = DiplomacySettings.upper_boundary
 
 	# possible actions behavior can take
@@ -498,7 +517,8 @@ class BehaviorDiplomatic(BehaviorComponent):
 		balance = self.owner.strategy_manager.calculate_player_balance(player)
 		relationship_score = self.calculate_relationship_score(balance, self.weights)
 		action = self._get_action(relationship_score, **parameters)
-		self.log.debug("%s vs %s | Dipomacy: balance:%s, relationship_score:%s, action:%s", self.owner.name, player.name, balance, relationship_score, action)
+		self.log.debug("%s vs %s | Dipomacy: balance:%s, relationship_score:%s, action:%s",
+			self.owner.name, player.name, balance, relationship_score, action)
 		self._perform_action(action, **environment)
 
 	def _perform_action(self, action, **environment):
@@ -507,7 +527,8 @@ class BehaviorDiplomatic(BehaviorComponent):
 		"""
 		player = environment['player']
 
-		# ideally this shouldn't automatically change diplomacy for both players (i.e. add_pair) but do it for one side only.
+		# ideally this shouldn't automatically change diplomacy for both players
+		# (i.e. add_pair) but do it for one side only.
 
 		if action == self.actions.war:
 			self.session.world.diplomacy.add_enemy_pair(self.owner, player)
@@ -530,13 +551,17 @@ class BehaviorDiplomatic(BehaviorComponent):
 		@rtype: lambda(x)
 		"""
 
-		# base function is upside-down parabola, stretched in X in order to have roots at exactly 'root' value.
-		# (-1. / (abs(mid - root) ** 2)) part is for stretching the parabola in X axis and flipping it upside down, we have to use
+		# base function is upside-down parabola, stretched in X in order
+		# to have roots at exactly 'root' value.
+		# (-1. / (abs(mid - root) ** 2)) part is for stretching the parabola
+		# in X axis and flipping it upside down, we have to use
 		# abs(mid - root) because it's later moved by mid
-		# Note: Multiply by 1./abs(mid-root) to scale function in X (e.g. if mid is 1.0 and root is 1.5 -> make original x^2 function 2 times narrower
+		# Note: Multiply by 1./abs(mid-root) to scale function in X
+		# (e.g. if mid is 1.0 and root is 1.5 -> make original x^2 function 2 times narrower
 		base = lambda x: (-1. / (abs(mid - root) ** 2)) * (x ** 2)
 
-		# we move the function so it looks like "distribution", i.e. move it far left (or right), and assume the peek is 1.0
+		# we move the function so it looks like "distribution",
+		# i.e. move it far left (or right), and assume the peek is 1.0
 		moved = cls._move_f(base, mid, 1.0)
 
 		# in case of negative values of f(x) we want to have 0.0 instead
@@ -568,25 +593,28 @@ class BehaviorDiplomatic(BehaviorComponent):
 			if item[1] + counter >= random_value:
 				return item[0]
 			else:
-				counter+= item[1]
+				counter += item[1]
 
 	def _get_action(self, relationship_score, **parameters):
 		possible_actions = []
 		if 'enemy' in parameters:
 			enemy_params = parameters['enemy']
-			possible_actions.append((self.actions.war, self.get_enemy_function(**enemy_params)(relationship_score), ))
+			possible_actions.append((self.actions.war,
+				self.get_enemy_function(**enemy_params)(relationship_score), ))
 
 		if 'ally' in parameters:
 			ally_params = parameters['ally']
-			possible_actions.append((self.actions.peace, self.get_ally_function(**ally_params)(relationship_score), ))
+			possible_actions.append((self.actions.peace,
+				self.get_ally_function(**ally_params)(relationship_score), ))
 
 		if 'neutral' in parameters:
 			neutral_params = parameters['neutral']
-			possible_actions.append((self.actions.neutral, self.get_neutral_function(**neutral_params)(relationship_score), ))
+			possible_actions.append((self.actions.neutral,
+				self.get_neutral_function(**neutral_params)(relationship_score), ))
 
 		max_probability = max((item[1] for item in possible_actions))
 		random_value = self.session.random.random() * self.upper_boundary
-		if random_value < max_probability: #do something
+		if random_value < max_probability:  # do something
 			return self._choose_random_from_tuple(possible_actions)
 		else:
 			return self.actions.wait
@@ -598,10 +626,13 @@ class BehaviorDiplomatic(BehaviorComponent):
 		"""
 
 		# Parameters are crucial in determining how AI should behave:
-		# 'ally' and 'enemy' parameters are tuples of 1 or 2 values that set width or width and height of the parabola.
-		# By default parabola peek is fixed at 1.0, but could be changed (by providing second parameter)
+		# 'ally' and 'enemy' parameters are tuples of 1 or 2 values that
+		# set width or width and height of the parabola.
+		# By default parabola peek is fixed at 1.0, but could be changed
+		# (by providing second parameter)
 		# to manipulate the chance with which given actions is called
-		# 'neutral' parameter is a tuple up to three values, first one determining where the center of the parabola is
+		# 'neutral' parameter is a tuple up to three values, first one
+		# determining where the center of the parabola is
 
 		self.handle_diplomacy(self.parameters_hostile, **environment)
 
@@ -704,7 +735,8 @@ class BehaviorRegularPirate(BehaviorComponent):
 		power_balance = environment['power_balance']
 
 		if power_balance < self.power_balance_threshold:
-			BehaviorComponent.log.info('%s: Enemy ship was too strong, did not attack', self.__class__.__name__)
+			BehaviorComponent.log.info('%s: Enemy ship was too strong, did not attack',
+				self.__class__.__name__)
 			return
 
 		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
@@ -731,7 +763,8 @@ class BehaviorRegularPirate(BehaviorComponent):
 		# Use a one-ship group:
 		idle_ships = idle_ships[:1]
 
-		mission = PirateRoutine.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
+		mission = PirateRoutine.create(self.owner.strategy_manager.report_success,
+			self.owner.strategy_manager.report_failure, idle_ships)
 		BehaviorComponent.log.info('BehaviorRegularPirate: pirate_routine request')
 		return mission
 
@@ -759,6 +792,7 @@ class BehaviorAggressivePirate(BehaviorComponent):
 			ship.attack(target_ship)
 		BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 
+
 class BehaviorBreakDiplomacy(BehaviorComponent):
 	"""
 	Temporary action for breaking diplomacy with other players.
@@ -773,7 +807,8 @@ class BehaviorBreakDiplomacy(BehaviorComponent):
 
 		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-		BehaviorComponent.log.info('Player:%s broke diplomacy with %s' % (self.owner.name, enemies[0].owner.name))
+		BehaviorComponent.log.info('Player:%s broke diplomacy with %s' % (self.owner.name,
+			enemies[0].owner.name))
 
 
 class BehaviorCoward(BehaviorComponent):
@@ -801,7 +836,8 @@ def certainty_are_enemies(**environment):
 	player = ship_group[0].owner
 	enemy_player = enemies[0].owner
 
-	return 0.0 if player.session.world.diplomacy.are_enemies(player, enemy_player) else BehaviorComponent.default_certainty
+	return 0.0 if player.session.world.diplomacy.are_enemies(player,
+		enemy_player) else BehaviorComponent.default_certainty
 
 
 class BehaviorPirateHater(BehaviorComponent):

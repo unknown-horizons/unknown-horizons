@@ -27,14 +27,15 @@ from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 from horizons.entities import Entities
 
+
 class AbstractVillageBuilding(AbstractBuilding):
 	@classmethod
 	def get_purpose(cls, resource_id):
 		return {
-			RES.FAITH:        BUILDING_PURPOSE.PAVILION,
-			RES.EDUCATION:    BUILDING_PURPOSE.VILLAGE_SCHOOL,
+			RES.FAITH: BUILDING_PURPOSE.PAVILION,
+			RES.EDUCATION: BUILDING_PURPOSE.VILLAGE_SCHOOL,
 			RES.GET_TOGETHER: BUILDING_PURPOSE.TAVERN,
-			RES.COMMUNITY:    BUILDING_PURPOSE.MAIN_SQUARE,
+			RES.COMMUNITY: BUILDING_PURPOSE.MAIN_SQUARE,
 		}.get(resource_id)
 
 	def in_settlement(self, settlement_manager, position):
@@ -44,9 +45,11 @@ class AbstractVillageBuilding(AbstractBuilding):
 		return True
 
 	def _need_producer(self, settlement_manager, coords, resource_id):
-		if not settlement_manager.settlement.count_buildings(BUILDING_PURPOSE.get_building(self.get_purpose(resource_id))):
-			return True # if none exist and we need the resource then build it
-		assigned_residences = settlement_manager.village_builder.special_building_assignments[self.get_purpose(resource_id)][coords]
+		if not settlement_manager.settlement.count_buildings(BUILDING_PURPOSE
+				.get_building(self.get_purpose(resource_id))):
+			return True  # if none exist and we need the resource then build it
+		assigned_residences = settlement_manager.village_builder.special_building_assignments[
+			self.get_purpose(resource_id)][coords]
 		total = len(assigned_residences)
 		not_serviced = 0
 		for residence_coords in assigned_residences:
@@ -54,7 +57,8 @@ class AbstractVillageBuilding(AbstractBuilding):
 				continue
 			not_serviced += 1
 
-		if not_serviced > 0 and not_serviced >= total * settlement_manager.owner.personality_manager.get('AbstractVillageBuilding').fraction_of_assigned_residences_built:
+		if (not_serviced > 0 and not_serviced >= total * settlement_manager.owner.personality_manager
+				.get('AbstractVillageBuilding').fraction_of_assigned_residences_built):
 			return True
 		return False
 
@@ -84,7 +88,8 @@ class AbstractVillageBuilding(AbstractBuilding):
 
 			building = BasicBuilder(building_id, coords, 0).execute(settlement_manager.land_manager)
 			assert building
-			if self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE and not village_builder.roads_built:
+			if (self.get_purpose(resource_id) == BUILDING_PURPOSE.MAIN_SQUARE
+					and not village_builder.roads_built):
 				village_builder.build_roads()
 			return (BUILD_RESULT.OK, building)
 		return (BUILD_RESULT.SKIP, None)
@@ -107,11 +112,13 @@ class AbstractVillageBuilding(AbstractBuilding):
 
 	@property
 	def coverage_building(self):
-		""" main squares, pavilions, schools, and taverns are buildings that need to be built even if the total production is enough """
+		""" main squares, pavilions, schools, and taverns are buildings that
+		need to be built even if the total production is enough """
 		return True
 
 	def _get_producer_building(self):
-		# TODO: remove this hack; introduced to battle the community Production moving from main squares to the warehouse
+		# TODO: remove this hack; introduced to battle the community Production
+		# moving from main squares to the warehouse
 		if self.id == BUILDINGS.MAIN_SQUARE:
 			return Entities.buildings[BUILDINGS.WAREHOUSE]
 		return super(AbstractVillageBuilding, self)._get_producer_building()

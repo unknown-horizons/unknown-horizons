@@ -52,7 +52,7 @@ class BuildingCollector(Collector):
 		kwargs['y'] = home_building.position.origin.y
 		super(BuildingCollector, self).__init__(**kwargs)
 		self._job_history = deque()
-		self._creation_tick = Scheduler().cur_tick + 1 # adjusted for the initial delay
+		self._creation_tick = Scheduler().cur_tick + 1  # adjusted for the initial delay
 		self.__init(home_building)
 
 	def __init(self, home_building):
@@ -93,7 +93,7 @@ class BuildingCollector(Collector):
 		super(BuildingCollector, self).load(db, worldid)
 
 		if home_building_id is None:
-			self.show() # make sure that homebuildingsless units are visible on startup
+			self.show()  # make sure that homebuildingsless units are visible on startup
 			# TODO: fix "homebuildingless buildingcollectors".
 			#       perhaps a new unit should be created, because a fisher ship without a
 			#       fisher basically isn't a buildingcollector anymore.
@@ -130,19 +130,19 @@ class BuildingCollector(Collector):
 
 	def decouple_from_home_building(self):
 		"""Makes collector survive deletion of home building."""
-		self.cancel(continue_action=lambda : 42) # don't continue
+		self.cancel(continue_action=lambda: 42)  # don't continue
 		self.stop()
 		self.register_at_home_building(unregister=True)
 		self.home_building = None
 		self.state = self.states.decommissioned
-		self.show() # make sure collector is not pretending to be inside somewhere
+		self.show()  # make sure collector is not pretending to be inside somewhere
 
 	def get_home_inventory(self):
 		return self.home_building.get_component(StorageComponent).inventory
 
 	def get_colleague_collectors(self):
 		colls = self.home_building.get_component(CollectingComponent).get_local_collectors()
-		return ( coll for coll in colls if coll is not self )
+		return (coll for coll in colls if coll is not self)
 
 	@decorators.make_constants()
 	def get_job(self):
@@ -159,21 +159,23 @@ class BuildingCollector(Collector):
 		for building in self.get_buildings_in_range(reslist=collectable_res):
 			# check if we can pickup here on principle
 			target_possible = self._target_possible_cache.get(building, None)
-			if target_possible is None: # not in cache, we have to check
+			if target_possible is None:  # not in cache, we have to check
 				target_possible = self.check_possible_job_target(building)
 				self._target_possible_cache[building] = target_possible
 
 			if target_possible:
 				# check for res here
-				reslist = ( self.check_possible_job_target_for(building, res) for res in collectable_res )
+				reslist = (self.check_possible_job_target_for(building, res) for res in collectable_res)
 				reslist = [i for i in reslist if i]
 
-				if reslist: # we can do something here
-					jobs.append( Job(building, reslist) )
+				if reslist:  # we can do something here
+					jobs.append(Job(building, reslist))
 
-		# TODO: find out why order of  self.get_buildings_in_range(..) and therefore order of jobs differs from client to client
+		# TODO: find out why order of  self.get_buildings_in_range(..)
+		# and therefore order of jobs differs from client to client
 		# TODO: find out why WildAnimal.get_job(..) doesn't have this problem
-		# for MP-Games the jobs must have the same ordering to ensure get_best_possible_job(..) returns the same result
+		# for MP-Games the jobs must have the same ordering to ensure
+		# get_best_possible_job(..) returns the same result
 		jobs.sort(key=lambda job: job.object.worldid)
 
 		return self.get_best_possible_job(jobs)
@@ -181,7 +183,6 @@ class BuildingCollector(Collector):
 	def search_job(self):
 		self._clean_job_history_log()
 		super(BuildingCollector, self).search_job()
-
 
 	def handle_no_possible_job(self):
 		super(BuildingCollector, self).handle_no_possible_job()
@@ -240,7 +241,8 @@ class BuildingCollector(Collector):
 		self.log.debug("%s: got blocked while moving home, teleporting home", self)
 		# make sure to get home, this prevents all movement problems by design
 		# at the expense of some jumping in very unusual corner cases
-		# NOTE: if this is seen as problem, self.resume_movement() could be tried before reverting to teleportation
+		# NOTE: if this is seen as problem, self.resume_movement()
+		# could be tried before reverting to teleportation
 		self.teleport(self.home_building, callback=self.move_callbacks, destination_in_building=True)
 
 	def move_home(self, callback=None, action='move_full'):
@@ -248,7 +250,7 @@ class BuildingCollector(Collector):
 		self.log.debug("%s move_home", self)
 		if self.home_building.position.contains(self.position):
 			# already home
-			self.stop() # make sure unit doesn't go anywhere in case a movement is going on
+			self.stop()  # make sure unit doesn't go anywhere in case a movement is going on
 			Scheduler().add_new_object(callback, self, run_in=0)
 		else:
 			# actually move home
@@ -261,7 +263,8 @@ class BuildingCollector(Collector):
 			except MoveNotPossible:
 				# we are in trouble.
 				# the collector went somewhere, now there is no way for them to move home.
-				# this is an unsolved problem also in reality, so we are forced to use an unconventional solution.
+				# this is an unsolved problem also in reality,
+				# so we are forced to use an unconventional solution.
 				self.teleport(self.home_building, callback=callback, destination_in_building=True)
 
 	def cancel(self, continue_action=None):
@@ -296,14 +299,15 @@ class BuildingCollector(Collector):
 			if tick >= current_tick:
 				break
 
-			next_tick = min(self._job_history[i + 1][0], current_tick) if i + 1 < num_entries else current_tick
+			next_tick = min(self._job_history[i + 1][0], current_tick
+			                ) if i + 1 < num_entries else current_tick
 			relevant_ticks = next_tick - tick
 			if tick < first_relevant_tick:
 				# the beginning is not relevant
 				relevant_ticks -= first_relevant_tick - tick
 			total_utilization += relevant_ticks * self._job_history[i][1]
 
-		#assert -1e-7 < total_utilization / float(history_length) < 1 + 1e-7
+		# assert -1e-7 < total_utilization / float(history_length) < 1 + 1e-7
 
 		return total_utilization / float(history_length)
 
@@ -369,15 +373,16 @@ class FisherShipCollector(BuildingCollector):
 class DisasterRecoveryCollector(StorageCollector):
 	"""Collects disasters such as fire or pestilence."""
 	def finish_working(self, collector_already_home=False):
-		super(DisasterRecoveryCollector, self).finish_working(collector_already_home=collector_already_home)
+		super(DisasterRecoveryCollector, self).finish_working(
+			collector_already_home=collector_already_home)
 		building = self.job.object
-		if hasattr(building, "disaster"): # make sure that building hasn't recovered any other way
+		if hasattr(building, "disaster"):  # make sure that building hasn't recovered any other way
 			building.disaster.recover(building)
 
 	def get_job(self):
 		if self.home_building is not None and \
-		   not self.session.world.disaster_manager.is_affected( self.home_building.settlement ):
-			return None # not one disaster active, bail out
+		   not self.session.world.disaster_manager.is_affected(self.home_building.settlement):
+			return None  # not one disaster active, bail out
 
 		return super(DisasterRecoveryCollector, self).get_job()
 

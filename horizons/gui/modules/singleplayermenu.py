@@ -55,10 +55,10 @@ class SingleplayerMenu(Window):
 
 		self._gui = load_uh_widget('singleplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel'   : self._windows.close,
-			'okay'     : self.act,
-			'scenario' : Callback(self._select_mode, 'scenario'),
-			'random'   : Callback(self._select_mode, 'random'),
+			'cancel': self._windows.close,
+			'okay': self.act,
+			'scenario': Callback(self._select_mode, 'scenario'),
+			'random': Callback(self._select_mode, 'random'),
 			'free_maps': Callback(self._select_mode, 'free_maps')
 		})
 
@@ -133,21 +133,25 @@ class GameSettingsWidget(object):
 		              ('disasters', 'MapSettingsDisastersEnabled')]
 
 		for (setting, setting_save_name) in checkboxes:
+
 			def on_box_toggle(setting, setting_save_name):
 				"""Called whenever the checkbox is toggled"""
 				box = self._gui.findChild(name=setting)
 				horizons.globals.fife.set_uh_setting(setting_save_name, box.marked)
 				horizons.globals.fife.save_settings()
+
 			def toggle(setting, setting_save_name):
 				"""Called by the label to toggle the checkbox"""
 				box = self._gui.findChild(name=setting)
 				box.marked = not box.marked
 
 			self._gui.findChild(name=setting).capture(Callback(on_box_toggle, setting, setting_save_name))
-			self._gui.findChild(name=setting).marked = horizons.globals.fife.get_uh_setting(setting_save_name)
+			self._gui.findChild(name=setting).marked = horizons.globals.fife.get_uh_setting(
+				setting_save_name)
 			self._gui.findChild(name=u'lbl_' + setting).capture(Callback(toggle, setting, setting_save_name))
 
 		resource_density_slider = self._gui.findChild(name='resource_density_slider')
+
 		def on_resource_density_slider_change():
 			self._gui.findChild(name='resource_density_lbl').text = _('Resource density:') + u' ' + \
 				unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
@@ -230,8 +234,10 @@ class RandomMapWidget(object):
 			('map_size', self.map_sizes, _('Map size:'), 'RandomMapSize'),
 			('water_percent', self.water_percents, _('Water:'), 'RandomMapWaterPercent'),
 			('max_island_size', self.island_sizes, _('Max island size:'), 'RandomMapMaxIslandSize'),
-			('preferred_island_size', self.island_sizes, _('Preferred island size:'), 'RandomMapPreferredIslandSize'),
-			('island_size_deviation', self.island_size_deviations, _('Island size deviation:'), 'RandomMapIslandSizeDeviation'),
+			('preferred_island_size', self.island_sizes, _('Preferred island size:'),
+			'RandomMapPreferredIslandSize'),
+			('island_size_deviation', self.island_size_deviations, _('Island size deviation:'),
+			'RandomMapIslandSizeDeviation'),
 		)
 
 		for param, __, __, setting_name in parameters:
@@ -290,7 +296,7 @@ class RandomMapWidget(object):
 		self._last_map_parameters = current_parameters
 
 		if self._preview_process:
-			self._preview_process.kill() # process exists, therefore up is scheduled already
+			self._preview_process.kill()  # process exists, therefore up is scheduled already
 
 		# launch process in background to calculate minimap data
 		minimap_icon = self._gui.findChild(name='map_preview_minimap')
@@ -319,7 +325,7 @@ class RandomMapWidget(object):
 
 		self._preview_process.poll()
 
-		if self._preview_process.returncode is None: # not finished
+		if self._preview_process.returncode is None:  # not finished
 			ExtScheduler().add_new_object(self._poll_preview_process, self, 0.1)
 			return
 		elif self._preview_process.returncode != 0:
@@ -394,7 +400,7 @@ class FreeMapsWidget(object):
 		self._gui.mapEvents({
 			'maplist/action': self._update_map_infos,
 		})
-		if maps_display: # select first entry
+		if maps_display:  # select first entry
 			self._gui.distributeData({'maplist': 0})
 			self._update_map_infos()
 
@@ -478,7 +484,7 @@ class ScenarioMapWidget(object):
 		prefer_tutorial = lambda x: ('tutorial' not in x, x)
 		self.maps_display.sort(key=prefer_tutorial)
 
-		self._gui.distributeInitialData({'maplist' : self.maps_display})
+		self._gui.distributeInitialData({'maplist': self.maps_display})
 		self._gui.distributeData({'maplist': 0})
 
 		# add all locales to lang list, select current locale as default and sort
@@ -542,7 +548,7 @@ class ScenarioMapWidget(object):
 		"""
 		try:
 			default_locale, default_encoding = locale.getdefaultlocale()
-		except ValueError: # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
+		except ValueError:  # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
 			default_locale = 'en'
 
 		possibilities = [
@@ -618,7 +624,7 @@ def generate_random_minimap(size, parameters):
 	db = _create_main_db()
 	horizons.globals.db = db
 	horizons.globals.fife.init_animation_loader(not VERSION.IS_DEV_VERSION)
-	Entities.load_grounds(db, load_now=False) # create all references
+	Entities.load_grounds(db, load_now=False)  # create all references
 
 	map_file = generate_random_map(*parameters)
 	world = load_raw_world(map_file)

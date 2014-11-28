@@ -22,6 +22,7 @@
 
 from horizons.constants import UNITS
 
+
 class ProductionLine(object):
 	"""Class that collects the production line data."""
 
@@ -43,9 +44,9 @@ class ProductionLine(object):
 		# here we store all resource information.
 		# needed resources have a negative amount, produced ones are positive.
 		self.production = {}
-		self.produced_res = {} # contains only produced
-		self.consumed_res = {} # contains only consumed
-		self.unit_production = {} # Stores unit_id: amount entries, if units are to be produced
+		self.produced_res = {}  # contains only produced
+		self.consumed_res = {}  # contains only consumed
+		self.unit_production = {}  # Stores unit_id: amount entries, if units are to be produced
 		if 'produces' in self.__data:
 			for produced_object, amount in self.__data['produces']:
 				if produced_object < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
@@ -92,8 +93,7 @@ class ProductionLine(object):
 			   for_worldid, "UNIT", unit, amount)
 
 		db("INSERT INTO production_line(for_worldid, type, res, amount) VALUES(?, ?, ?, ?)",
-			   for_worldid, "TIME", self.time, None)
-
+			 for_worldid, "TIME", self.time, None)
 
 	def load(self, db, for_worldid):
 		# we don't have a worldid, we load it for another world id
@@ -105,11 +105,10 @@ class ProductionLine(object):
 			if t == "TIME":
 				self.time = res
 			else:
-				{ "NORMAL"   : self.production,
-				  "CONSUMED" : self.consumed_res,
-				  "PRODUCED" : self.produced_res,
-				  "UNIT"     : self.unit_production }[t][res] = amount
-
+				{"NORMAL": self.production,
+				"CONSUMED": self.consumed_res,
+				"PRODUCED": self.produced_res,
+				"UNIT": self.unit_production}[t][res] = amount
 
 	def get_original_copy(self):
 		"""Returns a copy of this production, in its original state, no changes

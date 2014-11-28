@@ -168,7 +168,8 @@ class Weapon(object):
 			dest_x = callback.args[3].x
 			dest_y = callback.args[3].y
 			ticks = calls[call]
-			db("INSERT INTO attacks(remaining_ticks, weapon_id, damage, dest_x, dest_y) VALUES (?, ?, ?, ?, ?)",
+			db("INSERT INTO attacks(remaining_ticks, weapon_id, damage, dest_x, dest_y)"
+				" VALUES (?, ?, ?, ?, ?)",
 				ticks, weapon_id, damage, dest_x, dest_y)
 
 	def __str__(self):

@@ -129,7 +129,7 @@ class SettingsDialog(PickBeltWidget, Window):
 	def set_defaults(self):
 		title = _("Restore default settings")
 		msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
-				u" " + _("Do you want to continue?")
+			u" " + _("Do you want to continue?")
 
 		if self._windows.open_popup(title, msg, show_cancel_button=True):
 			self.hotkey_interface.reset_to_default()
@@ -212,13 +212,13 @@ class SettingsDialog(PickBeltWidget, Window):
 		a '%' suffix."""
 		value_label = self.widget.findChild(name=widget.name + '_value')
 		value = {
-			'volume_music':      lambda x: u'%s%%' % int(500 * x),
-			'volume_effects':    lambda x: u'%s%%' % int(200 * x),
-			'mousesensitivity':  lambda x: u'%+.1f%%' % (200 * x),
-			'autosaveinterval':  lambda x: u'%d' % x,
-			'autosavemaxcount':  lambda x: u'%d' % x,
+			'volume_music': lambda x: u'%s%%' % int(500 * x),
+			'volume_effects': lambda x: u'%s%%' % int(200 * x),
+			'mousesensitivity': lambda x: u'%+.1f%%' % (200 * x),
+			'autosaveinterval': lambda x: u'%d' % x,
+			'autosavemaxcount': lambda x: u'%d' % x,
 			'quicksavemaxcount': lambda x: u'%d' % x,
-			'scrollspeed':       lambda x: u'%.1f' % x,
+			'scrollspeed': lambda x: u'%.1f' % x,
 		}[widget.name](widget.value)
 		value_label.text = value
 
@@ -264,9 +264,10 @@ class SettingsDialog(PickBeltWidget, Window):
 				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _("Check the settings you specified in the network section.")
 				if 0 < parse_port(new) < 1024:
-					#i18n This is advice for players seeing a network error with the current config
+					# i18n This is advice for players seeing a network error with the current config
 					advice += u" " + \
-						_("Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024.")
+						_("Low port numbers sometimes require special access privileges,"
+						" try 0 or a number greater than 1024.")
 				details = unicode(e)
 				self._windows.open_error_popup(headline, descr, advice, details)
 
@@ -276,6 +277,7 @@ class SettingsDialog(PickBeltWidget, Window):
 
 	def _on_DebugLog_changed(self, old, new):
 		horizons.main.set_debug_log(new)
+
 
 def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.

@@ -62,6 +62,7 @@ class MainSquareTab(OverviewTab):
 		self.hide()
 		self.instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(self))
 
+
 class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
 	widget = 'tab_account.xml'
@@ -100,7 +101,7 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('running_costs').text = unicode(running_costs)
 		self.widget.child_finder('buying').text = unicode(buy_expenses)
 		self.widget.child_finder('sale').text = unicode(sell_income)
-		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
+		self.widget.child_finder('balance').text = unicode(sign + ' ' + str(abs(balance)))
 		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
 		self.widget.mapEvents({'headline': rename})
@@ -125,7 +126,7 @@ class MainSquareOverviewTab(AccountTab):
 
 class MainSquareSettlerLevelTab(MainSquareTab):
 	widget = "mainsquare_inhabitants.xml"
-	LEVEL = None # overwrite in subclass
+	LEVEL = None  # overwrite in subclass
 
 	def __init__(self, instance):
 		self.max_inhabitants = instance.session.db.get_tier_inhabitants_max(self.__class__.LEVEL)
@@ -140,8 +141,10 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		slider = self.widget.child_finder('tax_slider')
 		val_label = self.widget.child_finder('tax_val_label')
 		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
-		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
-		self.widget.child_finder('headline').text = _(self.instance.session.db.get_settler_name(self.__class__.LEVEL))
+		self.widget.child_finder('tax_val_label').text = unicode(
+			self.settlement.tax_settings[self.__class__.LEVEL])
+		self.widget.child_finder('headline').text = _(self.instance.session.db.get_settler_name(
+			self.__class__.LEVEL))
 
 		if self.__class__.LEVEL == TIER.CURRENT_MAX:
 			# highest currently playable tier => upgrades not possible
@@ -165,7 +168,8 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def _get_last_tax_paid(self):
 		houses = self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
-		return sum([building.last_tax_payed for building in houses if building.level == self.__class__.LEVEL])
+		return sum([building.last_tax_payed for building in houses
+			if building.level == self.__class__.LEVEL])
 
 	def _get_resident_counts(self):
 		result = {}
@@ -183,7 +187,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def refresh(self):
 		self.widget.mapEvents({
-			'allow_upgrades/mouseClicked' : self.toggle_upgrades,
+			'allow_upgrades/mouseClicked': self.toggle_upgrades,
 		})
 
 		# refresh taxes
@@ -212,14 +216,15 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 			houses += house_count
 			residents += house_count * number
 			position_x = (space_per_label * (column - 1)) + 10
-			if not container.findChild(name="resident_"+str(column)):
-				label = Label(name="resident_"+str(column), position=(position_x, 0), text=unicode(number))
+			if not container.findChild(name="resident_" + str(column)):
+				label = Label(name="resident_" + str(column), position=(position_x, 0), text=unicode(number))
 				container.addChild(label)
-				count_label = Label(name="resident_count_"+str(column), position=(position_x - 1, 20), text=unicode(house_count))
+				count_label = Label(name="resident_count_" + str(column),
+					position=(position_x - 1, 20), text=unicode(house_count))
 				container.addChild(count_label)
 			else:
-				container.findChild(name="resident_"+str(column)).text = unicode(number)
-				container.findChild(name="resident_count_"+str(column)).text = unicode(house_count)
+				container.findChild(name="resident_" + str(column)).text = unicode(number)
+				container.findChild(name="resident_count_" + str(column)).text = unicode(house_count)
 
 		sad = self.instance.session.db.get_lower_happiness_limit()
 		happy = self.instance.session.db.get_upper_happiness_limit()
@@ -237,17 +242,21 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		super(MainSquareSettlerLevelTab, self).refresh()
 
 	def toggle_upgrades(self):
-		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL, not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)
+		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL,
+			not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)
 
 
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SAILORS
 
+
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.PIONEERS
 
+
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SETTLERS
+
 
 class MainSquareCitizensTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.CITIZENS

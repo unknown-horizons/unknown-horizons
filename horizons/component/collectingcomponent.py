@@ -24,6 +24,7 @@ from horizons.util.pathfinding.pathnodes import ConsumerBuildingPathNodes
 from horizons import entities
 from horizons.component import Component
 
+
 class CollectingComponent(Component):
 	"""The CollectingBuilding class represents a object that uses collectors
 	to collect resources from other ResourceHolder objects. It is used to
@@ -36,7 +37,7 @@ class CollectingComponent(Component):
 
 	NAME = 'CollectingComponent'
 
-	## INIT/DESTRUCT
+	# INIT/DESTRUCT
 	def __init__(self, collectors):
 		super(CollectingComponent, self).__init__()
 		self.__collector_templates = collectors
@@ -62,9 +63,9 @@ class CollectingComponent(Component):
 		"""Creates a collector and adds it to this building.
 		@param collector_class: unit class of collector to create
 		"""
-		collector = entities.Entities.units[collector_class](self.instance, session=self.session, owner=self.instance.owner)
+		collector = entities.Entities.units[collector_class](self.instance,
+			session=self.session, owner=self.instance.owner)
 		collector.initialize()
-
 
 	def remove(self):
 		# remove every non-ship collectors (those are independent)
@@ -73,7 +74,7 @@ class CollectingComponent(Component):
 				collector.remove()
 			else:
 				collector.decouple_from_home_building()
-				#TODO remove the remove call() #2123
+				# TODO remove the remove call() #2123
 				collector.remove()
 		assert not [c for c in self.__collectors]
 		super(CollectingComponent, self).remove()
@@ -90,13 +91,11 @@ class CollectingComponent(Component):
 			if not collector.is_ship:
 				collector.save(db)
 
-
 	def load(self, db, worldid):
 		super(CollectingComponent, self).load(db, worldid)
 		self.__init()
 
-
-	## INTERFACE
+	# INTERFACE
 	def add_local_collector(self, collector):
 		assert collector not in self.__collectors
 		self.__collectors.append(collector)

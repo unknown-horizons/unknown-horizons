@@ -24,6 +24,7 @@ import logging
 from horizons.component import Component
 from horizons.util.shapes import Circle, Point
 
+
 class CommandableComponent(Component):
 	"""
 	Class that handles the Commandable component of units
@@ -62,11 +63,11 @@ class CommandableComponent(Component):
 				break
 		if self.instance.owner.is_local_player:
 			self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
-		if move_target is None: # can't move
+		if move_target is None:  # can't move
 			if not self.instance.owner.is_local_player:
 				return
-			if self.session.world.get_tile(Point(x, y)) is None: # not even in world
+			if self.session.world.get_tile(Point(x, y)) is None:  # not even in world
 				string_id = "MOVE_OUTSIDE_OF_WORLD"
-			else: # in world, but still unreachable
+			else:  # in world, but still unreachable
 				string_id = "MOVE_INVALID_LOCATION"
 			self.session.ingame_gui.message_widget.add(point=Point(x, y), string_id=string_id)

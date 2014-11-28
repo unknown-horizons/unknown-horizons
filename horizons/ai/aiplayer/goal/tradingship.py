@@ -23,6 +23,7 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class TradingShipGoal(SettlementGoal):
 	def get_personality_name(self):
 		return 'TradingShipGoal'

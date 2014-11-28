@@ -20,30 +20,32 @@
 # ###################################################
 
 try:
-	#TODO fifechan / FIFE 0.3.5+ compat
+	# TODO fifechan / FIFE 0.3.5+ compat
 	from fife.fifechan import Color
 except ImportError:
 	# this is the old (0.3.4 and earlier) API
 	from fife.fife import Color
 
-BROWN = { 64: Color(80, 80, 40,  64),
-          96: Color(80, 80, 40,  96),
-         128: Color(80, 80, 40, 128),
-         192: Color(80, 80, 40, 192),
-         255: Color(80, 80, 40, 255),
+BROWN = {
+	64: Color(80, 80, 40, 64),
+	96: Color(80, 80, 40, 96),
+	128: Color(80, 80, 40, 128),
+	192: Color(80, 80, 40, 192),
+	255: Color(80, 80, 40, 255),
 }
 
-WHITE = { 32: Color(255, 255, 255,  32),
-          64: Color(255, 255, 255,  64),
-          96: Color(255, 255, 255,  96),
-         160: Color(255, 255, 255, 160),
-         255: Color(255, 255, 255, 255),
+WHITE = {
+	32: Color(255, 255, 255, 32),
+	64: Color(255, 255, 255, 64),
+	96: Color(255, 255, 255, 96),
+	160: Color(255, 255, 255, 160),
+	255: Color(255, 255, 255, 255),
 }
 
 NOTHING = Color(0, 0, 0, 0)
 
 STYLES = {
-'default': {
+	'default': {
 		'default': {
 			'background_color': NOTHING,
 			'base_color': NOTHING,
@@ -60,7 +62,7 @@ STYLES = {
 			'foreground_color': BROWN[192],
 			'margins': (10, 5),
 		},
-		#TODO combine the following two after the tuple notation bug is fixed:
+		# TODO combine the following two after the tuple notation bug is fixed:
 		# http://github.com/fifengine/fifengine/issues/656
 		'CheckBox': {
 			'background_color': WHITE[96],
@@ -76,7 +78,7 @@ STYLES = {
 			'background_color': WHITE[64],
 			'base_color': BROWN[64],
 		},
-		#TODO combine the following two after the tuple notation bug is fixed
+		# TODO combine the following two after the tuple notation bug is fixed
 		'Slider': {
 			'base_color': BROWN[96],
 		},
@@ -87,9 +89,9 @@ STYLES = {
 			'selection_color': BROWN[96],
 			'background_color': WHITE[64],
 		},
-},
+	},
 
-'menu': { #Used in the main menu
+	'menu': {  # Used in the main menu
 		'default': {
 			'font': 'headline_light',
 		},
@@ -97,18 +99,17 @@ STYLES = {
 			'background_color': Color(0, 0, 0, 102),
 			'font': 'mainmenu',
 		},
-},
+	},
 
-'resource_bar': {
+	'resource_bar': {
 		'default': {
 			'font': 'resourcebar',
 		},
-},
+	},
 
-'headline': { # style for headlines
+	'headline': {  # style for headlines
 		'default': {
 			'font': 'headline',
 		},
-},
-
+	},
 }

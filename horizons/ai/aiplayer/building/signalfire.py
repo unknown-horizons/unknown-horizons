@@ -27,12 +27,16 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
+
 class AbstractSignalFire(AbstractBuilding):
 	@classmethod
-	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type, need_collector_connection):
-		coords_set = super(AbstractSignalFire, cls)._get_buildability_intersection(settlement_manager, size, terrain_type, need_collector_connection)
+	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type,
+			need_collector_connection):
+		coords_set = super(AbstractSignalFire, cls)._get_buildability_intersection(settlement_manager,
+			size, terrain_type, need_collector_connection)
 		radius = Entities.buildings[BUILDINGS.SIGNAL_FIRE].radius
-		return coords_set.intersection(set(settlement_manager.settlement.warehouse.position.get_radius_coordinates(radius)))
+		return coords_set.intersection(set(settlement_manager.settlement.warehouse.
+			position.get_radius_coordinates(radius)))
 
 	@property
 	def evaluator_class(self):
@@ -47,6 +51,7 @@ class AbstractSignalFire(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.SIGNAL_FIRE] = cls
 
+
 class SignalFireEvaluator(BuildingEvaluator):
 	need_collector_connection = False
 
@@ -55,7 +60,8 @@ class SignalFireEvaluator(BuildingEvaluator):
 		builder = BasicBuilder.create(BUILDINGS.SIGNAL_FIRE, (x, y), orientation)
 
 		sea_area = 0
-		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.SIGNAL_FIRE].radius):
+		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.SIGNAL_FIRE]
+				.radius):
 			if coords in area_builder.session.world.water:
 				sea_area += 1
 

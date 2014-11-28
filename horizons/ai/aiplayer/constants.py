@@ -22,6 +22,7 @@
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class BUILD_RESULT:
 	OK = 0
 	NEED_RESOURCES = 1
@@ -32,10 +33,13 @@ class BUILD_RESULT:
 	SKIP = 6
 	OUT_OF_SETTLEMENT = 7
 
+
 class GOAL_RESULT:
-	SKIP = 0 # just execute the next goal
-	BLOCK_SETTLEMENT_RESOURCE_USAGE = 1 # don't execute any goal that uses resources in this settlement
-	BLOCK_ALL_BUILDING_ACTIONS = 2 # no more building during this tick
+	SKIP = 0  # just execute the next goal
+	BLOCK_SETTLEMENT_RESOURCE_USAGE = 1
+	# don't execute any goal that uses resources in this settlement
+	BLOCK_ALL_BUILDING_ACTIONS = 2  # no more building during this tick
+
 
 class BUILDING_PURPOSE:
 	NONE = 1

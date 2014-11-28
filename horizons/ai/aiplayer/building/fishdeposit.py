@@ -23,6 +23,7 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractFishDeposit(AbstractBuilding):
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
 		""" You don't actually build fish deposits """

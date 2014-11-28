@@ -25,19 +25,20 @@ from horizons.util.python import decorators
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
 
+
 class AbstractFakeResourceDeposit(AbstractBuilding):
 	def __init__(self, building_id, name, settler_level):
 		super(AbstractFakeResourceDeposit, self).__init__(building_id, name, settler_level)
-		self.lines = {} # output_resource_id: ProductionLine
+		self.lines = {}  # output_resource_id: ProductionLine
 		self.__init_production_lines()
 
 	@classmethod
 	def get_higher_level_building_id(cls):
 		raise NotImplementedError('This function has to be overridden.')
 
-
 	def __init_production_lines(self):
-		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
+		production_lines = self._get_producer_building().get_component_template(
+			Producer)['productionlines']
 		for key, value in production_lines.iteritems():
 			production_line = ProductionLine(key, value)
 			production_line.id = None

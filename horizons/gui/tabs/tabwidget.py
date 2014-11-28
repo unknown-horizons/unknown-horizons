@@ -30,6 +30,7 @@ from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 
+
 @metaChangeListenerDecorator('remove')
 class TabWidget(object):
 	"""The TabWidget class handles widgets which consist of many
@@ -48,7 +49,7 @@ class TabWidget(object):
 		self.name = name
 		self.ingame_gui = ingame_gui
 		self._tabs = [] if not tabs else tabs
-		self.current_tab = self._tabs[0] # Start with the first tab
+		self.current_tab = self._tabs[0]  # Start with the first tab
 		self.widget = load_uh_widget("tab_base.xml")
 		self.widget.position_technique = 'right-239:top+209'
 		self.content = self.widget.findChild(name='content')
@@ -60,7 +61,8 @@ class TabWidget(object):
 	def _init_tab_buttons(self):
 		"""Add enough tabbuttons for all widgets."""
 		def on_tab_removal(tabwidget):
-			# called when a tab is being removed (via weakref since tabs shouldn't have references to the parent tabwidget)
+			# called when a tab is being removed (via weakref since tabs
+			# shouldn't have references to the parent tabwidget)
 			# If one tab is removed, the whole tabwidget will die..
 			# This is easy usually the desired behavior.
 			if tabwidget():
@@ -86,7 +88,7 @@ class TabWidget(object):
 			container.addChild(background)
 			container.addChild(button)
 			self.content.addChild(container)
-		self.widget.size = (50, 55*len(self._tabs))
+		self.widget.size = (50, 55 * len(self._tabs))
 		self.widget.adaptLayout()
 
 		self._apply_layout_hack()
@@ -95,7 +97,7 @@ class TabWidget(object):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
-		if not number in range(len(self._tabs)):
+		if number not in range(len(self._tabs)):
 			# this usually indicates a non-critical error, therefore we can handle it without crashing
 			traceback.print_stack()
 			self.log.warning("Invalid tab number %s, available tabs: %s", number, self._tabs)
@@ -103,13 +105,13 @@ class TabWidget(object):
 		if self.current_tab.is_visible():
 			self.current_tab.hide()
 		new_tab = self._tabs[number]
-		old_bg = self.content.findChild(name = "bg_%s" % self._tabs.index(self.current_tab))
+		old_bg = self.content.findChild(name="bg_%s" % self._tabs.index(self.current_tab))
 		old_bg.image = self.current_tab.button_background_image
 		name = str(self._tabs.index(self.current_tab))
 		old_button = self.content.findChild(name=name)
 		old_button.path = self.current_tab.path
 
-		new_bg = self.content.findChild(name = "bg_%s" % number)
+		new_bg = self.content.findChild(name="bg_%s" % number)
 		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=str(number))
 		new_button.path = new_tab.path_active
@@ -124,6 +126,7 @@ class TabWidget(object):
 		# pychan layouting depends on time, it's usually in a better mood later.
 		# this introduces some flickering, but fixes #916
 		from horizons.extscheduler import ExtScheduler
+
 		def do_apply_hack():
 			# just query widget when executing, since if lazy loading is used, the widget
 			# does not exist yet in the outer function

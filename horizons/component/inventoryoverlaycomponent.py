@@ -65,7 +65,6 @@ class InventoryOverlayComponent(Component):
 		super(InventoryOverlayComponent, self).initialize()
 		InstanceInventoryUpdated.subscribe(self.inventory_changed, sender=self.instance)
 
-
 	def add_overlay(self, overlay_set, z_order=10):
 		"""Creates animation overlay from action set *overlay_set* and adds it to fife instance.
 
@@ -89,17 +88,15 @@ class InventoryOverlayComponent(Component):
 				ov_anim.addFrame(pic, frame_milliseconds)
 			self.fife_instance.addAnimationOverlay(self.identifier, rotation, z_order, ov_anim)
 
-
 	def remove_overlay(self, res_id):
 		"""Removes animation overlay associated with resource *res_id* from fife instance.
 
 		We use *res_id* as z-order identifier, which removeAnimationOverlay actually asks for.
 		"""
 		self.current_overlays[res_id] = None
-		#TODO remove hardcoded rotations, use action set keys (of which set?)
+		# TODO remove hardcoded rotations, use action set keys (of which set?)
 		for rotation in range(45, 360, 90):
 			self.fife_instance.removeAnimationOverlay(self.identifier, rotation, res_id)
-
 
 	def inventory_changed(self, message):
 		"""A changelistener notified the StorageComponent of this instance.
@@ -109,7 +106,6 @@ class InventoryOverlayComponent(Component):
 		"""
 		for res_id, new_amount in message.inventory.iteritems():
 			self.update_overlay(res_id, new_amount)
-
 
 	def update_overlay(self, res_id, new_amount):
 		"""Called when inventory amount of one resource changes.
@@ -167,11 +163,9 @@ class InventoryOverlayComponent(Component):
 			self.current_overlays[res_id] = amount
 			return
 
-
 	def load(self, db, worldid):
 		super(InventoryOverlayComponent, self).load(db, worldid)
 		Scheduler().add_new_object(self.initialize, self, run_in=0)
-
 
 	def remove(self):
 		"""Removes all animation overlays from the fife instance.

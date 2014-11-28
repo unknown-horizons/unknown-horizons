@@ -34,13 +34,14 @@ sys.path.append(os.getcwd())
 from horizons.network.client import Client, ClientMode
 import horizons.network
 
-#-------------------------------------------------------------------------------
 
 class AlarmException(Exception):
   pass
 
+
 def alarmhandler(signum, frame):
   raise AlarmException
+
 
 def nbrawinput(prompt='', timeout=1):
   signal.signal(signal.SIGALRM, alarmhandler)
@@ -54,10 +55,10 @@ def nbrawinput(prompt='', timeout=1):
   signal.signal(signal.SIGALRM, signal.SIG_IGN)
   return None
 
-#-------------------------------------------------------------------------------
 
 def usage():
   print "Usage: %s -h host -p port" % (sys.argv[0])
+
 
 def onquit(*args):
   try:
@@ -66,13 +67,16 @@ def onquit(*args):
     """ignore the errors"""
   sys.exit(0)
 
+
 def onconnect(*args):
   global client
   client.connect()
 
+
 def ondisconnect(*args):
   global client
   client.disconnect()
+
 
 def onlist(*args):
   global client
@@ -245,7 +249,7 @@ try:
 except (ValueError, IndexError):
   port = 0
 
-if host == None or port == None or port <= 0:
+if host is None or port is None or port <= 0:
   usage()
   sys.exit(1)
 

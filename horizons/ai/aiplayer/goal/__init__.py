@@ -24,6 +24,7 @@ import logging
 from horizons.ai.aiplayer.constants import BUILD_RESULT, GOAL_RESULT
 from horizons.util.python import decorators
 
+
 class Goal(object):
 	"""An object of this class describes a goal that an AI player attempts to fulfil."""
 
@@ -35,7 +36,8 @@ class Goal(object):
 		self.personality = self.owner.personality_manager.get(self.get_personality_name())
 
 		if not hasattr(Goal, '_next_id'):
-			Goal._next_id = 1 # used to assign sequence numbers to goals to ensure consistent ordering
+			Goal._next_id = 1
+			# used to assign sequence numbers to goals to ensure consistent ordering
 		self.sequence_number = Goal._next_id
 		Goal._next_id += 1
 
@@ -58,7 +60,8 @@ class Goal(object):
 		return self.personality.enabled and self.owner.settler_level >= self.personality.min_tier
 
 	def execute(self):
-		"""Do whatever is best to get closer to fulfilling the goal (usually involves building a building)."""
+		"""Do whatever is best to get closer to fulfilling the goal
+		(usually involves building a building)."""
 		raise NotImplementedError("This function has to be overridden.")
 
 	def update(self):
@@ -72,7 +75,8 @@ class Goal(object):
 			return GOAL_RESULT.BLOCK_ALL_BUILDING_ACTIONS
 		elif result == BUILD_RESULT.NEED_RESOURCES:
 			return GOAL_RESULT.BLOCK_SETTLEMENT_RESOURCE_USAGE
-		elif result in [BUILD_RESULT.IMPOSSIBLE, BUILD_RESULT.UNKNOWN_ERROR, BUILD_RESULT.ALL_BUILT, BUILD_RESULT.SKIP]:
+		elif result in [BUILD_RESULT.IMPOSSIBLE, BUILD_RESULT.UNKNOWN_ERROR,
+				BUILD_RESULT.ALL_BUILT, BUILD_RESULT.SKIP]:
 			return GOAL_RESULT.SKIP
 		assert False, 'Unable to translate BUILD_RESULT %d to a GOAL_RESULT' % result
 

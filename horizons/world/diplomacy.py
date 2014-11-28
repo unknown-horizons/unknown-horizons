@@ -21,6 +21,7 @@
 
 from horizons.util.changelistener import metaChangeListenerDecorator
 
+
 @metaChangeListenerDecorator("diplomacy_status_changed")
 class Diplomacy(object):
 	"""
@@ -50,7 +51,7 @@ class Diplomacy(object):
 		old_state = self._get_state_string(tup)
 		self.remove_enemy_pair(a, b)
 		self.allies.add(tup)
-		self.on_diplomacy_status_changed(old_state=old_state, new_state='ally', a = a, b = b)
+		self.on_diplomacy_status_changed(old_state=old_state, new_state='ally', a=a, b=b)
 
 	def add_enemy_pair(self, a, b):
 		tup = make_tup(a, b)
@@ -59,7 +60,7 @@ class Diplomacy(object):
 		old_state = self._get_state_string(tup)
 		self.remove_ally_pair(a, b)
 		self.enemies.add(tup)
-		self.on_diplomacy_status_changed(old_state=old_state, new_state='enemy', a = a, b = b)
+		self.on_diplomacy_status_changed(old_state=old_state, new_state='enemy', a=a, b=b)
 
 	def add_neutral_pair(self, a, b):
 		tup = make_tup(a, b)
@@ -68,7 +69,7 @@ class Diplomacy(object):
 		old_state = self._get_state_string(tup)
 		self.remove_ally_pair(a, b)
 		self.remove_enemy_pair(a, b)
-		self.on_diplomacy_status_changed(old_state=old_state, new_state='neutral', a = a, b = b)
+		self.on_diplomacy_status_changed(old_state=old_state, new_state='neutral', a=a, b=b)
 
 	def remove_enemy_pair(self, a, b):
 		tup = make_tup(a, b)
@@ -104,7 +105,7 @@ class Diplomacy(object):
 
 	def can_trade(self, a, b):
 		# NOTE: this has not been specified w.r.t. game play
-		if a is b: # can trade with self
+		if a is b:  # can trade with self
 			return True
 		else:
 			return not self.are_enemies(a, b)
@@ -132,6 +133,7 @@ class Diplomacy(object):
 		for tup in self.enemies:
 			db("INSERT INTO diplomacy_enemies(player1, player2) VALUES(?, ?)",
 				tup[0].worldid, tup[1].worldid)
+
 
 def make_tup(a, b):
 	"""

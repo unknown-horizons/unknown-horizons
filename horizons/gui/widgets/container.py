@@ -29,7 +29,7 @@ class AutoResizeContainer(Container):
 	def resizeToContent(self):
 		"""resizeToContent for unlayouted containers. Sets size to smallest box"""
 		for child in self.children:
-			child.adaptLayout() # recalc values for children
+			child.adaptLayout()  # recalc values for children
 
 		max_x = max_y = 0
 		for child in self.children:

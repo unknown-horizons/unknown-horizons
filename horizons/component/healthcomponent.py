@@ -24,6 +24,7 @@ import logging
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.component import Component
 
+
 @metaChangeListenerDecorator("damage_dealt")
 class HealthComponent(Component):
 	"""
@@ -55,12 +56,13 @@ class HealthComponent(Component):
 		self._add_listeners()
 
 	def deal_damage(self, weapon_id, damage):
-		#TODO retrieve modifiers from database by owner_id/weapon_id
-		#scaling factor multiplies the damage taken by the unit
+		# TODO retrieve modifiers from database by owner_id/weapon_id
+		# scaling factor multiplies the damage taken by the unit
 		scaling_factor = 1
 		self.health -= scaling_factor * damage
-		self.health = max(self.health, 0.0) # don't go below 0
-		self.log.debug("dealing damage %s to %s; new health: %s", scaling_factor*damage, self.instance, self.health)
+		self.health = max(self.health, 0.0)  # don't go below 0
+		self.log.debug("dealing damage %s to %s; new health: %s",
+			scaling_factor * damage, self.instance, self.health)
 		self.on_damage_dealt()
 
 	def check_if_alive(self, caller=None):
@@ -74,4 +76,3 @@ class HealthComponent(Component):
 		if self.instance in self.session.selected_instances:
 			if hasattr(self.instance, 'draw_health'):
 				self.instance.draw_health()
-

@@ -30,6 +30,7 @@ from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
 from horizons.constants import LAYERS, VIEW, GAME_SPEED
 
+
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
@@ -70,7 +71,7 @@ class View(ChangeListener):
 				layer.getCellCache().setStaticSize(True)
 
 		rect = fife.Rect(0, 0, horizons.globals.fife.engine_settings.getScreenWidth(),
-		                       horizons.globals.fife.engine_settings.getScreenHeight())
+			horizons.globals.fife.engine_settings.getScreenHeight())
 		self.cam = self.map.addCamera("main", self.layers[-1], rect)
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
@@ -80,16 +81,17 @@ class View(ChangeListener):
 		self.cam.resetRenderers()
 		self.renderer = {}
 		for r in ('InstanceRenderer', 'GridRenderer',
-		          'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer',
-		          'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
-			self.renderer[r] = getattr(fife, r).getInstance(self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
+				'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer',
+				'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
+			self.renderer[r] = getattr(fife, r).getInstance(
+				self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
 			self.renderer[r].setEnabled(r in ('InstanceRenderer', 'GenericRenderer'))
 		self.renderer['InstanceRenderer'].activateAllLayers(self.map)
 		self.renderer['GenericRenderer'].addActiveLayer(self.layers[LAYERS.OBJECTS])
 		self.renderer['GridRenderer'].addActiveLayer(self.layers[LAYERS.GROUND])
 
-		#Setup autoscroll
+		# Setup autoscroll
 		horizons.globals.fife.pump.append(self.do_autoscroll)
 		self.time_last_autoscroll = time.time()
 		self._autoscroll = [0, 0]
@@ -142,12 +144,14 @@ class View(ChangeListener):
 
 		if x != 0:
 			new_angle = math.pi * self.cam.getRotation() / 180.0
-			zoom_factor = self.cam.getZoom() * cell_dim.x * horizons.globals.fife.get_uh_setting('ScrollSpeed')
+			zoom_factor = (self.cam.getZoom() * cell_dim.x *
+				horizons.globals.fife.get_uh_setting('ScrollSpeed'))
 			pos.x += x * math.cos(new_angle) / zoom_factor
 			pos.y += x * math.sin(new_angle) / zoom_factor
 		if y != 0:
 			new_angle = math.pi * self.cam.getRotation() / -180.0
-			zoom_factor = self.cam.getZoom() * cell_dim.y * horizons.globals.fife.get_uh_setting('ScrollSpeed')
+			zoom_factor = (self.cam.getZoom() * cell_dim.y *
+				horizons.globals.fife.get_uh_setting('ScrollSpeed'))
 			pos.x += y * math.sin(new_angle) / zoom_factor
 			pos.y += y * math.cos(new_angle) / zoom_factor
 
@@ -261,7 +265,8 @@ class View(ChangeListener):
 		for layer_id, layer in enumerate(self.layers):
 			if not layer.getCellCache():
 				continue
-			assert layer_id != LAYERS.WATER, 'Water layer would need special treatment (see previous version)'
+			assert layer_id != LAYERS.WATER, \
+				'Water layer would need special treatment (see previous version)'
 
 			rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
 			layer.getCellCache().setSize(rect)

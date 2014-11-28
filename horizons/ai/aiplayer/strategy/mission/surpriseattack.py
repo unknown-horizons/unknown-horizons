@@ -39,9 +39,11 @@ class SurpriseAttack(FleetMission):
 	4. Return home (point B).
 	"""
 
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back')
+	missionStates = Enum.get_extended(FleetMission.missionStates,
+		'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back')
 
-	def __init__(self, success_callback, failure_callback, ships, target_point, return_point, enemy_player):
+	def __init__(self, success_callback, failure_callback, ships, target_point,
+			return_point, enemy_player):
 		super(SurpriseAttack, self).__init__(success_callback, failure_callback, ships)
 		self.__init(target_point, return_point, enemy_player)
 
@@ -61,21 +63,27 @@ class SurpriseAttack(FleetMission):
 		# Fleet callbacks corresponding to given state
 		self._state_fleet_callbacks = {
 			self.missionStates.sailing_to_target: Callback(self.break_diplomacy),
-			self.missionStates.going_back: Callback(self.report_success, "Ships arrived at return point"),
-			self.missionStates.fleeing_home: Callback(self.report_failure, "Combat was lost, ships fled home successfully"),
+			self.missionStates.going_back: Callback(self.report_success,
+			"Ships arrived at return point"),
+			self.missionStates.fleeing_home: Callback(self.report_failure,
+			"Combat was lost, ships fled home successfully"),
 		}
 
 	def save(self, db):
 		super(SurpriseAttack, self).save(db)
-		db("INSERT INTO ai_mission_surprise_attack (rowid, enemy_player_id, target_point_x, target_point_y, target_point_radius, "
-			"return_point_x, return_point_y) VALUES(?, ?, ?, ?, ?, ?, ?)", self.worldid, self.enemy_player.worldid, self.target_point.center.x,
+		db("INSERT INTO ai_mission_surprise_attack (rowid, enemy_player_id, target_point_x,"
+			" target_point_y, target_point_radius, "
+			"return_point_x, return_point_y) VALUES(?, ?, ?, ?, ?, ?, ?)",
+			self.worldid, self.enemy_player.worldid, self.target_point.center.x,
 			self.target_point.center.y, self.target_point.radius, self.return_point.x, self.return_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
 		super(SurpriseAttack, self)._load(db, worldid, success_callback, failure_callback, owner)
-		db_result = db("SELECT enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y "
-						"FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
-		enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y = db_result
+		db_result = db("SELECT enemy_player_id, target_point_x, target_point_y,"
+			" target_point_radius, return_point_x, return_point_y "
+			"FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
+		enemy_player_id, target_point_x, target_point_y, target_point_radius, \
+			return_point_x, return_point_y = db_result
 
 		target_point = Circle(Point(target_point_x, target_point_y), target_point_radius)
 		return_point = Point(return_point_x, return_point_y)
@@ -86,16 +94,19 @@ class SurpriseAttack(FleetMission):
 		self.sail_to_target()
 
 	def sail_to_target(self):
-		self.log.debug("Player %s, Mission %s, 1/4 set off from point %s to point %s", self.owner.name, self.__class__.__name__, self.return_point, self.target_point)
+		self.log.debug("Player %s, Mission %s, 1/4 set off from point %s to point %s",
+			self.owner.name, self.__class__.__name__, self.return_point, self.target_point)
 		try:
-			self.fleet.move(self.target_point, self._state_fleet_callbacks[self.missionStates.sailing_to_target])
+			self.fleet.move(self.target_point,
+				self._state_fleet_callbacks[self.missionStates.sailing_to_target])
 			self.state = self.missionStates.sailing_to_target
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when moving to target")
 
 	def break_diplomacy(self):
 		self.state = self.missionStates.breaking_diplomacy
-		self.log.debug("Player %s, Mission %s, 2/4 breaking diplomacy with Player %s", self.owner.name, self.__class__.__name__, self.enemy_player.name)
+		self.log.debug("Player %s, Mission %s, 2/4 breaking diplomacy with Player %s",
+			self.owner.name, self.__class__.__name__, self.enemy_player.name)
 		if not self.session.world.diplomacy.are_enemies(self.owner, self.enemy_player):
 			AddEnemyPair(self.owner, self.enemy_player).execute(self.session)
 		self.in_combat()
@@ -106,7 +117,8 @@ class SurpriseAttack(FleetMission):
 		self.state = self.missionStates.in_combat
 
 	def go_back(self):
-		self.log.debug("Player %s, Mission %s, 4/4 going back after combat to point %s", self.owner.name, self.__class__.__name__, self.return_point)
+		self.log.debug("Player %s, Mission %s, 4/4 going back after combat to point %s",
+			self.owner.name, self.__class__.__name__, self.return_point)
 		try:
 			self.fleet.move(self.return_point, self._state_fleet_callbacks[self.missionStates.going_back])
 			self.state = self.missionStates.going_back
@@ -124,7 +136,9 @@ class SurpriseAttack(FleetMission):
 			self.report_failure("Combat was lost, all ships were wiped out")
 
 	@classmethod
-	def create(cls, success_callback, failure_callback, fleet, target_point, return_point, enemy_player):
-		return SurpriseAttack(success_callback, failure_callback, fleet, target_point, return_point, enemy_player)
+	def create(cls, success_callback, failure_callback, fleet, target_point, return_point,
+			enemy_player):
+		return SurpriseAttack(success_callback, failure_callback, fleet, target_point,
+			return_point, enemy_player)
 
 decorators.bind_all(SurpriseAttack)

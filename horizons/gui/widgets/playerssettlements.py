@@ -26,6 +26,7 @@ from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
 
+
 class PlayersSettlements(StatsWidget):
 	"""Widget that shows a list of the player's settlements."""
 
@@ -36,11 +37,13 @@ class PlayersSettlements(StatsWidget):
 
 	def refresh(self):
 		super(PlayersSettlements, self).refresh()
-		self._gui.findChild(name='headline').text = _("Settlements of {player}").format(player=self.session.world.player.name)
+		self._gui.findChild(name='headline').text = _("Settlements of {player}").format(
+			player=self.session.world.player.name)
 
 		sequence_number = 0
 		events = {}
-		for settlement in sorted(self.session.world.settlements, key = lambda settlement: (settlement.get_component(NamedComponent).name, settlement.worldid)):
+		for settlement in sorted(self.session.world.settlements, key=lambda settlement: (
+			settlement.get_component(NamedComponent).name, settlement.worldid)):
 			if settlement.owner is self.session.world.player:
 				sequence_number += 1
 				name_label, rename_icon = self._add_line_to_gui(settlement, sequence_number)
@@ -94,7 +97,7 @@ class PlayersSettlements(StatsWidget):
 		rename_icon = RenameImageButton(name='rename_%d' % settlement.worldid)
 		rename_icon.path = "images/background/rename_feather_20"
 		rename_icon.helptext = _("Click to change the name of your settlement")
-		rename_icon.max_size = (20, 20) # (width, height)
+		rename_icon.max_size = (20, 20)  # (width, height)
 
 		self._add_generic_line_to_gui(settlement.worldid, [sequence_number_label, name, rename_icon],
 			settlement.inhabitants, settlement.cumulative_taxes, settlement.cumulative_running_costs)

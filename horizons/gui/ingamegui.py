@@ -20,6 +20,7 @@
 # ###################################################
 
 from fife import fife
+import pdb
 
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
@@ -93,14 +94,10 @@ class IngameGui(LivingObject):
 		self.help_dialog = HelpDialog(self.windows)
 
 		# Icon manager
-		self.status_icon_manager = StatusIconManager(
-			renderer=self.session.view.renderer['GenericRenderer'],
-			layer=self.session.view.layers[LAYERS.OBJECTS]
-		)
-		self.production_finished_icon_manager = ProductionFinishedIconManager(
-			renderer=self.session.view.renderer['GenericRenderer'],
-			layer=self.session.view.layers[LAYERS.OBJECTS]
-		)
+		self.status_icon_manager = StatusIconManager(renderer=self.session.view.
+			renderer['GenericRenderer'], layer=self.session.view.layers[LAYERS.OBJECTS])
+		self.production_finished_icon_manager = ProductionFinishedIconManager(renderer=self
+			.session.view.renderer['GenericRenderer'], layer=self.session.view.layers[LAYERS.OBJECTS])
 
 		# 'minimap' is the guichan gui around the actual minimap, which is saved
 		# in self.minimap
@@ -120,31 +117,28 @@ class IngameGui(LivingObject):
 		def speed_down():
 			SpeedDownCommand().execute(self.session)
 
-		self.mainhud.mapEvents({
-			'zoomIn' : self.session.view.zoom_in,
-			'zoomOut' : self.session.view.zoom_out,
-			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
-			'speedUp' : speed_up,
-			'speedDown' : speed_down,
-			'destroy_tool' : self.toggle_destroy_tool,
-			'build' : self.show_build_menu,
-			'diplomacyButton' : self.show_diplomacy_menu,
-			'gameMenuButton' : self.toggle_pause,
-			'logbook' : lambda: self.windows.toggle(self.logbook)
-		})
+		self.mainhud.mapEvents({'zoomIn': self.session.view.zoom_in,
+			'zoomOut': self.session.view.zoom_out,
+			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right,
+				self.minimap.rotate_right),
+			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'speedUp': speed_up,
+			'speedDown': speed_down,
+			'destroy_tool': self.toggle_destroy_tool,
+			'build': self.show_build_menu,
+			'diplomacyButton': self.show_diplomacy_menu,
+			'gameMenuButton': self.toggle_pause,
+			'logbook': lambda: self.windows.toggle(self.logbook)})
 		self.mainhud.show()
 
-		hotkey_replacements = {
-			'rotateRight': 'ROTATE_RIGHT',
+		hotkey_replacements = {'rotateRight': 'ROTATE_RIGHT',
 			'rotateLeft': 'ROTATE_LEFT',
 			'speedUp': 'SPEED_UP',
 			'speedDown': 'SPEED_DOWN',
 			'destroy_tool': 'DESTROY_TOOL',
 			'build': 'BUILD_TOOL',
 			'gameMenuButton': 'ESCAPE',
-			'logbook': 'LOGBOOK',
-		}
+			'logbook': 'LOGBOOK', }
 		for (widgetname, action) in hotkey_replacements.iteritems():
 			widget = self.mainhud.findChild(name=widgetname)
 			keys = horizons.globals.fife.get_keys_for_action(action)
@@ -173,17 +167,15 @@ class IngameGui(LivingObject):
 		MineEmpty.unsubscribe(self._on_mine_empty)
 		ZoomChanged.unsubscribe(self._update_zoom)
 
-		self.mainhud.mapEvents({
-			'zoomIn' : None,
-			'zoomOut' : None,
-			'rotateRight' : None,
+		self.mainhud.mapEvents({'zoomIn': None,
+			'zoomOut': None,
+			'rotateRight': None,
 			'rotateLeft': None,
 
-			'destroy_tool' : None,
-			'build' : None,
-			'diplomacyButton' : None,
-			'gameMenuButton' : None
-		})
+			'destroy_tool': None,
+			'build': None,
+			'diplomacyButton': None,
+			'gameMenuButton': None})
 		self.mainhud.hide()
 		self.mainhud = None
 
@@ -235,7 +227,7 @@ class IngameGui(LivingObject):
 
 		if not DiplomacyTab.is_useable(self.session.world):
 			self.windows.open_popup(_("No diplomacy possible"),
-			                        _("Cannot do diplomacy as there are no other players."))
+				_("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
@@ -253,20 +245,20 @@ class IngameGui(LivingObject):
 		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "build_menu_tab_widget":
 			self.hide_menu()
 
-			if not update: # this was only a toggle call, don't reshow
+			if not update:  # this was only a toggle call, don't reshow
 				return
 
-		self.set_cursor() # set default cursor for build menu
+		self.set_cursor()  # set default cursor for build menu
 		self.deselect_all()
 
-		if not any( settlement.owner.is_local_player for settlement in self.session.world.settlements):
+		if not any(settlement.owner.is_local_player for settlement in self.session.world.settlements):
 			# player has not built any settlements yet. Accessing the build menu at such a point
 			# indicates a mistake in the mental model of the user. Display a hint.
-			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
+			tab = TabWidget(self, tabs=[TabInterface(widget="buildtab_no_settlement.xml")])
 		else:
 			btabs = BuildTab.create_tabs(self.session, self._build)
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget",
-											active_tab=BuildTab.last_active_build_tab)
+				active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
 
 	def deselect_all(self):
@@ -286,7 +278,8 @@ class IngameGui(LivingObject):
 		self.set_cursor('building', cls, None if unit is None else unit())
 
 	def toggle_road_tool(self):
-		if not isinstance(self.cursor, mousetools.BuildingTool) or self.cursor._class.id != BUILDINGS.TRAIL:
+		if (not isinstance(self.cursor, mousetools.BuildingTool)
+				or self.cursor._class.id != BUILDINGS.TRAIL):
 			self._build(BUILDINGS.TRAIL)
 		else:
 			self.set_cursor()
@@ -301,13 +294,13 @@ class IngameGui(LivingObject):
 		"""
 		if self._old_menu is not None:
 			if hasattr(self._old_menu, "remove_remove_listener"):
-				self._old_menu.remove_remove_listener( Callback(self.show_menu, None) )
+				self._old_menu.remove_remove_listener(Callback(self.show_menu, None))
 			self._old_menu.hide()
 
 		self._old_menu = menu
 		if self._old_menu is not None:
 			if hasattr(self._old_menu, "add_remove_listener"):
-				self._old_menu.add_remove_listener( Callback(self.show_menu, None) )
+				self._old_menu.add_remove_listener(Callback(self.show_menu, None))
 			self._old_menu.show()
 			self.minimap_to_front()
 
@@ -351,7 +344,7 @@ class IngameGui(LivingObject):
 			cur_settlement = LastActivePlayerSettlementManager().get_current_settlement()
 			self.cityinfo.set_settlement(cur_settlement)
 
-		self.minimap.draw() # update minimap to new world
+		self.minimap.draw()  # update minimap to new world
 
 		self.current_cursor = 'default'
 		self.cursor = mousetools.SelectionTool(self.session)
@@ -370,7 +363,7 @@ class IngameGui(LivingObject):
 			player1 = u"%s" % a.name
 			player2 = u"%s" % b.name
 
-			data = {'player1' : player1, 'player2' : player2}
+			data = {'player1': player1, 'player2': player2}
 
 			string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
 			                                                  new=new_state.upper())
@@ -428,14 +421,14 @@ class IngameGui(LivingObject):
 		text = u''
 		up_icon = self.mainhud.findChild(name='speedUp')
 		down_icon = self.mainhud.findChild(name='speedDown')
-		if tps == 0: # pause
+		if tps == 0:  # pause
 			text = u'0x'
 			up_icon.set_inactive()
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = u"%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
-				#%1g: displays 0.5x, but 2x instead of 2.0x
+				text = u"%1gx" % (tps * 1.0 / GAME_SPEED.TICKS_PER_SECOND)
+				# %1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):
 				up_icon.set_inactive()
@@ -460,13 +453,13 @@ class IngameGui(LivingObject):
 		keyval = evt.getKey().getValue()
 
 		if action == _Actions.ESCAPE:
-			return self.on_escape()		
+			return self.on_escape()
 		elif keyval == fife.Key.ENTER:
 			return self.on_return()
 
 		if action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
-			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
+			gridrenderer.setEnabled(not gridrenderer.isEnabled())
 		elif action == _Actions.COORD_TOOLTIP:
 			self.coordinates_tooltip.toggle()
 		elif action == _Actions.DESTROY_TOOL:
@@ -498,7 +491,7 @@ class IngameGui(LivingObject):
 		elif action == _Actions.LOGBOOK:
 			self.windows.toggle(self.logbook)
 		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
-			import pdb; pdb.set_trace()
+			pdb.set_trace()
 		elif action == _Actions.BUILD_TOOL:
 			self.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:
@@ -536,7 +529,7 @@ class IngameGui(LivingObject):
 			if self.session.selected_instances:
 				# Scroll to first one, we can never guarantee to display all selected units.
 				instance = iter(self.session.selected_instances).next()
-				self.session.view.center( * instance.position.center.to_tuple())
+				self.session.view.center(* instance.position.center.to_tuple())
 				for instance in self.session.selected_instances:
 					if hasattr(instance, "path") and instance.owner.is_local_player:
 						self.minimap.show_unit_path(instance)
@@ -597,14 +590,12 @@ class IngameGui(LivingObject):
 		Further arguments are passed to the mouse tool constructor."""
 		self.cursor.remove()
 		self.current_cursor = which
-		klass = {
-			'default'        : mousetools.SelectionTool,
-			'selection'      : mousetools.SelectionTool,
-			'tearing'        : mousetools.TearingTool,
-			'pipette'        : mousetools.PipetteTool,
-			'attacking'      : mousetools.AttackingTool,
-			'building'       : mousetools.BuildingTool,
-		}[which]
+		klass = {'default': mousetools.SelectionTool,
+			'selection': mousetools.SelectionTool,
+			'tearing': mousetools.TearingTool,
+			'pipette': mousetools.PipetteTool,
+			'attacking': mousetools.AttackingTool,
+			'building': mousetools.BuildingTool, }[which]
 		self.cursor = klass(self.session, *args, **kwargs)
 
 	def toggle_destroy_tool(self):
@@ -632,12 +623,9 @@ class IngameGui(LivingObject):
 
 	def _on_new_settlement(self, message):
 		player = message.settlement.owner
-		self.message_widget.add(
-			string_id='NEW_SETTLEMENT',
+		self.message_widget.add(string_id='NEW_SETTLEMENT',
 			point=message.warehouse_position,
-			message_dict={'player': player.name},
-			play_sound=player.is_local_player
-		)
+			message_dict={'player': player.name}, play_sound=player.is_local_player)
 
 	def _on_player_level_upgrade(self, message):
 		"""Called when a player's population reaches a new level."""
@@ -645,8 +633,7 @@ class IngameGui(LivingObject):
 			return
 
 		# show notification
-		self.message_widget.add(
-			point=message.building.position.center,
+		self.message_widget.add(point=message.building.position.center,
 			string_id='SETTLER_LEVEL_UP',
 			message_dict={'level': message.level + 1}
 		)

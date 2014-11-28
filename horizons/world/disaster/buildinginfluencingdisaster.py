@@ -27,6 +27,7 @@ from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 
+
 class BuildingInfluencingDisaster(Disaster):
 	"""Simulates a building influencing disaster.
 
@@ -34,10 +35,12 @@ class BuildingInfluencingDisaster(Disaster):
 
 	"""
 
-	# Defines the building type that should be influenced, by default it infects the residents of a settlement
+	# Defines the building type that should be influenced, by default it infects
+	# the residents of a settlement
 	BUILDING_TYPE = BUILDINGS.RESIDENTIAL
 
-	# Defines the minimum tier a settlement needs before this disaster can break out, by default its the PIONEER tier
+	# Defines the minimum tier a settlement needs before this disaster can break out,
+	# by default its the PIONEER tier
 	MIN_BREAKOUT_TIER = TIER.PIONEERS
 
 	# Defines the minimum number of pioneer or higher residences that need to be in a
@@ -57,21 +60,22 @@ class BuildingInfluencingDisaster(Disaster):
 	# By default, try twice before disasterying
 	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1
 
-
 	def __init__(self, settlement, manager):
-		super (BuildingInfluencingDisaster, self).__init__(settlement, manager)
+		super(BuildingInfluencingDisaster, self).__init__(settlement, manager)
 		self._affected_buildings = []
 
 	def save(self, db):
-		super( BuildingInfluencingDisaster, self).save(db)
+		super(BuildingInfluencingDisaster, self).save(db)
 		for building in self._affected_buildings:
 			ticks = Scheduler().get_remaining_ticks(self, Callback(self.wreak_havoc, building), True)
-			db("INSERT INTO building_influencing_disaster(disaster, building, remaining_ticks_havoc) VALUES(?, ?, ?)",
-			   self.worldid, building.worldid, ticks)
+			db("INSERT INTO building_influencing_disaster(disaster,"
+				" building, remaining_ticks_havoc) VALUES(?, ?, ?)",
+				self.worldid, building.worldid, ticks)
 
 	def load(self, db, worldid):
 		super(BuildingInfluencingDisaster, self).load(db, worldid)
-		for building_id, ticks in db("SELECT building, remaining_ticks_havoc FROM building_influencing_disaster WHERE disaster = ?", worldid):
+		for building_id, ticks in db("SELECT building, remaining_ticks_havoc"
+				" FROM building_influencing_disaster WHERE disaster = ?", worldid):
 			# do half of infect()
 			building = WorldObject.get_object_by_id(building_id)
 			self.log.debug("%s loading disaster %s", self, building)
@@ -88,7 +92,7 @@ class BuildingInfluencingDisaster(Disaster):
 	@classmethod
 	def can_breakout(cls, settlement):
 		return settlement.owner.settler_level >= cls.MIN_BREAKOUT_TIER and \
-		       settlement.count_buildings(cls.BUILDING_TYPE) > cls.MIN_INHABITANTS_FOR_BREAKOUT
+			settlement.count_buildings(cls.BUILDING_TYPE) > cls.MIN_INHABITANTS_FOR_BREAKOUT
 
 	def expand(self):
 		if not self.evaluate():
@@ -98,7 +102,8 @@ class BuildingInfluencingDisaster(Disaster):
 			return
 		self.log.debug("%s still active, expanding..", self)
 		for building in self._affected_buildings:
-			for tile in self._settlement.get_tiles_in_radius(building.position, self.EXPANSION_RADIUS, False):
+			for tile in self._settlement.get_tiles_in_radius(building.position,
+					self.EXPANSION_RADIUS, False):
 				if tile.object is None or tile.object.id != self.BUILDING_TYPE:
 					continue
 				if tile.object in self._affected_buildings:
@@ -118,7 +123,9 @@ class BuildingInfluencingDisaster(Disaster):
 		# keep in sync with load()
 		if load:
 			db, worldid = load
-			havoc_time = db("SELECT remaining_ticks_havoc FROM building_influencing_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
+			havoc_time = db("SELECT remaining_ticks_havoc FROM"
+				" building_influencing_disaster WHERE disaster = ?"
+				" AND building = ?", worldid, building.worldid)[0][0]
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
 		AddStatusIcon.broadcast(building, self.STATUS_ICON(building))
 		NewDisaster.broadcast(building.owner, building, self.__class__, self)

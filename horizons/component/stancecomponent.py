@@ -25,6 +25,7 @@ from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
 
+
 class StanceComponent(Component):
 	"""
 	Class to be inherited for all unit stances
@@ -45,12 +46,12 @@ class StanceComponent(Component):
 		super(StanceComponent, self).__init__()
 		self.state = 'idle'
 		self.action = {
-		    'idle' : self.act_idle,
-		    'user_attack' : self.act_user_attack,
-		    'user_move' : self.act_user_move,
-		    'move_back' : self.act_move_back,
-		    'auto_attack' : self.act_auto_attack,
-		    'flee' : self.act_flee,
+		    'idle': self.act_idle,
+		    'user_attack': self.act_user_attack,
+		    'user_move': self.act_user_move,
+		    'move_back': self.act_move_back,
+		    'auto_attack': self.act_auto_attack,
+		    'flee': self.act_flee,
 		}
 
 	def initialize(self):
@@ -60,14 +61,14 @@ class StanceComponent(Component):
 		try:
 			self.instance.add_user_move_issued_listener(Callback(self.set_state, 'user_move'))
 		except AttributeError:
-			pass # temporary workaround to make it work for towers
+			pass  # temporary workaround to make it work for towers
 
 	def remove(self):
 		self.instance.remove_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
 		try:
 			self.instance.remove_user_move_issued_listener(Callback(self.set_state, 'user_move'))
 		except AttributeError:
-			pass # temporary workaround to make it work for towers
+			pass  # temporary workaround to make it work for towers
 		super(StanceComponent, self).remove()
 
 	def set_state(self, state):
@@ -137,7 +138,7 @@ class LimitedMoveStance(StanceComponent):
 
 	def __init__(self):
 		super(LimitedMoveStance, self).__init__()
-		#TODO get range from db
+		# TODO get range from db
 		self.stance_radius = 0
 		self.move_range = 0
 		# get instance data after it was inited
@@ -199,13 +200,15 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		Returns closest attackable unit in radius
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center, radius)
-		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
+		enemies = [u for u in self.session.world.get_health_instances(
+			self.instance.position.center, radius)
+			if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
 
 		if not enemies:
 			return None
 
-		return min(enemies, key = lambda e: self.instance.position.distance(e.position))
+		return min(enemies, key=lambda e: self.instance.position.distance(e.position))
+
 
 class AggressiveStance(LimitedMoveStance):
 	"""
@@ -216,7 +219,7 @@ class AggressiveStance(LimitedMoveStance):
 
 	def __init__(self):
 		super(AggressiveStance, self).__init__()
-		#TODO get range from db
+		# TODO get range from db
 		self.stance_radius = 15
 		self.move_range = 25
 
@@ -238,8 +241,8 @@ class AggressiveStance(LimitedMoveStance):
 		if target:
 			self.instance.fire_all_weapons(target.position.center)
 
-class HoldGroundStance(LimitedMoveStance):
 
+class HoldGroundStance(LimitedMoveStance):
 	NAME = 'hold_ground_stance'
 
 	def __init__(self):
@@ -247,11 +250,11 @@ class HoldGroundStance(LimitedMoveStance):
 		self.stance_radius = 5
 		self.move_range = 15
 
+
 class NoneStance(StanceComponent):
-
 	NAME = 'none_stance'
-
 	pass
+
 
 class FleeStance(StanceComponent):
 	"""
@@ -290,8 +293,10 @@ class FleeStance(StanceComponent):
 		"""
 		Gets the closest unit that can fire to instance
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center, self.lookout_distance)
-		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
+		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center,
+			self.lookout_distance)
+			if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)
+			and hasattr(u, '_max_range')]
 
 		if not enemies:
 			return None
@@ -300,4 +305,4 @@ class FleeStance(StanceComponent):
 		return min(enemies, key=sort_order)
 
 
-DEFAULT_STANCES = [ HoldGroundStance, AggressiveStance, NoneStance, FleeStance ]
+DEFAULT_STANCES = [HoldGroundStance, AggressiveStance, NoneStance, FleeStance]

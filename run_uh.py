@@ -48,6 +48,7 @@ import platform
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
 
+
 def exit_with_error(title, message):
 	if title + '.' != message:
 		print(title)
@@ -64,9 +65,10 @@ def exit_with_error(title, message):
 		pass
 	exit(1)
 
+
 def check_python_version():
 	# python up to version 2.6.1 returns an int. http://bugs.python.org/issue5561
-	if platform.python_version_tuple()[0] not in (2,'2'):
+	if platform.python_version_tuple()[0] not in (2, '2'):
 		exit_with_error('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
 
 
@@ -79,6 +81,7 @@ def log():
 
 logfilename = None
 logfile = None
+
 
 def get_content_dir_parent_path():
 	"""
@@ -104,12 +107,14 @@ def get_content_dir_parent_path():
 			return path
 	raise RuntimeError('Unable to find the path to the Unknown Horizons content dir.')
 
+
 def create_user_dirs():
 	"""Creates the userdir and subdirs. Includes from horizons."""
 	from horizons.constants import PATHS
 	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
 		if not os.path.isdir(directory):
 			os.makedirs(directory)
+
 
 def excepthook_creator(outfilename):
 	"""Returns an excepthook function to replace sys.excepthook.
@@ -129,6 +134,7 @@ def excepthook_creator(outfilename):
 		print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
 	return excepthook
 
+
 def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
@@ -140,12 +146,14 @@ def exithandler(exitcode, signum, frame):
 		logfile.close()
 	sys.exit(exitcode)
 
+
 def setup_streams():
 	"""Ignore output to stderr and stdout if writing to them is not possible."""
 	if sys.__stderr__.fileno() < 0:
 		sys.stderr = open(os.devnull, 'w')
 	if sys.__stdout__.fileno() < 0:
 		sys.stdout = open(os.devnull, 'w')
+
 
 def main():
 	# abort silently on signal
@@ -158,7 +166,7 @@ def main():
 	# use locale-specific time.strftime handling
 	try:
 		locale.setlocale(locale.LC_TIME, '')
-	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
+	except locale.Error:  # Workaround for "locale.Error: unsupported locale setting"
 		pass
 
 	# Change the working directory to the parent of the content directory
@@ -230,7 +238,7 @@ def setup_debugging(options):
 	if options.debug or options.debug_log_only:
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
-		if not module in logging.Logger.manager.loggerDict:
+		if module not in logging.Logger.manager.loggerDict:
 			print('No such logger: %s' % module)
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
@@ -246,7 +254,7 @@ def setup_debugging(options):
 			                           time.strftime("%Y-%m-%d_%H-%M-%S"))
 		print('Logging to {uh} and {fife}'.format(
 			uh=logfilename.encode('utf-8', 'replace'),
-			fife=os.path.join(os.getcwd(), 'fife.log')) )
+			fife=os.path.join(os.getcwd(), 'fife.log')))
 		# create logfile
 		logfile = open(logfilename, 'w')
 		# log there
@@ -257,11 +265,14 @@ def setup_debugging(options):
 		# log any other stdout output there (this happens, when FIFE c++ code launches some
 		# FIFE python code and an exception happens there). The exceptionhook only gets
 		# a director exception, but no real error message then.
+
 		class StdOutDuplicator(object):
+
 			def write(self, line):
 				line = unicode(line)
 				sys.__stdout__.write(line)
 				logfile.write(line.encode('UTF-8'))
+
 			def flush(self):
 				sys.__stdout__.flush()
 				logfile.flush()
@@ -275,6 +286,7 @@ def setup_debugging(options):
 			logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
 
 		log_sys_info()
+
 
 def import_fife(paths):
 	try:
@@ -295,6 +307,7 @@ def import_fife(paths):
 		# FIFE couldn't be found in any of the paths.
 		return False
 	return True
+
 
 def find_fife():
 	# Use the path the user provided.
@@ -336,12 +349,14 @@ def find_fife():
 					paths.append(path)
 	return import_fife(paths)
 
+
 def setup_fife():
 	log_paths()
 	log_sys_info()
 	if not find_fife():
-		#TODO useful error message anyone?
-		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
+		# TODO useful error message anyone?
+		exit_with_error('Failed to find and/or load FIFE',
+            'Failed to find and/or load FIFE.')
 
 	from fife import fife
 	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
@@ -350,9 +365,19 @@ def setup_fife():
 
 	from horizons.constants import VERSION
 	if (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
-		log().warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+		log().warning('Unsupported fife version %s.%s.%s,'
+			' at least %d.%d.%d required', fife_version_major,
+			fife_version_minor, fife_version_patch,
+			VERSION.REQUIRED_FIFE_MAJOR_VERSION,
+			VERSION.REQUIRED_FIFE_MINOR_VERSION,
+			VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
-		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
+		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required',
+			fife_version_major, fife_version_minor, fife_version_patch,
+			VERSION.REQUIRED_FIFE_MAJOR_VERSION,
+			VERSION.REQUIRED_FIFE_MINOR_VERSION,
+			VERSION.REQUIRED_FIFE_PATCH_VERSION)
+
 
 def init_environment(use_fife):
 	"""Sets up everything.
@@ -363,6 +388,7 @@ def init_environment(use_fife):
 	if use_fife:
 		setup_fife()
 
+
 def log_paths():
 	"""Prints debug info about paths to log"""
 	log().debug("SYS.PATH: %s", sys.path)
@@ -370,6 +396,7 @@ def log_paths():
 	log().debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
 	log().debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
 	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
+
 
 def log_sys_info():
 	"""Prints debug info about the current system to log"""

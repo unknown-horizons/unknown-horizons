@@ -82,7 +82,8 @@ class TileLayingTool(NavigationTool):
 
 	def _place_tile(self, coords):
 		brush = Circle(Point(*coords), self.session.world_editor.brush_size - 1)
-		self.session.world_editor.intermediate_map.set_south_east_corner(brush.tuple_iter(), self._tile_details)
+		self.session.world_editor.intermediate_map.set_south_east_corner(brush.tuple_iter(),
+			self._tile_details)
 
 	def get_world_location(self, evt):
 		screenpoint = self._get_screenpoint(evt)

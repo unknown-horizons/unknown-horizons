@@ -240,10 +240,12 @@ class Dialog(Window):
 
 		@param dlg: dialog that is to be shown
 		@param bind: events that make the dialog return + return values {'ok': True, 'cancel': False}
-		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
+		@param event_map: dictionary with callbacks for buttons. See pychan docu:
+		pychan.widget.mapEvents()
 		@param modal: Whether to block user interaction while displaying the dialog
 		@param focus: Which child widget should take focus
 		"""
+
 		def prepare(self, **kwargs):
 			self._gui = dlg
 			if event_map:
@@ -255,7 +257,6 @@ class Dialog(Window):
 			'focus': focus,
 			'prepare': prepare,
 		})
-
 		return TempDialog
 
 
@@ -286,7 +287,7 @@ class Popup(Dialog):
 		headline.text = _(self.windowtitle)
 		message_lbl = self._gui.findChild(name='popup_message')
 		message_lbl.text = _(self.message)
-		self._gui.adaptLayout() # recalculate widths
+		self._gui.adaptLayout()  # recalculate widths
 
 		self.return_events = {OkButton.DEFAULT_NAME: True}
 		if self.show_cancel_button:
@@ -410,9 +411,8 @@ class WindowManager(object):
 		if details:
 			msg += _("Details: {error_details}").format(error_details=details)
 		try:
-			self.open_popup( _("Error: {error_message}").format(error_message=windowtitle),
-			                 msg)
-		except SystemExit: # user really wants us to die
+			self.open_popup(_("Error: {error_message}").format(error_message=windowtitle), msg)
+		except SystemExit:  # user really wants us to die
 			raise
 		except:
 			# could be another game error, try to be persistent in showing the error message
@@ -423,4 +423,4 @@ class WindowManager(object):
 				log.error('Exception while showing error, retrying once more.')
 				return self.open_error_popup(windowtitle, description, advice, details, _first=False)
 			else:
-				raise # it persists, we have to die.
+				raise  # it persists, we have to die.

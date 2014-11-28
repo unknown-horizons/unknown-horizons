@@ -25,6 +25,7 @@ from types import FunctionType, ClassType
 import time
 import functools
 
+
 class cachedfunction(object):
 	"""Decorator that caches a function's return value each time it is called.
 	If called later with the same arguments, the cached value is returned, and
@@ -94,18 +95,17 @@ def temporary_cachedmethod(timeout):
 					del self.cache_dates[key]
 					return self(*args, **kwargs)
 			else:
-				self.cache_dates[key] = time.time() # new entry
+				self.cache_dates[key] = time.time()  # new entry
 
 			return super(_temporary_cachedmethod, self).__call__(*args, **kwargs)
 
-	return functools.partial( _temporary_cachedmethod, timeout=timeout )
-
-
+	return functools.partial(_temporary_cachedmethod, timeout=timeout)
 
 # adapted from http://code.activestate.com/recipes/277940/
 
 from opcode import opmap, HAVE_ARGUMENT, EXTENDED_ARG
 globals().update(opmap)
+
 
 def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 	try:
@@ -132,7 +132,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 		if opcode in (EXTENDED_ARG, STORE_GLOBAL):
 			return f    # for simplicity, only optimize common cases
 		if opcode == LOAD_GLOBAL:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			name = co.co_names[oparg]
 			if name in env and name not in stoplist:
 				value = env[name]
@@ -143,8 +143,8 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 					pos = len(newconsts)
 					newconsts.append(value)
 				newcode[i] = LOAD_CONST
-				newcode[i+1] = pos & 0xFF
-				newcode[i+2] = pos >> 8
+				newcode[i + 1] = pos & 0xFF
+				newcode[i + 2] = pos >> 8
 				if verbose:
 					print name, '-->', value
 		i += 1
@@ -157,7 +157,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 
 		newtuple = []
 		while newcode[i] == LOAD_CONST:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			newtuple.append(newconsts[oparg])
 			i += 3
 
@@ -170,7 +170,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 
 		if opcode == LOAD_ATTR:
 			obj = newtuple[-1]
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			name = names[oparg]
 			try:
 				value = getattr(obj, name)
@@ -179,7 +179,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 			deletions = 1
 
 		elif opcode == BUILD_TUPLE:
-			oparg = newcode[i+1] + (newcode[i+2] << 8)
+			oparg = newcode[i + 1] + (newcode[i + 2] << 8)
 			if oparg != len(newtuple):
 				continue
 			deletions = len(newtuple)
@@ -189,29 +189,29 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 			continue
 
 		reljump = deletions * 3
-		newcode[i-reljump] = JUMP_FORWARD
-		newcode[i-reljump+1] = (reljump-3) & 0xFF
-		newcode[i-reljump+2] = (reljump-3) >> 8
+		newcode[i - reljump] = JUMP_FORWARD
+		newcode[i - reljump + 1] = (reljump - 3) & 0xFF
+		newcode[i - reljump + 2] = (reljump - 3) >> 8
 
 		n = len(newconsts)
 		newconsts.append(value)
 		newcode[i] = LOAD_CONST
-		newcode[i+1] = n & 0xFF
-		newcode[i+2] = n >> 8
+		newcode[i + 1] = n & 0xFF
+		newcode[i + 2] = n >> 8
 		i += 3
 		if verbose:
 			print "new folded constant:", value
 
 	codestr = ''.join(map(chr, newcode))
 	codeobj = type(co)(co.co_argcount, co.co_nlocals, co.co_stacksize,
-				             co.co_flags, codestr, tuple(newconsts), co.co_names,
-				             co.co_varnames, co.co_filename, co.co_name,
-				             co.co_firstlineno, co.co_lnotab, co.co_freevars,
-				             co.co_cellvars)
-	return type(f)(codeobj, f.func_globals, f.func_name, f.func_defaults,
-				         f.func_closure)
+		co.co_flags, codestr, tuple(newconsts), co.co_names,
+		co.co_varnames, co.co_filename, co.co_name,
+		co.co_firstlineno, co.co_lnotab, co.co_freevars,
+		co.co_cellvars)
+	return type(f)(codeobj, f.func_globals, f.func_name, f.func_defaults, f.func_closure)
 
-_make_constants = _make_constants(_make_constants) # optimize thyself!
+_make_constants = _make_constants(_make_constants)  # optimize thyself!
+
 
 def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 	"""Recursively apply constant binding to functions in a module or class.
@@ -237,6 +237,7 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 			setattr(mc, k, newv)
 		elif type(v) in (type, ClassType):
 			bind_all(v, builtin_only, stoplist, verbose)
+
 
 @_make_constants
 def make_constants(builtin_only=False, stoplist=[], verbose=False):

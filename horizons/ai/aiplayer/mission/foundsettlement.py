@@ -29,6 +29,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
 from horizons.entities import Entities
 
+
 class FoundSettlement(ShipMission):
 	"""
 	Given a ship with the required resources and the coordinates of the future warehouse
@@ -46,8 +47,10 @@ class FoundSettlement(ShipMission):
 
 	def save(self, db):
 		super(FoundSettlement, self).save(db)
-		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)",
-			self.worldid, self.land_manager.worldid, self.ship.worldid, self.coords[0], self.coords[1], self.state.index)
+		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager,"
+			" ship, x, y, state) VALUES(?, ?, ?, ?, ?, ?)",
+			self.worldid, self.land_manager.worldid, self.ship.worldid,
+			self.coords[0], self.coords[1], self.state.index)
 
 	@classmethod
 	def load(cls, db, worldid, success_callback, failure_callback):
@@ -56,12 +59,14 @@ class FoundSettlement(ShipMission):
 		return self
 
 	def _load(self, db, worldid, success_callback, failure_callback):
-		db_result = db("SELECT land_manager, ship, x, y, state FROM ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
+		db_result = db("SELECT land_manager, ship, x, y, state FROM"
+			" ai_mission_found_settlement WHERE rowid = ?", worldid)[0]
 		self.land_manager = WorldObject.get_object_by_id(db_result[0])
 		self.coords = (int(db_result[2]), int(db_result[3]))
 		self.warehouse = None
 		self.state = self.missionStates[db_result[4]]
-		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback, WorldObject.get_object_by_id(db_result[1]))
+		super(FoundSettlement, self).load(db, worldid, success_callback, failure_callback,
+			WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
 			self.ship.add_move_callback(Callback(self._reached_destination_area))
@@ -110,12 +115,14 @@ class FoundSettlement(ShipMission):
 		island = land_manager.island
 		personality = land_manager.owner.personality_manager.get('FoundSettlement')
 
-		available_spots_list = list(sorted(island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size].intersection(island.available_land_cache.cache[warehouse_class.size])))
+		available_spots_list = list(sorted(island.terrain_cache.cache[warehouse_class.terrain_type][
+			warehouse_class.size].intersection(island.available_land_cache.cache[warehouse_class.size])))
 		if not available_spots_list:
 			return None
 
 		options = []
-		limited_spots = island.session.random.sample(available_spots_list, min(len(available_spots_list), personality.max_options))
+		limited_spots = island.session.random.sample(available_spots_list, min(len(available_spots_list),
+			personality.max_options))
 		for (x, y) in limited_spots:
 			cost = 0
 			for (x2, y2) in land_manager.village:
@@ -123,16 +130,19 @@ class FoundSettlement(ShipMission):
 				dy = y2 - y
 				distance = (dx * dx + dy * dy) ** 0.5
 				if distance < personality.too_close_penalty_threshold:
-					cost += personality.too_close_constant_penalty + personality.too_close_linear_penalty / (distance + 1.0)
+					cost += personality.too_close_constant_penalty + \
+						personality.too_close_linear_penalty / (distance + 1.0)
 				else:
 					cost += distance
 
 			for settlement_manager in land_manager.owner.settlement_managers:
-				cost += settlement_manager.settlement.warehouse.position.distance((x, y)) * personality.linear_warehouse_penalty
+				cost += settlement_manager.settlement.warehouse.position.distance(
+					(x, y)) * personality.linear_warehouse_penalty
 			options.append((cost, x, y))
 
 		for _, x, y in sorted(options):
-			if ship.check_move(Circle(Point(x + warehouse_class.width // 2, y + warehouse_class.height // 2), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
+			if ship.check_move(Circle(Point(x + warehouse_class.width // 2, y + warehouse_class.height // 2),
+					BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
 				return (x, y)
 		return None
 

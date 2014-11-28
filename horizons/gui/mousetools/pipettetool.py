@@ -57,7 +57,7 @@ class PipetteTool(NavigationTool):
 			obj = self._get_object(evt)
 			if obj and self._is_buildable(obj.id):
 				self.session.ingame_gui.set_cursor('building', Entities.buildings[obj.id])
-			elif obj: # object that is not buildable
+			elif obj:  # object that is not buildable
 				AmbientSoundComponent.play_special('error')
 				self.on_escape()
 			else:
@@ -84,7 +84,7 @@ class PipetteTool(NavigationTool):
 	def _is_buildable(self, building_id):
 		building_tiers = BuildTab.get_building_tiers()
 		return building_id in building_tiers and \
-		       building_tiers[ building_id ] <= self.session.world.player.settler_level
+			building_tiers[building_id] <= self.session.world.player.settler_level
 
 	def _add_coloring(self, obj):
 		if self._is_buildable(obj.id):

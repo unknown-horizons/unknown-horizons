@@ -29,6 +29,7 @@ from horizons.world.building.path import Path
 from horizons.world.status import InventoryFullStatus
 from horizons.component.collectingcomponent import CollectingComponent
 
+
 class StorageBuilding(StorageResourceHandler,
                       BuildingResourceHandler, BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
@@ -67,12 +68,15 @@ class StorageBuilding(StorageResourceHandler,
 			return None
 		return sum(collector.get_utilization() for collector in collectors) / float(len(collectors))
 
+
 class StorageTent(StorageBuilding, BuildableSingle):
 	"""Can't inherit from Buildable* in StorageBuilding because of mro issues."""
 	pass
 
+
 class Warehouse(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
+
 	def __init__(self, *args, **kwargs):
 		super(Warehouse, self).__init__(*args, **kwargs)
 		self.settlement.warehouse = self
@@ -81,8 +85,9 @@ class Warehouse(StorageBuilding, BuildableSingleFromShip):
 
 	def get_status_icons(self):
 		banned_classes = (InventoryFullStatus,)
-		return [ i for i in super(Warehouse, self).get_status_icons() if
-		         not i.__class__ in banned_classes ]
+		return [i for i in super(Warehouse, self).get_status_icons() if
+			i.__class__ not in banned_classes]
+
 
 class MainSquare(Path, StorageBuilding, ProductionBuilding):
 	walkable = True

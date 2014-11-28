@@ -85,6 +85,7 @@ from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
 
@@ -175,7 +176,8 @@ class AIPlayer(GenericAI):
 		if isinstance(mission, FoundSettlement):
 			settlement_manager = SettlementManager(self, mission.land_manager)
 			self.settlement_managers.append(settlement_manager)
-			self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
+			self._settlement_manager_by_settlement_id[
+				settlement_manager.settlement.worldid] = settlement_manager
 			self.add_building(settlement_manager.settlement.warehouse)
 			if settlement_manager.feeder_island:
 				self.need_feeder_island = False
@@ -205,15 +207,19 @@ class AIPlayer(GenericAI):
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback_long, calls)
+		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls),
+			current_callback_long, calls)
 		remaining_ticks_long = max(calls.values()[0], 1)
 
-		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
-			self.worldid, self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long)
+		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island,"
+			" remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
+			self.worldid, self.need_more_ships, self.need_more_combat_ships,
+			self.need_feeder_island, remaining_ticks, remaining_ticks_long)
 
 		# save the ships
 		for ship, state in self.ships.iteritems():
-			db("INSERT INTO ai_ship(rowid, owner, state) VALUES(?, ?, ?)", ship.worldid, self.worldid, state.index)
+			db("INSERT INTO ai_ship(rowid, owner, state) VALUES(?, ?, ?)",
+				ship.worldid, self.worldid, state.index)
 
 		# save the land managers
 		for land_manager in self.islands.itervalues():
@@ -248,7 +254,8 @@ class AIPlayer(GenericAI):
 		self.__init()
 
 		self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long = \
-			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
+			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks,"
+			" remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, run_in=remaining_ticks)
 		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=remaining_ticks_long)
 
@@ -280,36 +287,47 @@ class AIPlayer(GenericAI):
 
 		# load the settlement managers and settlement foundation missions
 		for land_manager in self.islands.itervalues():
-			db_result = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?", land_manager.worldid)
+			db_result = db("SELECT rowid FROM ai_settlement_manager WHERE land_manager = ?",
+				land_manager.worldid)
 			if db_result:
 				settlement_manager = SettlementManager.load(db, self, db_result[0][0])
 				self.settlement_managers.append(settlement_manager)
-				self._settlement_manager_by_settlement_id[settlement_manager.settlement.worldid] = settlement_manager
+				self._settlement_manager_by_settlement_id[
+					settlement_manager.settlement.worldid] = settlement_manager
 
 				# load the foundation ship preparing missions
-				db_result = db("SELECT rowid FROM ai_mission_prepare_foundation_ship WHERE settlement_manager = ?",
-					settlement_manager.worldid)
+				db_result = db("SELECT rowid FROM ai_mission_prepare_foundation_ship"
+					" WHERE settlement_manager = ?", settlement_manager.worldid)
 				for (mission_id,) in db_result:
-					self.missions.add(PrepareFoundationShip.load(db, mission_id, self.report_success, self.report_failure))
+					self.missions.add(PrepareFoundationShip.load(db, mission_id,
+						self.report_success, self.report_failure))
 			else:
-				mission_id = db("SELECT rowid FROM ai_mission_found_settlement WHERE land_manager = ?", land_manager.worldid)[0][0]
-				self.missions.add(FoundSettlement.load(db, mission_id, self.report_success, self.report_failure))
+				mission_id = db("SELECT rowid FROM ai_mission_found_settlement WHERE land_manager = ?",
+					land_manager.worldid)[0][0]
+				self.missions.add(FoundSettlement.load(db, mission_id, self.report_success,
+					self.report_failure))
 
 		for settlement_manager in self.settlement_managers:
 			# load the domestic trade missions
-			db_result = db("SELECT rowid FROM ai_mission_domestic_trade WHERE source_settlement_manager = ?", settlement_manager.worldid)
+			db_result = db("SELECT rowid FROM ai_mission_domestic_trade WHERE source_settlement_manager = ?",
+				settlement_manager.worldid)
 			for (mission_id,) in db_result:
-				self.missions.add(DomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
+				self.missions.add(DomesticTrade.load(db, mission_id, self.report_success,
+					self.report_failure))
 
 			# load the special domestic trade missions
-			db_result = db("SELECT rowid FROM ai_mission_special_domestic_trade WHERE source_settlement_manager = ?", settlement_manager.worldid)
+			db_result = db("SELECT rowid FROM ai_mission_special_domestic_trade WHERE"
+				" source_settlement_manager = ?", settlement_manager.worldid)
 			for (mission_id,) in db_result:
-				self.missions.add(SpecialDomesticTrade.load(db, mission_id, self.report_success, self.report_failure))
+				self.missions.add(SpecialDomesticTrade.load(db, mission_id, self.report_success,
+					self.report_failure))
 
 			# load the international trade missions
-			db_result = db("SELECT rowid FROM ai_mission_international_trade WHERE settlement_manager = ?", settlement_manager.worldid)
+			db_result = db("SELECT rowid FROM ai_mission_international_trade WHERE settlement_manager = ?",
+				settlement_manager.worldid)
 			for (mission_id,) in db_result:
-				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success, self.report_failure))
+				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success,
+					self.report_failure))
 
 	def tick(self):
 		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval)
@@ -323,7 +341,8 @@ class AIPlayer(GenericAI):
 
 	def tick_long(self):
 		"""
-		Same as above but used for reasoning that is not required to be called as often (such as diplomacy, strategy etc.)
+		Same as above but used for reasoning that is not required to be called as often
+		(such as diplomacy, strategy etc.)
 		"""
 		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=self.tick_long_interval)
 		self.strategy_manager.tick()
@@ -374,7 +393,8 @@ class AIPlayer(GenericAI):
 
 	def add_building(self, building):
 		assert self._enabled
-		# if the settlement id is not present then this is a new settlement that has to be handled separately
+		# if the settlement id is not present then this is a new settlement
+		# that has to be handled separately
 		if building.settlement.worldid in self._settlement_manager_by_settlement_id:
 			self._settlement_manager_by_settlement_id[building.settlement.worldid].add_building(building)
 
@@ -394,18 +414,21 @@ class AIPlayer(GenericAI):
 		self.unit_manager.remove_unit(unit)
 
 	def count_buildings(self, building_id):
-		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
+		return sum(settlement_manager.settlement.count_buildings(building_id)
+			for settlement_manager in self.settlement_managers)
 
 	def notify_mine_empty(self, message):
 		"""The Mine calls this function to let the player know that the mine is empty."""
 		settlement = message.mine.settlement
 		if settlement.owner is self:
-			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.handle_mine_empty(message.mine)
+			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder. \
+				handle_mine_empty(message.mine)
 
 	def notify_new_disaster(self, message):
 		settlement = message.building.settlement
 		if settlement.owner is self:
-			Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[settlement.worldid].handle_disaster, message), self, run_in=0)
+			Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[settlement.worldid]
+				.handle_disaster, message), self, run_in=0)
 
 	def _on_settlement_range_changed(self, message):
 		"""Stores the ownership changes in a list for later processing."""
@@ -420,7 +443,8 @@ class AIPlayer(GenericAI):
 				self.settlement_expansions.append((coords, settlement))
 
 		if our_new_coords_list and settlement.worldid in self._settlement_manager_by_settlement_id:
-			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.road_connectivity_cache.modify_area(our_new_coords_list)
+			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder. \
+				road_connectivity_cache.modify_area(our_new_coords_list)
 
 	def handle_enemy_expansions(self):
 		if not self.settlement_expansions:
@@ -478,7 +502,8 @@ class AIPlayer(GenericAI):
 		AbstractFarm.clear_cache()
 
 	def __str__(self):
-		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
+		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown',
+			self.worldid if hasattr(self, 'worldid') else 'none')
 
 	def early_end(self):
 		"""Called to speed up session destruction."""

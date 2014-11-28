@@ -44,28 +44,29 @@ class PlayerDataSelection(object):
 
 		# need the id to save it as int in settings file.
 		for color in (Color if color_palette is None else color_palette):
-			label = Label(name = u'{color}'.format(color=color.name),
-			              text = u"    ",
-			              max_size = (20, 20),
-			              min_size = (20, 20),
-			              background_color = color)
+			label = Label(name=u'{color}'.format(color=color.name),
+			              text=u"    ",
+			              max_size=(20, 20),
+			              min_size=(20, 20),
+			              background_color=color)
 			events['{label}/mouseClicked'.format(label=color.name)] = \
-			                             Callback(self.set_color, color.id)
+				Callback(self.set_color, color.id)
 			colorlabels.append(label)
 
 		# split into three rows with at max 5 entries in each row
 		# right now there are 14 different colors to choose from.
 		for i in xrange(0, len(colorlabels), 5):
 			hbox = HBox(name='line_{index}'.format(index=i))
-			hbox.addChildren(colorlabels[i:i+5])
+			hbox.addChildren(colorlabels[i:i + 5])
 			self.colors.addChild(hbox)
-		
+
 		playertextfield = self.gui.findChild(name='playername')
+
 		def playertextfield_clicked():
 			if playertextfield.text == 'Unnamed Traveler':
-				playertextfield.text = "";
+				playertextfield.text = ""
 		playertextfield.capture(playertextfield_clicked, event_name='mouseClicked')
-		
+
 		self.gui.mapEvents(events)
 		self.update_data()
 
@@ -87,7 +88,7 @@ class PlayerDataSelection(object):
 		"""Updates the player name"""
 		self.gui.distributeData({
 			'playername': unicode(playername),
-			})
+		})
 
 	def get_player_name(self):
 		"""Returns the name that was entered by the user"""
@@ -99,16 +100,14 @@ class PlayerDataSelection(object):
 
 	def get_widget(self):
 		return self.gui
-	
+
 	def update_data(self):
 		"""Update the player's name and color from the settings"""
 		self.set_color(horizons.globals.fife.get_uh_setting("ColorID"))
 		self.set_player_name(horizons.globals.fife.get_uh_setting("Nickname"))
-		
+
 	def save_settings(self):
 		"""Stores the current player_name and color into settings"""
 		horizons.globals.fife.set_uh_setting("Nickname", self.get_player_name())
 		horizons.globals.fife.set_uh_setting("ColorID", self.get_player_color().id)
 		horizons.globals.fife.save_settings()
-		
-		

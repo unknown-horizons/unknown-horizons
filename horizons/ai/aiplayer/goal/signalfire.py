@@ -24,13 +24,15 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class SignalFireGoal(SettlementGoal):
 	def get_personality_name(self):
 		return 'SignalFireGoal'
 
 	@property
 	def active(self):
-		return super(SignalFireGoal, self).active and not self.settlement.count_buildings(BUILDINGS.SIGNAL_FIRE)
+		return super(SignalFireGoal, self).active and not self.settlement.count_buildings(
+			BUILDINGS.SIGNAL_FIRE)
 
 	def execute(self):
 		result = AbstractBuilding.buildings[BUILDINGS.SIGNAL_FIRE].build(self.settlement_manager, None)[0]

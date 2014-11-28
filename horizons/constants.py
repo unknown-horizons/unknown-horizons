@@ -32,7 +32,8 @@ NOTE: Using magic constants in code is generally a bad style, so avoid where
 possible and instead import the proper classes of this file.
 """
 
-##Versioning
+
+# Versioning
 class VERSION:
 	def _get_git_version():
 		"""Function gets latest revision of the working copy.
@@ -50,7 +51,7 @@ class VERSION:
 					head_file = git_head_path
 				if os.path.exists(head_file):
 					return unicode(open(head_file).readline().strip()[0:7])
-		#if there is no .git directory then check for gitversion.txt
+		# if there is no .git directory then check for gitversion.txt
 		except ImportError:
 			try:
 				return unicode(open(os.path.join("content", "packages", "gitversion.txt")).read())
@@ -59,55 +60,58 @@ class VERSION:
 
 		return u"<unknown>"
 
-	RELEASE_NAME    = "Unknown Horizons %s"
+	RELEASE_NAME = "Unknown Horizons %s"
 	RELEASE_VERSION = _get_git_version()
 	# change for release:
 	IS_DEV_VERSION = True
-	#RELEASE_VERSION = u'2013.3'
+	# RELEASE_VERSION = u'2013.3'
 
 	REQUIRED_FIFE_MAJOR_VERSION = 0
 	REQUIRED_FIFE_MINOR_VERSION = 3
 	REQUIRED_FIFE_PATCH_VERSION = 4
 
-	REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
+	REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION,
+		REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
 
-	## +=1 this if you changed the savegame "api"
+	# +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION = 74
 
 	@staticmethod
 	def string():
 		return VERSION.RELEASE_NAME % VERSION.RELEASE_VERSION
 
-## WORLD
+
+# WORLD
 class UNITS:
 	# ./development/print_db_data.py unit
-	HUKER_SHIP           = 1000001
-	BUILDING_COLLECTOR   = 1000002
+	HUKER_SHIP = 1000001
+	BUILDING_COLLECTOR = 1000002
 
-	FISHER_BOAT          = 1000004
-	PIRATE_SHIP          = 1000005
-	TRADER_SHIP          = 1000006
-	ANIMAL_COLLECTOR     = 1000007
-	STORAGE_COLLECTOR    = 1000008
-	FIELD_COLLECTOR      = 1000009
+	FISHER_BOAT = 1000004
+	PIRATE_SHIP = 1000005
+	TRADER_SHIP = 1000006
+	ANIMAL_COLLECTOR = 1000007
+	STORAGE_COLLECTOR = 1000008
+	FIELD_COLLECTOR = 1000009
 	LUMBERJACK_COLLECTOR = 1000010
-	SETTLER_COLLECTOR    = 1000011
+	SETTLER_COLLECTOR = 1000011
 
-	WILD_ANIMAL          = 1000013
-	HUNTER_COLLECTOR     = 1000014
-	FARM_ANIMAL_COLLECTOR= 1000015
-	USABLE_FISHER_BOAT   = 1000016
+	WILD_ANIMAL = 1000013
+	HUNTER_COLLECTOR = 1000014
+	FARM_ANIMAL_COLLECTOR = 1000015
+	USABLE_FISHER_BOAT = 1000016
 
-	FRIGATE              = 1000020
+	FRIGATE = 1000020
 
 	DISASTER_RECOVERY_COLLECTOR = 1000022
-	
-	SWORDSMAN            = 1000023
+
+	SWORDSMAN = 1000023
 
 	# players will be spawned with an instance of this
-	PLAYER_SHIP          = HUKER_SHIP
+	PLAYER_SHIP = HUKER_SHIP
 
 	DIFFERENCE_BUILDING_UNIT_ID = 1000000
+
 
 class BUILDINGS:
 	# ./development/print_db_data.py building
@@ -184,129 +188,132 @@ class BUILDINGS:
 		# think: animation contains key, if there is a path at offset value
 		# you need to sort this before iterating via sorted, since order is important here.
 		action_offset_dict = {
-		# Direct connections
-		  'a' : ( 0, -1),
-		  'b' : (+1,  0),
-		  'c' : ( 0, +1),
-		  'd' : (-1,  0),
-		# Remote connections
-		  'e' : (+1, -1),
-		  'f' : (+1, +1),
-		  'g' : (-1, +1),
-		  'h' : (-1, -1),
+			# Direct connections
+			'a': (0, -1),
+			'b': (+1, 0),
+			'c': (0, +1),
+			'd': (-1, 0),
+			# Remote connections
+			'e': (+1, -1),
+			'f': (+1, +1),
+			'g': (-1, +1),
+			'h': (-1, -1),
 		}
 
 	class BUILD:
-		MAX_BUILDING_SHIP_DISTANCE = 5 # max distance ship-building when building from ship
+		MAX_BUILDING_SHIP_DISTANCE = 5  # max distance ship-building when building from ship
+
 
 class RES:
 	# ./development/print_db_data.py res
-	GOLD             =  1
-	LAMB_WOOL        =  2
-	TEXTILE          =  3
-	BOARDS           =  4
-	FOOD             =  5
-	TOOLS            =  6
-	BRICKS           =  7
-	TREES            =  8
-	GRASS            =  9
-	WOOL             = 10
-	FAITH            = 11
-	WILDANIMALFOOD   = 12
-	DEER_MEAT        = 13
-	HAPPINESS        = 14
-	POTATOES         = 15
-	EDUCATION        = 16
-	RAW_SUGAR        = 17
-	SUGAR            = 18
-	COMMUNITY        = 19
-	RAW_CLAY         = 20
-	CLAY             = 21
-	LIQUOR           = 22
-	CHARCOAL         = 23
-	RAW_IRON         = 24
-	IRON_ORE         = 25
-	IRON_INGOTS      = 26
-	GET_TOGETHER     = 27
-	FISH             = 28
-	SALT             = 29
-	TOBACCO_PLANTS   = 30
-	TOBACCO_LEAVES   = 31
+	GOLD = 1
+	LAMB_WOOL = 2
+	TEXTILE = 3
+	BOARDS = 4
+	FOOD = 5
+	TOOLS = 6
+	BRICKS = 7
+	TREES = 8
+	GRASS = 9
+	WOOL = 10
+	FAITH = 11
+	WILDANIMALFOOD = 12
+	DEER_MEAT = 13
+	HAPPINESS = 14
+	POTATOES = 15
+	EDUCATION = 16
+	RAW_SUGAR = 17
+	SUGAR = 18
+	COMMUNITY = 19
+	RAW_CLAY = 20
+	CLAY = 21
+	LIQUOR = 22
+	CHARCOAL = 23
+	RAW_IRON = 24
+	IRON_ORE = 25
+	IRON_INGOTS = 26
+	GET_TOGETHER = 27
+	FISH = 28
+	SALT = 29
+	TOBACCO_PLANTS = 30
+	TOBACCO_LEAVES = 31
 	TOBACCO_PRODUCTS = 32
-	CATTLE           = 33
-	PIGS             = 34
+	CATTLE = 33
+	PIGS = 34
 	CATTLE_SLAUGHTER = 35
-	PIGS_SLAUGHTER   = 36
-	HERBS            = 37
-	MEDICAL_HERBS    = 38
-	ACORNS           = 39
-	CANNON           = 40
-	SWORD            = 41
-	GRAIN            = 42
-	CORN             = 43
-	FLOUR            = 44
-	SPICE_PLANTS     = 45
-	SPICES           = 46
-	CONDIMENTS       = 47
-	MARBLE_DEPOSIT   = GOLD # 48
-	MARBLE_TOPS      = GOLD # 49
-	COAL_DEPOSIT     = GOLD # 50
-	STONE_DEPOSIT    = 51
-	STONE_TOPS       = 52
-	COCOA_BEANS      = 53
-	COCOA            = 54
-	CONFECTIONERY    = 55
-	CANDLES          = 56
-	VINES            = 57
-	GRAPES           = 58
-	ALVEARIES        = 59
-	HONEYCOMBS       = 60
-	GOLD_DEPOSIT     = GOLD # 61
-	GOLD_ORE         = GOLD # 62
-	GOLD_INGOTS      = GOLD # 63
-	GEM_DEPOSIT      = GOLD # 64
-	ROUGH_GEMS       = GOLD # 65
-	GEMS             = GOLD # 66
-	SILVER_DEPOSIT   = GOLD # 67
-	SILVER_ORE       = GOLD # 68
-	SILVER_INGOTS    = GOLD # 69
-	COFFEE_PLANTS    = GOLD # 70
-	COFFEE_BEANS     = GOLD # 71
-	COFFEE           = GOLD # 72
-	TEA_PLANTS       = GOLD # 73
-	TEA_LEAVES       = GOLD # 74
-	TEA              = GOLD # 75
-	FLOWER_MEADOWS   = GOLD # 76
-	BLOSSOMS         = GOLD # 77
-	BRINE            = GOLD # 78
-	BRINE_DEPOSIT    = GOLD # 79
-	WHALES           = GOLD # 80
-	AMBERGRIS        = GOLD # 81
-	LAMP_OIL         = GOLD # 82
-	COTTON_PLANTS    = GOLD # 83
-	COTTON           = GOLD # 84
-	INDIGO_PLANTS    = GOLD # 85
-	INDIGO           = GOLD # 86
-	GARMENTS         = GOLD # 87
-	PERFUME          = GOLD # 88
-	HOP_PLANTS       = GOLD # 89
-	HOPS             = GOLD # 90
+	PIGS_SLAUGHTER = 36
+	HERBS = 37
+	MEDICAL_HERBS = 38
+	ACORNS = 39
+	CANNON = 40
+	SWORD = 41
+	GRAIN = 42
+	CORN = 43
+	FLOUR = 44
+	SPICE_PLANTS = 45
+	SPICES = 46
+	CONDIMENTS = 47
+	MARBLE_DEPOSIT = GOLD   # 48
+	MARBLE_TOPS = GOLD      # 49
+	COAL_DEPOSIT = GOLD     # 50
+	STONE_DEPOSIT = 51
+	STONE_TOPS = 52
+	COCOA_BEANS = 53
+	COCOA = 54
+	CONFECTIONERY = 55
+	CANDLES = 56
+	VINES = 57
+	GRAPES = 58
+	ALVEARIES = 59
+	HONEYCOMBS = 60
+	GOLD_DEPOSIT = GOLD     # 61
+	GOLD_ORE = GOLD         # 62
+	GOLD_INGOTS = GOLD      # 63
+	GEM_DEPOSIT = GOLD      # 64
+	ROUGH_GEMS = GOLD       # 65
+	GEMS = GOLD             # 66
+	SILVER_DEPOSIT = GOLD   # 67
+	SILVER_ORE = GOLD       # 68
+	SILVER_INGOTS = GOLD    # 69
+	COFFEE_PLANTS = GOLD    # 70
+	COFFEE_BEANS = GOLD     # 71
+	COFFEE = GOLD           # 72
+	TEA_PLANTS = GOLD       # 73
+	TEA_LEAVES = GOLD       # 74
+	TEA = GOLD              # 75
+	FLOWER_MEADOWS = GOLD   # 76
+	BLOSSOMS = GOLD         # 77
+	BRINE = GOLD            # 78
+	BRINE_DEPOSIT = GOLD    # 79
+	WHALES = GOLD           # 80
+	AMBERGRIS = GOLD        # 81
+	LAMP_OIL = GOLD         # 82
+	COTTON_PLANTS = GOLD    # 83
+	COTTON = GOLD           # 84
+	INDIGO_PLANTS = GOLD    # 85
+	INDIGO = GOLD           # 86
+	GARMENTS = GOLD         # 87
+	PERFUME = GOLD          # 88
+	HOP_PLANTS = GOLD       # 89
+	HOPS = GOLD             # 90
 	# 91-99 reserved for services
-	REPRESENTATION   = GOLD # 92
-	SOCIETY          = GOLD # 93
-	FAITH_2          = GOLD # 94
-	EDUCATION_2      = GOLD # 95
-	HYGIENE          = GOLD # 96
-	RECREATION       = GOLD # 97
-	BLACKDEATH       = 98
-	FIRE             = 99
+	REPRESENTATION = GOLD   # 92
+	SOCIETY = GOLD          # 93
+	FAITH_2 = GOLD          # 94
+	EDUCATION_2 = GOLD      # 95
+	HYGIENE = GOLD          # 96
+	RECREATION = GOLD       # 97
+	BLACKDEATH = 98
+	FIRE = 99
 	# 91-99 reserved for services
+
 
 class WEAPONS:
 	CANNON = RES.CANNON
-	SWORD  = RES.SWORD
+	SWORD = RES.SWORD
 
 	DEFAULT_FIGHTING_SHIP_WEAPONS_NUM = 7
+
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
@@ -330,9 +337,9 @@ class GROUND:
 
 	# grass to sand tiles
 	SAND_SOUTH = (4, "straight", 45)
-	SAND_EAST =  (4, "straight", 135)
+	SAND_EAST = (4, "straight", 135)
 	SAND_NORTH = (4, "straight", 225)
-	SAND_WEST =  (4, "straight", 315)
+	SAND_WEST = (4, "straight", 315)
 	SAND_SOUTHWEST3 = (4, "curve_in", 135)
 	SAND_NORTHWEST3 = (4, "curve_in", 225)
 	SAND_NORTHEAST3 = (4, "curve_in", 315)
@@ -344,9 +351,9 @@ class GROUND:
 
 	# shallow water to deep water tiles
 	DEEP_WATER_SOUTH = (2, "straight", 45)
-	DEEP_WATER_EAST =  (2, "straight", 135)
+	DEEP_WATER_EAST = (2, "straight", 135)
 	DEEP_WATER_NORTH = (2, "straight", 225)
-	DEEP_WATER_WEST =  (2, "straight", 315)
+	DEEP_WATER_WEST = (2, "straight", 315)
 	DEEP_WATER_SOUTHWEST3 = (2, "curve_in", 135)
 	DEEP_WATER_NORTHWEST3 = (2, "curve_in", 225)
 	DEEP_WATER_NORTHEAST3 = (2, "curve_in", 315)
@@ -356,17 +363,21 @@ class GROUND:
 	DEEP_WATER_SOUTHWEST1 = (2, "curve_out", 45)
 	DEEP_WATER_NORTHWEST1 = (2, "curve_out", 315)
 
+
 class ACTION_SETS:
 	DEFAULT_ANIMATION_LENGTH = 500
 	DEFAULT_WEIGHT = 10
+
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
 	TICK_RATES = [int(i * TICKS_PER_SECOND)
 	              for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20)]
 
+
 class COLORS:
 	BLACK = 9
+
 
 class VIEW:
 	ZOOM_MAX = 1
@@ -378,39 +389,45 @@ class VIEW:
 	TILT = -60
 	AUTOSCROLL_WIDTH = 10
 
-## The Production States available in the game sorted by importance from least
-## to most important
+
+# The Production States available in the game sorted by importance from least
+# to most important
 class PRODUCTION:
 	# ./development/print_db_data.py lines
 	STATES = Enum('none', 'waiting_for_res', 'inventory_full', 'producing', 'paused', 'done')
 	# NOTE: 'done' is only for SingleUseProductions
 	# NOTE: 'none' is not used by an actual production, just for a producer
-	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for keeping track of how busy a production is
+	STATISTICAL_WINDOW = 1000
+	# How many latest ticks are relevant for keeping track of how busy a production is
+
 
 class PRODUCTIONLINES:
 	HUKER = 15
-	FISHING_BOAT = None # will get added later
+	FISHING_BOAT = None  # will get added later
 	FRIGATE = 58
 	TREES = 256812226
 	WOOL = 1654557398
 
 
-## GAME-RELATED, BALANCING VALUES
+# GAME-RELATED, BALANCING VALUES
 class GAME:
 	# seconds: duration of a "month" (running costs and taxes are paid in this interval)
 	INGAME_TICK_INTERVAL = 30
 
-	WORLD_WORLDID = 0 # worldid of World object
-	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
+	WORLD_WORLDID = 0  # worldid of World object
+	MAX_TICKS = None  # exit after on tick MAX_TICKS (disabled by setting to None)
+
 
 # Map related constants
 class MAP:
-	PADDING = 10 # extra usable water around the map edges
-	BORDER = 30 # extra unusable water around the padding (to keep the black void at bay)
+	PADDING = 10  # extra usable water around the map edges
+	BORDER = 30  # extra unusable water around the padding (to keep the black void at bay)
+
 
 class GUI:
-	CITYINFO_UPDATE_DELAY = 2 # seconds
+	CITYINFO_UPDATE_DELAY = 2  # seconds
 	DEFAULT_EXCHANGE_AMOUNT = 50  # tons
+
 
 # Editor
 class EDITOR:
@@ -418,29 +435,33 @@ class EDITOR:
 	MAX_BRUSH_SIZE = 3
 	DEFAULT_BRUSH_SIZE = 1
 
+
 # Messagewidget and Logbook
 class MESSAGES:
-	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
-	CUSTOM_MSG_VISIBLE_FOR = 90 # after this time the msg gets removed from screen
-	LOGBOOK_DEFAULT_DELAY = 1 # delay between condition fulfilled and logbook popping up
+	CUSTOM_MSG_SHOW_DELAY = 6  # delay between messages when passing more than one
+	CUSTOM_MSG_VISIBLE_FOR = 90  # after this time the msg gets removed from screen
+	LOGBOOK_DEFAULT_DELAY = 1  # delay between condition fulfilled and logbook popping up
+
 
 # AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:
-	HIGHLIGHT_PLANS = False # whether to show the AI players' plans on the map
-	HIGHLIGHT_COMBAT = False # whether to show the AI players' combat ranges around each unit
-	HUMAN_AI = False # whether the human player is controlled by the AI
+	HIGHLIGHT_PLANS = False  # whether to show the AI players' plans on the map
+	HIGHLIGHT_COMBAT = False  # whether to show the AI players' combat ranges around each unit
+	HUMAN_AI = False  # whether the human player is controlled by the AI
 
-class TRADER: # check resource values: ./development/print_db_data.py res
+
+class TRADER:  # check resource values: ./development/print_db_data.py res
 	PRICE_MODIFIER_BUY = 1.0  # buy for x times the resource value
-	PRICE_MODIFIER_SELL = 1.0 # sell for x times the resource value
-	TRADING_DURATION = 4 # seconds that trader stays at warehouse to simulate (un)loading
+	PRICE_MODIFIER_SELL = 1.0  # sell for x times the resource value
+	TRADING_DURATION = 4  # seconds that trader stays at warehouse to simulate (un)loading
 
-	BUSINESS_SENSE = 50 # chance in percent to be sent to a warehouse instead of random spot
+	BUSINESS_SENSE = 50  # chance in percent to be sent to a warehouse instead of random spot
 
 	BUY_AMOUNT_MIN = 2  # amount range to buy/sell from settlement per resource
 	BUY_AMOUNT_MAX = 10
 	SELL_AMOUNT_MIN = 2
 	SELL_AMOUNT_MAX = 10
+
 
 # Taxes and Restrictions
 class TIER:
@@ -456,44 +477,50 @@ class TIER:
 	HIGHEST = ARISTOCRATS
 	CURRENT_MAX = CITIZENS
 
+
 class SETTLER:
 	TAX_SETTINGS_MIN = 0.5
 	TAX_SETTINGS_MAX = 1.5
 	TAX_SETTINGS_STEP = 0.1
 
+
 class WILD_ANIMAL:
-	HEALTH_INIT_VALUE = 50 # animals start with this value
-	HEALTH_INCREASE_ON_FEEDING = 8 # health increases by this value on feeding
-	HEALTH_DECREASE_ON_NO_JOB = 20 # health decreases by this value when they have no food
-	HEALTH_LEVEL_TO_REPRODUCE = 75 # this level has to be reached for reproducing
-	POPULATION_LIMIT = 15 # minimum number of trees per animal to allow reproducing
-	FOOD_AVAILABLE_ON_START = 0.5 # probability that a tree has wild animal food in the beginning
-	POPULATION_INIT_RATIO = 15 # every N-th tree gets an animal in the beginning
+	HEALTH_INIT_VALUE = 50  # animals start with this value
+	HEALTH_INCREASE_ON_FEEDING = 8  # health increases by this value on feeding
+	HEALTH_DECREASE_ON_NO_JOB = 20  # health decreases by this value when they have no food
+	HEALTH_LEVEL_TO_REPRODUCE = 75  # this level has to be reached for reproducing
+	POPULATION_LIMIT = 15  # minimum number of trees per animal to allow reproducing
+	FOOD_AVAILABLE_ON_START = 0.5  # probability that a tree has wild animal food in the beginning
+	POPULATION_INIT_RATIO = 15  # every N-th tree gets an animal in the beginning
+
 
 class COLLECTORS:
-	DEFAULT_WORK_DURATION = 16 # how many ticks collectors pretend to work at target
-	DEFAULT_WAIT_TICKS = 32 # how long collectors wait before again looking for a job
+	DEFAULT_WORK_DURATION = 16  # how many ticks collectors pretend to work at target
+	DEFAULT_WAIT_TICKS = 32  # how long collectors wait before again looking for a job
 	DEFAULT_STORAGE_SIZE = 8
-	STATISTICAL_WINDOW = 1000 # How many latest ticks are relevant for calculating how busy a collector is
+	STATISTICAL_WINDOW = 1000
+	# How many latest ticks are relevant for calculating how busy a collector is
+
 
 class STORAGE:
-	DEFAULT_STORAGE_SIZE = 30 # Our usual inventorys are 30 tons big
+	DEFAULT_STORAGE_SIZE = 30  # Our usual inventorys are 30 tons big
 
 	# Distributing overall delimiter, if one slot is "full" with respect to
 	# this value, you can't load further in any of the slots even if empty.
 	SHIP_TOTAL_STORAGE = 120
 	SHIP_TOTAL_SLOTS_NUMBER = 4
 
-## ENGINE
+
+# ENGINE
 class LAYERS:
 	WATER = 0
 	GROUND = 1
 	FIELDS = 2
 	OBJECTS = 3
 
-	NUM = 4 # number of layers
+	NUM = 4  # number of layers
 
-## PATHS
+# PATHS
 # workaround, so it can be used to create paths within PATHS
 if 'UH_USER_DIR' in os.environ:
 	# Prefer the value from the environment. Used to override user dir when
@@ -525,6 +552,7 @@ class GFX:
 	# this is modified by the game starting process.
 	USE_ATLASES = False
 
+
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
@@ -549,7 +577,6 @@ class PATHS:
 	SETTINGS_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
-
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
@@ -560,11 +587,12 @@ class PATHS:
 	                                 "/misc",
 	                                 "/terrain",
 	                                 "/units",
-	                                ))
+	                                 ))
 
-	#voice paths
+	# voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 	UH_LOGO_FILE = os.path.join("content", "gfx", "uh.png")
+
 
 class SETTINGS:
 	UH_MODULE = "unknownhorizons"
@@ -572,17 +600,21 @@ class SETTINGS:
 	KEY_MODULE = "keys"
 	META_MODULE = "meta"
 
+
 class PLAYER:
 	STATS_UPDATE_FREQUENCY = GAME_SPEED.TICKS_PER_SECOND
 
-## SINGLEPLAYER
+
+# SINGLEPLAYER
 class SINGLEPLAYER:
 	FREEZE_PROTECTION = True
 	SEED = None
 
-## MULTIPLAYER
+
+# MULTIPLAYER
 class MULTIPLAYER:
 	MAX_PLAYER_COUNT = 8
+
 
 class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
@@ -592,7 +624,7 @@ class NETWORK:
 	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
 
 
-## TRANSLATIONS
+# TRANSLATIONS
 class _LanguageNameDict(dict):
 	def __getitem__(self, key):
 		return self.get(key, [key])[0]
@@ -606,97 +638,98 @@ class _LanguageNameDict(dict):
 				return code
 			elif not english and own == value:
 				return code
-		return "" # meaning default key
+		return ""  # meaning default key
 
 
 LANGUAGENAMES = _LanguageNameDict({
-	""      : (u'System default', u''),
-	"af"    : (u'Afrikaans', u'Afrikaans'),
-	"bg"    : (u'Български', u'Bulgarian'),
-	"ca"    : (u'Català', u'Catalan'),
-	'ca@valencia' : (u'Català de València', u'Catalan (Valencia)'),
-	"cs"    : (u'Čeština', u'Czech'),
-	"da"    : (u'Danske', u'Danish'),
-	"de"    : (u'Deutsch', u'German'),
-	"en"    : (u'English', u'English'),
-	"es"    : (u'Español', u'Spanish'),
-	"et"    : (u'Eesti', u'Estonian'),
-	"el"    : (u'Ελληνικά', u'Greek'),
-	"fi"    : (u'Suomi', u'Finnish'),
-	"fr"    : (u'Français', u'French'),
-	"ga"    : (u'Gaeilge', u'Irish'),
-	"gl"    : (u'Galego', u'Galician'),
-	"hi"    : (u'मानक हिन्दी', u'Hindi'),
-	"hr"    : (u'Hrvatski', u'Croatian'),
-	"hu"    : (u'Magyar', u'Hungarian'),
-	"id"    : (u'Bahasa Indonesia', u'Indonesian'),
-	"it"    : (u'Italiano', u'Italian'),
-	"ja"    : (u'日本語', u'Japanese'),
-	"ko"    : (u'한국말/조선말', u'Korean'),
-	"lt"    : (u'Lietuvių', u'Lithuanian'),
-	"lv"    : (u'Latviešu', u'Latvian'),
-	"ml"    : (u'മലയാളം', u'Malayalam'),
-	"nb"    : (u'Bokmål', u'Norwegian'),
-	"nl"    : (u'Nederlands', u'Dutch'),
-	"pl"    : (u'Polski', u'Polish'),
-	"pt_BR" : (u'Português Br.', u'Brazilian Portuguese'),
-	"pt"    : (u'Português', u'Portuguese'),
-	"ro"    : (u'Română', u'Romanian'),
-	"ru"    : (u'Русский', u'Russian'),
-	"sl"    : (u'Slovenski', u'Slovenian'),
-	"sr"    : (u'Cрпски', u'Serbian'),
-	"sv"    : (u'Svenska', u'Swedish'),
-	"th"    : (u'ภาษาไทย', u'Thai'),
-	"tr"    : (u'Türkçe', u'Turkish'),
-	"uk"    : (u'Українська', u'Ukrainian'),
-	"vi"    : (u'Tiếng Việt', u'Vietnamese'),
-	"zh_CN" : (u'简化字', u'Simplified Chinese'),
-	"zh_TW" : (u'繁體字', u'Traditional Chinese'),
-	"zu"    : (u'IsiZulu', u'Zulu'),
+	"": (u'System default', u''),
+	"af": (u'Afrikaans', u'Afrikaans'),
+	"bg": (u'Български', u'Bulgarian'),
+	"ca": (u'Català', u'Catalan'),
+	'ca@valencia': (u'Català de València', u'Catalan (Valencia)'),
+	"cs": (u'Čeština', u'Czech'),
+	"da": (u'Danske', u'Danish'),
+	"de": (u'Deutsch', u'German'),
+	"en": (u'English', u'English'),
+	"es": (u'Español', u'Spanish'),
+	"et": (u'Eesti', u'Estonian'),
+	"el": (u'Ελληνικά', u'Greek'),
+	"fi": (u'Suomi', u'Finnish'),
+	"fr": (u'Français', u'French'),
+	"ga": (u'Gaeilge', u'Irish'),
+	"gl": (u'Galego', u'Galician'),
+	"hi": (u'मानक हिन्दी', u'Hindi'),
+	"hr": (u'Hrvatski', u'Croatian'),
+	"hu": (u'Magyar', u'Hungarian'),
+	"id": (u'Bahasa Indonesia', u'Indonesian'),
+	"it": (u'Italiano', u'Italian'),
+	"ja": (u'日本語', u'Japanese'),
+	"ko": (u'한국말/조선말', u'Korean'),
+	"lt": (u'Lietuvių', u'Lithuanian'),
+	"lv": (u'Latviešu', u'Latvian'),
+	"ml": (u'മലയാളം', u'Malayalam'),
+	"nb": (u'Bokmål', u'Norwegian'),
+	"nl": (u'Nederlands', u'Dutch'),
+	"pl": (u'Polski', u'Polish'),
+	"pt_BR": (u'Português Br.', u'Brazilian Portuguese'),
+	"pt": (u'Português', u'Portuguese'),
+	"ro": (u'Română', u'Romanian'),
+	"ru": (u'Русский', u'Russian'),
+	"sl": (u'Slovenski', u'Slovenian'),
+	"sr": (u'Cрпски', u'Serbian'),
+	"sv": (u'Svenska', u'Swedish'),
+	"th": (u'ภาษาไทย', u'Thai'),
+	"tr": (u'Türkçe', u'Turkish'),
+	"uk": (u'Українська', u'Ukrainian'),
+	"vi": (u'Tiếng Việt', u'Vietnamese'),
+	"zh_CN": (u'简化字', u'Simplified Chinese'),
+	"zh_TW": (u'繁體字', u'Traditional Chinese'),
+	"zu": (u'IsiZulu', u'Zulu'),
 })
 
 FONTDEFS = {
 	# "af"
-	"bg"    : 'libertine',
+	"bg": 'libertine',
 	# "ca"
-	"ca@valencia" : 'libertine',
-	"cs"    : 'libertine',
-	"da"    : 'libertine',
-	"de"    : 'libertine',
-	"en"    : 'libertine',
-	"es"    : 'libertine',
-	"et"    : 'libertine',
-	"el"    : 'libertine',
-	"fi"    : 'libertine',
-	"fr"    : 'libertine',
-	"ga"    : 'libertine',
-	"gl"    : 'libertine',
+	"ca@valencia": 'libertine',
+	"cs": 'libertine',
+	"da": 'libertine',
+	"de": 'libertine',
+	"en": 'libertine',
+	"es": 'libertine',
+	"et": 'libertine',
+	"el": 'libertine',
+	"fi": 'libertine',
+	"fr": 'libertine',
+	"ga": 'libertine',
+	"gl": 'libertine',
 	# "hi"
-	"hr"    : 'libertine',
-	"hu"    : 'libertine',
-	"id"    : 'libertine',
-	"it"    : 'libertine',
+	"hr": 'libertine',
+	"hu": 'libertine',
+	"id": 'libertine',
+	"it": 'libertine',
 	# "ja"
-	"lt"    : 'libertine',
-	"lv"    : 'libertine',
+	"lt": 'libertine',
+	"lv": 'libertine',
 	# "ko"
-	"nb"    : 'libertine',
-	"nl"    : 'libertine',
-	"pl"    : 'libertine',
-	"pt_BR" : 'libertine',
-	"pt"    : 'libertine',
-	"ro"    : 'libertine',
-	"ru"    : 'libertine',
-	"sl"    : 'libertine',
-	"sr"    : 'libertine',
-	"sv"    : 'libertine',
+	"nb": 'libertine',
+	"nl": 'libertine',
+	"pl": 'libertine',
+	"pt_BR": 'libertine',
+	"pt": 'libertine',
+	"ro": 'libertine',
+	"ru": 'libertine',
+	"sl": 'libertine',
+	"sr": 'libertine',
+	"sv": 'libertine',
 	# "th"
-	"tr"    : 'libertine',
-	"uk"    : 'libertine',
+	"tr": 'libertine',
+	"uk": 'libertine',
 	# "vi"
 	# "zh_CN"
-	"zu"    : 'libertine',
+	"zu": 'libertine',
 }
+
 
 class HOTKEYS:
 	DISPLAY_KEY = {
@@ -708,8 +741,8 @@ class HOTKEYS:
 		'AT': '@',
 		'HASH': '#',
 		'DOLLAR': '$',
-	# XXX Fife does not recognize percent key?
-	#	'PERCENT': '%',
+		# XXX Fife does not recognize percent key?
+		# 'PERCENT': '%',
 		'CARET': '^',
 		'AMPERSAND': '&',
 		'ASTERISK': '*',

@@ -32,8 +32,10 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.messaging import NewPlayerSettlementHovered
 from horizons.ext.enum import Enum
 
+
 class InvalidBuildMenuFileFormat(Exception):
 	pass
+
 
 class BuildTab(TabInterface):
 	"""
@@ -53,9 +55,9 @@ class BuildTab(TabInterface):
 	MAX_COLS = 4
 
 	build_menus = [
-	  "content/objects/gui_buildmenu/build_menu_per_tier.yaml",
-	  "content/objects/gui_buildmenu/build_menu_per_type.yaml"
-	  ]
+		"content/objects/gui_buildmenu/build_menu_per_tier.yaml",
+		"content/objects/gui_buildmenu/build_menu_per_type.yaml"
+	]
 
 	build_menu_config_per_tier = build_menus[0]
 	build_menu_config_per_type = build_menus[1]
@@ -66,9 +68,10 @@ class BuildTab(TabInterface):
 
 	# NOTE: check for occurrences of this when adding one, you might want to
 	#       add respective code there as well
-	unlocking_strategies = Enum("tab_per_tier", # 1 tab per tier
-	                            "single_per_tier" # each single building unlocked if tier is unlocked
-	                            )
+	unlocking_strategies = Enum(
+		"tab_per_tier",  # 1 tab per tier
+		"single_per_tier"  # each single building unlocked if tier is unlocked
+	)
 
 	last_active_build_tab = None
 
@@ -97,10 +100,11 @@ class BuildTab(TabInterface):
 				elif key == "headline":
 					headline = value[2:] if value.startswith('_ ') else value
 				else:
-					raise InvalidBuildMenuFileFormat("Invalid key: %s\nMust be either icon, helptext or headline." % key)
+					raise InvalidBuildMenuFileFormat(
+						"Invalid key: %s\nMust be either icon, helptext or headline." % key)
 			elif isinstance(entry, list):
 				# this is a line of data
-				rows.append(entry) # parse later on demand
+				rows.append(entry)  # parse later on demand
 			else:
 				raise InvalidBuildMenuFileFormat("Invalid entry: %s" % entry)
 
@@ -115,24 +119,24 @@ class BuildTab(TabInterface):
 			if not helptext and not headline:
 				raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 		self.row_definitions = rows
-		self.headline = _(headline) if headline else headline # don't translate None
+		self.headline = _(headline) if headline else headline  # don't translate None
 		self.helptext = _(helptext) if helptext else self.headline
 
-		#get build style
+		# get build style
 		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		self.cur_build_menu_config = self.__class__.build_menus[ saved_build_style ]
+		self.cur_build_menu_config = self.__class__.build_menus[saved_build_style]
 
 		super(BuildTab, self).__init__(icon_path=icon_path)
 
 	@classmethod
 	def get_saved_buildstyle(cls):
 		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
-		return cls.build_menus[ saved_build_style ]
+		return cls.build_menus[saved_build_style]
 
 	def init_widget(self):
 		self.__current_settlement = None
 		headline_lbl = self.widget.child_finder('headline')
-		if self.headline: # prefer specific headline
+		if self.headline:  # prefer specific headline
 			headline_lbl.text = self.headline
 		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
 			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
@@ -140,6 +144,7 @@ class BuildTab(TabInterface):
 	def set_content(self):
 		"""Parses self.row_definitions and sets the content accordingly"""
 		settlement = LastActivePlayerSettlementManager().get()
+
 		def _set_entry(button, icon, building_id):
 			"""Configure a single build menu button"""
 			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_tier and \
@@ -157,16 +162,17 @@ class BuildTab(TabInterface):
 			required_text = '[[Buildmenu%s]]' % (required_resources)
 			button.helptext = required_text + button.helptext
 
-			enough_res = False # don't show building by default
-			if settlement is not None: # settlement is None when the mouse has left the settlement
+			enough_res = False  # don't show building by default
+			if settlement is not None:  # settlement is None when the mouse has left the settlement
 				res_overview = self.session.ingame_gui.resource_overview
 				show_costs = Callback(res_overview.set_construction_mode, settlement, building.costs)
 				button.mapEvents({
-				  button.name+"/mouseEntered/buildtab" : show_costs,
-				  button.name+"/mouseExited/buildtab" : res_overview.close_construction_mode
-				  })
+					button.name + "/mouseEntered/buildtab": show_costs,
+					button.name + "/mouseExited/buildtab": res_overview.close_construction_mode
+				})
 
-				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
+				(enough_res, missing_res) = Build.check_resources({},
+					building.costs, settlement.owner, [settlement])
 			# Check whether to disable build menu icon (not enough res available).
 			if enough_res:
 				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
@@ -179,10 +185,10 @@ class BuildTab(TabInterface):
 
 		for row_num, row in enumerate(self.row_definitions):
 			# we have integers for building types, strings for headlines above slots and None as empty slots
-			column = -1 # can't use enumerate, not always incremented
+			column = -1  # can't use enumerate, not always incremented
 			for entry in row:
 				column += 1
-				position = (10*column) + (row_num+1) # legacy code, first row is 1, 11, 21
+				position = (10 * column) + (row_num + 1)  # legacy code, first row is 1, 11, 21
 				if entry is None:
 					continue
 				elif (column + 1) > self.MAX_COLS:
@@ -196,7 +202,7 @@ class BuildTab(TabInterface):
 					err += " Max. row amount in current layout is %s." % self.MAX_ROWS
 					raise InvalidBuildMenuFileFormat(err)
 				elif isinstance(entry, basestring):
-					column -= 1 # a headline does not take away a slot
+					column -= 1  # a headline does not take away a slot
 					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
 					lbl.text = _(entry[2:]) if entry.startswith('_ ') else entry
 				elif isinstance(entry, int):
@@ -252,17 +258,17 @@ class BuildTab(TabInterface):
 
 	def _switch_build_menu_config(self):
 		"""Sets next build menu config and recreates the gui"""
-		cur_index = self.__class__.build_menus.index( self.cur_build_menu_config )
+		cur_index = self.__class__.build_menus.index(self.cur_build_menu_config)
 		new_index = (cur_index + 1) % len(self.__class__.build_menus)
-		self.__class__.cur_build_menu_config = self.__class__.build_menus[ new_index ]
+		self.__class__.cur_build_menu_config = self.__class__.build_menus[new_index]
 
 		# after switch set active tab to first
 		self.__class__.last_active_build_tab = 0
 		self.session.ingame_gui.show_build_menu(update=True)
 
-		#save build style
-		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
-		horizons.globals.fife.save_settings();
+		# save build style
+		horizons.globals.fife.set_uh_setting("Buildstyle", new_index)
+		horizons.globals.fife.save_settings()
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
@@ -271,14 +277,14 @@ class BuildTab(TabInterface):
 		"""
 		source = cls.get_saved_buildstyle()
 		# parse
-		data = YamlCache.get_file( source, game_data=True )
+		data = YamlCache.get_file(source, game_data=True)
 		if 'meta' not in data:
 			raise InvalidBuildMenuFileFormat('File does not contain "meta" section')
 		metadata = data['meta']
 		if 'unlocking_strategy' not in metadata:
 			raise InvalidBuildMenuFileFormat('"meta" section does not contain "unlocking_strategy"')
 		try:
-			unlocking_strategy = cls.unlocking_strategies.get_item_for_string( metadata['unlocking_strategy'] )
+			unlocking_strategy = cls.unlocking_strategies.get_item_for_string(metadata['unlocking_strategy'])
 		except KeyError:
 			raise InvalidBuildMenuFileFormat('Invalid entry for "unlocking_strategy"')
 
@@ -286,18 +292,19 @@ class BuildTab(TabInterface):
 		tabs = []
 		for tab, tabdata in sorted(data.iteritems()):
 			if tab == "meta":
-				continue # not a tab
+				continue  # not a tab
 
-			if unlocking_strategy == cls.unlocking_strategies.tab_per_tier and len(tabs) > session.world.player.settler_level:
+			if unlocking_strategy == cls.unlocking_strategies.tab_per_tier and len(
+				tabs) > session.world.player.settler_level:
 				break
 
 			try:
 				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
-				tabs.append( tab )
+				tabs.append(tab)
 			except Exception as e:
 				to_add = "\nThis error happened in %s of %s ." % (tab, source)
-				e.args = ( e.args[0] + to_add, ) + e.args[1:]
-				e.message = ( e.message + to_add )
+				e.args = (e.args[0] + to_add,) + e.args[1:]
+				e.message = (e.message + to_add)
 				raise
 
 		return tabs
@@ -308,17 +315,17 @@ class BuildTab(TabInterface):
 		"""Returns a dictionary mapping building type ids to their tiers
 		@return cached dictionary (don't modify)"""
 		building_tiers = {}
-		data = YamlCache.get_file( cls.build_menu_config_per_tier, game_data=True )
+		data = YamlCache.get_file(cls.build_menu_config_per_tier, game_data=True)
 		tier = -1
 		for tab, tabdata in sorted(data.iteritems()):
 			if tab == "meta":
-				continue # not a tab
+				continue  # not a tab
 
 			tier += 1
 
 			for row in tabdata:
-				if isinstance(row, list): # actual content
+				if isinstance(row, list):  # actual content
 					for entry in row:
-						if isinstance(entry, int): # actual building button
+						if isinstance(entry, int):  # actual building button
 							building_tiers[entry] = tier
 		return building_tiers

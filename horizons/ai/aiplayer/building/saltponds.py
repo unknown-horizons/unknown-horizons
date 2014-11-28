@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.constants import BUILDING_PURPOSE
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractSaltPonds(AbstractBuilding):
 	@property
 	def evaluator_class(self):
@@ -34,6 +35,7 @@ class AbstractSaltPonds(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.SALT_PONDS] = cls
+
 
 class SaltPondsEvaluator(BuildingEvaluator):
 	@classmethod

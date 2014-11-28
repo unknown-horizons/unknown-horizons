@@ -60,9 +60,9 @@ class HotkeyConfiguration(object):
 		# In that case, the key presses are detected by the listener, which calls _detect_keypress
 		self.listener = HotkeysListener(self._detect_keypress)
 
-		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
+		self.widget.mapEvents({self.widget.name + '/keyPressed': self._detect_keypress})
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self.save_settings)
-		self.widget.mapEvents({OkButton.DEFAULT_NAME : self.save_settings})
+		self.widget.mapEvents({OkButton.DEFAULT_NAME: self.save_settings})
 		self.widget.findChild(name="reset_to_default").capture(self.reset_to_default)
 
 	def _build_interface(self):
@@ -71,8 +71,10 @@ class HotkeyConfiguration(object):
 		for i, action in enumerate(self.actions):
 			button = self._create_button(action, i)
 			sec_button = self._create_button(action, i)
-			button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button, 1)})
-			sec_button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, sec_button, 2)})
+			button.mapEvents({button.name + '/mouseClicked': Callback(
+				self._detect_click_on_button, button, 1)})
+			sec_button.mapEvents({
+				button.name + '/mouseClicked': Callback(self._detect_click_on_button, sec_button, 2)})
 			button_container.addChild(button)
 			sec_button_container.addChild(sec_button)
 			self.buttons.append(button)
@@ -80,7 +82,8 @@ class HotkeyConfiguration(object):
 			self.update_buttons_text()
 
 	def _create_button(self, action, index):
-		"""Important! The button name is set to index so that when a button is pressed, we know its index"""
+		"""Important! The button name is set to index so that when a button is pressed,
+		we know its index"""
 		button = Button()
 		button.name = str(index)
 		button.max_size = button.min_size = (100, 18)
@@ -126,7 +129,8 @@ class HotkeyConfiguration(object):
 				secondary_button.text = u''
 
 	def apply_change(self):
-		"""Binds the last keypress to the corresponding action and resets the interface to the state where it is listening for clicks on buttons"""
+		"""Binds the last keypress to the corresponding action and resets the interface to the
+		state where it is listening for clicks on buttons"""
 		key = self.last_combination[0]
 		key_name = self.key_name(key)
 		action = self.actions[self.current_index]
@@ -143,7 +147,8 @@ class HotkeyConfiguration(object):
 
 			message = _("{key} is already set to {action}.").format(key=key_name, action=oldaction)
 			message += u" " + _("Would you like to overwrite it?")
-			confirmed = horizons.main._modules.gui.open_popup(_("Confirmation for overwriting"), message, show_cancel_button=True)
+			confirmed = horizons.main._modules.gui.open_popup(_("Confirmation for overwriting"),
+				message, show_cancel_button=True)
 			if confirmed:
 				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
 			else:
@@ -203,7 +208,8 @@ class HotkeyConfiguration(object):
 		self.update_buttons_text()
 
 	def save_settings(self):
-		"""Saves the settings and reloads the keyConfiguration so that the settings take effect without a restart"""
+		"""Saves the settings and reloads the keyConfiguration so that
+		the settings take effect without a restart"""
 		horizons.globals.fife.save_settings()
 		self.keyconf.loadKeyConfiguration()
 

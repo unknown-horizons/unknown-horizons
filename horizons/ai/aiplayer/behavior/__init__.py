@@ -49,7 +49,8 @@ class BehaviorManager(object):
 		self.session = owner.session
 
 	def save(self, db):
-		db("INSERT INTO ai_behavior_manager (owner_id, profile_token) VALUES(?, ?)", self.owner.worldid, self.profile_token)
+		db("INSERT INTO ai_behavior_manager (owner_id, profile_token) VALUES(?, ?)",
+			self.owner.worldid, self.profile_token)
 
 	@classmethod
 	def load(cls, db, owner):
@@ -60,7 +61,8 @@ class BehaviorManager(object):
 		return self
 
 	def _load(self, db, owner):
-		(profile_token,) = db("SELECT profile_token FROM ai_behavior_manager WHERE owner_id = ?", self.owner.worldid)[0]
+		(profile_token,) = db("SELECT profile_token FROM ai_behavior_manager WHERE owner_id = ?",
+			self.owner.worldid)[0]
 		self.profile_token = profile_token
 
 		# this time they will be loaded with a correct token
@@ -111,8 +113,11 @@ class BehaviorManager(object):
 
 	def get_profile_token(self):
 		"""
-		Returns a random token for player profile. Token is used when requesting for a random behavior profile.
-		Because it is guaranteed to get exactly the same player profile for given token, instead of storing
-		whole Profile in database, we store a single number (token) which on load() generates same set of actions.
+		Returns a random token for player profile.
+		Token is used when requesting for a random behavior profile.
+		Because it is guaranteed to get exactly the same player profile
+		for given token, instead of storing
+		whole Profile in database, we store a single number (token)
+		which on load() generates same set of actions.
 		"""
 		return self.session.random.randint(0, 10000)

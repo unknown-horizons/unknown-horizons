@@ -32,7 +32,8 @@ class _ExtCallbackObject(object):
 		"""Creates the CallbackObject instance.
 		@param callback: lambda function callback, which is called run_in ticks.
 		@param class_instance: class instance the original function(not the lambda function!) belongs to.
-		@param run_in: int number of ticks after which the callback is called. Standard is 1, run next tick.
+		@param run_in: int number of ticks after which the callback is called.
+		Standard is 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinite times. Standard is 1, run once.
 		"""
 		self.callback = callback
@@ -45,13 +46,15 @@ class _ExtCallbackObject(object):
 
 
 class ExtScheduler(object):
-	"""The ExtScheduler is used for time based events that are not part of the simulation(gui, menu, scrolling).
-	To start a timed callback, call add_new_object() to make the TimingThread Class create a CallbackObject for you.
+	"""The ExtScheduler is used for time based events that are
+	not part of the simulation(gui, menu, scrolling).
+	To start a timed callback, call add_new_object() to make
+	the TimingThread Class create a CallbackObject for you.
 	@param pump: pump list the scheduler registers itself with.
 	"""
 	__metaclass__ = ManualConstructionSingleton
 
-	NOOP = _ExtCallbackObject(lambda : 42*1337-3.14, None)
+	NOOP = _ExtCallbackObject(lambda: 42 * 1337 - 3.14, None)
 
 	def __init__(self, pump):
 		super(ExtScheduler, self).__init__()
@@ -64,14 +67,14 @@ class ExtScheduler(object):
 		@param tick_id: int id of the tick.
 		"""
 		while self.schedule:
-			elem = self.schedule[0] # heap, first elem is smallest
+			elem = self.schedule[0]  # heap, first elem is smallest
 			if elem[0] <= time.time():
 				dont_use = heapq.heappop(self.schedule)
 				assert dont_use is elem
 				obj = elem[1]
 				obj.callback()
 				if obj.loops > 0 or obj.loops is -1:
-					self.add_object(obj) # re-add object
+					self.add_object(obj)  # re-add object
 			else:
 				break
 
@@ -88,7 +91,8 @@ class ExtScheduler(object):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
 		@param callback: function callback, which is called run_in time.
 		@param class_instance: class instance the function belongs to.
-		@param run_in: float number of seconds after which the callback is called. Standard is 1, run next second.
+		@param run_in: float number of seconds after which the callback is called.
+		Standard is 1, run next second.
 		@param loops: How often the callback is called. -1 = infinite times. Standard is 1, run once."""
 		obj = _ExtCallbackObject(callback, class_instance, run_in, loops)
 		self.add_object(obj)

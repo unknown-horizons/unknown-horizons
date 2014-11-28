@@ -22,9 +22,9 @@
 from fife import fife
 
 import horizons.globals
-
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
+
 
 class SQLiteAnimationLoader(object):
 	"""Loads animations from a SQLite database.
@@ -42,7 +42,7 @@ class SQLiteAnimationLoader(object):
 		y-shifting with the params: top, bottom, center, middle.
 		A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
 		- cut:
-		#TODO: complete documentation
+		# TODO: complete documentation
 		"""
 		commands = location.split(':')
 		id = commands.pop(0)
@@ -82,7 +82,7 @@ class SQLiteAnimationLoader(object):
 					img.setXShift(x)
 					img.setYShift(y)
 
-			ani.addFrame(img, max(1, int((float(frame_end) - frame_start)*1000)))
+			ani.addFrame(img, max(1, int((float(frame_end) - frame_start) * 1000)))
 			frame_start = float(frame_end)
 		ani.setActionFrame(0)
 		return ani

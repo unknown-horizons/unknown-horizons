@@ -23,12 +23,15 @@ from horizons.ai.aiplayer.goal.productionchaingoal import ProductionChainGoal
 from horizons.constants import RES
 from horizons.util.python import decorators
 
+
 class FeederChainGoal(ProductionChainGoal):
 	"""
 	Objects of this class are used for production chains on feeder islands
-	The update call reserved the production for the (non-existent) settlement so it can't be transferred.
+	The update call reserved the production for the (non-existent)
+	settlement so it can't be transferred.
 	The late_update call declares that the settlement doesn't need it after all thus freeing it.
-	TODO: make that a single explicit action: right now import quotas are deleted by the first step which can make it look like less resources can be imported.
+	TODO: make that a single explicit action: right now import quotas are deleted by
+	the first step which can make it look like less resources can be imported.
 	"""
 
 	def __init__(self, settlement_manager, resource_id, name):
@@ -53,6 +56,7 @@ class FeederChainGoal(ProductionChainGoal):
 		super(FeederChainGoal, self).update()
 		self.chain.reserve(0, False)
 
+
 class FeederFoodGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederFoodGoal, self).__init__(settlement_manager, RES.FOOD, 'food producer')
@@ -60,12 +64,14 @@ class FeederFoodGoal(FeederChainGoal):
 	def get_personality_name(self):
 		return 'FoodGoal'
 
+
 class FeederTextileGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederTextileGoal, self).__init__(settlement_manager, RES.TEXTILE, 'textile producer')
 
 	def get_personality_name(self):
 		return 'TextileGoal'
+
 
 class FeederLiquorGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
@@ -76,29 +82,37 @@ class FeederLiquorGoal(FeederChainGoal):
 
 	@property
 	def can_be_activated(self):
-		return super(FeederLiquorGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+		return super(FeederLiquorGoal, self).can_be_activated \
+			and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+
 
 class FeederTobaccoProductsGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederTobaccoProductsGoal, self).__init__(settlement_manager, RES.TOBACCO_PRODUCTS, 'tobacco products producer')
+		super(FeederTobaccoProductsGoal, self).__init__(settlement_manager,
+			RES.TOBACCO_PRODUCTS, 'tobacco products producer')
 
 	def get_personality_name(self):
 		return 'FeederTobaccoProductsGoal'
 
 	@property
 	def can_be_activated(self):
-		return super(FeederTobaccoProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+		return super(FeederTobaccoProductsGoal, self).can_be_activated \
+			and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+
 
 class FeederMedicalProductsGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
-		super(FeederMedicalProductsGoal, self).__init__(settlement_manager, RES.MEDICAL_HERBS, 'medical herbs producer')
+		super(FeederMedicalProductsGoal, self).__init__(settlement_manager,
+			RES.MEDICAL_HERBS, 'medical herbs producer')
 
 	def get_personality_name(self):
 		return 'FeederMedicalProductsGoal'
 
 	@property
 	def can_be_activated(self):
-		return super(FeederMedicalProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+		return super(FeederMedicalProductsGoal, self).can_be_activated \
+			and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+
 
 class FeederSaltGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):

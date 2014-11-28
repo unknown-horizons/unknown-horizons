@@ -26,14 +26,15 @@ from horizons.util.python.callback import Callback
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.imagebutton import ImageButton
 
+
 class ImageFillStatusButton(Container):
 
 	ICON_SIZE = (32, 32)
-	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
+	CELL_SIZE = (54, 50)  # 32x32 icon, fillbar to the right, label below, padding
 	PADDING = 3
 
 	def __init__(self, path, text, res_id, helptext="",
-	             filled=0, marker=0, uncached=False, **kwargs):
+			filled=0, marker=0, uncached=False, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full
 		the inventory is for that resource. Derives from Container and also takes
 		all arguments of Imagebutton in order to display the resource icon.
@@ -49,10 +50,11 @@ class ImageFillStatusButton(Container):
 		# force no cache. needed when the same icon has to appear several times at the same time
 		self.uncached = uncached
 		# Since draw() needs all other stuff initialized, only set this in the end:
-		self.filled = filled # <- black magic at work! this calls _draw()
+		self.filled = filled  # <- black magic at work! this calls _draw()
 
 	@classmethod
-	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False, showprice=False):
+	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True,
+		uncached=False, showprice=False):
 		"""Inites the button to display the icons for res
 		@param db: dbreader to get info about res icon.
 		@param res: resource id
@@ -67,7 +69,8 @@ class ImageFillStatusButton(Container):
 		if showprice:
 			value = db.get_res_value(res)
 			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
-				helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
+				helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res),
+					price=db.get_res_value(res))
 			else:
 				buyprice = value * TRADER.PRICE_MODIFIER_BUY
 				sellprice = value * TRADER.PRICE_MODIFIER_SELL
@@ -94,6 +97,7 @@ class ImageFillStatusButton(Container):
 	filled = property(_get_filled, _set_filled)
 
 	__widget_cache = {}
+
 	def _draw(self):
 		"""Draws the icon + bar."""
 		# hash buttons by creation function call
@@ -105,9 +109,9 @@ class ImageFillStatusButton(Container):
 			self.button = create_btn()
 		else:
 			self.button = self.__widget_cache.get(create_btn, None)
-			if self.button is None: # create button
+			if self.button is None:  # create button
 				self.__widget_cache[create_btn] = self.button = create_btn()
-			else: # disconnect button from earlier layout
+			else:  # disconnect button from earlier layout
 				if self.button.parent:
 					self.button.parent.removeChild(self.button)
 

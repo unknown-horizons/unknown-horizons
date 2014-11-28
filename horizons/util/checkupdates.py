@@ -33,12 +33,15 @@ from horizons.gui.windows import Popup
 
 class UpdateInfo(object):
 	INVALID, READY, UNINITIALIZED = range(3)
+
 	def __init__(self):
 		self.status = UpdateInfo.UNINITIALIZED
 		self.version = None
 		self.link = None
 
-TIMEOUT = 5.0 # we should be done before the user can start a game
+TIMEOUT = 5.0  # we should be done before the user can start a game
+
+
 def check_for_updates(info):
 	"""Check if there's a new version.
 	@return update file contents or None"""
@@ -51,11 +54,12 @@ def check_for_updates(info):
 	# only updates for operating systems missing a packagemanagement
 	if (platform.system() == 'Windows' or platform.system() == 'Darwin'):
 		# retrieve current version w.r.t. the local version.
-		# this way, possible configurations of different most recent versions should be handleable in the future.
-		data = urllib.urlencode( {"my_version" : VERSION.RELEASE_VERSION} )
+		# this way, possible configurations of different most recent versions
+		# should be handleable in the future.
+		data = urllib.urlencode({"my_version": VERSION.RELEASE_VERSION})
 		url = NETWORK.UPDATE_FILE_URL
 		try:
-			u = urllib2.urlopen( url + "?" + data, timeout=TIMEOUT )
+			u = urllib2.urlopen(url + "?" + data, timeout=TIMEOUT)
 		except (urllib2.URLError, socket.timeout):
 			# Silently ignore the failed update, printing stuff might crash the game
 			# if no console is available
@@ -66,8 +70,8 @@ def check_for_updates(info):
 		link = u.readline()
 		u.close()
 
-		version = version[:-1] # remove newlines
-		link = link[:-1] # remove newlines
+		version = version[:-1]  # remove newlines
+		link = link[:-1]  # remove newlines
 
 		if version != VERSION.RELEASE_VERSION:
 			# there is a new version
@@ -79,6 +83,7 @@ def check_for_updates(info):
 	else:
 		info.status = UpdateInfo.INVALID
 
+
 class VersionHint(Popup):
 
 	def __init__(self, windows, info):
@@ -86,9 +91,9 @@ class VersionHint(Popup):
 
 		title = _("New version of Unknown Horizons")
 		text = _("There is a more recent release of Unknown Horizons ({new_version}) "
-				 "than the one you are currently using ({old_version}).").format(
-				new_version=info.version,
-				old_version=VERSION.RELEASE_VERSION)
+			"than the one you are currently using ({old_version}).").format(
+			new_version=info.version,
+			old_version=VERSION.RELEASE_VERSION)
 
 		super(VersionHint, self).__init__(windows, title, text)
 
@@ -96,7 +101,8 @@ class VersionHint(Popup):
 		super(VersionHint, self).prepare(**kwargs)
 
 		dl_btn = Button(name="dl", text=_("Click to download"))
-		dl_btn.position = (48, 138) # i've tried, this button cannot be placed in a sane way
+		dl_btn.position = (48, 138)  # i've tried, this button cannot be placed in a sane way
+
 		def do_dl():
 			webbrowser.open(self.info.link)
 			dl_btn.text = _("A page has been opened in your browser.")

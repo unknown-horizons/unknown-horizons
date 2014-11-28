@@ -124,7 +124,8 @@ class Connection(object):
 					elif event.type == enet.EVENT_TYPE_NONE:
 						raise IOError("No packet from server")
 		except IOError:
-			self.log.debug("[DISCONNECT] Error while disconnecting from server. Maybe server isn't answering any more")
+			self.log.debug("[DISCONNECT] Error while disconnecting from server."
+				" Maybe server isn't answering any more")
 
 		self._reset()
 		self.log.debug("[DISCONNECT] done")
@@ -232,7 +233,7 @@ class Connection(object):
 			else:
 				self.log.error("Unknown packet from %s!" % (event.peer.address))
 			errstr = "Pickle/Security: %s" % (e)
-			print "[FATAL] %s" % (errstr) # print that even when no logger is enabled!
+			print "[FATAL] %s" % (errstr)  # print that even when no logger is enabled!
 			self.log.error("[FATAL] %s" % (errstr))
 			self.disconnect()
 			raise network.FatalError(errstr)

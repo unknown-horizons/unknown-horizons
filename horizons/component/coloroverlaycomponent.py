@@ -107,7 +107,7 @@ class ColorOverlayComponent(Component):
 		ActionChanged.broadcast(self.instance, self.instance._action)
 
 	def update_overlay(self, message):
-		#TODO Tracking is broken: remove all data stored for old action
+		# TODO Tracking is broken: remove all data stored for old action
 		# Ultimately it would be great to have current_overlays working...
 		self.current_overlays.clear()
 		try:

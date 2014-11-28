@@ -24,6 +24,7 @@ import logging
 from horizons.ai.aiplayer.personality import DefaultPersonality, OtherPersonality
 from horizons.util.python import decorators
 
+
 class PersonalityManager(object):
 	"""This class handles the loading of personality data for the AI players."""
 
@@ -35,12 +36,14 @@ class PersonalityManager(object):
 		self.log.info('%s assigned personality %s', player, self._personality.__name__)
 
 	def save(self, db):
-		db("INSERT INTO ai_personality_manager(rowid, personality) VALUES(?, ?)", self.player.worldid, self._personality.__module__ + '.' + self._personality.__name__)
+		db("INSERT INTO ai_personality_manager(rowid, personality) VALUES(?, ?)", self.player.worldid,
+			self._personality.__module__ + '.' + self._personality.__name__)
 
 	def _load(self, db, player):
 		self.player = player
 		self._personality = None
-		personality = db("SELECT personality FROM ai_personality_manager WHERE rowid = ?", player.worldid)[0][0]
+		personality = db("SELECT personality FROM ai_personality_manager WHERE rowid = ?",
+			player.worldid)[0][0]
 		for personality_class in self.available_personalities:
 			if personality == personality_class.__module__ + '.' + personality_class.__name__:
 				self._personality = personality_class
@@ -59,7 +62,7 @@ class PersonalityManager(object):
 		"""Return a class that contains the relevant personality constants."""
 		return getattr(self._personality, name)
 
-	available_personalities = [] # [personality class, ...]
+	available_personalities = []  # [personality class, ...]
 
 	@classmethod
 	def prepare_personalities_list(cls):

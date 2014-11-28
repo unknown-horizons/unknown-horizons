@@ -23,7 +23,6 @@
 import logging
 import json
 import copy
-
 from collections import deque
 from functools import partial
 
@@ -89,7 +88,7 @@ class World(BuildingOwner, WorldObject):
 
 		# create playerlist
 		self.players = []
-		self.player = None # player sitting in front of this machine
+		self.player = None  # player sitting in front of this machine
 		self.trader = None
 		self.pirate = None
 
@@ -116,7 +115,7 @@ class World(BuildingOwner, WorldObject):
 		for island in self.islands:
 			island.end()
 		for player in self.players:
-			player.end() # end players after game entities, since they usually depend on players
+			player.end()  # end players after game entities, since they usually depend on players
 
 		self.session = None
 		self.properties = None
@@ -156,7 +155,7 @@ class World(BuildingOwner, WorldObject):
 		self.properties = {}
 		for (name, value) in savegame_db("SELECT name, value FROM map_properties"):
 			self.properties[name] = json.loads(value)
-		if not 'disasters_enabled' in self.properties:
+		if 'disasters_enabled' not in self.properties:
 			# set on first init
 			self.properties['disasters_enabled'] = disasters_enabled
 
@@ -223,7 +222,7 @@ class World(BuildingOwner, WorldObject):
 			# load the AI stuff only when we have AI players
 			LoadingProgress.broadcast(self, 'world_setup_ai')
 			if any(isinstance(player, AIPlayer) for player in self.players):
-				AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+				AIPlayer.load_abstract_buildings(self.session.db)  # TODO: find a better place for this
 
 			# load the AI players
 			# this has to be done here because otherwise the ships and other objects won't exist
@@ -240,8 +239,6 @@ class World(BuildingOwner, WorldObject):
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map."""
-
-
 
 	def _load_combat(self, savegame_db):
 		# load ongoing attacks
@@ -288,12 +285,13 @@ class World(BuildingOwner, WorldObject):
 
 		# big sea water tile class
 		if not preview:
-			default_grounds = Entities.grounds[self.properties.get('default_ground', '%d-straight' % GROUND.WATER[0])]
+			default_grounds = Entities.grounds[self.properties.get(
+				'default_ground', '%d-straight' % GROUND.WATER[0])]
 
 		fake_tile_class = Entities.grounds['-1-special']
 		fake_tile_size = 10
-		for x in xrange(self.min_x-MAP.BORDER, self.max_x+MAP.BORDER, fake_tile_size):
-			for y in xrange(self.min_y-MAP.BORDER, self.max_y+MAP.BORDER, fake_tile_size):
+		for x in xrange(self.min_x - MAP.BORDER, self.max_x + MAP.BORDER, fake_tile_size):
+			for y in xrange(self.min_y - MAP.BORDER, self.max_y + MAP.BORDER, fake_tile_size):
 				fake_tile_x = x - 1
 				fake_tile_y = y + fake_tile_size - 1
 				if not preview:
@@ -303,7 +301,8 @@ class World(BuildingOwner, WorldObject):
 					if self.min_x <= x + x_offset < self.max_x:
 						for y_offset in xrange(fake_tile_size):
 							if self.min_y <= y + y_offset < self.max_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
+								self.ground_map[(x + x_offset, y + y_offset)] = fake_tile_class(
+									self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 
 		# Remove parts that are occupied by islands, create the island map and the full map.
@@ -316,20 +315,21 @@ class World(BuildingOwner, WorldObject):
 					del self.ground_map[coords]
 					self.island_map[coords] = island
 
-
 	def _load_players(self, savegame_db, force_player_id):
 		human_players = []
-		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player WHERE is_trader = 0 and is_pirate = 0 ORDER BY rowid"):
+		for player_worldid, client_id in savegame_db("SELECT rowid, client_id FROM player"
+				" WHERE is_trader = 0 and is_pirate = 0 ORDER BY rowid"):
 			player = None
 			# check if player is an ai
-			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE client_id = ?", client_id)
+			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE client_id = ?",
+				client_id)
 			if ai_data:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
-				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])
+				module = __import__('horizons.ai.' + class_package, fromlist=[str(class_name)])
 				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db, player_worldid)
-			else: # no ai
+			else:  # no ai
 				player = HumanPlayer.load(self.session, savegame_db, player_worldid)
 			self.players.append(player)
 
@@ -396,7 +396,7 @@ class World(BuildingOwner, WorldObject):
 		self._recognize_water_bodies(self.shallow_water_body)
 
 	def init_fish_indexer(self):
-		radius = Entities.buildings[ BUILDINGS.FISHER ].radius
+		radius = Entities.buildings[BUILDINGS.FISHER].radius
 		buildings = self.provider_buildings.provider_by_resources[RES.FISH]
 		self.fish_indexer = BuildingIndexer(radius, self.full_map, buildings=buildings)
 
@@ -415,7 +415,7 @@ class World(BuildingOwner, WorldObject):
 
 		# workaround: the creation of all the objects causes a lot of logging output we don't need.
 		#             therefore, reset the levels for now
-		loggers_to_silence = { 'world.production' : None }
+		loggers_to_silence = {'world.production': None}
 		for logger_name in loggers_to_silence:
 			logger = logging.getLogger(logger_name)
 			loggers_to_silence[logger_name] = logger.getEffectiveLevel()
@@ -440,13 +440,15 @@ class World(BuildingOwner, WorldObject):
 			point = self.get_random_possible_ship_position()
 			# Execute command directly, not via manager, because else it would be transmitted over the
 			# network to other players. Those however will do the same thing anyways.
-			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, point.x, point.y)(issuer=self.session.world.player)
+			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP,
+				point.x, point.y)(issuer=self.session.world.player)
 			# give ship basic resources
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
 				ship.get_component(StorageComponent).inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = point.to_tuple()
 				# HACK: Store starting ship as first unit group, and select it
+
 				def _preselect_player_ship(player_ship):
 					sel_comp = player_ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)
@@ -458,7 +460,7 @@ class World(BuildingOwner, WorldObject):
 
 		# load the AI stuff only when we have AI players
 		if any(isinstance(player, AIPlayer) for player in self.players):
-			AIPlayer.load_abstract_buildings(self.session.db) # TODO: find a better place for this
+			AIPlayer.load_abstract_buildings(self.session.db)  # TODO: find a better place for this
 
 		# add a pirate ship
 		if pirate_enabled:
@@ -493,7 +495,6 @@ class World(BuildingOwner, WorldObject):
 		@return: Point"""
 		return worldutils.get_random_possible_coastal_ship_position(self)
 
-	#----------------------------------------------------------------------
 	def get_tiles_in_radius(self, position, radius, shuffle=False):
 		"""Returns all tiles in the radius around the point.
 		This is a generator; make sure you use it appropriately.
@@ -525,7 +526,7 @@ class World(BuildingOwner, WorldObject):
 		@param local: bool, whether the player is the one sitting on front of this machine."""
 		inv = self.session.db.get_player_start_res()
 		player = None
-		if is_ai: # a human controlled AI player
+		if is_ai:  # a human controlled AI player
 			player = AIPlayer(self.session, id, name, color, clientid, difficulty_level)
 		else:
 			player = HumanPlayer(self.session, id, name, color, clientid, difficulty_level)
@@ -539,7 +540,7 @@ class World(BuildingOwner, WorldObject):
 		@param point: coords as Point
 		@return: instance of Ground at x, y
 		"""
-		return self.full_map.get( (point.x, point.y) )
+		return self.full_map.get((point.x, point.y))
 
 	@property
 	def settlements(self):
@@ -590,9 +591,9 @@ class World(BuildingOwner, WorldObject):
 			for settlement in island.settlements:
 				warehouse = settlement.warehouse
 				if (radius is None or position is None or
-				    warehouse.position.distance(position) <= radius) and \
-				   (owner is None or warehouse.owner == owner or
-				    (include_tradeable and self.diplomacy.can_trade(warehouse.owner, owner))):
+					warehouse.position.distance(position) <= radius) and \
+					(owner is None or warehouse.owner == owner or
+					(include_tradeable and self.diplomacy.can_trade(warehouse.owner, owner))):
 					warehouses.append(warehouse)
 		return warehouses
 
@@ -643,7 +644,7 @@ class World(BuildingOwner, WorldObject):
 		"""Returns all instances that have health"""
 		instances = []
 		for instance in self.get_ships(position, radius) + \
-		                self.get_ground_units(position, radius):
+			self.get_ground_units(position, radius):
 			if instance.has_component(HealthComponent):
 				instances.append(instance)
 		return instances
@@ -655,7 +656,8 @@ class World(BuildingOwner, WorldObject):
 		if isinstance(self.map_name, list):
 			db("INSERT INTO metadata VALUES(?, ?)", 'random_island_sequence', ' '.join(self.map_name))
 		else:
-			# the map name has to be simplified because the absolute paths won't be transferable between machines
+			# the map name has to be simplified because the absolute paths
+			# won't be transferable between machines
 			simplified_name = self.map_name
 			if self.map_name.startswith(PATHS.USER_MAPS_DIR):
 				simplified_name = 'USER_MAPS_DIR:' + simplified_name[len(PATHS.USER_MAPS_DIR):]
@@ -679,7 +681,8 @@ class World(BuildingOwner, WorldObject):
 		"""Returns a collection of important game state values. Used to check if two mp games have diverged.
 		Not designed to be reliable."""
 		# NOTE: don't include float values, they are represented differently in python 2.6 and 2.7
-		# and will differ at some insignificant place. Also make sure to handle them correctly in the game logic.
+		# and will differ at some insignificant place.
+		# Also make sure to handle them correctly in the game logic.
 		data = {
 			'rngvalue': self.session.random.random(),
 			'settlements': [],
@@ -689,7 +692,7 @@ class World(BuildingOwner, WorldObject):
 			# dicts usually aren't hashable, this makes them
 			# since defaultdicts appear, we discard values that can be autogenerated
 			# (those are assumed to default to something evaluating False)
-			dict_hash = lambda d : sorted(i for i in d.iteritems() if i[1])
+			dict_hash = lambda d: sorted(i for i in d.iteritems() if i[1])
 			for settlement in island.settlements:
 				storage_dict = settlement.get_component(StorageComponent).inventory._storage
 				entry = {
@@ -712,7 +715,7 @@ class World(BuildingOwner, WorldObject):
 		renderer = self.session.view.renderer['InstanceRenderer']
 		# Toggle flag that tracks highlight status.
 		self.owner_highlight_active = not self.owner_highlight_active
-		if self.owner_highlight_active: #show
+		if self.owner_highlight_active:  # show
 			for player in self.players:
 				red = player.color.r
 				green = player.color.g

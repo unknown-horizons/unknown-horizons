@@ -24,28 +24,29 @@ import uuid
 from horizons.network import NetworkException, SoftNetworkException
 from horizons.network.packets import packet, SafeUnpickler
 
+
 class cmd_creategame(packet):
 	clientversion = None
-	clientid      = None
-	playername    = None
-	playercolor   = None
-	gamename      = u"Unnamed Game"
-	mapname       = None
-	maxplayers    = None
-	maphash       = ""
-	password      = ""
+	clientid = None
+	playername = None
+	playercolor = None
+	gamename = u"Unnamed Game"
+	mapname = None
+	maxplayers = None
+	maphash = ""
+	password = ""
 
 	def __init__(self, clientver, clientid, playername, playercolor,
 			gamename, mapname, maxplayers, maphash="", password=""):
 		self.clientversion = clientver
-		self.clientid      = clientid
-		self.playername    = playername
-		self.playercolor   = playercolor
-		self.name          = gamename
-		self.mapname       = mapname
-		self.maxplayers    = maxplayers
-		self.maphash       = maphash
-		self.password      = password
+		self.clientid = clientid
+		self.playername = playername
+		self.playercolor = playercolor
+		self.name = gamename
+		self.mapname = mapname
+		self.maxplayers = maxplayers
+		self.maphash = maphash
+		self.password = password
 
 	@staticmethod
 	def validate(pkt, protocol):
@@ -101,17 +102,16 @@ class cmd_creategame(packet):
 
 SafeUnpickler.add('client', cmd_creategame)
 
-#-------------------------------------------------------------------------------
 
 class cmd_listgames(packet):
 	clientversion = 0
-	mapname       = None
-	maxplayers    = None
+	mapname = None
+	maxplayers = None
 
 	def __init__(self, clientver, mapname=None, maxplayers=None):
 		self.clientversion = clientver
-		self.mapname       = mapname
-		self.maxplayers    = maxplayers
+		self.mapname = mapname
+		self.maxplayers = maxplayers
 
 	@staticmethod
 	def validate(pkt, protocol):
@@ -124,25 +124,24 @@ class cmd_listgames(packet):
 
 SafeUnpickler.add('client', cmd_listgames)
 
-#-------------------------------------------------------------------------------
 
 class cmd_joingame(packet):
-	uuid          = None
-	clientid      = None
+	uuid = None
+	clientid = None
 	clientversion = None
-	playername    = None
-	playercolor   = None
-	password      = ""
-	fetch         = False
+	playername = None
+	playercolor = None
+	password = ""
+	fetch = False
 
 	def __init__(self, uuid, clientver, clientid, playername, playercolor, password="", fetch=False):
-		self.uuid          = uuid
+		self.uuid = uuid
 		self.clientversion = clientver
-		self.clientid      = clientid
-		self.playername    = playername
-		self.playercolor   = playercolor
-		self.password      = password
-		self.fetch         = fetch
+		self.clientid = clientid
+		self.playername = playername
+		self.playercolor = playercolor
+		self.password = password
+		self.fetch = fetch
 
 	@staticmethod
 	def validate(pkt, protocol):
@@ -185,7 +184,6 @@ class cmd_joingame(packet):
 
 SafeUnpickler.add('client', cmd_joingame)
 
-#-------------------------------------------------------------------------------
 
 class cmd_leavegame(packet):
 	def __init__(self):
@@ -193,7 +191,6 @@ class cmd_leavegame(packet):
 
 SafeUnpickler.add('client', cmd_leavegame)
 
-#-------------------------------------------------------------------------------
 
 class cmd_chatmsg(packet):
 	chatmsg = None
@@ -210,7 +207,6 @@ class cmd_chatmsg(packet):
 
 SafeUnpickler.add('client', cmd_chatmsg)
 
-#-------------------------------------------------------------------------------
 
 class cmd_changename(packet):
 	playername = None
@@ -227,7 +223,6 @@ class cmd_changename(packet):
 
 SafeUnpickler.add('client', cmd_changename)
 
-#-------------------------------------------------------------------------------
 
 class cmd_changecolor(packet):
 	playercolor = None
@@ -244,7 +239,6 @@ class cmd_changecolor(packet):
 
 SafeUnpickler.add('client', cmd_changecolor)
 
-#-------------------------------------------------------------------------------
 
 class cmd_preparedgame(packet):
 	def __init__(self):
@@ -252,7 +246,6 @@ class cmd_preparedgame(packet):
 
 SafeUnpickler.add('client', cmd_preparedgame)
 
-#-------------------------------------------------------------------------------
 
 class game_data(packet):
 	def __init__(self, data):
@@ -261,7 +254,6 @@ class game_data(packet):
 # origin is 'server' as clients will send AND receive them
 SafeUnpickler.add('server', game_data)
 
-#-------------------------------------------------------------------------------
 
 class cmd_toggleready(packet):
 	def __init__(self):
@@ -269,7 +261,6 @@ class cmd_toggleready(packet):
 
 SafeUnpickler.add('client', cmd_toggleready)
 
-#-------------------------------------------------------------------------------
 
 class cmd_kickplayer(packet):
 	def __init__(self, kicksid):
@@ -285,7 +276,6 @@ class cmd_kickplayer(packet):
 
 SafeUnpickler.add('client', cmd_kickplayer)
 
-#-------------------------------------------------------------------------------
 
 class cmd_sessionprops(packet):
 	def __init__(self, props):
@@ -302,9 +292,8 @@ class cmd_sessionprops(packet):
 
 SafeUnpickler.add('client', cmd_sessionprops)
 
-#-------------------------------------------------------------------------------
 
-#TODO
+# TODO
 class cmd_mapdata(packet):
 	def __init__(self, data):
 		self.data = data

@@ -33,6 +33,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.resourcehandler import ResourceHandler
 
+
 class Animal(ResourceHandler):
 	"""Base Class for all animals. An animal is a unit, that consumes resources (e.g. grass)
 	and usually produce something (e.g. wool, meat)."""
@@ -40,6 +41,7 @@ class Animal(ResourceHandler):
 
 	def __init__(self, *args, **kwargs):
 		super(Animal, self).__init__(*args, **kwargs)
+
 
 class CollectorAnimal(Animal):
 	"""Animals that will inherit from collector"""
@@ -97,6 +99,7 @@ class CollectorAnimal(Animal):
 	def get_collectable_res(self):
 		return self.get_needed_resources()
 
+
 class WildAnimal(CollectorAnimal, Collector):
 	"""Animals, that live in the nature and feed on natural resources.
 	These animals can be hunted.
@@ -150,7 +153,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		if self.state == self.states.no_job_waiting:
 			calls = Scheduler().get_classinst_calls(self, self.handle_no_possible_job)
 			assert len(calls) == 1, 'calls: %s' % calls
-			remaining_ticks = max(calls.values()[0], 1) # we have to save a number > 0
+			remaining_ticks = max(calls.values()[0], 1)  # we have to save a number > 0
 			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?",
 				 remaining_ticks, self.worldid)
 
@@ -222,7 +225,8 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.log.debug("%s end_job; health: %s", self, self.health)
 		self.health += WILD_ANIMAL.HEALTH_INCREASE_ON_FEEDING
 		if self.can_reproduce and self.health >= WILD_ANIMAL.HEALTH_LEVEL_TO_REPRODUCE and \
-			len(self.home_island.wild_animals) < (self.home_island.num_trees // WILD_ANIMAL.POPULATION_LIMIT):
+			len(self.home_island.wild_animals) < (
+				self.home_island.num_trees // WILD_ANIMAL.POPULATION_LIMIT):
 			self.reproduce()
 			# reproduction costs health
 			self.health = WILD_ANIMAL.HEALTH_INIT_VALUE
@@ -235,7 +239,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.log.debug("%s REPRODUCING", self)
 		# create offspring
 		CreateUnit(self.owner.worldid, self.id, self.position.x, self.position.y,
-		           can_reproduce = self.next_clone_can_reproduce())(issuer=None)
+			can_reproduce=self.next_clone_can_reproduce())(issuer=None)
 		# reset own resources
 		for res in self.get_consumed_resources():
 			self.get_component(StorageComponent).inventory.reset(res)
@@ -244,7 +248,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		"""Returns, whether the next child will be able to reproduce himself.
 		Some animal can't reproduce, which makes population growth easier to control.
 		@return: bool"""
-		return (self.session.random.randint(0, 2) > 0) # 2/3 chance for True
+		return (self.session.random.randint(0, 2) > 0)  # 2/3 chance for True
 
 	def die(self):
 		"""Makes animal die, e.g. because of starvation or getting killed by herder"""

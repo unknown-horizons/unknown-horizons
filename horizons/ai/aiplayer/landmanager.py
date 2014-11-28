@@ -29,6 +29,7 @@ from horizons.util.python import decorators
 from horizons.util.worldobject import WorldObject
 from horizons.component.storagecomponent import StorageComponent
 
+
 class LandManager(WorldObject):
 	"""
 	Divides and manages the division of the land of one island.
@@ -67,14 +68,17 @@ class LandManager(WorldObject):
 		self.session = self.island.session
 		self.production = {}
 		self.village = {}
-		self.roads = set() # set((x, y), ...) of coordinates where road can be built independent of the area purpose
-		self.coastline = self._get_coastline() # set((x, y), ...) of coordinates which coastal buildings could use in the production area
+		self.roads = set()
+		# set((x, y), ...) of coordinates where road can be built independent of the area purpose
+		self.coastline = self._get_coastline()
+		# set((x, y), ...) of coordinates which coastal buildings could use in the production area
 		self.personality = self.owner.personality_manager.get('LandManager')
 		self.refresh_resource_deposits()
 
 	def save(self, db):
 		super(LandManager, self).save(db)
-		db("INSERT INTO ai_land_manager(rowid, owner, island, feeder_island) VALUES(?, ?, ?, ?)", self.worldid,
+		db("INSERT INTO ai_land_manager(rowid, owner, island, feeder_island) VALUES(?, ?, ?, ?)",
+			self.worldid,
 			self.owner.worldid, self.island.worldid, self.feeder_island)
 		for (x, y) in self.production:
 			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)",
@@ -91,10 +95,12 @@ class LandManager(WorldObject):
 
 	def _load(self, db, owner, worldid):
 		super(LandManager, self).load(db, worldid)
-		island_id, feeder_island = db("SELECT island, feeder_island FROM ai_land_manager WHERE rowid = ?", worldid)[0]
+		island_id, feeder_island = db("SELECT island, feeder_island FROM ai_land_manager WHERE rowid = ?",
+			worldid)[0]
 		self.__init(WorldObject.get_object_by_id(island_id), owner, feeder_island)
 
-		for x, y, purpose in db("SELECT x, y, purpose FROM ai_land_manager_coords WHERE land_manager = ?", self.worldid):
+		for x, y, purpose in db("SELECT x, y, purpose FROM ai_land_manager_coords WHERE land_manager = ?",
+				self.worldid):
 			coords = (x, y)
 			if purpose == self.purpose.production:
 				self.production[coords] = self.island.ground_map[coords]
@@ -115,12 +121,15 @@ class LandManager(WorldObject):
 		return result
 
 	def refresh_resource_deposits(self):
-		self.resource_deposits = defaultdict(list) # {resource_id: [tile, ...]} all resource deposits of a type on the island
-		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.MINE]}.iteritems():
+		self.resource_deposits = defaultdict(list)
+		# {resource_id: [tile, ...]} all resource deposits of a type on the island
+		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT],
+				RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.MINE]}.iteritems():
 			for building in self.island.buildings:
 				if building.id in building_ids:
 					if building.get_component(StorageComponent).inventory[resource_id] > 0:
-						self.resource_deposits[resource_id].append(self.island.ground_map[building.position.origin.to_tuple()])
+						self.resource_deposits[resource_id].append(
+							self.island.ground_map[building.position.origin.to_tuple()])
 
 	def _divide_island(self):
 		"""Divide the whole island between the purposes. The proportions depend on the personality."""
@@ -151,7 +160,9 @@ class LandManager(WorldObject):
 			village_area = self.personality.village_area_40
 		chosen_area = max(self.personality.min_village_size, int(round(land * village_area)))
 		min_village_area = int(round(chosen_area * self.personality.min_village_proportion))
-		self.log.info('%s land %d, village area %.2f, chosen area %d, minimum preliminary village area %d', self, land, village_area, chosen_area, min_village_area)
+		self.log.info(
+			'%s land %d, village area %.2f, chosen area %d, minimum preliminary village area %d',
+			self, land, village_area, chosen_area, min_village_area)
 
 		side = int(math.floor(math.sqrt(chosen_area)))
 		if side <= self.personality.max_section_side:
@@ -171,14 +182,16 @@ class LandManager(WorldObject):
 				horizontal_sections = int(math.ceil(float(real_side1) / self.personality.max_section_side))
 				vertical_sections = int(math.ceil(float(real_side2) / self.personality.max_section_side))
 				sections = horizontal_sections * vertical_sections
-				if best_sections > sections or (best_sections == sections and abs(real_side1 - real_side2) < abs(best_side1 - best_side2)):
+				if best_sections > sections or (best_sections == sections and abs(
+					real_side1 - real_side2) < abs(best_side1 - best_side2)):
 					best_sections = sections
 					best_side1 = real_side1
 					best_side2 = real_side2
 			self._divide(best_side1, best_side2)
 
 	def coords_usable(self, coords, use_coast=False):
-		"""Return a boolean showing whether the land on the given coordinate is usable for a normal building."""
+		"""Return a boolean showing whether the land on the given coordinate is usable
+		for a normal building."""
 		if coords in self.island.ground_map:
 			tile = self.island.ground_map[coords]
 			if use_coast:
@@ -192,7 +205,8 @@ class LandManager(WorldObject):
 		return False
 
 	def legal_for_production(self, rect):
-		"""Return a boolean showing whether every tile in the Rect is either in the production area or on the coast."""
+		"""Return a boolean showing whether every tile in the Rect is either in the
+		production area or on the coast."""
 		for coords in rect.tuple_iter():
 			if coords in self.village:
 				return False
@@ -230,7 +244,8 @@ class LandManager(WorldObject):
 		return (map, min_x, max_x, min_y, max_y)
 
 	def _divide(self, side1, side2):
-		"""Divide the total land area between different purposes trying to achieve a side1 x side2 rectangle for the village."""
+		"""Divide the total land area between different purposes trying to achieve
+		a side1 x side2 rectangle for the village."""
 		usability_map, min_x, max_x, min_y, max_y = self._get_usability_map(max(side1, side2))
 		self.log.info('%s divide %d x %d', self, side1, side2)
 
@@ -243,25 +258,27 @@ class LandManager(WorldObject):
 			sizes.append((side2, side1))
 
 		for width, height in sizes:
-			horizontal_strip = {} # (x, y): number of usable tiles from (x - width + 1, y) to (x, y)
-			usable_area = {} # (x, y): number of usable tiles from (x - width + 1, y - height + 1) to (x, y)
+			horizontal_strip = {}  # (x, y): number of usable tiles from (x - width + 1, y) to (x, y)
+			usable_area = {}  # (x, y): number of usable tiles from (x - width + 1, y - height + 1) to (x, y)
 			for x in xrange(min_x, max_x + 1):
 				for dy in xrange(height):
 					horizontal_strip[(x, min_y + dy)] = 0
 					usable_area[(x, min_y + dy)] = 0
 			for y in xrange(min_y, max_y + 1):
 				for dx in xrange(width):
-					horizontal_strip[(min_x +dx, y)] = 0
+					horizontal_strip[(min_x + dx, y)] = 0
 					usable_area[(min_x + dx, y)] = 0
 
 			for y in xrange(min_y + height, max_y + 1):
 				for x in xrange(min_x + width, max_x + 1):
-					horizontal_strip[(x, y)] = horizontal_strip[(x - 1, y)] + usability_map[(x, y)] - usability_map[(x - width, y)]
+					horizontal_strip[(x, y)] = horizontal_strip[(x - 1, y)] + usability_map[(x,
+						y)] - usability_map[(x - width, y)]
 
 			for x in xrange(min_x + width, max_x + 1):
 				for y in xrange(min_y + height, max_y + 1):
 					coords = (x, y)
-					usable_area[coords] = usable_area[(x, y - 1)] + horizontal_strip[(x, y)] - horizontal_strip[(x, y - height)]
+					usable_area[coords] = usable_area[(x, y - 1)] + horizontal_strip[(x,
+						y)] - horizontal_strip[(x, y - height)]
 
 					if usable_area[coords] > best_buildable:
 						best_coords = (x - width + 1, y - height + 1)

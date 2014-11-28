@@ -24,6 +24,7 @@ from horizons.util.python import decorators
 from horizons.constants import RES
 from horizons.component.storagecomponent import StorageComponent
 
+
 class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 	def get_personality_name(self):
 		return 'StorageSpaceGoal'
@@ -34,7 +35,8 @@ class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 			return False
 		important_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR]
 		for resource_id in important_resources:
-			if self.settlement.get_component(StorageComponent).inventory[resource_id] + self.personality.full_storage_threshold >= limit:
+			if (self.settlement.get_component(StorageComponent).inventory[resource_id]
+					+ self.personality.full_storage_threshold >= limit):
 				return True
 		return False
 

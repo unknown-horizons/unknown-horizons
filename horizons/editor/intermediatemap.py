@@ -26,8 +26,9 @@ SHALLOW_WATER = 1
 SAND = 2
 GRASS = 3
 
+
 class IntermediateMap(object):
-	
+
 	def __init__(self, world):
 		self.world = world
 		self.session = world.session
@@ -50,11 +51,11 @@ class IntermediateMap(object):
 			offset = 0 if tile.id == 2 else (1 if tile.id == 5 else 2)
 			rotation = tile.rotation // 90
 			if tile.shape == 'straight':
-				return offset + (1, 0, 0, 1)[rotation] # 2 low, 2 high
+				return offset + (1, 0, 0, 1)[rotation]  # 2 low, 2 high
 			elif tile.shape == 'curve_in':
-				return offset + (1, 1, 0, 1)[rotation] # 1 low, 3 high
+				return offset + (1, 1, 0, 1)[rotation]  # 1 low, 3 high
 			else:
-				return offset + (1, 0, 0, 0)[rotation] # 3 low, 1 high
+				return offset + (1, 0, 0, 0)[rotation]  # 3 low, 1 high
 
 	def _init_map(self):
 		self._map = {}

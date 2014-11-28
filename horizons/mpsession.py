@@ -28,6 +28,7 @@ from horizons.timer import Timer
 from horizons.savegamemanager import SavegameManager
 from horizons.command.game import SaveCommand
 
+
 class MPSession(Session):
 	"""Session class for multiplayer games."""
 
@@ -49,8 +50,8 @@ class MPSession(Session):
 		if fatal:
 			self.timer.ticks_per_second = 0
 			self.ingame_gui.windows.open_popup(_("Fatal Network Error"),
-		                                       _("Something went wrong with the network:") + u'\n' +
-		                                       unicode(exception) )
+                _("Something went wrong with the network:\n {}".
+                format(unicode(exception))))
 			self.quit()
 		else:
 			self.ingame_gui.open_popup(_("Error"), unicode(exception))
@@ -76,21 +77,25 @@ class MPSession(Session):
 		super(MPSession, self).end()
 
 	def autosave(self):
-		self.ingame_gui.open_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
-		return  #TODO disabled for now, see #2151 for details
-		SaveCommand( SavegameManager.create_multiplayer_autosave_name() ).execute(self)
+		self.ingame_gui.open_popup(_("Not possible"),
+            _("Save/load for multiplayer games is not possible yet"))
+		return  # TODO disabled for now, see #2151 for details
+		SaveCommand(SavegameManager.create_multiplayer_autosave_name()).execute(self)
 
 	def quicksave(self):
-		self.ingame_gui.open_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
-		return  #TODO disabled for now, see #2151 for details
-		SaveCommand( SavegameManager.create_multiplayer_quicksave_name() ).execute(self)
+		self.ingame_gui.open_popup(_("Not possible"),
+            _("Save/load for multiplayer games is not possible yet"))
+		return  # TODO disabled for now, see #2151 for details
+		SaveCommand(SavegameManager.create_multiplayer_quicksave_name()).execute(self)
 
 	def quickload(self):
-		self.ingame_gui.open_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+		self.ingame_gui.open_popup(_("Not possible"),
+            _("Save/load for multiplayer games is not possible yet"))
 
 	def save(self, savegamename=None):
-		self.ingame_gui.open_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
-		return  #TODO disabled for now, see #2151 for details
+		self.ingame_gui.open_popup(_("Not possible"),
+            _("Save/load for multiplayer games is not possible yet"))
+		return  # TODO disabled for now, see #2151 for details
 		if savegamename is None:
 			def sanity_checker(string):
 				try:
@@ -103,10 +108,11 @@ class MPSession(Session):
 				"The filename must consist only of letters, numbers, spaces "
 				"and these characters: _ . -"
 			)
-			savegamename = self.ingame_gui.show_select_savegame(mode='mp_save', sanity_checker=sanity_checker,
-			                                                    sanity_criteria=sanity_criteria)
+			savegamename = self.ingame_gui.show_select_savegame(mode='mp_save',
+                                                            sanity_checker=sanity_checker,
+                                                            sanity_criteria=sanity_criteria)
 			if savegamename is None:
-				return True # user aborted dialog
+				return True  # user aborted dialog
 
-		SaveCommand( savegamename ).execute(self)
+		SaveCommand(savegamename).execute(self)
 		return True

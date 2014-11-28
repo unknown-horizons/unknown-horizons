@@ -28,6 +28,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util.python.callback import Callback
 from horizons.constants import GAME_SPEED
 
+
 class GenericAI(Player):
 	"""Class for AI players implementing generic stuff."""
 
@@ -38,7 +39,8 @@ class GenericAI(Player):
 		self.__init()
 
 	def __init(self):
-		self.ships = weakref.WeakValueDictionary() # {ship : state}. used as list of ships and structure to know their state
+		self.ships = weakref.WeakValueDictionary()
+		# {ship : state}. used as list of ships and structure to know their state
 
 	def _load(self, db, worldid):
 		super(GenericAI, self)._load(db, worldid)
@@ -52,7 +54,8 @@ class GenericAI(Player):
 		@param ship: Ship instance that is to be used."""
 		# find random position
 		point = self.session.world.get_random_possible_ship_position()
-		self.log.debug("%s %s: moving to random location %d, %d", self.__class__.__name__, self.worldid, point.x, point.y)
+		self.log.debug("%s %s: moving to random location %d, %d", self.__class__.__name__, self.worldid,
+			point.x, point.y)
 		# move ship there:
 		try:
 			ship.move(point, Callback(self.ship_idle, ship))

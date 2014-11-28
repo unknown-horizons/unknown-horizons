@@ -52,8 +52,10 @@ class StrategyManager(object):
 		self.unit_manager = owner.unit_manager
 		self.missions = set()
 
-		# Dictionary of Condition_hash => FleetMission. Condition_hash is a key since it's searched for more often. Values are
-		# unique because of WorldObject's inheritance, but it makes removing items from it in O(n).
+		# Dictionary of Condition_hash => FleetMission. Condition_hash is a key
+		# since it's searched for more often.
+		# Values are unique because of WorldObject's inheritance,
+		# but it makes removing items from it in O(n).
 		self.conditions_being_resolved = {}
 
 		self.missions_to_load = {
@@ -64,7 +66,8 @@ class StrategyManager(object):
 
 	@property
 	def conditions(self):
-		# conditions are held in behavior manager since they are a part of behavior profile (just like actions and strategies)
+		# conditions are held in behavior manager since they are a part of behavior profile
+		# (just like actions and strategies)
 		return self.owner.behavior_manager.get_conditions()
 
 	def calculate_player_wealth_balance(self, other_player):
@@ -75,7 +78,7 @@ class StrategyManager(object):
 		@type other_player: Player
 		"""
 
-		gold_weight = 0.25 # we don't value gold that much
+		gold_weight = 0.25  # we don't value gold that much
 		resources_weight = 0.75
 
 		resource_values = []
@@ -83,13 +86,15 @@ class StrategyManager(object):
 			resources_value = 0.0
 			for settlement in player.settlements:
 				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount
-					in settlement.get_component(StorageComponent).inventory.itercontents() if self.session.db.get_res_value(resource)))
+					in settlement.get_component(StorageComponent).inventory.itercontents()
+					if self.session.db.get_res_value(resource)))
 			resource_values.append(resources_value)
 		ai_resources, enemy_resources = resource_values
 
 		ai_gold = self.owner.get_component(StorageComponent).inventory[RES.GOLD]
 		enemy_gold = other_player.get_component(StorageComponent).inventory[RES.GOLD]
-		return (ai_resources * resources_weight + ai_gold * gold_weight) / (enemy_resources * resources_weight + enemy_gold * gold_weight)
+		return (ai_resources * resources_weight + ai_gold * gold_weight) / \
+			(enemy_resources * resources_weight + enemy_gold * gold_weight)
 
 	def calculate_player_power_balance(self, other_player):
 		"""
@@ -108,7 +113,8 @@ class StrategyManager(object):
 		ships = self.owner.ships.keys()
 		ships = self.unit_manager.filter_ships(ships, (self.unit_manager.filtering_rules.fighting(),))
 		enemy_ships = self.unit_manager.get_player_ships(other_player)
-		enemy_ships = self.unit_manager.filter_ships(enemy_ships, (self.unit_manager.filtering_rules.fighting(),))
+		enemy_ships = self.unit_manager.filter_ships(enemy_ships,
+			(self.unit_manager.filtering_rules.fighting(), ))
 
 		# infinitely more powerful
 		if ships and not enemy_ships:
@@ -162,14 +168,17 @@ class StrategyManager(object):
 		"""
 		Calculate power balance between self.owner and other player.
 
-		trimming_factor: Since any balance returns values of (0, inf) we agree to assume if x < 0.1 -> x = 0.1 and if x > 10.0 -> x=10.0
+		trimming_factor: Since any balance returns values of (0, inf) we agree to assume
+		if x < 0.1 -> x = 0.1 and if x > 10.0 -> x=10.0
 		linear_boundary: boundary of [-10.0, 10.0] for new balance scale
 
 		@param player: player to calculate balance against
 		@type player: Player
-		@param trimming_factor: trim actual balance values to range [1./trimming_factor, trimming_factor] e.g. [0.1, 10.0]
+		@param trimming_factor: trim actual balance values to range [1./trimming_factor, trimming_factor]
+		e.g. [0.1, 10.0]
 		@type trimming_factor: float
-		@param linear_boundary: boundaries of new balance scale [-linear_boundary, linear_boundary], e.g. [-10.0, 10.0]
+		@param linear_boundary: boundaries of new balance scale [-linear_boundary, linear_boundary],
+		e.g. [-10.0, 10.0]
 		@type linear_boundary: float
 		@return: unified balance for various variables
 		@rtype: collections.namedtuple
@@ -178,12 +187,14 @@ class StrategyManager(object):
 		power_balance = self.owner.strategy_manager.calculate_player_power_balance(player)
 		terrain_balance = self.owner.strategy_manager.calculate_player_terrain_balance(player)
 		balance = {
-			'wealth':wealth_balance,
-			'power':power_balance,
-			'terrain':terrain_balance,
+			'wealth': wealth_balance,
+			'power': power_balance,
+			'terrain': terrain_balance,
 		}
-		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.iteritems()))
-		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.iteritems()))
+		balance = dict(((key, trim_value(value, 1. / trimming_factor,
+			trimming_factor)) for key, value in balance.iteritems()))
+		balance = dict(((key, map_balance(value, trimming_factor,
+			linear_boundary)) for key, value in balance.iteritems()))
 
 		return collections.namedtuple('Balance', 'wealth, power, terrain')(**balance)
 
@@ -192,7 +203,8 @@ class StrategyManager(object):
 			mission.save(db)
 
 		for condition, mission in self.conditions_being_resolved.iteritems():
-			db("INSERT INTO ai_condition_lock (owner_id, condition, mission_id) VALUES(?, ?, ?)", self.owner.worldid, condition, mission.worldid)
+			db("INSERT INTO ai_condition_lock (owner_id, condition, mission_id) VALUES(?, ?, ?)",
+				self.owner.worldid, condition, mission.worldid)
 
 	@classmethod
 	def load(cls, db, owner):
@@ -204,21 +216,26 @@ class StrategyManager(object):
 
 	def _load(self, db):
 		for class_name, db_table in self.missions_to_load.iteritems():
-			db_result = db("SELECT m.rowid FROM %s m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid" % db_table, self.owner.worldid)
+			db_result = db("SELECT m.rowid FROM %s m, ai_fleet_mission f"
+				" WHERE f.owner_id = ? and m.rowid = f.rowid" % db_table, self.owner.worldid)
 			for (mission_id,) in db_result:
-				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
+				self.missions.add(class_name.load(mission_id, self.owner, db,
+				self.report_success, self.report_failure))
 
 		# load condition locks
-		db_result = db("SELECT condition, mission_id FROM ai_condition_lock WHERE owner_id = ?", self.owner.worldid)
+		db_result = db("SELECT condition, mission_id FROM ai_condition_lock WHERE owner_id = ?",
+			self.owner.worldid)
 		for (condition, mission_id) in db_result:
 			self.conditions_being_resolved[condition] = WorldObject.get_object_by_id(mission_id)
 
 	def report_success(self, mission, msg):
-		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid, mission, msg)
+		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid,
+			mission, msg)
 		self.end_mission(mission)
 
 	def report_failure(self, mission, msg):
-		self.log.info("Player: %s|StrategyManager|Mission %s was a failure: %s", self.owner.worldid, mission, msg)
+		self.log.info("Player: %s|StrategyManager|Mission %s was a failure: %s", self.owner.worldid,
+			mission, msg)
 		self.end_mission(mission)
 
 	def end_mission(self, mission):
@@ -265,7 +282,8 @@ class StrategyManager(object):
 
 	def get_ships_for_mission(self):
 		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet)
+		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)),
+			filters.fighting(), filters.not_in_fleet)
 		idle_ships = self.unit_manager.get_ships(rules)
 
 		return idle_ships
@@ -338,6 +356,7 @@ class StrategyManager(object):
 		for mission in self.missions:
 			mission.end()
 
+
 class PirateStrategyManager(StrategyManager):
 
 	def __init__(self, owner):
@@ -346,7 +365,8 @@ class PirateStrategyManager(StrategyManager):
 
 	def get_ships_for_mission(self):
 		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.pirate, filters.not_in_fleet)
+		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.pirate,
+			filters.not_in_fleet)
 		idle_ships = self.unit_manager.get_ships(rules)
 		return idle_ships
 

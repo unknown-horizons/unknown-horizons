@@ -24,6 +24,7 @@ from fife.extensions.pychan.widgets import Container
 from horizons.gui.util import load_uh_widget, get_res_icon_path
 from horizons.constants import RES
 
+
 class TradeHistoryItem(Container):
 	"""Widget that shows the last few trades that have taken place in the settlement."""
 

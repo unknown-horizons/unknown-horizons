@@ -28,6 +28,7 @@ from horizons.util.worldobject import WorldObject
 from horizons.constants import BUILDINGS
 from horizons.component.storagecomponent import StorageComponent
 
+
 class Mission(WorldObject):
 	"""
 	This class describes a general mission that an AI seeks to fulfil.
@@ -69,6 +70,7 @@ class Mission(WorldObject):
 	def end(self):
 		pass
 
+
 class ShipMission(Mission):
 	def __init__(self, success_callback, failure_callback, ship):
 		super(ShipMission, self).__init__(success_callback, failure_callback, ship.owner)
@@ -99,7 +101,8 @@ class ShipMission(Mission):
 		"""Move up to amount tons of resource_id from the ship to the settlement."""
 		if amount > 0:
 			missing = ship.get_component(StorageComponent).inventory.alter(resource_id, -amount)
-			overflow = settlement.get_component(StorageComponent).inventory.alter(resource_id, amount - missing)
+			overflow = settlement.get_component(StorageComponent).inventory.alter(
+				resource_id, amount - missing)
 			ship.get_component(StorageComponent).inventory.alter(resource_id, overflow)
 		elif amount < 0:
 			missing = settlement.get_component(StorageComponent).inventory.alter(resource_id, amount)
@@ -108,18 +111,20 @@ class ShipMission(Mission):
 
 	def _unload_all_resources(self, settlement):
 		# copy the inventory because otherwise we would be modifying it while iterating
-		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory.itercontents()]:
+		for res, amount in [item for item in self.ship.get_component(
+			StorageComponent).inventory.itercontents()]:
 			self.move_resource(self.ship, settlement, res, amount)
 
 	def _move_to_warehouse_area(self, position, success_callback, blocked_callback, failure_msg):
 		area = Circle(position.center, BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)
 		try:
-			self.ship.move(area, success_callback, blocked_callback = blocked_callback)
+			self.ship.move(area, success_callback, blocked_callback=blocked_callback)
 		except MoveNotPossible:
 			self.report_failure(failure_msg)
 
 	def __str__(self):
-		return super(ShipMission, self).__str__() + (' using %s' % (self.ship if hasattr(self, 'ship') else 'unknown ship'))
+		return super(ShipMission, self).__str__() + (' using %s' % (self.ship if hasattr(self, 'ship')
+			else 'unknown ship'))
 
 decorators.bind_all(Mission)
 decorators.bind_all(ShipMission)

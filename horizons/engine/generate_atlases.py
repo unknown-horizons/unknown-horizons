@@ -64,6 +64,7 @@ sys.path.append('.')
 from run_uh import init_environment
 init_environment(False)
 
+
 class DummyFife:
 	use_atlases = False
 import horizons.globals
@@ -82,6 +83,7 @@ class AtlasEntry(object):
 		self.width = width
 		self.height = height
 		self.last_modified = last_modified
+
 
 class AtlasBook(object):
 	log = logging.getLogger("generate_atlases")
@@ -216,7 +218,8 @@ class AtlasGenerator(object):
 
 	def save(self):
 		with open(PATHS.ATLAS_DB_PATH, 'wb') as atlas_db_file:
-			atlas_db_file.write("CREATE TABLE atlas('atlas_id' INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);\n")
+			atlas_db_file.write("CREATE TABLE atlas('atlas_id'"
+				" INTEGER NOT NULL PRIMARY KEY, 'atlas_path' TEXT NOT NULL);\n")
 			for book in self.books:
 				atlas_db_file.write("INSERT INTO atlas VALUES(%d, '%s');\n" % (book.id, book.path))
 
@@ -260,7 +263,8 @@ class AtlasGenerator(object):
 			data.append((w * h, h, w, path))
 
 		assert data, 'No files found.'
-		assert (data[0][1] <= self.max_size and data[0][2] <= self.max_size), 'Image too large: ' + str(data[0][1:])
+		assert (data[0][1] <= self.max_size and data[0][2] <= self.max_size), \
+			'Image too large: ' + str(data[0][1:])
 
 		for _, h, w, path in data:
 			self._add_image(w, h, path)

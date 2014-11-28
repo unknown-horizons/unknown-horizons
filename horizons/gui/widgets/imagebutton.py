@@ -101,7 +101,7 @@ class ImageButton(FifeImageButton):
 			self.up_image = image_path.format(mode='')
 		except RuntimeError:
 			# RuntimeError: _[NotFound]_ , Something was searched, but not found
-			#TODO Temporarily try to find _u for the tabwidget
+			# TODO Temporarily try to find _u for the tabwidget
 			self.up_image = image_path.format(mode='_u')
 		try:
 			self.hover_image = image_path.format(mode='_h')
@@ -144,6 +144,7 @@ class OkButton(ImageButton):
 	name="okButton" path="images/buttons/ok"
 	"""
 	DEFAULT_NAME = 'okButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
@@ -154,12 +155,14 @@ class OkButton(ImageButton):
 		self.path = "images/buttons/ok"
 		self.inactive_image = "content/gui/images/buttons/close.png"
 
+
 class CancelButton(ImageButton):
 	"""The CancelButton is a shortcut for an ImageButton with our cancel / close
 	icon. Its default attributes are:
 	name="cancelButton" path="images/buttons/close"
 	"""
 	DEFAULT_NAME = 'cancelButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
@@ -169,12 +172,14 @@ class CancelButton(ImageButton):
 			max_size=size, min_size=size, size=size, **kwargs)
 		self.path = "images/buttons/close"
 
+
 class DeleteButton(ImageButton):
 	"""The DeleteButton is a shortcut for an ImageButton with our delete / tear
 	icon. Its default attributes are:
 	name="deleteButton" path="images/buttons/delete"
 	"""
 	DEFAULT_NAME = 'deleteButton'
+
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME

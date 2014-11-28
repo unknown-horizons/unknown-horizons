@@ -25,6 +25,7 @@ from buildable import BuildableSingleOnOcean
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.component.storagecomponent import StorageComponent
 
+
 class BoatBuilder(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
 
 	def __init__(self, **kwargs):

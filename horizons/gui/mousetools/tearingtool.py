@@ -31,6 +31,7 @@ from horizons.util.shapes import Point
 from horizons.constants import BUILDINGS
 from horizons.messaging import WorldObjectDeleted
 
+
 class TearingTool(NavigationTool):
 	"""
 	Represents a dangling tool to remove (tear) buildings.
@@ -40,7 +41,7 @@ class TearingTool(NavigationTool):
 
 	def __init__(self, session):
 		super(TearingTool, self).__init__(session)
-		self._transparent_instances = set() # fife instances modified for transparency
+		self._transparent_instances = set()  # fife instances modified for transparency
 		self.coords = None
 		self.selected = WeakList()
 		self.oldedges = None
@@ -85,37 +86,38 @@ class TearingTool(NavigationTool):
 			selection_list_copy = [building for building in self.selected]
 			for building in selection_list_copy:
 				self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
-				if (not building.id in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
+				if (building.id not in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
 					Tear(building).execute(self.session)
 			else:
 				if self._hovering_over:
 					# we're hovering over a building, but none is selected, so this tear action isn't allowed
-					warehouses = [ b for b in self._hovering_over if
-					               b.id == BUILDINGS.WAREHOUSE and b.owner.is_local_player]
+					warehouses = [b for b in self._hovering_over if
+						b.id == BUILDINGS.WAREHOUSE and b.owner.is_local_player]
 					if warehouses:
 						# tried to tear a warehouse, this is especially non-tearable
 						pos = warehouses[0].position.origin
-						self.session.ingame_gui.message_widget.add(point=pos, string_id="WAREHOUSE_NOT_TEARABLE" )
+						self.session.ingame_gui.message_widget.add(point=pos, string_id="WAREHOUSE_NOT_TEARABLE")
 
 			self.selected = WeakList()
 			self._hovering_over = WeakList()
-			if not evt.isShiftPressed() and not horizons.globals.fife.get_uh_setting('UninterruptedBuilding'):
+			if not evt.isShiftPressed() and not horizons.globals.fife.get_uh_setting(
+				'UninterruptedBuilding'):
 				self.tear_tool_active = False
 				self.on_escape()
 			evt.consume()
-			
+
 	def confirm_ranged_delete(self, building):
 			buildings_to_destroy = len(Tear.additional_removals_after_tear(building)[0])
 			if buildings_to_destroy == 0:
 				return True
-			
+
 			title = _("Destroy all buildings")
 			msg = _("This will destroy all the buildings that fall outside of"
-		            " the settlement range.")
+				" the settlement range.")
 			msg += u"\n\n"
 			msg += N_("%s additional building will be destroyed.",
-		              "%s additional buildings will be destroyed",
-		              buildings_to_destroy) % buildings_to_destroy
+				"%s additional buildings will be destroyed",
+				buildings_to_destroy) % buildings_to_destroy
 			return building.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)
 
 	def mousePressed(self, evt):
@@ -154,12 +156,12 @@ class TearingTool(NavigationTool):
 						if b not in self._hovering_over:
 							self._hovering_over.append(b)
 							self._make_surrounding_transparent(b)
-							self._remove_object_transparency(Point(x,y))
+							self._remove_object_transparency(Point(x, y))
 						if b.tearable and b.owner is not None and b.owner.is_local_player:
 							if b not in self.selected:
 								self._make_surrounding_transparent(b)
 								self.selected.append(b)
-								self._remove_object_transparency(Point(x,y))
+								self._remove_object_transparency(Point(x, y))
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance,
 				                                                          *self.tear_selection_color)
@@ -176,7 +178,8 @@ class TearingTool(NavigationTool):
 	def _make_surrounding_transparent(self, building):
 		"""Makes the surrounding of building_position transparent"""
 		world_contains = self.session.world.map_dimensions.contains_without_border
-		for coord in building.position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
+		for coord in building.position.get_radius_coordinates(self.nearby_objects_radius,
+				include_self=True):
 			p = Point(*coord)
 			if not world_contains(p):
 				continue
@@ -196,7 +199,7 @@ class TearingTool(NavigationTool):
 					fife_instance.get2dGfxVisual().setTransparency(0)
 				else:
 					# restore regular translucency value, can also be different
-					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+					fife_instance.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
 		self._transparent_instances.clear()
 
 	def _on_object_deleted(self, message):

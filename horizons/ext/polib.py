@@ -300,7 +300,7 @@ class _BaseFile(list):
         ret = u('\n').join(ret)
 
         assert isinstance(ret, text_type)
-        #if type(ret) != text_type:
+        # if type(ret) != text_type:
         #    return unicode(ret, self.encoding)
         return ret
 
@@ -499,7 +499,7 @@ class _BaseFile(list):
         # add metadata entry
         entries.sort(key=lambda o: o.msgctxt or o.msgid)
         mentry = self.metadata_as_entry()
-        #mentry.msgstr = mentry.msgstr.replace('\\n', '').lstrip()
+        # mentry.msgstr = mentry.msgstr.replace('\\n', '').lstrip()
         entries = [mentry] + entries
         entries_len = len(entries)
         ids, strs = b(''), b('')
@@ -634,7 +634,7 @@ class POFile(_BaseFile):
         Convenience method that returns the list of untranslated entries.
         """
         return [e for e in self if not e.translated() and not e.obsolete
-                and not 'fuzzy' in e.flags]
+                and 'fuzzy' not in e.flags]
 
     def fuzzy_entries(self):
         """
@@ -878,7 +878,7 @@ class _BaseEntry(object):
         ret = ['%s%s%s "%s"' % (delflag, fieldname, plural_index,
                                 escape(lines.pop(0)))]
         for mstr in lines:
-            #import pdb; pdb.set_trace()
+            # import pdb; pdb.set_trace()
             ret.append('%s"%s"' % (delflag, escape(mstr)))
         return ret
 # }}}
@@ -989,7 +989,7 @@ class POEntry(_BaseEntry):
         ret = u('\n').join(ret)
 
         assert isinstance(ret, text_type)
-        #if type(ret) != types.UnicodeType:
+        # if type(ret) != types.UnicodeType:
         #    return unicode(ret, self.encoding)
         return ret
 
@@ -1170,22 +1170,22 @@ class _POFileParser(object):
         all = ['ST', 'HE', 'GC', 'OC', 'FL', 'CT', 'PC', 'PM', 'PP', 'TC',
                'MS', 'MP', 'MX', 'MI']
 
-        self.add('TC', ['ST', 'HE'],                                     'HE')
+        self.add('TC', ['ST', 'HE'], 'HE')
         self.add('TC', ['GC', 'OC', 'FL', 'TC', 'PC', 'PM', 'PP', 'MS',
-                        'MP', 'MX', 'MI'],                               'TC')
-        self.add('GC', all,                                              'GC')
-        self.add('OC', all,                                              'OC')
-        self.add('FL', all,                                              'FL')
-        self.add('PC', all,                                              'PC')
-        self.add('PM', all,                                              'PM')
-        self.add('PP', all,                                              'PP')
+                        'MP', 'MX', 'MI'], 'TC')
+        self.add('GC', all, 'GC')
+        self.add('OC', all, 'OC')
+        self.add('FL', all, 'FL')
+        self.add('PC', all, 'PC')
+        self.add('PM', all, 'PM')
+        self.add('PP', all, 'PP')
         self.add('CT', ['ST', 'HE', 'GC', 'OC', 'FL', 'TC', 'PC', 'PM',
-                        'PP', 'MS', 'MX'],                               'CT')
+                        'PP', 'MS', 'MX'], 'CT')
         self.add('MI', ['ST', 'HE', 'GC', 'OC', 'FL', 'CT', 'TC', 'PC',
-                 'PM', 'PP', 'MS', 'MX'],                                'MI')
-        self.add('MP', ['TC', 'GC', 'PC', 'PM', 'PP', 'MI'],             'MP')
-        self.add('MS', ['MI', 'MP', 'TC'],                               'MS')
-        self.add('MX', ['MI', 'MX', 'MP', 'TC'],                         'MX')
+                 'PM', 'PP', 'MS', 'MX'], 'MI')
+        self.add('MP', ['TC', 'GC', 'PC', 'PM', 'PP', 'MI'], 'MP')
+        self.add('MS', ['MI', 'MP', 'TC'], 'MS')
+        self.add('MX', ['MI', 'MX', 'MP', 'TC'], 'MX')
         self.add('MC', ['CT', 'MI', 'MP', 'MS', 'MX', 'PM', 'PP', 'PC'], 'MC')
 
     def parse(self):

@@ -25,26 +25,27 @@ from inventorytab import InventoryTab
 from tradetab import TradeTab
 from overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
-						TowerOverviewTab
+	TowerOverviewTab
 from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
 from productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
-						SmallProductionOverviewTab
+	SmallProductionOverviewTab
 from residentialtabs import SettlerOverviewTab
 from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
-						TraderShipOverviewTab, EnemyShipOverviewTab
+	TraderShipOverviewTab, EnemyShipOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
 from boatbuildertabs import BoatbuilderTab, BoatbuilderFisherTab, \
-						BoatbuilderTradeTab, BoatbuilderWar1Tab, \
-						BoatbuilderWar2Tab, BoatbuilderConfirmTab
+	BoatbuilderTradeTab, BoatbuilderWar1Tab, \
+	BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from mainsquaretabs import AccountTab, MainSquareOverviewTab, \
-						MainSquareSailorsTab, MainSquarePioneersTab, \
-						MainSquareSettlersTab, MainSquareCitizensTab
+	MainSquareSailorsTab, MainSquarePioneersTab, \
+	MainSquareSettlersTab, MainSquareCitizensTab
 from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab
 from selectmultitab import SelectMultiTab
+
 
 def resolve_tab(tabclass_name):
 	"""Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""

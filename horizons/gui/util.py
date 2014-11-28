@@ -35,6 +35,7 @@ from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 
+
 @decorators.cachedfunction
 def get_gui_files_map():
 	"""Returns a dictionary { basename : full_path }
@@ -50,6 +51,7 @@ def get_gui_files_map():
 								'Please use unique names!'.format(name=f))
 			xml_files[f] = os.path.join(root, f)
 	return xml_files
+
 
 def get_happiness_icon_and_helptext(value, session):
 	happiness_icon_path = "content/gui/icons/templates/happiness/"
@@ -67,14 +69,16 @@ def get_happiness_icon_and_helptext(value, session):
 
 	return happiness_icon_path, happiness_helptext
 
+
 @decorators.cachedfunction
 def get_widget_xml(filename):
 	"""
-	This function reads the given widget file's content and returns the XML. 
+	This function reads the given widget file's content and returns the XML.
 	It is cached to avoid useless IO.
 	"""
 	with open(get_gui_files_map()[filename]) as open_file:
 		return open_file.read()
+
 
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications
@@ -103,6 +107,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 	return widget
 
+
 @decorators.cachedfunction
 def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 	"""Returns path of a resource icon or placeholder path, if icon does not exist.
@@ -119,7 +124,7 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 
 	try:
 		Icon(image=icon_path)
-	except RuntimeError: # ImageManager: image not found, use placeholder or die
+	except RuntimeError:  # ImageManager: image not found, use placeholder or die
 		if res == 'placeholder':
 			raise Exception('Image not found: {icon_path}'.format(icon_path=icon_path))
 		else:
@@ -133,6 +138,7 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 		# remove 'content/gui/' and '.png'
 		return icon_path[12:][:-4]
 
+
 def create_resource_icon(res_id, db):
 	"""Creates a pychan Icon for a resource. Helptext is set to name of *res_id*.
 	@param res_id: resource id
@@ -143,7 +149,7 @@ def create_resource_icon(res_id, db):
 
 
 def create_resource_selection_dialog(on_click, inventory, db,
-                                     widget='select_trade_resource.xml', res_filter=None, amount_per_line=None):
+		widget='select_trade_resource.xml', res_filter=None, amount_per_line=None):
 	"""Returns a container containing resource icons.
 	@param on_click: called with resource id as parameter on clicks
 	@param inventory: to determine fill status of resource slots
@@ -158,7 +164,7 @@ def create_resource_selection_dialog(on_click, inventory, db,
 
 	dlg = load_uh_widget(widget)
 
-	icon_size = ImageFillStatusButton.ICON_SIZE # used for dummy button
+	icon_size = ImageFillStatusButton.ICON_SIZE  # used for dummy button
 	cell_size = ImageFillStatusButton.CELL_SIZE
 	button_width = cell_size[0]
 	vbox = dlg.findChild(name="resources")

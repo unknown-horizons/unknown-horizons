@@ -27,6 +27,7 @@ from horizons.entities import Entities
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractCharcoalBurner(AbstractBuilding):
 	@property
 	def evaluator_class(self):
@@ -35,6 +36,7 @@ class AbstractCharcoalBurner(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.CHARCOAL_BURNER] = cls
+
 
 class CharcoalBurnerEvaluator(BuildingEvaluator):
 	@classmethod
@@ -46,15 +48,19 @@ class CharcoalBurnerEvaluator(BuildingEvaluator):
 			return None
 
 		personality = area_builder.owner.personality_manager.get('CharcoalBurnerEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius * personality.distance_penalty
+		distance_penalty = Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius \
+			* personality.distance_penalty
 
 		distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.MINE)
-		distance_to_lumberjack = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.LUMBERJACK)
+		distance_to_lumberjack = cls._distance_to_nearest_building(area_builder, builder,
+			BUILDINGS.LUMBERJACK)
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 
-		distance = cls._weighted_distance(distance_to_collector, [(personality.lumberjack_distance_importance, distance_to_lumberjack),
+		distance = cls._weighted_distance(distance_to_collector, [(
+			personality.lumberjack_distance_importance, distance_to_lumberjack),
 			(personality.iron_mine_distance_importance, distance_to_iron_mine)], distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius) / distance + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius) / distance + alignment \
+			* personality.alignment_importance
 		return CharcoalBurnerEvaluator(area_builder, builder, value)
 
 	@property

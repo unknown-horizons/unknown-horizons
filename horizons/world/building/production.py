@@ -22,7 +22,8 @@
 
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit, BuildableSingleOnOcean
+from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, \
+	BuildableSingleOnDeposit, BuildableSingleOnOcean
 from horizons.world.building.nature import Field
 from horizons.util.shapes import Rect, RadiusRect
 from horizons.command.building import Build
@@ -77,7 +78,8 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):
 		"""
 		@param inventory: inventory dump of deposit (collected by get_prebuild_data())
-		@param deposit_class: class num of deposit for later reconstruction (collected by get_prebuild_data())
+		@param deposit_class: class num of deposit for later reconstruction
+		(collected by get_prebuild_data())
 		"""
 		# needs to be inited before super(), since that will call the _on_production_changed hook
 		super(Mine, self).__init__(*args, **kwargs)
@@ -99,7 +101,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 			elif rotation == 135:
 				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 3, 1)
 			elif rotation == 225:
-				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 1, 3)
+				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width - 1, pos.origin.y + 1, 1, 3)
 			elif rotation == 315:
 				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 3, 1)
 			assert False
@@ -125,7 +127,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 	def remove(self):
 		# build the deposit back here after remove() is finished
-		deposit_build_data = { 'inventory' : self.get_component(StorageComponent).inventory.get_dump() }
+		deposit_build_data = {'inventory': self.get_component(StorageComponent).inventory.get_dump()}
 		build_cmd = Build(self.__deposit_class, self.position.origin.x, self.position.origin.y,
 		                  self.island, rotation=self.rotation, ownerless=True, data=deposit_build_data)
 		Scheduler().add_new_object(build_cmd, build_cmd, run_in=0)

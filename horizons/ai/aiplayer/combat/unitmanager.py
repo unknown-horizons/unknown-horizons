@@ -57,10 +57,14 @@ class UnitManager(object):
 		self.fleets = set()
 
 		# TODO Convert all filters to not return lambdas, just return the function instead
-		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type, selectable,'
-			'ship_state, not_in_fleet, working, pirate, fighting')(not_owned=self._not_owned_rule, hostile=self._hostile_rule,
-			ship_type=self._ship_type_rule, selectable=self._selectable_rule, ship_state=self._ship_state_rule,
-			not_in_fleet=self._ship_not_in_fleet, working=self._is_worker, pirate=self._is_pirate, fighting=self._is_fighter)
+		self.filtering_rules = collections.namedtuple('FilteringRules',
+			'not_owned, hostile, ship_type, selectable,'
+			'ship_state, not_in_fleet, working, pirate, fighting')(not_owned=self._not_owned_rule,
+				hostile=self._hostile_rule,
+			ship_type=self._ship_type_rule, selectable=self._selectable_rule,
+			ship_state=self._ship_state_rule,
+			not_in_fleet=self._ship_not_in_fleet, working=self._is_worker, pirate=self._is_pirate,
+				fighting=self._is_fighter)
 
 	def get_ships(self, filtering_rules=None):
 		ships = [ship for ship in self.owner.ships]
@@ -107,15 +111,16 @@ class UnitManager(object):
 
 	def check_for_dead_fleets(self):
 		pass
-		#for fleet in self.fleets:
-		#	if fleet.size() == 0:
-		#		self.destroy_fleet(fleet)
+		# for fleet in self.fleets:
+		#     if fleet.size() == 0:
+		#         self.destroy_fleet(fleet)
 
 	# Filtering rules
 	# Use filter_ships method along with rules defined below:
 	# This approach simplifies code (does not aim to make it shorter)
 	# Instead having [ship for ship in ships if ... and ... and ... and ...]
-	# we have ships = filter_ships(other_ships, [get_hostile_rule(), get_ship_type_rule((PirateShip,)), ... ])
+	# we have ships = filter_ships(other_ships, [get_hostile_rule(),
+	# get_ship_type_rule((PirateShip,)), ... ])
 	def _is_fighter(self):
 		"""
 		Rule stating that ship is a fighting ship, but not a pirate ship.
@@ -170,7 +175,8 @@ class UnitManager(object):
 		"""
 		This method allows for flexible ship filtering.
 		usage:
-		other_ships = unit_manager.filter_ships(other_ships, [_not_owned_rule(), _ship_type_rule([PirateShip])])
+		other_ships = unit_manager.filter_ships(other_ships, [_not_owned_rule(),
+		_ship_type_rule([PirateShip])])
 
 		@param ships: iterable of ships to filter
 		@type ships: iterable
@@ -188,9 +194,11 @@ class UnitManager(object):
 	@classmethod
 	def get_closest_ships_for_each(cls, ship_group, enemies):
 		"""
-		For each ship in ship_group return an index of ship from enemies that is the closest to given ship.
+		For each ship in ship_group return an index of ship from enemies that is
+		the closest to given ship.
 		For example ship_group=[A, B, C] , enemies = [X, Y, Z],
-		could return [(A,X), (B,Y), (C,Y)] if X was the closest to A and Y was the closest ship to both B and C
+		could return [(A,X), (B,Y), (C,Y)] if X was the closest to A and Y was
+		the closest ship to both B and C
 		"""
 		# TODO: make faster than o(n^2)
 		closest = []
@@ -202,9 +210,11 @@ class UnitManager(object):
 	@classmethod
 	def get_best_targets_for_each(cls, ship_group, enemies):
 		"""
-		For each ship in ship_group return an index of ship from enemies that is the closest to given ship.
+		For each ship in ship_group return an index of ship from enemies that is
+		the closest to given ship.
 		For example ship_group=[A, B, C] , enemies = [X, Y, Z],
-		could return [(A,X), (B,Y), (C,Y)] if X was the closest to A and Y was the closest ship to both B and C
+		could return [(A,X), (B,Y), (C,Y)] if X was the closest to A and Y was
+		the closest ship to both B and C
 		"""
 		pass
 
@@ -224,7 +234,8 @@ class UnitManager(object):
 		assert ship_group, "Request to calculate balance with 0 ships in ship_group"
 		assert enemy_ship_group, "Request to calculate balance with 0 ships in enemy_ship_group"
 
-		# dps_multiplier - 4vs2 ships equal 2 times more DPS. Multiply that factor when calculating power balance.
+		# dps_multiplier - 4vs2 ships equal 2 times more DPS.
+		# Multiply that factor when calculating power balance.
 		dps_multiplier = len(ship_group) / float(len(enemy_ship_group))
 
 		self_hp = float(sum((ship.get_component(HealthComponent).health for ship in ship_group)))
@@ -236,14 +247,17 @@ class UnitManager(object):
 	def calculate_ship_dispersion(cls, ship_group):
 		"""
 		There are many solutions to solve the problem of caculating ship_group dispersion efficiently.
-		We generally care about computing that in linear time, rather than having accurate numbers in O(n^2).
+		We generally care about computing that in linear time,
+		rather than having accurate numbers in O(n^2).
 		We settle for a diagonal of a bounding box for the whole group.
 		@return: dispersion factor
 		@rtype: float
 		"""
 		positions = [ship.position for ship in ship_group]
-		bottom_left = Point(min(positions, key=lambda position: position.x).x, min(positions, key=lambda position: position.y).y)
-		top_right = Point(max(positions, key=lambda position: position.x).x, max(positions, key=lambda position: position.y).y)
+		bottom_left = Point(min(positions, key=lambda position: position.x).x, min(positions,
+			key=lambda position: position.y).y)
+		top_right = Point(max(positions, key=lambda position: position.x).x, max(positions,
+			key=lambda position: position.y).y)
 		diagonal = bottom_left.distance(top_right)
 		return diagonal
 
@@ -252,17 +266,20 @@ class UnitManager(object):
 		for ship in ship_group:
 			nearby_ships = ship.find_nearby_ships(radius)
 			# return only other player's ships, since we want that in most cases anyway
-			other_ships_set |= set(self.filter_ships(nearby_ships, [self._not_owned_rule(), self._selectable_rule()]))
+			other_ships_set |= set(self.filter_ships(nearby_ships, [self._not_owned_rule(),
+				self._selectable_rule()]))
 		return list(other_ships_set)
 
 	def tick(self):
 		self.check_for_dead_fleets()
 
 	def get_player_islands(self, player):
-		return [settlement.island for settlement in self.session.world.settlements if settlement.owner == player]
+		return [settlement.island for settlement in self.session.world.settlements
+			if settlement.owner == player]
 
 	def get_player_ships(self, player):
-		return [ship for ship in self.session.world.ships if ship.owner == player and ship.has_component(SelectableComponent)]
+		return [ship for ship in self.session.world.ships if ship.owner == player
+			and ship.has_component(SelectableComponent)]
 
 	def get_warehouse_point(self, settlement):
 		"""

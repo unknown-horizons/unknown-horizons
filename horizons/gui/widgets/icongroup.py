@@ -22,6 +22,7 @@
 from fife.extensions.pychan.widgets import HBox, Icon, VBox
 from fife.extensions.pychan.widgets.common import IntAttr
 
+
 class TilingBackground(object):
 	"""The TilingBackground is a shortcut for several Icons combined to one group.
 	It usually serves as auxiliary widget if a tiling background image is desired,
@@ -49,11 +50,12 @@ class TilingBackground(object):
 		start_img = Icon(image=self.start_img, name=self.name + '0')
 		self.addChild(start_img)
 		for i in xrange(self.amount):
-			mid = Icon(image=self.tiles_img, name=self.name + str(i+1))
+			mid = Icon(image=self.tiles_img, name=self.name + str(i + 1))
 			self.addChild(mid)
-		self.addChild(Icon(image=self.final_img, name=self.name + str(self.amount+1)))
+		self.addChild(Icon(image=self.final_img, name=self.name + str(self.amount + 1)))
 
 	amount = property(_get_tile_amount, _set_tile_amount)
+
 
 class TooltipBG(VBox, TilingBackground):
 	"""Not usable from xml!"""
@@ -65,12 +67,14 @@ class TooltipBG(VBox, TilingBackground):
 			start_img="top.png", tiles_img="middle.png", final_img="bottom.png",
 			**kwargs)
 
+
 class TabBG(VBox, TilingBackground):
 	"""Intended to be used for any tab we display.
 	Uses content/gui/images/tabwidget/main_bg_*.png.
 	@param amount: amount of 50px tiles/panels in between top and bottom icon
 	"""
 	ATTRIBUTES = VBox.ATTRIBUTES + [IntAttr('amount')]
+
 	def __init__(self, **kwargs):
 		VBox.__init__(self, name='tab_background_icons', padding=0)
 		TilingBackground.__init__(self,
@@ -79,6 +83,7 @@ class TabBG(VBox, TilingBackground):
 			start_img="top.png", tiles_img="fill.png", final_img="bottom.png",
 			**kwargs)
 
+
 class TilingHBox(HBox, TilingBackground):
 	"""Currently mostly used by cityinfo, thus using its arguments as defaults.
 
@@ -86,6 +91,7 @@ class TilingHBox(HBox, TilingBackground):
 	@param amount: amount of 10px tiles/panels in between left and right icon
 	"""
 	ATTRIBUTES = HBox.ATTRIBUTES + [IntAttr('amount')]
+
 	def __init__(self, **kwargs):
 		HBox.__init__(self, name='city_info_background', padding=0)
 		TilingBackground.__init__(self,

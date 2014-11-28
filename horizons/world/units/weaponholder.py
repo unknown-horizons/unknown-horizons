@@ -36,6 +36,7 @@ from horizons.world.units.ship import Ship
 from horizons.world.units.weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.component.storagecomponent import StorageComponent
 
+
 @metaChangeListenerDecorator("storage_modified")
 @metaChangeListenerDecorator("user_attack_issued")
 class WeaponHolder(object):
@@ -65,7 +66,7 @@ class WeaponHolder(object):
 	def create_weapon_storage(self):
 		self._weapon_storage = []
 		self._fireable = []
-		#TODO make a system for making it load from db
+		# TODO make a system for making it load from db
 		self.total_number_of_weapons = 30
 
 	def update_range(self, caller=None):
@@ -263,7 +264,8 @@ class WeaponHolder(object):
 		Executes every few seconds, doing movement depending on the stance.
 		Static WeaponHolders are aggressive, attacking all enemies that are in range
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.position.center, self._max_range)
+		enemies = [u for u in self.session.world.get_health_instances(
+			self.position.center, self._max_range)
 			if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
 
 		self.log.debug("%s stance tick, found enemies: %s", self, [str(i) for i in enemies])
@@ -280,11 +282,11 @@ class WeaponHolder(object):
 		self.log.debug("%s attack %s", self, target)
 		if self._target is not None:
 			if self._target is not target:
-				#if target is changed remove the listener
+				# if target is changed remove the listener
 				if self._target.has_remove_listener(self.remove_target):
 					self._target.remove_remove_listener(self.remove_target)
 			else:
-				#else do not update the target
+				# else do not update the target
 				self.log.debug("%s already targeting this one", self)
 				return
 		if not target.has_remove_listener(self.remove_target):
@@ -318,7 +320,7 @@ class WeaponHolder(object):
 
 	def stop_attack(self):
 		# When the ship is told to move, the target is None and the listeners in target removed
-		#TODO make another listener for target_changed
+		# TODO make another listener for target_changed
 		self.log.debug("%s stop attack", self)
 		if self._target is not None:
 			self._target.discard_remove_listener(self.remove_target)
@@ -403,7 +405,8 @@ class WeaponHolder(object):
 	def load(self, db, worldid):
 		super(WeaponHolder, self).load(db, worldid)
 		self.__init()
-		weapons = db("SELECT weapon_id, number, remaining_ticks FROM weapon_storage WHERE owner_id = ?", worldid)
+		weapons = db("SELECT weapon_id, number, remaining_ticks FROM weapon_storage WHERE owner_id = ?",
+			worldid)
 		for weapon_id, number, ticks in weapons:
 			# create weapon and add to storage manually
 			if self.session.db.get_weapon_stackable(weapon_id):
@@ -472,7 +475,8 @@ class MovingWeaponHolder(WeaponHolder):
 		Callback for moving to a destination, then attack
 		@param destination : moving destination
 		@param not_possible_action : execute if MoveNotPossible is thrown
-		@param in_range_callback : sets up a conditional callback that is executed if the target is in range
+		@param in_range_callback : sets up a conditional callback that is executed
+		if the target is in range
 		"""
 		if not_possible_action:
 			assert callable(not_possible_action)
@@ -480,8 +484,8 @@ class MovingWeaponHolder(WeaponHolder):
 			assert callable(in_range_callback)
 
 		try:
-			self.move(destination, callback = self.try_attack_target,
-				blocked_callback = self.try_attack_target)
+			self.move(destination, callback=self.try_attack_target,
+				blocked_callback=self.try_attack_target)
 			if in_range_callback:
 				self.add_conditional_callback(self.attack_in_range, in_range_callback)
 

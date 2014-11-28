@@ -53,7 +53,8 @@ class ShipOverviewTab(OverviewTab):
 	def _refresh_found_settlement_button(self, events):
 		island_without_player_settlement_found = False
 		helptext = _("The ship needs to be close to an island to found a settlement.")
-		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius):
+		for island in self.instance.session.world.get_islands_in_radius(self.instance.position,
+				self.instance.radius):
 			if not any(settlement.owner.is_local_player for settlement in island.settlements):
 				island_without_player_settlement_found = True
 			else:
@@ -61,8 +62,8 @@ class ShipOverviewTab(OverviewTab):
 
 		if island_without_player_settlement_found:
 			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build,
-			                                      BUILDINGS.WAREHOUSE,
-			                                      weakref.ref(self.instance) )
+				BUILDINGS.WAREHOUSE,
+				weakref.ref(self.instance))
 			self.widget.child_finder('found_settlement_bg').set_active()
 			self.widget.child_finder('found_settlement').set_active()
 			self.widget.child_finder('found_settlement').helptext = _("Build settlement")
@@ -72,14 +73,14 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('found_settlement').set_inactive()
 			self.widget.child_finder('found_settlement').helptext = helptext
 
-		cb = Callback( self.instance.session.ingame_gui.resource_overview.set_construction_mode,
-		               self.instance,
-		               Entities.buildings[BUILDINGS.WAREHOUSE].costs)
+		cb = Callback(self.instance.session.ingame_gui.resource_overview.set_construction_mode,
+			self.instance,
+			Entities.buildings[BUILDINGS.WAREHOUSE].costs)
 		events['found_settlement/mouseEntered'] = cb
 
 		cb1 = Callback(self.instance.session.ingame_gui.resource_overview.close_construction_mode)
 		cb2 = Callback(self.widget.child_finder('found_settlement').hide_tooltip)
-		#TODO the tooltip should actually hide on its own. Ticket #1096
+		# TODO the tooltip should actually hide on its own. Ticket #1096
 		cb = Callback.ChainedCallbacks(cb1, cb2)
 		events['found_settlement/mouseExited'] = cb
 
@@ -101,14 +102,15 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.findChild(name='trade').set_inactive()
 			self.widget.findChild(name='trade').helptext = _('Too far from the nearest tradeable warehouse')
 
-	def _refresh_combat(self): # no combat
+	def _refresh_combat(self):  # no combat
 		def click_on_cannons(button):
 			button.button.capture(Callback(
-			  self.instance.session.ingame_gui.open_popup,
-			  _("Cannot equip trade ship with weapons"),
-			  _("It is not possible to equip a trade ship with weapons.")
+				self.instance.session.ingame_gui.open_popup,
+				_("Cannot equip trade ship with weapons"),
+				_("It is not possible to equip a trade ship with weapons.")
 			))
-		self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons, lambda b: b.res_id == WEAPONS.CANNON)
+		self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons,
+			lambda b: b.res_id == WEAPONS.CANNON)
 
 	def refresh(self):
 		# show rename when you click on name
@@ -137,7 +139,8 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		super(FightingShipOverviewTab, self).init_widget()
 		# Create weapon inventory, needed only in gui for inventory widget.
 		self.weapon_inventory = self.instance.get_weapon_storage()
-		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, self.weapon_inventory)
+		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db,
+			self.weapon_inventory)
 
 	def _refresh_combat(self):
 		def apply_equip(button):
@@ -148,8 +151,10 @@ class FightingShipOverviewTab(ShipOverviewTab):
 			button.button.helptext = _("Unequip weapon")
 			button.button.capture(Callback(self.unequip_weapon, button.res_id))
 
-		self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip, lambda b: b.res_id == WEAPONS.CANNON)
-		self.widget.findChild(name='inventory').apply_to_buttons(apply_equip, lambda b: b.res_id == WEAPONS.CANNON)
+		self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip,
+			lambda b: b.res_id == WEAPONS.CANNON)
+		self.widget.findChild(name='inventory').apply_to_buttons(apply_equip,
+			lambda b: b.res_id == WEAPONS.CANNON)
 
 	def equip_weapon(self, weapon_id):
 		if EquipWeaponFromInventory(self.instance, weapon_id, 1).execute(self.instance.session) == 0:
@@ -167,10 +172,12 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		self.weapon_inventory = None
 		super(FightingShipOverviewTab, self).on_instance_removed()
 
+
 class TraderShipOverviewTab(OverviewTab):
 	widget = 'overview_tradership.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
 	helptext = _lazy("Ship overview")
+
 
 class EnemyShipOverviewTab(OverviewTab):
 	widget = 'overview_enemyunit.xml'

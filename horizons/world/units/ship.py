@@ -23,7 +23,6 @@ import weakref
 from fife import fife
 
 import horizons.globals
-
 from horizons.util.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.util.pathfinding import PathBlockedError
 from horizons.world.units.collectors import FisherShipCollector
@@ -36,6 +35,7 @@ from horizons.component.commandablecomponent import CommandableComponent
 from horizons.messaging import ShipDestroyed
 from horizons.world.traderoute import TradeRoute
 
+
 class Ship(Unit):
 	"""Class representing a ship
 	@param x: int x position
@@ -45,7 +45,7 @@ class Ship(Unit):
 	health_bar_y = -150
 	is_ship = True
 
-	in_ship_map = True # (#1023)
+	in_ship_map = True  # (#1023)
 
 	def __init__(self, x, y, **kwargs):
 		super(Ship, self).__init__(x=x, y=y, **kwargs)
@@ -139,7 +139,7 @@ class Ship(Unit):
 		super(Ship, self).move(*args, **kwargs)
 		if self.has_component(SelectableComponent) and \
 		   self.get_component(SelectableComponent).selected and \
-		   self.owner.is_local_player: # handle buoy
+		   self.owner.is_local_player:  # handle buoy
 			# if move() is called as move_callback, tmp() from above might
 			# be executed after this, so draw the new buoy after move_callbacks have finished.
 			Scheduler().add_new_object(self._update_buoy, self, run_in=0)
@@ -151,12 +151,13 @@ class Ship(Unit):
 		move_target = self.get_move_target()
 
 		ship_id = self.worldid
-		session = self.session # this has to happen here,
+		session = self.session  # this has to happen here,
 		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak
+
 		def tmp():
 			session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
-		tmp() # also remove now
+		tmp()  # also remove now
 
 		if remove_only:
 			return
@@ -168,7 +169,7 @@ class Ship(Unit):
 			loc = fife.Location(self.session.view.layers[LAYERS.OBJECTS])
 			loc.thisown = 0  # thisown = 0 because the genericrenderernode might delete it
 			coords = fife.ModelCoordinate(move_target.x, move_target.y)
-			coords.thisown = 1 # thisown = 1 because setLayerCoordinates will create a copy
+			coords.thisown = 1  # thisown = 1 because setLayerCoordinates will create a copy
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.RendererNode(loc),
@@ -184,7 +185,8 @@ class Ship(Unit):
 		return ships
 
 	def get_tradeable_warehouses(self, position=None):
-		"""Returns warehouses this ship can trade with w.r.t. position, which defaults to the ships ones."""
+		"""Returns warehouses this ship can trade with w.r.t. position,
+		which defaults to the ships ones."""
 		if position is None:
 			position = self.position
 		return self.session.world.get_warehouses(position, self.radius, self.owner,
@@ -193,7 +195,7 @@ class Ship(Unit):
 	def get_location_based_status(self, position):
 		warehouses = self.get_tradeable_warehouses(position)
 		if warehouses:
-			warehouse = warehouses[0] # TODO: don't ignore the other possibilities
+			warehouse = warehouses[0]  # TODO: don't ignore the other possibilities
 			player_suffix = u''
 			if warehouse.owner is not self.owner:
 				player_suffix = u' ({name})'.format(name=warehouse.owner.name)
@@ -234,7 +236,7 @@ class FisherShip(FisherShipCollector, Ship):
 	pather_class = FisherShipPather
 	health_bar_y = -50
 
-	in_ship_map = False # (#1023)
+	in_ship_map = False  # (#1023)
 
 	def _update_buoy(self):
-		pass # no buoy for the fisher
+		pass  # no buoy for the fisher

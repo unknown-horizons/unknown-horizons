@@ -25,8 +25,10 @@ from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
 from horizons.world.status import StatusIcon
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted, HoverInstancesChanged
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon, \
+	WorldObjectDeleted, HoverInstancesChanged
 from horizons.gui.mousetools import NavigationTool
+
 
 class StatusIconManager(object):
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
@@ -43,9 +45,9 @@ class StatusIconManager(object):
 		# {instance: [list of icons]}
 		self.icons = {}
 
-		self.tooltip_instance = None # no weakref:
+		self.tooltip_instance = None  # no weakref:
 		# we need to remove the tooltip always anyway, and along with it the entry here
-		self.tooltip_icon = Icon(position=(1, 1)) # 0, 0 is currently not supported by tooltips
+		self.tooltip_icon = Icon(position=(1, 1))  # 0, 0 is currently not supported by tooltips
 
 		AddStatusIcon.subscribe(self.on_add_icon_message)
 		HoverInstancesChanged.subscribe(self.on_hover_instances_changed)
@@ -69,17 +71,19 @@ class StatusIconManager(object):
 		"""This is called by the message bus with AddStatusIcon messages"""
 		assert isinstance(message, AddStatusIcon)
 		icon_instance = message.icon.instance
-		if not icon_instance in self.icons:
+		if icon_instance not in self.icons:
 			self.icons[icon_instance] = []
-		assert not message.icon in self.icons[icon_instance]
+		assert message.icon not in self.icons[icon_instance]
 		self.icons[icon_instance].append(message.icon)
 		# Sort, make sure highest icon is at top
-		self.icons[icon_instance] = sorted(self.icons[icon_instance], key=StatusIcon.get_sorting_key(), reverse=True)
+		self.icons[icon_instance] = sorted(self.icons[icon_instance],
+			key=StatusIcon.get_sorting_key(), reverse=True)
 		# Now render the most important one
 		self.__render_status(icon_instance, self.icons[icon_instance][0])
 
-		if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
-			self.on_hover_instances_changed( HoverInstancesChanged(self, [self.tooltip_instance]) )
+		if self.tooltip_instance is not None and self.tooltip_instance is icon_instance:
+			# possibly have to update tooltip
+			self.on_hover_instances_changed(HoverInstancesChanged(self, [self.tooltip_instance]))
 
 	def on_worldobject_deleted_message(self, message):
 		assert isinstance(message, WorldObjectDeleted)
@@ -89,7 +93,7 @@ class StatusIconManager(object):
 			del self.icons[message.worldobject]
 		# remove icon tooltip
 		if message.worldobject is self.tooltip_instance:
-			self.on_hover_instances_changed( HoverInstancesChanged(self, []) )
+			self.on_hover_instances_changed(HoverInstancesChanged(self, []))
 
 	def on_remove_icon_message(self, message):
 		"""Called by the MessageBus with RemoveStatusIcon messages."""
@@ -108,8 +112,9 @@ class StatusIconManager(object):
 						self.__render_status(icon_instance, self.icons[icon_instance][0])
 					break
 
-			if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
-				self.on_hover_instances_changed( HoverInstancesChanged(self, [self.tooltip_instance]) )
+			if self.tooltip_instance is not None and self.tooltip_instance is icon_instance:
+				# possibly have to update tooltip
+				self.on_hover_instances_changed(HoverInstancesChanged(self, [self.tooltip_instance]))
 
 	def __render_status(self, instance, status):
 		status_string = self.get_status_string(instance)
@@ -130,7 +135,7 @@ class StatusIconManager(object):
 
 		node = fife.RendererNode(loc, rel)
 
-		try: # to load an animation
+		try:  # to load an animation
 			anim = horizons.globals.fife.animationloader.loadResource(status.icon)
 			self.renderer.addAnimation(status_string, node, anim)
 		except ValueError:
@@ -139,7 +144,7 @@ class StatusIconManager(object):
 
 	def get_status_string(self, instance):
 		"""Returns render name for status icons of this instance"""
-		status_string = "status_"+ str(id(instance))
+		status_string = "status_" + str(id(instance))
 		return status_string
 
 	def on_hover_instances_changed(self, msg):
@@ -150,7 +155,7 @@ class StatusIconManager(object):
 		instances = (i for i in instances if i in self.icons)
 		# and belong to the player
 		instances = [i for i in instances if
-		             hasattr(i, "owner" ) and
+		             hasattr(i, "owner") and
 		             hasattr(i.owner, "is_local_player") and
 		             i.owner.is_local_player]
 
@@ -160,7 +165,7 @@ class StatusIconManager(object):
 			self.tooltip_icon.hide_tooltip()
 		else:
 			# get tooltip text, set, position and show
-			self.tooltip_instance = instances[0] # pick any (usually ordered by fife)
+			self.tooltip_instance = instances[0]  # pick any (usually ordered by fife)
 
 			icons_of_instance = self.icons[self.tooltip_instance]
 			icon = max(icons_of_instance, key=StatusIcon.get_sorting_key())
@@ -168,5 +173,5 @@ class StatusIconManager(object):
 			self.tooltip_icon.helptext = icon.helptext
 
 			pos = NavigationTool.last_event_pos
-			self.tooltip_icon.position_tooltip( (pos.x, pos.y) )
+			self.tooltip_icon.position_tooltip((pos.x, pos.y))
 			self.tooltip_icon.show_tooltip()

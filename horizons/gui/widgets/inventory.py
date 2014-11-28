@@ -23,7 +23,9 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon, Label, VBox
 from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage
+from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage, \
+	PositiveTotalNumSlotsStorage
+
 
 class Inventory(Container):
 	"""The inventory widget displays information about the goods in
@@ -36,8 +38,8 @@ class Inventory(Container):
 	XML use: <Inventory />, can take all parameters of a Container.
 	"""
 	ATTRIBUTES = Container.ATTRIBUTES + [BoolAttr('uncached'),
-	                                     BoolAttr('display_legend'),
-	                                     IntAttr("items_per_line")]
+		BoolAttr('display_legend'),
+		IntAttr("items_per_line")]
 	# uncached: required when resource icons should appear multiple times at any given moment
 	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
 	# display_legend: whether to display a string explanation about slot limits
@@ -51,14 +53,15 @@ class Inventory(Container):
 		self._inited = False
 		self.uncached = uncached
 		self.display_legend = display_legend
-		self.items_per_line = items_per_line or 1 # negative values are fine, 0 is not
+		self.items_per_line = items_per_line or 1  # negative values are fine, 0 is not
 
 	def init_needed(self, inventory):
 		return not self._inited or self._inventory is not inventory
 
 	def init(self, db, inventory, ordinal=None):
 		"""This inits the logic of the inventory. @see __init__().
-		@param ordinal: {res: (min, max)} Display ordinal scale with these boundaries instead of numbers for a particular resource. Currently implemented via ImageFillStatusButton.
+		@param ordinal: {res: (min, max)} Display ordinal scale with these boundaries instead
+		of numbers for a particular resource. Currently implemented via ImageFillStatusButton.
 		"""
 		# check if we must init everything anew
 		if self.init_needed(inventory):
@@ -76,7 +79,7 @@ class Inventory(Container):
 				self.__icon.position = (130, 53)
 				self.legend.position = (150, 53)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				self.__icon.position = ( 0, 248)
+				self.__icon.position = (0, 248)
 				self.legend.position = (20, 248)
 
 		self.update()
@@ -98,7 +101,7 @@ class Inventory(Container):
 		"""Draws the inventory."""
 		# add res to res order in case there are new ones
 		# (never remove old ones for consistent positioning)
-		new_res = sorted( resid for resid in self._inventory.iterslots() if resid not in self._res_order )
+		new_res = sorted(resid for resid in self._inventory.iterslots() if resid not in self._res_order)
 
 		if isinstance(self._inventory, PositiveTotalNumSlotsStorage):
 			# limited number of slots. We have to switch unused slots with newly added ones on overflow
@@ -111,7 +114,7 @@ class Inventory(Container):
 					# insert new res here
 					self._res_order[i] = new_res.pop(0)
 					if not new_res:
-						break # all done
+						break  # all done
 
 		# add remaining slots for slotstorage or just add it without consideration for other storage kinds
 		self._res_order += new_res
@@ -126,25 +129,25 @@ class Inventory(Container):
 			if self.ordinal:
 				lower, upper = self.ordinal.get(resid, (0, 100))
 				filled = (100 * (amount - lower)) // (upper - lower)
-				amount = "" # do not display exact information for resource deposits
+				amount = ""  # do not display exact information for resource deposits
 			elif isinstance(self._inventory, TotalStorage):
 				filled = 0
 			else:
 				filled = (100 * amount) // self._inventory.get_limit(resid)
 
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
-			                                            filled=filled, uncached=self.uncached)
-			button.button.name = "inventory_entry_%s" % index # required for gui tests
+				filled=filled, uncached=self.uncached)
+			button.button.name = "inventory_entry_%s" % index  # required for gui tests
 			current_hbox.addChild(button)
 
 			if index % self.items_per_line == self.items_per_line - 1:
 				vbox.addChild(current_hbox)
 				current_hbox = HBox(padding=0)
 			index += 1
-		if index <= self.items_per_line: # Hide/Remove second line
+		if index <= self.items_per_line:  # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
 			if len(icons) > self.items_per_line:
-				self.parent.removeChildren(icons[self.items_per_line-1:])
+				self.parent.removeChildren(icons[self.items_per_line - 1:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		height = ImageFillStatusButton.CELL_SIZE[1] * len(self._res_order) // self.items_per_line

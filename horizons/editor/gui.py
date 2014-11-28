@@ -72,8 +72,10 @@ class IngameGui(LivingObject):
 		self.mainhud.mapEvents({
 			'zoomIn': self.session.view.zoom_in,
 			'zoomOut': self.session.view.zoom_out,
-			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right,
+				self.minimap.rotate_right),
+			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left,
+				self.minimap.rotate_left),
 			'gameMenuButton': self.toggle_pause,
 		})
 
@@ -147,7 +149,7 @@ class IngameGui(LivingObject):
 		window = SelectSavegameDialog('editor-save', self.windows)
 		savegamename = self.windows.open(window)
 		if savegamename is None:
-			return False # user aborted dialog
+			return False  # user aborted dialog
 		success = self.session.save(savegamename)
 		if success:
 				self.message_widget.add('SAVED_GAME')

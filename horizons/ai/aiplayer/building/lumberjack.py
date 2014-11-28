@@ -28,6 +28,7 @@ from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
 
+
 class AbstractLumberjack(AbstractBuilding):
 	@property
 	def evaluator_class(self):
@@ -37,6 +38,7 @@ class AbstractLumberjack(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.LUMBERJACK] = cls
 
+
 class LumberjackEvaluator(BuildingEvaluator):
 	__template_outline = None
 	__radius_offsets = None
@@ -44,9 +46,11 @@ class LumberjackEvaluator(BuildingEvaluator):
 	@classmethod
 	def __init_outline(cls):
 		"""Save a template outline that surrounds a lumberjack."""
-		position = Rect.init_from_topleft_and_size_tuples((0, 0), Entities.buildings[BUILDINGS.LUMBERJACK].size)
+		position = Rect.init_from_topleft_and_size_tuples((0, 0),
+			Entities.buildings[BUILDINGS.LUMBERJACK].size)
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		coords_list = set(position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius, True))
+		coords_list = set(position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK]
+			.radius, True))
 
 		result = set()
 		for x, y in coords_list:
@@ -55,7 +59,8 @@ class LumberjackEvaluator(BuildingEvaluator):
 				if coords not in coords_list:
 					result.add(coords)
 		cls.__template_outline = sorted(list(result))
-		cls.__radius_offsets = sorted(position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius))
+		cls.__radius_offsets = sorted(position.get_radius_coordinates(Entities
+			.buildings[BUILDINGS.LUMBERJACK].radius))
 
 	@classmethod
 	def _get_outline(cls, x, y):
@@ -81,9 +86,10 @@ class LumberjackEvaluator(BuildingEvaluator):
 					area_value += personality.new_tree
 				elif purpose == BUILDING_PURPOSE.TREE:
 					area_value += personality.shared_tree
-		area_value = min(area_value, personality.max_forest_value) # the lumberjack doesn't actually need all the trees
+		area_value = min(area_value, personality.max_forest_value)
+		# the lumberjack doesn't actually need all the trees
 		if area_value < personality.min_forest_value:
-			return None # the area is too bad for a lumberjack
+			return None  # the area is too bad for a lumberjack
 
 		personality = area_builder.owner.personality_manager.get('LumberjackEvaluator')
 		alignment = cls._get_alignment_from_outline(area_builder, cls._get_outline(x, y))
@@ -96,7 +102,8 @@ class LumberjackEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.LUMBERJACK
 
 	def execute(self):
-		# TODO Add a check that figures out if all trees that should be planted are in range of the settlement.
+		# TODO Add a check that figures out if all trees that should be planted are in
+		# range of the settlement.
 		# If not, return range missing result
 		(result, building) = super(LumberjackEvaluator, self).execute()
 		if result != BUILD_RESULT.OK:
@@ -106,11 +113,16 @@ class LumberjackEvaluator(BuildingEvaluator):
 		coastline = production_builder.land_manager.coastline
 		island_ground_map = production_builder.island.ground_map
 		forest_coords_list = []
-		for coords in building.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
-			if coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in coastline:
-				if island_ground_map[coords].object is not None and island_ground_map[coords].object.id == BUILDINGS.TREE:
+		for coords in building.position.get_radius_coordinates(Entities
+				.buildings[BUILDINGS.LUMBERJACK].radius):
+			if (coords in production_builder.plan
+					and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE
+					and coords not in coastline):
+				if (island_ground_map[coords].object is not None
+						and island_ground_map[coords].object.id == BUILDINGS.TREE):
 					forest_coords_list.append(coords)
-				elif island_ground_map[coords].settlement is not None and island_ground_map[coords].settlement.owner is self.area_builder.owner:
+				elif (island_ground_map[coords].settlement is not None
+						and island_ground_map[coords].settlement.owner is self.area_builder.owner):
 					builder = BasicBuilder(BUILDINGS.TREE, coords, 0)
 					if not builder.have_resources(production_builder.land_manager):
 						break

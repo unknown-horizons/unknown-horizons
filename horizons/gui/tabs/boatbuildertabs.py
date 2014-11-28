@@ -35,6 +35,7 @@ from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
 from horizons.world.production.producer import Producer
 
+
 class _BoatbuilderOverviewTab(OverviewTab):
 	"""Private class all classes here inherit."""
 	@property
@@ -52,7 +53,8 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 	def show(self):
 		super(BoatbuilderTab, self).show()
-		Scheduler().add_new_object(Callback(self.refresh), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
+		Scheduler().add_new_object(Callback(self.refresh),
+			self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
 		super(BoatbuilderTab, self).hide()
@@ -86,7 +88,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			if (Fife.getVersion() >= (0, 4, 0)):
 				container_inactive.parent.hideChild(container_inactive)
 			else:
-				if not container_inactive in container_inactive.parent.hidden_children:
+				if container_inactive not in container_inactive.parent.hidden_children:
 					container_inactive.parent.hideChild(container_inactive)
 
 			# Update boatbuilder queue
@@ -97,14 +99,14 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 				image = self.__class__.SHIP_THUMBNAIL.format(type_id=unit_type)
 				helptext = _("{ship} (place in queue: {place})").format(
 				        ship=self.instance.session.db.get_unit_type_name(unit_type),
-				        place=place_in_queue+1)
+				        place=place_in_queue + 1)
 				# people don't count properly, always starting at 1..
-				icon_name = "queue_elem_"+str(place_in_queue)
+				icon_name = "queue_elem_" + str(place_in_queue)
 				icon = Icon(name=icon_name, image=image, helptext=helptext)
 				rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
 				                            self.instance.session)
 				icon.capture(rm_from_queue_cb, event_name="mouseClicked")
-				queue_container.addChild( icon )
+				queue_container.addChild(icon)
 
 			# Set built ship info
 			production_line = self.producer._get_production(production_lines[0])
@@ -121,12 +123,12 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
 			to_active = not self.producer.is_active()
 
-			if not to_active: # swap what we want to show and hide
+			if not to_active:  # swap what we want to show and hide
 				button_active, button_inactive = button_inactive, button_active
 			if (Fife.getVersion() >= (0, 4, 0)):
 				button_active.parent.hideChild(button_active)
 			else:
-				if not button_active in button_active.parent.hidden_children:
+				if button_active not in button_active.parent.hidden_children:
 					button_active.parent.hideChild(button_active)
 			button_inactive.parent.showChild(button_inactive)
 
@@ -156,13 +158,13 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			cancel_cb = Callback(CancelCurrentProduction(self.producer).execute, self.instance.session)
 			cancel_button.capture(cancel_cb, event_name="mouseClicked")
 
-		else: # display sth when nothing is produced
+		else:  # display sth when nothing is produced
 			container_inactive.parent.showChild(container_inactive)
 			for w in (container_active, progress_container, cancel_container):
 				if (Fife.getVersion() >= (0, 4, 0)):
 					w.parent.hideChild(w)
 				else:
-					if not w in w.parent.hidden_children:
+					if w not in w.parent.hidden_children:
 						w.parent.hideChild(w)
 
 		self.widget.adaptLayout()
@@ -171,10 +173,11 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 # * decide: show [start view] = nothing but info text, look up the xml, or [building status view]
 # * get: currently built ship: name / image / upgrades
 # * resources still needed:
-#	(a) which ones? three most important (image, name)
-#	(b) how many? sort by amount, display (amount, overall amount needed of them, image)
+# (a) which ones? three most important (image, name)
+# (b) how many? sort by amount, display (amount, overall amount needed of them, image)
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
+
 
 class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 	widget = 'boatbuilder_showcase.xml'
@@ -190,25 +193,25 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 
 	def build_ship_info(self, index, ship, prodline):
 		size = (260, 90)
-		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
+		widget = Container(name='showcase_%s' % index, position=(0, 20 + index * 90),
 		                   min_size=size, max_size=size, size=size)
-		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
+		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s' % index)
 		widget.addChild(bg_icon)
 
 		image = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
 		helptext = self.instance.session.db.get_ship_tooltip(ship)
-		unit_icon = Icon(image=image, name='icon_%s'%index, position=(2, 2),
+		unit_icon = Icon(image=image, name='icon_%s' % index, position=(2, 2),
 		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
 		# if not buildable, this returns string with reason why to be displayed as helptext
-		#ship_unbuildable = self.is_ship_unbuildable(ship)
+		# ship_unbuildable = self.is_ship_unbuildable(ship)
 		ship_unbuildable = False
 		if not ship_unbuildable:
-			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this ship!'))
+			button = OkButton(position=(60, 50), name='ok_%s' % index, helptext=_('Build this ship!'))
 			button.capture(Callback(self.start_production, prodline))
 		else:
-			button = CancelButton(position=(60, 50), name='ok_%s'%index,
+			button = CancelButton(position=(60, 50), name='ok_%s' % index,
 			helptext=ship_unbuildable)
 
 		widget.addChild(button)
@@ -218,8 +221,8 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		# consumed == negative, reverse to sort in *ascending* order:
 		costs = sorted(production.consumed_res.iteritems(), key=itemgetter(1))
 		for i, (res, amount) in enumerate(costs):
-			xoffset = 103 + (i  % 2) * 55
-			yoffset =  20 + (i // 2) * 20
+			xoffset = 103 + (i % 2) * 55
+			yoffset = 20 + (i // 2) * 20
 			icon = create_resource_icon(res, self.instance.session.db)
 			icon.max_size = icon.min_size = icon.size = (16, 16)
 			icon.position = (xoffset, yoffset)
@@ -244,10 +247,10 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 	helptext = _lazy("Fisher boats")
 
 	ships = [
-		#(UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
-		#(UNITS.CUTTER, PRODUCTIONLINES.xxx),
-		#(UNITS.HERRING_FISHER, PRODUCTIONLINES.xxx),
-		#(UNITS.WHALER, PRODUCTIONLINES.xxx),
+		# (UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
+		# (UNITS.CUTTER, PRODUCTIONLINES.xxx),
+		# (UNITS.HERRING_FISHER, PRODUCTIONLINES.xxx),
+		# (UNITS.WHALER, PRODUCTIONLINES.xxx),
 	]
 
 
@@ -257,9 +260,9 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 	ships = [
 		(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
-		#(UNITS.COURIER_BOAT, PRODUCTIONLINES.xxx),
-		#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.xxx),
-		#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.xxx),
+		# (UNITS.COURIER_BOAT, PRODUCTIONLINES.xxx),
+		# (UNITS.SMALL_MERCHANT, PRODUCTIONLINES.xxx),
+		# (UNITS.BIG_MERCHANT, PRODUCTIONLINES.xxx),
 	]
 
 
@@ -268,10 +271,10 @@ class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 	helptext = _lazy("War boats")
 
 	ships = [
-		#(UNITS.SMALL_GUNBOAT, PRODUCTIONLINES.SMALL_GUNBOAT),
-		#(UNITS.NAVAL_CUTTER, PRODUCTIONLINES.NAVAL_CUTTER),
-		#(UNITS.BOMBADIERE, PRODUCTIONLINES.BOMBADIERE),
-		#(UNITS.SLOOP_O_WAR, PRODUCTIONLINES.SLOOP_O_WAR),
+		# (UNITS.SMALL_GUNBOAT, PRODUCTIONLINES.SMALL_GUNBOAT),
+		# (UNITS.NAVAL_CUTTER, PRODUCTIONLINES.NAVAL_CUTTER),
+		# (UNITS.BOMBADIERE, PRODUCTIONLINES.BOMBADIERE),
+		# (UNITS.SLOOP_O_WAR, PRODUCTIONLINES.SLOOP_O_WAR),
 	]
 
 
@@ -280,18 +283,19 @@ class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 	helptext = _lazy("War ships")
 
 	ships = [
-		#(UNITS.GALLEY, PRODUCTIONLINES.GALLEY),
-		#(UNITS.BIG_GUNBOAT, PRODUCTIONLINES.BIG_GUNBOAT),
-		#(UNITS.CORVETTE, PRODUCTIONLINES.CORVETTE),
+		# (UNITS.GALLEY, PRODUCTIONLINES.GALLEY),
+		# (UNITS.BIG_GUNBOAT, PRODUCTIONLINES.BIG_GUNBOAT),
+		# (UNITS.CORVETTE, PRODUCTIONLINES.CORVETTE),
 		(UNITS.FRIGATE, PRODUCTIONLINES.FRIGATE),
 	]
 
-
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)
-#	need to provide information about the selected ship (which of the 4 buttons clicked)
-# * check: mark those ship's buttons as unbuildable (close graphics) which do not meet the specified requirements.
-#	the tooltips contain this info as well.
+# need to provide information about the selected ship (which of the 4 buttons clicked)
+# * check: mark those ship's buttons as unbuildable (close graphics)
+# which do not meet the specified requirements.
+# the tooltips contain this info as well.
+
 
 class BoatbuilderConfirmTab(_BoatbuilderOverviewTab):
 	widget = 'boatbuilder_confirm.xml'
@@ -299,7 +303,7 @@ class BoatbuilderConfirmTab(_BoatbuilderOverviewTab):
 
 	def init_widget(self):
 		super(BoatbuilderConfirmTab, self).init_widget()
-		events = { 'create_unit': self.start_production }
+		events = {'create_unit': self.start_production}
 		self.widget.mapEvents(events)
 
 	def start_production(self):
@@ -308,9 +312,11 @@ class BoatbuilderConfirmTab(_BoatbuilderOverviewTab):
 # this "tab" additionally requests functions for:
 # * get: currently ordered ship: name / image / type (fisher/trade/war)
 # * => get: currently ordered ship: description text / costs / available upgrades
-#						(fisher/trade/war, builder level)
+# (fisher/trade/war, builder level)
 # * if resource icons not hardcoded: resource icons, sort them by amount
-# UPGRADES: * checkboxes * check for boat builder level (+ research) * add. costs (get, add, display)
-# * def start_production(self):  <<< actually start to produce the selected ship unit with the selected upgrades
-#	(use inventory or go collect resources, switch focus to overview tab).
-#	IMPORTANT: lock this button until unit is actually produced (no queue!)
+# UPGRADES: * checkboxes * check for boat builder level (+ research) * add. costs
+# (get, add, display)
+# * def start_production(self):  <<< actually start to produce the
+# selected ship unit with the selected upgrades
+# (use inventory or go collect resources, switch focus to overview tab).
+# IMPORTANT: lock this button until unit is actually produced (no queue!)

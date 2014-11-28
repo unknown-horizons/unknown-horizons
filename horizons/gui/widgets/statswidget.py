@@ -29,14 +29,15 @@ from horizons.util.python.callback import Callback
 class StatsWidget(object):
 	"""A widget that creates a large table with statistics."""
 
-	widget_file_name = None # name of the widget's XML file
+	widget_file_name = None  # name of the widget's XML file
 
 	def __init__(self, session, center_widget=False):
 		super(StatsWidget, self).__init__()
 		self.session = session
 		self.center_widget = center_widget
 		self._initialized = False
-		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
+		self._hiding_widget = False
+		# True if and only if the widget is currently in the process of being hidden
 
 	def refresh(self):
 		self._clear_entries()
@@ -48,7 +49,7 @@ class StatsWidget(object):
 	def show(self):
 		run_in = PLAYER.STATS_UPDATE_FREQUENCY / GAME_SPEED.TICKS_PER_SECOND
 		ExtScheduler().add_new_object(Callback(self._refresh_tick),
-		                              self, run_in=run_in, loops=-1)
+			self, run_in=run_in, loops=-1)
 		if not self._initialized:
 			self._initialized = True
 			self._init_gui()
@@ -58,7 +59,7 @@ class StatsWidget(object):
 	def hide(self):
 		ExtScheduler().rem_all_classinst_calls(self)
 		if not self._initialized:
-			return # can happen if the logbook calls hide on all statswidgets
+			return  # can happen if the logbook calls hide on all statswidgets
 		if not self._hiding_widget:
 			self._hiding_widget = True
 			self._gui.hide()

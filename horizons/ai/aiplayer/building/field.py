@@ -27,11 +27,14 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
 
+
 class AbstractField(AbstractBuilding):
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
 		total_cost = 0
-		extra_fields_needed = int(math.ceil(max(0.0, production_needed / self.get_expected_production_level(resource_id))))
-		field_spots_available = len(settlement_manager.production_builder.unused_fields[self.get_purpose(resource_id)])
+		extra_fields_needed = int(math.ceil(max(0.0, production_needed /
+			self.get_expected_production_level(resource_id))))
+		field_spots_available = len(settlement_manager.production_builder
+			.unused_fields[self.get_purpose(resource_id)])
 		if field_spots_available >= extra_fields_needed:
 			return extra_fields_needed * self.get_expected_building_cost()
 		else:
@@ -42,33 +45,35 @@ class AbstractField(AbstractBuilding):
 		if fields_per_farm == 0:
 			return 1e100
 
-		# TODO: fix the resource gathering code to request resources in larger chunks so this hack doesn't have to be used
+		# TODO: fix the resource gathering code to request resources in larger chunks
+		# so this hack doesn't have to be used
 		# use fractional farm costs to give farms a chance to picked
 		extra_farms_needed = float(extra_fields_needed) / fields_per_farm
-		#extra_farms_needed = int(math.ceil(float(extra_fields_needed) / fields_per_farm))
+		# extra_farms_needed = int(math.ceil(float(extra_fields_needed) / fields_per_farm))
 
 		total_cost += self.get_expected_building_cost() * extra_fields_needed
-		total_cost += AbstractBuilding.buildings[BUILDINGS.FARM].get_expected_building_cost() * extra_farms_needed
+		total_cost += AbstractBuilding.buildings[BUILDINGS.FARM].get_expected_building_cost() \
+			* extra_farms_needed
 		return total_cost
 
 	@classmethod
 	def get_purpose(cls, resource_id):
 		return {
-			RES.POTATOES:       BUILDING_PURPOSE.POTATO_FIELD,
-			RES.LAMB_WOOL:      BUILDING_PURPOSE.PASTURE,
-			RES.RAW_SUGAR:      BUILDING_PURPOSE.SUGARCANE_FIELD,
+			RES.POTATOES: BUILDING_PURPOSE.POTATO_FIELD,
+			RES.LAMB_WOOL: BUILDING_PURPOSE.PASTURE,
+			RES.RAW_SUGAR: BUILDING_PURPOSE.SUGARCANE_FIELD,
 			RES.TOBACCO_PLANTS: BUILDING_PURPOSE.TOBACCO_FIELD,
-			RES.HERBS:          BUILDING_PURPOSE.HERBARY,
+			RES.HERBS: BUILDING_PURPOSE.HERBARY,
 		}.get(resource_id)
 
 	@classmethod
 	def get_higher_level_resource(cls, resource_id):
 		return {
-			RES.POTATOES:       RES.FOOD,
-			RES.LAMB_WOOL:      RES.WOOL,
-			RES.RAW_SUGAR:      RES.SUGAR,
+			RES.POTATOES: RES.FOOD,
+			RES.LAMB_WOOL: RES.WOOL,
+			RES.RAW_SUGAR: RES.SUGAR,
 			RES.TOBACCO_PLANTS: RES.TOBACCO_LEAVES,
-			RES.HERBS:          RES.MEDICAL_HERBS,
+			RES.HERBS: RES.MEDICAL_HERBS,
 		}.get(resource_id)
 
 	def build(self, settlement_manager, resource_id):
