@@ -64,7 +64,8 @@ class Pirate(GenericAI):
 		# random sea tile if costal tile not found. Empty map?
 		if not self.home_point:
 			self.home_point = self.session.world.get_random_possible_ship_position()
-		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y, self.home_radius)
+		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y,
+			self.home_radius)
 		self.__init()
 
 		# create a ship and place it randomly (temporary hack)
@@ -108,7 +109,8 @@ class Pirate(GenericAI):
 
 	def create_ship_at_random_position(self):
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)
+		ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x,
+			point.y)(issuer=self.session.world.player)
 		self.ships[ship] = self.shipStates.idle
 		self.combat_manager.add_new_unit(ship)
 
@@ -128,11 +130,12 @@ class Pirate(GenericAI):
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
-		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback_long, calls)
+		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls),
+			current_callback_long, calls)
 		remaining_ticks_long = max(calls.values()[0], 1)
 
-		db("INSERT INTO ai_pirate(rowid, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?)", self.worldid,
-			remaining_ticks, remaining_ticks_long)
+		db("INSERT INTO ai_pirate(rowid, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?)",
+			self.worldid, remaining_ticks, remaining_ticks_long)
 
 		for ship in self.ships:
 			ship_state = self.ships[ship]
@@ -158,13 +161,16 @@ class Pirate(GenericAI):
 		remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, remaining_ticks, -1, self.tick_interval)
 
-		remaining_ticks_long, = db("SELECT remaining_ticks_long FROM ai_pirate WHERE rowid = ?", worldid)[0]
-		Scheduler().add_new_object(Callback(self.tick_long), self, remaining_ticks_long, -1, self.tick_interval)
+		remaining_ticks_long, = db("SELECT remaining_ticks_long FROM ai_pirate WHERE rowid = ?",
+			worldid)[0]
+		Scheduler().add_new_object(Callback(self.tick_long), self, remaining_ticks_long, -1,
+			self.tick_interval)
 
 		home = db("SELECT x, y FROM pirate_home_point")[0]
 		self.home_point = Point(home[0], home[1])
 
-		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y, self.home_radius)
+		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y,
+			self.home_radius)
 
 	def finish_loading(self, db):
 		# load ships one by one from db (ship instances themselves are loaded already, but
