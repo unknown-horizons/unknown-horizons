@@ -28,8 +28,10 @@ from horizons.util.python import decorators
 from horizons.util.shapes import Point, Rect
 from horizons.world.building.production import Mine
 
+
 class BasicBuilder(object):
-	"""An object of this class represents a non-checked plan to build a building at a specific place."""
+	"""An object of this class represents a non-checked plan to build a building
+	at a specific place."""
 
 	rotations = [45, 135, 225, 315]
 	# don't change the orientation of the following building types
@@ -71,7 +73,7 @@ class BasicBuilder(object):
 		"""Build the building."""
 		building_class = Entities.buildings[self.building_id]
 		building_level = building_class.get_initial_level(land_manager.owner)
-		action_set_id = building_class.get_random_action_set(level = building_level)
+		action_set_id = building_class.get_random_action_set(level=building_level)
 
 		build_position = Entities.buildings[self.building_id].check_build(land_manager.session,
 		    Point(*self.coords), rotation=self.rotations[self.orientation],
@@ -91,14 +93,17 @@ class BasicBuilder(object):
 		# the copy has to be made because Build.check_resources modifies it
 		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}
 		inventories = [land_manager.settlement, ship]
-		return Build.check_resources(extra_resources, Entities.buildings[self.building_id].costs, land_manager.owner, inventories)[0]
+		return Build.check_resources(extra_resources, Entities.buildings[self.building_id].costs,
+			land_manager.owner, inventories)[0]
 
 	def __cmp__(self, other):
-		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
+		"""Objects of this class should never be compared to ensure deterministic ordering
+		and good performance."""
 		raise NotImplementedError()
 
 	def __str__(self):
-		return 'BasicBuilder of building %d at %s, orientation %d' % (self.building_id, self.coords, self.orientation)
+		return 'BasicBuilder of building %d at %s, orientation %d' % (self.building_id, self.coords,
+			self.orientation)
 
 	__cache = {}
 

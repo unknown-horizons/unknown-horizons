@@ -25,8 +25,10 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.util.python import decorators
 from horizons.entities import Entities
 
+
 class BuildingEvaluator(object):
-	"""Class representing a set of instructions for building a building complex along with its value."""
+	"""Class representing a set of instructions for building
+	a building complex along with its value."""
 
 	log = logging.getLogger("ai.aiplayer.buildingevaluator")
 	need_collector_connection = True
@@ -51,7 +53,8 @@ class BuildingEvaluator(object):
 		Return the weights sum of the component distances with the specified weights.
 
 		@param main_component: value of the main component
-		@param other_components: list[(weight, value), ...] where weight is a float and value is either None or a float
+		@param other_components: list[(weight, value), ...]
+		where weight is a float and value is either None or a float
 		@param none_value: the penalty for None in place of a component value
 		"""
 
@@ -80,7 +83,8 @@ class BuildingEvaluator(object):
 		for building in area_builder.settlement.buildings_by_id.get(building_id, []):
 			distance = builder.position.distance(building.position)
 			if distance <= Entities.buildings[builder.building_id].radius:
-				shortest_distance = distance if shortest_distance is None or distance < shortest_distance else shortest_distance
+				shortest_distance = distance if shortest_distance is None \
+					or distance < shortest_distance else shortest_distance
 		return shortest_distance
 
 	@classmethod
@@ -97,7 +101,8 @@ class BuildingEvaluator(object):
 		for building in production_builder.collector_buildings:
 			distance = builder.position.distance(building.position)
 			if not must_be_in_range or distance <= Entities.buildings[builder.building_id].radius:
-				shortest_distance = distance if shortest_distance is None or distance < shortest_distance else shortest_distance
+				shortest_distance = distance if shortest_distance is None \
+					or distance < shortest_distance else shortest_distance
 		return shortest_distance
 
 	@classmethod
@@ -141,7 +146,8 @@ class BuildingEvaluator(object):
 		return cls._get_alignment_from_outline(area_builder, cls._get_outline_coords_list(coords_list))
 
 	def __cmp__(self, other):
-		"""Objects of this class should never be compared to ensure deterministic ordering and good performance."""
+		"""Objects of this class should never be compared to ensure
+		deterministic ordering and good performance."""
 		raise NotImplementedError()
 
 	@property
@@ -150,20 +156,24 @@ class BuildingEvaluator(object):
 		raise NotImplementedError('This function has to be overridden.')
 
 	def have_resources(self):
-		"""Return None if the builder is unreachable by road, False if there are not enough resources, and True otherwise."""
-		# check without road first because the road is unlikely to be the problem and pathfinding isn't cheap
+		"""Return None if the builder is unreachable by road,
+		False if there are not enough resources, and True otherwise."""
+		# check without road first because the road is unlikely to be
+		# the problem and pathfinding isn't cheap
 		if not self.builder.have_resources(self.area_builder.land_manager):
 			return False
 		if not self.need_collector_connection:
-			return True # skip the road cost test for buildings that don't need one
+			return True  # skip the road cost test for buildings that don't need one
 		road_cost = self.area_builder.get_road_connection_cost(self.builder)
 		if road_cost is None:
 			return None
 		return self.builder.have_resources(self.area_builder.land_manager, extra_resources=road_cost)
 
 	def _register_builder_position(self):
-		self.area_builder.register_change_list(list(self.builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
-		self.area_builder.register_change_list([self.builder.position.origin.to_tuple()], self.purpose, None)
+		self.area_builder.register_change_list(list(self.builder.position.tuple_iter()),
+			BUILDING_PURPOSE.RESERVED, None)
+		self.area_builder.register_change_list([self.builder.position.origin.to_tuple()],
+			self.purpose, None)
 
 	def execute(self):
 		"""Build the specified building complex. Return (BUILD_RESULT constant, building object)."""
