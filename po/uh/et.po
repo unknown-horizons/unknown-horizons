@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-11-18 09:30+0200\n"
-"Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
+"PO-Revision-Date: 2014-12-03 20:14+0200\n"
+"Last-Translator: Mihkel Rämmel <RM87@hot.ee>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr ""
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Täname, et mängisid Unknown Horizons!"
+msgstr "Täname, et mängisid Unknown Horizons'i!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -118,6 +118,7 @@ msgid "Select your ship and approach the coast via right-click."
 msgstr "Vali oma laev ja lähene rannikule vajutades parempoolset nuppu."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
+#, fuzzy
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr "Lõpetades, vajuta suurt nuppu laeva ülevaate paneelil."
 
@@ -154,7 +155,7 @@ msgstr "Aeglusta mängu ({key})"
 #, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Keera kaarti vastpäeva ({key})"
+msgstr "Keera kaarti vastupäeva ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, python-brace-format
@@ -240,6 +241,7 @@ msgid "Running costs"
 msgstr "Jooksvad kulud"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
+#, fuzzy
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
@@ -350,7 +352,7 @@ msgstr "Uuenduste lubamine:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr "Heaolu mapidamise kohta"
+msgstr "Heaolu majpidamise kohta"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
@@ -360,7 +362,7 @@ msgstr "kurb"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
 msgid "satisfied"
-msgstr "täidetud"
+msgstr "rahulolev"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:61
@@ -373,15 +375,15 @@ msgstr "Antud heaoluga majapidamiste arv"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr "Elanike maja kohta"
+msgstr "Elanikke maja kohta"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr "Elanikude arv maja kohta"
+msgstr "Elanike arv maja kohta"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "Majad antud elanikke arvuga"
+msgstr "Antud elanikke arvuga majad"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -522,6 +524,7 @@ msgstr "Vali ressursid:"
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
+#, fuzzy
 msgid "Collector utilization"
 msgstr "Kollektori kasutamine"
 
@@ -577,7 +580,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr "Salvesta antud ressurssi konfiguratsiooni vaikimisi kõigile asulatele."
+msgstr "Salvesta antud ressurssi konfiguratsioon vaikimisi kõigile asulatele."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
@@ -670,7 +673,7 @@ msgstr "Oota:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr "Tee kasutamine:"
+msgstr "Tee kasutus:"
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
@@ -716,6 +719,7 @@ msgstr "Maa"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
+"Kasutatava maa väärtus st. Maa kogus mida saab kasutada ehitiste rajamiseks"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
