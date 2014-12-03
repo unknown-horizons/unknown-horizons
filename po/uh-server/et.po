@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2014-11-18 10:08+0200\n"
-"Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
+"PO-Revision-Date: 2014-12-03 19:59+0200\n"
+"Last-Translator: Mihkel Rämmel <RM87@hot.ee>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh-"
 "server/et/>\n"
 "Language: et\n"
@@ -40,7 +40,7 @@ msgstr "Oled ületanud üksiku paketi suuruse."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Tundmatu või vigane pakerr. Palun kontrolli oma mäng versiooni"
+msgstr "Tundmatu või vigane pakett. Palun kontrolli oma mängu versiooni"
 
 #: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
