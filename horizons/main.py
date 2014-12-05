@@ -144,31 +144,35 @@ def start(_command_line_arguments):
 			import Tkinter
 			from PIL import Image, ImageTk
 			import time
-			window = Tkinter.Tk()
-			# iconify window instead of closing
-			window.protocol("WM_DELETE_WINDOW", window.iconify)
-			window.wm_withdraw()
-			window.attributes("-topmost", 1)
-			window.title("Unknown Horizons")
-			window.maxsize(300, 150)
+			try:
+				window = Tkinter.Tk()
+				# iconify window instead of closing
+				window.protocol("WM_DELETE_WINDOW", window.iconify)
+				window.wm_withdraw()
+				window.attributes("-topmost", 1)
+				window.title("Unknown Horizons")
+				window.maxsize(300, 150)
 
-			logo = Image.open(horizons.constants.PATHS.UH_LOGO_FILE)
-			res_logo = logo.resize((116, 99), Image.ANTIALIAS)
-			res_logo_image = ImageTk.PhotoImage(res_logo)
-			logo_label = Tkinter.Label(window, image=res_logo_image)
-			logo_label.pack(side="left")
-			label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
-			label.pack(side="right")
+				logo = Image.open(horizons.constants.PATHS.UH_LOGO_FILE)
+				res_logo = logo.resize((116, 99), Image.ANTIALIAS)
+				res_logo_image = ImageTk.PhotoImage(res_logo)
+				logo_label = Tkinter.Label(window, image=res_logo_image)
+				logo_label.pack(side="left")
+				label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
+				label.pack(side="right")
 
-			# wait a second to give the thread time to check if a generation is necessary at all
-			time.sleep(1.0)
-			window.deiconify()
-			while atlas_loading_thread.is_alive():
-				if not window.state() == "iconic":
-					window.attributes("-topmost", 0)
-					window.update()
-				time.sleep(0.1)
-			window.destroy()
+				# wait a second to give the thread time to check if a generation is necessary at all
+				time.sleep(1.0)
+				window.deiconify()
+				while atlas_loading_thread.is_alive():
+					if not window.state() == "iconic":
+						window.attributes("-topmost", 0)
+						window.update()
+					time.sleep(0.1)
+				window.destroy()
+			except Tkinter.TclError:
+				# catch #2298
+				atlas_loading_thread.join()
 		except ImportError:
 			# tkinter or PIL may be missing
 			atlas_loading_thread.join()
