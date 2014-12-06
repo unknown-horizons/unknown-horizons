@@ -52,7 +52,10 @@ class Trader(GenericAI):
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Trader, self).__init__(session, id, name, color, **kwargs)
 		self.__init()
-		self.create_ship()
+		map_size = self.session.world.map_dimensions.width
+		while map_size > 0:
+			self.create_ship()
+			map_size -= TRADER.TILES_PER_TRADER
 
 	def create_ship(self):
 		"""Create a ship and place it randomly"""
@@ -69,8 +72,8 @@ class Trader(GenericAI):
 		NewSettlement.subscribe(self._on_new_settlement)
 
 	def _on_new_settlement(self, msg):
-		# make sure there's a trader ship for 2 settlements
-		if len(self.session.world.settlements) > self.get_ship_count() * 2:
+		# make sure there's a trader ship for SETTLEMENTS_PER_SHIP settlements
+		if len(self.session.world.settlements) > self.get_ship_count() * TRADER.SETTLEMENTS_PER_SHIP:
 			self.create_ship()
 
 	def save(self, db):
