@@ -278,7 +278,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 
 def get_random_possible_ground_unit_position(world):
-	"""Returns a position in water, that is not at the border of the world"""
+	"""Returns a random position upon an island"""
 	offset = 2
 	while True:
 		x = world.session.random.randint(world.min_x + offset, world.max_x - offset)
@@ -292,7 +292,7 @@ def get_random_possible_ground_unit_position(world):
 				return Point(x, y)
 
 def get_random_possible_ship_position(world):
-	"""Returns a position in water, that is not at the border of the world"""
+	"""Returns a random position in water, that is not at the border of the world"""
 	offset = 2
 	while True:
 		x = world.session.random.randint(world.min_x + offset, world.max_x - offset)
@@ -317,7 +317,7 @@ def get_random_possible_ship_position(world):
 	return Point(x, y)
 
 def get_random_possible_coastal_ship_position(world):
-	"""Returns a position in water, that is not at the border of the world
+	"""Returns a random position in water, that is not at the border of the world
 	but on the coast of an island"""
 	offset = 2
 	# Don't look for a point if there are no islands for some reason
