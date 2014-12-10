@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-11-15 05:42+0200\n"
-"Last-Translator: Stefan S <nxxs@inbox.com>\n"
-"Language-Team: German <http://hosted.weblate.org/projects/uh/uh/de/>\n"
+"PO-Revision-Date: 2014-12-10 17:11+0200\n"
+"Last-Translator: Kilian Köppchen <Kilian.Koeppchen@student.htw-berlin.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -60,8 +60,8 @@ msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"Linux-Nutzer sollten die Pakete \"pyyaml\" oder \"python-yaml\" per "
-"Paketmanager installieren."
+"Linux Nutzer sollten es unter dem Namen \"pyyaml\" oder \"python-yaml\" im "
+"Paketmanager finden."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
@@ -214,7 +214,7 @@ msgstr "Neuen Namen eingeben:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
 msgid "Apply the new name"
-msgstr "Neuen Namen verwenden"
+msgstr "Neuen Namen anwenden"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
@@ -288,7 +288,7 @@ msgstr "(Material ist verloren)"
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "Baufortschritt verwerfen"
+msgstr "Bauprozess abbrechen"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
@@ -566,7 +566,9 @@ msgstr "Produktion pausieren"
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
 msgid "Start production"
-msgstr "Produktion fortsetzen"
+msgstr ""
+"Produktion fortsetzen\n"
+"Produktion starten"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
