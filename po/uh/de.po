@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-12-10 17:11+0200\n"
+"PO-Revision-Date: 2014-12-10 17:12+0200\n"
 "Last-Translator: Kilian Köppchen <Kilian.Koeppchen@student.htw-berlin.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
@@ -566,9 +566,7 @@ msgstr "Produktion pausieren"
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
 msgid "Start production"
-msgstr ""
-"Produktion fortsetzen\n"
-"Produktion starten"
+msgstr "Produktion starten"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
