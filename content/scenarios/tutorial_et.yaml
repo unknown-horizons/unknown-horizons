@@ -655,4 +655,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 23 translated messages, 168 untranslated messages.
+  translation_status: 29 translated messages, 162 untranslated messages.

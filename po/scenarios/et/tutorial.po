@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-11-23 13:40+0200\n"
+"PO-Revision-Date: 2014-12-12 22:45+0200\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/tutorial/et/>"
 "\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.1-dev\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -55,6 +55,8 @@ msgid ""
 "If you are interested in longer descriptions, your log will hopefully "
 "provide all the help you need."
 msgstr ""
+"Kui oled huvitatud pikematest kirjeldustest, siis võiks piisav abiline olla "
+"su päevik."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -62,6 +64,8 @@ msgid ""
 "icon in the top-right corner (below the mini-map, with a sealed document and "
 "a feather)."
 msgstr ""
+"Päeviku saad uuesti avada ikoonist \"Kapteni Päevik\" paremal-ülemises "
+"nurgas (minikaardi all, pitseeritud dokument ja sulg)."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -69,6 +73,9 @@ msgid ""
 "To see your first task, click on the button \"Read next entries\" in the "
 "navigation panel! It looks like this:"
 msgstr ""
+"\n"
+"Oma esimese ülesande nägemiseks klõpsa navigeerimispaneelil nupul \"Loe "
+"järgmised kanded\"! See näeb väläja järgmine:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -77,16 +84,22 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to "
 "improve the tutorial!"
 msgstr ""
+"\n"
+"Kõik soovitused nii parema sõnastuse, täiendavat selgitamist vajavate "
+"teemade ja ka vigaste tingimuste kohta on oodatud; palun anna meile teada ja "
+"me proovime õpetust täiendada!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
+"\n"
+"Tiimiga ühenduse võtmiseks külasta saiti www.unknown-horizons.org!"
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the actual game."
-msgstr ""
+msgstr "Ja nüüd alustagem tegelikut mänguga."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: SETTLE ON AN ISLAND"
