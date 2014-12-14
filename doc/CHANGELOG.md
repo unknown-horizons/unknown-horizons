@@ -5,7 +5,7 @@ CHANGELOG Unknown Horizons
 
 2014-??-??: Milestone 2014.1
 ----------------------------
-changelog date: SEP 1
+changelog date: DEC 14
 
 ### Gameplay and Balancing
 
@@ -21,7 +21,8 @@ Modifications and changes
  - 9411220 Add running costs for warehouse, storage tent, lookout
  - e80ea85 Remove bullets from the attack sequence
  - 56ef8f5 A Pastures starting image depends on its rotation (Rao)
-
+ - #1259 Create inital amount trader ship in ratio to world size
+ 
 Fixed bugs and problems
  - #1824 Salt ponds could be created at fresh water lakes
 
@@ -32,10 +33,11 @@ New files and features
  - #630 Clinker pavilion (tier Settlers)
  - #631 Clinker lighthouse (tier Settlers)
  - #1450 Alvearies for producing honeycombs
- - #1448 Vineyard
+ - #1448 Winery
  - ddf6129 Restore warehouse ambient sound
  - #2219 Modified "load from ship", "unload from ship" icons
-
+ - #1788 Spice field
+ 
 Brush-ups and modification
  - #2168 Fix "known incorrect sRGB profile" libpng warnings
  - ee375da Pirate ship flag graphics now consistent with wind direction
@@ -52,7 +54,9 @@ Additions and new features
  - beabc8b Add new key actions for zooming: PgUp / PgDn
  - e886e11 Icons for lumberjack area tree building
  - #2245 Add weaponsmith buildmenu icon
-
+ - #2133 Add simple GUI for atlas generation
+ - #2138 Add disaster message icons
+ 
 Repositioning and modifications
  - e6d5239 Rotate mainmenu background images instead of randomizing
  - 3fd3c85 "Iron Mine" is now simply called "Mine"
@@ -62,6 +66,7 @@ Repositioning and modifications
  - #2225 Clear default text for player name and game name (RSouthee)
  - 54a1b59 No longer display Renderer setting in our gui (xml-only now)
  - 7d178e7 multiplayer lobby automatically refresh for new games every 5s
+ - efa24b0 Fix resource amount padding in production overview tab
 
 Fixed bugs and usability problems
  - #2176 Doctor and Herbary not available in "per type" build menu
@@ -72,6 +77,7 @@ Fixed bugs and usability problems
  - #1966 Transparent nature buildings around destroy tool (Zappaman)
  - #2267 Restore layout of production line tabs with multiple resources (dulrich)
  - #1790 Scenario messages being displayed only after Logbook is hidden
+ - #2210 Wrong status icons at startup (dulrich)
 
 
 ### Codebase
@@ -88,6 +94,8 @@ Modified structures
  - #2181 More readable filenames for auto- and quicksaves
  - 3847de7 Make LAYERS.WATER static (zoom performance)
  - 2811241 Extract atlas loading into thread
+ - 42abaf1 & #2130 Use unicode to log errors
+ - 37e5a73 Allow generic unit command for network usage
 
 Fixed crashes and inconsistencies
  - #2177 Several fixes for OS X app container
@@ -97,20 +105,24 @@ Fixed crashes and inconsistencies
  - #2231 Prevent a crash when losing network connection
  - #2244 Some Fife OpenGL settings were not applied
  - #2287 Crash when clicking on ship in savegame
- - #2289 MUltiple PEP8 changes (MarkusHackspacher)
+ - #2289 Multiple PEP8 changes (MarkusHackspacher)
+ - #2113 Fix trade route handling in multiplayer games
 
+ 
 ### User-Contributed Content
 
 Translations
  - New: Traditional Chinese
+ - New: Afrikaans
 
 Campaigns, scenarios and maps
- - 
+ - Update tutorial text (paul59)
 
 New team members with this release, Annotations
  - Push access was granted to:
+     janexx
  - We accepted pull requests or patches by:
-     phaidon, RSouthee, Zappaman, pinkfloyda, myrdd, Rao, MarkusHackspacher
+     phaidon, RSouthee, Zappaman, pinkfloyda, myrdd, Rao, MarkusHackspacher, paul59
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
 
