@@ -5,7 +5,7 @@ CHANGELOG Unknown Horizons
 
 2014-??-??: Milestone 2014.1
 ----------------------------
-changelog date: FEB 19
+changelog date: SEP 1
 
 ### Gameplay and Balancing
 
@@ -13,11 +13,14 @@ New features
  - #2207 Only expand settlement range for certain buildings
  - #2201 Color overlays (if running with FIFE 0.3.6 or newer)
  - #2129 Armory producing weapons, and barracks recruiting soldiers
+ - #2286 Button to fill lumberjack range with trees
 
 Modifications and changes
  - #2187 Change random tree distribution file to clump trees together
  - #2217 Fisher ships now removed together with fisherman building
  - 9411220 Add running costs for warehouse, storage tent, lookout
+ - e80ea85 Remove bullets from the attack sequence
+ - 56ef8f5 A Pastures starting image depends on its rotation (Rao)
 
 Fixed bugs and problems
  - #1824 Salt ponds could be created at fresh water lakes
@@ -36,6 +39,7 @@ New files and features
 Brush-ups and modification
  - #2168 Fix "known incorrect sRGB profile" libpng warnings
  - ee375da Pirate ship flag graphics now consistent with wind direction
+ - fcb6dea Update graphics tier bakery (tier Citizen)
 
 ### User Interface
 
@@ -45,6 +49,9 @@ Additions and new features
  - #2185 Ship pre-selected and in hotkeygroup 1 when starting new game
  - #1387 Status icon for inhabitants without main square connection
  - #2153 Confirmation for pressing Del with unit/building selected (Zappaman)
+ - beabc8b Add new key actions for zooming: PgUp / PgDn
+ - e886e11 Icons for lumberjack area tree building
+ - #2245 Add weaponsmith buildmenu icon
 
 Repositioning and modifications
  - e6d5239 Rotate mainmenu background images instead of randomizing
@@ -54,6 +61,7 @@ Repositioning and modifications
  - #2200 Larger editor brush sizes
  - #2225 Clear default text for player name and game name (RSouthee)
  - 54a1b59 No longer display Renderer setting in our gui (xml-only now)
+ - 7d178e7 multiplayer lobby automatically refresh for new games every 5s
 
 Fixed bugs and usability problems
  - #2176 Doctor and Herbary not available in "per type" build menu
@@ -62,6 +70,8 @@ Fixed bugs and usability problems
  - d064f37 Only show "warehouse not tearable" message for own warehouses
  - #2136 No more color confusion between SP and MP menu (pinkfloyda)
  - #1966 Transparent nature buildings around destroy tool (Zappaman)
+ - #2267 Restore layout of production line tabs with multiple resources (dulrich)
+ - #1790 Scenario messages being displayed only after Logbook is hidden
 
 
 ### Codebase
@@ -69,13 +79,15 @@ Fixed bugs and usability problems
 New functionalities
  - #2173 Manpage generation with custom optparse formatter
  - #2229 Add the ability to set a default build menu style (Zappaman)
-
+ - 5038c59 Cache XML read from the harddrive
+ 
 Modified structures
  - #2175 Tabwidget code refactoring
  - #2174 Save/load helpers for game tests and gui tests
  - #2184 Introduce content/packages/ for files related to packaging
  - #2181 More readable filenames for auto- and quicksaves
  - 3847de7 Make LAYERS.WATER static (zoom performance)
+ - 2811241 Extract atlas loading into thread
 
 Fixed crashes and inconsistencies
  - #2177 Several fixes for OS X app container
@@ -84,6 +96,8 @@ Fixed crashes and inconsistencies
  - #2221 time.strftime crash on loading savegame with non-utf8 locale
  - #2231 Prevent a crash when losing network connection
  - #2244 Some Fife OpenGL settings were not applied
+ - #2287 Crash when clicking on ship in savegame
+ - #2289 MUltiple PEP8 changes (MarkusHackspacher)
 
 ### User-Contributed Content
 
@@ -96,7 +110,7 @@ Campaigns, scenarios and maps
 New team members with this release, Annotations
  - Push access was granted to:
  - We accepted pull requests or patches by:
-     phaidon, RSouthee, Zappaman, pinkfloyda, myrdd
+     phaidon, RSouthee, Zappaman, pinkfloyda, myrdd, Rao, MarkusHackspacher
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
 

@@ -101,6 +101,8 @@
 * pinkfloyda (Tooltip refactoring)
 * myrdd (BuySellTab fix)
 * dulrich (Correct status-icon loading)
+* Rao (Pasture image sequence)
+* MarkusHackspacher (PEP8)
 
 
 ## Translators
@@ -116,6 +118,7 @@
 #### Catalan
 * Àngel Mompó Llovet
 * Xavier Muntada Samà
+* josep constanti
 
 #### Catalan (Valencia)
 * Àngel Mompó Llovet
@@ -352,7 +355,7 @@
 #### Swedish
 * Chris Browne
 * Fringillus
-* Karar Al-remahy
+* Karar Al-Remahy
 * knutas
 * Nagrim
 * pilen
