@@ -78,8 +78,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a hunter and a fisher. Connect them to the warehouse.]
-  - [Headline, 'NEW TASK: FOOD SUPPLY']
+  - [Message, Ehita jahimees ja kalur. Ühenda nad laohoonega.]
+  - [Headline, 'UUS ÜLESANNE: TOIDUGA VARUSTAMINE']
   - [Image, content/gui/images/background/hr.png]
   - You will need to have some food-producing companies, too, because people in general (and especially sailors) are very hungry.
   - Available companies in the first tier are the Hunter and Fisher.
@@ -655,4 +655,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 29 translated messages, 162 untranslated messages.
+  translation_status: 51 translated messages, 140 untranslated messages.
