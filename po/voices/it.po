@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2014-12-19 16:04+0200\n"
+"PO-Revision-Date: 2014-12-19 16:05+0200\n"
 "Last-Translator: federico <fede81fede@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/voices/it/>\n"
 "Language: it\n"
@@ -36,7 +36,7 @@ msgstr "Questa regione appartiene ora ai nostri colori."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr "Questo pezzo di terra ora è nostro."
+msgstr "Questa terra ora è nostra."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
