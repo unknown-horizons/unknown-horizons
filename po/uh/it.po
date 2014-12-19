@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-08-16 14:32+0200\n"
-"Last-Translator: pac low <lowpac@gmail.com>\n"
+"PO-Revision-Date: 2014-12-19 15:34+0200\n"
+"Last-Translator: federico <fede81fede@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -1669,7 +1669,7 @@ msgstr "Premere 'T' per rendere gli alberi trasparenti."
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Misto"
 
 #. translators: these are descriptions of the current task while loading a
 #. game
@@ -1837,7 +1837,6 @@ msgid "Ready"
 msgstr "Pronto"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#, fuzzy
 #| msgid "Not Ready"
 msgid "Not ready"
 msgstr "Non Pronto"
@@ -2501,7 +2500,6 @@ msgstr "Recluta unità adatte per il combattimento a terra."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
 msgid "Blender"
 msgstr "Frullatore"
 
@@ -3522,10 +3520,9 @@ msgid "stone tops"
 msgstr "ripiani in pietra"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "fave di cacao"
+msgstr "fave di caffe"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
