@@ -102,14 +102,14 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &MAINSQUARE
   - [Message, Costruisci una piazza principale. Scegli un'area senza troppi edifici commerciali.]
-  - [Headline, 'NUOVO OBIETTIVO: Piazza Principale']
+  - [Headline, 'NUOVO OBIETTIVO: PIAZZA PRINCIPALE']
   - [Image, content/gui/images/background/hr.png]
   - Gli abitanti hanno bisogno di una piazza principale da cui possano approvvigionarsi di beni.
   - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - Tutti i beni raccolti sono disponibili nella piazza del mercato, così i cittadini non saranno costretti ad andare dal pescatore o al magazzino.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - Evita di mettere le costruzioni principali vicino alla falegnameria poichè rimuoveranno gli alberi che il boscaiolo utilizza per produrre beni.
+  - Evita di mettere le costruzioni principali troppo vicino alla falegnameria perche rimuoveranno gli alberi che servono il boscaiolo.
   - Le industrie lavorano anche senza essere collegate alle tende, quindi non serve costruire un percorso tra la piazza principale e (per esempio) la capanna del falegname.
   - ''
   - [BoldLabel, 'Task: Build a main square.']
@@ -163,7 +163,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &SIGNALFIRE
   - [Message, Costruisci un segnale di fuoco sulla costa vicino alla tua filiale.]
-  - [Headline, 'OBIETTIVO: IL SEGNALE DI FUOCO']
+  - [Headline, 'NUOVO OBIETTIVO: IL SEGNALE DI FUOCO']
   - [Image, content/gui/images/background/hr.png]
   - Riesci a vedere le naci che passano vicino la tua isola di tanto in tanto?Quella nave appartiene alla Free Trader (liberi mercanti), uno dei primi coloni in questo arcipelago.
   - Il commerciante fornirà il vostro insediamento con beni di prima necessità che non si può ancora produrre.
@@ -288,7 +288,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &FIELDS
   - [Message, Costruisci almeno un pascolo ed aggiungi campi di patate se lo desideri.]
-  - [Headline, 'OBIETTIVO: I CAMPI']
+  - [Headline, 'NUOVO OBIETTIVO: I CAMPI']
   - [Image, content/gui/images/background/hr.png]
   - La fattoria non produce niente senza campi.
   - Attualmente puoi scegliere tra pascoli, campi di patate o zucchero.
@@ -309,7 +309,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &STORAGE
   - [Message, Costruisci una tenda magazzino (livello I) dove può essere utile.]
-  - [Headline, 'OBIETTIVO: I MAGAZZINI']
+  - [Headline, 'NUOVO OBIETTIVO: I MAGAZZINI']
   - [Image, content/gui/images/background/hr.png]
   - Hai guardato il tuo boscaiolo di recente?
   - Dal momento che il magazzino non ha spazio illimitato per le merci, i raccoglitori interomperanno il loro lavoro se il magazzino è pieno.

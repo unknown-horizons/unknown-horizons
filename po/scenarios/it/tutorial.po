@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-12-19 15:24+0200\n"
-"Last-Translator: federico <fede81fede@gmail.com>\n"
+"PO-Revision-Date: 2014-12-19 15:27+0200\n"
+"Last-Translator: pac low <lowpac@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/tutorial/it/>"
 "\n"
 "Language: it\n"
@@ -362,7 +362,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "NUOVO OBIETTIVO: Piazza Principale"
+msgstr "NUOVO OBIETTIVO: PIAZZA PRINCIPALE"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -393,8 +393,8 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
-"Evita di mettere le costruzioni principali vicino alla falegnameria poichè "
-"rimuoveranno gli alberi che il boscaiolo utilizza per produrre beni."
+"Evita di mettere le costruzioni principali troppo vicino alla falegnameria "
+"perche rimuoveranno gli alberi che servono il boscaiolo."
 
 # Ambiguous, didnt another unit earlier say the opposite?
 #. This is the text body of a logbook page.
@@ -583,7 +583,7 @@ msgstr "Costruisci un segnale di fuoco sulla costa vicino alla tua filiale."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "OBIETTIVO: IL SEGNALE DI FUOCO"
+msgstr "NUOVO OBIETTIVO: IL SEGNALE DI FUOCO"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1080,7 +1080,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD FIELDS"
-msgstr "OBIETTIVO: I CAMPI"
+msgstr "NUOVO OBIETTIVO: I CAMPI"
 
 #. This is the text body of a logbook page.
 msgid "The farm itself is not going to produce anything without some fields."
@@ -1175,7 +1175,7 @@ msgstr "Costruisci una tenda magazzino (livello I) dove può essere utile."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD STORAGE"
-msgstr "OBIETTIVO: I MAGAZZINI"
+msgstr "NUOVO OBIETTIVO: I MAGAZZINI"
 
 #. This is the text body of a logbook page.
 msgid "Did you watch your lumberjack recently?"
