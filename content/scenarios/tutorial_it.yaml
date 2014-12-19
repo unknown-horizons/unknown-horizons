@@ -187,7 +187,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
-  - [Message, Raggiungi una scorta per l'isola di almeno 30 attrezzi. Nota che potrebbe volerci non poco tempo.]
+  - [Message, Raggiungi una scorta  di almeno 30 attrezzi per isola. Nota che ci vorrà non poco tempo.]
   - [Headline, 'OBIETTIVO: IL COMMERCIO']
   - [Image, content/gui/images/background/hr.png]
   - 'Eccellente! Il commerciante ora si fermerà passera dal vostro magazzino di tanto in tanto.
@@ -217,7 +217,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &PAVILION
   - [Message, Costruisci un padiglione con connessioni alle tende.]
-  - [Headline, 'OBIETTIVO: IL PADIGLIONE']
+  - [Headline, 'NUOVO OBIETTIVO: IL PADIGLIONE']
   - [Image, content/gui/images/background/hr.png]
   - Questi utensili saranno sufficienti per il momento. Ben fatto!
   - È ora di fornire alloggi, una piazza principale e cibo per i tuoi abitanti.
@@ -242,7 +242,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &NEXTTIER
   - [Message, Imposta il livello delle tasse su Basso (a sinistra) ed attendi l'aggiornamento dei marinai.]
-  - [Headline, 'OBIETTIVO: LIVELLO SUCCESSIVO']
+  - [Headline, 'NUOVO OBIETTIVO:AVANZA ALL LIVELLO SUCCESSIVO']
   - [Image, content/gui/images/background/hr.png]
   - Tutte le richieste ora sono soddisfatte se i tuoi abitanti possono visitare regolarmente la piazza principale, il padiglione e se il vostro approvvigionamento alimentare è adeguato.
   - Se i marinai sono abbastanza felici, vogliono avanzare al prossimo livello chiamato Pionieri.

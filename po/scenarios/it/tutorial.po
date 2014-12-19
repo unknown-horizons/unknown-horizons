@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-12-19 15:22+0200\n"
-"Last-Translator: federico <fede81fede@gmail.com>\n"
+"PO-Revision-Date: 2014-12-19 15:23+0200\n"
+"Last-Translator: pac low <lowpac@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/tutorial/it/>"
 "\n"
 "Language: it\n"
@@ -681,8 +681,8 @@ msgid ""
 "Reach an island stock of at least 30 tools. Note that this might take a "
 "while."
 msgstr ""
-"Raggiungi una scorta per l'isola di almeno 30 attrezzi. Nota che potrebbe "
-"volerci non poco tempo."
+"Raggiungi una scorta  di almeno 30 attrezzi per isola. Nota che ci vorrà non "
+"poco tempo."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
@@ -790,7 +790,7 @@ msgstr "Costruisci un padiglione con connessioni alle tende."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "OBIETTIVO: IL PADIGLIONE"
+msgstr "NUOVO OBIETTIVO: IL PADIGLIONE"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
@@ -880,7 +880,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: NEXT TIER"
-msgstr "OBIETTIVO: LIVELLO SUCCESSIVO"
+msgstr "NUOVO OBIETTIVO:AVANZA ALL LIVELLO SUCCESSIVO"
 
 #. This is the text body of a logbook page.
 msgid ""
