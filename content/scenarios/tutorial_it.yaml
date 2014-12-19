@@ -242,7 +242,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &NEXTTIER
   - [Message, Imposta il livello delle tasse su Basso (a sinistra) ed attendi l'aggiornamento dei marinai.]
-  - [Headline, 'NUOVO OBIETTIVO:AVANZA ALL LIVELLO SUCCESSIVO']
+  - [Headline, 'NUOVO OBIETTIVO:AVANZA ALL'' LIVELLO SUCCESSIVO']
   - [Image, content/gui/images/background/hr.png]
   - Tutte le richieste ora sono soddisfatte se i tuoi abitanti possono visitare regolarmente la piazza principale, il padiglione e se il vostro approvvigionamento alimentare è adeguato.
   - Se i marinai sono abbastanza felici, vogliono avanzare al prossimo livello chiamato Pionieri.

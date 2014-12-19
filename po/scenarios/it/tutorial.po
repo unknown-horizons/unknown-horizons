@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-12-19 15:23+0200\n"
-"Last-Translator: pac low <lowpac@gmail.com>\n"
+"PO-Revision-Date: 2014-12-19 15:24+0200\n"
+"Last-Translator: federico <fede81fede@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/tutorial/it/>"
 "\n"
 "Language: it\n"
@@ -880,7 +880,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: NEXT TIER"
-msgstr "NUOVO OBIETTIVO:AVANZA ALL LIVELLO SUCCESSIVO"
+msgstr "NUOVO OBIETTIVO:AVANZA ALL' LIVELLO SUCCESSIVO"
 
 #. This is the text body of a logbook page.
 msgid ""
