@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-12-19 15:14+0200\n"
+"PO-Revision-Date: 2014-12-19 15:22+0200\n"
 "Last-Translator: federico <fede81fede@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/tutorial/it/>"
 "\n"
@@ -176,7 +176,7 @@ msgid ""
 "sailors can afford to hang their tents over."
 msgstr ""
 "Questo è fondamentale perchè, in questa fase, le tavole sono gli unici pali "
-"ai quali i tuoi marinai possono appendere le tende"
+"ai quali i tuoi marinai possono appendere le tende."
 
 #. This is the text body of a logbook page.
 msgid "The fisherman needs some boards to build his vessel as well."
@@ -210,7 +210,8 @@ msgid ""
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
 "\n"
-"Come le civiltà progredisce, guadagni più e sempre più complessi edifici."
+"Quando la tua civiltà progredisce, otterrai più e sempre più complessi "
+"edifici."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -252,7 +253,7 @@ msgstr ""
 msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
 "OBIETTIVO: Costruisci una capanna del boscaiolo in una zona boschiva e "
-"connettila ad una strada."
+"cllegala ad una strada."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -361,7 +362,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "OBIETTIVO: PIAZZA PRINCIPALE"
+msgstr "NUOVO OBIETTIVO: Piazza Principale"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -623,7 +624,7 @@ msgid ""
 "For this purpose, build a signal fire at the coast near your warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
-"A questo scopo, costruisci un fuoco segnale sulla costa vicino al vostro "
+"A questo scopo, costruisci un fuoco segnaletico sulla costa vicino al vostro "
 "magazzino. Mostra alle navi la strada per il vostro insediamento."
 
 #. This is the text body of a logbook page.

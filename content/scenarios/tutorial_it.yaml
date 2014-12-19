@@ -102,7 +102,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &MAINSQUARE
   - [Message, Costruisci una piazza principale. Scegli un'area senza troppi edifici commerciali.]
-  - [Headline, 'OBIETTIVO: PIAZZA PRINCIPALE']
+  - [Headline, 'NUOVO OBIETTIVO: Piazza Principale']
   - [Image, content/gui/images/background/hr.png]
   - Gli abitanti hanno bisogno di una piazza principale da cui possano approvvigionarsi di beni.
   - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
@@ -171,7 +171,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Di solito le navi mercantili semplicemente navigane in giro per il mondo in cerca di occasioni, ma è possibile accelerare un po ' le cose.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - A questo scopo, costruisci un fuoco segnale sulla costa vicino al vostro magazzino. Mostra alle navi la strada per il vostro insediamento.
+  - A questo scopo, costruisci un fuoco segnaletico sulla costa vicino al vostro magazzino. Mostra alle navi la strada per il vostro insediamento.
   - Il fuoco segnaletico deve coprire l'area dove passano le navi per attirarle.
   - [Pagebreak]
   - '
