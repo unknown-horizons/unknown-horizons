@@ -22,7 +22,7 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20th November 1740]
+  - [Headline, 1740. november 20.]
   - [Image, content/gui/images/background/hr.png]
   - After four days the storm finally fades and we can take a rest. But we only have little food left and our ship is in a bad shape. The navigational instruments and sea charts are lost.
   - We have to come ashore soon. One of my jacks saw some birds hunting for fish, so land can't be far. Fortunately we always have some tools and boards onboard, so we can build some basic shelter.
@@ -149,4 +149,4 @@ metadata:
   locale: hu
   mapfile: development.sqlite
   original: content/scenarios/The_Unknown_en.yaml
-  translation_status: 1 translated message, 21 untranslated messages.
+  translation_status: 2 translated messages, 20 untranslated messages.
