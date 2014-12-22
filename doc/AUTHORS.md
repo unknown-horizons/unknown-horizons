@@ -72,13 +72,15 @@
 * rudi_s (Several improvements)
 * Yeya (Random maps)
 
-- - - - -
-
-#### 2011
+#### 2011.1
 * abeaumont (Two renitent segfaults)
 * Grickit (Random maps)
 * hoffi (GUI improvements)
 * mayanks43 (Campaign system)
+
+- - - - -
+
+#### 2011.2
 * mtfk (Voice internationalization)
 * riidom (Tent and hut variations)
 * sids.aquarius (Several improvements)
@@ -100,7 +102,10 @@
 * Zappaman (Several improvements)
 * pinkfloyda (Tooltip refactoring)
 * myrdd (BuySellTab fix)
-* dulrich (Correct status-icon loading)
+* dulrich (Several improvements)
+* Rao (Pasture image sequence)
+* MarkusHackspacher (PEP8)
+* paul59 (Tutorial)
 
 
 ## Translators
@@ -115,6 +120,7 @@
 
 #### Catalan
 * Àngel Mompó Llovet
+* josep constanti
 * Xavier Muntada Samà
 
 #### Catalan (Valencia)
@@ -136,6 +142,7 @@
 * aundal
 * Jacob Hellwing (hellwing)
 * Jan Arni Jacobsen
+* Jens
 
 #### German
 * djot
@@ -172,11 +179,13 @@
 * William Cabrera (willicab)
 
 #### Estonian
+* Kristjan Räts
 * Mihkel Rämmel (RM87)
 * Üllar Lainväe (ussikene)
 
 #### Finnish
 * Aleksi Kinnunen (alluk)
+* Cosmo Console
 * heze0
 * Olli Paasonen
 * Pihpe
@@ -203,6 +212,7 @@
 
 #### Galician
 * Adrián Chaves Fernández (Gallaecio)
+* Xosé Calvo
 
 #### Croatian
 * Adis Zukanovic
@@ -220,6 +230,7 @@
 * Lorant Perger
 * matyi
 * probert
+* Szabolcs Tóth
 * Szontágh Ferenc (ghostarthour)
 
 #### Indonesian
@@ -294,6 +305,7 @@
 * Pic
 * Piotr B
 * Piotr Gredka
+* Piotr Strebski
 * Premislaus
 * Robert Matusewicz (matekm)
 * Robert Mitwicki (mtfk)
@@ -303,9 +315,11 @@
 * bdias
 * Guilherme Nogueira
 * João Sena Cardoso
+* Joel Santinho
 * Luis Coehlo
 * Nelson Marques (nmarques)
 * Nuno Alves (MadMonk)
+* Michal Čihař
 * Pedro Henrique
 * Sérgio Lopes (Knitter)
 * Zoé Junior
@@ -352,7 +366,7 @@
 #### Swedish
 * Chris Browne
 * Fringillus
-* Karar Al-remahy
+* Karar Al-Remahy
 * knutas
 * Nagrim
 * pilen
@@ -379,6 +393,8 @@
 * Yes Stone
 * Ezjerry Liao
 
+#### Afrikaans
+* Alexandre Bezerra
 
 ## Packagers ##
 

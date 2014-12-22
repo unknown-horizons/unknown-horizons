@@ -28,6 +28,96 @@ components:
     utilization:
       FullUtilization
     productionlines:
+      30:
+        produces:
+        - [RES.HAPPINESS, 1]
+        changes_animation: false
+        level: [TIER.SAILORS, TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [RES.COMMUNITY, -1]
+      72:
+        produces:
+        - [RES.HAPPINESS, 5]
+        changes_animation: false
+        level: [TIER.SAILORS]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [RES.FAITH, -1]
+      21:
+        produces:
+        - [RES.HAPPINESS, 3]
+        changes_animation: false
+        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [RES.FAITH, -1]
+      71:
+        produces:
+        - [RES.HAPPINESS, 15]
+        changes_animation: false
+        level: [TIER.SAILORS]
+        enabled_by_default: false
+        time: 60
+        consumes:
+        - [RES.FOOD, -1]
+      19:
+        produces:
+        - [RES.HAPPINESS, 13]
+        changes_animation: false
+        level: [TIER.PIONEERS]
+        enabled_by_default: false
+        time: 60
+        consumes:
+        - [RES.FOOD, -1]
+      43:
+        produces:
+        - [RES.HAPPINESS, 12]
+        changes_animation: false
+        level: [TIER.SETTLERS, TIER.CITIZENS]
+        enabled_by_default: false
+        time: 75
+        consumes:
+        - [RES.FOOD, -1]
+      26:
+        produces:
+        - [RES.HAPPINESS, 3]
+        changes_animation: false
+        level: [TIER.PIONEERS]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [RES.EDUCATION, -1]
+      44:
+        produces:
+        - [RES.HAPPINESS, 5]
+        changes_animation: false
+        level: [TIER.SETTLERS, TIER.CITIZENS]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [RES.EDUCATION, -1]
+      20:
+        produces:
+        - [RES.HAPPINESS, 5]
+        changes_animation: false
+        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
+        enabled_by_default: false
+        time: 180
+        consumes:
+        - [RES.TEXTILE, -1]
+      41:
+        produces:
+        - [RES.HAPPINESS, 4]
+        changes_animation: false
+        level: [TIER.SETTLERS, TIER.CITIZENS]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [RES.GET_TOGETHER, -1]
       69:
         produces:
         - [RES.HAPPINESS, 4]
@@ -46,96 +136,6 @@ components:
         time: 180
         consumes:
         - [RES.TOBACCO_PRODUCTS, -1]
-      71:
-        produces:
-        - [RES.HAPPINESS, 15]
-        changes_animation: false
-        level: [TIER.SAILORS]
-        enabled_by_default: false
-        time: 60
-        consumes:
-        - [RES.FOOD, -1]
-      72:
-        produces:
-        - [RES.HAPPINESS, 5]
-        changes_animation: false
-        level: [TIER.SAILORS]
-        enabled_by_default: false
-        time: 90
-        consumes:
-        - [RES.FAITH, -1]
-      41:
-        produces:
-        - [RES.HAPPINESS, 4]
-        changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
-        enabled_by_default: false
-        time: 90
-        consumes:
-        - [RES.GET_TOGETHER, -1]
-      43:
-        produces:
-        - [RES.HAPPINESS, 12]
-        changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
-        enabled_by_default: false
-        time: 75
-        consumes:
-        - [RES.FOOD, -1]
-      44:
-        produces:
-        - [RES.HAPPINESS, 5]
-        changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
-        enabled_by_default: false
-        time: 90
-        consumes:
-        - [RES.EDUCATION, -1]
-      19:
-        produces:
-        - [RES.HAPPINESS, 13]
-        changes_animation: false
-        level: [TIER.PIONEERS]
-        enabled_by_default: false
-        time: 60
-        consumes:
-        - [RES.FOOD, -1]
-      20:
-        produces:
-        - [RES.HAPPINESS, 5]
-        changes_animation: false
-        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
-        enabled_by_default: false
-        time: 180
-        consumes:
-        - [RES.TEXTILE, -1]
-      21:
-        produces:
-        - [RES.HAPPINESS, 3]
-        changes_animation: false
-        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
-        enabled_by_default: false
-        time: 90
-        consumes:
-        - [RES.FAITH, -1]
-      26:
-        produces:
-        - [RES.HAPPINESS, 3]
-        changes_animation: false
-        level: [TIER.PIONEERS]
-        enabled_by_default: false
-        time: 90
-        consumes:
-        - [RES.EDUCATION, -1]
-      30:
-        produces:
-        - [RES.HAPPINESS, 1]
-        changes_animation: false
-        level: [TIER.SAILORS, TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
-        enabled_by_default: false
-        time: 90
-        consumes:
-        - [RES.COMMUNITY, -1]
     settler_upgrade_lines:
       TIER.PIONEERS:
         - [RES.BOARDS, -3]

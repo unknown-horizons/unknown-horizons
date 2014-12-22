@@ -451,6 +451,8 @@ class AI:
 
 
 class TRADER:  # check resource values: ./development/print_db_data.py res
+	TILES_PER_TRADER = 100  # create one ship per 100 tiles
+	SETTLEMENTS_PER_SHIP = 2  # the settlement : ship ratio
 	PRICE_MODIFIER_BUY = 1.0  # buy for x times the resource value
 	PRICE_MODIFIER_SELL = 1.0  # sell for x times the resource value
 	TRADING_DURATION = 4  # seconds that trader stays at warehouse to simulate (un)loading

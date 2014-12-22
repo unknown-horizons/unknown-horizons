@@ -133,43 +133,52 @@ def start(_command_line_arguments):
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
 	preload_lock = threading.Lock()
-	atlas_loading_thread = None
-	atlas_loading_thread = AtlasLoadingThread(preload_lock, command_line_arguments)
-	atlas_loading_thread.start()
 
-	# show info label about atlas generation
-	try:
-		import Tkinter
-		from PIL import Image, ImageTk
-		import time
-		window = Tkinter.Tk()
-		# iconify window instead of closing
-		window.protocol("WM_DELETE_WINDOW", window.iconify)
-		window.wm_withdraw()
-		window.attributes("-topmost", 1)
-		window.title("Unknown Horizons")
-		window.maxsize(300, 150)
+	if command_line_arguments.atlas_generation and not command_line_arguments.gui_test and \
+	   VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled') \
+	   and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled'):
 
-		logo = Image.open(horizons.constants.PATHS.UH_LOGO_FILE)
-		res_logo = logo.resize((116, 99), Image.ANTIALIAS)
-		res_logo_image = ImageTk.PhotoImage(res_logo)
-		logo_label = Tkinter.Label(window, image=res_logo_image)
-		logo_label.pack(side="left")
-		label = Tkinter.Label(window, padx=10, text="Generating atlases!")
-		label.pack(side="right")
+		atlas_loading_thread = None
+		atlas_loading_thread = AtlasLoadingThread(preload_lock)
+		atlas_loading_thread.start()
 
-		# wait a second to give the thread time to check if a generation is necessary at all
-		time.sleep(1.0)
-		window.deiconify()
-		while atlas_loading_thread.is_alive():
-			if not window.state() == "iconic":
-				window.attributes("-topmost", 0)
-				window.update()
-			time.sleep(0.1)
-		window.destroy()
-	except ImportError:
-		# tkinter or PIL may be missing
-		atlas_loading_thread.join()
+		# show info label about atlas generation
+		try:
+			import Tkinter
+			from PIL import Image, ImageTk
+			import time
+			try:
+				window = Tkinter.Tk()
+				# iconify window instead of closing
+				window.protocol("WM_DELETE_WINDOW", window.iconify)
+				window.wm_withdraw()
+				window.attributes("-topmost", 1)
+				window.title("Unknown Horizons")
+				window.maxsize(300, 150)
+
+				logo = Image.open(horizons.constants.PATHS.UH_LOGO_FILE)
+				res_logo = logo.resize((116, 99), Image.ANTIALIAS)
+				res_logo_image = ImageTk.PhotoImage(res_logo)
+				logo_label = Tkinter.Label(window, image=res_logo_image)
+				logo_label.pack(side="left")
+				label = Tkinter.Label(window, padx = 10, text = "Generating atlases!")
+				label.pack(side="right")
+
+				# wait a second to give the thread time to check if a generation is necessary at all
+				time.sleep(1.0)
+				window.deiconify()
+				while atlas_loading_thread.is_alive():
+					if not window.state() == "iconic":
+						window.attributes("-topmost", 0)
+						window.update()
+					time.sleep(0.1)
+				window.destroy()
+			except Tkinter.TclError:
+				# catch #2298
+				atlas_loading_thread.join()
+		except ImportError:
+			# tkinter or PIL may be missing
+			atlas_loading_thread.join()
 
 	# init game parts
 

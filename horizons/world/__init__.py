@@ -480,17 +480,17 @@ class World(BuildingOwner, WorldObject):
 					break
 
 	def get_random_possible_ground_unit_position(self):
-		"""Returns a position in water that is not at the border of the world.
+		"""Returns a random position upon an island.
 		@return: Point"""
 		return worldutils.get_random_possible_ground_unit_position(self)
 
 	def get_random_possible_ship_position(self):
-		"""Returns a position in water that is not at the border of the world.
+		"""Returns a random position in water that is not at the border of the world.
 		@return: Point"""
 		return worldutils.get_random_possible_ship_position(self)
 
 	def get_random_possible_coastal_ship_position(self):
-		"""Returns a position in water that is not at the border of the world
+		"""Returns a random position in water that is not at the border of the world
 		but on the coast of an island.
 		@return: Point"""
 		return worldutils.get_random_possible_coastal_ship_position(self)
