@@ -101,13 +101,7 @@ class Trader(GenericAI):
 				calls = Scheduler().get_classinst_calls(self, current_callback)
 				assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
 				remaining_ticks = max(calls.values()[0], 1)
-
-<<<<<<< HEAD
-			targeted_warehouse = None if ship.worldid not in self.office \
-				else self.office[ship.worldid].worldid
-=======
 			targeted_warehouse = None if ship.worldid not in self.warehouse else self.warehouse[ship.worldid].worldid
->>>>>>> cd1764d6879addee9a3cfa2efb3bc82667d19df8
 
 			# put them in the database
 			db("INSERT INTO trader_ships(rowid, state, remaining_ticks, targeted_warehouse) \
@@ -196,16 +190,9 @@ class Trader(GenericAI):
 			if warehouse is None:
 				self.warehouse[ship.worldid] = self.session.random.choice(warehouses)
 			else:
-<<<<<<< HEAD
-				self.office[ship.worldid] = warehouse
-			try:  # try to find a possible position near the warehouse
-				ship.move(Circle(self.office[ship.worldid].position.center, ship.radius),
-					Callback(self.reached_warehouse, ship))
-=======
 				self.warehouse[ship.worldid] = warehouse
 			try: # try to find a possible position near the warehouse
 				ship.move(Circle(self.warehouse[ship.worldid].position.center, ship.radius), Callback(self.reached_warehouse, ship))
->>>>>>> cd1764d6879addee9a3cfa2efb3bc82667d19df8
 				self.ships[ship] = self.shipStates.moving_to_warehouse
 			except MoveNotPossible:
 				self.send_ship_random(ship)
