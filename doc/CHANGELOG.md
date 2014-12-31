@@ -12,7 +12,7 @@ changelog date: DEC 14
 New features
  - #2207 Only expand settlement range for certain buildings
  - #2201 Color overlays (if running with FIFE 0.3.6 or newer)
- - #2129 Armory producing weapons, and barracks recruiting soldiers
+ - #2129 Armory producing weapons
  - #2286 Button to fill lumberjack range with trees
 
 Modifications and changes
