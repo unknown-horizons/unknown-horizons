@@ -66,7 +66,7 @@ tab3:
   - BUILDINGS.DOCTOR
   - _ Military
   - BUILDINGS.WEAPONSMITH
-  - BUILDINGS.BARRACKS
+#  - BUILDINGS.BARRACKS
 #  - # empty slot
 
 
