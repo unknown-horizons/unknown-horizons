@@ -3,9 +3,9 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2014-??-??: Milestone 2014.1
+2014-12-31: Milestone 2014.1
 ----------------------------
-changelog date: DEC 14
+changelog date: DEC 31
 
 ### Gameplay and Balancing
 
