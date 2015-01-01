@@ -99,10 +99,10 @@ def get_content_dir_parent_path():
 	options.append(os.path.join(os.getcwd()))
 	# Try often-used paths on Linux.
 	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
-		options.append(os.path.join(path, u'unknown-horizons'))
+		options.append(os.path.join(path, 'unknown-horizons'))
 
 	for path in options:
-		content_path = os.path.join(path, u'content')
+		content_path = os.path.join(path, 'content')
 		if os.path.exists(content_path):
 			return path
 	raise RuntimeError('Unable to find the path to the Unknown Horizons content dir.')
