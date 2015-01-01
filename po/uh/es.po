@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
 "PO-Revision-Date: 2014-12-21 00:22+0200\n"
-"Last-Translator: Luis García Sevillano <floss.dev@gmail.com>\n"
+"Last-Translator: Fede Muller <fedem8@live.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,7 @@ msgstr "Salir del editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "Seleccione el tamaño del pincel:"
+msgstr "Seleccione el tamaño de la brocha:"
 
 #: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"

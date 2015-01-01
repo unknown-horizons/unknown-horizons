@@ -170,6 +170,7 @@
 * Fede Muller
 * Gauekoizar
 * Ivan Gonzalez Martin
+* Luis García Sevillano
 * MicMic
 * Nikolai Woutlan
 * Rubén Viguera
@@ -232,6 +233,7 @@
 * probert
 * Szabolcs Tóth
 * Szontágh Ferenc (ghostarthour)
+* urbalazs
 
 #### Indonesian
 * alamswijaya
@@ -243,6 +245,7 @@
 * Davide Nanni
 * Fabio Pedretti
 * Fede Muller
+* federico
 * Gioele Cerri (joel)
 * Giorgio Saragnese (supermario)
 * Mathias Hofmann

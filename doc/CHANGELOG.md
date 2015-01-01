@@ -3,16 +3,16 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2014-??-??: Milestone 2014.1
+2014-12-31: Milestone 2014.1
 ----------------------------
-changelog date: DEC 14
+changelog date: DEC 31
 
 ### Gameplay and Balancing
 
 New features
  - #2207 Only expand settlement range for certain buildings
  - #2201 Color overlays (if running with FIFE 0.3.6 or newer)
- - #2129 Armory producing weapons, and barracks recruiting soldiers
+ - #2129 Armory producing weapons
  - #2286 Button to fill lumberjack range with trees
 
 Modifications and changes

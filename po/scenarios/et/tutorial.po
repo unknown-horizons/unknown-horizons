@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-12-15 21:41+0200\n"
+"PO-Revision-Date: 2014-12-22 10:28+0200\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/tutorial/et/>"
 "\n"
@@ -265,29 +265,37 @@ msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Sul on vaja ka mõningaid toitu tootvaid kompaniisid, sest inimesed on "
+"üldiselt (ja meremehed eriti) väga näljased."
 
 #. This is the text body of a logbook page.
 msgid "Available companies in the first tier are the Hunter and Fisher."
-msgstr ""
+msgstr "Esimesel tasemel on võimalik luua jahinduse ja kalurite kompaniisid."
 
 #. This is the text body of a logbook page.
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"Jahimehed jahivad metsast ulukeid ning seetõttu peab nende lähedal olema "
+"puid."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr ""
+msgstr "Tähelepanu, sa võid oma jahimehed paigutada saeveski metsa lähedale."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Võib juhtuda, et loomad ei paljune piisavalt kiiresti või oksavad lihtsalt "
+"hästi peituda."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Järelikult ei ole jahimehed just väga usaldusväärsed, kui sul on vaja "
+"pidevat varustatust."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -295,34 +303,40 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"Kalur vajab rannikuehitist nagu ladu ja lähedusse jäävat kalakasvatust."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Kalur ehitab väikese aerupaadi ja püüab kalu."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Kalastamine on väga pidev varustus allikas, kuid selle hinnaks on natuke "
+"pikem tootmise aeg toiduühiku kohta."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Väike koloonia nagu sul on võib kasutada mõlemat, mis võimaldab sul paremini "
+"tasakaalustada nende eelised ja puudused."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a hunter and a fisher."
-msgstr ""
+msgstr "Ülesanne: ehita jahimees ja kalur."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "Ära unusta ehitamast teerada oma laoni!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
-msgstr ""
+msgstr "Ehita peaväljak. Vali koht, kus ei ole palju majandusehitisi."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
@@ -331,19 +345,22 @@ msgstr "ÜLESANNE: PEAVÄLJAK"
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
-msgstr ""
+msgstr "Su elanikud vajavad peaväljakut, kus nad saavad hankida omale kaupu."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
 msgstr ""
+"See tähendab, et nad vajavad teerada, mis ühendab nende kodu peaväljakuga."
 
 #. This is the text body of a logbook page.
 msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
+"Kõik kaubad su laos on sellel \"turuplatsil\" saadavad; seega ei pea su "
+"elanikud käima kaluri juures või isegi laos."
 
 #. This is the text body of a logbook page.
 msgid ""
