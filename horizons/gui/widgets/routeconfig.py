@@ -127,6 +127,20 @@ class RouteConfig(Window):
 		else:
 			self.stop_route()
 
+	def get_capacity_per_slot_of_the_ship(self):
+		"""
+		Return how much you can load into one slot on the ship.
+		"""
+		return self.instance.get_component(StorageComponent).inventory.limit
+
+	def _get_resource_set_in_slot(self, slot):
+		"""
+		Return the id of a resource currently displayed in the slot's widget.
+		Returns 0 if the slot is empty.
+		"""
+		res_button = slot.findChild(name="button")
+		return self.resource_for_icon[res_button.up_image.source]
+
 	def remove_entry(self, entry):
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
@@ -196,8 +210,7 @@ class RouteConfig(Window):
 
 	def toggle_load_unload(self, slot, entry):
 		position = self.widgets.index(entry)
-		res_button = slot.findChild(name="button")
-		res = self.resource_for_icon[res_button.up_image.source]
+		res = self._get_resource_set_in_slot(slot)
 
 		if res != 0:
 			self._route_cmd("toggle_load_unload", position, res)
@@ -279,7 +292,18 @@ class RouteConfig(Window):
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
 
-		on_click = functools.partial(self.add_resource, slot=slot, entry=entry)
+		# When activated by clicking on an empty slot, default to loading that
+		# slot fully. Otherwise leave the amounts already set
+		if self._get_resource_set_in_slot(slot) == 0:
+			has_value = True
+			value = self.get_capacity_per_slot_of_the_ship()
+		else:
+			has_value = False
+			value = 0
+
+		on_click = functools.partial(self.add_resource,
+			slot=slot, entry=entry, has_value=has_value, value=value)
+
 		settlement = entry.settlement()
 		inventory = settlement.get_component(StorageComponent).inventory if settlement else None
 		widget = 'traderoute_resource_selection.xml'
@@ -320,7 +344,7 @@ class RouteConfig(Window):
 
 			slider = slot.findChild(name="slider")
 			slider.scale_start = 0.0
-			slider.scale_end = float(self.instance.get_component(StorageComponent).inventory.limit)
+			slider.scale_end = float(self.get_capacity_per_slot_of_the_ship())
 
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
