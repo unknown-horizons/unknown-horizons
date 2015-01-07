@@ -133,13 +133,31 @@ class RouteConfig(Window):
 		"""
 		return self.instance.get_component(StorageComponent).inventory.limit
 
-	def _get_resource_set_in_slot(self, slot):
+	def get_resource_id_from_slot(self, slot):
 		"""
 		Return the id of a resource currently displayed in the slot's widget.
 		Returns 0 if the slot is empty.
 		"""
 		res_button = slot.findChild(name="button")
 		return self.resource_for_icon[res_button.up_image.source]
+
+	def _is_resource_loaded_before(self, res_id, route_position):
+		# goes from route_position upward and looks for the same resource in all
+		# slots. The ship cycles the route so here when reaching zero, we start
+		# checking from the end.
+		found_at_slot = None
+		for position_offset in range(1, len(self.widgets)):
+			looking_at = route_position - position_offset
+
+			for slot in self.slots[self.widgets[looking_at]].values():
+				if self.get_resource_id_from_slot(slot) == res_id:
+					found_at_slot = slot
+					break
+
+			if found_at_slot is not None:
+				break
+
+		return (found_at_slot and found_at_slot.action == "load")
 
 	def remove_entry(self, entry):
 		if self.resource_menu_shown:
@@ -210,7 +228,7 @@ class RouteConfig(Window):
 
 	def toggle_load_unload(self, slot, entry):
 		position = self.widgets.index(entry)
-		res = self._get_resource_set_in_slot(slot)
+		res = self.get_resource_id_from_slot(slot)
 
 		if res != 0:
 			self._route_cmd("toggle_load_unload", position, res)
@@ -294,15 +312,26 @@ class RouteConfig(Window):
 
 		# When activated by clicking on an empty slot, default to loading that
 		# slot fully. Otherwise leave the amounts already set
-		if self._get_resource_set_in_slot(slot) == 0:
+		if self.get_resource_id_from_slot(slot) == 0:
 			has_value = True
 			value = self.get_capacity_per_slot_of_the_ship()
 		else:
 			has_value = False
 			value = 0
 
-		on_click = functools.partial(self.add_resource,
-			slot=slot, entry=entry, has_value=has_value, value=value)
+		def resource_picked(res_id):
+			# if the resource was loaded at the last stop, default to unloading
+			# it, and vice versa. if it was never mentioned, load it.
+			if self._is_resource_loaded_before(res_id, position):
+				v = -value
+				slot.action = "unload"
+			else:
+				v = value
+				slot.action = "load"
+
+			h = has_value
+			self.add_resource(res_id, slot=slot, entry=entry,
+				has_value=h, value=v)
 
 		settlement = entry.settlement()
 		inventory = settlement.get_component(StorageComponent).inventory if settlement else None
@@ -313,7 +342,7 @@ class RouteConfig(Window):
 			already_listed = res_id in self.instance.route.waypoints[position]['resource_list']
 			return not (same_icon or already_listed)
 
-		dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
+		dlg = create_resource_selection_dialog(on_click=resource_picked, inventory=inventory,
 			db=self.session.db, widget=widget, amount_per_line=6, res_filter=res_filter)
 
 		self._gui.findChild(name="traderoute_resources").addChild(dlg)
