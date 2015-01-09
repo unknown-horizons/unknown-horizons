@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2015-01-05 20:17+0200\n"
-"Last-Translator: qsorix . <qsorix@gmail.com>\n"
+"PO-Revision-Date: 2015-01-09 20:26+0200\n"
+"Last-Translator: Tomasz Rydzyński <qsorix@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1092,16 +1092,15 @@ msgstr "Rozpocznij nową grę"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
-msgstr "Gamelobby"
+msgstr "Poczekalnia"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
 msgstr "Czat:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
-#, fuzzy
 msgid "Exit gamelobby"
-msgstr "Wyjdź z gamelobby"
+msgstr "Wyjdź z poczekalni"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
@@ -1685,7 +1684,6 @@ msgid "Raising animals…"
 msgstr "Doglądanie zwierząt…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Convincing AI…"
 msgstr "Przekonywanie AI…"
 
@@ -2187,7 +2185,6 @@ msgid "Confirm order"
 msgstr "Potwierdzenia zamówienia"
 
 #: horizons/gui/tabs/buildingtabs.py:33
-#, fuzzy
 msgid "Tower overview"
 msgstr "Przegląd wieży"
 
@@ -2310,9 +2307,8 @@ msgid "Equip weapon"
 msgstr "Wyposaż broń"
 
 #: horizons/gui/tabs/shiptabs.py:148
-#, fuzzy
 msgid "Unequip weapon"
-msgstr "Zdemontuj broń"
+msgstr "Odłóż broń"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
@@ -2773,7 +2769,6 @@ msgstr "Rynek Główny"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:266
-#, fuzzy
 msgid "Supplies citizens with goods. Provides community."
 msgstr "Udostępnia towary mieszkańcom. Tworzy społeczność."
 
@@ -2855,13 +2850,11 @@ msgstr "Kamieniarz"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:325
-#, fuzzy
 msgid "Carver"
 msgstr "Kamieniarz"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
-#, fuzzy
 msgid "Carves stone tops into bricks."
 msgstr "Formuje cegły z kamienia."
 
@@ -2889,7 +2882,6 @@ msgstr "Namiot składowania"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 msgid "Extends stock and provides collectors."
 msgstr "Rozszerza stany magazynowe i zapewnia tragarzy."
 
@@ -2967,7 +2959,6 @@ msgstr "Szlak"
 
 #. name_1 of buildings:trail
 #: horizons/i18n/objecttranslations.py:388
-#, fuzzy
 msgid "Gravel Path"
 msgstr "Droga żwirowa"
 
@@ -3161,7 +3152,6 @@ msgstr "Rolnictwo"
 
 #. tab5_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:513
-#, fuzzy
 msgid "Military"
 msgstr "Militaria"
 
@@ -3376,7 +3366,6 @@ msgid "This building must be partly on flat land."
 msgstr "Ten budynek musi być częściowo na płaskim terenie."
 
 #: horizons/world/status.py:75
-#, fuzzy
 msgid "The inhabitants are infected by the Black Death!"
 msgstr "Mieszkańcy zarazili się dżumą!"
 
@@ -3677,8 +3666,9 @@ msgid "corn"
 msgstr "kukurydza"
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "flower meadows"
-msgstr ""
+msgstr "kwieciste łąki"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
