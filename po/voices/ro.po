@@ -8,43 +8,44 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2013-07-27 13:00+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2015-01-09 21:00+0200\n"
+"Last-Translator: Vlad Topala <topalavlad@gmail.com>\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/uh/voices/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
-msgstr ""
+msgstr "Straduieste-te astfel încât această așezare să devină una impunătoare."
 
 #. Founding settlement - Player found settlement"
 msgid "Your inhabitants will certainly feel comfortable on this island."
-msgstr ""
+msgstr "Locuitorii tăi se vor simti cu sigurantă confortabil pe această insulă."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr ""
+msgstr "Consideră această bucată de pămant ca fiind a ta de acum inainte."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
-msgstr ""
+msgstr "Regiunea aceasta apartine culorilor noastre acum."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr ""
+msgstr "Această bucată de pământ este acum a noastră."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
-msgstr ""
+msgstr "Un alt jucător s-a stabilit pe o insulă."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "A player develops a new settlement."
-msgstr ""
+msgstr "Un jucător isi creează o nouă asezare."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
@@ -72,11 +73,11 @@ msgstr ""
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
-msgstr ""
+msgstr "Aliatul nostru ne informează că si-a stabilit o nouă asezare."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "This island no longer is all ours."
-msgstr ""
+msgstr "Aceasta insula nu ne mai apartine in intregime."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
@@ -84,7 +85,7 @@ msgstr ""
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
-msgstr ""
+msgstr "Avem vecini noi pe aceasta insula!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Scouts report that uninvited guests beleaguer our island!"
@@ -112,7 +113,7 @@ msgstr ""
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr ""
+msgstr "Ai nevoie de mai multe resurse pentru a construi asta."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
