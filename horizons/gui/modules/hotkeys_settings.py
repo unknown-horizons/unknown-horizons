@@ -45,7 +45,6 @@ class HotkeyConfiguration(object):
 		self.keys = self.keyconf.get_keys_by_value()
 
 		self.HELPSTRING_LAYOUT = None
-		self._is_displayed = False
 		self._build_interface()
 
 		# When detecing is True, the interface detects keypresses and binds them to actions
