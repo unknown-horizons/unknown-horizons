@@ -50,9 +50,11 @@ class SettingsDialog(PickBeltWidget, Window):
 	"""Widget for Options dialog with pickbelt style pages"""
 
 	widget_xml = 'settings.xml'
-	sections = (('graphics_settings', _lazy('Graphics')),
-	            ('hotkeys_settings', _lazy('Hotkeys')),
-			    ('game_settings', _lazy('Game')))
+	sections = (
+		('graphics_settings', _lazy('Graphics')),
+		('hotkeys_settings', _lazy('Hotkeys')),
+		('game_settings', _lazy('Game')),
+	)
 
 	def __init__(self, windows):
 		Window.__init__(self, windows)
