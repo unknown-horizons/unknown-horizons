@@ -49,6 +49,7 @@ class RouteConfig(Window):
 	Widget that allows configurating a ship's trading route
 	"""
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
+	placeholder_icon_path = "content/gui/icons/resources/32/placeholder.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
 	hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
@@ -147,9 +148,12 @@ class RouteConfig(Window):
 		# checking from the end.
 		found_at_slot = None
 		for position_offset in range(1, len(self.widgets)):
-			looking_at = route_position - position_offset
+			entry = self.widgets[route_position - position_offset]
 
-			for slot in self.slots[self.widgets[looking_at]].values():
+			if entry.is_unload_all:
+				return False
+
+			for slot in self.slots[entry].values():
 				if self.get_resource_id_from_slot(slot) == res_id:
 					found_at_slot = slot
 					break
@@ -158,6 +162,44 @@ class RouteConfig(Window):
 				break
 
 		return (found_at_slot and found_at_slot.action == "load")
+
+	def turn_entry_back_into_a_normal_one(self, entry):
+		for slot in self.slots[entry].values():
+			entry.removeChild(slot)
+		self.slots.pop(entry)
+		self.add_trade_slots(entry)
+		self._update_slots_to_reflect_resources(entry)
+		position = self.widgets.index(entry)
+		entry.is_unload_all = False
+		self._route_cmd("reset_resources", position)
+
+	def turn_entry_into_full_unload(self, entry):
+		entry.is_unload_all = True
+		for slot in self.slots[entry].values():
+			for child in slot.findChildren():
+				child.capture(
+					Callback(self.turn_entry_back_into_a_normal_one, entry))
+				child.capture(
+					Callback(self.turn_entry_back_into_a_normal_one, entry),
+						event_name='mouseClicked')
+
+			button = slot.findChild(name="button")
+			icon = self.placeholder_icon_path
+			button.up_image, button.down_image, button.hover_image = icon, icon, icon
+			button.max_size = button.min_size = button.size = (32, 32)
+
+			amount_lbl = slot.findChild(name="amount")
+			# This is shown in a small trading slot. Keep it short
+			amount_lbl.text = _("all")
+
+			slider = slot.findChild(name="slider")
+			slot.removeChild(slider)
+
+			self.show_unload_icon(slot)
+			slot.adaptLayout()
+
+		position = self.widgets.index(entry)
+		self._route_cmd("unload_all", position)
 
 	def remove_entry(self, entry):
 		if self.resource_menu_shown:
@@ -361,7 +403,7 @@ class RouteConfig(Window):
 		self._gui.findChild(name="traderoute_resources").removeAllChildren()
 
 	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
-		x_position = 105
+		x_position = 77
 		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):
@@ -392,20 +434,7 @@ class RouteConfig(Window):
 			self.slots[entry][num] = slot
 			self.show_load_icon(slot)
 
-	def add_gui_entry(self, warehouse, resource_list=None):
-		vbox = self._gui.findChild(name="left_vbox")
-		entry = load_uh_widget("route_entry.xml")
-		entry.name = 'container_%s' % len(self.widgets)
-		entry.settlement = weakref.ref(warehouse.settlement)
-		self.widgets.append(entry)
-
-		settlement_name_label = entry.findChild(name="warehouse_name")
-		settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
-		player_name_label = entry.findChild(name="player_name")
-		player_name_label.text = warehouse.owner.name
-
-		self.add_trade_slots(entry)
-
+	def _update_slots_to_reflect_resources(self, entry, resource_list=None):
 		index = 1
 		resource_list = resource_list or {}
 		for res_id in resource_list:
@@ -418,12 +447,32 @@ class RouteConfig(Window):
 			                  value=resource_list[res_id])
 			index += 1
 
+	def add_gui_entry(self, warehouse, resource_list=None, is_unload_all=False):
+		vbox = self._gui.findChild(name="left_vbox")
+		entry = load_uh_widget("route_entry.xml")
+		entry.name = 'container_%s' % len(self.widgets)
+		entry.settlement = weakref.ref(warehouse.settlement)
+		entry.is_unload_all = False
+		self.widgets.append(entry)
+
+		settlement_name_label = entry.findChild(name="warehouse_name")
+		settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
+		player_name_label = entry.findChild(name="player_name")
+		player_name_label.text = warehouse.owner.name
+
+		self.add_trade_slots(entry)
+		self._update_slots_to_reflect_resources(entry, resource_list)
+
 		entry.mapEvents({
+		  'unload_all/mouseClicked': Callback(self.turn_entry_into_full_unload, entry),
 		  'delete_warehouse/mouseClicked': Callback(self.remove_entry, entry),
 		  'move_up/mouseClicked': Callback(self.move_entry, entry, 'up'),
 		  'move_down/mouseClicked': Callback(self.move_entry, entry, 'down')
 		  })
 		vbox.addChild(entry)
+
+		if is_unload_all:
+			self.turn_entry_into_full_unload(entry)
 
 	def append_warehouse(self, warehouse):
 		"""Add a warehouse to the list on the left side.
@@ -491,7 +540,7 @@ class RouteConfig(Window):
 		# don't do any actions if the resource menu is shown
 		self.resource_menu_shown = False
 		for entry in self.instance.route.waypoints:
-			self.add_gui_entry(entry['warehouse'], entry['resource_list'])
+			self.add_gui_entry(entry['warehouse'], entry['resource_list'], entry['is_unload_all'])
 
 		self._check_no_entries_label()
 
