@@ -47,7 +47,7 @@ class HotkeyConfiguration(object):
 		self.HELPSTRING_LAYOUT = None
 		self._build_interface()
 
-		# When detecing is True, the interface detects keypresses and binds them to actions
+		# When `detecting` is True, the interface detects keypresses and binds them to actions
 		self.detecting = False
 		self.current_button = None
 		self.current_index = None
