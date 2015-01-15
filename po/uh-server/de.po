@@ -35,7 +35,7 @@ msgstr ""
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
-msgstr "Die Maximalgröße per Datenpaket wurde überschritten."
+msgstr "Die Maximalgröße pro Datenpaket wurde überschritten."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
