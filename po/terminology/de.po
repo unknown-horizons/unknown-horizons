@@ -1071,7 +1071,7 @@ msgid "remove"
 msgstr "entfernen"
 
 msgid "renderer"
-msgstr "Renderer"
+msgstr "Kafiller" #or "Abdecker"..
 
 msgid "run out"
 msgstr "erschöpft"
@@ -1120,53 +1120,3 @@ msgstr "gewonnen"
 
 msgid "written"
 msgstr "geschrieben"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
