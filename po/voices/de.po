@@ -25,7 +25,7 @@ msgstr "Auf dass sich diese Siedlung prächtig entwickle."
 
 #. Founding settlement - Player found settlement"
 msgid "Your inhabitants will certainly feel comfortable on this island."
-msgstr "Eure Einwohner werden sich auf diesem Eiland sicher wohl fühlen."
+msgstr "Eure Einwohner werden sich auf dieser Insel sicher wohl fühlen."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
@@ -37,7 +37,7 @@ msgstr "Diese Region gehört jetzt zu unserer Fahne."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr "Das Stück Erde ist nun unseres."
+msgstr "Dieses Stück Erde ist nun unseres." #"this" is stylistic better translated as "Dieses" in context
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
@@ -58,7 +58,7 @@ msgstr "Einer unserer Rivalen scheint eine Siedlung gegründet zu haben."
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
 msgstr ""
-"Wir wurden informiert, dass einer unserer Rivalen sich neues Land unter den "
+"Wir wurden darüber informiert, dass einer unserer Rivalen sich neues Land unter den "
 "Nagel gerissen hat."
 
 #. Founding settlement - Rival found settlement
