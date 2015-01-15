@@ -1071,7 +1071,7 @@ msgid "remove"
 msgstr "entfernen"
 
 msgid "renderer"
-msgstr "Kafiller" #or "Abdecker"..
+msgstr "renderer"
 
 msgid "run out"
 msgstr "erschöpft"
