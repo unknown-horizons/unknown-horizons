@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-12-10 17:12+0200\n"
-"Last-Translator: Kilian Köppchen <Kilian.Koeppchen@student.htw-berlin.de>\n"
+"PO-Revision-Date: 2015-01-22 13:29+0200\n"
+"Last-Translator: Wuzzy <almikes@aol.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr ""
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "Fehler: Konnte benötigte Bibliothek \"PyYAML\" nicht finden."
+msgstr "Fehler: Konnte benötigte Bibliothek „PyYAML“ nicht finden."
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
@@ -269,7 +269,7 @@ msgstr "fortsetzen"
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "Aktueller Baufortschritt:"
+msgstr "Baufortschritt:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
@@ -309,7 +309,7 @@ msgstr "Feind"
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
 msgid "Building overview"
-msgstr "Gebäude-Übersicht"
+msgstr "Gebäudeübersicht"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
@@ -474,7 +474,7 @@ msgid ""
 "or sell goods."
 msgstr ""
 "Dies ist das Schiff des Freien Händlers. Er wird von Zeit zu Zeit Eure "
-"Siedlung besuchen und nach Angeboten Ausschau halten."
+"Siedlung besuchen, um Ware Ein- oder zu verkaufen."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
@@ -514,7 +514,7 @@ msgstr "Handelspartner:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr "Waren Ein-/Verkaufen"
+msgstr "Rohstoffe ein-/verkaufen"
 
 # Handels-Chronik is easier to read than "Handelschronik"
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
@@ -586,11 +586,12 @@ msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr "Aktuelles Rohstoffpanel als Standard für alle Siedlungen speichern."
+msgstr ""
+"Aktuelle Rohstoffeinstellungen als Standard für alle Siedlungen speichern."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Rohstoffpanel aller Siedlungen zurücksetzen."
+msgstr "Rohstoffeinstellungen aller Siedlungen zurücksetzen."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -619,7 +620,7 @@ msgstr "Lese frühere Einträge"
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
-msgstr "Spätere Einträge"
+msgstr "Spätere Einträge lesen"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
@@ -717,7 +718,7 @@ msgstr "Geld"
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
 msgstr ""
-"Spieler aktuelle Schatzkammer + Einkommen, welcher in naher Zukunft zu "
+"Spielers aktuelle Schatzkammer + Einkommen, welches in naher Zukunft zu "
 "erwarten ist"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
@@ -731,7 +732,7 @@ msgstr "Wert der nutzbaren Flächen (bebaubares Land)"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
-msgstr "Waren"
+msgstr "Rohstoffe"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
@@ -927,7 +928,7 @@ msgstr "Pipettenmodus aktivieren (Gebäude kopieren)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
-msgstr "Spiel-Statistiken anzeigen"
+msgstr "Spieler-Statistiken anzeigen"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Show settlement list"
@@ -935,11 +936,11 @@ msgstr "Siedlungsübersicht anzeigen"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show ship list"
-msgstr "Schiffsübersicht anzeigen"
+msgstr "Schiffsliste anzeigen"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
-msgstr "Logbuch anzeigen"
+msgstr "Logbuch anzeigen-/ausblenden"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
@@ -954,11 +955,11 @@ msgstr "Schnellladen"
 # {SHIFT} breaks automatically, so why does {T} not break?
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
-msgstr "Transparenz atmosphärischer Elemente an-/ausschalten"
+msgstr "Transparenz umgebender Gebäude an-/ausschalten"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
-msgstr "Eingefärbter Landbesitz"
+msgstr "Landbesitz hervorheben"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
@@ -1030,7 +1031,7 @@ msgstr "Spiel beenden"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
 msgid "Loading…"
-msgstr "Lade…"
+msgstr "Laden …"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1096,7 +1097,7 @@ msgstr "Kennwort des Spiels:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr "Das Spiel Kennwort. Erforderlich, um in dieses Spiel einzusteigen."
+msgstr "Das Spielkennwort. Erforderlich, um in dieses Spiel einzusteigen."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
@@ -1132,7 +1133,7 @@ msgstr "Bereit:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr "Status auf 'Bereit' stellen (notwendig um das Spiel zu starten)"
+msgstr "Status auf „Bereit“ stellen (notwendig, um das Spiel zu starten)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1208,7 +1209,9 @@ msgstr "Max. Bildfrequenz:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr "Maximalgrenze der Bildwiederholrate. Standardeinstellung: 60 fps."
+msgstr ""
+"Maximalgrenze der Bildwiederholrate. Standardeinstellung: 60 Bilder pro "
+"Sekunde."
 
 # (toggling everything on/off)
 #: content/gui/xml/mainmenu/settings.xml:54
@@ -1269,7 +1272,7 @@ msgstr "0 verwendet die Systemeinstellungen"
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "Mouse sensitivity:"
-msgstr "Maus-Empfindlichkeit:"
+msgstr "Mausempfindlichkeit:"
 
 #: content/gui/xml/mainmenu/settings.xml:123
 msgid "Saving"
@@ -1341,7 +1344,7 @@ msgstr "Produktionsindikatoren:"
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
-"Waren-Icons nach erfolgter Produktion über dem Produktionsgebäude anzeigen"
+"Warensymbole nach erfolgter Produktion über dem Produktionsgebäude anzeigen"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
@@ -1574,7 +1577,7 @@ msgstr "Ohne Mitspieler benötigt Ihr keine Diplomatie."
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr "{size}x{size} Kacheln"
+msgstr "{size}×{size} Kacheln"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
@@ -1605,11 +1608,11 @@ msgstr "Tipps zum Spiel"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Drückt 'ESC', um ins Spielmenü zu gelangen."
+msgstr "Drückt „Esc“, um ins Spielmenü zu gelangen."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Halte 'SHIFT' um mehrere Gebäude zu errichten."
+msgstr "Halte „Umschalt“, um mehrere Gebäude zu errichten."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
@@ -1619,7 +1622,7 @@ msgstr "Aktuell sind nur die ersten {tier} Stufen spielbar."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr "Ihr könnt das Spiel mit 'P' pausieren."
+msgstr "Ihr könnt das Spiel mit „P“ pausieren."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
@@ -1629,7 +1632,7 @@ msgstr ""
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
 msgstr ""
-"Ihr könnt mehrere Gebäude bauen, indem Ihr die 'SHIFT' Taste gedrückt haltet."
+"Ihr könnt mehrere Gebäude bauen, indem Ihr die Umschalttaste gedrückt haltet."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
@@ -1654,7 +1657,7 @@ msgstr "Stellt sicher, dass jedes Haus Zugang zu einem Marktplatzes besitzt."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
-msgstr "Drückt 'T', um durch Bäume zu sehen."
+msgstr "Drückt „T“, um durch Bäume zu sehen."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -1667,47 +1670,47 @@ msgstr "Gemischt"
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr "Motor anwerfen…"
+msgstr "Motor anwerfen …"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr "Fische fangen…"
+msgstr "Fische fangen …"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr "Bedienoberfläche zeichnen…"
+msgstr "Bedienoberfläche zeichnen …"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr "Wecker stellen…"
+msgstr "Wecker stellen …"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr "Spieldaten verarbeiten…"
+msgstr "Spieldaten verarbeiten …"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr "Inseln formen…"
+msgstr "Inseln formen …"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr "Blaupausen vorbereiten…"
+msgstr "Blaupausen vorbereiten …"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr "Spielwelt fluten…"
+msgstr "Spielwelt fluten …"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr "Tiere aufziehen…"
+msgstr "Tiere aufziehen …"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr "KI überreden…"
+msgstr "KI überreden …"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr "Schätze vergraben…"
+msgstr "Schätze vergraben …"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -1718,8 +1721,8 @@ msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
-"Der Mehrspielermodus benötigt die Bibliothek \"pyenet\", welche nicht "
-"gefunden werden konnte."
+"Der Mehrspielermodus benötigt die Bibliothek „pyenet“, welche nicht gefunden "
+"werden konnte."
 
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -1803,9 +1806,9 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"Die Versions-Nummer unterscheidet sich von Eurer. Jeder Spieler muss die "
+"Die Versionsnummer unterscheidet sich von Eurer. Jeder Spieler muss die "
 "gleiche Version benutzen. Dies kann durch ein Update auf die neueste Version "
-"behoben werden. Spiel-Version: {game_version} Eure Version: {own_version}"
+"behoben werden. Spiel-Version: {game_version}; Eure Version: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
@@ -1986,7 +1989,7 @@ msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu entfernen."
 #: horizons/gui/modules/select_savegame.py:255
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Wollt Ihr den Spielstand '{name}' wirklich entfernen?"
+msgstr "Wollt Ihr den Spielstand „{name}“ wirklich entfernen?"
 
 #: horizons/gui/modules/select_savegame.py:257
 msgid "Confirm deletion"
@@ -2198,7 +2201,7 @@ msgstr "Auftrag bestätigen"
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
-msgstr "Turm-Übersicht"
+msgstr "Turmübersicht"
 
 #: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
 msgid "Overview"
@@ -2588,7 +2591,7 @@ msgstr "Behandelt Seuchen. Verbraucht Heilkräuter."
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:131
 msgid "Farm"
-msgstr "Farm"
+msgstr "Bauernhof"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:133
@@ -3447,7 +3450,7 @@ msgstr "Händler"
 #: horizons/world/units/weaponholder.py:452
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr "Angriff auf {target} '{name}' ({owner})"
+msgstr "Angriff auf {target} „{name}“ ({owner})"
 
 #: horizons/world/units/weaponholder.py:456
 #, python-brace-format
@@ -3858,7 +3861,7 @@ msgstr "Goldvorkommen"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Eines Eurer Felder benötigt eine Farm für die Ernte."
+msgstr "Eines Eurer Felder benötigt einen Bauernhof für die Ernte."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
