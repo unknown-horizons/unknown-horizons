@@ -147,6 +147,16 @@ class TabWidget(object):
 		self.ingame_gui.minimap_to_front()
 
 	def hide(self, caller=None):
-		"""Hide the current widget"""
+		"""Hides all non-current or current tab widgets"""
 		self.current_tab.hide()
 		self.widget.hide()
+		self._hide_other_tabs()
+
+	def _hide_other_tabs(self):
+		"""
+		Hides all the other non-current tab widgets 
+		so that they can be deleted from memory
+		"""
+		for tab in self._tabs:
+			if not tab.__class__.lazy_loading:
+				tab.hide()
