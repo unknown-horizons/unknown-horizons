@@ -33,6 +33,12 @@ from horizons.util.python import decorators
 from horizons.util.random_map import create_random_island
 from horizons.util.savegameupgrader import SavegameUpgrader
 
+class MapFileNotFound(Exception):
+	def __init__(self, msg=None):
+		if msg is None:
+			msg = "Map file not found."
+		super(MapFileNotFound, self).__init__(msg)
+
 class SavegameAccessor(DbReader):
 	"""
 	SavegameAccessor is the class used for loading saved games.
@@ -92,6 +98,10 @@ class SavegameAccessor(DbReader):
 			if options.map_padding is not None:
 				self("INSERT INTO map_properties VALUES(?, ?)", 'padding', options.map_padding)
 
+		if not os.path.exists(self._map_path):
+			raise MapFileNotFound("Map file " + str(self._map_path) + " not found!")
+
+
 		self('ATTACH ? AS map_file', self._map_path)
 		if is_random_map:
 			self.map_name = random_island_sequence
@@ -99,10 +109,10 @@ class SavegameAccessor(DbReader):
 			self.map_name = self._map_path
 		else:
 			self.map_name = SavegameManager.get_savegamename_from_filename(self._map_path)
-
+	
 		map_padding = self("SELECT value FROM map_properties WHERE name = 'padding'")
 		self.map_padding = int(map_padding[0][0]) if map_padding else MAP.PADDING
-
+	
 		self._load_building()
 		self._load_settlement()
 		self._load_concrete_object()
