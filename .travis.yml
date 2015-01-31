@@ -2,7 +2,10 @@ language: python
 python:
   - "2.7"
 # command to install dependencies
+before_install:
+  - "sudo apt-get update"
 install:
   - "sudo apt-get install python-fife python-yaml"
+  - "sudo pip install pyyaml"
 script: 
    python run_tests.py --with-xunit --verbose --nologcapture
