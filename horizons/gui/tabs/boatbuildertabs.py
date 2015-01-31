@@ -66,12 +66,12 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		container_inactive = main_container.findChild(name="container_inactive")
 		progress_container = main_container.findChild(name="BB_progress_container")
 		cancel_container = main_container.findChild(name="BB_cancel_container")
-		needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 
 		# a Unitbuilder is considered active here if it builds sth, no matter if it's paused
 		production_lines = self.producer.get_production_lines()
 		if len(production_lines) > 0:
 			self.show_production_is_active_container(container_active, container_inactive)
+			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 			self.update_production_is_active_container(progress_container,
 				                                       container_active,
 				                                       needed_res_container,
@@ -83,32 +83,34 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 	                                              cancel_container, 
 	                                              container_active)
 		self.widget.adaptLayout()
+		
+	def show_production_is_active_container(self, container_active, container_inactive):
+		"""Show the container containing the active production."""
+		container_active.parent.showChild(container_active)
+		if (Fife.getVersion() >= (0, 4, 0)):
+			container_inactive.parent.hideChild(container_inactive)
+		else:
+			if not container_inactive in container_inactive.parent.hidden_children:
+				container_inactive.parent.hideChild(container_inactive)
 
 	def update_production_is_active_container(self, progress_container, container_active, needed_res_container, cancel_container, production_lines):
-			self.update_progress(progress_container)
-			self.update_queue(container_active)
-			self.update_needed_resources(needed_res_container)
-			self.update_buttons(container_active, cancel_container)
+		"""Update the active production container."""
+		self.update_progress(progress_container)
+		self.update_queue(container_active)
+		self.update_needed_resources(needed_res_container)
+		self.update_buttons(container_active, cancel_container)
 
-			# Set built ship info
-			production_line = self.producer._get_production(production_lines[0])
-			produced_unit_id = production_line.get_produced_units().keys()[0]
-			
-			name = self.instance.session.db.get_unit_type_name(produced_unit_id)
-			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
-			
-			self.update_ship_icon(container_active, produced_unit_id)
+		# Set built ship info
+		production_line = self.producer._get_production(production_lines[0])
+		produced_unit_id = production_line.get_produced_units().keys()[0]
+		
+		name = self.instance.session.db.get_unit_type_name(produced_unit_id)
+		container_active.findChild(name="headline_BB_builtship_label").text = _(name)
+		
+		self.update_ship_icon(container_active, produced_unit_id)
 
-			upgrades_box = container_active.findChild(name="BB_upgrades_box")
-			upgrades_box.removeAllChildren()
-
-	def show_production_is_active_container(self, container_active, container_inactive):
-			container_active.parent.showChild(container_active)
-			if (Fife.getVersion() >= (0, 4, 0)):
-				container_inactive.parent.hideChild(container_inactive)
-			else:
-				if not container_inactive in container_inactive.parent.hidden_children:
-					container_inactive.parent.hideChild(container_inactive)
+		upgrades_box = container_active.findChild(name="BB_upgrades_box")
+		upgrades_box.removeAllChildren()
 
 	def show_production_is_inactive_container(self, container_inactive, progress_container, cancel_container, container_active):
 		"""Hides all information on progress etc, and displays something to signal that the production is inactive."""
@@ -144,9 +146,10 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		cancel_button.capture(cancel_cb, event_name="mouseClicked")
 
 	def update_ship_icon(self, container_active, produced_unit_id):
-			ship_icon = container_active.findChild(name="BB_cur_ship_icon")
-			ship_icon.helptext = self.instance.session.db.get_ship_tooltip(produced_unit_id)
-			ship_icon.image = self.__class__.SHIP_PREVIEW_IMG.format(type_id=produced_unit_id)
+		"""Update the icon displaying the ship that is being built."""
+		ship_icon = container_active.findChild(name="BB_cur_ship_icon")
+		ship_icon.helptext = self.instance.session.db.get_ship_tooltip(produced_unit_id)
+		ship_icon.image = self.__class__.SHIP_PREVIEW_IMG.format(type_id=produced_unit_id)
 
 	def update_queue(self, container_active):
 		""" Update the queue display"""
