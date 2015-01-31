@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+[![Build Status](https://travis-ci.org/unknown-horizons/unknown-horizons.svg?branch=master)](https://travis-ci.org/unknown-horizons/unknown-horizons)
+
 Unknown Horizons is a 2D realtime strategy simulation with an
 emphasis on economy and city building. Expand your small
 settlement to a strong and wealthy colony, collect taxes and
