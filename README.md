@@ -22,6 +22,7 @@
 ```
 
 [![Build Status](https://travis-ci.org/unknown-horizons/unknown-horizons.svg?branch=master)](https://travis-ci.org/unknown-horizons/unknown-horizons)
+ [![Bountysource](https://www.bountysource.com/badge/team?team_id=9261&style=bounties_received)](https://www.bountysource.com/teams/unknown-horizons/issues?utm_source=unknown-horizons&utm_medium=shield&utm_campaign=bounties_received)
 
 Unknown Horizons is a 2D realtime strategy simulation with an
 emphasis on economy and city building. Expand your small
