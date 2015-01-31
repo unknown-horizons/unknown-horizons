@@ -70,21 +70,14 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		# a Unitbuilder is considered active here if it builds sth, no matter if it's paused
 		production_lines = self.producer.get_production_lines()
 		if len(production_lines) > 0:
-			self.show_production_is_active_container(container_active, container_inactive)
-			needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
-			self.update_production_is_active_container(progress_container,
-				                                       container_active,
-				                                       needed_res_container,
-				                                       cancel_container,
-				                                       production_lines)
+			self.show_production_is_active_container(container_active, container_inactive,
+			                                         progress_container, cancel_container, production_lines)
 		else:
-			self.show_production_is_inactive_container(container_inactive, 
-	                                              progress_container, 
-	                                              cancel_container, 
-	                                              container_active)
+			self.show_production_is_inactive_container(container_inactive, progress_container, 
+			                                           cancel_container, container_active)
 		self.widget.adaptLayout()
 		
-	def show_production_is_active_container(self, container_active, container_inactive):
+	def show_production_is_active_container(self, container_active, container_inactive, progress_container, cancel_container, production_lines):
 		"""Show the container containing the active production."""
 		container_active.parent.showChild(container_active)
 		if (Fife.getVersion() >= (0, 4, 0)):
@@ -92,13 +85,17 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		else:
 			if not container_inactive in container_inactive.parent.hidden_children:
 				container_inactive.parent.hideChild(container_inactive)
+				
+		self.update_production_is_active_container(progress_container, container_active, cancel_container, production_lines)
 
-	def update_production_is_active_container(self, progress_container, container_active, needed_res_container, cancel_container, production_lines):
+	def update_production_is_active_container(self, progress_container, container_active, cancel_container, production_lines):
 		"""Update the active production container."""
 		self.update_progress(progress_container)
 		self.update_queue(container_active)
-		self.update_needed_resources(needed_res_container)
 		self.update_buttons(container_active, cancel_container)
+		
+		needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
+		self.update_needed_resources(needed_res_container)
 
 		# Set built ship info
 		production_line = self.producer._get_production(production_lines[0])
