@@ -6,6 +6,6 @@ before_install:
   - "sudo apt-get update"
 install:
   - "sudo apt-get install python-fife"
-  - "pip install pyyaml"
+  - "pip install pyyaml greenlet"
 script: 
    python run_tests.py --with-xunit --verbose --nologcapture
