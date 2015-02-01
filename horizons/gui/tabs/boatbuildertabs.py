@@ -35,37 +35,34 @@ from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
 from horizons.world.production.producer import Producer
 
-class _BoatbuilderOverviewTab(OverviewTab):
-	"""Private class all classes here inherit."""
+class ProducerOverviewTabBase(OverviewTab):
+	"""Base class for tabs displaying producer data."""
+	
 	@property
 	def producer(self):
-		"""Abstract the instance, work only on components"""
+		"""The current instance's Producer compontent."""
 		return self.instance.get_component(Producer)
-
-class BoatbuilderTab(_BoatbuilderOverviewTab):
-	widget = 'boatbuilder.xml'
-	helptext = _lazy("Boat builder overview")
-
-	SHIP_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
-	SHIP_PREVIEW_IMG = "content/gui/images/objects/ships/116/{type_id}.png"
-
+	
+class UnitbuilderTabBase(ProducerOverviewTabBase):
+	"""Tab Baseclass that can be used by unit builders."""
+	
 	def show(self):
-		super(BoatbuilderTab, self).show()
+		super(UnitbuilderTabBase, self).show()
 		Scheduler().add_new_object(Callback(self.refresh), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
-		super(BoatbuilderTab, self).hide()
+		super(UnitbuilderTabBase, self).hide()
 		Scheduler().rem_all_classinst_calls(self)
-
+		
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
-		super(BoatbuilderTab, self).refresh()
+		super(UnitbuilderTabBase, self).refresh()
 
-		main_container = self.widget.findChild(name="BB_main_tab")
+		main_container = self.widget.findChild(name="UB_main_tab")
 		container_active = main_container.findChild(name="container_active")
 		container_inactive = main_container.findChild(name="container_inactive")
-		progress_container = main_container.findChild(name="BB_progress_container")
-		cancel_container = main_container.findChild(name="BB_cancel_container")
+		progress_container = main_container.findChild(name="UB_progress_container")
+		cancel_container = main_container.findChild(name="UB_cancel_container")
 
 		# a Unitbuilder is considered active here if it builds sth, no matter if it's paused
 		production_lines = self.producer.get_production_lines()
@@ -94,7 +91,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		self.update_queue(container_active)
 		self.update_buttons(container_active, cancel_container)
 		
-		needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
+		needed_res_container = self.widget.findChild(name="UB_needed_resources_container")
 		self.update_needed_resources(needed_res_container)
 
 		# Set built ship info
@@ -102,11 +99,11 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		produced_unit_id = production_line.get_produced_units().keys()[0]
 		
 		name = self.instance.session.db.get_unit_type_name(produced_unit_id)
-		container_active.findChild(name="headline_BB_builtship_label").text = _(name)
+		container_active.findChild(name="headline_UB_builtship_label").text = _(name)
 		
 		self.update_ship_icon(container_active, produced_unit_id)
 
-		upgrades_box = container_active.findChild(name="BB_upgrades_box")
+		upgrades_box = container_active.findChild(name="UB_upgrades_box")
 		upgrades_box.removeAllChildren()
 
 	def show_production_is_inactive_container(self, container_inactive, progress_container, cancel_container, container_active):
@@ -138,15 +135,15 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		button_inactive.capture(set_active_cb, event_name="mouseClicked")
 		
 		cancel_container.parent.showChild(cancel_container)
-		cancel_button = self.widget.findChild(name="BB_cancel_button")
+		cancel_button = self.widget.findChild(name="UB_cancel_button")
 		cancel_cb = Callback(CancelCurrentProduction(self.producer).execute, self.instance.session)
 		cancel_button.capture(cancel_cb, event_name="mouseClicked")
 
 	def update_ship_icon(self, container_active, produced_unit_id):
 		"""Update the icon displaying the ship that is being built."""
-		ship_icon = container_active.findChild(name="BB_cur_ship_icon")
+		ship_icon = container_active.findChild(name="UB_cur_ship_icon")
 		ship_icon.helptext = self.instance.session.db.get_ship_tooltip(produced_unit_id)
-		ship_icon.image = self.__class__.SHIP_PREVIEW_IMG.format(type_id=produced_unit_id)
+		ship_icon.image = self.__class__.UNIT_PREVIEW_IMAGE.format(type_id=produced_unit_id)
 
 	def update_queue(self, container_active):
 		""" Update the queue display"""
@@ -154,7 +151,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		queue_container = container_active.findChild(name="queue_container")
 		queue_container.removeAllChildren()
 		for place_in_queue, unit_type in enumerate(queue):
-			image = self.__class__.SHIP_THUMBNAIL.format(type_id=unit_type)
+			image = self.__class__.UNIT_THUMBNAIL.format(type_id=unit_type)
 			helptext = _("{ship} (place in queue: {place})").format(
 		            ship=self.instance.session.db.get_unit_type_name(unit_type),
 		            place=place_in_queue+1)
@@ -188,8 +185,15 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		progress_container.parent.showChild(progress_container)
 		progress = math.floor(self.producer.get_production_progress() * 100)
 		self.widget.findChild(name='progress').progress = progress
-		progress_perc = self.widget.findChild(name='BB_progress_perc')
+		progress_perc = self.widget.findChild(name='UB_progress_perc')
 		progress_perc.text = u'{progress}%'.format(progress=progress)
+
+class BoatbuilderTab(UnitbuilderTabBase):
+	widget = 'boatbuilder.xml'
+	helptext = _lazy("Boat builder overview")
+
+	UNIT_THUMBNAIL = "content/gui/icons/thumbnails/{type_id}.png"
+	UNIT_PREVIEW_IMAGE = "content/gui/images/objects/ships/116/{type_id}.png"
 
 # this tab additionally requests functions for:
 # * decide: show [start view] = nothing but info text, look up the xml, or [building status view]
@@ -200,7 +204,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
 
-class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
+class BoatbuilderSelectTab(ProducerOverviewTabBase):
 	widget = 'boatbuilder_showcase.xml'
 
 	def init_widget(self):
@@ -317,7 +321,7 @@ class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 # * check: mark those ship's buttons as unbuildable (close graphics) which do not meet the specified requirements.
 #	the tooltips contain this info as well.
 
-class BoatbuilderConfirmTab(_BoatbuilderOverviewTab):
+class BoatbuilderConfirmTab(ProducerOverviewTabBase):
 	widget = 'boatbuilder_confirm.xml'
 	helptext = _lazy("Confirm order")
 
