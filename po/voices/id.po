@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2015-02-02 15:26+0200\n"
+"PO-Revision-Date: 2015-02-02 15:27+0200\n"
 "Last-Translator: Samuel D.S.P. <Samuel_DSP@yahoo.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/uh/voices/id/>"
 "\n"
@@ -37,7 +37,7 @@ msgstr "Daerah in sekarang menjadi milik warna kita."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
-msgstr "Bagian tanah ini sekarang milik kita"
+msgstr "Bagian tanah ini sekarang milik kita."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
