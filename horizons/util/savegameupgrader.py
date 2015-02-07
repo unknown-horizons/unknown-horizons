@@ -389,6 +389,8 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev74(self, db):
 		db("INSERT INTO metadata VALUES (?, ?)", "selected_tab", None)
 
+	def _upgrade_to_rev75(self, db):
+		db("ALTER TABLE ship_route_waypoint ADD COLUMN unload_all BOOL DEFAULT 0")
 
 	def _upgrade(self):
 		# fix import loop
@@ -461,6 +463,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev73(db)
 			if rev < 74:
 				self._upgrade_to_rev74(db)
+			if rev < 75:
+				self._upgrade_to_rev75(db)
 
 			db('COMMIT')
 			db.close()
