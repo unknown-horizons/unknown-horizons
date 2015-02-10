@@ -373,12 +373,13 @@ def start_singleplayer(options):
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	from horizons.util.savegameaccessor import MapFileNotFound
+	from horizons.util.savegameupgrader import SavegameTooOld
 	try:
 		_modules.session.load(options)
 		_modules.gui.close_all()
 	except InvalidScenarioFileFormat:
 		raise
-	except MapFileNotFound, Exception:
+	except (MapFileNotFound, SavegameTooOld, Exception):
 		_modules.gui.close_all()
 		# don't catch errors when we should fail fast (used by tests)
 		if os.environ.get('FAIL_FAST', False):
