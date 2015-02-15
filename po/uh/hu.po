@@ -7,19 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-09-25 22:20+0200\n"
-"Last-Translator: Szabolcs Tóth <tothszabolcs@gmail.com>\n"
+"PO-Revision-Date: 2015-02-06 16:14+0200\n"
+"Last-Translator: Bence Nagy <bence.nagy@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "Az Unknown Horizons alkalmazás összeomlott."
+msgstr "Az Unknown Horizons összeomlott."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -36,7 +36,7 @@ msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Kérjük, küld el IRC-n, vagy a fórumunkon, amelyet a http://unknown-"
+"Kérjük, küldd el IRC-n vagy a fórumunkon, amelyet a http://unknown-"
 "horizons.org oldalon találsz meg."
 
 #: run_uh.py:178
@@ -45,7 +45,7 @@ msgstr "Hiba: Nem találom a szükséges \"PyYAML\" könyvtárat."
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr "A PyYAML (egy szükséges könyvtár) hiányzik és telepíteni kell."
+msgstr "A PyYAML (egy szükséges könyvtár) hiányzik, és telepíteni kell."
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
@@ -56,8 +56,8 @@ msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"A Linux felhasználók a csomagkezelőn keresztül telepíthetik a \"pyyaml\" "
-"vagy \"python-yaml\" nevű csomagokat."
+"Linux-felhasználók a csomagkezelőjükkel telepíthetik a \"pyyaml\" vagy \""
+"python-yaml\" nevű csomagot."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
@@ -116,7 +116,7 @@ msgstr "Egy települést kell alapítanod, mielőtt építkezni tudnál!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Válaszd ki a hajót és navigálj a partra a jobb egérgombbal."
+msgstr "Válaszd ki a hajót, és navigálj a partra a jobb egérgombbal."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -2086,15 +2086,15 @@ msgstr "Víz:"
 
 #: horizons/gui/modules/singleplayermenu.py:229
 msgid "Max island size:"
-msgstr "Maximális sziget méret:"
+msgstr "Maximális szigetméret:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Preferred island size:"
-msgstr "Előnyös sziget méret:"
+msgstr "Előnyös szigetméret:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Island size deviation:"
-msgstr "Sziget méret eltérés:"
+msgstr "Szigetméret eltérés:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
@@ -2597,7 +2597,7 @@ msgstr "Kakaóültetvény"
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:154
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr "Kakaóbabot termesz, édességek előállításához. Farm szükséges hozzá."
+msgstr "Kakaóbabot termeszt édességek előállításához. Farm szükséges hozzá."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:159
@@ -2627,7 +2627,7 @@ msgstr "Legelő"
 #. tooltip_text of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:175
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Birkákat nevel. Gypjút állít elő. Farm szükséges hozzá."
+msgstr "Birkákat nevel. Gyapjút állít elő. Farm szükséges hozzá."
 
 #. name of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:180
@@ -2667,7 +2667,7 @@ msgstr "Cukornád ültetvény"
 #. tooltip_text of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:203
 msgid "Used in liquor production. Needs a farm."
-msgstr "Szükséges alkohol előállításához. Farmra szükséges hozzá."
+msgstr "Szükséges alkohol előállításához. Farm szükséges hozzá."
 
 #. name of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:208
@@ -2713,7 +2713,7 @@ msgstr "Horgász sátor"
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:236
 msgid "Fishes the sea, produces food."
-msgstr "A tengeren horgászik, élelmiszert termetl."
+msgstr "A tengeren horgászik, élelmiszert termel."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:241
@@ -3345,7 +3345,7 @@ msgstr "Az épületet egy részének egyenletes talajon kell lennie."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr "A telepeseket megfertőzte a fekete halál!"
+msgstr "A telepeseket megfertőzte a Fekete Halál!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3502,7 +3502,7 @@ msgstr "liszt"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr "levágásra szánt sertés"
+msgstr "vágósertés"
 
 #. This is a database entry: the name of a resource
 msgid "recreation"
@@ -3518,7 +3518,7 @@ msgstr "márvány"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
-msgstr "tengerész"
+msgstr "Tengerészek"
 
 #. This is a database entry: the name of a resource
 msgid "clay deposit"
@@ -3528,7 +3528,8 @@ msgstr "agyag"
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
-"{player1} és {player2} befejezték a hadakozást és mostantól szövetségesek."
+"{player1} és {player2} véget vetettek a háborúnak, és mostantól "
+"szövetségesek."
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
@@ -3552,7 +3553,7 @@ msgstr "parfüm"
 
 #. This is a database entry: the name of a resource
 msgid "cotton plants"
-msgstr "gyapot ültetvények"
+msgstr "gyapotültetvények"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
@@ -3659,7 +3660,7 @@ msgstr "Néhányan a lakosaid közül nem tudnak eljutni a főtérre."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} és {player2} halálig küzdenek egymással."
+msgstr "{player1} és {player2} mindhalálig fognak küzdeni egymással."
 
 #. This is a database entry: the name of a resource
 msgid "hops"
@@ -3695,7 +3696,7 @@ msgstr "közösség"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr "fűszernövény ültetvény"
+msgstr "fűszernövény-ültetvény"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
@@ -3703,7 +3704,7 @@ msgstr "higiénia"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr "levágásra szánt marha"
+msgstr "vágómarha"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
@@ -3739,7 +3740,7 @@ msgstr "virágok"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr "indigócserje ültetvény"
+msgstr "indigócserje-ültetvény"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
@@ -3755,7 +3756,7 @@ msgstr "kő"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr "Nem sikerült a feladat."
+msgstr "Nem sikerült a küldetés."
 
 #. This is a database entry: the name of a resource
 msgid "fire"
@@ -3789,7 +3790,7 @@ msgstr "A csapatod nem akarja elhagyni a térképet."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} a {player2} túljutottak a viszályokon."
+msgstr "{player1} és {player2} abbahagyták az ellenségeskedést."
 
 #. This is a database entry: the name of a resource
 msgid "grass"
@@ -3822,7 +3823,7 @@ msgstr "méhészet"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr "A bányád kifonyott a nyersanyagból."
+msgstr "A bányád kifogyott a nyersanyagból."
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
@@ -3842,7 +3843,8 @@ msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr ""
-"{player1} és {player2} felbontották a szövetséget és mostantól hadban állnak."
+"{player1} és {player2} felbontották a szövetséget, és mostantól hadban "
+"állnak."
 
 #. This is a database entry: the name of a resource
 msgid "textile"
@@ -3859,7 +3861,7 @@ msgstr "ágyú"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Ennek az épületnek a lakosait megfertőzte a fekete halál!"
+msgstr "Ennek az épületnek a lakosait megfertőzte a Fekete Halál!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3868,7 +3870,7 @@ msgstr "Egy új hajó elkészült a következő névvel: {name}."
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr "tea ültetvények"
+msgstr "teaültetvények"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"

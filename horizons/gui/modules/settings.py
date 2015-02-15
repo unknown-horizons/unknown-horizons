@@ -50,9 +50,11 @@ class SettingsDialog(PickBeltWidget, Window):
 	"""Widget for Options dialog with pickbelt style pages"""
 
 	widget_xml = 'settings.xml'
-	sections = (('graphics_settings', _lazy('Graphics')),
-	            ('hotkeys_settings', _lazy('Hotkeys')),
-			    ('game_settings', _lazy('Game')))
+	sections = (
+		('graphics_settings', _lazy('Graphics')),
+		('hotkeys_settings', _lazy('Hotkeys')),
+		('game_settings', _lazy('Game')),
+	)
 
 	def __init__(self, windows):
 		Window.__init__(self, windows)
@@ -65,7 +67,9 @@ class SettingsDialog(PickBeltWidget, Window):
 			'defaultButton': self.set_defaults,
 			'cancelButton': self._windows.close,
 		})
-
+		
+	def _init_settings(self):
+		"""Init the settings with the stored values."""
 		languages = find_available_languages().keys()
 		language_names = [LANGUAGENAMES[x] for x in sorted(languages)]
 
@@ -110,12 +114,13 @@ class SettingsDialog(PickBeltWidget, Window):
 		self._fill_widgets()
 
 		# key configuration
-		hk = HotkeyConfiguration()
+		self.hotkey_interface = HotkeyConfiguration()
 		number = self.sections.index(('hotkeys_settings', _('Hotkeys')))
-		self.page_widgets[number].addChild(hk.widget)
-		self.hotkey_interface = hk
+		self.page_widgets[number].removeAllChildren()
+		self.page_widgets[number].addChild(self.hotkey_interface.widget)
 
 	def show(self):
+		self._init_settings()
 		self.widget.show()
 
 	def hide(self):

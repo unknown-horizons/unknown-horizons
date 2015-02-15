@@ -67,8 +67,6 @@ class livingProperty(object):
 	def __delete__(self, obj):
 		self.__set__(obj, None)
 
-	def __del__(self):
-		self.__value = None
 
 
 class LivingObject(object):

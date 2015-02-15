@@ -168,7 +168,3 @@ class TabInterface(object):
 
 	# Shortcut to set and retrieve the widget's current position.
 	position = property(_get_position, _set_position)
-
-	def __del__(self):
-		"""Do cleanup work here."""
-		self.widget = None
