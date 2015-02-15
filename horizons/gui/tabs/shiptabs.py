@@ -34,7 +34,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 
 
 class ShipOverviewTab(OverviewTab):
-	widget = 'overview_trade_ship.xml'
+	widget = 'overview_ship.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
 	helptext = _lazy("Ship overview")
 
@@ -112,24 +112,11 @@ class ShipOverviewTab(OverviewTab):
 		self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons,
 			lambda b: b.res_id == WEAPONS.CANNON)
 
-	def _refresh_discard_resources(self):
-		if self.ship_inv.get_sum_of_stored_resources() == 0:
-			self.widget.findChild(name='discard_res_bg').set_inactive()
-			self.widget.findChild(name='discard_res').set_inactive()
-		else:
-			self.widget.findChild(name='discard_res_bg').set_active()
-			self.widget.findChild(name='discard_res').set_active()
-
-	def _discard_resources(self):
-		self.ship_inv.reset_all()
-		self.widget.child_finder('inventory').update()
-
 	def refresh(self):
 		events = {
 			# show rename when you click on name
 			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
 			'configure_route/mouseClicked': Callback(self._configure_route),
-			'discard_res/mouseClicked': Callback(self._discard_resources)
 		}
 
 		self._refresh_found_settlement_button(events)
@@ -138,7 +125,6 @@ class ShipOverviewTab(OverviewTab):
 
 		self.widget.child_finder('inventory').update()
 		self._refresh_combat()
-		self._refresh_discard_resources()
 		super(ShipOverviewTab, self).refresh()
 
 
@@ -185,6 +171,34 @@ class FightingShipOverviewTab(ShipOverviewTab):
 	def on_instance_removed(self):
 		self.weapon_inventory = None
 		super(FightingShipOverviewTab, self).on_instance_removed()
+
+
+class TradeShipOverviewTab(ShipOverviewTab):
+	widget = 'overview_trade_ship.xml'
+	icon_path = 'icons/tabwidget/ship/ship_inv'
+	helptext = _lazy("Ship overview")
+
+	def _refresh_discard_resources(self):
+		if self.ship_inv.get_sum_of_stored_resources() == 0:
+			self.widget.findChild(name='discard_res_bg').set_inactive()
+			self.widget.findChild(name='discard_res').set_inactive()
+		else:
+			self.widget.findChild(name='discard_res_bg').set_active()
+			self.widget.findChild(name='discard_res').set_active()
+
+	def _discard_resources(self):
+		self.ship_inv.reset_all()
+		self.widget.child_finder('inventory').update()
+
+	def refresh(self):
+		super(TradeShipOverviewTab, self).refresh()
+		events = {
+
+		        'discard_res/mouseClicked': Callback(self._discard_resources)
+		}
+		self.widget.mapEvents(events)
+		self._refresh_discard_resources()
+		super(TradeShipOverviewTab, self).refresh()
 
 
 class TraderShipOverviewTab(OverviewTab):

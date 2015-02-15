@@ -434,16 +434,13 @@ class SavegameUpgrader(object):
 		from horizons.savegamemanager import SavegameManager
 		metadata = SavegameManager.get_metadata(self.original_path)
 		rev = metadata['savegamerev']
-		if not SavegameUpgrader.can_upgrade(rev):
-			raise SavegameTooOld(revision=rev)
-		else: # upgrade
+
+		if rev < VERSION.SAVEGAMEREVISION :
+			if not SavegameUpgrader.can_upgrade(rev):
+				raise SavegameTooOld(revision=rev)
+			
 			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
 						     (rev, VERSION.SAVEGAMEREVISION))
-			self.using_temp = True
-			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename
-				(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
-			os.close(handle)
-			shutil.copyfile(self.original_path, self.final_path)
 			db = DbReader(self.final_path)
 			db('BEGIN TRANSACTION')
 
@@ -514,6 +511,10 @@ class SavegameUpgrader(object):
 	def get_path(self):
 		"""Return the path to the up-to-date version of the saved game."""
 		if self.final_path is None:
+			self.using_temp = True
+			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
+			os.close(handle)
+			shutil.copyfile(self.original_path, self.final_path)			
 			self._upgrade()
 		return self.final_path
 
