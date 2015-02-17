@@ -31,8 +31,7 @@ from productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
 	SmallProductionOverviewTab
 from residentialtabs import SettlerOverviewTab
 from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
-						TradeShipOverviewTab, TraderShipOverviewTab, \
-						EnemyShipOverviewTab
+	TradeShipOverviewTab, TraderShipOverviewTab, EnemyShipOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
