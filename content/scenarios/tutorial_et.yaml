@@ -109,39 +109,39 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kõik kaubad su laos on sellel "turuplatsil" saadavad; seega ei pea su elanikud käima kaluri juures või isegi laos.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
+  - Peaksid vältima oma põhiasunduse telkide paigutamist saeveskitele väga lähedale, sest telkide püstitamisel kaovad puud, mida su saeveskida vajavad laudade tootmiseks.
+  - Kompaniid töötavad isegi siis, kui nad ei ole telkidega ühendatud. Seega ei pea sa ehitama teed peaväljaku ja nt. saeveski vahele.
   - ''
   - [BoldLabel, 'Task: Build a main square.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the main square.'
+    Vaatame nüüd lähemalt peaväljakut.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - Kaardil "Konto" näed sa selle saare bilanssi; nii tehtavaid kulutusi kui ka kogutavaid makse.
+  - '"Müük" ja "Ost" vastavad su kauplemise bilansile, millest tuleb juttu hiljem.'
+  - Kui su bilanss on positiivne, siis kokkuvõttes teenid sa kasumit.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - Erinevate tasemete ülevaate kaardid võimaldavad sul näha su elanike statistikat. Samuti saad sa siin kehtestada ka tasemele vastava globaalse maksu ja lubada või keelata selle taseme elanikel tõusta järgmisele tasemele.
 
 - &FIRSTTENT
   - [Message, Build a tent and connect it to the main square if necessary.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Headline, 'UUS ÜLESANNE: ELAMUD']
   - [Image, content/gui/images/background/hr.png]
-  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
+  - Asunikud tahavad pea kohale katust; vastasel korral nad isegi ei mõtle su linnas elamisele! Sa pead püstitama telgid.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
-  - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
+  - Telgid on lihtsad elamud. Su elanikud soovivad need asendada, kui nad tõusevad kõrgematele tasemetele.
+  - Ära unusta, et iga ehitise uuendamine vajab ehitusmaterjale; näiteks esimesel uuendamisel on vaja puitu.
+  - Kaalu uuendamise keelamist, kui materjalide varud on otsakorral.
+  - Asunikud ei pruugi olla väga kasulikud, sest nad proovivad tarbida ära kõik kaubad, mis toodetakse, kui vähemalt maksavad nad makse ja see on hetkel ainus raha saamise viis!
   - ''
   - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
-  - [Message, Build at least three additional tents and connect them to the main square.]
+  - [Message, Ehita vähemalt kolm täiendavat telki ja ühenda need peaväljakuga.]
   - '
 
     Heidame nüüd pilgu telgi ülevaate vahelehele.'
@@ -153,234 +153,234 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * ressursse mida nad nõuavad.'
   - Kui nende nõudmised on täidetud, suurenevad nii heaolu kui ka maksutulu.
-  - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
-  - Note that you can also change the global tax settings here, too.
+  - Vastasel korral kahanevad nii õnn kui ka sissetulekud. Mingil hetkel võivad su elanikud tõeliselt kibestuda ja asundusest lahkuda jättes maha alla käinud varemed.
+  - Pane tähele, et sa saad muuta globaalseid makse ka siin.
   - ''
   - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
-    TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
+    VIHJE: Klahvi SHIFT all hoidmine lihtsustab mitme samasuguse ehitise püstitamist.'
 
 - &SIGNALFIRE
-  - [Message, Build a signal fire at the coast close to your warehouse.]
+  - [Message, Ehita oma lao lähedale kaldale signaaltuli.]
   - [Headline, 'ÜLESANNE: EHITA SIGNAALTULI']
   - [Image, content/gui/images/background/hr.png]
-  - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
-  - The trader will supply your settlement with necessary goods which you can't produce yet.
-  - You can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling them yields more profit.
-  - Normally the trader ships just sail around and look for deals, but you can speed things up a bit.
+  - Kas sa näed laeva, mis möödub aeg-ajalt su saarest? See laev kuulub Vabale Kauplejale, selle arhipelaagi ühele esimesele asunikule.
+  - Kauple varustab su kolooniat vajalike kaupadega, mida sa ise ei saa veel toota.
+  - Samuti on sul võimalik müüa oma liigne toodang, kuid tavaliselt on toodangu ise tarbimine (täiendavaid telke ehitades) mõistlikum, sest nii on saadav kasum suurem.
+  - Tavaliselt seilavad kauplejate laevad niisama ringi ja otsivad häid tehinguid, kuid sa saad asju pisut kiirendada.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a signal fire at the coast near your warehouse. It will show ships the way to your settlement.
-  - The signal fire has to cover the area which the ships pass through to catch them.
+  - Selleks on vaja ehitada su lao lähedale signaaltuli. See juhatab laevad su kolooniasse.
+  - Signaaltuli peab laevade kohale juhatamiseks katma kogu ala, mida laevad läbivad.
   - [Pagebreak]
   - '
 
-    After this little advertisment, the trader will also stop by and look into your warehouse if it planned to sail past it.'
-  - You can propose deals via the warehouse tab "Buy/Sell".
+    Selle väikese reklaami tulemusel teeb kaupleja su lao juures peatuse, kuigi tal oli alselt plaan mööda sõita.'
+  - Lao kaardil "Müü/Osta" saad sa algatada tehinguid.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - At the 'sailors' tier, you are equipped with three trading slots.
-  - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
-  - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
+  - Tasemel "Meremees" on sul kasutada kolm kauplemispesa.
+  - Klõpsa väikesel ikoonidel, et lülitada "Müü" ja "Osta" režiimide vahel.
+  - Klõpsa pesal, et valida kaup, millega sa soovid äri teha. Me seletame seda täiendavalt siis, kui sa oled kaplemiseks valmis.
   - ''
   - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
+  - [Message, 'Veendu, et varuks on  vähemalt 30 tööriista. Selleks võib kuluda natuke aega.']
   - [Headline, 'ÜLESANNE: ÕPI KAUPLEMA']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your warehouse from time to time.
+  - 'Imeline! Vaba Kaupleja peatub nüüd su lao lähedal aeg-ajalt.
 
 
-    Let''s continue our tutorial on how to trade.'
-  - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
-  - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
-  - When buying, you will buy sufficient to hold your 'target value' in stock.
-  - When selling, the 'target value' is the stock amount at which you will always stop selling until you get more of that resource again.
+    Järgmisena õpime kauplema.'
+  - Kaubagrupi valimisel järel näitab pesa alumises servas olev roheline riba (kui ta on nähtav) laos oleva kauba kogust.
+  - Sikutades liuguri iga pesa parempoolsesse serva määrab "vajaliku koguse", mis omab erinevat tähendust kaartidel "Ost" ja "Müük".
+  - Ostmisel ostad sa piisavalt, et hoida laos oleks varus "vajalik kogus" kaupa.
+  - Müümisel lõppeb müük "vajaliku koguseni" jõudmisel. Selleni jõudes lõppeb müümine alati vastavat ressurssi lisandumiseni.
   - [Pagebreak]
   - '
 
-    For example:
+    Näiteks:
 
-    Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.'
-  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
-  - If the free trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
-  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
+    Kui sa oled kaardil "Ost" ja laos on kaupa 5 tonni ning liugur asub 9 tonnil, siis sa ei osta rohkem kui 4 tonni.'
+  - Müümine käib sarnaselt. "Müügi" pesa, milles on 18 tonni kaupa ja mille liugur asub 13 tonnil müüb kuni 5 tonni.
+  - Kui vaba kaupleja aga soovib ainult osta või müüb vähem, kui su seaded lubavad, siis pead sellega leppima ja ootama ta naasmist.
+  - 'Unknown Horizons kasutab tarka hindamist, mistõttu kaubaühiku hind on muutuv.
 
-    It is NOT possible to change prices manually!'
-  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
+    Hinna määramine käsitsi EI OLE võimalik!'
+  - Sa saad vaadata oma müügi bilanssi kaardil "Konto" ning võrrelda seal "Müügi" ja "Ostu" tulemusi.
   - ''
   - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a pavilion with connection to the tents.]
+  - [Message, 'Ehita paviljon, mis on ühendatud telkidega.']
   - [Headline, 'ÜLESANNE: EHITA PAVILJON']
   - [Image, content/gui/images/background/hr.png]
-  - Those tools will be enough for the moment. Well done!
-  - You now provide housing, a main square and food to your inhabitants.
-  - Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.
-  - The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
+  - Neist tööriistadest hetkel piisab. Hästi tehtud!
+  - Nüüd võimaldad oma elanikele eluaseme, peaväljaku ja toidu.
+  - Siiski on veel üks nõudmine, mis ei ole hetkel rahuldatud; sa võid vaadata seda lao või telgi kaardilt - su meremehed vajavad lihtsat ehitist, kus nad saaksid palvetada.
+  - Lahenduseks on paviljon, mille küla hingekarjane püstitab kiirelt päikesevarjuks.
+  - Pühakodadest peavad samuti viima rajad telkideni, sest muidu ei jõua su elanikud nendeni.
   - [Pagebreak]
   - '
 
-    Note that faith is treated like a physical resource!'
-  - This means that your inhabitants need a road connection to the producer (pavilion) to pick up faith there.
-  - After some time, they will have consumed it and then again look for a producer to collect more faith.
-  - 'Important:
+    Arvesta sellega, et usku käsitletakse kui füüsilist resurssi!'
+  - See tähendab, et su koloonia elanikud vajavad ühendusteed, mida mööda nad saavad tootja juurest (paviljonist) hankida usku.
+  - Mõne aja möödudes on nad selle ära tarbinud ja otsivad tootjat, kelle käest veel usku hankida.
+  - 'Tähtis:
 
-    It is NOT enough that the building is merely within a certain range of the tents.
+    Sellest EI piisa, et ehitis on telkidest sobival kaugusel.
 
-    The road connection is required as well.'
+    Nõutav on ka ühendav tee.'
   - ''
   - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
-  - [Message, Set the tax level to Low (left end) and wait for your sailors to upgrade.]
+  - [Message, 'Määra madal maksude tase (vasak serv) ja oota, et su meremehed jõuaks järgmisele tasemele.']
   - [Headline, 'UUS ÜLESANNE: JÄRGMINE TASE']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the main square & pavilion and your food supply is adequate.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
-  - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
-  - After some time, the first unit should walk to the main square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - Kõik nõudmised on nüüd täidetud, kui su elanikud külastavad regulaarselt peaväljakut ja paviljoni ja su toiduga varustamine on piisav.
+  - Kui meremehed on piisavalt õnnelikud, siis soovivad nad jõuda järgmisele tasemele, mida kutsutakse Avastajad.
+  - Nende õnnelikuks tegemiseks on sul vaja ainult alandada makse, sest sa oled täitnud oma elanike kõik nõudmised.
+  - Sa ei tohiks jääda madalate maksude juurde pikaks ajaks, sest see viib su varem või hiljem üsna kindlalt pankrotti. Mõneks ajaks on teadlik maksude alandamine siiski mõistlik samm.
+  - Mõne aja möödudes peaks esimene üksus tulema keskväljakule ja otsima seal uut ehitusmaterjali, et ehitada palkmaja. See maja asendab vana telgi.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the main square.'
-  - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
-  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
-  - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
+    Selline elamute uuendamine nõuab ressursse ja seetõttu saab seda peaväljakul piirata.'
+  - Samas on olemas ka ehitiste tasuta uuendamised, mida näed näiteks saeveskis. Sellisel juhul muutub ainult graafika.
+  - Uuendatud elamusse mahub rohkem elanikke ja avastajad maksavad meremeestest ka rohkem makse.
+  - Ilmselt oled juba taibanud, et avastajad nõuavad täiendavaid kaupu, mida meremehed ei vaja. Seega pead kulutama rohkem raha, et ka luurajad oleksid õnnelikud.
   - ''
   - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a farm and keep some empty space around it.]
+  - [Message, Ehita farm ja jäta selle ümbrusesse natuke tühja maad.]
   - [Headline, 'ÜLESANNE: EHITA FARM']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
-  - Now you have access to new buildings, take a look at the Build menu again.
+  - Palju õnne! Mõned su elaniukd on jõudnud järgmisele tasemele!!!
+  - Nüüd on sul võimalid ehitada uusi ehitisi. Vaata uuesti menüüd "Ehita".
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - A shiny new tab appeared there.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the farm).
-  - The farm is a very special production building since it can produce not only one, but very many (and different) goods if you choose.
-  - The output of farms depends on what kind of fields you build around it.
+  - Sinna on lisandunud uus vahekaart.
+  - Avastajad vajavad kangast. Seega pead üles seadma kanga tootmisliini, mille sisendiks on lambavill (see on üks kaupadest, mida farm toodab).
+  - Farm on väga eriline tootmishoone, sest ta saab soovi korral toota mitte ühte, vaid paljusid (ja erinevaid) kaupu.
+  - Farmi toodang sõltub tema ümber rajatud põldudest.
   - [Pagebreak]
   - '
 
-    We will have a closer look at this later.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a warehouse.
-  - As long as units of the final production company can reach the farm, and collectors from the warehouse or storage tent can reach the final company everything's fine.
-  - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
-  - Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+    Lähemalt vaatame seda hiljem.'
+  - Farmid nagu ka kõik teised kompaniid, mis toodavad toormaterjale, ei pea olema ühendatud lao või laohoonega.
+  - Nii kaua kuni lõpp toodangu kompanii üksused jõuavad farmini ja laohoone või -telgi kogujad jõuavad lõppkompaniini, on kõik korras.
+  - Kui sa siiski kavatsed teha mingit töötlemist saare erinevates osades (mõnikord on see mõislik) või isegi teis(t)el saar(t)el, siis on sul vaja ühendust kogujatega.
+  - Proovi ehitada farm nii rannikust kui ka teistest ehitistest natuke kaugemale, sest edukaks tööks on vaja seni kasutamata maad.
   - ''
   - [BoldLabel, 'Task: Build a farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Build at least one pasture and add potato fields if you like.]
-  - [Headline, 'NEW TASK: BUILD FIELDS']
+  - [Message, Ehita vähemalt üks karjamaa ja lisa soovi korral ka kartupõld või kaks.]
+  - [Headline, 'UUS ÜLESANNE: EHITA PÕLLUD']
   - [Image, content/gui/images/background/hr.png]
-  - The farm itself is not going to produce anything without some fields.
-  - You currently have the choice between pastures, potato and sugar fields.
-  - 'Let''s have a short overview:
+  - Põldudeta farm ei tooda iseenesest mitte midagi.
+  - Sul on hetkel valida karjamaa ning kartuli- ja suhkrupõllu vahel.
+  - 'Kiire ülevaade:
 
-    * Pasture: Sheep live here, producing lamb wool.
+    * Karjamaal on lambad, kes annavad villa.
 
-    * Potato field: Grows potatoes which are currently treated as food.
+    * Kartulipõllult saab kartuleid, mida hetkel käsitletakse toiduna.
 
-    * Sugar field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
-  - We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.
-  - Note that for potatoes you will need a road connection to the farm (not to the field!) as it will be the only company to work on the goods.
+    * Suhkrupõllult saab suhkrut, millest destillerritakse alkoholi ja (hiljem) valmistatakse maiustusi.'
+  - Hetkel on vaja ainult karjamaad, kuid kui sul toidust on puudus (võib-olla on sul liiga palju elamuid), siis võid ehitada ka kartulipõlde.
+  - Selleks, et kartulid jõuaks tarbijateni, pead farmi ühendama teedega (mitte põllu), sest kaupadega tegeleb ainult kompanii.
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the farm - but you need to check how many fields one farm can serve.
-  - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
-  - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
+    Veendu, et kõik rajatavad põllud on farmi maa-alal.'
+  - Sul võib olla kombineeritud tootmine - üks karjamaa ei taga farmi 100% efektiivsust - kuid sa pead kontrollima, mitut põldu suudab su farm teenindada.
+  - Erinevad põldude liigid vajavad farmi üksustelt rohkem või vähem aega (külvamine, koristamine, karjatamine, jne.) ja seetõttu ei pruugi farm teenindada kõiki põlde, mis sa talle oled juba rajanud.
+  - Praegu ei pea sa sellepärast muretsema, sest sa ei ole ehitanud mitte ühtegi põldu. Aga muutkem nüüd seda!
   - ''
   - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
+  - [Message, 'Ehita lao telk (taseme 1 kaart) sinna, kus see on mõistlik.']
   - [Headline, 'UUS ÜLESANNE: EHITA LADU']
   - [Image, content/gui/images/background/hr.png]
-  - Did you watch your lumberjack recently?
-  - Since your warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
-  - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
-  - We can improve this situation in two different ways, and we will have a look at both of them below.
-  - 'All companies offer to do no work at all.
+  - Kas sa oled hiljuti oma saeveskit jälginud?
+  - Kuna su laohoone ei ole lõputult suur, et kaupu hoida, siis lõpetavad kogujad lao täitumisel kaupade kogumise.
+  - Kui meremehed ei ole hiljuti soovinud oma telkide uuendamist, siis on sul ilmselt palju laudu ja saeveski ei tööta.
+  - Sellist olukorda saab parandada kahel viisil ja järgnevalt tutvume mõlemaga.
+  - 'Kõik kompaniid ei pruugi alati tööd pakkuda.
 
-    This may sound strange, but click on the gear wheel you see in a lumberjack hut''s overview.'
-  - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
+    See võib kõlada imelikult, kuid klõpsa hammasrattal, mis on saeveski ülevaatel.'
+  - Kui seal on "puhkuse" olek lubatud, siis on ehitise käituskulud madalamad. Need ei lange nulli, kuid nad on siiski väiksemad, kui sa hoiad kompanii kaupu tootmas.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
-    This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the storage tent.'
-  - 'This building has two purposes. It:
+    See tähendab, et sa saad raha koguda, kui sa ajutiselt ei kompaniid ei vaja ja ei soovi ka seda lammutada.'
+  - 'Teine võimalus on ehitada viimane esimese taseme ehitis, millest ei ole siiani veel juttu olnud: lao telk.'
+  - 'Sellel ehitisel on kaks ülesannet. See
 
-    * Offers more storage for your goods, and
+    * võimaldab sul hoiustada rohkem kaupu, ja
 
-    * sends its own collectors to fetch goods, just like the warehouse does.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
+    * saadab oma enda kogujad kapuadele järgi, nii nagu seda teevad laod.'
+  - Kõik kompaniid võivad olla ühendatud ka laoga, et nende toodangut kogutaks ja kui lao kogujad on ülekoormatud, siis saab laotelk sind ladustamisel aidata.
   - ''
   - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a weaver that can somehow reach the wool of your farm.]
+  - [Message, 'Ehita ketrusvabrik, mis saab kuidagi töödelda su farmi villa.']
   - [Headline, 'UUS ÜLESANNE: EHITA KETRUSVABRIK']
   - [Image, content/gui/images/background/hr.png]
-  - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
-  - There are two spots where you can build it - either close to the farm or close to a Storage Tent (or the warehouse).
-  - In both cases you should ensure the connection to a trail as well.
-  - You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
+  - Nüüd, kus villatootmine on käivitatud, on sul vaja veel kangrut, et toota villast kangast.
+  - 'Ehitamiseks mõistlikke kohti on kaks: kas farmi või lao (-telgi) naabrusesse.'
+  - Mõlemal juhul pead rajama ka ühendava teeraja.
+  - Ketrusvabriku võid paigutada farmi lähedale ja samas hävitada farmi ühendusteed, kuid villa varumine ja töötlemine jätkub ikkagi.
   - ''
   - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance.]
-  - [Headline, 'NEW TASK: COMPLETE TUTORIAL']
+  - [Message, 'Linnas olev maja, milles on vähemalt 50 elanikku, lõpetab selle õpetuse. Bilanns peab polema positiivne.']
+  - [Headline, 'UUS ÜLESANNE: LÕPETA ÕPETUS']
   - [Image, content/gui/images/background/hr.png]
-  - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
-  - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
-  - You also need enough money to keep this economy running, so a positive balance (check in the warehouse tab 'Account') is required.
+  - Proovi majutada oma linnas vähemalt 50 elanikku ehitades rohkem elamuid.
+  - Kui su majandus töötab piisavalt, et rahuldada sellist elanike arvu, siis oled sa valmis avastama mängu "Unknown Horizons"!
+  - Sul on vaja piisavalt raha, et hoida majandus toimimas, seega on positiivne bilanss vajalik (kontrolli lao kaarti "Konto").
   - ''
   - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!]
-  - [Headline, NO TASKS LEFT]
+  - [Message, Palju õnne! Oled jõudnud selle õpetuse lõppu ja valmis kohtuma järgmiste väljakutsetega!]
+  - [Headline, ROHKEM ÜLESANDEID EI OLE]
   - [Image, content/gui/images/background/hr.png]
-  - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
-  - 'If you have any suggestions on what we could or should improve, add or leave out:'
+  - Sa oled edukalt lõpetanud kõik sulle antud ülesanded. Maailm on nüüd sulle valla, oodates su suuri tegusid ja vapraid avastusi!
+  - 'Kui sul on ettepanekuid parandusteks, täiendusteks aga ka eemaldamiseks, siis anna sellest meile teada:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Our forums are open to you as well!
-  - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
+  - Meie foorumid on sulle samuti avatud!
+  - Senised parimad tulemused arhiveeriti liitudes me IRC kanaliga, nii et sa võiksid hakatuseks proovida seda (-;
   - [Pagebreak]
-  - [Headline, Thanks!]
+  - [Headline, Auur aitäh!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -388,10 +388,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Thanks for playing the tutorial!
+    Täname, et mängisid õpetust!
 
 
-    Your UH-Team'
+    Tervitavad Unknown Horizonsi loojad'
   - - Gallery
     - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
@@ -655,4 +655,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 67 translated messages, 124 untranslated messages.
+  translation_status: 191 translated messages.

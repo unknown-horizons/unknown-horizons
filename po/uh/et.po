@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-12-12 17:54+0200\n"
+"PO-Revision-Date: 2015-03-17 10:58+0200\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -574,6 +574,7 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
+"Praeguse ressursi asemel kuvatakse sinu valitut. Klõps X peal tühjendab."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
@@ -727,6 +728,7 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
+"Mängija koloonia(te)s kõigist allikaist loodavate ressursside koguväärtus"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
@@ -748,6 +750,7 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
+"Koloonia(te) elanike, ehitiste ja üldise heaolu edenemist ilmestav väärtus"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -755,12 +758,12 @@ msgstr "Üksused"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Mängija kõigi üksuste väärtus"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr ""
+msgstr "Kõigi üksikute punktide kogusumma, ehk mängija täistulemus"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
@@ -787,7 +790,7 @@ msgstr "Elud"
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
 msgid "Status"
-msgstr ""
+msgstr "Olek"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
@@ -828,11 +831,11 @@ msgstr "Vali kaart:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Vali salvestatud mängu kaart:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "Vali kaardi allikas"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
@@ -840,11 +843,11 @@ msgstr "Loo uus kaart"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "Laadi olemasolev kaart"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Laadi salvestatud mängu kaart"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -908,7 +911,7 @@ msgstr "Luba teede rajamine"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "Luba pipeti režiim (ehitiste kloonimine)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -938,19 +941,19 @@ msgstr "Kiirlaadimine"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "Lülita ümbritsevate ehitiste läbikumavus"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Too esile maa-ala omanik"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Lülita terviseribad"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "Suuna kaamera valikule"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
@@ -979,12 +982,12 @@ msgstr "Näita koordinaatide väärtusi (Silumine)"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Esmane"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundaarne"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
@@ -1016,7 +1019,7 @@ msgstr "Laadimine…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Vaheta taustapilt"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1113,7 +1116,7 @@ msgstr "Valmis:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
+msgstr "Määrab su olekuks valmis (vajalik mängu alustamiseks)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1125,7 +1128,7 @@ msgstr "Laadi mäng:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
-msgstr ""
+msgstr "Laadi salvestatud mäng"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
@@ -1176,6 +1179,8 @@ msgstr "Täisekraan:"
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+"SDL on mõeldud ainult toetuseta tagavara variandina ja võib põhjustada "
+"probleeme!"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
@@ -1183,11 +1188,13 @@ msgstr "Kasutatav renderdaja:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Suurim kaadrisagedus:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr ""
+"Määrab suurima kaardisageduse, mida kasutatakse; vaikimisi 60 kaadrit "
+"sekundis."
 
 #: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
@@ -1216,25 +1223,29 @@ msgstr "Kerimine kaardi ääres:"
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Kas liigutada vaadet, kui hiire kursor jõuab kaardi serva lähedale"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "Kursoriga tsentreeritud suurendus:"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"Kui see on lubatud, siis kasutatakse hiire rattaga suurendamisel vaate "
+"keskmena kursori asukohta. Kui on keelatud, siis suurendatakse alati vaate "
+"keskkohast."
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Panoraam hiire keskmise klahviga:"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
+"Kui lubatud, siis saab hiire keskmise klahviga lohistada kaamera teise kohta"
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "0 is default system settings"
@@ -1266,37 +1277,40 @@ msgstr "Keel"
 
 #: content/gui/xml/mainmenu/settings.xml:164
 msgid "General"
-msgstr ""
+msgstr "Üldine"
 
 #: content/gui/xml/mainmenu/settings.xml:169
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Suure ja mini kaardi korraga pööramine:"
 
 #: content/gui/xml/mainmenu/settings.xml:169
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Kas pöörata ka mini kaarti, kuitoimub suure kaardi pööramine"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Ehitamist ei segata:"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Kui lubatud, siis jäädakse pärast ehitise valmimist edasi ehitamise režiimist"
 
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Laeva automaatne lossimine:"
 
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Kas lossida laev pärast koloonia asutamist"
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Tavaliselt mängides ära kasuta. See määrab, kas silumisteavet salvestatakse "
+"su kodukataloogis logide kataloogi või mitte. Teeb mängu aeglaseks."
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
@@ -1304,16 +1318,16 @@ msgstr "Luba logimine:"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Production indicators:"
-msgstr ""
+msgstr "Tootmise indikaatorid:"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
-msgstr ""
+msgstr "Kas kuvada ressurssude ikoonid ehitistel, kui nad tootmise lõpetavad"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "Suuremad väärtused muudavad kerimise aeglaseks."
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Scroll delay:"
