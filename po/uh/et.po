@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2015-03-17 10:58+0200\n"
+"PO-Revision-Date: 2015-03-24 08:52+0200\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
@@ -1331,7 +1331,7 @@ msgstr "Suuremad väärtused muudavad kerimise aeglaseks."
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Scroll delay:"
-msgstr ""
+msgstr "Kerimise viide:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Choose a quote type:"
