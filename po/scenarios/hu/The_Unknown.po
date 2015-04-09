@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2014-12-20 16:44+0200\n"
+"PO-Revision-Date: 2015-04-10 00:36+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/the-"
 "unknown/hu/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #. scenario difficulty
 msgid "easy"
@@ -53,10 +53,12 @@ msgid ""
 "Task:\n"
 "Find land and build a port."
 msgstr ""
+"Feladat:\n"
+"Keress szárazföldet és építs egy kikötőt."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr ""
+msgstr "1740. november 22."
 
 #. This is the text body of a logbook page.
 msgid ""
