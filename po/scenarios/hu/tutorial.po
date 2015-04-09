@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-06-12 19:20+0200\n"
-"Last-Translator: Lipták Krisztián <qekwaryi@uni-miskolc.hu>\n"
+"PO-Revision-Date: 2015-04-10 00:40+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian "
 "<https://hosted.weblate.org/projects/uh/tutorial/hu/>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -348,7 +348,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr "Ne felejtsd el úttal összekötni őket a raktárépületekkel."
+msgstr "Ne felejtsd el úttal összekötni őket a raktárépületekkel!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
@@ -498,7 +498,6 @@ msgstr ""
 "szerzésére."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "TASK: Build a tent and connect it to the main square. Tents dont need to "
@@ -507,9 +506,8 @@ msgid ""
 "Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
-"\n"
-"FELADAT: Építs sátrakat és kapcsold őket egybe úttal a főtérrel. A sátraknak "
-"nem kell összeköttetésben lenniük a gazdasági épületekkel."
+"Feladat: Építs egy sátrat és kösd össze a főtérrel. A sátraknak nem kell "
+"összeköttetésben lenniük a gazdasági épületekkel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""

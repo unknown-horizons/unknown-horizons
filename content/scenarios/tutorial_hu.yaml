@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Építs egy raktárat a tengerpartra, így könnyen megközelíthető a többi kereskedő, mint például a szabad kereskedő számára.']
+  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
   - '
 
 
@@ -24,63 +24,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Ez a kapitányod naplója, ahol az összes fontos információ elérhető. A képernyő bal szélén minden teendőről értesítés jelenik meg.
-  - Amennyiben hosszabb leírás szükséges, a napló remélhetőleg segítséget tud nyújtani.
-  - Miután bezárod a naplót, a jobb felső sarokban lévő "Kapitány naplója" (a kis térkép alatt, egy lepecsételt mappával és egy tollal ellátott ikon) ikonnal újra megnyitható.
+  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Az első feladathoz kattints a "Következő bejegyzés elolvasása" gombra a navigációs panelen! Így néz ki:'
+    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    A szókincs javításával, illetve témákkal, bugokkal kapcsolatosan: Kérjük oszd meg velünk, hogy ezáltal jobbá tehessük a bevezetőt!'
+    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
   - '
 
-    Látogasd meg a www.unknown-horizons.org oldalt, hogy megtudd, hogyan veheted fel a kapcsolatot a csapattal!'
-  - És most, kezdjük el a játékot.
+    Visit www.unknown-horizons.org to find out how to contact the team.'
+  - ''
+  - And now, let's start the game!
   - [Pagebreak]
-  - [Headline, 'Új feladat: Telepedj le!']
+  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
   - [Image, content/gui/images/background/hr.png]
-  - A hajó mozgatásához válaszd ki bal egérgombbal, majd jobb egérgombbal kattints oda, ahova el szeretnél jutni.
-  - Amint egy part közelébe érsz, a vasmacskaszerű gomb aktívvá válik az áttekintő fülön.
+  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
+  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Ez azt jelzi, hogy fel tudsz építeni egy raktárházat a gomb megnyomásával ('Település létrehozása' gomb).
-  - Az épület előnézetét húzod körbe, amikor a kurzort mozgatod.
-  - 'Bárhova építheted, ahol az előnézet nem pirossal van árnyékolva.
-
-    Kattints oda, ahova építeni szeretnéd az első épületed.'
+  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
+  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
 - &LUMBERJACK
-  - [Message, Építs egy favágóházat és csatlakoztass hozzá a raktárból egy utat.]
-  - [Headline, 'ÚJ FELADAT: ÉPÍTS FEL EGY FAVÁGÓT']
+  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
+  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
   - [Image, content/gui/images/background/hr.png]
-  - Az építéshez szükséges nyersanyagok a hajódról automatikusan kirakodásra kerültek. Most tudsz építeni pár alap épületet.
-  - Egy favágó építésével fogjuk kezdeni.
-  - This is essential because, at this stage, boards are the only poles your sailors can afford to hang their tents over.
-  - A halásznak is szüksége van néhány deszkára, hogy megépíthesse a csónakját.
-  - A favágó megépítéséhez nyisd meg az építési menüt egy kattintással a nagy ikonon a minitérkép alatt, vagy a B billentyű lenyomásával.
+  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
+  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The build menu is sorted by tiers.
-  - You are currently in the first tier (the Sailors level) so are offered only the basic buildings.
+  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
-  - '
-
-    Ahogy a civilizációd fejlődik, komplexebbnél komplexebb épületek kapsz.'
-  - Most, válaszd ki a favágót a 'Vállalatok' csoportból, és építs egyet ahol több fa van.
-  - Később még tudsz fákat ültetni - de pénzbe kerül. Használd, amit a természet biztosított!
-  - Egy vállalkozásnak mindig szüksége van egy nyomvonalra a raktárhoz, vagy a raktárházhoz. Különben a termékek a vállalkozásban maradnak és nem lesznek begyűjtve.
-  - Ez azt jelenti, hogy építened kell egy utat, hogy összekösd a raktárházat (vagy raktárat) és a favágót.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Nézd a begyűjtőt, hogyan gyűjti be az első saját termelésű deszkákat. Ne aggódj a favágó munkásainak verbuválása miatt, ez automatikusan történik.
+  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - ''
+  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -103,7 +96,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
   - ''
   - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Ne felejtsd el úttal összekötni őket a raktárépületekkel.
+  - Ne felejtsd el úttal összekötni őket a raktárépületekkel!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
@@ -145,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Consider to disable the upgrade if your stock of these materials is low.
   - A telepesek nem a leghasznosabbak a termékek termelésében - de ők azok, akik fizetik az adót és jelenleg még ők az egyetlen egy lehetőséged a pénz szerzésére.
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Építs legalább három további sátrat és kösd be a főtérre.]
@@ -662,4 +655,4 @@ metadata:
   locale: hu
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 96 translated messages, 21 fuzzy translations, 74 untranslated messages.
+  translation_status: 97 translated messages, 20 fuzzy translations, 74 untranslated messages.
