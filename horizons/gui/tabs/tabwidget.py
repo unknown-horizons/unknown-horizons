@@ -49,6 +49,7 @@ class TabWidget(object):
 		self.ingame_gui = ingame_gui
 		self._tabs = [] if not tabs else tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
+		self.current_tab.ensure_loaded() # loading current_tab widget
 		self.widget = load_uh_widget("tab_base.xml")
 		self.widget.position_technique = 'right-239:top+209'
 		self.content = self.widget.findChild(name='content')
@@ -138,7 +139,6 @@ class TabWidget(object):
 
 	def show(self):
 		"""Show the current widget"""
-		self.current_tab.ensure_loaded()
 		# show before drawing so that position_technique properly sets
 		# button positions (which we want to draw our tabs relative to)
 		self.widget.show()
@@ -147,16 +147,7 @@ class TabWidget(object):
 		self.ingame_gui.minimap_to_front()
 
 	def hide(self, caller=None):
-		"""Hides all non-current or current tab widgets"""
+		"""Hides current tab and this widget"""
 		self.current_tab.hide()
 		self.widget.hide()
-		self._hide_other_tabs()
 
-	def _hide_other_tabs(self):
-		"""
-		Hides all the other non-current tab widgets 
-		so that they can be deleted from memory
-		"""
-		for tab in self._tabs:
-			if not tab.__class__.lazy_loading:
-				tab.hide()
