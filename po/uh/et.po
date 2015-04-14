@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2015-03-24 08:52+0200\n"
+"PO-Revision-Date: 2015-04-14 12:55+0200\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
@@ -1335,11 +1335,11 @@ msgstr "Kerimise viide:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "Vali tsitaadi tüüp:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Mängu laadimisel kuvatav tsitaat"
 
 #: content/gui/xml/mainmenu/settings.xml:218
 msgid "Network"
@@ -1355,7 +1355,7 @@ msgstr "Võrgu port:"
 
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Discard current changes"
-msgstr ""
+msgstr "Tühista viimased muudatused"
 
 #: content/gui/xml/mainmenu/settings.xml:244
 msgid "Reset to default settings"
@@ -1372,11 +1372,11 @@ msgstr "Sinu salvestatud mängud:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "Mängu salasõna. Vajalik mänguga liitumiseks"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
 msgid "Cancel"
-msgstr ""
+msgstr "Tühista"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
@@ -1393,11 +1393,11 @@ msgstr "Kustuta valitud salvestatud mäng"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Uus mäng - üks mängija"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr ""
+msgstr "Stsenaarium"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
@@ -1423,7 +1423,7 @@ msgstr "Kaardi seaded:"
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr ""
+msgstr "Kaart:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
@@ -1466,7 +1466,7 @@ msgstr "Vigane failinimi"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Salvestamiseks anti vigane faili nimi."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
@@ -1484,7 +1484,7 @@ msgstr "Kaubanduspartner ei müü seda."
 
 #: horizons/component/tradepostcomponent.py:198
 msgid "You can not store this."
-msgstr ""
+msgstr "Sa ei saa seda salvestada."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
@@ -1500,7 +1500,7 @@ msgstr "Kaubanduspartner ei osta seda."
 
 #: horizons/component/tradepostcomponent.py:240
 msgid "You do not possess this."
-msgstr ""
+msgstr "Sul ei ole seda."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "The trade partner can not store more of this."
@@ -1520,7 +1520,7 @@ msgstr "Kiirsalvestus ebaõnnestus."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Kiirsalvestamisel toimus viga."
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
@@ -1531,6 +1531,7 @@ msgstr "Sinu kaarti ei salvestatud."
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"Kui see viga juhtub uuesti, siis võta palun arendajatega ühendust: {website}"
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1552,20 +1553,20 @@ msgstr "Ei saa diplomaatiat rakendada kuna puuduvad teised mängijad."
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} ruutu"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Vajuta soovitud klahvi"
 
 #: horizons/gui/modules/hotkeys_settings.py:140
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} on juba kasutusel: {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Kas sa soovid selle ülekirjutada?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
@@ -1575,56 +1576,57 @@ msgstr "Ülekirjutamise kinnitus"
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr ""
+msgstr "Tsitaadid"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "Mängu vihjed"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "Mängu menüü avamiseks vajuta 'ESC'."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "Mitme ehitise paigutamiseks hoia all 'SHIFT'."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Hetkel on on mängitavad ainult esimesed {tier} taset."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Mängu peatamiseks vajuta 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "Teid saad vedada hoides all hiire vasakut nuppu."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "Sa saad ehitada mitu ehitist, kui hoiad all klahvi 'SHIFT'."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "Makse alandades saad sa parandada elanike heaolu."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Ehita tuletõrje jaamu ja arste, et kaitsta elanikke tulest ja haigustest."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Ehita laotelke, et suurendada ladustamise pinda."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "Kõik majad peaksid olema turuplatsi ulatuses."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
@@ -1635,53 +1637,53 @@ msgstr "Vajuta 'T', et muuta puud läbipaistvaks."
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Segatud"
 
 #. translators: these are descriptions of the current task while loading a
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr ""
+msgstr "Mootorit käivitatakse…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr ""
+msgstr "Kala püüdmine…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Kasutajaliidese joonistamine…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr ""
+msgstr "Taimeri aktiveerimine…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Mängu andmete laadimine…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Saarte kujundamine…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Jooniste ettevalmistamine…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Vee lisamine…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr ""
+msgstr "Loomade kasvatamine…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Arvutimängija uurimine…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Aarete matmine…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -1692,6 +1694,7 @@ msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"Miteme mängija tugi vajab teeki \"pyenet\", mida su süsteemist ei leitud."
 
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -1801,7 +1804,7 @@ msgstr "Valmis"
 
 #: horizons/gui/modules/multiplayermenu.py:395
 msgid "Not ready"
-msgstr ""
+msgstr "Ei ole valmis"
 
 #: horizons/gui/modules/multiplayermenu.py:430
 #| msgid "Enter your message:"
@@ -1816,7 +1819,7 @@ msgstr "Vajuta siia, et muuta oma nime või värvust"
 #: horizons/gui/modules/multiplayermenu.py:504
 #, python-brace-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "Eemalda {player} mängust"
 
 #: horizons/gui/modules/multiplayermenu.py:571
 #, python-brace-format
@@ -1834,27 +1837,27 @@ msgstr "Nüüd oled valmis"
 
 #: horizons/gui/modules/multiplayermenu.py:582
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "Sa ei ole enam valmis"
 
 #: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} on nüüd valmis"
 
 #: horizons/gui/modules/multiplayermenu.py:587
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} ei ole enam valmis"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr ""
+msgstr "Sind tuntakse nüüd nimega {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:593
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "Mängija {player} nimi on nüüd {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:597
 msgid "You changed your color"
@@ -1867,16 +1870,16 @@ msgstr "{player} vahetas värve"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
-msgstr ""
+msgstr "Eemaldati mängust"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "Mängu looja eemaldas su mängust"
 
 #: horizons/gui/modules/multiplayermenu.py:606
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "Mängu looja eemaldas {player}'i mängust"
 
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
@@ -1940,7 +1943,7 @@ msgstr "Salvestatud mängu versioon {version}"
 
 #: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "(ilmselt sobimatu)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -1975,7 +1978,7 @@ msgstr "Salvestatud mängu kustutamine ebaõnnestus!"
 
 #: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
 msgid "Hotkeys"
-msgstr ""
+msgstr "Kiirklahvid"
 
 #: horizons/gui/modules/settings.py:55
 msgid "Game"
@@ -1983,7 +1986,7 @@ msgstr "Mäng"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Keelatud"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2001,7 +2004,7 @@ msgstr "Taasta algseaded"
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
-msgstr ""
+msgstr "Vaikimisi häälestuse taastamine kustutab kõik su tehtud muudatused."
 
 #: horizons/gui/modules/settings.py:133
 msgid "Do you want to continue?"
@@ -2090,7 +2093,7 @@ msgstr "Saare suuruse nihe:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Klõpsa erineva juhusliku kaardi loomiseks"
 
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Invalid scenario file"
@@ -2180,7 +2183,7 @@ msgstr "Ehita seotud hooned"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Klõpsa mõnel ressursi pesal, et lisada kauplemise pakkumine."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
@@ -2188,6 +2191,8 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
+"Vali kauba sildil klõpsates ost või müük ja seejärel vali liuguriga soovitud "
+"kogus."
 
 #: horizons/gui/tabs/buyselltab.py:321
 #, python-brace-format
@@ -2195,6 +2200,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
+"{resource_name} ostetakse hinnaga {price} kullatükki/ühik, kui laovaru on "
+"väiksem kui {limit} ühikut."
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2202,6 +2209,8 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"{resource_name} müüakse hinnaga {price} kullatükki/ühik, kui laovaru on "
+"suurem kui {limit} ühikut."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
@@ -2221,7 +2230,7 @@ msgstr "Uuenduste lisamine võimatu:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "See on hetkel kõrgeim mängitav tase!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
@@ -2288,22 +2297,22 @@ msgstr "Eemalda relv"
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} kullatükki"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "ostuhind {buyprice} kullatükki"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "müügihind {sellprice} kullatükki"
 
 #: horizons/gui/widgets/inventory.py:166
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:168
 #, python-brace-format
