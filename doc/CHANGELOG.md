@@ -3,6 +3,7 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
+| 2015.1 | 74 |
 | 2014.1 | 74 |
 | 2013.3 | 73 |
 | 2013.2 | 71 |
@@ -15,6 +16,58 @@ CHANGELOG Unknown Horizons
 | 2011.1 | 12 |
 | 2010.1 | 8 |
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+2015-: Milestone 2015.1
+----------------------------
+changelog date: APR 12
+
+### Gameplay and Balancing
+
+New features
+ - #986 Add a button to discard all resources from a tradeship.
+
+ 
+### Media Content
+
+New files and features
+ - spices buildmenu icon
+ - spice, spice plant & condiments resource icons
+ - blender building
+ 
+ 
+### User Interface
+
+Fixed bugs and usability problems
+ - 85d4ff4 Fix signal fire text being hidden for some longer translations.
+ - #2305 No message when reassigning the same key in the settings.
+ 
+ 
+### Codebase
+
+New functionalities
+ - 85d0cb8 Travis build for unit tests
+ 
+Modified structures
+ - 1761cef Add abstraction layer above boat builder tab. Preparation for general Unitproduction tabs.
+ - #2086 Only load savegames which have an higher revision than the related value stored in the constants.
+   Old behaviour was to load everything and hope it works.
+  
+Fixed crashes and inconsistencies
+ - 405c514 Use animationloader instead of imagemanager to retrieve images.
+   The imagemanager isn't necessarily aware of the files available as animations.
+ - #2308 Fix memory leak in the Tabwidget handling (pinkfloyda).
+ - #2306 Non-hotkey settings reset if not saved.
+ - #2263 Don't load savegame with nonexisting map file.
+ 
+
+New team members with this release, Annotations
+ - Accepting bounties via bountysource now
+ - We accepted pull requests or patches by:
+     pinkfloyda
+ - Translators that joined our teams and contributed several strings:
+   Please refer to the credits!
+   
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 2014-12-31: Milestone 2014.1

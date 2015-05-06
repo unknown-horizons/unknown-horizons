@@ -202,6 +202,8 @@ class IngameGui(LivingObject):
 
 class SettingsTab(TabInterface):
 	widget = 'editor_settings.xml'
+	# SettingsTab needs access widget upon init, thus disable lazy_loading
+	lazy_loading = False
 
 	def __init__(self, world_editor, ingame_gui):
 		super(SettingsTab, self).__init__(widget=self.widget)

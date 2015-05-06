@@ -145,6 +145,7 @@
 * Jens
 
 #### German
+* darksider3
 * djot
 * Jordan Liese
 * Kikody
@@ -154,6 +155,7 @@
 * Raymond Vetter
 * schnurlos
 * Stefan S
+* Wuzzy
 
 #### Greek
 * Dimitra Karamperi (dimitrak)
@@ -169,6 +171,7 @@
 * Fabio Fernández (Catharsius)
 * Fede Muller
 * Gauekoizar
+* Ivan (malkavi)
 * Ivan Gonzalez Martin
 * Luis García Sevillano
 * MicMic
@@ -229,6 +232,7 @@
 #### Hungarian
 * Lipták Krisztián
 * Lorant Perger
+* Bence Nagy (nagybence)
 * matyi
 * probert
 * Szabolcs Tóth
@@ -238,8 +242,10 @@
 #### Indonesian
 * alamswijaya
 * davezh
+* Gallanth
 * Ichwan Elhamdani
 * Samuel Christo
+* Samuel D.S.P
 
 #### Italian
 * Davide Nanni
@@ -289,6 +295,7 @@
 * Luth
 * mightykai
 * Nick Z. (angellus)
+* NiLSPACE
 * Ruud Jacobs (MrRuudJ)
 * Sander Hasenpflug (SanderOnline)
 * Sietze Greydanus
@@ -313,6 +320,7 @@
 * Robert Matusewicz (matekm)
 * Robert Mitwicki (mtfk)
 * Stanislaw Gackowski (soeb)
+* Tomasz Rydzyński
 
 #### Portuguese
 * bdias
@@ -347,6 +355,7 @@
 * Raymond Vetter
 * tbmale
 * trendy
+* Vlad Topala
 
 #### Russian
 * Alexander Olkhovskiy (fcxSanya)
@@ -367,6 +376,7 @@
 * Andrej Žnidaršič (andrejz)
 
 #### Swedish
+* Åke Engelbrektson (eson57)
 * Chris Browne
 * Fringillus
 * Karar Al-Remahy
@@ -375,6 +385,7 @@
 * pilen
 
 #### Turkish
+* Burak Yavuz (BouRock)
 * Ceren Kocaman (CerenK)
 * cuil
 * Ersan Doru Doru

@@ -30,8 +30,6 @@ class InventoryTab(TabInterface):
 	icon_path = 'icons/tabwidget/common/inventory'
 	helptext = _lazy("Settlement inventory")
 
-	lazy_loading = True
-
 	def __init__(self, instance=None):
 		self.instance = instance
 		super(InventoryTab, self).__init__()
