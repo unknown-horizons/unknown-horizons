@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2015-04-14 12:55+0200\n"
+"PO-Revision-Date: 2015-05-11 12:16+0200\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
@@ -2372,12 +2372,15 @@ msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
+"Lähtesta selle koloonia ressursside kuvamine vastavalt vaikehäälestusele."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
+"Lähtesta kõigi kolooniate vaikehäälestus (mida sa näed siin) tehase "
+"vaikehäälestuseks."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
@@ -2419,7 +2422,7 @@ msgstr "Sul ei tohi kaubelda selle mängijaga"
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
@@ -2428,7 +2431,7 @@ msgstr "mitte ühtegi"
 #: horizons/gui/windows.py:392
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "Täpsemalt: {error_details}"
 
 #: horizons/gui/windows.py:394
 #, python-brace-format
@@ -2443,7 +2446,7 @@ msgstr "Pagaritöökoda"
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:58
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Tarbib jahu. Toodab toitu."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:63
@@ -2453,17 +2456,17 @@ msgstr "Kasarmud"
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:65
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Värbab maapealseks võitluseks sobiva üksuse."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
-msgstr ""
+msgstr "Pipraveski"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Toodab vürtsidest maitseaineid."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:77
@@ -2538,7 +2541,7 @@ msgstr "Arst"
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:126
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Ravib haiguseid. Tarbib ürte."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:131
@@ -2553,12 +2556,13 @@ msgstr "Kasvatab põllukultuure ja kariloomi."
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:138
 msgid "Alvearies"
-msgstr ""
+msgstr "Mesitarud"
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:140
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Kasvatab mesilasi. Toodab maiustuste valmistamiseks meekärgesid. Vajab farmi."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
@@ -2578,7 +2582,7 @@ msgstr "Kakaopõld"
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:154
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Toodab maiustuste valmistamiseks kakao ube. Vajab farmi."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:159
@@ -2633,12 +2637,12 @@ msgstr "Toodab sööki. Vajab talu."
 #. name of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:194
 msgid "Spice Field"
-msgstr ""
+msgstr "Vürtsipõld"
 
 #. tooltip_text of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:196
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Kasvatab vürtse. Vajab farmi."
 
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:201
