@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2015-05-11 12:16+0200\n"
+"PO-Revision-Date: 2015-06-01 11:02+0200\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
@@ -2667,22 +2667,22 @@ msgstr "Toodab tubakat. Vajab talu."
 #. name of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:215
 msgid "Vineyard"
-msgstr ""
+msgstr "Viinamägi"
 
 #. tooltip_text of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:217
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
+msgstr "Toodab viinamarju veini ja maiustuste valmistamiseks. Vajab farmi."
 
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:222
 msgid "Fire Station"
-msgstr ""
+msgstr "Tuletõrjedepoo"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:224
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Kustutab tulekahjusid."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:229
@@ -2742,7 +2742,7 @@ msgstr "Peaväljak"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:266
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "Varustab kodanukke kaupadega. Pakub kogukonna."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
@@ -2763,12 +2763,12 @@ msgstr "Mägi"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:283
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Kondiitriäri"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:285
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Toodab igasuguseid maiustusi."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
@@ -2783,7 +2783,7 @@ msgstr "Rahuldab meremeeste religioosseid vajadusi."
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:297
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Telgi räbalad"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:302
@@ -2823,22 +2823,22 @@ msgstr "Kiviraidur"
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:325
 msgid "Carver"
-msgstr ""
+msgstr "Kiviraidur"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Raiub kivid tellisteks."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:332
 msgid "Stone Pit"
-msgstr ""
+msgstr "Kivimurd"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:334
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Murrab mäest kive."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:339
@@ -2873,7 +2873,7 @@ msgstr "Telk"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
-msgstr ""
+msgstr "Onn"
 
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
@@ -2888,12 +2888,12 @@ msgstr "Kivimaja"
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Häärber"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Mõis"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
@@ -2948,7 +2948,7 @@ msgstr "Puu"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:399
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Varustab puiduga. Puuraidurid lõikavad laudadeks."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:404
@@ -2963,7 +2963,7 @@ msgstr "Annab haridust."
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
 msgid "Vintner"
-msgstr ""
+msgstr "Vinoteek"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:413
@@ -3071,7 +3071,7 @@ msgstr "Infrastruktuur"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
 msgid "Military Service"
-msgstr ""
+msgstr "Sõjaväeteenistus"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -3082,17 +3082,17 @@ msgstr "Teerajajad"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
 msgid "Precaution"
-msgstr ""
+msgstr "Turvalisus"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
 msgid "Residential"
-msgstr ""
+msgstr "Elamud"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:489
 msgid "Sea"
-msgstr ""
+msgstr "Meri"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:495
@@ -3104,7 +3104,7 @@ msgstr "Puit"
 #: horizons/i18n/objecttranslations.py:499
 #: horizons/i18n/objecttranslations.py:501
 msgid "Workshops"
-msgstr ""
+msgstr "Töökojad"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:503
@@ -3127,7 +3127,7 @@ msgstr "Mängu alustamine/laadimine ebaõnnestus"
 
 #: horizons/main.py:355
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "Valitud mängu käivitamine nurjus."
 
 #: horizons/main.py:356
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -3158,10 +3158,14 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
+"Mängud ei ole enam sünkroniseeritud. See viitab tundmatule sisemisele veale, "
+"mille tõttu ei saa mäng enam jätkata."
 
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
+"Palume sellepärast vabandust ja loodame, et see viga on uues versioonis "
+"parandatud."
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
@@ -3178,18 +3182,19 @@ msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
+"Faili nimes võivad olla ainult tähed, numbrid, tühikud ja need märgid: _ . -"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Ühenduse loomine serveriga nurjus."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Tegemist võib olla vigase või lahendamatu serveri aadressiga."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
-msgstr ""
+msgstr "Ei ole valmis"
 
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
@@ -3214,7 +3219,7 @@ msgstr "Salvestatud mängu faili tegemine ebaõnnestus"
 
 #: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Su mängu olekuinfo faili salvestamine nurjus."
 
 #: horizons/session.py:399
 msgid ""
@@ -3231,6 +3236,8 @@ msgstr "Ligipääs puudub"
 #: horizons/session.py:409
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"Olekuinfo fail võib olla kirjutuskaitstud või on selle lukustanud mõni teine "
+"protsess."
 
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
@@ -3246,6 +3253,8 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
+"Unknown Horizonsist on saadaval uuem versioon ({new_version}). Hetkel "
+"kasutad versiooni ({old_version})."
 
 #: horizons/util/checkupdates.py:98
 msgid "Click to download"
@@ -3259,12 +3268,12 @@ msgstr "Lehekülg avati sinu veebilehitsejas."
 #: horizons/util/uhdbaccessor.py:267
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} pesa, {limit}tk"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "Tervis: {health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:123
@@ -3278,11 +3287,11 @@ msgstr "See ehitis tuleb ehitada saarele."
 
 #: horizons/world/building/buildable.py:41
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "See maaping ei sobi sellele ehitisele."
 
 #: horizons/world/building/buildable.py:42
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Selle ehitise pead ehitama oma koloonia sees."
 
 #: horizons/world/building/buildable.py:43
 msgid "This area is already occupied by another player."
@@ -3310,7 +3319,7 @@ msgstr "See koht on liiga kaugel sinu laevast."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Selle ehitise saab ehitada ainult ressursi asukuhale."
 
 #: horizons/world/building/buildable.py:50
 msgid "You have already settled this island."
@@ -3322,7 +3331,7 @@ msgstr "See ehitis peab osaliselt olema tasasel maal."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Elanikud on nakatunud musta surmaga!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3339,7 +3348,7 @@ msgstr "Neil elanikel puudub juurdepääs peaväljakule."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Selle ehitise inventad on täis."
 
 #: horizons/world/status.py:115
 msgid "This building has a very low productivity."
@@ -3352,32 +3361,32 @@ msgstr "See ehitis on kasutuskõlbmatu."
 #: horizons/world/traderoute.py:329
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Kaubatee: liigutakse kohta {location}"
 
 #: horizons/world/traderoute.py:333
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Kaubatee: oodatakse kohas {position}"
 
 #: horizons/world/units/ship.py:212
 #, python-brace-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Minnakse kohta {location}"
 
 #: horizons/world/units/ship.py:213
 #, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Liigutakse kohta {x}, {y}"
 
 #: horizons/world/units/ship.py:217
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Jõudeolek kohas {location}"
 
 #: horizons/world/units/ship.py:218
 #, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Jõudeolek kohal {x}, {y}"
 
 #: horizons/world/units/ship.py:229
 msgid "Trader"
@@ -3386,16 +3395,16 @@ msgstr "Kaupleja"
 #: horizons/world/units/weaponholder.py:452
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Rünnatakse kohta {target} \"{name}\" ({owner})"
 
 #: horizons/world/units/weaponholder.py:456
 #, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Rünnatakse {owner}"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "indigo"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3408,7 +3417,7 @@ msgstr "Teie ehitis põleb!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "soolvesi"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
@@ -3424,7 +3433,7 @@ msgstr "heaolu"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "vääriskivid"
 
 #. This is a database entry: the name of a resource
 #| msgid "iron deposit"
@@ -3467,7 +3476,7 @@ msgstr "tee lehed"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "kohvi"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
@@ -3518,7 +3527,7 @@ msgstr "kakao"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "marmortipud"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
@@ -3530,7 +3539,7 @@ msgstr "rauamaak"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "parfüüm"
 
 #. This is a database entry: the name of a resource
 #| msgid "tobacco plants"
@@ -3589,18 +3598,20 @@ msgstr "lambavill"
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "Oled jõudnud hetke maksimaalsele tasemele. Rohkem su elanikud ei tõuse."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
+"Tee on nüüd häälestatud. Käivita see menüüs \"tee häälestamine\" nupust \""
+"käivita tee\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "Mängijad {player1} ja {player2} on liidu lõpetanud."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
@@ -3612,7 +3623,7 @@ msgstr "mais"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "lilleniidud"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
@@ -3625,7 +3636,7 @@ msgstr "Sinu elanikud saavutasid {level}. taseme."
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "ambra"
 
 # lootus?
 #. This is a database entry: the name of a resource
@@ -3647,7 +3658,7 @@ msgstr "{player1} ja {player2} võitlevad üksteisega kuni surmani."
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr ""
+msgstr "humalad"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -3685,7 +3696,7 @@ msgstr "aromaatsed taimed"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "hügieen"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
@@ -3722,7 +3733,7 @@ msgstr "Sinu võit!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "lilled"
 
 #. This is a database entry: the name of a resource
 #| msgid "spice plants"
@@ -3743,7 +3754,7 @@ msgstr "kivimurd"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Stsenaarium ebaõnnestus."
 
 #. This is a database entry: the name of a resource
 msgid "fire"
@@ -3755,7 +3766,7 @@ msgstr "tammetõrud"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "pealisrõivad"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
@@ -3772,7 +3783,7 @@ msgstr "Sa vajad rohkem {resource} selle ehitise ehitamiseks."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "Su meeskond keeldub sellelt kaardilt lahkumast."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3802,11 +3813,11 @@ msgstr "Üks sinu põldudest vajab saagi koristamiseks farmi."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "lihvimata vääriskivid"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr ""
+msgstr "mesitarud"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
@@ -3822,7 +3833,7 @@ msgstr "haridus"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "puuvill"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3846,7 +3857,7 @@ msgstr "kahur"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "Selle ehitise elanikud on nakatunud musta surmaga!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3880,7 +3891,7 @@ msgstr "taimed"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "lambiõli"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
