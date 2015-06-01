@@ -26,27 +26,29 @@ from horizons.component import Component
 
 
 class A(Component):
-	NAME = 'A'
+    NAME = 'A'
+
 
 class B(Component):
-	NAME = 'B'
-	DEPENDENCIES = [A]
+    NAME = 'B'
+    DEPENDENCIES = [A]
+
 
 class C(Component):
-	NAME = 'C'
+    NAME = 'C'
 
 
 class TestComponent(TestCase):
 
-	def test_dependencysorting(self):
-		a = A()
-		b = B()
-		components = [b, C(), a]
-		components.sort()
-		self.assertTrue(components.index(b) > components.index(a))
-		# Trigger __lt__
-		self.assertFalse(b < a)
-		self.assertTrue(a < b)
-		# Trigger __gt__
-		self.assertTrue(b > a)
-		self.assertFalse(a > b)
+    def test_dependencysorting(self):
+        a = A()
+        b = B()
+        components = [b, C(), a]
+        components.sort()
+        self.assertTrue(components.index(b) > components.index(a))
+        # Trigger __lt__
+        self.assertFalse(b < a)
+        self.assertTrue(a < b)
+        # Trigger __gt__
+        self.assertTrue(b > a)
+        self.assertFalse(a > b)

@@ -30,9 +30,9 @@ from horizons.world import World
 
 class TestWorld(TestCase):
 
-	def setUp(self):
-		self.session = Dummy()
+    def setUp(self):
+        self.session = Dummy()
 
-	def test_world_end(self):
-		w = World(self.session)
-		w.end()
+    def test_world_end(self):
+        w = World(self.session)
+        w.end()

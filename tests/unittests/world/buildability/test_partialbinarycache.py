@@ -24,124 +24,131 @@ from tests.unittests import TestCase
 from horizons.world.buildability.partialbinarycache import PartialBinaryBuildabilityCache
 from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 
-class MockTerrainBuildabilityCache(object):
-	sizes = TerrainBuildabilityCache.sizes
 
-	def __init__(self, land_or_coast):
-		self.land_or_coast = land_or_coast
+class MockTerrainBuildabilityCache(object):
+    sizes = TerrainBuildabilityCache.sizes
+
+    def __init__(self, land_or_coast):
+        self.land_or_coast = land_or_coast
+
 
 class TestPartialBinaryBuildabilityCache(TestCase):
-	def setUp(self):
-		super(TestPartialBinaryBuildabilityCache, self).setUp()
-		coords_list = []
-		for x in xrange(10):
-			for y in xrange(10):
-				coords_list.append((x, y))
-		self.terrain_cache = MockTerrainBuildabilityCache(coords_list)
-		self.buildability_cache = PartialBinaryBuildabilityCache(self.terrain_cache)
+    def setUp(self):
+        super(TestPartialBinaryBuildabilityCache, self).setUp()
+        coords_list = []
+        for x in xrange(10):
+            for y in xrange(10):
+                coords_list.append((x, y))
+        self.terrain_cache = MockTerrainBuildabilityCache(coords_list)
+        self.buildability_cache = PartialBinaryBuildabilityCache(self.terrain_cache)
 
-	def test_horizontal_row2(self):
-		bc = self.buildability_cache
-		self.assertEquals(bc._row2, set())
+    def test_horizontal_row2(self):
+        bc = self.buildability_cache
+        self.assertEquals(bc._row2, set())
 
-		# ..... -> ..#..
-		bc.add_area([(2, 1)])
-		self.assertEquals(bc._row2, set([(1, 1), (2, 1)]))
+        # ..... -> ..#..
+        bc.add_area([(2, 1)])
+        self.assertEquals(bc._row2, set([(1, 1), (2, 1)]))
 
-		# ..#.. -> ..##.
-		bc.add_area([(3, 1)])
-		self.assertEquals(bc._row2, set([(1, 1), (2, 1), (3, 1)]))
+        # ..#.. -> ..##.
+        bc.add_area([(3, 1)])
+        self.assertEquals(bc._row2, set([(1, 1), (2, 1), (3, 1)]))
 
-		# ..##. -> .###.
-		bc.add_area([(1, 1)])
-		self.assertEquals(bc._row2, set([(0, 1), (1, 1), (2, 1), (3, 1)]))
+        # ..##. -> .###.
+        bc.add_area([(1, 1)])
+        self.assertEquals(bc._row2, set([(0, 1), (1, 1), (2, 1), (3, 1)]))
 
-		# .###. -> .#.#.
-		bc.remove_area([(2, 1)])
-		self.assertEquals(bc._row2, set([(0, 1), (1, 1), (2, 1), (3, 1)]))
+        # .###. -> .#.#.
+        bc.remove_area([(2, 1)])
+        self.assertEquals(bc._row2, set([(0, 1), (1, 1), (2, 1), (3, 1)]))
 
-		# .#.#. -> ...#.
-		bc.remove_area([(1, 1)])
-		self.assertEquals(bc._row2, set([(2, 1), (3, 1)]))
+        # .#.#. -> ...#.
+        bc.remove_area([(1, 1)])
+        self.assertEquals(bc._row2, set([(2, 1), (3, 1)]))
 
-		# ...#. -> .....
-		bc.remove_area([(3, 1)])
-		self.assertEquals(bc._row2, set())
+        # ...#. -> .....
+        bc.remove_area([(3, 1)])
+        self.assertEquals(bc._row2, set())
 
-	def test_vertical_row2(self):
-		bc = self.buildability_cache
-		self.assertEquals(bc._row2, set())
+    def test_vertical_row2(self):
+        bc = self.buildability_cache
+        self.assertEquals(bc._row2, set())
 
-		bc.add_area([(1, 1)])
-		self.assertEquals(bc._row2, set([(0, 1), (1, 1)]))
+        bc.add_area([(1, 1)])
+        self.assertEquals(bc._row2, set([(0, 1), (1, 1)]))
 
-		bc.add_area([(2, 2)])
-		self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2)]))
+        bc.add_area([(2, 2)])
+        self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2)]))
 
-		bc.add_area([(2, 3)])
-		self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2), (1, 3), (2, 3)]))
+        bc.add_area([(2, 3)])
+        self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2), (1, 3), (2, 3)]))
 
-		bc.remove_area([(2, 3)])
-		self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2)]))
+        bc.remove_area([(2, 3)])
+        self.assertEquals(bc._row2, set([(0, 1), (1, 1), (1, 2), (2, 2)]))
 
-		bc.remove_area([(2, 2)])
-		self.assertEquals(bc._row2, set([(0, 1), (1, 1)]))
+        bc.remove_area([(2, 2)])
+        self.assertEquals(bc._row2, set([(0, 1), (1, 1)]))
 
-		bc.remove_area([(1, 1)])
-		self.assertEquals(bc._row2, set())
+        bc.remove_area([(1, 1)])
+        self.assertEquals(bc._row2, set())
 
-	def test_r2x2(self):
-		bc = self.buildability_cache
-		r2x2 = bc.cache[(2, 2)]
-		self.assertEquals(r2x2, set())
+    def test_r2x2(self):
+        bc = self.buildability_cache
+        r2x2 = bc.cache[(2, 2)]
+        self.assertEquals(r2x2, set())
 
-		bc.add_area([(1, 1)])
-		self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1)]))
+        bc.add_area([(1, 1)])
+        self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1)]))
 
-		bc.add_area([(2, 1)])
-		self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1)]))
+        bc.add_area([(2, 1)])
+        self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1)]))
 
-		bc.add_area([(3, 2)])
-		self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1), (2, 2), (3, 1), (3, 2)]))
+        bc.add_area([(3, 2)])
+        self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1), (2, 0),
+                          (2, 1), (2, 2), (3, 1), (3, 2)]))
 
-		bc.remove_area([(2, 1)])
-		self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1), (2, 1), (2, 2), (3, 1), (3, 2)]))
+        bc.remove_area([(2, 1)])
+        self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1), (2, 1),
+                          (2, 2), (3, 1), (3, 2)]))
 
-		bc.remove_area([(3, 2)])
-		self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1)]))
+        bc.remove_area([(3, 2)])
+        self.assertEquals(r2x2, set([(0, 0), (0, 1), (1, 0), (1, 1)]))
 
-		bc.remove_area([(1, 1)])
-		self.assertEquals(r2x2, set())
+        bc.remove_area([(1, 1)])
+        self.assertEquals(r2x2, set())
 
-	@classmethod
-	def _get_coords_set(cls, x, y, width, height):
-		res = set()
-		for dx in xrange(width):
-			for dy in xrange(height):
-				res.add((x - dx, y - dy))
-		return res
+    @classmethod
+    def _get_coords_set(cls, x, y, width, height):
+        res = set()
+        for dx in xrange(width):
+            for dy in xrange(height):
+                res.add((x - dx, y - dy))
+        return res
 
-	def test_convenience_get_coords_list(self):
-		self.assertEquals(self._get_coords_set(1, 1, 2, 1), set([(0, 1), (1, 1)]))
-		self.assertEquals(self._get_coords_set(1, 1, 1, 2), set([(1, 0), (1, 1)]))
-		self.assertEquals(self._get_coords_set(1, 1, 2, 2), set([(0, 0), (0, 1), (1, 0), (1, 1)]))
+    def test_convenience_get_coords_list(self):
+        self.assertEquals(self._get_coords_set(1, 1, 2, 1), set([(0, 1), (1, 1)]))
+        self.assertEquals(self._get_coords_set(1, 1, 1, 2), set([(1, 0), (1, 1)]))
+        self.assertEquals(self._get_coords_set(1, 1, 2, 2), set([(0, 0), (0, 1), (1, 0), (1, 1)]))
 
-	def test_r6x6(self):
-		bc = self.buildability_cache
-		r6x6 = bc.cache[(6, 6)]
-		self.assertEquals(r6x6, set())
+    def test_r6x6(self):
+        bc = self.buildability_cache
+        r6x6 = bc.cache[(6, 6)]
+        self.assertEquals(r6x6, set())
 
-		bc.add_area([(7, 7)])
-		self.assertEquals(r6x6, self._get_coords_set(7, 7, 6, 6))
+        bc.add_area([(7, 7)])
+        self.assertEquals(r6x6, self._get_coords_set(7, 7, 6, 6))
 
-		bc.add_area([(8, 7)])
-		self.assertEquals(r6x6, self._get_coords_set(7, 7, 6, 6).union(self._get_coords_set(8, 7, 6, 6)))
+        bc.add_area([(8, 7)])
+        self.assertEquals(r6x6, self._get_coords_set(7, 7, 6, 6).union(
+                          self._get_coords_set(8, 7, 6, 6)))
 
-		bc.add_area([(5, 5)])
-		self.assertEquals(r6x6, self._get_coords_set(7, 7, 6, 6).union(self._get_coords_set(8, 7, 6, 6), self._get_coords_set(5, 5, 6, 6)))
+        bc.add_area([(5, 5)])
+        self.assertEquals(r6x6, self._get_coords_set(7, 7, 6, 6).union(
+                          self._get_coords_set(8, 7, 6, 6),
+                          self._get_coords_set(5, 5, 6, 6)))
 
-		bc.remove_area([(5, 5), (7, 7)])
-		self.assertEquals(r6x6, self._get_coords_set(8, 7, 6, 6))
+        bc.remove_area([(5, 5), (7, 7)])
+        self.assertEquals(r6x6, self._get_coords_set(8, 7, 6, 6))
 
-		bc.remove_area([(8, 7)])
-		self.assertEquals(r6x6, set())
+        bc.remove_area([(8, 7)])
+        self.assertEquals(r6x6, set())
