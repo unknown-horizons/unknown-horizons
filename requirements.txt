@@ -1,4 +1,3 @@
 nose
 mock
 PyYAML
-fife
