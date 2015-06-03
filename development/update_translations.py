@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2014 The Unknown Horizons Team
+# Copyright (C) 2008-2015 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -46,8 +46,8 @@ SCENARIO_TRANSLATIONS = {}
 SCENARIO_TEMPLATE = {}
 ALL_SCENARIOS = ('tutorial', 'The_Unknown')
 for s in ALL_SCENARIOS:
-	SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/%s.po' % s)
-	SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/%s.pot' % s
+    SCENARIO_TRANSLATIONS[s] = glob('po/scenarios/*/%s.po' % s)
+    SCENARIO_TEMPLATE[s] = 'po/scenarios/templates/%s.pot' % s
 
 VOICES_TRANSLATIONS = glob('po/voices/*.po')
 VOICES_TEMPLATE = 'po/voices/unknown-horizons-voices.pot'
@@ -58,89 +58,90 @@ language_authors = defaultdict(set)
 
 
 def update_from_template(input_po, input_template):
-	"""
-	@param input_po: the translation to be updated against new template
-	@param input_template: the reference .pot template catalog
-	"""
-	print('Updating %s:' % input_po)
-	try:
-		subprocess.call([
-			'msgmerge',
-			'--previous',
-			'--update',
-			input_po,
-			input_template,
-		], stderr=subprocess.STDOUT)
-	except subprocess.CalledProcessError:
-		#TODO handle
-		print('Error while updating translation `%s`. Exiting.' % input_po)
-		sys.exit(1)
+    """
+    @param input_po: the translation to be updated against new template
+    @param input_template: the reference .pot template catalog
+    """
+    print('Updating %s:' % input_po)
+    try:
+        subprocess.call([
+            'msgmerge',
+            '--previous',
+            '--update',
+            input_po,
+            input_template,
+        ], stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError:
+        # TODO handle
+        print('Error while updating translation `%s`. Exiting.' % input_po)
+        sys.exit(1)
 
 
-def update_authors_per_file(input_po, regexp=LANG_RE, since='weblate-credits..', pushed_by='Weblate'):
-	authors = subprocess.check_output([
-		'git',
-		'shortlog',
-		since,
-		'--committer',
-		pushed_by,
-		'-sn', # Use 'sne' to include email (if that is ever needed)
-		'--',
-		input_po,
-	], stderr=subprocess.STDOUT)
+def update_authors_per_file(input_po, regexp=LANG_RE, since='weblate-credits..',
+        pushed_by='Weblate'):
+    authors = subprocess.check_output([
+        'git',
+        'shortlog',
+        since,
+        '--committer',
+        pushed_by,
+        '-sn',  # Use 'sne' to include email (if that is ever needed)
+        '--',
+        input_po,
+    ], stderr=subprocess.STDOUT)
 
-	#TODO Clearly the above can never fail, ever. But what if it did?
-	lang = regexp.search(input_po).groups()[0]
-	for author_line in authors.split('\n'):
-		if not author_line:
-			continue
-		author = JUST_NAME.search(author_line).groups()[0]
-		if author in GLOBAL_AUTHORS:
-			continue
-		english_lang = LANGUAGENAMES.get_english(lang)
-		language_authors[english_lang].add(author)
+    # TODO Clearly the above can never fail, ever. But what if it did?
+    lang = regexp.search(input_po).groups()[0]
+    for author_line in authors.split('\n'):
+        if not author_line:
+            continue
+        author = JUST_NAME.search(author_line).groups()[0]
+        if author in GLOBAL_AUTHORS:
+            continue
+        english_lang = LANGUAGENAMES.get_english(lang)
+        language_authors[english_lang].add(author)
 
 
 def main():
-	# Main interface translation (old 'uh' project in pootle)
-	for f in INTERFACE_TRANSLATIONS:
-		#update_from_template(f, INTERFACE_TEMPLATE)
-		update_authors_per_file(f)
+    # Main interface translation (old 'uh' project in pootle)
+    for f in INTERFACE_TRANSLATIONS:
+        # update_from_template(f, INTERFACE_TEMPLATE)
+        update_authors_per_file(f)
 
-	# MP server message translation (old 'mp-server' project in pootle)
-	for f in MP_SERVER_TRANSLATIONS:
-		update_from_template(f, MP_SERVER_TEMPLATE)
-		update_authors_per_file(f)
+    # MP server message translation (old 'mp-server' project in pootle)
+    for f in MP_SERVER_TRANSLATIONS:
+        update_from_template(f, MP_SERVER_TEMPLATE)
+        update_authors_per_file(f)
 
-	# Glossary translation (old 'terminology' project in pootle)
-	#for f in GLOSSARY_TRANSLATIONS:
-	#	update_from_template(f, GLOSSARY_TEMPLATE)
-	#	update_authors_per_file(f)
+    # Glossary translation (old 'terminology' project in pootle)
+    # for f in GLOSSARY_TRANSLATIONS:
+    #   update_from_template(f, GLOSSARY_TEMPLATE)
+    #   update_authors_per_file(f)
 
-	# Scenario translation (old 'scenarios' project in pootle)
-	for scenario, translations in SCENARIO_TRANSLATIONS.items():
-		for f in translations:
-			update_from_template(f, SCENARIO_TEMPLATE[scenario])
-			update_authors_per_file(f, regexp=SCENARIO_LANG_RE)
+    # Scenario translation (old 'scenarios' project in pootle)
+    for scenario, translations in SCENARIO_TRANSLATIONS.items():
+        for f in translations:
+            update_from_template(f, SCENARIO_TEMPLATE[scenario])
+            update_authors_per_file(f, regexp=SCENARIO_LANG_RE)
 
-	# Voices translation
-	for f in VOICES_TRANSLATIONS:
-		update_from_template(f, VOICES_TEMPLATE)
-		update_authors_per_file(f)
+    # Voices translation
+    for f in VOICES_TRANSLATIONS:
+        update_from_template(f, VOICES_TEMPLATE)
+        update_authors_per_file(f)
 
-	# Output data ready for AUTHORS.md copy/paste
-	print '-- New translation contributors since last update:'
-	sort_order = lambda (lang, _): LANGUAGENAMES.get_by_value(lang, english=True)
-	for language, authors in sorted(language_authors.items(), key=sort_order):
-		print '\n####', language
-		#TODO
-		# The sorted() below will not correctly sort names containing non-ascii.
-		# You'll need to rely on manual copy/paste and ordering anyways, so just
-		# keep your eyes open a bit more than usual.
-		for author in sorted(authors):
-			print_ready = map(str.capitalize, author.split())
-			print '*', ' '.join(print_ready)
+    # Output data ready for AUTHORS.md copy/paste
+    print '-- New translation contributors since last update:'
+    sort_order = lambda (lang, _): LANGUAGENAMES.get_by_value(lang, english=True)
+    for language, authors in sorted(language_authors.items(), key=sort_order):
+        print '\n####', language
+        # TODO
+        # The sorted() below will not correctly sort names containing non-ascii.
+        # You'll need to rely on manual copy/paste and ordering anyways, so just
+        # keep your eyes open a bit more than usual.
+        for author in sorted(authors):
+            print_ready = map(str.capitalize, author.split())
+            print '*', ' '.join(print_ready)
 
 
 if __name__ == '__main__':
-	main()
+    main()
