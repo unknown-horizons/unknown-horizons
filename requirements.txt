@@ -1,4 +1,4 @@
 nose
 mock
-yaml
+PyYAML
 fife
