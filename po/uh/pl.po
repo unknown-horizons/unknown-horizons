@@ -1894,7 +1894,7 @@ msgstr "{player} został wyrzucony przez założyciela"
 # ook u aangepast
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
-msgstr "Czy na pewno chcesz zakończyć bierzącą sesję?"
+msgstr "Czy na pewno chcesz zakończyć bieżącą sesję?"
 
 #: horizons/gui/modules/pausemenu.py:83
 msgid "Quit Session"
