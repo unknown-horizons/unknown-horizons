@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2015-01-09 20:26+0200\n"
-"Last-Translator: Tomasz Rydzyński <qsorix@gmail.com>\n"
+"PO-Revision-Date: 2015-06-22 21:05+0200\n"
+"Last-Translator: Grzegorz Cora <gsamson@wp.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.4-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -2482,9 +2482,8 @@ msgstr "Menger"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
-#, fuzzy
 msgid "Produces condiments out of spices."
-msgstr "Tworzy dodatki spożywcze z przypraw."
+msgstr "Tworzy przyprawy."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:77
@@ -2534,7 +2533,6 @@ msgstr "Złoże gliny"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:110
-#, fuzzy
 msgid "Clay Pit"
 msgstr "Glinianka"
 
@@ -3114,7 +3112,6 @@ msgstr "Pionierzy"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
-#, fuzzy
 msgid "Precaution"
 msgstr "Zabezpieczenie"
 
@@ -3666,7 +3663,6 @@ msgid "corn"
 msgstr "kukurydza"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "flower meadows"
 msgstr "kwieciste łąki"
 

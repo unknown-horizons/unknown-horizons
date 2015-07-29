@@ -4,6 +4,8 @@ Contribute to Unknown Horizons!
 We have lots of opportunities besides hacking code:
 Check our page on how to [Get Involved] (http://www.unknown-horizons.org/get-involved/)!
 
+**For translation updates please use [Weblate]  (https://hosted.weblate.org/projects/uh/) instead of submitting a pull request!**
+
 File a bug report
 ---------------------
 * Browse the [existing tickets] (https://github.com/unknown-horizons/unknown-horizons/issues):

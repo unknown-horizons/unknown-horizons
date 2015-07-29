@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-09-27 12:46+0200\n"
+"PO-Revision-Date: 2015-07-07 14:58+0200\n"
 "Last-Translator: Karar Al-Remahy <alremahykarar@ymail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.4-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -573,9 +573,8 @@ msgstr "Återuppta produktion"
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Välj varor:"
+msgstr "Välj resurs:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -1247,14 +1246,19 @@ msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"När funktionen är aktiverad, kommer mushjulet zoom att använda markören som "
+"ny zoom centrerings punkt. När funktionen är inaktiverad så kommer "
+"mushjulets funktion att zooma vid nuvarande position."
 
 #: content/gui/xml/mainmenu/settings.xml:99
+#, fuzzy
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Flytta kartan med mushjulet:"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
+"När aktiverad, kan du hålla ner mitten musknappen för att flytta kameran."
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "0 is default system settings"
@@ -1340,6 +1344,8 @@ msgstr "Produktionsöversikt:"
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"Vare sig man vill visa resurs ikoner över byggnader när de slutför sin "
+"produktion"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
