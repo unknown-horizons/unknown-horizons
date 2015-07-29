@@ -131,7 +131,9 @@ def main():
 
     # Output data ready for AUTHORS.md copy/paste
     print '-- New translation contributors since last update:'
-    sort_order = lambda (lang, _): LANGUAGENAMES.get_by_value(lang, english=True)
+
+    def sort_order(lang, _):
+        return LANGUAGENAMES.get_by_value(lang, english=True)
     for language, authors in sorted(language_authors.items(), key=sort_order):
         print '\n####', language
         # TODO

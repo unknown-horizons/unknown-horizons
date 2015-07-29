@@ -36,6 +36,7 @@ if not os.path.exists('content'):
 assert os.path.exists('content'), 'Content dir not found.'
 sys.path.append('.')
 
+
 class PassThroughOptionParser(OptionParser):
     """Consider unrecognised options to be arguments."""
     def _process_args(self, largs, rargs, values):
@@ -45,6 +46,7 @@ class PassThroughOptionParser(OptionParser):
             except (AmbiguousOptionError, BadOptionError), e:
                 largs.append(e.opt_str)
 
+
 def get_range(expr):
     if not expr:
         return [None]
@@ -53,10 +55,12 @@ def get_range(expr):
         parts.append(int(part.strip()))
     return range(*tuple(parts))
 
+
 def get_length(r):
     return max(len(str(min(r))), len(str(max(r))))
 
 dev_null = open(os.devnull, 'w')
+
 
 class GameTimer(object):
     def __init__(self, name, args):
@@ -68,7 +72,8 @@ class GameTimer(object):
     def run(self):
         start = time.time()
         args = ' '.join([sys.executable, 'run_uh.py'] + self.args)
-        proc = subprocess.Popen(args, executable=sys.executable, stdin=dev_null, stdout=dev_null, stderr=dev_null)
+        proc = subprocess.Popen(args, executable=sys.executable, stdin=dev_null,
+                                stdout=dev_null, stderr=dev_null)
         proc.wait()
         self.returncode = proc.returncode
         self.time = time.time() - start
@@ -80,10 +85,12 @@ class GameTimer(object):
             return 0
         return -1 if self.time < other.time else 1
 
+
 def run_game_timer(game, queue, counter):
     game.run()
     queue.put_nowait(game)
     counter.value -= 1
+
 
 def show_data(games):
     print
@@ -100,9 +107,11 @@ if __name__ == '__main__':
     parser.add_option("-p", "--processes", dest="num_processes", metavar="<processes>",
         type="int", default=1, help="Run <processes> processes in parallel.")
     parser.add_option("--game-seed-range", dest="game_seed_range",
-        help="Use the given expression (same as for xrange) to run a number of game instances with --sp-seed=SEED")
+        help="Use the given expression (same as for xrange) to run a number "
+        "of game instances with --sp-seed=SEED")
     parser.add_option("--map-seed-range", dest="map_seed_range",
-        help="Use the given expression (same as for xrange) to run a number of game instances with --start-specific-random-map=SEED")
+        help="Use the given expression (same as for xrange) to run a number "
+        "of game instances with --start-specific-random-map=SEED")
     (options, args) = parser.parse_args()
 
     games = []

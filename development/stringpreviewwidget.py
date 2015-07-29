@@ -27,6 +27,7 @@ from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.windows import Window, WindowManager
 from horizons.scheduler import Scheduler
 
+
 class StringPreviewWidget(Window):
     """Widget for testing Logbook strings.
     It provides a list of scenarios, of which the user can select one and display
@@ -42,7 +43,7 @@ class StringPreviewWidget(Window):
 
     def _init_gui(self, session):
         self._gui = load_uh_widget("stringpreviewwidget.xml")
-        self._gui.mapEvents({ 'load' : self.load })
+        self._gui.mapEvents({'load': self.load})
         self.scenarios = SavegameManager.get_scenarios()
         self.listbox = self._gui.findChild(name="scenario_list")
         self.listbox.items = self.scenarios[1]
@@ -54,7 +55,7 @@ class StringPreviewWidget(Window):
         self.windows = WindowManager()
         self.logbook = LogBook(session, self.windows)
         self.logbook._gui.mapEvents({
-            OkButton.DEFAULT_NAME : self.logbook.hide,
+            OkButton.DEFAULT_NAME: self.logbook.hide,
         })
         self.update_infos()
 
@@ -92,6 +93,6 @@ class StringPreviewWidget(Window):
         try:
             self.logbook.set_cur_entry(cur_entry)
         except ValueError:
-            pass # no entries
+            pass  # no entries
         self.logbook._redraw_captainslog()
         self.logbook.show()
