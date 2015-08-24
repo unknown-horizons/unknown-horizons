@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 3c32538\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-10-01 22:40+0200\n"
-"Last-Translator: josep constanti <jconstanti@ovi.com>\n"
+"PO-Revision-Date: 2015-08-24 21:58+0200\n"
+"Last-Translator: Joan Josep <juanjo.ng.83@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/uh/uh/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.4-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons s'ha tancat inesperadament."
+msgstr "L'Unknown Horizons s'ha tancat inesperadament."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -28,14 +28,14 @@ msgstr "Ho lamentem i mirarem de solucionar l'error que ho ha provocat."
 
 #: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Per poder-ho fer, necessitaríem la informació del fitxer de registre:"
+msgstr "Per poder-ho fer, necessitem la informació del fitxer de registre:"
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Envieu-nos-el via IRC o al nostre forum que podeu trobar a http://unknown-"
+"Envieu-nos-el via IRC o al nostre fòrum que podeu trobar a http://unknown-"
 "horizons.org."
 
 #: run_uh.py:178
@@ -49,19 +49,19 @@ msgstr "Falta la llibreria PyYAML i s'ha instal·lar."
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
-"Podeu trobar l'instal·lador per Windows a http://pyyaml.org/wiki/PyYAML."
+"Podeu trobar l'instal·lador pel Windows a http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"Els usuaris de Linux l'haurien de poder trobar fen servir el seu gestor de "
+"Els usuaris del Linux l'haurien de poder trobar fent servir el seu gestor de "
 "paquets amb el nom de «pyyaml» o «python-yaml»."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Gràcies per jugar a Unkknow Horizons!"
+msgstr "Gràcies per jugar a l'Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -92,11 +92,11 @@ msgstr "Ajuda"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr "Sortir de l'editor"
+msgstr "Surt de l'editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "Escolliu la moda del pinzell:"
+msgstr "Escolliu la mida del pinzell:"
 
 #: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
@@ -116,11 +116,12 @@ msgstr "Heu de fundar un assentament abans de poder construir edificis!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Seleccioneu el vostre vaixell i acosteu-lo a la costa fent clic dret."
+msgstr ""
+"Seleccioneu el vostre vaixell i apropeu-lo a la costa fent-hi clic dret."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "A continuació, premeu el botó gram a la pestanya de resum del vaixell."
+msgstr "A continuació, premeu el botó gran a la pestanya de resum del vaixell."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -143,33 +144,33 @@ msgstr "Habitants"
 #, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Augmenta la velocitat del joc ({key})"
+msgstr "Augmenta la velocitat de la partida ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Disminueix la velocitat del joc ({key})"
+msgstr "Disminueix la velocitat de la partida ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
 #| msgid "Rotate map counterclockwise (,)"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Gira el mapa cap a l'esquerra ({key})"
+msgstr "Gira el mapa en sentit antihorari ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, python-brace-format
 #| msgid "Rotate map clockwise (.)"
 msgid "Rotate map clockwise ({key})"
-msgstr "Gira el mapa cap a a dreta ({key})"
+msgstr "Gira el mapa en sentit horari ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
-msgstr "Acosta el zoom"
+msgstr "Acosta"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 msgid "Zoom out"
-msgstr "Allunya el zoom"
+msgstr "Allunya"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, python-brace-format
@@ -194,10 +195,10 @@ msgid "Diplomacy"
 msgstr "Diplomàcia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, python-brace-format
+#, fuzzy, python-brace-format
 #| msgid "Game menu (Esc)"
 msgid "Game menu ({key})"
-msgstr "Menú del joc ({key})"
+msgstr "Menú de la partida ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -256,19 +257,20 @@ msgstr "S'està construint:"
 
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
+#, fuzzy
 msgid "Pause"
-msgstr "Pausa"
+msgstr "Posa en pausa"
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr "Continuar"
+msgstr "Continua"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
 msgid "Construction progress:"
-msgstr "Progres de la construcció:"
+msgstr "Progrés de la construcció:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
@@ -287,12 +289,13 @@ msgstr "(es perden tots els recursos)"
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "Cancel·la totes les construccions en progés"
+msgstr "Cancel·la totes les construccions en progrés"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
+#, fuzzy
 msgid "ally"
-msgstr "Aliat"
+msgstr "aliat"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
@@ -313,6 +316,7 @@ msgstr "Vista general de l'edifici"
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
+#, fuzzy
 msgid "Capacity utilization"
 msgstr "Capacitat d'ús"
 
@@ -323,6 +327,7 @@ msgstr "Inventari de l'assentament"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
+#, fuzzy
 msgid "Settler overview"
 msgstr "Visió general dels colons"
 
@@ -343,7 +348,7 @@ msgstr "Impostos:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "Taxa de l'impost"
+msgstr "Taxa d'impostos"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
@@ -356,7 +361,7 @@ msgstr "Felicitat per cada casa"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
 msgid "sad"
-msgstr "Trist"
+msgstr "trist"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
@@ -394,11 +399,12 @@ msgstr "cases"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr "habitants"
+msgstr "residents"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:350
+#, fuzzy
 msgid "Selling"
 msgstr "Venda"
 
@@ -406,6 +412,7 @@ msgstr "Venda"
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
+#, fuzzy
 msgid "Buying"
 msgstr "Compra"
 
@@ -425,7 +432,8 @@ msgstr "Jaciment de recursos"
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr "És un jaciment de recursos on pots construir una mina per extreure'ls."
+msgstr ""
+"És un jaciment de recursos on s'hi pot construir una mina per extreure'ls."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
@@ -448,7 +456,7 @@ msgstr "Felicitat"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr "Habitants"
+msgstr "Residents"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
@@ -459,7 +467,7 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"La senyal de foc mostra al comerciant lliure com arribar al vostre "
+"El senyal de foc mostra al comerciant lliure com arribar al vostre "
 "assentament per si voleu comprar o vendre coses."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
@@ -468,7 +476,7 @@ msgid ""
 "or sell goods."
 msgstr ""
 "Aquest és el vaixell del comerciant lliure. Us visitarà de tant en tant per "
-"comprar i vendre-us coses."
+"comprar i vendre-us béns."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
@@ -486,6 +494,7 @@ msgstr "Comerç"
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
+#, fuzzy
 msgid "Build settlement"
 msgstr "Construir un assentament"
 
@@ -499,8 +508,9 @@ msgid "Ship:"
 msgstr "Vaixell:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
+#, fuzzy
 msgid "Exchange:"
-msgstr "intercanvia:"
+msgstr "Intercanvia:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
@@ -512,7 +522,7 @@ msgstr "Compra o ven recursos"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
-msgstr "Historial de comenrç"
+msgstr "Historial comercial"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
@@ -526,6 +536,7 @@ msgid "Collector utilization"
 msgstr "Ocupació dels recol·lectors"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
+#, fuzzy
 msgid "Income:"
 msgstr "Benefici:"
 
@@ -549,7 +560,7 @@ msgstr "Balanç:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr "-mostra els recursos que es produeixen en aquest assentament"
+msgstr "Mostra els recursos que es produeixen en aquest assentament"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
@@ -565,7 +576,7 @@ msgstr "Inicia la producció"
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr "Seleccioneu recurs:"
+msgstr "Seleccioneu un recurs:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -578,15 +589,16 @@ msgstr ""
 "clic a la X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
+#, fuzzy
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
-"Desa aquesta configuració de recursos com a la que cal fer servir a tots els "
+"Estableix aquesta configuració de recursos per defecte en tots els "
 "assentaments."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
 msgstr ""
-"Restableix la configuració de recursos per defecte a tots els assentaments."
+"Restableix la configuració de recursos per defecte en tots els assentaments."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -609,13 +621,14 @@ msgstr "Seleccioneu un recurs:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
+#, fuzzy
 msgid "Read previous entries"
-msgstr "Llegiu les entrades anteriors"
+msgstr "Mostra les entrades anteriors"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
-msgstr "Llegeix l'entrada següent"
+msgstr "Mostra les entrades posteriors"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
@@ -636,7 +649,7 @@ msgstr "Els meus assentaments"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
-msgstr "Missatges del joc"
+msgstr "Missatges de la partida"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
@@ -656,12 +669,13 @@ msgstr "Envia els missatges de xat a tots els jugadors."
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Introduïu el vostre nom"
+msgstr "Introduïu el vostre missatge"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
+#, fuzzy
 msgid "Return to game"
-msgstr "Torna al joc"
+msgstr "Torna a la partida"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
@@ -721,8 +735,8 @@ msgstr "Terra"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
-"Valor de la terra utilitzable. p.e. Quantitat de terra que es pot fer servir "
-"per crear edificis"
+"Valor del terreny utilitzable (és a dir, quantitat de terreny que es pot fer "
+"servir per crear edificis)"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -733,7 +747,7 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
-"Valor dels recursos generats de totes les fonts possibles als assentaments "
+"Valor dels recursos generats de totes les fonts possibles dels assentaments "
 "del jugador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
@@ -742,7 +756,7 @@ msgstr "Edificis"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Valor de tots els edificis als assentaments del jugador"
+msgstr "Valor de tots els edificis dels assentaments del jugador"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -765,13 +779,14 @@ msgstr "Unitats"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "Valor de tots les unitats que posseeix el jugador"
+msgstr "Valor de totes les unitats que posseeix el jugador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
-"El valor total de cadascun dels conceptes o en resum: La puntuació total"
+"Puntuació total del jugador (és a dir, el valor total de totes les seves "
+"propietats)"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
@@ -808,7 +823,7 @@ msgstr "Agressiu"
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr "Conservar el terreny"
+msgstr "Mantenint la posició"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
@@ -817,8 +832,9 @@ msgstr "Passiu"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
+#, fuzzy
 msgid "Flee"
-msgstr "Fugir"
+msgstr "Fugint"
 
 #: content/gui/xml/mainmenu/credits.xml:471
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
@@ -855,7 +871,7 @@ msgstr "Carrega un mapa existent"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "Carrega un mapa d'una partida desada"
+msgstr "Carrega el mapa d'una partida desada"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -887,23 +903,25 @@ msgstr "Desplaça avall"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
-msgstr "Gira l'edifici o el mapa a la dreta"
+msgstr "Gira l'edifici o el mapa en sentit horari"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
-msgstr "Gira l'edifici o el mapa a l'esquerra"
+msgstr "Gira l'edifici o el mapa en sentit antihorari"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
+#, fuzzy
 msgid "Increase game speed"
-msgstr "Incrementa la velocitat del joc"
+msgstr "Incrementa la velocitat de la partida"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
+#, fuzzy
 msgid "Decrease game speed"
-msgstr "Disminueix la velocitat del joc"
+msgstr "Disminueix la velocitat de la partida"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
-msgstr "Pausa la partida"
+msgstr "Posa la partida en pausa"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Show build menu"
@@ -911,15 +929,15 @@ msgstr "Mostra el menú de construcció"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Enable destruct mode"
-msgstr "Habilita el mode de destrucció"
+msgstr "Activa el mode de destrucció"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
-msgstr "Habilita el mode de construcció de carreteres"
+msgstr "Activa el mode de construcció de carreteres"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr "Habilita el mode pipeta (per clonar edificis)"
+msgstr "Activa el mode pipeta (per clonar edificis)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -947,11 +965,11 @@ msgstr "Càrrega ràpid"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
-msgstr "Edificis de decoració opacs/transparents"
+msgstr "Commuta els edificis de decoració entre opacs o transparents"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
-msgstr "Realça la propietat de les rajoles"
+msgstr "Realça la propietat de les caselles"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
@@ -987,11 +1005,13 @@ msgstr "Mostra els valors de les coordenades (depuració)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
+#, fuzzy
 msgid "Primary"
 msgstr "Primari"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
+#, fuzzy
 msgid "Secondary"
 msgstr "Secundari"
 
@@ -1012,6 +1032,7 @@ msgstr "Desa la partida"
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:50
+#, fuzzy
 msgid "Load game"
 msgstr "Carrega la partida"
 
@@ -1036,7 +1057,7 @@ msgstr "Un jugador"
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
 msgid "Multiplayer"
-msgstr "Múltiples jugadors"
+msgstr "Multijugador"
 
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
@@ -1054,7 +1075,7 @@ msgstr "Crèdits"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
-msgstr "Crea una partida - Múltiples jugadors"
+msgstr "Crea una partida multijugador"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
@@ -1062,7 +1083,7 @@ msgstr "Límit de jugadors:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr "Surt al menú de múltiples jugadors"
+msgstr "Surt al menú de multijugador"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
@@ -1072,7 +1093,7 @@ msgstr "Nom de la partida:"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "Es mostrarà als altres jugadors per que puguin distingir la partida."
+msgstr "Es mostrarà als altres jugadors per poder distingir la partida."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
@@ -1087,7 +1108,7 @@ msgstr "Contrasenya de la partida:"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
 msgstr ""
-"La contrasenya d'aquesta partida. Serà necessària per unir-se a la partida."
+"La contrasenya d'aquesta partida. És necessària per unir-se a la partida."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
@@ -1103,11 +1124,11 @@ msgstr "Xat:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Exit gamelobby"
-msgstr "Sortir del punt de trobada"
+msgstr "Surt del punt de trobada"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr "La partida començarà tant bon punt tots els jugadors estiguin a punt."
+msgstr "La partida començarà tan bon punt tots els jugadors estiguin a punt."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
@@ -1127,7 +1148,7 @@ msgstr "Indica que ja estàs preparat (necessari per començar la partida)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr "Partida nova - Múltiples jugadors"
+msgstr "Partida nova multijugador"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Load game:"
@@ -1164,7 +1185,7 @@ msgstr "Uneix-te a la partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
-msgstr "Apunta't a la partida seleccionada"
+msgstr "Uneix-te a la partida seleccionada"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
@@ -1186,7 +1207,7 @@ msgstr "Pantalla completa:"
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
-"L'SDL només es fa servir en casos de incompatibilitat. Pot causar problemes!"
+"L'SDL només es fa servir en casos d'incompatibilitat. Pot causar problemes!"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
@@ -1198,7 +1219,7 @@ msgstr "Límit d'imatges per segon:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr "Estableix un màxim d'imatges per segon. Per defecte 60fps."
+msgstr "Estableix un màxim d'imatges per segon. Per defecte: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
@@ -1227,7 +1248,9 @@ msgstr "Desplaçament a la vora del mapa:"
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "Desplaçar la finestra quan el ratolí està aprop de les vores"
+msgstr ""
+"Quan s'habilita, la finestra de visualització es desplaçarà quan el ratolí "
+"estigui prop de les vores"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
@@ -1260,12 +1283,13 @@ msgid "Mouse sensitivity:"
 msgstr "Sensibilitat del ratolí:"
 
 #: content/gui/xml/mainmenu/settings.xml:123
+#, fuzzy
 msgid "Saving"
 msgstr "S'està desant"
 
 #: content/gui/xml/mainmenu/settings.xml:128
 msgid "Autosave interval in minutes:"
-msgstr "Interval en minuts del desat automàtic:"
+msgstr "Interval en minuts de les desades automàtiques:"
 
 #: content/gui/xml/mainmenu/settings.xml:136
 msgid "Number of autosaves:"
@@ -1289,7 +1313,7 @@ msgstr "Gira el minimapa amb el mapa:"
 
 #: content/gui/xml/mainmenu/settings.xml:169
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Gira el minimapa quan es girà el mapa"
+msgstr "Gira el minimapa quan es gira el mapa"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
@@ -1298,7 +1322,8 @@ msgstr "Construcció ininterrompuda:"
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
-"Quan s'habilita, no surt del mode de construcció quan s'ha acabat un edifici"
+"Quan s'habilita, no surt del mode de construcció després de realitzar-ne una "
+"acció"
 
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Auto-unload ship:"
@@ -1328,7 +1353,7 @@ msgstr "Indicadors de producció:"
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
-"Mostra els icones de recursos sobre els edificis quan n'acaben la producció"
+"Mostra les icones de recursos sobre els edificis quan n'acaben la producció"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
@@ -1344,15 +1369,16 @@ msgstr "Escolliu el tipus de cita:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "What kind of quote to display while loading a game"
-msgstr "Quina mena de cita voleu mostrar mentre carrega la partida"
+msgstr "Quin tipus de cita voleu mostrar mentre es carrega la partida"
 
 #: content/gui/xml/mainmenu/settings.xml:218
 msgid "Network"
 msgstr "Xarxa"
 
 #: content/gui/xml/mainmenu/settings.xml:222
+#, fuzzy
 msgid "If set to 0, use the router default"
-msgstr "Si es posa a 0, fa servir encaminador per defecte"
+msgstr "Si s'estableix a 0, fa servir l'encaminador per defecte"
 
 #: content/gui/xml/mainmenu/settings.xml:222
 msgid "Network port:"
@@ -1364,7 +1390,7 @@ msgstr "Descarta els canvis"
 
 #: content/gui/xml/mainmenu/settings.xml:244
 msgid "Reset to default settings"
-msgstr "Torna als paràmetres per defecte"
+msgstr "Restableix els paràmetres per defecte"
 
 #: content/gui/xml/mainmenu/settings.xml:245
 #| msgid "Save game"
@@ -1398,7 +1424,7 @@ msgstr "Esborra la partida desada seleccionada"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr "Partida nova - Un jugador"
+msgstr "Partida nova d'un sol jugador"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
@@ -1406,7 +1432,7 @@ msgstr "Escenari"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr "Mapa aleatòri"
+msgstr "Mapa aleatori"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
@@ -1414,12 +1440,12 @@ msgstr "Partida lliure"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
-msgstr "Comença a jugar"
+msgstr "Comença la partida"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr "Escolliu a quin mapa voleu jugar:"
+msgstr "Escolliu quin mapa voleu jugar:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
@@ -1477,7 +1503,7 @@ msgstr "S'ha indicat un nom de fitxer no vàlid per desar la partida."
 #: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
 #: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
 msgid "Error"
-msgstr "Error"
+msgstr "S'ha produït un error"
 
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
 msgid "Failed to save."
@@ -1493,11 +1519,11 @@ msgstr "No ho podeu emmagatzemar."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
-msgstr "No us ho podeu permetre."
+msgstr "No us podeu permetre comprar-ho."
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
-msgstr "Aquest comerciant ha esgotat aquest producte."
+msgstr "El comerciant ha esgotat aquest producte."
 
 #: horizons/component/tradepostcomponent.py:232
 msgid "The trade partner does not buy this."
@@ -1509,15 +1535,15 @@ msgstr "No disposeu d'aquest producte."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "The trade partner can not store more of this."
-msgstr "El comprador ja no en pot emmagatzemar més."
+msgstr "El comerciant ja no en pot emmagatzemar més."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not afford to buy this."
-msgstr "El comprador no es pot permetre comprar-ho."
+msgstr "El comerciant no es pot permetre comprar-ho."
 
 #: horizons/component/tradepostcomponent.py:253
 msgid "The trade partner does not buy more of this."
-msgstr "EL comprador no està interessat a tenir-ne més."
+msgstr "El comprador no està interessat en comprar-ne més."
 
 #: horizons/editor/session.py:69 horizons/spsession.py:64
 msgid "Failed to quicksave."
@@ -1540,7 +1566,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Esteu segur que voleu sortir de Unknown Horizons?"
+msgstr "Esteu segur que voleu sortir de l'Unknown Horizons?"
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
@@ -1570,6 +1596,7 @@ msgid "{key} is already set to {action}."
 msgstr "{key} ja es fa servir per {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
+#, fuzzy
 msgid "Would you like to overwrite it?"
 msgstr "Voleu sobreescriure'l?"
 
@@ -1588,6 +1615,7 @@ msgid "Gameplay Tips"
 msgstr "Consells per jugar"
 
 #: horizons/gui/modules/loadingscreen.py:62
+#, fuzzy
 msgid "Press 'ESC' to access Game Menu."
 msgstr "Premeu «ESC» per accedir al menú del joc."
 
@@ -1603,15 +1631,16 @@ msgstr "Actualment només es pot jugar als primers {tier} nivells."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr "Feu servir «P» per posar el joc en pausa."
+msgstr "Feu servir «P» per posar la partida en pausa."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr "Podeu fer carreteres arrossegant amb el botó esquerre premut."
+msgstr "Podeu fer carreteres arrossegant el botó esquerre premut."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr "Podeu posar diversos edificis mantenint premuda la tecla «MAJÚSCULES»."
+msgstr ""
+"Podeu construir diversos edificis mantenint premuda la tecla «MAJÚSCULES»."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
@@ -1626,11 +1655,14 @@ msgid ""
 "disease."
 msgstr ""
 "Construïu hospitals i estacions de bombers per protegir als vostres "
-"habitants les malalties i el foc."
+"habitants de malalties i del foc."
 
 #: horizons/gui/modules/loadingscreen.py:72
+#, fuzzy
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Construïu tendes de magatzem per incrementar la capacitat d'estocatge."
+msgstr ""
+"Construïu tendes de magatzem per incrementar la capacitat total "
+"d'emmagatzematge."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
@@ -1675,11 +1707,11 @@ msgstr "S'estant formant les illes…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr "S'estan preparant els plànols del pre-projecte…"
+msgstr "S'estan preparant els plànols del projecte…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr "S'està omplint el món d'aigua…"
+msgstr "S'està afegint aigua al món…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
@@ -1691,11 +1723,11 @@ msgstr "S'està convencent l'IA…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr "S'està enterrant els tresors…"
+msgstr "S'estan enterrant tresors…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
-msgstr "No es pot trobar pyenet"
+msgstr "No es pot trobar la pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid ""
@@ -1708,7 +1740,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
-"Usuaris de Linux: Proveu d'instal·lar pyenet amb el vostre gestor de "
+"Usuaris del Linux: Proveu d'instal·lar la pyenet amb el vostre gestor de "
 "paquets."
 
 #: horizons/gui/modules/multiplayermenu.py:130
@@ -1740,12 +1772,12 @@ msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Si la vostra connexió a Internet és correcta, vol dir que el nostre servidor "
-"principal està temporalment fora de servei."
+"Si la vostra connexió a Internet és correcta, vol dir que el servidor "
+"principal de l'Unknown Horizons està temporalment fora de servei."
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
 msgid "Something went wrong with the network:"
-msgstr "S'ha produït un problema a la xarxa:"
+msgstr "S'ha produït un problema amb la xarxa:"
 
 #: horizons/gui/modules/multiplayermenu.py:176
 msgid "Version differs!"
@@ -1789,7 +1821,8 @@ msgid ""
 msgstr ""
 "La versió de la partida no és igual que la vostra. Tots els jugadors han de "
 "tenir la mateixa. Es pot sol·lucionar si tots els jugadors s'actualitzen a "
-"la darrera. Versió de la partida: {game_version} La vostra: {own_version}"
+"la darrera versió. Versió de la partida: {game_version} La vostra versió: "
+"{own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
@@ -1808,12 +1841,13 @@ msgstr "Nombre de jugadors recomanat: {number}"
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:393
 #: horizons/network/networkinterface.py:526
+#, fuzzy
 msgid "Ready"
-msgstr "A punt"
+msgstr "Preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:395
 msgid "Not ready"
-msgstr "Encara no està a punt"
+msgstr "Encara no està preparat"
 
 #: horizons/gui/modules/multiplayermenu.py:430
 #| msgid "Enter your message:"
@@ -1925,6 +1959,7 @@ msgid "A map with the name {name} already exists."
 msgstr "Ja hi ha un mapa anomenat {name}."
 
 #: horizons/gui/modules/select_savegame.py:153
+#, fuzzy
 msgid "Overwrite it?"
 msgstr "Voleu sobreescriure'l?"
 
@@ -1933,9 +1968,9 @@ msgid "Unknown savedate"
 msgstr "La data de desat és desconeguda"
 
 #: horizons/gui/modules/select_savegame.py:220
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "Saved at {time}"
-msgstr "Desat a les {time}"
+msgstr "Desada a les {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:224
@@ -1948,7 +1983,7 @@ msgstr[1] "S'ha desat {amount} vegades"
 #: horizons/gui/modules/select_savegame.py:231
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr "Versió {version} del desat"
+msgstr "Versió de la desada {version}"
 
 #: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
@@ -2091,15 +2126,15 @@ msgstr "Aigua:"
 
 #: horizons/gui/modules/singleplayermenu.py:229
 msgid "Max island size:"
-msgstr "Mida màxima de l'illa:"
+msgstr "Mida màxima de les illes:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Preferred island size:"
-msgstr "Mida preferida de l'illa:"
+msgstr "Mida preferida de les illes:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Island size deviation:"
-msgstr "Desviació de la mida de l'illa:"
+msgstr "Desviació de la mida de les illes:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
@@ -2119,7 +2154,7 @@ msgstr "Missatge d'error:"
 
 #: horizons/gui/modules/singleplayermenu.py:508
 msgid "Please report this to the author."
-msgstr "Informeu-ne a l'autor."
+msgstr "Informeu-ne l'autor."
 
 #: horizons/gui/modules/singleplayermenu.py:570
 #, python-brace-format
@@ -2189,12 +2224,11 @@ msgstr "Vista"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr "Construeix els edificis relacionats"
+msgstr "Construeix edificis relacionats"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
-"Feu clic a una de les caselles del recurs per afegir una oferta comercial."
+msgstr "Feu clic en un dels espais de recurs per afegir una oferta comercial."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
@@ -2212,7 +2246,7 @@ msgid ""
 "in stock."
 msgstr ""
 "Comprareu {resource_name} a {price} monedes/t quan en tingueu menys de "
-"{limit}t en estoc."
+"{limit} t en estoc."
 
 #: horizons/gui/tabs/buyselltab.py:324
 #, python-brace-format
@@ -2220,7 +2254,7 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
-"Vendreu {resource_name} a {price} monedes/t quan en tingueu més de {limit}t "
+"Vendreu {resource_name} a {price} monedes/t quan en tingueu més de {limit} t "
 "disponibles."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
@@ -2249,7 +2283,7 @@ msgstr "No permetis actualitzacions"
 
 #: horizons/gui/tabs/mainsquaretabs.py:195
 msgid "Allow upgrades"
-msgstr "Permet les actualitzacions"
+msgstr "Permet actualitzacions"
 
 #: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
@@ -2291,7 +2325,7 @@ msgstr "Esteu massa lluny del magatzem més proper"
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
-msgstr "No podeu equipar armes als vaixells de comerç"
+msgstr "No podeu equipar amb armes els vaixells comerciants"
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "It is not possible to equip a trade ship with weapons."
@@ -2299,11 +2333,11 @@ msgstr "No és possible equipar un vaixell comerciant amb armes."
 
 #: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
-msgstr "Equipa una arma"
+msgstr "Equipa l'arma"
 
 #: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
-msgstr "Desmunta una arma"
+msgstr "Desmunta l'arma"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
@@ -2313,12 +2347,12 @@ msgstr "{resource_name}: {price} peces d'or"
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr "Compra-ho a {buyprice} peces d'or"
+msgstr "compra-ho a {buyprice} peces d'or"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr "Vent-ho per {sellprice} peces d'or"
+msgstr "ven-ho per {sellprice} peces d'or"
 
 #: horizons/gui/widgets/inventory.py:166
 #, python-brace-format
@@ -2328,7 +2362,7 @@ msgstr "{stored}/{limit}"
 #: horizons/gui/widgets/inventory.py:168
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr "Límit: {amount}t per casella"
+msgstr "Límit: {amount} t per espai"
 
 #: horizons/gui/widgets/logbook.py:49
 msgid "Logbook"
@@ -2372,27 +2406,27 @@ msgstr "Feu clic per veure les estadístiques"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr "Feu clic per afegir una ranura"
+msgstr "Feu clic per afegir un nou espai"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr "Tornar a la configuració per defecte."
+msgstr "Restableix la configuració per defecte."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
-"Torna la monitorització dels recursos d'aquest assentament a la configuració "
-"per defecte que heu desat."
+"Restableix la monitorització dels recursos d'aquest assentament a la "
+"configuració per defecte que heu desat."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
-"Posa aquesta configuració per defecte com a configuració per defecte de tots "
-"els assentaments."
+"Estableix aquesta configuració per defecte com a configuració per defecte de "
+"tots els assentaments."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
@@ -2473,7 +2507,7 @@ msgstr "Recluta unitats útils pel combat terrestre."
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
-msgstr "Mesclador"
+msgstr "Envasadora d'espècies"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
@@ -2512,11 +2546,13 @@ msgstr "Necessita bestiar porcí o boví. Produeix aliment."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:98
+#, fuzzy
 msgid "Charcoal Burning"
 msgstr "Carbonera"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:100
+#, fuzzy
 msgid "Burns a lot of boards."
 msgstr "Fa cremar molta fusta."
 
@@ -2563,7 +2599,7 @@ msgstr "Granja"
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:133
 msgid "Grows field crops and raises livestock."
-msgstr "Fa créixer els camps i el bestiar."
+msgstr "Cultiva camps i cria el bestiar."
 
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:138
@@ -2574,7 +2610,8 @@ msgstr "Arna d'abelles"
 #: horizons/i18n/objecttranslations.py:140
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
-"Cuida les abelles. Fa bresques de mel per fer dolços. Necessita una granja."
+"Cuida les abelles. Se n'obtenen bresques de mel per fer després dolços. "
+"Necessita una granja."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
@@ -2644,7 +2681,7 @@ msgstr "Camp de patates"
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:189
 msgid "Yields food. Needs a farm."
-msgstr "Fa menjar. Necessita na granja."
+msgstr "Produeix menjar. Necessita na granja."
 
 #. name of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:194
@@ -2654,7 +2691,7 @@ msgstr "Camp d'espècies"
 #. tooltip_text of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:196
 msgid "Grows spices. Needs a farm."
-msgstr "Fa espècies. Necessita una granja."
+msgstr "Produeix espècies. Necessita una granja."
 
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:201
@@ -2734,7 +2771,7 @@ msgstr "Millora el camp de visió del jugador."
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
 msgid "Lumberjack Tent"
-msgstr "Carpa de llenyataire"
+msgstr "Tenda de llenyataire"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:257
@@ -2754,7 +2791,7 @@ msgstr "Plaça major"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:266
 msgid "Supplies citizens with goods. Provides community."
-msgstr "Proveeix als vilatans de coses. Fa comunitat."
+msgstr "Proveeix als vilatans de béns. Fa comunitat."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
@@ -2794,12 +2831,12 @@ msgstr "Satisfà les necessitats religioses dels mariners."
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:297
 msgid "Ruined Tent"
-msgstr "Tendes enrunades"
+msgstr "Tendes ruïnoses"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:302
 msgid "Salt Ponds"
-msgstr "Llac salat"
+msgstr "Salines"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:304
@@ -2854,12 +2891,12 @@ msgstr "Treu pedra d'una muntanya."
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:339
 msgid "Storage Tent"
-msgstr "Tenda de dipòsit"
+msgstr "Tenda magatzem"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:341
 msgid "Storage Hut"
-msgstr "Cabana de dipòsit"
+msgstr "Cabana magatzem"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
@@ -2909,7 +2946,7 @@ msgstr "Mansió"
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
 msgid "Houses your inhabitants."
-msgstr "Cases pels vostres habitants."
+msgstr "Allotjament pels vostres habitants."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:372
@@ -2919,12 +2956,13 @@ msgstr "Tabaquer"
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:374
 msgid "Produces tobaccos out of tobacco."
-msgstr "Fa cigarrets de tabac."
+msgstr "Fa cigars a partir de tabac."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:379
+#, fuzzy
 msgid "Toolmaker"
-msgstr "Ferrer"
+msgstr "Taller d'eines"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:381
@@ -2964,12 +3002,12 @@ msgstr "Fa fusta. Els tallen els llenyataires."
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:404
 msgid "Village school"
-msgstr "Escola del poble"
+msgstr "Escola"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:406
 msgid "Provides education."
-msgstr "Dona educació."
+msgstr "Forma la població."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
@@ -2999,7 +3037,7 @@ msgstr "Fa roba de la llana d'ovella."
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
 msgid "Windmill"
-msgstr "Molí de vent"
+msgstr "Molí"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:432
@@ -3039,6 +3077,7 @@ msgstr "Camps"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:458
 #: horizons/i18n/objecttranslations.py:481
+#, fuzzy
 msgid "Mining"
 msgstr "Mines"
 
@@ -3143,11 +3182,11 @@ msgstr "No s'ha pogut iniciar la partida que heu seleccionat."
 #: horizons/main.py:356
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
-"La partida desada pot estar corrupta o s'ha desat amb una versió anterior."
+"La partida desada pot estar corrompuda o s'ha desat amb una versió anterior."
 
 #: horizons/main.py:475
 msgid "No quicksaves found"
-msgstr "No s'han trobat partides desades ràpid"
+msgstr "No s'han trobat partides de desat ràpid"
 
 #: horizons/main.py:476
 msgid "You need to quicksave before you can quickload."
@@ -3171,7 +3210,7 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
-"Les partides s'han desincronitzat. Es tracta d'un error intern no previst, "
+"Les partides s'han desincronitzat. Es tracta d'un error intern no previst: "
 "la partida no pot continuar."
 
 #: horizons/manager.py:176
@@ -3268,7 +3307,7 @@ msgid ""
 "one you are currently using ({old_version})."
 msgstr ""
 "Hi ha una versió de l'Unknown Horizons ({new_version}) més nova que la que "
-"feu servir ({old_version})."
+"feu servir ara ({old_version})."
 
 #: horizons/util/checkupdates.py:98
 msgid "Click to download"
@@ -3280,9 +3319,9 @@ msgstr "S'ha obert una pàgina al vostre navegador."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:267
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr "{slotnum} espais, {limit}t"
+msgstr "{slotnum} espais, {limit} t"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
@@ -3325,11 +3364,11 @@ msgstr "Heu de construir aquest edifici a la costa."
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
-msgstr "He de construir aquest edifici al mar."
+msgstr "Heu de construir aquest edifici al mar."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
-msgstr "Aquest lloc és massa lluny del vostre vaixell."
+msgstr "Aquest lloc està massa allunyat del vostre vaixell."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building can only be built on a resource source."
@@ -3345,11 +3384,11 @@ msgstr "Heu de construir aquest edifici parcialment en terra ferma."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr "Els habitants estan infectats per la Pesta Negra!"
+msgstr "Els habitants estan infectats per la pesta negra!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
-msgstr "S'està cremant l'edifici!"
+msgstr "L'edifici està cremant-se!"
 
 #: horizons/world/status.py:88
 msgid "These residents are unhappy."
@@ -3365,7 +3404,7 @@ msgstr "Aquest edifici és ple."
 
 #: horizons/world/status.py:115
 msgid "This building has a very low productivity."
-msgstr "Aquest edifici te una baixa productivitat."
+msgstr "Aquest edifici té una baixa productivitat."
 
 #: horizons/world/status.py:121
 msgid "This building is decommissioned."
@@ -3382,19 +3421,19 @@ msgid "Trade route: waiting at {position}"
 msgstr "Ruta comercial: s'està esperant a {position}"
 
 #: horizons/world/units/ship.py:212
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "Going to {location}"
-msgstr "Destinació a {location}"
+msgstr "Dirigint-se a {location}"
 
 #: horizons/world/units/ship.py:213
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr "Destinació a {x}, {y}"
+msgstr "Dirigint-se a {x}, {y}"
 
 #: horizons/world/units/ship.py:217
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr "Aturat a {location}"
+msgstr "Aturat  {location}"
 
 #: horizons/world/units/ship.py:218
 #, python-brace-format
@@ -3417,7 +3456,7 @@ msgstr "S'està atacant a {owner}"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr "Tint indi"
+msgstr "tint indi"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3430,7 +3469,7 @@ msgstr "El vostre edifici s'ha incendiat!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr "Salmorra"
+msgstr "salmorra"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
@@ -3455,12 +3494,12 @@ msgstr "Jaciment de sal"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
-msgstr "Alguns dels vostres habitants s'acaben de canviar de casa."
+msgstr "Alguns dels vostres habitants acaben de mudar de casa."
 
 #. This is a database entry: the name of a resource
 #| msgid "Resource deposit"
 msgid "gem deposit"
-msgstr "Jaciment de gemmes"
+msgstr "jaciment de gemmes"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3472,7 +3511,7 @@ msgstr "fulles de tabac"
 
 #. This is a database entry: the name of a resource
 msgid "stone tops"
-msgstr "Lloses de pedra"
+msgstr "lloses de pedra"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
@@ -3504,7 +3543,7 @@ msgstr "farina"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr "porcs per matar"
+msgstr "porcs per l'escorxador"
 
 #. This is a database entry: the name of a resource
 msgid "recreation"
@@ -3517,7 +3556,7 @@ msgstr "arbres"
 #. This is a database entry: the name of a resource
 #| msgid "Resource deposit"
 msgid "marble deposit"
-msgstr "Jaciment de marbre"
+msgstr "jaciment de marbre"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3530,7 +3569,7 @@ msgstr "jaciment d'argila"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} i {player2} han signat la pau i ara són aliat."
+msgstr "{player1} i {player2} han signat la pau i ara són aliats."
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
@@ -3583,12 +3622,12 @@ msgstr "lingots de ferro"
 #. This is a database entry: the name of a resource
 #| msgid "Resource deposit"
 msgid "coal deposit"
-msgstr "Jaciment de carbó"
+msgstr "jaciment de carbó"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr "la captura de pantalla s'ha desat a {file}."
+msgstr "La captura de pantalla s'ha desat a {file}."
 
 #. This is a database entry: the name of a resource
 msgid "cattle"
@@ -3599,6 +3638,7 @@ msgid "You can also drag roads."
 msgstr "També podeu fer camins arrossegant el ratolí."
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "lamb wool"
 msgstr "llana d'ovella"
 
@@ -3606,7 +3646,8 @@ msgstr "llana d'ovella"
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr "Heu arribat al màxim. Els vostres habitants ja no poden millorar més."
+msgstr ""
+"Heu arribat al nivell màxim. Els vostres habitants ja no poden millorar més."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
@@ -3668,8 +3709,9 @@ msgid "hops"
 msgstr "llúpol"
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "grain"
-msgstr "cereal"
+msgstr "gra"
 
 #. This is a database entry: the name of a resource
 msgid "spices"
@@ -3709,7 +3751,7 @@ msgstr "bestiar boví per l'escorxador"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr "tabacs"
+msgstr "cigars"
 
 #. This is a database entry: the name of a resource
 msgid "tools"
@@ -3740,6 +3782,7 @@ msgid "blossoms"
 msgstr "flors"
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "indigo plants"
 msgstr "plantes d'indi"
 
@@ -3786,12 +3829,12 @@ msgstr "Necessiteu més {resource} per poder construir aquest edifici."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr "La vostra tripulació no vol sortir d'aquest mapa."
+msgstr "La vostra tripulació no vol sortir del mapa."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} i {player2} han cessat les seves hostilitats."
+msgstr "{player1} i {player2} han cessat les hostilitats."
 
 #. This is a database entry: the name of a resource
 msgid "grass"
@@ -3808,7 +3851,7 @@ msgstr "La partida s'ha desat automàticament."
 #. This is a database entry: the name of a resource
 #| msgid "Resource deposit"
 msgid "gold deposit"
-msgstr "Jaciment d'or"
+msgstr "jaciment d'or"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3816,7 +3859,7 @@ msgstr "Un dels camps necessita una granja per poder recollir la collita."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr "Pedres precioses en brut"
+msgstr "pedres precioses en brut"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
@@ -3824,7 +3867,7 @@ msgstr "ruscs"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr "La vostra mina s'ha esgotat."
+msgstr "La mina s'ha esgotat."
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
@@ -3843,7 +3886,7 @@ msgstr "cotó"
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr "{player1} i {player2} ja no son aliats i ara estan en guerra."
+msgstr "{player1} i {player2} ja no són aliats i ara estan en guerra."
 
 #. This is a database entry: the name of a resource
 msgid "textile"
@@ -3860,7 +3903,7 @@ msgstr "canó"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Els habitants d'aquest edifici tenen la Pesta Negra!"
+msgstr "Els habitants d'aquest edifici tenen la pesta negra!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3872,8 +3915,9 @@ msgid "tea plants"
 msgstr "plantes de te"
 
 #. This is a database entry: the name of a resource
+#, fuzzy
 msgid "get-together"
-msgstr "reunió"
+msgstr "socialització"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
@@ -3901,7 +3945,7 @@ msgstr "porcs"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "No podeu ensorrar el magatzem, el vostre assentament el necessita."
+msgstr "No podeu ensorrar el magatzem: l'assentament el necessita."
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
@@ -3909,7 +3953,7 @@ msgstr "espècies"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr "Pesta Negra"
+msgstr "pesta negra"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
