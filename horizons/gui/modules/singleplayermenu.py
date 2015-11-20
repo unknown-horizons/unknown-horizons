@@ -31,7 +31,6 @@ import tempfile
 import horizons.globals
 import horizons.main
 
-
 from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
@@ -45,7 +44,6 @@ from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.shapes import Rect
 from horizons.util.startgameoptions import StartGameOptions
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 
 class SingleplayerMenu(Window):
@@ -61,10 +59,7 @@ class SingleplayerMenu(Window):
 			'okay'     : self.act,
 			'scenario' : Callback(self._select_mode, 'scenario'),
 			'random'   : Callback(self._select_mode, 'random'),
-			'free_maps': Callback(self._select_mode, 'free_maps'),
-			
-
-
+			'free_maps': Callback(self._select_mode, 'free_maps')
 		})
 
 		self._playerdata = PlayerDataSelection()

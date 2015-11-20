@@ -30,9 +30,7 @@ import horizons.main
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
 from horizons.util.startgameoptions import StartGameOptions
-from horizons.messaging import GuiAction
-from horizons.messaging import GuiHover
-from horizons.messaging import GuiCancelAction
+from horizons.messaging import GuiAction, GuiHover, GuiCancelAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
@@ -51,26 +49,19 @@ class MainMenu(Window):
 		self._gui.mapEvents({
 			'single_button': lambda: self._windows.open(gui.singleplayermenu),
 			'single_label' : lambda: self._windows.open(gui.singleplayermenu),
-			
 			'multi_button': lambda: self._windows.open(gui.multiplayermenu),
 			'multi_label' : lambda: self._windows.open(gui.multiplayermenu),
-			
 			'settings_button': lambda: self._windows.open(gui.settings_dialog),
 			'settings_label' : lambda: self._windows.open(gui.settings_dialog),
-			
 			'help_button': gui.on_help,
 			'help_label' : gui.on_help,
-			
 			'quit_button': self.on_escape,
 			'quit_label' : self.on_escape,
-			
 			'editor_button': gui.show_editor_start_menu,
 			'editor_label' : gui.show_editor_start_menu,
-			
 			'credits_button': gui.show_credits,
 			'credits_label' : gui.show_credits,
 			'load_button': gui.load_game,
-
 			'load_label' : gui.load_game,
 			'changeBackground' : gui.rotate_background,
 		})
@@ -199,7 +190,7 @@ class Gui(object):
 		
 	def _on_gui_hover_action(self, msg):
 		"""Make a sound when the mouse hovers over a button"""
-		AmbientSoundComponent.play_special('refresh', position=None, gain=0.2)
+		AmbientSoundComponent.play_special('refresh', position=None, gain=1)
 
 	def show_editor_start_menu(self):
 		editor_start_menu = EditorStartMenu(self.windows)

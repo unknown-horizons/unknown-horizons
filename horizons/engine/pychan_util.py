@@ -22,16 +22,13 @@
 
 import functools
 import traceback
-import time
 
 from fife.extensions import pychan
 
 from horizons.gui.style import STYLES
-from horizons.messaging import GuiAction, GuiCancelAction
-from horizons.messaging import GuiHover
+from horizons.messaging import GuiAction, GuiCancelAction, GuiHover
 from horizons.util.python.callback import Callback
 from horizons.gui.widgets.imagebutton import ImageButton
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 import horizons.globals
 
@@ -91,8 +88,6 @@ def init_pychan():
 			 # This overwrites the ImageButton provided by FIFE!
 	           ImageButton,
 	           ]
-
-
 
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)
@@ -193,8 +188,6 @@ def setup_cursor_change_on_hover():
 		cls.disable_cursor_change_on_hover = disable_cursor_change_on_hover
 		cls.enable_cursor_change_on_hover = enable_cursor_change_on_hover
 
-
-
 	make_cursor_change_on_hover_class( pychan.widgets.WIDGETS['TextField'] )
 	make_cursor_change_on_hover_class( RenameLabel )
 	make_cursor_change_on_hover_class( RenameImageButton )
@@ -211,7 +204,6 @@ def setup_cursor_change_on_hover():
 
 def setup_trigger_signals_on_action():
 	"""Make sure that every widget sends a signal when an action event occurs"""
-
 	def make_action_trigger_a_signal(cls):
 		def add_action_triggers_a_signal(func):
 			@functools.wraps(func)
@@ -228,7 +220,7 @@ def setup_trigger_signals_on_action():
 	make_action_trigger_a_signal(pychan.widgets.Widget)
 
 def setup_trigger_signals_on_hover():
-	"""Make sure that buttonwidgets send a signal when a mouseOver event occurs"""
+	"""Make sure that the widgets specified below send a signal when a mouseOver event occurs"""
 	def make_hover_trigger_a_signal(cls):
 		def add_hover_triggers_a_signal(func):
 			@functools.wraps(func)
@@ -239,13 +231,7 @@ def setup_trigger_signals_on_hover():
 
 		cls.__init__ = add_hover_triggers_a_signal( cls.__init__ )
 
-
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['OkButton'])
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['CancelButton'])
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['DeleteButton'])
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['MainmenuButton'])
-
-
-	
-
-

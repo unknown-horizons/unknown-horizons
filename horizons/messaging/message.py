@@ -221,7 +221,7 @@ class GuiAction(Message):
 	pass
 
 class GuiCancelAction(Message):
-	"""Sent on events pthat originate from the cancelButton."""
+	"""Sent on events that originate from the cancelButton."""
 	pass
 
 class GuiHover(Message):

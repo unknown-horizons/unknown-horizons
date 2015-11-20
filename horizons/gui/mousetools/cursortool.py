@@ -25,9 +25,7 @@ import logging
 from fife import fife
 import horizons.globals
 
-from horizons.messaging import GuiAction
 from horizons.util.shapes import Point
-
 
 
 # round half towards plus infinity
@@ -57,13 +55,11 @@ class CursorTool(fife.IMouseListener):
 		self.disable()
 
 	def mousePressed(self, evt):
-		print "hello"
+		pass
 	def mouseReleased(self, evt):
 		pass
 	def mouseEntered(self, evt):
-		print evt
-		if evt.isConsumedByWidgets():
-			GuiAction.broadcast(self, evt.getSource())
+		pass
 	def mouseExited(self, evt):
 		pass
 	def mouseClicked(self, evt):
