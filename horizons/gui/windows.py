@@ -28,6 +28,7 @@ from fife.extensions.pychan.widgets import Icon
 import horizons.globals
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.python.callback import Callback
 
 
@@ -73,6 +74,7 @@ class Window(object):
 		raise NotImplementedError
 
 	def close(self):
+		AmbientSoundComponent.play_special('success')
 		"""Closes the window.
 
 		You should *never* call this directly in your code. Use `self._windows.close()`

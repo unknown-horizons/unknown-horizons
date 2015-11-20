@@ -44,9 +44,13 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 		fife.ICommandListener.__init__(self)
 		horizons.globals.fife.eventmanager.addCommandListener(self)
 
+
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		super(MainListener, self).end()
+		
+
+		
 
 	def keyPressed(self, evt):
 		if evt.isConsumed():

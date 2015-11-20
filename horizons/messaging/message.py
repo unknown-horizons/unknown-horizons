@@ -220,6 +220,14 @@ class GuiAction(Message):
 	"""Sent on events pychan classifies as "action"."""
 	pass
 
+class GuiCancelAction(Message):
+	"""Sent on events pthat originate from the cancelButton."""
+	pass
+
+class GuiHover(Message):
+	"""Sent on mouseEntered events"""
+	pass
+
 class ResourceProduced(Message):
 	"""Sent when a production building finished the production of a resource."""
 	arguments = ('caller', 'produced_resources', )

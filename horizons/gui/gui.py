@@ -31,6 +31,8 @@ from horizons.gui.keylisteners import MainListener
 from horizons.gui.widgets.pickbeltwidget import CreditsPickbeltWidget
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.messaging import GuiAction
+from horizons.messaging import GuiHover
+from horizons.messaging import GuiCancelAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import load_uh_widget
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
@@ -49,19 +51,26 @@ class MainMenu(Window):
 		self._gui.mapEvents({
 			'single_button': lambda: self._windows.open(gui.singleplayermenu),
 			'single_label' : lambda: self._windows.open(gui.singleplayermenu),
+			
 			'multi_button': lambda: self._windows.open(gui.multiplayermenu),
 			'multi_label' : lambda: self._windows.open(gui.multiplayermenu),
+			
 			'settings_button': lambda: self._windows.open(gui.settings_dialog),
 			'settings_label' : lambda: self._windows.open(gui.settings_dialog),
+			
 			'help_button': gui.on_help,
 			'help_label' : gui.on_help,
+			
 			'quit_button': self.on_escape,
 			'quit_label' : self.on_escape,
+			
 			'editor_button': gui.show_editor_start_menu,
 			'editor_label' : gui.show_editor_start_menu,
+			
 			'credits_button': gui.show_credits,
 			'credits_label' : gui.show_credits,
 			'load_button': gui.load_game,
+
 			'load_label' : gui.load_game,
 			'changeBackground' : gui.rotate_background,
 		})
@@ -118,8 +127,10 @@ class Gui(object):
 		self.fps_display = FPSDisplay()
 
 	def show_main(self):
-		"""Shows the main menu """
-		GuiAction.subscribe(self._on_gui_action)
+		"""Shows the main menu"""
+		GuiAction.subscribe(self._on_gui_click_action)
+		GuiHover.subscribe(self._on_gui_hover_action)
+		GuiCancelAction.subscribe(self._on_gui_cancel_action)
 
 		if not self._background.isVisible():
 			self._background.show()
@@ -154,7 +165,9 @@ class Gui(object):
 		self.windows.on_return()
 
 	def close_all(self):
-		GuiAction.discard(self._on_gui_action)
+		GuiAction.discard(self._on_gui_click_action)
+		GuiHover.discard(self._on_gui_hover_action)
+		GuiCancelAction.discard(self._on_gui_cancel_action)
 		self.windows.close_all()
 		self._background.hide()
 
@@ -176,8 +189,17 @@ class Gui(object):
 		horizons.globals.fife.set_uh_setting("LatestBackground", self.bg_images[0])
 		horizons.globals.fife.save_settings()
 
-	def _on_gui_action(self, msg):
-		AmbientSoundComponent.play_special('click')
+	def _on_gui_click_action(self, msg):
+		"""Make a sound when a button is clicked"""
+		AmbientSoundComponent.play_special('click', gain=10)
+		
+	def _on_gui_cancel_action(self, msg):
+		"""Make a sound when a cancelButton is clicked"""
+		AmbientSoundComponent.play_special('success', gain=10)
+		
+	def _on_gui_hover_action(self, msg):
+		"""Make a sound when the mouse hovers over a button"""
+		AmbientSoundComponent.play_special('refresh', position=None, gain=0.2)
 
 	def show_editor_start_menu(self):
 		editor_start_menu = EditorStartMenu(self.windows)
