@@ -73,7 +73,6 @@ class Window(object):
 		raise NotImplementedError
 
 	def close(self):
-		AmbientSoundComponent.play_special('success')
 		"""Closes the window.
 
 		You should *never* call this directly in your code. Use `self._windows.close()`
