@@ -26,7 +26,7 @@ import traceback
 from fife.extensions import pychan
 
 from horizons.gui.style import STYLES
-from horizons.messaging import GuiAction
+from horizons.messaging import GuiAction, GuiCancelAction, GuiHover
 from horizons.util.python.callback import Callback
 from horizons.gui.widgets.imagebutton import ImageButton
 
@@ -152,6 +152,8 @@ def init_pychan():
 
 	setup_trigger_signals_on_action()
 
+	setup_trigger_signals_on_hover()
+
 
 def setup_cursor_change_on_hover():
 
@@ -207,9 +209,29 @@ def setup_trigger_signals_on_action():
 			@functools.wraps(func)
 			def wrapper(self, *args, **kwargs):
 				func(self, *args, **kwargs)
-				self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
+				if cls._getName(self) == "cancelButton":
+					self.capture(Callback(GuiCancelAction.broadcast, self), "action", "action_listener")
+				else:
+					self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
 			return wrapper
 
 		cls.__init__ = add_action_triggers_a_signal( cls.__init__ )
 
 	make_action_trigger_a_signal(pychan.widgets.Widget)
+
+def setup_trigger_signals_on_hover():
+	"""Make sure that the widgets specified below send a signal when a mouseOver event occurs"""
+	def make_hover_trigger_a_signal(cls):
+		def add_hover_triggers_a_signal(func):
+			@functools.wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+				self.capture(Callback(GuiHover.broadcast, self), "mouseEntered", "action_listener")
+			return wrapper
+
+		cls.__init__ = add_hover_triggers_a_signal( cls.__init__ )
+
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['OkButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['CancelButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['DeleteButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['MainmenuButton'])
