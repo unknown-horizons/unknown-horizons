@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -41,7 +41,7 @@ class SmelteryEvaluator(BuildingEvaluator):
 	def create(cls, area_builder, x, y, orientation):
 		builder = BasicBuilder.create(BUILDINGS.SMELTERY, (x, y), orientation)
 
-		distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.IRON_MINE)
+		distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.MINE)
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		distance_to_charcoal_burner = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.CHARCOAL_BURNER)
 		if distance_to_collector is None and (distance_to_charcoal_burner is None or distance_to_iron_mine is None):

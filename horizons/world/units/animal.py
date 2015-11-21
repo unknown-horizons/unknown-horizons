@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -207,20 +207,8 @@ class WildAnimal(CollectorAnimal, Collector):
 						job.path = path
 						return job
 
-		# NOTE: only use random job for now, see how it's working it
-		# it speeds up animal.search_job by a third (0.00321 -> 0.00231)
-		# and animal.get_job by 3/4 (0.00231 -> 0.00061)
+		# NOTE: use random job, works fine and is faster than looking for the best
 		return None
-
-		jobs = JobList(self, JobList.order_by.random)
-		# try all possible jobs
-		for provider in self.home_island.get_building_index(self._required_resource_id).get_buildings_in_range(pos):
-			if self.check_possible_job_target(provider):
-				job = self.check_possible_job_target_for(provider, self._required_resource_id)
-				if job is not None:
-					jobs.append(job)
-
-		return self.get_best_possible_job(jobs)
 
 	def check_possible_job_target(self, provider):
 		if provider.position.contains(self.position):

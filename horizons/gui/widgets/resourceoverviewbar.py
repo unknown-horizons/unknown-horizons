@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -389,8 +389,8 @@ class ResourceOverviewBar(object):
 	def _get_current_resources(self):
 		"""Return list of resources to display now"""
 		if self.construction_mode:
-			lvl = self.session.world.player.settler_level
-			res_list = self.__class__.CONSTRUCTION_RESOURCES[lvl]
+			tier = self.session.world.player.settler_level
+			res_list = self.__class__.CONSTRUCTION_RESOURCES[tier]
 			# also add additional res that might be needed
 			res_list += [ res for res in self._last_build_costs if
 			              res not in res_list and res != RES.GOLD ]
@@ -571,38 +571,7 @@ class ResourceOverviewBar(object):
 	def _show_stats(self):
 		"""Show data below gold icon when balance label is clicked"""
 		if self.stats_gui is None:
-			reference_icon = self.gold_gui.child_finder("balance_background")
-			self.stats_gui = load_uh_widget( self.__class__.STATS_GUI_FILE )
-			self.stats_gui.child_finder = PychanChildFinder(self.stats_gui)
-			self.stats_gui.position = (reference_icon.x + self.gold_gui.x,
-			                           reference_icon.y + self.gold_gui.y)
-			self.stats_gui.mapEvents({
-			  'resbar_stats_container/mouseClicked/stats' : self._toggle_stats
-			  })
-
-			images = [ # these must correspond to the entries in _update_stats
-				"content/gui/images/resbar_stats/expense.png",
-				"content/gui/images/resbar_stats/income.png",
-				"content/gui/images/resbar_stats/buy.png",
-				"content/gui/images/resbar_stats/sell.png",
-				"content/gui/images/resbar_stats/scales_icon.png",
-			  ]
-
-			for num, image in enumerate(images):
-				# keep in sync with comment there until we can use that data:
-				# ./content/gui/xml/ingame/hud/resource_overview_bar_stats.xml
-				box = HBox(padding=0, min_size=(70, 0), name="resbar_stats_line_%s"%num)
-				box.addChild(Icon(image=image))
-				box.addSpacer(Spacer())
-				box.addChild(Label(name="resbar_stats_entry_%s"%num))
-				# workaround for fife font bug, probably http://fife.trac.cloudforge.com/engine/ticket/666
-				box.addChild(Label(text=u" "))
-
-				if num < len(images)-1: # regular one
-					self.stats_gui.child_finder("entries_box").addChild(box)
-				else: # last one
-					self.stats_gui.child_finder("bottom_box").addChild(box)
-					self.stats_gui.child_finder("bottom_box").stylize('resource_bar')
+			self._init_stats_gui()
 
 		self._update_stats()
 		self.stats_gui.show()
@@ -610,32 +579,63 @@ class ResourceOverviewBar(object):
 		ExtScheduler().add_new_object(self._update_stats, self, run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
 
 	def _update_stats(self):
-		# fill in valies of stats, must correspond to images in _show_stats
-		format_display = lambda x : (u"+" if x >= 0 else u"") + unicode(x)
+		"""Fills in (refreshes) numeric values in expanded stats area."""
 		data = self.session.world.player.get_statistics()
-
-		self.stats_gui.child_finder("resbar_stats_line_0").helptext = _("Running costs")
-		self.stats_gui.child_finder("resbar_stats_entry_0").text = format_display(-data.running_costs)
-
-		self.stats_gui.child_finder("resbar_stats_line_1").helptext = _("Taxes")
-		self.stats_gui.child_finder("resbar_stats_entry_1").text = format_display(data.taxes)
-
-		self.stats_gui.child_finder("resbar_stats_line_2").helptext = _("Buy expenses")
-		self.stats_gui.child_finder("resbar_stats_entry_2").text = format_display(-data.buy_expenses)
-
-		self.stats_gui.child_finder("resbar_stats_line_3").helptext = _("Sell income")
-		self.stats_gui.child_finder("resbar_stats_entry_3").text = format_display(data.sell_income)
-
-
-		self.stats_gui.child_finder("resbar_stats_line_4").helptext = _("Balance")
-		self.stats_gui.child_finder("resbar_stats_entry_4").text = format_display(data.balance)
-
+		# This list must correspond to `images` in _show_stats
+		figures = [
+			-data.running_costs,
+			data.taxes,
+			-data.buy_expenses,
+			data.sell_income,
+			data.balance
+		]
+		for (i, numbers) in enumerate(figures):
+			label = self.stats_gui.child_finder("resbar_stats_entry_%s" % i)
+			label.text = u"%+d" % numbers
 
 	def _hide_stats(self):
 		"""Inverse of show_stats"""
 		ExtScheduler().rem_call(self, self._update_stats)
 		if self.stats_gui is not None:
 			self.stats_gui.hide()
+
+	def _init_stats_gui(self):
+		reference_icon = self.gold_gui.child_finder("balance_background")
+		self.stats_gui = load_uh_widget(self.__class__.STATS_GUI_FILE)
+		self.stats_gui.child_finder = PychanChildFinder(self.stats_gui)
+		self.stats_gui.position = (reference_icon.x + self.gold_gui.x,
+		                           reference_icon.y + self.gold_gui.y)
+		self.stats_gui.mapEvents({
+			'resbar_stats_container/mouseClicked/stats': self._toggle_stats,
+		})
+
+		# This list must correspond to `figures` in _update_stats
+		images = [
+			("content/gui/images/resbar_stats/expense.png",     _("Running costs")),
+			("content/gui/images/resbar_stats/income.png",      _("Taxes")),
+			("content/gui/images/resbar_stats/buy.png",         _("Buy expenses")),
+			("content/gui/images/resbar_stats/sell.png",        _("Sell income")),
+			("content/gui/images/resbar_stats/scales_icon.png", _("Balance")),
+		]
+
+		for num, (image, helptext) in enumerate(images):
+			# Keep in sync with comment there until we can use that data:
+			# ./content/gui/xml/ingame/hud/resource_overview_bar_stats.xml
+			box = HBox(padding=0, min_size=(70, 0))
+			box.name = "resbar_stats_line_%s" % num
+			box.helptext = helptext
+			#TODO Fix icon size; looks like not 16x16 a surprising amount of times.
+			box.addChild(Icon(image=image))
+			box.addSpacer(Spacer())
+			box.addChild(Label(name="resbar_stats_entry_%s"%num))
+			#TODO This label is a workaround for some fife font bug,
+			# probably http://github.com/fifengine/fifengine/issues/666.
+			templabel = Label(name="resbar_stats_whatever_%s"%num)
+			box.addChild(templabel)
+			if num == len(images) - 1:
+				# The balance line (last one) gets bold font.
+				box.stylize('resource_bar')
+			self.stats_gui.child_finder("entries_box").addChild(box)
 
 	##
 	# CODE FOR REFERENCE

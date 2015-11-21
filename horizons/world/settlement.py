@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,6 +20,7 @@
 # ###################################################
 
 import json
+import logging
 
 from collections import defaultdict
 
@@ -40,15 +41,19 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 
-	component_templates = ({
-	    					'StorageComponent':
-	                             {'PositiveSizedSlotStorage':
-	                              { 'limit': 0 }
-	                            }
-	                        }
-	                        ,
-	                        'TradePostComponent',
-	                        'SettlementNameComponent')
+	log = logging.getLogger("world.settlement")
+
+	component_templates = (
+		{
+			'StorageComponent':
+				{'PositiveSizedSlotStorage':
+					{'limit': 0}
+				}
+		}
+		,
+		'TradePostComponent',
+		'SettlementNameComponent',
+	)
 
 	def __init__(self, session, owner):
 		"""
@@ -64,7 +69,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.owner = owner
 		self.buildings = []
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
-		self.produced_res = defaultdict(lambda : 0) # dictionary of all resources, produced at this settlement
+		self.produced_res = defaultdict(int) # dictionary of all resources, produced at this settlement
 		self.buildings_by_id = defaultdict(list)
 		self.warehouse = None # this is set later in the same tick by the warehouse itself or load() here
 		self.upgrade_permissions = upgrade_permissions
@@ -111,7 +116,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	@property
 	def cumulative_taxes(self):
-		"""Return sum of all taxes payed in this settlement in 1 tax round"""
+		"""Return sum of all taxes paid in this settlement in 1 tax round"""
 		return sum([building.last_tax_payed for building in self.buildings if
 								hasattr(building, 'last_tax_payed')])
 
@@ -212,7 +217,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		else:
 			self.buildings_by_id[building.id] = [building]
 		if building.has_component(Producer) and not building.has_component(UnitProducer):
-			building.get_component(Producer).add_production_finished_listener(self.settlement_building_production_finished)
+			finished = self.settlement_building_production_finished
+			building.get_component(Producer).add_production_finished_listener(finished)
 		if not load and not building.buildable_upon and self.buildability_cache:
 			self.buildability_cache.modify_area([coords for coords in building.position.tuple_iter()])
 		if hasattr(self.owner, 'add_building'):
@@ -221,10 +227,14 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def remove_building(self, building):
 		"""Properly removes a building from the settlement"""
+		if not building in self.buildings:
+			self.log.debug("Building %s can not be removed from settlement", building.id)
+			return
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)
 		if building.has_component(Producer) and not building.has_component(UnitProducer):
-			building.get_component(Producer).remove_production_finished_listener(self.settlement_building_production_finished)
+			finished = self.settlement_building_production_finished
+			building.get_component(Producer).remove_production_finished_listener(finished)
 		if not building.buildable_upon and self.buildability_cache:
 			self.buildability_cache.add_area([coords for coords in building.position.tuple_iter()])
 		if hasattr(self.owner, 'remove_building'):
@@ -241,11 +251,12 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			self.produced_res[res] += amount
 
 	def __init_inventory_checker(self):
-		# Check for changed inventories every 4 ticks
-		self.__inventory_checker = InventoryChecker(SettlementInventoryUpdated, self.get_component(StorageComponent), 4)
+		"""Check for changed inventories every 4 ticks."""
+		storage = self.get_component(StorageComponent)
+		self.__inventory_checker = InventoryChecker(SettlementInventoryUpdated, storage, 4)
 
 	def end(self):
-		assert self.buildability_cache is None
+		self.buildability_cache = None
 		self.session = None
 		self.owner = None
 		self.buildings = None

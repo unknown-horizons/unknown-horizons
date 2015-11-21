@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,7 @@ def test_ai_quick():
 		yield run_ai_quick, seed
 
 def run_ai_quick(seed):
-	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=120)
+	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=2*60)
 	def test(session, _):
 		"""Let 2 AI players play for four minutes."""
 		session.run(seconds=4*60)

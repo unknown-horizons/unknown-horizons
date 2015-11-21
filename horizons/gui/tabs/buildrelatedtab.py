@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +25,7 @@ from fife.extensions.pychan.widgets import Icon
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
+from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
 from horizons.entities import Entities
 from horizons.component.selectablecomponent import SelectableComponent
@@ -36,12 +37,10 @@ class BuildRelatedTab(OverviewTab):
 	only displays those buildings actually related to the selected building.
 	Examples: tree for lumberjack; pavilion, school, etc. for inhabitants.
 	"""
+	widget = 'related_buildings.xml'
+	icon_path = 'icons/tabwidget/production/related'
+	helptext = _lazy("Build related buildings")
 	template_gui_xml = 'related_buildings_container.xml'
-
-	def  __init__(self, instance, widget='related_buildings.xml',
-	              icon_path='icons/tabwidget/production/related'):
-		super(BuildRelatedTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
-		self.helptext = _("Build related buildings")
 
 	def refresh(self):
 		"""

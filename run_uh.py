@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -30,8 +30,6 @@ This is the Unknown Horizons launcher; it looks for FIFE and tries
 to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
 
-__all__ = ['init_environment']
-
 import sys
 import os
 import os.path
@@ -43,7 +41,6 @@ import locale
 import logging
 import logging.config
 import logging.handlers
-import optparse
 import signal
 import traceback
 import platform
@@ -83,105 +80,9 @@ def log():
 logfilename = None
 logfile = None
 
-def get_option_parser():
-	"""Returns inited OptionParser object"""
-	from horizons.constants import VERSION
-	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
-	p.add_option("-d", "--debug", dest="debug", action="store_true",
-	             default=False, help="Enable debug output to stderr and a logfile.")
-	p.add_option("--fife-path", dest="fife_path", metavar="<path>",
-	             help="Specify the path to FIFE root directory.")
-	p.add_option("--restore-settings", dest="restore_settings", action="store_true", default=False,
-	             help="Restores the default settings. "
-	                  "Useful if Unknown Horizons crashes on startup due to misconfiguration.")
-	p.add_option("--mp-master", dest="mp_master", metavar="<ip:port>",
-	             help="Specify alternative multiplayer master server.")
-	p.add_option("--mp-bind", dest="mp_bind", metavar="<ip:port>",
-	             help="Specify network address to bind local network client to. "
-	                  "This is useful if NAT holepunching is not working but you can forward a static port.")
-
-
-	start_uh = optparse.OptionGroup(p, "Starting Unknown Horizons")
-	start_uh.add_option("--start-map", dest="start_map", metavar="<map>",
-	             help="Starts <map>. <map> is the mapname.")
-	start_uh.add_option("--start-random-map", dest="start_random_map", action="store_true",
-	             help="Starts a random map.")
-	start_uh.add_option("--start-specific-random-map", dest="start_specific_random_map",
-	             metavar="<seed>", help="Starts a random map with seed <seed>.")
-	start_uh.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>",
-	             help="Starts <scenario>. <scenario> is the scenarioname.")
-	start_uh.add_option("--start-dev-map", dest="start_dev_map", action="store_true",
-	             default=False, help="Starts the development map without displaying the main menu.")
-	start_uh.add_option("--load-game", dest="load_game", metavar="<game>",
-	             help="Loads a saved game. <game> is the saved game's name.")
-	start_uh.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true",
-	             help="Loads the last quicksave.")
-	start_uh.add_option("--edit-map", dest="edit_map", metavar="<map>",
-	             help="Edit map <map>.")
-	start_uh.add_option("--edit-game-map", dest="edit_game_map", metavar="<game>",
-	             help="Edit the map from the saved game <game>.")
-	p.add_option_group(start_uh)
-
-	ai_group = optparse.OptionGroup(p, "AI options")
-	ai_group.add_option("--ai-players", dest="ai_players", metavar="<ai_players>",
-	             type="int", default=0,
-	             help="Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0).")
-	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true",
-	             help="Makes the human player a human-AI hybrid (for development only).")
-	ai_group.add_option("--force-player-id", dest="force_player_id",
-	             metavar="<force_player_id>", type="int", default=None,
-	             help="Set the player with id <force_player_id> as the active (human) player.")
-	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true",
-	             help="Shows AI plans as highlights (for development only).")
-	ai_group.add_option("--ai-combat-highlights", dest="ai_combat_highlights", action="store_true",
-	             help="Highlights combat ranges for units controlled by AI Players (for development only).")
-	p.add_option_group(ai_group)
-
-	dev_group = optparse.OptionGroup(p, "Development options")
-	dev_group.add_option("--debug-log-only", dest="debug_log_only", action="store_true",
-	             default=False, help="Write debug output only to logfile, not to console. Implies -d.")
-	dev_group.add_option("--debug-module", action="append", dest="debug_module",
-	             metavar="<module>", default=[],
-	             help="Enable logging for a certain logging module (for developing only).")
-	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
-	             help="Writes log to <filename> instead of to the uh-userdir")
-	dev_group.add_option("--profile", dest="profile", action="store_true",
-	             default=False, help="Enable profiling (for developing only).")
-	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int",
-	             help="Run the game for <max_ticks> ticks.")
-	dev_group.add_option("--no-freeze-protection", dest="freeze_protection", action="store_false",
-	             default=True, help="Disable freeze protection.")
-	dev_group.add_option("--string-previewer", dest="stringpreview", action="store_true",
-	             default=False, help="Enable the string previewer tool for scenario writers")
-	dev_group.add_option("--no-preload", dest="nopreload", action="store_true",
-	             default=False, help="Disable preloading while in main menu")
-	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="float",
-	             help="Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)")
-	dev_group.add_option("--gui-test", dest="gui_test", metavar="<test>",
-	             default=False, help=optparse.SUPPRESS_HELP)
-	dev_group.add_option("--gui-log", dest="log_gui", action="store_true",
-	             default=False, help="Log gui interactions")
-	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int",
-	             help="Use this seed for singleplayer sessions.")
-	dev_group.add_option("--generate-minimap", dest="generate_minimap",
-	             metavar="<parameters>", help=optparse.SUPPRESS_HELP)
-	dev_group.add_option("--create-mp-game", action="store_true", dest="create_mp_game",
-	             help="Create an multiplayer game with default settings.")
-	dev_group.add_option("--join-mp-game", action="store_true", dest="join_mp_game",
-	             help="Join first multiplayer game.")
-	if VERSION.IS_DEV_VERSION:
-		dev_group.add_option("--no-atlas-generation", action="store_false", dest="atlas_generation",
-	             help="Disable atlas generation.")
-	# Add dummy default variables for the DEV_VERSION groups above when in release mode
-	p.set_defaults(atlas_generation=True)
-	p.add_option_group(dev_group)
-
-	return p
-
 def get_content_dir_parent_path():
 	"""
 	Return the path to the parent of the content dir.
-	
 	This is usually just the dir the run_uh.py is in but on some Linux installation
 	scenarios the horizons dir, the content dir, and run_uh.py are all in different
 	locations.
@@ -190,6 +91,9 @@ def get_content_dir_parent_path():
 	options = []
 	# Try the directory this file is in. This should work in most cases.
 	options.append(os.path.dirname(os.path.realpath(unicode(__file__))))
+	# Try path for Mac Os X app container (Unknown Horizons.app).
+	# Unknown Horizons.app/Contents/Resources/contents
+	options.append(os.path.join(os.getcwd()))
 	# Try often-used paths on Linux.
 	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
 		options.append(os.path.join(path, u'unknown-horizons'))
@@ -251,17 +155,18 @@ def main():
 	# avoid crashing when writing to unavailable standard streams
 	setup_streams()
 
-	# use locale-specific time.strftime handling.
+	# use locale-specific time.strftime handling
 	try:
 		locale.setlocale(locale.LC_TIME, '')
 	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
 		pass
 
-	# Change the working directory to the parent of the content directory.
+	# Change the working directory to the parent of the content directory
 	os.chdir(get_content_dir_parent_path())
 	logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 	create_user_dirs()
 
+	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
 	setup_debugging(options)
 	init_environment(True)
@@ -276,7 +181,7 @@ def main():
 		    _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
 		exit_with_error(headline, msg)
 
-	#start UH
+	# Start UH.
 	import horizons.main
 	ret = True
 	if not options.profile:
@@ -393,6 +298,7 @@ def import_fife(paths):
 
 def find_fife():
 	# Use the path the user provided.
+	from horizons.util.cmdlineoptions import get_option_parser
 	options = get_option_parser().parse_args()[0]
 	if options.fife_path:
 		fife_path = os.path.abspath(options.fife_path)
@@ -438,16 +344,15 @@ def setup_fife():
 		exit_with_error('Failed to find and/or load FIFE', 'Failed to find and/or load FIFE.')
 
 	from fife import fife
-	revision = fife.getRevision() if hasattr(fife, 'getRevision') else 0
-	version = fife.getVersion() if hasattr(fife, 'getVersion') else 'unknown'
+	fife_version_major = fife.getMajor() if hasattr(fife, 'getMajor') else 'unknown'
+	fife_version_minor = fife.getMinor() if hasattr(fife, 'getMinor') else 'unknown'
+	fife_version_patch = fife.getPatch() if hasattr(fife, 'getPatch') else 'unknown'
 
 	from horizons.constants import VERSION
-	if VERSION.MIN_FIFE_REVISION > revision:
-		log().warning('Unsupported fife revision %d (version %s); at least %d required',
-		              revision, version, VERSION.MIN_FIFE_REVISION)
+	if (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
+		log().warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
-		log().debug('Using fife revision %d (version %s); at least %d required', revision,
-		            version, VERSION.MIN_FIFE_REVISION)
+		log().debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 
 def init_environment(use_fife):
 	"""Sets up everything.

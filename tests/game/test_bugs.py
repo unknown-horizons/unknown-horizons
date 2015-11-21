@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,20 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import tempfile
-
 from horizons.command.building import Build, Tear
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer
-from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
+from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes import Point
 from horizons.world.production.utilization import FieldUtilization
 from horizons.world.building.settler import SettlerRuin
 
-from tests.game import settle, game_test, new_session, load_session
+from tests.game import settle, game_test, new_session, saveload
 from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
 from tests.game.test_farm import _build_farm
 
@@ -195,13 +192,8 @@ def test_ticket_1427():
 	# Make sure the producer used the boards
 	assert bb_storage.inventory[RES.BOARDS] == 0
 
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-	assert session.save(savegamename=filename)
-	session.end(keep_map=True)
-
-	# Load game
-	session = load_session(filename)
+	# Save and reload game
+	session = saveload(session)
 	loadedbb = WorldObject.get_object_by_id(worldid)
 
 	production_loaded = loadedbb.get_component(Producer)._productions[PRODUCTIONLINES.HUKER]
@@ -216,32 +208,6 @@ def test_ticket_1427():
 	# if you don't let the session run for a bit then collectors won't be fully initialized and can't be killed => another test will fail in session.end()
 	session.run(seconds=1)
 	session.end()
-
-
-@game_test()
-def test_settler_level(s, p):
-	"""
-	Verify that settler level up works.
-	"""
-	settlement, island = settle(s)
-
-	settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
-
-	# make it happy
-	inv = settler.get_component(StorageComponent).inventory
-	to_give = inv.get_free_space_for(RES.HAPPINESS)
-	inv.alter(RES.HAPPINESS, to_give)
-	level = settler.level
-
-	s.run(seconds=GAME.INGAME_TICK_INTERVAL)
-
-	# give upgrade res
-	inv.alter(RES.BOARDS, 100)
-
-	s.run(seconds=GAME.INGAME_TICK_INTERVAL)
-
-	# should have leveled up
-	assert settler.level == level + 1
 
 
 @game_test()

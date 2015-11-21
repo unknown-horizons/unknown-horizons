@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -83,7 +83,7 @@ def get_res_name(res):
 
 def get_settler_name(tier):
 	global db
-	return db("SELECT name FROM settler_level WHERE level = ?", tier)[0][0]
+	return db("SELECT name FROM tier WHERE level = ?", tier)[0][0]
 
 def format_prodline(line_list, depth):
 	for res, amount in line_list:
@@ -231,7 +231,7 @@ def print_tier_data():
 	upgrade_tiers = xrange(1, TIER.CURRENT_MAX+1)
 	print '%15s %s %s  %s' % ('tier', 'max_inh', 'base_tax', 'upgrade_prod_line')
 	print '=' * 64
-	for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM settler_level'):
+	for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM tier'):
 		str = '%3s %11s %5s    %4s' % ((inc+1), name, inh, tax)
 		if inc+1 in upgrade_tiers:
 			line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc+1)[0][0]

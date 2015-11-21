@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -137,6 +137,13 @@ class TobaccoProductsGoal(ProductionChainGoal):
 
 	def get_personality_name(self):
 		return 'TobaccoProductsGoal'
+
+class MedicalHerbsProductsGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(MedicalHerbsProductsGoal, self).__init__(settlement_manager, RES.MEDICAL_HERBS, 'medical herbs products producer')
+
+	def get_personality_name(self):
+		return 'MedicalHerbsProductsGoal'
 
 class SaltGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -79,9 +79,9 @@ class PotentialRoadConnectivityCache(object):
 			self._cache.remove_area(remove_list)
 
 	def is_connection_possible(self, coords_set1, coords_set2):
-		"""Return true if and only if it is possible to connect the two coordinate sets.
+		"""Return True if and only if it is possible to connect the two coordinate sets.
 
-		More specifically, it returns true if and only if it is possible to build a toad
+		More specifically, it returns True if and only if it is possible to build a toad
 		from some (x1, y1) in coords_set1 to some (x2, y2) in coords_set2 entirely within
 		the area. This is done cheaply using the underlying ConnectedAreaCache.
 		"""

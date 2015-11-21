@@ -13,24 +13,30 @@
 		<hr position="20,30" />
 
 		<Container position="22,40" min_size="230,20" size="230,50">
-			<Container size="50,50">
+			<Container position="0,0" size="50,50">
 				<ImageButton name="trade_bg" path="images/buttons/msg_button" />
 				<ImageButton name="trade" helptext="Trade" position="10,9"
 					path="icons/ship/civil_32" />
 			</Container>
 
-			<Container position="77,0" size="50,50">
+			<Container position="52,0" size="50,50">
 				<ImageButton name="found_settlement_bg" path="images/buttons/msg_button" />
 				<ImageButton name="found_settlement" position="6,5"
 					path="icons/ship/anchor" helptext="Build settlement" />
 			</Container>
 
-			<ImageButton name="configure_route" position="155,0" helptext="Configure trading route"
+			<ImageButton name="configure_route" position="104,0" helptext="Configure trading route"
 				inactive_image="content/gui/icons/ship/traderoute_configure_onroute.png"
 				up_image="content/gui/icons/ship/traderoute_configure.png"
 				down_image="content/gui/icons/ship/traderoute_configure_pressed.png"
 				hover_image="content/gui/icons/ship/traderoute_configure_hover.png" />
-				<!--TODO fix weird image names-->
+			<!--TODO fix weird image names-->
+	
+			<Container position="156,0" size="50,50">
+				<ImageButton name="discard_res_bg" path="images/buttons/msg_button" />
+				<ImageButton name="discard_res" helptext="Discard all ressources!" position="10,9" 
+					path="icons/ship/civil_32" />
+			</Container> 
 		</Container>
 
 		<hr position="20,100" />

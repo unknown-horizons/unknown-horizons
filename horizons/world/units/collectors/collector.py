@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -141,7 +141,7 @@ class Collector(Unit):
 		if self.job is not None:
 			obj_id = -1 if self.job.object is None else self.job.object.worldid
 			# this is not in 3rd normal form since the object is saved multiple times but
-			# it preserves compatiblity with old savegames this way.
+			# it preserves compatibility with old savegames this way.
 			for entry in self.job.reslist:
 				db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)",
 				   self.worldid, obj_id, entry.res, entry.amount)
@@ -507,7 +507,7 @@ class JobList(list):
 		"""
 		super(JobList, self).__init__()
 		self.collector = collector
-		# choose acctual function by name of enum value
+		# choose actual function by name of enum value
 		sort_fun_name = '_sort_jobs_' + str(job_order)
 		if not hasattr(self, sort_fun_name):
 			self.sort_jobs = self._sort_jobs_amount

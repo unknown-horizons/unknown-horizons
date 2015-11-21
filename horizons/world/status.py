@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -68,6 +68,11 @@ class StatusIcon(object):
 	def __str__(self):
 		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
 
+class BlackDeathStatusIcon(StatusIcon):
+	""" Black Death disaster """
+	priority = 3000
+	icon = 'as_pestilence+idle+45'
+	_helptext = _("The inhabitants are infected by the Black Death!")
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
@@ -81,6 +86,12 @@ class SettlerUnhappyStatus(StatusIcon):
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
 	helptext = _lazy("These residents are unhappy.")
+
+class SettlerNotConnectedStatus(StatusIcon):
+	# threshold is the inhabitants decrease level
+	priority = 1700
+	icon = 'as_mainsquare_access+idle+45'
+	helptext = _lazy("These residents don't have access to a main square.")
 
 
 class InventoryFullStatus(StatusIcon):
@@ -107,11 +118,4 @@ class ProductivityLowStatus(StatusIcon):
 class DecommissionedStatus(StatusIcon):
 	priority = 800
 	icon = 'as_decommissioned+idle+45'
-	helptext = _lazy("This building is decomissioned.")
-
-
-class PestilenceStatus(StatusIcon):
-	priority = 2000
-	icon = 'as_pestilence+idle+45'
-	helptext = _lazy("The inhabitants of this building have the plague.")
-
+	helptext = _lazy("This building is decommissioned.")

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -34,7 +34,7 @@ class BasicBuilder(object):
 	rotations = [45, 135, 225, 315]
 	# don't change the orientation of the following building types
 	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER,
-		BUILDINGS.IRON_MINE, BUILDINGS.SALT_PONDS]
+		BUILDINGS.MINE, BUILDINGS.SALT_PONDS]
 
 	__slots__ = ('building_id', 'coords', 'orientation', 'position')
 
@@ -62,7 +62,7 @@ class BasicBuilder(object):
 
 	def get_loading_area(self):
 		"""Return the position of the loading area."""
-		if self.building_id == BUILDINGS.IRON_MINE:
+		if self.building_id == BUILDINGS.MINE:
 			return Mine.get_loading_area(self.building_id, self.rotations[self.orientation], self.position)
 		else:
 			return self.position

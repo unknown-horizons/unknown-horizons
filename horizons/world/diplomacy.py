@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,7 +28,7 @@ class Diplomacy(object):
 	handles diplomacy between players
 	two players can be allies, neutral or enemies
 		allies: set of (a, b) tuples of player instances meaning a and b are allies
-		         for making the relationship symetrical a has a lower worldid than b
+		         for making the relationship symmetrical a has a lower worldid than b
 		enemies: set of (a, b) tuples of player instances meaning a and b are enemies
 		if to players are not allies nore enemies, they are neutral
 

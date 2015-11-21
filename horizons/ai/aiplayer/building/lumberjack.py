@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -96,6 +96,8 @@ class LumberjackEvaluator(BuildingEvaluator):
 		return BUILDING_PURPOSE.LUMBERJACK
 
 	def execute(self):
+		# TODO Add a check that figures out if all trees that should be planted are in range of the settlement.
+		# If not, return range missing result
 		(result, building) = super(LumberjackEvaluator, self).execute()
 		if result != BUILD_RESULT.OK:
 			return (result, None)
@@ -106,18 +108,15 @@ class LumberjackEvaluator(BuildingEvaluator):
 		forest_coords_list = []
 		for coords in building.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
 			if coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in coastline:
-				ok = False
 				if island_ground_map[coords].object is not None and island_ground_map[coords].object.id == BUILDINGS.TREE:
-					ok = True
-				else:
+					forest_coords_list.append(coords)
+				elif island_ground_map[coords].settlement is not None and island_ground_map[coords].settlement.owner is self.area_builder.owner:
 					builder = BasicBuilder(BUILDINGS.TREE, coords, 0)
 					if not builder.have_resources(production_builder.land_manager):
 						break
 					if builder:
 						assert builder.execute(production_builder.land_manager)
-						ok = True
-				if ok:
-					forest_coords_list.append(coords)
+						forest_coords_list.append(coords)
 
 		production_builder.register_change_list(forest_coords_list, BUILDING_PURPOSE.TREE, None)
 

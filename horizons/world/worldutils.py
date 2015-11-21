@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,21 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import bisect
 import itertools
+import os
 
 from collections import deque
 
-from horizons.constants import UNITS, BUILDINGS, RES, WILD_ANIMAL
 from horizons.command.building import Build
+from horizons.command.unit import CreateUnit
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import BUILDINGS, RES, UNITS, WILD_ANIMAL
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
 from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.component.selectablecomponent import SelectableComponent
-from horizons.component.storagecomponent import StorageComponent
-from horizons.command.unit import CreateUnit
 
 """
 This is used for random features required by world,
@@ -45,13 +45,15 @@ def toggle_health_for_all_health_instances(world):
 	"""Show health bar of every instance with an health component, which isnt selected already"""
 	world.health_visible_for_all_health_instances = not world.health_visible_for_all_health_instances
 	if world.health_visible_for_all_health_instances:
-		for instance in world.session.world.get_health_instances():
+		for instance in world.get_health_instances():
 			if not instance.get_component(SelectableComponent).selected:
 				instance.draw_health()
 				world.session.view.add_change_listener(instance.draw_health)
 	else:
-		for instance in world.session.world.get_health_instances():
-			if world.session.view.has_change_listener(instance.draw_health) and not instance.get_component(SelectableComponent).selected:
+		for instance in world.get_health_instances():
+			if not world.session.view.has_change_listener(instance.draw_health):
+				continue
+			if not instance.get_component(SelectableComponent).selected:
 				instance.draw_health(remove_only=True)
 				world.session.view.remove_change_listener(instance.draw_health)
 
@@ -140,7 +142,7 @@ def add_resource_deposits(world, resource_multiplier):
 		return locations
 
 	def place_objects(locations, max_objects, object_class):
-		"""Place at most max_objects objects of the given class."""
+		"""Place at most *max_objects* objects of the given class."""
 		if not locations:
 			return
 
@@ -176,8 +178,7 @@ def add_resource_deposits(world, resource_multiplier):
 
 		# calculate the manhattan distance to the sea
 		while queue:
-			x, y, dist = queue[0]
-			queue.popleft()
+			x, y, dist = queue.popleft()
 			for dx, dy in moves:
 				coords = (x + dx, y + dy)
 				if coords in distance:
@@ -235,12 +236,23 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
-
 	# add trees, wild animals, and fish
 	for island in world.islands:
 		for (x, y), tile in sorted(island.ground_map.iteritems()):
+			# add trees based on adjacent trees
+			for (dx, dy) in fish_directions:
+				position = Point(x+dx, y+dy)
+				newTile = world.get_tile(position)
+				if newTile.object is not None and newTile.object.id == BUILDINGS.TREE and world.session.random.randint(0, 2) == 0 and Tree.check_build(world.session, tile, check_settlement=False):
+					building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless=True)(issuer=None)
+					if world.session.random.randint(0, WILD_ANIMAL.POPULATION_INIT_RATIO) == 0:
+						CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
+					if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
+						building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
+				
+				
 			# add tree to every nth tile and an animal to one in every M trees
-			if world.session.random.randint(0, 2) == 0 and \
+			if world.session.random.randint(0, 20) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
 				                 ownerless=True)(issuer=None)
@@ -248,7 +260,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
-
+			
 			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
 				# try to place fish: from the current position go to a random directions twice
 				for (x_dir, y_dir) in world.session.random.sample(fish_directions, 2):
@@ -266,7 +278,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 
 
 def get_random_possible_ground_unit_position(world):
-	"""Returns a position in water, that is not at the border of the world"""
+	"""Returns a random position upon an island"""
 	offset = 2
 	while True:
 		x = world.session.random.randint(world.min_x + offset, world.max_x - offset)
@@ -280,7 +292,7 @@ def get_random_possible_ground_unit_position(world):
 				return Point(x, y)
 
 def get_random_possible_ship_position(world):
-	"""Returns a position in water, that is not at the border of the world"""
+	"""Returns a random position in water, that is not at the border of the world"""
 	offset = 2
 	while True:
 		x = world.session.random.randint(world.min_x + offset, world.max_x - offset)
@@ -305,7 +317,7 @@ def get_random_possible_ship_position(world):
 	return Point(x, y)
 
 def get_random_possible_coastal_ship_position(world):
-	"""Returns a position in water, that is not at the border of the world
+	"""Returns a random position in water, that is not at the border of the world
 	but on the coast of an island"""
 	offset = 2
 	# Don't look for a point if there are no islands for some reason

@@ -1,6 +1,7 @@
 ## UH-Team ##
 
 #### Project Coordination
+* Kilian] (Kilian Köppchen)
 * Nightraven (Tobias Schroefel)
 * Nihathrael (Thomas Kinnen)
 
@@ -9,8 +10,10 @@
 * Court-Jus (Ghislain Lévêque)
 * GreyGhost (Tushar Sawant)
 * gscai (Ott Tinn)
+* Kiryx (Krzysztof Nowak)
 * lynxis (Alexander Couzens)
 * manuel (Manuel Mausz)
+* mesutcan (Mesutcan Kurt)
 * mihaibivol (Mihai Bivol)
 * Nihathrael (Thomas Kinnen)
 * phiker (Philipp Kerling)
@@ -27,7 +30,6 @@
 #### Game-Play Design
 * Andre (Andre Reichelt)
 * dauerflucher (Andreas Lis)
-* Kilian] (Kilian Köppchen)
 
 #### Sound and Music Artists
 * draikon (Sebastian Ahlen)
@@ -36,10 +38,12 @@
 * ThomasD (Thomas Davey)
 
 #### Graphics Artists
+* Clearskies (Anthony Nguyen)
 * Daniel Stephens
 * dauerflucher (Andreas Lis)
 * egore (Christoph Brill)
 * inken
+* janexx (Jana Weigel)
 * kaschte (Fabian Riedel)
 * lmg
 * Manthus (Matthias Dittrich)
@@ -68,13 +72,15 @@
 * rudi_s (Several improvements)
 * Yeya (Random maps)
 
-- - - - -
-
-#### 2011
+#### 2011.1
 * abeaumont (Two renitent segfaults)
 * Grickit (Random maps)
 * hoffi (GUI improvements)
 * mayanks43 (Campaign system)
+
+- - - - -
+
+#### 2011.2
 * mtfk (Voice internationalization)
 * riidom (Tent and hut variations)
 * sids.aquarius (Several improvements)
@@ -83,9 +89,23 @@
 #### 2012
 * enno4uh (Mac build support)
 * Foaly (Resource icons)
-* perher (tests for timer and scheduler)
-* Vivek-sagar (tutorial modifications)
+* perher (Tests for timer and scheduler)
+* Vivek-sagar (Tutorial modifications)
 * volpino (Selection group fix)
+
+#### 2013
+* sabbott1877 (Logbook notification fix)
+* phaidon (OS X app container fixes)
+
+#### 2014
+* RSouthee (Clear player name on click)
+* Zappaman (Several improvements)
+* pinkfloyda (Tooltip refactoring)
+* myrdd (BuySellTab fix)
+* dulrich (Several improvements)
+* Rao (Pasture image sequence)
+* MarkusHackspacher (PEP8)
+* paul59 (Tutorial)
 
 
 ## Translators
@@ -94,134 +114,301 @@
 * Michal Čihař (nijel)
 
 #### Bulgarian
-* balward
+* Bojana
+* Nikolai Nikolov
+* Nikolay Kotrabakov (balward)
 
 #### Catalan
+* Àngel Mompó Llovet
+* josep constanti
+* Xavier Muntada Samà
+
+#### Catalan (Valencia)
+* Àngel Mompó Llovet
 * CatRoky
 * Siegfried Gevatter (RainCT)
 
 #### Czech
 * Kristian Hynek (Kris_CZ)
+* Lukáš Krejza
+* Michal Čihař
 * naked.in.rain
+* Pavel Plecháč (Spek)
 * Petr Palička (peca)
-* Spek
+* Václav Macůrek (VMa)
 * Vilem Soulak (Turmaleus)
-* VMa
 
 #### Danish
+* aundal
 * Jacob Hellwing (hellwing)
+* Jan Arni Jacobsen
+* Jens
 
 #### German
+* darksider3
 * djot
+* Jordan Liese
 * Kikody
+* Linkal
+* Marcel H
 * Michael Skiba
+* Raymond Vetter
+* schnurlos
+* Stefan S
+* Wuzzy
+
+#### Greek
+* Dimitra Karamperi (dimitrak)
+* Efstathios Iosifidis
+* karavolosmike
 
 #### Spanish
+* Álex Plaza
+* Anatema
 * Andrés José Fernandez (ariktaurendil)
+* CatRoky
+* Cur5
 * Fabio Fernández (Catharsius)
+* Fede Muller
+* Gauekoizar
+* Ivan (malkavi)
+* Ivan Gonzalez Martin
+* Luis García Sevillano
 * MicMic
 * Nikolai Woutlan
+* Rubén Viguera
+* saiffe
 * Sergio Lorenzo (Juarrox)
 * stefania_m
 * William Cabrera (willicab)
-* Álex Plaza
 
 #### Estonian
+* Kristjan Räts
 * Mihkel Rämmel (RM87)
 * Üllar Lainväe (ussikene)
 
 #### Finnish
-* Aleksi Kinnunen
+* Aleksi Kinnunen (alluk)
+* Cosmo Console
+* heze0
+* Olli Paasonen
+* Pihpe
+* Pyry Karapalo
 
 #### French
+* Antoine Beaupré
 * Antoine Pernot (mumuxe)
+* Clément Arondel
+* Clement Coste
+* erdnaxeli
 * Hugues Fafard (Antagonym)
+* Jérôme Beaugendre
+* Lau Nat
+* Lothaire Hengst
 * Marc Moussa (deathmaster9)
+* Maxime Gaumond
 * Quentin (LawNasK)
 * Samuel Dorsaz (ajira)
 * Sebastien Charpentier (seblabel)
 * tintou
+* Traveler
 * Vincent Herilier (LiveWire)
 
+#### Galician
+* Adrián Chaves Fernández (Gallaecio)
+* Xosé Calvo
+
 #### Croatian
+* Adis Zukanovic
+* Daniel Tominac
 * shile
+* T S
 
 #### Hindi
 * Kinshuk Sunil (kinshuksunil)
+* Saurabh Patil
+* supercracker111
 
 #### Hungarian
+* Lipták Krisztián
+* Lorant Perger
+* Bence Nagy (nagybence)
 * matyi
+* probert
+* Szabolcs Tóth
 * Szontágh Ferenc (ghostarthour)
+* urbalazs
+
+#### Indonesian
+* alamswijaya
+* davezh
+* Gallanth
+* Ichwan Elhamdani
+* Samuel Christo
+* Samuel D.S.P
 
 #### Italian
+* Davide Nanni
 * Fabio Pedretti
+* Fede Muller
+* federico
+* Gioele Cerri (joel)
+* Giorgio Saragnese (supermario)
+* Mathias Hofmann
+* Pac Low
 * rayot
 * sioux83
 * tagarista
+* Valerio Giuso
 
 #### Japanese
 * naraba
+* Tatsuhiko Yamanoue
 * Yuki Shira (shirayuki)
 
+#### Korean
+* Cho Bkwon
+* K Ks
+* Sebastian Sohn
+* Wooyoung Cho
+
 #### Lithuanian
-* Mantas Kondrotas (Anielus)
+* Jur Kis
+* Mantas Kondrotas (Anielius)
+* Mantas Kriaučiūnas
+
+#### Malayalam
+* Cebin Joseph Benny
 
 - - - - -
 
 #### Norwegian
-* Audun Pers
+* Audun Pers (pers)
+* Daniel Andre
 * Frode Woldsund (frodus)
 * Jared Isaksen (JeThro)
 
 #### Dutch
-* angellus
+* Dieter Adriaenssens
 * Jasper Tepper (Shadow23)
+* Joenit S. (joenit)
 * Luth
 * mightykai
-* MrRuudJ
-* SanderOnline
+* Nick Z. (angellus)
+* NiLSPACE
+* Ruud Jacobs (MrRuudJ)
+* Sander Hasenpflug (SanderOnline)
+* Sietze Greydanus
+* Tim F. (TiFo)
 * VinWij
 
 #### Polish
+* Adam Jordanek
 * Adrian Marcinkowski (Amfidiusz)
+* Eerozeteen
+* Gilead
+* Jan Krzysztof Zawadzki (kzawadzki)
+* janczarny
+* Lemoid
 * Mateusz Bartkowski (Eugen)
-* mtfk
 * Natrius
+* Pic
+* Piotr B
+* Piotr Gredka
+* Piotr Strebski
 * Premislaus
 * Robert Matusewicz (matekm)
+* Robert Mitwicki (mtfk)
 * Stanislaw Gackowski (soeb)
+* Tomasz Rydzyński
 
 #### Portuguese
 * bdias
+* Guilherme Nogueira
+* João Sena Cardoso
+* Joel Santinho
+* Luis Coehlo
 * Nelson Marques (nmarques)
 * Nuno Alves (MadMonk)
+* Michal Čihař
+* Pedro Henrique
 * Sérgio Lopes (Knitter)
+* Zoé Junior
 
 #### Brazilian Portuguese
+* abner.silva
 * claudinei
-* hpoyatos (Henrique Poyatos)
+* GabrielSantiago
+* Goku Sayajin
+* Guilherme Nogueira
+* Henrique Poyatos (hpoyatos)
+* israelsantanna
+* Jovito Santos
+* Lindo (IvoJr)
 * luisdknob
 * paulodealmeida
+* Pedro Henrique
+* Rilen T. L
 
 #### Romanian
+* FlowerOS
+* Raymond Vetter
+* tbmale
 * trendy
+* Vlad Topala
 
 #### Russian
 * Alexander Olkhovskiy (fcxSanya)
+* Anatoliy Nikolaev
+* burlachenko
+* cooland
+* Fedor Andreev (pro100fed)
+* Grigory Vershinin
+* Igor Afonkin
+* Michael Tsukanov (ZukinZIn)
 * Sergei Chistyakov (devcode)
 * Sergey Stepanov
+* Torv
+* Владимир Хоменко
+* Вячеслав Гостюхин (scazy)
 
 #### Slovenian
 * Andrej Žnidaršič (andrejz)
 
 #### Swedish
+* Åke Engelbrektson (eson57)
+* Chris Browne
+* Fringillus
+* Karar Al-Remahy
+* knutas
 * Nagrim
 * pilen
 
-#### Chinese
+#### Turkish
+* Burak Yavuz (BouRock)
+* Ceren Kocaman (CerenK)
+* cuil
+* Ersan Doru Doru
+* mezdap
+* Volkan Gezer (vgezer)
+
+#### Ukrainian
+* Андрій Бандура (pasichna)
+
+#### Simplified Chinese
+* Li Yong
+* mkhael_foo
+* Marco Leong
 * nifabric
+* Zhang June (avalon3515)
 
+#### Traditional Chinese
+* Marco Leong
+* Yes Stone
+* Ezjerry Liao
 
+#### Afrikaans
+* Alexandre Bezerra
 
 ## Packagers ##
 
@@ -242,6 +429,7 @@
 * Alexia and the Widelands team
   * (http://widelands.org)
 * BartK and www.OpenGameArt.org
+* Clint Bellanger
 * Dreimer (Daniel Reimer)
 * hoehrer (Werner Hoehrer)
 * Ivanovic (Nils Kneuper)

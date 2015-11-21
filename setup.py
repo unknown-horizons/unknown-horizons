@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,7 +23,7 @@
 
 from distutils.core import setup
 from distutils.command.build import build
-from distutils.spawn import spawn, find_executable
+from distutils.spawn import find_executable
 import distutils.cmd
 import os
 import glob
@@ -45,21 +45,22 @@ else:
 	executable_path = 'bin'
 
 
-#this trick is for setting RELEASE_VERSION if the code is cloned from git repository
+# this trick is for setting RELEASE_VERSION if the code is cloned from git repository
 if os.path.exists('.git'):
-	f = open('content/gitversion.txt', 'w')
+	f = open('content/packages/gitversion.txt', 'w')
 	f.write(VERSION.RELEASE_VERSION)
 	f.close()
 
 data = [
   (executable_path, ('unknown-horizons', )),
-  ('share/pixmaps', ('content/unknown-horizons.xpm', )),
-  ('share/unknown-horizons', ('content/settings-template.xml', ))
+  ('share/pixmaps', ('content/packages/unknown-horizons.xpm', )),
+  ('share/unknown-horizons', ('content/settings-template.xml', )),
+  ('share/man/man6', ('content/packages/unknown-horizons.6', )),
 ]
 
 for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
 	data.append(('share/unknown-horizons/%s' % root,
-				       ['%s/%s' % (root, f) for f in files]))
+		['%s/%s' % (root, f) for f in files]))
 
 packages = []
 for root, dirs, files in os.walk('horizons'):
@@ -69,7 +70,8 @@ for root, dirs, files in os.walk('horizons'):
 type = platform.system().lower()
 arch = platform.machine()
 dir = "horizons/network/%s-x%s" % (type, arch[-2:])
-package_data = { dir: ['*.so'] }
+package_data = {dir: ['*.so']}
+
 
 class _build_i18n(distutils.cmd.Command):
 	"""
@@ -78,10 +80,10 @@ class _build_i18n(distutils.cmd.Command):
 	"""
 	description = "integrate the gettext framework"
 	user_options = [
-			('desktop-files=', None, '.desktop.in files that should be merged'),
-			('text-domains=', None, 'list of pairs of gettext domains & directory that holds the i18n files'),
-			('bug-contact=', None, 'contact address for msgid bugs')
-			]
+		('desktop-files=', None, '.desktop.in files that should be merged'),
+		('text-domains=', None, 'list of pairs of gettext domains & directory that holds the i18n files'),
+		('bug-contact=', None, 'contact address for msgid bugs')
+	]
 
 	def initialize_options(self):
 		self.desktop_files = []
@@ -97,12 +99,13 @@ class _build_i18n(distutils.cmd.Command):
 			return []
 		po_files = glob.glob("%s/*.po" % po_dir)
 		if po_files and not find_executable('msgfmt'):
-			raise RuntimeError("Can't generate language files, needs msgfmt. "
+			raise RuntimeError(
+				"Can't generate language files, needs msgfmt. "
 				"Only native language (English) will be available. "
 				"Try installing the package 'gettext' or 'msgfmt'.")
 
 		# If there is a po/LINGUAS file, or the LINGUAS environment variable
-		# is set, only compile the languages listed there.
+		# is set, only compile the languages listed there
 		selected_languages = None
 		linguas_file = os.path.join(po_dir, "LINGUAS")
 		if os.path.isfile(linguas_file):
@@ -113,7 +116,7 @@ class _build_i18n(distutils.cmd.Command):
 		mo_files = []
 		for po_file in po_files:
 			lang = os.path.basename(po_file[:-3])
-			if selected_languages and not lang in selected_languages:
+			if selected_languages and lang not in selected_languages:
 				continue
 			mo_dir = os.path.join("content", "lang", lang, "LC_MESSAGES")
 			mo_file = os.path.join(mo_dir, "%s.mo" % domain)
@@ -136,7 +139,7 @@ class _build_i18n(distutils.cmd.Command):
 		to the to be installed files
 
 		NOTE: This code is partly broken and hack-fixed to the state where it appears to work.
-		      It should be removed, since nobody understands the code well enough to be able to maintain it.
+		It should be removed, since nobody understands the code well enough to be able to maintain it.
 
 		"""
 		text_domains = {}
@@ -146,7 +149,8 @@ class _build_i18n(distutils.cmd.Command):
 			pass
 
 		if self.desktop_files and not find_executable('intltool-merge'):
-			self.warn("Can't generate desktop files, needs intltool-merge. "
+			self.warn(
+				"Can't generate desktop files, needs intltool-merge. "
 				"Try installing the package 'intltool'.")
 			return
 
@@ -197,9 +201,10 @@ class _build_i18n(distutils.cmd.Command):
 				data_files.append((target, files_merged))
 
 		# Since specifying a .mofile dir is not supported, we manually move build/mo/
-		# to a place more appropriate in our opinion, currently content/lang/.
+		# to a place more appropriate in our opinion, currently content/lang/
 		if os.path.exists(os.path.join("build", "mo")):
-			# it appears build/mo should always magically appear, but does not on some gentoo machines.
+			# it appears build/mo should always magically appear,
+			# but does not on some gentoo machines.
 			# there, everything is placed in content/lang, so it's fine
 			# on other machines, we have to move stuff around like that:
 			if os.path.exists(os.path.join("content", "lang")):
@@ -208,39 +213,22 @@ class _build_i18n(distutils.cmd.Command):
 
 build.sub_commands.append(('build_i18n', None))
 
-class _build_man(build):
-	description = "build the Manpage"
-
-	def run(self):
-		if not find_executable('xsltproc'):
-			self.warn("Can't build manpage, needs xsltproc")
-			return
-
-		data = (['xsltproc',
-		        'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
-		        'doc/manpage.xml'], )
-		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, data)
-		self.distribution.data_files.append(('share/man/man6', ('unknown-horizons.6',)))
-
-build.sub_commands.append(('build_man', None))
-
 cmdclass = {
-  'build_man': _build_man,
-  'build_i18n': _build_i18n,
+    'build_i18n': _build_i18n,
 }
 
 setup(
-  name='UnknownHorizons',
-  version=VERSION.RELEASE_VERSION,
-  description='Realtime Economy Simulation and Strategy Game',
-  author='The Unknown Horizons Team',
-  author_email='team@unknown-horizons.org',
-  url='http://www.unknown-horizons.org',
-  packages=packages,
-  package_data=package_data,
-  data_files=data,
-  cmdclass=cmdclass)
+    name='UnknownHorizons',
+    version=VERSION.RELEASE_VERSION,
+    description='Realtime Economy Simulation and Strategy Game',
+    author='The Unknown Horizons Team',
+    author_email='team@unknown-horizons.org',
+    url='http://www.unknown-horizons.org',
+    packages=packages,
+    package_data=package_data,
+    data_files=data,
+    cmdclass=cmdclass)
 
-#after installation remove gitversion.txt
+# after installation remove gitversion.txt
 if os.path.exists('.git'):
-	os.unlink('content/gitversion.txt')
+	os.unlink('content/packages/gitversion.txt')

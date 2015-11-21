@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -20,11 +20,12 @@
 # ###################################################
 
 from horizons.messaging.messagebus import MessageBus
+from horizons.messaging.queuingmessagebus import QueuingMessageBus
 
 
 class Message(object):
 	"""Message class for the MessageBus. Every Message that is supposed to be
-	send through the MessageBus has to subclass this base class, to ensure proper
+	sent through the MessageBus has to subclass this base class, to ensure proper
 	setting of base attributes and inheriting the interface.
 
 	The first argument in each message is always a reference to the sender,
@@ -32,6 +33,7 @@ class Message(object):
 	these will be stored on the instance.
 	"""
 	arguments = tuple()
+	bus = MessageBus
 
 	def __init__(self, sender, *args):
 		self.sender = sender
@@ -60,9 +62,9 @@ class Message(object):
 			>>> MessageClass.subscribe(cb, sender=foo) # Specific sender
 		"""
 		if sender:
-			MessageBus().subscribe_locally(cls, sender, callback)
+			cls.bus().subscribe_locally(cls, sender, callback)
 		else:
-			MessageBus().subscribe_globally(cls, callback)
+			cls.bus().subscribe_globally(cls, callback)
 
 	@classmethod
 	def unsubscribe(cls, callback, sender=None):
@@ -85,23 +87,26 @@ class Message(object):
 			>>> MessageClass.broadcast('sender')
 		"""
 		if sender:
-			MessageBus().unsubscribe_locally(cls, sender, callback)
+			cls.bus().unsubscribe_locally(cls, sender, callback)
 		else:
-			MessageBus().unsubscribe_globally(cls, callback)
+			cls.bus().unsubscribe_globally(cls, callback)
 
 	@classmethod
-	def discard(cls, callback):
+	def discard(cls, callback, sender=None):
 		"""Similar to `Message.unsubscribe`, but does not raise an error if the
 		callback has not been registered before.
 		"""
-		MessageBus().discard_globally(cls, callback)
+		if sender:
+			cls.bus().discard_locally(cls, sender, callback)
+		else:
+			cls.bus().discard_globally(cls, callback)
 
 	@classmethod
 	def broadcast(cls, *args):
 		"""Send a message that is initialized with `args`.
 
 		The first argument is always a sender, the number of arguments has to be
-		N + 1, with N beeing the number of arguments defined on the message class.
+		N + 1, with N being the number of arguments defined on the message class.
 
 		Example:
 
@@ -110,10 +115,29 @@ class Message(object):
 
 			>>> Foo.broadcast('sender', 1, 2)
 		"""
-		MessageBus().broadcast(cls(*args))
+		cls.bus().broadcast(cls(*args))
 
 
-class AddStatusIcon(Message):
+class QueuingMessage(Message):
+	"""QueuingMessage class for the QueuingMessageBus. Every Message that is supposed to be
+	sent through the QueuingMessageBus has to subclass this subclass.
+	"""
+	bus = QueuingMessageBus
+
+	@classmethod
+	def clear(cls, *args):
+		"""Empty the message queue for this Message class
+		"""
+		cls.bus().clear(cls)
+
+	@classmethod
+	def queue_len(cls, *args):
+		"""Get the length the message queue for this Message class
+		"""
+		return cls.bus().queue_len(cls)
+
+
+class AddStatusIcon(QueuingMessage):
 	arguments = ('icon', )
 
 class RemoveStatusIcon(Message):
@@ -138,7 +162,7 @@ class SettlerInhabitantsChanged(Message):
 	arguments = ('change', )
 
 class ResourceBarResize(Message):
-	"""Signals a change in resource bar size (not slot changes, but number of slot changes)"""
+	"""Signals a change in resource bar size (not slot changes, but number of slot changes)."""
 	pass
 
 class UpgradePermissionsChanged(Message):
@@ -147,14 +171,16 @@ class UpgradePermissionsChanged(Message):
 
 class SettlementRangeChanged(Message):
 	"""Called on grow and perhaps shrink once that's implemented. Used by buildingtool.
-	Send by a Settlement."""
+	Sent by a Settlement."""
 	arguments = (
 		'changed_tiles', # Actual tile objects
 	)
 
 class WorldObjectDeleted(Message):
 	"""Called when a world object is being deleted.
-	Currently emitted in the process of destruction, i.e. you aren't guaranteed to be able to access any attributes. (Feel free to change the implementation if you need this).
+	Currently emitted in the process of destruction, i.e. you aren't guaranteed
+	to be able to access any attributes.
+	(Feel free to change the implementation if you need this).
 	"""
 	arguments = ('worldobject', 'worldid', )
 
@@ -172,7 +198,7 @@ class HoverSettlementChanged(Message):
 	arguments = ('settlement', )
 
 class NewSettlement(Message):
-	"""Sent when a new settlement is created"""
+	"""Sent when a new settlement is created."""
 	arguments = ('settlement', 'warehouse_position', )
 
 class HoverInstancesChanged(Message):
@@ -183,7 +209,7 @@ class HoverInstancesChanged(Message):
 
 class NewDisaster(Message):
 	"""Sent when a building is affected by a disaster."""
-	arguments = ('building', 'disaster_class', )
+	arguments = ('building', 'disaster_class', 'disaster')
 
 class TabWidgetChanged(Message):
 	"""Sent when the ingamegui displays a different set of tabs, i.e. the tabwidget is exchanged.
@@ -191,19 +217,34 @@ class TabWidgetChanged(Message):
 	pass
 
 class GuiAction(Message):
-	"""Sent on events pychan classifies as "action" """
+	"""Sent on events pychan classifies as "action"."""
+	pass
+
+class GuiCancelAction(Message):
+	"""Sent on events that originate from the cancelButton."""
+	pass
+
+class GuiHover(Message):
+	"""Sent on mouseEntered events"""
 	pass
 
 class ResourceProduced(Message):
-	"""Sent when a production building finished the production of a resource """
+	"""Sent when a production building finished the production of a resource."""
 	arguments = ('caller', 'produced_resources', )
 
+class InstanceInventoryUpdated(Message):
+	"""Message sent whenever an inventory of any instance is updated.
+
+	This message is sent by StorageComponent but sender is the instance!
+	"""
+	arguments = ('inventory', )
+
 class SettlementInventoryUpdated(Message):
-	"""Message sent whenever a settlement's inventory is updated"""
+	"""Message sent whenever a settlement's inventory is updated."""
 	pass
 
 class PlayerInventoryUpdated(Message):
-	"""Message sent whenever a player's inventory is updated"""
+	"""Message sent whenever a player's inventory is updated."""
 	pass
 
 class LanguageChanged(Message):
@@ -223,4 +264,13 @@ class MineEmpty(Message):
 	arguments = ('mine', )
 
 class LoadingProgress(Message):
+	"""Sent when loading screen is updated with a new progress hint."""
 	arguments = ('stage', )
+
+class ZoomChanged(Message):
+	"""Sent when map zoom has changed."""
+	arguments = ('zoom', )
+
+class ActionChanged(Message):
+	"""Sent when a ConcreteObject changed its action"""
+	arguments = ('action', )

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,7 @@ from fife import fife
 
 from horizons.scheduler import Scheduler
 
+from horizons.engine import Fife
 from horizons.util.shapes import Point
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
@@ -89,7 +90,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		@param destination: destination supported by pathfinding
 		@return: object that can be used in boolean expressions (the path in case there is one)
 		"""
-		return self.path.calc_path(destination, check_only = True)
+		return self.path.calc_path(destination, check_only=True)
 
 	def is_moving(self):
 		"""Returns whether unit is currently moving"""
@@ -221,14 +222,16 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# objects. This should be fixed properly by using the fife pathfinder for
 		# the entire route and task
 		location_list = fife.LocationList([self._fife_location2]*5)
-		#TODO Remove thisown, it exists for FIFE 0.3.4 compat. See #1993.
-		location_list.thisown = 0
-		self._route.thisown = 0
+		# It exists for FIFE 0.3.4 compat. See #1993.
+		if Fife.getVersion() == (0,3,4):
+			location_list.thisown = 0
+			self._route.thisown = 0
 		self._route.setPath(location_list)
 
+		self.act(self._move_action)
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
-		action = self._move_action+"_"+str(self._action_set_id)
 		speed = float(self.session.timer.get_ticks(1)) / move_time[0]
+		action = self._instance.getCurrentAction().getId()
 		self._instance.follow(action, self._route, speed)
 
 		#self.log.debug("%s registering move tick in %s ticks", self, move_time[int(diagonal)])

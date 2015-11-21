@@ -6,57 +6,61 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-09 17:46+0200\n"
-"PO-Revision-Date: 2013-06-03 23:06+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: Estonian <http://hosted.weblate.org/projects/uh/uh/et/>\n"
+"POT-Creation-Date: 2013-11-20 22:53+0100\n"
+"PO-Revision-Date: 2015-06-01 11:02+0200\n"
+"Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 2.3-dev\n"
 
-#: run_uh.py:220
+#: run_uh.py:124
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons jooksis kokku."
 
-#: run_uh.py:222
-#, fuzzy
+#: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Meil on sellest väga kahju ning me soovime seda viga parandada."
+msgstr "Meil on sellest väga kahju ning me soovime selle vea parandada."
 
-#: run_uh.py:223
+#: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "Selle tegemiseks vajame informatsiooni logifailist:"
 
-#: run_uh.py:225
+#: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
+"Palun edasta see meile IRC kanalil või foorumis; täpsemalt vaata http"
+"://unknown-horizons.org ."
 
-#: run_uh.py:273
+#: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "Tõrge: Ei leita vajalikku teeki \"PyYAML\"."
 
-#: run_uh.py:274
+#: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr ""
+msgstr "PyYAML (nõutud teek) puutub ja on vaja paigaldada."
 
-#: run_uh.py:275
+#: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
+"Windowsi paigaldaja on saadaval aadressil http://pyyaml.org/wiki/PyYAML."
 
-#: run_uh.py:276
+#: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Linuxi kasutajad peaksid leidma selle oma paketihaldurist paketina \"pyyaml\""
+" või \"python-yaml\"."
 
-#: run_uh.py:310
+#: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Täname, et mängisid Unknown Horizons'i!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -91,15 +95,15 @@ msgstr "Välju redaktorist"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Vali pintsli suurus:"
 
-#: content/gui/xml/editor/editor_settings.xml:20
+#: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
-msgstr ""
+msgstr "Vali maastik:"
 
-#: content/gui/xml/editor/editor_settings.xml:27
+#: content/gui/xml/editor/editor_settings.xml:35
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(paremklõps lõpetab)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -115,7 +119,7 @@ msgstr "Vali oma laev ja lähene rannikule vajutades parempoolset nuppu."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Lõpetades, vajuta suurt nuppu laeva ülevaate paneelil."
+msgstr "Järgnevalt vajuta laeva ülevaate paneelil suurt nuppu."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -135,20 +139,28 @@ msgid "Inhabitants"
 msgstr "Elanikud"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-msgid "Increase game speed (+)"
-msgstr "Kiirenda mängu (+)"
+#, python-brace-format
+#| msgid "Increase game speed (+)"
+msgid "Increase game speed ({key})"
+msgstr "Kiirenda mängu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-msgid "Decrease game speed (-)"
-msgstr "Aeglusta mängu (-)"
+#, python-brace-format
+#| msgid "Decrease game speed (-)"
+msgid "Decrease game speed ({key})"
+msgstr "Aeglusta mängu ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-msgid "Rotate map counterclockwise (,)"
-msgstr "Keera kaarti vastpäeva (,)"
+#, python-brace-format
+#| msgid "Rotate map counterclockwise (,)"
+msgid "Rotate map counterclockwise ({key})"
+msgstr "Keera kaarti vastupäeva ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-msgid "Rotate map clockwise (.)"
-msgstr "Keera kaarti päripäeva (.)"
+#, python-brace-format
+#| msgid "Rotate map clockwise (.)"
+msgid "Rotate map clockwise ({key})"
+msgstr "Keera kaarti päripäeva ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -159,24 +171,32 @@ msgid "Zoom out"
 msgstr "Vähenda"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-msgid "Destroy (X)"
-msgstr "Lammuta (X)"
+#, python-brace-format
+#| msgid "Destroy (X)"
+msgid "Destroy ({key})"
+msgstr "Lammuta ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-msgid "Captain's log (L)"
-msgstr "Kapteni logiraamat (L)"
+#, python-brace-format
+#| msgid "Captain's log (L)"
+msgid "Captain's log ({key})"
+msgstr "Kapteni logiraamat ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-msgid "Build menu (B)"
-msgstr "Ehitiste menüü (B)"
+#, python-brace-format
+#| msgid "Build menu (B)"
+msgid "Build menu ({key})"
+msgstr "Ehitiste menüü ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Diplomaatia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-msgid "Game menu (Esc)"
-msgstr "Mängu menüü (Esc)"
+#, python-brace-format
+#| msgid "Game menu (Esc)"
+msgid "Game menu ({key})"
+msgstr "Mängu menüü ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -213,11 +233,9 @@ msgstr "Sisesta oma sõnum:"
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:20
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:24
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:23
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:24
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:28
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
-#: horizons/gui/widgets/resourceoverviewbar.py:617
+#: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
 msgstr "Jooksvad kulud"
 
@@ -226,8 +244,8 @@ msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Paadi ehitamiseks klõpsa ühel klassi kaartidest, vali soovitud laev ja "
-"kinnita tellimus."
+"Laeva ehitamiseks klõpsa laeva klassi kaardil, vali soovitud laev ja kinnita "
+"tellimus."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -298,12 +316,12 @@ msgid "Capacity utilization"
 msgstr "Tootmisvõimsuse kasutamine"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
-#: horizons/gui/tabs/inventorytab.py:34
+#: horizons/gui/tabs/inventorytab.py:30
 msgid "Settlement inventory"
 msgstr "Koloonia inventar"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
-#: horizons/gui/tabs/residentialtabs.py:39
+#: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
 msgstr "Asunike ülevaade"
 
@@ -332,20 +350,20 @@ msgstr "Uuenduste lubamine:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr "Heaolu mapidamise kohta"
+msgstr "Heaolu majpidamise kohta"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:54
+#: horizons/gui/util.py:55
 msgid "sad"
 msgstr "kurb"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:57
+#: horizons/gui/util.py:58
 msgid "satisfied"
-msgstr "täidetud"
+msgstr "rahulolev"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:60
+#: horizons/gui/util.py:61
 msgid "happy"
 msgstr "õnnelik"
 
@@ -355,15 +373,15 @@ msgstr "Antud heaoluga majapidamiste arv"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr "Elanike maja kohta"
+msgstr "Elanikke maja kohta"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr "Elanikude arv maja kohta"
+msgstr "Elanike arv maja kohta"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "Majad antud elanikke arvuga"
+msgstr "Antud elanikke arvuga majad"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -379,20 +397,19 @@ msgstr "elanikke"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
-#: horizons/gui/tabs/buyselltab.py:348
+#: horizons/gui/tabs/buyselltab.py:350
 msgid "Selling"
 msgstr "Müügis"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
-#: horizons/gui/tabs/buyselltab.py:341
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
+#: horizons/gui/tabs/buyselltab.py:343
 msgid "Buying"
 msgstr "Ost"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
 msgid "Name:"
 msgstr "Nimi:"
 
@@ -405,7 +422,6 @@ msgid "Resource deposit"
 msgstr "Ressursi lasund"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
-#, fuzzy
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
@@ -418,12 +434,11 @@ msgstr "See sisaldab neid ressursse:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
-#: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:67
-#: horizons/gui/widgets/playerssettlements.py:97
-#, fuzzy
+#: horizons/gui/modules/ingame.py:160 horizons/gui/tabs/mainsquaretabs.py:76
+#: horizons/gui/tabs/mainsquaretabs.py:117
+#: horizons/gui/widgets/playerssettlements.py:96
 msgid "Click to change the name of your settlement"
-msgstr "Vajuta oma koloonia nime muutmiseks."
+msgstr "Klõpsa koloonia nime muutmiseks"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -436,9 +451,8 @@ msgid "Residents"
 msgstr "Elanikke"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Vajatavad ressursid:"
+msgstr "Vajalikud ressursid:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
@@ -456,30 +470,22 @@ msgstr ""
 "See on vaba kaupmehe laev. See külastab sind aegajalt ostmaks või müümaks "
 "kaupu."
 
-#. Percentage describing how busy the collectors were (100% = always going
-#. for / already carrying full load of goods)
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:27
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:29
-msgid "Collector utilization"
-msgstr "Kollektori kasutamine"
-
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
-#: horizons/gui/widgets/playersships.py:79
-#, fuzzy
+#: horizons/gui/widgets/playersships.py:78
 msgid "Click to change the name of this ship"
-msgstr "Klõpsa selle laeva nime muutmiseks."
+msgstr "Klõpsa selle laeva nime muutmiseks"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
-#: horizons/gui/tabs/buyselltab.py:84
+#: horizons/gui/tabs/buyselltab.py:88
 msgid "Trade"
 msgstr "Kauple"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
-#: horizons/gui/tabs/shiptabs.py:64
+#: horizons/gui/tabs/shiptabs.py:68
 msgid "Build settlement"
 msgstr "Ehita koloonia"
 
@@ -512,29 +518,36 @@ msgstr "Kauplemise ajalugu"
 msgid "Select resources:"
 msgstr "Vali ressursid:"
 
+#. Percentage describing how busy the collectors were (100% = always going
+#. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
+msgid "Collector utilization"
+msgstr "Koguja kasutus"
+
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
 msgstr "Tulud:"
 
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
-#: horizons/gui/widgets/resourceoverviewbar.py:620
+#: horizons/gui/widgets/resourceoverviewbar.py:615
 msgid "Taxes"
 msgstr "Maksud"
 
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
 msgid "Sale"
 msgstr "Müük"
 
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
 msgid "Expenses:"
 msgstr "Kulud:"
 
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
 msgid "Balance:"
 msgstr "Bilanss:"
 
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:42
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
 msgstr "Näita koloonia poolt toodetud ressursse"
 
@@ -551,9 +564,8 @@ msgstr "Jätka tootmist"
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Vali ressursid:"
+msgstr "Vali ressurss:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -562,10 +574,11 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
+"Praeguse ressursi asemel kuvatakse sinu valitut. Klõps X peal tühjendab."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr "Salvesta antud ressurssi konfiguratsiooni vaikimisi kõigile asulatele."
+msgstr "Salvesta antud ressurssi konfiguratsioon vaikimisi kõigile asulatele."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
@@ -606,7 +619,6 @@ msgid "Statistics"
 msgstr "Statistika"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#, fuzzy
 msgid "Players"
 msgstr "Mängijad"
 
@@ -635,39 +647,35 @@ msgstr "Igaüks"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr ""
+msgstr "Saadab vestluse teated kõigile mängijatele."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Sisesta oma sõnum:"
+msgstr "Sisesta oma sõnum siia"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
-#, fuzzy
 msgid "Return to game"
 msgstr "Tagasi mängu"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
-#, fuzzy
 msgid "Wait at load:"
 msgstr "Oota:"
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
-#, fuzzy
 msgid "Wait at unload:"
 msgstr "Oota:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr ""
+msgstr "Tee kasutus:"
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
-#: horizons/gui/widgets/routeconfig.py:100
+#: horizons/gui/widgets/routeconfig.py:103
 msgid "Start route"
 msgstr "Teekonna algus"
 
@@ -699,7 +707,7 @@ msgstr "Raha"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Mängija praegune varandus +  eeldatav sissetulek lähemal ajal"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -709,6 +717,7 @@ msgstr "Maa"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
+"Kasutatava maa väärtus st. Maa kogus mida saab kasutada ehitiste rajamiseks"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -719,6 +728,7 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
+"Mängija koloonia(te)s kõigist allikaist loodavate ressursside koguväärtus"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
@@ -729,7 +739,7 @@ msgid "Value of all the buildings in the player's settlement(s)"
 msgstr "Ehitiste väärtus mängija asula(te)s"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
@@ -740,6 +750,7 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
+"Koloonia(te) elanike, ehitiste ja üldise heaolu edenemist ilmestav väärtus"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -747,20 +758,20 @@ msgstr "Üksused"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Mängija kõigi üksuste väärtus"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr ""
+msgstr "Kõigi üksikute punktide kogusumma, ehk mängija täistulemus"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
-#: horizons/gui/widgets/playerssettlements.py:118
+#: horizons/gui/widgets/playerssettlements.py:117
 msgid "Total"
 msgstr "Kokku"
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
-#: horizons/gui/widgets/resourceoverviewbar.py:630
+#: horizons/gui/widgets/resourceoverviewbar.py:618
 msgid "Balance"
 msgstr "Bilanss"
 
@@ -777,9 +788,9 @@ msgid "Health"
 msgstr "Elud"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:39
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
 msgid "Status"
-msgstr ""
+msgstr "Olek"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
@@ -801,11 +812,11 @@ msgstr "Pasiivne"
 msgid "Flee"
 msgstr "Põgene"
 
-#: content/gui/xml/mainmenu/credits.xml:382
+#: content/gui/xml/mainmenu/credits.xml:471
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:27
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:18
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
+#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
 msgstr "Välju peamenüüsse"
 
@@ -814,17 +825,17 @@ msgid "Choose a map size:"
 msgstr "Vali kaardi suurus:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:33
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
 msgstr "Vali kaart:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Vali salvestatud mängu kaart:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "Vali kaardi allikas"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
@@ -832,24 +843,23 @@ msgstr "Loo uus kaart"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "Laadi olemasolev kaart"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Laadi salvestatud mängu kaart"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
 msgstr "Käivita redaktor"
 
-#: content/gui/xml/mainmenu/help.xml:5
+#: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
 msgstr "Tagasi"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "haridus"
+msgstr "Tegevused"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -901,7 +911,7 @@ msgstr "Luba teede rajamine"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "Luba pipeti režiim (ehitiste kloonimine)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -918,9 +928,8 @@ msgid "Show ship list"
 msgstr "Näita laevade nimekirja"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
-#, fuzzy
 msgid "Toggle Captain's log"
-msgstr "Lahku Kapteni Logist"
+msgstr "Lahku Kapteni logist"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
 msgid "Quicksave"
@@ -932,19 +941,19 @@ msgstr "Kiirlaadimine"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:30
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "Lülita ümbritsevate ehitiste läbikumavus"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Too esile maa-ala omanik"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Lülita terviseribad"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "Suuna kaamera valikule"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
@@ -959,7 +968,6 @@ msgid "Screenshot"
 msgstr "Ekraanipilt"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
 msgstr "Lülita alusvõrk sisse/välja"
 
@@ -974,22 +982,20 @@ msgstr "Näita koordinaatide väärtusi (Silumine)"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Esmane"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundaarne"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#: content/gui/xml/mainmenu/settings.xml:121
 msgid "Reset to default"
 msgstr "Taasta vaikeseaded"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Taasta vaikeseaded"
+msgstr "Taasta vaikeklahvid"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1008,13 +1014,12 @@ msgid "Cancel game"
 msgstr "Katkesta mäng"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Laadimine ..."
+msgstr "Laadimine…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Vaheta taustapilt"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1050,45 +1055,34 @@ msgid "Player limit:"
 msgstr "Mängijate limiit:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
-msgid "Back:"
-msgstr "Tagasi:"
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:21
 msgid "Exit to multiplayer menu"
 msgstr "Välju mitmemängu menüüsse"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
 msgstr "Mängu nimi:"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
-#, fuzzy
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "Seda näidatakse teistele mängijatele, "
+msgstr "Seda näidatakse teistele mängijatele, et nad mängu ära tunneksid."
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
-#, fuzzy
 msgid "Unnamed Game"
-msgstr " Laadi mäng "
+msgstr "Laadi mäng"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
 msgstr "Mängu parool:"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
 msgstr "Selle mängu parool. Vajalik mänguga liitumiseks."
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:54
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
-msgid "Create game:"
-msgstr "Loo mäng:"
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:55
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
 msgstr "Loo uus mäng"
 
@@ -1101,72 +1095,67 @@ msgid "Chat:"
 msgstr "Vestlus:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
-msgid "Leave:"
-msgstr "Lahku:"
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:18
 msgid "Exit gamelobby"
 msgstr "Välju mängu ooteruumist"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:19
-msgid "Ready:"
-msgstr "Valmis:"
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:20
-msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
 msgstr "See mäng algab niipea kui kõik mängijad on valmis."
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
 msgstr "Mängu detailid:"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
 msgstr "Värvus"
 
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
+msgid "Ready:"
+msgstr "Valmis:"
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
+msgid "Sets your state to ready (necessary for the game to start)"
+msgstr "Määrab su olekuks valmis (vajalik mängu alustamiseks)"
+
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
-#, fuzzy
 msgid "New game - Multiplayer"
-msgstr "Loo mäng - Mitmemäng"
+msgstr "Uus mitmekasutaja mäng"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
-msgid "Create a new game"
-msgstr "Loo uus mäng"
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 msgid "Load game:"
 msgstr "Laadi mäng:"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
-msgstr ""
+msgstr "Laadi salvestatud mäng"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:26
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:16
-msgid "Main menu:"
-msgstr "Peamenüü:"
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:36
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
 msgstr "Aktiivsed mängud:"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:38
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
 msgid "Refresh list:"
 msgstr "Värskenda nimekirja:"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
 msgid "Refresh list of active games"
 msgstr "Värskenda aktiivsete mängude nimekirja"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:59
-msgid "Join game"
-msgstr "Liitu mänguga"
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
+msgid "Create game:"
+msgstr "Loo mäng:"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:60
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
+msgid "Create a new game"
+msgstr "Loo uus mäng"
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
+#| msgid "Join game"
+msgid "Join game:"
+msgstr "Liitu mänguga:"
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
 msgstr "Liitu valitud mänguga"
 
@@ -1175,7 +1164,7 @@ msgid "Change player details"
 msgstr "Muuda mängija üksikasju"
 
 #: content/gui/xml/mainmenu/settings.xml:14
-#: horizons/gui/widgets/pickbeltwidget.py:87
+#: horizons/gui/modules/settings.py:53
 msgid "Graphics"
 msgstr "Graafika"
 
@@ -1183,196 +1172,199 @@ msgstr "Graafika"
 msgid "Screen resolution:"
 msgstr "Ekraani resolutsioon:"
 
-#: content/gui/xml/mainmenu/settings.xml:28
-msgid "Color depth:"
-msgstr "Värvisügavus:"
-
-#: content/gui/xml/mainmenu/settings.xml:28
-#, fuzzy
-msgid "If set to 0, use the driver default"
-msgstr "Kui väärtuseks on 0, kasutatakse marsruuteri vaikeseadeid"
-
-#: content/gui/xml/mainmenu/settings.xml:35
+#: content/gui/xml/mainmenu/settings.xml:25
 msgid "Full screen:"
 msgstr "Täisekraan:"
 
-#: content/gui/xml/mainmenu/settings.xml:43
+#: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+"SDL on mõeldud ainult toetuseta tagavara variandina ja võib põhjustada "
+"probleeme!"
 
-#: content/gui/xml/mainmenu/settings.xml:43
+#: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
 msgstr "Kasutatav renderdaja:"
 
-#: content/gui/xml/mainmenu/settings.xml:51
+#: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Suurim kaadrisagedus:"
 
-#: content/gui/xml/mainmenu/settings.xml:51
+#: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr ""
+"Määrab suurima kaardisageduse, mida kasutatakse; vaikimisi 60 kaadrit "
+"sekundis."
 
-#: content/gui/xml/mainmenu/settings.xml:62
+#: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
 msgstr "Heli"
 
-#: content/gui/xml/mainmenu/settings.xml:67
+#: content/gui/xml/mainmenu/settings.xml:60
 msgid "Music volume:"
 msgstr "Muusika helitugevus:"
 
-#: content/gui/xml/mainmenu/settings.xml:76
+#: content/gui/xml/mainmenu/settings.xml:69
 msgid "Effects volume:"
 msgstr "Effektide helitugevus:"
 
-#: content/gui/xml/mainmenu/settings.xml:84
+#: content/gui/xml/mainmenu/settings.xml:76
 msgid "Enable sound:"
 msgstr "Luba heli:"
 
-#: content/gui/xml/mainmenu/settings.xml:90
+#: content/gui/xml/mainmenu/settings.xml:82
 msgid "Mouse"
 msgstr "Hiir"
 
-#: content/gui/xml/mainmenu/settings.xml:95
+#: content/gui/xml/mainmenu/settings.xml:87
 msgid "Scroll at map edge:"
 msgstr "Kerimine kaardi ääres:"
 
-#: content/gui/xml/mainmenu/settings.xml:95
+#: content/gui/xml/mainmenu/settings.xml:87
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Kas liigutada vaadet, kui hiire kursor jõuab kaardi serva lähedale"
 
-#: content/gui/xml/mainmenu/settings.xml:101
+#: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "Kursoriga tsentreeritud suurendus:"
 
-#: content/gui/xml/mainmenu/settings.xml:101
+#: content/gui/xml/mainmenu/settings.xml:93
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"Kui see on lubatud, siis kasutatakse hiire rattaga suurendamisel vaate "
+"keskmena kursori asukohta. Kui on keelatud, siis suurendatakse alati vaate "
+"keskkohast."
 
-#: content/gui/xml/mainmenu/settings.xml:107
+#: content/gui/xml/mainmenu/settings.xml:99
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Panoraam hiire keskmise klahviga:"
 
-#: content/gui/xml/mainmenu/settings.xml:107
+#: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
+"Kui lubatud, siis saab hiire keskmise klahviga lohistada kaamera teise kohta"
 
-#: content/gui/xml/mainmenu/settings.xml:115
+#: content/gui/xml/mainmenu/settings.xml:107
 msgid "0 is default system settings"
 msgstr "0 on süsteemi vaikeseaded"
 
-#: content/gui/xml/mainmenu/settings.xml:115
+#: content/gui/xml/mainmenu/settings.xml:107
 msgid "Mouse sensitivity:"
 msgstr "Hiire tundlikkus:"
 
-#: content/gui/xml/mainmenu/settings.xml:132
+#: content/gui/xml/mainmenu/settings.xml:123
 msgid "Saving"
 msgstr "Salvestamine"
 
-#: content/gui/xml/mainmenu/settings.xml:137
+#: content/gui/xml/mainmenu/settings.xml:128
 msgid "Autosave interval in minutes:"
 msgstr "Automaatse salvestuse intervall minutites:"
 
-#: content/gui/xml/mainmenu/settings.xml:145
+#: content/gui/xml/mainmenu/settings.xml:136
 msgid "Number of autosaves:"
 msgstr "Automaatsete salvestuste arv:"
 
-#: content/gui/xml/mainmenu/settings.xml:153
+#: content/gui/xml/mainmenu/settings.xml:144
 msgid "Number of quicksaves:"
 msgstr "Kiirsalvestuste arv:"
 
-#: content/gui/xml/mainmenu/settings.xml:161
+#: content/gui/xml/mainmenu/settings.xml:152
 msgid "Language"
 msgstr "Keel"
 
-#: content/gui/xml/mainmenu/settings.xml:173
+#: content/gui/xml/mainmenu/settings.xml:164
 msgid "General"
-msgstr ""
+msgstr "Üldine"
 
-#: content/gui/xml/mainmenu/settings.xml:178
+#: content/gui/xml/mainmenu/settings.xml:169
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Suure ja mini kaardi korraga pööramine:"
 
-#: content/gui/xml/mainmenu/settings.xml:178
+#: content/gui/xml/mainmenu/settings.xml:169
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Kas pöörata ka mini kaarti, kuitoimub suure kaardi pööramine"
 
-#: content/gui/xml/mainmenu/settings.xml:184
+#: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Ehitamist ei segata:"
 
-#: content/gui/xml/mainmenu/settings.xml:184
+#: content/gui/xml/mainmenu/settings.xml:175
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Kui lubatud, siis jäädakse pärast ehitise valmimist edasi ehitamise režiimist"
 
-#: content/gui/xml/mainmenu/settings.xml:190
+#: content/gui/xml/mainmenu/settings.xml:181
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Laeva automaatne lossimine:"
 
-#: content/gui/xml/mainmenu/settings.xml:190
+#: content/gui/xml/mainmenu/settings.xml:181
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Kas lossida laev pärast koloonia asutamist"
 
-#: content/gui/xml/mainmenu/settings.xml:196
+#: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Tavaliselt mängides ära kasuta. See määrab, kas silumisteavet salvestatakse "
+"su kodukataloogis logide kataloogi või mitte. Teeb mängu aeglaseks."
 
-#: content/gui/xml/mainmenu/settings.xml:196
+#: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
 msgstr "Luba logimine:"
 
-#: content/gui/xml/mainmenu/settings.xml:202
+#: content/gui/xml/mainmenu/settings.xml:193
 msgid "Production indicators:"
-msgstr ""
+msgstr "Tootmise indikaatorid:"
 
-#: content/gui/xml/mainmenu/settings.xml:202
+#: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
-msgstr ""
+msgstr "Kas kuvada ressurssude ikoonid ehitistel, kui nad tootmise lõpetavad"
 
-#: content/gui/xml/mainmenu/settings.xml:210
+#: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "Suuremad väärtused muudavad kerimise aeglaseks."
+
+#: content/gui/xml/mainmenu/settings.xml:201
+msgid "Scroll delay:"
+msgstr "Kerimise viide:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
-msgid "Scroll delay:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:219
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "Vali tsitaadi tüüp:"
 
-#: content/gui/xml/mainmenu/settings.xml:219
+#: content/gui/xml/mainmenu/settings.xml:210
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Mängu laadimisel kuvatav tsitaat"
 
-#: content/gui/xml/mainmenu/settings.xml:227
+#: content/gui/xml/mainmenu/settings.xml:218
 msgid "Network"
 msgstr "Võrk"
 
-#: content/gui/xml/mainmenu/settings.xml:231
+#: content/gui/xml/mainmenu/settings.xml:222
 msgid "If set to 0, use the router default"
 msgstr "Kui väärtuseks on 0, kasutatakse marsruuteri vaikeseadeid"
 
-#: content/gui/xml/mainmenu/settings.xml:231
+#: content/gui/xml/mainmenu/settings.xml:222
 msgid "Network port:"
 msgstr "Võrgu port:"
 
 #: content/gui/xml/mainmenu/settings.xml:243
+msgid "Discard current changes"
+msgstr "Tühista viimased muudatused"
+
+#: content/gui/xml/mainmenu/settings.xml:244
 msgid "Reset to default settings"
 msgstr "Taasta algseaded"
 
-#: content/gui/xml/mainmenu/settings.xml:244
-msgid "Discard current changes"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:246
-msgid "Apply"
-msgstr "Rakenda"
+#: content/gui/xml/mainmenu/settings.xml:245
+#| msgid "Save game"
+msgid "Save changes"
+msgstr "Salvesta muudatused"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 msgid "Your saved games:"
@@ -1380,11 +1372,11 @@ msgstr "Sinu salvestatud mängud:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "Mängu salasõna. Vajalik mänguga liitumiseks"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
-msgid "Delete selected savegame"
-msgstr "Kustuta valitud salvestatud mäng"
+msgid "Cancel"
+msgstr "Tühista"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
 msgid "Enter filename:"
@@ -1396,16 +1388,16 @@ msgid "Details:"
 msgstr "Detailid:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
-msgid "Cancel"
-msgstr ""
+msgid "Delete selected savegame"
+msgstr "Kustuta valitud salvestatud mäng"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Uus mäng - üks mängija"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr ""
+msgstr "Stsenaarium"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
@@ -1415,11 +1407,7 @@ msgstr "Juhuslik kaart"
 msgid "Free play"
 msgstr "Vaba mängimine"
 
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:36
-msgid "Start game:"
-msgstr "Alusta mängu:"
-
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
+#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
 msgstr "Alusta mängu"
 
@@ -1435,7 +1423,7 @@ msgstr "Kaardi seaded:"
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr ""
+msgstr "Kaart:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
@@ -1478,7 +1466,7 @@ msgstr "Vigane failinimi"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Salvestamiseks anti vigane faili nimi."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
@@ -1496,12 +1484,11 @@ msgstr "Kaubanduspartner ei müü seda."
 
 #: horizons/component/tradepostcomponent.py:198
 msgid "You can not store this."
-msgstr ""
+msgstr "Sa ei saa seda salvestada."
 
 #: horizons/component/tradepostcomponent.py:202
-#, fuzzy
 msgid "You can not afford to buy this."
-msgstr "Sa ei saa endale seda võimaldada."
+msgstr "Selle ostmiseks sul raha ei ole."
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
@@ -1513,17 +1500,15 @@ msgstr "Kaubanduspartner ei osta seda."
 
 #: horizons/component/tradepostcomponent.py:240
 msgid "You do not possess this."
-msgstr ""
+msgstr "Sul ei ole seda."
 
 #: horizons/component/tradepostcomponent.py:244
-#, fuzzy
 msgid "The trade partner can not store more of this."
 msgstr "Kaubanduspartner ei saa seda rohkem talletada."
 
 #: horizons/component/tradepostcomponent.py:248
-#, fuzzy
 msgid "The trade partner can not afford to buy this."
-msgstr "Kaubanduspartner ei saa seda rohkem talletada."
+msgstr "Kaubanduspartneril ei ole selle ostmiseks raha."
 
 #: horizons/component/tradepostcomponent.py:253
 msgid "The trade partner does not buy more of this."
@@ -1535,125 +1520,18 @@ msgstr "Kiirsalvestus ebaõnnestus."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Kiirsalvestamisel toimus viga."
 
 #: horizons/editor/session.py:70
-#, fuzzy
 msgid "Your map has not been saved."
-msgstr "Sinu mäng on salvestatud."
+msgstr "Sinu kaarti ei salvestatud."
 
-#: horizons/editor/session.py:72 horizons/spsession.py:67
-#, python-format
+#: horizons/editor/session.py:71 horizons/spsession.py:66
+#, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
-
-#: horizons/engine/settingsdialog.py:52
-#: horizons/gui/widgets/pickbeltwidget.py:88
-msgid "Hotkeys"
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:69
-msgid "Restart required"
-msgstr "Vaja on taaskäivitust"
-
-#: horizons/engine/settingsdialog.py:70
-msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Mõned sinu muudatused vajavad Unknown Horizons'i taaskäivitamist."
-
-#: horizons/engine/settingsdialog.py:74
-msgid "Restore default settings"
-msgstr "Taasta algseaded"
-
-#: horizons/engine/settingsdialog.py:75
-msgid ""
-"Restoring the default settings will delete all changes to the settings you "
-"made so far."
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:76
-msgid "Do you want to continue?"
-msgstr "Kas soovid jätkata?"
-
-#: horizons/engine/settingshandler.py:70
-msgid "16 bit"
-msgstr "16 bitti"
-
-#: horizons/engine/settingshandler.py:70
-msgid "32 bit"
-msgstr "32 bitti"
-
-#: horizons/engine/settingshandler.py:70
-msgid "Default"
-msgstr "Vaikeväärtus"
-
-#: horizons/engine/settingshandler.py:141
-msgid "Warning"
-msgstr "Hoiatus"
-
-#. i18n Warning popup shown in settings when SDL is selected as renderer.
-#: horizons/engine/settingshandler.py:143
-msgid ""
-"The SDL renderer is meant as a fallback solution only and has serious "
-"graphical glitches. \n"
-"\n"
-"Use at own risk!"
-msgstr ""
-"SDL renderdusmootor on mõeldud ainult varulahendusena ja sellel esineb "
-"tõsised graafika tõrkeid. \n"
-"\n"
-"Kasuta vaid omavastutusel!"
-
-#: horizons/engine/settingshandler.py:222
-msgid "Invalid network port"
-msgstr "Vale võrguport"
-
-#: horizons/engine/settingshandler.py:223
-msgid ""
-"The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr ""
-"Sinu poolt valitud pord number ei ole kehtiv. Peab olema number 1 ja 65535 "
-"vahel."
-
-#: horizons/engine/settingshandler.py:224
-msgid ""
-"Please check the port you entered and make sure it is in the specified range."
-msgstr ""
-"Palun kontrolli sisestatud pordi andmeid ja veendu et see jääb nõutud "
-"vahemikku."
-
-#: horizons/engine/settingshandler.py:236
-msgid "Failed to apply new network settings."
-msgstr "Uute võrgu seadete rakendamine ebaõnnestus."
-
-#: horizons/engine/settingshandler.py:237
-#: horizons/gui/modules/multiplayermenu.py:131
-msgid ""
-"Network features could not be initialized with the current configuration."
-msgstr "Võrku ei suudetud rakendada praeguste seadetega."
-
-#: horizons/engine/settingshandler.py:238
-#: horizons/gui/modules/multiplayermenu.py:132
-msgid "Check the settings you specified in the network section."
-msgstr "Kontrolli võrgu seadeid."
-
-#. i18n This is advice for players seeing a network error with the current config
-#: horizons/engine/settingshandler.py:242
-msgid ""
-"Low port numbers sometimes require special access privileges, try 0 or a "
-"number greater than 1024."
-msgstr ""
-"Väiksemad pordi numbrid vajavad teinekord erilisi juurdepääsu õigusi, proovi "
-"numbrit 0 või suuremat kui 1024."
-
-#: horizons/engine/settingshandler.py:277
-msgid "Logging enabled"
-msgstr "Logimine lubatud"
-
-#: horizons/engine/settingshandler.py:279
-#, python-format
-msgid "Logs are written to {directory}."
-msgstr "Logid kirjutatakse kataloogi {directory}."
+"Kui see viga juhtub uuesti, siis võta palun arendajatega ühendust: {website}"
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1663,140 +1541,149 @@ msgstr "Oled sa kindel, et soovid väljuda Unknown Horizons'ist?"
 msgid "Quit Game"
 msgstr "Välju mängust"
 
-#: horizons/gui/ingamegui.py:218
+#: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
 msgstr "Diplomaatia pole võimalik"
 
-#: horizons/gui/ingamegui.py:219
+#: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Ei saa diplomaatiat rakendada kuna puuduvad teised mängijad."
 
 #. size of empty map in map editor
-#: horizons/gui/modules/editorstartmenu.py:92
-#, python-format
+#: horizons/gui/modules/editorstartmenu.py:91
+#, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} ruutu"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Vajuta soovitud klahvi"
+
+#: horizons/gui/modules/hotkeys_settings.py:140
+#, python-brace-format
+msgid "{key} is already set to {action}."
+msgstr "{key} on juba kasutusel: {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
-#, python-format
-msgid "{key} is already set to {action}."
-msgstr ""
-
-#: horizons/gui/modules/hotkeys_settings.py:142
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Kas sa soovid selle ülekirjutada?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
-#: horizons/gui/modules/hotkeys_settings.py:143
-#: horizons/gui/modules/select_savegame.py:157
+#: horizons/gui/modules/hotkeys_settings.py:142
+#: horizons/gui/modules/select_savegame.py:155
 msgid "Confirmation for overwriting"
 msgstr "Ülekirjutamise kinnitus"
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr ""
+msgstr "Tsitaadid"
 
-#: horizons/gui/modules/loadingscreen.py:59
+#: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
-msgstr ""
-
-#: horizons/gui/modules/loadingscreen.py:61
-msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "Mängu vihjed"
 
 #: horizons/gui/modules/loadingscreen.py:62
+msgid "Press 'ESC' to access Game Menu."
+msgstr "Mängu menüü avamiseks vajuta 'ESC'."
+
+#: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "Mitme ehitise paigutamiseks hoia all 'SHIFT'."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
-#, python-format
+#, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Hetkel on on mängitavad ainult esimesed {tier} taset."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Mängu peatamiseks vajuta 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "Teid saad vedada hoides all hiire vasakut nuppu."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "Sa saad ehitada mitu ehitist, kui hoiad all klahvi 'SHIFT'."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "Makse alandades saad sa parandada elanike heaolu."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Ehita tuletõrje jaamu ja arste, et kaitsta elanikke tulest ja haigustest."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Ehita laotelke, et suurendada ladustamise pinda."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "Kõik majad peaksid olema turuplatsi ulatuses."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
 msgstr "Vajuta 'T', et muuta puud läbipaistvaks."
 
-#. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:101
+#. This are the options you can select in the Settings what type of quotes
+#. should be
+#. displayed during load
+#: horizons/gui/modules/loadingscreen.py:80
+msgid "Mixed"
+msgstr "Segatud"
+
+#. translators: these are descriptions of the current task while loading a
+#. game
+#: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr ""
+msgstr "Mootorit käivitatakse…"
+
+#: horizons/gui/modules/loadingscreen.py:101
+msgid "Catching fish…"
+msgstr "Kala püüdmine…"
 
 #: horizons/gui/modules/loadingscreen.py:102
-msgid "Catching fish…"
-msgstr ""
+msgid "Drawing user interface…"
+msgstr "Kasutajaliidese joonistamine…"
 
 #: horizons/gui/modules/loadingscreen.py:103
-msgid "Drawing user interface…"
-msgstr ""
+msgid "Activating timer…"
+msgstr "Taimeri aktiveerimine…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-msgid "Activating timer…"
-msgstr ""
+msgid "Chomping game data…"
+msgstr "Mängu andmete laadimine…"
 
 #: horizons/gui/modules/loadingscreen.py:105
-msgid "Chomping game data…"
-msgstr ""
+msgid "Shaping islands…"
+msgstr "Saarte kujundamine…"
 
 #: horizons/gui/modules/loadingscreen.py:106
-msgid "Shaping islands…"
-msgstr ""
+msgid "Preparing blueprints…"
+msgstr "Jooniste ettevalmistamine…"
 
 #: horizons/gui/modules/loadingscreen.py:107
-msgid "Preparing blueprints…"
-msgstr ""
+msgid "Filling world with water…"
+msgstr "Vee lisamine…"
 
 #: horizons/gui/modules/loadingscreen.py:108
-msgid "Filling world with water…"
-msgstr ""
+msgid "Raising animals…"
+msgstr "Loomade kasvatamine…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-msgid "Raising animals…"
-msgstr ""
+msgid "Convincing AI…"
+msgstr "Arvutimängija uurimine…"
 
 #: horizons/gui/modules/loadingscreen.py:110
-msgid "Convincing AI…"
-msgstr ""
-
-#: horizons/gui/modules/loadingscreen.py:111
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Aarete matmine…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -1807,6 +1694,7 @@ msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"Miteme mängija tugi vajab teeki \"pyenet\", mida su süsteemist ei leitud."
 
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
@@ -1816,6 +1704,17 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
 msgstr "Võrgustiku käivitamine ebaõnnestus."
+
+#: horizons/gui/modules/multiplayermenu.py:131
+#: horizons/gui/modules/settings.py:273
+msgid ""
+"Network features could not be initialized with the current configuration."
+msgstr "Võrku ei suudetud rakendada praeguste seadetega."
+
+#: horizons/gui/modules/multiplayermenu.py:132
+#: horizons/gui/modules/settings.py:274
+msgid "Check the settings you specified in the network section."
+msgstr "Kontrolli võrgu seadeid."
 
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
@@ -1842,36 +1741,36 @@ msgstr "Midagi läks valesti võrguga:"
 msgid "Version differs!"
 msgstr "Versioon erineb!"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:443
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:205
+#: horizons/gui/modules/multiplayermenu.py:457
+#, python-brace-format
 msgid "Map: {map_name}"
 msgstr "Kaart: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:207
-#: horizons/gui/modules/multiplayermenu.py:445
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:458
+#, python-brace-format
 msgid "Name: {game_name}"
 msgstr "Nimi: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:447
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:207
+#: horizons/gui/modules/multiplayermenu.py:459
+#, python-brace-format
 msgid "Creator: {game_creator}"
 msgstr "Looja: {game_creator}"
 
-#: horizons/gui/modules/multiplayermenu.py:210
-#: horizons/gui/modules/multiplayermenu.py:449
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:460
+#, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Mängijaid: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:230
+#: horizons/gui/modules/multiplayermenu.py:228
 msgid "Wrong version"
 msgstr "Vale versioon"
 
-#: horizons/gui/modules/multiplayermenu.py:232
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:229
+#, python-brace-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
 "game must use the same version. This can be fixed by every player updating "
@@ -1883,90 +1782,104 @@ msgstr ""
 "uusima saada oleva versioonini. Mängu versioon: {game_version} Sinu version: "
 "{own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:270
-#, fuzzy
+#: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
-msgstr "Mängu parool:"
+msgstr "Mängu parool"
 
-#: horizons/gui/modules/multiplayermenu.py:271
+#: horizons/gui/modules/multiplayermenu.py:268
 msgid "Enter password:"
 msgstr "Sisesta parool:"
 
-#: horizons/gui/modules/multiplayermenu.py:351
-#: horizons/gui/modules/singleplayermenu.py:406
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:347
+#: horizons/gui/modules/singleplayermenu.py:407
+#, python-brace-format
 msgid "Recommended number of players: {number}"
 msgstr "Soovitatav arv mängijaid: {number}"
 
-#: horizons/gui/modules/multiplayermenu.py:467
-#: horizons/gui/modules/multiplayermenu.py:475
+#. TODO: add support for selecting difficulty levels to the GUI
+#: horizons/gui/modules/multiplayermenu.py:393
+#: horizons/network/networkinterface.py:526
+msgid "Ready"
+msgstr "Valmis"
+
+#: horizons/gui/modules/multiplayermenu.py:395
+msgid "Not ready"
+msgstr "Ei ole valmis"
+
+#: horizons/gui/modules/multiplayermenu.py:430
+#| msgid "Enter your message:"
+msgid "Enter your message"
+msgstr "Sisesta oma sõnum"
+
+#: horizons/gui/modules/multiplayermenu.py:478
+#: horizons/gui/modules/multiplayermenu.py:486
 msgid "Click here to change your name and/or color"
 msgstr "Vajuta siia, et muuta oma nime või värvust"
 
-#: horizons/gui/modules/multiplayermenu.py:494
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:504
+#, python-brace-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "Eemalda {player} mängust"
 
-#: horizons/gui/modules/multiplayermenu.py:562
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:571
+#, python-brace-format
 msgid "{player} has joined the game"
 msgstr "{player} liitus mänguga"
 
-#: horizons/gui/modules/multiplayermenu.py:566
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:574
+#, python-brace-format
 msgid "{player} has left the game"
 msgstr "{player} lahkus mängust"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:580
 msgid "You are now ready"
 msgstr "Nüüd oled valmis"
 
-#: horizons/gui/modules/multiplayermenu.py:574
+#: horizons/gui/modules/multiplayermenu.py:582
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "Sa ei ole enam valmis"
 
-#: horizons/gui/modules/multiplayermenu.py:578
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:585
+#, python-brace-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} on nüüd valmis"
 
-#: horizons/gui/modules/multiplayermenu.py:581
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:587
+#, python-brace-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} ei ole enam valmis"
 
-#: horizons/gui/modules/multiplayermenu.py:586
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:591
+#, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr ""
-
-#: horizons/gui/modules/multiplayermenu.py:589
-#, python-format
-msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "Sind tuntakse nüüd nimega {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:593
+#, python-brace-format
+msgid "{player} is now known as {new_name}"
+msgstr "Mängija {player} nimi on nüüd {new_name}"
+
+#: horizons/gui/modules/multiplayermenu.py:597
 msgid "You changed your color"
 msgstr "Sa muutsid oma värvust"
 
-#: horizons/gui/modules/multiplayermenu.py:596
-#, fuzzy, python-format
+#: horizons/gui/modules/multiplayermenu.py:599
+#, python-brace-format
 msgid "{player} changed their color"
-msgstr "{player} muutis oma värvust"
+msgstr "{player} vahetas värve"
 
-#: horizons/gui/modules/multiplayermenu.py:600
+#: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
-msgstr ""
+msgstr "Eemaldati mängust"
 
-#: horizons/gui/modules/multiplayermenu.py:600
+#: horizons/gui/modules/multiplayermenu.py:603
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "Mängu looja eemaldas su mängust"
 
-#: horizons/gui/modules/multiplayermenu.py:604
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:606
+#, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "Mängu looja eemaldas {player}'i mängust"
 
 #: horizons/gui/modules/pausemenu.py:82
 msgid "Are you sure you want to abort the running session?"
@@ -1992,147 +1905,230 @@ msgstr "Faili nimi puudub"
 msgid "Please enter a valid filename."
 msgstr "Palun sisesta õige faili nimi."
 
-#: horizons/gui/modules/select_savegame.py:150
-#, fuzzy, python-format
+#: horizons/gui/modules/select_savegame.py:149
+#, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Salvestatud mäng nimega '{name}' juba eksisteerib."
+msgstr "Salvestatud mäng nimega '{name}' on juba olemas."
+
+#: horizons/gui/modules/select_savegame.py:151
+#, python-brace-format
+msgid "A map with the name {name} already exists."
+msgstr "Kaart nimega '{name}' on juba olemas."
 
 #: horizons/gui/modules/select_savegame.py:153
-#, fuzzy, python-format
-msgid "A map with the name {name} already exists."
-msgstr "Salvestatud mäng nimega '{name}' juba eksisteerib."
-
-#: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
 msgstr "Kirjutan üle?"
 
-#: horizons/gui/modules/select_savegame.py:219
+#: horizons/gui/modules/select_savegame.py:217
 msgid "Unknown savedate"
 msgstr "Salvestuskuupäev teadmata"
 
-#: horizons/gui/modules/select_savegame.py:223
-#, python-format
+#: horizons/gui/modules/select_savegame.py:220
+#, python-brace-format
 msgid "Saved at {time}"
 msgstr "Salvestatud {time}"
 
 #. N_ takes care of plural forms for different languages
-#: horizons/gui/modules/select_savegame.py:228
-#, python-format
+#: horizons/gui/modules/select_savegame.py:224
+#, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] "Salvestatud {amount} kord"
 msgstr[1] "Salvestatud {amount} korda"
 
-#: horizons/gui/modules/select_savegame.py:236
-#, python-format
+#: horizons/gui/modules/select_savegame.py:231
+#, python-brace-format
 msgid "Savegame version {version}"
 msgstr "Salvestatud mängu versioon {version}"
 
-#: horizons/gui/modules/select_savegame.py:240
+#: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "(ilmselt sobimatu)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
-#: horizons/gui/modules/select_savegame.py:244
+#: horizons/gui/modules/select_savegame.py:239
 msgid "Incompatible version"
 msgstr "Mitte sobiv versioon"
 
-#: horizons/gui/modules/select_savegame.py:257
+#: horizons/gui/modules/select_savegame.py:252
 msgid "No file selected"
 msgstr "Faili pole valitud"
 
-#: horizons/gui/modules/select_savegame.py:257
+#: horizons/gui/modules/select_savegame.py:252
 msgid "You need to select a savegame to delete."
 msgstr "Kustutamiseks pead valima salvestatud mängu."
 
-#: horizons/gui/modules/select_savegame.py:261
-#, python-format
+#: horizons/gui/modules/select_savegame.py:255
+#, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
 msgstr "Kas sa tahad kindlasti kustutada salvestatud mängu '{name}'?"
 
-#: horizons/gui/modules/select_savegame.py:263
+#: horizons/gui/modules/select_savegame.py:257
 msgid "Confirm deletion"
 msgstr "Kinnita kustutamine"
 
-#: horizons/gui/modules/select_savegame.py:268
+#: horizons/gui/modules/select_savegame.py:262
 msgid "Error!"
 msgstr "Viga!"
 
-#: horizons/gui/modules/select_savegame.py:268
+#: horizons/gui/modules/select_savegame.py:262
 msgid "Failed to delete savefile!"
 msgstr "Salvestatud mängu kustutamine ebaõnnestus!"
 
-#: horizons/gui/modules/singleplayermenu.py:105
+#: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
+msgid "Hotkeys"
+msgstr "Kiirklahvid"
+
+#: horizons/gui/modules/settings.py:55
+msgid "Game"
+msgstr "Mäng"
+
+#: horizons/gui/modules/settings.py:72
+msgid "Disabled"
+msgstr "Keelatud"
+
+#: horizons/gui/modules/settings.py:126
+msgid "Restart required"
+msgstr "Vaja on taaskäivitust"
+
+#: horizons/gui/modules/settings.py:127
+msgid "Some of your changes require a restart of Unknown Horizons."
+msgstr "Mõned sinu muudatused vajavad Unknown Horizons'i taaskäivitamist."
+
+#: horizons/gui/modules/settings.py:131
+msgid "Restore default settings"
+msgstr "Taasta algseaded"
+
+#: horizons/gui/modules/settings.py:132
+msgid ""
+"Restoring the default settings will delete all changes to the settings you "
+"made so far."
+msgstr "Vaikimisi häälestuse taastamine kustutab kõik su tehtud muudatused."
+
+#: horizons/gui/modules/settings.py:133
+msgid "Do you want to continue?"
+msgstr "Kas soovid jätkata?"
+
+#: horizons/gui/modules/settings.py:230
+msgid "Warning"
+msgstr "Hoiatus"
+
+#. i18n Warning popup shown in settings when SDL is selected as renderer.
+#: horizons/gui/modules/settings.py:232
+msgid ""
+"The SDL renderer is meant as a fallback solution only and has serious "
+"graphical glitches. \n"
+"\n"
+"Use at own risk!"
+msgstr ""
+"SDL renderdusmootor on mõeldud ainult varulahendusena ja sellel esineb "
+"tõsised graafika tõrkeid. \n"
+"\n"
+"Kasuta vaid omavastutusel!"
+
+#: horizons/gui/modules/settings.py:259
+msgid "Invalid network port"
+msgstr "Vale võrguport"
+
+#: horizons/gui/modules/settings.py:260
+msgid ""
+"The port you specified is not valid. It must be a number between 1 and 65535."
+msgstr ""
+"Sinu poolt valitud pord number ei ole kehtiv. Peab olema number 1 ja 65535 "
+"vahel."
+
+#: horizons/gui/modules/settings.py:261
+msgid ""
+"Please check the port you entered and make sure it is in the specified range."
+msgstr ""
+"Palun kontrolli sisestatud pordi andmeid ja veendu et see jääb nõutud "
+"vahemikku."
+
+#: horizons/gui/modules/settings.py:272
+msgid "Failed to apply new network settings."
+msgstr "Uute võrgu seadete rakendamine ebaõnnestus."
+
+#. i18n This is advice for players seeing a network error with the current
+#. config
+#: horizons/gui/modules/settings.py:278
+msgid ""
+"Low port numbers sometimes require special access privileges, try 0 or a "
+"number greater than 1024."
+msgstr ""
+"Väiksemad pordi numbrid vajavad teinekord erilisi juurdepääsu õigusi, proovi "
+"numbrit 0 või suuremat kui 1024."
+
+#: horizons/gui/modules/singleplayermenu.py:106
 msgid "Invalid player name"
 msgstr "Vigane mängija nimi"
 
-#: horizons/gui/modules/singleplayermenu.py:105
+#: horizons/gui/modules/singleplayermenu.py:106
 msgid "You entered an invalid playername."
 msgstr "Sa sisestasid vigase mängijanime."
 
-#: horizons/gui/modules/singleplayermenu.py:148
+#: horizons/gui/modules/singleplayermenu.py:149
 msgid "Resource density:"
 msgstr "Ressursi rohkus:"
 
-#: horizons/gui/modules/singleplayermenu.py:226
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Map size:"
 msgstr "Kaardi suurus:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Water:"
 msgstr "Vesi:"
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Max island size:"
 msgstr "Max saare suurus:"
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:230
 msgid "Preferred island size:"
 msgstr "Eelistatud saare suurus:"
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:231
 msgid "Island size deviation:"
 msgstr "Saare suuruse nihe:"
 
-#: horizons/gui/modules/singleplayermenu.py:343
+#: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Klõpsa erineva juhusliku kaardi loomiseks"
 
-#: horizons/gui/modules/singleplayermenu.py:504
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Invalid scenario file"
 msgstr "Vigane stsenaariumi fail"
 
-#: horizons/gui/modules/singleplayermenu.py:505
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "The selected file is not a valid scenario file."
 msgstr "Valitud fail ei ole kehtiv stsenaariumi fail."
 
-#: horizons/gui/modules/singleplayermenu.py:506
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Error message:"
 msgstr "Veateade:"
 
-#: horizons/gui/modules/singleplayermenu.py:507
+#: horizons/gui/modules/singleplayermenu.py:508
 msgid "Please report this to the author."
 msgstr "Palun teavita sellest autorit."
 
 #: horizons/gui/modules/singleplayermenu.py:570
-#, python-format
+#, python-brace-format
 msgid "Difficulty: {difficulty}"
 msgstr "Raskusaste: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:574
-#, python-format
+#: horizons/gui/modules/singleplayermenu.py:573
+#, python-brace-format
 msgid "Author: {author}"
 msgstr "Autor: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:578
-#, python-format
+#: horizons/gui/modules/singleplayermenu.py:576
+#, python-brace-format
 msgid "Description: {desc}"
 msgstr "Kirjeldus: {desc}"
 
 #. set translated building name in gui
-#: horizons/gui/mousetools/buildingtool.py:231
-#, python-format
+#: horizons/gui/mousetools/buildingtool.py:230
+#, python-brace-format
 msgid "Build {building}"
 msgstr "Ehita {building}"
 
@@ -2140,194 +2136,186 @@ msgstr "Ehita {building}"
 msgid "Press H to remove this hint"
 msgstr "Vihje eemaldamiseks vajuta H"
 
-#: horizons/gui/tabs/boatbuildertabs.py:51
+#: horizons/gui/tabs/boatbuildertabs.py:47
 msgid "Boat builder overview"
 msgstr "Paadiehitaja ülevaade"
 
-#: horizons/gui/tabs/boatbuildertabs.py:96
-#, python-format
+#: horizons/gui/tabs/boatbuildertabs.py:94
+#, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship}(koht järjekorras: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:208
+#: horizons/gui/tabs/boatbuildertabs.py:198
 msgid "Build this ship!"
 msgstr "Ehita see laev!"
 
-#: horizons/gui/tabs/boatbuildertabs.py:250
+#: horizons/gui/tabs/boatbuildertabs.py:234
 msgid "Fisher boats"
 msgstr "Kalapaadid"
 
-#: horizons/gui/tabs/boatbuildertabs.py:262
+#: horizons/gui/tabs/boatbuildertabs.py:246
 msgid "Trade boats"
 msgstr "Kaubapaadid"
 
-#: horizons/gui/tabs/boatbuildertabs.py:273
+#: horizons/gui/tabs/boatbuildertabs.py:258
 msgid "War boats"
 msgstr "Sõjapaadid"
 
-#: horizons/gui/tabs/boatbuildertabs.py:284
+#: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War ships"
 msgstr "Sõjalaevad"
 
-#: horizons/gui/tabs/boatbuildertabs.py:302
+#: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Confirm order"
 msgstr "Kinnita tellimus"
 
-#: horizons/gui/tabs/buildingtabs.py:41
-#: horizons/gui/tabs/enemybuildingtabs.py:44
-#, fuzzy
-msgid "Warehouse overview"
-msgstr "Turuplatsi ülevaade"
-
-#: horizons/gui/tabs/buildingtabs.py:76
+#: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
 msgstr "Torni tutvustus"
 
-#: horizons/gui/tabs/buildingtabs.py:87 horizons/gui/tabs/overviewtab.py:35
+#: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
 msgid "Overview"
 msgstr "Ülevaade"
 
-#: horizons/gui/tabs/buildrelatedtab.py:44
+#: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
 msgstr "Ehita seotud hooned"
 
-#. Add necessary resources to tooltip
-#. [br] means newline
-#: horizons/gui/tabs/buildtabs.py:144
-msgid "Resources needed:"
-msgstr ""
-
-#. You usually do not need to change anything here when translating
-#: horizons/gui/tabs/buildtabs.py:150
-#, python-format
-msgid "{resource}: {amount}"
-msgstr ""
-
-#: horizons/gui/tabs/buyselltab.py:130
+#: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Klõpsa mõnel ressursi pesal, et lisada kauplemise pakkumine."
 
 #. new res
-#: horizons/gui/tabs/buyselltab.py:173
+#: horizons/gui/tabs/buyselltab.py:177
 msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
+"Vali kauba sildil klõpsates ost või müük ja seejärel vali liuguriga soovitud "
+"kogus."
 
-#: horizons/gui/tabs/buyselltab.py:318
-#, python-format
+#: horizons/gui/tabs/buyselltab.py:321
+#, python-brace-format
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
+"{resource_name} ostetakse hinnaga {price} kullatükki/ühik, kui laovaru on "
+"väiksem kui {limit} ühikut."
 
-#: horizons/gui/tabs/buyselltab.py:322
-#, python-format
+#: horizons/gui/tabs/buyselltab.py:324
+#, python-brace-format
 msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"{resource_name} müüakse hinnaga {price} kullatükki/ühik, kui laovaru on "
+"suurem kui {limit} ühikut."
 
-#: horizons/gui/tabs/mainsquaretabs.py:65
+#: horizons/gui/tabs/enemybuildingtabs.py:39
+msgid "Warehouse overview"
+msgstr "Harukontori ülevaade"
+
+#: horizons/gui/tabs/mainsquaretabs.py:63
 msgid "Account"
 msgstr "Konto"
 
-#: horizons/gui/tabs/mainsquaretabs.py:105
+#: horizons/gui/tabs/mainsquaretabs.py:112
 msgid "Main square overview"
 msgstr "Peaväljaku ülevaade"
 
-#: horizons/gui/tabs/mainsquaretabs.py:127
+#: horizons/gui/tabs/mainsquaretabs.py:143
 msgid "Upgrade not possible:"
 msgstr "Uuenduste lisamine võimatu:"
 
-#: horizons/gui/tabs/mainsquaretabs.py:130
+#: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "See on hetkel kõrgeim mängitav tase!"
 
-#: horizons/gui/tabs/mainsquaretabs.py:175
+#: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
 msgstr "Keela uuendused"
 
-#: horizons/gui/tabs/mainsquaretabs.py:178
+#: horizons/gui/tabs/mainsquaretabs.py:195
 msgid "Allow upgrades"
 msgstr "Luba uuendused"
 
-#: horizons/gui/tabs/overviewtab.py:105
+#: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
 msgstr "Üksuse ülevaade"
 
-#: horizons/gui/tabs/productiontabs.py:53
-#: horizons/gui/tabs/productiontabs.py:241
+#: horizons/gui/tabs/productiontabs.py:44
+#: horizons/gui/tabs/productiontabs.py:235
 msgid "Production overview"
 msgstr "Tootmise ülevaade"
 
-#: horizons/gui/tabs/selectmultitab.py:58
+#: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
 msgstr "Valitud üksused"
 
-#: horizons/gui/tabs/shiptabs.py:40 horizons/gui/tabs/shiptabs.py:170
-#: horizons/gui/tabs/shiptabs.py:179
+#: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
+#: horizons/gui/tabs/shiptabs.py:178
 msgid "Ship overview"
 msgstr "Laeva ülevaade"
 
-#: horizons/gui/tabs/shiptabs.py:51
+#: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr "Koloonia asutamiseks peab laev saare lähedal asuma."
 
-#: horizons/gui/tabs/shiptabs.py:56
+#: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
 msgstr "Sul juba on koloonia sellel saarel."
 
-#: horizons/gui/tabs/shiptabs.py:87
+#: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
 msgstr "Peale- / Mahalaadimine"
 
-#: horizons/gui/tabs/shiptabs.py:89
+#: horizons/gui/tabs/shiptabs.py:93
 msgid "Buy/Sell"
 msgstr "Osta/Müü"
 
-#: horizons/gui/tabs/shiptabs.py:98
+#: horizons/gui/tabs/shiptabs.py:102
 msgid "Too far from the nearest tradeable warehouse"
 msgstr "Liiga kaugel lähimast kaubeldavast laost"
 
-#: horizons/gui/tabs/shiptabs.py:104
+#: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
 msgstr "Kaubalaevale ei saa paigaldada relvastust"
 
-#: horizons/gui/tabs/shiptabs.py:105
+#: horizons/gui/tabs/shiptabs.py:109
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr "Kaubalaevale relvastuse paigaldamine ei ole võimalik."
 
-#: horizons/gui/tabs/shiptabs.py:138
+#: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
 msgstr "Paigalda relv"
 
-#: horizons/gui/tabs/shiptabs.py:142
+#: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
 msgstr "Eemalda relv"
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:71
-#, python-format
+#: horizons/gui/widgets/imagefillstatusbutton.py:70
+#, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} kullatükki"
+
+#: horizons/gui/widgets/imagefillstatusbutton.py:75
+#, python-brace-format
+msgid "buy for {buyprice} gold"
+msgstr "ostuhind {buyprice} kullatükki"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
-#, python-format
-msgid "buy for {buyprice} gold"
-msgstr ""
-
-#: horizons/gui/widgets/imagefillstatusbutton.py:80
-#, python-format
+#, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "müügihind {sellprice} kullatükki"
+
+#: horizons/gui/widgets/inventory.py:166
+#, python-brace-format
+msgid "{stored}/{limit}"
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:168
-#, python-format
-msgid "{stored}/{limit}"
-msgstr ""
-
-#: horizons/gui/widgets/inventory.py:171
-#, python-format
+#, python-brace-format
 msgid "Limit: {amount}t per slot"
 msgstr "Limiit: {amount}t ava kohta"
 
@@ -2343,31 +2331,27 @@ msgstr "Tühjus"
 msgid "There is nothing written in your logbook yet!"
 msgstr "Sinu logiraamatus puuduvad kirjed!"
 
-#: horizons/gui/widgets/pickbeltwidget.py:89
-msgid "Game"
-msgstr "Mäng"
-
-#: horizons/gui/widgets/playerssettlements.py:40
-#, python-format
+#: horizons/gui/widgets/playerssettlements.py:39
+#, python-brace-format
 msgid "Settlements of {player}"
 msgstr "{player} kolooniad"
 
-#: horizons/gui/widgets/playersships.py:45
-#, fuzzy, python-format
+#: horizons/gui/widgets/playersships.py:44
+#, python-brace-format
 msgid "Ships of {player}"
 msgstr "{player} laevad"
 
 #. i18n There are no weapons equipped at the moment.
-#: horizons/gui/widgets/playersships.py:95
+#: horizons/gui/widgets/playersships.py:94
 msgid "None"
 msgstr "Mitte ühtegi"
 
-#: horizons/gui/widgets/playersships.py:97
+#: horizons/gui/widgets/playersships.py:96
 msgid "N/A"
 msgstr "Pole saadaval"
 
-#: horizons/gui/widgets/productionoverview.py:61
-#, python-format
+#: horizons/gui/widgets/productionoverview.py:60
+#, python-brace-format
 msgid "Production overview of {settlement}"
 msgstr "{settlement} tootmise ülevaade"
 
@@ -2388,596 +2372,598 @@ msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
+"Lähtesta selle koloonia ressursside kuvamine vastavalt vaikehäälestusele."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
+"Lähtesta kõigi kolooniate vaikehäälestus (mida sa näed siin) tehase "
+"vaikehäälestuseks."
 
-#: horizons/gui/widgets/resourceoverviewbar.py:623
+#: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
 msgstr "Osta kulud"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:626
+#: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
 msgstr "Müü tulu"
 
-#: horizons/gui/widgets/routeconfig.py:104
+#: horizons/gui/widgets/routeconfig.py:107
 msgid "Stop route"
 msgstr "Teekonna lõpp"
 
-#: horizons/gui/widgets/routeconfig.py:108
+#: horizons/gui/widgets/routeconfig.py:114
 msgid "Need at least two settlements"
 msgstr "On vaja vähemalt kaks asulat"
 
-#: horizons/gui/widgets/routeconfig.py:109
+#: horizons/gui/widgets/routeconfig.py:115
 msgid "You need at least two different settlements in your route."
 msgstr "Sul on vaja vähemalt kaks asulat sinu teekonnal."
 
-#: horizons/gui/widgets/routeconfig.py:140
+#: horizons/gui/widgets/routeconfig.py:144
 msgid "Click on a settlement to add a waypoint!"
 msgstr "Teeviida lisamiseks vajuta kolooniale!"
 
-#: horizons/gui/widgets/routeconfig.py:179
+#: horizons/gui/widgets/routeconfig.py:183
 msgid "Loading into ship"
 msgstr "Laeb laevale"
 
-#: horizons/gui/widgets/routeconfig.py:186
+#: horizons/gui/widgets/routeconfig.py:190
 msgid "Unloading from ship"
 msgstr "Mahalaadimine laevalt"
 
-#: horizons/gui/widgets/routeconfig.py:371
+#: horizons/gui/widgets/routeconfig.py:376
 msgid "You are not allowed to trade with this player"
 msgstr "Sul ei tohi kaubelda selle mängijaga"
 
 #. You usually do not need to change anything here when translating
-#: horizons/gui/widgets/unitoverview.py:119
-#, python-format
+#: horizons/gui/widgets/unitoverview.py:118
+#, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
-#: horizons/gui/widgets/unitoverview.py:124
+#: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
 msgstr "mitte ühtegi"
 
 #: horizons/gui/windows.py:392
-#, python-format
+#, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "Täpsemalt: {error_details}"
 
-#: horizons/gui/windows.py:395
-#, python-format
+#: horizons/gui/windows.py:394
+#, python-brace-format
 msgid "Error: {error_message}"
 msgstr "Viga: {error_message}"
 
-#. name of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:56
-msgid "Alvearies"
-msgstr ""
-
-#. tooltip_text of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:58
-msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
-
 #. name of buildings:bakery
-#: horizons/i18n/objecttranslations.py:63
+#: horizons/i18n/objecttranslations.py:56
 msgid "Bakery"
 msgstr "Pagaritöökoda"
 
 #. tooltip_text of buildings:bakery
-#: horizons/i18n/objecttranslations.py:65
+#: horizons/i18n/objecttranslations.py:58
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Tarbib jahu. Toodab toitu."
 
 #. name of buildings:barracks
-#: horizons/i18n/objecttranslations.py:70
+#: horizons/i18n/objecttranslations.py:63
 msgid "Barracks"
 msgstr "Kasarmud"
 
 #. tooltip_text of buildings:barracks
-#: horizons/i18n/objecttranslations.py:72
+#: horizons/i18n/objecttranslations.py:65
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Värbab maapealseks võitluseks sobiva üksuse."
 
 #. name of buildings:blender
-#: horizons/i18n/objecttranslations.py:77
+#: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
-msgstr ""
+msgstr "Pipraveski"
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:79
+#: horizons/i18n/objecttranslations.py:72
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Toodab vürtsidest maitseaineid."
 
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:84
+#: horizons/i18n/objecttranslations.py:77
 msgid "Boat Builder"
 msgstr "Paadiehitaja"
 
 #. tooltip_text of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:86
+#: horizons/i18n/objecttranslations.py:79
 msgid "Builds boats and small ships. Built on coast."
 msgstr "Ehitab paate ja väikseid laevu. Ehitatakse rannikule."
 
 #. name of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:91
+#: horizons/i18n/objecttranslations.py:84
 msgid "Brickyard"
 msgstr "Tellisetehas"
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:93
+#: horizons/i18n/objecttranslations.py:86
 msgid "Turns clay into bricks."
 msgstr "Valmistab savist telliseid."
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:98
+#: horizons/i18n/objecttranslations.py:91
 msgid "Butchery"
 msgstr "Lihunik"
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:100
+#: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
 msgstr "Vajab sigu või kariloomi. Toodab toitu."
 
-#. name of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:105
-msgid "Cattle Run"
-msgstr "Karjamaa"
-
-#. tooltip_text of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:107
-msgid "Raises cattle. Needs a farm."
-msgstr "Kasvatab kariloomi. Vajab talu."
-
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:112
+#: horizons/i18n/objecttranslations.py:98
 msgid "Charcoal Burning"
 msgstr "Söe põletamine"
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:114
+#: horizons/i18n/objecttranslations.py:100
 msgid "Burns a lot of boards."
 msgstr "Põletab hunnikus laudu."
 
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:119
+#: horizons/i18n/objecttranslations.py:105
 msgid "Clay Deposit"
 msgstr "Savi Lasund"
 
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:124
+#: horizons/i18n/objecttranslations.py:110
 msgid "Clay Pit"
 msgstr "Saviauk"
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:126
+#: horizons/i18n/objecttranslations.py:112
 msgid "Gets clay from deposit."
 msgstr "Kaevandab savi lasundist."
 
-#. name of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:131
-msgid "Cocoa Field"
-msgstr "Kakaopõld"
-
-#. tooltip_text of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:133
-msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
-
-#. name of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:138
-msgid "Corn Field"
-msgstr "Maisipõld"
-
-#. tooltip_text of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:140
-#, fuzzy
-msgid "Yields corn. Needs a farm."
-msgstr "Toodab sööki. Vajab talu."
-
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:145
+#: horizons/i18n/objecttranslations.py:117
 msgid "Distillery"
 msgstr "Alkoholi tehas"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:147
+#: horizons/i18n/objecttranslations.py:119
 msgid "Turns sugar into liquor."
 msgstr "Valmistab suhkrust alkoholi."
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:152
+#: horizons/i18n/objecttranslations.py:124
 msgid "Doctor"
 msgstr "Arst"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:154
+#: horizons/i18n/objecttranslations.py:126
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Ravib haiguseid. Tarbib ürte."
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:159
+#: horizons/i18n/objecttranslations.py:131
 msgid "Farm"
 msgstr "Talu"
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:161
+#: horizons/i18n/objecttranslations.py:133
 msgid "Grows field crops and raises livestock."
 msgstr "Kasvatab põllukultuure ja kariloomi."
 
-#. name of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:166
-msgid "Fire Station"
+#. name of buildings:fields:alvearies
+#: horizons/i18n/objecttranslations.py:138
+msgid "Alvearies"
+msgstr "Mesitarud"
+
+#. tooltip_text of buildings:fields:alvearies
+#: horizons/i18n/objecttranslations.py:140
+msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Kasvatab mesilasi. Toodab maiustuste valmistamiseks meekärgesid. Vajab farmi."
+
+#. name of buildings:fields:cattlerun
+#: horizons/i18n/objecttranslations.py:145
+msgid "Cattle Run"
+msgstr "Karjamaa"
+
+#. tooltip_text of buildings:fields:cattlerun
+#: horizons/i18n/objecttranslations.py:147
+msgid "Raises cattle. Needs a farm."
+msgstr "Kasvatab kariloomi. Vajab talu."
+
+#. name of buildings:fields:cocoafield
+#: horizons/i18n/objecttranslations.py:152
+msgid "Cocoa Field"
+msgstr "Kakaopõld"
+
+#. tooltip_text of buildings:fields:cocoafield
+#: horizons/i18n/objecttranslations.py:154
+msgid "Produces cocoa beans used for confectionery. Needs a farm."
+msgstr "Toodab maiustuste valmistamiseks kakao ube. Vajab farmi."
+
+#. name of buildings:fields:cornfield
+#: horizons/i18n/objecttranslations.py:159
+msgid "Corn Field"
+msgstr "Maisipõld"
+
+#. tooltip_text of buildings:fields:cornfield
+#: horizons/i18n/objecttranslations.py:161
+msgid "Yields corn. Needs a farm."
+msgstr "Toodab maisi. Vajab talu."
+
+#. name of buildings:fields:herbary
+#: horizons/i18n/objecttranslations.py:166
+msgid "Herbary"
+msgstr "Apteek"
+
+#. tooltip_text of buildings:fields:herbary
+#: horizons/i18n/objecttranslations.py:168
+msgid "Produces herbs. Needs a farm."
+msgstr "Toodab tubakat. Vajab talu."
+
+#. name of buildings:fields:pasture
+#: horizons/i18n/objecttranslations.py:173
+msgid "Pasture"
+msgstr "Karjamaa"
+
+#. tooltip_text of buildings:fields:pasture
+#: horizons/i18n/objecttranslations.py:175
+msgid "Raises sheep. Produces wool. Needs a farm."
+msgstr "Kasvatab lambaid. Toodab villa. Vajab talu."
+
+#. name of buildings:fields:pigsty
+#: horizons/i18n/objecttranslations.py:180
+msgid "Pigsty"
+msgstr "Sigala"
+
+#. tooltip_text of buildings:fields:pigsty
+#: horizons/i18n/objecttranslations.py:182
+msgid "Raises pigs. Needs a farm."
+msgstr "Kasvatab sigu. Vajab talu."
+
+#. name of buildings:fields:potatofield
+#: horizons/i18n/objecttranslations.py:187
+msgid "Potato Field"
+msgstr "Kartulipõld"
+
+#. tooltip_text of buildings:fields:potatofield
+#: horizons/i18n/objecttranslations.py:189
+msgid "Yields food. Needs a farm."
+msgstr "Toodab sööki. Vajab talu."
+
+#. name of buildings:fields:spicefield
+#: horizons/i18n/objecttranslations.py:194
+msgid "Spice Field"
+msgstr "Vürtsipõld"
+
+#. tooltip_text of buildings:fields:spicefield
+#: horizons/i18n/objecttranslations.py:196
+msgid "Grows spices. Needs a farm."
+msgstr "Kasvatab vürtse. Vajab farmi."
+
+#. name of buildings:fields:sugarfield
+#: horizons/i18n/objecttranslations.py:201
+msgid "Sugar Field"
+msgstr "Suhkrupõld"
+
+#. tooltip_text of buildings:fields:sugarfield
+#: horizons/i18n/objecttranslations.py:203
+msgid "Used in liquor production. Needs a farm."
+msgstr "Kasutatakse alkoholi tootmiseks. Vajab talu."
+
+#. name of buildings:fields:tobaccofield
+#: horizons/i18n/objecttranslations.py:208
+msgid "Tobacco Field"
+msgstr "Tubakapõld"
+
+#. tooltip_text of buildings:fields:tobaccofield
+#: horizons/i18n/objecttranslations.py:210
+msgid "Produces tobacco. Needs a farm."
+msgstr "Toodab tubakat. Vajab talu."
+
+#. name of buildings:fields:vineyard
+#: horizons/i18n/objecttranslations.py:215
+msgid "Vineyard"
+msgstr "Viinamägi"
+
+#. tooltip_text of buildings:fields:vineyard
+#: horizons/i18n/objecttranslations.py:217
+msgid "Produces grapes for use in wine and confectionery. Needs a farm."
+msgstr "Toodab viinamarju veini ja maiustuste valmistamiseks. Vajab farmi."
+
+#. name of buildings:fireservice
+#: horizons/i18n/objecttranslations.py:222
+msgid "Fire Station"
+msgstr "Tuletõrjedepoo"
 
 #. tooltip_text of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:168
+#: horizons/i18n/objecttranslations.py:224
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Kustutab tulekahjusid."
 
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:173
+#: horizons/i18n/objecttranslations.py:229
 msgid "Fish Deposit"
 msgstr "Kala varud"
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:178
+#: horizons/i18n/objecttranslations.py:234
 msgid "Fisherman's Tent"
 msgstr "Kaluri Telk"
 
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:180
+#: horizons/i18n/objecttranslations.py:236
 msgid "Fishes the sea, produces food."
 msgstr "Kalastab merel, toodab sööki."
 
-#. name of buildings:herbary
-#: horizons/i18n/objecttranslations.py:185
-msgid "Herbary"
-msgstr "Apteek"
-
-#. tooltip_text of buildings:herbary
-#: horizons/i18n/objecttranslations.py:187
-msgid "Produces herbs. Needs a farm."
-msgstr "Toodab tubakat. Vajab talu."
-
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:192
+#: horizons/i18n/objecttranslations.py:241
 msgid "Hunter's Tent"
 msgstr "Jahimehe Telk"
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:194
+#: horizons/i18n/objecttranslations.py:243
 msgid "Hunts wild forest animals, produces food."
 msgstr "Jahib metsikuid metsloomi, toodab sööki."
 
-#. name of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:199
-msgid "Iron Mine"
-msgstr "Rauakaevandus"
-
-#. tooltip_text of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:201
-msgid "Gets iron ore from deposit."
-msgstr "Kaevandab maaki maardlast."
-
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:206
+#: horizons/i18n/objecttranslations.py:248
 msgid "Lookout"
 msgstr "Vaatetorn"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:208
+#: horizons/i18n/objecttranslations.py:250
 msgid "Increases the player's sight."
 msgstr "Suurendab mängija vaatevälja."
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:213
+#: horizons/i18n/objecttranslations.py:255
 msgid "Lumberjack Tent"
 msgstr "Puuraiduri Telk"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:215
+#: horizons/i18n/objecttranslations.py:257
 msgid "Lumberjack Hut"
 msgstr "Puuraiduri Hütt"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py:259
 msgid "Chops down trees and turns them into boards."
 msgstr "Langetab puid ja teeb neist laudu."
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:222
+#: horizons/i18n/objecttranslations.py:264
 msgid "Main Square"
 msgstr "Peaväljak"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py:266
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "Varustab kodanukke kaupadega. Pakub kogukonna."
+
+#. name of buildings:mine
+#: horizons/i18n/objecttranslations.py:271
+#| msgid "Iron Mine"
+msgid "Mine"
+msgstr "Kaevandus"
+
+#. tooltip_text of buildings:mine
+#: horizons/i18n/objecttranslations.py:273
+msgid "Gets iron ore from deposit."
+msgstr "Kaevandab maaki maardlast."
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:229
+#: horizons/i18n/objecttranslations.py:278
 msgid "Mountain"
 msgstr "Mägi"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:234
+#: horizons/i18n/objecttranslations.py:283
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Kondiitriäri"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:236
+#: horizons/i18n/objecttranslations.py:285
 msgid "Produces all kinds of confectionery."
-msgstr ""
-
-#. name of buildings:pasture
-#: horizons/i18n/objecttranslations.py:241
-msgid "Pasture"
-msgstr "Karjamaa"
-
-#. tooltip_text of buildings:pasture
-#: horizons/i18n/objecttranslations.py:243
-msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Kasvatab lambaid. Toodab villa. Vajab talu."
+msgstr "Toodab igasuguseid maiustusi."
 
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:248
+#: horizons/i18n/objecttranslations.py:290
 msgid "Pavilion"
 msgstr "Paviljon"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:250
+#: horizons/i18n/objecttranslations.py:292
 msgid "Fulfills religious needs of sailors."
 msgstr "Rahuldab meremeeste religioosseid vajadusi."
 
-#. name of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:255
-msgid "Pigsty"
-msgstr "Sigala"
-
-#. tooltip_text of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:257
-msgid "Raises pigs. Needs a farm."
-msgstr "Kasvatab sigu. Vajab talu."
-
-#. name of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:262
-msgid "Potato Field"
-msgstr "Kartulipõld"
-
-#. tooltip_text of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:264
-msgid "Yields food. Needs a farm."
-msgstr "Toodab sööki. Vajab talu."
-
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:269
+#: horizons/i18n/objecttranslations.py:297
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Telgi räbalad"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:274
+#: horizons/i18n/objecttranslations.py:302
 msgid "Salt Ponds"
 msgstr "Soola tiigid"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:276
+#: horizons/i18n/objecttranslations.py:304
 msgid "Evaporates salt. Built on sea coast."
 msgstr "Aurustab veest soola. Ehitatakse rannikule."
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:281
+#: horizons/i18n/objecttranslations.py:309
 msgid "Signal Fire"
 msgstr "Signaaltuli"
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:283
+#: horizons/i18n/objecttranslations.py:311
 msgid "Allows the player to trade with the free trader."
 msgstr "Võimaldab mängijal kubelda vaba kaupmehega."
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:288
+#: horizons/i18n/objecttranslations.py:316
 msgid "Smeltery"
 msgstr "Valukoda"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:290
+#: horizons/i18n/objecttranslations.py:318
 msgid "Refines all kind of ores."
 msgstr "Puhastab erinevaid maake."
 
-#. name of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:295
-msgid "Spice Field"
-msgstr ""
-
-#. tooltip_text of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:297
-msgid "Grows spices. Needs a farm."
-msgstr ""
-
 #. name_2 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:302
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:323
 msgid "Stonemason"
 msgstr "Kiviraidur"
 
 #. name_4 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:304
+#: horizons/i18n/objecttranslations.py:325
 msgid "Carver"
-msgstr ""
+msgstr "Kiviraidur"
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:306
+#: horizons/i18n/objecttranslations.py:327
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Raiub kivid tellisteks."
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:311
+#: horizons/i18n/objecttranslations.py:332
 msgid "Stone Pit"
-msgstr ""
+msgstr "Kivimurd"
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:313
+#: horizons/i18n/objecttranslations.py:334
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Murrab mäest kive."
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:318
+#: horizons/i18n/objecttranslations.py:339
 msgid "Storage Tent"
 msgstr "Laotelk"
 
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:320
-#, fuzzy
+#: horizons/i18n/objecttranslations.py:341
 msgid "Storage Hut"
 msgstr "Laotelk"
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:322
+#: horizons/i18n/objecttranslations.py:343
 msgid "Extends stock and provides collectors."
 msgstr "Suurendab kaubavaru ja varustab kogujatega."
 
-#. name of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:327
-msgid "Sugar Field"
-msgstr "Suhkrupõld"
-
-#. tooltip_text of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:329
-msgid "Used in liquor production. Needs a farm."
-msgstr "Kasutatakse alkoholi tootmiseks. Vajab talu."
-
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:334
+#: horizons/i18n/objecttranslations.py:348
 msgid "Tavern"
 msgstr "Kõrts"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:336
+#: horizons/i18n/objecttranslations.py:350
 msgid "Provides get-together."
 msgstr "Korraldab kokkusaamisi."
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:341
+#: horizons/i18n/objecttranslations.py:355
 msgid "Tent"
 msgstr "Telk"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:343
+#: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
-msgstr ""
+msgstr "Onn"
 
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:345
+#: horizons/i18n/objecttranslations.py:359
 msgid "House"
 msgstr "Maja"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:347
+#: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
 msgstr "Kivimaja"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:349
+#: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Häärber"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:351
+#: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Mõis"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:353
+#: horizons/i18n/objecttranslations.py:367
 msgid "Houses your inhabitants."
 msgstr "Majutab sinu asunikke."
 
-#. name of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:358
-msgid "Tobacco Field"
-msgstr "Tubakapõld"
-
-#. tooltip_text of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:360
-msgid "Produces tobacco. Needs a farm."
-msgstr "Toodab tubakat. Vajab talu."
-
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:365
+#: horizons/i18n/objecttranslations.py:372
 msgid "Tobacconist"
 msgstr "Tubakakapoodnik"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:367
+#: horizons/i18n/objecttranslations.py:374
 msgid "Produces tobaccos out of tobacco."
 msgstr "Toodab tubakatooteid."
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:372
+#: horizons/i18n/objecttranslations.py:379
 msgid "Toolmaker"
 msgstr "Tööriista valmistaja"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:374
+#: horizons/i18n/objecttranslations.py:381
 msgid "Produces tools out of iron."
 msgstr "Toodab rauast tööriistu."
 
 #. name_0 of buildings:trail
-#: horizons/i18n/objecttranslations.py:379
+#: horizons/i18n/objecttranslations.py:386
 msgid "Trail"
 msgstr "Rada"
 
 #. name_1 of buildings:trail
-#: horizons/i18n/objecttranslations.py:381
+#: horizons/i18n/objecttranslations.py:388
 msgid "Gravel Path"
 msgstr "Kruusatee"
 
 #. name_3 of buildings:trail
-#: horizons/i18n/objecttranslations.py:383
+#: horizons/i18n/objecttranslations.py:390
 msgid "Cobblestone Street"
 msgstr "Munakivitänav"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:385
+#: horizons/i18n/objecttranslations.py:392
 msgid "Needed for collecting goods."
 msgstr "Vajalik kaupade kogumiseks."
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:390
+#: horizons/i18n/objecttranslations.py:397
 msgid "Tree"
 msgstr "Puu"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:392
+#: horizons/i18n/objecttranslations.py:399
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Varustab puiduga. Puuraidurid lõikavad laudadeks."
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:397
+#: horizons/i18n/objecttranslations.py:404
 msgid "Village school"
 msgstr "Külakool"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:399
+#: horizons/i18n/objecttranslations.py:406
 msgid "Provides education."
 msgstr "Annab haridust."
-
-#. name of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:404
-msgid "Vineyard"
-msgstr ""
-
-#. tooltip_text of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:406
-msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
 msgid "Vintner"
-msgstr ""
+msgstr "Vinoteek"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:413
@@ -2991,9 +2977,8 @@ msgstr "Ladu"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
-#, fuzzy
 msgid "Weaver's Hut"
-msgstr "Kuduja Hütt"
+msgstr "Kangru hütt"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
@@ -3063,7 +3048,7 @@ msgid "Services"
 msgstr "Teenused"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "Kodanikud"
@@ -3086,10 +3071,10 @@ msgstr "Infrastruktuur"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
 msgid "Military Service"
-msgstr ""
+msgstr "Sõjaväeteenistus"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "Teerajajad"
@@ -3097,17 +3082,17 @@ msgstr "Teerajajad"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
 msgid "Precaution"
-msgstr ""
+msgstr "Turvalisus"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
 msgid "Residential"
-msgstr ""
+msgstr "Elamud"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:489
 msgid "Sea"
-msgstr ""
+msgstr "Meri"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:495
@@ -3119,7 +3104,7 @@ msgstr "Puit"
 #: horizons/i18n/objecttranslations.py:499
 #: horizons/i18n/objecttranslations.py:501
 msgid "Workshops"
-msgstr ""
+msgstr "Töökojad"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:503
@@ -3136,26 +3121,35 @@ msgstr "Põllumajandus"
 msgid "Military"
 msgstr "Sõjandus"
 
-#: horizons/main.py:349
+#: horizons/main.py:354
 msgid "Failed to start/load the game"
 msgstr "Mängu alustamine/laadimine ebaõnnestus"
 
-#: horizons/main.py:350
+#: horizons/main.py:355
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "Valitud mängu käivitamine nurjus."
 
-#: horizons/main.py:351
-#, fuzzy
+#: horizons/main.py:356
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr "Salvestatud mäng võib olla vigane või salvestatud eelneva versiooniga."
+msgstr ""
+"Salvestatud mäng võib olla vigane või on salvestatud varasema versiooniga."
 
-#: horizons/main.py:470
+#: horizons/main.py:475
 msgid "No quicksaves found"
 msgstr "Kiirsalvestusi ei leitud"
 
-#: horizons/main.py:471
+#: horizons/main.py:476
 msgid "You need to quicksave before you can quickload."
 msgstr "Sa pead tegema kiirsalvestuse enne kui saad kiirlaadimise teha."
+
+#: horizons/main.py:605
+msgid "Logging enabled"
+msgstr "Logimine lubatud"
+
+#: horizons/main.py:606
+#, python-brace-format
+msgid "Logs are written to {directory}."
+msgstr "Logid kirjutatakse kataloogi {directory}."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
@@ -3164,42 +3158,43 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
+"Mängud ei ole enam sünkroniseeritud. See viitab tundmatule sisemisele veale, "
+"mille tõttu ei saa mäng enam jätkata."
 
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
+"Palume sellepärast vabandust ja loodame, et see viga on uues versioonis "
+"parandatud."
 
-#: horizons/mpsession.py:85
+#: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
+#: horizons/mpsession.py:92
 msgid "Not possible"
 msgstr "Võimatu"
 
-#: horizons/mpsession.py:85
+#: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
+#: horizons/mpsession.py:92
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr "Mitmemängude salvestamine/laadimine ei ole veel võimalik"
 
-#: horizons/mpsession.py:97
+#: horizons/mpsession.py:103
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
+"Faili nimes võivad olla ainult tähed, numbrid, tühikud ja need märgid: _ . -"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Ühenduse loomine serveriga nurjus."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Tegemist võib olla vigase või lahendamatu serveri aadressiga."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
-msgstr ""
-
-#. TODO: add support for selecting difficulty levels to the GUI
-#: horizons/network/networkinterface.py:526
-#, fuzzy
-msgid "Ready"
-msgstr "Valmis:"
+msgstr "Ei ole valmis"
 
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
@@ -3213,112 +3208,110 @@ msgstr "Sa läbisid selle stsenaariumi."
 msgid "Do you want to continue playing?"
 msgstr "Kas soovid mängimist jätkata?"
 
-#: horizons/scenario/scenarioeventhandler.py:169
+#: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
 msgstr "teadmata"
 
 #. usually invalid filename
-#: horizons/session.py:404
+#: horizons/session.py:397
 msgid "Failed to create savegame file"
 msgstr "Salvestatud mängu faili tegemine ebaõnnestus"
 
-#: horizons/session.py:405
+#: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Su mängu olekuinfo faili salvestamine nurjus."
 
-#: horizons/session.py:406
-#, fuzzy
+#: horizons/session.py:399
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr ""
-"Tavaliselt tähendab see seda, et salvestatud mängu nimi sisaldab "
-"mittetoetatud sümbole."
+"Tavaliselt tähendab see seda, et salvestatud mängu nimes on toetuseta "
+"sümboleid."
 
-#: horizons/session.py:412
+#: horizons/session.py:408
 msgid "Access is denied"
 msgstr "Ligipääs puudub"
 
-#: horizons/session.py:413
+#: horizons/session.py:409
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"Olekuinfo fail võib olla kirjutuskaitstud või on selle lukustanud mõni teine "
+"protsess."
 
 #: horizons/spsession.py:65
-#, fuzzy
 msgid "Your game has not been saved."
-msgstr "Sinu mäng on salvestatud."
+msgstr "Sinu mängu ei salvestatud."
 
-#: horizons/util/checkupdates.py:81
+#: horizons/util/checkupdates.py:87
 msgid "New version of Unknown Horizons"
 msgstr "Unknown Horizons'i uus versioon"
 
-#: horizons/util/checkupdates.py:83
-#, python-format
+#: horizons/util/checkupdates.py:88
+#, python-brace-format
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
+"Unknown Horizonsist on saadaval uuem versioon ({new_version}). Hetkel "
+"kasutad versiooni ({old_version})."
 
-#: horizons/util/checkupdates.py:93
+#: horizons/util/checkupdates.py:98
 msgid "Click to download"
 msgstr "Vajuta allalaadimiseks"
 
-#: horizons/util/checkupdates.py:97
+#: horizons/util/checkupdates.py:102
 msgid "A page has been opened in your browser."
 msgstr "Lehekülg avati sinu veebilehitsejas."
 
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:261
-#, python-format
+#: horizons/util/uhdbaccessor.py:267
+#, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} pesa, {limit}tk"
 
-#: horizons/util/uhdbaccessor.py:270
-#, python-format
+#: horizons/util/uhdbaccessor.py:275
+#, python-brace-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "Tervis: {health}"
 
 #. You usually do not need to change anything here when translating
-#: horizons/world/building/__init__.py:125
-#, python-format
+#: horizons/world/building/__init__.py:123
+#, python-brace-format
 msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:40
-#, fuzzy
 msgid "This building must be built on an island."
-msgstr "See ehitis tuleb rannajoonele ehitada."
+msgstr "See ehitis tuleb ehitada saarele."
 
 #: horizons/world/building/buildable.py:41
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "See maaping ei sobi sellele ehitisele."
 
 #: horizons/world/building/buildable.py:42
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Selle ehitise pead ehitama oma koloonia sees."
 
 #: horizons/world/building/buildable.py:43
 msgid "This area is already occupied by another player."
 msgstr "See ala on juba okupeeritud teise mängija poolt."
 
 #: horizons/world/building/buildable.py:44
-#, fuzzy
 msgid "This area is already occupied by another building."
-msgstr "See ala on juba okupeeritud teise ehitise poolt."
+msgstr "Teine ehitis juba kasutab seda maa-ala."
 
 #: horizons/world/building/buildable.py:45
-#, fuzzy
 msgid "This area is already occupied by a unit."
-msgstr "See ala on juba okupeeritud teise ehitise poolt."
+msgstr "Teine üksus juba kasutab seda maa-ala."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building must be built on the coastline."
 msgstr "See ehitis tuleb rannajoonele ehitada."
 
 #: horizons/world/building/buildable.py:47
-#, fuzzy
 msgid "This building has to be placed at the ocean."
-msgstr "See ehitis tuleb ookeani ehitada."
+msgstr "See ehitis tuleb paigutada ookeani."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
@@ -3326,7 +3319,7 @@ msgstr "See koht on liiga kaugel sinu laevast."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Selle ehitise saab ehitada ainult ressursi asukuhale."
 
 #: horizons/world/building/buildable.py:50
 msgid "You have already settled this island."
@@ -3336,454 +3329,643 @@ msgstr "Sa oled juba asustanud selle saare."
 msgid "This building must be partly on flat land."
 msgstr "See ehitis peab osaliselt olema tasasel maal."
 
-#: horizons/world/status.py:76
+#: horizons/world/status.py:75
+msgid "The inhabitants are infected by the Black Death!"
+msgstr "Elanikud on nakatunud musta surmaga!"
+
+#: horizons/world/status.py:81
 msgid "This building is on fire!"
 msgstr "See ehitis on tules!"
 
-#: horizons/world/status.py:83
+#: horizons/world/status.py:88
 msgid "These residents are unhappy."
 msgstr "Need elanikud on õnnetud."
 
-#: horizons/world/status.py:89
-msgid "The inventory of this building is full."
-msgstr ""
+#: horizons/world/status.py:94
+#| msgid "Some of your inhabitants have no access to a main square."
+msgid "These residents don't have access to a main square."
+msgstr "Neil elanikel puudub juurdepääs peaväljakule."
 
-#: horizons/world/status.py:104
+#: horizons/world/status.py:100
+msgid "The inventory of this building is full."
+msgstr "Selle ehitise inventad on täis."
+
+#: horizons/world/status.py:115
 msgid "This building has a very low productivity."
 msgstr "Selle ehitise produktiivsus on väga madal."
 
-#: horizons/world/status.py:110
-msgid "This building is decomissioned."
-msgstr ""
+#: horizons/world/status.py:121
+msgid "This building is decommissioned."
+msgstr "See ehitis on kasutuskõlbmatu."
 
-#: horizons/world/status.py:116
-msgid "The inhabitants of this building have the plague."
-msgstr ""
-
-#: horizons/world/traderoute.py:320
-#, python-format
+#: horizons/world/traderoute.py:329
+#, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Kaubatee: liigutakse kohta {location}"
 
-#: horizons/world/traderoute.py:325
-#, python-format
+#: horizons/world/traderoute.py:333
+#, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Kaubatee: oodatakse kohas {position}"
 
-#: horizons/world/units/ship.py:214
-#, python-format
+#: horizons/world/units/ship.py:212
+#, python-brace-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Minnakse kohta {location}"
 
-#: horizons/world/units/ship.py:216
-#, python-format
+#: horizons/world/units/ship.py:213
+#, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Liigutakse kohta {x}, {y}"
 
-#: horizons/world/units/ship.py:221
-#, python-format
+#: horizons/world/units/ship.py:217
+#, python-brace-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Jõudeolek kohas {location}"
 
-#: horizons/world/units/ship.py:223
-#, python-format
+#: horizons/world/units/ship.py:218
+#, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Jõudeolek kohal {x}, {y}"
 
-#: horizons/world/units/ship.py:234
+#: horizons/world/units/ship.py:229
 msgid "Trader"
 msgstr "Kaupleja"
 
-#: horizons/world/units/weaponholder.py:455
-#, python-format
+#: horizons/world/units/weaponholder.py:452
+#, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Rünnatakse kohta {target} \"{name}\" ({owner})"
 
-#: horizons/world/units/weaponholder.py:460
-#, python-format
+#: horizons/world/units/weaponholder.py:456
+#, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Rünnatakse {owner}"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: the name of a resource
+msgid "indigo"
+msgstr "indigo"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
 msgstr "{player1} ja {player2} liitsid oma jõud."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
 msgstr "Teie ehitis põleb!"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "brine"
+msgstr "soolvesi"
+
+#. This is a database entry: the name of a resource
 msgid "medical herbs"
 msgstr "ravimtaimed"
 
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
 msgstr "Aristokraadid"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "happiness"
 msgstr "heaolu"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource
+msgid "gems"
+msgstr "vääriskivid"
+
+#. This is a database entry: the name of a resource
+#| msgid "iron deposit"
+msgid "brine deposit"
+msgstr "mineraalveeallikas"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr "Mõned sinu elanikud kolisid just välja."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "gem deposit"
+msgstr "kalliskivide lade"
+
+#. This is a database entry: the name of a resource
 msgid "sugar"
 msgstr "suhkur"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobacco leaves"
 msgstr "tubaka lehed"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "stone tops"
 msgstr "kivipliidid"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#| msgid "cocoa beans"
+msgid "coffee beans"
+msgstr "kahvioad"
+
+#. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "vill"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#| msgid "tobacco leaves"
+msgid "tea leaves"
+msgstr "tee lehed"
+
+#. This is a database entry: the name of a resource
+msgid "coffee"
+msgstr "kohvi"
+
+#. This is a database entry: the name of a resource
 msgid "cocoa beans"
 msgstr "kakaooad"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "food"
 msgstr "toit"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "flour"
 msgstr "jahu"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
 msgstr "tapasead"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#| msgid "education"
+msgid "recreation"
+msgstr "puhkus"
+
+#. This is a database entry: the name of a resource
 msgid "trees"
 msgstr "puud"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#| msgid "clay deposit"
+msgid "marble deposit"
+msgstr "marmori lade"
+
+#. This is a database entry: the name of an inhabitant tier (level)
+msgid "Sailors"
+msgstr "Meremehed"
+
+#. This is a database entry: the name of a resource
 msgid "clay deposit"
 msgstr "savi lasund"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr "{player1} ja {player2} lõpetasid sõja ja on nüüd liitlased."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cocoa"
 msgstr "kakao"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "marble tops"
+msgstr "marmortipud"
+
+#. This is a database entry: the name of a resource
 msgid "potatoes"
 msgstr "kartulid"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "iron ore"
 msgstr "rauamaak"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "perfume"
+msgstr "parfüüm"
+
+#. This is a database entry: the name of a resource
+#| msgid "tobacco plants"
+msgid "cotton plants"
+msgstr "puuvilla taimed"
+
+#. This is a database entry: the name of a resource
 msgid "clay"
 msgstr "savi"
 
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
 msgstr "Kaupmehed"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#| msgid "spice plants"
+msgid "hop plants"
+msgstr "humala taimed"
+
+#. This is a database entry: the name of a resource
+#| msgid "teal"
+msgid "tea"
+msgstr "tee"
+
+#. This is a database entry: the name of a resource
 msgid "liquor"
 msgstr "alkohol"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "iron ingots"
 msgstr "raua valublokid"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: the name of a resource
+#| msgid "clay deposit"
+msgid "coal deposit"
+msgstr "kivisöe lade"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "Screenshot has been saved to {file}."
 msgstr "Ekraanitõmmis on salvestatud faili {file}."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cattle"
 msgstr "eluskari"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
 msgstr "Sa saad teeradu ka lohistada."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "lamb wool"
 msgstr "lambavill"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "Oled jõudnud hetke maksimaalsele tasemele. Rohkem su elanikud ei tõuse."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
+"Tee on nüüd häälestatud. Käivita see menüüs \"tee häälestamine\" nupust \""
+"käivita tee\"."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "Mängijad {player1} ja {player2} on liidu lõpetanud."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
-msgstr "Ei saa minna."
+msgstr "Siia ei saa minna."
 
-#. This is a database entry: the name of a resource.
-msgid "sugar cane"
-msgstr "suhkruroog"
-
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "corn"
 msgstr "mais"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "flower meadows"
+msgstr "lilleniidud"
+
+#. This is a database entry: the name of a resource
 msgid "grapes"
 msgstr "viinamarjad"
 
-#. This is a database entry: the name of a resource.
-msgid "honeycombs"
-msgstr "meekärjed"
-
-# lootus?
-#. This is a database entry: the name of a resource.
-msgid "faith"
-msgstr "usk"
-
-#. This is a database entry: the name of a resource.
-msgid "boards"
-msgstr "lauad"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "Some of your inhabitants have no access to a main square."
-msgstr "Osadel elanikel puudub juurdepääs peaväljakule."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
-msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} ja {player2} võitlevad üksteisega kuni surmani."
-
-#. This is a database entry: the name of an inhabitant tier (level).
-msgid "Sailors"
-msgstr "Meremehed"
-
-#. This is a database entry: the name of a resource.
-msgid "grain"
-msgstr "teravili"
-
-#. This is a database entry: the name of a resource.
-msgid "spices"
-msgstr "vürtsid"
-
-#. This is a database entry: the name of a resource.
-msgid "dagger"
-msgstr "pistoda"
-
-#. This is a database entry: the name of a resource.
-msgid "bricks"
-msgstr "telliskivid"
-
-#. This is a database entry: the name of a resource.
-msgid "community"
-msgstr "kogukond"
-
-#. This is a database entry: the name of a resource.
-msgid "spice plants"
-msgstr "aromaatsed taimed"
-
-#. This is a database entry: the name of a resource.
-msgid "cattle for slaughter"
-msgstr "tapaloomad"
-
-#. This is a database entry: the name of a resource.
-msgid "tobaccos"
-msgstr "tubakas"
-
-#. This is a database entry: the name of a resource.
-msgid "tools"
-msgstr "tööriistad"
-
-#. This is a database entry: the name of a resource.
-msgid "deer meat"
-msgstr "hirve liha"
-
-#. This is a database entry: the name of a resource.
-msgid "confectionery"
-msgstr "kondiitritooted"
-
-#. This is a database entry: the name of a resource.
-msgid "coins"
-msgstr "münte"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "You won!"
-msgstr "Sinu võit!"
-
-#. This is a database entry: the name of a resource.
-msgid "fish"
-msgstr "kala"
-
-#. This is a database entry: the name of a resource.
-msgid "charcoal"
-msgstr "süsi"
-
-#. This is a database entry: the name of a resource.
-#, fuzzy
-msgid "stone deposit"
-msgstr "kivi maardla"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "You failed the scenario."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-msgid "fire"
-msgstr "leek"
-
-#. This is a database entry: the name of a resource.
-msgid "acorns"
-msgstr "tammetõrud"
-
-#. This is a database entry: the name of a resource.
-msgid "tobacco plants"
-msgstr "tubaka taimed"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
-msgid "You need more {resource} to build this building."
-msgstr "Sa vajad rohkem {resource} selle ehitise ehitamiseks."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "Your crew refuses to leave this map."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy, python-format
-msgid "{player1} and {player2} have settled their hostility."
-msgstr "{player1} ja {player2} liitsid jõud."
-
-#. This is a database entry: the name of a resource.
-msgid "grass"
-msgstr "rohi"
-
-#. This is a database entry: the name of a resource.
-msgid "alvearies"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "Your game has been autosaved."
-msgstr "Sinu mäng on automaatselt salvestatud."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Üks sinu põldudest vajab saagi koristamiseks farmi."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "Your mine has run out of resources."
-msgstr "Sinu kaevanduses pole enam ressursse."
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "Your inhabitants reached level {level}."
 msgstr "Sinu elanikud saavutasid {level}. taseme."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "ambergris"
+msgstr "ambra"
+
+# lootus?
+#. This is a database entry: the name of a resource
+msgid "faith"
+msgstr "usk"
+
+#. This is a database entry: the name of a resource
+msgid "boards"
+msgstr "lauad"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "Some of your inhabitants have no access to a main square."
+msgstr "Osadel elanikel puudub juurdepääs peaväljakule."
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
+msgid "{player1} and {player2} will fight each other to the death."
+msgstr "{player1} ja {player2} võitlevad üksteisega kuni surmani."
+
+#. This is a database entry: the name of a resource
+msgid "hops"
+msgstr "humalad"
+
+#. This is a database entry: the name of a resource
+msgid "grain"
+msgstr "teravili"
+
+#. This is a database entry: the name of a resource
+msgid "spices"
+msgstr "vürtsid"
+
+#. This is a database entry: the name of a resource
+msgid "dagger"
+msgstr "pistoda"
+
+#. This is a database entry: the name of a resource
+#| msgid "spice plants"
+msgid "coffee plants"
+msgstr "kohvitaimed"
+
+#. This is a database entry: the name of a resource
+msgid "bricks"
+msgstr "telliskivid"
+
+#. This is a database entry: the name of a resource
+#| msgid "iron ore"
+msgid "gold ore"
+msgstr "kullamaak"
+
+#. This is a database entry: the name of a resource
+msgid "community"
+msgstr "kogukond"
+
+#. This is a database entry: the name of a resource
+msgid "spice plants"
+msgstr "aromaatsed taimed"
+
+#. This is a database entry: the name of a resource
+msgid "hygiene"
+msgstr "hügieen"
+
+#. This is a database entry: the name of a resource
+msgid "cattle for slaughter"
+msgstr "tapaloomad"
+
+#. This is a database entry: the name of a resource
+msgid "tobaccos"
+msgstr "tubakas"
+
+#. This is a database entry: the name of a resource
+msgid "tools"
+msgstr "tööriistad"
+
+#. This is a database entry: the name of a resource
+msgid "deer meat"
+msgstr "hirve liha"
+
+#. This is a database entry: the name of a resource
+msgid "confectionery"
+msgstr "kondiitritooted"
+
+#. This is a database entry: the name of a resource
+#| msgid "Whaler"
+msgid "whales"
+msgstr "vaalad"
+
+#. This is a database entry: the name of a resource
+msgid "coins"
+msgstr "münte"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "You won!"
+msgstr "Sinu võit!"
+
+#. This is a database entry: the name of a resource
+msgid "blossoms"
+msgstr "lilled"
+
+#. This is a database entry: the name of a resource
+#| msgid "spice plants"
+msgid "indigo plants"
+msgstr "indigo taimed"
+
+#. This is a database entry: the name of a resource
+msgid "fish"
+msgstr "kala"
+
+#. This is a database entry: the name of a resource
+msgid "charcoal"
+msgstr "süsi"
+
+#. This is a database entry: the name of a resource
+msgid "stone deposit"
+msgstr "kivimurd"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "You failed the scenario."
+msgstr "Stsenaarium ebaõnnestus."
+
+#. This is a database entry: the name of a resource
+msgid "fire"
+msgstr "leek"
+
+#. This is a database entry: the name of a resource
+msgid "acorns"
+msgstr "tammetõrud"
+
+#. This is a database entry: the name of a resource
+msgid "garments"
+msgstr "pealisrõivad"
+
+#. This is a database entry: the name of a resource
+msgid "honeycombs"
+msgstr "meekärjed"
+
+#. This is a database entry: the name of a resource
+msgid "tobacco plants"
+msgstr "tubaka taimed"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
+msgid "You need more {resource} to build this building."
+msgstr "Sa vajad rohkem {resource} selle ehitise ehitamiseks."
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "Your crew refuses to leave this map."
+msgstr "Su meeskond keeldub sellelt kaardilt lahkumast."
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
+msgid "{player1} and {player2} have settled their hostility."
+msgstr "{player1} ja {player2} sõlmisid rahu."
+
+#. This is a database entry: the name of a resource
+msgid "grass"
+msgstr "rohi"
+
+#. This is a database entry: the name of a resource
+msgid "sugar cane"
+msgstr "suhkruroog"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "Your game has been autosaved."
+msgstr "Sinu mäng on automaatselt salvestatud."
+
+#. This is a database entry: the name of a resource
+#| msgid "clay deposit"
+msgid "gold deposit"
+msgstr "kulla lade"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "Üks sinu põldudest vajab saagi koristamiseks farmi."
+
+#. This is a database entry: the name of a resource
+msgid "rough gems"
+msgstr "lihvimata vääriskivid"
+
+#. This is a database entry: the name of a resource
+msgid "alvearies"
+msgstr "mesitarud"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "Your mine has run out of resources."
+msgstr "Sinu kaevanduses pole enam ressursse."
+
+#. This is a database entry: the name of a resource
 msgid "iron deposit"
 msgstr "raua maardla"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "education"
 msgstr "haridus"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, fuzzy, python-format
+#. This is a database entry: the name of a resource
+msgid "cotton"
+msgstr "puuvill"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr "{player1} ja {player2} lõpetasid sõja ja on nüüd liitlased."
+msgstr "{player1} ja {player2} lõpetasid liidu ja on nüüd sõjas."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "textile"
 msgstr "tekstiili"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player}: {message}"
 msgstr "{player}: {message}"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cannon"
 msgstr "kahur"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "The inhabitants of this building are infected by the Black Death!"
+msgstr "Selle ehitise elanikud on nakatunud musta surmaga!"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "A new ship by the name of {name} has been created."
 msgstr "Uus laev nimega {name} sai valmis."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#| msgid "tobacco plants"
+msgid "tea plants"
+msgstr "teepõõsad"
+
+#. This is a database entry: the name of a resource
 msgid "get-together"
 msgstr "koosviibimine"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
 msgstr "Uus maailm on loodud."
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
 msgstr "Sinu mäng on kiirsalvestatud."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "deer food A"
 msgstr "hirve toit A"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "herbs"
 msgstr "taimed"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "lamp oil"
+msgstr "lambiõli"
+
+#. This is a database entry: the name of a resource
 msgid "pigs"
 msgstr "sead"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr "Te ei saa ladu lammutada, teie küla vajab seda."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "condiments"
 msgstr "maitseained"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#| msgid "black"
+msgid "blackdeath"
+msgstr "must surm"
+
+#. This is a database entry: the name of a resource
 msgid "candles"
 msgstr "küünlad"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "A new settlement was founded by {player}."
 msgstr "Uus koloonia rajati {player} poolt."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "vines"
 msgstr "väädid"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
 msgstr "Sinu mäng on salvestatud."
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "salt"
 msgstr "sool"
+
+#. This is a database entry: the name of a resource
+#| msgid "iron ingots"
+msgid "gold ingots"
+msgstr "kullakangid"
+
+#~ msgid "Back:"
+#~ msgstr "Tagasi:"
+
+#~ msgid "Leave:"
+#~ msgstr "Lahku:"
+
+#~ msgid "Main menu:"
+#~ msgstr "Peamenüü:"
+
+#~ msgid "Color depth:"
+#~ msgstr "Värvisügavus:"
+
+#, fuzzy
+#~ msgid "If set to 0, use the driver default"
+#~ msgstr "Kui väärtuseks on 0, kasutatakse marsruuteri vaikeseadeid"
+
+#~ msgid "Apply"
+#~ msgstr "Rakenda"
+
+#~ msgid "Start game:"
+#~ msgstr "Alusta mängu:"
+
+#~ msgid "16 bit"
+#~ msgstr "16 bitti"
+
+#~ msgid "32 bit"
+#~ msgstr "32 bitti"
+
+#~ msgid "Default"
+#~ msgstr "Vaikeväärtus"
 
 #~ msgid "Key bindings"
 #~ msgstr "Kiirklahvid"
@@ -4139,9 +4321,6 @@ msgstr "sool"
 #~ msgid "(place in queue: {place})"
 #~ msgstr "(koht järjekorras: {place})"
 
-#~ msgid "black"
-#~ msgstr "must"
-
 #~ msgid "blue"
 #~ msgstr "sinine"
 
@@ -4171,9 +4350,6 @@ msgstr "sool"
 
 #~ msgid "red"
 #~ msgstr "punane"
-
-#~ msgid "teal"
-#~ msgstr "sinakasroheline"
 
 #~ msgid "white"
 #~ msgstr "valge"
@@ -4500,9 +4676,6 @@ msgstr "sool"
 
 #~ msgid "Herring fisher"
 #~ msgstr "Heeringapüüdija"
-
-#~ msgid "Whaler"
-#~ msgstr "Vaalapüüdija"
 
 #~ msgid "Legend:"
 #~ msgstr "Legend:"

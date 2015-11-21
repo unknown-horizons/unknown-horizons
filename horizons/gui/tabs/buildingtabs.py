@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,77 +20,38 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import GAME_SPEED
 from horizons.gui.tabs import OverviewTab
+from horizons.i18n import _lazy
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.util.python.callback import Callback
-from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.depositcomponent import DepositComponent
 
 
-class WarehouseOverviewTab(OverviewTab):
-	""" the main tab of warehouses and storages """
-	def __init__(self, instance):
-		super(WarehouseOverviewTab, self).__init__(
-			widget = 'overview_warehouse.xml',
-			instance = instance
-		)
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		self.helptext = _("Warehouse overview")
-		self._refresh_collector_utilization()
-
-	def _refresh_collector_utilization(self):
-		utilization = int(round(self.instance.get_collector_utilization() * 100))
-		self.widget.findChild(name="collector_utilization").text = unicode(utilization) + u'%'
-
-	def refresh(self):
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		events = {
-				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
-		         }
-		self.widget.mapEvents(events)
-		self._refresh_collector_utilization()
-		super(WarehouseOverviewTab, self).refresh()
-
-	def show(self):
-		super(WarehouseOverviewTab, self).show()
-		Scheduler().add_new_object(Callback(self._refresh_collector_utilization),
-		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
-
-	def hide(self):
-		super(WarehouseOverviewTab, self).hide()
-		Scheduler().rem_all_classinst_calls(self)
-
-	def on_instance_removed(self):
-		Scheduler().rem_all_classinst_calls(self)
-		super(WarehouseOverviewTab, self).on_instance_removed()
-
 class TowerOverviewTab(OverviewTab): # defensive tower
-	def __init__(self, instance):
-		super(TowerOverviewTab, self).__init__(
-			widget='overview_tower.xml',
-			instance=instance)
+	widget = 'overview_tower.xml'
+	helptext = _lazy("Tower overview")
+
+	def init_widget(self):
+		super(TowerOverviewTab, self).init_widget()
 		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		self.helptext = _("Tower overview")
 
 class SignalFireOverviewTab(OverviewTab):
-	def __init__(self, instance):
-		super(SignalFireOverviewTab, self).__init__(
-			widget='overview_signalfire.xml',
-			instance=instance)
+	widget = 'overview_signalfire.xml'
+	helptext = _lazy("Overview")
+
+	def init_widget(self):
+		super(SignalFireOverviewTab, self).init_widget()
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
-		self.helptext = _("Overview")
 
 class ResourceDepositOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(ResourceDepositOverviewTab, self).__init__(
-			widget='overview_resourcedeposit.xml',
-			instance=instance)
+	widget = 'overview_resourcedeposit.xml'
+
+	def init_widget(self):
+		super(ResourceDepositOverviewTab, self).init_widget()
 		# display range starts 0, not min_amount, else it looks like there's nothing in it
 		# when parts of the ore have been mined already
 		resources = self.instance.get_component(DepositComponent).get_res_ranges()

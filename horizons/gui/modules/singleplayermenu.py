@@ -1,6 +1,6 @@
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,7 @@
 
 import json
 import locale
+import logging
 import os
 import subprocess
 import sys
@@ -67,9 +68,12 @@ class SingleplayerMenu(Window):
 		self._gui.findChild(name="aidataselectioncontainer").addChild(self._aidata.get_widget())
 
 	def hide(self):
+		# Save the player-data on hide so that other menus gets updated data
+		self._playerdata.save_settings()
 		self._gui.hide()
 
 	def show(self):
+		self._playerdata.update_data()
 		self._gui.findChild(name='scenario').marked = True
 		self._select_mode('scenario')
 
@@ -102,7 +106,7 @@ class SingleplayerMenu(Window):
 		player_name = self._playerdata.get_player_name()
 
 		if not player_name:
-			self._windows.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
+			self._windows.open_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
 
 		horizons.globals.fife.set_uh_setting("Nickname", player_name)
@@ -319,7 +323,8 @@ class RandomMapWidget(object):
 			ExtScheduler().add_new_object(self._poll_preview_process, self, 0.1)
 			return
 		elif self._preview_process.returncode != 0:
-			self._set_map_preview_status(u"An unknown error occured while generating the map preview")
+			self._preview_process = None
+			self._set_map_preview_status(u"An unknown error occurred while generating the map preview")
 			return
 
 		with open(self._preview_output, 'r') as f:
@@ -402,7 +407,6 @@ class FreeMapsWidget(object):
 
 		number_of_players = SavegameManager.get_recommended_number_of_players(map_file)
 		lbl = self._gui.findChild(name="recommended_number_of_players_lbl")
-		#xgettext:python-format
 		lbl.text = _("Recommended number of players: {number}").format(number=number_of_players)
 
 		self._update_map_preview(map_file)
@@ -499,8 +503,8 @@ class ScenarioMapWidget(object):
 
 		@param exception: Something that str() will convert to an error message
 		"""
-		print "Error: ", unicode(str(exception))
-		self._windows.show_error_popup(
+		logging.getLogger('gui.windows').error(u"Error: %s", exception)
+		self._windows.open_error_popup(
 			_("Invalid scenario file"),
 			description=_("The selected file is not a valid scenario file."),
 			details=_("Error message:") + u' ' + unicode(str(exception)),
@@ -566,15 +570,12 @@ class ScenarioMapWidget(object):
 		lbl.text = translation_status
 
 		lbl = self._gui.findChild(name="uni_map_difficulty")
-		#xgettext:python-format
 		lbl.text = _("Difficulty: {difficulty}").format(difficulty=metadata['difficulty'])
 
 		lbl = self._gui.findChild(name="uni_map_author")
-		#xgettext:python-format
 		lbl.text = _("Author: {author}").format(author=metadata['author'])
 
 		lbl = self._gui.findChild(name="uni_map_desc")
-		#xgettext:python-format
 		lbl.text = _("Description: {desc}").format(desc=metadata['description'])
 
 	def _find_map_filename(self, scenario_name, target_locale):

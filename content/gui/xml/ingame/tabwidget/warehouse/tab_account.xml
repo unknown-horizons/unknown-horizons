@@ -11,30 +11,34 @@
 
 	<hr position="20,30" />
 	<Container size="260,250" position="25,43">
+		<Icon name="collector_utilization_label" helptext="Collector utilization"
+			image="content/gui/icons/resources/cap_util.png" />
+		<Label name="collector_utilization" helptext="Collector utilization" position="20,0"
+			comment="Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)" />
 
-		<Label name="headline_income_label" text="Income:" />
-		<Icon image="content/gui/images/resbar_stats/income.png" position="0,20" />
-		<Label name="taxes_label" position="19,20" text="Taxes" />
-		<Label position="160,20" name="taxes" min_size="100,15" />
+		<Label name="headline_income_label" text="Income:" position="0,20" />
+		<Icon image="content/gui/images/resbar_stats/income.png" position="0,40" />
+		<Label name="taxes_label" position="19,40" text="Taxes" />
+		<Label position="160,40" name="taxes" min_size="100,15" />
 
-		<Icon image="content/gui/images/resbar_stats/sell.png" position="0,40" />
-		<Label name="sell_income_label" position="19,40" text="Sale" />
-		<Label position="160,40" name="sale" min_size="100,15" />
+		<Icon image="content/gui/images/resbar_stats/sell.png" position="0,60" />
+		<Label name="sell_income_label" position="19,60" text="Sale" />
+		<Label position="160,60" name="sale" min_size="100,15" />
 
 
-		<Label name="headline_expenses_label" position="0,70" text="Expenses:" />
+		<Label name="headline_expenses_label" position="0,90" text="Expenses:" />
 
-		<Icon image="content/gui/images/resbar_stats/expense.png" position="0,90" />
-		<Label name="running_costs_label" position="19,90" text="Running costs" />
-		<Label position="160,90" name="running_costs" min_size="100,15" />
+		<Icon image="content/gui/images/resbar_stats/expense.png" position="0,110" />
+		<Label name="running_costs_label" position="19,110" text="Running costs" />
+		<Label position="160,110" name="running_costs" min_size="100,15" />
 
-		<Icon image="content/gui/images/resbar_stats/buy.png" position="0,110" />
-		<Label name="buy_expenses_label" position="19,110" text="Buying" />
-		<Label position="160,110" name="buying" min_size="100,15" />
+		<Icon image="content/gui/images/resbar_stats/buy.png" position="0,130" />
+		<Label name="buy_expenses_label" position="19,130" text="Buying" />
+		<Label position="160,130" name="buying" min_size="100,15" />
 
-		<Icon image="content/gui/images/resbar_stats/scales_icon.png" position="0,144" />
-		<Label name="headline_balance_label" position="19,140" text="Balance:" />
-		<Label position="160,140" name="balance" min_size="100,15" />
+		<Icon image="content/gui/images/resbar_stats/scales_icon.png" position="0,164" />
+		<Label name="headline_balance_label" position="19,160" text="Balance:" />
+		<Label position="160,160" name="balance" min_size="100,15" />
 	</Container>
 
 	<Container size="260,50"  position="25,240">

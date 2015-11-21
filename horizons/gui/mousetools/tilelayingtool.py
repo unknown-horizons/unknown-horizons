@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -105,6 +105,7 @@ class TileLayingTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			coords = self.get_world_location(evt).to_tuple()
 			self._place_tile(coords)
+			self.update_coloring(evt)
 			evt.consume()
 
 	def update_coloring(self, evt):

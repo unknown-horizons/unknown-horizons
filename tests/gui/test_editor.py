@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,7 @@
 
 import os
 
-from horizons.constants import PATHS, GROUND
+from horizons.constants import EDITOR, GROUND, PATHS
 from tests.gui import gui_test
 
 
@@ -44,6 +44,10 @@ def test_place_tiles(gui):
 	gui.trigger('editor_settings', 'size_3')
 	gui.trigger('editor_settings', 'default_land')
 	gui.cursor_click(34, 27, 'left')
+
+	# Map edge and largest brush size
+	gui.trigger('editor_settings', 'size_%s' % (EDITOR.MAX_BRUSH_SIZE))
+	gui.cursor_click(-8, 78, 'left')
 
 
 @editor_test

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -123,13 +123,10 @@ class ProductionFinishedIconManager(object):
 		rel = fife.Point(-14, -50 - self.run[group])
 		self.run[group] += self.animation_steps
 
+		x = pos.origin.x + (pos.width / 4.0)
+		y = pos.origin.y + (pos.height / 4.0)
 		loc = fife.Location(self.layer)
-		loc.setExactLayerCoordinates(
-		  fife.ExactModelCoordinate(
-		    pos.origin.x + float(pos.width) / 4,
-		    pos.origin.y + float(pos.height) / 4,
-		  )
-		)
+		loc.setExactLayerCoordinates(fife.ExactModelCoordinate(x, y))
 
 		bg_node = fife.RendererNode(loc, bg_rel)
 		node = fife.RendererNode(loc, rel)

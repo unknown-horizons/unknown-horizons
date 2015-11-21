@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -157,7 +157,7 @@ class Fleet(WorldObject):
 		"""
 		Returns Counter about how many ships are in state idle, moving, reached.
 		"""
-		counter = defaultdict(lambda: 0)
+		counter = defaultdict(int)
 		for value in self._ships.values():
 			counter[value] += 1
 		return counter

@@ -16,9 +16,7 @@
 			</HBox>
 		</VBox>
 
-		<Label name="exit_to_mp_menu_lbl"  text="Back:"  position="60,470" />
-		<CancelButton position="100,460"  name="cancel"
-			helptext="Exit to multiplayer menu" />
+		<CancelButton position="20,460"  name="cancel" helptext="Exit to multiplayer menu" />
 	</Container>
 
 	<!--
@@ -49,10 +47,5 @@
 		</HBox>
 	</VBox>
 
-	<HBox min_size="0,30" position="600, 490">
-		<Spacer />
-		<Label name="create_game_lbl"  text="Create game:" />
-		<OkButton  name="create"  helptext="Create this new game" />
-	</HBox>
-
+	<OkButton  name="create"  helptext="Create this new game" position="680, 490"/>
 </Container>

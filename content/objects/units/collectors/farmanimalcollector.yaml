@@ -1,5 +1,5 @@
 baseclass: collectors.FarmAnimalCollector
-id: 1000015
+id: UNITS.FARM_ANIMAL_COLLECTOR
 name: FarmAnimalCollector
 radius: 5
 velocity: 12.0

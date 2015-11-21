@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,7 @@
 
 import random
 
-from horizons.constants import PATHS
+from horizons.constants import PATHS, TIER
 from horizons.util.python import decorators
 from horizons.util.dbreader import DbReader
 from horizons.entities import Entities
@@ -62,7 +62,7 @@ class UhDbAccessor(DbReader):
 		"""Returns the resource's value
 		@param id: resource id
 		@return: float value"""
-		return self.cached_query("SELECT value FROM resource WHERE id=?", id)[0][0]
+		return self.cached_query("SELECT value FROM resource WHERE id = ?", id)[0][0]
 
 	def get_res(self, only_tradeable=False, only_inventory=False):
 		"""Returns a list of all resources.
@@ -165,41 +165,48 @@ class UhDbAccessor(DbReader):
 	#
 
 	def get_settler_name(self, level):
-		"""Returns the name for a specific settler level
-		@param level: int settler's level
-		@return: string settler's level name"""
-		sql = "SELECT name FROM settler_level WHERE level = ?"
+		"""Returns the name of inhabitants for a specific tier.
+		@param level: int - which tier
+		@return: string - inhabitant name"""
+		sql = "SELECT name FROM tier WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_house_name(self, level):
 		"""Returns name of the residential building for a specific tier
-		@param level: int settler's level
-		@return: string settler's housing name"""
-		sql = "SELECT residential_name FROM settler_level WHERE level = ?"
+		@param level: int - which tier
+		@return: string - housing name"""
+		sql = "SELECT residential_name FROM tier WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_tax_income(self, level):
-		sql = "SELECT tax_income FROM settler_level WHERE level=?"
+		sql = "SELECT tax_income FROM tier WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
-	def get_settler_inhabitants_max(self, level):
-		sql = "SELECT inhabitants_max FROM settler_level WHERE level=?"
+	def get_tier_inhabitants_max(self, level):
+		"""Returns the upper limit of inhabitants per house for a specific tier.
+		Inhabitants will try to increase their tier upon exceeding this value.
+		@param level: int - which tier
+		"""
+		sql = "SELECT inhabitants_max FROM tier WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
-	def get_settler_inhabitants_min(self, level):
-		"""The minimum inhabitants before a setter levels down
-		is the maximum inhabitants of the previous level."""
-		if level == 0:
+	def get_tier_inhabitants_min(self, level):
+		"""Returns the lower limit of inhabitants per house for a specific tier.
+		This limit coincides with the max. amount of the previous tier.
+		Inhabitants will decrease their tier after falling below.
+		@param level: int - which tier
+		"""
+		if level == TIER.LOWEST:
 			return 0
 		else:
-			sql = "SELECT inhabitants_max FROM settler_level WHERE level=?"
-			return self.cached_query(sql, level-1)[0][0]
+			sql = "SELECT inhabitants_max FROM tier WHERE level = ?"
+			return self.cached_query(sql, level - 1)[0][0]
 
-	def get_settler_happiness_increase_requirement(self):
+	def get_upper_happiness_limit(self):
 		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_increase_requirement'"
 		return self.cached_query(sql)[0][0]
 
-	def get_settler_happiness_decrease_limit(self):
+	def get_lower_happiness_limit(self):
 		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_decrease_limit'"
 		return self.cached_query(sql)[0][0]
 
@@ -256,7 +263,6 @@ class UhDbAccessor(DbReader):
 		try:
 			comp = ship.get_component_template('StorageComponent')
 			storage = comp['PositiveTotalNumSlotsStorage']
-			#xgettext:python-format
 			# Ship storage properties
 			helptext = _('{slotnum} slots, {limit}t')
 			helptext = helptext.format(slotnum=storage['slotnum'],
@@ -266,7 +272,6 @@ class UhDbAccessor(DbReader):
 			pass
 		try:
 			comp = ship.get_component_template('HealthComponent')
-			#xgettext:python-format
 			helptext = _('Health: {health}')
 			helptext = helptext.format(health=comp['maxhealth'])
 			helptexts.append(helptext)
@@ -274,6 +279,7 @@ class UhDbAccessor(DbReader):
 			pass
 		return u'\\n'.join(helptexts)
 
+
 def read_savegame_template(db):
 	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
-	db.execute_script( savegame_template.read() )
+	db.execute_script(savegame_template.read())

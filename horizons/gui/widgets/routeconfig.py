@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,13 +32,17 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
 from horizons.command.uioptions import RouteConfigCommand
+from horizons.command.unit import CreateRoute
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
+from horizons.scheduler import Scheduler
+from horizons.manager import MPManager
 
 from horizons.gui.widgets.imagebutton import OkButton
 
 import horizons.globals
+
 
 class RouteConfig(Window):
 	"""
@@ -50,15 +54,18 @@ class RouteConfig(Window):
 	hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	MAX_ENTRIES = 7
 	MIN_ENTRIES = 2
+	SLOTS_PER_ENTRY = 3
+
 	def __init__(self, windows, instance):
 		super(RouteConfig, self).__init__(windows)
 
 		self.instance = instance
 
 		if not hasattr(instance, 'route'):
-			instance.create_route()
+			CreateRoute(instance).execute(self.session)
 
-		self._init_gui()
+		# We must make sure that the createRoute command has successfully finished, even in network games.
+		Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY+2)
 
 	@property
 	def session(self):
@@ -104,11 +111,12 @@ class RouteConfig(Window):
 		self._gui.findChild(name='start_route').helptext = _('Stop route')
 
 	def start_route(self):
-		if not self.instance.route.can_enable():
-			self.instance.session.ingame_gui.show_popup(_("Need at least two settlements"),
-			                                            _("You need at least two different settlements in your route."))
-		else:
+		if self.instance.route.can_enable():
 			self._route_cmd("enable")
+		else:
+			self.instance.session.ingame_gui.open_popup(
+				_("Need at least two settlements"),
+				_("You need at least two different settlements in your route."))
 
 	def stop_route(self):
 		self._route_cmd("disable")
@@ -138,28 +146,29 @@ class RouteConfig(Window):
 		name = "no_entries_hint"
 		if not self.instance.route.waypoints:
 			lbl = widgets.Label(name=name, text=_("Click on a settlement to add a waypoint!"))
-			self._gui.findChild(name="left_vbox").addChild( lbl )
+			self._gui.findChild(name="left_vbox").addChild(lbl)
 		else:
 			lbl = self._gui.findChild(name=name)
 			if lbl:
-				self._gui.findChild(name="left_vbox").removeChild( lbl )
+				self._gui.findChild(name="left_vbox").removeChild(lbl)
 
 	def move_entry(self, entry, direction):
 		"""
 		moves an entry up or down
 		"""
+		# Abort (with error sound) if moving this entry is not possible.
 		position = self.widgets.index(entry)
-		if position == len(self.widgets) and direction is 'down' or \
-		   position == 0 and direction is 'up':
+		if position == len(self.widgets) and direction == 'down' or \
+		   position == 0 and direction == 'up':
 			AmbientSoundComponent.play_special('error')
 			return
 
-		if direction is 'up':
+		if direction == 'up':
 			new_pos = position - 1
-		elif direction is 'down':
+		elif direction == 'down':
 			new_pos = position + 1
 		else:
-			return
+			assert False, 'Direction for `move_entry` is neither "up" nor "down".'
 
 		vbox = self._gui.findChild(name="left_vbox")
 
@@ -167,7 +176,6 @@ class RouteConfig(Window):
 		self.widgets.insert(new_pos, self.widgets.pop(position))
 		self._route_cmd("move_waypoint", position, direction)
 		vbox.addChildren(self.widgets)
-
 
 		self._gui.adaptLayout()
 		self._resource_selection_area_layout_hack_fix()
@@ -194,7 +202,7 @@ class RouteConfig(Window):
 		if res != 0:
 			self._route_cmd("toggle_load_unload", position, res)
 
-		if slot.action is "unload":
+		if slot.action == "unload":
 			self.show_load_icon(slot)
 		else:
 			self.show_unload_icon(slot)
@@ -205,7 +213,7 @@ class RouteConfig(Window):
 		amount_lbl = slot.findChild(name="amount")
 		amount = int(slider.value)
 		amount_lbl.text = u'{amount}t'.format(amount=amount)
-		if slot.action is "unload":
+		if slot.action == "unload":
 			amount = -amount
 		self._route_cmd("add_to_resource_list", position, res_id, amount)
 		slot.adaptLayout()
@@ -213,7 +221,7 @@ class RouteConfig(Window):
 	def add_resource(self, res_id, slot=None, entry=None, has_value=False, value=0):
 		button = slot.findChild(name="button")
 		position = self.widgets.index(entry)
-		#remove old resource from waypoints
+		# Remove old resource from waypoints.
 		res = self.resource_for_icon[button.up_image.source]
 		if res != 0:
 			self._route_cmd("remove_from_resource_list", position, res)
@@ -222,14 +230,15 @@ class RouteConfig(Window):
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
 		button.max_size = button.min_size = button.size = (32, 32)
 
-		#hide the resource menu
+		# Hide the resource menu.
 		self.hide_resource_menu()
 
+		# Show widget elements for new resource.
 		slider = slot.findChild(name="slider")
 
 		if not has_value:
 			value = int(slider.value)
-			if slot.action is "unload":
+			if slot.action == "unload":
 				value = -value
 
 		if value < 0:
@@ -241,7 +250,7 @@ class RouteConfig(Window):
 			slider.value = float(value)
 			amount = value
 		else:
-			#if the slider value is 0 keep the load/unload persistent
+			# Keep the load/unload persistent if the slider value is 0.
 			slider.value = 0.
 			amount = value
 
@@ -298,9 +307,9 @@ class RouteConfig(Window):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="traderoute_resources").removeAllChildren()
 
-	def add_trade_slots(self, entry, slot_amount):
+	def add_trade_slots(self, entry, slot_amount=SLOTS_PER_ENTRY):
 		x_position = 105
-		#initialize slots with empty dict
+		# Initialize slots with empty dict.
 		self.slots[entry] = {}
 		for num in range(slot_amount):
 			slot = load_uh_widget('trade_single_slot.xml')
@@ -334,7 +343,7 @@ class RouteConfig(Window):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
 		entry.name = 'container_%s' % len(self.widgets)
-		entry.settlement = weakref.ref( warehouse.settlement )
+		entry.settlement = weakref.ref(warehouse.settlement)
 		self.widgets.append(entry)
 
 		settlement_name_label = entry.findChild(name="warehouse_name")
@@ -342,12 +351,12 @@ class RouteConfig(Window):
 		player_name_label = entry.findChild(name="player_name")
 		player_name_label.text = warehouse.owner.name
 
-		self.add_trade_slots(entry, self.slots_per_entry)
+		self.add_trade_slots(entry)
 
 		index = 1
 		resource_list = resource_list or {}
 		for res_id in resource_list:
-			if index > self.slots_per_entry:
+			if index > self.SLOTS_PER_ENTRY:
 				break
 			self.add_resource(slot=self.slots[entry][index - 1],
 			                  res_id=res_id,
@@ -357,9 +366,9 @@ class RouteConfig(Window):
 			index += 1
 
 		entry.mapEvents({
-		  'delete_warehouse/mouseClicked' : Callback(self.remove_entry, entry),
-		  'move_up/mouseClicked' : Callback(self.move_entry, entry, 'up'),
-		  'move_down/mouseClicked' : Callback(self.move_entry, entry, 'down')
+		  'delete_warehouse/mouseClicked': Callback(self.remove_entry, entry),
+		  'move_up/mouseClicked': Callback(self.move_entry, entry, 'up'),
+		  'move_down/mouseClicked': Callback(self.move_entry, entry, 'down')
 		  })
 		vbox.addChild(entry)
 
@@ -392,7 +401,7 @@ class RouteConfig(Window):
 			map_coords = event.map_coords
 			tile = self.session.world.get_tile(Point(*map_coords))
 			if tile is not None and tile.settlement is not None:
-				self.append_warehouse( tile.settlement.warehouse )
+				self.append_warehouse(tile.settlement.warehouse)
 
 	def _init_gui(self):
 		"""
@@ -404,10 +413,8 @@ class RouteConfig(Window):
 
 		self.widgets = []
 		self.slots = {}
-		self.slots_per_entry = 3
 
 		icon = self._gui.findChild(name="minimap")
-
 
 		self.minimap = Minimap(icon, session=self.session,
 		                       world=self.session.world,
@@ -448,9 +455,9 @@ class RouteConfig(Window):
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
-		  OkButton.DEFAULT_NAME : self._windows.close,
-		  'start_route/mouseClicked' : self.toggle_route
-		  })
+			OkButton.DEFAULT_NAME: self._windows.close,
+			'start_route/mouseClicked': self.toggle_route,
+		})
 
 	def _route_cmd(self, method, *args, **kwargs):
 		"""Convenience method for calling a method on instance.route via command (mp-safe)"""

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,8 +18,9 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from collections import defaultdict
+
 import logging
+from collections import defaultdict
 
 from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
@@ -36,6 +37,7 @@ from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle
 from horizons.world.units.movingobject import MoveNotPossible
+
 
 class BehaviorComponent(object):
 	"""
@@ -181,6 +183,7 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
 			self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
+
 
 # Common certainty functions for offensive actions
 def certainty_power_balance_exp(**environment):
@@ -533,7 +536,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 		# Note: Multiply by 1./abs(mid-root) to scale function in X (e.g. if mid is 1.0 and root is 1.5 -> make original x^2 function 2 times narrower
 		base = lambda x: (-1. / (abs(mid - root) ** 2)) * (x ** 2)
 
-		# we move the function so it looks like "distribution", i.e. move it far left(or right), and assume the peek is 1.0
+		# we move the function so it looks like "distribution", i.e. move it far left (or right), and assume the peek is 1.0
 		moved = cls._move_f(base, mid, 1.0)
 
 		# in case of negative values of f(x) we want to have 0.0 instead
@@ -608,6 +611,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 	def allied_player(self, **environment):
 		self.handle_diplomacy(self.parameters_allied, **environment)
 
+
 class BehaviorEvil(BehaviorDiplomatic):
 	"""
 	Diplomatic behavior.
@@ -621,7 +625,6 @@ class BehaviorEvil(BehaviorDiplomatic):
 		- weaker
 		- smaller
 	"""
-
 
 	def __init__(self, owner):
 		super(BehaviorEvil, self).__init__(owner)
@@ -668,6 +671,7 @@ class BehaviorNeutral(BehaviorDiplomatic):
 	parameters_hostile = DiplomacySettings.Neutral.parameters_hostile
 	parameters_neutral = DiplomacySettings.Neutral.parameters_neutral
 	parameters_allied = DiplomacySettings.Neutral.parameters_allied
+
 
 class BehaviorDebug(BehaviorComponent):
 
@@ -730,6 +734,7 @@ class BehaviorRegularPirate(BehaviorComponent):
 		mission = PirateRoutine.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
 		BehaviorComponent.log.info('BehaviorRegularPirate: pirate_routine request')
 		return mission
+
 
 class BehaviorAggressivePirate(BehaviorComponent):
 

@@ -1,0 +1,128 @@
+# Croatian translations for Unknown Horizons Voices package.
+# Copyright (C) 2013 The Unknown Horizons Team
+# This file is distributed under the same license as the Unknown Horizons Voices package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
+"Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
+"PO-Revision-Date: 2014-01-21 22:48+0200\n"
+"Last-Translator: T S <tstritof@gmail.com>\n"
+"Language-Team: Croatian <http://hosted.weblate.org/projects/uh/voices/hr/>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.9-dev\n"
+
+#. Founding settlement - Player found settlement"
+msgid "Strive so that this settlement shall evolve stately."
+msgstr "Trudi se tako da naselje bude veličanstveno."
+
+#. Founding settlement - Player found settlement"
+msgid "Your inhabitants will certainly feel comfortable on this island."
+msgstr "Tvoji stanovnici će se zasigurno osjećati ugoodno na ovom otoku."
+
+#. Founding settlement - Player found settlement"
+msgid "Call this patch of ground yours from now on."
+msgstr "Od sada pa nadalje, smatraj ovaj komad zemlje svojim."
+
+#. Founding settlement - Player found settlement"
+msgid "This region now belongs to our colors."
+msgstr "Ova regija sada spada pod naše boje."
+
+#. Founding settlement - Player found settlement"
+msgid "This piece of ground is now ours."
+msgstr "Ovaj komad zemlje je sada naš."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "Another player has settled on an island."
+msgstr "Još jedan igrač se naselio na otok."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "A player develops a new settlement."
+msgstr "Jedan igrač napravio je novo naselje."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "One of your fellow players founded a settlement."
+msgstr "Jedan kolega igrač je osnovao novo naselje."
+
+#. Founding settlement - Rival found settlement
+msgid "A rival of ours seems to have founded a settlement."
+msgstr "Naš protivnik je osnovao naselje."
+
+#. Founding settlement - Rival found settlement
+msgid "We've been informed that one of our rivals snared new land."
+msgstr "Dobili smo informaciju da je jedan od naših protivnika zauzeo otok."
+
+#. Founding settlement - Rival found settlement
+msgid "One of our opponents is said to have expanded."
+msgstr "Jedan od naših protivnika se proširio."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally settles on another island."
+msgstr "Naš saveznik zauzeo je novi otok."
+
+#. Founding settlement - Ally found settlement
+msgid "One of our allies cultivates an islnd."
+msgstr "Jedan od naših saveznika obrađuje otok."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally passes news about successfully founding a settlement."
+msgstr "Naš saveznik šalje vijesti o uspješnom osnivanju naselja."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "This island no longer is all ours."
+msgstr "Ovaj otok više nije samo naš."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "Scouts found out that guests settled on one of our islands."
+msgstr "Izvidnik je otkrio da imamo goste na jednom od naših otoka."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "We got new neighbors on this island!"
+msgstr "Imamo nove susjede na otoku!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Scouts report that uninvited guests beleaguer our island!"
+msgstr "Izvidnik izvještava da su nepozvani gosti opkolili naš otok!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Should we really accept our rival as new neighbor?"
+msgstr "Zar ćemo stvarno prihvatiti našeg protivnika kao novog susjeda?"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "One of our enemies settles on our ground!"
+msgstr "Protivnik se nastanio na našoj zemlji!"
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "One of our allies seems in desperate need of your ground."
+msgstr "Jedan od tvojih saveznika očajno treba komad tvoje zemlje."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "We share this ground with our ally for now."
+msgstr "Djelimo ovu zemlju sa našim saveznicima za sada."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "Our ally settles on one of our islands."
+msgstr "Naš saveznik se nastanio na jednom od naših otoka."
+
+#. Resources - Construction material missing
+msgid "You need more resources to build this."
+msgstr "Trebaš više resursa da bi gradio ovo."
+
+#. Resources - Construction material missing
+msgid "This construction project needs more resources."
+msgstr "Ovaj građevinski projekt treba više resursa."
+
+#. Resources - Construction material missing
+msgid "Construction is impossible without sufficient material."
+msgstr "Građenje nije moguće jer nedostaje materijala."
+
+#. Resources - Construction material missing
+msgid "The resources in your inventory are not sufficient to build this."
+msgstr "Resursi u skladištu nisu dostatni za izgradnju."

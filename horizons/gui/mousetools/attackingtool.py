@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -84,11 +84,10 @@ class AttackingTool(SelectionTool):
 			if instance.owner is local_player:
 				continue
 
-			#check diplomacy state between local player and instance owner
+			# Check diplomacy state between local player and instance owner.
 			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner) \
 				and not evt.isShiftPressed():
 				continue
 			if instance.has_component(HealthComponent):
 				target = instance
 		return target
-

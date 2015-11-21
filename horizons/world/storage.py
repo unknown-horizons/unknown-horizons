@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -53,7 +53,7 @@ class GenericStorage(ChangeListener):
 	"""
 	def __init__(self):
 		super(GenericStorage, self).__init__()
-		self._storage = defaultdict(lambda : 0)
+		self._storage = defaultdict(int)
 
 	def save(self, db, ownerid):
 		for slot in self._storage.iteritems():

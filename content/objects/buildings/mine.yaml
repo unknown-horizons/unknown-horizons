@@ -1,0 +1,35 @@
+id: BUILDINGS.MINE
+name: _ Mine
+baseclass: production.Mine
+radius: 0
+cost: 15
+cost_inactive: 5
+size_x: 5
+size_y: 5
+inhabitants: 0
+#TODO reword tooltip once there are more kinds of ore:
+tooltip_text: _ Gets iron ore from deposit.
+tier: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}
+translucent: true
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    is_mine_for: BUILDINGS.MOUNTAIN
+    productionlines:
+      IRON_ORE:
+        produces:
+        - [RES.IRON_ORE, 1]
+        consumes:
+        - [RES.RAW_IRON, -1]
+        time: 15
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.RAW_IRON: 1000000, RES.IRON_ORE: 10}
+actionsets:
+  TIER.SETTLERS:
+    as_mine5x5:

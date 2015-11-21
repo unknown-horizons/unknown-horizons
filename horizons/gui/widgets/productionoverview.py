@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -57,7 +57,6 @@ class ProductionOverview(StatsWidget, Window):
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
 		name = self.settlement.get_component(NamedComponent).name
-		#xgettext:python-format
 		text = _('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 

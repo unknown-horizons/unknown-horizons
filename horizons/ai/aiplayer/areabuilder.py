@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -252,11 +252,8 @@ class AreaBuilder(WorldObject):
 		return BUILD_RESULT.OK
 
 	def extend_settlement(self, position):
-		"""Build a tent or a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		result = self.settlement_manager.village_builder.extend_settlement_with_tent(position)
-		if result != BUILD_RESULT.OK:
-			result = self.settlement_manager.production_builder.extend_settlement_with_storage(position)
-		return result
+		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
+		return self.settlement_manager.production_builder.extend_settlement_with_storage(position)
 
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""

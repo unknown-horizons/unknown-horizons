@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,12 +22,12 @@
 from horizons.constants import RES, TIER
 
 from tests.gui import gui_test
-from tests.gui.helper import get_player_ship, move_ship
+from tests.gui.helper import get_player_ship, move_ship, saveload
 from tests.gui.scenarios.helper import (assert_win, var_eq, wait_and_close_logbook,
-										settlement_res_stored_greater, settler_level_greater)
+                                        settlement_res_stored_greater, settler_level_greater)
 
 
-@gui_test(use_scenario='content/scenarios/tutorial_en', timeout=360)
+@gui_test(use_scenario='content/scenarios/tutorial_en', timeout=7*60)
 def test_tutorial(gui):
 	"""Test the tutorial scenario."""
 
@@ -45,6 +45,9 @@ def test_tutorial(gui):
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 	move_ship(gui, ship, (11, 1))
+
+	# Save and reload scenario (1/3)
+	saveload(gui)
 
 	gui.trigger('overview_trade_ship', 'found_settlement')
 	gui.cursor_click(11, 6, 'left')
@@ -104,6 +107,13 @@ def test_tutorial(gui):
 
 	# Goal: Build a signal fire
 	assert_progress(34)
+
+	# Save and reload scenario (2/3)
+	saveload(gui)
+
+	# Open build menu again (it is not reloaded, unlike selected instances)
+	gui.trigger('mainhud', 'build')
+	gui.trigger('tab_base', '0')
 
 	# wait until we have enough boards
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 5):
@@ -166,6 +176,13 @@ def test_tutorial(gui):
 	gui.trigger('tab', 'button_12')
 	gui.cursor_click(23, 11, 'left')
 
+	# Save and reload scenario (3/3)
+	saveload(gui)
+
+	# Open build menu again
+	gui.trigger('mainhud', 'build')
+	gui.trigger('tab_base', '1')
+
 	# pasture
 	gui.trigger('tab', 'button_22')
 	gui.cursor_click(21, 10, 'left')
@@ -183,6 +200,10 @@ def test_tutorial(gui):
 	gui.trigger('tab', 'button_21')
 	gui.cursor_drag((21, 15), (24, 14), 'left')
 	gui.cursor_click(24, 14, 'right')
+	# back of mainsquare
+	gui.trigger('tab', 'button_21')
+	gui.cursor_drag((13, 22), (20, 22), 'left')
+	gui.cursor_click(20, 22, 'right')
 
 	# storage tent
 	gui.trigger('tab', 'button_11')
@@ -207,21 +228,17 @@ def test_tutorial(gui):
 	gui.trigger('tab', 'button_12')
 	gui.cursor_multi_click((24, 9), (27, 8), (27, 11))
 
-	# lumberjack (more wood for upgrades)
-	gui.trigger('tab_base', '0')
-	gui.trigger('tab', 'button_03')
-	gui.cursor_click(19, 18, 'left')
-
 	# wait until we have enough boards
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 39):
 		gui.run()
 
 	# tents
+	gui.trigger('tab_base', '0')
 	gui.trigger('tab', 'button_01')
 	gui.cursor_multi_click(
-		(11, 14), (11, 15), (12, 17), (11, 20),
-		(12, 22), (14, 22), (16, 22), (18, 22),
-		(19, 20), (22, 15)
+		(11, 14), (11, 15), (12, 17), (11, 20), (11, 22),
+		(13, 23), (15, 23), (17, 23), (19, 23),
+		(19, 20), (22, 15), (19, 18), (20, 21)
 	)
 
 	# Goal: Won

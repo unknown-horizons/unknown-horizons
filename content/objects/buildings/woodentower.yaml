@@ -1,4 +1,4 @@
-id: 44
+id: BUILDINGS.WOODEN_TOWER
 name: _ Wooden Tower
 baseclass: war.Tower
 radius: 9
@@ -7,7 +7,7 @@ cost_inactive: 0 # can't be inactive actually
 size_x: 2
 size_y: 2
 inhabitants: 1
-settler_level: TIER.PIONEERS
+tier: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 12, RES.TOOLS: 3, RES.CANNON: 2}
 tooltip_text: _ Defends your settlement.
 components:

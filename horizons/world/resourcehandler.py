@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -34,8 +34,8 @@ class ResourceTransferHandler(object):
 	def transfer_to_storageholder(self, amount, res_id, transfer_to, signal_errors=False):
 		"""Transfers amount of res_id to transfer_to.
 		@param transfer_to: worldid or object reference
-		@param signal_errors: whether to play an error sound in case the transfer completely failed (no res transfered)
-		@return: amount that was actually transfered (NOTE: this is different from the
+		@param signal_errors: whether to play an error sound in case the transfer completely failed (no res transferred)
+		@return: amount that was actually transferred (NOTE: this is different from the
 						 return value of inventory.alter, since here are 2 storages involved)
 		"""
 		try:
@@ -44,7 +44,7 @@ class ResourceTransferHandler(object):
 			pass
 		# take res from self
 		ret = self.get_component(StorageComponent).inventory.alter(res_id, -amount)
-		# check if we were able to get the planed amount
+		# check if we were able to get the planned amount
 		ret = amount if amount < abs(ret) else abs(ret)
 		# put res to transfer_to
 		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
@@ -193,7 +193,8 @@ class ResourceHandler(ResourceTransferHandler):
 	## PROTECTED METHODS
 	def _load_provided_resources(self):
 		"""Returns a iterable obj containing all resources this building provides.
-		This is outsourced from initiation to a method for the possiblity of overwriting it.
+		This is outsourced from initialization to a method for the possibility of
+		overwriting it.
 		Do not alter the returned list; if you need to do so, then copy it."""
 		produced_resources = set()
 		for prod in self.get_component(Producer).get_productions():

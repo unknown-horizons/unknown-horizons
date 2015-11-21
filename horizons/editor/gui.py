@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,7 @@
 
 import horizons.globals
 
-from horizons.constants import GROUND, VIEW
+from horizons.constants import EDITOR, GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
@@ -32,6 +32,7 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import WindowManager
+from horizons.messaging import ZoomChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -77,7 +78,7 @@ class IngameGui(LivingObject):
 		})
 
 		self.mainhud.show()
-		self.session.view.add_change_listener(self._update_zoom)
+		ZoomChanged.subscribe(self._update_zoom)
 
 		# Hide unnecessary buttons in hud
 		for widget in ("build", "speedUp", "speedDown", "destroy_tool", "diplomacyButton", "logbook"):
@@ -86,7 +87,7 @@ class IngameGui(LivingObject):
 		self.windows = WindowManager()
 		self.message_widget = MessageWidget(self.session)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=True)
-		self.help_dialog = HelpDialog(self.windows, session=self.session)
+		self.help_dialog = HelpDialog(self.windows)
 
 	def end(self):
 		self.mainhud.mapEvents({
@@ -106,7 +107,7 @@ class IngameGui(LivingObject):
 		self.keylistener = None
 		LastActivePlayerSettlementManager().remove()
 		LastActivePlayerSettlementManager.destroy_instance()
-		self.session.view.remove_change_listener(self._update_zoom)
+		ZoomChanged.unsubscribe(self._update_zoom)
 
 		if self.cursor:
 			self.cursor.remove()
@@ -114,6 +115,11 @@ class IngameGui(LivingObject):
 			self.cursor = None
 
 		super(IngameGui, self).end()
+
+	def handle_selection_group(self, num, ctrl_pressed):
+		# Someday, maybe cool stuff will be possible here.
+		# That day is not today, I'm afraid.
+		pass
 
 	def toggle_pause(self):
 		self.windows.toggle(self.pausemenu)
@@ -139,7 +145,7 @@ class IngameGui(LivingObject):
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
 		window = SelectSavegameDialog('editor-save', self.windows)
-		savegamename = self.windows.show(window)
+		savegamename = self.windows.open(window)
 		if savegamename is None:
 			return False # user aborted dialog
 		success = self.session.save(savegamename)
@@ -178,16 +184,15 @@ class IngameGui(LivingObject):
 		}[which]
 		self.cursor = klass(self.session, *args, **kwargs)
 
-	def _update_zoom(self):
+	def _update_zoom(self, message):
 		"""Enable/disable zoom buttons"""
-		zoom = self.session.view.get_zoom()
 		in_icon = self.mainhud.findChild(name='zoomIn')
 		out_icon = self.mainhud.findChild(name='zoomOut')
-		if zoom == VIEW.ZOOM_MIN:
+		if message.zoom == VIEW.ZOOM_MIN:
 			out_icon.set_inactive()
 		else:
 			out_icon.set_active()
-		if zoom == VIEW.ZOOM_MAX:
+		if message.zoom == VIEW.ZOOM_MAX:
 			in_icon.set_inactive()
 		else:
 			in_icon.set_active()
@@ -195,6 +200,8 @@ class IngameGui(LivingObject):
 
 class SettingsTab(TabInterface):
 	widget = 'editor_settings.xml'
+	# SettingsTab needs access widget upon init, thus disable lazy_loading
+	lazy_loading = False
 
 	def __init__(self, world_editor, ingame_gui):
 		super(SettingsTab, self).__init__(widget=self.widget)
@@ -202,7 +209,7 @@ class SettingsTab(TabInterface):
 		self._world_editor = world_editor
 
 		# Brush size
-		for i in range(1, 4):
+		for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
 			b = self.widget.findChild(name='size_%d' % i)
 			b.capture(Callback(self._change_brush_size, i))
 

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -136,7 +136,7 @@ def test_tool_production_chain(s, p):
 	settlement, island = settle(s)
 
 	assert Build(BUILDINGS.MOUNTAIN, 30, 35, island, ownerless=True)(None)
-	assert Build(BUILDINGS.IRON_MINE, 30, 35, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.MINE, 30, 35, island, settlement=settlement)(p)
 
 	charcoal = Build(BUILDINGS.CHARCOAL_BURNER, 25, 35, island, settlement=settlement)(p)
 	assert charcoal

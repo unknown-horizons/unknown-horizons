@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -36,7 +36,7 @@ _master_server = None
 
 def start_server():
 	global _master_server
-	args = [sys.executable, "server.py", "-h", "localhost", "-p", "2002"]
+	args = [sys.executable, "run_server.py", "-h", "localhost", "-p", "2002"]
 	_master_server = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
@@ -93,6 +93,7 @@ def test_create_game(gui):
 	gui.trigger('set_player_details_dialog_window', 'cyan')
 	gui.trigger('set_player_details_dialog_window', 'okButton')
 
+	gui.run(1)
 	# change player name (click on name)
 	gui.trigger('multiplayer_gamelobby', 'pname_' + NetworkInterface().get_client_name())
 	gui.find('playername').write(u'Darkwing')

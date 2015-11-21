@@ -6,7 +6,8 @@ UNKNOWN HORIZONS
 Our code is published under the terms of the  General Public License, version 2
 and later. Instead of listing individual years within the copyright notice of every
 file, all are dated from 2008, the year this project was initiated, to the current year.
-The license text is shipped with this program as doc/GPL (from now on: "see GPL").
+The license text is shipped with this program as doc/licenses/GPL
+(from now on, we abbreviate this as: "see GPL").
 For more information visit  http://www.gnu.org/copyleft/gpl.html .
 
 The file
@@ -40,7 +41,13 @@ obtained at http://www.opensource.org/licenses/mit-license.php .
 /horizons/ext/speaklater.py
 
 is licensed by Armin Ronacher under the terms of the 3-clause BSD license. See
-/doc/LICENSE_speaklater.
+BSD_speaklater.
+
+
+/horizons/ext/polib.py
+
+is licensed by David Jean Louis under the terms of the MIT license. See
+MIT_polib.
 
 The files
 
@@ -95,14 +102,16 @@ composed by Edvard Grieg performed by the Czech National Symphony Orchestra
 More details can be found at http://www.musopen.org/music/piece/1568
 
 
-Published under the terms of Creative Commons Attribution 3.0 Unported License are:
+Published under the terms of Creative Commons Attribution 3.0 Unported License
+(see CC-BY) are:
 
 "Ireland's Coast (Game Edition - LIVE PLAYERS)" by Matthew Pablo (http://www.matthewpablo.com)
 used as content/audio/music/irelands_coast.ogg . More details here:
 http://opengameart.org/content/irelands-coast-game-edition-live-players
 
 
-Published under the terms of Creative Commons Attribution Sharealike 3.0 Unported License are:
+Published under the terms of Creative Commons Attribution Sharealike 3.0
+Unported License (see CC-BY-SA) are:
 
 "Trout School Animation" by Lamoot used in content/gfx/terrain/resources/as_fish0/ .
 More details on the work can be found at  http://opengameart.org/content/trout-school-animation .
@@ -124,7 +133,7 @@ used in content/gfx/buildings/settlers/barracks/as_barracks0/*
 
 
 Our own audiovisual media content is published under the terms of the
-Creative Commons Attribution Sharealike 3.0 Unported License (see CC).
+Creative Commons Attribution Sharealike 3.0 Unported License (see CC-BY-SA).
 For more information visit  http://creativecommons.org/licenses/by-sa/3.0/legalcode .
 
 

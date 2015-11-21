@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-09 17:46+0200\n"
-"PO-Revision-Date: 2013-06-03 23:06+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"POT-Creation-Date: 2013-11-20 22:53+0100\n"
+"PO-Revision-Date: 2013-11-15 11:34+0200\n"
+"Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
 "Language-Team: Simplified Chinese <http://hosted.weblate.org/projects/uh/uh/"
 "zh_CN/>\n"
 "Language: zh_CN\n"
@@ -16,21 +16,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
-#: run_uh.py:220
+#: run_uh.py:124
 msgid "Unknown Horizons has crashed."
 msgstr "游戏程序已经崩溃。"
 
-#: run_uh.py:222
+#: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr "对此我们感到非常抱歉, 我们将尽快解决以上问题。"
 
-#: run_uh.py:223
+#: run_uh.py:127
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "为此，我们需要从日志文件中获取相关信息："
 
-#: run_uh.py:225
+#: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
@@ -38,27 +38,27 @@ msgstr ""
 "请将这些信息通过IRC或者论坛传递给我们，也可以查看我们的官网http://unknown-"
 "horizons.org 。"
 
-#: run_uh.py:273
+#: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
 msgstr "错误: 无法找到程序所需要的\"PyYAML\"库。"
 
-#: run_uh.py:274
+#: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
 msgstr "PyYAML(一个必需的library)无法找到 , 请先对此进行安装。"
 
-#: run_uh.py:275
+#: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
 msgstr ""
 "您可以在http://pyyaml.org/wiki/PyYAML 找到Windows系统下所用的安装文件。"
 
-#: run_uh.py:276
+#: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
 "Linux用户可以通过在程序包管理器下搜索\"pyyaml\"或者\"python-yaml\"来找到它。"
 
-#: run_uh.py:310
+#: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
 msgstr "感谢您使用Unknown Horizons!"
 
@@ -97,11 +97,11 @@ msgstr "退出编辑器"
 msgid "Select brush size:"
 msgstr "选择画笔的大小："
 
-#: content/gui/xml/editor/editor_settings.xml:20
+#: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
 msgstr "选择地形："
 
-#: content/gui/xml/editor/editor_settings.xml:27
+#: content/gui/xml/editor/editor_settings.xml:35
 msgid "(right click to stop)"
 msgstr "（右键单击停止)"
 
@@ -139,19 +139,27 @@ msgid "Inhabitants"
 msgstr "居民"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-msgid "Increase game speed (+)"
+#, fuzzy, python-brace-format
+#| msgid "Increase game speed (+)"
+msgid "Increase game speed ({key})"
 msgstr "加快游戏速度(+)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-msgid "Decrease game speed (-)"
+#, fuzzy, python-brace-format
+#| msgid "Decrease game speed (-)"
+msgid "Decrease game speed ({key})"
 msgstr "降低游戏速度(-)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-msgid "Rotate map counterclockwise (,)"
+#, fuzzy, python-brace-format
+#| msgid "Rotate map counterclockwise (,)"
+msgid "Rotate map counterclockwise ({key})"
 msgstr "逆时针旋转地图(,)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-msgid "Rotate map clockwise (.)"
+#, fuzzy, python-brace-format
+#| msgid "Rotate map clockwise (.)"
+msgid "Rotate map clockwise ({key})"
 msgstr "顺时针旋转地图 (.)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
@@ -163,15 +171,21 @@ msgid "Zoom out"
 msgstr "缩小"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-msgid "Destroy (X)"
-msgstr "破坏（X）"
+#, fuzzy, python-brace-format
+#| msgid "Destroy (X)"
+msgid "Destroy ({key})"
+msgstr "毁坏（X）"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-msgid "Captain's log (L)"
+#, fuzzy, python-brace-format
+#| msgid "Captain's log (L)"
+msgid "Captain's log ({key})"
 msgstr "航海日志（L）"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-msgid "Build menu (B)"
+#, fuzzy, python-brace-format
+#| msgid "Build menu (B)"
+msgid "Build menu ({key})"
 msgstr "建造菜单 (B)"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
@@ -179,7 +193,9 @@ msgid "Diplomacy"
 msgstr "外交"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-msgid "Game menu (Esc)"
+#, fuzzy, python-brace-format
+#| msgid "Game menu (Esc)"
+msgid "Game menu ({key})"
 msgstr "游戏菜单（Esc）"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
@@ -217,11 +233,9 @@ msgstr "输入你的信息："
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:20
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:24
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:23
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:24
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:28
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
-#: horizons/gui/widgets/resourceoverviewbar.py:617
+#: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
 msgstr "运营成本"
 
@@ -300,12 +314,12 @@ msgid "Capacity utilization"
 msgstr "产能利用率"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
-#: horizons/gui/tabs/inventorytab.py:34
+#: horizons/gui/tabs/inventorytab.py:30
 msgid "Settlement inventory"
 msgstr "结算库存"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
-#: horizons/gui/tabs/residentialtabs.py:39
+#: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
 msgstr "殖民者总览"
 
@@ -337,17 +351,17 @@ msgid "Happiness per house"
 msgstr "每间房屋的幸福指数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
-#: horizons/gui/util.py:54
+#: horizons/gui/util.py:55
 msgid "sad"
 msgstr "悲伤"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
-#: horizons/gui/util.py:57
+#: horizons/gui/util.py:58
 msgid "satisfied"
 msgstr "满足"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
-#: horizons/gui/util.py:60
+#: horizons/gui/util.py:61
 msgid "happy"
 msgstr "快乐"
 
@@ -366,7 +380,7 @@ msgstr "每套住房的居民数"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "容纳这些数量居民的房屋"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -382,20 +396,19 @@ msgstr "居民"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
-#: horizons/gui/tabs/buyselltab.py:348
+#: horizons/gui/tabs/buyselltab.py:350
 msgid "Selling"
 msgstr "卖出"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
-#: horizons/gui/tabs/buyselltab.py:341
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
+#: horizons/gui/tabs/buyselltab.py:343
 msgid "Buying"
 msgstr "购买"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:17
 msgid "Name:"
 msgstr "姓名："
 
@@ -410,141 +423,140 @@ msgstr "资源储量"
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
-msgstr ""
+msgstr "这是一个矿点，可以该矿点上面建造一个矿坑来挖取资源。"
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr ""
+msgstr "它包含这些资源："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:11
-#: horizons/gui/modules/ingame.py:169 horizons/gui/tabs/mainsquaretabs.py:67
-#: horizons/gui/widgets/playerssettlements.py:97
+#: horizons/gui/modules/ingame.py:160 horizons/gui/tabs/mainsquaretabs.py:76
+#: horizons/gui/tabs/mainsquaretabs.py:117
+#: horizons/gui/widgets/playerssettlements.py:96
 msgid "Click to change the name of your settlement"
 msgstr "点击更改你的殖民地名称"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
-#, fuzzy
 msgid "Happiness"
-msgstr "幸福"
+msgstr "幸福度"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr ""
+msgstr "居民"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
-msgstr ""
+msgstr "需要的资源："
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
+"信号弹可以用于通知自由贸易者如何到达你的居民点，这样你就可以购买或者卖出物品"
+"了。"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
-msgstr ""
-
-#. Percentage describing how busy the collectors were (100% = always going
-#. for / already carrying full load of goods)
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:27
-#: content/gui/xml/ingame/tabwidget/overview/overview_warehouse.xml:29
-#, fuzzy
-msgid "Collector utilization"
-msgstr "产能利用率"
+msgstr "这是一条自由贸易船。它将多次拜访你，你可以跟它进行交易。"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
-#: horizons/gui/widgets/playersships.py:79
+#: horizons/gui/widgets/playersships.py:78
 msgid "Click to change the name of this ship"
 msgstr "点击来更换船只的名称"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
-#: horizons/gui/tabs/buyselltab.py:84
+#: horizons/gui/tabs/buyselltab.py:88
 msgid "Trade"
 msgstr "贸易"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
-#: horizons/gui/tabs/shiptabs.py:64
+#: horizons/gui/tabs/shiptabs.py:68
 msgid "Build settlement"
 msgstr "修建定居点"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr ""
+msgstr "配置贸易路线"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
-msgstr ""
+msgstr "船舶："
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
 msgid "Exchange:"
-msgstr ""
+msgstr "交换："
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
 msgid "Trade partner:"
-msgstr ""
+msgstr "贸易伙伴："
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "购买或者卖出资源"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
 msgid "Trade history"
-msgstr ""
+msgstr "贸易历史"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
-#, fuzzy
 msgid "Select resources:"
-msgstr "选择一个资源："
+msgstr "选择资源："
 
+#. Percentage describing how busy the collectors were (100% = always going
+#. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
-msgid "Income:"
-msgstr ""
-
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
+#, fuzzy
+msgid "Collector utilization"
+msgstr "产能利用率"
+
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
+msgid "Income:"
+msgstr "收入："
+
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
-#: horizons/gui/widgets/resourceoverviewbar.py:620
+#: horizons/gui/widgets/resourceoverviewbar.py:615
 msgid "Taxes"
 msgstr "税"
 
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
-msgid "Sale"
-msgstr ""
-
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
+msgid "Sale"
+msgstr "出售"
+
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
 msgid "Expenses:"
-msgstr ""
+msgstr "支出："
 
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
-#, fuzzy
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
 msgid "Balance:"
-msgstr "平衡"
+msgstr "结余："
 
-#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:42
+#: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr ""
+msgstr "显示这个定居点生产的资源"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
 msgid "Pause production"
-msgstr ""
+msgstr "暂停生产"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
 msgid "Start production"
-msgstr ""
+msgstr "开始生产"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -559,30 +571,30 @@ msgstr "选择一个资源："
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr ""
+msgstr "你选择的资源将会替换掉当前资源显示出来。点击X将清空显示。"
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
+msgstr "保存当前资源配置作为所有居民点的默认配置。"
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "重置所有居民点的资源配置。"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
 msgid "Move up"
-msgstr ""
+msgstr "向上移动"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
-msgstr ""
+msgstr "删除贸易路线"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
 msgid "Move down"
-msgstr ""
+msgstr "向下移动"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
 msgid "Select a resource:"
@@ -591,12 +603,12 @@ msgstr "选择一个资源:"
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
-msgstr ""
+msgstr "读取之前的条目"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
 msgid "Read next entries"
-msgstr ""
+msgstr "读取后面的条目"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
@@ -605,15 +617,15 @@ msgstr "统计"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 msgid "Players"
-msgstr ""
+msgstr "玩家"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 msgid "My ships"
-msgstr ""
+msgstr "我的船只"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 msgid "My settlements"
-msgstr ""
+msgstr "我的居民点"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
@@ -661,7 +673,7 @@ msgstr ""
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
-#: horizons/gui/widgets/routeconfig.py:100
+#: horizons/gui/widgets/routeconfig.py:103
 msgid "Start route"
 msgstr "启航"
 
@@ -682,7 +694,7 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
 #, fuzzy
 msgid "Name"
-msgstr "游戏"
+msgstr "姓名"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
@@ -724,7 +736,7 @@ msgid "Value of all the buildings in the player's settlement(s)"
 msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:493
 msgid "Settlers"
@@ -750,12 +762,12 @@ msgid ""
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
-#: horizons/gui/widgets/playerssettlements.py:118
+#: horizons/gui/widgets/playerssettlements.py:117
 msgid "Total"
 msgstr "总数"
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
-#: horizons/gui/widgets/resourceoverviewbar.py:630
+#: horizons/gui/widgets/resourceoverviewbar.py:618
 msgid "Balance"
 msgstr "平衡"
 
@@ -772,7 +784,7 @@ msgid "Health"
 msgstr ""
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:39
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
 msgid "Status"
 msgstr ""
 
@@ -796,11 +808,11 @@ msgstr ""
 msgid "Flee"
 msgstr ""
 
-#: content/gui/xml/mainmenu/credits.xml:382
+#: content/gui/xml/mainmenu/credits.xml:471
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:27
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:18
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
+#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
 msgstr ""
 
@@ -809,7 +821,7 @@ msgid "Choose a map size:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:33
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
 msgstr ""
 
@@ -830,7 +842,7 @@ msgstr "保存地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "加载已有地图"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 #, fuzzy
@@ -842,9 +854,9 @@ msgstr "没有已保存的游戏"
 msgid "Start editor"
 msgstr "启航"
 
-#: content/gui/xml/mainmenu/help.xml:5
+#: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
-msgstr ""
+msgstr "返回"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
 #, fuzzy
@@ -980,7 +992,6 @@ msgid "Secondary"
 msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#: content/gui/xml/mainmenu/settings.xml:121
 msgid "Reset to default"
 msgstr "重置为默认值"
 
@@ -1047,43 +1058,34 @@ msgid "Player limit:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
-msgid "Back:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:21
 msgid "Exit to multiplayer menu"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "This will be displayed to other players so they recognize the game."
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:42
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:47
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:54
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
-msgid "Create game:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:55
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
 msgstr ""
 
@@ -1097,31 +1099,27 @@ msgid "Chat:"
 msgstr "聊天"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
-msgid "Leave:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:18
 msgid "Exit gamelobby"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:19
-msgid "Ready:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:20
-msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:27
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:29
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:38
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
+msgstr ""
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
+msgid "Ready:"
+msgstr ""
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
+msgid "Sets your state to ready (necessary for the game to start)"
 msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
@@ -1129,40 +1127,40 @@ msgid "New game - Multiplayer"
 msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
-msgid "Create a new game"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 #, fuzzy
 msgid "Load game:"
 msgstr "装载游戏"
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:26
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:16
-msgid "Main menu:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:36
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:38
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
 msgid "Refresh list:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:41
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
 msgid "Refresh list of active games"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:59
-msgid "Join game"
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
+msgid "Create game:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:60
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
+msgid "Create a new game"
+msgstr ""
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
+#, fuzzy
+msgid "Join game:"
+msgstr "装载游戏"
+
+#: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
 msgstr ""
 
@@ -1171,7 +1169,7 @@ msgid "Change player details"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:14
-#: horizons/gui/widgets/pickbeltwidget.py:87
+#: horizons/gui/modules/settings.py:53
 msgid "Graphics"
 msgstr "图形"
 
@@ -1179,197 +1177,191 @@ msgstr "图形"
 msgid "Screen resolution:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:28
-msgid "Color depth:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:28
-msgid "If set to 0, use the driver default"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:35
+#: content/gui/xml/mainmenu/settings.xml:25
 msgid "Full screen:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:43
+#: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:43
+#: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:51
+#: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:51
+#: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:62
+#: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
 msgstr "声音"
 
-#: content/gui/xml/mainmenu/settings.xml:67
+#: content/gui/xml/mainmenu/settings.xml:60
 msgid "Music volume:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:76
+#: content/gui/xml/mainmenu/settings.xml:69
 msgid "Effects volume:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:84
+#: content/gui/xml/mainmenu/settings.xml:76
 msgid "Enable sound:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:90
+#: content/gui/xml/mainmenu/settings.xml:82
 msgid "Mouse"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:95
+#: content/gui/xml/mainmenu/settings.xml:87
 msgid "Scroll at map edge:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:95
+#: content/gui/xml/mainmenu/settings.xml:87
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:101
+#: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:101
+#: content/gui/xml/mainmenu/settings.xml:93
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:107
+#: content/gui/xml/mainmenu/settings.xml:99
 msgid "Middle mouse button pan:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:107
+#: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:115
+#: content/gui/xml/mainmenu/settings.xml:107
 msgid "0 is default system settings"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:115
+#: content/gui/xml/mainmenu/settings.xml:107
 msgid "Mouse sensitivity:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:132
+#: content/gui/xml/mainmenu/settings.xml:123
 msgid "Saving"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:137
+#: content/gui/xml/mainmenu/settings.xml:128
 msgid "Autosave interval in minutes:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:145
+#: content/gui/xml/mainmenu/settings.xml:136
 msgid "Number of autosaves:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:153
+#: content/gui/xml/mainmenu/settings.xml:144
 msgid "Number of quicksaves:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:161
+#: content/gui/xml/mainmenu/settings.xml:152
 msgid "Language"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:173
+#: content/gui/xml/mainmenu/settings.xml:164
 msgid "General"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:178
+#: content/gui/xml/mainmenu/settings.xml:169
 msgid "Rotate minimap with map:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:178
+#: content/gui/xml/mainmenu/settings.xml:169
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:184
+#: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:184
+#: content/gui/xml/mainmenu/settings.xml:175
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:190
+#: content/gui/xml/mainmenu/settings.xml:181
 msgid "Auto-unload ship:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:190
+#: content/gui/xml/mainmenu/settings.xml:181
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:196
+#: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:196
+#: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:202
+#: content/gui/xml/mainmenu/settings.xml:193
 #, fuzzy
 msgid "Production indicators:"
 msgstr "产品总览"
 
-#: content/gui/xml/mainmenu/settings.xml:202
+#: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:210
+#: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:210
+#: content/gui/xml/mainmenu/settings.xml:201
 msgid "Scroll delay:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:219
+#: content/gui/xml/mainmenu/settings.xml:210
 msgid "Choose a quote type:"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:219
+#: content/gui/xml/mainmenu/settings.xml:210
 msgid "What kind of quote to display while loading a game"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:227
+#: content/gui/xml/mainmenu/settings.xml:218
 msgid "Network"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:231
+#: content/gui/xml/mainmenu/settings.xml:222
 msgid "If set to 0, use the router default"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:231
+#: content/gui/xml/mainmenu/settings.xml:222
 msgid "Network port:"
 msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:243
+msgid "Discard current changes"
+msgstr ""
+
+#: content/gui/xml/mainmenu/settings.xml:244
 #, fuzzy
 msgid "Reset to default settings"
 msgstr "恢复默认设置"
 
-#: content/gui/xml/mainmenu/settings.xml:244
-msgid "Discard current changes"
-msgstr ""
-
-#: content/gui/xml/mainmenu/settings.xml:246
-msgid "Apply"
-msgstr ""
+#: content/gui/xml/mainmenu/settings.xml:245
+#, fuzzy
+#| msgid "Save game"
+msgid "Save changes"
+msgstr "保存游戏"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
 #, fuzzy
@@ -1381,7 +1373,7 @@ msgid "Password of the game. Required to join this game"
 msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
-msgid "Delete selected savegame"
+msgid "Cancel"
 msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
@@ -1394,7 +1386,7 @@ msgid "Details:"
 msgstr "详细："
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
-msgid "Cancel"
+msgid "Delete selected savegame"
 msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
@@ -1413,11 +1405,7 @@ msgstr ""
 msgid "Free play"
 msgstr ""
 
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:36
-msgid "Start game:"
-msgstr ""
-
-#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:37
+#: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
 msgstr ""
 
@@ -1539,109 +1527,11 @@ msgstr "在进行快速保存时程序发生错误。"
 msgid "Your map has not been saved."
 msgstr "你的游戏已经存档了。"
 
-#: horizons/editor/session.py:72 horizons/spsession.py:67
-#, python-format
+#: horizons/editor/session.py:71 horizons/spsession.py:66
+#, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr "如果这项错误再次发生, 请联系开发团队: {website}"
-
-#: horizons/engine/settingsdialog.py:52
-#: horizons/gui/widgets/pickbeltwidget.py:88
-msgid "Hotkeys"
-msgstr ""
-
-#: horizons/engine/settingsdialog.py:69
-msgid "Restart required"
-msgstr "需要重新启动"
-
-#: horizons/engine/settingsdialog.py:70
-msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "你所做的修改需要重新启动Unknown Horizons。"
-
-#: horizons/engine/settingsdialog.py:74
-msgid "Restore default settings"
-msgstr "恢复默认设置"
-
-#: horizons/engine/settingsdialog.py:75
-msgid ""
-"Restoring the default settings will delete all changes to the settings you "
-"made so far."
-msgstr "恢复默认设置将会放弃你所做的设置修改。"
-
-#: horizons/engine/settingsdialog.py:76
-msgid "Do you want to continue?"
-msgstr "你想继续么？"
-
-#: horizons/engine/settingshandler.py:70
-msgid "16 bit"
-msgstr "16 位"
-
-#: horizons/engine/settingshandler.py:70
-msgid "32 bit"
-msgstr "32 位"
-
-#: horizons/engine/settingshandler.py:70
-msgid "Default"
-msgstr "默认值"
-
-#: horizons/engine/settingshandler.py:141
-msgid "Warning"
-msgstr "警告"
-
-#. i18n Warning popup shown in settings when SDL is selected as renderer.
-#: horizons/engine/settingshandler.py:143
-msgid ""
-"The SDL renderer is meant as a fallback solution only and has serious "
-"graphical glitches. \n"
-"\n"
-"Use at own risk!"
-msgstr ""
-"SDL渲染器已回退至备用模式，这意味着出现了一些图形故障。继续运行自行承担风险！"
-
-#: horizons/engine/settingshandler.py:222
-msgid "Invalid network port"
-msgstr "无效的网络端口"
-
-#: horizons/engine/settingshandler.py:223
-msgid ""
-"The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr "你设置的端口号无效。它必须为1至65535之间的数字。"
-
-#: horizons/engine/settingshandler.py:224
-msgid ""
-"Please check the port you entered and make sure it is in the specified range."
-msgstr "请检查你输入的端口值并确认它在指定范围。"
-
-#: horizons/engine/settingshandler.py:236
-msgid "Failed to apply new network settings."
-msgstr "应用网络设置失败。"
-
-#: horizons/engine/settingshandler.py:237
-#: horizons/gui/modules/multiplayermenu.py:131
-msgid ""
-"Network features could not be initialized with the current configuration."
-msgstr "当前配置的网络设置不能初始化。"
-
-#: horizons/engine/settingshandler.py:238
-#: horizons/gui/modules/multiplayermenu.py:132
-msgid "Check the settings you specified in the network section."
-msgstr "检查你设定的设置方案中网络连接部分。"
-
-#. i18n This is advice for players seeing a network error with the current config
-#: horizons/engine/settingshandler.py:242
-msgid ""
-"Low port numbers sometimes require special access privileges, try 0 or a "
-"number greater than 1024."
-msgstr "小数值的端口号有时需要特殊的接入权限，尝试0或者大于1024的数值。"
-
-#: horizons/engine/settingshandler.py:277
-msgid "Logging enabled"
-msgstr "日志已启用"
-
-#: horizons/engine/settingshandler.py:279
-#, python-format
-msgid "Logs are written to {directory}."
-msgstr "日志已写入{directory}。"
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1651,17 +1541,17 @@ msgstr "你确定要退出 Unknown Horizons ？"
 msgid "Quit Game"
 msgstr "退出游戏"
 
-#: horizons/gui/ingamegui.py:218
+#: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
 msgstr "没有可以进行的外交"
 
-#: horizons/gui/ingamegui.py:219
+#: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "无法进行外交因为没有其他玩家。"
 
 #. size of empty map in map editor
-#: horizons/gui/modules/editorstartmenu.py:92
-#, python-format
+#: horizons/gui/modules/editorstartmenu.py:91
+#, python-brace-format
 msgid "{size}x{size} tiles"
 msgstr ""
 
@@ -1669,18 +1559,18 @@ msgstr ""
 msgid "Press desired key"
 msgstr ""
 
-#: horizons/gui/modules/hotkeys_settings.py:141
-#, python-format
+#: horizons/gui/modules/hotkeys_settings.py:140
+#, python-brace-format
 msgid "{key} is already set to {action}."
 msgstr ""
 
-#: horizons/gui/modules/hotkeys_settings.py:142
+#: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
 msgstr ""
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
-#: horizons/gui/modules/hotkeys_settings.py:143
-#: horizons/gui/modules/select_savegame.py:157
+#: horizons/gui/modules/hotkeys_settings.py:142
+#: horizons/gui/modules/select_savegame.py:155
 msgid "Confirmation for overwriting"
 msgstr "覆盖确认"
 
@@ -1688,21 +1578,21 @@ msgstr "覆盖确认"
 msgid "Quotes"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:59
+#: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:61
+#: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:62
+#: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
 msgstr ""
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
-#, python-format
+#, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
 msgstr ""
 
@@ -1741,48 +1631,56 @@ msgstr ""
 msgid "Press 'T' to make trees transparent."
 msgstr ""
 
-#. translators: these are descriptions of the current task while loading a game
-#: horizons/gui/modules/loadingscreen.py:101
+#. This are the options you can select in the Settings what type of quotes
+#. should be
+#. displayed during load
+#: horizons/gui/modules/loadingscreen.py:80
+msgid "Mixed"
+msgstr ""
+
+#. translators: these are descriptions of the current task while loading a
+#. game
+#: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:102
+#: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:103
+#: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:104
+#: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:105
+#: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:106
+#: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:107
+#: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:108
+#: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:109
+#: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:110
+#: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
 msgstr ""
 
-#: horizons/gui/modules/loadingscreen.py:111
+#: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
 msgstr ""
 
@@ -1803,6 +1701,17 @@ msgstr "Linux用户：尝试通过你的安装包管理器安装pyenet。"
 #: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
 msgstr "初始化网络失败。"
+
+#: horizons/gui/modules/multiplayermenu.py:131
+#: horizons/gui/modules/settings.py:273
+msgid ""
+"Network features could not be initialized with the current configuration."
+msgstr "当前配置的网络设置不能初始化。"
+
+#: horizons/gui/modules/multiplayermenu.py:132
+#: horizons/gui/modules/settings.py:274
+msgid "Check the settings you specified in the network section."
+msgstr "检查你设定的设置方案中网络连接部分。"
 
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
@@ -1827,36 +1736,37 @@ msgstr "网络连接中出现了一些错误："
 msgid "Version differs!"
 msgstr "版本不同！"
 
-#: horizons/gui/modules/multiplayermenu.py:206
-#: horizons/gui/modules/multiplayermenu.py:443
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:205
+#: horizons/gui/modules/multiplayermenu.py:457
+#, python-brace-format
 msgid "Map: {map_name}"
 msgstr "地图：{map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:207
-#: horizons/gui/modules/multiplayermenu.py:445
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:206
+#: horizons/gui/modules/multiplayermenu.py:458
+#, python-brace-format
 msgid "Name: {game_name}"
 msgstr "名称：{game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:208
-#: horizons/gui/modules/multiplayermenu.py:447
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:207
+#: horizons/gui/modules/multiplayermenu.py:459
+#, fuzzy, python-brace-format
+#| msgid "Creator: {game_creator}"
 msgid "Creator: {game_creator}"
 msgstr "创建者：{player}"
 
-#: horizons/gui/modules/multiplayermenu.py:210
-#: horizons/gui/modules/multiplayermenu.py:449
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:208
+#: horizons/gui/modules/multiplayermenu.py:460
+#, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "玩家：{player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:230
+#: horizons/gui/modules/multiplayermenu.py:228
 msgid "Wrong version"
 msgstr "错误的版本"
 
-#: horizons/gui/modules/multiplayermenu.py:232
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:229
+#, python-brace-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
 "game must use the same version. This can be fixed by every player updating "
@@ -1867,87 +1777,107 @@ msgstr ""
 "以通过全体更新至最新版本来解决。游戏版本：{game_version}你的版本："
 "{own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:270
+#: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:271
+#: horizons/gui/modules/multiplayermenu.py:268
 msgid "Enter password:"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:351
-#: horizons/gui/modules/singleplayermenu.py:406
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:347
+#: horizons/gui/modules/singleplayermenu.py:407
+#, python-brace-format
 msgid "Recommended number of players: {number}"
 msgstr "需要玩家数量：{number}"
 
-#: horizons/gui/modules/multiplayermenu.py:467
-#: horizons/gui/modules/multiplayermenu.py:475
+#. TODO: add support for selecting difficulty levels to the GUI
+#: horizons/gui/modules/multiplayermenu.py:393
+#: horizons/network/networkinterface.py:526
+msgid "Ready"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:395
+msgid "Not ready"
+msgstr ""
+
+#: horizons/gui/modules/multiplayermenu.py:430
+#, fuzzy
+#| msgid "Enter your message:"
+msgid "Enter your message"
+msgstr "输入你的信息："
+
+#: horizons/gui/modules/multiplayermenu.py:478
+#: horizons/gui/modules/multiplayermenu.py:486
 msgid "Click here to change your name and/or color"
 msgstr "点击更改你的殖民地名称"
 
-#: horizons/gui/modules/multiplayermenu.py:494
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:504
+#, fuzzy, python-brace-format
+#| msgid "Kick {player}"
 msgid "Kick {player}"
 msgstr "{palyer}的船只"
 
-#: horizons/gui/modules/multiplayermenu.py:562
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:571
+#, fuzzy, python-brace-format
+#| msgid "{player} has joined the game"
 msgid "{player} has joined the game"
 msgstr "{玩家} 加入了游戏"
 
-#: horizons/gui/modules/multiplayermenu.py:566
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:574
+#, fuzzy, python-brace-format
+#| msgid "{player} has left the game"
 msgid "{player} has left the game"
 msgstr "{玩家} 离开了游戏"
 
-#: horizons/gui/modules/multiplayermenu.py:572
+#: horizons/gui/modules/multiplayermenu.py:580
 msgid "You are now ready"
 msgstr "你已经准备就绪了"
 
-#: horizons/gui/modules/multiplayermenu.py:574
+#: horizons/gui/modules/multiplayermenu.py:582
 msgid "You are not ready anymore"
 msgstr "你不再处于就绪状态"
 
-#: horizons/gui/modules/multiplayermenu.py:578
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:585
+#, python-brace-format
 msgid "{player} is now ready"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:581
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:587
+#, python-brace-format
 msgid "{player} not ready anymore"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:586
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:591
+#, python-brace-format
 msgid "You are now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:589
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:593
+#, python-brace-format
 msgid "{player} is now known as {new_name}"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:593
+#: horizons/gui/modules/multiplayermenu.py:597
 msgid "You changed your color"
 msgstr "你修改了你的颜色"
 
-#: horizons/gui/modules/multiplayermenu.py:596
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:599
+#, python-brace-format
 msgid "{player} changed their color"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:600
+#: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:600
+#: horizons/gui/modules/multiplayermenu.py:603
 msgid "You have been kicked from the game by creator"
 msgstr "你被创建者踢出了游戏"
 
-#: horizons/gui/modules/multiplayermenu.py:604
-#, python-format
+#: horizons/gui/modules/multiplayermenu.py:606
+#, fuzzy, python-brace-format
+#| msgid "{player} got kicked by creator"
 msgid "{player} got kicked by creator"
 msgstr "{玩家} 被创建者踢出了游戏"
 
@@ -1975,146 +1905,220 @@ msgstr "没有指定文件名"
 msgid "Please enter a valid filename."
 msgstr "请输入一个有效的文件名。"
 
-#: horizons/gui/modules/select_savegame.py:150
-#, fuzzy, python-format
+#: horizons/gui/modules/select_savegame.py:149
+#, fuzzy, python-brace-format
 msgid "A savegame with the name {name} already exists."
 msgstr "要保存的游戏存档'{name}'已存在。"
 
-#: horizons/gui/modules/select_savegame.py:153
-#, fuzzy, python-format
+#: horizons/gui/modules/select_savegame.py:151
+#, fuzzy, python-brace-format
 msgid "A map with the name {name} already exists."
 msgstr "要保存的游戏存档'{name}'已存在。"
 
-#: horizons/gui/modules/select_savegame.py:155
+#: horizons/gui/modules/select_savegame.py:153
 msgid "Overwrite it?"
 msgstr "覆盖它？"
 
-#: horizons/gui/modules/select_savegame.py:219
+#: horizons/gui/modules/select_savegame.py:217
 msgid "Unknown savedate"
 msgstr "未知的保存时间"
 
-#: horizons/gui/modules/select_savegame.py:223
-#, python-format
+#: horizons/gui/modules/select_savegame.py:220
+#, python-brace-format
 msgid "Saved at {time}"
 msgstr "保存在{time}"
 
 #. N_ takes care of plural forms for different languages
-#: horizons/gui/modules/select_savegame.py:228
-#, python-format
+#: horizons/gui/modules/select_savegame.py:224
+#, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] "已保存{amount}次"
 
-#: horizons/gui/modules/select_savegame.py:236
-#, python-format
+#: horizons/gui/modules/select_savegame.py:231
+#, python-brace-format
 msgid "Savegame version {version}"
 msgstr "游戏存档版本 {version}"
 
-#: horizons/gui/modules/select_savegame.py:240
+#: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
 msgstr "可能不兼容"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
-#: horizons/gui/modules/select_savegame.py:244
+#: horizons/gui/modules/select_savegame.py:239
 msgid "Incompatible version"
 msgstr "不匹配的版本"
 
-#: horizons/gui/modules/select_savegame.py:257
+#: horizons/gui/modules/select_savegame.py:252
 msgid "No file selected"
 msgstr "没有选择文件"
 
-#: horizons/gui/modules/select_savegame.py:257
+#: horizons/gui/modules/select_savegame.py:252
 msgid "You need to select a savegame to delete."
 msgstr "你需要选择一个游戏存档来删除。"
 
-#: horizons/gui/modules/select_savegame.py:261
-#, python-format
+#: horizons/gui/modules/select_savegame.py:255
+#, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
 msgstr "你真的要删除游戏存档 '{name}'?"
 
-#: horizons/gui/modules/select_savegame.py:263
+#: horizons/gui/modules/select_savegame.py:257
 msgid "Confirm deletion"
 msgstr "删除确认"
 
-#: horizons/gui/modules/select_savegame.py:268
+#: horizons/gui/modules/select_savegame.py:262
 msgid "Error!"
 msgstr "出错！"
 
-#: horizons/gui/modules/select_savegame.py:268
+#: horizons/gui/modules/select_savegame.py:262
 msgid "Failed to delete savefile!"
 msgstr "删除游戏存档失败！"
 
-#: horizons/gui/modules/singleplayermenu.py:105
+#: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
+msgid "Hotkeys"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:55
+msgid "Game"
+msgstr "游戏"
+
+#: horizons/gui/modules/settings.py:72
+msgid "Disabled"
+msgstr ""
+
+#: horizons/gui/modules/settings.py:126
+msgid "Restart required"
+msgstr "需要重新启动"
+
+#: horizons/gui/modules/settings.py:127
+msgid "Some of your changes require a restart of Unknown Horizons."
+msgstr "你所做的修改需要重新启动Unknown Horizons。"
+
+#: horizons/gui/modules/settings.py:131
+msgid "Restore default settings"
+msgstr "恢复默认设置"
+
+#: horizons/gui/modules/settings.py:132
+msgid ""
+"Restoring the default settings will delete all changes to the settings you "
+"made so far."
+msgstr "恢复默认设置将会放弃你所做的设置修改。"
+
+#: horizons/gui/modules/settings.py:133
+msgid "Do you want to continue?"
+msgstr "你想继续么？"
+
+#: horizons/gui/modules/settings.py:230
+msgid "Warning"
+msgstr "警告"
+
+#. i18n Warning popup shown in settings when SDL is selected as renderer.
+#: horizons/gui/modules/settings.py:232
+msgid ""
+"The SDL renderer is meant as a fallback solution only and has serious "
+"graphical glitches. \n"
+"\n"
+"Use at own risk!"
+msgstr ""
+"SDL渲染器已回退至备用模式，这意味着出现了一些图形故障。继续运行自行承担风险！"
+
+#: horizons/gui/modules/settings.py:259
+msgid "Invalid network port"
+msgstr "无效的网络端口"
+
+#: horizons/gui/modules/settings.py:260
+msgid ""
+"The port you specified is not valid. It must be a number between 1 and 65535."
+msgstr "你设置的端口号无效。它必须为1至65535之间的数字。"
+
+#: horizons/gui/modules/settings.py:261
+msgid ""
+"Please check the port you entered and make sure it is in the specified range."
+msgstr "请检查你输入的端口值并确认它在指定范围。"
+
+#: horizons/gui/modules/settings.py:272
+msgid "Failed to apply new network settings."
+msgstr "应用网络设置失败。"
+
+#. i18n This is advice for players seeing a network error with the current
+#. config
+#: horizons/gui/modules/settings.py:278
+msgid ""
+"Low port numbers sometimes require special access privileges, try 0 or a "
+"number greater than 1024."
+msgstr "小数值的端口号有时需要特殊的接入权限，尝试0或者大于1024的数值。"
+
+#: horizons/gui/modules/singleplayermenu.py:106
 msgid "Invalid player name"
 msgstr "无效的玩家名"
 
-#: horizons/gui/modules/singleplayermenu.py:105
+#: horizons/gui/modules/singleplayermenu.py:106
 msgid "You entered an invalid playername."
 msgstr "你输入了一个无效的玩家名。"
 
-#: horizons/gui/modules/singleplayermenu.py:148
+#: horizons/gui/modules/singleplayermenu.py:149
 msgid "Resource density:"
 msgstr "资源密度："
 
-#: horizons/gui/modules/singleplayermenu.py:226
+#: horizons/gui/modules/singleplayermenu.py:227
 msgid "Map size:"
 msgstr "地图大小："
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:228
 msgid "Water:"
 msgstr "水域："
 
-#: horizons/gui/modules/singleplayermenu.py:228
+#: horizons/gui/modules/singleplayermenu.py:229
 msgid "Max island size:"
 msgstr "最大岛屿大小："
 
-#: horizons/gui/modules/singleplayermenu.py:229
+#: horizons/gui/modules/singleplayermenu.py:230
 msgid "Preferred island size:"
 msgstr "推荐岛屿大小："
 
-#: horizons/gui/modules/singleplayermenu.py:230
+#: horizons/gui/modules/singleplayermenu.py:231
 msgid "Island size deviation:"
 msgstr "岛屿大小偏差："
 
-#: horizons/gui/modules/singleplayermenu.py:343
+#: horizons/gui/modules/singleplayermenu.py:345
 msgid "Click to generate a different random map"
 msgstr "点击生成不同的随机地图"
 
-#: horizons/gui/modules/singleplayermenu.py:504
+#: horizons/gui/modules/singleplayermenu.py:505
 msgid "Invalid scenario file"
 msgstr "无效的场景文件"
 
-#: horizons/gui/modules/singleplayermenu.py:505
+#: horizons/gui/modules/singleplayermenu.py:506
 msgid "The selected file is not a valid scenario file."
 msgstr "选择的文件不是有效的场景文件。"
 
-#: horizons/gui/modules/singleplayermenu.py:506
+#: horizons/gui/modules/singleplayermenu.py:507
 msgid "Error message:"
 msgstr "错误信息："
 
-#: horizons/gui/modules/singleplayermenu.py:507
+#: horizons/gui/modules/singleplayermenu.py:508
 msgid "Please report this to the author."
 msgstr "请报告给作者。"
 
 #: horizons/gui/modules/singleplayermenu.py:570
-#, python-format
+#, python-brace-format
 msgid "Difficulty: {difficulty}"
 msgstr "难度：{difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:574
-#, python-format
+#: horizons/gui/modules/singleplayermenu.py:573
+#, python-brace-format
 msgid "Author: {author}"
 msgstr "作者：{author}"
 
-#: horizons/gui/modules/singleplayermenu.py:578
-#, python-format
+#: horizons/gui/modules/singleplayermenu.py:576
+#, python-brace-format
 msgid "Description: {desc}"
 msgstr "描述：{desc}"
 
 #. set translated building name in gui
-#: horizons/gui/mousetools/buildingtool.py:231
-#, python-format
+#: horizons/gui/mousetools/buildingtool.py:230
+#, python-brace-format
 msgid "Build {building}"
 msgstr "修建{building}"
 
@@ -2122,196 +2126,182 @@ msgstr "修建{building}"
 msgid "Press H to remove this hint"
 msgstr "按H键移除这条提示"
 
-#: horizons/gui/tabs/boatbuildertabs.py:51
+#: horizons/gui/tabs/boatbuildertabs.py:47
 msgid "Boat builder overview"
 msgstr "小船制造者概述"
 
-#: horizons/gui/tabs/boatbuildertabs.py:96
-#, python-format
+#: horizons/gui/tabs/boatbuildertabs.py:94
+#, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (进入队列: {place})"
 
-#: horizons/gui/tabs/boatbuildertabs.py:208
+#: horizons/gui/tabs/boatbuildertabs.py:198
 msgid "Build this ship!"
 msgstr "修建这艘船！"
 
-#: horizons/gui/tabs/boatbuildertabs.py:250
+#: horizons/gui/tabs/boatbuildertabs.py:234
 msgid "Fisher boats"
 msgstr "渔船"
 
-#: horizons/gui/tabs/boatbuildertabs.py:262
+#: horizons/gui/tabs/boatbuildertabs.py:246
 msgid "Trade boats"
 msgstr "商船"
 
-#: horizons/gui/tabs/boatbuildertabs.py:273
+#: horizons/gui/tabs/boatbuildertabs.py:258
 msgid "War boats"
 msgstr "战船"
 
-#: horizons/gui/tabs/boatbuildertabs.py:284
+#: horizons/gui/tabs/boatbuildertabs.py:270
 msgid "War ships"
 msgstr "战舰"
 
-#: horizons/gui/tabs/boatbuildertabs.py:302
+#: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Confirm order"
 msgstr "确认订单"
 
-#: horizons/gui/tabs/buildingtabs.py:41
-#: horizons/gui/tabs/enemybuildingtabs.py:44
-msgid "Warehouse overview"
-msgstr "库存总览"
-
-#: horizons/gui/tabs/buildingtabs.py:76
+#: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
 msgstr "塔楼概述"
 
-#: horizons/gui/tabs/buildingtabs.py:87 horizons/gui/tabs/overviewtab.py:35
+#: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
 msgid "Overview"
 msgstr "总览"
 
-#: horizons/gui/tabs/buildrelatedtab.py:44
+#: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
 msgstr "建造相关的建筑物"
 
-#. Add necessary resources to tooltip
-#. [br] means newline
-#: horizons/gui/tabs/buildtabs.py:144
-#, fuzzy
-msgid "Resources needed:"
-msgstr "还需资源："
-
-#. You usually do not need to change anything here when translating
-#: horizons/gui/tabs/buildtabs.py:150
-#, python-format
-msgid "{resource}: {amount}"
-msgstr ""
-
-#: horizons/gui/tabs/buyselltab.py:130
+#: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
 msgstr "点击一个资源槽来增加一个贸易名额。"
 
 #. new res
-#: horizons/gui/tabs/buyselltab.py:173
+#: horizons/gui/tabs/buyselltab.py:177
 msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr "先点击此标签来决定是买还是卖，探后通过右边的滑动框来决定买卖的数量。"
 
-#: horizons/gui/tabs/buyselltab.py:318
-#, python-format
+#: horizons/gui/tabs/buyselltab.py:321
+#, python-brace-format
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
 "当{resource_name}资源库存量少于{limit}吨时，以{price}金币/吨的价格买入。"
 
-#: horizons/gui/tabs/buyselltab.py:322
-#, python-format
+#: horizons/gui/tabs/buyselltab.py:324
+#, python-brace-format
 msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
 "当{resource_name}资源库存量超过{limit}吨时，以{price}金币/吨的价格售出。"
 
-#: horizons/gui/tabs/mainsquaretabs.py:65
+#: horizons/gui/tabs/enemybuildingtabs.py:39
+msgid "Warehouse overview"
+msgstr "库存总览"
+
+#: horizons/gui/tabs/mainsquaretabs.py:63
 msgid "Account"
 msgstr "帐号"
 
-#: horizons/gui/tabs/mainsquaretabs.py:105
+#: horizons/gui/tabs/mainsquaretabs.py:112
 msgid "Main square overview"
 msgstr "中心广场总览"
 
-#: horizons/gui/tabs/mainsquaretabs.py:127
+#: horizons/gui/tabs/mainsquaretabs.py:143
 msgid "Upgrade not possible:"
 msgstr "不可以升级："
 
-#: horizons/gui/tabs/mainsquaretabs.py:130
+#: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
 msgstr ""
 
-#: horizons/gui/tabs/mainsquaretabs.py:175
+#: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
 msgstr "无法升级"
 
-#: horizons/gui/tabs/mainsquaretabs.py:178
+#: horizons/gui/tabs/mainsquaretabs.py:195
 msgid "Allow upgrades"
 msgstr "可以升级"
 
-#: horizons/gui/tabs/overviewtab.py:105
+#: horizons/gui/tabs/overviewtab.py:101
 msgid "Unit overview"
 msgstr "单位总览"
 
-#: horizons/gui/tabs/productiontabs.py:53
-#: horizons/gui/tabs/productiontabs.py:241
+#: horizons/gui/tabs/productiontabs.py:44
+#: horizons/gui/tabs/productiontabs.py:235
 msgid "Production overview"
 msgstr "产品总览"
 
-#: horizons/gui/tabs/selectmultitab.py:58
+#: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
 msgstr "选中的单位"
 
-#: horizons/gui/tabs/shiptabs.py:40 horizons/gui/tabs/shiptabs.py:170
-#: horizons/gui/tabs/shiptabs.py:179
+#: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
+#: horizons/gui/tabs/shiptabs.py:178
 msgid "Ship overview"
 msgstr "船只总览"
 
-#: horizons/gui/tabs/shiptabs.py:51
+#: horizons/gui/tabs/shiptabs.py:55
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr "船只需要在一个小岛靠岸来建立定居点。"
 
-#: horizons/gui/tabs/shiptabs.py:56
+#: horizons/gui/tabs/shiptabs.py:60
 msgid "You already have a settlement on this island."
 msgstr "在这座岛上你已经有了一个定居点。"
 
-#: horizons/gui/tabs/shiptabs.py:87
+#: horizons/gui/tabs/shiptabs.py:91
 msgid "Load/Unload"
 msgstr "搬运/卸货"
 
-#: horizons/gui/tabs/shiptabs.py:89
+#: horizons/gui/tabs/shiptabs.py:93
 msgid "Buy/Sell"
 msgstr "买/卖"
 
-#: horizons/gui/tabs/shiptabs.py:98
+#: horizons/gui/tabs/shiptabs.py:102
 msgid "Too far from the nearest tradeable warehouse"
 msgstr "离自己或者盟友最近的仓库太远"
 
-#: horizons/gui/tabs/shiptabs.py:104
+#: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
 msgstr "不能给商船安装武器"
 
-#: horizons/gui/tabs/shiptabs.py:105
+#: horizons/gui/tabs/shiptabs.py:109
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr "不允许给商船安装武器。"
 
-#: horizons/gui/tabs/shiptabs.py:138
+#: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
 msgstr "武装"
 
-#: horizons/gui/tabs/shiptabs.py:142
+#: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
 msgstr "解除武装"
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:71
-#, python-format
+#: horizons/gui/widgets/imagefillstatusbutton.py:70
+#, python-brace-format
 msgid "{resource_name}: {price} gold"
 msgstr ""
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:77
-#, python-format
+#: horizons/gui/widgets/imagefillstatusbutton.py:75
+#, python-brace-format
 msgid "buy for {buyprice} gold"
 msgstr ""
 
-#: horizons/gui/widgets/imagefillstatusbutton.py:80
-#, python-format
+#: horizons/gui/widgets/imagefillstatusbutton.py:77
+#, python-brace-format
 msgid "sell for {sellprice} gold"
 msgstr ""
 
-#: horizons/gui/widgets/inventory.py:168
-#, python-format
+#: horizons/gui/widgets/inventory.py:166
+#, python-brace-format
 msgid "{stored}/{limit}"
 msgstr ""
 
-#: horizons/gui/widgets/inventory.py:171
-#, python-format
+#: horizons/gui/widgets/inventory.py:168
+#, python-brace-format
 msgid "Limit: {amount}t per slot"
 msgstr "限制:{amount}吨 每个槽位"
 
@@ -2327,31 +2317,28 @@ msgstr "无知"
 msgid "There is nothing written in your logbook yet!"
 msgstr "目前为止你的日志仍然是空的"
 
-#: horizons/gui/widgets/pickbeltwidget.py:89
-msgid "Game"
-msgstr "游戏"
-
-#: horizons/gui/widgets/playerssettlements.py:40
-#, python-format
+#: horizons/gui/widgets/playerssettlements.py:39
+#, python-brace-format
 msgid "Settlements of {player}"
 msgstr "{player}的殖民地"
 
-#: horizons/gui/widgets/playersships.py:45
-#, python-format
+#: horizons/gui/widgets/playersships.py:44
+#, fuzzy, python-brace-format
+#| msgid "Ships of {player}"
 msgid "Ships of {player}"
 msgstr "{palyer}的船只"
 
 #. i18n There are no weapons equipped at the moment.
-#: horizons/gui/widgets/playersships.py:95
+#: horizons/gui/widgets/playersships.py:94
 msgid "None"
 msgstr "无"
 
-#: horizons/gui/widgets/playersships.py:97
+#: horizons/gui/widgets/playersships.py:96
 msgid "N/A"
 msgstr "无"
 
-#: horizons/gui/widgets/productionoverview.py:61
-#, python-format
+#: horizons/gui/widgets/productionoverview.py:60
+#, python-brace-format
 msgid "Production overview of {settlement}"
 msgstr "{settlement}的产品总览"
 
@@ -2379,582 +2366,582 @@ msgid ""
 "for all settlements."
 msgstr "重置为默认设置。"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:623
+#: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
 msgstr ""
 
-#: horizons/gui/widgets/resourceoverviewbar.py:626
+#: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
 msgstr "卖出"
 
-#: horizons/gui/widgets/routeconfig.py:104
+#: horizons/gui/widgets/routeconfig.py:107
 msgid "Stop route"
 msgstr "停航"
 
-#: horizons/gui/widgets/routeconfig.py:108
+#: horizons/gui/widgets/routeconfig.py:114
 msgid "Need at least two settlements"
 msgstr "至少需要2个殖民地"
 
-#: horizons/gui/widgets/routeconfig.py:109
+#: horizons/gui/widgets/routeconfig.py:115
 msgid "You need at least two different settlements in your route."
 msgstr "在航线上你至少需要2个不同的殖民地。"
 
-#: horizons/gui/widgets/routeconfig.py:140
+#: horizons/gui/widgets/routeconfig.py:144
 msgid "Click on a settlement to add a waypoint!"
 msgstr "点击一个殖民地来增加一个路标"
 
-#: horizons/gui/widgets/routeconfig.py:179
+#: horizons/gui/widgets/routeconfig.py:183
 msgid "Loading into ship"
 msgstr "装入船只"
 
-#: horizons/gui/widgets/routeconfig.py:186
+#: horizons/gui/widgets/routeconfig.py:190
 msgid "Unloading from ship"
 msgstr "从船上卸下"
 
-#: horizons/gui/widgets/routeconfig.py:371
+#: horizons/gui/widgets/routeconfig.py:376
 msgid "You are not allowed to trade with this player"
 msgstr ""
 
 #. You usually do not need to change anything here when translating
-#: horizons/gui/widgets/unitoverview.py:119
-#, python-format
+#: horizons/gui/widgets/unitoverview.py:118
+#, python-brace-format
 msgid "{weapon}: {amount}"
 msgstr ""
 
-#: horizons/gui/widgets/unitoverview.py:124
+#: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
 msgstr "无"
 
 #: horizons/gui/windows.py:392
-#, python-format
+#, python-brace-format
 msgid "Details: {error_details}"
 msgstr ""
 
-#: horizons/gui/windows.py:395
-#, python-format
+#: horizons/gui/windows.py:394
+#, python-brace-format
 msgid "Error: {error_message}"
 msgstr "错误信息：{error_message}"
 
-#. name of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:56
-#, fuzzy
-msgid "Alvearies"
-msgstr "洞窑"
-
-#. tooltip_text of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:58
-msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
-
 #. name of buildings:bakery
-#: horizons/i18n/objecttranslations.py:63
+#: horizons/i18n/objecttranslations.py:56
 msgid "Bakery"
 msgstr ""
 
 #. tooltip_text of buildings:bakery
-#: horizons/i18n/objecttranslations.py:65
+#: horizons/i18n/objecttranslations.py:58
 msgid "Consumes flour. Produces food."
 msgstr ""
 
 #. name of buildings:barracks
-#: horizons/i18n/objecttranslations.py:70
+#: horizons/i18n/objecttranslations.py:63
 msgid "Barracks"
 msgstr ""
 
 #. tooltip_text of buildings:barracks
-#: horizons/i18n/objecttranslations.py:72
+#: horizons/i18n/objecttranslations.py:65
 msgid "Recruits units suitable for ground combat."
 msgstr ""
 
 #. name of buildings:blender
-#: horizons/i18n/objecttranslations.py:77
+#: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
 msgstr ""
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:79
+#: horizons/i18n/objecttranslations.py:72
 msgid "Produces condiments out of spices."
 msgstr ""
 
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:84
+#: horizons/i18n/objecttranslations.py:77
 msgid "Boat Builder"
 msgstr ""
 
 #. tooltip_text of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:86
+#: horizons/i18n/objecttranslations.py:79
 msgid "Builds boats and small ships. Built on coast."
 msgstr ""
 
 #. name of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:91
+#: horizons/i18n/objecttranslations.py:84
 msgid "Brickyard"
 msgstr ""
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:93
+#: horizons/i18n/objecttranslations.py:86
 msgid "Turns clay into bricks."
 msgstr ""
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:98
+#: horizons/i18n/objecttranslations.py:91
 msgid "Butchery"
 msgstr ""
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:100
+#: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
 msgstr ""
 
-#. name of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:105
-msgid "Cattle Run"
-msgstr ""
-
-#. tooltip_text of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:107
-msgid "Raises cattle. Needs a farm."
-msgstr ""
-
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:112
+#: horizons/i18n/objecttranslations.py:98
 msgid "Charcoal Burning"
 msgstr ""
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:114
+#: horizons/i18n/objecttranslations.py:100
 msgid "Burns a lot of boards."
 msgstr ""
 
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:119
+#: horizons/i18n/objecttranslations.py:105
 #, fuzzy
 msgid "Clay Deposit"
 msgstr "粘土存量"
 
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:124
+#: horizons/i18n/objecttranslations.py:110
 msgid "Clay Pit"
 msgstr ""
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:126
+#: horizons/i18n/objecttranslations.py:112
 msgid "Gets clay from deposit."
 msgstr ""
 
-#. name of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:131
-msgid "Cocoa Field"
-msgstr ""
-
-#. tooltip_text of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:133
-msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
-
-#. name of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:138
-msgid "Corn Field"
-msgstr ""
-
-#. tooltip_text of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:140
-msgid "Yields corn. Needs a farm."
-msgstr ""
-
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:145
+#: horizons/i18n/objecttranslations.py:117
 msgid "Distillery"
 msgstr ""
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:147
+#: horizons/i18n/objecttranslations.py:119
 msgid "Turns sugar into liquor."
 msgstr ""
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:152
+#: horizons/i18n/objecttranslations.py:124
 msgid "Doctor"
 msgstr ""
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:154
+#: horizons/i18n/objecttranslations.py:126
 msgid "Treats diseases. Consumes herbs."
 msgstr ""
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:159
+#: horizons/i18n/objecttranslations.py:131
 msgid "Farm"
 msgstr ""
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:161
+#: horizons/i18n/objecttranslations.py:133
 msgid "Grows field crops and raises livestock."
 msgstr ""
 
-#. name of buildings:fireservice
+#. name of buildings:fields:alvearies
+#: horizons/i18n/objecttranslations.py:138
+#, fuzzy
+msgid "Alvearies"
+msgstr "洞窑"
+
+#. tooltip_text of buildings:fields:alvearies
+#: horizons/i18n/objecttranslations.py:140
+msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:cattlerun
+#: horizons/i18n/objecttranslations.py:145
+msgid "Cattle Run"
+msgstr ""
+
+#. tooltip_text of buildings:fields:cattlerun
+#: horizons/i18n/objecttranslations.py:147
+msgid "Raises cattle. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:cocoafield
+#: horizons/i18n/objecttranslations.py:152
+msgid "Cocoa Field"
+msgstr ""
+
+#. tooltip_text of buildings:fields:cocoafield
+#: horizons/i18n/objecttranslations.py:154
+msgid "Produces cocoa beans used for confectionery. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:cornfield
+#: horizons/i18n/objecttranslations.py:159
+msgid "Corn Field"
+msgstr ""
+
+#. tooltip_text of buildings:fields:cornfield
+#: horizons/i18n/objecttranslations.py:161
+msgid "Yields corn. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:166
+msgid "Herbary"
+msgstr ""
+
+#. tooltip_text of buildings:fields:herbary
+#: horizons/i18n/objecttranslations.py:168
+msgid "Produces herbs. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:pasture
+#: horizons/i18n/objecttranslations.py:173
+msgid "Pasture"
+msgstr ""
+
+#. tooltip_text of buildings:fields:pasture
+#: horizons/i18n/objecttranslations.py:175
+msgid "Raises sheep. Produces wool. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:pigsty
+#: horizons/i18n/objecttranslations.py:180
+msgid "Pigsty"
+msgstr ""
+
+#. tooltip_text of buildings:fields:pigsty
+#: horizons/i18n/objecttranslations.py:182
+msgid "Raises pigs. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:potatofield
+#: horizons/i18n/objecttranslations.py:187
+msgid "Potato Field"
+msgstr ""
+
+#. tooltip_text of buildings:fields:potatofield
+#: horizons/i18n/objecttranslations.py:189
+msgid "Yields food. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:spicefield
+#: horizons/i18n/objecttranslations.py:194
+msgid "Spice Field"
+msgstr ""
+
+#. tooltip_text of buildings:fields:spicefield
+#: horizons/i18n/objecttranslations.py:196
+msgid "Grows spices. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:sugarfield
+#: horizons/i18n/objecttranslations.py:201
+msgid "Sugar Field"
+msgstr ""
+
+#. tooltip_text of buildings:fields:sugarfield
+#: horizons/i18n/objecttranslations.py:203
+msgid "Used in liquor production. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:tobaccofield
+#: horizons/i18n/objecttranslations.py:208
+msgid "Tobacco Field"
+msgstr ""
+
+#. tooltip_text of buildings:fields:tobaccofield
+#: horizons/i18n/objecttranslations.py:210
+msgid "Produces tobacco. Needs a farm."
+msgstr ""
+
+#. name of buildings:fields:vineyard
+#: horizons/i18n/objecttranslations.py:215
+msgid "Vineyard"
+msgstr ""
+
+#. tooltip_text of buildings:fields:vineyard
+#: horizons/i18n/objecttranslations.py:217
+msgid "Produces grapes for use in wine and confectionery. Needs a farm."
+msgstr ""
+
+#. name of buildings:fireservice
+#: horizons/i18n/objecttranslations.py:222
 msgid "Fire Station"
 msgstr ""
 
 #. tooltip_text of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:168
+#: horizons/i18n/objecttranslations.py:224
 msgid "Extinguishes fires."
 msgstr ""
 
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:173
+#: horizons/i18n/objecttranslations.py:229
 msgid "Fish Deposit"
 msgstr ""
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:178
+#: horizons/i18n/objecttranslations.py:234
 msgid "Fisherman's Tent"
 msgstr ""
 
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:180
+#: horizons/i18n/objecttranslations.py:236
 msgid "Fishes the sea, produces food."
 msgstr ""
 
-#. name of buildings:herbary
-#: horizons/i18n/objecttranslations.py:185
-msgid "Herbary"
-msgstr ""
-
-#. tooltip_text of buildings:herbary
-#: horizons/i18n/objecttranslations.py:187
-msgid "Produces herbs. Needs a farm."
-msgstr ""
-
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:192
+#: horizons/i18n/objecttranslations.py:241
 msgid "Hunter's Tent"
 msgstr ""
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:194
+#: horizons/i18n/objecttranslations.py:243
 msgid "Hunts wild forest animals, produces food."
 msgstr ""
 
-#. name of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:199
-msgid "Iron Mine"
-msgstr ""
-
-#. tooltip_text of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:201
-msgid "Gets iron ore from deposit."
-msgstr ""
-
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:206
+#: horizons/i18n/objecttranslations.py:248
 msgid "Lookout"
 msgstr ""
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:208
+#: horizons/i18n/objecttranslations.py:250
 msgid "Increases the player's sight."
 msgstr ""
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:213
+#: horizons/i18n/objecttranslations.py:255
 msgid "Lumberjack Tent"
 msgstr ""
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:215
+#: horizons/i18n/objecttranslations.py:257
 msgid "Lumberjack Hut"
 msgstr ""
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py:259
 msgid "Chops down trees and turns them into boards."
 msgstr ""
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:222
+#: horizons/i18n/objecttranslations.py:264
 msgid "Main Square"
 msgstr ""
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py:266
 msgid "Supplies citizens with goods. Provides community."
 msgstr ""
 
+#. name of buildings:mine
+#: horizons/i18n/objecttranslations.py:271
+msgid "Mine"
+msgstr ""
+
+#. tooltip_text of buildings:mine
+#: horizons/i18n/objecttranslations.py:273
+msgid "Gets iron ore from deposit."
+msgstr ""
+
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:229
+#: horizons/i18n/objecttranslations.py:278
 msgid "Mountain"
 msgstr ""
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:234
+#: horizons/i18n/objecttranslations.py:283
 msgid "Pastry Shop"
 msgstr ""
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:236
+#: horizons/i18n/objecttranslations.py:285
 msgid "Produces all kinds of confectionery."
 msgstr ""
 
-#. name of buildings:pasture
-#: horizons/i18n/objecttranslations.py:241
-msgid "Pasture"
-msgstr ""
-
-#. tooltip_text of buildings:pasture
-#: horizons/i18n/objecttranslations.py:243
-msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr ""
-
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:248
+#: horizons/i18n/objecttranslations.py:290
 msgid "Pavilion"
 msgstr ""
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:250
+#: horizons/i18n/objecttranslations.py:292
 msgid "Fulfills religious needs of sailors."
 msgstr ""
 
-#. name of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:255
-msgid "Pigsty"
-msgstr ""
-
-#. tooltip_text of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:257
-msgid "Raises pigs. Needs a farm."
-msgstr ""
-
-#. name of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:262
-msgid "Potato Field"
-msgstr ""
-
-#. tooltip_text of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:264
-msgid "Yields food. Needs a farm."
-msgstr ""
-
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:269
+#: horizons/i18n/objecttranslations.py:297
 msgid "Ruined Tent"
 msgstr ""
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:274
+#: horizons/i18n/objecttranslations.py:302
 msgid "Salt Ponds"
 msgstr ""
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:276
+#: horizons/i18n/objecttranslations.py:304
 msgid "Evaporates salt. Built on sea coast."
 msgstr ""
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:281
+#: horizons/i18n/objecttranslations.py:309
 msgid "Signal Fire"
 msgstr ""
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:283
+#: horizons/i18n/objecttranslations.py:311
 msgid "Allows the player to trade with the free trader."
 msgstr ""
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:288
+#: horizons/i18n/objecttranslations.py:316
 msgid "Smeltery"
 msgstr ""
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:290
+#: horizons/i18n/objecttranslations.py:318
 msgid "Refines all kind of ores."
 msgstr ""
 
-#. name of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:295
-msgid "Spice Field"
-msgstr ""
-
-#. tooltip_text of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:297
-msgid "Grows spices. Needs a farm."
-msgstr ""
-
 #. name_2 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:302
+#: horizons/i18n/objecttranslations.py:323
 msgid "Stonemason"
 msgstr ""
 
 #. name_4 of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:304
+#: horizons/i18n/objecttranslations.py:325
 msgid "Carver"
 msgstr ""
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:306
+#: horizons/i18n/objecttranslations.py:327
 msgid "Carves stone tops into bricks."
 msgstr ""
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:311
+#: horizons/i18n/objecttranslations.py:332
 msgid "Stone Pit"
 msgstr ""
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:313
+#: horizons/i18n/objecttranslations.py:334
 msgid "Gets stone from a mountain."
 msgstr ""
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:318
+#: horizons/i18n/objecttranslations.py:339
 msgid "Storage Tent"
 msgstr ""
 
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:320
+#: horizons/i18n/objecttranslations.py:341
 msgid "Storage Hut"
 msgstr ""
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:322
+#: horizons/i18n/objecttranslations.py:343
 msgid "Extends stock and provides collectors."
 msgstr ""
 
-#. name of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:327
-msgid "Sugar Field"
-msgstr ""
-
-#. tooltip_text of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:329
-msgid "Used in liquor production. Needs a farm."
-msgstr ""
-
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:334
+#: horizons/i18n/objecttranslations.py:348
 msgid "Tavern"
 msgstr ""
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:336
+#: horizons/i18n/objecttranslations.py:350
 msgid "Provides get-together."
 msgstr ""
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:341
+#: horizons/i18n/objecttranslations.py:355
 msgid "Tent"
 msgstr ""
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:343
+#: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
 msgstr ""
 
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:345
+#: horizons/i18n/objecttranslations.py:359
 msgid "House"
 msgstr ""
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:347
+#: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
 msgstr ""
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:349
+#: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
 msgstr ""
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:351
+#: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
 msgstr ""
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:353
+#: horizons/i18n/objecttranslations.py:367
 msgid "Houses your inhabitants."
 msgstr ""
 
-#. name of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:358
-msgid "Tobacco Field"
-msgstr ""
-
-#. tooltip_text of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:360
-msgid "Produces tobacco. Needs a farm."
-msgstr ""
-
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:365
+#: horizons/i18n/objecttranslations.py:372
 msgid "Tobacconist"
 msgstr ""
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:367
+#: horizons/i18n/objecttranslations.py:374
 msgid "Produces tobaccos out of tobacco."
 msgstr ""
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:372
+#: horizons/i18n/objecttranslations.py:379
 msgid "Toolmaker"
 msgstr ""
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:374
+#: horizons/i18n/objecttranslations.py:381
 msgid "Produces tools out of iron."
 msgstr ""
 
 #. name_0 of buildings:trail
-#: horizons/i18n/objecttranslations.py:379
+#: horizons/i18n/objecttranslations.py:386
 msgid "Trail"
 msgstr ""
 
 #. name_1 of buildings:trail
-#: horizons/i18n/objecttranslations.py:381
+#: horizons/i18n/objecttranslations.py:388
 msgid "Gravel Path"
 msgstr ""
 
 #. name_3 of buildings:trail
-#: horizons/i18n/objecttranslations.py:383
+#: horizons/i18n/objecttranslations.py:390
 msgid "Cobblestone Street"
 msgstr ""
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:385
+#: horizons/i18n/objecttranslations.py:392
 msgid "Needed for collecting goods."
 msgstr ""
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:390
+#: horizons/i18n/objecttranslations.py:397
 msgid "Tree"
 msgstr ""
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:392
+#: horizons/i18n/objecttranslations.py:399
 msgid "Provides lumber. Chopped down by lumberjacks."
 msgstr ""
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:397
+#: horizons/i18n/objecttranslations.py:404
 msgid "Village school"
 msgstr ""
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:399
-msgid "Provides education."
-msgstr ""
-
-#. name of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:404
-msgid "Vineyard"
-msgstr ""
-
-#. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:406
-msgid "Produces grapes for use in wine and confectionery. Needs a farm."
+msgid "Provides education."
 msgstr ""
 
 #. name of buildings:vintner
@@ -3045,7 +3032,7 @@ msgid "Services"
 msgstr "服务"
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:471
 msgid "Citizens"
 msgstr "市民"
@@ -3072,7 +3059,7 @@ msgid "Military Service"
 msgstr ""
 
 #. headline of gui_buildmenu:build_menu_per_type
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:483
 msgid "Pioneers"
 msgstr "拓荒者"
@@ -3122,25 +3109,34 @@ msgstr ""
 msgid "Military"
 msgstr "军事"
 
-#: horizons/main.py:349
+#: horizons/main.py:354
 msgid "Failed to start/load the game"
 msgstr ""
 
-#: horizons/main.py:350
+#: horizons/main.py:355
 msgid "The game you selected could not be started."
 msgstr ""
 
-#: horizons/main.py:351
+#: horizons/main.py:356
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 
-#: horizons/main.py:470
+#: horizons/main.py:475
 msgid "No quicksaves found"
 msgstr ""
 
-#: horizons/main.py:471
+#: horizons/main.py:476
 msgid "You need to quicksave before you can quickload."
 msgstr ""
+
+#: horizons/main.py:605
+msgid "Logging enabled"
+msgstr "日志已启用"
+
+#: horizons/main.py:606
+#, python-brace-format
+msgid "Logs are written to {directory}."
+msgstr "日志已写入{directory}。"
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
@@ -3154,15 +3150,17 @@ msgstr ""
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
 
-#: horizons/mpsession.py:85
+#: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
+#: horizons/mpsession.py:92
 msgid "Not possible"
 msgstr ""
 
-#: horizons/mpsession.py:85
+#: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
+#: horizons/mpsession.py:92
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr ""
 
-#: horizons/mpsession.py:97
+#: horizons/mpsession.py:103
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
@@ -3181,11 +3179,6 @@ msgstr ""
 msgid "Not Ready"
 msgstr ""
 
-#. TODO: add support for selecting difficulty levels to the GUI
-#: horizons/network/networkinterface.py:526
-msgid "Ready"
-msgstr ""
-
 #: horizons/scenario/actions.py:95
 msgid "You have won!"
 msgstr ""
@@ -3199,30 +3192,30 @@ msgstr ""
 msgid "Do you want to continue playing?"
 msgstr "你想继续么？"
 
-#: horizons/scenario/scenarioeventhandler.py:169
+#: horizons/scenario/scenarioeventhandler.py:170
 msgid "unknown"
 msgstr ""
 
 #. usually invalid filename
-#: horizons/session.py:404
+#: horizons/session.py:397
 msgid "Failed to create savegame file"
 msgstr ""
 
-#: horizons/session.py:405
+#: horizons/session.py:398
 msgid "There has been an error while creating your savegame file."
 msgstr ""
 
-#: horizons/session.py:406
+#: horizons/session.py:399
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr ""
 
-#: horizons/session.py:412
+#: horizons/session.py:408
 msgid "Access is denied"
 msgstr ""
 
-#: horizons/session.py:413
+#: horizons/session.py:409
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
 
@@ -3231,39 +3224,39 @@ msgstr ""
 msgid "Your game has not been saved."
 msgstr "你的游戏已经存档了。"
 
-#: horizons/util/checkupdates.py:81
+#: horizons/util/checkupdates.py:87
 msgid "New version of Unknown Horizons"
 msgstr ""
 
-#: horizons/util/checkupdates.py:83
-#, python-format
+#: horizons/util/checkupdates.py:88
+#, python-brace-format
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
 
-#: horizons/util/checkupdates.py:93
+#: horizons/util/checkupdates.py:98
 msgid "Click to download"
 msgstr ""
 
-#: horizons/util/checkupdates.py:97
+#: horizons/util/checkupdates.py:102
 msgid "A page has been opened in your browser."
 msgstr ""
 
 #. Ship storage properties
-#: horizons/util/uhdbaccessor.py:261
-#, python-format
+#: horizons/util/uhdbaccessor.py:267
+#, python-brace-format
 msgid "{slotnum} slots, {limit}t"
 msgstr ""
 
-#: horizons/util/uhdbaccessor.py:270
-#, python-format
+#: horizons/util/uhdbaccessor.py:275
+#, python-brace-format
 msgid "Health: {health}"
 msgstr ""
 
 #. You usually do not need to change anything here when translating
-#: horizons/world/building/__init__.py:125
-#, python-format
+#: horizons/world/building/__init__.py:123
+#, python-brace-format
 msgid "{building}: {description}"
 msgstr ""
 
@@ -3315,454 +3308,639 @@ msgstr ""
 msgid "This building must be partly on flat land."
 msgstr ""
 
-#: horizons/world/status.py:76
+#: horizons/world/status.py:75
+msgid "The inhabitants are infected by the Black Death!"
+msgstr ""
+
+#: horizons/world/status.py:81
 msgid "This building is on fire!"
 msgstr ""
 
-#: horizons/world/status.py:83
+#: horizons/world/status.py:88
 msgid "These residents are unhappy."
 msgstr ""
 
-#: horizons/world/status.py:89
+#: horizons/world/status.py:94
+#, fuzzy
+#| msgid "Some of your inhabitants have no access to a main square."
+msgid "These residents don't have access to a main square."
+msgstr "有些居民不能进入广场。"
+
+#: horizons/world/status.py:100
 msgid "The inventory of this building is full."
 msgstr ""
 
-#: horizons/world/status.py:104
+#: horizons/world/status.py:115
 msgid "This building has a very low productivity."
 msgstr ""
 
-#: horizons/world/status.py:110
-msgid "This building is decomissioned."
+#: horizons/world/status.py:121
+msgid "This building is decommissioned."
 msgstr ""
 
-#: horizons/world/status.py:116
-msgid "The inhabitants of this building have the plague."
-msgstr ""
-
-#: horizons/world/traderoute.py:320
-#, python-format
+#: horizons/world/traderoute.py:329
+#, python-brace-format
 msgid "Trade route: going to {location}"
 msgstr ""
 
-#: horizons/world/traderoute.py:325
-#, python-format
+#: horizons/world/traderoute.py:333
+#, python-brace-format
 msgid "Trade route: waiting at {position}"
 msgstr ""
 
-#: horizons/world/units/ship.py:214
-#, python-format
+#: horizons/world/units/ship.py:212
+#, python-brace-format
 msgid "Going to {location}"
 msgstr ""
 
-#: horizons/world/units/ship.py:216
-#, python-format
+#: horizons/world/units/ship.py:213
+#, python-brace-format
 msgid "Going to {x}, {y}"
 msgstr ""
 
-#: horizons/world/units/ship.py:221
-#, python-format
+#: horizons/world/units/ship.py:217
+#, python-brace-format
 msgid "Idle at {location}"
 msgstr ""
 
-#: horizons/world/units/ship.py:223
-#, python-format
+#: horizons/world/units/ship.py:218
+#, python-brace-format
 msgid "Idle at {x}, {y}"
 msgstr ""
 
-#: horizons/world/units/ship.py:234
+#: horizons/world/units/ship.py:229
 #, fuzzy
 msgid "Trader"
 msgstr "贸易"
 
-#: horizons/world/units/weaponholder.py:455
-#, python-format
+#: horizons/world/units/weaponholder.py:452
+#, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
 msgstr ""
 
-#: horizons/world/units/weaponholder.py:460
-#, python-format
+#: horizons/world/units/weaponholder.py:456
+#, python-brace-format
 msgid "Attacking {owner}"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: the name of a resource
+msgid "indigo"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
 msgstr "{player1} 和 {player2} 组成联盟了。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
 msgstr "您的建筑物着火了！"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "brine"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "medical herbs"
 msgstr "草药"
 
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
 msgstr "贵族"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "happiness"
 msgstr "幸福"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource
+msgid "gems"
+msgstr ""
+
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "iron deposit"
+msgid "brine deposit"
+msgstr "铁库存"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
 msgstr "你的一些居民刚刚搬走了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "stone deposit"
+msgid "gem deposit"
+msgstr "石料库存"
+
+#. This is a database entry: the name of a resource
 msgid "sugar"
 msgstr "糖"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobacco leaves"
 msgstr "烟叶"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "stone tops"
 msgstr "石顶"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "cocoa beans"
+msgid "coffee beans"
+msgstr "可可豆"
+
+#. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "羊毛"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "tobacco leaves"
+msgid "tea leaves"
+msgstr "烟叶"
+
+#. This is a database entry: the name of a resource
+msgid "coffee"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "cocoa beans"
 msgstr "可可豆"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "food"
 msgstr "食物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "flour"
 msgstr "面粉"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
 msgstr "屠宰用猪"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+msgid "recreation"
+msgstr "教育"
+
+#. This is a database entry: the name of a resource
 msgid "trees"
 msgstr "树"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "clay deposit"
+msgid "marble deposit"
+msgstr "粘土存量"
+
+#. This is a database entry: the name of an inhabitant tier (level)
+msgid "Sailors"
+msgstr "水手"
+
+#. This is a database entry: the name of a resource
 msgid "clay deposit"
 msgstr "粘土存量"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr "{player1} 和{player2} 已经结束了战争，现在结盟了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cocoa"
 msgstr "可可"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "marble tops"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "potatoes"
 msgstr "土豆"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "iron ore"
 msgstr "铁矿"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "perfume"
+msgstr ""
+
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "tobacco plants"
+msgid "cotton plants"
+msgstr "烟草作物"
+
+#. This is a database entry: the name of a resource
 msgid "clay"
 msgstr "粘土"
 
-#. This is a database entry: the name of an inhabitant tier (level).
+#. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
 msgstr "商人"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "spice plants"
+msgid "hop plants"
+msgstr "香料植物"
+
+#. This is a database entry: the name of a resource
+msgid "tea"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "liquor"
 msgstr "白酒"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "iron ingots"
 msgstr "铁锭"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "clay deposit"
+msgid "coal deposit"
+msgstr "粘土存量"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "Screenshot has been saved to {file}."
 msgstr "截图已保存至文件{file}。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cattle"
 msgstr "家畜"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
 msgstr "你也可以拖拽道路。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "lamb wool"
 msgstr "羔羊毛"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 #, fuzzy
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr "你已经达成最大增长。你的居民不会再继续升级了。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr "路径已配置。请通过“配置路径”菜单上的“开启路径”按钮启用。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
 msgstr "{player1} 和 {player2} 终止了结盟。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
 msgstr "不能到达那里。"
 
-#. This is a database entry: the name of a resource.
-msgid "sugar cane"
-msgstr "糖料甘蔗"
-
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "corn"
 msgstr "玉米"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "flower meadows"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "grapes"
 msgstr "葡萄"
 
-#. This is a database entry: the name of a resource.
-msgid "honeycombs"
-msgstr "蜂窝"
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
+msgid "Your inhabitants reached level {level}."
+msgstr "你的居民升至{level}级。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "ambergris"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "faith"
 msgstr "信仰"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "boards"
 msgstr "木板"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
 msgstr "有些居民不能进入广场。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} 和 {player2} 将斗争到底。"
 
-#. This is a database entry: the name of an inhabitant tier (level).
-msgid "Sailors"
-msgstr "水手"
+#. This is a database entry: the name of a resource
+msgid "hops"
+msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "grain"
 msgstr "粮食"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "spices"
 msgstr "香料"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "dagger"
 msgstr "匕首"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "spice plants"
+msgid "coffee plants"
+msgstr "香料植物"
+
+#. This is a database entry: the name of a resource
 msgid "bricks"
 msgstr "砖"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "iron ore"
+msgid "gold ore"
+msgstr "铁矿"
+
+#. This is a database entry: the name of a resource
 msgid "community"
 msgstr "社区"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "spice plants"
 msgstr "香料植物"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "hygiene"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
 msgstr "宰杀的家畜"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tobaccos"
 msgstr "烟草"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "tools"
 msgstr "工具"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "deer meat"
 msgstr "鹿肉"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "confectionery"
 msgstr "糖果"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "whales"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "coins"
 msgstr "硬币"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
 msgstr "你赢了！"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "blossoms"
+msgstr ""
+
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "spice plants"
+msgid "indigo plants"
+msgstr "香料植物"
+
+#. This is a database entry: the name of a resource
 msgid "fish"
 msgstr "鱼"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "charcoal"
 msgstr "木炭"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "stone deposit"
 msgstr "石料库存"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
 msgstr "本次剧情您失败了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "fire"
 msgstr "火"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "acorns"
 msgstr "橡树果实"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "garments"
+msgstr ""
+
+#. This is a database entry: the name of a resource
+msgid "honeycombs"
+msgstr "蜂窝"
+
+#. This is a database entry: the name of a resource
 msgid "tobacco plants"
 msgstr "烟草作物"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "You need more {resource} to build this building."
 msgstr "你需要更多的{resource}来建造此建筑物。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
 msgstr "你的船员拒绝离开此地图。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
 msgstr "{player1} 和{player2} 正在敌对状态。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "grass"
 msgstr "草坪"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "sugar cane"
+msgstr "糖料甘蔗"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "Your game has been autosaved."
+msgstr "你的游戏已经自动存档了。"
+
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "clay deposit"
+msgid "gold deposit"
+msgstr "粘土存量"
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr "你的一块田地需要农场收割作物。"
+
+#. This is a database entry: the name of a resource
+msgid "rough gems"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 #, fuzzy
 msgid "alvearies"
 msgstr "洞窑"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "Your game has been autosaved."
-msgstr "你的游戏已经自动存档了。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr "你的一块田地需要农场收割作物。"
-
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
 msgstr "你的矿厂资源已经开采尽了。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
-msgid "Your inhabitants reached level {level}."
-msgstr "你的居民升至{level}级。"
-
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "iron deposit"
 msgstr "铁库存"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "education"
 msgstr "教育"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: the name of a resource
+msgid "cotton"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr "{player1} 和{player2} 已经结束了联盟，现在处于战争状态。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "textile"
 msgstr "纺织品"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "{player}: {message}"
 msgstr "{player}：{message}"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "cannon"
 msgstr "加农炮"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+msgid "The inhabitants of this building are infected by the Black Death!"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, fuzzy, python-brace-format
+#| msgid "A new ship by the name of {name} has been created."
 msgid "A new ship by the name of {name} has been created."
 msgstr "制造了一艘新船。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "tobacco plants"
+msgid "tea plants"
+msgstr "烟草作物"
+
+#. This is a database entry: the name of a resource
 msgid "get-together"
 msgstr "聚会"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
 msgstr "创建了新世界。"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
 msgstr "你的游戏已经快速存档了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "deer food A"
 msgstr "鹿食物A"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "herbs"
 msgstr "药草"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "lamp oil"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "pigs"
 msgstr "猪"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr "你不能分割仓库，你的殖民地需要它。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "condiments"
 msgstr "佐料"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
+msgid "blackdeath"
+msgstr ""
+
+#. This is a database entry: the name of a resource
 msgid "candles"
 msgstr "蜡烛"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#, python-format
+#. This is a database entry: a messagewidget message (left part of the screen)
+#, python-brace-format
 msgid "A new settlement was founded by {player}."
 msgstr "一个新殖民地由{player}建立了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "vines"
 msgstr "葡萄"
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
 msgstr "你的游戏已经存档了。"
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of a resource
 msgid "salt"
 msgstr "盐"
+
+#. This is a database entry: the name of a resource
+#, fuzzy
+#| msgid "iron ingots"
+msgid "gold ingots"
+msgstr "铁锭"
+
+#~ msgid "16 bit"
+#~ msgstr "16 位"
+
+#~ msgid "32 bit"
+#~ msgstr "32 位"
+
+#~ msgid "Default"
+#~ msgstr "默认值"
+
+#, fuzzy
+#~ msgid "Resources needed:"
+#~ msgstr "还需资源："
 
 #~ msgid "[{key}] = {text}"
 #~ msgstr "[{key}] = {text}"

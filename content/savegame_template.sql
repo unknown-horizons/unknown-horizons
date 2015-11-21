@@ -208,16 +208,6 @@ CREATE TABLE "unit" (
 	"owner" INT NOT NULL
 );
 
-CREATE TABLE "bullet" (
-	"worldid" INT,
-	"startx" INT,
-	"starty" INT,
-	"destx" INT,
-	"desty" INT,
-	"speed" INT,
-	"image" TEXT
-);
-
 CREATE TABLE "attacks" (
 	"remaining_ticks" INT,
 	"weapon_id" INT,
@@ -586,7 +576,7 @@ CREATE TABLE "disaster" (
 	"remaining_ticks_expand" INT NOT NULL -- ticks until the disaster will expand next
 );
 
-CREATE TABLE "fire_disaster" (
+CREATE TABLE "building_influencing_disaster" (
 	"disaster" INT NOT NULL, -- disaster and building together make up the key
 	"building" INT NOT NULL,
 	"remaining_ticks_havoc" INT NOT NULL
@@ -604,7 +594,5 @@ CREATE TABLE "last_active_settlement" (
 CREATE TABLE "fish_data" (
 	"last_usage_tick" INT NOT NULL
 );
-
-
 
 COMMIT;

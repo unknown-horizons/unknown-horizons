@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,10 +31,6 @@ except ImportError:
 from horizons.network import NetworkException, PacketTooLarge
 
 __version__ = '0.1'
-__all__ = [
-	'SafeUnpickler',
-	'packet',
-]
 
 PICKLE_PROTOCOL = 2
 PICKLE_RECIEVE_FROM = 'server'

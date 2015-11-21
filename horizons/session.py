@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -46,7 +46,7 @@ from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.worldobject import WorldObject
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.component.namedcomponent import NamedComponent
-from horizons.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
+from horizons.component.selectablecomponent import SelectableBuildingComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -113,7 +113,8 @@ class Session(LivingObject):
 		self._ingame_gui_class = ingame_gui_class
 
 		self.selected_instances = set()
-		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
+		# List of sets that holds the player assigned unit groups.
+		self.selection_groups = [set()] * 10
 
 		self._old_autosave_interval = None
 
@@ -262,14 +263,6 @@ class Session(LivingObject):
 		self.ingame_gui = self._ingame_gui_class(self)
 		self.ingame_gui.load(savegame_db)
 
-		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
-			obj = WorldObject.get_object_by_id(instance_id[0])
-			self.selected_instances.add(obj)
-			obj.get_component(SelectableComponent).select()
-		for group in xrange(len(self.selection_groups)): # load user defined unit groups
-			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
-				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
-
 		Scheduler().before_ticking()
 		savegame_db.close()
 
@@ -404,41 +397,40 @@ class Session(LivingObject):
 			headline = _("Failed to create savegame file")
 			descr = _("There has been an error while creating your savegame file.")
 			advice = _("This usually means that the savegame name contains unsupported special characters.")
-			self.ingame_gui.show_error_popup(headline, descr, advice, unicode(e))
-			return self.save() # retry with new savegamename entered by the user
-			# this must not happen with quicksave/autosave
+			self.ingame_gui.open_error_popup(headline, descr, advice, unicode(e))
+			# retry with new savegamename entered by the user
+			# (this must not happen with quicksave/autosave)
+			return self.save()
 		except OSError as e:
-			if e.errno == errno.EACCES:
-				self.ingame_gui.show_error_popup(_("Access is denied"),
-				                                 _("The savegame file could be read-only or locked by another process."))
-				return self.save()
-			raise
+			if e.errno != errno.EACCES:
+				raise
+			self.ingame_gui.open_error_popup(
+				_("Access is denied"),
+				_("The savegame file could be read-only or locked by another process.")
+			)
+			return self.save()
 
 		try:
 			read_savegame_template(db)
 
 			db("BEGIN")
 			self.world.save(db)
-			#self.manager.save(db)
 			self.view.save(db)
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
 
-			for instance in self.selected_instances:
-				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
-			for group in xrange(len(self.selection_groups)):
-				for instance in self.selection_groups[group]:
-					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
-
+			# Store RNG state
 			rng_state = json.dumps(self.random.getstate())
 			SavegameManager.write_metadata(db, self.savecounter, rng_state)
-			# make sure everything gets written now
+
+			# Make sure everything gets written now
 			db("COMMIT")
 			db.close()
 			return True
-		except:
-			print "Save Exception"
+		except Exception:
+			self.log.error("Save Exception:")
 			traceback.print_exc()
-			db.close() # close db before delete
-			os.unlink(savegame) # remove invalid savegamefile
+			# remove invalid savegamefile (but close db connection before deleting)
+			db.close()
+			os.unlink(savegame)
 			return False

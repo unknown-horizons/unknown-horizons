@@ -1,4 +1,4 @@
-id: 63
+id: BUILDINGS.PASTRY_SHOP
 name: _ Pastry Shop
 baseclass: production.PastryShop
 radius: 8
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 4
 tooltip_text: _ Produces all kinds of confectionery.
-settler_level: TIER.CITIZENS
+tier: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 1}
 components:
 - SelectableComponent:

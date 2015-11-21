@@ -1,5 +1,5 @@
 baseclass: ship.FisherShip
-id: 1000004
+id: UNITS.FISHER_BOAT
 name: Fisher
 radius: 5
 velocity: 12.0

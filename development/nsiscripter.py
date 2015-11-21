@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -45,10 +45,6 @@ for root, dirs, files in os.walk('.'):
 		dirs.remove('development')
 	if '.git' in dirs:
 		dirs.remove('.git')
-	if 'screenshots' in dirs:
-		dirs.remove('screenshots')
-	if 'depends' in dirs:
-		dirs.remove('depends')
 	if root[-4:] == 'fife' and len(root.split('\\')) == 2:
 		for d in dirs[:]:
 			if d not in ('engine', 'tools'):

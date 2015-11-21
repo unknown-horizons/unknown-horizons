@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,16 +31,23 @@ class PlayerDiplomacyTab(TabInterface):
 	Diplomacy tab set per player.
 	It displays the menu for selecting the status between the local player and the tab's player
 	"""
-	def __init__(self, player, widget='diplomacy.xml',
-	             icon_path='images/tabwidget/emblems/emblem_%s'):
-		super(PlayerDiplomacyTab, self).__init__(widget)
+	widget = 'diplomacy.xml'
+	icon_path = 'images/tabwidget/emblems/emblem_%s'
 
+	def __init__(self, player):
 		self.local_player = player.session.world.player
 		self.player = player
 		self.diplomacy = player.session.world.diplomacy
-		self.init_values()
 
-		self.widget.findChild(name='headline').text = player.name
+		super(PlayerDiplomacyTab, self).__init__()
+
+		color = self.player.color.name
+		# Set these here to override the defaults in TabInterface.__init__
+		# before they are used.
+		self.path = self.path_active = self.icon_path % color
+
+	def init_widget(self):
+		self.widget.findChild(name='headline').text = self.player.name
 		self.widget.mapEvents({
 			'ally_label' : self.add_ally,
 			'ally_check_box' : self.add_ally,
@@ -50,11 +57,7 @@ class PlayerDiplomacyTab(TabInterface):
 			'enemy_check_box' : self.add_enemy})
 
 		self.check_diplomacy_state()
-
-		#TODO what the heck
-		self.path = self.active_path = icon_path % player.color.name
-
-		self.helptext = player.name
+		self.helptext = self.player.name
 
 	def show(self):
 		super(PlayerDiplomacyTab, self).show()
@@ -93,13 +96,13 @@ class PlayerDiplomacyTab(TabInterface):
 		"""
 		Checks the box with the diplomacy status between local player and selected player
 		"""
-		# uncheck all boxes
+		# Uncheck all boxes.
 		self.widget.distributeData({
 			'ally_check_box' : False,
 			'neutral_check_box' : False,
 			'enemy_check_box' : False})
 
-		#get the name of the selected box
+		# Get the name of the selected box.
 		if self.diplomacy.are_allies(self.local_player, self.player):
 			state = 'ally'
 		elif self.diplomacy.are_neutral(self.local_player, self.player):
@@ -107,7 +110,7 @@ class PlayerDiplomacyTab(TabInterface):
 		else:
 			state = 'enemy'
 
-		#check the selected box
+		# Check the selected box.
 		self.widget.distributeData({'%s_check_box' % state : True})
 
 
@@ -126,6 +129,8 @@ class DiplomacyTab(TabWidget):
 		super(DiplomacyTab, self).__init__(ingame_gui, tabs=tabs, name="diplomacy_widget")
 
 	@classmethod
-	def is_useable(self, world):
-		"""Only useful if there is another player."""
+	def is_useable(cls, world):
+		"""Diplomacy only makes sense if there is another player.
+		Pirates do not qualify as players: right now they're not interested in diplomacy.
+		"""
 		return not (len(world.players) == 1 and not world.pirate)

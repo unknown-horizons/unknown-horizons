@@ -8,102 +8,116 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2014-11-08 12:08+0200\n"
+"Last-Translator: Jens <happyjens@gmail.com>\n"
+"Language-Team: Danish <https://hosted.weblate.org/projects/uh/uh-server/da/>"
+"\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.1-pre\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.0\n"
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
+msgstr "Gammel eller usupporteret multiplayer protokol. Check din spil version"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Du her overskredet den globale pakke størrelse."
 
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Dette skulle aldrig være sket. Tag kontakt til os, eller opret en fejl "
+"report."
 
 #: horizons/network/server.py:302
+#, fuzzy
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Du har overskredet pakke størrelsen."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "Ukendt eller misdannet pakke. Kontrollere dit spils verison"
 
 #: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Ugyldig/Ukendt session"
 
 #: horizons/network/server.py:393
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Du kan ikke deltage et spil imens du er i et andet andet spil"
 
 #: horizons/network/server.py:398
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Ukendt spil eller spil køre en anden version"
 
 #: horizons/network/server.py:401
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "Spil er allerede startet. Deltagelse er ikke længere muligt"
 
 #: horizons/network/server.py:404
 msgid "Game is full"
-msgstr ""
+msgstr "Spil er fyldt"
 
 #: horizons/network/server.py:407
 msgid "Wrong password"
-msgstr ""
+msgstr "Forkert kode"
 
 #: horizons/network/server.py:424 horizons/network/server.py:534
+#, fuzzy
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "Der er allerede en spiller med dit navn i dette spil"
 
 #: horizons/network/server.py:425
 msgid "Please change your name."
-msgstr ""
+msgstr "Skift dit navn."
 
 #: horizons/network/server.py:428 horizons/network/server.py:562
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "Der er allerede en spiller med din farve i dette spil."
 
 #: horizons/network/server.py:429
 msgid "Please change your color."
-msgstr ""
+msgstr "Skift din farve."
 
 #: horizons/network/server.py:432
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"Der er allerede en spiller med dit unike spiller ID i dette spil. Dette "
+"skulle aldrig ske."
 
 #: horizons/network/server.py:448
 msgid "You are not inside a game"
-msgstr ""
+msgstr "Du er ikke i et spil"
 
 #: horizons/network/server.py:478
 msgid "The game has been terminated. The creator has left the game."
 msgstr ""
+"Spiller er lukket ned. Spilleren der har oprettet spillet, har forlad "
+"spillet."
 
 #: horizons/network/server.py:483
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"En spiller har forladt spillet. Pga. tekniske grunde betyder dette at "
+"spillet ikke kan forsætte. Vi er meget kede af det."
 
 #: horizons/network/server.py:535
+#, fuzzy
 msgid "Unable to change your name."
-msgstr ""
+msgstr "Dit navn kan ikke skiftes"
 
 #: horizons/network/server.py:563
+#, fuzzy
 msgid "Unable to change your color."
-msgstr ""
+msgstr "Din farve kan ikke skiftes"
 
 #: horizons/network/server.py:650
 msgid "You can't fetch a game while in another game"

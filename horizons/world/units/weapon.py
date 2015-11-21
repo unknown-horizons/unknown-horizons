@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -26,8 +26,8 @@ from horizons.util.shapes import Point
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.world.units.bullet import Bullet
 from horizons.component.healthcomponent import HealthComponent
+
 
 @metaChangeListenerDecorator("attack_ready")
 @metaChangeListenerDecorator("weapon_fired")
@@ -40,8 +40,6 @@ class Weapon(object):
 		cooldown_time - number of seconds until the attack is ready again
 		attack_speed - speed that calculates the time until attack reaches target
 		attack_radius - radius affected by attack
-		bullet_image - path to file with the bullet image,
-			if no string is provided, then no animation will be played
 
 		attack_ready callbacks are executed when the attack is made ready
 	"""
@@ -55,7 +53,7 @@ class Weapon(object):
 		data = session.db("SELECT id, type, damage,\
 		                          min_range, max_range,\
 		                          cooldown_time, attack_speed,\
-		                          attack_radius, bullet_image \
+		                          attack_radius \
 		                  FROM weapon WHERE id = ?", id)
 		data = data[0]
 		self.weapon_id = data[0]
@@ -65,7 +63,6 @@ class Weapon(object):
 		self.cooldown_time = data[5]
 		self.attack_speed = data[6]
 		self.attack_radius = data[7]
-		self.bullet_image = data[8]
 		self.attack_ready = True
 		self.session = session
 
@@ -102,12 +99,11 @@ class Weapon(object):
 		self.attack_ready = True
 		self.on_attack_ready()
 
-	def fire(self, destination, position, bullet_delay=0):
+	def fire(self, destination, position):
 		"""
 		Fires the weapon at a certain destination
 		@param destination: Point with position where weapon will be fired
 		@param position: position where the weapon is fired from
-		@param bullet_delay:
 		"""
 		self.log.debug("%s fire; ready: %s", self, self.attack_ready)
 		if not self.attack_ready:
@@ -118,23 +114,18 @@ class Weapon(object):
 			self.log.debug("%s target not in range", self)
 			return
 
-		#calculate the ticks until impact
+		# Calculate the ticks until impact.
 		impact_ticks = int(GAME_SPEED.TICKS_PER_SECOND * distance / self.attack_speed)
-		#deal damage when attack reaches target
+		# Deal damage when attack reaches target.
 		Scheduler().add_new_object(Callback(Weapon.on_impact,
 			self.session, self.weapon_id, self.get_damage_modifier(), destination),
 			Weapon, impact_ticks)
 
-		#calculate the ticks until attack is ready again
+		# Calculate the ticks until attack is ready again.
 		ready_ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
 		Scheduler().add_new_object(self.make_attack_ready, self, ready_ticks)
 
-		if self.bullet_image:
-			Scheduler().add_new_object(
-				Callback(Bullet, self.bullet_image, position, destination, impact_ticks - bullet_delay, self.session),
-				self,
-				run_in=bullet_delay)
-		self.log.debug("fired %s at %s, impact in %s", self, destination, impact_ticks - bullet_delay)
+		self.log.debug("fired %s at %s, impact in %s", self, destination, impact_ticks)
 
 		self.attack_ready = False
 		self.on_weapon_fired()
@@ -153,14 +144,14 @@ class Weapon(object):
 		"""
 		return 0 if self.attack_ready else Scheduler().get_remaining_ticks(self, self.make_attack_ready)
 
-
 	@classmethod
 	def load_attacks(cls, session, db):
 		"""
 		Loads ongoing attacks from savegame database
 		Creates scheduled calls for on_impact
 		"""
-		for (ticks, weapon_id, damage, dx, dy) in db("SELECT remaining_ticks, weapon_id, damage, dest_x, dest_y FROM attacks"):
+		attacks = db("SELECT remaining_ticks, weapon_id, damage, dest_x, dest_y FROM attacks")
+		for (ticks, weapon_id, damage, dx, dy) in attacks:
 			Scheduler().add_new_object(Callback(Weapon.on_impact,
 				session, weapon_id, damage, Point(dx, dy)), Weapon, ticks)
 
@@ -183,11 +174,13 @@ class Weapon(object):
 	def __str__(self):
 		return "Weapon(id:%s;type:%s;rang:%s)" % (self.weapon_id, self.weapon_type, self.weapon_range)
 
+
 class SetStackableWeaponNumberError(Exception):
 	"""
 	Raised when setting the number of weapons for a stackable weapon fails
 	"""
 	pass
+
 
 class StackableWeapon(Weapon):
 	"""
@@ -237,4 +230,3 @@ class StackableWeapon(Weapon):
 
 	def get_damage_modifier(self):
 		return self.number_of_weapons * super(StackableWeapon, self).get_damage_modifier()
-

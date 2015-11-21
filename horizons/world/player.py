@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -104,12 +104,16 @@ class Player(ComponentHolder, WorldObject):
 
 	def save(self, db):
 		super(Player, self).save(db)
-		client_id = None if self is not self.session.world.player and \
-		                    self.clientid is None else self.clientid
-
-		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level, max_tier_notification) VALUES(?, ?, ?, ?, ?, ?, ?)",
-			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None,
-			 self.max_tier_notification)
+		client_id = None
+		if self.clientid is not None or self is self.session.world.player:
+			client_id = self.clientid
+		db("INSERT INTO player"
+			" (rowid, name, color, client_id, settler_level,"
+			" difficulty_level, max_tier_notification)"
+			" VALUES(?, ?, ?, ?, ?, ?, ?)",
+			self.worldid, self.name, self.color.id, client_id, self.settler_level,
+			self.difficulty.level if self.difficulty is not None else None,
+			self.max_tier_notification)
 
 	@classmethod
 	def load(cls, session, db, worldid):
@@ -124,7 +128,8 @@ class Player(ComponentHolder, WorldObject):
 		super(Player, self).load(db, worldid)
 
 		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
-			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification FROM player WHERE rowid = ?", worldid)[0]
+			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification"
+			" FROM player WHERE rowid = ?", worldid)[0]
 		self.__init(name, Color[color], client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
 
 	def notify_settler_reached_level(self, message):

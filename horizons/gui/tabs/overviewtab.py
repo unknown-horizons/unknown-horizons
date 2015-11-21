@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,30 +21,33 @@
 # ###################################################
 
 from horizons.gui.tabs.tabinterface import TabInterface
-
+from horizons.i18n import _lazy
 from horizons.component.namedcomponent import NamedComponent
 
 
 class OverviewTab(TabInterface):
+	widget = 'overviewtab.xml'
+	icon_path = 'icons/tabwidget/common/building_overview'
+	helptext = _lazy("Overview")
+
 	has_stance = False
-	def __init__(self, instance, widget='overviewtab.xml',
-	             icon_path='icons/tabwidget/common/building_overview'):
-		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
+
+	def __init__(self, instance, widget=None, icon_path=None):
 		self.instance = instance
-		self.init_values()
-		self.helptext = _("Overview")
+		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
+
+	def init_widget(self):
+		# set player emblem
+		if self.widget.child_finder('player_emblem'):
+			if self.instance.owner is not None:
+				player_color = self.instance.owner.color.name
+			else:
+				player_color = 'no_player'
+			emblem = 'content/gui/images/tabwidget/emblems/emblem_%s.png'
+			self.widget.child_finder('player_emblem').image = emblem % player_color
 
 		if self.__class__.has_stance:
 			self.init_stance_widget()
-
-		# set player emblem
-		if self.widget.child_finder('player_emblem'):
-			emblem = 'content/gui/images/tabwidget/emblems/emblem_%s.png'
-			if self.instance.owner is not None:
-				self.widget.child_finder('player_emblem').image = emblem % self.instance.owner.color.name
-			else:
-				self.widget.child_finder('player_emblem').image = emblem % 'no_player'
-
 
 	def refresh(self):
 		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
@@ -58,7 +61,7 @@ class OverviewTab(TabInterface):
 		if hasattr(self.instance, 'running_costs') and \
 		   self.widget.child_finder('running_costs'):
 			self.widget.child_finder('running_costs').text = \
-			    unicode( self.instance.running_costs )
+			    unicode(self.instance.running_costs)
 
 		self.widget.adaptLayout()
 
@@ -77,32 +80,30 @@ class OverviewTab(TabInterface):
 	def hide(self):
 		super(OverviewTab, self).hide()
 		if self.instance is not None:
-			if self.instance.has_change_listener(self.refresh):
-				self.instance.remove_change_listener(self.refresh)
-			if self.instance.has_remove_listener(self.on_instance_removed):
-				self.instance.remove_remove_listener(self.on_instance_removed)
-		if hasattr(self.instance, 'settlement') and \
-		   self.instance.settlement is not None and \
-		   self.instance.settlement.has_change_listener(self._schedule_refresh):
-			self.instance.settlement.remove_change_listener(self._schedule_refresh)
+			self.instance.discard_change_listener(self.refresh)
+			self.instance.discard_remove_listener(self.on_instance_removed)
+		if hasattr(self.instance, 'settlement') and self.instance.settlement is not None:
+			self.instance.settlement.discard_change_listener(self._schedule_refresh)
 
 	def on_instance_removed(self):
 		self.on_remove()
 		self.instance = None
 
-	def init_stance_widget(self): # call for tabs with stances
+	def init_stance_widget(self):
+		"""Call this for tabs with stances."""
 		stance_widget = self.widget.findChild(name='stance')
 		stance_widget.init(self.instance)
 		self.add_remove_listener(stance_widget.remove)
 
 
 class GroundUnitOverviewTab(OverviewTab):
+	widget = 'overview_groundunit.xml'
+	helptext = _lazy("Unit overview")
+
 	has_stance = True
-	def __init__(self, instance):
-		super(GroundUnitOverviewTab, self).__init__(
-			widget = 'overview_groundunit.xml',
-			instance = instance)
-		self.helptext = _("Unit overview")
+
+	def init_widget(self):
+		super(GroundUnitOverviewTab, self).init_widget()
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
@@ -110,9 +111,7 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
 
-class FireStationOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(FireStationOverviewTab, self).__init__(
-			widget = 'overview_firestation.xml',
-			instance = instance
-		)
+
+class GenericOverviewTab(OverviewTab):
+	"""Name and running costs."""
+	widget = 'overview_generic.xml'

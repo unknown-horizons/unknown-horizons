@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,6 +32,9 @@ def test_select_ship(gui):
 	Select a ship.
 	"""
 
+	assert gui.find('overview_trade_ship')
+
+	gui.press_key(gui.Key.NUM_0)
 	assert gui.find('tab_base') is None
 
 	# Find player's ship
@@ -47,6 +50,7 @@ def test_selectmultitab(gui):
 	Select two frigates and delete them.
 	"""
 
+	gui.press_key(gui.Key.NUM_0)
 	assert gui.find('tab_base') is None
 
 	player = gui.session.world.player
@@ -58,7 +62,13 @@ def test_selectmultitab(gui):
 	assert gui.find('overview_select_multi')
 	gui.run(seconds=0.1)
 
-	gui.press_key(gui.Key.DELETE)
+	def func():
+		assert gui.find('popup_window') is not None
+		gui.trigger('popup_window', 'okButton')
+
+	with gui.handler(func):
+		gui.press_key(gui.Key.DELETE)
+
 	assert gui.find('tab_base') is None
 	gui.run(seconds=0.1)
 
@@ -66,17 +76,21 @@ def test_selectmultitab(gui):
 @gui_test(use_dev_map=True, timeout=120)
 def test_selection_groups(gui):
 	"""Check group selection using ctrl-NUM"""
+
+	# Starting a new game assigns player ship to group 1
 	ship = get_player_ship(gui.session)
+	assert gui.session.selected_instances == set([ship])
+
 	gui.select([ship])
 
 	# make first group
-	gui.press_key(gui.Key.NUM_1, ctrl=True)
+	gui.press_key(gui.Key.NUM_2, ctrl=True)
 
 	gui.select( [] )
 	assert not gui.session.selected_instances
 
 	# check group
-	gui.press_key(gui.Key.NUM_1)
+	gui.press_key(gui.Key.NUM_2)
 	assert iter(gui.session.selected_instances).next() is ship
 
 	gui.cursor_click(59, 1, 'right')
@@ -93,23 +107,23 @@ def test_selection_groups(gui):
 	wh = gui.session.world.player.settlements[0].warehouse
 
 	gui.select( [wh] )
-	gui.press_key(gui.Key.NUM_2, ctrl=True)
+	gui.press_key(gui.Key.NUM_3, ctrl=True)
 
 	# check group again
-	gui.press_key(gui.Key.NUM_1)
+	gui.press_key(gui.Key.NUM_2)
 	assert len(gui.session.selected_instances) == 1 and \
 	       iter(gui.session.selected_instances).next() is ship
 
 	# now other one
-	gui.press_key(gui.Key.NUM_2)
+	gui.press_key(gui.Key.NUM_3)
 	assert len(gui.session.selected_instances) == 1 and \
 	       iter(gui.session.selected_instances).next() is wh
 
 	# check group still once again
-	gui.press_key(gui.Key.NUM_1)
+	gui.press_key(gui.Key.NUM_2)
 	assert len(gui.session.selected_instances) == 1 and \
 	       iter(gui.session.selected_instances).next() is ship
 
 	# no group
-	gui.press_key(gui.Key.NUM_3)
+	gui.press_key(gui.Key.NUM_0)
 	assert not gui.session.selected_instances

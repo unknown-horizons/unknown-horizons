@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,6 +24,8 @@ Cleaner interface to various game/gui functions to make tests easier.
 """
 
 import contextlib
+import os
+import tempfile
 import types
 from collections import deque
 
@@ -39,6 +41,7 @@ from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
+from horizons.util.startgameoptions import StartGameOptions
 
 from tests.gui import cooperative
 
@@ -70,6 +73,23 @@ def found_settlement(gui, ship_pos, (x, y)):
 	assert isinstance(gui.cursor, BuildingTool)
 	gui.cursor_click(x, y, 'left')
 	assert isinstance(gui.cursor, CursorTool)
+
+
+def saveload(gui):
+	"""Save and load the game (gui test version). Use like this:
+
+	# For gui tests
+	saveload(gui)
+	"""
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert gui.session.save(savegamename=filename)
+	options = StartGameOptions.create_load_game(filename, None)
+	# This hands out a new session, but `gui.session` is a property.
+	horizons.main.start_singleplayer(options)
+	# Restore some properties that were changed for tests:
+	# Set game speed to maximum, and disable autoscroll.
+	gui.setup()
 
 
 class CursorToolsPatch(object):
@@ -144,7 +164,9 @@ class GuiHelper(object):
 		# patch for using map coords with CursorTools is enabled by default
 		self.cursor_map_coords = CursorToolsPatch()
 		self.cursor_map_coords.enable()
+		self.setup()
 
+	def setup(self):
 		self.disable_autoscroll()
 		self.speed_up()
 
@@ -161,7 +183,7 @@ class GuiHelper(object):
 		"""Active widgets are the top level containers currently
 		known by pychan.
 		"""
-		return self._manager.allWidgets.keys()
+		return self._manager.allWidgets
 
 	def _get_children(self, w):
 		if hasattr(w, 'children'):

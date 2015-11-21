@@ -8,23 +8,23 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2013-02-10 19:03+0000\n"
-"Last-Translator: Андрій <andriykopanytsia@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-08-31 19:10+0200\n"
+"Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
+"Language-Team: Ukrainian <http://hosted.weblate.org/projects/uh/the-"
+"unknown/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #. scenario difficulty
 msgid "easy"
 msgstr "легкий"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
@@ -32,7 +32,7 @@ msgid ""
 msgstr ""
 "Ви капітан судна під прапором Англії в 1740 році. Ви і ваша команда були на "
 "шляху до колонії Англії в Тихому океані. \n"
-"Все йшло чудово, поки ви не зазнали шторму.... \n"
+"Все йшло чудово, поки ви не зазнали шторму.…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -72,13 +72,12 @@ msgid "22nd November 1740"
 msgstr "22 листопада 1740"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
-"Порт збудовано і нова надія виникає. Мене як і раніше турбують найближчі "
-"дні ... ми відчуваємо нестачу їжі і відсутність основного будівельного "
+"Порт збудовано і нова надія виникає. Мене як і раніше турбують найближчі дні "
+"... ми відчуваємо нестачу їжі і відсутність основного будівельного "
 "матеріалу."
 
 #. This is the text body of a logbook page.
@@ -152,7 +151,6 @@ msgstr ""
 "дах над головою на ніч."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
@@ -162,7 +160,7 @@ msgstr ""
 "Я досліджував зірки вночі, але без моїх морських карт і інструментів їх "
 "значення залишається невідомим. У мене є відчуття, що ми застрягнемо тут на "
 "деякий час, тому ми повинні зробити все найкраще у цій ситуації. \n"
-"Ми можемо тільки спробувати побудувати цивілізацію і знайти шлях додому ..."
+"Ми можемо тільки спробувати побудувати цивілізацію і знайти шлях додому…"
 
 #. This is the text body of a logbook page.
 msgid ""

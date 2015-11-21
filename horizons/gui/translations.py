@@ -1,6 +1,6 @@
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -97,15 +97,15 @@ def set_translations():
 		},
 
 	'minimap.xml' : {
-		(u'build'                        , 'helptext'): _(u"Build menu (B)"),
-		(u'destroy_tool'                 , 'helptext'): _(u"Destroy (X)"),
+		(u'build'                        , 'helptext'): _(u"Build menu ({key})"),
+		(u'destroy_tool'                 , 'helptext'): _(u"Destroy ({key})"),
 		(u'diplomacyButton'              , 'helptext'): _(u"Diplomacy"),
-		(u'gameMenuButton'               , 'helptext'): _(u"Game menu (Esc)"),
-		(u'logbook'                      , 'helptext'): _(u"Captain's log (L)"),
-		(u'rotateLeft'                   , 'helptext'): _(u"Rotate map counterclockwise (,)"),
-		(u'rotateRight'                  , 'helptext'): _(u"Rotate map clockwise (.)"),
-		(u'speedDown'                    , 'helptext'): _(u"Decrease game speed (-)"),
-		(u'speedUp'                      , 'helptext'): _(u"Increase game speed (+)"),
+		(u'gameMenuButton'               , 'helptext'): _(u"Game menu ({key})"),
+		(u'logbook'                      , 'helptext'): _(u"Captain's log ({key})"),
+		(u'rotateLeft'                   , 'helptext'): _(u"Rotate map counterclockwise ({key})"),
+		(u'rotateRight'                  , 'helptext'): _(u"Rotate map clockwise ({key})"),
+		(u'speedDown'                    , 'helptext'): _(u"Decrease game speed ({key})"),
+		(u'speedUp'                      , 'helptext'): _(u"Increase game speed ({key})"),
 		(u'zoomIn'                       , 'helptext'): _(u"Zoom in"),
 		(u'zoomOut'                      , 'helptext'): _(u"Zoom out"),
 		},
@@ -132,13 +132,13 @@ def set_translations():
 		},
 
 	'boatbuilder.xml' : {
-		(u'BB_cancel_build_label'        , 'text'    ): _(u"Cancel building:"),
-		(u'BB_cancel_warning_label'      , 'text'    ): _(u"(lose all resources)"),
-		(u'BB_current_order'             , 'text'    ): _(u"Currently building:"),
-		(u'BB_howto_build_lbl'           , 'text'    ): _(u"To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
-		(u'BB_needed_res_label'          , 'text'    ): _(u"Resources still needed:"),
-		(u'BB_progress_label'            , 'text'    ): _(u"Construction progress:"),
-		(u'BB_cancel_button'             , 'helptext'): _(u"Cancel all building progress"),
+		(u'UB_cancel_build_label'        , 'text'    ): _(u"Cancel building:"),
+		(u'UB_cancel_warning_label'      , 'text'    ): _(u"(lose all resources)"),
+		(u'UB_current_order'             , 'text'    ): _(u"Currently building:"),
+		(u'UB_howto_build_lbl'           , 'text'    ): _(u"To build a boat, click on one of the class tabs, select the desired ship and confirm the order."),
+		(u'UB_needed_res_label'          , 'text'    ): _(u"Resources still needed:"),
+		(u'UB_progress_label'            , 'text'    ): _(u"Construction progress:"),
+		(u'UB_cancel_button'             , 'helptext'): _(u"Cancel all building progress"),
 		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
 		(u'toggle_active_active'         , 'helptext'): _(u"Pause"),
 		(u'toggle_active_inactive'       , 'helptext'): _(u"Resume"),
@@ -159,6 +159,9 @@ def set_translations():
 		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
 		(u'capacity_utilization'         , 'helptext'): _(u"Capacity utilization"),
 		(u'running_costs'                , 'helptext'): _(u"Running costs"),
+		},
+
+	'overview_war_groundunit.xml' : {
 		},
 
 	'island_inventory.xml' : {
@@ -197,7 +200,7 @@ def set_translations():
 		(u'selling_label'                , 'text'    ): _(u"Selling"),
 		},
 
-	'overview_firestation.xml' : {
+	'overview_generic.xml' : {
 		(u'headline'                     , 'text'    ): _(u"Building overview"),
 		(u'name_label'                   , 'text'    ): _(u"Name:"),
 		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
@@ -246,14 +249,6 @@ def set_translations():
 
 	'overview_tradership.xml' : {
 		(u'trader_description_lbl'       , 'text'    ): _(u"This is the free trader's ship. It will visit you from time to time to buy or sell goods."),
-		},
-
-	'overview_warehouse.xml' : {
-		(u'name_label'                   , 'text'    ): _(u"Name:"),
-		(u'collector_utilization_label'  , 'helptext'): _(u"Collector utilization"),
-		(u'running_costs_label'          , 'helptext'): _(u"Running costs"),
-		(u'collector_utilization'        , 'helptext'): _(u"Collector utilization"),
-		(u'running_costs'                , 'helptext'): _(u"Running costs"),
 		},
 
 	'overviewtab.xml' : {
@@ -306,7 +301,9 @@ def set_translations():
 		(u'running_costs_label'          , 'text'    ): _(u"Running costs"),
 		(u'sell_income_label'            , 'text'    ): _(u"Sale"),
 		(u'taxes_label'                  , 'text'    ): _(u"Taxes"),
+		(u'collector_utilization_label'  , 'helptext'): _(u"Collector utilization"),
 		(u'show_production_overview'     , 'helptext'): _(u"Show resources produced in this settlement"),
+		(u'collector_utilization'        , 'helptext'): _(u"Collector utilization"),
 		},
 
 	'trade_single_slot.xml' : {
@@ -483,6 +480,8 @@ def set_translations():
 		(u'lbl_TILE_OWNER_HIGHLIGHT'     , 'helptext'): _(u"Highlight tile ownership"),
 		(u'lbl_TRANSLUCENCY'             , 'helptext'): _(u"Toggle translucency of ambient buildings"),
 		(u'lbl_UP'                       , 'helptext'): _(u"Scroll up"),
+		(u'lbl_ZOOM_IN'                  , 'helptext'): _(u"Zoom in"),
+		(u'lbl_ZOOM_OUT'                 , 'helptext'): _(u"Zoom out"),
 		},
 
 	'ingamemenu.xml' : {
@@ -511,8 +510,6 @@ def set_translations():
 		},
 
 	'multiplayer_creategame.xml' : {
-		(u'create_game_lbl'              , 'text'    ): _(u"Create game:"),
-		(u'exit_to_mp_menu_lbl'          , 'text'    ): _(u"Back:"),
 		(u'gamename_lbl'                 , 'text'    ): _(u"Name of the game:"),
 		(u'headline'                     , 'text'    ): _(u"Choose a map:"),
 		(u'headline'                     , 'text'    ): _(u"Create game - Multiplayer"),
@@ -525,7 +522,6 @@ def set_translations():
 		},
 
 	'multiplayer_gamelobby.xml' : {
-		(u'exit_to_mp_menu_lbl'          , 'text'    ): _(u"Leave:"),
 		(u'game_player_color'            , 'text'    ): _(u"Color"),
 		(u'game_player_status'           , 'text'    ): _(u"Status"),
 		(u'game_start_notice'            , 'text'    ): _(u"The game will start as soon as all players are ready."),
@@ -539,10 +535,9 @@ def set_translations():
 
 	'multiplayermenu.xml' : {
 		(u'create_game_lbl'              , 'text'    ): _(u"Create game:"),
-		(u'exit_to_main_menu_lbl'        , 'text'    ): _(u"Main menu:"),
 		(u'headline_active_games_lbl'    , 'text'    ): _(u"Active games:"),
 		(u'headline_left'                , 'text'    ): _(u"New game - Multiplayer"),
-		(u'join_game_lbl'                , 'text'    ): _(u"Join game"),
+		(u'join_game_lbl'                , 'text'    ): _(u"Join game:"),
 		(u'load_game_lbl'                , 'text'    ): _(u"Load game:"),
 		(u'refr_gamelist_lbl'            , 'text'    ): _(u"Refresh list:"),
 		(u'cancel'                       , 'helptext'): _(u"Exit to main menu"),
@@ -557,10 +552,8 @@ def set_translations():
 		},
 
 	'settings.xml' : {
-		(u'reset_mouse_sensitivity'      , 'text'    ): _(u"Reset to default"),
 		(u'auto_unload_label'            , 'text'    ): _(u"Auto-unload ship:"),
 		(u'autosave_interval_label'      , 'text'    ): _(u"Autosave interval in minutes:"),
-		(u'color_depth_label'            , 'text'    ): _(u"Color depth:"),
 		(u'cursor_centered_zoom_label'   , 'text'    ): _(u"Cursor centered zoom:"),
 		(u'debug_log_lbl'                , 'text'    ): _(u"Enable logging:"),
 		(u'edge_scrolling_label'         , 'text'    ): _(u"Scroll at map edge:"),
@@ -587,12 +580,10 @@ def set_translations():
 		(u'show_resource_icons_lbl'      , 'text'    ): _(u"Production indicators:"),
 		(u'sound_enable_opt_text'        , 'text'    ): _(u"Enable sound:"),
 		(u'uninterrupted_building_label' , 'text'    ): _(u"Uninterrupted building:"),
-		(u'use_renderer_label'           , 'text'    ): _(u"Used renderer:"),
 		(u'cancelButton'                 , 'helptext'): _(u"Discard current changes"),
 		(u'defaultButton'                , 'helptext'): _(u"Reset to default settings"),
-		(u'okButton'                     , 'helptext'): _(u"Apply"),
+		(u'okButton'                     , 'helptext'): _(u"Save changes"),
 		(u'auto_unload_label'            , 'helptext'): _(u"Whether to unload the ship after founding a settlement"),
-		(u'color_depth_label'            , 'helptext'): _(u"If set to 0, use the driver default"),
 		(u'cursor_centered_zoom_label'   , 'helptext'): _(u"When enabled, mouse wheel zoom will use the cursor position as new viewport center. When disabled, always zoom to current viewport center."),
 		(u'debug_log_lbl'                , 'helptext'): _(u"Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."),
 		(u'edge_scrolling_label'         , 'helptext'): _(u"Whether to move the viewport when the mouse pointer is close to map edges"),
@@ -605,7 +596,6 @@ def set_translations():
 		(u'scroll_speed_label'           , 'helptext'): _(u"Higher values slow down scrolling."),
 		(u'show_resource_icons_lbl'      , 'helptext'): _(u"Whether to show resource icons over buildings whenever they finish production"),
 		(u'uninterrupted_building_label' , 'helptext'): _(u"When enabled, do not exit the build mode after successful construction"),
-		(u'use_renderer_label'           , 'helptext'): _(u"SDL is only meant as unsupported fallback and might cause problems!"),
 		},
 
 	'select_savegame.xml' : {
@@ -622,8 +612,6 @@ def set_translations():
 
 	'singleplayermenu.xml' : {
 		(u'headline'                     , 'text'    ): _(u"New game - Singleplayer"),
-		(u'main_menu_label'              , 'text'    ): _(u"Main menu:"),
-		(u'start_game_label'             , 'text'    ): _(u"Start game:"),
 		(u'free_maps'                    , 'text'    ): _(u"Free play"),
 		(u'random'                       , 'text'    ): _(u"Random map"),
 		(u'scenario'                     , 'text'    ): _(u"Scenario"),

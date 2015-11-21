@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -49,15 +49,16 @@ class TabWidget(object):
 		self.ingame_gui = ingame_gui
 		self._tabs = [] if not tabs else tabs
 		self.current_tab = self._tabs[0] # Start with the first tab
+		self.current_tab.ensure_loaded() # loading current_tab widget
 		self.widget = load_uh_widget("tab_base.xml")
 		self.widget.position_technique = 'right-239:top+209'
 		self.content = self.widget.findChild(name='content')
-		self._init_tabs()
+		self._init_tab_buttons()
 		# select a tab to show (first one is default)
 		if active_tab is not None:
-			self._show_tab(active_tab)
+			self.show_tab(active_tab)
 
-	def _init_tabs(self):
+	def _init_tab_buttons(self):
 		"""Add enough tabbuttons for all widgets."""
 		def on_tab_removal(tabwidget):
 			# called when a tab is being removed (via weakref since tabs shouldn't have references to the parent tabwidget)
@@ -79,7 +80,7 @@ class TabWidget(object):
 			else:
 				background.image = tab.button_background_image
 				button.path = tab.path
-			button.capture(Callback(self._show_tab, index))
+			button.capture(Callback(self.show_tab, index))
 			if hasattr(tab, 'helptext') and tab.helptext:
 				button.helptext = tab.helptext
 			container.size = background.size
@@ -91,7 +92,7 @@ class TabWidget(object):
 
 		self._apply_layout_hack()
 
-	def _show_tab(self, number):
+	def show_tab(self, number):
 		"""Used as callback function for the TabButtons.
 		@param number: tab number that is to be shown.
 		"""
@@ -138,7 +139,6 @@ class TabWidget(object):
 
 	def show(self):
 		"""Show the current widget"""
-		self.current_tab.ensure_loaded()
 		# show before drawing so that position_technique properly sets
 		# button positions (which we want to draw our tabs relative to)
 		self.widget.show()
@@ -147,33 +147,7 @@ class TabWidget(object):
 		self.ingame_gui.minimap_to_front()
 
 	def hide(self, caller=None):
-		"""Hide the current widget"""
+		"""Hides current tab and this widget"""
 		self.current_tab.hide()
 		self.widget.hide()
-
-	def _get_x(self):
-		"""Returs the widget's x position"""
-		return self.widget.position[0]
-
-	def _set_x(self, value):
-		"""Sets the widget's x position"""
-		self.widget.position = (value, self.widget.position[1])
-
-	# Shortcut to set and retrieve the widget's current x position.
-	x = property(_get_x, _set_x)
-
-	def _get_y(self):
-		"""Returns the widget's y position"""
-		return self.widget.position[1]
-
-	def _set_y(self, value):
-		"""Sets the widget's y position"""
-		self.widget.position = (self.widget.position[0], value)
-
-	# Shortcut to set and retrieve the widget's current y position.
-	y = property(_get_y, _set_y)
-
-
-
-
 

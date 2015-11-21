@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,6 +27,7 @@ from fife.extensions.pychan.widgets import Icon
 from horizons.util.python.callback import Callback
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
+from horizons.i18n import _lazy
 from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
 from horizons.component.healthcomponent import HealthComponent
@@ -40,13 +41,15 @@ class SelectMultiTab(TabInterface):
 	"""
 	Tab shown when multiple units are selected
 	"""
+	widget = 'overview_select_multi.xml'
+	icon_path = 'icons/tabwidget/common/inventory'
+	helptext = _lazy("Selected Units")
+
 	max_row_entry_number = 3
 	max_column_entry_number = 4
-	def __init__(self, selected_instances=None, widget='overview_select_multi.xml',
-	             icon_path='icons/tabwidget/common/inventory'):
-		super(SelectMultiTab, self).__init__(widget=widget, icon_path=icon_path)
+
+	def __init__(self, selected_instances=None):
 		self.selected_instances = selected_instances or []
-		self.init_values()
 
 		# keep track of units that have stance
 		self.stance_unit_number = 0
@@ -55,7 +58,6 @@ class SelectMultiTab(TabInterface):
 		# keep track of number of instances per type
 		self.type_number = defaultdict(int)
 
-		self.helptext = _("Selected Units")
 		for i in self.selected_instances:
 			if hasattr(i, 'stance'):
 				self.stance_unit_number += 1
@@ -64,10 +66,14 @@ class SelectMultiTab(TabInterface):
 				i.add_remove_listener(Callback(self.on_instance_removed, i))
 			self.type_number[i.id] += 1
 
+		self._scheduled_refresh = False
+
+		super(SelectMultiTab, self).__init__()
+
+	def init_widget(self):
 		if self.stance_unit_number != 0:
 			self.show_stance_widget()
 
-		self._scheduled_refresh = False
 		self.draw_selected_units_widget()
 
 	def add_entry(self, entry):
@@ -127,8 +133,7 @@ class SelectMultiTab(TabInterface):
 			self.stance_unit_number -= 1
 
 		self.instances.remove(instance)
-		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+		instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 
 		if self.widget.isVisible():
 			if len(self.instances) < 2:
@@ -156,8 +161,8 @@ class SelectMultiTab(TabInterface):
 		stance_widget = load_uh_widget('stancewidget.xml')
 		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
-		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
-		self.widget.mapEvents( events )
+		events = dict((i.NAME, Callback(self.set_stance, i)) for i in DEFAULT_STANCES)
+		self.widget.mapEvents(events)
 
 	def hide_stance_widget(self):
 		Scheduler().rem_all_classinst_calls(self)
@@ -171,7 +176,7 @@ class SelectMultiTab(TabInterface):
 
 	def toggle_stance(self):
 		"""
-		Toggles the stance, Assumes at least one stance unit is selected
+		Toggles the stance. Assumes at least one stance unit is selected.
 		"""
 		for stance in DEFAULT_STANCES:
 			self.widget.findChild(name=stance.NAME).set_inactive()
@@ -183,6 +188,7 @@ class SelectMultiTab(TabInterface):
 				# not all have the same stance, toggle none
 				return
 		self.widget.findChild(name=stance.NAME).set_active()
+
 
 class UnitEntry(object):
 	def __init__(self, instances, show_number=True):
@@ -224,8 +230,7 @@ class UnitEntry(object):
 
 	def on_instance_removed(self, instance):
 		self.instances.remove(instance)
-		if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-			instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+		instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 		health_component = instance.get_component(HealthComponent)
 		if health_component.has_damage_dealt_listener(self.draw_health):
 			health_component.remove_damage_dealt_listener(self.draw_health)
@@ -250,8 +255,7 @@ class UnitEntry(object):
 		Clears all the listeners in instances
 		"""
 		for instance in self.instances:
-			if instance.has_remove_listener(Callback(self.on_instance_removed, instance)):
-				instance.remove_remove_listener(Callback(self.on_instance_removed, instance))
+			instance.discard_remove_listener(Callback(self.on_instance_removed, instance))
 			health_component = instance.get_component(HealthComponent)
 			if health_component.has_damage_dealt_listener(self.draw_health):
 				health_component.remove_damage_dealt_listener(self.draw_health)

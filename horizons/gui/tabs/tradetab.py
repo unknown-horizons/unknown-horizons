@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,7 @@
 
 import logging
 
+from horizons.constants import GUI
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.uioptions import SellResource, BuyResource, TransferResource
@@ -28,11 +29,16 @@ from horizons.util.python.callback import Callback
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.i18n import _lazy
 
 
 class TradeTab(TabInterface):
 	"""Ship to trade post's trade tab. International as well as national trade."""
 	log = logging.getLogger("gui.tabs.tradetab")
+
+	widget = 'tradetab.xml'
+	icon_path = 'icons/tabwidget/warehouse/buysell'
+	helptext = _lazy('Trade')
 
 	scheduled_update_delay = 0.3
 
@@ -54,15 +60,17 @@ class TradeTab(TabInterface):
 		"""
 		@param instance: ship instance used for trading
 		"""
-		super(TradeTab, self).__init__(widget='tradetab.xml',
-		                               icon_path='icons/tabwidget/warehouse/buysell')
+		self.instance = instance
+		super(TradeTab, self).__init__()
+
+	def init_widget(self):
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():
 			events[v] = Callback(self.set_exchange, k)
 		self.widget.mapEvents(events)
-		self.instance = instance
 		self.partner = None
-		self.set_exchange(50, initial=True)
+		self.exchange = None
+		self.set_exchange(GUI.DEFAULT_EXCHANGE_AMOUNT, initial=True)
 
 	def refresh(self):
 		super(TradeTab, self).refresh()
@@ -125,7 +133,7 @@ class TradeTab(TabInterface):
 
 	def __remove_changelisteners(self):
 		# never redraw on clicks immediately because of
-		# http://fife.trac.cloudforge.com/engine/ticket/387
+		# http://github.com/fifengine/fifengine/issues/387
 		# This way, there is a chance of clicks being noticed by pychan.
 		# The cost is to delay all updates, which in this case is 0.3 sec, therefore deemed bearable.
 
@@ -166,15 +174,17 @@ class TradeTab(TabInterface):
 		Highlight radio button with selected amount and deselect old highlighted.
 		@param initial: bool, use it to set exchange size when initing the widget
 		"""
+		self.log.debug("Tradewidget: exchange size now: %s", size)
 		if not initial:
-			old_box = self.widget.findChild(name= self.exchange_size_buttons[self.exchange])
+			old_name = self.exchange_size_buttons[self.exchange]
+			old_box = self.widget.findChild(name=old_name)
 			old_box.up_image = self.images['box']
 
-		box_h = self.widget.findChild(name= self.exchange_size_buttons[size])
-		box_h.up_image = self.images['box_highlighted']
-
 		self.exchange = size
-		self.log.debug("Tradewidget: exchange size now: %s", size)
+
+		new_name = self.exchange_size_buttons[self.exchange]
+		box_h = self.widget.findChild(name=new_name)
+		box_h.up_image = self.images['box_highlighted']
 		if not initial:
 			self.draw_widget()
 

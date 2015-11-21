@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -18,6 +18,8 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+import horizons.globals
 
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -45,6 +47,10 @@ class BuildTab(TabInterface):
 	Check buildtab.xml for details. Icons without image are transparent.
 	"""
 	lazy_loading = True
+	widget = 'buildtab.xml'
+
+	MAX_ROWS = 4
+	MAX_COLS = 4
 
 	build_menus = [
 	  "content/objects/gui_buildmenu/build_menu_per_tier.yaml",
@@ -58,7 +64,7 @@ class BuildTab(TabInterface):
 
 	cur_build_menu_config = default_build_menu_config
 
-	# NOTE: check for occurences of this when adding one, you might want to
+	# NOTE: check for occurrences of this when adding one, you might want to
 	#       add respective code there as well
 	unlocking_strategies = Enum("tab_per_tier", # 1 tab per tier
 	                            "single_per_tier" # each single building unlocked if tier is unlocked
@@ -101,7 +107,6 @@ class BuildTab(TabInterface):
 		if not icon_path:
 			raise InvalidBuildMenuFileFormat("icon_path definition is missing.")
 
-		super(BuildTab, self).__init__(widget='buildtab.xml', icon_path=icon_path)
 		self.session = session
 		self.tabindex = tabindex
 		self.build_callback = build_callback
@@ -112,20 +117,25 @@ class BuildTab(TabInterface):
 		self.row_definitions = rows
 		self.headline = _(headline) if headline else headline # don't translate None
 		self.helptext = _(helptext) if helptext else self.headline
-		self.build_menu_config = build_menu_config
 
-	def _lazy_loading_init(self):
-		super(BuildTab, self)._lazy_loading_init()
-		self.init_gui()
+		#get build style
+		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
+		self.cur_build_menu_config = self.__class__.build_menus[ saved_build_style ]
+
+		super(BuildTab, self).__init__(icon_path=icon_path)
+
+	@classmethod
+	def get_saved_buildstyle(cls):
+		saved_build_style = horizons.globals.fife.get_uh_setting("Buildstyle")
+		return cls.build_menus[ saved_build_style ]
+
+	def init_widget(self):
 		self.__current_settlement = None
-
-	def init_gui(self):
 		headline_lbl = self.widget.child_finder('headline')
 		if self.headline: # prefer specific headline
 			headline_lbl.text = self.headline
 		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
 			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
-
 
 	def set_content(self):
 		"""Parses self.row_definitions and sets the content accordingly"""
@@ -139,15 +149,13 @@ class BuildTab(TabInterface):
 			building = Entities.buildings[building_id]
 			button.helptext = building.get_tooltip()
 
-			# Add necessary resources to tooltip
-			# [br] means newline
-			button.helptext += u'[br]' + _('Resources needed:') + u'[br]'
+			# Add necessary resources to tooltip text.
+			# tooltip.py will then place icons from this information.
+			required_resources = ''
 			for resource_id, amount_needed in sorted(building.costs.items()):
-				resource_name = self.session.db.get_res_name(resource_id)
-				button.helptext += u'[br]'
-				#xgettext:python-format
-				# You usually do not need to change anything here when translating
-				button.helptext += _('{resource}: {amount}').format(resource=resource_name, amount=amount_needed)
+				required_resources += ' %s:%s' % (resource_id, amount_needed)
+			required_text = '[[Buildmenu%s]]' % (required_resources)
+			button.helptext = required_text + button.helptext
 
 			enough_res = False # don't show building by default
 			if settlement is not None: # settlement is None when the mouse has left the settlement
@@ -159,7 +167,7 @@ class BuildTab(TabInterface):
 				  })
 
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
-			#check whether to disable build menu icon (not enough res available)
+			# Check whether to disable build menu icon (not enough res available).
 			if enough_res:
 				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
 				button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
@@ -169,8 +177,6 @@ class BuildTab(TabInterface):
 
 			button.capture(Callback(self.build_callback, building_id))
 
-		MAX_ROWS = 4
-		MAX_COLS = 4
 		for row_num, row in enumerate(self.row_definitions):
 			# we have integers for building types, strings for headlines above slots and None as empty slots
 			column = -1 # can't use enumerate, not always incremented
@@ -179,13 +185,15 @@ class BuildTab(TabInterface):
 				position = (10*column) + (row_num+1) # legacy code, first row is 1, 11, 21
 				if entry is None:
 					continue
-				elif (column + 1) > MAX_COLS: # out of 4x4 bounds
+				elif (column + 1) > self.MAX_COLS:
+					# out of 4x4 bounds
 					err = "Invalid entry '%s': column %s does not exist." % (entry, column + 1)
-					err += " Max. column amount in current layout is %s." % MAX_COLS
+					err += " Max. column amount in current layout is %s." % self.MAX_COLS
 					raise InvalidBuildMenuFileFormat(err)
-				elif row_num > MAX_ROWS: # out of 4x4 bounds
+				elif row_num > self.MAX_ROWS:
+					# out of 4x4 bounds
 					err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
-					err += " Max. row amount in current layout is %s." % MAX_ROWS
+					err += " Max. row amount in current layout is %s." % self.MAX_ROWS
 					raise InvalidBuildMenuFileFormat(err)
 				elif isinstance(entry, basestring):
 					column -= 1 # a headline does not take away a slot
@@ -252,14 +260,16 @@ class BuildTab(TabInterface):
 		self.__class__.last_active_build_tab = 0
 		self.session.ingame_gui.show_build_menu(update=True)
 
+		#save build style
+		horizons.globals.fife.set_uh_setting("Buildstyle",new_index)
+		horizons.globals.fife.save_settings();
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
 		"""Create according to current build menu config
 		@param build_callback: function to call to enable build mode, has to take building type parameter
 		"""
-		source = cls.cur_build_menu_config
-
+		source = cls.get_saved_buildstyle()
 		# parse
 		data = YamlCache.get_file( source, game_data=True )
 		if 'meta' not in data:
@@ -296,7 +306,7 @@ class BuildTab(TabInterface):
 	@decorators.cachedfunction
 	def get_building_tiers(cls):
 		"""Returns a dictionary mapping building type ids to their tiers
-		@return cached dictionary (don't modifiy)"""
+		@return cached dictionary (don't modify)"""
 		building_tiers = {}
 		data = YamlCache.get_file( cls.build_menu_config_per_tier, game_data=True )
 		tier = -1

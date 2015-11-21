@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -36,6 +36,7 @@ class InvalidScenarioFileFormat(Exception):
 		if msg is None:
 			msg = "Invalid scenario file."
 		super(InvalidScenarioFileFormat, self).__init__(msg)
+
 
 class ScenarioEventHandler(LivingObject):
 	"""Handles event, that make up a scenario. See wiki.
@@ -221,7 +222,8 @@ class ScenarioEventHandler(LivingObject):
 		data = copy.deepcopy(self._data)
 		del data['events']
 		yaml_code = dump_dict_to_yaml(data)
-		yaml_code = yaml_code.rstrip(u'}\n') # remove last } so we can add stuff
+		# remove last } so we can add stuff
+		yaml_code = yaml_code.rsplit(u'}\n', 1)[0]
 		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
 		return yaml_code
 

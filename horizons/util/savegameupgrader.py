@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 import os
 import os.path
 import json
@@ -27,15 +28,27 @@ import tempfile
 
 from collections import defaultdict
 from sqlite3 import OperationalError
+from yaml.parser import ParserError
 
 from horizons.constants import BUILDINGS, VERSION, UNITS
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 from horizons.util.shapes import Rect
+from horizons.util.yamlcache import YamlCache
+
+class SavegameTooOld(Exception):
+	def __init__(self, msg=None, revision=None):
+		if msg is None:
+			msg = "The savegame is too old!"
+		if revision is not None:
+			msg += " Revision: " + str(revision)
+		super(SavegameTooOld, self).__init__(msg)
 
 class SavegameUpgrader(object):
 	"""The class that prepares saved games to be loaded by the current version."""
+
+	log = logging.getLogger("util.savegameupgrader")
 
 	def __init__(self, path):
 		super(SavegameUpgrader, self).__init__()
@@ -69,7 +82,7 @@ class SavegameUpgrader(object):
 		# convert old logbook (heading, message) tuples to new syntax, modify logbook table layout
 		old_entries = db("SELECT heading, message FROM logbook")
 		db('DROP TABLE logbook')
-		db('CREATE TABLE logbook ( widgets string )')
+		db('CREATE TABLE logbook ( widgets STRING )')
 		widgets = []
 		for heading, message in old_entries:
 			add = []
@@ -136,8 +149,43 @@ class SavegameUpgrader(object):
 		# some production line id changes
 
 		# [(object id, old prod line id, new prod line id)]
-		changes = (33, 42, 923331670), (9, 18, 1335785398), (42, 57, 227255506), (20, 8, 21429697), (20, 1, 1953634498), (20, 4, 70113509), (20, 47, 1236502256), (20, 52, 2078307024), (20, 23, 2092896117), (20, 0, 208610842), (20, 28, 2053891886), (20, 2, 1265004933), (20, 51, 1253640427), (20, 3, 1849560830), (20, 7, 1654557398), (60, 0, 532714998), (19, 22, 2092896117), (63, 2, 2097838825), (63, 0, 87034972), (63, 1, 570450416), (63, 3, 359183511), (8, 2, 256812226), (26, 34, 1842760585), (49, 1, 1953634498), (46, 0, 344746552), (28, 36, 1510556113), (45, 56464472, 1907712664), (35, 45, 854772720), (55, 0, 1971678669), (40, 57, 227255506), (54, 0, 1971678669), (29, 37, 1698523401), (11, 11, 923331670), (18, 5, 1654557398), (5, 13, 1056282634)
-
+		changes = [
+			(33, 42, 923331670),
+			(9, 18, 1335785398),
+			(42, 57, 227255506),
+			(20, 8, 21429697),
+			(20, 1, 1953634498),
+			(20, 4, 70113509),
+			(20, 47, 1236502256),
+			(20, 52, 2078307024),
+			(20, 23, 2092896117),
+			(20, 0, 208610842),
+			(20, 28, 2053891886),
+			(20, 2, 1265004933),
+			(20, 51, 1253640427),
+			(20, 3, 1849560830),
+			(20, 7, 1654557398),
+			(60, 0, 532714998),
+			(19, 22, 2092896117),
+			(63, 2, 2097838825),
+			(63, 0, 87034972),
+			(63, 1, 570450416),
+			(63, 3, 359183511),
+			(8, 2, 256812226),
+			(26, 34, 1842760585),
+			(49, 1, 1953634498),
+			(46, 0, 344746552),
+			(28, 36, 1510556113),
+			(45, 56464472, 1907712664),
+			(35, 45, 854772720),
+			(55, 0, 1971678669),
+			(40, 57, 227255506),
+			(54, 0, 1971678669),
+			(29, 37, 1698523401),
+			(11, 11, 923331670),
+			(18, 5, 1654557398),
+			(5, 13, 1056282634),
+		]
 		for obj_type, old_prod_line, new_prod_line in changes:
 			for (obj, ) in db("SELECT rowid FROM building WHERE type = ?", obj_type):
 				db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = ?", new_prod_line, obj, old_prod_line)
@@ -190,7 +238,7 @@ class SavegameUpgrader(object):
 		   '"starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL, "state" INTEGER NOT NULL )')
 		# SurpriseAttack
 		db('CREATE TABLE "ai_mission_surprise_attack" ("enemy_player_id" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL,'
-			'"target_point_radius" INTEGER NOT NULL, "return_point_x" INTEGER NOT NULL, "return_point_y" INTEGER NOT NULL )')
+		   '"target_point_radius" INTEGER NOT NULL, "return_point_x" INTEGER NOT NULL, "return_point_y" INTEGER NOT NULL )')
 		# ChaseShipsAndAttack
 		db('CREATE TABLE "ai_mission_chase_ships_and_attack" ("target_ship_id" INTEGER NOT NULL )')
 
@@ -285,7 +333,7 @@ class SavegameUpgrader(object):
 		db("DELETE FROM settlement_tiles")
 
 		for (worldid, building_id, x, y, location_id) in db("SELECT rowid, type, x, y, location FROM building WHERE type = ? OR type = ?",
-			    BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
+				                                            BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN):
 			worldid = int(worldid)
 			building_id = int(building_id)
 			origin_coords = (int(x), int(y))
@@ -307,7 +355,7 @@ class SavegameUpgrader(object):
 					db("UPDATE building SET location = ? WHERE rowid = ?", settlement_id, worldid)
 
 		# save the new settlement tiles data
-		ground_map = defaultdict(lambda: [])
+		ground_map = defaultdict(list)
 		for (coords, settlement_id) in settlement_map.iteritems():
 			ground_map[settlement_id].append(coords)
 
@@ -326,20 +374,41 @@ class SavegameUpgrader(object):
 		db("UPDATE message_widget_active  SET id = ? WHERE id = ?", new, old)
 		db("UPDATE message_widget_archive SET id = ? WHERE id = ?", new, old)
 
+	def _upgrade_to_rev72(self, db):
+		# rename fire_disaster to building_influencing_disaster
+		db("ALTER TABLE fire_disaster RENAME TO building_influencing_disaster")
+
+	def _upgrade_to_rev73(self, db):
+		# Attempt to fix up corrupt yaml dumped into scenario savegames (#2164)
+		key = 'scenario_events'
+		try:
+			yaml_data = db("SELECT name, value FROM metadata WHERE name = ?", key)[0][1]
+		except IndexError:
+			# Not a scenario, nothing to repair
+			return
+		try:
+			YamlCache.load_yaml_data(yaml_data)
+		except ParserError:
+			messed_up = 'events: [ { actions: [ {'
+			yaml_data = yaml_data.replace(messed_up, '}, ' + messed_up)
+			db("UPDATE metadata SET value = ? WHERE name = ?", yaml_data, key)
+
+	def _upgrade_to_rev74(self, db):
+		db("INSERT INTO metadata VALUES (?, ?)", "selected_tab", None)
+
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
 		metadata = SavegameManager.get_metadata(self.original_path)
 		rev = metadata['savegamerev']
-		if rev == 0: # not a regular savegame, usually a map
-			self.final_path = self.original_path
-		elif rev == VERSION.SAVEGAMEREVISION: # the current version
-			self.final_path = self.original_path
-		else: # upgrade
-			self.using_temp = True
-			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
-			os.close(handle)
-			shutil.copyfile(self.original_path, self.final_path)
+
+		if rev < VERSION.SAVEGAMEREVISION :
+			if not SavegameUpgrader.can_upgrade(rev):
+				raise SavegameTooOld(revision=rev)
+			
+			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
+						     (rev, VERSION.SAVEGAMEREVISION))
 			db = DbReader(self.final_path)
 			db('BEGIN TRANSACTION')
 
@@ -389,22 +458,31 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev70(db)
 			if rev < 71:
 				self._upgrade_to_rev71(db)
+			if rev < 72:
+				self._upgrade_to_rev72(db)
+			if 70 < rev < 73:
+				self._upgrade_to_rev73(db)
+			if rev < 74:
+				self._upgrade_to_rev74(db)
 
 			db('COMMIT')
 			db.close()
 
 	@classmethod
 	def can_upgrade(cls, from_savegame_version):
-		"""Calculates whether a savegame can be upgraded from the current version"""
-		for i in xrange(from_savegame_version+1, VERSION.SAVEGAMEREVISION+1, 1):
-			if not hasattr(cls, "_upgrade_to_rev" + str(i)):
-				return False
-		return True
-
+		"""Checks whether a savegame can be upgraded from the current version"""
+		if from_savegame_version >= VERSION.SAVEGAME_LEAST_UPGRADABLE_REVISION:
+			return True
+		else:
+			return False
 
 	def get_path(self):
 		"""Return the path to the up-to-date version of the saved game."""
 		if self.final_path is None:
+			self.using_temp = True
+			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
+			os.close(handle)
+			shutil.copyfile(self.original_path, self.final_path)			
 			self._upgrade()
 		return self.final_path
 

@@ -1,4 +1,4 @@
-id: 41
+id: BUILDINGS.BUTCHERY
 name: _ Butchery
 baseclass: production.ProductionBuilding
 radius: 8
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 2
 tooltip_text: _ Needs pigs or cattle. Produces food.
-settler_level: TIER.SETTLERS
+tier: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 500, RES.TOOLS: 3, RES.BRICKS: 4}
 components:
 - SelectableComponent:

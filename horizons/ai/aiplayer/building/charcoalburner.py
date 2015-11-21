@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -48,7 +48,7 @@ class CharcoalBurnerEvaluator(BuildingEvaluator):
 		personality = area_builder.owner.personality_manager.get('CharcoalBurnerEvaluator')
 		distance_penalty = Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius * personality.distance_penalty
 
-		distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.IRON_MINE)
+		distance_to_iron_mine = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.MINE)
 		distance_to_lumberjack = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.LUMBERJACK)
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 

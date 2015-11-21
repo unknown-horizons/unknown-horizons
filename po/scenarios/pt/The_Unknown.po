@@ -8,18 +8,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2015-07-29 02:37+0200\n"
+"Last-Translator: José Gil <transporte74@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/the-"
+"unknown/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.1-pre\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.4-dev\n"
 
 #. scenario difficulty
 msgid "easy"
-msgstr ""
+msgstr "fácil"
 
 #. scenario description
 msgid ""
@@ -27,10 +29,13 @@ msgid ""
 "your crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
+"És o Capitão de um navio Inglês em 1740. Tu e a tripulação estavam a caminho "
+"de uma colonia inglesa no oceano pacifico.\n"
+"Tudo corria bem até que se depararam com uma tempestade…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr ""
+msgstr "20 de Novembro de 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -38,6 +43,9 @@ msgid ""
 "have little food left and our ship is in a bad shape. The navigational "
 "instruments and sea charts are lost."
 msgstr ""
+"Após quatro dias, a tempestade finalmente acalmou e podemos descansar. Mas "
+"temos pouca comida e  o barco está em mau estado. Os instrumentos de "
+"navegação e as cartas marítimas estão perdidos."
 
 #. This is the text body of a logbook page.
 msgid ""

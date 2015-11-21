@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -198,31 +198,39 @@ class Connection(object):
 		"""Receives next event of type NONE or RECEIVE."""
 		if self.server_peer is None:
 			raise network.NotConnected()
+		try:
+			event = self.host.service(timeout)
 
-		event = self.host.service(timeout)
-		if event.type == enet.EVENT_TYPE_NONE:
-			return None
-		elif event.type == enet.EVENT_TYPE_DISCONNECT:
-			self._reset()
-			self.log.warning("Unexpected disconnect from %s" % (event.peer.address))
-			raise network.CommandError("Unexpected disconnect from %s" % (event.peer.address))
-		elif event.type == enet.EVENT_TYPE_CONNECT:
-			self._reset()
-			self.log.warning("Unexpected connection from %s" % (event.peer.address))
-			raise network.CommandError("Unexpected connection from %s" % (event.peer.address))
+			if event.type == enet.EVENT_TYPE_NONE:
+				return None
+			elif event.type == enet.EVENT_TYPE_DISCONNECT:
+				self._reset()
+				self.log.warning("Unexpected disconnect from %s" % (event.peer.address))
+				raise network.CommandError("Unexpected disconnect from %s" % (event.peer.address))
+			elif event.type == enet.EVENT_TYPE_CONNECT:
+				self._reset()
+				self.log.warning("Unexpected connection from %s" % (event.peer.address))
+				raise network.CommandError("Unexpected connection from %s" % (event.peer.address))
 
-		return event
+			return event
+		except IOError as e:
+			raise network.FatalError(e)
 
 	def _receive(self, timeout=SERVER_TIMEOUT):
 		"""Receive event and return unpacked packet."""
-		event = self._receive_event(timeout)
-		if event is None or event.type != enet.EVENT_TYPE_RECEIVE:
-			return None
-
 		try:
+			event = self._receive_event(timeout)
+			if event is None or event.type != enet.EVENT_TYPE_RECEIVE:
+				return None
+
 			packet = packets.unserialize(event.packet.data)
 		except Exception as e:
-			self.log.error("Unknown packet from %s!" % (event.peer.address))
+			try:
+				event
+			except NameError:
+				pass
+			else:
+				self.log.error("Unknown packet from %s!" % (event.peer.address))
 			errstr = "Pickle/Security: %s" % (e)
 			print "[FATAL] %s" % (errstr) # print that even when no logger is enabled!
 			self.log.error("[FATAL] %s" % (errstr))

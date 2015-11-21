@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -68,10 +68,9 @@ class EditorSession(Session):
 		else:
 			headline = _("Failed to quicksave.")
 			descr = _("An error happened during quicksave.") + u"\n" + _("Your map has not been saved.")
-			#xgettext:python-format
 			advice = _("If this error happens again, please contact the development team: "
 				   "{website}").format(website="http://unknown-horizons.org/support/")
-			self.ingame_gui.show_error_popup(headline, descr, advice)
+			self.ingame_gui.open_error_popup(headline, descr, advice)
 
 	def save(self, savegamename):
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename)

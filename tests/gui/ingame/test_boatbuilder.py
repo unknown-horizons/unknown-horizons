@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,15 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import tempfile
-import os
-
-import horizons.main
 from horizons.constants import BUILDINGS, PRODUCTION, UNITS
-from horizons.util.startgameoptions import StartGameOptions
 from horizons.world.production.producer import Producer
 
 from tests.gui import gui_test
+from tests.gui.helper import saveload
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -43,7 +39,7 @@ def test_ticket_1224(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	def running_costs():
-		c = gui.find(name='BB_main_tab')
+		c = gui.find(name='UB_main_tab')
 		return c.findChild(name='running_costs').text
 
 	# Check (inactive) running costs
@@ -83,7 +79,7 @@ def test_ticket_1294(gui):
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Pause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_active')
+	gui.trigger('UB_main_tab', 'toggle_active_active')
 
 	# Select war ships tab
 	gui.trigger('tab_base', '2')
@@ -97,7 +93,7 @@ def test_ticket_1294(gui):
 		gui.run()
 
 	# Unpause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_inactive')
+	gui.trigger('UB_main_tab', 'toggle_active_inactive')
 
 	while producer.get_productions():
 		gui.run()
@@ -123,7 +119,7 @@ def test_ticket_1830(gui):
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Pause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_active')
+	gui.trigger('UB_main_tab', 'toggle_active_active')
 
 	# Select war ships tab
 	gui.trigger('tab_base', '2')
@@ -162,7 +158,7 @@ def test_remove_from_queue(gui):
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Cancel queue -> crash
-	gui.trigger('BB_main_tab', 'queue_elem_0')
+	gui.trigger('UB_main_tab', 'queue_elem_0')
 
 
 @gui_test(use_fixture='boatbuilder', timeout=60)
@@ -189,7 +185,7 @@ def test_cancel_ticket_1424(gui):
 	gui.run()
 
 	# Cancel build completely -> crash
-	gui.trigger('BB_main_tab', 'BB_cancel_button')
+	gui.trigger('UB_main_tab', 'UB_cancel_button')
 
 
 @gui_test(use_fixture='boatbuilder', timeout=60)
@@ -213,13 +209,8 @@ def test_save_load_ticket_1421(gui):
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-
-	assert gui.session.save(savegamename=filename)
-
-	options = StartGameOptions.create_load_game(filename, None)
-	horizons.main.start_singleplayer(options)
+	# Save and reload game
+	saveload(gui)
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -235,7 +226,7 @@ def test_ticket_1513(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	def running_costs():
-		c = gui.find(name='BB_main_tab')
+		c = gui.find(name='UB_main_tab')
 		return c.findChild(name='running_costs').text
 
 	# Check (inactive) running costs
@@ -258,7 +249,7 @@ def test_ticket_1513(gui):
 	gui.run()
 
 	# Cancel build
-	gui.trigger('BB_main_tab', 'BB_cancel_button')
+	gui.trigger('UB_main_tab', 'UB_cancel_button')
 
 	# Check (inactive) running costs
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
@@ -276,8 +267,8 @@ def test_ticket_1514(gui):
 	# Select boat builder
 	gui.cursor_click(64, 10, 'left')
 
-	# nothing beeing build, no cancel button visible
-	assert not gui.find('BB_cancel_button')
+	# nothing being built, no cancel button visible
+	assert not gui.find('UB_cancel_button')
 
 	# Select trade ships tab
 	gui.trigger('tab_base', '1')
@@ -285,7 +276,7 @@ def test_ticket_1514(gui):
 	# Build huker
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
-	assert gui.find('BB_cancel_button')
+	assert gui.find('UB_cancel_button')
 
 	# Wait until production starts
 	producer = boatbuilder.get_component(Producer)
@@ -295,7 +286,7 @@ def test_ticket_1514(gui):
 	gui.run()
 
 	# Cancel build
-	gui.trigger('BB_main_tab', 'BB_cancel_button')
+	gui.trigger('UB_main_tab', 'UB_cancel_button')
 
 	# The tab should have changed, no cancel button visible
-	assert not gui.find('BB_cancel_button')
+	assert not gui.find('UB_cancel_button')

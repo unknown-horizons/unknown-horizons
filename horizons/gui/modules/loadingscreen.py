@@ -1,6 +1,6 @@
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -50,7 +50,8 @@ FUN_QUOTES = {
 		"The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails",
 		"Travel beyond the horizon and discover unknown worlds!",
 		u"War… war never changes",
-		"Support Unknown Horizons with Cookies!"
+		"Support Unknown Horizons with Cookies!",
+		"wow, looks nearly completed \n(Neomex)"
     ]
 }
 
@@ -61,7 +62,6 @@ GAMEPLAY_TIPS = {
 		_lazy("Press 'ESC' to access Game Menu."),
 		_lazy("Use 'SHIFT' to place multiple buildings."),
 		#TODO: This tip should be removed when all tiers are playable!!
-		#lazyxgettext:python-format
 		_lazy("Currently only the first {tier} tiers are playable.").format(
 				tier=TIER.CURRENT_MAX + 1),
 		_lazy("You can pause the game with 'P'."),
@@ -77,8 +77,7 @@ GAMEPLAY_TIPS = {
 
 # This are the options you can select in the Settings what type of quotes should be
 # displayed during load
-# TODO Unfortunately these are not translated
-QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], "Mixed")
+QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _lazy("Mixed"))
 
 
 def get_random_quote():

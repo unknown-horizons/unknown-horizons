@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -71,7 +71,7 @@ class BuyResource(GenericComponentCommand):
 GenericComponentCommand.allow_network(BuyResource)
 
 class RenameObject(GenericComponentCommand):
-	"""Rename a NamedComponant"""
+	"""Rename a NamedComponent"""
 	def __init__(self, namedcomponent, new_name):
 		super(RenameObject, self).__init__(namedcomponent, "set_name", new_name)
 

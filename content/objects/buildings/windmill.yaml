@@ -1,4 +1,4 @@
-id: 47
+id: BUILDINGS.WINDMILL
 name: _ Windmill
 baseclass: production.ProductionBuilding
 radius: 8
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 1
 tooltip_text: _ Grinds corn into flour.
-settler_level: TIER.CITIZENS
+tier: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 400, RES.BOARDS: 4, RES.BRICKS: 5}
 components:
 - SelectableComponent:

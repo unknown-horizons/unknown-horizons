@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,7 +26,7 @@ from horizons.util.python import decorators
 class AbstractIronDeposit(AbstractFakeResourceDeposit):
 	@classmethod
 	def get_higher_level_building_id(cls):
-		return BUILDINGS.IRON_MINE
+		return BUILDINGS.MINE
 
 	@classmethod
 	def register_buildings(cls):

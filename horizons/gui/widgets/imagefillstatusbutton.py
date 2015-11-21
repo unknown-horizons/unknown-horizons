@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -67,16 +67,13 @@ class ImageFillStatusButton(Container):
 		if showprice:
 			value = db.get_res_value(res)
 			if TRADER.PRICE_MODIFIER_BUY == TRADER.PRICE_MODIFIER_SELL:
-				#xgettext:python-format
 				helptext = _('{resource_name}: {price} gold').format(resource_name=db.get_res_name(res), price=db.get_res_value(res))
 			else:
 				buyprice = value * TRADER.PRICE_MODIFIER_BUY
 				sellprice = value * TRADER.PRICE_MODIFIER_SELL
 				helptext = (u'{resource_name}[br]'.format(resource_name=db.get_res_name(res))
-				#xgettext:python-format
 				            + _('buy for {buyprice} gold').format(buyprice=buyprice)
 				            + u'[br]'
-				#xgettext:python-format
 				            + _('sell for {sellprice} gold').format(sellprice=sellprice))
 		else:
 			helptext = db.get_res_name(res)

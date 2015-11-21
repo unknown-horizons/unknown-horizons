@@ -13,11 +13,8 @@
 		<TextField name="chatTextField"  position="22,420"
 			text="Enter your message here"  min_size="300,16" />
 
-		<Label name="exit_to_mp_menu_lbl"  text="Leave:"  position="75,470" />
-		<CancelButton position="120,460"
-			name="cancel"  helptext="Exit gamelobby" />
-        <Label name="ready_lbl"  text="Ready:"  position="165,470" />
-        <OkButton position="210,460" name="ready_btn" helptext="Sets your state to ready (necessary for the game to start)" />
+		<CancelButton position="20,460" name="cancel"  helptext="Exit gamelobby" />
+
 	</Container>
 
 
@@ -38,6 +35,10 @@
 		<Label name="game_player_color" position="130,190" text="Color" />
 		<Label name="game_player_status" position="205,190" text="Status" />
 		<VBox name="players_vbox" position="0,210" />
+
 	</Container>
+
+	<Label name="ready_lbl"  text="Ready:"  position="610,500" />
+	<OkButton position="680,490" name="ready_btn" helptext="Sets your state to ready (necessary for the game to start)" />
 
 </Container>

@@ -7,31 +7,30 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2013-05-18 21:34+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <http://hosted.weblate.org/projects/uh/"
-"the-unknown/pt_BR/>\n"
+"PO-Revision-Date: 2013-08-22 22:28+0200\n"
+"Last-Translator: Guilherme Nogueira <Gui350@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <http://hosted.weblate.org/projects/uh"
+"/the-unknown/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.7-dev\n"
 
 #. scenario difficulty
 msgid "easy"
 msgstr "fácil"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
 "Você é o capitão de um navio sob a bandeira da Inglaterra em 1740. Junto de "
-"sua equipe, estava a caminho de uma colônia Inglesa no oceano Pacífico.\n"
-"Tudo correu bem até que chegou uma tempestade..."
+"sua tripulação, estava a caminho de uma colônia Inglesa no oceano Pacífico.\n"
+"Tudo correu bem até que chegou uma tempestade…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -71,13 +70,13 @@ msgid "22nd November 1740"
 msgstr "22 de Novembro de 1740"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
 "O porto foi construído e uma nova esperança surge. Os próximos dias ainda me "
-"preocupam... estamos ficando sem comida e sem material de construção."
+"preocupam... estamos ficando sem comida e sem material básico de "
+"construção."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -149,7 +148,6 @@ msgstr ""
 "de ter um teto sobre a cabeça."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
@@ -161,7 +159,7 @@ msgstr ""
 "ficaremos presos aqui por algum tempo, então é melhor nos esforçarmos para "
 "melhorar nossas condições.\n"
 "Tudo que podemos fazer por hora é construir uma civilização e buscar o "
-"caminho de casa..."
+"caminho de casa…"
 
 #. This is the text body of a logbook page.
 msgid ""

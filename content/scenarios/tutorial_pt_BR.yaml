@@ -52,9 +52,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Isto indica que você pode construir um armazém lá, pressionando este botão (chamado 'Fundar colônia').
   - Agora, uma prévia de sua construção é arrastada junto ao local onde você mover o cursor.
   - "Você pode construir em qualquer lugar onde esta prévia não for exibida na cor vermelho.\n Clique onde você deseja posicionar a sua primeira construção."
-  - '
-
-    TAREFA: Construir um armazém na costa.'
+  - ''
+  - [BoldLabel, 'Task: Build a warehouse at the coast.']
 
 - &LUMBERJACK
   - [Message, Construa um lenhador e conecte-o ao armazém utilizando uma estrada.]
@@ -77,9 +76,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Posteriormente você poderá plantar mais árvores - mas isto custa dinheiro. Procure utilizar aquilo que a natureza oferece!
   - Uma companhia sempre necessita de uma estrada ligando-a à um armazém ou depósito, do contrário as mercadorias permanecerão no local.
   - Isto significa que você deve construir uma estrada que ligue o armazém (ou depósito) à seu lenhador.
-  - '
-
-    TAREFA: Construir um lenhador em uma área arborizada e conectá-lo a uma estrada.'
+  - ''
+  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
   - Repare que um coletor irá buscar sua primeira produção de tábuas. Não se preocupe em recrutar trabalhadores para esta tarefa pois isto ocorrerá automaticamente.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -101,9 +99,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ele irá construir uma pequena embarcação a remo e pescará alguns peixes.
   - Esta é uma fonte muito constante ao custo de uma produção mais lenta por unidade de alimento.
   - Um pequeno povoado como o seu pode usufruir de ambas as companhias, e você poderá equilibrar melhor os prós e contras observando a comparação direta.
-  - '
-
-    TAREFA: Construir um caçador e um pescador.'
+  - ''
+  - [BoldLabel, 'Task: Build a hunter and a fisher.']
   - Não se esqueça de conectá-los ao armazém utilizando estradas!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -119,9 +116,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/004_h.png]
   - Evite posicionar as tendas de sua colônia muito próximas aos lenhadores, já que a construção das mesmas remove as árvores que estão obstruindo o lote e que poderiam ser aproveitadas na produção de tábuas.
   - As companhias trabalham sem a necessidade de um caminho de ligação com as tendas, de modo que você não necessita construir uma estrada entre a praça principal e um lenhador, por exemplo.
-  - '
-
-    TAREFA: Construir uma praça principal.'
+  - ''
+  - [BoldLabel, 'Task: Build a main square.']
   - [Pagebreak]
   - '
 
@@ -146,9 +142,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Observe que melhorar cada edifício requer material de construção, como madeira para a primeira melhoria.
   - Considere desativar melhorias se seus estoques destes matériais estão baixos.
   - Colonos podem parecer um tanto inúteis, já que tentam consumir todos os recursos produzidos - mas ao menos eles pagam impostos, e esta é a única maneira de fazer dinheiro por hora!
-  - '
-
-    TAREFA: Construir uma tenda e conectá-la à praça principal. Tendas não necessitam caminhos de ligação com companhias.'
+  - ''
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Construa pelo menos mais três tendas e conecte-as à praça principal.]
@@ -165,9 +160,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Se suas necessidades forem supridas, seu nível de satisfação e também seus tributos aumentarão.
   - Senão, o nível de satisfação e o montante de impostos decaem. Algumas vezes seus residentes poderão ficar tão descontentes que simplesmente se mudarão de sua aldeia, deixando para trás uma habitação em ruínas.
   - Lembre-se que você também pode alterar as configurações de impostos globais aqui.
-  - '
-
-    Construa ao menos três tendas adicionais.'
+  - ''
+  - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
     DICA: Segurar a tecla SHIFT facilita a construção de várias edificações do mesmo tipo.'
@@ -194,9 +188,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - No nível 'Marinheiros' você dispõe de três slots para comércio.
   - Clique no ícone pequeno para cambiar o modo do slot entre 'Comprar' ou 'Vender'.
   - Clique no slot para escolher o recurso que deseja negociar. Iremos explicar isto mais detalhadamente quando você estiver preparado.
-  - '
-
-    TAREFA: Construir um sinal de fogo na costa, perto do armazém.'
+  - ''
+  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
   - [Message, Atinja um estoque na ilha de ao menos 30 ferramentas. Isso talvez demore.]
@@ -222,9 +215,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     NÃO é possível alterar os preços manualmente!'
   - Você pode conferir seu balanço comercial na aba 'Finanças', comparando os montantes de 'venda' e 'compra'.
-  - '
-
-    TAREFA: Comprar ferramentas para inteirar 30 em estoque!'
+  - ''
+  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -248,9 +240,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Não é suficiente que a construção abranja uma certa porção de tendas.
 
     Uma estrada de conexão é requerida.'
-  - '
-
-    TAREFA: Construir um pavilhão com uma estrada de conexão para as tendas afim de satisfazer a demanda de fé dos marinheiros.'
+  - ''
+  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -270,9 +261,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Existem também aprimoramentos sem custo, como poderá ver no caso do lenhador onde há apenas uma troca na representação gráfica do edifício.
   - Habitações aprimoradas podem acomodar mais residentes, além de que pioneiros podem pagar impostos mais altos que marinheiros.
   - Como você já deve supor, a desvantagem é que os pioneiros necessitam de mais mercadorias - sendo assim você deverá então investir a receita extra para satisfazê-los.
-  - '
-
-    TAREFA: Reduzir impostos e aguardar evolução dos marinheiros.'
+  - ''
+  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -296,9 +286,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Tudo correrá bem enquanto os trabalhadores do produto final puderem chegar até ela, assim como os coletores do armazém ou tenda de armazenamento puderem chegar até o produto final.
   - Se no entanto você desejar montar sua cadeia de produção em diferentes partes da ilha (o que faz sentido) ou até mesmo em diferentes ilhas, deverá criar conexões de estrada para os coletores.
   - Procure construir a fazenda não muito próxima da costa ou de outros edifícios, uma vez que ela necessita de espaço livre ao redor.
-  - '
-
-    TAREFA: Construir uma fazenda.'
+  - ''
+  - [BoldLabel, 'Task: Build a farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -324,9 +313,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Você pode montar uma produção combinada - uma única pastagem não irá tornar a fazenda 100% eficiente - mas é necessário verificar quantas plantações ela pode servir.
   - Diferentes tipos de cultivo requerem maior ou menor tempo de produção (para semear, colher, ordenhar e etc) e, por isto, a fazenda pode ser incapaz de atender a todos os cultivos que você adicionou a ela.
   - Por hora, não se preocupe muito com isso desde que não tenha construído nenhuma plantação. Vamos mudar esse quadro!
-  - '
-
-    TAREFA: Construir ao menos uma pastagem na área de abrangência da fazenda e adicionar uma plantação de batatas caso deseje.'
+  - ''
+  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -355,9 +343,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * Envia coletores próprios para buscá-las, assim como o armazém.'
   - Repare que estas companhias também podem ser conectadas a um depósito afim de recolher suas produções, e se os coletores do armazém estiverem sobrecarregados você pode adicionar uma tenda de armazenamento para ajudar lá fora.
-  - '
-
-    TAREFA: Construir uma tenda de armazenamento, preferencialmente onde há maior necessidade de coletores.'
+  - ''
+  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -369,9 +356,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Há dois locais onde você pode construí-lo - próximo da fazenda ou próximo de uma tenda de armazenamento (ou um armazém).
   - Em ambos os casos, certifique-se de que ele esteja conectado a uma estrada.
   - Você pode posicionar o tecelão ao lado da fazenda sem uma estrada e observar que mesmo assim ele irá buscar a lã e começará a produção de tecido.
-  - '
-
-    TAREFA: Construir um tecelão posicionado em um local onde possa obter lã.'
+  - ''
+  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -382,9 +368,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Tente abrigar um total de 50 residentes ou mais em sua cidade provendo mais edifícios residenciais.
   - Uma vez que você seja capaz de manter a economia correndo e satisfazer as necessidades dos consumidores, estará pronto para descobrir novos horizontes desconhecidos!
   - Você também precisará de dinheiro suficiente para manter a economia correndo, portanto, um saldo positivo (verifique a aba 'Finanças' no armazém) é necessário.
-  - '
-
-    TAREFA: Atinja um total de 50 habitantes e um balanço comercial positivo para completar este tutorial.'
+  - ''
+  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -413,7 +398,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Equipe UH'
   - - Gallery
-    - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
 events:
 - # Show a message after starting the game (how to move)

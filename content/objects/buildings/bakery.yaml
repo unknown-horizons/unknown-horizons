@@ -1,4 +1,4 @@
-id: 48
+id: BUILDINGS.BAKERY
 name: _ Bakery
 baseclass: production.ProductionBuilding
 radius: 8
@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 2
 tooltip_text: _ Consumes flour. Produces food.
-settler_level: TIER.CITIZENS
+tier: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.BRICKS: 3}
 components:
 - SelectableComponent:

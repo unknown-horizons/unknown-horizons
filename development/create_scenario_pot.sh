@@ -83,28 +83,19 @@ for event in scenario['events']:
 				if not widget_def:
 					continue
 				if isinstance(widget_def, basestring):
-					content = widget_def.rstrip('\n')
-					# ignore strings that only consist of newlines
-					if not content:
-						continue
-					comment = COMMENT_TEXT
-					widget = prep(content)
-				elif widget_def[0] == 'Label' and widget_def[1]:
+					widget_def = ['Label', widget_def]
+				if widget_def[0] in ('Label', 'BoldLabel', 'Message') and widget_def[1]:
 					content = widget_def[1].rstrip('\n')
 					# ignore strings that only consist of newlines
 					if not content:
 						continue
-					comment = COMMENT_TEXT
+					if widget_def[0] == 'Message':
+						comment = COMMENT_MESSAGEWIDGET
+					else:
+						comment = COMMENT_TEXT
 					widget = prep(content)
 				elif widget_def[0] == 'Headline':
 					comment = COMMENT_HEADING
-					widget = prep(widget_def[1].rstrip('\n'))
-				elif widget_def[0] == 'Message' and widget_def[1]:
-					content = widget_def[1].rstrip('\n')
-					# ignore strings that only consist of newlines
-					if not content:
-						continue
-					comment = COMMENT_MESSAGEWIDGET
 					widget = prep(widget_def[1].rstrip('\n'))
 				elif widget_def[0] in ('Image', 'Gallery', 'Pagebreak'):
 					continue

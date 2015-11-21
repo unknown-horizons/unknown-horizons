@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -37,6 +37,7 @@ import os
 import sys
 from xml.dom import minidom
 
+
 if len(sys.argv) != 2:
 	print 'Error: Provide a file to write strings to as argument. Exiting.'
 	sys.exit(1)
@@ -44,7 +45,7 @@ if len(sys.argv) != 2:
 header = u'''\
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -111,7 +112,7 @@ files_to_skip = [
 	'credits.xml',
 	'stringpreviewwidget.xml',
 	'startup_error_popup.xml',
-	]
+]
 
 
 def print_n_no_name(n, text):
@@ -135,9 +136,9 @@ def content_from_element(element_name, parse_tree, attribute):
 	attribute: usually 'text' or 'helptext'
 	"""
 	default_names = {
-		'OkButton' : u'okButton',
-		'CancelButton' : u'cancelButton',
-		'DeleteButton' : u'deleteButton',
+		'OkButton': u'okButton',
+		'CancelButton': u'cancelButton',
+		'DeleteButton': u'deleteButton',
 	}
 	element_strings = []
 	element_list = parse_tree.getElementsByTagName(element_name)

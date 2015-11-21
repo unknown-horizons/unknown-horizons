@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -115,8 +115,8 @@ class LandManager(WorldObject):
 		return result
 
 	def refresh_resource_deposits(self):
-		self.resource_deposits = defaultdict(lambda: []) # {resource_id: [tile, ...]} all resource deposits of a type on the island
-		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.IRON_MINE]}.iteritems():
+		self.resource_deposits = defaultdict(list) # {resource_id: [tile, ...]} all resource deposits of a type on the island
+		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.MINE]}.iteritems():
 			for building in self.island.buildings:
 				if building.id in building_ids:
 					if building.get_component(StorageComponent).inventory[resource_id] > 0:
@@ -325,6 +325,7 @@ class LandManager(WorldObject):
 			renderer.addColored(self.island.ground_map[coords]._instance, *coastline_color)
 
 	def __str__(self):
-		return '%s LandManager(%s)' % (self.owner if hasattr(self, 'owner') else 'unknown player', self.worldid if hasattr(self, 'worldid') else 'none')
+		return '%s LandManager(%s)' % (getattr(self, 'owner', 'unknown player'),
+		                               getattr(self, 'worldid', 'none'))
 
 decorators.bind_all(LandManager)

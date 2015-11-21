@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -160,7 +160,7 @@ def write_translated_yaml(fileish, where, metadata, generator):
 				widget = event[0]
 				if widget in ('Gallery', 'Image', 'Pagebreak'):
 					pass
-				if widget in ('Headline', 'Label', 'Message'):
+				if widget in ('Headline', 'Label', 'BoldLabel', 'Message'):
 					event = [widget] + map(translate, event[1:])
 
 			all_events.append(event)

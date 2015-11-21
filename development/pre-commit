@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 #-*- mode: python -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -47,7 +47,7 @@ import re
 import Tkinter
 import tkMessageBox
 
-syntax_checker = "pyflakes"
+syntax_checker = "pyflakes-python2"
 
 class bcolors:
 	"""Colors used to color the output"""

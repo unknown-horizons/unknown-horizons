@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -75,6 +75,9 @@ def setup_horizons():
 
 	from run_uh import create_user_dirs
 	create_user_dirs()
+
+	import horizons.i18n
+	horizons.i18n.change_language()
 
 
 if __name__ == '__main__':

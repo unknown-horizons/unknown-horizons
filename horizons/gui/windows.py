@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
 import traceback
 
 from fife import fife
@@ -33,18 +34,29 @@ from horizons.util.python.callback import Callback
 class Window(object):
 
 	def __init__(self, windows=None):
-		# Reference to the window manager. Use it to show new windows or close
+		# Reference to the window manager. Use it to open new windows or close
 		# this window.
 		self._windows = windows
 
 		self._modal_background = None
 
+	def open(self, **kwargs):
+		"""Open the window.
+
+		After this call, the window should be visible. If you decide to not show
+		the window here (e.g. an error occurred), you'll need to call
+		`self._windows.close()` to remove the window from the manager.
+
+		You may override this method in a subclass if you need to do stuff when
+		a window is first shown.
+		"""
+		return self.show(**kwargs)
+
 	def show(self, **kwargs):
 		"""Show the window.
 
-		After this call, the window should be visible. If you decide to not show
-		the window here (e.g. an error occured), you'll need to call
-		`self._windows.close()` to remove the window from the manager.
+		After this call, the window should be visible. You should *never* call
+		this directly in your code.
 		"""
 		raise NotImplementedError
 
@@ -65,6 +77,9 @@ class Window(object):
 
 		You should *never* call this directly in your code. Use `self._windows.close()`
 		to ask the WindowManager to remove the window instead.
+
+		You may override this method in a subclass if you need to do stuff when
+		a window is closed.
 		"""
 		self.hide()
 
@@ -131,7 +146,7 @@ class Dialog(Window):
 
 		If you want to show the dialog again, you need to do that explicitly, e.g. with:
 
-			self._windows.show(self)
+			self._windows.open(self)
 		"""
 		return retval
 
@@ -286,17 +301,17 @@ class WindowManager(object):
 	def __init__(self):
 		self._windows = []
 
-	def show(self, window, **kwargs):
-		"""Show a new window on top.
+	def open(self, window, **kwargs):
+		"""Open a new window on top.
 
 		Hide the current one and show the new one.
-		Keyword arguments will be passed through to the window's `show` method.
+		Keyword arguments will be passed through to the window's `open` method.
 		"""
 		if self._windows:
 			self._windows[-1].hide()
 
 		self._windows.append(window)
-		return window.show(**kwargs)
+		return window.open(**kwargs)
 
 	def close(self):
 		"""Close the top window.
@@ -315,7 +330,12 @@ class WindowManager(object):
 		else:
 			if window in self._windows:
 				self._windows.remove(window)
-			self.show(window, **kwargs)
+				if self._windows:
+					self._windows[-1].hide()
+				self._windows.append(window)
+				window.show(**kwargs)
+			else:
+				self.open(window, **kwargs)
 
 	def on_escape(self):
 		"""Let the topmost window handle an escape key event."""
@@ -362,7 +382,7 @@ class WindowManager(object):
 		# most recently added window
 		self._windows[-1].show()
 
-	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0):
+	def open_popup(self, windowtitle, message, show_cancel_button=False, size=0):
 		"""
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
@@ -370,9 +390,9 @@ class WindowManager(object):
 		@param size: 0, 1 or 2. Larger means bigger.
 		"""
 		window = Popup(self, windowtitle, message, show_cancel_button, size)
-		return self.show(window)
+		return self.open(window)
 
-	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
+	def open_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
 		@param windowtitle: title of popup, will be auto-prefixed with "Error: "
 		@param description: string to tell the user what happened
@@ -388,11 +408,9 @@ class WindowManager(object):
 		if advice:
 			msg += advice + u"\n"
 		if details:
-			#xgettext:python-format
 			msg += _("Details: {error_details}").format(error_details=details)
 		try:
-			#xgettext:python-format
-			self.show_popup( _("Error: {error_message}").format(error_message=windowtitle),
+			self.open_popup( _("Error: {error_message}").format(error_message=windowtitle),
 			                 msg)
 		except SystemExit: # user really wants us to die
 			raise
@@ -401,7 +419,8 @@ class WindowManager(object):
 			# else the game would be gone without the user being able to read the message.
 			if _first:
 				traceback.print_exc()
-				print 'Exception while showing error, retrying once more'
-				return self.show_error_popup(windowtitle, description, advice, details, _first=False)
+				log = logging.getLogger('gui.windows')
+				log.error('Exception while showing error, retrying once more.')
+				return self.open_error_popup(windowtitle, description, advice, details, _first=False)
 			else:
 				raise # it persists, we have to die.

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -92,27 +92,32 @@ class Path(ComponentHolder):
 		origin = self.position.origin
 		path_nodes = self.island.path_nodes
 
-		for action_part, (xoff, yoff) in \
-		    sorted(BUILDINGS.ACTION.action_offset_dict.iteritems()): # order is important here
+		# Order is important here.
+		ordered_actions = sorted(BUILDINGS.ACTION.action_offset_dict.iteritems())
+		for action_part, (xoff, yoff) in ordered_actions:
 			tile = self.island.get_tile(origin.offset(xoff, yoff))
-			if (tile is not None and
-				tile.object is not None and
-				path_nodes.is_road(tile.x, tile.y) and
-				self.owner == tile.object.owner and
-				(action_part in 'abcd' or
-				#HACK Check whether we can place valid road-filled areas
-				# Only adds 'g' to action if c and d are in already and the condition for g is met
-					(action_part in 'efgh' and
-					chr(ord(action_part) - 4) in action and
-					chr(ord(action_part) - 3 - 4*(action_part=='h')) in action
-					# 'h' has the parents a and d, so we hacked the hack
-					)
-				)
-				# end #HACK
-			   ):
+			if tile is None or tile.object is None:
+				continue
+			if not path_nodes.is_road(tile.x, tile.y):
+				continue
+			if self.owner != tile.object.owner:
+				continue
+			if action_part in 'abcd':
 				action += action_part
+			if action_part in 'efgh':
+				# Now check whether we can place valid road-filled areas.
+				# Only adds 'g' to action if both 'c' and 'd' are in already
+				# (that's why order matters - we need to know at this point)
+				# and the condition for 'g' is met: road tiles exist in that
+				# direction.
+				fill_left = chr(ord(action_part) - 4) in action
+				# 'h' has the parents 'd' and 'a' (not 'e'), so we need a slight hack here.
+				fill_right = chr(ord(action_part) - 3 - 4*(action_part=='h')) in action
+				if fill_left and fill_right:
+					action += action_part
 		if action == '':
-			action = 'single' # single trail piece with no neighbors
+			# Single trail piece with no neighbor road tiles.
+			action = 'single'
 
 		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))

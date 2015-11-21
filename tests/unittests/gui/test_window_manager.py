@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -45,14 +45,14 @@ class TestWindowManager(unittest.TestCase):
 	def test_trivial(self):
 		assert not self.windows.visible
 
-	def test_show_hide(self):
+	def test_open_hide(self):
 		window1 = DummyWindow(self.windows)
-		self.windows.show(window1)
+		self.windows.open(window1)
 		assert self.windows.visible
 		assert window1.visible
 
 		window2 = DummyWindow(self.windows)
-		self.windows.show(window2)
+		self.windows.open(window2)
 		assert self.windows.visible
 		assert not window1.visible
 		assert window2.visible
@@ -60,8 +60,8 @@ class TestWindowManager(unittest.TestCase):
 	def test_close(self):
 		window1 = DummyWindow(self.windows)
 		window2 = DummyWindow(self.windows)
-		self.windows.show(window1)
-		self.windows.show(window2)
+		self.windows.open(window1)
+		self.windows.open(window2)
 		assert not window1.visible
 		assert window2.visible
 

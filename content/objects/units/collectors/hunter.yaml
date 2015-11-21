@@ -1,5 +1,5 @@
 baseclass: collectors.HunterCollector
-id: 1000014
+id: UNITS.HUNTER_COLLECTOR
 name: HunterCollector
 radius: 5
 velocity: 12.0

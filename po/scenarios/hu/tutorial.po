@@ -6,39 +6,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-05-10 11:05+0200\n"
-"PO-Revision-Date: 2013-05-14 16:22+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
+"POT-Creation-Date: 2013-11-14 23:41+0100\n"
+"PO-Revision-Date: 2015-04-10 00:40+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian "
-"<http://hosted.weblate.org/projects/uh/tutorial/hu/>\n"
+"<https://hosted.weblate.org/projects/uh/tutorial/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
 msgstr "Bemutató"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
 "Gyakorlás:\n"
-"építsd fel az első telepedet, és tanuld meg hogyan kell játszani!\n"
+"Építsd fel az első telepedet és tanuld meg hogyan kell játszani!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
 msgstr ""
-"Építs egy raktárat a tengerparthoz, így könnyen megközelíthető a többi "
-"szabadkereskedő hajó számára."
+"Építs egy raktárat a tengerpartra, így könnyen megközelíthető a többi "
+"kereskedő, mint például a szabad kereskedő számára."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -49,15 +47,15 @@ msgid ""
 "This is your Captain's log where all important information is stored. A "
 "short notification of each task will be provided on the left of the screen."
 msgstr ""
-"Ez a kapitányod naplója, ahol az összes fontos információ van. Egy rövid "
-"értesítés megjelenik minden eseményről a képernyő bal szélén."
+"Ez a kapitányod naplója, ahol az összes fontos információ elérhető. A "
+"képernyő bal szélén minden teendőről értesítés jelenik meg."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you are interested in longer descriptions, your log will hopefully "
 "provide all the help you need."
 msgstr ""
-"Hogyha hosszabb leírás érdekel, a naplóban remélhetőleg segítséget tud "
+"Amennyiben hosszabb leírás szükséges, a napló remélhetőleg segítséget tud "
 "nyújtani."
 
 #. This is the text body of a logbook page.
@@ -66,9 +64,9 @@ msgid ""
 "icon in the top-right corner (below the mini-map, with a sealed document and "
 "a feather)."
 msgstr ""
-"Miután bezárod a naplót, újra megnyithatod a \"Kapitány naplója\" ikonnal a "
-"jobb felső sarokban (a kis térkép alatt, egy lepecsételt mappával és egy "
-"tollal ellátott ikon)."
+"Miután bezárod a naplót, a jobb felső sarokban lévő \"Kapitány naplója\" (a "
+"kis térkép alatt, egy lepecsételt mappával és egy tollal ellátott ikon) "
+"ikonnal újra megnyitható."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -77,7 +75,7 @@ msgid ""
 "navigation panel! It looks like this:"
 msgstr ""
 "\n"
-"Az első feladathoz, kattints a \"Következő bejegyzés elolvasása\" gombra a "
+"Az első feladathoz kattints a \"Következő bejegyzés elolvasása\" gombra a "
 "navigációs panelen! Így néz ki:"
 
 #. This is the text body of a logbook page.
@@ -87,6 +85,9 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to "
 "improve the tutorial!"
 msgstr ""
+"\n"
+"A szókincs javításával, illetve témákkal, bugokkal kapcsolatosan: Kérjük "
+"oszd meg velünk, hogy ezáltal jobbá tehessük a bevezetőt!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -103,31 +104,31 @@ msgstr "És most, kezdjük el a játékot."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "Új feladat: Rendezkedj be egy szigetre!"
+msgstr "Új feladat: Telepedj le!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
 msgstr ""
-"A hajó mozgatásához, válaszd ki bal kattintással majd jobbal kattints oda, "
-"ahova irányítani szeretnéd."
+"A hajó mozgatásához válaszd ki bal egérgombbal, majd jobb egérgombbal "
+"kattints oda, ahova el szeretnél jutni."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you are near the coast, the anchor-like button you see in the overview "
 "tab will become active."
 msgstr ""
-"Hogyha egy part közelébe érsz, a vasmacska szerű gomb aktívvá válik az "
-"Áttekintő fülön."
+"Amint egy part közelébe érsz, a vasmacskaszerű gomb aktívvá válik az "
+"áttekintő fülön."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This indicates that you are able to build a warehouse there by pressing that "
 "button (called 'Build Settlement')."
 msgstr ""
-"Ez azt jelzi, hogy fel tudsz építeni egy raktárházat a gomb megnyomásával "
-"('Gyarmat építése' gomb')."
+"Ez azt jelzi, hogy fel tudsz építeni egy raktárházat a gomb megnyomásával ("
+"'Település létrehozása' gomb)."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -143,12 +144,10 @@ msgstr ""
 "Kattints oda, ahova építeni szeretnéd az első épületed."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a warehouse at the coast."
-msgstr ""
-"\n"
-"FELADAT: Építs egy raktárházat a partra."
+#, fuzzy
+#| msgid "Build a warehouse at the coast."
+msgid "Task: Build a warehouse at the coast."
+msgstr "Építs egy fiókirodást a partra."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
@@ -245,9 +244,11 @@ msgstr ""
 "(vagy raktárat) és a favágót."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a lumberjack in a wooded area and connect it to a road."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a lumberjack in a wooded area and connect it to a road."
+msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
 "\n"
 "FELADAT: Építs egy favágót egy fás területre, majd úttal kösd össze a "
@@ -336,16 +337,18 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a hunter and a fisher."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a hunter and a fisher."
+msgid "Task: Build a hunter and a fisher."
 msgstr ""
 "\n"
 "FELADAT: Építs egy vadászt és egy halászt."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr "Ne felejtsd el úttal összekötni őket a raktárépületekkel."
+msgstr "Ne felejtsd el úttal összekötni őket a raktárépületekkel!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a main square. Choose an area without many economy buildings."
@@ -398,9 +401,11 @@ msgstr ""
 "nem kell utat építened a főtér és például a favágó közé."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a main square."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a main square."
+msgid "Task: Build a main square."
 msgstr ""
 "\n"
 "FELADAT: Építs egy főteret."
@@ -493,14 +498,16 @@ msgstr ""
 "szerzésére."
 
 #. This is the text body of a logbook page.
+#| msgid ""
+#| "\n"
+#| "TASK: Build a tent and connect it to the main square. Tents dont need to "
+#| "be connected to any of the companies."
 msgid ""
-"\n"
-"TASK: Build a tent and connect it to the main square. Tents dont need to be "
+"Task: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
-"\n"
-"FELADAT: Építs sátrakat és kapcsold őket egybe úttal a főtérrel. A sátraknak "
-"nem kell összeköttetésben lenniük a gazdasági épületekkel."
+"Feladat: Építs egy sátrat és kösd össze a főtérrel. A sátraknak nem kell "
+"összeköttetésben lenniük a gazdasági épületekkel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -549,9 +556,11 @@ msgid "Note that you can also change the global tax settings here, too."
 msgstr "Itt szintén tudod állítani a globális adót."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build at least three additional tents."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build at least three additional tents."
+msgid "Task: Build at least three additional tents."
 msgstr ""
 "\n"
 "FELADAT: Építsd legalább három sátrat."
@@ -659,12 +668,10 @@ msgstr ""
 "szeretnél. Ezt még jobban bemutatjuk, hogyha készen állsz a kereskedésre."
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a signal fire at the coast close to your warehouse."
-msgstr ""
-"\n"
-"FELADAT: Építs egy Jelző tüzet a parton a raktárad közelébe."
+#, fuzzy
+#| msgid "Build a signal fire at the coast close to your warehouse."
+msgid "Task: Build a signal fire at the coast close to your warehouse."
+msgstr "Építs egy jelző tüzet a parton, közel a raktárhoz."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
@@ -754,9 +761,11 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Buy as many tools as you need to have 30 tools in stock!"
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Buy as many tools as you need to have 30 tools in stock!"
+msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
 "\n"
 "FELADAT: Vegyél annyi eszközt, amennyit csak kell, hogy 30 szerszám legyen "
@@ -825,8 +834,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"\n"
-"TASK: Build a pavilion with a trail to the tents in order to fulfill your "
+"Task: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
 
@@ -901,10 +909,14 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgid ""
-"\n"
-"TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
+"Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
+"Állítsd az adószintet alacsonyra (bal szélen) és várj amíg a hajósok "
+"frissítik."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a farm and keep some empty space around it."
@@ -977,10 +989,14 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a farm."
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "TASK: Build a main square."
+msgid "Task: Build a farm."
 msgstr ""
+"\n"
+"FELADAT: Építs egy főteret."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build at least one pasture and add potato fields if you like."
@@ -1048,11 +1064,13 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Build at least one pasture and add potato fields if you like."
 msgid ""
-"\n"
-"TASK: Build at least one pasture in the farm's range and add potato fields "
+"Task: Build at least one pasture in the farm's range and add potato fields "
 "if you like."
 msgstr ""
+"Építs legalább egy legelőt, és ha úgy tetszik adj hozzá burgonyamezőket."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
@@ -1127,10 +1145,9 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a storage tent, preferably where you need collectors."
-msgstr ""
+#, fuzzy
+msgid "Task: Build a storage tent, preferably where you need collectors."
+msgstr "Építs egy tárolósátrat (növekmény fül) amennyiben van értelme."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a weaver that can somehow reach the wool of your farm."
@@ -1163,9 +1180,7 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-msgid ""
-"\n"
-"TASK: Build a weaver positioned so it can get wool."
+msgid "Task: Build a weaver positioned so it can get wool."
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1200,8 +1215,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"\n"
-"TASK: Reach a total number of 50 inhabitants and a positive balance to "
+"Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
 
@@ -1275,6 +1289,20 @@ msgstr ""
 "Köszönöm hogy végigjátszottad a gyakorlást!\n"
 "\n"
 "A te UH-Csapatod"
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a warehouse at the coast."
+#~ msgstr ""
+#~ "\n"
+#~ "FELADAT: Építs egy raktárházat a partra."
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a signal fire at the coast close to your warehouse."
+#~ msgstr ""
+#~ "\n"
+#~ "FELADAT: Építs egy Jelző tüzet a parton a raktárad közelébe."
 
 #~ msgid "The UH team"
 #~ msgstr "Az UH csapat"
@@ -1443,6 +1471,3 @@ msgstr ""
 #~ "Köszönöm hogy végigjátszottad a gyakorlást!\n"
 #~ "\n"
 #~ "A te UH-Csapatod"
-
-#~ msgid "Build a warehouse at the coast."
-#~ msgstr "Építs egy fiókirodást a partra."

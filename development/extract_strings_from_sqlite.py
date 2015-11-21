@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -82,8 +82,8 @@ class Resource(Base):
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
-class SettlerLevel(Base):
-	__tablename__ = 'settler_level'
+class Tier(Base):
+	__tablename__ = 'tier'
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
@@ -103,9 +103,7 @@ class MSGID_collect:
 	def __str__(self):
 		s = []
 		for text, locations in self.msgids.items():
-			comment = '#. This is a database entry: %s.\n' % ','.join(locations)
-			if "{" in text and "}" in text:
-				comment += '#, python-format\n'
+			comment = '#. This is a database entry: %s\n' % ','.join(locations)
 			s += [comment + build_msgid(text)]
 		return '\n'.join(s).strip()
 
@@ -121,8 +119,8 @@ def collect_all():
 	for resource in db_session.query(Resource):
 		collector.add_to_collection(resource.name, 'the name of a resource')
 
-	for settler_level in db_session.query(SettlerLevel):
-		collector.add_to_collection(settler_level.name, 'the name of an inhabitant tier (level)')
+	for tier in db_session.query(Tier):
+		collector.add_to_collection(tier.name, 'the name of an inhabitant tier (level)')
 
 	return collector
 

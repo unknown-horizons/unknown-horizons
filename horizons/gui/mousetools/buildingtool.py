@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -144,7 +144,7 @@ class BuildingTool(NavigationTool):
 	def highlight_buildable(self, tiles_to_check=None, new_buildings=True):
 		"""Highlights all buildable tiles and select buildings that are inversely related in order to show their range.
 		@param tiles_to_check: list of tiles to check for coloring.
-		@param new_buildings: Set to true if you have set tiles_to_check and there are new buildings. An internal structure for optimization will be amended."""
+		@param new_buildings: Set to True if you have set tiles_to_check and there are new buildings. An internal structure for optimization will be amended."""
 		self._build_logic.highlight_buildable(self, tiles_to_check)
 
 		# Also distinguish inversely related buildings (lumberjack for tree).
@@ -227,7 +227,6 @@ class BuildingTool(NavigationTool):
 		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
 		                                "rotate_right": self.rotate_right } )
 		# set translated building name in gui
-		#xgettext:python-format
 		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
@@ -240,9 +239,10 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
-			level = self.session.world.player.settler_level if \
-				not hasattr(self._class, "default_level_on_build") else \
-				self._class.default_level_on_build
+			try:
+				level = self._class.default_level_on_build
+			except AttributeError:
+				level = self.session.world.player.settler_level
 			action_set = self._class.get_random_action_set(level=level)
 		action_sets = ActionSetLoader.get_sets()
 		for action_option in ['idle', 'idle_full', 'abcd']:
@@ -334,12 +334,12 @@ class BuildingTool(NavigationTool):
 			(enough_res, missing_res) = Build.check_resources(needed_resources, self._class.costs,
 			                                                  self.session.world.player, [settlement, self.ship])
 			if building.buildable and not enough_res:
-					# make building red
-					self.renderer.addColored(self.buildings_fife_instances[building],
-					                         *self.not_buildable_color)
-					building.buildable = False
-					# set missing info for gui
-					self.buildings_missing_resources[building] = missing_res
+				# make building red
+				self.renderer.addColored(self.buildings_fife_instances[building],
+				                         *self.not_buildable_color)
+				building.buildable = False
+				# set missing info for gui
+				self.buildings_missing_resources[building] = missing_res
 
 			# color this instance with fancy stuff according to buildability
 
@@ -622,10 +622,8 @@ class BuildingTool(NavigationTool):
 	def _remove_listeners(self):
 		"""Resets the ChangeListener for update_preview."""
 		if self.last_change_listener is not None:
-			if self.last_change_listener.has_change_listener(self.force_update):
-				self.last_change_listener.remove_change_listener(self.force_update)
-			if self.last_change_listener.has_change_listener(self.highlight_buildable):
-				self.last_change_listener.remove_change_listener(self.highlight_buildable)
+			self.last_change_listener.discard_change_listener(self.force_update)
+			self.last_change_listener.discard_change_listener(self.highlight_buildable)
 			self._build_logic.remove_change_listener(self.last_change_listener, self)
 
 		self.last_change_listener = None
@@ -705,7 +703,7 @@ class BuildingTool(NavigationTool):
 
 
 class ShipBuildingToolLogic(object):
-	"""Helper class to seperate the logic needed when building from a ship from
+	"""Helper class to separate the logic needed when building from a ship from
 	the main building tool."""
 
 	def __init__(self, ship):
@@ -751,16 +749,16 @@ class ShipBuildingToolLogic(object):
 
 	def remove_change_listener(self, instance, building_tool):
 		# be idempotent
-		if instance.has_change_listener(building_tool.highlight_buildable):
-			instance.remove_change_listener(building_tool.highlight_buildable)
-		if instance.has_change_listener(building_tool.force_update):
-			instance.remove_change_listener(building_tool.force_update)
+		instance.discard_change_listener(building_tool.highlight_buildable)
+		instance.discard_change_listener(building_tool.force_update)
 
+	# Using messages now.
+	def continue_build(self):
+		pass
 
-	def continue_build(self): pass
 
 class SettlementBuildingToolLogic(object):
-	"""Helper class to seperate the logic needen when building from a settlement
+	"""Helper class to separate the logic needed when building from a settlement
 	from the main building tool"""
 
 	def __init__(self, building_tool):
@@ -780,12 +778,13 @@ class SettlementBuildingToolLogic(object):
 			self.subscribed = True
 			SettlementRangeChanged.subscribe(self._on_update)
 
-		if tiles_to_check is not None: # only check these tiles
+		if tiles_to_check is not None:
+			# Only check these tiles.
 			for tile in tiles_to_check:
 				if is_tile_buildable(session, tile, None):
 					building_tool._color_buildable_tile(tile)
-
-		else: #default build on island
+		else:
+			# Default build on island.
 			for settlement in session.world.settlements:
 				if settlement.owner == player:
 					island = session.world.get_island(Point(*settlement.ground_map.iterkeys().next()))
@@ -794,13 +793,12 @@ class SettlementBuildingToolLogic(object):
 							building_tool._color_buildable_tile(tile)
 
 	def _on_update(self, message):
-		if self.building_tool():
-			if message.sender.owner.is_local_player:
-				# this is generally caused by adding new buildings, therefore new_buildings=True
-				self.building_tool().highlight_buildable(message.changed_tiles, new_buildings=True)
+		if self.building_tool() and message.sender.owner.is_local_player:
+			# this is generally caused by adding new buildings, therefore new_buildings=True
+			self.building_tool().highlight_buildable(message.changed_tiles, new_buildings=True)
 
 	def on_escape(self, session):
-		session.ingame_gui.show_build_menu() # will call remove()
+		session.ingame_gui.show_build_menu()  # This will call remove().
 		if self.subscribed:
 			self.subscribed = False
 			SettlementRangeChanged.unsubscribe(self._on_update)
@@ -810,9 +808,13 @@ class SettlementBuildingToolLogic(object):
 			self.subscribed = False
 			SettlementRangeChanged.unsubscribe(self._on_update)
 
-	def add_change_listener(self, instance, building_tool): pass # using messages now
-	def remove_change_listener(self, instance, building_tool): pass
-	def continue_build(self): pass
+	# Using messages now.
+	def add_change_listener(self, instance, building_tool):
+		pass
+	def remove_change_listener(self, instance, building_tool):
+		pass
+	def continue_build(self):
+		pass
 
 
 class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):

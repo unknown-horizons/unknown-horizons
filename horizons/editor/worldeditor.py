@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,6 +27,7 @@ import logging
 from collections import deque
 
 from horizons.command.unit import RemoveUnit
+from horizons.constants import EDITOR
 from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
 from horizons.gui.widgets.minimap import Minimap
@@ -43,7 +44,7 @@ class WorldEditor(object):
 		self._remove_unnecessary_objects()
 		self._center_view()
 
-		self.brush_size = 1
+		self.brush_size = EDITOR.DEFAULT_BRUSH_SIZE
 
 		self._tile_delete_set = set()
 
@@ -79,8 +80,7 @@ class WorldEditor(object):
 			ground[coords] = n
 			queue = deque([coords])
 			while queue:
-				x, y = queue[0]
-				queue.popleft()
+				x, y = queue.popleft()
 				for dx, dy in moves:
 					coords2 = (x + dx, y + dy)
 					if coords2 in ground and ground[coords2] is None:
@@ -141,3 +141,6 @@ class WorldEditor(object):
 		else:
 			self.world.full_map[coords] = self.world.fake_tile_map[coords]
 		Minimap.update(coords)
+
+		# update cam, that's necessary because of the static layer WATER
+		self.session.view.cam.refresh()

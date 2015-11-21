@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,25 +27,26 @@ from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.tabs.residentialtabs import setup_tax_slider
 
+from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
-from horizons.messaging import UpgradePermissionsChanged
+from horizons.messaging import UpgradePermissionsChanged, PlayerLevelUpgrade
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, TIER
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
+
 
 class MainSquareTab(OverviewTab):
 	"""Tab for main square. Refreshes when one building on the settlement changes"""
-	def __init__(self, instance, widget, icon_path):
-		super(MainSquareTab, self).__init__(instance=instance, widget=widget, icon_path=icon_path)
-		self.init_values()
-
 	@property
 	def settlement(self):
 		return self.instance.settlement
 
 	def show(self):
 		super(MainSquareTab, self).show()
+		PlayerLevelUpgrade.subscribe(self.on_player_level_upgrade)
 		# update self when a building of the settlement changes.
 		for building in self.settlement.buildings:
 			if not building.has_change_listener(self._schedule_refresh):
@@ -53,35 +54,42 @@ class MainSquareTab(OverviewTab):
 
 	def hide(self):
 		super(MainSquareTab, self).hide()
+		PlayerLevelUpgrade.discard(self.on_player_level_upgrade)
 		for building in self.settlement.buildings:
-			if building.has_change_listener(self._schedule_refresh):
-				building.remove_change_listener(self._schedule_refresh)
+			building.discard_change_listener(self._schedule_refresh)
+
+	def on_player_level_upgrade(self, message):
+		self.hide()
+		self.instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(self))
 
 class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
-	def __init__(self, instance):
-		super(AccountTab, self).__init__(instance=instance, widget='tab_account.xml',
-		                                 icon_path='icons/tabwidget/warehouse/account')
-		self.helptext = _("Account")
+	widget = 'tab_account.xml'
+	icon_path = 'icons/tabwidget/warehouse/account'
+	helptext = _lazy("Account")
+
+	def init_widget(self):
+		super(AccountTab, self).init_widget()
+		self.widget.mapEvents({
+		  'show_production_overview/mouseClicked': self.show_production_overview,
+		})
+
+		# FIXME having to access the WindowManager this way is pretty ugly
+		self._windows = self.instance.session.ingame_gui.windows
+		self.prod_overview = ProductionOverview(self._windows, self.settlement)
+
 		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
 		path = 'icons/widgets/cityinfo/settlement_%s' % self.settlement.owner.color.name
 		self.widget.child_finder('show_production_overview').path = path
 
-		self.widget.mapEvents({
-		  'show_production_overview/mouseClicked' : self.show_production_overview
-		  })
-
-		# FIXME having to access the WindowManager this way is pretty ugly
-		self._windows = self.instance.session.ingame_gui.windows
-		self.prod_overview = ProductionOverview(self._windows, self.settlement)
-
 	def show_production_overview(self):
 		self._windows.toggle(self.prod_overview)
 
 	def refresh(self):
 		super(AccountTab, self).refresh()
+		self.refresh_collector_utilization()
 		taxes = self.settlement.cumulative_taxes
 		running_costs = self.settlement.cumulative_running_costs
 		buy_expenses = self.settlement.get_component(TradePostComponent).buy_expenses
@@ -93,33 +101,47 @@ class AccountTab(MainSquareTab):
 		self.widget.child_finder('buying').text = unicode(buy_expenses)
 		self.widget.child_finder('sale').text = unicode(sell_income)
 		self.widget.child_finder('balance').text = unicode(sign+' '+str(abs(balance)))
-
 		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		rename = Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
 		self.widget.mapEvents({'headline': rename})
 
+	def refresh_collector_utilization(self):
+		if self.instance.has_component(CollectingComponent):
+			utilization = int(round(self.instance.get_collector_utilization() * 100))
+			utilization = unicode(utilization) + u'%'
+		else:
+			utilization = u'---'
+		self.widget.findChild(name="collector_utilization").text = utilization
+
 
 class MainSquareOverviewTab(AccountTab):
-	def __init__(self, instance):
-		super(MainSquareOverviewTab, self).__init__(instance=instance)
-		self.helptext = _('Main square overview')
+	helptext = _lazy('Main square overview')
+
+	def init_widget(self):
+		super(MainSquareOverviewTab, self).init_widget()
+		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
+		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
 
 class MainSquareSettlerLevelTab(MainSquareTab):
+	widget = "mainsquare_inhabitants.xml"
 	LEVEL = None # overwrite in subclass
+
 	def __init__(self, instance):
-		widget = "mainsquare_inhabitants.xml"
-		icon_path = 'icons/tabwidget/mainsquare/inhabitants{tier}'.format(tier=self.__class__.LEVEL)
-		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
-		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
-		self.min_inhabitants = instance.session.db.get_settler_inhabitants_min(self.__class__.LEVEL)
+		self.max_inhabitants = instance.session.db.get_tier_inhabitants_max(self.__class__.LEVEL)
+		self.min_inhabitants = instance.session.db.get_tier_inhabitants_min(self.__class__.LEVEL)
 		self.helptext = instance.session.db.get_settler_name(self.__class__.LEVEL)
 
+		icon_path = 'icons/tabwidget/mainsquare/inhabitants{tier}'.format(tier=self.__class__.LEVEL)
+		super(MainSquareSettlerLevelTab, self).__init__(instance=instance, icon_path=icon_path)
+
+	def init_widget(self):
+		super(MainSquareSettlerLevelTab, self).init_widget()
 		slider = self.widget.child_finder('tax_slider')
 		val_label = self.widget.child_finder('tax_val_label')
 		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
 		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
-		self.widget.child_finder('headline').text = _(instance.session.db.get_settler_name(self.__class__.LEVEL))
+		self.widget.child_finder('headline').text = _(self.instance.session.db.get_settler_name(self.__class__.LEVEL))
 
 		if self.__class__.LEVEL == TIER.CURRENT_MAX:
 			# highest currently playable tier => upgrades not possible
@@ -139,7 +161,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def hide(self):
 		super(MainSquareSettlerLevelTab, self).hide()
-		UpgradePermissionsChanged.unsubscribe(self.refresh_via_message, sender=self.settlement)
+		UpgradePermissionsChanged.discard(self.refresh_via_message, sender=self.settlement)
 
 	def _get_last_tax_paid(self):
 		houses = self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
@@ -169,7 +191,8 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		# refresh upgrade permissions
 		upgrades_button = self.widget.child_finder('allow_upgrades')
-		if self.__class__.LEVEL < TIER.CURRENT_MAX: #max tier => cannot allow upgrades
+		# The currently highest playable tier cannot allow upgrades.
+		if self.__class__.LEVEL < TIER.CURRENT_MAX:
 			if self.settlement.upgrade_permissions[self.__class__.LEVEL]:
 				upgrades_button.set_active()
 				upgrades_button.helptext = _("Don't allow upgrades")
@@ -198,8 +221,8 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 				container.findChild(name="resident_"+str(column)).text = unicode(number)
 				container.findChild(name="resident_count_"+str(column)).text = unicode(house_count)
 
-		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
-		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
+		sad = self.instance.session.db.get_lower_happiness_limit()
+		happy = self.instance.session.db.get_upper_happiness_limit()
 		inhabitants = partial(self.settlement.get_residentials_of_lvl_for_happiness,
 		                      self.__class__.LEVEL)
 		self.widget.child_finder('sad_amount').text = unicode(inhabitants(max_happiness=sad))

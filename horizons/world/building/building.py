@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,6 +27,7 @@ from horizons.command.building import Build
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.componentholder import ComponentHolder
 from horizons.constants import RES, LAYERS, GAME
+from horizons.engine import Fife
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python import decorators
@@ -41,7 +42,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
 
 	# basic properties of class
-	walkable = False # whether we can walk on this building (true for e.g. streets, trees..)
+	walkable = False # whether we can walk on this building (True for e.g. streets, trees..)
 	buildable_upon = False # whether we can build upon this building
 	is_building = True
 	tearable = True
@@ -64,12 +65,12 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.island = island
 
 		settlements = self.island.get_settlements(self.position, owner)
+		self.settlement = None
 		if settlements:
 			self.settlement = settlements[0]
-		else:
+		elif owner:
 			# create one if we have an owner
-			self.settlement = self.island.add_settlement(self.position, self.radius, owner) if \
-			    owner is not None else None
+			self.settlement = self.island.add_settlement(self.position, self.radius, owner)
 
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
@@ -148,9 +149,10 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			db_data = db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)
 			if not db_data:
 				# this can happen when running costs are set when there were no before
-				# we shouldn't crash because of changes in yaml code, still it's suspicous
-				print 'WARNING: object %s of type %s does not know when to pay its rent.'
-				print 'Disregard this when loading old savegames or on running cost changes.'
+				# we shouldn't crash because of changes in yaml code, still it's suspicious
+				self.log.warning('Object %s of type %s does not know when to pay its rent.\n'
+					'Disregard this when loading old savegames or on running cost changes.',
+					self.worldid, self.id)
 				remaining_ticks_of_month = 1
 			else:
 				remaining_ticks_of_month = db_data[0][0]
@@ -188,8 +190,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def update_action_set_level(self, level=0):
 		"""Updates this buildings action_set to a random actionset from the specified level
 		(if an action set exists in that level).
-		It's different to get_random_action_set is, that it just checks one lvl, and doesn't
-		search for an action set everywhere, which makes it alot more effective, if you're
+		Its difference to get_random_action_set is that it just checks one level, and doesn't
+		search for an action set everywhere, which makes it a lot more effective if you're
 		just updating.
 		@param level: int level number"""
 		action_set = self.__class__.get_random_action_set(level, exact_level=True)
@@ -294,7 +296,10 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				# set first action
 				action = action_sets[action_set_id].keys()[0]
 
-		instance.act(action+"_"+str(action_set_id), facing_loc, True)
+		if (Fife.getVersion() >= (0, 3, 6)):
+			instance.actRepeat(action+"_"+str(action_set_id), facing_loc)
+		else:
+			instance.act(action+"_"+str(action_set_id), facing_loc, True)
 		return (instance, action_set_id)
 
 	@classmethod

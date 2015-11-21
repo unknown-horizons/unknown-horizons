@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -36,12 +36,14 @@ class ColorMeta(type):
 
 	def __getitem__(cls, key):
 		"""Gets a color by name or id in the db"""
-		if key == 0:
-			return None
-		r, g, b = horizons.globals.db('SELECT red, green, blue FROM colors WHERE name = ? OR id = ?',
-		                           key, key)[0]
-		c = Color(r, g, b)
-		return c
+		query = horizons.globals.db('SELECT red, green, blue FROM colors '
+		                            'WHERE name = ? OR id = ?', key, key)
+		try:
+			rgb = query[0]
+		except IndexError:
+			raise KeyError('No color defined for this name or id: %s' % key)
+		else:
+			return Color(*rgb)
 
 	def __iter__(cls):
 		"""Iterate over all available colors in the db."""

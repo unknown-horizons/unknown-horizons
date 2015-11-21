@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -20,8 +20,8 @@
 # ###################################################
 
 import contextlib
-import inspect
 import os
+import tempfile
 from functools import wraps
 
 import mock
@@ -170,10 +170,25 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 
 	players = []
 	if human_player:
-		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'ai': False, 'difficulty': human_difficulty})
+		players.append({
+			'id': 1,
+			'name': 'foobar',
+			'color': Color[1],
+			'local': True,
+			'ai': False,
+			'difficulty': human_difficulty,
+		})
+
 	for i in xrange(ai_players):
 		id = i + human_player + 1
-		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'ai': True, 'difficulty': ai_difficulty})
+		players.append({
+			'id': id,
+			'name': ('AI' + str(i)),
+			'color': Color[id],
+			'local': (id == 1),
+			'ai': True,
+			'difficulty': ai_difficulty,
+		})
 
 	session.load(mapgen(), players, ai_players > 0, True)
 	return session, session.world.player
@@ -188,6 +203,21 @@ def load_session(savegame, rng_seed=RANDOM_SEED, is_map=False):
 	session.load(savegame, [], False, is_map)
 
 	return session
+
+
+def saveload(session):
+	"""Save and load the game (game test version). Use like this:
+
+	# For game tests
+	session = saveload(session)
+	"""
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	session.end(keep_map=True)
+	game_session = load_session(filename)
+	Scheduler().before_ticking() # late init finish (not ticking already)
+	return game_session
 
 
 def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
@@ -232,7 +262,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
 						s.end(remove_savegame=False, keep_map=True)
 					elif not manual_session:
 						s.end()
-				except:
+				except Exception:
 					pass
 					# An error happened after cleanup after an error.
 					# This is ok since cleanup is only defined to work when invariants are in place,

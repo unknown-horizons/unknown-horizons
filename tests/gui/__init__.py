@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -53,7 +53,8 @@ from tests.utils import Timer
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
 
-class TestFailed(Exception): pass
+class TestFailed(Exception):
+	pass
 
 
 TEST_USER_DIR = None
@@ -206,7 +207,7 @@ class TestRunner(object):
 		"""
 		try:
 			cooperative.schedule()
-		except:
+		except Exception:
 			import traceback
 			traceback.print_exc()
 			sys.exit(1)

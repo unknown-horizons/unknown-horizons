@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,7 @@
 from fife import fife
 
 import horizons.globals
+import weakref
 
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
@@ -35,9 +36,11 @@ class TearingTool(NavigationTool):
 	Represents a dangling tool to remove (tear) buildings.
 	"""
 	tear_selection_color = (255, 255, 255)
+	nearby_objects_radius = 4
 
 	def __init__(self, session):
 		super(TearingTool, self).__init__(session)
+		self._transparent_instances = set() # fife instances modified for transparency
 		self.coords = None
 		self.selected = WeakList()
 		self.oldedges = None
@@ -79,14 +82,16 @@ class TearingTool(NavigationTool):
 			if self.coords is None:
 				self.coords = coords
 			self._mark(self.coords, coords)
-			for i in [i for i in self.selected]:
-				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
-				Tear(i).execute(self.session)
+			selection_list_copy = [building for building in self.selected]
+			for building in selection_list_copy:
+				self.session.view.renderer['InstanceRenderer'].removeColored(building._instance)
+				if (not building.id in BUILDINGS.EXPAND_RANGE) or self.confirm_ranged_delete(building):
+					Tear(building).execute(self.session)
 			else:
 				if self._hovering_over:
 					# we're hovering over a building, but none is selected, so this tear action isn't allowed
 					warehouses = [ b for b in self._hovering_over if
-					               b.id == BUILDINGS.WAREHOUSE ]
+					               b.id == BUILDINGS.WAREHOUSE and b.owner.is_local_player]
 					if warehouses:
 						# tried to tear a warehouse, this is especially non-tearable
 						pos = warehouses[0].position.origin
@@ -94,11 +99,24 @@ class TearingTool(NavigationTool):
 
 			self.selected = WeakList()
 			self._hovering_over = WeakList()
-
 			if not evt.isShiftPressed() and not horizons.globals.fife.get_uh_setting('UninterruptedBuilding'):
 				self.tear_tool_active = False
 				self.on_escape()
 			evt.consume()
+			
+	def confirm_ranged_delete(self, building):
+			buildings_to_destroy = len(Tear.additional_removals_after_tear(building)[0])
+			if buildings_to_destroy == 0:
+				return True
+			
+			title = _("Destroy all buildings")
+			msg = _("This will destroy all the buildings that fall outside of"
+		            " the settlement range.")
+			msg += u"\n\n"
+			msg += N_("%s additional building will be destroyed.",
+		              "%s additional buildings will be destroyed",
+		              buildings_to_destroy) % buildings_to_destroy
+			return building.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:
@@ -113,6 +131,7 @@ class TearingTool(NavigationTool):
 
 	def _mark(self, *edges):
 		"""Highights building instances and keeps self.selected up to date."""
+		self._restore_transparent_instances()
 		self.log.debug("TearingTool: mark")
 		if len(edges) == 1:
 			edges = (edges[0], edges[0])
@@ -134,14 +153,51 @@ class TearingTool(NavigationTool):
 					if b is not None:
 						if b not in self._hovering_over:
 							self._hovering_over.append(b)
+							self._make_surrounding_transparent(b)
+							self._remove_object_transparency(Point(x,y))
 						if b.tearable and b.owner is not None and b.owner.is_local_player:
 							if b not in self.selected:
+								self._make_surrounding_transparent(b)
 								self.selected.append(b)
+								self._remove_object_transparency(Point(x,y))
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance,
 				                                                          *self.tear_selection_color)
 		self.log.debug("TearingTool: mark done")
 
+	def _remove_object_transparency(self, coords):
+		"""helper function, used to remove transparency from object hovered upon,
+		identified through its coordinates"""
+		tile = self.session.world.get_tile(coords)
+		if tile.object is not None and tile.object.buildable_upon:
+			inst = tile.object.fife_instance
+			inst.get2dGfxVisual().setTransparency(0)
+
+	def _make_surrounding_transparent(self, building):
+		"""Makes the surrounding of building_position transparent"""
+		world_contains = self.session.world.map_dimensions.contains_without_border
+		for coord in building.position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
+			p = Point(*coord)
+			if not world_contains(p):
+				continue
+			tile = self.session.world.get_tile(p)
+			if tile.object is not None and tile.object.buildable_upon:
+				inst = tile.object.fife_instance
+				inst.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
+				self._transparent_instances.add(weakref.ref(inst))
+
+	def _restore_transparent_instances(self):
+		"""Removes transparency"""
+		for inst_weakref in self._transparent_instances:
+			fife_instance = inst_weakref()
+			if fife_instance:
+				# remove transparency only if trees aren't supposed to be transparent as default
+				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
+					fife_instance.get2dGfxVisual().setTransparency(0)
+				else:
+					# restore regular translucency value, can also be different
+					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+		self._transparent_instances.clear()
 
 	def _on_object_deleted(self, message):
 		self.log.debug("TearingTool: on deletion notification %s", message.worldid)

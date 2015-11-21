@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -56,6 +56,7 @@ from building.distillery import AbstractDistillery
 from building.villagebuilding import AbstractVillageBuilding
 from building.claydeposit import AbstractClayDeposit
 from building.claypit import AbstractClayPit
+from building.doctor import AbstractDoctor
 from building.brickyard import AbstractBrickyard
 from building.firestation import AbstractFireStation
 from building.fishdeposit import AbstractFishDeposit
@@ -425,7 +426,7 @@ class AIPlayer(GenericAI):
 		if not self.settlement_expansions:
 			return  # no changes in land ownership
 
-		change_lists = defaultdict(lambda: [])
+		change_lists = defaultdict(list)
 		for coords, settlement in self.settlement_expansions:
 			if settlement.island.worldid not in self.islands:
 				continue  # we don't have a settlement there and have no current plans to create one

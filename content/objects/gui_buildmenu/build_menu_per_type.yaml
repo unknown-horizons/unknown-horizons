@@ -20,7 +20,7 @@ tab1:
 -
   - _ Precaution #TODO better name?
   - BUILDINGS.FIRE_STATION
-#  - BUILDINGS.DOCTOR
+  - BUILDINGS.DOCTOR
 
 tab2:
 - icon: icons/tabwidget/buildmenu/class/fields
@@ -35,14 +35,14 @@ tab2:
   - _ Settlers
   - BUILDINGS.TOBACCO_FIELD
   - BUILDINGS.CATTLE_RUN
-#  - BUILDINGS.HERBARY
-#  - BUILDINGS.SPICE_FIELD
+  - BUILDINGS.HERBARY
+  - BUILDINGS.SPICE_FIELD
 -
   - _ Citizens
   - BUILDINGS.CORN_FIELD
 #  - BUILDINGS.COCOA_FIELD
-#  - BUILDINGS.VINEYARD
-#  - BUILDINGS.ALVEARIES
+  - BUILDINGS.VINEYARD
+  - BUILDINGS.ALVEARIES
 
 tab3:
 - icon: icons/tabwidget/buildmenu/class/agricultural_companies
@@ -60,12 +60,12 @@ tab3:
 -
   - _ Workshops
   - BUILDINGS.WEAVER
-#  - BUILDINGS.BLENDER
+  - BUILDINGS.BLENDER
 -
   - _ Workshops
   - BUILDINGS.DISTILLERY
   - BUILDINGS.TOBACCONIST
-#  - BUILDINGS.VINTNER
+  - BUILDINGS.WINERY
 #  - BUILDINGS.PASTRY_SHOP
 
 
@@ -82,7 +82,7 @@ tab4:
   - _ Mining
   - BUILDINGS.CLAY_PIT
   - BUILDINGS.BRICKYARD
-  - BUILDINGS.IRON_MINE
+  - BUILDINGS.MINE
   - BUILDINGS.SMELTERY
 -
   - _ Workshops
@@ -91,6 +91,9 @@ tab4:
 tab5:
 - icon: icons/tabwidget/buildmenu/class/military
 - headline: _ Military
+-
+  - _ Workshops
+  - BUILDINGS.WEAPONSMITH
 -
   - _ Fortifications
   - BUILDINGS.WOODEN_TOWER

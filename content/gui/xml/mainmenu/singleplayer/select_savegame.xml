@@ -29,7 +29,7 @@
 	<Spacer fixed_size="30" />
 		<HBox max_size="34,40">
 			<!-- if no max_size is set, button reaction area expands to whole page -->
-			<DeleteButton helptext="Delete selected savegame" />
+			<CancelButton helptext="Cancel" />
 		</HBox>>
 	</VBox> <!-- left_page -->
 
@@ -56,7 +56,7 @@
 		</VBox>
 	<Spacer />
 		<HBox min_size="300,40">
-			<CancelButton helptext="Cancel" />
+			<DeleteButton helptext="Delete selected savegame" />
 			<Spacer min_size="200" />
 			<OkButton />
 		</HBox>

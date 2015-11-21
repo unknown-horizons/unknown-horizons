@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -23,9 +23,12 @@ from horizons.component import Component
 
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.coloroverlaycomponent import ColorOverlayComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.depositcomponent import DepositComponent
+from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.healthcomponent import HealthComponent
+from horizons.component.inventoryoverlaycomponent import InventoryOverlayComponent
 from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
 from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.selectablecomponent import SelectableComponent
@@ -61,22 +64,25 @@ class ComponentHolder(object):
 	"""
 
 	class_mapping = {
-	    'StorageComponent': StorageComponent,
-	    'NamedComponent': NamedComponent,
-	    'ShipNameComponent': ShipNameComponent,
-	    'PirateShipNameComponent': PirateShipNameComponent,
-	    'SettlementNameComponent': SettlementNameComponent,
-	    'TradePostComponent': TradePostComponent,
 	    'AmbientSoundComponent': AmbientSoundComponent,
-	    "HealthComponent": HealthComponent,
-	    'ProducerComponent': Producer,
-	    'QueueProducerComponent': QueueProducer,
-	    'DepositComponent': DepositComponent,
-	    'UnitProducerComponent': UnitProducer,
-	    'SelectableComponent': SelectableComponent,
 	    'CommandableComponent': CommandableComponent,
 	    'CollectingComponent': CollectingComponent,
+	    'ColorOverlayComponent': ColorOverlayComponent,
+	    'DepositComponent': DepositComponent,
+	    'FieldBuilder': FieldBuilder,
+	    'HealthComponent': HealthComponent,
+	    'InventoryOverlayComponent': InventoryOverlayComponent,
+	    'NamedComponent': NamedComponent,
+	    'PirateShipNameComponent': PirateShipNameComponent,
+	    'ProducerComponent': Producer,
+	    'SettlementNameComponent': SettlementNameComponent,
+	    'ShipNameComponent': ShipNameComponent,
+	    'StorageComponent': StorageComponent,
+	    'QueueProducerComponent': QueueProducer,
 	    'RestrictedPickup': RestrictedPickup,
+	    'SelectableComponent': SelectableComponent,
+	    'TradePostComponent': TradePostComponent,
+	    'UnitProducerComponent': UnitProducer,
 	}
 
 	def __init__(self, *args, **kwargs):
@@ -135,6 +141,8 @@ class ComponentHolder(object):
 		@param component: a component instance that is to be added
 			all components will have the init only with instance attribute
 		"""
+		if not isinstance(component, Component):
+			print component, type(component), component.__class__
 		assert isinstance(component, Component)
 		component.instance = self
 		self.components[component.NAME] = component

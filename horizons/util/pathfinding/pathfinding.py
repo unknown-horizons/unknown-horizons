@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -184,7 +184,7 @@ class FindPath(object):
 				                          (x_m1, y_p1), (x, y_m1),
 				                          (x, y_p1), (x_p1, y_m1),
 				                          (x_p1, y), (x_p1, y_p1) )
-				              if # conditions are sorted by likelyhood in ship worst case
+				              if # conditions are sorted by likelihood in ship worst case
 				                 i not in checked
 				                 and (   i in path_nodes
 				                      or i in source_coords

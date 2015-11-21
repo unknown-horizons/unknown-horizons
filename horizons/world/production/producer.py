@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -98,6 +98,8 @@ class Producer(Component):
 		self.__active = True
 		# Store whether or not the utilization level is currently ok
 		self.__utilization_ok = True
+		# Track if the producer is being removed
+		self.__removal_started = False
 
 		# BIG FAT NOTE: this has to be executed for all players for mp
 		# even if this building has no status icons
@@ -115,7 +117,7 @@ class Producer(Component):
 		if self.__auto_init:
 			for prod_line, attributes in self.production_lines.iteritems():
 				if 'enabled_by_default' in attributes and not attributes['enabled_by_default']:
-					continue  # It's set to false, don't add
+					continue  # It's set to False, don't add
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
 		# For newly built producers we set the utilization to full for the first
@@ -172,8 +174,7 @@ class Producer(Component):
 			if self.__utilization_ok:
 				RemoveStatusIcon.broadcast(self, self.instance, ProductivityLowStatus)
 			else:
-				icon = ProductivityLowStatus(self.instance)
-				AddStatusIcon.broadcast(self, icon)
+				self._add_status_icon(ProductivityLowStatus(self.instance))
 
 	@property
 	def capacity_utilization(self):
@@ -272,6 +273,7 @@ class Producer(Component):
 			self._get_production(prod_line_id).alter_production_time(modifier)
 
 	def remove(self):
+		self.__removal_started = True
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.get_productions():
 			self.remove_production(production)
@@ -352,6 +354,10 @@ class Producer(Component):
 		self.instance._changed()
 		self.on_activity_changed(self.is_active())
 
+	def _add_status_icon(self, icon):
+		if not self.__removal_started:
+			AddStatusIcon.broadcast(self, icon)
+
 	def _update_decommissioned_icon(self):
 		"""Add or remove decommissioned icon."""
 		if not self.instance.has_status_icon:
@@ -362,8 +368,7 @@ class Producer(Component):
 			if self.__active:
 				RemoveStatusIcon.broadcast(self, self.instance, DecommissionedStatus)
 			else:
-				icon = DecommissionedStatus(self.instance)
-				AddStatusIcon.broadcast(self, icon)
+				self._add_status_icon(DecommissionedStatus(self.instance))
 
 	def toggle_active(self, production=None):
 		if production is None:
@@ -393,7 +398,7 @@ class Producer(Component):
 				for prod in self.get_productions():
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
 				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
-				AddStatusIcon.broadcast(self, self._producer_status_icon)
+				self._add_status_icon(self._producer_status_icon)
 
 			if not full and hasattr(self, "_producer_status_icon"):
 				RemoveStatusIcon.broadcast(self, self.instance, InventoryFullStatus)
@@ -406,7 +411,7 @@ class Producer(Component):
 		return l
 
 	def __str__(self):
-		return "Producer(owner: " + str(self.instance) + ")"
+		return u'Producer(owner: ' + unicode(self.instance) + u')'
 
 	def get_production_progress(self):
 		"""Returns the current progress of the active production."""
@@ -531,7 +536,7 @@ class QueueProducer(Producer):
 
 	def cancel_current_production(self):
 		"""Cancels the current production and proceeds to the next one, if there is one"""
-		# Remove current productions, loose all progress and resources
+		# Remove current productions, lose all progress and resources
 		for production in self._productions.copy().itervalues():
 			self.remove_production(production)
 		for production in self._inactive_productions.copy().itervalues():

@@ -1,4 +1,4 @@
-id: 12
+id: BUILDINGS.BOAT_BUILDER
 name: _ Boat Builder
 baseclass: boatbuilder.BoatBuilder
 radius: 10
@@ -8,7 +8,7 @@ size_x: 3
 size_y: 3
 inhabitants: 2
 tooltip_text: _ Builds boats and small ships. Built on coast.
-settler_level: TIER.PIONEERS
+tier: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.TOOLS: 3}
 components:
 - SelectableComponent:

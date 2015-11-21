@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -87,7 +87,6 @@ class EditorCreateMapWidget(object):
 
 		for size in self.sizes:
 			option_name = 'size_%d' % size
-			#xgettext:python-format
 			# size of empty map in map editor
 			self._gui.findChild(name=option_name).text = _('{size}x{size} tiles').format(size=size)
 

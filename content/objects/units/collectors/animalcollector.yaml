@@ -1,5 +1,5 @@
 baseclass: collectors.AnimalCollector
-id: 1000007
+id: UNITS.ANIMAL_COLLECTOR
 name: AnimalCarriage
 radius: 5
 velocity: 12.0

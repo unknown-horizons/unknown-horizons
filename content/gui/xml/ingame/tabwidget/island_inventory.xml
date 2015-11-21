@@ -45,7 +45,7 @@
 			<Icon image="content/gui/images/background/inv_bg.png" />
 		</HBox>
 
-		<!-- http://fife.trac.cloudforge.com/engine/ticket/692 ::
+		<!-- http://github.com/fifengine/fifengine/issues/692 ::
 		<ScrollArea min_size="215,200" max_size="215,200" position="21,52" vertical_scroll_amount="50">-->
 		<ScrollArea min_size="215,270" max_size="215,270" position="21,42" name="fife_ticket_692">
 			<Inventory name="inventory" min_size="215,250" max_size="215,1000" items_per_line="4" />

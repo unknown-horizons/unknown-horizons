@@ -1,47 +1,19 @@
 #!/bin/sh
 
-###############################################################################
+# == I18N CHEATSHEET ==
 #
-# == I18N DEV USE CASES: CHEATSHEET ==
+# * To translate a string 'New string' in python, use _('New string').
 #
-# ** I changed or added a string in an xml file
-# => Run  development/create_pot.sh
+# * Formatting placeholders: use 'num: {amount}' instead of 'num: %s'.
 #
-# ** I changed or added a string in an sql file
-# => Run  development/create_pot.sh
+# * To test the current translations from Weblate in-game, follow this guide:
+# http://github.com/unknown-horizons/unknown-horizons/wiki/Interface-translation
 #
-# ** I changed or added a string in an object yaml file
-# => Run  development/create_pot.sh
+# * Hints about translation maintenance:
+# https://github.com/unknown-horizons/unknown-horizons/wiki/Translations
 #
-# ** I changed a string in a py file
-# => Do nothing, everything is fine
-#
-# ** I added a string 'New string' to a py file and it should be translated
-# => Use _('New string') instead of 'New string'.
-#
-# ** The string uses a formatting placeholder like 'num: {amount}' or 'num: %s'
-# => Only *ever* use the named  _('num: {amount}')  syntax. Translators have no
-#    idea what '%s' means, especially with multiple substitutions. BIG FAT NOTE
-#    You will need to add the following line right before your string in python
-#      #xgettext:python-format
-#    for the string to be properly recognized in Weblate.         /BIG FAT NOTE
-#    This comment can also go inline after the format string, but prefer above.
-#
-# ** I changed or added strings in the tutorial yaml file
-# => Run  development/create_scenario_pot.sh tutorial
-#
-# ** I changed or added strings in the yaml file of a translated scenario named
-#    "foobar_en.yaml"
-# => Run  development/create_scenario_pot.sh foobar
-#
-# ** I want to see the current translations from Weblate in-game
-# => Run  ./setup.py build_i18n
-# => You can instead follow this guide:
-#    http://github.com/unknown-horizons/unknown-horizons/wiki/Interface-translation
-#
-# ** I have no idea what 'i18n' means
-# => Short for 'internationalization': i + 18 letters + n.
-#    Also see  http://en.wikipedia.org/wiki/i18n  for more info.
+# * 'i18n' is short for 'internationalization': i + 18 letters + n.
+#   See  http://en.wikipedia.org/wiki/i18n  for more info.
 #
 ###############################################################################
 #
@@ -73,6 +45,20 @@ function strip_itstool()
   #. (itstool) comment: Container/Label@text
   sed -i '/^#\. (itstool) /d' $1
   sed -i '/^#\. noi18n_\(help\)\?text$/d' $1
+  # Now do more complicated magic that we need python's polib for:
+  # Fixup extracted python {format} strings from xml files (add right flag)
+  python2 << END
+import re; FORMAT = re.compile(r'{.*}')
+try:
+  import polib
+except ImportError:
+  from horizons.ext import polib
+po = polib.pofile('$1', wrapwidth=80)
+for entry in [e for e in po if not e.obsolete]:
+  if FORMAT.search(entry.msgid) and 'python-brace-format' not in entry.flags:
+    entry.flags.append(u'python-brace-format')
+po.save('$1')
+END
 }
 
 function reset_if_empty()
@@ -87,7 +73,7 @@ function reset_if_empty()
 }
 
 # XML files
-PYTHONPATH="." python2 development/extract_strings_from_xml.py "$XML_PY_FILE"
+python2 development/extract_strings_from_xml.py "$XML_PY_FILE"
 echo "   * Regenerated xml translation file at $XML_PY_FILE."
 find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
   itstool -i development/its-rule-pychan.xml \
@@ -96,7 +82,7 @@ find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
 echo "   * Wrote xml translation template to $RESULT_FILE."
 
 # YAML files
-PYTHONPATH="." python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
+python2 development/extract_strings_from_objects.py "$YAML_PY_FILE"
 echo "   * Regenerated yaml translation file at $YAML_PY_FILE."
 
 echo "=> Creating UH gettext pot template file at $RESULT_FILE."
@@ -118,7 +104,7 @@ echo "=> Creating UH gettext pot template file at $RESULT_FILE."
 # --keyword=N_ also catches N_() plural-aware ngettext calls
 
 # SQL files
-PYTHONPATH="." python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
+python2 development/extract_strings_from_sqlite.py > "$SQL_POT_FILE"
 echo "   * Regenerated sql translation file at $SQL_POT_FILE."
 # Merge with python+xml file RESULT_FILE, do not update header
 xgettext --output="$RESULT_FILE" \

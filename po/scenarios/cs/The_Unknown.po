@@ -8,31 +8,30 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-05-21 12:45+0200\n"
-"PO-Revision-Date: 2013-05-12 15:47+0200\n"
+"PO-Revision-Date: 2014-03-03 11:27+0200\n"
 "Last-Translator: Lukáš Krejza <gryffus@hkfree.org>\n"
-"Language-Team: Czech <http://hosted.weblate.org/projects/uh/the-unknown/cs/"
-">\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/uh/the-"
+"unknown/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.9-dev\n"
 
 #. scenario difficulty
 msgid "easy"
 msgstr "lehká"
 
 #. scenario description
-#, fuzzy
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the pacific ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
 "Jsi kapitán lodi pod vlajkou Anglie roku 1740. Ty a tvoje posádka jste byli "
-"na cestě do jedné Anglické kolonie uprostřed Tichého oceánu.\n"
-"Všechno šlo dobře až do chvíle, kdy vás potkala bouře..."
+"na cestě do jedné anglické kolonie uprostřed Tichého oceánu.\n"
+"Všechno šlo dobře až do chvíle, kdy vás potkala bouře…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
@@ -71,13 +70,12 @@ msgid "22nd November 1740"
 msgstr "22. listopadu 1740"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
-"Přístav je postaven a vzniká nová naděje. Stále mám obavy z nadcházejících "
-"dnů... dochází nám jídlo a chybí základní stavební materiál."
+"Přístav stojí a vzniká nová naděje. Stále mám obavy z nadcházejících dnů… "
+"dochází nám jídlo a chybí základní stavební materiál."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -149,17 +147,16 @@ msgstr ""
 "pohodlný, ale drží mě v suchu a já mám v noci zase pocit střechy nad hlavou."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "I have been researching the stars at night, but without my sea charts and "
 "instruments their meaning remains unknown. I have the feeling we will be "
 "stuck here for a while, so we'll have to make the best of situation.\n"
 "We can only try to to build up a civilisation and find a way home…"
 msgstr ""
-"V noci jsem zkoumal hvězdy, ale bez mých mořských map a navigačních nástrojů "
-"zůstává jejich význam neznámý. Cítím, že tu chvíli zůstaneme uvíznutí, takže "
-"budeme muset vytěžit z naší situace co nejvíce.\n"
-"Můžeme se jedině pokusit vytvořit civilizaci a najít cestu domů..."
+"V noci jsem zkoumal hvězdy, ale bez mých námořních map a navigačních "
+"nástrojů zůstává jejich význam neznámý. Cítím, že tu chvíli zůstaneme "
+"uvíznutí, takže budeme muset vytěžit z naší situace co nejvíce.\n"
+"Můžeme se jedině pokusit vytvořit civilizaci a najít cestu domů…"
 
 #. This is the text body of a logbook page.
 msgid ""

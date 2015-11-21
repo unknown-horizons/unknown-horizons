@@ -1,5 +1,6 @@
+# Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -44,10 +45,9 @@ class HotkeyConfiguration(object):
 		self.keys = self.keyconf.get_keys_by_value()
 
 		self.HELPSTRING_LAYOUT = None
-		self._is_displayed = False
 		self._build_interface()
 
-		# When detecing is True, the interface detects keypresses and binds them to actions
+		# When `detecting` is True, the interface detects keypresses and binds them to actions
 		self.detecting = False
 		self.current_button = None
 		self.current_index = None
@@ -76,7 +76,7 @@ class HotkeyConfiguration(object):
 			sec_button_container.addChild(sec_button)
 			self.buttons.append(button)
 			self.secondary_buttons.append(sec_button)
-			self.update_buttons_text()
+		self.update_buttons_text()
 
 	def _create_button(self, action, index):
 		"""Important! The button name is set to index so that when a button is pressed, we know its index"""
@@ -93,7 +93,8 @@ class HotkeyConfiguration(object):
 		self.current_column = column
 		self.listener.activate()
 		self.update_buttons_text()
-		button.text = _("Press desired key")
+		button.font = 'default'
+		button.text = _(u"Press key…")
 
 	def _detect_keypress(self, event):
 		if not self.detecting:
@@ -109,24 +110,25 @@ class HotkeyConfiguration(object):
 
 	def update_buttons_text(self):
 		for i, button in enumerate(self.buttons):
+			button.font = 'default_bold'
 			action = self.actions[i]
 			bindings = self.keyconf.get_current_keys(action)
 			for j in range(len(bindings)):
 				if bindings[j] == 'UNASSIGNED':
-					bindings[j] = '-'
+					bindings[j] = ''
 			secondary_button = self.secondary_buttons[i]
 			button.text = unicode(bindings[0])
 			if len(bindings) > 1:
+				secondary_button.font = 'default_bold'
 				secondary_button.text = unicode(bindings[1])
 			else:
-				secondary_button.text = u"-"
+				secondary_button.text = u''
 
 	def apply_change(self):
 		"""Binds the last keypress to the corresponding action and resets the interface to the state where it is listening for clicks on buttons"""
 		key = self.last_combination[0]
 		key_name = self.key_name(key)
 		action = self.actions[self.current_index]
-		column = self.current_column
 
 		# Escape is used to unassign bindings
 		if key_name == 'ESCAPE':
@@ -136,11 +138,14 @@ class HotkeyConfiguration(object):
 		# This is done to avoid binding one key for two actions.
 		elif self.key_is_set(key):
 			oldaction = self.get_action_name(key)
+			if action == oldaction and key_name in self.keyconf.get_current_keys(action):
+				self.update_buttons_text()
+				self.last_combination = []
+				return
 
-			#xgettext:python-format
 			message = _("{key} is already set to {action}.").format(key=key_name, action=oldaction)
 			message += u" " + _("Would you like to overwrite it?")
-			confirmed = horizons.main._modules.gui.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True)
+			confirmed = horizons.main._modules.gui.open_popup(_("Confirmation for overwriting"), message, show_cancel_button=True)
 			if confirmed:
 				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
 			else:
@@ -149,9 +154,9 @@ class HotkeyConfiguration(object):
 				return
 
 		bindings = self.keyconf.get_current_keys(action)
-		if column == 1:
+		if self.current_column == 1:
 			bindings[0] = key_name
-		elif column == 2:
+		elif self.current_column == 2:
 			if len(bindings) < 2:
 				bindings.append(key_name)
 			else:
@@ -189,7 +194,7 @@ class HotkeyConfiguration(object):
 			k = custom_key_actions[action]
 			if key_name in k:
 				return action
-		print "Action name not found. Key name must be wrong. This is not supposed to ever happen"
+		print "Action name not found. Key name (" + key_name + ") must be wrong. This is not supposed to ever happen"
 
 	def reset_to_default(self):
 		"""Resets all bindings to default"""

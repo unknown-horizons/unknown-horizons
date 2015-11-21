@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -67,7 +67,7 @@ class Timer(object):
 		signal.alarm(timeout)
 
 	@classmethod
-	def stop(self):
+	def stop(cls):
 		"""Stop the timer. This can be called on both the instance and class (when you
 		have no access to the instance for example).
 		"""

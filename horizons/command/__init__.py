@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,13 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-__all__ = ['building', 'unit', 'sounds']
-
 import logging
 
 from horizons.util.python import get_all_subclasses
 from horizons.util.worldobject import WorldObject
 from horizons.network.packets import SafeUnpickler
+
 
 class Command(object):
 	"""Base class for every Command."""

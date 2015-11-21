@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -23,6 +23,7 @@
 import logging
 
 from horizons.world.disaster.firedisaster import FireDisaster
+from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.worldobject import WorldObject
@@ -39,13 +40,13 @@ class DisasterManager(object):
 
 	def __init__(self, session, disabled=False):
 		"""
-		@param disabled: Don't do anything at all if true (but be responsive to normal calls)"""
+		@param disabled: Don't do anything at all if True (but be responsive to normal calls)"""
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
 		self.disabled = disabled
 		# List of possible disaster classes
-		self.disasters = [FireDisaster]
+		self.disasters = [FireDisaster, BlackDeathDisaster]
 
 		# Mapping settlement -> active disasters
 		self._active_disaster = {}
@@ -100,5 +101,11 @@ class DisasterManager(object):
 		"""Returns whether there is currently a disaster in a settlement"""
 		return settlement in self._active_disaster
 
+	def get_disaster(self, settlement):
+		"""Returns the currently active disaster for the given settlement. None is
+		returned in case no disaster is currently active."""
+		if self.is_affected(settlement):
+			return self._active_disaster[settlement]
+		return None
 
 

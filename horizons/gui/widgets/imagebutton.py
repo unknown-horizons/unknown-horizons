@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -62,7 +62,7 @@ class ImageButton(FifeImageButton):
 		self.state = self.ACTIVE
 
 	def toggle(self):
-		if self.state == self.ACTIVE:
+		if self.is_active:
 			self.set_inactive()
 		else:
 			self.set_active()
@@ -70,7 +70,7 @@ class ImageButton(FifeImageButton):
 	def set_active(self):
 		"""Sets the button active. Restores up, down and hover image to
 		previous state."""
-		if self.state == self.ACTIVE:
+		if self.is_active:
 			return
 		self.up_image, self.down_image, self.hover_image = self.old_images
 		self.state = self.ACTIVE
@@ -78,7 +78,7 @@ class ImageButton(FifeImageButton):
 	def set_inactive(self):
 		"""Sets the button inactive. Overrides up, down and hover image with
 		inactive image."""
-		if self.state == self.INACTIVE:
+		if not self.is_active:
 			# running this with inactive state would overwrite all elements
 			# of old_images with inactive_image
 			return
@@ -86,6 +86,10 @@ class ImageButton(FifeImageButton):
 		self.old_images = (self.up_image, self.down_image, self.hover_image)
 		self.up_image = self.down_image = self.hover_image = self.inactive_image
 		self.state = self.INACTIVE
+
+	@property
+	def is_active(self):
+		return (self.state == self.ACTIVE)
 
 	def _get_path(self):
 		return self.__path
@@ -121,12 +125,12 @@ class ImageButton(FifeImageButton):
 		# set inactive_image to the path that worked, if there is any.
 		try:
 			image = image_path.format(mode='_bw')
-			Icon(image=image)
+			Icon(image=image).hide() # hide will remove Icon from widgets of pychan.internals.manager
 			self.inactive_image = image
 		except RuntimeError:
 			try:
 				image = image_path.format(mode='_gr')
-				Icon(image=image)
+				Icon(image=image).hide() # hide will remove Icon from widgets of pychan.internals.manager
 				self.inactive_image = image
 			except RuntimeError:
 				self.inactive_image = self.up_image
@@ -148,6 +152,7 @@ class OkButton(ImageButton):
 			name=name, is_focusable=False,
 			max_size=size, min_size=size, size=size, **kwargs)
 		self.path = "images/buttons/ok"
+		self.inactive_image = "content/gui/images/buttons/close.png"
 
 class CancelButton(ImageButton):
 	"""The CancelButton is a shortcut for an ImageButton with our cancel / close

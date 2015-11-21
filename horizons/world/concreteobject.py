@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -22,6 +22,8 @@
 import random
 
 from horizons.constants import ACTION_SETS
+from horizons.engine import Fife
+from horizons.messaging import ActionChanged
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
@@ -51,13 +53,15 @@ class ConcreteObject(WorldObject):
 		self.__init(action_set_id)
 
 	def __init(self, action_set_id=None):
-		self._instance = None # overwrite in subclass __init[__]
-		self._action = 'idle' # Default action is idle
+		# overwrite in subclass __init[__]
+		self._instance = None
+		# Default action is 'idle'
+		self._action = 'idle'
 		# NOTE: this can't be level-aware since not all ConcreteObjects have levels
 		self._action_set_id = action_set_id if action_set_id else self.__class__.get_random_action_set()
 
 		# only buildings for now
-		# NOTE: this is player dependant, therefore there must be no calls to session.random that depend on this
+		# NOTE: this is player dependent, therefore there must be no calls to session.random that depend on this
 		self.has_status_icon = self.is_building and self.show_status_icons and \
 			self.owner is not None and self.owner.is_local_player # and only for the player's buildings
 
@@ -83,11 +87,11 @@ class ConcreteObject(WorldObject):
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet
 			self._instance.setActionRuntime(runtime)
-		Scheduler().add_new_object( Callback(set_action_runtime, self, runtime), self, run_in=0)
+		Scheduler().add_new_object(Callback(set_action_runtime, self, runtime), self, run_in=0)
 
 	def act(self, action, facing_loc=None, repeating=False, force_restart=True):
 		"""
-		@param repeating: maps to fife, currently broken: http://fife.trac.cloudforge.com/engine/ticket/708
+		@param repeating: maps to fife, currently broken: http://github.com/fifengine/fifengine/issues/708
 		@param force_restart: whether to always restart, even if action is already displayed
 		"""
 		if not self.has_action(action):
@@ -96,19 +100,29 @@ class ConcreteObject(WorldObject):
 		if not force_restart and self._action == action:
 			return
 
+		self._action = action
+
 		# TODO This should not happen, this is a fix for the component introduction
 		# Should be fixed as soon as we move concrete object to a component as well
 		# which ensures proper initialization order for loading and initing
-		if self._instance is not None:
-			if facing_loc is None:
-				facing_loc = self._instance.getFacingLocation()
-			UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
+		if self._instance is None:
+			return
+
+		if facing_loc is None:
+			facing_loc = self._instance.getFacingLocation()
+		UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
+		if (Fife.getVersion() >= (0, 3, 6)):
+			if repeating:
+				self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
+			else:
+				self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+		else:
 			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
-		self._action = action
+		ActionChanged.broadcast(self, action)
 
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.
-		@param anim: animation id as string"""
+		@param action: animation id as string"""
 		return (action in ActionSetLoader.get_sets()[self._action_set_id])
 
 	def remove(self):

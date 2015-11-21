@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -57,12 +57,11 @@ class Inventory(Container):
 		return not self._inited or self._inventory is not inventory
 
 	def init(self, db, inventory, ordinal=None):
-		"""
+		"""This inits the logic of the inventory. @see __init__().
 		@param ordinal: {res: (min, max)} Display ordinal scale with these boundaries instead of numbers for a particular resource. Currently implemented via ImageFillStatusButton.
 		"""
 		# check if we must init everything anew
 		if self.init_needed(inventory):
-			# this inits the logic of the inventory. @see __init__().
 			self._inited = True
 			self.db = db
 			self._inventory = inventory
@@ -118,11 +117,14 @@ class Inventory(Container):
 		self._res_order += new_res
 
 		for resid in self._res_order:
+			amount = self._inventory[resid]
+			if amount == 0:
+				index += 1
+				continue
+
 			# check if this res should be displayed
 			if not self.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
-
-			amount = self._inventory[resid]
 
 			if self.ordinal:
 				lower, upper = self.ordinal.get(resid, (0, 100))
@@ -157,6 +159,8 @@ class Inventory(Container):
 			if not self._inventory.get_free_space_for(0):
 				for i in xrange(index, self.items_per_line):
 					button = Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
+					# set min & max_size to prevent pychan to expand this dynamic widget (icon)
+					button.min_size = button.max_size = ImageFillStatusButton.ICON_SIZE
 					current_hbox.addChild(button)
 
 		if self.display_legend:
@@ -164,10 +168,8 @@ class Inventory(Container):
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
 				sum_stored = self._inventory.get_sum_of_stored_resources()
-				#xgettext:python-format
 				self.legend.text = _('{stored}/{limit}').format(stored=sum_stored, limit=limit)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				#xgettext:python-format
 				self.legend.text = _('Limit: {amount}t per slot').format(amount=limit)
 
 	def apply_to_buttons(self, action, filt=None):

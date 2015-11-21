@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -73,6 +73,8 @@ class CollectingComponent(Component):
 				collector.remove()
 			else:
 				collector.decouple_from_home_building()
+				#TODO remove the remove call() #2123
+				collector.remove()
 		assert not [c for c in self.__collectors]
 		super(CollectingComponent, self).remove()
 		self.__collectors = None

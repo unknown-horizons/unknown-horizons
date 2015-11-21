@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -114,7 +114,6 @@ class WeaponStorageWidget(HBox):
 				weapons_added = True
 				icon_image = get_res_icon_path(weapon, 24)
 				weapon_name = self.instance.session.db.get_res_name(weapon)
-				#xgettext:python-format
 				# You usually do not need to change anything here when translating
 				helptext = _('{weapon}: {amount}').format(weapon=weapon_name, amount=amount)
 				icon = Icon(image=icon_image, helptext=helptext)

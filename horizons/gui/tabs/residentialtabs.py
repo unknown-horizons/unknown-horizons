@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -26,17 +26,17 @@ from horizons.constants import SETTLER
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon, get_happiness_icon_and_helptext
+from horizons.i18n import _lazy
 from horizons.component.namedcomponent import NamedComponent
 from horizons.messaging import SettlerUpdate
 
 
 class SettlerOverviewTab(OverviewTab):
-	def  __init__(self, instance):
-		super(SettlerOverviewTab, self).__init__(
-			widget = 'overview_settler.xml',
-			instance = instance
-		)
-		self.helptext = _("Settler overview")
+	widget = 'overview_settler.xml'
+	helptext = _lazy("Settler overview")
+
+	def init_widget(self):
+		super(SettlerOverviewTab, self).init_widget()
 		name = self.instance.settlement.get_component(NamedComponent).name
 		self.widget.findChild(name="headline").text = name
 		setup_tax_slider(self.widget.child_finder('tax_slider'),
@@ -67,7 +67,7 @@ class SettlerOverviewTab(OverviewTab):
 		SettlerUpdate.subscribe(self.on_settler_level_change, sender=self.instance)
 
 	def hide(self):
-		SettlerUpdate.unsubscribe(self.on_settler_level_change, sender=self.instance)
+		SettlerUpdate.discard(self.on_settler_level_change, sender=self.instance)
 		super(SettlerOverviewTab, self).hide()
 
 	def refresh(self):

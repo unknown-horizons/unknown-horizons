@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -67,7 +67,7 @@ def test_found_settlement(gui):
 	# select the storage
 	gui.cursor_click(55, 15, 'left')
 	gui.trigger('tab_base', '0')
-	assert gui.find('warehouse_and_storage_overview')
+	assert gui.find('tab_account')
 	collectors = storage.get_component(CollectingComponent).get_local_collectors()
 
 	while True:
@@ -76,7 +76,13 @@ def test_found_settlement(gui):
 		gui.run()
 
 	# remove the storage, trigger ticket 1441
-	gui.press_key(gui.Key.DELETE)
+	def func():
+		assert gui.find('popup_window') is not None
+		gui.trigger('popup_window', 'okButton')
+
+	with gui.handler(func):
+		gui.press_key(gui.Key.DELETE)
+
 	start = time.time()
 	# wait 0.5 seconds
 	while time.time() - start < 0.5:

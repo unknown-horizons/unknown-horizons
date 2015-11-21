@@ -1,8 +1,10 @@
 #!/bin/bash
 
+arg_help="Usage: $0 [ quiet ] < crontab | check | start | stop | restart | gitupdate >"
+
 self="$(readlink -f $0)"
-uh_path="/home/uh/server"
-uh_exec="server.py"
+uh_path="$(dirname $0)/.."
+uh_exec="run_server.py"
 uh_pidfile="server.pid"
 set -o noglob
 uh_args="-d -h * -l server.log -P ${uh_pidfile}"
@@ -139,5 +141,8 @@ case "$1" in
     stop
     do_git_update
     start
+    ;;
+  *)
+    echo $arg_help
     ;;
 esac

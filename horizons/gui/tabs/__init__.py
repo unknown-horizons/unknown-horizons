@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,16 +19,20 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import sys
+
 from inventorytab import InventoryTab
 from tradetab import TradeTab
-from overviewtab import OverviewTab, GroundUnitOverviewTab, FireStationOverviewTab
+from overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
-						TowerOverviewTab, WarehouseOverviewTab
+						TowerOverviewTab
 from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
-from productiontabs import ProductionOverviewTab, SmallProductionOverviewTab
+from productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
+						SmallProductionOverviewTab
 from residentialtabs import SettlerOverviewTab
 from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
-						TraderShipOverviewTab, EnemyShipOverviewTab
+						TradeShipOverviewTab, TraderShipOverviewTab, \
+                                                EnemyShipOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
@@ -42,3 +46,7 @@ from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab
 from selectmultitab import SelectMultiTab
+
+def resolve_tab(tabclass_name):
+	"""Converts a string like 'DiplomacyTab' to the respective class DiplomacyTab."""
+	return getattr(sys.modules[__name__], tabclass_name)

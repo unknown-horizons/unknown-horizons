@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -49,13 +49,13 @@ class Goal(object):
 
 	@property
 	def active(self):
-		"""Return true if and only if it is ok to execute this goal."""
+		"""Return True if and only if it is ok to execute this goal."""
 		return self.can_be_activated
 
 	@property
 	def can_be_activated(self):
-		"""Return true if and only if it is ok to update this goal."""
-		return self.personality.enabled and self.owner.settler_level >= self.personality.min_settler_level
+		"""Return True if and only if it is ok to update this goal."""
+		return self.personality.enabled and self.owner.settler_level >= self.personality.min_tier
 
 	def execute(self):
 		"""Do whatever is best to get closer to fulfilling the goal (usually involves building a building)."""

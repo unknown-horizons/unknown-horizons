@@ -1,0 +1,27 @@
+id: BUILDINGS.HERBARY
+name: _ Herbary
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text: _ Produces herbs. Needs a farm.
+tier: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      HERBS:
+        produces:
+        - [RES.HERBS, 1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.HERBS: 1}
+actionsets:
+  TIER.SETTLERS:
+    as_herbary0:

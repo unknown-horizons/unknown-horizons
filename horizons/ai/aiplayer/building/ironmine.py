@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -43,17 +43,17 @@ class AbstractIronMine(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.IRON_MINE] = cls
+		cls._available_buildings[BUILDINGS.MINE] = cls
 
 class IronMineEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = BasicBuilder.create(BUILDINGS.IRON_MINE, (x, y), orientation)
+		builder = BasicBuilder.create(BUILDINGS.MINE, (x, y), orientation)
 		return IronMineEvaluator(area_builder, builder, 0)
 
 	@property
 	def purpose(self):
-		return BUILDING_PURPOSE.IRON_MINE
+		return BUILDING_PURPOSE.MINE
 
 AbstractIronMine.register_buildings()
 

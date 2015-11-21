@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -41,6 +41,9 @@ class BuySellTab(TabInterface):
 	"""
 	log = logging.getLogger("gui")
 
+	widget = 'buysellmenu.xml'
+	icon_path = 'icons/tabwidget/warehouse/buysell'
+
 	buy_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
 	buy_hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	sell_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
@@ -48,17 +51,18 @@ class BuySellTab(TabInterface):
 
 	dummy_icon_path = "icons/resources/none_gray"
 
-	def __init__(self, instance, widget='buysellmenu.xml',
-	             icon_path='icons/tabwidget/warehouse/buysell'):
+	def __init__(self, instance):
 		"""Set up the GUI and game logic for the buyselltab."""
-		super(BuySellTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.inited = False # prevents execution of commands during init
 		# this makes sharing code easier
 		self.session = instance.session
 		self.trade_post = instance.settlement.get_component(TradePostComponent)
 		assert isinstance(self.trade_post, TradePostComponent)
+
+		super(BuySellTab, self).__init__()
+
+	def init_widget(self):
 		# don't access instance beyond this point, only components
-		self.init_values()
 
 		# add the buy/sell slot widgets
 		self.slot_widgets = {}
@@ -182,12 +186,12 @@ class BuySellTab(TabInterface):
 		else: # set slider to value entered by the player
 			slider.value = float(value)
 
-		if slot.action is "sell":
+		if slot.action == "sell":
 			if slot.res is not None: # slot has been in use before, delete old value
 				self.clear_slot(slot_id)
 			if resource_id != 0:
 				self.set_slot_info(slot.id, resource_id, True, value)
-		elif slot.action is "buy":
+		elif slot.action == "buy":
 			if slot.res is not None: # slot has been in use before, delete old value
 				self.clear_slot(slot_id)
 			if resource_id != 0:
@@ -227,7 +231,7 @@ class BuySellTab(TabInterface):
 			fillbar.position = (icon.width - fillbar.width - 1,
 			                    icon.height - int(icon.height*filled))
 			# reuse code from toggle to finish setup (must switch state before, it will reset it)
-			slot.action = "sell" if slot.action is "buy" else "buy"
+			slot.action = "sell" if slot.action == "buy" else "buy"
 			self.toggle_buysell(slot_id, keep_hint=keep_hint)
 		slot.adaptLayout()
 
@@ -235,11 +239,11 @@ class BuySellTab(TabInterface):
 		"""Switches modes of individual resource slots between 'buy' and 'sell'."""
 		slot_widget = self.slot_widgets[slot_id]
 		limit = int(slot_widget.findChild(name="slider").value)
-		if slot_widget.action is "buy":
+		if slot_widget.action == "buy":
 			# setting to sell
 			self._show_sell(slot_widget)
 			slot_widget.action = "sell"
-		elif slot_widget.action is "sell":
+		elif slot_widget.action == "sell":
 			# setting to buy
 			self._show_buy(slot_widget)
 			slot_widget.action = "buy"
@@ -314,11 +318,9 @@ class BuySellTab(TabInterface):
 		action = slot_widget.action
 		price = self.session.db.get_res_value(slot_widget.res)
 		if action == "buy":
-			#xgettext:python-format
 			hint = _("Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock.")
 			price *= TRADER.PRICE_MODIFIER_SELL
 		elif action == "sell":
-			#xgettext:python-format
 			hint = _("Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available.")
 			price *= TRADER.PRICE_MODIFIER_BUY
 

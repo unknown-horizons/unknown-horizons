@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -154,7 +154,7 @@ class FarmAnimalCollector(AnimalCollector):
 		"""Returns animals from buildings in range"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		# don't consider res when searching for buildings, since only their animals are
-		# the acctual providers
+		# the actual providers
 		buildings = self.home_building.island.get_providers_in_range(reach)
 		animal_lists = (building.animals for building in buildings if hasattr(building, 'animals'))
 		# use overloaded + for lists here in sum

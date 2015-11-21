@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -256,8 +256,9 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
 
 
 # cachedproperty taken from http://code.activestate.com/recipes/576563-cached-property/
-# Licenced under MIT
-# A cached property is a read-only property that is calculated on demand and automatically cached. If the value has already been calculated, the cached value is returned.
+# Licensed under MIT
+# A cached property is a read-only property that is calculated on demand and automatically cached.
+# If the value has already been calculated, the cached value is returned.
 
 def cachedproperty(f):
 	"""returns a cached property that is calculated by function f"""

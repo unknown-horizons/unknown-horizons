@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -114,7 +114,7 @@ class Buildable(object):
 		"""Check if a building is buildable here.
 		All tiles, that the building occupies are checked.
 		@param point: Point instance, coords
-		@param rotation: prefered rotation of building
+		@param rotation: preferred rotation of building
 		@param check_settlement: whether to check for a settlement (for settlementless buildings)
 		@param ship: ship instance if building from ship
 		@return instance of _BuildPosition"""
@@ -214,7 +214,7 @@ class Buildable(object):
 			# return first match
 			return result_generator.next()
 		except StopIteration:
-			# found none, fail with specified paramters
+			# No match found, fail with specified parameters.
 			return check_pos(point)
 
 
@@ -247,7 +247,7 @@ class Buildable(object):
 	def _check_rotation(cls, session, position, rotation):
 		"""Returns a possible rotation for this building.
 		@param position: Rect or Point instance, position and size
-		@param rotation: The prefered rotation
+		@param rotation: The preferred rotation
 		@return: integer, an available rotation in degrees"""
 		return rotation
 
@@ -501,8 +501,8 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 		posis = position.get_coordinates()
 		for tile in posis:
 			for rad in Circle(Point(*tile), 3):
-				if island.get_tile(rad) is None:
-					# Tile not on island -> deep water
+				if rad in session.world.water_body and session.world.water_body[rad] == session.world.sea_number:
+					# Found legit see tile
 					return island
 		raise _NotBuildableError(BuildableErrorTypes.NO_OCEAN_NEARBY)
 
@@ -532,7 +532,7 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 class BuildableSingleOnDeposit(BuildableSingle):
 	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
 	For now, mines can only be built on a single type of deposit.
-	This is specified in game.sqlite in the table "mine", and saved in cls.buildable_on_deposit in
+	This is specified in object files, and saved in cls.buildable_on_deposit in
 	the buildingclass.
 	"""
 	irregular_conditions = True

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -24,13 +24,14 @@ from fife import fife
 import horizons.globals
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand, TogglePauseCommand
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.constants import BUILDINGS, GAME_SPEED, VERSION, LAYERS, VIEW
+from horizons.constants import BUILDINGS, GAME_SPEED, HOTKEYS, VERSION, LAYERS, VIEW
 from horizons.entities import Entities
 from horizons.gui import mousetools
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog, ResearchDialog
 from horizons.gui.modules.ingame import ChatDialog, ChangeNameDialog, CityInfo
-from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab, MainSquareOverviewTab
+from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
+from horizons.gui.tabs import resolve_tab
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.logbook import LogBook
@@ -42,10 +43,11 @@ from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
-                                NewSettlement, PlayerLevelUpgrade)
+                                NewSettlement, PlayerLevelUpgrade, ZoomChanged)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
 from horizons.world.managers.statusiconmanager import StatusIconManager
 
@@ -77,8 +79,8 @@ class IngameGui(LivingObject):
 
 		# Windows
 		self.windows = WindowManager()
-		self.show_popup = self.windows.show_popup
-		self.show_error_popup = self.windows.show_error_popup
+		self.open_popup = self.windows.open_popup
+		self.open_error_popup = self.windows.open_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
 		self.players_overview = PlayersOverview(self.session)
@@ -88,8 +90,8 @@ class IngameGui(LivingObject):
 		self.chat_dialog = ChatDialog(self.windows, self.session)
 		self.change_name_dialog = ChangeNameDialog(self.windows, self.session)
 		self.pausemenu = PauseMenu(self.session, self, self.windows, in_editor_mode=False)
-		self.help_dialog = HelpDialog(self.windows, session=self.session)
 		self.research_dialog = ResearchDialog(self.windows, session=self.session)
+		self.help_dialog = HelpDialog(self.windows)
 
 		# Icon manager
 		self.status_icon_manager = StatusIconManager(
@@ -134,6 +136,23 @@ class IngameGui(LivingObject):
 		})
 		self.mainhud.show()
 
+		hotkey_replacements = {
+			'rotateRight': 'ROTATE_RIGHT',
+			'rotateLeft': 'ROTATE_LEFT',
+			'speedUp': 'SPEED_UP',
+			'speedDown': 'SPEED_DOWN',
+			'destroy_tool': 'DESTROY_TOOL',
+			'build': 'BUILD_TOOL',
+			'gameMenuButton': 'ESCAPE',
+			'logbook': 'LOGBOOK',
+		}
+		for (widgetname, action) in hotkey_replacements.iteritems():
+			widget = self.mainhud.findChild(name=widgetname)
+			keys = horizons.globals.fife.get_keys_for_action(action)
+			# No `.upper()` here: "Pause" looks better than "PAUSE".
+			keyname = HOTKEYS.DISPLAY_KEY.get(keys[0], keys[0].capitalize())
+			widget.helptext = widget.helptext.format(key=keyname)
+
 		self.resource_overview = ResourceOverviewBar(self.session)
 
 		# Register for messages
@@ -142,7 +161,7 @@ class IngameGui(LivingObject):
 		NewSettlement.subscribe(self._on_new_settlement)
 		PlayerLevelUpgrade.subscribe(self._on_player_level_upgrade)
 		MineEmpty.subscribe(self._on_mine_empty)
-		self.session.view.add_change_listener(self._update_zoom)
+		ZoomChanged.subscribe(self._update_zoom)
 
 		self._display_speed(self.session.timer.ticks_per_second)
 
@@ -153,7 +172,7 @@ class IngameGui(LivingObject):
 		NewSettlement.unsubscribe(self._on_new_settlement)
 		PlayerLevelUpgrade.unsubscribe(self._on_player_level_upgrade)
 		MineEmpty.unsubscribe(self._on_mine_empty)
-		self.session.view.remove_change_listener(self._update_zoom)
+		ZoomChanged.unsubscribe(self._update_zoom)
 
 		self.mainhud.mapEvents({
 			'zoomIn' : None,
@@ -196,7 +215,7 @@ class IngameGui(LivingObject):
 
 	def show_select_savegame(self, mode):
 		window = SelectSavegameDialog(mode, self.windows)
-		return self.windows.show(window)
+		return self.windows.open(window)
 
 	def toggle_pause(self):
 		self.windows.toggle(self.pausemenu)
@@ -219,7 +238,7 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.windows.show_popup(_("No diplomacy possible"),
+			self.windows.open_popup(_("No diplomacy possible"),
 			                        _("Cannot do diplomacy as there are no other players."))
 			return
 
@@ -306,6 +325,25 @@ class IngameGui(LivingObject):
 		self.logbook.save(db)
 		self.resource_overview.save(db)
 		LastActivePlayerSettlementManager().save(db)
+		self.save_selection(db)
+
+	def save_selection(self, db):
+		# Store instances that are selected right now.
+		for instance in self.session.selected_instances:
+			db("INSERT INTO selected (`group`, id) VALUES (NULL, ?)", instance.worldid)
+
+		# If a single instance is selected, also store the currently displayed tab.
+		# (Else, upon restoring, we display a multi-selection tab.)
+		tabname = None
+		if len(self.session.selected_instances) == 1:
+			tabclass = self.get_cur_menu().current_tab
+			tabname = tabclass.__class__.__name__
+		db("INSERT INTO metadata (name, value) VALUES (?, ?)", 'selected_tab', tabname)
+
+		# Store user defined unit selection groups (Ctrl+number)
+		for (number, group) in enumerate(self.session.selection_groups):
+			for instance in group:
+				db("INSERT INTO selected (`group`, id) VALUES (?, ?)", number, instance.worldid)
 
 	def load(self, db):
 		self.message_widget.load(db)
@@ -325,9 +363,11 @@ class IngameGui(LivingObject):
 		# Open menus later; they may need unit data not yet inited
 		self.cursor.apply_select()
 
+		self.load_selection(db)
+
 		if not self.session.is_game_loaded():
 			# Fire a message for new world creation
-			self.session.ingame_gui.message_widget.add('NEW_WORLD')
+			self.message_widget.add('NEW_WORLD')
 
 		# Show message when the relationship between players changed
 		def notify_change(caller, old_state, new_state, a, b):
@@ -342,9 +382,32 @@ class IngameGui(LivingObject):
 
 		self.session.world.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
+	def load_selection(self, db):
+		# Re-select old selected instance
+		for (instance_id, ) in db("SELECT id FROM selected WHERE `group` IS NULL"):
+			obj = WorldObject.get_object_by_id(instance_id)
+			self.session.selected_instances.add(obj)
+			obj.get_component(SelectableComponent).select()
+
+		# Re-show old tab (if there was one) or multiselection
+		if len(self.session.selected_instances) == 1:
+			tabname = db("SELECT value FROM metadata WHERE name = ?",
+			             'selected_tab')[0][0]
+			# This can still be None due to old savegames not storing the information
+			tabclass = None if tabname is None else resolve_tab(tabname)
+			obj.get_component(SelectableComponent).show_menu(jump_to_tabclass=tabclass)
+		elif self.session.selected_instances:
+			self.show_multi_select_tab(self.session.selected_instances)
+
+		# Load user defined unit selection groups (Ctrl+number)
+		for (num, group) in enumerate(self.session.selection_groups):
+			for (instance_id, ) in db("SELECT id FROM selected WHERE `group` = ?", num):
+				obj = WorldObject.get_object_by_id(instance_id)
+				group.add(obj)
+
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of an object."""
-		self.windows.show(self.change_name_dialog, instance=instance)
+		self.windows.open(self.change_name_dialog, instance=instance)
 
 	def on_escape(self):
 		if self.windows.visible:
@@ -375,7 +438,7 @@ class IngameGui(LivingObject):
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = unicode("%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND))
+				text = u"%1gx" % (tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):
@@ -401,7 +464,7 @@ class IngameGui(LivingObject):
 		keyval = evt.getKey().getValue()
 
 		if action == _Actions.ESCAPE:
-			return self.on_escape()
+			return self.on_escape()		
 		elif keyval == fife.Key.ENTER:
 			return self.on_return()
 
@@ -413,13 +476,21 @@ class IngameGui(LivingObject):
 		elif action == _Actions.DESTROY_TOOL:
 			self.toggle_destroy_tool()
 		elif action == _Actions.REMOVE_SELECTED:
-			self.session.remove_selected()
+			message = _(u"Are you sure you want to delete these objects?")
+			if self.windows.open_popup(_(u"Delete"), message, show_cancel_button=True):
+				self.session.remove_selected()
+			else:
+				self.deselect_all()
 		elif action == _Actions.ROAD_TOOL:
 			self.toggle_road_tool()
 		elif action == _Actions.SPEED_UP:
 			SpeedUpCommand().execute(self.session)
 		elif action == _Actions.SPEED_DOWN:
 			SpeedDownCommand().execute(self.session)
+		elif action == _Actions.ZOOM_IN:
+			self.session.view.zoom_in()
+		elif action == _Actions.ZOOM_OUT:
+			self.session.view.zoom_out()
 		elif action == _Actions.PAUSE:
 			TogglePauseCommand().execute(self.session)
 		elif action == _Actions.PLAYERS_OVERVIEW:
@@ -448,51 +519,26 @@ class IngameGui(LivingObject):
 				self.session.view.rotate_left()
 				self.minimap.rotate_left()
 		elif action == _Actions.CHAT:
-			self.windows.show(self.chat_dialog)
+			self.windows.open(self.chat_dialog)
 		elif action == _Actions.TRANSLUCENCY:
 			self.session.world.toggle_translucency()
 		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
 			self.session.world.toggle_owner_highlight()
-		elif keyval in (fife.Key.NUM_0, fife.Key.NUM_1, fife.Key.NUM_2, fife.Key.NUM_3, fife.Key.NUM_4,
-		                fife.Key.NUM_5, fife.Key.NUM_6, fife.Key.NUM_7, fife.Key.NUM_8, fife.Key.NUM_9):
+		elif fife.Key.NUM_0 <= keyval <= fife.Key.NUM_9:
 			num = int(keyval - fife.Key.NUM_0)
-			if evt.isControlPressed():
-				# create new group (only consider units owned by the player)
-				self.session.selection_groups[num] = \
-				    set(filter(lambda unit : unit.owner.is_local_player,
-				               self.session.selected_instances))
-				# drop units of the new group from all other groups
-				for group in self.session.selection_groups:
-					if group is not self.session.selection_groups[num]:
-						group -= self.session.selection_groups[num]
-			else:
-				# deselect
-				# we need to make sure to have a cursor capable of selection (for apply_select())
-				# this handles deselection implicitly in the destructor
-				self.set_cursor('selection')
-
-				# apply new selection
-				for instance in self.session.selection_groups[num]:
-					instance.get_component(SelectableComponent).select(reset_cam=True)
-				# assign copy since it will be randomly changed, the unit should only be changed on ctrl-events
-				self.session.selected_instances = self.session.selection_groups[num].copy()
-				# show menu depending on the entities selected
-				if self.session.selected_instances:
-					self.cursor.apply_select()
-				else:
-					# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
-					self.show_menu(None)
+			self.handle_selection_group(num, evt.isControlPressed())
 		elif action == _Actions.QUICKSAVE:
-			self.session.quicksave() # load is only handled by the MainListener
+			self.session.quicksave()
+		# Quickload is only handled by the MainListener.
 		elif action == _Actions.PIPETTE:
-			# copy mode: pipette tool
+			# Mode that allows copying buildings.
 			self.toggle_cursor('pipette')
 		elif action == _Actions.HEALTH_BAR:
-			# shows health bar of every instance with an health component
+			# Show health bar of every instance with a health component.
 			self.session.world.toggle_health_for_all_health_instances()
 		elif action == _Actions.SHOW_SELECTED:
 			if self.session.selected_instances:
-				# scroll to first one, we can never guarantee to display all selected units
+				# Scroll to first one, we can never guarantee to display all selected units.
 				instance = iter(self.session.selected_instances).next()
 				self.session.view.center( * instance.position.center.to_tuple())
 				for instance in self.session.selected_instances:
@@ -507,13 +553,49 @@ class IngameGui(LivingObject):
 
 		return True
 
-	def toggle_cursor(self, which, *args, **kwargs):
-		"""Alternate between the cursor which and default.
-		args and kwargs are used to construct which."""
-		if self.current_cursor == which:
+	def handle_selection_group(self, num, ctrl_pressed):
+		"""Select existing or assign new unit selection group.
+
+		Ctrl+number creates or overwrites the group of number `num`
+		with the currently selected units.
+		Pressing the associated key selects a group and centers the
+		camera around these units.
+		"""
+		if ctrl_pressed:
+			# Only consider units owned by the player.
+			units = set(u for u in self.session.selected_instances
+			            if u.owner.is_local_player)
+			self.session.selection_groups[num] = units
+			# Drop units of the new group from all other groups.
+			for group in self.session.selection_groups:
+				current_group = self.session.selection_groups[num]
+				if group != current_group:
+					group -= current_group
+		else:
+			# We need to make sure to have a cursor capable of selection
+			# for apply_select() to work.
+			# This handles deselection implicitly in the destructor.
+			self.set_cursor('selection')
+			# Apply new selection.
+			for instance in self.session.selection_groups[num]:
+				instance.get_component(SelectableComponent).select(reset_cam=True)
+			# Assign copy since it will be randomly changed in selection code.
+			# The unit group itself should only be changed on Ctrl events.
+			self.session.selected_instances = self.session.selection_groups[num].copy()
+			# Show correct tabs depending on what's selected.
+			if self.session.selected_instances:
+				self.cursor.apply_select()
+			else:
+				# Nothing is selected here. Hide the menu since apply_select
+				# doesn't handle that case.
+				self.show_menu(None)
+
+	def toggle_cursor(self, which):
+		"""Alternate between the cursor *which* and the default cursor."""
+		if which == self.current_cursor:
 			self.set_cursor()
 		else:
-			self.set_cursor(which, *args, **kwargs)
+			self.set_cursor(which)
 
 	def set_cursor(self, which='default', *args, **kwargs):
 		"""Sets the mousetool (i.e. cursor).
@@ -535,23 +617,22 @@ class IngameGui(LivingObject):
 		"""Initiate the destroy tool"""
 		self.toggle_cursor('tearing')
 
-	def _update_zoom(self):
+	def _update_zoom(self, message):
 		"""Enable/disable zoom buttons"""
-		zoom = self.session.view.get_zoom()
 		in_icon = self.mainhud.findChild(name='zoomIn')
 		out_icon = self.mainhud.findChild(name='zoomOut')
-		if zoom == VIEW.ZOOM_MIN:
+		if message.zoom == VIEW.ZOOM_MIN:
 			out_icon.set_inactive()
 		else:
 			out_icon.set_active()
-		if zoom == VIEW.ZOOM_MAX:
+		if message.zoom == VIEW.ZOOM_MAX:
 			in_icon.set_inactive()
 		else:
 			in_icon.set_active()
 
 	def _on_new_disaster(self, message):
 		"""Called when a building is 'infected' with a disaster."""
-		if message.building.owner.is_local_player:
+		if message.building.owner.is_local_player and len(message.disaster._affected_buildings) == 1:
 			pos = message.building.position.center
 			self.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
 
@@ -580,12 +661,6 @@ class IngameGui(LivingObject):
 		menu = self.get_cur_menu()
 		if hasattr(menu, "name") and menu.name == "build_menu_tab_widget":
 			self.show_build_menu(update=True)
-
-		# TODO: Use a better measure then first tab
-		# Quite fragile, makes sure the tablist in the mainsquare menu is updated
-		if hasattr(menu, '_tabs') and isinstance(menu._tabs[0], MainSquareOverviewTab):
-			instance = list(self.session.selected_instances)[0]
-			instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
 
 	def _on_mine_empty(self, message):
 		self.message_widget.add(point=message.mine.position.center, string_id='MINE_EMPTY')

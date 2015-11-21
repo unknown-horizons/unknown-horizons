@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -89,6 +89,17 @@ class FeederTobaccoProductsGoal(FeederChainGoal):
 	def can_be_activated(self):
 		return super(FeederTobaccoProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
+class FeederMedicalProductsGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederMedicalProductsGoal, self).__init__(settlement_manager, RES.MEDICAL_HERBS, 'medical herbs producer')
+
+	def get_personality_name(self):
+		return 'FeederMedicalProductsGoal'
+
+	@property
+	def can_be_activated(self):
+		return super(FeederMedicalProductsGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+
 class FeederSaltGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super(FeederSaltGoal, self).__init__(settlement_manager, RES.SALT, 'salt producer')
@@ -101,4 +112,5 @@ decorators.bind_all(FeederFoodGoal)
 decorators.bind_all(FeederTextileGoal)
 decorators.bind_all(FeederLiquorGoal)
 decorators.bind_all(FeederTobaccoProductsGoal)
+decorators.bind_all(FeederMedicalProductsGoal)
 decorators.bind_all(FeederSaltGoal)

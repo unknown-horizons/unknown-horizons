@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -74,7 +74,7 @@ class AbstractPather(object):
 	def _check_for_obstacles(self, point):
 		"""Check if the path is unexpectedly blocked by e.g. a unit
 		@param point: tuple: (x, y)
-		@return: bool, true if path is blocked"""
+		@return: bool, True if path is blocked"""
 		return (point in self._get_blocked_coords())
 
 	def _get_position(self):
@@ -170,8 +170,8 @@ class AbstractPather(object):
 		return Point(*self.path[self.cur])
 
 	def get_move_source(self):
-		"""Returns the source Point of the current movment.
-		@return: Point or Non if no path has been calculated"""
+		"""Returns the source Point of the current movement.
+		@return: Point or None if no path has been calculated"""
 		return None if not self.path else Point(*self.path[0])
 
 	def get_move_target(self):

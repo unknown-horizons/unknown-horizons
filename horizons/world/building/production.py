@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -31,8 +31,10 @@ from horizons.constants import BUILDINGS, PRODUCTION
 from horizons.world.production.producer import Producer
 from horizons.component.storagecomponent import StorageComponent
 
+
 class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
+
 
 class PastryShop(ProductionBuilding):
 	def get_providers(self):
@@ -40,6 +42,7 @@ class PastryShop(ProductionBuilding):
 		resources = self.get_consumed_resources(include_inactive=True)
 		providers = self.island.get_providers_in_range(reach, reslist=resources)
 		return [provider for provider in providers]
+
 
 class Farm(ProductionBuilding):
 	def get_providers(self):
@@ -52,6 +55,7 @@ class Farm(ProductionBuilding):
 class CoastalProducer(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
 	"""E.g. salt ponds"""
 	pass
+
 
 class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 	"""
@@ -67,6 +71,7 @@ class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 			state_history = production.get_state_history_times(True)
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / float(len(productions))
+
 
 class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):
@@ -88,7 +93,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 	@classmethod
 	def get_loading_area(cls, building_id, rotation, pos):
-		if building_id == BUILDINGS.MOUNTAIN or building_id == BUILDINGS.IRON_MINE:
+		if building_id == BUILDINGS.MOUNTAIN or building_id == BUILDINGS.MINE:
 			if rotation == 45:
 				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 1, 3)
 			elif rotation == 135:
@@ -136,4 +141,3 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 		super(Mine, self).load(db, worldid)
 		deposit_class = db("SELECT deposit_class FROM mine WHERE rowid = ?", worldid)[0][0]
 		self.__init(deposit_class)
-

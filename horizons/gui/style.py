@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -61,7 +61,7 @@ STYLES = {
 			'margins': (10, 5),
 		},
 		#TODO combine the following two after the tuple notation bug is fixed:
-		# http://fife.trac.cloudforge.com/engine/ticket/656
+		# http://github.com/fifengine/fifengine/issues/656
 		'CheckBox': {
 			'background_color': WHITE[96],
 		},

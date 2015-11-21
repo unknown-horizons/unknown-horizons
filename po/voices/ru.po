@@ -1,0 +1,128 @@
+# Russian translations for Unknown Horizons Voices package.
+# Copyright (C) 2013 The Unknown Horizons Team
+# This file is distributed under the same license as the Unknown Horizons Voices package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
+"Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
+"POT-Creation-Date: 2013-08-18 01:00+0200\n"
+"PO-Revision-Date: 2014-05-25 21:32+0200\n"
+"Last-Translator: Вячеслав <webslavic@yahoo.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/uh/voices/ru/>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 1.9\n"
+
+#. Founding settlement - Player found settlement"
+msgid "Strive so that this settlement shall evolve stately."
+msgstr "Постарайтесь, чтобы Ваше поселение неспешно развивалось."
+
+#. Founding settlement - Player found settlement"
+msgid "Your inhabitants will certainly feel comfortable on this island."
+msgstr "Вашим жителям наверняка будет уютно на этом острове."
+
+#. Founding settlement - Player found settlement"
+msgid "Call this patch of ground yours from now on."
+msgstr "Отныне считайте этот клочок земли Вашим."
+
+#. Founding settlement - Player found settlement"
+msgid "This region now belongs to our colors."
+msgstr "Теперь эта область под нашим цветом."
+
+#. Founding settlement - Player found settlement"
+msgid "This piece of ground is now ours."
+msgstr "Этот клочок земли теперь наш."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "Another player has settled on an island."
+msgstr "Другой игрок поселился на острове."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "A player develops a new settlement."
+msgstr "Другой игрок развивает поселение."
+
+#. Founding settlement - Somebody not player found settlement
+msgid "One of your fellow players founded a settlement."
+msgstr "Один из Ваших союзников основал поселение."
+
+#. Founding settlement - Rival found settlement
+msgid "A rival of ours seems to have founded a settlement."
+msgstr "Наш соперник, кажется, основал поселение."
+
+#. Founding settlement - Rival found settlement
+msgid "We've been informed that one of our rivals snared new land."
+msgstr "Нам сообщили, что один из противников обзавёлся новой землёй."
+
+#. Founding settlement - Rival found settlement
+msgid "One of our opponents is said to have expanded."
+msgstr "Говорят, один из наших соперников расширяется."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally settles on another island."
+msgstr "Наш союзник заселил другой остров."
+
+#. Founding settlement - Ally found settlement
+msgid "One of our allies cultivates an islnd."
+msgstr "Один из наших союзников обрабатывает остров."
+
+#. Founding settlement - Ally found settlement
+msgid "Our ally passes news about successfully founding a settlement."
+msgstr "Наш союзник передает известие о успешном основании поселения."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "This island no longer is all ours."
+msgstr "Этот остров теперь не только в нашем владении."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "Scouts found out that guests settled on one of our islands."
+msgstr "Разведчики обнаружили, что гости поселились на одном из наших островов."
+
+#. Founding settlement - Somebody found settlement on your island
+msgid "We got new neighbors on this island!"
+msgstr "У нас на острове появились новые соседи!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Scouts report that uninvited guests beleaguer our island!"
+msgstr "Разведчики сообщают, что незваные гости осаждают наш остров!"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "Should we really accept our rival as new neighbor?"
+msgstr "Мы действительно должны признать противника нашим новым соседом?"
+
+#. Founding settlement - Rival found settlement on your island
+msgid "One of our enemies settles on our ground!"
+msgstr "Один из наших врагов поселился на нашей земле!"
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "One of our allies seems in desperate need of your ground."
+msgstr "Один из наших союзников, кажется, отчаянно нуждается в нашей земле."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "We share this ground with our ally for now."
+msgstr "Теперь мы делим эту землю с нашим союзником."
+
+#. Founding settlement -  Ally found settlement on your island
+msgid "Our ally settles on one of our islands."
+msgstr "Наш союзник обживает один из наших островов."
+
+#. Resources - Construction material missing
+msgid "You need more resources to build this."
+msgstr "Чтобы это построить, Вам нужно больше ресурсов."
+
+#. Resources - Construction material missing
+msgid "This construction project needs more resources."
+msgstr "Для этого строительства нужно больше ресурсов."
+
+#. Resources - Construction material missing
+msgid "Construction is impossible without sufficient material."
+msgstr "Строительство невозможно без необходимых материалов."
+
+#. Resources - Construction material missing
+msgid "The resources in your inventory are not sufficient to build this."
+msgstr "Ресурсов на вашем складе недостаточно, чтобы построить это."
