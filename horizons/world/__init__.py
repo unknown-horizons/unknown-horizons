@@ -53,7 +53,6 @@ from horizons.world import worldutils
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.messaging import LoadingProgress
 from horizons.world.climate.climatezone import ClimateZone
-from horizons.world.units.bullet import Bullet
 
 
 class World(BuildingOwner, WorldObject):
