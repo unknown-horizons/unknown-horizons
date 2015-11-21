@@ -209,10 +209,10 @@ def setup_trigger_signals_on_action():
 			@functools.wraps(func)
 			def wrapper(self, *args, **kwargs):
 				func(self, *args, **kwargs)
-				if cls._getName(self) != "cancelButton":
-					self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
-				else:
+				if cls._getName(self) == "cancelButton":
 					self.capture(Callback(GuiCancelAction.broadcast, self), "action", "action_listener")
+				else:
+					self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
 			return wrapper
 
 		cls.__init__ = add_action_triggers_a_signal( cls.__init__ )
