@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -62,10 +62,12 @@ class TradeRoute(ChangeListener):
 		})
 
 	def set_wait_at_load(self, flag):
-		self.wait_at_load = flag # as method for commands
+		"""Method for commands, and some type checking. See #2287 for details."""
+		self.wait_at_load = bool(flag)
 
 	def set_wait_at_unload(self, flag):
-		self.wait_at_unload = flag # as methods for commands
+		"""Method for commands, and some type checking. See #2287 for details."""
+		self.wait_at_unload = bool(flag)
 
 	def move_waypoint(self, position, direction):
 		# Error sounds for invalid move actions are triggered in
@@ -278,9 +280,11 @@ class TradeRoute(ChangeListener):
 		return len(db("SELECT * FROM ship_route WHERE ship_id = ?", worldid)) != 0
 
 	def load(self, db):
-		enabled, self.current_waypoint, self.wait_at_load, self.wait_at_unload = \
+		enabled, self.current_waypoint, wait_at_load, wait_at_unload = \
 			db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload "
 			   "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
+		self.set_wait_at_load(wait_at_load)
+		self.set_wait_at_unload(wait_at_unload)
 
 		query = "SELECT warehouse_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
 		offices_id = db(query, self.ship.worldid)

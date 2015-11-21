@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -46,10 +46,10 @@ class AmbientSoundComponent(Component):
 	def __init(self):
 		self.__emitter = None # only create it when really needed
 
-	def __create_emitter(self):
+	def __create_emitter(self, gain):
 		if horizons.globals.fife.get_fife_setting("PlaySounds"):
 			self.__emitter = horizons.globals.fife.sound.soundmanager.createEmitter()
-			self.__emitter.setGain(horizons.globals.fife.get_uh_setting("VolumeEffects")*10)
+			self.__emitter.setGain(horizons.globals.fife.get_uh_setting("VolumeEffects") * gain)
 			horizons.globals.fife.sound.emitter['ambient'].append(self.__emitter)
 
 	def _init_playing(self):
@@ -77,16 +77,17 @@ class AmbientSoundComponent(Component):
 		self.stop_sound()
 		self.__emitter = None
 
-	def play_ambient(self, soundfile, loop_interval=None, position=None):
+	def play_ambient(self, soundfile, loop_interval=None, position=None, gain=10):
 		"""Starts playing an ambient sound. On looping, it will also play right now.
 		Default: play sound once
 		@param soundfile: path to audio file
 		@param loop_interval: delay between two plays, None means no looping, 0 is no pause between looping
 		@param position: Point
+		@param gain: float, volume of the sound, default is 10
 		"""
 		if horizons.globals.fife.get_fife_setting("PlaySounds"):
 			if self.__emitter is None:
-				self.__create_emitter()
+				self.__create_emitter(gain)
 
 			if position is not None:
 				self.__emitter.setRolloff(1.9)
@@ -113,15 +114,16 @@ class AmbientSoundComponent(Component):
 		ExtScheduler().rem_all_classinst_calls(self)
 
 	@classmethod
-	def play_special(cls, sound, position=None):
+	def play_special(cls, sound, position=None, gain=10):
 		"""Plays a special sound listed in the db table sounds_special
 		from anywhere in the code and without an instance of AmbientSound.
 		@param sound: string, key in table sounds_special
 		@param position: optional, source of sound on map
+		@param gain: float, volume of the sound, default is 10
 		"""
 		if horizons.globals.fife.get_fife_setting("PlaySounds"):
 			a = AmbientSoundComponent()
 			#TODO remove str() -- http://github.com/fifengine/fifengine/issues/701
 			soundfile = horizons.globals.db.get_sound_file(str(sound))
-			a.play_ambient(soundfile, position=position)
+			a.play_ambient(soundfile, position=position, gain=gain)
 			horizons.globals.fife.sound.emitter['ambient'].remove(a.__emitter)

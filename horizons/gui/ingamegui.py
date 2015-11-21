@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -658,12 +658,6 @@ class IngameGui(LivingObject):
 		menu = self.get_cur_menu()
 		if hasattr(menu, "name") and menu.name == "build_menu_tab_widget":
 			self.show_build_menu(update=True)
-
-		# TODO: Use a better measure then first tab
-		# Quite fragile, makes sure the tablist in the mainsquare menu is updated
-		if hasattr(menu, '_tabs') and isinstance(menu._tabs[0], MainSquareOverviewTab):
-			instance = list(self.session.selected_instances)[0]
-			instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
 
 	def _on_mine_empty(self, message):
 		self.message_widget.add(point=message.mine.position.center, string_id='MINE_EMPTY')

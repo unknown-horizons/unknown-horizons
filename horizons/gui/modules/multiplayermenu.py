@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -39,6 +39,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.util.color import Color
 from horizons.util.python.callback import Callback
 from horizons.world import load_raw_world
+from horizons.extscheduler import ExtScheduler
 
 
 class MultiplayerMenu(Window):
@@ -65,6 +66,7 @@ class MultiplayerMenu(Window):
 		# Save the player-data on hide so that other menus gets updated data
 		self._playerdata.save_settings()
 		self._gui.hide()
+		ExtScheduler().rem_all_classinst_calls(self)
 
 	def show(self):		
 		if not self._check_connection():
@@ -87,6 +89,8 @@ class MultiplayerMenu(Window):
 
 		# TODO: Remove once loading a game is implemented again
 		self._gui.findChild(name='load').parent.hide()
+
+		ExtScheduler().add_new_object(self._refresh, self, run_in=5, loops=-1)
 
 	def close(self):
 		# if the window is not open (due to connection errors), just do nothing

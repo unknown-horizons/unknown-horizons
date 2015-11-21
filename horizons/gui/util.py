@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,6 +21,11 @@
 
 import logging
 import os
+# Find the best implementation available on this platform
+try:
+	from cStringIO import StringIO
+except:
+	from StringIO import StringIO
 
 from fife.extensions.pychan import loadXML
 from fife.extensions.pychan.widgets import Container, HBox, Icon
@@ -42,7 +47,7 @@ def get_gui_files_map():
 				continue
 			if f in xml_files:
 				raise Exception('Another file by the name {name} already exists. '
-				                'Please use unique names!'.format(name=f))
+								'Please use unique names!'.format(name=f))
 			xml_files[f] = os.path.join(root, f)
 	return xml_files
 
@@ -62,12 +67,21 @@ def get_happiness_icon_and_helptext(value, session):
 
 	return happiness_icon_path, happiness_helptext
 
+@decorators.cachedfunction
+def get_widget_xml(filename):
+	"""
+	This function reads the given widget file's content and returns the XML. 
+	It is cached to avoid useless IO.
+	"""
+	with open(get_gui_files_map()[filename]) as open_file:
+		return open_file.read()
+
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications
 	"""
 	# load widget
 	try:
-		widget = loadXML(get_gui_files_map()[filename])
+		widget = loadXML(StringIO(get_widget_xml(filename)))
 	except (IOError, ValueError) as error:
 		log = logging.getLogger('gui')
 		log.error(u'PLEASE REPORT: invalid path %s in translation!\n> %s', filename, error)
@@ -129,7 +143,7 @@ def create_resource_icon(res_id, db):
 
 
 def create_resource_selection_dialog(on_click, inventory, db,
-		widget='select_trade_resource.xml', res_filter=None, amount_per_line=None):
+                                     widget='select_trade_resource.xml', res_filter=None, amount_per_line=None):
 	"""Returns a container containing resource icons.
 	@param on_click: called with resource id as parameter on clicks
 	@param inventory: to determine fill status of resource slots
@@ -178,8 +192,8 @@ def create_resource_selection_dialog(on_click, inventory, db,
 			amount = inventory[res_id]
 			filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
 			button = ImageFillStatusButton.init_for_res(db, res_id,
-			                                            amount=amount, filled=filled, uncached=True,
-			                                            use_inactive_icon=False, showprice=True)
+						                                amount=amount, filled=filled, uncached=True,
+						                                use_inactive_icon=False, showprice=True)
 			button.button.capture(cb)
 			button.button.name = "resource_%d" % res_id
 

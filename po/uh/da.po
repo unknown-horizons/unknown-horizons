@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-12-03 21:11+0200\n"
-"Last-Translator: Jacob Hellwing <jacob.kage@hotmail.com>\n"
-"Language-Team: Danish <http://hosted.weblate.org/projects/uh/uh/da/>\n"
+"PO-Revision-Date: 2014-11-08 11:51+0200\n"
+"Last-Translator: Jens <happyjens@gmail.com>\n"
+"Language-Team: Danish <https://hosted.weblate.org/projects/uh/uh/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.0\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -715,7 +715,7 @@ msgstr "Penge"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Spillerens nuværende skatkammer + forventet indtjening i nær fremtid"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -744,7 +744,7 @@ msgstr "Bygninger"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Værdi af alle bygninger i spillerens koloni(er)"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -765,7 +765,7 @@ msgstr "Enheder"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Værdi af alle spillerens enheder"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
@@ -1264,11 +1264,11 @@ msgstr "Gemmer"
 
 #: content/gui/xml/mainmenu/settings.xml:128
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Autosave interval i minutter:"
 
 #: content/gui/xml/mainmenu/settings.xml:136
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "Antal autosaves:"
 
 #: content/gui/xml/mainmenu/settings.xml:144
 #, fuzzy

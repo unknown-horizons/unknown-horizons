@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -29,12 +29,13 @@ from horizons.gui.tabs.residentialtabs import setup_tax_slider
 
 from horizons.i18n import _lazy
 from horizons.util.python.callback import Callback
-from horizons.messaging import UpgradePermissionsChanged
+from horizons.messaging import UpgradePermissionsChanged, PlayerLevelUpgrade
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, TIER
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 
 class MainSquareTab(OverviewTab):
@@ -45,6 +46,7 @@ class MainSquareTab(OverviewTab):
 
 	def show(self):
 		super(MainSquareTab, self).show()
+		PlayerLevelUpgrade.subscribe(self.on_player_level_upgrade)
 		# update self when a building of the settlement changes.
 		for building in self.settlement.buildings:
 			if not building.has_change_listener(self._schedule_refresh):
@@ -52,9 +54,13 @@ class MainSquareTab(OverviewTab):
 
 	def hide(self):
 		super(MainSquareTab, self).hide()
+		PlayerLevelUpgrade.discard(self.on_player_level_upgrade)
 		for building in self.settlement.buildings:
 			building.discard_change_listener(self._schedule_refresh)
 
+	def on_player_level_upgrade(self, message):
+		self.hide()
+		self.instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(self))
 
 class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
@@ -155,7 +161,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def hide(self):
 		super(MainSquareSettlerLevelTab, self).hide()
-		UpgradePermissionsChanged.unsubscribe(self.refresh_via_message, sender=self.settlement)
+		UpgradePermissionsChanged.discard(self.refresh_via_message, sender=self.settlement)
 
 	def _get_last_tax_paid(self):
 		houses = self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]

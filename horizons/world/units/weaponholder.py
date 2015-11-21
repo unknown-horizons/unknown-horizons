@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
 import logging
 import math
 
@@ -315,23 +314,6 @@ class WeaponHolder(object):
 		either way the refs are checked using gc module
 		this is used because after unit death it's possbile that it still has refs
 		"""
-		if self._target is not None and 3>4:
-			#NOTE test code if the unit is really dead
-			# weakref the target, collect the garbage, than check in 3 ticks if it was really removed
-			# weakref call should return none in that case
-			target_ref = weakref.ref(self._target)
-			def check_target_ref(target_ref):
-				if target_ref() is None:
-					print "Z's dead baby, Z's dead"
-					return
-				import gc
-				print target_ref(), 'has refs:'
-				gc.collect()
-				gc.collect()
-				import pprint
-				for ref in gc.get_referrers(target_ref()):
-					pprint.pprint(ref)
-			Scheduler().add_new_object(Callback(check_target_ref, target_ref), self, 3)
 		self._target = None
 
 	def stop_attack(self):
@@ -342,7 +324,7 @@ class WeaponHolder(object):
 			self._target.discard_remove_listener(self.remove_target)
 		self.remove_target()
 
-	def fire_all_weapons(self, dest, rotated=False, bullet_delay=0):
+	def fire_all_weapons(self, dest, rotated=False):
 		"""
 		Fires all weapons in storage at a given position
 		@param dest: Point with the given position
@@ -357,7 +339,7 @@ class WeaponHolder(object):
 
 		if not rotated:
 			for weapon in self._fireable:
-				weapon.fire(dest, self.position.center, bullet_delay)
+				weapon.fire(dest, self.position.center)
 		else:
 			angle = (math.pi / 60) * (-len(self._fireable) / 2)
 			cos = math.cos(angle)
@@ -378,7 +360,7 @@ class WeaponHolder(object):
 
 			for weapon in self._fireable:
 				destination = Point(dest_x, dest_y)
-				weapon.fire(destination, self.position.center, bullet_delay)
+				weapon.fire(destination, self.position.center)
 				dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 				dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 

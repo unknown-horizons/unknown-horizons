@@ -38,10 +38,12 @@
 * ThomasD (Thomas Davey)
 
 #### Graphics Artists
+* Clearskies (Anthony Nguyen)
 * Daniel Stephens
 * dauerflucher (Andreas Lis)
 * egore (Christoph Brill)
 * inken
+* janexx (Jana Weigel)
 * kaschte (Fabian Riedel)
 * lmg
 * Manthus (Matthias Dittrich)
@@ -70,13 +72,15 @@
 * rudi_s (Several improvements)
 * Yeya (Random maps)
 
-- - - - -
-
-#### 2011
+#### 2011.1
 * abeaumont (Two renitent segfaults)
 * Grickit (Random maps)
 * hoffi (GUI improvements)
 * mayanks43 (Campaign system)
+
+- - - - -
+
+#### 2011.2
 * mtfk (Voice internationalization)
 * riidom (Tent and hut variations)
 * sids.aquarius (Several improvements)
@@ -98,6 +102,10 @@
 * Zappaman (Several improvements)
 * pinkfloyda (Tooltip refactoring)
 * myrdd (BuySellTab fix)
+* dulrich (Several improvements)
+* Rao (Pasture image sequence)
+* MarkusHackspacher (PEP8)
+* paul59 (Tutorial)
 
 
 ## Translators
@@ -106,10 +114,13 @@
 * Michal Čihař (nijel)
 
 #### Bulgarian
+* Bojana
+* Nikolai Nikolov
 * Nikolay Kotrabakov (balward)
 
 #### Catalan
 * Àngel Mompó Llovet
+* josep constanti
 * Xavier Muntada Samà
 
 #### Catalan (Valencia)
@@ -131,8 +142,10 @@
 * aundal
 * Jacob Hellwing (hellwing)
 * Jan Arni Jacobsen
+* Jens
 
 #### German
+* darksider3
 * djot
 * Jordan Liese
 * Kikody
@@ -142,6 +155,7 @@
 * Raymond Vetter
 * schnurlos
 * Stefan S
+* Wuzzy
 
 #### Greek
 * Dimitra Karamperi (dimitrak)
@@ -156,6 +170,10 @@
 * Cur5
 * Fabio Fernández (Catharsius)
 * Fede Muller
+* Gauekoizar
+* Ivan (malkavi)
+* Ivan Gonzalez Martin
+* Luis García Sevillano
 * MicMic
 * Nikolai Woutlan
 * Rubén Viguera
@@ -165,13 +183,17 @@
 * William Cabrera (willicab)
 
 #### Estonian
+* Kristjan Räts
 * Mihkel Rämmel (RM87)
 * Üllar Lainväe (ussikene)
 
 #### Finnish
 * Aleksi Kinnunen (alluk)
+* Cosmo Console
 * heze0
+* Olli Paasonen
 * Pihpe
+* Pyry Karapalo
 
 #### French
 * Antoine Beaupré
@@ -194,32 +216,46 @@
 
 #### Galician
 * Adrián Chaves Fernández (Gallaecio)
+* Xosé Calvo
 
 #### Croatian
+* Adis Zukanovic
 * Daniel Tominac
 * shile
+* T S
 
 #### Hindi
 * Kinshuk Sunil (kinshuksunil)
+* Saurabh Patil
 * supercracker111
 
 #### Hungarian
+* Lipták Krisztián
+* Lorant Perger
+* Bence Nagy (nagybence)
 * matyi
-* Szontágh Ferenc (ghostarthour)
 * probert
+* Szabolcs Tóth
+* Szontágh Ferenc (ghostarthour)
+* urbalazs
 
 #### Indonesian
 * alamswijaya
 * davezh
+* Gallanth
 * Ichwan Elhamdani
+* Samuel Christo
+* Samuel D.S.P
 
 #### Italian
 * Davide Nanni
 * Fabio Pedretti
 * Fede Muller
+* federico
 * Gioele Cerri (joel)
 * Giorgio Saragnese (supermario)
 * Mathias Hofmann
+* Pac Low
 * rayot
 * sioux83
 * tagarista
@@ -227,18 +263,22 @@
 
 #### Japanese
 * naraba
+* Tatsuhiko Yamanoue
 * Yuki Shira (shirayuki)
 
 #### Korean
-* k ks
+* Cho Bkwon
+* K Ks
 * Sebastian Sohn
+* Wooyoung Cho
 
 #### Lithuanian
+* Jur Kis
 * Mantas Kondrotas (Anielius)
 * Mantas Kriaučiūnas
 
 #### Malayalam
-* Cebin
+* Cebin Joseph Benny
 
 - - - - -
 
@@ -249,11 +289,13 @@
 * Jared Isaksen (JeThro)
 
 #### Dutch
+* Dieter Adriaenssens
 * Jasper Tepper (Shadow23)
 * Joenit S. (joenit)
 * Luth
 * mightykai
 * Nick Z. (angellus)
+* NiLSPACE
 * Ruud Jacobs (MrRuudJ)
 * Sander Hasenpflug (SanderOnline)
 * Sietze Greydanus
@@ -261,27 +303,37 @@
 * VinWij
 
 #### Polish
+* Adam Jordanek
 * Adrian Marcinkowski (Amfidiusz)
-* Mateusz Bartkowski (Eugen)
+* Eerozeteen
+* Gilead
 * Jan Krzysztof Zawadzki (kzawadzki)
 * janczarny
+* Lemoid
+* Mateusz Bartkowski (Eugen)
 * Natrius
 * Pic
 * Piotr B
 * Piotr Gredka
+* Piotr Strebski
 * Premislaus
 * Robert Matusewicz (matekm)
 * Robert Mitwicki (mtfk)
 * Stanislaw Gackowski (soeb)
+* Tomasz Rydzyński
 
 #### Portuguese
 * bdias
 * Guilherme Nogueira
+* João Sena Cardoso
+* Joel Santinho
 * Luis Coehlo
 * Nelson Marques (nmarques)
 * Nuno Alves (MadMonk)
+* Michal Čihař
 * Pedro Henrique
 * Sérgio Lopes (Knitter)
+* Zoé Junior
 
 #### Brazilian Portuguese
 * abner.silva
@@ -303,6 +355,7 @@
 * Raymond Vetter
 * tbmale
 * trendy
+* Vlad Topala
 
 #### Russian
 * Alexander Olkhovskiy (fcxSanya)
@@ -310,25 +363,32 @@
 * burlachenko
 * cooland
 * Fedor Andreev (pro100fed)
+* Grigory Vershinin
+* Igor Afonkin
 * Michael Tsukanov (ZukinZIn)
 * Sergei Chistyakov (devcode)
 * Sergey Stepanov
 * Torv
+* Владимир Хоменко
 * Вячеслав Гостюхин (scazy)
 
 #### Slovenian
 * Andrej Žnidaršič (andrejz)
 
 #### Swedish
+* Åke Engelbrektson (eson57)
+* Chris Browne
 * Fringillus
-* Karar Al-remahy
+* Karar Al-Remahy
 * knutas
 * Nagrim
 * pilen
 
 #### Turkish
+* Burak Yavuz (BouRock)
 * Ceren Kocaman (CerenK)
 * cuil
+* Ersan Doru Doru
 * mezdap
 * Volkan Gezer (vgezer)
 
@@ -344,7 +404,11 @@
 
 #### Traditional Chinese
 * Marco Leong
+* Yes Stone
+* Ezjerry Liao
 
+#### Afrikaans
+* Alexandre Bezerra
 
 ## Packagers ##
 

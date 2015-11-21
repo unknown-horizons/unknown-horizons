@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -228,7 +228,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	def remove_building(self, building):
 		"""Properly removes a building from the settlement"""
 		if not building in self.buildings:
-			self.log.warn("Building %s can not be removed from settlement", building.id)
+			self.log.debug("Building %s can not be removed from settlement", building.id)
 			return
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)

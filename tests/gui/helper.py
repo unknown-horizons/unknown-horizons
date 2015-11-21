@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -183,7 +183,7 @@ class GuiHelper(object):
 		"""Active widgets are the top level containers currently
 		known by pychan.
 		"""
-		return self._manager.allWidgets.keys()
+		return self._manager.allWidgets
 
 	def _get_children(self, w):
 		if hasattr(w, 'children'):

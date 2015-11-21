@@ -25,7 +25,7 @@ logbook-data:
   - [Headline, 20. November 1740]
   - [Image, content/gui/images/background/hr.png]
   - Nach vier Tagen hat der Sturm endlich nachgelassen und wir können uns etwas ausruhen. Allerdings haben wir nicht mehr viel Nahrung an Bord und das Schiff ist stark beschädigt. Die Navigationsinstrumente und die Seekarten sind verloren gegangen.
-  - Wir müssen festes Land erreichen. Einer meiner Matrosen hat ein paar Vögel beim Fischen beobachtet - Land kann also nicht all zu weit entfernt sein. Glücklicherweise haben wir immer einige Werkzeuge und Bretter an Bord, so dass wir einfache Hütten bauen können.
+  - Wir müssen festes Land erreichen. Einer meiner Matrosen hat ein paar Vögel beim Fischen beobachtet – Land kann also nicht all zu weit entfernt sein. Glücklicherweise haben wir immer einige Werkzeuge und Bretter an Bord, so dass wir einfache Hütten bauen können.
   - 'Aufgabe:
 
     Findet Land und erbaut einen Hafen.'
@@ -35,7 +35,7 @@ logbook-data:
 - &FOOD_BOARDS
   - [Headline, 22. November 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Der Hafen ist gebaut und neue Hoffnung kommt auf. Trotzdem mache ich mir Sorgen über die nächsten Tage… uns geht die Nahrung aus und es fehlt an Baumaterial.
+  - Der Hafen ist gebaut und neue Hoffnung kommt auf. Trotzdem mache ich mir Sorgen über die nächsten Tage … Uns geht die Nahrung aus und es fehlt an Baumaterial.
   - Um uns am Leben zu erhalten müssen wir unsere Grundbedürfnisse absichern. Es ist an der Zeit Leute auszuschicken, die Nahrung und Bauholz besorgen, so dass wir überleben und uns Unterkünfte bauen können.
   - 'Aufgabe:
 
@@ -68,7 +68,7 @@ logbook-data:
   - Endlich haben wir genug zu essen und wieder einen Ort zum leben. Mein Zelt ist nicht sehr komfortabel, aber es hält mich trocken und ich habe in der Nacht das Gefühl ein Dach über dem Kopf zu haben.
   - 'Ich habe die Sterne in der Nacht untersucht, aber ohne meine Seekarten und Instrumente bleibt ihre Bedeutung unbekannt. Ich denke, wir werden hier eine Weile festsitzen. Wir müssen versuchen das Beste daraus zu machen.
 
-    Wir können nur versuchen eine Zivilisation aufzubauen und versuchen einen Weg in unsere Heimat zu finden…'
+    Wir können nur versuchen eine Zivilisation aufzubauen und versuchen einen Weg in unsere Heimat zu finden …'
   - 'Aufgabe:
 
     Lasse die Stadt wachsen, bis du mindestens 250 Einwohner und eine positive Bilanz hast.'
@@ -78,11 +78,11 @@ logbook-data:
 - &WON
   - [Headline, 27. August 1745]
   - [Image, content/gui/images/background/hr.png]
-  - Unserer Stadt geht es gut, sie hat mittlerweile über 250 Einwohner. I habe begonnen mich an mein neues Zuhause zu gewöhnen, aber diese Insel ist zu klein um hier für immer zu bleiben.
+  - Unserer Stadt geht es gut, sie hat mittlerweile über 250 Einwohner. Ich habe begonnen, mich an mein neues Zuhause zu gewöhnen, aber diese Insel ist zu klein um hier für immer zu bleiben.
   - Wir sollten ein Schiff beladen und uns auf die Suche nach einer größeren Insel mit mehr Platz und Ressourcen für meine Leute begeben. Ich habe mir anhand der Sterne, die ich in der Nacht sehe, wieder eine einfache Seekarte erstellt. Sie ist nicht perfekt, aber ich hoffe sie reicht, um hier her zurück zu finden.
   - 'Aufgabe:
 
-    Kontaktiere das Unknown Horizonts Team (www.unknown-horizons.org) und finde heraus wie du dieses Szenario länger und besser machen kannst!'
+    Kontaktiere das „Unknown Horizonts“-Team (www.unknown-horizons.org) und finde heraus, wie du dieses Szenario länger und besser machen kannst!'
   - [Pagebreak]
   - ''
 
@@ -144,7 +144,7 @@ metadata:
   author: Kikody, UH-Team
   description: 'Ihr seid der Kapitän eines englischen Schiffes im Jahre 1740. Ihr und Eure Crew wart auf dem Weg zu einer englischen Kolonie im Pazifik.
 
-    Alles verlief nach Plan, bis ihr in einen Sturm geraten seid…'
+    Alles verlief nach Plan, bis ihr in einen Sturm geraten seid …'
   difficulty: leicht
   locale: de
   mapfile: development.sqlite

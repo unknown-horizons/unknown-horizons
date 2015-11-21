@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -32,9 +32,12 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.windows import Window
 from horizons.command.uioptions import RouteConfigCommand
+from horizons.command.unit import CreateRoute
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path
+from horizons.scheduler import Scheduler
+from horizons.manager import MPManager
 
 from horizons.gui.widgets.imagebutton import OkButton
 
@@ -59,9 +62,10 @@ class RouteConfig(Window):
 		self.instance = instance
 
 		if not hasattr(instance, 'route'):
-			instance.create_route()
+			CreateRoute(instance).execute(self.session)
 
-		self._init_gui()
+		# We must make sure that the createRoute command has successfully finished, even in network games.
+		Scheduler().add_new_object(self._init_gui, self, run_in=MPManager.EXECUTIONDELAY+2)
 
 	@property
 	def session(self):

@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-01-15 22:31+0200\n"
-"Last-Translator: Chris Browne <yoda2031@gmail.com>\n"
-"Language-Team: Swedish <http://hosted.weblate.org/projects/uh/uh/sv/>\n"
+"PO-Revision-Date: 2015-07-07 14:58+0200\n"
+"Last-Translator: Karar Al-Remahy <alremahykarar@ymail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.4-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -365,7 +365,7 @@ msgstr "ledsen"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
 msgid "satisfied"
-msgstr ""
+msgstr "tillfredsställd"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:61
@@ -531,9 +531,8 @@ msgstr "Välj varor:"
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
-#, fuzzy
 msgid "Collector utilization"
-msgstr "Insamlar användning:"
+msgstr "Insamlar användning"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
@@ -574,9 +573,8 @@ msgstr "Återuppta produktion"
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Välj varor:"
+msgstr "Välj resurs:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -664,9 +662,8 @@ msgstr "Skicka chattmeddelandena till alla spelare."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Skriv ditt meddelande:"
+msgstr "Skriv ditt meddelande"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -721,7 +718,7 @@ msgstr "Pengar"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Spelarens nuvarande statskassa + intäkter förväntade inom snar framtid"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -764,6 +761,8 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
+"Värde som anger utvecklingen av bosättning(ar) i villkor av invånare, "
+"byggnader och total lycka"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -872,9 +871,8 @@ msgid "Return"
 msgstr "Återgå"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "utbildning"
+msgstr "Handlingar"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -962,7 +960,7 @@ msgstr "Färglägg rutornas ägare"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Växla liv bom"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
@@ -1007,9 +1005,8 @@ msgid "Reset to default"
 msgstr "Återställ till standard"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Återställ till standard"
+msgstr "Återställ till standard tangentbordsknappar"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
@@ -1080,14 +1077,13 @@ msgstr "Spelets namn:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
-#, fuzzy
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "Det här kommer att visas för att andra spelare ska känna igen spelet."
+msgstr "Detta kommer att visas för andra spelare så att de känna igen spelet."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "Namnlöst spel"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1096,7 +1092,7 @@ msgstr "Spelets namn:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr ""
+msgstr "Detta spelets lösenord. Behövs för att kunna ansluta till detta spel."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
@@ -1128,11 +1124,11 @@ msgstr "Färg"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
-msgstr ""
+msgstr "Redo:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
+msgstr "Sätt din status till redo (nödvändigt för att spelet ska starta)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1167,10 +1163,9 @@ msgid "Create a new game"
 msgstr "Skapa nytt spel"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Gå med i spel"
+msgstr "Gå med i spelet:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1178,7 +1173,7 @@ msgstr "Gå med i det valda spelet"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr ""
+msgstr "Ändra spelarens detaljer"
 
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/modules/settings.py:53
@@ -1196,6 +1191,8 @@ msgstr "Helskärm:"
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+"SDL är menat som ett säkerhetsreserv som är utan stöd och kan därför "
+"innehålla problem!"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Used renderer:"
@@ -1203,11 +1200,11 @@ msgstr "Rendering:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Bildfrekvens gräns:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Ställ in den maximala bildhastighetens användning. Standard: 60fps."
 
 #: content/gui/xml/mainmenu/settings.xml:54
 msgid "Sound"
@@ -1233,30 +1230,35 @@ msgstr "Mus"
 
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "Flytta kartan när musen rör vid kanten:"
 
 #: content/gui/xml/mainmenu/settings.xml:87
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Vare sig att flytta synporten när muspekaren är nära kart kanterna"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "Zoom vid mus position:"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"När funktionen är aktiverad, kommer mushjulet zoom att använda markören som "
+"ny zoom centrerings punkt. När funktionen är inaktiverad så kommer "
+"mushjulets funktion att zooma vid nuvarande position."
 
 #: content/gui/xml/mainmenu/settings.xml:99
+#, fuzzy
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Flytta kartan med mushjulet:"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
+"När aktiverad, kan du hålla ner mitten musknappen för att flytta kameran."
 
 #: content/gui/xml/mainmenu/settings.xml:107
 msgid "0 is default system settings"
@@ -1288,7 +1290,7 @@ msgstr "Språk"
 
 #: content/gui/xml/mainmenu/settings.xml:164
 msgid "General"
-msgstr ""
+msgstr "Allmänt"
 
 #: content/gui/xml/mainmenu/settings.xml:169
 msgid "Rotate minimap with map:"
@@ -1302,11 +1304,13 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Oavbruten byggnad:"
 
 #: content/gui/xml/mainmenu/settings.xml:175
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"När det är aktiverat,var vänlig och lämna inte byggnadsläge efter lyckad "
+"konstruktion"
 
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Auto-unload ship:"
@@ -1315,18 +1319,21 @@ msgstr "Lasta av fartyget automatiskt:"
 #: content/gui/xml/mainmenu/settings.xml:181
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
-"Om du vill att fartyget ska lasta av automatiskt efter att en bosättning har "
-"skapats"
+"Huruvida du vill att fartyget ska lasta av automatiskt efter att en "
+"bosättning har skapats"
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Använd ej i ett normalt spel session. Väljer om den ska skriva debug "
+"information eller inte i loggningskatalogen i användarkatalogen. Detta gör "
+"spelet trögt."
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid "Enable logging:"
-msgstr "Aktivera ljud:"
+msgstr "Aktivera loggning:"
 
 # Mellanslag, bindesstreck eller utan genitiv?
 #: content/gui/xml/mainmenu/settings.xml:193
@@ -1337,6 +1344,8 @@ msgstr "Produktionsöversikt:"
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"Vare sig man vill visa resurs ikoner över byggnader när de slutför sin "
+"produktion"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."

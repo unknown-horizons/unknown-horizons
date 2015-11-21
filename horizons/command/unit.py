@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -36,7 +36,7 @@ class GenericUnitCommand(GenericCommand):
 			return # don't move enemy units
 		else:
 			return super(GenericUnitCommand, self).__call__(issuer)
-
+		
 class Act(GenericUnitCommand):
 	"""Command class that moves a unit.
 	@param unit: Instance of Unit
@@ -66,6 +66,16 @@ class RemoveUnit(GenericUnitCommand):
 		super(RemoveUnit, self).__init__(unit, "remove")
 
 GenericCommand.allow_network(RemoveUnit)
+
+class CreateRoute(GenericUnitCommand):
+	"""Command class that moves a unit.
+	@param unit: Instance of Unit
+	@param x, y: float coordinates where the unit is to be moved.
+	"""
+	def __init__(self, unit):
+		super(CreateRoute, self).__init__(unit, "create_route")
+
+GenericCommand.allow_network(CreateRoute)
 
 class CreateUnit(Command):
 	"""Command class that creates a unit.

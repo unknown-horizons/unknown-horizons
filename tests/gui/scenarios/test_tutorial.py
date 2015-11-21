@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -200,6 +200,10 @@ def test_tutorial(gui):
 	gui.trigger('tab', 'button_21')
 	gui.cursor_drag((21, 15), (24, 14), 'left')
 	gui.cursor_click(24, 14, 'right')
+	# back of mainsquare
+	gui.trigger('tab', 'button_21')
+	gui.cursor_drag((13, 22), (20, 22), 'left')
+	gui.cursor_click(20, 22, 'right')
 
 	# storage tent
 	gui.trigger('tab', 'button_11')
@@ -224,21 +228,17 @@ def test_tutorial(gui):
 	gui.trigger('tab', 'button_12')
 	gui.cursor_multi_click((24, 9), (27, 8), (27, 11))
 
-	# lumberjack (more wood for upgrades)
-	gui.trigger('tab_base', '0')
-	gui.trigger('tab', 'button_03')
-	gui.cursor_click(19, 18, 'left')
-
 	# wait until we have enough boards
 	while not settlement_res_stored_greater(gui.session, RES.BOARDS, 39):
 		gui.run()
 
 	# tents
+	gui.trigger('tab_base', '0')
 	gui.trigger('tab', 'button_01')
 	gui.cursor_multi_click(
-		(11, 14), (11, 15), (12, 17), (11, 20),
-		(12, 22), (14, 22), (16, 22), (18, 22),
-		(19, 20), (22, 15)
+		(11, 14), (11, 15), (12, 17), (11, 20), (11, 22),
+		(13, 23), (15, 23), (17, 23), (19, 23),
+		(19, 20), (22, 15), (19, 18), (20, 21)
 	)
 
 	# Goal: Won

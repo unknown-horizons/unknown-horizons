@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -127,23 +127,6 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 		if options:
 			return self.production_builder.build_best_option(options, BUILDING_PURPOSE.STORAGE)
 
-		# enlarge the settlement area instead since just enlarging the collector area is impossible
-		if self.village_builder.tent_queue:
-			tent_size = Entities.buildings[BUILDINGS.RESIDENTIAL].size
-			tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL].radius
-			best_coords = None
-			best_area = 0
-
-			for x, y in self.village_builder.tent_queue:
-				new_area = 0
-				for coords in Rect.init_from_topleft_and_size(x, y, tent_size[0], tent_size[1]).get_radius_coordinates(tent_radius):
-					if coords in area_label and coords not in self.land_manager.roads and coords not in collector_area:
-						new_area += 1
-				if new_area > best_area:
-					best_coords = (x, y)
-					best_area = new_area
-			if best_coords is not None:
-				return self.village_builder.extend_settlement_with_tent(Rect.init_from_topleft_and_size_tuples(best_coords, tent_size))
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def execute(self):

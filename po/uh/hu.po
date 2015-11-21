@@ -7,235 +7,223 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-05-05 12:51+0000\n"
-"Last-Translator: Anonymous Pootle User\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2015-02-06 16:14+0200\n"
+"Last-Translator: Bence Nagy <bence.nagy@gmail.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/uh/uh/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0-rc1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #: run_uh.py:124
-#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons spadly."
+msgstr "Az Unknown Horizons összeomlott."
 
 #: run_uh.py:126
-#, fuzzy
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Nagyon sajnáljuk, és szeretnénk kijavítani a hibát."
+msgstr "Nagyon sajnáljuk, és szeretnénk kijavítani az említett hibát."
 
 #: run_uh.py:127
-#, fuzzy
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "K této věci potřebujeme informace z logovacího souboru:"
+msgstr ""
+"Ahhoz, hogy ezt megtehessük, szükségünk van a naplófájlban lévő "
+"információkra:"
 
 #: run_uh.py:129
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Kérlek küld el IRC-n, vagy a fórumunkon, amelyet a http://unknown-horizons."
-"org oldalon találsz meg ."
+"Kérjük, küldd el IRC-n vagy a fórumunkon, amelyet a http://unknown-"
+"horizons.org oldalon találsz meg."
 
 #: run_uh.py:178
-#, fuzzy
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr "Hiba: Nem találom a szükséges könyvtárakat"
+msgstr "Hiba: Nem találom a szükséges \"PyYAML\" könyvtárat."
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr ""
+msgstr "A PyYAML (egy szükséges könyvtár) hiányzik, és telepíteni kell."
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr ""
+msgstr "A Windows telepítő a http://pyyaml.org/wiki/PyYAML oldalon található."
 
 #: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Linux-felhasználók a csomagkezelőjükkel telepíthetik a \"pyyaml\" vagy \""
+"python-yaml\" nevű csomagot."
 
 #: run_uh.py:215
-#, fuzzy
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Děkujeme Vám za hraní Unknown Horizons!"
+msgstr "Köszönjük, hogy az Unknown Horizons-szal játszol!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Vissza a szerkesztőbe"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
-#, fuzzy
 msgid "Save map"
-msgstr "Uložit mapu"
+msgstr "Térkép mentése"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr ""
+msgstr "Térkép betöltése"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
-#, fuzzy
 msgid "Settings"
-msgstr "Nastavení"
+msgstr "Beállítások"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
-#, fuzzy
 msgid "Help"
-msgstr "Pomoc"
+msgstr "Súgó"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "Kilépés a szerkesztőből"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Ecsetméret kiválasztása:"
 
 #: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
-msgstr ""
+msgstr "Tereptípus kiválasztása:"
 
 #: content/gui/xml/editor/editor_settings.xml:35
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(jobb egérgomb a befejezéshez)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
-#, fuzzy
 msgid "Game start"
-msgstr "Hra začala"
+msgstr "Játék indítása"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
-#, fuzzy
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Musíte založit osadu než budete moci začít stavět!"
+msgstr "Egy települést kell alapítanod, mielőtt építkezni tudnál!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
-#, fuzzy
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Vyberte svou loď a pravým kliknutím se přibližte k pobřeží."
+msgstr "Válaszd ki a hajót, és navigálj a partra a jobb egérgombbal."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:24
-#, fuzzy
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Následně stiskněte velké tlačítko na záložce přehledu lodi."
+msgstr "Ezután kattints a nagy gombra a hajó-áttekintés fülön."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
-#, fuzzy
 msgid "Build"
-msgstr "Stavba"
+msgstr "Építés"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
-#, fuzzy
 msgid "Running costs:"
-msgstr "Provozní náklady:"
+msgstr "Fenntartási költségek:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "Kapcsolódó épületek"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
-#, fuzzy
 msgid "Inhabitants"
-msgstr "Obyvatelé"
+msgstr "Lakosok"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Zrychlit herní rychlost (+)"
+msgstr ""
+"Játéksebesség\n"
+"növelése ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Zpomalit herní rychlost (-)"
+msgstr ""
+"Játéksebesség\n"
+"csökkentése ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Otočit mapu proti směru hodinových ručiček (,)"
+msgstr ""
+"Térkép óramutató járásával\n"
+"ellentétes forgatása ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Rotate map clockwise ({key})"
-msgstr "Otočit mapu po směru hodinových ručiček (.)"
+msgstr ""
+"Térkép óramutató járásával\n"
+"megegyező forgatása ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
-#, fuzzy
 msgid "Zoom in"
-msgstr "Přiblížit"
+msgstr "Közelítés"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
-#, fuzzy
 msgid "Zoom out"
-msgstr "Oddálit"
+msgstr "Távolítás"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Destroy ({key})"
-msgstr "Zbourat (X)"
+msgstr "Megsemmisítés ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Captain's log ({key})"
-msgstr "Lodní deník (L)"
+msgstr "Hajónapló ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Build menu ({key})"
-msgstr "Stavební menu (B)"
+msgstr "Építési menü ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
-#, fuzzy
 msgid "Diplomacy"
-msgstr "Diplomacie"
+msgstr "Diplomácia"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Game menu ({key})"
-msgstr "Herní menu (Esc)"
+msgstr "Játékmenü ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
-#, fuzzy
 msgid "Change name"
-msgstr "Změnit jméno"
+msgstr "Név megváltoztatása"
 
 #: content/gui/xml/ingame/popups/change_name.xml:10
-#, fuzzy
 msgid "Old name:"
-msgstr "Původní jméno:"
+msgstr "Régi név:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:14
-#, fuzzy
 msgid "Enter new name:"
-msgstr "Zadejte nové jméno:"
+msgstr "Írja be az új nevet:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:19
-#, fuzzy
 msgid "Apply the new name"
-msgstr "Použít nové jméno"
+msgstr "Új név elfogadása"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:64
 #: content/gui/xml/mainmenu/hotkeys.xml:27 horizons/gui/widgets/logbook.py:51
-#, fuzzy
 msgid "Chat"
 msgstr "Chat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
-#, fuzzy
 msgid "Enter your message:"
-msgstr "Vaše zpráva:"
+msgstr "Üzenet beírása:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:20
@@ -249,405 +237,347 @@ msgstr "Vaše zpráva:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
-#, fuzzy
 msgid "Running costs"
-msgstr "Provozní náklady"
+msgstr "Fenntartási költségek"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
-#, fuzzy
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Chcete-li postavit loď, klikněte na záložku, vyberte loď a potvrďte "
-"objednávku."
+"Hogy hajót építs, kattints az egyik kategóriafülre, válaszd ki a kívánt "
+"típust és hagyd jóvá az építést."
 
 #. Information about the ship currently under construction at the boat
 #. builder
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
-#, fuzzy
 msgid "Currently building:"
-msgstr "Právě stavíte:"
+msgstr "Jelenleg építés alatt:"
 
 #. Pauses the current ship production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
-#, fuzzy
 msgid "Pause"
-msgstr "Pauza"
+msgstr "Szünet"
 
 #. Resumes the currently paused ship production
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
-#, fuzzy
 msgid "Resume"
-msgstr "Návrat do hry"
+msgstr "Folytatás"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:51
-#, fuzzy
 msgid "Construction progress:"
-msgstr "Průběh výstavby:"
+msgstr "Építkezés állása:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
-#, fuzzy
 msgid "Resources still needed:"
-msgstr "Zbývající potřebné zdroje:"
+msgstr "További alapanyagok szükségesek:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
-#, fuzzy
 msgid "Cancel building:"
-msgstr "Zrušit Stavbu:"
+msgstr "Építés megszakítása:"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
-#, fuzzy
 msgid "(lose all resources)"
-msgstr "(ztratit všechen materiál)"
+msgstr "(minden alapanyag elveszik)"
 
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
-#, fuzzy
 msgid "Cancel all building progress"
-msgstr "Zastavit veškerou výstavbu"
+msgstr "Minden építés megszakítása"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
-#, fuzzy
 msgid "ally"
-msgstr "spojenec"
+msgstr "szövetséges"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:16
-#, fuzzy
 msgid "neutral"
-msgstr "nestranný"
+msgstr "semleges"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
-#, fuzzy
 msgid "enemy"
-msgstr "nepřítel"
+msgstr "ellenség"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:10
-#, fuzzy
 msgid "Building overview"
-msgstr "Přehled staveb"
+msgstr "Épület-áttekintés"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
-#, fuzzy
 msgid "Capacity utilization"
-msgstr "Využití kapacity"
+msgstr "Kapacitás hasznosítása"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
-#, fuzzy
 msgid "Settlement inventory"
-msgstr "Skladové zásoby"
+msgstr "Településleltár"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
-#, fuzzy
 msgid "Settler overview"
-msgstr "Přehled osadníků"
+msgstr "Telepes áttekintés"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:36
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:39
-#, fuzzy
 msgid "Paid taxes"
-msgstr "Zaplacené daně"
+msgstr "Fizetett adó"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:26
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:34
-#, fuzzy
 msgid "Taxes:"
-msgstr "Daně:"
+msgstr "Adó:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:31
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:33
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
-#, fuzzy
 msgid "Tax rate"
-msgstr "Daňové zatížení"
+msgstr "Adóráta"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
-#, fuzzy
 msgid "Upgrade permissions:"
-msgstr "Povýšit povolení:"
+msgstr "Fejlesztési előfeltételek:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
-msgstr ""
+msgstr "Elégedettség házanként"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
 msgid "sad"
-msgstr ""
+msgstr "szomorú"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
 msgid "satisfied"
-msgstr ""
+msgstr "elégedett"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:61
 msgid "happy"
-msgstr ""
+msgstr "boldog"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr ""
+msgstr "Házak ezzel a elégedettséggel"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
-#, fuzzy
 msgid "Residents per house"
-msgstr "Obyvatelé domu"
+msgstr "Lakosok házanként"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
-msgstr ""
+msgstr "Lakók száma házanként"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "Házak ezzel a lakószámmal"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
-#, fuzzy
 msgid "Summary"
-msgstr "Souhrn"
+msgstr "Összegzés"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
-#, fuzzy
 msgid "houses"
-msgstr "domy"
+msgstr "házak"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
-#, fuzzy
 msgid "residents"
-msgstr "obyvatelé"
+msgstr "lakosok"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
 #: horizons/gui/tabs/buyselltab.py:350
-#, fuzzy
 msgid "Selling"
-msgstr "Prodej"
+msgstr "Eladni"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:29
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:82
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
-#, fuzzy
 msgid "Buying"
-msgstr "Nákup"
+msgstr "Vásárolni"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_firestation.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
-#, fuzzy
 msgid "Name:"
-msgstr "Jméno:"
+msgstr "Név:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
-#, fuzzy
 msgid "Weapons:"
-msgstr "Zbraně:"
+msgstr "Fegyverek:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
 msgstr "Nyersanyaglelőhely"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:15
-#, fuzzy
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Toto je naleziště surovin, kde můžete postavit důl, abyste mohli suroviny "
-"těžit."
+"Ez egy nyersanyaglelőhely, amire bányát tudsz építeni nyersanyag-kitermelés "
+"céljából."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
-#, fuzzy
 msgid "It contains these resources:"
-msgstr "Obsahuje následující suroviny:"
+msgstr "A következő nyersanyagok találhatók itt:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
 #: horizons/gui/modules/ingame.py:160 horizons/gui/tabs/mainsquaretabs.py:76
 #: horizons/gui/tabs/mainsquaretabs.py:117
 #: horizons/gui/widgets/playerssettlements.py:96
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Klikněte pro změnu jména Vaší osady"
+msgstr "Kattints ide a település nevének megváltoztatásához"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
-#, fuzzy
 msgid "Happiness"
-msgstr "Spokojenost"
+msgstr "Elégedettség"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
-#, fuzzy
 msgid "Residents"
-msgstr "Obyvatelé"
+msgstr "Lakosok"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
-#, fuzzy
 msgid "Needed resources:"
-msgstr "Potřebné suroviny:"
+msgstr "Szükséges nyersanyagok:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_signalfire.xml:19
-#, fuzzy
 msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Signální oheň ukazuje svobodným obchodníkům cestu do Vaší osady, aby mohli "
-"nakupovat a prodávat."
+"A jelzőtűz megmutatja a szabad kereskedőnek, hogyan jusson el a "
+"településedre abban az esetben, ha vásárolni vagy eladni szeretnél."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
-#, fuzzy
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Toto je loď svobodného obchodníka. Občas navštíví Vaší osadu, aby nakoupil "
-"či prodal své zboží."
+"Ez a szabad kereskedő hajója. Időről időre meglátogat, hogy vásároljon és "
+"eladjon a kikötődben."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:78
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Klikněte za účelem změny jména lodi"
+msgstr "Kattints a hajó nevének megváltoztatásához"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:88
-#, fuzzy
 msgid "Trade"
-msgstr "Obchod"
+msgstr "Kereskedés"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
-#, fuzzy
 msgid "Build settlement"
-msgstr "Postavit osadu"
+msgstr "Település alapítása"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
-#, fuzzy
 msgid "Configure trading route"
-msgstr "Nastavení obchodní cesty"
+msgstr "Kereskedőutak szerkesztése"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
-#, fuzzy
 msgid "Ship:"
-msgstr "Loď:"
+msgstr "Hajó:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:35
-#, fuzzy
 msgid "Exchange:"
-msgstr "Směna:"
+msgstr "Csere:"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:64
-#, fuzzy
 msgid "Trade partner:"
-msgstr "Obchodní partner:"
+msgstr "Kereskedőpartner:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
-#, fuzzy
 msgid "Buy or sell resources"
-msgstr "Koupě či prodej surovin"
+msgstr "Nyersanyagok vétele vagy eladása"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:19
-#, fuzzy
 msgid "Trade history"
-msgstr "Historie obchodu"
+msgstr "Kereskedelmi előzmények"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
-#, fuzzy
 msgid "Select resources:"
-msgstr "Vyberte zboží:"
+msgstr "Nyersanyagok kiválasztása:"
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
-#, fuzzy
 msgid "Collector utilization"
 msgstr "Árubegyűjtő kihasználtság"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
-#, fuzzy
 msgid "Income:"
-msgstr "Příjem:"
+msgstr "Bevétel:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
 #: horizons/gui/widgets/resourceoverviewbar.py:615
-#, fuzzy
 msgid "Taxes"
-msgstr "Daně"
+msgstr "Adók"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:25
-#, fuzzy
 msgid "Sale"
-msgstr "Prodej"
+msgstr "Eladás"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:29
-#, fuzzy
 msgid "Expenses:"
-msgstr "Výdaje:"
+msgstr "Költségek:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:40
-#, fuzzy
 msgid "Balance:"
-msgstr "Bilance:"
+msgstr "Egyenleg:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
-#, fuzzy
 msgid "Show resources produced in this settlement"
-msgstr "Ukázat zboží vyráběné v této osadě"
+msgstr "A településen előállított nyersanyagok mutatása"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
 #: content/gui/xml/ingame/templates/overview_productionline.xml:20
-#, fuzzy
 msgid "Pause production"
-msgstr "Zastavit výrobu"
+msgstr "Termelés szüneteltetése"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
 #: content/gui/xml/ingame/templates/overview_productionline.xml:23
-#, fuzzy
 msgid "Start production"
-msgstr "Začít výrobu"
+msgstr "Termelés indítása"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Vyberte zboží:"
+msgstr "Nyersanyag kiválasztása:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
-"Zboží, kkteré vyberete, je zobrazováno místo současného. Vynulujte stiknutím "
-"klávesy X."
+"A kiválasztott alapanyag mutatása a jelenlegi helyett. Bezárás az 'X' "
+"gombbal."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
@@ -657,109 +587,92 @@ msgstr ""
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Alapértelmezett beállítás visszaállítása az összes gyarmatra."
+msgstr "Alapértelmezett beállítás visszaállítása az összes településre."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
-#, fuzzy
 msgid "Move up"
-msgstr "Posun nahoru"
+msgstr "Mozgatás felfelé"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
-#, fuzzy
 msgid "Delete entry"
-msgstr "Smazat položku"
+msgstr "Bejegyzés törlése"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
-#, fuzzy
 msgid "Move down"
-msgstr "Posun dolů"
+msgstr "Mozgás lefelé"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
-#, fuzzy
 msgid "Select a resource:"
-msgstr "Vyberte zdroj:"
+msgstr "Nyersanyag kiválasztása:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
-#, fuzzy
 msgid "Read previous entries"
-msgstr "Přečíst předchozí záznamy"
+msgstr "Korábbi bejegyzések megtekintése"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
-#, fuzzy
 msgid "Read next entries"
-msgstr "Přečíst další záznamy"
+msgstr "Következő bejegyzések megtekintése"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
-#, fuzzy
 msgid "Statistics"
-msgstr "Statistiky"
+msgstr "Statisztika"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
-#, fuzzy
 msgid "Players"
-msgstr "Hráči"
+msgstr "Játékosok"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
-#, fuzzy
 msgid "My ships"
-msgstr "Mé lodě"
+msgstr "Hajóim"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
-#, fuzzy
 msgid "My settlements"
-msgstr "Mé osady"
+msgstr "Településeim"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
-#, fuzzy
 msgid "Game messages"
-msgstr "Herní zprávy"
+msgstr "Játéküzenetek"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
-#, fuzzy
 msgid "Whole world"
-msgstr "Celý svět"
+msgstr "Teljes világ"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
-#, fuzzy
 msgid "Everybody"
-msgstr "Všichni"
+msgstr "Mindenki"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr ""
+msgstr "Chat üzenetek küldése minden játékosnak."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Vaše zpráva:"
+msgstr "Írd ide az üzeneted"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
-#, fuzzy
 msgid "Return to game"
-msgstr "Návrat do hry"
+msgstr "Vissza a játékba"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:11
-#, fuzzy
 msgid "Wait at load:"
-msgstr "Čekat na naložení:"
+msgstr "Várakozás a berakodásnál:"
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:16
-#, fuzzy
 msgid "Wait at unload:"
-msgstr "Čekat na vyložení:"
+msgstr "Várakozás a kirakodásnál:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
@@ -768,71 +681,62 @@ msgstr "Útvonal aktivitás:"
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 #: horizons/gui/widgets/routeconfig.py:103
-#, fuzzy
 msgid "Start route"
-msgstr "Začít obchodní cestu"
+msgstr "Útvonal indítása"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:42
-#, fuzzy
 msgid "Exit"
-msgstr "Konec"
+msgstr "Kilépés"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:24
-#, fuzzy
 msgid "Close"
-msgstr "Zavřít"
+msgstr "Bezár"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
-#, fuzzy
 msgid "Player scores"
-msgstr "Skóre"
+msgstr "Játékos pontszáma"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
 #: content/gui/xml/ingame/widgets/ships_list.xml:11
-#, fuzzy
 msgid "Name"
-msgstr "Jméno"
+msgstr "Név"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
-#, fuzzy
 msgid "Player Name"
-msgstr "Játékos neve:"
+msgstr "Játékos neve"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
-#, fuzzy
 msgid "Money"
-msgstr "Peníze"
+msgstr "Pénz"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
 msgstr "Játékos jelenlegi kincstára + közeljövőben várható jövedelme"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
-#, fuzzy
 msgid "Land"
-msgstr "Země"
+msgstr "Föld"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
+"Felhasználható terület értéke, például a terület hány százaléka beépíthető"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
-#, fuzzy
 msgid "Resources"
-msgstr "Zboží"
+msgstr "Nyersanyagok"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
-msgstr ""
+msgstr "A játékos települése(i) által előállított összes nyersanyag értéke"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
-#, fuzzy
 msgid "Buildings"
-msgstr "Stavby"
+msgstr "Épületek"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
@@ -842,412 +746,356 @@ msgstr "Az összes épület, játékos, település(ek) ár aránya"
 #. This is a database entry: the name of an inhabitant tier (level)
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 #: horizons/i18n/objecttranslations.py:493
-#, fuzzy
 msgid "Settlers"
-msgstr "Osadníci"
+msgstr "Telepesek"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:16
 msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
+"A települések fejlődésének értéke a lakosok, az épületek és a boldogság "
+"tekintetében"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
-#, fuzzy
 msgid "Units"
-msgstr "Jednotky"
+msgstr "Egységek"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "A játékos által birtokolt egységek értéke"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr ""
+msgstr "Minden egyes elem összesített értéke, röviden: játékos összes pontja"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
-#, fuzzy
 msgid "Total"
-msgstr "Celkem"
+msgstr "Összesen"
 
 #: content/gui/xml/ingame/widgets/players_settlements.xml:15
 #: horizons/gui/widgets/resourceoverviewbar.py:618
-#, fuzzy
 msgid "Balance"
-msgstr "Bilance"
+msgstr "Egyenleg"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
-#, fuzzy
 msgid "Type"
-msgstr "Typ"
+msgstr "Típus"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
-#, fuzzy
 msgid "Weapons"
-msgstr "Zbraně"
+msgstr "Fegyverek"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
-#, fuzzy
 msgid "Health"
-msgstr "Zdraví"
+msgstr "Egészség"
 
 # "Beosztás"?
 #: content/gui/xml/ingame/widgets/ships_list.xml:15
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:36
-#, fuzzy
 msgid "Status"
-msgstr "Status"
+msgstr "Állapot"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:8
-#, fuzzy
 msgid "Aggressive"
-msgstr "Agresivní"
+msgstr "Agresszív"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
-#, fuzzy
 msgid "Hold ground"
-msgstr "Držet území"
+msgstr "Pozíció tartása"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
-#, fuzzy
 msgid "Passive"
-msgstr "Pasivní"
+msgstr "Passzív"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
-#, fuzzy
 msgid "Flee"
-msgstr "Utéct"
+msgstr "Hátráló"
 
 #: content/gui/xml/mainmenu/credits.xml:471
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:53
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
-#, fuzzy
 msgid "Exit to main menu"
-msgstr "Odejít do hlavního menu"
+msgstr "Kilépés a főmenübe"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr ""
+msgstr "Térkép méretének kiválasztása:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
-#, fuzzy
 msgid "Choose a map:"
-msgstr "Vybrat mapu:"
+msgstr "Térkép kiválasztása:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Mentett játék térképének kiválasztása:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "Térkép forrása"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr ""
+msgstr "Új térkép létrehozása"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "Létező térkép betöltése"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Mentett játék térképének betöltése"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr ""
+msgstr "Szerkesztő indítása"
 
 #: content/gui/xml/mainmenu/help.xml:11
-#, fuzzy
 msgid "Return"
-msgstr "Návrat"
+msgstr "Vissza"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "AI beállítások"
+msgstr "Műveletek"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
-#, fuzzy
 msgid "Scroll left"
-msgstr "Posunout doleva"
+msgstr "Görgetés balra"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:11
-#, fuzzy
 msgid "Scroll right"
-msgstr "Posunout doprava"
+msgstr "Görgetés jobbra"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:12
-#, fuzzy
 msgid "Scroll up"
-msgstr "Posunout nahoru"
+msgstr "Görgetés fel"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:13
-#, fuzzy
 msgid "Scroll down"
-msgstr "Posunout dolů"
+msgstr "Görgetés le"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
-#, fuzzy
 msgid "Rotate building or map clockwise"
-msgstr "Otočit stavbu či mapu ve směru hodinových ručiček"
+msgstr "Épület vagy térkép forgatása óramutató járásával megegyező irányban"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
-#, fuzzy
 msgid "Rotate building or map counterclockwise"
-msgstr "Otočit stavbu či mapu proti směru hodinových ručiček"
+msgstr "Épület vagy térkép forgatása óramutató járásával ellentétes irányban"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
-#, fuzzy
 msgid "Increase game speed"
-msgstr "Zrychlit rychlost hry"
+msgstr "Játéksebesség növelése"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
-#, fuzzy
 msgid "Decrease game speed"
-msgstr "Zpomalit rychlost hry"
+msgstr "Játéksebesség csökkentése"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
-#, fuzzy
 msgid "Pause game"
-msgstr "Pozastavit hru"
+msgstr "Szünet"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:19
-#, fuzzy
 msgid "Show build menu"
-msgstr "Ukázat menu staveb"
+msgstr "Építés menü mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:20
-#, fuzzy
 msgid "Enable destruct mode"
-msgstr "Povolit destrukční režim"
+msgstr "Romboló mód bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
-#, fuzzy
 msgid "Enable road building mode"
-msgstr "Povolit mód stavby cest"
+msgstr "Útépítő mód bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "Pipetta mód bekapcsolása (épületek klónozása)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
-#, fuzzy
 msgid "Show player scores"
-msgstr "Ukázat skóre"
+msgstr "Játékos pontjának mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
-#, fuzzy
 msgid "Show settlement list"
-msgstr "Ukázat seznam osad"
+msgstr "Tepelülések listájának mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
-#, fuzzy
 msgid "Show ship list"
-msgstr "Ukázat seznam lodí"
+msgstr "Hajók listájának mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
-#, fuzzy
 msgid "Toggle Captain's log"
-msgstr "Ukázat Kapitánův deník"
+msgstr "Kapitány naplójának ki/bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:28
-#, fuzzy
 msgid "Quicksave"
-msgstr "Rychlé uložení"
+msgstr "Gyorsmentés"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:29
-#, fuzzy
 msgid "Quickload"
-msgstr "Rychlé načtení"
+msgstr "Gyors betöltés"
 
 # fogalmam nincs, mi az a "Transzlucuncia"
 #: content/gui/xml/mainmenu/hotkeys.xml:30
-#, fuzzy
 msgid "Toggle translucency of ambient buildings"
-msgstr "Zapnout průsvitnost okolních budov"
+msgstr "Környező épületek áttetszőségének ki/bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
-#, fuzzy
 msgid "Highlight tile ownership"
 msgstr "Tulajdonos kiemelése"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Életcsík mutatása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "Kamera fókusz kiválasztáskor"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
-#, fuzzy
 msgid "Remove selected units / buildings"
-msgstr "Odstranit vybrané jednotky či budovy"
+msgstr "Kiválasztott egység/épület eltávolítása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
-#, fuzzy
 msgid "Display help"
-msgstr "Ukázat nápovědu"
+msgstr "Súgó megnyitása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
-#, fuzzy
 msgid "Screenshot"
-msgstr "Obrázek ze hry"
+msgstr "Pillanatkép"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
-#, fuzzy
 msgid "Toggle showing FPS on/off"
-msgstr "Zobrazit/skrýt mřížku"
+msgstr "FPS mutató ki/bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
-#, fuzzy
 msgid "Toggle grid on/off"
-msgstr "Zobrazit/skrýt mřížku"
+msgstr "Rács ki/bekapcsolása"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
-#, fuzzy
 msgid "Show coordinate values (Debug)"
-msgstr "Ukázat souřadnice"
+msgstr "Koordináta értékek mutatása (debug)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Elsődleges"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Másodlagos"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
 msgstr "Visszaállítás az eredetire"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
-#, fuzzy
 msgid "Reset to default keys"
-msgstr "Visszaállítás az eredetire"
+msgstr "Visszaállítás az alapértelmezettre"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:48
-#, fuzzy
 msgid "Save game"
-msgstr "Uložit hru"
+msgstr "Játék elmentése"
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:50
-#, fuzzy
 msgid "Load game"
-msgstr "Nahrát hru"
+msgstr "Játék betöltése"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
-#, fuzzy
 msgid "Cancel game"
-msgstr "Zrušit hru"
+msgstr "Kilépés a játékból"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
-msgstr "Načítám ..."
+msgstr "Betöltés…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Háttér módosítása"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
-#, fuzzy
 msgid "Singleplayer"
-msgstr "Jeden hráč"
+msgstr "Egyjátékos mód"
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Více hráčů"
+msgstr "Többjátékos mód"
 
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
-#, fuzzy
 msgid "Quit"
-msgstr "Konec"
+msgstr "Kilépés"
 
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "Szerkesztő"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
-#, fuzzy
 msgid "Credits"
-msgstr "Autoři"
+msgstr "Stáblista"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
-#, fuzzy
 msgid "Create game - Multiplayer"
-msgstr "Vytvořit hru pro více hráčů"
+msgstr "Játék létrehozása - Többjátékos mód"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
-#, fuzzy
 msgid "Player limit:"
-msgstr "Maximální počet hráčů:"
+msgstr "Játékosok száma:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
-#, fuzzy
 msgid "Exit to multiplayer menu"
-msgstr "Odejít do menu hry více hráčů"
+msgstr "Kilépés a többjátékos mód menüjébe"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
-#, fuzzy
 msgid "Name of the game:"
-msgstr "Název hry:"
+msgstr "Játék neve:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
-#, fuzzy
 msgid "This will be displayed to other players so they recognize the game."
 msgstr "Ez fog megjelenni más játékosoknak a játék beazonosításához."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "Névtelen játék"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr ""
+msgstr "Jelszó a játékhoz:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr ""
+msgstr "A játékhoz tartozó jelszó. Szükséges a csatlakozáshoz."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
-#, fuzzy
 msgid "Create this new game"
-msgstr "Vytvořit novou hru"
+msgstr "Jelen játék létrehozása"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
 msgstr "Előszoba"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
-#, fuzzy
 msgid "Chat:"
 msgstr "Chat:"
 
@@ -1256,81 +1104,68 @@ msgid "Exit gamelobby"
 msgstr "Előszoba elhagyása"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
-#, fuzzy
 msgid "The game will start as soon as all players are ready."
-msgstr "A játék azonnal elindul, amint elég játékos csatlakozott."
+msgstr "A játék azonnal elindul, amint a játékosok készen állnak."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
-#, fuzzy
 msgid "Game details:"
-msgstr "Podrobnosti hry:"
+msgstr "Játék részletei:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
-#, fuzzy
 msgid "Color"
-msgstr "Szín:"
+msgstr "Szín"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
-msgstr ""
+msgstr "Kész:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:42
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr ""
+msgstr "Állítsd be az állapotod készre (a játék indításához elengedhetetlen)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
-#, fuzzy
 msgid "New game - Multiplayer"
-msgstr "Nová hra více hráčů"
+msgstr "Új játék - Többjátékos mód"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
-#, fuzzy
 msgid "Load game:"
-msgstr "Nahrát hru:"
+msgstr "Játék betöltése:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Načíst uloženou hru"
+msgstr "Mentett játék betöltése"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
-#, fuzzy
 msgid "Active games:"
-msgstr "Aktivní hry:"
+msgstr "Aktív játékok:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:30
-#, fuzzy
 msgid "Refresh list:"
-msgstr "Obnovit seznam:"
+msgstr "Lista frissítése:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:33
-#, fuzzy
 msgid "Refresh list of active games"
-msgstr "Znovu načíst seznam aktivních her"
+msgstr "Aktív játékok listájának frissítése"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
-#, fuzzy
 msgid "Create game:"
-msgstr "Vytvořit hru:"
+msgstr "Játék létrehozása:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
-#, fuzzy
 msgid "Create a new game"
-msgstr "Vytvořit novou hru"
+msgstr "Új játék létrehozása"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 msgid "Join game:"
-msgstr "Připojit ke hře"
+msgstr "Csatlakozás játékhoz:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
-#, fuzzy
 msgid "Join the selected game"
-msgstr "Připojit k vybrané hře"
+msgstr "Csatlakozás a kiválasztott játékhoz"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr ""
+msgstr "Játékos adatainak módosítása"
 
 #: content/gui/xml/mainmenu/settings.xml:14
 #: horizons/gui/modules/settings.py:53
@@ -1338,24 +1173,21 @@ msgid "Graphics"
 msgstr "Grafika"
 
 #: content/gui/xml/mainmenu/settings.xml:18
-#, fuzzy
 msgid "Screen resolution:"
-msgstr "Velikost obrazu:"
+msgstr "Képrenyő felbontása:"
 
 #: content/gui/xml/mainmenu/settings.xml:25
-#, fuzzy
 msgid "Full screen:"
-msgstr "Celá obrazovka:"
+msgstr "Teljes képernyős mód:"
 
 #: content/gui/xml/mainmenu/settings.xml:33
-#, fuzzy
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr "SDL není podporovaný a může způsobit potíže!"
+msgstr ""
+"Az SDL nem támogatott tartalék megoldásnak számít és problmákat okozhat!"
 
 #: content/gui/xml/mainmenu/settings.xml:33
-#, fuzzy
 msgid "Used renderer:"
-msgstr "Použité vykreslování:"
+msgstr "Használt leképező:"
 
 #: content/gui/xml/mainmenu/settings.xml:41
 msgid "Frame rate limit:"
@@ -1367,1124 +1199,1008 @@ msgstr ""
 "Beállítja a maximum használt képkocka sebességet. Alapértelmezett: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:54
-#, fuzzy
 msgid "Sound"
-msgstr "Zvuk"
+msgstr "Hang"
 
 #: content/gui/xml/mainmenu/settings.xml:60
-#, fuzzy
 msgid "Music volume:"
-msgstr "Hlasitost hudby:"
+msgstr "Zene hangereje:"
 
 #: content/gui/xml/mainmenu/settings.xml:69
-#, fuzzy
 msgid "Effects volume:"
-msgstr "Hlasitost efektů:"
+msgstr "Effektek hangereje:"
 
 #: content/gui/xml/mainmenu/settings.xml:76
-#, fuzzy
 msgid "Enable sound:"
-msgstr "Povolit zvuk:"
+msgstr "Hang engedélyezése:"
 
 #: content/gui/xml/mainmenu/settings.xml:82
-#, fuzzy
 msgid "Mouse"
-msgstr "Myš"
+msgstr "Egér"
 
 #: content/gui/xml/mainmenu/settings.xml:87
-#, fuzzy
 msgid "Scroll at map edge:"
-msgstr "Posunovat okraj mapy:"
+msgstr "Görgetés a térkép szélén:"
 
 #: content/gui/xml/mainmenu/settings.xml:87
-#, fuzzy
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "Posunout náhled, pokud je myš blízko okraje mapy"
+msgstr "A térkép görgetése, ha az egérkurzor a térkép szélén van"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "Nagyítás a kurzor pozíciójára:"
 
 #: content/gui/xml/mainmenu/settings.xml:93
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"Amennyiben ez az opció engedélyezett, az egér görgőjével való nagyítás a "
+"kurzor jelenlegi pocíziójára történik. Ellenkező esetben a nagyítás a "
+"jelenlegi pozícióra történik."
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Görgetés a középső egérgombbal:"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
 msgstr ""
+"Engedélyezés esetég a középső gomb lenyomásával állítható a kamera pozíciója"
 
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "0 je výchozí nastavení"
+msgstr "Alapértelmezett érték a 0"
 
 #: content/gui/xml/mainmenu/settings.xml:107
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Hustota zdrojů:"
+msgstr "Egér érzékenysége:"
 
 #: content/gui/xml/mainmenu/settings.xml:123
-#, fuzzy
 msgid "Saving"
-msgstr "Ukládám..."
+msgstr "Mentés"
 
 #: content/gui/xml/mainmenu/settings.xml:128
-#, fuzzy
 msgid "Autosave interval in minutes:"
-msgstr "Automatické ukládání každých minut:"
+msgstr "Automatikus mentési intervallum (percben):"
 
 #: content/gui/xml/mainmenu/settings.xml:136
-#, fuzzy
 msgid "Number of autosaves:"
-msgstr "Počet automaticky uložených her:"
+msgstr "Automatikus mentések száma:"
 
 #: content/gui/xml/mainmenu/settings.xml:144
-#, fuzzy
 msgid "Number of quicksaves:"
-msgstr "Počet rychle uložených her:"
+msgstr "Gyors mentések száma:"
 
 #: content/gui/xml/mainmenu/settings.xml:152
-#, fuzzy
 msgid "Language"
-msgstr "Jazyk"
+msgstr "Nyelv"
 
 #: content/gui/xml/mainmenu/settings.xml:164
 msgid "General"
-msgstr ""
+msgstr "Általános"
 
 #: content/gui/xml/mainmenu/settings.xml:169
-#, fuzzy
 msgid "Rotate minimap with map:"
-msgstr "Otočit minimapu zároveň s mapou:"
+msgstr "Minitérkép forgatása a térképpel:"
 
 #: content/gui/xml/mainmenu/settings.xml:169
-#, fuzzy
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Otočit minimapu, pokud je otočena mapa"
+msgstr "Ha a normál térkép elforgatásra kerül, a minitérkép is követi azt"
 
 #: content/gui/xml/mainmenu/settings.xml:175
-#, fuzzy
 msgid "Uninterrupted building:"
-msgstr "Nepřerušené stavění:"
+msgstr "Zavartalan építés:"
 
 #: content/gui/xml/mainmenu/settings.xml:175
-#, fuzzy
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr "Pokud je povoleno, po úspěšném postavní se neukončí stavební režim"
+msgstr ""
+"Engedélyezés esetén egy sikeres építést követően nem lép ki a játék az "
+"építés módból"
 
 #: content/gui/xml/mainmenu/settings.xml:181
-#, fuzzy
 msgid "Auto-unload ship:"
-msgstr "Automaticky vyložit loď:"
+msgstr "Hajó automatikus kipakolása:"
 
 #: content/gui/xml/mainmenu/settings.xml:181
-#, fuzzy
 msgid "Whether to unload the ship after founding a settlement"
-msgstr "Vyložit loď po nalezení osady"
+msgstr "Gyarmat megalapítása után a hajó kipakolásra kerüljön-e"
 
 #: content/gui/xml/mainmenu/settings.xml:187
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
-"Ne használd normál játékkor. Eldöntheted, hogy írjon-e hibakeresési "
-"információkat a naplózó könyvtárba a felhasználói könyvtáradba. Lelassítja a "
-"játékot."
+"Ne használd normál játékmenetben! Eldöntheted, hogy kerüljön-e hibakeresési "
+"információ a felhasználói könyvtárad naplózó könyvtárába. Lassítja a játékot."
 
 #: content/gui/xml/mainmenu/settings.xml:187
-#, fuzzy
 msgid "Enable logging:"
-msgstr "Naplózás bekapcsolása"
+msgstr "Naplózás bekapcsolása:"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Production indicators:"
-msgstr ""
+msgstr "Gyártás mutatók:"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"Bekapcsolás esetén mutatja a nyersanyag ikonokat az épület felett, "
+"függetlenül az előállítás állapotától"
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "Magasabb érték lassabb görgetést eredményez."
 
 #: content/gui/xml/mainmenu/settings.xml:201
 msgid "Scroll delay:"
-msgstr ""
+msgstr "Görgetés lassítása:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "Idézetek típusa:"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Milyen típusú idézetek jelenjenek meg a játék betöltésekor"
 
 #: content/gui/xml/mainmenu/settings.xml:218
-#, fuzzy
 msgid "Network"
-msgstr "Síť"
+msgstr "Hálózat"
 
 #: content/gui/xml/mainmenu/settings.xml:222
-#, fuzzy
 msgid "If set to 0, use the router default"
-msgstr "Pokud je nastavena 0, použít výchozí nastavení routeru"
+msgstr "0 esetén az átjáró alapértelmezett beállításai élnek"
 
 #: content/gui/xml/mainmenu/settings.xml:222
-#, fuzzy
 msgid "Network port:"
-msgstr "Síťový port:"
+msgstr "Hálózati port:"
 
 #: content/gui/xml/mainmenu/settings.xml:243
 msgid "Discard current changes"
-msgstr ""
+msgstr "Jelenlegi módosítások elvetése"
 
 #: content/gui/xml/mainmenu/settings.xml:244
-#, fuzzy
 msgid "Reset to default settings"
-msgstr "Obnovit původní nastavení"
+msgstr "Alapértelmezett beállítások alkalmazása"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 msgid "Save changes"
-msgstr "Uložit hru"
+msgstr "Módosítások alkalmazása"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:10
-#, fuzzy
 msgid "Your saved games:"
-msgstr "Vaše uložené hry:"
+msgstr "Mentett játékaid:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "A játékhoz tartozó jelszó. Szükséges a csatlakozáshoz"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:32
-#, fuzzy
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr "Mégsem"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:42
-#, fuzzy
 msgid "Enter filename:"
-msgstr "Zadejte název souboru:"
+msgstr "Fájlnév megadása:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:50
-#, fuzzy
 msgid "Details:"
-msgstr "Podbrobnosti:"
+msgstr "Részletek:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:59
-#, fuzzy
 msgid "Delete selected savegame"
-msgstr "Smazat vybranou hru"
+msgstr "Kiválasztott játék törlése"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
-#, fuzzy
 msgid "New game - Singleplayer"
-msgstr "Nová hra jednoho hráče"
+msgstr "Új játék - Egyjátékos mód"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
-#, fuzzy
 msgid "Scenario"
-msgstr "Scénář"
+msgstr "Küldetés"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
-#, fuzzy
 msgid "Random map"
-msgstr "Náhodná mapa"
+msgstr "Generált térkép"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
-#, fuzzy
 msgid "Free play"
-msgstr "Nekonečná hra"
+msgstr "Szabad játék"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
-#, fuzzy
 msgid "Start game"
-msgstr "Začít hru"
+msgstr "Játék indítása"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
-#, fuzzy
 msgid "Choose a map to play:"
-msgstr "Vyberte mapu k hře:"
+msgstr "Válassz térképet a játékhoz:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
-#, fuzzy
 msgid "Map settings:"
-msgstr "Nastavení mapy:"
+msgstr "Térkép beállításai:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
-#, fuzzy
 msgid "Seed:"
-msgstr "Osivo:"
+msgstr "Indulópont:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
-#, fuzzy
 msgid "Select a language:"
 msgstr "Nyelv kiválasztása:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
-#, fuzzy
 msgid "AI players:"
-msgstr "Hráči ovládaní počítačem:"
+msgstr "AI játékosok:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
-#, fuzzy
 msgid "Game settings:"
-msgstr "Nastavení hry:"
+msgstr "Játék beállításai:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
-#, fuzzy
 msgid "Free Trader"
-msgstr "Svobodný obchodník"
+msgstr "Szabad kereskedő"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
-#, fuzzy
 msgid "Pirates"
-msgstr "Piráti"
+msgstr "Kalózok"
 
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
-#, fuzzy
 msgid "Disasters"
-msgstr "Pohromy"
+msgstr "Katasztrófák"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
-#, fuzzy
 msgid "Player name:"
-msgstr "Jméno hráče:"
+msgstr "Játékos neve:"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
-#, fuzzy
 msgid "Color:"
-msgstr "Barva:"
+msgstr "Szín:"
 
 #: horizons/command/game.py:36
-#, fuzzy
 msgid "Invalid filename"
-msgstr "Chybné jméno souboru"
+msgstr "Érvénytelen fájlnév"
 
 #: horizons/command/game.py:37
-#, fuzzy
 msgid "Received an invalid filename for a save command."
-msgstr "Chybné jméno souboru pro uložení."
+msgstr "Érvénytelen fájlnév a mentés parancs végrehajtásakor."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
 #: horizons/gui/modules/pausemenu.py:93 horizons/mpsession.py:56
-#, fuzzy
 msgid "Error"
-msgstr "Chyba"
+msgstr "Hiba"
 
 #: horizons/command/game.py:48 horizons/gui/modules/pausemenu.py:93
-#, fuzzy
 msgid "Failed to save."
-msgstr "Uložení se nezdařilo."
+msgstr "A mentés sikertelen."
 
 #: horizons/component/tradepostcomponent.py:190
-#, fuzzy
 msgid "The trade partner does not sell this."
-msgstr "Obchodní partner toto zboží neprodává."
+msgstr "A kereskedő partner nem árulja ezt."
 
 #: horizons/component/tradepostcomponent.py:198
-#, fuzzy
 msgid "You can not store this."
-msgstr "Toto zboží není možné skladovat."
+msgstr "Nem tudod ezt elraktározni."
 
 #: horizons/component/tradepostcomponent.py:202
-#, fuzzy
 msgid "You can not afford to buy this."
-msgstr "Toto zboží není možné koupit."
+msgstr "Nem engedheted ezt meg magadnak."
 
 #: horizons/component/tradepostcomponent.py:208
-#, fuzzy
 msgid "The trade partner does not sell more of this."
-msgstr "Obchodní partner větší množství tohoto zboží neprodá."
+msgstr "A kereskedő partner nem tud több ilyet eladni."
 
 #: horizons/component/tradepostcomponent.py:232
-#, fuzzy
 msgid "The trade partner does not buy this."
-msgstr "Obchodní partner toto zboží nekupuje."
+msgstr "A kereskedő partner nem veszi ezt meg."
 
 #: horizons/component/tradepostcomponent.py:240
-#, fuzzy
 msgid "You do not possess this."
-msgstr "Toto zboží nemáte."
+msgstr "Nincs ilyen a birtokodban."
 
 #: horizons/component/tradepostcomponent.py:244
-#, fuzzy
 msgid "The trade partner can not store more of this."
-msgstr "Obchodní partner nemůže skladovat větší množství tohoto množství."
+msgstr "A kereskedő partner nem képes több ilyet tárolni."
 
 #: horizons/component/tradepostcomponent.py:248
-#, fuzzy
 msgid "The trade partner can not afford to buy this."
-msgstr "Obchodní partner nemůže toto zboží koupit."
+msgstr "A kereskedő partner nem engedheti ezt meg magának."
 
 #: horizons/component/tradepostcomponent.py:253
-#, fuzzy
 msgid "The trade partner does not buy more of this."
-msgstr "Obchodní partner nemůže koupit další kusy tohoto zboží."
+msgstr "A kereskedő partner nem tud több ilyet vásárolni."
 
 #: horizons/editor/session.py:69 horizons/spsession.py:64
-#, fuzzy
 msgid "Failed to quicksave."
-msgstr "Nepodařilo se uložit."
+msgstr "A gyors mentés sikertelen."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Hiba történt a gyors mentés során."
 
 # automatic save
 #: horizons/editor/session.py:70
-#, fuzzy
 msgid "Your map has not been saved."
-msgstr "Hra byla automaticky uložena."
+msgstr "A térkép nem került elmentésre."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:66
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"Ha a probléma még egyszer előfordulna, lépj kapcsolatba a fejlesztő "
+"csapattal: {website}"
 
 #: horizons/gui/gui.py:77
-#, fuzzy
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Opravdu chcete ukončit Unknown Horizons?"
+msgstr "Biztosan ki szeretnél lépni az Unknown Horizonsból?"
 
 #: horizons/gui/gui.py:78
-#, fuzzy
 msgid "Quit Game"
-msgstr "Ukončit hru"
+msgstr "Kilépés"
 
 #: horizons/gui/ingamegui.py:237
-#, fuzzy
 msgid "No diplomacy possible"
-msgstr "Diplomacie není použitelná"
+msgstr "Nincs lehetőség diplomáciára"
 
 #: horizons/gui/ingamegui.py:238
-#, fuzzy
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "Diplomacie není možná. Neexistují další hráči."
+msgstr "Nem tudsz diplomáciát alkalmazni, hiszen nincs más játékos."
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} csempék"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Nyomd le a kívánt gombot"
 
 #: horizons/gui/modules/hotkeys_settings.py:140
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} már használatban van: {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Szeretnéd felülírni?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
 #: horizons/gui/modules/select_savegame.py:155
-#, fuzzy
 msgid "Confirmation for overwriting"
-msgstr "Potvrďte přepsání"
+msgstr "Felülírás jóváhagyása"
 
 #: horizons/gui/modules/loadingscreen.py:37
 msgid "Quotes"
-msgstr ""
+msgstr "Idézetek"
 
 #: horizons/gui/modules/loadingscreen.py:60
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "Játékmenet ötletek"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "Nyomd meg az 'ESC' billentyűt a játék menüjének eléréséhez."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "Használd a 'SHIFT' gombot több épület elhelyezéséhez."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Jelenleg csak az első {tier} szakasz játszható."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Szüneteltetheted a játékot a 'P' gomb lenyomásával."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "A bal egérgomb nyomva tartásával egész útszakaszt építhetsz."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "A 'SHIFT' gomb nyomva tartásával egyszerre több épületet is építhetsz."
 
 #: horizons/gui/modules/loadingscreen.py:70
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "A telepeseid elégedettségét növelheted az adók csökkentésével."
 
 #: horizons/gui/modules/loadingscreen.py:71
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Legyenek tűzoltók és orvosok készenlétben, ezekkel elkerülheted a tűzvészt "
+"és a járványokat."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Építs tároló sátrakat a tárolókapacitásod növeléséhez."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "Bizonyosodj meg arról, hogy minden ház közelében van egy piactér."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "Press 'T' to make trees transparent."
-msgstr ""
+msgstr "Használd a 'T' gombot a fák átlátszóvá tételéhez."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Vegyes"
 
 #. translators: these are descriptions of the current task while loading a
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr ""
+msgstr "Játékmotor indítása…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr ""
+msgstr "Kifogjuk a halakat…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Felhasználói felület előkészítése…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr ""
+msgstr "Időzítő aktiválása…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Játékadatok átfésülése…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Szigetek megformálása…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Vázlatok előkészítése…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr ""
+msgstr "A világ elárasztása vízzel…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr ""
+msgstr "Állatok nevelése…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Meggyőző AI…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Kincsek elásása…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
-#, fuzzy
 msgid "Unable to find pyenet"
-msgstr "Nelze najít pyenet"
+msgstr "Nem található a pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"A többjátékos módhoz szükséges a \"pyenet\" könyvtár, amely nem található a "
+"rendszeredben."
 
 #: horizons/gui/modules/multiplayermenu.py:121
-#, fuzzy
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr "Uživatelé linuxu: Zkus instalovat pyenet přes správce balíčků."
+msgstr "Linux felhasználók: telepítsétek a pyenet-et a csomagkezelőn keresztül."
 
 #: horizons/gui/modules/multiplayermenu.py:130
-#, fuzzy
 msgid "Failed to initialize networking."
-msgstr "Nezdařilo se inicializovat síť."
+msgstr "Nem sikerült a hálózat előkészítése."
 
 #: horizons/gui/modules/multiplayermenu.py:131
 #: horizons/gui/modules/settings.py:273
-#, fuzzy
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr "Síť nemůže být inicializována s aktuálním nastavením."
+msgstr "A jelenlegi konfiguráció mellett a hálózati lehetőségek nem érhetők el."
 
 #: horizons/gui/modules/multiplayermenu.py:132
 #: horizons/gui/modules/settings.py:274
-#, fuzzy
 msgid "Check the settings you specified in the network section."
-msgstr "Zkontrolujte nastavení sítě."
+msgstr "Ellenőrizd az általad megadott beállításokat a hálózat szekcióban."
 
 #: horizons/gui/modules/multiplayermenu.py:141
 #: horizons/gui/modules/multiplayermenu.py:160 horizons/mpsession.py:51
-#, fuzzy
 msgid "Fatal Network Error"
-msgstr "Fatální chyba sítě"
+msgstr "Végzetes hálózati hiba"
 
 #: horizons/gui/modules/multiplayermenu.py:142
-#, fuzzy
 msgid "Could not connect to master server."
-msgstr "Spojení s hlavním serverem se nezdařilo."
+msgstr "A játék nem tud csatlakozni a mester szerverhez."
 
 #: horizons/gui/modules/multiplayermenu.py:143
-#, fuzzy
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Prosím, zkontrolujte Vaše připojení k internetu. Pokud je v pořádku, je "
-"možné, že hlavní server je dočasně mimo provoz."
+"Ellenőrizd az internetkapcsolatodat. Ha az rendben működik, akkor a mester "
+"szerverünk jelenleg nem elérhető."
 
 #: horizons/gui/modules/multiplayermenu.py:161 horizons/mpsession.py:52
-#, fuzzy
 msgid "Something went wrong with the network:"
-msgstr "Něco se pokazilo se sítí:"
+msgstr "Hiba történt a hálózattal kapcsolatban:"
 
 #: horizons/gui/modules/multiplayermenu.py:176
-#, fuzzy
 msgid "Version differs!"
-msgstr "Verze se liší!"
+msgstr "Eltérő verzió!"
 
 #: horizons/gui/modules/multiplayermenu.py:205
 #: horizons/gui/modules/multiplayermenu.py:457
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Map: {map_name}"
-msgstr "Mapa: {map_name}"
+msgstr "Térkép: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:206
 #: horizons/gui/modules/multiplayermenu.py:458
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Name: {game_name}"
-msgstr "Jméno hry: {game_name}"
+msgstr "Név: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:207
 #: horizons/gui/modules/multiplayermenu.py:459
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr ""
+msgstr "Létrehozó: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 #: horizons/gui/modules/multiplayermenu.py:460
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr "Hráči: {player_amount}/{player_limit}"
+msgstr "Játékosok: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:228
-#, fuzzy
 msgid "Wrong version"
-msgstr "Špatná verze"
+msgstr "Téves verzió"
 
 #: horizons/gui/modules/multiplayermenu.py:229
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "The game's version differs from your version. Every player in a multiplayer "
 "game must use the same version. This can be fixed by every player updating "
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"Rozdílné verze hry! Hráči musí používat stejnou verzi hry, prosím "
-"aktualizujte na nejnovější verzi. Verze hry: {game_version} Vaše verze: "
-"{own_version}"
+"A játék verziója eltér a Tiédtől. A többjátékos módban mindenkinek "
+"ugyanazzal a verzióval kell rendelkeznie. Ez a probléma könnyen orvosolható "
+"a legújabb verzió telepítésével. A játék verziója: {game_version}. A Te "
+"verziód: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:267
 msgid "Password of the game"
-msgstr ""
+msgstr "A játékhoz tartozó jelszó"
 
 #: horizons/gui/modules/multiplayermenu.py:268
 msgid "Enter password:"
-msgstr ""
+msgstr "Add meg a jelszót:"
 
 #: horizons/gui/modules/multiplayermenu.py:347
 #: horizons/gui/modules/singleplayermenu.py:407
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr "Doporučený počet hráčů: {number}"
+msgstr "Ajánlott játékosok száma: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:393
 #: horizons/network/networkinterface.py:526
 msgid "Ready"
-msgstr ""
+msgstr "Kész"
 
 #: horizons/gui/modules/multiplayermenu.py:395
 msgid "Not ready"
-msgstr ""
+msgstr "Nincs kész"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 msgid "Enter your message"
-msgstr "Vaše zpráva:"
+msgstr "Ide írd az üzeneted"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
 msgid "Click here to change your name and/or color"
-msgstr ""
+msgstr "Kattints ide a neved és/vagy színed megváltoztatásához"
 
 #: horizons/gui/modules/multiplayermenu.py:504
 #, python-brace-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "{player} kirúgása"
 
 #: horizons/gui/modules/multiplayermenu.py:571
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{player} csatlakozott a játékhoz"
 
 #: horizons/gui/modules/multiplayermenu.py:574
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{player} kilépett a játékból"
 
 #: horizons/gui/modules/multiplayermenu.py:580
 msgid "You are now ready"
-msgstr ""
+msgstr "Készen állsz"
 
 #: horizons/gui/modules/multiplayermenu.py:582
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "Még nem állsz készen"
 
 #: horizons/gui/modules/multiplayermenu.py:585
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} készen áll"
 
 #: horizons/gui/modules/multiplayermenu.py:587
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} nem áll készen"
 
 #: horizons/gui/modules/multiplayermenu.py:591
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr ""
+msgstr "Mostantól {new_name} az új neved"
 
 #: horizons/gui/modules/multiplayermenu.py:593
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "{player} neve mostantól {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:597
 msgid "You changed your color"
-msgstr ""
+msgstr "Megváltoztattad a színed"
 
 #: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player} megváltoztatta a színét"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "Kicked"
-msgstr ""
+msgstr "Kirúgva"
 
 #: horizons/gui/modules/multiplayermenu.py:603
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "A játék összehívója kirúgott Téged"
 
 #: horizons/gui/modules/multiplayermenu.py:606
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player} kirúgva a játszma készítője által"
 
 #: horizons/gui/modules/pausemenu.py:82
-#, fuzzy
 msgid "Are you sure you want to abort the running session?"
-msgstr "Jste si jisti, že chcete přerušit aktuální hru?"
+msgstr "Biztosan meg szeretnéd szakítani a futó játszmát?"
 
 #: horizons/gui/modules/pausemenu.py:83
-#, fuzzy
 msgid "Quit Session"
-msgstr "Ukončit relaci"
+msgstr "Kilépés"
 
 #: horizons/gui/modules/select_savegame.py:75
-#, fuzzy
 msgid "No saved games"
-msgstr "Žádné uložené hry"
+msgstr "Nincs mentett játék"
 
 #: horizons/gui/modules/select_savegame.py:75
-#, fuzzy
 msgid "There are no saved games to load."
-msgstr "Nejsou žádné uložené hry k nahrání."
+msgstr "Nem található mentett játék a betöltéshez."
 
 #: horizons/gui/modules/select_savegame.py:144
-#, fuzzy
 msgid "No filename given"
-msgstr "Nebyl zadán název souboru"
+msgstr "Nincs megadva fájlnév"
 
 #: horizons/gui/modules/select_savegame.py:145
-#, fuzzy
 msgid "Please enter a valid filename."
-msgstr "Zadejte prosím platný název souboru."
+msgstr "Adj meg helyes fájlnevet."
 
 #: horizons/gui/modules/select_savegame.py:149
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Uložená hra názvem '{name}' již existuje."
+msgstr "Egy korábbi mentett játék már létezik {name} névvel."
 
 #: horizons/gui/modules/select_savegame.py:151
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "Uložená hra názvem '{name}' již existuje."
+msgstr "Már van {name} névvel ellátott térkép."
 
 #: horizons/gui/modules/select_savegame.py:153
-#, fuzzy
 msgid "Overwrite it?"
-msgstr "Přepsat?"
+msgstr "Felülírod?"
 
 #: horizons/gui/modules/select_savegame.py:217
-#, fuzzy
 msgid "Unknown savedate"
-msgstr "Neznámé datum uložení"
+msgstr "Ismeretlen mentési dátum"
 
 #: horizons/gui/modules/select_savegame.py:220
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Saved at {time}"
-msgstr "Uloženo {time}"
+msgstr "Mentve ekkor: {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:224
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Uloženo {amount}-krát"
-msgstr[1] "Uloženo {amount}-krát"
-msgstr[2] "Uloženo {amount}-krát"
+msgstr[0] "Mentve {amount} alkalommal"
+msgstr[1] "Mentve {amount} alkalommal"
 
 #: horizons/gui/modules/select_savegame.py:231
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Savegame version {version}"
-msgstr "Uložená verze hry {version}"
+msgstr "Mentett játék verziója {version}"
 
 #: horizons/gui/modules/select_savegame.py:235
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "(valószínűleg nem kompatibilis)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
 #: horizons/gui/modules/select_savegame.py:239
-#, fuzzy
 msgid "Incompatible version"
-msgstr "Nekompatibilní verze"
+msgstr "Nem kompatibilis verzió"
 
 #: horizons/gui/modules/select_savegame.py:252
-#, fuzzy
 msgid "No file selected"
-msgstr "Nebyl vybrán žádný soubor"
+msgstr "Nincs fájl kiválasztva"
 
 #: horizons/gui/modules/select_savegame.py:252
-#, fuzzy
 msgid "You need to select a savegame to delete."
-msgstr "Vyberte hru ke smazání."
+msgstr "A törléshez ki kell választanod egy mentett játékot."
 
 #: horizons/gui/modules/select_savegame.py:255
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Opravdu chcete smazat hru '{name}'?"
+msgstr "Valóban törölni szeretnéd a következőt: {name}?"
 
 #: horizons/gui/modules/select_savegame.py:257
-#, fuzzy
 msgid "Confirm deletion"
-msgstr "Potvrďte smazání"
+msgstr "Törlés jóváhagyása"
 
 #: horizons/gui/modules/select_savegame.py:262
-#, fuzzy
 msgid "Error!"
-msgstr "Chyba!"
+msgstr "Hiba!"
 
 #: horizons/gui/modules/select_savegame.py:262
-#, fuzzy
 msgid "Failed to delete savefile!"
-msgstr "Chyba při smazání uloženého souboru!"
+msgstr "A mentés törlése sikertelen!"
 
 #: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
 msgid "Hotkeys"
-msgstr ""
+msgstr "Irányítás"
 
 #: horizons/gui/modules/settings.py:55
-#, fuzzy
 msgid "Game"
-msgstr "Ukončit hru"
+msgstr "Játék"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Letiltva"
 
 #: horizons/gui/modules/settings.py:126
-#, fuzzy
 msgid "Restart required"
-msgstr "Vyžadován restart"
+msgstr "Újraindítás szükséges"
 
 #: horizons/gui/modules/settings.py:127
-#, fuzzy
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr "Některé změny vyžadují restartování hry."
+msgstr "Néhány módosítás érvénybe lépéséhez indítsd újra az Unknown Horizonst."
 
 #: horizons/gui/modules/settings.py:131
-#, fuzzy
 msgid "Restore default settings"
-msgstr "Obnovit původní nastavení"
+msgstr "Alapértelmezett beállítások visszaállítása"
 
 #: horizons/gui/modules/settings.py:132
-#, fuzzy
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
-msgstr "Obnovení původního nastavení zruší veškerá Vaše nastavení."
+msgstr ""
+"Az alapértelmezett beállítások visszaállítása törli az eddigi beállításaidat."
 
 #: horizons/gui/modules/settings.py:133
-#, fuzzy
 msgid "Do you want to continue?"
-msgstr "Chcete pokračovat?"
+msgstr "Szeretnéd folytatni?"
 
 #: horizons/gui/modules/settings.py:230
-#, fuzzy
 msgid "Warning"
-msgstr "Varování"
+msgstr "Figyelmeztetés"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/gui/modules/settings.py:232
-#, fuzzy
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious "
 "graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
-"V SDL vykreslování jsou vážné chyby a je určeno pouze jako náhradní "
-"řešení. \n"
+"Az SDL leképező tartalék megoldásnak számít és komoly grafikai problmákat "
+"okozhat!\n"
 "\n"
-"Použití na vlastní nebezpečí!"
+"Csak saját felelősségre!"
 
 #: horizons/gui/modules/settings.py:259
-#, fuzzy
 msgid "Invalid network port"
-msgstr "Špatný síťový port"
+msgstr "Nem megfelelő hálózati port"
 
 #: horizons/gui/modules/settings.py:260
-#, fuzzy
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr "Vybraný port není platný. Musí být mezi číslem 1 a 65535."
+msgstr "Az általad megadott port nem helyes. 1 és 65535 közötti számot adj meg."
 
 #: horizons/gui/modules/settings.py:261
-#, fuzzy
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
-"Zkontrolujte prosím port, který jste zadali, a ujistěte se, že je v určeném "
-"rozsahu."
+"Ellenőrizd az általad megadott port számot, hogy a megadott intervallumba "
+"esik-e."
 
 #: horizons/gui/modules/settings.py:272
-#, fuzzy
 msgid "Failed to apply new network settings."
-msgstr "Nepodařilo se načíst nové síťové nastavení."
+msgstr "Nem sikerült az új hálózati beállításokat alkalmazni."
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
 #: horizons/gui/modules/settings.py:278
-#, fuzzy
 msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
 msgstr ""
-"Nízká čísla portů někdy vyžadují zvláštní přístup oprávnění, zkuste 0 nebo "
-"číslo větší než 1024."
+"Az alacsonyabb port számokhoz olykor különleges hozzáférés szükséges, "
+"próbáld a 0-át, vagy 1024-nél nagyobb számot."
 
 #: horizons/gui/modules/singleplayermenu.py:106
-#, fuzzy
 msgid "Invalid player name"
-msgstr "Neplatné jméno hráče"
+msgstr "Helytelen játékos név"
 
 #: horizons/gui/modules/singleplayermenu.py:106
-#, fuzzy
 msgid "You entered an invalid playername."
-msgstr "Zadal jste neplatné jméno hráče."
+msgstr "Helytelen nevet próbáltál adni magadnak."
 
 #: horizons/gui/modules/singleplayermenu.py:149
-#, fuzzy
 msgid "Resource density:"
-msgstr "Hustota zdrojů:"
+msgstr "Nyersanyag sűrűsége:"
 
 #: horizons/gui/modules/singleplayermenu.py:227
-#, fuzzy
 msgid "Map size:"
-msgstr "Velikost mapy:"
+msgstr "Térkép mérete:"
 
 #: horizons/gui/modules/singleplayermenu.py:228
-#, fuzzy
 msgid "Water:"
-msgstr "Voda:"
+msgstr "Víz:"
 
 #: horizons/gui/modules/singleplayermenu.py:229
-#, fuzzy
 msgid "Max island size:"
-msgstr "Maximální velikost ostrova:"
+msgstr "Maximális szigetméret:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
-#, fuzzy
 msgid "Preferred island size:"
-msgstr "Doporučená velikost ostrova:"
+msgstr "Előnyös szigetméret:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
-#, fuzzy
 msgid "Island size deviation:"
-msgstr "Odchylka velikosti ostrovu:"
+msgstr "Szigetméret eltérés:"
 
 #: horizons/gui/modules/singleplayermenu.py:345
-#, fuzzy
 msgid "Click to generate a different random map"
-msgstr "Klikněte pro vytvoření jiné náhodné mapy"
+msgstr "Kattints egy új generált térkép elkészítéséhez"
 
 # szkenárió?? - gondolom egy játék menetet tartalmazó beállítást tároló fájl... na ezt fordítsd le:P
 #: horizons/gui/modules/singleplayermenu.py:505
-#, fuzzy
 msgid "Invalid scenario file"
-msgstr "Neplatný scénář"
+msgstr "Érvénytelen küldetés fájl"
 
 # szcenárió can be "forgatókönyv" - not the best word for it
 #: horizons/gui/modules/singleplayermenu.py:506
-#, fuzzy
 msgid "The selected file is not a valid scenario file."
-msgstr "Zvolený soubor není platný souborem scénáře."
+msgstr "A kiválasztott fájl nem érvényes küldetés fájl."
 
 #: horizons/gui/modules/singleplayermenu.py:507
-#, fuzzy
 msgid "Error message:"
-msgstr "Chybová zpráva:"
+msgstr "Hibaüzenet:"
 
 #: horizons/gui/modules/singleplayermenu.py:508
-#, fuzzy
 msgid "Please report this to the author."
-msgstr "Prosím, oznamte tuto věc autorovi."
+msgstr "Kérjük, jelentsd a készítőnek."
 
 #: horizons/gui/modules/singleplayermenu.py:570
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Difficulty: {difficulty}"
-msgstr "Obtížnost: {difficulty}"
+msgstr "Nehézség: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:573
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Author: {author}"
-msgstr "Autor: {author}"
+msgstr "Készítő: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:576
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Description: {desc}"
-msgstr "Popis: {desc}"
+msgstr "Leírás: {desc}"
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:230
 #, python-brace-format
 msgid "Build {building}"
-msgstr "Épít {building}"
+msgstr "{building} építése"
 
 #: horizons/gui/mousetools/navigationtool.py:95
-#, fuzzy
 msgid "Press H to remove this hint"
-msgstr "Stiskněte klávesu H k odstranění tohoto tipu"
+msgstr "Nyomd meg a 'H' gombot az ötletek elrejtéséhez"
 
 #: horizons/gui/tabs/boatbuildertabs.py:47
-#, fuzzy
 msgid "Boat builder overview"
-msgstr "Přehled stavitele lodí"
+msgstr "Hajóépítő áttekintés"
 
 #: horizons/gui/tabs/boatbuildertabs.py:94
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr "{ship} (umístit do fronty: {place})"
+msgstr "{ship} (hányadik a sorban: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:198
-#, fuzzy
 msgid "Build this ship!"
-msgstr "Postavit loď!"
+msgstr "Építsd meg ezt a hajót!"
 
 #: horizons/gui/tabs/boatbuildertabs.py:234
-#, fuzzy
 msgid "Fisher boats"
-msgstr "Rybářské lodě"
+msgstr "Halászhajók"
 
 #: horizons/gui/tabs/boatbuildertabs.py:246
-#, fuzzy
 msgid "Trade boats"
-msgstr "Obchodní lodě"
+msgstr "Kereskedő hajók"
 
 #: horizons/gui/tabs/boatbuildertabs.py:258
-#, fuzzy
 msgid "War boats"
-msgstr "Válečné čluny"
+msgstr "Csatahajók"
 
 #: horizons/gui/tabs/boatbuildertabs.py:270
-#, fuzzy
 msgid "War ships"
-msgstr "Válečné lodě"
+msgstr "Hadihajók"
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
-#, fuzzy
 msgid "Confirm order"
-msgstr "Potvrdit"
+msgstr "Rendelés jóváhagyása"
 
 #: horizons/gui/tabs/buildingtabs.py:33
-#, fuzzy
 msgid "Tower overview"
-msgstr "Přehled obranné věže"
+msgstr "Torony áttekintés"
 
 #: horizons/gui/tabs/buildingtabs.py:41 horizons/gui/tabs/overviewtab.py:31
-#, fuzzy
 msgid "Overview"
-msgstr "Přehled"
+msgstr "Áttekintés"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr "Építs összefüggő épületeket"
+msgstr "Kapcsolódó épületek építése"
 
 #: horizons/gui/tabs/buyselltab.py:134
-#, fuzzy
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr "Obchodní nabídku přidejte kliknutím na využitý oddíl skladu."
+msgstr ""
+"Kattints az egyik nyersanyag rekeszre egy kereskedelmi ajánlat hozzáadásához."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:177
-#, fuzzy
 msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
-"Zadejte nákup či prodej kliknutím šipku - a potom posuvníkem nastavte cílové "
-"množství ve skladu."
+"Állítsd be a címkére kattintva, hogy eladás vagy vásárlás, majd add meg a "
+"mennyiséget a csúszka segítségével."
 
 # Na most pl búzával így néz ki:
 # "Vásárolni fog búza 20 aranyért tonnánként, hogyha kevesebb van, mint 30t a raktárban."
@@ -2508,19 +2224,16 @@ msgstr ""
 "raktárban, mint {limit} tonna."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Přehled skladiště"
+msgstr "Raktár áttekintés"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
-#, fuzzy
 msgid "Account"
-msgstr "Účet"
+msgstr "Kimutatás"
 
 #: horizons/gui/tabs/mainsquaretabs.py:112
-#, fuzzy
 msgid "Main square overview"
-msgstr "Přehled náměstí"
+msgstr "Főtér áttekintés"
 
 #: horizons/gui/tabs/mainsquaretabs.py:143
 msgid "Upgrade not possible:"
@@ -2528,158 +2241,139 @@ msgstr "Vylepšení není možné:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Jelenleg ez a legmagasabb játszható szint!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
-#, fuzzy
 msgid "Don't allow upgrades"
-msgstr "Nejsou povolena vylepšení"
+msgstr "Fejlesztések tiltása"
 
 #: horizons/gui/tabs/mainsquaretabs.py:195
-#, fuzzy
 msgid "Allow upgrades"
-msgstr "Vylepšení povoleno"
+msgstr "Fejlesztések engedélyezése"
 
 #: horizons/gui/tabs/overviewtab.py:101
-#, fuzzy
 msgid "Unit overview"
-msgstr "Přehled jednotek"
+msgstr "Egység áttekintés"
 
 #: horizons/gui/tabs/productiontabs.py:44
 #: horizons/gui/tabs/productiontabs.py:235
-#, fuzzy
 msgid "Production overview"
-msgstr "Přehled výroby"
+msgstr "Gyártás áttekintés"
 
 #: horizons/gui/tabs/selectmultitab.py:46
-#, fuzzy
 msgid "Selected Units"
-msgstr "Vybrané jednotky"
+msgstr "Kiválasztott egységek"
 
 #: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
 #: horizons/gui/tabs/shiptabs.py:178
-#, fuzzy
 msgid "Ship overview"
-msgstr "Přehled lodi"
+msgstr "Hajó áttekintés"
 
 #: horizons/gui/tabs/shiptabs.py:55
-#, fuzzy
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr "Pro založení osady musí být loď blíže k ostrovu."
+msgstr ""
+"A hajónak egy sziget közelében kell tartózkodnia a gyarmat megalapításához."
 
 #: horizons/gui/tabs/shiptabs.py:60
-#, fuzzy
 msgid "You already have a settlement on this island."
-msgstr "Na tomto ostrově již osadu máte."
+msgstr "Már van egy településed ezen a szigeten."
 
 #: horizons/gui/tabs/shiptabs.py:91
-#, fuzzy
 msgid "Load/Unload"
-msgstr "Naložit/Vyložit"
+msgstr "Berakodás/Kirakodás"
 
 #: horizons/gui/tabs/shiptabs.py:93
-#, fuzzy
 msgid "Buy/Sell"
-msgstr "Koupit/Prodat"
+msgstr "Vásárlás/Eladás"
 
 #: horizons/gui/tabs/shiptabs.py:102
-#, fuzzy
 msgid "Too far from the nearest tradeable warehouse"
 msgstr "Túl messze van a legközelebbi saját, vagy szövetséges raktárháztól"
 
 #: horizons/gui/tabs/shiptabs.py:108
-#, fuzzy
 msgid "Cannot equip trade ship with weapons"
-msgstr "Obchodní lodě nelze vyzbrojit"
+msgstr "Nem rakhatsz a kereskedő hajóra fegyvereket"
 
 #: horizons/gui/tabs/shiptabs.py:109
-#, fuzzy
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr "Není možné vybavit obchodní lodě zbraněmi."
+msgstr "Nem lehetséges fegyvereket elhelyezni a kereskedő hajókon."
 
 #: horizons/gui/tabs/shiptabs.py:144
-#, fuzzy
 msgid "Equip weapon"
-msgstr "Ozbrojit"
+msgstr "Fegyver használata"
 
 #: horizons/gui/tabs/shiptabs.py:148
-#, fuzzy
 msgid "Unequip weapon"
-msgstr "Odzbrojit"
+msgstr "Fegyver leszerelése"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} arany"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "Megvétel {buyprice} aranyért"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "Eladás {sellprice} aranyért"
 
 #: horizons/gui/widgets/inventory.py:166
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:168
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr "Omezení: {amount}t na slot"
+msgstr "Korlát: {amount}/slot"
 
 #: horizons/gui/widgets/logbook.py:49
-#, fuzzy
 msgid "Logbook"
-msgstr "Záznamy"
+msgstr "Napló"
 
 #: horizons/gui/widgets/logbook.py:183
-#, fuzzy
 msgid "Emptiness"
-msgstr "Prázdnota"
+msgstr "Üresség"
 
 #: horizons/gui/widgets/logbook.py:186
-#, fuzzy
 msgid "There is nothing written in your logbook yet!"
-msgstr "Ve Vašem lodním deníku není zatím žádný záznam!"
+msgstr "Jelenleg még nincs egy bejegyzés sem a naplóban!"
 
 #: horizons/gui/widgets/playerssettlements.py:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Settlements of {player}"
-msgstr "Osadníci hráče {player}"
+msgstr "{player} települései"
 
 #: horizons/gui/widgets/playersships.py:44
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Ships of {player}"
-msgstr "Lodě hráče {player}"
+msgstr "{player} hajói"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:94
-#, fuzzy
 msgid "None"
-msgstr "Žádné"
+msgstr "Semmi"
 
 #: horizons/gui/widgets/playersships.py:96
 msgid "N/A"
-msgstr "N/A"
+msgstr "Nincs adat"
 
 #: horizons/gui/widgets/productionoverview.py:60
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Production overview of {settlement}"
-msgstr "Přehled výroby osady {settlement}"
+msgstr "{settlement} előállításának áttekintése"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr ""
+msgstr "Kattints a statisztika megtekintéséhez"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
-#, fuzzy
 msgid "Click to add a new slot"
-msgstr "Klikněte pro přidání nového oddílu"
+msgstr "Kattints egy új slot hozzáadásához"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
@@ -2703,145 +2397,125 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
-msgstr ""
+msgstr "Vásárlás kiadások"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr ""
+msgstr "Eladás bevételek"
 
 #: horizons/gui/widgets/routeconfig.py:107
-#, fuzzy
 msgid "Stop route"
-msgstr "Ukončit obchodní cestu"
+msgstr "Útvonal leállítása"
 
 #: horizons/gui/widgets/routeconfig.py:114
-#, fuzzy
 msgid "Need at least two settlements"
-msgstr "Potřebujete nejméně dvě osady"
+msgstr "Legalább két gyarmat szükséges"
 
 #: horizons/gui/widgets/routeconfig.py:115
-#, fuzzy
 msgid "You need at least two different settlements in your route."
-msgstr "Pro cestu potřebujete nejméně dvě různé osady."
+msgstr "Legalább két különböző gyarmat szükséges az útvonalhoz."
 
 #: horizons/gui/widgets/routeconfig.py:144
-#, fuzzy
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Kliknutím na osadu přidejte vyčkávací pozici."
+msgstr "Kattints egy gyarmatra egy úticél hozzáadásához!"
 
 #: horizons/gui/widgets/routeconfig.py:183
-#, fuzzy
 msgid "Loading into ship"
-msgstr "Nakládání na loď"
+msgstr "Berakodás a hajóba"
 
 #: horizons/gui/widgets/routeconfig.py:190
-#, fuzzy
 msgid "Unloading from ship"
-msgstr "Vykládání z lodi"
+msgstr "Kirakodás a hajóból"
 
 #: horizons/gui/widgets/routeconfig.py:376
 msgid "You are not allowed to trade with this player"
-msgstr ""
+msgstr "Nem engedélyezett ezzel a játékossal való kereskedelem"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
-#, fuzzy
 msgid "none"
-msgstr "žádné"
+msgstr "semmi"
 
 #: horizons/gui/windows.py:392
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "Részletek: {error_details}"
 
 #: horizons/gui/windows.py:394
 #, python-brace-format
 msgid "Error: {error_message}"
-msgstr ""
+msgstr "Hiba: {error_message}"
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:56
-#, fuzzy
 msgid "Bakery"
-msgstr "Pekárna"
+msgstr "Pékség"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:58
-#, fuzzy
 msgid "Consumes flour. Produces food."
-msgstr "Spotřebovává mouku. Vyrábí jídlo."
+msgstr "Lisztet használ fel. Élelmiszert állít elő."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:63
-#, fuzzy
 msgid "Barracks"
-msgstr "Kasárna"
+msgstr "Laktanya"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:65
-#, fuzzy
 msgid "Recruits units suitable for ground combat."
-msgstr "Poskytuje jednotky vhodné pro pozemní souboje."
+msgstr "Egységeket toboroz szárazföldi harcok levezetéséhez."
 
 # Érdekes...
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
-#, fuzzy
 msgid "Blender"
-msgstr "Bylinkářství"
+msgstr "Fűszerkészítő"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
-#, fuzzy
 msgid "Produces condiments out of spices."
-msgstr "Vyrábí koření."
+msgstr "Fűszert állít elő fűszernövényből."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:77
-#, fuzzy
 msgid "Boat Builder"
-msgstr "Stavitel lodí"
+msgstr "Hajóépítő"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:79
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Staví loďky a malé lodě. Stavěn na pobřeží."
+msgstr "Csónakokat és kisebb hajókat építésére alkalmas. Partra kell építeni."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:84
-#, fuzzy
 msgid "Brickyard"
-msgstr "Cihelna"
+msgstr "Téglagyár"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:86
-#, fuzzy
 msgid "Turns clay into bricks."
-msgstr "Z jílu vyrábí cihly."
+msgstr "Agyagból téglát állít elő."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:91
-#, fuzzy
 msgid "Butchery"
-msgstr "Řeznictví"
+msgstr "Hentes"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Produkuje jídlo. Potřebuje prasata nebo skot."
+msgstr "Disznó vagy marha szükséges a működéséhez. Élelmiszert állít elő."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:98
-#, fuzzy
 msgid "Charcoal Burning"
-msgstr "Uhlíř"
+msgstr "Széntermelő"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:100
@@ -2850,203 +2524,171 @@ msgstr "Rengeteg deszkát éget."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:105
-#, fuzzy
 msgid "Clay Deposit"
-msgstr "Ložisko jílu"
+msgstr "Agyag tároló"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:110
-#, fuzzy
 msgid "Clay Pit"
-msgstr "Jílový důl"
+msgstr "Agyagbánya"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:112
-#, fuzzy
 msgid "Gets clay from deposit."
-msgstr "Těží jíl."
+msgstr "A tárolóból agyagot vesz fel."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:117
-#, fuzzy
 msgid "Distillery"
-msgstr "Lihovar"
+msgstr "Szeszfőzde"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
-#, fuzzy
 msgid "Turns sugar into liquor."
-msgstr "Z cukru destiluje alkohol."
+msgstr "Cukorból alkoholt állít elő."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:124
-#, fuzzy
 msgid "Doctor"
-msgstr "Lékař"
+msgstr "Orvos"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:126
-#, fuzzy
 msgid "Treats diseases. Consumes herbs."
-msgstr "Léčí nemoci. Spotřebovává bylinky."
+msgstr "Betegségeket gyógyít. Gyógynövényeket használ."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:131
-#, fuzzy
 msgid "Farm"
-msgstr "Farma"
+msgstr "Farm"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:133
-#, fuzzy
 msgid "Grows field crops and raises livestock."
-msgstr "Obhospodařuje pole a chová dobytek."
+msgstr "Szántóföldi növényeket termeszt és állatállományt tart."
 
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:138
-#, fuzzy
 msgid "Alvearies"
-msgstr "Úly"
+msgstr "Méhész"
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:140
-#, fuzzy
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr "Chová včely. Vyrábí medové plástve pro výrobu cukroví. Vyžaduje farmu."
+msgstr ""
+"Méheket tart. Mézet állít elő, édességek előállításához. Farm szükséges "
+"hozzá."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
-#, fuzzy
 msgid "Cattle Run"
-msgstr "Výběh pro dobytek"
+msgstr "Marhaistálló"
 
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:147
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
-msgstr "Chová se zde skot. Potřebuje farmu."
+msgstr "Marhákat nevel. Farm szükséges hozzá."
 
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:152
-#, fuzzy
 msgid "Cocoa Field"
-msgstr "Kakaovníkové pole"
+msgstr "Kakaóültetvény"
 
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:154
-#, fuzzy
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr "Vyrábí kakaové boby. Potřebuje farmu."
+msgstr "Kakaóbabot termeszt édességek előállításához. Farm szükséges hozzá."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:159
-#, fuzzy
 msgid "Corn Field"
-msgstr "Kukuřičné pole"
+msgstr "Kukoricamező"
 
 #. tooltip_text of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:161
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Dává kukuřici. Potřebuje farmu."
+msgstr "Kukoricát termeszt. Farm szükséges hozzá."
 
 #. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:166
-#, fuzzy
 msgid "Herbary"
-msgstr "Bylinkářství"
+msgstr "Fűszernövény-termesztő"
 
 #. tooltip_text of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:168
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
-msgstr "Produkuje tabákové listy. Potřebuje farmu."
+msgstr "Gyógynövényeket termeszt. Farm szükséges hozzá."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:173
-#, fuzzy
 msgid "Pasture"
-msgstr "Pastvina"
+msgstr "Legelő"
 
 #. tooltip_text of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:175
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Chová ovce. Produkuje vlnu. Potřebuje farmu."
+msgstr "Birkákat nevel. Gyapjút állít elő. Farm szükséges hozzá."
 
 #. name of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:180
-#, fuzzy
 msgid "Pigsty"
-msgstr "Prasečí chlívek"
+msgstr "Disznóól"
 
 #. tooltip_text of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:182
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
-msgstr "Chová prasata. Potřebuje farmu."
+msgstr "Disznókat nevel. Farm szükséges hozzá."
 
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:187
-#, fuzzy
 msgid "Potato Field"
-msgstr "Bramborové pole"
+msgstr "Krumpli ültetvény"
 
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:189
-#, fuzzy
 msgid "Yields food. Needs a farm."
-msgstr "Produkuje jídlo. Potřebuje farmu."
+msgstr "Élelmiszert termel. Farm szükséges hozzá."
 
 #. name of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:194
-#, fuzzy
 msgid "Spice Field"
-msgstr "Bylinkové pole"
+msgstr "Fűszer ültetvény"
 
 #. tooltip_text of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:196
-#, fuzzy
 msgid "Grows spices. Needs a farm."
-msgstr "Poskytuje koření. Potřebuje farmu."
+msgstr "Fűszernövényt termeszt. Farm szükséges hozzá."
 
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:201
-#, fuzzy
 msgid "Sugar Field"
-msgstr "Třtinové pole"
+msgstr "Cukornád ültetvény"
 
 #. tooltip_text of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:203
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr "Používané ve výrobě alkoholu. Potřebuje farmu."
+msgstr "Szükséges alkohol előállításához. Farm szükséges hozzá."
 
 #. name of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:208
-#, fuzzy
 msgid "Tobacco Field"
-msgstr "Tabákové pole"
+msgstr "Dohányültetvény"
 
 #. tooltip_text of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:210
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
-msgstr "Produkuje tabákové listy. Potřebuje farmu."
+msgstr "Dohányt állít elő. Farm szükséges hozzá."
 
 #. name of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:215
-#, fuzzy
 msgid "Vineyard"
-msgstr "Vinice"
+msgstr "Szőlőültetvény"
 
 #. tooltip_text of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:217
-#, fuzzy
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
-"Pro potřeby vinařského průmyslu a výroby cukroví pěstuje vinnou révu. "
-"Potřebuje farmu."
+"Szőlőt termeszt, amelyből bort és édességet készítenek. Farm szükséges hozzá."
 
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:222
@@ -3055,199 +2697,168 @@ msgstr "Tűzoltóság"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:224
-#, fuzzy
 msgid "Extinguishes fires."
-msgstr "Hasí oheň."
+msgstr "Elhárítja a tűzeseteket."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:229
-#, fuzzy
 msgid "Fish Deposit"
-msgstr "Naleziště ryb"
+msgstr "Hal lelőhely"
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:234
-#, fuzzy
 msgid "Fisherman's Tent"
-msgstr "Rybářský stan"
+msgstr "Horgász sátor"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:236
-#, fuzzy
 msgid "Fishes the sea, produces food."
-msgstr "Rybaří na moři, dodává jídlo."
+msgstr "A tengeren horgászik, élelmiszert termel."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:241
-#, fuzzy
 msgid "Hunter's Tent"
-msgstr "Lovecký stan"
+msgstr "Vadász sátor"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:243
-#, fuzzy
 msgid "Hunts wild forest animals, produces food."
-msgstr "Loví divoká lesní zvířata, dodává jídlo."
+msgstr "Az erdőben állatokra vadászik, élelmiszert termel."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:248
-#, fuzzy
 msgid "Lookout"
-msgstr "Rozhledna"
+msgstr "Kilátó"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 msgid "Increases the player's sight."
-msgstr "Zvětšuje hráčovo zorné pole."
+msgstr "Növeli a játékos által belátható területet."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
-#, fuzzy
 msgid "Lumberjack Tent"
-msgstr "Dřevorubcův stan"
+msgstr "Favágó sátor"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:257
-#, fuzzy
 msgid "Lumberjack Hut"
-msgstr "Dřevorubcova bouda"
+msgstr "Favágó kunyhó"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:259
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
-msgstr "Kácí stromy a vyrábí z nich prkna."
+msgstr "Kivágja a fákat, amelyből deszkát állít elő."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:264
-#, fuzzy
 msgid "Main Square"
-msgstr "Náměstí"
+msgstr "Főtér"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:266
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "Áruval látja el a lakosságot. A közösséget építi."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 msgid "Mine"
-msgstr "Železný důl"
+msgstr "Bánya"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
-#, fuzzy
 msgid "Gets iron ore from deposit."
-msgstr "Získává železnou rudu."
+msgstr "Vasat bányászik."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:278
-#, fuzzy
 msgid "Mountain"
-msgstr "Hora"
+msgstr "Hegy"
 
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:283
-#, fuzzy
 msgid "Pastry Shop"
-msgstr "Cukrárna"
+msgstr "Cukrászda"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:285
-#, fuzzy
 msgid "Produces all kinds of confectionery."
-msgstr "Vyrábí cukroví."
+msgstr "Mindenféle édességet állít elő."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
-#, fuzzy
 msgid "Pavilion"
-msgstr "Kostel"
+msgstr "Kerti ház"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
-msgstr "Plní náboženské potřeby námořníků."
+msgstr "A tengerészek vallásos igényeit elégíti ki."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:297
-#, fuzzy
 msgid "Ruined Tent"
-msgstr "Opuštěný stan"
+msgstr "Lerombolt sátor"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:302
-#, fuzzy
 msgid "Salt Ponds"
-msgstr "Solná jezera"
+msgstr "Sőtermeló"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:304
-#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
-msgstr "Produkce soli. Lze stavět pouze na pobřeží."
+msgstr "Sőt állít elő. Tengerparta kell építeni."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:309
-#, fuzzy
 msgid "Signal Fire"
-msgstr "Signální oheň"
+msgstr "Tűzjelzés"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:311
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
-msgstr "Umožňuje hráči obchodovat se svobodným obchodníkem."
+msgstr "Lehetővé teszi, hogy a játékos kereskedjen a szabad kereskedővel."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:316
-#, fuzzy
 msgid "Smeltery"
-msgstr "Slévárna"
+msgstr "Öntöde"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:318
-#, fuzzy
 msgid "Refines all kind of ores."
-msgstr "Zušlechťuje všechny rudy."
+msgstr "Minden ércet feldolgoz."
 
 #. name_2 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:323
-#, fuzzy
 msgid "Stonemason"
-msgstr "Kameník"
+msgstr "Kőfaragó"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:325
 msgid "Carver"
-msgstr ""
+msgstr "Faragó"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:327
-#, fuzzy
 msgid "Carves stone tops into bricks."
-msgstr "Z kamených balvanů tesá cihly."
+msgstr "Kőből téglát farag."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:332
-#, fuzzy
 msgid "Stone Pit"
-msgstr "Kamenný lom"
+msgstr "Kőbánya"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:334
-#, fuzzy
 msgid "Gets stone from a mountain."
-msgstr "Ze skály těží kámen."
+msgstr "A hegyből követ szállít."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:339
-#, fuzzy
 msgid "Storage Tent"
-msgstr "Skladovací stan"
+msgstr "Raktár sátor"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:341
@@ -3256,27 +2867,23 @@ msgstr "Raktár kunyhó"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 msgid "Extends stock and provides collectors."
-msgstr "Zvyšuje zásobní kapacitu a poskytuje sběrače."
+msgstr "Növeli az készlet max. méretét és újabb begyűjtőket biztosít."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
-#, fuzzy
 msgid "Tavern"
-msgstr "Krčma"
+msgstr "Kocsma"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:350
-#, fuzzy
 msgid "Provides get-together."
-msgstr "Nabízí posezení."
+msgstr "Összejöveteleket biztosít."
 
 #. name_0 of buildings:tent
 #: horizons/i18n/objecttranslations.py:355
-#, fuzzy
 msgid "Tent"
-msgstr "Stan"
+msgstr "Sátor"
 
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:357
@@ -3305,98 +2912,83 @@ msgstr "Nemesi birtok"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
-#, fuzzy
 msgid "Houses your inhabitants."
-msgstr "Ubytování pro tvé obyvatele."
+msgstr "Házak a lakosoknak."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:372
-#, fuzzy
 msgid "Tobacconist"
-msgstr "Prodejce tabáku"
+msgstr "Dohányárus"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:374
-#, fuzzy
 msgid "Produces tobaccos out of tobacco."
-msgstr "Z tabákových listů vyrábí doutníky."
+msgstr "Dohányterméket állít elő a dohányból."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:379
-#, fuzzy
 msgid "Toolmaker"
-msgstr "Nástrojař"
+msgstr "Szerszámkészítő"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:381
-#, fuzzy
 msgid "Produces tools out of iron."
-msgstr "Vyrábí železné nástroje."
+msgstr "Vasból szerszámot állít elő."
 
 #. name_0 of buildings:trail
 #: horizons/i18n/objecttranslations.py:386
-#, fuzzy
 msgid "Trail"
-msgstr "Stezka"
+msgstr "Nyomvonal"
 
 #. name_1 of buildings:trail
 #: horizons/i18n/objecttranslations.py:388
-#, fuzzy
 msgid "Gravel Path"
-msgstr "Štěrková cesta"
+msgstr "Kavicsos út"
 
 #. name_3 of buildings:trail
 #: horizons/i18n/objecttranslations.py:390
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "Burkolatköves út"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:392
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Potřebná pro sběr zboží."
+msgstr "Áruk begyűjtéséhez szükséges."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:397
-#, fuzzy
 msgid "Tree"
-msgstr "Strom"
+msgstr "Fa"
 
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:399
-#, fuzzy
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr "Poskytuje kmeny stromů."
+msgstr "Faanyagot biztosít. Favágó dönti ki."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:404
-#, fuzzy
 msgid "Village school"
-msgstr "Vesnická škola"
+msgstr "Iskola"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:406
-#, fuzzy
 msgid "Provides education."
-msgstr "Poskytuje vzdělání."
+msgstr "Oktatást biztosít."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
-#, fuzzy
 msgid "Vintner"
-msgstr "Vinař"
+msgstr "Borkereskedő"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:413
-#, fuzzy
 msgid "Produces wine out of grapes."
-msgstr "Hrozny zpracovává na víno."
+msgstr "Szőlőből bort állít elő."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 msgid "Warehouse"
-msgstr "Sklad"
+msgstr "Raktár"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3405,33 +2997,28 @@ msgstr "Takács kunyhó"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:425
-#, fuzzy
 msgid "Turns lamb wool into cloth."
-msgstr "Z ovčí vlny vyrábí oděvy."
+msgstr "Gyapjúból ruhát készít."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
-#, fuzzy
 msgid "Windmill"
-msgstr "Mlýn"
+msgstr "Szélmalom"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:432
-#, fuzzy
 msgid "Grinds corn into flour."
-msgstr "Z kukuřice mele mouku."
+msgstr "Búzából lisztet állít elő."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:437
-#, fuzzy
 msgid "Wooden Tower"
-msgstr "Dřevěná věž"
+msgstr "Fatorony"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:439
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "Brání tvou osadu."
+msgstr "Megvédi a települést."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3440,9 +3027,8 @@ msgstr "Brání tvou osadu."
 #: horizons/i18n/objecttranslations.py:448
 #: horizons/i18n/objecttranslations.py:450
 #: horizons/i18n/objecttranslations.py:511
-#, fuzzy
 msgid "Companies"
-msgstr "Společnosti"
+msgstr "Cégek"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
@@ -3450,25 +3036,22 @@ msgstr "Společnosti"
 #: horizons/i18n/objecttranslations.py:454
 #: horizons/i18n/objecttranslations.py:456
 #: horizons/i18n/objecttranslations.py:507
-#, fuzzy
 msgid "Fields"
-msgstr "Pole"
+msgstr "Mezők"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:458
 #: horizons/i18n/objecttranslations.py:481
-#, fuzzy
 msgid "Mining"
-msgstr "Hornictví"
+msgstr "Bányászat"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:460
 #: horizons/i18n/objecttranslations.py:505
-#, fuzzy
 msgid "Residents and infrastructure"
-msgstr "Obyvatelé a infrastruktura"
+msgstr "Telepesek és infrastruktúra"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
@@ -3476,49 +3059,45 @@ msgstr "Obyvatelé a infrastruktura"
 #: horizons/i18n/objecttranslations.py:464
 #: horizons/i18n/objecttranslations.py:466
 #: horizons/i18n/objecttranslations.py:491
-#, fuzzy
 msgid "Services"
-msgstr "Služby"
+msgstr "Szolgáltatások"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:471
-#, fuzzy
 msgid "Citizens"
-msgstr "Občané"
+msgstr "Lakosok"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:473
-#, fuzzy
 msgid "Food"
-msgstr "Jídlo"
+msgstr "Élelem"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:475
 msgid "Fortifications"
-msgstr ""
+msgstr "Erődítmények"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
 msgid "Infrastructure"
-msgstr ""
+msgstr "Infrastuktúra"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
 msgid "Military Service"
-msgstr ""
+msgstr "Katonaság"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:483
-#, fuzzy
 msgid "Pioneers"
-msgstr "Průzkumníci"
+msgstr "Felfedezők"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:485
 msgid "Precaution"
-msgstr ""
+msgstr "Óvintézkedés"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
@@ -3532,60 +3111,54 @@ msgstr "Tenger"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:495
-#, fuzzy
 msgid "Wood"
-msgstr "étel"
+msgstr "Fa"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:497
 #: horizons/i18n/objecttranslations.py:499
 #: horizons/i18n/objecttranslations.py:501
 msgid "Workshops"
-msgstr ""
+msgstr "Műhelyek"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:503
 msgid "Settlement"
-msgstr ""
+msgstr "Település"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:509
 msgid "Agriculture"
-msgstr ""
+msgstr "Mezőgazdaság"
 
 #. tab5_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:513
-#, fuzzy
 msgid "Military"
-msgstr "Armáda"
+msgstr "Hadsereg"
 
 #: horizons/main.py:354
-#, fuzzy
 msgid "Failed to start/load the game"
-msgstr "Start/načtení hry se nezdařil(o)"
+msgstr "Nem sikerült elindítani/betölteni a játékot"
 
 #: horizons/main.py:355
 msgid "The game you selected could not be started."
-msgstr "A kiválasztott játékot nem sikerült elindítani."
+msgstr "A kiválasztott játék nem indítható el."
 
 #: horizons/main.py:356
-#, fuzzy
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr "Hra se zdá poškozenou či uloženou starší verzí hry."
+msgstr "A mentett játékállás sérült, vagy egy korábbi verzióban készült."
 
 #: horizons/main.py:475
-#, fuzzy
 msgid "No quicksaves found"
-msgstr "Žádná rychlá uložení nebyla nalezena"
+msgstr "Nem található gyors mentés"
 
 #: horizons/main.py:476
-#, fuzzy
 msgid "You need to quicksave before you can quickload."
-msgstr "Před rychlým načtením potřebujete rychlé uložení."
+msgstr "Szükség van gyors mentésre a gyors betöltéshez."
 
 #: horizons/main.py:605
 msgid "Logging enabled"
-msgstr "Naplózás bekapcsolva"
+msgstr "Naplózás engedélyezve"
 
 #: horizons/main.py:606
 #, python-brace-format
@@ -3595,135 +3168,126 @@ msgstr "Naplózás mentése ide: {directory}."
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
 #: horizons/manager.py:175
-#, fuzzy
 msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
-msgstr "Neznámá chyba. Hra nemůže pokračovat."
+msgstr ""
+"A játékosok közötti szinkronizáció összeomlott. Ez ismeretlen belső hibára "
+"utal, a játék nem folytatódhat."
 
 #: horizons/manager.py:176
-#, fuzzy
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr "Velmi se omlouváme a doufáme, že bude chyba opravena co nejdříve."
+msgstr ""
+"Nagyon sajnáljuk, remélhetőleg a következő verzióban a hiba javításra kerül."
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
-#, fuzzy
 msgid "Not possible"
-msgstr "Nemožné"
+msgstr "Nem lehetséges"
 
 #: horizons/mpsession.py:79 horizons/mpsession.py:84 horizons/mpsession.py:89
 #: horizons/mpsession.py:92
-#, fuzzy
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr "Uložení/nahrání hry více hráčů není zatím dostupné."
+msgstr "A többjátékos módban a mentés/betöltés még nem lehetséges"
 
 #: horizons/mpsession.py:103
-#, fuzzy
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
-msgstr "Název souboru smí obsahovat jen písmena, číslice, mezery a podtržítko."
+msgstr ""
+"A fájlnév csak betűket, számokat, szóközöket és a következő karaktereket "
+"tartalmazhatja: _ . -"
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Nem sikerült csatlakozni a szerverhez."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Talán a szerver címe nem érvényes vagy nem feloldható."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
-msgstr ""
+msgstr "Nem áll készen"
 
 #: horizons/scenario/actions.py:95
-#, fuzzy
 msgid "You have won!"
-msgstr "Vyhrál jste!"
+msgstr "Nyertél!"
 
 #: horizons/scenario/actions.py:96
-#, fuzzy
 msgid "You have completed this scenario."
-msgstr "Dokončili jste scénář."
+msgstr "Sikeresen teljesítetted a küldetést."
 
 #: horizons/scenario/actions.py:97
-#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr "Chcete pokračovat?"
+msgstr "Szeretnéd folytatni a játékot?"
 
 #: horizons/scenario/scenarioeventhandler.py:170
-#, fuzzy
 msgid "unknown"
-msgstr "neznámé"
+msgstr "ismeretlen"
 
 #. usually invalid filename
 #: horizons/session.py:397
-#, fuzzy
 msgid "Failed to create savegame file"
-msgstr "Vytvoření souboru hry se nezdařilo"
+msgstr "Hiba a játékállás mentését tartalmazó fájl létrehozása során"
 
 #: horizons/session.py:398
-#, fuzzy
 msgid "There has been an error while creating your savegame file."
-msgstr "V průběhu vytváření souboru hry se vyskytla chyba."
+msgstr "Hiba történt a játékállás mentését tartalmazó fájl létrehozása során."
 
 #: horizons/session.py:399
-#, fuzzy
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
-msgstr "Název hry obsahuje znaky, které nejsou podporovány."
+msgstr ""
+"Ez általában azt jelenti, hogy a fájlnév nem támogatott karaktereket "
+"tartalmaz."
 
 #: horizons/session.py:408
-#, fuzzy
 msgid "Access is denied"
-msgstr "Přístup zamítnut"
+msgstr "Hozzáférés megtagadva"
 
 #: horizons/session.py:409
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"A mentést tartalmazó fájl csak olvasható, vagy egy másik folyamat fogja."
 
 # automatic save
 #: horizons/spsession.py:65
-#, fuzzy
 msgid "Your game has not been saved."
-msgstr "Hra byla automaticky uložena."
+msgstr "A játék nem lett elmentve."
 
 #: horizons/util/checkupdates.py:87
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Nová verze Unknown Horizons"
+msgstr "Új verzió az Unknown Horizonsból"
 
 #: horizons/util/checkupdates.py:88
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
-"Je k dispozici novější verze Unknown horizons - {new_version}. Vaše verze je "
-"{old_version}."
+"Már újabb verzió is elérhető az Unknown Horizonsból ({new_version}), Te "
+"jelenleg a {old_version} verziót használod."
 
 #: horizons/util/checkupdates.py:98
-#, fuzzy
 msgid "Click to download"
-msgstr "Klikněte pro stažení"
+msgstr "Kattints a letöltéshez"
 
 #: horizons/util/checkupdates.py:102
-#, fuzzy
 msgid "A page has been opened in your browser."
-msgstr "Stránka byla otevřena ve Vašem přohlížeči."
+msgstr "A böngésződben megnyílt egy új lap."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:267
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} slot, {limit}"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "Élet: {health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:123
@@ -3732,9 +3296,8 @@ msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:40
-#, fuzzy
 msgid "This building must be built on an island."
-msgstr "Ezt az épületet csak a parton építheted fel."
+msgstr "Ezt az épületet csak egy szigeten építheted fel."
 
 #: horizons/world/building/buildable.py:41
 msgid "This ground is not suitable for this building."
@@ -3757,36 +3320,32 @@ msgid "This area is already occupied by a unit."
 msgstr "Ez a terület már foglalt egy egység által."
 
 #: horizons/world/building/buildable.py:46
-#, fuzzy
 msgid "This building must be built on the coastline."
-msgstr "Tato budova smí být postavena jen na pobřeží."
+msgstr "Ezt az épületet csak a tengerparton építheted fel."
 
 #: horizons/world/building/buildable.py:47
 msgid "This building has to be placed at the ocean."
 msgstr "Ez az épület kerüljön az óceánra."
 
 #: horizons/world/building/buildable.py:48
-#, fuzzy
 msgid "This spot is too far away from your ship."
-msgstr "Toto místo je příliš daleko od Vaší lodi."
+msgstr "A megadott hely túl messze van a hajódtól."
 
 #: horizons/world/building/buildable.py:49
-#, fuzzy
 msgid "This building can only be built on a resource source."
-msgstr "Tato budova smí být postavena jen na ložisku surovin."
+msgstr "Ez az épület csak egy nyersanyag forrásra építhető."
 
 #: horizons/world/building/buildable.py:50
 msgid "You have already settled this island."
 msgstr "Már letelepedett ezen a szigeten."
 
 #: horizons/world/building/buildable.py:51
-#, fuzzy
 msgid "This building must be partly on flat land."
-msgstr "Ezt az épületet csak a parton építheted fel."
+msgstr "Az épületet egy részének egyenletes talajon kell lennie."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "A telepeseket megfertőzte a Fekete Halál!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3797,9 +3356,8 @@ msgid "These residents are unhappy."
 msgstr "Ezek a lakosok boldogtalanok."
 
 #: horizons/world/status.py:94
-#, fuzzy
 msgid "These residents don't have access to a main square."
-msgstr "Někteří Vaši obyvatelé nemají přístup k hlavnímu náměstí."
+msgstr "Ezek a lakosok nem tudnak eljutni a főtérre."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3810,63 +3368,61 @@ msgid "This building has a very low productivity."
 msgstr "Az épület termelékenysége nagyon alacsony."
 
 #: horizons/world/status.py:121
-#, fuzzy
 msgid "This building is decommissioned."
-msgstr "Az épület veszteséges."
+msgstr "Az épület jelenleg kihasználatlanul áll."
 
 #: horizons/world/traderoute.py:329
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr "Obchodní cesta: plující do {location}"
+msgstr "Kereskedelmi útvonal: úton {location} felé"
 
 #: horizons/world/traderoute.py:333
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr "Obchodní cesta: Vyčkávající v {position}"
+msgstr "Kereskedelmi útvonal: várakozik, {position}"
 
 #: horizons/world/units/ship.py:212
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Going to {location}"
-msgstr "Plující do {location}"
+msgstr "Úton {location} felé"
 
 #: horizons/world/units/ship.py:213
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr "Plující na {x}, {y}"
+msgstr "Úton {x}, {y} koordináták felé"
 
 #: horizons/world/units/ship.py:217
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Idle at {location}"
-msgstr "Nečinný v {location}"
+msgstr "Tétlenül áll itt: {location}"
 
 #: horizons/world/units/ship.py:218
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr "Nečinný na {x}, {y}"
+msgstr "Tétlenül áll itt: {x}, {y}"
 
 #: horizons/world/units/ship.py:229
-#, fuzzy
 msgid "Trader"
-msgstr "Obchodník"
+msgstr "Kereskedő"
 
 #: horizons/world/units/weaponholder.py:452
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr "Útočí na {target} '{name}' ({owner})"
+msgstr "Támad: {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:456
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Attacking {owner}"
-msgstr "Útočí na {owner}"
+msgstr "Támad: {owner}"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "indigócserje"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr "Hráči {player1} a {player2} spojili své síly."
+msgstr "{player1} és {player2} szövetséget kötöttek."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
@@ -3874,495 +3430,425 @@ msgstr "Az épületed kigyulladt!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "tengervíz"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "medical herbs"
-msgstr "bylinky"
+msgstr "orvosi gyógynövények"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
 msgstr "Arisztokraták"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "happiness"
-msgstr "štěstí"
+msgstr "boldogság"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "drágakövek"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "brine deposit"
-msgstr "ložisko železa"
+msgstr "sósvíz lelőhely"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Some of your inhabitants just moved out."
-msgstr "Někteří z Vašich osadníků se odstěhovali."
+msgstr "Néhány lakosod elköltözött."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gem deposit"
-msgstr "naleziště kamenů"
+msgstr "drágakő lelőhely"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "sugar"
-msgstr "cukr"
+msgstr "cukor"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "tobacco leaves"
-msgstr "tabákové listy"
+msgstr "dohánylevél"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "stone tops"
-msgstr "balvany"
+msgstr "kőmetszet"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "coffee beans"
-msgstr "kakaové boby"
+msgstr "kávébab"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "wool"
-msgstr "vlna"
+msgstr "gyapjú"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "tea leaves"
-msgstr "tabákové listy"
+msgstr "tealevél"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "kávé"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "cocoa beans"
-msgstr "kakaové boby"
+msgstr "kakaóbab"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "food"
-msgstr "jídlo"
+msgstr "élelmiszer"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "flour"
-msgstr "mouka"
+msgstr "liszt"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "pigs for slaughter"
-msgstr "prasata na porážku"
+msgstr "vágósertés"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "recreation"
-msgstr "vzdělání"
+msgstr "szórakozás"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr "fák"
+msgstr "fa"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "marble deposit"
-msgstr "ložisko jílu"
+msgstr "márvány"
 
 #. This is a database entry: the name of an inhabitant tier (level)
-#, fuzzy
 msgid "Sailors"
-msgstr "Námořník"
+msgstr "Tengerészek"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "clay deposit"
-msgstr "ložisko jílu"
+msgstr "agyag"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "Hráči {player1} a {player2} ukončili válku a nyní jsou spojenci."
+msgstr ""
+"{player1} és {player2} véget vetettek a háborúnak, és mostantól "
+"szövetségesek."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "cocoa"
-msgstr "kakao"
+msgstr "kakaó"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "márvány metszet"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "potatoes"
-msgstr "brambory"
+msgstr "krumpli"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "iron ore"
-msgstr "železný důl"
+msgstr "vasérc"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "parfüm"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "cotton plants"
-msgstr "tabákové rostliny"
+msgstr "gyapotültetvények"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "clay"
-msgstr "jíl"
+msgstr "agyag"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
 msgstr "Kereskedők"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "hop plants"
-msgstr "bylinky"
+msgstr "komló"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
-msgstr "mordozelený"
+msgstr "tea"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "liquor"
-msgstr "pálenka"
+msgstr "alkohol"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "iron ingots"
-msgstr "železné ingoty"
+msgstr "öntött vas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "coal deposit"
-msgstr "ložisko jílu"
+msgstr "szén"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr "Snímek obrazovky byl uložen do {file}."
+msgstr "A pillanatkép elmentve: {file}."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "cattle"
-msgstr "dobytek"
+msgstr "marha"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "You can also drag roads."
-msgstr "Cestu je možné postavit i tažením myší."
+msgstr "Az utakat húzva is elkészítheted."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "lamb wool"
-msgstr "ovčí vlna"
+msgstr "bárány gyapjú"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "Elérted a jelenlegi maximális szintet. A lakosaid nem fejlődnek tovább."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
-"Obchodní cesta je připravena. Začněte jí tlačítkem \"Započít cestu\" v menu "
-"\"Nastavení cesty\"."
+"Az útvonal beállítása elkészült. Indítsd útnak a hajót az \"útvonal "
+"indítása\" gombbal az \"útvonal beállítása\" menüben."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr "Hráči {player1} a {player2} zrušili mírovou smlouvu."
+msgstr "{player1} és {player2} felbontották a szövetséget."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Cannot go here."
-msgstr "Místo je nedostupné."
+msgstr "Nem tudsz ide jönni."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "corn"
-msgstr "kukuřice"
+msgstr "kukorica"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "virágrét"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "grapes"
-msgstr "hrozny"
+msgstr "szőlő"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Your inhabitants reached level {level}."
-msgstr "Vaši obyvatelé dosáhli úrovně {level}."
+msgstr "A lakosságod elérte a következő szintet: {level}."
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "ámbra"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "faith"
-msgstr "víra"
+msgstr "hit"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "boards"
-msgstr "prkna"
+msgstr "deszka"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Někteří Vaši obyvatelé nemají přístup k hlavnímu náměstí."
+msgstr "Néhányan a lakosaid közül nem tudnak eljutni a főtérre."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr "Hráči {player1} a {player2} začali válku na život a na smrt."
+msgstr "{player1} és {player2} mindhalálig fognak küzdeni egymással."
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr ""
+msgstr "komló"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "grain"
-msgstr "obilí"
+msgstr "gabona"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "spices"
-msgstr "koření"
+msgstr "fűszer"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "dagger"
-msgstr "dýka"
+msgstr "tőr"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "coffee plants"
-msgstr "bylinky"
+msgstr "kávéültetvény"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "bricks"
-msgstr "cihly"
+msgstr "tégla"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold ore"
-msgstr "železný důl"
+msgstr "aranyérc"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "community"
-msgstr "společnost"
+msgstr "közösség"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "spice plants"
-msgstr "bylinky"
+msgstr "fűszernövény-ültetvény"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "higiénia"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "cattle for slaughter"
-msgstr "dobytek na porážku"
+msgstr "vágómarha"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "tobaccos"
-msgstr "doutníky"
+msgstr "dohány"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "tools"
-msgstr "nářadí"
+msgstr "eszköz"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "deer meat"
-msgstr "jelení maso"
+msgstr "szarvashús"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "confectionery"
-msgstr "cukrovinky"
+msgstr "édesség"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "bálna"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "coins"
-msgstr "mince"
+msgstr "pénzérmék"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "You won!"
-msgstr "Vyhráli jste!"
+msgstr "Nyertél!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "virágok"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "indigo plants"
-msgstr "bylinky"
+msgstr "indigócserje-ültetvény"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "fish"
-msgstr "ryby"
+msgstr "hal"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "charcoal"
-msgstr "dřevěné uhlí"
+msgstr "faszén"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "stone deposit"
-msgstr "naleziště kamenů"
+msgstr "kő"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr "Nem sikerült a feladat."
+msgstr "Nem sikerült a küldetés."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "fire"
-msgstr "oheň"
+msgstr "tűz"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "acorns"
-msgstr "žaludy"
+msgstr "makk"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "ruhák"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "honeycombs"
-msgstr "včelí plástve"
+msgstr "méz"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "tobacco plants"
-msgstr "tabákové rostliny"
+msgstr "dohányültetvények"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr "K postavení budovy potřebujete více {resource}."
+msgstr "Több {resource} szükséges az épület megépítéséhez."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your crew refuses to leave this map."
-msgstr "Vaši lidé odmítají opustit mapu."
+msgstr "A csapatod nem akarja elhagyni a térképet."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr "Hráči {player1} a {player2} ukončili nepřátelství."
+msgstr "{player1} és {player2} abbahagyták az ellenségeskedést."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "grass"
-msgstr "tráva"
+msgstr "legelő"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "sugar cane"
-msgstr "cukrová třtina"
+msgstr "cukornád"
 
 # automatic save
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your game has been autosaved."
-msgstr "Hra byla automaticky uložena."
+msgstr "A játékodról automatikus mentés készült."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold deposit"
-msgstr "ložisko jílu"
+msgstr "arany"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Jedno z Vašich polí není v dosahu farmy."
+msgstr "A mezőid egyikéhez farm szükséges, hogy le lehessen aratni."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "csiszolatlan drágakövek"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "alvearies"
-msgstr "Méhészet"
+msgstr "méhészet"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your mine has run out of resources."
-msgstr "Ve Vašem dole už nejsou žádné suroviny."
+msgstr "A bányád kifogyott a nyersanyagból."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "iron deposit"
-msgstr "ložisko železa"
+msgstr "vas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "education"
-msgstr "vzdělání"
+msgstr "oktatás"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "gyapot"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr ""
-"Hráči {player1} a {player2} zrušili mírovou smlouvu a nyní jsou ve válce."
+"{player1} és {player2} felbontották a szövetséget, és mostantól hadban "
+"állnak."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "textile"
-msgstr "tkanina"
+msgstr "szövet"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -4370,104 +3856,88 @@ msgid "{player}: {message}"
 msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "cannon"
-msgstr "dělo"
+msgstr "ágyú"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "Ennek az épületnek a lakosait megfertőzte a Fekete Halál!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "Egy új hajó elkészült a következő névvel: {name}."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "tea plants"
-msgstr "tabákové rostliny"
+msgstr "teaültetvények"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "get-together"
-msgstr "setkání"
+msgstr "találkozó"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "A new world has been created."
-msgstr "Byl vytvořen nový svět."
+msgstr "Egy új világ létrehozva."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr "Hra byla rychle uložena."
+msgstr "A játékról gyorsmentés készült."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "deer food A"
-msgstr "krmení pro jeleny"
+msgstr "szarvashús"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "herbs"
-msgstr "bylinky"
+msgstr "gyógynövények"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "olajlámpa"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "pigs"
-msgstr "prasata"
+msgstr "disznó"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Sklad není možné zbourat. Vaši osádníci jej potřebují."
+msgstr "Nem bonthatod le a raktárat, a településednek szüksége van rá."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "condiments"
-msgstr "koření"
+msgstr "fűszerek"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "černá"
+msgstr "fekete halál"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "candles"
-msgstr "svíce"
+msgstr "gyertyák"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr "{player} álapitótt új gyarmatot."
+msgstr "{player} új gyarmatot alapított."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "vines"
-msgstr "víno"
+msgstr "szőlő"
 
 # automatic save
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "Hra byla automaticky uložena."
+msgstr "A játékod elmentve."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "salt"
-msgstr "sůl"
+msgstr "só"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold ingots"
-msgstr "železné ingoty"
+msgstr "öntött arany"
 
 #, fuzzy
 #~ msgid "Back:"

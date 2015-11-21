@@ -7,19 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2013-11-23 01:48+0200\n"
+"PO-Revision-Date: 2014-12-21 00:22+0200\n"
 "Last-Translator: Fede Muller <fedem8@live.com>\n"
-"Language-Team: Spanish <http://hosted.weblate.org/projects/uh/uh/es/>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons se ha caído."
+msgstr "Unknown Horizons ha detenido su ejecución."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -74,7 +74,7 @@ msgstr "Guardar mapa"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr "Carga mapa"
+msgstr "Cargar mapa"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
@@ -96,7 +96,7 @@ msgstr "Salir del editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "Seleccione el tamaño del pincel:"
+msgstr "Seleccione el tamaño de la brocha:"
 
 #: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
@@ -865,9 +865,8 @@ msgid "Return"
 msgstr "Volver"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "Opciones IA"
+msgstr "Acciones"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -1158,10 +1157,9 @@ msgid "Create a new game"
 msgstr "Crear nueva partida"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:55
-#, fuzzy
 #| msgid "Join game"
 msgid "Join game:"
-msgstr "Unirse"
+msgstr "Unirse a la partida:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
@@ -1248,7 +1246,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "Desplazamiento con el botón central del ratón:"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "When enabled, dragging the middle mouse button will pan the camera"
@@ -1374,7 +1372,6 @@ msgid "Reset to default settings"
 msgstr "Reiniciar configuración por defecto"
 
 #: content/gui/xml/mainmenu/settings.xml:245
-#, fuzzy
 #| msgid "Save game"
 msgid "Save changes"
 msgstr "Guardar partida"
@@ -1606,10 +1603,10 @@ msgstr "Usa 'SHIFT' para asentar múltiples edificios."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:65
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Currently only the first {tier} tiers are playable."
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Actualmente sólo los primeros niveles de {nivel} son jugables."
+msgstr "Actualmente sólo los primeros {tier} niveles son jugables."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
@@ -1658,7 +1655,7 @@ msgstr "Presiona 'T' para hacer los árboles transparentes."
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Mixed"
-msgstr ""
+msgstr "Mixto"
 
 #. translators: these are descriptions of the current task while loading a
 #. game
@@ -1679,9 +1676,8 @@ msgid "Activating timer…"
 msgstr "Activando temporizador…"
 
 #: horizons/gui/modules/loadingscreen.py:104
-#, fuzzy
 msgid "Chomping game data…"
-msgstr "Convidando datos del juego..."
+msgstr "Mascando datos del juego…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
@@ -1700,9 +1696,8 @@ msgid "Raising animals…"
 msgstr "Criando animales…"
 
 #: horizons/gui/modules/loadingscreen.py:109
-#, fuzzy
 msgid "Convincing AI…"
-msgstr "Convenciendo IA..."
+msgstr "Convenciendo a la IA…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
@@ -1828,16 +1823,14 @@ msgid "Ready"
 msgstr "Preparado"
 
 #: horizons/gui/modules/multiplayermenu.py:395
-#, fuzzy
 #| msgid "Not Ready"
 msgid "Not ready"
-msgstr "No está listo"
+msgstr "No estoy listo"
 
 #: horizons/gui/modules/multiplayermenu.py:430
-#, fuzzy
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Introduce tu mensaje:"
+msgstr "Escribe tu mensaje"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -2014,7 +2007,7 @@ msgstr "Partida"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Deshabilitado"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2245,7 +2238,7 @@ msgstr ""
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
-msgstr "Visión general de la lonja"
+msgstr "Visión general del almacén"
 
 #: horizons/gui/tabs/mainsquaretabs.py:63
 msgid "Account"
@@ -2261,7 +2254,7 @@ msgstr "Actualización imposible:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "¡Este es por ahora el nivel jugable más alto!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
@@ -2462,10 +2455,10 @@ msgid "none"
 msgstr "ninguno"
 
 #: horizons/gui/windows.py:392
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Details: {error_details}"
 msgid "Details: {error_details}"
-msgstr "Detalles: (error_details}"
+msgstr "Detalles: {error_details}"
 
 #: horizons/gui/windows.py:394
 #, python-brace-format
@@ -2495,7 +2488,7 @@ msgstr "Recluta unidades adecuadas para el combate terrestre."
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
-msgstr ""
+msgstr "Licuadora"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
@@ -2777,16 +2770,14 @@ msgstr "Plaza principal"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:266
-#, fuzzy
 msgid "Supplies citizens with goods. Provides community."
-msgstr "Suministra a los ciudadanos con mercancías. Proporciona comunidad."
+msgstr "Abastece a los ciudadanos con mercancías. Proporciona comunidad."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:271
-#, fuzzy
 #| msgid "Iron Mine"
 msgid "Mine"
-msgstr "Mina de hierro"
+msgstr "Mina"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:273
@@ -3011,7 +3002,7 @@ msgstr "Produce vino de las uvas."
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:418
 msgid "Warehouse"
-msgstr "Lonja"
+msgstr "Almacén"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3307,9 +3298,9 @@ msgstr "Una página ha sido abierta en tu navegador."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:267
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} huecos, de {limit}"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
@@ -3351,9 +3342,8 @@ msgid "This building must be built on the coastline."
 msgstr "Este edificio debe ser construido a orillas de la costa."
 
 #: horizons/world/building/buildable.py:47
-#, fuzzy
 msgid "This building has to be placed at the ocean."
-msgstr "Este edificio debe ubicarse cerca del océano."
+msgstr "Este edificio debe ubicarse en el océano."
 
 #: horizons/world/building/buildable.py:48
 msgid "This spot is too far away from your ship."
@@ -3368,13 +3358,12 @@ msgid "You have already settled this island."
 msgstr "ya estás establecido en esta isla."
 
 #: horizons/world/building/buildable.py:51
-#, fuzzy
 msgid "This building must be partly on flat land."
-msgstr "Este edificio debe ser construido a orillas de la costa."
+msgstr "Este edificio debe estar parcialmente en terreno plano."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "¡Los habitantes tienen la peste!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3385,10 +3374,9 @@ msgid "These residents are unhappy."
 msgstr "Estos residentes están descontentos."
 
 #: horizons/world/status.py:94
-#, fuzzy
 #| msgid "Some of your inhabitants have no access to a main square."
 msgid "These residents don't have access to a main square."
-msgstr "Alguno de tus habitantes no tiene acceso a la plaza principal."
+msgstr "Estos habitantes no tiene acceso a la plaza principal."
 
 #: horizons/world/status.py:100
 msgid "The inventory of this building is full."
@@ -3399,9 +3387,8 @@ msgid "This building has a very low productivity."
 msgstr "Este edificio tiene una producción muy baja."
 
 #: horizons/world/status.py:121
-#, fuzzy
 msgid "This building is decommissioned."
-msgstr "Este edificio está dado de baja."
+msgstr "Este edificio está desmantelado."
 
 #: horizons/world/traderoute.py:329
 #, python-brace-format
@@ -3448,10 +3435,9 @@ msgid "Attacking {owner}"
 msgstr "Atacar {owner}"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Hindi"
 msgid "indigo"
-msgstr "Hindi"
+msgstr "Índigo"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3464,7 +3450,7 @@ msgstr "¡Tu edificio esta ardiendo!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "salmuera"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
@@ -3480,13 +3466,12 @@ msgstr "felicidad"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "gemas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "depósito de hierro"
+msgstr "depósito de salmuera"
 
 # Contexto
 #. This is a database entry: a messagewidget message (left part of the screen)
@@ -3494,10 +3479,9 @@ msgid "Some of your inhabitants just moved out."
 msgstr "Algunos de tus habitantes se acaba de mudar."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "stone deposit"
 msgid "gem deposit"
-msgstr "depósito de piedra"
+msgstr "depósito de gemas"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
@@ -3512,24 +3496,22 @@ msgid "stone tops"
 msgstr "encimeras"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "granos de cacao"
+msgstr "granos de café"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
 msgstr "lana"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "hojas de tabaco"
+msgstr "hojas de té"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "café"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
@@ -3548,20 +3530,18 @@ msgid "pigs for slaughter"
 msgstr "cerdos para la matanza"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Precaution"
 msgid "recreation"
-msgstr "Precaución"
+msgstr "recreación"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
 msgstr "arboles"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "depósito de arcilla"
+msgstr "depósito de mármol"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
@@ -3582,7 +3562,7 @@ msgstr "cacao"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "Encimeras de mármol"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
@@ -3594,13 +3574,12 @@ msgstr "mineral de hierro"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "perfume"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "cotton plants"
-msgstr "plantas de tabaco"
+msgstr "plantas de algodón"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
@@ -3611,16 +3590,14 @@ msgid "Merchants"
 msgstr "Comerciantes"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "hop plants"
-msgstr "plantas de especias"
+msgstr "coníferas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "teal"
 msgid "tea"
-msgstr "azul verdoso"
+msgstr "té"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
@@ -3631,10 +3608,9 @@ msgid "iron ingots"
 msgstr "lingotes de hierro"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "coal deposit"
-msgstr "depósito de arcilla"
+msgstr "depósito de carbón"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3683,7 +3659,7 @@ msgstr "maíz"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "campos de flores"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
@@ -3696,7 +3672,7 @@ msgstr "Tus habitantes han alcanzado el nivel {level}."
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "ámbar gris"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
@@ -3716,10 +3692,9 @@ msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} y {player2} se combatirán mutuamente hasta la muerte."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Workshops"
 msgid "hops"
-msgstr "Talleres"
+msgstr "Lúpulo"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -3734,20 +3709,18 @@ msgid "dagger"
 msgstr "daga"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "coffee plants"
-msgstr "plantas de especias"
+msgstr "plantas de café"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
 msgstr "ladrillos"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ore"
 msgid "gold ore"
-msgstr "mineral de hierro"
+msgstr "mena de oro"
 
 #. This is a database entry: the name of a resource
 msgid "community"
@@ -3759,7 +3732,7 @@ msgstr "plantas de especias"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "higiene"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
@@ -3782,10 +3755,9 @@ msgid "confectionery"
 msgstr "repostería"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Whaler"
 msgid "whales"
-msgstr "Ballenero"
+msgstr "ballenas"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3797,13 +3769,12 @@ msgstr "¡Has ganado!"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "flores"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "spice plants"
 msgid "indigo plants"
-msgstr "plantas de especias"
+msgstr "plantas de índigo"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
@@ -3831,7 +3802,7 @@ msgstr "bellotas"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "prendas"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
@@ -3868,10 +3839,9 @@ msgid "Your game has been autosaved."
 msgstr "La partida ha sido guardada."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "clay deposit"
 msgid "gold deposit"
-msgstr "depósito de arcilla"
+msgstr "depósito de oro"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3879,7 +3849,7 @@ msgstr "Uno de tus campos requiere una granja para cosechar los cultivos."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "gemas en bruto"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
@@ -3899,7 +3869,7 @@ msgstr "educación"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "algodón"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3924,10 +3894,9 @@ msgid "cannon"
 msgstr "cañón"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Los habitantes de este edificio tienen la peste."
+msgstr "¡Los habitantes de este edificio tienen la Peste Negra!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3935,10 +3904,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "El nuevo barco con el nombre de {name} ha sido construido."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "plantas de tabaco"
+msgstr "plantas de té"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -3962,7 +3930,7 @@ msgstr "hierbas"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "lampara de aceite"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
@@ -3977,10 +3945,9 @@ msgid "condiments"
 msgstr "especias"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "negro"
+msgstr "peste negra"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
@@ -4004,10 +3971,9 @@ msgid "salt"
 msgstr "sal"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "lingotes de hierro"
+msgstr "lingotes de oro"
 
 #~ msgid "Back:"
 #~ msgstr "Atrás:"

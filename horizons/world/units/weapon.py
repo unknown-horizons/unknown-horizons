@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 
@@ -26,7 +26,6 @@ from horizons.util.shapes import Point
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.world.units.bullet import Bullet
 from horizons.component.healthcomponent import HealthComponent
 
 
@@ -41,8 +40,6 @@ class Weapon(object):
 		cooldown_time - number of seconds until the attack is ready again
 		attack_speed - speed that calculates the time until attack reaches target
 		attack_radius - radius affected by attack
-		bullet_image - path to file with the bullet image,
-			if no string is provided, then no animation will be played
 
 		attack_ready callbacks are executed when the attack is made ready
 	"""
@@ -56,7 +53,7 @@ class Weapon(object):
 		data = session.db("SELECT id, type, damage,\
 		                          min_range, max_range,\
 		                          cooldown_time, attack_speed,\
-		                          attack_radius, bullet_image \
+		                          attack_radius \
 		                  FROM weapon WHERE id = ?", id)
 		data = data[0]
 		self.weapon_id = data[0]
@@ -66,7 +63,6 @@ class Weapon(object):
 		self.cooldown_time = data[5]
 		self.attack_speed = data[6]
 		self.attack_radius = data[7]
-		self.bullet_image = data[8]
 		self.attack_ready = True
 		self.session = session
 
@@ -103,12 +99,11 @@ class Weapon(object):
 		self.attack_ready = True
 		self.on_attack_ready()
 
-	def fire(self, destination, position, bullet_delay=0):
+	def fire(self, destination, position):
 		"""
 		Fires the weapon at a certain destination
 		@param destination: Point with position where weapon will be fired
 		@param position: position where the weapon is fired from
-		@param bullet_delay:
 		"""
 		self.log.debug("%s fire; ready: %s", self, self.attack_ready)
 		if not self.attack_ready:
@@ -130,12 +125,7 @@ class Weapon(object):
 		ready_ticks = int(GAME_SPEED.TICKS_PER_SECOND * self.cooldown_time)
 		Scheduler().add_new_object(self.make_attack_ready, self, ready_ticks)
 
-		if self.bullet_image:
-			Scheduler().add_new_object(
-				Callback(Bullet, self.bullet_image, position, destination, impact_ticks - bullet_delay, self.session),
-				self,
-				run_in=bullet_delay)
-		self.log.debug("fired %s at %s, impact in %s", self, destination, impact_ticks - bullet_delay)
+		self.log.debug("fired %s at %s, impact in %s", self, destination, impact_ticks)
 
 		self.attack_ready = False
 		self.on_weapon_fired()

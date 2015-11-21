@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -52,7 +52,10 @@ class TabInterface(object):
 	# If True, self.widget will only be valid after _lazy_loading_init, which
 	# is guaranteed to be executed before show(), refresh() and the like.
 	# Usually, you will want to overwrite _lazy_loading_init and call the super impl as first step.
-	lazy_loading = False
+	# Note: to prevent memory leak due to unshown tabs registered with WidgetManager, always set it
+	# to be true by default
+	# set it false only in its subclass if have special reason to disable lazy_loading
+	lazy_loading = True
 
 	# Override these in your subclass either as class attribute, or by passing it
 	# to the constructor. The value of the constructor has preference over the
@@ -114,10 +117,12 @@ class TabInterface(object):
 
 	def show(self):
 		"""Shows the current widget"""
+		self.ensure_loaded()
 		self.widget.show()
 
 	def hide(self):
 		"""Hides the current widget"""
+		self.ensure_loaded()
 		self.widget.hide()
 
 		if self._refresh_scheduled:
@@ -155,18 +160,16 @@ class TabInterface(object):
 		"""Called when a tab is shown, acts as hook for lazy loading"""
 		if self.__class__.lazy_loading and not hasattr(self, "_lazy_loading_loaded"):
 			self._setup_widget()
-			self._lazy_loading_loaded = True
+			self._lazy_loading_loaded = True # this is to prevent more setups if called multiple times
 
 	def _get_position(self):
+		self.ensure_loaded()
 		return self.widget.position
 
 	def _set_position(self, value):
 		"""Sets the widgets position to tuple *value*"""
+		self.ensure_loaded()
 		self.widget.position = value
 
 	# Shortcut to set and retrieve the widget's current position.
 	position = property(_get_position, _set_position)
-
-	def __del__(self):
-		"""Do cleanup work here."""
-		self.widget = None

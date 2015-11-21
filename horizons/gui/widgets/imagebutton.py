@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -125,12 +125,12 @@ class ImageButton(FifeImageButton):
 		# set inactive_image to the path that worked, if there is any.
 		try:
 			image = image_path.format(mode='_bw')
-			Icon(image=image)
+			Icon(image=image).hide() # hide will remove Icon from widgets of pychan.internals.manager
 			self.inactive_image = image
 		except RuntimeError:
 			try:
 				image = image_path.format(mode='_gr')
-				Icon(image=image)
+				Icon(image=image).hide() # hide will remove Icon from widgets of pychan.internals.manager
 				self.inactive_image = image
 			except RuntimeError:
 				self.inactive_image = self.up_image

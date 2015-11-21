@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -75,7 +75,6 @@ class MessageWidget(LivingObject):
 		self.reference_text_widget_position = (self.widget.x + self.widget.width, self.widget.y)
 
 		self.widget.show()
-		self.item = 0 # number of current message
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
@@ -165,7 +164,7 @@ class MessageWidget(LivingObject):
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
-			if (self.item + index) >= len(self.active_messages):
+			if index >= len(self.active_messages):
 				# Only display most recent notifications
 				continue
 			button = ImageButton()
@@ -203,9 +202,19 @@ class MessageWidget(LivingObject):
 		"""Shows the text for a button.
 		@param index: index of button"""
 		assert isinstance(index, int)
-		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
-		label = self.text_widget.findChild(name='text')
-		text = self.active_messages[self.item + index].message
+		# stop hiding if a new text has been shown
+		ExtScheduler().rem_call(self, self.hide_text)
+
+		try:
+			text = self.active_messages[index].message
+		except IndexError:
+			# Something went wrong, try to find out what. Also see #2273.
+			self.log.error(u'Tried to access message at index %s, only have %s. Messages:',
+			               index, len(self.active_messages))
+			self.log.error(u'\n'.join(unicode(m) for m in self.active_messages))
+			text = (u'Error trying to access message!\n'
+			        u'Please report a bug. Thanks!')
+
 		text = text.replace(r'\n', self.CHARS_PER_LINE * ' ')
 		text = text.replace('[br]', self.CHARS_PER_LINE * ' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
@@ -229,6 +238,7 @@ class MessageWidget(LivingObject):
 		message_container.size = (300, 21 + self.IMG_HEIGHT * line_count + 21)
 
 		self.bg_middle.adaptLayout()
+		label = self.text_widget.findChild(name='text')
 		label.text = text
 		label.adaptLayout()
 		self.text_widget.show()
@@ -342,7 +352,14 @@ class _IngameMessage(object):
 				                 err, msg, id, message_dict)
 
 	def __repr__(self):
-		return "% 4d: %s  '%s'  %s %s%s" % (self.created, self.id, self.message,
+		return "% 4d: %s %s %s%s" % (self.created, self.id,
+			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+			'R' if self.read else ' ',
+			'D' if self.display else ' ')
+
+	def __unicode__(self):
+		return u"% 4d: %s  '%s'  %s %s%s" % (self.created, self.id,
+			self.message,
 			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
 			'R' if self.read else ' ',
 			'D' if self.display else ' ')

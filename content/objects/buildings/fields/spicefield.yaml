@@ -24,5 +24,4 @@ components:
         slot_sizes: {RES.SPICE_PLANTS: 1}
 actionsets:
   TIER.SETTLERS:
-    as_3x3:
-    #as_spicefield0:
+    as_spicefield0:

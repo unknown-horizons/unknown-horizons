@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-02-03 15:06+0200\n"
-"Last-Translator: Olli Paasonen <betakeytome@gmail.com>\n"
-"Language-Team: Finnish <http://hosted.weblate.org/projects/uh/uh/fi/>\n"
+"PO-Revision-Date: 2014-11-26 22:28+0200\n"
+"Last-Translator: Cosmo Console <cosmoconsole@gmail.com>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -95,15 +95,15 @@ msgstr "Poistu kartanmuokkauksesta"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Valitse siveltimen koko:"
 
 #: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
-msgstr ""
+msgstr "Valitse maasto:"
 
 #: content/gui/xml/editor/editor_settings.xml:35
 msgid "(right click to stop)"
-msgstr ""
+msgstr "(pysäytä oikealla hiirennäppäimellä)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -359,7 +359,7 @@ msgstr "Talokohtainen tyytyväisyys"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:50
 #: horizons/gui/util.py:55
 msgid "sad"
-msgstr "Surullinen"
+msgstr "Onneton"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:58
@@ -492,7 +492,7 @@ msgstr "Kaupankäynti"
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
 msgid "Build settlement"
-msgstr "Rakenna asutuskeskus"
+msgstr "Perusta siirtokunta"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
@@ -659,7 +659,7 @@ msgstr "Pikaviesti lähetetään kaikille pelaajille."
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Kirjoita viestisi tähän"
+msgstr "Kirjoita viesti tähän"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -723,7 +723,7 @@ msgstr "Maa"
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
-msgstr "Käyttökelpoisen eli rakennusten rakentamiseen kelpaavan maan määrä"
+msgstr "Rakennuskelpoisen maa-alueen määrä"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -755,6 +755,8 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
+"Asutusten kehitystä, asukkaita, rakennuksia ja keskimääräistä iloisuutta "
+"kuvaava arvo"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
@@ -767,7 +769,7 @@ msgstr "Pelaajan omistamien yksiköiden kokonaismäärä"
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr ""
+msgstr "Kaikkien edellisten pisteiden yhteismäärä, eli pelipisteet"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:117
@@ -804,7 +806,7 @@ msgstr "Aggressiivinen"
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr ""
+msgstr "Pysy asemissa"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
@@ -835,7 +837,7 @@ msgstr "Valitse kartta:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Valitse tallennetun pelin kartta:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
@@ -951,7 +953,7 @@ msgstr "Korosta maa-alueen omistajat"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle health bars"
-msgstr ""
+msgstr "Näytä/piilota elämäpalkit"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Focus camera on selection"
@@ -984,12 +986,12 @@ msgstr "Näytä koordinaatit (Debug)"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:43
 msgid "Primary"
-msgstr ""
+msgstr "Ensisijainen"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:47
 msgid "Secondary"
-msgstr ""
+msgstr "Toissijainen"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
@@ -1016,13 +1018,12 @@ msgid "Cancel game"
 msgstr "Poistu pelistä"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:7
-#, fuzzy
 msgid "Loading…"
 msgstr "Ladataan…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Päivitä taustakuva"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1074,7 +1075,7 @@ msgstr "Tämä nimi näytetään muille pelaajille, jotta he tunnistavat pelisi.
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:20
 msgid "Unnamed Game"
-msgstr ""
+msgstr "Nimetön peli"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
@@ -1471,7 +1472,7 @@ msgstr "Virheellinen tiedostonimi"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Virheellinen tiedostonimi tallennettaessa."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:48 horizons/gui/modules/multiplayermenu.py:158
@@ -1525,17 +1526,17 @@ msgstr "Pikatallennus epäonnistui."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:65
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Pikatallennuksessa tapahtui virhe."
 
 #: horizons/editor/session.py:70
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "Karttasi ei ole tallennettu."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:66
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
-msgstr ""
+msgstr "Jos tämä virhe tapahtuu uudestaan, ota yhteyttä kehittäjiin: {website}"
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1557,20 +1558,20 @@ msgstr "Muita pelaajia ei ole, joten diplomatia on tarpeetonta."
 #: horizons/gui/modules/editorstartmenu.py:91
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} ruutua"
 
 #: horizons/gui/modules/hotkeys_settings.py:96
 msgid "Press desired key"
-msgstr ""
+msgstr "Paina haluttua painiketta"
 
 #: horizons/gui/modules/hotkeys_settings.py:140
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} on jo käytössä: {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:141
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Haluatko päällekirjoittaa sen?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:142
@@ -1598,11 +1599,11 @@ msgstr "Sijoita useita rakennuksia pitämällä SHIFT pohjassa."
 #: horizons/gui/modules/loadingscreen.py:65
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Tällä hetkellä vain ensimmäiset {tier} tasoa ovat pelattavissa."
 
 #: horizons/gui/modules/loadingscreen.py:67
 msgid "You can pause the game with 'P'."
-msgstr "Pysäytä peli nopeammin painamalla P."
+msgstr "Pysäytä peli painamalla pikanäppäintä P."
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "You can drag roads by holding the left mouse button."
@@ -1650,47 +1651,47 @@ msgstr "Sekoitus"
 #. game
 #: horizons/gui/modules/loadingscreen.py:100
 msgid "Starting engine…"
-msgstr ""
+msgstr "Pestään purjelaivoja…"
 
 #: horizons/gui/modules/loadingscreen.py:101
 msgid "Catching fish…"
-msgstr ""
+msgstr "Pyydystetään piraijoita…"
 
 #: horizons/gui/modules/loadingscreen.py:102
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Karkotetaan keripukkia…"
 
 #: horizons/gui/modules/loadingscreen.py:103
 msgid "Activating timer…"
-msgstr ""
+msgstr "Aktivoidaan aikavyöhykkeitä…"
 
 #: horizons/gui/modules/loadingscreen.py:104
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Luetaan lokikirjaa…"
 
 #: horizons/gui/modules/loadingscreen.py:105
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Piirretään pelisaaria…"
 
 #: horizons/gui/modules/loadingscreen.py:106
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Valmistellaan virheraportteja…"
 
 #: horizons/gui/modules/loadingscreen.py:107
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Kartoitetaan kareja…"
 
 #: horizons/gui/modules/loadingscreen.py:108
 msgid "Raising animals…"
-msgstr ""
+msgstr "Hoidetaan hirviä…"
 
 #: horizons/gui/modules/loadingscreen.py:109
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Tutkitaan tietokonepelaajia…"
 
 #: horizons/gui/modules/loadingscreen.py:110
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Avataan aarrearkkuja…"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Unable to find pyenet"
@@ -1704,7 +1705,8 @@ msgstr "Moninpeliin vaadittava kirjasto \"pyenet\" ei ole käytettävissä."
 
 #: horizons/gui/modules/multiplayermenu.py:121
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr "Yritä asentaa \"pyenet\" paketinhallinnallasi."
+msgstr ""
+"Linuxin käyttäjä: Yritä asentaa \"pyenet\" paketinhallintaohjelmistolla."
 
 #: horizons/gui/modules/multiplayermenu.py:130
 msgid "Failed to initialize networking."
@@ -1799,7 +1801,7 @@ msgstr "Kirjoita salasana:"
 #: horizons/gui/modules/singleplayermenu.py:407
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr "Pelaajien suositeltu määrä: {number}"
+msgstr "Suositeltu pelaajamäärä: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:393
@@ -1815,7 +1817,7 @@ msgstr "Ei valmis"
 #: horizons/gui/modules/multiplayermenu.py:430
 #| msgid "Enter your message:"
 msgid "Enter your message"
-msgstr "Kirjoita viestisi tähän"
+msgstr "Kirjoita viesti"
 
 #: horizons/gui/modules/multiplayermenu.py:478
 #: horizons/gui/modules/multiplayermenu.py:486
@@ -1902,8 +1904,8 @@ msgstr "Ei tallennettuja pelejä"
 #: horizons/gui/modules/select_savegame.py:75
 msgid "There are no saved games to load."
 msgstr ""
-"Et ole tallentanut vielä yhtään peliä. Aloita uusi peli napsauttamalla "
-"\"Yksinpeli\" tai \"Moninpeli\"."
+"Et ole vielä tallentanut yhtään peliä. Aloita uusi peli napsauttamalla "
+"päävalikossa Yksinpeli tai Moninpeli."
 
 #: horizons/gui/modules/select_savegame.py:144
 msgid "No filename given"
@@ -1916,12 +1918,12 @@ msgstr "Kirjoita kelvollinen tiedostonimi."
 #: horizons/gui/modules/select_savegame.py:149
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "Tallennus nimeltä {name} on jo olemassa."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr ""
+msgstr "Kartta nimeltä {name} on jo olemassa."
 
 #: horizons/gui/modules/select_savegame.py:153
 msgid "Overwrite it?"
@@ -1988,7 +1990,7 @@ msgstr "Tallennuksen poistaminen epäonnistui!"
 
 #: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:115
 msgid "Hotkeys"
-msgstr ""
+msgstr "Pikanäppäimet"
 
 #: horizons/gui/modules/settings.py:55
 msgid "Game"
@@ -1996,7 +1998,7 @@ msgstr "Peli"
 
 #: horizons/gui/modules/settings.py:72
 msgid "Disabled"
-msgstr ""
+msgstr "Pois käytöstä"
 
 #: horizons/gui/modules/settings.py:126
 msgid "Restart required"
@@ -2189,7 +2191,7 @@ msgstr "Yleiskatsaus"
 
 #: horizons/gui/tabs/buildrelatedtab.py:42
 msgid "Build related buildings"
-msgstr ""
+msgstr "Rakenna liittyviä rakennuksia"
 
 #: horizons/gui/tabs/buyselltab.py:134
 msgid "Click on one of the resource slots to add a trade offer."
@@ -2240,7 +2242,7 @@ msgstr "Päivittäminen ei onnistu:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:146
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Tämä on toistaiseksi korkein pelattavissa oleva taso!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:192
 msgid "Don't allow upgrades"
@@ -2291,34 +2293,34 @@ msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta"
 
 #: horizons/gui/tabs/shiptabs.py:108
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Kauppalaivoja ei voi varustaa asein"
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "Kauppalaivoja ei ole mahdollista varustaa asein."
 
 #: horizons/gui/tabs/shiptabs.py:144
 msgid "Equip weapon"
-msgstr ""
+msgstr "Varusta ase"
 
 #: horizons/gui/tabs/shiptabs.py:148
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Poista aseen varustus"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:70
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} kultaa"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:75
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "osta hintaan {buyprice} kultaa"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:77
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "myy hintaan {sellprice} kultaa"
 
 #: horizons/gui/widgets/inventory.py:166
 #, python-brace-format
@@ -2383,12 +2385,16 @@ msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
+"Nollaa tämän asutuksen näytettävät resurssit siihen oletuskokoonpanoon, "
+"jonka olet tallentanut."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
+"Nollaa oletuskokoonpano (jonka näet tässä) pelin oletukseen kaikissa "
+"asutuksissa."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
@@ -2416,11 +2422,11 @@ msgstr "Lisää siirtokunta reittipisteeksi napsauttamalla sitä!"
 
 #: horizons/gui/widgets/routeconfig.py:183
 msgid "Loading into ship"
-msgstr ""
+msgstr "Lastataan laivaan"
 
 #: horizons/gui/widgets/routeconfig.py:190
 msgid "Unloading from ship"
-msgstr ""
+msgstr "Puretaan laivasta"
 
 #: horizons/gui/widgets/routeconfig.py:376
 msgid "You are not allowed to trade with this player"
@@ -2430,7 +2436,7 @@ msgstr "Et saa käydä kauppaa tämän pelaajan kanssa"
 #: horizons/gui/widgets/unitoverview.py:118
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:123
 msgid "none"
@@ -2469,12 +2475,12 @@ msgstr "Kouluttaa yksiköitä maataisteluihin."
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:70
 msgid "Blender"
-msgstr ""
+msgstr "Maustemylly"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:72
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Tuottaa valmiita mausteita raakamausteista."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:77
@@ -2781,7 +2787,7 @@ msgstr "Leipäkauppa"
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:285
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Tuottaa kaikenlaisia konditoriatuotteita."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
@@ -2846,7 +2852,7 @@ msgstr "Veistää kiviä tiiliksi."
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:332
 msgid "Stone Pit"
-msgstr ""
+msgstr "Kivikaivanto"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:334
@@ -3171,6 +3177,8 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
+"Pelit ovat menneet epätahtiin. Tämä tarkoittaa tuntematonta sisäistä "
+"virhettä, jonka johdosta peli ei voi jatkaa."
 
 #: horizons/manager.py:176
 msgid "We are very sorry and hope to have this bug fixed in a future version."
@@ -3198,11 +3206,11 @@ msgstr ""
 
 #: horizons/network/connection.py:87 horizons/network/connection.py:93
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Palvelimeen ei voitu yhdistää."
 
 #: horizons/network/connection.py:88
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Tarkasta palvelimen osoite."
 
 #: horizons/network/networkinterface.py:526
 msgid "Not Ready"
@@ -3248,10 +3256,11 @@ msgstr "Pääsy estetty"
 #: horizons/session.py:409
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"Tallennustiedosto voi olla kirjoitussuojattu tai toisen prosessin käytössä."
 
 #: horizons/spsession.py:65
 msgid "Your game has not been saved."
-msgstr ""
+msgstr "Peliäsi ei ole tallennettu."
 
 #: horizons/util/checkupdates.py:87
 msgid "New version of Unknown Horizons"
@@ -3278,7 +3287,7 @@ msgstr "Lataussivu avataan verkkoselaimeen."
 #: horizons/util/uhdbaccessor.py:267
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} paikkaa, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:275
 #, python-brace-format
@@ -3341,7 +3350,7 @@ msgstr "Tämä rakennus täytyy sijoittaa osin tasamaalle."
 
 #: horizons/world/status.py:75
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Asukkailla on rutto!"
 
 #: horizons/world/status.py:81
 msgid "This building is on fire!"
@@ -3365,9 +3374,8 @@ msgid "This building has a very low productivity."
 msgstr "Tämän rakennuksen tuotantokapasiteetti on hyvin alhainen."
 
 #: horizons/world/status.py:121
-#, fuzzy
 msgid "This building is decommissioned."
-msgstr "Tämä rakennus ei ole käytössä."
+msgstr "Tämä rakennus on poistettu käytöstä."
 
 #: horizons/world/traderoute.py:329
 #, python-brace-format
@@ -3411,11 +3419,11 @@ msgstr "Hyökätään kohteeseen {target} '{name}' ({owner})"
 #: horizons/world/units/weaponholder.py:456
 #, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Hyökätään {owner}"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "indigo"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3428,7 +3436,7 @@ msgstr "Yksi rakennuksista on syttynyt palamaan!"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "suolaliuos"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
@@ -3444,7 +3452,7 @@ msgstr "onnellisuutta"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "jalokivet"
 
 #. This is a database entry: the name of a resource
 #| msgid "iron deposit"
@@ -3761,9 +3769,8 @@ msgid "charcoal"
 msgstr "puuhiili"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "stone deposit"
-msgstr "raakakiveä"
+msgstr "kiviesiintymä"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
@@ -3779,7 +3786,7 @@ msgstr "tammenterhoja"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "pukineet"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
@@ -3816,9 +3823,8 @@ msgid "Your game has been autosaved."
 msgstr "Peli tallennettiin automaattisesti."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "gold deposit"
-msgstr "Savimaa"
+msgstr "kultaesiintymä"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3826,12 +3832,11 @@ msgstr "Yksi pelloistasi tarvitsee maatilan lähistölleen."
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "raakajalokiviä"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "alvearies"
-msgstr "Mehiläispesä"
+msgstr "mehiläispesiä"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
@@ -3847,7 +3852,7 @@ msgstr "sivistystä"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "puuvilla"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3872,10 +3877,9 @@ msgid "cannon"
 msgstr "tykkiä"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy
 #| msgid "The inhabitants of this building have the plague."
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Tämän rakennuksen asukkailla on rutto."
+msgstr "Tämän rakennuksen asukkailla on rutto!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3883,10 +3887,9 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "{name} otti käyttöön uuden laivan."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "tobacco plants"
 msgid "tea plants"
-msgstr "tupakkakasveja"
+msgstr "teekasveja"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
@@ -3902,7 +3905,7 @@ msgstr "Pelillesi suoritettiin pikatallennus."
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr ""
+msgstr "kauriin ruokaa"
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
@@ -3910,7 +3913,7 @@ msgstr "yrttejä"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "lamppuöljy"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
@@ -3925,10 +3928,9 @@ msgid "condiments"
 msgstr "kastikkeita"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "black"
 msgid "blackdeath"
-msgstr "musta"
+msgstr "musta surma"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
@@ -3952,10 +3954,9 @@ msgid "salt"
 msgstr "suolaa"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "rautaharkkoja"
+msgstr "kultaharkkoja"
 
 #~ msgid "Back:"
 #~ msgstr "Takaisin:"

@@ -36,7 +36,7 @@ tab2:
   - BUILDINGS.TOBACCO_FIELD
   - BUILDINGS.CATTLE_RUN
   - BUILDINGS.HERBARY
-#  - BUILDINGS.SPICE_FIELD
+  - BUILDINGS.SPICE_FIELD
 -
   - _ Citizens
   - BUILDINGS.CORN_FIELD
@@ -60,12 +60,12 @@ tab3:
 -
   - _ Workshops
   - BUILDINGS.WEAVER
-#  - BUILDINGS.BLENDER
+  - BUILDINGS.BLENDER
 -
   - _ Workshops
   - BUILDINGS.DISTILLERY
   - BUILDINGS.TOBACCONIST
-#  - BUILDINGS.VINTNER
+  - BUILDINGS.WINERY
 #  - BUILDINGS.PASTRY_SHOP
 
 
@@ -101,7 +101,7 @@ tab5:
   - _ Military Service
   - BUILDINGS.BOAT_BUILDER
 #  - # empty
-  - BUILDINGS.BARRACKS
+#  - BUILDINGS.BARRACKS
 
 #tab6:
 #- icon: icons/tabwidget/buildmenu/class/aesthetics

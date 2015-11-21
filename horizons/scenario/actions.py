@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -69,13 +69,11 @@ def show_db_message(session, database_message_id):
 
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *parameters):
-	"""Shows a logbook entry and opens the logbook after 'delay' seconds.
+	"""Shows a logbook entry and opens the logbook after some seconds.
 	Displays a YAML-defined notification message on logbook close.
 
-	Set delay=0 for instant appearing.
-	#TODO get *delay* parameter working again, it is currently not implemented!
-	@param parameters: arbitrary list of logbook parameters, including their values.
-	                Check widgets.logbook#add_captainslog_entry for parameter documentation.
+	@param parameters: list of logbook parameters, including their values.
+	See widgets.logbook:add_captainslog_entry for parameter documentation.
 	"""
 	def write_logbook_entry(session, parameters):
 		"""Adds an entry to the logbook and displays it.

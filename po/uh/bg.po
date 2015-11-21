@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-03-09 23:26+0200\n"
-"Last-Translator: Nikolai Nikolov <niki.nins@gmail.com>\n"
+"PO-Revision-Date: 2014-06-27 17:07+0200\n"
+"Last-Translator: Bojana <bojana.vitanova@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/uh/uh/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -40,21 +40,23 @@ msgstr ""
 
 #: run_uh.py:178
 msgid "Error: Unable to find required library \"PyYAML\"."
-msgstr ""
+msgstr "Грешка: Не е открита библиотека \"PyYAML\"."
 
 #: run_uh.py:179
 msgid "PyYAML (a required library) is missing and needs to be installed."
-msgstr ""
+msgstr "PyYAML липсва и е нужно да се инсталира."
 
 #: run_uh.py:180
 msgid "The Windows installer is available at http://pyyaml.org/wiki/PyYAML."
-msgstr ""
+msgstr "Инсталацията е налична на http://pyyaml.org/wiki/PyYAML."
 
 #: run_uh.py:181
 msgid ""
 "Linux users should find it using their package manager under the name "
 "\"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Линукс потребителите могат да намерят библиотеката чрез пакер мениджъра под "
+"името \"pyyaml\" или \"python-yaml\"."
 
 #: run_uh.py:215
 msgid "Thank you for using Unknown Horizons!"
@@ -62,16 +64,16 @@ msgstr "Благодаря Ви, че използвахте Unknown Horizons!"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Връщане към редакторът"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:52
 msgid "Save map"
-msgstr ""
+msgstr "Запази карта"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr ""
+msgstr "Зареди карта"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
@@ -89,19 +91,19 @@ msgstr "Помощ"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "Излез от редакторът"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr ""
+msgstr "Избери големина на четка:"
 
 #: content/gui/xml/editor/editor_settings.xml:28
 msgid "Select terrain:"
-msgstr ""
+msgstr "Избери терен:"
 
 #: content/gui/xml/editor/editor_settings.xml:35
 msgid "(right click to stop)"
-msgstr ""
+msgstr "десен бутон да спреш"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -129,7 +131,7 @@ msgstr "Текущи разходи:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
-msgstr ""
+msgstr "Сродни сгради"
 
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
@@ -137,26 +139,26 @@ msgid "Inhabitants"
 msgstr "Жители"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Повиши скоростта на играта"
+msgstr "Повиши скоростта на играта ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Намали скоростта на играта"
+msgstr "Намали скоростта на играта ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map counterclockwise"
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Завърти картата обратно на часовниковата стрелка"
+msgstr "Завърти картата обратно на часовниковата стрелка ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Rotate map clockwise"
 msgid "Rotate map clockwise ({key})"
-msgstr "Завърти картата по посока на часовниковата стрелка"
+msgstr "Завърти картата по посока на часовниковата стрелка ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 msgid "Zoom in"
@@ -167,32 +169,32 @@ msgid "Zoom out"
 msgstr "Отдалечи"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Destroy"
 msgid "Destroy ({key})"
-msgstr "Унищожи"
+msgstr "Унищожи ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:41
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Captain's log"
 msgid "Captain's log ({key})"
-msgstr "Записки на капитана"
+msgstr "Записки на капитана ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:43
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Build menu"
 msgid "Build menu ({key})"
-msgstr "Строително меню"
+msgstr "Строително меню ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
 msgstr "Дипломация"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Game menu"
 msgid "Game menu ({key})"
-msgstr "Меню на играта"
+msgstr "Меню на играта ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:7
 msgid "Change name"
@@ -232,7 +234,6 @@ msgstr "Въведи съобщение:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:32
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
-#, fuzzy
 msgid "Running costs"
 msgstr "Текущи разходи"
 
@@ -310,7 +311,7 @@ msgstr "Преглед сграда"
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_productionbuilding.xml:24
 msgid "Capacity utilization"
-msgstr ""
+msgstr "Използване на капацитета"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -378,11 +379,11 @@ msgstr "Брои жители на къща"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr ""
+msgstr "Къщи с този брой жители"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
-msgstr "Сумарно"
+msgstr "Общо"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:72
 msgid "houses"
@@ -439,7 +440,6 @@ msgstr "Натисни за смяна на името на селището"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
-#, fuzzy
 msgid "Happiness"
 msgstr "Щастие"
 
@@ -562,9 +562,8 @@ msgstr "Пусни продукцията"
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid "Select resource:"
-msgstr "Продай ресурси:"
+msgstr "Избери ресурси:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -572,15 +571,15 @@ msgstr "Продай ресурси:"
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr ""
+msgstr "Избран е друг ресурс вместо текущия. При отказ натисни X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
+msgstr "Запази текущата ресурсна конфигурация като основна за всички колонии."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "Избери основната ресурсна конфигурация за всички колонии."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -598,14 +597,13 @@ msgid "Move down"
 msgstr "Премести долу"
 
 #: content/gui/xml/ingame/templates/traderoute_resource_selection.xml:4
-#, fuzzy
 msgid "Select a resource:"
-msgstr "Продай ресурси:"
+msgstr "Избери ресурс:"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:17
 msgid "Read previous entries"
-msgstr ""
+msgstr "Прочети пред. вписване"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:20
@@ -615,44 +613,43 @@ msgstr "Прочети следв. вписвания"
 #: content/gui/xml/ingame/widgets/captains_log.xml:33
 #: horizons/gui/widgets/logbook.py:50
 msgid "Statistics"
-msgstr ""
+msgstr "Статистики"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 msgid "Players"
-msgstr ""
+msgstr "Играчи"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:37
 msgid "My ships"
-msgstr ""
+msgstr "Моите кораби"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:38
 msgid "My settlements"
-msgstr ""
+msgstr "Моите колонии"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:45
 msgid "Game messages"
-msgstr ""
+msgstr "Игрови съобщения"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:49
 msgid "Whole world"
-msgstr ""
+msgstr "Целия свят"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Everybody"
-msgstr ""
+msgstr "Всеки"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:69
 msgid "Sends the chat messages to all players."
-msgstr ""
+msgstr "Изпрати чат съобщение то всички играчи."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:83
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
-#, fuzzy
 msgid "Enter your message here"
-msgstr "Въведи съобщение:"
+msgstr "Въведи съобщение тук"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:87
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -671,7 +668,7 @@ msgstr "Изчакай разтоварване:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Route activity:"
-msgstr ""
+msgstr "Рутинна дейност:"
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
@@ -717,6 +714,8 @@ msgstr "Земя"
 msgid ""
 "Value of usable land i.e Amount of Land that can be used to create buildings"
 msgstr ""
+"Количество използваема земп, т.е. количество земя, която може да бъде "
+"използвана за създаване на сгради"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
 msgid "Resources"
@@ -802,12 +801,12 @@ msgstr ""
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
-msgstr ""
+msgstr "Пасивен"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
 msgid "Flee"
-msgstr ""
+msgstr "Флота"
 
 #: content/gui/xml/mainmenu/credits.xml:471
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
@@ -819,7 +818,7 @@ msgstr "Излез от главното меню"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr ""
+msgstr "Избери големина на карта:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
@@ -828,36 +827,35 @@ msgstr "Избери карта:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr ""
+msgstr "Избери запазена игра:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr ""
+msgstr "Избери източник на карта"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr ""
+msgstr "Създай нова карта"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr ""
+msgstr "Зареди съществуваща карта"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr ""
+msgstr "Зареди запазена игра"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
-msgstr ""
+msgstr "Стартирай редактор"
 
 #: content/gui/xml/mainmenu/help.xml:11
 msgid "Return"
 msgstr "Върни"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:9
-#, fuzzy
 msgid "Actions"
-msgstr "образование"
+msgstr "Действия"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:10
 msgid "Scroll left"
@@ -877,11 +875,11 @@ msgstr "Преместване надолу"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Завърти сграда или картата по часовника"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Завърти сграда или картата обратно на часовника"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
@@ -905,11 +903,11 @@ msgstr "Разреши разрушителен режим"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Enable road building mode"
-msgstr ""
+msgstr "Разреши строеж на път"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable pipette mode (clone buildings)"
-msgstr ""
+msgstr "Разреши клониране на сгради"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Show player scores"
@@ -953,7 +951,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Премахни избраните единици/сгради"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Display help"
@@ -988,7 +986,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 msgid "Reset to default"
-msgstr ""
+msgstr "Върни първоначалните настройки"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:54
 #, fuzzy
@@ -1018,7 +1016,7 @@ msgstr "Зареждане ..."
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
-msgstr ""
+msgstr "Промени фона"
 
 #. Opens widget to create singleplayer games (scenarios, random maps, free
 #. play)
@@ -1039,7 +1037,7 @@ msgstr "Напускане"
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
 msgid "Editor"
-msgstr ""
+msgstr "Редактор"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:36
 msgid "Credits"
@@ -1060,7 +1058,7 @@ msgstr "Изход към мултиплейър меню"
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Name of the game:"
-msgstr ""
+msgstr "Заглавие на играта:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
@@ -1075,7 +1073,7 @@ msgstr ""
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:24
 msgid "Password of the game:"
-msgstr ""
+msgstr "Парола на играта:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
@@ -1099,7 +1097,7 @@ msgstr "Излизане от геймлоби"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:24
 msgid "The game will start as soon as all players are ready."
-msgstr ""
+msgstr "Играта ще започне веднага щом всички играчи са готови."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:26
 msgid "Game details:"
@@ -1107,7 +1105,7 @@ msgstr "Детайли на играта:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:35
 msgid "Color"
-msgstr ""
+msgstr "Цвят"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Ready:"
@@ -1127,7 +1125,7 @@ msgstr "Зареждане на игра:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:18
 msgid "Load a saved game"
-msgstr ""
+msgstr "Зареди запазена игра"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:28
 msgid "Active games:"
@@ -1421,7 +1419,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "Изберете език:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
@@ -1444,7 +1442,7 @@ msgstr "Пирати"
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr ""
+msgstr "Бедствия"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
@@ -1482,7 +1480,7 @@ msgstr ""
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Не можете да си позволите да купите това"
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
@@ -2750,7 +2748,7 @@ msgstr ""
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:290
 msgid "Pavilion"
-msgstr "Палата"
+msgstr "Църква"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:292
@@ -3895,7 +3893,7 @@ msgstr "черен"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "свещи"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3904,7 +3902,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "вина"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, fuzzy
@@ -3916,10 +3914,9 @@ msgid "salt"
 msgstr "сол"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "желязно кюлче"
+msgstr "желязно кюлчета"
 
 #~ msgid "Back:"
 #~ msgstr "Върни:"

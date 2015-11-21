@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -136,6 +136,8 @@ class LogBook(PickBeltWidget, Window):
 		if (value and value[0] and value[0][0]):
 			self.set_cur_entry(int(value[0][0])) # this also redraws
 
+		self.display_messages()
+
 	def show(self, msg_id=None):
 		if not hasattr(self, '_gui'):
 			self._init_gui()
@@ -147,6 +149,15 @@ class LogBook(PickBeltWidget, Window):
 			if self.current_mode == self.statistics_index:
 				self.show_statswidget(self.last_stats_widget)
 
+	def display_messages(self):
+		"""Display all messages in self._messages_to_display and map the to the current logbook page"""
+		for message in self._messages_to_display:
+			if message in self._displayed_messages:
+				continue
+			for msg_id in show_message(self.session, "logbook", message):
+				self._page_ids[msg_id] = self._cur_entry
+				self._displayed_messages.append(message)
+
 	def hide(self):
 		if not self._hiding_widget:
 			self._hiding_widget = True
@@ -154,14 +165,7 @@ class LogBook(PickBeltWidget, Window):
 			self._gui.hide()
 			self._hiding_widget = False
 
-			for message in self._messages_to_display:
-				# show all messages (except those already displayed) and map them to the current logbook page
-				if message in self._displayed_messages:
-					continue
-				for msg_id in show_message(self.session, "logbook", message):
-					self._page_ids[msg_id] = self._cur_entry
-					self._displayed_messages.append(message)
-
+			self.display_messages()
 			self._message_log.extend(self._messages_to_display)
 			self._messages_to_display = []
 		# Make sure the game is unpaused always and in any case

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -67,7 +67,7 @@ class SettlerOverviewTab(OverviewTab):
 		SettlerUpdate.subscribe(self.on_settler_level_change, sender=self.instance)
 
 	def hide(self):
-		SettlerUpdate.unsubscribe(self.on_settler_level_change, sender=self.instance)
+		SettlerUpdate.discard(self.on_settler_level_change, sender=self.instance)
 		super(SettlerOverviewTab, self).hide()
 
 	def refresh(self):

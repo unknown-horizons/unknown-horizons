@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,7 +27,7 @@ import horizons.globals
 from horizons import network
 from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging.messagebus import SimpleMessageBus
+from horizons.messaging.simplemessagebus import SimpleMessageBus
 from horizons.network import CommandError, NetworkException, FatalError, packets
 from horizons.network.common import Game
 from horizons.network.connection import Connection
@@ -380,7 +380,7 @@ class NetworkInterface(object):
 			while self._connection.ping(): # ping receives packets
 				pass
 		except NetworkException as e:
-			self.log.debug("ping in receive_all failed: "+str(e))
+			self.log.debug("ping in receive_all failed: "+unicode(e))
 			self._handle_exception(e)
 			raise CommandError(e)
 		ret_list = self.received_packets

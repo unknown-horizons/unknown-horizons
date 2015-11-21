@@ -182,12 +182,12 @@ INSERT INTO "related_buildings" VALUES(20, 22, 1);
 INSERT INTO "related_buildings" VALUES(20, 36, 1);
 INSERT INTO "related_buildings" VALUES(20, 38, 1);
 INSERT INTO "related_buildings" VALUES(20, 39, 0);
--- INSERT INTO "related_buildings" VALUES(20, 40, 1);
+INSERT INTO "related_buildings" VALUES(20, 40, 1);
 INSERT INTO "related_buildings" VALUES(20, 46, 1);
--- INSERT INTO "related_buildings" VALUES(20, 49, 1);
+INSERT INTO "related_buildings" VALUES(20, 49, 1);
 -- INSERT INTO "related_buildings" VALUES(20, 60, 1);
--- INSERT INTO "related_buildings" VALUES(20, 61, 1);
--- INSERT INTO "related_buildings" VALUES(20, 62, 1);
+INSERT INTO "related_buildings" VALUES(20, 61, 1);
+INSERT INTO "related_buildings" VALUES(20, 62, 1);
 INSERT INTO "related_buildings" VALUES(45,  3, 0);
 
 CREATE TABLE "tile_set" (
@@ -332,11 +332,10 @@ CREATE TABLE "weapon" (
 	"cooldown_time" INT,
 	"attack_speed" INT,
 	"attack_radius" INT,
-	"stackable" BOOL,
-	"bullet_image" TEXT
+	"stackable" BOOL
 );
-INSERT INTO "weapon" VALUES(40, 'ranged', 7, 5, 15, 3, 4, 2, 1, 'content/gfx/misc/cannonballs/cannonball.png');
-INSERT INTO "weapon" VALUES(41, 'melee',  3, 1,  1, 3, 2, 1, 0, '');
+INSERT INTO "weapon" VALUES(40, 'ranged', 7, 5, 15, 3, 4, 2, 1);
+INSERT INTO "weapon" VALUES(41, 'melee',  3, 1,  1, 3, 2, 1, 0);
 
 CREATE TABLE "tier" (
 	"level" INT NOT NULL,

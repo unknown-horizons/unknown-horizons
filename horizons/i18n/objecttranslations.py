@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -247,7 +247,7 @@ object_translations = {
 		# name of buildings:lookout
 		"name"                        : _("Lookout"),
 		# tooltip_text of buildings:lookout
-		"tooltip_text"                : _("Increases the player's sight."),
+		"tooltip_text"                : _("Expands settlement range."),
 		},
 
 	"content/objects/buildings/lumberjackcamp.yaml" : {
@@ -340,7 +340,7 @@ object_translations = {
 		# name_1 of buildings:storagetent
 		"name_1"                      : _("Storage Hut"),
 		# tooltip_text of buildings:storagetent
-		"tooltip_text"                : _("Extends stock and provides collectors."),
+		"tooltip_text"                : _("Extends stock, expands settlement range and provides collectors."),
 		},
 
 	"content/objects/buildings/tavern.yaml" : {
@@ -406,16 +406,16 @@ object_translations = {
 		"tooltip_text"                : _("Provides education."),
 		},
 
-	"content/objects/buildings/vintner.yaml" : {
-		# name of buildings:vintner
-		"name"                        : _("Vintner"),
-		# tooltip_text of buildings:vintner
-		"tooltip_text"                : _("Produces wine out of grapes."),
-		},
-
 	"content/objects/buildings/warehouse.yaml" : {
 		# name of buildings:warehouse
 		"name"                        : _("Warehouse"),
+		},
+
+	"content/objects/buildings/weaponsmith.yaml" : {
+		# name of buildings:weaponsmith
+		"name"                        : _("Weaponsmith"),
+		# tooltip_text of buildings:weaponsmith
+		"tooltip_text"                : _("Produces weapons out of iron."),
 		},
 
 	"content/objects/buildings/weaverstent.yaml" : {
@@ -430,6 +430,13 @@ object_translations = {
 		"name"                        : _("Windmill"),
 		# tooltip_text of buildings:windmill
 		"tooltip_text"                : _("Grinds corn into flour."),
+		},
+
+	"content/objects/buildings/winery.yaml" : {
+		# name of buildings:winery
+		"name"                        : _("Winery"),
+		# tooltip_text of buildings:winery
+		"tooltip_text"                : _("Produces wine out of grapes."),
 		},
 
 	"content/objects/buildings/woodentower.yaml" : {
@@ -454,6 +461,8 @@ object_translations = {
 		"headline"                    : _("Fields"),
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_tier
+		"headline"                    : _("Military"),
 		# headline of gui_buildmenu:build_menu_per_tier
 		"headline"                    : _("Mining"),
 		# headline of gui_buildmenu:build_menu_per_tier
@@ -493,6 +502,8 @@ object_translations = {
 		"headline"                    : _("Settlers"),
 		# headline of gui_buildmenu:build_menu_per_type
 		"headline"                    : _("Wood"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Workshops"),
 		# headline of gui_buildmenu:build_menu_per_type
 		"headline"                    : _("Workshops"),
 		# headline of gui_buildmenu:build_menu_per_type

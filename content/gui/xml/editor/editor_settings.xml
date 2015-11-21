@@ -15,14 +15,6 @@
 		<ImageButton name="size_3" size="32,32" position="110, 75"
 			path="icons/ship/smallbutton" />
 		<Label position="115, 108" text="3" name="lbl_3" comment="noi18n" />
-		
-		<ImageButton name="size_4" size="32,32" position="150, 75"
-			path="icons/ship/smallbutton" />
-		<Label position="155, 108" text="4" name="lbl_4" comment="noi18n" />
-		
-		<ImageButton name="size_5" size="32,32" position="190, 75"
-			path="icons/ship/smallbutton" />
-		<Label position="195, 108" text="5" name="lbl_5" comment="noi18n" />
 	</Container>
 
 	<Label text="Select terrain:" name="headline_terrain" position="25,155" />

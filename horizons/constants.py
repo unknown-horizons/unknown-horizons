@@ -1,6 +1,6 @@
 # -.- coding: utf-8 -.-
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -73,6 +73,7 @@ class VERSION:
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION = 75
+	SAVEGAME_LEAST_UPGRADABLE_REVISION = 48
 
 	@staticmethod
 	def string():
@@ -101,6 +102,8 @@ class UNITS:
 	FRIGATE              = 1000020
 
 	DISASTER_RECOVERY_COLLECTOR = 1000022
+	
+	SWORDSMAN            = 1000023
 
 	# players will be spawned with an instance of this
 	PLAYER_SHIP          = HUKER_SHIP
@@ -169,7 +172,7 @@ class BUILDINGS:
 	ALVEARIES        = 62
 	PASTRY_SHOP      = 63
 
-	VINTNER          = 65
+	WINERY           = 65
 
 	WEAPONSMITH      = 66
 
@@ -440,6 +443,12 @@ class GUI:
 	CITYINFO_UPDATE_DELAY = 2 # seconds
 	DEFAULT_EXCHANGE_AMOUNT = 50  # tons
 
+# Editor
+class EDITOR:
+	MIN_BRUSH_SIZE = 1
+	MAX_BRUSH_SIZE = 3
+	DEFAULT_BRUSH_SIZE = 1
+
 # Messagewidget and Logbook
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
@@ -453,6 +462,8 @@ class AI:
 	HUMAN_AI = False # whether the human player is controlled by the AI
 
 class TRADER: # check resource values: ./development/print_db_data.py res
+	TILES_PER_TRADER = 100 # create one ship per 100 tiles
+	SETTLEMENTS_PER_SHIP = 2 # the settlement : ship ratio
 	PRICE_MODIFIER_BUY = 1.0  # buy for x times the resource value
 	PRICE_MODIFIER_SELL = 1.0 # sell for x times the resource value
 	TRADING_DURATION = 4 # seconds that trader stays at warehouse to simulate (un)loading
@@ -586,6 +597,7 @@ class PATHS:
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
+	UH_LOGO_FILE = os.path.join("content", "gfx", "uh.png")
 
 class SETTINGS:
 	UH_MODULE = "unknownhorizons"
@@ -653,9 +665,10 @@ LANGUAGENAMES = _LanguageNameDict({
 	"id"    : (u'Bahasa Indonesia', u'Indonesian'),
 	"it"    : (u'Italiano', u'Italian'),
 	"ja"    : (u'日本語', u'Japanese'),
+	"ko"    : (u'한국말/조선말', u'Korean'),
 	"lt"    : (u'Lietuvių', u'Lithuanian'),
 	"lv"    : (u'Latviešu', u'Latvian'),
-	"ko"    : (u'한국말/조선말', u'Korean'),
+	"ml"    : (u'മലയാളം', u'Malayalam'),
 	"nb"    : (u'Bokmål', u'Norwegian'),
 	"nl"    : (u'Nederlands', u'Dutch'),
 	"pl"    : (u'Polski', u'Polish'),

@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -25,6 +25,7 @@ import os.path
 import tempfile
 import time
 
+from horizons.engine import Fife
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
@@ -54,17 +55,28 @@ class SelectSavegameDialog(Dialog):
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
 
 		w = self._gui.findChild(name="gamename_box")
-		if w not in w.parent.hidden_children:
+		if (Fife.getVersion() >= (0, 4, 0)):
 			w.parent.hideChild(w)
+		else:
+			if w not in w.parent.hidden_children:
+				w.parent.hideChild(w)
+				
 		w = self._gui.findChild(name="gamepassword_box")
-		if w not in w.parent.hidden_children:
+		if (Fife.getVersion() >= (0, 4, 0)):
 			w.parent.hideChild(w)
+		else:		
+			if w not in w.parent.hidden_children:
+				w.parent.hideChild(w)
 
 		w = self._gui.findChild(name='enter_filename')
 		if self._mode in ('save', 'editor-save'): # only show enter_filename on save
 			w.parent.showChild(w)
-		elif w not in w.parent.hidden_children:
-			w.parent.hideChild(w)
+		else:
+			if (Fife.getVersion() >= (0, 4, 0)):
+				w.parent.hideChild(w)
+			else:
+				if w not in w.parent.hidden_children:
+					w.parent.hideChild(w)
 
 		self.last_click_event = None
 
@@ -174,8 +186,11 @@ class SelectSavegameDialog(Dialog):
 			savegame_details_box = gui.findChild(name="savegame_details")
 			savegame_details_parent = savegame_details_box.parent
 			if map_file_index == -1:
-				if savegame_details_box not in savegame_details_parent.hidden_children:
+				if (Fife.getVersion() >= (0, 4, 0)):
 					savegame_details_parent.hideChild(savegame_details_box)
+				else:
+					if savegame_details_box not in savegame_details_parent.hidden_children:
+						savegame_details_parent.hideChild(savegame_details_box)
 				return
 			else:
 				savegame_details_parent.showChild(savegame_details_box)

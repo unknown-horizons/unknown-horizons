@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -117,11 +117,14 @@ class Inventory(Container):
 		self._res_order += new_res
 
 		for resid in self._res_order:
+			amount = self._inventory[resid]
+			if amount == 0:
+				index += 1
+				continue
+
 			# check if this res should be displayed
 			if not self.db.cached_query('SELECT shown_in_inventory FROM resource WHERE id = ?', resid)[0][0]:
 				continue
-
-			amount = self._inventory[resid]
 
 			if self.ordinal:
 				lower, upper = self.ordinal.get(resid, (0, 100))

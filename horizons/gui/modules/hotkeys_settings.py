@@ -1,6 +1,6 @@
 # Encoding: utf-8
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -45,10 +45,9 @@ class HotkeyConfiguration(object):
 		self.keys = self.keyconf.get_keys_by_value()
 
 		self.HELPSTRING_LAYOUT = None
-		self._is_displayed = False
 		self._build_interface()
 
-		# When detecing is True, the interface detects keypresses and binds them to actions
+		# When `detecting` is True, the interface detects keypresses and binds them to actions
 		self.detecting = False
 		self.current_button = None
 		self.current_index = None
@@ -77,7 +76,7 @@ class HotkeyConfiguration(object):
 			sec_button_container.addChild(sec_button)
 			self.buttons.append(button)
 			self.secondary_buttons.append(sec_button)
-			self.update_buttons_text()
+		self.update_buttons_text()
 
 	def _create_button(self, action, index):
 		"""Important! The button name is set to index so that when a button is pressed, we know its index"""
@@ -130,7 +129,6 @@ class HotkeyConfiguration(object):
 		key = self.last_combination[0]
 		key_name = self.key_name(key)
 		action = self.actions[self.current_index]
-		column = self.current_column
 
 		# Escape is used to unassign bindings
 		if key_name == 'ESCAPE':
@@ -140,6 +138,10 @@ class HotkeyConfiguration(object):
 		# This is done to avoid binding one key for two actions.
 		elif self.key_is_set(key):
 			oldaction = self.get_action_name(key)
+			if action == oldaction and key_name in self.keyconf.get_current_keys(action):
+				self.update_buttons_text()
+				self.last_combination = []
+				return
 
 			message = _("{key} is already set to {action}.").format(key=key_name, action=oldaction)
 			message += u" " + _("Would you like to overwrite it?")
@@ -152,9 +154,9 @@ class HotkeyConfiguration(object):
 				return
 
 		bindings = self.keyconf.get_current_keys(action)
-		if column == 1:
+		if self.current_column == 1:
 			bindings[0] = key_name
-		elif column == 2:
+		elif self.current_column == 2:
 			if len(bindings) < 2:
 				bindings.append(key_name)
 			else:
@@ -192,7 +194,7 @@ class HotkeyConfiguration(object):
 			k = custom_key_actions[action]
 			if key_name in k:
 				return action
-		print "Action name not found. Key name must be wrong. This is not supposed to ever happen"
+		print "Action name not found. Key name (" + key_name + ") must be wrong. This is not supposed to ever happen"
 
 	def reset_to_default(self):
 		"""Resets all bindings to default"""

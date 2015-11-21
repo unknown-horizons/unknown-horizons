@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -28,8 +28,6 @@ class InventoryTab(TabInterface):
 	widget = 'island_inventory.xml'
 	icon_path = 'icons/tabwidget/common/inventory'
 	helptext = _lazy("Settlement inventory")
-
-	lazy_loading = True
 
 	def __init__(self, instance=None):
 		self.instance = instance

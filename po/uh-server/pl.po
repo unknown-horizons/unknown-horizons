@@ -7,24 +7,26 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-06-03 22:09+0200\n"
-"PO-Revision-Date: 2013-06-03 22:35+0200\n"
-"Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
-"Language-Team: Polish <http://hosted.weblate.org/projects/uh/uh-server/pl/>\n"
+"PO-Revision-Date: 2014-10-19 15:05+0200\n"
+"Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh-server/pl/>"
+"\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.6-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: horizons/network/server.py:250
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr "Stary lub nie wspierany protokół multiplayer. Sprawdź wersję gry."
+msgstr ""
+"Nieaktualny lub niewspierany protokół multiplayer. Sprawdź wersję twojej gry"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Przekroczyłeś globalny rozmiar pakietu."
 
 #: horizons/network/server.py:285 horizons/network/server.py:303
 msgid "This should never happen. Please contact us or file a bug report."
@@ -33,11 +35,11 @@ msgstr ""
 
 #: horizons/network/server.py:302
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Przekroczono wielkość pakietu."
 
 #: horizons/network/server.py:309
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Onbekend of misvormd pakket. Gelieve de programmaversie te controleren"
+msgstr "Nieznany lub nieprawidłowy pakiet. Proszę sprawdzić wersję twojej gry"
 
 #: horizons/network/server.py:315
 msgid "Invalid/Unknown session"
@@ -45,7 +47,7 @@ msgstr "Błędna/Nieznana sesja"
 
 #: horizons/network/server.py:393
 msgid "You can't join a game while in another game"
-msgstr "U kunt niet meedoen met een spel als u nog in een ander spel zit"
+msgstr "Nie możesz dołączyć do gry kiedy jesteś w innej grze"
 
 #: horizons/network/server.py:398
 msgid "Unknown game or game is running a different version"
@@ -84,6 +86,7 @@ msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"W grze jest już gracz z twoim unikalnym ID. To nie powinno nigy nastąpić."
 
 #: horizons/network/server.py:448
 msgid "You are not inside a game"
@@ -98,6 +101,8 @@ msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Jeden z graczy zakończył swoją grę.  Z przyczyn technicznych, ta gra nie "
+"może być kontynuowana. Bardzo nam przykro z tego powodu."
 
 #: horizons/network/server.py:535
 msgid "Unable to change your name."

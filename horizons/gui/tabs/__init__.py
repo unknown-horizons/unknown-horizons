@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -27,10 +27,12 @@ from overviewtab import OverviewTab, GroundUnitOverviewTab, GenericOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
 						TowerOverviewTab
 from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
-from productiontabs import ProductionOverviewTab, SmallProductionOverviewTab
+from productiontabs import ProductionOverviewTab, LumberjackOverviewTab, \
+						SmallProductionOverviewTab
 from residentialtabs import SettlerOverviewTab
 from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
-						TraderShipOverviewTab, EnemyShipOverviewTab
+						TradeShipOverviewTab, TraderShipOverviewTab, \
+                                                EnemyShipOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget

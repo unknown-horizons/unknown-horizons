@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -37,6 +37,13 @@ def assert_called_with_icon(cb, icon):
 
 
 @game_test()
+def test_addstatusicon_queue_emptied(session, player):
+	AddStatusIcon.clear()
+
+	assert not AddStatusIcon.queue_len()
+
+
+@game_test()
 def test_productivity_low(session, player):
 	settlement, island = settle(session)
 
@@ -52,6 +59,7 @@ def test_productivity_low(session, player):
 
 	# Now low
 	assert_called_with_icon(cb, ProductivityLowStatus)
+
 
 @game_test()
 def test_settler_unhappy(session, player):
@@ -86,6 +94,7 @@ def test_decommissioned(session, player):
 	ToggleActive(lj.get_component(Producer))(player)
 
 	assert_called_with_icon(cb, DecommissionedStatus)
+
 
 @game_test()
 def test_inventory_full(session, player):

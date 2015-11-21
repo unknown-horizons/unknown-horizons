@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-14 23:41+0100\n"
-"PO-Revision-Date: 2014-02-03 07:45+0200\n"
-"Last-Translator: Olli Paasonen <betakeytome@gmail.com>\n"
-"Language-Team: Finnish <http://hosted.weblate.org/projects/uh/tutorial/fi/>\n"
+"PO-Revision-Date: 2014-07-31 13:40+0200\n"
+"Last-Translator: Aleksi Kinnunen <aleksi.kinnunen@outlook.com>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/uh/tutorial/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -33,7 +34,7 @@ msgstr ""
 msgid ""
 "Build a warehouse at the coast, so it is easily accessible for other ships "
 "like the Free Trader."
-msgstr "Rakenna varasto rannikolle, jotta laivat pääsevät sinne helposti."
+msgstr "Rakenna sivutoimisto rannikolle, hyvien kulkuyhteyksien äärelle."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -44,15 +45,15 @@ msgid ""
 "This is your Captain's log where all important information is stored. A "
 "short notification of each task will be provided on the left of the screen."
 msgstr ""
-"Tämä on Kapteenin päiväkirja, johon kirjataan kaikki pelin kannalta "
-"olennaiset tiedot. Jokaisesta tehtävästä näkyy lyhyt ilmoitus peli-ikkunan "
-"vasemmalla reunalla."
+"Tämä on Kapteenin päiväkirja, johon kootaan paljon tärkeitä peliin liittyviä "
+"tietoja. Pelin aikana tulee tehtäviä, joista ilmoitetaan peli-ikkunan "
+"vasemmassa reunassa."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you are interested in longer descriptions, your log will hopefully "
 "provide all the help you need."
-msgstr "Jos olet kiinnostunut pidemmistä selosteista, niin löydät ne logistasi."
+msgstr "Tulevista tehtävistä löytyy lisätietoja tästä päiväkirjasta."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -60,9 +61,8 @@ msgid ""
 "icon in the top-right corner (below the mini-map, with a sealed document and "
 "a feather)."
 msgstr ""
-"Kun olet sulkenut tämän päiväkirjan, voit avata sen uudelleen klikkaamalla "
-"\"Kapteenin päiväkirja\" -kuvaketta, joka sijaitsee peliruudun oikeassa "
-"yläkulmassa(pienoiskartan alapuolella)."
+"Päiväkirjan voi avata uudelleen napsauttamalla Kapteenin päiväkirja -"
+"kuvaketta peliruudun oikeassa yläkulmassa (pienoiskartan alapuolella)."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -71,8 +71,8 @@ msgid ""
 "navigation panel! It looks like this:"
 msgstr ""
 "\n"
-"Nähdäksesi ensimmäisen tehdäväsi, klikkaa \"Seuraava merkintä\" -kuvaketta "
-"navikointipaneelin alareunassa. Kuvake näyttää tältä:"
+"Tutustu ensimmäiseen tehtävään napsauttamalla Seuraava merkintä -kuvaketta "
+"päiväkirjan alalaidassa. Kuvake näyttää tältä:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -92,8 +92,8 @@ msgid ""
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
 "\n"
-"Kehitysryhmämme yhteystiedot ovat saatavilla verkkosivuiltamme osoitteesta "
-"www.unknown-horizons.org!"
+"Kehitysryhmämme yhteystiedot löytyvät verkkosivuiltamme osoitteesta www"
+".unknown-horizons.org!"
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the actual game."
@@ -125,7 +125,7 @@ msgid ""
 "button (called 'Build Settlement')."
 msgstr ""
 "Tämä kertoo, että voit rakentaa sivutoimiston tähän napsauttamalla tätä "
-"painiketta (nimeltään \"Rakenna siirtokunta\")."
+"painiketta (nimeltään Perusta siirtokunta)."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -146,7 +146,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #| msgid "Build a warehouse at the coast."
 msgid "Task: Build a warehouse at the coast."
-msgstr "Thtävä: Rakenna varasto rannikolle."
+msgstr "Tehtävä: Rakenna sivutoimisto rannikolle."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
@@ -161,12 +161,12 @@ msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
 msgstr ""
-"Laivasi lastina olleet tavarat puretaan siirtokuntaasi automaattisesti. Voit "
+"Laivan lastina olleet tavarat puretaan siirtokuntaan automaattisesti. Voit "
 "nyt rakentaa joitain perusrakennuksia."
 
 #. This is the text body of a logbook page.
 msgid "We will start with building a lumberjack."
-msgstr "Aloittakaamme puunhakkaajalla."
+msgstr "Aloitetaan puunhakkaajalla."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -174,7 +174,7 @@ msgid ""
 "sailors can afford to hang their tents over."
 msgstr ""
 "Puunhakkaaja on tärkeä, koska sen tuottamia lautoja tarvitaan useimpiin "
-"rakennuksiin, kuten asukkaidesi telttoihin."
+"rakennuksiin, kuten asukkaiden telttoihin."
 
 #. This is the text body of a logbook page.
 msgid "The fisherman needs some boards to build his vessel as well."
@@ -192,7 +192,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid "The build menu is sorted by tiers."
 msgstr ""
-"Rakennusvalikko on jaettu siirtokunnan tason mukaan välilehtiin (vasen "
+"Rakennusvalikko on ryhmiteltu siirtokunnan tason mukaan välilehtiin (vasen "
 "reuna)."
 
 #. This is the text body of a logbook page.
@@ -200,8 +200,8 @@ msgid ""
 "You are currently in the first tier (the Sailors level) so are offered only "
 "the basic buildings."
 msgstr ""
-"Tällä hetkellä sinä olet ensimmäisellä tasolla (merimies -taso), joten voit "
-"rakentaa vai täensimmäisen tason rakennuksia."
+"Peli alkaa ensimmäisellä tasolla (Merimiehet-taso), joten voit rakentaa vain "
+"ensimmäisen tason rakennuksia."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -209,14 +209,14 @@ msgid ""
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
 "\n"
-"Siirtokuntasi kehittyessä saat käyttöösi uusia rakennuksia."
+"Siirtokunnan kehittyessä tarjolle tulee lisää rakennuksia."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area "
 "with some trees around."
 msgstr ""
-"Nyt kuitenkin riittää, että valitset puunhakkaajan kohdasta \"Yritykset\" ja "
+"Nyt kuitenkin riittää, että valitset puunhakkaajan kohdasta Yritykset ja "
 "rakennat sen alueelle, jossa on riittävästi puita."
 
 #. This is the text body of a logbook page.
@@ -224,8 +224,8 @@ msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
 msgstr ""
-"Voit tarvittaessa istuttaa myöhemmin myös puita - mutta se maksaa rahaa. "
-"Käytä ensisijaisesti sitä, mitä luonto on sinulle tarjonnut."
+"Voit tarvittaessa myöhemmin myös istuttaa puita - mutta se maksaa rahaa. "
+"Käytä ensisijaisesti sitä, mitä luonto sinulle tarjoaa."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -246,7 +246,8 @@ msgstr "Rakenna siis polku puunhakkaajalta sivutoimistolle tai varastolle."
 #| "\n"
 #| "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
-msgstr "Tehtävä: Rakenna puunhakkaaja metsään ja yhdistä se tiehen."
+msgstr ""
+"Tehtävä: Rakenna puunhakkaaja metsään ja yhdistä se polulla sivutoimistoon."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -254,7 +255,7 @@ msgid ""
 "worry about recruiting workers for the lumberjack. That happens "
 "automatically."
 msgstr ""
-"Katsele, kun kerääjä hakee ensimmäiset itsevalmistetut lautasi.Älä huolehdi "
+"Katsele, kun kerääjä hakee ensimmäiset itsevalmistetut lautasi. Älä huolehdi "
 "lisätyövoiman palkkauksesta, sillä se tapahtuu automaattisesti."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -321,8 +322,8 @@ msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
-"Kalastus on todella pitkäikäinen ruoanlähde, mutta hitaampaa kuin "
-"metsästäminen."
+"Kalastus on todella varma ja pitkäikäinen ruoanlähde, mutta hitaampaa ja "
+"pienituottoisempaa kuin metsästäminen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -425,7 +426,7 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr "Jos taloutesi on plussan puolella, siirtokuntasi tekee voittoa."
+msgstr "Jos talous on plussan puolella, siirtokunta tekee voittoa."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -433,9 +434,9 @@ msgid ""
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
-"Eri tasojen mukaan jaetusta yleiskatsauksesta näet tietoja kansalaisistasi. "
+"Eri tasojen mukaan ryhmitellystä yleiskatsauksesta näkee tietoja asukkaista. "
 "Voit määritellä siirtokuntatasokohtaisen veroprosentin ja sallia tai kieltää "
-"asukkailtasi oikeudet asumustensa päivittämiseen."
+"asukkailta oikeuden tasonsa päivittämiseen."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a tent and connect it to the main square."
@@ -458,7 +459,7 @@ msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
 msgstr ""
-"Teltat ovat perusasuinrakennuksia. Asukkaasi haluavat kehittää asumustaan, "
+"Teltat ovat perusasuinrakennuksia. Asukkaat haluavat kehittää asumustaan, "
 "kun he saavuttavat isomman tason."
 
 #. This is the text body of a logbook page.
@@ -472,8 +473,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
-msgstr ""
-"Harkitse päivitysten ottamista pois päältä, jos materiaalit ovat vähissä."
+msgstr "Harkitse päivitysten kieltämistä, jos materiaalit ovat vähissä."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -557,7 +557,7 @@ msgid ""
 "kind."
 msgstr ""
 "\n"
-"VIHJE: Shift-näppäimen pitäminen pohjassa helpottaa usean saman rakennuksen "
+"VINKKI: Shift-näppäimen pitäminen pohjassa helpottaa usean saman rakennuksen "
 "rakentamista."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -667,7 +667,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "OPI KÄYMÄÄN KAUPPAA"
+msgstr "KAUPANKÄYNNIN PERUSTEET"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -750,15 +750,14 @@ msgid ""
 msgstr ""
 "Unknown Horisonzsissa on älykäs hinnoittelujärjestelmä, joten hinnat voivat "
 "olla muuttuneet kauppiaan seuraavalla käyntikerralla.\n"
-"Huomaa, että sinä ET voi vaikuttaa hintoihin itse!"
+"Hintoihin EI voi vaikuttaa itse!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
-"Budjetti-välilehdellä näet kaupankäynnin tasapainon kohdista \"Ostot\" ja "
-"\"Myynti\"."
+"Budjetti-välilehdellä näet kaupankäynnin tasapainon kohdista Ostot ja Myynti."
 
 #. This is the text body of a logbook page.
 #| msgid ""
@@ -766,7 +765,7 @@ msgstr ""
 #| "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
-"Tehtävä: Osta niin monta työkalua, että varastossasi on niitä vähintään 30!"
+"Tehtävä: Osta niin monta työkalua, että niitä on varastossa vähintään 30!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a pavilion with connection to the tents."
@@ -799,8 +798,8 @@ msgid ""
 "The solution is a pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
-"Siksipä sinun pitää rakentaa kylääsi kirkko, jonka kyläpappi nopeasti "
-"rakentaa auringonsuojaksi."
+"Siksi kylään pitää perustaa kirkko, jonka kyläpappi nopeasti rakentaa "
+"auringonsuojaksi."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -808,7 +807,7 @@ msgid ""
 "trail, else your inhabitants feel unable to reach them."
 msgstr ""
 "Kirkon kaltaiset palvelurakennukset pitää yhdistää polulla telttoihin tai "
-"muuten asukkaasi kokevat mahdottomaksi päästä niihin."
+"muuten asukkaat eivät pääse käymään niissä."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -854,9 +853,7 @@ msgstr ""
 msgid ""
 "Task: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
-msgstr ""
-"Tehtävä: Rakenna kirkko polkuyhteydellä asukkaidesi luokse, täyttääksei "
-"heidän uskonnolliset tarpeet."
+msgstr "Tehtävä: Rakenna kirkko polkuyhteydellä asukkaiden luokse."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
@@ -883,7 +880,7 @@ msgid ""
 "called Pioneers."
 msgstr ""
 "Jos merimiehesi ovat riittävän onnellisia, he haluavat kehittyä seuraavalle "
-"tasolle, pioneereiksi."
+"tasolle, kansoittajiksi."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -975,7 +972,7 @@ msgstr "Onneksi olkoon! Osa asukkaistasi on saavuttanut tason II!"
 msgid ""
 "Now you have access to new buildings, take a look at the Build menu again."
 msgstr ""
-"Nyt kun sinulla on pääsy uusiin rakennuksiin, katsopas rakennusvalikkoa "
+"Tämä avaa uusia rakennusmahdollisuuksia, joten vilkasepa rakennusvalikkoa "
 "uudestaan."
 
 #. This is the text body of a logbook page.
@@ -1103,8 +1100,8 @@ msgid ""
 "Note that for potatoes you will need a road connection to the farm (not to "
 "the field!) as it will be the only company to work on the goods."
 msgstr ""
-"Huomaa, että perunoille tarvitset tien farmille (eikä pellolle), koska se on "
-"ainoa yritys, joka tuottaa perunoita."
+"Huomaa, että perunapeltoa varten kerääjillä on oltava polku maatilalle, "
+"sillä se on perunoiden viimeinen käsittelypaikka."
 
 #. This is the text body of a logbook page.
 msgid ""

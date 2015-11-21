@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -39,6 +39,13 @@ from horizons.util.yamlcache import YamlCache
 from horizons.world.climate.climatezone import ClimateZone
 from horizons.savegamemanager import SavegameManager
 
+class SavegameTooOld(Exception):
+	def __init__(self, msg=None, revision=None):
+		if msg is None:
+			msg = "The savegame is too old!"
+		if revision is not None:
+			msg += " Revision: " + str(revision)
+		super(SavegameTooOld, self).__init__(msg)
 
 class SavegameUpgrader(object):
 	"""The class that prepares saved games to be loaded by the current version."""
@@ -416,17 +423,13 @@ class SavegameUpgrader(object):
 		from horizons.savegamemanager import SavegameManager
 		metadata = SavegameManager.get_metadata(self.original_path)
 		rev = metadata['savegamerev']
-		if rev == 0: # not a regular savegame, usually a map
-			self.final_path = self.original_path
-		elif rev == VERSION.SAVEGAMEREVISION: # the current version
-			self.final_path = self.original_path
-		else: # upgrade
+
+		if rev < VERSION.SAVEGAMEREVISION :
+			if not SavegameUpgrader.can_upgrade(rev):
+				raise SavegameTooOld(revision=rev)
+			
 			self.log.warning('Discovered old savegame file, auto-upgrading: %s -> %s' % \
 						     (rev, VERSION.SAVEGAMEREVISION))
-			self.using_temp = True
-			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
-			os.close(handle)
-			shutil.copyfile(self.original_path, self.final_path)
 			db = DbReader(self.final_path)
 			db('BEGIN TRANSACTION')
 
@@ -490,16 +493,19 @@ class SavegameUpgrader(object):
 
 	@classmethod
 	def can_upgrade(cls, from_savegame_version):
-		"""Calculates whether a savegame can be upgraded from the current version"""
-		for i in xrange(from_savegame_version+1, VERSION.SAVEGAMEREVISION+1, 1):
-			if not hasattr(cls, "_upgrade_to_rev" + str(i)):
-				return False
-		return True
-
+		"""Checks whether a savegame can be upgraded from the current version"""
+		if from_savegame_version >= VERSION.SAVEGAME_LEAST_UPGRADABLE_REVISION:
+			return True
+		else:
+			return False
 
 	def get_path(self):
 		"""Return the path to the up-to-date version of the saved game."""
 		if self.final_path is None:
+			self.using_temp = True
+			handle, self.final_path = tempfile.mkstemp(prefix='uh-savegame.' + os.path.basename(os.path.splitext(self.original_path)[0]) + '.', suffix='.sqlite')
+			os.close(handle)
+			shutil.copyfile(self.original_path, self.final_path)			
 			self._upgrade()
 		return self.final_path
 

@@ -7,20 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2014-02-08 18:42+0200\n"
-"Last-Translator: João Sena Cardoso <traptos@hotmail.com>\n"
-"Language-Team: Portuguese <http://hosted.weblate.org/projects/uh/uh/pt/>\n"
+"PO-Revision-Date: 2014-10-10 16:32+0200\n"
+"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 1.10-dev\n"
 
 #: run_uh.py:124
-#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr "A execução do Unknown Horizons foi interrompida com erro."
+msgstr "A execução de Unknown Horizons foi interrompida com erro."
 
 #: run_uh.py:126
 msgid "We are very sorry for this and want to fix the underlying error."
@@ -142,16 +141,16 @@ msgid "Inhabitants"
 msgstr "Habitantes"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Increase game speed (+)"
 msgid "Increase game speed ({key})"
-msgstr "Aumentar a velocidade de jogo (+)"
+msgstr "Aumentar a velocidade de jogo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
-#, fuzzy, python-brace-format
+#, python-brace-format
 #| msgid "Decrease game speed (-)"
 msgid "Decrease game speed ({key})"
-msgstr "Diminuir a velocidade de jogo (-)"
+msgstr "Diminuir a velocidade de jogo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, fuzzy, python-brace-format
@@ -4005,10 +4004,9 @@ msgid "salt"
 msgstr "sal"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "lingotes de ferro"
+msgstr "lingotes de ouro"
 
 #~ msgid "Back:"
 #~ msgstr "Voltar:"

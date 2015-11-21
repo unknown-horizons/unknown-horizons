@@ -1,5 +1,5 @@
 # ###################################################
-# Copyright (C) 2008-2013 The Unknown Horizons Team
+# Copyright (C) 2008-2014 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
 #
@@ -21,7 +21,7 @@
 
 import horizons.globals
 
-from horizons.constants import GROUND, VIEW
+from horizons.constants import EDITOR, GROUND, VIEW
 from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import PauseMenu, HelpDialog, SelectSavegameDialog
@@ -200,6 +200,8 @@ class IngameGui(LivingObject):
 
 class SettingsTab(TabInterface):
 	widget = 'editor_settings.xml'
+	# SettingsTab needs access widget upon init, thus disable lazy_loading
+	lazy_loading = False
 
 	def __init__(self, world_editor, ingame_gui):
 		super(SettingsTab, self).__init__(widget=self.widget)
@@ -207,7 +209,7 @@ class SettingsTab(TabInterface):
 		self._world_editor = world_editor
 
 		# Brush size
-		for i in range(1, 6):
+		for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
 			b = self.widget.findChild(name='size_%d' % i)
 			b.capture(Callback(self._change_brush_size, i))
 
