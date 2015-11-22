@@ -187,7 +187,7 @@ class Gui(object):
 	def _on_gui_cancel_action(self, msg):
 		"""Make a sound when a cancelButton is clicked"""
 		AmbientSoundComponent.play_special('success', gain=10)
-		
+
 	def _on_gui_hover_action(self, msg):
 		"""Make a sound when the mouse hovers over a button"""
 		AmbientSoundComponent.play_special('refresh', position=None, gain=1)
