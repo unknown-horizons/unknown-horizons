@@ -27,9 +27,5 @@ po/sqltranslations.pot
 content/gfx/atlas/*.png
 content/atlas.sql
 content/actionsets.json
-<<<<<<< HEAD
 content/tilesets.json
-=======
 content/tilesets.json
-
->>>>>>> 0bcefe0ec5997501e35820b45fcd763c551f06d2
