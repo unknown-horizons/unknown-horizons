@@ -21,6 +21,7 @@ components:
         SettlementStorage: {}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/main_square.ogg]
+    soundfiles: [content/audio/sounds/market.ogg]
 actionsets:
   TIER.SAILORS:
     as_mainsquare0:
