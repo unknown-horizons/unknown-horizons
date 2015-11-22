@@ -183,7 +183,7 @@ class Gui(object):
 	def _on_gui_click_action(self, msg):
 		"""Make a sound when a button is clicked"""
 		AmbientSoundComponent.play_special('click', gain=10)
-
+		
 	def _on_gui_cancel_action(self, msg):
 		"""Make a sound when a cancelButton is clicked"""
 		AmbientSoundComponent.play_special('success', gain=10)
