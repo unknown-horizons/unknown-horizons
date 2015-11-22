@@ -235,3 +235,4 @@ def setup_trigger_signals_on_hover():
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['CancelButton'])
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['DeleteButton'])
 	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['MainmenuButton'])
+	make_hover_trigger_a_signal(pychan.widgets.WIDGETS['ImageButton'])
