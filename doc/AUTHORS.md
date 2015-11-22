@@ -107,6 +107,8 @@
 * MarkusHackspacher (PEP8)
 * paul59 (Tutorial)
 
+####2015
+* Gladius1 (add Sounds to menu)
 
 ## Translators
 

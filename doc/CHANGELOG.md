@@ -3,7 +3,7 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
-| 2015.1 | 74 |
+| 2016.1 | 74 |
 | 2014.1 | 74 |
 | 2013.3 | 73 |
 | 2013.2 | 71 |
@@ -18,9 +18,9 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2015-: Milestone 2015.1
+2016-: Milestone 2016.1
 ----------------------------
-changelog date: APR 12
+changelog date: NOV 22/15
 
 ### Gameplay and Balancing
 
@@ -34,6 +34,7 @@ New files and features
  - spices buildmenu icon
  - spice, spice plant & condiments resource icons
  - blender building
+ - menü sounds
  
  
 ### User Interface
