@@ -34,7 +34,8 @@ New files and features
  - spices buildmenu icon
  - spice, spice plant & condiments resource icons
  - blender building
- - menü sounds
+ - menü sounds (Gladius1)
+ - added cow, market, smith, windmill, toolmaker sounds (Gladius1)
  
  
 ### User Interface
