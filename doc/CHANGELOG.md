@@ -20,7 +20,7 @@ CHANGELOG Unknown Horizons
 
 2016-: Milestone 2016.1
 ----------------------------
-changelog date: NOV 22/15
+changelog date: NOV 28/15
 
 ### Gameplay and Balancing
 
@@ -35,6 +35,7 @@ New files and features
  - spice, spice plant & condiments resource icons
  - blender building
  - menü sounds
+ - added cocoafield
  
  
 ### User Interface
@@ -66,6 +67,7 @@ New team members with this release, Annotations
  - Accepting bounties via bountysource now
  - We accepted pull requests or patches by:
      pinkfloyda
+     Gladius1
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
    
