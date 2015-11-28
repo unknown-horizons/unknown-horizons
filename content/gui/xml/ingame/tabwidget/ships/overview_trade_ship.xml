@@ -35,7 +35,7 @@
 			<Container position="156,0" size="50,50">
 				<ImageButton name="discard_res_bg" path="images/buttons/msg_button" />
 				<ImageButton name="discard_res" helptext="Discard all ressources!" position="10,9" 
-					path="icons/ship/civil_32" />
+					path="icons/ship/discard_all_32" />
 			</Container> 
 		</Container>
 
