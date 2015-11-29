@@ -4,6 +4,7 @@
 * Kilian] (Kilian Köppchen)
 * Nightraven (Tobias Schroefel)
 * Nihathrael (Thomas Kinnen)
+* LinuxDonald (Thomas Kowaliczek)
 
 #### Programming
 * ChrisOelmueller (Christopher Oelmueller)
