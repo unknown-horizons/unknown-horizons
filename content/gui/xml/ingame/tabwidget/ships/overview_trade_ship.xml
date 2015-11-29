@@ -16,7 +16,7 @@
 			<Container position="0,0" size="50,50">
 				<ImageButton name="trade_bg" path="images/buttons/msg_button" />
 				<ImageButton name="trade" helptext="Trade" position="10,9"
-					path="icons/ship/civil_32" />
+					path="icons/ship/load-unload_32" />
 			</Container>
 
 			<Container position="52,0" size="50,50">

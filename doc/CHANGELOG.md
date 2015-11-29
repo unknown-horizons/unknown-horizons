@@ -20,7 +20,7 @@ CHANGELOG Unknown Horizons
 
 2016-: Milestone 2016.1
 ----------------------------
-changelog date: NOV 28/15
+changelog date: NOV 29/15
 
 ### Gameplay and Balancing
 
@@ -36,7 +36,8 @@ New files and features
  - blender building
  - menü sounds
  - added cocoafield
- - replaced the unload icon on the trade ship widget
+ - replaced the discard icon on the trade ship widget
+ - replaced the load/unload icon on the trade ship widget
  
  
 ### User Interface
