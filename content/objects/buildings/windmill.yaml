@@ -27,6 +27,8 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.CORN: 8, RES.FLOUR: 8}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/windmill.ogg]
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1

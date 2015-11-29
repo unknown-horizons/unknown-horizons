@@ -28,6 +28,8 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.IRON_INGOTS: 6, RES.SWORD: 8, RES.CHARCOAL: 6}
+- AmbientSoundComponent:
+    soundfiles: [content/audio/sounds/smith_1.wav]
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
