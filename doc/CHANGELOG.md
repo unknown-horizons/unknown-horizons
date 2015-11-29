@@ -36,6 +36,7 @@ New files and features
  - blender building
  - menü sounds
  - added cocoafield
+ - replaced the unload icon on the trade ship widget
  
  
 ### User Interface
