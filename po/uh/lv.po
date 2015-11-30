@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-11-20 22:53+0100\n"
-"PO-Revision-Date: 2015-11-17 18:39+0000\n"
+"PO-Revision-Date: 2015-11-30 20:57+0000\n"
 "Last-Translator: Ronalds <birgermeister@tvnet.lv>\n"
 "Language-Team: Latvian <https://hosted.weblate.org/projects/uh/uh/lv/>\n"
 "Language: lv\n"
@@ -908,11 +908,11 @@ msgstr "Rādīt spēlētāju punktus"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Show settlement list"
-msgstr ""
+msgstr "Parādīt ciematu sarakstu"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show ship list"
-msgstr ""
+msgstr "Parādīt kuģu sarakstu"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Toggle Captain's log"
