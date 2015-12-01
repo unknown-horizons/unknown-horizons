@@ -278,9 +278,9 @@ INSERT INTO "resource" VALUES(55, 'confectionery',  10,     0,    0); -- unused
 INSERT INTO "resource" VALUES(56, 'candles',        10,     0,    0); -- unused
 INSERT INTO "resource" VALUES(57, 'vines',           2,     0,    1); 
 INSERT INTO "resource" VALUES(58, 'grapes',          2.5,   0,    1);
-INSERT INTO "resource" VALUES(59, 'alvearies',       2,     0,    0); -- unused
+INSERT INTO "resource" VALUES(59, 'alvearies',       2,     0,    1);
 --                            id   name            value  trade  show_inv
-INSERT INTO "resource" VALUES(60, 'honeycombs',      2.5,   0,    0); -- unused
+INSERT INTO "resource" VALUES(60, 'honeycombs',      2.5,   0,    1);
 INSERT INTO "resource" VALUES(61, 'gold deposit',    0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(62, 'gold ore',       15,     0,    0); -- unused
 INSERT INTO "resource" VALUES(63, 'gold ingots',    50,     0,    0); -- unused
