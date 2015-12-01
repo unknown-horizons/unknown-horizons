@@ -44,7 +44,7 @@ from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.messaging import (TabWidgetChanged, SpeedChanged, NewDisaster, MineEmpty,
-                                NewSettlement, PlayerLevelUpgrade, ZoomChanged)
+                                NewSettlement, PlayerLevelUpgrade, ZoomChanged, GuiAction, GuiHover, GuiCancelAction)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.python.callback import Callback
