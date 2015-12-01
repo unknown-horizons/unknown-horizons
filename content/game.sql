@@ -263,9 +263,9 @@ INSERT INTO "resource" VALUES(41, 'sword',         10,     1,    1);
 INSERT INTO "resource" VALUES(42, 'grain',           0,     0,    1); -- (corn ears)
 INSERT INTO "resource" VALUES(43, 'corn',            2,     0,    1);
 INSERT INTO "resource" VALUES(44, 'flour',           2.5,   1,    1);
-INSERT INTO "resource" VALUES(45, 'spice plants',    2,     0,    0); -- unused
-INSERT INTO "resource" VALUES(46, 'spices',          2.5,   0,    0); -- unused
-INSERT INTO "resource" VALUES(47, 'condiments',     10,     0,    0); -- unused
+INSERT INTO "resource" VALUES(45, 'spice plants',    2,     0,    1);
+INSERT INTO "resource" VALUES(46, 'spices',          2.5,   0,    1);
+INSERT INTO "resource" VALUES(47, 'condiments',     10,     0,    1);
 INSERT INTO "resource" VALUES(48, 'marble deposit',  0,     0,    0); -- unused
 INSERT INTO "resource" VALUES(49, 'marble tops',     7.5,   0,    0); -- unused
 --                            id   name            value  trade  show_inv
