@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The Unknown Horizons Team
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the Unknown Horizons Server package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons Server 9a13287\n"
+"Project-Id-Version: Unknown Horizons Server e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2013-06-03 22:09+0200\n"
+"POT-Creation-Date: 2015-12-02 23:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
