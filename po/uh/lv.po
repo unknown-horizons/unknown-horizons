@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-11-30 20:57+0000\n"
+"PO-Revision-Date: 2015-12-03 22:30+0000\n"
 "Last-Translator: Ronalds <birgermeister@tvnet.lv>\n"
 "Language-Team: Latvian <https://hosted.weblate.org/projects/uh/uh/lv/>\n"
 "Language: lv\n"
@@ -1537,10 +1537,9 @@ msgid "Are you sure you want to delete these objects?"
 msgstr ""
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Dzēst ierakstu"
+msgstr "Dzēst"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -2097,10 +2096,9 @@ msgid "Press H to remove this hint"
 msgstr ""
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Related buildings"
 msgid "Destroy all buildings"
-msgstr "Līdzejošās ēkas"
+msgstr "iznīcināt visas ēkas"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
