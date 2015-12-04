@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2013-11-15 06:21+0200\n"
+"PO-Revision-Date: 2015-12-04 12:52+0000\n"
 "Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
-"Language-Team: Ukrainian <http://hosted.weblate.org/projects/uh/uh/uk/>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/uh/uh/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -311,10 +311,9 @@ msgid "Capacity utilization"
 msgstr "Використання потужностей"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Натисніть для зміни назви цього корабля"
+msgstr "Натисніть для зміни назви цього земного підрозділу"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -500,10 +499,9 @@ msgid "Configure trading route"
 msgstr "Налаштувати торговий шлях"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(втрата всіх ресурсів)"
+msgstr "Відкинути усі ресурси"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1555,16 +1553,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Дипломатія неможлива, бо немає інших гравців."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Ви справді бажаєте перервати цей сеанс?"
+msgstr "Ви справді бажаєте вилучити ці об'єкти?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Вилучити запис"
+msgstr "Вилучити"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:91
@@ -1573,10 +1569,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size} плиток"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Натисніть бажану клавішу"
+msgstr "Натисніть клавішу…"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2138,10 +2133,9 @@ msgid "Press H to remove this hint"
 msgstr "Натисніть  H, щоб забрати підказку"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Related buildings"
 msgid "Destroy all buildings"
-msgstr "Пов'язані будівлі"
+msgstr "Знищити усі будівлі"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
@@ -2237,10 +2231,9 @@ msgid "Warehouse overview"
 msgstr "Огляд складу"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
-msgstr "Огляд юніта"
+msgstr "Огляд підрозділу"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
