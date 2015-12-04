@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-01-22 13:29+0200\n"
-"Last-Translator: Wuzzy <almikes@aol.com>\n"
+"PO-Revision-Date: 2015-12-04 08:05+0000\n"
+"Last-Translator: pac low <lowpac@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -321,10 +321,9 @@ msgid "Capacity utilization"
 msgstr "Kapazitätsauslastung"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
 #| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "Klickt hier, um dieses Schiff umzutaufen"
+msgstr "Hier klicken zum umbenennen der Bodeneinheit"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:30
@@ -513,10 +512,9 @@ msgid "Configure trading route"
 msgstr "Handelsroute konfigurieren"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
 #| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "(Material ist verloren)"
+msgstr "Alle Materialien entsorgen"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -1580,16 +1578,14 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "Ohne Mitspieler benötigt Ihr keine Diplomatie."
 
 #: horizons/gui/ingamegui.py:479
-#, fuzzy
 #| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "Wollt Ihr diese Partie wirklich beenden?"
+msgstr "Wollen Sie diese Objekte wirklich löschen?"
 
 #: horizons/gui/ingamegui.py:480
-#, fuzzy
 #| msgid "Delete entry"
 msgid "Delete"
-msgstr "Eintrag löschen"
+msgstr "Löschen"
 
 # anybody great ideas about translating 'tile' and not making it sound awful?
 #. size of empty map in map editor
@@ -1599,10 +1595,9 @@ msgid "{size}x{size} tiles"
 msgstr "{size}×{size} Kacheln"
 
 #: horizons/gui/modules/hotkeys_settings.py:97
-#, fuzzy
 #| msgid "Press desired key"
 msgid "Press key…"
-msgstr "Taste drücken"
+msgstr "... Taste drücken"
 
 #: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
@@ -2169,23 +2164,24 @@ msgid "Press H to remove this hint"
 msgstr "Drücke H, um diesen Hinweis zu entfernen"
 
 #: horizons/gui/mousetools/tearingtool.py:112
-#, fuzzy
 #| msgid "Destroy building"
 msgid "Destroy all buildings"
-msgstr "Gebäude abreißen"
+msgstr "Alle Gebäude abreißen"
 
 #: horizons/gui/mousetools/tearingtool.py:113
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
+"Hiermit werden alle Gebäude zerstört die sich außerhalb der Siedlungsgrenzen "
+"befinden."
 
 #: horizons/gui/mousetools/tearingtool.py:116
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s zusätzliches Gebäude wird zerstört."
+msgstr[1] "%s zusätzliche Gebäude werden zerstört"
 
 #: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
@@ -2271,10 +2267,9 @@ msgid "Warehouse overview"
 msgstr "Kontor-Übersicht"
 
 #: horizons/gui/tabs/groundunittabs.py:27
-#, fuzzy
 #| msgid "Unit overview"
 msgid "Groundunit overview"
-msgstr "Einheiten-Übersicht"
+msgstr "Bodeneinheiten-Übersicht"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2312,7 +2307,7 @@ msgstr "Produktions-Übersicht"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Fülle den Bereich mit {how_many} Bäume"
 
 #: horizons/gui/tabs/selectmultitab.py:46
 msgid "Selected Units"
@@ -2795,10 +2790,9 @@ msgstr "Krähennest"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:250
-#, fuzzy
 #| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "Verteidigt Eure Siedlung."
+msgstr "Erweitert den Siedlungs Bereich."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:255
@@ -2936,10 +2930,11 @@ msgstr "Lagerhütte"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:343
-#, fuzzy
 #| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "Erweitert die Lagerkapazität und stellt Träger bereit."
+msgstr ""
+"Erweitert die Lagerkapazität, den Siedlungs-Bereich  und  stellt Träger "
+"bereit."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
@@ -3054,17 +3049,15 @@ msgstr "Kontor"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 #| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Bewaffnung"
+msgstr "Waffenschmied"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:418
-#, fuzzy
 #| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "Stellt Werkzeuge her."
+msgstr "Stellt Eisenwerkzeuge her."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
@@ -3089,7 +3082,7 @@ msgstr "Mahlt Korn zu Mehl."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:437
 msgid "Winery"
-msgstr ""
+msgstr "Kellerei"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:439
@@ -3955,7 +3948,7 @@ msgstr "{player}: {message}"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "Schwert"
 
 # "Kanonen" is plural form, singular is "Kanone"
 #. This is a database entry: the name of a resource
