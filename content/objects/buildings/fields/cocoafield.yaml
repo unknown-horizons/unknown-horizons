@@ -24,5 +24,4 @@ components:
         slot_sizes: {RES.COCOA_BEANS: 1}
 actionsets:
   TIER.CITIZENS:
-    #as_cocoafield0:
-    as_3x3:
+    as_cocoafield0:

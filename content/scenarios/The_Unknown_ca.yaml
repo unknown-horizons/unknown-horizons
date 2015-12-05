@@ -22,9 +22,9 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20 de Novembre de 1740]
+  - [Headline, 20 de novembre de 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Després de quatre dies la tempesta per fi amaina i podem descansar. Malauradament ens queda poc menjar i el nostre vaixell ha quedat força malmès. Hem perdut la carta i els instruments de navegació.
+  - Després de quatre dies la tempesta per fi amaina i podem descansar. Malauradament, ens queda poc menjar i el nostre vaixell ha quedat força malmès. Hem perdut la carta i els instruments de navegació.
   - Hauríem de veure la costa aviat. Un dels homes ha vist ocells pescant, així que no podem ser lluny de terra. Afortunadament sempre portem taulons i eines. Podrem construir un refugi.
   - 'Missió:
 
@@ -33,10 +33,10 @@ logbook-data:
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 22 de Novembre de 1740]
+  - [Headline, 22 de novembre de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Hem construït un port i se'ns renoven les esperances. Encara em preocupa el futur proper... ens estem quedant sense menjar i ens falten alguns materials de construcció elementals.
-  - Hem d'assegurar les necessitats bàsics per continuar vius. Ha arribar l'hora d'anar a buscar menjar i fusta per poder sobreviure i construir un refugi.
+  - Hem d'assegurar les necessitats bàsiques per continuar vius. Ha arribat l'hora d'anar a buscar menjar i fusta per poder sobreviure i construir un refugi.
   - 'Missió:
 
     Construïu com a mínim un de cada:
@@ -47,14 +47,14 @@ logbook-data:
 
     * Caçador
 
-    Recolliu 5 de menjar i 5 taulons.'
+    Recolliu 5 unitats de menjar i 5 taulons.'
   - [Pagebreak]
   - ''
 
 - &TENTS
-  - [Headline, 25 de Novembre de 1740]
+  - [Headline, 25 de novembre de 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Hem assegurat les necessitats bàsiques de menjar i recollit fusta per continuar ampliant en nostre assentament. La gent demana un lloc on viure i intercanviar mercaderies per les necessitats del dia a dia.
+  - Hem assegurat les necessitats bàsiques de menjar i recollit fusta per continuar ampliant el nostre assentament. La gent demana un lloc on viure i intercanviar béns per les necessitats del dia a dia.
   - És hora de construir algunes tendes per viure-hi i una petita plaça per l'aprovisionament dels ciutadans.
   - 'Missió:
 
@@ -63,10 +63,10 @@ logbook-data:
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1 de Desembre de 1740]
+  - [Headline, 1 de desembre de 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Per fi tenim prou menjar i un lloc on refer la nostra vida. La meva tenda no és gaire confortable, però em manté eixut i em dona el consol de tenir un sostre on passar la nit.
-  - 'A les nits miro els estels, però sense les cartes de navegació i els instruments no puc entendre el que diuen. Tinc la sensació que ens haurem de quedar durant un temps, així que haurem de millorar la nostra situació.
+  - Per fi tenim prou menjar i un lloc on refer la nostra vida. La meva tenda no és gaire confortable, però em manté eixut i em dóna el consol de tenir un sostre on passar la nit.
+  - 'A les nits miro els estels, però sense les cartes de navegació i els instruments no puc orientar-me. Tinc la sensació que ens haurem de quedar durant un temps, així que haurem de millorar la nostra situació.
 
     Només podem mirar de construir una civilització i trobar el camí cap a casa…'
   - 'Missió:
@@ -78,11 +78,11 @@ logbook-data:
 - &WON
   - [Headline, 27 d'agost de 1745]
   - [Image, content/gui/images/background/hr.png]
-  - El nostre poble va força bé. Ja som 250 habitants. Ens estem començant a acostumar a la nostra nova llar, però l'illa és massa petita per quedar-nos per sempre.
+  - El nostre poble va força bé. Ja som 250 habitants. Ens estem acostumant a la nova llar, però l'illa és massa petita per quedar-nos-hi per sempre.
   - Haurem de carregar el vaixell i anar a una illa més gran que disposi de més recursos i espai per la meva gent. He creat un mapa de navegació bàsic, fent servir les estrelles que es veuen a la nit. No és perfecte, però espero que sigui suficient per poder tornar aquí.
   - 'Missió:
 
-    Posa''t en contacte amb l''equip de Unknown Horizons Team (www.unknown-horizons.org) i descobreix com pots ajudar a fer aquest escenari més llarg i millor!'
+    Posa''t en contacte amb l''equip de l''Unknown Horizons (www.unknown-horizons.org) i descobreix com pots ajudar a fer aquest escenari més llarg i millor!'
   - [Pagebreak]
   - ''
 
@@ -142,9 +142,9 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Sou el capità d''un vaixell sota bandera anglesa al 1740. Vos i la vostra tripulació sou de camí a una colònia anglesa a l''oceà pacífic.
+  description: 'Sou el capità d''un vaixell sota bandera anglesa al 1740. Vós i la vostra tripulació sou de camí a una colònia anglesa a l''oceà pacífic.
 
-    Tot anava bé fins que van trobar-vos enmig d''una tempesta…'
+    Tot anava bé fins que vau trobar-vos enmig d''una tempesta…'
   difficulty: fàcil
   locale: ca
   mapfile: development.sqlite

@@ -237,6 +237,16 @@ class GuiAction(Message):
 	pass
 
 
+class GuiCancelAction(Message):
+	"""Sent on events that originate from the cancelButton."""
+	pass
+
+
+class GuiHover(Message):
+	"""Sent on mouseEntered events"""
+	pass
+
+
 class ResourceProduced(Message):
 	"""Sent when a production building finished the production of a resource."""
 	arguments = ('caller', 'produced_resources', )

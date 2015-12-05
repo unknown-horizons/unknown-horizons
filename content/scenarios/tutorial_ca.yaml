@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Construïu un magatzem a la costa, de manera que sigui fàcilment accessible per altres vaixells com ara el comerciant lliure.']
+  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
   - '
 
 
@@ -24,83 +24,76 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Aquest és Quadern de Bitacola, on s'emmagatzema tota la informació important. Podeu veure una petita notificació de cada tasca a l'esquerra de la pantalla.
-  - Si us agradaria una descripció estesa, amb una mica de sort trobareu al Quadern la informació que necessiteu.
-  - Si tanqueu el Quadern, el podeu tornar a obrir amb la icona de "Quadern de Bitàcola" a la cantonada de dalt a la dreta (sota el mini mapa, un full segellat i una ploma).
+  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Per veure la primera tasca, feu clic al botó «Llegeix l''entrada següent» al panell de navegació! Una cosa com ara:'
+    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Si creieu que es pot millorar, us agradaria que s''expliqués alguna altra cosa o trobeu alguna errada, ens ho dieu i mirarem de millorar la partida d''aprenentatge!'
+    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
   - '
 
-    Aneu a www.unknown-horizons.org si necessiteu ajuda o voleu posar-vos en contacte amb l''equip!'
-  - I ara, comencem la partida.
+    Visit www.unknown-horizons.org to find out how to contact the team.'
+  - ''
+  - And now, let's start the game!
   - [Pagebreak]
-  - [Headline, 'NOVA TASCA: ESTABLIU-VOS EN UNA ILLA']
+  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
   - [Image, content/gui/images/background/hr.png]
-  - Per moure el vostre vaixell, seleccioneu-lo amb el botó esquerre del ratolí i feu clic amb el dret al lloc on voleu anar.
-  - Quan sigueu prop de la costa, s'habilitarà a la pestanya de vista el botó en forma d'àncora.
+  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
+  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Això vol dir que podeu construir-hi un magatzem prement aquest botó (anomenat «Construir un assentament»).
-  - Ara podeu arrossegar amb el ratolí una vista prèvia del vostre edifici.
-  - 'Podeu construir-lo a qualsevol lloc on l''ombra de la vista prèvia no es torni vermella.
-
-    Feu clic on vulgueu construir el vostre primer edifici.'
+  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
+  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
 - &LUMBERJACK
-  - [Message, Construïu un llenyataire i connecteu-lo al magatzem amb un camí.]
-  - [Headline, 'NOVA TASCA: CONSTRUÏU UN LLENYATAIRE']
+  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
+  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
   - [Image, content/gui/images/background/hr.png]
-  - S'ha descarregat automàticament el material de construcció del vostre vaixell. Ara podeu construir alguns edificis bàsics.
-  - Començarem construint un llenyataire.
-  - Això és molt important en aquesta fase, per que els pals de fusta és la única cosa que es poden permetre els vostres mariners per aguantar les tendes.
-  - Els pescador també necessita planxes de fusta per construir-se una barca.
-  - Per construir llenyataires, obre el menú de construcció ja sigui fent clic a la icona grossa de sota el mini mapa o prement la tecla B.
+  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
+  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - El menú de construcció està ordenat per nivells.
-  - Ara sou al primer nivell (el nivell Mariners) i només disposeu des edificis bàsics.
+  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
-  - '
-
-    A mida que avanci la vostra civilització, disposareu de més edificis i de més complexos.'
-  - De moment, seleccioneu el fuster a «companyies» i construïu-lo en un àrea on hi hagi arbres al voltant.
-  - Més tard també podreu plantar arbres - però et costarà diners. Feu servir el que us proveeix la natura!
-  - Una companyia sempre necessita un camí que connecti amb el magatzem, si no es quedaran a la companyia i no podran ser recollides.
-  - Això vol dir que heu de construir un camí que connecti el vostre magatzem amb el llenyataire.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Observeu com un recol·lector recull la vostra primera producció de taulons. No cal que patiu a reclutar treballadors per al llenyataire. Es fa automàticament.
+  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - ''
+  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
   - [Message, Construïu un caçador i un pescador. Connecteu-los amb el magatzem.]
-  - [Headline, 'NOVA TASCA: SUBMINISTRE D''ALIMENTS']
+  - [Headline, 'Nova tasca: subministrament d''aliments']
   - [Image, content/gui/images/background/hr.png]
-  - També haureu de disposar d'algunes empreses que produeixin menjar, per que la gent, en general (i sobretot els mariners) tenen molta gana.
-  - Les empreses disponibles al primer nivell són el Caçador i el Pescador.
-  - El caçador caça animals al bosc, així que necessita tenir arbres aprop.
-  - Observeu que podeu situar el caçador aprop del llenyataire.
+  - També haureu de disposar d'algunes companyies que produeixin menjar, perquè la gent, en general però sobretot els mariners, tenen molta gana.
+  - Les companyies disponibles al primer nivell són el Caçador i el Pescador.
+  - El caçador caça animals al bosc, així que necessita tenir arbres a prop.
+  - Observeu que podeu situar el caçador prop del llenyataire.
   - Pot passar que els animals no es reprodueixin prou ràpid o simplement que s'amaguin bé.
   - 'Conclusió: no pots confiar en el caçador si necessites un subministrament continu.'
   - [Pagebreak]
   - '
 
-    El pescador necessita un edifici coster com el magatzem i un banc de peixos aprop.'
+    El pescador necessita un edifici coster com el magatzem i un banc de peixos a prop.'
   - Construirà una petita barca de rems i pescarà peixos.
-  - És una font molt constant al cost d'un temps una mica més llarg per unitat d'aliment.
-  - Un petit assentament com el vostre pot fer servir les dues empreses, i pots valorar millor els pros i contres veient la comparativa.
+  - És una font molt constant encara que necessita una mica més de temps per unitat d'aliment.
+  - Un petit assentament com el vostre pot fer servir les dues empreses, i podeu valorar millor els pros i contres veient la comparativa.
   - ''
   - [BoldLabel, 'Task: Build a hunter and a fisher.']
   - No us oblideu de connectar-los amb camins amb el magatzem!
@@ -109,43 +102,43 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &MAINSQUARE
   - [Message, Construïu una plaça principal. Trieu una àrea amb pocs edificis econòmics.]
-  - [Headline, 'NOVA TASCA: LA PLAÇA PRINCIPAL']
+  - [Headline, 'Nova tasca: la plaça principal']
   - [Image, content/gui/images/background/hr.png]
   - Els vostres residents necessiten una plaça principal on poder obtenir productes.
   - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
   - Tots els productes del magatzem estan disponibles a aquesta «plaça del mercat», de manera que els residents no han d'anar fins al pescador o fins al magatzem.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - Heu d'evitar posar les tendes de l'assentament massa aprop del llenyataire perquè construir tendes traurà els arbres que el llenyataire necessita per produir taulons.
+  - Heu d'evitar posar les tendes de l'assentament massa prop del llenyataire perquè construir tendes traurà els arbres que el llenyataire necessita per produir taulons.
   - Les empreses funcionen sense haver d'estar connectades a les tendes, així que no us cal fer carreteres entre la plaça principal i el llenyataire, per exemple.
   - ''
   - [BoldLabel, 'Task: Build a main square.']
   - [Pagebreak]
   - '
 
-    Ara mirem d''a prop la plaça principal.'
+    Ara mirem de prop la plaça principal.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - A la pestanya «Finances» pots veure un full de comptes d'aquesta illa, que conté les despeses que pagueu i els impostos que ingresseu.
-  - Els elements «vendes» i «compra» fan referència al balanç dels vostres negocis i els explicarem més endavant.
-  - Si el vostre balanç és positiu, esteu tenint beneficis.
+  - Els elements «Vendes» i «Compra» fan referència al balanç dels vostres negocis i els explicarem més endavant.
+  - Si el vostre balanç és positiu, esteu obtenint beneficis.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
   - En les diferents pestanyes podeu veure estadístiques sobre els vostres habitants. Aquí també podeu establir l'impost global o permetre o denegar als vostres habitants avançar al següent nivell.
 
 - &FIRSTTENT
   - [Message, Build a tent and connect it to the main square if necessary.]
-  - [Headline, 'NOVA TASCA: EDIFICIS RESIDENCIALS']
+  - [Headline, 'Nova tasca: edificis residencials']
   - [Image, content/gui/images/background/hr.png]
-  - Els colons volen dormir sota taulat, si no no voldran viure a la vostra ciutat! Heu de proveir-los de tendes.
+  - Els colons volen dormir sota sostre. Si no, no voldran viure a la vostra ciutat. Heu de proveir-los de tendes.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
   - Les tendes són els edificis residencials bàsics. Els vostres habitants voldran millorar-les quan arribin a nivells superiors.
   - Tingueu present que la millora de cada edifici requerirà materials de construcció, com ara fusta per la primera millora.
-  - Considereu a deshabilitar la millora si teniu poc estoc d'aquests materials.
+  - Considereu deshabilitar la millora si teniu poc estoc d'aquests materials.
   - Els habitants no seran gaire útils fins que no consumeixin els productes que produïu - però com a mínim pagaran impostos i de moment és la única manera que teniu de fer diners!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
   - [Message, Construïu com a mínim 3 tendes més i connecteu-les a la plaça principal.]
@@ -160,49 +153,49 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * els recursos que demanen.'
   - Si es satisfan les demandes, tant la felicitat com els impostos pujaran.
-  - Si no, la felicitat i els ingressos baixaran. Podria ser que els habitants estiguin tant enfadats que senzillament marxin del poble, deixant darrere unes runes decadents.
+  - Si no, la felicitat i els ingressos baixaran. Podria ser que els habitants estiguin tan enfadats que senzillament marxin del poble, deixant darrere unes ruïnes decadents.
   - Fixeu-vos que també podeu canviar l'impost global aquí.
   - ''
   - [BoldLabel, 'Task: Build at least three additional tents.']
   - '
 
-    TRUC: Prement la tecla de MAJÚSCULES podeu construir múltiples edificis del mateix tipus.'
+    Truc: Prement la tecla «Maj», podeu construir múltiples edificis del mateix tipus.'
 
 - &SIGNALFIRE
   - [Message, 'Construïu un senyal de foc a la costa, prop del magatzem.']
-  - [Headline, 'NOVA TASCA: CONSTRUÏU UN SENYAL DE FOC']
+  - [Headline, 'Nova tasca: construïu un senyal de foc']
   - [Image, content/gui/images/background/hr.png]
-  - Heu vist el vaixell que passa prop de la vostra illa de tant en tant? És el vaixell de comerciant lliure, un dels primers colonitzadors de l'arxipèlag.
+  - Heu vist el vaixell que passa prop de la vostra illa de tant en tant? És el vaixell d'un comerciant lliure, un dels primers colonitzadors de l'arxipèlag.
   - El comerciant proveirà al vostre assentament amb els materials necessaris i que encara no podeu produir.
   - També podeu vendre els vostres excedents però, en general, consumir-los (construint més tendes) en comptes de vendre'ls us donarà més benefici.
   - Els vaixells del comerciant simplement van navegant buscant negoci, però podeu fer que la cosa vagi una mica més ràpid.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - Per fer-ho, construïu una senyal de foc a la costa, prop del vostre magatzem. Mostrarà als vaixells el camí cap al vostre assentament.
-  - El senyal de foc han d'abastar l'àrea per on passen els vaixells per atreure'ls.
+  - Per fer-ho, construïu un senyal de foc a la costa, prop del vostre magatzem. Mostrarà als vaixells el camí cap al vostre assentament.
+  - El senyal de foc ha d'abastar l'àrea per on passen els vaixells per atreure'ls.
   - [Pagebreak]
   - '
 
-    Un cop enllestit aquest petit anunci, el comerciant s''aturarà a veure què teniu al magatzem cada cop que hi passi aprop.'
+    Un cop enllestit aquest petit anunci, el comerciant s''aturarà a veure què teniu al magatzem cada cop que hi passi prop.'
   - Podeu proposar-li negocis amb la pestanya «Compra/Venta».
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - Al nivell «Mariners», disposeu de 3 caselles de comerç.
   - Feu clic a la icona petita per canviar el mode de la casella de «Comprar» a «Vendre» i a la inversa.
-  - Feu clic a la casella per escollir el producte que voleu negociar. Més endavant ho explicarem millor, un cop estigueu apunt de fer negocis.
+  - Feu clic a la casella per escollir el producte amb què voleu negociar. Més endavant ho explicarem millor... un cop estigueu a punt de fer negocis.
   - ''
   - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
 
 - &TRADING
   - [Message, Aconseguiu un estoc mínim de 30 eines. Tardareu una miqueta.]
-  - [Headline, 'NOVA TASCA: APRENEU A NEGOCIAR']
+  - [Headline, 'Nova tasca: apreneu a comerciar']
   - [Image, content/gui/images/background/hr.png]
   - 'Molt bé! El comerciant lliure ara s''aturarà al vostre magatzem de tant en tant.
 
 
-    Continuem el nostre tutorial de com fer negocis.'
+    Continuem l''aprenentatge de com es fan els negocis.'
   - Després d'escollir un tipus particular de producte, la barra verda de sota la casella (si està visible) us mostra quina quantitat del producte que teniu en estoc.
-  - Movent la barra de desplaçament cap a la dreta de cada casella determina el «valor objectiu» que no vol dir «Comprar» o «Vendre».
+  - Movent la barra de desplaçament cap a la dreta de cada casella determina el «valor objectiu» a «Comprar» o «Vendre».
   - Quan compreu, comprareu suficient producte per assolir el «valor objectiu» de l'estoc.
   - Quan vengueu, el «valor objectiu» de l'estoc és la quantitat de producte a la qual deixareu de vendre fins que en torneu a tenir més un altre cop.
   - [Pagebreak]
@@ -213,10 +206,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Si teniu una casella «compar» i teniu 5 tones en estoc, la barra de desplaçament posada a 9 tones farà que en compreu 4 tones més com a màxim.'
   - La venda funciona d'una forma similar. Una casella «Venda» amb 18 tones en estoc i la barra de desplaçament posada a 13 vendrà fins a 5 tones.
   - De tota manera, si el comerciant lliure només li interessa comprar o vendre una quantitat inferior de la que teniu configurada, us haureu de conformar i esperar que torni.
-  - 'Unknown Horizons disposa d''un càlcul de preus intel·ligent, de manera que el valor d''una unitat pot variar.
+  - 'L''Unknown Horizons disposa d''un càlcul de preus intel·ligent, de manera que el valor d''una unitat pot variar.
 
-    NO podeu canviar els preus manualment!'
-  - Podeu veure el vostre balanç de comerç a la pestanya «Finances» comparant-hi els valors de «Vendes» i «compres».
+    No podeu canviar els preus manualment!'
+  - Podeu veure el vostre balanç comercial a la pestanya «Finances» comparant-hi els valors de «Vendes» i «Compres».
   - ''
   - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
@@ -224,24 +217,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &PAVILION
   - [Message, Construïu un pavelló connectat amb les tendes.]
-  - [Headline, 'NOVA TASCA: CONSTRUÏU UN PAVELLÓ']
+  - [Headline, 'Nova tasca: construïu un pavelló']
   - [Image, content/gui/images/background/hr.png]
   - En tindrem prou amb aquestes eines de moment. Bona feina!
-  - Ara ja proporcioneu casa, una plaça principal i menjar als vostres habitants.
+  - Ara ja proporcioneu allotjament, una plaça principal i menjar als vostres habitants.
   - 'Però encara queda una demanda que no satisfeu. Podeu comprovar-ho a la pestanya del mercat o de les tendes: els vostres mariners volen un edifici bàsic on puguin pregar.'
-  - La solució és un pavelló on el mossèn del poble pugui protegir-se del sol fàcilment.
-  - Els edificis de serveis com aquest també han d'estar connectat amb les tendes amb un camí, si no els vostres habitants no hi podran anar.
+  - La solució és un pavelló, on el mossèn del poble usarà com a protecció del sol fàcilment.
+  - Els edificis de serveis com aquest també han d'estar connectats amb les tendes amb un camí. Si no, els vostres habitants no hi podran arribar.
   - [Pagebreak]
   - '
 
     Penseu que la fe es tracta com un recurs físic!'
   - Això vol dir que els vostres habitants necessiten un camí que els connecti amb el productor (pavelló) per recollir-hi fe.
-  - Passat un temps, l'hauran consumit i hi hauran d'anar a buscar-ne més.
+  - Passat un temps, l'hauran consumit i hauran d'anar a buscar-n'hi més.
   - 'Important:
 
-    NO N''HI HA PROU que l''edifici siguin a una determinada distància de les tendes.
+    No n''hi ha prou que l''edifici siguin a una determinada distància de les tendes.
 
-    També hi ha de connectar un camí.'
+    També s''han de connectar amb camins.'
   - ''
   - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
@@ -249,20 +242,20 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &NEXTTIER
   - [Message, Establiu el nivell d'impostos a Baix (a l'esquerra del tot) i espereu que els mariners s'actualitzin.]
-  - [Headline, 'NOVA TASCA: SEGÜENT NIVELL']
+  - [Headline, 'Nova tasca: següent nivell']
   - [Image, content/gui/images/background/hr.png]
-  - S'hauran satisfet totes les demandes si els vostres habitants poden visitar de tant en tant la plaça principal i el pavelló i el vostre subministre d'aliment és correcte.
-  - Si els mariners estan prou contents, voldran avançar al següent nivell anomenat Colons.
+  - S'hauran satisfet totes les demandes si els vostres habitants poden visitar de tant en tant la plaça principal i el pavelló i el subministrament d'aliment és correcte.
+  - Si els mariners estan prou contents, voldran avançar al següent nivell anomenat «Colons».
   - Per fer-los feliços, no hi ha res millor que posar-los els impostos al mínim fins que els vostres habitants tinguin totes les demandes satisfetes.
-  - Hauríeu de mirar de no tenir sempre els impostos baixos, per que segurament acabareu en fallida. Per un quant temps i si sabeu el que feu, pot estar bé.
+  - Hauríeu de mirar de no tenir sempre els impostos baixos, perquè segurament acabareu en fallida. Per un quant temps i si sabeu el que feu, pot estar bé.
   - Si espereu una mica, la primera unitat anirà a la plaça principal a buscar nous materials de construcció per construir una casa de troncs. Aquesta casa reemplaçarà la vella tenda.
   - [Pagebreak]
   - '
 
     Aquestes millores de cases costen recursos que podeu limitar a la plaça central.'
-  - També hi ha millores d'edificis que no tenen cap cost, com podeu veure al llenyataire. En aquest cas només canvia el gràfic.
-  - A les cases millorades hi poden viure més habitants, i els colons també paguen més impostos que els mariners.
-  - Com ja us podeu imaginar, la part negativa és que els colons demanen més productes que els mariners no necessiten, així que haureu de fer servir més diners per fer-los igualment feliços.
+  - També hi ha millores d'edificis que no tenen cap cost, com podeu veure amb el llenyataire. En aquest cas, només canvia la imatge que es mostra.
+  - A les cases millorades hi poden viure més habitants i els colons també paguen més impostos que els mariners.
+  - Com ja us podeu imaginar, la part negativa és que els colons demanen més productes que els mariners. Així que haureu de fer servir més diners per fer-los igualment feliços.
   - ''
   - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
   - - Gallery
@@ -270,24 +263,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &FARM
   - [Message, Construïu una granja i mantingueu una mica d'espai lliure al voltant.]
-  - [Headline, 'NOVA TASCA: CONSTRUÏU UNA GRANJA']
+  - [Headline, 'Nova tasca: construïu una granja']
   - [Image, content/gui/images/background/hr.png]
   - Felicitats! Alguns dels vostres habitants han assolit el nivell 2!
-  - Ara teniu disponibles nous edificis, torneu a fer una ullada al menú construcció.
+  - 'Ara teniu disponibles nous edificis: torneu a fer una ullada al menú construcció.'
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Hi apareix una preciosa nova pestanya.
-  - Els Colons demandaran roba, per tant heu d'establir una nova línia de producció de roba, començant per la llana d'ovella (un dels productes que es fan a la granja).
-  - La granja és un edifici productiu molt particular per que podeu escollir produir no només un, si no diversos (i diferents) productes.
-  - La producció de la granja depèn del tipus de camp que hi construïu al voltant.
+  - Els «Colons» demanaran roba. Per tant, heu d'establir una nova línia de producció de roba, començant per la llana d'ovella (un dels productes que es fan a la granja).
+  - La granja és un edifici productiu molt particular perquè podeu escollir produir no només un, sinó diversos (i diferents) productes.
+  - La producció de la granja depèn del tipus de camps que hi construïu al voltant.
   - [Pagebreak]
   - '
 
     Ja hi tornarem a fer un cop d''ull després.'
-  - Les granges, com totes les companyies que produeixen matèria prima, no cal que estiguin connectades a cap magatzem o dipòsit.
-  - Mentre les unitats de la granja puguin arribar a la companyia del producte final, i els recol·lectors del magatzem o de la tenda de dipòsit puguin arribar a aquesta companyia, tot anirà bé.
-  - De tota manera, si preteneu fer part del procés a diferents parts de l'illa (la qual cosa pot ser normal) o fins i tot a illes diferents, necessiteu una connexió per als recol·lectors.
-  - Mireu de no construir la granja massa aprop de la costa o d'altres edificis per que necessitarà espai al voltant per poder treballar bé.
+  - Les granges, com totes les companyies que produeixen matèries primeres, no cal que estiguin connectades a cap magatzem o dipòsit.
+  - Mentre les unitats de la granja puguin arribar a la companyia del producte final i els recol·lectors o tendes del magatzem puguin arribar a aquesta companyia, tot anirà bé.
+  - De totes maneres, si preteneu fer part del procés a diferents parts de l'illa (la qual cosa pot ser normal) o fins i tot a illes diferents, necessiteu una connexió per als recol·lectors.
+  - Mireu de no construir la granja massa prop de la costa o d'altres edificis perquè necessitarà espai al voltant per poder treballar bé.
   - ''
   - [BoldLabel, 'Task: Build a farm.']
   - - Gallery
@@ -295,56 +288,56 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &FIELDS
   - [Message, 'Construïu com a mínim una pastura i, si voleu, afegiu-hi un camp de patates.']
-  - [Headline, 'NOVA TASCA: CONSTRUÏU CAMPS']
+  - [Headline, 'Nova tasca: construïu camps']
   - [Image, content/gui/images/background/hr.png]
   - La granja no produirà res per si sola sense camps.
   - Ara mateix podeu escollir entre camps de pastures, patates i sucre.
   - 'Fem-hi una ullada:
 
-    * Pastures: Hi viuen les ovelles i produeixen llana.
+    * Pastures: hi viuen les ovelles i produeixen llana.
 
-    * Camp de patates: Hi creixen patates que de moment es tracten com aliment.
+    * Camp de patates: hi creixen patates que, de moment, es tracten com a aliment.
 
-    * Camp de sucre: Hi creix sucre per destil·lar licor i (més endavant) fer pastisseria.'
+    * Camp de sucre: s''hi obté sucre per destil·lar licor (i, més endavant, fer pastissos).'
   - Només necessitem pastures, però si la vostra cadena d'aliments és massa petita (potser teniu molts edificis residencials) també podeu produir patates.
-  - Recordeu que per fer patates necessiteu una carretera que connecti amb la granja (no amb el camp!) per que és l'única companyia que es necessita per produir-les.
+  - Recordeu que per fer patates necessiteu una carretera que connecti amb la granja (no amb el camp!) perquè és l'única companyia que es necessita per produir-les.
   - [Pagebreak]
   - '
 
-    Assegureu-vos que construïu tots els camps a l''àrea d''influència de la granja.'
-  - 'Podeu tenir una producció combinada: una pastura no farà la granja eficient al 100%, si no que heu de veure quants camps pot portar una granja.'
-  - Diferents tipus de camps requereixen més o menys temps (per plantar, collir, pasturar, etc...) i per aquest motiu, la granja pot no poder cuidar tots els camps que hi heu construït.
-  - De moment, no us n'heu de preocupar per que encara no heu construït cap camp. Canviem-ho!
+    Assegureu-vos que construïu tots els camps dins de l''àrea d''influència de la granja.'
+  - 'Podeu tenir una producció combinada: una pastura no farà la granja eficient al 100%, sinó que heu de veure quants camps pot portar una granja.'
+  - Diferents tipus de camps requereixen més o menys temps (per plantar, collir, pasturar, etc...) i, per aquest motiu, la granja pot no poder cuidar tots els camps que hi heu construït.
+  - De moment, no us n'heu de preocupar perquè encara no n'heu construït cap. Canviem-ho!
   - ''
   - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Construïu una tenda de dipòsit (pestanya de nivell 1) en un lloc adequat.]
-  - [Headline, 'NOVA TASCA: CONSTRUÏU UN DIPÒSIT']
+  - [Message, Construïu una tenda magatzem (pestanya de nivell 1) en un lloc adequat.]
+  - [Headline, 'Nova tasca: construïu un magatzem']
   - [Image, content/gui/images/background/hr.png]
   - Heu vist el llenyataire darrerament?
-  - Com que el magatzem no té espai il·limitat, els recol·lectors deixaran de recollir productes de les companyies quan no càpiguen a l'estoc.
+  - Com que el magatzem no té espai il·limitat, els recol·lectors no recolliran productes de les companyies quan no càpiguen a l'estoc.
   - Així que si cap mariner ha volgut actualitzar la seva tenda, probablement teniu una pila de taulons i el llenyataire deixarà de treballar.
   - Podem millorar la situació de dues maneres diferents, i ara les veurem totes dues.
   - 'Qualsevol companyia pot deixar de treballar.
 
     Potser us sonarà estrany, però feu clic a la roda dentada de la vista de la cabana del llenyataire.'
-  - Si aquest mode «aturat» està habilitat (l'anomenem «Fora de servei»), els costos de funcionament que pagueu per l'edifici es reduirà. No serà zero, però serà inferior que mantenir-la produint.
+  - Si aquest mode «aturat» està habilitat (l'anomenem «Fora de servei»), els costos de funcionament que pagueu per l'edifici es reduirà. No serà zero, però serà inferior que mantenir els edificis en funcionament.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
     Això vol dir que podeu estalviar diners quan temporalment no necessiteu una empresa i no la voleu enderrocar.'
-  - 'Una altra solució és construir el darrer edifici de nivell 1 que encara no hem esmentat: la tenda de dipòsit.'
+  - 'Una altra solució és construir el darrer edifici de nivell 1 que encara no hem esmentat: la tenda magatzem.'
   - 'Aquest edifici té dos objectius:
 
     * Ofereix més espai per als vostres productes
 
     * Envia els seus propis recol·lectors a buscar productes, com fan els magatzems.'
-  - Les companyies també poden estar connectades a un dipòsit per recollir els seus productes, i si el magatzem està saturat amb les tasques de recol·lecció, podeu posar una tenda de dipòsit que li doni un cop de mà.
+  - Les companyies també poden estar connectades a un magatzem per recollir els seus productes, i si el magatzem està saturat amb les tasques de recol·lecció, podeu posar una tenda magatzem que li doni un cop de mà.
   - ''
   - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
   - - Gallery
@@ -352,12 +345,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &WEAVER
   - [Message, Construïu un teixidor que pugui obtenir llana de la vostra granja.]
-  - [Headline, 'NOVA TASCA: CONSTRUÏU UN TEIXIDOR']
+  - [Headline, 'Nova tasca: construïu un teixidor']
   - [Image, content/gui/images/background/hr.png]
-  - Ara que ja teniu establerta la producció de llanta, necessiteu un teixidor que la converteixi en teixit.
-  - 'Hi ha dos llocs on el podeu construir: prop de la granja o prop de la tenda de dipòsit (o del magatzem).'
+  - Ara que ja teniu establerta la producció de llana, necessiteu un teixidor que la converteixi en teixit.
+  - 'Hi ha dos llocs on el podeu construir: prop de la granja o prop de la tenda magatzem (o del magatzem).'
   - En ambdós casos us heu d'assegurar que està connectat a un camí.
-  - Podeu posar el teixidor prop de la granja i no posar cap camí i veureu que la llana hi arriba igual i pot produir.
+  - Podeu posar el teixidor prop de la granja i no posar cap camí i veureu que la llana hi arriba igual.
   - ''
   - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
   - - Gallery
@@ -365,11 +358,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &GOALS
   - [Message, Aconseguiu tenir 50 habitants o més a la vostra ciutat per completar el tutorial. Heu de tenir un balanç positiu.]
-  - [Headline, 'NOVA TASCA: COMPLETEU UN TUTORIAL']
+  - [Headline, 'Nova tasca: completeu el tutorial']
   - [Image, content/gui/images/background/hr.png]
   - Intenteu aconseguir que la vostra ciutat tingui 50 habitants o més construint més edificis residencials.
-  - Un cop pugueu mantenir una economia que pugui satisfer tans consumidors, estareu apunt per descobrir nous Horitzons Desconeguts!
-  - També heu de tenir prou diners per mantenir funcionant l'economia, és a dir, heu de tenir un balanç positiu (comproveu-ho a la pestanya «Finances» del magatzem).
+  - Un cop pugueu mantenir una economia que pugui satisfer tants consumidors, estareu apunt per descobrir nous Horitzons Desconeguts!
+  - També heu de tenir prou diners per mantenir funcionant l'economia. És a dir, heu de tenir un balanç positiu (comproveu-ho a la pestanya «Finances» del magatzem).
   - ''
   - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
   - - Gallery
@@ -377,7 +370,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &WON
   - [Message, Felicitats! Heu arribat al final d'aquest tutorial i esteu apunt d'enfrontar-vos a nous desafiaments!]
-  - [Headline, NO QUEDEN TASQUES]
+  - [Headline, No queden tasques]
   - [Image, content/gui/images/background/hr.png]
   - Heu completat totes les tasques que us hem posat. Ara el món és sota el vostre comandament on us esperen les vostres aspiracions i valeroses exploracions!
   - 'Si teniu suggeriments sobre coses que podem millorar, afegir o treure:'
@@ -385,7 +378,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
   - Els nostres fòrums estan a vostra disposició!
-  - Els millors resultats fins ara s'han assolit unint-se al nostre canal IRC, així que podeu començar per aquí (-;
+  - Els millors resultats fins ara s'han assolit unint-se al nostre canal IRC. Així que podeu començar per aquí (-;
   - [Pagebreak]
   - [Headline, Gràcies!]
   - [Image, content/gui/images/background/hr.png]
@@ -662,4 +655,4 @@ metadata:
   locale: ca
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 190 translated messages, 1 fuzzy translation.

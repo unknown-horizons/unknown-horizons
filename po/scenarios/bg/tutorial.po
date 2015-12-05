@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2013-11-14 23:41+0100\n"
+"POT-Creation-Date: 2015-12-02 23:38+0100\n"
 "PO-Revision-Date: 2014-03-09 23:05+0200\n"
 "Last-Translator: Nikolai Nikolov <niki.nins@gmail.com>\n"
-"Language-Team: Bulgarian "
-"<https://hosted.weblate.org/projects/uh/tutorial/bg/>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/uh/tutorial/bg/"
+">\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,9 +31,12 @@ msgstr ""
 "Построй твоята първа колония и се научи как да играеш!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
+#, fuzzy
+#| msgid ""
+#| "Build a warehouse at the coast, so it is easily accessible for other "
+#| "ships like the Free Trader."
 msgid ""
-"Build a warehouse at the coast, so it is easily accessible for other ships "
-"like the Free Trader."
+"Build a warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
 "Построй склад на брега, така че да е лесно достъпен за други кораби като "
 "Свободен Търговец."
@@ -44,36 +47,31 @@ msgstr "Добре дошъл в Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 msgid ""
-"This is your Captain's log where all important information is stored. A "
-"short notification of each task will be provided on the left of the screen."
+"This is your Journal, where important information about the current scenario "
+"is stored. A summary of each new task will also appear as a 'notification "
+"button' near the left-hand edge of the screen. You can hover your mouse over "
+"these notifications to read the summary, or click the button itself to open "
+"the Journal."
 msgstr ""
-"Това е капитанският ти дневник в който се съхранява всяка важна информация. "
-"Кратко описание за всяка предстояща задача ще се появява в лявата част на "
-"екрана."
 
 #. This is the text body of a logbook page.
 msgid ""
-"If you are interested in longer descriptions, your log will hopefully "
-"provide all the help you need."
+"You can also re-open the Journal at any time by clicking the button below "
+"the mini-map, at the top right of your screen. From now on we'll refer to "
+"this area containing the mini-map and various buttons and tabs as the "
+"'Overview'."
 msgstr ""
-"Ако се нуждаеш от по-подробно описание, капитанския дневник ще ти окаже "
-"нужната помощ."
 
 #. This is the text body of a logbook page.
-msgid ""
-"After you close this log, it can be re-opened with the \"Captain's Log\" "
-"icon in the top-right corner (below the mini-map, with a sealed document and "
-"a feather)."
-msgstr ""
-"След затваряне на дневника, той може да бъде отворен отново чрез икона "
-"\"Дневник на капитана\" в горния десен ъгъл (под мини-картата, представляваща "
-"свитък с перо)."
-
-#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "To see your first task, click on the button \"Read next entries\" in the "
+#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
-"To see your first task, click on the button \"Read next entries\" in the "
-"navigation panel! It looks like this:"
+"To see your first task, turn to the next page of the Journal using the "
+"button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
 "За да видиш първата си задача, натисни бутон \"Чети следващ запис\" в "
@@ -82,178 +80,171 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
-"For any suggestions on better wording, topics you would like to have "
-"explained or even buggy conditions: Please tell us and we will try to "
-"improve the tutorial!"
+"If you have any suggestions about how this tutorial can be improved, or if "
+"you encounter any errors, please tell us."
 msgstr ""
-"\n"
-"За всякакви предложения с по-добро описание, действия които желаете да бъдат "
-"описани или забелязани \"бъгове\" : Моля уведомете ни и ще се опитаме да "
-"подобрим учебника!"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
-"Visit www.unknown-horizons.org for help on how to contact the team!"
+"Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
 "Посетете www.unknown-horizons.org за помощ как да се свържете с екипа!"
 
 #. This is the text body of a logbook page.
-msgid "And now, let's start the actual game."
+#, fuzzy
+#| msgid "And now, let's start the actual game."
+msgid "And now, let's start the game!"
 msgstr "А сега, нека започне истинската игра."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: SETTLE ON AN ISLAND"
+#, fuzzy
+#| msgid "NEW TASK: SETTLE ON AN ISLAND"
+msgid "NEW TASK: CREATE A SETTLEMENT"
 msgstr "НОВА ЗАДАЧА: ЗАСЕЛЕТЕ СЕ НА ОСТРОВА"
 
 #. This is the text body of a logbook page.
 msgid ""
-"To move your ship, select it with a left click and right click on the "
-"location you want it to go to."
+"Your ship is at sea, loaded with the supplies you'll need to establish a new "
+"settlement."
+msgstr ""
+
+#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "To move your ship, select it with a left click and right click on the "
+#| "location you want it to go to."
+msgid ""
+"To move your ship, select it with a left-click then right-click on the "
+"location you want it to sail to."
 msgstr ""
 "За да придвижите кораба го изберете с ляв клик на мишката, а с десен клик "
 "посочете мястото на което искате да отиде."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Once you are near the coast, the anchor-like button you see in the "
+#| "overview tab will become active."
 msgid ""
-"Once you are near the coast, the anchor-like button you see in the overview "
-"tab will become active."
+"Once you're near the coast, the 'Build Settlement' button in the overview "
+"will become active."
 msgstr ""
 "След като се доближите до брега, бутона \"котва\" който виждате в полето за "
 "описание ще стане активен."
 
 #. This is the text body of a logbook page.
 msgid ""
-"This indicates that you are able to build a warehouse there by pressing that "
-"button (called 'Build Settlement')."
+"Clicking this button will show a preview of the Warehouse, the first "
+"building required to found a new settlement. As you move the cursor around, "
+"you'll notice that the preview is shaded red when the building is in an "
+"unsuitable area."
 msgstr ""
-"Това показва че можете да построите склад с натискането на този бутон "
-"(наречен \"правене на заселване\")."
 
 #. This is the text body of a logbook page.
 msgid ""
-"Now a preview of your building is dragged around when you move the cursor."
+"The Warehouse needs to be positioned on the coast to allow ships to dock. "
+"So, find a good location then left-click to place this important building."
 msgstr ""
-"Сега икона на постройката се появява на екрана и се движи когато местите "
-"курсора."
 
 #. This is the text body of a logbook page.
-msgid ""
-"You can build on any spot where this preview is not shaded red.\n"
-"Click where you want to place your first building."
-msgstr ""
-"Можете да строите на място където иконата↵\n"
-"не е червена. Кликнете където желаете."
-
-#. This is the text body of a logbook page.
-#| msgid "Build a warehouse at the coast."
-msgid "Task: Build a warehouse at the coast."
+#, fuzzy
+#| msgid "Task: Build a warehouse at the coast."
+msgid "Task: Build a Warehouse on the coast."
 msgstr "Построй склад на брега."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a lumberjack and connect it to the warehouse using a trail."
+#, fuzzy
+#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
+msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
 msgstr "Постройте дърводелна и я свържете със склада като използвате \"път\"."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-msgid "NEW TASK: BUILD A LUMBERJACK"
+#, fuzzy
+#| msgid "NEW TASK: BUILD A LUMBERJACK"
+msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
 msgstr "НОВА ЗАДАЧА: ПОСТРОЙТЕ ДЪРВОДЕЛНА"
 
 #. This is the text body of a logbook page.
 msgid ""
-"The construction material on your ship got unloaded automatically. You can "
-"now construct some basic buildings."
+"The supplies and construction materials have been unloaded from your ship "
+"and safely stored in your new Warehouse. Now it's time to construct some "
+"basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
-"Строителните материали от кораба ви ще се разтоварят автоматично. Вече "
-"можете да строите някои оснонви сгради."
-
-#. This is the text body of a logbook page.
-msgid "We will start with building a lumberjack."
-msgstr "Да започнем със строежа на дърводелна."
 
 #. This is the text body of a logbook page.
 msgid ""
-"This is essential because, at this stage, boards are the only poles your "
-"sailors can afford to hang their tents over."
+"Lumberjacks will fell trees from the woodland around their tent and process "
+"the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
-"Това е важно защото на този етап моряците могат да направят само палатки от "
-"клони покрити с платно."
 
 #. This is the text body of a logbook page.
-msgid "The fisherman needs some boards to build his vessel as well."
-msgstr "Рибарите също се нуждаят от дъски за да сглобят своите лодки."
-
-#. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "In order to construct lumberjacks; open the build menu by either clicking "
+#| "the big icon below the mini map or pressing B key."
 msgid ""
-"In order to construct lumberjacks; open the build menu by either clicking "
-"the big icon below the mini map or pressing B key."
+"To build a Lumberjack's Tent, open the Build Menu by clicking the button "
+"below the mini map or pressing 'B', the default hotkey."
 msgstr ""
 "За да построите дърводелна, отворете меню \"постройки\" или с кликване на "
 "иконата под мини-картата или чрез натискане на бутон \"B\"."
 
 #. This is the text body of a logbook page.
-msgid "The build menu is sorted by tiers."
-msgstr "Менюто \"постройки\" е йерархично."
+msgid ""
+"The Build Menu is sorted by tiers and, as yours is a new settlement, First "
+"Tier buildings are the only ones available to you; as your civilization "
+"advances, you will obtain access to higher tiers and be able to construct a "
+"much wider range of buildings."
+msgstr ""
 
 #. This is the text body of a logbook page.
 msgid ""
-"You are currently in the first tier (the Sailors level) so are offered only "
-"the basic buildings."
+"Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
+"Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
-"Вие се намирате на първо ниво (Моряци) затова имате достъп само до основните "
-"постройки."
 
 #. This is the text body of a logbook page.
 msgid ""
-"\n"
-"As your civilization advances, you also gain more and more complex buildings."
+"Later in the game you might want to create woodland by planting trees, but "
+"since that costs money, you should use what nature has provided for the time "
+"being!"
 msgstr ""
-"\n"
-"С напредъка на цивилизацията, ще достигате до по-сложни постройки."
 
 #. This is the text body of a logbook page.
 msgid ""
-"For now, select the lumberjack under 'Companies' and build it in an area "
-"with some trees around."
+"Any resource-gathering or production building needs a path connecting it to "
+"a Warehouse or other form of storage, otherwise the goods it produces will "
+"not be collected."
 msgstr ""
-"За сега изберете дърводелна от \"Компании\" и я постройте в район с дървета "
-"около нея."
 
 #. This is the text body of a logbook page.
 msgid ""
-"You can also plant trees later - but that costs money. Use what nature "
-"provided you with!"
+"So, once your Lumberjack's Tent is in position, connect it to your Warehouse "
+"by opening the Build Menu then clicking the 'Path' button. You can now click "
+"and drag with the mouse to draw the route of your path between the "
+"Lumberjack's Tent and the Warehouse."
 msgstr ""
-"Можете да засадите дървета по-късно - но това струва пари. Възползвайте се "
-"от това което ви дава приридата!"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid ""
-"A company always needs a trail connection to a storage or warehouse, "
-"otherwise goods will remain at the company and not be collected."
-msgstr ""
-"Компанията винаги се нуждае от пътна връзка със склада, иначе стоките ще се "
-"натрупват в нея без да се разпространяват."
-
-#. This is the text body of a logbook page.
-msgid ""
-"This means that you have to build a trail connecting your warehouse (or "
-"storage) and lumberjack."
-msgstr ""
-"Това означава че трябва да построите път свързващ склада с дърводелната."
-
-#. This is the text body of a logbook page.
-msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
+"Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
+"Warehouse."
 msgstr "Задача: Постройте дърводелна в гората и я свържете с път."
 
 #. This is the text body of a logbook page.
 msgid ""
-"Watch how a collector will fetch your first self-produced boards. Don't "
-"worry about recruiting workers for the lumberjack. That happens "
-"automatically."
+"Once the buildings are connected you'll see a collector arrive to pick up "
+"your newly produced boards and deliver them to the Warehouse, ready for use "
+"in  construction or trade."
 msgstr ""
-"Вижте как събирачът ще вземе вашите първи самостоятелно добити дъски. Не се "
-"грижете за обучаването на дърводелци. То става автоматично."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
@@ -295,8 +286,7 @@ msgstr ""
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
-"Заключение: Ловецът не е много надежден ако ви трябва дългосрочно "
-"снабдяване."
+"Заключение: Ловецът не е много надежден ако ви трябва дългосрочно снабдяване."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -352,9 +342,14 @@ msgstr ""
 "стоки."
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "This means that they need a trail connection from their home to the main "
+#| "square."
 msgid ""
 "This means that they need a trail connection from their home to the main "
-"square."
+"square. Note that the main square acts as trail as well, therefore adjacent "
+"tents do not need a separate trail."
 msgstr "Това означава че им трябват пътища от жилищата до площада."
 
 #. This is the text body of a logbook page.
@@ -426,7 +421,9 @@ msgstr ""
 "развият до следващо по-високо ниво."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-msgid "Build a tent and connect it to the main square."
+#, fuzzy
+#| msgid "Build a tent and connect it to the main square."
+msgid "Build a tent and connect it to the main square if necessary."
 msgstr "Постройте колиби и ги свържете с главния площад."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -475,9 +472,13 @@ msgstr ""
 "правите пари засега!"
 
 #. This is the text body of a logbook page.
+#, fuzzy
+#| msgid ""
+#| "Task: Build a tent and connect it to the main square. Tents dont need to "
+#| "be connected to any of the companies."
 msgid ""
-"Task: Build a tent and connect it to the main square. Tents dont need to be "
-"connected to any of the companies."
+"Task: Build a tent and connect it to the main square if necessary. Tents "
+"don't need to be connected to any of the companies."
 msgstr ""
 "Задача: Постройте палатка и я свържете с главния площад. Палатките не е "
 "нужно да се свързват с компаниите."
@@ -485,7 +486,8 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build at least three additional tents and connect them to the main square."
-msgstr "Постройте поне три допълнителни палатки и ги свържете с главния площад."
+msgstr ""
+"Постройте поне три допълнителни палатки и ги свържете с главния площад."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -554,8 +556,7 @@ msgid ""
 "belongs to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
 "Виждате ли кораб да преминава близо до острова отвреме на време? Този кораб "
-"принадлежи на Свободен Търговец, един от първите заселници на този "
-"архипелаг."
+"принадлежи на Свободен Търговец, един от първите заселници на този архипелаг."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -620,16 +621,16 @@ msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
 "vice versa."
 msgstr ""
-"Кликнете върху малката икона за да промените режима от \"Купи\" на \"Продай\" и "
-"обратно."
+"Кликнете върху малката икона за да промените режима от \"Купи\" на \"Продай"
+"\" и обратно."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
-"Кликнете в някой от слотовете за да изберете стока която да търгувате. "
-"По-късно ще ви обясним как да търгувате."
+"Кликнете в някой от слотовете за да изберете стока която да търгувате. По-"
+"късно ще ви обясним как да търгувате."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a signal fire at the coast close to your warehouse."
@@ -669,8 +670,8 @@ msgid ""
 "Dragging the slider on the right of each slot determines your 'target value' "
 "which has a different meaning on 'Buy' and 'Sell'."
 msgstr ""
-"Местейки плъзгача отдясно на всеки слот, определяте вашата \"целева стойност\" "
-"която има различно значение за \"Купи\" и \"Продай\"."
+"Местейки плъзгача отдясно на всеки слот, определяте вашата \"целева стойност"
+"\" която има различно значение за \"Купи\" и \"Продай\"."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -685,8 +686,8 @@ msgid ""
 "always stop selling until you get more of that resource again."
 msgstr ""
 "Когато продавате, ще можете да продадете само количеството в повече от "
-"\"целевата стойност\". Няма да можете да направите следваща продажба докато не "
-"произведете излишък над нея."
+"\"целевата стойност\". Няма да можете да направите следваща продажба докато "
+"не произведете излишък над нея."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -697,8 +698,8 @@ msgid ""
 msgstr ""
 "\n"
 "Например:\n"
-"Имаме \"Купи\" слот и наличност от 5 тона на склад, плъзгачът е поставен на 9 "
-"тона. Това означава че ще купиме 4 тона от стоката."
+"Имаме \"Купи\" слот и наличност от 5 тона на склад, плъзгачът е поставен на "
+"9 тона. Това означава че ще купиме 4 тона от стоката."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -730,8 +731,8 @@ msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
-"Можете да следите търговския си баланс в поле \"Сметка\" съдържащо стойностите "
-"за \"Покупки\" и \"Продажби\"."
+"Можете да следите търговския си баланс в поле \"Сметка\" съдържащо "
+"стойностите за \"Покупки\" и \"Продажби\"."
 
 #. This is the text body of a logbook page.
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
@@ -1152,9 +1153,9 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
-"Ако този режим \"прекъсване\" е активиран (наричаме го \"Извеждане\"), разходите "
-"за сградата намаляват значително. Не стават нула но са много по-ниски от "
-"активно състояние."
+"Ако този режим \"прекъсване\" е активиран (наричаме го \"Извеждане\"), "
+"разходите за сградата намаляват значително. Не стават нула но са много по-"
+"ниски от активно състояние."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1358,6 +1359,135 @@ msgstr ""
 "Благодаря за изучаването на урока!\n"
 "\n"
 "Ваш UH-Team"
+
+#~ msgid ""
+#~ "This is your Captain's log where all important information is stored. A "
+#~ "short notification of each task will be provided on the left of the "
+#~ "screen."
+#~ msgstr ""
+#~ "Това е капитанският ти дневник в който се съхранява всяка важна "
+#~ "информация. Кратко описание за всяка предстояща задача ще се появява в "
+#~ "лявата част на екрана."
+
+#~ msgid ""
+#~ "If you are interested in longer descriptions, your log will hopefully "
+#~ "provide all the help you need."
+#~ msgstr ""
+#~ "Ако се нуждаеш от по-подробно описание, капитанския дневник ще ти окаже "
+#~ "нужната помощ."
+
+#~ msgid ""
+#~ "After you close this log, it can be re-opened with the \"Captain's Log\" "
+#~ "icon in the top-right corner (below the mini-map, with a sealed document "
+#~ "and a feather)."
+#~ msgstr ""
+#~ "След затваряне на дневника, той може да бъде отворен отново чрез икона "
+#~ "\"Дневник на капитана\" в горния десен ъгъл (под мини-картата, "
+#~ "представляваща свитък с перо)."
+
+#~ msgid ""
+#~ "\n"
+#~ "For any suggestions on better wording, topics you would like to have "
+#~ "explained or even buggy conditions: Please tell us and we will try to "
+#~ "improve the tutorial!"
+#~ msgstr ""
+#~ "\n"
+#~ "За всякакви предложения с по-добро описание, действия които желаете да "
+#~ "бъдат описани или забелязани \"бъгове\" : Моля уведомете ни и ще се "
+#~ "опитаме да подобрим учебника!"
+
+#~ msgid ""
+#~ "This indicates that you are able to build a warehouse there by pressing "
+#~ "that button (called 'Build Settlement')."
+#~ msgstr ""
+#~ "Това показва че можете да построите склад с натискането на този бутон "
+#~ "(наречен \"правене на заселване\")."
+
+#~ msgid ""
+#~ "Now a preview of your building is dragged around when you move the cursor."
+#~ msgstr ""
+#~ "Сега икона на постройката се появява на екрана и се движи когато местите "
+#~ "курсора."
+
+#~ msgid ""
+#~ "You can build on any spot where this preview is not shaded red.\n"
+#~ "Click where you want to place your first building."
+#~ msgstr ""
+#~ "Можете да строите на място където иконата↵\n"
+#~ "не е червена. Кликнете където желаете."
+
+#~ msgid ""
+#~ "The construction material on your ship got unloaded automatically. You "
+#~ "can now construct some basic buildings."
+#~ msgstr ""
+#~ "Строителните материали от кораба ви ще се разтоварят автоматично. Вече "
+#~ "можете да строите някои оснонви сгради."
+
+#~ msgid "We will start with building a lumberjack."
+#~ msgstr "Да започнем със строежа на дърводелна."
+
+#~ msgid ""
+#~ "This is essential because, at this stage, boards are the only poles your "
+#~ "sailors can afford to hang their tents over."
+#~ msgstr ""
+#~ "Това е важно защото на този етап моряците могат да направят само палатки "
+#~ "от клони покрити с платно."
+
+#~ msgid "The fisherman needs some boards to build his vessel as well."
+#~ msgstr "Рибарите също се нуждаят от дъски за да сглобят своите лодки."
+
+#~ msgid "The build menu is sorted by tiers."
+#~ msgstr "Менюто \"постройки\" е йерархично."
+
+#~ msgid ""
+#~ "You are currently in the first tier (the Sailors level) so are offered "
+#~ "only the basic buildings."
+#~ msgstr ""
+#~ "Вие се намирате на първо ниво (Моряци) затова имате достъп само до "
+#~ "основните постройки."
+
+#~ msgid ""
+#~ "\n"
+#~ "As your civilization advances, you also gain more and more complex "
+#~ "buildings."
+#~ msgstr ""
+#~ "\n"
+#~ "С напредъка на цивилизацията, ще достигате до по-сложни постройки."
+
+#~ msgid ""
+#~ "For now, select the lumberjack under 'Companies' and build it in an area "
+#~ "with some trees around."
+#~ msgstr ""
+#~ "За сега изберете дърводелна от \"Компании\" и я постройте в район с "
+#~ "дървета около нея."
+
+#~ msgid ""
+#~ "You can also plant trees later - but that costs money. Use what nature "
+#~ "provided you with!"
+#~ msgstr ""
+#~ "Можете да засадите дървета по-късно - но това струва пари. Възползвайте "
+#~ "се от това което ви дава приридата!"
+
+#~ msgid ""
+#~ "A company always needs a trail connection to a storage or warehouse, "
+#~ "otherwise goods will remain at the company and not be collected."
+#~ msgstr ""
+#~ "Компанията винаги се нуждае от пътна връзка със склада, иначе стоките ще "
+#~ "се натрупват в нея без да се разпространяват."
+
+#~ msgid ""
+#~ "This means that you have to build a trail connecting your warehouse (or "
+#~ "storage) and lumberjack."
+#~ msgstr ""
+#~ "Това означава че трябва да построите път свързващ склада с дърводелната."
+
+#~ msgid ""
+#~ "Watch how a collector will fetch your first self-produced boards. Don't "
+#~ "worry about recruiting workers for the lumberjack. That happens "
+#~ "automatically."
+#~ msgstr ""
+#~ "Вижте как събирачът ще вземе вашите първи самостоятелно добити дъски. Не "
+#~ "се грижете за обучаването на дърводелци. То става автоматично."
 
 #~ msgid "The UH team"
 #~ msgstr "UH екип"

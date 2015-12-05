@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The Unknown Horizons Team
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the Unknown Horizons package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons be6d4d2\n"
+"Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2014-11-14 01:51+0100\n"
+"POT-Creation-Date: 2015-12-02 23:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -457,12 +457,14 @@ msgid ""
 "sell goods."
 msgstr ""
 
+#: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:10
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:78
 msgid "Click to change the name of this ship"
 msgstr ""
 
+#: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:20
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
@@ -470,15 +472,21 @@ msgstr ""
 msgid "Trade"
 msgstr ""
 
+#: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:68
 msgid "Build settlement"
 msgstr ""
 
+#: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
+msgstr ""
+
+#: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
+msgid "Discard all resources"
 msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
@@ -538,13 +546,13 @@ msgstr ""
 msgid "Show resources produced in this settlement"
 msgstr ""
 
-#: content/gui/xml/ingame/templates/overview_farmproductionline.xml:20
-#: content/gui/xml/ingame/templates/overview_productionline.xml:20
+#: content/gui/xml/ingame/templates/overview_farmproductionline.xml:16
+#: content/gui/xml/ingame/templates/overview_productionline.xml:14
 msgid "Pause production"
 msgstr ""
 
-#: content/gui/xml/ingame/templates/overview_farmproductionline.xml:23
-#: content/gui/xml/ingame/templates/overview_productionline.xml:23
+#: content/gui/xml/ingame/templates/overview_farmproductionline.xml:19
+#: content/gui/xml/ingame/templates/overview_productionline.xml:17
 msgid "Start production"
 msgstr ""
 
@@ -795,7 +803,7 @@ msgstr ""
 msgid "Flee"
 msgstr ""
 
-#: content/gui/xml/mainmenu/credits.xml:561
+#: content/gui/xml/mainmenu/credits.xml:584
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:22
 #: content/gui/xml/mainmenu/hotkeys.xml:55
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:22
@@ -1143,7 +1151,7 @@ msgstr ""
 msgid "Change player details"
 msgstr ""
 
-#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:53
+#: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:54
 msgid "Graphics"
 msgstr ""
 
@@ -1499,19 +1507,19 @@ msgstr ""
 msgid "Quit Game"
 msgstr ""
 
-#: horizons/gui/ingamegui.py:237
+#: horizons/gui/ingamegui.py:241
 msgid "No diplomacy possible"
 msgstr ""
 
-#: horizons/gui/ingamegui.py:238
+#: horizons/gui/ingamegui.py:242
 msgid "Cannot do diplomacy as there are no other players."
 msgstr ""
 
-#: horizons/gui/ingamegui.py:475
+#: horizons/gui/ingamegui.py:479
 msgid "Are you sure you want to delete these objects?"
 msgstr ""
 
-#: horizons/gui/ingamegui.py:476
+#: horizons/gui/ingamegui.py:480
 msgid "Delete"
 msgstr ""
 
@@ -1521,21 +1529,21 @@ msgstr ""
 msgid "{size}x{size} tiles"
 msgstr ""
 
-#: horizons/gui/modules/hotkeys_settings.py:98
+#: horizons/gui/modules/hotkeys_settings.py:97
 msgid "Press key…"
 msgstr ""
 
-#: horizons/gui/modules/hotkeys_settings.py:144
+#: horizons/gui/modules/hotkeys_settings.py:146
 #, python-brace-format
 msgid "{key} is already set to {action}."
 msgstr ""
 
-#: horizons/gui/modules/hotkeys_settings.py:145
+#: horizons/gui/modules/hotkeys_settings.py:147
 msgid "Would you like to overwrite it?"
 msgstr ""
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
-#: horizons/gui/modules/hotkeys_settings.py:146
+#: horizons/gui/modules/hotkeys_settings.py:148
 #: horizons/gui/modules/select_savegame.py:167
 msgid "Confirmation for overwriting"
 msgstr ""
@@ -1668,13 +1676,13 @@ msgid "Failed to initialize networking."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:136
-#: horizons/gui/modules/settings.py:264
+#: horizons/gui/modules/settings.py:269
 msgid ""
 "Network features could not be initialized with the current configuration."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:137
-#: horizons/gui/modules/settings.py:265
+#: horizons/gui/modules/settings.py:270
 msgid "Check the settings you specified in the network section."
 msgstr ""
 
@@ -1930,61 +1938,61 @@ msgstr ""
 msgid "Failed to delete savefile!"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:54 horizons/gui/modules/settings.py:114
+#: horizons/gui/modules/settings.py:55 horizons/gui/modules/settings.py:118
 msgid "Hotkeys"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:55
+#: horizons/gui/modules/settings.py:56
 msgid "Game"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:72
+#: horizons/gui/modules/settings.py:76
 msgid "Disabled"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:125
+#: horizons/gui/modules/settings.py:130
 msgid "Restart required"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:126
+#: horizons/gui/modules/settings.py:131
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
 
-#: horizons/gui/modules/settings.py:130
+#: horizons/gui/modules/settings.py:135
 msgid "Restore default settings"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:131
+#: horizons/gui/modules/settings.py:136
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
 msgstr ""
 
-#: horizons/gui/modules/settings.py:132
+#: horizons/gui/modules/settings.py:137
 msgid "Do you want to continue?"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:250
+#: horizons/gui/modules/settings.py:255
 msgid "Invalid network port"
 msgstr ""
 
-#: horizons/gui/modules/settings.py:251
+#: horizons/gui/modules/settings.py:256
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 
-#: horizons/gui/modules/settings.py:252
+#: horizons/gui/modules/settings.py:257
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 
-#: horizons/gui/modules/settings.py:263
+#: horizons/gui/modules/settings.py:268
 msgid "Failed to apply new network settings."
 msgstr ""
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
-#: horizons/gui/modules/settings.py:269
+#: horizons/gui/modules/settings.py:274
 msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
@@ -2083,36 +2091,36 @@ msgid_plural "%s additional buildings will be destroyed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:48
-msgid "Boat builder overview"
-msgstr ""
-
-#: horizons/gui/tabs/boatbuildertabs.py:98
+#: horizons/gui/tabs/boatbuildertabs.py:155
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:208
+#: horizons/gui/tabs/boatbuildertabs.py:193
+msgid "Boat builder overview"
+msgstr ""
+
+#: horizons/gui/tabs/boatbuildertabs.py:236
 msgid "Build this ship!"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:244
+#: horizons/gui/tabs/boatbuildertabs.py:272
 msgid "Fisher boats"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:256
+#: horizons/gui/tabs/boatbuildertabs.py:284
 msgid "Trade boats"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:268
+#: horizons/gui/tabs/boatbuildertabs.py:296
 msgid "War boats"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:280
+#: horizons/gui/tabs/boatbuildertabs.py:308
 msgid "War ships"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertabs.py:298
+#: horizons/gui/tabs/boatbuildertabs.py:326
 msgid "Confirm order"
 msgstr ""
 
@@ -2190,11 +2198,11 @@ msgid "Unit overview"
 msgstr ""
 
 #: horizons/gui/tabs/productiontabs.py:47
-#: horizons/gui/tabs/productiontabs.py:282
+#: horizons/gui/tabs/productiontabs.py:321
 msgid "Production overview"
 msgstr ""
 
-#: horizons/gui/tabs/productiontabs.py:261
+#: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
 msgstr ""
@@ -2204,7 +2212,7 @@ msgid "Selected Units"
 msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:39 horizons/gui/tabs/shiptabs.py:173
-#: horizons/gui/tabs/shiptabs.py:178
+#: horizons/gui/tabs/shiptabs.py:200 horizons/gui/tabs/shiptabs.py:205
 msgid "Ship overview"
 msgstr ""
 
@@ -2259,12 +2267,12 @@ msgstr ""
 msgid "sell for {sellprice} gold"
 msgstr ""
 
-#: horizons/gui/widgets/inventory.py:168
+#: horizons/gui/widgets/inventory.py:171
 #, python-brace-format
 msgid "{stored}/{limit}"
 msgstr ""
 
-#: horizons/gui/widgets/inventory.py:170
+#: horizons/gui/widgets/inventory.py:173
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
 msgstr ""
@@ -3079,31 +3087,31 @@ msgstr ""
 msgid "Agriculture"
 msgstr ""
 
-#: horizons/main.py:382
+#: horizons/main.py:397
 msgid "Failed to start/load the game"
 msgstr ""
 
-#: horizons/main.py:383
+#: horizons/main.py:398
 msgid "The game you selected could not be started."
 msgstr ""
 
-#: horizons/main.py:384
+#: horizons/main.py:399
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 
-#: horizons/main.py:503
+#: horizons/main.py:518
 msgid "No quicksaves found"
 msgstr ""
 
-#: horizons/main.py:504
+#: horizons/main.py:519
 msgid "You need to quicksave before you can quickload."
 msgstr ""
 
-#: horizons/main.py:634
+#: horizons/main.py:649
 msgid "Logging enabled"
 msgstr ""
 
-#: horizons/main.py:635
+#: horizons/main.py:650
 #, python-brace-format
 msgid "Logs are written to {directory}."
 msgstr ""
