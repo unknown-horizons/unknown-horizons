@@ -119,6 +119,7 @@ def print_n_no_name(n, text):
     print '\tWarning: ',
     print '%s without name. Add unique name if desired: text="%s"' % (n, text)
 
+
 def list_all_files():
     result = []
     walker = os.walk('content/gui/xml')
@@ -127,6 +128,7 @@ def list_all_files():
             if filename.endswith('.xml'):
                 result.append(('%s/%s' % (root, filename), filename not in files_to_skip))
     return sorted(result)
+
 
 def content_from_element(element_name, parse_tree, attribute):
     """Extracts text content of one attribute from a widget in the DOM.
@@ -146,7 +148,7 @@ def content_from_element(element_name, parse_tree, attribute):
     for element in element_list:
         name = element.getAttribute('name')
         text = element.getAttribute(attribute)
-        i18n = element.getAttribute('comment') # translator comment about widget context
+        i18n = element.getAttribute('comment')  # translator comment about widget context
         if i18n == 'noi18n':
             # comment='noi18n' in widgets where translation is not desired
             continue
@@ -172,6 +174,7 @@ def content_from_element(element_name, parse_tree, attribute):
 
     return ''.join(sorted(element_strings))
 
+
 def content_from_file(filename, parse=True):
     """Set parse=False if you want to list the widget in guitranslations,
     but not the strings. Usually because those strings are not reasonable
@@ -182,7 +185,7 @@ def content_from_file(filename, parse=True):
 
     parsed = minidom.parse(filename)
 
-    #HACK! we strip the string until no "/" occurs and then use the remaining part
+    # HACK! we strip the string until no "/" occurs and then use the remaining part
     # this is necessary because of our dynamic widget loading (by unique file names)
     printname = filename.rsplit("/", 1)[1]
     if not parse:
@@ -191,7 +194,8 @@ def content_from_file(filename, parse=True):
     strings = ''
     for w in ['Button', 'CheckBox', 'Label', 'RadioButton']:
         strings += content_from_element(w, parsed, 'text')
-    for w in ['CancelButton', 'DeleteButton', 'OkButton', 'Button', 'Icon', 'ImageButton', 'Label', 'ProgressBar']:
+    for w in ['CancelButton', 'DeleteButton', 'OkButton', 'Button', 'Icon',
+              'ImageButton', 'Label', 'ProgressBar']:
         strings += content_from_element(w, parsed, 'helptext')
 
     if not strings:

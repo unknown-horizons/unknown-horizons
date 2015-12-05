@@ -31,36 +31,36 @@ is_empty = re.compile(r'^(\s*)(?:#.*)?$')
 
 files = sys.argv[1:]
 for filename in files:
-	print 'Adding documentation stubs to:', filename
-	file = open(filename, 'r+')
-	funk_reg = None
-	newfile = []
-	for line in file:
-		if is_function.match(line) is not None:
-			funk_reg = is_function.match(line)
-		elif funk_reg is not None and line.strip().startswith('"""'):
-			newfile.append(funk_reg.group())
-			newfile.append(line)
-			funk_reg = None
-		elif funk_reg is not None:
-			params = func_param.findall(funk_reg.group(3))
-			indent = funk_reg.group(1) + '\t' * (funk_reg.group(2) != '__init__')
-			docstub = [(indent + '"""\n')]
-			for i in params:
-				if i[0] != 'self' and i[0] != 'cls':
-					docstub.append(("%s@param %s:\n" % (indent, i[0])))
-			docstub.append((indent + '"""\n'))
-			if funk_reg.group(2) == '__init__':
-				newfile.extend(docstub)
-				newfile.append(funk_reg.group())
-			else:
-				newfile.append(funk_reg.group())
-				newfile.extend(docstub)
-			newfile.append(line)
-			funk_reg = None
-		else:
-			newfile.append(line)
-	file.seek(0)
-	file.writelines(newfile)
-	file.close()
-	print 'Done'
+    print 'Adding documentation stubs to:', filename
+    file = open(filename, 'r+')
+    funk_reg = None
+    newfile = []
+    for line in file:
+        if is_function.match(line) is not None:
+            funk_reg = is_function.match(line)
+        elif funk_reg is not None and line.strip().startswith('"""'):
+            newfile.append(funk_reg.group())
+            newfile.append(line)
+            funk_reg = None
+        elif funk_reg is not None:
+            params = func_param.findall(funk_reg.group(3))
+            indent = funk_reg.group(1) + '\t' * (funk_reg.group(2) != '__init__')
+            docstub = [(indent + '"""\n')]
+            for i in params:
+                if i[0] != 'self' and i[0] != 'cls':
+                    docstub.append(("%s@param %s:\n" % (indent, i[0])))
+            docstub.append((indent + '"""\n'))
+            if funk_reg.group(2) == '__init__':
+                newfile.extend(docstub)
+                newfile.append(funk_reg.group())
+            else:
+                newfile.append(funk_reg.group())
+                newfile.extend(docstub)
+            newfile.append(line)
+            funk_reg = None
+        else:
+            newfile.append(line)
+    file.seek(0)
+    file.writelines(newfile)
+    file.close()
+    print 'Done'
