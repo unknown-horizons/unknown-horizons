@@ -39,7 +39,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Wenn Sie Vorschläge zur Verbesserung des Tutorial oder Fehler finden, bitte teilen Sie diese uns mit.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Unter www.unknown-horizons.org könnt Ihr das Team kontaktieren sowie auch Hilfe erhalten.'
   - ''
   - Und nun lasst uns das Spiel beginnen!
   - [Pagebreak]
@@ -647,4 +647,4 @@ metadata:
   locale: de
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 185 translated messages, 1 fuzzy translation.
+  translation_status: 186 translated messages.
