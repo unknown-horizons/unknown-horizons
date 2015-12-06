@@ -53,7 +53,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Beim klicken dieser Schaltfläche wird eine Vorschau des Kontors angezeigt, das erste Gebäude um eine Siedlung zu gründen. Wenn Sie den Mauszeiger bewegen werden Sie bemerken dass, die Vorschau Rot unterlegt wird wenn sich das Gebäude in einer ungünstigen Zone befindet.
   - Der Kontor sollte in Küstennähe positioniert werden um Schiffe das andocken zu erleichtern. Suchen Sie sich einen guten Platz für dieses wichtige Gebäude aus.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Aufgabe: Errichtet ein Kontor an der Küste.']
 
 - &LUMBERJACK
   - [Message, Errichtet ein Holzfällerlager und verbindet es mit einer Straße zum Kontor.]
@@ -72,7 +72,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jedes Gebäude zum Abbau von Rohstoffen oder Produktionsgebäude braucht eine Verbindung zum Kontor oder einem anderen Lager, andernfalls werden die Güter nicht gesammelt.
   - Wenn das Holzfäller Zelt platziert ist verbinden Sie es mit dem Kontor indem Sie das Konstruktions-Menu öffnen und auf die 'Pfad' Schaltfläche klicken. Nun können Sie durch klicken und ziehen den Weg zwischen Holzfäller und Kontor bauen.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - [BoldLabel, 'Aufgabe: Errichtet ein Holzfällerlager in einem bewaldeten Gebiet und verseht es mit einer Straße zum Kontor.']
   - Nachdem die Gebäude verbunden sind, werden Sie einen Sammler sehen der die frisch produzierten Bretter abhohlt und sie zum Kontor bringt, parat nun für neue Bauten oder für Handel.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -95,7 +95,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dies ist eine sehr konstante Nahrungsversorgung zum Preis einer etwas längeren Produktionszeit pro Nahrungseinheit.
   - Eine kleine Siedlung wie die Eure kann beide Betriebe gebrauchen. Im direkten Vergleich könnt Ihr selbst Vor- und Nachteile abwägen.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
+  - [BoldLabel, 'Aufgabe: Errichtet einen Jäger und einen Fischer.']
   - Und vergesst die Wege zum Kontor nicht!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -112,7 +112,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Beachtet, dass Ihr Eure Einwohner am besten in einem Gebiet ansiedelt, welches man einfach vergrößern kann und wo auch Platz für Wege vorhanden ist.
   - Im Allgemeinen sollten Zelte beispielsweise nicht zu nah an die Holzfällerlager gebaut werden, da sonst wertvolle Bäume gefällt werden.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Aufgabe: Errichtet einen Marktplatz.']
   - [Pagebreak]
   - '
 
@@ -138,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sollten Eure Vorräte davon zur Neige gehen, könnt Ihr das Aufsteigen auch untersagen.
   - Einwohner scheinen vielleicht auf den ersten Blick nicht sehr nützlich zu sein – sie verbrauchen den Großteil der Güter, die Ihr produziert. Aber sie zahlen dafür immerhin Steuern. Und das ist der einzige Weg, wie Ihr momentan an Geld gelangen könnt.
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Aufgabe: Errichtet ein Zelt und verbindet es mit dem Marktplatz. Zelte müssen nicht mit Betrieben verbunden werden.']
 
 - &MORETENTS
   - [Message, Errichtet mindestens drei zusätzliche Zelte und verbindet sie mit dem Marktplatz.]
@@ -156,7 +156,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ist er es nicht, sinkt beides. Ab einem gewissen Punkt werden die Einwohner wirklich sauer, sodass sie ihre Koffer packen, aus der Stadt verschwinden und nur noch eine unbewohnbare Ruine zurücklassen.
   - Beachtet, dass Ihr auch in diesem Tab an der Steuerschraube drehen könnt.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Aufgabe: Erbaut drei weitere Zelte.']
   - '
 
     TIPP: Mit gedrückter SHIFT-Taste wird das Bauen von mehreren Gebäuden desselben Typs erleichtert.'
@@ -184,7 +184,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Klickt auf das kleine Symbol im Slot, um vom Modus 'Verkaufen' auf 'Kaufen' und umgekehrt zu wechseln.
   - Um das Handelsgut auszuwählen, klickt in einen Slot. Wir werden das Vorgehen weiter betrachten, sobald Ihr alle Voraussetzungen erfüllt, um Handel zu treiben.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Aufgabe: Errichtet ein Leuchtfeuer an der Küste in der Nähe des Kontors.']
 
 - &TRADING
   - [Message, 'Erreicht einen Lagerbestand von mindestens 30 Werkzeugen auf Eurer Insel. Beachtet, dass dies eine Weile dauern kann.']
@@ -209,7 +209,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Der Wert einer Ware kann NICHT manuell beeinflusst werden! Er setzt sich aus verschiedenen Faktoren zusammen und wird an die Handelssituation der Inselwelt angepasst.
   - Ihr könnt Eure Handelsbilanz im Tab 'Finanzen' einsehen, in dem die Posten Ein- und Verkauf gegenübergestellt sind.
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Aufgabe: Kauft so lange Werkzeuge ein, bis Ihr 30 Einheiten auf Lager habt!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -230,7 +230,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dazu benötigen sie Zugang zu einem Gebäude, das Religion produziert (dem Pavillon) und werden dann regelmäßig Religion dort abholen und Zuhause verbrauchen.
   - Es ist insbesondere NICHT ausreichend, dass das Gebäude nur in einem gewissen Einzugsgebiet liegt. Auch ein Weg dorthin muss vom Zelt aus erreichbar sein.
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Aufgabe: Baut einen Pavillon mit einer Verbindung zu den Zelten, um Euren Einwohnern den Zugang zum Glauben zu ermöglichen.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -251,7 +251,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Verbesserte Wohnungen beherbergen mehr Bewohner und Pioniere zahlen auch mehr Steuern als Seefahrer.
   - Wie Ihr wahrscheinlich schon ahnt, gibt es auch einen Nachteil. Pioniere benötigen weitere Güter, die Seefahrer nicht brauchten. Damit müsst Ihr mehr Geld aufwenden, um sie weiterhin zufrieden zu stellen.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Aufgabe: Setzt die Steuern auf Niedrig (linkes Ende) und wartet darauf, dass die Siedler ihre Wohnungen verbessern.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -276,7 +276,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Falls aus irgendwelchen Gründen Teile der Verarbeitung an verschiedenen Stellen der Insel geplant sind (was durchaus Sinn ergeben kann) oder sogar auf verschiedenen Inseln, wird eine Abholung durch Träger und damit Straßenverbindung aber notwendig.
   - Versucht, die Farm nicht zu nah an der Küste oder anderen Gebäuden zu bauen, denn sie benötigt etwas Platz für eine optimale Auslastung.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Aufgabe: Errichtet eine Farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -303,7 +303,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 'Auf unterschiedlichen Feldern benötigen die Arbeiter der Farm unterschiedlich viel Zeit: (Säen, Ernten, Tiere hüten, …). Deshalb kann es sein, dass eine Farm nicht alle Felder versorgen kann.'
   - Im Moment braucht Ihr Euch darüber keine Gedanken machen, da noch keine Felder angelegt sind. Lasst uns das ändern!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Aufgabe: Legt mindestens eine Weide im Einzugsbereich der Farm an und fügt Kartoffelfelder hinzu, falls Ihr wollt.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -331,7 +331,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * es schickt (genau wie das Kontor) eigene Träger, um Güter zu transportieren.'
   - Anzumerken ist, dass alle Betriebe auch mit dem Lager verbunden werden können, um ihre Güter abholen zu lassen. Falls Euer Kontor mit den Transportaufgaben überfordert ist, kann ein zusätzlich errichtetes Lager Entlastung bieten.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Aufgabe: Errichtet ein Lager, möglichst dort, wo die Abholsituation verbessert werden soll.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -344,7 +344,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In beiden Fällen solltet Ihr eine Straßenverbindung sicherstellen.
   - Der Weber wird auch ohne eine Straße bei der Farm Wolle abholen und Stoff produzieren, falls sie nah genug gelegen ist.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Aufgabe: Errichtet einen Weber, der Wolle abholen kann.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -356,7 +356,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sobald die Wirtschaft floriert und diese Anzahl an Einwohnern versorgen kann, seid Ihr bereit für Eure nächsten Aufgaben:Segelt zu neuen Ufern und erforscht weitere 'Unknown Horizons'!
   - Ihr benötigt außerdem eine positive Bilanz. Diese könnt ihr im Kontor überprüfen.
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Aufgabe: Erreicht insgesamt 50 Einwohner und eine positive Bilanz, um dieses Tutorial abzuschließen.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -647,4 +647,4 @@ metadata:
   locale: de
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 translated messages.
+  translation_status: 186 übersetzte Meldungen.
