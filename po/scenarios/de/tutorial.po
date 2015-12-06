@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
-"PO-Revision-Date: 2015-12-06 16:22+0000\n"
+"PO-Revision-Date: 2015-12-06 17:08+0000\n"
 "Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/tutorial/de/>\n"
 "Language: de\n"
@@ -131,7 +131,7 @@ msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
 msgstr ""
-"Um Euer Schiff zu lenken, wählt es mit einem Linksklick an. Ein Rechtsklick "
+"Um Euer Schiff zu lenken, wählt es mit einem Links klick an. Ein Rechtsklick "
 "bewegt es zu der gewünschten Position."
 
 #. This is the text body of a logbook page.
@@ -180,7 +180,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "NEUE AUFGABE: HOLZFÄLLER LAGER BAUEN"
+msgstr "NEUE AUFGABE: HOLZFÄLLERLAGER BAUEN"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -198,8 +198,8 @@ msgid ""
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
 "Holzfäller fällen Bäume vom Wald in der Nähe ihres Lager`s, verarbeiten "
-"diese dann zu Bretter, welche als Baumaterial oder Handelsresource verwendet "
-"werden können."
+"diese dann zu Bretter, welche als Baumaterial oder Handels Ressource "
+"verwendet werden können."
 
 #. This is the text body of a logbook page.
 #| msgid ""
@@ -259,7 +259,7 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
-"Wenn das Holzfäller Zelt plaziert ist verbinden Sie es mit dem Kontor indem "
+"Wenn das Holzfäller Zelt platziert ist verbinden Sie es mit dem Kontor indem "
 "Sie das Konstruktions-Menu öffnen und auf die 'Pfad' Schaltfläche klicken. "
 "Nun können Sie durch klicken und ziehen den Weg zwischen Holzfäller und "
 "Kontor bauen."
@@ -462,7 +462,7 @@ msgid ""
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
 "Im 'Siedler'-Tab seht Ihr Statistiken bezüglich Eurer Einwohner. Der globale "
-"Steuersatz für diese Siedlerstufe kann eingestellt werden, ebenso könnt Ihr "
+"Steuersatz für diese Siedler stufe kann eingestellt werden, ebenso könnt Ihr "
 "Euren Einwohnern erlauben oder verbieten, in die nächsthöhere Stufe "
 "aufzusteigen."
 
@@ -765,7 +765,7 @@ msgid ""
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
 "Ein Verkaufsposten, bei dem der Schieberegler auf 13 Tonnen gestellt ist, "
-"bewirkt bei einem Lagerstand von 18 Tonnen, dass bis zu 5 Tonnen verkauft "
+"bewirkt bei einem Lager stand von 18 Tonnen, dass bis zu 5 Tonnen verkauft "
 "werden."
 
 #. This is the text body of a logbook page.
@@ -949,7 +949,7 @@ msgid ""
 "main square."
 msgstr ""
 "\n"
-"Solche Wohnungsverbesserungen kosten Euch Waren, daher könnt Ihr sie in den "
+"Solche Wohnungs Verbesserungen kosten Euch Waren, daher könnt Ihr sie in den "
 "Marktplatz-Tabs einschränken."
 
 #. This is the text body of a logbook page.
@@ -958,7 +958,7 @@ msgid ""
 "lumberjack. In this case, only the graphics change."
 msgstr ""
 "Es gibt aber auch Verbesserungen ohne Kosten, wie Ihr zum Beispiel beim "
-"Holzfällerlager bemerken werdet. In diesem Fall wird nur die Gebäudegraphik "
+"Holzfällerlager bemerken werdet. In diesem Fall wird nur die Gebäude Grafik "
 "angepasst."
 
 #. This is the text body of a logbook page.
@@ -988,7 +988,7 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a farm and keep some empty space around it."
-msgstr "Errichtet eine Farm und lasst ausreichend Platz in der Umbegung frei."
+msgstr "Errichtet eine Farm und lasst ausreichend Platz in der Umgebung frei."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A FARM"
@@ -1016,7 +1016,7 @@ msgid ""
 "farm)."
 msgstr ""
 "Pioniere benötigen Kleidung, deshalb müsst Ihr eine neue Produktionslinie "
-"planen. Sie beginnt mit Schafswolle (die, wie einige andere Rohstoffe, in "
+"planen. Sie beginnt mit Schafs wolle (die, wie einige andere Rohstoffe, in "
 "der Farm produziert wird)."
 
 #. This is the text body of a logbook page.
