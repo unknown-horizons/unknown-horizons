@@ -25,7 +25,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     '
   - Das ist Ihr Journal, hier finden Sie wichtige Informationen zum aktuellen Scenario. Eine Zusammenfassung zu jeder neuen Aufgabe wird auch als Benachrichtigungsfeld, auf der linken Seite Ihres Bildschirms angezeigt. Sie können die Benachrichtigungen lesen, indem Sie mit Ihrem Mauszeiger darüber fahren oder das Feld anklicken um das Journal anzuzeigen.
-  - Sie können das Journal auch jederzeit öffnen indem Sie das Feld unterhalb der mini-map in der oberen rechten Seite Ihres Bildschirmes anklicken. Von nun an benennen wir diesen Bereich, der mini-map und verschiedene andere Schaltflächen beinhaltet, als 'Übersicht'.
+  - Sie können das Journal auch jederzeit öffnen, indem Sie das Feld unterhalb der Übersichtskarte in der oberen rechten Seite Ihres Bildschirmes anklicken. Von nun an benennen wir diesen Bereich, der Karte und verschiedene andere Schaltflächen beinhaltet, als 'Übersicht'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -647,4 +647,4 @@ metadata:
   locale: de
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 186 übersetzte Meldungen.
+  translation_status: 186 translated messages.
