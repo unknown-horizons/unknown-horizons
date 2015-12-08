@@ -259,7 +259,7 @@ INSERT INTO "resource" VALUES(38, 'medical herbs',   2.5,   1,    1);
 INSERT INTO "resource" VALUES(39, 'acorns',          0,     0,    0); -- unused
 --                            id   name            value  trade  show_inv
 INSERT INTO "resource" VALUES(40, 'cannon',        100,     1,    1);
-INSERT INTO "resource" VALUES(41, 'sword',         10,     1,    1);
+INSERT INTO "resource" VALUES(41, 'sword',          10,     1,    1);
 INSERT INTO "resource" VALUES(42, 'grain',           0,     0,    1); -- (corn ears)
 INSERT INTO "resource" VALUES(43, 'corn',            2,     0,    1);
 INSERT INTO "resource" VALUES(44, 'flour',           2.5,   1,    1);
