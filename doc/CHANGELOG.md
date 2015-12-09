@@ -18,9 +18,9 @@ CHANGELOG Unknown Horizons
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-2016-: Milestone 2016.1
+2015-12-31: Milestone 2015.1
 ----------------------------
-changelog date: NOV 29/15
+changelog date: Dec 09/15
 
 ### Gameplay and Balancing
 
@@ -38,7 +38,8 @@ New files and features
  - added cocoafield
  - replaced the discard icon on the trade ship widget
  - replaced the load/unload icon on the trade ship widget
- 
+ - added barracks
+ - added cannon production
  
 ### User Interface
 
