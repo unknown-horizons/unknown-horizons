@@ -64,10 +64,6 @@ tab3:
   - _ Services
   - BUILDINGS.TAVERN
   - BUILDINGS.DOCTOR
-  - _ Military
-  - BUILDINGS.WEAPONSMITH
-  - BUILDINGS.CANNONFOUNDRY
-  - BUILDINGS.BARRACKS
 #  - # empty slot
 
 
@@ -85,7 +81,11 @@ tab4:
   - BUILDINGS.COCOA_FIELD
   - BUILDINGS.VINEYARD
   - BUILDINGS.ALVEARIES
-
+-
+  - _ Military
+  - BUILDINGS.WEAPONSMITH
+  - BUILDINGS.CANNONFOUNDRY
+  - BUILDINGS.BARRACKS
 
 meta:
   unlocking_strategy: tab_per_tier
