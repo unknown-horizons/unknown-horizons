@@ -2,7 +2,7 @@ baseclass: groundunit.GroundUnit
 id: UNITS.SWORDSMAN
 name: Swordsman
 radius: 1
-velocity: 12.0 #XXX
+velocity: 12.0
 components:
 - SelectableComponent:
     type: ship
