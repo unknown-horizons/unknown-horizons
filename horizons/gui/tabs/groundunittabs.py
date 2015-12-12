@@ -24,8 +24,8 @@ from horizons.i18n import _lazy
 
 
 class GroundUnitOverviewTab(OverviewTab):
-	widget = 'overview_war_groundunit.xml'
-	helptext = _lazy("Groundunit overview")
+    widget = 'overview_war_groundunit.xml'
+    helptext = _lazy("Groundunit overview")
 
-	def init_widget(self):
-		super(GroundUnitOverviewTab, self).init_widget()
+    def init_widget(self):
+        super(GroundUnitOverviewTab, self).init_widget()

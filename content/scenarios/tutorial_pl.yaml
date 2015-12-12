@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Build a warehouse on the coast to allow trade ships to visit your settlement.]
+  - [Message, 'Zbuduj magazyn na wybrzeżu, tak aby statki handlowe mogły odwiedzić twoją osadę.']
   - '
 
 
@@ -24,13 +24,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
+  - To jest Twój dziennik, gdzie są przechowywane ważne informacje na temat obecnej sytuacji. Podsumowanie każdego nowego zadania pojawi się również jako "przycisk powiadomień" w pobliżu lewej krawędzi ekranu. Możesz najechaniu myszką na te powiadomienia aby przeczytać podsumowania lub kliknąć przycisk, aby otworzyć dziennik.
+  - Można również ponownie otworzyć dziennik w dowolnej chwili, klikając przycisk poniżej mini-mapy, w prawym górnym rogu ekranu. Od teraz będziemy odnosić się do tego obszaru zawierającego mini-mapę i różne przyciski i zakładki jako "Przegląd".
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Aby zobaczyć swoje pierwsze zadanie, przejdź do następnej strony Dziennika i za pomocą przycisku na dole strony - wygląda to tak:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -95,7 +95,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - To bardzo pewne źródło żywności, ceną jest jednak nieznacznie dłuższa produkcja.
   - Taka mała osada jak twoja może wykorzystać oba sposoby pozyskiwania żywności, powinieneś je jednaki zbalansować jzgodnie z ich zaletami i wadami.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
+  - [BoldLabel, 'Zadanie: Wybuduj chatę myśliwego i rybaka.']
   - Nie zapomnij o tym, aby doprowadzić do nich drogę!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -112,7 +112,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Nie powinieneś rozstawiać namiotów w pobliżu chaty drwala, gdyż niszczysz w ten sposób drzewa, które potrzebne są drwalowi do produkcji desek.
   - Firmy działają także, jeżeli nie są połączone z namiotami, nie musisz więc prowadzić drogi pomiędzy rynkiem a, przykładowo, namiotem drwala.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Zadanie: Wybuduj rynek główny.']
   - [Pagebreak]
   - '
 
@@ -156,7 +156,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - W przeciwnym przypadku szczęście oraz wpływy zmniejszą się. Po pewnym czasie rezydenci mogą poważnie się zawieść i opuścić wioskę, zostawiając za sobą rozpadające się ruiny.
   - Pamiętaj, że możesz tutaj zmienić globalną wysokość podatku.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Zadanie: Zbuduj co najmniej trzy dodatkowe namioty.']
   - '
 
     Wskazówka: przytrzymanie klawisza ''SHIFT'' ułatwia budowanie wielu budynków tego samego typu.'
@@ -184,7 +184,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kliknij na małej ikonie, by zmienić tryb z "Kup" na "Sprzedaj" i na odwrót.
   - Kliknij na kwadracie, by wybrać towar, którym chcesz handlować. Później to wyjaśnimy, gdy będziesz gotów do handlu.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Zadanie: Wybuduj latarnie na wybrzeżu w pobliżu swojego portu.']
 
 - &TRADING
   - [Message, Zdobądź co najmniej 30 sztuk narzędzi.]
@@ -211,7 +211,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Nie ma możliwości samodzielnego ustalania cen!'
   - Możesz zobaczyć swój bilans handlowy w zakładce "Konto", gdzie porównano wartości "Kupna" i "Sprzedaży".
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'ZADANIE: Kup tyle narzędzi, by mieć 30 ton w magazynie!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
@@ -236,7 +236,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Musi on być również połączony drogą.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'ZADANIE: Wybuduj pawilon oraz ścieżkę do namiotów, żeby zaspokoić potrzebę wiary twoich marynarzy.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -257,7 +257,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Nowe mieszkanie może pomieścić większą ilość mieszkańców. Dodatkowo pionierzy płacą większe podatki niż marynarze.
   - Jak możesz się zapewne domyślić, pionierzy mają również więcej wymagań - potrzebujesz zatem więcej pieniędzy żeby ich uszczęśliwić.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'ZADANIE: Ustaw poziom podatków na niski (lewy koniec suwaka) i poczekaj aż marynarze przejdą na wyższy poziom.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
@@ -282,7 +282,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jeśli jednak planujesz przetwarzać i produkować na różnych częściach wyspy (co może mieć sens), a nawet na różnych wyspach, potrzebne będzie połączenie między zbieraczami.
   - Nie buduj farmy zbyt blisko wybrzeża ani innych budynków, ponieważ będzie ona potrzebowała trochę miejsca wokół siebie by poprawnie funkcjonować.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'ZADANIE: Wybuduj farmę.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -309,7 +309,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Różne rodzaje pól wymagają od gospodarstw więcej lub mniej czasu na siew, żniwa, wypas stada, itp ...i dlatego gospodarstwo może być niezdolne do działania na wszystkicz zbudowanych w jego zasięgu polach.
   - Na razie nie musisz się martwić tymi sprawami, ponieważ nie zbudowalłeś żadnych pól. Zmieńmy to!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Zadanie: Zbuduj przynajmniej jedno pastwiska w zasięgu gospodarstwa i dodaj pola ziemniaków, jeśli chcesz.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -339,7 +339,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * wysyła własnego pracownika do zbierania dóbr.'
   - Zauważ iż firmy mogą zostać połączone z magazynem aby składować tam zbierane produkty, jeżeli magazyn jest przeciążony przez zlecenia, możesz postawić magazyn w namiocie aby mu pomóc.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Zadanie: Zbuduj namiotu przechowywania, najlepiej, gdzie trzeba kolektorów.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -352,7 +352,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - W obu przypadkach należy zapewnić połączenie ze szlakiem.
   - Możesz umieścić warsztat tkacki blisko gospodarstwa i zburzyć wszelkie szlaki do farmy, aby zobaczyć, że nadal będzie pobierał wełnę i produkował tkaninę.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Zadanie: Zbuduj warsztat tkacki umieszczony tak, by mógł pobierać wełnę.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -364,7 +364,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Gdy jesteś w stanie utrzymać gospodarkę, by mogła zaspokoić potrzeby takiej ilości konsumentów, jesteś gotowy, aby odkrywać nowe nieznane noryzonty!
   - Potrzebujesz również wystarczającą ilość pieniędzy aby gospodarka mogła funkcjonować, więc jest konieczne dodatnie saldo (zobacz zakładkę "Konto" w magazynie).
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Zadanie: Osiągnij liczbę 50 mieszkańców i dodatnie saldo, aby ukończyć ten samouczek.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -655,4 +655,4 @@ metadata:
   locale: pl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 161 translated messages, 13 fuzzy translations, 12 untranslated messages.

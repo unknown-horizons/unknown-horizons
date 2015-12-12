@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 1c4eb21\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
-"PO-Revision-Date: 2013-12-06 21:58+0200\n"
-"Last-Translator: Yes Stone <s2327259@hotmail.com>\n"
-"Language-Team: Traditional Chinese <http://hosted.weblate.org/projects/uh/"
-"tutorial/zh_TW/>\n"
+"PO-Revision-Date: 2015-12-08 06:17+0000\n"
+"Last-Translator: Marco Leong <is2008cp4a23@gmail.com>\n"
+"Language-Team: Chinese (Taiwan) "
+"<https://hosted.weblate.org/projects/uh/tutorial/zh_TW/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -32,13 +32,12 @@ msgstr ""
 "建立你的第一個殖民地並學習如何遊玩!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid ""
 #| "Build a warehouse at the coast, so it is easily accessible for other "
 #| "ships like the Free Trader."
 msgid ""
 "Build a warehouse on the coast to allow trade ships to visit your settlement."
-msgstr "在沿岸建造一座倉庫，如此便可處理其它船隻，如自由商人。"
+msgstr "在沿岸建造一座倉庫以便貿易船造訪你的殖民地。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -52,6 +51,8 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"這是你的日誌，儲存了關於當前場景中的重要資訊。每個新任務的概要也會作為一個「通知按鈕」在螢幕左側邊緣出現。你可以將滑鼠移至按鈕上以閱讀它的概要，或按它一下"
+"來打開日誌。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -59,10 +60,9 @@ msgid ""
 "the mini-map, at the top right of your screen. From now on we'll refer to "
 "this area containing the mini-map and various buttons and tabs as the "
 "'Overview'."
-msgstr ""
+msgstr "你還可以隨時通過螢幕右上方的小地圖下面的按鈕重新打開日誌。從現在起，我們會把這包含小地圖、各種按鈕和標籤的區域稱為「總覽」。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "To see your first task, click on the button \"Read next entries\" in the "
@@ -73,8 +73,7 @@ msgid ""
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
-"來了解你的第一個任務，點擊在導航面板上的按鈕「閱讀下一個項目」! 按鈕看起來像"
-"這樣:"
+"來了解你的第一個任務，請利用在日誌下一頁底部的按鈕來掀至下一個頁面──按鈕看起來像這樣:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -82,9 +81,10 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"如果你有關於改善本教程的任何建議，或者遇到任何錯誤，請告訴我們。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "Visit www.unknown-horizons.org for help on how to contact the team!"
@@ -93,35 +93,32 @@ msgid ""
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
-"拜訪 www.unknown-horizons.org 以得知如何連絡我們!"
+"拜訪 www.unknown-horizons.org 以了解如何連絡我們。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
-msgstr "那麼現在，讓我們實際開始遊戲吧。"
+msgstr "那麼現在，讓我們開始遊戲吧！"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 #| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "新任務: 定居島上"
+msgstr "新任務: 建立一個殖民地"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
-msgstr ""
+msgstr "你的船隻現在在海上，載滿了建立一個新殖民地所需的用品。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "To move your ship, select it with a left click and right click on the "
 #| "location you want it to go to."
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
-msgstr "用左鍵選擇你的船隻，並按右鍵指定想讓船隻移動到的位置。"
+msgstr "要移動船隻，先用左鍵選擇你的船隻，並在想讓船隻航行到的位置上按一下右鍵。"
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -139,7 +136,7 @@ msgid ""
 "building required to found a new settlement. As you move the cursor around, "
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
-msgstr ""
+msgstr "點擊此按鈕將顯示倉庫的預覽。倉庫是建立一個新殖民地所需的第一幢建築物。當你四周移動鼠標時就可以看到當建築物在不合適的區域內時，預覽會變成紅色。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -148,22 +145,19 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Task: Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
-msgstr "任務: 在沿岸建造一座貨棧。"
+msgstr "任務: 在沿岸建造一座倉庫。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid "Build a lumberjack and connect it to the warehouse using a trail."
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr "建造一座伐木場並將其與貨棧用道路連接起來。"
+msgstr "建造一座伐木場並將它和倉庫連接起來。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
 #| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "新任務: 建造伐木場"
+msgstr "新任務：建造伐木場"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -225,12 +219,11 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
-msgstr "任務: 在森林區域建造一座伐木場並用道路連接。"
+msgstr "任務: 在森林區域建造一座伐木場並把它連接至倉庫。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -264,7 +257,7 @@ msgstr "獵人會在森林裡狩獵動物，因此附近需要有樹林。"
 
 #. This is the text body of a logbook page.
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr "注意，你可以將獵場放在伐木場森林得附近。"
+msgstr "注意，你可以將獵場放在伐木場森林的附近。"
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -298,13 +291,10 @@ msgid ""
 msgstr "這是一個非常穩定的食物來源，但每單位的食物需要花費較長的時間生產。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
-msgstr ""
-"小型殖民地(如你的)可以同時建造這兩種公司，而如果你有看到直接的比較，最好是在"
-"它們的優缺點之間取得平衡。"
+msgstr "你的小型殖民地可以同時利用這兩種食物來源。如果你能直接比較它們的輸出，你也可以更好地在它們的優缺點之間取得平衡。"
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a hunter and a fisher."
@@ -328,7 +318,6 @@ msgid ""
 msgstr "你的居民需要一個中央廣場來取得他們的貨物。"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "This means that they need a trail connection from their home to the main "
 #| "square."
@@ -336,7 +325,7 @@ msgid ""
 "This means that they need a trail connection from their home to the main "
 "square. Note that the main square acts as trail as well, therefore adjacent "
 "tents do not need a separate trail."
-msgstr "這意謂著他們需要道路從他們家裡連接到中央廣場。"
+msgstr "這意謂著他們需要道路從他們家裡連接到中央廣場。要注意中央廣場自己也是一條道路，所以旁邊的帳篷不需要額外的道路。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -403,10 +392,9 @@ msgstr ""
 "各等級住戶的稅率，或是禁止某一階級的居民升級到更高階。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid "Build a tent and connect it to the main square."
 msgid "Build a tent and connect it to the main square if necessary."
-msgstr "建造一個帳篷並將它與中央廣場連接。"
+msgstr "建造一個帳篷並視乎需要將它與中央廣場連接。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
