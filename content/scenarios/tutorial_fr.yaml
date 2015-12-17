@@ -24,53 +24,53 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
+  - Ceci est votre journal de bord, où sont enregistrées les informations importantes du scénario en cours. Un aperçu de chaque nouvelle tâche apparaîtra avec un "bouton de notification" sur le bord gauche de l'écran. Vous pouvez pointer votre souris sur ces notifications pour lire l'aperçu, ou bien cliquer dessus pour ouvrir le journal de bord.
+  - Vous pouvez aussi ré-ouvrir le Journal de Bord à n'importe quel moment en cliquant sur le bouton situé sous la mini-carte, en haut à droite de l'écran. Dorénavant, nous appellerons cette zone contenant la mini-carte et divers boutons la "Vue d'Ensemble".
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Pour voir votre première tâche, tournez la page du Journal de Bord en utilisant le bouton en bas de la page que vous voulez tourner - ça ressemble à ça :'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    Si vous avez des suggestions sur l''amélioration de ce didacticiel, ou bien si des erreurs se produisent, s''il vous plaît, dîtes-le nous.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Visitez www.unknown-horizons.org pour trouver comment contacter l''équipe.'
   - ''
-  - And now, let's start the game!
+  - Et maintenant, commençons la partie !
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'NOUV. OBJ. : CREER UNE COLONIE']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - Votre navire est à flot, chargé des ressources nécessaires à l'établissement d'une nouvelle colonie.
+  - Pour déplacer votre navire, sélectionnez le avec un clic gauche puis cliquez droit sur l'endroit où vous voulez que ce dernier vogue.
+  - Une fois que vous êtes près de la côte, le bouton "Construire une colonie" de la Vue d'Ensemble deviendra actif.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Cliquer sur ce bouton montrera un aperçu de l'Entrepôt, le premier bâtiment requis pour fonder une nouvelle colonie. En déplaçant le curseur, vous remarquerez que l'aperçu du bâtiment est ombré de rouge quand ce dernier se trouve sur une zone inadéquate.
+  - L'Entrepôt doit se trouver sur la côte pour permettre aux navires d'accoster. Alors, trouvez un endroit qui convienne puis faites un clic gauche pour placer ce bâtiment important.
   - ''
   - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Construisez un Campement de Bûcherons et reliez-le à l'Entrepôt.]
+  - [Headline, 'MISSION : LE CAMP DE BÛCHERONS']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Les ressources et matériaux de construction ont été déchargés de votre navire et mis à l’abri dans votre nouvel Entrepôt. Maintenant, il est temps de construire quelques bâtiments de base, en commençant par un Camp de Bûcherons.
+  - Les bûcherons vont abattre des arbres des zones boisées autour de leur tente et transformer le bois obtenu en planches, qui peuvent être utilisées dans la construction ou bien vendues.
+  - Pour construire un Camp de Bûcherons, ouvrez le Menu Construction en cliquant sur le bouton sous la mini-carte, ou en appuyant sur "B" par défaut.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Le Menu Construction est trié par paliers et comme votre colonie est nouvelle, seuls les bâtiments du Premier Palier vous seront accessibles; au fur et à mesure que votre civilisation avance, vous accéderez aux paliers supérieurs et aurez accès à une plus large variété de bâtiments.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Trouvez une jolie place boisée pour faire travailler les bûcherons puis sélectionnez "Camp de Bûcherons" dans la liste des bâtiments de la Vue d'Ensemble et placez le bâtiment.
+  - Plus tard dans la partie, vous pourriez vouloir créer des zones boisées en plantant des arbres, mais étant donné que cela coûte de l'argent, vous devriez utiliser ce que la nature a fourni pour l'instant !
+  - N'importe quel bâtiment de récolte de ressources ou bien de production nécessite d'être connecté par un chemin à l'Entrepôt ou à une autre forme de stockage, autrement, les biens qu'il produit ne seront pas récupérés.
+  - Alors, une fois votre Camp de Bûcherons en place, connectez le à l'Entrepôt en ouvrant le Menu Construction puis en cliquant sur le bouton "Chemin". Vous pouvez maintenant cliquer-déplacer votre souris pour dessiner l'itinéraire de votre chemin entre le Camp de Bûcherons et l'Entrepôt.
   - ''
   - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
   - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
@@ -655,4 +655,4 @@ metadata:
   locale: fr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 158 translated messages, 14 fuzzy translations, 14 untranslated messages.
+  translation_status: 180 translated messages, 5 fuzzy translations, 1 untranslated message.
