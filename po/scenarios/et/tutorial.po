@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
-"PO-Revision-Date: 2015-03-10 11:00+0200\n"
+"PO-Revision-Date: 2015-12-18 17:19+0000\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
-"Language-Team: Estonian <https://hosted.weblate.org/projects/uh/tutorial/et/"
-">\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/uh/tutorial/et/>"
+"\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -31,15 +31,14 @@ msgstr ""
 "Ehita oma esimene koloonia ja õpi kuidas mängida!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid ""
 #| "Build a warehouse at the coast, so it is easily accessible for other "
 #| "ships like the Free Trader."
 msgid ""
 "Build a warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
-"Ehita rannikule harukontor nii et see oleks lihtsalt ligipääsetav teistele "
-"laevadele nagu Vaba Kaupleja."
+"Ehita rannikule ladu nii, et võimaldada kaubalaevadele oma koloonia "
+"külastamist."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
