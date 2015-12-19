@@ -24,8 +24,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Ceci est votre journal de bord, où sont enregistrées les informations importantes du scénario en cours. Un aperçu de chaque nouvelle tâche apparaîtra avec un "bouton de notification" sur le bord gauche de l'écran. Vous pouvez pointer votre souris sur ces notifications pour lire l'aperçu, ou bien cliquer dessus pour ouvrir le journal de bord.
-  - Vous pouvez aussi ré-ouvrir le Journal de Bord à n'importe quel moment en cliquant sur le bouton situé sous la mini-carte, en haut à droite de l'écran. Dorénavant, nous appellerons cette zone contenant la mini-carte et divers boutons la "Vue d'Ensemble".
+  - Ceci est votre journal de bord, où sont enregistrées les informations importantes du scénario en cours. Un aperçu de chaque nouvelle tâche apparaîtra sous la forme d'une "bouton de notification" sur le bord gauche de l'écran. Vous pouvez pointer votre souris sur ces notifications pour lire l'aperçu, ou bien cliquer dessus pour ouvrir le journal de bord.
+  - Vous pouvez aussi ouvrir à nouveau le Journal de Bord à n'importe quel moment en cliquant sur le bouton situé sous la mini-carte, en haut à droite de l'écran. Dorénavant, nous appellerons cette zone contenant la mini-carte et divers boutons et données la "Vue d'Ensemble".
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -41,16 +41,16 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Visitez www.unknown-horizons.org pour trouver comment contacter l''équipe.'
   - ''
-  - Et maintenant, commençons la partie !
+  - Et maintenant, commençons à jouer !
   - [Pagebreak]
-  - [Headline, 'NOUV. OBJ. : CREER UNE COLONIE']
+  - [Headline, 'MISSION : CREER UNE COLONIE']
   - [Image, content/gui/images/background/hr.png]
   - Votre navire est à flot, chargé des ressources nécessaires à l'établissement d'une nouvelle colonie.
   - Pour déplacer votre navire, sélectionnez le avec un clic gauche puis cliquez droit sur l'endroit où vous voulez que ce dernier vogue.
   - Une fois que vous êtes près de la côte, le bouton "Construire une colonie" de la Vue d'Ensemble deviendra actif.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Cliquer sur ce bouton montrera un aperçu de l'Entrepôt, le premier bâtiment requis pour fonder une nouvelle colonie. En déplaçant le curseur, vous remarquerez que l'aperçu du bâtiment est ombré de rouge quand ce dernier se trouve sur une zone inadéquate.
+  - Cliquer sur ce bouton montrera un aperçu de l'Entrepôt, le premier bâtiment requis pour fonder une nouvelle colonie. En déplaçant le curseur, vous remarquerez que l'aperçu du bâtiment est teinté de rouge quand ce dernier se trouve sur une zone inadéquate.
   - L'Entrepôt doit se trouver sur la côte pour permettre aux navires d'accoster. Alors, trouvez un endroit qui convienne puis faites un clic gauche pour placer ce bâtiment important.
   - ''
   - [BoldLabel, 'Mission: Construisez un Entrepôt sur la côte.']
@@ -59,12 +59,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Construisez un Campement de Bûcherons et reliez-le à l'Entrepôt.]
   - [Headline, 'MISSION : LE CAMP DE BÛCHERONS']
   - [Image, content/gui/images/background/hr.png]
-  - Les ressources et matériaux de construction ont été déchargés de votre navire et mis à l’abri dans votre nouvel Entrepôt. Maintenant, il est temps de construire quelques bâtiments de base, en commençant par un Camp de Bûcherons.
-  - Les bûcherons vont abattre des arbres des zones boisées autour de leur tente et transformer le bois obtenu en planches, qui peuvent être utilisées dans la construction ou bien vendues.
+  - Les ressources et matériaux de construction ont été déchargés de votre navire et mis à l’abri dans votre nouvel Entrepôt. Il est maintenant temps de construire quelques bâtiments de base, en commençant par un Camp de Bûcherons.
+  - Les bûcherons vont abattre des arbres des zones boisées autour de leur camp et transformer le bois obtenu en planches, qui peuvent être utilisées dans la construction ou bien vendues.
   - Pour construire un Camp de Bûcherons, ouvrez le Menu Construction en cliquant sur le bouton sous la mini-carte, ou en appuyant sur "B" par défaut.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Le Menu Construction est trié par paliers et comme votre colonie est nouvelle, seuls les bâtiments du Premier Palier vous seront accessibles; au fur et à mesure que votre civilisation avance, vous accéderez aux paliers supérieurs et aurez accès à une plus large variété de bâtiments.
+  - Le Menu Construction est trié par paliers et comme votre colonie est nouvelle, seuls les bâtiments du Premier Palier vous sont accessibles; au fur et à mesure que votre civilisation avance, vous accéderez aux paliers supérieurs et aurez accès à une plus large variété de bâtiments.
   - [Pagebreak]
   - ''
   - Trouvez une jolie place boisée pour faire travailler les bûcherons puis sélectionnez "Camp de Bûcherons" dans la liste des bâtiments de la Vue d'Ensemble et placez le bâtiment.
@@ -72,7 +72,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - N'importe quel bâtiment de récolte de ressources ou bien de production nécessite d'être connecté par un chemin à l'Entrepôt ou à une autre forme de stockage, autrement, les biens qu'il produit ne seront pas récupérés.
   - Alors, une fois votre Camp de Bûcherons en place, connectez le à l'Entrepôt en ouvrant le Menu Construction puis en cliquant sur le bouton "Chemin". Vous pouvez maintenant cliquer-déplacer votre souris pour dessiner l'itinéraire de votre chemin entre le Camp de Bûcherons et l'Entrepôt.
   - ''
-  - [BoldLabel, 'Mission: Construisez un Campement de Bûcherons dans une zone boisée et reliez-le à l''Entrepôt.']
+  - [BoldLabel, 'Mission: Construisez un Camp de Bûcherons dans une zone boisée et reliez-le à l''Entrepôt.']
   - Une fois les bâtiments reliés, vous verrez un transporteur arriver pour embarquer les planches fraîchement produites et les livrer à l'Entrepôt, prêtes à servir pour construire ou bien être vendues.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -253,7 +253,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     L''amélioration de l''habitation coûte des ressources et peut être limitée depuis la place principale.'
-  - Comme vous pouvez l'observer chez le bûcheron il existe aussi des améliorations gratuites. Dans ce cas uniquement l'image du bâtiment est changée.
+  - Il existe aussi des améliorations gratuites, tel que vous le verrez avec le Camp de Bûcherons. Dans ce cas, seule l'apparence du bâtiment change.
   - Les logements améliorés peuvent héberger plus d'habitants et, de plus, les pionniers paient plus de taxes que les marins.
   - Comme vous l'avez peut-être constaté, le désavantage est que les pionniers demandent des biens supplémentaires dont les marins n'ont pas besoin - vous devrez donc dépenser cet argent supplémentaire pour les satisfaire également.
   - ''
