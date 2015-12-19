@@ -53,7 +53,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Cliquer sur ce bouton montrera un aperçu de l'Entrepôt, le premier bâtiment requis pour fonder une nouvelle colonie. En déplaçant le curseur, vous remarquerez que l'aperçu du bâtiment est ombré de rouge quand ce dernier se trouve sur une zone inadéquate.
   - L'Entrepôt doit se trouver sur la côte pour permettre aux navires d'accoster. Alors, trouvez un endroit qui convienne puis faites un clic gauche pour placer ce bâtiment important.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Mission: Construisez un Entrepôt sur la côte.']
 
 - &LUMBERJACK
   - [Message, Construisez un Campement de Bûcherons et reliez-le à l'Entrepôt.]
@@ -72,8 +72,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - N'importe quel bâtiment de récolte de ressources ou bien de production nécessite d'être connecté par un chemin à l'Entrepôt ou à une autre forme de stockage, autrement, les biens qu'il produit ne seront pas récupérés.
   - Alors, une fois votre Camp de Bûcherons en place, connectez le à l'Entrepôt en ouvrant le Menu Construction puis en cliquant sur le bouton "Chemin". Vous pouvez maintenant cliquer-déplacer votre souris pour dessiner l'itinéraire de votre chemin entre le Camp de Bûcherons et l'Entrepôt.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
+  - [BoldLabel, 'Mission: Construisez un Campement de Bûcherons dans une zone boisée et reliez-le à l''Entrepôt.']
+  - Une fois les bâtiments reliés, vous verrez un transporteur arriver pour embarquer les planches fraîchement produites et les livrer à l'Entrepôt, prêtes à servir pour construire ou bien être vendues.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -105,7 +105,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'MISSION : LA PLACE PRINCIPALE']
   - [Image, content/gui/images/background/hr.png]
   - Vos habitants ont besoin d'une place principale où ils trouveront des biens de consommation.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
+  - Cela signifie qu'il leur faudra un sentier reliant leurs habitations à la place principale. Notez que la place principale agit elle même comme un chemin, ainsi, les tentes adjacentes n'ont pas besoin d'un sentier séparé.
   - Toutes les marchandises de votre entrepôt sont disponibles à ce « marché », donc vos habitants n'ont pas besoin d'aller chez le pêcheur ou même jusqu'à l'entrepôt.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dans les différents onglets de sélection de niveaux vous pouvez voir des statistiques sur vos habitants. Vous pouvez également définir le niveau global de taxe spécifique et autoriser ou refuser aux habitants de ce niveau de passer au niveau suivant.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
+  - [Message, Construisez une tente et connectez-la à la place principale si c'est nécessaire.]
   - [Headline, 'MISSION : LES HABITATIONS']
   - [Image, content/gui/images/background/hr.png]
   - Les colons veulent avoir un toit au dessus de la tête, autrement ils ne penseront même pas à venir vivre dans votre ville ! Vous devez leurs fournir des tentes.
@@ -138,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Envisagez d'interdire les améliorations si vos stocks de matériaux sont faibles.
   - Les colons peuvent sembler peu ou pas très utiles dans la mesure où ils essaieront de consommer tout les biens que vous produirez mais, au moins, ils paient les taxes et c'est votre seule façon de gagner de l'argent pour le moment !
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Mission : Construisez une tente et reliez-la à la place principale si c''est nécessaire. Les tentes n''ont pas besoin d''être reliées aux bâtiments de production.']
 
 - &MORETENTS
   - [Message, Construisez 3 tentes supplémentaires et reliez-les à la place principale.]
@@ -655,4 +655,4 @@ metadata:
   locale: fr
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 180 translated messages, 5 fuzzy translations, 1 untranslated message.
+  translation_status: 186 translated messages.

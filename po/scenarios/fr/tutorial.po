@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:38+0100\n"
-"PO-Revision-Date: 2015-12-17 22:57+0000\n"
+"PO-Revision-Date: 2015-12-19 01:56+0000\n"
 "Last-Translator: clément arondel <clement.arondel@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/uh/tutorial/fr/>\n"
 "Language: fr\n"
@@ -168,10 +168,9 @@ msgstr ""
 
 # I propose to translate "warehouse" as comptoir instead of "succursale" as "succursale" is more an affiliate.
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Task: Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
-msgstr "Mission: Établissez un comptoir sur la côte."
+msgstr "Mission: Construisez un Entrepôt sur la côte."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #| msgid "Build a lumberjack and connect it to the warehouse using a trail."
@@ -270,12 +269,13 @@ msgstr ""
 "l'itinéraire de votre chemin entre le Camp de Bûcherons et l'Entrepôt."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid "Task: Build a lumberjack in a wooded area and connect it to a road."
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
-msgstr "Mission: Établissez un comptoir sur la côte."
+msgstr ""
+"Mission: Construisez un Campement de Bûcherons dans une zone boisée et "
+"reliez-le à l'Entrepôt."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -283,6 +283,9 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in  construction or trade."
 msgstr ""
+"Une fois les bâtiments reliés, vous verrez un transporteur arriver pour "
+"embarquer les planches fraîchement produites et les livrer à l'Entrepôt, "
+"prêtes à servir pour construire ou bien être vendues."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
@@ -388,7 +391,6 @@ msgstr ""
 "de consommation."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "This means that they need a trail connection from their home to the main "
 #| "square."
@@ -397,8 +399,9 @@ msgid ""
 "square. Note that the main square acts as trail as well, therefore adjacent "
 "tents do not need a separate trail."
 msgstr ""
-"Cela signifie qu'il leur faudra un sentier menant des habitations à la place "
-"principale."
+"Cela signifie qu'il leur faudra un sentier reliant leurs habitations à la "
+"place principale. Notez que la place principale agit elle même comme un "
+"chemin, ainsi, les tentes adjacentes n'ont pas besoin d'un sentier séparé."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -472,10 +475,11 @@ msgstr ""
 "de passer au niveau suivant."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 #| msgid "Build a tent and connect it to the main square."
 msgid "Build a tent and connect it to the main square if necessary."
-msgstr "Construisez une tente et connectez-la à la place principale."
+msgstr ""
+"Construisez une tente et connectez-la à la place principale si c'est "
+"nécessaire."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
@@ -525,7 +529,6 @@ msgstr ""
 "le moment !"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 #| msgid ""
 #| "Task: Build a tent and connect it to the main square. Tents dont need to "
 #| "be connected to any of the companies."
@@ -533,8 +536,9 @@ msgid ""
 "Task: Build a tent and connect it to the main square if necessary. Tents "
 "don't need to be connected to any of the companies."
 msgstr ""
-"Mission : Construisez une tente et connectez-la à la place principale. Les "
-"tentes n'ont pas besoin d'être connectées aux entreprises."
+"Mission : Construisez une tente et reliez-la à la place principale si c'est "
+"nécessaire. Les tentes n'ont pas besoin d'être reliées aux bâtiments de "
+"production."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
