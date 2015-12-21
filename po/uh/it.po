@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
 "PO-Revision-Date: 2015-12-22 00:35+0000\n"
-"Last-Translator: pac low <lowpac@gmail.com>\n"
+"Last-Translator: federico <fede81fede@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -3752,10 +3752,9 @@ msgid "{player1} and {player2} will fight each other to the death."
 msgstr "{player1} e {player2} si combatteranno fino alla morte."
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 #| msgid "Workshops"
 msgid "hops"
-msgstr "Laboratori"
+msgstr "Luppolo"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
