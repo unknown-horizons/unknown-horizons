@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-09-24 11:17+0200\n"
+"PO-Revision-Date: 2015-12-22 00:28+0000\n"
 "Last-Translator: Damian Bodde <damian.bodde@googlemail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -1550,7 +1550,7 @@ msgstr "Weet u zeker dat u Unknown Horizons wilt verlaten?"
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
-msgstr "Verlaat spel"
+msgstr "Spel verlaten"
 
 #: horizons/gui/ingamegui.py:241
 msgid "No diplomacy possible"
