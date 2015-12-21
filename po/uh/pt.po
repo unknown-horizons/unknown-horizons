@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
 "PO-Revision-Date: 2015-12-22 00:36+0000\n"
-"Last-Translator: Pedro Henrique <system.pedrohenrique@gmail.com>\n"
+"Last-Translator: luis coehlo <luisldc@sapo.pt>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -542,7 +542,7 @@ msgstr "Seleccione os recursos:"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr "Utilização do colector"
+msgstr "Utilizador do colector"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
