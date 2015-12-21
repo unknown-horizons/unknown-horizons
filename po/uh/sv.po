@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2015-07-07 14:58+0200\n"
-"Last-Translator: Karar Al-Remahy <alremahykarar@ymail.com>\n"
+"PO-Revision-Date: 2015-12-22 00:38+0000\n"
+"Last-Translator: Chris Browne <yoda2031@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -728,7 +728,7 @@ msgstr "Pengar"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Spelarens nuvarande statskassa + intäkter förväntade inom snar framtid"
+msgstr "Spelarens konto och snart förväntade inkomst"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
