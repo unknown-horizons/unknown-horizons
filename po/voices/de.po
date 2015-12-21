@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
 "PO-Revision-Date: 2015-12-22 00:26+0000\n"
-"Last-Translator: Max Seindl <razartt@gmail.com>\n"
+"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/voices/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -102,11 +102,15 @@ msgstr "Sollen wir wirklich unseren Rivalen als neuen Nachbarn akzeptieren?"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "One of our enemies settles on our ground!"
-msgstr "Ein Kontrahent besiedelt Eurem Grund und Boden!"
+msgstr ""
+"Ein Kontrahent besiedelt Eurem Grund und Boden!\n"
+"Ein Feind siedelt auf unserem Land"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
-msgstr "Einer unserer Verbündeten scheint dringend unser Land zu benötigen."
+msgstr ""
+"Einer unserer Verbündeten scheint dringend unser Land zu benötigen.\n"
+"Einer unserer Verbündeten scheint dringend dein Land zu benötigen."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
