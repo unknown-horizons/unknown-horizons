@@ -24,13 +24,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on we'll refer to this area containing the mini-map and various buttons and tabs as the 'Overview'.
+  - See on sinu Logiraamat, kuhu on salvestatud praegust stsenaariumit puudutav oluline informatsioon. Iga ülesande kokkuvõte ilmub meeldetuletuse nupuna ekraani vasakpoolses servas. Jättes hiire kursori mõneks hetkeks meeldetuletusele saad seda lugeda. Samuti võid klõpsata, et avada Logiraamat vastavast kohast.
+  - Logiraamatu saad alati avada ka klõpsates ekraani paremas ülanurgas asuva minikaardi all oleval nupul. Edaspidi viidatakse sellele alale kui minikaardile ning seal olevatele nuppudele ja vahekaartidele kui "Ülevaatele".
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Oma esimese ülesande nägemiseks ava logiraamatus järgmine lehekülg. Selleks klõpsa nuppu vastaslehekülje alumises servas - see on selline:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -39,29 +39,29 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Tiimiga ühenduse võtmiseks külasta saiti www.unknown-horizons.org.'
   - ''
-  - And now, let's start the game!
+  - Ja nüüd alustagem mänguga!
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'ÜLESANNE: LOO KOLOONIA']
   - [Image, content/gui/images/background/hr.png]
   - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - Laeva liigutamiseks vali ta vasakklõpsuga ja tee paremklõps kohal, kuhu laev peaks seilama.
+  - Ranniku läheduses muutub ülevaates nupp "Ehita koloonia" aktiivseks.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
   - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
   - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Ülesanne: ehita rannikule laohoone.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Ehita puuraidurite telk ja ühenda see teeraja abil laohoonega.]
+  - [Headline, 'ÜLESANNE: EHITA PUURAIDURITE TELK']
   - [Image, content/gui/images/background/hr.png]
   - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
   - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Puuraidurite telgi ehitamiseks ava menüü "Ehita". Selleks klõpsa kas minikaardi all oleval suurel ikoonil või vajuta klahvi 'B' (vaikimisi kiirklahv).
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
   - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
@@ -72,7 +72,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - [BoldLabel, 'Ülesanne: Ehita metsasele alale puuraidurite telk ja ühenda see laohoonega.']
   - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in  construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -105,7 +105,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'ÜLESANNE: PEAVÄLJAK']
   - [Image, content/gui/images/background/hr.png]
   - Su elanikud vajavad peaväljakut, kus nad saavad hankida omale kaupu.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
+  - See tähendab, et nad vajavad teerada, mis ühendab nende kodu peaväljakuga. Peaväljak on kasutatav ka teena ning seetõttu ei vaja temaga ühendatud telgid eraldi teerada.
   - Kõik kaubad su laos on sellel "turuplatsil" saadavad; seega ei pea su elanikud käima kaluri juures või isegi laos.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Erinevate tasemete ülevaate kaardid võimaldavad sul näha su elanike statistikat. Samuti saad sa siin kehtestada ka tasemele vastava globaalse maksu ja lubada või keelata selle taseme elanikel tõusta järgmisele tasemele.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
+  - [Message, Ehita telk ja vajadusel ühenda see peaväljakuga.]
   - [Headline, 'UUS ÜLESANNE: ELAMUD']
   - [Image, content/gui/images/background/hr.png]
   - Asunikud tahavad pea kohale katust; vastasel korral nad isegi ei mõtle su linnas elamisele! Sa pead püstitama telgid.
@@ -138,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kaalu uuendamise keelamist, kui materjalide varud on otsakorral.
   - Asunikud ei pruugi olla väga kasulikud, sest nad proovivad tarbida ära kõik kaubad, mis toodetakse, kui vähemalt maksavad nad makse ja see on hetkel ainus raha saamise viis!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Ülesanne: Ehita telk ja vajadusel ühenda see peaväljakuga. Telgid ei pea olema ühendatud ühegi kompaniiga.']
 
 - &MORETENTS
   - [Message, Ehita vähemalt kolm täiendavat telki ja ühenda need peaväljakuga.]
@@ -655,4 +655,4 @@ metadata:
   locale: et
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 158 translated messages, 14 fuzzy translations, 14 untranslated messages.
+  translation_status: 174 translated messages, 12 untranslated messages.
