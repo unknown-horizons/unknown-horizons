@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
 "PO-Revision-Date: 2015-12-22 00:26+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"Last-Translator: Stefan <nxxs@inbox.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/voices/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -122,7 +122,7 @@ msgstr "Unser Verbündeter siedelt auf einer unserer Inseln."
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr "Ihr benötigt mehr Ressourcen, um dies zu bauen."
+msgstr "Für dieses Bauvorhaben benötigt Ihr mehr Ressourcen."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
