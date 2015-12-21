@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2015-12-02 23:34+0100\n"
-"PO-Revision-Date: 2014-12-19 15:34+0200\n"
-"Last-Translator: federico <fede81fede@gmail.com>\n"
+"PO-Revision-Date: 2015-12-22 00:35+0000\n"
+"Last-Translator: pac low <lowpac@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.5-dev\n"
 
 #: run_uh.py:124
 msgid "Unknown Horizons has crashed."
@@ -110,7 +110,9 @@ msgstr "Inizio Gioco"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:16
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "È necessario trovare una soluzione prima possibile costruire edifici!"
+msgstr ""
+"È necessario trovare un insediamento prima che e` possibile costruire "
+"edifici!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:20
 msgid "Select your ship and approach the coast via right-click."
@@ -149,7 +151,7 @@ msgstr "Aumenta la velocità di gioco ({key})"
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Diminuire la velocità di gioco ({key})"
+msgstr "Diminuire la velocità di gioco({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
@@ -283,7 +285,7 @@ msgstr "(perdi tutte le risorse)"
 #. abort construction of a ship, lose invested resources
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "Annulla la costruzione in corso"
+msgstr "Annulla tutti costruzioni in corso"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
@@ -465,7 +467,7 @@ msgid ""
 "you want to buy or sell goods."
 msgstr ""
 "Il segnale di fuoco mostra al commerciante libero come raggiungere il tuo "
-"insediamento in caso voglia vendere o acquistare beni."
+"insediamento in caso che vuoi acquistare o vendere beni."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
@@ -541,7 +543,7 @@ msgstr "Utilizzo del collettore"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
-msgstr "Ingresso:"
+msgstr "Reddito:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:21
 #: content/gui/xml/ingame/widgets/players_settlements.xml:13
@@ -600,7 +602,7 @@ msgstr ""
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
 msgstr ""
-"Resetta la configurazione delle risorse predefinita per tutti gli "
+"Ripristina la configurazione delle risorse predefinita per tutti gli "
 "insediamenti."
 
 #. Trade route entry
@@ -1108,7 +1110,7 @@ msgstr "Password della partita:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr "Password di questa partita. Necessaria per unirsi."
+msgstr "Password di questa partita. Necessaria per accedere."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
@@ -1184,7 +1186,7 @@ msgstr "Entra nel gioco:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:56
 msgid "Join the selected game"
-msgstr "Unisciti alla partita selezionata"
+msgstr "Accedi alla partita selezionata"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
@@ -1382,7 +1384,7 @@ msgstr "Annulla le modifiche correnti"
 
 #: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
-msgstr "Ripristina i settaggi predefiniti"
+msgstr "Ripristina i valori predefiniti"
 
 #: content/gui/xml/mainmenu/settings.xml:237
 msgid "Save changes"
@@ -1462,7 +1464,7 @@ msgstr "Impostazioni di gioco:"
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr "Commercio Libero"
+msgstr "Commerciante Libero"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
@@ -1506,11 +1508,11 @@ msgstr "Il partner commerciale non vende questa merce."
 
 #: horizons/component/tradepostcomponent.py:198
 msgid "You can not store this."
-msgstr "Non puoi immagazzinarlo."
+msgstr "Non puoi immagazzinare questa merce."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not afford to buy this."
-msgstr "Non puoi permettertelo."
+msgstr "A lei non e`permesso di comprare questo."
 
 #: horizons/component/tradepostcomponent.py:208
 msgid "The trade partner does not sell more of this."
@@ -1518,7 +1520,7 @@ msgstr "Il partner commerciale non vende altra di questa merce."
 
 #: horizons/component/tradepostcomponent.py:232
 msgid "The trade partner does not buy this."
-msgstr "Il partner commerciale non comperare questa merce."
+msgstr "Il partner commerciale non compera questa merce."
 
 #: horizons/component/tradepostcomponent.py:240
 msgid "You do not possess this."
@@ -1559,7 +1561,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:77
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Sei sicuro di voler uscire da'Unknown Horizons?"
+msgstr "Sei sicuro di voler uscire da' Unknown Horizons?"
 
 #: horizons/gui/gui.py:78
 msgid "Quit Game"
@@ -1624,7 +1626,7 @@ msgstr "Suggerimenti per il gioco"
 
 #: horizons/gui/modules/loadingscreen.py:62
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Premi 'ESC' per accedere al menu di gioco."
+msgstr "Premere 'ESC' per accedere al menu di gioco."
 
 #: horizons/gui/modules/loadingscreen.py:63
 msgid "Use 'SHIFT' to place multiple buildings."
@@ -1857,7 +1859,7 @@ msgstr "Inserisci il tuo messaggio"
 #: horizons/gui/modules/multiplayermenu.py:489
 #: horizons/gui/modules/multiplayermenu.py:497
 msgid "Click here to change your name and/or color"
-msgstr "Clicca qui per cambiare il tuo nome e il colore giocatore"
+msgstr "Clicca qui per cambiare il tuo nome e/o il colore giocatore"
 
 #: horizons/gui/modules/multiplayermenu.py:515
 #, python-brace-format
@@ -1885,7 +1887,7 @@ msgstr "Non sei più pronto"
 #: horizons/gui/modules/multiplayermenu.py:596
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr "{player} è ora pronto"
+msgstr "{player} è pronto"
 
 #: horizons/gui/modules/multiplayermenu.py:598
 #, python-brace-format
@@ -1960,7 +1962,7 @@ msgstr "Esiste già una mappa salvata con nome '{name}'."
 
 #: horizons/gui/modules/select_savegame.py:165
 msgid "Overwrite it?"
-msgstr "Si deve sovrascrivere?"
+msgstr "Sovrascrivere?"
 
 #: horizons/gui/modules/select_savegame.py:232
 msgid "Unknown savedate"
@@ -2029,7 +2031,7 @@ msgstr "Gioco"
 
 #: horizons/gui/modules/settings.py:76
 msgid "Disabled"
-msgstr "non abilitato"
+msgstr "Disabilitato"
 
 #: horizons/gui/modules/settings.py:130
 msgid "Restart required"
@@ -2097,7 +2099,7 @@ msgstr "È stato inserito un nome giocatore non valido."
 
 #: horizons/gui/modules/singleplayermenu.py:152
 msgid "Resource density:"
-msgstr "Deposito risorse:"
+msgstr "Densità di risorse:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Map size:"
@@ -3559,7 +3561,7 @@ msgstr "ripiani in pietra"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
-msgstr "fave di caffe"
+msgstr "chicchi di caffè"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
